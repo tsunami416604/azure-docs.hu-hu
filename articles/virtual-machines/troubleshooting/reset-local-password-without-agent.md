@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: genli
-ms.openlocfilehash: 4cec8f77cacc5d3492dd6a5f8a8baa060f910763
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2cc6ef9b1d9ca8336162b524356ea6e0d1bf5fd2
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91650596"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197659"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Azure-beli virtuális gép helyi Windows-jelszavának visszaállítása kapcsolat nélküli üzemmódban
-Alaphelyzetbe állíthatja az Azure-beli virtuális gép helyi Windows-jelszavát a [Azure Portal vagy Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) , ha telepítve van az Azure Guest Agent ügynök. Ez a módszer az Azure-beli virtuális gépek jelszavának alaphelyzetbe állításának elsődleges módja. Ha az Azure vendég ügynökével kapcsolatos problémákba ütközik, vagy ha az egyéni rendszerkép feltöltése után nem sikerül telepíteni, manuálisan is visszaállíthatja a Windows-jelszót. Ez a cikk részletesen ismerteti a helyi fiók jelszavának alaphelyzetbe állítását úgy, hogy a forrás operációs rendszer virtuális lemezét egy másik virtuális géphez csatolja. A cikkben ismertetett lépések nem vonatkoznak a Windows-tartományvezérlőkre. 
+Alaphelyzetbe állíthatja az Azure-beli virtuális gép helyi Windows-jelszavát a [Azure Portal vagy Azure PowerShell](reset-rdp.md) , ha telepítve van az Azure Guest Agent ügynök. Ez a módszer az Azure-beli virtuális gépek jelszavának alaphelyzetbe állításának elsődleges módja. Ha az Azure vendég ügynökével kapcsolatos problémákba ütközik, vagy ha az egyéni rendszerkép feltöltése után nem sikerül telepíteni, manuálisan is visszaállíthatja a Windows-jelszót. Ez a cikk részletesen ismerteti a helyi fiók jelszavának alaphelyzetbe állítását úgy, hogy a forrás operációs rendszer virtuális lemezét egy másik virtuális géphez csatolja. A cikkben ismertetett lépések nem vonatkoznak a Windows-tartományvezérlőkre. 
 
 > [!WARNING]
-> Ezt a módszert csak végső megoldásként használja. Mindig próbálkozzon a jelszó alaphelyzetbe állításával a [Azure Portal vagy Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) használatával.
+> Ezt a módszert csak végső megoldásként használja. Mindig próbálkozzon a jelszó alaphelyzetbe állításával a [Azure Portal vagy Azure PowerShell](reset-rdp.md) használatával.
 
 ## <a name="overview-of-the-process"></a>A folyamat áttekintése
 Az Azure-beli Windows rendszerű virtuális gépek helyi jelszavas alaphelyzetbe állításának alapvető lépései, ha az Azure Guest agenthez nem fér hozzá a következő:
@@ -41,7 +41,7 @@ Az Azure-beli Windows rendszerű virtuális gépek helyi jelszavas alaphelyzetbe
 > [!NOTE]
 > A lépések nem vonatkoznak a Windows rendszerű tartományvezérlőkön. Ez csak önálló kiszolgálón vagy olyan kiszolgálón működik, amely tagja egy tartománynak.
 
-A következő lépések elvégzése előtt mindig próbálja meg alaphelyzetbe állítani a jelszót a [Azure Portal vagy Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) használatával. Mielőtt elkezdené, győződjön meg róla, hogy rendelkezik biztonsági másolattal a virtuális gépről.
+A következő lépések elvégzése előtt mindig próbálja meg alaphelyzetbe állítani a jelszót a [Azure Portal vagy Azure PowerShell](reset-rdp.md) használatával. Mielőtt elkezdené, győződjön meg róla, hogy rendelkezik biztonsági másolattal a virtuális gépről.
 
 1. Készítsen pillanatképet az érintett virtuális gép operációsrendszer-lemezéről, hozzon létre egy lemezt a pillanatképből, majd csatolja a lemezt egy hibakeresési virtuális géphez. További információ: Windows rendszerű [virtuális gép hibáinak elhárítása az operációsrendszer-lemez egy helyreállítási virtuális géphez való csatolásával a Azure Portal használatával](troubleshoot-recovery-disks-portal-windows.md).
 2. Kapcsolódjon a hibaelhárítási virtuális géphez Távoli asztal használatával.
@@ -71,10 +71,17 @@ A következő lépések elvégzése előtt mindig próbálja meg alaphelyzetbe �
      0Parameters=
      ```
      
-     :::image type="content" source="./media/reset-local-password-without-agent/create-scripts-ini-1.png" alt-text="Képernyőkép, amely a gpt.ini fájl frissítéseit jeleníti meg." <username> /add
+     :::image type="content" source="./media/reset-local-password-without-agent/create-scripts-ini-1.png" alt-text="Képernyőkép, amely a script.ini fájl frissítéseit jeleníti meg.":::
+
+5. Hozzon létre a `FixAzureVM.cmd` -ben `\Windows\System32\GroupPolicy\Machine\Scripts\Startup\` a következő tartalommal, `<username>` és cserélje le a `<newpassword>` saját értékeit:
+   
+    ```
+    net user <username> <newpassword> /add /Y
+    net localgroup administrators <username> /add
+    net localgroup "remote desktop users" <username> /add
     ```
 
-    :::image type="content" source="./media/reset-local-password-without-agent/create-fixazure-cmd-1.png" alt-text="Képernyőkép, amely a gpt.ini fájl frissítéseit jeleníti meg.":::
+    :::image type="content" source="./media/reset-local-password-without-agent/create-fixazure-cmd-1.png" alt-text="Képernyőkép, amely az újonnan létrehozott FixAzureVM. cmd fájlt mutatja, ahol frissíti a felhasználónevet és a jelszót.":::
    
     Az új jelszó meghatározásakor meg kell felelnie a virtuális gép konfigurált jelszó-bonyolultsági követelményeinek.
 
@@ -104,43 +111,43 @@ A következő lépések elvégzése előtt mindig próbálja meg alaphelyzetbe �
 
 1. Törölje az érintett virtuális gépet Azure Portal. A virtuális gép törlése csak a metaadatokat, az Azure-ban található virtuális gép hivatkozását törli. A virtuális lemezeket a rendszer a virtuális gép törlésekor megőrzi:
    
-   * Válassza ki a virtuális gépet a Azure Portalon, majd kattintson a *Törlés*gombra:
+   * Válassza ki a virtuális gépet a Azure Portalon, majd kattintson a *Törlés* gombra:
      
-     :::image type="content" source="./media/reset-local-password-without-agent/delete-vm-classic.png" alt-text="Képernyőkép, amely a gpt.ini fájl frissítéseit jeleníti meg.":::
+     :::image type="content" source="./media/reset-local-password-without-agent/delete-vm-classic.png" alt-text="Meglévő klasszikus virtuális gép törlése":::
 
 2. Csatolja a forrás virtuális gép operációsrendszer-lemezét a hibaelhárítási virtuális géphez. A hibaelhárítási virtuális gépnek ugyanabban a régióban kell lennie, mint a forrás virtuális gép operációsrendszer-lemezének (például `West US` ):
    
-   1. Válassza ki a hibaelhárítási virtuális gépet a Azure Portal. Kattintson a *lemezek*  |  *meglévő csatolása*lehetőségre:
+   1. Válassza ki a hibaelhárítási virtuális gépet a Azure Portal. Kattintson a *lemezek*  |  *meglévő csatolása* lehetőségre:
      
-      :::image type="content" source="./media/reset-local-password-without-agent/disks-attach-existing-classic.png" alt-text="Képernyőkép, amely a gpt.ini fájl frissítéseit jeleníti meg.":::
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-attach-existing-classic.png" alt-text="Meglévő lemez csatolása – klasszikus":::
      
    2. Válassza ki a *VHD-fájlt* , majd válassza ki a forrás virtuális gépet tartalmazó Storage-fiókot:
      
-      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-storage-account-classic.png" alt-text="Képernyőkép, amely a gpt.ini fájl frissítéseit jeleníti meg.":::
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-storage-account-classic.png" alt-text="Storage-fiók kiválasztása – klasszikus":::
      
-   3. Jelölje be a *klasszikus Storage-fiókok megjelenítése*jelölőnégyzetet, majd válassza ki a forrás-tárolót. A forrás tároló általában *VHD*-k:
+   3. Jelölje be a *klasszikus Storage-fiókok megjelenítése* jelölőnégyzetet, majd válassza ki a forrás-tárolót. A forrás tároló általában *VHD*-k:
      
-      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-container-classic.png" alt-text="Képernyőkép, amely a gpt.ini fájl frissítéseit jeleníti meg.":::
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-container-classic.png" alt-text="Storage-tároló kiválasztása – klasszikus":::
 
-      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-container-vhds-classic.png" alt-text="Képernyőkép, amely a gpt.ini fájl frissítéseit jeleníti meg.":::
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-container-vhds-classic.png" alt-text="Storage-tároló kiválasztása – VHD – klasszikus":::
      
    4. Válassza ki a csatolni kívánt operációs rendszert tartalmazó virtuális merevlemezt. A folyamat befejezéséhez kattintson a *kiválasztás* gombra:
      
-      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-source-vhd-classic.png" alt-text="Képernyőkép, amely a gpt.ini fájl frissítéseit jeleníti meg.":::
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-source-vhd-classic.png" alt-text="Forrás virtuális lemez kiválasztása – klasszikus":::
 
    5. A lemez csatolásához kattintson az OK gombra.
 
-      :::image type="content" source="./media/reset-local-password-without-agent/disks-attach-okay-classic.png" alt-text="Képernyőkép, amely a gpt.ini fájl frissítéseit jeleníti meg.":::
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-attach-okay-classic.png" alt-text="Meglévő lemez csatolása – OK párbeszédpanel – klasszikus":::
 
 3. Kapcsolódjon a hibaelhárítási virtuális géphez Távoli asztal használatával, és győződjön meg arról, hogy a forrás virtuális gép operációsrendszer-lemeze látható:
 
-   1. Válassza ki a hibaelhárítási virtuális gépet a Azure Portal, majd kattintson a *kapcsolat*gombra.
+   1. Válassza ki a hibaelhárítási virtuális gépet a Azure Portal, majd kattintson a *kapcsolat* gombra.
 
    2. Nyissa meg a letöltött RDP-fájlt. Adja meg a hibaelhárítási virtuális gép felhasználónevét és jelszavát.
 
    3. A Fájlkezelőben keresse meg a csatlakoztatott adatlemezt. Ha a forrás virtuális gép VHD-je az egyetlen, a hibaelhárítási virtuális géphez csatolt adatlemez, az F: meghajtó:
      
-      :::image type="content" source="./media/reset-local-password-without-agent/troubleshooting-vm-file-explorer-classic.png" alt-text="Képernyőkép, amely a gpt.ini fájl frissítéseit jeleníti meg.":::
+      :::image type="content" source="./media/reset-local-password-without-agent/troubleshooting-vm-file-explorer-classic.png" alt-text="Csatolt adatlemez megtekintése":::
 
 4. Létrehozás `gpt.ini` a `\Windows\System32\GroupPolicy` forrás virtuális gép meghajtóján (ha `gpt.ini` létezik, nevezze át `gpt.ini.bak` ):
    
@@ -156,7 +163,7 @@ A következő lépések elvégzése előtt mindig próbálja meg alaphelyzetbe �
      Version=1
      ```
      
-     :::image type="content" source="./media/reset-local-password-without-agent/create-gpt-ini-classic.png" alt-text="Képernyőkép, amely a gpt.ini fájl frissítéseit jeleníti meg.":::
+     :::image type="content" source="./media/reset-local-password-without-agent/create-gpt-ini-classic.png" alt-text="Klasszikus gpt.ini létrehozása":::
 
 5. Létrehozás `scripts.ini` a alkalmazásban `\Windows\System32\GroupPolicy\Machine\Scripts\` . Győződjön meg arról, hogy a rejtett mappák láthatók. Szükség esetén hozza létre a `Machine` vagy a `Scripts` mappákat.
    
@@ -168,30 +175,37 @@ A következő lépések elvégzése előtt mindig próbálja meg alaphelyzetbe �
      0Parameters=
      ```
      
-     :::image type="content" source="./media/reset-local-password-without-agent/create-scripts-ini-classic-1.png" alt-text="Képernyőkép, amely a gpt.ini fájl frissítéseit jeleníti meg." <username> /add
+     :::image type="content" source="./media/reset-local-password-without-agent/create-scripts-ini-classic-1.png" alt-text="Klasszikus scripts.ini létrehozása":::
+
+6. Hozzon létre a `FixAzureVM.cmd` -ben `\Windows\System32\GroupPolicy\Machine\Scripts\Startup\` a következő tartalommal, `<username>` és cserélje le a `<newpassword>` saját értékeit:
+   
+    ```
+    net user <username> <newpassword> /add /Y
+    net localgroup administrators <username> /add
+    net localgroup "remote desktop users" <username> /add
     ```
 
-    :::image type="content" source="./media/reset-local-password-without-agent/create-fixazure-cmd-1.png" alt-text="Képernyőkép, amely a gpt.ini fájl frissítéseit jeleníti meg.":::
+    :::image type="content" source="./media/reset-local-password-without-agent/create-fixazure-cmd-1.png" alt-text="FixAzureVM. cmd létrehozása – klasszikus":::
    
     Az új jelszó meghatározásakor meg kell felelnie a virtuális gép konfigurált jelszó-bonyolultsági követelményeinek.
 
 7. A Azure Portal válassza le a lemezt a hibaelhárítási virtuális gépről:
    
-   1. Válassza ki a hibaelhárítási virtuális gépet a Azure Portalon, majd kattintson a *lemezek*elemre.
+   1. Válassza ki a hibaelhárítási virtuális gépet a Azure Portalon, majd kattintson a *lemezek* elemre.
    
-   2. Válassza ki a 2. lépésben csatolt adatlemezt, kattintson a **Leválasztás**elemre, majd **az OK**gombra.
+   2. Válassza ki a 2. lépésben csatolt adatlemezt, kattintson a **Leválasztás** elemre, majd **az OK** gombra.
 
-     :::image type="content" source="./media/reset-local-password-without-agent/data-disks-classic.png" alt-text="Képernyőkép, amely a gpt.ini fájl frissítéseit jeleníti meg.":::
+     :::image type="content" source="./media/reset-local-password-without-agent/data-disks-classic.png" alt-text="Lemez leválasztása – virtuális gép hibaelhárítása – klasszikus":::
      
-     :::image type="content" source="./media/reset-local-password-without-agent/detach-disk-classic.png" alt-text="Képernyőkép, amely a gpt.ini fájl frissítéseit jeleníti meg.":::
+     :::image type="content" source="./media/reset-local-password-without-agent/detach-disk-classic.png" alt-text="Lemez leválasztása – hibaelhárítás virtuális gép – ok párbeszédpanel – klasszikus":::
 
 8. Hozzon létre egy virtuális gépet a forrás virtuális gép operációsrendszer-lemezéről:
    
-     :::image type="content" source="./media/reset-local-password-without-agent/create-new-vm-from-template-classic.png" alt-text="Képernyőkép, amely a gpt.ini fájl frissítéseit jeleníti meg.":::
+     :::image type="content" source="./media/reset-local-password-without-agent/create-new-vm-from-template-classic.png" alt-text="Virtuális gép létrehozása sablonból – klasszikus":::
 
-     :::image type="content" source="./media/reset-local-password-without-agent/choose-subscription-classic.png" alt-text="Képernyőkép, amely a gpt.ini fájl frissítéseit jeleníti meg.":::
+     :::image type="content" source="./media/reset-local-password-without-agent/choose-subscription-classic.png" alt-text="Virtuális gép létrehozása sablonból – előfizetés kiválasztása – klasszikus":::
 
-     :::image type="content" source="./media/reset-local-password-without-agent/create-vm-classic.png" alt-text="Képernyőkép, amely a gpt.ini fájl frissítéseit jeleníti meg.":::
+     :::image type="content" source="./media/reset-local-password-without-agent/create-vm-classic.png" alt-text="Virtuális gép létrehozása sablonból – klasszikus virtuális gép létrehozása":::
 
 ## <a name="complete-the-create-virtual-machine-experience"></a>A virtuális gép létrehozási élményének befejezése
 
@@ -207,4 +221,4 @@ A következő lépések elvégzése előtt mindig próbálja meg alaphelyzetbe �
       * távolítsa el `gpt.ini` (ha `gpt.ini` korábban létezett, és `gpt.ini.bak` átnevezte a-re), nevezze át a fájlt a (z `.bak` ) névre `gpt.ini` .
 
 ## <a name="next-steps"></a>Következő lépések
-Ha továbbra sem tud kapcsolatot létesíteni Távoli asztal használatával, tekintse meg az [RDP-hibaelhárítási útmutatót](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Az [RDP-hibaelhárítás részletes útmutatója](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) az egyes lépések helyett a hibaelhárítási módszereket vizsgálja. [Egy Azure-támogatási kérést is megnyithat](https://azure.microsoft.com/support/options/) gyakorlati segítségért.
+Ha továbbra sem tud kapcsolatot létesíteni Távoli asztal használatával, tekintse meg az [RDP-hibaelhárítási útmutatót](troubleshoot-rdp-connection.md). Az [RDP-hibaelhárítás részletes útmutatója](detailed-troubleshoot-rdp.md) az egyes lépések helyett a hibaelhárítási módszereket vizsgálja. [Egy Azure-támogatási kérést is megnyithat](https://azure.microsoft.com/support/options/) gyakorlati segítségért.

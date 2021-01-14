@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: c88a2cf33cf1149a17af4a82dcf2858822f0c6d4
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3808da24c1baf6dd6e3332d4bd26fd176b761c65
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696149"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196078"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Az Azure adatbiztonsággal és a titkosítással kapcsolatos ajánlott eljárásai
 Ez a cikk az adatbiztonsággal és a titkosítással kapcsolatos ajánlott eljárásokat ismerteti.
@@ -74,7 +74,7 @@ Az Azure RBAC segítségével szabályozhatja, hogy mely felhasználók férhetn
 Mivel a támadások túlnyomó többsége a végfelhasználót célozza meg, a végpont a támadás egyik elsődleges pontja lesz. A végpontot veszélyeztető támadók a felhasználó hitelesítő adataival férhetnek hozzá a szervezet adataihoz. A legtöbb végponti támadás kihasználja azt a tényt, hogy a felhasználók a helyi munkaállomáson rendszergazdák.
 
 **Ajánlott eljárás**: biztonságos felügyeleti munkaállomás használata a bizalmas fiókok, a feladatok és az adatok védelméhez.   
-**Részletek**: az emelt [szintű hozzáférési munkaállomás](/windows-server/identity/securing-privileged-access/privileged-access-workstations) használatával csökkentheti a munkaállomásokon a támadási felületet. Ezek a biztonságos felügyeleti munkaállomások segíthetnek csökkenteni a támadások némelyikét, és biztosítják, hogy az adatai biztonságban legyenek.
+**Részletek**: az emelt [szintű hozzáférési munkaállomás](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) használatával csökkentheti a munkaállomásokon a támadási felületet. Ezek a biztonságos felügyeleti munkaállomások segíthetnek csökkenteni a támadások némelyikét, és biztosítják, hogy az adatai biztonságban legyenek.
 
 **Ajánlott eljárás**: az Endpoint Protection biztosítása.   
 **Részletek**: biztonsági szabályzatok betartatása minden olyan eszközön, amely az adatok felhasználására szolgál, függetlenül az adatok helyétől (Felhőbeli vagy helyszíni).

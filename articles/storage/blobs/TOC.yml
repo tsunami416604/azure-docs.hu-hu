@@ -307,6 +307,8 @@
               href: ../common/storage-account-recover.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: A fióktípus és a termékváltozat nevének lekérése (.NET)
               href: ../common/storage-account-get-info.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Tárfiók alapértelmezett hozzáférési szintjének kezelése
+              href: ../common/manage-account-default-access-tier.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Tárolók létrehozása és felügyelete
           items:
             - name: Tároló létrehozása vagy törlése (.NET)
@@ -321,6 +323,8 @@
               href: storage-blobs-list.md
             - name: Blobtulajdonságok és metaadatok kezelése (.NET)
               href: storage-blob-properties-metadata.md
+            - name: Blob hozzáférési szintjének kezelése
+              href: manage-access-tier.md
             - name: Blob másolása (SDK)
               href: storage-blob-copy.md
             - name: Blobindex-címkék használata

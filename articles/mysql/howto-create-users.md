@@ -5,13 +5,13 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
-ms.date: 10/1/2020
-ms.openlocfilehash: 2e934ede193d6efb9cc795c6b63cb485b88f792e
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 01/13/2021
+ms.openlocfilehash: de4e7959a5778c7275427450ead876338f052882
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541419"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196775"
 ---
 # <a name="create-databases-and-users-in-azure-database-for-mysql"></a>Adatbázisok és felhasználók létrehozása a Azure Database for MySQLban
 
@@ -20,25 +20,23 @@ ms.locfileid: "94541419"
 Ez a cikk azt ismerteti, hogyan hozhatók létre felhasználók a Azure Database for MySQLban.
 
 > [!NOTE]
-> **Elfogultság – ingyenes kommunikáció**
+> Elfogultság – ingyenes kommunikáció
 >
-> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a *Slave* kifejezésre mutató hivatkozásokat tartalmaz. Az [elfogultság nélküli kommunikációhoz használható Microsoft-stílus útmutatója](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) ezt a kizáró szót ismeri fel. A szó a jelen cikkben a konzisztencia miatt használatos, mert ez a szó, amely jelenleg a szoftverben jelenik meg. Ha a szoftver frissítve lett a szó eltávolítására, a rendszer a cikket úgy frissíti, hogy az legyen az igazítás.
+> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a _fő_ és a _Slave_ kifejezésre mutató hivatkozásokat tartalmaz. A [torzítás nélküli kommunikációhoz használható Microsoft-stílusú útmutató](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) ezeket a kizáró szavakat ismeri fel. A jelen cikkben szereplő szavak a konzisztencia miatt használatosak, mivel jelenleg a szoftverben megjelenő szavak. Ha a szoftver frissítve lett a szavak eltávolítására, a rendszer a cikket úgy frissíti, hogy az legyen az igazítás.
 >
 
 Amikor először hozta létre a Azure Database for MySQL-kiszolgálót, a kiszolgálói rendszergazda felhasználónevet és jelszót adott meg. További [információt ebben a](quickstart-create-mysql-server-database-using-azure-portal.md)rövid útmutatóban talál. A kiszolgáló rendszergazdájának felhasználónevét a Azure Portalban határozhatja meg.
 
-A kiszolgáló-rendszergazda felhasználó rendelkezik a következő jogosultságokkal: 
+A kiszolgáló-rendszergazda felhasználó rendelkezik a következő jogosultságokkal:
 
    KIJELÖLÉS, BESZÚRÁS, FRISSÍTÉS, TÖRLÉS, LÉTREHOZÁS, ELDOBÁS, ÚJRATÖLTÉS, FELDOLGOZÁS, HIVATKOZÁSOK, INDEX, ALTER, ADATBÁZISOK MEGJELENÍTÉSE, IDEIGLENES TÁBLÁK LÉTREHOZÁSA, TÁBLÁK ZÁROLÁSA, VÉGREHAJTÁS, REPLIKÁLÁSI SLAVE, REPLIKÁCIÓS ÜGYFÉL, NÉZET LÉTREHOZÁSA, NÉZET MEGJELENÍTÉSE, RUTIN LÉTREHOZÁSA, MÓDOSÍTÁS RUTIN, FELHASZNÁLÓ LÉTREHOZÁSA, ESEMÉNY, ESEMÉNYINDÍTÓ
 
-
-Azure Database for MySQL-kiszolgáló létrehozása után az első kiszolgálói rendszergazdai fiók használatával további felhasználókat hozhat létre, és rendszergazdai hozzáférést biztosíthat számukra. A kiszolgálói rendszergazdai fiókkal kevesebb jogosultsággal rendelkező felhasználó hozható létre, akik egyéni adatbázis-sémákkal rendelkeznek hozzáféréssel.
+Azure Database for MySQL-kiszolgáló létrehozása után az első kiszolgálói rendszergazdai fiók használatával több felhasználót is létrehozhat, és rendszergazdai hozzáférést biztosíthat számukra. A kiszolgálói rendszergazdai fiókkal kevesebb jogosultsággal rendelkező felhasználó hozható létre, akik egyéni adatbázis-sémákkal rendelkeznek hozzáféréssel.
 
 > [!NOTE]
 > A SUPER Privilege és a DBA szerepkör nem támogatott. Tekintse át a korlátozások című cikkben szereplő [jogosultságokat](concepts-limits.md#privileges--data-manipulation-support) , hogy megtudja, mi nem támogatott a szolgáltatásban.
 >
 > `validate_password` `caching_sha2_password` A szolgáltatás nem támogatja a jelszóhoz tartozó beépülő modulokat.
-
 
 ## <a name="to-create-a-database-with-a-non-admin-user-in-azure-database-for-mysql"></a>Adatbázis létrehozása nem rendszergazda felhasználóval Azure Database for MySQL
 
@@ -46,7 +44,7 @@ Azure Database for MySQL-kiszolgáló létrehozása után az első kiszolgálói
    Az adatbázis-kiszolgálóhoz való csatlakozáshoz szüksége van a teljes kiszolgálónévre és a rendszergazdai bejelentkezési hitelesítő adatokra. A kiszolgáló nevét és bejelentkezési adatait a kiszolgáló **Áttekintés** lapján vagy a Azure Portal **Tulajdonságok** lapján találhatja meg.
 
 2. Az adatbázis-kiszolgálóhoz való kapcsolódáshoz használja a rendszergazdai fiókot és a jelszót. Használja az előnyben részesített ügyfélprogramot, például a MySQL Workbench, a mysql.exe vagy a HeidiSQL.
-   
+
    Ha nem tudja, hogyan csatlakozhat, tekintse meg [az egykiszolgálós kapcsolat és lekérdezési információk összekapcsolását](./connect-workbench.md) és [a rugalmas kiszolgálóval való kapcsolódást és adatlekérdezést](./flexible-server/connect-workbench.md)ismertető témakört.
 
 3. Szerkessze és futtassa a következő SQL-kódot. Cserélje le a helyőrző értékét a `db_user` kívánt új felhasználónévre. Cserélje le a helyőrző értékét az `testdb` adatbázis nevére.
@@ -73,28 +71,29 @@ Azure Database for MySQL-kiszolgáló létrehozása után az első kiszolgálói
 
 5. Jelentkezzen be a kiszolgálóra, adja meg a kijelölt adatbázist, és használja az új felhasználónevet és jelszót. Ez a példa a MySQL parancssort jeleníti meg. Ha ezt a parancsot használja, a rendszer kérni fogja a felhasználó jelszavát. Használja a saját kiszolgáló nevét, az adatbázis nevét és a felhasználónevet.
 
-   # <a name="single-server"></a>[Önálló kiszolgáló](#tab/single-server)
+   ### <a name="single-server"></a>[Önálló kiszolgáló](#tab/single-server)
 
    ```azurecli-interactive
    mysql --host mydemoserver.mysql.database.azure.com --database testdb --user db_user@mydemoserver -p
    ```
-   # <a name="flexible-server"></a>[Rugalmas kiszolgáló](#tab/flexible-server)
+
+   ### <a name="flexible-server"></a>[Rugalmas kiszolgáló](#tab/flexible-server)
 
    ```azurecli-interactive
    mysql --host mydemoserver.mysql.database.azure.com --database testdb --user db_user -p
    ```
  ---
 
-## <a name="to-create-additional-admin-users-in-azure-database-for-mysql"></a>További rendszergazda felhasználók létrehozása Azure Database for MySQL
+## <a name="to-create-more-admin-users-in-azure-database-for-mysql"></a>Több rendszergazda felhasználó létrehozása Azure Database for MySQL
 
 1. Kérje le a kapcsolatfelvételi adatokat és a rendszergazda felhasználónevét.
    Az adatbázis-kiszolgálóhoz való csatlakozáshoz szüksége van a teljes kiszolgálónévre és a rendszergazdai bejelentkezési hitelesítő adatokra. A kiszolgáló nevét és bejelentkezési adatait a kiszolgáló **Áttekintés** lapján vagy a Azure Portal **Tulajdonságok** lapján találhatja meg.
 
 2. Az adatbázis-kiszolgálóhoz való kapcsolódáshoz használja a rendszergazdai fiókot és a jelszót. Használja az előnyben részesített ügyfélprogramot, például a MySQL Workbench, a mysql.exe vagy a HeidiSQL.
-   
+
    Ha nem tudja, hogyan csatlakozhat, tekintse meg a következőt: [a MySQL Workbench használata a kapcsolódáshoz és az adatlekérdezéshez](./connect-workbench.md).
 
-3. Szerkessze és futtassa a következő SQL-kódot. Cserélje le a helyőrző értékét az `new_master_user` új felhasználónevére. Ez a szintaxis megadja a felsorolt jogosultságokat az összes adatbázis-sémán ( *.* ) a felhasználó számára ( `new_master_user` ebben a példában).
+3. Szerkessze és futtassa a következő SQL-kódot. Cserélje le a helyőrző értékét az `new_master_user` új felhasználónevére. Ez a szintaxis megadja a felsorolt jogosultságokat az összes adatbázis-sémán (*.*) a felhasználó számára ( `new_master_user` ebben a példában).
 
    ```sql
    CREATE USER 'new_master_user'@'%' IDENTIFIED BY 'StrongPassword!';
@@ -119,7 +118,8 @@ Az összes Azure Database for MySQL-kiszolgáló egy "azure_superuser" nevű fel
 ## <a name="next-steps"></a>Következő lépések
 
 Nyissa meg a tűzfalat az új felhasználói gépek IP-címei számára, hogy a kapcsolódásuk lehetővé váljon:
-- [Tűzfalszabályok létrehozása és kezelése egyetlen kiszolgálón](howto-manage-firewall-using-portal.md) 
-- [ Tűzfalszabályok létrehozása és kezelése rugalmas kiszolgálón](flexible-server/how-to-connect-tls-ssl.md)
+
+* [Tűzfalszabályok létrehozása és kezelése egyetlen kiszolgálón](howto-manage-firewall-using-portal.md)
+* [Tűzfalszabályok létrehozása és kezelése rugalmas kiszolgálón](flexible-server/how-to-connect-tls-ssl.md)
 
 A felhasználói fiókok kezelésével kapcsolatos további információkért tekintse meg a MySQL termékdokumentációt a [felhasználói fiókok felügyeletéhez](https://dev.mysql.com/doc/refman/5.7/en/access-control.html), a [jogosultságok](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html) [megadásához](https://dev.mysql.com/doc/refman/5.7/en/grant.html)és a jogosultságokhoz.

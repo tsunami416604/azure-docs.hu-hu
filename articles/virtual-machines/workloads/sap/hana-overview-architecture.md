@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 01/04/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c06988bf9c3558f5ef82862bdbcd821dc42ca28a
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 5ec3500c124d3e4f8cb1b46445c28c6a64c93526
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97880987"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98195449"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>Mi az SAP HANA az Azure-ban (nagy méretű példányok)?
 
@@ -52,11 +52,11 @@ Ez a dokumentum az Azure-ban (nagyméretű példányok) SAP HANAt lefedő dokume
 
 A HANA nagyméretű példányok különböző dokumentumai a következő területeket fedik le:
 
-- [SAP HANA (nagyméretű példányok) áttekintése és architektúrája az Azure-ban](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [SAP HANA (nagyméretű példányok) infrastruktúrája és kapcsolódás az Azure-ban](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [SAP HANA (nagyméretű példányok) telepítése és konfigurálása az Azure-ban](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [SAP HANA (nagyméretű példányok) magas rendelkezésre állása és vész-helyreállítás az Azure-ban](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [SAP HANA (nagyméretű példányok) hibaelhárítás és monitorozás az Azure-ban](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [SAP HANA (nagyméretű példányok) áttekintése és architektúrája az Azure-ban](hana-overview-architecture.md)
+- [SAP HANA (nagyméretű példányok) infrastruktúrája és kapcsolódás az Azure-ban](hana-overview-infrastructure-connectivity.md)
+- [SAP HANA (nagyméretű példányok) telepítése és konfigurálása az Azure-ban](hana-installation.md)
+- [SAP HANA (nagyméretű példányok) magas rendelkezésre állása és vész-helyreállítás az Azure-ban](hana-overview-high-availability-disaster-recovery.md)
+- [SAP HANA (nagyméretű példányok) hibaelhárítás és monitorozás az Azure-ban](troubleshooting-monitoring.md)
 - [Magas rendelkezésre állás beállítása a SUSE-ben a STONITH használatával](./ha-setup-with-stonith.md)
 - [Az operációs rendszer biztonsági mentése és visszaállítása a 3. típusú bélyegzők II. típusához](./os-backup-type-ii-skus.md)
 - [Megtakarítás a SAP HANA nagyméretű példányaival Azure-foglalás segítségével](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md)

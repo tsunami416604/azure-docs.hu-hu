@@ -1,7 +1,7 @@
 ---
-title: Privát végpontok használata a beszédfelismerési szolgáltatással
+title: Privát végpontok használata a Speech Services használatával
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan használhatja a Speech Service-t az Azure Private link által biztosított privát végpontokkal
+description: Ismerje meg, hogyan használhatja a Speech Services szolgáltatást az Azure Private link által biztosított privát végpontokkal
 services: cognitive-services
 author: alexeyo26
 manager: nitinme
@@ -10,96 +10,89 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: alexeyo
-ms.openlocfilehash: d5822b6eeecfc61a5092519618ddfcaf88a625ae
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 61be4b45df94c902c0473b94a6dd83237c72da3c
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98018530"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196119"
 ---
-# <a name="use-speech-service-through-a-private-endpoint"></a>Beszédfelismerési szolgáltatás használata privát végponton keresztül
+# <a name="use-speech-services-through-a-private-endpoint"></a>A Speech Services használata privát végponton keresztül
 
-Az [Azure Private link](../../private-link/private-link-overview.md) segítségével [privát végponton](../../private-link/private-endpoint-overview.md)keresztül kapcsolódhat a szolgáltatásokhoz az Azure-ban.
-A privát végpontok egy magánhálózati IP-cím, amely csak egy adott [virtuális hálózaton](../../virtual-network/virtual-networks-overview.md) és alhálózaton belül érhető el.
+Az [Azure Private link](../../private-link/private-link-overview.md) használatával [privát végponton](../../private-link/private-endpoint-overview.md)keresztül kapcsolódhat a szolgáltatásokhoz az Azure-ban. A privát végpontok olyan magánhálózati IP-címek, amelyek csak egy adott [virtuális hálózaton](../../virtual-network/virtual-networks-overview.md) és alhálózaton belül érhetők el.
 
-Ez a cikk bemutatja, hogyan állíthat be és használhat privát és privát végpontokat az Azure kognitív Speech Services használatával.
+Ez a cikk bemutatja, hogyan állíthatja be és használhatja a privát és a privát végpontokat az Azure Cognitive Services Speech Services szolgáltatásával.
 
 > [!NOTE]
-> Ez a cikk ismerteti az Azure kognitív Speech Services szolgáltatással való privát kapcsolat beállításának és használatának sajátosságait. A továbblépés előtt tekintse át a [virtuális hálózatok Cognitive Services használatával történő használatát](../cognitive-services-virtual-networks.md)ismertető témakört.
+> A folytatás előtt tekintse át [a virtuális hálózatok Cognitive Services használatával történő használatát ismertető témakört](../cognitive-services-virtual-networks.md).
 
-A következő feladatok végrehajtásával használhatja a beszédfelismerési szolgáltatást egy privát végponton keresztül:
-
-1. [Beszédfelismerési erőforrás egyéni tartománynevének létrehozása](#create-a-custom-domain-name)
-2. [Privát végpont (ok) létrehozása és konfigurálása](#enable-private-endpoints)
-3. [Meglévő alkalmazások és megoldások módosítása](#use-speech-resource-with-custom-domain-name-and-private-endpoint-enabled)
-
-Ha később szeretné eltávolítani a privát végpontokat, de továbbra is használja a beszédfelismerési erőforrást, az [ebben a szakaszban](#use-speech-resource-with-custom-domain-name-without-private-endpoints)található feladatokat fogja végrehajtani.
+Ez a cikk azt is ismerteti [, Hogyan távolítható el később a privát végpontok, de továbbra is használhatja a beszédfelismerési erőforrást](#use-a-speech-resource-with-a-custom-domain-name-and-without-private-endpoints).
 
 ## <a name="create-a-custom-domain-name"></a>Egyéni tartománynév létrehozása
 
-A privát végpontokhoz [Cognitive Services egyéni altartomány neve](../cognitive-services-custom-subdomains.md)szükséges. Az alábbi útmutatást követve hozzon létre egyet a beszédfelismerési erőforráshoz.
+A magánhálózati végpontok [Egyéni altartománynevet igényelnek a Cognitive Serviceshoz](../cognitive-services-custom-subdomains.md). Az alábbi útmutatást követve hozzon létre egyet a beszédfelismerési erőforráshoz.
 
 > [!WARNING]
-> Egy egyéni tartománynévvel rendelkező beszédfelismerési erőforrás a beszédfelismerési szolgáltatással való kommunikációhoz más módszert használ.
-> Valószínűleg úgy kell beállítania az alkalmazás kódját, hogy mindkét [magánhálózati végpont](#use-speech-resource-with-custom-domain-name-and-private-endpoint-enabled) engedélyezve legyen, és [ **nem** érhető el a magánhálózati végpontok számára engedélyezett](#use-speech-resource-with-custom-domain-name-without-private-endpoints) helyzet.
+> Egy egyéni tartománynévvel rendelkező beszédfelismerési erőforrás a beszédfelismerési szolgáltatásokkal való kommunikációhoz más módszert használ. Előfordulhat, hogy mindkét forgatókönyv esetében módosítania kell az alkalmazás kódját: a [privát végpont engedélyezve](#use-a-speech-resource-with-a-custom-domain-name-and-a-private-endpoint-enabled) van, és [ *nem* engedélyezett a magánhálózati végpont](#use-a-speech-resource-with-a-custom-domain-name-and-without-private-endpoints).
 >
-> Ha egyéni tartománynevet engedélyez, a művelet [**nem vonható**](../cognitive-services-custom-subdomains.md#can-i-change-a-custom-domain-name)vissza. Az egyetlen lehetőség, hogy visszalépjen a [regionális névre](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) egy új beszédfelismerési erőforrás létrehozásához.
+> Ha egyéni tartománynevet engedélyez, a művelet [nem vonható](../cognitive-services-custom-subdomains.md#can-i-change-a-custom-domain-name)vissza. Az egyetlen lehetőség, hogy visszalépjen a [regionális névre](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) egy új beszédfelismerési erőforrás létrehozásához.
 >
-> Ha a beszédfelismerési erőforrás sok társított egyéni modellt és projektet használ a [Speech Studio](https://speech.microsoft.com/) használatával, javasoljuk **, hogy próbálja** meg a konfigurációt egy tesztelési erőforrással, mielőtt módosítaná az éles környezetben használt erőforrást.
+> Ha a beszédfelismerési erőforrás sok társított egyéni modellt és projektet tartalmaz a [Speech Studio](https://speech.microsoft.com/)használatával, javasoljuk, hogy próbálja meg a konfigurációt tesztelési erőforrással kipróbálni, mielőtt módosítaná az éles környezetben használt erőforrást.
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-Ha Azure Portal használatával szeretne egyéni tartománynevet létrehozni, kövesse az alábbi lépéseket:
+Ha egyéni tartománynevet szeretne létrehozni a Azure Portal használatával, kövesse az alábbi lépéseket:
 
-1. Lépjen [Azure Portal](https://portal.azure.com/) , és jelentkezzen be az Azure-fiókjába.
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com/), és jelentkezzen be Azure-fiókjába.
 1. Válassza ki a szükséges beszédfelismerési erőforrást.
-1. A bal oldali navigációs ablaktáblán, az **Erőforrás-kezelés** csoportban kattintson a **hálózatkezelés** elemre.
-1. A **tűzfalak és virtuális hálózatok** lapon kattintson az **Egyéni tartománynév létrehozása** lehetőségre. Megjelenik egy új jobb oldali panel, amely útmutatást ad az erőforrás egyedi egyéni altartományának létrehozásához.
-1. Az Egyéni tartománynév létrehozása panelen adja meg az Egyéni tartománynév részét. A teljes egyéni tartomány a következőképpen fog kinézni: `https://{your custom name}.cognitiveservices.azure.com` . 
-    **Miután létrehozta az egyéni tartománynevet, _nem_ módosítható! Olvassa el újra a fenti figyelmeztetési riasztást.** Miután megadta az egyéni tartománynevet, kattintson a **Save (Mentés**) gombra.
-1. A művelet befejezése után az **Erőforrás-kezelés** csoportban kattintson a **kulcsok és végpont** elemre. Erősítse meg, hogy az erőforrás új végpontjának neve így kezdődik:
-
-    `https://{your custom name}.cognitiveservices.azure.com`
+1. A bal oldali ablaktábla **Erőforrás-kezelés** csoportjában válassza a **hálózatkezelés** lehetőséget.
+1. A **tűzfalak és virtuális hálózatok** lapon válassza az **Egyéni tartománynév létrehozása** lehetőséget. Megjelenik egy új jobb oldali panel, amely útmutatást ad az erőforrás egyedi egyéni altartományának létrehozásához.
+1. Az **Egyéni tartománynév létrehozása** panelen adjon meg egy egyéni tartománynevet. A teljes egyéni tartomány a következőképpen fog kinézni: `https://{your custom name}.cognitiveservices.azure.com` . 
+    
+    Ne feledje, hogy az Egyéni tartománynév létrehozása után _nem_ módosítható.
+    
+    Miután megadta az egyéni tartománynevet, válassza a **Mentés** lehetőséget.
+1. A művelet befejezése után az **Erőforrás-kezelés** csoportban válassza a **kulcsok és végpont** lehetőséget. Győződjön meg arról, hogy az erőforrás új végpontjának neve így kezdődik: `https://{your custom name}.cognitiveservices.azure.com` .
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Ha egyéni tartománynevet szeretne létrehozni a PowerShell használatával, ellenőrizze, hogy a számítógépen a PowerShell 7. x vagy újabb verziója van-e a Azure PowerShell modul 5.1.0 vagy újabb verziójával. az eszközök verzióinak megtekintéséhez kövesse az alábbi lépéseket:
+Ha egyéni tartománynevet szeretne létrehozni a PowerShell használatával, ellenőrizze, hogy a számítógépen a PowerShell 7. x vagy újabb verziója van-e a Azure PowerShell modul 5.1.0 vagy újabb verziójával. Az eszközök verzióinak megtekintéséhez kövesse az alábbi lépéseket:
 
-1. A PowerShell-ablakban írja be a következőt:
+1. A PowerShell-ablakban adja meg a következőket:
 
     `$PSVersionTable`
 
-    Erősítse meg, hogy a PSVersion értéke nagyobb, mint 7. x. A PowerShell frissítéséhez kövesse a [PowerShell különböző verzióinak](/powershell/scripting/install/installing-powershell) a frissítéshez való telepítésének utasításait.
+    Győződjön meg arról, hogy az `PSVersion` érték 7. x vagy újabb. A PowerShell frissítéséhez kövesse a [PowerShell különböző verzióinak telepítésével](/powershell/scripting/install/installing-powershell)kapcsolatos utasításokat.
 
-1. A PowerShell-ablakban írja be a következőt:
+1. A PowerShell-ablakban adja meg a következőket:
 
     `Get-Module -ListAvailable Az`
 
-    Ha semmi nem jelenik meg, vagy ha Azure PowerShell modul verziója alacsonyabb, mint a 5.1.0, kövesse az [Azure PowerShell modul telepítése](/powershell/azure/install-Az-ps) a frissítéshez című témakör útmutatását.
+    Ha semmi sem jelenik meg, vagy ha a Azure PowerShell modul adott verziója korábbi, mint a 5.1.0, kövesse az [Azure PowerShell modul telepítése a](/powershell/azure/install-Az-ps) frissítéshez című témakör útmutatását.
 
 A folytatás előtt futtassa a parancsot `Connect-AzAccount` Az Azure-beli kapcsolatok létrehozásához.
 
-## <a name="verify-custom-domain-name-is-available"></a>Ellenőrizze, hogy az Egyéni tartománynév elérhető-e
+## <a name="verify-that-a-custom-domain-name-is-available"></a>Ellenőrizze, hogy van-e elérhető Egyéni tartománynév
 
-Győződjön meg arról, hogy a használni kívánt egyéni tartomány elérhető. Az alábbi lépéseket követve ellenőrizheti, hogy a tartomány elérhető-e a Cognitive Services REST API a [tartomány elérhetőségének ellenőrzése](/rest/api/cognitiveservices/accountmanagement/checkdomainavailability/checkdomainavailability) művelettel.
+Győződjön meg arról, hogy a használni kívánt egyéni tartomány elérhető. A következő kód ellenőrzi, hogy a tartomány elérhető-e a Cognitive Services REST API a [tartomány elérhetőségének ellenőrzése](/rest/api/cognitiveservices/accountmanagement/checkdomainavailability/checkdomainavailability) művelettel.
 
 > [!TIP]
-> Az alábbi kód **nem** fog működni Azure Cloud Shellban.
+> A következő kód *nem* fog működni Azure Cloud Shellban.
 
 ```azurepowershell
 $subId = "Your Azure subscription Id"
 $subdomainName = "custom domain name"
 
-# Select the Azure subscription that contains Speech resource.
+# Select the Azure subscription that contains the Speech resource.
 # You can skip this step if your Azure account has only one active subscription.
 Set-AzContext -SubscriptionId $subId
 
-# Prepare OAuth token to use in request to Cognitive Services REST API.
+# Prepare the OAuth token to use in the request to the Cognitive Services REST API.
 $Context = Get-AzContext
 $AccessToken = (Get-AzAccessToken -TenantId $Context.Tenant.Id).Token
 $token = ConvertTo-SecureString -String $AccessToken -AsPlainText -Force
 
-# Prepare and send the request to Cognitive Services REST API.
+# Prepare and send the request to the Cognitive Services REST API.
 $uri = "https://management.azure.com/subscriptions/" + $subId + `
     "/providers/Microsoft.CognitiveServices/checkDomainAvailability?api-version=2017-04-18"
 $body = @{
@@ -110,7 +103,7 @@ $jsonBody = $body | ConvertTo-Json
 Invoke-RestMethod -Method Post -Uri $uri -ContentType "application/json" -Authentication Bearer `
     -Token $token -Body $jsonBody | Format-List
 ```
-Ha a kívánt név elérhető, a következőhöz hasonló választ fog kapni:
+Ha a kívánt név elérhető, a következőhöz hasonló választ fog látni:
 ```azurepowershell
 isSubdomainAvailable : True
 reason               :
@@ -126,18 +119,17 @@ subdomainName        : my-custom-name
 ```
 ## <a name="create-your-custom-domain-name"></a>Egyéni tartománynév létrehozása
 
-A kiválasztott beszédfelismerési erőforrás egyéni tartománynevének engedélyezéséhez használja a [set-AzCognitiveServicesAccount](/powershell/module/az.cognitiveservices/set-azcognitiveservicesaccount) parancsmagot.
+Ha egyéni tartománynevet szeretne engedélyezni a kiválasztott beszédfelismerési erőforráshoz, használja a [set-AzCognitiveServicesAccount](/powershell/module/az.cognitiveservices/set-azcognitiveservicesaccount) parancsmagot.
 
 > [!WARNING]
-> Az alábbi kód sikeres futtatása után létre kell hoznia egy egyéni tartománynevet a beszédfelismerési erőforráshoz.
-> Ez a név **nem** módosítható. További információkat a fenti **Figyelmeztetési** riasztásban talál.
+> A következő kód sikeres futtatása után létre kell hoznia egy egyéni tartománynevet a beszédfelismerési erőforráshoz. Ne feledje, hogy ez a név *nem* módosítható.
 
 ```azurepowershell
 $resourceGroup = "Resource group name where Speech resource is located"
 $speechResourceName = "Your Speech resource name"
 $subdomainName = "custom domain name"
 
-# Select the Azure subscription that contains Speech resource.
+# Select the Azure subscription that contains the Speech resource.
 # You can skip this step if your Azure account has only one active subscription.
 $subId = "Your Azure subscription Id"
 Set-AzContext -SubscriptionId $subId
@@ -152,13 +144,13 @@ Set-AzCognitiveServicesAccount -ResourceGroupName $resourceGroup `
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-- Ebben a szakaszban az Azure CLI legújabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+Ebben a szakaszban az Azure CLI legújabb verziójára van szükség. Ha Azure Cloud Shell használ, a legújabb verzió már telepítve van.
 
-## <a name="verify-the-custom-domain-name-is-available"></a>Ellenőrizze, hogy az Egyéni tartománynév elérhető-e
+## <a name="verify-that-the-custom-domain-name-is-available"></a>Ellenőrizze, hogy az Egyéni tartománynév elérhető-e
 
-Győződjön meg arról, hogy a használni kívánt egyéni tartomány ingyenes-e. A [tartomány elérhetőségének ellenőrzését](/rest/api/cognitiveservices/accountmanagement/checkdomainavailability/checkdomainavailability) a Cognitive Services REST API fogjuk használni.
+Győződjön meg arról, hogy a használni kívánt egyéni tartomány ingyenes. Használja a [tartomány elérhetőségének ellenõrzése](/rest/api/cognitiveservices/accountmanagement/checkdomainavailability/checkdomainavailability) módszert a Cognitive Services REST API.
 
-Másolja az alábbi kódrészletet, szúrja be a kívánt egyéni tartománynevet, és mentse a fájlt `subdomain.json` .
+Másolja a következő kódrészletet, szúrja be a kívánt egyéni tartománynevet, és mentse a fájlt `subdomain.json` .
 
 ```json
 {
@@ -167,12 +159,12 @@ Másolja az alábbi kódrészletet, szúrja be a kívánt egyéni tartományneve
 }
 ```
 
-Másolja a fájlt a jelenlegi mappájába, vagy töltse fel Azure Cloud Shellba, és futtassa a következő parancsot. (Cserélje le az `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` Azure-előfizetés azonosítóját).
+Másolja a fájlt a jelenlegi mappájába, vagy töltse fel Azure Cloud Shellba, és futtassa a következő parancsot. Cserélje le a `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` értékét a saját Azure-előfizetése azonosítójára.
 
 ```azurecli-interactive
 az rest --method post --url "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.CognitiveServices/checkDomainAvailability?api-version=2017-04-18" --body @subdomain.json
 ```
-Ha a kívánt név elérhető, a következőhöz hasonló választ fog kapni:
+Ha a kívánt név elérhető, a következőhöz hasonló választ fog látni:
 ```azurecli
 {
   "isSubdomainAvailable": true,
@@ -191,30 +183,38 @@ Ha a név már használatban van, akkor a következő választ fogja látni:
   "type": null
 }
 ```
-## <a name="enable-custom-domain-name"></a>Egyéni tartománynév engedélyezése
+## <a name="enable-a-custom-domain-name"></a>Egyéni tartománynév engedélyezése
 
-Ha engedélyezni szeretné az egyéni tartománynevet a kiválasztott beszédfelismerési erőforráshoz, az [az cognitiveservices Account Update](/cli/azure/cognitiveservices/account#az_cognitiveservices_account_update) parancsot használjuk.
+Ha egyéni tartománynevet szeretne engedélyezni a kiválasztott beszédfelismerési erőforráshoz, használja az az [cognitiveservices Account Update](/cli/azure/cognitiveservices/account#az_cognitiveservices_account_update) parancsot.
 
-Válassza ki a beszédfelismerési erőforrást tartalmazó Azure-előfizetést. Ha az Azure-fiókja csak egy aktív előfizetéssel rendelkezik, akkor kihagyhatja ezt a lépést. (Cserélje le az `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` Azure-előfizetés azonosítóját).
+Válassza ki a beszédfelismerési erőforrást tartalmazó Azure-előfizetést. Ha az Azure-fiókja csak egy aktív előfizetéssel rendelkezik, akkor kihagyhatja ezt a lépést. Cserélje le a `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` értékét a saját Azure-előfizetése azonosítójára.
 ```azurecli-interactive
 az account set --subscription xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
-Állítsa be az egyéni tartománynevet a kiválasztott erőforrásra. Cserélje le a mintául szolgáló paramétereket a tényleges értékekre, és futtassa az alábbi parancsot.
+Állítsa be az egyéni tartománynevet a kiválasztott erőforrásra. Cserélje le a mintául szolgáló paramétereket a tényleges értékekre, és futtassa a következő parancsot.
 
 > [!WARNING]
-> Az alábbi parancs sikeres végrehajtása után létre kell hoznia egy egyéni tartománynevet a beszédfelismerési erőforráshoz. Ez a név **nem** módosítható. További információkat a fenti óvatossági riasztásban talál.
+> A következő parancs sikeres végrehajtása után létre kell hoznia egy egyéni tartománynevet a beszédfelismerési erőforráshoz. Ne feledje, hogy ez a név *nem* módosítható.
 
 ```azurecli
 az cognitiveservices account update --name my-speech-resource-name --resource-group my-resource-group-name --custom-domain my-custom-name
 ```
 
-**_
+***
 
 ## <a name="enable-private-endpoints"></a>Privát végpontok engedélyezése
 
-Javasoljuk, hogy a virtuális hálózathoz csatolt [magánhálózati DNS-zónát](../../dns/private-dns-overview.md) a privát végpontokhoz szükséges frissítésekkel használja, amelyeket alapértelmezés szerint a létesítési folyamat során hozunk létre. Ha azonban a saját DNS-kiszolgálóját használja, előfordulhat, hogy módosítania kell a DNS-konfigurációt is, ahogy azt az alábbi, a _privát végpontok DNS-_ je mutatja. Döntse el, hogy a DNS-stratégia esetében a rendszer a privát végpont (ok) kiépítés *előtt* egy éles beszédfelismerési erőforrást, és tesztelje a DNS-módosításokat, különösen akkor, ha a saját DNS-kiszolgálóját használja.
+Javasoljuk, hogy a virtuális hálózathoz csatolt [magánhálózati DNS-zónát](../../dns/private-dns-overview.md) a magánhálózati végpontokhoz szükséges frissítésekkel használja. A kiépítési folyamat során alapértelmezés szerint létre kell hoznia egy privát DNS-zónát. Ha saját DNS-kiszolgálót használ, lehetséges, hogy módosítania kell a DNS-konfigurációt is. 
 
-A következő cikkek egyikével hozzon létre privát végpontot (ka) t. A cikkek egy webalkalmazást használnak példaként, amely lehetővé teszi a magánhálózati végpontok használatát. Ezeket a paramétereket a cikkben szereplők helyett fogja használni:
+Hozzon létre egy DNS-stratégiát, *mielőtt* kiépíti a saját végpontokat egy éles beszédfelismerési erőforráshoz. És tesztelje a DNS-módosításokat, különösen akkor, ha a saját DNS-kiszolgálóját használja.
+
+Privát végpontok létrehozásához használja az alábbi cikkek egyikét. Ezek a cikkek egy webalkalmazást használnak példaként, amely lehetővé teszi a magánhálózati végpontok használatát.
+
+- [Hozzon létre egy privát végpontot a Azure Portal használatával](../../private-link/create-private-endpoint-portal.md)
+- [Privát végpont létrehozása Azure PowerShell használatával](../../private-link/create-private-endpoint-powershell.md)
+- [Privát végpont létrehozása az Azure CLI használatával](../../private-link/create-private-endpoint-cli.md)
+
+Ezeket a paramétereket a kiválasztott cikkben szereplő paraméterek helyett használja:
 
 | Beállítás             | Érték                                    |
 |---------------------|------------------------------------------|
@@ -222,53 +222,51 @@ A következő cikkek egyikével hozzon létre privát végpontot (ka) t. A cikke
 | Erőforrás            | **\<your-speech-resource-name>**         |
 | Célzott alerőforrás | **fiókjával**                              |
 
-- [Privát végpont létrehozása az Azure Portal segítségével](../../private-link/create-private-endpoint-portal.md)
-- [Privát végpont létrehozása Azure PowerShell használatával](../../private-link/create-private-endpoint-powershell.md)
-- [Privát végpont létrehozása az Azure CLI-vel](../../private-link/create-private-endpoint-cli.md)
-
-**DNS privát végpontokhoz:** Tekintse át a [Cognitive Services-erőforrásokban lévő magánhálózati végpontok](../cognitive-services-virtual-networks.md#dns-changes-for-private-endpoints)általános alapelveit. Ezután ellenőrizze, hogy a DNS-konfiguráció megfelelően működik-e az alábbi ellenőrzések végrehajtásával:
+**DNS privát végpontokhoz:** Tekintse át a [Cognitive Services-erőforrásokban lévő magánhálózati végpontok](../cognitive-services-virtual-networks.md#dns-changes-for-private-endpoints)általános alapelveit. Ezután ellenőrizze, hogy a DNS-konfiguráció megfelelően működik-e az alábbi szakaszokban ismertetett ellenőrzések elvégzésével.
 
 ### <a name="resolve-dns-from-the-virtual-network"></a>DNS feloldása a virtuális hálózatról
 
-Ezt az ellenőrzési **követelményt kötelező megadni**.
+Ezt az ellenőrzési *követelményt kötelező megadni*.
 
-Az alábbi lépéseket követve tesztelheti az egyéni DNS-bejegyzést a virtuális hálózatból.
+Az alábbi lépéseket követve tesztelheti az egyéni DNS-bejegyzést a virtuális hálózatról:
 
 1. Jelentkezzen be a virtuális hálózatban található virtuális gépre, amelyhez csatolta a privát végpontot. 
-1. Nyissa meg a Windows parancssort vagy a bash rendszerhéját, futtassa `nslookup` és erősítse meg, hogy sikeresen feloldja az erőforrás egyéni tartománynevét.
+1. Nyisson meg egy Windows-parancssort vagy egy bash-rendszerhéjat, futtassa a parancsot `nslookup` , és győződjön meg róla, hogy sikeresen feloldotta az erőforrás egyéni tartománynevét.
 
-```dos
-C:\>nslookup my-private-link-speech.cognitiveservices.azure.com
-Server:  UnKnown
-Address:  168.63.129.16
+   ```dos
+   C:\>nslookup my-private-link-speech.cognitiveservices.azure.com
+   Server:  UnKnown
+   Address:  168.63.129.16
 
-Non-authoritative answer:
-Name:    my-private-link-speech.privatelink.cognitiveservices.azure.com
-Address:  172.28.0.10
-Aliases:  my-private-link-speech.cognitiveservices.azure.com
-```
+   Non-authoritative answer:
+   Name:    my-private-link-speech.privatelink.cognitiveservices.azure.com
+   Address:  172.28.0.10
+   Aliases:  my-private-link-speech.cognitiveservices.azure.com
+   ```
 
-3. Győződjön meg arról, hogy az IP-cím megegyezik a saját végpontjának IP-címével.
+1. Győződjön meg arról, hogy az IP-cím megegyezik a saját végpontjának IP-címével.
 
 ### <a name="resolve-dns-from-other-networks"></a>DNS feloldása más hálózatokból
 
-Csak akkor hajtsa végre ezt az ellenőrzést, ha a privát végponton engedélyezve lévő beszédfelismerési erőforrást "hibrid" módban szeretné használni, ahol az erőforrás **hálózatkezelés** szakaszában engedélyezte a **minden hálózat** vagy a **kiválasztott hálózatok és a magánhálózati végpontok** hozzáférési lehetőséget. Ha úgy tervezi, hogy csak egy privát végponton keresztül fér hozzá az erőforráshoz, akkor kihagyhatja ezt a szakaszt.
+Ezt az ellenőrzés csak akkor hajtsa végre, ha az erőforrás **hálózatkezelés** szakaszában engedélyezte a **minden hálózat** vagy a **kiválasztott hálózatok és a magánhálózati végpontok** hozzáférési lehetőséget. 
 
-1. Jelentkezzen be egy olyan számítógépre, amely egy, az erőforrás elérésére jogosult hálózathoz csatlakozik.
-2. Nyissa meg a Windows parancssort vagy a bash rendszerhéját, futtassa `nslookup` és erősítse meg, hogy sikeresen feloldja az erőforrás egyéni tartománynevét.
+Ha azt tervezi, hogy csak privát végpont használatával szeretné elérni az erőforrást, akkor kihagyhatja ezt a szakaszt.
 
-```dos
-C:\>nslookup my-private-link-speech.cognitiveservices.azure.com
-Server:  UnKnown
-Address:  fe80::1
+1. Jelentkezzen be egy olyan számítógépre, amely egy olyan hálózathoz csatlakozik, amely jogosult az erőforrás elérésére.
+2. Nyisson meg egy Windows-parancssort vagy bash-rendszerhéjt, futtassa a parancsot `nslookup` , és győződjön meg róla, hogy sikeresen feloldotta az erőforrás egyéni tartománynevét.
 
-Non-authoritative answer:
-Name:    vnetproxyv1-weu-prod.westeurope.cloudapp.azure.com
-Address:  13.69.67.71
-Aliases:  my-private-link-speech.cognitiveservices.azure.com
-          my-private-link-speech.privatelink.cognitiveservices.azure.com
-          westeurope.prod.vnet.cog.trafficmanager.net
-```
+   ```dos
+   C:\>nslookup my-private-link-speech.cognitiveservices.azure.com
+   Server:  UnKnown
+   Address:  fe80::1
+
+   Non-authoritative answer:
+   Name:    vnetproxyv1-weu-prod.westeurope.cloudapp.azure.com
+   Address:  13.69.67.71
+   Aliases:  my-private-link-speech.cognitiveservices.azure.com
+             my-private-link-speech.privatelink.cognitiveservices.azure.com
+             westeurope.prod.vnet.cog.trafficmanager.net
+   ```
 
 3. Győződjön meg arról, hogy az IP-cím megegyezik a saját végpontjának IP-címével.
 
@@ -277,141 +275,144 @@ Aliases:  my-private-link-speech.cognitiveservices.azure.com
 
 ## <a name="adjust-existing-applications-and-solutions"></a>Meglévő alkalmazások és megoldások módosítása
 
-Egy egyéni tartománnyal rendelkező beszédfelismerési erőforrás a beszédfelismerési szolgáltatásokkal való kommunikációhoz más módszert használ. Ez igaz az egyéni tartományon keresztül engedélyezett beszédfelismerési erőforrásokra, valamint privát végpontok nélkül és anélkül is. Az ebben a szakaszban szereplő információk mindkét forgatókönyvre érvényesek.
+Egy egyéni tartománnyal rendelkező beszédfelismerési erőforrás a beszédfelismerési szolgáltatásokkal való kommunikációhoz más módszert használ. Ez egy egyéni tartományon alapuló beszédfelismerési erőforrás esetében érvényes, amely magán-végpontokkal és anélkül is használható. Az ebben a szakaszban szereplő információk mindkét forgatókönyvre érvényesek.
 
-### <a name="use-speech-resource-with-custom-domain-name-and-private-endpoint-enabled"></a>Egyéni tartománynévvel és privát végponttal rendelkező beszédfelismerési erőforrás használata
+### <a name="use-a-speech-resource-with-a-custom-domain-name-and-a-private-endpoint-enabled"></a>Egyéni tartománynévvel és egy privát végponttal rendelkező beszédfelismerési erőforrás használata
 
-Egy egyéni tartománynevet és privát végpontot használó beszédfelismerési erőforrás a beszédfelismerési szolgáltatásokkal való kommunikációhoz más módszert használ. Ez a szakasz azt ismerteti, hogyan használható az adott erőforrás a Speech Services REST API és a [SPEECH SDK](speech-sdk.md)használatával.
+Egy egyéni tartománynévvel és egy privát végponttal rendelkező beszédfelismerési erőforrás a beszédfelismerési szolgáltatásokkal való kommunikációhoz eltérő módon működik. Ez a szakasz azt ismerteti, hogyan használható egy ilyen erőforrás a Speech Services REST API-kkal és a [SPEECH SDK](speech-sdk.md)-val.
 
 > [!NOTE]
-> Vegye figyelembe, hogy a saját végpontok nélküli beszédfelismerési erőforrás, de az **Egyéni tartománynév** engedélyezve is speciális módszert nyújt a beszédfelismerési szolgáltatásokkal való interakcióra, de ez a módszer eltér a privát végpontok által engedélyezett beszédfelismerési erőforrás forgatókönyvének. Ha van ilyen erőforrása (tegyük fel, hogy rendelkezik egy privát végpontokkal rendelkező erőforrással, de úgy döntött, hogy eltávolítja őket), győződjön meg arról, hogy ismeri a [levelező szakaszt](#use-speech-resource-with-custom-domain-name-without-private-endpoints).
+> A saját végpontok nélküli beszédfelismerési erőforrás, de az Egyéni tartománynév engedélyezve is különleges módszert nyújt a beszédfelismerési szolgáltatásokkal való interakcióra. Ez a módszer különbözik a privát végpontok által engedélyezett beszédfelismerési erőforrás forgatókönyvtől. Ha van ilyen erőforrása (például ha van egy olyan erőforrása, amely privát végpontokkal rendelkezik, de azután úgy döntött, hogy eltávolítja őket), tekintse meg a [beszédfelismerési erőforrás használata egyéni tartománynévvel és privát végpontok nélkül](#use-a-speech-resource-with-a-custom-domain-name-and-without-private-endpoints)című szakaszt.
 
-#### <a name="speech-resource-with-custom-domain-name-and-private-endpoint-usage-with-rest-api"></a>Beszédfelismerési erőforrás egyéni tartománynévvel és privát végponttal. Használat REST API
+#### <a name="speech-resource-with-a-custom-domain-name-and-a-private-endpoint-usage-with-the-rest-apis"></a>Beszédfelismerési erőforrás egyéni tartománynévvel és privát végponttal: használat a REST API-kkal
 
-`my-private-link-speech.cognitiveservices.azure.com`Ebben a szakaszban a példaként használt Speech Resource DNS-nevet (egyéni tartományt) fogjuk használni.
+`my-private-link-speech.cognitiveservices.azure.com`Ehhez a szakaszhoz példaként használjuk a beszédfelismerési erőforrás DNS-nevét (egyéni tartomány).
 
-##### <a name="note-on-speech-services-rest-api"></a>Megjegyzés a Speech Services REST API
+A beszédfelismerési szolgáltatások REST API-kkal rendelkeznek a [beszédfelismerés](rest-speech-to-text.md) és a [szöveg](rest-text-to-speech.md)közötti kommunikációhoz. Vegye figyelembe az alábbi információkat a privát végpontok számára engedélyezett forgatókönyvhöz.
 
-A Speech Services REST API a [beszéd-szöveg](rest-speech-to-text.md) és a [szöveg – beszéd kommunikációhoz](rest-text-to-speech.md). Az alábbiakat kell figyelembe venni a privát végpontok számára engedélyezett forgatókönyv esetében.
-
-A beszédfelismerési szöveg két különböző REST API-val rendelkezik. Az egyes API-k eltérő célokat szolgálnak, különböző végpontokat használnak, és más megközelítést igényelnek, amikor a privát végpontok számára engedélyezett forgatókönyvben használják a Singet.
+A beszédfelismerési szöveg két REST API-val rendelkezik. Az egyes API-k eltérő célokat szolgálnak, különböző végpontokat használnak, és más megközelítést igényelnek, ha a privát végpontok használatára képes forgatókönyvben használják.
 
 A beszéd – szöveg REST API-k a következők:
-- A [beszédfelismerés és a szöveg közötti REST API v 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) használatos a [kötegelt átíráshoz](batch-transcription.md) és a [Custom Speechhoz](custom-speech-overview.md). a v 3.0 a [v 2.0 utódja](/azure/cognitive-services/speech-service/migrate-v2-to-v3).
-- Az OnLine átíráshoz a [rövid hangra vonatkozó beszéd-szöveg REST API](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) használható. 
+- [Beszéd – szöveg REST API v 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30), amely [kötegelt átíráshoz](batch-transcription.md) és [Custom Speechhoz](custom-speech-overview.md)használható. a v 3.0 a [v 2.0 utódja](/azure/cognitive-services/speech-service/migrate-v2-to-v3)
+- [Beszéd-szöveg REST API rövid hanghoz](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio), amely online átíráshoz használható 
 
-A rövid hang-és szöveg-REST API beszéd típusú, a privát végpont forgatókönyvben a beszéd és a szöveg közötti REST API használata a jelen cikk későbbi részében ismertetett [SPEECH SDK-esettel](#speech-resource-with-custom-domain-name-and-private-endpoint-usage-with-speech-sdk) azonos és azzal egyenértékű. 
+A beszéd-szöveg REST API rövid hangra való használata, valamint a privát végpont forgatókönyvben szereplő szöveg-beszéd REST API megegyeznek. Ez megegyezik a cikk későbbi részében ismertetett [SPEECH SDK-esettel](#speech-resource-with-a-custom-domain-name-and-a-private-endpoint-usage-with-the-speech-sdk) . 
 
-A beszéd – szöveg REST API v 3.0 különböző végpontokat használ, így a privát végpontok számára engedélyezett forgatókönyvhöz eltérő megközelítést kell alkalmazni.
+A beszéd – szöveg REST API a v 3.0 különböző végpontokat használ, ezért eltérő megközelítést igényel a privát végpontok számára engedélyezett forgatókönyvhöz.
 
-Mindkét esetet a következő alszakaszokban ismertetjük.
-
+A következő alszakaszok mindkét esetet leírják.
 
 ##### <a name="speech-to-text-rest-api-v30"></a>Beszéd – szöveg REST API v 3.0
 
-A beszédfelismerési erőforrások általában [Cognitive Services regionális végpontokat](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) használnak a [beszéd – szöveg REST API v 3.0-](rest-speech-to-text.md#speech-to-text-rest-api-v30)val való kommunikációhoz. Ezek az erőforrások a következő elnevezési formátummal rendelkeznek: <p/>`{region}.api.cognitive.microsoft.com`
+A beszédfelismerési erőforrások általában [Cognitive Services regionális végpontokat](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) használnak a [beszéd – szöveg REST API v 3.0-](rest-speech-to-text.md#speech-to-text-rest-api-v30)val való kommunikációhoz. Ezek az erőforrások a következő elnevezési formátummal rendelkeznek: <p/>`{region}.api.cognitive.microsoft.com`.
 
 Ez egy példa a kérelem URL-címére:
 
 ```http
 https://westeurope.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions
 ```
-Miután engedélyezte az egyéni tartományt egy beszédfelismerési erőforráshoz (amely a privát végpontokhoz szükséges), az adott erőforrás a következő DNS-nevet fogja használni az alapszintű REST API végponthoz: <p/>`{your custom name}.cognitiveservices.azure.com`
+Miután engedélyezte az egyéni tartományt egy beszédfelismerési erőforráshoz (amely a privát végpontokhoz szükséges), az adott erőforrás a következő DNS-nevet fogja használni az alapszintű REST API végponthoz: <p/>`{your custom name}.cognitiveservices.azure.com`.
 
-Ez azt jelenti, hogy a példában a REST API végpont neve a következő lesz: <p/>`my-private-link-speech.cognitiveservices.azure.com`
+Ez azt jelenti, hogy a példában a REST API végpont neve a következő lesz: <p/>`my-private-link-speech.cognitiveservices.azure.com`.
 
-A fenti minta-kérelem URL-címét át kell alakítani a következőre:
+A minta kérés URL-címét át kell alakítani a következőre:
 ```http
 https://my-private-link-speech.cognitiveservices.azure.com/speechtotext/v3.0/transcriptions
 ```
-Az URL-címnek elérhetőnek kell lennie a virtuális hálózatról a csatolt privát végponttal (a [megfelelő DNS-feloldással](#resolve-dns-from-the virtual-network)).
+Az URL-címnek elérhetőnek kell lennie a virtuális hálózatról a csatolt privát végponttal (a [megfelelő DNS-feloldással](#resolve-dns-from-the-virtual-network)).
 
-A beszédfelismerési erőforrások egyéni tartománynevének engedélyezése után általában az állomásnév minden kérelem URL-címére lesz lecserélve az új egyéni tartomány állomásnévvel. A kérelem összes többi része (például a `/speechtotext/v3.0/transcriptions` fenti példában szereplő útvonal) változatlan marad.
+Miután engedélyezte a beszédfelismerési erőforrás egyéni tartománynevét, a rendszer általában az összes kérelem URL-címére cseréli az állomásnevet az új egyéni tartományi állomásnévvel. A kérelem összes többi része (például a `/speechtotext/v3.0/transcriptions` korábbi példában található elérési út) változatlan marad.
 
 > [!TIP]
-> Néhány ügyfél olyan alkalmazásokat fejlesztett ki, amelyek a területi végpont DNS-neve régió részét használják (például a kérés küldéséhez az adott Azure-régióban üzembe helyezett Speech-erőforráshoz).
+> Egyes ügyfelek olyan alkalmazásokat fejlesztenek, amelyek a regionális végpont DNS-neve régió részét használják (például a kérés küldéséhez az adott Azure-régióban üzembe helyezett Speech-erőforráshoz).
 >
-> A beszédfelismerési erőforrás egyéni tartományneve **nem** tartalmaz információt arról a régióról, ahol az erőforrás telepítve van. Így a fent ismertetett alkalmazás-logika **nem** fog működni, és módosítani kell.
+> A beszédfelismerési erőforrások egyéni tartománya *nem* tartalmaz információt arról a régióról, ahol az erőforrás telepítve van. Így a korábban ismertetett alkalmazás-logika *nem* fog működni, és módosítani kell.
 
 ##### <a name="speech-to-text-rest-api-for-short-audio-and-text-to-speech-rest-api"></a>Beszéd-szöveg REST API rövid hang-és szöveg-beszéd REST API
 
-A rövid hang-és [szöveg-beszéd](rest-text-to-speech.md) típusú [REST API a beszéd-szöveg](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) REST API kétféle végpontot használhat:
+A [rövid hanganyaghoz](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) és a [szöveg-beszéd Rest APIhoz](rest-text-to-speech.md) REST API két típusú végpontot használhat:
 - [Cognitive Services regionális végpontok](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) , amelyek a Cognitive Services REST API való kommunikációhoz szükségesek az engedélyezési jogkivonat beszerzéséhez
 - Speciális végpontok minden egyéb művelethez
 
-A speciális végpontok részletes leírását, valamint azt, hogy az URL-cím Hogyan alakítható át egy privát végponton engedélyezett beszédfelismerési erőforráshoz [, a "](#general-principle) használat a Speech SDK-val" című szakaszban olvasható. Az SDK-val kapcsolatban ismertetett alapelv vonatkozik a beszéd – szöveg 1.0-s verzióra és a szövegről beszédre REST API.
+A speciális végpontok részletes leírását, valamint azt, hogy az URL-cím Hogyan alakítható át egy privát végponttal rendelkező Speech-erőforrásra, a Speech SDK használatáról szóló [szakasz](#general-principles) tartalmazza. Az SDK-val kapcsolatban ismertetett alapelv vonatkozik a beszéd – szöveg REST API v 1.0 és a szöveg – beszéd REST APIra.
 
-Ismerkedjen meg az előző bekezdésben említett alszakaszban található anyagokkal, és tekintse meg a következő példát. (A példa szöveg-beszéd REST APIt ír elő; a rövid hanghoz való beszéd-szöveg REST API használata teljesen egyenértékű)
+Ismerkedjen meg az előző bekezdésben említett alszakaszban található anyagokkal, és tekintse meg a következő példát. A példa a szöveg-beszéd REST API ismerteti. A rövid hanghoz tartozó beszéd-szöveg REST API használata teljesen egyenértékű.
 
 > [!NOTE]
-> Ha **beszéd – szöveg Rest APIt használ a rövid hanghoz** a privát végponti forgatókönyvekben, használjon a [](rest-speech-to-text.md#request-headers) `Authorization` [fejlécen](rest-speech-to-text.md#request-headers)átadott engedélyezési jogkivonatot. A Speech előfizetés kulcsának a fejlécen keresztüli speciális végpontra való átadása `Ocp-Apim-Subscription-Key` **nem** fog működni, és a 401-es hibát állítja elő.
+> Ha a rövid hanghoz tartozó beszéd-szöveg REST API a privát végponti forgatókönyvekben, használjon a fejlécen [átadott](rest-speech-to-text.md#request-headers) engedélyezési jogkivonatot `Authorization` [](rest-speech-to-text.md#request-headers). A beszéd előfizetési kulcsának a fejlécen keresztüli speciális végpontra való átadása `Ocp-Apim-Subscription-Key` *nem* fog működni, és a 401-es hibát állítja elő.
 
-**Szöveg-beszéd REST API használati példa.**
+**Szöveg-beszéd REST API használati példa**
 
-A Nyugat-európai minta Azure-régióként és `my-private-link-speech.cognitiveservices.azure.com` a beszédfelismerési erőforrás DNS-neve (egyéni tartomány) használatával fogunk használni. A `my-private-link-speech.cognitiveservices.azure.com` példánkban szereplő Egyéni tartománynév a Nyugat-európai régióban létrehozott beszédfelismerési erőforráshoz tartozik.
+Nyugat-Európát példaként használjuk Azure-régióként és példaként `my-private-link-speech.cognitiveservices.azure.com` a beszédfelismerési erőforrás DNS-neveként (egyéni tartomány). A példánkban szereplő Egyéni tartománynév `my-private-link-speech.cognitiveservices.azure.com` a Nyugat-európai régióban létrehozott beszédfelismerési erőforráshoz tartozik.
 
-A régióban támogatott hangok listájának lekéréséhez a következő két műveletet kell végrehajtania:
+A régióban támogatott hangok listájának beszerzéséhez hajtsa végre a következő két műveletet:
 
 - Engedélyezési jogkivonat beszerzése:
-```http
-https://westeurope.api.cognitive.microsoft.com/sts/v1.0/issuetoken
-```
+  ```http
+  https://westeurope.api.cognitive.microsoft.com/sts/v1.0/issuetoken
+  ```
 - A token használatával szerezze be a hangok listáját:
-```http
-https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list
-```
-(További részletek a [szöveg és a beszéd REST API dokumentációjában](rest-text-to-speech.md)található lépéseknél)
+  ```http
+  https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list
+  ```
+A [szöveg-beszéd REST API dokumentációjának](rest-text-to-speech.md)előző lépéseivel kapcsolatban lásd a további részleteket.
 
-Ahhoz, hogy a titkos végponton engedélyezve legyen a beszédfelismerési erőforrás, módosítani kell a végpont URL-címeit ugyanahhoz a műveleti sorszámhoz. Ugyanez a folyamat a következőhöz hasonlóan fog kinézni:
-- Engedélyezési jogkivonat beszerzése a használatával
-```http
-https://my-private-link-speech.cognitiveservices.azure.com/v1.0/issuetoken
-```
-(lásd a fenti, [beszéd – szöveg REST API v 3.0](#speech-to-text-rest-api-v30) alszakaszának részletes magyarázatát)
-- A beszerzett jogkivonat használata a Voices listájának lekérése
-```http
-https://my-private-link-speech.cognitiveservices.azure.com/tts/cognitiveservices/voices/list
-```
-(lásd az alábbi részletes magyarázatot: "a Speech SDK használata" című szakasz [általános elv](#general-principle) alszakasza)
+A magánhálózati végpontok számára engedélyezett beszédfelismerési erőforrás esetében módosítani kell az ugyanahhoz a műveleti sorozathoz tartozó végponti URL-címeket. Ugyanez a folyamat a következőhöz hasonlóan fog kinézni:
 
-#### <a name="speech-resource-with-custom-domain-name-and-private-endpoint-usage-with-speech-sdk"></a>Beszédfelismerési erőforrás egyéni tartománynévvel és privát végponttal. Használat a Speech SDK-val
+- Engedélyezési jogkivonat beszerzése:
+  ```http
+  https://my-private-link-speech.cognitiveservices.azure.com/v1.0/issuetoken
+  ```
+  Tekintse meg a korábbi [beszéd – szöveg REST API v 3.0](#speech-to-text-rest-api-v30) alszakasz részletes magyarázatát.
 
-A Speech SDK és az Egyéni tartománynév, valamint a privát végpontok által engedélyezett beszédfelismerési erőforrásokkal az alkalmazás kódjának felülvizsgálata és valószínű módosítása szükséges.
+- A beszerzett jogkivonat használatával szerezze be a hangok listáját:
+  ```http
+  https://my-private-link-speech.cognitiveservices.azure.com/tts/cognitiveservices/voices/list
+  ```
+  Tekintse meg a Speech SDK [általános alapelvek](#general-principles) alszakaszának részletes ismertetését.
 
-`my-private-link-speech.cognitiveservices.azure.com`Ebben a szakaszban a példaként használt Speech Resource DNS-nevet (egyéni tartományt) fogjuk használni.
+#### <a name="speech-resource-with-a-custom-domain-name-and-a-private-endpoint-usage-with-the-speech-sdk"></a>Beszédfelismerési erőforrás egyéni tartománynévvel és privát végponttal: használat a Speech SDK-val
 
-##### <a name="general-principle"></a>Általános elv
+Ha a Speech SDK-t egyéni tartománynévvel és privát végponttal rendelkező beszédfelismerési erőforrásokkal szeretné használni, érdemes áttekintenie és valószínűleg módosítania az alkalmazás kódját.
 
-Általában SDK-forgatókönyvekben (és a szöveg-beszéd REST API forgatókönyvekben) a beszédfelismerési erőforrások a különböző szolgáltatási ajánlatok dedikált regionális végpontját használják. A végpontok DNS-nevének formátuma a következő: </p>`{region}.{speech service offering}.speech.microsoft.com`
+`my-private-link-speech.cognitiveservices.azure.com`Ehhez a szakaszhoz példaként használjuk a beszédfelismerési erőforrás DNS-nevét (egyéni tartomány).
 
-Példa: </p>`westeurope.stt.speech.microsoft.com`
+##### <a name="general-principles"></a>Általános alapelvek
 
-A régió összes lehetséges értéke (a DNS-név első eleme) [itt](regions.md) látható az alábbi táblázat a Speech Services-ajánlat lehetséges értékét mutatja (a DNS-név második eleme):
+Általában SDK-forgatókönyvekben (valamint a szöveg-beszéd REST API forgatókönyvekben) a beszédfelismerési erőforrások a különböző szolgáltatási ajánlatok dedikált regionális végpontját használják. A végpontok DNS-nevének formátuma a következő:
 
-| DNS-név értéke | Speech Services-ajánlat                                    |
+`{region}.{speech service offering}.speech.microsoft.com`
+
+Példa a DNS-névre:
+
+`westeurope.stt.speech.microsoft.com`
+
+A régió összes lehetséges értéke (a DNS-név első eleme) szerepel a [beszédfelismerési szolgáltatás által támogatott régiókban](regions.md). A következő táblázat a Speech Services-ajánlat lehetséges értékeit mutatja be (a DNS-név második eleme):
+
+| DNS-név értéke | Beszédfelismerési szolgáltatás ajánlata                                    |
 |----------------|-------------------------------------------------------------|
 | `commands`     | [Custom Commands](custom-commands.md)                       |
 | `convai`       | [Beszélgetés átirata](conversation-transcription.md) |
 | `s2s`          | [Speech Translation](speech-translation.md)                 |
-| `stt`          | [Diktálás](speech-to-text.md)                         |
-| `tts`          | [Szövegfelolvasás](text-to-speech.md)                         |
+| `stt`          | [Beszéd – szöveg](speech-to-text.md)                         |
+| `tts`          | [Szöveg – beszéd](text-to-speech.md)                         |
 | `voice`        | [Egyéni hang](how-to-custom-voice.md)                      |
 
-Így a fenti példa ( `westeurope.stt.speech.microsoft.com` ) a Nyugat-Európában a beszéd-szöveg végpontot jelenti.
+Így a korábbi példa ( `westeurope.stt.speech.microsoft.com` ) a Nyugat-Európában található beszéd-szöveg végpontot jelenti.
 
-A privát végpontok számára engedélyezett végpontok egy speciális proxyn keresztül kommunikálnak a Speech Services szolgáltatással, és a **végponti kapcsolatok URL-címeinek módosítására van** szükség. 
+A privát végpontok számára engedélyezett végpontok egy speciális proxyn keresztül kommunikálnak a Speech Services szolgáltatással. Emiatt *módosítania kell a végponti kapcsolatok URL-címeit*. 
 
 A "standard" végpont URL-címe A következőre hasonlít: <p/>`{region}.{speech service offering}.speech.microsoft.com/{URL path}`
 
 A privát végpont URL-címe A következőre hasonlít: <p/>`{your custom name}.cognitiveservices.azure.com/{speech service offering}/{URL path}`
 
-**1. példa.** Az alkalmazás a következő URL-cím használatával kommunikál (a beszédfelismerést az USA angol nyelvű alapmodelljével Nyugat-Európában):
+**1. példa.** Egy alkalmazás a következő URL-cím használatával kommunikál (a beszédfelismerés az USA angol nyelvű alapmodelljével Nyugat-Európában):
 
 ```
 wss://westeurope.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US
 ```
 
-Ha azt szeretné használni a privát végpontok számára engedélyezett forgatókönyvben, amikor a beszédfelismerési erőforrás egyéni tartománynevét használja, `my-private-link-speech.cognitiveservices.azure.com` az alábbihoz hasonló URL-címet kell módosítania:
+Ha a beszédfelismerési erőforrás egyéni tartománynevét használja a magánhálózati végponttal kompatibilis forgatókönyvben `my-private-link-speech.cognitiveservices.azure.com` , a következőhöz hasonló URL-címet kell módosítania:
 
 ```
 wss://my-private-link-speech.cognitiveservices.azure.com/stt/speech/recognition/conversation/cognitiveservices/v1?language=en-US
@@ -419,94 +420,96 @@ wss://my-private-link-speech.cognitiveservices.azure.com/stt/speech/recognition/
 
 Figyelje meg a részleteket:
 
-- `westeurope.stt.speech.microsoft.com`Az állomásnév helyére az egyéni tartomány állomásneve kerül `my-private-link-speech.cognitiveservices.azure.com` .
+- Az állomásnév `westeurope.stt.speech.microsoft.com` helyére az egyéni tartomány állomásneve kerül `my-private-link-speech.cognitiveservices.azure.com` .
 - Az eredeti DNS-név () második eleme az `stt` URL elérési útjának első eleme lesz, és megelőzi az eredeti elérési utat. Így az eredeti URL-cím `/speech/recognition/conversation/cognitiveservices/v1?language=en-US` lesz `/stt/speech/recognition/conversation/cognitiveservices/v1?language=en-US` .
 
-**2. példa.** Az alkalmazás a következő URL-címet használja a beszéd létrehozásához Nyugat-Európában egyéni hangmodell használatával:
+**2. példa.** Egy alkalmazás a következő URL-címet használja a beszéd megszintéziséhez Nyugat-Európában egyéni hangmodell használatával:
 ```http
 https://westeurope.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId=974481cc-b769-4b29-af70-2fb557b897c4
 ```
 
-A következő egy egyenértékű URL-cím, amely egy olyan magánhálózati végpontot használ, amelyen engedélyezve van a Speech erőforrás egyéni tartományneve `my-private-link-speech.cognitiveservices.azure.com` :
+A következő egyenértékű URL-cím egy olyan magánhálózati végpontot használ, amelyen engedélyezve van a beszédfelismerési erőforrás egyéni tartományneve `my-private-link-speech.cognitiveservices.azure.com` :
 
 ```http
 https://my-private-link-speech.cognitiveservices.azure.com/voice/cognitiveservices/v1?deploymentId=974481cc-b769-4b29-af70-2fb557b897c4
 ```
 
-Az 1. példával megegyező elv van alkalmazva, de ebben az esetben a legfontosabb elem `voice` .
+Az 1. példában szereplő elv ugyanezt az elvet alkalmazza, de ebben az esetben a legfontosabb elem `voice` .
 
-##### <a name="modify-applications"></a>Alkalmazások módosítása
+##### <a name="modifying-applications"></a>Alkalmazások módosítása
 
 A kód módosításához kövesse az alábbi lépéseket:
 
-**1. az alkalmazás-végpont URL-címének meghatározása**
+1. Az alkalmazás-végpont URL-címének meghatározása:
 
-- [Engedélyezze a naplózást az alkalmazáshoz](how-to-use-logging.md) , és futtassa azt a naplózási tevékenységhez.
-- A naplófájlban keresse meg a következőt: `SPEECH-ConnectionUrl` . Az egyező sorokban a `value` paraméter tartalmazza a beszédfelismerési szolgáltatás eléréséhez használt teljes URL-címet.
+   - [Engedélyezze a naplózást az alkalmazáshoz](how-to-use-logging.md) , és futtassa azt a naplózási tevékenységhez.
+   - A naplófájlban keresse meg a következőt: `SPEECH-ConnectionUrl` . Az egyező sorokban a `value` paraméter tartalmazza az alkalmazás által a Speech Services eléréséhez használt teljes URL-címet.
 
-Példa:
+   Példa:
 
-```
-(114917): 41ms SPX_DBG_TRACE_VERBOSE:  property_bag_impl.cpp:138 ISpxPropertyBagImpl::LogPropertyAndValue: this=0x0000028FE4809D78; name='SPEECH-ConnectionUrl'; value='wss://westeurope.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?traffictype=spx&language=en-US'
-```
+   ```
+   (114917): 41ms SPX_DBG_TRACE_VERBOSE:  property_bag_impl.cpp:138 ISpxPropertyBagImpl::LogPropertyAndValue: this=0x0000028FE4809D78; name='SPEECH-ConnectionUrl'; value='wss://westeurope.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?traffictype=spx&language=en-US'
+   ```
 
-Így az alkalmazás által a példában használt URL-cím a következő:
+   Így a példában az alkalmazás által használt URL-cím a következő:
 
-```
-wss://westeurope.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US
-```
+   ```
+   wss://westeurope.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US
+   ```
 
-**2. `SpeechConfig` példány létrehozása a teljes végpont URL-címével**
+2. Példány létrehozása `SpeechConfig` teljes végponti URL-cím használatával:
 
-Módosítsa az előző szakaszban meghatározott végpontot a fenti [általános elv](#general-principle) szerint.
+   1. Módosítsa az imént meghatározott végpontot a korábbi [általános alapelvek](#general-principles) című szakaszban leírtak szerint.
 
-Most módosítsa, hogyan hozza létre a példányát `SpeechConfig` . A mai alkalmazása valószínűleg a következőhöz hasonló:
-```csharp
-var config = SpeechConfig.FromSubscription(subscriptionKey, azureRegion);
-```
-Ez nem fog működni a titkos végponton engedélyezve lévő beszédfelismerési erőforráshoz az előző szakaszokban ismertetett állomásnév és URL-változások miatt. Ha a privát végpontot engedélyező erőforrás kulcsának módosítása nélkül próbálja meg futtatni a meglévő alkalmazást, akkor hitelesítési hibát (401) kap.
+   1. Módosítsa, hogyan hozza létre a példányát `SpeechConfig` . Legvalószínűbb, hogy az alkalmazás a következőhöz hasonlót használ:
+      ```csharp
+      var config = SpeechConfig.FromSubscription(subscriptionKey, azureRegion);
+      ```
+      Ez nem fog működni egy privát végponttal rendelkező beszédfelismerési erőforrás esetében, mert az előző szakaszokban leírt állomásnév és URL-cím megváltozik. Ha a meglévő alkalmazást a privát végpontok számára engedélyezett erőforrás kulcsának módosításával próbálja meg futtatni, akkor hitelesítési hibaüzenetet kap (401).
 
-Annak érdekében, hogy működjön, módosítsa, hogyan hozza létre `SpeechConfig` az osztályt, és használja a "végpont"/"végpont" inicializálását. Tegyük fel, hogy a következő két változót definiáljuk:
-- `subscriptionKey` a privát végpont által engedélyezett beszédfelismerési erőforrás kulcsát tartalmazza
-- `endPoint` a teljes **módosított** végpont URL-címének (a levelező programozási nyelv által megkövetelt típusnak a használatával) tartalmazza. A példánkban a változónak tartalmaznia kell
-```
-wss://my-private-link-speech.cognitiveservices.azure.com/stt/speech/recognition/conversation/cognitiveservices/v1?language=en-US
-```
+      Annak érdekében, hogy működjön, módosítsa az osztály létrehozási módját, `SpeechConfig` és használja a "from Endpoint"/"végpont" inicializálását. Tegyük fel, hogy a következő két változót definiáljuk:
+      - `subscriptionKey` a magánhálózati végpontok számára engedélyezett beszédfelismerési erőforrás kulcsát tartalmazza.
+      - `endPoint` a teljes *módosított* végpont URL-címét tartalmazza (a megfelelő programozási nyelv által megkövetelt típus használatával). A példánkban a következő változónak kell szerepelnie:
+        ```
+        wss://my-private-link-speech.cognitiveservices.azure.com/stt/speech/recognition/conversation/cognitiveservices/v1?language=en-US
+        ```
 
-Következő lépésként hozzon létre egy `SpeechConfig` példányt:
-```csharp
-var config = SpeechConfig.FromEndpoint(endPoint, subscriptionKey);
-```
-```cpp
-auto config = SpeechConfig::FromEndpoint(endPoint, subscriptionKey);
-```
-```java
-SpeechConfig config = SpeechConfig.fromEndpoint(endPoint, subscriptionKey);
-```
-```python
-import azure.cognitiveservices.speech as speechsdk
-speech_config = speechsdk.SpeechConfig(endpoint=endPoint, subscription=subscriptionKey)
-```
-```objectivec
-SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithEndpoint:endPoint subscription:subscriptionKey];
-```
+      Példány létrehozása `SpeechConfig` :
+      ```csharp
+      var config = SpeechConfig.FromEndpoint(endPoint, subscriptionKey);
+      ```
+      ```cpp
+      auto config = SpeechConfig::FromEndpoint(endPoint, subscriptionKey);
+      ```
+      ```java
+      SpeechConfig config = SpeechConfig.fromEndpoint(endPoint, subscriptionKey);
+      ```
+      ```python
+      import azure.cognitiveservices.speech as speechsdk
+      speech_config = speechsdk.SpeechConfig(endpoint=endPoint, subscription=subscriptionKey)
+      ```
+      ```objectivec
+      SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithEndpoint:endPoint subscription:subscriptionKey];
+      ```
 
 > [!TIP]
-> A végpont URI azonosítójában megadott lekérdezési paraméterek nem változnak, még akkor sem, ha más API-kkal vannak beállítva. Ha például az azonosító nyelv az URI-ban a "Language = en-US" lekérdezési paraméterként van definiálva, és az "ru-RU" értékre van állítva a levelező tulajdonságon keresztül, a rendszer az URI nyelvi beállítását használja, és a tényleges nyelv az "en-US". A végpont URI-ban beállított paraméterek mindig precidence. A más API-k felülbírálják a végpont URI azonosítóban nem megadott paramétereket.
+> A végpont URI-azonosítójában megadott lekérdezési paraméterek nem változnak, még akkor is, ha más API-k vannak beállítva. Ha például az azonosító nyelv az URI-ban lekérdezési paraméterként van definiálva `language=en-US` , és `ru-RU` a megfelelő tulajdonságon keresztül is be van állítva, akkor az URI nyelvi beállítása is használatban van. Ezt követően az érvényes nyelv `en-US` .
+>
+> A végpont URI-azonosítójában beállított paraméterek mindig elsőbbséget élveznek. Más API-k csak azokat a paramétereket bírálják felül, amelyek nincsenek meghatározva a végpont URI-ban.
 
-A módosítást követően az alkalmazásnak működnie kell a privát, engedélyezett beszédfelismerési erőforrásokkal. A privát végponti forgatókönyvek zökkenőmentes támogatásán dolgozunk.
+A módosítás után az alkalmazásnak működnie kell a privát végpontok számára engedélyezett beszédfelismerési erőforrásokkal. A privát végponti forgatókönyvek zökkenőmentes támogatásán dolgozunk.
 
-### <a name="use-speech-resource-with-custom-domain-name-without-private-endpoints"></a>Egyéni tartománynév nélküli beszédfelismerési erőforrás használata privát végpontok nélkül
+### <a name="use-a-speech-resource-with-a-custom-domain-name-and-without-private-endpoints"></a>Egyéni tartománynévvel rendelkező beszédfelismerési erőforrás használata privát végpontok nélkül
 
-Ebben a cikkben többször is rámutatunk arra, hogy a beszédfelismerési erőforrások egyéni tartományának engedélyezése **visszafordíthatatlan** , és az ilyen erőforrás a beszédfelismerési szolgáltatásokkal való kommunikáció egy másik módját fogja használni a "szokásos" (azaz a [regionális végpontok nevét](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints)használó) kifejezésekkel összehasonlítva.
+Ebben a cikkben többször is kimutatjuk, hogy a beszédfelismerési erőforrások egyéni tartományának engedélyezése *visszafordíthatatlan*. Egy ilyen erőforrás a beszédfelismerési szolgáltatásokkal való kommunikáció különböző módját fogja használni a [regionális végpontok neveit](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints)használókkal szemben.
 
-Ez a szakasz azt ismerteti, hogyan használható a beszédfelismerési erőforrás az engedélyezett egyéni tartománynévvel, de a Speech Services REST API és a [SPEECH SDK](speech-sdk.md)-val rendelkező privát végpontok **nélkül** . Ez lehet egy olyan erőforrás, amely egy privát végponti forgatókönyvben volt használatban, de a privát végpont (ok) törölve lett.
+Ez a szakasz azt ismerteti, hogyan használható a beszédfelismerési erőforrás egy engedélyezett egyéni tartománynévvel, de a Speech Services REST API-kkal és a [SPEECH SDK](speech-sdk.md)-val rendelkező privát végpontok *nélkül* . Ez lehet egy olyan erőforrás, amely egy privát végponti forgatókönyvben volt használatban, de a privát végpontok törölve lettek.
 
 #### <a name="dns-configuration"></a>DNS-konfiguráció
 
-Ne feledje, hogy a magánhálózati végpontok által támogatott beszédfelismerési erőforrások egyéni tartomány DNS-neve Hogyan oldható fel a [nyilvános hálózatokból](#resolve-dns-from-other-networks). Ebben az esetben az IP-cím megoldva egy VNet-proxy végpontra mutat, amely a privát végpont számára engedélyezett Cognitive Services erőforrással való hálózati forgalom elküldésére szolgál.
+Ne feledje, hogyan oldható fel a [nyilvános hálózatokból](#resolve-dns-from-other-networks)az egyéni tartomány DNS-neve a privát végpontok számára engedélyezett beszédfelismerési erőforrásokhoz. Ebben az esetben a megoldott IP-cím egy virtuális hálózat proxy-végpontját mutat. Ezt a végpontot használja a rendszer a privát végpontok számára engedélyezett Cognitive Services erőforrás hálózati forgalmának elküldésére.
 
-Ha azonban az **összes** erőforrás privát végpontja el van távolítva (vagy közvetlenül az Egyéni tartománynév engedélyezése után), a rendszer újraépíti a beszédfelismerési erőforrás CNAME rekordját, és most a kapcsolattartó [Cognitive Services regionális végpont](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints)IP-címére mutat.
+Ha azonban az *összes* erőforrás privát végpontja el van távolítva (vagy közvetlenül az Egyéni tartománynév engedélyezése után), a beszédfelismerési erőforrás CNAME rekordja újra lesz kiépítve. Most a megfelelő [Cognitive Services regionális végpont](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints)IP-címére mutat.
 
 Így a parancs kimenete a `nslookup` következőképpen fog kinézni:
 ```dos
@@ -526,92 +529,86 @@ Aliases:  my-private-link-speech.cognitiveservices.azure.com
 ```
 Hasonlítsa össze a [szakasz](#resolve-dns-from-other-networks)kimenetével.
 
-#### <a name="speech-resource-with-custom-domain-name-without-private-endpoints-usage-with-rest-api"></a>Egyéni tartománynevet tartalmazó beszédfelismerési erőforrás magánhálózati végpontok nélkül. Használat REST API
+#### <a name="speech-resource-with-a-custom-domain-name-and-without-private-endpoints-usage-with-the-rest-apis"></a>Beszédfelismerési erőforrás egyéni tartománynévvel és privát végpontok nélkül: használat a REST API-kkal
 
 ##### <a name="speech-to-text-rest-api-v30"></a>Beszéd – szöveg REST API v 3.0
 
-A beszéd-szöveg REST API v 3.0 használata teljesen egyenértékű a [privát végpontok által engedélyezett beszédfelismerési erőforrások](#speech-to-text-rest-api-v30)esetében.
+A beszéd és a szöveg közötti REST API v 3.0 használata teljes mértékben egyenértékű a [saját végpontok számára engedélyezett beszédfelismerési erőforrások](#speech-to-text-rest-api-v30)esetében.
 
 ##### <a name="speech-to-text-rest-api-for-short-audio-and-text-to-speech-rest-api"></a>Beszéd-szöveg REST API rövid hang-és szöveg-beszéd REST API
 
-Ebben az esetben a rövid hang-és szöveg-beszéd REST API-használathoz tartozó beszéd-szöveg REST API nem tartalmaz eltéréseket az általános esettel kapcsolatban, ha egy kivételt jelent a beszéd – szöveg REST API a rövid hang (lásd az alábbi megjegyzést). Mindkét API-t a [beszéd-szöveg REST API a rövid hang](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) -és [szöveg-beszéd REST API](rest-text-to-speech.md) dokumentációja szerint kell használni.
+Ebben az esetben a beszéd és a szöveg közötti REST API a rövid hangra és a szöveg-beszéd REST API használatára nem vonatkoznak eltérések az általános esettől, egyetlen kivételt jelent a rövid hangra irányuló beszéd-szöveg REST API. (Lásd a következő megjegyzést.) A rövid hang-és [szöveg-beszéd REST API](rest-text-to-speech.md) dokumentációhoz mindkét API-t használhatja a [beszéd-szöveg REST API](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) .
 
 > [!NOTE]
-> Ha **beszéd-szöveg Rest APIt használ a rövid hanghoz** egyéni tartománybeli forgatókönyvekben, használjon fejlécen [átadott](rest-speech-to-text.md#request-headers) engedélyezési tokent `Authorization` [](rest-speech-to-text.md#request-headers). A Speech előfizetés kulcsának a fejlécen keresztüli speciális végpontra való átadása `Ocp-Apim-Subscription-Key` **nem** fog működni, és a 401-es hibát állítja elő.
+> Ha a rövid hanghoz tartozó beszéd-szöveg REST API egyéni tartománybeli forgatókönyvekben használja, használjon egy fejlécen [átadott](rest-speech-to-text.md#request-headers) engedélyezési jogkivonatot `Authorization` [](rest-speech-to-text.md#request-headers). A beszéd előfizetési kulcsának a fejlécen keresztüli speciális végpontra való átadása `Ocp-Apim-Subscription-Key` *nem* fog működni, és a 401-es hibát állítja elő.
 
-#### <a name="speech-resource-with-custom-domain-name-without-private-endpoints-usage-with-speech-sdk"></a>Egyéni tartománynevet tartalmazó beszédfelismerési erőforrás magánhálózati végpontok nélkül. Használat a Speech SDK-val
+#### <a name="speech-resource-with-a-custom-domain-name-and-without-private-endpoints-usage-with-the-speech-sdk"></a>Beszédfelismerési erőforrás egyéni tartománynévvel és privát végpontok nélkül: használat a Speech SDK-val
 
-Ha egyéni tartománynevet használó Speech SDK-t használ, a saját végpontok **nélküli** beszédfelismerési erőforrásokhoz az alkalmazás kódjának felülvizsgálata és valószínű módosítása szükséges. Vegye figyelembe, hogy ezek a változások **eltérnek** a [privát végpontok által engedélyezett beszédfelismerési erőforrások](#speech-resource-with-custom-domain-name-and-private-endpoint-usage-with-speech-sdk)esetében. A Private Endpoint/Custom domain forgatókönyvek zökkenőmentes támogatásán dolgozunk.
+Ha egyéni végpontok *nélkül* kívánja használni a Speech SDK-t az egyéni tartományhoz tartozó beszédfelismerési erőforrásokkal, meg kell vizsgálnia, és valószínűleg módosítania kell az alkalmazás kódját. Vegye figyelembe, hogy ezek a változások eltérnek a [privát végpontok számára engedélyezett beszédfelismerési erőforrások](#speech-resource-with-a-custom-domain-name-and-a-private-endpoint-usage-with-the-speech-sdk)esetében. A privát végpontok és az egyéni tartományi forgatókönyvek zökkenőmentes támogatásán dolgozunk.
 
-`my-private-link-speech.cognitiveservices.azure.com`Ebben a szakaszban a példaként használt Speech Resource DNS-nevet (egyéni tartományt) fogjuk használni.
+`my-private-link-speech.cognitiveservices.azure.com`Ehhez a szakaszhoz példaként használjuk a beszédfelismerési erőforrás DNS-nevét (egyéni tartomány).
 
-A [privát végpontok által engedélyezett beszédfelismerési erőforrás](#speech-resource-with-custom-domain-name-and-private-endpoint-usage-with-speech-sdk) szakasza azt ismerteti, hogyan határozható meg a végponti URL-cím, hogyan módosítható, és a "végpontról"/"végpont" inicializálásával végezze el a munkát `SpeechConfig` .
+A [belső végpontok használatára képes beszédfelismerési erőforrások](#speech-resource-with-a-custom-domain-name-and-a-private-endpoint-usage-with-the-speech-sdk)című szakaszban azt ismertetjük, hogyan határozható meg a végpont URL-címe, hogyan módosítható, és a "végpontról"/"végpont" inicializálásával végezze el a munkát `SpeechConfig` .
 
-Ha azonban azt követően próbálja meg futtatni ugyanazt az alkalmazást, hogy az összes privát végpont el lett távolítva (ami egy ideig a levelező DNS-rekord újbóli kiépítésének engedélyezése), akkor a belső szolgáltatási hiba (404) fog megjelenni. Ennek az az oka, hogy a [DNS-rekord](#dns-configuration) most a VNet proxy helyett a regionális Cognitive Services végpontra mutat, és az URL-elérési utak `/stt/speech/recognition/conversation/cognitiveservices/v1?language=en-US` , például nem találhatók ott, ezért a "nem található" hibaüzenet jelenik meg (404).
+Ha azonban azt követően próbálja meg futtatni ugyanazt az alkalmazást, hogy az összes privát végpont el lett távolítva (ami a DNS-rekordok újbóli kiépítését is lehetővé teszi), belső szolgáltatási hibaüzenetet kap (404). Ennek az az oka, hogy a [DNS-rekord](#dns-configuration) most a regionális Cognitive Services végpontra mutat a virtuális hálózati proxy helyett, és az URL-elérési utak, például `/stt/speech/recognition/conversation/cognitiveservices/v1?language=en-US` nem találhatók.
 
-Ha a "normál" példányra állítja vissza az alkalmazást a következő `SpeechConfig` stílusban:
+Ha az alkalmazást az alábbi kód stílusa alapján állítja vissza az alkalmazásból `SpeechConfig` , az alkalmazás a hitelesítési hibával leáll (401):
+
 ```csharp
 var config = SpeechConfig.FromSubscription(subscriptionKey, azureRegion);
 ```
-az alkalmazás a hitelesítési hibával leáll (401).
 
 ##### <a name="modifying-applications"></a>Alkalmazások módosítása
 
 Az alábbi lépéseket követve engedélyezheti, hogy az alkalmazás egy egyéni tartománynévvel és privát végpontok nélkül használja a beszédfelismerési erőforrásokat:
 
-**1. kérjen engedélyezési jogkivonatot a Cognitive Services REST API**
+1. Igényeljen engedélyezési jogkivonatot a Cognitive Services REST API. [Ez a cikk](../authentication.md#authenticate-with-an-authentication-token) bemutatja, hogyan kérheti le a tokent.
 
-[Ez a cikk](../authentication.md#authenticate-with-an-authentication-token) bemutatja, hogyan kérheti le a tokent a Cognitive Services REST API használatával.
+   Használja az egyéni tartománynevet a végpont URL-címében. A példánkban ez az URL-cím a következő:
+   ```http
+   https://my-private-link-speech.cognitiveservices.azure.com/sts/v1.0/issueToken
+   ```
+   > [!TIP]
+   > Ez az URL-cím a Azure Portalban található. A beszédfelismerési erőforrás lapon az erőforrás- **kezelés** csoportban válassza a **kulcsok és végpont** lehetőséget.
 
-Használja az egyéni tartománynevet a végpont URL-címében, amely a példánkban az alábbi URL-cím:
-```http
-https://my-private-link-speech.cognitiveservices.azure.com/sts/v1.0/issueToken
-```
-> [!TIP]
-> Ezt az URL-címet Azure Portalban találja. A beszédfelismerési erőforrás oldalon az **Erőforrás-kezelés** csoportban válassza a **kulcsok és végpont** lehetőséget.
+1. Hozzon létre egy `SpeechConfig` példányt az előző szakaszban beszerzett engedélyezési jogkivonat használatával. Tegyük fel, hogy a következő változók vannak definiálva:
 
-**2. hozzon létre egy `SpeechConfig` példányt a "from engedélyezési jogkivonat"/"engedélyezési jogkivonat használatával" metódussal.**
+   - `token`: az előző szakaszban beszerzett engedélyezési jogkivonat
+   - `azureRegion`: a Speech erőforrás- [régió](regions.md) neve (példa: `westeurope` )
+   - `outError`: (csak a [Objective C](/objectivec/cognitive-services/speech/spxspeechconfiguration#initwithauthorizationtokenregionerror) esetében)
 
-Hozzon létre egy `SpeechConfig` példányt az előző szakaszban beszerzett engedélyezési jogkivonat használatával. Tegyük fel, hogy a következő változók vannak definiálva:
+   Hozzon létre egy `SpeechConfig` példányt a következőhöz hasonló módon:
 
-- `token`: az előző szakaszban beszerzett engedélyezési jogkivonat
-- `azureRegion`: a Speech erőforrás- [régió](regions.md) neve (példa: `westeurope` )
-- `outError`: (csak [Objective C](/objectivec/cognitive-services/speech/spxspeechconfiguration#initwithauthorizationtokenregionerror) esetében)
-
-Következő lépésként hozzon létre egy `SpeechConfig` példányt:
-
-```csharp
-var config = SpeechConfig.FromAuthorizationToken(token, azureRegion);
-```
-```cpp
-auto config = SpeechConfig::FromAuthorizationToken(token, azureRegion);
-```
-```java
-SpeechConfig config = SpeechConfig.fromAuthorizationToken(token, azureRegion);
-```
-```python
-import azure.cognitiveservices.speech as speechsdk
-speech_config = speechsdk.SpeechConfig(auth_token=token, region=azureRegion)
-```
-```objectivec
-SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithAuthorizationToken:token region:azureRegion error:outError];
-```
+   ```csharp
+   var config = SpeechConfig.FromAuthorizationToken(token, azureRegion);
+   ```
+   ```cpp
+   auto config = SpeechConfig::FromAuthorizationToken(token, azureRegion);
+   ```
+   ```java
+   SpeechConfig config = SpeechConfig.fromAuthorizationToken(token, azureRegion);
+   ```
+   ```python
+   import azure.cognitiveservices.speech as speechsdk
+   speech_config = speechsdk.SpeechConfig(auth_token=token, region=azureRegion)
+   ```
+   ```objectivec
+   SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithAuthorizationToken:token region:azureRegion error:outError];
+   ```
 > [!NOTE]
-> A hívónak biztosítania kell, hogy az engedélyezési jogkivonat érvényes legyen.
-> Az engedélyezési jogkivonat lejárta előtt a hívónak frissítenie kell azt egy új érvényes jogkivonat meghívásával.
-> Amikor új felismerőt vagy szintetizátort hoz létre, az új jogkivonat értéke nem vonatkozik a már létrehozott felismerők vagy szintetizátorokra.
-> Ezeknél állítsa be a megfelelő felismerő vagy szintetizátor engedélyezési jogkivonatát a jogkivonat frissítéséhez.
-> Ha nem frissíti a jogkivonatot, a felismerő vagy a szintetizátor hibákba ütközik a működés közben.
+> A hívónak biztosítania kell, hogy az engedélyezési jogkivonat érvényes legyen. Az engedélyezési jogkivonat lejárta előtt a hívónak frissítenie kell azt egy új érvényes jogkivonat meghívásával. Mivel a konfigurációs értékek másolása új felismerő vagy szintetizátor létrehozásakor történik, az új jogkivonat értéke nem vonatkozik a már létrehozott felismerők vagy szintetizátorokra.
+>
+> Ezeknél állítsa be a megfelelő felismerő vagy szintetizátor engedélyezési jogkivonatát a jogkivonat frissítéséhez. Ha nem frissíti a jogkivonatot, a felismerő vagy a szintetizátor hibákba ütközik a működés közben.
 
-A módosítást követően az alkalmazásnak olyan beszédfelismerési erőforrásokkal kell működnie, amelyek egyéni tartománynevet használnak privát végpontok nélkül.
+A módosítás után az alkalmazásnak olyan beszédfelismerési erőforrásokkal kell működnie, amelyek egyéni tartománynevet használnak privát végpontok nélkül.
 
 ## <a name="pricing"></a>Díjszabás
 
 A díjszabással kapcsolatos információkért lásd: az [Azure Private link díjszabása](https://azure.microsoft.com/pricing/details/private-link).
 
-## <a name="learn-more"></a>További információ
+## <a name="learn-more"></a>Tudjon meg többet
 
 * [Azure Private Link](../../private-link/private-link-overview.md)
 * [Beszéd SDK](speech-sdk.md)
-* [Diktálás REST API](rest-speech-to-text.md)
-* [Szövegfelolvasás REST API](rest-text-to-speech.md)
+* [Beszéd – szöveg REST API](rest-speech-to-text.md)
+* [Szöveg – beszéd REST API](rest-text-to-speech.md)

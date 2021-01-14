@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6c2a15ac8d0863539ca878a048940b19794e920d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 2773a76ed1166a26ebc12b97550876eaa66bad14
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842907"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197319"
 ---
 # <a name="azure-security-baseline-for-azure-data-box"></a>Azure Data Box Azure biztonsági alapterve
 
@@ -30,7 +30,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../securi
 
 **Útmutató**: nem alkalmazható; a Azure Data Box nem társítható virtuális hálózathoz. A Data Boxről az Azure által üzemeltetett tárhelyre irányíthatja a forgalmat a Azure Portal keresztül. Data Box kihasználása esetén az adat az Azure-gerincen keresztül történik.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -38,7 +38,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../securi
 
 **Útmutató**: nem alkalmazható; a Azure Data Box nem társítható virtuális hálózathoz. A Data Boxről az Azure által üzemeltetett tárhelyre irányíthatja a forgalmat a Azure Portal keresztül. Data Box kihasználása esetén az adat az Azure-gerincen keresztül történik.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -46,7 +46,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../securi
 
 **Útmutató**: nem alkalmazható; Ez a javaslat Azure App Service vagy számítási erőforrásokon futó webalkalmazásokhoz készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -54,7 +54,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../securi
 
 **Útmutató**: nem alkalmazható; a Azure Data Box nem társítható virtuális hálózathoz. A Data Boxről az Azure által üzemeltetett tárhelyre irányíthatja a forgalmat a Azure Portal keresztül. Data Box kihasználása esetén az adat az Azure-gerincen keresztül történik.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -62,7 +62,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../securi
 
 **Útmutató**: nem alkalmazható; a Azure Data Box nem társítható virtuális hálózathoz. A Data Boxről az Azure által üzemeltetett tárhelyre irányíthatja a forgalmat a Azure Portal keresztül. Data Box kihasználása esetén az adat az Azure-gerincen keresztül történik.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -74,7 +74,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../securi
 
 * [A Azure Data Box portjának adatai](./data-box-system-requirements.md#port-requirements)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Microsoft
 
@@ -82,7 +82,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../securi
 
 **Útmutató**: nem alkalmazható; Ez a javaslat Azure App Service vagy számítási erőforrásokon futó webalkalmazásokhoz készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -90,7 +90,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../securi
 
 **Útmutató**: nem alkalmazható; a Azure Data Box nem társítható virtuális hálózathoz.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -98,7 +98,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../securi
 
 **Útmutató**: nem alkalmazható; a Azure Data Box nem társítható virtuális hálózathoz.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -106,7 +106,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../securi
 
 **Útmutató**: nem alkalmazható; a Azure Data Box nem társítható virtuális hálózathoz.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -114,7 +114,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../securi
 
 **Útmutató**: nem alkalmazható; a Azure Data Box nem társítható virtuális hálózathoz.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -126,9 +126,9 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../securi
 
 **Útmutató**: a Microsoft fenntartja az Azure-erőforrásokhoz használt időforrást, például a naplók időbélyegét. Ha nem csatlakozik ahhoz a hálózathoz, amely hozzáfér az ügyfél telephelyén lévő NTP-kiszolgálóhoz, Azure Data Box az idő eltolódása.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="22-configure-central-security-log-management"></a>2,2: a központi biztonsági naplók felügyeletének konfigurálása
 
@@ -136,9 +136,9 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../securi
 
 * [A Azure Data Box követésének és eseménynaplózásának megismerése](./data-box-logs.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: az Azure-erőforrások naplózásának engedélyezése
 
@@ -146,15 +146,15 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../securi
 
 * [A Azure Data Box követésének és eseménynaplózásának megismerése](./data-box-logs.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2,4: biztonsági naplók gyűjtése az operációs rendszerekből
 
 **Útmutató**: Ez a javaslat számítási erőforrások számára készült. Data Box rendelkezik olyan naplókkal és támogatási csomaggal, amelyek biztonsági naplókat tartalmaznak.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Microsoft
 
@@ -162,7 +162,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../securi
 
 **Útmutató**: nem alkalmazható
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -172,9 +172,9 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../securi
 
 * [A Azure Data Box követésének és eseménynaplózásának megismerése](./data-box-logs.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2,7: riasztások engedélyezése rendellenes tevékenységekhez
 
@@ -182,15 +182,15 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../securi
 
 * [A Azure Data Box követésének és eseménynaplózásának megismerése](./data-box-logs.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="28-centralize-anti-malware-logging"></a>2,8: kártevő szoftverek közötti naplózás központosítása
 
 **Útmutató**: nem alkalmazható; Azure Data Box nem dolgoz fel kártevő szoftverrel kapcsolatos naplókat, illetve nem hoz létre.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -198,7 +198,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../securi
 
 **Útmutató**: nem alkalmazható; A Azure Data Box nem dolgozza fel a DNS-sel kapcsolatos naplókat, és nem hoz létre.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -206,7 +206,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../securi
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -226,15 +226,15 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../securi
 
 **Azure Security Center figyelés**: nem
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3,2: az alapértelmezett jelszavak módosítása, ha alkalmazható
 
 **Útmutató**: az Azure ad nem rendelkezik az alapértelmezett jelszavak fogalmával. Más Azure-erőforrások, amelyek jelszó megadását igénylik a bonyolultsági követelményekkel és a jelszó minimális hosszával hozhatók létre, és a szolgáltatástól függően eltérőek. Ön felelős harmadik féltől származó alkalmazásokért és piactér-szolgáltatásért, amelyek az alapértelmezett jelszavakat használhatják.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3,3: dedikált rendszergazdai fiókok használata
 
@@ -249,15 +249,15 @@ Emellett a dedikált rendszergazdai fiókok nyomon követésének elősegítése
 
 * [A Azure Policy használata](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center monitorozása**: Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: egyszeri bejelentkezés (SSO) használata Azure Active Directory
 
 **Útmutató**: nem alkalmazható; a Data Box rendeléshez való hozzáférés a Azure Portalon keresztül történik, és a tulajdonos vagy közreműködő bérlői szerepkörével rendelkező fiókok számára van fenntartva.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -273,13 +273,13 @@ Emellett a dedikált rendszergazdai fiókok nyomon követésének elősegítése
 
 **Útmutató**: engedélyezze az Azure ad multi-Factor Authentication (MFA) szolgáltatást, amely lehetővé teszi, hogy bejelentkezzen, és konfigurálja a Azure Data Box rendeléseit.
 
-* [Emelt hozzáférési szintű munkaállomások](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Emelt hozzáférési szintű munkaállomások](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-* [Felhőalapú Azure AD-Multi-Factor Authentication üzembe helyezésének megtervezése](../active-directory/authentication/howto-mfa-getstarted.md)
+* [Felhőalapú Azure AD Multi-Factor Authentication-telepítés megtervezése](../active-directory/authentication/howto-mfa-getstarted.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3,7: naplózás és riasztás a gyanús tevékenységekről a rendszergazdai fiókoktól
 
@@ -291,9 +291,9 @@ Emellett az Azure AD kockázati észleléseit is használhatja a kockázatos fel
 
 * [Az Azure AD kockázati észlelések ismertetése](../active-directory/identity-protection/overview-identity-protection.md)
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center monitorozása**: Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3,8: az Azure-erőforrások kezelése csak jóváhagyott helyekről
 
@@ -301,9 +301,9 @@ Emellett az Azure AD kockázati észleléseit is használhatja a kockázatos fel
 
 * [Elnevezett helyszínek konfigurálása az Azure-ban](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="39-use-azure-active-directory"></a>3,9: a Azure Active Directory használata
 
@@ -311,9 +311,9 @@ Emellett az Azure AD kockázati észleléseit is használhatja a kockázatos fel
 
 * [Azure AD-példány létrehozása és konfigurálása](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: a felhasználói hozzáférés rendszeres áttekintése és egyeztetése
 
@@ -325,9 +325,9 @@ A Data Box készülék esetében ez valós időben nem támogatott. A naplókat 
 
 * [Az Azure Identity hozzáférési felülvizsgálatok használata](../active-directory/governance/access-reviews-overview.md)
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center monitorozása**: Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3,11: a figyelő megkísérli a deaktivált hitelesítő adatok elérését
 
@@ -339,13 +339,13 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 Azure Data Box szolgáltatási naplók nincsenek beírva Log Analytics munkaterületre.
 
-* [Azure-beli tevékenység-naplók integrálása a Azure Monitorba](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
+* [Azure-tevékenységnaplók integrálása az Azure Monitorba](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 * [A fedélzeti Azure Sentinel ismertetése](../sentinel/quickstart-onboard.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: riasztás a fiók bejelentkezési viselkedésének eltérése esetén
 
@@ -357,9 +357,9 @@ Azure Data Box szolgáltatási naplók nincsenek beírva Log Analytics munkater�
 
 * [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: a Microsoft számára elérhetővé teszi a megfelelő ügyféladatokat a támogatási forgatókönyvek során
 
@@ -367,9 +367,9 @@ Azure Data Box szolgáltatási naplók nincsenek beírva Log Analytics munkater�
 
 * [Ügyfélszéf által támogatott szolgáltatások listája](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ## <a name="data-protection"></a>Adatvédelem
 
@@ -379,7 +379,7 @@ Azure Data Box szolgáltatási naplók nincsenek beírva Log Analytics munkater�
 
 **Útmutató**: Azure Data Box esetében nem alkalmazható.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -391,7 +391,7 @@ Az Azure-ba történő adatfeltöltés során a Data Box berendezés és az adat
 
 * [Az Azure Data Box első lépései](./data-box-quickstart-portal.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Microsoft
 
@@ -399,11 +399,11 @@ Az Azure-ba történő adatfeltöltés során a Data Box berendezés és az adat
 
 **Útmutató**: a Microsoft kezeli a Azure Data Box alapjául szolgáló infrastruktúrát, és szigorú ellenőrzéseket vezetett be az ügyféladatok elvesztésének vagy kihatásának megelőzésére. Ha Data Box az ügyfél webhelyén található, kövesse az ajánlott eljárásokat az átvitt bizalmas adatok védelmének biztosításához.
 
-* [Az ügyfelek adatvédelmének megismerése az Azure-ban](../security/fundamentals/protection-customer-data.md)
+* [Az ügyféladatok Azure-beli védelmének ismertetése](../security/fundamentals/protection-customer-data.md)
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
-**Felelősség**: megosztott
+**Felelősség**: Megosztott
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: minden bizalmas adat titkosítása az átvitel során
 
@@ -413,17 +413,17 @@ Az Azure-ba történő adatfeltöltés során a Data Box berendezés és az adat
 
 * [Data Box biztonsági áttekintés](./data-box-security.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: megosztott
+**Felelősség**: Megosztott
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: aktív felderítési eszköz használata a bizalmas adatok azonosítására
 
 **Útmutató**: jelenleg nem érhető el; az adatazonosítási, besorolási és veszteség-megelőzési funkciók még nem érhetők el Azure Data Box számára. a Microsoft kezeli az alapul szolgáló infrastruktúrát Azure Data Box és szigorú ellenőrzéseket hajtott végre az ügyféladatok elvesztése vagy kitettségének megelőzése érdekében.
 
-* [Az ügyfelek adatvédelmének megismerése az Azure-ban](../security/fundamentals/protection-customer-data.md)
+* [Az ügyféladatok Azure-beli védelmének ismertetése](../security/fundamentals/protection-customer-data.md)
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
 **Felelősség**: nem alkalmazható
 
@@ -435,9 +435,9 @@ Az Azure-ba történő adatfeltöltés során a Data Box berendezés és az adat
 
 * [A hozzáférés-vezérlés beállításának ismertetése](./data-box-logs.md#set-up-access-control-on-the-order)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: a gazdagép-alapú adatvesztés-megelőzés használata a hozzáférés-vezérlés kikényszeríthető
 
@@ -445,7 +445,7 @@ Az Azure-ba történő adatfeltöltés során a Data Box berendezés és az adat
 
 * [Azure Customer-adatvédelem](../security/fundamentals/protection-customer-data.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -459,9 +459,9 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 * [Ügyfél által felügyelt kulcsok használata Azure Key Vaultban Azure Data Box](./data-box-customer-managed-encryption-key-portal.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: megosztott
+**Felelősség**: Megosztott
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: a kritikus Azure-erőforrások változásainak naplózása és riasztása
 
@@ -469,9 +469,9 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 * [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/platform/alerts-activity-log.md)
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center monitorozása**: Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ## <a name="vulnerability-management"></a>Biztonságirés-kezelés
 
@@ -481,7 +481,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 **Útmutató**: a Microsoft a sebezhetőségek kezelését a Azure Data Box támogató mögöttes rendszereken hajtja végre.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Microsoft
 
@@ -489,7 +489,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 **Útmutató**: a Data Box szállításakor a rendszer telepíti a legújabb frissítéseket. A mezők frissítései nem végezhetők el.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Microsoft
 
@@ -497,7 +497,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 **Útmutató**: a Data Box szállításakor a rendszer telepíti a legújabb frissítéseket. A mezők frissítései nem végezhetők el.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Microsoft
 
@@ -505,7 +505,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 **Útmutató**: a Microsoft a sebezhetőségek kezelését a Azure Data Box támogató mögöttes rendszereken hajtja végre.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Microsoft
 
@@ -513,7 +513,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 **Útmutató**: a Microsoft a sebezhetőségek kezelését a Azure Data Box támogató mögöttes rendszereken hajtja végre.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Microsoft
 
@@ -525,7 +525,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 **Útmutató**: nem használhatók fel Data Box eszközök felderítésére.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -533,7 +533,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 **Útmutató**: nem alkalmazható, nem használhatók Data boxhoz tartozó eszközök metaadatai.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -541,7 +541,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 **Útmutató**: nem alkalmazható, Data Box szolgáltatás biztosítja, hogy a rendszer nem használ jogosulatlan Azure-erőforrásokat.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Microsoft
 
@@ -549,7 +549,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 **Útmutató**: nem alkalmazható; nincs a Data Box szolgáltatási szintjén.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -557,7 +557,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 **Útmutató**: nem alkalmazható, nincsenek a Data Box szolgáltatási szintjén.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -565,7 +565,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 **Útmutató**: nem alkalmazható, nincsenek a Data Box szolgáltatási szintjén.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -573,7 +573,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 **Útmutató**: nem alkalmazható, nincsenek a Data Box szolgáltatási szintjén.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -581,7 +581,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 **Útmutató**: nem alkalmazható, nincsenek a Data Box szolgáltatási szintjén.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -589,7 +589,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 **Útmutató**: nem alkalmazható, Data Box szolgáltatások csak jóváhagyott Azure-szolgáltatásokat használnak.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -597,7 +597,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 **Útmutató**: nem alkalmazható; Data Box Services csak jóváhagyott szoftvereket használ.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -607,15 +607,15 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 * [A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való hozzáférés blokkolásához](../role-based-access-control/conditional-access-azure-management.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: korlátozza a felhasználók számára a parancsfájlok végrehajtásának lehetőségét a számítási erőforrásokon belül
 
 **Útmutató**: nem alkalmazható; Data Box szolgáltatás nem támogatja a parancsfájlok futtatását.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -623,7 +623,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 **Útmutató**: nem alkalmazható; Data Box szolgáltatás nem rendelkezik az Azure app Service-ben futó webalkalmazásokkal.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -635,7 +635,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 **Útmutató**: a Azure Data Box előre konfigurált ajánlott eljárásokat tartalmazó biztonsági beállításokat tartalmaz.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Microsoft
 
@@ -643,7 +643,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 **Útmutató**: a Azure Data Box előre konfigurált ajánlott eljárásokat tartalmazó biztonsági beállításokat tartalmaz.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Microsoft
 
@@ -651,7 +651,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 **Útmutató**: a Azure Data Box az erőforrások előre konfigurált ajánlott biztonsági beállításait tartalmazza, és nem módosítható.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Microsoft
 
@@ -659,7 +659,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 **Útmutató**: a Azure Data Box az erőforrások előre konfigurált ajánlott biztonsági beállításait tartalmazza, és nem módosítható.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -667,7 +667,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 **Útmutató**: minden Data Box konfiguráció biztonságos módon tárolódik.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Microsoft
 
@@ -675,7 +675,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 **Útmutató**: az összes Data Box operációs rendszer lemezképének tárolása biztonságos.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Microsoft
 
@@ -683,7 +683,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 **Útmutató**: nem alkalmazható, Azure Data Box konfigurációk nem módosíthatók.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -691,7 +691,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 **Útmutató**: nem alkalmazható, Azure Data Box konfigurációk nem módosíthatók.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -699,7 +699,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 **Útmutató**: nem alkalmazható, Azure Data Box konfigurációk nem módosíthatók.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -707,7 +707,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 **Útmutató**: nem alkalmazható, Azure Data Box konfigurációk nem módosíthatók.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -717,9 +717,9 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 * [Az ügyfél által felügyelt kulcsok használata a Azure Key Vaultban Azure Data Box](./data-box-customer-managed-encryption-key-portal.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: megosztott
+**Felelősség**: Megosztott
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7,12: az identitások biztonságos és automatikus kezelése
 
@@ -727,19 +727,19 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 * [Felügyelt identitásokat támogató Azure-szolgáltatások](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: a hitelesítő adatok nem szándékolt expozíciójának megszüntetése
 
-**Útmutató**: a Microsoft Data Box-kódban futtatja a hitelesítőadat-olvasót. Emellett a Microsoft is biztonságosan védi a hitelesítő adatokat. Hitelesítő adatok beolvasása a kódban a hitelesítő adatok azonosításához. A hitelesítő adatok beolvasása azt is javasolja, hogy a felderített hitelesítő adatokat biztonságosabb helyszínekre (például Azure Key Vault) helyezze.
+**Útmutató**: a Microsoft Data Box-kódban futtatja a hitelesítőadat-olvasót. Emellett a Microsoft is biztonságosan védi a hitelesítő adatokat. Hitelesítő adatok beolvasása a kódban a hitelesítő adatok azonosításához. A Credential Scanner a felfedezett hitelesítő adatok biztonságosabb helyre, például az Azure Key Vaultba való áthelyezésére is javaslatot tesz.
 
 * [A hitelesítő adatok beolvasójának beállítása](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
 **Azure Security Center figyelés**: N/A
 
-**Felelősség**: megosztott
+**Felelősség**: Megosztott
 
 ## <a name="malware-defense"></a>Kártevők elleni védelem
 
@@ -749,7 +749,7 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 **Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült. A Microsoft kártevő szoftveres verziója engedélyezve van az Azure-szolgáltatásokat támogató mögöttes gazdagépen (például Azure App Service), azonban az nem az ügyfél tartalmán fut.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -759,15 +759,15 @@ A Azure Data Box AES 256 bites titkosítást valósít meg a REST-alapú adatokh
 
 Az Ön felelőssége, hogy előzetesen beszkennelje a nem számítási Azure-erőforrásokra feltöltött tartalmakat. A Microsoft nem fér hozzá az ügyféladatok eléréséhez, így az Ön nevében nem végezhet kártevő-ellenőrzéseket az ügyfél-tartalmakon.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8,3: a kártevő szoftverek és az aláírások frissítésének ellenőrzése
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült. A Microsoft antimalware engedélyezve van a mögöttes gazdagépen, amely támogatja az Azure-szolgáltatásokat, de nem fut az ügyfél tartalmán.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -779,7 +779,7 @@ Az Ön felelőssége, hogy előzetesen beszkennelje a nem számítási Azure-er�
 
 **Útmutató**: nem alkalmazható, Data Box szolgáltatás nem igényel biztonsági mentést.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -787,25 +787,25 @@ Az Ön felelőssége, hogy előzetesen beszkennelje a nem számítási Azure-er�
 
 **Útmutató**: Ügyeljen arra, hogy készítsen biztonsági másolatot az összes adattal és az ügyfél által felügyelt kulcsról. A Data Box nem készít biztonsági mentést.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: az összes biztonsági másolat ellenőrzése, beleértve az ügyfél által felügyelt kulcsokat
 
 **Útmutató**: Ellenőrizze, hogy az összes adatai az Azure Storage-fiókban vannak-e, mielőtt törölné a telephelyéről.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: a biztonsági másolatok és az ügyfél által felügyelt kulcsok védelmének biztosítása
 
 **Útmutató**: Ügyeljen arra, hogy az ajánlott eljárásoknak megfelelően a biztonsági másolatok vagy az ügyfél által felügyelt kulcsok védve legyenek.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ## <a name="incident-response"></a>Incidensmegoldás
 
@@ -813,7 +813,7 @@ Az Ön felelőssége, hogy előzetesen beszkennelje a nem számítási Azure-er�
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: incidens-válaszi útmutató létrehozása
 
-**Útmutató**: az incidensekre adott válaszokra vonatkozó útmutató kiépítése a szervezet számára. Győződjön meg arról, hogy van olyan írásos incidens-válasz, amely meghatározza a személyzet összes szerepkörét, valamint az incidensek kezelésének és kezelésének fázisait az észleléstől az incidens utáni felülvizsgálatig.
+**Útmutató**: Alakítson ki incidenskezelési útmutatót a vállalat számára. Gondoskodjon írásos incidenskezelési tervekről, amelyek definiálják az összes résztvevő szerepkörét, valamint az incidenskezelés fázisait az észleléstől az incidens utáni értékelésig.
 
 * [Útmutató a saját biztonsági incidensek megoldási folyamatának létrehozásához](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -821,33 +821,33 @@ Az Ön felelőssége, hogy előzetesen beszkennelje a nem számítási Azure-er�
 
 * [A NIST számítógépes biztonsági incidensek kezelésének útmutatója a saját incidensekre vonatkozó válaszadási terv létrehozásához nyújtott támogatáshoz](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: incidensek pontozásának és rangsorolási eljárásának létrehozása
 
 **Útmutató**: a Security Center súlyosságot rendel az egyes riasztásokhoz, hogy a prioritások alapján ki lehessen deríteni, hogy mely riasztásokat kell először megvizsgálni. A súlyosság azon alapul, hogy az Security Center milyen mértékben szerepel a riasztás kibocsátásához használt elemzésben vagy elemzésben, valamint azt a megbízhatósági szintet, amely a riasztáshoz vezető tevékenység mögött rosszindulatú szándékú volt.
 
-Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezetben, nem gyártva) címkék használatával és elnevezési rendszer létrehozása az Azure-erőforrások egyértelmű azonosításához és kategorizálásához, különösen a bizalmas adatok feldolgozásához. Az Ön felelőssége, hogy rangsorolja a riasztások szervizelését az Azure-erőforrások és-környezet kritikus jellemzői alapján, ahol az incidens történt.
+Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezetben, nem gyártva) címkék használatával és elnevezési rendszer létrehozása az Azure-erőforrások egyértelmű azonosításához és kategorizálásához, különösen a bizalmas adatok feldolgozásához. Az Ön felelőssége, hogy rangsorolja a riasztások megoldását azon Azure-erőforrások és -környezetek kritikussága alapján, ahol az incidens történt.
 
 * [Biztonsági riasztások az Azure Security Centerben](../security-center/security-center-alerts-overview.md)
 
 * [Címkék használata az Azure-erőforrások rendszerezéséhez](../azure-resource-manager/management/tag-resources.md)
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center monitorozása**: Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="103-test-security-response-procedures"></a>10,3: biztonsági reagálási eljárások tesztelése
 
-**Útmutató**: az Azure-erőforrások védelmének biztosítása érdekében a rendszer az incidensek reagálási képességeinek rendszeres tesztelésére szolgáló gyakorlatokat hajt végre. Azonosítsa a gyenge pontokat és a réseket, és szükség szerint módosítsa a tervet.
+**Útmutató**: az Azure-erőforrások védelmének biztosítása érdekében a rendszer az incidensek reagálási képességeinek rendszeres tesztelésére szolgáló gyakorlatokat hajt végre. Azonosítsa a gyenge pontokat és réseket, és szükség esetén dolgozza át a tervet.
 
 * [A NIST kiadványa – útmutató az IT-csomagok és-képességek teszteléséhez, betanításához és alkalmazásához](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: biztonsági incidensek elérhetőségének biztosítása és riasztási értesítések konfigurálása biztonsági incidensekhez
 
@@ -855,9 +855,9 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 * [A Azure Security Center biztonsági kapcsolattartó beállítása](../security-center/security-center-provide-security-contact-details.md)
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center monitorozása**: Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: biztonsági riasztások beépítése az incidensek gyorsreagáló rendszerébe
 
@@ -865,11 +865,11 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 * [Folyamatos exportálás konfigurálása](../security-center/continuous-export.md)
 
-* [Riasztások továbbítása az Azure Sentinelbe](../sentinel/connect-azure-security-center.md)
+* [Riasztások streamelése az Azure Sentinelbe](../sentinel/connect-azure-security-center.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10,6: a biztonsági riasztásokra adott válasz automatizálása
 
@@ -877,9 +877,9 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 * [A Munkafolyamat-automatizálás és a Logic Apps konfigurálása](../security-center/workflow-automation.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Behatolási tesztek és Red Team-gyakorlatok
 
@@ -889,15 +889,15 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Útmutató**: a Microsoft áthatoló tesztelési és sebezhetőségi ellenőrzéseket végez Data Box eszközökön. Elvégezheti a behatolás tesztelését és a sebezhetőségek vizsgálatát. Ha ezt a lehetőséget választja, kövesse a Microsoft bevonási szabályait, hogy a penetrációs tesztek ne sértsék meg a Microsoft-házirendeket. A Microsoft által felügyelt felhőalapú infrastruktúrával, szolgáltatásokkal és alkalmazásokkal kapcsolatban a Microsoft stratégiáját és a Red Teaming és a Live site penetráció tesztelését is használhatja.
 
-* [Behatolás-tesztelési szabályok engagement](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
+* [Behatolástesztelési beavatkozási szabályok](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-* [Microsoft Cloud vörös összevonása](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+* [Riasztási tesztek a Microsoft-felhőben](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: megosztott
+**Felelősség**: Megosztott
 
 ## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
-- További információ az [Azure biztonsági alaptervekről](../security/benchmarks/security-baselines-overview.md)
+- További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

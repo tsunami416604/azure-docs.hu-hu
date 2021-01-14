@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9eab908d2767bcdc9305daa625c70be9b63b9756
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 1ba23b73836f1a2dbe73932ba920649ca5bb8b33
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485546"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98195704"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>Service Fabric Azure biztonsági alapterve
 
@@ -64,7 +64,7 @@ A bejövő forgalom további ellenőrzéséhez vegye fontolóra az Azure webalka
 
 * [Service Fabric és Azure API Management – áttekintés](./service-fabric-api-management-overview.md)
 
-* [API Management integrálása egy belső VNET Application Gateway](../api-management/api-management-howto-integrate-internal-vnet-appgateway.md)
+* [Az API Management és az Application Gateway integrálása egy belső VNET-en](../api-management/api-management-howto-integrate-internal-vnet-appgateway.md)
 
 * [Az Azure WAF üzembe helyezése](../web-application-firewall/ag/create-waf-policy-ag.md)
 
@@ -380,7 +380,7 @@ Emellett Azure Security Center identitás-és hozzáférés-kezelési javaslatok
 
 **Útmutató**: az Azure Service Fabric-fürtök és a kapcsolódó erőforrások bevezetésére és konfigurálására konfigurált többtényezős hitelesítés (MFA) használata a mancsok (emelt szintű hozzáférési munkaállomások) használatával.
 
-* [További tudnivalók a privilegizált hozzáférésű munkaállomásokról](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [További tudnivalók a privilegizált hozzáférésű munkaállomásokról](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -1138,7 +1138,7 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 **Felelősség**: Megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
 - További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

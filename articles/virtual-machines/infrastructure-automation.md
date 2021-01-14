@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: dfa0efaa49fbca0b927bfd32511348f3ded7e6c7
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 96c68850cfd8b03f7d1457eb0f1ca9ce5880c926
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302813"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197999"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Infrastruktúra-automatizálási eszközök használata az Azure-beli virtuális gépekkel
 
@@ -88,7 +88,7 @@ A parancsfájlok letölthetők az Azure Storage-ból vagy bármilyen nyilvános 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
 - [Hozzon létre egy linuxos virtuális gépet az Azure CLI-vel, és használja az egyéni szkriptek bővítményét](./scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md?toc=%2fcli%2fazure%2ftoc.json).
-- [Hozzon létre egy Windows rendszerű virtuális gépet Azure PowerShell, és használja az egyéni szkriptek bővítményét](./scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md?toc=%2fpowershell%2fmodule%2ftoc.json).
+- [Hozzon létre egy Windows rendszerű virtuális gépet Azure PowerShell, és használja az egyéni szkriptek bővítményét](./scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md).
 
 
 ## <a name="packer"></a>Csomagoló
@@ -147,5 +147,5 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 - [Töltse le a virtuális gép sablonját](./windows/download-template.md).
 - [Hozzon létre egy Azure rendszerkép-szerkesztői sablont](./linux/image-builder-json.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Számos különböző lehetőség áll rendelkezésre az infrastruktúra-automatizálási eszközök használatára az Azure-ban. Ön szabadon használhatja az igényeinek és környezetének legmegfelelőbb megoldást. A kezdéshez és az Azure-ba beépített eszközök kipróbálásához lásd: [Linux](./linux/tutorial-automate-vm-deployment.md) vagy [Windows rendszerű](./windows/tutorial-automate-vm-deployment.md) virtuális gép testreszabásának automatizálása.

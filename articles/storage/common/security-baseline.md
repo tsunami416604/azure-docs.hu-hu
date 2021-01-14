@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 29e72f8358591614489be2731d16e89428ef388b
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: f6825fee4cfb78ab54d782cd4d942bb994bedae9
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301371"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98195721"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure-beli biztonsági alapkonfiguráció Azure Storage-hoz
 
@@ -62,13 +62,13 @@ Vegye figyelembe, hogy ha a Storage-fiókjához privát végpontok vannak csatla
 
 **Útmutató**: nem alkalmazható; a javaslat a Azure App Service vagy számítási erőforrásokon futó webalkalmazásokhoz készült.
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: az ismert kártékony IP-címekkel folytatott kommunikáció megtagadása
 
-**Útmutató**: a komplex veszélyforrások elleni védelem engedélyezése az Azure Storage-fiókhoz. Az Azure Storage komplex veszélyforrások elleni védelme egy további biztonsági intelligenciát biztosít, amely szokatlan és potenciálisan ártalmas kísérleteket észlel a Storage-fiókok eléréséhez vagy kiaknázásához. Azure Security Center integrált riasztások olyan tevékenységeken alapulnak, amelyekhez a hálózati kommunikáció sikeresen megoldott IP-címmel van társítva, függetlenül attól, hogy az IP-cím egy ismert kockázatos IP-cím (például ismert cryptominer) vagy egy olyan IP-cím, amelyet korábban nem ismer fel kockázatos. A biztonsági riasztások akkor lépnek életbe, ha a tevékenységben anomáliák vannak. 
+**Útmutató**: a komplex veszélyforrások elleni védelem engedélyezése az Azure Storage-fiókhoz. Az Azure Storage komplex veszélyforrások elleni védelme egy további biztonsági intelligenciát biztosít, amely szokatlan és potenciálisan ártalmas kísérleteket észlel a Storage-fiókok eléréséhez vagy kiaknázásához. Azure Security Center integrált riasztások olyan tevékenységeken alapulnak, amelyekhez a hálózati kommunikáció sikeresen megoldott IP-címmel van társítva, függetlenül attól, hogy az IP-cím egy ismert kockázatos IP-cím (például ismert cryptominer) vagy egy olyan IP-cím, amelyet korábban nem ismer fel kockázatos. A biztonsági riasztások akkor aktiválódnak, ha a tevékenységben rendellenességek történnek. 
 
 - [A komplex veszélyforrások elleni védelem engedélyezése](./azure-defender-storage-configure.md?tabs=azure-portal)
 
@@ -90,7 +90,7 @@ Vegye figyelembe, hogy ha a Storage-fiókjához privát végpontok vannak csatla
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems"></a>1,6: hálózati alapú behatolás-észlelési/Behatolás-megelőzési rendszerek üzembe helyezése
 
-**Útmutató**: az Azure Storage komplex veszélyforrások elleni védelme további biztonsági intelligenciát biztosít, amely szokatlan és potenciálisan ártalmas kísérleteket észlel a Storage-fiókok eléréséhez vagy kiaknázásához. A biztonsági riasztások akkor lépnek életbe, ha a tevékenységben anomáliák vannak. Ezek a biztonsági riasztások integrálva vannak Azure Security Centerekkel, és e-mailben is elküldjük az előfizetés-rendszergazdáknak, a gyanús tevékenységek részleteivel és a fenyegetések kivizsgálásával és javításával kapcsolatos ajánlásokkal együtt. 
+**Útmutató**: az Azure Storage komplex veszélyforrások elleni védelme további biztonsági intelligenciát biztosít, amely szokatlan és potenciálisan ártalmas kísérleteket észlel a Storage-fiókok eléréséhez vagy kiaknázásához. A biztonsági riasztások akkor aktiválódnak, ha a tevékenységben rendellenességek történnek. Ezek a biztonsági riasztások integrálva vannak az Azure Security Centerrel, és az előfizetési rendszergazdák e-mailben is értesítést kapnak róluk, a gyanús tevékenységek részleteivel és a fenyegetések kivizsgálására és javítására vonatkozó ajánlásokkal együtt. 
 
 - [Komplex veszélyforrások elleni védelem konfigurálása az Azure Storage-hoz](./azure-defender-storage-configure.md)
 
@@ -102,7 +102,7 @@ Vegye figyelembe, hogy ha a Storage-fiókjához privát végpontok vannak csatla
 
 **Útmutató**: nem alkalmazható; a javaslat a Azure App Service vagy számítási erőforrásokon futó webalkalmazásokhoz készült.
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -126,7 +126,7 @@ Ha a hálózati hozzáférés hatókörét meghatározott tárolási fiókokra k
 
 A Storage-fiókhoz kapcsolódó beépített szabályzat-definíciókat is használhatja, például: a Storage-fiókoknak virtuális hálózati szolgáltatási végpontot kell használniuk. 
 
-- [Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Azure Policy minták a Storage-hoz](../../governance/policy/samples/built-in-policies.md#storage)
 
@@ -134,7 +134,7 @@ A Storage-fiókhoz kapcsolódó beépített szabályzat-definíciókat is haszn�
 
 - [Azure Blueprint létrehozása](../../governance/blueprints/create-blueprint-portal.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -156,7 +156,7 @@ A Storage-fiókhoz kapcsolódó beépített szabályzat-definíciókat is haszn�
 
 **Útmutató**: a Azure Policy használatával naplózhatja a hálózati erőforrások konfigurációs változásait. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrásokra vonatkozó módosításokat végrehajtják 
 
-- [Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Riasztások létrehozása a Azure Monitorban](../../azure-monitor/platform/alerts-activity-log.md)
 
@@ -172,7 +172,7 @@ A Storage-fiókhoz kapcsolódó beépített szabályzat-definíciókat is haszn�
 
 **Útmutató**: nem alkalmazható; A Microsoft fenntartja az Azure Storage-fiókok időforrásait.
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Microsoft
 
@@ -200,7 +200,7 @@ A Storage-fiókhoz kapcsolódó beépített szabályzat-definíciókat is haszn�
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -220,7 +220,7 @@ A Storage-fiókhoz kapcsolódó beépített szabályzat-definíciókat is haszn�
 
 **Útmutató**: az Azure Storage-naplók áttekintéséhez léteznek a szokásos lehetőségek, például a log Analytics ajánlaton keresztüli lekérdezések, valamint a naplófájlok közvetlen megtekintésének egyedi lehetősége. Az Azure Storage-ban a naplók olyan blobokban vannak tárolva, amelyeknek közvetlenül elérhetőnek kell lenniük `http://accountname.blob.core.windows.net/$logs` (a naplózási mappa alapértelmezés szerint rejtett, ezért közvetlenül kell navigálnia. Nem jelenik meg a lista parancsaiban) 
 
-Emellett engedélyezze a komplex veszélyforrások elleni védelmet az Azure Storage-fiókhoz. Az Azure Storage komplex veszélyforrások elleni védelme egy további biztonsági intelligenciát biztosít, amely szokatlan és potenciálisan ártalmas kísérleteket észlel a Storage-fiókok eléréséhez vagy kiaknázásához. A biztonsági riasztások akkor lépnek életbe, ha a tevékenységben anomáliák vannak. Ezek a biztonsági riasztások integrálva vannak Azure Security Centerekkel, és e-mailben is elküldjük az előfizetés-rendszergazdáknak, a gyanús tevékenységek részleteivel és a fenyegetések kivizsgálásával és javításával kapcsolatos ajánlásokkal együtt. 
+Emellett engedélyezze a komplex veszélyforrások elleni védelmet az Azure Storage-fiókhoz. Az Azure Storage komplex veszélyforrások elleni védelme egy további biztonsági intelligenciát biztosít, amely szokatlan és potenciálisan ártalmas kísérleteket észlel a Storage-fiókok eléréséhez vagy kiaknázásához. A biztonsági riasztások akkor aktiválódnak, ha a tevékenységben rendellenességek történnek. Ezek a biztonsági riasztások integrálva vannak az Azure Security Centerrel, és az előfizetési rendszergazdák e-mailben is értesítést kapnak róluk, a gyanús tevékenységek részleteivel és a fenyegetések kivizsgálására és javítására vonatkozó ajánlásokkal együtt. 
 
 - [Az adatnapló és-áttekintés](./storage-analytics-logging.md#how-logs-are-stored)
 
@@ -252,7 +252,7 @@ Emellett engedélyezze a komplex veszélyforrások elleni védelmet az Azure Sto
 
 - [Komplex veszélyforrások elleni védelem konfigurálása az Azure Storage-hoz](./azure-defender-storage-configure.md?tabs=azure-portal)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -270,7 +270,7 @@ Emellett engedélyezze a komplex veszélyforrások elleni védelmet az Azure Sto
 
 **Útmutató**: nem alkalmazható; a teljesítményteszt a számítási erőforrások számára készült.
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -298,7 +298,7 @@ Emellett engedélyezze a komplex veszélyforrások elleni védelmet az Azure Sto
 
 - [A rendszerbiztonsági tag és az Azure Storage-fiók hozzáférés-vezérlésének ismertetése](./storage-introduction.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -334,7 +334,7 @@ A Microsoft-szolgáltatásokhoz és az Azure ARM-hoz Azure AD Privileged Identit
 
 **Útmutató**: engedélyezze Azure Active Directory többtényezős hitelesítést, és kövesse Azure Security Center identitás-és hozzáférés-kezelési ajánlásokat a Storage-fiók erőforrásainak védelméhez. 
 
-- [Az MFA engedélyezése az Azure-ban](../../active-directory/authentication/howto-mfa-getstarted.md)
+- [MFA engedélyezése az Azure-ban](../../active-directory/authentication/howto-mfa-getstarted.md)
 
 - [Identitás és hozzáférés figyelése Azure Security Centeron belül](../../security-center/security-center-identity-access.md)
 
@@ -346,11 +346,11 @@ A Microsoft-szolgáltatásokhoz és az Azure ARM-hoz Azure AD Privileged Identit
 
 **Útmutató**: a Storage-fiók erőforrásainak bejelentkezéséhez és konfigurálásához használja a mancsok (emelt szintű hozzáférésű munkaállomások) használatát az MFA használatára. 
 
-- [További tudnivalók a privilegizált hozzáférésű munkaállomásokról](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [További tudnivalók a privilegizált hozzáférésű munkaállomásokról](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [Az MFA engedélyezése az Azure-ban](../../active-directory/authentication/howto-mfa-getstarted.md)
+- [MFA engedélyezése az Azure-ban](../../active-directory/authentication/howto-mfa-getstarted.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -458,7 +458,7 @@ Diagnosztikai beállítások létrehozása Azure Active Directory felhasználói
 
 - [A Ügyfélszéf megismerése](../../security/fundamentals/customer-lockbox-overview.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -490,7 +490,7 @@ Diagnosztikai beállítások létrehozása Azure Active Directory felhasználói
 
 - [Virtual Network szolgáltatási végpontok](../../virtual-network/virtual-network-service-endpoints-overview.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -554,7 +554,7 @@ Emellett a virtuális hálózati szolgáltatás végpont-házirendjeivel is szű
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -564,7 +564,7 @@ Emellett a virtuális hálózati szolgáltatás végpont-házirendjeivel is szű
 
 - [Az Azure Storage titkosításának megismerése a nyugalmi állapotban](./storage-service-encryption.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -592,7 +592,7 @@ Emellett a virtuális hálózati szolgáltatás végpont-házirendjeivel is szű
 
 - [Biztonsági javaslatok – gyorsútmutató](../../security-center/recommendations-reference.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -600,7 +600,7 @@ Emellett a virtuális hálózati szolgáltatás végpont-házirendjeivel is szű
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -608,7 +608,7 @@ Emellett a virtuális hálózati szolgáltatás végpont-házirendjeivel is szű
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -616,7 +616,7 @@ Emellett a virtuális hálózati szolgáltatás végpont-házirendjeivel is szű
 
 **Útmutató**: nem alkalmazható; A Microsoft a biztonsági rések kezelését a Storage-fiókokat támogató mögöttes rendszereken végzi.
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -626,7 +626,7 @@ Emellett a virtuális hálózati szolgáltatás végpont-házirendjeivel is szű
 
 - [A Azure Security Center biztonsági pontszámának megismerése](../../security-center/secure-score-security-controls.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -672,7 +672,7 @@ Emellett az Azure Storage komplex veszélyforrások elleni védelmének használ
 
 - [Komplex veszélyforrások elleni védelem konfigurálása az Azure Storage-hoz](./azure-defender-storage-configure.md?tabs=azure-portal)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -681,7 +681,7 @@ Emellett az Azure Storage komplex veszélyforrások elleni védelmének használ
 **Útmutató**: a szervezeti igényeknek megfelelően létre kell hoznia a jóváhagyott Azure-erőforrások leltárát. 
 
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -694,11 +694,11 @@ Emellett az Azure Storage komplex veszélyforrások elleni védelmének használ
 
 Emellett az Azure Resource Graph használatával lekérdezheti vagy felderítheti az előfizetésben (k) belüli erőforrásokat. Ez magas biztonsági alapú környezetekben, például a Storage-fiókokkal is segít. 
 
-- [Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Lekérdezések létrehozása az Azure Graph használatával](../../governance/resource-graph/first-query-portal.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -706,7 +706,7 @@ Emellett az Azure Resource Graph használatával lekérdezheti vagy felderíthet
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -714,9 +714,9 @@ Emellett az Azure Resource Graph használatával lekérdezheti vagy felderíthet
 
 **Útmutató**: az ügyfél meggátolhatja az erőforrások létrehozását és használatát Azure Policy az ügyfél céges szabályzata által megkövetelt módon. 
 
-- [Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -724,7 +724,7 @@ Emellett az Azure Resource Graph használatával lekérdezheti vagy felderíthet
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -735,11 +735,11 @@ Emellett az Azure Resource Graph használatával lekérdezheti vagy felderíthet
 - Nem engedélyezett erőforrástípusok 
 - Engedélyezett erőforrástípusok 
 
-- [Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Adott erőforrástípus megtagadása a következővel Azure Policy](../../governance/policy/samples/index.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -747,7 +747,7 @@ Emellett az Azure Resource Graph használatával lekérdezheti vagy felderíthet
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -757,7 +757,7 @@ Emellett az Azure Resource Graph használatával lekérdezheti vagy felderíthet
 
 - [Feltételes hozzáférés konfigurálása az ARM-hozzáférés blokkolásához](../../role-based-access-control/conditional-access-azure-management.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -765,7 +765,7 @@ Emellett az Azure Resource Graph használatával lekérdezheti vagy felderíthet
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -773,7 +773,7 @@ Emellett az Azure Resource Graph használatával lekérdezheti vagy felderíthet
 
 **Útmutató**: nem alkalmazható; Ez a javaslat Azure App Service vagy számítási erőforrásokon futó webalkalmazásokhoz készült.
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -794,7 +794,7 @@ A Azure Security Center javaslatainak használata biztonságos alapkonfiguráci�
 
 - [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias)
 
-- [Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -804,7 +804,7 @@ A Azure Security Center javaslatainak használata biztonságos alapkonfiguráci�
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -812,11 +812,11 @@ A Azure Security Center javaslatainak használata biztonságos alapkonfiguráci�
 
 **Útmutató**: használja a Azure Policy [megtagadás] és a [telepítés, ha nem létezik] lehetőséget a Storage-fiók erőforrásaiban található biztonságos beállítások betartatásához. 
 
-- [Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Azure Policy effektusok ismertetése](../../governance/policy/concepts/effects.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -824,7 +824,7 @@ A Azure Security Center javaslatainak használata biztonságos alapkonfiguráci�
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -836,7 +836,7 @@ A Azure Security Center javaslatainak használata biztonságos alapkonfiguráci�
 
 - [Engedélyek és csoportok az Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -844,7 +844,7 @@ A Azure Security Center javaslatainak használata biztonságos alapkonfiguráci�
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -852,9 +852,9 @@ A Azure Security Center javaslatainak használata biztonságos alapkonfiguráci�
 
 **Útmutató**: a Azure Policy kihasználása riasztásra, naplózásra és a Storage-fiók rendszerkonfigurációinak betartatására. Emellett dolgozzon ki egy folyamatot és egy folyamatot a házirend-kivételek kezeléséhez. 
 
-- [Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -862,7 +862,7 @@ A Azure Security Center javaslatainak használata biztonságos alapkonfiguráci�
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -880,7 +880,7 @@ A Azure Security Center javaslatainak használata biztonságos alapkonfiguráci�
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -910,11 +910,11 @@ Emellett a Storage-fiók kulcsainak gyakori elforgatásával korlátozhatja a St
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: a hitelesítő adatok nem szándékolt expozíciójának megszüntetése
 
-**Útmutató**: hitelesítő adatok beolvasása a programkódon belül a hitelesítő adatok azonosításához. A hitelesítő adatok beolvasása azt is javasolja, hogy a felderített hitelesítő adatokat biztonságosabb helyszínekre (például Azure Key Vault) helyezze. 
+**Útmutató**: hitelesítő adatok beolvasása a programkódon belül a hitelesítő adatok azonosításához. A Credential Scanner a felfedezett hitelesítő adatok biztonságosabb helyre, például az Azure Key Vaultba való áthelyezésére is javaslatot tesz. 
 
 - [A hitelesítő adatok beolvasójának beállítása](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -926,7 +926,7 @@ Emellett a Storage-fiók kulcsainak gyakori elforgatásával korlátozhatja a St
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült. A Microsoft kezeli a kártevő szoftvereket a mögöttes platformon.
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -938,7 +938,7 @@ A kártevő szoftverek előzetes vizsgálatát is megteheti, mielőtt a nem szá
 
 - [Komplex veszélyforrások elleni védelem konfigurálása az Azure Storage-hoz](./azure-defender-storage-configure.md?tabs=azure-portal)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -946,7 +946,7 @@ A kártevő szoftverek előzetes vizsgálatát is megteheti, mielőtt a nem szá
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült. A Microsoft kezeli a kártevő szoftvereket a mögöttes platformon.
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -1005,7 +1005,7 @@ Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedSto
 Megjegyzés: Ha át szeretné másolni az adatait az Azure Table Storage szolgáltatásba, és onnan másolja, telepítse az AzCopy 7,3-es verzióját.
 
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -1017,7 +1017,7 @@ Megjegyzés: Ha át szeretné másolni az adatait az Azure Table Storage szolgá
 
 - [Az Azure Storage-blobok helyreállítható törlése](../blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-- [Üzleti szempontból kritikus fontosságú blob-alapú adattárolás tárolása a nem módosítható tárolóval](../blobs/storage-blob-immutable-storage.md)
+- [Az üzlet szempontjából létfontosságú blobadatok tárolása nem módosítható tárolással](../blobs/storage-blob-immutable-storage.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -1029,7 +1029,7 @@ Megjegyzés: Ha át szeretné másolni az adatait az Azure Table Storage szolgá
 
 ### <a name="101-create-incident-response-guide"></a>10,1: incidens-válasz létrehozási útmutatója
 
-**Útmutató**: az incidensekre adott válaszokra vonatkozó útmutató kiépítése a szervezet számára. Győződjön meg arról, hogy van olyan írásos incidens-válasz, amely meghatározza a személyzet összes szerepkörét, valamint az incidensek kezelésének és kezelésének fázisait az észleléstől az incidens utáni felülvizsgálatig.
+**Útmutató**: Alakítson ki incidenskezelési útmutatót a vállalat számára. Gondoskodjon írásos incidenskezelési tervekről, amelyek definiálják az összes résztvevő szerepkörét, valamint az incidenskezelés fázisait az észleléstől az incidens utáni értékelésig.
 
 - [Útmutató a saját biztonsági incidensek megoldási folyamatának létrehozásához](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -1037,7 +1037,7 @@ Megjegyzés: Ha át szeretné másolni az adatait az Azure Table Storage szolgá
 
 - [Az ügyfél a NIST számítógépes biztonsági incidensek kezelési útmutatóját is kihasználhatja a saját incidens-válasz tervének létrehozásával kapcsolatos támogatáshoz](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -1057,11 +1057,11 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 ### <a name="103-test-security-response-procedures"></a>10,3: biztonsági reagálási eljárások tesztelése
 
-**Útmutató**: az Azure-erőforrások védelmének biztosítása érdekében a rendszer az incidensek reagálási képességeinek rendszeres tesztelésére szolgáló gyakorlatokat hajt végre. Azonosítsa a gyenge pontokat és a réseket, és szükség szerint módosítsa a tervet.
+**Útmutató**: az Azure-erőforrások védelmének biztosítása érdekében a rendszer az incidensek reagálási képességeinek rendszeres tesztelésére szolgáló gyakorlatokat hajt végre. Azonosítsa a gyenge pontokat és réseket, és szükség esetén dolgozza át a tervet.
 
 - [A NIST kiadványa – útmutató az IT-csomagok és-képességek teszteléséhez, betanításához és alkalmazásához](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -1105,15 +1105,15 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Útmutató**: kövesse a Microsoft részvételi szabályait, hogy a behatolási tesztek ne sértsék a Microsoft-házirendeket. A Microsoft által felügyelt felhőalapú infrastruktúrával, szolgáltatásokkal és alkalmazásokkal kapcsolatban a Microsoft stratégiáját és a Red Teaming és a Live site penetráció tesztelését is használhatja.
 
-- [Behatolástesztelési szabályok](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
+- [Behatolástesztelési beavatkozási szabályok](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-- [Microsoft Cloud – támadásszimuláció](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+- [Riasztási tesztek a Microsoft-felhőben](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../../security/benchmarks/overview.md)
 - További információ az [Azure biztonsági Alaptervekről](../../security/benchmarks/security-baselines-overview.md)

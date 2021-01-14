@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f3e4c411223a3e8fc0602602cd941a00f7a19cca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 808443cb805b2dee2426198f9cd4f7ba502d8999
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87028243"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197506"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Azure-beli Windows virtuális gépek konkrét RDP-hibaüzeneteinek elhárítása
 A Windows rendszerű virtuális gépekhez (VM) az Azure-ban Távoli asztal-csatlakozás használatakor hibaüzenet jelenhet meg. Ez a cikk a leggyakoribb hibaüzenetek némelyikét ismerteti, valamint a hibaelhárítási lépéseket. Ha olyan problémák merülnek fel, amelyek RDP használatával kapcsolódnak a virtuális géphez, de nem találnak konkrét hibaüzenetet, tekintse [meg a távoli asztal hibaelhárítási útmutatóját](troubleshoot-rdp-connection.md).
@@ -108,8 +108,8 @@ Minden Windows-számítógép rendelkezik egy Távoli asztal felhasználó helyi
 
 Győződjön meg arról, hogy a kapcsolódáshoz használt fiók Távoli asztal bejelentkezési jogosultságokkal rendelkezik. Megkerülő megoldásként használjon egy tartományi vagy helyi rendszergazdai fiókot Távoli asztalhoz való kapcsolódáshoz. Ha a kívánt fiókot hozzá szeretné adni a Távoli asztal felhasználók helyi csoportjához, használja a Microsoft Management Console beépülő modult (**Rendszereszközök > helyi felhasználók és csoportok > csoportok > távoli asztal felhasználók**).
 
-## <a name="next-steps"></a>További lépések
-Ha a hibák egyike sem fordult elő, és az RDP-vel való kapcsolódással kapcsolatban ismeretlen probléma merült fel, tekintse meg a [Távoli asztal hibaelhárítási útmutatóját](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+## <a name="next-steps"></a>Következő lépések
+Ha a hibák egyike sem fordult elő, és az RDP-vel való kapcsolódással kapcsolatban ismeretlen probléma merült fel, tekintse meg a [Távoli asztal hibaelhárítási útmutatóját](troubleshoot-rdp-connection.md).
 
 * A virtuális gépen futó alkalmazások elérésével kapcsolatos hibaelhárítási lépéseket lásd: az Azure-beli [virtuális gépen futó alkalmazásokhoz való hozzáférés hibaelhárítása](./troubleshoot-app-connection.md?toc=/azure/virtual-machines/linux/toc.json).
 * Ha a Secure Shell (SSH) segítségével csatlakozik egy Linux rendszerű virtuális géphez az Azure-ban, tekintse meg az [SSH-kapcsolatok hibaelhárítása Az Azure-ban linuxos virtuális géppel](./troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json)című témakört.

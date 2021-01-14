@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: c824e0abea7320a20441e51caa2a05d534ff61b3
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 003a71f962652b1a1436f5d9875835534090a77a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092686"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196588"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Az Azure hatáskörébe tartozó adatfeliratok automatikus címkézése
 
@@ -33,8 +33,9 @@ A hatáskörébe tartoznak a besorolások a tulajdonosi címkékhez hasonlók, �
 A hatáskörébe ugyanazokat a besorolásokat (más néven bizalmas adattípusokat) használja, mint a Microsoft 365.  A MIP-érzékenységi címkék a Microsoft 365 biztonsági és megfelelőségi központban (SCC) jönnek létre. Ez lehetővé teszi a meglévő érzékenységi címkék kiterjesztését az Azure hatáskörébe tartozó eszközökre.
 
 > [!NOTE]
-> Míg a besorolások közvetlenül vannak összehasonlítva (a társadalombiztosítási szám besorolása **társadalombiztosítási számot** tartalmaz), az érzékenységi címkék akkor lesznek alkalmazva, ha egy vagy több besorolás és forgatókönyv együtt található. 
-> 
+> A besorolások közvetlenül vannak összehasonlítva, például egy társadalombiztosítási szám, amely a **társadalombiztosítási szám** besorolásával rendelkezik. 
+>
+> Ezzel szemben az érzékenységi címkék akkor lépnek életbe, ha egy vagy több besorolás és feltétel együtt található. Ebben a kontextusban a [feltételek](/microsoft-365/compliance/apply-sensitivity-label-automatically) a strukturálatlan adatokhoz megadható összes paraméterre vonatkoznak, például **egy másik besoroláshoz való közelségre**, valamint a **megbízhatóságra**. 
 
 Az Azure hatáskörébe tartozó érzékenységi címkék használatával automatikusan alkalmazhat címkéket a fájlokra és az adatbázis-oszlopokra.
 
@@ -92,16 +93,11 @@ A MIP érzékenységi címkéjének az Azure hatáskörébe való kiterjesztés�
 >
 > Ebben az esetben a címkék és az egyéni bizalmas adattípusok nem az Azure-beli hatáskörébe vannak osztva, és az Ön beleegyezik, hogy az Azure hatáskörébe tartozik.
 
-> [!IMPORTANT]
-> Az Ön beleegyezik, hogy a Microsoft a címke nevét és az egyéni bizalmas adatok típusának nevét az Azure hatáskörébe és a Azure Security Center (ASC) *is* megosztja. A Microsoft az Azure hatáskörébe tartozó címke-információkat használja a javaslatok és riasztások ASC-ben való gyarapítása érdekében. 
->
-> A Microsoft 365 megfelelőségi központban való hozzájárulás az ezen az adatszolgáltatásokkal való megosztásra vonatkozik. Jelenleg nincs lehetőség a címkézési információk megosztására az Azure hatáskörébe.
-
 **Az érzékenységi címkék kiterjesztése a hatáskörébe:**
 
 A Microsoft 365ban navigáljon a **Information Protection** lapra. A **címkézés kibővítése az eszközökre az Azure-ban**– válassza a **bekapcsolás** gombot, majd a megjelenő megerősítési párbeszédpanelen válassza az **Igen** lehetőséget.
 
-Például:
+Példa:
 
 :::image type="content" source="media/create-sensitivity-label/extend-sensitivity-labels-to-purview-small.png" alt-text="Válassza a * * bekapcsolás * * lehetőséget az érzékenységi címkék kiterjesztéséhez a hatáskörébe" lightbox="media/create-sensitivity-label/extend-sensitivity-labels-to-purview.png":::
  
@@ -159,7 +155,7 @@ A címke létrehozásakor vagy szerkesztésekor a varázslóban található fáj
 
 Az **Office-alkalmazások automatikus címkézése** lapon engedélyezze az **Office-alkalmazások automatikus címkézését,** majd adja meg azokat a feltételeket, amelyekben automatikusan alkalmazni szeretné a címkét az adataira.
 
-Például:
+Példa:
 
 :::image type="content" source="media/create-sensitivity-label/create-auto-labeling-rules-files-small.png" alt-text="A Microsoft 365 biztonsági és megfelelőségi központban található fájlokra vonatkozó autocímkézési szabályok definiálása" lightbox="media/create-sensitivity-label/create-auto-labeling-rules-files.png":::
  
@@ -175,7 +171,7 @@ Az **Azure hatáskörébe tartozó eszközök (előzetes verzió)** lehetőségn
 
 1. Jelölje be a **bizalmas adattípus-típusok jelölőnégyzetet** , és válassza ki a címkére alkalmazni kívánt bizalmas adatokat.
 
-Például:
+Példa:
         
 :::image type="content" source="media/create-sensitivity-label/create-auto-labeling-rules-db-columns-small.png" alt-text="Az SQL-oszlopokra vonatkozó autocímkézési szabályok definiálása a Microsoft 365 biztonsági és megfelelőségi központban" lightbox="media/create-sensitivity-label/create-auto-labeling-rules-db-columns.png":::
 
@@ -198,11 +194,11 @@ Miután meghatározta a címkékre vonatkozó automatikus címkézési szabályo
 
 **Az eszközökre alkalmazott címkék megtekintéséhez az Azure hatáskörébe katalógusában:**
 
-Az Azure-beli hatáskörébe katalógusban használja a címkék szűrésére szolgáló beállításokat, hogy **csak a megadott** címkékkel rendelkező fájlokat jelenítse meg. Például: 
+Az Azure-beli hatáskörébe katalógusban használja a címkék szűrésére szolgáló beállításokat, hogy **csak a megadott** címkékkel rendelkező fájlokat jelenítse meg. Példa: 
 
 :::image type="content" source="media/create-sensitivity-label/filter-search-results-small.png" alt-text="Eszközök keresése címke szerint" lightbox="media/create-sensitivity-label/filter-search-results.png":::
 
-Például:
+Példa:
 
 :::image type="content" source="media/create-sensitivity-label/view-labeled-files-blob-storage-small.png" alt-text="Az Azure-Blob Storage egy fájlján megtekintheti az érzékenységi címkét" lightbox="media/create-sensitivity-label/view-labeled-files-blob-storage.png":::
 

@@ -3,12 +3,12 @@ title: Biztonsági mentési adatai titkosítása az ügyfél által felügyelt k
 description: Megtudhatja, hogyan titkosíthatja a biztonsági mentési adatait az ügyfél által felügyelt kulcsokkal (CMK) a Azure Backup segítségével.
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 6e3eea4b5f44203b68c1263c0fb3ae843cabbe72
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: cc6ad2f67b84bcd62bcc18566a4ac5d159ea32c4
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895987"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197756"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Biztonsági mentési adatai titkosítása az ügyfél által felügyelt kulcsokkal
 
@@ -25,11 +25,11 @@ Ez a cikk a következőket ismerteti:
 
 ## <a name="before-you-start"></a>Előkészületek
 
-- Ez a funkció lehetővé teszi az **új Recovery Services** -tárolók titkosítását. Azok a tárolók, amelyek már regisztrálva vannak, vagy amelyeket regisztrálni próbáltak, nem támogatottak.
+- Ez a funkció lehetővé teszi az **új Recovery Services**-tárolók titkosítását. Azok a tárolók, amelyek már regisztrálva vannak, vagy amelyeket regisztrálni próbáltak, nem támogatottak.
 
 - Ha engedélyezte a Recovery Services-tárolót, az ügyfél által felügyelt kulcsokkal történő titkosítás nem állítható vissza a platform által felügyelt kulcsok használatára (alapértelmezett). A titkosítási kulcsokat a követelményeinek megfelelően módosíthatja.
 
-- Ez a funkció jelenleg nem **támogatja a Mars-ügynök használatával történő biztonsági mentést** , és előfordulhat, hogy nem fogja tudni használni a CMK-titkosítású tárolót. A MARS-ügynök felhasználói jelszó-alapú titkosítást használ. A szolgáltatás emellett nem támogatja a klasszikus virtuális gépek biztonsági mentését.
+- Ez a funkció jelenleg nem **támogatja a Mars-ügynök használatával történő biztonsági mentést**, és előfordulhat, hogy nem fogja tudni használni a CMK-titkosítású tárolót. A MARS-ügynök felhasználói jelszó-alapú titkosítást használ. A szolgáltatás emellett nem támogatja a klasszikus virtuális gépek biztonsági mentését.
 
 - Ez a funkció nem kapcsolódik a [Azure Disk Encryptionhoz](../security/fundamentals/azure-disk-encryption-vms-vmss.md), amely a virtuális gép lemezei a BitLocker (Windows) és a DM-Crypt (Linux rendszerhez) rendszerhez készült vendég-alapú titkosítását használják.
 
@@ -74,11 +74,11 @@ Azure Backup a rendszerhez rendelt felügyelt identitás használatával hiteles
 
 Most engedélyeznie kell a Recovery Services-tárolónak a titkosítási kulcsot tartalmazó Azure Key Vault elérését. Ezt úgy teheti meg, hogy engedélyezi a Recovery Services tár felügyelt identitását a Key Vault eléréséhez.
 
-1. Nyissa meg a Azure Key Vault > **hozzáférési szabályzatokat** . Folytassa a **+ hozzáférési szabályzatok hozzáadásával** .
+1. Nyissa meg a Azure Key Vault > **hozzáférési szabályzatokat**. Folytassa a **+ hozzáférési szabályzatok hozzáadásával**.
 
     ![Hozzáférési szabályzatok hozzáadása](./media/encryption-at-rest-with-cmk/access-policies.png)
 
-1. A **legfontosabb engedélyek** területen válassza a **beolvasás** , **Listázás** , **kicsomagolás kulcs** és **betakarás** kulcs művelet lehetőséget. Ez határozza meg a kulcs engedélyezett műveleteit.
+1. A **legfontosabb engedélyek** területen válassza a **beolvasás**, **Listázás**, **kicsomagolás kulcs** és **betakarás** kulcs művelet lehetőséget. Ez határozza meg a kulcs engedélyezett műveleteit.
 
     ![Kulcs engedélyeinek kiosztása](./media/encryption-at-rest-with-cmk/key-permissions.png)
 
@@ -154,19 +154,27 @@ A kulcs hozzárendeléséhez:
 
     1. Adja meg azt a **kulcs-URI** -t, amellyel titkosítani szeretné a Recovery Services-tárolóban lévő összes értéket. Meg kell adnia azt az előfizetést is, amelyben a Azure Key Vault (amely tartalmazza ezt a kulcsot) megtalálható. Ezt a kulcs URI-t a Azure Key Vault tartozó kulcsból lehet beszerezni. Győződjön meg arról, hogy a kulcs URI-ja megfelelően lett másolva. Javasoljuk, hogy használja a másolás a **vágólapra** gombot a kulcs-azonosítóval.
 
+        >[!NOTE]
+        >A kulcs URI azonosítójának használatával a titkosítási kulcs megadásakor a kulcs nem lesz automatikusan elforgatva. A legfontosabb frissítéseket manuálisan kell elvégezni, ha szükség van az új kulcs megadásával.
+
         ![Adja meg a kulcs URI-JÁT](./media/encryption-at-rest-with-cmk/key-uri.png)
 
     1. Tallózással keresse meg és válassza ki a kulcsot a Key Vault a Key Picker ablaktáblán.
+
+        >[!NOTE]
+        >Ha a Key Picker panelen megadja a titkosítási kulcsot, a rendszer automatikusan elforgatja a kulcsot, amikor a kulcs új verziója engedélyezve van.
 
         ![Kulcs kiválasztása a Key vaultból](./media/encryption-at-rest-with-cmk/key-vault.png)
 
 1. Válassza a **Mentés** lehetőséget.
 
-1. **A titkosítási kulcs frissítésének nyomon követési folyamata:** A kulcs hozzárendelésének előrehaladását a Recovery Services-tárolóban található **műveletnapló** használatával követheti nyomon. Az állapotnak hamarosan **sikeresre** kell váltania. A tár mostantól a megadott kulccsal titkosítja az összes adathalmazt.
+1. A **titkosítási kulcs frissítésének előrehaladása és állapota**: a titkosítási kulcs hozzárendelésének előrehaladását és állapotát a bal oldali navigációs sávon a **biztonsági mentési feladatok** nézet használatával követheti nyomon. Az állapotnak hamarosan **Befejezettre** kell váltania. A tár mostantól a megadott kulccsal titkosítja az összes adathalmazt.
 
-    ![Előrehaladás követése a tevékenység naplójában](./media/encryption-at-rest-with-cmk/activity-log.png)
+    ![Az állapot befejeződött](./media/encryption-at-rest-with-cmk/status-succeeded.png)
 
-    ![Az állapot sikerült](./media/encryption-at-rest-with-cmk/status-succeeded.png)
+    A titkosítási kulcs frissítéseit a rendszer a tár tevékenységi naplójában is naplózza.
+
+    ![Tevékenységnapló](./media/encryption-at-rest-with-cmk/activity-log.png)
 
 >[!NOTE]
 > Ez a folyamat változatlan marad, ha frissíteni vagy módosítani szeretné a titkosítási kulcsot. Ha egy másik Key Vault (az éppen jelenleg használttól eltérő) kulcsát szeretné frissíteni és használni, ügyeljen rá, hogy:
@@ -192,7 +200,7 @@ Mielőtt továbblép a védelem konfigurálására, javasoljuk, hogy gondoskodjo
 >
 >Ha a fenti lépések mindegyikét megerősítettük, csak ezután folytassa a biztonsági mentés konfigurálását.
 
-Az ügyfél által felügyelt kulcsokkal titkosított Recovery Services-tárolóra vonatkozó biztonsági másolatok konfigurálásának és végrehajtásának folyamata megegyezik a platform által felügyelt kulcsokat használó tárolóval, és **nem változik a felhasználói élmény** . Ez igaz az Azure-beli [virtuális gépek biztonsági mentésére](./quick-backup-vm-portal.md) , valamint a virtuális gépen futó munkaterhelések biztonsági mentésére (például [SAP HANA](./tutorial-backup-sap-hana-db.md), [SQL Server](./tutorial-sql-backup.md) adatbázisokra).
+Az ügyfél által felügyelt kulcsokkal titkosított Recovery Services-tárolóra vonatkozó biztonsági másolatok konfigurálásának és végrehajtásának folyamata megegyezik a platform által felügyelt kulcsokat használó tárolóval, és **nem változik a felhasználói élmény**. Ez igaz az Azure-beli [virtuális gépek biztonsági mentésére](./quick-backup-vm-portal.md) , valamint a virtuális gépen futó munkaterhelések biztonsági mentésére (például [SAP HANA](./tutorial-backup-sap-hana-db.md), [SQL Server](./tutorial-sql-backup.md) adatbázisokra).
 
 ## <a name="restoring-data-from-backup"></a>Adatok visszaállítása biztonsági másolatból
 

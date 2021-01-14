@@ -13,12 +13,12 @@ metadata:
   author: BlackMist
   ms.date: 09/21/2020
   ms.custom: contperf-fy21q1
-  ms.openlocfilehash: ddf39e9822d55f8e7bec8a0e36659757ac9b4770
-  ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+  ms.openlocfilehash: 015dcc240d75500e7c145ba2544f27c13c0c3493
+  ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 01/11/2021
-  ms.locfileid: "98071986"
+  ms.lasthandoff: 01/13/2021
+  ms.locfileid: "98165382"
 landingContent:
 - title: 'Első lépések: Kódközpontú'
   linkLists:
@@ -58,7 +58,7 @@ landingContent:
     links:
     - text: Modell üzembe helyezése a felhőben
       url: how-to-deploy-existing-model.md
-    - text: MLflow-modellek nyomon követése és üzembe helyezése
+    - text: MLflow-modellek nyomon követése
       url: how-to-use-mlflow.md
 - title: Modellek üzembe helyezése és kezelése (MLOps)
   linkLists:
@@ -68,6 +68,8 @@ landingContent:
       url: concept-model-management-and-deployment.md
     - text: Az üzembe helyezés módja és helye
       url: how-to-deploy-and-where.md
+    - text: MLflow-modellek üzembe helyezése
+      url: how-to-deploy-mlflow-models.md
   - linkListType: reference
     links:
     - text: Python SDK

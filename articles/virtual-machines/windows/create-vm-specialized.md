@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: cddc7f4f453f22b0cb36b1d3a1e9c2fba2dcabaf
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 577b8527d95a6410deca8002cddfaae31be1fc97
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455089"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197489"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Windows rendszerű virtuális gép létrehozása specializált lemezből a PowerShell-lel
 
@@ -54,7 +54,7 @@ Feltöltheti a virtuális merevlemezt egy helyszíni virtualizációs eszközzel
 ### <a name="prepare-the-vm"></a>A virtuális gép előkészítése
 Egy új virtuális gép létrehozásához használja a virtuális merevlemezt. 
   
-  * [Készítse elő a Windows VHD-t az Azure-ba való feltöltéshez](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). **Ne általánosítsa** a virtuális gépet a Sysprep használatával.
+  * [Készítse elő a Windows VHD-t az Azure-ba való feltöltéshez](prepare-for-upload-vhd-image.md). **Ne általánosítsa** a virtuális gépet a Sysprep használatával.
   * Távolítsa el a virtuális gépre telepített összes vendég virtualizációs eszközt és ügynököt (például a VMware-eszközökre).
   * Győződjön meg arról, hogy a virtuális gép konfigurálva van a DHCP IP-címének és DNS-beállításainak lekérésére. Ez biztosítja, hogy a kiszolgáló az indításkor megszerezze a virtuális hálózaton belüli IP-címet. 
 
@@ -193,7 +193,7 @@ $nsg = New-AzNetworkSecurityGroup `
     
 ```
 
-További információ a végpontokról és a NSG-szabályokról: [portok megnyitása az Azure-beli virtuális](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)gépekhez a PowerShell használatával.
+További információ a végpontokról és a NSG-szabályokról: [portok megnyitása az Azure-beli virtuális](nsg-quickstart-powershell.md)gépekhez a PowerShell használatával.
 
 ### <a name="create-a-public-ip-address-and-nic"></a>Nyilvános IP-cím és hálózati adapter létrehozása
 Ha engedélyezni szeretné a virtuális hálózatban lévő virtuális géppel való kommunikációt, szüksége lesz egy [nyilvános IP-címére](../../virtual-network/public-ip-addresses.md) és egy hálózati adapterre.
@@ -264,12 +264,12 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>Annak ellenőrzése, hogy a virtuális gép létrejött-e
-Az újonnan létrehozott virtuális gépet a virtuális gépek **böngészése** vagy a következő PowerShell-parancsok használatával tekintheti meg a [Azure Portal](https://portal.azure.com)  >  **Virtual machines**.
+Az újonnan létrehozott virtuális gépet a virtuális gépek **böngészése** vagy a következő PowerShell-parancsok használatával tekintheti meg a [Azure Portal](https://portal.azure.com)  >  .
 
 ```powershell
 $vmList = Get-AzVM -ResourceGroupName $destinationResourceGroup
 $vmList.Name
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Jelentkezzen be az új virtuális gépre. További információ: [Kapcsolódás és bejelentkezés egy Windows rendszerű Azure-beli virtuális gépre](connect-logon.md).

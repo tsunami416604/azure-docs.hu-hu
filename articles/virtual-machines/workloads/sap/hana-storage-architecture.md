@@ -14,18 +14,18 @@ ms.workload: infrastructure
 ms.date: 06/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9254b3d19bd840b62d2f5f7023eba9a91e605d1e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2729369347de92153e9e8b84e008e5e22e732081
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967516"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197438"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>SAP HANA (nagyméretű példányok) tárolási architektúrája
 
 Az Azure-beli SAP HANA (nagyméretű példányok) tárolási elrendezését SAP HANA a klasszikus üzemi modellen, az SAP által ajánlott irányelvek szerint konfigurálja. Az irányelvek dokumentációját a [SAP HANA Storage-követelmények](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) című tanulmány ismerteti.
 
-Az I. típusú HANA nagy példánya a memória kötetét a tárolási kötetként négyszer adja meg. A HANA Large instances-egységek II. típusú osztálya esetében a tárterület nem sokkal többször van. Az egységek olyan kötettel rendelkeznek, amely a HANA-tranzakciós naplók biztonsági másolatainak tárolására szolgál. További információ: [SAP HANA (nagyméretű példányok) telepítése és konfigurálása az Azure](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)-ban.
+Az I. típusú HANA nagy példánya a memória kötetét a tárolási kötetként négyszer adja meg. A HANA Large instances-egységek II. típusú osztálya esetében a tárterület nem sokkal többször van. Az egységek olyan kötettel rendelkeznek, amely a HANA-tranzakciós naplók biztonsági másolatainak tárolására szolgál. További információ: [SAP HANA (nagyméretű példányok) telepítése és konfigurálása az Azure](hana-installation.md)-ban.
 
 Tekintse meg az alábbi táblázatot a tárolók kiosztása szempontjából. A táblázat felsorolja a különböző HANA nagyméretű példány-egységekhez biztosított különböző kötetek durva kapacitását.
 
@@ -94,7 +94,7 @@ Ezek a méretek olyan durva kötetek, amelyek az üzembe helyezés és a kötete
 
 Lehet, hogy több tárterületre van szüksége. Az 1 TB-os egységek további tárterületének megvásárlásával adhat hozzá tárhelyet. Ez a további tárterület további kötetként is felvehető. A meglévő kötetek közül egy vagy több kibővítésére is felhasználható. Nem lehetséges a kötetek méretének csökkentése az eredetileg üzembe helyezett és többnyire az előző táblázatokban dokumentált módon. Emellett nem lehet módosítani a kötetek vagy a csatlakoztatási nevek nevét. A korábban leírt tárolási kötetek a HANA nagyméretű példány-egységekhez vannak csatolva NFS4-kötetként.
 
-A biztonsági mentéshez és helyreállításhoz, valamint a vész-helyreállítási célokra használható tárolási Pillanatképek. További információ: [SAP HANA (nagyméretű példányok) magas rendelkezésre állása és vész-helyreállítás az Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)-ban.
+A biztonsági mentéshez és helyreállításhoz, valamint a vész-helyreállítási célokra használható tárolási Pillanatképek. További információ: [SAP HANA (nagyméretű példányok) magas rendelkezésre állása és vész-helyreállítás az Azure](hana-overview-high-availability-disaster-recovery.md)-ban.
 
 Tekintse át a [HLI által támogatott forgatókönyveket](hana-supported-scenario.md) a tárolási elrendezés részleteihez.
 

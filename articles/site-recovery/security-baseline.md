@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 860bc9440547a4c62336ccc573859ec56b3400b5
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: c3e2245ae47504e058921c532ed40a220e95423d
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533859"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197574"
 ---
 # <a name="azure-security-baseline-for-site-recovery"></a>Site Recovery Azure biztonsági alapterve
 
@@ -222,7 +222,7 @@ Hozzon létre egy folyamatot, amely nyomon követheti a rendszergazdai fiókok i
 
 **Útmutató**: biztonságos, Azure által felügyelt munkaállomás (más néven privilegizált hozzáférési munkaállomás (Paw)) használata az Azure többtényezős hitelesítéssel a felügyeleti feladatokhoz és a jogosultsági szintű műveletek végrehajtásához site Recovery erőforrásokon.
 
-- [Emelt hozzáférési szintű munkaállomások](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [Emelt hozzáférési szintű munkaállomások](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [Felhőalapú Azure AD Multi-Factor Authentication-telepítés megtervezése](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -776,7 +776,7 @@ Az Security Center adatösszekötővel szükség szerint továbbíthatja a riasz
 
 **Felelősség**: Megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Security Benchmark v2 áttekintésének](../security/benchmarks/overview.md) megtekintése
 - További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

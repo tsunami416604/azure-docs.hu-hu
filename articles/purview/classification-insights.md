@@ -1,18 +1,18 @@
 ---
-title: Besorolási jelentések az adatairól a hatáskörébe-elemzések használatával (előzetes verzió)
-description: Ez a útmutató ismerteti, hogyan lehet megtekinteni és használni az adatain belüli, a hatáskörébe vonatkozó elemzések besorolását.
+title: Az Azure hatáskörébe tartozó adataira vonatkozó besorolási jelentések a hatáskörébe-elemzések használatával
+description: Ez a útmutató ismerteti, hogyan lehet megtekinteni és használni a hatáskörébe besorolási jelentéseket az adatain.
 author: batamig
 ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: bb3c7cc3f51eae90c5b712d224407e639b232fbc
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: a0eed27636a3f65d68489d1f2249db784ba1d722
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938885"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196537"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>Az Azure hatáskörébe tartozó adatok besorolása
 
@@ -33,7 +33,9 @@ A hatáskörébe tartozó ismeretek megismerése előtt győződjön meg arról,
 
 - Állítsa be az Azure-erőforrásokat, és töltse fel a megfelelő fiókokat a tesztelési adatokkal
 
-- Az egyes adatforrások tesztelési célú ellenőrzésének beállítása és befejezése 
+- Az egyes adatforrások tesztelési célú ellenőrzésének beállítása és befejezése
+
+- Jelentkezzen be a hatáskörébe egy [Adatolvasóval vagy egy adatkezelői szerepkörrel](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)rendelkező fiókkal.
 
 További információ: [adatforrások kezelése az Azure hatáskörébe (előzetes verzió)](manage-data-sources.md).
 
@@ -60,7 +62,7 @@ A hatáskörébe ugyanazok a bizalmas adattípusok tartoznak, mint a Microsoft 3
 
    A fő **besorolási** információk oldal a következő területeket jeleníti meg:
 
-   |Terület  |Leírás  |
+   |Terület  |Description  |
    |---------|---------|
    |**Besorolásokkal rendelkező források áttekintése**     |A következőket biztosító csempéket jeleníti meg: <br>– Az adataiban talált előfizetések száma <br>– Az adataiban található egyedi besorolások száma <br>– A talált kategorizált források száma <br>– A talált minősített fájlok száma <br>– A talált kategorizált táblák száma         |
    |**Legtöbbet besorolt adatforrások (utolsó 30 nap)**     |Az elmúlt 30 napban a minősített adatokat tartalmazó források számának alakulását mutatja.            |
@@ -79,7 +81,7 @@ A következő **besorolási** ábrák bármelyikében a további részletekért 
 - **Táblázatok leggyakoribb besorolásai**
 - **Besorolási tevékenység > besorolási adatként**
 
-Például:
+Példa:
 
 :::image type="content" source="media/insights/view-classifications-small.png" alt-text="Az összes besorolás megtekintése" lightbox="media/insights/view-classifications.png":::
 

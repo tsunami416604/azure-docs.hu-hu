@@ -7,15 +7,15 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: d5dda567d0cfa89863731a3e8e651aede4ab5957
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eaa3f56389e8cc101b57aefce833266fa20f66f7
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87825191"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197472"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Gyakori kérdések a Windows Virtual Machines
-Ez a cikk az Azure-ban a Resource Manager-alapú üzemi modellel létrehozott Windows rendszerű virtuális gépekkel kapcsolatos gyakori kérdéseket tárgyalja. A jelen témakör Linux-verziójával kapcsolatban lásd: [Linux Virtual Machines kapcsolatos gyakori kérdések](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Ez a cikk az Azure-ban a Resource Manager-alapú üzemi modellel létrehozott Windows rendszerű virtuális gépekkel kapcsolatos gyakori kérdéseket tárgyalja. A jelen témakör Linux-verziójával kapcsolatban lásd: [Linux Virtual Machines kapcsolatos gyakori kérdések](../linux/faq.md).
 
 ## <a name="what-can-i-run-on-an-azure-vm"></a>Mit futtathatok egy Azure-beli virtuális gépen?
 Minden előfizető kiszolgálószoftvereket futtathat az Azure-beli virtuális gépeken. További információ az Azure-beli Microsoft Server-szoftverek futtatására vonatkozó támogatási szabályzatról: a [Microsoft Server szoftver támogatása az azure Virtual Machines](https://support.microsoft.com/kb/2721672).
@@ -23,14 +23,14 @@ Minden előfizető kiszolgálószoftvereket futtathat az Azure-beli virtuális g
 A Windows 7, a Windows 8,1 és a Windows 10 bizonyos verziói elérhetők az MSDN Azure Benefit előfizetők és az MSDN dev and test utólagos elszámolású előfizetők számára fejlesztési és tesztelési feladatokhoz. Részletekért, többek között az utasításokért és korlátozásokért tekintse meg az [MSDN-előfizetők számára elérhető Windows-rendszerképeket](https://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/) ismertető cikket. 
 
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>Mennyi tárhelyet használhatok egy virtuális gép esetén?
-Az egyes adatlemezek akár 32 767 GiB-t is használhatnak. A használható adatlemezek száma a virtuális gép méretétől függ. Részletek: [Virtuális gépek méretei](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Az egyes adatlemezek akár 32 767 GiB-t is használhatnak. A használható adatlemezek száma a virtuális gép méretétől függ. Részletek: [Virtuális gépek méretei](../sizes.md).
 
 Az Azure-Managed Disks az Azure Virtual Machines által az adattároláshoz használt ajánlott lemezes tárolási ajánlatok. Az egyes virtuális gépekhez több Managed Disks is használható. Managed Disks kétféle tartós tárolási lehetőséget kínál: prémium és standard szintű Managed Disks. A díjszabással kapcsolatos információkért tekintse meg a [Managed Disks díjszabását](https://azure.microsoft.com/pricing/details/managed-disks).
 
 Az Azure Storage-fiókok az operációs rendszer lemezét és az adatlemezeket is megadhatják. Minden lemez egy lapblobként tárolt .vhd-fájl. A díjszabás részleteiért lásd [a Storage szolgáltatás díjszabását](https://azure.microsoft.com/pricing/details/storage/).
 
 ## <a name="how-can-i-access-my-virtual-machine"></a>Hogyan lehet hozzáférni a virtuális géphez?
-Hozzon létre egy távoli kapcsolatot egy Windows rendszerű virtuális gép Távoli asztali kapcsolat (RDP) használatával. Útmutatásért lásd: [Kapcsolódás és bejelentkezés egy Windows rendszerű Azure-beli virtuális gépre](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Legfeljebb két egyidejű kapcsolat támogatott, kivéve, ha a kiszolgáló Távoli asztali szolgáltatások munkamenet-gazdagépként van konfigurálva.  
+Hozzon létre egy távoli kapcsolatot egy Windows rendszerű virtuális gép Távoli asztali kapcsolat (RDP) használatával. Útmutatásért lásd: [Kapcsolódás és bejelentkezés egy Windows rendszerű Azure-beli virtuális gépre](connect-logon.md). Legfeljebb két egyidejű kapcsolat támogatott, kivéve, ha a kiszolgáló Távoli asztali szolgáltatások munkamenet-gazdagépként van konfigurálva.  
 
 Ha problémákat tapasztal a Távoli asztalával kapcsolatban, tekintse [meg a Windows-alapú Azure-beli virtuális gépek távoli asztal kapcsolatainak hibaelhárításával](../troubleshooting/troubleshoot-rdp-connection.md?toc=/azure/virtual-machines/windows/toc.json)foglalkozó témakört. 
 
@@ -39,11 +39,11 @@ Ha már ismeri a Hyper-V-t, előfordulhat, hogy a VMConnect hasonló eszközt ke
 ## <a name="can-i-use-the-temporary-disk-the-d-drive-by-default-to-store-data"></a>Használhatom az ideiglenes lemezt (a D: meghajtó alapértelmezés szerint) az adattároláshoz?
 Ne használja az ideiglenes lemezt az adattároláshoz. Csak átmeneti tárterület, ezért a nem helyreállítható adatvesztés kockázatát kockáztatja. Adatvesztés történhet, ha a virtuális gép egy másik gazdagépre lép. A virtuális gép átméretezése, a gazdagép frissítése vagy a gazdagépen bekövetkezett hardverhiba lehet az oka egy virtuális gép áthelyezésének.
 
-Ha van olyan alkalmazás, amelynek a D: meghajtó betűjelét kell használnia, a meghajtóbetűjelek ismételt hozzárendelésével az ideiglenes lemez nem a D:.-t használja. Útmutatásért lásd a [Windows ideiglenes lemezének meghajtóbetűjel-módosítását](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) ismertető cikket.
+Ha van olyan alkalmazás, amelynek a D: meghajtó betűjelét kell használnia, a meghajtóbetűjelek ismételt hozzárendelésével az ideiglenes lemez nem a D:.-t használja. Útmutatásért lásd a [Windows ideiglenes lemezének meghajtóbetűjel-módosítását](change-drive-letter.md) ismertető cikket.
 
 
 ## <a name="how-can-i-change-the-drive-letter-of-the-temporary-disk"></a>Hogyan módosíthatom egy ideiglenes lemez meghajtóbetűjelét?
-A meghajtóbetűjelet úgy módosíthatja, hogy áthelyezi a lapozófájlt, és újból hozzárendeli a meghajtóbetűjeleket, de meg kell győződnie arról, hogy a lépéseket egy adott sorrendben hajtja végre. Útmutatásért lásd a [Windows ideiglenes lemezének meghajtóbetűjel-módosítását](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) ismertető cikket.
+A meghajtóbetűjelet úgy módosíthatja, hogy áthelyezi a lapozófájlt, és újból hozzárendeli a meghajtóbetűjeleket, de meg kell győződnie arról, hogy a lépéseket egy adott sorrendben hajtja végre. Útmutatásért lásd a [Windows ideiglenes lemezének meghajtóbetűjel-módosítását](change-drive-letter.md) ismertető cikket.
 
 ## <a name="can-i-add-an-existing-vm-to-an-availability-set"></a>Felvehetek meglévő virtuális gépet egy rendelkezésre állási csoportba?
 Nem. Ha azt szeretné, hogy a virtuális gép egy rendelkezésre állási csoport része legyen, létre kell hoznia a virtuális gépet a készleten belül. A létrehozást követően jelenleg nem lehet hozzáadni egy virtuális gépet egy rendelkezésre állási csoporthoz.
@@ -52,7 +52,7 @@ Nem. Ha azt szeretné, hogy a virtuális gép egy rendelkezésre állási csopor
 Igen. Útmutatásért lásd: helyszíni [virtuális gépek áttelepítése az Azure-ba](on-prem-to-azure.md).
 
 ## <a name="can-i-resize-the-os-disk"></a>Átméretezhetim az operációsrendszer-lemezt?
-Igen. Útmutatásért lásd: [virtuális gép operációsrendszer-meghajtójának kibontása Azure-erőforráscsoport](expand-os-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)esetén.
+Igen. Útmutatásért lásd: [virtuális gép operációsrendszer-meghajtójának kibontása Azure-erőforráscsoport](expand-os-disk.md)esetén.
 
 ## <a name="can-i-copy-or-clone-an-existing-azure-vm"></a>Másolhatok vagy klónozott egy meglévő Azure-beli virtuális gépet?
 Igen. A felügyelt lemezképek használatával létrehozhat egy virtuális gép lemezképét, majd a lemezkép használatával több új virtuális gépet építhet ki. Útmutatásért tekintse meg a [virtuális gép egyéni rendszerképének létrehozása](tutorial-custom-images.md)című témakört.

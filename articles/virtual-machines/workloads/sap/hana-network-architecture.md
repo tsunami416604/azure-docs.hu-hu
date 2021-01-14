@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b18e1cd20a4b0a886258fd56003cd273d92381fa
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: c1403c514f5a278fd406769f1d5271cc95a5c1df
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093978"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98195738"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA (nagyméretű példányok) hálózati architektúrája
 
@@ -47,9 +47,9 @@ Ha SAP HANA az Azure-ban (nagyméretű példányok) több különböző Azure-r�
 
 ## <a name="additional-virtual-network-information"></a>További virtuális hálózati információk
 
-Egy virtuális hálózat ExpressRoute való összekapcsolásához létre kell hozni egy Azure ExpressRoute-átjárót. További információ: [a Expressroute Expressroute-átjárók](../../../expressroute/expressroute-about-virtual-network-gateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+Egy virtuális hálózat ExpressRoute való összekapcsolásához létre kell hozni egy Azure ExpressRoute-átjárót. További információ: [a Expressroute Expressroute-átjárók](../../../expressroute/expressroute-about-virtual-network-gateways.md). 
 
-Az Azure ExpressRoute-átjárót az Azure-on kívüli infrastruktúra vagy egy nagyméretű Azure-példány ExpressRoute használják. Az Azure ExpressRoute-átjáró legfeljebb négy különböző ExpressRoute-áramkörhöz csatlakoztatható, feltéve, hogy ezek a kapcsolatok különböző Microsoft Enterprise Edge-útválasztók származnak. További információ: [SAP HANA (nagyméretű példányok) infrastruktúrája és kapcsolódás az Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)-ban. 
+Az Azure ExpressRoute-átjárót az Azure-on kívüli infrastruktúra vagy egy nagyméretű Azure-példány ExpressRoute használják. Az Azure ExpressRoute-átjáró legfeljebb négy különböző ExpressRoute-áramkörhöz csatlakoztatható, feltéve, hogy ezek a kapcsolatok különböző Microsoft Enterprise Edge-útválasztók származnak. További információ: [SAP HANA (nagyméretű példányok) infrastruktúrája és kapcsolódás az Azure](hana-overview-infrastructure-connectivity.md)-ban. 
 
 > [!NOTE] 
 > A ExpressRoute-átjárók által elérhető maximális átviteli sebesség 10 GB/s egy ExpressRoute-kapcsolatok használatával. A fájlok másolása egy virtuális hálózaton található virtuális gép és egy helyszíni rendszer (egyetlen másolási adatfolyam) között nem éri el a különböző átjárók teljes átviteli sebességét. A ExpressRoute-átjáró teljes sávszélességének kihasználása érdekében több streamet használjon. Más fájlokat is át kell másolnia egy adott fájl párhuzamos streamben.
@@ -60,7 +60,7 @@ A HANA nagyméretű példány hálózatkezelési architektúrája négy különb
 
 - Helyszíni Hálózatkezelés és ExpressRoute-kapcsolat az Azure-hoz. Ez a rész az ügyfél tartománya, és csatlakozik az Azure-hoz az ExpressRoute-on keresztül. Ezt a Expressroute áramkört Ön fizeti ki ügyfeleinek. A sávszélességnek elég nagynak kell lennie ahhoz, hogy kezelni tudja a helyszíni eszközök és az Ön által összekapcsolt Azure-régió közötti hálózati forgalmat. Tekintse meg a jobb alsó részt az alábbi ábrán.
 - Az Azure-beli hálózati szolgáltatások, ahogy azt korábban már említettük, a virtuális hálózatokkal, amelyekhez ismét szükség van a ExpressRoute átjárók hozzáadására. Ez a rész egy olyan terület, ahol meg kell találnia az alkalmazásra, a biztonságra és a megfelelőségre vonatkozó követelmények megfelelő kialakítását. Azt jelzi, hogy a HANA Large példány használata egy másik lehetőség-e a virtuális hálózatok és az Azure Gateway SKU-azonosítók számának a kiválasztásához. Az ábrán a jobb felső sarokban látható.
-- A HANA nagyméretű példány kapcsolata a ExpressRoute technológián keresztül az Azure-ba. Ezt a részt a Microsoft telepíti és kezeli. Mindössze annyit kell tennie, hogy az eszközeinek a HANA nagyméretű példányon való üzembe helyezése után az ExpressRoute áramkört a virtuális hálózatokhoz köti. További információ: [SAP HANA (nagyméretű példányok) infrastruktúrája és kapcsolódás az Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)-ban. Az Azure-adatközpont hálózati hálója és a HANA nagyméretű példány-egységek közötti kapcsolathoz nem számítunk fel további díjat.
+- A HANA nagyméretű példány kapcsolata a ExpressRoute technológián keresztül az Azure-ba. Ezt a részt a Microsoft telepíti és kezeli. Mindössze annyit kell tennie, hogy az eszközeinek a HANA nagyméretű példányon való üzembe helyezése után az ExpressRoute áramkört a virtuális hálózatokhoz köti. További információ: [SAP HANA (nagyméretű példányok) infrastruktúrája és kapcsolódás az Azure](hana-overview-infrastructure-connectivity.md)-ban. Az Azure-adatközpont hálózati hálója és a HANA nagyméretű példány-egységek közötti kapcsolathoz nem számítunk fel további díjat.
 - Hálózatkezelés a HANA nagyméretű példányának bélyegén belül, amely leginkább transzparens.
 
 ![Az Azure-ban (nagyméretű példányok) és a helyszínen SAP HANA csatlakoztatott virtuális hálózat](./media/hana-overview-architecture/image1-architecture.png)
@@ -98,7 +98,7 @@ A ExpressRoute gyors elérési útjának konfigurálásával kapcsolatos tovább
 
 ## <a name="single-sap-system"></a>Egyetlen SAP-System
 
-A korábban bemutatott helyszíni infrastruktúra a ExpressRoute-on keresztül csatlakozik az Azure-hoz. A ExpressRoute áramkör egy Microsoft Enterprise Edge-útválasztóhoz (MSEE) csatlakozik. További információ: a [ExpressRoute technikai áttekintése](../../../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Az útvonal létrehozása után az az Azure-gerinchez csatlakozik.
+A korábban bemutatott helyszíni infrastruktúra a ExpressRoute-on keresztül csatlakozik az Azure-hoz. A ExpressRoute áramkör egy Microsoft Enterprise Edge-útválasztóhoz (MSEE) csatlakozik. További információ: a [ExpressRoute technikai áttekintése](../../../expressroute/expressroute-introduction.md). Az útvonal létrehozása után az az Azure-gerinchez csatlakozik.
 
 > [!NOTE] 
 > Az SAP-tájak Azure-ban való futtatásához kapcsolódjon az SAP-környezet Azure-régiójához legközelebb eső Enterprise Edge-útválasztóhoz. A HANA nagyméretű példányai a dedikált nagyvállalati peremhálózati útválasztó eszközökön keresztül kapcsolódnak az Azure IaaS-beli virtuális gépek és a HANA nagyméretű példányai közötti hálózati késések minimalizálásához.
@@ -136,7 +136,7 @@ Alapértelmezés szerint a központi telepítés során három hálózati útvá
 
 * Ha a két különböző Azure-régióban üzembe helyezett HANA nagyméretű példány-egység vész-helyreállítást eredményez, a múltban ugyanazok az átmeneti útválasztási korlátozások érvényesek. Ez azt jelenti, hogy az egyik régióban (például USA nyugati régiójában) lévő HANA nagyméretű példányok IP-címei nem lettek átirányítva egy másik régióban üzembe helyezett HANA nagyméretű példány-egységbe (például az USA keleti régiója). Ez a korlátozás független volt az Azure-hálózatok közötti, illetve a különböző régiók közötti, illetve a nagyméretű ExpressRoute-áramkörök virtuális hálózatokhoz csatlakoztatására szolgáló kapcsolatok összekapcsolásával. Grafikus ábrázolás esetén tekintse meg a "HANA nagyméretű példány-egységek használata több régióban" című szakaszt. Ez a korlátozás, amely az üzembe helyezett architektúrával jött létre, megtiltotta a HANA rendszerreplikáció azonnali használatát vész-helyreállítási funkcióként. A legutóbbi módosítások esetében tekintse meg a "HANA nagyméretű példány-egységek használata több régióban" című szakaszt. 
 
-* SAP HANA az Azure-beli (nagyméretű példányok) egységekhez hozzárendelt IP-cím tartozik a kiszolgáló IP-címkészlet címtartományból, amelyet a HANA nagyméretű példány központi telepítésének kérésekor küldött. További információ: [SAP HANA (nagyméretű példányok) infrastruktúrája és kapcsolódás az Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)-ban. Ez az IP-cím elérhető az Azure-előfizetések és-áramkör használatával, amely az Azure-beli virtuális hálózatokat a HANA nagyméretű példányaihoz köti össze. A kiszolgáló IP-címkészlet-címtartomány kiosztott IP-címe közvetlenül a hardver egységhez van rendelve. *Nem* a NAT-on keresztül van hozzárendelve, mint a megoldás első üzembe helyezése esetén. 
+* SAP HANA az Azure-beli (nagyméretű példányok) egységekhez hozzárendelt IP-cím tartozik a kiszolgáló IP-címkészlet címtartományból, amelyet a HANA nagyméretű példány központi telepítésének kérésekor küldött. További információ: [SAP HANA (nagyméretű példányok) infrastruktúrája és kapcsolódás az Azure](hana-overview-infrastructure-connectivity.md)-ban. Ez az IP-cím elérhető az Azure-előfizetések és-áramkör használatával, amely az Azure-beli virtuális hálózatokat a HANA nagyméretű példányaihoz köti össze. A kiszolgáló IP-címkészlet-címtartomány kiosztott IP-címe közvetlenül a hardver egységhez van rendelve. *Nem* a NAT-on keresztül van hozzárendelve, mint a megoldás első üzembe helyezése esetén. 
 
 ### <a name="direct-routing-to-hana-large-instances"></a>Közvetlen útválasztás a HANA nagyméretű példányaihoz
 
