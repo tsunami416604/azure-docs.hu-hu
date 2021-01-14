@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: justinha
-ms.openlocfilehash: 0231689acef3345fb2b0f25170522d59552171ba
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: faa46178262777454d4d67d23bbd0bb013974ab5
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618331"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208488"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services"></a>Oktatóanyag: kimenő erdőszintű megbízhatósági kapcsolat létrehozása helyi tartományhoz Azure Active Directory Domain Services
 
@@ -23,7 +23,7 @@ Olyan környezetekben, ahol nem lehet szinkronizálni a jelszavakat, vagy ha oly
 
 ![Az Azure AD DS és a helyszíni AD DS közötti erdőszintű megbízhatóság diagramja](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * A DNS konfigurálása helyszíni AD DS környezetben az Azure AD DS-kapcsolat támogatásához
@@ -73,7 +73,7 @@ Mielőtt erdőszintű megbízhatósági kapcsolatot konfigurál az Azure AD DSba
 
 A felügyelt tartomány helyszíni környezetből való megfelelő feloldásához lehetséges, hogy továbbítókat kell hozzáadnia a meglévő DNS-kiszolgálókhoz. Ha nem konfigurálta a helyszíni környezetet a felügyelt tartománysal való kommunikációra, hajtsa végre a következő lépéseket a helyszíni AD DS tartomány felügyeleti munkaállomásán:
 
-1. Válassza a **Start | Felügyeleti eszközök | DNS**
+1. Válassza a  >  **felügyeleti eszközök**  >  **DNS** indítása lehetőséget.
 1. Kattintson a jobb gombbal a DNS-kiszolgáló, például a *myAD01*, majd a **Tulajdonságok** elemre.
 1. Válassza a **továbbítók**, majd a **Szerkesztés** lehetőséget a további továbbítók hozzáadásához.
 1. Adja hozzá a felügyelt tartomány IP-címeit, például a *10.0.2.4* és a *végpontjául szolgáló*.
@@ -84,15 +84,15 @@ A helyszíni AD DS tartománynak rendelkeznie kell egy bejövő erdőszintű meg
 
 A helyi AD DS tartomány bejövő megbízhatóságának konfigurálásához hajtsa végre az alábbi lépéseket a helyszíni AD DS tartomány felügyeleti munkaállomásáról:
 
-1. Válassza a **Start | Felügyeleti eszközök | Tartományok és megbízhatósági kapcsolatok Active Directory**
+1. Válassza a **Start | Felügyeleti eszközök | Active Directory tartományok és megbízhatósági kapcsolatok**.
 1. Kattintson a jobb gombbal a tartomány, például a *onprem.contoso.com*, majd a **Tulajdonságok** elemre.
-1. Válassza a **Megbízhatóságok** lapot, majd az **új megbízhatóság** elemet.
+1. Válassza a **Megbízhatóságok** fület, majd az **új megbízhatóság** lehetőséget.
 1. Adja meg az Azure AD DS tartománynév nevét, például *aaddscontoso.com*, majd kattintson a **tovább** gombra.
 1. Válassza az **erdőszintű megbízhatóság** létrehozása lehetőséget, majd hozzon létre egy **módszert: bejövő** megbízhatóság.
 1. Válassza **ezt a tartományt csak** a megbízhatósági kapcsolat létrehozásához. A következő lépésben létrehozza a megbízhatóságot a felügyelt tartomány Azure Portalban.
 1. Válassza az **erdőszintű hitelesítés** használata lehetőséget, majd adja meg és erősítse meg a megbízhatósági jelszót. Ugyanezt a jelszót is megadta a Azure Portal a következő szakaszban.
 1. Lépjen be a következő néhány Windows alapértelmezett beállításokkal, majd válassza a nem lehetőséget **, ne erősítse meg a kimenő megbízhatóságot**.
-1. Válassza a **Befejezés** lehetőséget
+1. Válassza a **Befejezés** gombot.
 
 ## <a name="create-outbound-forest-trust-in-azure-ad-ds"></a>Kimenő erdőszintű megbízhatósági kapcsolat létrehozása az Azure-ban AD DS
 
@@ -100,16 +100,16 @@ A felügyelt tartomány feloldásához konfigurált helyszíni AD DS tartománny
 
 A Azure Portal felügyelt tartomány kimenő megbízhatóságának létrehozásához hajtsa végre a következő lépéseket:
 
-1. A Azure Portal keresse meg és válassza ki a **Azure ad Domain Services** elemet, majd válassza ki a felügyelt tartományt, például *aaddscontoso.com*
+1. A Azure Portal keresse meg és válassza ki a **Azure ad Domain Services** elemet, majd válassza ki a felügyelt tartományt, például *aaddscontoso.com*.
 1. A felügyelt tartomány bal oldali menüjében válassza a **Megbízhatóságok** lehetőséget, majd válassza a **+ megbízhatóság hozzáadása** lehetőséget.
 
    > [!NOTE]
    > Ha nem látja a **megbízhatósági kapcsolatok** menüt, ellenőrizze a **Tulajdonságok** területen az *erdő típusát*. Csak az *erőforrás* -erdők hozhatnak létre megbízhatósági kapcsolatokat. Ha az erdő típusa *felhasználó*, nem hozhat létre megbízhatósági kapcsolatot. Jelenleg nincs lehetőség a felügyelt tartomány erdő-típusának módosítására. Törölnie kell, majd újra létre kell hoznia a felügyelt tartományt erőforrás-erdőként.
 
-1. Adja meg a megbízhatóságot azonosító megjelenítendő nevet, majd a helyszíni megbízható erdő DNS-nevét, például *onprem.contoso.com*
+1. Adja meg a megbízhatóságot azonosító megjelenítendő nevet, majd a helyszíni megbízható erdő DNS-nevét, például *onprem.contoso.com*.
 1. Adja meg ugyanazt a megbízhatósági jelszót, amelyet a rendszer az előző szakaszban található helyszíni AD DS tartományhoz tartozó bejövő erdő megbízhatóságának konfigurálásakor használt.
-1. Adjon meg legalább két DNS-kiszolgálót a helyszíni AD DS tartományhoz, például *10.1.1.4* és *10.1.1.5*
-1. Ha elkészült, **mentse** a kimenő erdő megbízhatóságát
+1. Adjon meg legalább két DNS-kiszolgálót a helyszíni AD DS tartományhoz, például *10.1.1.4* és *10.1.1.5*.
+1. Ha elkészült, **mentse** a kimenő erdő megbízhatóságát.
 
     ![Kimenő erdőszintű megbízhatóság létrehozása a Azure Portalban](./media/tutorial-create-forest-trust/portal-create-outbound-trust.png)
 
@@ -163,7 +163,7 @@ Az Azure AD DS erőforrás-erdőhöz csatlakozó Windows Server rendszerű virtu
 1. Kattintson a jobb gombbal a tartománynévre, válassza az **új**, majd a **szervezeti egység** elemet.
 1. A név mezőbe írja be a *LocalObjects* nevet, majd kattintson az **OK gombra**.
 1. Válassza ki, majd kattintson a jobb gombbal a **LocalObjects** elemre a navigációs ablaktáblán. Válassza az **új** , majd a **csoport** lehetőséget.
-1. Írja *FileServerAccess* be a FileServerAccess **nevet a csoport neve** mezőbe. A **Csoport hatóköre** területen válassza a **tartomány helyi** lehetőséget, majd kattintson **az OK gombra**.
+1. Írja  be a FileServerAccess **nevet a csoport neve** mezőbe. A **Csoport hatóköre** területen válassza a **tartomány helyi** lehetőséget, majd kattintson **az OK gombra**.
 1. A tartalom ablaktáblán kattintson duplán a **FileServerAccess** elemre. Válassza a **tagok** lehetőséget, válassza a **Hozzáadás**, majd a **helyszínek** lehetőséget.
 1. Válassza ki a helyszíni Active Directory a **hely** nézetből, majd kattintson **az OK gombra**.
 1. Írja be a *tartományi felhasználók* értéket az **adja meg a kijelölendő objektumok nevét** mezőbe. Jelölje be a Névellenőrzés **jelölőnégyzetet**, adja meg a helyszíni Active Directory hitelesítő adatait, majd kattintson **az OK gombra**.
@@ -181,7 +181,7 @@ Az Azure AD DS erőforrás-erdőhöz csatlakozó Windows Server rendszerű virtu
 1. A *CrossForestShare engedélyei* párbeszédpanelen válassza a **Hozzáadás** lehetőséget.
 1. Írja be a *FileServerAccess* **nevet az írja be a kijelölendő objektumok nevét**, majd kattintson **az OK gombra**.
 1. A **csoportok vagy a felhasználónevek** listából válassza a *FileServerAccess* lehetőséget. A **FileServerAccess engedélyei** listán válassza az *Engedélyezés lehetőséget* a **módosítási** és **írási** engedélyekhez, majd kattintson **az OK gombra**.
-1. Válassza a **megosztás** fület, majd kattintson a speciális megosztás elemre. **..**
+1. Válassza a **megosztás** fület, majd a **speciális megosztás** lehetőséget.
 1. Válassza a **mappa megosztása** lehetőséget, majd adjon meg egy emlékezetes nevet a fájlmegosztás számára a **megosztás nevében** , például *CrossForestShare*.
 1. Válassza az **Engedélyek** lehetőséget. Az **engedélyek mindenki** számára listában válassza az **Engedélyezés lehetőséget** a **módosítási** engedélyhez.
 1. Kattintson kétszer **az OK** , majd a **Bezárás** gombra.

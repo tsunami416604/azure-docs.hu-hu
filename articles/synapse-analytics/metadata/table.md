@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9ee18edd563d94a85dedf48b7a4d6df394c09707
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b93addfe659847187dffe61f12f5a2bfac9dca21
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461384"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209627"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Az Azure szinapszis Analytics megosztott metaadatait tartalmazó táblái
 
@@ -32,7 +32,7 @@ Mivel a táblázatok aszinkron módon lesznek szinkronizálva a kiszolgáló né
 
 A Spark segítségével kezelheti a Spark által létrehozott adatbázisokat. Például törölheti azt egy kiszolgáló nélküli Apache Spark Pool-feladatokon keresztül, és létrehozhat táblákat a Sparkból.
 
-Ha egy ilyen adatbázisban hoz létre objektumokat a kiszolgáló nélküli SQL-készletből, vagy megpróbálja eldobni az adatbázist, a művelet sikeres lesz, de az eredeti Spark-adatbázis nem módosul.
+Ha egy ilyen adatbázisban hoz létre objektumokat a kiszolgáló nélküli SQL-készletből, vagy megpróbálja eldobni az adatbázist, a művelet sikertelen lesz. Az eredeti Spark-adatbázis nem módosítható kiszolgáló nélküli SQL-készleten keresztül.
 
 ## <a name="expose-a-spark-table-in-sql"></a>Spark-táblázat közzététele az SQL-ben
 
@@ -190,7 +190,7 @@ id | name | birthdate
 1 | Alice | 2010-01-01
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [További információ az Azure szinapszis Analytics megosztott metaadatairól](overview.md)
 - [További információ az Azure szinapszis Analytics megosztott metaadat-adatbázisáról](database.md)

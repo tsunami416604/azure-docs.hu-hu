@@ -2,24 +2,24 @@
 title: Oktatóanyag a Azure Data Box rendeléséhez | Microsoft Docs
 description: Ebben az oktatóanyagban megismerheti a Azure Data Box, egy hibrid megoldást, amely lehetővé teszi a helyszíni információk importálását az Azure-ba, valamint a Azure Data Box sorrendjét.
 services: databox
-author: alkohli
+author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 11/19/2020
+ms.date: 01/13/2021
 ms.author: alkohli
-ms.openlocfilehash: aad6a3ef754b5ba2c65a9b93fbdfcfdc26348487
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: fd165795be85c26cdfcaee3c4fd01427274a7316
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186158"
+ms.locfileid: "98210341"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Oktatóanyag: Az Azure Data Box megrendelése
 
-Az Azure Data Box egy hibrid megoldás, amellyel gyorsan, könnyen és megbízhatóan importálhat helyszíni adatokat az Azure-ba. Az adatok átvitele egy Microsoft által biztosított 80 TB-os (felhasználható kapacitású) tárolóeszközre, majd az eszköz újbóli szállítása. Az adatok ezt követően fel lesznek töltve az Azure-ba.
+Az Azure Data Box egy hibrid megoldás, amellyel gyorsan, könnyen és megbízhatóan importálhat helyszíni adatokat az Azure-ba. Az adatok átvitele egy Microsoft által biztosított 80 – TB (felhasználható kapacitás) tárolóeszközre, majd az eszköz visszaszállítása. Az adatok ezt követően fel lesznek töltve az Azure-ba.
 
-Ez az oktatóanyag leírja, hogyan rendelheti meg az Azure Data Box szolgáltatást. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag leírja, hogyan rendelheti meg az Azure Data Box szolgáltatást. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:  
 
 > [!div class="checklist"]
 >
@@ -245,7 +245,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
     |Erőforráscsoport    | A korábban kiválasztott erőforráscsoport. |
     |Importálási rendelés neve | Adjon meg egy rövid nevet a megrendelés nyomon követéséhez. <br> A névnek 3-24 karakter hosszúságúnak kell lennie, és csak betűket, számokat és kötőjelet tartalmazhat. <br> A névnek betűvel vagy számmal kell kezdődnie és végződnie.    |
 
-    ![Data Box importálási sorrend varázsló, alapbeállítások képernyő, a megfelelő információkkal kitöltve](media/data-box-deploy-ordered/select-data-box-import-06.png)<!--Generic subscription. Cut note. Box command.-->
+    ![Data Box importálási sorrend varázsló, alapbeállítások képernyő, a megfelelő információkkal kitöltve](media/data-box-deploy-ordered/select-data-box-import-06.png)
 
 7. Az **adatcélhely** képernyőn válassza ki a Storage **-** fiókokat vagy a felügyelt lemezeket.
 
@@ -253,7 +253,11 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
 
     ![Data Box importálási sorrend varázsló, az adatcélhely képernyő, és a Storage-fiókok kijelölve](media/data-box-deploy-ordered/select-data-box-import-07.png)
 
-    A megadott Azure-régió alapján válasszon ki egy vagy több tárfiókot a meglévő tárfiókok szűrt listájából. A Data Box legfeljebb 10 tárfiókkal köthető össze. Létrehozhat egy új **Általános célú v1**, **Általános célú v2** fiókot vagy egy **Blob Storage-fiókot** is.
+    A megadott Azure-régió alapján válasszon ki egy vagy több Storage-fiókot a meglévő Storage-fiókok szűrt listájából. A Data Box legfeljebb 10 tárfiókkal köthető össze. Létrehozhat egy új **Általános célú v1**, **Általános célú v2** fiókot vagy egy **Blob Storage-fiókot** is.
+
+   > [!NOTE]
+   > - Ha az Azure Premium FileStorage-fiókokat választja, a Storage-fiók megosztásán a kiépített kvóta a fájlmegosztás számára átmásolt adatméretre nő. A kvóta növelése után a rendszer nem módosítja újra, például ha valamilyen oknál fogva a Data Box nem tudja másolni az adatait.
+   > - Ez a kvóta a számlázáshoz használatos. Miután feltöltötte az adatait az adatközpontba, módosítania kell a kvótát, hogy megfeleljen az igényeinek. További információ: a [számlázás ismertetése](../../articles/storage/files/understanding-billing.md).
 
     A virtuális hálózattal rendelkező tárfiókok támogatottak. Ahhoz, hogy a Data Box szolgáltatás működjön a biztonságos tárfiókok esetében, engedélyezze a megbízható szolgáltatásokat a tárfiók hálózati tűzfalának beállításai között. További információ: [Azure Data Box hozzáadása megbízható szolgáltatásként](../storage/common/storage-network-security.md#exceptions).
 
@@ -419,7 +423,7 @@ Az alábbi lépéseket követve rendeljen egy eszközt az Azure CLI használatá
    |SKU| A megrendeléshez megadott Data Box eszköz. Az érvényes értékek a következők: "DataBox", "DataBoxDisk" és "DataBoxHeavy"| "DataBox" |
    |e-mail-lista| A rendeléshez társított e-mail-címek.| "gusp@contoso.com" |
    |utca – cím 1| Az utca címe, ahová a rendelés szállítása történik. | "15700 NE 39. St" |
-   |utca – Cím2| A másodlagos címek adatai, például az apartman száma vagy az épület száma. | "Bld 123" |
+   |utca – Cím2| A másodlagos címek adatai, például az apartman száma vagy az épület száma. | "Építési 123" |
    |city| Az a város, ahová az eszközt el fogja szállítani. | Redmond |
    |állam vagy tartomány| Az az állapot, amelybe az eszközt szállítják.| WA |
    |ország| Az az ország, amelyet az eszköz el fog szállítani. | "Egyesült Államok" |
@@ -538,7 +542,7 @@ Az eszköz megrendeléséhez hajtsa végre az alábbi lépéseket Azure PowerShe
     |DataBoxType [kötelező]| A megrendeléshez megadott Data Box eszköz. Az érvényes értékek a következők: "DataBox", "DataBoxDisk" és "DataBoxHeavy"| "DataBox" |
     |EmailId [kötelező]| A rendeléshez társított e-mail-címek.| "gusp@contoso.com" |
     |StreetAddress1 [kötelező]| Az utca címe, ahová a rendelés szállítása történik. | "15700 NE 39. St" |
-    |StreetAddress2| A másodlagos címek adatai, például az apartman száma vagy az épület száma. | "Bld 123" |
+    |StreetAddress2| A másodlagos címek adatai, például az apartman száma vagy az épület száma. | "Építési 123" |
     |StreetAddress3| A harmadlagos címen lévő információk. | |
     |Város [kötelező]| Az a város, ahová az eszközt el fogja szállítani. | Redmond |
     |StateOrProvinceCode [kötelező]| Az az állapot, amelybe az eszközt szállítják.| WA |
@@ -601,7 +605,7 @@ A Microsoft ezután előkészíti, majd feladja a csomagot egy regionális fuvar
 
 ### <a name="track-a-single-order"></a>Egyetlen megrendelés nyomon követése
 
-Egy meglévő Azure Data Boxi rendelés nyomkövetési információinak lekéréséhez futtassa [az az databox Job show](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show&preserve-view=true)parancsot. A parancs információkat jelenít meg a rendeléssel kapcsolatban, például: név, Erőforráscsoport, követési információ, előfizetés-azonosító, kapcsolattartási adatok, szállítási típus és eszköz SKU.
+Egy meglévő Azure Data Box-rendelés nyomkövetési információinak lekéréséhez futtassa a parancsot [`az databox job show`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show&preserve-view=true) . A parancs információkat jelenít meg a rendeléssel kapcsolatban, például: név, Erőforráscsoport, követési információ, előfizetés-azonosító, kapcsolattartási adatok, szállítási típus és eszköz SKU.
 
    ```azurecli
    az databox job show --resource-group <resource-group> --name <order-name>
@@ -642,7 +646,7 @@ Egy meglévő Azure Data Boxi rendelés nyomkövetési információinak lekéré
 
 ### <a name="list-all-orders"></a>Az összes megrendelés listázása
 
-Ha több eszközt is megrendelt, az [az databox Job List](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list&preserve-view=true) parancs futtatásával megtekintheti az összes Azure Data Box rendelést. A parancs felsorolja az adott erőforráscsoporthoz tartozó összes rendelést. Emellett a kimenet: megrendelés neve, a szállítási állapot, az Azure-régió, a kézbesítés típusa és a rendelés állapota is látható. A megszakított megrendelések is szerepelnek a listában.
+Ha több eszközt is megrendelt, a futtatásával [`az databox job list`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list&preserve-view=true) megtekintheti az összes Azure Data Box megrendelését. A parancs felsorolja az adott erőforráscsoporthoz tartozó összes rendelést. Emellett a kimenet: megrendelés neve, a szállítási állapot, az Azure-régió, a kézbesítés típusa és a rendelés állapota is látható. A megszakított megrendelések is szerepelnek a listában.
 A parancs az egyes sorrendek időbélyegeit is megjeleníti.
 
 ```azurecli
@@ -718,7 +722,7 @@ Egy meglévő Azure Data Box-rendelés nyomkövetési információinak lekérés
 
 ### <a name="list-all-orders"></a>Az összes megrendelés listázása
 
-Ha több eszközt is megrendelt, a [Get-AzDataBoxJob](/powershell/module/az.databox/Get-AzDataBoxJob) futtatásával megtekintheti az összes Azure Data Box-rendelést. A parancs felsorolja az adott erőforráscsoporthoz tartozó összes rendelést. Emellett a kimenet: megrendelés neve, a szállítási állapot, az Azure-régió, a kézbesítés típusa és a rendelés állapota is látható. A megszakított megrendelések is szerepelnek a listában.
+Ha több eszközt is megrendelt, a futtatásával [`Get-AzDataBoxJob`](/powershell/module/az.databox/Get-AzDataBoxJob) megtekintheti az összes Azure Data Box megrendelését. A parancs felsorolja az adott erőforráscsoporthoz tartozó összes rendelést. Emellett a kimenet: megrendelés neve, a szállítási állapot, az Azure-régió, a kézbesítés típusa és a rendelés állapota is látható. A megszakított megrendelések is szerepelnek a listában.
 A parancs az egyes sorrendek időbélyegeit is megjeleníti.
 
 ```azurepowershell
@@ -761,7 +765,7 @@ Egy megszakított megrendelés törléséhez lépjen az **Áttekintés** elemre,
 
 ### <a name="cancel-an-order"></a>Rendelés visszavonása
 
-Azure Data Box rendelés megszakításához futtassa [az az databox Job Cancel](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel&preserve-view=true)parancsot. Meg kell adnia a megrendelés megszakításának okát.
+Azure Data Box rendelés megszakításához futtassa a parancsot [`az databox job cancel`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel&preserve-view=true) . Meg kell adnia a megrendelés megszakításának okát.
 
    ```azurecli
    az databox job cancel --resource-group <resource-group> --name <order-name> --reason <cancel-description>
@@ -798,7 +802,7 @@ Azure Data Box rendelés megszakításához futtassa [az az databox Job Cancel](
 
 ### <a name="delete-an-order"></a>Megrendelés törlése
 
-Ha megszakította Azure Data Box rendelést, az az [databox Job delete](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete&preserve-view=true) paranccsal törölheti a sorrendet.
+Ha megszakította Azure Data Box rendelést, a futtatásával [`az databox job delete`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete&preserve-view=true) törölheti a sorrendet.
 
    ```azurecli
    az databox job delete --name [-n] <order-name> --resource-group <resource-group> [--yes] [--verbose]
@@ -871,7 +875,7 @@ PS C:\WINDOWS\system32>
 
 ### <a name="delete-an-order"></a>Megrendelés törlése
 
-Ha megszakított egy Azure Data Box rendelést, a [Remove-AzDataBoxJob](/powershell/module/az.databox/remove-azdataboxjob) parancsot futtatva törölheti a sorrendet.
+Ha megszakította Azure Data Box rendelést, a futtatásával [`Remove-AzDataBoxJob`](/powershell/module/az.databox/remove-azdataboxjob) törölheti a sorrendet.
 
 ```azurepowershell
 Remove-AzDataBoxJob -Name <String> -ResourceGroup <String>

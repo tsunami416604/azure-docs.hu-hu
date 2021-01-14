@@ -8,12 +8,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/02/2020
-ms.openlocfilehash: 6bc9f69440be772910ea8200b5ccf7d5a5122ae6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9894da7486ec3c0dfb92c94c7c7f4db2247ebeb7
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907805"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210205"
 ---
 # <a name="train-vowpal-wabbit-model"></a>Vowpal Wabbit modell betanítása
 Ez a cikk azt ismerteti, hogyan használható a **Vowpal Wabbit Model** modul a Azure Machine learning Designerben, és hogyan hozható létre gépi tanulási modell a Vowpal Wabbit használatával.  
@@ -54,7 +54,7 @@ Az adatok két típusú adatkészletből, fájl-adatkészletből vagy táblázat
 
 1. Adja hozzá a **Vowpal Wabbit Model** modult a kísérlethez. 
   
-2. Adja hozzá a betanítási adatkészletet, és kapcsolja össze a **betanítási adatokat**. Ha a betanítási adatkészlet egy olyan könyvtár, amely tartalmazza a betanítási adatfájlt, adja meg a betanítási adatfájl **nevét**a betanítási adatfájl nevével. Ha a betanítási adatkészlet egyetlen fájl, hagyja üresen **a betanítási adat fájljának nevét** .
+2. Adja hozzá a betanítási adatkészletet, és kapcsolja össze a **betanítási adatokat**. Ha a betanítási adatkészlet egy olyan könyvtár, amely tartalmazza a betanítási adatfájlt, adja meg a betanítási adatfájl **nevét** a betanítási adatfájl nevével. Ha a betanítási adatkészlet egyetlen fájl, hagyja üresen **a betanítási adat fájljának nevét** .
 
 3. A **VW-argumentumok** szövegmezőbe írja be a Vowpal Wabbit végrehajtható fájl parancssori argumentumait.
 
@@ -86,8 +86,8 @@ A Vowpal Wabbit támogatja a növekményes képzést azáltal, hogy új adattíp
 1. Adja hozzá a **Train Vowpal Wabbit Model** modult a folyamathoz.  
 2. A korábban betanított modell összekötése a modul **előre betanított Vowpal Wabbit modellbe** való bemenő portjával.
 3. Kapcsolódjon az új betanítási adatokhoz a modul **betanítási adatok** bemeneti portjához.
-4. A **Vowpal Wabbit modell**paraméterek paneljén adja meg az új betanítási adatok formátumát, valamint a betanítási adatfájl nevét is, ha a bemeneti adatkészlet egy könyvtár.
-5. Válassza a * * kimeneti olvasható modell fájl * * elemet, és adja meg a **kifordított kivonatoló fájl** beállításait, ha a megfelelő fájlokat menteni kell a futtatási rekordokban.
+4. A **Vowpal Wabbit modell** paraméterek paneljén adja meg az új betanítási adatok formátumát, valamint a betanítási adatfájl nevét is, ha a bemeneti adatkészlet egy könyvtár.
+5. Válassza ki a **kimeneti olvasható modell fájlját** és a **kifordított kivonatoló fájl** beállításait, ha a megfelelő fájlokat menteni kell a futtatási rekordokban.
 
 6. A folyamat elküldése.  
 7. Válassza ki a modult, és válassza az **adatkészlet regisztrálása** a jobb oldali ablaktábla **kimenetek + naplók** lapján, hogy megőrizze a frissített modellt a Azure Machine learning munkaterületen.  Ha nem ad meg új nevet, a frissített modell felülírja a meglévő mentett modellt.

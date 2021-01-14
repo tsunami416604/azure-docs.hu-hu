@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de16c947c59f5a0111b9325dbefe7daf1268fb40
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 006aaf7ca5066c552f9c0b797549d7e90ac9beb7
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649160"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208692"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Üzletági alkalmazások fejlesztése a Azure Active Directory
 Ez az útmutató áttekintést nyújt az üzletági (LoB) alkalmazások Azure Active Directory (AD) való fejlesztéséről. A célközönség Active Directory/Microsoft 365 globális rendszergazdák.
@@ -70,7 +70,7 @@ Alapértelmezés szerint minden felhasználó beleegyezik a bejelentkezéshez sz
 
 A megbízható alkalmazások esetében egyszerűbbé teheti a felhasználói élményt azáltal, hogy a szervezet nevében hozzájárul az alkalmazáshoz.
 
-További információ a felhasználói belefoglalásról és az Azure-beli belefoglalási feladatokról: [alkalmazások integrálása a Azure Active Directorysal](../develop/quickstart-register-app.md).
+További információ a felhasználói beleegyezésről és az Azure-beli beleegyezési feladatokról: az [Azure ad-alkalmazásra vonatkozó beleegyezési tapasztalatok ismertetése](../develop/application-consent-experience.md).
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 * [Helyszíni alkalmazások biztonságos távoli elérésének engedélyezése az Azure AD Application Proxy](application-proxy.md)

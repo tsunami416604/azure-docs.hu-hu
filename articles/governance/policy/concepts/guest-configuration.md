@@ -1,14 +1,14 @@
 ---
 title: Tudnivalók a virtuális gépek tartalmának naplózásáról
 description: Megtudhatja, hogyan használja a Azure Policy a vendég konfigurációs ügyfelet a beállítások naplózására a virtuális gépeken belül.
-ms.date: 10/14/2020
+ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5ec43516c60d2fe5d923a7b87cddbea0ad640453
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: c141169545379f1ac0dd18a97e85652f97b90e6f
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071833"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210120"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure Policy vendégkonfigurációjának ismertetése
 
@@ -101,11 +101,11 @@ A privát adatközpontokban lévő arc csatlakozó kiszolgálók esetében enged
 
 ## <a name="managed-identity-requirements"></a>Felügyelt identitásokra vonatkozó követelmények
 
-A kezdeményezésben szereplő szabályzat-definíciók a [vendég-konfigurációs szabályzatok virtuális gépeken való engedélyezéséhez](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8) a rendszer által hozzárendelt felügyelt identitás engedélyezése, ha az egyik nem létezik. Az identitás létrehozását kezelő kezdeményezésben két házirend-definíció található. Ha a házirend-definícióban szereplő feltételek biztosítják a megfelelő viselkedést az Azure-beli gépi erőforrás aktuális állapota alapján.
+A kezdeményezésben szereplő szabályzat-definíciók a _vendég-konfigurációs szabályzatok virtuális gépeken való engedélyezéséhez_ a rendszer által hozzárendelt felügyelt identitás engedélyezése, ha az egyik nem létezik. Az identitás létrehozását kezelő kezdeményezésben két házirend-definíció található. Ha a házirend-definícióban szereplő feltételek biztosítják a megfelelő viselkedést az Azure-beli gépi erőforrás aktuális állapota alapján.
 
-Ha a gép jelenleg nem rendelkezik felügyelt identitásokkal, a hatályos szabályzat a következő lesz: [ \[ előnézet \] : rendszerhez rendelt felügyelt identitás hozzáadása a vendég konfigurációs hozzárendeléseinek engedélyezéséhez az identitás nélküli virtuális gépeken](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e)
+Ha a gép jelenleg nem rendelkezik felügyelt identitásokkal, a hatályos szabályzat a következő: [rendszerhez rendelt felügyelt identitás hozzáadása a vendég konfigurációs hozzárendeléseinek engedélyezéséhez identitás nélküli virtuális gépeken](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e)
 
-Ha a gépnek jelenleg van felhasználó által hozzárendelt rendszeridentitása, a hatályos szabályzat a következő: [ \[ előnézet \] : rendszerhez rendelt felügyelt identitás hozzáadása a vendég konfigurációs hozzárendeléseinek a felhasználó által hozzárendelt identitású virtuális gépeken való engedélyezéséhez](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6)
+Ha a gépnek jelenleg van felhasználó által hozzárendelt rendszeridentitása, a hatályos szabályzat a következő: [rendszerhez rendelt felügyelt identitás hozzáadása a vendég konfigurációs hozzárendeléseinek engedélyezéséhez felhasználó által hozzárendelt identitással rendelkező virtuális gépeken](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6)
 
 ## <a name="guest-configuration-definition-requirements"></a>A vendég konfigurációjának meghatározására vonatkozó követelmények
 
@@ -120,7 +120,7 @@ Azure Policy a vendég konfigurációja erőforrás-szolgáltató **complianceSt
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Az operációs rendszer beállításainak naplózása az iparági alapkonfigurációkat követve
 
-A Azure Policyban az egyik kezdeményezés lehetővé teszi az operációs rendszer beállításainak naplózását az "alapkonfiguráció" érték után. Az előzetes verzió: az Azure-beli _\[ \] biztonsági alapbeállításoknak meg nem felelő Windows-alapú virtuális gépek naplózása_ Active Directory csoportházirend alapján.
+Azure Policy az operációs rendszer beállításainak naplózása az alapkonfigurációt követő egyik kezdeményezés. Az előzetes verzió definíciója _\[ \] : a Windows rendszerű számítógépeknek meg kell felelniük az Azure biztonsági alapkonfiguráció követelményeinek_ , Active Directory csoportházirend alapuló szabályokat tartalmaznak.
 
 A beállítások többsége paraméterekként érhető el. A paraméterek lehetővé teszik a naplózott elemek testreszabását.
 A szabályzatot a követelményekkel igazíthatja, vagy a szabályzatot harmadik féltől származó információkra, például iparági szabályozási szabványokra is kiképezheti.

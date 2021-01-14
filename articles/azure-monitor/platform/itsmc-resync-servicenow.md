@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: cea4503c4e3b9dd58cc475aaec355a2bb2e0bd29
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 9a6e46c0b52c22df0682034deaebd58bbfeb34a7
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065185"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210069"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>Hibaelhárítás az ITSM-összekötőben
 
@@ -53,6 +53,25 @@ Az irányítópulton található hibák megtekintéséhez kövesse a következő
 
 5. Az irányítópult használatával áttekintheti az összekötő állapotát és hibáit.
     ![Az összekötő állapotát megjelenítő képernyőkép.](media/itsmc-resync-servicenow/connector-dashboard.png)
+
+### <a name="dashboard-elements"></a>Irányítópult-elemek
+
+Az irányítópult a ITSM eszközre a jelen összekötő használatával továbbított riasztásokkal kapcsolatos információkat tartalmaz.
+Az irányítópult 4 részre oszlik:
+
+1. Munkaelem létrehozva: a gráf és az alábbi táblázat a munkaelemek számát tartalmazza típus szerint. Ha a diagramra vagy a táblázatra kattint, további részleteket láthat a munkaelemekről.
+    ![Képernyőkép, amely a létrehozott munkaelemet jeleníti meg.](media/itsmc-resync-servicenow/itsm-dashboard-workitems.png)
+2. Érintett számítógépek: a táblák tartalmazzák a konfigurációs elemeket létrehozó konfigurációs elemek részleteit.
+    A táblázatok soraira kattintva további részleteket tudhat meg a konfigurációs elemekről.
+    A tábla csak korlátozott számú sort tartalmaz, ha az összes listát látni szeretné, kattintson az összes megjelenítése lehetőségre.
+    ![Az érintett számítógépeket bemutató képernyőkép.](media/itsmc-resync-servicenow/itsm-dashboard-impacted-comp.png)
+3. Összekötő állapota: a gráf és az alábbi táblázat az összekötő állapotával kapcsolatos üzeneteket tartalmaz. A táblázat soraira kattintva további részleteket tudhat meg az összekötő állapota üzenetekről.
+    A tábla csak korlátozott számú sort tartalmaz, ha az összes listát látni szeretné, kattintson az összes megjelenítése lehetőségre.
+    ![Az összekötő állapotát megjelenítő képernyőkép.](media/itsmc-resync-servicenow/itsm-dashboard-connector-status.png)
+4. Riasztási szabályok: a táblák tartalmazzák az észlelt riasztási szabályok számával kapcsolatos információkat.
+    A táblák soraira kattintva további részleteket tudhat meg az észlelt szabályokról.
+    A tábla csak korlátozott számú sort tartalmaz, ha az összes listát látni szeretné, kattintson az összes megjelenítése lehetőségre.
+    ![A riasztási szabályokat bemutató képernyőkép.](media/itsmc-resync-servicenow/itsm-dashboard-alert-rules.png)
 
 ### <a name="service-map"></a>Szolgáltatás térképe
 

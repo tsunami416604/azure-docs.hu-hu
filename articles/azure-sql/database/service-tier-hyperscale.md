@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 10/19/2020
-ms.openlocfilehash: 56c3475ae6a03600723e7a12b3f3809f003ce7c4
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 1/13/2021
+ms.openlocfilehash: 4b5020b6cf7ac2f7aec586d7e6499285c1447b68
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922259"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209763"
 ---
 # <a name="hyperscale-service-tier"></a>Rugalmas skálázás szolgáltatási szint
 
@@ -168,16 +168,15 @@ Ha Azure SQL Database egy nagy kapacitású-adatbázist kell visszaállítani eg
 2. Kövesse az oldal [geo-visszaállítási](./recovery-using-backups.md#geo-restore) témakörében található utasításokat a Azure SQL Database-adatbázisok automatikus biztonsági mentésből történő visszaállításához.
 
 > [!NOTE]
-> Mivel a forrás és a cél különálló régiókban található, az adatbázis nem tudja megosztani a pillanatkép-tárolót a forrás-adatbázissal a nem geo-visszaállítások során, ami rendkívül gyorsan elvégezhető. Ha a nagy kapacitású-adatbázis geo-visszaállítást végez, akkor akkor is adatmennyiség-adatművelet lesz, ha a cél a földrajzilag replikált tároló párosított régiójában található.  Ez azt jelenti, hogy a Geo-visszaállítás a visszaállított adatbázis méretével arányos időt vesz igénybe.  Ha a cél a párosított régióban található, a másolás egy régión belül lesz, ami jelentősen gyorsabb lesz, mint a régiók közötti másolás, de továbbra is adatméreti művelet marad.
+> Mivel a forrás és a cél különálló régiókban található, az adatbázis nem tudja megosztani a pillanatkép-tárolót a forrás-adatbázissal a nem geo-visszaállítások esetében, ami az adatbázis méretétől függetlenül gyorsan elvégezhető. Ha a nagy kapacitású-adatbázis geo-visszaállítást végez, akkor akkor is adatmennyiség-adatművelet lesz, ha a cél a földrajzilag replikált tároló párosított régiójában található. Ezért a Geo-visszaállítás a visszaállítani kívánt adatbázis méretével arányos időt vesz igénybe. Ha a cél a párosított régióban van, az adatátvitel egy régión belül történik, ami jelentősen gyorsabb lesz, mint a régiók közötti adatátvitel, de továbbra is adatmennyiség-adatátviteli művelet marad.
 
 ## <a name="available-regions"></a><a name=regions></a>Elérhető régiók
 
-Az Azure SQL Database nagy kapacitású szinten minden régióban elérhető, de alapértelmezés szerint engedélyezve van az alábbi régiókban.
-Ha olyan régióban szeretné létrehozni a nagy kapacitású-adatbázist, amely nem támogatottként van felsorolva, Azure Portal használatával küldhet bevezetési kérést. Útmutatásért lásd a [kérelmekre vonatkozó kvóta növelését Azure SQL Database](quota-increase-request.md) útmutatásért. A kérelem elküldésekor kövesse az alábbi irányelveket:
+Az Azure SQL Database nagy kapacitású szinten minden régióban elérhető, de alapértelmezés szerint engedélyezve van az alábbi régiókban. Ha nagy kapacitású-adatbázist szeretne létrehozni egy olyan régióban, ahol a nagy kapacitású alapértelmezés szerint nincs engedélyezve, a Azure Portalon keresztül küldhet bevezetési kérést. Útmutatásért lásd a [kérelmekre vonatkozó kvóta növelését Azure SQL Database](quota-increase-request.md) útmutatásért. A kérelem elküldésekor kövesse az alábbi irányelveket:
 
 - Használja a [régió-hozzáférés](quota-increase-request.md#region) SQL Database kvóta típusát.
-- A szöveg részletei között adja hozzá a számítási SKU/Total magokat, beleértve az olvasható replikákat is.
-- A becsült TB-ot is meg kell adni.
+- A leírásban adja hozzá a számítási SKU/Total magokat, beleértve az olvasható replikákat, és jelezze, hogy nagy kapacitású-kapacitást kér.
+- Adja meg az összes adatbázis teljes méretének kivetítését is a TB-ban.
 
 Engedélyezett régiók:
 - Kelet-Ausztrália
@@ -185,7 +184,7 @@ Engedélyezett régiók:
 - Ausztrália középső régiója
 - Dél-Brazília
 - Közép-Kanada
-- USA középső régiója
+- Az USA középső régiója
 - Kelet-Kína 2
 - Észak-Kína 2
 - Kelet-Ázsia
@@ -223,12 +222,12 @@ Ezek a nagy kapacitású szolgáltatási szintjére vonatkozó jelenlegi korlát
 | Probléma | Leírás |
 | :---- | :--------- |
 | A kiszolgálók biztonsági mentések panelje nem jeleníti meg a nagy kapacitású-adatbázisokat. Ezek a nézet alapján lesznek szűrve.  | A nagy kapacitású külön módszert biztosít a biztonsági mentések kezeléséhez, így a Long-Term megőrzési és időponthoz tartozó biztonsági mentési adatmegőrzési beállítások nem érvényesek. Ennek megfelelően a nagy kapacitású-adatbázisok nem jelennek meg a biztonsági mentés kezelése ablaktáblán.<br><br>A más Azure SQL Database nagy kapacitású áttelepített adatbázisok esetében a rendszer megőrzi az áttelepítés előtti biztonsági mentéseket a forrásadatbázis [biztonsági mentési megőrzési](automated-backups-overview.md#backup-retention) idejének időtartamára. Ezek a biztonsági másolatok a forrásadatbázis az áttelepítés előtti időpontra történő [visszaállítására](recovery-using-backups.md#programmatic-recovery-using-automated-backups) használhatók.|
-| Adott időpontnak megfelelő helyreállítás | Nem nagy kapacitású adatbázis nem állítható vissza nagy kapacitású-adatbázisként, és a nagy kapacitású-adatbázis nem állítható vissza nem nagy kapacitású-adatbázisként. Egy olyan nem nagy kapacitású adatbázis esetében, amely a szolgáltatási rétegének módosításával lett áttelepítve a nagy kapacitású-re, a visszaállítás a Migrálás előtti időpontra, valamint az adatbázis biztonsági mentési megőrzési időszakán [belül lehetséges.](recovery-using-backups.md#programmatic-recovery-using-automated-backups) A visszaállított adatbázis nem nagy kapacitású lesz. |
-| Ha egy adatbázis 1 TB-nál nagyobb adatfájllal rendelkezik, az áttelepítés meghiúsul | Bizonyos esetekben előfordulhat, hogy a probléma megoldásához a nagyméretű fájlokat 1 TB-nál kisebbre kell csökkenteni. Ha az áttelepítési folyamat során használt adatbázist telepít át, győződjön meg arról, hogy egyetlen fájl sem lesz nagyobb 1 TB-nál. Az adatbázisfájlok méretének meghatározásához használja az alábbi lekérdezést. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
+| Adott időpontnak megfelelő helyreállítás | Nem nagy kapacitású adatbázis nem állítható vissza nagy kapacitású-adatbázisként, és a nagy kapacitású-adatbázis nem állítható vissza nem nagy kapacitású-adatbázisként. Egy olyan nem nagy kapacitású adatbázis esetében, amely a nagy kapacitású való áttelepítéssel lett áttelepítve, és az adatbázis biztonsági mentésének megőrzési időszakán belül egy adott időpontra van állítva, a rendszer [programozott](recovery-using-backups.md#programmatic-recovery-using-automated-backups)módon támogatja a visszaállítást. A visszaállított adatbázis nem nagy kapacitású lesz. |
+| Azure SQL Database szolgáltatási réteg nagy kapacitású való módosításakor a művelet meghiúsul, ha az adatbázisnak 1 TB-nál nagyobb adatfájlja van | Bizonyos esetekben előfordulhat, hogy a problémát úgy lehet megkerülni, hogy [a nagyméretű](file-space-manage.md#shrinking-data-files) fájlokat kevesebb mint 1 TB-ra csökkenti, mielőtt nagy kapacitású a szolgáltatási szintet. Az adatbázisfájlok aktuális méretének meghatározásához használja az alábbi lekérdezést. `SELECT file_id, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | SQL Managed Instance | Az Azure SQL felügyelt példánya jelenleg nem támogatott a nagy kapacitású-adatbázisokban. |
 | Rugalmas készletek |  A rugalmas készletek jelenleg nem támogatottak a nagy kapacitású.|
-| A nagy kapacitású-re történő áttelepítés jelenleg egyirányú művelet | Miután az adatbázist áttelepítette a nagy kapacitású, az nem telepíthető át közvetlenül egy nem nagy kapacitású szolgáltatási rétegre. Jelenleg az adatbázisnak a nagy kapacitású-ből a nem nagy kapacitású-be való migrálása a bacpac-fájl vagy más adatáthelyezési technológiák (tömeges másolás, Azure Data Factory, Azure Databricks, SSIS stb.) használatával történik. A Bacpac exportálás/Azure Portal Importálás a PowerShellből a [New-AzSqlDatabaseExport](/powershell/module/az.sql/new-azsqldatabaseexport) vagy a [New-AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport)használatával az Azure CLI-ből az [az SQL db export](/cli/azure/sql/db#az-sql-db-export) és [az SQL db import](/cli/azure/sql/db#az-sql-db-import), valamint a [REST API](/rest/api/sql/databases%20-%20import%20export) nem támogatott. A kisebb nagy kapacitású-adatbázisok (akár 200 GB) Bacpac importálását és exportálását a SSMS és a [SqlPackage](/sql/tools/sqlpackage) 18,4-es vagy újabb verziója támogatja. Nagyobb adatbázisok esetén a bacpac-Exportálás/-Importálás hosszú időt vehet igénybe, és különböző okok miatt sikertelen lehet.|
-| Adatbázisok áttelepítése In-Memory OLTP-objektumokkal | A nagy kapacitású támogatja In-Memory OLTP objektumok egy részhalmazát, beleértve a memóriára optimalizált táblák típusát, a táblázat változóit és a natív módon lefordított modulokat. Ha azonban bármilyen In-Memory OLTP-objektum szerepel az áttelepített adatbázisban, a prémium és a üzletileg kritikus szolgáltatási szintjeiről a nagy kapacitású-re történő áttelepítés nem támogatott. Ha egy ilyen adatbázist át szeretne telepíteni a nagy kapacitású-be, az összes In-Memory OLTP objektumot és a hozzájuk tartozó függőségeket el kell dobni. Az adatbázis migrálása után ezek az objektumok újra létrehozhatók. A tartós és nem tartós, memóriára optimalizált táblák jelenleg nem támogatottak a nagy kapacitású-ben, és lemezes táblákként újra létre kell őket hozni.|
+| A nagy kapacitású-re történő áttelepítés jelenleg egyirányú művelet | Miután az adatbázist áttelepítette a nagy kapacitású, az nem telepíthető át közvetlenül egy nem nagy kapacitású szolgáltatási rétegre. Jelenleg az adatbázisnak a nagy kapacitású-ből a nem nagy kapacitású-be való migrálása a bacpac-fájl vagy más adatáthelyezési technológiák (tömeges másolás, Azure Data Factory, Azure Databricks, SSIS stb.) használatával történik. Bacpac exportálás/Azure Portal Importálás a PowerShellből a [New-AzSqlDatabaseExport](/powershell/module/az.sql/new-azsqldatabaseexport) vagy a [New-AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport)használatával az Azure CLI-ből az [az SQL db export](/cli/azure/sql/db#az-sql-db-export) és [az sql db import](/cli/azure/sql/db#az-sql-db-import)használatával, és a [REST API](/rest/api/sql/databases%20-%20import%20export) nem támogatott. A kisebb nagy kapacitású-adatbázisok (akár 200 GB) Bacpac importálását és exportálását a SSMS és a [SqlPackage](/sql/tools/sqlpackage) 18,4-es vagy újabb verziója támogatja. Nagyobb adatbázisok esetén a bacpac-Exportálás/-Importálás hosszú időt vehet igénybe, és különböző okok miatt sikertelen lehet.|
+| Adatbázisok áttelepítése In-Memory OLTP-objektumokkal | A nagy kapacitású támogatja In-Memory OLTP objektumok egy részhalmazát, beleértve a memóriára optimalizált táblák típusát, a táblázat változóit és a natív módon lefordított modulokat. Ha azonban bármilyen In-Memory OLTP-objektum szerepel az áttelepített adatbázisban, a prémium és a üzletileg kritikus szolgáltatási szintjeiről a nagy kapacitású-re történő áttelepítés nem támogatott. Ha egy ilyen adatbázist át szeretne telepíteni a nagy kapacitású-be, az összes In-Memory OLTP objektumot és a hozzájuk tartozó függőségeket el kell dobni. Az adatbázis migrálása után ezek az objektumok újra létrehozhatók. A tartós és nem tartós, memóriára optimalizált táblák jelenleg nem támogatottak a nagy kapacitású-ben, és a lemezes táblákra kell módosítani.|
 | Georeplikáció  | Azure SQL Database nagy kapacitású esetében még nem konfigurálhatja a Geo-replikációt. |
 | Adatbázis másolása | A nagy kapacitású adatbázis-másolata már nyilvános előzetes verzióban érhető el. |
 | Intelligens adatbázis-funkciók | A "kényszerített terv" lehetőség kivételével az összes többi Automatikus hangolási beállítás még nem támogatott a nagy kapacitású: a beállítások engedélyezhetők, de nem lesznek javaslatok vagy műveletek. |

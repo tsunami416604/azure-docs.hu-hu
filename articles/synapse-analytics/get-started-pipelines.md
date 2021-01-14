@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: pipeline
 ms.topic: tutorial
-ms.date: 10/27/2020
-ms.openlocfilehash: af01d5b5e424dd5ea229115f7aa3570d0b7cd511
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.date: 12/31/2020
+ms.openlocfilehash: ade8a6b400967bc13fe3593f83f00ecc49ef06a2
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744932"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209797"
 ---
 # <a name="integrate-with-pipelines"></a>Integráció a folyamatokkal
 
@@ -26,14 +26,19 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a folyamatokat és
 Az Azure Szinapszisban számos feladatot integrálhat.
 
 1. A szinapszis Studióban nyissa meg az **integrációs** hubot.
-1. Válassza **+**  >  a **folyamat** lehetőséget egy új folyamat létrehozásához.
-1. Lépjen a **fejlesztés** központba, és válassza ki a korábban létrehozott jegyzetfüzetek egyikét.
-1. Húzza a jegyzetfüzetet a folyamatba ( **Megjegyzés** : az importálási modulok hozzáadása lépés a jegyzetfüzetben a [dokumentumban](https://docs.microsoft.com/azure/synapse-analytics/spark/synapse-spark-sql-pool-import-export#transfer-data-to-or-from-a-sql-pool-attached-with-the-workspace)megadott módon, amely a folyamatból való futtatáskor szükséges)
+1. Válassza **+**  >  a **folyamat** lehetőséget egy új folyamat létrehozásához. Kattintson az új folyamat objektumra a folyamat-tervező megnyitásához.
+1. A **tevékenységek** területen bontsa ki a **szinapszis** mappát, és húzzon egy **Jegyzetfüzet** -objektumot a tervezőbe.
+1. Válassza a jegyzetfüzet tevékenység tulajdonságai párbeszédpanel **Beállítások** lapját. A legördülő listából kiválaszthatja az aktuális szinapszis-munkaterületről származó összes jegyzetfüzetet. 
 1. A folyamatban válassza a **Hozzáadás trigger**  >  **új/szerkesztés** lehetőséget.
 1. Az **eseményindító kiválasztása** területen válassza az **új** lehetőséget, majd állítsa az **ismétlődést** "minden 1 órában" értékre.
-1. Kattintson az **OK** gombra. 
-1. Kattintson **Az összes közzététele** gombra.
-1. Ahhoz, hogy a folyamat azonnal fusson, a következő órára való várakozás nélkül válassza az **trigger** -  >  **trigger** hozzáadása lehetőséget.
+1. Válassza az **OK** lehetőséget. 
+1. Kattintson **Az összes közzététele** gombra. 
+
+
+## <a name="monitor-pipeline"></a>Folyamat figyelése
+
+1. Miután közzétette a folyamatot, hogy a folyamat azonnal fusson, és ne várjon a következő órára, válassza az **aktiválási**  >  **trigger hozzáadása most** lehetőséget.
+1. A szinapszis Studióban nyissa meg a **figyelő** központot, és válassza a **folyamat futtatása** lehetőséget a folyamat végrehajtási folyamatának figyeléséhez.
 
 
 

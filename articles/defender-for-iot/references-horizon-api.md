@@ -4,15 +4,15 @@ description: Ez az útmutató a gyakran használt horizont módszereit ismerteti
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 1/7/2020
+ms.date: 1/5/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 6d2e3fccd6a61fe129050faa29cb7bb77674ccfe
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: 39770fe7aa7b11cae03304fda8901e81e0f1877a
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97976902"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208411"
 ---
 # <a name="horizon-api"></a>Horizon API 
 
@@ -20,17 +20,19 @@ Ez az útmutató a gyakran használt horizont módszereit ismerteti.
 
 ### <a name="getting-more-information"></a>További információk
 
-A horizont és a CyberX platform használatáról további információt a következő témakörben talál:
+A Horizon és a Defender for IoT platform használatáról további információt a következő információkban talál:
 
-- A Horizon Open Development Environment (ODE) SDK-hoz forduljon a CyberX képviselőjéhez.
+- A Horizon Open Development Environment (ODE) SDK esetében forduljon a Defender for IoT képviselőjéhez.
 - A támogatási és hibaelhárítási információkért forduljon a következőhöz: <support@cyberx-labs.com> .
-- A Cyberx felhasználói útmutatójának a CyberX-konzolról való eléréséhez válassza a :::image type="icon" source="media/references-horizon-api/profile-icon.png"::: **felhasználói útmutató letöltése** lehetőséget.
+
+- A Defender for IoT felhasználói útmutatójának a Defender for IoT-konzolról való eléréséhez válassza a :::image type="icon" source="media/references-horizon-api/profile.png"::: **felhasználói útmutató letöltése** lehetőséget.
+
 
 ## `horizon::protocol::BaseParser`
 
 Absztrakt minden beépülő modulhoz. Ez két módszerből áll:
 
-- A fentiekben megadott plugin-szűrők feldolgozásához. Ily módon a horizont tudja, hogyan kommunikálhat az elemzővel
+- A fentiekben megadott plugin-szűrők feldolgozásához. Így a horizonton tudja, hogyan kommunikálhat az elemzővel.
 - A tényleges adatok feldolgozásához.
 
 ## `std::shared_ptr<horizon::protocol::BaseParser> create_parser()`
@@ -39,7 +41,7 @@ A beépülő modulhoz hívott első függvény létrehozza az elemző egy péld�
 
 ### <a name="parameters"></a>Paraméterek 
 
-Nincs
+Nincsenek.
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -53,11 +55,11 @@ A legtöbb esetben ez üres lesz. Kivételt jelez a horizonton, hogy valami ross
 
 ### <a name="parameters"></a>Paraméterek 
 
-- A dissect_as struktúráját tartalmazó Térkép, amely egy másik beépülő modul config.jsvan meghatározva, amelyet Ön szeretne regisztrálni.
+- Dissect_as struktúráját tartalmazó Térkép, amely egy másik beépülő modul config.jsján van meghatározva, amelyet szeretne regisztrálni.
 
-### <a name="return-value"></a>Visszatérítési érték 
+### <a name="return-value"></a>Visszatérési érték 
 
-Uint64_t-tömb, amely a regisztráció során feldolgozott uint64_t. Ez azt jelenti, hogy a térképen a portok listája jelenik meg, amelyek értéke a uin64_t.
+Uint64_t egy tömbje, amely a regisztrációt egy uint64_tba dolgozza fel. Ez azt jelenti, hogy a térképen a portok listája jelenik meg, amelyek értéke a uin64_t.
 
 ## `horizon::protocol::ParserResult horizon::protocol::BaseParser::processLayer(horizon::protocol::management::IProcessingUtils &,horizon::general::IDataBuffer &)`
 
@@ -69,12 +71,12 @@ A beépülő modulnak biztonságos szálnak kell lennie, mivel ez a függvény k
 
 ### <a name="parameters"></a>Paraméterek
 
-- Az adat tárolására és SDK-val kapcsolatos objektumok (például ILayer, mezők stb.) létrehozásához felelős SDK-vezérlő egység.
+- Az adat tárolására és az SDK-val kapcsolatos objektumok (például ILayer és mezők) létrehozásához felelős SDK-vezérlő egység.
 - A nyers csomag adatolvasására szolgáló segítő. Már be van állítva a config.jsban megadott bájtos sorrendtel.
 
-### <a name="return-value"></a>Visszatérítési érték 
+### <a name="return-value"></a>Visszatérési érték 
 
-A feldolgozás eredménye. Ez lehet sikeres vagy helytelenül formázott/józanság.
+A feldolgozás eredménye. Ez lehet *sikeres*, *helytelen formátumú* vagy *józan ész*.
 
 ## `horizon::protocol::SanityFailureResult: public horizon::protocol::ParserResult`
 
@@ -90,7 +92,7 @@ Konstruktor
 
 ## `horizon::protocol::MalformedResult: public horizon::protocol::ParserResult`
 
-Helytelenül formázott eredmény, jelezve, hogy a csomagot már felismertük a protokollként, de néhány érvényesítési hiba történt (a fenntartott bitek be vannak kapcsolva, bizonyos mezők hiányoznak stb.)
+Helytelenül formázott eredmény, jelezve, hogy a csomagot már felismertük a protokollként, de néhány érvényesítési hiba történt (a fenntartott bitek be vannak kapcsolva, vagy hiányzik egy mező).
 
 ## `horizon::protocol::MalformedResult::MalformedResult(uint64_t)`
 
@@ -102,7 +104,7 @@ Konstruktor
 
 ## `horizon::protocol::SuccessResult: public horizon::protocol::ParserResult`
 
-A sikeres feldolgozás horizontjának értesítése. Sikeres művelet esetén a csomag el lett fogadva; az adategységek a számunkra, és az összes adattal kinyerve.
+A sikeres feldolgozás horizontjának értesítése. Ha a művelet sikeres, a csomag el lett fogadva, az adategységek a hozzánk tartoznak, és az összes adattal kivonták.
 
 ## `horizon::protocol::SuccessResult()`
 
@@ -110,24 +112,24 @@ Konstruktor. Egy alapszintű sikeres eredmény lett létrehozva. Ez azt jelenti,
 
 ## `horizon::protocol::SuccessResult(horizon::protocol::ParserResultDirection)`
 
-Konstruktor
+Konstruktor.
 
 ### <a name="parameters"></a>Paraméterek 
 
-- A csomag iránya, ha meg van határozva. Értékek IGÉNYELHETŐk, válasz
+- A csomag iránya, ha meg van határozva. Az értékek lehetnek *kérések* vagy *válaszok*.
 
 ## `horizon::protocol::SuccessResult(horizon::protocol::ParserResultDirection, const std::vector<uint64_t> &)`
 
-Konstruktor
+Konstruktor.
 
 ### <a name="parameters"></a>Paraméterek
 
-- A csomag iránya, ha azonosította, KÉRHETő, választ kaphat
+- A csomag iránya, ha azonosította, *kérhető*, *választ* kaphat.
 - Figyelmeztetések. Ezek az események nem lesznek sikertelenek, de a rendszer a horizontot értesíti.
 
 ## `horizon::protocol::SuccessResult(const std::vector<uint64_t> &)`
 
-Konstruktor
+Konstruktor.
 
 ### <a name="parameters"></a>Paraméterek 
 
@@ -135,13 +137,13 @@ Konstruktor
 
 ## `HorizonID HORIZON_FIELD(const std::string_view &)`
 
-Karakterlánc-alapú hivatkozást alakít át egy mezőnév (például function_code) értékre a HorizonID
+Karakterlánc-alapú hivatkozást alakít át egy mezőnév (például function_code) HorizonID.
 
 ### <a name="parameters"></a>Paraméterek 
 
-- Konvertálandó karakterlánc
+- Az átalakítandó karakterlánc.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 - A sztringből létrehozott HorizonID.
 
@@ -149,17 +151,17 @@ Karakterlánc-alapú hivatkozást alakít át egy mezőnév (például function_
 
 Létrehoz egy új réteget, így a horizont tudni fogja, hogy a beépülő modul szeretné tárolni az egyes adatfájlokat. Ez az alapszintű tárolási egység, amelyet használnia kell.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Egy létrehozott rétegre mutató hivatkozás, amellyel hozzá lehet adni az adatkészlethez.
 
 ## `horizon::protocol::management::IFieldManagement &horizon::protocol::management::IProcessingUtils::getFieldsManager()`
 
-Beolvassa a mező-felügyeleti objektumot, amely a különböző objektumokon, például a ILayer-on található mezők létrehozására felelős.
+Beolvassa a mező felügyeleti objektumát, amely a mezők különböző objektumokon, például a ILayer való létrehozásához felelős.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
-A felettesre mutató hivatkozás
+A felettesre mutató hivatkozás.
 
 ## `void horizon::protocol::management::IFieldManagement::create(horizon::protocol::ILayer &, HorizonID, uint64_t)`
 
@@ -167,9 +169,9 @@ Létrehoz egy 64 bites új numerikus mezőt a rétegen a kért AZONOSÍTÓval.
 
 ### <a name="parameters"></a>Paraméterek 
 
-- A korábban létrehozott réteg
-- A HORIZON_FIELD makró által létrehozott HorizonID
-- A tárolni kívánt nyers érték
+- A korábban létrehozott réteg.
+- A **HORIZON_FIELD** makró által létrehozott HorizonID.
+- A tárolni kívánt nyers érték.
 
 ## `void horizon::protocol::management::IFieldManagement::create(horizon::protocol::ILayer &, HorizonID, std::string)`
 
@@ -177,19 +179,19 @@ Egy új karakterlánc-mezőt hoz létre a rétegen a kért AZONOSÍTÓval. A ren
 
 ### <a name="parameters"></a>Paraméterek  
 
-- A korábban létrehozott réteg
-- A HORIZON_FIELD makró által létrehozott HorizonID
-- A tárolni kívánt nyers érték
+- A korábban létrehozott réteg.
+- A **HORIZON_FIELD** makró által létrehozott HorizonID.
+- A tárolni kívánt nyers érték.
 
 ## `void horizon::protocol::management::IFieldManagement::create(horizon::protocol::ILayer &, HorizonID, std::vector<char> &)`
 
-Létrehoz egy új nyers értéket (bájtok tömbjét) a rétegen, a kért AZONOSÍTÓval. A memória mozgásba kerül, ezért legyen körültekintő, nem fogja tudni használni ezt az értéket
+Létrehoz egy új nyers értéket (bájtok tömbjét) a rétegen, a kért AZONOSÍTÓval. A memória mozgásba kerül, ezért legyen körültekintő, nem fogja tudni használni ezt az értéket.
 
 ### <a name="parameters"></a>Paraméterek
 
-- A korábban létrehozott réteg
-- A HORIZON_FIELD makró által létrehozott HorizonID
-- A tárolni kívánt nyers érték
+- A korábban létrehozott réteg.
+- A **HORIZON_FIELD** makró által létrehozott HorizonID.
+- A tárolni kívánt nyers érték.
 
 ## `horizon::protocol::IFieldValueArray &horizon::protocol::management::IFieldManagement::create(horizon::protocol::ILayer &, HorizonID, horizon::protocol::FieldValueType)`
 
@@ -197,13 +199,13 @@ Létrehoz egy Array értéket (Array) a megadott típusú rétegen a kért AZONO
 
 ### <a name="parameters"></a>Paraméterek
 
-- A korábban létrehozott réteg
-- A HORIZON_FIELD makró által létrehozott HorizonID
+- A korábban létrehozott réteg.
+- A **HORIZON_FIELD** makró által létrehozott HorizonID.
 - A tömbön belül tárolt értékek típusa
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
-Olyan tömbre mutató hivatkozás, amelynek értékeket kell hozzáfűzni
+Hivatkozás egy olyan tömbre, amelynek értékeket kell hozzáfűzni.
 
 ## `void horizon::protocol::management::IFieldManagement::create(horizon::protocol::IFieldValueArray &, uint64_t)`
 
@@ -211,26 +213,26 @@ Hozzáfűz egy új egész értéket a korábban létrehozott tömbhöz.
 
 ### <a name="parameters"></a>Paraméterek
 
-- A korábban létrehozott tömb
-- A tömbben tárolandó nyers érték
+- A korábban létrehozott tömb.
+- A tömbben tárolni kívánt nyers érték.
 
 ## `void horizon::protocol::management::IFieldManagement::create(horizon::protocol::IFieldValueArray &, std::string)`
 
-Hozzáfűz egy új karakterlánc-értéket a korábban létrehozott tömbhöz. A memória mozgásba kerül, ezért legyen körültekintő, nem fogja tudni használni ezt az értéket
+Hozzáfűz egy új karakterlánc-értéket a korábban létrehozott tömbhöz. A memória mozgásba kerül, ezért legyen körültekintő, nem fogja tudni használni ezt az értéket.
 
 ### <a name="parameters"></a>Paraméterek
 
-- A korábban létrehozott tömb
-- A tömbben tárolandó nyers érték
+- A korábban létrehozott tömb.
+- A tömbben tárolni kívánt nyers érték.
 
 ## `void horizon::protocol::management::IFieldManagement::create(horizon::protocol::IFieldValueArray &, std::vector<char> &)`
 
-Hozzáfűz egy új nyers értéket a korábban létrehozott tömbhöz. A memória mozgásba kerül, ezért legyen körültekintő, nem fogja tudni használni ezt az értéket
+Hozzáfűz egy új nyers értéket a korábban létrehozott tömbhöz. A memória mozgásba kerül, ezért legyen körültekintő, nem fogja tudni használni ezt az értéket.
 
 ### <a name="parameters"></a>Paraméterek
 
-- A korábban létrehozott tömb
-- A tömbben tárolandó nyers érték
+- A korábban létrehozott tömb.
+- A tömbben tárolni kívánt nyers érték.
 
 ## `bool horizon::general::IDataBuffer::validateRemainingSize(size_t)`
 
@@ -238,17 +240,17 @@ Ellenőrzi, hogy a puffer legalább X bájtot tartalmaz-e.
 
 ### <a name="parameters"></a>Paraméterek
 
-A bájtok számának léteznie kell 
+A létező bájtok száma.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
-Értéke true, ha a puffer legalább X bájtot tartalmaz. Ellenkező esetben hamis.
+Értéke true, ha a puffer legalább X bájtot tartalmaz. Ellenkező esetben ez a `False` .
 
 ## `uint8_t horizon::general::IDataBuffer::readUInt8()`
 
 A uint8 értékének (1 bájt) beolvasása a pufferből a bájtok sorrendjének megfelelően.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A pufferből beolvasott érték
 
@@ -256,7 +258,7 @@ A pufferből beolvasott érték
 
 A UInt16 értékének (2 bájt) beolvasása a pufferből a bájtok sorrendjének megfelelően.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A pufferből beolvasott érték
 
@@ -264,7 +266,7 @@ A pufferből beolvasott érték
 
 A UInt32 értékének (4 bájt) beolvasása a pufferből a bájt sorrend alapján.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A pufferből beolvasott érték
 
@@ -272,7 +274,7 @@ A pufferből beolvasott érték
 
 A UInt64 értékének (8 bájt) beolvasása a pufferből a bájtok sorrendjének megfelelően.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A pufferből beolvasott érték
 
@@ -282,18 +284,18 @@ A megadott méretű, előre lefoglalt memóriába való beolvasás ténylegesen 
 
 ### <a name="parameters"></a>Paraméterek 
 
-- Az a memória-régió, amelybe az Adatmásolás
-- A memória régiójának mérete, ez a paraméter azt is meghatározza, hogy hány bájtot másol a rendszer
+- Az a memóriaterület, amelybe át kell másolni az adatterületet.
+- A memória régiójának mérete, ez a paraméter azt is meghatározza, hogy hány bájtot másol a rendszer.
 
 ## `std::string_view horizon::general::IDataBuffer::readString(size_t)`
 
-Beolvasott karakterlánc a pufferből
+Beolvas egy karakterláncot a pufferből.
 
 ### <a name="parameters"></a>Paraméterek 
 
 - Az olvasni kívánt bájtok száma.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A karakterlánc memória régiójára mutató hivatkozás.
 
@@ -301,7 +303,7 @@ A karakterlánc memória régiójára mutató hivatkozás.
 
 Megadja, hogy hány bájt marad a pufferben.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A puffer fennmaradó mérete
 

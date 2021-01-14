@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/09/2020
-ms.openlocfilehash: 182ec758a8764a959b39296163e63e800cf5108c
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: a7171d656ec9f839aea4ae73763ec6ebd20c2bb3
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008484"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209831"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Keresési eredmények használata az Azure-ban Cognitive Search
 
@@ -103,7 +103,7 @@ A keresési eredmények általános jelentőséggel bírnak, ami az egyező ered
 
 ### <a name="how-to-get-consistent-ordering"></a>Konzisztens sorrend beszerzése
 
-Ha az konzisztens sorrend egy alkalmazásra vonatkozó követelmény, explicit módon meghatározhatja a **`$orderby`** (z) [] kifejezést (lekérdezés-OData-Filter-OrderBy-Syntax.MD) egy mezőben. Csak az indexelt mezők **`sortable`** használhatók az eredmények megrendeléséhez. Az **`$orderby`** include minősítés, a dátum és a hely mezőkben gyakran használt mezők, ha megadja a paraméter értékét, **`orderby`** hogy tartalmazza a mezőneveket és a [**`geo.distance()` függvénynek**](query-odata-filter-orderby-syntax.md) a térinformatikai értékek meghívását.
+Ha a konzisztens sorrend egy alkalmazásra vonatkozó követelmény, explicit módon megadhat egy [ **`$orderby`** kifejezést](query-odata-filter-orderby-syntax.md) egy mezőhöz. Csak az indexelt mezők **`sortable`** használhatók az eredmények megrendeléséhez. Az **`$orderby`** include minősítés, a dátum és a hely mezőkben gyakran használt mezők, ha megadja a paraméter értékét, **`orderby`** hogy tartalmazza a mezőneveket és a [**`geo.distance()` függvénynek**](query-odata-filter-orderby-syntax.md) a térinformatikai értékek meghívását.
 
 Egy másik megközelítés, amely elősegíti a konzisztenciát, [Egyéni pontozási profilt](index-add-scoring-profiles.md)használ. A pontozási profilok nagyobb mértékben szabályozzák a keresési eredményekben lévő elemek rangsorolását, és lehetővé teszi az egyes mezőkben található egyezések növelését. A további pontozási logika segíthet felülbírálni a replikák közötti kisebb különbségeket, mivel az egyes dokumentumokhoz tartozó keresési pontszámok egymástól eltérőek lehetnek. Az ehhez a megközelítéshez tartozó [rangsorolási algoritmust](index-ranking-similarity.md) ajánljuk.
 

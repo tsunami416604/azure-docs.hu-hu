@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: a18a36b8583f8534b2a2e643e5c155dc7a2d65e2
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e2c632de3d602fe2d3e5bfa74f78e90f48412067
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444061"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208913"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>Webes API-kat meghívó mobil alkalmazás konfigurálása
 
@@ -27,7 +27,7 @@ Az alkalmazás létrehozása után megtudhatja, hogyan konfigurálhatja a kódot
 
 A következő Microsoft Authentication Library-(MSAL-) típusok támogatják a Mobile Apps szolgáltatást.
 
-MSAL | Description
+MSAL | Leírás
 ------------ | ----------
 ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Hordozható alkalmazások fejlesztéséhez használatos. A MSAL.NET a következő platformokat támogatja a Mobile-alkalmazások létrehozásához: Univerzális Windows-platform (UWP), Xamarin. iOS és Xamarin. Android.
 ![MSAL. iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL. iOS | Natív iOS-alkalmazások fejlesztésére szolgál Objective-C vagy SWIFT használatával.
@@ -148,9 +148,9 @@ További információ: [UWP-specifikus megfontolások a MSAL.net](msal-net-uwp-c
 
 Az Android és az iOS rendszeren a brókerek a következőket teszik lehetővé:
 
-- **Egyszeri bejelentkezés (SSO)** : használhat egyszeri bejelentkezést az Azure Active Directory (Azure ad) szolgáltatásban regisztrált eszközökhöz. Ha SSO-t használ, a felhasználóknak nem kell bejelentkezniük minden alkalmazásba.
-- **Eszköz azonosítása** : Ez a beállítás engedélyezi az Azure ad-eszközökhöz kapcsolódó feltételes hozzáférési szabályzatokat. A hitelesítési folyamat az eszköznek a munkahelyhez való csatlakozásakor létrehozott tanúsítványát használja.
-- **Alkalmazás-azonosítás ellenőrzése** : amikor egy alkalmazás meghívja a közvetítőt, átadja az átirányítási URL-címét. Ezután a közvetítő ellenőrzi.
+- **Egyszeri bejelentkezés (SSO)**: használhat egyszeri bejelentkezést az Azure Active Directory (Azure ad) szolgáltatásban regisztrált eszközökhöz. Ha SSO-t használ, a felhasználóknak nem kell bejelentkezniük minden alkalmazásba.
+- **Eszköz azonosítása**: Ez a beállítás engedélyezi az Azure ad-eszközökhöz kapcsolódó feltételes hozzáférési szabályzatokat. A hitelesítési folyamat az eszköznek a munkahelyhez való csatlakozásakor létrehozott tanúsítványát használja.
+- **Alkalmazás-azonosítás ellenőrzése**: amikor egy alkalmazás meghívja a közvetítőt, átadja az átirányítási URL-címét. Ezután a közvetítő ellenőrzi.
 
 ### <a name="enable-the-broker-on-xamarin"></a>A közvetítő engedélyezése a Xamarin
 
@@ -249,8 +249,8 @@ Az alkalmazás URL-sémájának regisztrálásához kövesse az alábbi lépése
 
    Itt `BundleId` egyedileg azonosíthatja az eszközt. Ha például `BundleId` az, az `yourcompany.xforms` URL-séma `msauth.com.yourcompany.xforms` .
 
-   > [!NOTE]
-   > Ez az URL-séma az átirányítási URI részévé válik, amely egyedileg azonosítja az alkalmazást, amikor megkapja a közvetítő válaszát.
+  
+      Ez az URL-séma az átirányítási URI részévé válik, amely egyedileg azonosítja az alkalmazást, amikor megkapja a közvetítő válaszát.
 
    ```XML
     <key>CFBundleURLTypes</key>
@@ -310,10 +310,9 @@ Ha az iOS és a macOS rendszerhez készült MSAL meghívja a közvetítőt, a k�
     }
 ```
 
-> [!NOTE]
-> Ha az `UISceneDelegate` iOS 13-ös vagy újabb verzióját használja, helyezze el a MSAL-visszahívást a `scene:openURLContexts:` `UISceneDelegate` helyett. `handleMSALResponse:sourceApplication:`Az MSAL csak egyszer hívható meg minden URL-címhez.
->
-> További információt az [Apple dokumentációjában](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)talál.
+Ha az `UISceneDelegate` iOS 13-ös vagy újabb verzióját használja, helyezze el a MSAL-visszahívást a `scene:openURLContexts:` `UISceneDelegate` helyett. `handleMSALResponse:sourceApplication:`Az MSAL csak egyszer hívható meg minden URL-címhez.
+
+További információt az [Apple dokumentációjában](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)talál.
 
 #### <a name="step-2-register-a-url-scheme"></a>2. lépés: URL-séma regisztrálása
 
@@ -329,8 +328,7 @@ Séma regisztrálása az alkalmazáshoz:
 
    Itt `BundleId` egyedileg azonosíthatja az eszközt. Ha például `BundleId` az, az `yourcompany.xforms` URL-séma `msauth.com.yourcompany.xforms` .
 
-   > [!NOTE]
-   > Ez az URL-séma az átirányítási URI részévé válik, amely egyedileg azonosítja az alkalmazást, amikor megkapja a közvetítő válaszát. Győződjön meg arról, hogy az átirányítási URI formátuma `msauth.(BundleId)://auth` regisztrálva van az alkalmazáshoz a [Azure Portalban](https://portal.azure.com).
+    Ez az URL-séma az átirányítási URI részévé válik, amely egyedileg azonosítja az alkalmazást, amikor megkapja a közvetítő válaszát. Győződjön meg arról, hogy az átirányítási URI formátuma `msauth.(BundleId)://auth` regisztrálva van az alkalmazáshoz a [Azure Portalban](https://portal.azure.com).
 
    ```XML
    <key>CFBundleURLTypes</key>
@@ -365,6 +363,6 @@ A Hozzáadás `LSApplicationQueriesSchemes` gombra kattintva engedélyezheti a M
 
 A Broker Android rendszeren való engedélyezésével kapcsolatos információkért lásd: [Xamarin. Android](msal-net-use-brokers-with-xamarin-apps.md#brokered-authentication-for-android), felügyelt hitelesítés.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a forgatókönyvben a [token beszerzésével](scenario-mobile-acquire-token.md)léphet be a következő cikkbe.

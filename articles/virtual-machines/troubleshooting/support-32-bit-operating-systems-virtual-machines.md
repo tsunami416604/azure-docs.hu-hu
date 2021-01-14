@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 1b801bac28b131ff43c47024649bfe0986f768c7
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 81b7efdd6bca0471719c11d130be95405f4d54e1
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202895"
+ms.locfileid: "98210188"
 ---
 # <a name="support-for-32-bit-operating-systems-in-azure-virtual-machines"></a>32 bites operációs rendszerek támogatása az Azure-beli virtuális gépeken
 
 A Microsoft Azure mostantól lehetővé teszi a felhasználók számára, hogy a 32 bites Windows operációs rendszereket használják az Azure-ba. Csak a speciális VHD-k támogatottak, és az általánosított lemezképek nem fognak működni az Azure-ban. Mivel a fenti operációs rendszerek némelyike már elérte az élettartam-támogatási szerződést, előfordulhat, hogy a Microsoft nem nyújt további támogatást. A támogatás nem érhető el a Linux-alapú vagy a Berkeley Distribution (BSD) alapú operációs rendszerekhez, amelyek Microsoft Azure virtuális gépen (VM) futnak.
 
 > [!NOTE]
-> Az Azure platformhoz a 32 bites operációs rendszert futtató virtuális gépekre vonatkozó memória-címtartomány-korlátozás vonatkozik, ahol a virtuális gép csak 1 GB memóriát tesz elérhetővé, és a virtuális gép memóriája a vendég virtuális gépen foglalt módon fog megjelenni. Ez egy ismert probléma, és jelenleg nem található ETA a javításhoz. Javasoljuk, hogy váltson 64 bites operációsrendszer-verzióra.
+> Az Azure platformhoz a 32 bites operációs rendszert futtató virtuális gépekre vonatkozó memória-címtartomány-korlátozás vonatkozik, ahol a virtuális gép számára csak 1 GB memóriát lehet elérhetővé tenni (*különösen az ügyfél SKU-ban, például a Win7 vagy a Win10* esetében), a virtuális gép memóriája pedig a vendég virtuális gép számára fenntartott állapotban jelenik meg. Ez egy ismert probléma, és jelenleg nem található ETA a javításhoz. Javasoljuk, hogy váltson 64 bites operációsrendszer-verzióra.
 > 
 
 ## <a name="more-information"></a>További információ

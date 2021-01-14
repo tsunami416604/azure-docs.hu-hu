@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: ba7081c877f3c3adae6e678280592c9445a95d1b
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 990c396c859477c83e0ef421659a299920ee0c35
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858807"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209134"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>A Linux rendszerű virtuális gépekre vonatkozó Azure Hybrid Benefit alkalmazása
 
@@ -47,6 +47,9 @@ A RHEL Azure Hybrid Benefit a következő feltételeknek megfelelő Red Hat-ügy
 
 - Az Azure-ban való használatra jogosult aktív vagy nem használt RHEL-előfizetések
 - Egy vagy több előfizetést engedélyeztek az Azure-ban a [Red Hat Cloud Access](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) program használatával
+
+> [!IMPORTANT]
+> Győződjön meg arról, hogy a megfelelő előfizetés engedélyezve van a [felhőalapú hozzáférési](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) programban.
 
 A Red Hat előnyeinek használatának megkezdéséhez:
 
@@ -223,5 +226,5 @@ Ez a szakasz az esetlegesen felmerülő gyakori problémákat és a mérséklés
 | ----- | ---------- |
 | "A műveletet nem lehetett befejezni, mert a rekordok azt mutatják, hogy az Azure-előfizetésében nem sikerült engedélyezni a Red Hat Cloud Access használatát..." | A RHEL virtuális gépekkel való ellátás használatához először [regisztrálnia kell az Azure-előfizetéseket a Red Hat Cloud Access](https://access.redhat.com/management/cloud)használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Megtudhatja, hogyan hozhat létre és frissíthet virtuális gépeket, és hogyan adhat hozzá licenceket (RHEL_BYOS, SLES_BYOS) az Azure CLI-vel való Azure Hybrid Benefithoz](/cli/azure/vm?preserve-view=true&view=azure-cli-latest)

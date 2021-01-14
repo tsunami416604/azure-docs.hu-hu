@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
-ms.openlocfilehash: 805ab0e78f0679ce483af3a73203b41132be2a59
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: df2d74701e21c3773d96564f1b06d80ddb9fce9d
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022955"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209219"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>StorSimple-Snapshot Manager használata a kötetek létrehozásához és kezeléséhez
 ## <a name="overview"></a>Áttekintés
@@ -107,7 +107,7 @@ A következő eljárással szerkesztheti a kötetek csoportjait.
 #### <a name="to-edit-a-volume-group"></a>Mennyiségi csoport szerkesztése
 1. A StorSimple Snapshot Manager indításához kattintson az asztal ikonjára.
 2. A **hatókör** ablaktáblán bontsa ki a **kötetek csoportjai** csomópontot, kattintson a jobb gombbal a kötet csoport nevére, majd kattintson a **Szerkesztés** parancsra.
-3. Megjelenik a * * kötet csoport létrehozása * * párbeszédpanel. Módosíthatja a **nevet**, az **alkalmazásokat** és a **kötetek** bejegyzéseit.
+3. Megjelenik a **mennyiségi csoport létrehozása** párbeszédpanel. Módosíthatja a **nevet**, az **alkalmazásokat** és a **kötetek** bejegyzéseit.
 4. Kattintson az **OK** gombra a módosítások mentéséhez.
 
 ## <a name="delete-a-volume-group"></a>Mennyiségi csoport törlése
@@ -125,7 +125,7 @@ A köteteket a következő eljárással törölheti.
    
     A törölt számítógépcsoport eltűnik az **eredményeket** tartalmazó ablaktábla listájáról, és az adott kötethez társított összes biztonsági mentés törlődik a biztonsági mentési katalógusból.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerje meg, hogyan kezelheti [a StorSimple-megoldást a StorSimple Snapshot Manager használatával](storsimple-snapshot-manager-admin.md).
 * Ismerje meg, hogyan [hozhat létre és kezelhet biztonsági mentési házirendeket a StorSimple Snapshot Manager használatával](storsimple-snapshot-manager-manage-backup-policies.md).
 

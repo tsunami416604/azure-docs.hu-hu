@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/2/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 5e33a7adc7b529df8c7c821cbfdcb0ad5709803b
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 2bd994f14863715274e137bce2dd6873eeec1135
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97839964"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208760"
 ---
 # <a name="defender-for-iot-installation"></a>Defender a IoT telepítéséhez
 
@@ -44,7 +44,7 @@ A következő rack Mount készülékek érhetők el:
 
 | **Központi telepítés típusa** | **Vállalat** | **Vállalat** | **SMB** |  |
 |--|--|--|--|--|
-| **Modell** | HPE ProLiant DL360 | Dell PowerEdge R340 XL | HPE ProLiant DL20 | HPE ProLiant DL20 |
+| **Modellezés** | HPE ProLiant DL360 | Dell PowerEdge R340 XL | HPE ProLiant DL20 | HPE ProLiant DL20 |
 | **Portok figyelése** | legfeljebb 15 RJ45 vagy 8 OPT | legfeljebb 9 RJ45 vagy 6 OPT | legfeljebb 8 RJ45 vagy 6 OPT | 4 RJ45 |
 | **Maximális sávszélesség \** _ | 3 GB/mp | 1 GB/s | 1 GB/s | 100 MB/s |
 | *Maximálisan védett eszközök** | 30 000 | 10,000 | 15 000 | 1,000 |
@@ -230,9 +230,9 @@ Ez a cikk bemutatja, hogyan konfigurálhatja a BIOS-t a konfigurációs fájl ha
 
 4. A készülék hitelesítő adatai a következők:
 
-   - Felhasználónév: **cyberx**
+   - Felhasználónév: **xxx**
 
-   - Jelszó: **xhxvhttju, @4338**
+   - Jelszó: **xxx**
 
      A rendszer kezdeményezte az importálási kiszolgáló profiljának műveletét.
 
@@ -274,7 +274,7 @@ A manuális konfiguráláshoz:
 
    - Ha a készülék nem Defender a IoT készülékhez, nyisson meg egy böngészőt, és keresse meg a korábban konfigurált IP-címet. Jelentkezzen be a Dell alapértelmezett rendszergazdai jogosultságokkal. A jelszóhoz használja a **root** nevet a felhasználónévhez és a **kázmérhoz** .
 
-   - Ha a készülék a IoT készülék Defenderje, jelentkezzen be a Felhasználónév és a **@4338 xhxvhttju** **cyberx** használatával a jelszóhoz.
+   - Ha a készülék a IoT készülék Defenderje, jelentkezzen be a felhasználónévvel és **xxx** -nal a jelszóhoz. 
 
 2. A BIOS-hozzáférés után lépjen az **eszközbeállítások** menüpontra.
 
@@ -1071,6 +1071,6 @@ Bújtatás engedélyezése:
 
 4. Írja be a következő szöveget: `--port 10000`.
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 
 [A hálózat beállítása](how-to-set-up-your-network.md)

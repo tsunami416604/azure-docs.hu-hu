@@ -6,23 +6,23 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 10/02/2020
+ms.date: 12/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 5f1623ef4dde59e816e3afe5a5f5894c49469580
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0190e295c2ab206242ab8a44a09ffb42746d75bd
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91767874"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209550"
 ---
 # <a name="azure-data-box-system-requirements"></a>Rendszerkövetelmények Azure Data Box
 
-Ez a cikk a Microsoft Azure Data Box és a Data Boxhoz kapcsolódó ügyfelek fontos rendszerkövetelményeit ismerteti. Javasoljuk, hogy körültekintően tekintse át az információkat, mielőtt üzembe helyezi a Data Box, majd az üzembe helyezés és a művelet során szükség szerint tekintse át.
+Ez a cikk a Microsoft Azure Data Box és a Data Boxhoz kapcsolódó ügyfelek fontos rendszerkövetelményeit ismerteti. Javasoljuk, hogy körültekintően tekintse át az információkat, mielőtt üzembe helyezi a Data Box, majd a telepítés és a művelet során szükség esetén tekintse át a következőt:.
 
 A rendszerkövetelmények a következők:
 
 * A **szoftverre vonatkozó követelmények:** A Data Boxhoz csatlakozó gazdagépek a helyi webes felhasználói felület támogatott operációs rendszereit, a fájlátviteli protokollokat, a Storage-fiókokat, a tárolási típusokat és a böngészőket ismertetik.
-* **Hálózati követelmények:** A Data Box esetében a Data Box optimális működéséhez szükséges hálózati kapcsolatok és portokra vonatkozó követelmények ismertetése.
+* **Hálózati követelmények:** A Data Box a Data Box legjobb működéséhez szükséges hálózati kapcsolatokra és portokra vonatkozó követelményeket ismerteti.
 
 
 ## <a name="software-requirements"></a>Szoftverkövetelmények
@@ -55,11 +55,11 @@ A szoftverre vonatkozó követelmények közé tartoznak a támogatott operáci�
 
 ## <a name="networking-requirements"></a>Hálózati követelmények
 
-Az adatközpontnak nagy sebességű hálózattal kell rendelkeznie. Határozottan javasoljuk, hogy legalább 10 GbE sebességű kapcsolattal rendelkezzen. Ha egy 10 GbE-kapcsolat nem érhető el, a rendszer egy GbE adatkapcsolatot használ az adatmásoláshoz, de a másolási sebességekre is hatással van.
+Az adatközpontnak nagy sebességű hálózattal kell rendelkeznie. Javasoljuk, hogy legalább 1 10-GbE-alapú kapcsolatban legyen. Ha egy 10 GbE-kapcsolat nem érhető el, a másolási sebességre egy 1 GbE adathivatkozás használható.
 
 ### <a name="port-requirements"></a>Portra vonatkozó követelmények
 
-A következő táblázat felsorolja azokat a portokat, amelyeket meg kell nyitni a tűzfalon, hogy engedélyezze az SMB-vagy NFS-forgalmat. Ebben *a táblázatban a (* *bejövő*) arra utal, hogy a bejövő ügyfél milyen irányba kér hozzáférést az eszközhöz. Az *out* (vagy a *kimenő*) arra az irányra vonatkozik, amelyben a Data Box eszköz külsőleg küld adatokat, az üzembe helyezésen túl: például az internet felé.
+A következő táblázat felsorolja azokat a portokat, amelyeket meg kell nyitni a tűzfalon, hogy engedélyezze az SMB-vagy NFS-forgalmat. Ebben *a táblázatban a (* *bejövő*) arra utal, hogy a bejövő ügyfél milyen irányba kér hozzáférést az eszközhöz. A *kimenet* (vagy *kimenő*) arra az irányra vonatkozik, amelyben a Data Box eszköz külsőleg küld adatokat, a telepítésen kívül. Előfordulhat például, hogy az adatforgalom az interneten van.
 
 [!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
 

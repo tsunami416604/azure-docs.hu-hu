@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 11/17/2020
-ms.openlocfilehash: 9014469ca063ca52be0965ecbd4e8b21709d10a0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 12/31/2020
+ms.openlocfilehash: 38332492ba9f20ea7c6682d8341ddf6b5f1f11dd
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455156"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209422"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Az adatelemzés dedikált SQL-készletekkel
 
@@ -23,8 +23,8 @@ Az Azure szinapszis Analytics lehetővé teszi az adatelemzést egy dedikált SQ
 
 ## <a name="load-the-nyc-taxi-data-into-sqlpool1"></a>A New York-i taxi-szolgáltatás betöltése a SQLPOOL1
 
-1. A szinapszis Studióban navigáljon a **fejlesztés** hubhoz, majd hozzon létre új SQL-parancsfájlt.
-1. Válassza ki a "SQLPOOL1" készletet (az oktatóanyag [1. lépésében](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace#create-a-sql-pool) létrehozott készletet) a parancsfájl "kapcsolódás" szakaszában.
+1. A szinapszis Studióban navigáljon a **fejlesztés** hubhoz, kattintson a **+** gombra új erőforrás hozzáadásához, majd hozzon létre új SQL-parancsfájlt.
+1. Válassza ki a "SQLPOOL1" készletet (az oktatóanyag [1. lépésében](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace#create-a-sql-pool) létrehozott készletet) a parancsfájl feletti "kapcsolódás" legördülő listához.
 1. Írja be a következő kódot:
     ```
     CREATE TABLE [dbo].[Trip]
@@ -71,12 +71,13 @@ Az Azure szinapszis Analytics lehetővé teszi az adatelemzést egy dedikált SQ
     )
     OPTION (LABEL = 'COPY : Load [dbo].[Trip] - Taxi dataset');
     ```
-1. Ez a szkript körülbelül 60 másodperc múlva fejeződik be. Egy dbo nevű táblába tölti be a New York-i, 2 000 000-as sorokat **. Utazás**
+1. A szkript végrehajtásához kattintson a Futtatás gombra.
+1. Ez a szkript 60 másodpercnél rövidebb ideig tart. Egy dbo nevű táblába tölti be a New York-i, 2 000 000-as sorokat **. Utazás**.
 
 ## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>A New York-i taxi adatai a dedikált SQL-készletben
 
 1. A szinapszis Studióban nyissa meg **az** adatközpontot.
-1. Nyissa meg a **SQLPOOL1**  >  **táblákat**. Ekkor több táblázat is betöltődik.
+1. Nyissa meg a **SQLPOOL1**  >  **táblákat**. 
 1. Kattintson a jobb gombbal a **dbo. Utazási** táblázat és válassza az **új SQL-parancsfájl** lehetőséget, majd  >  **válassza a Top 100 sort**.
 1. Várjon, amíg a rendszer létrehoz egy új SQL-parancsfájlt, és futtatja azt.
 1. Figyelje meg, hogy az SQL-parancsfájl felső részén a **Kapcsolódás** automatikusan a **SQLPOOL1** nevű SQL-készletre lesz beállítva.
@@ -89,16 +90,16 @@ Az Azure szinapszis Analytics lehetővé teszi az adatelemzést egy dedikált SQ
     FROM  dbo.Trip
     WHERE TripDistanceMiles > 0 AND PassengerCount > 0
     GROUP BY PassengerCount
-    ORDER BY PassengerCount
+    ORDER BY PassengerCount;
     ```
 
     Ez a lekérdezés azt mutatja be, hogy a teljes utazási távolság és az átlagos utazási távolság az utasok számával függ.
-1. Az SQL-parancsfájl eredményének ablakában módosítsa **View** a nézetet **diagramra** , hogy megjelenítse az eredmények vonal diagramként való megjelenítését.
+1. Az SQL-parancsfájl eredményének ablakában módosítsa  a nézetet **diagramra** , hogy megjelenítse az eredmények vonal diagramként való megjelenítését.
     
     > [!NOTE]
     > Egy dedikált SQL-készletet (korábban SQL DW) engedélyező munkaterület az adatközpontban található elemleírás segítségével azonosítható.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Elemzés a Spark használatával](get-started-analyze-spark.md)

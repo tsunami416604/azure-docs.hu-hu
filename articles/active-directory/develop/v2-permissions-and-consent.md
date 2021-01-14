@@ -12,12 +12,12 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: d3edadd4878dbd6e06648f7fb67a0c3e111665d1
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: da432ee3877af4de931ee6d55860b647090d8e3d
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178126"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208777"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Engedélyek és hozzájárulás a Microsoft-identitásplatform végpontján
 
@@ -31,8 +31,7 @@ A Microsoft Identity platform implementálja a [OAuth 2,0](active-directory-v2-p
 * Microsoft 365 mail API: `https://outlook.office.com`
 * Azure Key Vault: `https://vault.azure.net`
 
-> [!NOTE]
-> Azt javasoljuk, hogy Microsoft 365 mail API helyett Microsoft Graph használjon.
+Azt javasoljuk, hogy Microsoft 365 mail API helyett Microsoft Graph használjon.
 
 Ugyanez érvényes a Microsoft Identity platformmal integrált, harmadik féltől származó erőforrások esetében is. Ezen erőforrások bármelyike meghatározhat olyan engedélyeket is, amelyek az adott erőforrás funkcióinak kisebb adattömbökbe való felosztására használhatók. A [Microsoft Graph](https://graph.microsoft.com) például a következő feladatok elvégzésére vonatkozó engedélyekkel rendelkezik, egyebek között:
 
@@ -115,8 +114,7 @@ A `scope` paraméter az alkalmazás által kért delegált engedélyek szóközz
 
 Miután a felhasználó beírja a hitelesítő adatait, a Microsoft Identity platform-végpont ellenőrzi a *felhasználói beleegyezési* rekordokat. Ha a felhasználó nem járult hozzá a korábban kért engedélyekhez, és a rendszergazda nem fogadta el ezeket az engedélyeket a teljes szervezet nevében, a Microsoft Identity platform végpontja kéri a felhasználót, hogy adja meg a kért engedélyeket.
 
-> [!NOTE]
->Ebben az esetben a `offline_access` ("a hozzáférés megtartása az Ön által megadott adathozzáféréshez") és a `user.read` ("bejelentkezés és a profil olvasása") engedélyek automatikusan belekerülnek a kezdeti beleegyező alkalmazásba.  Ezek az engedélyek általában szükségesek az alkalmazás megfelelő működéséhez – lehetővé teszi, `offline_access` hogy az alkalmazás hozzáférjen a natív és a webes alkalmazások számára kritikus frissítési tokenekhez, miközben `user.read` hozzáférést biztosít a `sub` jogcímek számára, így az ügyfél vagy az alkalmazás helyesen azonosíthatja a felhasználót az idő függvényében, és elérheti az alapvető felhasználói adatokat.
+Ebben az esetben a `offline_access` ("a hozzáférés megtartása az Ön által megadott adathozzáféréshez") és a `user.read` ("bejelentkezés és a profil olvasása") engedélyek automatikusan belekerülnek a kezdeti beleegyező alkalmazásba.  Ezek az engedélyek általában szükségesek az alkalmazás megfelelő működéséhez – lehetővé teszi, `offline_access` hogy az alkalmazás hozzáférjen a natív és a webes alkalmazások számára kritikus frissítési tokenekhez, miközben `user.read` hozzáférést biztosít a `sub` jogcímek számára, így az ügyfél vagy az alkalmazás helyesen azonosíthatja a felhasználót az idő függvényében, és elérheti az alapvető felhasználói adatokat.
 
 ![A munkahelyi fiók beleegyezikét bemutató képernyőkép](./media/v2-permissions-and-consent/work_account_consent.png)
 
@@ -148,8 +146,7 @@ Ha az alkalmazás alkalmazás-engedélyeket kér, és a rendszergazda a rendszer
 
 ## <a name="using-the-admin-consent-endpoint"></a>A rendszergazdai engedélyezési végpont használata
 
-> [!NOTE]
-> Vegye figyelembe, hogy a rendszergazdai jóváhagyás megadása után a rendszergazdai jóváhagyás megadása után a rendszergazda beleegyezik, és a felhasználóknak semmilyen további műveletet nem kell elvégezniük. A rendszergazdai hozzájárulás megadása után a felhasználók egy tipikus hitelesítési folyamaton keresztül kaphatnak hozzáférési jogkivonatot, és az eredményül kapott hozzáférési jogkivonat is rendelkezik a jóváhagyáshoz szükséges engedélyekkel.
+Miután megadta a rendszergazdai jóváhagyást a rendszergazdai jóváhagyás végpontján, befejezte a rendszergazdai jóváhagyást, és a felhasználóknak semmilyen további műveletet nem kell elvégezniük. A rendszergazdai hozzájárulás megadása után a felhasználók egy tipikus hitelesítési folyamaton keresztül kaphatnak hozzáférési jogkivonatot, és az eredményül kapott hozzáférési jogkivonat is rendelkezik a jóváhagyáshoz szükséges engedélyekkel.
 
 Ha a vállalati rendszergazda az alkalmazást használja, és az engedélyezés végpontra irányítja, a Microsoft Identity platform felismeri a felhasználó szerepkörét, és megkérdezi, hogy szeretné-e jóváhagyni a teljes bérlő nevében a kért engedélyeket. Van azonban egy dedikált rendszergazdai hozzájárulási végpont is, amelyet akkor használhat, ha proaktívan szeretné megkérni, hogy a rendszergazda a teljes bérlő nevében engedélyt biztosítson. Ennek a végpontnak a használata szükséges az alkalmazás engedélyeinek kérelmezéséhez is (amelyek nem kérhetők az engedélyezés végpontjának használatával).
 
@@ -263,8 +260,7 @@ A `/.default` hatókör segítségével áttelepítheti az alkalmazásokat a 1.0
 
 A/.default-hatókör bármely OAuth 2,0-flow-ban használható, de szükséges a [folyamaton](v2-oauth2-on-behalf-of-flow.md) belüli és az [ügyfél-hitelesítő adatok folyamatában](v2-oauth2-client-creds-grant-flow.md), valamint a v2 rendszergazdai jóváhagyás végpontjának használatakor az alkalmazás engedélyeinek kérelmezéséhez.
 
-> [!NOTE]
-> Az ügyfelek egyetlen kérelemben nem kombinálhatók statikus ( `/.default` ) és dinamikus beleegyező engedéllyel. Így `scope=https://graph.microsoft.com/.default+mail.read` a hatókör-típusok kombinációja miatt hibát okozhat.
+Az ügyfelek egyetlen kérelemben nem kombinálhatók statikus ( `/.default` ) és dinamikus beleegyező engedéllyel. Így `scope=https://graph.microsoft.com/.default+mail.read` a hatókör-típusok kombinációja miatt hibát okozhat.
 
 ### <a name="default-and-consent"></a>/.default és beleegyezett
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: c0ceae8727681c045c3bbf3e6626937633b38997
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: ba06a0f9d520f445965329203aecd6c576666737
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013532"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209729"
 ---
 # <a name="using-an-app-service-environment"></a>App Service Environment használata
 
@@ -51,7 +51,7 @@ Alkalmazás létrehozása a kiegészítőben:
     > A Linux-alkalmazások és a Windows-alkalmazások nem lehetnek ugyanabban a App Servicei csomagban, de ugyanabban a App Service Environmentban lehetnek.
     >
 
-1. Válassza a * * Tovább: figyelés * * lehetőséget, ha szeretné engedélyezni az alkalmazással való bepillantást az alkalmazással, a létrehozási folyamat során itt végezheti el. 
+1. Válassza a **Tovább: figyelés**  elemet, ha az alkalmazással szeretné engedélyezni az alkalmazás-megállapításokat, itt megteheti a létrehozási folyamat során. 
 
 1.  Válassza a Next (tovább) lehetőséget **: címkék** adja meg az alkalmazáshoz használni kívánt címkéket  
 

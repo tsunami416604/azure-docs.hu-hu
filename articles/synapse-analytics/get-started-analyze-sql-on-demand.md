@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 07/20/2020
-ms.openlocfilehash: 4ca9ababbeb7843f1a014a4bd51a5e24a74acbae
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 12/31/2020
+ms.openlocfilehash: c9f8760bd1a7b5d3700f3fdf03331fe7013e116f
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322942"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209406"
 ---
 # <a name="analyze-data-with-serverless-sql-pool-in-azure-synapse-analytics"></a>Az Azure szinapszis Analytics szolgáltatásban kiszolgáló nélküli SQL-készlettel elemezheti az adatelemzést
 
@@ -23,10 +23,11 @@ Ebből az oktatóanyagból megtudhatja, hogyan elemezheti az információkat a k
 
 ## <a name="analyze-nyc-taxi-data-in-blob-storage-using-serverless-sql-pool"></a>NYC-alapú taxi-adatelemzés a blob Storage-ban kiszolgáló nélküli SQL-készlettel
 
-1. Az **adatközpontban** kattintson a jobb gombbal az **Azure Blob Storage > minta adatkészletek > nyc_tlc_yellow** elemre **, és** válassza a **legfelső 100-sorok kiválasztása** lehetőséget.
+1. Az **adatközpontban** kattintson a jobb gombbal az **Azure Blob Storage > minta adatkészletek > NYC_TLC_YELLOW**, **új SQL-parancsfájl** elemre **, és** válassza a **legfelső 100-sorok kiválasztása** lehetőséget.
 1. Ekkor létrejön egy új SQL-parancsfájl a következő kóddal:
 
     ```
+    -- This is auto-generated code
     SELECT
         TOP 100 *
     FROM
@@ -42,7 +43,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan elemezheti az információkat a k
 A Spark-adatbázisok táblái automatikusan láthatók, és a kiszolgáló nélküli SQL-készlet által is lekérdezhető.
 
 1. A szinapszis Studióban nyissa meg a **fejlesztés** csomópontot, és hozzon létre egy új SQL-szkriptet.
-1. Állítsa be **a kapcsolódás** **kiszolgáló nélküli SQL-készlethez** lehetőséget.
+1. A **Kapcsolódás** a beépített kiszolgáló **nélküli SQL-** készlethez beállítás megadása.
 1. Illessze be a következő szöveget a parancsfájlba, és futtassa a parancsfájlt.
 
     ```sql

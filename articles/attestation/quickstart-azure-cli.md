@@ -7,16 +7,16 @@ ms.service: attestation
 ms.topic: quickstart
 ms.date: 11/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: fb8b0f12844ce1057bd3cfc4716a32ee64ec5586
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: df1064128d6a4eca8497ebf3ea0c6ae8cd42255c
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937219"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208437"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-cli"></a>Gyors útmutató: Azure-igazolás beállítása az Azure CLI-vel
 
-Az Azure-igazolások használatának első lépései az Azure CLI-vel az igazolás beállításához.
+Az Azure- [igazolások használatának első lépései az Azure CLI használatával](/cli/azure/ext/attestation/attestation?view=azure-cli-latest).
 
 ## <a name="get-started"></a>Bevezetés
 
@@ -65,7 +65,7 @@ Az Azure-igazolások használatának első lépései az Azure CLI-vel az igazol�
 
 Az alábbi parancsok segítségével hozhatja létre és kezelheti az igazolási szolgáltatót:
 
-1. Futtassa az az [igazolás létrehozása](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_create) parancsot az igazolási szolgáltató létrehozásához:
+1. Futtassa az az [igazolás létrehozása](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_create) parancsot egy igazolási szolgáltató létrehozásához házirend-aláírási követelmény nélkül:
 
    ```azurecli
    az attestation create --name "myattestationprovider" --resource-group "MyResourceGroup" --location westus
@@ -128,7 +128,7 @@ Házirend beállítása JWT formátumban az adott típusú igazolási típushoz 
 
 ```azurecli
 az attestation policy set --name "myattestationprovider" --resource-group "MyResourceGroup" \
---attestation-type SGX-IntelSDK --new-attestation-policy-file "{file_path}" --policy-format JWT
+--attestation-type SGX-IntelSDK -f "{file_path}" --policy-format JWT
 ```
 
 ## <a name="next-steps"></a>Következő lépések

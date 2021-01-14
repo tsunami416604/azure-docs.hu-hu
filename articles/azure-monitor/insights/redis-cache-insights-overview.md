@@ -2,15 +2,15 @@
 title: Azure cache-Azure Monitor a Redis-hez | Microsoft Docs
 description: Ez a cikk a Azure Redis Cache funkció Azure Monitor ismerteti, amely a gyorsítótár-tulajdonosokat a teljesítmény-és kihasználtsági problémák gyors megismerésével biztosítja.
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 09/10/2020
-ms.openlocfilehash: e7b8a8e131cf7e0aae051f42043abf0640c927e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35f575410caa7a8a8ffbda35bdfa876418db8945
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90887011"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210375"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis"></a>Ismerkedés az Azure cache Azure Monitor Redis
 
@@ -46,15 +46,15 @@ Ha szeretné megtekinteni a Storage-fiókok kihasználtságát és teljesítmén
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Keresse meg a **figyelőt**, és válassza a **figyelő**lehetőséget.
+1. Keresse meg a **figyelőt**, és válassza a **figyelő** lehetőséget.
 
     ![A "figyelő" szót tartalmazó keresőmező és a szolgáltatások keresési eredménye, amely a "monitor" karaktert mutatja egy sebességmérő szimbólummal](./media/cosmosdb-insights-overview/search-monitor.png)
 
-1. Válassza ki **Az Azure cache-t a Redis**. Ha ez a beállítás nincs jelen, válassza a **további**  >  **Azure cache Redis**lehetőséget.
+1. Válassza ki **Az Azure cache-t a Redis**. Ha ez a beállítás nincs jelen, válassza a **további**  >  **Azure cache Redis** lehetőséget.
 
 ### <a name="overview"></a>Áttekintés
 
-Az **Áttekintés**során a táblázat a Redis-metrikák interaktív Azure cache-t jeleníti meg. Az eredményeket az alábbi legördülő listából kiválasztott beállítások alapján szűrheti:
+Az **Áttekintés** során a táblázat a Redis-metrikák interaktív Azure cache-t jeleníti meg. Az eredményeket az alábbi legördülő listából kiválasztott beállítások alapján szűrheti:
 
 - **Előfizetések**: csak az Azure cache-t használó előfizetések jelennek meg a Redis-erőforráshoz.  
 
@@ -79,7 +79,7 @@ Ha a kék színnel jelölt Redis-erőforráshoz az Azure cache elemet választja
 - **Gyorsítótár-tévesztések**
 - **Hibák (max.)**
 
-### <a name="operations"></a>Műveletek
+### <a name="operations"></a>Üzemeltetés
 
 Amikor kiválasztja a **műveletek** elemet a lap tetején, megnyílik a munkafüzet sablonjának **műveleti** táblázata. Ezeket az oszlopokat jeleníti meg:
 
@@ -87,7 +87,7 @@ Amikor kiválasztja a **műveletek** elemet a lap tetején, megnyílik a munkaf�
 - **Műveletek összesen – idővonal**
 - **Műveletek száma másodpercenként**
 - **Lekérések**
-- **Készletek**
+- **Halmazok**
 
 ![Képernyőkép az üzemeltetési élményről](./media/redis-cache-insights-overview/operations.png)
 
@@ -170,7 +170,7 @@ Egy munkafüzet összes nézetének kibontásához vagy összecsukásához vála
 
 ## <a name="customize-azure-monitor-for-azure-cache-for-redis"></a>Az Azure cache Azure Monitor testreszabása a Redis
 
-Mivel ez a felület Azure monitor munkafüzet-sablonokon alapul, kiválaszthatja a **Customize**  >  **szerkesztési**  >  **Mentés** testreszabása lehetőséget, hogy a módosított verzió másolatát egy egyéni munkafüzetbe mentse.
+Mivel ez a felület Azure monitor munkafüzet-sablonokon alapul, kiválaszthatja a   >  **szerkesztési**  >  **Mentés** testreszabása lehetőséget, hogy a módosított verzió másolatát egy egyéni munkafüzetbe mentse.
 
 ![A Kiemelt testreszabást tartalmazó parancssáv](./media/cosmosdb-insights-overview/customize.png)
 

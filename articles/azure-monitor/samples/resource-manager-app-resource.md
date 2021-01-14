@@ -3,15 +3,15 @@ title: Resource Manager-sablonok – minták Application Insights erőforrásokh
 description: Példa Azure Resource Manager-sablonokra Application Insights erőforrások Azure Monitor-beli telepítéséhez.
 ms.subservice: application-insights
 ms.topic: sample
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 07/08/2020
-ms.openlocfilehash: 5818f1ffac9c89e24c1a12cf92fc5fbf1ddf2386
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 88c657aa89476f3be21226544e64512bd433776c
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657226"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210273"
 ---
 # <a name="resource-manager-template-samples-for-creating-application-insights-resources"></a>Resource Manager-sablonok – minták Application Insights erőforrások létrehozásához
 

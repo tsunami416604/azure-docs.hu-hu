@@ -13,12 +13,12 @@ ms.date: 08/7/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 018d67b3e4e730cd46eb524a8927b3a6d68d74e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c8167142876dfac0ae0aeff51e85b66c65c607b
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88958660"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208848"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity platform és OAuth 2,0-alapú folyamat
 
@@ -27,8 +27,8 @@ Az OAuth 2,0-es adatforgalom (OBO) arra szolgál, hogy az alkalmazás hogyan hí
 
 Ez a cikk azt ismerteti, hogyan lehet programozni közvetlenül az alkalmazás protokollját.  Ha lehetséges, javasoljuk, hogy a támogatott Microsoft hitelesítési kódtárakat (MSAL) használja a [jogkivonatok beszerzése és a biztonságos webes API-k hívása](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)helyett.  Tekintse meg az MSAL-t [használó példákat](sample-v2-code.md)is.
 
-> [!NOTE]
-> Előfordulhat, hogy a 2018-es számú implicit folyamat `id_token` nem használható az OBO-flow-hoz. Az egyoldalas alkalmazások (Gyógyfürdők) **hozzáférési** jogkivonatot továbbítanak egy közepes szintű bizalmas ügyfélnek az OBO-folyamatok elvégzéséhez. További információ arról, hogy mely ügyfelek végezhetnek OBO-hívásokat: [korlátozások](#client-limitations).
+
+Előfordulhat, hogy a 2018-es számú implicit folyamat `id_token` nem használható az OBO-flow-hoz. Az egyoldalas alkalmazások (Gyógyfürdők) **hozzáférési** jogkivonatot továbbítanak egy közepes szintű bizalmas ügyfélnek az OBO-folyamatok elvégzéséhez. További információ arról, hogy mely ügyfelek végezhetnek OBO-hívásokat: [korlátozások](#client-limitations).
 
 ## <a name="protocol-diagram"></a>Protokoll diagramja
 
@@ -42,10 +42,9 @@ A követendő lépések az OBO-folyamatot alkotják, és az alábbi ábra segít
 1. Az API A hitelesíti a Microsoft Identity platform jogkivonat-kiállítási végpontját, és tokent kér a B API eléréséhez.
 1. A Microsoft Identity platform token kiállítási végpontja ellenőrzi az API A hitelesítő adatait az A jogkivonattal együtt, és kiadja a B API (token B) hozzáférési jogkivonatát az A API-nak.
 1. A "B" tokent az API-nak a B API-ra irányuló kérelem engedélyezési fejlécében a következő értékre állítja be.
-1. A biztonságos erőforrás adatait a B API adja vissza az A API-hoz, és onnan az ügyfélnek.
+1. A biztonságos erőforrásból származó adatok a B API-val, az API-hoz, majd az ügyfélhez kerülnek vissza.
 
-> [!NOTE]
-> Ebben az esetben a középső rétegbeli szolgáltatás nem rendelkezik felhasználói beavatkozással, hogy a felhasználó beleegyezik az alsóbb rétegbeli API eléréséhez. Ezért az alsóbb rétegbeli API-hoz való hozzáférés engedélyezésének lehetősége előzetesen megjelenik a jóváhagyás lépés részeként a hitelesítés során. Ha meg szeretné tudni, hogyan állíthatja be ezt az alkalmazásra, tekintse meg [a a középső rétegbeli alkalmazáshoz](#gaining-consent-for-the-middle-tier-application)való hozzájárulások beszerzése című témakört.
+Ebben az esetben a középső rétegbeli szolgáltatásnak nincs felhasználói beavatkozása ahhoz, hogy a felhasználó beleegyezett az alsóbb rétegbeli API eléréséhez. Ezért az alsóbb rétegbeli API-hoz való hozzáférés engedélyezésének lehetősége előzetesen megjelenik a jóváhagyás lépés részeként a hitelesítés során. Ha meg szeretné tudni, hogyan állíthatja be ezt az alkalmazásra, tekintse meg [a a középső rétegbeli alkalmazáshoz](#gaining-consent-for-the-middle-tier-application)való hozzájárulások beszerzése című témakört.
 
 ## <a name="middle-tier-access-token-request"></a>Közepes szintű hozzáférési jogkivonat kérése
 
@@ -152,10 +151,9 @@ Az alábbi példa egy, a webes API hozzáférési jogkivonatára vonatkozó kér
 }
 ```
 
-> [!NOTE]
-> A fenti hozzáférési jogkivonat a Microsoft Graph 1.0-s verziójának formátuma. Ennek az az oka, hogy a jogkivonat formátuma az elérni kívánt **erőforráson** alapul, és nem kapcsolódik a kérelemhez használt végpontokhoz. A Microsoft Graph a 1.0-s verziójú tokenek elfogadására van beállítva, így a Microsoft Identity platform 1.0-s verziójú hozzáférési jogkivonatokat hoz létre, amikor az ügyfél a Microsoft Graph jogkivonatait kéri le. Más alkalmazások azt jelezhetik, hogy a 2.0 formátumú jogkivonatok, a 1.0 formátumú tokenek, vagy akár a tulajdonosi, akár a titkosított jogkivonat-formátumok is megadhatók.  A 1.0-s és a v 2.0-s végpontok egyaránt rendelkezhetnek tokenek formátumával – így az erőforrás mindig a token megfelelő formátumát tudja lekérdezni, függetlenül attól, hogy az ügyfél milyen módon vagy hol kérte a jogkivonatot. 
->
-> Csak az alkalmazásoknak kell megkeresniük a hozzáférési jogkivonatokat. Az ügyfeleknek **nem kell** megvizsgálniuk azokat. A kód más alkalmazásaihoz tartozó hozzáférési jogkivonatok vizsgálatakor az alkalmazás váratlanul leáll, amikor az alkalmazás megváltoztatja a tokenek formátumát, vagy megkezdi a titkosítást. 
+A fenti hozzáférési jogkivonat a Microsoft Graph 1.0-s verziójának formátuma. Ennek az az oka, hogy a jogkivonat formátuma az elérni kívánt **erőforráson** alapul, és nem kapcsolódik a kérelemhez használt végpontokhoz. A Microsoft Graph a 1.0-s verziójú tokenek elfogadására van beállítva, így a Microsoft Identity platform 1.0-s verziójú hozzáférési jogkivonatokat hoz létre, amikor az ügyfél a Microsoft Graph jogkivonatait kéri le. Más alkalmazások azt jelezhetik, hogy a 2.0 formátumú jogkivonatok, a 1.0 formátumú tokenek, vagy akár a tulajdonosi, akár a titkosított jogkivonat-formátumok is megadhatók.  A 1.0-s és a v 2.0-s végpontok egyaránt rendelkezhetnek tokenek formátumával – így az erőforrás mindig a token megfelelő formátumát tudja lekérdezni, függetlenül attól, hogy az ügyfél milyen módon vagy hol kérte a jogkivonatot. 
+
+Csak az alkalmazásoknak kell megkeresniük a hozzáférési jogkivonatokat. Az ügyfeleknek **nem kell** megvizsgálniuk azokat. A kód más alkalmazásaihoz tartozó hozzáférési jogkivonatok vizsgálatakor az alkalmazás váratlanul leáll, amikor az alkalmazás megváltoztatja a tokenek formátumát, vagy megkezdi a titkosítást. 
 
 ### <a name="error-response-example"></a>Hiba-válasz példa
 
@@ -189,8 +187,7 @@ Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 
 Néhány OAuth-alapú webszolgáltatásnak hozzá kell férnie más webszolgáltatási API-khoz, amelyek nem interaktív folyamatokban fogadják el az SAML-kijelentéseket. A Azure Active Directory az SAML-alapú webszolgáltatás forrásként való megadására irányuló, az általa létrehozott folyamatra adott válaszként SAML-jogcímet adhat meg.
 
->[!NOTE]
->Ez egy nem szabványos bővítmény a OAuth 2,0-hez, amely lehetővé teszi, hogy egy OAuth2-alapú alkalmazás hozzáférhessen az SAML-jogkivonatokat használó webszolgáltatás API-végpontokhoz.
+Ez egy nem szabványos bővítmény a OAuth 2,0-hez, amely lehetővé teszi, hogy egy OAuth2-alapú alkalmazás hozzáférhessen az SAML-jogkivonatokat használó webszolgáltatás API-végpontokhoz.
 
 > [!TIP]
 > Ha SAML-védelemmel ellátott webszolgáltatást hív meg egy előtér-webalkalmazásból, egyszerűen hívja meg az API-t, és kezdeményezzen egy normál, interaktív hitelesítési folyamatot a felhasználó meglévő munkamenetével. Csak egy OBO-folyamatot kell használnia, ha egy szolgáltatás-szolgáltatás hívásához SAML-jogkivonat szükséges a felhasználói környezet biztosításához.
@@ -204,7 +201,7 @@ Az alkalmazás architektúrájának vagy használati módjától függően kül�
 
 ### <a name="default-and-combined-consent"></a>/.default és kombinált engedély
 
-A középső rétegbeli alkalmazás hozzáadja az ügyfelet az ismert ügyfélalkalmazások listájához a jegyzékfájljában, majd az ügyfél egyszerre több és a középső rétegbeli alkalmazáshoz is elindíthat egy kombinált engedélyezési folyamatot. A Microsoft Identity platform végpontján ez a [ `/.default` hatókör](v2-permissions-and-consent.md#the-default-scope)használatával végezhető el. Ha ismert ügyfélalkalmazások használatával aktivál egy beleegyezési képernyőt `/.default` , a beleegyezési képernyő a középső **both** rétegbeli API számára is megjeleníti az ügyfélre vonatkozó engedélyeket, valamint a középső rétegbeli API számára szükséges engedélyeket is. A felhasználó mindkét alkalmazáshoz hozzájárul, majd az OBO-folyamat működik.
+A középső rétegbeli alkalmazás hozzáadja az ügyfelet az ismert ügyfélalkalmazások listájához a jegyzékfájljában, majd az ügyfél egyszerre több és a középső rétegbeli alkalmazáshoz is elindíthat egy kombinált engedélyezési folyamatot. A Microsoft Identity platform végpontján ez a [ `/.default` hatókör](v2-permissions-and-consent.md#the-default-scope)használatával végezhető el. Ha ismert ügyfélalkalmazások használatával aktivál egy beleegyezési képernyőt `/.default` , a beleegyezési képernyő a középső  rétegbeli API számára is megjeleníti az ügyfélre vonatkozó engedélyeket, valamint a középső rétegbeli API számára szükséges engedélyeket is. A felhasználó mindkét alkalmazáshoz hozzájárul, majd az OBO-folyamat működik.
 
 ### <a name="pre-authorized-applications"></a>Előzetesen jóváhagyott alkalmazások
 

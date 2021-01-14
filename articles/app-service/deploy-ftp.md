@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: ce8c32b1afdf4178e3ffdc09e9c9176436fa771b
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: cfec5ec5f14afc8c4eba5c21c5904687c9b187cc
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605076"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209253"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Az alkalmazás üzembe helyezése az Azure App Service FTP/S használatával
 
@@ -111,13 +111,13 @@ Az üzembe helyezési vagy futásidejű probléma okának meghatározásához l�
 ### <a name="im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue"></a>Nem tudok FTP-hez csatlakozni, és közzétenni a kódot. Hogyan oldható fel a probléma?
 Győződjön meg arról, hogy a helyes állomásnevet és [hitelesítő adatokat](#open-ftp-dashboard)adta meg. Győződjön meg arról is, hogy a számítógépen a következő FTP-portok nincsenek letiltva a tűzfalon:
 
-- FTP-vezérlőkapcsolati port: 21
+- FTP-vezérlő kapcsolati portja: 21, 990
 - FTP-adatkapcsolati port: 989, 10001-10300
  
 ### <a name="how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode"></a>Hogyan csatlakozhatok az FTP-hez Azure App Service passzív módban?
 Azure App Service támogatja az aktív és passzív módban történő csatlakozást. A passzív üzemmód használata ajánlott, mert az üzembe helyezési gépek általában tűzfal mögött vannak (az operációs rendszeren vagy otthoni vagy üzleti hálózat részeként). Tekintse meg [a megnyerő dokumentációban található példát](https://winscp.net/docs/ui_login_connection). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A speciális üzembe helyezési forgatókönyvek esetében próbálja meg [üzembe helyezni az Azure-ban a git használatával](deploy-local-git.md). Az Azure-hoz készült git-alapú üzembe helyezés lehetővé teszi a verziókövetés, a csomagok visszaállítása, az MSBuild és egyebek használatát.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/13/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 3c0b466a7db688ed3e24441f652f6a1ef1a88ee1
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 5a09a2083c1258a3120f8696aa39a0252dbfcf2d
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180081"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209692"
 ---
 # <a name="azure-storage-redundancy"></a>Redundancia az Azure Storage szolgáltatásban
 
@@ -97,11 +97,19 @@ A Georedundáns tárolás (GRS) az adatokat szinkron módon, az LRS használatá
 
 A rendszer először egy írási műveletet véglegesít az elsődleges helyen, és replikálja a LRS használatával. A rendszer ezután aszinkron módon replikálja a frissítést a másodlagos régióba. Ha az adatírás a másodlagos helyre történik, a rendszer a LRS használatával is replikálja az adott helyen belül.
 
+Az alábbi ábra bemutatja, hogyan replikálódnak az adatai GRS vagy RA-GRS:
+
+:::image type="content" source="media/storage-redundancy/geo-redundant-storage.png" alt-text="Az GRS vagy RA-GRS által replikált adatreplikációt bemutató ábra":::
+
 ### <a name="geo-zone-redundant-storage"></a>Zóna- és georedundáns tárolás
 
 A Geo-Zone-redundáns tárolás (GZRS) a rendelkezésre állási zónákon keresztüli redundancia által biztosított magas rendelkezésre állást ötvözi a földrajzi replikálás által biztosított regionális kimaradások elleni védelemmel. A GZRS-fiókban lévő adatok az elsődleges régióban három Azure-beli [rendelkezésre állási zónába](../../availability-zones/az-overview.md) másolódnak át, és a regionális katasztrófák elleni védelem érdekében a másodlagos földrajzi régióba is replikálódnak. A Microsoft a GZRS használatát javasolja a maximális következetességet, tartósságot és rendelkezésre állást, a kiváló teljesítményt és a vész-helyreállítási rugalmasságot igénylő alkalmazások számára.
 
 GZRS-fiókkal folytathatja az adatok olvasását és írását, ha a rendelkezésre állási zónák elérhetetlenné válnak, vagy nem állíthatók helyre. Emellett az adatai tartósak is maradnak a teljes regionális leállás vagy egy olyan katasztrófa esetén, amelyben az elsődleges régió nem helyreállítható. A GZRS úgy lett kialakítva, hogy legalább 99.99999999999999%-os (16 9) tartósságot biztosítson az objektumok számára egy adott évben.
+
+Az alábbi ábra bemutatja, hogyan replikálódnak az adatai GZRS vagy RA-GZRS:
+
+:::image type="content" source="media/storage-redundancy/geo-zone-redundant-storage.png" alt-text="Az GZRS vagy RA-GZRS által replikált adatreplikációt bemutató ábra":::
 
 Csak az általános célú v2 tároló-fiókok támogatják a GZRS és az RA-GZRS. További információ a Storage-fiókok típusairól: az [Azure Storage-fiók áttekintése](storage-account-overview.md). A GZRS és RA-GZRS támogatja a blokk blobokat, az oldal blobokat (kivéve a VHD-lemezeket), a fájlokat, a táblákat és a várólistákat.
 
@@ -163,8 +171,8 @@ Az alábbi táblázat azt jelzi, hogy az adatai tartósak-e, és elérhetőek-e 
 
 | Kimaradási forgatókönyv | LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
 |:-|:-|:-|:-|:-|
-| Az adatközpontban lévő csomópont elérhetetlenné válik | Igen | Igen | Igen | Yes |
-| Egy teljes adatközpont (Zona vagy nem zónák) elérhetetlenné válik | Nem | Igen | Igen<sup>1</sup> | Yes |
+| Az adatközpontban lévő csomópont elérhetetlenné válik | Igen | Igen | Igen | Igen |
+| Egy teljes adatközpont (Zona vagy nem zónák) elérhetetlenné válik | Nem | Igen | Igen<sup>1</sup> | Igen |
 | Az elsődleges régióban az egész régióra kiterjedő leállás következik be | Nem | Nem | Igen<sup>1</sup> | Igen<sup>1</sup> |
 | A másodlagos régióhoz való olvasási hozzáférés akkor érhető el, ha az elsődleges régió elérhetetlenné válik | Nem | Nem | Igen (az RA-GRS-vel) | Igen (az RA-GZRS-vel) |
 
@@ -189,7 +197,7 @@ Az egyes redundancia-lehetőségek díjszabásáról az [Azure Storage díjszab�
 
 Az Azure Storage rendszeresen ellenőrzi a ciklikus redundancia-ellenőrzések (FCSF) használatával tárolt adatok integritását. Ha a rendszer az adatsérülést észleli, a redundáns adatvesztéssel kerül kijavításra. Az Azure Storage az összes hálózati forgalom ellenőrzőösszegét is kiszámítja, hogy észlelje az adatcsomagok sérülését az adatok tárolása vagy beolvasása során.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 - [A Storage-fiók utolsó szinkronizálási ideje tulajdonságának megtekintése](last-sync-time-get.md)
 - [Storage-fiók redundancia beállításának módosítása](redundancy-migration.md)

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 954e94063ec91cd2a6d67d154dfd7da553e0935a
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 58886a8f7dc505a7e68d69eb00b4a2ebd776dd5a
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94560893"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209856"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>Application Gateway integráció a szolgáltatási végpontokkal
 A App Service három változata van, amelyek némileg eltérő konfigurációt igényelnek az Azure Application Gateway-nal való integrációhoz. A variációk közé tartoznak a rendszeres App Service – többek között a több-bérlős, belső Load Balancer (ILB) App Service Environment (Bevezetés) és a külső betekintő is. Ez a cikk bemutatja, hogyan konfigurálhatja azt App Service (több-bérlős), és megvitathatja a ILB és a külső beadással kapcsolatos szempontokat.
@@ -27,7 +27,7 @@ A App Service három változata van, amelyek némileg eltérő konfigurációt i
 ## <a name="integration-with-app-service-multi-tenant"></a>Integráció App Service (több-bérlős)
 App Service (több-bérlős) nyilvános internettel rendelkező végponttal rendelkezik. A [szolgáltatás-végpontok](../../virtual-network/virtual-network-service-endpoints-overview.md) használatával csak az Azure-Virtual Networkon belül egy adott alhálózatról engedélyezheti a forgalmat, és minden mást blokkolhat. A következő forgatókönyvben ezt a funkciót fogjuk használni annak biztosítására, hogy egy App Service-példány csak adott Application Gateway-példányról kapjon forgalmat.
 
-![Az ábrán az Azure-Virtual Network egy Application Gateway található, és a tűzfal ikonján keresztül áramlik az alkalmazások példányaira App Service.](./media/app-gateway-with-service-endpoints/service-endpoints-appgw.png)
+:::image type="content" source="./media/app-gateway-with-service-endpoints/service-endpoints-appgw.png" alt-text="Az ábrán az Azure-Virtual Network egy Application Gateway található, és a tűzfal ikonján keresztül áramlik az alkalmazások példányaira App Service.":::
 
 A konfiguráció két részből áll, a App Service és a Application Gateway létrehozása mellett. Az első rész a szolgáltatás-végpontok engedélyezése azon Virtual Network alhálózatában, ahol a Application Gateway üzembe lett helyezve. A szolgáltatási végpontok biztosítják, hogy az alhálózatot elhagyó összes hálózati forgalom az adott alhálózati AZONOSÍTÓval legyen felcímkézve a App Service. A második rész az adott webalkalmazás hozzáférési korlátozásának beállítása annak biztosítására, hogy csak az adott alhálózati AZONOSÍTÓval címkézett forgalom legyen engedélyezett. A beállítástól függően különböző eszközök használatával is konfigurálhatja.
 
@@ -36,11 +36,11 @@ A Azure Portal segítségével négy lépést követve üzembe helyezheti és ko
 1. Hozzon létre egy App Servicet a App Service dokumentációjában található rövid útmutatók valamelyikével, például: [.net Core](../quickstart-dotnetcore.md) rövid útmutató
 2. Hozzon létre egy Application Gateway a [portál](../../application-gateway/quick-create-portal.md)rövid útmutatójának használatával, de hagyja ki a háttérbeli célok hozzáadása szakaszt.
 3. Konfigurálja [app Service háttérként a Application Gatewayban](../../application-gateway/configure-web-app-portal.md), de hagyja ki a hozzáférés korlátozása szakaszt.
-4. Végül hozza létre a [hozzáférési korlátozást a szolgáltatási végpontok használatával](../../app-service/app-service-ip-restrictions.md#use-service-endpoints).
+4. Végül hozza létre a [hozzáférési korlátozást a szolgáltatási végpontok használatával](../../app-service/app-service-ip-restrictions.md#set-a-service-endpoint-based-rule).
 
 Most már elérheti a App Servicet a Application Gatewayon keresztül, de ha közvetlenül próbál hozzáférni a App Servicehoz, egy 403 HTTP-hibaüzenetet kell kapnia, amely azt jelzi, hogy a webhely le van állítva.
 
-![Képernyőfelvétel: a 403-es hiba szövege – ez a webalkalmazás leállt.](./media/app-gateway-with-service-endpoints/web-site-stopped.png)
+![A képernyőkép a 403-es hiba szövegét jeleníti meg – tiltott.](./media/app-gateway-with-service-endpoints/website-403-forbidden.png)
 
 ## <a name="using-azure-resource-manager-template"></a>Az Azure Resource Manager-sablonok használata
 A [Resource Manager-alapú telepítési sablon][template-app-gateway-app-service-complete] teljes forgatókönyvet fog kiépíteni. A forgatókönyv egy App Service-példányból áll, amely szolgáltatás-végpontokkal van lezárva, és a hozzáférési korlátozás csak a Application Gateway érkező forgalom fogadására szolgál. A sablon számos intelligens alapértéket és egyedi Postfix-értéket tartalmaz, amelyeket az erőforrás-nevekhez adnak hozzá, hogy egyszerű legyen. A felülbíráláshoz a tárház klónozása vagy a sablon letöltése és szerkesztése szükséges. 

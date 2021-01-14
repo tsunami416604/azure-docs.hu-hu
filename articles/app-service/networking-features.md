@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/18/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5d950598e4a0af86ac37b53722e80eb4ef0a71a4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 53c0d37d4a25c2f2092a9e52bcae8ea494046bb0
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183056"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210018"
 ---
 # <a name="app-service-networking-features"></a>Hálózati szolgáltatások App Service
 
@@ -110,7 +110,7 @@ Ez a funkció lehetővé teszi a prioritási sorrendben kiértékelt engedélyez
 
 Az IP-alapú hozzáférés korlátozásai szolgáltatás segít, ha korlátozni szeretné az alkalmazás eléréséhez használható IP-címeket. Az IPv4- és IPv6-címek egyaránt támogatottak. A szolgáltatás egyes használati esetei:
 * Az alkalmazáshoz való hozzáférés korlátozása jól definiált címekből. 
-* Korlátozza a forgalomhoz való hozzáférést egy terheléselosztási szolgáltatáson keresztül, például az Azure bejárati ajtaján. Ha le szeretné zárni az Azure-ba irányuló bejövő forgalmat, hozzon létre olyan szabályokat, amelyek engedélyezik a forgalmat a 147.243.0.0/16 és a 2a01:111:2050::/44. 
+* A külső terheléselosztási szolgáltatáson vagy más, ismert kimenő IP-címekkel rendelkező hálózati eszközökön érkező forgalomhoz való hozzáférés korlátozása. 
 
 A szolgáltatás engedélyezésével kapcsolatos további információkért lásd: [hozzáférési korlátozások konfigurálása][iprestrictions].
 
@@ -126,7 +126,20 @@ A szolgáltatás egyes használati esetei:
 ![A szolgáltatás-végpontok Application Gateway használatával történő használatát bemutató diagram.](media/networking-features/service-endpoints-appgw.png)
 
 A szolgáltatási végpontok alkalmazással történő konfigurálásával kapcsolatos további tudnivalókért tekintse meg [Azure app Service hozzáférési korlátozásokat][serviceendpoints].
+#### <a name="access-restriction-rules-based-on-service-tags-preview"></a>Hozzáférési korlátozási szabályok a szolgáltatás címkéi alapján (előzetes verzió)
+Az [Azure-szolgáltatás címkéi][servicetags] az Azure-szolgáltatásokhoz tartozó IP-címek jól definiált készletei. A szolgáltatás-címkék csoportba foglalják a különböző Azure-szolgáltatásokban használt IP-tartományokat, és gyakran az adott régióra is kiterjednek. Ez lehetővé teszi a *bejövő* forgalom szűrését adott Azure-szolgáltatásokból. 
 
+A címkék és további információk teljes listájáért látogasson el a Service tag fenti hivatkozására. A szolgáltatás engedélyezésével kapcsolatos további információkért lásd: [hozzáférési korlátozások konfigurálása][iprestrictions].
+#### <a name="http-header-filtering-for-access-restriction-rules-preview"></a>Http-fejléc szűrése hozzáférési korlátozási szabályokhoz (előzetes verzió)
+Az egyes hozzáférés-korlátozási szabályokhoz további HTTP-fejléceket adhat hozzá. Ez lehetővé teszi a bejövő kérések és a szűrők további vizsgálatát a HTTP-fejlécek megadott értékei alapján. Minden fejléc legfeljebb 8 értéket tartalmazhat. A következő HTTP-fejlécek jelenleg támogatottak: 
+* X – továbbított – a következőhöz:
+* X-továbbított-gazdagép
+* X – Azure – FDID
+* X-FD-HealthProbe
+
+A HTTP-fejléc szűrésének egyes használati esetei a következők:
+* Az állomásnév továbbítására szolgáló proxykiszolgálók hozzáférésének korlátozása
+* Egy adott Azure-beli előtérben lévő példányhoz való hozzáférés korlátozása szolgáltatás-címkézési szabállyal és X-Azure-FDID fejléc korlátozásával
 ### <a name="private-endpoint"></a>Privát végpont
 
 A privát végpont egy olyan hálózati adapter, amely az Azure Private-kapcsolaton keresztül csatlakozik a webalkalmazáshoz. A privát végpont egy magánhálózati IP-címet használ a virtuális hálózatról, amely hatékonyan hozza a webalkalmazást a virtuális hálózatba. Ez a funkció csak a webalkalmazás *bejövő* folyamatai számára érhető el.
@@ -207,7 +220,7 @@ A bevezetési szolgáltatással nem kell olyan szolgáltatásokat használnia, m
 
 Mivel a ILB-beadásban lévő alkalmazások elérhetővé tehetők egy magánhálózati IP-címen, egyszerűen hozzáadhat WAF-eszközöket, hogy csak az internethez használni kívánt alkalmazásokat tegye elérhetővé, és segít megőrizni a REST biztonságát. Ez a szolgáltatás megkönnyíti a többszintes alkalmazások fejlesztését. 
 
-Bizonyos dolgok jelenleg nem lehetségesek a több-bérlős szolgáltatásban, de lehetséges, hogy egy központból származnak. Néhány példa:
+Bizonyos dolgok jelenleg nem lehetségesek a több-bérlős szolgáltatásban, de lehetséges, hogy egy központból származnak. Íme néhány példa:
 
 * Tegye elérhetővé alkalmazásait privát IP-címen.
 * Az összes olyan hálózati vezérlővel biztonságossá teheti a kimenő forgalmat, amely nem része az alkalmazásnak.
@@ -299,3 +312,4 @@ App Service vizsgálatakor számos olyan portot talál, amelyek elérhetők a be
 [networkinfo]: ./environment/network-info.md
 [appgwserviceendpoints]: ./networking/app-gateway-with-service-endpoints.md
 [privateendpoints]: ./networking/private-endpoint.md
+[servicetags]: ../virtual-network/service-tags-overview.md

@@ -2,16 +2,16 @@
 title: A munkafüzet-alapú adatáttekintések Azure Monitor hibaelhárítása
 description: Hibaelhárítási útmutatót biztosít Azure Monitor a Redis-hez hasonló szolgáltatások, például a Azure Key Vault, az Azure CosmosDB, az Azure Storage és az Azure cache szolgáltatáshoz.
 services: azure-monitor
-ms.author: mbullwin
-author: mrbullwinkle
+ms.author: lagayhar
+author: lgayhardt
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 90743a213092aacfa10139c12f47bc11faf0d86d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a2765e9dcf3b0e7bf28191e6ecbb069f26c42f5
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86498712"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208522"
 ---
 # <a name="troubleshooting-workbook-based-insights"></a>Munkafüzet-alapú adatellenőrzések hibaelhárítása
 
@@ -53,7 +53,7 @@ Az alapértelmezett időrészletesség beállítása automatikus, jelenleg nem m
 
 ## <a name="how-do-i-change-the-timespan-time-range-of-the-workbook-step-on-my-dashboard"></a>Hogyan az irányítópulton a munkafüzet TimeSpan/időtartományának módosítása
 
-Alapértelmezés szerint az irányítópult csempén lévő TimeSpan/időtartomány 24 órára van állítva, hogy a jobb felső sarokban lévő három pontra mutasson, majd válassza a **csempék testreszabása**elemet, jelölje be az irányítópult időbeállításainak felülbírálása jelölőnégyzetet, majd válasszon ki egy TimeSpan a legördülő menüből.  
+Alapértelmezés szerint az irányítópult csempén lévő TimeSpan/időtartomány 24 órára van állítva, hogy a jobb felső sarokban lévő három pontra mutasson, majd válassza a **csempék testreszabása** elemet, jelölje be az irányítópult időbeállításainak felülbírálása jelölőnégyzetet, majd válasszon ki egy TimeSpan a legördülő menüből.  
 
 ![Válassza ki a csempe jobb felső sarkában található három pontot, majd válassza az adatelemek testreszabása lehetőséget.](./media/storage-insights-overview/fqa-data-settings.png)
 
@@ -70,6 +70,6 @@ Ha módosítani szeretné a mentett munkafüzet egyik lépésének a nevét, vá
 ![A munkafüzet alján található Szerkesztés gombra kattintva megnyithatja a beállítások beállításokat a ](./media/storage-insights-overview/fqa-edit.png)
  ![ Beállítások területen válassza ki az alsó sebességfokozatot, hogy módosítani tudja a lépés nevét](./media/storage-insights-overview/fqa-change-name.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a forgatókönyvekhez készült munkafüzetek támogatásáról, a meglévő jelentések új és testre szabásának létrehozásáról, valamint az [interaktív jelentések Azure monitor-munkafüzetekkel való létrehozásának](../platform/workbooks-overview.md)áttekintéséről.

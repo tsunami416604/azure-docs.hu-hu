@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1282c27378e6a088a600a3ab3105f3f548984d03
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 7bdb36566d7c501dc5ca5604f8c6963258aa951c
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063144"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208539"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása Android-alkalmazásból
 
@@ -57,8 +57,7 @@ Ez a példa az Androidhoz készült Microsoft Authentication Library (MSAL) hasz
 
 A MSAL automatikusan megújítja a tokeneket, egyszeri bejelentkezést (SSO) tesz elérhetővé az eszköz más alkalmazásai között, és felügyeli a fiók (oka) t.
 
-> [!NOTE]
-> Ez az oktatóanyag bemutatja, hogyan használható az Android rendszerhez készült MSAL. Az egyszerűség kedvéért csak egy fiók üzemmódot használ. Összetettebb forgatókönyvek megismeréséhez tekintse meg a befejezett [Work Code mintát](https://github.com/Azure-Samples/ms-identity-android-java/) a githubon.
+Ez az oktatóanyag bemutatja, hogyan használható az Android rendszerhez készült MSAL. Az egyszerűség kedvéért csak egy fiók üzemmódot használ. Összetettebb forgatókönyvek megismeréséhez tekintse meg a befejezett [Work Code mintát](https://github.com/Azure-Samples/ms-identity-android-java/) a githubon.
 
 ## <a name="create-a-project"></a>Projekt létrehozása
 Ha még nem rendelkezik Android-alkalmazással, kövesse az alábbi lépéseket egy új projekt beállításához.
@@ -85,8 +84,8 @@ Ha még nem rendelkezik Android-alkalmazással, kövesse az alábbi lépéseket 
 1. Adja meg a projekt csomagjának nevét. Ha letöltötte a kódot, akkor ez az érték `com.azuresamples.msalandroidapp` .
 1. Az **Android-alkalmazás konfigurálása** lap **aláírás-kivonatolás** szakaszában válassza a **fejlesztési aláírás kivonatának létrehozása lehetőséget.** és másolja a Főeszköz parancsot a platformhoz való használatra.
 
-   > [!Note]
-   > KeyTool.exe a Java Development Kit (JDK) részeként van telepítve. Az OpenSSL eszközt is telepítenie kell, hogy végrehajtsa a parancssori eszközt. További információkért tekintse [meg az Android dokumentációját a kulcs létrehozásához](https://developer.android.com/studio/publish/app-signing#generate-key) .
+
+     KeyTool.exe a Java Development Kit (JDK) részeként van telepítve. Az OpenSSL eszközt is telepítenie kell, hogy végrehajtsa a parancssori eszközt. További információkért tekintse [meg az Android dokumentációját a kulcs létrehozásához](https://developer.android.com/studio/publish/app-signing#generate-key) .
 
 1. Adja meg a Főeszköz által generált **aláírási kivonatot** .
 1. Válassza a **Konfigurálás** lehetőséget, és mentse az **Android-konfiguráció** lapon megjelenő MSAL- **konfigurációt** , hogy később is megadhatja azt az alkalmazás konfigurálásakor.  
@@ -122,8 +121,7 @@ Ha még nem rendelkezik Android-alkalmazással, kövesse az alábbi lépéseket 
     }
    ```
 
-   >[!NOTE]
-   >Ez az oktatóanyag csak azt mutatja be, hogyan konfigurálható egy alkalmazás egy fiók módban. Tekintse meg a dokumentációt, ahol további információkat talál az egyetlen és a [több fiók üzemmódról](./single-multi-account.md) , valamint [az alkalmazás konfigurálásáról](./msal-configuration.md)
+     Ez az oktatóanyag csak azt mutatja be, hogyan konfigurálható egy alkalmazás egy fiók módban. Tekintse meg a dokumentációt, ahol további információkat talál az egyetlen és a [több fiók üzemmódról](./single-multi-account.md) , valamint [az alkalmazás konfigurálásáról](./msal-configuration.md)
 
 4. Az **app**  >  **src**  >  **Main**  >  **AndroidManifest.xmlban** adja hozzá az `BrowserTabActivity` alábbi tevékenységet az alkalmazás törzséhez. Ez a bejegyzés lehetővé teszi, hogy a Microsoft visszahívjon az alkalmazásba a hitelesítés befejezése után:
 
@@ -144,8 +142,11 @@ Ha még nem rendelkezik Android-alkalmazással, kövesse az alábbi lépéseket 
 
     Helyettesítse be a Azure Portal regisztrált csomag nevét az `android:host=` értékhez.
     Helyettesítse be a Azure Portalban regisztrált kulcs kivonatát az `android:path=` értékhez. Az aláírási kivonat **nem** lehet URL-kódolású. Győződjön meg arról, hogy az `/` aláírás kivonatának elején van egy vezető.
-    >[!NOTE]
-    >A "csomag neve" helyett a következőhöz `android:host` hasonló értéket kell kinéznie: "com. azuresamples. msalandroidapp" az "aláírási kivonat" az értéket a következőhöz `android:path` hasonlóan kell kinéznie: "/1WIqXSqBj7w + h11ZifsnqwgyKrY =". ezeket az értékeket az alkalmazás regisztrációjának hitelesítés paneljén is megtalálhatja. Vegye figyelembe, hogy az átirányítási URI a következőhöz hasonlóan fog kinézni: "msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D". Míg az aláírás-kivonat az érték végén található URL-cím, az aláírás-kivonat **nem** lehet az értékben kódolt URL-cím `android:path` .
+    
+    A "csomag neve" helyett a következőhöz `android:host` hasonló értéket kell kinéznie: "com. azuresamples. msalandroidapp".
+    Az "aláírási kivonat" értékének a következőhöz `android:path` hasonlóan kell kinéznie: "/1wIqXSqBj7w + h11ZifsnqwgyKrY =".
+    
+    Ezeket az értékeket az alkalmazás regisztrációjának hitelesítés paneljén is megtalálhatja. Vegye figyelembe, hogy az átirányítási URI a következőhöz hasonlóan fog kinézni: "msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D". Míg az aláírás-kivonat az érték végén található URL-cím, az aláírás-kivonat **nem** lehet az értékben kódolt URL-cím `android:path` .
 
 ## <a name="use-msal"></a>MSAL használata
 
