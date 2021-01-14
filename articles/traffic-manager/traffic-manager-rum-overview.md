@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: duau
 ms.custom: ''
-ms.openlocfilehash: 45c889ef8d67570fb075ec710616f20d110b7f50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 618f8fff532da0f6ae315ad9e4cda35a289949d1
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401605"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183710"
 ---
 # <a name="traffic-manager-real-user-measurements-overview"></a>Traffic Manager – valós felhasználói mérések áttekintése
 
@@ -37,48 +37,47 @@ Valós felhasználómérés használatakor a számlázás a Traffic Managerra el
 
 ## <a name="faqs"></a>Gyakori kérdések
 
-* [Milyen előnyökkel jár a valós felhasználómérés használata?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-the-benefits-of-using-real-user-measurements)
+* [Milyen előnyökkel jár a valós felhasználómérés használata?](./traffic-manager-faqs.md#what-are-the-benefits-of-using-real-user-measurements)
 
-* [Használhatok valós felhasználómérést nem Azure-régiókkal?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-real-user-measurements-with-non-azure-regions)
+* [Használhatok valós felhasználómérést nem Azure-régiókkal?](./traffic-manager-faqs.md#can-i-use-real-user-measurements-with-non-azure-regions)
 
-* [Melyik útválasztási módszer előnyös a valós felhasználómérés?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#which-routing-method-benefits-from-real-user-measurements)
+* [Melyik útválasztási módszer előnyös a valós felhasználómérés?](./traffic-manager-faqs.md#which-routing-method-benefits-from-real-user-measurements)
 
-* [Külön kell engedélyeznie valós felhasználómérés az egyes profilokat?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-enable-real-user-measurements-each-profile-separately)
+* [Külön kell engedélyeznie valós felhasználómérés az egyes profilokat?](./traffic-manager-faqs.md#do-i-need-to-enable-real-user-measurements-each-profile-separately)
 
-* [Az előfizetéshez tartozó valós felhasználómérés kikapcsolása Hogyan](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-turn-off-real-user-measurements-for-my-subscription)
+* [Az előfizetéshez tartozó valós felhasználómérés kikapcsolása Hogyan](./traffic-manager-faqs.md#how-do-i-turn-off-real-user-measurements-for-my-subscription)
 
-* [Használhatok a weblapokon kívül más ügyfélalkalmazások valós felhasználómérés is?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-real-user-measurements-with-client-applications-other-than-web-pages)
+* [Használhatok a weblapokon kívül más ügyfélalkalmazások valós felhasználómérés is?](./traffic-manager-faqs.md#can-i-use-real-user-measurements-with-client-applications-other-than-web-pages)
 
-* [Hány mérést végeznek minden alkalommal, amikor a valós felhasználómérés engedélyezve weboldala jelenik meg?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-measurements-are-made-each-time-my-real-user-measurements-enabled-web-page-is-rendered)
+* [Hány mérést végeznek minden alkalommal, amikor a valós felhasználómérés engedélyezve weboldala jelenik meg?](./traffic-manager-faqs.md#how-many-measurements-are-made-each-time-my-real-user-measurements-enabled-web-page-is-rendered)
 
-* [Van-e késés a weblapon valós felhasználómérés szkript futtatása előtt?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-there-a-delay-before-real-user-measurements-script-runs-in-my-webpage)
+* [Van-e késés a weblapon valós felhasználómérés szkript futtatása előtt?](./traffic-manager-faqs.md#is-there-a-delay-before-real-user-measurements-script-runs-in-my-webpage)
 
-* [Használhatom valós felhasználómérés csak a mérni kívánt Azure-régiókkal?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-real-user-measurements-with-only-the-azure-regions-i-want-to-measure)
+* [Használhatom valós felhasználómérés csak a mérni kívánt Azure-régiókkal?](./traffic-manager-faqs.md#can-i-use-real-user-measurements-with-only-the-azure-regions-i-want-to-measure)
 
-* [Korlátozható a megadott számú mérések száma?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-limit-the-number-of-measurements-made-to-a-specific-number)
+* [Korlátozható a megadott számú mérések száma?](./traffic-manager-faqs.md#can-i-limit-the-number-of-measurements-made-to-a-specific-number)
 
-* [Megtekinthetem az ügyfélalkalmazás által a valós felhasználómérés részeként végrehajtott méréseket?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-see-the-measurements-taken-by-my-client-application-as-part-of-real-user-measurements)
+* [Megtekinthetem az ügyfélalkalmazás által a valós felhasználómérés részeként végrehajtott méréseket?](./traffic-manager-faqs.md#can-i-see-the-measurements-taken-by-my-client-application-as-part-of-real-user-measurements)
 
-* [Módosíthatom Traffic Manager által biztosított mérési parancsfájlt?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-modify-the-measurement-script-provided-by-traffic-manager)
+* [Módosíthatom Traffic Manager által biztosított mérési parancsfájlt?](./traffic-manager-faqs.md#can-i-modify-the-measurement-script-provided-by-traffic-manager)
 
-* [Mások is láthatják, hogy milyen kulcsot használok a valós felhasználómérés?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#will-it-be-possible-for-others-to-see-the-key-i-use-with-real-user-measurements)
+* [Mások is láthatják, hogy milyen kulcsot használok a valós felhasználómérés?](./traffic-manager-faqs.md#will-it-be-possible-for-others-to-see-the-key-i-use-with-real-user-measurements)
 
-* [Mások is kihasználhatják a RUM-kulcsot?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-others-abuse-my-rum-key)
+* [Mások is kihasználhatják a RUM-kulcsot?](./traffic-manager-faqs.md#can-others-abuse-my-rum-key)
 
-* [Be kell-e állítani a mérési JavaScriptet az összes weblapon?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-put-the-measurement-javascript-in-all-my-web-pages)
+* [Be kell-e állítani a mérési JavaScriptet az összes weblapon?](./traffic-manager-faqs.md#do-i-need-to-put-the-measurement-javascript-in-all-my-web-pages)
 
-* [A végfelhasználók számára azonosíthatók a Traffic Manager, ha valós felhasználómérés használok?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-information-about-my-end-users-be-identified-by-traffic-manager-if-i-use-real-user-measurements)
+* [A végfelhasználók számára azonosíthatók a Traffic Manager, ha valós felhasználómérés használok?](./traffic-manager-faqs.md#can-information-about-my-end-users-be-identified-by-traffic-manager-if-i-use-real-user-measurements)
 
-* [A weblap mérési valós felhasználómérés az útválasztáshoz Traffic Manager kell használnia?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-the-webpage-measuring-real-user-measurements-need-to-be-using-traffic-manager-for-routing)
+* [A weblap mérési valós felhasználómérés az útválasztáshoz Traffic Manager kell használnia?](./traffic-manager-faqs.md#does-the-webpage-measuring-real-user-measurements-need-to-be-using-traffic-manager-for-routing)
 
-* [Szükség van-e az Azure-régiókban üzemeltetett szolgáltatások üzemeltetésére az valós felhasználómérés-vel való használatra?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-host-any-service-on-azure-regions-to-use-with-real-user-measurements)
+* [Szükség van-e az Azure-régiókban üzemeltetett szolgáltatások üzemeltetésére az valós felhasználómérés-vel való használatra?](./traffic-manager-faqs.md#do-i-need-to-host-any-service-on-azure-regions-to-use-with-real-user-measurements)
 
-* [Növekedni fog az Azure sávszélesség-használatom a valós felhasználómérés használatakor?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements)
+* [Növekedni fog az Azure sávszélesség-használatom a valós felhasználómérés használatakor?](./traffic-manager-faqs.md#will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements)
 
 ## <a name="next-steps"></a>Következő lépések
 - Ismerje meg, hogyan használhatja [a valós felhasználómérést weblapok](traffic-manager-create-rum-web-pages.md) használatával
 - Tudnivalók a [Traffic Manager működéséről](traffic-manager-overview.md)
-- További információ a [Mobile Centerről](https://docs.microsoft.com/mobile-center/)
+- További információ a [Mobile Centerről](/mobile-center/)
 - További információ a Traffic Manager által támogatott [forgalom-útválasztási módszerekről](traffic-manager-routing-methods.md)
-- Megtudhatja, hogyan [hozhat létre Traffic Manager-profilt](traffic-manager-create-profile.md)
-
+- Megtudhatja, hogyan [hozhat létre Traffic Manager-profilt](./quickstart-create-traffic-manager-profile.md)

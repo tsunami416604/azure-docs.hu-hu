@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: e822a2be200f701d65ab2080804d252f99589680
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: ac86dfba02b54730773a1d243981e85d563517e7
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680783"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183830"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box"></a>Oktatóanyag: az Azure Data Box exportálási sorrendjének létrehozása
 
@@ -181,7 +181,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket az Azure Po
 
     A felhasználó által hozzárendelt felügyelt identitás egy önálló Azure-erőforrás, amely több erőforrás kezelésére is használható. További információ: [felügyelt identitások típusai](/azure/active-directory/managed-identities-azure-resources/overview).  
 
-    Ha új felügyelt identitást kell létrehoznia, kövesse a [szerepkörök létrehozása, listázása, törlése vagy hozzárendelése egy felhasználóhoz rendelt felügyelt identitáshoz című témakör útmutatását a Azure Portal használatával](../../articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
+    Ha új felügyelt identitást kell létrehoznia, kövesse a [szerepkör létrehozása, listázása, törlése vagy hozzárendelése egy felhasználóhoz rendelt felügyelt identitáshoz a Azure Portal használatával című témakör](../../articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)útmutatását.
     
     ![Felhasználói azonosító kiválasztása](./media/data-box-deploy-export-ordered/customer-managed-key-10.png)
 
@@ -330,7 +330,7 @@ Néhány fontos pont az XML-fájlokra vonatkozóan:
 
 A következő táblázat példákat mutat be a Blobok érvényes elérési útjaira:
 
-   | Szelektor | BLOB elérési útja | Description (Leírás) |
+   | Szelektor | BLOB elérési útja | Leírás |
    | --- | --- | --- |
    | Ezzel kezdődik |/ |A Storage-fiókban lévő összes blob exportálása |
    | Ezzel kezdődik |/$root/ |A gyökér tárolóban lévő összes blob exportálása |

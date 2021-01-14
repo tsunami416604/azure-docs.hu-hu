@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d80b8f41e11f2fffa86dc7597fdf44dd27825fc
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: c169847c96d10d1c9fb47b210bc85a15e0690e32
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028896"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183115"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Gyakori kérdések az identitások védelméről Azure Active Directory
 
@@ -31,7 +31,7 @@ Létezik egy aktuálisan ismert probléma, ami késést okoz a felhasználói ko
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-### <a name="why-is-a-user-is-at-risk"></a>Miért van kockázat a felhasználó számára?
+### <a name="why-is-a-user-at-risk"></a>Miért veszélyeztetett a felhasználó?
 
 Ha Ön Azure AD Identity Protection ügyfél, lépjen a [kockázatos felhasználók](howto-identity-protection-investigate-risk.md#risky-users) nézetre, és kattintson a veszélyeztetett felhasználóra. A lap alján található "kockázati előzmények" lapon megjelenik az összes olyan esemény, amely a felhasználó kockázati változásához vezetett. Ha szeretné megtekinteni az összes kockázatos bejelentkezést a felhasználó számára, kattintson a "felhasználó kockázatos bejelentkezések" elemre. Ha meg szeretné tekinteni a felhasználó összes kockázati észlelését, kattintson a "felhasználó kockázati észlelése" elemre.
 

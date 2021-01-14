@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: duau
-ms.openlocfilehash: 83dc432a1f88b443d500bf9a977abfed69211156
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b76eab5771d724e4f0ec56b7d5acd5cf5f91edc0
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003854"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183455"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Az Azure Traffic Manager csökkentett teljesítményének hibaelhárítása
 
-Ez a cikk a csökkentett teljesítményű állapotot mutató Azure Traffic Manager-profilok hibaelhárítását ismerteti. Az Azure-Traffic Manager csökkentett teljesítményének elhárításának első lépéseként engedélyezze a naplózást.  További információért tekintse meg az [erőforrás-naplók engedélyezése](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs) című témakört. Ebben az esetben vegye figyelembe, hogy konfigurált egy Traffic Manager profilt, amely a cloudapp.net üzemeltetett szolgáltatásaira mutat. Ha a Traffic Manager állapota **csökkentett teljesítményű** , akkor a rendszer egy vagy több végpont állapotát **csökkentheti:**
+Ez a cikk a csökkentett teljesítményű állapotot mutató Azure Traffic Manager-profilok hibaelhárítását ismerteti. Az Azure-Traffic Manager csökkentett teljesítményének elhárításának első lépéseként engedélyezze a naplózást.  További információért tekintse meg az [erőforrás-naplók engedélyezése](./traffic-manager-diagnostic-logs.md) című témakört. Ebben az esetben vegye figyelembe, hogy konfigurált egy Traffic Manager profilt, amely a cloudapp.net üzemeltetett szolgáltatásaira mutat. Ha a Traffic Manager állapota **csökkentett teljesítményű** , akkor a rendszer egy vagy több végpont állapotát **csökkentheti:**
 
 ![csökkentett teljesítményű végpont állapota](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
 
@@ -31,8 +31,8 @@ Ha a Traffic Manager állapota **inaktív** állapotot jelez, akkor előfordulha
 
 ## <a name="understanding-traffic-manager-probes"></a>Traffic Manager mintavételek ismertetése
 
-* Traffic Manager úgy véli, hogy egy végpont csak ONLINE állapotba kerül, ha a mintavétel HTTP 200-választ kap vissza a mintavételi útvonalról. Ha az alkalmazás bármely más HTTP-hibakódot ad vissza, akkor az adott hibakódot a Traffic Manager profiljának [várt állapotkód-tartományához](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) kell hozzáadnia.
-* A 30x átirányítási válasza meghiúsul, hacsak nem adta meg ezt érvényes válaszként a Traffic Manager profiljának [várt állapotkód-tartományában](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) . Traffic Manager nem ellenőrzi az átirányítás célját.
+* Traffic Manager úgy véli, hogy egy végpont csak ONLINE állapotba kerül, ha a mintavétel HTTP 200-választ kap vissza a mintavételi útvonalról. Ha az alkalmazás bármely más HTTP-hibakódot ad vissza, akkor az adott hibakódot a Traffic Manager profiljának [várt állapotkód-tartományához](./traffic-manager-monitoring.md#configure-endpoint-monitoring) kell hozzáadnia.
+* A 30x átirányítási válasza meghiúsul, hacsak nem adta meg ezt érvényes válaszként a Traffic Manager profiljának [várt állapotkód-tartományában](./traffic-manager-monitoring.md#configure-endpoint-monitoring) . Traffic Manager nem ellenőrzi az átirányítás célját.
 * HTTPs-próbák esetén a rendszer figyelmen kívül hagyja a tanúsítvány hibáit.
 * A mintavételi útvonal tényleges tartalma nem számít, feltéve, hogy a 200-as értéket adja vissza. Egy olyan statikus tartalom URL-címe, mint például a "/favicon.ico", egy gyakori módszer. Előfordulhat, hogy a dinamikus tartalom, például az ASP-lapok nem mindig adnak vissza 200-et, még akkor is, ha az alkalmazás kifogástalan állapotban van.
 * Ajánlott eljárás a mintavételi útvonal beállítása olyan értékre, amely elegendő logikával rendelkezik annak megállapításához, hogy a hely fel vagy le van-e állítva. Az előző példában a "/favicon.ico" elérési út beállításával csak azt teszteli, hogy w3wp.exe válaszol-e. Ez a mintavétel nem utalhat arra, hogy a webalkalmazás kifogástalan állapotú. A jobb lehetőség egy olyan elérési út beállítása, mint például a "/Probe.aspx", amely a hely állapotának meghatározására szolgáló logikát tartalmaz. Használhat például teljesítményszámlálók használatával a CPU-kihasználtságot, vagy mérhetővé teheti a sikertelen kérések számát. Vagy megkísérelheti elérni az adatbázis-erőforrásokat vagy a munkamenet-állapotot, hogy meggyőződjön arról, hogy a webalkalmazás működik.
@@ -87,12 +87,12 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 
 [Mi az Traffic Manager?](traffic-manager-overview.md)
 
-[Felhőszolgáltatások](https://go.microsoft.com/fwlink/?LinkId=314074)
+[Felhőszolgáltatások](/previous-versions/azure/jj155995(v=azure.100))
 
 [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/web/)
 
-[Operations on Traffic Manager (A Traffic Managerrel végezhető műveletek) (REST API-referencia)](https://go.microsoft.com/fwlink/?LinkId=313584)
+[Operations on Traffic Manager (A Traffic Managerrel végezhető műveletek) (REST API-referencia)](/previous-versions/azure/reference/hh758255(v=azure.100))
 
 [Azure Traffic Manager-parancsmagok][1]
 
-[1]: https://docs.microsoft.com/powershell/module/az.trafficmanager
+[1]: /powershell/module/az.trafficmanager

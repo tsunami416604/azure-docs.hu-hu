@@ -4,15 +4,15 @@ description: A Azure File Sync üzemelő példányok gyakori problémáinak elh�
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 6/12/2020
+ms.date: 1/13/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: c7405ada800bd5fb9161e9d96bd4c8b0484be620
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b84256188cf5df3ddf389f763e669a2b2ca00852
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005323"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183336"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -199,10 +199,27 @@ Azon a kiszolgálón, amely a "kapcsolat nélküli állapotban" üzenet jelenik 
 - Ha a GetNextJob a (z) **0 állapottal fejeződött** be, a kiszolgáló képes kommunikálni a Azure file Sync szolgáltatással. 
     - Nyissa meg a Feladatkezelőt a kiszolgálón, és ellenőrizze, hogy fut-e a Storage Sync Monitor-folyamat (AzureStorageSyncMonitor.exe). Ha a folyamat nem fut, először próbálja meg újraindítani a kiszolgálót. Ha a kiszolgáló újraindítása nem oldja meg a problémát, frissítsen az Azure File Sync-ügynök [legújabb verziójára](./storage-files-release-notes.md). 
 
-- Ha a **GetNextJob a következő állapottal fejeződött be:-2134347756** van naplózva, a kiszolgáló nem tud kommunikálni a Azure file Sync szolgáltatással tűzfallal vagy proxy miatt. 
+- Ha a **GetNextJob a következő állapottal fejeződött be:-2134347756** van naplózva, a kiszolgáló nem tud kommunikálni a Azure file Sync szolgáltatással tűzfal, proxy vagy TLS titkosítási csomag megrendelési konfigurációja miatt. 
     - Ha a kiszolgáló tűzfal mögött van, ellenőrizze, hogy engedélyezve van-e a 443-as port kimenő forgalma. Ha a tűzfal bizonyos tartományokra korlátozza a forgalmat, ellenőrizze, hogy elérhetők-e a tűzfal [dokumentációjában](./storage-sync-files-firewall-and-proxy.md#firewall) felsorolt tartományok.
     - Ha a kiszolgáló proxy mögött van, a proxy [dokumentációjában](./storage-sync-files-firewall-and-proxy.md#proxy)ismertetett lépéseket követve konfigurálja a számítógép-szintű vagy alkalmazásspecifikus proxybeállításokat.
     - A Test-StorageSyncNetworkConnectivity parancsmag használatával ellenőrizheti a szolgáltatás-végpontokkal létesített hálózati kapcsolatot. További információért lásd: [hálózati kapcsolat tesztelése a szolgáltatási végpontokkal](./storage-sync-files-firewall-and-proxy.md#test-network-connectivity-to-service-endpoints).
+    - A-kiszolgálón található titkosítási csomagok hozzáadásához használja a csoportházirend vagy a TLS parancsmagot:
+        - Ha csoportházirendet szeretne használni, tekintse meg a [TLS titkosítási csomag megrendelésének konfigurálása csoportházirend használatával](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-group-policy)című témakört.
+        - A TLS-parancsmagok használatához lásd: [TLS titkosítási csomag rendelésének konfigurálása TLS PowerShell-parancsmagok használatával](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-tls-powershell-cmdlets).
+    
+        A Azure File Sync jelenleg a következő titkosítási csomagokat támogatja a TLS 1,2 protokollhoz:  
+        - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P384  
+        - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256  
+        - TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384_P384  
+        - TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P256  
+        - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256  
+        - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256  
+        - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256  
+        - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256  
+        - TLS_RSA_WITH_AES_256_GCM_SHA384  
+        - TLS_RSA_WITH_AES_128_GCM_SHA256  
+        - TLS_RSA_WITH_AES_256_CBC_SHA256  
+        - TLS_RSA_WITH_AES_128_CBC_SHA256  
 
 - Ha a **GetNextJob a következő állapottal fejeződött be:-2134347764** van naplózva, a kiszolgáló nem tud kommunikálni a Azure file Sync szolgáltatással egy lejárt vagy törölt tanúsítvány miatt.  
     - Futtassa a következő PowerShell-parancsot a kiszolgálón a hitelesítéshez használt tanúsítvány alaphelyzetbe állításához:

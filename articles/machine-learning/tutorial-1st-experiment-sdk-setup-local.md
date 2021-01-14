@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: fae9a4b1b82a1fe23e8882b45880a6ba0081f580
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 2f33fe4fafbe194238fcfbd4942807ed2fc4d6ff
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071126"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183540"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>Oktatóanyag: a Azure Machine Learning első lépései a fejlesztési környezetben (4. rész)
 
@@ -54,18 +54,20 @@ Ha a parancs hibát ad vissza `conda not found` , [töltse le és telepítse a M
 Miután telepítette a Conda-t, egy terminál-vagy anaconda-parancssor használatával hozzon létre egy új környezetet:
 
 ```bash
-conda create -n tutorial python=3.7
+conda create -n tutorial python=3.8
 ```
 
 Ezután telepítse a Azure Machine Learning SDK-t a létrehozott Conda-környezetbe:
 
 ```bash
 conda activate tutorial
-pip install azureml-sdk
+pip install azureml-core
 ```
     
 > [!NOTE]
-> A Azure Machine Learning SDK telepítésének befejezéséhez körülbelül 5 percet vesz igénybe.
+> A Azure Machine Learning SDK telepítésének befejezéséhez körülbelül 2 percet vesz igénybe.
+>
+> Ha időtúllépési hiba jelenik meg, próbálja ki a `pip install --default-timeout=100 azureml-core` intstead.
 
 
 > [!div class="nextstepaction"]

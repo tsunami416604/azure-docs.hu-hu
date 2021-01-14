@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/11/2019
+ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 621bbac6bc9ff3cb147110942060c8268fd86989
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 4793cad25e34e2e318dd205ba5f474d4529d13d5
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511178"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183880"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a JIRA SAML SSO-val a Microsoft által
 
@@ -25,8 +25,6 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a JIRA SAML SSO-t 
 * A Microsoft által az SAML SSO JIRA hozzáférését biztosító Azure AD-beli vezérlés.
 * Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Microsoft SAML SSO-JIRA az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
-
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="description"></a>Leírás
 
@@ -75,18 +73,18 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 A JIRA SAML SSO Microsoft Azure AD-ba való integrálásának konfigurálásához a Microsoft által a katalógusból a felügyelt SaaS-alkalmazások listájához hozzá kell adnia a JIRA SAML SSO-t.
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
 1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **JIRA SAML SSO** -t a Microsoft által a keresőmezőbe.
 1. Válassza ki a **JIRA SAML SSO** -t a Microsoft által az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-jira-saml-sso-by-microsoft"></a>Azure AD-alapú egyszeri bejelentkezés konfigurálása és tesztelése a Microsoft JIRA SAML SSO-hoz
+## <a name="configure-and-test-azure-ad-sso-for-jira-saml-sso-by-microsoft"></a>Az Azure AD SSO konfigurálása és tesztelése a JIRA SAML egyszeri bejelentkezéshez a Microsofttól
 
 Konfigurálja és tesztelje az Azure AD SSO-t a JIRA SAML SSO-val a Microsoft egy **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között a JIRA SAML SSO által a Microsoft által.
 
-Az Azure AD SSO és a JIRA SAML SSO Microsoft általi konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Az Azure AD SSO és a JIRA SAML SSO Microsoft általi konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
@@ -99,9 +97,9 @@ Az Azure AD SSO és a JIRA SAML SSO Microsoft általi konfigurálásához és te
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)a **JIRA SAML SSO a Microsoft** Application Integration lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. A Azure Portal a **JIRA SAML SSO a Microsoft** Application Integration lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikonra a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -130,7 +128,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -139,15 +137,9 @@ Ebben a szakaszban lehetővé teszi, hogy a B. Simon az Azure egyszeri bejelentk
 1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
 1. Az alkalmazások listában válassza ki a **JIRA SAML SSO elemet a Microsoftnál**.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
-
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
 1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
-
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
-
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
 ## <a name="configure-jira-saml-sso-by-microsoft-sso"></a>A JIRA SAML SSO konfigurálása a Microsoft SSO-val
@@ -188,37 +180,37 @@ Ebben a szakaszban lehetővé teszi, hogy a B. Simon az Azure egyszeri bejelentk
     > [!TIP]
     > Győződjön meg arról, hogy az alkalmazáshoz csak egy tanúsítvány van hozzárendelve, így nincs hiba a metaadatok feloldásakor. Ha több tanúsítvány is van, a metaadatok feloldásakor a rendszergazda hibaüzenetet kap.
 
-    1. A **metaadatok URL-címe** szövegmezőbe illessze be az **alkalmazás-összevonási metaadatok URL-címét** , amelyet a Azure Portal másolt, majd kattintson a **feloldás** gombra. Beolvassa a identitásszolgáltató metaadat-URL-címét, és feltölti az összes mező információit.
+    a. A **metaadatok URL-címe** szövegmezőbe illessze be az **alkalmazás-összevonási metaadatok URL-címét** , amelyet a Azure Portal másolt, majd kattintson a **feloldás** gombra. Beolvassa a identitásszolgáltató metaadat-URL-címét, és feltölti az összes mező információit.
 
-    1. Másolja ki az **azonosítót, a válasz URL-címét és a bejelentkezési URL-** értékeket, majd illessze be őket az **azonosító, a válasz URL** -cím mezőbe, és JELENTKEZZen be az URL-címek szövegmezőbe az **SAML SSO JIRA a Microsoft tartomány és URL** -címek szakaszban Azure Portal
+    b. Másolja ki az **azonosítót, a válasz URL-címét és a bejelentkezési URL-** értékeket, majd illessze be őket az **azonosító, a válasz URL** -cím mezőbe, és JELENTKEZZen be az URL-címek szövegmezőbe az **SAML SSO JIRA a Microsoft tartomány és URL** -címek szakaszban Azure Portal
 
-    1. A **bejelentkezési gomb neve** mezőbe írja be annak a gombnak a nevét, amelyet a szervezet a felhasználók számára látni kíván a bejelentkezési képernyőn.
+    c. A **bejelentkezési gomb neve** mezőbe írja be annak a gombnak a nevét, amelyet a szervezet a felhasználók számára látni kíván a bejelentkezési képernyőn.
     
-    1. A **bejelentkezési gomb leírása** mezőbe írja be annak a gombnak a leírását, amelyet a szervezet a felhasználók számára látni kíván a bejelentkezési képernyőn.
+    d. A **bejelentkezési gomb leírása** mezőbe írja be annak a gombnak a leírását, amelyet a szervezet a felhasználók számára látni kíván a bejelentkezési képernyőn.
 
-    1. Az **SAML felhasználói azonosító helyein** válassza **a felhasználói azonosító elemet a tulajdonos utasítás NameIdentifier elemében** , vagy a **felhasználói azonosító egy attribútum elemben**.  Ennek az AZONOSÍTÓnak a JIRA felhasználói AZONOSÍTÓnak kell lennie. Ha a felhasználói azonosító nem egyezik, a rendszer nem engedélyezi a felhasználók számára a bejelentkezést.
+    e. Az **SAML felhasználói azonosító helyein** válassza **a felhasználói azonosító elemet a tulajdonos utasítás NameIdentifier elemében** , vagy a **felhasználói azonosító egy attribútum elemben**.  Ennek az AZONOSÍTÓnak a JIRA felhasználói AZONOSÍTÓnak kell lennie. Ha a felhasználói azonosító nem egyezik, a rendszer nem engedélyezi a felhasználók számára a bejelentkezést.
 
-       > [!Note]
-       > Az SAML alapértelmezett felhasználói AZONOSÍTÓjának helye a név azonosítója. Ezt módosíthatja egy attribútum lehetőségre, és megadhatja a megfelelő attribútum nevét.
+    > [!Note]
+    > Az SAML alapértelmezett felhasználói AZONOSÍTÓjának helye a név azonosítója. Ezt módosíthatja egy attribútum lehetőségre, és megadhatja a megfelelő attribútum nevét.
 
-    1. Ha a **felhasználói azonosító** elemet választja, akkor az attribútum **neve** szövegmezőbe írja be annak az attribútumnak a nevét, ahol a rendszer a felhasználói azonosítót várta.
+    f. Ha a **felhasználói azonosító** elemet választja, akkor az attribútum **neve** szövegmezőbe írja be annak az attribútumnak a nevét, ahol a rendszer a felhasználói azonosítót várta.
 
-    1. Ha az összevont tartományt (például az ADFS-t stb.) használja az Azure AD-vel, kattintson a **Kezdőlap tartomány felderítésének engedélyezése** lehetőségre, és konfigurálja a **tartománynevet**.
+    : Ha az összevont tartományt (például az ADFS-t stb.) használja az Azure AD-vel, kattintson a **Kezdőlap tartomány felderítésének engedélyezése** lehetőségre, és konfigurálja a **tartománynevet**.
 
-    1. A **tartománynév** mezőben adja meg a tartománynevet az ADFS-alapú bejelentkezés esetén.
+    h. A **tartománynév** mezőben adja meg a tartománynevet az ADFS-alapú bejelentkezés esetén.
 
-    1. Jelölje be az egyszeri Kijelentkezés **engedélyezése** lehetőséget, ha ki szeretne jelentkezni az Azure ad-ből, amikor egy felhasználó kijelentkezik a JIRA.
+    i. Jelölje be az egyszeri Kijelentkezés **engedélyezése** lehetőséget, ha ki szeretne jelentkezni az Azure ad-ből, amikor egy felhasználó kijelentkezik a JIRA.
     
-    1. Ha csak az Azure AD-beli hitelesítő adatokkal szeretne bejelentkezni, engedélyezze az **Azure-bejelentkezés kényszerítése** jelölőnégyzetet.
+    j. Ha csak az Azure AD-beli hitelesítő adatokkal szeretne bejelentkezni, engedélyezze az **Azure-bejelentkezés kényszerítése** jelölőnégyzetet.
     
-       > [!Note]
-       > Ha engedélyezni szeretné az alapértelmezett bejelentkezési űrlapot a rendszergazdai bejelentkezéshez a bejelentkezési oldalon, akkor adja hozzá a lekérdezési paramétert a böngésző URL-címéhez.
-       > `https://<domain:port>/login.jsp?force_azure_login=false`
+    > [!Note]
+    > Ha engedélyezni szeretné az alapértelmezett bejelentkezési űrlapot a rendszergazdai bejelentkezéshez a bejelentkezési oldalon, akkor adja hozzá a lekérdezési paramétert a böngésző URL-címéhez.
+    > `https://<domain:port>/login.jsp?force_azure_login=false`
 
-    1. A beállítások mentéséhez kattintson a **Save (Mentés** ) gombra.
+    k. A beállítások mentéséhez kattintson a **Save (Mentés** ) gombra.
 
-       > [!NOTE]
-       > A telepítéssel és a hibaelhárítással kapcsolatos további információkért tekintse meg az [MS JIRA SSO-összekötő rendszergazdai útmutatóját](./ms-confluence-jira-plugin-adminguide.md). A segítségére is van egy [gyakori](./ms-confluence-jira-plugin-adminguide.md) kérdés.
+    > [!NOTE]
+    > A telepítéssel és a hibaelhárítással kapcsolatos további információkért tekintse meg az [MS JIRA SSO-összekötő rendszergazdai útmutatóját](./ms-confluence-jira-plugin-adminguide.md). A segítségére is van egy [gyakori](./ms-confluence-jira-plugin-adminguide.md) kérdés.
 
 ### <a name="create-jira-saml-sso-by-microsoft-test-user"></a>JIRA SAML SSO létrehozása a Microsoft test User használatával
 
@@ -256,16 +248,15 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a JI
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
-Ha a hozzáférési panelen a Microsoft csempén lévő SAML SSO JIRA kattint, automatikusan be kell jelentkeznie a Microsoft JIRA SAML SSO-ba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. A rendszer átirányítja a JIRA SAML SSO-ra a Microsoft bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot. 
 
-## <a name="additional-resources"></a>További források
+* A Microsoft bejelentkezési URL-címével közvetlenül a JIRA SAML SSO-t, a bejelentkezési folyamatot pedig innen indíthatja el.
 
-- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](./tutorial-list.md)
+* Használhatja a Microsoft saját alkalmazásait. Ha rákattint a saját alkalmazások JIRA SAML SSO-ra a Microsoft csempén, ez a Microsoft bejelentkezési URL-címén átirányítja a JIRA SAML SSO-ra. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
+## <a name="next-steps"></a>Következő lépések
 
-- [A Microsoft SAML egyszeri bejelentkezéses JIRA kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
+Miután konfigurálta a JIRA SAML SSO-t a Microsoftnál, kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)

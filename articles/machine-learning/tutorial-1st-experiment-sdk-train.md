@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: d2c0003058c2271e46a352567a14e1b01dfabdbf
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: b1fa4d3e6c017232922e500352558e34726b90cc
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98071102"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183081"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>Oktatóanyag: az első gépi tanulási modell betanítása (4. rész)
 
@@ -40,7 +40,8 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A sorozat [2. részének](tutorial-1st-experiment-hello-world.md) befejezése.
+- [Anaconda](https://www.anaconda.com/download/) vagy [Miniconda](https://www.anaconda.com/download/) a Python virtuális környezetek kezeléséhez és csomagok telepítéséhez.
+- A [part1](tutorial-1st-experiment-sdk-setup-local.md) és a sorozat [2. részének](tutorial-1st-experiment-hello-world.md) befejezése.
 
 ## <a name="create-training-scripts"></a>Képzési parancsfájlok létrehozása
 
@@ -87,7 +88,7 @@ Ez a környezet minden, a modellhez és a képzési parancsfájlhoz szükséges 
 
 ## <a name="test-locally"></a><a name="test-local"></a> Helyi tesztelés
 
-Használja az alábbi kódot a szkript helyi teszteléséhez az új környezetben.  
+Egy terminál-vagy anaconda-parancssorban használja a következő kódot a szkript helyi teszteléséhez az új környezetben.  
 
 ```bash
 conda deactivate                                # If you are still using the tutorial environment, exit it

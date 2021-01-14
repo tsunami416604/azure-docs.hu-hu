@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: duau
-ms.openlocfilehash: 3cf493beab6dfe1767ae35ea36732dc364e29736
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0eb49f3c2acc31cba7b245995cf3bcb579113e4c
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401656"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183813"
 ---
 # <a name="traffic-manager-routing-methods"></a>A Traffic Manager útválasztási módszerei
 
@@ -27,8 +27,8 @@ A következő forgalom-útválasztási módszerek érhetők el Traffic Managerba
 * **[Súlyozott](#weighted):** válassza a **súlyozott** értéket, ha a forgalmat a végpontok egy halmazán keresztül szeretné terjeszteni, akár egyenletesen, akár súlyok szerint, amelyet Ön határoz meg.
 * **[Teljesítmény](#performance):** válassza a **teljesítmény** lehetőséget, ha különböző földrajzi helyekhez tartozó végpontokkal rendelkezik, és azt szeretné, hogy a végfelhasználók a legalacsonyabb hálózati késés szempontjából használják a "legközelebbi" végpontot.
 * **[Földrajzi](#geographic):** válassza a **földrajzi** lehetőséget, hogy a felhasználók meghatározott végpontokra legyenek irányítva (Azure, External vagy nested) attól függően, hogy a DNS-lekérdezés melyik földrajzi helyen származik. Ez arra hatalmazza fel Traffic Manager ügyfeleket, hogy olyan forgatókönyveket engedélyezzenek, amelyekben a felhasználó földrajzi régiójának ismerete és a fontos alapján történő útválasztás. Ilyenek például az adatszuverenitási megbízatásoknak való megfelelés, a tartalmak honosítása & a felhasználói élmény és a különböző régiókból érkező forgalom mérése.
-* **[Multivalue](#multivalue)** Többértékű: válassza a többértékű lehetőséget **Traffic Manager olyan** profiloknál, amelyek csak IPv4/IPv6-címeket tartalmazhatnak végpontként. Ha a profilhoz lekérdezés érkezik, az összes kifogástalan állapotú végpontot adja vissza.
-* **[Alhálózat](#subnet):** válassza az **alhálózati** forgalom – útválasztási módszer lehetőséget a végfelhasználói IP-címtartományok készletének leképezésére egy Traffic Manager profilban lévő adott végpontra. A kérés fogadásakor a visszaadott végpont lesz az adott kérelem forrás IP-címéhez hozzárendelve. 
+* **[](#multivalue)** Többértékű: válassza a többértékű lehetőséget **Traffic Manager olyan** profiloknál, amelyek csak IPv4/IPv6-címeket tartalmazhatnak végpontként. Ha a profilhoz lekérdezés érkezik, az összes kifogástalan állapotú végpontot adja vissza.
+* **[Alhálózat](#subnet):** válassza az **alhálózati** forgalom – útválasztási módszer lehetőséget a végfelhasználói IP-címtartományok készletének leképezésére egy Traffic Manager profilban lévő adott végpontra. A kérés fogadásakor a visszaadott végpont lesz az adott kérelem forrás IP-címéhez hozzárendelve. 
 
 
 Az összes Traffic Manager profil tartalmazza a végpont állapotának figyelését és az automatikus végpont feladatátvételét. További információ: [Traffic Manager Endpoint monitoring](traffic-manager-monitoring.md). Egyetlen Traffic Manager profil csak egy forgalom-útválasztási módszert használhat. Bármikor kiválaszthat egy másik forgalom-útválasztási módszert a profiljához. A módosítások egy percen belül érvénybe lépnek, és nem merül fel leállás. A forgalom-útválasztási módszerek beágyazott Traffic Manager profilok használatával kombinálhatók. A beágyazás olyan kifinomult és rugalmas forgalom-útválasztási konfigurációkat tesz lehetővé, amelyek megfelelnek a nagyobb, összetett alkalmazások igényeinek. További információ: [beágyazott Traffic Manager profilok](traffic-manager-nested-profiles.md).
@@ -125,36 +125,36 @@ Ahogy azt a [Traffic Manager működése című témakör](traffic-manager-how-i
 
 ### <a name="faqs"></a>Gyakori kérdések
 
-* [Mik azok a használati esetek, amikor a földrajzi útválasztás hasznos?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-geographic-routing-is-useful)
+* [Mik azok a használati esetek, amikor a földrajzi útválasztás hasznos?](./traffic-manager-faqs.md#what-are-some-use-cases-where-geographic-routing-is-useful)
 
-* [Hogyan eldönteni, hogy kell-e használni a teljesítmény-útválasztási módszert vagy a földrajzi útválasztási módszert?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method)
+* [Hogyan eldönteni, hogy kell-e használni a teljesítmény-útválasztási módszert vagy a földrajzi útválasztási módszert?](./traffic-manager-faqs.md#how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method)
 
-* [Milyen régiókat támogat a Traffic Manager földrajzi útválasztáshoz?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing)
+* [Milyen régiókat támogat a Traffic Manager földrajzi útválasztáshoz?](./traffic-manager-faqs.md#what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing)
 
-* [Hogyan határozza meg a Traffic Manager, hogy a felhasználók honnan kérdezik le?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-determine-where-a-user-is-querying-from)
+* [Hogyan határozza meg a Traffic Manager, hogy a felhasználók honnan kérdezik le?](./traffic-manager-faqs.md#how-does-traffic-manager-determine-where-a-user-is-querying-from)
 
-* [Garantált, hogy Traffic Manager képes pontosan meghatározni a felhasználó pontos földrajzi helyét minden esetben?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-it-guaranteed-that-traffic-manager-can-correctly-determine-the-exact-geographic-location-of-the-user-in-every-case)
+* [Garantált, hogy Traffic Manager képes pontosan meghatározni a felhasználó pontos földrajzi helyét minden esetben?](./traffic-manager-faqs.md#is-it-guaranteed-that-traffic-manager-can-correctly-determine-the-exact-geographic-location-of-the-user-in-every-case)
 
-* [A végpontnak fizikailag ugyanabban a régióban kell lennie, mint a földrajzi útválasztáshoz konfiguráltnak?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing)
+* [A végpontnak fizikailag ugyanabban a régióban kell lennie, mint a földrajzi útválasztáshoz konfiguráltnak?](./traffic-manager-faqs.md#does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing)
 
-* [Rendelhetek földrajzi régiókat olyan profilhoz tartozó végpontokhoz, amely nem a földrajzi útválasztásra van konfigurálva?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing)
+* [Rendelhetek földrajzi régiókat olyan profilhoz tartozó végpontokhoz, amely nem a földrajzi útválasztásra van konfigurálva?](./traffic-manager-faqs.md#can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing)
 
-* [Miért kapok hibaüzenetet, amikor megpróbálom módosítani egy meglévő profil útválasztási módszerét a földrajzi helyekre?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic)
+* [Miért kapok hibaüzenetet, amikor megpróbálom módosítani egy meglévő profil útválasztási módszerét a földrajzi helyekre?](./traffic-manager-faqs.md#why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic)
 
-* [Ezért erősen ajánlott, hogy az ügyfelek beágyazott profilokat hozzanak létre a földrajzi útválasztást engedélyező profilhoz tartozó végpontok helyett?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled)
+* [Ezért erősen ajánlott, hogy az ügyfelek beágyazott profilokat hozzanak létre a földrajzi útválasztást engedélyező profilhoz tartozó végpontok helyett?](./traffic-manager-faqs.md#why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled)
 
-* [Van olyan korlátozás az API-verzióra, amely támogatja ezt az útválasztási típust?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type)
+* [Van olyan korlátozás az API-verzióra, amely támogatja ezt az útválasztási típust?](./traffic-manager-faqs.md#are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type)
 
 ## <a name="multivalue-traffic-routing-method"></a><a name = "multivalue"></a>Többértékű forgalom – útválasztási módszer
 A többértékű **forgalom –** útválasztási módszer lehetővé teszi, hogy több kifogástalan állapotú végpontot KAPJON egyetlen DNS-lekérdezési válaszban. Ez lehetővé teszi, hogy a hívó az ügyféloldali újrapróbálkozásokat más végpontokkal hajtsa végre, ha a visszaadott végpont nem válaszol. Ez az elrendezés javíthatja a szolgáltatás rendelkezésre állását, és csökkentheti a kifogástalan állapotú végpontok DNS-beli lekérdezésével járó késést. A többértékű útválasztási módszer csak akkor működik, ha az összes "External" típusú végpontot IPv4-vagy IPv6-címként adja meg. Ha egy lekérdezés érkezik ehhez a profilhoz, a rendszer minden kifogástalan állapotú végpontot visszaadott, és egy konfigurálható maximális visszaküldési számra vonatkozik.
 
 ### <a name="faqs"></a>Gyakori kérdések
 
-* [Mik azok a használati esetek, ahol a többértékű útválasztás hasznos?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-multivalue-routing-is-useful)
+* [Mik azok a használati esetek, ahol a többértékű útválasztás hasznos?](./traffic-manager-faqs.md#what-are-some-use-cases-where-multivalue-routing-is-useful)
 
-* [Hány végpontot ad vissza a rendszer a többértékű útválasztás használata esetén?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-endpoints-are-returned-when-multivalue-routing-is-used)
+* [Hány végpontot ad vissza a rendszer a többértékű útválasztás használata esetén?](./traffic-manager-faqs.md#how-many-endpoints-are-returned-when-multivalue-routing-is-used)
 
-* [Ugyanazokat a végpontokat kapják meg, amikor többértékű útválasztást használunk?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used)
+* [Ugyanazokat a végpontokat kapják meg, amikor többértékű útválasztást használunk?](./traffic-manager-faqs.md#will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used)
 
 ## <a name="subnet-traffic-routing-method"></a><a name = "subnet"></a>Alhálózati forgalom – útválasztási módszer
 Az **alhálózati** forgalom – útválasztási módszer lehetővé teszi a végfelhasználói IP-címtartományok készletének hozzárendelését egy profil adott végpontjai számára. Ezt követően, ha Traffic Manager kap egy DNS-lekérdezést ehhez a profilhoz, megvizsgálja a kérelem forrás IP-címét (a legtöbb esetben ez lesz a hívó által használt DNS-feloldó kimenő IP-címe), meghatározza, hogy melyik végponthoz van hozzárendelve, és a lekérdezési válaszban visszaadja a végpontot. 
@@ -166,21 +166,17 @@ Az alhálózati útválasztással különböző felhasználói élményt biztos�
 
 ### <a name="faqs"></a>Gyakori kérdések
 
-* [Mik azok a használati esetek, amikor az alhálózat-útválasztás hasznos?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-subnet-routing-is-useful)
+* [Mik azok a használati esetek, amikor az alhálózat-útválasztás hasznos?](./traffic-manager-faqs.md#what-are-some-use-cases-where-subnet-routing-is-useful)
 
-* [Hogyan ismeri Traffic Manager a végfelhasználó IP-címét?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-know-the-ip-address-of-the-end-user)
+* [Hogyan ismeri Traffic Manager a végfelhasználó IP-címét?](./traffic-manager-faqs.md#how-does-traffic-manager-know-the-ip-address-of-the-end-user)
 
-* [Hogyan adhatok meg IP-címeket alhálózati útválasztás használatakor?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-ip-addresses-when-using-subnet-routing)
+* [Hogyan adhatok meg IP-címeket alhálózati útválasztás használatakor?](./traffic-manager-faqs.md#how-can-i-specify-ip-addresses-when-using-subnet-routing)
 
-* [Hogyan adhatok tartalék végpontot alhálózati útválasztás használatakor?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing)
+* [Hogyan adhatok tartalék végpontot alhálózati útválasztás használatakor?](./traffic-manager-faqs.md#how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing)
 
-* [Mi történik, ha egy végpont le van tiltva egy alhálózat útválasztási típusának profiljában?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile)
+* [Mi történik, ha egy végpont le van tiltva egy alhálózat útválasztási típusának profiljában?](./traffic-manager-faqs.md#what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile)
 
 
 ## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan fejleszthet magas rendelkezésre állású alkalmazásokat [Traffic Manager Endpoint monitoring](traffic-manager-monitoring.md) használatával
-
-
-
-

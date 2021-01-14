@@ -6,19 +6,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: navits09
 ms.author: navits
-ms.date: 09/18/2020
-ms.openlocfilehash: b042d1e1f38b2a4a84522d58ad482d4262f69a4a
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.date: 01/14/2020
+ms.openlocfilehash: 8979a94ee63ef50c0a3abacd5ab3515226200131
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94488893"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183438"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>A kereskedelmi piactér program támogatása a partner Centerben
 
 A Microsoft számos termék és szolgáltatás támogatását biztosítja. A megfelelő támogatási csapat megtalálása fontos a megfelelő és kellő időben történő válaszadás biztosításához. Vegye figyelembe a következő forgatókönyveket, amelyek segítenek a lekérdezés átirányításában a megfelelő csapatnak:
 
 - Ha Ön kiadó, és kérdése van egy ügyféltől, kérje meg az ügyfelet, hogy kérjen támogatást a [Azure Portal](https://portal.azure.com/)támogatási hivatkozásait használva.
+- Ha Ön közzétevő, és biztonsági problémát észlelt az Azure-on futó alkalmazással kapcsolatban, tekintse meg [a biztonsági eseményekre vonatkozó támogatási jegy naplózása](/azure/security/fundamentals/event-support-ticket)című témakört. A kiadóknak a lehető leghamarabb jelenteniük kell a feltételezett biztonsági eseményeket, beleértve az Azure Marketplace-szoftverek és-szolgáltatások biztonsági incidenseit és biztonsági réseit.
 - Ha Ön kiadó, és az alkalmazásával vagy szolgáltatásával kapcsolatos kérdése van, tekintse át a következő támogatási lehetőségeket.
 
 ## <a name="support-options-for-publishers"></a>A közzétevők támogatási lehetőségei
@@ -62,12 +63,12 @@ A következő lehetőségek lesznek elérhetők:
 
 - Egy másik témakör kiválasztásához válasszon egy másik témakör-hivatkozást a **kiválasztott probléma** területen.
 - Tekintse át a probléma leírását, ha van ilyen.  Ez az **ajánlott lépések** felett látható szöveg.
-- Tekintse át az **ajánlott lépéseket** , ha vannak ilyenek.
-- Tekintse át az **ajánlott dokumentumokat** , ha vannak ilyenek.
+- Tekintse át az **ajánlott lépéseket**, ha vannak ilyenek.
+- Tekintse át az **ajánlott dokumentumokat**, ha vannak ilyenek.
 
 ![Ajánlott megoldások](./media/support/recommended-solutions.png)
 
-Ha nem találja a választ a **javasolt megoldásokban** , válassza a **probléma részleteinek megadása** lehetőséget. Fejezze be az összes kötelező mezőt a megoldási folyamat felgyorsításához, majd válassza a **Küldés** lehetőséget.
+Ha nem találja a választ a **javasolt megoldásokban**, válassza a **probléma részleteinek megadása** lehetőséget. Fejezze be az összes kötelező mezőt a megoldási folyamat felgyorsításához, majd válassza a **Küldés** lehetőséget.
 
 >[!Note]
 >Ha még nem jelentkezett be a partner Centerben, és a témakör hitelesítésre szorul, a folytatáshoz a rendszer kérni fogja a bejelentkezést.  Nyilvános témakörök esetén nincs szükség hitelesítésre.
@@ -123,9 +124,9 @@ HAR-fájl létrehozása a **Mozilla Firefox** használatával:
 
 HAR-fájl létrehozása a **Safari** használatával:
 
-1. A fejlesztői eszközök engedélyezése a Safariban: válassza a **Safari** -  >  **Beállítások** lehetőséget. Lépjen a **speciális** lapra, majd válassza a **menü fejlesztés megjelenítése menüpontját**.
+1. A fejlesztői eszközök engedélyezése a Safariban: válassza a **Safari**-  >  **Beállítások** lehetőséget. Lépjen a **speciális** lapra, majd válassza a **menü fejlesztés megjelenítése menüpontját**.
 1. Lépjen arra a weblapra, ahol a problémát tapasztalja.
-1. Válassza a **fejlesztés** , majd a **webes ellenőr megjelenítése** lehetőséget.
+1. Válassza a **fejlesztés**, majd a **webes ellenőr megjelenítése** lehetőséget.
 1. Válassza a **hálózat** fület, majd a meglévő naplók eltávolításához válassza a **hálózati elemek törlése** elemet.
 
     ![Meglévő naplók eltávolítása a Safari alkalmazásban](media/support/safari-clear-session.png)
@@ -135,6 +136,6 @@ HAR-fájl létrehozása a **Safari** használatával:
 
     ![HAR-fájl exportálása a Safari alkalmazásba](media/support/safari-network-export-har.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](partner-center-portal/update-existing-offer.md)

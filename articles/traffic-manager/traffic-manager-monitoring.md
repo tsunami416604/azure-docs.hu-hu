@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: duau
-ms.openlocfilehash: 78a1681c743f65081b30657f4fd747ff8aaef5f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31048a0abd939c81b64e87b4a146ae3b6934803f
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89392833"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183909"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager-végpontmonitorozás
 
@@ -40,7 +40,7 @@ A végpontok figyelésének konfigurálásához a következő beállításokat k
 
 ## <a name="how-endpoint-monitoring-works"></a>A végpont-figyelés működése
 
-Ha a figyelési protokoll HTTP-vagy HTTPS-értékre van beállítva, akkor a Traffic Manager szondázás ügynök GET kérelmet küld a végpontnak a megadott protokoll, port és relatív elérési út használatával. Ha egy 200 – OK választ kap, vagy a **várt állapotkód- \* tartományban**konfigurált válaszokat, akkor a végpont kifogástalannak minősül. Ha a válasz egy másik érték, vagy ha a megadott időtúllépési időszakon belül nem érkezik válasz, akkor a rendszer az Traffic Manager szondázás-ügynököt az észlelt hibák száma alapján újra megkísérli (ha ez a beállítás 0), akkor a rendszer nem próbálkozik újra. Ha az egymást követő hibák száma nagyobb, mint a hibák száma, akkor a végpont nem kifogástalan állapotú. 
+Ha a figyelési protokoll HTTP-vagy HTTPS-értékre van beállítva, akkor a Traffic Manager szondázás ügynök GET kérelmet küld a végpontnak a megadott protokoll, port és relatív elérési út használatával. Ha egy 200 – OK választ kap, vagy a **várt állapotkód- \* tartományban** konfigurált válaszokat, akkor a végpont kifogástalannak minősül. Ha a válasz egy másik érték, vagy ha a megadott időtúllépési időszakon belül nem érkezik válasz, akkor a rendszer az Traffic Manager szondázás-ügynököt az észlelt hibák száma alapján újra megkísérli (ha ez a beállítás 0), akkor a rendszer nem próbálkozik újra. Ha az egymást követő hibák száma nagyobb, mint a hibák száma, akkor a végpont nem kifogástalan állapotú. 
 
 Ha a figyelési protokoll TCP, akkor a Traffic Manager szondázás ügynök TCP-kapcsolati kérelmet kezdeményez a megadott port használatával. Ha a végpont válaszként válaszol a kapcsolat létesítésére, az állapot-ellenőrzés sikeresként van megjelölve, és a Traffic Manager szondázás ügynök visszaállítja a TCP-kapcsolatot. Ha a válasz eltérő érték, vagy ha a megadott időtúllépési időszakon belül nem érkezik válasz, akkor a Traffic Manager-szondázás ügynök újrapróbálkozik a sikertelen hibák beállításának megfelelően (ha ez a beállítás 0), akkor a rendszer nem próbálkozik újra. Ha az egymást követő hibák száma nagyobb, mint az észlelt hibák száma, akkor a végpont állapota nem kifogástalan.
 
@@ -79,7 +79,7 @@ A Endpoint monitor állapota egy Traffic Manager által generált érték, amely
 További információ a végpontok figyelő állapotának a beágyazott végpontokra való kiszámításáról: [beágyazott Traffic Manager profilok](traffic-manager-nested-profiles.md).
 
 >[!NOTE]
-> Ha a webalkalmazás nem a standard vagy újabb rendszerű, akkor előfordulhat, hogy a leállított Endpoint monitor állapota App Service. További információ: [Traffic Manager Integration with app Service](/azure/app-service/web-sites-traffic-manager).
+> Ha a webalkalmazás nem a standard vagy újabb rendszerű, akkor előfordulhat, hogy a leállított Endpoint monitor állapota App Service. További információ: [Traffic Manager Integration with app Service](../app-service/web-sites-traffic-manager.md).
 
 ### <a name="profile-monitor-status"></a>Profil figyelő állapota
 
@@ -135,9 +135,9 @@ Ha egy végpont csökkentett teljesítményű állapotú, a DNS-lekérdezésekre
 * **Prioritás**. A végpontok rangsorolt listát alkotnak. Mindig a lista első elérhető végpontját adja vissza a rendszer. Ha egy végpont állapota csökkentett, akkor a rendszer a következő elérhető végpontot adja vissza.
 * **Súlyozott**. Minden elérhető végpont véletlenszerűen van kiválasztva a hozzárendelt súlyok és a többi elérhető végpont súlyozása alapján.
 * **Teljesítmény**. A rendszer a végfelhasználóhoz legközelebb eső végpontot adja vissza. Ha a végpont nem érhető el, Traffic Manager áthelyezi a forgalmat a következő legközelebbi Azure-régióban lévő végpontokra. Alternatív feladatátvételi terveket konfigurálhat a teljesítmény forgalmához – az útválasztást [beágyazott Traffic Manager profilok](traffic-manager-nested-profiles.md#example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region)használatával végezheti el.
-* **Földrajzi**hely. A rendszer a lekérdezési kérelem IP-címe alapján a földrajzi hely kiszolgálására leképezett végpontot adja vissza. Ha ez a végpont nem érhető el, egy másik végpont nem lesz kiválasztva a feladatátvételhez, mert a földrajzi hely csak egy profil egy végpontján képezhető le (a további részletek a [Gyakori kérdések](traffic-manager-FAQs.md#traffic-manager-geographic-traffic-routing-method)között találhatók). Az ajánlott eljárás a földrajzi útválasztás használata esetén azt javasoljuk, hogy az ügyfelek a profil végpontjait több végponttal rendelkező beágyazott Traffic Manager-profilokat használjanak.
-* **MultiValue** Többértékű A rendszer több IPv4-/IPv6-címhez hozzárendelt végpontot ad vissza. Ha egy lekérdezés érkezik ehhez a profilhoz, a rendszer visszaadja az egészséges végpontokat a megadott válasz értékének **maximális száma** alapján. A válaszok alapértelmezett száma két végpont.
-* **Alhálózat** A rendszer az IP-címtartományok számára leképezett végpontot adja vissza. Ha egy kérés érkezik az adott IP-címről, a visszaadott végpont az adott IP-címhez hozzárendelt végpont. 
+* **Földrajzi** hely. A rendszer a lekérdezési kérelem IP-címe alapján a földrajzi hely kiszolgálására leképezett végpontot adja vissza. Ha ez a végpont nem érhető el, egy másik végpont nem lesz kiválasztva a feladatátvételhez, mert a földrajzi hely csak egy profil egy végpontján képezhető le (a további részletek a [Gyakori kérdések](traffic-manager-FAQs.md#traffic-manager-geographic-traffic-routing-method)között találhatók). Az ajánlott eljárás a földrajzi útválasztás használata esetén azt javasoljuk, hogy az ügyfelek a profil végpontjait több végponttal rendelkező beágyazott Traffic Manager-profilokat használjanak.
+*  Többértékű A rendszer több IPv4-/IPv6-címhez hozzárendelt végpontot ad vissza. Ha egy lekérdezés érkezik ehhez a profilhoz, a rendszer visszaadja az egészséges végpontokat a megadott válasz értékének **maximális száma** alapján. A válaszok alapértelmezett száma két végpont.
+* **Alhálózat** A rendszer az IP-címtartományok számára leképezett végpontot adja vissza. Ha egy kérés érkezik az adott IP-címről, a visszaadott végpont az adott IP-címhez hozzárendelt végpont. 
 
 További információ: [Traffic Manager Traffic-Routing metódusok](traffic-manager-routing-methods.md).
 
@@ -155,43 +155,43 @@ További információ a sikertelen állapot-ellenőrzésekkel kapcsolatos hibák
 
 ## <a name="faqs"></a>Gyakori kérdések
 
-* [Rugalmasan Traffic Manager az Azure-régiók hibáira?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-traffic-manager-resilient-to-azure-region-failures)
+* [Rugalmasan Traffic Manager az Azure-régiók hibáira?](./traffic-manager-faqs.md#is-traffic-manager-resilient-to-azure-region-failures)
 
-* [Hogyan befolyásolja az erőforráscsoport helyének megválasztása a Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-the-choice-of-resource-group-location-affect-traffic-manager)
+* [Hogyan befolyásolja az erőforráscsoport helyének megválasztása a Traffic Manager?](./traffic-manager-faqs.md#how-does-the-choice-of-resource-group-location-affect-traffic-manager)
 
-* [Hogyan határozza meg az egyes végpontok aktuális állapotát?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-determine-the-current-health-of-each-endpoint)
+* [Hogyan határozza meg az egyes végpontok aktuális állapotát?](./traffic-manager-faqs.md#how-do-i-determine-the-current-health-of-each-endpoint)
 
-* [Figyelhető a HTTPS-végpontok?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-monitor-https-endpoints)
+* [Figyelhető a HTTPS-végpontok?](./traffic-manager-faqs.md#can-i-monitor-https-endpoints)
 
-* [Egy végpont hozzáadásakor használhatok IP-címet vagy DNS-nevet?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint)
+* [Egy végpont hozzáadásakor használhatok IP-címet vagy DNS-nevet?](./traffic-manager-faqs.md#do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint)
 
-* [Milyen típusú IP-címeket használhatok a végpontok hozzáadásakor?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-types-of-ip-addresses-can-i-use-when-adding-an-endpoint)
+* [Milyen típusú IP-címeket használhatok a végpontok hozzáadásakor?](./traffic-manager-faqs.md#what-types-of-ip-addresses-can-i-use-when-adding-an-endpoint)
 
-* [Használhatok különböző végpont-címzési típusokat egyetlen profilon belül?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-different-endpoint-addressing-types-within-a-single-profile)
+* [Használhatok különböző végpont-címzési típusokat egyetlen profilon belül?](./traffic-manager-faqs.md#can-i-use-different-endpoint-addressing-types-within-a-single-profile)
 
-* [Mi történik, ha egy bejövő lekérdezés bejegyzéstípusa eltér a végpontok címzési típusához társított bejegyzéstípustól?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-happens-when-an-incoming-querys-record-type-is-different-from-the-record-type-associated-with-the-addressing-type-of-the-endpoints)
+* [Mi történik, ha egy bejövő lekérdezés bejegyzéstípusa eltér a végpontok címzési típusához társított bejegyzéstípustól?](./traffic-manager-faqs.md#what-happens-when-an-incoming-querys-record-type-is-different-from-the-record-type-associated-with-the-addressing-type-of-the-endpoints)
 
-* [Használhatok egy beágyazott profil IPv4/IPv6-beli végpontját használó profilt?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile)
+* [Használhatok egy beágyazott profil IPv4/IPv6-beli végpontját használó profilt?](./traffic-manager-faqs.md#can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile)
 
-* [Leállítottam egy webalkalmazás-végpontot a Traffic Manager-profilban, de nem kapok forgalmat még az újraindítást követően sem. Hogyan javíthatom ezt?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#i-stopped-an-web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this)
+* [Leállítottam egy webalkalmazás-végpontot a Traffic Manager-profilban, de nem kapok forgalmat még az újraindítást követően sem. Hogyan javíthatom ezt?](./traffic-manager-faqs.md#i-stopped-an-web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this)
 
-* [Használhatom Traffic Manager még akkor is, ha az alkalmazás nem támogatja a HTTP-t vagy a HTTPS-t?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-even-if-my-application-does-not-have-support-for-http-or-https)
+* [Használhatom Traffic Manager még akkor is, ha az alkalmazás nem támogatja a HTTP-t vagy a HTTPS-t?](./traffic-manager-faqs.md#can-i-use-traffic-manager-even-if-my-application-does-not-have-support-for-http-or-https)
 
-* [Milyen válaszokra van szükség a végponttól a TCP-figyelés használatakor?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring)
+* [Milyen válaszokra van szükség a végponttól a TCP-figyelés használatakor?](./traffic-manager-faqs.md#what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring)
 
-* [Milyen gyorsan Traffic Manager áthelyezni a felhasználókat egy nem kifogástalan állapotú végpontról?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-fast-does-traffic-manager-move-my-users-away-from-an-unhealthy-endpoint)
+* [Milyen gyorsan Traffic Manager áthelyezni a felhasználókat egy nem kifogástalan állapotú végpontról?](./traffic-manager-faqs.md#how-fast-does-traffic-manager-move-my-users-away-from-an-unhealthy-endpoint)
 
-* [Hogyan adhatok meg különböző figyelési beállításokat a különböző végpontokhoz egy profilban?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-different-monitoring-settings-for-different-endpoints-in-a-profile)
+* [Hogyan adhatok meg különböző figyelési beállításokat a különböző végpontokhoz egy profilban?](./traffic-manager-faqs.md#how-can-i-specify-different-monitoring-settings-for-different-endpoints-in-a-profile)
 
-* [Hogyan oszthatok ki HTTP-fejléceket a Traffic Manager állapot-ellenőrzésekhez a saját végpontokhoz?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-assign-http-headers-to-the-traffic-manager-health-checks-to-my-endpoints)
+* [Hogyan oszthatok ki HTTP-fejléceket a Traffic Manager állapot-ellenőrzésekhez a saját végpontokhoz?](./traffic-manager-faqs.md#how-can-i-assign-http-headers-to-the-traffic-manager-health-checks-to-my-endpoints)
 
-* [Milyen állomásfejléc-ellenőrzést használ a rendszer a végpontok állapotának ellenőrzéséhez?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-host-header-do-endpoint-health-checks-use)
+* [Milyen állomásfejléc-ellenőrzést használ a rendszer a végpontok állapotának ellenőrzéséhez?](./traffic-manager-faqs.md#what-host-header-do-endpoint-health-checks-use)
 
-* [Mik azok az IP-címek, amelyekről az állapot-ellenőrzések származnak?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-the-ip-addresses-from-which-the-health-checks-originate)
+* [Mik azok az IP-címek, amelyekről az állapot-ellenőrzések származnak?](./traffic-manager-faqs.md#what-are-the-ip-addresses-from-which-the-health-checks-originate)
 
-* [Hány állapot-ellenőrzést várhatok a végpontom Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-health-checks-to-my-endpoint-can-i-expect-from-traffic-manager)
+* [Hány állapot-ellenőrzést várhatok a végpontom Traffic Manager?](./traffic-manager-faqs.md#how-many-health-checks-to-my-endpoint-can-i-expect-from-traffic-manager)
 
-* [Hogyan kaphatok értesítést, ha az egyik végpontom leáll?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-get-notified-if-one-of-my-endpoints-goes-down)
+* [Hogyan kaphatok értesítést, ha az egyik végpontom leáll?](./traffic-manager-faqs.md#how-can-i-get-notified-if-one-of-my-endpoints-goes-down)
 
 ## <a name="next-steps"></a>Következő lépések
 

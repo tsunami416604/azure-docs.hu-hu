@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 50e199d2d56016086bb409f8690e9828f1d19984
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 0cdb82bbf38244bc91ed54ffb7d7d734cefe9dd2
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881509"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183319"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Alkalmazás-módosítási elemzés (előzetes verzió) használata Azure Monitor
 
@@ -51,7 +51,7 @@ A Change Analysis egy alkalmazás központi telepítési és konfigurációs ál
 
 Az erőforrás-függőségek változásai a webalkalmazások hibáit is okozhatják. Ha például egy webalkalmazás meghívja a Redis cache-t, a Redis cache SKU hatással lehet a webalkalmazás teljesítményére. A függőségek változásainak észleléséhez a Change Analysis ellenőrzi a webalkalmazás DNS-rekordját. Így minden olyan alkalmazás-összetevő változását azonosítja, amely problémákat okozhat.
 Jelenleg a következő függőségek támogatottak:
-- Webalkalmazások
+- Web Apps
 - Azure Storage
 - Azure SQL
 
@@ -195,7 +195,28 @@ Ha első alkalommal tekinti meg a változási előzményeket az alkalmazás-mód
 
 - Nem **sikerült lekérdezni a Microsoft. ChangeAnalysis erőforrás-szolgáltatót** az *Azure Lighthouse-előfizetéssel nem támogatott, a módosítások csak az előfizetés otthoni bérlője esetében érhetők el*. A Change Analysis erőforrás-szolgáltatóra vonatkozó korlátozás most már regisztrálva van az Azure Lighthouse-előfizetésen keresztül a hazai bérlőn kívüli felhasználók számára. A közeljövőben várhatóan ez a korlátozás. Ha ez egy blokkolási probléma az Ön számára, van egy áthidaló megoldás, amely magában foglalja egy egyszerű szolgáltatásnév létrehozását és a szerepkör explicit módon történő hozzárendelését a hozzáférés engedélyezéséhez.  További információért forduljon a szolgáltatáshoz changeanalysishelp@microsoft.com .
 
-## <a name="next-steps"></a>További lépések
+### <a name="an-error-occurred-while-getting-changes-please-refresh-this-page-or-come-back-later-to-view-changes"></a>Hiba történt a módosítások beolvasása közben. Frissítse a lapot, vagy térjen vissza később a módosítások megtekintéséhez
+
+Ez az Application Change Analysis Service által bemutatott általános hibaüzenet, ha a módosítások nem tölthetők be. Néhány ismert ok:
+- Internetkapcsolattal kapcsolatos hiba az ügyfél-eszközön
+- Az Analysis Service átmenetileg nem érhető el, néhány perc elteltével a rendszer általában kijavítja ezt a problémát. Ha a hiba továbbra is fennáll, forduljon a következőhöz: changeanalysishelp@micorosoft.com
+
+### <a name="you-dont-have-enough-permissions-to-view-some-changes-contact-your-azure-subscription-administrator"></a>Nem rendelkezik elegendő engedélyekkel a módosítások megtekintéséhez. Forduljon az Azure-előfizetés rendszergazdájához
+
+Ez az általános jogosulatlan hibaüzenet, amely azt ismerteti, hogy az aktuális felhasználó nem rendelkezik megfelelő engedélyekkel a módosítás megtekintéséhez. Az erőforráson legalább olvasási hozzáféréssel kell rendelkeznie az Azure Resource Graph és a Azure Resource Manager által visszaadott infrastruktúra-módosítások megtekintéséhez. A Web App in-Guest file Changes és a Configuration Changes esetében legalább közreműködői szerepkörre van szükség.
+
+### <a name="failed-to-register-microsoftchangeanalysis-resource-provider"></a>Nem sikerült regisztrálni a Microsoft. ChangeAnalysis erőforrás-szolgáltatót
+ 
+**Nem rendelkezik elegendő engedélyekkel a Microsoft. ChangeAnalysis erőforrás-szolgáltató regisztrálásához. Forduljon az Azure-előfizetés rendszergazdájához.** Ez a hibaüzenet azt jelenti, hogy a jelenlegi előfizetésben szereplő szerepkörhöz nincs társítva a **Microsoft. support/register/Action** hatókör. Ez akkor fordulhat elő, ha nem Ön az előfizetés tulajdonosa, és megosztott hozzáférési engedélyekkel rendelkezik egy munkatárson keresztül. például egy erőforráscsoport elérésének megtekintése. A probléma megoldásához vegye fel a kapcsolatot az előfizetés tulajdonosával a **Microsoft. ChangeAnalysis** erőforrás-szolgáltató regisztrálásához. Ez a Azure Portal előfizetéseken keresztül is elvégezhető **| Erőforrás-szolgáltatók** és keresés ```Microsoft.ChangeAnalysis``` és regisztrálás a felhasználói felületen, vagy Azure PowerShell vagy az Azure CLI-n keresztül.
+
+Erőforrás-szolgáltató regisztrálása a PowerShell-lel: 
+
+```PowerShell
+# Register resource provider
+Register-AzResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis"
+```
+
+## <a name="next-steps"></a>Következő lépések
 
 - Az [Azure app Services-alkalmazások](azure-web-apps.md)Application Insights engedélyezése.
 - Engedélyezze Application Insights az [Azure-beli virtuális gépek és az Azure-beli virtuálisgép-méretezési csoport IIS által üzemeltetett alkalmazásai](azure-vm-vmss-apps.md)számára.

@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.author: msangapu
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.openlocfilehash: 049adac5521efd68ae8aa77af2d1007f9dfe0c0e
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: af2711a3d219bb472334ad61bad0b87f6c691dab
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586992"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183200"
 ---
 # <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>Oktatóanyag: App Service-alkalmazás hibakeresése Azure Monitor
 
@@ -22,7 +22,7 @@ Ez az oktatóanyag bemutatja, hogyan lehet elhárítani egy [app Service](overvi
 
 [Azure monitor](../azure-monitor/overview.md) maximalizálja az alkalmazások és szolgáltatások rendelkezésre állását és teljesítményét azáltal, hogy átfogó megoldást kínál a Felhőbeli és a helyszíni környezetek telemetria gyűjtésére, elemzésére és működésére.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Webalkalmazás konfigurálása Azure Monitor
@@ -171,11 +171,11 @@ where ResultDescription  contains "error"
 
 Az `ResultDescription` oszlopban a következő hibaüzenet jelenik meg:
 
-<pre>
+```output
 PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted 
 (tried to allocate 16384 bytes) in /home/site/wwwroot/process.php on line 20, 
 referer: http://<app-name>.azurewebsites.net/
-</pre>
+```
 
 ### <a name="join-appservicehttplogs-and-appserviceconsolelogs"></a>AppServiceHTTPLogs és AppServiceConsoleLogs csatlakoztatása
 
@@ -201,11 +201,11 @@ myHttp | join myConsole on TimeGen | project TimeGen, CsUriStem, ScStatus, Resul
 
 Az `ResultDescription` oszlopban a következő hibaüzenet jelenik meg a webkiszolgáló hibáival megegyező időpontban:
 
-<pre>
+```output
 PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted 
 (tried to allocate 16384 bytes) in /home/site/wwwroot/process.php on line 20, 
 referer: http://<app-name>.azurewebsites.net/
-</pre>
+```
 
 Az üzenet állapotainak memóriája kimerült a 20. sorban `process.php` . Ezzel megerősítette, hogy az alkalmazás hibát jelzett a HTTP 500-hiba során. Vessünk egy pillantást a probléma azonosítására szolgáló kódra.
 

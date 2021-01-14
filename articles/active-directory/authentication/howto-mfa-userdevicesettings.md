@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a96f01d38fb41f64336d0a2b1d2aa33a96ca9f1a
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: fc0be7e50c5cce511fafd7d8b407626bd57659bd
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96742748"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183132"
 ---
 # <a name="manage-user-authentication-methods-for-azure-ad-multi-factor-authentication"></a>Az Azure AD-Multi-Factor Authentication felhasználói hitelesítési módszereinek kezelése
 
@@ -44,7 +44,7 @@ A felhasználóhoz a Azure Portal vagy Microsoft Graph használatával adhat hit
 
 Hitelesítési módszerek hozzáadása felhasználóhoz a Azure Portal használatával:  
 
-1. Jelentkezzen be az **Azure Portalra**. 
+1. Jelentkezzen be az **Azure Portalon**. 
 1. Tallózással keresse meg **Azure Active Directory** a  >  **felhasználók**  >  **minden felhasználóját**. 
 1. Válassza ki azt a felhasználót, akivel hozzá szeretné adni a hitelesítési módszert, és válassza a **hitelesítési módszerek** lehetőséget.  
 1. Az ablak tetején válassza a **+ hitelesítési módszer hozzáadása** elemet.
@@ -73,7 +73,7 @@ Get-MgUserAuthenticationPhoneMethod -UserId balas@contoso.com
 Hozzon létre egy mobiltelefonos hitelesítési módszert egy adott felhasználó számára.
 
 ```powershell
-New-MgUserAuthenticationPhoneMethod -UserId balas@contoso.com -phoneType “mobile” -phoneNumber "+1 7748933135"
+New-MgUserAuthenticationPhoneMethod -UserId balas@contoso.com -phoneType "mobile" -phoneNumber "+1 7748933135"
 ```
 
 Adott telefonos módszer eltávolítása a felhasználó számára
@@ -114,7 +114,7 @@ A felhasználók alkalmazási jelszavának törléséhez hajtsa végre a követk
 1. Válassza a **felhasználói beállítások kezelése** lehetőséget, majd jelölje be a **kijelölt felhasználók által létrehozott összes meglévő alkalmazás jelszavának törlése** jelölőnégyzetet az alábbi példában látható módon: az ![ összes meglévő alkalmazás jelszavának törlése](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
 1. Válassza a **Mentés**, majd a **Bezárás** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk az egyéni felhasználói beállítások konfigurálását mutatja be. Az Azure AD Multi-Factor Authentication szolgáltatási beállításainak általános konfigurálását az [Azure ad multi-Factor Authentication beállításainak konfigurálása](howto-mfa-mfasettings.md)című témakörben tekintheti meg.
 

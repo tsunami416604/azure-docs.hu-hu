@@ -8,18 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 12/15/2020
+ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 98b8cca95b8815b32fb5de6567adcf4f150551eb
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 33987be39258adc74cf4f88dbb0544f7026f6086
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561970"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183353"
 ---
 # <a name="whats-new-in-computer-vision"></a>A Computer Vision újdonságai
 
 Ismerje meg a szolgáltatás újdonságait. Ezek az elemek kibocsátási megjegyzések, videók, blogbejegyzések és más típusú információk lehetnek. Könyvjelző ezen az oldalon naprakészen maradhat a szolgáltatással.
+
+## <a name="january-2021"></a>2021. január
+
+### <a name="spatial-analysis-container-update"></a>Térbeli elemzési tároló frissítése
+
+A [térbeli elemzési tároló](spatial-analysis-container.md) új verziója megjelent egy új szolgáltatáskészlettel. Ez a Docker-tároló lehetővé teszi a valós idejű streaming videó elemzését, hogy megértse az emberek közötti térbeli kapcsolatokat és a fizikai környezetek közötti mozgást. 
+
+* A [térbeli elemzési műveletek](spatial-analysis-operations.md) most már úgy is konfigurálhatók, hogy megismerjék, van-e olyan védelmi arc, amely magában foglalja a maszkot. 
+    * A (z) és a (z `personcount` ) paraméter konfigurálásával engedélyezhető a maszk besorolása a `personcrossingline` és a `personcrossingpolygon` műveletekhez `ENABLE_FACE_MASK_CLASSIFIER` .
+    * Az attribútumokat `face_mask` és a `face_noMask` rendszer a videó streamben észlelt minden személy megbízhatósági pontszámát tartalmazó metaadatként adja vissza.
+
 
 ## <a name="october-2020"></a>2020. október
 

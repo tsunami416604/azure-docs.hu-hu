@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: duau
 ms.custom: ''
-ms.openlocfilehash: f1a3cc5ccb326d6a198895f9f459e661f7805b1e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b20357413c62460aba55a2d354b90995a2aa4815
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003837"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183693"
 ---
 # <a name="traffic-manager-traffic-view"></a>Traffic Manager forgalomáttekintő
 
@@ -72,29 +72,29 @@ Forgalomáttekintő használatakor a számlázás a bemutatott elemzések létre
 
 ## <a name="faqs"></a>Gyakori kérdések
 
-* [Mit tesz forgalomáttekintő?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-does-traffic-view-do)
+* [Mit tesz forgalomáttekintő?](./traffic-manager-faqs.md#what-does-traffic-view-do)
 
-* [Milyen előnyökkel jár a forgalomáttekintő használata?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-benefit-from-using-traffic-view)
+* [Milyen előnyökkel jár a forgalomáttekintő használata?](./traffic-manager-faqs.md#how-can-i-benefit-from-using-traffic-view)
 
-* [Miben különbözik forgalomáttekintő az Azure monitoron keresztül elérhető Traffic Manager metrikákkal?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-is-traffic-view-different-from-the-traffic-manager-metrics-available-through-azure-monitor)
+* [Miben különbözik forgalomáttekintő az Azure monitoron keresztül elérhető Traffic Manager metrikákkal?](./traffic-manager-faqs.md#how-is-traffic-view-different-from-the-traffic-manager-metrics-available-through-azure-monitor)
 
-* [A forgalomáttekintő használja az EDNS-ügyfél alhálózati adatait?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-view-use-edns-client-subnet-information)
+* [A forgalomáttekintő használja az EDNS-ügyfél alhálózati adatait?](./traffic-manager-faqs.md#does-traffic-view-use-edns-client-subnet-information)
 
-* [Hány napi adatmennyiséget forgalomáttekintő használni?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-days-of-data-does-traffic-view-use)
+* [Hány napi adatmennyiséget forgalomáttekintő használni?](./traffic-manager-faqs.md#how-many-days-of-data-does-traffic-view-use)
 
-* [Hogyan kezeli a forgalomáttekintő a külső végpontokat?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-view-handle-external-endpoints)
+* [Hogyan kezeli a forgalomáttekintő a külső végpontokat?](./traffic-manager-faqs.md#how-does-traffic-view-handle-external-endpoints)
 
-* [Engedélyeznie kell a forgalomáttekintő az előfizetésem minden profiljához?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription)
+* [Engedélyeznie kell a forgalomáttekintő az előfizetésem minden profiljához?](./traffic-manager-faqs.md#do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription)
 
-* [Hogyan kapcsolható ki a forgalomáttekintő?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-turn-off-traffic-view)
+* [Hogyan kapcsolható ki a forgalomáttekintő?](./traffic-manager-faqs.md#how-can-i-turn-off-traffic-view)
 
-* [Hogyan működik forgalomáttekintő számlázás?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-view-billing-work)
+* [Hogyan működik forgalomáttekintő számlázás?](./traffic-manager-faqs.md#how-does-traffic-view-billing-work)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tudnivalók a [Traffic Manager működéséről](traffic-manager-overview.md)
 - További információ a Traffic Manager által támogatott [forgalom-útválasztási módszerekről](traffic-manager-routing-methods.md)
-- Megtudhatja, hogyan [hozhat létre Traffic Manager-profilt](traffic-manager-create-profile.md)
+- Megtudhatja, hogyan [hozhat létre Traffic Manager-profilt](./quickstart-create-traffic-manager-profile.md)
 
 <!--Image references-->
 [1]: ./media/traffic-manager-traffic-view-overview/trafficview.png

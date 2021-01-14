@@ -3,12 +3,12 @@ title: Erőforrások központi telepítése a felügyeleti csoportba
 description: Ismerteti, hogyan lehet erőforrásokat telepíteni a felügyeleti csoport hatókörében egy Azure Resource Manager sablonban.
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: f847e481670d7f9afd4b40cfb8fcbec65d1e28c8
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: d6c6b925ad1533fc1f3bf490a9b996280164bd57
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178925"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184016"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>Felügyeleti csoportok üzembe helyezése ARM-sablonokkal
 
@@ -44,6 +44,8 @@ Az előfizetések vagy erőforráscsoportok számára üzembe helyezett beágyaz
 Az erőforrások kezeléséhez használja a következőt:
 
 * [Címkék](/azure/templates/microsoft.resources/tags)
+
+A felügyeleti csoportok bérlői szintű erőforrások. Felügyeleti csoportokat azonban létrehozhat egy felügyeleti csoport központi telepítésében, ha az új felügyeleti csoport hatókörét a bérlőre állítja be. Lásd: [felügyeleti csoport](#management-group).
 
 ## <a name="schema"></a>Séma
 
@@ -168,9 +170,55 @@ A és a beállítással beágyazott központi telepítést is használhat `scope
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/management-group-to-tenant.json" highlight="9,10,14":::
 
-A hatókört `/` bizonyos erőforrástípusok, például a felügyeleti csoportok esetében is beállíthatja.
+A hatókört `/` bizonyos erőforrástípusok, például a felügyeleti csoportok esetében is beállíthatja. Az új felügyeleti csoport létrehozásáról a következő szakaszban olvashat.
+
+## <a name="management-group"></a>Felügyeleti csoport
+
+Ha felügyeleti csoportot szeretne létrehozni egy felügyeleti csoport központi telepítésében, a hatókört a `/` felügyeleti csoportra vonatkozóan kell beállítania.
+
+A következő példa egy új felügyeleti csoportot hoz létre a gyökérszintű felügyeleti csoportban.
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/management-group-create-mg.json" highlight="12,15":::
+
+A következő példa létrehoz egy új felügyeleti csoportot a szülőként megadott felügyeleti csoportban. Figyelje meg, hogy a hatókör a következőre van beállítva: `/` .
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "mgName": {
+            "type": "string",
+            "defaultValue": "[concat('mg-', uniqueString(newGuid()))]"
+        },
+        "parentMG": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "name": "[parameters('mgName')]",
+            "type": "Microsoft.Management/managementGroups",
+            "apiVersion": "2020-05-01",
+            "scope": "/",
+            "location": "eastus",
+            "properties": {
+                "details": {
+                    "parent": {
+                        "id": "[tenantResourceId('Microsoft.Management/managementGroups', parameters('parentMG'))]"
+                    }
+                }
+            }
+        }
+    ],
+    "outputs": {
+        "output": {
+            "type": "string",
+            "value": "[parameters('mgName')]"
+        }
+    }
+}
+```
 
 ## <a name="azure-policy"></a>Azure Policy
 

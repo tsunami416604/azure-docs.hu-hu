@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: duau
-ms.openlocfilehash: 93a8076f12b8f006d600cbd32ce39169f4b47c67
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e0e2acfb0ec0068dcd08ae660e397f65e039a665
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014329"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183744"
 ---
 # <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>Vállalati internetes tartomány átirányítása Azure Traffic Manager-tartományra
 
@@ -30,8 +30,8 @@ A *www- \. contoso.com* irányuló összes forgalmi kérelem a *contoso.trafficm
 > [!IMPORTANT]
 > A második szintű tartomány, például a *contoso.com*, nem irányítható á Traffic Manager-tartományra. A DNS-protokollszabványok nem engedélyezik a CNAME-rekordokat a másodlagos szintű tartománynevek esetében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Traffic Manager útválasztási módszerei](traffic-manager-routing-methods.md)
-* [Traffic Manager – profil letiltása, engedélyezése vagy törlése](disable-enable-or-delete-a-profile.md)
-* [Traffic Manager – Végpont letiltása vagy engedélyezése](disable-or-enable-an-endpoint.md)
+* [Traffic Manager – profil letiltása, engedélyezése vagy törlése](./traffic-manager-manage-profiles.md)
+* [Traffic Manager – Végpont letiltása vagy engedélyezése](./traffic-manager-manage-endpoints.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: jeedes
-ms.openlocfilehash: a4bfe2b87f3f2242189a78d9a31a89d82720fd37
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 31392c1fa3d14d6f1e01a8b302575e9b592e42cd
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862071"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183149"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-with-maverics-identity-orchestrator-saml-connector"></a>Oktatóanyag: az Azure AD egyszeri bejelentkezés integrálása a Maverics Identity Orchestrator SAML-összekötővel
 
@@ -47,7 +47,7 @@ További telepítési és konfigurációs utasításokért lépjen a [rétegek w
 
 A Maverics Identity Orchestrator telepítésének megkezdéséhez tekintse meg a [telepítési utasításokat](https://www.strata.io).
 
-### <a name="system-requirements"></a>Rendszerkövetelmények
+### <a name="system-requirements"></a>System requirements (Rendszerkövetelmények)
 * Támogatott operációs rendszerek
   * RHEL 7+
   * CentOS 7+
@@ -167,27 +167,27 @@ Az Azure Key Vault a Azure Portal vagy az Azure CLI használatával állítható
 
 1. Nyissa meg az [Azure CLI](/cli/azure/install-azure-cli)-t, majd írja be a következő parancsot:
 
-    ```shell
+    ```azurecli
     az login
     ```
 
 1. Hozzon létre egy új kulcstartót a következő parancs futtatásával:
-    ```shell
+    ```azurecli
     az keyvault create --name "[VAULT_NAME]" --resource-group "[RESOURCE_GROUP]" --location "[REGION]"
     ```
 
 1. Adja hozzá a titkokat a Key vaulthoz a következő parancs futtatásával:
-    ```shell
+    ```azurecli
     az keyvault secret set --vault-name "[VAULT_NAME]" --name "[SECRET_NAME]" --value "[SECRET_VALUE]"
     ```
 
 1. Az alábbi parancs futtatásával regisztrálhat egy alkalmazást az Azure AD-ben:
-    ```shell
+    ```azurecli
     az ad sp create-for-rbac -n "MavericsKeyVault" --skip-assignment > azure-credentials.json
     ```
 
 1. A következő parancs futtatásával engedélyezheti, hogy az alkalmazás titkos kulcsot használjon:
-    ```shell
+    ```azurecli
     az keyvault set-policy --name "[VAULT_NAME]" --spn [APPID] --secret-permissions list get
     #APPID can be found in the azure-credentials.json
     generated in the previous step
@@ -217,7 +217,7 @@ Az Azure Key Vault a Azure Portal vagy az Azure CLI használatával állítható
 
 1. Adja meg a **bejelentkezési URL-címet** a következő formátumban: `https://<AZURE-COMPANY.COM>/<MY_APP>/<LOGIN PAGE>` . 
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 1. Az **SAML aláíró tanúsítvány** szakaszban válassza a **Másolás** gombot az **alkalmazás-összevonás metaadat-URL-címének** másolásához, majd mentse azt a számítógépre.
 
@@ -239,7 +239,7 @@ A Maverics Identity Orchestrator Azure AD-összekötő támogatja az OpenID Conn
 
 1. Létrehoz egy JSON Web Token (JWT) aláíró kulcsot, amely az [OpenSSL eszköz](https://www.openssl.org/source/)használatával védi a Maverics Identity Orchestrator-munkamenet adatait:
 
-    ```shell 
+    ```console 
     openssl rand 64 | base64
     ```
 1. Másolja a választ a `jwtSigningKey` config tulajdonságra: `jwtSigningKey: TBHPvTtu6NUqU84H3Q45grcv9WDJLHgTioqRhB8QGiVzghKlu1mHgP1QHVTAZZjzLlTBmQwgsSoWxGHRcT4Bcw==` .

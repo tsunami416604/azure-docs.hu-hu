@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 11/06/2020
+ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 9b9390b498f28fc8f9029f1c11805b970aaca73d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: de011fb0f827ea90efe33e237bbf1c5100dc76a7
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014560"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183472"
 ---
 # <a name="how-to-deploy-a-people-counting-web-application"></a>Útmutató: webes alkalmazások leltározása
 
@@ -63,12 +63,12 @@ az iot hub device-identity create --hub-name "<IoT Hub Name>" --device-id "<Edge
 
 ### <a name="deploy-the-container-on-azure-iot-edge-on-the-host-computer"></a>A tároló üzembe helyezése Azure IoT Edge számítógépen a gazdaszámítógépen
 
-Telepítse a térbeli elemzési tárolót IoT-modulként a gazdaszámítógépen az Azure CLI használatával. Az üzembe helyezési folyamathoz egy telepítési jegyzékfájl szükséges, amely az üzemelő példányhoz szükséges tárolókat, változókat és konfigurációkat ismerteti. Megtalálhatja a [Azure stack Edge-specifikus telepítési jegyzékfájlt](https://github.com/Azure-Samples/cognitive-services-rest-api-samples/) , valamint egy [nem Azure stack Edge-specifikus telepítési jegyzéket](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) a githubon, amely tartalmazza a *térbeli elemzési* tároló alapszintű üzembe helyezési konfigurációját. 
+Telepítse a térbeli elemzési tárolót IoT-modulként a gazdaszámítógépen az Azure CLI használatával. Az üzembe helyezési folyamathoz egy telepítési jegyzékfájl szükséges, amely az üzemelő példányhoz szükséges tárolókat, változókat és konfigurációkat ismerteti. MegAzure Stack találhatja az [Edge-specifikus üzembe helyezési jegyzékfájl](https://go.microsoft.com/fwlink/?linkid=2142179), a [nem Azure stack Edge-specifikus üzembe helyezési jegyzék](https://go.microsoft.com/fwlink/?linkid=2152189), valamint az Azure-beli virtuális gép, amely a [GPU-specifikus üzembe helyezési jegyzékfájlt](https://go.microsoft.com/fwlink/?linkid=2152189) tartalmaz a githubon, amely tartalmazza a *térbeli elemzési* tároló alapszintű telepítési konfigurációját 
 
 Azt is megteheti, hogy a Visual Studio Code-hoz készült Azure IoT-bővítményekkel műveleteket hajt végre az IoT hub használatával. További információért nyissa meg a [Visual Studio Code Azure IoT Edge-modulok üzembe helyezése című](../../iot-edge/how-to-deploy-modules-vscode.md) témakört.
 
 > [!NOTE] 
-> A *térbeli analízis – a-Graf* és a *térbeli analízis – diagnosztikai* tárolók nem kötelezőek. Dönthet úgy, hogy eltávolítja őket a fájl *DeploymentManifest.js* . További információ: [telemetria és hibaelhárítási](./spatial-analysis-logging.md) cikk. A githubon lévő fájlokra két minta *DeploymentManifest.js* található [Azure stack Edge-eszközök](https://go.microsoft.com/fwlink/?linkid=2142179) vagy más [asztali gépek](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) számára
+> A *térbeli analízis – a-Graf* és a *térbeli analízis – diagnosztikai* tárolók nem kötelezőek. Dönthet úgy, hogy eltávolítja őket a fájl *DeploymentManifest.js* . További információ: [telemetria és hibaelhárítási](./spatial-analysis-logging.md) cikk. Három minta *DeploymentManifest.jsa* githubon található fájlokhoz, [Azure stack Edge-eszközökhöz](https://go.microsoft.com/fwlink/?linkid=2142179), [asztali gépekhez](https://go.microsoft.com/fwlink/?linkid=2152189)vagy GPU- [val rendelkező Azure-beli virtuális géphez](https://go.microsoft.com/fwlink/?linkid=2152189)
 
 ### <a name="set-environment-variables"></a>Környezeti változók beállítása
 
@@ -185,7 +185,7 @@ Várjon, amíg a telepítés befejeződik, és navigáljon az erőforráshoz a A
 * `EventHubConsumerGroup` – Az Azure-IoT Hub lévő fogyasztói csoport karakterláncának neve, létrehozhat egy új fogyasztói csoportot a IoT Hub, vagy használhatja az alapértelmezett csoportot. 
 * `IotHubConnectionString`– Az Azure-IoT Hub kapcsolódási karakterlánca, amely az Azure IoT Hub erőforrás-konfigurálási paramétereinek kulcsok részéből kérhető le. ![](./media/spatial-analysis/solution-app-config-page.png)
 
-A 2 beállítás hozzáadása után kattintson a **Mentés** gombra. Ezután kattintson a **hitelesítés/engedélyezés** elemre a bal oldali navigációs menüben, és frissítse a kívánt hitelesítési szinttel. Az Azure Active Director (Azure AD) Express használatát javasoljuk. 
+A 2 beállítás hozzáadása után kattintson a **Mentés** gombra. Ezután kattintson a **hitelesítés/engedélyezés** elemre a bal oldali navigációs menüben, és frissítse a kívánt hitelesítési szinttel. A Azure Active Directory (Azure AD) Express használatát javasoljuk. 
 
 ### <a name="test-the-app"></a>Az alkalmazás tesztelése
 
@@ -196,7 +196,7 @@ Nyissa meg az Azure-webalkalmazást, és ellenőrizze, hogy a telepítés sikere
 ## <a name="get-the-personcount-source-code"></a>A PersonCount forráskódjának beolvasása
 Ha szeretné megtekinteni vagy módosítani az alkalmazás forráskódját, megkeresheti azt [a githubon](https://github.com/Azure-Samples/cognitive-services-spatial-analysis).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Térbeli elemzési műveletek konfigurálása](./spatial-analysis-operations.md)
 * [Naplózás és hibaelhárítás](spatial-analysis-logging.md)
