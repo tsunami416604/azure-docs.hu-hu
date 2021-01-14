@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/26/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ad91c916a6134f2507e74df6e87478421a00f43
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fd4cccdfc3a2cf8dd3827776028a7738ae769673
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003004"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184830"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Szerepkörök létrehozása, listázása, törlése vagy hozzárendelése egy felhasználóhoz rendelt felügyelt identitáshoz a Azure Portal használatával
 
@@ -46,7 +46,7 @@ Felhasználó által hozzárendelt felügyelt identitás létrehozásához a fi�
     - **Név**: Ez a felhasználó által hozzárendelt felügyelt identitás neve, például UAI1.
     ![Felhasználó által hozzárendelt felügyelt identitás létrehozása](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
 4. A módosítások áttekintéséhez kattintson a **felülvizsgálat + létrehozás** elemre.
-5. Kattintson a **Létrehozás** gombra.
+5. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="list-user-assigned-managed-identities"></a>Felhasználó által hozzárendelt felügyelt identitások listázása
 

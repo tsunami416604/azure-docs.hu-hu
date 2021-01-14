@@ -7,12 +7,13 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a8b2fdf99b33df3322748b7e073cc4ab18957c84
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 00e6802f37ec60467edbea98038dd23fcba1239a
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045240"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185495"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure digitális Twins-modellek kezelése
 
@@ -53,9 +54,6 @@ Ezt a módszert követve megadhatja a kórházi részleg, a zónák vagy a kórh
 
 A modellek létrehozása után feltöltheti őket az Azure Digital Twins-példányba.
 
-> [!TIP]
-> Javasoljuk, hogy az Azure Digital Twins-példányba való feltöltés előtt ellenőrizze a modelleket offline állapotba. Használhatja a [DTDL ügyféloldali elemző függvénytárát](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) és a [DTDL-érvényesítő mintát](/samples/azure-samples/dtdl-validator/dtdl-validator) a következő témakörben ismertetett módon [*: útmutató: elemzési és érvényesítési modellek*](how-to-parse-models.md) a modellek ellenőrzése előtt a szolgáltatásba való feltöltés előtt.
-
 Ha készen áll a modell feltöltésére, használja a következő kódrészletet:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="CreateModel":::
@@ -64,7 +62,7 @@ Figyelje meg, hogy a `CreateModels` metódus több fájlt is elfogad egyetlen tr
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="CreateModels_multi":::
 
-A modell fájljai több modellt is tartalmazhatnak. Ebben az esetben a modelleket JSON-tömbbe kell helyezni. Példa:
+A modell fájljai több modellt is tartalmazhatnak. Ebben az esetben a modelleket JSON-tömbbe kell helyezni. Például:
 
 :::code language="json" source="~/digital-twins-docs-samples/models/Planet-Moon.json":::
 
@@ -198,7 +196,7 @@ A modell törlését követően később dönthet úgy, hogy új modellt tölt f
 
 Az Azure digitális Twins nem akadályozza ezt az állapotot, ezért ügyeljen arra, hogy az ikrek megfelelő javításával győződjön meg arról, hogy azok érvényesek maradnak a modell definíciós kapcsolóján keresztül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan hozhat létre és kezelhet digitális ikreket a modelljei alapján:
 * [*Útmutató: digitális ikrek kezelése*](how-to-manage-twin.md)

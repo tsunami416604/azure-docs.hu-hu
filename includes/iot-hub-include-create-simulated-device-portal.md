@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/26/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 8d8f8021925ac9c9e427dd6571ecaa1a30c85497
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91b6f1ed06fbf1f5575650f96f4622b3df9ca083
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67179741"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98187089"
 ---
 <!-- This is the instructions for creating a simulated device you can use for testing routing.-->
 
@@ -25,7 +25,7 @@ Következő lépésként hozzon létre egy eszközidentitást, és mentse a hozz
 
 3. Az erőforrások listájában válassza ki az IoT hubot. Ez az oktatóanyag a **ContosoTestHub** erőforrást használja. Válassza ki az **IoT-eszközök** lehetőséget a Hub panelről.
 
-4. Válassza a **+ Hozzáadás** lehetőséget. Az Eszköz hozzáadása panelen adja meg az eszköz azonosítóját. Ez az oktatóanyag a **Contoso-Test-Device** eszközt használja. Hagyja üresen a kulcsokat, majd jelölje be a **Kulcsok automatikus létrehozása** jelölőnégyzetet. Ellenőrizze, hogy az **Eszköz csatlakoztatása az IoT Hubhoz** engedélyezve van-e. Kattintson a **Mentés** gombra.
+4. Válassza a **+ Új** lehetőséget. Az Eszköz hozzáadása panelen adja meg az eszköz azonosítóját. Ez az oktatóanyag a **Contoso-Test-Device** eszközt használja. Hagyja üresen a kulcsokat, majd jelölje be a **Kulcsok automatikus létrehozása** jelölőnégyzetet. Ellenőrizze, hogy az **Eszköz csatlakoztatása az IoT Hubhoz** engedélyezve van-e. Válassza a **Mentés** lehetőséget.
 
    ![Az eszköz hozzáadása képernyő](./media/iot-hub-include-create-simulated-device-portal/add-device.png)
 

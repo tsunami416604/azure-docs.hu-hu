@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 'Azure arc-kompatibilis bevezetési egyszerű szolgáltatás létrehozása '
 keywords: Kubernetes, arc, Azure, tárolók
-ms.openlocfilehash: 02689dba32c8cc91e4a4a4de4dee98bc990b4dd6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8eb38dbc04d964c0ab4869e801099ee9420d6ac2
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87050067"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184696"
 ---
 # <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>Azure arc-kompatibilis bevezetési egyszerű szolgáltatás létrehozása (előzetes verzió)
 
@@ -82,11 +82,11 @@ az role assignment create \
 
 Az újonnan létrehozott egyszerű szolgáltatásnév hivatkozása:
 
-```console
+```azurecli
 az login --service-principal -u mySpnClientId -p mySpnClientSecret --tenant myTenantID
 az connectedk8s connect -n myConnectedClusterName -g myResoureGroupName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A fürt konfigurációjának szabályozása Azure Policy használatával](./use-azure-policy.md)

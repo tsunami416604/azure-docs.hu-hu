@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: 5e633b5e4b2ff2ce884bfaf99e3730968150cbed
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: e76086db36642664ca15acee26f4e0aca85ff272
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746371"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184459"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Az Azure DDoS Protection Standard áttekintése
 
@@ -46,9 +46,13 @@ Az Azure DDoS Protection nem tárolja az ügyféladatokat.
 
 ## <a name="pricing"></a>Díjszabás
 
+A DDoS Protection-csomagok havi $2 944-os fix havi díja, amely akár 100 nyilvános IP-címet is magában foglalhat. A további erőforrások védelme havonta további $30 lesz.
+
+A bérlők egy DDoS Protection-tervet is használhatnak több előfizetésben, így nincs szükség több DDoS Protection-csomag létrehozására.
+
 A standard díjszabással kapcsolatos további információkért tekintse meg a [Azure DDoS Protection standard díjszabást](https://azure.microsoft.com/pricing/details/ddos-protection/)Azure DDoS Protection.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [DDoS Protection terv létrehozása](manage-ddos-protection.md)

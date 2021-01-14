@@ -1,49 +1,38 @@
 ---
-title: Mik azok a Azure Machine Learning folyamatok?
+title: Mik azok a gépi tanulási folyamatok?
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan hozhat létre, optimalizálhat és kezelhet gépi tanulási munkafolyamatokat a Machine learning (ML) folyamatokban.
+description: Ismerje meg, hogyan hozhat létre, optimalizálhat és kezelhet gépi tanulási munkafolyamatokat a gépi tanulási folyamatok segítségével.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 01/11/2021
+ms.date: 01/12/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: ee3d7d1cf285573db894d64549cf79babb517d95
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: a6ee4c08a7ecf9bcfcbc9cf6f630efe126248e9f
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131287"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185706"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Mik azok a Azure Machine Learning folyamatok?
 
-Ebből a cikkből megtudhatja, hogyan segíti a Azure Machine Learning folyamatokat a gépi tanulási munkafolyamatok létrehozásában, optimalizálásában és felügyeletében. Ezek a munkafolyamatok számos előnnyel rendelkeznek: 
-
-+ Egyszerűség kedvéért
-+ Sebesség
-+ Ismételhetőség
-+ Rugalmasság
-+ Verziószámozás és nyomon követés
-+ Modularitás 
-+ Minőségbiztosítás
-+ Cost Control
-
-Ezek az előnyök jelentősek lesznek, amint a gépi tanulási projekt a tiszta feltáráson és az iteráción túl is halad. Még az egyszerű egylépéses folyamatok is hasznosak lehetnek. A gépi tanulási projektek gyakran összetett állapotban vannak, és az is lehetséges, hogy az egyetlen munkafolyamat pontos megvalósítását egy triviális folyamat teszi lehetővé.
+Ebből a cikkből megtudhatja, hogyan hozhat létre, optimalizálhat és kezelhet gépi tanulási munkafolyamatokat a gépi tanulási folyamatokban. 
 
 <a name="compare"></a>
-### <a name="which-azure-pipeline-technology-should-i-use"></a>Milyen Azure-adatcsatorna-technológiát használok?
+## <a name="which-azure-pipeline-technology-should-i-use"></a>Milyen Azure-adatcsatorna-technológiát használok?
 
-Az Azure-felhő számos más folyamatot is biztosít, amelyek mindegyike más célra szolgál. A következő táblázat felsorolja a különböző folyamatokat, és azt, hogy mire szolgálnak:
+Az Azure Cloud különböző típusú folyamatokat kínál, amelyek mindegyike más célra szolgál. A következő táblázat felsorolja a különböző folyamatokat, és azt, hogy mire szolgálnak:
 
-| Használati eset | Elsődleges persona | Azure-ajánlat | OSS-ajánlat | Kanonikus cső | Erősségeit | 
+| Használati példa | Elsődleges persona | Azure-ajánlat | OSS-ajánlat | Kanonikus cső | Erősségeit | 
 | -------- | --------------- | -------------- | ------------ | -------------- | --------- | 
 | Modell-előkészítés (gépi tanulás) | Adatelemző | Azure Machine Learning folyamatok | Kubeflow-folyamatok | Adat> modell | Eloszlás, gyorsítótárazás, kód – első, újrafelhasználás | 
-| Adat-előkészítés (adat-előkészítés) | Adatszakértő | [Azure Data Factory-folyamatok](../data-factory/concepts-pipelines-activities.md) | Apache légáram | Adat>i adatszolgáltatások | Szigorúan beírt mozgás, adatközpontú tevékenységek |
+| Adat-előkészítés (adat-előkészítés) | Adatszakértő | [Azure Data Factory-folyamatok](../data-factory/concepts-pipelines-activities.md) | Apache légáram | Adat>i adatszolgáltatások | Szigorúan beírt mozgás, az adatközpontú tevékenységek |
 | Kód & alkalmazás-előkészítés (CI/CD) | Alkalmazás fejlesztője/Ops | [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) | Jenkins | Code + Model – > alkalmazás/szolgáltatás | A legtöbb nyitott és rugalmas tevékenység támogatása, jóváhagyási várólisták, fázisok és kapuzás | 
 
-## <a name="what-can-azure-ml-pipelines-do"></a>Mit tehet az Azure ML-folyamatok?
+## <a name="what-can-machine-learning-pipelines-do"></a>Mire használhatók a gépi tanulási folyamatok?
 
 Az Azure Machine Learning folyamat egy teljes gépi tanulási feladat egymástól független végrehajtható munkafolyamata. Az alfeladatok lépések sorozataként vannak beágyazva a folyamatba. Egy Azure Machine Learning folyamat olyan egyszerű lehet, amely egy Python-szkriptet hív meg, _így bármit elvégezhet._ A folyamatoknak a gépi tanulási feladatokra _kell_ összpontosítaniuk, például:
 
@@ -64,9 +53,9 @@ Röviden, a gépi tanulási életciklus összes összetett feladata segíthet a 
 
 ### <a name="analyzing-dependencies"></a>Függőségek elemzése
 
-Számos programozási ökoszisztémához olyan eszközök tartoznak, amelyek az erőforrás-, a könyvtár-és a fordítási függőségeket hangolják össze. Ezek az eszközök általában a fájlok időbélyegét használják a függőségek kiszámításához. Egy fájl módosításakor a rendszer csak az IT-t és a hozzá tartozó függőket frissíti (letöltött, újrafordított vagy csomagolt). Az Azure ML-folyamatok kiterjesztik ezt a koncepciót. A hagyományos Build-eszközökhöz hasonlóan a folyamatok is kiszámítják a lépések közötti függőségeket, és csak a szükséges újraszámításokat hajtják végre. 
+Számos programozási ökoszisztémához olyan eszközök tartoznak, amelyek az erőforrás-, a könyvtár-és a fordítási függőségeket hangolják össze. Ezek az eszközök általában a fájlok időbélyegét használják a függőségek kiszámításához. Egy fájl módosításakor a rendszer csak az IT-t és a hozzá tartozó függőket frissíti (letöltött, újrafordított vagy csomagolt). Azure Machine Learning folyamatok kiterjesztik ezt a koncepciót. A hagyományos Build-eszközökhöz hasonlóan a folyamatok is kiszámítják a lépések közötti függőségeket, és csak a szükséges újraszámításokat hajtják végre. 
 
-Az Azure ML-folyamatok függőségi elemzése bonyolultabb, mint az egyszerű időbélyegek. Előfordulhat, hogy minden lépés más hardver-és szoftver-környezetben fut. Az adatelőkészítés lehet időigényes folyamat, de nem kell hatékony GPU-val futtatni a hardveren, bizonyos lépésekhez szükség lehet az operációs rendszer-specifikus szoftverekre, érdemes lehet elosztott képzést használni, és így tovább. 
+A függőségek elemzése Azure Machine Learning folyamatokban bonyolultabb, mint az egyszerű időbélyegek esetében. Előfordulhat, hogy minden lépés más hardver-és szoftver-környezetben fut. Az adatelőkészítés lehet időigényes folyamat, de nem kell hatékony GPU-val futtatni a hardveren, bizonyos lépésekhez szükség lehet az operációs rendszer-specifikus szoftverekre, érdemes lehet elosztott képzést használni, és így tovább. 
 
 Azure Machine Learning automatikusan összehangolja a folyamat lépései közötti összes függőséget. Ez a beállítás magában foglalhatja a Docker-rendszerképek rögzítését, a számítási erőforrások csatlakoztatását és leválasztását, valamint az adatok konzisztens és automatikus módon történő áthelyezését.
 
@@ -92,7 +81,7 @@ Egy objektum létrehozásakor és futtatásakor `Pipeline` a következő magas s
 
 A [Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)-ban a folyamat egy Python-objektum, amely a `azureml.pipeline.core` modulban van definiálva. A [folyamat](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?preserve-view=true&view=azure-ml-py) objektum egy vagy több [PipelineStep](/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?preserve-view=true&view=azure-ml-py) -objektum rendezett sorrendjét tartalmazza. Az `PipelineStep` osztály absztrakt, és a tényleges lépések alosztályok lesznek, például [EstimatorStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep?preserve-view=true&view=azure-ml-py), [PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep?preserve-view=true&view=azure-ml-py)vagy [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?preserve-view=true&view=azure-ml-py). A [ModuleStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep?preserve-view=true&view=azure-ml-py) osztály a folyamatok között megosztható lépések újrafelhasználható szakaszát tartalmazza. Egy `Pipeline` fut az a részeként `Experiment` .
 
-Egy Azure Machine Learning munkaterülethez egy Azure ML-folyamat van társítva, és egy folyamat lépés társítva van egy, az adott munkaterületen belül elérhető számítási célhoz. További információ: Azure Machine Learning- [munkaterületek létrehozása és kezelése a Azure Portal](./how-to-manage-workspace.md) , illetve [Mik a Azure Machine learning számítási céljai?](./concept-compute-target.md)
+Az Azure Machine learning-folyamat egy Azure Machine Learning-munkaterülethez van társítva, és egy folyamat lépés társítva van egy, az adott munkaterületen belül elérhető számítási célhoz. További információ: Azure Machine Learning- [munkaterületek létrehozása és kezelése a Azure Portal](./how-to-manage-workspace.md) , illetve [Mik a Azure Machine learning számítási céljai?](./concept-compute-target.md)
 
 ### <a name="a-simple-python-pipeline"></a>Egy egyszerű Python-folyamat
 
@@ -158,8 +147,7 @@ A gépi tanulási munkafolyamatok folyamatainak használatának fő előnyei a k
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az Azure ML-folyamatok egy hatékony létesítmény, amely megkezdi az értékek megvalósítását a korai fejlesztési fázisokban. Az érték növekszik, ahogy a csapat és a projekt növekszik. Ez a cikk azt ismerteti, hogyan vannak megadva a folyamatok a Azure Machine Learning Python SDK-val és az Azure-ban. Láthatta néhány egyszerű forráskódot, és bevezette néhányat a `PipelineStep` rendelkezésre álló osztályokba. Érdemes lehet az Azure ML-adatfolyamatok és az Azure-t futtató folyamatok használatára. 
-
+A Azure Machine Learning folyamatok egy hatékony létesítmény, amely megkezdi az értékek megvalósítását a korai fejlesztési fázisokban. Az érték növekszik, ahogy a csapat és a projekt növekszik. Ez a cikk azt ismerteti, hogyan vannak megadva a folyamatok a Azure Machine Learning Python SDK-val és az Azure-ban. Láthatta néhány egyszerű forráskódot, és bevezette néhányat a `PipelineStep` rendelkezésre álló osztályokba. Érdemes a Azure Machine Learning folyamatok használatát, valamint azt, hogy az Azure hogyan futtatja őket. 
 
 + Ismerje meg, hogyan [hozhatja létre első folyamatát](how-to-create-your-first-pipeline.md).
 

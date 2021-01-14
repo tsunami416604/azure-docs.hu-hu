@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/04/2020
+ms.date: 01/13/2021
 ms.author: jeedes
-ms.openlocfilehash: bd62855aef59439ed476a13770f79ce6d3cf68f8
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d4f8e71a0afbb1b00313d5e100ba8b3fd2b4e2ce
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180795"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185750"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-marketo"></a>Oktatóanyag: Azure Active Directory integráció a Marketo
 
@@ -40,6 +40,9 @@ Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Az
 
 * A Marketo támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést
 
+> [!NOTE]
+> Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
+
 ## <a name="adding-marketo-from-the-gallery"></a>Marketo hozzáadása a gyűjteményből
 
 A Marketo Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Marketo a katalógusból a felügyelt SaaS-alkalmazások listájához.
@@ -51,7 +54,7 @@ A Marketo Azure AD-be való integrálásának konfigurálásához hozzá kell ad
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **Marketo** kifejezést a keresőmezőbe.
 1. Válassza ki a **Marketo** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-sso"></a>Az Azure AD SSO konfigurálása és tesztelése
+## <a name="configure-and-test-azure-ad-sso-for-marketo"></a>Azure AD SSO konfigurálása és tesztelése a Marketo-hez
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Marketo-mel konfigurálja és teszteli a **Britta Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Marketo kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
@@ -59,10 +62,10 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Marke
 Az Azure AD egyszeri bejelentkezés Marketo való konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
-    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad SSO teszteléséhez a Britta Simon használatával.
-    * **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon használatának engedélyezése az Azure ad SSO használatával.
+    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad SSO teszteléséhez a Britta Simon használatával.
+    1. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon használatának engedélyezése az Azure ad SSO használatával.
 2. **[MARKETO SSO konfigurálása](#configure-marketo-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    * **[Hozzon létre Marketo-teszt felhasználót](#create-marketo-test-user)** – hogy a Marketo Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
+    1. **[Hozzon létre Marketo-teszt felhasználót](#create-marketo-test-user)** – hogy a Marketo Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
 3. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
@@ -71,20 +74,20 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A Azure Portal **Marketo** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikonra a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://saml.marketo.com/sp`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet: `https://saml.marketo.com/sp`
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://login.marketo.com/saml/assertion/\<munchkinid\>`
 
     c. A **továbbítási állapot** szövegmezőbe írja be a következő mintát használó URL-címet: `https://<munchkinid>.marketo.com/`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a továbbítási állapottal. Az értékek lekéréséhez forduljon a Marketo ügyfélszolgálati [csapatához](https://investors.marketo.com/contactus.cfm) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges válasz URL-címével és a továbbítási állapottal. Az értékek lekéréséhez forduljon a Marketo ügyfélszolgálati [csapatához](https://investors.marketo.com/contactus.cfm) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 5. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
@@ -120,7 +123,17 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ## <a name="configure-marketo-sso"></a>Marketo SSO konfigurálása
 
-1. Az alkalmazás Munchkin-AZONOSÍTÓjának lekéréséhez jelentkezzen be a Marketo rendszergazdai hitelesítő adatokkal, és hajtsa végre a következő műveleteket:
+1. A Marketo belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése** lehetőségre kattintva.
+
+    ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
+
+2. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **Marketo beállítása** elemre, majd a Marketo alkalmazásra irányítja. Itt adja meg a rendszergazdai hitelesítő adatokat a Marketo való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-6-es lépést.
+
+    ![Telepítési konfiguráció](common/setup-sso.png)
+
+3. Ha manuálisan szeretné beállítani a Marketo, egy másik böngészőablakban jelentkezzen be a Marketo vállalati webhelyre rendszergazdaként.
+
+1. Az alkalmazás Munchkin-AZONOSÍTÓjának beszerzéséhez hajtsa végre a következő műveleteket:
    
     a. Jelentkezzen be a Marketo alkalmazásba a rendszergazdai hitelesítő adatok használatával.
    
@@ -233,13 +246,13 @@ Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Marketo-be
 
 8. A felhasználó megkapja az e-mail-értesítést, és a hivatkozásra kattintva megváltoztathatja a jelszót a fiók aktiválásához. 
 
-### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
+### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját.
 
-1. Kattintson az alkalmazás tesztelése Azure Portal lehetőségre, és automatikusan be kell jelentkeznie arra a Marketo, amelyhez be szeretné állítani az egyszeri bejelentkezést
+* Kattintson az alkalmazás tesztelése Azure Portal lehetőségre, és automatikusan be kell jelentkeznie arra a Marketo, amelyhez be szeretné állítani az egyszeri bejelentkezést
 
-1. Használhatja a Microsoft Access panelt. Ha a hozzáférési panelen a Marketo csempére kattint, automatikusan be kell jelentkeznie arra a Marketo, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+* Használhatja a Microsoft saját alkalmazásait. Amikor a saját alkalmazások Marketo csempére kattint, automatikusan be kell jelentkeznie arra a Marketo, amelyhez be szeretné állítani az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
 
 ## <a name="next-steps"></a>Következő lépések
 

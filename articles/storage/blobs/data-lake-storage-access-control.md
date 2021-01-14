@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 2418a8813e7b9de603b7e7cdc11fc756d73ac2a4
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2a1455c5956297a19d640146879f93b61d035139
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350755"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185903"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlési listák (ACL-ek) Azure Data Lake Storage Gen2
 
@@ -60,7 +60,7 @@ A hozzáférési ACL-ek és az alapértelmezett ACL-ek azonos struktúrával ren
 
 ## <a name="levels-of-permission"></a>Engedélyek szintjei
 
-A Container objektumokra vonatkozó engedélyek a következők: **olvasás**, **írás** és **végrehajtás**, és a fájlokon és könyvtárakon is használhatók az alábbi táblázatban látható módon:
+A tárolóban lévő címtárakra és fájlokra vonatkozó engedélyek a következők: **olvasás**, **írás** és **végrehajtás**, és a fájlokon és könyvtárakon is használhatók a következő táblázatban látható módon:
 
 |            |    Fájl     |   Címtár |
 |------------|-------------|----------|
@@ -69,7 +69,7 @@ A Container objektumokra vonatkozó engedélyek a következők: **olvasás**, **
 | **Végrehajtás (X)** | Nem jelent semmit a Data Lake Storage Gen2 kontextusában | Egy könyvtár alárendelt elemeinek bejárásához szükséges. |
 
 > [!NOTE]
-> Ha csak ACL-ek (nem Azure RBAC) használatával ad meg engedélyeket, a rendszerbiztonsági tag számára olvasási vagy írási hozzáférést kell adnia egy fájlhoz, a rendszerbiztonsági tag számára pedig a fájlhoz tartozó mappák hierarchiájának minden mappájához meg kell adni a rendszerbiztonsági **tag engedélyeit** .
+> Ha csak ACL-ek (nem Azure RBAC) használatával ad meg engedélyeket, a rendszerbiztonsági tag számára olvasási vagy írási hozzáférést kell adnia egy fájlhoz, a rendszerbiztonsági tag számára a tároló gyökérkönyvtárára, valamint a fájlhoz vezető mappák hierarchiájának minden mappájába meg kell adni a rendszerbiztonsági **tag engedélyeit** .
 
 ### <a name="short-forms-for-permissions"></a>Az engedélyek rövid alakjai
 
@@ -200,7 +200,7 @@ Ahogy az a hozzáférés-ellenőrzési algoritmusban is látható, a maszk korl�
 
 Új Data Lake Storage Gen2 tároló esetén a gyökérkönyvtár ("/") hozzáférési ACL-jéhez tartozó maszk alapértelmezés szerint **750** a könyvtárakhoz és a **640** fájlokhoz. Az alábbi táblázat a jogosultsági szintek szimbolikus jelölését mutatja be.
 
-|Entitás|Könyvtárak|Fájlok|
+|Entitás|Könyvtárak|Files|
 |--|--|--|
 |Tulajdonos felhasználó|`rwx`|`r-w`|
 |Tulajdonoscsoport|`r-x`|`r--`|

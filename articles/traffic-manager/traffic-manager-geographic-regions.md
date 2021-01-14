@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: duau
-ms.openlocfilehash: 83300a5c518a3acf853968164031a80e1c882187
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d4b4ba6830fd573a545eb6308fe15a4781873c4
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401237"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184322"
 ---
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Az Azure Traffic Manager által a földrajzi forgalom útválasztási módszeréhez használt ország/régió-hierarchia
 
-Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földrajzi**  forgalom útválasztási módszere használ az Azure Traffic Managerban. Ezeket az információkat programozott módon is beszerezheti az [Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/)meghívásával. 
+Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földrajzi**  forgalom útválasztási módszere használ az Azure Traffic Managerban. Ezeket az információkat programozott módon is beszerezheti az [Azure Traffic Manager REST API](/rest/api/trafficmanager/)meghívásával. 
 
 - VILÁG (világ)
 

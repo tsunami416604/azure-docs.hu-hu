@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: duau
 ms.custom: devx-track-js
-ms.openlocfilehash: c49672ad38ac8cf80214d03870b5876d741e76ec
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f9e8cdd3eb5c9f441444683fb5efaccc880b2757
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994876"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184611"
 ---
 # <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>valós felhasználómérés küldése a Traffic Managernak a Visual Studio Mobile centerrel
 
@@ -52,7 +52,7 @@ A RUM-kulcs Azure Portal használatával történő beszerzéséhez a következ�
 
 ## <a name="step-2-instrument-your-app-with-the-rum-package-of-mobile-center-sdk"></a>2. lépés: eszköz alkalmazása a Mobile Center SDK RUM-csomagjával
 
-Ha most ismerkedik a Visual Studio Mobile centerrel, látogasson el a [webhelyére](https://mobile.azure.com). Az SDK-integrációval kapcsolatos részletes utasításokért lásd: [első lépések az Android SDK-val](https://docs.microsoft.com/mobile-center/sdk/getting-started/Android).
+Ha most ismerkedik a Visual Studio Mobile centerrel, látogasson el a [webhelyére](https://mobile.azure.com). Az SDK-integrációval kapcsolatos részletes utasításokért lásd: [első lépések az Android SDK-val](/mobile-center/sdk/getting-started/Android).
 
 A valós felhasználómérés használatához hajtsa végre a következő eljárást:
 
@@ -95,11 +95,10 @@ A valós felhasználómérés használatához hajtsa végre a következő eljár
     MobileCenter.start(getApplication(), "<Your Mobile Center AppSecret>", RealUserMeasurements.class);
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a [valós felhasználómérés](traffic-manager-rum-overview.md)
 - Tudnivalók a [Traffic Manager működéséről](traffic-manager-overview.md)
-- További információ a [Mobile Centerről](https://docs.microsoft.com/mobile-center/)
+- További információ a [Mobile Centerről](/mobile-center/)
 - [Regisztráció](https://mobile.azure.com) a Mobile Centerre
 - További információ a Traffic Manager által támogatott [forgalom-útválasztási módszerekről](traffic-manager-routing-methods.md)
-- Megtudhatja, hogyan [hozhat létre Traffic Manager-profilt](traffic-manager-create-profile.md)
-
+- Megtudhatja, hogyan [hozhat létre Traffic Manager-profilt](./quickstart-create-traffic-manager-profile.md)

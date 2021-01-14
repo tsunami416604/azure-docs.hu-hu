@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: duau
-ms.openlocfilehash: 86758c355566fb67ebd8a606068e2044e0b8bd64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17ccfeb709c530a868a75ecd87052618aaea4846
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400177"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184577"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager gyakori kérdések (GYIK)
 
@@ -96,7 +96,7 @@ A két népszerű útválasztási módszer közül a legfontosabb különbség a
 
 ### <a name="what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing"></a>Milyen régiókat támogat a Traffic Manager földrajzi útválasztáshoz?
 
-Az Traffic Manager által használt ország-/régió-hierarchia [itt](traffic-manager-geographic-regions.md)található. Habár ez a lap naprakészen tartja a módosításokat, az [Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/)használatával programozott módon is lekérheti ugyanezeket az adatokat. 
+Az Traffic Manager által használt ország-/régió-hierarchia [itt](traffic-manager-geographic-regions.md)található. Habár ez a lap naprakészen tartja a módosításokat, az [Azure Traffic Manager REST API](/rest/api/trafficmanager/)használatával programozott módon is lekérheti ugyanezeket az adatokat. 
 
 ### <a name="how-does-traffic-manager-determine-where-a-user-is-querying-from"></a>Hogyan határozza meg a Traffic Manager, hogy a felhasználók honnan kérdezik le?
 
@@ -116,11 +116,11 @@ Nem, a végpont helye nem korlátozza, hogy mely régiók rendelhetők hozzájuk
 
 ### <a name="can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing"></a>Rendelhetek földrajzi régiókat olyan profilhoz tartozó végpontokhoz, amely nem a földrajzi útválasztásra van konfigurálva?
 
-Igen, ha a profil útválasztási metódusa nem földrajzi, akkor az [Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/) használatával földrajzi régiókat rendelhet hozzá a profilban található végpontokhoz. A nem földrajzi útválasztás típusú profilok esetében ez a konfiguráció figyelmen kívül lesz hagyva. Ha egy későbbi időpontban módosítja az adott profilt földrajzi útválasztási típusra, Traffic Manager használhatja ezeket a leképezéseket.
+Igen, ha a profil útválasztási metódusa nem földrajzi, akkor az [Azure Traffic Manager REST API](/rest/api/trafficmanager/) használatával földrajzi régiókat rendelhet hozzá a profilban található végpontokhoz. A nem földrajzi útválasztás típusú profilok esetében ez a konfiguráció figyelmen kívül lesz hagyva. Ha egy későbbi időpontban módosítja az adott profilt földrajzi útválasztási típusra, Traffic Manager használhatja ezeket a leképezéseket.
 
 ### <a name="why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic"></a>Miért kapok hibaüzenetet, amikor megpróbálom módosítani egy meglévő profil útválasztási módszerét a földrajzi helyekre?
 
-Egy olyan profilhoz tartozó végpontnak, amelynek földrajzi útválasztási útvonala van, legalább egy régiót hozzá kell rendelni. Meglévő profil földrajzi útválasztási típusra való átalakításához először a földrajzi régiókat kell hozzárendelni az összes végponthoz az [Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/) használatával, mielőtt módosítaná az útválasztási típust a földrajzi értékre. Ha a portált használja, először törölje a végpontokat, módosítsa a profil útválasztási módszerét földrajzi értékre, majd adja hozzá a végpontokat a földrajzi régiójuk leképezésével együtt.
+Egy olyan profilhoz tartozó végpontnak, amelynek földrajzi útválasztási útvonala van, legalább egy régiót hozzá kell rendelni. Meglévő profil földrajzi útválasztási típusra való átalakításához először a földrajzi régiókat kell hozzárendelni az összes végponthoz az [Azure Traffic Manager REST API](/rest/api/trafficmanager/) használatával, mielőtt módosítaná az útválasztási típust a földrajzi értékre. Ha a portált használja, először törölje a végpontokat, módosítsa a profil útválasztási módszerét földrajzi értékre, majd adja hozzá a végpontokat a földrajzi régiójuk leképezésével együtt.
 
 ### <a name="why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled"></a>Ezért erősen ajánlott, hogy az ügyfelek beágyazott profilokat hozzanak létre a földrajzi útválasztást engedélyező profilhoz tartozó végpontok helyett?
 
@@ -306,7 +306,7 @@ A forgalomáttekintő díjszabás a kimenet létrehozásához használt adatpont
 
 A több előfizetésből származó végpontok használata nem lehetséges az Azure Web Apps. Az Azure Web Apps megköveteli, hogy a Web Apps használt egyéni tartománynevek csak egyetlen előfizetésben legyenek használatban. Nem lehet több előfizetésből Web Appst használni ugyanazzal a tartománynévvel.
 
-Más végpontok esetében az Traffic Manager több előfizetésből származó végpontokkal is használható. A Resource Managerben bármely előfizetésből származó végpontok Traffic Managerhoz adhatók hozzá, feltéve, hogy a Traffic Manager profilt konfiguráló személy olvasási hozzáféréssel rendelkezik a végponthoz. Ezek az engedélyek az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/role-assignments-portal.md)használatával is megadhatók. Más előfizetésből származó végpontokat [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) vagy az [Azure CLI](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create)használatával lehet felvenni.
+Más végpontok esetében az Traffic Manager több előfizetésből származó végpontokkal is használható. A Resource Managerben bármely előfizetésből származó végpontok Traffic Managerhoz adhatók hozzá, feltéve, hogy a Traffic Manager profilt konfiguráló személy olvasási hozzáféréssel rendelkezik a végponthoz. Ezek az engedélyek az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/role-assignments-portal.md)használatával is megadhatók. Más előfizetésből származó végpontokat [Azure PowerShell](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) vagy az [Azure CLI](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create)használatával lehet felvenni.
 
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>Használhatom Traffic Manager a Cloud Service átmeneti tárolóhelyeit?
 
@@ -345,9 +345,9 @@ Azure Resource Manager megköveteli az összes erőforráscsoport számára a he
 
 ### <a name="how-do-i-determine-the-current-health-of-each-endpoint"></a>Hogyan határozza meg az egyes végpontok aktuális állapotát?
 
-Az egyes végpontok aktuális figyelési állapota a teljes profil mellett a Azure Portal jelenik meg. Ezek az információk a Traffic monitor [REST API](https://msdn.microsoft.com/library/azure/mt163667.aspx), a PowerShell- [parancsmagok](https://docs.microsoft.com/powershell/module/az.trafficmanager)és a [platformfüggetlen Azure CLI](../cli-install-nodejs.md)használatával is elérhetők.
+Az egyes végpontok aktuális figyelési állapota a teljes profil mellett a Azure Portal jelenik meg. Ezek az információk a Traffic monitor [REST API](/rest/api/trafficmanager/), a PowerShell- [parancsmagok](/powershell/module/az.trafficmanager)és a [platformfüggetlen Azure CLI](/cli/azure/install-classic-cli)használatával is elérhetők.
 
-A Azure Monitor is használhatja a végpontok állapotának nyomon követéséhez, valamint a vizualizációk megjelenítéséhez. A Azure Monitor használatáról az [Azure monitoring dokumentációjában](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)olvashat bővebben.
+A Azure Monitor is használhatja a végpontok állapotának nyomon követéséhez, valamint a vizualizációk megjelenítéséhez. A Azure Monitor használatáról az [Azure monitoring dokumentációjában](../azure-monitor/platform/data-platform.md)olvashat bővebben.
 
 ### <a name="can-i-monitor-https-endpoints"></a>Figyelhető a HTTPS-végpontok?
 
@@ -361,7 +361,7 @@ A Traffic Manager nem tud tanúsítvány-ellenőrzést biztosítani, beleértve 
 
 ### <a name="do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint"></a>Egy végpont hozzáadásakor használhatok IP-címet vagy DNS-nevet?
 
-Traffic Manager támogatja a végpontok hozzáadását háromféle módon, a DNS-név, IPv4-cím és IPv6-cím használatával. Ha a végpontot IPv4-vagy IPv6-címként adja hozzá, a lekérdezés válasza a vagy AAAA típusú rekord lesz. Ha a végpontot DNS-névként adták hozzá, a lekérdezés válasza a CNAME típusú rekord lesz. A végpontok IPv4-vagy IPv6-címként való hozzáadása csak akkor engedélyezett, ha a végpont **külső**típusú.
+Traffic Manager támogatja a végpontok hozzáadását háromféle módon, a DNS-név, IPv4-cím és IPv6-cím használatával. Ha a végpontot IPv4-vagy IPv6-címként adja hozzá, a lekérdezés válasza a vagy AAAA típusú rekord lesz. Ha a végpontot DNS-névként adták hozzá, a lekérdezés válasza a CNAME típusú rekord lesz. A végpontok IPv4-vagy IPv6-címként való hozzáadása csak akkor engedélyezett, ha a végpont **külső** típusú.
 Az összes útválasztási módszert és figyelési beállítást a három végponti címzési típus támogatja.
 
 ### <a name="what-types-of-ip-addresses-can-i-use-when-adding-an-endpoint"></a>Milyen típusú IP-címeket használhatok a végpontok hozzáadásakor?
@@ -458,7 +458,7 @@ A végpontot elérő Traffic Manager állapot-ellenőrzések száma a következ�
 
 ### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>Hogyan kaphatok értesítést, ha az egyik végpontom leáll?
 
-A Traffic Manager által megadott mérőszámok egyike egy profilban található végpontok állapotának állapota. Ezt a profilban lévő összes végpont összesítésének tekintheti meg (például a végpontok 75%-a kifogástalan), vagy a végpontok szintjén. Traffic Manager mérőszámok elérhetők a Azure Monitoron keresztül, és a [riasztási képességeivel](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) értesítést kaphat, ha módosul a végpont állapotának változása. További részletek: [Traffic Manager mérőszámok és riasztások](traffic-manager-metrics-alerts.md).  
+A Traffic Manager által megadott mérőszámok egyike egy profilban található végpontok állapotának állapota. Ezt a profilban lévő összes végpont összesítésének tekintheti meg (például a végpontok 75%-a kifogástalan), vagy a végpontok szintjén. Traffic Manager mérőszámok elérhetők a Azure Monitoron keresztül, és a [riasztási képességeivel](../azure-monitor/platform/alerts-metric.md) értesítést kaphat, ha módosul a végpont állapotának változása. További részletek: [Traffic Manager mérőszámok és riasztások](traffic-manager-metrics-alerts.md).  
 
 ## <a name="traffic-manager-nested-profiles"></a>Beágyazott profilok Traffic Manager
 
@@ -502,7 +502,7 @@ A következő táblázat ismerteti a beágyazott végpontok Traffic Manager áll
 | Letiltva. A gyermek profil le lett tiltva. |Leállítva |A fölérendelt végpont állapota leáll, nem letiltva. A letiltott állapot annak jelzésére van fenntartva, hogy letiltotta a végpontot a szülő profilban. |
 | Leromlott. Legalább egy alárendelt profil-végpont csökkentett teljesítményű állapotban van. |Online: a gyermek profilban található online végpontok száma legalább a MinChildEndpoints értéke.<BR>CheckingEndpoint: az online plusz CheckingEndpoint végpontok száma a gyermek profilban legalább a MinChildEndpoints értéke.<BR>Csökkentett teljesítményű: máskülönben. |A forgalmat az állapot CheckingEndpoint-végpontja irányítja át. Ha a MinChildEndpoints túl magasra van állítva, a végpont mindig csökken. |
 | Online. Legalább egy alárendelt profil végpontja online állapotú. Egy végpont nem csökkentett teljesítményű állapotban van. |Lásd fentebb. | |
-| CheckingEndpoints. Legalább egy alárendelt profil végpontja a következő: "CheckingEndpoint". Nincsenek végpontok "online" vagy "csökkentett teljesítményű" |Ugyanaz, mint a fenti. | |
+| CheckingEndpoints. Legalább egy alárendelt profil végpontja a következő: "CheckingEndpoint". Nincsenek végpontok "online" vagy "csökkentett teljesítményű" |Lásd fentebb. | |
 | Inaktív. Az összes alárendelt profil végpontja le van tiltva vagy le van állítva, vagy ez a profil nem rendelkezik végpontokkal. |Leállítva | |
 
 ## <a name="next-steps"></a>Következő lépések:

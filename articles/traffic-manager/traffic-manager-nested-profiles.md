@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/22/2018
 ms.author: duau
-ms.openlocfilehash: d96cd9b3c83357c2591edf4bbb09a82b897c6a24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f2aa3d05d349880b5eb2d35a2c58af0741b9855
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826032"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185580"
 ---
 # <a name="nested-traffic-manager-profiles"></a>Beágyazott Traffic Manager-profilok
 
@@ -97,23 +97,23 @@ Egy Traffic Manager-profil figyelési beállításai az összes végpontra vonat
 
 ## <a name="faqs"></a>Gyakori kérdések
 
-* [Hogyan konfigurálja a beágyazott profilokat?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#traffic-manager-nested-profiles)
+* [Hogyan konfigurálja a beágyazott profilokat?](./traffic-manager-faqs.md#traffic-manager-nested-profiles)
 
-* [Hány réteg beágyazását támogatja a Traffic Manger?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-layers-of-nesting-does-traffic-manger-support)
+* [Hány réteg beágyazását támogatja a Traffic Manger?](./traffic-manager-faqs.md#how-many-layers-of-nesting-does-traffic-manger-support)
 
-* [Összekeverhető más típusú végpontok beágyazott alárendelt profilokkal is, ugyanabban a Traffic Manager-profilban?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile)
+* [Összekeverhető más típusú végpontok beágyazott alárendelt profilokkal is, ugyanabban a Traffic Manager-profilban?](./traffic-manager-faqs.md#can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile)
 
-* [Hogyan vonatkozik a számlázási modell a beágyazott profilokra?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-the-billing-model-apply-for-nested-profiles)
+* [Hogyan vonatkozik a számlázási modell a beágyazott profilokra?](./traffic-manager-faqs.md#how-does-the-billing-model-apply-for-nested-profiles)
 
-* [Hatással van a beágyazott profilok teljesítményére?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-there-a-performance-impact-for-nested-profiles)
+* [Hatással van a beágyazott profilok teljesítményére?](./traffic-manager-faqs.md#is-there-a-performance-impact-for-nested-profiles)
 
-* [Hogyan számítja Traffic Manager egy beágyazott végpont állapotát a fölérendelt profilban?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile)
+* [Hogyan számítja Traffic Manager egy beágyazott végpont állapotát a fölérendelt profilban?](./traffic-manager-faqs.md#how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile)
 
 ## <a name="next-steps"></a>Következő lépések
 
 További információ a [Traffic Manager profilokról](traffic-manager-overview.md)
 
-Megtudhatja, hogyan [hozhat létre Traffic Manager-profilt](traffic-manager-create-profile.md)
+Megtudhatja, hogyan [hozhat létre Traffic Manager-profilt](./quickstart-create-traffic-manager-profile.md)
 
 <!--Image references-->
 [1]: ./media/traffic-manager-nested-profiles/figure-1.png

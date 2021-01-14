@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 7e63f770763d1960148dfdfa184d0b4e2b76754c
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 2c4fbefc1bb801ab4a9387054ac91e5fca14ec18
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427088"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185597"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Oktatóanyag: Java Spring boot-Webalkalmazás létrehozása Azure App Service Linux és Azure Cosmos DB rendszeren
 
@@ -20,7 +20,7 @@ Ez az oktatóanyag végigvezeti a Java-webalkalmazások Azure-ban való létreho
 
 ![A Spring boot Application az adattárolást Azure Cosmos DB](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Hozzon létre egy Cosmos DB adatbázist.
@@ -57,21 +57,21 @@ Az alábbi lépéseket követve létrehozhat egy Azure Cosmos DB adatbázist az 
 
 1. Jelentkezzen be az Azure CLI-be, és szükség esetén állítsa be az előfizetést, ha több van csatlakoztatva a bejelentkezési hitelesítő adataihoz.
 
-    ```bash
+    ```azurecli
     az login
     az account set -s <your-subscription-id>
     ```   
 
 2. Hozzon létre egy Azure-erőforráscsoportot, és adja meg az erőforráscsoport nevét.
 
-    ```bash
+    ```azurecli
     az group create -n <your-azure-group-name> \
         -l <your-resource-group-region>
     ```
 
 3. Hozzon létre Azure Cosmos DB a `GlobalDocumentDB` típussal. Cosmos DB nevének csak kisbetűket kell használnia. Jegyezze fel a `documentEndpoint` parancs válaszában szereplő mezőt.
 
-    ```bash
+    ```azurecli
     az cosmosdb create --kind GlobalDocumentDB \
         -g <your-azure-group-name> \
         -n <your-azure-COSMOS-DB-name-in-lower-case-letters>
@@ -79,7 +79,7 @@ Az alábbi lépéseket követve létrehozhat egy Azure Cosmos DB adatbázist az 
 
 4. Azure Cosmos DB kulcsának beszerzése az alkalmazáshoz való kapcsolódáshoz. A `primaryMasterKey` `documentEndpoint` következő lépésben meg kell őriznie a közeli lépéseket.
 
-    ```bash
+    ```azurecli
     az cosmosdb list-keys -g <your-azure-group-name> -n <your-azure-COSMOSDB-name>
     ```
 
@@ -146,7 +146,7 @@ mvn package spring-boot:run
 
 A kimenetnek az alábbihoz hasonlóan kell kinéznie.
 
-```bash
+```output
 bash-3.2$ mvn package spring-boot:run
 [INFO] Scanning for projects...
 [INFO] 
@@ -291,7 +291,7 @@ A címsorban a távoli URL-címmel futó alkalmazást kell látnia:
 
 Az alkalmazás felskálázása egy másik feldolgozó hozzáadásával:
 
-```bash
+```azurecli
 az appservice plan update --number-of-workers 2 \
    --name ${WEBAPP_PLAN_NAME} \
    --resource-group <your-azure-group-name>
@@ -301,13 +301,13 @@ az appservice plan update --number-of-workers 2 \
 
 Ha ezekre az erőforrásokra már nincs szüksége más oktatóanyagokhoz (lásd a [következő lépéseket](#next)), az alábbi parancs a Cloud Shellben való futtatásával törölheti azokat: 
   
-```bash
+```azurecli
 az group delete --name <your-azure-group-name>
 ```
 
 <a name="next"></a>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure Java-fejlesztőknek](/java/azure/) 
  [Spring boot](https://spring.io/projects/spring-boot), Cosmos DB, [Azure Cosmos db](../cosmos-db/introduction.md) és [app Service Linux](overview.md) [Spring-adatvédelme](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?view=azure-java-stable).

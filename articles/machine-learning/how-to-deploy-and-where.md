@@ -1,26 +1,26 @@
 ---
-title: Modellek üzembe helyezésének módja és helye
+title: Gépi tanulási modellek üzembe helyezése
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan és hol helyezheti üzembe a Azure Machine Learning modelleket, beleértve a Azure Container Instances, az Azure Kubernetes Service, a Azure IoT Edge és a FPGA.
+description: Ismerje meg, hogyan és hol helyezheti üzembe a gépi tanulási modelleket. Üzembe helyezés az Azure Container Instances, az Azure Kubernetes Service, a Azure IoT Edge és a FPGA.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: gopalv
 author: gvashishtha
 ms.reviewer: larryfr
-ms.date: 12/11/2020
+ms.date: 01/13/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 195f1c527185fbd55450b6151f26525074db75f7
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: e9c691485eb0ec1a0b3c0564f9a8f9a5d2aa255d
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070422"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185801"
 ---
-# <a name="deploy-models-with-azure-machine-learning"></a>Modellek üzembe helyezése az Azure Machine Learninggel
+# <a name="deploy-machine-learning-models-to-azure"></a>Gépi tanulási modellek üzembe helyezése az Azure-ban
 
-Megtudhatja, hogyan helyezheti üzembe a gépi tanulási modellt webszolgáltatásként az Azure-felhőben, vagy Azure IoT Edge eszközöket.
+Megtudhatja, hogyan helyezheti üzembe a gépi tanulást vagy a Deep learning-modellt webszolgáltatásként az Azure-felhőben. Azure IoT Edge eszközökön is üzembe helyezhető.
 
 A munkafolyamat a modell telepítésének helyétől függetlenül hasonló:
 
@@ -31,7 +31,7 @@ A munkafolyamat a modell telepítésének helyétől függetlenül hasonló:
 1. A modell üzembe helyezése a számítási célon.
 1. Tesztelje az eredményül kapott webszolgáltatást.
 
-Az üzembe helyezési munkafolyamatban részt vevő fogalmakkal kapcsolatos további információkért lásd: [modellek kezelése, üzembe helyezése és figyelése Azure Machine Learningokkal](concept-model-management-and-deployment.md).
+A Machine learning üzembe helyezési munkafolyamatában részt vevő fogalmakkal kapcsolatos további információkért lásd: [modellek kezelése, telepítése és figyelése Azure Machine Learningokkal](concept-model-management-and-deployment.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -197,7 +197,7 @@ A minimális következtetési konfiguráció a következőképpen írható le:
 }
 ```
 
-Ez azt jelenti, hogy a központi telepítés a könyvtárban lévő fájlt fogja használni a `score.py` `./working_dir` bejövő kérések feldolgozásához.
+Ez azt jelenti, hogy a Machine learning üzembe helyezése a könyvtárban található fájlt fogja használni a `score.py` `./working_dir` bejövő kérések feldolgozásához.
 
 [Tekintse meg ezt a cikket](./reference-azure-machine-learning-cli.md#inference-configuration-schema) a következtetések konfigurációjának alaposabb megvitatására. 
 
@@ -269,7 +269,7 @@ from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservic
 
 ---
 
-## <a name="deploy-your-model"></a>A modell üzembe helyezése
+## <a name="deploy-your-machine-learning-model"></a>A Machine learning-modell üzembe helyezése
 
 Most már készen áll a modell üzembe helyezésére. 
 
@@ -314,7 +314,7 @@ A modell telepítése során előfordulhat, hogy a szolgáltatás állapota megv
 
 Az alábbi táblázat a különböző szolgáltatás-állapotokat ismerteti:
 
-| Webszolgáltatás állapota | Description | Végső állapot?
+| Webszolgáltatás állapota | Leírás | Végső állapot?
 | ----- | ----- | ----- |
 | Transitioning | A szolgáltatás üzembe helyezési folyamatban van. | No |
 | Nem kifogástalan | A szolgáltatás telepítve van, de jelenleg nem érhető el.  | No |

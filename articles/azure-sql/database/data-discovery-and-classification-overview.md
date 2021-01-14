@@ -13,17 +13,17 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 12/01/2020
 tags: azure-synapse
-ms.openlocfilehash: ece76f0017a72484f5c4e66b2ab8c7e71d32f1a7
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 41ad711de81f075727e4c177c318054677cb0ece
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132035"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185356"
 ---
 # <a name="data-discovery--classification"></a>Adatfelderítés és -besorolás
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Az adatfelderítési & besorolása Azure SQL Databaseba, az Azure SQL felügyelt példányaiba és az Azure szinapszis Analyticsbe van építve. Magas szintű képességeket biztosít az adatbázisban lévő bizalmas adatok felderítéséhez, osztályozásához, címkézéséhez és jelentéséhez.
+Az adatfelderítési & besorolása Azure SQL Databaseba, az Azure SQL felügyelt példányaiba és az Azure szinapszis Analyticsbe van építve. Alapszintű képességeket biztosít az adatbázisaiban található bizalmas adatok felfedéséhez, besorolásához, címkézéséhez és jelentéséhez.
 
 A legérzékenyebb adatok lehetnek például az üzleti, pénzügyi, egészségügyi vagy személyes adatok. Az adatok felfedezése és besorolása kulcsfontosságú szerepet játszik a szervezet Information Protection-megközelítésében. Infrastruktúraként alkalmas lehet az alábbiakra:
 
@@ -36,11 +36,11 @@ A legérzékenyebb adatok lehetnek például az üzleti, pénzügyi, egészség�
 
 ## <a name="what-is-data-discovery--classification"></a><a id="what-is-dc"></a>Mi az az adatfelderítési & besorolás?
 
-Az adatfelderítési & besorolása fejlett szolgáltatásokat és új képességeket biztosít az Azure-ban. Új adatvédelmi paradigmát képezi a SQL Database, az SQL felügyelt példányának és az Azure szinapszisnak, amelynek célja az adatok védelme, és nem csak az adatbázis. A paradigma a következőket foglalja magában:
+Az adatfelderítési & besorolása alapszintű szolgáltatásokat és új képességeket vezet be az Azure-ban. Új adatvédelmi paradigmát képezi a SQL Database, az SQL felügyelt példányának és az Azure szinapszisnak, amelynek célja az adatok védelme, és nem csak az adatbázis. A paradigma a következőket foglalja magában:
 
 - **Felderítés és javaslatok:** A besorolási motor megvizsgálja az adatbázist, és azonosítja a potenciálisan bizalmas adatokat tartalmazó oszlopokat. Ezután egyszerűen áttekintheti és alkalmazhatja az ajánlott besorolást a Azure Portal használatával.
 
-- **Címkézés:** Az adatbesorolási címkéket tartósan alkalmazhatja az oszlopokra a SQL Server adatbázis-kezelőhöz hozzáadott új metaadat-attribútumok használatával. Ezt a metaadatokat ezután speciális, érzékenységen alapuló naplózási és védelmi forgatókönyvekhez lehet használni.
+- **Címkézés:** Az adatbesorolási címkéket tartósan alkalmazhatja az oszlopokra a SQL Server adatbázis-kezelőhöz hozzáadott új metaadat-attribútumok használatával. Ezt a metaadatokat Ezután felhasználhatja az érzékenységen alapuló naplózási és védelmi forgatókönyvekhez.
 
 - **Lekérdezési eredmény – beállított érzékenység:** A lekérdezési eredményhalmaz érzékenységét valós időben számítjuk ki naplózási célokra.
 

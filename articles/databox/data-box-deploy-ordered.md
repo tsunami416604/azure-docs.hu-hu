@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 11/19/2020
 ms.author: alkohli
-ms.openlocfilehash: db97a34a79ac45525177a79a59a17426003aeab0
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: aad6a3ef754b5ba2c65a9b93fbdfcfdc26348487
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302630"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186158"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Oktatóanyag: Az Azure Data Box megrendelése
 
@@ -336,7 +336,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
 
     A felhasználó által hozzárendelt felügyelt identitás egy önálló Azure-erőforrás, amely több erőforrás kezelésére is használható. További információ: [felügyelt identitások típusai](/azure/active-directory/managed-identities-azure-resources/overview).  
 
-    Ha új felügyelt identitást kell létrehoznia, kövesse a [szerepkörök létrehozása, listázása, törlése vagy hozzárendelése egy felhasználóhoz rendelt felügyelt identitáshoz című témakör útmutatását a Azure Portal használatával](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal).
+    Ha új felügyelt identitást kell létrehoznia, kövesse a [szerepkör létrehozása, listázása, törlése vagy hozzárendelése egy felhasználóhoz rendelt felügyelt identitáshoz a Azure Portal használatával című témakör](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)útmutatását.
     
     ![Felhasználói azonosító kiválasztása](./media/data-box-deploy-ordered/customer-managed-key-10.png)
 
@@ -774,7 +774,7 @@ Azure Data Box rendelés megszakításához futtassa [az az databox Job Cancel](
    |erőforrás-csoport [kötelező]| A törlendő rendeléshez társított erőforráscsoport neve. Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója. | myresourcegroup|
    |név [kötelező]| A törlendő megrendelés neve. | "mydataboxorder"|
    |ok [kötelező]| A megrendelés megszakításának oka. | "Hibás adatokat adtam meg, és a megrendelés megszakításához szükséges." |
-   |yes| Ne kérjen megerősítést. | – Igen (-y)| – igen – y |
+   |igen| Ne kérjen megerősítést. | – Igen (-y)| – igen – y |
    |debug| Hibakeresési információk belefoglalása a részletes naplózásba | – hibakeresés |
    |segítség| Súgó megjelenítése ehhez a parancshoz. | --Help-h |
    |csak a-show-hibák| Csak a hibák megjelenítése, a figyelmeztetések letiltása. | – csak megjelenítés – hibák |
@@ -811,7 +811,7 @@ Ha megszakította Azure Data Box rendelést, az az [databox Job delete](/cli/azu
    |erőforrás-csoport [kötelező]| A törlendő rendeléshez társított erőforráscsoport neve. Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója. | myresourcegroup|
    |név [kötelező]| A törlendő megrendelés neve. | "mydataboxorder"|
    |előfizetést| Az Azure-előfizetés neve vagy azonosítója (GUID). | "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" |
-   |yes| Ne kérjen megerősítést. | – Igen (-y)| – igen – y |
+   |igen| Ne kérjen megerősítést. | – Igen (-y)| – igen – y |
    |debug| Hibakeresési információk belefoglalása a részletes naplózásba | – hibakeresés |
    |segítség| Súgó megjelenítése ehhez a parancshoz. | --Help-h |
    |csak a-show-hibák| Csak a hibák megjelenítése, a figyelmeztetések letiltása. | – csak megjelenítés – hibák |
@@ -903,7 +903,7 @@ PS C:\Windows>
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megismerte a Azure Data Box cikkeket, például a következőket:
 

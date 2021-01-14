@@ -2,17 +2,17 @@
 title: Az Azure Edge Zone előzetes verziójának bemutatása
 description: Ismerje meg a Microsoft Azure Edge Zone szolgáltatásának Edge Computing-ajánlatait.
 services: vnf-manager
-author: ganesr
+author: cherylmc
 ms.service: vnf-manager
 ms.topic: article
-ms.date: 07/07/2020
-ms.author: ganesr
-ms.openlocfilehash: 68aa3342ab09be73a82f4f896ffdff99d15a5350
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/13/2021
+ms.author: cherylmc
+ms.openlocfilehash: 04555303d5128db6c183d27a0c5fcb69063fdc28
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329572"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185410"
 ---
 # <a name="about-azure-edge-zone-preview"></a>Az Azure Edge Zone előzetes verziójának bemutatása
 
@@ -38,7 +38,7 @@ Az Azure Edge-zónák három típusa létezik:
 
 ![Azure Edge-zónák](./media/edge-zones-overview/edge-zones.png "Azure Edge-zónák")
 
-Az Azure Edge Zones olyan kis helyigényű Azure-bővítmények, amelyek az Azure-régióktól távol lévő, populációs központokban vannak elhelyezve. Az Azure Edge Zones támogatja a virtuális gépeket, tárolókat és az Azure-szolgáltatások kiválasztott készletét, amely lehetővé teszi a késésre érzékeny és az adatátviteli igényű alkalmazások bezárását a végfelhasználók számára. Az Azure Edge-zónák a Microsoft globális hálózatának részét képezik. Biztonságos, megbízható és nagy sávszélességű kapcsolatot biztosítanak a peremhálózati zónában futó alkalmazások között a felhasználóhoz közel. És az Azure-régiókban futó Azure-szolgáltatások teljes készletét kínálja. Az Azure Edge-zónák tulajdonosai és üzemeltetői a Microsoft. Ugyanezeket az Azure-eszközöket és-portált használhatja a szolgáltatások peremhálózati zónákba való felügyeletéhez és üzembe helyezéséhez.
+Az Azure Edge Zones olyan kis helyigényű Azure-bővítmények, amelyek az Azure-régióktól távol lévő, populációs központokban vannak elhelyezve. Az Azure Edge Zones támogatja a virtuális gépeket, tárolókat és az Azure-szolgáltatások kiválasztott készletét, amely lehetővé teszi a késésre érzékeny és az adatátviteli igényű alkalmazások bezárását a végfelhasználók számára. Az Azure Edge-zónák a Microsoft globális hálózatának részét képezik. Biztonságos, megbízható és nagy sávszélességű kapcsolatot biztosítanak a peremhálózati zónában futó alkalmazások között a felhasználóhoz közel. Az Azure Edge-zónák tulajdonosai és üzemeltetői a Microsoft. Ugyanezeket az Azure-eszközöket és-portált használhatja a szolgáltatások peremhálózati zónákba való felügyeletéhez és üzembe helyezéséhez.
 
 A tipikus használati esetek a következők:
 
@@ -61,7 +61,7 @@ További információért [vegye fel a kapcsolatot az Edge Zone csapatával](htt
 
 Az Azure Edge Zones és a Carrier olyan kis helyigényű Azure-bővítmények, amelyek a lakossági adatközpontokban vannak elhelyezve a mobil operátorok adatközpontjában. A szolgáltatói infrastruktúrával rendelkező Azure Edge Zone egy hop-re van helyezve a mobilszolgáltató 5G hálózatán. Ez az elhelyezés 10 ezredmásodpercnél rövidebb késést biztosít a mobileszközök alkalmazásai számára.
 
-A fuvarozóval rendelkező Azure Edge-zónák üzembe helyezése a mobileszközök adatközpontjában történik, és a Microsoft globális hálózatához csatlakozik. Biztonságos, megbízható és nagy sávszélességű kapcsolatot biztosítanak a felhasználóhoz közel lévő alkalmazások között. És az Azure-régiókban futó Azure-szolgáltatások teljes készletét kínálja. A fejlesztők ugyanazzal a jól ismert eszközökkel építhetnek és helyezhetnek üzembe szolgáltatásokat a peremhálózati zónákban.
+A fuvarozóval rendelkező Azure Edge-zónák üzembe helyezése a mobileszközök adatközpontjában történik, és a Microsoft globális hálózatához csatlakozik. Biztonságos, megbízható és nagy sávszélességű kapcsolatot biztosítanak a felhasználóhoz közel lévő alkalmazások között. A fejlesztők ugyanazzal a jól ismert eszközökkel építhetnek és helyezhetnek üzembe szolgáltatásokat a peremhálózati zónákban.
 
 A tipikus használati esetek a következők:
 

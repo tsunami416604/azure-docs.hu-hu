@@ -3,12 +3,12 @@ title: Erőforrások üzembe helyezése a bérlőn
 description: Ismerteti, hogyan lehet erőforrásokat telepíteni a bérlői hatókörben egy Azure Resource Manager sablonban.
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: a397678488921744f076d93235304c8d217d961f
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 0b3ddc63e49b272c93349ada91e9a1599ea4be4f
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178959"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186209"
 ---
 # <a name="tenant-deployments-with-arm-templates"></a>Bérlői üzemelő példányok ARM-sablonokkal
 
@@ -185,6 +185,8 @@ Egy erőforráscsoport a bérlőn belüli megcélzásához használjon egy beág
 A következő sablon létrehoz egy felügyeleti csoportot.
 
 :::code language="json" source="~/quickstart-templates/tenant-deployments/new-mg/azuredeploy.json":::
+
+Ha a fiókja nem rendelkezik engedéllyel a bérlőn való üzembe helyezéshez, a felügyeleti csoportokat továbbra is létrehozhatja egy másik hatókörbe való telepítéssel. További információ: [felügyeleti csoport](deploy-to-management-group.md#management-group).
 
 ## <a name="assign-role"></a>Szerepkör hozzárendelése
 

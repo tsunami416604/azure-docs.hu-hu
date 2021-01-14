@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ae279c117172f116641c7c908b9fc53f26ceaa90
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 502a89c5a2c0384e34ee35346332a4dd6adc38aa
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802303"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185427"
 ---
 # <a name="linux-support"></a>Linux-támogatás
 
@@ -23,11 +23,12 @@ A következő partnerek jóváhagyták a Windows rendszerű virtuális asztali �
 
 |Partner|Partneri dokumentáció|Partneri támogatás|
 |:------|:--------------------|:--------------|
+|![DELL embléma](./media/partners/dell.png)|[Dell-ügyfél dokumentációja](https://www.delltechnologies.com/en-us/collaterals/unauth/data-sheets/products/thin-clients/dell-thinos-9-for-microsoft-wvd.pdf)|[Dell-támogatás](https://www.dell.com/support)|
 |![IGEL embléma](./media/partners/igel.png)|[IGEL-ügyfél dokumentációja](https://www.igel.com/igel-solution-family/windows-virtual-desktop/)|[IGEL-támogatás](https://www.igel.com/support/)|
 |![NComputing embléma](./media/partners/ncomputing.png)|[NComputing-ügyfél dokumentációja](https://www.ncomputing.com/microsoft)|[NComputing-támogatás](https://www.ncomputing.com/support/support-options)|
 |![Stratodesk embléma](./media/partners/stratodesk.png)|[Stratodesk-ügyfél dokumentációja](https://www.stratodesk.com/kb/Microsoft_Windows_Virtual_Desktop_(WVD))|[Stratodesk-támogatás](https://www.stratodesk.com/support/)|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a következő ügyfelek dokumentációját:
 

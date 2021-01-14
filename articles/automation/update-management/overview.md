@@ -3,14 +3,14 @@ title: Azure Automation Update Management áttekintése
 description: Ez a cikk áttekintést nyújt a Windows és Linux rendszerű gépek frissítéseinek megvalósítására szolgáló Update Management szolgáltatásról.
 services: automation
 ms.subservice: update-management
-ms.date: 12/09/2020
+ms.date: 01/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: 4b557c9772e76b6b61cdf01799ee30ba6bc11807
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: d66d4d32c788317d8b0781f9f24120fbce2f6f8f
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928426"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185614"
 ---
 # <a name="update-management-overview"></a>Az Update Management áttekintése
 
@@ -65,16 +65,16 @@ Ha a Update Management több Log Analytics munkaterületen (más néven többhel
 
 ## <a name="clients"></a>Ügyfelek
 
-### <a name="supported-client-types"></a>Támogatott ügyfelek típusai
+### <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
-A következő táblázat felsorolja a frissítési felmérések és a javítások támogatott operációs rendszereit. A javításhoz hibrid Runbook-feldolgozóra van szükség, amely automatikusan települ, amikor engedélyezi a virtuális gépet vagy a kiszolgálót Update Management általi felügyeletre. A hibrid Runbook-feldolgozói rendszerkövetelményekkel kapcsolatos információkért lásd: [Windows Hybrid Runbook Worker](../automation-windows-hrw-install.md) üzembe helyezése és [Linux Hybrid Runbook Worker üzembe helyezése](../automation-linux-hrw-install.md).
+A következő táblázat felsorolja a frissítési felmérések és a javítások támogatott operációs rendszereit. A javításhoz a System Hybrid Runbook Worker szükséges, amely automatikusan települ, amikor engedélyezi a virtuális gépet vagy a kiszolgálót Update Management általi felügyeletre. A hibrid Runbook-feldolgozói rendszerkövetelményekkel kapcsolatos információkért lásd: [Windows Hybrid Runbook Worker](../automation-windows-hrw-install.md) üzembe helyezése és [Linux Hybrid Runbook Worker üzembe helyezése](../automation-linux-hrw-install.md).
 
 > [!NOTE]
 > A Linux rendszerű gépek frissítési felmérése csak bizonyos régiókban támogatott, az Automation-fiók és a Log Analytics munkaterület- [hozzárendelések táblázatban](../how-to/region-mappings.md#supported-mappings)láthatóak szerint.
 
 |Operációs rendszer  |Jegyzetek  |
 |---------|---------|
-|Windows Server 2019 (Datacenter/Datacenter Core/standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/standard)<br><br>Windows Server 2012 R2 (Datacenter/standard)<br><br>Windows Server 2012 ||
+|Windows Server 2019 (Datacenter/Datacenter Core/standard)<br>Windows Server 2016 (Datacenter/Datacenter Core/standard)<br>Windows Server 2012 R2 (Datacenter/standard)<br>Windows Server 2012 |
 |Windows Server 2008 R2 (RTM és SP1 standard)| Update Management támogatja az operációs rendszer értékeléseit és javításait. A [hibrid Runbook-feldolgozót](../automation-windows-hrw-install.md) a Windows Server 2008 R2 támogatja. |
 |CentOS 6 és 7 (x64)      | A Linux-ügynököknek hozzáférésre van szükségük egy frissítési tárházhoz. A besoroláson alapuló javításokhoz olyan `yum` biztonsági adatforrásokat kell visszaadnia, amelyeket a CentOS nem tartalmaz a RTM kiadásokban. A CentOS besoroláson alapuló javításával kapcsolatos további információkért lásd: [frissítési besorolások Linux](view-update-assessments.md#linux)rendszeren.          |
 |Red Hat Enterprise 6 és 7 (x64)     | A Linux-ügynököknek hozzáférésre van szükségük egy frissítési tárházhoz.        |
@@ -84,9 +84,9 @@ A következő táblázat felsorolja a frissítési felmérések és a javításo
 > [!NOTE]
 > Az Azure-beli virtuálisgép-méretezési csoportok a Update Management használatával kezelhetők. A Update Management a példányokon működik, nem az alapképre. A frissítéseket növekményes módon kell ütemeznie, hogy a virtuálisgép-példányok ne legyenek egyszerre frissítve. A virtuálisgép-méretezési csoportok csomópontjait a [nem Azure-beli gép hozzáadása a Change Tracking és a leltárhoz](../automation-tutorial-installed-software.md#add-a-non-azure-machine-to-change-tracking-and-inventory)című szakaszban ismertetett lépéseket követve veheti fel.
 
-### <a name="unsupported-client-types"></a>Nem támogatott ügyfelek típusai
+### <a name="unsupported-operating-systems"></a>Nem támogatott operációs rendszerek
 
-A következő táblázat a nem támogatott operációs rendszereket sorolja fel:
+A következő táblázat a Update Management által nem támogatott operációs rendszereket sorolja fel:
 
 |Operációs rendszer  |Jegyzetek  |
 |---------|---------|
@@ -94,15 +94,20 @@ A következő táblázat a nem támogatott operációs rendszereket sorolja fel:
 |Windows Server 2016 Nano Server     | Nem támogatott.       |
 |Azure Kubernetes szolgáltatási csomópontok | Nem támogatott. Használja a [biztonsági és kernel-frissítések alkalmazása Linux-csomópontokra az Azure Kubernetes szolgáltatásban (ak)](../../aks/node-updates-kured.md) című témakörben ismertetett javítási folyamatot|
 
-### <a name="client-requirements"></a>Ügyfélkövetelmények
+### <a name="system-requirements"></a>System requirements (Rendszerkövetelmények)
 
-Az alábbi információk az operációs rendszerre jellemző ügyfelekre vonatkozó követelményeket ismertetik. További útmutatásért lásd: [hálózati tervezés](#ports). A TLS 1,2-hez szükséges ügyfél-követelmények megismeréséhez lásd: [tls 1,2 kényszerítés Azure Automation](../automation-managing-data.md#tls-12-enforcement-for-azure-automation).
+Az alábbi információk az operációs rendszerre vonatkozó követelményeket ismertetik. További útmutatásért lásd: [hálózati tervezés](#ports). A TLS 1,2 követelményeinek megismeréséhez lásd: [tls 1,2 kényszerítés Azure Automation](../automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 
 #### <a name="windows"></a>Windows
 
+A szoftverre vonatkozó követelmények:
+
+- A .NET-keretrendszer 4,6-es vagy újabb verziójára van szükség. ([Töltse le a .NET-keretrendszert](/dotnet/framework/install/guide-for-developers).
+- Windows PowerShell 5,1 szükséges (a[Windows Management Framework 5,1 letöltése](https://www.microsoft.com/download/details.aspx?id=54616))
+
 A Windows-ügynököket úgy kell konfigurálni, hogy a WSUS-kiszolgálóval kommunikáljanak, vagy hozzáférést igényelnek a Microsoft Updatehoz. Hibrid gépek esetében javasoljuk, hogy Log Analytics a Windows-ügynököt az [Azure arc-kompatibilis kiszolgálókhoz](../../azure-arc/servers/overview.md)csatlakoztassa, majd a Azure Policy használatával rendelje hozzá a log Analytics- [ügynököt a Windows Azure arc-gépek](../../governance/policy/samples/built-in-policies.md#monitoring) beépített házirendjéhez. Ha a gépeket Azure Monitor for VMs használatával kívánja figyelni, Ehelyett használja a [Azure monitor for VMS engedélyezése](../../governance/policy/samples/built-in-initiatives.md#monitoring) kezdeményezést.
 
-A Update Management a Microsoft Endpoint Configuration Manager használatával végezheti el. Az integrációs forgatókönyvekkel kapcsolatos további tudnivalókért lásd: [a Update Management integrálása a Windows Endpoint Configuration Manager](mecmintegration.md)használatával. A Windows rendszerhez készült [log Analytics ügynök](../../azure-monitor/platform/agent-windows.md) szükséges a Configuration Manager-környezetben található helyek által felügyelt Windows-kiszolgálókhoz. 
+A Update Management a Microsoft Endpoint Configuration Manager használatával végezheti el. Az integrációs forgatókönyvekkel kapcsolatos további tudnivalókért lásd: [a Update Management integrálása a Windows Endpoint Configuration Manager](mecmintegration.md)használatával. A Windows rendszerhez készült [log Analytics ügynök](../../azure-monitor/platform/agent-windows.md) szükséges a Configuration Manager-környezetben található helyek által felügyelt Windows-kiszolgálókhoz.
 
 Alapértelmezés szerint az Azure Marketplace-ről üzembe helyezett Windows-alapú virtuális gépek a Windows Update szolgáltatásból származó automatikus frissítések fogadására vannak beállítva. Ez a viselkedés nem változik, ha Windows rendszerű virtuális gépeket ad hozzá a munkaterülethez. Ha nem kezeli aktívan a frissítéseket Update Management használatával, a rendszer az alapértelmezett viselkedést alkalmazza (a frissítések automatikus érvénybe lépéséhez).
 
@@ -111,7 +116,11 @@ Alapértelmezés szerint az Azure Marketplace-ről üzembe helyezett Windows-ala
 
 #### <a name="linux"></a>Linux
 
-A Linux rendszerben a számítógépnek nyilvános vagy nyilvános frissítési tárházhoz kell hozzáférnie. A Update Managementhoz való interakcióhoz TLS 1,1 vagy TLS 1,2 szükséges. A Update Management nem támogatja a linuxos Log Analytics-ügynököt, amely több Log Analytics munkaterületre való jelentésre van konfigurálva. A gépnek a Python 2. x verziójának is telepítve kell lennie.
+A szoftverre vonatkozó követelmények:
+
+- A gépnek privát vagy nyilvános frissítési tárházhoz kell hozzáférnie.
+- A Update Managementhoz való interakcióhoz TLS 1,1 vagy TLS 1,2 szükséges.
+- A Python 2. x telepítve van.
 
 > [!NOTE]
 > A Linux rendszerű gépek frissítési felmérése csak bizonyos régiókban támogatott. Tekintse meg az Automation-fiók és a Log Analytics munkaterület- [hozzárendelések táblát](../how-to/region-mappings.md#supported-mappings).
@@ -130,11 +139,11 @@ Update Management az ebben a szakaszban ismertetett erőforrásokat használja. 
 
 ### <a name="hybrid-runbook-worker-groups"></a>Hibrid Runbook Worker-csoportok
 
-A Update Management engedélyezése után a Log Analytics munkaterülethez közvetlenül csatlakoztatott Windows-gépeket a rendszer automatikusan hibrid Runbook-feldolgozóként konfigurálja a Update Management támogató runbookok támogatásához.
+A Update Management engedélyezése után minden olyan Windows-gép, amely közvetlenül csatlakozik a Log Analytics munkaterülethez, automatikusan rendszer-hibrid Runbook-feldolgozóként van konfigurálva a Update Management támogató runbookok támogatásához.
 
 Az Update Management által felügyelt összes Windows-gép a hibrid munkavégző csoportok ablaktáblán, az Automation-fiókhoz tartozó rendszer hibrid feldolgozói csoportként jelenik meg. A csoportok az `Hostname FQDN_GUID` elnevezési konvenciót használják. Ezek a csoportok nem állíthatók be a runbookok a fiókjában. Ha próbálkozik, a kísérlet sikertelen lesz. Ezek a csoportok kizárólag a Update Management támogatására szolgálnak. A hibrid Runbook-feldolgozóként konfigurált Windows-gépek listájának megtekintéséhez tekintse meg a [hibrid Runbook-feldolgozók megtekintése](../automation-hybrid-runbook-worker.md#view-system-hybrid-runbook-workers)című témakört.
 
-A Windows rendszerű gépet hozzáadhatja az Automation-fiókjában lévő hibrid Runbook Worker csoporthoz az Automation-runbookok támogatásához, ha ugyanazt a fiókot használja a Update Management és a hibrid Runbook-feldolgozó csoport tagságához. Ez a funkció a hibrid Runbook-feldolgozó verziójának 7.2.12024.0 lett hozzáadva.
+A Windows rendszerű gépet hozzáadhatja az Automation-fiókjában lévő User Hybrid Runbook Worker csoporthoz az Automation-runbookok támogatásához, ha ugyanazt a fiókot használja a Update Management és a hibrid Runbook Worker Group tagsághoz. Ez a funkció a hibrid Runbook-feldolgozó verziójának 7.2.12024.0 lett hozzáadva.
 
 ### <a name="management-packs"></a>Felügyeleti csomagok
 
@@ -160,9 +169,9 @@ A következő táblázat ismerteti a Update Management által támogatott csatla
 
 | Csatlakoztatott forrás | Támogatott | Leírás |
 | --- | --- | --- |
-| Windows-ügynökök |Igen |Update Management adatokat gyűjt a Windows-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését. |
-| Linux-ügynökök |Igen |Update Management adatokat gyűjt a Linux-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését a támogatott disztribúciók esetében. |
-| Az Operations Manager felügyeleti csoportja |Igen |Update Management adatokat gyűjt a csatlakoztatott felügyeleti csoportban lévő ügynököktől származó rendszerfrissítésekről.<br/><br/>Nincs szükség közvetlen kapcsolódásra a Operations Manager ügynöktől a Azure Monitor naplókhoz. Az adatok továbbítása a felügyeleti csoportból a Log Analytics munkaterületre történik. |
+| Windows-ügynökök |Yes |Update Management adatokat gyűjt a Windows-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését. |
+| Linux-ügynökök |Yes |Update Management adatokat gyűjt a Linux-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését a támogatott disztribúciók esetében. |
+| Az Operations Manager felügyeleti csoportja |Yes |Update Management adatokat gyűjt a csatlakoztatott felügyeleti csoportban lévő ügynököktől származó rendszerfrissítésekről.<br/><br/>Nincs szükség közvetlen kapcsolódásra a Operations Manager ügynöktől a Azure Monitor naplókhoz. Az adatok továbbítása a felügyeleti csoportból a Log Analytics munkaterületre történik. |
 
 ### <a name="collection-frequency"></a>A gyűjtés gyakorisága
 
@@ -224,7 +233,7 @@ A következő táblázat a Linux-frissítések támogatott besorolásait határo
 >
 > a Linux-frissítések besorolása nem történik meg, és a **többi frissítés** kategóriába tartoznak. A Update Management a támogatott disztribúciók által közzétett, kifejezetten a kiadott [ovális](https://oval.mitre.org/) (biztonsági sebezhetőségi és értékelési nyelvi) fájlokat használja. Mivel az Internet-hozzáférés ezen országos felhőktől korlátozódik, Update Management nem fér hozzá és nem használhatja ezeket a fájlokat.
 
-A Linux rendszerben a Update Management a Felhőbeli adatgazdagítás miatt kiértékelheti a kritikus **frissítések és a** Felhőbeli biztonsági frissítések közötti különbséget. **Others** A javításhoz a Update Management a gépen elérhető besorolási értékekre támaszkodik. A többi disztribúciótól eltérően a CentOS nem rendelkezik ezekkel az információkkal az RTM verziójában. Ha olyan CentOS-számítógépekkel rendelkezik, amelyek a következő parancs biztonsági értékének visszaadására vannak konfigurálva, a Update Management a besorolások alapján javíthatja a javítást.
+A Linux rendszerben a Update Management a Felhőbeli adatgazdagítás miatt kiértékelheti a kritikus **frissítések és a** Felhőbeli biztonsági frissítések közötti különbséget.  A javításhoz a Update Management a gépen elérhető besorolási értékekre támaszkodik. A többi disztribúciótól eltérően a CentOS nem rendelkezik ezekkel az információkkal az RTM verziójában. Ha olyan CentOS-számítógépekkel rendelkezik, amelyek a következő parancs biztonsági értékének visszaadására vannak konfigurálva, a Update Management a besorolások alapján javíthatja a javítást.
 
 ```bash
 sudo yum -q --security check-update

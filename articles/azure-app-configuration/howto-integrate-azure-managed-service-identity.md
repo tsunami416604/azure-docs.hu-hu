@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: d6b3d60a44725869d68dd9f1158d2279f3cf3e86
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 483af51cbaeb8f7b295adb4231e65f742e3f53a1
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963980"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185461"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>Felügyelt identitások használata az App Configuration eléréséhez
 
@@ -82,7 +82,7 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
 
 1. Adjon hozzá egy hivatkozást az *Azure. Identity* csomaghoz:
 
-    ```cli
+    ```bash
     dotnet add package Azure.Identity
     ```
 
@@ -213,7 +213,7 @@ git add .
 git commit -m "Initial version"
 ```
 
-Ha engedélyezni szeretné a helyi git-telepítést az alkalmazáshoz a kudu Build-kiszolgálóval, futtassa [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) Cloud shell.
+Ha engedélyezni szeretné a helyi git-telepítést az alkalmazáshoz a kudu Build-kiszolgálóval, futtassa [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/#az-webapp-deployment-source-config-local-git) Cloud shell.
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app_name> --resource-group <group_name>
@@ -279,7 +279,7 @@ Frissítheti például a gyors útmutatóban létrehozott .NET-keretrendszer kon
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban egy Azure által felügyelt identitást adott hozzá, amellyel egyszerűbbé válik az alkalmazások konfigurációjának elérése, és javítható a hitelesítő adatok kezelése az alkalmazásban. Ha többet szeretne megtudni az alkalmazások konfigurációjának használatáról, folytassa az Azure CLI-mintákkal.
 
 > [!div class="nextstepaction"]

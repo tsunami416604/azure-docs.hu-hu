@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: duau
-ms.openlocfilehash: 997e2e97161e6db7cdca04c1b79f5149a2e4c409
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bd3588c207fe8828744a665539830d81805bd7b3
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003531"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184271"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>Metrikák és riasztások Traffic Manager
 
@@ -58,11 +58,11 @@ Ez a metrika az összes metrika (3. ábra) állapotát jelképező összesített
 
 *4. ábra: végponti állapot metrikáinak felosztott nézete*
 
-Ezeket a metrikákat [Azure monitor szolgáltatás](../azure-monitor/platform/metrics-supported.md)portálján, [Rest APIon](https://docs.microsoft.com/rest/api/monitor/), az [Azure CLI](https://docs.microsoft.com/cli/azure/monitor)-n és a [Azure PowerShellon](https://docs.microsoft.com/powershell/module/az.applicationinsights)keresztül, vagy a Traffic Manager portálján található mérőszámok szakaszán keresztül használhatja fel.
+Ezeket a metrikákat [Azure monitor szolgáltatás](../azure-monitor/platform/metrics-supported.md)portálján, [Rest APIon](/rest/api/monitor/), az [Azure CLI](/cli/azure/monitor)-n és a [Azure PowerShellon](/powershell/module/az.applicationinsights)keresztül, vagy a Traffic Manager portálján található mérőszámok szakaszán keresztül használhatja fel.
 
 ## <a name="alerts-on-traffic-manager-metrics"></a>Traffic Manager metrikákkal kapcsolatos riasztások
-A Traffic Manager metrikáinak feldolgozásán és megjelenítésén kívül Azure Monitor lehetővé teszi, hogy az ügyfelek a metrikákkal kapcsolatos riasztásokat konfiguráljanak és fogadnak. Kiválaszthatja, hogy milyen feltételeket kell teljesíteni ezekben a mérőszámokban, hogy riasztást kapjon, milyen gyakran kell figyelni ezeket a feltételeket, és hogy a riasztásokat hogyan kell elküldeni Önnek. További információ: [Azure monitor riasztások dokumentációja](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).
+A Traffic Manager metrikáinak feldolgozásán és megjelenítésén kívül Azure Monitor lehetővé teszi, hogy az ügyfelek a metrikákkal kapcsolatos riasztásokat konfiguráljanak és fogadnak. Kiválaszthatja, hogy milyen feltételeket kell teljesíteni ezekben a mérőszámokban, hogy riasztást kapjon, milyen gyakran kell figyelni ezeket a feltételeket, és hogy a riasztásokat hogyan kell elküldeni Önnek. További információ: [Azure monitor riasztások dokumentációja](../azure-monitor/platform/alerts-metric.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a [Azure monitor szolgáltatásról](../azure-monitor/platform/metrics-supported.md)
 - Megtudhatja, hogyan [hozhat létre diagramot a Azure monitor használatával](../azure-monitor/platform/metrics-getting-started.md#create-your-first-metric-chart)

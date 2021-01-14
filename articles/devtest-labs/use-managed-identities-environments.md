@@ -3,12 +3,12 @@ title: Környezetek létrehozása az Azure által felügyelt identitásokkal a D
 description: Megtudhatja, hogyan használhatja a felügyelt identitásokat az Azure-ban környezetek üzembe helyezéséhez egy Azure DevTest Labsban található laborban.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: e5bac4210afee6db1c7617dac1cd6d2ff9149439
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f3e4b4d7030eb26c25b291e03caaa430d1979c4
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88718976"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185784"
 ---
 # <a name="use-azure-managed-identities-to-deploy-environments-in-a-lab"></a>Környezetek üzembe helyezése az Azure által felügyelt identitások használatával tesztkörnyezetben 
 
@@ -28,7 +28,7 @@ A tesztkörnyezet tulajdonosaként felügyelt identitást használhat a környez
 Ebben a szakaszban a tesztkörnyezet tulajdonosaként a Azure Portal használatával adhat hozzá felhasználót felügyelt identitást a laborhoz. 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Keressen rá a **DevTest Labs**kifejezésre.
+1. Keressen rá a **DevTest Labs** kifejezésre.
 1. A Labs listából válassza ki a kívánt labort.
 1. Válassza **a konfiguráció és szabályzatok**  ->  **identitás (előzetes verzió)** lehetőséget. 
 1. Felhasználóhoz rendelt identitás hozzáadásához válassza a **felhasználó által hozzárendelt** lapot.
@@ -42,7 +42,7 @@ Ebben a szakaszban a tesztkörnyezet tulajdonosaként a Azure Portal használat�
 
 A labor tulajdonosának semmilyen különleges teendőt nem kell tennie a környezet üzembe helyezésekor, ha a laborhoz hozzáadott identitás rendelkezik a környezethez hozzáférő külső erőforrásokhoz szükséges engedélyekkel. 
 
-Ha módosítani szeretné a laborhoz rendelt felhasználó által felügyelt identitást, először távolítsa el a laborhoz csatolt identitást, majd adjon hozzá egy másikat a laborhoz. A laborhoz csatolt identitás eltávolításához válassza a **... lehetőséget. (három pont)**, majd kattintson az **Eltávolítás**gombra. 
+Ha módosítani szeretné a laborhoz rendelt felhasználó által felügyelt identitást, először távolítsa el a laborhoz csatolt identitást, majd adjon hozzá egy másikat a laborhoz. A laborhoz csatolt identitás eltávolításához válassza a **... lehetőséget. (három pont)**, majd kattintson az **Eltávolítás** gombra. 
 
 ## <a name="use-api"></a>API használata
 

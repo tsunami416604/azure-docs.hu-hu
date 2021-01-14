@@ -5,12 +5,12 @@ author: macolso
 ms.author: macolso
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: e4760463a4d71e4c097b082aa6b93d8b339f94ca
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 5de1188ee018e796f918d7559c0e2c24c77834f4
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516970"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186192"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Gyakori kérdések a Azure Container Instances
 
@@ -54,6 +54,10 @@ A tároló indítási idejének csökkentésével kapcsolatos részletesebb [út
 ### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>Milyen .NET-vagy .NET Core-lemezképfájlt használok a tárolóban? 
 
 Használja a legkisebb rendszerképet, amely megfelel a követelményeinek. A Linux esetében használhat egy *Runtime-Alpine* .net Core-rendszerképet, amelyet a .net Core 2,1 kiadása óta támogattak. Windows esetén, ha a teljes .NET-keretrendszert használja, akkor Windows Server Core rendszerképet kell használnia (csak futásidejű rendszerkép, például  *4.7.2-windowsservercore-ltsc2016*). A csak futásidejű lemezképek kisebbek, de nem támogatják a .NET SDK-t igénylő munkaterheléseket.
+
+### <a name="what-types-of-container-registries-are-compatible-with-aci"></a>Milyen típusú tároló-nyilvántartások kompatibilisek az ACI-val?
+
+Az ACI támogatja az ACR és más külső gyártótól származó, például a DockerHub által készített képek lekérését. Az ACI Emellett támogatja a helyszíni beállításjegyzékből származó képek lekérését, amennyiben azok OCR-kompatibilisek, és olyan végponttal rendelkeznek, amely nyilvánosan elérhető az interneten.
 
 ## <a name="availability-and-quotas"></a>Rendelkezésre állás és kvóták
 

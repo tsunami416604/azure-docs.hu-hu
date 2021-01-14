@@ -1,7 +1,7 @@
 ---
-title: Több ellenőrzés és adatfelosztás konfigurálása automatizált gépi tanulási kísérletekben
+title: Az Adatelosztás és a több érvényesítés az automatizált gépi tanulásban
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan konfigurálhat több ellenőrzési és adatkészlet-felosztást az automatizált gépi tanulási kísérleteknél
+description: Megtudhatja, hogyan konfigurálhatja az adatkészletek felosztását és átellenőrzését az automatizált gépi tanulási kísérleteknél
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,20 +11,20 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
-ms.openlocfilehash: c29c8ab31507c0ec904a7534e50ef6523e1aab96
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 2e26bfa484d573c0158e518b31087fb10bdcdfb9
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360105"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185682"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>Adatfelosztások és keresztvalidálás konfigurálása az automatizált gépi tanulásban
 
-Ebből a cikkből megtudhatja, hogyan konfigurálhatja a betanítási/érvényesítési adatosztásokat, és hogyan hozhatja meg az automatikus gépi tanulás, a AutoML és a kísérletek különböző beállításait.
+Ebből a cikkből megtudhatja, hogyan konfigurálhatja a betanítási/érvényesítési adatmegosztásokat, és hogyan végezheti el az automatikus gépi tanulás, a kísérletek automatizálását.
 
-Ha Azure Machine Learning, ha a AutoML használatával több ML modellt hoz létre, minden gyermeknek a modell minőségi metrikáinak kiszámításával ellenőriznie kell a kapcsolódó modellt, például a pontosságot vagy a AUC súlyozást. Ezek a metrikák az egyes modellekhez tartozó előrejelzések összehasonlításával vannak kiszámítva, és az érvényesítési adatokban szereplő korábbi észrevételekből származó valódi címkékkel vannak ellátva. 
+Ha Azure Machine Learning, ha az automatizált ML-t több ML modell kiépítésére használja, minden gyermeknek a modell minőségi metrikáinak kiszámításával ellenőriznie kell a kapcsolódó modellt, például a pontosságot vagy a AUC súlyozottan. Ezek a metrikák az egyes modellekhez tartozó előrejelzések összehasonlításával vannak kiszámítva, és az érvényesítési adatokban szereplő korábbi észrevételekből származó valódi címkékkel vannak ellátva. 
 
-A AutoML kísérletek automatikusan elvégzik a modell érvényesítését. Az alábbi szakaszok azt ismertetik, hogyan lehet tovább testreszabni az érvényesítési beállításokat a [Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py)-val. 
+Az automatizált ML-kísérletek automatikusan végzik a modell érvényesítését. Az alábbi szakaszok azt ismertetik, hogyan lehet tovább testreszabni az érvényesítési beállításokat a [Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py)-val. 
 
 Az alacsony kódú vagy a kód nélküli felhasználói élményért lásd: [az automatizált gépi tanulási kísérletek létrehozása Azure Machine learning Studióban](how-to-use-automated-ml-for-ml-models.md). 
 
@@ -39,13 +39,13 @@ Ehhez a cikkhez szükséges,
 
 * A Azure Machine Learning SDK-val való automatikus gépi tanulási kísérlet beállításának ismerete. Kövesse az [oktatóanyagot](tutorial-auto-train-models.md) , vagy az [útmutató](how-to-configure-auto-train.md) segítségével tekintse meg az alapvető automatizált gépi tanulási kísérlet tervezési mintáit.
 
-* Az átellenőrzési és a betanítási/ellenőrzési adatmennyiség megismertetése ML-fogalmakkal. A magas szintű magyarázathoz
+* A betanítási/érvényesítési adatmegosztások és a gépi tanulásra vonatkozó fogalmak megismerése. A magas szintű magyarázathoz
 
     * [A betanítási, ellenőrzési és tesztelési készletek ismertetése Machine Learning](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7)
 
-    * [A több érvényesítés ismertetése](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd)
+    * [A gépi tanulásban való több ellenőrzés ismertetése](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd)
 
-## <a name="default--data-splits-and-cross-validation"></a>Alapértelmezett adatmegosztások és több ellenőrzés
+## <a name="default-data-splits-and-cross-validation"></a>Alapértelmezett adatmegosztások és több ellenőrzés
 
 A kísérlet és a betanítási beállítások megadásához használja a [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) objektumot. A következő kódrészletben figyelje meg, hogy csak a szükséges paraméterek vannak definiálva, azaz a vagy a paraméterei `n_cross_validation` `validation_ data` **nem** szerepelnek benne.
 
@@ -67,7 +67,7 @@ Ha nem ad meg explicit módon a vagy a `validation_data` `n_cross_validation` pa
 |Betanítási &nbsp; &nbsp; adatméret| Érvényesítési módszer |
 |---|-----|
 |**Nagyobb, &nbsp; mint &nbsp; 20 000 &nbsp; sor**| A betanítási/érvényesítési adatfelosztást alkalmazza a rendszer. Az alapértelmezett érték a kezdeti betanítási adatkészlet 10%-át adja meg az érvényesítési készletként. Ezt az ellenőrzési készletet pedig a metrikák számításához használja a rendszer.
-|**Kisebb, &nbsp; mint &nbsp; 20 000 &nbsp; sor**| A rendszer több ellenőrzési módszert alkalmaz. A kidobások alapértelmezett száma a sorok számától függ. <br> **Ha az adatkészlet kevesebb mint 1 000 sor, a** rendszer 10 karámot használ. <br> **Ha a sorok 1 000 és 20 000 között vannak** , akkor három hajtogatás van használatban.
+|**Kisebb, &nbsp; mint &nbsp; 20 000 &nbsp; sor**| A rendszer több ellenőrzési módszert alkalmaz. A kidobások alapértelmezett száma a sorok számától függ. <br> **Ha az adatkészlet kevesebb mint 1 000 sor, a** rendszer 10 karámot használ. <br> **Ha a sorok 1 000 és 20 000 között vannak**, akkor három hajtogatás van használatban.
 
 ## <a name="provide-validation-data"></a>Érvényesítési információ megadása
 
@@ -93,7 +93,7 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 
 ## <a name="provide-validation-set-size"></a>Ellenőrzési készlet méretének megadása
 
-Ebben az esetben csak egyetlen adatkészlet van megadva a kísérlethez. Ez a paraméter nincs `validation_data` megadva, **not** és a megadott adatkészlet hozzá van rendelve a `training_data` paraméterhez.  Az `AutoMLConfig` objektumban beállíthatja, hogy a `validation_size` paraméter a betanítási adatai egy részét kitartsa az érvényesítéshez. Ez azt jelenti, hogy az érvényesítési készletet a megadott kezdeti AutoML osztja fel a rendszer `training_data` . Ennek az értéknek 0,0 és 1,0 közöttinek kell lennie (például a 0,2 azt jelenti, hogy az adatellenőrzések 20%-át az érvényesítési adatként tároljuk).
+Ebben az esetben csak egyetlen adatkészlet van megadva a kísérlethez. Ez a paraméter nincs `validation_data` megadva,  és a megadott adatkészlet hozzá van rendelve a `training_data` paraméterhez.  Az `AutoMLConfig` objektumban beállíthatja, hogy a `validation_size` paraméter a betanítási adatai egy részét kitartsa az érvényesítéshez. Ez azt jelenti, hogy az érvényesítési készletet a megadott kezdeti AutoML osztja fel a rendszer `training_data` . Ennek az értéknek 0,0 és 1,0 közöttinek kell lennie (például a 0,2 azt jelenti, hogy az adatellenőrzések 20%-át az érvényesítési adatként tároljuk).
 
 Tekintse meg a következő kódrészletet:
 
@@ -117,7 +117,7 @@ Több ellenőrzés végrehajtásához adja meg a `n_cross_validations` paraméte
 
 A következő kódban öt összehajtogatható a kereszt-ellenőrzés. Ebből kifolyólag öt különböző képzés, az egyes képzések 4/5-es, valamint minden egyes, a 1/5-es és az összes érvényesítési Holdout az egyes időpontokban.
 
-Ennek eredményeképpen a metrikák kiszámítása az 5 ellenőrzési metrika átlagával történik.
+Ennek eredményeképpen a metrikák kiszámítása az öt ellenőrzési metrika átlagával történik.
 
 ```python
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"

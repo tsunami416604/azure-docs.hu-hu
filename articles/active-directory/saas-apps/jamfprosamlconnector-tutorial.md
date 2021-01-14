@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/11/2020
+ms.date: 12/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 48818c300f1ac9ff41f78f39f08e41f95b379b31
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 403e42694ee7ec8993cf5dc4bf03df8ca7c20b63
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459569"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185546"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-jamf-pro"></a>Oktatóanyag: Azure Active Directory SSO-integráció a JAMF Pro-val
 
@@ -26,7 +26,6 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a JAMF Pro-t Azure
 * Az Azure AD-fiókokkal automatikusan bejelentkezhet a felhasználók JAMF Pro-ba.
 * A fiókokat egyetlen központi helyen kezelheti: a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg [az egyszeri bejelentkezést Azure Active Directory](../manage-apps/what-is-single-sign-on.md)használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,16 +39,15 @@ Első lépésként a következő elemeket kell megadnia:
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben. 
 
 * A JAMF Pro az **SP által kezdeményezett** és a **identitásszolgáltató által kezdeményezett** egyszeri bejelentkezést támogatja.
-* A JAMF Pro konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben biztosítja a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="add-jamf-pro-from-the-gallery"></a>A JAMF Pro hozzáadása a katalógusból
 
 A JAMF Pro Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a JAMF Pro-t a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiók használatával.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiók használatával.
 1. A bal oldali ablaktáblán válassza ki a **Azure Active Directory** szolgáltatást.
-1. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban adja meg a *JAMF Pro* kifejezést a keresőmezőbe.
 1. Válassza az **JAMF Pro** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
@@ -70,9 +68,9 @@ Ebben a szakaszban az Azure AD SSO konfigurálását és tesztelését végezhet
 
 Ebben a szakaszban engedélyezheti az Azure AD SSO-t a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)a **JAMF Pro** -alkalmazás integrációja lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyetlen Sign-On módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon válassza az **ALAPszintű SAML-konfigurációhoz** tartozó toll ikont a beállítások szerkesztéséhez.
+1. A Azure Portal a **JAMF Pro** -alkalmazás integrációja lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyetlen Sign-On módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
+1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon válassza az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikont a beállítások szerkesztéséhez.
 
    ![Szerkessze az alapszintű SAML-konfiguráció lapot.](common/edit-urls.png)
 
@@ -82,7 +80,7 @@ Ebben a szakaszban engedélyezheti az Azure AD SSO-t a Azure Portalban.
 
     b. A **Válasz URL-címe** szövegmezőben adjon meg egy URL-címet, amely a következő képletet használja: `https://<subdomain>.jamfcloud.com/saml/SSO`
 
-1. Válassza a **további URL-címek beállítása**lehetőséget. Ha az alkalmazást **SP-kezdeményezésű** módban szeretné konfigurálni, a **bejelentkezési URL-cím** szövegmezőbe írja be a következő képletet használó URL-címet: `https://<subdomain>.jamfcloud.com`
+1. Válassza a **további URL-címek beállítása** lehetőséget. Ha az alkalmazást **SP-kezdeményezésű** módban szeretné konfigurálni, a **bejelentkezési URL-cím** szövegmezőbe írja be a következő képletet használó URL-címet: `https://<subdomain>.jamfcloud.com`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. A tényleges azonosító értékét a JAMF Pro portál **egyszeri bejelentkezés** szakaszában találja, amelyet az oktatóanyag későbbi részében talál. Kibonthatja a tényleges altartomány értéket az azonosító értékből, és a bejelentkezési URL-cím és a válasz URL-címének használatával kinyerheti az altartomány adatait. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható képleteket is megtekintheti.
@@ -95,39 +93,33 @@ Ebben a szakaszban engedélyezheti az Azure AD SSO-t a Azure Portalban.
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.
    1. A **Felhasználónév** mezőbe írja be a (z) [name] @ [cégestartomány] nevet. [kiterjesztés]. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** gombra.
+   1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban B. Simon hozzáférést biztosít a JAMF Pro-hoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **JAMF Pro**elemet.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
-
-   ![Felhasználók és csoportok kiválasztása](common/users-groups-blade.png)
-
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
-
-    ![Válassza a felhasználó hozzáadása gombot](common/add-assign-user.png)
-
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **JAMF Pro** elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-kijelentésben bármelyik szerepkör értékét várta, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára. Ezután kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
 ## <a name="configure-sso-in-jamf-pro"></a>SSO konfigurálása a JAMF Pro-ban
 
-1. A JAMF Pro-n belüli konfiguráció automatizálásához telepítse a **saját alkalmazások biztonságos bejelentkezési böngésző bővítményét** a **bővítmény telepítése**lehetőség kiválasztásával.
+1. A JAMF Pro-n belüli konfiguráció automatizálásához telepítse a **saját alkalmazások biztonságos bejelentkezési böngésző bővítményét** a **bővítmény telepítése** lehetőség kiválasztásával.
 
     ![Saját alkalmazások – biztonságos bejelentkezési böngésző bővítmény lapja](common/install-myappssecure-extension.png)
 
-2. Miután hozzáadta a bővítményt a böngészőhöz, válassza a **JAMF Pro beállítása**lehetőséget. Amikor megnyílik a JAMF Pro alkalmazás, adja meg a bejelentkezéshez szükséges rendszergazdai hitelesítő adatokat. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja a 3 – 7. lépést.
+2. Miután hozzáadta a bővítményt a böngészőhöz, válassza a **JAMF Pro beállítása** lehetőséget. Amikor megnyílik a JAMF Pro alkalmazás, adja meg a bejelentkezéshez szükséges rendszergazdai hitelesítő adatokat. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja a 3 – 7. lépést.
 
     ![Konfigurációs lap beállítása a JAMF Pro-ban](common/setup-sso.png)
 
@@ -137,7 +129,7 @@ Ebben a szakaszban B. Simon hozzáférést biztosít a JAMF Pro-hoz.
 
     ![Válassza a beállítások ikont a JAMF Pro-ban](./media/jamfprosamlconnector-tutorial/configure1.png)
 
-5. Válassza az **egyszeri bejelentkezés**lehetőséget.
+5. Válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyetlen Sign-On kiválasztása a JAMF Pro-ban](./media/jamfprosamlconnector-tutorial/configure2.png)
 
@@ -149,28 +141,28 @@ Ebben a szakaszban B. Simon hozzáférést biztosít a JAMF Pro-hoz.
 
     b. Jelölje be az **egyszeri Sign-On hitelesítés engedélyezése** jelölőnégyzetet.
 
-  c. Válassza az **Azure** lehetőséget az identitás- **szolgáltató** legördülő menüből.
+    c. Válassza az **Azure** lehetőséget az identitás- **szolgáltató** legördülő menüből.
 
-  d. Másolja az **entitás-azonosító** értékét, és illessze be a Azure Portal **ALAPszintű SAML-konfiguráció** szakaszának **azonosító (entitás azonosítója)** mezőjébe.
+    d. Másolja az **entitás-azonosító** értékét, és illessze be a Azure Portal **ALAPszintű SAML-konfiguráció** szakaszának **azonosító (entitás azonosítója)** mezőjébe.
 
-> [!NOTE]
-> A mezőben lévő érték használatával `<SUBDOMAIN>` fejezze be a bejelentkezési URL-címet és a válasz URL-címét a Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
+    > [!NOTE]
+    > A mezőben lévő érték használatával `<SUBDOMAIN>` fejezze be a bejelentkezési URL-címet és a válasz URL-címét a Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
 
-  e. Válassza ki a **metaadatok URL-címét** az **Identity Provider metaadatok forrása** legördülő menüből. A megjelenő mezőben illessze be az **alkalmazás-összevonási metaadatok URL-címét** , amelyet a Azure Portal másolt.
+    e. Válassza ki a **metaadatok URL-címét** az **Identity Provider metaadatok forrása** legördülő menüből. A megjelenő mezőben illessze be az **alkalmazás-összevonási metaadatok URL-címét** , amelyet a Azure Portal másolt.
 
-  f. Választható Szerkessze a jogkivonat lejárati értékét, vagy válassza az "SAML-jogkivonat lejáratának letiltása" lehetőséget.
+    f. Választható Szerkessze a jogkivonat lejárati értékét, vagy válassza az "SAML-jogkivonat lejáratának letiltása" lehetőséget.
 
 7. Ugyanazon a lapon görgessen le a felhasználó- **hozzárendelés** szakaszhoz. Ezután hajtsa végre az alábbi lépéseket.
 
     ![A JAMF Pro egyetlen Sign-On oldalának felhasználói leképezése szakasza.](./media/jamfprosamlconnector-tutorial/tutorial-jamfprosamlconnector-single.png)
 
-    a. Válassza a **NameID** lehetőséget az **identitás-szolgáltató felhasználói leképezéséhez**. Alapértelmezés szerint ez a beállítás a **NameID**értékre van állítva, de egyéni attribútumot is meghatározhat.
+    a. Válassza a **NameID** lehetőséget az **identitás-szolgáltató felhasználói leképezéséhez**. Alapértelmezés szerint ez a beállítás a **NameID** értékre van állítva, de egyéni attribútumot is meghatározhat.
 
     b. Válassza az **e-mail** lehetőséget a **JAMF Pro felhasználói leképezéshez**. A JAMF Pro Maps SAML-attribútumait a identitásszolgáltató először a felhasználók, majd csoportok szerint küldik el. Amikor egy felhasználó megpróbál hozzáférni a JAMF Pro-hoz, a JAMF Pro információt kér a felhasználótól az identitás-szolgáltatótól, és megfelel az összes JAMF Pro felhasználói fióknak. Ha a bejövő felhasználói fiók nem található, akkor a JAMF Pro megkísérli megfeleltetni a csoport nevét.
 
     c. Illessze be az értéket az `http://schemas.microsoft.com/ws/2008/06/identity/claims/groups` **Identity Provider csoport attribútumának neve** mezőbe.
 
-    d. Ugyanazon a lapon görgessen le a **Biztonság** szakaszhoz, és válassza **a felhasználók számára az egyszeri Sign-On hitelesítés megkerülésének engedélyezése**lehetőséget. Ennek eredményeképpen a felhasználók nem lesznek átirányítva az Identity Provider bejelentkezési oldalára hitelesítésre, és közvetlenül a JAMF Pro-be is bejelentkezhetnek. Ha a felhasználó az JAMF keresztül próbál hozzáférni a Pro-hoz, az identitásszolgáltató által kezdeményezett egyszeri bejelentkezéses hitelesítés és engedélyezés történik.
+    d. Ugyanazon a lapon görgessen le a **Biztonság** szakaszhoz, és válassza **a felhasználók számára az egyszeri Sign-On hitelesítés megkerülésének engedélyezése** lehetőséget. Ennek eredményeképpen a felhasználók nem lesznek átirányítva az Identity Provider bejelentkezési oldalára hitelesítésre, és közvetlenül a JAMF Pro-be is bejelentkezhetnek. Ha a felhasználó az JAMF keresztül próbál hozzáférni a Pro-hoz, az identitásszolgáltató által kezdeményezett egyszeri bejelentkezéses hitelesítés és engedélyezés történik.
 
     e. Válassza a **Mentés** lehetőséget.
 
@@ -186,7 +178,7 @@ Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:
 
     ![A beállítások ikon a JAMF Pro-ban](./media/jamfprosamlconnector-tutorial/configure1.png)
 
-3. Válassza a **JAMF Pro felhasználói fiókok & csoportok**lehetőséget.
+3. Válassza a **JAMF Pro felhasználói fiókok & csoportok** lehetőséget.
 
     ![A JAMF Pro felhasználói fiókjai & csoportok ikon a JAMF Pro beállításaiban](./media/jamfprosamlconnector-tutorial/user1.png)
 
@@ -194,7 +186,7 @@ Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:
 
     ![JAMF Pro felhasználói fiókok & csoportok rendszerbeállítások oldal](./media/jamfprosamlconnector-tutorial/user2.png)
 
-5. Válassza a **normál fiók létrehozása**lehetőséget.
+5. Válassza a **normál fiók létrehozása** lehetőséget.
 
     ![A standard fiók létrehozása lehetőség a JAMF Pro felhasználói fiókok & csoportok lapon](./media/jamfprosamlconnector-tutorial/user3.png)
 
@@ -204,7 +196,7 @@ Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:
 
     a. A **Felhasználónév** mezőbe írja be `Britta Simon` a teszt felhasználó teljes nevét.
 
-    b. Válassza ki az Ön szervezetének megfelelő **hozzáférési szint**, **jogosultsági csoport**és **hozzáférési állapot** beállításait.
+    b. Válassza ki az Ön szervezetének megfelelő **hozzáférési szint**, **jogosultsági csoport** és **hozzáférési állapot** beállításait.
 
     c. A **teljes név** mezőben adja meg a (z `Britta Simon` ) értéket.
 
@@ -218,16 +210,21 @@ Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:
 
 ## <a name="test-the-sso-configuration"></a>Az egyszeri bejelentkezés konfigurációjának tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
-Amikor kiválasztja a JAMF Pro csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a JAMF Pro-fiókba, amelyhez az SSO-t konfigurálta. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>Az SP inicializálva:
 
-## <a name="additional-resources"></a>További források
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. A rendszer átirányítja a JAMF Pro bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot.  
 
-- [Oktatóanyagok az SaaS-alkalmazások integrálásához a Azure Active Directory ](./tutorial-list.md)
+* Lépjen közvetlenül a JAMF Pro bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
 
-- [Egyszeri bejelentkezés a Azure Active Directory alkalmazásaiba](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDENTITÁSSZOLGÁLTATÓ kezdeményezve:
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](/cloud-app-security/proxy-intro-aad)
-- [A JAMF Pro kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie arra a JAMF Pro-ba, amelyhez be szeretné állítani az egyszeri bejelentkezést 
+
+A Microsoft My Apps használatával bármilyen módban tesztelheti az alkalmazást. Ha a saját alkalmazások JAMF Pro csempére kattint, ha az SP módban van konfigurálva, a rendszer átirányítja az alkalmazás bejelentkezési lapjára a bejelentkezési folyamat elindításához, és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie a JAMF Pro-ba, amelyhez be kell állítania az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
+
+
+## <a name="next-steps"></a>Következő lépések
+
+A JAMF Pro konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-aad).

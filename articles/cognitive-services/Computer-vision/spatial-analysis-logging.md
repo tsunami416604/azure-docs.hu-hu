@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/11/2020
+ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: dd1b6d216f6225a13d86aa2435b5b1c807547ec3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: dda3ece27fd2c687647e0aa289bd1596a87b274f
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014577"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186022"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetria és hibaelhárítás
 
@@ -68,7 +68,7 @@ az iot hub list
 az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principal name>" --scopes="<resource ID of IoT Hub>"
 ```
 
-Az [Azure stack Edge eszköz](https://go.microsoft.com/fwlink/?linkid=2142179) vagy más [asztali gép](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)üzembe helyezési jegyzékfájljában keresse *meg a következő* értékeket, és cserélje le az alábbi értékeket az előző lépésben megadott egyszerű szolgáltatásnév adataira, majd telepítse újra.
+A [Azure stack Edge-eszköz](https://go.microsoft.com/fwlink/?linkid=2142179), [asztali számítógép](https://go.microsoft.com/fwlink/?linkid=2152270)vagy Azure-beli virtuális gép üzembe helyezési jegyzékfájljában a [GPU-val](https://go.microsoft.com/fwlink/?linkid=2152189)keresse *meg a következő* értékeket, és cserélje le az alábbi értékeket az előző lépésben megadott egyszerű szolgáltatásnév és az újbóli üzembe helyezés elemre.
 
 ```json
 
@@ -103,7 +103,7 @@ Miután telepítette a Service Graf modult, a jelentett metrikák a Azure Monito
 
 ### <a name="system-health-events"></a>Rendszerállapot-események
 
-| Esemény neve | Description|
+| Esemény neve | Leírás|
 |------|---------|
 |archon_exit    |Akkor lett elindítva *, amikor a felhasználó a térbeli* elemzési modul állapotát *Leállítva* állapotra módosítja.  |
 |archon_error   |A tárolóban lévő folyamatok összeomlásakor lett elküldve. Ez egy kritikus hiba.  |
@@ -129,7 +129,7 @@ A `iotedge` futó modulok állapotát és naplóit a parancssori eszközzel is m
 
 ## <a name="collect-log-files-with-the-diagnostics-container"></a>Naplófájlok gyűjtése a diagnosztikai tárolóval
 
-A térbeli elemzés olyan Docker-hibakeresési naplókat hoz létre, amelyeket a futásidejű problémák diagnosztizálásához, vagy a támogatási jegyek belefoglalásához használhat. A térbeli elemzési diagnosztikai modul elérhető a Microsoft Container Registryban a letöltéshez. A [Azure stack Edge-eszköz](https://go.microsoft.com/fwlink/?linkid=2142179) vagy más [asztali számítógép](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)jegyzékfájl-telepítési fájljában keresse meg a *diagnosztikai* modult.
+A térbeli elemzés olyan Docker-hibakeresési naplókat hoz létre, amelyeket a futásidejű problémák diagnosztizálásához, vagy a támogatási jegyek belefoglalásához használhat. A térbeli elemzési diagnosztikai modul elérhető a Microsoft Container Registryban a letöltéshez. Az [Azure stack Edge-eszköz](https://go.microsoft.com/fwlink/?linkid=2142179), [asztali számítógép](https://go.microsoft.com/fwlink/?linkid=2152270)vagy [Azure virtuális gép](https://go.microsoft.com/fwlink/?linkid=2152189) JEGYZÉKFÁJL-telepítési fájljában, GPU-val keresse meg a *diagnosztikai* modult.
 
 Az "env" szakaszban adja hozzá a következő konfigurációt:
 
@@ -188,13 +188,13 @@ Azt is megteheti, hogy az IoT Edge modul Twin dokumentumán keresztül globális
 > A `diagnostics` modul nem befolyásolja a naplózási tartalmat, csak a meglévő naplók összegyűjtését, szűrését és feltöltését segíti.
 > A modul használatához a Docker API 1,40-es vagy újabb verziójára van szükség.
 
-Az [Azure stack Edge-eszköz](https://go.microsoft.com/fwlink/?linkid=2142179) vagy más [asztali számítógép](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)  minta-telepítési jegyzékfájlja tartalmaz egy nevű modult `diagnostics` , amely összegyűjti és feltölti a naplókat. Ez a modul alapértelmezés szerint le van tiltva, és a naplókhoz való hozzáféréshez a IoT Edge modul konfigurációján keresztül kell engedélyezni. 
+A [Azure stack Edge-eszköz](https://go.microsoft.com/fwlink/?linkid=2142179), [asztali számítógép](https://go.microsoft.com/fwlink/?linkid=2152270)vagy Azure-beli virtuális gép a [GPU-val való](https://go.microsoft.com/fwlink/?linkid=2152189) telepítési jegyzékfájlja tartalmaz egy nevű modult, `diagnostics` amely összegyűjti és feltölti a naplókat. Ez a modul alapértelmezés szerint le van tiltva, és a naplókhoz való hozzáféréshez a IoT Edge modul konfigurációján keresztül kell engedélyezni. 
 
 A `diagnostics` gyűjtemény igény szerint felügyelhető, és egy IoT Edge Direct metódussal vezérelhető, és naplókat küldhet egy Azure-Blob Storageba.
 
 ### <a name="configure-diagnostics-upload-targets"></a>Diagnosztika-feltöltési célok konfigurálása
 
-A IoT Edge portálon válassza ki az eszközt, majd a **diagnosztikai** modult. Az [Azure stack Edge-eszköz](https://go.microsoft.com/fwlink/?linkid=2142179) vagy más [asztali gép](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)telepítési jegyzékfájljában keresse meg a **környezeti változók** szakaszt a diagnosztika nevű szakaszban `env` , és adja hozzá a következő információkat:
+A IoT Edge portálon válassza ki az eszközt, majd a **diagnosztikai** modult. A [Azure stack Edge-eszközhöz](https://go.microsoft.com/fwlink/?linkid=2142179), [asztali gépekhez](https://go.microsoft.com/fwlink/?linkid=2152270)vagy Azure-beli [virtuális géphez a GPU-val](https://go.microsoft.com/fwlink/?linkid=2152189) a **környezeti változók** szakaszban, a `env` következő információk megadásával:
 
 **Az Azure-ba való feltöltés konfigurálása Blob Storage**
 
@@ -232,7 +232,7 @@ A naplók feltöltése igény szerint történik a `getRTCVLogs` IoT Edge metód
 
 Az alábbi táblázat felsorolja a naplók lekérdezéséhez használható paramétereket.
 
-| Kulcsszó | Description | Alapértelmezett érték |
+| Kulcsszó | Leírás | Alapértelmezett érték |
 |--|--|--|
 | StartTime | A kívánt naplók kezdő időpontja ezredmásodpercben (UTC). | `-1`, a tároló futtatókörnyezetének kezdete. Amikor `[-1.-1]` időtartományként használja az API-t, az elmúlt egy órában visszaadja a naplókat.|
 | EndTime | A kívánt naplók befejezési időpontja ezredmásodpercben (UTC). | `-1`, az aktuális idő. `[-1.-1]`Az időtartomány használatakor az API az elmúlt egy óra naplóit adja vissza. |
@@ -243,7 +243,7 @@ Az alábbi táblázat felsorolja a naplók lekérdezéséhez használható param
 
 A következő táblázat a lekérdezési válasz attribútumait sorolja fel.
 
-| Kulcsszó | Description|
+| Kulcsszó | Leírás|
 |--|--|
 |DoPost| *Igaz* vagy *hamis*. Azt jelzi, hogy a naplók feltöltése megtörtént-e. Ha úgy dönt, hogy nem tölt fel naplókat, az API a ***szinkron** _ adatokat adja vissza. Ha a naplók feltöltését választja, az API a 200 értéket adja vissza, ha a kérelem érvényes, és a naplók _*_aszinkron_*_ feltöltését indítja el.|
 |TimeFilter| A naplókra alkalmazott Időszűrő.|

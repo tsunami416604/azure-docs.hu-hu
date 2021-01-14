@@ -10,12 +10,12 @@ author: luisquintanilla
 ms.author: luquinta
 ms.date: 07/09/2020
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 9ad96bdb632e134cf3e3a0f82bb97f88c87e72e9
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 937b5ebb13bfbf27ff04b6944f2de7e32e7e656c
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033442"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185852"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension-preview"></a>Képbesorolási TensorFlow-modell betanítása és üzembe helyezése a Visual Studio Code-bővítmény (előzetes verzió) Azure Machine Learning
 
@@ -78,7 +78,7 @@ Egy vagy több kísérlet hozható létre a munkaterületen, és nyomon követhe
     > [!div class="mx-imgBorder"]
     > ![Kísérlet létrehozása](./media/tutorial-train-deploy-image-classification-model-vscode/create-experiment.png)
 
-1. Adja a "MNIST" nevű kísérletet, majd nyomja le az **ENTER** billentyűt az új kísérlet létrehozásához. 
+1. Nevezze el a kísérletet "tutorial-VSCode-MNIST" néven, majd nyomja le az **ENTER** billentyűt az új kísérlet létrehozásához. 
 
 A munkaterületekhez hasonlóan a rendszer küld egy kérelmet az Azure-nak, hogy hozzon létre egy kísérletet a megadott konfigurációkkal. Néhány perc elteltével az új kísérlet a munkaterület *kísérletek* csomópontjában jelenik meg. 
 

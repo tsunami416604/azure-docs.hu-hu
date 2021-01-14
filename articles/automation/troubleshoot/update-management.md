@@ -5,12 +5,12 @@ services: automation
 ms.date: 12/04/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: c6d0f38eaa25f2fe033a5e2cf48ee6daa51fcbe6
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: f00002c7374e0c35c7bb91c28b2dd87ad71e3350
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929276"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184917"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Az Update Management hibáinak elhárítása
 
@@ -27,7 +27,7 @@ A Linux rendszerű gépek esetében Update Management a besorolási **Biztonság
 
 ### <a name="cause"></a>Ok
 
-Ha a linuxos gépen függőben lévő operációsrendszer-frissítések értékelését végzi, a rendszer a Linux-disztribúciós gyártó által biztosított [biztonsági réseket és Assessment Language](https://oval.mitre.org/) (ovális) fájlokat használja Update Management besorolásra. A kategorizálás **a biztonsági problémák** vagy sebezhetőségek kezelése érdekében **Others** a frissítéseket tartalmazó ovális fájlok alapján történik. A frissítési ütemterv futtatásakor azonban a megfelelő csomagkezelő, például a YUM, az APT vagy a ZYPPER használatával hajtja végre a telepítést a Linux gépen. A Linux-disztribúcióhoz tartozó csomagkezelő rendelkezhet egy másik módszerrel a frissítések besorolásához, ahol az eredmények eltérhetnek az OVÁLIS fájlokból beszerzett Update Management alapján.
+Ha a linuxos gépen függőben lévő operációsrendszer-frissítések értékelését végzi, a rendszer a Linux-disztribúciós gyártó által biztosított [biztonsági réseket és Assessment Language](https://oval.mitre.org/) (ovális) fájlokat használja Update Management besorolásra. A kategorizálás **a biztonsági problémák** vagy sebezhetőségek kezelése érdekében a frissítéseket tartalmazó ovális fájlok alapján történik. A frissítési ütemterv futtatásakor azonban a megfelelő csomagkezelő, például a YUM, az APT vagy a ZYPPER használatával hajtja végre a telepítést a Linux gépen. A Linux-disztribúcióhoz tartozó csomagkezelő rendelkezhet egy másik módszerrel a frissítések besorolásához, ahol az eredmények eltérhetnek az OVÁLIS fájlokból beszerzett Update Management alapján.
 
 ### <a name="resolution"></a>Feloldás
 
@@ -71,7 +71,7 @@ Ez a hiba a következő okok miatt fordulhat elő:
 
 * A Update Management célzás helytelenül van konfigurálva, és a gép nem fogadja a várt frissítéseket.
 
-* Azt is megfigyelheti, hogy a gép a megfelelőség alatt látható állapotot jeleníti meg `Non-compliant` . **Compliance** Ugyanakkor az **Agent Desktop Analytics** az ügynököt a következőként jelenti: `Disconnected` .
+* Azt is megfigyelheti, hogy a gép a megfelelőség alatt látható állapotot jeleníti meg `Non-compliant` .  Ugyanakkor az **Agent Desktop Analytics** az ügynököt a következőként jelenti: `Disconnected` .
 
 ### <a name="resolution"></a>Feloldás
 
@@ -425,7 +425,7 @@ Ez a hiba a következő okok valamelyike miatt jelentkezhet:
 
 Ha alkalmazható, használjon [dinamikus csoportokat](../update-management/configure-groups.md) a frissítés központi telepítéséhez. Emellett az alábbi lépéseket is végrehajthatja.
 
-1. Ellenőrizze, hogy a számítógép vagy a kiszolgáló megfelel-e a [követelményeknek](../update-management/overview.md#client-requirements).
+1. Ellenőrizze, hogy a számítógép vagy a kiszolgáló megfelel-e a [követelményeknek](../update-management/overview.md#system-requirements).
 2. Ellenőrizze a hibrid Runbook-feldolgozóval való kapcsolatot a hibrid Runbook Worker Agent-hibakereső használatával. A hibaelhárítással kapcsolatos további tudnivalókért tekintse meg a [frissítési ügynökkel kapcsolatos problémák elhárítása](update-agent-issues.md)című témakört.
 
 ## <a name="scenario-updates-are-installed-without-a-deployment"></a><a name="updates-nodeployment"></a>Forgatókönyv: a frissítések központi telepítés nélkül települnek

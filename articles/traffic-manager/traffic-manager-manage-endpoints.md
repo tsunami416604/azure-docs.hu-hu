@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: duau
-ms.openlocfilehash: fc6e8bcda17f9d788a430ed763bd9f8702eaf250
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3d5a888bf132725ff64c2a128b77f0257f435585
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003548"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184254"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>Végpontok felvétele, letiltása, engedélyezése és törlése
 
@@ -45,7 +45,7 @@ A Traffic Manager-profil részét képező egyedi végpontok is letilthatók. A 
 7.  Miután mindkét végpontot hozzáadta, azok megjelennek a **Traffic Manager-profil** panelen, **Online** figyelési állapottal.
 
 > [!NOTE]
-> Miután a *Feladatátvitel* forgalom-útválasztási módszer segítségével hozzáad vagy eltávolít egy végpontot a profilból, előfordulhat, hogy a feladatátvitel prioritási listát nem rendezheti át úgy, ahogy szeretné. A feladatátvétel prioritási lista sorrendjét a konfigurációs lapon adhatja meg. További információkért tekintse meg a [Feladatátvételi forgalom-útválasztás beállítása](traffic-manager-configure-failover-routing-method.md) szakaszt.
+> Miután a *Feladatátvitel* forgalom-útválasztási módszer segítségével hozzáad vagy eltávolít egy végpontot a profilból, előfordulhat, hogy a feladatátvitel prioritási listát nem rendezheti át úgy, ahogy szeretné. A feladatátvétel prioritási lista sorrendjét a konfigurációs lapon adhatja meg. További információkért tekintse meg a [Feladatátvételi forgalom-útválasztás beállítása](./traffic-manager-configure-priority-routing-method.md) szakaszt.
 
 ## <a name="to-disable-an-endpoint"></a>A végpontok letiltása
 
@@ -74,11 +74,10 @@ A Traffic Manager-profil részét képező egyedi végpontok is letilthatók. A 
 5. A **végpont** panelen kattintson a **Törlés** elemre.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Traffic Manager-profilok kezelése](traffic-manager-manage-profiles.md)
-* [Útválasztási módszerek konfigurálása](traffic-manager-configure-routing-method.md)
+* [Útválasztási módszerek konfigurálása](./traffic-manager-configure-priority-routing-method.md)
 * [Hibaelhárítás a Traffic Manager „Csökkentett teljesítményű” állapota esetén](traffic-manager-troubleshooting-degraded.md)
 * [A Traffic Manager teljesítményével kapcsolatos megfontolások](traffic-manager-performance-considerations.md)
-* [Operations on Traffic Manager (A Traffic Managerrel végezhető műveletek) (REST API-referencia)](https://go.microsoft.com/fwlink/p/?LinkID=313584)
-
+* [Operations on Traffic Manager (A Traffic Managerrel végezhető műveletek) (REST API-referencia)](/previous-versions/azure/reference/hh758255(v=azure.100))

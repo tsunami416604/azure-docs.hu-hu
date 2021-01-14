@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/11/2020
+ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 8e951e6cb18596b19f49bf42179297f656e3fa5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 849afe54125588cb7664ee221e4f229e83be8f96
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91304294"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185478"
 ---
 # <a name="camera-placement-guide"></a>Kamera elhelyezése – útmutató
 
@@ -52,7 +52,7 @@ A következő ábrán a személy gyaloglás irányának emelési nézete láthat
 
 ## <a name="camera-height"></a>Kamera magassága
 
-Általában a kamerákat a területről 12-14 méterre kell csatlakoztatni. Ha megtervezi a kamera csatlakoztatását ebben a tartományban, érdemes megfontolnia az akadályozó tényezőket (például a polcokat, a függő lámpákat, a függő aláírásokat és a megjelenített értékeket), amelyek hatással lehetnek a kamera nézetre, majd szükség szerint módosíthatja a magasságot.
+Általában a kamerákat a területről 12-14 méterre kell csatlakoztatni. A maszk észleléséhez azt javasoljuk, hogy a kamerákat a helyről 8-12 méterre kell csatlakoztatni. Ha megtervezi a kamera csatlakoztatását ebben a tartományban, érdemes megfontolnia az akadályozó tényezőket (például a polcokat, a függő lámpákat, a függő aláírásokat és a megjelenített értékeket), amelyek hatással lehetnek a kamera nézetre, majd szükség szerint módosíthatja a magasságot.
 
 ## <a name="camera-to-focal-point-distance"></a>Kameráról a fókuszra mutató távolság
 
@@ -68,7 +68,7 @@ A fentiek alapján a következőképpen néz ki:
 
 ![A kamera és a fókusz közötti távolság mérése](./media/spatial-analysis/camera-focal-point-above.png)
 
-Az alábbi táblázat segítségével meghatározhatja a kamera távolságát a fókuszponttól az adott csatlakoztatási magasságok alapján. Ezek a távolságok optimális elhelyezést biztosítanak. Vegye figyelembe, hogy a táblázat a 12 "-14" ajánlás alatt nyújt útmutatást, mivel egyes felső határértékek korlátozhatják a magasságot.
+Az alábbi táblázat segítségével meghatározhatja a kamera távolságát a fókuszponttól az adott csatlakoztatási magasságok alapján. Ezek a távolságok optimális elhelyezést biztosítanak. Vegye figyelembe, hogy a táblázat a 12 "-14" ajánlás alatt nyújt útmutatást, mivel egyes felső határértékek korlátozhatják a magasságot. A maszk észlelése esetén az ajánlott kamerától a fókusztávolságig terjedő távolság (min/max) 4 "-10" a kamera magassága 8 és 12 között.
 
 | Kamera magassága | Kamerától a fókusztávolságig terjedő távolság (min/max) |  
 | ------------- | ---------------------------------------- |  
@@ -91,7 +91,7 @@ Ez a szakasz az elfogadható kamera szögének csatlakoztatási tartományait is
 
 ### <a name="line-configuration"></a>Vonal konfigurációja
 
-A következő táblázat a **cognitiveservices. vízió. spatialanalysis-personcrossingline** művelethez konfigurált fényképezőgépek javaslatait mutatja be. 
+A következő táblázat a **cognitiveservices. vízió. spatialanalysis-personcrossingline** művelethez konfigurált fényképezőgépek javaslatait mutatja be. Az álarcok észleléséhez a +/-30 fok a kamera magasságának optimális kamera-csatlakoztatási szöge 8 és 12 között.
 
 | Kamera magassága | Kameráról a fókuszra mutató távolság | Optimális kamera-csatlakoztatási szög (min/max.) |  
 | ------------- | ------------------------------ | ------------------------------------------ |  
@@ -127,7 +127,7 @@ A következő ábra a polcok melletti terület bal és jobb oldali kamerás néz
 
 #### <a name="queues"></a>Üzenetsorok
 
-A **cognitiveservices. vízió. spatialanalysis-personcount**, **cognitiveservices. vízió. spatialanalysis-persondistance**és **cognitiveservices. vízió. spatialanalysis-personcrossingpolygon** készségek használhatók a várólisták figyelésére. Az optimális üzenetsor-adatminőség érdekében a visszaállítható biztonsági öv korlátai előnyben részesítik a sorban lévő személyek elzáródásának minimalizálását, és a várólisták helyének időbeli egységességét.
+A **cognitiveservices. vízió. spatialanalysis-personcount**, **cognitiveservices. vízió. spatialanalysis-persondistance** és **cognitiveservices. vízió. spatialanalysis-personcrossingpolygon** készségek használhatók a várólisták figyelésére. Az optimális üzenetsor-adatminőség érdekében a visszaállítható biztonsági öv korlátai előnyben részesítik a sorban lévő személyek elzáródásának minimalizálását, és a várólisták helyének időbeli egységességét.
 
 ![Visszavonható öv üzenetsor](./media/spatial-analysis/retractable-belt-queue.png)
 

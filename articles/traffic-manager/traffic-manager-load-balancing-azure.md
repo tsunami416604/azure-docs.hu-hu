@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: duau
-ms.openlocfilehash: 431eaff9da95063648d3e80acb54be9cc5c25bc5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: eaf50f3bdacaf5680bc5ecb1379faff20133b5ce
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021690"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184373"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Terheléselosztási szolgáltatások használata az Azure-ban
 
@@ -41,7 +41,7 @@ Koncepcionális szinten a szolgáltatások mindegyike külön szerepet játszik 
 * A **Application Gateway** az Application Delivery Controller (ADC) szolgáltatást nyújtja, amely különböző, 7. rétegbeli terheléselosztási funkciókat kínál az alkalmazáshoz. Lehetővé teszi az ügyfelek számára a webfarmok hatékonyságának optimalizálását azáltal, hogy kiszervezik a CPU-igényes TLS-lezárást az Application Gateway felé. Az egyéb 7. rétegbeli útválasztási képességek közé tartozik a bejövő forgalom ciklikus lekéréses eloszlása, a cookie-alapú munkamenet-affinitás, az URL-alapú útválasztás, valamint az egyetlen Application Gateway mögött több webhely üzemeltetése. Application Gateway konfigurálható internetre irányuló átjáróként, csak belső átjáróként, vagy mindkettő kombinációja. A Application Gateway teljes mértékben az Azure által felügyelt, méretezhető és magasan elérhető. Diagnosztikai és naplózási képességek széles skáláját biztosítja a jobb kezelhetőség érdekében.
 * **Load Balancer** az Azure Sdn stack szerves része, amely nagy teljesítményű, kis késleltetésű 4. rétegbeli terheléselosztási szolgáltatásokat biztosít minden UDP-és TCP-protokollhoz. Felügyeli a bejövő és kimenő kapcsolatokat. Segítségével nyilvános és belső elosztott terhelésű végpontok konfigurálhatók, valamint szabályok definiálhatók, amelyek a bejövő kapcsolatokat a háttérbeli készletben található célokra irányítják TCP- és HTTP-állapotellenőrzési lehetőségek használatával, a szolgáltatás rendelkezésre állásának felügyeletéhez.
 
-## <a name="scenario"></a>Használati eset
+## <a name="scenario"></a>Használati példa
 
 Ebben a példában egy egyszerű webhelyet használunk, amely két típusú tartalmat kínál: a képeket és a dinamikusan megjelenített weblapokat. A webhelynek földrajzilag redundánsnak kell lennie, és a felhasználókat a legközelebbi (legalacsonyabb késésű) helyről kell kiszolgálni. Az alkalmazás fejlesztői úgy döntöttek, hogy a/images/* mintának megfelelő URL-címek a webfarm többi részétől eltérő, dedikált virtuális gépekből származnak.
 
@@ -92,11 +92,11 @@ Az alábbi ábrán a forgatókönyv architektúrája látható:
 4. Adja meg a virtuális hálózatot, az alhálózatot, az előtér-IP-címet és a figyelő konfigurációját az Application Gateway számára. Ebben az esetben az előtér-IP-cím **nyilvános**, amely lehetővé teszi, hogy később a Traffic Manager-profilhoz végpontként adja hozzá.
 5. Konfigurálja a figyelőt a következő lehetőségek egyikével:
     * Ha HTTP-t használ, nem kell konfigurálnia a konfigurációt. Kattintson az **OK** gombra.
-    * Ha HTTPS-t használ, további konfigurálásra van szükség. Lásd: [Application Gateway létrehozása](../application-gateway/application-gateway-create-gateway-portal.md)a 9. lépéstől kezdve. A konfiguráció befejezése után kattintson **az OK** gombra.
+    * Ha HTTPS-t használ, további konfigurálásra van szükség. Lásd: [Application Gateway létrehozása](../application-gateway/quick-create-portal.md)a 9. lépéstől kezdve. A konfiguráció befejezése után kattintson **az OK** gombra.
 
 #### <a name="configure-url-routing-for-application-gateways"></a>URL-útválasztás konfigurálása Application Gateway-hez
 
-Ha a háttér-készletet választja, a Path-alapú szabályhoz konfigurált Application Gateway a kérés URL-címéhez tartozó elérésiút-mintát veszi fel a ciklikus multiplexelés eloszlása mellett. Ebben a forgatókönyvben egy elérésiút-alapú szabályt adunk hozzá, amely a "/images/" URL-címet \* a rendszerkép-kiszolgáló készlethez irányítja. Az Application Gateway URL-alapú útválasztásának konfigurálásával kapcsolatos további információkért lásd: [elérésiút-alapú szabály létrehozása Application gatewayhez](../application-gateway/application-gateway-create-url-route-portal.md).
+Ha a háttér-készletet választja, a Path-alapú szabályhoz konfigurált Application Gateway a kérés URL-címéhez tartozó elérésiút-mintát veszi fel a ciklikus multiplexelés eloszlása mellett. Ebben a forgatókönyvben egy elérésiút-alapú szabályt adunk hozzá, amely a "/images/" URL-címet \* a rendszerkép-kiszolgáló készlethez irányítja. Az Application Gateway URL-alapú útválasztásának konfigurálásával kapcsolatos további információkért lásd: [elérésiút-alapú szabály létrehozása Application gatewayhez](../application-gateway/create-url-route-portal.md).
 
 ![Application Gateway webes réteg diagramja](./media/traffic-manager-load-balancing-azure/web-tier-diagram.png)
 
@@ -156,7 +156,7 @@ Ebben a forgatókönyvben a Load Balancer a webes rétegből származó kapcsola
 
 Ha a magas rendelkezésre állású adatbázis-fürt SQL Server AlwaysOn használ, a Részletes utasításokért tekintse [meg egy vagy több always on rendelkezésre állási csoport figyelőjét](../azure-sql/virtual-machines/windows/availability-group-listener-powershell-configure.md) .
 
-A belső terheléselosztó konfigurálásával kapcsolatos további információkért lásd: [belső terheléselosztó létrehozása a Azure Portalban](../load-balancer/load-balancer-get-started-ilb-arm-portal.md).
+A belső terheléselosztó konfigurálásával kapcsolatos további információkért lásd: [belső terheléselosztó létrehozása a Azure Portalban](../load-balancer/quickstart-load-balancer-standard-internal-portal.md).
 
 1. A Azure Portal a bal oldali ablaktáblán kattintson az **erőforrás létrehozása**  >  **hálózatkezelés**  >  **Load Balancer** elemre.
 2. Válassza ki a terheléselosztó nevét.
@@ -207,8 +207,8 @@ Most konfiguráljuk az IP-címet és a terheléselosztó előtér-portot a webr�
 
 ![Load Balancer "előtéri IP-címkészlet" navigációs ablaktábla](./media/traffic-manager-load-balancing-azure/s5-ilb-frontend-ippool.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Traffic Manager áttekintése](traffic-manager-overview.md)
-* [Az Application Gateway áttekintése](../application-gateway/application-gateway-introduction.md)
+* [Az Application Gateway áttekintése](../application-gateway/overview.md)
 * [Az Azure Load Balancer áttekintése](../load-balancer/load-balancer-overview.md)

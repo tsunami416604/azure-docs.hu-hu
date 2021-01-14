@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: duau
-ms.openlocfilehash: 25c0b18da1690557f11e36dd11dda693ddddb838
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f24a4a0d982ff78ca4d6726e950825ed2c784e67
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401316"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184542"
 ---
 # <a name="enable-resource-logging-in-azure-traffic-manager"></a>Erőforrás-naplózás engedélyezése az Azure-ban Traffic Manager
 
@@ -39,14 +39,14 @@ Az alábbi parancsokat futtathatja a [Azure Cloud Shell](https://shell.azure.com
 
 2. **Erőforrás-naplózás engedélyezése a Traffic Manager profilhoz:**
 
-    Engedélyezze az erőforrás-naplózást a Traffic Manager profilhoz az előző lépésben a [set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting?view=latest)használatával BEszerzett azonosítóval. A következő parancs a Traffic Manager profilhoz tartozó részletes naplókat tárolja egy megadott Azure Storage-fiókban. 
+    Engedélyezze az erőforrás-naplózást a Traffic Manager profilhoz az előző lépésben a [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=latest)használatával BEszerzett azonosítóval. A következő parancs a Traffic Manager profilhoz tartozó részletes naplókat tárolja egy megadott Azure Storage-fiókban. 
 
       ```azurepowershell-interactive
     Set-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId> -StorageAccountId <storageAccountId> -Enabled $true
       ``` 
 3. **Diagnosztikai beállítások ellenőrzése:**
 
-      Ellenőrizze a Traffic Manager-profil diagnosztikai beállításait a [Get-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/get-azdiagnosticsetting?view=latest)használatával. A következő parancs megjeleníti az adott erőforráshoz naplózott kategóriákat.
+      Ellenőrizze a Traffic Manager-profil diagnosztikai beállításait a [Get-AzDiagnosticSetting](/powershell/module/az.monitor/get-azdiagnosticsetting?view=latest)használatával. A következő parancs megjeleníti az adott erőforráshoz naplózott kategóriákat.
 
      ```azurepowershell-interactive
      Get-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId>
@@ -56,25 +56,24 @@ Az alábbi parancsokat futtathatja a [Azure Cloud Shell](https://shell.azure.com
 ## <a name="access-log-files"></a>Hozzáférési naplófájlok
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 1. Navigáljon az Azure Storage-fiókjához a portálon.
-2. Az Azure Storage-fiók **Áttekintés** lapján a **szolgáltatások** területen válassza a **Blobok**elemet.
-3. A **tárolók**területen válassza az elemzések **-naplók-probehealthstatusevents**lehetőséget, majd lépjen a fájl PT1H.jsra, és kattintson a **Letöltés** gombra a naplófájl másolatának letöltéséhez és mentéséhez.
+2. Az Azure Storage-fiók **Áttekintés** lapján a **szolgáltatások** területen válassza a **Blobok** elemet.
+3. A **tárolók** területen válassza az elemzések **-naplók-probehealthstatusevents** lehetőséget, majd lépjen a fájl PT1H.jsra, és kattintson a **Letöltés** gombra a naplófájl másolatának letöltéséhez és mentéséhez.
 
     ![A Traffic Manager profilhoz tartozó naplófájlok elérése blob Storage-ból](./media/traffic-manager-logs/traffic-manager-logs.png)
 
 
 ## <a name="traffic-manager-log-schema"></a>Traffic Manager naplózási séma
 
-A Azure Monitoron keresztül elérhető összes erőforrás-napló közös legfelső szintű sémával rendelkezik, és minden szolgáltatás számára rugalmasságot biztosít, hogy egyedi tulajdonságokat bocsát ki a saját eseményeihez. A legfelső szintű erőforrás-naplók sémája: [támogatott szolgáltatások, sémák és kategóriák az Azure-erőforrások naplóihoz](../azure-monitor/platform/tutorial-dashboards.md).
+A Azure Monitoron keresztül elérhető összes erőforrás-napló közös legfelső szintű sémával rendelkezik, és minden szolgáltatás számára rugalmasságot biztosít, hogy egyedi tulajdonságokat bocsát ki a saját eseményeihez. A legfelső szintű erőforrás-naplók sémája: [támogatott szolgáltatások, sémák és kategóriák az Azure-erőforrások naplóihoz](../azure-monitor/platform/resource-logs-schema.md).
 
 Az alábbi táblázat az Azure Traffic Manager-profil erőforrásához tartozó naplók sémáját tartalmazza.
 
 |Mezőnév|Mező típusa|Definíció|Példa|
 |----|----|---|---|
 |Végpontneve|Sztring|Annak az Traffic Manager végpontnak a neve, amelynek az állapotát rögzíti a rendszer.|*myPrimaryEndpoint*|
-|status|Sztring|A kipróbált Traffic Manager végpont állapota. Az állapot lehet akár **felfelé** , akár **lefelé**is.|**Fel**|
+|Állapot|Sztring|A kipróbált Traffic Manager végpont állapota. Az állapot lehet akár **felfelé** , akár **lefelé** is.|**Fel**|
 |||||
 
 ## <a name="next-steps"></a>Következő lépések
 
 * További információ a [Traffic Manager figyelésről](traffic-manager-monitoring.md)
-

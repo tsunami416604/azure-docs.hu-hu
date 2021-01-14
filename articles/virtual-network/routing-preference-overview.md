@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/02/2020
 ms.author: mnayak
-ms.openlocfilehash: 656f8a0e0530a20807fc8fddd4cd96d1d955c8ac
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: fa83c51469636eb269aa5dc3192ff7e65b53ce89
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912699"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186141"
 ---
 # <a name="what-is-routing-preference-preview"></a>Mi az útválasztási preferencia (előzetes verzió)?
 
@@ -65,8 +65,8 @@ A "Microsoft Global Network" nevű útválasztási beállításokat tartalmazó 
 A tároláshoz az elsődleges végpontok mindig a **Microsoft globális hálózatot** használják. A másodlagos végpontokat az **internettel** engedélyezheti, ha a forgalom útválasztását választja. A támogatott tárolási szolgáltatások a következők:
 
 * Blobok
-* Fájlok
-* Webes
+* Files
+* Web
 * Azure DataLake
 
 ## <a name="pricing"></a>Díjszabás
@@ -74,7 +74,7 @@ A két lehetőség közötti árkülönbség az internetes kimenő adatforgalom 
 
 ## <a name="limitations"></a>Korlátozások
 
-* Az útválasztási beállítás csak a nyilvános IP-cím szabványos SKU-jának megfelelően kompatibilis. A nyilvános IP-cím alapszintű SKU-jának használata nem támogatott.
+* Az útválasztási beállítások csak a nyilvános IP-címekhez tartozó redundáns szabványos SKU-hoz kompatibilisek. A nyilvános IP-cím alapszintű SKU-jának használata nem támogatott.
 * Az útválasztási beállítások jelenleg csak IPv4 nyilvános IP-címeket támogatnak. Az IPv6 nyilvános IP-címek nem támogatottak.
 * A több hálózati adapterrel rendelkező virtuális gépek esetében csak egy típusú útválasztási beállítás lehet.
 

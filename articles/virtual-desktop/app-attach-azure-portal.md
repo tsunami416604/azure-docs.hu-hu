@@ -6,14 +6,14 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d8ed429003a9da7ae93fb93f4218cd66767dcd7b
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 34bcef24d5e7fbda53984f14a2307859c9210262
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562276"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185954"
 ---
-# <a name="set-up-msix-app-attach-with-the-azure-portal"></a>A MSIX-alkalmazás csatlakoztatása a Azure Portal
+# <a name="set-up-msix-app-attach-with-the-azure-portal"></a>MSIX-alkalmazás csatolásának beállítása az Azure Portal használatával
 
 > [!IMPORTANT]
 > A MSIX-alkalmazás csatolása jelenleg nyilvános előzetes verzióban érhető el.
@@ -54,19 +54,10 @@ reg add HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager /v
 
 reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Debug /v ContentDeliveryAllowedOverride /t REG_DWORD /d 0x2 /f
 
-rem Disable Windows Update:
-
-sc config wuauserv start=disabled
-```
-
-Miután letiltotta az automatikus frissítéseket, engedélyeznie kell a Hyper-V-t, mert a `Mount-VHD` parancsot a következő szakaszra és leválasztásra használja:
-
-```powershell
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 ```
 
 >[!NOTE]
->Ehhez a változáshoz újra kell indítani a virtuális gépet.
+>Javasoljuk, hogy a Hyper-V engedélyezése után indítsa újra a virtuális gépet.
 
 ## <a name="configure-the-msix-app-attach-management-interface"></a>A MSIX alkalmazás csatolása felügyeleti felület konfigurálása
 
@@ -233,7 +224,7 @@ Az egyes MSIX-alkalmazások eltávolítása a csomagból:
 
 4. Válassza ki az eltávolítani kívánt alkalmazást, majd kattintson az **Eltávolítás** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Kérje meg a közösségi kérdéseket a szolgáltatással kapcsolatban a [Windows rendszerű virtuális asztali TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop).
 

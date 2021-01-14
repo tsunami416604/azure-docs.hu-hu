@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f625b7dd68d4b5a5e1af68aeb53dac453ff8cbfd
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 5e45c51735e0b7ab4b263d3f3047b5848c82439d
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400828"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185767"
 ---
 # <a name="create-powershell-scripts-for-msix-app-attach-preview"></a>PowerShell-parancsfájlok létrehozása MSIX-alkalmazás csatolásához (előzetes verzió)
 
@@ -39,6 +39,17 @@ Ha az alkalmazás olyan tanúsítványt használ, amely nem nyilvánosan megbíz
 6. Válassza **a minden tanúsítvány tárolása a következő tárolóban** lehetőséget, majd válassza a **Tallózás** lehetőséget.
 7. Amikor megjelenik a tanúsítványtároló kiválasztása ablak, válassza a **Megbízható személyek** lehetőséget, majd kattintson **az OK gombra**.
 8. Válassza a **tovább** , majd a **Befejezés** lehetőséget.
+
+## <a name="enable-microsoft-hyper-v"></a>Microsoft Hyper-V engedélyezése
+
+A Microsoft Hyper-Vt engedélyezni kell, mert a parancs végrehajtásához szükség van a művelet elvégzéséhez `Mount-VHD` `Dismount-VHD` .
+
+```powershell
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+```
+
+>[!NOTE]
+>Ehhez a változáshoz újra kell indítani a virtuális gépet.
 
 ## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>PowerShell-parancsfájlok előkészítése MSIX-alkalmazás csatolásához
 

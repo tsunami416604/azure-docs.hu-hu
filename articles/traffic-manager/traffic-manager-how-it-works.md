@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: duau
-ms.openlocfilehash: 471895f1a615770521584a627e6bca850b87d0ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1e1bd107e8b3b9209f99d1abfc4d7e391c3c4a6
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462632"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184339"
 ---
 # <a name="how-traffic-manager-works"></a>A Traffic Manager működése
 
@@ -30,7 +30,7 @@ Traffic Manager két fő előnyt biztosít:
 
 Amikor egy ügyfél megkísérel a szolgáltatáshoz kapcsolódni, először IP-címmé kell feloldania a szolgáltatás DNS-nevét. Az ügyfél ez után ehhez az IP-címhez kapcsolódva éri el a szolgáltatást.
 
-**A legfontosabb szempont, hogy Traffic Manager a DNS szintjén működik.**  Traffic Manager a DNS használatával irányítja az ügyfeleket bizonyos szolgáltatási végpontokra a forgalom-útválasztási módszer szabályai alapján. Az ügyfelek **közvetlenül**csatlakoznak a kiválasztott végponthoz. Traffic Manager nem proxy vagy átjáró. Traffic Manager nem látja az ügyfél és a szolgáltatás közötti adatforgalmat.
+**A legfontosabb szempont, hogy Traffic Manager a DNS szintjén működik.**  Traffic Manager a DNS használatával irányítja az ügyfeleket bizonyos szolgáltatási végpontokra a forgalom-útválasztási módszer szabályai alapján. Az ügyfelek **közvetlenül** csatlakoznak a kiválasztott végponthoz. Traffic Manager nem proxy vagy átjáró. Traffic Manager nem látja az ügyfél és a szolgáltatás közötti adatforgalmat.
 
 ## <a name="traffic-manager-example"></a>Traffic Manager példa
 
@@ -71,27 +71,27 @@ A rekurzív DNS szolgáltatás gyorsítótárazza a kapott DNS-válaszokat. Az �
 
 ## <a name="faqs"></a>Gyakori kérdések
 
-* [Milyen IP-címet Traffic Manager használni?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-ip-address-does-traffic-manager-use)
+* [Milyen IP-címet Traffic Manager használni?](./traffic-manager-faqs.md#what-ip-address-does-traffic-manager-use)
 
-* [Milyen típusú forgalmat lehet irányítani a Traffic Manager használatával?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-types-of-traffic-can-be-routed-using-traffic-manager)
+* [Milyen típusú forgalmat lehet irányítani a Traffic Manager használatával?](./traffic-manager-faqs.md#what-types-of-traffic-can-be-routed-using-traffic-manager)
 
-* [Traffic Manager támogatja a "Sticky" munkameneteket?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-support-sticky-sessions)
+* [Traffic Manager támogatja a "Sticky" munkameneteket?](./traffic-manager-faqs.md#does-traffic-manager-support-sticky-sessions)
 
-* [Miért látok HTTP-hibát a Traffic Manager használatakor?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-am-i-seeing-an-http-error-when-using-traffic-manager)
+* [Miért látok HTTP-hibát a Traffic Manager használatakor?](./traffic-manager-faqs.md#why-am-i-seeing-an-http-error-when-using-traffic-manager)
 
-* [Milyen hatással van a Traffic Manager használatának teljesítményére?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-is-the-performance-impact-of-using-traffic-manager)
+* [Milyen hatással van a Traffic Manager használatának teljesítményére?](./traffic-manager-faqs.md#what-is-the-performance-impact-of-using-traffic-manager)
 
-* [Milyen alkalmazás-protokollokat használhatok a Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-application-protocols-can-i-use-with-traffic-manager)
+* [Milyen alkalmazás-protokollokat használhatok a Traffic Manager?](./traffic-manager-faqs.md#what-application-protocols-can-i-use-with-traffic-manager)
 
-* [Használhatom a Traffic Managert "Naked" tartománynévvel?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-a-naked-domain-name)
+* [Használhatom a Traffic Managert "Naked" tartománynévvel?](./traffic-manager-faqs.md#can-i-use-traffic-manager-with-a-naked-domain-name)
 
-* [A DNS-lekérdezések kezelésekor az ügyfél alhálózati címének Traffic Manager kell lennie?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries)
+* [A DNS-lekérdezések kezelésekor az ügyfél alhálózati címének Traffic Manager kell lennie?](./traffic-manager-faqs.md#does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries)
 
-* [Mi a DNS-élettartam, és hogyan befolyásolja a felhasználókat?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-is-dns-ttl-and-how-does-it-impact-my-users)
+* [Mi a DNS-élettartam, és hogyan befolyásolja a felhasználókat?](./traffic-manager-faqs.md#what-is-dns-ttl-and-how-does-it-impact-my-users)
 
-* [Hogyan állítható be a TTL a Traffic Manager-válaszok esetében?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-high-or-low-can-i-set-the-ttl-for-traffic-manager-responses)
+* [Hogyan állítható be a TTL a Traffic Manager-válaszok esetében?](./traffic-manager-faqs.md#how-high-or-low-can-i-set-the-ttl-for-traffic-manager-responses)
 
-* [Hogyan tudom megismerni a profilhoz tartozó lekérdezések mennyiségét?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-understand-the-volume-of-queries-coming-to-my-profile)
+* [Hogyan tudom megismerni a profilhoz tartozó lekérdezések mennyiségét?](./traffic-manager-faqs.md#how-can-i-understand-the-volume-of-queries-coming-to-my-profile)
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -102,4 +102,3 @@ További információ a Traffic Manager [forgalom-útválasztási módszerekről
 <!--Image references-->
 [1]: ./media/traffic-manager-how-traffic-manager-works/dns-configuration.png
 [2]: ./media/traffic-manager-how-traffic-manager-works/flow.png
-

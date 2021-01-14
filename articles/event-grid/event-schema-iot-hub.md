@@ -2,13 +2,13 @@
 title: Azure-IoT Hub Event Grid forrásként
 description: Ez a cikk az Azure IoT Hub eseményeinek tulajdonságait és sémáját ismerteti. Felsorolja a rendelkezésre álló eseménytípus, a példa esemény és az esemény tulajdonságait.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 02ecf8d4df55aa6b4319e40892778f85f94e29a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/13/2021
+ms.openlocfilehash: 7e1c480bd2a662a2ee3418b35dc9c3b50d412a60
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86113649"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185835"
 ---
 # <a name="azure-iot-hub-as-an-event-grid-source"></a>Azure-IoT Hub Event Grid forrásként
 Ez a cikk az Azure IoT Hub eseményeinek tulajdonságait és sémáját ismerteti. Az események sémáinak bemutatása: [Azure Event Grid Event Schema](event-schema.md). 
@@ -26,8 +26,6 @@ Az Azure IoT Hub a következő típusú eseményeket bocsátja ki:
 | Microsoft.Devices.DeviceConnected | Akkor jelenik meg, amikor egy eszköz IoT-hubhoz csatlakozik. |
 | Microsoft.Devices.DeviceDisconnected | Akkor jelenik meg, ha egy eszköz le van választva egy IoT hubhoz. | 
 | Microsoft.Devices.DeviceTelemetry | Közzétételre kerül, amikor egy telemetria üzenetet küld egy IoT hub-nak. |
-
-A Event Grid által támogatott összes régióban általánosan elérhetők az eszközök telemetria, kivéve az eszközök összes eseményét. Az telemetria-esemény nyilvános előzetes verzióban érhető el, és minden régióban elérhető az USA keleti régiója, az USA nyugati régiója, Nyugat-Európa, [Azure Government](../azure-government/documentation-government-welcome.md), az [Azure China 21Vianet](/azure/china/china-welcome)és az [Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/)kivételével.
 
 ### <a name="example-event"></a>Példa eseményre
 
@@ -205,7 +203,7 @@ Az **eszköz által létrehozott** és az **eszköz törölte** IoT hub esemény
 | [IoT Hub eseményekre való reagálás Event Grid használatával a műveletek elindításához](../iot-hub/iot-hub-event-grid.md) | A IoT Hub és a Event Grid integrálásának áttekintése. |
 | [Eszköz csatlakoztatott és leválasztott eseményeinek megrendelése](../iot-hub/iot-hub-how-to-order-connection-state-events.md) | Az eszköz kapcsolódási állapotával kapcsolatos események megrendelésének módját mutatja be. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
 * Ha többet szeretne megtudni a IoT Hub és a Event Grid együttműködéséről, olvassa el a következő témakört: [reagálás a IoT hub eseményekre Event Grid használatával a műveletek elindításához](../iot-hub/iot-hub-event-grid.md).

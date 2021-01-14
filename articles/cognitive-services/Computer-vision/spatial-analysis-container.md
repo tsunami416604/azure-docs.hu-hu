@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 11/06/2020
+ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: f41e513ee0f2755c446a9cb95465c1f636fe5a7a
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: bb40586a93a40c2aaa3f0f884a0e747f168c324b
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606266"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186091"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>A térbeli elemzési tároló telepítése és futtatása (előzetes verzió)
 
@@ -24,7 +24,7 @@ A térbeli elemzési tároló lehetővé teszi a valós idejű adatfolyam-videó
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)
-* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" hozzon létre egy Computer Vision erőforrást, "  target="_blank"> és hozzon létre egy Computer Vision-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése** elemre.
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" hozzon létre egy Computer Vision erőforrást, "  target="_blank"> és hozzon létre egy Computer Vision-erőforrást a <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal standard S1 szintjéhez a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése** elemre.
     * A térbeli elemzési tároló futtatásához a létrehozott erőforrás kulcsára és végpontra lesz szüksége. Később a kulcsot és a végpontot fogja használni.
 
 
@@ -61,6 +61,9 @@ Ebben a cikkben a következő szoftvercsomagok letöltésére és telepítésér
 * [Docker CE](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-engine---community-1) és [NVIDIA – Docker2](https://github.com/NVIDIA/nvidia-docker) 
 * [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) futtatókörnyezet.
 
+#### <a name="azure-vm-with-gpu"></a>[Azure-beli virtuális gép GPU-val](#tab/virtual-machine)
+A példánkban egy K80 GPU-val rendelkező [NC sorozatú virtuális gépet](https://docs.microsoft.com/azure/virtual-machines/nc-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) fogunk használni.
+
 ---
 
 | Követelmény | Leírás |
@@ -85,7 +88,7 @@ Ha az Azure-előfizetését nem hagyták jóvá, nem fogja tudni futtatni a tár
 
 ## <a name="set-up-the-host-computer"></a>A gazdaszámítógép beállítása
 
-Azt javasoljuk, hogy a gazdaszámítógéphez használjon Azure Stack Edge-eszközt. Ha másik eszközt konfigurál, kattintson az **asztali gép** elemre.
+Azt javasoljuk, hogy a gazdaszámítógéphez használjon Azure Stack Edge-eszközt. Ha egy **virtuális** gépet használ, kattintson az **asztali gép** lehetőségre.
 
 #### <a name="azure-stack-edge-device"></a>[Azure Stack Edge-eszköz](#tab/azure-stack-edge)
 
@@ -111,7 +114,7 @@ A [Azure Portal](https://portal.azure.com/)navigáljon az Azure stack Edge-erőf
 
 Az **Edge-számítás konfigurálása**   lapon válasszon ki egy meglévő IoT hub, vagy hozzon létre egy újat. Alapértelmezés szerint a rendszer egy standard (S1) árképzési szintet használ egy IoT Hub erőforrás létrehozásához. Ha ingyenes szintű IoT Hub erőforrást szeretne használni, hozzon létre egyet, majd jelölje ki. A IoT Hub erőforrás ugyanazt az előfizetést és erőforráscsoportot használja, amelyet az Azure Stack Edge-erőforrás használ. 
 
-Kattintson a **Létrehozás** gombra. A IoT Hub erőforrás létrehozása néhány percet is igénybe vehet. A IoT Hub erőforrás létrejötte után a rendszer frissíti az **Edge számítási csempe beállítása** frissítést az új konfiguráció megjelenítéséhez. Annak ellenőrzéséhez, hogy a peremhálózati számítási szerepkör konfigurálva van-e, válassza a **konfiguráció megtekintése** lehetőséget a **számítás konfigurálása**   csempén.
+Kattintson a **Létrehozás** lehetőségre. A IoT Hub erőforrás létrehozása néhány percet is igénybe vehet. A IoT Hub erőforrás létrejötte után a rendszer frissíti az **Edge számítási csempe beállítása** frissítést az új konfiguráció megjelenítéséhez. Annak ellenőrzéséhez, hogy a peremhálózati számítási szerepkör konfigurálva van-e, válassza a **konfiguráció megtekintése** lehetőséget a **számítás konfigurálása**   csempén.
 
 Amikor a peremhálózati eszközön beállította a peremhálózat számítási szerepkört, két eszközt hoz létre: egy IoT eszközt és egy IoT Edge eszközt. Mindkét eszköz megtekinthető a IoT Hub erőforrásban. A Azure IoT Edge futtatókörnyezet már fut a IoT Edge eszközön.
 
@@ -252,13 +255,13 @@ Azure IoT Hub-példány létrehozása az Azure CLI használatával. Szükség es
 
 ```bash
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-az login
-az account set --subscription <name or ID of Azure Subscription>
-az group create --name "test-resource-group" --location "WestUS"
+sudo az login
+sudo az account set --subscription <name or ID of Azure Subscription>
+sudo az group create --name "test-resource-group" --location "WestUS"
 
-az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-resource-group"
+sudo az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-resource-group"
 
-az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
+sudo az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
 ```
 
 Ha a gazdaszámítógép nem Azure Stack peremhálózati eszköz, akkor telepítenie kell a [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) 1.0.9 verzióját. A megfelelő verzió letöltéséhez kövesse az alábbi lépéseket:
@@ -297,7 +300,7 @@ A következő lépésként regisztrálja a gazdagépet IoT Edge eszközként a I
 Az IoT Edge eszközt az Azure-IoT Hubhoz kell kötnie. A korábban létrehozott IoT Edge eszközről kell másolnia a kapcsolódási karakterláncot. Azt is megteheti, hogy az alábbi parancsot futtatja az Azure CLI-ben.
 
 ```bash
-az iot hub device-identity show-connection-string --device-id my-edge-device --hub-name test-iot-hub-123
+sudo az iot hub device-identity show-connection-string --device-id my-edge-device --hub-name test-iot-hub-123
 ```
 
 Nyissa meg a gazdagépet a  `/etc/iotedge/config.yaml` szerkesztéshez. Cserélje le `ADD DEVICE CONNECTION STRING HERE` a karakterláncot a és a közötti értékre. Mentse és zárja be a fájlt. Futtassa ezt a parancsot a IoT Edge szolgáltatás újraindításához a gazdaszámítógépen.
@@ -306,15 +309,100 @@ Nyissa meg a gazdagépet a  `/etc/iotedge/config.yaml` szerkesztéshez. Cserélj
 sudo systemctl restart iotedge
 ```
 
-Telepítse a térbeli elemzési tárolót IoT-modulként a gazdagépen a [Azure Portal](../../iot-edge/how-to-deploy-modules-portal.md) vagy az [Azure CLI](../../iot-edge/how-to-deploy-modules-cli.md)használatával. Ha a portált használja, állítsa a rendszerkép URI-JÁT a Azure Container Registry helyére. 
+Telepítse a térbeli elemzési tárolót IoT-modulként a gazdagépen a [Azure Portal](../../iot-edge/how-to-deploy-modules-portal.md) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows)használatával. Ha a portált használja, állítsa a rendszerkép URI-JÁT a Azure Container Registry helyére. 
 
 Az alábbi lépések segítségével helyezheti üzembe a tárolót az Azure CLI használatával.
+
+#### <a name="azure-vm-with-gpu"></a>[Azure-beli virtuális gép GPU-val](#tab/virtual-machine)
+
+Egy GPU-val rendelkező Azure-beli virtuális gép a térbeli elemzések futtatására is használható. Az alábbi példa egy K80 GPU-val rendelkező [NC sorozatú](https://docs.microsoft.com/azure/virtual-machines/nc-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) virtuális gépet fog használni.
+
+#### <a name="create-the-vm"></a>A virtuális gép létrehozása
+
+Nyissa meg a [virtuális gép létrehozása](https://ms.portal.azure.com/#create/Microsoft.VirtualMachine) varázslót a Azure Portal.
+
+Adja meg a virtuális gép nevét, és válassza ki a régiót (USA) az USA nyugati régiója 2. Ügyeljen arra, hogy `Availability Options` "nem szükséges infrastruktúra-redundancia" értékű legyen. A virtuális gép megfelelő méretének megtalálásához tekintse meg az alábbi ábrát, amely a teljes konfigurációt és a következő lépést ismerteti. 
+
+:::image type="content" source="media/spatial-analysis/virtual-machine-instance-details.png" alt-text="A virtuális gép konfigurációjának részletei." lightbox="media/spatial-analysis/virtual-machine-instance-details.png":::
+
+A virtuális gép méretének megkereséséhez válassza az "összes méret" lehetőséget, majd tekintse meg a "nem prémium szintű Storage virtuálisgép-méretek" listáját alább látható módon.
+
+:::image type="content" source="media/spatial-analysis/virtual-machine-sizes.png" alt-text="Virtuális gépek méretei." lightbox="media/spatial-analysis/virtual-machine-sizes.png":::
+
+Ezután válassza a **NC6** vagy a **NC6_Promo** lehetőséget.
+
+:::image type="content" source="media/spatial-analysis/promotional-selection.png" alt-text="promóciós kiválasztás" lightbox="media/spatial-analysis/promotional-selection.png":::
+
+Ezután hozza létre a virtuális gépet. A létrehozást követően navigáljon a virtuálisgép-erőforráshoz a Azure Portalban, és válassza ki `Extensions` a bal oldali ablaktáblán. Ekkor megjelenik a bővítmények ablak az összes elérhető bővítménnyel. Válassza `NVIDIA GPU Driver Extension` a létrehozás lehetőséget, majd fejezze be a varázslót.
+
+A bővítmény sikeres alkalmazása után navigáljon a Azure Portal virtuális gép főoldalára, és kattintson a elemre `Connect` . A virtuális gép SSH-n vagy RDP-n keresztül érhető el. Az RDP hasznos lesz, mivel lehetővé teszi a láthatóvá tevő ablak megtekintését (később a magyarázattal). Az RDP-hozzáférés konfigurálásához kövesse [ezeket a lépéseket](https://docs.microsoft.com/azure/virtual-machines/linux/use-remote-desktop) , és nyisson meg egy távoli asztali kapcsolatot a virtuális géppel.
+
+### <a name="verify-graphics-drivers-are-installed"></a>A grafikus illesztőprogramok telepítésének ellenőrzése
+
+A következő parancs futtatásával ellenőrizze, hogy a grafikus illesztőprogramok telepítése sikeres volt-e. 
+
+```bash
+nvidia-smi
+```
+
+A következő kimenetnek kell megjelennie.
+
+![NVIDIA-illesztőprogram kimenete](media/spatial-analysis/nvidia-driver-output.png)
+
+### <a name="install-docker-ce-and-nvidia-docker2-on-the-vm"></a>A Docker CE és az NVIDIA-docker2 telepítése a virtuális gépen
+
+Futtassa a következő parancsokat egy időben a Docker CE és az NVIDIA-docker2 telepítéséhez a virtuális gépen.
+
+Telepítse a Docker CE-t a gazdagépen.
+
+```bash
+sudo apt-get update
+```
+```bash
+sudo apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+```
+```bash
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+```
+```bash
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+```
+```bash
+sudo apt-get update
+```
+```bash
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+```
+
+
+Telepítse az *NVIDIA-Docker-2* szoftvercsomagot.
+
+```bash
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+```
+```bash
+curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
+```
+```bash
+curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+```
+```bash
+sudo apt-get update
+```
+```bash
+sudo apt-get install -y docker-ce nvidia-docker2
+```
+```bash
+sudo systemctl restart docker
+```
+
+Most, hogy beállította és konfigurálta a virtuális gépet, kövesse az alábbi lépéseket a térbeli elemzési tároló üzembe helyezéséhez. 
 
 ---
 
 ### <a name="iot-deployment-manifest"></a>IoT üzembe helyezési jegyzéke
 
-Ha több gazdagépen szeretné egyszerűsíteni a tárolók telepítését, létrehozhat egy üzembe helyezési jegyzékfájlt a tároló-létrehozási beállítások és a környezeti változók megadásához. Az [Azure stack Edge](https://go.microsoft.com/fwlink/?linkid=2142179) és  [más asztali gépek](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) githubon való üzembe helyezésére vonatkozó példa a telepítési jegyzékre mutat.
+Ha több gazdagépen szeretné egyszerűsíteni a tárolók telepítését, létrehozhat egy üzembe helyezési jegyzékfájlt a tároló-létrehozási beállítások és a környezeti változók megadásához. Az [Azure stack Edge-hez](https://go.microsoft.com/fwlink/?linkid=2142179), [más asztali gépekhez](https://go.microsoft.com/fwlink/?linkid=2152270)és a githubon található [GPU-val rendelkező Azure-beli virtuális géphez](https://go.microsoft.com/fwlink/?linkid=2152189) tartozó üzembe helyezési jegyzékfájlra példa látható.
 
 A következő táblázat a IoT Edge modul által használt különféle környezeti változókat mutatja be. Ezeket a fent hivatkozott telepítési jegyzékfájlban is megadhatja a (z) `env` attribútumának használatával `spatialanalysis` :
 
@@ -326,21 +414,24 @@ A következő táblázat a IoT Edge modul által használt különféle környez
 | ARCHON_NODES_LOG_LEVEL | Információ Részletes | Naplózási szint, válasszon egyet a két érték közül|
 | OMP_WAIT_POLICY | PASSZÍV | Ne módosítsa|
 | QT_X11_NO_MITSHM | 1 | Ne módosítsa|
-| API_KEY | az API-kulcs| Gyűjtsön ezt az értéket Azure Portalból a Computer Vision-erőforrásból. Az erőforráshoz tartozó **kulcs és végpont** szakaszban találja. |
-| BILLING_ENDPOINT | a végpont URI-ja| Gyűjtsön ezt az értéket Azure Portalból a Computer Vision-erőforrásból. Az erőforráshoz tartozó **kulcs és végpont** szakaszban találja.|
+| APIKEY | az API-kulcs| Gyűjtsön ezt az értéket Azure Portalból a Computer Vision-erőforrásból. Az erőforráshoz tartozó **kulcs és végpont** szakaszban találja. |
+| SZÁMLÁZÁS | a végpont URI-ja| Gyűjtsön ezt az értéket Azure Portalból a Computer Vision-erőforrásból. Az erőforráshoz tartozó **kulcs és végpont** szakaszban találja.|
 | EULA | fogadja el | Ezt az értéket úgy kell beállítani, hogy *fogadja* a tároló futtatását |
 | KIJELZŐ | : 1 | Ennek az értéknek meg kell egyeznie a gazdaszámítógép kimenetével `echo $DISPLAY` . Azure Stack Edge-eszközök nem rendelkeznek kijelzővel. Ez a beállítás nem alkalmazható|
-
+| ARCHON_GRAPH_READY_TIMEOUT | 600 | Adja hozzá ezt a környezeti változót, ha a GPU **nem** T4 vagy NVIDIA 2080 ti|
+| ORT_TENSORRT_ENGINE_CACHE_ENABLE | 0 | Adja hozzá ezt a környezeti változót, ha a GPU **nem** T4 vagy NVIDIA 2080 ti|
+| KEY_ENV | Kiegészítő titkosítási kulcs | A környezeti változó hozzáadása, ha a Video_URL egy eltorzított karakterlánc |
+| IV_ENV | Inicializálási vektor | A környezeti változó hozzáadása, ha a Video_URL egy eltorzított karakterlánc|
 
 > [!IMPORTANT]
 > A `Eula` , a `Billing` és a `ApiKey` beállításokat meg kell adni a tároló futtatásához; egyéb esetben a tároló nem indul el.  További információ: [számlázás](#billing).
 
-Miután frissítette az [Azure stack Edge-eszközök](https://go.microsoft.com/fwlink/?linkid=2142179) vagy [egy asztali gép](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) üzembe helyezési jegyzékét a saját beállításaival és a műveletek kiválasztásával, az alábbi [Azure CLI](../../iot-edge/how-to-deploy-modules-cli.md) -paranccsal telepítheti a tárolót a gazdagépen IoT Edge modulként.
+Miután frissítette az [Azure stack Edge-eszközök](https://go.microsoft.com/fwlink/?linkid=2142179), az [asztali gépek](https://go.microsoft.com/fwlink/?linkid=2152270) vagy az Azure-beli virtuális gép ( [GPU](https://go.microsoft.com/fwlink/?linkid=2152189) -val) üzembe helyezési jegyzékét a saját beállításaival és a műveletek kiválasztásával, az alábbi [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows) -paranccsal telepítheti a tárolót a gazdagépen IoT Edge modulként.
 
 ```azurecli
-az login
-az extension add --name azure-iot
-az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json --subscription "<subscriptionId>"
+sudo az login
+sudo az extension add --name azure-iot
+sudo az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json --subscription "<subscriptionId>"
 ```
 
 |Paraméter  |Leírás  |
@@ -366,7 +457,7 @@ Miután a telepítés befejeződött, és a tároló fut, a **gazdaszámítógé
 
 ## <a name="redeploy-or-delete-the-deployment"></a>Az üzemelő példány újbóli üzembe helyezése vagy törlése
 
-Ha frissítenie kell az üzemelő példányt, meg kell győződnie arról, hogy a korábbi központi telepítések sikeresen telepítve vannak, vagy törölnie kell IoT Edge eszköz központi telepítését, amely nem fejeződött be. Ellenkező esetben ezek a központi telepítések továbbra is folytatódnak, így a rendszer rossz állapotban marad. Használhatja a Azure Portal vagy az [Azure CLI](/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment)-t.
+Ha frissítenie kell az üzemelő példányt, meg kell győződnie arról, hogy a korábbi központi telepítések sikeresen telepítve vannak, vagy törölnie kell IoT Edge eszköz központi telepítését, amely nem fejeződött be. Ellenkező esetben ezek a központi telepítések továbbra is folytatódnak, így a rendszer rossz állapotban marad. Használhatja a Azure Portal vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows)-t.
 
 ## <a name="use-the-output-generated-by-the-container"></a>A tároló által generált kimenet használata
 
@@ -385,25 +476,25 @@ Navigáljon a **tároló** szakaszhoz, vagy hozzon létre egy új tárolót, vag
 
 Kattintson a **sas-jogkivonat és URL-cím előállítása** elemre, és másolja a blob sas URL-címét. Cserélje le a `https` - `http` t, és tesztelje az URL-címet egy olyan böngészőben, amely támogatja a videolejátszás használatát.
 
-Cserélje le a kifejezést `VIDEO_URL` a [Azure stack Edge-eszköz](https://go.microsoft.com/fwlink/?linkid=2142179) vagy egy másik, a létrehozott URL-címmel rendelkező [asztali gép](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) üzembe helyezési jegyzékfájljában az összes gráfhoz. Állítsa `VIDEO_IS_LIVE` be `false` , majd telepítse újra a térbeli elemzési tárolót a frissített jegyzékfájl használatával. Lásd az alábbi példát.
+Cserélje le az `VIDEO_URL` [Azure stack Edge-eszköz](https://go.microsoft.com/fwlink/?linkid=2142179), [asztali számítógép](https://go.microsoft.com/fwlink/?linkid=2152270)vagy Azure-beli [virtuális gép](https://go.microsoft.com/fwlink/?linkid=2152189) üzembe helyezési jegyzékfájljában a GPU-val a létrehozott URL-címet az összes gráfhoz. Állítsa `VIDEO_IS_LIVE` be `false` , majd telepítse újra a térbeli elemzési tárolót a frissített jegyzékfájl használatával. Lásd az alábbi példát.
 
 A térbeli elemzési modul elkezdi a videofájl felhasználását, és folyamatosan automatikusan újrajátszható.
 
 
 ```json
 "zonecrossing": {
-  "operationId" : "cognitiveservices.vision.spatialanalysis-personcrossingpolygon",
-  "version": 1,
-  "enabled": true,
-  "parameters": {
-      "VIDEO_URL": "Replace http url here",
-      "VIDEO_SOURCE_ID": "personcountgraph",
-      "VIDEO_IS_LIVE": false,
-        "VIDEO_DECODE_GPU_INDEX": 0,
-      "DETECTOR_NODE_CONFIG": "{ \"gpu_index\": 0 }",
-      "SPACEANALYTICS_CONFIG": "{\"zones\":[{\"name\":\"queue\",\"polygon\":[[0.3,0.3],[0.3,0.9],[0.6,0.9],[0.6,0.3],[0.3,0.3]], \"threshold\":35.0}]}"
+    "operationId" : "cognitiveservices.vision.spatialanalysis-personcrossingpolygon",
+    "version": 1,
+    "enabled": true,
+    "parameters": {
+        "VIDEO_URL": "Replace http url here",
+        "VIDEO_SOURCE_ID": "personcountgraph",
+        "VIDEO_IS_LIVE": false,
+      "VIDEO_DECODE_GPU_INDEX": 0,
+        "DETECTOR_NODE_CONFIG": "{ \"gpu_index\": 0, \"do_calibration\": true }",
+        "SPACEANALYTICS_CONFIG": "{\"zones\":[{\"name\":\"queue\",\"polygon\":[[0.3,0.3],[0.3,0.9],[0.6,0.9],[0.6,0.3],[0.3,0.3]], \"events\": [{\"type\": \"zonecrossing\", \"config\": {\"threshold\": 16.0, \"focus\": \"footprint\"}}]}]}"
     }
-  },
+   },
 
 ```
 
@@ -427,7 +518,7 @@ Ebben a cikkben megtanulta a térbeli elemzési tároló letöltésére, telepí
 * A Container images szolgáltatás IoT-modulként fut Azure IoT Edgeban.
 * A tároló konfigurálása és üzembe helyezése a gazdagépen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Felhasználók üzembe helyezése webes alkalmazásokban](spatial-analysis-web-app.md)
 * [Térbeli elemzési műveletek konfigurálása](spatial-analysis-operations.md)

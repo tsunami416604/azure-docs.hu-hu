@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: c3cdc0a9fb9fa236fae37a52194f446278a42f72
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: d2f35ae7a6110acb2ca89bdaeb487eddabf84923
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616246"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185818"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Adatok modellezése és particionálása az Azure Cosmos DB-ben való életből vett példa használatával
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -29,7 +29,7 @@ Ha általában a kapcsolatok adatbázisaival dolgozik, valószínűleg az adatmo
 Ebben a gyakorlatban egy olyan blogging platform tartományát fogjuk figyelembe venni, ahol a *felhasználók* létrehozhatnak *bejegyzéseket*. *A felhasználók emellett* hozzáadhatnak *megjegyzéseket* a bejegyzésekhez.
 
 > [!TIP]
-> Kiemeltek néhány szót *dőlt betűvel* ; Ezek a szavak határozzák meg, hogy milyen típusú "dolgok" a modellnek.
+> Kiemeltek néhány szót *dőlt betűvel*; Ezek a szavak határozzák meg, hogy milyen típusú "dolgok" a modellnek.
 
 További követelmények hozzáadása a specifikációhoz:
 
@@ -60,7 +60,7 @@ A platform által elérhető kérelmek listája a következő:
 
 Ebben a szakaszban még nem gondoltuk, hogy az egyes entitások (felhasználók, bejegyzések stb.) mely adatai lesznek benne. Ez a lépés általában az elsők között a rokoni tárolók kialakításakor szükséges, mert meg kell állapítani, hogy az entitások hogyan lesznek lefordítva táblák, oszlopok, idegen kulcsok stb. alapján. Sokkal kevésbé fontos, hogy egy dokumentum-adatbázis ne kényszerítse a sémákat íráskor.
 
-A fő ok, amiért fontos, hogy az elejétől kiderítse a hozzáférési mintákat, azért, mert a kérések listája a test Suite lesz. Minden alkalommal, amikor megismétli az adatmodellt, áttekintjük a kérelmeket, és megvizsgáljuk a teljesítményt és a méretezhetőséget.
+A fő ok, amiért fontos, hogy az elejétől kiderítse a hozzáférési mintákat, azért, mert a kérések listája a test Suite lesz. Minden alkalommal, amikor megismétli az adatmodellt, áttekintjük a kérelmeket, és megvizsgáljuk a teljesítményt és a méretezhetőséget. Kiszámítjuk az egyes modellekben felhasznált kérelmek egységeit, és optimalizáljuk azokat. Az összes modell az alapértelmezett indexelési házirendet használja, és a megadott tulajdonságok indexelésével felülbírálhatja azt, ami tovább növelheti az RU felhasználását és késését.
 
 ## <a name="v1-a-first-version"></a>V1: első verzió
 
@@ -149,7 +149,7 @@ A felhasználók beolvasása a tároló megfelelő elemének beolvasásával tö
 
 ### <a name="c2-createedit-a-post"></a>C2 Bejegyzés létrehozása/szerkesztése
 
-A **[C1]** -hez hasonlóan csak írni kell a `posts` tárolóba.
+A **[C1]**-hez hasonlóan csak írni kell a `posts` tárolóba.
 
 :::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="Egyetlen elem írása a Posts tárolóba" border="false":::
 
@@ -208,7 +208,7 @@ Bár a fő lekérdezés a tároló partíciós kulcsát szűri, a felhasználón
 
 ### <a name="c4-like-a-post"></a>C4 Mint egy post
 
-A **[C3]** -hoz hasonlóan a megfelelő elem is létrejön a `posts` tárolóban.
+A **[C3]**-hoz hasonlóan a megfelelő elem is létrejön a `posts` tárolóban.
 
 :::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="Egyetlen elem írása a Posts tárolóba" border="false":::
 
@@ -295,7 +295,7 @@ A megjegyzéseket és a hasonló elemeket is módosítjuk, hogy hozzá lehessen 
 
 Azt szeretnénk elérni, hogy minden alkalommal, amikor hozzáadunk egy hozzászólást vagy hasonlót, a megfelelő bejegyzésben is megnöveli a `commentCount` vagy a `likeCount` -t. Mivel a `posts` tároló particionálva van `postId` , az új elem (Megjegyzés vagy hasonló) és a hozzá tartozó post Sit ugyanabban a logikai partícióban található. Ennek eredményeképpen a művelet végrehajtásához [tárolt eljárást](stored-procedures-triggers-udfs.md) használhatunk.
 
-Miután létrehoz egy megjegyzést ( **[C3]** ) ahelyett, hogy csak egy új elem hozzáadása a `posts` tárolóhoz, a következő tárolt eljárást hívjuk a tárolón:
+Miután létrehoz egy megjegyzést (**[C3]**) ahelyett, hogy csak egy új elem hozzáadása a `posts` tárolóhoz, a következő tárolt eljárást hívjuk a tárolón:
 
 ```javascript
 function createComment(postId, comment) {
@@ -586,7 +586,7 @@ A jelen cikkben ismertetett skálázhatósági funkciók az adathalmazon belüli
 
 Az a változás, amelyet a frissítések más tárolók számára történő terjesztésére használunk, az összes frissítést tartósan tárolja. Ez lehetővé teszi az összes frissítés igénylését, mivel a tároló létrehozása és a rendszerindítási műveletek elvégezte a betöltési nézetek egyszeri észlelési műveletként, még akkor is, ha a rendszer már sok adattal rendelkezik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A gyakorlati adatmodellezés és particionálás után érdemes megtekinteni a következő cikkeket az érintett fogalmak áttekintéséhez:
 

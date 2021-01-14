@@ -5,12 +5,12 @@ description: Megtudhatja, hogyan telepíthet és konfigurálhat egy olyan NGINX 
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 88e2bdc1b516e55fb630b2fd31ff6a2977d57bfe
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 3cf7b069d6f010a4461b22c5326589ad3ec31204
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607908"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186260"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>HTTPS bejövő adatkezelő létrehozása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -67,7 +67,7 @@ A telepítés során létrejön egy Azure nyilvános IP-cím a beléptetési vez
 
 A nyilvános IP-cím lekéréséhez használja az `kubectl get service` parancsot. Néhány percet vesz igénybe, hogy az IP-cím hozzá legyen rendelve a szolgáltatáshoz.
 
-```
+```console
 $ kubectl --namespace ingress-basic get services -o wide -w nginx-ingress-ingress-nginx-controller
 
 NAME                                     TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)                      AGE   SELECTOR
@@ -91,7 +91,7 @@ az network dns record-set a add-record \
 > [!NOTE]
 > Az egyéni tartomány helyett a bejövő vezérlő IP-címéhez is beállíthat teljes tartománynevet. Vegye figyelembe, hogy ez a minta egy bash-rendszerhéjhoz készült.
 > 
-> ```azurecli-interactive
+> ```bash
 > # Public IP address of your ingress controller
 > IP="MY_EXTERNAL_IP"
 > 
@@ -337,7 +337,7 @@ Ezután létre kell hozni egy tanúsítvány-erőforrást. A tanúsítvány erő
 
 A tanúsítvány sikeres létrehozásának ellenőrzéséhez használja a parancsot, és ellenőrizze, hogy a `kubectl get certificate --namespace ingress-basic` *kész* érték *igaz*-e, ami több percet is igénybe vehet.
 
-```
+```console
 $ kubectl get certificate --namespace ingress-basic
 
 NAME         READY   SECRET       AGE
@@ -370,7 +370,7 @@ kubectl delete -f cluster-issuer.yaml --namespace ingress-basic
 
 Sorolja fel az paranccsal a Helm kiadásait `helm list` . Keresse meg az *Nginx* és a *CERT-Manager* nevű diagramot az alábbi példában látható módon:
 
-```
+```console
 $ helm list --namespace ingress-basic
 
 NAME                    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                   APP VERSION
@@ -380,7 +380,7 @@ nginx                   ingress-basic   1               2020-01-15 10:09:45.9826
 
 Távolítsa el a kiadásokat a `helm uninstall` paranccsal. Az alábbi példa eltávolítja az NGINX bejövő és a tanúsítvány-kezelő üzemelő példányait.
 
-```
+```console
 $ helm uninstall cert-manager nginx --namespace ingress-basic
 
 release "cert-manager" uninstalled
@@ -406,7 +406,7 @@ Végezetül törölheti saját maga is a névteret. Használja a `kubectl delete
 kubectl delete namespace ingress-basic
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk néhány külső összetevőt tartalmaz az ak-nak. Ha többet szeretne megtudni ezekről az összetevőkről, tekintse meg a következő Project-lapokat:
 
@@ -423,7 +423,7 @@ További lehetőségek:
 - [Hozzon létre egy olyan bejövő adatkezelőt, amely a let titkosítást használja a statikus nyilvános IP-címmel rendelkező TLS-tanúsítványok automatikus létrehozásához][aks-ingress-static-tls]
 
 <!-- LINKS - external -->
-[az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/a?view=azure-cli-latest#az-network-dns-record-set-a-add-record
+[az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/#az-network-dns-record-set-a-add-record
 [custom-domain]: ../app-service/manage-custom-dns-buy-domain.md#buy-an-app-service-domain
 [dns-zone]: ../dns/dns-getstarted-cli.md
 [helm]: https://helm.sh/

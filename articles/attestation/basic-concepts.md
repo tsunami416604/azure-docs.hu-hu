@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 8ae5bcf103bbb2d2b952fa647ba591e49002f2ff
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 51c22346ee89150194fb1dc83752e2ba2a2e0cf0
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921611"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185444"
 ---
 # <a name="basic-concepts"></a>Alapfogalmak
 
@@ -36,13 +36,18 @@ Az igazolási szolgáltatók minden egyes igazolási típushoz alapértelmezett 
 
 Az Azure-igazolás minden régióban alapértelmezett szolgáltatót biztosít. Az ügyfelek dönthetnek úgy, hogy az alapértelmezett szolgáltatót használják az igazoláshoz, vagy egyéni szabályzatokkal hoznak létre saját szolgáltatókat. Az alapértelmezett szolgáltatók bármely Azure AD-felhasználó számára elérhetők, és az alapértelmezett szolgáltatóhoz tartozó szabályzat nem módosítható.
 
-| Régió | Tanúsító URI | 
+| Region | Tanúsító URI | 
 |--|--|
+| USA keleti régiója | `https://sharedeus.eus.attest.azure.net` | 
+| USA nyugati régiója | `https://sharedwus.wus.attest.azure.net` | 
 | Az Egyesült Királyság déli régiója | `https://shareduks.uks.attest.azure.net` | 
+| Az Egyesült Királyság nyugati régiója| `https://sharedukw.ukw.attest.azure.net  ` | 
+| Kelet-Kanada | `https://sharedcae.cae.attest.azure.net` | 
+| Közép-Kanada | `https://sharedcac.cac.attest.azure.net` | 
+| Észak-Európa | `https://sharedneu.neu.attest.azure.net` | 
+| Nyugat-Európa| `https://sharedweu.weu.attest.azure.net` | 
 | USA 2. keleti régiója | `https://sharedeus2.eus2.attest.azure.net` | 
 | USA középső régiója | `https://sharedcus.cus.attest.azure.net` | 
-| USA keleti régiója| `https://sharedeus.eus.attest.azure.net` | 
-| Közép-Kanada | `https://sharedcac.cac.attest.azure.net` | 
 
 ## <a name="attestation-request"></a>Igazolási kérelem
 
