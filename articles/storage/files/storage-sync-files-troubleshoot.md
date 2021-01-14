@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 1/13/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: b84256188cf5df3ddf389f763e669a2b2ca00852
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: e2f0d62ae6882229cee3ee32e3b362f2b6593da7
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183336"
+ms.locfileid: "98199235"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -52,9 +52,11 @@ A probléma megoldásához telepítse a [KB2919355](https://support.microsoft.co
 <a id="server-registration-missing-subscriptions"></a>**A kiszolgáló regisztrálása nem tartalmazza az összes Azure-előfizetést**  
 Ha ServerRegistration.exe használatával regisztrál egy kiszolgálót, az előfizetések hiányoznak, amikor rákattint az Azure-előfizetés legördülő menüjére.
 
-Ez a probléma azért fordul elő, mert ServerRegistration.exe jelenleg nem támogatja a több-bérlős környezeteket. Ezt a problémát egy későbbi Azure File Sync ügynök frissítése fogja megállapítani.
+Ez a probléma azért fordul elő, mert ServerRegistration.exe csak az első 5 Azure AD-bérlőből kéri le az előfizetéseket. 
 
-A probléma megoldásához használja a következő PowerShell-parancsokat a kiszolgáló regisztrálásához:
+A kiszolgáló regisztrációs bérlői korlátjának növeléséhez hozzon létre egy ServerRegistrationTenantLimit nevű DWORD értéket a HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync alatt, amelynek értéke nagyobb, mint 5.
+
+Ezt a problémát a következő PowerShell-parancsokkal is megkerülheti a kiszolgáló regisztrálásához:
 
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/16/2017
 ms.author: cynthn
-ms.openlocfilehash: 38f231e63ad4974a23a1201aad4d290685860b50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d68ac7aa9927e62011c58b17139d7232ce4a10c
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87292156"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200753"
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>Virtuális hálózati kártya létrehozása és belső DNS használata a virtuális gépek névfeloldásához az Azure-ban
 
@@ -22,7 +22,7 @@ Ebből a cikkből megtudhatja, hogyan állíthatja be a linuxos virtuális gépe
 Követelmények:
 
 * [egy Azure-fiók](https://azure.microsoft.com/pricing/free-trial/)
-* [SSH nyilvános- és titkoskulcs-fájlok](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [SSH nyilvános- és titkoskulcs-fájlok](mac-create-ssh-keys.md)
 
 ## <a name="quick-commands"></a>Gyors parancsok
 Ha gyorsan kell végrehajtania a feladatot, a következő szakasz részletezi a szükséges parancsokat. Az egyes lépések részletes információi és kontextusa a dokumentum többi részében található, [itt kezdődik](#detailed-walkthrough). Ezen lépések elvégzéséhez szüksége lesz a legújabb [Azure CLI](/cli/azure/install-az-cli2) -re, és be kell jelentkeznie egy Azure-fiókba az [az login](/cli/azure/reference-index)használatával.
@@ -71,7 +71,7 @@ az group create --name myResourceGroup --location westus
 
 ## <a name="create-the-virtual-network"></a>A virtuális hálózat létrehozása
 
-A következő lépés egy virtuális hálózat létrehozása a virtuális gépek a rendszerbe való elindításához. A virtuális hálózat ebben az útmutatóban egy alhálózatot tartalmaz. Az Azure Virtual Networks szolgáltatással kapcsolatos további információkért lásd: [virtuális hálózat létrehozása](../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network). 
+A következő lépés egy virtuális hálózat létrehozása a virtuális gépek a rendszerbe való elindításához. A virtuális hálózat ebben az útmutatóban egy alhálózatot tartalmaz. Az Azure Virtual Networks szolgáltatással kapcsolatos további információkért lásd: [virtuális hálózat létrehozása](../../virtual-network/manage-virtual-network.md#create-a-virtual-network). 
 
 Hozza létre a virtuális hálózatot az [az Network vnet Create](/cli/azure/network/vnet)paranccsal. A következő példában létrehozunk egy nevű virtuális hálózatot `myVnet` és egy alhálózatot `mySubnet` :
 
@@ -85,7 +85,7 @@ az network vnet create \
 ```
 
 ## <a name="create-the-network-security-group"></a>A hálózati biztonsági csoport létrehozása
-Az Azure-beli hálózati biztonsági csoportok egyenértékűek a hálózati rétegben található tűzfallal. A hálózati biztonsági csoportokkal kapcsolatos további információkért lásd: [NSG létrehozása az Azure CLI-ben](../../virtual-network/tutorial-filter-network-traffic-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+Az Azure-beli hálózati biztonsági csoportok egyenértékűek a hálózati rétegben található tűzfallal. A hálózati biztonsági csoportokkal kapcsolatos további információkért lásd: [NSG létrehozása az Azure CLI-ben](../../virtual-network/tutorial-filter-network-traffic-cli.md). 
 
 Hozza létre a hálózati biztonsági csoportot az [az Network NSG Create](/cli/azure/network/nsg)paranccsal. A következő példa egy nevű hálózati biztonsági csoportot hoz létre `myNetworkSecurityGroup` :
 
@@ -156,6 +156,6 @@ az vm create \
 
 Ha a CLI-jelzőket használja a meglévő erőforrások meghívására, arra utasítja az Azure-t, hogy telepítse a virtuális gépet a meglévő hálózaton belül. Ha szeretné megismételni a VNet és az alhálózat üzembe helyezését, akkor az Azure-régióban statikus vagy állandó erőforrások maradhatnak.  
 
-## <a name="next-steps"></a>További lépések
-* [Saját egyéni környezet létrehozása Linux virtuális gép számára közvetlenül Azure parancssori felület parancsait használva](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Linux rendszerű virtuális gép létrehozása az Azure-ban sablonok használatával](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+## <a name="next-steps"></a>Következő lépések
+* [Saját egyéni környezet létrehozása Linux virtuális gép számára közvetlenül Azure parancssori felület parancsait használva](create-cli-complete.md)
+* [Linux rendszerű virtuális gép létrehozása az Azure-ban sablonok használatával](create-ssh-secured-vm-from-template.md)

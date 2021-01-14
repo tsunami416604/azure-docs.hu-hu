@@ -10,18 +10,18 @@ ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: vikancha
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2dccfebed26c8064db697413e7417ae08d69a3ac
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 38d9727cadd925b944809956eaee51103499a2df
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022037"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200906"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>NVIDIA GPU-illesztőprogramok telepítése a Windows rendszerű N sorozatú virtuális gépeken 
 
 Az NVIDIA GPU-k által támogatott Azure N-sorozatú virtuális gépek GPU-képességeinek kihasználásához az NVIDIA GPU-illesztőprogramokat kell telepítenie. Az [NVIDIA GPU illesztőprogram-bővítmény](../extensions/hpccompute-gpu-windows.md) a megfelelő NVIDIA CUDA-vagy Grid-illesztőprogramokat telepíti egy N sorozatú virtuális gépen. A bővítmény telepítése vagy kezelése a Azure Portal vagy eszközök, például Azure PowerShell vagy Azure Resource Manager sablonok használatával. Tekintse meg az [NVIDIA GPU illesztőprogram-bővítmény dokumentációját](../extensions/hpccompute-gpu-windows.md) a támogatott operációs rendszerekhez és üzembe helyezési lépésekhez.
 
-Ha manuálisan telepíti az NVIDIA GPU-illesztőprogramokat, ez a cikk a támogatott operációs rendszereket, illesztőprogramokat és telepítési és ellenőrzési lépéseket tartalmazza. A Linux rendszerű [virtuális gépekhez](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)a manuális illesztőprogram beállítási információi is elérhetők.
+Ha manuálisan telepíti az NVIDIA GPU-illesztőprogramokat, ez a cikk a támogatott operációs rendszereket, illesztőprogramokat és telepítési és ellenőrzési lépéseket tartalmazza. A Linux rendszerű [virtuális gépekhez](../linux/n-series-driver-setup.md)a manuális illesztőprogram beállítási információi is elérhetők.
 
 Az alapszintű specifikációk, a tárolási kapacitások és a lemezek részleteiért lásd: [GPU Windowsos virtuális gépek méretei](../sizes-gpu.md?toc=/azure/virtual-machines/windows/toc.json). 
 
@@ -64,6 +64,6 @@ A legújabb 1,1 HpcVMDrivers bővítmény telepítése egy myVM nevű meglévő 
 A RDMA-hálózat támogatja a [Microsoft MPI](/message-passing-interface/microsoft-mpi) vagy az Intel MPI 5. x verzióban futó alkalmazások üzenet-átadási felületének (MPI) forgalmát. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az NVIDIA Tesla GPU-k számára készült GPU-gyorsított alkalmazásokat fejlesztő fejlesztők is letölthetik és telepíthetik a legújabb [CUDA-eszközkészletet](https://developer.nvidia.com/cuda-downloads). További információ: a [CUDA telepítési útmutatója](https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html#axzz4ZcwJvqYi).

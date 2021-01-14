@@ -5,13 +5,13 @@ author: ambhatna
 ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/26/2020
-ms.openlocfilehash: 3fe63deb8115c0043023301c6d0dc3731e97743f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 01/14/2021
+ms.openlocfilehash: ccae7b3f201e55af0e9e6b4ca9e7fd4ffb9c4897
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492625"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200974"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>Replikák olvasása Azure Database for MySQL – rugalmas kiszolgáló
 
@@ -24,14 +24,14 @@ Az alkalmazások oldalon az alkalmazás általában Java vagy PHP nyelven lett k
 
 Az olvasási replika funkció lehetővé teszi az adatok replikálását egy Azure Database for MySQL rugalmas kiszolgálóról egy írásvédett kiszolgálóra. A forrás-kiszolgálóról legfeljebb **10** replikára lehet replikálni. A replikák aszinkron módon frissülnek a MySQL-motor natív bináris naplójának (binlog) fájlpozíció-alapú replikációs technológiájával. A BinLog-replikációval kapcsolatos további tudnivalókért tekintse meg a [MySQL BinLog-replikáció áttekintése](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)című témakört.
 
-A replikák olyan új kiszolgálók, amelyeket a forrás Azure Database for MySQL a rugalmas kiszolgálókhoz hasonlóan kezel. Az egyes olvasási replikák számlázási díjait a virtuális mag és a Storage-ban, GB/hó-ban kiépített számítási számítások alapján számoljuk fel. További információkért tekintse meg a [díjszabást](./concepts-compute-storage.md#pricing).
+A replikák olyan új kiszolgálók, amelyeket a forrás Azure Database for MySQL a rugalmas kiszolgálókhoz hasonlóan kezel. Az egyes olvasási replikák számlázási díjait a virtuális mag és a Storage-ban, GB/hó-ban kiépített számítási számítások alapján számoljuk fel. További információt a [díjszabás](./concepts-compute-storage.md#pricing) tartalmaz.
 
 Ha többet szeretne megtudni a MySQL-replikációs funkciókról és problémákról, tekintse meg a [MySQL-replikáció dokumentációját](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html).
 
 > [!NOTE]
 > Elfogultság – ingyenes kommunikáció
 >
-> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a _Slave_ kifejezésre mutató hivatkozásokat tartalmaz. Az [elfogultság nélküli kommunikációhoz használható Microsoft-stílus útmutatója](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) ezt a kizáró szót ismeri fel. A szó a jelen cikkben a konzisztencia miatt használatos, mert jelenleg a szoftverben megjelenő szó. Ha a szoftver frissítve lett a szó eltávolítására, a rendszer a cikket úgy frissíti, hogy az legyen az igazítás.
+> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a _fő_ és a _Slave_ kifejezésre mutató hivatkozásokat tartalmaz. A [torzítás nélküli kommunikációhoz használható Microsoft-stílusú útmutató](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) ezeket a kizáró szavakat ismeri fel. A jelen cikkben szereplő szavak a konzisztencia miatt használatosak, mivel jelenleg a szoftverben megjelenő szavak. Ha a szoftver frissítve lett a szavak eltávolítására, a rendszer a cikket úgy frissíti, hogy az legyen az igazítás.
 >
 
 ## <a name="common-use-cases-for-read-replica"></a>Olvasási replika gyakori használati esetei
@@ -40,7 +40,7 @@ Az olvasási replika funkcióval javítható a nagy olvasási igényű számít�
 
 Gyakori forgatókönyvek:
 
-* Az alkalmazásból érkező olvasási munkaterhelések skálázása Lightweight- [ProxySQL](https://aka.ms/ProxySQLLoadBalanceReplica) , például az alkalmazásból a replikák beolvasásához az alkalmazásból érkező olvasási lekérdezések horizontális felskálázásához
+* Az alkalmazásból érkező olvasási munkaterhelések skálázása Lightweight- [ProxySQL](https://aka.ms/ProxySQLLoadBalanceReplica) , például az alkalmazásból a replikák beolvasására szolgáló, az alkalmazásból érkező olvasási lekérdezések horizontális felskálázásához
 * A BI-vagy analitikus jelentéskészítési munkaterhelések adatforrásként használhatják a jelentéskészítéshez használható olvasási replikákat.
 * A IoT és a gyártási forgatókönyv esetében, ahol a telemetria-adatok bekerülnek a MySQL-adatbázismotorbe, míg több olvasási replika van használatban az adatok jelentéséhez.
 
@@ -93,7 +93,7 @@ Megtudhatja, hogyan [állíthatja le a replikálást egy replikára](how-to-read
 
 ## <a name="failover"></a>Feladatátvétel
 
-Nincs automatikus feladatátvétel a forrás-és a replika-kiszolgálók között. 
+Nincs automatikus feladatátvétel a forrás-és a replika-kiszolgálók között.
 
 Az olvasási replikák az olvasási igényű számítási feladatok skálázására szolgálnak, és nem alkalmasak a kiszolgálók magas rendelkezésre állási igényeinek kielégítésére. Nincs automatikus feladatátvétel a forrás-és a replika-kiszolgálók között. Az olvasási replika replikálásának leállítása az olvasási írási módban való online állapotba állítása az a módszer, amellyel ez a manuális feladatátvétel történik.
 
@@ -102,19 +102,19 @@ Mivel a replikáció aszinkron, a forrás és a replika között késés van. A 
 > [!Tip]
 > Ha feladatátvételt végez a replikára, a forrástól a replika leválasztásakor a késés azt jelzi, hogy mekkora adatvesztés történik.
 
-Ha úgy döntött, hogy feladatátvételt kíván replikálni egy replikára, 
+Miután eldöntötte, hogy feladatátvételt szeretne replikálni a replikán:
 
 1. A replika replikálásának leállítása<br/>
-   Ez a lépés szükséges ahhoz, hogy a replika-kiszolgáló el tudja fogadni az írásokat. A folyamat részeként a replika-kiszolgáló le lesz csatolva a forrástól. Miután elindította a replikálást, a háttérrendszer-folyamat általában 2 percet vesz igénybe. A művelet következményeinek megismeréséhez tekintse meg a jelen cikk [replikálás leállítása](#stop-replication) című szakaszát.
-    
+   Ez a lépés szükséges ahhoz, hogy a replika-kiszolgáló el tudja fogadni az írásokat. A folyamat részeként a replika-kiszolgáló le lesz csatolva a forrástól. A replikálás leállítása után a háttérrendszer folyamata általában 2 percet vesz igénybe. A művelet következményeinek megismeréséhez tekintse meg a jelen cikk [replikálás leállítása](#stop-replication) című szakaszát.
+
 2. Az alkalmazás átirányítása a (korábbi) replikára<br/>
    Minden kiszolgálón egyedi a kapcsolatok karakterlánca. Frissítse az alkalmazást, hogy a forrás helyett a (korábbi) replikára mutasson.
-    
+
 Miután az alkalmazás sikeresen feldolgozta az olvasásokat és az írásokat, befejezte a feladatátvételt. Az alkalmazás által tapasztalható állásidő mennyisége a probléma észlelése és a fenti 1. és 2. lépés elvégzése után függ.
 
 ## <a name="considerations-and-limitations"></a>Megfontolandó szempontok és korlátozások
 
-| Használati példa | Korlátozás/megfontolás |
+| Használati eset | Korlátozás/megfontolás |
 |:-|:-|
 | Replika a kiszolgálón a következő zónával: redundáns HA engedélyezve | Nem támogatott |
 | Régiók közötti olvasási replikáció | Nem támogatott |
@@ -125,10 +125,10 @@ Miután az alkalmazás sikeresen feldolgozta az olvasásokat és az írásokat, 
 | Leállított replikák | Ha leállítja a replikálást egy forráskiszolgáló és egy olvasási replika között, a leállított replika önálló kiszolgáló lesz, amely fogadja az olvasásokat és az írásokat is. Az önálló kiszolgáló nem hozható létre újra replikába. |
 | Törölt forrás-és önálló kiszolgálók | A forráskiszolgáló törlésekor a replikálás minden olvasási replikára leállt. Ezek a replikák automatikusan önálló kiszolgálókra válnak, és elfogadhatják az olvasási és írási műveleteket is. Maga a forráskiszolgáló törölve lett. |
 | Felhasználói fiókok | A forráskiszolgálón lévő felhasználókat a rendszer replikálja az olvasási replikára. Csak olvasási replikához csatlakozhat a forráskiszolgálón elérhető felhasználói fiókok használatával. |
-| Kiszolgálóparaméterek | Az adatszinkronizálás biztosítása és az esetleges adatvesztés vagy -sérülés elkerülése érdekében bizonyos kiszolgálóparaméterek zárolva vannak, hogy ne lehessen őket módosítani olvasási replikák használata során. <br> A következő kiszolgálói paraméterek a forrás-és a replika-kiszolgálókon is zárolva vannak:<br> - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) <br> - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) <br> A [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) paraméter zárolva van a replika-kiszolgálókon. <br> A fenti paraméterek egyikének a forráskiszolgálón való frissítéséhez törölje a replika-kiszolgálókat, frissítse a paraméter értékét a forráson, majd hozza létre újra a replikákat. |
+| Kiszolgálóparaméterek | Az adatszinkronizálás biztosítása és az esetleges adatvesztés vagy -sérülés elkerülése érdekében bizonyos kiszolgálóparaméterek zárolva vannak, hogy ne lehessen őket módosítani olvasási replikák használata során. <br> A következő kiszolgálói paraméterek a forrás-és a replika-kiszolgálókon is zárolva vannak:<br> - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) <br> - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) <br> A [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) paraméter zárolva van a replika-kiszolgálókon. <br> Ha frissíteni szeretné a fenti paraméterek egyikét a forráskiszolgálón, törölje a replika-kiszolgálókat, frissítse a paraméter értékét a forráson, majd hozza létre újra a replikákat. |
 | Egyéb | – Replika replikájának létrehozása nem támogatott. <br> A memóriában tárolt táblák miatt előfordulhat, hogy a replikák nem lesznek szinkronban. Ez a MySQL-replikációs technológia korlátozása. További információt a [MySQL dokumentációjában talál](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) . <br>– Győződjön meg arról, hogy a forráskiszolgáló táblái rendelkeznek elsődleges kulccsal. Az elsődleges kulcsok hiánya replikációs késést eredményezhet a forrás-és a replikák között.<br>– A MySQL- [dokumentációban](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) megtekintheti a MySQL-replikációra vonatkozó korlátozások teljes listáját |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat a Azure Portal használatával](how-to-read-replicas-portal.md)
-- Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat az Azure CLI használatával](how-to-read-replicas-cli.md)
+* Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat a Azure Portal használatával](how-to-read-replicas-portal.md)
+* Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat az Azure CLI használatával](how-to-read-replicas-cli.md)

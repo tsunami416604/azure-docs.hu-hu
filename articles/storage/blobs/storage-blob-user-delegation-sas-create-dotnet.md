@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 01/13/2021
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 8667fc3c5224b1f75a9beeb95b6e1261c768c14d
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 512b949fceda850e968a6f97b3788ae3a602f56d
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347914"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98199257"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net"></a>Felhasználói delegálási SAS létrehozása tárolóhoz vagy blobhoz .NET-tel
 
@@ -96,6 +96,16 @@ A következő mintakód bemutatja, hogyan lehet egy tárolóhoz felhasználói d
 A következő példa egy szimulált ügyfélalkalmazás által az előző példában létrehozott felhasználói delegálási SAS tesztelését teszteli. Ha az SAS érvényes, az ügyfélalkalmazás el tudja olvasni a blob tartalmát. Ha az SAS érvénytelen, például ha lejárt, az Azure Storage a 403-as hibakódot (tiltott) adja vissza.
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_ListBlobsWithSasAsync":::
+
+## <a name="get-a-user-delegation-sas-for-a-directory"></a>Felhasználói delegálási SAS beszerzése egy címtárhoz
+
+A következő mintakód bemutatja, hogyan hozhatja ki a címtárhoz tartozó felhasználói delegálási SAS-t egy hierarchikus névtér engedélyezése esetén:
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_GetUserDelegationSasDirectory":::
+
+A következő példa egy szimulált ügyfélalkalmazás által az előző példában létrehozott felhasználói delegálási SAS tesztelését teszteli. Ha az SAS érvényes, az ügyfélalkalmazás listázhatja a könyvtár elérési útját. Ha az SAS érvénytelen, például ha lejárt, az Azure Storage a 403-as hibakódot (tiltott) adja vissza.
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_ListFilePathsWithDirectorySasAsync":::
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 

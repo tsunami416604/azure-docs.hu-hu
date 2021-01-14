@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e07e9035dc55f77a2e76b4f4ee306deab829980a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1626ee074d51048dbf45c629f261a550822d746c
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182750"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200838"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Azure biztonsági alapkonfiguráció automatizáláshoz
 
@@ -44,7 +44,7 @@ Ha konkrét követelménye van, Azure Firewall is felhasználhatja a teljesíté
 
 * [Runbook végrehajtási környezet](./automation-runbook-execution.md#runbook-execution-environment)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -68,7 +68,7 @@ Habár a NSG-szabályok és a felhasználó által megadott útvonalak nem vonat
 
 **Útmutató**: nem alkalmazható; Ez a javaslat Azure App Service vagy számítási erőforrásokon futó webalkalmazásokhoz készült.
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -148,13 +148,13 @@ Ha az Azure Virtual Machines szolgáltatásban üzemeltetett hibrid Runbook-feld
 
 Az Azure-tervrajzok segítségével a nagy léptékű Azure-környezeteket is leegyszerűsítheti a főbb környezeti összetevők (például az Azure Resources Manager-sablonok, az Azure RBAC-vezérlők és a házirendek) egyetlen tervezet-definícióban való csomagolásával. A tervrajzot új előfizetésekre alkalmazhatja, és az irányítás és felügyelet finomhangolását a verziószámozás segítségével végezheti el.
 
-* [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
+* [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
 * [Azure Policy minták a hálózatkezeléshez](../governance/policy/samples/built-in-policies.md#network)
 
 * [Azure Blueprint létrehozása](../governance/blueprints/create-blueprint-portal.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -172,7 +172,7 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 * [NSG létrehozása biztonsági konfigurációval](../virtual-network/tutorial-filter-network-traffic.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -198,7 +198,7 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 * [Az Azure számítási erőforrások időszinkronizálásának konfigurálása](../virtual-machines/windows/time-sync.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Microsoft
 
@@ -246,7 +246,7 @@ A hibrid Runbook Worker szolgáltatás használatakor a Azure Security Center bi
 
 * [Az adatgyűjtési rétegek konfigurálása Azure Security Centeron belül](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -274,7 +274,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 * [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/log-query/get-started-queries.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -304,7 +304,7 @@ A hibrid Runbook-feldolgozói szolgáltatás használatakor azonban használhatj
 
 * [A virtuális gépek vendég szintű figyelésének engedélyezése](../cost-management-billing/cloudyn/azure-vm-extended-metrics.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -324,7 +324,7 @@ A hibrid Runbook Worker szolgáltatás használatakor azonban a Azure Security C
 
 * [Adatgyűjtés az Azure Security Centerben](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -390,7 +390,7 @@ A Microsoft-szolgáltatásokhoz igénybe vehet egy igény szerinti vagy elég ho
 
 **Útmutató**: az Azure ad multi-Factor Authentication (MFA) engedélyezése és a Azure Security Center identitás-és hozzáférés-kezelési javaslatok követése.
 
-* [Az MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)
+* [MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)
 
 * [Identitás és hozzáférés figyelése Azure Security Centeron belül](../security-center/security-center-identity-access.md)
 
@@ -402,11 +402,11 @@ A Microsoft-szolgáltatásokhoz igénybe vehet egy igény szerinti vagy elég ho
 
 **Útmutató**: a többtényezős hitelesítéssel konfigurált és a Azure Automation fiók erőforrásainak éles környezetekben való bejelentkezni és konfigurálására szolgáló mancsok használata.
 
-* [További tudnivalók a privilegizált hozzáférésű munkaállomásokról](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [További tudnivalók a privilegizált hozzáférésű munkaállomásokról](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-* [Az MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)
+* [MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -532,7 +532,7 @@ Ha azonban az Azure Virtual Machines szolgáltatással támogatott hibrid Runboo
 
 * [Riasztások vagy riasztások konfigurálása és a Azure Firewall megtagadása](../firewall/threat-intel.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -556,7 +556,7 @@ Kövesse Azure Security Center a inaktív adatok titkosítására és az átvite
 
 * [A titkosítás ismertetése az Azure-ban](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
-* [Azure Automation TLS 1,2 kényszerítés](https://azure.microsoft.com/updates/azure-automation-tls12-enforcement/)
+* [Azure Automation TLS 1,2 kényszerítés](/azure/active-directory/hybrid/reference-connect-tls-enforcement)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -650,7 +650,7 @@ Ha az Azure Virtual Machines által támogatott hibrid Runbook-feldolgozókat ha
 
 * [A virtuális gépek frissítéseinek és javításának kezelése](./update-management/manage-updates-for-vm.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -664,7 +664,7 @@ Ha az Azure Virtual Machines által támogatott hibrid Runbook-feldolgozókat ha
 
 * [Azure-beli virtuális gépek frissítéseinek és javításának kezelése](./update-management/manage-updates-for-vm.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -672,7 +672,7 @@ Ha az Azure Virtual Machines által támogatott hibrid Runbook-feldolgozókat ha
 
 **Útmutató**: a vizsgálati eredmények konzisztens időközönkénti exportálása és az eredmények összehasonlítása annak ellenőrzéséhez, hogy a biztonsági rések szervizelése megtörtént-e. Ha Azure Security Center által javasolt sebezhetőségi kezelési javaslatot használ, az ügyfél a kiválasztott megoldás portálján megtekintheti a korábbi vizsgálati adataikat.
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -682,7 +682,7 @@ Ha az Azure Virtual Machines által támogatott hibrid Runbook-feldolgozókat ha
 
 * [A Azure Security Center biztonsági pontszámának megismerése](../security-center/secure-score-security-controls.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -700,7 +700,7 @@ Ha az Azure Virtual Machines által támogatott hibrid Runbook-feldolgozókat ha
 
 * [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -710,7 +710,7 @@ Ha az Azure Virtual Machines által támogatott hibrid Runbook-feldolgozókat ha
 
 * [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -728,7 +728,7 @@ Ha az Azure Virtual Machines által támogatott hibrid Runbook-feldolgozókat ha
 
 * [Azure Automation futtató fiók kezelése](./manage-runas-account.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -736,7 +736,7 @@ Ha az Azure Virtual Machines által támogatott hibrid Runbook-feldolgozókat ha
 
 **Útmutató**: létre kell hoznia egy leltárt a jóváhagyott Azure-erőforrásokról és jóváhagyott szoftverekről a számítási erőforrásokhoz a szervezeti igényeknek megfelelően.
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -748,13 +748,13 @@ Ha az Azure Virtual Machines által támogatott hibrid Runbook-feldolgozókat ha
 
 Emellett az Azure Resource Graph használatával lekérdezheti vagy felderítheti az előfizetéseken belüli erőforrásokat. Ez magas biztonsági alapú környezetekben, például a Storage-fiókokkal is segít.
 
-* [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
+* [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
 * [Lekérdezések létrehozása az Azure Resource Graph használatával](../governance/resource-graph/first-query-portal.md)
 
 * [Azure Policy minta beépített Azure Automation](./policy-reference.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -770,7 +770,7 @@ Ha az Azure Virtual Machines által támogatott hibrid Runbook-feldolgozókat ha
 
 * [Modul kezelése Azure Automation](./shared-resources/modules.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -778,11 +778,11 @@ Ha az Azure Virtual Machines által támogatott hibrid Runbook-feldolgozókat ha
 
 **Útmutató**: az ügyfél meggátolhatja az erőforrások létrehozását és használatát Azure Policy az ügyfél vállalati iránymutatásainak megfelelően. A jogosulatlan erőforrások eltávolításához saját folyamatot is alkalmazhat. A Azure Automation-ajánlaton belül lehetőség van a PowerShell, illetve a runbookok által a portálon vagy a parancsmagokon keresztül elérhető Python-modulok telepítésére, eltávolítására és kezelésére. A nem jóváhagyott vagy régi modult el kell távolítani vagy frissíteni kell a runbookok.
 
-* [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
+* [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
 * [Modul kezelése Azure Automation](./shared-resources/modules.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -792,7 +792,7 @@ Ha az Azure Virtual Machines által támogatott hibrid Runbook-feldolgozókat ha
 
 * [Azure Security Center adaptív alkalmazás-vezérlők használata](../security-center/security-center-adaptive-application.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -802,11 +802,11 @@ Ha az Azure Virtual Machines által támogatott hibrid Runbook-feldolgozókat ha
 - Nem engedélyezett erőforrástípusok
 - Engedélyezett erőforrástípusok
 
-* [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
+* [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
 * [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/index.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -818,7 +818,7 @@ Az adaptív alkalmazás-vezérlés intelligens, automatizált, teljes körű meg
 
 * [Azure Security Center adaptív alkalmazás-vezérlők használata](../security-center/security-center-adaptive-application.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -840,7 +840,7 @@ Az adaptív alkalmazás-vezérlés intelligens, automatizált, teljes körű meg
 
 * [Azure Security Center adaptív alkalmazás-vezérlők használata](../security-center/security-center-adaptive-application.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -862,7 +862,7 @@ Az adaptív alkalmazás-vezérlés intelligens, automatizált, teljes körű meg
 
 * [Útmutató az előfizetéssel kapcsolatos döntésekhez](/azure/cloud-adoption-framework/decision-guides/subscriptions/)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -888,7 +888,7 @@ Az Azure-erőforrások biztonságos alapkonfigurációjának megfelelően Azure 
 
 * [Biztonsági javaslatok – gyorsútmutató](../security-center/recommendations-reference.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -902,7 +902,7 @@ A hibrid Runbook-feldolgozói szolgáltatás használatakor Azure Security Cente
 
 * [Azure Security Center javaslatok szervizelése](../security-center/security-center-remediate-recommendations.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -914,7 +914,7 @@ A hibrid Runbook-feldolgozói szolgáltatás használatakor Azure Security Cente
 
 * [Azure Resource Manager sablonok létrehozásával kapcsolatos információk](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
 
-* [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
+* [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
 * [Azure Policy effektusok ismertetése](../governance/policy/concepts/effects.md)
 
@@ -922,7 +922,7 @@ A hibrid Runbook-feldolgozói szolgáltatás használatakor Azure Security Cente
 
 * [Azure Policy minta beépített Azure Automation](./policy-reference.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -944,7 +944,7 @@ A legtöbb esetben a Azure Automation állapot-konfigurációval kombinált Micr
 
 * [Egyéni virtuális merevlemez feltöltése az Azure-ba](/azure-stack/operator/azure-stack-add-vm-image?view=azs-1910)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -958,7 +958,7 @@ A legtöbb esetben a Azure Automation állapot-konfigurációval kombinált Micr
 
 * [Verziókövetés-integrálás használata](./source-control-integration.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -972,7 +972,7 @@ A hibrid Runbook Worker szolgáltatás használatakor győződjön meg arról, h
 
 * [Az Azure RBAC konfigurálása](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -980,13 +980,13 @@ A hibrid Runbook Worker szolgáltatás használatakor győződjön meg arról, h
 
 **Útmutató**: az Azure-erőforrások szabványos biztonsági konfigurációinak definiálása és implementálása Azure Policy használatával. Az Azure Policy Aliasok használatával egyéni szabályzatokat hozhat létre az Azure-erőforrások hálózati konfigurációjának naplózásához vagy érvénybe léptetéséhez. Az adott erőforrásokhoz kapcsolódó beépített szabályzat-definíciókat is igénybe vehet.
 
-* [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
+* [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
 * [Aliasok használata](../governance/policy/concepts/definition-structure.md#aliases)
 
 * [Azure Policy minta beépített Azure Automation](./policy-reference.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -998,7 +998,7 @@ A hibrid Runbook-feldolgozói szolgáltatás használatakor használja Azure Aut
 
 * [Bevezetési gépek Azure Automation állapot-konfiguráció általi felügyelethez](./automation-dsc-onboarding.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -1012,11 +1012,11 @@ A hibrid Runbook Worker szolgáltatás használatakor a Azure Security Center ki
 
 * [Azure Automation állapot konfigurációjának első lépései](./automation-dsc-getting-started.md)
 
-* [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
+* [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
 * [Azure Policy minta beépített Azure Automation](./policy-reference.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -1028,7 +1028,7 @@ A hibrid Runbook-feldolgozói szolgáltatás használatakor használja Azure Aut
 
 * [Bevezetési gépek Azure Automation állapot-konfiguráció általi felügyelethez](./automation-dsc-onboarding.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -1046,7 +1046,7 @@ A hibrid Runbook-feldolgozói szolgáltatás használatakor használja Azure Aut
 
 * [Key Vault hozzáférési szabályzatok kiosztása](../key-vault/general/assign-access-policy-portal.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -1058,13 +1058,13 @@ A hibrid Runbook-feldolgozói szolgáltatás használatakor használja Azure Aut
 
 * [Az ügyfél által felügyelt kulcsok használata Automation-fiókhoz](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: a hitelesítő adatok nem szándékolt expozíciójának megszüntetése
 
-**Útmutató**: hitelesítő adatok beolvasása a programkódon belül a hitelesítő adatok azonosításához. A hitelesítő adatok beolvasása azt is javasolja, hogy a felderített hitelesítő adatokat biztonságosabb helyszínekre (például Azure Key Vault) helyezze.
+**Útmutató**: hitelesítő adatok beolvasása a programkódon belül a hitelesítő adatok azonosításához. A Credential Scanner a felfedezett hitelesítő adatok biztonságosabb helyre, például az Azure Key Vaultba való áthelyezésére is javaslatot tesz.
 
 * [A hitelesítő adatok beolvasójának beállítása](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
@@ -1084,7 +1084,7 @@ A hibrid Runbook-feldolgozói szolgáltatás használatakor az Azure Windows ren
 
 * [A Microsoft kártevő-elhárító szolgáltatásának konfigurálása Cloud Services és Virtual Machines](../security/fundamentals/antimalware.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -1094,7 +1094,7 @@ A hibrid Runbook-feldolgozói szolgáltatás használatakor az Azure Windows ren
 
 * [Megismerheti a Microsoft antimalware-t az Azure Cloud Services és Virtual Machines](../security/fundamentals/antimalware.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -1108,7 +1108,7 @@ A hibrid Runbook Worker szolgáltatás használatakor az Azure-hoz készült Mic
 
 * [Microsoft Defender Advanced Threat Protection](/windows/security/threat-protection/microsoft-defender-atp/onboard-configure)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -1196,7 +1196,7 @@ A verziókövetés integrációs funkciójával naprakészen tarthatja a runbook
 
 * [Verziókövetés-integrálás használata](./source-control-integration.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -1206,7 +1206,7 @@ A verziókövetés integrációs funkciójával naprakészen tarthatja a runbook
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: incidens-válaszi útmutató létrehozása
 
-**Útmutató**: az incidensekre adott válaszokra vonatkozó útmutató kiépítése a szervezet számára. Győződjön meg arról, hogy van olyan írásos incidens-válasz, amely meghatározza a személyzet összes szerepkörét, valamint az incidensek kezelésének és kezelésének fázisait az észleléstől az incidens utáni felülvizsgálatig.
+**Útmutató**: Alakítson ki incidenskezelési útmutatót a vállalat számára. Gondoskodjon írásos incidenskezelési tervekről, amelyek definiálják az összes résztvevő szerepkörét, valamint az incidenskezelés fázisait az észleléstől az incidens utáni értékelésig.
 
 * [Útmutató a saját biztonsági incidensek megoldási folyamatának létrehozásához](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -1214,7 +1214,7 @@ A verziókövetés integrációs funkciójával naprakészen tarthatja a runbook
 
 * [Az ügyfél a NIST számítógépes biztonsági incidensek kezelési útmutatóját is kihasználhatja a saját incidens-válasz tervének létrehozásával kapcsolatos támogatáshoz](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -1234,11 +1234,11 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 ### <a name="103-test-security-response-procedures"></a>10,3: biztonsági reagálási eljárások tesztelése
 
-**Útmutató**: az Azure-erőforrások védelmének biztosítása érdekében a rendszer az incidensek reagálási képességeinek rendszeres tesztelésére szolgáló gyakorlatokat hajt végre. Azonosítsa a gyenge pontokat és a réseket, és szükség szerint módosítsa a tervet.
+**Útmutató**: az Azure-erőforrások védelmének biztosítása érdekében a rendszer az incidensek reagálási képességeinek rendszeres tesztelésére szolgáló gyakorlatokat hajt végre. Azonosítsa a gyenge pontokat és réseket, és szükség esetén dolgozza át a tervet.
 
 * [A NIST kiadványa – útmutató az IT-csomagok és-képességek teszteléséhez, betanításához és alkalmazásához](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -1280,17 +1280,17 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: az Azure-erőforrások rendszeres behatolásának tesztelése, valamint az összes kritikus biztonsági vizsgálat szervizelésének biztosítása
 
-**Útmutató**: kövesse a Microsoft részvételi szabályait, hogy a behatolási tesztek ne sértsék a Microsoft-házirendeket. Használja a Microsoft stratégiáját, és hajtson végre támadásszimulációt, valamint végezze el a Microsoft által felügyelt felhő-infrastruktúra, szolgáltatások és alkalmazások éles webhelyen történő behatolástesztelését.
+**Útmutató**: kövesse a Microsoft részvételi szabályait, hogy a behatolási tesztek ne sértsék a Microsoft-házirendeket. A Microsoft által felügyelt felhőalapú infrastruktúrán, szolgáltatásokon és alkalmazásokon végzett riasztási és élő behatolási tesztek végrehajtásához használja a Microsoft stratégiáját és végrehajtási tervét.
 
-* [Behatolástesztelési szabályok](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
+* [Behatolástesztelési beavatkozási szabályok](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-* [Microsoft Cloud – támadásszimuláció](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+* [Riasztási tesztek a Microsoft-felhőben](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Megosztott
 
 ## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
-- További tudnivalók az [Azure biztonsági alapkonfigurációiról](../security/benchmarks/security-baselines-overview.md)
+- További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

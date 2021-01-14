@@ -1,18 +1,18 @@
 ---
-title: Az Azure Blob Storageban tárolt adataihoz tartozó érzékenységi címke
-description: Ez a útmutató ismerteti, hogyan lehet megtekinteni és használni az Azure Blob Storageban tárolt adataihoz tartozó, a hatáskörébe tartozó érzékenységi címke jelentését.
+title: Az Azure hatáskörébe tartozó adataira vonatkozó, a hatáskörébe tartozó elemzések használatával történő jelentéskészítés
+description: Ez a útmutató ismerteti, hogyan lehet megtekinteni és használni az adatain a hatáskörébe tartozó érzékenységi címke jelentését.
 author: batamig
 ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: e6a92282d2bcd316a771742048dacd9a7181de4f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: dffecb48a8faa869cb3df450cc220e86195bbc87
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746182"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98199376"
 ---
 # <a name="sensitivity-label-insights-about-your-data-in-azure-purview"></a>Az Azure hatáskörébe tartozó adataival kapcsolatos adatelemzések
 
@@ -27,6 +27,11 @@ Ebben a útmutatóban megismerheti a következőket:
 > - Az adatelemzési címkék érzékenységének megtekintése
 > - Részletezés az adatok részletesebb címkézéséhez
 
+> [!NOTE]
+> A rendszer nem jeleníti meg a hatáskörébe tartozó, [Power bi eszközökön](register-scan-power-bi-tenant.md) található érzékenységi címkéket. 
+>
+> Power BI adategységek érzékenységi címkéjének megtekintéséhez tekintse meg az eszközt a [hatáskörébe Data Catalog](how-to-search-catalog.md).
+> 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A hatáskörébe tartozó ismeretek megismerése előtt győződjön meg arról, hogy végrehajtotta a következő lépéseket:
@@ -37,6 +42,8 @@ A hatáskörébe tartozó ismeretek megismerése előtt győződjön meg arról,
 
 - Az egyes adatforrások tesztelési célú ellenőrzésének beállítása és befejezése
 
+- Jelentkezzen be a hatáskörébe egy [Adatolvasóval vagy egy adatkezelői szerepkörrel](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)rendelkező fiókkal.
+
 További információ: [adatforrások kezelése az Azure hatáskörébe (előzetes verzió)](manage-data-sources.md) és az [adatok automatikus címkézése az Azure hatáskörébe](create-sensitivity-label.md).
 
 ## <a name="use-purview-sensitivity-labeling-insights"></a>A hatáskörébe tartozó érzékenységi feliratozás használata
@@ -45,9 +52,11 @@ A hatáskörébe tartoznak a besorolások a tulajdonosi címkékhez hasonlók, �
 
 Az érzékenységi címkék lehetővé teszik, hogy megtudja, milyen bizalmas adatok legyenek a szervezetében. Előfordulhat például, hogy egy adott projekt neve nagyon bizalmas a szervezeten belül, míg ugyanez a kifejezés nem bizalmas más szervezeteknek. 
 
-Míg a besorolások közvetlenül vannak összehasonlítva (a társadalombiztosítási szám besorolása **társadalombiztosítási számot** tartalmaz), az érzékenységi címkék akkor lesznek alkalmazva, ha egy vagy több besorolás és forgatókönyv együtt található. 
+A besorolások közvetlenül vannak összehasonlítva, például egy társadalombiztosítási szám, amely a **társadalombiztosítási szám** besorolásával rendelkezik. 
 
-A hatáskörébe ugyanazokat a besorolásokat (más néven bizalmas adattípusokat) használja, mint a Microsoft 365. Ez lehetővé teszi a meglévő érzékenységi címkék kiterjesztését az Azure hatáskörébe tartozó eszközökre.
+Ezzel szemben az érzékenységi címkék akkor lépnek életbe, ha egy vagy több besorolás és feltétel együtt található. Ebben a kontextusban a [feltételek](/microsoft-365/compliance/apply-sensitivity-label-automatically) a strukturálatlan adatokhoz megadható összes paraméterre vonatkoznak, például **egy másik besoroláshoz való közelségre**, valamint a **megbízhatóságra**. 
+
+A hatáskörébe ugyanazokat a besorolásokat (más néven [bizalmas adattípusokat](/microsoft-365/compliance/sensitive-information-type-entity-definitions)) használja, mint a Microsoft 365. Ez lehetővé teszi a meglévő érzékenységi címkék kiterjesztését az Azure hatáskörébe tartozó eszközökre.
 
 > [!NOTE]
 > Miután beolvasta a forrás típusait, az új eszközök megjelenítéséhez **adjon meg** néhány órát az adatoknak.
@@ -58,7 +67,7 @@ A hatáskörébe ugyanazokat a besorolásokat (más néven bizalmas adattípusok
 
 1. Az **Áttekintés** lap első **lépések** szakaszában válassza a **hatáskörébe tartozó fiók indítása** csempét.
 
-1. A hatáskörébe területen válassza ki **a** :::image type="icon" source="media/insights/ico-insights.png" border="false"::: bal oldali elemzése menüpontot az információ eléréséhez. **Insights**
+1. A hatáskörébe területen válassza ki **a** :::image type="icon" source="media/insights/ico-insights.png" border="false"::: bal oldali elemzése menüpontot az információ eléréséhez. 
 
 1. **Az információk** :::image type="icon" source="media/insights/ico-insights.png" border="false"::: területen válassza az **érzékenységi címkék** lehetőséget a hatáskörébe tartozó **érzékenység címkézési** jelentés megjelenítéséhez.
 
@@ -69,7 +78,7 @@ A hatáskörébe ugyanazokat a besorolásokat (más néven bizalmas adattípusok
 
    A fő **érzékenység címkézése** lap a következő területeket jeleníti meg:
 
-   |Terület  |Leírás  |
+   |Terület  |Description  |
    |---------|---------|
    |**Az érzékenységi címkékkel rendelkező források áttekintése**     |A következőket biztosító csempéket jeleníti meg: <br>– Az adataiban található előfizetések száma. <br>– Az adatain alkalmazott egyedi érzékenységi címkék száma <br>– Az érzékenységi címkékkel rendelkező források száma <br>– Az érzékenységi címkékkel megtalált fájlok és táblák száma|
    |**Legfelső szintű források címkézett adattal (utolsó 30 nap)**     | Megjeleníti az elmúlt 30 napban fellépő trendeket, amelyek az érzékenységi címkékkel rendelkező források számát mutatják.       |
@@ -88,7 +97,7 @@ A további részletekért **tekintse** meg a további részleteket a részletes 
 - **Táblákon alkalmazott leggyakoribb feliratok**
 - **Címkéző tevékenység > címkézett adatként**
 
-Például:
+Példa:
 
 :::image type="content" source="media/insights/sensitivity-label-drilldown-small.png" alt-text="Érzékenységi címke részletezése" lightbox="media/insights/sensitivity-label-drilldown.png":::
 
@@ -111,7 +120,7 @@ Ahhoz, hogy a Microsoft 365 érzékenységi címkét ki lehessen terjeszteni az 
 
 További információ: [az adatok automatikus címkézése az Azure hatáskörébe](create-sensitivity-label.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ ezekről az Azure-beli betekintési jelentésekről:
 

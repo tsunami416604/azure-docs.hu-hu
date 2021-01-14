@@ -4,12 +4,12 @@ description: Webes teszteket állíthat be az Application Insightsban. Riasztás
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 82b433407906c09d38a46c842334153525fb3c17
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 1b51c70dcebbfad5417a8478f4a956fb5d0608b1
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007925"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98198662"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Bármely webhely rendelkezésre állásának monitorozása
 
@@ -26,6 +26,9 @@ A rendelkezésre állási tesztek három típusa létezik:
 * [Egyéni nyomon követési rendelkezésre állási tesztek](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): Ha úgy dönt, hogy egyéni alkalmazást hoz létre a rendelkezésre állási tesztek futtatásához, a `TrackAvailability()` metódus segítségével küldheti el az eredményeket Application Insights.
 
 **Application Insights erőforráson akár 100 rendelkezésre állási tesztet is létrehozhat.**
+
+> [!IMPORTANT]
+> Az [URL ping teszt](#create-a-url-ping-test) és a [többlépéses webes teszt](availability-multistep.md) is a nyilvános internetes DNS-infrastruktúrára támaszkodik a tesztelt végpontok tartománynevének feloldásához. Ez azt jelenti, hogy ha saját DNS használ, meg kell győződnie arról, hogy a teszt minden tartománynevét a nyilvános tartománynév-kiszolgálók is feloldhatók, vagy ha ez nem lehetséges, az [Egyéni nyomkövetési rendelkezésre állási teszteket](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet) is használhatja helyette.
 
 ## <a name="create-an-application-insights-resource"></a>Application Insights-erőforrás létrehozása
 

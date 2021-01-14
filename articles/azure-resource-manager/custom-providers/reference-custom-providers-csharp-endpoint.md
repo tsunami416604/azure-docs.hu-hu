@@ -5,13 +5,13 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.author: jobreen
 author: jjbfour
-ms.date: 06/20/2019
-ms.openlocfilehash: ce329e7cd8db73e217162fa0bc1bb433d57e9971
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/14/2021
+ms.openlocfilehash: 3b951cd0878bda4a3f65f9208f6997419a10d537
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935636"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200260"
 ---
 # <a name="custom-provider-c-restful-endpoint-reference"></a>Egyéni szolgáltató C# REST-végponti referenciája
 
@@ -24,7 +24,7 @@ Az alábbi kód egy Azure Function-alkalmazással működik. Az Azure functions-
 ```csharp
 #r "Newtonsoft.Json"
 #r "Microsoft.WindowsAzure.Storage"
-#r "../bin/Microsoft.Azure.Management.ResourceManager.Fluent.dll"
+#r "../bin/Microsoft.Azure.Management.ResourceManager.Fluent"
 
 using System;
 using System.Net;
@@ -254,7 +254,7 @@ public static async Task<HttpResponseMessage> RemoveCustomResource(HttpRequestMe
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure egyéni erőforrás-szolgáltatóinak áttekintése](overview.md)
 - [Oktatóanyag: egyéni Azure-erőforrás-szolgáltató létrehozása és egyéni erőforrások üzembe helyezése](./create-custom-provider.md)

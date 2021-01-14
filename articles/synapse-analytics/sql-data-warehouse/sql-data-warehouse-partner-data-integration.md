@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: procha
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 779add921b82f4cd39e86864c600f056489e904e
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 855f7b36c99bf7563c694529a43054da350561b7
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368626"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200855"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Az Azure szinapszis Analytics adatintegrációs partnerei
 
@@ -24,12 +24,12 @@ Az adattárház-megoldás az Azure szinapszis Analytics dedikált SQL-készlette
 
 ## <a name="data-integration-partners"></a>Adatintegrációs partnerek
 
-| Partner | Leírás | Webhely/termék hivatkozása |
+| Partner | Description | Webhely/termék hivatkozása |
 | ------- | ----------- | -------------------- |
 | ![Ab initio](./media/sql-data-warehouse-partner-data-integration/abinitio-logo.png) |**Ab initio**<br> Az ab initio agilis digitális mérnöki platformja segítségével megoldhatja a vállalati számítástechnika legszigorúbb adatfeldolgozási és adatkezelési problémáit. Az ab initio Felhőbeli natív platformja lehetővé teszi, hogy az Azure-ban vagy a helyszíni környezetben bárhol hozzáférjen a vállalati ökoszisztémához, beleértve az örökölt rendszereken tárolt adatait is. A hatékony automatizálással, adatminőséggel, adatszabályozással és aktív metaadatokkal rendelkező intuitív interfészek kombinációja lehetővé teszi a gyors fejlesztést és a valódi adatszolgáltatások önkiszolgálását, így az elemzők gyorsan és hatékonyan végezhetik el a munkájukat. Csatlakozzon a világ legnagyobb vállalkozásaihoz az ab initio használatával, hogy bekapcsolja big data az értelmes adatba. |[Termék lap](https://www.abinitio.com/) |
 | ![Alooma](./media/sql-data-warehouse-partner-data-integration/alooma_logo.png) |**Alooma**<br> A Alooma egy kinyerési, átalakítási és betöltési (ETL) megoldás, amely lehetővé teszi, hogy az adatcsapatok valós időben integrálják, gazdagítsák és továbbítsák a különböző adatsilók adatait egy Azure szinapszis-adattárházba. |[Termék lap](https://www.alooma.com/) |
 | ![Alteryx](./media/sql-data-warehouse-partner-data-integration/alteryx_logo.png) |**Alteryx**<br> A Alteryx Designer egy ismételhető munkafolyamatot biztosít az önkiszolgáló adatelemzéshez, amely több órán keresztül mélyebb elemzéseket eredményez, nem pedig a hagyományos megközelítésekre jellemző heteket! A Alteryx Designer lehetővé teszi az adatelemzők számára az adatelőkészítés, az adatkeverés és az elemzés – prediktív, statisztikai és térbeli – használatát ugyanazzal az intuitív felhasználói felülettel. |[Termék lap](https://www.alteryx.com/partners/microsoft/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/alteryx.alteryx-designer)<br>|
-| ![Attunity](./media/sql-data-warehouse-partner-data-integration/attunity_logo.png) |**Attunity (CloudBeam)**<br>A Attunity CloudBeam automatizált megoldást kínál az Azure szinapszis-adattárházba való adattöltésre. Leegyszerűsíti a kötegelt betöltést és a több forrásból származó adatok növekményes replikálását – SQL Server, Oracle, DB2, Sybase, MySQL és sok más. |[Termék lap](http://www.attunity.com/attunity-cloudbeam-for-azure/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/attunity_cloudbeam.cloudbeam-dw-byol) <br> |
+| ![Attunity](./media/sql-data-warehouse-partner-data-integration/attunity_logo.png) |**Attunity (CloudBeam)**<br>A Attunity CloudBeam automatizált megoldást kínál az Azure szinapszis-adattárházba való adattöltésre. Leegyszerűsíti a kötegelt betöltést és a több forrásból származó adatok növekményes replikálását – SQL Server, Oracle, DB2, Sybase, MySQL és sok más. |[Termék lap](http://www.attunity.com/attunity-cloudbeam-for-azure/)<br>[Azure Marketplace](https://aws.amazon.com/marketplace/pp/Attunity-Attunity-CloudBeam/B00B5PB8IM) <br> |
 | ![CData](./media/sql-data-warehouse-partner-data-integration/cdata-logo.png) |**CData szinkronizálás – Felhőbeli adatfolyamat**<br>Percek alatt készíthet nagy teljesítményű adatfolyamatokat Microsoft Azure Szinapszishoz. A CData Sync egy könnyen használható, go-Anywhere ETL/ELT folyamat, amely több mint 200, nagyvállalati adatforrásból származó adatfolyamot biztosít az Azure szinapszisnak.  A CData szinkronizálásával a felhasználók könnyedén hozhatnak létre automatizált folyamatos adatreplikációt a könyvelés, a CRM, az ERP, a Marketing Automation, a helyszíni és a Felhőbeli adatkezelés között.|[Termék lap](https://www.cdata.com/sync/to/azuresynapse/?utm_source=azuresynapse&utm_medium=partner)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/cdatasoftware.cdatasync?tab=Overview)<br>|
 | ![Denodo](./media/sql-data-warehouse-partner-data-integration/denodo_logo.png) |**Denodo**<br>A Denodo valós idejű hozzáférést biztosítanak a szervezet különböző adatforrásaiban lévő adatforrásokhoz. Az adatvirtualizálás használatával több, replikáció nélküli adatforráson keresztül is áthidalhatja az adatmennyiséget. A Denodo széles körű hozzáférést biztosít a nagyvállalati, big data és Felhőbeli forrásokban lévő strukturált és strukturálatlan adatmennyiségekhez mind a Batch, mind a valós időben.|[Termék lap](https://www.denodo.com/en)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/denodo.denodo-platform-7_0)<br> |
 | ![Dimodelo](./media/sql-data-warehouse-partner-data-integration/dimodelo-logo.png) |**Dimodelo**<br>A Dimodelo adattárház-Studio egy adattárház-automatizálási eszköz az Azure-adatplatformhoz. A Dimodelo a fejlesztői hatékonyságot egy dedikált adattárház-modellezési és ETL-kialakítási eszköz, minta-alapú ajánlott eljárási kód generálás, egykattintásos üzembe helyezés és ETL-előkészítés révén javítja. A Dimodelo javítja a megbízhatóságot a változások propagálásával, lehetővé teszi a fejlesztők számára, hogy az üzleti eredményekre összpontosítson, és automatizálja a hordozhatóságot az adatplatformok között.|[Termék lap](https://www.dimodelo.com/data-warehouse-studio-for-azure-synapse/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/dimodelosolutions.dimodeloazurevs)<br> |
@@ -54,5 +54,5 @@ Az adattárház-megoldás az Azure szinapszis Analytics dedikált SQL-készlette
 | ![Xplenty](./media/sql-data-warehouse-partner-data-integration/xplenty-logo.png) |**Xplenty**<br> A Xplenty ETL és a ELT platform lehetővé teszi, hogy gyorsan és könnyen előkészítse az adatelemzési és éles használati eseteket egy egyszerű adatintegrációs felhőalapú szolgáltatás használatával. A Xplenty pont & kattintással, húzással & drop Interface lehetővé teszi az adatintegrációt, a feldolgozást és az előkészítést a szoftverek telepítése, telepítése és karbantartása nélkül. Több adattárház és SaaS-alkalmazás, például az Azure szinapszis, az Azure Blob Storage és az Azure és a helyszíni MSSQL széles választékával kapcsolódhat és integrálhatók. A Xplenty a REST API-n keresztül elérhető összes webszolgáltatást is támogatja.|[Termék lap](https://www.xplenty.com/integrations/azure-synapse-analytics/ )<br> |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A többi partnerrel kapcsolatos további információkért tekintse meg az [üzleti intelligencia-partnerek](sql-data-warehouse-partner-business-intelligence.md), [adatkezelés partnerek](sql-data-warehouse-partner-data-management.md), valamint a [Machine learning és AI-partnerek](sql-data-warehouse-partner-machine-learning-ai.md)című témakört.

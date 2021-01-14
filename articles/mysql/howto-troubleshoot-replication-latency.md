@@ -6,33 +6,36 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 10/25/2020
-ms.openlocfilehash: 30ac28ef996c42e99ebece27ec156777f0d033d2
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.date: 01/13/2021
+ms.openlocfilehash: 34210d08ad5328f200f5b92c13bfcf85cfead3ec
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587876"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98199478"
 ---
 # <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>A replikáció késésének elhárítása az Azure Database for MySQL-ben
 
 [!INCLUDE[applies-to-single-flexible-server](./includes/applies-to-single-flexible-server.md)]
 
-Az [olvasási replika](concepts-read-replicas.md) funkció lehetővé teszi az adatok replikálását egy Azure Database for MySQL-kiszolgálóról egy írásvédett replika kiszolgálóra. A számítási feladatok felskálázása az alkalmazásból a replika kiszolgálókra irányuló olvasási és jelentéskészítési lekérdezések útválasztásával végezhető el. Ez a beállítás csökkenti a forráskiszolgáló terhelését. Emellett az alkalmazás teljes teljesítményét és késését is javítja, ahogy méretezi. 
+Az [olvasási replika](concepts-read-replicas.md) funkció lehetővé teszi az adatok replikálását egy Azure Database for MySQL-kiszolgálóról egy írásvédett replika kiszolgálóra. A számítási feladatok felskálázása az alkalmazásból a replika kiszolgálókra irányuló olvasási és jelentéskészítési lekérdezések útválasztásával végezhető el. Ez a beállítás csökkenti a forráskiszolgáló terhelését. Emellett az alkalmazás teljes teljesítményét és késését is javítja, ahogy méretezi.
 
-A replikák aszinkron módon frissülnek a MySQL-motor natív bináris naplójának (BinLog) fájljának pozíció-alapú replikációs technológiájának használatával. További információ: [MySQL BinLog-fájl pozíció alapú replikációs konfiguráció áttekintése](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html). 
+A replikák aszinkron módon frissülnek a MySQL-motor natív bináris naplójának (BinLog) fájljának pozíció-alapú replikációs technológiájának használatával. További információ: [MySQL BinLog-fájl pozíció alapú replikációs konfiguráció áttekintése](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).
 
-A másodlagos olvasási replikák replikációs késése számos tényezőtől függ. Ezek a tényezők többek között az alábbiakra korlátozódnak: 
+A másodlagos olvasási replikák replikációs késése számos tényezőtől függ. Ezek a tényezők többek között az alábbiakra korlátozódnak:
 
 - Hálózati késés.
 - Tranzakciós kötet a forráskiszolgálón.
 - A forráskiszolgáló és a másodlagos olvasási replika kiszolgáló számítási szintje.
-- A forráskiszolgálón és a másodlagos kiszolgálón futó lekérdezések. 
+- A forráskiszolgálón és a másodlagos kiszolgálón futó lekérdezések.
 
 Ebből a cikkből megtudhatja, hogyan lehet elhárítani a Azure Database for MySQL replikációs késését. Azt is megismerheti, hogy a replika kiszolgálók nagyobb replikációs késésének gyakori okai.
 
 > [!NOTE]
-> Ez a cikk a Slave kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
+> Elfogultság – ingyenes kommunikáció
+>
+> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a _fő_ és a _Slave_ kifejezésre mutató hivatkozásokat tartalmaz. A [torzítás nélküli kommunikációhoz használható Microsoft-stílusú útmutató](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) ezeket a kizáró szavakat ismeri fel. A jelen cikkben szereplő szavak a konzisztencia miatt használatosak, mivel jelenleg a szoftverben megjelenő szavak. Ha a szoftver frissítve lett a szavak eltávolítására, a rendszer a cikket úgy frissíti, hogy az legyen az igazítás.
+>
 
 ## <a name="replication-concepts"></a>Replikációs fogalmak
 
@@ -47,7 +50,7 @@ A Azure Database for MySQL a [Azure monitor](concepts-monitoring.md)a replikál�
 
 A replikációs késés okainak megismeréséhez a [MySQL Workbench](connect-workbench.md) vagy a [Azure Cloud Shell](https://shell.azure.com)használatával kapcsolódjon a másodpéldány-kiszolgálóhoz. Ezután futtassa a következő parancsot.
 
->[!NOTE] 
+>[!NOTE]
 > A kódban cserélje le a példában szereplő értékeket a replika-kiszolgáló nevére és a rendszergazdai felhasználónevére. A rendszergazdai felhasználónévhez a `@\<servername>` Azure Database for MySQL szükséges.
 
 ```azurecli-interactive
@@ -92,7 +95,6 @@ A következő egy tipikus kimenet:
 >[!div class="mx-imgBorder"]
 > :::image type="content" source="./media/howto-troubleshoot-replication-latency/show-status.png" alt-text="Replikáció késésének figyelése":::
 
-
 A kimenet számos információt tartalmaz. Általában csak az alábbi táblázatban leírt sorokra kell összpontosítania.
 
 |Metrika|Leírás|
@@ -122,7 +124,7 @@ A következő fejezetek olyan forgatókönyveket mutatnak be, amelyekben a nagy 
 
 ### <a name="network-latency-or-high-cpu-consumption-on-the-source-server"></a>Hálózati késés vagy nagy CPU-felhasználás a forráskiszolgálón
 
-Ha a következő értékeket látja, a replikálás késése valószínűleg nagy hálózati késés vagy a forráskiszolgáló magas CPU-kihasználtsága okozhatja. 
+Ha a következő értékeket látja, a replikálás késése valószínűleg nagy hálózati késés vagy a forráskiszolgáló magas CPU-kihasználtsága okozhatja.
 
 ```
 Slave_IO_State: Waiting for master to send event
@@ -132,7 +134,7 @@ Relay_Master_Log_File: the file sequence is smaller than Master_Log_File, e.g. m
 
 Ebben az esetben az IO-szál fut, és a forráskiszolgálón várakozik. A forráskiszolgáló már a 20. számú bináris naplófájlba lett írva. A replika csak a 10-es számú fájlt fogadta. Ebben a forgatókönyvben a nagy replikációs késés elsődleges tényezője a forráskiszolgáló hálózati sebessége vagy magas CPU-kihasználtsága.  
 
-Az Azure-ban a régión belüli hálózati késés általában ezredmásodpercben mérhető. A régiók között a késés tartománya ezredmásodperctől másodpercig terjed. 
+Az Azure-ban a régión belüli hálózati késés általában ezredmásodpercben mérhető. A régiók között a késés tartománya ezredmásodperctől másodpercig terjed.
 
 A legtöbb esetben az IO-szálak és a forráskiszolgáló közötti kapcsolat késleltetését a forráskiszolgáló magas CPU-kihasználtsága okozza. Az IO-szálak feldolgozása lassan történik. A probléma észleléséhez Azure Monitor használatával ellenőrizze a processzor kihasználtságát és a forráskiszolgáló egyidejű kapcsolatainak számát.
 
@@ -148,18 +150,17 @@ Master_Log_File: the binary file sequence is larger then Relay_Master_Log_File, 
 Relay_Master_Log_File: the file sequence is smaller then Master_Log_File, e.g. mysql-bin.00010
 ```
 
-A kimenet azt mutatja, hogy a replika lekérheti a bináris naplót a forráskiszolgáló mögött. A replika IO-szála azonban azt jelzi, hogy a továbbítási napló területe már megtelt. 
+A kimenet azt mutatja, hogy a replika lekérheti a bináris naplót a forráskiszolgáló mögött. A replika IO-szála azonban azt jelzi, hogy a továbbítási napló területe már megtelt.
 
-A hálózati sebesség nem okozza a késést. A replika megpróbál felzárkózni. A frissített bináris napló mérete azonban meghaladja a továbbítási napló területének felső korlátját. 
+A hálózati sebesség nem okozza a késést. A replika megpróbál felzárkózni. A frissített bináris napló mérete azonban meghaladja a továbbítási napló területének felső korlátját.
 
 A probléma megoldásához engedélyezze a [lassú lekérdezési naplót](concepts-server-logs.md) a forráskiszolgálón. Lassú lekérdezési naplók használatával azonosíthatja a forráskiszolgáló hosszan futó tranzakcióit. Ezután hangolja az azonosított lekérdezéseket, hogy csökkentse a késést a kiszolgálón. 
 
 A rendezés replikációs késését általában a forráskiszolgáló adatterhelése okozza. Ha a forráskiszolgáló hetente vagy havonta töltődik be, a replikációs késés sajnos elkerülhetetlen. A replika-kiszolgálók végül a forráskiszolgáló adatterhelésének befejeződése után fognak megjelenni.
 
-
 ### <a name="slowness-on-the-replica-server"></a>A replika-kiszolgáló lassúsága
 
-Ha a következő értékeket veszi figyelembe, előfordulhat, hogy a probléma a másodpéldány-kiszolgálón található. 
+Ha a következő értékeket veszi figyelembe, előfordulhat, hogy a probléma a másodpéldány-kiszolgálón található.
 
 ```
 Slave_IO_State: Waiting for master to send event
@@ -172,7 +173,7 @@ Exec_Master_Log_Pos: The position of slave reads from master binary log file is 
 Seconds_Behind_Master: There is latency and the value here is greater than 0
 ```
 
-Ebben az esetben a kimenet azt mutatja, hogy az i/o-szál és az SQL-szál is jól működik. A replika beolvassa ugyanazt a bináris naplófájlt, amelyet a forráskiszolgáló ír. A replika-kiszolgáló néhány késése azonban ugyanazt a tranzakciót tükrözi a forráskiszolgálón. 
+Ebben az esetben a kimenet azt mutatja, hogy az i/o-szál és az SQL-szál is jól működik. A replika beolvassa ugyanazt a bináris naplófájlt, amelyet a forráskiszolgáló ír. A replika-kiszolgáló néhány késése azonban ugyanazt a tranzakciót tükrözi a forráskiszolgálón.
 
 Az alábbi szakaszok az ilyen típusú késés gyakori okait ismertetik.
 
@@ -180,13 +181,13 @@ Az alábbi szakaszok az ilyen típusú késés gyakori okait ismertetik.
 
 A Azure Database for MySQL sor alapú replikálást használ. A forráskiszolgáló eseményeket ír a bináris naplóba, és rögzíti a módosításokat az egyes táblázat soraiban. Az SQL-szál ezután replikálja ezeket a módosításokat a másodpéldány-kiszolgálón lévő megfelelő táblázat soraiba. Ha egy tábla nem rendelkezik elsődleges kulccsal vagy egyedi kulccsal, az SQL-szál megvizsgálja a cél tábla összes sorát a módosítások alkalmazásához. Ez a vizsgálat replikációs késést eredményezhet.
 
-A MySQL-ben az elsődleges kulcs egy társított index, amely biztosítja a gyors lekérdezési teljesítményt, mert nem tartalmazhat NULL értékeket. Ha a InnoDB Storage motort használja, a tábla-adatfeldolgozás fizikailag úgy van rendszerezve, hogy az elsődleges kulcson alapuló, rendkívül gyors keresési és rendezési műveleteket hajtson végre. 
+A MySQL-ben az elsődleges kulcs egy társított index, amely biztosítja a gyors lekérdezési teljesítményt, mert nem tartalmazhat NULL értékeket. Ha a InnoDB Storage motort használja, a tábla-adatfeldolgozás fizikailag úgy van rendszerezve, hogy az elsődleges kulcson alapuló, rendkívül gyors keresési és rendezési műveleteket hajtson végre.
 
 Azt javasoljuk, hogy a másodpéldány létrehozása előtt adjon hozzá egy elsődleges kulcsot a forráskiszolgálón lévő táblákhoz. Adjon hozzá elsődleges kulcsokat a forráskiszolgálón, majd olvassa el újra az olvasási replikákat a replikálási késés javítása érdekében.
 
 A következő lekérdezés segítségével megtudhatja, hogy mely táblák hiányoznak elsődleges kulcs a forráskiszolgálón:
 
-```sql 
+```sql
 select tab.table_schema as database_name, tab.table_name 
 from information_schema.tables tab left join 
 information_schema.table_constraints tco 
@@ -202,19 +203,19 @@ order by tab.table_schema, tab.table_name;
 
 #### <a name="long-running-queries-on-the-replica-server"></a>Hosszan futó lekérdezések a másodpéldány-kiszolgálón
 
-A replika-kiszolgáló munkaterhelése az IO-szál mögött is elvégezheti az SQL-szál késését. A replika-kiszolgálón a hosszan futó lekérdezések egyike a nagy replikációs késés leggyakoribb okai. A probléma elhárításához engedélyezze a [lassú lekérdezési naplót](concepts-server-logs.md) a másodpéldány-kiszolgálón. 
+A replika-kiszolgáló munkaterhelése az IO-szál mögött is elvégezheti az SQL-szál késését. A replika-kiszolgálón a hosszan futó lekérdezések egyike a nagy replikációs késés leggyakoribb okai. A probléma elhárításához engedélyezze a [lassú lekérdezési naplót](concepts-server-logs.md) a másodpéldány-kiszolgálón.
 
 A lassú lekérdezések növelhetik az erőforrások felhasználását, vagy lelassítják a kiszolgálót, így a replika nem tud felfogni a forráskiszolgálóról. Ebben az esetben hangolja le a lassú lekérdezéseket. A gyorsabb lekérdezések megakadályozzák az SQL-szál blokkolását, és jelentősen javítják a replikálás késését.
 
-
 #### <a name="ddl-queries-on-the-source-server"></a>DDL-lekérdezések a forráskiszolgálón
+
 A forráskiszolgálón egy adatdefiníciós nyelv (DDL) parancs, például [`ALTER TABLE`](https://dev.mysql.com/doc/refman/5.7/en/alter-table.html) hosszú időt vehet igénybe. Amíg a DDL-parancs fut, több ezer más lekérdezés is futhat párhuzamosan a forráskiszolgálón. 
 
 A DDL replikálása esetén az adatbázis konzisztenciájának biztosítása érdekében a MySQL motor egyetlen replikációs szálban futtatja a DDL-t. A feladat során minden más replikált lekérdezés le lesz tiltva, és várnia kell, amíg a DDL-művelet be nem fejeződik a másodpéldány-kiszolgálón. Ez a késleltetés még az online DDL-műveletek esetében is okozhat. A DDL-műveletek fokozzák a replikálás késését.
 
-Ha engedélyezte a [lassú lekérdezési naplót](concepts-server-logs.md) a forráskiszolgálón, ezt a késési problémát észlelheti a forráskiszolgálón futtatott DDL-parancs ellenőrzésével. Az index eldobása, átnevezése és létrehozása révén használhatja az ALTER tábla inplace algoritmusát. Előfordulhat, hogy át kell másolnia a tábla adattábláját, és újra létre kell hoznia a táblát. 
+Ha engedélyezte a [lassú lekérdezési naplót](concepts-server-logs.md) a forráskiszolgálón, ezt a késési problémát észlelheti a forráskiszolgálón futtatott DDL-parancs ellenőrzésével. Az index eldobása, átnevezése és létrehozása révén használhatja az ALTER tábla inplace algoritmusát. Előfordulhat, hogy át kell másolnia a tábla adattábláját, és újra létre kell hoznia a táblát.
 
-Az egyidejű DML-t általában a inplace algoritmus támogatja. A művelet előkészítésekor és futtatásakor azonban rövid időre kihasználhatja a metaadatok zárolását a táblán. A CREATE INDEX utasítás esetében a záradékok ALGORITMUS és a zárolás használatával befolyásolhatja a tábla másolásának módszerét, valamint az olvasásra és írásra vonatkozó párhuzamossági szintet. A DML-műveleteket továbbra is megakadályozhatja egy teljes SZÖVEGES index vagy térbeli index hozzáadásával. 
+Az egyidejű DML-t általában a inplace algoritmus támogatja. A művelet előkészítésekor és futtatásakor azonban rövid időre kihasználhatja a metaadatok zárolását a táblán. A CREATE INDEX utasítás esetében a záradékok ALGORITMUS és a zárolás használatával befolyásolhatja a tábla másolásának módszerét, valamint az olvasásra és írásra vonatkozó párhuzamossági szintet. A DML-műveleteket továbbra is megakadályozhatja egy teljes SZÖVEGES index vagy térbeli index hozzáadásával.
 
 Az alábbi példa egy indexet hoz létre az ALGORITMUS és a LOCK záradék használatával.
 
@@ -226,24 +227,25 @@ A zárolást igénylő DDL-utasítások esetében sajnos nem kerülheti el a rep
 
 #### <a name="downgraded-replica-server"></a>Visszaminősített replika kiszolgáló
 
-Azure Database for MySQLban az olvasási replikák ugyanazt a kiszolgálói konfigurációt használják, mint a forráskiszolgáló. A replika-kiszolgáló konfigurációját a létrehozása után módosíthatja. 
+Azure Database for MySQLban az olvasási replikák ugyanazt a kiszolgálói konfigurációt használják, mint a forráskiszolgáló. A replika-kiszolgáló konfigurációját a létrehozása után módosíthatja.
 
-Ha a replika-kiszolgálót leértékelik, a munkaterhelés több erőforrást is felhasználhat, ami pedig replikációs késéshez vezethet. A probléma észleléséhez használja a Azure Monitor a replika kiszolgáló CPU-és memória-felhasználásának ellenőrzéséhez. 
+Ha a replika-kiszolgálót leértékelik, a munkaterhelés több erőforrást is felhasználhat, ami pedig replikációs késéshez vezethet. A probléma észleléséhez használja a Azure Monitor a replika kiszolgáló CPU-és memória-felhasználásának ellenőrzéséhez.
 
 Ebben a forgatókönyvben azt javasoljuk, hogy a másodpéldány-kiszolgáló konfigurációját a forráskiszolgáló értékeinek megfelelő vagy annál nagyobb értékekkel tartsa. Ez a konfiguráció lehetővé teszi, hogy a replika lépést tartson a forráskiszolgálóról.
 
 #### <a name="improving-replication-latency-by-tuning-the-source-server-parameters"></a>A replikációs késés javítása a forráskiszolgáló paramétereinek hangolásával
 
-A Azure Database for MySQL alapértelmezés szerint a replikálás a replikák párhuzamos szálakkal való futtatására van optimalizálva. Ha a forráskiszolgálón a nagy párhuzamossági szintű munkaterhelések miatt a replika-kiszolgáló lemarad, a replikálás késését a forráskiszolgáló binlog_group_commit_sync_delay paraméterének konfigurálásával javíthatja. 
+A Azure Database for MySQL alapértelmezés szerint a replikálás a replikák párhuzamos szálakkal való futtatására van optimalizálva. Ha a forráskiszolgálón a nagy párhuzamossági szintű munkaterhelések miatt a replika-kiszolgáló lemarad, a replikálás késését a forráskiszolgáló binlog_group_commit_sync_delay paraméterének konfigurálásával javíthatja.
 
-A binlog_group_commit_sync_delay paraméter azt határozza meg, hogy hány másodpercenként a bináris napló véglegesítve várakozik a bináris naplófájl szinkronizálása előtt. Ennek a paraméternek az előnye, hogy az összes véglegesített tranzakció azonnali alkalmazása helyett a forráskiszolgáló tömegesen küldi el a bináris napló frissítéseit. Ez a késleltetés csökkenti a replika IO-értékét, és segít a teljesítmény javításában. 
+A binlog_group_commit_sync_delay paraméter azt határozza meg, hogy hány másodpercenként a bináris napló véglegesítve várakozik a bináris naplófájl szinkronizálása előtt. Ennek a paraméternek az előnye, hogy az összes véglegesített tranzakció azonnali alkalmazása helyett a forráskiszolgáló tömegesen küldi el a bináris napló frissítéseit. Ez a késleltetés csökkenti a replika IO-értékét, és segít a teljesítmény javításában.
 
-Hasznos lehet a binlog_group_commit_sync_delay paraméter beállítása 1000-re vagy így. Ezután figyelje a replikálás késését. Ezt a paramétert óvatosan állítsa be, és csak a nagy párhuzamosságú munkaterhelésekhez használja. 
+Hasznos lehet a binlog_group_commit_sync_delay paraméter beállítása 1000-re vagy így. Ezután figyelje a replikálás késését. Ezt a paramétert óvatosan állítsa be, és csak a nagy párhuzamosságú munkaterhelésekhez használja.
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > A replika-kiszolgálón a binlog_group_commit_sync_delay paraméter értéke 0. Ez azért ajánlott, mert a forráskiszolgálótól eltérően a replika kiszolgáló nem rendelkezik magas párhuzamossággal, és a replika-kiszolgálón lévő binlog_group_commit_sync_delay értékének növelése véletlenül a replikálás késésének növelését okozhatja.
 
-A sok önálló tranzakciót tartalmazó, alacsony párhuzamosságú számítási feladatokhoz a binlog_group_commit_sync_delay-beállítás növelheti a késést. A késés megnövelhető, mert az IO-szál a tömeges bináris naplók frissítésére vár, még akkor is, ha csak néhány tranzakció véglegesítve van. 
+A sok önálló tranzakciót tartalmazó, alacsony párhuzamosságú számítási feladatokhoz a binlog_group_commit_sync_delay-beállítás növelheti a késést. A késés megnövelhető, mert az IO-szál a tömeges bináris naplók frissítésére vár, még akkor is, ha csak néhány tranzakció véglegesítve van.
 
 ## <a name="next-steps"></a>Következő lépések
+
 Tekintse meg a [MySQL BinLog-replikáció áttekintését](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d8f69f94c53227dc86fbbf9e9936a2fc3c97ec55
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: af248b4ee3ccd079d41317fdb1db3de82ad0f835
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967873"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98199036"
 ---
 # <a name="connecting-azure-vms-to-hana-large-instances"></a>Azure-beli virtuális gépek csatlakozása nagy méretű HANA-példányokhoz
 
@@ -41,7 +41,7 @@ Az Azure Virtual Network oldalának alaposabban megkeresve a következőkre van 
 >[!Note]
 >A HANA nagyméretű példányok Azure-beli virtuális hálózatát a Azure Resource Manager üzemi modell használatával kell létrehozni. A HANA nagyméretű példány megoldás nem támogatja a régebbi Azure-alapú üzemi modellt, amelyet gyakran a klasszikus üzemi modellnek is nevezünk.
 
-A virtuális hálózat létrehozásához használhatja a Azure Portal, a PowerShell, az Azure-sablon vagy az Azure CLI-t. (További információ: [virtuális hálózat létrehozása a Azure Portal használatával](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)). Az alábbi példában a Azure Portal használatával létrehozott virtuális hálózatot tekintjük át.
+A virtuális hálózat létrehozásához használhatja a Azure Portal, a PowerShell, az Azure-sablon vagy az Azure CLI-t. (További információ: [virtuális hálózat létrehozása a Azure Portal használatával](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network)). Az alábbi példában a Azure Portal használatával létrehozott virtuális hálózatot tekintjük át.
 
 Ha a jelen dokumentációban található **címterület** hivatkozik arra, hogy az Azure-beli virtuális hálózat által használt címtartomány engedélyezve legyen. Ez a Címterület azt a címtartományt is használja, amelyet a virtuális hálózat a BGP-útvonal propagálásához használ. Ez a **címterület** itt látható:
 

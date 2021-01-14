@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a1430b32c0e74be7a0e50fa4c5c183018b2b55e0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 81d44dae0fed45d4a4df76973c7e233fd71baff1
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006302"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98198968"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>SAP HANA (nagyméretű példányok) telepítése és konfigurálása az Azure-ban
 
@@ -125,21 +125,21 @@ SAP HANA az Azure-ban (nagyméretű példányok) az Azure-ban végzett időszink
 Ennek eredményeképpen be kell állítania egy külön időkiszolgálót, amelyet az Azure-beli virtuális gépeken futó SAP-alkalmazások és a HANA nagyméretű példányokon futó SAP HANA adatbázis-példányok használhatnak. A nagyméretű példányokban tárolt tárolási infrastruktúra időközben szinkronizálva van az NTP-kiszolgálókkal.
 
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 Feltételezzük, hogy követte az Azure-beli virtuális hálózatok megtervezésének és a virtuális hálózatok a HANA nagyméretű példányokhoz való csatlakoztatásának javaslatait, az alábbi dokumentumokban leírtak szerint:
 
 - [SAP HANA (nagyméretű példány) áttekintése és architektúrája az Azure-ban](./hana-overview-architecture.md)
-- [SAP HANA (nagyméretű példányok) infrastruktúrája és kapcsolódás az Azure-ban](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [SAP HANA (nagyméretű példányok) infrastruktúrája és kapcsolódás az Azure-ban](hana-overview-infrastructure-connectivity.md)
 
 Néhány részletet érdemes megemlíteni az önálló egységek hálózatkezelésével kapcsolatban. Minden HANA nagyméretű példány-egység két vagy három IP-címmel rendelkezik, amelyek két vagy három NIC-porthoz vannak rendelve. Három IP-cím használatos a HANA kibővíthető konfigurációkban és a HANA rendszer replikációs forgatókönyvében. Az egység hálózati adapteréhez rendelt egyik IP-cím kívül esik a kiszolgáló IP-készletéből, amely [SAP HANA (nagyméretű példányok) áttekintésében és az Azure architektúrájában](./hana-overview-architecture.md)szerepel.
 
 Az architektúra Ethernet-adataival kapcsolatos további információkért tekintse meg a [HLI által támogatott forgatókönyveket](hana-supported-scenario.md).
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 
 Az Azure-beli SAP HANA tárolási elrendezését (nagyméretű példányok) az Azure-ban az `service management` SAP által ajánlott irányelvek alapján SAP HANA konfigurálni. Ezek az irányelvek dokumentálva vannak a [SAP HANA Storage-követelmények](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) című tanulmányban. 
 
-A különböző HANA nagyméretű példányokkal rendelkező különféle kötetek durva méretei a [SAP HANA (nagyméretű példányok) áttekintésében és az Azure architektúrájában](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)vannak dokumentálva.
+A különböző HANA nagyméretű példányokkal rendelkező különféle kötetek durva méretei a [SAP HANA (nagyméretű példányok) áttekintésében és az Azure architektúrájában](hana-overview-architecture.md)vannak dokumentálva.
 
 A tárolási kötetek elnevezési konvenciói az alábbi táblázatban láthatók:
 
@@ -161,7 +161,7 @@ A kibővíthető környezetek, az adat-, a napló-és a biztonsági mentési kö
 
 Ha egy HANA nagyméretű példány egységét tekinti át, akkor tisztában lesz azzal, hogy az egységek nagyvonalú lemezterületet biztosítanak a HANA/az adatmennyiséghez, valamint hogy van egy kötet HANA/log/Backup. A HANA/az adatmennyiség olyan nagy, hogy a tárolási Pillanatképek azt ajánljuk Önnek, hogy az ügyfél ugyanazt a lemezt használja. Minél több tárolási pillanatkép van végrehajtva, annál több helyet használ a pillanatképek a hozzárendelt tárolási köteteken. 
 
-A HANA/log/Backup kötet nem lehet az adatbázis biztonsági másolatainak kötete. Ez a méret a HANA-tranzakciónapló biztonsági mentései biztonsági mentési kötetként használható. További információ: [SAP HANA (nagyméretű példányok) magas rendelkezésre állása és vész-helyreállítás az Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)-ban. 
+A HANA/log/Backup kötet nem lehet az adatbázis biztonsági másolatainak kötete. Ez a méret a HANA-tranzakciónapló biztonsági mentései biztonsági mentési kötetként használható. További információ: [SAP HANA (nagyméretű példányok) magas rendelkezésre állása és vész-helyreállítás az Azure](hana-overview-high-availability-disaster-recovery.md)-ban. 
 
 A megadott tárterületen kívül 1 TB-os növekményekben is vásárolhat további tárolókapacitást. Ezt a további tárhelyet új kötetekként lehet hozzáadni a HANA nagyméretű példányaihoz.
 

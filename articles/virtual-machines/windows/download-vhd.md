@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 01/13/2019
 ms.author: cynthn
-ms.openlocfilehash: 5c57ac0fb0ab377f00770e3c9c03a413dcb345bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e6f7b461d205478d6a3fe3eecbbb933d0533ec9
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87291031"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200515"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Windows rendszerű virtuális merevlemez letöltése az Azure-ból
 
@@ -27,20 +27,20 @@ Ha a virtuális merevlemezt [képként](tutorial-custom-images.md) szeretné lé
 Ha a virtuális merevlemezt képként szeretné használni más virtuális gépek létrehozásához, általánosítsa a virtuális gépet.
 
 1. Ha még nem tette meg, jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. [Kapcsolódjon a virtuális géphez](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+2. [Kapcsolódjon a virtuális géphez](connect-logon.md). 
 3. A virtuális gépen nyissa meg rendszergazdaként a parancssorablakot.
 4. Módosítsa a könyvtárat *%WINDIR%\system32\sysprep* , és futtassa sysprep.exe.
-5. A rendszer-előkészítő eszköz párbeszédpanelen jelölje be a rendszerindítási folyamat **(OOBE) megadása**jelölőnégyzetet, és győződjön meg arról, hogy az **általánosítás** van kiválasztva.
-6. A leállítási beállítások területen válassza a **Leállítás**lehetőséget, majd kattintson **az OK**gombra. 
+5. A rendszer-előkészítő eszköz párbeszédpanelen jelölje be a rendszerindítási folyamat **(OOBE) megadása** jelölőnégyzetet, és győződjön meg arról, hogy az **általánosítás** van kiválasztva.
+6. A leállítási beállítások területen válassza a **Leállítás** lehetőséget, majd kattintson **az OK** gombra. 
 
 
 ## <a name="stop-the-vm"></a>A virtuális gép leállítása
 
 Egy virtuális merevlemez nem tölthető le az Azure-ból, ha egy futó virtuális géphez van csatlakoztatva. A virtuális merevlemez letöltéséhez le kell állítania a virtuális gépet. 
 
-1. A Azure Portal központi menüjében kattintson az **Virtual Machines**elemre.
+1. A Azure Portal központi menüjében kattintson az **Virtual Machines** elemre.
 1. Válassza ki a virtuális gépet a listából.
-1. A virtuális gép paneljén kattintson a **Leállítás**gombra.
+1. A virtuális gép paneljén kattintson a **Leállítás** gombra.
 
 
 ## <a name="generate-download-url"></a>Letöltési URL-cím előállítása
@@ -51,7 +51,7 @@ A VHD-fájl letöltéséhez egy [közös hozzáférési aláírás (SAS)](../../
 1. Válassza ki a virtuális gép operációsrendszer-lemezét.
 1. A lemez lapján válassza a bal oldali menü **lemez exportálása** elemét.
 1. Az URL-cím alapértelmezett lejárati ideje *3600* másodperc. Növelje a **36000** -et a Windows operációsrendszer-lemezek esetében.
-1. Kattintson az **URL-cím előállítása**gombra.
+1. Kattintson az **URL-cím előállítása** gombra.
 
 > [!NOTE]
 > A lejárati idő megnő az alapértelmezetttől, hogy elegendő időt biztosítson a nagyméretű VHD-fájl letöltésére a Windows Server operációs rendszer számára. A Windows Server operációs rendszert tartalmazó VHD-fájl várhatóan több órányi letöltést is igénybe vehet a kapcsolódástól függően. Ha egy adatlemezre letölt egy VHD-t, az alapértelmezett idő elegendő. 
@@ -63,8 +63,8 @@ A VHD-fájl letöltéséhez egy [közös hozzáférési aláírás (SAS)](../../
 1. A létrehozott URL-cím alatt kattintson a VHD-fájl letöltése elemre.
 1. Előfordulhat, hogy a letöltés indításához a böngészőben a **Mentés** gombra kell kattintania. A VHD-fájl alapértelmezett neve *ABCD*.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Megtudhatja, hogyan [tölthet fel egy VHD-fájlt az Azure-](upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ba. 
-- [Felügyelt lemezek létrehozása a nem felügyelt lemezekről egy Storage-fiókban](attach-disk-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-- [Azure-lemezek kezelése a PowerShell](tutorial-manage-data-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)-lel.
+- Megtudhatja, hogyan [tölthet fel egy VHD-fájlt az Azure-](upload-generalized-managed.md)ba. 
+- [Felügyelt lemezek létrehozása a nem felügyelt lemezekről egy Storage-fiókban](attach-disk-ps.md).
+- [Azure-lemezek kezelése a PowerShell](tutorial-manage-data-disk.md)-lel.

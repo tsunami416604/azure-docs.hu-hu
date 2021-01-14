@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 44e9712466734c0e42fd2bea05c5110cbff6924b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 308d30118349e020d3b407243f106d9ad8368118
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964796"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98198985"
 ---
 # <a name="additional-network-requirements-for-large-instances"></a>A nagyméretű példányok további hálózati követelményei
 
@@ -31,7 +31,7 @@ Ha több IP-címet vagy alhálózatot ad hozzá, használja a Azure Portal, a Po
 
 Új összesített tartomány létrehozása helyett adja hozzá az új IP-címtartományt új tartományként a virtuális hálózati címtartomány területéhez. Ezt a módosítást küldje el a Microsoftnak. Ez lehetővé teszi, hogy az adott új IP-címtartomány és az ügyfélben lévő HANA nagyméretű példány egységei között csatlakozhasson. Nyisson meg egy Azure-támogatási kérést az új virtuális hálózati címtartomány hozzáadásához. Miután megkapta a jóváhagyást, hajtsa végre a következő lépéseket.
 
-Ha további alhálózatot szeretne létrehozni a Azure Portalból, tekintse meg a [virtuális hálózat létrehozása a Azure Portal használatával](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)című témakört. A PowerShellből való létrehozással kapcsolatban lásd: [virtuális hálózat létrehozása a PowerShell használatával](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network).
+Ha további alhálózatot szeretne létrehozni a Azure Portalból, tekintse meg a [virtuális hálózat létrehozása a Azure Portal használatával](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network)című témakört. A PowerShellből való létrehozással kapcsolatban lásd: [virtuális hálózat létrehozása a PowerShell használatával](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network).
 
 ## <a name="add-virtual-networks"></a>Virtuális hálózatok hozzáadása
 
@@ -51,11 +51,11 @@ Amikor létrejön az új áramkör, és a Microsoft Service Management konfigur�
 
 A virtuális hálózati alhálózat eltávolításához használhatja a Azure Portal, a PowerShellt vagy az Azure CLI-t. Ha az Azure-beli virtuális hálózati IP-címtartomány vagy a Címterület összesített tartománya volt, a Microsoft nem végez nyomon követést. (Ne feledje azonban, hogy a virtuális hálózat továbbra is propagálja a BGP-útvonal címterület-területét, amely tartalmazza a törölt alhálózatot.) Lehetséges, hogy az Azure-beli virtuális hálózati címtartomány vagy a címtartomány több IP-címtartomány formájában lett definiálva, amelyek közül egyet a törölt alhálózathoz rendeltek. Ügyeljen arra, hogy a virtuális hálózati címtartomány alapján törölje azt. Ezután tájékoztassa SAP HANA a Microsoft Service Management szolgáltatásról, hogy eltávolítsa azt az Azure-on SAP HANA tartományokból (nagyméretű példányok).
 
-További információ: [alhálózat törlése](../../../virtual-network/virtual-network-manage-subnet.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-subnet).
+További információ: [alhálózat törlése](../../../virtual-network/virtual-network-manage-subnet.md#delete-a-subnet).
 
 ## <a name="delete-a-virtual-network"></a>Virtuális hálózat törlése
 
-További információ: [Virtual Network (virtuális hálózat törlése](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-virtual-network)).
+További információ: [Virtual Network (virtuális hálózat törlése](../../../virtual-network/manage-virtual-network.md#delete-a-virtual-network)).
 
 A Microsoft Service Management SAP HANA eltávolítja a meglévő engedélyeket az Azure-beli (nagyméretű példányok) ExpressRoute áramkörön található SAP HANA. Emellett eltávolítja az Azure Virtual Network IP-címtartomány vagy a címtartomány a HANA nagyméretű példányokkal folytatott kommunikációhoz.
 

@@ -3,14 +3,14 @@ title: RESTful-végpont létrehozása
 description: Ez az oktatóanyag bemutatja, hogyan hozhat létre egy REST-végpontot az egyéni szolgáltatók számára. Részletesen ismerteti, hogyan kezelheti a kérelmeket és a válaszokat a támogatott REST-alapú HTTP-módszerekhez.
 author: jjbfour
 ms.topic: tutorial
-ms.date: 06/19/2019
+ms.date: 01/13/2021
 ms.author: jobreen
-ms.openlocfilehash: d7f6c51211ce0572797ade659b9316003502da1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54d0df287865d5d92403bf68227a2d4c5faa8bb4
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75650022"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200209"
 ---
 # <a name="author-a-restful-endpoint-for-custom-providers"></a>REST-végpont létrehozása egyéni szolgáltatók számára
 
@@ -43,7 +43,7 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 
 A példa `x-ms-customproviders-requestpath` fejléce alapján az alábbi táblázatban látható módon hozhatja létre a *partitionKey* és a *rowKey* paramétereket a tárolóhoz:
 
-Paraméter | Sablon | Leírás
+Paraméter | Sablon | Description
 ---|---|---
 *partitionKey* | `{subscriptionId}:{resourceGroupName}:{resourceProviderName}` | A *partitionKey* paraméter határozza meg az adatparticionálás módját. Általában az egyéni szolgáltatói példány particionálja az adathalmazt.
 *rowKey* | `{myResourceType}:{myResourceName}` | A *rowKey* paraméter az adat egyedi azonosítóját adja meg. Általában az azonosító az erőforrás neve.
@@ -57,7 +57,7 @@ public class CustomResource : TableEntity
     public string Data { get; set; }
 }
 ```
-A **CustomResource** egy egyszerű, általános osztály, amely a bemeneti adatokat is elfogadja. Ez a **TableEntity**alapul, amely az adattárolásra szolgál. A **CustomResource** osztály a következő két tulajdonságot örökli: **TableEntity**: **partitionKey** és **rowKey**.
+A **CustomResource** egy egyszerű, általános osztály, amely a bemeneti adatokat is elfogadja. Ez a **TableEntity** alapul, amely az adattárolásra szolgál. A **CustomResource** osztály a következő két tulajdonságot örökli: **TableEntity**: **partitionKey** és **rowKey**.
 
 ## <a name="support-custom-provider-restful-methods"></a>Egyéni szolgáltatói REST-módszerek támogatása
 
@@ -132,7 +132,7 @@ public static async Task<HttpResponseMessage> CreateCustomResource(HttpRequestMe
 }
 ```
 
-A **CreateCustomResource** metódus frissíti a bejövő kérelmet, hogy tartalmazza az Azure-specifikus mezők **azonosítóját**, **nevét**és **típusát**. Ezek a mezők az Azure-szolgáltatások által használt legfelső szintű tulajdonságok. Lehetővé teszik, hogy az egyéni szolgáltató együttműködik más szolgáltatásokkal, például Azure Policyokkal, Azure Resource Manager sablonokkal és az Azure-tevékenység naplóval.
+A **CreateCustomResource** metódus frissíti a bejövő kérelmet, hogy tartalmazza az Azure-specifikus mezők **azonosítóját**, **nevét** és **típusát**. Ezek a mezők az Azure-szolgáltatások által használt legfelső szintű tulajdonságok. Lehetővé teszik, hogy az egyéni szolgáltató együttműködik más szolgáltatásokkal, például Azure Policyokkal, Azure Resource Manager sablonokkal és az Azure-tevékenység naplóval.
 
 Tulajdonság | Példa | Leírás
 ---|---|---
@@ -347,7 +347,7 @@ A módszerek és osztályok hozzáadása után frissítenie kell a **using** met
 ```csharp
 #r "Newtonsoft.Json"
 #r "Microsoft.WindowsAzure.Storage"
-#r "../bin/Microsoft.Azure.Management.ResourceManager.Fluent.dll"
+#r "../bin/Microsoft.Azure.Management.ResourceManager.Fluent"
 
 using System;
 using System.Net;
@@ -368,6 +368,6 @@ using Newtonsoft.Json.Linq;
 
 Ha az oktatóanyag bármely pontján elvész, megtalálhatja a teljes kód mintát az [egyéni szolgáltató C# Rest-végpont-referenciájában](./reference-custom-providers-csharp-endpoint.md). A Function alkalmazás befejezése után mentse a Function app URL-címét. A függvény alkalmazás a későbbi oktatóanyagokban aktiválható.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben egy REST-végpontot készített egy Azure-beli egyéni szolgáltatói végponttal való együttműködéshez. Ha meg szeretné tudni, hogyan hozhat létre egyéni szolgáltatót, ugorjon a cikk [oktatóanyag: egyéni szolgáltató létrehozása](./tutorial-custom-providers-create.md)című témakörre.

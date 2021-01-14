@@ -7,28 +7,28 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 84cb9860f247610621bff130aff155abf222f3c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f55b5d9093e2e8e78d3841c332d67f26e5106d38
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274894"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200821"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Gyakori kérdések a Linux Virtual Machines
-Ez a cikk az Azure-ban a Resource Manager-alapú üzemi modellel létrehozott Linux rendszerű virtuális gépekkel kapcsolatos gyakori kérdéseket tárgyalja. A témakör Windows-verziójával kapcsolatos [Gyakori kérdések a Windows Virtual Machines](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+Ez a cikk az Azure-ban a Resource Manager-alapú üzemi modellel létrehozott Linux rendszerű virtuális gépekkel kapcsolatos gyakori kérdéseket tárgyalja. A témakör Windows-verziójával kapcsolatos [Gyakori kérdések a Windows Virtual Machines](../windows/faq.md)
 
 ## <a name="what-can-i-run-on-an-azure-vm"></a>Mit futtathatok egy Azure-beli virtuális gépen?
-Minden előfizető kiszolgálószoftvereket futtathat az Azure-beli virtuális gépeken. További információ: [Linux on Azure-Endorsed distributes](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+Minden előfizető kiszolgálószoftvereket futtathat az Azure-beli virtuális gépeken. További információ: [Linux on Azure-Endorsed distributes](endorsed-distros.md)
 
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>Mennyi tárhelyet használhatok egy virtuális gép esetén?
-Az egyes adatlemezek akár 32 767 GiB-t is használhatnak. A használható adatlemezek száma a virtuális gép méretétől függ. Részletek: [Virtuális gépek méretei](../sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Az egyes adatlemezek akár 32 767 GiB-t is használhatnak. A használható adatlemezek száma a virtuális gép méretétől függ. Részletek: [Virtuális gépek méretei](../sizes.md).
 
 Az Azure-Managed Disks az Azure Virtual Machines által az adattároláshoz használt ajánlott lemezes tárolási ajánlatok. Az egyes virtuális gépekhez több Managed Disks is használható. Managed Disks kétféle tartós tárolási lehetőséget kínál: prémium és standard szintű Managed Disks. A díjszabással kapcsolatos információkért tekintse meg a [Managed Disks díjszabását](https://azure.microsoft.com/pricing/details/managed-disks).
 
 Az Azure Storage-fiókok az operációs rendszer lemezét és az adatlemezeket is megadhatják. Minden lemez egy lapblobként tárolt .vhd-fájl. A díjszabás részleteiért lásd [a Storage szolgáltatás díjszabását](https://azure.microsoft.com/pricing/details/storage/).
 
 ## <a name="how-can-i-access-my-virtual-machine"></a>Hogyan lehet hozzáférni a virtuális géphez?
-Hozzon létre egy távoli kapcsolatot a virtuális gépre való bejelentkezéshez Secure Shell (SSH) használatával. Tekintse meg a [Windows](ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy [Linux és Mac](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)rendszerről való kapcsolódásra vonatkozó utasításokat. Alapértelmezés szerint az SSH legfeljebb 10 párhuzamos kapcsolatot tesz lehetővé. Ezt a számot a konfigurációs fájl szerkesztésével növelheti.
+Hozzon létre egy távoli kapcsolatot a virtuális gépre való bejelentkezéshez Secure Shell (SSH) használatával. Tekintse meg a [Windows](ssh-from-windows.md) vagy [Linux és Mac](mac-create-ssh-keys.md)rendszerről való kapcsolódásra vonatkozó utasításokat. Alapértelmezés szerint az SSH legfeljebb 10 párhuzamos kapcsolatot tesz lehetővé. Ezt a számot a konfigurációs fájl szerkesztésével növelheti.
 
 Ha problémákat tapasztal, tekintse meg a [Secure Shell-(SSH-) kapcsolatokkal kapcsolatos hibaelhárítást](../troubleshooting/troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json).
 
@@ -36,7 +36,7 @@ Ha problémákat tapasztal, tekintse meg a [Secure Shell-(SSH-) kapcsolatokkal k
 Ne használja az ideiglenes lemezt (/dev/sdb1) az adattároláshoz. Csak átmeneti tárolás esetén érhető el. A nem helyreállítható adatvesztés kockázatát kockáztatja.
 
 ## <a name="can-i-copy-or-clone-an-existing-azure-vm"></a>Másolhatok vagy klónozott egy meglévő Azure-beli virtuális gépet?
-Igen. Útmutatásért lásd: [Linux rendszerű virtuális gép másolatának létrehozása a Resource Manager-alapú üzemi modellben](copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Igen. Útmutatásért lásd: [Linux rendszerű virtuális gép másolatának létrehozása a Resource Manager-alapú üzemi modellben](copy-vm.md).
 
 ## <a name="why-am-i-not-seeing-canada-central-and-canada-east-regions-through-azure-resource-manager"></a>Miért nem látom a közép-és Kelet-Kanada régióját a Azure Resource Manageron keresztül?
 A közép-és Kelet-Kanada két új régióját nem regisztrálja automatikusan a rendszer a meglévő Azure-előfizetések virtuális géphez való létrehozásához. Ez a regisztráció automatikusan történik, ha egy virtuális gépet a Azure Portal a Azure Resource Manager használatával bármely más régióba telepítenek. A virtuális gép bármely más Azure-régióba való üzembe helyezését követően az új régióknak elérhetőnek kell lenniük a további virtuális gépek számára.

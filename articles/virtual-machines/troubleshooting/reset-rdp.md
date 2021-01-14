@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: 80bcac36271d86334e11cb3cd161cd96777e6fe5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f242de3bfa6a2bc95dc46b4ca5c10222b755a2f
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87832450"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200923"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Távoli asztali szolgáltatások vagy rendszergazdai jelszavának alaphelyzetbe állítása Windows rendszerű virtuális gépen
 Ha nem tud csatlakozni egy Windows rendszerű virtuális géphez (VM), alaphelyzetbe állíthatja a helyi rendszergazda jelszavát, vagy alaphelyzetbe állíthatja a Távoli asztali szolgáltatások konfigurációt (Windows-tartományvezérlőkön nem támogatott). Új jelszó kéréséhez használja az Azure Portalt vagy az Azure PowerShell virtuálisgép-hozzáférési bővítményét. Miután bejelentkezett a virtuális gépre, kérjen új jelszót a helyi rendszergazda számára.  
@@ -37,9 +37,9 @@ Először jelentkezzen be a [Azure Portal](https://portal.azure.com) , majd a ba
 
 ### <a name="reset-the-local-administrator-account-password"></a>**A helyi rendszergazdai fiók jelszavának alaphelyzetbe állítása**
 
-1. Válassza ki a Windows rendszerű virtuális gépet, majd válassza a **jelszó alaphelyzetbe állítása** a **támogatás + hibaelhárítás**lehetőséget. Megjelenik a **jelszó alaphelyzetbe állítása** ablak.
+1. Válassza ki a Windows rendszerű virtuális gépet, majd válassza a **jelszó alaphelyzetbe állítása** a **támogatás + hibaelhárítás** lehetőséget. Megjelenik a **jelszó alaphelyzetbe állítása** ablak.
 
-2. Válassza a **jelszó alaphelyzetbe állítása**lehetőséget, adjon meg egy felhasználónevet és egy jelszót, majd válassza a **frissítés**lehetőséget. 
+2. Válassza a **jelszó alaphelyzetbe állítása** lehetőséget, adjon meg egy felhasználónevet és egy jelszót, majd válassza a **frissítés** lehetőséget. 
 
 3. Próbálkozzon újra a virtuális géphez való csatlakozással.
 
@@ -47,9 +47,9 @@ Először jelentkezzen be a [Azure Portal](https://portal.azure.com) , majd a ba
 
 Ez a folyamat engedélyezi Távoli asztal szolgáltatást a virtuális gépen, és hozzon létre egy tűzfalszabály-szabályt az alapértelmezett RDP-porthoz: 3389.
 
-1. Válassza ki a Windows rendszerű virtuális gépet, majd válassza a **jelszó alaphelyzetbe állítása** a **támogatás + hibaelhárítás**lehetőséget. Megjelenik a **jelszó alaphelyzetbe állítása** ablak. 
+1. Válassza ki a Windows rendszerű virtuális gépet, majd válassza a **jelszó alaphelyzetbe állítása** a **támogatás + hibaelhárítás** lehetőséget. Megjelenik a **jelszó alaphelyzetbe állítása** ablak. 
 
-2. Válassza a **csak konfiguráció alaphelyzetbe állítása** lehetőséget, majd válassza a **frissítés**lehetőséget. 
+2. Válassza a **csak konfiguráció alaphelyzetbe állítása** lehetőséget, majd válassza a **frissítés** lehetőséget. 
 
 3. Próbálkozzon újra a virtuális géphez való csatlakozással.
 
@@ -86,14 +86,14 @@ Először is győződjön meg arról, hogy a [legújabb PowerShell-modul telepí
     > [!TIP]
     > Egy virtuális gépnek csak egyetlen VM-hozzáférési ügynöke lehet. A virtuális gép hozzáférési ügynökének tulajdonságainak beállításához használja a következőt: `-ForceRerun` . A használatakor `-ForceRerun` Győződjön meg arról, hogy ugyanazt a nevet használja a virtuálisgép-hozzáférési ügynökhöz, amelyet az előző parancsokban használt.
 
-1. Ha továbbra sem tud távolról kapcsolódni a virtuális géphez, tekintse meg a [Windows-alapú Azure-beli virtuális gépek távoli asztal kapcsolatainak hibaelhárításával foglalkozó](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)témakört. Ha elveszíti a Windows tartományvezérlőhöz való kapcsolódást, vissza kell állítania a tartományvezérlő biztonsági másolatából.
+1. Ha továbbra sem tud távolról kapcsolódni a virtuális géphez, tekintse meg a [Windows-alapú Azure-beli virtuális gépek távoli asztal kapcsolatainak hibaelhárításával foglalkozó](troubleshoot-rdp-connection.md)témakört. Ha elveszíti a Windows tartományvezérlőhöz való kapcsolódást, vissza kell állítania a tartományvezérlő biztonsági másolatából.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Ha az Azure virtuálisgép-hozzáférési bővítmény nem válaszol, és nem tudja alaphelyzetbe állítani a jelszót, [alaphelyzetbe állíthatja a helyi Windows-jelszót](reset-local-password-without-agent.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Ez a módszer fejlettebb, és megköveteli a problémás virtuális gép virtuális merevlemezének egy másik virtuális géphez való összekapcsolását. Kövesse az ebben a cikkben ismertetett lépéseket először, és csak akkor próbálkozzon az offline jelszó-visszaállítási módszerekkel, ha ezek a lépések nem működnek.
+- Ha az Azure virtuálisgép-hozzáférési bővítmény nem válaszol, és nem tudja alaphelyzetbe állítani a jelszót, [alaphelyzetbe állíthatja a helyi Windows-jelszót](reset-local-password-without-agent.md). Ez a módszer fejlettebb, és megköveteli a problémás virtuális gép virtuális merevlemezének egy másik virtuális géphez való összekapcsolását. Kövesse az ebben a cikkben ismertetett lépéseket először, és csak akkor próbálkozzon az offline jelszó-visszaállítási módszerekkel, ha ezek a lépések nem működnek.
 
-- [Ismerje meg az Azure-beli virtuálisgép-bővítményeket és-funkciókat](../extensions/features-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- [Ismerje meg az Azure-beli virtuálisgép-bővítményeket és-funkciókat](../extensions/features-windows.md).
 
 - [Kapcsolódás Azure-beli virtuális GÉPHEZ RDP vagy SSH használatával](/previous-versions/azure/dn535788(v=azure.100)).
 
-- [Windows-alapú Azure-beli virtuális gépekkel létesített távoli asztal-kapcsolatok hibáinak megoldása](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- [Windows-alapú Azure-beli virtuális gépekkel létesített távoli asztal-kapcsolatok hibáinak megoldása](troubleshoot-rdp-connection.md).

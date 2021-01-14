@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 32cbfbcc8feeff66101ab5e2c95f476a4a4215e9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 55f7c68df1e339f0f9eda809bbb0acbb2e9131b5
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973903"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200889"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Migrálás Amazon Web Servicesról (AWS) és más platformokról az Azure-ba Managed Disks
 
@@ -26,12 +26,12 @@ Feltöltheti az általánosított és a speciális virtuális merevlemezeket is.
 - **Speciális VHD** – karbantartja az eredeti virtuális gépről származó felhasználói fiókokat, alkalmazásokat és egyéb állapotinformációkat. 
 
 > [!IMPORTANT]
-> A virtuális merevlemezek Azure-ba való feltöltése előtt kövesse az Azure-ba való [feltöltéshez szükséges Windows VHD vagy VHDX előkészítését](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ismertető témakört.
+> A virtuális merevlemezek Azure-ba való feltöltése előtt kövesse az Azure-ba való [feltöltéshez szükséges Windows VHD vagy VHDX előkészítését](prepare-for-upload-vhd-image.md) ismertető témakört.
 >
 >
 
 
-| Forgatókönyv                                                                                                                         | Dokumentáció                                                                                                                       |
+| Használati eset                                                                                                                         | Dokumentáció                                                                                                                       |
 |----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
 | Meglévő AWS EC2-példányokkal rendelkezik, amelyeket felügyelt lemezek használatával szeretne áttelepíteni az Azure-beli virtuális gépekre                              | [Virtuális gép áthelyezése Amazon Web Servicesból (AWS) az Azure-ba](aws-to-azure.md)                           |
 | Van olyan virtuális gépe, amelyet egy másik virtualizációs platformon szeretne használni több Azure-beli virtuális gép létrehozásához. | [Töltse fel az általánosított virtuális merevlemezt, és használja az új virtuális gép létrehozásához az Azure-ban](upload-generalized-managed.md) |
@@ -64,20 +64,20 @@ Tekintse át a Premium Storaget használó virtuális gépek teljesítményének
 
 A virtuális géppel, valamint a IOPs és az átviteli sebességével kapcsolatban hét különféle prémium szintű felügyelt lemez használható. Vegye figyelembe ezeket a korlátokat, amikor az alkalmazás igényeinek megfelelően kiválasztja a prémium szintű lemez típusát a kapacitás, a teljesítmény, a méretezhetőség és a maximális terhelés tekintetében.
 
-| Prémium szintű lemezek típusa  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | 
+| Prémium szintű lemezek típusa  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | 
 |---------------------|-------|-------|-------|-------|-------|-------|-------|-------|
-| Lemezméret           | 32 GB| 64 GB| 128 GB| 256 GB|512 GB | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
-| IOPS-érték lemezenként       | 120   | 240   | 500   | 1100  |2300              | 5000              | 7500              | 7500              | 
-| Adattovábbítás lemezenként | 25 MB/másodperc  | 50 MB/másodperc  | 100 MB/másodperc | 125 MB/másodperc |150 MB/másodperc | 200 MB/másodperc | 250 MB/másodperc | 250 MB/másodperc |
+| Lemezméret           | 32 GB| 64 GB| 128 GB| 256 GB|512 GB | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
+| IOPS-érték lemezenként       | 120   | 240   | 500   | 1100  |2300              | 5000              | 7500              | 7500              | 
+| Adattovábbítás lemezenként | 25 MB/másodperc  | 50 MB/másodperc  | 100 MB/másodperc | 125 MB/másodperc |150 MB/másodperc | 200 MB/másodperc | 250 MB/másodperc | 250 MB/másodperc |
 
 **Standard Managed Disks**
 
 A virtuális géppel a standard szintű felügyelt lemezek hét típusa használható. Mindegyiknek külön kapacitása van, de azonos a IOPS és az átviteli sebesség korlátaival. Válassza ki a szabványos felügyelt lemezek típusát az alkalmazás kapacitási igényei alapján.
 
-| Standard lemez típusa  | S4               | S6               | S10              | S15              | S20              | S30              | S40              | S50              | 
+| Standard lemez típusa  | S4               | S6               | S10              | S15              | S20              | S30              | S40              | S50              | 
 |---------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------| 
-| Lemezméret           | 30 GB            | 64 GB            | 128 GB           | 256 GB           |512 GB           | 1024 GB (1 TB)   | 2048 GB (2TB)    | 4095 GB (4 TB)   | 
-| IOPS-érték lemezenként       | 500              | 500              | 500              | 500              |500              | 500              | 500             | 500              | 
+| Lemezméret           | 30 GB            | 64 GB            | 128 GB           | 256 GB           |512 GB           | 1024 GB (1 TB)   | 2048 GB (2TB)    | 4095 GB (4 TB)   | 
+| IOPS-érték lemezenként       | 500              | 500              | 500              | 500              |500              | 500              | 500             | 500              | 
 | Adattovábbítás lemezenként | 60 MB/másodperc | 60 MB/másodperc | 60 MB/másodperc | 60 MB/másodperc |60 MB/másodperc | 60 MB/másodperc | 60 MB/másodperc | 60 MB/másodperc | 
 
 ### <a name="disk-caching-policy"></a>Lemezes gyorsítótárazási házirend 
@@ -93,4 +93,4 @@ Tekintse át a [Managed Disks díjszabását](https://azure.microsoft.com/pricin
 
 ## <a name="next-steps"></a>Következő lépések
 
-- A virtuális merevlemezek Azure-ba való feltöltése előtt kövesse az Azure-ba való [feltöltéshez szükséges Windows VHD vagy VHDX előkészítését](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ismertető témakört.
+- A virtuális merevlemezek Azure-ba való feltöltése előtt kövesse az Azure-ba való [feltöltéshez szükséges Windows VHD vagy VHDX előkészítését](prepare-for-upload-vhd-image.md) ismertető témakört.

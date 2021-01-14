@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 038d19270fbdb672d397eb2bd56bd27e17ea7af9
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: f407f9ee2ea0ca73b29e4fde9d542c005f78a929
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929089"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200447"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Az Azure app Configuration ajánlott eljárásai
 
@@ -89,6 +89,10 @@ Az alkalmazás konfigurációja lehetőséget biztosít a konfigurációs beáll
 ## <a name="multi-region-deployment-in-app-configuration"></a>Többrégiós üzembe helyezés az alkalmazás konfigurációjában
 
 Az alkalmazás konfigurációja regionális szolgáltatás. Régiónként eltérő konfigurációval rendelkező alkalmazások esetén a konfigurációk egyetlen példányban való tárolása egyetlen meghibásodási pontot is létrehozhat. Egy alkalmazás-konfigurációs példányok régiónként több régióban való üzembe helyezése jobb megoldás lehet. Segíthet a regionális katasztrófa-helyreállításban, a teljesítményben és a biztonsági silóban. A régió szerinti konfigurálás Emellett javítja a késést, és elválasztott szabályozási kvótákat használ, mivel a szabályozás egy példányon alapul. A vész-helyreállítási enyhítés alkalmazásához [több konfigurációs tárolót](./concept-disaster-recovery.md)is használhat. 
+
+## <a name="client-applications-in-app-configuration"></a>Ügyfélalkalmazások az alkalmazások konfigurációjában 
+
+Az alkalmazások konfigurálására irányuló túlzott kérelmek szabályozást vagy túlterhelést okozhatnak. Az alkalmazások a jelenleg elérhető gyorsítótárazás és intelligens frissítés előnyeit használják az általuk küldött kérések számának optimalizálására. Ez a folyamat nagy mennyiségű ügyfélalkalmazások számára is tükrözhető azáltal, hogy elkerüli a közvetlen kapcsolatot a konfigurációs tárolóval. Ehelyett az ügyfélalkalmazások egy egyéni szolgáltatáshoz csatlakoznak, és ez a szolgáltatás kommunikál a konfigurációs tárolóval. Ez a proxy-megoldás biztosítja, hogy az ügyfélalkalmazások ne közelítsék meg a konfigurációs tároló szabályozási korlátját. A szabályozással kapcsolatos további információkért tekintse meg [a gyakori kérdéseket](https://docs.microsoft.com/azure/azure-app-configuration/faq#are-there-any-limits-on-the-number-of-requests-made-to-app-configuration).  
 
 ## <a name="next-steps"></a>Következő lépések
 

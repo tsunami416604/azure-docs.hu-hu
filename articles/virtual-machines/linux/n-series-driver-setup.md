@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: c3443abaa1157122f7bcd43277a0ae00a2cd4407
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 7af13147804fd1e50a033635985c08b9c62f76ba
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059092"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200991"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>NVIDIA GPU-illesztőprogramok telepítése a Linuxon futó N sorozatú virtuális gépeken
 
 Az NVIDIA GPU-k által támogatott Azure N-sorozatú virtuális gépek GPU-képességeinek kihasználásához az NVIDIA GPU-illesztőprogramokat kell telepítenie. Az [NVIDIA GPU illesztőprogram-bővítmény](../extensions/hpccompute-gpu-linux.md) a megfelelő NVIDIA CUDA-vagy Grid-illesztőprogramokat telepíti egy N sorozatú virtuális gépen. Telepítse vagy kezelje a bővítményt a Azure Portal vagy az eszközök, például az Azure CLI vagy a Azure Resource Manager sablonok használatával. Tekintse meg az [NVIDIA GPU illesztőprogram-bővítmény dokumentációját](../extensions/hpccompute-gpu-linux.md) a támogatott disztribúciók és telepítés lépéseihez.
 
-Ha manuálisan telepíti az NVIDIA GPU-illesztőprogramokat, ez a cikk a támogatott disztribúciókat, illesztőprogramokat és telepítési és ellenőrzési lépéseket tartalmazza. A manuális illesztőprogram-telepítési információk a Windows rendszerű [virtuális gépek](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)esetében is elérhetők.
+Ha manuálisan telepíti az NVIDIA GPU-illesztőprogramokat, ez a cikk a támogatott disztribúciókat, illesztőprogramokat és telepítési és ellenőrzési lépéseket tartalmazza. A manuális illesztőprogram-telepítési információk a Windows rendszerű [virtuális gépek](../windows/n-series-driver-setup.md)esetében is elérhetők.
 
 Az N sorozatú virtuális gépekhez tartozó specifikációk, a tárolókapacitások és a lemezek részleteiért lásd: [GPU LINUXOS VM-méretek](../sizes-gpu.md?toc=/azure/virtual-machines/linux/toc.json). 
 
@@ -386,6 +386,6 @@ Ezután hozzon létre egy bejegyzést a frissítési parancsfájlhoz, `/etc/rc.d
 * Ha a legújabb verzióra frissítette az NVIDIA CUDA-illesztőprogramokat, és megkeresi az RDMA-kapcsolatot, akkor [a kapcsolat újbóli létrehozásához telepítse újra a RDMA-illesztőprogramokat](#rdma-network-connectivity) . 
 * Ha egy bizonyos CentOS/RHEL operációsrendszer-verzió (vagy kernel) nem támogatott a LIS esetében, a rendszer a "nem támogatott kernel-verzió" hibát dobta. Jelentse ezt a hibát az operációs rendszer és a kernel verzióival együtt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Linux rendszerű virtuálisgép-lemezképnek a telepített NVIDIA-illesztőprogramokkal való rögzítéséről lásd: [Linux rendszerű virtuális gép általánosítása és rögzítése](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Linux rendszerű virtuálisgép-lemezképnek a telepített NVIDIA-illesztőprogramokkal való rögzítéséről lásd: [Linux rendszerű virtuális gép általánosítása és rögzítése](capture-image.md).
