@@ -7,18 +7,18 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: c449bce76cc9cb7e5f8b9659c11b443e186c65ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bd5c8ae7b4f2ba2d057f61712ce799814e19050
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91306973"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202147"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-azure-cli"></a>Tervezett karbantartási értesítések kezeléséhez az Azure CLI használatával
 
 **Ez a cikk a Linux és Windows rendszerű virtuális gépekre is vonatkozik.**
 
-A CLI használatával megtekintheti, hogy mikor ütemezik a virtuális gépek [karbantartását](maintenance-notifications.md). A tervezett karbantartási információk az [az VM Get-instance-View](/cli/azure/vm?view=azure-cli-latest#az-vm-get-instance-view)címről érhetők el.
+A CLI használatával megtekintheti, hogy mikor ütemezik a virtuális gépek [karbantartását](maintenance-notifications.md). A tervezett karbantartási információk az [az VM Get-instance-View](/cli/azure/vm#az-vm-get-instance-view)címről érhetők el.
  
 A karbantartási adatokat csak akkor adja vissza a rendszer, ha karbantartási terv van. 
 
@@ -59,7 +59,7 @@ Győződjön meg arról, hogy a megfelelő módban van, hogy a klasszikus virtu�
 azure config mode asm
 ```
 
-Egy *myVM*nevű virtuális gép karbantartási állapotának lekéréséhez írja be a következőt:
+Egy *myVM* nevű virtuális gép karbantartási állapotának lekéréséhez írja be a következőt:
 
 ```
 azure vm show myVM 

@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: 43e2f1c304a2ede10445fa656dbdd16a4b60ca3c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 63c1e388ecd53d9b827e45a1fa78bdb6feeaab21
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978951"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201943"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Egy sikertelen, hibát eredményező vagy elutasított Azure-beli Linux rendszerű virtuális gép SSH-kapcsolatainak hibaelhárítása
 Ez a cikk segít megkeresni és kijavítani a Secure Shell-(SSH-) hibák, SSH-kapcsolódási hibák vagy SSH-problémák miatti problémákat, amikor megpróbál csatlakozni egy linuxos virtuális géphez (VM). A kapcsolódási problémák elhárításához és megoldásához használhatja a Linux Azure Portal, Azure CLI vagy VM-hozzáférési bővítményét.
 
 
-Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).
+Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése** lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).
 
 ## <a name="quick-troubleshooting-steps"></a>Gyors hibaelhárítási lépések
 Az egyes hibaelhárítási lépések után próbálkozzon újra a virtuális géppel.
@@ -60,12 +60,12 @@ A kezdéshez válassza ki a virtuális gépet a Azure Portalban. Görgessen le a
 ![Az SSH-konfiguráció vagy a hitelesítő adatok alaphelyzetbe állítása a Azure Portal](./media/troubleshoot-ssh-connection/reset-credentials-using-portal.png)
 
 ### <a name="reset-the-ssh-configuration"></a>Az SSH-konfiguráció alaphelyzetbe állítása
-Az SSH-konfiguráció alaphelyzetbe állításához válassza a `Reset configuration only` **Mode (mód** ) szakaszt az előző képernyőképen, majd válassza a **frissítés**lehetőséget. Ha a művelet befejeződött, próbálja meg újra elérni a virtuális gépet.
+Az SSH-konfiguráció alaphelyzetbe állításához válassza a `Reset configuration only` **Mode (mód** ) szakaszt az előző képernyőképen, majd válassza a **frissítés** lehetőséget. Ha a művelet befejeződött, próbálja meg újra elérni a virtuális gépet.
 
 ### <a name="reset-ssh-credentials-for-a-user"></a>Egy felhasználó SSH hitelesítő adatainak visszaállítása
-Egy meglévő felhasználó hitelesítő adatainak alaphelyzetbe állításához válassza `Reset SSH public key` `Reset password` az előző képernyőképen, vagy a **mód** szakaszban. Adja meg a felhasználónevet és az SSH-kulcsot vagy az új jelszót, majd válassza a  **frissítés**lehetőséget.
+Egy meglévő felhasználó hitelesítő adatainak alaphelyzetbe állításához válassza `Reset SSH public key` `Reset password` az előző képernyőképen, vagy a **mód** szakaszban. Adja meg a felhasználónevet és az SSH-kulcsot vagy az új jelszót, majd válassza a  **frissítés** lehetőséget.
 
-Ezen a menüben létrehozhat egy sudo jogosultságokkal rendelkező felhasználót is a virtuális gépen. Adja meg az új felhasználónevet és a hozzá tartozó jelszót vagy SSH-kulcsot, majd válassza a **frissítés**lehetőséget.
+Ezen a menüben létrehozhat egy sudo jogosultságokkal rendelkező felhasználót is a virtuális gépen. Adja meg az új felhasználónevet és a hozzá tartozó jelszót vagy SSH-kulcsot, majd válassza a **frissítés** lehetőséget.
 
 ### <a name="check-security-rules"></a>Biztonsági szabályok keresése
 
@@ -101,7 +101,7 @@ A kimenet az alábbihoz hasonló lesz:
 Port 22
 ```
 
-## <a name="use-the-azure-cli"></a>Az Azure CLI használata
+## <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
 Ha még nem tette meg, telepítse a legújabb [Azure CLI](/cli/azure/install-az-cli2) -t, és jelentkezzen be egy Azure-fiókba az [az login](/cli/azure/reference-index)használatával.
 
 Ha létrehozta és feltöltött egy egyéni linuxos lemezképet, győződjön meg arról, hogy a [Microsoft Azure Linux-ügynök](../extensions/agent-linux.md) 2.0.5 vagy újabb verziója telepítve van. A katalógus-lemezképek használatával létrehozott virtuális gépek esetén ez a hozzáférési kiterjesztés már telepítve van és konfigurálva van.
@@ -266,7 +266,7 @@ azure vm redeploy --resource-group myResourceGroup --name myVM
 Próbálja ki ezeket a lépéseket a klasszikus üzemi modell használatával létrehozott virtuális gépek leggyakoribb SSH-kapcsolódási hibáinak megoldásához. Az egyes lépések után próbálkozzon újra a virtuális géppel.
 
 * A [Azure Portal](https://portal.azure.com)távoli elérésének visszaállítása. A Azure Portal válassza ki a virtuális gépet, majd válassza a **távoli alaphelyzetbe állítás...** lehetőséget.
-* Indítsa újra a virtuális gépet. A [Azure Portal](https://portal.azure.com)válassza ki a virtuális gépet, és válassza az **Újraindítás**lehetőséget.
+* Indítsa újra a virtuális gépet. A [Azure Portal](https://portal.azure.com)válassza ki a virtuális gépet, és válassza az **Újraindítás** lehetőséget.
 
 * Telepítse újra a virtuális gépet egy új Azure-csomópontra. További információ a virtuális gépek újbóli üzembe helyezéséről: [virtuális gép újratelepítése új Azure-csomópontra](./redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json).
 
@@ -277,9 +277,9 @@ Próbálja ki ezeket a lépéseket a klasszikus üzemi modell használatával l�
   * Hozzon létre egy *sudo* felhasználói fiókot.
   * Állítsa alaphelyzetbe az SSH-konfigurációt.
 * Keresse meg a virtuális gép erőforrás-állapotát bármilyen platformra vonatkozó probléma esetén.<br>
-     Válassza ki a virtuális gépet, és görgessen le a **Beállítások**  >  **állapotának**megtekintése elemre.
+     Válassza ki a virtuális gépet, és görgessen le a **Beállítások**  >  **állapotának** megtekintése elemre.
 
 ## <a name="additional-resources"></a>További források
-* Ha továbbra sem tud SSH-t létesíteni a virtuális géppel a következő lépések után, tekintse meg a [részletes hibaelhárítási lépéseket](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) a probléma megoldásához szükséges további lépések áttekintéséhez.
+* Ha továbbra sem tud SSH-t létesíteni a virtuális géppel a következő lépések után, tekintse meg a [részletes hibaelhárítási lépéseket](detailed-troubleshoot-ssh-connection.md) a probléma megoldásához szükséges további lépések áttekintéséhez.
 * Az alkalmazás-hozzáférés hibaelhárításával kapcsolatos további információkért lásd: Azure-beli [virtuális gépen futó alkalmazásokhoz való hozzáférés hibaelhárítása](./troubleshoot-app-connection.md?toc=/azure/virtual-machines/linux/toc.json)
 * A klasszikus üzemi modellel létrehozott virtuális gépek hibaelhárításával kapcsolatos további információkért lásd: [jelszó vagy SSH alaphelyzetbe állítása Linux-alapú virtuális gépekhez](/previous-versions/azure/virtual-machines/linux/classic/reset-access-classic).

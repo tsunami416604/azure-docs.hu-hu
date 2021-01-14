@@ -6,23 +6,23 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: guybo
-ms.openlocfilehash: ef4175d24cfd02bb5cb6470b6334fea190b5bec2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9888cde8bca9fb0646dbdc8bb601b0887908ad1d
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500597"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203235"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Nem támogatott disztribúciók adatai
 
-Az Azure platform SLA-ja csak akkor érvényes a Linux operációs rendszert futtató virtuális gépekre, ha az egyik [támogatott disztribúciót](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) használja. Ezen támogatott disztribúciók esetében az előre konfigurált Linux-lemezképek az Azure piactéren érhetők el.
+Az Azure platform SLA-ja csak akkor érvényes a Linux operációs rendszert futtató virtuális gépekre, ha az egyik [támogatott disztribúciót](endorsed-distros.md) használja. Ezen támogatott disztribúciók esetében az előre konfigurált Linux-lemezképek az Azure piactéren érhetők el.
 
-* [Linux az Azure-ban – támogatott disztribúciók](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Linux az Azure-ban – támogatott disztribúciók](endorsed-distros.md)
 * [Linux-rendszerképek támogatása a Microsoft Azureban](https://support.microsoft.com/kb/2941892)
 
 Az Azure-on futó összes disztribúciónak számos előfeltétele van. Ez a cikk nem lehet átfogó, mivel minden eloszlás eltérő. Előfordulhat, hogy az alábbi feltételek teljesülése esetén is jelentős mértékben kell megcsípni a Linux rendszerét, hogy megfelelően fusson.
 
-Javasoljuk, hogy kezdje az [Azure által támogatott disztribúciók](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)egyikével. A következő cikkek bemutatják, hogyan készítheti elő az Azure-ban támogatott különböző támogatott Linux-disztribúciókat:
+Javasoljuk, hogy kezdje az [Azure által támogatott disztribúciók](endorsed-distros.md)egyikével. A következő cikkek bemutatják, hogyan készítheti elő az Azure-ban támogatott különböző támogatott Linux-disztribúciókat:
 
 - [CentOS-alapú disztribúciók](create-upload-centos.md)
 - [Debian Linux](debian-create-upload-vhd.md)
@@ -38,7 +38,7 @@ Ez a cikk általános útmutatást nyújt a Linux-disztribúciók Azure-beli fut
 * A Hyper-V virtuális merevlemez (VHDX) formátuma nem támogatott az Azure-ban, csak a *rögzített VHD*.  A lemezt VHD formátumba konvertálhatja a Hyper-V kezelőjével vagy a [Convert-VHD](/powershell/module/hyper-v/convert-vhd) parancsmag használatával. Ha a VirtualBox-t használja, a lemez létrehozásakor válassza a **rögzített méret** lehetőséget az alapértelmezett (dinamikusan lefoglalt) helyett.
 * Az Azure támogatja a Gen1 (BIOS rendszerindítási) & Gen2 (UEFI rendszerindítási) virtuális gépeket.
 * A VHD számára engedélyezett maximális méret 1 023 GB.
-* A Linux rendszer telepítésekor azt javasoljuk, hogy a logikai kötet-kezelő (LVM) helyett szabványos partíciókat használjon, amely számos telepítés esetében az alapértelmezett. A standard partíciók használatával elkerülhető, hogy az LVM neve ütközik a klónozott virtuális gépekkel, különösen akkor, ha egy operációsrendszer-lemez már csatlakoztatva van egy másik, azonos virtuális géphez a hibaelhárításhoz. Az [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy a [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) adatlemezeken is használható.
+* A Linux rendszer telepítésekor azt javasoljuk, hogy a logikai kötet-kezelő (LVM) helyett szabványos partíciókat használjon, amely számos telepítés esetében az alapértelmezett. A standard partíciók használatával elkerülhető, hogy az LVM neve ütközik a klónozott virtuális gépekkel, különösen akkor, ha egy operációsrendszer-lemez már csatlakoztatva van egy másik, azonos virtuális géphez a hibaelhárításhoz. Az [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm) vagy a [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid) adatlemezeken is használható.
 * Szükség van az UDF-fájlrendszerek csatlakoztatásához szükséges kernel-támogatásra. Az Azure-ban az első indításkor a kiépítési konfigurációt a rendszer a vendéghez csatolt UDF formátumú adathordozó használatával továbbítja a linuxos virtuális géphez. Az Azure Linux-ügynöknek csatlakoztatnia kell az UDF fájlrendszert a konfigurációjának olvasásához és a virtuális gép kiépítéséhez.
 * A 2.6.37-nál korábbi Linux kernel verziók nem támogatják a NUMA használatát a Hyper-V-n nagyobb méretű virtuálisgép-méretekkel. Ez a probléma elsősorban a régebbi, Red Hat 2.6.32 kernelt használó disztribúciókat érinti, és Red Hat Enterprise Linux (RHEL) 6,6 (kernel-2.6.32-504) rögzített. A 2.6.37-nál régebbi egyéni kerneleket futtató rendszerek vagy a 2.6.32-504 RHEL-alapú kernelek esetében a rendszerindítási paramétert a `numa=off` grub. conf fájlban lévő kernel parancssorban kell beállítani. További információ: [Red Hat KB 436883](https://access.redhat.com/solutions/436883).
 * Ne állítson be swap-partíciót az operációsrendszer-lemezen. A Linux-ügynök konfigurálható úgy, hogy lapozófájlt hozzon létre az ideiglenes erőforrás lemezén az alábbi lépésekben leírtak szerint.
@@ -67,7 +67,7 @@ Az Azure-beli VHD-lemezképeknek egy 1 MB-ra igazított virtuális mérettel kel
 
 * A VHD http: \/ / \<mystorageaccount> . blob.Core.Windows.net/VHDs/MyLinuxVM.vhd virtuális mérete 21475270656 bájtnál nem támogatott. A méretnek egész számnak kell lennie (MB-ban).
 
-Ebben az esetben méretezze át a virtuális gépet a Hyper-V Manager konzol vagy a [Resize-VHD PowerShell-](/powershell/module/hyper-v/resize-vhd?view=win10-ps) parancsmag használatával.  Ha nem Windows-környezetben fut, javasoljuk, `qemu-img` hogy a használatával alakítsa át (ha szükséges), és méretezze át a VHD-t.
+Ebben az esetben méretezze át a virtuális gépet a Hyper-V Manager konzol vagy a [Resize-VHD PowerShell-](/powershell/module/hyper-v/resize-vhd) parancsmag használatával.  Ha nem Windows-környezetben fut, javasoljuk, `qemu-img` hogy a használatával alakítsa át (ha szükséges), és méretezze át a VHD-t.
 
 > [!NOTE]
 > Létezik egy [ismert hiba a qemu-IMG](https://bugs.launchpad.net/qemu/+bug/1490611) verzióban >= 2.2.1, amely egy nem megfelelően formázott VHD-t eredményez. A probléma a QEMU 2,6-es verziójában lett kijavítva. Javasoljuk, hogy a `qemu-img` 2.2.0 vagy az alacsonyabb, vagy a 2,6 vagy újabb rendszer használatát javasolja.
@@ -114,7 +114,7 @@ Ebben az esetben méretezze át a virtuális gépet a Hyper-V Manager konzol vag
 
 ## <a name="linux-kernel-requirements"></a>Linux kernel-követelmények
 
-A Hyper-V és az Azure-hoz készült Linux Integration Services (LIS) illesztőprogramok közvetlenül a felsőbb rétegbeli linuxos kernelhez járulnak hozzá. Számos, a Linux kernel legújabb verzióját (például 3. x) tartalmazó disztribúció már rendelkezik ezekkel az illesztőprogramokkal, vagy egyéb módon biztosítja ezeknek az illesztőprogramoknak a backported-verzióit a rendszermagban.  Ezek az illesztőprogramok folyamatosan frissülnek a felsőbb rétegbeli kernelben új javításokkal és szolgáltatásokkal, így ha lehetséges, javasoljuk, hogy futtasson egy [támogatott disztribúciót](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , amely tartalmazza ezeket a javításokat és frissítéseket.
+A Hyper-V és az Azure-hoz készült Linux Integration Services (LIS) illesztőprogramok közvetlenül a felsőbb rétegbeli linuxos kernelhez járulnak hozzá. Számos, a Linux kernel legújabb verzióját (például 3. x) tartalmazó disztribúció már rendelkezik ezekkel az illesztőprogramokkal, vagy egyéb módon biztosítja ezeknek az illesztőprogramoknak a backported-verzióit a rendszermagban.  Ezek az illesztőprogramok folyamatosan frissülnek a felsőbb rétegbeli kernelben új javításokkal és szolgáltatásokkal, így ha lehetséges, javasoljuk, hogy futtasson egy [támogatott disztribúciót](endorsed-distros.md) , amely tartalmazza ezeket a javításokat és frissítéseket.
 
 Ha a 6,0-es és a 6,3-es Red Hat Enterprise Linux-es verziójú változatot futtatja, akkor telepítenie kell a [Hyper-V legújabb lis-illesztőprogramjait](https://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409). A RHEL 6.4 + (és a származtatott) verziótól kezdődően az LIS-illesztőprogramok már szerepelnek a rendszermagban, így nincs szükség további telepítési csomagokra.
 

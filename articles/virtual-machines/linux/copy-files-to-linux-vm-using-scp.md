@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 07/12/2017
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: f56118750fc980c249c88b796728f4ecb2641a88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83c054a9e2dd829dbfb34a3873f06332e504b832
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86510956"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201195"
 ---
 # <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>Fájlok áthelyezése Linux rendszerű virtuális gépről SCP használatával
 
 Ez a cikk bemutatja, hogyan helyezhetők át fájlok a munkaállomásról egy Azure Linux rendszerű virtuális gépre vagy egy Azure linuxos virtuális gépről a munkaállomásra a biztonságos másolás (SCP) használatával. A fájlok a munkaállomások és a Linux rendszerű virtuális gépek közötti áthelyezése gyorsan és biztonságosan, kritikus fontosságú az Azure-infrastruktúra kezeléséhez. 
 
-Ebben a cikkben egy, az Azure-ban üzembe helyezett Linux rendszerű virtuális gépre van szükség az [SSH nyilvános és titkos kulcs fájljainak](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)használatával. Szükség van egy SCP-ügyfélre is a helyi számítógépen. Az SSH-ra épül, és a legtöbb Linux-és Mac-számítógép alapértelmezett bash-rendszerhéjában és néhány Windows-rendszerhéjban szerepel.
+Ebben a cikkben egy, az Azure-ban üzembe helyezett Linux rendszerű virtuális gépre van szükség az [SSH nyilvános és titkos kulcs fájljainak](mac-create-ssh-keys.md)használatával. Szükség van egy SCP-ügyfélre is a helyi számítógépen. Az SSH-ra épül, és a legtöbb Linux-és Mac-számítógép alapértelmezett bash-rendszerhéjában és néhány Windows-rendszerhéjban szerepel.
 
 ## <a name="quick-commands"></a>Gyors parancsok
 
@@ -43,13 +43,13 @@ Példaként egy Linux rendszerű virtuális gépre helyezünk át egy Azure-beli
 
 Az SCP SSH-t használ a szállítási réteghez. Az SSH kezeli a hitelesítést a cél gazdagépen, és a fájlt egy, az SSH-val alapértelmezés szerint elérhető titkosított alagútba helyezi át. Az SSH-hitelesítéshez felhasználóneveket és jelszavakat lehet használni. Az SSH nyilvános és titkos kulcsú hitelesítés azonban ajánlott biztonsági eljárás. Miután az SSH hitelesítette a kapcsolódást, az SCP megkezdi a fájl másolását. A megfelelően konfigurált `~/.ssh/config` és az SSH nyilvános és titkos kulcsok használatával az scp-kapcsolatok csak kiszolgálónév (vagy IP-cím) használatával állíthatók be. Ha csak egy SSH-kulccsal rendelkezik, a SZOLGÁLTATÁSKAPCSOLÓDÁSI pont a könyvtárban keresi a `~/.ssh/` könyvtárat, és alapértelmezés szerint a virtuális gépre való bejelentkezéshez használja.
 
-A nyilvános és a titkos SSH-kulcsok konfigurálásával kapcsolatos további információkért `~/.ssh/config` lásd: [ssh-kulcsok létrehozása](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+A nyilvános és a titkos SSH-kulcsok konfigurálásával kapcsolatos további információkért `~/.ssh/config` lásd: [ssh-kulcsok létrehozása](mac-create-ssh-keys.md).
 
 ## <a name="scp-a-file-to-a-linux-vm"></a>SZOLGÁLTATÁSKAPCSOLÓDÁSI pont egy fájl Linux rendszerű virtuális géphez
 
 Az első példában egy Azure konfigurációs fájlt másolunk egy olyan linuxos virtuális gépre, amely az automatizálás üzembe helyezésére szolgál. Mivel ez a fájl tartalmazza az Azure API hitelesítő adatait, köztük a titkokat is, fontos a biztonság. Az SSH által biztosított titkosított alagút védi a fájl tartalmát.
 
-A következő parancs átmásolja a helyi *. Azure/config* fájlt egy FQDN- *MyServer.eastus.cloudapp.Azure.com*rendelkező Azure-beli virtuális gépre. A rendszergazdai Felhasználónév az Azure-beli virtuális gépen az *azureuser*. A fájl a */Home/azureuser/* könyvtárra irányul. Helyettesítse be a saját értékeit ebben a parancsban.
+A következő parancs átmásolja a helyi *. Azure/config* fájlt egy FQDN- *MyServer.eastus.cloudapp.Azure.com* rendelkező Azure-beli virtuális gépre. A rendszergazdai Felhasználónév az Azure-beli virtuális gépen az *azureuser*. A fájl a */Home/azureuser/* könyvtárra irányul. Helyettesítse be a saját értékeit ebben a parancsban.
 
 ```bash
 scp ~/.azure/config azureuser@myserver.eastus.cloudapp.com:/home/azureuser/config
@@ -67,6 +67,6 @@ scp -r azureuser@myserver.eastus.cloudapp.com:/home/azureuser/logs/. /tmp/
 
 A `-r` jelző arra utasítja az scp-t, hogy rekurzív módon másolja a fájlokat és a címtárakat a parancsban felsorolt könyvtár pontjából.  Azt is figyelje meg, hogy a parancssori szintaxis hasonló a `cp` másolási parancshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A VMAccess-bővítmény használatával kezelheti a felhasználókat, SSH-t, és megvizsgálhatja vagy kijavíthatja az Azure Linux virtuális gépek lemezeit](../extensions/vmaccess.md?toc=/azure/virtual-machines/linux/toc.json)

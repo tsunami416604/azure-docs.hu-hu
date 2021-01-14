@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 8d2901e71a3c638e25899803ff9b24e20fdf1969
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 08ba75b5160acb20cb5e2d172203ae48b546f17d
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412663"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202232"
 ---
 # <a name="security-control-identity-and-access-control"></a>Biztonsági ellenőrzés: identitás-és Access Control
 
@@ -68,7 +68,7 @@ Ha lehetséges, használja a Azure Active Directory SSO-t ahelyett, hogy egyéni
 
 Engedélyezze az Azure AD MFA-t, és kövesse Azure Security Center identitás-és hozzáférés-kezelési javaslatait.
 
-- [Az MFA engedélyezése az Azure-ban](../../active-directory/authentication/howto-mfa-getstarted.md)
+- [MFA engedélyezése az Azure-ban](../../active-directory/authentication/howto-mfa-getstarted.md)
 
 - [Identitás és hozzáférés figyelése Azure Security Centeron belül](../../security-center/security-center-identity-access.md)
 
@@ -80,9 +80,9 @@ Engedélyezze az Azure AD MFA-t, és kövesse Azure Security Center identitás-�
 
 Az Azure-erőforrások bejelentkezéséhez és konfigurálásához használja az MFA-t (emelt szintű hozzáférési munkaállomások).
 
-- [További tudnivalók a privilegizált hozzáférésű munkaállomásokról](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [További tudnivalók a privilegizált hozzáférésű munkaállomásokról](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [Az MFA engedélyezése az Azure-ban](../../active-directory/authentication/howto-mfa-getstarted.md)
+- [MFA engedélyezése az Azure-ban](../../active-directory/authentication/howto-mfa-getstarted.md)
 
 ## <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3,7: naplózás és riasztás a gyanús tevékenységekről a rendszergazdai fiókoktól
 
@@ -92,9 +92,9 @@ Az Azure-erőforrások bejelentkezéséhez és konfigurálásához használja az
 
 A naplók és a riasztások generálásához Azure Active Directory biztonsági jelentéseket használhat, ha a környezetben gyanús vagy nem biztonságos tevékenység történik. A Azure Security Center használatával figyelheti az identitás-és hozzáférési tevékenységeket.
 
-- [A kockázatos tevékenységre megjelölt Azure AD-felhasználók azonosítása](../../active-directory/identity-protection/overview-identity-protection.md)
+- [A kockázatos tevékenységek miatt megjelölt Azure AD-felhasználók azonosítása](../../active-directory/identity-protection/overview-identity-protection.md)
 
-- [A felhasználók identitás-és hozzáférési tevékenységének figyelése Azure Security Center](../../security-center/security-center-identity-access.md)
+- [A felhasználók identitási és hozzáférési tevékenységeinek monitorozása az Azure Security Centerben](../../security-center/security-center-identity-access.md)
 
 ## <a name="38-manage-azure-resources-from-only-approved-locations"></a>3,8: az Azure-erőforrások kezelése csak jóváhagyott helyekről
 
@@ -138,7 +138,7 @@ Hozzáférése van az Azure AD bejelentkezési tevékenységekhez, a naplózási
 
 Ezt a folyamatot leegyszerűsítheti Azure Active Directory felhasználói fiókok diagnosztikai beállításainak létrehozásával, valamint a naplók és a bejelentkezési naplók Log Analytics munkaterületre való elküldésével. Log Analytics munkaterületen belül konfigurálhatja a kívánt riasztásokat.
 
-- [Azure-beli tevékenység-naplók integrálása a Azure Monitorba](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
+- [Azure-tevékenységnaplók integrálása az Azure Monitorba](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 ## <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: riasztás a fiók bejelentkezési viselkedésének eltérése esetén
 
@@ -148,7 +148,7 @@ Ezt a folyamatot leegyszerűsítheti Azure Active Directory felhasználói fiók
 
 Az Azure AD kockázatkezelési és identitás-védelmi funkcióival automatikus válaszokat konfigurálhat a felhasználói identitásokkal kapcsolatos gyanús műveletekre. További vizsgálat céljából az Azure Sentinelbe is betöltheti az adatmennyiséget.
 
-- [Az Azure AD kockázatos bejelentkezések megtekintése](../../active-directory/identity-protection/overview-identity-protection.md)
+- [Az Azure AD kockázatos bejelentkezéseinek megtekintése](../../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése](../../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -165,6 +165,6 @@ A támogatási forgatókönyvek esetében, ahol a Microsoftnak hozzá kell férn
 - [A Ügyfélszéf megismerése](../fundamentals/customer-lockbox-overview.md)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd a következő biztonsági vezérlést: [Adatvédelem](security-control-data-protection.md)

@@ -7,18 +7,18 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.date: 03/04/2020
 ms.author: shants
-ms.openlocfilehash: 4cff7eb4a69005f2e74747b6e58447f100c69b60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91a6adecc9cf0db56fa4c433f388b05aa1bdef6a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86501602"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202912"
 ---
 # <a name="move-a-maintenance-control-configuration-to-another-region"></a>Karbantartási vezérlőelemek konfigurációjának áthelyezése másik régióba
 
 Ezt a cikket követve áthelyezheti a karbantartási vezérlők konfigurációját egy másik Azure-régióba. Előfordulhat, hogy több okból is át kívánja helyezni a konfigurációt. Ha például egy új régió előnyeit szeretné kihasználni, egy adott régióban elérhető szolgáltatásokat vagy szolgáltatásokat kíván üzembe helyezni, a belső házirend-és irányítási követelmények teljesítésére, vagy a kapacitás megtervezésére reagálva.
 
-A karbantartási szabályozás, amely testreszabott karbantartási konfigurációkkal rendelkezik, lehetővé teszi a platformok frissítéseinek Windows-és [Linux](./maintenance-control-cli.md?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Flinux%2Fbreadcrumb%2Ftoc.json&view=azure-java-stable) - [alapú](./maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json) virtuális gépekre, illetve az Azure dedikált gazdagépekre való alkalmazásának szabályozását. A karbantartási ellenőrzés több régióban is áthelyezhető:
+A [karbantartási szabályozás](maintenance-control.md), amely testreszabott karbantartási konfigurációkkal rendelkezik, lehetővé teszi a platformok frissítéseinek a virtuális gépekre és az Azure dedikált gazdagépekre való alkalmazásának szabályozását. A karbantartási ellenőrzés több régióban is áthelyezhető:
 
 - Ha át szeretné helyezni a karbantartási vezérlő konfigurációját, de nem a konfigurációhoz társított erőforrásokat, kövesse a cikk utasításait.
 - Ha a karbantartási konfigurációhoz társított erőforrásokat szeretné áthelyezni, de nem maga a konfiguráció, kövesse az [alábbi utasításokat](move-region-maintenance-configuration-resources.md).
@@ -38,7 +38,7 @@ Mielőtt megkezdené a karbantartási vezérlők konfigurációjának áthelyez�
 
 ## <a name="prepare-and-move"></a>Előkészítés és áthelyezés 
 
-1. Az egyes előfizetésekben lévő összes karbantartási konfiguráció beolvasása. Ehhez futtassa a CLI az [karbantartási konfigurációs lista](/cli/azure/ext/maintenance/maintenance/configuration?view=azure-cli-latest#ext-maintenance-az-maintenance-configuration-list) parancsát, és cserélje le a $subIdt az előfizetés-azonosítójával.
+1. Az egyes előfizetésekben lévő összes karbantartási konfiguráció beolvasása. Ehhez futtassa a CLI az [karbantartási konfigurációs lista](/cli/azure/ext/maintenance/maintenance/configuration#ext-maintenance-az-maintenance-configuration-list) parancsát, és cserélje le a $subIdt az előfizetés-azonosítójával.
 
     ```
     az maintenance configuration list --subscription $subId --query "[*].{Name:name, Location:location, ResGroup:resourceGroup}" --output table
@@ -68,6 +68,6 @@ A konfigurációk áthelyezése után hasonlítsa össze az új régióban lév�
 Az áthelyezést követően érdemes törölni az áthelyezett karbantartási konfigurációkat a forrás régióban, a [PowerShellben](../virtual-machines/maintenance-control-powershell.md#remove-a-maintenance-configuration)vagy a [parancssori](../virtual-machines/maintenance-control-cli.md#delete-a-maintenance-configuration)felületen.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Kövesse [ezeket az utasításokat](move-region-maintenance-configuration-resources.md) , ha a karbantartási konfigurációkhoz társított erőforrásokat kell áthelyeznie. 

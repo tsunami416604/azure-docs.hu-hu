@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: 886d6ff1d3437a9d45bdabc68b2bf3ab8cdaa3ef
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 5f49d2c918164fa529b12313e000aff5f8893a65
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349973"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201849"
 ---
 # <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>Oktatóanyag: a Blink konfigurálása automatikus felhasználó-kiépítés esetén
 
@@ -117,7 +117,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 9. Tekintse át az Azure AD-ból szinkronizált felhasználói attribútumokat az **attribútumok leképezése** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok az Update műveletekhez a Blink-ben használt felhasználói fiókokkal egyeznek meg. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![Blink felhasználói attribútumok](media/blink-provisioning-tutorial/user-attributes.png)
+    ![Blink felhasználói attribútumok](media/blink-provisioning-tutorial/new-user-attributes.png)
 
 10. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
 
@@ -136,6 +136,10 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 Ez a művelet elindítja a **Beállítások** szakaszban a **hatókörben** definiált összes felhasználó kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti az üzembe helyezési tevékenység jelentésre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a Blink-ben végrehajtott összes műveletet ismertetik.
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
+
+## <a name="change-log"></a>Változási napló
+
+* 01/14/2021 – az egyéni bővítmény attribútumának **vállalata** , **leírása** és **helye** hozzá lett adva.
 
 ## <a name="additional-resources"></a>További források
 

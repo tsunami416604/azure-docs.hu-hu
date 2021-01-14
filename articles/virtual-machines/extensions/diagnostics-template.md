@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: mimckitt
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 181f226a4d7aa37ffd8c667db4736a96450e2be5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a91e21994dda126e14c100bcf1d2a69c36b13e1e
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955956"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202164"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Figyelés és diagnosztika használata Windows rendszerű virtuális gépekkel és Azure Resource Manager-sablonokkal
 A Azure Diagnostics bővítmény a Windows-alapú Azure-beli virtuális gépek monitorozási és diagnosztikai funkcióit biztosítja. Ezeket a képességeket a virtuális gépen engedélyezheti, ha a bővítményt a Azure Resource Manager sablon részeként is engedélyezi. A virtuálisgép-sablonok részét képező bővítményekkel kapcsolatos további információkért lásd: [Azure Resource Manager sablonok létrehozása VM-bővítményekkel](../windows/template-description.md#extensions) . Ez a cikk azt ismerteti, hogyan adhatja hozzá a Azure Diagnostics bővítményt egy Windows rendszerű virtuálisgép-sablonhoz.  
@@ -63,7 +63,7 @@ Egy egyszerű Resource Manager-alapú virtuális gép esetében adja hozzá a b�
 ]
 ```
 
-Egy másik gyakori szabály, hogy hozzáadja a bővítmény konfigurációját a sablon gyökérszintű erőforrások csomópontján ahelyett, hogy a virtuális gép erőforrásai csomópont alatt kellene meghatároznia. Ezzel a módszerrel explicit módon meg kell adnia a kiterjesztés és a virtuális gép közötti hierarchikus kapcsolatot a *név* és a *típus* értékével. Például: 
+Egy másik gyakori szabály, hogy hozzáadja a bővítmény konfigurációját a sablon gyökérszintű erőforrások csomópontján ahelyett, hogy a virtuális gép erőforrásai csomópont alatt kellene meghatároznia. Ezzel a módszerrel explicit módon meg kell adnia a kiterjesztés és a virtuális gép közötti hierarchikus kapcsolatot a *név* és a *típus* értékével. Példa: 
 
 ```json
 "name": "[concat(variables('vmName'),'Microsoft.Insights.VMDiagnosticsSettings')]",
@@ -179,5 +179,5 @@ Minden WADMetrics-tábla a következő oszlopokat tartalmazza:
 
 ## <a name="next-steps"></a>Következő lépések
 * A diagnosztikai bővítménnyel rendelkező Windows rendszerű virtuális gépek teljes mintája: [201-VM-monitoring-Diagnostics-Extension](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-monitoring-diagnostics-extension)   
-* A Azure Resource Manager sablon üzembe helyezése [Azure PowerShell](../windows/ps-template.md) vagy [Azure parancssor](../linux/create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) használatával
+* A Azure Resource Manager sablon üzembe helyezése [Azure PowerShell](../windows/ps-template.md) vagy [Azure parancssor](../linux/create-ssh-secured-vm-from-template.md) használatával
 * További információ a [Azure Resource Manager sablonok létrehozásáról](../../azure-resource-manager/templates/template-syntax.md)

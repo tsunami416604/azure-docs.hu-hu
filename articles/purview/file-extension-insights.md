@@ -1,18 +1,18 @@
 ---
-title: Fájlkiterjesztés jelentéskészítés az adataihoz a hatáskörébe-elemzések használatával
-description: Ez a útmutató ismerteti, hogyan lehet megtekinteni és használni az adatain a hatáskörébe tartozó elemzések fájlkiterjesztés-jelentését.
+title: Fájlkiterjesztés jelentéskészítés az Azure-ban az adataihoz a hatáskörébe bepillantást használva
+description: Ez a útmutató ismerteti, hogyan lehet megtekinteni és használni a hatáskörébe tartozó fájlkiterjesztés-jelentéskészítést az adatain.
 author: batamig
 ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: 222106f5838a1eb237987afaa93924f1efe4a1f4
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 246a9dcfa35498d99fd403f10e5c17d7707efe84
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746284"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202623"
 ---
 # <a name="file-extension-insights-about-your-data-from-azure-purview"></a>Fájlkiterjesztés-elemzések az Azure hatáskörébe tartozó adatokról 
 
@@ -34,6 +34,9 @@ A hatáskörébe tartozó ismeretek megismerése előtt győződjön meg arról,
 
 - Az egyes adatforrások tesztelési célú ellenőrzésének beállítása és befejezése
 
+- Jelentkezzen be a hatáskörébe egy [Adatolvasóval vagy egy adatkezelői szerepkörrel](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)rendelkező fiókkal.
+
+
 További információ: [adatforrások kezelése az Azure hatáskörébe (előzetes verzió)](manage-data-sources.md).
 
 ## <a name="use-purview-file-extension-insights"></a>A hatáskörébe tartozó fájlkiterjesztés-felismerések használata
@@ -49,7 +52,7 @@ Az eszközök vizsgálata során az Azure-beli alkalmazás képes észlelni az a
 
 1. Az **Áttekintés** lap első **lépések** szakaszában válassza a **hatáskörébe tartozó fiók indítása** csempét.
 
-1. A hatáskörébe területen válassza ki **a** :::image type="icon" source="media/insights/ico-insights.png" border="false"::: bal oldali elemzése menüpontot az információ eléréséhez. **Insights**
+1. A hatáskörébe területen válassza ki **a** :::image type="icon" source="media/insights/ico-insights.png" border="false"::: bal oldali elemzése menüpontot az információ eléréséhez. 
     
 1. Az **eredmények között válassza** a **fájlkiterjesztések** fület.
 
@@ -67,7 +70,7 @@ Az eszközök vizsgálata során az Azure-beli alkalmazás képes észlelni az a
 
 Miután megtekintette az adatbirtokban található fájltípusokkal kapcsolatos magas szintű információkat, részletezheti a helyét, és megtekintheti a bizalmas adatok vizsgálatára szolgáló adatokat.
 
-Például:
+Példa:
 
 :::image type="content" source="media/file-extension-insights/file-extension-drilldown-small.png" alt-text="Fájlkiterjesztés-jelentés – részletezés" lightbox="media/file-extension-insights/file-extension-drilldown.png":::
 
@@ -94,7 +97,7 @@ A rács feletti szűrők használatával szűrheti a megjelenített adatmezőket
 A szűrők felett válassza az **Oszlopok szerkesztése** lehetőséget a :::image type="icon" source="media/insights/ico-columns.png" border="false"::: rácsban található több vagy kevesebb oszlop megjelenítéséhez, vagy a sorrend megváltoztatásához. 
 
 A rács rendezéséhez válasszon ki egy oszlopfejlécet az oszlop szerinti rendezéshez.
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure-beli hatáskörébe Insight-jelentésekről
 > [!div class="nextstepaction"]

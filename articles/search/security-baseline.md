@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 07ef3da9f67de92c3526b83222c1c8088660d7c7
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f393c5df23b9552f598e05d25aaf09e529324abe
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499866"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201994"
 ---
 # <a name="azure-security-baseline-for-azure-cognitive-search"></a>Azure biztonsági alapkonfiguráció az Azure Cognitive Search
 
@@ -340,7 +340,7 @@ Hozzon létre egy folyamatot az identitások és a hitelesítő adatok számána
 
 **Útmutató**: az Azure-erőforrásokhoz való bejelentkezéshez és az Azure-erőforrások eléréséhez konfigurált multi-Factor Authentication (MFA) rendelkező, rendszerjogosultságú hozzáférési munkaállomás (Paw) használata.
 
-- [A biztonságos, Azure által felügyelt munkaállomások ismertetése](../active-directory/devices/concept-azure-managed-workstation.md)
+- [A biztonságos, Azure által felügyelt munkaállomások ismertetése](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
  
 
 - [Az Azure AD MFA engedélyezése](../active-directory/authentication/howto-mfa-getstarted.md)
@@ -1052,7 +1052,7 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 **Felelősség**: Megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
 - További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

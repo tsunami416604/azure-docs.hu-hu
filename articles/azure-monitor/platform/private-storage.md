@@ -1,19 +1,19 @@
 ---
-title: Ügyfél által felügyelt Storage-fiókok használata Azure Monitor Log Analytics
+title: Ügyfél által kezelt tárfiókok használata az Azure Monitor Log Analyticsben
 description: Saját Storage-fiók használata Log Analytics forgatókönyvekhez
 ms.subservice: logs
 ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: bb5c6439f2e0b919e422c7a72f98468f0efc01f1
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 706392d95e371fe303bb9f2c18f59e4a224d83c0
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901314"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201059"
 ---
-# <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Ügyfél által felügyelt Storage-fiókok használata Azure Monitor Log Analytics
+# <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Ügyfél által kezelt tárfiókok használata az Azure Monitor Log Analyticsben
 
 A Log Analytics különböző helyzetekben az Azure Storage-ra támaszkodik. Ezt a használatot általában automatikusan kezeli a rendszer. Bizonyos esetekben azonban a saját Storage-fiók (más néven ügyfél által felügyelt Storage-fiók) megadására és felügyeletére van szükség. Ez a dokumentum az ügyfél által felügyelt tárolók használatát ismerteti a WAD/LAD-naplók, a privát hivatkozások és az ügyfél által felügyelt kulcs (CMK) titkosításához. 
 
@@ -23,7 +23,7 @@ A Log Analytics különböző helyzetekben az Azure Storage-ra támaszkodik. Ezt
 ## <a name="ingesting-azure-diagnostics-extension-logs-wadlad"></a>Azure Diagnostics-bővítményi naplók betöltése (WAD/LAD)
 A Azure Diagnostics Extension Agents (más néven WAD és LAD Windows-és Linux-ügynökök esetében) különböző operációsrendszer-naplókat gyűjt, és egy ügyfél által felügyelt Storage-fiókba tárolja őket. Ezután betöltheti ezeket a naplókat Log Analyticsba, hogy áttekintse és elemezze őket.
 ### <a name="how-to-collect-azure-diagnostics-extension-logs-from-your-storage-account"></a>Azure Diagnostics-bővítményi naplók összegyűjtése a Storage-fiókból
-A Storage-fiókot a [Azure Portal](./diagnostics-extension-logs.md#collect-logs-from-azure-storage) vagy a Storage-ELEMZÉSi [API](/rest/api/loganalytics/connectedsources/storage%20insights/createorupdate)meghívásával a Storage-adatforráshoz a log Analytics munkaterülethez kell kötni.
+A Storage-fiókot a [Azure Portal](./diagnostics-extension-logs.md#collect-logs-from-azure-storage) vagy a Storage-ELEMZÉSi [API](/rest/api/loganalytics/storage%20insights/createorupdate)meghívásával a Storage-adatforráshoz a log Analytics munkaterülethez kell kötni.
 
 Támogatott adattípusok:
 * Rendszernapló

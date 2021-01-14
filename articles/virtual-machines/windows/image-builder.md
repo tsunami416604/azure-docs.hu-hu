@@ -7,16 +7,16 @@ ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 62d80426dec6f5d63d8fa5d67d64d6aafb881110
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca9f9ad0fb724884e865469ba118af4c7e6cea2f
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320013"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202844"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>Előzetes verzió: Windows rendszerű virtuális gép létrehozása az Azure rendszerkép-készítővel
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre testreszabott Windows-rendszerképeket az Azure VM rendszerkép-készítő használatával. A cikkben szereplő példa [testreszabók](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#properties-customize) használatával testreszabja a rendszerképet:
+Ebből a cikkből megtudhatja, hogyan hozhat létre testreszabott Windows-rendszerképeket az Azure VM rendszerkép-készítő használatával. A cikkben szereplő példa [testreszabók](../linux/image-builder-json.md#properties-customize) használatával testreszabja a rendszerképet:
 - PowerShell (ScriptUri) – [PowerShell-parancsfájl](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/testPsScript.ps1)letöltése és futtatása.
 - Windows újraindítása – újraindítja a virtuális gépet.
 - PowerShell (beágyazott) – adott parancs futtatása. Ebben a példában egy könyvtárat hoz létre a virtuális gépen a használatával `mkdir c:\\buildActions` .
@@ -34,7 +34,7 @@ A rendszerkép konfigurálásához egy minta. JSON sablont fogunk használni. Az
 
 > [!IMPORTANT]
 > Az Azure rendszerkép-szerkesztő jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
 ## <a name="register-the-features"></a>A szolgáltatások regisztrálása
@@ -93,7 +93,7 @@ Hozzon létre egy változót az előfizetés-AZONOSÍTÓhoz. Ezt a következőve
 ```azurecli-interactive
 subscriptionID=<Your subscription ID>
 ```
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 Ez az erőforráscsoport a rendszerkép-konfigurációs sablon és a rendszerkép tárolására szolgál.
 
 
@@ -271,4 +271,4 @@ az group delete -n $imageResourceGroup
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha többet szeretne megtudni a cikkben használt. JSON fájl összetevőiről, tekintse meg a [rendszerkép-szerkesztői sablon referenciáját](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Ha többet szeretne megtudni a cikkben használt. JSON fájl összetevőiről, tekintse meg a [rendszerkép-szerkesztői sablon referenciáját](../linux/image-builder-json.md).

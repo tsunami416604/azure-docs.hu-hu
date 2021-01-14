@@ -16,12 +16,12 @@ ms.date: 11/05/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: edace0298514d1fc3cfd3afcff73fa0d29e18f0c
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 73376994e01ed89891726a8f6e1b727f89dab2fb
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96858773"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201722"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Az Azure AD Connect előfeltételei
 Ez a cikk a Azure Active Directory (Azure AD) csatlakozási előfeltételeit és hardverkövetelmények leírását ismerteti.
@@ -72,7 +72,7 @@ További információ a Active Directory környezet biztonságossá tételéről
     - Azok a kiszolgálók, amelyeken telepítve van a AD FS vagy a webalkalmazás-proxy, Windows Server 2012 R2 vagy újabb rendszernek kell lennie. A Távoli telepítéshez engedélyezni kell a Rendszerfelügyeleti webszolgáltatásokat ezeken a kiszolgálókon. 
     - Konfigurálnia kell a TLS/SSL-tanúsítványokat. További információ: [SSL/TLS protokollok és titkosító csomagok kezelése a AD FS](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) és [az SSL-tanúsítványok kezelése a ad FSban](/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap).
     - Konfigurálnia kell a névfeloldást. 
-- Ha a globális rendszergazdák rendelkeznek MFA-támogatással, az URL-címnek szerepelnie kell https://secure.aadcdn.microsoftonline-p.com *must* a megbízható helyek listájában. A rendszer arra kéri, hogy adja hozzá ezt a helyet a megbízható helyek listájához, amikor a rendszer egy MFA-kérdés megadását kéri, és korábban még nem adta hozzá. Az Internet Explorer használatával adhatja hozzá a megbízható helyekhez.
+- Ha a globális rendszergazdák rendelkeznek MFA-támogatással, az URL-címnek szerepelnie kell https://secure.aadcdn.microsoftonline-p.com  a megbízható helyek listájában. A rendszer arra kéri, hogy adja hozzá ezt a helyet a megbízható helyek listájához, amikor a rendszer egy MFA-kérdés megadását kéri, és korábban még nem adta hozzá. Az Internet Explorer használatával adhatja hozzá a megbízható helyekhez.
 
 #### <a name="harden-your-azure-ad-connect-server"></a>Azure AD Connect-kiszolgáló megerősítése 
 Javasoljuk, hogy a biztonsági támadási felületet az IT-környezet ezen kritikus összetevője számára történő csökkentése érdekében a Azure AD Connect-kiszolgáló megerősítse. A javaslatok követése segít csökkenteni a szervezete biztonsági kockázatait.
@@ -83,7 +83,7 @@ Javasoljuk, hogy a biztonsági támadási felületet az IT-környezet ezen kriti
 - Kövesse az emelt [szintű hozzáférés biztonságossá tétele](/windows-server/identity/securing-privileged-access/securing-privileged-access)című témakör útmutatását. 
 - Az NTLM-hitelesítés használatának megtagadása a AADConnect-kiszolgálóval. A következőképpen teheti meg ezt: [az NTLM korlátozása a AADConnect-kiszolgálón és az](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-outgoing-ntlm-traffic-to-remote-servers) [NTLM korlátozása egy tartományon](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-ntlm-authentication-in-this-domain)
 - Győződjön meg arról, hogy minden gépnek egyedi helyi rendszergazdai jelszava van. További információ: [helyi rendszergazda jelszavas megoldás (kör)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) az egyes munkaállomásokon egyedi véletlenszerű jelszavakat konfigurálhat, és a kiszolgálókat ACL-védelemmel ellátott Active Directory tárolhatja. Csak a jogosult jogosult felhasználók olvashatják el vagy kérhetik a helyi rendszergazdai fiók jelszavának visszaállítását. A munkaállomásokon és kiszolgálókon a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=46899)kérheti le a kört. További útmutatást a környezet és az emelt szintű hozzáférési munkaállomások (mancsok) üzemeltetéséhez az [üzemeltetési szabványokban találhat a tiszta forrás elve alapján](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle). 
-- Dedikált emelt [szintű hozzáférésű munkaállomások](/windows-server/identity/securing-privileged-access/privileged-access-workstations) implementálása minden munkatárs számára, a szervezet információs rendszereihez emelt szintű hozzáféréssel. 
+- Dedikált emelt [szintű hozzáférésű munkaállomások](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) implementálása minden munkatárs számára, a szervezet információs rendszereihez emelt szintű hozzáféréssel. 
 - A Active Directory-környezet támadási felületének csökkentése érdekében kövesse ezeket a [további irányelveket](/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface) .
 
 

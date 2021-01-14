@@ -6,12 +6,12 @@ ms.author: cynthn
 ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
-ms.openlocfilehash: 7515e0a39d1cf0da74d2a23457443e96716b4275
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ad463672660582f28e0fd758a2293ad4112a981
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335952"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201875"
 ---
 # <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-windows"></a>Előzetes verzió: hozzon létre egy új virtuálisgép-rendszerkép verzióját egy meglévő rendszerkép-verzióból a Windows Azure rendszerkép-szerkesztő használatával
 
@@ -21,7 +21,7 @@ A rendszerkép konfigurálásához egy minta. JSON sablont fogunk használni. Az
 
 > [!IMPORTANT]
 > Az Azure rendszerkép-szerkesztő jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="register-the-features"></a>A szolgáltatások regisztrálása
 Ha az előzetes verzióban szeretné használni az Azure képszerkesztőt, regisztrálnia kell az új szolgáltatást.
@@ -107,7 +107,7 @@ Ha már rendelkezik saját közös rendszerkép-katalógussal, és nem követte 
 
 
 ## <a name="modify-helloimage-example"></a>HelloImage módosítása – példa
-Tekintse át a használni kívánt példát a. JSON fájl megnyitásához: [helloImageTemplateforSIGfromSIG.jsa](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) [rendszerkép-készítő sablon hivatkozásával](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)együtt. 
+Tekintse át a használni kívánt példát a. JSON fájl megnyitásához: [helloImageTemplateforSIGfromSIG.jsa](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) [rendszerkép-készítő sablon hivatkozásával](../linux/image-builder-json.md)együtt. 
 
 
 Töltse le a. JSON-példát, és konfigurálja a változókat. 
@@ -177,4 +177,4 @@ Ekkor két könyvtárat kell látnia:
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha többet szeretne megtudni a cikkben használt. JSON fájl összetevőiről, tekintse meg a [rendszerkép-szerkesztői sablon referenciáját](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Ha többet szeretne megtudni a cikkben használt. JSON fájl összetevőiről, tekintse meg a [rendszerkép-szerkesztői sablon referenciáját](../linux/image-builder-json.md).

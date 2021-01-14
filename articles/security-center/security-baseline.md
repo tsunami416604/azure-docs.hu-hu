@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3b648168cd80920b8042f1edeacca893c21b98e2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0e4c749d875ab22f8cdf26adf6050e1fa0476b28
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498948"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202249"
 ---
 # <a name="azure-security-baseline-for-security-center"></a>Security Center Azure biztonsági alapterve
 
@@ -248,7 +248,7 @@ Emellett a dedikált rendszergazdai fiókok nyomon követésének elősegítése
 
 **Útmutató**: emelt szintű jogosultságokat igénylő felügyeleti feladatokhoz használjon biztonságos, Azure által felügyelt munkaállomás (más néven privilegizált hozzáférési munkaállomás vagy Paw) használatát.
 
-- [A biztonságos, Azure által felügyelt munkaállomások ismertetése](../active-directory/devices/concept-azure-managed-workstation.md)
+- [A biztonságos, Azure által felügyelt munkaállomások ismertetése](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [Az Azure AD MFA engedélyezése](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -772,7 +772,7 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 **Felelősség**: Megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
 - További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

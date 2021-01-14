@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a6a1b41dd4ede055ba81c069c2164bb36da99876
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 93d444d781edbcfe4ab171460668aeb328070bff
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602308"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201637"
 ---
 # <a name="azure-security-baseline-for-azure-lighthouse"></a>Azure-beli biztonsági alaptervek az Azure Lighthouse-hoz
 
@@ -206,7 +206,7 @@ Megjegyzés: egyes Azure-szolgáltatások támogatják a helyi felhasználókat 
 
 **Útmutató**: A biztonságos, elkülönített munkaállomások kritikus fontosságúak az olyan bizalmas szerepkörök biztonsága szempontjából, mint a rendszergazdák, a fejlesztők vagy a kritikus fontosságú szolgáltatások üzemeltetői. A követelményektől függően a fokozottan biztonságos felhasználói munkaállomásokat és/vagy az Azure Bastion-t használhatja az Azure Lighthouse éles környezetekben való végrehajtásához. Az Azure Active Directory, a Microsoft Defender Advanced Threat Protection (ATP) és/vagy a Microsoft Intune használatával biztonságos és felügyelt felhasználói munkaállomásokat helyezhet üzembe a rendszergazdai tevékenységekhez. A biztonságos munkaállomások központilag felügyelhetők a biztonságos konfiguráció kikényszerítéséhez, beleértve az erős hitelesítést, a szoftver-és a hardver-alapterveket, valamint a korlátozott logikai és hálózati hozzáférést is. 
 
-- [Az emelt szintű hozzáférésű munkaállomások ismertetése](../active-directory/devices/concept-azure-managed-workstation.md)
+- [Az emelt szintű hozzáférésű munkaállomások ismertetése](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [Emelt szintű hozzáférésű munkaállomás üzembe helyezése](../active-directory/devices/howto-azure-managed-workstation.md)
 
@@ -760,7 +760,7 @@ További információkat az alábbi hivatkozásokon találhat:
 
 **Felelősség**: Ügyfél
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Security Benchmark v2 áttekintésének](../security/benchmarks/overview.md) megtekintése
 - További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

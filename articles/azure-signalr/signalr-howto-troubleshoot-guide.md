@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: 505176758e1dbba1d6bf262554568edd8a197a4d
-ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
+ms.openlocfilehash: bdda89483661eb6f6d006c3d8ea42b46d162de05
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97707673"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201654"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Hibaelhárítási útmutató az Azure Signaler szolgáltatás gyakori problémáira
 
@@ -280,7 +280,7 @@ Az ügyfélkapcsolatok hosszú ideje folyamatosan növekednek az Azure-jelző Me
 
 Ellenőrizze, hogy be van-e zárva a kapcsolatok. Manuálisan hívja `HubConnection.DisposeAsync()` meg a kapcsolatok leállítását a használat után.
 
-Például:
+Példa:
 
 ```C#
 var connection = new HubConnectionBuilder()
@@ -368,7 +368,7 @@ Vegyen fel ASP.NET Core egyet például (a ASP.NET egy hasonló):
 
     * [C#-ügyfél ASP.NET Core](https://github.com/Azure/azure-signalr/tree/dev/samples/ChatSample/ChatSample.CSharpClient/Program.cs#L64)
 
-    * [ASP.NET Core JavaScript-ügyfél](https://github.com/Azure/azure-signalr/tree/dev/samples/ChatSample/ChatSample/wwwroot/index.html#L164)
+    * [ASP.NET Core JavaScript-ügyfél](https://github.com/Azure/azure-signalr/blob/release/1.0.0-preview1/samples/ChatSample/wwwroot/index.html#L164)
 
     * [ASP.NET C#-ügyfél](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.CSharpClient/Program.cs#L78)
 
@@ -376,7 +376,7 @@ Vegyen fel ASP.NET Core egyet például (a ASP.NET egy hasonló):
 
 [Problémákba ütközik vagy visszajelzést szeretne küldeni a hibaelhárításról? Tudassa velünk.](https://aka.ms/asrs/survey/troubleshooting)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az útmutatóban megtanulta, hogyan kezelheti a gyakori problémákat. További általános hibaelhárítási módszereket is megtudhat. 
 

@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a23a177945316bca89aa5cbcc46f840213dbe832
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: cd81139c15e6bba65fe9b9a53a2e8e950ebd754b
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964813"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201756"
 ---
 # <a name="sap-hana-large-instances-architecture-on-azure"></a>SAP HANA (nagyméretű példányok) architektúrája az Azure-ban
 
@@ -43,7 +43,7 @@ A bemutatott architektúra három szakaszra oszlik:
    Az Azure-ban futtatott SAP NetWeaver-alkalmazások és-adatbázisok esetében lásd: [SAP-támogatás megjegyzés #1928533 – SAP-alkalmazások az Azure-ban: támogatott termékek és Azure VM-típusok](https://launchpad.support.sap.com/#/notes/1928533). Az SAP-megoldások Azure-beli üzembe helyezésével kapcsolatos dokumentációért lásd:
 
   -  [Az SAP használata Windows rendszerű virtuális gépeken](./get-started.md?toc=/azure/virtual-machines/linux/toc.json)
-  -  [SAP-megoldások használata Azure-beli virtuális gépeken](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+  -  [SAP-megoldások használata Azure-beli virtuális gépeken](get-started.md)
 
 - **Left**: a SAP HANA TDI-tanúsítvánnyal rendelkező hardvert jeleníti meg az Azure nagyméretű példányának bélyegében. A HANA nagyméretű példányok egységei az Azure-előfizetéshez tartozó virtuális hálózatokhoz kapcsolódnak, és ugyanazt a technológiát használják, mint a helyszíni kapcsolat az Azure-ba. A május 2019-es verziójától kezdve egy optimalizálás lett bevezetve, amely lehetővé teszi a HANA nagyméretű példány-egységek és az Azure-beli virtuális gépek közötti kommunikációt a ExpressRoute-átjáró bevonása nélkül. Ebben az architektúrában az ExpressRoute Fast Path nevű optimalizálás jelenik meg (piros vonal). 
 

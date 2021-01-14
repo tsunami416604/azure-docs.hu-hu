@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71d64552520db28b3fe38cc354a30ee5470ee091
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 97893dece068dfdde85159f734095401288231d2
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060741"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201348"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>Microsoft 365 védelme a helyszíni támadásoktól
 
@@ -131,7 +131,7 @@ A kiépítés a felhasználói fiókok és csoportok alkalmazásokban vagy ident
 
    *  A címtárban lévő tallózási csoportok és egyéb tulajdonságok elérésének korlátozása. A külső együttműködési beállítások használatával korlátozhatja a vendég azon csoportok olvasását, amelyek nem tagjai a csoportnak. 
 
-    *   A Azure Portal elérésének letiltása. Ritkán szükséges kivételeket hozhat.  Hozzon létre egy feltételes hozzáférési szabályzatot, amely tartalmazza az összes vendéget és a külső felhasználókat, majd [a hozzáférés letiltásához alkalmazza a szabályzatot](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management.md). 
+    *   A Azure Portal elérésének letiltása. Ritkán szükséges kivételeket hozhat.  Hozzon létre egy feltételes hozzáférési szabályzatot, amely tartalmazza az összes vendéget és a külső felhasználókat, majd [a hozzáférés letiltásához alkalmazza a szabályzatot](/azure/role-based-access-control/conditional-access-azure-management). 
 
 * **Leválasztott erdők:** Az [Azure ad Cloud kiépítés](../cloud-provisioning/what-is-cloud-provisioning.md)használata. Ez lehetővé teszi a leválasztott erdőkhöz való csatlakozást, így nincs szükség erdők közötti kapcsolat vagy megbízhatósági kapcsolatok létrehozására, ami kibővítheti a helyszíni szabálysértés hatását. * 
  

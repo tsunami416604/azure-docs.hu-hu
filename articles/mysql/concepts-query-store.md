@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/12/2020
-ms.openlocfilehash: 70e1e5d06ef025801322e15e589d26e31f116fc3
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 82482b260233994672e603c16fe8cf919c92337f
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535078"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201025"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>A Azure Database for MySQL teljesítményének figyelése a lekérdezési tárolóval
 
@@ -69,7 +69,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 ## <a name="finding-wait-queries"></a>Várakozási lekérdezések keresése
 
 > [!NOTE]
-> A várakozási statisztikát nem szabad engedélyezni a maximális számítási munkaterhelési órákban, vagy határozatlan időre be kell kapcsolni a bizalmas számítási feladatokhoz. <br>A magas CPU-kihasználtsággal vagy az alacsonyabb virtuális mag konfigurált kiszolgálókon futó munkaterhelések esetén körültekintően járjon el a várakozási statisztika engedélyezésekor. Nem lehet határozatlan ideig bekapcsolni. 
+> A várakozási statisztikát nem szabad engedélyezni a maximális számítási munkaterhelési órákban, vagy határozatlan időre be kell kapcsolni a bizalmas számítási feladatokhoz. <br>A magas CPU-kihasználtsággal vagy az alacsonyabb virtuális mag konfigurált kiszolgálókon futó munkaterhelések esetén körültekintően járjon el a várakozási statisztika engedélyezésekor. Nem lehet határozatlan ideig bekapcsolni.
 
 A várakozási eseménytípus hasonló módon kombinálja a különböző várakozási eseményeket a gyűjtők között. A lekérdezési tároló a várakozási esemény típusát, az adott várakozási esemény nevét és a kérdéses lekérdezést biztosítja. A várakozási idő és a lekérdezési futtatókörnyezet statisztikájának összekapcsolása azt jelenti, hogy mélyebben meg kell ismernie, hogy mi járul hozzá a teljesítmény jellemzőinek lekérdezéséhez.
 
@@ -79,7 +79,7 @@ A várakozási eseménytípus hasonló módon kombinálja a különböző várak
 |---|---|
 |Magas zárolási várakozások | Jelölje be az érintett lekérdezésekhez tartozó lekérdezési szövegeket, és azonosítsa a célként megadott entitásokat. A lekérdezési tárolóban megtekintheti azokat a lekérdezéseket, amelyek ugyanazt az entitást módosítják, amely gyakran és/vagy magas időtartammal van végrehajtva. A lekérdezések azonosítása után érdemes lehet módosítani az alkalmazás logikáját, hogy javítsa a párhuzamosságot, vagy használjon kevésbé korlátozó elkülönítési szintet. |
 |Magas puffer IO-várakozások | A lekérdezési tárolóban megkeresheti a nagy számú fizikai olvasással rendelkező lekérdezéseket. Ha egyeznek a nagy i/o-várakozásokkal rendelkező lekérdezésekkel, érdemes lehet egy indexet bevezetni az alapul szolgáló entitáson, hogy a vizsgálat helyett a kereséseket végezze. Ez csökkentheti a lekérdezések i/o-terhelését. Tekintse át a kiszolgáló **teljesítményére vonatkozó javaslatokat** a portálon, és ellenőrizze, hogy vannak-e olyan indexelési javaslatok ehhez a kiszolgálóhoz, amely optimalizálja a lekérdezéseket. |
-|Nagy memória-várakozások | A lekérdezési tárolóban megkeresheti a leggyakoribb memóriát használó lekérdezéseket. Ezek a lekérdezések valószínűleg késleltetik az érintett lekérdezések további előrehaladását. Tekintse át a kiszolgáló **teljesítményére vonatkozó javaslatokat** a portálon, és ellenőrizze, hogy vannak-e olyan indexelési javaslatok, amelyek optimalizálják ezeket a lekérdezéseket.|
+|Nagy memória-várakozások | A lekérdezési tárolóban megkeresheti a leggyakoribb memóriát használó lekérdezéseket. Ezek a lekérdezések valószínűleg késleltetik az érintett lekérdezések további előrehaladását. Tekintse át a kiszolgáló **teljesítményére vonatkozó javaslatokat** a portálon, és ellenőrizze, hogy vannak-e olyan indexelési javaslatok, amelyek optimalizálják ezeket a lekérdezéseket. |
 
 ## <a name="configuration-options"></a>Beállítási lehetőségek
 
@@ -108,7 +108,7 @@ A [Azure Portal](howto-server-parameters.md) vagy az [Azure CLI](howto-configure
 
 ## <a name="views-and-functions"></a>Nézetek és függvények
 
-A lekérdezési tárolót a következő nézetekkel és függvényekkel tekintheti meg és kezelheti. A [Select jogosultsági nyilvános szerepkörben](howto-create-users.md#to-create-additional-admin-users-in-azure-database-for-mysql) bárki megtekintheti ezeket a nézeteket a lekérdezési tárolóban lévő információk megjelenítéséhez. Ezek a nézetek csak a **MySQL** -adatbázisban érhetők el.
+A lekérdezési tárolót a következő nézetekkel és függvényekkel tekintheti meg és kezelheti. A [Select jogosultsági nyilvános szerepkörben](howto-create-users.md#to-create-more-admin-users-in-azure-database-for-mysql) bárki megtekintheti ezeket a nézeteket a lekérdezési tárolóban lévő információk megjelenítéséhez. Ezek a nézetek csak a **MySQL** -adatbázisban érhetők el.
 
 A lekérdezések normalizálása úgy történik, hogy a konstansok és konstansok eltávolítása után megvizsgálják a szerkezetét. Ha két lekérdezés megegyezik a literális értékektől, akkor ugyanazzal a kivonattal fog rendelkezni.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a92802f0b121a332afccf7f6c12e876b3263bd82
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 3ffd5dc1caef6bd2a77ca7902a117ad2446c0265
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96343943"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202317"
 ---
 # <a name="azure-security-baseline-for-expressroute"></a>Azure biztonsági alapkonfiguráció a ExpressRoute-hez
 
@@ -301,9 +301,9 @@ Emellett a dedikált rendszergazdai fiókok nyomon követésének elősegítése
 
 **Útmutató**: a rendszerjogosultságú hozzáférési munkaállomás (Paw) használata az azure ad multi-Factor Authentication (MFA) szolgáltatással, amely lehetővé teszi, hogy bejelentkezzen az Azure Sentinel szolgáltatással kapcsolatos erőforrásaiba, és konfigurálja azokat.
 
-* [Emelt hozzáférési szintű munkaállomások](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Emelt hozzáférési szintű munkaállomások](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-* [Felhőalapú Azure AD-Multi-Factor Authentication üzembe helyezésének megtervezése](../active-directory/authentication/howto-mfa-getstarted.md)
+* [Felhőalapú Azure AD Multi-Factor Authentication-telepítés megtervezése](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -985,7 +985,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Felelősség**: Megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
 - További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

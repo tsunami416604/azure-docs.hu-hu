@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - contperf-fy21q1
 - device-developer
-ms.openlocfilehash: 9e5e96d97494f4ba9aa28e84b046cd057fe8eba7
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 236acc2ded3fcb651295e0342ab4e1e88174be46
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033408"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202963"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Új IoT-eszköztípus definiálása az Azure IoT Central-alkalmazásban
 
@@ -42,8 +42,16 @@ Egy IoT Central alkalmazásban az eszköz egy eszköz modelljét használja az e
 
 - Tervezze meg IoT Central az eszköz sablonját, majd [implementálja az eszköz modelljét az eszköz kódjában](concepts-telemetry-properties-commands.md).
 - Importáljon egy sablont az [Azure Certified for IoT-Device Catalog](https://aka.ms/iotdevcat)eszközre. Szabja testre az eszköz sablonját a IoT Central igényeinek megfelelően.
+> [!NOTE]
+> IoT Central a teljes modellt az azonos fájlban lévő összes hivatkozott csatolóval együtt kell megadnia, amikor egy modellt importál a modell-adattárból, a "kibontott" kulcsszó használatával szerezheti be a teljes verziót.
+Például:. https://devicemodels.azure.com/dtmi/com/example/thermostat-1.expanded.json
+
 - Az eszköz modelljét a [digitális Twins Definition Language (DTDL) – 2. verzió](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)használatával hozhatja létre. A Visual Studio Code olyan bővítményt tartalmaz, amely támogatja a DTDL-modellek készítését. További információ: [install and use The DTDL authoring Tools](../../iot-pnp/howto-use-dtdl-authoring-tools.md). Ezután tegye közzé a modellt a nyilvános modell adattárában. További információ: [eszköz modell tárháza](../../iot-pnp/concepts-model-repository.md). Implementálja az eszköz kódját a modellből, és kapcsolja össze a valódi eszközt a IoT Central alkalmazással. IoT Central megkeresi és importálja az eszköz modelljét a nyilvános adattárból, és létrehoz egy sablont. Ezután hozzáadhat bármilyen Felhőbeli tulajdonságot, testreszabást és irányítópultot, amely az IoT Central alkalmazásnak az eszköz sablonját kell használnia.
 - Egy eszköz modell létrehozása a DTDL használatával. Implementálja az eszköz kódját a modellből. Manuálisan importálja az eszköz modelljét a IoT Central alkalmazásba, majd adja hozzá a IoT Central alkalmazás igényeinek megfelelő Felhőbeli tulajdonságokat, testreszabásokat és irányítópultokat.
+
+> [!TIP]
+> IoT Central a teljes modellt az összes hivatkozott csatolóval megegyező fájlban kell megadnia. Ha modellt importál a modell-adattárból, a *kibontott* kulcsszó használatával szerezheti be a teljes verziót.
+> Például: [https://devicemodels.azure.com/dtmi/com/example/thermostat-1.expanded.json](https://devicemodels.azure.com/dtmi/com/example/thermostat-1.expanded.json).
 
 Az IoT Central alkalmazáshoz a [REST API](/learn/modules/manage-iot-central-apps-with-rest-api/) vagy a [parancssori](howto-manage-iot-central-from-cli.md)felület használatával is hozzáadhat eszközillesztőket.
 
@@ -122,16 +130,16 @@ A következő táblázat a telemetria képesség konfigurációs beállításait
 | Mező | Leírás |
 | ----- | ----------- |
 | Megjelenítendő név | Az irányítópultokon és űrlapokon használt telemetria érték megjelenítendő neve. |
-| Name (Név) | A mező neve a telemetria üzenetben. IoT Central a megjelenített név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. A mezőnek alfanumerikusnak kell lennie. |
+| Name | A mező neve a telemetria üzenetben. IoT Central a megjelenített név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. A mezőnek alfanumerikusnak kell lennie. |
 | Képesség típusa | Telemetria. |
 | Szemantikai típus | A telemetria szemantikai típusa, például hőmérséklet, állapot vagy esemény. A szemantikai típus megválasztása határozza meg, hogy a következő mezők közül melyek érhetők el. |
 | Séma | A telemetria adattípus, például Double, string vagy Vector. Az elérhető beállításokat a szemantikai típus határozza meg. A séma nem érhető el az esemény és az állapot szemantikai típusaihoz. |
 | Súlyosság | Csak az esemény szemantikai típusához érhető el. A megszakítások a következők: **hiba**, **információ** vagy **Figyelmeztetés**. |
 | Állapot értékei | Csak az állapot szemantikai típusához érhető el. Definiálja a lehetséges állapotinformációkat, amelyek mindegyike megjelenített névvel, névvel, számbavételi típussal és értékkel rendelkezik. |
-| Egység | A telemetria értékének (például: **mph**, **%** , vagy **&deg; C**) egysége. |
+| Unit (Egység) | A telemetria értékének (például: **mph**, **%** , vagy **&deg; C**) egysége. |
 | Megjelenítési egység | Irányítópultokon és űrlapokon használható megjelenítési egység. |
 | Megjegyzés | A telemetria képességgel kapcsolatos megjegyzések. |
-| Leírás | A telemetria képesség leírása. |
+| Description | A telemetria képesség leírása. |
 
 ### <a name="properties"></a>Tulajdonságok
 
@@ -142,17 +150,17 @@ A következő táblázat a tulajdonságok funkciójának konfigurációs beáll�
 | Mező | Leírás |
 | ----- | ----------- |
 | Megjelenítendő név | Az irányítópultokon és űrlapokon használt tulajdonságérték megjelenítendő neve. |
-| Name (Név) | A tulajdonság neve. IoT Central a megjelenített név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. A mezőnek alfanumerikusnak kell lennie. |
+| Name | A tulajdonság neve. IoT Central a megjelenített név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. A mezőnek alfanumerikusnak kell lennie. |
 | Képesség típusa | Tulajdonság. |
 | Szemantikai típus | A tulajdonság szemantikai típusa, például hőmérséklet, állapot vagy esemény. A szemantikai típus megválasztása határozza meg, hogy a következő mezők közül melyek érhetők el. |
 | Séma | A tulajdonság adattípusa, például Double, string vagy Vector. Az elérhető beállításokat a szemantikai típus határozza meg. A séma nem érhető el az esemény és az állapot szemantikai típusaihoz. |
 | Írható | Ha a tulajdonság nem írható, az eszköz jelentést készíthet IoT Central. Ha a tulajdonság írható, az eszköz jelentést készíthet IoT Central, és IoT Central a tulajdonságok frissítését az eszközre.
 | Súlyosság | Csak az esemény szemantikai típusához érhető el. A megszakítások a következők: **hiba**, **információ** vagy **Figyelmeztetés**. |
 | Állapot értékei | Csak az állapot szemantikai típusához érhető el. Definiálja a lehetséges állapotinformációkat, amelyek mindegyike megjelenített névvel, névvel, számbavételi típussal és értékkel rendelkezik. |
-| Egység | A tulajdonság értékének egysége, például: **mph**, **%** , vagy **&deg; C**. |
+| Unit (Egység) | A tulajdonság értékének egysége, például: **mph**, **%** , vagy **&deg; C**. |
 | Megjelenítési egység | Irányítópultokon és űrlapokon használható megjelenítési egység. |
 | Megjegyzés | A tulajdonság képességével kapcsolatos megjegyzések. |
-| Leírás | A tulajdonság funkciójának leírása. |
+| Description | A tulajdonság funkciójának leírása. |
 
 ### <a name="commands"></a>Parancsok
 
@@ -163,10 +171,10 @@ A következő táblázat a parancs funkciójának konfigurációs beállításai
 | Mező | Leírás |
 | ----- | ----------- |
 | Megjelenítendő név | Az irányítópultokon és űrlapokon használt parancs megjelenítendő neve. |
-| Name (Név) | A parancs neve. IoT Central a megjelenített név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. A mezőnek alfanumerikusnak kell lennie. |
+| Name | A parancs neve. IoT Central a megjelenített név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. A mezőnek alfanumerikusnak kell lennie. |
 | Képesség típusa | Parancs. |
 | Megjegyzés | A parancs képességével kapcsolatos megjegyzések. |
-| Leírás | A parancs funkciójának leírása. |
+| Description | A parancs funkciójának leírása. |
 | Kérés | Ha engedélyezve van, a kérelem paraméterének definíciója, beleértve a következőket: név, megjelenítendő név, séma, egység és megjelenítési egység. |
 | Reagálás | Ha engedélyezve van, a parancs válaszának definíciója, beleértve a következőket: név, megjelenítendő név, séma, egység és megjelenítési egység. |
 
@@ -202,7 +210,7 @@ A következő táblázat a Cloud Property konfigurációs beállításait mutatj
 | Mező | Leírás |
 | ----- | ----------- |
 | Megjelenítendő név | Az irányítópultokon és űrlapokon használt Cloud Property érték megjelenítendő neve. |
-| Name (Név) | A felhő tulajdonság neve IoT Central a megjelenített név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. |
+| Name | A felhő tulajdonság neve IoT Central a megjelenített név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. |
 | Szemantikai típus | A tulajdonság szemantikai típusa, például hőmérséklet, állapot vagy esemény. A szemantikai típus megválasztása határozza meg, hogy a következő mezők közül melyek érhetők el. |
 | Séma | A Felhőbeli tulajdonság adattípusa, például Double, string vagy Vector. Az elérhető beállításokat a szemantikai típus határozza meg. |
 

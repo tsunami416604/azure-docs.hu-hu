@@ -7,20 +7,20 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 8b18da5e41e235b560918ad26117a0162078862c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8915e1c15972341befd176b412925f4e87c94f6
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540982"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201450"
 ---
 # <a name="azure-policy-security-baseline-for-azure-security-benchmark"></a>Az Azure biztonsági teljesítményteszt Azure Policy biztonsági alapterve
 
-Ez a biztonsági alapkonfiguráció az [Azure biztonsági teljesítménytesztre](../../../security/benchmarks/overview.md) vonatkozó útmutatást alkalmazza Azure Policyra. Az Azure biztonsági teljesítményteszt az Azure-beli felhőalapú megoldások biztonságossá tételével kapcsolatos ajánlásokat tartalmaz. A tartalom a **megfelelőségi tartományok** és az Azure biztonsági teljesítményteszt által meghatározott **biztonsági vezérlők** , valamint a Azure Policy vonatkozó kapcsolódó útmutatás szerint van csoportosítva. A Azure Policy nem alkalmazható **vezérlők** ki vannak zárva. Ha szeretné megtekinteni, hogyan Azure Policy teljes mértékben leképezni az Azure biztonsági Teljesítménytesztét, tekintse meg a [teljes Azure Policy biztonsági alapterv-leképezési fájlt](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
+Ez a biztonsági alapkonfiguráció az [Azure biztonsági teljesítménytesztre](../../../security/benchmarks/overview.md) vonatkozó útmutatást alkalmazza Azure Policyra. Az Azure Security Benchmark ajánlásokat ad arra nézve, hogy hogyan tehetők biztonságossá a felhőalapú megoldások az Azure-ban. A tartalom a **megfelelőségi tartományok** és az Azure biztonsági teljesítményteszt által meghatározott **biztonsági vezérlők** , valamint a Azure Policy vonatkozó kapcsolódó útmutatás szerint van csoportosítva. A Azure Policy nem alkalmazható **vezérlők** ki vannak zárva. Ha szeretné megtekinteni, hogyan Azure Policy teljes mértékben leképezni az Azure biztonsági Teljesítménytesztét, tekintse meg a [teljes Azure Policy biztonsági alapterv-leképezési fájlt](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
 
 Az Azure Security teljesítményteszt-vezérlők beépített szabályzat-definíciók alapján történő leképezéséhez a beépített kezdeményezéssel tekintse meg a jogszabályoknak [való megfelelést: Azure biztonsági teljesítményteszt](../samples/azure-security-benchmark.md).
 
-A Azure Policy a _felelősség_helyett a _tulajdonos_ kifejezést használja. A _tulajdonjoggal_kapcsolatos részletekért lásd: [Azure Policy szabályzat-definíciók](./definition-structure.md#type) és [közös felelősség a felhőben](../../../security/fundamentals/shared-responsibility.md).
+A Azure Policy a _felelősség_ helyett a _tulajdonos_ kifejezést használja. A _tulajdonjoggal_ kapcsolatos részletekért lásd: [Azure Policy szabályzat-definíciók](./definition-structure.md#type) és [közös felelősség a felhőben](../../../security/fundamentals/shared-responsibility.md).
 
 
 ## <a name="logging-and-monitoring"></a>Naplózás és figyelés
@@ -36,9 +36,9 @@ A Azure Policy a _felelősség_helyett a _tulajdonos_ kifejezést használja. A 
 * [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](../../../azure-monitor/platform/platform-logs-overview.md)
 
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ## <a name="identity-and-access-control"></a>Identitás- és hozzáférés-vezérlés
 
@@ -51,22 +51,22 @@ A Azure Policy a _felelősség_helyett a _tulajdonos_ kifejezést használja. A 
 Egy igény szerinti vagy elég hozzáférési megoldást is engedélyezhet [Azure ad Privileged Identity Management](../../../active-directory/privileged-identity-management/pim-configure.md) emelt szintű szerepkörök vagy [Azure Resource Manager](../../../azure-resource-manager/management/overview.md)használatával.
 
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: dedikált gépek (privilegizált hozzáférési munkaállomások) használata az összes felügyeleti feladathoz
 
 **Útmutató**: az Azure-erőforrások bejelentkezésére és konfigurálására szolgáló, az MFA használatára konfigurált, a mancsok (emelt szintű hozzáférési munkaállomások) használata.
 
-* [További tudnivalók a privilegizált hozzáférésű munkaállomásokról](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [További tudnivalók a privilegizált hozzáférésű munkaállomásokról](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-* [Az MFA engedélyezése az Azure-ban](../../../active-directory/authentication/howto-mfa-getstarted.md)
+* [MFA engedélyezése az Azure-ban](../../../active-directory/authentication/howto-mfa-getstarted.md)
 
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ## <a name="data-protection"></a>Adatvédelem
 
@@ -81,9 +81,9 @@ Egy igény szerinti vagy elég hozzáférési megoldást is engedélyezhet [Azur
 * [Az Azure RBAC konfigurálása](../../../role-based-access-control/role-assignments-portal.md)
 
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: a kritikus Azure-erőforrások változásainak naplózása és riasztása
 
@@ -92,9 +92,9 @@ Egy igény szerinti vagy elég hozzáférési megoldást is engedélyezhet [Azur
 * [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../../../azure-monitor/platform/alerts-activity-log.md)
 
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ## <a name="inventory-and-asset-management"></a>Leltár- és eszközfelügyelet
 
@@ -109,30 +109,30 @@ Egy igény szerinti vagy elég hozzáférési megoldást is engedélyezhet [Azur
 * [Oktatóanyag: a címke irányításának kezelése](../tutorials/govern-tags.md)
 
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6,4: jóváhagyott Azure-erőforrások leltárának meghatározása és karbantartása
 
 **Útmutató**: hozzon létre egy leltárt a jóváhagyott szabályzat-definíciók és szabályzat-hozzárendelések alapján a szervezeti igényeknek megfelelően.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: a nem jóváhagyott Azure-erőforrások figyelése
 
 **Útmutató**: a Azure Policy használatával korlátozásokat állíthat be az előfizetésekben létrehozható erőforrásokra vonatkozóan.
 
-* [Azure Policy konfigurálása és kezelése](../tutorials/create-and-manage.md)
+* [Az Azure Policy konfigurálása és kezelése](../tutorials/create-and-manage.md)
 
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../../../security/benchmarks/overview.md)
-- További információ az [Azure biztonsági alaptervekről](../../../security/benchmarks/security-baselines-overview.md)
+- További tudnivalók az [Azure biztonsági alapterveiről](../../../security/benchmarks/security-baselines-overview.md)

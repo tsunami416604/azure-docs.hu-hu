@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 6e3333ac780cfca02a6ce4f28d2b0e312016f713
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: dc3920ac1e2269f4980ee67e2f5f82a0541ac0c2
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131508"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201501"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Általános VHD feltöltése, majd azzal új Azure-beli virtuális gép létrehozása
 
@@ -22,7 +22,7 @@ A minta parancsfájlt a [virtuális merevlemezek Azure-ba való feltöltéséhez
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-- A virtuális merevlemezek Azure-ba való feltöltése előtt kövesse az Azure-ba való [feltöltéshez szükséges Windows VHD vagy VHDX előkészítését](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ismertető témakört.
+- A virtuális merevlemezek Azure-ba való feltöltése előtt kövesse az Azure-ba való [feltöltéshez szükséges Windows VHD vagy VHDX előkészítését](prepare-for-upload-vhd-image.md)ismertető témakört.
 - A Migrálás megkezdése előtt tekintse át [a Managed Disks áttelepítésének tervét](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks) [Managed Disks](../managed-disks-overview.md).
 
  
@@ -33,7 +33,7 @@ Ha még nem tette meg, az Azure-ba való feltöltés előtt telepítenie kell a 
 Győződjön meg arról, hogy a Sysprep támogatja a számítógépen futó kiszolgálói szerepköröket. További információ: a [Sysprep-támogatás a kiszolgálói szerepkörökhöz](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles).
 
 > [!IMPORTANT]
-> Ha azt tervezi, hogy először a virtuális merevlemezt az Azure-ba való feltöltés előtt szeretné futtatni, győződjön meg arról, hogy [előkészítette a virtuális gépet](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+> Ha azt tervezi, hogy először a virtuális merevlemezt az Azure-ba való feltöltés előtt szeretné futtatni, győződjön meg arról, hogy [előkészítette a virtuális gépet](prepare-for-upload-vhd-image.md). 
 > 
 > 
 
@@ -43,7 +43,7 @@ Győződjön meg arról, hogy a Sysprep támogatja a számítógépen futó kisz
 1. Módosítsa a könyvtárat a%WINDIR%\system32\sysprep értékre, majd futtassa a parancsot `sysprep.exe` .
 1. A **rendszer-előkészítő eszköz** párbeszédpanelen jelölje be a rendszerindítási folyamat **megadása (OOBE)** jelölőnégyzetet, és győződjön meg arról, hogy az **általánosítás** jelölőnégyzet be van jelölve.
 1. A **leállítási beállításoknál** válassza a **Leállítás** lehetőséget.
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
    
     ![A Sysprep elindítása](./media/upload-generalized-managed/sysprepgeneral.png)
 1. A Sysprep befejezésekor a rendszer leállítja a virtuális gépet. Ne indítsa újra a virtuális gépet.
@@ -114,4 +114,4 @@ New-AzVm `
 
 ## <a name="next-steps"></a>Következő lépések
 
-Jelentkezzen be az új virtuális gépre. További információ: [Kapcsolódás és bejelentkezés egy Windows rendszerű Azure-beli virtuális gépre](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Jelentkezzen be az új virtuális gépre. További információ: [Kapcsolódás és bejelentkezés egy Windows rendszerű Azure-beli virtuális gépre](connect-logon.md).

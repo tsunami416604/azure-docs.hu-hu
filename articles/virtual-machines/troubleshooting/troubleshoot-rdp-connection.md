@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: akjosh
-ms.openlocfilehash: ba6dda86475456b6797d27e11727d70261be2e1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66e4ea622f546981d1f0651b20368590e59056d3
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91439988"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201620"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Azure-beli virtuális géphez Távoli asztal kapcsolatok hibáinak megoldása
 A Windows-alapú Azure-beli virtuális gépek (VM) RDP protokollon alapuló kapcsolata több okból is meghiúsulhat. A kapcsolat hiányában nem tudja elérni a virtuális gépet. A probléma forrása lehet a virtuális gép távoli asztali szolgáltatása, a hálózati kapcsolat vagy a gazdaszámítógép távoli asztali ügyfele. Ez a cikk bemutatja az RDP-kapcsolatok hibáinak megoldására szolgáló leggyakoribb módszereket. 
 
-Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.
+Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése** lehetőséget.
 
  
 
@@ -91,7 +91,7 @@ Az egyes hibaelhárítási lépések után próbálkozzon újra a virtuális gé
     ![Indítsa újra a Azure Portal a V M-t.](./media/troubleshoot-rdp-connection/restart-vm.png)
 8. **Telepítse újra a virtuális gépet**. Ez a hibaelhárítási lépés újratelepíti a virtuális gépet egy másik gazdagépre az Azure-ban, hogy javítsa az összes mögöttes platformot vagy hálózati problémát.
    
-    Válassza ki a virtuális gépet a Azure Portal. Görgessen le a beállítások ablaktáblán a lista alján található **támogatás + hibaelhárítás** szakaszhoz. Kattintson az **újratelepítés** gombra, majd az újbóli **üzembe helyezés**elemre:
+    Válassza ki a virtuális gépet a Azure Portal. Görgessen le a beállítások ablaktáblán a lista alján található **támogatás + hibaelhárítás** szakaszhoz. Kattintson az **újratelepítés** gombra, majd az újbóli **üzembe helyezés** elemre:
    
     ![Telepítse újra a virtuális gépet a Azure Portal](./media/troubleshoot-rdp-connection/redeploy-vm.png)
    
@@ -101,7 +101,7 @@ Az egyes hibaelhárítási lépések után próbálkozzon újra a virtuális gé
 
 10. Győződjön meg arról, hogy a helyszíni tűzfal vagy tűzfal a számítógépén engedélyezi a kimenő TCP 3389-forgalom Azure-ba való továbbítását.
 
-Ha továbbra is RDP-problémákba ütközik, [Nyisson meg egy támogatási kérést](https://azure.microsoft.com/support/options/) , vagy olvassa el [részletesebben az RDP-hibaelhárítási fogalmakat és lépéseket](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Ha továbbra is RDP-problémákba ütközik, [Nyisson meg egy támogatási kérést](https://azure.microsoft.com/support/options/) , vagy olvassa el [részletesebben az RDP-hibaelhárítási fogalmakat és lépéseket](detailed-troubleshoot-rdp.md).
 
 ## <a name="troubleshoot-using-azure-powershell"></a>Hibaelhárítás az Azure PowerShell használatával
 Ha még nem tette meg, [telepítse és konfigurálja a legújabb Azure PowerShell](/powershell/azure/).
@@ -154,7 +154,7 @@ Az egyes hibaelhárítási lépések után próbálkozzon újra a virtuális gé
     Direction                : Inbound
     ```
    
-    Ha nem rendelkezik olyan szabállyal, amely engedélyezi az RDP-forgalmat, [hozzon létre egy hálózati biztonsági csoportra vonatkozó szabályt](../windows/nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Engedélyezze a 3389-es TCP-portot.
+    Ha nem rendelkezik olyan szabállyal, amely engedélyezi az RDP-forgalmat, [hozzon létre egy hálózati biztonsági csoportra vonatkozó szabályt](../windows/nsg-quickstart-powershell.md). Engedélyezze a 3389-es TCP-portot.
 3. **Felhasználói hitelesítő adatok alaphelyzetbe állítása**. Ez a hibaelhárítási lépés alaphelyzetbe állítja a jelszót a helyi rendszergazdai fiókon, amelyet akkor ad meg, ha nem tudja, vagy elfelejtette a hitelesítő adatokat.
    
     Először adja meg a felhasználónevet és az új jelszót úgy, hogy a következő módon rendeli hozzá a hitelesítő adatokat a `$cred` változóhoz:
@@ -190,7 +190,7 @@ Az egyes hibaelhárítási lépések után próbálkozzon újra a virtuális gé
 
 7. Győződjön meg arról, hogy a helyszíni tűzfal vagy tűzfal a számítógépén engedélyezi a kimenő TCP 3389-forgalom Azure-ba való továbbítását.
 
-Ha továbbra is RDP-problémákba ütközik, [Nyisson meg egy támogatási kérést](https://azure.microsoft.com/support/options/) , vagy olvassa el [részletesebben az RDP-hibaelhárítási fogalmakat és lépéseket](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Ha továbbra is RDP-problémákba ütközik, [Nyisson meg egy támogatási kérést](https://azure.microsoft.com/support/options/) , vagy olvassa el [részletesebben az RDP-hibaelhárítási fogalmakat és lépéseket](detailed-troubleshoot-rdp.md).
 
 ## <a name="troubleshoot-vms-created-using-the-classic-deployment-model"></a>A klasszikus üzemi modell használatával létrehozott virtuális gépek hibáinak megoldása
 
@@ -201,7 +201,7 @@ Az egyes hibaelhárítási lépések után próbálkozzon újra a virtuális gé
 
 1. **Az RDP-kapcsolat alaphelyzetbe állítása**. Ez a hibaelhárítási lépés alaphelyzetbe állítja az RDP-konfigurációt, ha a távoli kapcsolatok le vannak tiltva, vagy a Windows tűzfal szabályai blokkolja az RDP-t, például.
    
-    Válassza ki a virtuális gépet a Azure Portal. Kattintson a **... További** gomb, majd kattintson a **távelérés alaphelyzetbe állítása**elemre:
+    Válassza ki a virtuális gépet a Azure Portal. Kattintson a **... További** gomb, majd kattintson a **távelérés alaphelyzetbe állítása** elemre:
    
     ![Az R D P konfigurációjának alaphelyzetbe állítása a V M Azure Portal a klasszikus üzemi modell használatával.](./media/troubleshoot-rdp-connection/classic-reset-rdp.png)
 2. **Ellenőrizze Cloud Services végpontokat**. Ez a hibaelhárítási lépés ellenőrzi, hogy vannak-e végpontok a Cloud Services az RDP-forgalom engedélyezéséhez. Az RDP-hez tartozó alapértelmezett port a 3389-es TCP-port. A virtuális gép létrehozásakor nem lehet automatikusan létrehozni egy olyan szabályt, amely engedélyezi az RDP-forgalmat.
@@ -234,7 +234,7 @@ Az egyes hibaelhárítási lépések után próbálkozzon újra a virtuális gé
 
 7. Győződjön meg arról, hogy a helyszíni tűzfal vagy tűzfal a számítógépén engedélyezi a kimenő TCP 3389-forgalom Azure-ba való továbbítását.
 
-Ha továbbra is RDP-problémákba ütközik, [Nyisson meg egy támogatási kérést](https://azure.microsoft.com/support/options/) , vagy olvassa el [részletesebben az RDP-hibaelhárítási fogalmakat és lépéseket](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Ha továbbra is RDP-problémákba ütközik, [Nyisson meg egy támogatási kérést](https://azure.microsoft.com/support/options/) , vagy olvassa el [részletesebben az RDP-hibaelhárítási fogalmakat és lépéseket](detailed-troubleshoot-rdp.md).
 
 ## <a name="troubleshoot-specific-rdp-errors"></a>Konkrét RDP-hibák elhárítása
 Előfordulhat, hogy egy adott hibaüzenet jelenik meg, amikor RDP-kapcsolaton keresztül próbál csatlakozni a virtuális géphez. A leggyakoribb hibaüzenetek a következők:
@@ -246,6 +246,6 @@ Előfordulhat, hogy egy adott hibaüzenet jelenik meg, amikor RDP-kapcsolaton ke
 * [Ez a számítógép nem tud kapcsolódni a távoli számítógéphez](troubleshoot-specific-rdp-errors.md#rdpconnect).
 
 ## <a name="additional-resources"></a>További források
-Ha ezen hibák egyike sem történt meg, és továbbra sem tud csatlakozni a virtuális géphez Távoli asztalon keresztül, olvassa el a [Távoli asztal részletes hibaelhárítási útmutatóját](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Ha ezen hibák egyike sem történt meg, és továbbra sem tud csatlakozni a virtuális géphez Távoli asztalon keresztül, olvassa el a [Távoli asztal részletes hibaelhárítási útmutatóját](detailed-troubleshoot-rdp.md).
 * A virtuális gépen futó alkalmazások elérésével kapcsolatos hibaelhárítási lépéseket lásd: az Azure-beli [virtuális gépen futó alkalmazásokhoz való hozzáférés hibaelhárítása](./troubleshoot-app-connection.md?toc=/azure/virtual-machines/linux/toc.json).
 * Ha a Secure Shell (SSH) segítségével csatlakozik egy Linux rendszerű virtuális géphez az Azure-ban, tekintse meg az [SSH-kapcsolatok hibaelhárítása Az Azure-ban linuxos virtuális géppel](./troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json)című témakört.

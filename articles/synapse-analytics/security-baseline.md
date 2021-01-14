@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 972788e04e12553e7c05f30cc246c6fb562031a4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 65985e05be1061bb69eb160cf5be559cb271d5cd
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461362"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202929"
 ---
 # <a name="azure-security-baseline-for-azure-synapse-analytics"></a>Azure-beli biztonsági alaptervek az Azure szinapszis Analyticshez
 
@@ -393,7 +393,7 @@ Az adatbázishoz tartozó rendszergazdai fiókok azonosításához nyissa meg a 
 
 **Útmutató**: az Azure-erőforrások bevezetésére és konfigurálására konfigurált multi-Factor Authentication (MFA) rendelkező, rendszerjogosultságú hozzáférési munkaállomás (Paw) használata.
 
-* [További tudnivalók a privilegizált hozzáférésű munkaállomásokról](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [További tudnivalók a privilegizált hozzáférésű munkaállomásokról](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [MFA engedélyezése az Azure-ban](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
 
@@ -1145,7 +1145,7 @@ Alapértelmezés szerint a Storage-fiókokban lévő adatforgalom a Microsoft á
 
 **Felelősség**: Ügyfél
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](/azure/security/benchmarks/overview)
 - További tudnivalók az [Azure biztonsági alapterveiről](/azure/security/benchmarks/security-baselines-overview)

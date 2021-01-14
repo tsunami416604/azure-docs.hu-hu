@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 335a977924c94fba82ec6113233a4585401527f3
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: ca49e7c171d0b8903beccf0b1ca803f5b359951b
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092771"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201705"
 ---
 # <a name="azure-security-baseline-for-azure-managed-applications"></a>Azure Managed Applications Azure biztonsági alapterve
 
@@ -242,7 +242,7 @@ Megjegyzés: egyes Azure-szolgáltatások támogatják a helyi felhasználókat 
 
 **Útmutató**: A biztonságos, elkülönített munkaállomások kritikus fontosságúak az olyan bizalmas szerepkörök biztonsága szempontjából, mint a rendszergazdák, a fejlesztők vagy a kritikus fontosságú szolgáltatások üzemeltetői. A felügyelt alkalmazásokkal kapcsolatos adminisztratív feladatokhoz használjon magasan biztonságos felhasználói munkaállomásokat és/vagy az Azure-t. Az Azure Active Directory, a Microsoft Defender Advanced Threat Protection (ATP) és/vagy a Microsoft Intune használatával biztonságos és felügyelt felhasználói munkaállomásokat helyezhet üzembe a rendszergazdai tevékenységekhez. A védett munkaállomások központi kezelésével kikényszeríthető a biztonságos konfiguráció, beleértve az erős hitelesítést, a szoftveres és hardveres alapkonfigurációikat, valamint a korlátozott logikai és hálózati hozzáférést.
 
-- [Az emelt szintű hozzáférésű munkaállomások ismertetése](../../active-directory/devices/concept-azure-managed-workstation.md)
+- [Az emelt szintű hozzáférésű munkaállomások ismertetése](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [Emelt szintű hozzáférésű munkaállomás üzembe helyezése](../../active-directory/devices/howto-azure-managed-workstation.md)
 

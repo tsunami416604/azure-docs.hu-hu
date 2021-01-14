@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 63d5e4bcc57a734fc5ea455da7c2db940a4b8ec3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbdccc2efb72626d1974f4cd81be9d2ef4c522d4
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654684"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201586"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>Windows rendszerű virtuális gép hibáinak elhárítása az operációsrendszer-lemez egy helyreállítási virtuális géphez való csatolásával Azure PowerShell használatával
 Ha az Azure-beli Windows rendszerű virtuális gép rendszerindítási vagy lemezhiba-hibát észlel, előfordulhat, hogy a lemezen hibaelhárítási lépéseket kell végrehajtania. Gyakori példa egy sikertelen alkalmazás frissítése, amely megakadályozza, hogy a virtuális gép sikeresen elinduljon. Ez a cikk részletesen ismerteti, hogyan csatlakoztathatók a lemezek egy másik Windows rendszerű virtuális géphez a hibák javításához, majd az eredeti virtuális gép kijavításához Azure PowerShell használatával. 
@@ -40,7 +40,7 @@ A hibaelhárítási folyamat a következő:
 6. Lemez leválasztása és leválasztása a helyreállítási virtuális gépről.
 7. Módosítsa az érintett virtuális gép operációsrendszer-lemezét.
 
-Az 1., 2., 3., 4., 6. és 7. lépések automatizálásához használhatja a virtuális gép javítási parancsait. További dokumentációért és útmutatásért lásd: [Windows rendszerű virtuális gép javítása az Azure-beli virtuális gépek javítási parancsaival](repair-windows-vm-using-azure-virtual-machine-repair-commands.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Az 1., 2., 3., 4., 6. és 7. lépések automatizálásához használhatja a virtuális gép javítási parancsait. További dokumentációért és útmutatásért lásd: [Windows rendszerű virtuális gép javítása az Azure-beli virtuális gépek javítási parancsaival](repair-windows-vm-using-azure-virtual-machine-repair-commands.md).
 
 Győződjön meg arról, hogy telepítve van-e [a legújabb Azure PowerShell](/powershell/azure/) , és jelentkezzen be az előfizetésbe:
 
@@ -255,7 +255,7 @@ Set-AzVMBootDiagnostics -ResourceGroupName myResourceGroup -VM $myVM -enable
 Update-AzVM -ResourceGroup "myResourceGroup" -VM $myVM
 ```
 
-## <a name="next-steps"></a>További lépések
-Ha problémába ütközik a virtuális géphez való csatlakozással kapcsolatban, tekintse meg [az RDP-kapcsolatok hibaelhárítása Azure-beli virtuális géppel](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)című témakört. A virtuális gépen futó alkalmazások elérésével kapcsolatos problémákért lásd: az [alkalmazások kapcsolódási problémáinak elhárítása Windows rendszerű virtuális gépen](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+## <a name="next-steps"></a>Következő lépések
+Ha problémába ütközik a virtuális géphez való csatlakozással kapcsolatban, tekintse meg [az RDP-kapcsolatok hibaelhárítása Azure-beli virtuális géppel](troubleshoot-rdp-connection.md)című témakört. A virtuális gépen futó alkalmazások elérésével kapcsolatos problémákért lásd: az [alkalmazások kapcsolódási problémáinak elhárítása Windows rendszerű virtuális gépen](troubleshoot-app-connection.md).
 
 További információ a Resource Manager használatáról: [Azure Resource Manager Overview (áttekintés](../../azure-resource-manager/management/overview.md)).

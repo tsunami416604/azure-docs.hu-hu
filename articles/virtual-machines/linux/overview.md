@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 54982189a5da584c7daf66855ffb655e403a455a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: a2145c217c19e80c2ca70880e0f9b01ae2ba140e
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500512"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202572"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Linux rendszerű virtuális gépek az Azure-ban
 
@@ -50,7 +50,7 @@ Az alábbi táblázatban az elérhető helyek listájának megismeréséhez olva
 | Azure Portal |Egy virtuális gép létrehozásakor válasszon egy helyet a listából. |
 | Azure PowerShell |Használja a [Get-AzLocation](/powershell/module/az.resources/get-azlocation) parancsot. |
 | REST API |Használja a [Helyek listázása](/rest/api/resources/subscriptions) műveletet. |
-| Azure CLI |Használja az [az account list-locations](/cli/azure/account?view=azure-cli-latest) műveletet. |
+| Azure CLI |Használja az [az account list-locations](/cli/azure/account) műveletet. |
 
 ### <a name="singapore-data-residency"></a>Szingapúri adattárolás
 
@@ -60,7 +60,7 @@ Az Azure-ban az ügyféladatok egyetlen régióban való tárolását lehetővé
 Az Azure bejelentett egy iparágvezető, 99,9%-os elérhetőséget biztosító egypéldányos virtuálisgép-szolgáltatói szerződést, amelynek az a feltétele, hogy az üzembe helyezett virtuális gép összes lemezén prémium szintű tárolást használjon.  Ahhoz, hogy az üzembe helyezett példány megfeleljen a standard 99,95%-os virtuálisgép-szolgáltatói szerződésnek, legalább még két virtuális gépet kell üzembe helyeznie a számítási feladatok futtatásához egy rendelkezésre állási csoporton belül. A rendelkezésre állási csoport biztosítja, hogy a virtuális gépek több tartalék tartomány között legyenek elosztva az Azure-adatközpontokban, valamint az őket futtató gazdagépeknek különböző karbantartási időszakaik legyenek. Az Azure egészére vonatkozó rendelkezésre állási garancia magyarázata a teljes [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)-ban található.
 
 ## <a name="vm-size"></a>Virtuális gép mérete
-A használt virtuális gép [mérete](../sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) a futtatni kívánt számítási feladatok mennyiségétől függ. A választott méret határoz meg olyan tényezőket, mint a feldolgozókapacitás, a memória és a tárolókapacitás. Az Azure számos különböző méretet kínál különféle felhasználási módokhoz.
+A használt virtuális gép [mérete](../sizes.md) a futtatni kívánt számítási feladatok mennyiségétől függ. A választott méret határoz meg olyan tényezőket, mint a feldolgozókapacitás, a memória és a tárolókapacitás. Az Azure számos különböző méretet kínál különféle felhasználási módokhoz.
 
 Az Azure [óradíjat](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) számít fel a virtuális gép méretétől és az operációs rendszertől függően. Nem egész órák esetében az Azure csak a használt perceket számlázza. A tárhely árazása és felszámítása külön történik.
 
@@ -105,12 +105,12 @@ Az Azure támogatja a [Cloud-init](https://cloud-init.io/) használatát a legt�
 
 * [A cloud-init használata Azure-beli Linux rendszerű virtuális gépeken](using-cloud-init.md)
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 * [A Microsoft Azure Storage bemutatása](../../storage/common/storage-introduction.md)
 * [Lemez hozzáadása Linux rendszerű virtuális géphez az azure-cli használatával](add-disk.md)
 * [Adatlemez csatlakoztatása Linux rendszerű virtuális géphez az Azure Portalon](attach-disk-portal.md)
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 * [Virtual Network áttekintése](../../virtual-network/virtual-networks-overview.md)
 * [IP-címek az Azure-ban](../../virtual-network/public-ip-addresses.md)
 * [Portok nyitása egy Linux rendszerű virtuális géphez az Azure Portalon](nsg-quickstart.md)
@@ -122,7 +122,7 @@ Az Azure támogatja a [Cloud-init](https://cloud-init.io/) használatát a legt�
 Az Azure-ban az ügyféladatok egyetlen régióban való tárolását lehetővé tevő funkció jelenleg csak az Ázsia és a Csendes-óceáni térség geo és Dél-Brazília (Sao Paulo állam) régiójában, a Geo régióban található Délkelet-ázsiai régióban (Szingapúr) érhető el. Az összes többi régió esetében az ügyféladatokat a Geo tárolja. További információ: [megbízhatósági központ](https://azuredatacentermap.azurewebsites.net/).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Hozza létre az első virtuális gépet!
 

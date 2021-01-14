@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 29bcf2fdd3e20b28b1f2cb014137cfba37ccaf2e
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 4cf623ed960fd2efe6fdf506751858796008cef4
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931809"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202028"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>Azure biztonsági alapkonfiguráció az Azure Kubernetes Service-hez
 
@@ -445,7 +445,7 @@ Engedélyezze az Azure AD Multi-Factor Authentication (MFA) használatát, és k
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: dedikált gépek (privilegizált hozzáférési munkaállomások) használata az összes felügyeleti feladathoz
 
 **Útmutató**: a megadott Azure Kubernetes szolgáltatásbeli (ak-) fürtökre és kapcsolódó erőforrásokra való bejelentkezéshez konfigurált, multi-Factor Authentication (MFA) jogosultságú hozzáférési munkaállomás (Paw) használata.
-- [További tudnivalók a privilegizált hozzáférésű munkaállomásokról](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [További tudnivalók a privilegizált hozzáférésű munkaállomásokról](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -1235,7 +1235,7 @@ A biztonsági mentés előtt távolítsa el az állapotokat az alkalmazásokból
 
 A PowerShell-parancsokkal a Key Vault tanúsítványok, kulcsok, felügyelt tárolási fiókok és titkok rendszeres automatikus biztonsági mentését végezheti el. 
 
-Például:
+Példa:
 
 Backup-AzKeyVaultCertificate Backup-AzKeyVaultKey Backup-AzKeyVaultManagedStorageAccount Backup-AzKeyVaultSecret
 
@@ -1259,7 +1259,7 @@ Backup-AzKeyVaultCertificate Backup-AzKeyVaultKey Backup-AzKeyVaultManagedStorag
 
 A PowerShell-parancsokkal rendszeres időközönként Key Vault tanúsítványok, kulcsok, felügyelt tárolási fiókok és titkok adat-visszaállítását végzi. 
 
-Például:
+Példa:
 
 Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedStorageAccount Restore-AzKeyVaultSecret
 

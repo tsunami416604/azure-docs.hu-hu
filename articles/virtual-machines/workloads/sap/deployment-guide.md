@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: d57512d631685f1f8da7dcd22181bf4d4223937f
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: 2eb3564153734ff70b7df69da568966e29747863
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97807569"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202436"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines üzembe helyezés az SAP NetWeaver-ben
 
@@ -73,7 +73,7 @@ ms.locfileid: "97807569"
 [2367194]:https://launchpad.support.sap.com/#/notes/2367194
 
 [azure-cli]:../../../cli-install-nodejs.md
-[azure-cli-2]:https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
+[azure-cli-2]:https://docs.microsoft.com/cli/azure/install-azure-cli
 [azure-portal]:https://portal.azure.com
 [azure-ps]:/powershell/azure/
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
@@ -371,7 +371,7 @@ A következő információk ismerete az SAP-méretezéshez:
 
 Az Azure Resource Manager az Azure-előfizetésében lévő összes alkalmazás-erőforrást az erőforráscsoportok használatával kezelheti. További információt [Az Azure Resource Manager áttekintésében][resource-group-overview] találhat.
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Források
 
 ### <a name="sap-resources"></a><a name="42ee2bdb-1efc-4ec7-ab31-fe4c22769b94"></a>SAP-erőforrások
 
@@ -426,7 +426,7 @@ Az Azure Marketplace-ről rendszerképpel rendelkező új virtuális gép létre
 1.  Válassza a **számítás** lehetőséget, majd válassza ki a telepíteni kívánt operációs rendszer típusát. Például: Windows Server 2012 R2, SUSE Linux Enterprise Server 12 (SLES 12), Red Hat Enterprise Linux 7,2 (RHEL 7,2) vagy Oracle Linux 7,2. Az alapértelmezett listanézet nem jeleníti meg az összes támogatott operációs rendszert. Válassza az összes megjelenítése lehetőséget a teljes lista **megtekintéséhez** . További információ az SAP-szoftverek központi telepítéséhez támogatott operációs rendszerekről: SAP-Megjegyzés [1928533].
 1.  A következő oldalon tekintse át a használati feltételeket.
 1.  A **telepítési modell kiválasztása** mezőben válassza a **Resource Manager** lehetőséget.
-1.  Kattintson a **Létrehozás** gombra.
+1.  Válassza a **Létrehozás** lehetőséget.
 
 A varázsló végigvezeti a virtuális gép létrehozásához szükséges paraméterek beállításán, az összes szükséges erőforráson, például a hálózati adaptereken és a Storage-fiókokon kívül. A paraméterek némelyike a következő:
 
@@ -862,7 +862,7 @@ A proxybeállításokat helyesen kell beállítani ahhoz, hogy a helyi rendszerf
 1. Törölje **A beállítások automatikus észlelése** jelölőnégyzet kijelölését.
 1. Jelölje be a **proxykiszolgáló használata a helyi hálózaton** jelölőnégyzetet, majd adja meg a proxy címe és a port mezőt.
 1. Kattintson a **speciális** gombra.
-1. A **kivételek** mezőben adja meg az IP- **168.63.129.16**. Válassza az **OK** lehetőséget.
+1. A **kivételek** mezőben adja meg az IP- **168.63.129.16**. Kattintson az **OK** gombra.
 
 #### <a name="linux"></a>Linux
 
@@ -1510,7 +1510,7 @@ Az ebben az útmutatóban található, [az SAP-hez készült Azure-bővítmény 
 
 Ha a hibák nem szűnnek meg, [forduljon az ügyfélszolgálathoz][deployment-guide-contact-support].
 
-#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Kapcsolatfelvétel az ügyfélszolgálattal
+#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Kapcsolatfelvétel a támogatási szolgáltatással
 
 Váratlan hiba történt, vagy nincs ismert megoldás. Gyűjtsön a C:\Packages\Plugins\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler \\ \<version\> \Drop (Windows) vagy a/var/log/Azure/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux (Linux) mappában található AzureEnhancedMonitoring_service. log fájlt, és további segítségért forduljon az SAP támogatási szolgálatához.
 

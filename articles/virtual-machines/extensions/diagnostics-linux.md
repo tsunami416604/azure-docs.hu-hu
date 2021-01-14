@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: ffbafb76fd2c6dd06a88bfd79746557889039cd6
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2e831b3c091b18a5c739275e4c932094ce088ba4
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94956024"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202606"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Metrikák és naplók figyelése a Linux diagnosztikai bővítmény használatával
 
@@ -24,7 +24,7 @@ Ez a dokumentum a Linux diagnosztikai bővítmény 3,0-es és újabb verzióját
 > [!IMPORTANT]
 > A 2,3-es és régebbi verzióval kapcsolatos információkért tekintse meg [ezt a dokumentumot](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2).
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 A Linux diagnosztikai bővítmény segítségével a felhasználók figyelheti Microsoft Azure-on futó Linux rendszerű virtuális gépek állapotát. A következő képességekkel rendelkezik:
 
@@ -488,7 +488,7 @@ Elem | Érték
 ------- | -----
 névtér | választható Az a-t tartalmazó-névtér, amelyen belül a lekérdezés végrehajtása történik. Ha nincs megadva, az alapértelmezett érték a [System Center platformfüggetlen szolgáltatók](https://github.com/Microsoft/SCXcore)által megvalósított "root/SCX".
 lekérdezés | A végrehajtandó a kipróbálható adatlekérdezés.
-table | választható Az Azure Storage-tábla a kijelölt Storage-fiókban (lásd a [védett beállításokat](#protected-settings)).
+tábla | választható Az Azure Storage-tábla a kijelölt Storage-fiókban (lásd a [védett beállításokat](#protected-settings)).
 frequency | választható A lekérdezés végrehajtása közötti másodpercek száma. Az alapértelmezett érték 300 (5 perc); a minimális érték 15 másodperc.
 fogadóként | választható A további mosdók neveinek vesszővel tagolt listája, amelybe a nyers minta metrikájának eredményeit közzé kell tenni. A nyers minták összesítését a bővítmény vagy az Azure-metrika számítja ki.
 
@@ -514,7 +514,7 @@ A naplófájlok rögzítését vezérli. A LAD rögzíti az új szövegsorok ír
 Elem | Érték
 ------- | -----
 file | A figyelni és rögzíteni kívánt naplófájl teljes elérési útja. Az elérési útnak egyetlen fájlt kell megadnia; nem lehet könyvtárat átnevezni, és nem tartalmazhat helyettesítő karaktereket. A "omsagent" felhasználói fióknak olvasási hozzáféréssel kell rendelkeznie a fájl elérési útjához.
-table | választható Az Azure Storage-tábla a kijelölt Storage-fiókban (a védett konfigurációban megadott módon), amelybe a fájl "farok" új sorai íródnak.
+tábla | választható Az Azure Storage-tábla a kijelölt Storage-fiókban (a védett konfigurációban megadott módon), amelybe a fájl "farok" új sorai íródnak.
 fogadóként | választható Vesszővel tagolt lista azoknak a további mosogatóknak a neveiről, amelyeknek a naplózási sorai elküldése megtörténjen.
 
 Meg kell adni a "Table" vagy a "mosogató", vagy mindkettőt.
@@ -636,7 +636,7 @@ Ha azt feltételezi, hogy a védett beállítások szerepelnek a ProtectedSettin
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
 ```
 
-A parancs feltételezi, hogy az Azure CLI Azure Resource Management üzemmódját használja. A klasszikus üzembe helyezési modell (ASM) virtuális gépei konfigurálásához váltson az "ASM" módra ( `azure config mode asm` ), és hagyja ki az erőforráscsoport nevét a parancsban. További információkért lásd a [többplatformos CLI dokumentációját](/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
+A parancs feltételezi, hogy az Azure CLI Azure Resource Management üzemmódját használja. A klasszikus üzembe helyezési modell (ASM) virtuális gépei konfigurálásához váltson az "ASM" módra ( `azure config mode asm` ), és hagyja ki az erőforráscsoport nevét a parancsban. További információkért lásd a [többplatformos CLI dokumentációját](/cli/azure/authenticate-azure-cli).
 
 ### <a name="powershell"></a>PowerShell
 

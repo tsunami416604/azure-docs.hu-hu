@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: baeeeae54829fad7378df597965eec5ba2039d20
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d2f283aa8b049602d25cf8969bc2327ebcfafe08
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972815"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202878"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>Adatlemez csatolása Windows rendszerű virtuális géphez a PowerShell-lel
 
@@ -20,7 +20,7 @@ Ez a cikk bemutatja, hogyan csatlakoztathatja az új és a meglévő lemezeket e
 
 Először tekintse át a következő tippeket:
 
-* A virtuális gép mérete határozza meg, hogy hány adatlemezt tud csatlakoztatni. További információ: [virtuális gépek méretei](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* A virtuális gép mérete határozza meg, hogy hány adatlemezt tud csatlakoztatni. További információ: [virtuális gépek méretei](../sizes.md).
 * A prémium SSD-k használatához [prémium szintű Storage-kompatibilis virtuálisgép-típusra](../sizes-memory.md)van szükség, például a DS-sorozat vagy a GS sorozatú virtuális gép számára.
 
 Ez a cikk a PowerShellt használja a [Azure Cloud Shellon](../../cloud-shell/overview.md)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.

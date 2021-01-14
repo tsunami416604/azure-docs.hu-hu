@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 06/22/2017
 ms.author: cynthn
 ms.custom: devx-track-python
-ms.openlocfilehash: a7117d30eb1774753f21e82ad5f812a7309d8386
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 15714405c683889c0f783359011a0f0f5f9f3f43
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483096"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201790"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Windows rendszerű virtuális gépek létrehozása és kezelése az Azure-ban a Python használatával
 
-Egy [Azure-beli virtuális gépnek](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) több támogató Azure-erőforrásra van szüksége. Ez a cikk a VM-erőforrások létrehozását, kezelését és törlését ismerteti a Python használatával. Az alábbiak végrehajtásának módját ismerheti meg:
+Egy [Azure-beli virtuális gépnek](overview.md) (VM) több támogató Azure-erőforrásra van szüksége. Ez a cikk a VM-erőforrások létrehozását, kezelését és törlését ismerteti a Python használatával. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
 > * Visual Studio-projekt létrehozása
@@ -342,7 +342,7 @@ Most, hogy létrehozta az összes támogatási erőforrást, létrehozhat egy vi
     ```
 
     > [!NOTE]
-    > Ez az oktatóanyag egy olyan virtuális gépet hoz létre, amely a Windows Server operációs rendszer egy verzióját futtatja. További információ a többi rendszerkép kiválasztásáról: [Azure-beli virtuálisgép-rendszerképek navigálása és kiválasztása a Windows PowerShell és az Azure CLI](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)használatával.
+    > Ez az oktatóanyag egy olyan virtuális gépet hoz létre, amely a Windows Server operációs rendszer egy verzióját futtatja. További információ a többi rendszerkép kiválasztásáról: [Azure-beli virtuálisgép-rendszerképek navigálása és kiválasztása a Windows PowerShell és az Azure CLI](../linux/cli-ps-findimage.md)használatával.
     > 
     > 
 
@@ -492,7 +492,7 @@ A központi telepítés számos aspektusát figyelembe kell venni a virtuális g
 
 ### <a name="add-a-data-disk-to-the-vm"></a>Adatlemez hozzáadása a virtuális géphez
 
-A virtuális gépekhez egy vagy több VHD-ként tárolt [adatlemez](../managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) tartozhat.
+A virtuális gépekhez egy vagy több VHD-ként tárolt [adatlemez](../managed-disks-overview.md) tartozhat.
 
 1. Ha adatlemezt szeretne hozzáadni a virtuális géphez, adja hozzá ezt a függvényt a. a. file-fájl változói után: 
 
@@ -564,7 +564,7 @@ Mivel az Azure-ban használt erőforrásokért kell fizetnie, mindig érdemes t�
     Körülbelül öt percet vesz igénybe ahhoz, hogy a konzol alkalmazás teljes körűen fusson az elejétől a végéig. Az alkalmazás befejezését követően több percet is igénybe vehet, mielőtt az összes erőforrást és az erőforráscsoportot törölné.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha problémák merültek fel az üzembe helyezés során, a következő lépésről lásd: [Troubleshooting resource group deployments with Azure Portal](../../azure-resource-manager/templates/deployment-history.md) (Erőforráscsoportok üzemelő példányainak hibaelhárítása az Azure Portalon)
 - További információ az [Azure Python-könyvtárról](/python/api/overview/azure/?view=azure-python)

@@ -11,20 +11,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/02/2020
+ms.date: 1/13/2021
 ms.author: shhazam
-ms.openlocfilehash: 3b5a586b5db4fb15a32090e601bac5610ece1427
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: f3239434a7ba737bc9323bc4f383afd794800db1
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832574"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201475"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>Azure Defender a IoT architektúrához
 
-Ez a cikk a Defender IoT-megoldás működési rendszerarchitektúráját ismerteti.
+Ez a cikk a Defender IoT-megoldás működési rendszerarchitektúráját ismerteti. A IoT készült Azure Defender két lehetőséget kínál a környezet igényeinek, az ügynök nélküli megoldásnak a szervezeteknek és az eszközök építői számára.
 
-## <a name="defender-for-iot-components"></a>Defender IoT-összetevőkhöz
+## <a name="agentless-solution-for-organizations"></a>Ügynök nélküli megoldás szervezeteknek
+### <a name="defender-for-iot-components"></a>Defender IoT-összetevőkhöz
 
 A IoT Defender az Azure-felhőhöz és a helyszíni összetevőkhöz egyaránt csatlakozik. A megoldás nagy és földrajzilag elosztott környezetekben, több távoli hellyel való méretezhetőségre lett tervezve. Ez a megoldás lehetővé teszi a többrétegű elosztott architektúra használatát ország, régió, üzleti egység vagy zóna szerint. 
 
@@ -79,12 +80,12 @@ Az Azure Defender a hibrid környezetekben való IoT két felügyeleti portálon
 - A helyszíni felügyeleti konzol
 - Azure Portal
 
-#### <a name="sensor-console"></a>Érzékelő konzol
+### <a name="sensor-console"></a>Érzékelő konzol
 Az érzékelők észlelései az érzékelő konzolján jelennek meg, ahol megtekinthetők, megtekinthetők és elemezhetők egy hálózati Térkép, az eszközök leltára, valamint a jelentések széles köre, például a kockázatértékelési jelentések, az adatbányászati lekérdezések és a támadási vektorok. A-konzol segítségével megtekintheti és kezelheti az érzékelő-motorok által észlelt fenyegetéseket, továbbíthatja az információkat a partneri rendszereknek, kezelheti a felhasználókat és egyéb műveleteket is.
 
 :::image type="content" source="./media/architecture/sensor-console-v2.png" alt-text="Defender a IoT-érzékelő konzolján":::
 
-#### <a name="on-premises-management-console"></a>Helyszíni felügyeleti konzol
+### <a name="on-premises-management-console"></a>Helyszíni felügyeleti konzol
 A helyszíni felügyeleti konzol lehetővé teszi, hogy a Security Operations Center (SOC) operátorai több érzékelőből származó riasztásokat kezelnek és elemezzenek egyetlen irányítópulton, és átfogó képet adjanak az OT-hálózatok állapotáról.
 
 Ez az architektúra átfogó, egységes nézetet biztosít a hálózatról a SOC szinten, az optimalizált riasztások kezelését, valamint az operatív hálózatok biztonságának szabályozását, így biztosítva, hogy a döntéshozatal és a kockázatkezelés hibátlan maradjon.
@@ -103,20 +104,23 @@ A SOC-munkafolyamatokkal szorosan integrálva és a könyvek futtatásával egys
 
    :::image type="content" source="media/updates/alerts-and-site-management-v2.png" alt-text="Kezelheti az összes riasztást és információt.":::
 
-#### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure Portal
 
 Az Azure-beli IoT-portál Defender az alábbiakkal segíti Önt:
 
 - Megoldási berendezések vásárlása
+
 - Szoftver telepítése és frissítése
 - Érzékelők bevezetése az Azure-ba
 - Veszélyforrások elleni intelligencia-csomagok frissítése
 
-## <a name="embedded-security-agent-built-in-mode"></a>Beágyazott biztonsági ügynök: beépített üzemmód
+## <a name="agent-based-solution-for-device-builders"></a>Ügynökalapú megoldás eszközkészítők számára
+
+### <a name="embedded-security-agent-built-in-mode"></a>Beágyazott biztonsági ügynök: beépített üzemmód
 
 A **beépített** módban a Defender for IoT engedélyezve van, ha úgy dönt, hogy bekapcsolja az IoT hub **biztonsági** beállítását. A valós idejű monitorozást, ajánlásokat és riasztásokat kínáló beépített üzemmód egylépéses eszköz-láthatóságot és páratlan biztonságot nyújt. A beépített módban nem szükséges az ügynök telepítése semmilyen eszközön, és a naplózott tevékenységekben a speciális elemzések segítségével elemezheti és védetté teheti a terepi eszközt és az IoT hubot.
 
-## <a name="embedded-security-agent-enhanced-mode"></a>Beágyazott biztonsági ügynök: bővített mód
+### <a name="embedded-security-agent-enhanced-mode"></a>Beágyazott biztonsági ügynök: bővített mód
 
 **Bővített** módban, miután bekapcsolta az IoT hub **biztonsági** beállítását, és telepíti a Defendert a IoT-eszközökön az eszközökön, az ügynökök összegyűjtik, összesítik és elemzik a nyers biztonsági eseményeket az eszközökről. A nyers biztonsági események közé tartozhatnak az IP-kapcsolatok, a folyamatok létrehozása, a felhasználói bejelentkezések és egyéb fontos információk. A IoT-ügynökök védelmezője az események összesítését is kezeli, így elkerülhető a hálózati átviteli sebesség. Az ügynökök nagy mértékben testreszabhatók, így adott feladatokhoz is használhatók, például csak a leggyorsabb SLA-ban, vagy a kiterjedt biztonsági információk és környezetek nagyobb szegmensekre történő elküldésével, a magasabb szolgáltatási költségek elkerülésével.
 
@@ -130,8 +134,10 @@ Az elemzési folyamat használatával a Defender for IoT az összes adatfolyamot
 
 A IoT ajánlásai és értesítései (analitikai folyamat kimenete) az egyes ügyfelek Log Analytics munkaterületére íródnak. A munkaterületen található nyers események, valamint a riasztások és javaslatok segítségével a gyanús tevékenységek pontos részleteivel részletesen elmerülhetnek a felderítéssel kapcsolatos vizsgálatok és lekérdezések.
 
-## <a name="see-also"></a>További információ
+:::image type="content" source="media/architecture/micro-agent-architecture.png" alt-text="A Micro Agent architektúrája.":::
+
+## <a name="see-also"></a>Lásd még
 
 [Defender for IoT – gyakori kérdések](resources-frequently-asked-questions.md)
 
-[Rendszerkövetelmények](quickstart-system-prerequisites.md)
+[Rendszer-előfeltételek](quickstart-system-prerequisites.md)

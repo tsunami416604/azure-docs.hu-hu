@@ -4,14 +4,14 @@ description: A BYOS konfigurálása (saját tárhely használata) a Profiler & S
 ms.topic: conceptual
 author: renatosalas
 ms.author: regutier
-ms.date: 04/14/2020
+ms.date: 01/14/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 719f0cfa0a1f80568acf3231ce3ffab441e5f6b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f82432c1dd8c66e8ce845831ff35d534a34e3e04
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87117390"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202538"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>A saját tároló (BYOS) beállítása a Application Insights Profiler és a Snapshot Debugger
 
@@ -53,11 +53,11 @@ Lépések:
 1. Keressen & válassza a "diagnosztikai szolgáltatások megbízható tároló hozzáférése" alkalmazást 
 1. Módosítások mentése
 
-_ ![ 1,0](media/profiler-bring-your-own-storage/figure-10.png)_. ábra, 
+_![ 1,0](media/profiler-bring-your-own-storage/figure-10.png)_. ábra, 
  _1,0_ 
 
 Miután hozzáadta a szerepkört, az megjelenik a "szerepkör-hozzárendelések" szakaszban, például a lenti 1,1 ábrán. 
-_ ![ 1,1](media/profiler-bring-your-own-storage/figure-11.png)_. ábra, 
+_![ 1,1](media/profiler-bring-your-own-storage/figure-11.png)_. ábra, 
  _1,1_ 
 
 Ha privát hivatkozást is használ, egy további konfigurációra van szükség, amely lehetővé teszi a megbízható Microsoft-szolgáltatásokhoz való kapcsolódást a Virtual Network. Tekintse át a [Storage hálózati biztonsági dokumentációját](../../storage/common/storage-network-security.md#trusted-microsoft-services).
@@ -91,7 +91,7 @@ A BYOS diagnosztika (Profiler/Debugger) konfigurálásához három lehetőség k
 
     Minta
     ```powershell
-    $appInsights = Get-AzApplicationInsights -ResourceGroupName "{resource_group_name}" -Name "{storage_account_name}"
+    $appInsights = Get-AzApplicationInsights -ResourceGroupName "{resource_group_name}" -Name "{application_insights_name}"
     Remove-AzApplicationInsightsLinkedStorageAccount -ResourceId $appInsights.Id
     ```
 
@@ -226,7 +226,7 @@ A BYOS diagnosztika (Profiler/Debugger) konfigurálásához három lehetőség k
     DeploymentDebugLogLevel :
     ```
 
-1. Engedélyezheti a kód szintű diagnosztikát (Profiler/Debugger) a Azure Portalon keresztül elérhető számítási feladatokhoz. (App Service > Application Insights) _ ![ 2,0](media/profiler-bring-your-own-storage/figure-20.png)_. ábra, 
+1. Engedélyezheti a kód szintű diagnosztikát (Profiler/Debugger) a Azure Portalon keresztül elérhető számítási feladatokhoz. (App Service > Application Insights) _![ 2,0](media/profiler-bring-your-own-storage/figure-20.png)_. ábra, 
  _2,0_
 
 ## <a name="troubleshooting"></a>Hibaelhárítás

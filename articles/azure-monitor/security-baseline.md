@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b19162636707b8d2cc8b7a9ef33c03738eb8e631
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: da3386692d2d02015c0d3f59c88ae78a6c84b9ab
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184433"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203099"
 ---
 # <a name="azure-security-baseline-for-azure-monitor"></a>Azure Monitor Azure biztonsági alapterve
 
-Ez a biztonsági alapkonfiguráció az [Azure biztonsági teljesítménytesztre](../security/benchmarks/overview.md) vonatkozó útmutatást alkalmazza Azure monitorra. Az Azure biztonsági teljesítménytesztje javaslatokat nyújt ahhoz, hogyan védheti meg felhőalapú megoldásait az Azure-ban. A tartalom az Azure biztonsági teljesítményteszt által meghatározott **biztonsági vezérlők** szerint van csoportosítva, valamint a Azure monitor vonatkozó kapcsolódó útmutatás. A Azure Monitor nem alkalmazható **vezérlők** ki vannak zárva. Ha szeretné megtekinteni, hogyan Azure Monitor teljes mértékben leképezni az Azure biztonsági Teljesítménytesztét, tekintse meg a [teljes Azure monitor biztonsági alapterv-leképezési fájlt](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
+Ez a biztonsági alapkonfiguráció az [Azure biztonsági teljesítménytesztre](../security/benchmarks/overview.md) vonatkozó útmutatást alkalmazza Azure monitorra. Az Azure Security Benchmark ajánlásokat ad arra nézve, hogy hogyan tehetők biztonságossá a felhőalapú megoldások az Azure-ban. A tartalom az Azure biztonsági teljesítményteszt által meghatározott **biztonsági vezérlők** szerint van csoportosítva, valamint a Azure monitor vonatkozó kapcsolódó útmutatás. A Azure Monitor nem alkalmazható **vezérlők** ki vannak zárva. Ha szeretné megtekinteni, hogyan Azure Monitor teljes mértékben leképezni az Azure biztonsági Teljesítménytesztét, tekintse meg a [teljes Azure monitor biztonsági alapterv-leképezési fájlt](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
 
 Azure Monitor az Azure Core-szolgáltatások része, és a Azure Monitor szolgáltatás nem telepíthető külön szolgáltatásként. Azure Monitor összetevők üzembe helyezhetők az erőforrásokkal, és ez hatással lehet ezeknek az erőforrásoknak a biztonsági testtartására is.
 
@@ -38,7 +38,7 @@ Log Analytics átjáró használata az adatLog Analytics-munkaterületre való a
 
 - [Internet-hozzáférés nélküli számítógépek összekötése a Log Analytics átjáró használatával Azure Monitor](platform/gateway.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -58,7 +58,7 @@ Ha a Azure Monitort privát hivatkozással használja, akkor a hálózati napló
 
 - [A Azure Security Center által biztosított hálózati biztonság ismertetése](../security-center/security-center-network-recommendations.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -68,7 +68,7 @@ Ha a Azure Monitort privát hivatkozással használja, akkor a hálózati napló
 
 - [A szolgáltatási címkék megismerése és használata](../virtual-network/service-tags-overview.md) 
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -84,7 +84,7 @@ Ha a Azure Monitort privát hivatkozással használja, akkor a hálózati napló
 
 - [Rendelkezésre állási webes tesztek beállítása](app/monitor-web-app-availability.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -96,7 +96,7 @@ Ha a Azure Monitort privát hivatkozással használja, akkor a hálózati napló
 
 - [Riasztások létrehozása a Azure Monitorban](platform/alerts-activity-log.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -118,7 +118,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 - [Ismerkedés a Azure Monitor és a harmadik féltől származó SIEM-integrációval](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -218,7 +218,7 @@ A Microsoft-szolgáltatásokhoz igénybe vehet egy igény szerinti vagy elég ho
 
 **Útmutató**: az Azure ad MFA engedélyezése és a Azure Security Center identitás-és hozzáférési javaslatok követése.
 
-- [Az MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)
+- [MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)
 
 - [Identitás és hozzáférés figyelése Azure Security Centeron belül](../security-center/security-center-identity-access.md)
 
@@ -230,7 +230,7 @@ A Microsoft-szolgáltatásokhoz igénybe vehet egy igény szerinti vagy elég ho
 
 **Útmutató**: emelt szintű jogosultságokat igénylő felügyeleti feladatokhoz használjon biztonságos, Azure által felügyelt munkaállomás (más néven privilegizált hozzáférési munkaállomás vagy Paw) használatát.
 
-- [A biztonságos, Azure által felügyelt munkaállomások ismertetése](../active-directory/devices/concept-azure-managed-workstation.md)
+- [A biztonságos, Azure által felügyelt munkaállomások ismertetése](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [Az Azure AD MFA engedélyezése](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -332,7 +332,7 @@ A Microsoft-szolgáltatásokhoz igénybe vehet egy igény szerinti vagy elég ho
 
 - [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -405,7 +405,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Útmutató**: közös kockázati pontozási programot (például gyakori sebezhetőségi pontozási rendszer) vagy a harmadik féltől származó ellenőrzési eszköz által biztosított alapértelmezett kockázati minősítéseket használjon.
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -425,7 +425,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 - [Szerepkörök, engedélyek és biztonság a Azure Monitorban](platform/roles-permissions-security.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -435,7 +435,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 - [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -449,7 +449,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 - [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -457,7 +457,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Útmutató**: a számítási erőforrásokhoz jóváhagyott Azure-erőforrások és jóváhagyott szoftverek leltárának létrehozása a szervezeti igényeknek megfelelően.
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -465,9 +465,9 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Útmutató**: a Azure Policy használatával korlátozásokat állíthat be az előfizetésekben létrehozható erőforrásokra vonatkozóan.
 
-Az Azure Resource Graph segítségével lekérdezheti és felderítheti az előfizetésen belüli erőforrásokat.  Győződjön meg arról, hogy a környezetben lévő összes Azure-erőforrás jóvá van hagyva.
+Az Azure Resource Graph használatával lekérdezheti és felderítheti az előfizetésükön belüli erőforrásokat.  Győződjön meg arról, hogy a környezetben lévő összes Azure-erőforrás jóvá van hagyva.
 
-- [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
 - [Lekérdezések létrehozása az Azure Resource Graph Explorerrel](../governance/resource-graph/first-query-portal.md)
 
@@ -489,11 +489,11 @@ Az Azure Resource Graph segítségével lekérdezheti és felderítheti az előf
 
 **Útmutató**: a Azure Policy használatával korlátozhatja, hogy mely Azure monitor kapcsolódó erőforrások hozhatók létre a környezetben. 
 
-- [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md) 
+- [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md) 
 
 - [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/index.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -531,7 +531,7 @@ Ha élő adatfolyam-továbbítási funkciót használ, a kialakítási kulcs mel
 
 - [Biztonsági javaslatok – gyorsútmutató](../security-center/recommendations-reference.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -545,7 +545,7 @@ Ha élő adatfolyam-továbbítási funkciót használ, a kialakítási kulcs mel
 
 - [Azure Resource Manager sablonok áttekintése](../azure-resource-manager/templates/overview.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -557,7 +557,7 @@ Ha élő adatfolyam-továbbítási funkciót használ, a kialakítási kulcs mel
 
 - [Engedélyek és csoportok az Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -565,11 +565,11 @@ Ha élő adatfolyam-továbbítási funkciót használ, a kialakítási kulcs mel
 
 **Útmutató**: Azure monitor kapcsolódó erőforrások szabványos biztonsági konfigurációinak meghatározása és implementálása Azure Policy használatával. Az egyéni Azure Policy-definíciók használatával naplózhatja vagy érvényesítheti Azure Monitor kapcsolódó erőforrásainak biztonsági konfigurációját. Az adott erőforrásokhoz kapcsolódó beépített szabályzat-definíciókat is igénybe vehet.
 
-- [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
 - [Aliasok Azure Policy](../governance/policy/concepts/definition-structure.md#aliases)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -579,7 +579,7 @@ Ha élő adatfolyam-továbbítási funkciót használ, a kialakítási kulcs mel
 
 - [Javaslatok szervizelése Azure Security Center](../security-center/security-center-remediate-recommendations.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -595,7 +595,7 @@ Ha élő adatfolyam-továbbítási funkciót használ, a kialakítási kulcs mel
 
 - [Key Vault hitelesítés biztosítása felügyelt identitással](../key-vault/general/assign-access-policy-portal.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -611,11 +611,11 @@ Ha élő adatfolyam-továbbítási funkciót használ, a kialakítási kulcs mel
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: a hitelesítő adatok nem szándékolt expozíciójának megszüntetése
 
-**Útmutató**: hitelesítő adatok beolvasása a programkódon belül a hitelesítő adatok azonosításához. A hitelesítő adatok beolvasása azt is javasolja, hogy a felderített hitelesítő adatokat biztonságosabb helyszínekre (például Azure Key Vault) helyezze.
+**Útmutató**: hitelesítő adatok beolvasása a programkódon belül a hitelesítő adatok azonosításához. A Credential Scanner a felfedezett hitelesítő adatok biztonságosabb helyre, például az Azure Key Vaultba való áthelyezésére is javaslatot tesz.
 
 - [A hitelesítő adatok beolvasójának beállítása](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -635,7 +635,7 @@ A Storage-fiókokba feltöltött kártevők észleléséhez használja a Azure S
 
 - [Az adatszolgáltatások fenyegetés-észlelésének megismerése Azure Security Center](../security-center/azure-defender.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -653,7 +653,7 @@ A Storage-fiókokba feltöltött kártevők észleléséhez használja a Azure S
 
 - [Tudnivalók Azure Automation](../automation/automation-intro.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -667,7 +667,7 @@ A Storage-fiókokba feltöltött kártevők észleléséhez használja a Azure S
 
 - [Key Vault-kulcsok biztonsági mentése az Azure-ban](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -679,7 +679,7 @@ A Storage-fiókokba feltöltött kártevők észleléséhez használja a Azure S
 
 - [Key Vault-kulcsok visszaállítása az Azure-ban](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -697,7 +697,7 @@ Emellett engedélyezze a Soft-Delete és a védelem kiürítését Key Vault a k
 
 - [Az Azure Storage-blobok helyreállítható törlése](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -707,7 +707,7 @@ Emellett engedélyezze a Soft-Delete és a védelem kiürítését Key Vault a k
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: incidens-válaszi útmutató létrehozása
 
-**Útmutató**: az incidensekre adott válaszokra vonatkozó útmutató kiépítése a szervezet számára. Győződjön meg arról, hogy van olyan írásos incidens-válasz, amely meghatározza a személyzet összes szerepkörét, valamint az incidensek kezelésének és kezelésének fázisait az észleléstől az incidens utáni felülvizsgálatig.
+**Útmutató**: Alakítson ki incidenskezelési útmutatót a vállalat számára. Gondoskodjon írásos incidenskezelési tervekről, amelyek definiálják az összes résztvevő szerepkörét, valamint az incidenskezelés fázisait az észleléstől az incidens utáni értékelésig.
 
 - [Útmutató a saját biztonsági incidensek megoldási folyamatának létrehozásához](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -715,7 +715,7 @@ Emellett engedélyezze a Soft-Delete és a védelem kiürítését Key Vault a k
 
 - [A NIST számítógépes biztonsági incidensek kezelésének útmutatója a saját incidensekre vonatkozó válaszadási terv létrehozásához nyújtott támogatáshoz](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -729,17 +729,17 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 - [Címkék használata az Azure-erőforrások rendszerezéséhez](../azure-resource-manager/management/tag-resources.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
 ### <a name="103-test-security-response-procedures"></a>10,3: biztonsági reagálási eljárások tesztelése
 
-**Útmutató**: az Azure-erőforrások védelmének biztosítása érdekében a rendszer az incidensek reagálási képességeinek rendszeres tesztelésére szolgáló gyakorlatokat hajt végre. Azonosítsa a gyenge pontokat és a réseket, és szükség szerint módosítsa a tervet.
+**Útmutató**: az Azure-erőforrások védelmének biztosítása érdekében a rendszer az incidensek reagálási képességeinek rendszeres tesztelésére szolgáló gyakorlatokat hajt végre. Azonosítsa a gyenge pontokat és réseket, és szükség esetén dolgozza át a tervet.
 
 - [A NIST kiadványa – útmutató az IT-csomagok és-képességek teszteléséhez, betanításához és alkalmazásához](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -749,7 +749,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 - [A Azure Security Center biztonsági kapcsolattartó beállítása](../security-center/security-center-provide-security-contact-details.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -761,7 +761,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 - [Riasztások streamelése az Azure Sentinelbe](../sentinel/connect-azure-security-center.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -771,7 +771,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 - [A Munkafolyamat-automatizálás és a Logic Apps konfigurálása](../security-center/workflow-automation.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -783,15 +783,15 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Útmutató**: kövesse a Microsoft részvételi szabályait, hogy a behatolási tesztek ne sértsék a Microsoft-házirendeket. A Microsoft által felügyelt felhőalapú infrastruktúrával, szolgáltatásokkal és alkalmazásokkal kapcsolatban a Microsoft stratégiáját és a Red Teaming és a Live site penetráció tesztelését is használhatja.
 
-- [Behatolástesztelési szabályok](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
+- [Behatolástesztelési beavatkozási szabályok](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-- [Microsoft Cloud – támadásszimuláció](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+- [Riasztási tesztek a Microsoft-felhőben](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Megosztott
 
 ## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
-- További tudnivalók az [Azure biztonsági alapkonfigurációiról](../security/benchmarks/security-baselines-overview.md)
+- További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

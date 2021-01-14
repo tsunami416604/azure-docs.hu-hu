@@ -4,12 +4,12 @@ description: Megtekintheti az oldal nézetét és a munkamenetek számát, a web
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 6678c662c4646a8181b1617ccddf9b8718c957bf
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 31cfa2e56fa10743c9a95d4df880fb1869fd9613
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858552"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203439"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights weblapokhoz
 
@@ -107,7 +107,7 @@ Az egyes konfigurációs beállítások egy új sorban jelennek meg, ha nem szer
 
 Az elérhető konfigurációs lehetőségek a következők
 
-| Név | Típus | Leírás
+| Név | Típus | Description
 |------|------|----------------
 | src | karakterlánc **[kötelező]** | Az a teljes URL-cím, ahová be kell tölteni az SDK-t. Ezt az értéket egy dinamikusan hozzáadott parancsfájl vagy címke "src" attribútumához használja a rendszer &lt; &gt; . Használhatja a nyilvános CDN-helyet vagy a saját privát üzemeltetését.
 | name | karakterlánc *[nem kötelező]* | A inicializált SDK globális neve, alapértelmezett érték: `appInsights` . Így ```window.appInsights``` a inicializált példányra mutató hivatkozás lesz. Megjegyzés: Ha egy név értéket ad meg, vagy egy korábbi példányt rendel hozzá (a globális név appInsightsSDK), akkor ez a name érték a globális névtérben is definiálva lesz ```window.appInsightsSDK=<name value>``` , ezt az SDK inicializálási kódja megköveteli, hogy a rendszer inicializálja és frissítse a megfelelő kódrészletet és proxy metódusokat.
@@ -170,7 +170,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Konfiguráció
 A legtöbb konfigurációs mező neve úgy van elnevezve, hogy a hamis értékre legyenek kiválasztva. Az összes mező megadása nem kötelező, kivéve a következőt: `instrumentationKey` .
 
-| Név | Alapértelmezett | Leírás |
+| Name | Alapértelmezett | Description |
 |------|---------|-------------|
 | instrumentationKey | null | **Kötelező**<br>A Azure Portaltól beszerzett kialakítási kulcs. |
 | accountId | null | Egy nem kötelező fiókazonosító, ha az alkalmazás a felhasználókat fiókokba csoportosítja. Nincsenek szóközök, vesszők, pontosvesszők, egyenlők vagy függőleges sávok |
@@ -196,7 +196,7 @@ A legtöbb konfigurációs mező neve úgy van elnevezve, hogy a hamis értékre
 | correlationHeaderDomains |  | Korrelációs fejlécek engedélyezése adott tartományokhoz |
 | disableFlushOnBeforeUnload | hamis | Alapértelmezett hamis érték. Ha az értéke TRUE (igaz), a flush metódus nem lesz meghívva, ha a onBeforeUnload esemény-eseményindítók |
 | enableSessionStorageBuffer | true | Alapértelmezett érték: true (igaz). Ha az értéke igaz, a rendszer az összes el nem juttatott telemetria rendelkező puffert tárolja a munkamenet-tárolóban. A rendszer visszaállítja a puffert az oldal betöltésekor |
-| isCookieUseDisabled | hamis | Alapértelmezett hamis érték. Ha az érték TRUE (igaz), az SDK nem tárol és nem olvas be semmilyen cookie-t.|
+| isCookieUseDisabled | hamis | Alapértelmezett hamis érték. Ha az érték TRUE (igaz), az SDK nem tárol és nem olvas be semmilyen cookie-t. Vegye figyelembe, hogy ez letiltja a felhasználói és munkamenet-cookie-kat, és használhatatlanná teszi a használati lapokat és a tartalmakat. |
 | cookieDomain | null | Egyéni cookie-tartomány. Ez akkor hasznos, ha Application Insights cookie-kat szeretne megosztani altartományokon keresztül. |
 | isRetryDisabled | hamis | Alapértelmezett hamis érték. Ha hamis, próbálkozzon újra 206 (részleges siker), 408 (időtúllépés), 429 (túl sok kérés), 500 (belső kiszolgálóhiba), 503 (a szolgáltatás nem érhető el) és 0 (offline, csak ha észlelhető) |
 | isStorageUseDisabled | hamis | Ha az érték TRUE (igaz), az SDK nem tárolja és nem olvassa be a helyi és munkamenet-tárolóból származó összes adatforrást. Az alapértelmezett érték a false (hamis). |

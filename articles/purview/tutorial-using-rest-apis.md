@@ -7,18 +7,18 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/03/2020
-ms.openlocfilehash: 06f738ea88093ea8de45efebea983fd7fa13216e
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: fcc3e487d949a9450f792a6cc230b64e7dbe950a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387819"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202946"
 ---
 # <a name="tutorial-use-the-rest-apis"></a>Oktatóanyag: a REST API-k használata
 
 Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure hatáskörébe REST API-kat. Bárki, aki egy Azure hatáskörébe tartozó katalógusba kívánja elküldeni az adatok beküldését, belefoglalja a katalógusba egy automatizált folyamat részeként, vagy saját felhasználói élményt hozhat létre a katalógusban a REST API-k használatával.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 >
@@ -142,7 +142,7 @@ Keresse meg és mentse a következő értékeket:
 
 
 
-1. [Telepítse a Node.js](https://github.com/Azure/autorest/blob/master/docs/installing-autorest.md).
+1. [Telepítse a Node.js](https://github.com/Azure/autorest/blob/v2/docs/installing-autorest.md).
 1. Nyissa meg a PowerShellt, és futtassa az alábbi parancsot:
 
    ```powershell
@@ -173,7 +173,7 @@ Keresse meg és mentse a következő értékeket:
 1. Győződjön meg arról, hogy a verzió legalább 2.3.21, majd válassza a **telepítés** lehetőséget.
 1. Hozza létre és futtassa az alkalmazást.
 
-A mintakód azt a darabszámot adja vissza, hogy hány TypeDef szerepel a katalógusban, és bemutatja, hogyan kezelheti a szerepkör-hozzárendeléseket. Részletekért lásd: a `DoRoleAssignmentOperations()` mintakód. További információ a projektről: [Project Setup (projekt beállítása](https://github.com/Azure/autorest/blob/master/docs/client/proj-setup.md)).
+A mintakód azt a darabszámot adja vissza, hogy hány TypeDef szerepel a katalógusban, és bemutatja, hogyan kezelheti a szerepkör-hozzárendeléseket. Részletekért lásd: a `DoRoleAssignmentOperations()` mintakód. További információ a projektről: [Project Setup (projekt beállítása](https://github.com/Azure/autorest/blob/v2/docs/client/proj-setup.md)).
 
 ### <a name="sample-code-for-the-console-application"></a>Mintakód a konzol alkalmazáshoz
 

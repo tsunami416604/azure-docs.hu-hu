@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: traffic-manager
 ms.date: 09/18/2019
 ms.author: duau
-ms.openlocfilehash: 984cdfb3e60717f7632ea1fdcd05a4681dd6a1fd
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 7a448afb85a35674921ce74a25eaf2a97430dc61
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517937"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201416"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-cli"></a>Alhálózat Traffic Manager felülbírálása az Azure CLI használatával
 
@@ -39,7 +39,7 @@ Traffic Manager alhálózat felülbírálásának létrehozásához az Azure CLI
 - Ehhez a cikkhez az Azure CLI 2.0.28 verziójára vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
 
 ## <a name="update-the-traffic-manager-endpoint-with-subnet-override"></a>Frissítse a Traffic Manager végpontot az alhálózat felülbírálásával.
-Az Azure CLI használatával frissítse a végpontot az [az Network Traffic-Manager Endpoint Update](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update)paranccsal.
+Az Azure CLI használatával frissítse a végpontot az [az Network Traffic-Manager Endpoint Update](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update)paranccsal.
 
 ```azurecli-interactive
 ### Add a range of IPs ###
@@ -59,7 +59,7 @@ az network traffic-manager endpoint update \
     --type AzureEndpoints
 ```
 
-Az IP-címtartományok eltávolításához futtassa az az [Network Traffic-Manager Endpoint Update](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update) parancsot a **--Remove** kapcsolóval.
+Az IP-címtartományok eltávolításához futtassa az az [Network Traffic-Manager Endpoint Update](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update) parancsot a **--Remove** kapcsolóval.
 
 ```azurecli-interactive
 az network traffic-manager endpoint update \
@@ -74,4 +74,4 @@ az network traffic-manager endpoint update \
 
 További információ a Traffic Manager [forgalom-útválasztási módszerekről](traffic-manager-routing-methods.md).
 
-Tudnivalók az [alhálózat forgalmáról – útválasztási módszer](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#subnet-traffic-routing-method)
+Tudnivalók az [alhálózat forgalmáról – útválasztási módszer](./traffic-manager-routing-methods.md#subnet-traffic-routing-method)

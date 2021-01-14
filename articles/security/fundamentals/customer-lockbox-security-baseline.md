@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6cf106f6d7aef4324eeeaf232a28cdd91a8a774b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: c2595d75acfacf3d501b6efb83b383d9a56215a6
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843128"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203286"
 ---
 # <a name="azure-security-baseline-for-customer-lockbox-for-microsoft-azure"></a>Az Azure biztonsági alapkonfigurációja Ügyfélszéf for Microsoft Azure
 
@@ -30,7 +30,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../benchm
 
 **Útmutató**: nem alkalmazható; virtuális hálózat, alhálózat vagy hálózati biztonsági csoport nem társítható Ügyfélszéfhoz.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -38,7 +38,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../benchm
 
 **Útmutató**: nem alkalmazható; virtuális hálózat, alhálózat vagy hálózati biztonsági csoport nem társítható Ügyfélszéfhoz.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -46,7 +46,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../benchm
 
 **Útmutató**: nem alkalmazható; Ez a javaslat Azure App Service vagy számítási erőforrásokon futó webalkalmazásokhoz készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -54,7 +54,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../benchm
 
 **Útmutató**: nem alkalmazható; virtuális hálózat, alhálózat vagy hálózati biztonsági csoport nem társítható Ügyfélszéfhoz.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -62,7 +62,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../benchm
 
 **Útmutató**: nem alkalmazható; virtuális hálózat, alhálózat vagy hálózati biztonsági csoport nem társítható Ügyfélszéfhoz.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -70,7 +70,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../benchm
 
 **Útmutató**: nem alkalmazható; virtuális hálózat, alhálózat vagy hálózati biztonsági csoport nem társítható Ügyfélszéfhoz.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -78,7 +78,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../benchm
 
 **Útmutató**: nem alkalmazható; Ez a javaslat Azure App Service vagy számítási erőforrásokon futó webalkalmazásokhoz készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -86,7 +86,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../benchm
 
 **Útmutató**: nem alkalmazható; virtuális hálózat, alhálózat vagy hálózati biztonsági csoport nem társítható Ügyfélszéfhoz.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -94,7 +94,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../benchm
 
 **Útmutató**: nem alkalmazható; nem rendelhet hozzá virtuális hálózatot, alhálózatot vagy hálózati biztonsági csoportot az Azure Ügyfélszéfhoz.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -102,7 +102,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../benchm
 
 **Útmutató**: nem alkalmazható; virtuális hálózat, alhálózat vagy hálózati biztonsági csoport nem társítható Ügyfélszéfhoz.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -110,7 +110,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../benchm
 
 **Útmutató**: nem alkalmazható; virtuális hálózat, alhálózat vagy hálózati biztonsági csoport nem társítható Ügyfélszéfhoz. Nincsenek hálózati konfigurációk a végrehajtáshoz vagy a figyeléshez.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -122,7 +122,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../benchm
 
 **Útmutató**: nem alkalmazható; A Microsoft a következő erőforrásokhoz használt időforrást tárolja: Ügyfélszéf.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -136,9 +136,9 @@ A Ügyfélszéf által létrehozott tevékenységek naplóinak előkészítése 
 
 * [Az Azure Sentinel előkészítése](../../sentinel/quickstart-onboard.md)
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center monitorozása**: Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: az Azure-erőforrások naplózásának engedélyezése
 
@@ -148,15 +148,15 @@ A Ügyfélszéf által létrehozott tevékenységek naplóinak előkészítése 
 
 * [Az Azure Sentinel előkészítése](../../sentinel/quickstart-onboard.md)
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center monitorozása**: Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2,4: biztonsági naplók gyűjtése az operációs rendszerekből
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -166,9 +166,9 @@ A Ügyfélszéf által létrehozott tevékenységek naplóinak előkészítése 
 
 * [Napló-megőrzési paraméterek beállítása](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="26-monitor-and-review-logs"></a>2,6: naplók figyelése és áttekintése
 
@@ -176,9 +176,9 @@ A Ügyfélszéf által létrehozott tevékenységek naplóinak előkészítése 
 
 * [Naplók naplózása Ügyfélszéf](./customer-lockbox-overview.md#auditing-logs)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: riasztások engedélyezése rendellenes tevékenységhez
 
@@ -188,15 +188,15 @@ A Ügyfélszéf által létrehozott tevékenységek naplóinak előkészítése 
 
 * [Riasztás a log Analytics-naplófájlok adatkezeléséről](../../azure-monitor/learn/tutorial-response.md)
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center monitorozása**: Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="28-centralize-anti-malware-logging"></a>2,8: kártevő szoftverek közötti naplózás központosítása
 
 **Útmutató**: nem alkalmazható; Ügyfélszéf nem dolgoz fel kártevő szoftverrel kapcsolatos naplókat, illetve nem hoz létre.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -204,7 +204,7 @@ A Ügyfélszéf által létrehozott tevékenységek naplóinak előkészítése 
 
 **Útmutató**: nem alkalmazható; A Ügyfélszéf nem dolgozza fel a DNS-sel kapcsolatos naplókat, és nem hoz létre.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -212,7 +212,7 @@ A Ügyfélszéf által létrehozott tevékenységek naplóinak előkészítése 
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -232,17 +232,17 @@ Az ügyfél szervezetében az Azure-előfizetéshez tartozó tulajdonosi szerepk
 
 * [Hozzáférési kérelmek engedélyeinek megismerése Ügyfélszéf](./customer-lockbox-overview.md)
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center monitorozása**: Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3,2: az alapértelmezett jelszavak módosítása, ha alkalmazható
 
 **Útmutató**: a Azure Active Directory nem rendelkezik az alapértelmezett jelszavak fogalmával. Más Azure-erőforrások, amelyek jelszó megadását igénylik a bonyolultsági követelményekkel és a jelszó minimális hosszával hozhatók létre, és a szolgáltatástól függően eltérőek. Ön felelős harmadik féltől származó alkalmazásokért és piactér-szolgáltatásért, amelyek az alapértelmezett jelszavakat használhatják.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3,3: dedikált rendszergazdai fiókok használata
 
@@ -257,41 +257,41 @@ Emellett a dedikált rendszergazdai fiókok nyomon követésének elősegítése
 
 * [A Azure Policy használata](../../governance/policy/tutorials/create-and-manage.md)
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center monitorozása**: Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: egyszeri bejelentkezés (SSO) használata Azure Active Directory
 
 **Útmutató**: nem alkalmazható; a Ügyfélszéfhoz való hozzáférés a Azure Portalon keresztül történik, és a tulajdonos bérlői szerepkörrel rendelkező fiókok számára van fenntartva. Az egyszeri bejelentkezés nem támogatott.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Multi-Factor Authentication használata az összes Azure Active Directory-alapú hozzáféréshez
 
 **Útmutató**: a Azure Active Directory multi-Factor Authentication engedélyezése és a Azure Security Center identitás-és hozzáférés-kezelési javaslatok követése.
 
-* [Az MFA engedélyezése az Azure-ban](../../active-directory/authentication/howto-mfa-getstarted.md)
+* [MFA engedélyezése az Azure-ban](../../active-directory/authentication/howto-mfa-getstarted.md)
 
 * [Identitás és hozzáférés figyelése Azure Security Centeron belül](../../security-center/security-center-identity-access.md)
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center monitorozása**: Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: dedikált gépek (privilegizált hozzáférési munkaállomások) használata az összes felügyeleti feladathoz
 
 **Útmutató**: engedélyezze az Azure ad multi-Factor Authentication (MFA) szolgáltatást az Ügyfélszéf-kérelmek bevezetéséhez és konfigurálásához.
 
-* [Emelt hozzáférési szintű munkaállomások](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Emelt hozzáférési szintű munkaállomások](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-* [Felhőalapú Azure AD-Multi-Factor Authentication üzembe helyezésének megtervezése](../../active-directory/authentication/howto-mfa-getstarted.md)
+* [Felhőalapú Azure AD Multi-Factor Authentication-telepítés megtervezése](../../active-directory/authentication/howto-mfa-getstarted.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3,7: naplózás és riasztás a gyanús tevékenységekről a rendszergazdai fiókoktól
 
@@ -303,9 +303,9 @@ Emellett Azure Active Directory kockázati észlelések használatával is megte
 
 * [Az Azure AD kockázati észlelések ismertetése](../../active-directory/identity-protection/overview-identity-protection.md)
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center monitorozása**: Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3,8: az Azure-erőforrások kezelése csak jóváhagyott helyekről
 
@@ -313,9 +313,9 @@ Emellett Azure Active Directory kockázati észlelések használatával is megte
 
 * [Elnevezett helyszínek konfigurálása az Azure-ban](../../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="39-use-azure-active-directory"></a>3,9: a Azure Active Directory használata
 
@@ -323,9 +323,9 @@ Emellett Azure Active Directory kockázati észlelések használatával is megte
 
 * [Azure Active Directory példány létrehozása és konfigurálása](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: a felhasználói hozzáférés rendszeres áttekintése és egyeztetése
 
@@ -335,9 +335,9 @@ Emellett Azure Active Directory kockázati észlelések használatával is megte
 
 * [A Azure Active Directory hozzáférési felülvizsgálatok használata](../../active-directory/governance/access-reviews-overview.md)
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center monitorozása**: Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3,11: az inaktivált fiókok elérésére irányuló kísérletek figyelése
 
@@ -351,9 +351,9 @@ Ezt a folyamatot leegyszerűsítheti Azure Active Directory felhasználói fiók
 
 * [A fedélzeti Azure Sentinel ismertetése](../../sentinel/quickstart-onboard.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: riasztás a fiók bejelentkezési viselkedésének eltérése esetén
 
@@ -365,15 +365,15 @@ Ezt a folyamatot leegyszerűsítheti Azure Active Directory felhasználói fiók
 
 * [Az Azure Sentinel előkészítése](../../sentinel/quickstart-onboard.md)
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: a Microsoft számára elérhetővé teszi a megfelelő ügyféladatokat a támogatási forgatókönyvek során
 
 **Útmutató**: Ez a javaslat nem alkalmazható a Ügyfélszéfra.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -385,7 +385,7 @@ Ezt a folyamatot leegyszerűsítheti Azure Active Directory felhasználói fiók
 
 **Útmutató**: Ez a javaslat nem alkalmazható; a címkék Ügyfélszéf esetén nem támogatottak.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -395,7 +395,7 @@ Ezt a folyamatot leegyszerűsítheti Azure Active Directory felhasználói fiók
 
 * [Ügyfélszéf munkafolyamat megismerése](./customer-lockbox-overview.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -403,9 +403,9 @@ Ezt a folyamatot leegyszerűsítheti Azure Active Directory felhasználói fiók
 
 **Útmutató**: a Microsoft kezeli a Ügyfélszéf alapjául szolgáló infrastruktúrát, és szigorú ellenőrzéseket vezetett be az ügyféladatok elvesztésének vagy kihatásának megelőzésére.
 
-* [Az ügyfelek adatvédelmének megismerése az Azure-ban](./protection-customer-data.md)
+* [Az ügyféladatok Azure-beli védelmének ismertetése](./protection-customer-data.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Az Azure Security Center monitorozása**: Nem alkalmazható
 
 **Felelősség**: Microsoft
 
@@ -415,7 +415,7 @@ Ezt a folyamatot leegyszerűsítheti Azure Active Directory felhasználói fiók
 
 * [A titkosítás ismertetése az Azure-ban](./encryption-overview.md#encryption-of-data-in-transit)
 
-**Azure Security Center figyelés**: jelenleg nem érhető el
+**Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
 **Felelősség**: Microsoft
 
@@ -423,7 +423,7 @@ Ezt a folyamatot leegyszerűsítheti Azure Active Directory felhasználói fiók
 
 **Útmutató**: nem alkalmazható; Ügyfélszéf saját maga nem rendelkezik vásárlói adattal.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -433,9 +433,9 @@ Ezt a folyamatot leegyszerűsítheti Azure Active Directory felhasználói fiók
 
 * [Ügyfélszéf munkafolyamat megismerése](./customer-lockbox-overview.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: a gazdagép-alapú adatvesztés-megelőzés használata a hozzáférés-vezérlés kikényszeríthető
 
@@ -443,7 +443,7 @@ Ezt a folyamatot leegyszerűsítheti Azure Active Directory felhasználói fiók
 
 * [Azure Customer-adatvédelem](./protection-customer-data.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -451,7 +451,7 @@ Ezt a folyamatot leegyszerűsítheti Azure Active Directory felhasználói fiók
 
 **Útmutató**: nem alkalmazható; Ügyfélszéf maga nem tartja meg az ügyféladatokat.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -465,9 +465,9 @@ Ezt a folyamatot leegyszerűsítheti Azure Active Directory felhasználói fiók
 
 * [Riasztások létrehozása a Azure Monitorban](../../azure-monitor/platform/alerts-activity-log.md)
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center monitorozása**: Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ## <a name="vulnerability-management"></a>Biztonságirés-kezelés
 
@@ -477,7 +477,7 @@ Ezt a folyamatot leegyszerűsítheti Azure Active Directory felhasználói fiók
 
 **Útmutató**: nem alkalmazható; A Microsoft a biztonsági rések kezelését a Ügyfélszéf támogató mögöttes rendszereken hajtja végre.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Microsoft
 
@@ -485,7 +485,7 @@ Ezt a folyamatot leegyszerűsítheti Azure Active Directory felhasználói fiók
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -493,7 +493,7 @@ Ezt a folyamatot leegyszerűsítheti Azure Active Directory felhasználói fiók
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -501,7 +501,7 @@ Ezt a folyamatot leegyszerűsítheti Azure Active Directory felhasználói fiók
 
 **Útmutató**: nem alkalmazható; A Microsoft a biztonsági rések kezelését a Ügyfélszéf támogató mögöttes rendszereken hajtja végre.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -509,7 +509,7 @@ Ezt a folyamatot leegyszerűsítheti Azure Active Directory felhasználói fiók
 
 **Útmutató**: nem alkalmazható; A Microsoft a biztonsági rések kezelését a Ügyfélszéf támogató mögöttes rendszereken hajtja végre.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -529,15 +529,15 @@ Bár a klasszikus Azure-erőforrások felderíthető az Azure Resource Graph has
 
 * [Az Azure szerepköralapú hozzáférés-vezérlésének ismertetése (Azure RBAC)](../../role-based-access-control/overview.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="62-maintain-asset-metadata"></a>6,2: az eszköz metaadatainak fenntartása
 
 **Útmutató**: a címkék Ügyfélszéf nem támogatottak.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -555,15 +555,15 @@ Emellett a Azure Policy használatával korlátozásokat állíthat be az ügyf�
 
 * [Címkék létrehozása és használata](../../azure-resource-manager/management/tag-resources.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6,4: a jóváhagyott Azure-erőforrások és-szoftverek leltárának fenntartása
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -573,19 +573,19 @@ Emellett a Azure Policy használatával korlátozásokat állíthat be az ügyf�
 
 Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az előfizetése (ke) n belüli erőforrásait. Győződjön meg arról, hogy a környezetben lévő összes Azure-erőforrás jóvá van hagyva.
 
-* [Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
+* [Az Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
 
 * [Lekérdezések létrehozása az Azure Resource Graph használatával](../../governance/resource-graph/first-query-portal.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: a nem jóváhagyott szoftveralkalmazások figyelése a számítási erőforrásokon belül
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -593,7 +593,7 @@ Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -601,7 +601,7 @@ Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -611,19 +611,19 @@ Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az elő
 - Nem engedélyezett erőforrástípusok
 - Engedélyezett erőforrástípusok
 
-* [Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
+* [Az Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
 
 * [Adott erőforrástípus megtagadása a következővel Azure Policy](../../governance/policy/samples/index.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="610-implement-approved-application-list"></a>6,10: jóváhagyott alkalmazások listájának implementálása
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -633,15 +633,15 @@ Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az elő
 
 * [A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való hozzáférés blokkolásához](../../role-based-access-control/conditional-access-azure-management.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: korlátozza a felhasználók számára a parancsfájlok végrehajtásának lehetőségét a számítási erőforrásokon belül
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -649,7 +649,7 @@ Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: nem alkalmazható; Ez a javaslat Azure App Service vagy számítási erőforrásokon futó webalkalmazásokhoz készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -661,7 +661,7 @@ Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: nem alkalmazható, Ügyfélszéf nem rendelkezik konfigurálható biztonsági beállításokkal.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -669,7 +669,7 @@ Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -677,7 +677,7 @@ Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: nem alkalmazható, Ügyfélszéf nem rendelkezik konfigurálható biztonsági beállításokkal.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -685,7 +685,7 @@ Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -693,7 +693,7 @@ Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: nem alkalmazható; Ügyfélszéf nem rendelkezik konfigurálható biztonsági beállításokkal.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -701,7 +701,7 @@ Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -709,7 +709,7 @@ Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: nem alkalmazható; Ügyfélszéf nem rendelkezik konfigurálható biztonsági beállításokkal.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -717,7 +717,7 @@ Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -725,7 +725,7 @@ Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: nem alkalmazható; Ügyfélszéf nem rendelkezik konfigurálható biztonsági beállításokkal.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -733,7 +733,7 @@ Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -741,7 +741,7 @@ Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: nem alkalmazható; a Ügyfélszéf kérelmekhez való hozzáférés az erőforrást üzemeltető Azure-előfizetés tulajdonosára korlátozódik. Nincsenek a bérlői tulajdonosként Ügyfélszéf való bejelentkezéshez szükséges jelszavak, titkok vagy kulcsok.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -751,19 +751,19 @@ Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az elő
 
 * [Felügyelt identitásokat támogató Azure-szolgáltatások](../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: a hitelesítő adatok nem szándékolt expozíciójának megszüntetése
 
-**Útmutató**: hitelesítő adatok beolvasása a programkódon belül a hitelesítő adatok azonosításához. A hitelesítő adatok beolvasása azt is javasolja, hogy a felderített hitelesítő adatokat biztonságosabb helyszínekre (például Azure Key Vault) helyezze.
+**Útmutató**: hitelesítő adatok beolvasása a programkódon belül a hitelesítő adatok azonosításához. A Credential Scanner a felfedezett hitelesítő adatok biztonságosabb helyre, például az Azure Key Vaultba való áthelyezésére is javaslatot tesz.
 
 * [A hitelesítő adatok beolvasójának beállítása](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ## <a name="malware-defense"></a>Kártevők elleni védelem
 
@@ -773,7 +773,7 @@ Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: nem alkalmazható; Ez az útmutató számítási erőforrások számára készült. A Microsoft antimalware engedélyezve van a Ügyfélszéf megoldást támogató mögöttes gazdagépen.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -783,15 +783,15 @@ Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az elő
 
 Az Ön felelőssége, hogy előzetesen beszkennelje a nem számítási Azure-erőforrásokra feltöltött tartalmakat. A Microsoft nem fér hozzá az ügyféladatok eléréséhez, így az Ön nevében nem végezhet kártevő-ellenőrzéseket az ügyfél-tartalmakon.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8,3: a kártevő szoftverek és az aláírások frissítésének ellenőrzése
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült. A Microsoft antimalware engedélyezve van a mögöttes gazdagépen, amely támogatja az Azure-szolgáltatásokat, de nem fut az ügyfél tartalmán.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -803,7 +803,7 @@ Az Ön felelőssége, hogy előzetesen beszkennelje a nem számítási Azure-er�
 
 **Útmutató**: nem alkalmazható; Ügyfélszéf maga nem tárolja az ügyféladatokat.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -811,7 +811,7 @@ Az Ön felelőssége, hogy előzetesen beszkennelje a nem számítási Azure-er�
 
 **Útmutató**: nem alkalmazható; Ügyfélszéf maga nem tárolja az ügyféladatokat.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -819,7 +819,7 @@ Az Ön felelőssége, hogy előzetesen beszkennelje a nem számítási Azure-er�
 
 **Útmutató**: nem alkalmazható; Ügyfélszéf maga nem tárolja az ügyféladatokat.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -827,7 +827,7 @@ Az Ön felelőssége, hogy előzetesen beszkennelje a nem számítási Azure-er�
 
 **Útmutató**: nem alkalmazható; Ügyfélszéf maga nem tárolja az ügyféladatokat, nem használ kulcsokat és jelszavakat a hozzáféréshez.
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -837,7 +837,7 @@ Az Ön felelőssége, hogy előzetesen beszkennelje a nem számítási Azure-er�
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: incidens-válaszi útmutató létrehozása
 
-**Útmutató**: az incidensekre adott válaszokra vonatkozó útmutató kiépítése a szervezet számára. Győződjön meg arról, hogy van olyan írásos incidens-válasz, amely meghatározza a személyzet összes szerepkörét, valamint az incidensek kezelésének és kezelésének fázisait az észleléstől az incidens utáni felülvizsgálatig.
+**Útmutató**: Alakítson ki incidenskezelési útmutatót a vállalat számára. Gondoskodjon írásos incidenskezelési tervekről, amelyek definiálják az összes résztvevő szerepkörét, valamint az incidenskezelés fázisait az észleléstől az incidens utáni értékelésig.
 
 * [Munkafolyamat-automatizálás konfigurálása Azure Security Centeron belül](../../security-center/security-center-planning-and-operations-guide.md)
 
@@ -847,9 +847,9 @@ Az Ön felelőssége, hogy előzetesen beszkennelje a nem számítási Azure-er�
 
 * [Az ügyfél a NIST számítógépes biztonsági incidensek kezelési útmutatóját is kihasználhatja a saját incidens-válasz tervének létrehozásával kapcsolatos támogatáshoz](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: incidensek pontozásának és rangsorolási eljárásának létrehozása
 
@@ -857,19 +857,19 @@ Az Ön felelőssége, hogy előzetesen beszkennelje a nem számítási Azure-er�
 
 Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezetben nem termelt), és hozzon létre egy elnevezési rendszert az Azure-erőforrások egyértelmű azonosításához és kategorizálásához.
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center monitorozása**: Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="103-test-security-response-procedures"></a>10,3: biztonsági reagálási eljárások tesztelése
 
-**Útmutató**: a rendszerek incidensek reagálási képességeinek rendszeres tesztelésére szolgáló gyakorlatok végrehajtása. Azonosítsa a gyenge pontokat és a réseket, és szükség szerint módosítsa a tervet.
+**Útmutató**: a rendszerek incidensek reagálási képességeinek rendszeres tesztelésére szolgáló gyakorlatok végrehajtása. Azonosítsa a gyenge pontokat és réseket, és szükség esetén dolgozza át a tervet.
 
 * [Tekintse meg a NIST kiadványát: útmutató az IT-csomagok és-képességek teszteléséhez, betanításához és edzésprogramjának kidolgozásához](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: biztonsági incidensek elérhetőségének biztosítása és riasztási értesítések konfigurálása biztonsági incidensekhez
 
@@ -877,9 +877,9 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 * [A Azure Security Center biztonsági kapcsolattartó beállítása](../../security-center/security-center-provide-security-contact-details.md)
 
-**Azure Security Center figyelés**: igen
+**Az Azure Security Center monitorozása**: Igen
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: biztonsági riasztások beépítése az incidensek gyorsreagáló rendszerébe
 
@@ -887,11 +887,11 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 * [Folyamatos exportálás konfigurálása](../../security-center/continuous-export.md)
 
-* [Riasztások továbbítása az Azure Sentinelbe](../../sentinel/connect-azure-security-center.md)
+* [Riasztások streamelése az Azure Sentinelbe](../../sentinel/connect-azure-security-center.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10,6: a biztonsági riasztásokra adott válasz automatizálása
 
@@ -899,9 +899,9 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 * [A Munkafolyamat-automatizálás és a Logic Apps konfigurálása](../../security-center/workflow-automation.md)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Behatolási tesztek és Red Team-gyakorlatok
 
@@ -915,11 +915,11 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 * [További információt a Microsoft által felügyelt felhőalapú infrastruktúrával, szolgáltatásokkal és alkalmazásokkal kapcsolatos, a Microsoft által felügyelt felhő-infrastruktúra,-szolgáltatások és-alkalmazások fejlesztésére vonatkozó stratégiáról és végrehajtásáról itt talál.](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Azure Security Center figyelés**: nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
-**Felelősség**: megosztott
+**Felelősség**: Megosztott
 
 ## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../benchmarks/overview.md)
-- További információ az [Azure biztonsági alaptervekről](../benchmarks/security-baselines-overview.md)
+- További tudnivalók az [Azure biztonsági alapterveiről](../benchmarks/security-baselines-overview.md)

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: fdde7613627c9fec0694f3985f78cf10e52f59c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4052a9c8614a17c3b5cdd871ad78be8cc3258c5a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397096"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202589"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>A PostgreSQL telepítése és konfigurálása az Azure-ban
 A PostgreSQL egy fejlett, nyílt forráskódú adatbázis, amely az Oracle és a DB2 számára is hasonló. Olyan nagyvállalati használatra kész funkciókat tartalmaz, mint például a teljes sav megfelelősége, a megbízható tranzakciós feldolgozás és a többverziós Egyidejűség-vezérlés. Emellett olyan szabványokat is támogat, mint például az ANSI SQL és az SQL/MED (beleértve az Oracle, a MySQL, a MongoDB és számos más adatburkolót is). A szolgáltatás nagyszámú, több mint 12 eljárási nyelv, a GIN és a lényegi indexek, a térbeli adattámogatás, valamint a JSON-vagy kulcs-érték alapú alkalmazások több NoSQL funkciójának támogatásával bővíthető.
@@ -24,13 +24,13 @@ Ebből a cikkből megtudhatja, hogyan telepítheti és konfigurálhatja a Postgr
 
 ## <a name="install-postgresql"></a>A PostgreSQL telepítése
 > [!NOTE]
-> Az oktatóanyag elvégzéséhez már rendelkeznie kell Linux rendszerű Azure-beli virtuális géppel. Linux rendszerű virtuális gép létrehozásához és beállításához a továbblépés előtt tekintse meg az [Azure Linux VM oktatóanyagát](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> Az oktatóanyag elvégzéséhez már rendelkeznie kell Linux rendszerű Azure-beli virtuális géppel. Linux rendszerű virtuális gép létrehozásához és beállításához a továbblépés előtt tekintse meg az [Azure Linux VM oktatóanyagát](quick-create-cli.md).
 > 
 > 
 
 Ebben az esetben a 1999-as portot használja PostgreSQL-portként.  
 
-Kapcsolódjon a PuTTY használatával létrehozott linuxos virtuális géphez. Ha első alkalommal használ Azure Linux rendszerű virtuális gépet, tekintse meg az [SSH és a Linux használata az Azure](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) -ban című témakört, amelyből megtudhatja, hogyan használhatja a PuTTY-t Linux RENDSZERű virtuális gépekhez való kapcsolódáshoz.
+Kapcsolódjon a PuTTY használatával létrehozott linuxos virtuális géphez. Ha első alkalommal használ Azure Linux rendszerű virtuális gépet, tekintse meg az [SSH és a Linux használata az Azure](mac-create-ssh-keys.md) -ban című témakört, amelyből megtudhatja, hogyan használhatja a PuTTY-t Linux RENDSZERű virtuális gépekhez való kapcsolódáshoz.
 
 1. Futtassa a következő parancsot a gyökérre való váltáshoz (rendszergazda):
 
@@ -177,7 +177,7 @@ Futtassa az alábbi parancsot:
 # cp linux /etc/init.d/postgresql
 ```
 
-Módosítsa két változót a/etc/init.d/PostgreSQL fájlban. Az előtag a PostgreSQL: **/opt/pgsql**telepítési útvonalára van beállítva. A PGDATA a PostgreSQL: **/opt/pgsql_data**adattároló elérési útjára van beállítva.
+Módosítsa két változót a/etc/init.d/PostgreSQL fájlban. Az előtag a PostgreSQL: **/opt/pgsql** telepítési útvonalára van beállítva. A PGDATA a PostgreSQL: **/opt/pgsql_data** adattároló elérési útjára van beállítva.
 
 ```config
 # sed -i '32s#usr/local#opt#' /etc/init.d/postgresql

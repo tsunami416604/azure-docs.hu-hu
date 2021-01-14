@@ -3,15 +3,15 @@ title: Fürtkonfiguráció az Azure Kubernetes Servicesben (ak)
 description: Megtudhatja, hogyan konfigurálhat fürtöt az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
 ms.topic: article
-ms.date: 09/21/2020
+ms.date: 01/13/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: ab9e2a5483f0699ad7bfca991539025adff34b11
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: eacca50e00dfe8625d86362c444544e2fd5d5511
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606912"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201110"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS-fürt konfigurálása
 
@@ -21,10 +21,52 @@ Az AK-fürtök létrehozásának részeként előfordulhat, hogy a fürt konfigu
 
 Az AK mostantól támogatja az Ubuntu 18,04-et, mint a Node operációs rendszer (OS) a 1.18.8-nál nagyobb kubernetes-verziókban elérhető fürtök esetében. A 1.18. x alatti verziók esetében az AK Ubuntu 16,04 még mindig az alapértelmezett alaprendszerkép. A kubernetes v 1.18. x és újabb verziók esetében az alapértelmezett alap az AK Ubuntu 18,04.
 
-> [!IMPORTANT]
-> A Kubernetes v 1.18-es vagy újabb verziójában létrehozott Node-készletek `AKS Ubuntu 18.04` . A 1,18-nál kisebb, támogatott Kubernetes-verzióban található csomópont `AKS Ubuntu 16.04` -készletek csomóponti képként jelennek meg, de `AKS Ubuntu 18.04` a csomópont-készlet Kubernetes verziójának frissítése a v 1.18-ra vagy újabbra történik.
-> 
-> Erősen ajánlott az AK Ubuntu 18,04 Node-készletekben lévő munkaterhelések tesztelése az 1,18-es vagy újabb fürtök használata előtt. Olvassa el az [Ubuntu 18,04 Node-készletek tesztelését](#use-aks-ubuntu-1804-existing-clusters-preview)ismertető témakört.
+### <a name="use-aks-ubuntu-1804-generally-available-on-new-clusters"></a>Az AK Ubuntu 18,04 általánosan elérhető az új fürtökön
+
+A Kubernetes v 1.18-es vagy újabb verziójában létrehozott fürtök `AKS Ubuntu 18.04` . A 1,18-nál kisebb támogatott Kubernetes-verziókban a csomópont-készletek továbbra is `AKS Ubuntu 16.04` a csomóponti képként lesznek megkapva, de a rendszer a `AKS Ubuntu 18.04` fürt vagy a csomópont-készlet Kubernetes verziójának a v 1.18-es vagy újabb verziójára való frissítését követően frissíti.
+
+Erősen ajánlott az AK Ubuntu 18,04 Node-készletekben lévő munkaterhelések tesztelése az 1,18-es vagy újabb fürtök használata előtt. Olvassa el az [Ubuntu 18,04 Node-készletek tesztelését](#test-aks-ubuntu-1804-generally-available-on-existing-clusters)ismertető témakört.
+
+Ha csomópont-rendszerkép használatával szeretne fürtöt létrehozni `AKS Ubuntu 18.04` , egyszerűen hozzon létre egy kubernetes v 1.18 vagy újabb rendszert futtató fürtöt az alábbi ábrán látható módon.
+
+```azurecli
+az aks create --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
+```
+
+### <a name="use-aks-ubuntu-1804-generally-available-on-existing-clusters"></a>Az AK Ubuntu 18,04 általánosan elérhető a meglévő fürtökön
+
+A Kubernetes v 1.18-es vagy újabb verziójában létrehozott fürtök `AKS Ubuntu 18.04` . A 1,18-nál kisebb támogatott Kubernetes-verziókban a csomópont-készletek továbbra is `AKS Ubuntu 16.04` a csomóponti képként lesznek megkapva, de a rendszer a `AKS Ubuntu 18.04` fürt vagy a csomópont-készlet Kubernetes verziójának a v 1.18-es vagy újabb verziójára való frissítését követően frissíti.
+
+Erősen ajánlott az AK Ubuntu 18,04 Node-készletekben lévő munkaterhelések tesztelése az 1,18-es vagy újabb fürtök használata előtt. Olvassa el az [Ubuntu 18,04 Node-készletek tesztelését](#test-aks-ubuntu-1804-generally-available-on-existing-clusters)ismertető témakört.
+
+Ha a fürtök vagy a csomópontok készletei készen állnak a `AKS Ubuntu 18.04` Node-rendszerképekre, egyszerűen frissítheti őket egy v 1.18-es vagy újabb verzióra.
+
+```azurecli
+az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
+```
+
+Ha csak egy csomópont-készletet szeretne frissíteni:
+
+```azurecli
+az aks nodepool upgrade -name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
+```
+
+### <a name="test-aks-ubuntu-1804-generally-available-on-existing-clusters"></a>Az AK Ubuntu 18,04 általánosan elérhető a meglévő fürtökön
+
+A Kubernetes v 1.18-es vagy újabb verziójában létrehozott Node-készletek `AKS Ubuntu 18.04` . A 1,18-nál kisebb támogatott Kubernetes-verziók csomópont-készletei továbbra is `AKS Ubuntu 16.04` a csomóponti képként fognak megjelenni, de `AKS Ubuntu 18.04` a csomópont-készlet Kubernetes verziójának frissítését a v 1.18 vagy újabb verzióra frissíti.
+
+A termelési csomópontok készletének frissítése előtt erősen ajánlott az AK Ubuntu 18,04 Node-készletekben lévő számítási feladatok tesztelése.
+
+Ha csomópont-rendszerkép használatával szeretne csomópont-készletet létrehozni `AKS Ubuntu 18.04` , egyszerűen hozzon létre egy kubernetes v 1.18 vagy újabb rendszert futtató csomópont-készletet. A fürt vezérlési síkja legalább a v 1.18-as vagy újabb verzióra van szükség, de a többi csomópont-készlet továbbra is egy régebbi kubernetes-verzióban maradhat.
+Az alábbiakban először frissítjük a vezérlési gépet, majd létrehozunk egy új, a v 1.18-vel rendelkező Node-készletet, amely megkapja az új Node-rendszerkép operációsrendszer-verzióját.
+
+```azurecli
+az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14 --control-plane-only
+
+az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
+```
+
+### <a name="use-aks-ubuntu-1804-on-new-clusters-preview"></a>Az AK Ubuntu 18,04 használata új fürtökön (előzetes verzió)
 
 A következő szakasz ismerteti, hogyan használhatja és tesztelheti az AK Ubuntu 18,04-et olyan fürtökön, amelyek még nem használnak 1.18. x vagy újabb verziójú kubernetes, vagy amelyeket a szolgáltatás általánosan elérhetővé válása előtt hoztak létre az operációs rendszer konfigurációjának előzetes verziójának használatával.
 
@@ -57,8 +99,6 @@ Ha az állapot regisztrálva értékre van állítva, frissítse az `Microsoft.C
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
 ```
-
-### <a name="use-aks-ubuntu-1804-on-new-clusters-preview"></a>Az AK Ubuntu 18,04 használata új fürtökön (előzetes verzió)
 
 Konfigurálja a fürtöt az Ubuntu 18,04 használatára a fürt létrehozásakor. Az `--aks-custom-headers` Ubuntu 18,04 alapértelmezett operációs rendszerként való beállításához használja a jelzőt.
 
@@ -300,7 +340,7 @@ A csomópont-erőforráscsoport használata során ne feledje, hogy a következ�
 - A csomópont erőforráscsoporthoz tartozó felügyelt erőforrások nevének megadása.
 - Módosíthatja vagy törölheti az Azure-ban létrehozott, felügyelt erőforrások címkéit a csomópont-erőforráscsoporton belül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan frissítheti a fürtben található [csomópont-lemezképeket](node-image-upgrade.md) .
 - Lásd: [Azure Kubernetes Service-(ak-) fürt frissítése](upgrade-cluster.md) , amelyből megtudhatja, hogyan frissítheti a fürtöt a Kubernetes legújabb verziójára.

@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 06/06/2020
 ms.author: danis
-ms.openlocfilehash: d3bdc3d0705bd8edc70f55b8372818e60859eedd
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ca1aae3e819d58ea32453f2549d162bbfc9c91ae
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500563"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203218"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Ubuntu rendszerű virtuális gép előkészítése az Azure-beli használatra
 
@@ -28,7 +28,7 @@ Ez a cikk azt feltételezi, hogy már telepített egy Ubuntu Linux operációs r
 
 * A Linux for Azure előkészítésével kapcsolatos további tippeket a [Linux általános telepítési megjegyzései](create-upload-generic.md#general-linux-installation-notes) című témakörben talál.
 * A VHDX formátuma nem támogatott az Azure-ban, csak a **rögzített VHD**.  A lemezt a Hyper-V kezelőjével vagy a parancsmaggal konvertálhatja VHD formátumba `Convert-VHD` .
-* A Linux rendszer telepítésekor azt javasoljuk, hogy az LVM helyett standard partíciót használjon (ez általában számos telepítés esetében). Ezzel elkerülhető, hogy az LVM neve ütközik a klónozott virtuális gépekkel, különösen akkor, ha egy operációsrendszer-lemezt egy másik virtuális géphez kell csatolni a hibaelhárításhoz. Az [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy a [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) adatlemezeken is használható, ha az előnyben részesített.
+* A Linux rendszer telepítésekor azt javasoljuk, hogy az LVM helyett standard partíciót használjon (ez általában számos telepítés esetében). Ezzel elkerülhető, hogy az LVM neve ütközik a klónozott virtuális gépekkel, különösen akkor, ha egy operációsrendszer-lemezt egy másik virtuális géphez kell csatolni a hibaelhárításhoz. Az [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm) vagy a [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid) adatlemezeken is használható, ha az előnyben részesített.
 * Ne állítson be swap partíciót vagy swapfile az operációsrendszer-lemezen. A Cloud-init kiépítési ügynök úgy konfigurálható, hogy egy lapozófájlt vagy egy swap partíciót hozzon létre az ideiglenes erőforrás lemezén. Erről további információt az alábbi lépésekben találhat.
 * Az Azure-ban az összes virtuális merevlemeznek 1 MB-ra igazított virtuális mérettel kell rendelkeznie. Nyers lemezről VHD-re való konvertáláskor gondoskodnia kell arról, hogy a nyers lemez mérete a konverzió előtt egy 1MB többszöröse legyen. További információért lásd a [Linux telepítési megjegyzéseit](create-upload-generic.md#general-linux-installation-notes) .
 
@@ -176,8 +176,8 @@ Ez a cikk azt feltételezi, hogy már telepített egy Ubuntu Linux operációs r
 
 13. Kattintson a **művelet – > leállítás** a Hyper-V kezelőjében elemre.
 
-14. Az Azure csak rögzített méretű VHD-ket fogad el. Ha a virtuális gép operációsrendszer-lemeze nem rögzített méretű VHD, használja a `Convert-VHD` PowerShell-parancsmagot, és válassza a `-VHDType Fixed` lehetőséget. Tekintse meg az `Convert-VHD` alábbi dokumentumokat: [Convert-VHD](/powershell/module/hyper-v/convert-vhd?view=win10-ps).
+14. Az Azure csak rögzített méretű VHD-ket fogad el. Ha a virtuális gép operációsrendszer-lemeze nem rögzített méretű VHD, használja a `Convert-VHD` PowerShell-parancsmagot, és válassza a `-VHDType Fixed` lehetőséget. Tekintse meg az `Convert-VHD` alábbi dokumentumokat: [Convert-VHD](/powershell/module/hyper-v/convert-vhd).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most már készen áll a Ubuntu Linux virtuális merevlemez használatára az Azure-beli új virtuális gépek létrehozásához. Ha első alkalommal tölti fel a. vhd-fájlt az Azure-ba, tekintse meg a Linux rendszerű [virtuális gép létrehozása egyéni lemezről](upload-vhd.md#option-1-upload-a-vhd)című témakört.

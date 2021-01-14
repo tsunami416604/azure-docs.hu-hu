@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f6c990b3ce5edaab4d2ce6600c0291272058e092
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 7721100d902948364c9e4b1373f1fa805c680a50
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369293"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202215"
 ---
 # <a name="security-control-v2-privileged-access"></a>Security Control v2: emelt szintű hozzáférés
 
@@ -157,7 +157,7 @@ Az Azure AD-jogosultságok kezelési funkciói segítségével automatizálhatja
 
 A biztonságos, elkülönített munkaállomások kritikus fontosságúak a bizalmas szerepkörök, például a rendszergazdák, a fejlesztők és a kritikus fontosságú szolgáltatók biztonsága szempontjából. A biztonságos felhasználói munkaállomásokat és/vagy az Azure Bastion-t a felügyeleti feladatokhoz használhatja. Az Azure Active Directory, a Microsoft Defender Advanced Threat Protection (ATP) és/vagy a Microsoft Intune használatával biztonságos és felügyelt felhasználói munkaállomásokat helyezhet üzembe a rendszergazdai tevékenységekhez. A biztonságos munkaállomások központilag felügyelhetők a biztonságos konfiguráció kikényszerítéséhez, beleértve az erős hitelesítést, a szoftver-és a hardver-alapterveket, valamint a korlátozott logikai és hálózati hozzáférést is. 
 
-- [Az emelt szintű hozzáférésű munkaállomások ismertetése](../../active-directory/devices/concept-azure-managed-workstation.md)
+- [Az emelt szintű hozzáférésű munkaállomások ismertetése](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [Emelt szintű hozzáférésű munkaállomás üzembe helyezése](../../active-directory/devices/howto-azure-managed-workstation.md)
 

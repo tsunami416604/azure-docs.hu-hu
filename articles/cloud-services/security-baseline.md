@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 100871ab2188aa638c4c9f2b058021706c7741bb
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: e6a42a39e55e379865332fce8a9aed8dfe78f57b
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531904"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201331"
 ---
 # <a name="azure-security-baseline-for-azure-cloud-services"></a>Azure biztonsági alapkonfiguráció az Azure Cloud Services
 
@@ -345,7 +345,7 @@ Tekintse át a klasszikus előfizetés felügyeleti szerepkörei közötti kül�
 
 **Útmutató**: ajánlott egy biztonságos, Azure által felügyelt munkaállomás (más néven privilegizált hozzáférési munkaállomás) használata a felügyeleti feladatokhoz, amelyhez emelt szintű jogosultságok szükségesek.
 
-- [A biztonságos, Azure által felügyelt munkaállomások ismertetése](../active-directory/devices/concept-azure-managed-workstation.md)
+- [A biztonságos, Azure által felügyelt munkaállomások ismertetése](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [Az Azure AD MFA engedélyezése](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -936,7 +936,7 @@ Egyértelműen megjelölheti az előfizetéseket (például éles környezetben,
 
 **Felelősség**: Megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
 - További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

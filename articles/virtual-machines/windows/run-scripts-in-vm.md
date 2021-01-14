@@ -8,12 +8,12 @@ ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: c2999d5bd6d780d5815f22d18e6e8cdd580987af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23abc86e26686d9a23ed94d0311a44ffe3012657
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87020168"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201773"
 ---
 # <a name="run-scripts-in-your-windows-vm"></a>Parancsfájlok futtatása a Windows rendszerű virtuális gépen
 
@@ -34,7 +34,7 @@ Az [Egyéni szkriptek bővítménye](../extensions/custom-script-windows.md) els
 A [Futtatás parancs](run-command.md) funkció lehetővé teszi a virtuális gépek és az alkalmazások kezelését és a hibaelhárítást parancsfájlok használatával, és akkor is elérhető, ha a számítógép nem érhető el, például ha a vendég tűzfal nem rendelkezik a megnyitott RDP-vagy SSH-porttal.
 
 * Parancsfájlok futtatása az Azure Virtual Machines szolgáltatásban.
-* Futtatható [Azure Portal](run-command.md), [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke)vagy [PowerShell](/powershell/module/az.compute/invoke-azvmruncommand) használatával
+* Futtatható [Azure Portal](run-command.md), [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [Azure CLI](/cli/azure/vm/run-command#az-vm-run-command-invoke)vagy [PowerShell](/powershell/module/az.compute/invoke-azvmruncommand) használatával
 * Futtasson gyorsan egy parancsfájlt, és tekintse meg a kimenetet, és szükség szerint ismételje meg a Azure Portal.
 * A szkript közvetlenül is beírható, vagy futtathatja a beépített parancsfájlok egyikét.
 * PowerShell-parancsfájl futtatása Windows rendszerű gépeken és bash-parancsfájlban Linux-gépeken.
@@ -64,7 +64,7 @@ A [Serial Console](../troubleshooting/serial-console-windows.md) közvetlen hozz
 * Jelentkezzen be a gépre egy helyi felhasználói fiókkal.
 * Akkor hasznos, ha a virtuális géphez való hozzáférésre a gép hálózati vagy operációsrendszer-állapota nélkül van szükség.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a virtuális gépeken belüli parancsfájlok és parancsok futtatásához elérhető különböző funkciókról.
 

@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: 228814db76ea14fa8b74c0c5d634e5afd6d54ac6
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 2726ba3b337dc785de58b06fb5e8372058f71879
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483045"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202096"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuális számítógépek egy Azure Resource Manager-sablonban
 
@@ -282,7 +282,7 @@ A virtuális gépek erőforrásának definiálásakor több profil elemet is has
 
 ## <a name="disks-and-images"></a>Lemezek és lemezképek
    
-Az Azure-ban a VHD-fájlok [lemezek vagy lemezképek](../managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ábrázolására használhatók. Ha egy VHD-fájlban lévő operációs rendszer speciális virtuális géphez van kiépítve, akkor azt lemeznek nevezzük. Ha egy VHD-fájlban lévő operációs rendszer általánosítva számos virtuális gép létrehozásához használatos, azt képként kell megadnia.   
+Az Azure-ban a VHD-fájlok [lemezek vagy lemezképek](../managed-disks-overview.md)ábrázolására használhatók. Ha egy VHD-fájlban lévő operációs rendszer speciális virtuális géphez van kiépítve, akkor azt lemeznek nevezzük. Ha egy VHD-fájlban lévő operációs rendszer általánosítva számos virtuális gép létrehozásához használatos, azt képként kell megadnia.   
     
 ### <a name="create-new-virtual-machines-and-new-disks-from-a-platform-image"></a>Új virtuális gépek és új lemezek létrehozása egy platform rendszerképből
 
@@ -439,7 +439,7 @@ A telepített bővítmények állapotát a portál bővítmények beállításai
 
 A bővítmény információit a **Get-AzVMExtension** PowerShell-paranccsal, a virtuálisgép- **BŐVÍTMÉNY Get** Azure CLI-paranccsal vagy a **bővítmény információinak beolvasása** REST API is lekérheti.
 
-## <a name="deployments"></a>Üzemelő példányok
+## <a name="deployments"></a>Központi telepítés
 
 A sablonok központi telepítésekor az Azure nyomon követi a csoportként telepített erőforrásokat, és automatikusan hozzárendel egy nevet ehhez a telepített csoporthoz. A központi telepítés neve megegyezik a sablon nevével.
 
@@ -453,5 +453,5 @@ Nem probléma, hogy ugyanazt a sablont használja az erőforrások létrehozás�
 
 - Hozzon létre saját sablont a [szerzői Azure Resource Manager sablonok](../../azure-resource-manager/templates/template-syntax.md)használatával.
 - Telepítse a létrehozott sablont a [Windows rendszerű virtuális gép Resource Manager-sablonnal történő létrehozásával](ps-template.md).
-- Megtudhatja, hogyan kezelheti a létrehozott virtuális gépeket a [Windows rendszerű virtuális gépek létrehozása és kezelése a Azure PowerShell modullal](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)című témakör áttekintésével.
+- Megtudhatja, hogyan kezelheti a létrehozott virtuális gépeket a [Windows rendszerű virtuális gépek létrehozása és kezelése a Azure PowerShell modullal](tutorial-manage-vm.md)című témakör áttekintésével.
 - A sablonokban található erőforrástípusok JSON-szintaxisához és tulajdonságaihoz lásd: [Azure Resource Manager sablon referenciája](/azure/templates/).

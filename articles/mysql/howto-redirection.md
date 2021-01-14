@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/8/2020
-ms.openlocfilehash: bea618b34809544308caba46a0ffbdecee91d69f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 199810f835924ccbb51948169244622a19c5e8ed
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541810"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201433"
 ---
 # <a name="connect-to-azure-database-for-mysql-with-redirection"></a>Csatlakozás az Azure Database for MySQL-hez átirányítással
 
@@ -21,6 +21,9 @@ Ez a témakör azt ismerteti, hogyan lehet egy alkalmazást Azure Database for M
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Azure Database for MySQL-kiszolgáló létrehozása a 5,6, 5,7 vagy 8,0 verziójú motorral. 
 
 Részletekért lásd: Azure Database for MySQL kiszolgáló létrehozása a [Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md) vagy az [Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md)használatával.
+
+> [!IMPORTANT]
+> Az átirányítás jelenleg nem támogatott [Azure Database for MySQLhoz tartozó privát hivatkozással](concepts-data-access-security-private-link.md).
 
 ## <a name="enable-redirection"></a>Átirányítás engedélyezése
 
@@ -44,7 +47,7 @@ Az átirányítási viselkedést a értéke határozza meg `mysqlnd_azure.enable
 
 Ha a mysqlnd_azure bővítmény (1.0.0-1.0.3 verzió) régebbi verzióját használja, az átirányítási viselkedést a értéke határozza meg `mysqlnd_azure.enabled` . Az érvényes értékek `off` (az alábbi táblázatban szereplő viselkedéssel hasonlóan viselkednek), és `on` (az alábbi táblázat szerint viselkednek `preferred` ).  
 
-|**mysqlnd_azure. enableRedirect érték**| **Viselkedés**|
+|**mysqlnd_azure. enableRedirect érték**| **Működés**|
 |----------------------------------------|-------------|
 |`off` vagy `0`|Az átirányítás nem lesz használatban. |
 |`on` vagy `1`|– Ha a kapcsolat nem használ SSL-t az illesztőprogram oldalán, nem történik kapcsolat. A rendszer a következő hibaüzenetet adja vissza: *"mysqlnd_azure. enableRedirect, de az SSL-beállítás nincs beállítva a kapcsolati karakterláncban. Az átirányítás csak SSL használatával lehetséges. "*<br>-Ha az SSL használatban van az illesztőprogram oldalán, de az átirányítás nem támogatott a kiszolgálón, az első kapcsolat megszakad, és a rendszer a következő hibaüzenetet adja vissza: *"a kapcsolat megszakadt, mert az átirányítás nincs engedélyezve a MySQL-kiszolgálón, vagy a hálózati csomag nem felel meg az átirányítási protokollnak."*<br>-Ha a MySQL-kiszolgáló támogatja az átirányítás használatát, de az átirányított csatlakozás valamilyen okból meghiúsult, akkor az első proxy-csatlakozást is megszakítja. Az átirányított kapcsolatok hibájának visszaadása.|

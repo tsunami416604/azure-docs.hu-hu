@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: acdddcd95883d13393838a47281fb888ac2f9274
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 26ef07269c9451c2e9d05d42e2247fbfcdae4844
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500393"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201960"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: nagy teljesítményű kialakítás
 
@@ -222,7 +222,7 @@ Ha azonban ugyanazt az alkalmazást Premium Storage-on üzemelteti, akkor a virt
 
 Az alábbi táblázat összefoglalja a forgatókönyvnek a standard és a Premium Storage szerinti lebontását.
 
-| &nbsp; | **Standard** | **Prémium szintű** |
+| &nbsp; | **Standard** | **Prémium** |
 | --- | --- | --- |
 | **Virtuális gép ára havonta** |$1 570,58 (szabványos \_ D14) |$1 003,66 (szabványos \_ DS13) |
 | **Lemezek havi díja** |$1 638,40 (32 x 1 – TB lemez) |$544,34 (4 x P30-lemez) |
@@ -230,7 +230,7 @@ Az alábbi táblázat összefoglalja a forgatókönyvnek a standard és a Premiu
 
 *Linux-disztribúciók*  
 
-Az Azure Premium Storage a Windows és a Linux rendszerű virtuális gépek esetében azonos szintű teljesítményt nyújt. A Linux-disztribúciók számos változatát támogatjuk, és [itt](linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)láthatja a teljes listát. Fontos megjegyezni, hogy a különböző disztribúciók jobban illeszkednek a különböző típusú munkaterhelésekhez. A számítási feladatok különböző szintjeit fogja látni, attól függően, hogy milyen disztribúció fut a számítási feladatban. Tesztelje a Linux-disztribúciókat az alkalmazással, és válassza ki azt, amely a legjobban működik.
+Az Azure Premium Storage a Windows és a Linux rendszerű virtuális gépek esetében azonos szintű teljesítményt nyújt. A Linux-disztribúciók számos változatát támogatjuk, és [itt](linux/endorsed-distros.md)láthatja a teljes listát. Fontos megjegyezni, hogy a különböző disztribúciók jobban illeszkednek a különböző típusú munkaterhelésekhez. A számítási feladatok különböző szintjeit fogja látni, attól függően, hogy milyen disztribúció fut a számítási feladatban. Tesztelje a Linux-disztribúciókat az alkalmazással, és válassza ki azt, amely a legjobban működik.
 
 A Linux és a Premium Storage használatával a nagy teljesítmény biztosításához tekintse meg a szükséges illesztőprogramok legújabb frissítéseit.
 
@@ -279,7 +279,7 @@ Az adatlemezek ajánlott lemezgyorsítótár-beállításai a következők:
 
 | **Lemezes gyorsítótárazási beállítás** | **a beállítás használatára vonatkozó javaslat** |
 | --- | --- |
-| Nincsenek |Konfigurálja a gazdagép-gyorsítótárat a Nincs értékre a csak írható és a nagy írási sebességű lemezekhez. |
+| Nincs |Konfigurálja a gazdagép-gyorsítótárat a Nincs értékre a csak írható és a nagy írási sebességű lemezekhez. |
 | ReadOnly |A gazdagép-gyorsítótár írásvédettként való konfigurálása írásvédett és írható lemezekhez. |
 | ReadWrite |Konfigurálja a gazdagép-gyorsítótárat úgy, hogy csak akkor ReadWrite, ha az alkalmazás megfelelően kezeli a gyorsítótárazott adatlemezek írását, ha szükséges. |
 
@@ -376,7 +376,7 @@ A csíkozott kötetek esetében elég magas a várólista mélységének megőrz
 
 Az Azure Premium Storage a kiválasztott virtuálisgép-mérettől és a választott IOPS függően megadott számú adatmennyiséget és átviteli sebességet biztosít. Bármikor, amikor az alkalmazás megkísérli a IOPS vagy az átviteli sebesség megadását a virtuális gép vagy a lemez által kezelhető korlátok felett, Premium Storage fogja szabályozni. Ez a jegyzék az alkalmazás csökkentett teljesítményének formáját képezi. Ez magasabb késést, alacsonyabb átviteli sebességet vagy alacsonyabb IOPS jelenthet. Ha Premium Storage nem szabályozza a szabályozást, az alkalmazás teljesen meghiúsulhat, ha túllépi az erőforrások eléréséhez szükséges erőforrásokat. Így a teljesítménybeli problémák elkerülése érdekében a szabályozás miatt mindig elegendő erőforrást kell kiépíteni az alkalmazáshoz. Vegye figyelembe, hogy a fentiekben ismertetett virtuálisgép-méretek és a lemez méretei című szakaszban leírt módon. A teljesítményértékelés a legjobb módszer arra, hogy kiderítse, milyen erőforrásokra lesz szüksége az alkalmazás üzemeltetéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a lemez teljesítménytesztét szeretné használni, tekintse meg a következő cikkeket: a lemez teljesítményértékelése:
 

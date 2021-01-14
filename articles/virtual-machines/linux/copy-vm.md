@@ -7,18 +7,18 @@ ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: legacy, devx-track-azurecli
-ms.openlocfilehash: f92f286fc9d9438331617cb567272a331834af42
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7f9ac0ab9eacb90bde70c85ea06bc19a18aa0c05
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735395"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201144"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Linux rendszerű virtuális gép másolatának létrehozása az Azure CLI és a Managed Disks használatával
 
 Ez a cikk bemutatja, hogyan hozhat létre egy Linux rendszerű virtuális gépet az Azure CLI használatával. A virtuálisgép-lemezképek méretekben történő másolásához, létrehozásához, tárolásához és megosztásához tekintse meg a [megosztott lemezképek gyűjteményét](../shared-images-cli.md).
 
-A virtuális [merevlemezeket feltöltheti és létrehozhatja egy VHD-ről](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)is.
+A virtuális [merevlemezeket feltöltheti és létrehozhatja egy VHD-ről](upload-vhd.md)is.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,7 +31,7 @@ A virtuális [merevlemezeket feltöltheti és létrehozhatja egy VHD-ről](uploa
 ## <a name="stop-the-source-vm"></a>A forrás virtuális gép leállítása
 
 Szabadítsa fel a forrás virtuális gépet az [az VM felszabadítása](/cli/azure/vm#az-vm-deallocate)paranccsal.
-Az alábbi példa felszabadítja a *myVM* nevű virtuális gépet az erőforráscsoport *myResourceGroup* :
+Az alábbi példa felszabadítja a *myVM* nevű virtuális gépet az erőforráscsoport *myResourceGroup*:
 
 ```azurecli
 az vm deallocate \

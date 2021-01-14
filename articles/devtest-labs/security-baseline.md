@@ -3,12 +3,12 @@ title: Azure DevTest Labs Azure biztonsági alapterve
 description: Azure DevTest Labs Azure biztonsági alapterve
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 4ae3886e1c47b1d6835dc348b474e3d9e82a8f41
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: eabb55956f97f40312c894ccabd7a341ecc5688c
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348823"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202011"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs Azure biztonsági alapterve
 
@@ -183,7 +183,7 @@ _ *Felelősség:** ügyfél
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: dedikált gépek (privilegizált hozzáférési munkaállomások) használata az összes felügyeleti feladathoz
 **Útmutató:** Az Azure-erőforrások bejelentkezéséhez és konfigurálásához használja az MFA-t a privilegizált hozzáférésű munkaállomások (PAWs) használatára.
 
-- [További tudnivalók a privilegizált hozzáférésű munkaállomásokról](/windows-server/identity/securing-privileged-access/privileged-access-workstations)  
+- [További tudnivalók a privilegizált hozzáférésű munkaállomásokról](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)  
 - [MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)  
 
 **Azure Security Center figyelés:** N/A
@@ -886,7 +886,7 @@ Azure Security Center figyelés: * * * * nem alkalmazható
 
 **Felelősség:** Megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a következő cikket:
 
 - [Biztonsági riasztások a Azure DevTest Labs környezetekben](environment-security-alerts.md)

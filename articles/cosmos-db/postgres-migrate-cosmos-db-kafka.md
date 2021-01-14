@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 01/05/2021
 ms.author: abhishgu
 ms.reviewer: abhishgu
-ms.openlocfilehash: 24714b185b0f666770b306a7e80a97a3f8f868a3
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 0038219ee8c1721ff5ab2be76231d33d2bd9064d
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98052623"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203065"
 ---
 # <a name="migrate-data-from-postgresql-to-azure-cosmos-db-cassandra-api-account-using-apache-kafka"></a>Adatok migrálása a PostgreSQL-ből Azure Cosmos DB Cassandra API-fiókba a Apache Kafka használatával
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -107,7 +107,7 @@ bin/kafka-server-start.sh config/server.properties
 
 ### <a name="setup-connectors"></a>Összekötők beállítása
 
-Telepítse a Debezium PostgreSQL-t és a DataStax Apache Kafka-összekötőt. Töltse le a Debezium PostgreSQL Connector beépülő modul archívumát. Ha például az összekötő verziójának 1.3.0 szeretné letölteni (a legújabbat az írás időpontjában), használja [ezt a hivatkozást](https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres/1.3.0.Final/debezium-connector-postgres-1.2.0.Final-plugin.tar.gz). Töltse le a DataStax Apache Kafka-összekötőt [erről a hivatkozásról](https://downloads.datastax.com/#akc).
+Telepítse a Debezium PostgreSQL-t és a DataStax Apache Kafka-összekötőt. Töltse le a Debezium PostgreSQL Connector beépülő modul archívumát. Ha például az összekötő verziójának 1.3.0 szeretné letölteni (a legújabbat az írás időpontjában), használja [ezt a hivatkozást](https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres/1.3.0.Final/debezium-connector-postgres-1.3.0.Final-plugin.tar.gz). Töltse le a DataStax Apache Kafka-összekötőt [erről a hivatkozásról](https://downloads.datastax.com/#akc).
 
 Bontsa ki az összekötő-archívumokat, és másolja a JAR-fájlokat a [Kafka kapcsolódási beépülő modul. Path](https://kafka.apache.org/documentation/#connectconfigs)fájlba.
 
@@ -257,7 +257,7 @@ select * from retail.orders_by_customer where customer_id = 10;
 
 Továbbra is további adatokat szúrhat be a PostgreSQL-be, és ellenőrizheti, hogy a rekordok szinkronizálva vannak-e Azure Cosmos DB.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Apache Kafka-és Azure Cosmos DB-Cassandra API integrálása a Kafka-kapcsolattal](cassandra-kafka-connect.md)
 * [Az Azure Event Hubs (előzetes verzió) Apache Kafka-csatlakozási funkciójának integrálása az adatváltozások rögzítésének Debezium](../event-hubs/event-hubs-kafka-connect-debezium.md)

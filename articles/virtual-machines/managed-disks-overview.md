@@ -8,12 +8,12 @@ ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 31fe62aabfff77342726158c3b72b61afb518682
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e549a79930cf599b89cd549691e23f3587e8a85c
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031521"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202708"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Bevezetés az Azure-beli felügyelt lemezek használatába
 
@@ -96,7 +96,7 @@ A lemez maximális kapacitása 4 095 GiB.
 
 ### <a name="temporary-disk"></a>Ideiglenes lemez
 
-A legtöbb virtuális gép tartalmaz egy ideiglenes lemezt, amely nem felügyelt lemez. Az ideiglenes lemez rövid távú tárolást biztosít az alkalmazások és folyamatok számára, és kizárólag az olyan adattárolók tárolására szolgál, mint például az oldal vagy a lapozófájlok. Előfordulhat, hogy az ideiglenes lemezen lévő adatvesztés egy [karbantartási esemény](./manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) vagy [egy virtuális gép újratelepítése](troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json)során elvész. A virtuális gép sikeres újraindítása során az ideiglenes lemezen tárolt adatmennyiség továbbra is fennáll. Az ideiglenes lemezek nélküli virtuális gépekkel kapcsolatos további információkért lásd: Azure-beli [VM-méretek helyi ideiglenes lemez](azure-vms-no-temp-disk.md)nélkül.
+A legtöbb virtuális gép tartalmaz egy ideiglenes lemezt, amely nem felügyelt lemez. Az ideiglenes lemez rövid távú tárolást biztosít az alkalmazások és folyamatok számára, és kizárólag az olyan adattárolók tárolására szolgál, mint például az oldal vagy a lapozófájlok. Előfordulhat, hogy az ideiglenes lemezen lévő adatvesztés egy [karbantartási esemény](./manage-availability.md#understand-vm-reboots---maintenance-vs-downtime) vagy [egy virtuális gép újratelepítése](troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json)során elvész. A virtuális gép sikeres újraindítása során az ideiglenes lemezen tárolt adatmennyiség továbbra is fennáll. Az ideiglenes lemezek nélküli virtuális gépekkel kapcsolatos további információkért lásd: Azure-beli [VM-méretek helyi ideiglenes lemez](azure-vms-no-temp-disk.md)nélkül.
 
 Az Azure Linux rendszerű virtuális gépeken az ideiglenes lemez általában/dev/sdb, és a Windows rendszerű virtuális gépeken az ideiglenes lemez alapértelmezés szerint D:. Az ideiglenes lemezt a kiszolgálóoldali titkosítás nem titkosítja, kivéve, ha engedélyezi a titkosítást a gazdagépen.
 

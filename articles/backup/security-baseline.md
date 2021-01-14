@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a2cbd2dd4dd32be137e461985e9f10fd07ed8a60
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: ee4c364012b32ff8ee938dec2a7446853c32ba0b
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325638"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203082"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Azure biztonsági alapkonfiguráció biztonsági mentéshez
 
@@ -302,7 +302,7 @@ Emellett a dedikált rendszergazdai fiókok nyomon követésének elősegítése
 
 - [Multi-Factor Authentication a Azure Backup](./backup-azure-security-feature.md)
 
-- [Felhőalapú Azure AD-Multi-Factor Authentication üzembe helyezésének megtervezése](../active-directory/authentication/howto-mfa-getstarted.md)
+- [Felhőalapú Azure AD Multi-Factor Authentication-telepítés megtervezése](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -312,9 +312,9 @@ Emellett a dedikált rendszergazdai fiókok nyomon követésének elősegítése
 
 **Útmutató**: a Azure Backup-kompatibilis erőforrások bejelentkezéséhez és konfigurálásához KONFIGURÁLT Azure AD-multi-Factor Authentication (MFA) rendelkező, privilegizált hozzáférési munkaállomás (Paw) használata.
 
-- [Emelt hozzáférési szintű munkaállomások](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [Emelt hozzáférési szintű munkaállomások](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [Felhőalapú Azure AD-Multi-Factor Authentication üzembe helyezésének megtervezése](../active-directory/authentication/howto-mfa-getstarted.md)
+- [Felhőalapú Azure AD Multi-Factor Authentication-telepítés megtervezése](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -1016,7 +1016,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Felelősség**: Megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
 - További információ az [Azure biztonsági Alaptervekről](../security/benchmarks/security-baselines-overview.md)

@@ -8,12 +8,12 @@ author: AlexandraKemperMS
 ms.author: alkemper
 ms.topic: conceptual
 ms.date: 3/9/2020
-ms.openlocfilehash: 9a6ae1581b3958495010b032980b0de2e267088b
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 13857580d434736fbf0b12f52d39537ca864a497
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931877"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203130"
 ---
 # <a name="use-feature-filters-to-enable-conditional-feature-flags"></a>Funkciós szűrők használata a feltételes funkciók jelzőjének engedélyezéséhez
 
@@ -56,19 +56,19 @@ Ezeket a beállításokat konfigurálhatja az Azure-alkalmazások konfiguráció
     > [!div class="mx-imgBorder"]
     > ![Bétaverzió funkciójának szerkesztése](./media/edit-beta-feature-flag.png)
 
-1. A **Szerkesztés** képernyőn válassza a on Radio ( **bekapcsolva** ) gombot, ha még nincs kiválasztva. Ezután kattintson a **szűrő hozzáadása** gombra. (Az **on** Radio gomb címkéje olvasási **feltételesre** változik.)
+1. Ha még nincs bejelölve, a **Szerkesztés** képernyőn jelölje be a **szolgáltatás jelző engedélyezése** gombját. Ezután kattintson a **szolgáltatás szűrő használata** gombra, és válassza az **Egyéni** lehetőséget. 
 
 1. A **kulcs** mezőben adja meg a *Microsoft. százalék* értéket.
 
     > [!div class="mx-imgBorder"]
     > ![Szolgáltatás-szűrő hozzáadása](./media/feature-flag-add-filter.png)
 
-1. Kattintson a funkció szűrő kulcs melletti helyi menüre. Kattintson a **Paraméterek szerkesztése** elemre.
+1. Kattintson a funkció szűrő kulcs melletti helyi menüre. Kattintson a **szűrő paramétereinek szerkesztése** elemre.
 
     > [!div class="mx-imgBorder"]
-    > ![Szolgáltatás-szűrő paramétereinek szerkesztése](./media/feature-flag-edit-filter-parameters.png)
+    > ![Szolgáltatás-szűrő paramétereinek szerkesztése](./media/feature-flags-edit-filter-parameters.png)
 
-1. Vigye a kurzort a **név** fejléc alá, hogy a szövegmezők megjelenjenek a rácsban. Adja meg az *érték* **nevét** és a 50 **értéket** . Az **érték** mező jelzi azon kérelmek százalékos arányát, amelyek esetében engedélyezni szeretné a szolgáltatás szűrőjét.
+1. Adja meg az *érték* **nevét** és a 50 **értéket** . Az **érték** mező jelzi azon kérelmek százalékos arányát, amelyek esetében engedélyezni szeretné a szolgáltatás szűrőjét.
 
     > [!div class="mx-imgBorder"]
     > ![Szolgáltatás-szűrő paramétereinek megadása](./media/feature-flag-set-filter-parameters.png)

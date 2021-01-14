@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ddd8166dd29d2210fecdd72d5be446df47a6c5df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c327f5ffbf7c0fbfadf443e80cc1f7540855f59e
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89072298"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201824"
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Windows rendszerű virtuális gép létrehozása Resource Manager-sablonból
 
@@ -33,7 +33,7 @@ Az alábbi példa egy virtuális gépet hoz létre egy [Azure Gyorsindítás sab
 
 [!code-json[create-windows-vm](~/quickstart-templates/101-vm-simple-windows/azuredeploy.json)]
 
-A PowerShell-szkript futtatásához válassza a **kipróbálás** lehetőséget az Azure Cloud Shell megnyitásához. A szkript beillesztéséhez kattintson a jobb gombbal a rendszerhéjra, majd válassza a **Beillesztés**parancsot:
+A PowerShell-szkript futtatásához válassza a **kipróbálás** lehetőséget az Azure Cloud Shell megnyitásához. A szkript beillesztéséhez kattintson a jobb gombbal a rendszerhéjra, majd válassza a **Beillesztés** parancsot:
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -71,11 +71,11 @@ Az előző parancsfájl utolsó PowerShell-parancsa megjeleníti a virtuális g�
 ## <a name="next-steps"></a>Következő lépések
 
 - Ha probléma merült fel az üzembe helyezéssel kapcsolatban, tekintse meg a [gyakori Azure-telepítési hibák elhárítását Azure Resource Manager](../../azure-resource-manager/templates/common-deployment-errors.md).
-- Megtudhatja, hogyan hozhat létre és kezelhet virtuális gépeket a [Windows rendszerű virtuális gépek létrehozása és kezelése a Azure PowerShell modullal](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Megtudhatja, hogyan hozhat létre és kezelhet virtuális gépeket a [Windows rendszerű virtuális gépek létrehozása és kezelése a Azure PowerShell modullal](tutorial-manage-vm.md).
 
 A sablonok létrehozásával kapcsolatos további tudnivalókért tekintse meg a telepített erőforrások típusának JSON-szintaxisát és tulajdonságait:
 
 - [Microsoft. Network/nyilvános IP](/azure/templates/microsoft.network/publicipaddresses)
 - [Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
 - [Microsoft. Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
-- [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)
+- [Microsoft. számítás/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)
