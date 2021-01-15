@@ -182,7 +182,7 @@
             - name: Előre fizetés virtuális gépekért
               href: ../prepay-reserved-vm-instances.md
             - name: Előre fizetés dedikált gazdagépekért
-              href: ../prepay-dedicated-hosts-reserved-instances.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+              href: ../prepay-dedicated-hosts-reserved-instances.md
             - name: Mi az az Azure Reservations?
               href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md?toc=/azure/virtual-machines/windows/toc.json
             - name: Virtuálisgép-példányok méretrugalmassága
@@ -226,7 +226,7 @@
         - name: Titkosítás
           href: ../disk-encryption.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Lemezes tároláshoz kapcsolódó lefoglalások
-          href: ../../cost-management-billing/reservations/understand-disk-reservations.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+          href: ../../cost-management-billing/reservations/understand-disk-reservations.md
         - name: Virtuálisgép- és lemezteljesítmény
           href: disk-performance-windows.md
         - name: Nagy teljesítményű rendszer tervezése
@@ -290,14 +290,14 @@
         - name: Kihasználatlan virtuális gépek üzembe helyezése
           items:
             - name: Portál
-              href: ../spot-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+              href: ../spot-portal.md
             - name: PowerShell
               href: spot-powershell.md
             - name: ARM-sablon
               displayName: Azure Resource Manager
-              href: ../linux/spot-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+              href: ../linux/spot-template.md
             - name: Hibakódok
-              href: ../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+              href: ../error-codes-spot.md
         - name: A C# használata
           href: ../../azure-resource-manager/templates/deploy-rest.md
         - name: Speciális lemez használata
@@ -478,7 +478,7 @@
             - name: Bastion-gazdagép létrehozása
               items:
                 - name: Portál
-                  href: ../../bastion/tutorial-create-host-portal.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+                  href: ../../bastion/tutorial-create-host-portal.md
                 - name: PowerShell
                   href: ../../bastion/bastion-create-host-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                 - name: parancssori felület
@@ -654,7 +654,7 @@
                     - name: Verzióelőzmények
                       href: ../../azure-monitor/platform/diagnostics-extension-versions.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                     - name: JSON-sorok erőforrásnapló-formátuma
-                      href: ../../azure-monitor/platform/resource-logs-blob-format.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+                      href: ../../azure-monitor/platform/resource-logs-blob-format.md
                     - name: Hibaelhárítás
                       href: ../../azure-monitor/platform/diagnostics-extension-troubleshooting.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Log Analytics-ügynök
@@ -712,13 +712,13 @@
                 - name: Monitorozás engedélyezésének áttekintése
                   href: ../../azure-monitor/insights/vminsights-enable-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                 - name: Engedélyezés egyetlen Azure-beli virtuális gépen
-                  href: ../../azure-monitor/insights/vminsights-enable-portal.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-portal.md
                 - name: Engedélyezés az Azure Policyval
-                  href: ../../azure-monitor/insights/vminsights-enable-policy.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-policy.md
                 - name: Engedélyezés az Azure PowerShell-lel
-                  href: ../../azure-monitor/insights/vminsights-enable-powershell.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-powershell.md
                 - name: Engedélyezés hibrid környezetben
-                  href: ../../azure-monitor/insights/vminsights-enable-hybrid.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-hybrid.md
             - name: Függőségek feltérképezése
               href: ../../azure-monitor/insights/vminsights-maps.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Teljesítmény figyelése

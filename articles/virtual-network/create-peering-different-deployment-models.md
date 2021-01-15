@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 11/15/2018
 ms.author: kumud
 ms.reviewer: anavin
-ms.openlocfilehash: 148d57da549e8364620c8417cbd61d975cea1498
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ff9fcbb693f7e606c07985f9bce9acd60c5591a
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87046104"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222972"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-same-subscription"></a>Virtuális hálózati társítás létrehozása – különböző üzemi modellek, azonos előfizetés
 
@@ -35,7 +35,7 @@ A virtuális hálózati társítások létrehozásának lépései eltérőek, at
 |[Mindkét Resource Manager](create-peering-different-subscriptions.md) |Különböző|
 |[Egy Resource Manager, egy klasszikus](create-peering-different-deployment-models-subscriptions.md) |Különböző|
 
-Nem hozható létre virtuális hálózati társítás a klasszikus üzemi modellen keresztül üzembe helyezett két virtuális hálózat között. Ha a klasszikus üzemi modellel létrehozott virtuális hálózatokat is össze kell kapcsolni, használhat Azure- [VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a virtuális hálózatok összekapcsolásához.
+Nem hozható létre virtuális hálózati társítás a klasszikus üzemi modellen keresztül üzembe helyezett két virtuális hálózat között. Ha a klasszikus üzemi modellel létrehozott virtuális hálózatokat is össze kell kapcsolni, használhat Azure- [VPN Gateway](../vpn-gateway/tutorial-site-to-site-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a virtuális hálózatok összekapcsolásához.
 
 Ez az oktatóanyag az azonos régióban található virtuális hálózatokat ismerteti. A különböző [támogatott régiókban](virtual-network-manage-peering.md#cross-region)lévő egyenrangú virtuális hálózatokat is használhatja. Javasoljuk, hogy ismerkedjen meg a társítási [követelményekkel és a megkötésekkel](virtual-network-manage-peering.md#requirements-and-constraints) a virtuális hálózatok társítása előtt.
 
@@ -44,8 +44,8 @@ A virtuális hálózati társítás létrehozásához használhatja a Azure Port
 ## <a name="create-peering---azure-portal"></a>Peering-Azure Portal létrehozása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). A bejelentkezett fióknak rendelkeznie kell a virtuális hálózati társítás létrehozásához szükséges engedélyekkel. Az engedélyek listáját lásd: [virtuális hálózati](virtual-network-manage-peering.md#requirements-and-constraints)társítási engedélyek.
-2. Kattintson az **+ új**, majd a **hálózatkezelés**, majd a **virtuális hálózat**elemre.
-3. A **virtuális hálózat létrehozása** panelen adja meg vagy válassza ki a következő beállítások értékeit, majd kattintson a **Létrehozás**gombra:
+2. Kattintson az **+ új**, majd a **hálózatkezelés**, majd a **virtuális hálózat** elemre.
+3. A **virtuális hálózat létrehozása** panelen adja meg vagy válassza ki a következő beállítások értékeit, majd kattintson a **Létrehozás** gombra:
     - **Név**: *myVnet1*
     - **Címterület**: *10.0.0.0/16*
     - **Alhálózat neve**: *default*
@@ -53,9 +53,9 @@ A virtuális hálózati társítás létrehozásához használhatja a Azure Port
     - **Előfizetés**: válassza ki az előfizetését
     - **Erőforráscsoport**: válassza az **új létrehozása** elemet, és adja meg a *myResourceGroup*
     - Hely: *USA keleti* **régiója**
-4. Kattintson az **+ Új** elemre. A **Keresés a piactéren** mezőbe írja be a *virtuális hálózat*kifejezést. Kattintson a **virtuális hálózat** elemre, amikor megjelenik a keresési eredmények között.
-5. A **virtuális hálózat** panelen válassza a **klasszikus** lehetőséget a **telepítési modell kiválasztása** mezőben, majd kattintson a **Létrehozás**gombra.
-6. A **virtuális hálózat létrehozása** panelen adja meg vagy válassza ki a következő beállítások értékeit, majd kattintson a **Létrehozás**gombra:
+4. Kattintson az **+ Új** elemre. A **Keresés a piactéren** mezőbe írja be a *virtuális hálózat* kifejezést. Kattintson a **virtuális hálózat** elemre, amikor megjelenik a keresési eredmények között.
+5. A **virtuális hálózat** panelen válassza a **klasszikus** lehetőséget a **telepítési modell kiválasztása** mezőben, majd kattintson a **Létrehozás** gombra.
+6. A **virtuális hálózat létrehozása** panelen adja meg vagy válassza ki a következő beállítások értékeit, majd kattintson a **Létrehozás** gombra:
     - **Név**: *myVnet2*
     - **Címterület**: *10.1.0.0/16*
     - **Alhálózat neve**: *default*
@@ -64,14 +64,14 @@ A virtuális hálózati társítás létrehozásához használhatja a Azure Port
     - **Erőforráscsoport**: válassza a **meglévő használata** lehetőséget, és válassza a *myResourceGroup* lehetőséget.
     - Hely: *USA keleti* **régiója**
 7. A portál tetején található **erőforrások keresése** mezőben írja be a következőt: *myResourceGroup*. Kattintson a **myResourceGroup** elemre, amikor megjelenik a keresési eredmények között. Megjelenik egy panel a **myresourcegroup** erőforráscsoporthoz. Az erőforráscsoport az előző lépések során létrehozott két virtuális hálózatot tárolja.
-8. Kattintson a **myVNet1**elemre.
+8. Kattintson a **myVNet1** elemre.
 9. A megjelenő **myVnet1** **panelen kattintson a** panel bal oldalán lévő beállítások függőleges listájában található társítások elemre.
 10. A megjelenő **myVnet1-társak** panelen kattintson a **+ Hozzáadás** gombra.
-11. A megjelenő **egyenrangú panel hozzáadása** panelen írja be vagy válassza ki a következő beállításokat, majd kattintson az **OK**gombra:
+11. A megjelenő **egyenrangú panel hozzáadása** panelen írja be vagy válassza ki a következő beállításokat, majd kattintson az **OK** gombra:
      - **Név**: *myVnet1ToMyVnet2*
-     - **Virtuális hálózat telepítési modellje**: válassza a **klasszikus**lehetőséget.
+     - **Virtuális hálózat telepítési modellje**: válassza a **klasszikus** lehetőséget.
      - **Előfizetés**: válassza ki az előfizetését
-     - **Virtuális hálózat**: kattintson **a virtuális hálózat kiválasztása**, majd a **myVnet2**elemre.
+     - **Virtuális hálózat**: kattintson **a virtuális hálózat kiválasztása**, majd a **myVnet2** elemre.
      - **Virtuális hálózati hozzáférés engedélyezése:** Győződjön meg arról, hogy az **engedélyezve** beállítás be van jelölve.
     Ebben az oktatóanyagban más beállítások nem használhatók. Az összes egyenrangú beállítás megismeréséhez olvassa el a [virtuális hálózati](virtual-network-manage-peering.md#create-a-peering)társítások kezelése című témakört.
 12. Miután az **OK gombra** kattintott az előző lépésben, a társítás **hozzáadása** panel bezárul, és újra megjelenik a **myVnet1** . Néhány másodperc elteltével a létrehozott társítás megjelenik a panelen. A **kapcsolat** a létrehozott **MyVnet1ToMyVnet2** -társítás **egyenrangú állapot** oszlopában szerepel.
@@ -148,7 +148,7 @@ Hajtsa végre az alábbi lépéseket a klasszikus Azure CLI-vel és az Azure CLI
 1. Telepítse a PowerShell [Azure](https://www.powershellgallery.com/packages/Azure) és [az modulok legújabb](https://www.powershellgallery.com/packages/Az/) verzióját. Ha először használja a PowerShellt, olvassa el az [Azure PowerShell áttekintését](/powershell/azure/?toc=%2fazure%2fvirtual-network%2ftoc.json).
 2. Indítsa el a PowerShell-munkamenetet.
 3. A PowerShellben jelentkezzen be az Azure-ba a parancs beírásával `Add-AzureAccount` . A bejelentkezett fióknak rendelkeznie kell a virtuális hálózati társítás létrehozásához szükséges engedélyekkel. Az engedélyek listáját lásd: [virtuális hálózati](virtual-network-manage-peering.md#requirements-and-constraints)társítási engedélyek.
-4. Virtuális hálózat (klasszikus) PowerShell-lel történő létrehozásához létre kell hoznia egy újat, vagy módosítania kell egy meglévő hálózati konfigurációs fájlt. Útmutató [hálózati konfigurációs fájlok exportálásához, frissítéséhez és importálásához](virtual-networks-using-network-configuration-file.md). A fájlnak tartalmaznia kell a következő **VirtualNetworkSite** elemet az oktatóanyagban használt virtuális hálózathoz:
+4. Virtuális hálózat (klasszikus) PowerShell-lel történő létrehozásához létre kell hoznia egy újat, vagy módosítania kell egy meglévő hálózati konfigurációs fájlt. Útmutató [hálózati konfigurációs fájlok exportálásához, frissítéséhez és importálásához](/previous-versions/azure/virtual-network/virtual-networks-using-network-configuration-file). A fájlnak tartalmaznia kell a következő **VirtualNetworkSite** elemet az oktatóanyagban használt virtuális hálózathoz:
 
     ```xml
     <VirtualNetworkSite name="myVnet2" Location="East US">
@@ -212,9 +212,9 @@ Az oktatóanyag befejezése után érdemes lehet törölni az oktatóanyagban l�
 
 ### <a name="azure-portal"></a><a name="delete-portal"></a>Azure Portal
 
-1. A portál keresési mezőjébe írja be a **myResourceGroup**értéket. A keresési eredmények között kattintson a **myResourceGroup**elemre.
+1. A portál keresési mezőjébe írja be a **myResourceGroup** értéket. A keresési eredmények között kattintson a **myResourceGroup** elemre.
 2. A **myResourceGroup** panelen kattintson a **Törlés** ikonra.
-3. A törlés megerősítéséhez írja be az **erőforráscsoport neve** mezőbe az **myResourceGroup**nevet, majd kattintson a **Törlés**gombra.
+3. A törlés megerősítéséhez írja be az **erőforráscsoport neve** mezőbe az **myResourceGroup** nevet, majd kattintson a **Törlés** gombra.
 
 ### <a name="azure-cli"></a><a name="delete-cli"></a>Azure CLI
 
@@ -240,7 +240,7 @@ Az oktatóanyag befejezése után érdemes lehet törölni az oktatóanyagban l�
     Remove-AzResourceGroup -Name myResourceGroup -Force
     ```
 
-2. A virtuális hálózat (klasszikus) PowerShell-lel való törléséhez módosítania kell egy meglévő hálózati konfigurációs fájlt. Útmutató [hálózati konfigurációs fájlok exportálásához, frissítéséhez és importálásához](virtual-networks-using-network-configuration-file.md). Távolítsa el a következő VirtualNetworkSite elemet az oktatóanyagban használt virtuális hálózathoz:
+2. A virtuális hálózat (klasszikus) PowerShell-lel való törléséhez módosítania kell egy meglévő hálózati konfigurációs fájlt. Útmutató [hálózati konfigurációs fájlok exportálásához, frissítéséhez és importálásához](/previous-versions/azure/virtual-network/virtual-networks-using-network-configuration-file). Távolítsa el a következő VirtualNetworkSite elemet az oktatóanyagban használt virtuális hálózathoz:
 
     ```xml
     <VirtualNetworkSite name="myVnet2" Location="East US">
@@ -258,7 +258,7 @@ Az oktatóanyag befejezése után érdemes lehet törölni az oktatóanyagban l�
     > [!WARNING]
     > A módosított hálózati konfigurációs fájlok importálása a meglévő virtuális hálózatok (klasszikus) módosítását eredményezheti az előfizetésében. Győződjön meg arról, hogy csak az előző virtuális hálózatot távolítja el, és hogy nem módosítja vagy nem távolítja el az előfizetéshez tartozó többi meglévő virtuális hálózatot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Alaposan megismerheti a fontos [virtuális hálózati társítási korlátozásokat és a viselkedést](virtual-network-manage-peering.md#requirements-and-constraints) , mielőtt létrehozza a virtuális hálózatokat az éles környezetben való használatra.
 - További információ az összes [virtuális hálózati társ](virtual-network-manage-peering.md#create-a-peering)-összevonási beállításról.

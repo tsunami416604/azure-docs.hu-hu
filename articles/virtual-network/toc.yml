@@ -124,7 +124,7 @@
         - name: Kubernetes hálózati házirendek
           href: kubernetes-network-policies.md
         - name: DDoS Protection
-          href: 'https://docs.microsoft.com/azure/ddos-protection/ddos-protection-overview'
+          href: ../ddos-protection/ddos-protection-overview.md
         - name: Virtuális hálózat TAP-jai
           href: virtual-network-tap-overview.md
         - name: Az Azure Policy biztonsági vezérlői
@@ -137,7 +137,7 @@
         - name: Alhálózat delegálása
           href: subnet-delegation-overview.md
     - name: Klasszikus üzembe helyezés
-      href: 'https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-network-ip-addresses-overview-classic'
+      href: /previous-versions/azure/virtual-network/virtual-network-ip-addresses-overview-classic
 - name: Útmutatók
   items:
     - name: Tervezés és konfigurálás
@@ -165,7 +165,7 @@
             - name: Azure CLI
               href: tutorial-create-route-table-cli.md
             - name: Ansible
-              href: /azure/ansible/ansible-create-configure-route-table
+              href: /azure/developer/ansible/route-table-configure
             - name: Útválasztási táblázatok kezelése
               href: manage-route-table.md
         - name: Hálózati adapterek kezelése
@@ -199,11 +199,11 @@
             - name: Resource Manager-alapú és klasszikus virtuális hálózat közötti kapcsolat
               href: ../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json
             - name: Virtuális hálózat és helyszíni hálózat (VPN) közötti kapcsolat
-              href: ../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+              href: ../vpn-gateway/tutorial-site-to-site-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json
             - name: Virtuális hálózat és helyszíni hálózat (ExpressRoute) közötti kapcsolat
               href: ../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json
             - name: Magas rendelkezésre állású hibrid hálózati architektúra
-              href: ../guidance/guidance-hybrid-network-expressroute-vpn-failover.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+              href: /azure/architecture/reference-architectures/hybrid-networking/expressroute-vpn-failover?toc=%2fazure%2fvirtual-network%2ftoc.json
         - name: Virtuális hálózat TAP-jának konfigurálása
           href: tutorial-tap-virtual-network-cli.md
         - name: Tárolóalapú hálózatkezelés üzembe helyezése
@@ -311,9 +311,9 @@
                 - name: Azure CLI
                   href: virtual-network-service-endpoint-policies-cli.md
         - name: A DDoS Protection kezelése
-          href: 'https://docs.microsoft.com/azure/ddos-protection/manage-ddos-protection'
+          href: ../ddos-protection/manage-ddos-protection.md
         - name: Partnerek előkészítése a DDoS Protection Standard használatára
-          href: 'https://docs.microsoft.com/azure/ddos-protection/ddos-protection-partner-onboarding'
+          href: ../ddos-protection/ddos-protection-partner-onboarding.md
         - name: Hálózati biztonsági csoportok kezelése
           href: manage-network-security-group.md
         - name: Biztonsági forgatókönyvek
@@ -321,7 +321,7 @@
             - name: Hálózatok biztonságossá tétele virtuális készülékekkel
               href: virtual-network-scenario-udr-gw-nva.md
             - name: Szegélyhálózat (DMZ) az Azure és az internet között
-              href: ../guidance/guidance-iaas-ra-secure-vnet-dmz.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+              href: /azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2fazure%2fvirtual-network%2ftoc.json
     - name: Virtuális gépek hálózatkezelése
       items:
         - name: Virtuális gép létrehozása – Statikus nyilvános IP-cím
@@ -435,7 +435,7 @@
         - name: Azure-beli virtuális gép csatlakozási problémáinak elhárítása
           href: troubleshoot-vm-connectivity.md
     - name: Klasszikus üzembe helyezés
-      href: 'https://docs.microsoft.com/previous-versions/azure/virtual-network/create-virtual-network-classic'
+      href: /previous-versions/azure/virtual-network/create-virtual-network-classic
 - name: Referencia
   items:
     - name: Azure CLI
@@ -447,7 +447,7 @@
     - name: Java
       href: /java/api/
     - name: Node.js
-      href: 'https://docs.microsoft.com/javascript/azure#azure-sdk'
+      href: /javascript/azure#azure-sdk
     - name: Python
       href: 'https://azure.microsoft.com/develop/python/'
     - name: REST
@@ -468,7 +468,7 @@
     - name: Hálózatkezelési blog
       href: 'https://azure.microsoft.com/blog/topics/networking'
     - name: Microsoft Q&A kérdések oldala a hálózatkezeléshez
-      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-network.html'
+      href: /answers/topics/azure-virtual-network.html
     - name: Hálózatkezelés – visszajelzés
       href: 'https://feedback.azure.com/forums/217313-networking?category_id=77469'
     - name: Díjszabás

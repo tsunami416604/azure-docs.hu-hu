@@ -65,7 +65,7 @@
               href: relay-hybrid-connections-node-ws-api-overview.md
     - name: Biztonságos
       items:
-        - name: IP-tűzfal konfigurálása (előzetes verzió)
+        - name: IP-tűzfal konfigurálása
           href: ip-firewall-virtual-networks.md
         - name: Privát végpontok konfigurálása
           href: private-link-service.md

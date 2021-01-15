@@ -11,6 +11,10 @@
       href: quickstart-template.md
     - name: PowerShell
       href: quickstart-powershell.md
+    - name: Portál
+      href: quickstart-portal.md
+    - name: parancssori felület
+      href: quickstart-azure-cli.md
 - name: Oktatóanyagok
   items:
     - name: Igazolási szabályzat készítése

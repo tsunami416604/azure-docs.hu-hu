@@ -11,12 +11,12 @@ metadata:
   author: KumudD
   ms.author: kumud
   ms.date: 08/28/2019
-  ms.openlocfilehash: a6c0bee32fbeb50c1eef0a9625706bcee9e1ae17
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 7bf639fb7bc89ec218b280bcf7d02c76c7bde277
+  ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "82086470"
+  ms.lasthandoff: 01/14/2021
+  ms.locfileid: "98223601"
 landingContent:
 - title: A Virtual Network bemutatása
   linkLists:
@@ -45,9 +45,9 @@ landingContent:
   - linkListType: concept
     links:
     - text: Network security groups (Hálózati biztonsági csoportok)
-      url: security-overview.md
+      url: ./network-security-groups-overview.md
     - text: Alkalmazásbiztonsági csoportok
-      url: security-overview.md#application-security-groups
+      url: ./network-security-groups-overview.md#application-security-groups
     - text: Virtuális hálózati szolgáltatásvégpontok
       url: virtual-network-service-endpoints-overview.md
     - text: Virtuális hálózatok biztonsága – gyakori kérdések
@@ -63,7 +63,7 @@ landingContent:
   - linkListType: learn
     links:
     - text: Azure-erőforrásokhoz való hozzáférés védelme és elkülönítése
-      url: https://docs.microsoft.com/learn/modules/secure-and-isolate-with-nsg-and-service-endpoints
+      url: /learn/modules/secure-and-isolate-with-nsg-and-service-endpoints
   - linkListType: video
     links:
     - text: Az Azure Private Link szolgáltatással biztonságosan hozzáférhet az Azure PaaS-erőforrásaihoz
@@ -93,7 +93,7 @@ landingContent:
   - linkListType: learn
     links:
     - text: Kommunikáció virtuális hálózatok kötött társviszony létrehozásával
-      url: https://docs.microsoft.com/learn/modules/integrate-vnets-with-vnet-peering
+      url: /learn/modules/integrate-vnets-with-vnet-peering
 - title: Hálózati forgalom továbbítása
   linkLists:
   - linkListType: concept
@@ -109,7 +109,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: IP-cím-típusok és lefoglalási módszerek
-      url: virtual-network-ip-addresses-overview-arm.md
+      url: ./public-ip-addresses.md
   - linkListType: how-to-guide
     links:
     - text: Nyilvános IP-címek létrehozása, módosítása és törlése
@@ -151,7 +151,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: IP-cím-típusok és lefoglalási módszerek
-      url: virtual-network-ip-addresses-overview-arm.md
+      url: ./public-ip-addresses.md
     - text: Mi az IPv6 az Azure virtuális hálózaton?
       url: ipv6-overview.md
     - text: Nyilvános IP-cím előtagja

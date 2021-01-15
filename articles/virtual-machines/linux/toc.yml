@@ -197,7 +197,7 @@
             - name: Előre fizetés virtuális gépekért
               href: ../prepay-reserved-vm-instances.md
             - name: Előre fizetés dedikált gazdagépekért
-              href: ../prepay-dedicated-hosts-reserved-instances.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../prepay-dedicated-hosts-reserved-instances.md
             - name: Mi az az Azure Reservations?
               href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md?toc=/azure/virtual-machines/linux/toc.json
             - name: Virtuálisgép-példányok méretrugalmassága
@@ -232,7 +232,7 @@
         - name: Titkosítás
           href: ../disk-encryption.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Lemezes tároláshoz kapcsolódó lefoglalások
-          href: ../../cost-management-billing/reservations/understand-disk-reservations.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../cost-management-billing/reservations/understand-disk-reservations.md
         - name: Virtuálisgép- és lemezteljesítmény
           href: disk-performance-linux.md
         - name: Nagy teljesítményű rendszer tervezése
@@ -329,7 +329,7 @@
         - name: Áttelepítés a parancssori felületről
           href: ../migration-classic-resource-manager-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Gyakori áttelepítési hibák
-          href: ../migration-classic-resource-manager-errors.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../migration-classic-resource-manager-errors.md
         - name: Közösségi eszközök áttelepítéshez
           href: ../migration-classic-resource-manager-community-tools.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: GYIK
@@ -502,7 +502,7 @@
             - name: Bastion-gazdagép létrehozása
               items:
                 - name: Portál
-                  href: ../../bastion/tutorial-create-host-portal.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+                  href: ../../bastion/tutorial-create-host-portal.md
                 - name: PowerShell
                   href: ../../bastion/bastion-create-host-powershell.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
                 - name: parancssori felület
@@ -746,13 +746,13 @@
                 - name: Monitorozás engedélyezésének áttekintése
                   href: ../../azure-monitor/insights/vminsights-enable-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
                 - name: Engedélyezés egyetlen Azure-beli virtuális gépen
-                  href: ../../azure-monitor/insights/vminsights-enable-portal.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-portal.md
                 - name: Engedélyezés az Azure Policyval
-                  href: ../../azure-monitor/insights/vminsights-enable-policy.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-policy.md
                 - name: Engedélyezés az Azure PowerShell-lel
-                  href: ../../azure-monitor/insights/vminsights-enable-powershell.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-powershell.md
                 - name: Engedélyezés hibrid környezetben
-                  href: ../../azure-monitor/insights/vminsights-enable-hybrid.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-hybrid.md
             - name: Függőségek feltérképezése
               href: ../../azure-monitor/insights/vminsights-maps.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Teljesítmény figyelése

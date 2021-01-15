@@ -1,6 +1,6 @@
 ---
 title: Tábla növekményes másolása a PowerShell-lel
-description: Ebben az oktatóanyagban egy Azure-beli adatfeldolgozó-folyamatot hoz létre, amely Növekményesen másolja az Azure SQL Database-ből az Azure Blob Storage-ba.
+description: Ebben az oktatóanyagban egy Azure Data Factory folyamatot hoz létre, amely Növekményesen másol egy Azure SQL Database-ből származó adatait az Azure Blob Storage-ba.
 services: data-factory
 author: dearandyxu
 ms.author: yexu
@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 65a2d06acc3461d881ad6f100f3720b217ef7634
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 50608870fa397ad5586c626f1d1fe5c9d893b4ca
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510209"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222819"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-powershell"></a>Adatok növekményes betöltése Azure SQL Databaseról az Azure Blob Storage-ba a PowerShell használatával
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Ebben az oktatóanyagban egy Azure-beli adatelőállítót hoz létre egy olyan folyamattal, amely az Azure Blob Storage-ba Azure SQL Database egy táblából származó különbözeti adatait tölti be.
+Ebben az oktatóanyagban a Azure Data Factory használatával hozzon létre egy folyamatot, amely egy Azure SQL Database egyik táblájából az Azure Blob Storage-ba tölti be a különbözeti adatok betöltését.
 
 Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
@@ -720,7 +720,7 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
     data_source_table | 2017-09-07 09:01:00.000
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az oktatóanyagban az alábbi lépéseket hajtotta végre:
 
 > [!div class="checklist"]

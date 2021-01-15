@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 669b8427f13efcc55a69bc7c970b6658a6719cd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e798f81102017b4d34c4b1b219a9f23035b0359
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86134714"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222836"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-powershell"></a>Virtuális gép magánhálózati IP-címeinek konfigurálása (klasszikus) a PowerShell használatával
 
@@ -35,10 +35,10 @@ Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. [A statikus magánh�
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
-Az alábbi PowerShell-parancsok egy már létrehozott egyszerű környezetet várnak. Ha a jelen dokumentumban megjelenő parancsokat szeretné futtatni, először [hozza létre a VNet létrehozása](virtual-networks-create-vnet-classic-netcfg-ps.md)című témakörben leírt tesztkörnyezetben.
+Az alábbi PowerShell-parancsok egy már létrehozott egyszerű környezetet várnak. Ha a jelen dokumentumban megjelenő parancsokat szeretné futtatni, először [hozza létre a VNet létrehozása](/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-netcfg-ps)című témakörben leírt tesztkörnyezetben.
 
 ## <a name="how-to-verify-if-a-specific-ip-address-is-available"></a>Annak ellenőrzése, hogy elérhető-e egy adott IP-cím
-Annak ellenőrzéséhez, hogy az IP- *192.168.1.101* elérhető-e egy *TestVNet*nevű VNet, futtassa a következő PowerShell-parancsot, és ellenőrizze a *IsAvailable*értékét:
+Annak ellenőrzéséhez, hogy az IP- *192.168.1.101* elérhető-e egy *TestVNet* nevű VNet, futtassa a következő PowerShell-parancsot, és ellenőrizze a *IsAvailable* értékét:
 
 ```azurepowershell
 Test-AzureStaticVNetIP –VNetName TestVNet –IPAddress 192.168.1.101 
@@ -55,7 +55,7 @@ OperationStatus      : Succeeded
 ```
 
 ## <a name="how-to-specify-a-static-private-ip-address-when-creating-a-vm"></a>Statikus magánhálózati IP-cím megadása virtuális gép létrehozásakor
-Az alábbi PowerShell-szkript létrehoz egy *TestService*nevű új felhőalapú szolgáltatást, majd beolvas egy rendszerképet az Azure-ból, létrehoz egy *DNS01* nevű virtuális gépet az új Cloud Service-ben a beolvasott rendszerkép használatával, beállítja a virtuális gépet egy *FrontEnd*nevű alhálózatban, és a *192.168.1.7* statikus magánhálózati IP-címként állítja be a virtuális géphez:
+Az alábbi PowerShell-szkript létrehoz egy *TestService* nevű új felhőalapú szolgáltatást, majd beolvas egy rendszerképet az Azure-ból, létrehoz egy *DNS01* nevű virtuális gépet az új Cloud Service-ben a beolvasott rendszerkép használatával, beállítja a virtuális gépet egy *FrontEnd* nevű alhálózatban, és a *192.168.1.7* statikus magánhálózati IP-címként állítja be a virtuális géphez:
 
 ```azurepowershell
 New-AzureService -ServiceName TestService -Location "Central US"
@@ -153,8 +153,7 @@ Update-AzureVM       77d8cae2-87e6-0ead-9738-7c7dae9810cb Succeeded
 
 Azt javasoljuk, hogy a virtuális gép operációs rendszerén belül ne rendeljen statikusan az Azure-beli virtuális géphez rendelt magánhálózati IP-címet, ha szükséges. Ha a magánhálózati IP-címet manuálisan állítja be az operációs rendszeren belül, győződjön meg arról, hogy a cím megegyezik az Azure-beli virtuális géphez rendelt magánhálózati IP-címmel, vagy megszakadhat a kapcsolat a virtuális géppel. Soha ne rendeljen hozzá manuálisan egy Azure-beli virtuális géphez hozzárendelt nyilvános IP-címet a virtuális gép operációs rendszerén belül.
 
-## <a name="next-steps"></a>További lépések
-* További információ a [fenntartott nyilvános IP-](virtual-networks-reserved-public-ip.md) címekről.
-* További információ a [példány szintű nyilvános IP-címekről (ILPIP)](virtual-networks-instance-level-public-ip.md) .
-* Forduljon a [fenntartott IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)-khoz.
-
+## <a name="next-steps"></a>Következő lépések
+* További információ a [fenntartott nyilvános IP-](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) címekről.
+* További információ a [példány szintű nyilvános IP-címekről (ILPIP)](/previous-versions/azure/virtual-network/virtual-networks-instance-level-public-ip) .
+* Forduljon a [fenntartott IP REST API](/previous-versions/azure/reference/dn722420(v=azure.100))-khoz.
