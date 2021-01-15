@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2019
-ms.openlocfilehash: 53277f64c3d1b03572732157756da1fececbcd43
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 69f00416f180f83c761be5ed444e80903e9fcbb6
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184569"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234443"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Azure Monitor naplózási adatnaplóba való importálás Power BI
 
@@ -28,6 +28,9 @@ Ha Azure Monitor [log Analytics munkaterületről](manage-access.md) szeretne ad
 ## <a name="export-query"></a>Lekérdezés exportálása
 Először hozzon létre egy olyan [log-lekérdezést](../log-query/log-query-overview.md) , amely visszaadja azokat az adatokat, amelyeket fel szeretne tölteni a Power bi adatkészletből.  Ezután exportálja a lekérdezést [Power Query (M) nyelvre](/powerquery-m/power-query-m-language-specification) , amelyet a Power bi Desktop használhat.
 
+> [!WARNING]
+> Ügyeljen arra, hogy [optimalizálja a lekérdezést](../log-query/query-optimization.md) úgy, hogy az ne tartson túl hosszú ideig, vagy időtúllépést okoz. Jegyezze fel az exportált lekérdezés **TimeSpan** értékét, amely meghatározza a lekérdezés által lekért TimeSpan. A lekérdezés által visszaadott adatok mennyiségének korlátozásához a legkisebb TimeSpan kell használnia.
+
 1. Az adatkészlethez tartozó adatok kinyeréséhez [hozza létre a log Analytics napló lekérdezést](../log-query/log-analytics-tutorial.md) .
 2. Válassza az **Exportálás**  >  **Power bi lekérdezés (M)** lehetőséget.  Ezzel exportálja a lekérdezést egy **PowerBIQuery.txt** nevű szövegfájlba. 
 
@@ -39,7 +42,7 @@ Először hozzon létre egy olyan [log-lekérdezést](../log-query/log-query-ove
 A Power BI Desktop egy asztali alkalmazás, amely lehetővé teszi, hogy a Power BI közzétett adatkészleteket és jelentéseket hozzon létre.  Azt is megteheti, hogy a Azure Monitorból exportált Power Query nyelvet használó lekérdezést hoz létre. 
 
 1. Ha még nincs telepítve, telepítse a [Power bi Desktop](https://powerbi.microsoft.com/desktop/) , majd nyissa meg az alkalmazást.
-2. **Get Data**  >  Új lekérdezés megnyitásához válassza az **adatlekérdezés üres lekérdezés** lehetőséget.  Ezután válassza ki **speciális szerkesztő** és illessze be az exportált fájl tartalmát a lekérdezésbe. Kattintson a **Kész** gombra.
+2.   >  Új lekérdezés megnyitásához válassza az **adatlekérdezés üres lekérdezés** lehetőséget.  Ezután válassza ki **speciális szerkesztő** és illessze be az exportált fájl tartalmát a lekérdezésbe. Kattintson a **Kész** gombra.
 
     ![Power BI Desktop lekérdezés](media/powerbi/desktop-new-query.png)
 
@@ -78,6 +81,6 @@ A Power BIban létrehozott adatkészlet ugyanazokat az adatokat fogja tartalmazn
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ a [naplók kereséséről](../log-query/log-query-overview.md) a Power bi exportálható lekérdezések létrehozásához.
 * További információ a [Power BIről](https://powerbi.microsoft.com) a vizualizációk Azure monitor naplók alapján történő létrehozásához.
