@@ -3,12 +3,12 @@ title: Támogatott fürtözött verziók az Azure Service Fabric
 description: Ismerje meg az Azure Service Fabric-beli fürtök verzióit, beleértve a Service Fabric csapat blogján elérhető legújabb kiadásokra mutató hivatkozást is.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: abf9900e9749a1b21d927e0315076b38848bea10
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: c2ea2b53649cf148a19df46835c8936345aa20e5
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132647"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234341"
 ---
 # <a name="supported-service-fabric-versions"></a>Támogatott Service Fabric verziók
 
@@ -37,18 +37,18 @@ Az **Azure Service Fabric-fürtök, amelyek 5,7-től 6.3.63-ig nem támogatott v
 Frissítsen az alább felsorolt Service Fabric támogatott verziókra, hogy elkerülje az állásidőt vagy a változáshoz kapcsolódó funkciók elvesztését. Győződjön meg arról, hogy a fürtök legalább ezeket a verziókat futtatják a környezettel kapcsolatos problémák megelőzése érdekében.
 
   ###### <a name="supported-service-fabric-runtime-versions"></a>Támogatott Service Fabric futtatókörnyezet-verziók
-   Ha nem a felsorolt Service Fabric támogatott verzióit használja, frissítsen az egyik verzióra, amely már tartalmazza a szükséges módosításokat, hogy megakadályozza az állásidőt a fürtön.  
+   Ha nem a felsorolt Service Fabric támogatott verzióit használja, frissítsen az egyik verzióra, amely már tartalmazza a szükséges módosításokat, hogy megakadályozza az állásidőt a fürtön. **Megjegyzés:** A 7,2 összes kiadási verziója tartalmazza a szükséges módosításokat.
   
   | Operációs rendszer | Jelenlegi Service Fabric futtatókörnyezet a fürtben | CU/patch kiadás  | 
   | --- | --- |--- | 
   | Windows | 7,0. * | 7.0.478.9590 |
   | Windows | 7,1. * | 7.1.503.9590 |
-  | Windows | 7,2. * | 7.2.445.9590 |
+  | Windows | 7,2. * | 7,2. * |
   | Ubuntu 16 | 7,0. * | 7.0.472.1  |
   | Linux Ubuntu 16,04 | 7,1. * | 7.1.455.1  |
   | Linux Ubuntu 18,04 | 7,1. * | 7.1.455.1804 |
-  | Linux Ubuntu 16,04 | 7,2. * | 7.2.447.1 |
-  | Linux Ubuntu 18,04 | 7,2. * | 7.2.447.1804 |
+  | Linux Ubuntu 16,04 | 7,2. * | 7,2. * |
+  | Linux Ubuntu 18,04 | 7,2. * | 7,2. * |
  
 ### <a name="upgrade-alert-for-versions-greater-than-63"></a>Frissítési riasztás a 6,3-nál nagyobb verzióknál 
 A biztonság és a rendelkezésre állás javítása érdekében az Azure-infrastruktúra olyan változást tesz szükségessé, amely hatással lehet Service Fabric ügyfeleire. Az **összes olyan Service Fabric-fürt, amely [a tárolók számára nyitott hálózatkezelési funkciót](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode)használ, a 6,3-nál nagyobb és a 7,0-es verziónál régebbi, nem 7,0 kompatibilis verziókra van hatással**. A módosítás kezeléséhez frissíteni kell az Service Fabric futtatókörnyezetet, amely az összes támogatott Service Fabric-verzióhoz már elérhető az összes régióban.
@@ -58,24 +58,24 @@ A biztonság és a rendelkezésre állás javítása érdekében az Azure-infras
  
   - A **6,3-nál nagyobb Service Fabric-t futtató fürtök esetében a nyitott hálózatkezelési funkció használata** esetén a fürt továbbra is fennáll, azonban a tárolók fürtjének nyitott hálózati funkciója megszűnik a működésük, ami miatt a munkaterhelések szolgáltatás megszakadhat.
 
- - A **6,3-nál nagyobb Service Fabric-t futtató fürtök esetében, és a [tárolók nyitott hálózatkezelési funkciójának](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) használata** esetén a fürt továbbra is fennáll, de a működésük megszűnik, ami a munkaterhelések szolgáltatás általi megszakítását okozhatja.
+ - A **6,3-nál nagyobb Service Fabric-t futtató fürtök esetében, és a [tárolók nyitott hálózati funkciójának](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) használata** esetén a fürt elérhetetlenné válhat, és megszűnik a működés, ami a munkaterhelések szolgáltatás általi megszakítását okozhatja.
   
 #### <a name="required-action"></a>Szükséges művelet
 Frissítsen az alább felsorolt Service Fabric támogatott verziókra, hogy elkerülje az állásidőt vagy a változáshoz kapcsolódó funkciók elvesztését. Győződjön meg arról, hogy a fürtök legalább ezeket a verziókat futtatják a környezettel kapcsolatos problémák megelőzése érdekében. 
  
  ###### <a name="supported-service-fabric-runtime-versions"></a>Támogatott Service Fabric futtatókörnyezet-verziók
- Ha nem szerepel a Service Fabric támogatott verziói között, frissítsen az egyik verzióra, amely már tartalmazza a szükséges módosításokat, hogy megakadályozza a funkciók elvesztését.  
+ Ha nem szerepel a Service Fabric támogatott verziói között, frissítsen az egyik verzióra, amely már tartalmazza a szükséges módosításokat, hogy megakadályozza a funkciók elvesztését.  **Megjegyzés:** A 7,2 összes kiadási verziója tartalmazza a szükséges módosításokat.
  
   | Operációs rendszer | Jelenlegi Service Fabric futtatókörnyezet a fürtben | CU/patch kiadás  | 
   | --- | --- |--- | 
   | Windows | 7,0. * | 7.0.478.9590 |
   | Windows | 7,1. * | 7.1.503.9590 |
-  | Windows | 7,2. * | 7.2.445.9590 |
+  | Windows | 7,2. * | 7,2. * |
   | Linux Ubuntu 16,04 | 7,0. * | 7.0.472.1  |
   | Linux Ubuntu 16,04 | 7,1. * | 7.1.455.1  |
   | Linux Ubuntu 18,04 | 7,1. * | 7.1.455.1804 |
-  | Linux Ubuntu 16,04 | 7,2. * | 7.2.447.1 |
-  | Linux Ubuntu 18,04 | 7,2. * | 7.2.447.1804 |
+  | Linux Ubuntu 16,04 | 7,2. * | 7,2. * |
+  | Linux Ubuntu 18,04 | 7,2. * | 7,2. * |
 
 ## <a name="supported-versions"></a>Támogatott verziók
 A következő táblázat felsorolja a Service Fabric verzióit és azok támogatásának befejezési dátumát.

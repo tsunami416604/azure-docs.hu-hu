@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: kumud
-ms.openlocfilehash: f49a340a004a4aef37bcae9e3ae1c2b02ae030b9
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: d02f85647d947c2f28527ba6f0397c2a98e73840
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913101"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234188"
 ---
 # <a name="azure-networking-services-overview"></a>Az Azure hálózati szolgáltatásai – áttekintés
 
@@ -33,10 +33,10 @@ Ez a szakasz azokat a szolgáltatásokat ismerteti, amelyek kapcsolatot biztosí
 ### <a name="virtual-network"></a><a name="vnet"></a>Virtuális hálózat
 
 Az Azure Virtual Network (VNet) az Azure-beli magánhálózat alapvető építőeleme. A virtuális hálózatok a következőket végezheti el:
-- **Kommunikáció az Azure-erőforrások között** : telepíthet virtuális gépeket és számos más típusú Azure-erőforrást egy virtuális hálózatra, például Azure app Service környezetekre, az Azure Kubernetes szolgáltatásra (ak) és az Azure Virtual Machine Scale Setsre. A virtuális hálózatokon üzembe helyezhető Azure-erőforrások teljes listájáért lásd: [Virtuális hálózati szolgáltatás integrálása](../virtual-network/virtual-network-for-azure-services.md).
-- **Kommunikáció egymás között** : a virtuális hálózatok összekapcsolhatók egymással, így a virtuális hálózatban lévő erőforrások egymással is kommunikálhatnak, a virtuális hálózatok használatával. Az összekacsolt virtuális hálózatok lehetnek azonos vagy eltérő Azure-régiókban. További információ: [Virtual Network peering](../virtual-network/virtual-network-peering-overview.md).
-- **Kommunikáció az internettel** : a VNet összes erőforrása alapértelmezés szerint képes kommunikálni a kimenő internettel. Bejövő kommunikációt létesíthet egy erőforrással egy nyilvános IP-cím vagy Load Balancer hozzárendelésével. A kimenő kapcsolatok kezeléséhez [nyilvános IP-címeket](../virtual-network/virtual-network-public-ip-address.md) vagy nyilvános [Load Balancer](../load-balancer/load-balancer-overview.md) is használhat.
-- **Kommunikáció helyszíni hálózatokkal** : a helyszíni számítógépeit és hálózatait [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) vagy [ExpressRoute](../expressroute/expressroute-introduction.md)használatával összekapcsolhatja egy virtuális hálózattal.
+- **Kommunikáció az Azure-erőforrások között**: telepíthet virtuális gépeket és számos más típusú Azure-erőforrást egy virtuális hálózatra, például Azure app Service környezetekre, az Azure Kubernetes szolgáltatásra (ak) és az Azure Virtual Machine Scale Setsre. A virtuális hálózatokon üzembe helyezhető Azure-erőforrások teljes listájáért lásd: [Virtuális hálózati szolgáltatás integrálása](../virtual-network/virtual-network-for-azure-services.md).
+- **Kommunikáció egymás között**: a virtuális hálózatok összekapcsolhatók egymással, így a virtuális hálózatban lévő erőforrások egymással is kommunikálhatnak, a virtuális hálózatok használatával. Az összekacsolt virtuális hálózatok lehetnek azonos vagy eltérő Azure-régiókban. További információ: [Virtual Network peering](../virtual-network/virtual-network-peering-overview.md).
+- **Kommunikáció az internettel**: a VNet összes erőforrása alapértelmezés szerint képes kommunikálni a kimenő internettel. Bejövő kommunikációt létesíthet egy erőforrással egy nyilvános IP-cím vagy Load Balancer hozzárendelésével. A kimenő kapcsolatok kezeléséhez [nyilvános IP-címeket](../virtual-network/virtual-network-public-ip-address.md) vagy nyilvános [Load Balancer](../load-balancer/load-balancer-overview.md) is használhat.
+- **Kommunikáció helyszíni hálózatokkal**: a helyszíni számítógépeit és hálózatait [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) vagy [ExpressRoute](../expressroute/expressroute-introduction.md)használatával összekapcsolhatja egy virtuális hálózattal.
 
 További információ: [Mi az az Azure Virtual Network?](../virtual-network/virtual-networks-overview.md)
 
@@ -89,7 +89,7 @@ Az Azure orbitális egy teljes körűen felügyelt, felhőalapú szolgáltatás,
 Ez a szakasz az Azure-ban található hálózati szolgáltatásokat ismerteti, amelyek segítenek a hálózati erőforrások védelmében – az alkalmazások védelmét az Azure-DDoS Protection, a privát hivatkozás, a tűzfal, a webalkalmazási tűzfal, a hálózati biztonsági csoportok és a Virtual Network szolgáltatási végpontok használatával.
 
 ### <a name="ddos-protection"></a><a name="ddosprotection"></a>DDoS Protection 
-A [Azure DDoS Protection](../virtual-network/manage-ddos-protection.md) a legkifinomultabb DDoS-fenyegetések elleni védelmet nyújt. A szolgáltatás továbbfejlesztett DDoS-elhárítási képességeket biztosít az alkalmazáshoz és a virtuális hálózatokban üzembe helyezett erőforrásokhoz. Emellett a Azure DDoS Protectiont használó ügyfeleink hozzáférhetnek a DDoS gyors reagálás támogatásához, hogy aktív támadás közben is bekapcsolódjanak a DDoS-szakértőkbe.
+A [Azure DDoS Protection](../ddos-protection/manage-ddos-protection.md) a legkifinomultabb DDoS-fenyegetések elleni védelmet nyújt. A szolgáltatás továbbfejlesztett DDoS-elhárítási képességeket biztosít az alkalmazáshoz és a virtuális hálózatokban üzembe helyezett erőforrásokhoz. Emellett a Azure DDoS Protectiont használó ügyfeleink hozzáférhetnek a DDoS gyors reagálás támogatásához, hogy aktív támadás közben is bekapcsolódjanak a DDoS-szakértőkbe.
 
 :::image type="content" source="./media/networking-overview/ddos-protection.png" alt-text="DDoS Protection":::
 
@@ -109,14 +109,14 @@ A Azure Firewallról további információt a [Azure Firewall dokumentációjáb
 ### <a name="web-application-firewall"></a><a name="waf"></a>Webalkalmazási tűzfal
 Az [Azure webalkalmazási tűzfal](../web-application-firewall/overview.md) (WAF) védelmet nyújt a webalkalmazásoknak a gyakori webes biztonsági rések és sebezhetőségek, például az SQL-injektálás és a helyek közötti parancsfájlok használatával. Az Azure WAF a felügyelt szabályok segítségével a OWASP 10 legfontosabb biztonsági résen kívülről is biztosít védelmet a box-ban. Emellett az ügyfelek egyéni szabályokat is megadhatnak, amelyek az ügyfél által felügyelt szabályok a forrás IP-címtartomány alapján további védelmet biztosítanak, és olyan attribútumokat igényelnek, mint a fejlécek, a cookie-k, az űrlap adatmezői vagy a lekérdezési karakterlánc
 
-Az ügyfelek dönthetnek úgy, hogy üzembe helyezik az [Azure WAF-t Application Gateway,](../application-gateway/waf-overview.md) amely regionális védelmet biztosít a nyilvános és privát címtartomány entitásai számára. Az ügyfelek dönthetnek úgy is, hogy az [Azure WAF](../frontdoor/waf-overview.md) üzembe helyezését is lehetővé teszi, amely a hálózati peremhálózat védelmét biztosítja a nyilvános végpontok számára.
+Az ügyfelek dönthetnek úgy, hogy üzembe helyezik az [Azure WAF-t Application Gateway,](../web-application-firewall/ag/ag-overview.md) amely regionális védelmet biztosít a nyilvános és privát címtartomány entitásai számára. Az ügyfelek dönthetnek úgy is, hogy az [Azure WAF](../web-application-firewall/afds/afds-overview.md) üzembe helyezését is lehetővé teszi, amely a hálózati peremhálózat védelmét biztosítja a nyilvános végpontok számára.
 
 :::image type="content" source="./media/networking-overview/waf-overview.png" alt-text="Webalkalmazási tűzfal":::
 
-### <a name="network-security-groups"></a><a name="nsg"></a>Network security groups (Hálózati biztonsági csoportok)
+### <a name="network-security-groups"></a><a name="nsg"></a>Hálózati biztonsági csoportok
 Az Azure-beli virtuális hálózatokban az Azure-erőforrások bejövő és kimenő hálózati forgalmát hálózati biztonsági csoportokkal szűrheti. További információ: [hálózati biztonsági csoportok](../virtual-network/network-security-groups-overview.md).
 
-### <a name="service-endpoints"></a><a name="serviceendpoints"></a>Szolgáltatásvégpontok
+### <a name="service-endpoints"></a><a name="serviceendpoints"></a>Szolgáltatási végpontok
 A virtuális hálózatok (VNet) szolgáltatásvégpontjai egy közvetlen kapcsolaton keresztül kiterjesztik a virtuális hálózat magáncímterét és a VNet identitását az Azure-szolgáltatásokra. A végpontok segítségével biztosíthatja, hogy kritikus fontosságú Azure-szolgáltatási erőforrásai csak a virtuális hálózatain legyenek elérhetőek. A VNet felől az Azure-szolgáltatás felé irányuló forgalom mindig a Microsoft Azure gerinchálózatán halad át. További információ: [Virtual Network szolgáltatás-végpontok](../virtual-network/virtual-network-service-endpoints-overview.md).
 
 :::image type="content" source="./media/networking-overview/vnet-service-endpoints-overview.png" alt-text="Virtuális hálózati szolgáltatásvégpontok":::
@@ -166,7 +166,7 @@ Ez a szakasz az Azure hálózati szolgáltatásait ismerteti, amelyek segítenek
 Az Azure Network Watcher eszközeivel monitorozhatja és diagnosztizálhatja az erőforrásokat egy Azure virtuális hálózaton belül, illetve megtekintheti azok metrikáit, és engedélyezheti vagy letiltja azok naplóit. További információ: [Mi az Network Watcher?](../network-watcher/network-watcher-monitoring-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
 ### <a name="azure-monitor-for-networks-preview"></a>Hálózatok Azure Monitor előzetes verzió
-A hálózatok Azure Monitor az összes telepített hálózati erőforrás állapotának és metrikáinak átfogó áttekintését teszi lehetővé anélkül, hogy konfigurációt kellene igényelni. Emellett hozzáférést biztosít a hálózati figyelési funkciókhoz, például a [kapcsolati figyelőhöz](../network-watcher/connection-monitor-preview.md), [a hálózati biztonsági csoportokhoz tartozó adatfolyam-naplózáshoz](../network-watcher/network-watcher-nsg-flow-logging-overview.md)és a [Traffic Analyticshoz](../network-watcher/traffic-analytics.md). További információ: [Azure monitor for Networks Preview](../azure-monitor/insights/network-insights-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
+A hálózatok Azure Monitor az összes telepített hálózati erőforrás állapotának és metrikáinak átfogó áttekintését teszi lehetővé anélkül, hogy konfigurációt kellene igényelni. Emellett hozzáférést biztosít a hálózati figyelési funkciókhoz, például a [kapcsolati figyelőhöz](../network-watcher/connection-monitor-overview.md), [a hálózati biztonsági csoportokhoz tartozó adatfolyam-naplózáshoz](../network-watcher/network-watcher-nsg-flow-logging-overview.md)és a [Traffic Analyticshoz](../network-watcher/traffic-analytics.md). További információ: [Azure monitor for Networks Preview](../azure-monitor/insights/network-insights-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
 
 ### <a name="expressroute-monitor"></a><a name="expressroutemonitor"></a>ExpressRoute-figyelő
 A ExpressRoute-áramköri metrikák, az erőforrás-naplók és a riasztások megtekintésével kapcsolatban lásd: [ExpressRoute-figyelés,-metrikák és-riasztások](../expressroute/expressroute-monitoring-metrics-alerts.md?toc=%2fazure%2fnetworking%2ftoc.json).
@@ -181,8 +181,8 @@ Az alábbi képen látható, hogyan működik a virtuális hálózat:
 
 További információ: [Mi az Virtual Network koppint](../virtual-network/virtual-network-tap-overview.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Hozza létre az első virtuális hálózatot, és kapcsolódjon hozzá néhány virtuális géphez. ehhez végezze el az [első virtuális hálózat létrehozása](../virtual-network/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) című cikk lépéseit.
 - A számítógép csatlakoztatása egy virtuális hálózathoz a [pont – hely kapcsolat konfigurálása című cikkben](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)ismertetett lépések végrehajtásával.
-- Az internetre irányuló [terheléselosztó létrehozása](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) című cikkben ismertetett lépések végrehajtásával terheléselosztást végezhet a nyilvános kiszolgálók internetes forgalmával.
+- Az internetre irányuló [terheléselosztó létrehozása](../load-balancer/quickstart-load-balancer-standard-public-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) című cikkben ismertetett lépések végrehajtásával terheléselosztást végezhet a nyilvános kiszolgálók internetes forgalmával.

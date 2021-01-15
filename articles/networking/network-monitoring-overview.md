@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
-ms.openlocfilehash: 36e41db6e1a3cff13f31f0abf2e83e872dfd7c49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a92c6789723dc42ac8f3a9c471e494079dc19328
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742332"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233440"
 ---
 # <a name="network-monitoring-solutions"></a>Hálózati figyelési megoldások 
 
@@ -52,10 +52,10 @@ A Teljesítményfigyelő a NPM része, és a Felhőbeli, a hibrid és a helyszí
 További információkért tekintse meg a következő cikkeket:
 
 * [Network Performance Monitor megoldás konfigurálása Azure Monitor naplókban](../azure-monitor/insights/network-performance-monitor.md) 
-* [Használati esetek](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)
+* [Használati esetek](/archive/blogs/msoms/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor)
 * Termékfrissítések:
-  * [2017. február](https://blogs.technet.microsoft.com/msoms/2017/02/27/oms-network-performance-monitor-is-now-generally-available/)
-  * [2017. augusztus](https://blogs.technet.microsoft.com/msoms/2017/08/14/improvements-to-oms-network-performance-monitor/)
+  * [2017. február](/archive/blogs/msoms/oms-network-performance-monitor-is-now-generally-available)
+  * [2017. augusztus](/archive/blogs/msoms/improvements-to-oms-network-performance-monitor)
 
 ## <a name="expressroute-monitor"></a>ExpressRoute-figyelő
 
@@ -70,7 +70,7 @@ A NPM for ExpressRoute átfogó ExpressRoute-figyelést biztosít az Azure-beli 
 
 ![Régiók közötti forgalmat mutató geo-Térkép](./media/network-monitoring-overview/expressroute-topology-map.png) 
 
-További információkért tekintse át a következő cikkeket:
+További információért tekintse át a következő cikkeket:
 
 * [Network Performance Monitor for ExpressRoute konfigurálása](../expressroute/how-to-npm.md)
 * [Blogbejegyzés](https://aka.ms/NPMExRmonitorGA)
@@ -86,7 +86,7 @@ A szolgáltatás-kapcsolat figyelésével mostantól tesztelheti az alkalmazáso
 * A hálózatban található gyors elérésű pontok meghatározása, amelyek gyenge alkalmazások teljesítményét okozhatják
 * A Microsoft 365, a Dynamics 365, a Skype vállalati verzió és más Microsoft-szolgáltatások számára elérhető beépített tesztek használatával megfigyelhető az alkalmazások elérhetősége Microsoft 365
 
-További információkért tekintse át a következő cikkeket:
+További információért tekintse át a következő cikkeket:
 
 * [Network Performance Monitor konfigurálása a figyelési szolgáltatás végpontjai számára](../azure-monitor/insights/network-performance-monitor-service-connectivity.md#configuration)
 * [Blogbejegyzés](https://aka.ms/svcendptmonitor)
@@ -106,7 +106,7 @@ Traffic Analytics a szervezet hálózati tevékenységének, az alkalmazások é
 ![A 2. régión belüli forgalmat bemutató geo-Térkép](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
 
 Kapcsolódó hivatkozások:
-* [Blogbejegyzés](https://aka.ms/trafficanalytics), [dokumentáció](https://aka.ms/trafficanalyticsdocs), [GYIK](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-faq)
+* [Blogbejegyzés](https://aka.ms/trafficanalytics), [dokumentáció](../network-watcher/traffic-analytics.md), [GYIK](../network-watcher/traffic-analytics-faq.md)
 
 ## <a name="dns-analytics"></a>DNS-elemzés
 A DNS-rendszergazdák számára készült megoldás a DNS-naplókat gyűjti, elemzi és korrelálja a biztonság, a műveletek és a teljesítménnyel kapcsolatos információk biztosításához.  A funkciók némelyike:
@@ -120,8 +120,8 @@ A DNS-rendszergazdák számára készült megoldás a DNS-naplókat gyűjti, ele
 ![DNS Analytics irányítópult](./media/network-monitoring-overview/dns-analytics-overview.png) 
 
 Kapcsolódó hivatkozások:
-* [Blogbejegyzés](https://blogs.technet.microsoft.com/msoms/2017/04/19/introducing-oms-dns-analytics/), [dokumentáció](https://docs.microsoft.com/azure/log-analytics/log-analytics-dns)
+* [Blogbejegyzés](/archive/blogs/msoms/introducing-oms-dns-analytics), [dokumentáció](../azure-monitor/insights/dns-analytics.md)
 
 ## <a name="miscellaneous"></a>Különböző veszélyes anyagok és tárgyak
 
-* [Új díjszabás](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor-pricing-faq)
+* [Új díjszabás](../azure-monitor/insights/network-performance-monitor-pricing-faq.md)

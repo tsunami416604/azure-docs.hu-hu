@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 01/02/2021
 ms.custom: MVC
-ms.openlocfilehash: bd560a6ef4a3b4ab5eb4632e7741c764f6e314e1
-ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
+ms.openlocfilehash: aac949de0b0ae1f085187c1b5e1f3b64d8edad03
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2021
-ms.locfileid: "97854927"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233814"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Gépek migrálása fizikai kiszolgálóként az Azure-ba
 
@@ -230,38 +230,41 @@ Most válassza ki a gépeket az áttelepítéshez.
     -  Rendelkezésre állási zóna az áttelepített gép egy adott rendelkezésre állási zónába való rögzítéséhez a régióban. Ezzel a beállítással olyan kiszolgálókat oszthat szét, amelyek több csomópontos alkalmazási szintet alkotnak Availability Zoneson belül. Ha ezt a lehetőséget választja, a számítási lapon meg kell adnia a rendelkezésre állási zónát, amelyet a kiválasztott gépekhez használni szeretne. Ez a beállítás csak akkor érhető el, ha az áttelepítéshez kiválasztott cél régió támogatja a Availability Zones
     -  Rendelkezésre állási csoport, amely az áttelepített gépet egy rendelkezésre állási csoportba helyezi. A beállítás használatához legalább egy rendelkezésre állási csoportnak kell lennie.
     - Nincs szükség infrastruktúra-redundancia beállításra, ha az áttelepített gépekhez nem szükséges a rendelkezésre állási konfigurációk egyike sem.
-12. Az **Azure Hybrid Benefit** területen:
+    
+12. A **lemez titkosítása típusnál** válassza a következő lehetőséget:
+    - Titkosítás – a platform által felügyelt kulccsal
+    - Titkosítás – az ügyfél által felügyelt kulccsal
+    - Dupla titkosítás a platform által felügyelt és az ügyfél által felügyelt kulcsokkal
+
+   > [!NOTE]
+   > A virtuális gépek CMK-vel való replikálásához létre kell [hoznia egy lemezes titkosítási](https://go.microsoft.com/fwlink/?linkid=2151800) csoportot a cél erőforráscsoport alatt. A lemezes titkosítási készlet objektum Managed Diskst képez le egy olyan Key Vaultra, amely az SSE-hoz használandó CMK tartalmazza.
+  
+13. Az **Azure Hybrid Benefit** területen:
 
     - Válassza a **Nem** lehetőséget, ha nem szeretné alkalmazni az Azure Hybrid Benefit szolgáltatást. Ezután kattintson a **Tovább** gombra.
     - Válassza az **Igen** lehetőséget, ha aktív frissítési garanciával vagy Windows Server-előfizetéssel rendelkező gépei vannak, és alkalmazni szeretné az előnyöket a migrált gépekre. Ezután kattintson a **Tovább** gombra.
 
-    ![Cél beállításai](./media/tutorial-migrate-physical-virtual-machines/target-settings.png)
+    ![Cél beállításai](./media/tutorial-migrate-vmware/target-settings.png)
 
-13. A **számításban** tekintse át a virtuális gép nevét, méretét, operációsrendszer-lemezének típusát és rendelkezésre állási konfigurációját (ha az előző lépésben van kiválasztva). A virtuális gépeknek meg kell felelniük az [Azure-követelményeknek](migrate-support-matrix-physical-migration.md#azure-vm-requirements).
+14. A **számításban** tekintse át a virtuális gép nevét, méretét, operációsrendszer-lemezének típusát és rendelkezésre állási konfigurációját (ha az előző lépésben van kiválasztva). A virtuális gépeknek meg kell felelniük az [Azure-követelményeknek](migrate-support-matrix-physical-migration.md#azure-vm-requirements).
 
     - Virtuálisgép- **méret**: Ha értékelési javaslatokat használ, a virtuális gép mérete legördülő menüben az ajánlott méret látható. Egyéb esetben az Azure Migrate az Azure-előfizetésben található leginkább megfelelő érték alapján választja ki a méretet. Alternatív megoldásként az **Azure-beli virtuális gép mérete** területen manuálisan is kiválaszthatja a méretet.
     - **Operációsrendszer-lemez**: a virtuális gép operációsrendszer-(rendszerindító) lemezének megadása. Az operációsrendszer-lemez az a lemez, amelyen az operációs rendszer rendszerbetöltője és telepítője található.
     - **Rendelkezésre állási zóna**: Itt adhatja meg a használni kívánt rendelkezésre állási zónát.
     - **Rendelkezésre állási csoport**: adja meg a használni kívánt rendelkezésre állási készletet.
 
-> [!NOTE]
-> Ha egy másik rendelkezésre állási lehetőséget szeretne kiválasztani egy virtuális gép készletéhez, ugorjon az 1. lépésre, és ismételje meg a lépéseket a különböző rendelkezésre állási beállítások kiválasztásával, miután megkezdte egy virtuális gép replikálását.
+![Számítási beállítások](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
 
-   ![Számítási beállítások](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
-
-13. A **lemezek** területen adja meg, hogy a virtuálisgép-lemezeket replikálni kell-e az Azure-ba, majd válassza ki a lemez típusát (standard SSD/HDD vagy prémium szintű felügyelt lemez) az Azure-ban. Ezután kattintson a **Tovább** gombra.
+15. A **lemezek** területen adja meg, hogy a virtuálisgép-lemezeket replikálni kell-e az Azure-ba, majd válassza ki a lemez típusát (standard SSD/HDD vagy prémium szintű felügyelt lemez) az Azure-ban. Ezután kattintson a **Tovább** gombra.
     - Kizárhat lemezeket a replikációból.
     - Ha kizárja a lemezeket, azok nem lesznek jelen az Azure-beli virtuális gépen a migrációt követően. 
 
     ![Lemez beállításai](./media/tutorial-migrate-physical-virtual-machines/disks.png)
 
-
-14. Az **Áttekintés és a replikáció megkezdése** területen tekintse át a beállításokat, majd kattintson a **Replikálás** gombra a kiszolgálók kezdeti replikálásának elindításához.
+16. Az **Áttekintés és a replikáció megkezdése** területen tekintse át a beállításokat, majd kattintson a **Replikálás** gombra a kiszolgálók kezdeti replikálásának elindításához.
 
 > [!NOTE]
 > A replikálási beállításokat a replikáció elindítása előtt bármikor frissítheti, **kezelheti** a  >  **replikáló gépeket**. A replikáció kezdete után a beállítások már nem módosíthatók.
-
-
 
 ## <a name="track-and-monitor"></a>Nyomon követés és figyelés
 

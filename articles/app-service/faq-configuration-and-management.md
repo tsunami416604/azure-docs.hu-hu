@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: fb193637525722bf227241a614cd977fbf70c9ac
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: df4bd0ae0884feae8bd21e33f4d27b6ceb207337
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074182"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234001"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfigurációs és felügyeleti GYIK az Azure-beli Web Apps
 
@@ -78,7 +78,7 @@ Alapértelmezés szerint a webalkalmazások el lesznek távolítva, ha egy megha
 A webalkalmazáshoz tartozó kimenő IP-címek listájának lekérése:
 
 1. A Azure Portal a webalkalmazás paneljén lépjen a **Tulajdonságok** menüre.
-2. Keresse meg a **kimenő IP-címeket** .
+2. Keresse meg a **kimenő IP-címeket**.
 
 Megjelenik a kimenő IP-címek listája.
 
@@ -185,7 +185,7 @@ Az F12-nyomkövetés rögzítésére két lehetőség áll rendelkezésre:
 ### <a name="f12-console-output"></a>F12-konzol kimenete
 
 1. Válassza a **konzol** fület.
-2. Minden olyan lap esetében, amely nullánál több elemet tartalmaz, válassza ki a fület ( **hiba** , **Figyelmeztetés** vagy **információ** ). Ha a lap nincs bejelölve, a TAB ikon szürke vagy fekete, ha a kurzort onnan helyezi át.
+2. Minden olyan lap esetében, amely nullánál több elemet tartalmaz, válassza ki a fület (**hiba**, **Figyelmeztetés** vagy **információ**). Ha a lap nincs bejelölve, a TAB ikon szürke vagy fekete, ha a kurzort onnan helyezi át.
 3. Kattintson a jobb gombbal a panel üzenet területére, majd válassza az **összes másolása** lehetőséget.
 4. Illessze be a másolt szöveget egy fájlba, majd mentse a fájlt.
 
@@ -284,7 +284,7 @@ A App Service hitelesítésével és engedélyezésével kapcsolatos részletes 
 
 ## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>Hogyan átirányítja az alapértelmezett *. azurewebsites.net tartományt az Azure-webalkalmazás egyéni tartományára?
 
-Új webhely Azure-beli Web Apps használatával történő létrehozásakor a rendszer egy alapértelmezett *sitename* . azurewebsites.net tartományt rendel hozzá a webhelyhez. Ha egyéni állomásnevet ad hozzá a webhelyhez, és nem szeretné, hogy a felhasználók hozzáférhessenek az alapértelmezett *. azurewebsites.net tartományhoz, akkor átirányíthatja az alapértelmezett URL-címet. Ha meg szeretné tudni, hogyan irányíthatja át a webhely alapértelmezett tartományában lévő összes forgalmat az egyéni tartományba, tekintse meg [az alapértelmezett tartomány átirányítása az egyéni tartományba az Azure Web Apps szolgáltatásban](https://zainrizvi.io/blog/block-default-azure-websites-domain/)című témakört.
+Új webhely Azure-beli Web Apps használatával történő létrehozásakor a rendszer egy alapértelmezett *sitename*. azurewebsites.net tartományt rendel hozzá a webhelyhez. Ha egyéni állomásnevet ad hozzá a webhelyhez, és nem szeretné, hogy a felhasználók hozzáférhessenek az alapértelmezett *. azurewebsites.net tartományhoz, akkor átirányíthatja az alapértelmezett URL-címet. Ha meg szeretné tudni, hogyan irányíthatja át a webhely alapértelmezett tartományában lévő összes forgalmat az egyéni tartományba, tekintse meg [az alapértelmezett tartomány átirányítása az egyéni tartományba az Azure Web Apps szolgáltatásban](https://zainrizvi.io/blog/block-default-azure-websites-domain/)című témakört.
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>Hogyan határozza meg, hogy a .NET-verzió melyik verziója van telepítve a App Service-ben?
 
@@ -317,3 +317,8 @@ Megadhatja a tömöríteni kívánt dinamikus és statikus MIME-típusokat is. T
 ## <a name="how-do-i-migrate-from-an-on-premises-environment-to-app-service"></a>Hogyan Migrálás egy helyszíni környezetből a App Serviceba?
 
 Ha Windows és Linux rendszerű webkiszolgálókról kíván áttelepíteni helyeket App Serviceba, használhatja a Azure App Service Migration Assistant. Az áttelepítési eszköz szükség szerint hozza létre a webalkalmazásokat és-adatbázisokat az Azure-ban, majd közzéteszi a tartalmat. További információ: [Azure App Service Migration Assistant](https://appmigration.microsoft.com/).
+
+## <a name="why-is-my-certificate-issued-for-11-months-and-not-for-a-full-year"></a>Miért van a tanúsítványom 11 hónapra kiállítva, és nem egy teljes évre?
+
+Jelenleg a 2020. szeptember 1. után kiadott összes tanúsítvány maximális időtartama 397 nap. A 2020. szeptember 1. előtt kiadott tanúsítványok legfeljebb 825 napig érvényesek, mielőtt szükségessé válna a megújításuk, a kulcsuk újbóli megadása stb. Ez a változás érinti a 2020. szeptember 1. után megújított tanúsítványokat, így a felhasználók azzal szembesülhetnek, hogy a megújított tanúsítványaik rövidebb ideig érvényesek.
+A GoDaddy bevezetett egy olyan előfizetési szolgáltatást, amely megfelel az új követelményeknek, miközben a meglévő ügyfél-tanúsítványokat is elfogadja. Az újonnan kiállított tanúsítványok lejárta előtt 30 nappal a szolgáltatás automatikusan kiad egy második tanúsítványt, amely meghosszabbítja az érvényességi időtartamot az eredeti lejárati dátumig. Az App Service együttműködik a GoDaddyvel ezen változást illetően, hogy ügyfeleink mindenképp kihasználhassák a tanúsítványuk teljes időtartamát.

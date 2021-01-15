@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
-ms.openlocfilehash: cffa5677c5531f3887639c049998523d7d07586a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c53eb65f31e32d3edebcbf31d48d166f5464a92
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79455562"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233355"
 ---
 # <a name="check-resource-usage-against-limits"></a>Erőforrás-használat összevetése a korlátokkal
 
@@ -26,13 +26,13 @@ Ebből a cikkből megtudhatja, hogyan tekintheti meg az előfizetésében üzemb
 ## <a name="azure-portal"></a>Azure Portal
 
 1. Jelentkezzen be az Azure [Portalra](https://portal.azure.com).
-2. A Azure Portal bal felső sarkában válassza a **minden szolgáltatás**lehetőséget.
+2. A Azure Portal bal felső sarkában válassza a **minden szolgáltatás** lehetőséget.
 3. Adja meg az *előfizetéseket* a **szűrő** mezőben. Amikor a keresési eredmények között megjelenik az **Előfizetések** elem, válassza ki.
 4. Válassza ki annak az előfizetésnek a nevét, amelyre vonatkozóan meg szeretné tekinteni a használati adatokat.
-5. A **Beállítások**területen válassza a **használat + kvóta**elemet.
+5. A **Beállítások** területen válassza a **használat + kvóta** elemet.
 6. Az alábbi lehetőségek közül választhat:
    - **Erőforrástípusok**: kiválaszthatja az összes erőforrástípust, vagy kiválaszthatja a megtekinteni kívánt erőforrások típusait.
-   - **Szolgáltatók**: kiválaszthatja az összes erőforrás-szolgáltatót, vagy kiválaszthatja a **számítás**, a **hálózat**vagy a **tárterület**lehetőséget.
+   - **Szolgáltatók**: kiválaszthatja az összes erőforrás-szolgáltatót, vagy kiválaszthatja a **számítás**, a **hálózat** vagy a **tárterület** lehetőséget.
    - **Helyszínek**: kiválaszthatja az összes Azure-helyet, vagy kijelölhet bizonyos helyszíneket is.
    - Kiválaszthatja az összes erőforrás megjelenítését, vagy csak azokat az erőforrásokat, amelyeken legalább egy telepítve van.
 
@@ -40,7 +40,7 @@ Ebből a cikkből megtudhatja, hogyan tekintheti meg az előfizetésében üzemb
 
        ![Használati adatok megtekintése](./media/check-usage-against-limits/view-usage.png)
 
-     Az oszlopokat az oszlop fejlécének kiválasztásával rendezheti. A megjelenő korlátok az előfizetésre vonatkozó korlátok. Ha növelje az alapértelmezett korlátot, válassza a **kérés növekedése**lehetőséget, majd fejezze be és küldje el a támogatási kérést. Az összes erőforráshoz az Azure [korlátaiban](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits)legfeljebb egy korlát szerepel. Ha a jelenlegi korlátja már a maximális számon van, a határérték nem növelhető.
+     Az oszlopokat az oszlop fejlécének kiválasztásával rendezheti. A megjelenő korlátok az előfizetésre vonatkozó korlátok. Ha növelje az alapértelmezett korlátot, válassza a **kérés növekedése** lehetőséget, majd fejezze be és küldje el a támogatási kérést. Az összes erőforráshoz az Azure [korlátaiban](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits)legfeljebb egy korlát szerepel. Ha a jelenlegi korlátja már a maximális számon van, a határérték nem növelhető.
 
 ## <a name="powershell"></a>PowerShell
 
@@ -48,7 +48,7 @@ Ebből a cikkből megtudhatja, hogyan tekintheti meg az előfizetésében üzemb
 
 Az alábbi parancsokat futtathatja a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy futtathatja a PowerShellt a számítógépről. A Azure Cloud Shell egy ingyenes interaktív rendszerhéj. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha a PowerShellt a számítógépről futtatja, szüksége lesz a Azure PowerShell modulra, a 1.0.0 vagy újabb verzióra. Futtassa a parancsot a `Get-Module -ListAvailable Az` számítógépen, és keresse meg a telepített verziót. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor is futtatnia kell az Azure-ba való `Login-AzAccount` bejelentkezéshez.
 
-A [Get-AzNetworkUsage](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkusage)használatával megtekintheti a korlátozásokat. A következő példa beolvassa azokat az erőforrásokat, amelyekben legalább egy erőforrás üzembe van helyezve az USA keleti régiójában:
+A [Get-AzNetworkUsage](/powershell/module/az.network/get-aznetworkusage)használatával megtekintheti a korlátozásokat. A következő példa beolvassa azokat az erőforrásokat, amelyekben legalább egy erőforrás üzembe van helyezve az USA keleti régiójában:
 
 ```azurepowershell-interactive
 Get-AzNetworkUsage `

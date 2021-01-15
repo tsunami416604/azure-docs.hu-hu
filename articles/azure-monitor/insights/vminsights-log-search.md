@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 118bdcb6929abfc162ff05e91f1621f087b6c50c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ae0bc6ea35d5c6e3ebe0cd7f232e5c8b1e637d9d
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186728"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234052"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>Naplók lekérdezése Azure Monitor for VMs
 
@@ -92,7 +92,7 @@ Néhány fontos szempontot figyelembe kell venni:
 
 #### <a name="naming-and-classification"></a>Elnevezés és besorolás
 
-A kényelem érdekében a kapcsolatok távoli végének IP-címét a RemoteIp tulajdonság tartalmazza. A bejövő kapcsolatok esetében a RemoteIp ugyanaz, mint a SourceIp, míg a kimenő kapcsolatok esetében ugyanaz, mint a DestinationIp. A RemoteDnsCanonicalNames tulajdonság a gép által a RemoteIp számára jelentett DNS-kanonikus neveket jelöli. A RemoteDnsQuestions és a RemoteClassification tulajdonságok későbbi használatra vannak fenntartva. 
+A kényelem érdekében a kapcsolatok távoli végének IP-címét a RemoteIp tulajdonság tartalmazza. A bejövő kapcsolatok esetében a RemoteIp ugyanaz, mint a SourceIp, míg a kimenő kapcsolatok esetében ugyanaz, mint a DestinationIp. A RemoteDnsCanonicalNames tulajdonság a gép által a RemoteIp számára jelentett DNS-kanonikus neveket jelöli. A RemoteDnsQuestions tulajdonság a gép által a RemoteIp számára jelentett DNS-kérdéseket jelöli. A RemoveClassification tulajdonság későbbi használatra van fenntartva. 
 
 #### <a name="geolocation"></a>Földrajzi hely
 
@@ -442,7 +442,7 @@ A *InsightsMetrics* rendelkező rekordok a virtuális gép vendég operációs r
 |Computer | A számítógép teljes tartományneve | 
 |Forrás | *vm.azm.ms* |
 |Névtér | A teljesítményszámláló kategóriája | 
-|Name (Név) | A teljesítményszámláló neve |
+|Name | A teljesítményszámláló neve |
 |Val | Összegyűjtött érték | 
 |Címkék | A rekorddal kapcsolatos részletek. Az alábbi táblázatban láthatja a különböző bejegyzéstípusokkal használt címkéket.  |
 |Ügynökazonosító | Az egyes számítógépek ügynökének egyedi azonosítója |
@@ -451,7 +451,7 @@ A *InsightsMetrics* rendelkező rekordok a virtuális gép vendég operációs r
 
 A jelenleg a *InsightsMetrics* táblába összegyűjtött teljesítményszámlálók az alábbi táblázatban láthatók:
 
-| Névtér | Név | Leírás | Egység | Címkék |
+| Névtér | Név | Leírás | Unit (Egység) | Címkék |
 |:---|:---|:---|:---|:---|
 | Computer    | Szívverés             | Számítógép szívverése                        | | |
 | Memória      | AvailableMB           | Rendelkezésre álló memória bájtjai                    | Megabájtban      | memorySizeMB – teljes memória mérete|
@@ -471,7 +471,7 @@ A jelenleg a *InsightsMetrics* táblába összegyűjtött teljesítményszámlá
 | LogicalDisk | BytesPerSecond        | Logikai lemez bájtjai másodpercenként             | BytesPerSecond | az eszköz mountId-csatlakoztatási azonosítója |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha a Azure Monitor naplóbeli lekérdezések írásakor új, tekintse át a következő [témakört: log Analytics használata](../log-query/log-analytics-tutorial.md) a Azure Portal a naplók írásához.
 

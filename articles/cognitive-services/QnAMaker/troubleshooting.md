@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: troubleshooting
 ms.date: 11/09/2020
-ms.openlocfilehash: e8b1d985fcb2852df52382e005ec0f0266e23d9d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: aea205bee41aed232b8453417dca521d2dfc83ab
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345644"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233780"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker hibaelhárítása
 
@@ -323,6 +323,29 @@ Ha több nyelvből származó tartalommal rendelkezik, ügyeljen arra, hogy mind
 
 1. Indítsa el az App Service-t.
 1. A tudásbázishoz férhet hozzá, hogy ellenőrizze, működik-e most.
+
+</details>
+<details>
+<summary><b>Miért nem működik a Application Insights?</b></summary>
+
+**Válasz**: a probléma megoldásához tekintse át a következő lépéseket:
+
+1. App Service-> beállítások csoport – > konfigurációs szakasz – > Alkalmazásbeállítások – > Name "UserAppInsightsKey" paraméterek megfelelően van konfigurálva, és a megfelelő Application betekintési áttekintés lapra ("Instrumentation-kulcs") GUID azonosítóra van beállítva. 
+
+1. A App Service-> beállítások csoportban – > "Application Insights" szakasz – > győződjön meg arról, hogy az alkalmazás-felismerések engedélyezve vannak és csatlakoztatva vannak a megfelelő Application-adatforráshoz.
+
+</details>
+
+<details>
+<summary><b>A Application Insights engedélyezve van, de miért nem működik megfelelően?</b></summary>
+
+**Válasz**: kövesse az alábbi lépéseket: 
+
+1.  A (z) "" APPINSIGHTS_INSTRUMENTATIONKEY "Name" értékének "UserAppInsightsKey" névre való másolásához felülbírálja a értéket, ha már van ilyen érték. 
+
+1.  Ha a "UserAppInsightsKey" kulcs nem létezik az alkalmazás beállításaiban, adjon hozzá egy új kulcsot az adott névvel, és másolja az értéket.
+
+1.  Mentse, és ez automatikusan újraindítja az App Service-t. Ennek fel kell oldania a problémát. 
 
 </details>
 

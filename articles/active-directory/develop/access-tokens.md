@@ -13,12 +13,12 @@ ms.date: 10/27/2020
 ms.author: hirsin
 ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: ceb5acbee2e572b1859a5577b58dd586fc924b3b
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 4a798443560f62673ef8fcf0bce970a66071d011
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653282"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232386"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity platform hozzáférési jogkivonatok
 
@@ -292,12 +292,9 @@ A *nem jelszó alapú* bejelentkezés olyan esetben, amikor a felhasználó nem 
 - Hang
 - PIN kód
 
-> [!NOTE]
-> A Windows 10-es elsődleges frissítési tokenek (PRT) a hitelesítő adatok alapján elkülönülnek. A Windows Hello és a Password például a saját PRT-vel rendelkeznek, és egymástól elszigetelten vannak. Ha a felhasználó Hello hitelesítő adatokkal (PIN-kóddal vagy biometrikus azonosítóval) jelentkezik be, majd módosítja a jelszót, a rendszer visszavonja a korábban beszerzett jelszó-alapú PRT-t. A jelszó megadásával visszaigazolja a régi PRT-t, és egy újat kér.
->
-> A frissítési tokenek nem lettek érvénytelenítve vagy visszavonva, ha új hozzáférési jogkivonatot és frissítési jogkivonatot kívánnak beolvasni.  Azonban az alkalmazásnak el kell vetnie a régit, amint a használatban van, és lecseréli az újat, mert az új jogkivonat új lejárati ideje van.
+Az elsődleges frissítési tokenekkel kapcsolatos további részletekért tekintse meg az [elsődleges frissítési jogkivonatokat](../devices/concept-primary-refresh-token.md) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg [ `id_tokens` Az Azure ad-](id-tokens.md)t.
 * További információ az engedélyekről és a hozzájárulásról ( [1.0](../azuread-dev/v1-permissions-consent.md), [v 2.0](v2-permissions-and-consent.md)).

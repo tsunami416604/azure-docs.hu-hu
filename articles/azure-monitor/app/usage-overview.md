@@ -3,12 +3,12 @@ title: Használat elemzése az Azure Application Insights használatával | Micr
 description: Ismerje meg a felhasználókat, és hogy mit csinálnak az alkalmazással.
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 4f4954451bfa195b07c580ffa451b8cb333eb32c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 633d35ec16f5eb9de664421c38cd4c824dc240cf
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532103"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233848"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Használatelemzés az Application Insights szolgáltatással
 
@@ -20,7 +20,7 @@ A webes vagy mobil alkalmazások mely funkciói a legnépszerűbbek? A felhaszn�
 
 A legjobb megoldás a Application Insights telepítésével érhető el az App Server kódjában és a weblapjain. Az alkalmazás ügyfél-és kiszolgáló-összetevői telemetria küldenek a Azure Portalnak elemzés céljából.
 
-1. **Kiszolgáló kódja:** Telepítse a megfelelő modult a [ASP.net](./asp-net.md), az [Azure](./app-insights-overview.md)-ra, a [Java](./java-get-started.md)-ra, a [Node.jsra ](./nodejs.md)vagy [más](./platforms.md) alkalmazásra.
+1. **Kiszolgáló kódja:** Telepítse a megfelelő modult a [ASP.net](./asp-net.md), az [Azure](./app-insights-overview.md)-ra, a [Java](./java-get-started.md)-ra, a [Node.jsra](./nodejs.md)vagy [más](./platforms.md) alkalmazásra.
 
     * *Nem szeretné telepíteni a kiszolgálói kódot? Egyszerűen [hozzon létre egy Azure Application Insights-erőforrást](./create-new-resource.md).*
 
@@ -65,7 +65,7 @@ A jobb oldali elemzések érdekes mintákat mutatnak az adathalmazban.
 
 ## <a name="retention---how-many-users-come-back"></a>Megőrzés – hány felhasználó érkezik vissza?
 
-Az adatmegőrzés segítségével megismerheti, hogy a felhasználók milyen gyakran térnek vissza az alkalmazás használatára, azon felhasználók kohorszai alapján, akik bizonyos üzleti műveleteket hajtottak végre egy adott időszakban. 
+Az adatmegőrzés segítségével megismerheti, hogy a felhasználók milyen gyakran térnek vissza az alkalmazás használatára, azon felhasználók kohorszai alapján, akik bizonyos üzleti műveleteket hajtottak végre egy adott időszakban. 
 
 - Annak megismerése, hogy a felhasználók miként térhetnek vissza másokhoz 
 - A valós felhasználói adathalmazok alapján alkotott hipotézisek 
@@ -79,7 +79,9 @@ A felső megőrzési vezérlők lehetővé teszik meghatározott események és 
 
 ## <a name="custom-business-events"></a>Egyéni üzleti események
 
-Ha szeretné megismerni, hogy a felhasználók mit tesznek az alkalmazással, hasznos lehet a kód sorait beszúrni az egyéni események naplózására. Ezek az események a részletes felhasználói műveletekkel, például az adott gombokra kattintva követhetik nyomon a jelentős üzleti eseményeket, például a vásárlást vagy a játék megnyerését. 
+Ha szeretné megismerni, hogy a felhasználók mit tesznek az alkalmazással, hasznos lehet a kód sorait beszúrni az egyéni események naplózására. Ezek az események a részletes felhasználói műveletekkel, például az adott gombokra kattintva követhetik nyomon a jelentős üzleti eseményeket, például a vásárlást vagy a játék megnyerését.
+
+Az egyéni események összegyűjtéséhez a [Click Analytics automatikus gyűjtemény beépülő modulját](javascript-click-analytics-plugin.md) is használhatja.
 
 Bár bizonyos esetekben az oldalletöltések hasznos eseményeket jelenthetnek, általában nem igaz. A felhasználó megnyithatja a termék oldalát a termék megvásárlása nélkül. 
 
@@ -172,7 +174,7 @@ A webalkalmazás-inicializáló, például a Global.asax.cs:
 
 Minden új TelemetryClients automatikusan hozzáadja a megadott tulajdonságérték értékét. Az egyes telemetria-események felülbírálják az alapértelmezett értékeket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
    - [Felhasználók, munkamenetek, események](usage-segmentation.md)
    - [Tölcsérek](usage-funnels.md)
    - [Megőrzés](usage-retention.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
-ms.openlocfilehash: 6eab1803bf5adab42be87b5f8567682c6d75947e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cb1a490ac8edf2630253b45d99c3394bbe721b8
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74483533"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234154"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Vészhelyreállítás az Azure DNS-sel és a Traffic Managerrel
 
@@ -45,7 +45,7 @@ A legtöbb nagyvállalati ügyfél olyan többrégiós architektúrát választ 
     
     *Ábra: aktív/passzív, meleg készenléti vész-helyreállítási konfigurációval*
     
-További információ a feladatátvételről és a magas rendelkezésre állásról: vész- [helyreállítás Azure-alkalmazásokhoz](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications).
+További információ a feladatátvételről és a magas rendelkezésre állásról: vész- [helyreállítás Azure-alkalmazásokhoz](/azure/architecture/resiliency/disaster-recovery-azure-applications).
 
 
 ## <a name="planning-your-disaster-recovery-architecture"></a>A vész-helyreállítási architektúra megtervezése
@@ -54,7 +54,7 @@ A vész-helyreállítási architektúra beállítása két technikai szempontot 
 -  Üzembe helyezési mechanizmus használatával replikálhatja a példányokat, az adatforrásokat és a konfigurációkat az elsődleges és a készenléti környezetek között. Ezt a típusú vész-helyreállítási típust natív módon teheti meg az Azure Site-Recovery Microsoft Azure partneri készülékeken/szolgáltatásokon, például a Veritas vagy a NetApp-n keresztül. 
 - Megoldás fejlesztése az elsődleges helyről a készenléti helyre irányuló hálózati/webes forgalom átirányításához. A vész-helyreállítási típus Azure DNS, Azure Traffic Manager (DNS) vagy harmadik féltől származó globális terheléselosztó használatával érhető el.
 
-Ez a cikk a hálózati és webes forgalom átirányításán keresztüli megközelítésekre korlátozódik. A Azure Site Recovery beállítására vonatkozó utasításokért lásd: [Azure site Recovery dokumentáció](https://docs.microsoft.com/azure/site-recovery/).
+Ez a cikk a hálózati és webes forgalom átirányításán keresztüli megközelítésekre korlátozódik. A Azure Site Recovery beállítására vonatkozó utasításokért lásd: [Azure site Recovery dokumentáció](../site-recovery/index.yml).
 A DNS az egyik leghatékonyabb mechanizmus a hálózati forgalom átirányításához, mivel a DNS gyakran globális és külső az adatközpont, és minden regionális vagy rendelkezésre állási zóna (AZ) szintű meghibásodástól elszigetelve van. Az egyik DNS-alapú feladatátvételi mechanizmust és az Azure-t használva két DNS-szolgáltatás ugyanazt a módszert Azure DNS (mérvadó DNS) és az Azure Traffic Manager (DNS-alapú intelligens forgalom-útválasztás) is elvégezheti. 
 
 Fontos megérteni a DNS-ben a cikkben ismertetett megoldások részletes leírására szolgáló néhány fogalmat:
@@ -146,7 +146,7 @@ Hozzon létre egy új Azure Traffic Manager-profilt a contoso123 néven, és vá
 
 ### <a name="step-2-create-endpoints-within-the-traffic-manager-profile"></a>2. lépés: végpontok létrehozása a Traffic Manager profilon belül
 
-Ebben a lépésben olyan végpontokat hoz létre, amelyek az éles és a vész-helyreállítási helyekre mutatnak. Itt válassza ki a **típust** külső végpontként, de ha az erőforrás az Azure-ban fut, akkor az **Azure-végpontot** is választhatja. Ha az **Azure-végpontot**választja, akkor válasszon ki egy olyan **célként megadott erőforrást** , amely az Azure által lefoglalt **app Service** vagy **nyilvános IP-cím** . A prioritás értéke **1** , mivel ez az 1. régió elsődleges szolgáltatása.
+Ebben a lépésben olyan végpontokat hoz létre, amelyek az éles és a vész-helyreállítási helyekre mutatnak. Itt válassza ki a **típust** külső végpontként, de ha az erőforrás az Azure-ban fut, akkor az **Azure-végpontot** is választhatja. Ha az **Azure-végpontot** választja, akkor válasszon ki egy olyan **célként megadott erőforrást** , amely az Azure által lefoglalt **app Service** vagy **nyilvános IP-cím** . A prioritás értéke **1** , mivel ez az 1. régió elsődleges szolgáltatása.
 Hasonlóképpen hozza létre a vész-helyreállítási végpontot Traffic Manageron belül is.
 
 ![Vész-helyreállítási végpontok létrehozása](./media/disaster-recovery-dns-traffic-manager/create-disaster-recovery-endpoint.png)
@@ -165,17 +165,8 @@ Ha az Újrapróbálkozás értéke 1, a TTL értéke pedig 10 másodperc, akkor 
 
 ### <a name="how-automatic-failover-works-using-traffic-manager"></a>Hogyan működik az automatikus feladatátvétel a Traffic Manager használatával
 
-Vészhelyzet esetén az elsődleges végpont próbára kerül, és az állapot **romlik** , és a vész-helyreállítási hely **online állapotban**marad. A Traffic Manager alapértelmezés szerint minden forgalmat az elsődleges (legmagasabb prioritású) végpontra irányít. Ha az elsődleges végpont teljesítményének romlása látható, Traffic Manager átirányítja a forgalmat a második végpontra mindaddig, amíg kifogástalan marad. Az egyik lehetőség a Traffic Manageron belüli további végpontok konfigurálására, amelyek további feladatátvételi végpontként szolgálnak, vagy a végpontok közötti terhelést megosztó terheléselosztó.
+Vészhelyzet esetén az elsődleges végpont próbára kerül, és az állapot **romlik** , és a vész-helyreállítási hely **online állapotban** marad. A Traffic Manager alapértelmezés szerint minden forgalmat az elsődleges (legmagasabb prioritású) végpontra irányít. Ha az elsődleges végpont teljesítményének romlása látható, Traffic Manager átirányítja a forgalmat a második végpontra mindaddig, amíg kifogástalan marad. Az egyik lehetőség a Traffic Manageron belüli további végpontok konfigurálására, amelyek további feladatátvételi végpontként szolgálnak, vagy a végpontok közötti terhelést megosztó terheléselosztó.
 
 ## <a name="next-steps"></a>További lépések
 - További információ az [Azure Traffic Managerról](../traffic-manager/traffic-manager-overview.md).
 - További információ a [Azure DNSról](../dns/dns-overview.md).
-
-
-
-
-
-
-
-
-

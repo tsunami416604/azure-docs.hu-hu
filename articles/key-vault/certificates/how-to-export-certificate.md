@@ -10,16 +10,16 @@ ms.topic: how-to
 ms.custom: mvc
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: 0925b51ed960b8007d2df86115ea7e5cf627fe7e
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: b3c917c9652954783fcddd92b9a7370c358ab3cc
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97826127"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233644"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>Tanúsítványok exportálása Azure Key Vaultból
 
-Ismerje meg, hogyan exportálhat tanúsítványokat a Azure Key Vaultból. A tanúsítványokat az Azure CLI, Azure PowerShell vagy a Azure Portal használatával exportálhatja. Azure App Service tanúsítványok exportálásához a Azure Portal is használhatja.
+Ismerje meg, hogyan exportálhat tanúsítványokat a Azure Key Vaultból. A tanúsítványokat az Azure CLI, Azure PowerShell vagy a Azure Portal használatával exportálhatja. 
 
 ## <a name="about-azure-key-vault-certificates"></a>Információk az Azure Key Vault-tanúsítványokról
 
@@ -114,7 +114,7 @@ A tanúsítvány letöltéséhez válassza a **Letöltés CER formátumban** vag
 
 **Azure App Service tanúsítványok exportálása**
 
-Azure App Service a tanúsítványok kényelmes megoldást jelentenek az SSL-tanúsítványok megvásárlására. Az Azure-alkalmazásokhoz hozzárendelheti őket a portálon belülről. Ezeket a tanúsítványokat a portálról is exportálhatja, ha PFX-fájlként kívánja használni őket. Az importálás után a App Service tanúsítványok a **titkok** területen találhatók.
+Azure App Service a tanúsítványok kényelmes megoldást jelentenek az SSL-tanúsítványok megvásárlására. Az Azure-alkalmazásokhoz hozzárendelheti őket a portálon belülről. Az importálás után a App Service tanúsítványok a **titkok** területen találhatók.
 
 További információ: [Azure app Service tanúsítványok exportálásának](https://social.technet.microsoft.com/wiki/contents/articles/37431.exporting-azure-app-service-certificates.aspx)lépései.
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 24e52f517f46de06fef8aa52e889185826c20d44
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: abf4e4621a7e42829032923a67d21c5322f432ec
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498395"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232726"
 ---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>A klasszikusból Azure Resource Manager-alapú környezetbe való migrálásra vonatkozó gyakori kérdések
 
@@ -82,11 +82,11 @@ A migrálás során az erőforrások át lesznek alakítva klasszikusból Resour
 
 Ha a virtuális gépet a klasszikusról Resource Manager üzemmódba helyezi át, a Migrálás előtt készített biztonsági másolatok nem települnek át az újonnan áttelepített Resource Manager-alapú virtuális gépre. Ha azonban szeretné megőrizni a klasszikus virtuális gépek biztonsági mentését, kövesse az alábbi lépéseket az áttelepítés előtt. 
 
-1. A Recovery Services-tárolóban lépjen a **Protected items (védett elemek** ) lapra, és válassza ki a virtuális gépet. 
-2. Kattintson a Védelem kikapcsolása parancsra. Hagyja a *Delete associated backup data* (Társított biztonsági mentési adatok törlése) beállítást **bejelöletlenül**.
+1. A Recovery Services- **tárolóban lépjen a biztonsági mentési elemek** panelre, és válassza ki a virtuális gépet. 
+2. Kattintson a biztonsági mentés leállítása elemre. Válassza a "biztonsági másolati adat megőrzése" lehetőséget a legördülő menüben.
 
 > [!NOTE]
-> A biztonsági mentési példányok költségét a rendszer addig terheli, amíg meg nem tartja az adatmegőrzést. A biztonsági másolatok megőrzési időtartamként lesznek metszve. A legutóbbi biztonsági másolat azonban mindig a biztonsági mentési adat törlése után marad. Javasolt a virtuális gép megőrzési tartományának ellenőrzését, és a "biztonsági másolati adatok törlése" triggert a tároló védett elemén, ha a megőrzési időtartam túl van. 
+> Ezzel a beállítással leállíthatja a virtuális gép védelmének jövőbeli biztonsági mentési feladatait. A Azure Backup szolgáltatás azonban megőrzi a biztonsági mentés alatt álló helyreállítási pontokat.  A helyreállítási pontok megőrzéséhez a tárolóban kell fizetnie (lásd a részletek [Azure Backup díjszabását](https://azure.microsoft.com/pricing/details/backup/) ). Szükség esetén visszaállíthatja a virtuális gépet. Ha úgy dönt, hogy folytatja a virtuális gépek védelmét, akkor a *biztonsági mentés folytatása* lehetőséget használhatja.
 >
 >
 

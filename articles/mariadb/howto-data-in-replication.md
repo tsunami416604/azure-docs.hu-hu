@@ -5,13 +5,13 @@ author: savjani
 ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
-ms.date: 9/29/2020
-ms.openlocfilehash: 3ed0fea4846b969c2af80aa525f7da64e7700bb5
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.date: 01/15/2021
+ms.openlocfilehash: fb7d9f78ac5498affa10521e17cff4348eecb5eb
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587927"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98231944"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>felhőbe irányuló replikálás konfigurálása Azure Database for MariaDB
 
@@ -24,6 +24,11 @@ A jelen cikkben ismertetett lépések végrehajtása előtt tekintse át az adat
 > [!NOTE]
 > Ha a forráskiszolgáló 10,2-es vagy újabb verziójú, javasoljuk, hogy a [globális tranzakció-azonosító](https://mariadb.com/kb/en/library/gtid/)használatával állítsa be felhőbe irányuló replikálás.
 
+> [!NOTE]
+> Elfogultság – ingyenes kommunikáció
+>
+> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a _fő_ és a _Slave_ kifejezésre mutató hivatkozásokat tartalmaz. A [torzítás nélküli kommunikációhoz használható Microsoft-stílusú útmutató](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) ezeket a kizáró szavakat ismeri fel. A jelen cikkben szereplő szavak a konzisztencia miatt használatosak, mivel jelenleg a szoftverben megjelenő szavak. Ha a szoftver frissítve lett a szavak eltávolítására, a rendszer a cikket úgy frissíti, hogy az legyen az igazítás.
+>
 
 ## <a name="create-a-mariadb-server-to-use-as-a-replica"></a>Replikaként használandó MariaDB-kiszolgáló létrehozása
 
@@ -35,18 +40,12 @@ A jelen cikkben ismertetett lépések végrehajtása előtt tekintse át az adat
    > A Azure Database for MariaDB-kiszolgálót a általános célú vagy a memória optimalizált díjszabási szintjein kell létrehoznia.
 
 2. Hozzon létre azonos felhasználói fiókokat és megfelelő jogosultságokat.
-    
+
     A felhasználói fiókok nem replikálódnak a forráskiszolgálóról a másodpéldány-kiszolgálóra. A replika-kiszolgálóhoz való felhasználói hozzáférés biztosításához manuálisan kell létrehoznia az összes fiókot és a megfelelő jogosultságokat az újonnan létrehozott Azure Database for MariaDB-kiszolgálón.
 
 3. Adja hozzá a forráskiszolgáló IP-címét a replika tűzfalszabály-szabályaihoz. 
 
    A tűzfalszabályokat az [Azure Portallal](howto-manage-firewall-portal.md) vagy az [Azure CLI-vel](howto-manage-firewall-cli.md) frissítheti.
-
-> [!NOTE]
-> Elfogultság – ingyenes kommunikáció
->
-> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a _Slave_ kifejezésre mutató hivatkozásokat tartalmaz. Az [elfogultság nélküli kommunikációhoz használható Microsoft-stílus útmutatója](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) ezt a kizáró szót ismeri fel. A szó a jelen cikkben a konzisztencia miatt használatos, mert jelenleg a szoftverben megjelenő szó. Ha a szoftver frissítve lett a szó eltávolítására, a rendszer a cikket úgy frissíti, hogy az legyen az igazítás.
->
 
 ## <a name="configure-the-source-server"></a>A forráskiszolgáló konfigurálása
 
@@ -55,31 +54,38 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
 1. A továbblépés előtt tekintse át az [elsődleges kiszolgálóra vonatkozó követelményeket](concepts-data-in-replication.md#requirements) . 
 
 2. Győződjön meg arról, hogy a forráskiszolgáló engedélyezi a bejövő és a kimenő forgalmat is a 3306-es porton, valamint arról, hogy a forráskiszolgáló **nyilvános IP-címmel** rendelkezik, a DNS nyilvánosan elérhető, vagy rendelkezik teljes tartománynévvel (FQDN). 
-   
+
    Tesztelje a kapcsolatot a forráskiszolgálóról egy olyan eszközről való csatlakozásra tett kísérlettel, amely egy másik gépen vagy a Azure Portal elérhető [Azure Cloud Shell](../cloud-shell/overview.md) .
 
-   Ha a szervezete szigorú biztonsági házirendekkel rendelkezik, és nem engedélyezi az összes IP-címet a forráskiszolgálón az Azure-ból a forráskiszolgálóról való kommunikáció engedélyezéséhez, akkor az alábbi parancs segítségével meghatározhatja a Azure Database for MariaDB-kiszolgáló IP-címét.
-    
-   1. Jelentkezzen be a Azure Database for MariaDB a MySQL parancssori eszköz használatával.
+   Ha a szervezete szigorú biztonsági házirendekkel rendelkezik, és nem engedélyezi az összes IP-címet a forráskiszolgálón az Azure-ból a forráskiszolgálóról való kommunikáció engedélyezéséhez, az alábbi parancs segítségével meghatározhatja a Azure Database for MariaDB-kiszolgáló IP-címét.
+
+   1. Jelentkezzen be a Azure Database for MariaDB egy olyan eszközzel, mint a MySQL parancssor.
    2. Hajtsa végre az alábbi lekérdezést.
+
       ```bash
       mysql> SELECT @@global.redirect_server_host;
       ```
+
       Néhány példa a kimenetre:
-      ```bash 
+
+      ```bash
       +-----------------------------------------------------------+
       | @@global.redirect_server_host                             |
       +-----------------------------------------------------------+
       | e299ae56f000.tr1830.westus1-a.worker.database.windows.net |
        +-----------------------------------------------------------+
       ```
-   3. Kilépés a MySQL-parancssorból.
+
+   3. Kilépés a MySQL parancssorból.
    4. Futtassa az alábbi parancsot a ping segédprogramban az IP-cím lekéréséhez.
+
       ```bash
       ping <output of step 2b>
-      ``` 
-      Például: 
-      ```bash      
+      ```
+
+      Például:
+
+      ```bash
       C:\Users\testuser> ping e299ae56f000.tr1830.westus1-a.worker.database.windows.net
       Pinging tr1830.westus1-a.worker.database.windows.net (**11.11.111.111**) 56(84) bytes of data.
       ```
@@ -89,8 +95,8 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
    > [!NOTE]
    > Ez az IP-cím karbantartási/üzembe helyezési műveletek miatt változhat. Ez a kapcsolódási módszer csak olyan ügyfelek számára érhető el, akik nem engedhetik meg a 3306-es porton az összes IP-cím engedélyezését.
 
-2. A bináris naplózás bekapcsolása.
-    
+3. A bináris naplózás bekapcsolása.
+
     Ha szeretné megtekinteni, hogy engedélyezve van-e a bináris naplózás a főkiszolgálón, írja be a következő parancsot:
 
    ```sql
@@ -101,7 +107,7 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
 
    Ha `log_bin` az értéket adja vissza `OFF` , szerkessze a **My. cnf** fájlt úgy, hogy az `log_bin=ON` bekapcsolja a bináris naplózást. Indítsa újra a kiszolgálót a módosítás érvénybe léptetéséhez.
 
-3. A forráskiszolgáló beállításainak konfigurálása.
+4. A forráskiszolgáló beállításainak konfigurálása.
 
     Felhőbe irányuló replikálás megköveteli `lower_case_table_names` , hogy a paraméter konzisztens legyen a forrás-és a replika-kiszolgálók között. A `lower_case_table_names` paraméter `1` alapértelmezett értéke Azure Database for MariaDB.
 
@@ -109,14 +115,14 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
    SET GLOBAL lower_case_table_names = 1;
    ```
 
-4. Hozzon létre egy új replikációs szerepkört, és állítson be engedélyeket.
+5. Hozzon létre egy új replikációs szerepkört, és állítson be engedélyeket.
 
    Hozzon létre egy olyan felhasználói fiókot a forráskiszolgálón, amely replikációs jogosultságokkal van konfigurálva. Az SQL-parancsok vagy a MySQL Workbench használatával hozhat létre fiókot. Ha az SSL-sel való replikálást tervezi, ezt a felhasználói fiók létrehozásakor kell megadnia.
-   
+
    Ha szeretné megtudni, hogyan adhat hozzá felhasználói fiókokat a forráskiszolgálón, tekintse meg a [MariaDB dokumentációját](https://mariadb.com/kb/en/library/create-user/).
 
    Az alábbi parancsokkal az új replikációs szerepkör bármely gépről elérheti a forrást, nem csak a forrást futtató gépet. Ehhez a hozzáféréshez a **\@ (z) "%" syncuser** kell megadnia a parancsban a felhasználó létrehozásához.
-   
+
    A MariaDB-dokumentációval kapcsolatos további tudnivalókért tekintse [meg a fiókok nevének megadásával](https://mariadb.com/kb/en/library/create-user/#account-names)foglalkozó témakört.
 
    **SQL-parancs**
@@ -133,7 +139,7 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
    - Replikáció SSL nélkül
 
        Ha az SSL nem szükséges minden kapcsolathoz, adja meg a következő parancsot egy felhasználó létrehozásához:
-    
+
        ```sql
        CREATE USER 'syncuser'@'%' IDENTIFIED BY 'yourpassword';
        GRANT REPLICATION SLAVE ON *.* TO ' syncuser'@'%';
@@ -142,19 +148,18 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
    **MySQL Workbench**
 
    A MySQL Workbench replikációs szerepkörének létrehozásához a **felügyelet** ablaktáblán válassza a **felhasználók és jogosultságok** lehetőséget. Ezután válassza a **fiók hozzáadása** lehetőséget.
- 
+
    ![Felhasználók és jogosultságok](./media/howto-data-in-replication/users_privileges.png)
 
    Adjon meg egy felhasználónevet a **bejelentkezési név** mezőben.
 
    ![Felhasználó szinkronizálása](./media/howto-data-in-replication/syncuser.png)
- 
+
    Válassza ki a **felügyeleti szerepkörök** panelt, majd a **globális jogosultságok** listájában válassza ki a **replikálási Slave** elemet. A replikációs szerepkör létrehozásához kattintson az **alkalmaz** gombra.
 
    ![Replikálási Slave](./media/howto-data-in-replication/replicationslave.png)
 
-
-5. A forráskiszolgáló beállítása írásvédett módra.
+6. A forráskiszolgáló beállítása írásvédett módra.
 
    Az adatbázisok kiírása előtt a kiszolgálót csak olvasható módban kell elhelyezni. Amíg csak olvasható módban van, a forrás nem dolgozhat fel írási tranzakciókat. Az üzleti hatás elkerülése érdekében ütemezze a csak olvasási időszakot egy off-Peak idő alatt.
 
@@ -163,27 +168,27 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
    SET GLOBAL read_only = ON;
    ```
 
-6. Az aktuális bináris naplófájl nevének és eltolásának beolvasása.
+7. Az aktuális bináris naplófájl nevének és eltolásának beolvasása.
 
    Az aktuális bináris naplófájl nevének és eltolásának meghatározásához futtassa a parancsot [`show master status`](https://mariadb.com/kb/en/library/show-master-status/) .
-    
+
    ```sql
    show master status;
    ```
+
    Az eredmények az alábbi táblázathoz hasonlóak:
-   
+
    ![Fő állapot eredményei](./media/howto-data-in-replication/masterstatus.png)
 
    Jegyezze fel a bináris fájl nevét, mert a későbbi lépésekben lesz használva.
-   
-7. A GTID pozíciójának beolvasása (nem kötelező, a GTID való replikáláshoz szükséges).
+
+8. A GTID pozíciójának beolvasása (nem kötelező, a GTID való replikáláshoz szükséges).
 
    Futtassa a függvényt a [`BINLOG_GTID_POS`](https://mariadb.com/kb/en/library/binlog_gtid_pos/) megfelelő BinLog-fájlnév és ELTOLÁS GTID pozíciójának lekéréséhez.
   
     ```sql
     select BINLOG_GTID_POS('<binlog file name>', <binlog offset>);
     ```
- 
 
 ## <a name="dump-and-restore-the-source-server"></a>A forráskiszolgáló kiírása és visszaállítása
 
@@ -219,9 +224,9 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
    ```sql
    CALL mysql.az_replication_change_master('<master_host>', '<master_user>', '<master_password>', 3306, '<master_log_file>', <master_log_pos>, '<master_ssl_ca>');
    ```
-   
+
    vagy
-   
+
    ```sql
    CALL mysql.az_replication_change_master_with_gtid('<master_host>', '<master_user>', '<master_password>', 3306, '<master_gtid_pos>', '<master_ssl_ca>');
    ```
@@ -233,8 +238,8 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
    - master_log_pos: a bináris napló pozíciója fut `show master status`
    - master_gtid_pos: a GTID pozíciója fut `select BINLOG_GTID_POS('<binlog file name>', <binlog offset>);`
    - master_ssl_ca: HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány környezete. Ha nem használ SSL-t, adjon meg egy üres karakterláncot. *
-    
-    
+
+
     * Javasoljuk, hogy a master_ssl_ca paramétert változóként adja át. További információkért tekintse meg az alábbi példákat.
 
    **Példák**
@@ -250,10 +255,11 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
        ```
 
        Az SSL-sel történő replikáció beállítása a tartomány companya.com üzemeltetett forráskiszolgáló és a Azure Database for MariaDBban üzemeltetett replika-kiszolgáló között történik. Ez a tárolt eljárás fut a replikán.
-    
+
        ```sql
        CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mariadb-bin.000016', 475, @cert);
        ```
+
    - Replikáció SSL nélkül
 
        Az SSL nélküli replikáció beállítása a tartomány companya.com üzemeltetett forráskiszolgáló és a Azure Database for MariaDBban üzemeltetett replika-kiszolgáló között történik. Ez a tárolt eljárás fut a replikán.
@@ -273,7 +279,7 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
 3. Replikáció állapotának bejelölése.
 
    A [`show slave status`](https://mariadb.com/kb/en/library/show-slave-status/) replikálási állapot megtekintéséhez hívja meg a parancsot a replika kiszolgálóján.
-    
+
    ```sql
    show slave status;
    ```
@@ -281,11 +287,11 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
    Ha `Slave_IO_Running` a és az `Slave_SQL_Running` állapotban van `yes` , és a értéke `Seconds_Behind_Master` , a `0` replikálás működik. `Seconds_Behind_Master` azt jelzi, hogy a replika milyen későn van. Ha az érték nem `0` , akkor a replika frissíti a frissítéseket.
 
 4. Frissítse a megfelelő kiszolgálói változókat az adatreplikálás biztonságosabbá tételéhez (csak a GTID nélküli replikáláshoz szükséges).
-    
+
     A MariaDB-ben a natív replikálás korlátozása miatt  [`sync_master_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_master_info) a GTID-forgatókönyv nélkül kell beállítania és konfigurálnia [`sync_relay_log_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_relay_log_info) a replikálást.
 
     Ellenőrizze a replika kiszolgálójának `sync_master_info` és `sync_relay_log_info` változóinak ellenőrzését, és győződjön meg arról, hogy az adatreplikáció stabil, és állítsa be a változókat a következőre: `1` .
-    
+
 ## <a name="other-stored-procedures"></a>Egyéb tárolt eljárások
 
 ### <a name="stop-replication"></a>Replikáció leállítása
@@ -307,10 +313,11 @@ CALL mysql.az_replication_remove_master;
 ### <a name="skip-the-replication-error"></a>A replikálási hiba kihagyása
 
 A replikálási hibák kihagyásához és a replikáció engedélyezéséhez használja a következő tárolt eljárást:
-    
+
 ```sql
 CALL mysql.az_replication_skip_counter;
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
+
 További információ a Azure Database for MariaDB [felhőbe irányuló replikálásról](concepts-data-in-replication.md) .

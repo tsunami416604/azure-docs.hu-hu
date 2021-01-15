@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: f0699ed065da4c63bc88945d75a866abcfbb9053
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: f4981036ca92f6efe2d3e23ea1f507a3a1f3c70a
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121362"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234256"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Oktatóanyag: az Azure Key Vault-szolgáltató konfigurálása és futtatása a Secrets Store CSI-illesztőprogramhoz a Kubernetes-ben
 
@@ -37,6 +37,8 @@ Az oktatóanyag a következőket ismerteti:
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 * Az oktatóanyag elindítása előtt telepítse az [Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest)-t.
+
+Ez az oktatóanyag feltételezi, hogy runnig az Azure Kubernetes szolgáltatást Linux-csomópontokon.
 
 ## <a name="use-managed-identities"></a>Felügyelt identitások használata
 
@@ -77,6 +79,8 @@ Fejezze be az [Azure Kubernetes Service-fürt üzembe helyezése az Azure CLI ha
     ![Képernyőkép az Azure CLI-ről a principalId és a clientId értékkel az Azure CLI-vel, a ](../media/kubernetes-key-vault-2.png) ![ subscriptionId és a nodeResourceGroup értékekkel kiemelve](../media/kubernetes-key-vault-3.png)
     
 ## <a name="install-helm-and-the-secrets-store-csi-driver"></a>A Helm és a Secrets Store CSI-illesztőprogram telepítése
+> [!NOTE]
+> Az alábbi telepítés csak a Linuxon futó AK-on működik. A Secrets Store CSI-illesztőprogram telepítésével kapcsolatos további információkért lásd: [Azure Key Vault Provider for Secrets Store CSI-illesztőprogram](https://github.com/Azure/secrets-store-csi-driver-provider-azure) 
 
 A Secrets Store CSI-illesztőprogram telepítéséhez először telepítenie kell a [Helm](https://helm.sh/docs/intro/install/)-t.
 
@@ -290,7 +294,7 @@ kubectl exec -it nginx-secrets-store-inline -- cat /mnt/secrets-store/secret1
 
 Ellenőrizze, hogy a titkos kód tartalma megjelenik-e.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Key Vault helyreállításának biztosításához lásd:
 > [!div class="nextstepaction"]

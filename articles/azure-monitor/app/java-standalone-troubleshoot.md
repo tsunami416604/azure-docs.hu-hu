@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan lehet elhárítani a Java-ügynököt a Azure M
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 54bf2440dff20fc757f37e3f31a53c57ebd59120
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 2876abd3749c9e56cef462e41b8268135f82cd12
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133191"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232216"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Hibaelhárítási útmutató: Azure Monitor Application Insights Javához
 
@@ -17,7 +17,7 @@ Ebben a cikkben néhány olyan gyakori problémát ismertetünk, amelyek a Java-
 
 ## <a name="check-the-self-diagnostic-log-file"></a>Az öndiagnosztika naplófájljának ellenőrzéséhez
 
-Alapértelmezés szerint a Application Insights Java 3,0-ügynöke létrehoz egy nevű naplófájlt, `applicationinsights.log` amely ugyanabban a könyvtárban található, amely a `applicationinsights-agent-3.0.0.jar` fájlt tartalmazza.
+Alapértelmezés szerint a Application Insights Java 3,0-ügynöke létrehoz egy nevű naplófájlt, `applicationinsights.log` amely ugyanabban a könyvtárban található, amely a `applicationinsights-agent-3.0.1.jar` fájlt tartalmazza.
 
 Ez a naplófájl az első hely, amely az esetlegesen felmerülő problémákra utal.
 

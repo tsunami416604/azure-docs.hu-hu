@@ -4,12 +4,12 @@ description: A használat és a problémák diagnosztizálásához helyezzen be 
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: ae64888669fb9a3c053802ee4f7ad7db6316265d
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: d553c192d62baedb93c7f8270c56526fbf8edb62
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780501"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233746"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API egyéni eseményekhez és metrikákhoz
 
@@ -19,7 +19,7 @@ Szúrjon be néhány sornyi kódot az alkalmazásban, hogy megtudja, mit csinál
 
 Az alapszintű API minden platformon egységes, többek között a `GetMetric` (csak .net-es) változatokon kívül.
 
-| Módszer | Alkalmazási cél |
+| Metódus | Alkalmazási cél |
 | --- | --- |
 | [`TrackPageView`](#page-views) |Lapok, képernyők, pengék vagy űrlapok. |
 | [`TrackEvent`](#trackevent) |Felhasználói műveletek és egyéb események. A felhasználói viselkedés nyomon követésére vagy a teljesítmény figyelésére szolgál. |
@@ -146,7 +146,9 @@ telemetry.trackEvent({name: "WinGame"});
 
 ### <a name="custom-events-in-analytics"></a>Egyéni események az Analyticsben
 
-A telemetria `customEvents` [Application Insights Analytics](../log-query/log-query-overview.md)táblázatában érhető el. Az egyes sorok az alkalmazásban meghívást jelentenek `trackEvent(..)` .
+A telemetria a `customEvents` táblázat [Application Insights naplók lapján](../log-query/log-query-overview.md) vagy a [használati élményben](usage-overview.md)érhető el. Az események származhatnak, `trackEvent(..)` vagy az [Analytics automatikus gyűjtésének beépülő moduljában](javascript-click-analytics-plugin.md)is előfordulhatnak.
+
+ 
 
 Ha a [mintavételezés](./sampling.md) folyamatban van, a ItemCount tulajdonság 1-nél nagyobb értéket jelenít meg. Például a itemCount = = 10 érték azt jelenti, hogy a trackEvent () 10 hívása a mintavételezési folyamat csak az egyiket továbbítja. Az egyéni események helyes számának megszerzéséhez ezért kódokat kell használnia, például: `customEvents | summarize sum(itemCount)` .
 
@@ -1122,4 +1124,3 @@ Az adatok megőrzési időtartamának megállapításához tekintse meg az [adat
 
 * [Események és naplók keresése](./diagnostic-search.md)
 * [Hibaelhárítás](../faq.md)
-

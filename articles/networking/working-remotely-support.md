@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: rambala
-ms.openlocfilehash: e0e5806ec59cd2d75111db213d8511488d043eec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 835be5b867826d75732c9482743ad6a4ca2900e7
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80982854"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98231842"
 ---
 # <a name="working-remotely-using-azure-networking-services"></a>Távoli munka az Azure Networking Services használatával
 
@@ -60,7 +60,7 @@ Az Azure számos Eco-partnert is tartalmaz. Partnereink hálózati virtuális be
 
 A következő Azure-szolgáltatások segíthetnek az alkalmazottaknak a globálisan elosztott erőforrások elérésében. Erőforrásai lehetnek az Azure-régiókban, a helyszíni hálózatokban, vagy akár más nyilvános vagy privát felhőkben is. 
 
-- **Azure-beli virtuális hálózati**társítás: Ha több Azure-régióban helyezi üzembe az erőforrásokat, és/vagy ha a távoli munkatársainak több virtuális hálózattal való összevonásával összekapcsolja a kapcsolatot, a virtuális hálózati társítást használó több Azure-beli virtuális hálózat között kapcsolatot létesíthet. További információ: [Virtual Network peering][VNet-peer].
+- **Azure-beli virtuális hálózati** társítás: Ha több Azure-régióban helyezi üzembe az erőforrásokat, és/vagy ha a távoli munkatársainak több virtuális hálózattal való összevonásával összekapcsolja a kapcsolatot, a virtuális hálózati társítást használó több Azure-beli virtuális hálózat között kapcsolatot létesíthet. További információ: [Virtual Network peering][VNet-peer].
 
 - **Azure VPN-alapú megoldás**: az Azure-hoz P2S vagy S2S VPN-en keresztül csatlakozó távoli alkalmazottak számára engedélyezheti a helyszíni hálózatokhoz való hozzáférést úgy, hogy a S2S VPN-t konfigurálja a helyszíni hálózatok és az Azure VPN Gateway között. További információ: helyek közötti [kapcsolat létrehozása][S2S].
 
@@ -86,15 +86,15 @@ A következő cikkek azt ismertetik, hogyan használhatók a különböző Azure
 | [Az otthoni igényeknek megfelelően működik? Itt látható, hogy az Azure Virtual WAN hogyan segíthet](../virtual-wan/work-remotely-support.md) | Az Azure Virtual WAN használatával kezelheti a szervezet távoli kapcsolati igényeit.|
 | [Nagy mennyiségű forgalom támogatása az Application Gatewayben](../application-gateway/high-traffic-support.md) | A Web Application Firewall (WAF) Application Gateway használatával méretezhető és biztonságos módon kezelheti a webalkalmazások forgalmát. |
 | [A hálózati virtuális berendezés (NVA) szempontjai távoli munkához](../vpn-gateway/nva-work-remotely-support.md)|A távelérési megoldások biztosításához tekintse át a NVA az Azure-ban való kihasználásával kapcsolatos útmutatót. |
-| [Áttérés az OpenVPN protokollra vagy az SSTP-IKEv2](https://go.microsoft.com/fwlink/?linkid=2124112) | A 128 párhuzamos kapcsolati korlátjának leküzdése az OpenVPN protokollra vagy a IKEv2-re való áttéréssel.|
+| [Áttérés az OpenVPN protokollra vagy az SSTP-IKEv2](../vpn-gateway/ikev2-openvpn-from-sstp.md) | A 128 párhuzamos kapcsolati korlátjának leküzdése az OpenVPN protokollra vagy a IKEv2-re való áttéréssel.|
 | [Távoli munka az Azure Bastion használatával](../bastion/work-remotely-support.md) | Biztonságos és zökkenőmentes RDP/SSH-kapcsolatot biztosíthat a virtuális gépekhez az Azure-beli virtuális hálózaton belül, közvetlenül a Azure Portal, nyilvános IP-cím használata nélkül. |
 | [Hibrid kapcsolat létrehozása az Azure ExpressRoute használatával a távoli felhasználók támogatásához](../expressroute/work-remotely-support.md) | A hibrid kapcsolat ExpressRoute használatával engedélyezheti a szervezet felhasználói számára a távoli munkát.|
 | [Azure Firewall távoli munkahelyi támogatás](../firewall/remote-work-support.md)|Az Azure-beli virtuális hálózati erőforrások Azure Firewall használatával védhetők. |
 
 <!--Link References-->
-[VNet-peer]: https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview
-[S2S]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal
-[ExR]: https://docs.microsoft.com/azure/expressroute/expressroute-introduction
-[ExR-eco]: https://docs.microsoft.com/azure/expressroute/expressroute-locations
-[ExR-D]: https://docs.microsoft.com/azure/expressroute/expressroute-erdirect-about
-[Az-OCI]: https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-azure-oci-networking
+[VNet-peer]: ../virtual-network/virtual-network-peering-overview.md
+[S2S]: ../vpn-gateway/tutorial-site-to-site-portal.md
+[ExR]: ../expressroute/expressroute-introduction.md
+[ExR-eco]: ../expressroute/expressroute-locations.md
+[ExR-D]: ../expressroute/expressroute-erdirect-about.md
+[Az-OCI]: ../virtual-machines/workloads/oracle/configure-azure-oci-networking.md

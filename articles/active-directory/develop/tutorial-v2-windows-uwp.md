@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 63d56d8afc584a760f4b31c6021d4c764afd52b3
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: bbcebfd69789eb6ec03e565b347d05533043781c
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064419"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232335"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Oktatóanyag: a Microsoft Graph API meghívása egy Univerzális Windows-platform-(UWP-) alkalmazásból
 
@@ -48,7 +48,7 @@ Ez az útmutató egy minta UWP-alkalmazást hoz létre, amely lekérdezi a Micro
 
 Ez az útmutató a következő NuGet-csomagot használja:
 
-|Kódtár|Description|
+|Kódtár|Leírás|
 |---|---|
 |[Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)| Microsoft Authentication Library|
 |[Microsoft. Graph](https://www.nuget.org/packages/Microsoft.Graph)|Microsoft Graph ügyféloldali kódtár|
@@ -59,8 +59,8 @@ Ez a szakasz részletesen ismerteti a Windows asztali .NET-alkalmazások (XAML) 
 
 Ez az útmutató egy olyan alkalmazást hoz létre, amely lekérdezi az Microsoft Graph API-t és egy gombot a kijelentkezéshez. Emellett a hívások eredményét tartalmazó szövegmezőket is megjeleníti.
 
-> [!NOTE]
-> Szeretné letölteni a minta Visual Studio-projektjét a létrehozása helyett? [Töltsön le egy projektet](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip), és ugorjon az [alkalmazás regisztrálása](#register-your-application "alkalmazás regisztrációs lépése") lépésre a kód a futtatása előtt történő konfigurálásához.
+> [!Tip]
+> Ha meg szeretné tekinteni az oktatóanyagban felépített projekt befejezett verzióját, [letöltheti azt a githubról](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip).
 
 ### <a name="create-your-application"></a>Az alkalmazás létrehozása
 
@@ -292,8 +292,7 @@ private async void SignOutButton_Click(object sender, RoutedEventArgs e)
     }
 ```
 
-> [!NOTE]
-> A MSAL.NET aszinkron metódusokat használ a jogkivonatok beszerzéséhez vagy a fiókok kezeléséhez. A felhasználói FELÜLETi szálban támogatni kell a felhasználói felületi műveleteket. Ez a hívás oka `Dispatcher.RunAsync` és a meghívott óvintézkedések `ConfigureAwait(false)` .
+A MSAL.NET aszinkron metódusokat használ a jogkivonatok beszerzéséhez vagy a fiókok kezeléséhez. A felhasználói FELÜLETi szálban támogatni kell a felhasználói felületi műveleteket. Ez a hívás oka `Dispatcher.RunAsync` és a meghívott óvintézkedések `ConfigureAwait(false)` .
 
 #### <a name="more-information-about-signing-out"></a>További információ a kijelentkezésről<a name="more-information-on-sign-out"></a>
 
@@ -477,8 +476,7 @@ A Microsoft Graph API-nak a `user.read` hatókört kell beolvasnia a felhasznál
 
 Ha egy alkalmazás kontextusában szeretné elérni a felhasználó naptárait, adja hozzá a `Calendars.Read` delegált engedélyt az alkalmazás regisztrációs adataihoz. Ezután adja hozzá a `Calendars.Read` hatókört a `acquireTokenSilent` híváshoz.
 
-> [!NOTE]
-> A rendszer a hatókörök számának növelésével további hozzájárulásokat is kérhet a felhasználóknak.
+A rendszer a hatókörök számának növelésével további hozzájárulásokat is kérhet a felhasználóknak.
 
 ## <a name="known-issues"></a>Ismert problémák
 
@@ -504,7 +502,7 @@ Az [integrált hitelesítést az összevont tartományokon](#enable-integrated-a
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Microsoft Authentication Library (MSAL) használatáról a .NET-alkalmazásokban történő engedélyezéshez és hitelesítéshez:
 

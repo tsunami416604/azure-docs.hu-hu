@@ -1,14 +1,14 @@
 ---
 title: Javítható szabályzat telepítése
 description: Az Azure Világítótoronyon keresztül szervizelési feladatot használó házirendek telepítéséhez létre kell hoznia egy felügyelt identitást az ügyfél-bérlőben.
-ms.date: 12/17/2020
+ms.date: 01/14/2021
 ms.topic: how-to
-ms.openlocfilehash: eb473fe2f589cf719e3944c887d46e75e9e7fdbf
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 01070133241117596bdf2b8e1e7c3fa101fc656c
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97670491"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233882"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>A delegált előfizetésen belüli szervizelésre alkalmas szabályzat telepítése
 
@@ -19,9 +19,9 @@ Az [Azure Lighthouse](../overview.md) lehetővé teszi a szolgáltatók számár
 
 ## <a name="create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant"></a>Hozzon létre egy felhasználót, aki szerepköröket rendelhet egy felügyelt identitáshoz az ügyfél bérlője számára
 
-Amikor egy ügyfelet az Azure Lighthouse-be telepít, egy [Azure Resource Manager sablont](onboard-customer.md#create-an-azure-resource-manager-template) , valamint egy olyan paramétereket tartalmazó fájlt használ, amely meghatározza a felügyeleti bérlőben lévő felhasználókat, felhasználói csoportokat és egyszerű szolgáltatásokat, amelyek képesek lesznek hozzáférni a delegált erőforrásokhoz az ügyfél bérlője számára. A parameters (paraméterek) fájlban ezek a felhasználók (**principalId**-EK) egy [beépített szerepkört](../../role-based-access-control/built-in-roles.md) (**roleDefinitionId**) kapnak, amely meghatározza a hozzáférési szintet.
+Amikor egy ügyfelet az Azure Lighthouse-be telepít, egy [Azure Resource Manager sablont](onboard-customer.md#create-an-azure-resource-manager-template) , valamint egy paramétereket tartalmazó fájlt használ az ügyfél bérlője által delegált erőforrásokhoz hozzáférést biztosító engedélyek definiálásához. Az egyes engedélyek olyan **principalId** határoznak meg, amely megfelel egy Azure ad-felhasználónak,-csoportnak vagy egyszerű szolgáltatásnak a bérlői felügyeletben, valamint egy olyan **roleDefinitionId** , amely megfelel az [Azure beépített szerepkörének](../../role-based-access-control/built-in-roles.md) .
 
-Ahhoz, hogy egy **principalId** felügyelt identitást hozzon létre az ügyfél bérlője számára, be kell állítania a **RoleDefinitionId** a **felhasználói hozzáférési rendszergazdának**. Habár ez a szerepkör nem támogatott általánosan, ez az adott forgatókönyvben használható, így a felhasználók ezzel az engedéllyel rendelkezhetnek egy vagy több speciális beépített szerepkör hozzárendeléséhez a felügyelt identitásokhoz. Ezeket a szerepköröket a **delegatedRoleDefinitionIds** tulajdonság határozza meg. Ide belefoglalhatja a beépített szerepkört, kivéve a felhasználói hozzáférés rendszergazdáját vagy a tulajdonost.
+Ahhoz, hogy egy **principalId** felügyelt identitást hozzon létre az ügyfél bérlője számára, be kell állítania a **RoleDefinitionId** a **felhasználói hozzáférési rendszergazdának**. Habár ez a szerepkör nem támogatott általánosan, ez az adott forgatókönyvben használható, amely lehetővé teszi a felhasználói fiókok számára, hogy egy vagy több meghatározott beépített szerepkört rendeljen a felügyelt identitásokhoz. Ezek a szerepkörök a **delegatedRoleDefinitionIds** tulajdonságban vannak definiálva, és az [Azure beépített szerepkörét](../concepts/tenants-users-roles.md#role-support-for-azure-lighthouse) is tartalmazhatják, kivéve a felhasználói hozzáférés rendszergazdáját vagy a tulajdonost.
 
 Az ügyfél bevezetését követően az ebben az engedélyezésben létrehozott **principalId** ezeket a beépített szerepköröket hozzárendelheti a felügyelt identitásokhoz az ügyfél bérlője számára. Azonban nem rendelkeznek a felhasználói hozzáférés rendszergazdai szerepkörhöz tartozó egyéb engedélyekkel.
 
@@ -67,7 +67,7 @@ Az alábbi példa egy **delegatedManagedIdentityResourceId** rendelkező szerepk
 > [!TIP]
 > A rendszer egy [hasonló mintát](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-add-or-replace-tag) mutat be, amely bemutatja, hogyan helyezhet üzembe egy olyan szabályzatot, amely egy (a módosítás hatásával) címkét hozzáad vagy eltávolít egy delegált előfizetéshez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A [Azure Policy](../../governance/policy/index.yml)megismerése.
 - Ismerje meg [Az Azure-erőforrások felügyelt identitásait](../../active-directory/managed-identities-azure-resources/overview.md).

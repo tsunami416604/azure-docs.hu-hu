@@ -1,14 +1,14 @@
 ---
 title: Bérlők, felhasználók és szerepkörök az Azure Lighthouse-forgatókönyvekben
 description: Megismerheti Azure Active Directory bérlők, a felhasználók és a szerepkörök fogalmait, valamint azt, hogy miként használhatók az Azure Lighthouse-forgatókönyvekben.
-ms.date: 10/29/2020
+ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 411b9bae19166e1875011360aa011c05d590b237
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d78828cc739030f8e456c64885d77ddf59dd13fb
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023942"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233916"
 ---
 # <a name="tenants-users-and-roles-in-azure-lighthouse-scenarios"></a>Bérlők, felhasználók és szerepkörök az Azure Lighthouse-forgatókönyvekben
 
@@ -18,7 +18,10 @@ A *bérlő* az Azure ad dedikált és megbízható példánya. Az egyes bérlők
 
 Ahhoz, hogy ez a logikai leképezés elérhető legyen, az ügyfél bérlőn belül egy előfizetést (vagy egy vagy több erőforráscsoportot *) be kell készíteni az* Azure világítótoronyba. Ez a [bevezetési folyamat Azure Resource Manager-sablonokkal](../how-to/onboard-customer.md) vagy [nyilvános vagy privát ajánlat Azure Marketplace-en való közzétételével](../how-to/publish-managed-services-offers.md)végezhető el.
 
-Bármelyik bevezetési módszert választja, meg kell adnia az *engedélyeket*. Az egyes engedélyek egy felhasználói fiókot határoznak meg a bérlők kezelése szolgáltatásban, amely hozzáfér a delegált erőforrásokhoz, valamint egy beépített szerepkört, amely megadja, hogy az egyes felhasználók milyen engedélyeket kapnak ezekhez az erőforrásokhoz.
+Bármelyik bevezetési módszert választja, meg kell adnia az *engedélyeket*. Az egyes engedélyek olyan **principalId** határoznak meg, amely hozzáfér a delegált erőforrásokhoz, valamint egy beépített szerepkört, amely megadja, hogy ezek a felhasználók milyen engedélyeket kapnak ezekhez az erőforrásokhoz. Ez a **principalId** egy Azure ad-felhasználót,-csoportot vagy egyszerű szolgáltatásnevet határoz meg a bérlői felügyeletben.
+
+> [!NOTE]
+> Ha explicit módon meg van adva, az Azure Lighthouse dokumentációjában lévő "user" kifejezésre mutató hivatkozások egy adott Azure AD-felhasználóra, csoportra vagy egyszerű szolgáltatásra vonatkoznak az engedélyekben.
 
 ## <a name="best-practices-for-defining-users-and-roles"></a>Ajánlott eljárások felhasználók és szerepkörök definiálásához
 

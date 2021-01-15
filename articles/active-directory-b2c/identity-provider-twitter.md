@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 7779730b98630d08af046e7cb402caca1d0c2fe6
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: a0f209e0ac17c62378d279a32f4a27f48a9f74bd
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653656"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232692"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Twitter-fiókkal való regisztráció és bejelentkezés beállítása Azure Active Directory B2C használatával
 
@@ -35,16 +35,21 @@ ms.locfileid: "97653656"
 
 ## <a name="create-an-application"></a>Alkalmazás létrehozása
 
-Ha a Twittert identitás-szolgáltatóként szeretné használni Azure AD B2Cban, létre kell hoznia egy Twitter-alkalmazást. Ha még nem rendelkezik Twitter-fiókkal, regisztrálhat a következő címen: [https://twitter.com/signup](https://twitter.com/signup) .
+A Twitter-fiókkal rendelkező felhasználók bejelentkezésének engedélyezéséhez Azure Active Directory B2C (Azure AD B2C) alkalmazásban Twitter-alkalmazást kell létrehoznia. Ha még nem rendelkezik Twitter-fiókkal, regisztrálhat a következő címen: [https://twitter.com/signup](https://twitter.com/signup) . [Egy fejlesztői fiókra](https://developer.twitter.com/en/apply/user.html)is szüksége lesz. További információ: [Apply for Access](https://developer.twitter.com/en/apply-for-access).
 
-1. Jelentkezzen be a [Twitter-fejlesztők](https://developer.twitter.com/en/apps) webhelyére a Twitter-fiókja hitelesítő adataival.
-1. Válassza  **az alkalmazás létrehozása** lehetőséget.
-1. Adja meg az alkalmazás **nevét** és **leírását**.
-1. A **webhely URL-címe** mezőbe írja be a értéket `https://your-tenant.b2clogin.com` . Cserélje le a helyére a `your-tenant` bérlő nevét. Például: `https://contosob2c.b2clogin.com`.
-1. A **visszahívás URL-címéhez** írja be a következőt: `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` . Cserélje le a `your-tenant` nevet a bérlő nevére, a `your-user-flow-Id` felhasználói folyamat azonosítójával együtt. Például: `b2c_1A_signup_signin_twitter`. Az összes kisbetűs betűt kell használnia, ha a bérlő nevét és a felhasználói folyamat azonosítóját akkor is meg kell adnia, ha nagybetűvel vannak meghatározva a Azure AD B2Cban.
-1. A lap alján olvassa el és fogadja el a feltételeket, majd válassza a **Létrehozás** lehetőséget.
-1. Az **alkalmazás részletei** lapon válassza a **Szerkesztés > a részletek szerkesztése** lehetőséget, jelölje be a **bejelentkezés engedélyezése a Twitteren** jelölőnégyzetet, majd kattintson a **Mentés** gombra.
-1. Válassza a **kulcsok és jogkivonatok** lehetőséget, és jegyezze fel a **fogyasztói API-kulcsot** és a **fogyasztói API titkos kulcsának** értékeit, amelyeket később szeretne használni.
+1. Jelentkezzen be a [Twitter fejlesztői portálra](https://developer.twitter.com/portal/projects-and-apps) a Twitter-fiókja hitelesítő adataival.
+1. Az **önálló alkalmazások** területen válassza az **+ alkalmazás létrehozása** lehetőséget.
+1. Adja meg az **alkalmazás nevét**, majd kattintson a **Befejezés** gombra.
+1. Másolja az **alkalmazás kulcsának** és az API- **kulcs titkának** értékét.  Mindkettőt a Twitter identitás-szolgáltatóként való konfigurálásához használja a bérlőben. 
+1. **Az alkalmazás beállítása** területen válassza az **Alkalmazásbeállítások** lehetőséget.
+1. A **hitelesítési beállítások** területen válassza a **Szerkesztés** lehetőséget.
+    1. Jelölje be a **3 lábú OAuth engedélyezése** jelölőnégyzetet.
+    1. Válassza **a kérelem e-mail címe a felhasználók számára** jelölőnégyzetet.
+    1. A **visszahívási URL-címek** esetében adja meg a értéket `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` . Cserélje le a `your-tenant` nevet a bérlő nevére, a `your-user-flow-Id` felhasználói folyamat azonosítójával együtt. Például: `b2c_1A_signup_signin_twitter`. Az összes kisbetűs betűt kell használnia, ha a bérlő nevét és a felhasználói folyamat azonosítóját akkor is meg kell adnia, ha nagybetűvel vannak meghatározva a Azure AD B2Cban.
+    1. A **webhely URL-címe** mezőbe írja be a következőt: `https://your-tenant.b2clogin.com` . Cserélje le a helyére a `your-tenant` bérlő nevét. Például: `https://contosob2c.b2clogin.com`.
+    1. Adja meg a **szolgáltatási feltételek** URL-címét, például: `http://www.contoso.com/tos` . A szabályzat URL-címe egy olyan oldal, amelyet fenntart az alkalmazás használati feltételeinek megadásához.
+    1. Adja meg az **adatvédelmi szabályzat** URL-címét, például: `http://www.contoso.com/privacy` . A szabályzat URL-címe olyan oldal, amelyet az alkalmazásra vonatkozó adatvédelmi információk biztosítására tart fenn.
+    1. Válassza a **Mentés** lehetőséget.
 
 ::: zone pivot="b2c-user-flow"
 
@@ -55,9 +60,19 @@ Ha a Twittert identitás-szolgáltatóként szeretné használni Azure AD B2Cban
 1. Válassza az Azure Portal bal felső sarkában található **Minden szolgáltatás** lehetőséget, majd keresse meg és válassza ki az **Azure AD B2C**-t.
 1. Válassza az **identitás-szolgáltatók**, majd a **Twitter** lehetőséget.
 1. Adjon meg egy **nevet**. Például: *Twitter*.
-1. Az **ügyfél-azonosító** mezőben adja meg a korábban létrehozott Twitter-alkalmazás fogyasztói API-kulcsát.
-1. Az **ügyfél titkos** kulcsa mezőben adja meg a rögzített fogyasztói API titkos kulcsot.
+1. Az **ügyfél-azonosító** mezőben adja meg a korábban létrehozott Twitter-alkalmazás *API-kulcsát* .
+1. Az **ügyfél titka** mezőben adja meg a rögzített *API-kulcs titkát* .
 1. Válassza a **Mentés** lehetőséget.
+
+## <a name="add-twitter-identity-provider-to-a-user-flow"></a>Twitter-identitás szolgáltatójának hozzáadása felhasználói folyamathoz 
+
+1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok** lehetőséget.
+1. Válassza ki azt a felhasználói folyamatot, amelyhez hozzá szeretné adni a Twitter-identitás szolgáltatóját.
+1. A **közösségi identitás-szolgáltatók** területen válassza a **Twitter** lehetőséget.
+1. Válassza a **Mentés** lehetőséget.
+1. A szabályzat teszteléséhez válassza a **felhasználói folyamat futtatása** lehetőséget.
+1. Az **alkalmazás** lapon válassza ki a korábban regisztrált *testapp1* nevű webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
+1. Kattintson a **felhasználói folyamat futtatása** elemre.
 
 ::: zone-end
 
@@ -76,7 +91,7 @@ A Azure AD B2C bérlőben korábban rögzített titkos kulcsot kell tárolnia.
 7. Adja meg a szabályzat kulcsának **nevét** . Például: `TwitterSecret`. A rendszer automatikusan hozzáadja az előtagot a `B2C_1A_` kulcs nevéhez.
 8. A **Secret (titkos kulcs**) mezőben adja meg a korábban rögzített ügyfél-titkot.
 9. A **kulcshasználat** beállításnál válassza a elemet `Encryption` .
-10. Kattintson a **Létrehozás** gombra.
+10. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="add-a-claims-provider"></a>Jogcím-szolgáltató hozzáadása
 
@@ -103,7 +118,7 @@ A Twitter-fiókot jogcím-szolgáltatóként is meghatározhatja, ha hozzáadja 
             <Item Key="request_token_endpoint">https://api.twitter.com/oauth/request_token</Item>
             <Item Key="ClaimsEndpoint">https://api.twitter.com/1.1/account/verify_credentials.json?include_email=true</Item>
             <Item Key="ClaimsResponseFormat">json</Item>
-            <Item Key="client_id">Your Twitter application consumer key</Item>
+            <Item Key="client_id">Your Twitter application API key</Item>
           </Metadata>
           <CryptographicKeys>
             <Key Id="client_secret" StorageReferenceId="B2C_1A_TwitterSecret" />
@@ -127,7 +142,7 @@ A Twitter-fiókot jogcím-szolgáltatóként is meghatározhatja, ha hozzáadja 
     </ClaimsProvider>
     ```
 
-4. Cserélje le a **client_id** értékét a korábban rögzített fogyasztói kulcsra.
+4. Cserélje le a **client_id** értékét a korábban rögzített *API-kulcs titkára* .
 5. Mentse a fájlt.
 
 ### <a name="upload-the-extension-file-for-verification"></a>A bővítmény fájljának feltöltése ellenőrzéshez
@@ -173,24 +188,6 @@ Most, hogy van egy gomb a helyén, össze kell kapcsolni egy művelettel. A műv
     Frissítse a **TechnicalProfileReferenceId** értékét a korábban létrehozott műszaki profil azonosítójával. Például: `Twitter-OAUTH1`.
 
 3. Mentse a *TrustFrameworkExtensions.xml* fájlt, és töltse fel újra az ellenőrzéshez.
-
-::: zone-end
-
-::: zone pivot="b2c-user-flow"
-
-## <a name="add-twitter-identity-provider-to-a-user-flow"></a>Twitter-identitás szolgáltatójának hozzáadása felhasználói folyamathoz 
-
-1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok** lehetőséget.
-1. Kattintson arra a felhasználói folyamatra, amelyet a Twitter-identitás szolgáltatójának szeretne használni.
-1. A **közösségi identitás-szolgáltatók** területen válassza a **Twitter** lehetőséget.
-1. Válassza a **Mentés** lehetőséget.
-1. A szabályzat teszteléséhez válassza a **felhasználói folyamat futtatása** lehetőséget.
-1. Az **alkalmazás** lapon válassza ki a korábban regisztrált *testapp1* nevű webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
-1. Kattintson a **felhasználói folyamat futtatása** elemre.
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
 
 ## <a name="update-and-test-the-relying-party-file"></a>A függő entitás fájljának frissítése és tesztelése
 

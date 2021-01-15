@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: 2eb3564153734ff70b7df69da568966e29747863
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: c70de186468eb3efacc82c1d5c8802612475fd4d
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202436"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232794"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines üzembe helyezés az SAP NetWeaver-ben
 
@@ -371,7 +371,7 @@ A következő információk ismerete az SAP-méretezéshez:
 
 Az Azure Resource Manager az Azure-előfizetésében lévő összes alkalmazás-erőforrást az erőforráscsoportok használatával kezelheti. További információt [Az Azure Resource Manager áttekintésében][resource-group-overview] találhat.
 
-## <a name="resources"></a>Források
+## <a name="resources"></a>További források
 
 ### <a name="sap-resources"></a><a name="42ee2bdb-1efc-4ec7-ab31-fe4c22769b94"></a>SAP-erőforrások
 
@@ -862,7 +862,7 @@ A proxybeállításokat helyesen kell beállítani ahhoz, hogy a helyi rendszerf
 1. Törölje **A beállítások automatikus észlelése** jelölőnégyzet kijelölését.
 1. Jelölje be a **proxykiszolgáló használata a helyi hálózaton** jelölőnégyzetet, majd adja meg a proxy címe és a port mezőt.
 1. Kattintson a **speciális** gombra.
-1. A **kivételek** mezőben adja meg az IP- **168.63.129.16**. Kattintson az **OK** gombra.
+1. A **kivételek** mezőben adja meg az IP- **168.63.129.16**. Válassza az **OK** lehetőséget.
 
 #### <a name="linux"></a>Linux
 
@@ -912,8 +912,8 @@ A felhasználó által megadott útvonalakkal kapcsolatos további információk
 ### <a name="configure-the-azure-extension-for-sap"></a><a name="d98edcd3-f2a1-49f7-b26a-07448ceb60ca"></a>Az SAP-hez készült Azure-bővítmény konfigurálása
 
 > [!NOTE]
-> Általános támogatási nyilatkozat: mindig nyisson meg egy, az SAP-vel kapcsolatos incidenst a BC-OP-NT-AZR for Windows vagy a BC-OP-LNX-AZR esetében, ha az SAP-hez készült Azure-bővítmény támogatása szükséges.
-> Az SAP-támogatási rendszeren vannak olyan dedikált Microsoft támogatási mérnökök, akik a közös ügyfeleink segítségére vannak.
+> Általános támogatási nyilatkozat:  
+> Az SAP-hez készült Azure-bővítmény támogatását SAP-támogatási csatornákon keresztül biztosítjuk. Ha segítségre van szüksége az SAP-hez készült Azure-bővítménnyel kapcsolatban, nyisson meg egy támogatási esetet [SAP-támogatással](https://support.sap.com/). 
 
 Ha előkészítette a virtuális gépet az Azure-beli virtuális [gépek üzembe helyezési forgatókönyvei][deployment-guide-3]című témakörben leírtak szerint, az Azure-beli virtuálisgép-ügynök telepítve van a virtuális gépen. A következő lépés az SAP-hez készült Azure-bővítmény üzembe helyezése, amely a globális Azure-adatközpontok Azure Extension adattárában érhető el. További információ: [Azure Virtual Machines tervezése és implementálása az SAP NetWeaver-][planning-guide-9.1]ban.
 

@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: cc0d908f479fe5bdf14abb2ace0e6c046fd6d7d5
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 45280ec41a9fd9423e4184b2e1ce593720ab6488
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011949"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232352"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Gyors útmutató: alkalmazás regisztrálása a Microsoft Identity platformmal
 
@@ -97,7 +97,7 @@ Bizonyos korlátozások vonatkoznak az alkalmazások regisztrálásához hozzáa
 
 ## <a name="add-credentials"></a>Hitelesítő adatok hozzáadása
 
-A hitelesítő adatokat a webes API-hoz hozzáférő bizalmas ügyfélalkalmazások használják. Ilyenek például a webalkalmazások, más webes API-k, valamint a szolgáltatás-és démon típusú alkalmazások. A hitelesítő adatok lehetővé teszik az alkalmazás számára, hogy önmagát hitelesítse magát, ami nem igényel interakciót a felhasználótól futásidőben.
+A hitelesítő adatokat a webes API-hoz hozzáférő [bizalmas ügyfélalkalmazások](msal-client-applications.md) használják. Ilyenek például a [webalkalmazások](scenario-web-app-call-api-overview.md), más [webes API](scenario-protected-web-api-overview.md)-k, [valamint a szolgáltatás-és démon típusú alkalmazások](scenario-daemon-overview.md). A hitelesítő adatok lehetővé teszik az alkalmazás számára, hogy önmagát hitelesítse magát, ami nem igényel interakciót a felhasználótól futásidőben. 
 
 A bizalmas ügyfélalkalmazás regisztrációjának hitelesítő adataiként is hozzáadhat tanúsítványokat és ügyfél-titkot (karakterláncot).
 
@@ -105,7 +105,7 @@ A bizalmas ügyfélalkalmazás regisztrációjának hitelesítő adataiként is 
 
 ### <a name="add-a-certificate"></a>Tanúsítvány hozzáadása
 
-Más néven *nyilvános kulcs*, a tanúsítványok az ajánlott hitelesítő adatok, mivel magasabb szintű megbízhatóságot biztosítanak, mint az ügyfél titkos kulcsa.
+Más néven *nyilvános kulcs*, a tanúsítványok az ajánlott hitelesítő adatok, mivel magasabb szintű megbízhatóságot biztosítanak, mint az ügyfél titkos kulcsa. További információ a tanúsítvány hitelesítési módszerként való használatáról az alkalmazásban: a [Microsoft Identity platform alkalmazás-hitelesítési tanúsítványának hitelesítő adatai](active-directory-certificate-credentials.md) .
 
 1. Válassza ki az alkalmazást a Azure Portal **Alkalmazásregisztrációkban** .
 1. Válassza a **tanúsítványok & titkok**  >  **feltöltési tanúsítvány** elemet.
@@ -114,7 +114,7 @@ Más néven *nyilvános kulcs*, a tanúsítványok az ajánlott hitelesítő ada
 
 ### <a name="add-a-client-secret"></a>Ügyfél titkos kulcsának hozzáadása
 
-Az ügyfél titkos kulcsa (más néven *alkalmazás jelszava*) egy olyan karakterlánc-érték, amelyet az alkalmazás a tanúsítvány helyett saját maga személyazonosságára használhat fel. Ez a két használandó hitelesítő típus egyszerűbb, és gyakran használatos a fejlesztés során, de kevésbé biztonságos, mint a tanúsítvány. Az éles környezetben futó alkalmazásokban tanúsítványokat kell használnia.
+Az ügyfél titkos kulcsa (más néven *alkalmazás jelszava*) egy olyan karakterlánc-érték, amelyet az alkalmazás a tanúsítvány helyett saját maga személyazonosságára használhat fel. Ez a két használandó hitelesítő típus egyszerűbb, és gyakran használatos a fejlesztés során, de kevésbé biztonságos, mint a tanúsítvány. Az éles környezetben futó alkalmazásokban tanúsítványokat kell használnia. Az alkalmazás biztonsági javaslataival kapcsolatos további információkért lásd: a [Microsoft Identity platform ajánlott eljárásai és javaslatai](identity-platform-integration-checklist.md#security)
 
 1. Válassza ki az alkalmazást a Azure Portal **Alkalmazásregisztrációkban** .
 1. Válassza a **tanúsítványok & titkos kulcsok**  >   **új ügyfél titka** lehetőséget.
@@ -122,6 +122,8 @@ Az ügyfél titkos kulcsa (más néven *alkalmazás jelszava*) egy olyan karakte
 1. Válassza ki az időtartamot.
 1. Válassza a **Hozzáadás** elemet.
 1. **Jegyezze fel a titkos kulcs értékét** az ügyfélalkalmazás kódjában való használathoz – ez a lap *nem jelenik meg többé* , miután elhagyja ezt a lapot.
+
+**Megjegyzés:** A titkos kulcs értékével együtt generált azonosító a titkos kulcs azonosítója, amely eltér az alkalmazás-AZONOSÍTÓtól.
 
 ## <a name="next-steps"></a>További lépések
 

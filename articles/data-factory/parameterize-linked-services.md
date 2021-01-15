@@ -6,16 +6,16 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/09/2020
+ms.date: 01/15/2021
 author: dcstwh
 ms.author: weetok
 manager: anandsub
-ms.openlocfilehash: da38dd99d0f27d83d5810a664d0c05f979f47080
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: e463328df195b5a91db8ce272d138f980d000e79
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920079"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232063"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Parametrizálja társított szolgáltatások Azure Data Factory
 
@@ -42,6 +42,7 @@ A társított szolgáltatás felhasználói felületen való létrehozásakor Da
 - Azure Cosmos DB (SQL API)
 - Azure Database for MySQL
 - Azure Databricks
+- Azure Key Vault
 - Azure SQL Database
 - Felügyelt Azure SQL-példányok
 - Azure Synapse Analytics 
@@ -56,7 +57,7 @@ A fenti listában nem szereplő egyéb társított szolgáltatások esetében a 
 - A társított szolgáltatás létrehozása/szerkesztése panelen – > bontsa ki a "Advanced" (speciális) lehetőséget az alul-> jelölje be a "dinamikus tartalom JSON formátumban" jelölőnégyzetet – > határozza meg a társított szolgáltatás JSON-adattartalmát. 
 - Vagy a társított szolgáltatás paraméterezés nélküli létrehozása után a [felügyeleti központ](author-visually.md#management-hub) – > társított szolgáltatások – > keresse meg az adott társított szolgáltatást – > kattintson a "code" (gomb " {} ") gombra a JSON szerkesztéséhez. 
 
-A [JSON sample](#json) ` parameters` Paraméterek definiálásához és a (z) paraméterrel való hivatkozásához tekintse meg a JSON-mintát a Hozzáadás szakaszhoz ` @{linkedService().paraName} ` .
+A [](#json) ` parameters` Paraméterek definiálásához és a (z) paraméterrel való hivatkozásához tekintse meg a JSON-mintát a Hozzáadás szakaszhoz ` @{linkedService().paraName} ` .
 
 ## <a name="data-factory-ui"></a>A Data Factory felhasználói felülete
 

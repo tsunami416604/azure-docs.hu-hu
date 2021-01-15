@@ -3,14 +3,14 @@ title: Renderelési képességek
 description: A standard Azure Batch funkciói a renderelési munkaterhelések és alkalmazások futtatására szolgálnak. A Batch speciális funkciókat tartalmaz a renderelési feladatok támogatásához.
 author: mscurrell
 ms.author: markscu
-ms.date: 08/02/2018
+ms.date: 01/14/2021
 ms.topic: how-to
-ms.openlocfilehash: 77a6ec54495b394c597f6d6b4ddb5f5fe3285550
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: d9d196897800467fd02397bb774af0bbb9ebabf0
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107470"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234273"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Renderelési képességek Azure Batch
 
@@ -18,7 +18,15 @@ A standard Azure Batch funkciói a renderelési munkaterhelések és alkalmazás
 
 A Batch-fogalmak, például a készletek, a feladatok és a feladatok áttekintését [ebben a cikkben](./batch-service-workflow-features.md)találja.
 
-## <a name="batch-pools"></a>Batch-készletek
+## <a name="batch-pools-using-custom-vm-images-and-standard-application-licensing"></a>Egyéni virtuálisgép-rendszerképeket és normál alkalmazások licencelését használó batch-készletek
+
+Az egyéb számítási feladatokhoz és az alkalmazások típusaihoz hasonlóan egyéni virtuálisgép-rendszerkép is létrehozható a szükséges renderelési alkalmazásokkal és beépülő modulokkal. Az egyéni virtuálisgép-rendszerkép a [megosztott rendszerkép](../virtual-machines/shared-image-galleries.md) -katalógusba kerül, és [Batch-készletek létrehozásához is használható](batch-sig-images.md).
+
+A feladat parancssori karakterláncának az egyéni virtuálisgép-rendszerkép létrehozásakor használt alkalmazásokra és elérési utakra kell hivatkoznia.
+
+A legtöbb renderelési alkalmazáshoz meg kell adni a licenckiszolgáló által beszerzett licenceket. Ha van meglévő helyszíni licenckiszolgáló, akkor a készletnek és a licenckiszolgálóra is ugyanazon a [virtuális hálózaton](../virtual-network/virtual-networks-overview.md)kell lennie. Az is lehetséges, hogy egy Azure-beli virtuális GÉPEN futtatja a licenckiszolgálót, és a Batch-készlet és a licenckiszolgáló virtuális gépe ugyanazon a virtuális hálózaton található.
+
+## <a name="batch-pools-using-rendering-vm-images"></a>Batch-készletek a virtuálisgép-rendszerképek renderelésével
 
 ### <a name="rendering-application-installation"></a>Alkalmazás telepítésének megjelenítése
 
@@ -71,13 +79,13 @@ Arnold 2017 parancssor|kick.exe|ARNOLD_2017_EXEC|
 |Arnold 2018 parancssor|kick.exe|ARNOLD_2018_EXEC|
 |Blender|blender.exe|BLENDER_2018_EXEC|
 
-### <a name="azure-vm-families"></a>Azure VM-családok
+## <a name="azure-vm-families"></a>Azure VM-családok
 
 Más számítási feladatokhoz hasonlóan a renderelési alkalmazások rendszerkövetelményei eltérőek, és a teljesítményre vonatkozó követelmények a feladatok és a projektek esetében eltérőek.  Számos virtuálisgép-család elérhető az Azure-ban a követelményektől függően – a legalacsonyabb költség, a legjobb ár/teljesítmény, a legjobb teljesítmény és így tovább.
 Egyes renderelési alkalmazások, például Arnold, CPU-alapúak; mások, például a V-Ray és a Blender ciklusok a processzorokat és/vagy a GPU-t is használhatják.
 A rendelkezésre álló virtuálisgép-családok és a virtuálisgép-méretek leírását [lásd: VM-típusok és-méretek](../virtual-machines/sizes.md).
 
-### <a name="low-priority-vms"></a>Alacsony prioritású virtuális gépek
+## <a name="low-priority-vms"></a>Alacsony prioritású virtuális gépek
 
 Más számítási feladatokhoz hasonlóan az alacsony prioritású virtuális gépek is használhatók a rendereléshez a Batch-készletekben.  Az alacsony prioritású virtuális gépek ugyanúgy teljesítik a normál dedikált virtuális gépeket, mint a felesleges Azure-kapacitást, és nagy kedvezményekhez is elérhetők.  Az alacsony prioritású virtuális gépek használatának kompromisszuma az, hogy ezek a virtuális gépek nem érhetők el, vagy bármikor előzik, a rendelkezésre álló kapacitástól függően. Emiatt az alacsony prioritású virtuális gépek nem lesznek megfelelőek az összes renderelési feladathoz. Ha például a képek több órát is igénybe vesznek, akkor valószínű, hogy a képek megjelenítését megszakították, és a virtuális gépek előzik miatt újraindulnak.
 

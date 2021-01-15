@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: ddde352df5fc6063dbe04aa05fe01fca9747f8fa
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 892b731f662af57916d067c562d48f4ec25e2210
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752838"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233049"
 ---
 # <a name="discover-assess-and-migrate-google-cloud-platform-gcp-vms-to-azure"></a>Google Cloud Platform-(GCP-) virtuális gépek felderítése, felmérése és migrálása az Azure-ba
 
@@ -161,7 +161,7 @@ Az áttelepítés első lépése a replikációs berendezés beállítása. A GC
     9,8 a **telepítés helye** területen a **tovább** gombra kattintva fogadja el az alapértelmezett értéket.  
     9,9 a **hálózat kiválasztása** területen válassza a **tovább** lehetőséget az alapértelmezett érték elfogadásához.  
     9,10 az **Összefoglalás** területen válassza a **telepítés** lehetőséget.   
-    9,11 a **telepítési** folyamat adatai a telepítési folyamattal kapcsolatos információkat jelenítenek meg. Ha befejeződött, válassza a **Befejezés** lehetőséget. Egy ablakban megjelenik egy újraindítással kapcsolatos üzenet. Kattintson az **OK** gombra.   
+    9,11 a **telepítési** folyamat adatai a telepítési folyamattal kapcsolatos információkat jelenítenek meg. Ha befejeződött, válassza a **Befejezés** lehetőséget. Egy ablakban megjelenik egy újraindítással kapcsolatos üzenet. Válassza az **OK** lehetőséget.   
     9,12 következő lépésként egy ablak egy üzenetet jelenít meg a konfigurációs kiszolgáló hozzáférési jelszavával kapcsolatban. Másolja a jelszót a vágólapra, és mentse a jelszót egy ideiglenes szövegfájlba a forrásként szolgáló virtuális gépeken. Ezt a jelszót később kell megadnia a mobilitási szolgáltatás telepítési folyamata során.
 10. A telepítés befejezése után a berendezés konfigurálása varázsló automatikusan elindul (a varázslót manuálisan is elindíthatja a berendezés asztalán létrehozott cspsconfigtool-parancsikon használatával). A varázsló fiókok kezelése lapján adhatja meg a mobilitási szolgáltatás leküldéses telepítéséhez szükséges fiók adatait. Ebben az oktatóanyagban manuálisan telepítjük a mobilitási szolgáltatást a forrásként szolgáló virtuális gépekre a replikáláshoz, ezért ebben a lépésben hozzon létre egy dummy-fiókot, és folytassa a következővel:. A következő adatok megadásával hozhatja létre a "vendég" nevet a "username" névvel, a felhasználónévvel és a jelszóval a fiók jelszavaként. Ezt a dummy-fiókot fogja használni a replikálás engedélyezése szakaszban. 
 11. Miután a készülék újraindult a telepítés után, a **számítógépek felderítése** lapon válassza ki az új készüléket a **konfigurációs kiszolgáló kiválasztása** területen, majd kattintson a **regisztráció véglegesítése** lehetőségre. A regisztráció véglegesítése a replikációs berendezés előkészítésének néhány utolsó feladatát hajtja végre.
@@ -246,13 +246,22 @@ A mobilitási szolgáltatási ügynököt telepíteni kell az áttelepíteni kí
     -  Rendelkezésre állási zóna az áttelepített gép egy adott rendelkezésre állási zónába való rögzítéséhez a régióban. Ezzel a beállítással olyan kiszolgálókat oszthat szét, amelyek több csomópontos alkalmazási szintet alkotnak Availability Zoneson belül. Ha ezt a lehetőséget választja, a számítási lapon meg kell adnia a rendelkezésre állási zónát, amelyet a kiválasztott gépekhez használni szeretne. Ez a beállítás csak akkor érhető el, ha az áttelepítéshez kiválasztott cél régió támogatja a Availability Zones
     -  Rendelkezésre állási csoport, amely az áttelepített gépet egy rendelkezésre állási csoportba helyezi. A beállítás használatához legalább egy rendelkezésre állási csoportnak kell lennie.
     - Nincs szükség infrastruktúra-redundancia beállításra, ha az áttelepített gépekhez nem szükséges a rendelkezésre állási konfigurációk egyike sem.
-11. Az **Azure Hybrid Benefit** területen:
+11. A **lemez titkosítása típusnál** válassza a következő lehetőséget:
+    - Titkosítás – a platform által felügyelt kulccsal
+    - Titkosítás – az ügyfél által felügyelt kulccsal
+    - Dupla titkosítás a platform által felügyelt és az ügyfél által felügyelt kulcsokkal
+
+   > [!NOTE]
+   > A virtuális gépek CMK-vel való replikálásához létre kell [hoznia egy lemezes titkosítási](https://go.microsoft.com/fwlink/?linkid=2151800) csoportot a cél erőforráscsoport alatt. A lemezes titkosítási készlet objektum Managed Diskst képez le egy olyan Key Vaultra, amely az SSE-hoz használandó CMK tartalmazza.
+  
+12. Az **Azure Hybrid Benefit** területen:
+
     - Válassza a **Nem** lehetőséget, ha nem szeretné alkalmazni az Azure Hybrid Benefit szolgáltatást. Ezután kattintson a **Tovább** gombra.
     - Válassza az **Igen** lehetőséget, ha aktív frissítési garanciával vagy Windows Server-előfizetéssel rendelkező gépei vannak, és alkalmazni szeretné az előnyöket a migrált gépekre. Ezután kattintson a **Tovább** gombra.
 
-    ![Cél beállításai](./media/tutorial-migrate-physical-virtual-machines/target-settings.png)
+    ![Cél beállításai](./media/tutorial-migrate-vmware/target-settings.png)
 
-12. A **számításban** tekintse át a virtuális gép nevét, méretét, operációsrendszer-lemezének típusát és rendelkezésre állási konfigurációját (ha az előző lépésben van kiválasztva). A virtuális gépeknek meg kell felelniük az [Azure-követelményeknek](migrate-support-matrix-physical-migration.md#azure-vm-requirements).
+13. A **számításban** tekintse át a virtuális gép nevét, méretét, operációsrendszer-lemezének típusát és rendelkezésre állási konfigurációját (ha az előző lépésben van kiválasztva). A virtuális gépeknek meg kell felelniük az [Azure-követelményeknek](migrate-support-matrix-physical-migration.md#azure-vm-requirements).
 
     - Virtuálisgép- **méret**: Ha értékelési javaslatokat használ, a virtuális gép mérete legördülő menüben az ajánlott méret látható. Egyéb esetben az Azure Migrate az Azure-előfizetésben található leginkább megfelelő érték alapján választja ki a méretet. Alternatív megoldásként az **Azure-beli virtuális gép mérete** területen manuálisan is kiválaszthatja a méretet.
     - **Operációsrendszer-lemez**: a virtuális gép operációsrendszer-(rendszerindító) lemezének megadása. Az operációsrendszer-lemez az a lemez, amelyen az operációs rendszer rendszerbetöltője és telepítője található.
@@ -261,13 +270,13 @@ A mobilitási szolgáltatási ügynököt telepíteni kell az áttelepíteni kí
 
 ![Számítási beállítások](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
 
-13. A **lemezek** területen adja meg, hogy a virtuálisgép-lemezeket replikálni kell-e az Azure-ba, majd válassza ki a lemez típusát (standard SSD/HDD vagy prémium szintű felügyelt lemez) az Azure-ban. Ezután kattintson a **Tovább** gombra.
+14. A **lemezek** területen adja meg, hogy a virtuálisgép-lemezeket replikálni kell-e az Azure-ba, majd válassza ki a lemez típusát (standard SSD/HDD vagy prémium szintű felügyelt lemez) az Azure-ban. Ezután kattintson a **Tovább** gombra.
     - Kizárhat lemezeket a replikációból.
     - Ha kizárja a lemezeket, azok nem lesznek jelen az Azure-beli virtuális gépen a migrációt követően. 
 
     ![Lemez beállításai](./media/tutorial-migrate-physical-virtual-machines/disks.png)
 
-14. Az **Áttekintés és a replikáció megkezdése** területen tekintse át a beállításokat, majd kattintson a **Replikálás** gombra a kiszolgálók kezdeti replikálásának elindításához.
+15. Az **Áttekintés és a replikáció megkezdése** területen tekintse át a beállításokat, majd kattintson a **Replikálás** gombra a kiszolgálók kezdeti replikálásának elindításához.
 
 > [!NOTE]
 > A replikálási beállításokat a replikáció elindítása előtt bármikor frissítheti, **kezelheti** a  >  **replikáló gépeket**. A replikáció kezdete után a beállítások már nem módosíthatók.

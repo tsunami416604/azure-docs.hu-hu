@@ -4,12 +4,12 @@ description: Azure Monitor az Azure-erőforrás-naplók támogatott szolgáltat�
 ms.subservice: logs
 ms.topic: reference
 ms.date: 12/09/2020
-ms.openlocfilehash: c7b2d48b40843930bba78f54d2294769d952daf6
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: aeac069b4e9382867664a82af62e29e72da7585e
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931228"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232247"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Az Azure erőforrás-naplók támogatott kategóriái
 
@@ -18,7 +18,7 @@ ms.locfileid: "96931228"
 
 [Azure monitor az erőforrás-naplókat](./platform-logs-overview.md) az Azure-szolgáltatások által kibocsátott naplók, amelyek leírják ezeknek a szolgáltatásoknak vagy erőforrásoknak a működését. A Azure Monitoron keresztül elérhető összes erőforrás-napló közös legfelső szintű sémával rendelkezik, és minden szolgáltatás számára rugalmasságot biztosít, hogy egyedi tulajdonságokat bocsát ki a saját eseményeihez.
 
-Az erőforrástípus (a `resourceId` tulajdonságban elérhető) és a `category` séma egyedileg azonosítható kombinációja. A szolgáltatás-specifikus mezőket tartalmazó összes erőforrás-naplóhoz közös séma tartozik, majd a különböző naplózási kategóriákhoz hozzáadva. További információ: [Common és Service-specifikus séma Azure-beli erőforrás-naplókhoz]()
+Az erőforrástípus (a `resourceId` tulajdonságban elérhető) és a `category` séma egyedileg azonosítható kombinációja. A Service-specifikus mezőket tartalmazó összes erőforrás-naplóhoz közös séma tartozik, majd a különböző naplózási kategóriákhoz hozzáadva. További információ: [Common és Service-specifikus séma Azure-beli erőforrás-naplókhoz]()
 
 
 ## <a name="costs"></a>Költségek
@@ -34,7 +34,7 @@ Bizonyos kategóriák csak bizonyos típusú erőforrások esetén támogatottak
 Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyzést.
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft. AnalysisServices/kiszolgálók
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -44,7 +44,7 @@ COST: ingyenes
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -53,7 +53,7 @@ COST: ingyenes
 
 ## <a name="microsoftappplatformspring"></a>Microsoft. AppPlatform/Spring
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -63,7 +63,7 @@ COST: ingyenes
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft. Automation/automationAccounts
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -74,7 +74,7 @@ COST: ingyenes
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.BatCH/batchAccounts
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -83,7 +83,7 @@ COST: ingyenes
 
 ## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/munkaterületek
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -94,7 +94,7 @@ COST: ingyenes
 
 ## <a name="microsoftblockchainblockchainmembers"></a>Microsoft. Blockchain/blockchainMembers
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -106,7 +106,7 @@ COST: ingyenes
 
 ## <a name="microsoftblockchaincordamembers"></a>Microsoft. Blockchain/cordaMembers
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -115,16 +115,16 @@ COST: ingyenes
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft. CDN/cdnwebapplicationfirewallpolicies
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
-|WebApplicationFirewallLogs|Webes alkalmazási tűzfal naplófájljai|
+|WebApplicationFirewallLogs|Webalkalmazási tűzfal naplófájljai|
 
 
 ## <a name="microsoftcdnprofiles"></a>Microsoft. CDN/profilok
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -133,7 +133,7 @@ COST: ingyenes
 
 ## <a name="microsoftcdnprofilesendpoints"></a>Microsoft. CDN/profilok/végpontok
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -142,7 +142,7 @@ COST: ingyenes
 
 ## <a name="microsoftclassicnetworknetworksecuritygroups"></a>Microsoft. ClassicNetwork/networksecuritygroups
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -151,7 +151,7 @@ COST: ingyenes
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft. CognitiveServices/fiókok
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -162,7 +162,7 @@ COST: ingyenes
 
 ## <a name="microsoftcontainerregistryregistries"></a>Microsoft. ContainerRegistry/nyilvántartók
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -172,7 +172,7 @@ COST: ingyenes
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft. Tárolószolgáltatás/managedClusters
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -185,7 +185,7 @@ COST: ingyenes
 
 ## <a name="microsoftcustomprovidersresourceproviders"></a>Microsoft. CustomProviders/resourceproviders
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -194,7 +194,7 @@ COST: ingyenes
 
 ## <a name="microsoftdatabricksworkspaces"></a>Microsoft. Databricks/munkaterületek
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -212,7 +212,7 @@ COST: ingyenes
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft. DataFactory/gyárak
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -223,7 +223,7 @@ COST: ingyenes
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft. Data Lake Store/fiókok
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -233,7 +233,7 @@ COST: ingyenes
 
 ## <a name="microsoftdatashareaccounts"></a>Microsoft. DataShare/fiókok
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -245,7 +245,7 @@ COST: ingyenes
 
 ## <a name="microsoftdbformariadbservers"></a>Microsoft. DBforMariaDB/kiszolgálók
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -255,7 +255,7 @@ COST: ingyenes
 
 ## <a name="microsoftdbformysqlflexibleservers"></a>Microsoft. DBforMySQL/flexibleServers
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -265,7 +265,7 @@ COST: ingyenes
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft. DBforMySQL/kiszolgálók
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -275,7 +275,7 @@ COST: ingyenes
 
 ## <a name="microsoftdbforpostgresqlflexibleservers"></a>Microsoft. DBforPostgreSQL/flexibleServers
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -284,7 +284,7 @@ COST: ingyenes
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft. DBforPostgreSQL/kiszolgálók
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -295,7 +295,7 @@ COST: ingyenes
 
 ## <a name="microsoftdbforpostgresqlserversv2"></a>Microsoft. DBforPostgreSQL/serversv2
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -304,7 +304,7 @@ COST: ingyenes
 
 ## <a name="microsoftdesktopvirtualizationapplicationgroups"></a>Microsoft. DesktopVirtualization/applicationgroups
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -315,7 +315,7 @@ COST: ingyenes
 
 ## <a name="microsoftdesktopvirtualizationhostpools"></a>Microsoft. DesktopVirtualization/hostpools
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -328,7 +328,7 @@ COST: ingyenes
 
 ## <a name="microsoftdesktopvirtualizationworkspaces"></a>Microsoft. DesktopVirtualization/munkaterületek
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -340,7 +340,7 @@ COST: ingyenes
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft. Devices/IotHubs
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -362,7 +362,7 @@ COST: ingyenes
 
 ## <a name="microsoftdevicesprovisioningservices"></a>Microsoft. Devices/provisioningServices
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -372,7 +372,7 @@ COST: ingyenes
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -388,7 +388,7 @@ COST: ingyenes
 
 ## <a name="microsofteventgriddomains"></a>Microsoft. EventGrid/tartományok
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -398,7 +398,7 @@ COST: ingyenes
 
 ## <a name="microsofteventgridsystemtopics"></a>Microsoft. EventGrid/systemTopics
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -407,7 +407,7 @@ COST: ingyenes
 
 ## <a name="microsofteventgridtopics"></a>Microsoft. EventGrid/témakörök
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -417,7 +417,7 @@ COST: ingyenes
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft. EventHub/névterek
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -432,7 +432,7 @@ COST: ingyenes
 
 ## <a name="microsofthealthcareapisservices"></a>Microsoft. HealthcareApis/szolgáltatások
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -441,7 +441,7 @@ COST: ingyenes
 
 ## <a name="microsoftinsightsautoscalesettings"></a>Microsoft. bepillantások/AutoscaleSettings
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -451,7 +451,7 @@ COST: ingyenes
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft. bepillantások/összetevők
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -470,7 +470,7 @@ COST: ingyenes
 
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft. kulcstartó/tárolók
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -479,7 +479,7 @@ COST: ingyenes
 
 ## <a name="microsoftkustoclusters"></a>Microsoft. Kusto/fürtök
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -494,7 +494,7 @@ COST: ingyenes
 
 ## <a name="microsoftlogicintegrationaccounts"></a>Microsoft. Logic/integrationAccounts
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -503,7 +503,7 @@ COST: ingyenes
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft. Logic/munkafolyamatok
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -512,7 +512,7 @@ COST: ingyenes
 
 ## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft. MachineLearningServices/munkaterületek
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -525,7 +525,7 @@ COST: ingyenes
 
 ## <a name="microsoftmediamediaservices"></a>Microsoft. Media/Mediaservices
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -534,7 +534,7 @@ COST: ingyenes
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft. Network/applicationGateways
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -545,7 +545,7 @@ COST: ingyenes
 
 ## <a name="microsoftnetworkazurefirewalls"></a>Microsoft. Network/azurefirewalls
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -555,7 +555,7 @@ COST: ingyenes
 
 ## <a name="microsoftnetworkbastionhosts"></a>Microsoft. Network/bastionHosts
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -564,7 +564,7 @@ COST: ingyenes
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft. Network/expressRouteCircuits
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -573,7 +573,7 @@ COST: ingyenes
 
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft. Network/frontdoors
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -583,7 +583,7 @@ COST: ingyenes
 
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft. Network/loadBalancers
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -593,7 +593,7 @@ COST: ingyenes
 
 ## <a name="microsoftnetworknetworksecuritygroups"></a>Microsoft. Network/networksecuritygroups
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -604,7 +604,7 @@ COST: ingyenes
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft. Network/nyilvános IP
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -615,7 +615,7 @@ COST: ingyenes
 
 ## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft. Network/trafficManagerProfiles
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -624,7 +624,7 @@ COST: ingyenes
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft. Network/virtualNetworkGateways
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -637,7 +637,7 @@ COST: ingyenes
 
 ## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft. Network/virtualNetworks
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -646,7 +646,7 @@ COST: ingyenes
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft. PowerBIDedicated/kapacitások
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -655,7 +655,7 @@ COST: ingyenes
 
 ## <a name="microsoftrecoveryservicesvaults"></a>Microsoft. Recoveryservices szolgáltatónál/tárolók
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -677,7 +677,7 @@ COST: ingyenes
 
 ## <a name="microsoftrelaynamespaces"></a>Microsoft. Relay/névterek
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -686,7 +686,7 @@ COST: ingyenes
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft. Search/searchServices
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -695,7 +695,7 @@ COST: ingyenes
 
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft. ServiceBus/névterek
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -704,7 +704,7 @@ COST: ingyenes
 
 ## <a name="microsoftsignalrservicesignalr"></a>Microsoft. SignalRService/szignáló
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -713,7 +713,7 @@ COST: ingyenes
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft. SQL/managedInstances
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -724,7 +724,7 @@ COST: ingyenes
 
 ## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft. SQL/managedInstances/adatbázisok
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -736,7 +736,7 @@ COST: ingyenes
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft. SQL/kiszolgálók/adatbázisok
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -760,7 +760,7 @@ COST: ingyenes
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft. Storage/storageAccounts/blobServices
 
-Költség: a [Azure monitor díjszabási oldalának](https://azure.microsoft.com/pricing/details/monitor/) platform naplók szakaszában leírtak szerint fizetve. 
+Exportálási költség: a [Azure monitor díjszabási oldal](https://azure.microsoft.com/pricing/details/monitor/) platform naplók szakaszában leírt módon kell fizetni. 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -771,7 +771,7 @@ Költség: a [Azure monitor díjszabási oldalának](https://azure.microsoft.com
 
 ## <a name="microsoftstoragestorageaccountsfileservices"></a>Microsoft. Storage/storageAccounts/fileServices
 
-Költség: a [Azure monitor díjszabási oldalának](https://azure.microsoft.com/pricing/details/monitor/) platform naplók szakaszában leírtak szerint fizetve. 
+Exportálási költség: a [Azure monitor díjszabási oldal](https://azure.microsoft.com/pricing/details/monitor/) platform naplók szakaszában leírt módon kell fizetni. 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -782,7 +782,7 @@ Költség: a [Azure monitor díjszabási oldalának](https://azure.microsoft.com
 
 ## <a name="microsoftstoragestorageaccountsqueueservices"></a>Microsoft. Storage/storageAccounts/queueServices
 
-Költség: a [Azure monitor díjszabási oldalának](https://azure.microsoft.com/pricing/details/monitor/) platform naplók szakaszában leírtak szerint fizetve. 
+Exportálási költség: a [Azure monitor díjszabási oldal](https://azure.microsoft.com/pricing/details/monitor/) platform naplók szakaszában leírt módon kell fizetni. 
  
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -793,7 +793,7 @@ Költség: a [Azure monitor díjszabási oldalának](https://azure.microsoft.com
 
 ## <a name="microsoftstoragestorageaccountstableservices"></a>Microsoft. Storage/storageAccounts/tableServices
 
-Költség: a [Azure monitor díjszabási oldalának](https://azure.microsoft.com/pricing/details/monitor/) platform naplók szakaszában leírtak szerint fizetve. 
+Exportálási költség: a [Azure monitor díjszabási oldal](https://azure.microsoft.com/pricing/details/monitor/) platform naplók szakaszában leírt módon kell fizetni. 
  
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -804,7 +804,7 @@ Költség: a [Azure monitor díjszabási oldalának](https://azure.microsoft.com
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft. StreamAnalytics/streamingjobs
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -814,7 +814,7 @@ COST: ingyenes
 
 ## <a name="microsoftsynapseworkspaces"></a>Microsoft. szinapszis/munkaterületek
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -826,7 +826,7 @@ COST: ingyenes
 
 ## <a name="microsoftsynapseworkspacesbigdatapools"></a>Microsoft. szinapszis/munkaterületek/bigDataPools
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -835,7 +835,7 @@ COST: ingyenes
 
 ## <a name="microsoftsynapseworkspacessqlpools"></a>Microsoft. szinapszis/munkaterületek/sqlPools
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -849,7 +849,7 @@ COST: ingyenes
 
 ## <a name="microsoftwebhostingenvironments"></a>Microsoft. Web/hostingenvironments
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 |Kategória |Kategória megjelenítendő neve|
 |---|---|
@@ -858,7 +858,7 @@ COST: ingyenes
 
 ## <a name="microsoftwebsites"></a>Microsoft. Web/Sites
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 
 |Kategória |Kategória megjelenítendő neve|
@@ -873,7 +873,7 @@ COST: ingyenes
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft. Web/Sites/Slots
 
-COST: ingyenes 
+Exportálási díj: ingyenes 
 
 
 |Kategória |Kategória megjelenítendő neve|

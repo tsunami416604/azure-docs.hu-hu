@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: b11bdf9b82352c15b7f7236168494f32fe4a4f9f
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 280b3cbef8307691b0d50c4a26f6dca18b7fb65b
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221510"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233865"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Virtuális gépek hálózati sávszélessége
 
@@ -52,15 +52,13 @@ A végpontok közötti adatátvitel több folyamat létrehozását igényli az a
 
 ![TCP-beszélgetések forgalmának száma egy továbbító berendezésen keresztül](media/virtual-machine-network-throughput/flow-count-through-network-virtual-appliance.png)
 
-## <a name="flow-limits-and-recommendations"></a>A flow korlátai és javaslatai
+## <a name="flow-limits-and-active-connections-recommendations"></a>A flow korlátai és az aktív kapcsolatok javaslatai
 
-Napjainkban az Azure hálózati verem támogatja a 250K teljes hálózati folyamatait, és jó teljesítményt nyújt a több mint 8 CPU-magot tartalmazó virtuális gépekhez, és a teljes körű teljesítmény a 8 CPU-nál kevesebb processzorral rendelkező virtuális gépek esetében. Ez a korlátozás a hálózati teljesítményre vonatkozóan zökkenőmentesen csökkenti a további folyamatokat, amelyeknek a terhelése 500 000 000 teljes folyamat, a 250K bejövő és a 250K kimenő, a további folyamatok eldobása után.
+Napjainkban az Azure hálózati verem a virtuális gépekhez tartozó 1M teljes folyamatot (500k bejövő és 500k kimenő) is támogatja. A virtuális gépek által különböző forgatókönyvekben kezelhető aktív kapcsolatok teljes száma a következő.
+- A VNET-hez tartozó virtuális gépek képesek az 500k **_aktív kapcsolatok_* _ kezelésére minden virtuálisgép-méretnél, amely 500k _*_aktív folyamatokkal rendelkezik az egyes irányokban_*_.  
+- A hálózati virtuális berendezésekkel (NVA) rendelkező virtuális gépek (például az átjáró, a proxy, a tűzfal) képesek a 250k _*_aktív kapcsolatok_*_ kezelésére az *_egyes irányokban lévő 500k _ aktív folyamatokkal_**, a továbbítás és a további új folyamat létrehozásakor az új kapcsolat beállításakor a következő ugráshoz a fenti ábrán látható módon. 
 
-| Teljesítményszint | Virtuális gépek <8 CPU-maggal | Virtuális gépek 8 és CPU maggal |
-| ----------------- | --------------------- | --------------------- |
-|<b>Jó teljesítmény</b>|100 000 folyamat |250K-folyamatok|
-|<b>Csökkentett teljesítmény</b>|Több mint 100 000 folyamat|250K-folyamatok felett|
-|<b>Folyamat korlátja</b>|500K-folyamatok|500K-folyamatok|
+Ha elérte ezt a korlátot, a további kapcsolatok el lesznek dobva. A kapcsolat létesítése és a megszüntetési díjak is befolyásolhatják a hálózati teljesítményt, mivel a kapcsolat létesítési és megszüntetési megosztása a CPU-t a csomagok feldolgozására szolgáló rutinokkal. Azt javasoljuk, hogy a számítási feladatokat a várt forgalmi mintákkal és a teljesítménybeli igényeknek megfelelő méretezéssel bővítse.
 
 A metrikák a [Azure monitorban](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) érhetők el, hogy nyomon kövessék a hálózati folyamatok számát és a folyamat létrehozásának sebességét a virtuális GÉPEN vagy VMSS-példányokon.
 
@@ -68,7 +66,7 @@ A metrikák a [Azure monitorban](../azure-monitor/platform/metrics-supported.md#
 
 A kapcsolat létesítése és a megszüntetési díjak is befolyásolhatják a hálózati teljesítményt, mivel a kapcsolat létesítési és megszüntetési megosztása a CPU-t a csomagok feldolgozására szolgáló rutinokkal. Azt javasoljuk, hogy a számítási feladatokat a várt forgalmi mintákkal és a teljesítménybeli igényeknek megfelelő méretezéssel bővítse. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A hálózati teljesítmény optimalizálása egy virtuális gép operációs rendszere esetében](virtual-network-optimize-network-bandwidth.md)
 - Egy virtuális gép [hálózati teljesítményének tesztelése](virtual-network-bandwidth-testing.md) .

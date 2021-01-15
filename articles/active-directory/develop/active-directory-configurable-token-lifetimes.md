@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 0b3c2f74edff661326e97da7b06860914468c43b
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: ec925ce165c1de98fe920381e1b51e3388c1e4ad
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059347"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232403"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurálható jogkivonat-élettartamok a Microsoft Identity platformban (előzetes verzió)
 
@@ -101,8 +101,7 @@ A bizalmas ügyfelek olyan alkalmazások, amelyek biztonságos módon tárolhatj
 
 A nyilvános ügyfelek nem tudják biztonságosan tárolni az ügyfél jelszavát (titkos kulcs). Egy iOS-/Android-alkalmazás például nem tud titkos kulcsot kialakítani az erőforrás-tulajdonostól, ezért nyilvános ügyfélnek számít. Az erőforrásokra vonatkozó szabályzatok megadásával megakadályozhatja, hogy a frissítési tokenek a megadott időszaknál régebbi nyilvános ügyfelekről szerezzenek új hozzáférési vagy frissítési jogkivonat-párokat. Ehhez használja a [refresh token Max inaktív idő tulajdonságát](#refresh-token-max-inactive-time) ( `MaxInactiveTime` ). Házirendeket is használhat egy olyan időszak megadására, amelyen túl a frissítési tokenek már nem lesznek elfogadva. Ehhez használja az [egytényezős frissítési token Max Age](#single-factor-session-token-max-age) vagy a [multi-Factor munkamenet-token Max Age](#multi-factor-refresh-token-max-age) tulajdonságát. A frissítési token élettartama beállítható annak szabályozására, hogy a felhasználó mikor és milyen gyakran írja elő a hitelesítő adatok újbóli hitelesítését, ahelyett, hogy a rendszer egy nyilvános ügyfélalkalmazás használatával visszaadja a hitelesítő adatokat.
 
-> [!NOTE]
-> A Max Age tulajdonság azt az időtartamot használja, ameddig egyetlen jogkivonat használható. 
+A Max Age tulajdonság azt az időtartamot használja, ameddig egyetlen jogkivonat használható. 
 
 ### <a name="single-sign-on-session-tokens"></a>Egyszeri bejelentkezés munkamenet-jogkivonatai
 Amikor egy felhasználó a Microsoft Identity platformmal végzi a hitelesítést, az egyszeri bejelentkezési munkamenet (SSO) a felhasználó böngészőjével és a Microsoft Identity platformmal lesz létrehozva. A cookie-t tartalmazó SSO-jogkivonat ezt a munkamenetet jelöli. Az SSO-munkamenet tokenje nem kötődik egy adott erőforráshoz/ügyfélalkalmazás-alkalmazáshoz. Az egyszeri bejelentkezéses munkamenet-tokenek visszavonhatók, és az érvényességük minden használatkor be van jelölve.

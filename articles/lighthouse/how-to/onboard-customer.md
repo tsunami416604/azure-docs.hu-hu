@@ -1,14 +1,14 @@
 ---
 title: Ügyfél előkészítése az Azure Lighthouse-hoz
 description: Ismerje meg, hogyan végezheti el az ügyfelek Azure világítótoronyba való bevezetését, így az erőforrásaik a saját bérlőn keresztül érhetők el és kezelhetők az Azure-beli delegált erőforrás-kezelés használatával.
-ms.date: 12/15/2020
+ms.date: 01/14/2021
 ms.topic: how-to
-ms.openlocfilehash: 023b44a77cb38a14df8aa6a885ff137c02942061
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 1a7c8fc85819b2c34b5c64dc83cb908b7bee3c41
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516133"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232675"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Ügyfél előkészítése az Azure Lighthouse-hoz
 
@@ -62,14 +62,17 @@ az account show
 
 ## <a name="define-roles-and-permissions"></a>Szerepkörök és engedélyek definiálása
 
-Szolgáltatóként több feladatot is el lehet végezni egyetlen ügyfél számára, eltérő hozzáférésre van szükség a különböző hatókörökhöz. A megfelelő [Azure beépített szerepköröknek](../../role-based-access-control/built-in-roles.md) a bérlőben lévő felhasználókhoz való hozzárendeléséhez tetszőleges számú engedélyt adhat meg.
+Szolgáltatóként több feladatot is el lehet végezni egyetlen ügyfél számára, eltérő hozzáférésre van szükség a különböző hatókörökhöz. A megfelelő [Azure beépített szerepkörök](../../role-based-access-control/built-in-roles.md)hozzárendeléséhez annyi jogosultságot adhat meg, amennyire csak szüksége van. Minden engedély tartalmaz egy **principalId** , amely egy Azure ad-felhasználóra,-csoportra vagy egy egyszerű szolgáltatásnévre hivatkozik a bérlői felügyeletben.
 
-A felügyelet egyszerűbbé tételéhez ajánlott az Azure AD felhasználói csoportok használata az egyes szerepkörökhöz. Ez rugalmasságot biztosít az egyes felhasználók hozzáadásához vagy eltávolításához a hozzáféréssel rendelkező csoport számára, így nem kell megismételni a bevezetési folyamatot a felhasználói módosítások elvégzéséhez. A szerepköröket hozzárendelhet egy egyszerű szolgáltatáshoz, ami automatizálási forgatókönyvekhez hasznos lehet.
+> [!NOTE]
+> Ha explicit módon meg van adva, az Azure Lighthouse dokumentációjában lévő "user" kifejezésre mutató hivatkozások egy adott Azure AD-felhasználóra, csoportra vagy egyszerű szolgáltatásra vonatkoznak az engedélyekben.
+
+A felügyelet egyszerűbbé tételéhez ajánlott az egyes szerepkörökhöz tartozó Azure AD-felhasználói csoportokat használni, nem pedig az egyes felhasználókra. Ez rugalmasságot biztosít az egyes felhasználók hozzáadásához vagy eltávolításához a hozzáféréssel rendelkező csoport számára, így nem kell megismételni a bevezetési folyamatot a felhasználói módosítások elvégzéséhez. Szerepköröket is hozzárendelhet egy egyszerű szolgáltatáshoz, ami automatizálható az automatizálási forgatókönyvek esetében.
 
 > [!IMPORTANT]
 > Az Azure AD-csoport engedélyeinek hozzáadásához a **csoport típusát** **biztonsági** értékre kell állítani. Ez a beállítás a csoport létrehozásakor van kiválasztva. További információkért lásd: [alapszintű csoport létrehozása és Tagok hozzáadása Azure Active Directory használatával](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-Az engedélyek meghatározásakor ügyeljen arra, hogy kövesse a legalacsonyabb jogosultsági szint elvét, hogy a felhasználók csak a feladataik elvégzéséhez szükséges engedélyekkel rendelkezzenek. A támogatott szerepkörökkel kapcsolatos irányelvek és információk: [bérlők, felhasználók és szerepkörök az Azure Lighthouse-forgatókönyvekben](../concepts/tenants-users-roles.md).
+Az engedélyek meghatározásakor ügyeljen arra, hogy kövesse a legalacsonyabb jogosultsági szint elvét, hogy a felhasználók csak a feladataik elvégzéséhez szükséges engedélyekkel rendelkezzenek. További információ a támogatott szerepkörökről és az ajánlott eljárásokról: [bérlők, felhasználók és szerepkörök az Azure Lighthouse-forgatókönyvekben](../concepts/tenants-users-roles.md).
 
 Az engedélyek definiálásához ismernie kell az egyes felhasználók, felhasználói csoportok vagy egyszerű szolgáltatásnév azonosító értékeit abban a szolgáltatói bérlőn, amelyhez hozzáférést szeretne biztosítani. A hozzárendelni kívánt beépített szerepkörökhöz is szüksége lesz a szerepkör-definíciós AZONOSÍTÓra. Ha még nem rendelkezik velük, lekérheti őket az alábbi parancsok futtatásával a szolgáltatói bérlőn belül.
 
@@ -195,7 +198,7 @@ Az alábbi példa egy olyan módosított **delegatedResourceManagement.parameter
 }
 ```
 
-A fenti példában szereplő utolsó engedély egy **principalId** hoz létre a felhasználói hozzáférés rendszergazdai szerepkörrel (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9). A szerepkör kiosztásakor meg kell adnia a **delegatedRoleDefinitionIds** tulajdonságot, és egy vagy több beépített szerepkört. Az ebben az engedélyben létrehozott felhasználó ezeket a beépített szerepköröket hozzárendelheti az ügyfél bérlője [felügyelt identitásához](../../active-directory/managed-identities-azure-resources/overview.md) , ami szükséges a [szervizelhető házirendek telepítéséhez](deploy-policy-remediation.md).  A felhasználó támogatási incidenseket is létrehozhat.  Erre a felhasználóra nem vonatkozik a felhasználói hozzáférés rendszergazdai szerepkörhöz tartozó egyéb engedélyek.
+A fenti példában szereplő utolsó engedély egy **principalId** hoz létre a felhasználói hozzáférés rendszergazdai szerepkörrel (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9). A szerepkör kiosztásakor meg kell adnia a **delegatedRoleDefinitionIds** tulajdonságot, és egy vagy több támogatott Azure beépített szerepkört. Az ebben az engedélyezésben létrehozott felhasználó hozzá tudja rendelni ezeket a szerepköröket a [felügyelt identitásokhoz](../../active-directory/managed-identities-azure-resources/overview.md) az ügyfél bérlője számára, amely a [szervizelhető házirendek telepítéséhez](deploy-policy-remediation.md)szükséges.  A felhasználó támogatási incidenseket is létrehozhat. A felhasználói hozzáférés rendszergazdai szerepkörhöz általában nem társított egyéb engedélyek lesznek érvényesek erre a **principalId**.
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>A Azure Resource Manager-sablonok üzembe helyezése
 
@@ -278,7 +281,7 @@ Az ügyfél bérlője:
 3. Győződjön meg arról, hogy az előfizetés (ok) a Resource Manager-sablonban megadott ajánlat nevével jelenik meg.
 
 > [!NOTE]
-> A telepítés befejezése után néhány percet is igénybe vehet, mielőtt a frissítések megjelennek a Azure Portalban.
+> A telepítés befejezése után akár 15 percet is igénybe vehet, mielőtt a frissítések megjelennek a Azure Portalban. Előfordulhat, hogy hamarabb megtekintheti a frissítéseket, ha frissíti a Azure Resource Manager tokent a böngésző frissítésével, beléptetéssel vagy új token kérésével.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -312,6 +315,7 @@ Ha nem tudja sikeresen bevezetni az ügyfelet, vagy ha a felhasználók nem tudn
 - A delegált előfizetéshez regisztrálni kell a **Microsoft. ManagedServices** erőforrás-szolgáltatót. Ez automatikusan megtörténik az üzembe helyezés során, de ha nem, akkor [manuálisan is regisztrálhatja](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
 - Az engedélyek nem tartalmazhatnak olyan felhasználókat, akik a [tulajdonos](../../role-based-access-control/built-in-roles.md#owner) beépített szerepkörével vagy a [DataActions](../../role-based-access-control/role-definitions.md#dataactions)-mel rendelkező beépített szerepkörökkel rendelkeznek.
 - A csoportokat úgy kell létrehozni, hogy a [**csoport típusa**](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md#group-types) legyen **biztonsági** , és ne **Microsoft 365**.
+- A [beágyazott csoportok](../..//active-directory/fundamentals/active-directory-groups-membership-azure-portal.md)hozzáférésének engedélyezése előtt további késleltetés is lehetséges.
 - Azok a felhasználók, akiknek a Azure Portal erőforrásainak meg kell tekinteniük az [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkört (vagy egy másik beépített szerepkört, amely olvasói hozzáférést is tartalmaz).
 
 ## <a name="next-steps"></a>További lépések

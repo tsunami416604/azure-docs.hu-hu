@@ -5,13 +5,13 @@ author: savjani
 ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: bca995f8b2cea33266e032b543abb18ee7140f3f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 01/15/2021
+ms.openlocfilehash: 164285b1fea3dce18161066e643aa165e47cc496
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541181"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233986"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>A Azure Database for MariaDB teljesítményének figyelése a lekérdezési tárolóval
 
@@ -21,7 +21,7 @@ Az Azure Database for MariaDB lekérdezés-tárolási funkciója lehetővé tesz
 
 ## <a name="common-scenarios-for-using-query-store"></a>A Query Store használatának gyakori forgatókönyvei
 
-A lekérdezési tároló számos esetben használható, többek között a következőket:
+A lekérdezési tároló számos esetben használható, többek között az alábbiakkal:
 
 - Romlott lekérdezések észlelése
 - A lekérdezések adott időintervallumban történő végrehajtása számának meghatározása
@@ -34,14 +34,14 @@ A lekérdezési tároló egy opt-in funkció, így alapértelmezés szerint nem 
 ### <a name="enable-query-store-using-the-azure-portal"></a>A lekérdezési tároló engedélyezése a Azure Portal használatával
 
 1. Jelentkezzen be a Azure Portalba, és válassza ki a Azure Database for MariaDB-kiszolgálót.
-1. Válassza ki a **kiszolgáló paramétereit** a menü **Beállítások** szakaszában.
-1. Keresse meg a query_store_capture_mode paramétert.
-1. Állítsa az értéket az összes értékre, és **mentse**.
+2. Válassza ki a **kiszolgáló paramétereit** a menü **Beállítások** szakaszában.
+3. Keresse meg a query_store_capture_mode paramétert.
+4. Állítsa az értéket az összes értékre, és **mentse**.
 
 A várakozási statisztika engedélyezése a lekérdezési tárolóban:
 
 1. Keresse meg a query_store_wait_sampling_capture_mode paramétert.
-1. Állítsa az értéket az összes értékre, és **mentse**.
+2. Állítsa az értéket az összes értékre, és **mentse**.
 
 Akár 20 percet is igénybe vehet, amíg a MySQL-adatbázisban megmarad az első köteg.
 
@@ -108,7 +108,7 @@ A [Azure Portal](howto-server-parameters.md) használatával beolvashatja vagy b
 
 ## <a name="views-and-functions"></a>Nézetek és függvények
 
-A lekérdezési tárolót a következő nézetekkel és függvényekkel tekintheti meg és kezelheti. A [Select jogosultsági nyilvános szerepkörben](howto-create-users.md#create-additional-admin-users) bárki megtekintheti ezeket a nézeteket a lekérdezési tárolóban lévő információk megjelenítéséhez. Ezek a nézetek csak a **MySQL** -adatbázisban érhetők el.
+A lekérdezési tárolót a következő nézetekkel és függvényekkel tekintheti meg és kezelheti. A [Select jogosultsági nyilvános szerepkörben](howto-create-users.md#create-more-admin-users) bárki megtekintheti ezeket a nézeteket a lekérdezési tárolóban lévő információk megjelenítéséhez. Ezek a nézetek csak a **MySQL** -adatbázisban érhetők el.
 
 A lekérdezések normalizálása úgy történik, hogy a konstansok és konstansok eltávolítása után megvizsgálják a szerkezetét. Ha két lekérdezés megegyezik a literális értékektől, akkor ugyanazzal a kivonattal fog rendelkezni.
 
@@ -176,6 +176,6 @@ Ez a nézet visszaadja az események várakozási idejének értékét a lekérd
 - A várakozási statisztikák megőrzési időtartama 24 óra.
 - A várakozási statisztikában a példa az események töredékét rögzíti. A gyakoriság módosítható a paraméter használatával `query_store_wait_sampling_frequency` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [lekérdezési teljesítményről](concepts-query-performance-insight.md)

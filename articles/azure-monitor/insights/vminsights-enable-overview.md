@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 12/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: ce90ab160696e2c38d917a391eecb0d51a31282f
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 655a146ccde9c75629d0a991a6a3aafa91f40764
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740589"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233967"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Azure Monitor for VMs-áttekintés engedélyezése
 
@@ -52,6 +52,9 @@ Azure Monitor for VMs elérhető az Azure arc-kompatibilis kiszolgálókhoz olya
 
 Azure Monitor for VMs támogatja az Log Analytics ügynököt és a függőségi ügynököt támogató operációs rendszereket. Lásd: [Azure monitor-ügynökök áttekintése ](../platform/agents-overview.md#supported-operating-systems) teljes listához.
 
+> [!IMPORTANT]
+> A Azure Monitor for VMs Guest Health funkció korlátozott operációsrendszer-támogatással rendelkezik, miközben nyilvános előzetes verzióban érhető el. Részletes listát a következő témakörben talál: [Azure monitor for VMS vendég állapotának engedélyezése (előzetes verzió)](vminsights-health-enable.md) .
+
 Tekintse meg a következő, a Azure Monitor for VMst támogató függőségi ügynök Linux-támogatásával kapcsolatos szempontokat:
 
 - Csak az alapértelmezett és az SMP Linux kernelű kiadások támogatottak.
@@ -63,7 +66,7 @@ Tekintse meg a következő, a Azure Monitor for VMst támogató függőségi üg
 ## <a name="log-analytics-workspace"></a>Log Analytics-munkaterület
 A Azure Monitor for VMs Log Analytics munkaterületet igényel. A munkaterület részleteiért és követelményeiért lásd: [log Analytics munkaterület konfigurálása Azure monitor for VMshoz](vminsights-configure-workspace.md) .
 ## <a name="agents"></a>Ügynökök
-Azure Monitor for VMs a következő két ügynököt kell telepíteni az egyes virtuális gépekre vagy virtuálisgép-méretezési csoportokra. Ezeknek az ügynököknek a telepítése és a munkaterülethez való csatlakoztatása az egyetlen követelmény az erőforrás bevezetéséhez.
+Azure Monitor for VMs a következő két ügynököt kell telepíteni az egyes virtuális gépekre vagy virtuálisgép-méretezési csoportokra. Az erőforrás előkészítéséhez telepítse ezeket az ügynököket, és kapcsolódjon a munkaterülethez.  Tekintse meg az ügynökök hálózati követelményeinek [hálózati követelményeit](../platform/log-analytics-agent.md#network-requirements) .
 
 - [Log Analytics ügynök](../platform/log-analytics-agent.md). Eseményeket és teljesítményadatokat gyűjt a virtuális gépről vagy virtuálisgép-méretezési csoportból, és továbbítja azt a Log Analytics munkaterületre. Az Azure-erőforrások Log Analytics ügynökének üzembe helyezési módszerei a Windows és [Linux](../../virtual-machines/extensions/oms-linux.md) [rendszerhez](../../virtual-machines/extensions/oms-windows.md) készült virtuálisgép-bővítményt használják.
 - Függőségi ügynök. Gyűjti a felderített adatokat a virtuális gépen és a külső folyamatok függőségein futó folyamatokról, amelyeket az [Azure monitor for VMS Térkép funkciója](vminsights-maps.md)használ. A függőségi ügynök a Log Analytics ügynökre támaszkodik, hogy az adatAzure Monitorba kézbesítse az adatforrást. Az Azure-erőforrások függőségi ügynökének üzembe helyezési módszerei a Windows és [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) [rendszerhez](../../virtual-machines/extensions/agent-dependency-windows.md) készült virtuálisgép-bővítményt használják.
@@ -73,7 +76,7 @@ Azure Monitor for VMs a következő két ügynököt kell telepíteni az egyes v
 
 Az alábbi módszerek több módszert is biztosítanak ezeknek az ügynököknek a üzembe helyezésére. 
 
-| Módszer | Leírás |
+| Metódus | Leírás |
 |:---|:---|
 | [Azure Portal](./vminsights-enable-portal.md) | Telepítsen mindkét ügynököt egyetlen virtuális gépre, virtuálisgép-méretezési csoportra vagy az Azure arc-hoz csatlakoztatott hibrid virtuális gépekre. |
 | [Resource Manager-sablonok](vminsights-enable-resource-manager.md) | Telepítse mindkét ügynököt a támogatott módszerek bármelyikével egy Resource Manager-sablon üzembe helyezéséhez, beleértve a CLI-t és a PowerShellt is. |

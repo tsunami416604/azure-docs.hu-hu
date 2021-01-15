@@ -3,12 +3,12 @@ title: Batch-készlet konfigurációjának migrálása Cloud Servicesról Virtua
 description: Ismerje meg, hogyan frissítheti a készlet konfigurációját a legújabb és ajánlott konfigurációra
 ms.topic: how-to
 ms.date: 1/6/2021
-ms.openlocfilehash: b6f4184f7c4f133f74cb3157638b1621dad25fda
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: d987a185efb6593fd541dd14fa74b6c4d3ca41be
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97969027"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234307"
 ---
 # <a name="migrate-batch-pool-configuration-from-cloud-services-to-virtual-machines"></a>Batch-készlet konfigurációjának migrálása Cloud Servicesról Virtual Machinesra
 
@@ -22,7 +22,7 @@ Ez a cikk azt ismerteti, hogyan lehet áttérni a következőre: "virtualMachine
 
 A meglévő aktív készletek nem frissíthetők a "cloudServiceConfiguration" típusról a "virtualMachineConfiguration" értékre, ezért új készleteket kell létrehozni. Az "virtualMachineConfiguration" használatával létrehozott készleteket minden batch API, parancssori eszköz, Azure Portal és a Batch Explorer felhasználói felület támogatja.
 
-A [.net](tutorial-parallel-dotnet.md) -és [Python](tutorial-parallel-python.md) -oktatóanyagok példákat biztosítanak a készlet létrehozására a "virtualMachineConfiguration" használatával.
+**A [.net](tutorial-parallel-dotnet.md) -és [Python](tutorial-parallel-python.md) -oktatóanyagok példákat biztosítanak a készlet létrehozására a "virtualMachineConfiguration" használatával.**
 
 ## <a name="pool-configuration-differences"></a>Készlet konfigurációs eltérései
 
@@ -37,7 +37,7 @@ A készlet konfigurációjának frissítésekor a következőket kell figyelembe
 
 - A készlet és a csomópont indítási és törlési ideje eltérhet a "cloudServiceConfiguration" készletek és a "virtualMachineConfiguration" készletek között.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [készlet-konfigurációkról](nodes-and-pools.md#configurations).
 - További információ a [Pool ajánlott eljárásairól](best-practices.md#pools).

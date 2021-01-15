@@ -12,12 +12,12 @@ ms.date: 1/06/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 1debeab6e420d9021ebba1cecb2d551cf21c9fe2
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 6b5c328503a28c6eb92c2c20ca54d4d3d80c9a15
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028471"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232471"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Útmutató: opcionális jogcímek megadása az alkalmazás számára
 
@@ -37,7 +37,7 @@ Míg a választható jogcímek a v 1.0 és a v 2.0 formátumú jogkivonatokban, 
 
 | Fiók típusa               | 1.0-s verziós tokenek | v 2.0-tokenek |
 |----------------------------|-------------|-------------|
-| Személyes Microsoft-fiók | N/A         | Támogatott   |
+| Személyes Microsoft-fiók | N.A.         | Támogatott   |
 | Azure AD-fiók           | Támogatott   | Támogatott   |
 
 ## <a name="v10-and-v20-optional-claims-set"></a>v 1.0 és v 2.0 választható jogcímek készlete
@@ -45,11 +45,11 @@ Míg a választható jogcímek a v 1.0 és a v 2.0 formátumú jogkivonatokban, 
 Az alábbi listában a használni kívánt alkalmazások alapértelmezett választható jogcímei érhetők el. Ha egyéni opcionális jogcímeket szeretne hozzáadni az alkalmazáshoz, tekintse meg az alábbi [címtárszolgáltatás-bővítményeket](#configuring-directory-extension-optional-claims). Ha jogcímeket ad hozzá a **hozzáférési jogkivonathoz**, a jogcímek az alkalmazáshoz (webes API-hoz *) kért hozzáférési* jogkivonatokra vonatkoznak, az alkalmazás *által* kért jogcímekre nem. Függetlenül attól, hogy az ügyfél hogyan fér hozzá az API-hoz, a megfelelő információ szerepel az API-val való hitelesítéshez használt hozzáférési jogkivonatban.
 
 > [!NOTE]
-> Ezeknek a jogcímeknek a többsége megadható a JWTs for 1.0 és v 2.0 tokenekhez, de nem SAML-tokenekhez, kivéve, ha a jogkivonat típusa oszlopban szerepel. A fogyasztói fiókok a "felhasználói típus" oszlopban megjelölt jogcímek egy részhalmazát támogatják.  A felsorolt jogcímek többsége nem vonatkozik a felhasználói felhasználókra (nem rendelkezik Bérlővel, ezért `tenant_ctry` nem rendelkezik értékkel).
+>Ezeknek a jogcímeknek a többsége megadható a JWTs for 1.0 és v 2.0 tokenekhez, de nem SAML-tokenekhez, kivéve, ha a jogkivonat típusa oszlopban szerepel. A fogyasztói fiókok a "felhasználói típus" oszlopban megjelölt jogcímek egy részhalmazát támogatják.  A felsorolt jogcímek többsége nem vonatkozik a felhasználói felhasználókra (nem rendelkezik Bérlővel, ezért `tenant_ctry` nem rendelkezik értékkel).
 
 **2. táblázat: v 1.0 és v 2.0 opcionális jogcím-készlet**
 
-| Név                       |  Leírás   | Jogkivonat típusa | Felhasználó típusa | Megjegyzések  |
+| Név                       |  Leírás   | Jogkivonat típusa | Felhasználó típusa | Jegyzetek  |
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | A felhasználó utolsó hitelesítésének időpontja. Lásd: OpenID Connect spec.| JWT        |           |  |
 | `tenant_region_scope`      | Az erőforrás-bérlő régiója | JWT        |           | |
@@ -148,13 +148,13 @@ Az alkalmazásra vonatkozó opcionális jogcímeket a felhasználói felület va
 [![Választható jogcímek konfigurálása a felhasználói felületen](./media/active-directory-optional-claims/token-configuration.png)](./media/active-directory-optional-claims/token-configuration.png)
 
 1. A **kezelés** területen válassza a **jogkivonat-konfiguráció** elemet.
+   - A felhasználói felületi beállítás **jogkivonat-konfigurációja** panel nem érhető el olyan Azure ad B2C-bérlőben regisztrált alkalmazásokhoz, amelyek az alkalmazás jegyzékfájljának módosításával konfigurálhatók. További információ:  [jogcímek hozzáadása és felhasználói bevitel testreszabása Egyéni szabályzatok használatával Azure Active Directory B2C](../../active-directory-b2c/configure-user-input.md)  
+
 1. Válassza a **választható jogcím hozzáadása** lehetőséget.
 1. Válassza ki a konfigurálni kívánt jogkivonat-típust.
 1. Válassza ki a hozzáadandó választható jogcímeket.
 1. Válassza a **Hozzáadás** elemet.
 
-> [!NOTE]
-> A felhasználói felületi beállítás **jogkivonat-konfigurációja** panel jelenleg nem érhető el Azure ad B2C bérlőben regisztrált alkalmazásokhoz. A B2C-bérlőben regisztrált alkalmazások esetében a választható jogcímeket az alkalmazás jegyzékfájljának módosításával lehet konfigurálni. További információ: [jogcímek hozzáadása és felhasználói bevitel testreszabása Egyéni szabályzatok használatával Azure Active Directory B2C](../../active-directory-b2c/configure-user-input.md) 
 
 **Választható jogcímek konfigurálása az alkalmazás jegyzékfájlján keresztül:**
 
@@ -227,8 +227,7 @@ A standard opcionális jogcímek készleten kívül a jogkivonatokat is konfigur
 
 A sémák és a nyitott bővítmények nem támogatottak a választható jogcímek esetében, csak a AAD-Graph Style Directory-bővítmények. Ez a funkció hasznos lehet az alkalmazás által használható további felhasználói adatok csatolásához – például egy további azonosító vagy fontos konfigurációs beállítás, amelyet a felhasználó beállított. Példaként tekintse meg az oldal alját.
 
-> [!NOTE]
-> A címtár-séma bővítményei egy Azure AD-only szolgáltatás. Ha az alkalmazás jegyzékfájlja egyéni kiterjesztést kér, és egy MSA-felhasználó bejelentkezik az alkalmazásba, ezek a bővítmények nem lesznek visszaadva.
+A címtár-séma bővítményei egy Azure AD-only szolgáltatás. Ha az alkalmazás jegyzékfájlja egyéni kiterjesztést kér, és egy MSA-felhasználó bejelentkezik az alkalmazásba, ezek a bővítmények nem lesznek visszaadva.
 
 ### <a name="directory-extension-formatting"></a>Címtárszolgáltatás-bővítmény formázása
 
@@ -256,7 +255,7 @@ Ez a szakasz azokat a konfigurációs beállításokat ismerteti, amelyek a vál
 1. Válassza a **Csoport hozzáadása jogcímet**.
 1. Válassza ki a visszaadni kívánt csoportok típusát (**biztonsági csoportok**, **címtárbeli szerepkörök**, **az alkalmazáshoz rendelt** **összes csoport** és/vagy csoport). Az **alkalmazás-beállításhoz rendelt csoportok** csak az alkalmazáshoz rendelt csoportokat tartalmazzák. A **minden csoport** beállítás magában foglalja az **SecurityGroup**, a **DirectoryRole** és a **DistributionList**, de **az alkalmazáshoz nem rendelt csoportokat**. 
 1. Nem kötelező: válassza ki az adott jogkivonat-típus tulajdonságait, hogy módosítsa a csoportok jogcím értékét, amely a helyszíni csoport attribútumait tartalmazza, vagy ha módosítani szeretné a jogcím típusát a szerepkörre.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 **Csoportok konfigurálása választható jogcímek az alkalmazás jegyzékfájlján keresztül:**
 
@@ -274,7 +273,7 @@ Ez a szakasz azokat a konfigurációs beállításokat ismerteti, amelyek a vál
    - "DirectoryRole"
    - "Alkalmazáscsoport" (ez a beállítás csak az alkalmazáshoz rendelt csoportokat tartalmazza)
 
-   Példa:
+   Például:
 
     ```json
     "groupMembershipClaims": "SecurityGroup"
@@ -290,8 +289,7 @@ Ez a szakasz azokat a konfigurációs beállításokat ismerteti, amelyek a vál
    - a OAuth hozzáférési token accessToken
    - SAML-tokenek Saml2Token.
 
-   > [!NOTE]
-   > A Saml2Token típusa SAML 1.1 és SAML 2.0 formátumú jogkivonatokra is vonatkozik.
+   A Saml2Token típusa SAML 1.1 és SAML 2.0 formátumú jogkivonatokra is vonatkozik.
 
    Minden releváns jogkivonat-típus esetében módosítsa a csoportok jogcímet a jegyzékfájl OptionalClaims szakaszának használatára. A OptionalClaims séma a következő:
 
@@ -315,8 +313,7 @@ Ez a szakasz azokat a konfigurációs beállításokat ismerteti, amelyek a vál
 
    Egyes alkalmazások a szerepkör-jogcímben szereplő felhasználóra vonatkozó csoportos adatokat igényelnek.  Ha módosítani szeretné a jogcím típusát egy csoport jogcímen egy szerepkör-jogcímre, adja hozzá a "emit_as_roles" értéket a további tulajdonságokhoz.  A csoport értékeit a rendszer a szerepkör-jogcímben fogja kiállítani.
 
-   > [!NOTE]
-   > Ha "emit_as_roles" van használatban, a felhasználó által hozzárendelt összes alkalmazás-szerepkör nem jelenik meg a szerepkör-jogcímben.
+   Ha "emit_as_roles" van használatban, a felhasználó által hozzárendelt összes alkalmazás-szerepkör nem jelenik meg a szerepkör-jogcímben.
 
 **Példák:**
 

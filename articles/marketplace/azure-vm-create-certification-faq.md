@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: bc1ae4bc2cf64c3e2f996709c086eb23cb8b8385
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 61bd23c74fd7960317dff17175b355b473cd6dc7
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602597"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233831"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Virtuális gépek minősítésének hibáinak megoldása
 
@@ -35,7 +35,7 @@ A probléma megoldásához kérje le a rendszerképet az Azure Marketplace-ről,
 - [Windows-rendszerképek](azure-vm-create-using-approved-base.md)
 
 > [!Note]
-> Ha az Azure Marketplace-ről nem készített linuxos alapképet használ, az első partíciót 2048 KB-ra ellensúlyozhatja. Ez lehetővé teszi, hogy a formázatlan terület felhasználható legyen új számlázási adatok hozzáadására, és lehetővé teszi, hogy az Azure folytassa a virtuális gép közzétételét az Azure Marketplace-en.  
+> Ha olyan linuxos alaprendszerképet használ, amely nem az Azure Marketplace-en található, győződjön meg arról, hogy az első 2048-szektor (az egyes szektorok 512 bájtban) üresek, így az Azure továbbra is közzéteszi a virtuális gépet az Azure Marketplace-en.  
 
 ## <a name="vm-extension-failure"></a>VM-bővítmény hibája
 
@@ -68,7 +68,7 @@ Győződjön meg arról, hogy a virtuális gép üzembe helyezési folyamatát s
 
 A kiépítési problémák a következő meghibásodási helyzetekben lehetnek:
 
-|Használati példa|Hiba|Ok|Megoldás|
+|Használati eset|Hiba|Ok|Megoldás|
 |---|---|---|---|
 |1|Érvénytelen virtuális merevlemez (VHD)|Ha a VHD-láblécben megadott cookie-érték helytelen, a VHD-fájl érvénytelennek tekintendő.|Hozza létre újra a lemezképet, és küldje el a kérést.|
 |2|Érvénytelen blob-típus|A virtuális gép kiépítés meghiúsult, mert a használt blokk egy oldal típusa helyett blob típusú.|Hozza létre újra a lemezképet, és küldje el a kérést.|
@@ -140,7 +140,7 @@ Töltse le a [Microsoft minősítési eszközkészletet](azure-vm-image-test.md)
 
 A következő táblázat felsorolja az eszközkészlet által futtatott Linux-tesztelési eseteket. A teszt érvényesítése a leírásban van megadva.
 
-|Használati példa|Teszteset|Leírás|
+|Használati eset|Teszteset|Leírás|
 |---|---|---|
 |1|Bash-előzmények|A rendszer a virtuális gép rendszerképének létrehozása előtt törli a bash-előzmények fájljait.|
 |2|Linux-ügynök verziója|Telepíteni kell az Azure Linux Agent 2.2.41 vagy újabb verzióját.|
@@ -157,7 +157,7 @@ A következő táblázat felsorolja az eszközkészlet által futtatott Linux-te
 
 Tekintse meg az alábbi táblázatot a tesztelési esetek futtatásakor előforduló gyakori hibákról:
 
-| Használati példa | Teszteset | Hiba | Megoldás |
+| Használati eset | Teszteset | Hiba | Megoldás |
 | --- | --- | --- | --- |
 | 1 | Linux-ügynök verziója – tesztelési eset | A Linux-ügynök minimális verziója 2.2.41 vagy újabb. Ezt a követelményt a 2020. május 1. óta kötelező megadni. | Frissítse a Linux-ügynök verzióját. 2,241 vagy újabb verziónak kell lennie. További információért látogasson el a [Linux-ügynök verziójának frissítése oldalra](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support). |
 | 2 | Bash-előzmények tesztelési esete | Hiba történik, ha az elküldött képen a bash-előzmények mérete meghaladja az 1 kilobájtot (KB). A méret 1 KB-ra korlátozódik annak biztosítására, hogy a bash History-fájlja ne tartalmazzon potenciálisan bizalmas adatokat. | Oldja fel a virtuális merevlemezt egy másik működő virtuális gépre, és módosítsa a méretet 1 KB vagy annál kisebb értékre. Törölje például az `.bash` Előzmények fájljait. |
@@ -169,7 +169,7 @@ Tekintse meg az alábbi táblázatot a tesztelési esetek futtatásakor előford
 
 A következő táblázat felsorolja az eszközkészlet által futtatott Windows-tesztelési eseteket, valamint a tesztek ellenőrzésének leírását:
 
-|Használati példa |Tesztelési esetek|Leírás|
+|Használati eset |Tesztelési esetek|Leírás|
 |---|---|---|---|
 |1|Operációs rendszer architektúrája|Az Azure csak a 64 bites operációs rendszereket támogatja.|
 |2|Felhasználói fióktól való függőség|Az alkalmazás végrehajtása nem függhet a rendszergazdai fióktól.|
@@ -210,7 +210,7 @@ Mivel a virtuális gépek engedélyezik a hozzáférést az alapul szolgáló op
 
 |VHD-méret|Tényleges foglalt méret|Megoldás|
 |---|---|---|
-|>500 tebibájt (TiB)|n/a|Kivétel jóváhagyásához forduljon a támogatási csoporthoz.|
+|>500 tebibájt (TiB)|n.a.|Kivétel jóváhagyásához forduljon a támogatási csoporthoz.|
 |250-500 TiB|>200 gibibájtban értendők (GiB) eltérés a blob méretétől|Kivétel jóváhagyásához forduljon a támogatási csoporthoz.|
 
 > [!NOTE]
@@ -319,7 +319,7 @@ Ha a kérést SSH-letiltott képpel szeretné elküldeni a minősítési folyama
     
 A következő táblázat tartalmazza azokat a problémákat, amelyek a virtuálisgép-rendszerkép közös hozzáférési aláírással (SAS) való letöltésekor merülnek fel.
 
-|Használati példa|Hiba|Ok|Megoldás|
+|Használati eset|Hiba|Ok|Megoldás|
 |---|---|---|---|
 |1|A blob nem található|Lehet, hogy a VHD-t törölték vagy áthelyezték a megadott helyről.|| 
 |2|BLOB használatban|A virtuális merevlemezt egy másik belső folyamat használja.|A VHD-nek használatban lévő állapotban kell lennie, amikor letölti egy SAS URL-címmel.|
@@ -328,14 +328,14 @@ A következő táblázat tartalmazza azokat a problémákat, amelyek a virtuáli
 |6|HTTP feltételes fejléc|A SAS URL-címe érvénytelen.|Szerezze be a megfelelő SAS URL-címet.|
 |7|Érvénytelen VHD-név|Ellenőrizze, hogy létezik-e speciális karakter (például egy százalék `%` vagy idézőjel `"` ) a VHD-névben.|Nevezze át a VHD-fájlt a speciális karakterek eltávolításával.|
 
-## <a name="first-mb-2048-kb-partition-linux-only"></a>Első MB (2048 KB) partíció (csak Linux)
+## <a name="first-1mb-2048-sectors-each-sector-of-512-bytes-partition-linux-only"></a>Első 1MB (2048 szektor, 512 bájtos szektor) partíció (csak Linux)
 
-A virtuális merevlemez elküldésekor győződjön meg arról, hogy a VHD első 2048 KB-a üres. Ellenkező esetben a kérés sikertelen lesz.
+A virtuális merevlemez elküldésekor győződjön meg arról, hogy a VHD első 2048 szektora (1MB) üres. Ellenkező esetben a kérés sikertelen lesz. Vegye figyelembe, hogy ez a rendszerindító/operációsrendszer-lemezre, és nem a további adatlemezekre is érvényes lesz.
 
 >[!NOTE]
->Bizonyos speciális rendszerképekhez, például az Azure Marketplace-ről készült Azure Windows alapképekre épülő, a számlázási címkét keresünk, és figyelmen kívül hagyják a MB partíciót, ha a számlázási címke jelen van, és megfelel a belső elérhető értékeknek.
+>Bizonyos speciális rendszerképekhez, például az Azure Marketplace-ről készült Azure Windows alaplemezképekre épülő, vagy a VHD első 1MB-as (2048 szektor) értékének megadásával. 
 
-### <a name="create-a-first-mb-2048-kb-partition-on-an-empty-vhd"></a>Első MB (2048 KB) partíció létrehozása üres virtuális merevlemezen
+### <a name="create-a-first-1mb-2048-sectors-each-sector-of-512-bytes-partition-on-an-empty-vhd"></a>Hozzon létre egy első 1MB-ot (2048-es szektort, a 512 bájtos egyes szektorokat) egy üres VHD-partíción
 
 Ezek a lépések csak a Linux rendszerre vonatkoznak.
 
@@ -361,7 +361,7 @@ Ezek a lépések csak a Linux rendszerre vonatkoznak.
 
    1. Keresse meg a VHD Storage-fiókját.
    1. Válassza a **tároló** elemet, majd válassza ki a virtuális merevlemezt.
-   1. Kattintson az **OK** gombra.
+   1. Válassza az **OK** lehetőséget.
 
       ![Képernyőkép a nem felügyelt lemez csatolása oldalról.](./media/create-vm/vm-certification-issues-solutions-19.png)
 
@@ -386,7 +386,7 @@ Ezek a lépések csak a Linux rendszerre vonatkoznak.
    1. Adja meg a 2048 értéket az _első szektor_ értékeként. Az _utolsó szektort_ alapértelmezett értékként is elhagyhatja.
 
       >[!IMPORTANT]
-      >A rendszer a meglévő összes adat törlését 2048 KB-ig törli. Új partíció létrehozása előtt készítsen biztonsági másolatot a virtuális merevlemezről.
+      >A rendszer a meglévő összes adat törlését 2048 szektorban (512 bájtos szektorban) törli. Új partíció létrehozása előtt készítsen biztonsági másolatot a virtuális merevlemezről.
 
       ![A PuTTY ügyféloldali parancssori képernyőképe a törölt adatokat tartalmazó parancsokat és kimenetet mutatja.](./media/create-vm/vm-certification-issues-solutions-22.png)
 
@@ -400,7 +400,7 @@ Ezek a lépések csak a Linux rendszerre vonatkoznak.
 
 1. Válassza le a virtuális MEREVLEMEZt a virtuális gépről, és törölje a virtuális GÉPET.
 
-### <a name="create-a-first-mb-2048-kb-partition-by-moving-existing-data-on-vhd"></a>Hozzon létre egy első MB-os (2048 KB-os) partíciót a meglévő, virtuális merevlemezen tárolt adatáthelyezéssel
+### <a name="create-a-first-mb-2048-sectors-each-sector-of-512-bytes-partition-by-moving-existing-data-on-vhd"></a>Hozzon létre egy első MB-ot (2048 szektort, 512 bájtos szektort) a meglévő adat virtuális merevlemezen való áthelyezésével
 
 Ezek a lépések csak a Linux rendszerre vonatkoznak.
 
@@ -428,7 +428,7 @@ Ezek a lépések csak a Linux rendszerre vonatkoznak.
 
    1. Keresse meg a VHD Storage-fiókját.
    1. Válassza a **tároló** elemet, majd válassza ki a virtuális merevlemezt.
-   1. Kattintson az **OK** gombra.
+   1. Válassza az **OK** lehetőséget.
 
       ![Képernyőkép a nem felügyelt lemez csatolása oldalról.](./media/create-vm/vm-certification-issues-solutions-19.png)
 

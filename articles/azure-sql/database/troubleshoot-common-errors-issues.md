@@ -10,17 +10,17 @@ author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: sstein,vanto
 ms.date: 01/14/2021
-ms.openlocfilehash: 7c797c7e002f40a28e4be674c125c6ea5d60a13f
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: ec61f2c67576d6e144d8d4bb7e8ecaaa157db0a9
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219062"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233372"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>A kapcsolódási problémák és a Azure SQL Database és az Azure SQL felügyelt példányával kapcsolatos egyéb hibák elhárítása
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Hibaüzenetek jelenhetnek meg, ha a Azure SQL Database vagy az Azure SQL felügyelt példányának kapcsolata meghiúsul. Ezeket a kapcsolódási problémákat az újrakonfigurálás, a tűzfalbeállítások, a kapcsolat időtúllépése, a helytelen bejelentkezési adatok vagy az ajánlott eljárások és tervezési irányelvek alkalmazása okozhatja az [alkalmazás tervezési](develop-overview.md) folyamata során. Emellett, ha elérte a Azure SQL Database vagy SQL felügyelt példányok erőforrásainak maximális korlátját, akkor már nem tud csatlakozni.
+Hibaüzenetek jelenhetnek meg, ha a Azure SQL Database vagy az Azure SQL felügyelt példányának kapcsolata meghiúsul. Ezeket a kapcsolódási problémákat az újrakonfigurálás, a tűzfalbeállítások, a kapcsolat időkorlátja, a helytelen bejelentkezési adatok, illetve az [alkalmazás-tervezési](develop-overview.md) folyamat során az ajánlott eljárások és tervezési irányelvek alkalmazása okozhatja. Emellett, ha elérte a Azure SQL Database vagy SQL felügyelt példányok erőforrásainak maximális korlátját, akkor már nem tud csatlakozni.
 
 ## <a name="transient-fault-error-messages-40197-40613-and-others"></a>Átmeneti hibák hibaüzenetei (40197, 40613 és egyebek)
 
@@ -42,13 +42,13 @@ Az Azure-infrastruktúra az SQL Database szolgáltatásban fellépő nagy mért�
 ### <a name="steps-to-resolve-transient-connectivity-issues"></a>Az átmeneti kapcsolódási problémák megoldásának lépései
 
 1. Győződjön meg arról, hogy a [Microsoft Azure szolgáltatás irányítópultján](https://azure.microsoft.com/status) az alkalmazás által jelentett hibák ideje alatt bekövetkezett összes ismert leállás látható.
-2. A felhőalapú szolgáltatásokhoz, például a Azure SQL Databasehoz csatlakozó alkalmazásoknak rendszeres újrakonfigurálási eseményeket kell elvárniuk, és az újrapróbálkozási logikát kell végrehajtaniuk a hibák kezeléséhez, ahelyett, hogy ezeket a hibákat felhasználja a felhasználóknak
+2. A felhőalapú szolgáltatásokhoz, például a Azure SQL Databasehoz csatlakozó alkalmazásoknak rendszeres újrakonfigurálási eseményeket kell elvárniuk, és az újrapróbálkozási logikát kell végrehajtaniuk a hibák kezeléséhez a felhasználók számára.
 3. Mivel az adatbázis megközelíti az erőforrás-korlátozásokat, úgy tűnhet, hogy átmeneti kapcsolódási probléma. Lásd: [erőforrás-korlátok](resource-limits-logical-server.md#what-happens-when-database-resource-limits-are-reached).
 4. Ha a kapcsolódási problémák továbbra is fennállnak, vagy ha az alkalmazás az időtartamot meghaladja a 60 másodpercnél, vagy ha egy adott nap több előfordulását látja a hibával, az Azure-támogatási kérést az [Azure](https://azure.microsoft.com/support/options) támogatási webhelyén, a **támogatás beszerzése** lehetőség választásával kérheti le.
 
 #### <a name="implementing-retry-logic"></a>Újrapróbálkozási logika implementálása
 
-Erősen ajánlott, hogy az ügyfélalkalmazás újra megismételje a logikát, hogy újra létre lehessen hozni a kapcsolatot, miután megadta az átmeneti hibák idejét.  Javasoljuk, hogy az első újrapróbálkozás előtt 5 másodpercig várjon. 5 másodpercnél rövidebb idő elteltével próbálkozzon újra a felhőalapú szolgáltatással. Minden további újrapróbálkozás esetén a késleltetés exponenciálisan növekszik, legfeljebb 60 másodpercig.
+Erősen ajánlott, hogy az ügyfélalkalmazás újra megismételje a logikát, hogy újra létre lehessen hozni a kapcsolatot, miután megadta az átmeneti hibák idejét.  Javasoljuk, hogy az első újrapróbálkozás előtt 5 másodpercig várjon. Az 5 másodpercnél rövidebb idő elteltével próbálkozzon újra a Cloud Service-t érő kockázatokkal. Minden további újrapróbálkozás esetén a késleltetés exponenciálisan növekszik, legfeljebb 60 másodpercig.
 
 Az újrapróbálkozási logikával kapcsolatos Példákért lásd:
 
@@ -104,49 +104,46 @@ A probléma megoldásához forduljon a szolgáltatás rendszergazdájához, és 
 A szolgáltatás rendszergazdája általában a következő lépésekkel adhatja hozzá a bejelentkezési hitelesítő adatokat:
 
 1. Jelentkezzen be a kiszolgálóra SQL Server Management Studio (SSMS) használatával.
-2. Futtassa a következő SQL-lekérdezést, hogy meggyőződjön arról, hogy a bejelentkezési név le van-e tiltva:
+2. Futtassa a következő SQL-lekérdezést a Master adatbázisban, és győződjön meg róla, hogy a bejelentkezési név le van tiltva:
 
    ```sql
-   SELECT name, is_disabled FROM sys.sql_logins
+   SELECT name, is_disabled FROM sys.sql_logins;
    ```
 
 3. Ha a név le van tiltva, engedélyezze a következő utasítással:
 
    ```sql
-   Alter login <User name> enable
+   ALTER LOGIN <User name> ENABLE;
    ```
 
-4. Ha az SQL-bejelentkezési Felhasználónév nem létezik, hozza létre a következő lépésekkel:
-
-   1. A SSMS kattintson duplán a **Biztonság** elemre a kibontásához.
-   2. Kattintson a jobb gombbal a **bejelentkezések** elemre, majd válassza az **új bejelentkezés** lehetőséget.
-   3. A generált parancsfájl helyőrzővel, szerkessze és futtassa a következő SQL-lekérdezést:
+4. Ha az SQL-bejelentkezési Felhasználónév nem létezik, szerkessze és futtassa a következő SQL-lekérdezést új SQL-bejelentkezés létrehozásához:
 
    ```sql
    CREATE LOGIN <SQL_login_name, sysname, login_name>
-   WITH PASSWORD = '<password, sysname, Change_Password>'
+   WITH PASSWORD = '<password, sysname, Change_Password>';
    GO
    ```
 
-5. Kattintson duplán az **adatbázis** elemre.
+5. A SSMS Object Explorer bontsa ki az **adatbázisok** csomópontot.
 6. Válassza ki azt az adatbázist, amelyhez engedélyt kíván adni a felhasználónak.
-7. Kattintson duplán a **Biztonság** elemre.
-8. Kattintson a jobb gombbal a **felhasználók** elemre, majd válassza az **új felhasználó** lehetőséget.
-9. A generált parancsfájl helyőrzővel, szerkessze és futtassa a következő SQL-lekérdezést:
+7. Kattintson a jobb gombbal a **Biztonság** elemre, majd válassza az **új**, **felhasználó** lehetőséget.
+8. A generált parancsfájl helyőrzővel, szerkessze és futtassa a következő SQL-lekérdezést:
 
    ```sql
    CREATE USER <user_name, sysname, user_name>
    FOR LOGIN <login_name, sysname, login_name>
-   WITH DEFAULT_SCHEMA = <default_schema, sysname, dbo>
+   WITH DEFAULT_SCHEMA = <default_schema, sysname, dbo>;
    GO
-   -- Add user to the database owner role
 
-   EXEC sp_addrolemember N'db_owner', N'<user_name, sysname, user_name>'
+   -- Add user to the database owner role
+   EXEC sp_addrolemember N'db_owner', N'<user_name, sysname, user_name>';
    GO
    ```
 
+   A használatával meghatározott `sp_addrolemember` felhasználókat adott adatbázis-szerepkörökhöz is leképezheti.
+
    > [!NOTE]
-   > A használatával meghatározott `sp_addrolemember` felhasználókat adott adatbázis-szerepkörökhöz is leképezheti.
+   > Azure SQL Database az adatbázis-szerepkör tagságának kezeléséhez vegye figyelembe az újabb [módosítási szerepkör](/sql/t-sql/statements/alter-role-transact-sql) -szintaxist.  
 
 További információ: [adatbázisok és bejelentkezések kezelése Azure SQL Databaseban](./logins-create-manage.md).
 
@@ -183,7 +180,7 @@ A probléma megkerüléséhez próbálkozzon az alábbi módszerek egyikével:
 - Ellenőrizze, hogy vannak-e hosszan futó lekérdezések.
 
   > [!NOTE]
-  > Ez egy minimalista megközelítés, amely esetleg nem oldja meg a problémát. A lekérdezések blokkolásával kapcsolatos részletes információkért lásd: az [Azure SQL-blokkoló problémáinak megismerése és megoldása](understand-resolve-blocking.md).
+  > Ez egy minimalista megközelítés, amely esetleg nem oldja meg a problémát. A hosszú futású vagy blokkoló lekérdezések hibaelhárításával kapcsolatos részletes információkért lásd: [Azure SQL Database blokkolási problémák megismerése és megoldása](understand-resolve-blocking.md).
 
 1. A következő SQL-lekérdezés futtatásával tekintse meg a [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) nézetet a blokkoló kérelmek megtekintéséhez:
 
@@ -191,12 +188,15 @@ A probléma megkerüléséhez próbálkozzon az alábbi módszerek egyikével:
    SELECT * FROM sys.dm_exec_requests;
    ```
 
-2. A fej-blokkoló **bemeneti pufferének** meghatározása.
-3. A fej-blokkoló lekérdezésének hangolása.
+1. Határozza meg a fej-blokkoló **bemeneti pufferét** a [sys.dm_exec_input_buffer](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-input-buffer-transact-sql) dinamikus felügyeleti funkciójával, valamint a jogsértő lekérdezés session_idával, például:
 
-   Részletes hibaelhárítási eljárás: a [lekérdezés a felhőben fut?](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud). 
+   ```sql 
+   SELECT * FROM sys.dm_exec_input_buffer (100,0);
+   ```
 
-Ha az adatbázis folyamatosan eléri a korlátot a blokkoló és a hosszan futó lekérdezések kezelése előtt, érdemes lehet egy kiadásra frissíteni a [további erőforrás-kiadásokkal](https://azure.microsoft.com/pricing/details/sql-database/)).
+1. A fej-blokkoló lekérdezésének hangolása.
+
+Ha az adatbázis folyamatosan eléri a korlátot a blokkoló és a hosszan futó lekérdezések kezelése ellenére, érdemes lehet egy kiadásra frissíteni a [további erőforrás-kiadásokkal](https://azure.microsoft.com/pricing/details/sql-database/).
 
 Az adatbázis-korlátokkal kapcsolatos további információkért lásd:  [a kiszolgálók erőforrás-korlátainak SQL Database](./resource-limits-logical-server.md).
 
@@ -254,12 +254,18 @@ Ha többször is megtapasztalja ezt a hibát, próbálja meg elhárítani a prob
    SELECT * FROM sys.dm_exec_requests;
    ```
 
-2. A hosszú ideig futó lekérdezés bemeneti pufferének meghatározása.
+2. Határozza meg a fej-blokkoló **bemeneti pufferét** a [sys.dm_exec_input_buffer](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-input-buffer-transact-sql) dinamikus felügyeleti funkciójával, valamint a jogsértő lekérdezés session_idával, például:
+
+   ```sql 
+   SELECT * FROM sys.dm_exec_input_buffer (100,0);
+   ```
+
 3. A lekérdezés finomhangolása.
 
-A lekérdezések kötegelt feldolgozását is érdemes figyelembe venni. A kötegelt feldolgozással kapcsolatos további információkért lásd: [a Batch használata az SQL Database alkalmazások teljesítményének javításához](../performance-improve-use-batching.md).
+    > [!Note]
+    > A Azure SQL Database blokkolásának hibaelhárításával kapcsolatos további információkért lásd: [Azure SQL Database blokkolási problémák megismerése és megoldása](understand-resolve-blocking.md).
 
-Részletes hibaelhárítási eljárás: a [lekérdezés a felhőben fut?](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
+A lekérdezések kötegelt feldolgozását is érdemes figyelembe venni. A kötegelt feldolgozással kapcsolatos további információkért lásd: [a Batch használata az SQL Database alkalmazások teljesítményének javításához](../performance-improve-use-batching.md).
 
 ### <a name="error-40551-the-session-has-been-terminated-because-of-excessive-tempdb-usage"></a>40551-es hiba: a munkamenet túlzott TEMPDB-használat miatt megszakadt
 
@@ -311,7 +317,7 @@ A rugalmas készletek létrehozásával és használatával kapcsolatos hibák a
 
 | Hibakód | Súlyosság | Leírás | Javító művelet |
 |:--- |:--- |:--- |:--- |
-| 1132 | 17 |A rugalmas készlet elérte a tárolási korlátot. A rugalmas készlet tárolási kihasználtsága nem haladhatja meg a (z) (% d) MB-ot. Egy adatbázisba való adatírásra tett kísérlet, ha elérte a rugalmas készlet tárolási korlátját. Az erőforrás-korlátokkal kapcsolatos további információkért lásd: <br/>&bull;&nbsp; [Rugalmas készletek DTU-alapú korlátai](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [rugalmas készletek virtuális mag-alapú korlátai](resource-limits-vcore-elastic-pools.md). <br/> |Ha lehetséges, növelje a rugalmas készlethez való DTU és/vagy a tárterület hozzáadását, csökkentse a rugalmas készletben lévő egyes adatbázisok által használt tárterületet, vagy távolítsa el az adatbázisokat a rugalmas készletből. A rugalmas készlet skálázásával kapcsolatban lásd: [rugalmas készlet erőforrásainak](elastic-pool-scale.md)méretezése.|
+| 1132 | 17 |A rugalmas készlet elérte a tárolási korlátot. A rugalmas készlet tárolási kihasználtsága nem haladhatja meg a (z) (% d) MB-ot. Egy adatbázisba való adatírásra tett kísérlet, ha elérte a rugalmas készlet tárolási korlátját. Az erőforrás-korlátokkal kapcsolatos további információkért lásd: <br/>&bull;&nbsp; [Rugalmas készletek DTU-alapú korlátai](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [rugalmas készletek virtuális mag-alapú korlátai](resource-limits-vcore-elastic-pools.md). <br/> |Ha lehetséges, növelje a rugalmas készlethez való DTU és/vagy a tárterület hozzáadását, csökkentse a rugalmas készletben lévő egyes adatbázisok által használt tárterületet, vagy távolítsa el az adatbázisokat a rugalmas készletből. A rugalmas készlet skálázásával kapcsolatban lásd: [rugalmas készlet erőforrásainak](elastic-pool-scale.md)méretezése. További információ az adatbázisok nem felhasznált területének eltávolításáról: [Azure SQL Database-adatbázisok tárterületének kezelése](file-space-manage.md).|
 | 10929 | 16 |A (z)% s minimális garancia% d, a maximális korlát% d, az adatbázis jelenlegi használata pedig% d. Azonban a kiszolgáló jelenleg túl elfoglalt ahhoz, hogy támogassa a (z)% d-nál nagyobb kérelmeket ehhez az adatbázishoz. Az erőforrás-korlátokkal kapcsolatos további információkért lásd: <br/>&bull;&nbsp; [Rugalmas készletek DTU-alapú korlátai](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [rugalmas készletek virtuális mag-alapú korlátai](resource-limits-vcore-elastic-pools.md). <br/> Ellenkező esetben próbálkozzon újra később. DTU/virtuális mag/perc/adatbázis; DTU/virtuális mag-adatbázis maximális száma. Az egyidejű feldolgozók (kérelmek) teljes száma a rugalmas készletben lévő összes adatbázisban, a készlet korlátjának túllépése miatt. |Ha lehetséges, érdemes lehet növelni a rugalmas készlet DTU vagy virtuális mag, hogy növelje a munkavégző korlátot, vagy távolítsa el az adatbázisokat a rugalmas készletből. |
 | 40844 | 16 |A (z) "% ls" kiszolgáló "% ls" adatbázisa egy rugalmas készletben lévő "% ls" kiadási adatbázis, és nem lehet folytonos másolási kapcsolat.  |N.A. |
 | 40857 | 16 |Nem található rugalmas készlet a következő kiszolgálóhoz: "% ls", rugalmas készlet neve: "% ls". A megadott rugalmas készlet nem létezik a megadott kiszolgálón. | Adja meg a rugalmas készlet érvényes nevét. |
@@ -386,7 +392,7 @@ Ha ezek a lépések nem oldják meg a problémát, próbálkozzon a további ada
 
 A naplózás engedélyezésével kapcsolatos további információkért lásd: a [diagnosztikai naplózás engedélyezése a Azure app Service alkalmazásokban](../../app-service/troubleshoot-diagnostic-logs.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure SQL Database kapcsolati architektúrája](./connectivity-architecture.md)
 - [A Azure SQL Database és az Azure szinapszis Analytics hálózati hozzáférés-vezérlés](./network-access-controls-overview.md)

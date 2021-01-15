@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: d5f5e1098b688fc307bae5ea3538c818cb529b0a
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: e15dce586dc4dd43cf56fd1cbb08b84ebcda1787
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962397"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232301"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Webes API-kat meghívó asztali alkalmazás: token beszerzése
 
@@ -242,7 +242,7 @@ A MSAL webes felhasználói felületi implementációkat biztosít a legtöbb pl
 - Azt szeretné, hogy a felhasználói felület tesztelje az alkalmazást, és használjon egy olyan automatizált böngészőt, amely a szelén segítségével használható.
 - A böngésző és a MSAL futtató alkalmazás külön folyamatokban van.
 
-##### <a name="at-a-glance"></a>Dióhéjban
+##### <a name="at-a-glance"></a>Gyors áttekintés
 
 Ennek eléréséhez meg kell adnia a MSAL `start Url` , amelyet egy tetszőleges böngészőben kell megjeleníteni, hogy a végfelhasználók olyan elemeket is megadhatnak, mint a felhasználónevek.
 A hitelesítés befejeződése után az alkalmazásnak vissza kell térnie a MSAL `end Url` -re, amely az Azure ad által biztosított kódot tartalmaz.
@@ -420,8 +420,8 @@ Ha tartományi felhasználót szeretne bejelentkezni egy tartományba vagy egy A
 - Az integrált Windows-hitelesítés csak *összevont +* felhasználók számára használható, azaz a Active Directoryban létrehozott és az Azure ad által támogatott felhasználók. A közvetlenül az Azure AD-ben létrehozott felhasználók Active Directory biztonsági mentés nélkül, azaz a *felügyelt* felhasználók nem használhatják ezt a hitelesítési folyamatot. Ez a korlátozás nem befolyásolja a Felhasználónév és a jelszó folyamatát.
 - A IWA a .NET-keretrendszer, a .NET Core és a Univerzális Windows-platform (UWP) platformokhoz írt alkalmazások esetében használható.
 - A IWA nem kerüli el a [többtényezős hitelesítést (MFA)](../authentication/concept-mfa-howitworks.md). Ha az MFA konfigurálva van, a IWA sikertelen lehet, ha MFA-kihívásra van szükség, mert az MFA felhasználói beavatkozást igényel.
-  > [!NOTE]
-  > Ez egy trükkös megoldás. A IWA nem interaktív, az MFA azonban felhasználói interaktivitást igényel. Nem szabályozhatja, hogy az identitás-szolgáltató Mikor kér el MFA-t, a bérlői rendszergazda végzi. A megfigyelések során MFA szükséges, ha más országból/régióból jelentkezik be, ha nem VPN-kapcsolaton keresztül csatlakozik a vállalati hálózathoz, és néha még akkor is, ha VPN-en keresztül csatlakozik. Ne várja meg a determinisztikus szabályait. Az Azure AD a mesterséges intelligencia használatával folyamatosan tanul, ha MFA szükséges. Ha a IWA nem sikerül, térjen vissza egy olyan felhasználói kéréshez, mint az interaktív hitelesítés vagy az eszköz kódjának folyamata.
+  
+    A IWA nem interaktív, az MFA azonban felhasználói interaktivitást igényel. Nem szabályozhatja, hogy az identitás-szolgáltató Mikor kér el MFA-t, a bérlői rendszergazda végzi. A megfigyelések során MFA szükséges, ha más országból/régióból jelentkezik be, ha nem VPN-kapcsolaton keresztül csatlakozik a vállalati hálózathoz, és néha még akkor is, ha VPN-en keresztül csatlakozik. Ne várja meg a determinisztikus szabályait. Az Azure AD a mesterséges intelligencia használatával folyamatosan tanul, ha MFA szükséges. Ha a IWA nem sikerül, térjen vissza egy olyan felhasználói kéréshez, mint az interaktív hitelesítés vagy az eszköz kódjának folyamata.
 
 - Az átadott szolgáltatónak a következőnek `PublicClientApplicationBuilder` kell lennie:
   - Az űrlap bérlője `https://login.microsoftonline.com/{tenant}/` , ahol `tenant` vagy a bérlő azonosítóját, vagy a bérlőhöz társított tartományt jelképező GUID.
@@ -602,14 +602,13 @@ A tokent a Felhasználónév és a jelszó megadásával is megvásárolhatja. E
 
 ### <a name="this-flow-isnt-recommended"></a>Ez a folyamat nem ajánlott
 
-Ez a folyamat *nem ajánlott* , mert az alkalmazás arra kéri a felhasználót, hogy a jelszavuk ne legyen biztonságos. További információ: [Mi a megoldás a jelszavak egyre növekvő problémájára?](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). A tokenek Windows-tartományhoz csatlakoztatott gépeken való csendes beszerzésének előnyben részesített folyamata [integrált Windows-hitelesítés](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication). Az [eszköz kódjának folyamatát](https://aka.ms/msal-net-device-code-flow)is használhatja.
+A Felhasználónév és a jelszó folyamata *nem ajánlott* , mert az alkalmazás arra kéri a felhasználót, hogy a jelszavuk ne legyen biztonságos. További információ: [Mi a megoldás a jelszavak egyre növekvő problémájára?](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/) A tokenek Windows-tartományhoz csatlakoztatott gépeken való csendes beszerzésének előnyben részesített folyamata [integrált Windows-hitelesítés](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication). Az [eszköz kódjának folyamatát](https://aka.ms/msal-net-device-code-flow)is használhatja.
 
-> [!NOTE]
-> A Felhasználónév és a jelszó használata bizonyos esetekben hasznos, például DevOps forgatókönyvek esetén. Ha azonban olyan interaktív helyzetekben szeretné használni a felhasználónevet és a jelszót, ahol a saját felhasználói felületét adja meg, gondolja át, hogyan helyezheti át. Felhasználónév és jelszó használatával több dolgot is megadhat:
->
-> - A modern identitás alapvető vonalai. A jelszó beolvasható és visszajátszható, mivel a közös titkos kulcs elfogása megoldható. Nem kompatibilis a jelszóval.
-> - Az MFA-t nem használó felhasználóknak nem lehet bejelentkezniük, mert nincs interakció.
-> - A felhasználók nem végezhetnek egyszeri bejelentkezést (SSO).
+A Felhasználónév és a jelszó használata bizonyos esetekben hasznos, például DevOps forgatókönyvek esetén. Ha azonban olyan interaktív helyzetekben szeretné használni a felhasználónevet és a jelszót, ahol a saját felhasználói felületét adja meg, gondolja át, hogyan helyezheti át. Felhasználónév és jelszó használatával több dolgot is megadhat:
+
+- A modern identitás alapvető vonalai. A jelszó beolvasható és visszajátszható, mivel a közös titkos kulcs elfogása megoldható. Nem kompatibilis a jelszóval.
+- Az MFA-t nem használó felhasználóknak nem lehet bejelentkezniük, mert nincs interakció.
+- A felhasználók nem végezhetnek egyszeri bejelentkezést (SSO).
 
 ### <a name="constraints"></a>Korlátozások
 
