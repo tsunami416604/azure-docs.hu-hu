@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 16b37258d922db59f520d4e30c45773f6d1108cf
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 2f9fa6e7ef9a7ee8ea7dd2a09622f26f6fd9739e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341070"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223125"
 ---
 # <a name="use-synapse-studio-to-monitor-your-apache-spark-applications"></a>A szinapszis Studio használata a Apache Spark-alkalmazások figyelésére
 
@@ -33,7 +33,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 Mielőtt nekilát az oktatóanyagnak, ellenőrizze, hogy megfelel-e a következő feltételeknek:
 
-- Egy szinapszis Studio-munkaterület. Útmutatásért lásd: [a szinapszis Studio-munkaterület létrehozása](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace).
+- Egy szinapszis Studio-munkaterület. Útmutatásért lásd: [a szinapszis Studio-munkaterület létrehozása](../../machine-learning/how-to-manage-workspace.md#create-a-workspace).
 
 - Egy Apache Spark készlet.
 
@@ -43,11 +43,11 @@ Megtekintheti az összes Apache Spark alkalmazást a **figyelő**  ->  **Apache 
 
 ## <a name="view-completed-apache-spark-application"></a>Befejezett Apache Spark alkalmazás megtekintése
 
-Nyissa meg a **monitort** , majd válassza **Apache Spark alkalmazások** elemet. A befejezett Apache Spark alkalmazások részleteinek megtekintéséhez válassza ki a Apache Spark alkalmazást, és tekintse meg a részleteket.
+Nyissa meg a **monitort**, majd válassza **Apache Spark alkalmazások** elemet. A befejezett Apache Spark alkalmazások részleteinek megtekintéséhez válassza ki a Apache Spark alkalmazást, és tekintse meg a részleteket.
 
   ![Befejezett feladatok kiválasztása](./media/how-to-monitor-spark-applications/select-completed-job.png)
 
-1. Keresse meg a **Befejezett feladatokat** , az **állapotot** és az **összes időtartamot**.
+1. Keresse meg a **Befejezett feladatokat**, az **állapotot** és az **összes időtartamot**.
 
 2. A napló lekérdezésének frissítése.
 
@@ -59,7 +59,7 @@ Nyissa meg a **monitort** , majd válassza **Apache Spark alkalmazások** elemet
 
 6. A feladatokról a generált feladatok diagramján tekinthet meg áttekintést. Alapértelmezés szerint a Graph megjeleníti az összes feladatot. Ezt a nézetet **feladattípus** alapján szűrheti.
 
-7. Alapértelmezés szerint a **folyamatjelző** megjelenítés van kiválasztva. Az adatfolyamatot úgy tekintheti meg, ha kiválasztja a **folyamatjelző** / **olvasása írási** / **Written** / **időtartamot** a **megjelenítési** legördülő listában.
+7. Alapértelmezés szerint a **folyamatjelző** megjelenítés van kiválasztva. Az adatfolyamatot úgy tekintheti meg, ha kiválasztja a **folyamatjelző** / **olvasása írási** /  / **időtartamot** a **megjelenítési** legördülő listában.
 
 8. A feladatok lejátszásához kattintson a **Lejátszás** gombra. A **Leállítás gombra kattintva bármikor leállíthatja** a szolgáltatást.
 
@@ -92,11 +92,11 @@ Nyissa meg a **monitort** , majd válassza **Apache Spark alkalmazások** elemet
 
 ## <a name="monitor-running-apache-spark-application"></a>Futó Apache Spark-alkalmazás figyelése
 
-Nyissa meg a **monitort** , majd válassza **Apache Spark alkalmazások** elemet. A Apache Spark futó alkalmazások részleteinek megtekintéséhez válassza a beküldés Apache Spark alkalmazást, és tekintse meg a részleteket. Ha a Apache Spark alkalmazás még fut, nyomon követheti a folyamatot.
+Nyissa meg a **monitort**, majd válassza **Apache Spark alkalmazások** elemet. A Apache Spark futó alkalmazások részleteinek megtekintéséhez válassza a beküldés Apache Spark alkalmazást, és tekintse meg a részleteket. Ha a Apache Spark alkalmazás még fut, nyomon követheti a folyamatot.
 
    ![futó feladatok kiválasztása](./media/how-to-monitor-spark-applications/select-running-job.png)
 
-1. Keresse meg a **Befejezett feladatokat** , az **állapotot** és az **összes időtartamot**.
+1. Keresse meg a **Befejezett feladatokat**, az **állapotot** és az **összes időtartamot**.
 
 2. A Apache Spark alkalmazás **megszakítása** .
 
@@ -116,11 +116,11 @@ Nyissa meg a **monitort** , majd válassza **Apache Spark alkalmazások** elemet
 
 ## <a name="view-canceled-apache-spark-application"></a>Megszakított Apache Spark alkalmazás megtekintése
 
-Nyissa meg a **monitort** , majd válassza **Apache Spark alkalmazások** elemet. A megszakított Apache Spark alkalmazások részleteinek megtekintéséhez válassza ki a Apache Spark alkalmazást, és tekintse meg a részleteket.
+Nyissa meg a **monitort**, majd válassza **Apache Spark alkalmazások** elemet. A megszakított Apache Spark alkalmazások részleteinek megtekintéséhez válassza ki a Apache Spark alkalmazást, és tekintse meg a részleteket.
 
  ![megszakított feladatok kiválasztása](./media/how-to-monitor-spark-applications/select-cancelled-job.png) 
 
-1. Keresse meg a **Befejezett feladatokat** , az **állapotot** és az **összes időtartamot**.
+1. Keresse meg a **Befejezett feladatokat**, az **állapotot** és az **összes időtartamot**.
 
 2. Frissítse a napló lekérdezését.
 
@@ -138,11 +138,11 @@ Nyissa meg a **monitort** , majd válassza **Apache Spark alkalmazások** elemet
 
 ## <a name="debug-failed-apache-spark-application"></a>A hibakeresés nem sikerült Apache Spark alkalmazás
 
-Nyissa meg a **monitort** , majd válassza **Apache Spark alkalmazások** elemet. A sikertelen Apache Spark alkalmazások részleteinek megtekintéséhez válassza ki a Apache Spark alkalmazást, és tekintse meg a részleteket.
+Nyissa meg a **monitort**, majd válassza **Apache Spark alkalmazások** elemet. A sikertelen Apache Spark alkalmazások részleteinek megtekintéséhez válassza ki a Apache Spark alkalmazást, és tekintse meg a részleteket.
 
 ![Sikertelen feladatok kiválasztása](./media/how-to-monitor-spark-applications/select-failed-job.png)
 
-1. Keresse meg a **Befejezett feladatokat** , az **állapotot** és az **összes időtartamot**.
+1. Keresse meg a **Befejezett feladatokat**, az **állapotot** és az **összes időtartamot**.
 
 2. A napló lekérdezésének frissítése.
 
@@ -156,6 +156,6 @@ Nyissa meg a **monitort** , majd válassza **Apache Spark alkalmazások** elemet
 
    ![Sikertelen feladatok adatai](./media/how-to-monitor-spark-applications/failed-job-info.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A folyamatok figyelésével kapcsolatos további információkért tekintse meg a [folyamatok figyelése a szinapszis Studio használatával](how-to-monitor-pipeline-runs.md) című cikket.  
+A folyamatok figyelésével kapcsolatos további információkért tekintse meg a [folyamatok figyelése a szinapszis Studio használatával](how-to-monitor-pipeline-runs.md) című cikket.

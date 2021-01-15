@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: cf76a3d09da83693791873feb9e6ab03c432e47f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: eef65db05ab94b5b8de5ff82c2c51dba0730f170
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468246"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222173"
 ---
 # <a name="tutorial-pre-requisites-for-using-cognitive-services-in-azure-synapse"></a>Oktatóanyag: előfeltételek a Cognitive Services Azure Szinapszisban való használatához
 
@@ -38,7 +38,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/)
 
 ## <a name="create-a-cognitive-services-resource"></a>Cognitive Services erőforrás létrehozása
 
-Az [Azure Cognitive Services](https://go.microsoft.com/fwlink/?linkid=2147492) számos különböző típusú szolgáltatást tartalmaz. Az alábbiakban néhány példát láthat a szinapszis-oktatóanyagokra.
+Az [Azure Cognitive Services](../../cognitive-services/index.yml) számos különböző típusú szolgáltatást tartalmaz. Az alábbiakban néhány példát láthat a szinapszis-oktatóanyagokra.
 
 ### <a name="create-an-anomaly-detector-resource"></a>Anomália-detektor erőforrásának létrehozása
 [Anomália-detektor](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) létrehozása Azure Portalban.
@@ -53,7 +53,7 @@ Hozzon létre egy [text Analytics](https://ms.portal.azure.com/#create/Microsoft
 ## <a name="create-key-vault-and-configure-secrets-and-access"></a>Key Vault létrehozása és a titkok és hozzáférés konfigurálása
 
 1. Hozzon létre egy [Key Vault](https://ms.portal.azure.com/#create/Microsoft.KeyVault) a Azure Portalban.
-2. Lépjen a **Key Vault-> hozzáférési házirendek** elemre, és adja meg az [Azure SZINAPSZIS-munkaterület MSI](https://docs.microsoft.com/azure/synapse-analytics/security/synapse-workspace-managed-identity) -engedélyeit a titkos kódok olvasásához Azure Key Vault.
+2. Lépjen a **Key Vault-> hozzáférési házirendek** elemre, és adja meg az [Azure SZINAPSZIS-munkaterület MSI](../security/synapse-workspace-managed-identity.md) -engedélyeit a titkos kódok olvasásához Azure Key Vault.
 
 >Győződjön meg arról, hogy a házirend módosításai mentve lettek. Ez a lépés könnyen kihagyható.
 
@@ -74,7 +74,7 @@ Hozzon létre egy [text Analytics](https://ms.portal.azure.com/#create/Microsoft
 
 Most már készen áll arra, hogy folytassa az Azure Cognitive Services-élmény az Azure szinapszis Studióban való használatának egyik oktatóanyagával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Oktatóanyag: érzelmek elemzése az Azure Cognitive Services](tutorial-cognitive-services-sentiment.md)
 - [Oktatóanyag: anomáliák észlelése az Azure Cognitive Services](tutorial-cognitive-services-sentiment.md)

@@ -1,14 +1,14 @@
 ---
 title: Az Azure szabályzatának áttekintése
 description: Az Azure Policy az Azure egy szolgáltatása, amelynek használatával szabályzatdefiníciókat hozhat létre, rendelhet hozzá és kezelhet az Azure-környezetben.
-ms.date: 10/05/2020
+ms.date: 01/14/2021
 ms.topic: overview
-ms.openlocfilehash: 96fd29b5e3d24bc3e678461a95005e004a8a3a80
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: df430586af2e701ec2881f6ea760095fd2ca79d0
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803952"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220728"
 ---
 # <a name="what-is-azure-policy"></a>Mi az Azure Policy?
 
@@ -83,7 +83,7 @@ Ha egyik beépített szerepkör sem tartalmazza a szükséges engedélyeket, hoz
 
 ### <a name="resources-covered-by-azure-policy"></a>Azure Policy által érintett erőforrások
 
-Azure Policy kiértékeli az összes erőforrást az Azure-ban és az ív engedélyezett erőforrásaiban. Bizonyos erőforrás-szolgáltatók, például a [vendég konfigurációja](./concepts/guest-configuration.md), az [Azure Kubernetes Service](../../aks/intro-kubernetes.md)és a [Azure Key Vault](../../key-vault/general/overview.md)esetében mélyebb integráció áll rendelkezésre a beállítások és objektumok kezeléséhez. További információ: [erőforrás-szolgáltatói módok](./concepts/definition-structure.md).
+Azure Policy kiértékeli az összes Azure-erőforrást az előfizetések szintjén vagy azok alatt, beleértve az ív használatára képes erőforrásokat is. Bizonyos erőforrás-szolgáltatók, például a [vendég konfigurációja](./concepts/guest-configuration.md), az [Azure Kubernetes Service](../../aks/intro-kubernetes.md)és a [Azure Key Vault](../../key-vault/general/overview.md)esetében mélyebb integráció áll rendelkezésre a beállítások és objektumok kezeléséhez. További információ: [erőforrás-szolgáltatói módok](./concepts/definition-structure.md).
 
 ### <a name="recommendations-for-managing-policies"></a>Javaslatok a szabályzatok kezeléséhez
 
@@ -174,7 +174,7 @@ A hozzárendelések portálon keresztüli beállításával kapcsolatos további
 
 [!INCLUDE [policy-limits](../../../includes/azure-policy-limits.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette az Azure Policy tudnivalóit és néhány fontosabb fogalmat, folytatásként a következő témaköröket javasoljuk:
 

@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: allensu
-ms.openlocfilehash: 3ca83836771af8448f6510ab27d0ac5f2973b35c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c96da9d799b9d55429d66043906ba9be4fe5af3
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87287697"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221306"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-powershell"></a>Statikus nyilvános IP-címmel rendelkező virtuális gép létrehozása a PowerShell használatával
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Létrehozhat egy statikus nyilvános IP-címmel rendelkező virtuális gépet is. A nyilvános IP-cím lehetővé teszi, hogy az internetről kommunikáljon egy virtuális géppel. Statikus nyilvános IP-címet rendeljen hozzá, nem pedig dinamikus címet, hogy a cím ne legyen módosítva. További információ a [statikus nyilvános IP-címekről](virtual-network-ip-addresses-overview-arm.md#allocation-method). Ha egy meglévő virtuális géphez hozzárendelt nyilvános IP-címet szeretne módosítani dinamikusról statikusra, vagy magánhálózati IP-címekkel szeretne dolgozni, tekintse meg az [IP-címek hozzáadása, módosítása vagy eltávolítása](virtual-network-network-interface-addresses.md)című témakört. A nyilvános IP-címek [névleges díjszabással](https://azure.microsoft.com/pricing/details/ip-addresses)rendelkeznek, és az előfizetések által használható nyilvános IP-címek száma [korlátozva](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) van.
+Létrehozhat egy statikus nyilvános IP-címmel rendelkező virtuális gépet is. A nyilvános IP-cím lehetővé teszi, hogy az internetről kommunikáljon egy virtuális géppel. Statikus nyilvános IP-címet rendeljen hozzá, nem pedig dinamikus címet, hogy a cím ne legyen módosítva. További információ a [statikus nyilvános IP-címekről](./public-ip-addresses.md#allocation-method). Ha egy meglévő virtuális géphez hozzárendelt nyilvános IP-címet szeretne módosítani dinamikusról statikusra, vagy magánhálózati IP-címekkel szeretne dolgozni, tekintse meg az [IP-címek hozzáadása, módosítása vagy eltávolítása](virtual-network-network-interface-addresses.md)című témakört. A nyilvános IP-címek [névleges díjszabással](https://azure.microsoft.com/pricing/details/ip-addresses)rendelkeznek, és az előfizetések által használható nyilvános IP-címek száma [korlátozva](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) van.
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
@@ -36,7 +36,7 @@ A következő lépéseket a helyi számítógépről vagy a Azure Cloud Shell ha
    New-AzResourceGroup -Name myResourceGroup -Location EastUS
    ```
 
-3. Hozzon létre egy virtuális gépet a [New-AzVM](/powershell/module/az.Compute/New-azVM) paranccsal. A `-AllocationMethod "Static"` beállítás egy statikus nyilvános IP-címet rendel a virtuális géphez. Az alábbi példa egy *myPublicIpAddress*nevű, statikus, alapszintű SKU nyilvános IP-címmel rendelkező Windows Server rendszerű virtuális gépet hoz létre. Ha a rendszer kéri, adjon meg egy felhasználónevet és egy jelszót a virtuális gép bejelentkezési hitelesítő adataiként való használathoz:
+3. Hozzon létre egy virtuális gépet a [New-AzVM](/powershell/module/az.Compute/New-azVM) paranccsal. A `-AllocationMethod "Static"` beállítás egy statikus nyilvános IP-címet rendel a virtuális géphez. Az alábbi példa egy *myPublicIpAddress* nevű, statikus, alapszintű SKU nyilvános IP-címmel rendelkező Windows Server rendszerű virtuális gépet hoz létre. Ha a rendszer kéri, adjon meg egy felhasználónevet és egy jelszót a virtuális gép bejelentkezési hitelesítő adataiként való használathoz:
 
    ```azurepowershell-interactive
    New-AzVm `
@@ -47,7 +47,7 @@ A következő lépéseket a helyi számítógépről vagy a Azure Cloud Shell ha
      -AllocationMethod "Static"
    ```
 
-   Ha a nyilvános IP-címnek standard SKU-nak kell lennie, [létre kell hoznia egy nyilvános IP-címet](virtual-network-public-ip-address.md#create-a-public-ip-address), [létre kell hoznia egy hálózati adaptert](virtual-network-network-interface.md#create-a-network-interface), [hozzá kell rendelnie a nyilvános IP-címet a hálózati adapterhez](virtual-network-network-interface-addresses.md#add-ip-addresses), majd [létre kell hoznia egy virtuális gépet a hálózati adapterrel](virtual-network-network-interface-vm.md#add-existing-network-interfaces-to-a-new-vm), külön lépésben. További információ a [nyilvános IP-cím SKU-](virtual-network-ip-addresses-overview-arm.md#sku)ról. Ha a virtuális gépet egy nyilvános Azure Load Balancer háttér-készletéhez adja hozzá, akkor a virtuális gép nyilvános IP-címének SKU-jának meg kell egyeznie a terheléselosztó nyilvános IP-címének SKU-jának. Részletekért lásd: [Azure Load Balancer](../load-balancer/skus.md).
+   Ha a nyilvános IP-címnek standard SKU-nak kell lennie, [létre kell hoznia egy nyilvános IP-címet](virtual-network-public-ip-address.md#create-a-public-ip-address), [létre kell hoznia egy hálózati adaptert](virtual-network-network-interface.md#create-a-network-interface), [hozzá kell rendelnie a nyilvános IP-címet a hálózati adapterhez](virtual-network-network-interface-addresses.md#add-ip-addresses), majd [létre kell hoznia egy virtuális gépet a hálózati adapterrel](virtual-network-network-interface-vm.md#add-existing-network-interfaces-to-a-new-vm), külön lépésben. További információ a [nyilvános IP-cím SKU-](./public-ip-addresses.md#sku)ról. Ha a virtuális gépet egy nyilvános Azure Load Balancer háttér-készletéhez adja hozzá, akkor a virtuális gép nyilvános IP-címének SKU-jának meg kell egyeznie a terheléselosztó nyilvános IP-címének SKU-jának. Részletekért lásd: [Azure Load Balancer](../load-balancer/skus.md).
 
 4. Tekintse meg a hozzárendelt nyilvános IP-címet, és győződjön meg róla, hogy statikus címként lett létrehozva a [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress):
 
@@ -72,9 +72,9 @@ Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.re
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- További információ az Azure [-beli nyilvános IP-címekről](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
+- További információ az Azure [-beli nyilvános IP-címekről](./public-ip-addresses.md#public-ip-addresses)
 - További információ az összes [nyilvános IP-cím beállításairól](virtual-network-public-ip-address.md#create-a-public-ip-address)
-- További információ a [magánhálózati IP-címekről](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) és a [statikus magánhálózati IP-](virtual-network-network-interface-addresses.md#add-ip-addresses) címek egy Azure-beli virtuális géphez való hozzárendeléséről
+- További információ a [magánhálózati IP-címekről](./private-ip-addresses.md) és a [statikus magánhálózati IP-](virtual-network-network-interface-addresses.md#add-ip-addresses) címek egy Azure-beli virtuális géphez való hozzárendeléséről
 - További információ a [Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és a [Windows rendszerű](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gépek létrehozásáról

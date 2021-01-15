@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: damaerte
-ms.openlocfilehash: a820fb4ec5d6c2053b1104b68dbda0ae70f624c0
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 58f6c7a3b5d68d2825cead545ba1b683d1faf1af
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179197"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222802"
 ---
 # <a name="deploy-cloud-shell-into-an-azure-virtual-network"></a>Cloud Shell üzembe helyezése Azure-beli virtuális hálózaton
 
@@ -87,9 +87,6 @@ Ha a **RegistrationState** van `Registered` , nincs szükség beavatkozásra. Ha
 Ha már van olyan kívánt VNET, amelyhez csatlakozni szeretne, ugorja át ezt a szakaszt.
 
 A Azure Portalon vagy az Azure CLI-vel, Azure PowerShellsal stb. hozzon létre egy erőforráscsoportot és egy virtuális hálózatot az új erőforráscsoporthoz, **az erőforráscsoport és a virtuális hálózatnak ugyanabban a régióban kell lennie**.
-
-> [!NOTE]
-> Nyilvános előzetes verzióban az erőforráscsoportot és a virtuális hálózatot egyaránt WestCentralUS vagy WestUS kell elhelyezni.
 
 ### <a name="arm-templates"></a>ARM-sablonok
 Az Azure gyors üzembe helyezési [sablonnal](https://aka.ms/cloudshell/docs/vnet/template) Cloud Shell erőforrásokat hozhat létre egy virtuális hálózaton, valamint az Azure gyors üzembe helyezési [sablonját](https://aka.ms/cloudshell/docs/vnet/template/storage) a szükséges tárterület létrehozásához. Jegyezze fel az erőforrások neveit, elsősorban a fájlmegosztás nevét.

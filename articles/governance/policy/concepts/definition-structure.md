@@ -3,12 +3,12 @@ title: A házirend-definíciós struktúra részletei
 description: Leírja, hogyan használhatók a szabályzat-definíciók a szervezeten belüli Azure-erőforrásokra vonatkozó konvenciók létrehozásához.
 ms.date: 10/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 52adaf9522e4690c4c44a72ed47592f5b1d6471e
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 6e04551a2ef2f890844693fec71d2d3232a456f2
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883248"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220813"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -261,7 +261,7 @@ A logikai operátorok beágyazására is lehetőség van. A következő példa e
 
 ### <a name="conditions"></a>Feltételek
 
-A feltétel azt értékeli, hogy egy **mező** vagy az **érték** -hozzáférési megfelel-e bizonyos feltételeknek. A támogatott feltételek a következők:
+Egy feltétel kiértékeli, hogy egy érték megfelel-e bizonyos feltételeknek. A támogatott feltételek a következők:
 
 - `"equals": "stringValue"`
 - `"notEquals": "stringValue"`
@@ -291,12 +291,9 @@ Az érték legfeljebb egy helyettesítő karakterből állhat `*` .
 
 A **egyezési** és **notMatch** feltételek használatakor az adott `#` számjegyre, `?` betűre, `.` bármilyen karakterre és bármely más karakterre illeszkedik, amely megfelel a tényleges karakternek. Ha a **egyezés** és a **notMatch** is megkülönbözteti a kis-és nagybetűket, a _stringValue_ kiértékelésére szolgáló összes egyéb feltétel nem tesz különbséget Kis-és nagybetűket megkülönböztető alternatívák a **matchInsensitively** és a **notMatchInsensitively** szolgáltatásban érhetők el.
 
-Az **\[ \* \] alias** tömb mezőjének értékeként a tömb minden elemét külön kell kiértékelni a logikai **és** az elemek között. További információ: a [tömb erőforrás-tulajdonságainak hivatkozása](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
-
 ### <a name="fields"></a>Mezők
 
-A feltételek mezők használatával jönnek létre. Egy mező megfelel az erőforrás-kérelem hasznos adatainak, és leírja az erőforrás állapotát.
-
+Azok a feltételek, amelyek kiértékelik, hogy az erőforrás-kérelemben szereplő tulajdonságok értékei megfelelnek-e bizonyos feltételeknek egy **mező** kifejezés használatával.
 A következő mezők támogatottak:
 
 - `name`
@@ -305,6 +302,7 @@ A következő mezők támogatottak:
 - `kind`
 - `type`
 - `location`
+  - A hely mezői normalizálva vannak a különböző formátumok támogatásához. Például `East US 2` egyenlőnek számít `eastus2` .
   - **Globálisan** használhatja az olyan erőforrásokat, amelyek a helytől függetlenek.
 - `id`
   - A kiértékelt erőforrás erőforrás-AZONOSÍTÓját adja vissza.
@@ -324,6 +322,10 @@ A következő mezők támogatottak:
 
 > [!NOTE]
 > `tags.<tagName>`a, `tags[tagName]` , és `tags[tag.with.dots]` továbbra is elfogadható módon deklarálhatja a címkék mezőt. Az előnyben részesített kifejezések azonban a fentiekben láthatók.
+
+> [!NOTE]
+> Az **\[ \* \] aliasra** hivatkozó **mezők** kifejezései a tömb minden elemét egyedileg értékelik ki a logikai **és** az elemek között.
+> További információ: a [tömb erőforrás-tulajdonságainak hivatkozása](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
 
 #### <a name="use-tags-with-parameters"></a>Címkék használata paraméterekkel
 
@@ -355,7 +357,7 @@ A következő példában a `concat` **TagName** paraméter értékének megadás
 
 ### <a name="value"></a>Érték
 
-A feltételek az **érték** használatával is létrehozhatók. az **érték** a [paraméterekkel](#parameters), a [támogatott sablon-funkciókkal](#policy-functions)vagy a literálokkal kapcsolatos feltételeket ellenőrzi. az **érték** a támogatott [feltételekkel](#conditions)párosítva van.
+Azok a feltételek, amelyek kiértékelik, hogy egy érték megfelel-e bizonyos feltételeknek, egy **érték** kifejezés használatával hozható létre. Az értékek lehetnek literálok, a [Paraméterek](#parameters)értékei, illetve a [támogatott sablonok függvényei](#policy-functions)által visszaadott értékek.
 
 > [!WARNING]
 > Ha egy _sablon függvény_ eredménye hibát jelez, a szabályzat kiértékelése sikertelen lesz. A sikertelen értékelés implicit **Megtagadás**. További információ: a [sablon meghibásodásának elkerülése](#avoiding-template-failures). A [enforcementMode](./assignment-structure.md#enforcement-mode) használatával  megakadályozhatja az új vagy frissített erőforrások sikertelen értékelésének hatását az új házirend-definíció tesztelése és érvényesítése során.
@@ -440,9 +442,11 @@ A módosított szabályzattal rendelkező szabály a `if()` **név** hosszát el
 
 ### <a name="count"></a>Darabszám
 
-Azok a feltételek, amelyek megszámolják, hogy az erőforrás-adattartalomban lévő tömb tagjai közül hányan felelnek meg egy feltétel kifejezésének a **Count** kifejezés használatával. A gyakori forgatókönyvek azt ellenőrzik, hogy a tömb tagjai megfelelnek-e a feltételnek: "legalább az egyike", "a" minden "vagy" nincs ". a **Count** minden [ \[ \* \] alias](#understanding-the--alias) -tömböt kiértékel egy feltétel kifejezéséhez, és összegzi a _valódi_ eredményeket, amelyeket aztán a kifejezés operátorhoz hasonlít. A **Count** kifejezések három alkalommal is hozzáadhatók egyetlen **' policyrule osztály** -definícióhoz.
+Azok a feltételek, amelyek megszámolják, hogy egy tömb hány tagja felel meg bizonyos feltételeknek, egy **Count** kifejezés használatával hozható létre. A gyakori forgatókönyvek azt ellenőrzik, hogy a tömb tagjainak legalább az egyike, pontosan az egyik, az "összes" vagy a "None" érték teljesül-e feltételnek. A **Count** az egyes tömb tagjait kiértékeli egy feltétel kifejezéséhez, és a _valódi_ eredményeket összegzi, amely a kifejezés operátorával összehasonlítva történik.
 
-A **Count** kifejezés szerkezete:
+#### <a name="field-count"></a>Mezők száma
+
+Megszámolja, hogy egy tömb hány tagja a kérelem adattartalmát kielégítse egy feltétel kifejezésének. A **mezők száma** kifejezések szerkezete a következő:
 
 ```json
 {
@@ -456,16 +460,62 @@ A **Count** kifejezés szerkezete:
 }
 ```
 
-A **Count** a következő tulajdonságokat használja:
+A **mezők száma** a következő tulajdonságokkal használható:
 
-- **Count. Field** (kötelező): a tömb elérési útját tartalmazza, és tömb aliasnak kell lennie. Ha a tömb hiányzik, a kifejezés kiértékelése _hamis_ értékre történik a feltétel kifejezésének mérlegelése nélkül.
-- **darabszám. where** (nem kötelező): a feltétel kifejezése, hogy egyenként kiértékelje az egyes [ \[ \* \] aliasok](#understanding-the--alias) tömbbeli tagjainak száma **. mező értékét**. Ha ez a tulajdonság nincs megadva, a "Field" elérési úttal rendelkező összes tömb-tag _igaz_ értékre van kiértékelve. Ezen a tulajdonságon belül bármely [feltétel](../concepts/definition-structure.md#conditions) használható.
+- **Count. Field** (kötelező): a tömb elérési útját tartalmazza, és tömb aliasnak kell lennie.
+- **Count** (nem kötelező): a feltétel kifejezése az egyes [ \[ \* \] aliasok](#understanding-the--alias) tömbje egyes tagjainak egyenkénti kiértékeléséhez `count.field` . Ha ez a tulajdonság nincs megadva, a "Field" elérési úttal rendelkező összes tömb-tag _igaz_ értékre van kiértékelve. Ezen a tulajdonságon belül bármely [feltétel](../concepts/definition-structure.md#conditions) használható.
   A tulajdonságon belül a [logikai operátorok](#logical-operators) összetett értékelési követelmények létrehozására használhatók.
 - **\<condition\>** (kötelező): a rendszer összehasonlítja az értéket a darabszámban teljesített elemek számával **. where** feltétel kifejezése. Numerikus [feltételt](../concepts/definition-structure.md#conditions) kell használni.
 
-További információ a tömb tulajdonságainak Azure Policy való használatáról: a Count kifejezés kiértékelésének részletes magyarázata. a [tömb erőforrás-tulajdonságainak hivatkozása](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties)című témakörben talál további információt.
+A **mezők számának** kifejezése egy **' policyrule osztály** -definícióban akár háromszor is enumerálhatja ugyanazt a tömböt.
 
-#### <a name="count-examples"></a>Példák száma
+Ha további információt szeretne a tömb tulajdonságainak Azure Policy való használatáról, beleértve a **mezők számának** kiértékelésével kapcsolatos részletes magyarázatot, tekintse meg a [tömb erőforrás-tulajdonságainak hivatkozása](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties)című témakört.
+
+#### <a name="value-count"></a>Értékek száma
+Megszámolja, hogy egy tömb hány tagja felel meg a feltételnek. A tömb lehet literális tömb vagy egy [Array paraméterre mutató hivatkozás](#using-a-parameter-value). Az **értékek száma** kifejezések felépítése:
+
+```json
+{
+    "count": {
+        "value": "<literal array | array parameter reference>",
+        "name": "<index name>",
+        "where": {
+            /* condition expression */
+        }
+    },
+    "<condition>": "<compare the count of true condition expression array members to this value>"
+}
+```
+
+Az **értékek száma** a következő tulajdonságokkal együtt használható:
+
+- **Count. Value** (kötelező): az értékelendő tömb.
+- **Count.name** (kötelező): az index neve, amely angol betűkből és számjegyből áll. Meghatározza az aktuális iterációban kiértékelt tömb tag értékének nevét. A név az aktuális értékre hivatkozik a `count.where` feltételen belül. Nem kötelező, ha a **Count** kifejezés nem egy másik **Count** kifejezés gyermeke. Ha nincs megadva, az index neve implicit módon be lesz állítva `"default"` .
+- **darabszám. where** (nem kötelező): a feltétel kifejezése az egyes tömb tagjainak külön kiértékeléséhez `count.value` . Ha ez a tulajdonság nincs megadva, az összes tömb-tag _igaz_ értékre lesz kiértékelve. Ezen a tulajdonságon belül bármely [feltétel](../concepts/definition-structure.md#conditions) használható. A tulajdonságon belül a [logikai operátorok](#logical-operators) összetett értékelési követelmények létrehozására használhatók. Az [aktuális](#the-current-function) függvény meghívásával a jelenleg enumerált Array tag értéke érhető el.
+- **\<condition\>** (kötelező): a rendszer összehasonlítja az értéket a feltétel kifejezésének megfelelő elemek számával `count.where` . Numerikus [feltételt](../concepts/definition-structure.md#conditions) kell használni.
+
+A következő korlátokat kell kikényszeríteni:
+- Legfeljebb 10 **Value Count** kifejezés használható egyetlen **' policyrule osztály** -definícióban.
+- Minden **Value Count** kifejezés legfeljebb 100 iterációt tud végrehajtani. Ez a szám a szülő **Value Count** kifejezések által végrehajtott ismétlések számát tartalmazza.
+
+#### <a name="the-current-function"></a>Az aktuális függvény
+
+A `current()` függvény csak a `count.where` feltételen belül érhető el. Visszaadja a tömb azon tagjának értékét, amelyet a **Count** kifejezés kiértékelése jelenleg felsorol.
+
+**Értékek számának használata**
+
+- `current(<index name defined in count.name>)`. Példa: `current('arrayMember')`.
+- `current()`. Csak akkor engedélyezett, ha a **Value Count** kifejezés nem gyermek egy másik **Count** kifejezésnek. A fentivel megegyező értéket adja vissza.
+
+Ha a hívás által visszaadott érték egy objektum, a tulajdonság-hozzáférések támogatottak. Példa: `current('objectArrayMember').property`.
+
+**Mezők számának használata**
+
+- `current(<the array alias defined in count.field>)`. Például: `current('Microsoft.Test/resource/enumeratedArray[*]')`.
+- `current()`. Csak akkor engedélyezett, ha a **mező száma** kifejezés nem egy másik **Count** kifejezés gyermeke. A fentivel megegyező értéket adja vissza.
+- `current(<alias of a property of the array member>)`. Például: `current('Microsoft.Test/resource/enumeratedArray[*].property')`.
+
+#### <a name="field-count-examples"></a>Mezők száma – példák
 
 1. példa: Ellenőrizze, hogy egy tömb üres-e
 
@@ -550,18 +600,162 @@ További információ a tömb tulajdonságainak Azure Policy való használatár
 }
 ```
 
-6. példa: használja a `field()` feltételeken belüli függvényt a `where` jelenleg kiértékelt tömb tag literális értékének eléréséhez. Ez az állapot ellenőrzi, hogy nincsenek-e olyan biztonsági szabályok, amelyek páros számú _prioritási_ értékkel rendelkeznek.
+6. példa: használja `current()` a feltételeken belüli függvényt az `where` aktuálisan enumerált Array tag értékének eléréséhez egy sablon függvényben. Ez az állapot ellenőrzi, hogy egy virtuális hálózat tartalmaz-e olyan 10.0.0.0-előtagot, amely nem tartozik az IP-CIDR tartományhoz.
 
 ```json
 {
     "count": {
-        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "field": "Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]",
         "where": {
-          "value": "[mod(first(field('Microsoft.Network/networkSecurityGroups/securityRules[*].priority')), 2)]",
-          "equals": 0
+          "value": "[ipRangeContains('10.0.0.0/24', current('Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]'))]",
+          "equals": false
         }
     },
     "greater": 0
+}
+```
+
+7. példa: használja a `field()` feltételeken belüli függvényt az `where` aktuálisan enumerált Array tag értékének eléréséhez. Ez az állapot ellenőrzi, hogy egy virtuális hálózat tartalmaz-e olyan 10.0.0.0-előtagot, amely nem tartozik az IP-CIDR tartományhoz.
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]",
+        "where": {
+          "value": "[ipRangeContains('10.0.0.0/24', first(field(('Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]')))]",
+          "equals": false
+        }
+    },
+    "greater": 0
+}
+```
+
+#### <a name="value-count-examples"></a>Értékek száma példák
+
+1. példa: Ellenőrizze, hogy az erőforrás neve megegyezik-e a megadott név mintázatával.
+
+```json
+{
+    "count": {
+        "value": [ "prefix1_*", "prefix2_*" ],
+        "name": "pattern",
+        "where": {
+            "field": "name",
+            "like": "[current('pattern')]"
+        }
+    },
+    "greater": 0
+}
+```
+
+2. példa: Ellenőrizze, hogy az erőforrás neve megegyezik-e a megadott név mintázatával. A `current()` függvény nem adja meg az index nevét. Az előző példa az eredmény.
+
+```json
+{
+    "count": {
+        "value": [ "prefix1_*", "prefix2_*" ],
+        "where": {
+            "field": "name",
+            "like": "[current()]"
+        }
+    },
+    "greater": 0
+}
+```
+
+3. példa: Ellenőrizze, hogy az erőforrás neve megegyezik-e a tömb paraméterében megadott névvel.
+
+```json
+{
+    "count": {
+        "value": "[parameters('namePatterns')]",
+        "name": "pattern",
+        "where": {
+            "field": "name",
+            "like": "[current('pattern')]"
+        }
+    },
+    "greater": 0
+}
+```
+
+4. példa: Ellenőrizze, hogy a virtuális hálózati címek bármelyikének előtagjai nem szerepelnek-e a jóváhagyott előtagok listáján.
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]",
+        "where": {
+            "count": {
+                "value": "[parameters('approvedPrefixes')]",
+                "name": "approvedPrefix",
+                "where": {
+                    "value": "[ipRangeContains(current('approvedPrefix'), current('Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]'))]",
+                    "equals": true
+                },
+            },
+            "equals": 0
+        }
+    },
+    "greater": 0
+}
+```
+
+5. példa: annak ellenőrzését, hogy az összes fenntartott NSG-szabály definiálva van-e egy NSG. A fenntartott NSG-szabályok tulajdonságai az objektumokat tartalmazó tömb paraméterben vannak definiálva.
+
+Paraméter értéke:
+
+```json
+[
+    {
+        "priority": 101,
+        "access": "deny",
+        "direction": "inbound",
+        "destinationPortRange": 22
+    },
+    {
+        "priority": 102,
+        "access": "deny",
+        "direction": "inbound",
+        "destinationPortRange": 3389
+    }
+]
+```
+
+Politika
+```json
+{
+    "count": {
+        "value": "[parameters('reservedNsgRules')]",
+        "name": "reservedNsgRule",
+        "where": {
+            "count": {
+                "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+                "where": {
+                    "allOf": [
+                        {
+                            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].priority",
+                            "equals": "[current('reservedNsgRule').priority]"
+                        },
+                        {
+                            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].access",
+                            "equals": "[current('reservedNsgRule').access]"
+                        },
+                        {
+                            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].direction",
+                            "equals": "[current('reservedNsgRule').direction]"
+                        },
+                        {
+                            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].destinationPortRange",
+                            "equals": "[current('reservedNsgRule').destinationPortRange]"
+                        }
+                    ]
+                }
+            },
+            "equals": 1
+        }
+    },
+    "equals": "[length(parameters('reservedNsgRules'))]"
 }
 ```
 
@@ -627,7 +821,6 @@ A következő függvények csak a házirend-szabályokban érhetők el:
   }
   ```
 
-
 - `ipRangeContains(range, targetRange)`
     - **tartomány**: [kötelező] karakterlánc – karakterlánc, amely az IP-címek tartományát határozza meg.
     - **targetRange**: [kötelező] karakterlánc-karakterlánc, amely az IP-címek tartományát határozza meg.
@@ -639,6 +832,8 @@ A következő függvények csak a házirend-szabályokban érhetők el:
     - CIDR-tartomány (példák: `10.0.0.0/24` , `2001:0DB8::/110` )
     - A kezdő és a záró IP-címek által meghatározott tartomány (példák: `192.168.0.1-192.168.0.9` , `2001:0DB8::-2001:0DB8::3:FFFF` )
 
+- `current(indexName)`
+    - Speciális függvény, amely csak a [Count kifejezéseken](#count)belül használható.
 
 #### <a name="policy-function-example"></a>Példa a házirend-függvényre
 
@@ -731,7 +926,7 @@ Egy [mező](#fields) feltételben való használatakor a tömb aliasai lehetőv�
 
 További információkat és példákat a [tömb erőforrás-tulajdonságainak hivatkozása](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties)című témakörben talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg a [kezdeményezési definíció szerkezetét](./initiative-definition-structure.md)
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).

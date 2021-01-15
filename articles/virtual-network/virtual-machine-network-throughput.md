@@ -15,14 +15,14 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: f0bad935c7c3d44f57dd171f714f31856bc2089c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b11bdf9b82352c15b7f7236168494f32fe4a4f9f
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361313"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221510"
 ---
-# <a name="virtual-machine-network-bandwidth"></a>Virtuális gép hálózati sávszélessége
+# <a name="virtual-machine-network-bandwidth"></a>Virtuális gépek hálózati sávszélessége
 
 Az Azure különféle virtuálisgép-méreteket és-típusokat kínál, amelyek mindegyike különböző teljesítménybeli képességekkel rendelkezik. Az egyik lehetőség a hálózati átviteli sebesség (vagy a sávszélesség), a megabit/másodperc (Mbps) alapján mérve. Mivel a virtuális gépek megosztott hardveren futnak, a hálózati kapacitást az azonos hardvert használó virtuális gépek között méltányosan kell megosztani. A nagyobb méretű virtuális gépek viszonylag nagyobb sávszélességet foglalnak le a kisebb virtuális gépeknél.
  
@@ -32,11 +32,11 @@ A bejövő forgalom nem mérhető vagy nem korlátozódik közvetlenül. Vannak 
 
 A gyorsított hálózatkezelés egy olyan szolgáltatás, amely a hálózati teljesítmény javítására szolgál, beleértve a késést, az átviteli sebességet és a CPU-kihasználtságot. Míg a gyorsított hálózatkezelés javíthatja a virtuális gépek átviteli sebességét, így csak a virtuális gép lefoglalt sávszélességére képes. A gyorsított hálózatkezeléssel kapcsolatos további tudnivalókért tekintse meg a Windows vagy [Linux](create-vm-accelerated-networking-cli.md) [rendszerű](create-vm-accelerated-networking-powershell.md) virtuális gépek gyorsított hálózatkezelését ismertető témakört.
  
-Az Azure Virtual Machines szolgáltatásnak rendelkeznie kell egy, de több hálózati adapterrel is. A virtuális géphez lefoglalt sávszélesség az összes kimenő forgalom összege a virtuális géphez csatlakoztatott összes hálózati adapteren. Más szóval a lefoglalt sávszélesség virtuális gépenként történik, függetlenül attól, hogy hány hálózati adapter van csatlakoztatva a virtuális géphez. Ha szeretné megtudni, hogy a különböző Azure-beli virtuálisgép-méretek hány hálózati adaptert támogatnak, tekintse meg az Azure Windows-és [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) - [alapú](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
+Az Azure Virtual Machines szolgáltatásnak rendelkeznie kell egy, de több hálózati adapterrel is. A virtuális géphez lefoglalt sávszélesség az összes kimenő forgalom összege a virtuális géphez csatlakoztatott összes hálózati adapteren. Más szóval a lefoglalt sávszélesség virtuális gépenként történik, függetlenül attól, hogy hány hálózati adapter van csatlakoztatva a virtuális géphez. Ha szeretné megtudni, hogy a különböző Azure-beli virtuálisgép-méretek hány hálózati adaptert támogatnak, tekintse meg az Azure Windows-és [Linux](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) - [alapú](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
 
 ## <a name="expected-network-throughput"></a>Várt hálózati teljesítmény
 
-A várt kimenő átviteli sebesség és az egyes virtuálisgép-méretek által támogatott hálózati adapterek száma az Azure Windows-és [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) - [alapú](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gépek méretei szerint van részletezve. Válasszon egy típust, például az általános célú elemet, majd válassza ki az eredményül kapott lapon lévő méret sorozatot (például a Dv2 sorozatot). Minden adatsorozat tartalmaz egy táblázatot, amely a hálózati specifikációkat tartalmazza az utolsó oszlopban, amely a hálózati **adapterek/várt hálózati teljesítmény (MB/s)**. 
+A várt kimenő átviteli sebesség és az egyes virtuálisgép-méretek által támogatott hálózati adapterek száma az Azure Windows-és [Linux](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) - [alapú](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gépek méretei szerint van részletezve. Válasszon egy típust, például az általános célú elemet, majd válassza ki az eredményül kapott lapon lévő méret sorozatot (például a Dv2 sorozatot). Minden adatsorozat tartalmaz egy táblázatot, amely a hálózati specifikációkat tartalmazza az utolsó oszlopban, amely a hálózati **adapterek/várt hálózati teljesítmény (MB/s)**. 
 
 Az átviteli sebesség korlátja a virtuális gépre vonatkozik. A következő tényezők nem érintik az átviteli sebességet:
 - **Hálózati adapterek száma**: a sávszélesség korlátja a virtuális gépről érkező összes kimenő forgalom összesített értéke.

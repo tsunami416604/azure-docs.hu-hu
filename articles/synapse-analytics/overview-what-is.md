@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/28/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: e5b12632a60ad5580325fbcda294e1a600bb2b6b
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 5d2765787a4eb417f4aa86396e07a25f8157b8ce
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121702"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223057"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>Mi az az Azure Synapse Analytics?
 
@@ -30,7 +30,7 @@ Az **Azure szinapszis** egy integrált elemzési szolgáltatás, amely felgyors�
 
 * A szinapszis SQL **kiszolgáló** nélküli és **dedikált** erőforrás-modelleket is kínál, amelyek az igényeinek megfelelő felhasználási és számlázási lehetőségeket kínálnak. A kiszámítható teljesítmény és a költséghatékonyság érdekében hozzon létre dedikált SQL-készleteket az SQL-táblákban tárolt adatok hatékony feldolgozásához. Nem tervezett vagy feltört számítási feladatokhoz használja a mindig elérhető, kiszolgáló nélküli SQL-végpontot.
 * A Felhőbeli adatforrásokból származó adatoknak az SQL-táblákba való beépítésére szolgáló beépített **streaming** -funkciók használata
-* A AI és az SQL integrálása **gépi tanulási** modellekkel az adatpontszámhoz a [T-SQL prediktív függvény](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest) használatával
+* A AI és az SQL integrálása **gépi tanulási** modellekkel az adatpontszámhoz a [T-SQL prediktív függvény](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest) használatával
 
 ### <a name="industry-standard-apache-spark"></a>Iparági szabványnak megfelelő Apache Spark
 
@@ -76,7 +76,7 @@ A **szinapszis Studio** az a webes felület, amely az adatmérnökökkel együtt
 ## <a name="engage-with-the-synapse-engineering-team"></a>A szinapszis mérnöki csapatának részvétele
 
 - [Stack overflow](https://stackoverflow.com/questions/tagged/azure-synapse): forduljon a fejlesztési kérdésekhez.
-- [A Microsoft Q&egy kérdést tartalmazó oldalt](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html): technikai kérdéseket tehet fel.
+- [A Microsoft Q&egy kérdést tartalmazó oldalt](/answers/topics/azure-synapse-analytics.html): technikai kérdéseket tehet fel.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 65985e05be1061bb69eb160cf5be559cb271d5cd
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 89a437504394797b8cbed5325210186248082c33
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202929"
+ms.locfileid: "98218230"
 ---
 # <a name="azure-security-baseline-for-azure-synapse-analytics"></a>Azure-beli biztonsági alaptervek az Azure szinapszis Analyticshez
 
 Az Azure szinapszis Analytics Azure biztonsági alapterve olyan javaslatokat tartalmaz, amelyek segítségével javíthatja az üzemelő példány biztonsági állapotát.
 
-A szolgáltatás alapterve az [Azure Security Benchmark 1,0-es verziójából](https://docs.microsoft.com/azure/security/benchmarks/overview)származik, amely javaslatokat tesz arra vonatkozóan, hogy miként védheti meg felhőalapú megoldásait az Azure-ban az ajánlott eljárásokat ismertető útmutató segítségével.
+A szolgáltatás alapterve az [Azure Security Benchmark 1,0-es verziójából](../security/benchmarks/overview.md)származik, amely javaslatokat tesz arra vonatkozóan, hogy miként védheti meg felhőalapú megoldásait az Azure-ban az ajánlott eljárásokat ismertető útmutató segítségével.
 
-További információ: [Azure Security](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)alapkonfigurációk áttekintése.
+További információ: [Azure Security](../security/benchmarks/security-baselines-overview.md)alapkonfigurációk áttekintése.
 
 ## <a name="network-security"></a>Hálózati biztonság
 
-*További információkért lásd [: biztonsági ellenőrzés: hálózati biztonság](/azure/security/benchmarks/security-control-network-security).*
+*További információkért lásd [: biztonsági ellenőrzés: hálózati biztonság](../security/benchmarks/security-control-network-security.md).*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Azure-erőforrások biztosítása virtuális hálózatokon belül
 
@@ -33,13 +33,13 @@ További információ: [Azure Security](https://docs.microsoft.com/azure/securit
 
 Azt is megteheti, hogy a szinapszis SQL-készlethez való csatlakozáskor leszűkíti a kimenő kapcsolat hatókörét az SQL-adatbázishoz egy hálózati biztonsági csoport használatával. Az Azure-szolgáltatások kikapcsolásának engedélyezése beállítás megadásával tiltsa le az összes Azure-szolgáltatás forgalmát az SQL-adatbázishoz a nyilvános végponton keresztül. Győződjön meg arról, hogy a tűzfalszabályok nem engedélyezik nyilvános IP-címek beírását.
 
-* [Az Azure privát hivatkozásának megismerése](https://docs.microsoft.com/azure/private-link/private-link-overview)
+* [Az Azure privát hivatkozásának megismerése](../private-link/private-link-overview.md)
 
-* [Az Azure szinapszis SQL privát hivatkozásának megismerése](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)
+* [Az Azure szinapszis SQL privát hivatkozásának megismerése](../azure-sql/database/private-endpoint-overview.md)
 
-* [Virtual Network létrehozása](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [Virtual Network létrehozása](../virtual-network/quick-create-portal.md)
 
-* [Biztonsági konfigurációval rendelkező NSG létrehozása](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [Biztonsági konfigurációval rendelkező NSG létrehozása](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -51,13 +51,13 @@ Azt is megteheti, hogy a szinapszis SQL-készlethez való csatlakozáskor leszű
 
 NSG-naplókat is küldhet egy Log Analytics munkaterületre, és a Traffic Analytics használatával betekintést nyerhet az Azure-Felhőbeli forgalomba. A Traffic Analytics egyes előnyei lehetővé teszi a hálózati tevékenységek megjelenítését és a gyakori pontok azonosítását, a biztonsági fenyegetések azonosítását, a forgalomban rejlő minták értelmezését, valamint a hálózati helytelen konfigurációk meghatározását.
 
-* [A NSG folyamat naplófájljainak engedélyezése](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [A NSG folyamat naplófájljainak engedélyezése](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [A Azure Security Center által biztosított hálózati biztonság ismertetése](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+* [A Azure Security Center által biztosított hálózati biztonság ismertetése](../security-center/security-center-network-recommendations.md)
 
-* [A Traffic Analytics engedélyezése és használata](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [A Traffic Analytics engedélyezése és használata](../network-watcher/traffic-analytics.md)
 
-* [A Azure Security Center által biztosított hálózati biztonság ismertetése](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+* [A Azure Security Center által biztosított hálózati biztonság ismertetése](../security-center/security-center-network-recommendations.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -77,15 +77,15 @@ NSG-naplókat is küldhet egy Log Analytics munkaterületre, és a Traffic Analy
 
 Az elosztott szolgáltatásmegtagadási támadások elleni védelem érdekében engedélyezze az Azure szinapszis SQL-hez társított virtuális hálózatokon DDoS Protection szabványt. A Azure Security Center integrált fenyegetési intelligencia használatával megtagadhatja a kommunikációt az ismert kártékony vagy nem használt internetes IP-címekkel.
 
-* [Az Azure szinapszis SQL-hez készült ATP ismertetése](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
+* [Az Azure szinapszis SQL-hez készült ATP ismertetése](../azure-sql/database/threat-detection-overview.md)
 
-* [A Azure SQL Database speciális adatbiztonságának engedélyezése](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
+* [A Azure SQL Database speciális adatbiztonságának engedélyezése](../azure-sql/database/azure-defender-for-sql.md)
 
-* [A hirdetések áttekintése](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
+* [A hirdetések áttekintése](../azure-sql/database/azure-defender-for-sql.md)
 
-* [A DDoS Protection konfigurálása](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+* [A DDoS Protection konfigurálása](../ddos-protection/manage-ddos-protection.md)
 
-* [Az Azure Security Center integrált veszélyforrások felderítésének megismerése](https://docs.microsoft.com/azure/security-center/security-center-alerts-data-services)
+* [Az Azure Security Center integrált veszélyforrások felderítésének megismerése](../security-center/azure-defender.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -95,9 +95,9 @@ Az elosztott szolgáltatásmegtagadási támadások elleni védelem érdekében 
 
 **Útmutató**: Ha a dedikált SQL-készlethez csatlakozik, és engedélyezte a hálózati biztonsági csoport (NSG) folyamatának naplóit, naplókat küldhet egy Azure Storage-fiókba a forgalom naplózásához. A flow-naplókat Log Analytics munkaterületre is küldheti, vagy továbbíthatja őket a Event Hubsba. Ha a rendellenes tevékenységek kivizsgálásához szükséges, engedélyezze Network Watcher csomagok rögzítését.
 
-* [A NSG folyamat naplófájljainak engedélyezése](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [A NSG folyamat naplófájljainak engedélyezése](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [A Network Watcher engedélyezése](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
+* [A Network Watcher engedélyezése](../network-watcher/network-watcher-create.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -107,7 +107,7 @@ Az elosztott szolgáltatásmegtagadási támadások elleni védelem érdekében 
 
 **Útmutató**: az Azure szinapszis SQL fejlett veszélyforrások elleni védelme (ATP) használata. Az ATP olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket mutatnak az adatbázisok elérésére vagy kiaknázására, és különböző riasztásokat indíthatnak, például a "lehetséges SQL-injektálást" és "a szokatlan helyről való hozzáférést". Az ATP a speciális adatbiztonsági (ADS) ajánlat része, és a központi SQL ADS portálon keresztül érhető el és kezelhető. Az ATP a Azure Security Centerokkal is integrálja a riasztásokat.
 
-* [Az Azure szinapszis SQL-hez készült ATP ismertetése](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
+* [Az Azure szinapszis SQL-hez készült ATP ismertetése](../azure-sql/database/threat-detection-overview.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -127,9 +127,9 @@ Az elosztott szolgáltatásmegtagadási támadások elleni védelem érdekében 
 
 Ha szolgáltatási végpontot használ a dedikált SQL-készlethez, az Azure SQL Database nyilvános IP-címeire kell kitöltenie a következőt: hálózati biztonsági csoportok (NSG-k) megnyitása a kapcsolat engedélyezéséhez Azure SQL Database IP-címekre. Ezt a Azure SQL Database NSG-szolgáltatásának címkéi segítségével teheti meg.
 
-* [A szolgáltatás-címkék ismertetése a Azure SQL Database szolgáltatás-végpontokkal](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview#limitations)
+* [A szolgáltatás-címkék ismertetése a Azure SQL Database szolgáltatás-végpontokkal](../azure-sql/database/vnet-service-endpoint-rule-overview.md#limitations)
 
-* [A szolgáltatási címkék megismerése és használata](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+* [A szolgáltatási címkék megismerése és használata](../virtual-network/service-tags-overview.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -141,9 +141,9 @@ Ha szolgáltatási végpontot használ a dedikált SQL-készlethez, az Azure SQL
 
 Az Azure-tervezetek segítségével leegyszerűsítheti a nagyméretű Azure-környezetek nagy léptékű üzembe helyezését, például az Azure Resource Management-sablonok, az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) és a házirendek használatát egyetlen terv definíciójában. Egyszerűen alkalmazhatja a tervrajzot új előfizetésekre és környezetekre, és részletesen beállíthatja a vezérlést és a felügyeletet a verziószámozással.
 
-* [Az Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Blueprint létrehozása](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+* [Azure Blueprint létrehozása](../governance/blueprints/create-blueprint-portal.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -157,7 +157,7 @@ A címkézéshez kapcsolódó beépített Azure Policy definíciók bármelyiké
 
 A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshet vagy végezhet műveleteket az erőforrásokon.
 
-* [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -167,9 +167,9 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 **Útmutató**: az Azure-Tevékenységnaplók használatával figyelheti a hálózati erőforrás-konfigurációkat, és azonosíthatja a dedikált SQL-készlethez kapcsolódó hálózati erőforrások változásait. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrásokra vonatkozó módosításokat végrehajtják
 
-* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-* [Riasztások létrehozása a Azure Monitorban](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Riasztások létrehozása a Azure Monitorban](../azure-monitor/platform/alerts-activity-log.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -177,13 +177,13 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 ## <a name="logging-and-monitoring"></a>Naplózás és figyelés
 
-*További információ [: Security Control: naplózás és figyelés](/azure/security/benchmarks/security-control-logging-monitoring).*
+*További információ [: Security Control: naplózás és figyelés](../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: a jóváhagyott idő-szinkronizálási források használata
 
 **Útmutató**: a Microsoft fenntartja az Azure-erőforrások időforrásait. A számítási üzemelő példányok időszinkronizálása is frissíthető.
 
-* [Az Azure számítási erőforrások időszinkronizálásának konfigurálása](https://docs.microsoft.com/azure/virtual-machines/windows/time-sync)
+* [Az Azure számítási erőforrások időszinkronizálásának konfigurálása](../virtual-machines/windows/time-sync.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -199,9 +199,9 @@ Ha engedélyezi a naplózást, megírhatja őket az Azure Storage-fiókjában, L
 
 Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó SIEM-et.
 
-* [Az Azure SQL-erőforrások naplózásának beállítása](https://docs.microsoft.com/azure/azure-sql/database/auditing-overview#server-vs-database-level)
+* [Az Azure SQL-erőforrások naplózásának beállítása](../azure-sql/database/auditing-overview.md#server-vs-database-level)
 
-* [Az Azure Sentinel előkészítése](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -213,11 +213,11 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 A naplózás az adatbázison vagy a kiszolgáló szintjén is engedélyezhető, és azt javasoljuk, hogy csak a kiszolgáló szintjén engedélyezzen, csak akkor, ha külön adatfogadót vagy adatmegőrzést kíván konfigurálni egy adott adatbázis számára.
 
-* [A Azure SQL Database naplózásának engedélyezése](https://docs.microsoft.com/azure/sql-database/sql-database-auditing)
+* [A Azure SQL Database naplózásának engedélyezése](../azure-sql/database/auditing-overview.md)
 
-* [A kiszolgáló naplózásának engedélyezése](https://docs.microsoft.com/azure/azure-sql/database/auditing-overview#setup-auditing)
+* [A kiszolgáló naplózásának engedélyezése](../azure-sql/database/auditing-overview.md#setup-auditing)
 
-* [Különbségek a kiszolgálói szintű és az adatbázis szintű naplózási házirendek között](https://docs.microsoft.com/azure/sql-database/sql-database-auditing#server-vs-database-level)
+* [Különbségek a kiszolgálói szintű és az adatbázis szintű naplózási házirendek között](../azure-sql/database/auditing-overview.md#server-vs-database-level)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -235,11 +235,11 @@ A naplózás az adatbázison vagy a kiszolgáló szintjén is engedélyezhető, 
 
 **Útmutató**: a dedikált SQL-készlethez kapcsolódó naplók tárolása egy Storage-fiókban, log Analytics-munkaterületen vagy az Event hub-ban a szervezet megfelelőségi szabályainak megfelelően állítsa be a napló megőrzési időszakát.
 
-* [Az Azure Blob Storage-életciklus felügyelete](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal)
+* [Az Azure Blob Storage-életciklus felügyelete](../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal)
 
-* [Naplózási adatmegőrzési paraméterek beállítása Log Analytics munkaterületen](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+* [Naplózási adatmegőrzési paraméterek beállítása Log Analytics munkaterületen](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-* [Folyamatos átviteli események rögzítése Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)
+* [Folyamatos átviteli események rögzítése Event Hubs](../event-hubs/event-hubs-capture-overview.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -251,13 +251,13 @@ A naplózás az adatbázison vagy a kiszolgáló szintjén is engedélyezhető, 
 
 Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó SIEM-et.
 
-* [Az összetett veszélyforrások elleni védelem és a riasztások megismerése Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
+* [Az összetett veszélyforrások elleni védelem és a riasztások megismerése Azure SQL Database](../azure-sql/database/threat-detection-overview.md)
 
-* [A Azure SQL Database speciális adatbiztonságának engedélyezése](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
+* [A Azure SQL Database speciális adatbiztonságának engedélyezése](../azure-sql/database/azure-defender-for-sql.md)
 
-* [Egyéni riasztások konfigurálása Azure SQL Databasehoz](https://docs.microsoft.com/azure/sql-database/sql-database-insights-alerts-portal?view=azps-1.4.0&preserve-view=true)
+* [Egyéni riasztások konfigurálása Azure SQL Databasehoz](../azure-sql/database/alerts-insights-configure-portal.md?preserve-view=true&view=azps-1.4.0)
 
-* [Az Azure Sentinel előkészítése](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -269,13 +269,13 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 Alternatív megoldásként engedélyezheti és elvégezheti a fedélzeti adatfeldolgozást az Azure Sentinel szolgáltatásban.
 
-* [Az összetett veszélyforrások elleni védelem és a riasztások megismerése Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
+* [Az összetett veszélyforrások elleni védelem és a riasztások megismerése Azure SQL Database](../azure-sql/database/threat-detection-overview.md)
 
-* [A Azure SQL Database speciális adatbiztonságának engedélyezése](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
+* [A Azure SQL Database speciális adatbiztonságának engedélyezése](../azure-sql/database/azure-defender-for-sql.md)
 
-* [Riasztások kezelése Azure Security Centerban](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)
+* [Riasztások kezelése Azure Security Centerban](../security-center/security-center-managing-and-responding-alerts.md)
 
-* [Az Azure Sentinel előkészítése](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -307,7 +307,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti a fedélzeti adatfel
 
 ## <a name="identity-and-access-control"></a>Identitás- és hozzáférés-vezérlés
 
-*További információkért lásd: a [biztonság szabályozása: identitás-és hozzáférés-vezérlés](/azure/security/benchmarks/security-control-identity-access-control).*
+*További információkért lásd: a [biztonság szabályozása: identitás-és hozzáférés-vezérlés](../security/benchmarks/security-control-identity-access-control.md).*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: a felügyeleti fiókok leltárának karbantartása
 
@@ -317,19 +317,19 @@ Amikor először telepíti az Azure SQL-t, a bejelentkezéshez meg kell adnia eg
 
 Felügyeleti műveletek esetén használja az Azure beépített szerepköreit, amelyeket explicit módon hozzá kell rendelni. Az Azure AD PowerShell-modullal ad hoc lekérdezéseket hajthat végre a felügyeleti csoportok tagjait futtató fiókok felderítése érdekében.
 
-* [SQL Database hitelesítése](https://docs.microsoft.com/azure/azure-sql/database/security-overview#authentication)
+* [SQL Database hitelesítése](../azure-sql/database/security-overview.md#authentication)
 
-* [Fiókok létrehozása nem rendszergazda felhasználók számára](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#create-accounts-for-non-administrator-users)
+* [Fiókok létrehozása nem rendszergazda felhasználók számára](../azure-sql/database/logins-create-manage.md#create-accounts-for-non-administrator-users)
 
-* [Azure Active Directory-fiók használata a hitelesítéshez](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#create-additional-logins-and-users-having-administrative-permissions)
+* [Azure Active Directory-fiók használata a hitelesítéshez](../azure-sql/database/logins-create-manage.md#create-additional-logins-and-users-having-administrative-permissions)
 
-* [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&preserve-view=true)
+* [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-* [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&preserve-view=true)
+* [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
-* [Meglévő bejelentkezések és rendszergazdai fiókok kezelése az Azure SQL-ben](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#existing-logins-and-user-accounts-after-creating-a-new-database)
+* [Meglévő bejelentkezések és rendszergazdai fiókok kezelése az Azure SQL-ben](../azure-sql/database/logins-create-manage.md#existing-logins-and-user-accounts-after-creating-a-new-database)
 
-* [Beépített Azure-szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)
+* [Beépített Azure-szerepkörök](../role-based-access-control/built-in-roles.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -339,9 +339,9 @@ Felügyeleti műveletek esetén használja az Azure beépített szerepköreit, a
 
 **Útmutató**: a Azure Active Directory nem rendelkezik az alapértelmezett jelszavak fogalmával. Egy dedikált SQL-készlet kiépítésekor javasolt a hitelesítés integrálása Azure Active Directory használatával. Ezzel a hitelesítési módszerrel a felhasználó elküld egy felhasználói fióknevet és kéréseket, hogy a szolgáltatás a Azure Active Directory (Azure AD) által tárolt hitelesítő adatokat használja.
 
-* [Azure Active Directory hitelesítés konfigurálása és kezelése az Azure SQL használatával](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#active-directory-password-authentication)
+* [Azure Active Directory hitelesítés konfigurálása és kezelése az Azure SQL használatával](../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell#active-directory-password-authentication)
 
-* [Az Azure SQL-alapú hitelesítés ismertetése](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#existing-logins-and-user-accounts-after-creating-a-new-database)
+* [Az Azure SQL-alapú hitelesítés ismertetése](../azure-sql/database/logins-create-manage.md#existing-logins-and-user-accounts-after-creating-a-new-database)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -353,9 +353,9 @@ Felügyeleti műveletek esetén használja az Azure beépített szerepköreit, a
 
 Az adatbázishoz tartozó rendszergazdai fiókok azonosításához nyissa meg a Azure Portal, és keresse meg a kiszolgáló vagy a felügyelt példány Tulajdonságok lapját.
 
-* [Azure Security Center identitás és hozzáférés ismertetése](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Azure Security Center identitás és hozzáférés ismertetése](../security-center/security-center-identity-access.md)
 
-* [Meglévő bejelentkezések és rendszergazdai fiókok kezelése az Azure SQL-ben](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#existing-logins-and-user-accounts-after-creating-a-new-database)
+* [Meglévő bejelentkezések és rendszergazdai fiókok kezelése az Azure SQL-ben](../azure-sql/database/logins-create-manage.md#existing-logins-and-user-accounts-after-creating-a-new-database)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -365,11 +365,11 @@ Az adatbázishoz tartozó rendszergazdai fiókok azonosításához nyissa meg a 
 
 **Útmutató**: az Azure-alkalmazás regisztrálása (egyszerű szolgáltatásnév) használatával lekérheti az adattárházat a vezérlési síkon (Azure Portal) API-hívásokon keresztül felhasználható jogkivonatot.
 
-* [Az Azure REST API-k meghívása](https://docs.microsoft.com/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
+* [Az Azure REST API-k meghívása](/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
 
-* [Az ügyfélalkalmazás (egyszerű szolgáltatásnév) regisztrálása az Azure AD-vel](https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad)
+* [Az ügyfélalkalmazás (egyszerű szolgáltatásnév) regisztrálása az Azure AD-vel](/rest/api/azure/#register-your-client-application-with-azure-ad)
 
-* [Azure szinapszis SQL REST API információk](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api)
+* [Azure szinapszis SQL REST API információk](./sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -379,11 +379,11 @@ Az adatbázishoz tartozó rendszergazdai fiókok azonosításához nyissa meg a 
 
 **Útmutató**: a Azure Active Directory (AD) multi-Factor Authentication (MFA) engedélyezése és a Azure Security Center identitás-és hozzáférés-kezelési javaslatainak követése.
 
-* [MFA engedélyezése az Azure-ban](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)
 
-* [Identitás és hozzáférés figyelése Azure Security Centeron belül](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Identitás és hozzáférés figyelése Azure Security Centeron belül](../security-center/security-center-identity-access.md)
 
-* [Az MFA megismerése az Azure SQL-ben](https://docs.microsoft.com/azure/azure-sql/database/authentication-mfa-ssms-overview)
+* [Az MFA megismerése az Azure SQL-ben](../azure-sql/database/authentication-mfa-ssms-overview.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -395,7 +395,7 @@ Az adatbázishoz tartozó rendszergazdai fiókok azonosításához nyissa meg a 
 
 * [További tudnivalók a privilegizált hozzáférésű munkaállomásokról](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-* [MFA engedélyezése az Azure-ban](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -409,15 +409,15 @@ A komplex veszélyforrások elleni védelem használata a Azure SQL Databasehoz 
 
 SQL Server naplózással kiszolgálói naplózásokat hozhat létre, amelyek tartalmazhatják a kiszolgálói naplózási specifikációkat a kiszolgálói szintű eseményekhez, valamint az adatbázis-szintű események adatbázis-naplózási specifikációit. A naplózott események az eseménynaplóba vagy a fájlok naplózására is írhatók.
 
-* [A kockázatos tevékenységek miatt megjelölt Azure AD-felhasználók azonosítása](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk)
+* [A kockázatos tevékenységek miatt megjelölt Azure AD-felhasználók azonosítása](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [A felhasználók identitás-és hozzáférési tevékenységének figyelése Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [A felhasználók identitás-és hozzáférési tevékenységének figyelése Azure Security Center](../security-center/security-center-identity-access.md)
 
-* [Az összetett veszélyforrások elleni védelem és a lehetséges riasztások áttekintése](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview#advanced-threat-protection-alerts)
+* [Az összetett veszélyforrások elleni védelem és a lehetséges riasztások áttekintése](../azure-sql/database/threat-detection-overview.md#alerts)
 
-* [A bejelentkezések és a felhasználói fiókok megismerése az Azure SQL-ben](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage)
+* [A bejelentkezések és a felhasználói fiókok megismerése az Azure SQL-ben](../azure-sql/database/logins-create-manage.md)
 
-* [SQL Server naplózás ismertetése](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine?view=sql-server-ver15&preserve-view=true)
+* [SQL Server naplózás ismertetése](/sql/relational-databases/security/auditing/sql-server-audit-database-engine?preserve-view=true&view=sql-server-ver15)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -427,7 +427,7 @@ SQL Server naplózással kiszolgálói naplózásokat hozhat létre, amelyek tar
 
 **Útmutató**: a feltételes hozzáférés elnevezett helyeivel lehetővé teheti a portál és az Azure erőforrás-kezelési hozzáférését az IP-címtartományok vagy országok/régiók adott logikai csoportjaiból.
 
-* [Elnevezett helyszínek konfigurálása az Azure-ban](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Elnevezett helyszínek konfigurálása az Azure-ban](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -437,9 +437,9 @@ SQL Server naplózással kiszolgálói naplózásokat hozhat létre, amelyek tar
 
 **Útmutató**: hozzon létre egy Azure Active Directory (ad-) rendszergazdát a Azure SQL Database-kiszolgálóhoz a dedikált SQL-készletben.
 
-* [Azure AD-hitelesítés konfigurálása és kezelése az Azure SQL használatával](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)
+* [Azure AD-hitelesítés konfigurálása és kezelése az Azure SQL használatával](../azure-sql/database/authentication-aad-configure.md)
 
-* [Azure AD-példány létrehozása és konfigurálása](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance)
+* [Azure AD-példány létrehozása és konfigurálása](../active-directory-domain-services/tutorial-create-instance.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -451,9 +451,9 @@ SQL Server naplózással kiszolgálói naplózásokat hozhat létre, amelyek tar
 
 SQL-hitelesítés használatakor hozzon létre tárolt adatbázis-felhasználókat az adatbázisban. Ügyeljen arra, hogy egy vagy több adatbázis-felhasználót egy egyéni adatbázis-szerepkörbe helyezzen, amely az adott felhasználói csoportnak megfelelő engedélyekkel rendelkezik.
 
-* [A hozzáférési felülvizsgálatok használata](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [A hozzáférési felülvizsgálatok használata](../active-directory/governance/access-reviews-overview.md)
 
-* [A bejelentkezések és a felhasználói fiókok megismerése az Azure SQL-ben](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage)
+* [A bejelentkezések és a felhasználói fiókok megismerése az Azure SQL-ben](../azure-sql/database/logins-create-manage.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -465,13 +465,13 @@ SQL-hitelesítés használatakor hozzon létre tárolt adatbázis-felhasználók
 
 SQL-hitelesítés használatakor hozzon létre tárolt adatbázis-felhasználókat az adatbázisban. Ügyeljen arra, hogy egy vagy több adatbázis-felhasználót egy egyéni adatbázis-szerepkörbe helyezzen, amely az adott felhasználói csoportnak megfelelő engedélyekkel rendelkezik.
 
-* [A hozzáférési felülvizsgálatok használata](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [A hozzáférési felülvizsgálatok használata](../active-directory/governance/access-reviews-overview.md)
 
-* [Azure AD-hitelesítés konfigurálása és kezelése a Azure SQL Database használatával](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)
+* [Azure AD-hitelesítés konfigurálása és kezelése a Azure SQL Database használatával](../azure-sql/database/authentication-aad-configure.md)
 
-* [Azure-tevékenységnaplók integrálása az Azure Monitorba](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Azure-tevékenységnaplók integrálása az Azure Monitorba](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [A bejelentkezések és a felhasználói fiókok megismerése az Azure SQL-ben](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage)
+* [A bejelentkezések és a felhasználói fiókok megismerése az Azure SQL-ben](../azure-sql/database/logins-create-manage.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -483,13 +483,13 @@ SQL-hitelesítés használatakor hozzon létre tárolt adatbázis-felhasználók
 
 SQL-hitelesítés használatakor hozzon létre tárolt adatbázis-felhasználókat az adatbázisban. Ügyeljen arra, hogy egy vagy több adatbázis-felhasználót egy egyéni adatbázis-szerepkörbe helyezzen, amely az adott felhasználói csoportnak megfelelő engedélyekkel rendelkezik.
 
-* [Az Azure AD kockázati bejelentkezések megtekintése](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [Az Azure AD kockázati bejelentkezések megtekintése](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [A fedélzeti Azure Sentinel ismertetése](https://docs.microsoft.com/azure/sentinel/connect-data-sources)
+* [A fedélzeti Azure Sentinel ismertetése](../sentinel/connect-data-sources.md)
 
-* [A bejelentkezések és a felhasználói fiókok megismerése az Azure SQL-ben](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage)
+* [A bejelentkezések és a felhasználói fiókok megismerése az Azure SQL-ben](../azure-sql/database/logins-create-manage.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -499,7 +499,7 @@ SQL-hitelesítés használatakor hozzon létre tárolt adatbázis-felhasználók
 
 **Útmutató**: olyan forgatókönyvek esetén, ahol a Microsoftnak a dedikált SQL-készlet Azure SQL Database kapcsolódó adatokhoz kell hozzáférnie, az Azure Ügyfélszéf felületet biztosít az adatelérési kérelmek áttekintéséhez és jóváhagyásához vagy elutasításához.
 
-* [A Ügyfélszéf megismerése](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
+* [A Ügyfélszéf megismerése](../security/fundamentals/customer-lockbox-overview.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -507,7 +507,7 @@ SQL-hitelesítés használatakor hozzon létre tárolt adatbázis-felhasználók
 
 ## <a name="data-protection"></a>Adatvédelem
 
-*További információkért lásd [: biztonsági ellenőrzés:](/azure/security/benchmarks/security-control-data-protection)adatvédelem.*
+*További információkért lásd [: biztonsági ellenőrzés:](../security/benchmarks/security-control-data-protection.md)adatvédelem.*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: bizalmas információk leltárának fenntartása
 
@@ -515,9 +515,9 @@ SQL-hitelesítés használatakor hozzon létre tárolt adatbázis-felhasználók
 
 Az adatfelderítési &amp; besorolás az Azure SZINAPSZIS SQL-be van építve. Magas szintű képességeket biztosít az adatbázisban lévő bizalmas adatok felderítéséhez, osztályozásához, címkézéséhez és jelentéséhez.
 
-* [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
-* [Az adatfelderítési &amp; besorolás ismertetése](https://docs.microsoft.com/azure/azure-sql/database/data-discovery-and-classification-overview)
+* [Az adatfelderítési &amp; besorolás ismertetése](../azure-sql/database/data-discovery-and-classification-overview.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -527,13 +527,13 @@ Az adatfelderítési &amp; besorolás az Azure SZINAPSZIS SQL-be van építve. M
 
 **Útmutató**: különálló előfizetések és/vagy felügyeleti csoportok megvalósítása fejlesztési, tesztelési és éles környezetekhez. Az erőforrásokat virtuális hálózattal/alhálózattal kell elválasztani, megfelelően címkézve, és egy hálózati biztonsági csoporton vagy Azure Firewallon belül kell biztosítani. A bizalmas adatokat tároló vagy feldolgozó erőforrások elkülönítését el kell különíteni. Privát hivatkozás használata; Azure-SQL Server üzembe helyezése virtuális hálózaton belül, és biztonságos kapcsolódás a privát kapcsolat használatával.
 
-* [További Azure-előfizetések létrehozása](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-* [Management Groups létrehozása](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Management Groups létrehozása](../governance/management-groups/create-management-group-portal.md)
 
-* [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
-* [Privát hivatkozás beállítása Azure SQL Databasehoz](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview#how-to-set-up-private-link-for-azure-sql-database)
+* [Privát hivatkozás beállítása Azure SQL Databasehoz](../azure-sql/database/private-endpoint-overview.md#how-to-set-up-private-link-for-azure-sql-database)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -547,11 +547,11 @@ Emellett a Azure SQL Database komplex veszélyforrások elleni védelme, az Azur
 
 A Microsoft által felügyelt mögöttes platform esetében a Microsoft az összes vásárlói tartalmat bizalmasként kezeli, és az ügyfelek adatvesztésével és a kitettséggel szembeni védelem érdekében nagy hosszúságú. Annak biztosítása érdekében, hogy az Azure-beli ügyféladatok biztonságban maradjanak, a Microsoft végrehajtotta és karbantartja a robusztus adatvédelmi szabályozást és képességeket.
 
-* [Privát hivatkozás és NSG konfigurálása az Azure SQL Database-példányokon lévő adatkiszűréseek megelőzésére](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)
+* [Privát hivatkozás és NSG konfigurálása az Azure SQL Database-példányokon lévő adatkiszűréseek megelőzésére](../azure-sql/database/private-endpoint-overview.md)
 
-* [A Azure SQL Database komplex veszélyforrások elleni védelmének megismerése](https://docs.microsoft.com/azure/azure-sql/database/threat-detection-overview)
+* [A Azure SQL Database komplex veszélyforrások elleni védelmének megismerése](../azure-sql/database/threat-detection-overview.md)
 
-* [Az ügyféladatok Azure-beli védelmének ismertetése](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Az ügyféladatok Azure-beli védelmének ismertetése](../security/fundamentals/protection-customer-data.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -561,7 +561,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Útmutató**: a Azure SQL Database a Transport Layer Security használatával a mozgásban lévő adattitkosítással védi az adatait. SQL Server az összes kapcsolat esetében mindig kikényszeríti a titkosítást (SSL/TLS). Ez biztosítja, hogy az összes adatforgalom titkosítva legyen az ügyfél és a kiszolgáló között, függetlenül attól, hogy a titkosítás vagy a TrustServerCertificate a kapcsolati sztringben van-e beállítva.
 
-* [Az Azure SQL-titkosítás ismertetése az átvitel során](https://docs.microsoft.com/azure/sql-database/sql-database-security-overview#information-protection-and-encryption)
+* [Az Azure SQL-titkosítás ismertetése az átvitel során](../azure-sql/database/security-overview.md#information-protection-and-encryption)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -575,9 +575,9 @@ Az adatfelderítési &amp; besorolás a speciális adatbiztonsági ajánlat rés
 
 Emellett beállíthat egy dinamikus adatmaszkolási (DDM-) szabályzatot is a Azure Portal. A DDM-javaslatok motorja az adatbázis bizonyos mezőit olyan érzékeny mezőként adja meg, amely a maszkoláshoz jó választás lehet.
 
-* [Adatfelderítés és besorolás használata az Azure SQL Server](https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification)
+* [Adatfelderítés és besorolás használata az Azure SQL Server](../azure-sql/database/data-discovery-and-classification-overview.md)
 
-* [Az Azure szinapszis SQL dinamikus adatmaszkolási szolgáltatásának ismertetése](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started)
+* [Az Azure szinapszis SQL dinamikus adatmaszkolási szolgáltatásának ismertetése](../azure-sql/database/dynamic-data-masking-overview.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -589,11 +589,11 @@ Emellett beállíthat egy dinamikus adatmaszkolási (DDM-) szabályzatot is a Az
 
 Az engedélyezést a felhasználói fiók adatbázis-szerepköri tagsága és az objektum szintű engedélyek vezérlik. Ajánlott eljárásként csak a minimálisan szükséges engedélyeket adja meg a felhasználóknak.
 
-* [Az Azure SQL Server és az Azure Active Directory integrálása hitelesítéshez](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)
+* [Az Azure SQL Server és az Azure Active Directory integrálása hitelesítéshez](../azure-sql/database/authentication-aad-overview.md)
 
-* [Hozzáférés vezérlése az Azure SQL Serverban](https://docs.microsoft.com/azure/sql-database/sql-database-control-access)
+* [Hozzáférés vezérlése az Azure SQL Serverban](../azure-sql/database/logins-create-manage.md)
 
-* [Az engedélyezés és a hitelesítés megismerése az Azure SQL-ben](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage)
+* [Az engedélyezés és a hitelesítés megismerése az Azure SQL-ben](../azure-sql/database/logins-create-manage.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -603,7 +603,7 @@ Az engedélyezést a felhasználói fiók adatbázis-szerepköri tagsága és az
 
 **Útmutató**: nem alkalmazható; A Microsoft kezeli az Azure szinapszis SQL mögöttes infrastruktúráját, és szigorú ellenőrzéseket vezetett be az ügyféladatok elvesztésének vagy expozíciójának megakadályozására.
 
-* [Az ügyféladatok Azure-beli védelmének ismertetése](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Az ügyféladatok Azure-beli védelmének ismertetése](../security/fundamentals/protection-customer-data.md)
 
 **Az Azure Security Center monitorozása**: Nem alkalmazható
 
@@ -613,11 +613,11 @@ Az engedélyezést a felhasználói fiók adatbázis-szerepköri tagsága és az
 
 **Útmutató**: a transzparens adattitkosítás (TDE) segít megvédeni az Azure szinapszis SQL-et a rosszindulatú offline tevékenységek fenyegetésével szemben, ha titkosítja az inaktív adatok mennyiségét. Valós időben titkosítja és fejti vissza az adatbázist, a hozzá tartozó biztonsági másolatokat és a tranzakciónapló-fájlokat anélkül, hogy ehhez módosítani kellene az alkalmazást. Az Azure-ban a TDE alapértelmezett beállítása az, hogy a ADATTITKOSÍTÁSI kulcsot egy beépített kiszolgálótanúsítvány védi. Alternatív megoldásként használhatja az ügyfél által felügyelt TDE, más néven a TDE-hez Bring Your Own Key (BYOK) támogatást. Ebben az esetben a ADATTITKOSÍTÁSI kulcsot titkosító TDE-védő egy ügyfél által felügyelt aszimmetrikus kulcs, amelyet az ügyfél és a felügyelt Azure Key Vault (az Azure felhőalapú külső kulcs-felügyeleti rendszere) tárol, és soha nem hagyja el a kulcstartót.
 
-* [A szolgáltatás által kezelt transzparens adattitkosítás ismertetése](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview?tabs=azure-portal)
+* [A szolgáltatás által kezelt transzparens adattitkosítás ismertetése](../azure-sql/database/transparent-data-encryption-tde-overview.md?tabs=azure-portal)
 
-* [Az ügyfél által kezelt transzparens adattitkosítás ismertetése](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview?tabs=azure-portal#customer-managed-transparent-data-encryption---bring-your-own-key)
+* [Az ügyfél által kezelt transzparens adattitkosítás ismertetése](../azure-sql/database/transparent-data-encryption-tde-overview.md?tabs=azure-portal#customer-managed-transparent-data-encryption---bring-your-own-key)
 
-* [A TDE bekapcsolása saját kulcs használatával](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-byok-configure)
+* [A TDE bekapcsolása saját kulcs használatával](../azure-sql/database/transparent-data-encryption-byok-configure.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -629,9 +629,9 @@ Az engedélyezést a felhasználói fiók adatbázis-szerepköri tagsága és az
 
 Emellett az SQL szinapszis-készletben lévő adatbázisokhoz is beállíthat riasztásokat az Azure Portal használatával. A riasztások e-mailt küldhetnek, vagy meghívhatnak egy webhookot, ha valamilyen metrika (például az adatbázis mérete vagy a CPU-használat) eléri a küszöbértéket.
 
-* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/platform/alerts-activity-log.md)
 
-* [Riasztások létrehozása az Azure SQL Szinapszishoz](https://docs.microsoft.com/azure/azure-sql/database/alerts-insights-configure-portal)
+* [Riasztások létrehozása az Azure SQL Szinapszishoz](../azure-sql/database/alerts-insights-configure-portal.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -639,17 +639,17 @@ Emellett az SQL szinapszis-készletben lévő adatbázisokhoz is beállíthat ri
 
 ## <a name="vulnerability-management"></a>Biztonságirés-kezelés
 
-*További információ [: Security Control: sebezhetőségi kezelés](/azure/security/benchmarks/security-control-vulnerability-management).*
+*További információ [: Security Control: sebezhetőségi kezelés](../security/benchmarks/security-control-vulnerability-management.md).*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatikus biztonsági rések vizsgálatára szolgáló eszközök futtatása
 
 **Útmutató**: engedélyezze a speciális adatbiztonságot, és kövesse az Azure Security Center a sebezhetőségi felmérések Azure SQL-adatbázisokon való végrehajtásáról szóló ajánlásokat.
 
-* [Sebezhetőségi felmérések futtatása Azure SQL-adatbázisokon](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
+* [Sebezhetőségi felmérések futtatása Azure SQL-adatbázisokon](../azure-sql/database/sql-vulnerability-assessment.md)
 
-* [A speciális adatbiztonság engedélyezése](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
+* [A speciális adatbiztonság engedélyezése](../azure-sql/database/azure-defender-for-sql.md)
 
-* [Azure Security Center sebezhetőségi felméréssel kapcsolatos javaslatok megvalósítása](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations)
+* [Azure Security Center sebezhetőségi felméréssel kapcsolatos javaslatok megvalósítása](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -675,7 +675,7 @@ Emellett az SQL szinapszis-készletben lévő adatbázisokhoz is beállíthat ri
 
 **Útmutató**: a sebezhetőségi felmérés egy Azure szinapszis SQL-ben beépített keresési szolgáltatás. A szolgáltatás a biztonsági réseket jelző szabályok tudásbázisát alkalmazza. Kiemeli az ajánlott eljárásoktól való eltéréseket, például a helytelen konfigurációkat, a túlzott engedélyeket és a nem védett bizalmas adatokat. A sebezhetőségi felmérés a központi SQL Advanced Security (ADS) portálon keresztül érhető el és kezelhető.
 
-* [Sebezhetőség-felmérési vizsgálatok kezelése és exportálása az SQL ADS portálon](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
+* [Sebezhetőség-felmérési vizsgálatok kezelése és exportálása az SQL ADS portálon](../azure-sql/database/sql-vulnerability-assessment.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -687,9 +687,9 @@ Emellett az SQL szinapszis-készletben lévő adatbázisokhoz is beállíthat ri
 
 Az adatfelderítési &amp; besorolás az Azure SZINAPSZIS SQL-be van építve. Magas szintű képességeket biztosít az adatbázisban lévő bizalmas adatok felderítéséhez, osztályozásához, címkézéséhez és jelentéséhez.
 
-* [A Azure Security Center biztonsági pontszámának megismerése](https://docs.microsoft.com/azure/security-center/security-center-secure-score)
+* [A Azure Security Center biztonsági pontszámának megismerése](../security-center/secure-score-security-controls.md)
 
-* [Az adatfelderítési &amp; besorolás ismertetése](https://docs.microsoft.com/azure/azure-sql/database/data-discovery-and-classification-overview)
+* [Az adatfelderítési &amp; besorolás ismertetése](../azure-sql/database/data-discovery-and-classification-overview.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -697,7 +697,7 @@ Az adatfelderítési &amp; besorolás az Azure SZINAPSZIS SQL-be van építve. M
 
 ## <a name="inventory-and-asset-management"></a>Leltár- és eszközfelügyelet
 
-*További információkért lásd [: biztonsági vezérlés: leltár és eszközkezelés](/azure/security/benchmarks/security-control-inventory-asset-management).*
+*További információkért lásd [: biztonsági vezérlés: leltár és eszközkezelés](../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6,1: automatikus eszköz-felderítési megoldás használata
 
@@ -705,11 +705,11 @@ Az adatfelderítési &amp; besorolás az Azure SZINAPSZIS SQL-be van építve. M
 
 Bár a klasszikus Azure-erőforrások felderíthető az Azure Resource Graph használatával, erősen ajánlott Azure Resource Manager erőforrások létrehozása és használata.
 
-* [Lekérdezések létrehozása az Azure Resource Graph használatával](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Lekérdezések létrehozása az Azure Resource Graph használatával](../governance/resource-graph/first-query-portal.md)
 
-* [Azure-előfizetések megtekintése](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0&preserve-view=true)
+* [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-3.0.0)
 
-* [Az Azure RBAC ismertetése](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -719,7 +719,7 @@ Bár a klasszikus Azure-erőforrások felderíthető az Azure Resource Graph has
 
 **Útmutató**: címkéket alkalmazhat az Azure-erőforrásokra, így a metaadatok logikailag rendszerezve lesznek a besorolásban.
 
-* [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -729,11 +729,11 @@ Bár a klasszikus Azure-erőforrások felderíthető az Azure Resource Graph has
 
 **Útmutató**: a címkézés, a felügyeleti csoportok és az elkülönített előfizetések használata, ha szükséges, az eszközök rendszerezéséhez és nyomon követéséhez. Rendszeres időközönként egyeztetheti a leltárt, és gondoskodhat arról, hogy a jogosulatlan erőforrások törlése az előfizetésből időben történjen.
 
-* [További Azure-előfizetések létrehozása](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-* [Management Groups létrehozása](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Management Groups létrehozása](../governance/management-groups/create-management-group-portal.md)
 
-* [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -755,9 +755,9 @@ Bár a klasszikus Azure-erőforrások felderíthető az Azure Resource Graph has
 
 Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az előfizetésében lévő erőforrásokat. Győződjön meg arról, hogy a környezetben lévő összes Azure-erőforrás jóvá van hagyva.
 
-* [Az Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-* [Lekérdezések létrehozása az Azure Resource Graph használatával](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Lekérdezések létrehozása az Azure Resource Graph használatával](../governance/resource-graph/first-query-portal.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -795,9 +795,9 @@ Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az elő
 
 Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az előfizetése (ke) n belüli erőforrásait. Győződjön meg arról, hogy a környezetben lévő összes Azure-erőforrás jóvá van hagyva.
 
-* [Az Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-* [Adott erőforrástípus megtagadása a következővel Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+* [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/index.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -815,7 +815,7 @@ Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: az Azure feltételes hozzáférés használatával korlátozhatja a felhasználók a Azure Resource Manager interakcióját a "Microsoft Azure felügyelet" alkalmazás "hozzáférés tiltása" beállításával.
 
-* [A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való hozzáférés blokkolásához](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való hozzáférés blokkolásához](../role-based-access-control/conditional-access-azure-management.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -833,9 +833,9 @@ Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: az üzleti műveletekhez szükséges dedikált SQL-készlethez kapcsolódó erőforrások, azonban a szervezet számára nagyobb kockázatot jelenthetnek, el kell különíteni a saját virtuális gépén és/vagy virtuális hálózatán belül, és megfelelő védelemmel kell rendelkeznie egy Azure Firewall vagy hálózati biztonsági csoporttal.
 
-* [Virtuális hálózat létrehozása](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [Virtuális hálózat létrehozása](../virtual-network/quick-create-portal.md)
 
-* [NSG létrehozása biztonsági konfigurációval](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [NSG létrehozása biztonsági konfigurációval](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -843,7 +843,7 @@ Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az elő
 
 ## <a name="secure-configuration"></a>Biztonságos konfiguráció
 
-*További információkért lásd [: biztonság-vezérlés: biztonságos konfiguráció](/azure/security/benchmarks/security-control-secure-configuration).*
+*További információkért lásd [: biztonság-vezérlés: biztonságos konfiguráció](../security/benchmarks/security-control-secure-configuration.md).*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: biztonságos konfigurációk létrehozása az összes Azure-erőforráshoz
 
@@ -851,9 +851,9 @@ Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az elő
 - Veszélyforrások észlelésének üzembe helyezése SQL-kiszolgálókon
 - SQL Server virtuális hálózati szolgáltatás végpontját kell használnia
 
-* [Az elérhető Azure Policy aliasok megtekintése](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0&preserve-view=true)
+* [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-3.3.0)
 
-* [Az Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -871,9 +871,9 @@ Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: az Azure-erőforrások biztonságos beállításainak betartatásához használja a Azure Policy [deny] és a [telepítés ha nem létezik] lehetőséget.
 
-* [Az Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy effektusok ismertetése](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [Azure Policy effektusok ismertetése](../governance/policy/concepts/effects.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -891,9 +891,9 @@ Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: ha egyéni Azure Policy-definíciókat használ, az Azure DevOps vagy az Azure Repos segítségével biztonságosan tárolhatja és kezelheti a kódot.
 
-* [Kód tárolása az Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true)
+* [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-* [Az Azure Repos dokumentációja](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops&preserve-view=true)
+* [Az Azure Repos dokumentációja](/azure/devops/repos/index?preserve-view=true&view=azure-devops)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -927,7 +927,7 @@ Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: a Azure Security Center kihasználása a dedikált SQL-készlethez kapcsolódó erőforrások alapkonfigurációjának vizsgálatához.
 
-* [Javaslatok szervizelése Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations)
+* [Javaslatok szervizelése Azure Security Center](../security-center/security-center-remediate-recommendations.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -945,9 +945,9 @@ Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: TRANSZPARENS ADATTITKOSÍTÁS (TDE) az ügyfél által felügyelt kulcsokkal Azure Key Vault lehetővé teszi az automatikusan generált adatbázis-titkosítási kulcs (adattitkosítási kulcsot) titkosítását az ügyfél által felügyelt, TDE Protector nevű aszimmetrikus kulccsal. Ezt általában a transzparens adattitkosítás Bring Your Own Key (BYOK) támogatása is említi. A BYOK forgatókönyvben a TDE-védőt az ügyfél és a felügyelt Azure Key Vault tárolja. Továbbá győződjön meg arról, hogy a Soft delete engedélyezve van a Azure Key Vaultban.
 
-* [A TDE engedélyezése az ügyfél által felügyelt kulccsal Azure Key Vault](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-byok-configure?tabs=azure-powershell)
+* [A TDE engedélyezése az ügyfél által felügyelt kulccsal Azure Key Vault](../azure-sql/database/transparent-data-encryption-byok-configure.md?tabs=azure-powershell)
 
-* [A Soft delete engedélyezése Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell)
+* [A Soft delete engedélyezése Azure Key Vault](../key-vault/general/key-vault-recovery.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -957,9 +957,9 @@ Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: felügyelt identitások használata az automatikusan felügyelt identitással rendelkező Azure-szolgáltatások biztosításához Azure Active Directory (ad). A felügyelt identitások lehetővé teszik bármely olyan szolgáltatás hitelesítését, amely támogatja az Azure AD-hitelesítést, beleértve a Azure Key Vault is, a kódban szereplő hitelesítő adatok nélkül.
 
-* [Oktatóanyag: Hozzáférés az Azure SQL-hez egy Windows VM rendszer által hozzárendelt felügyelt identitásával](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql)
+* [Oktatóanyag: Hozzáférés az Azure SQL-hez egy Windows VM rendszer által hozzárendelt felügyelt identitásával](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql.md)
 
-* [Felügyelt identitások konfigurálása](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
+* [Felügyelt identitások konfigurálása](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -977,7 +977,7 @@ Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az elő
 
 ## <a name="malware-defense"></a>Kártevők elleni védelem
 
-*További információkért lásd [: biztonsági ellenőrzés: kártevők elleni védelem](/azure/security/benchmarks/security-control-malware-defense).*
+*További információkért lásd [: biztonsági ellenőrzés: kártevők elleni védelem](../security/benchmarks/security-control-malware-defense.md).*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: központilag felügyelt kártevő szoftverek használata
 
@@ -993,7 +993,7 @@ Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az elő
 
 A nem számítási Azure-erőforrásokra feltöltött tartalmak előzetes vizsgálata, például App Service, Data Lake Storage, Blob Storage, Azure SQL Server stb. A Microsoft nem fér hozzá az adataihoz ezekben a példányokban.
 
-* [Megismerheti a Microsoft antimalware-t az Azure Cloud Services és Virtual Machines](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
+* [Megismerheti a Microsoft antimalware-t az Azure Cloud Services és Virtual Machines](../security/fundamentals/antimalware.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -1009,13 +1009,13 @@ A nem számítási Azure-erőforrásokra feltöltött tartalmak előzetes vizsg�
 
 ## <a name="data-recovery"></a>Adat-helyreállítás
 
-*További információkért lásd [: biztonsági ellenőrzés: adat-helyreállítás](/azure/security/benchmarks/security-control-data-recovery).*
+*További információkért lásd [: biztonsági ellenőrzés: adat-helyreállítás](../security/benchmarks/security-control-data-recovery.md).*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: rendszeres automatizált biztonsági másolatok biztosítása
 
 **Útmutató**: a dedikált SQL-készlet pillanatképeit a rendszer a nap folyamán automatikusan hozza létre a hét napig elérhető visszaállítási pontok létrehozásához. Ez a megőrzési időszak nem módosítható. A dedikált SQL-készlet támogatja a 8 órás helyreállítási időkorlátot (RPO). Az adattárházat az elsődleges régióban állíthatja vissza az elmúlt hét napban készített Pillanatképek közül. Vegye figyelembe, hogy szükség esetén manuálisan is aktiválhatja a pillanatképeket.
 
-* [Biztonsági mentés és visszaállítás dedikált SQL-készletben](/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [Biztonsági mentés és visszaállítás dedikált SQL-készletben](./sql-data-warehouse/backup-and-restore.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -1027,9 +1027,9 @@ A nem számítási Azure-erőforrásokra feltöltött tartalmak előzetes vizsg�
 
 Ha ügyfél által felügyelt kulcsot használ az adatbázis-titkosítási kulcs titkosításához, győződjön meg arról, hogy a kulcs biztonsági mentése folyamatban van.
 
-* [Biztonsági mentés és visszaállítás dedikált SQL-készletben](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [Biztonsági mentés és visszaállítás dedikált SQL-készletben](./sql-data-warehouse/backup-and-restore.md)
 
-* [Azure Key Vault kulcsok biztonsági mentése](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0&preserve-view=true)
+* [Azure Key Vault kulcsok biztonsági mentése](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?preserve-view=true&view=azurermps-6.13.0)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -1039,11 +1039,11 @@ Ha ügyfél által felügyelt kulcsot használ az adatbázis-titkosítási kulcs
 
 **Útmutató**: a visszaállítási pontok rendszeres tesztelése a pillanatképek érvényességének biztosítása érdekében. Ha egy meglévő dedikált SQL-készletet szeretne visszaállítani egy visszaállítási pontról, akkor a Azure Portal vagy a PowerShellt is használhatja. Tesztelje az ügyfél által felügyelt kulcsok biztonsági mentésének visszaállítását.
 
-* [Azure Key Vault kulcsok visszaállítása](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0&preserve-view=true)
+* [Azure Key Vault kulcsok visszaállítása](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?preserve-view=true&view=azurermps-6.13.0)
 
-* [Biztonsági mentés és visszaállítás dedikált SQL-készletben](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [Biztonsági mentés és visszaállítás dedikált SQL-készletben](./sql-data-warehouse/backup-and-restore.md)
 
-* [Meglévő dedikált SQL-készlet visszaállítása](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-restore-active-paused-dw)
+* [Meglévő dedikált SQL-készlet visszaállítása](./sql-data-warehouse/sql-data-warehouse-restore-active-paused-dw.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -1055,11 +1055,11 @@ Ha ügyfél által felügyelt kulcsot használ az adatbázis-titkosítási kulcs
 
 Alapértelmezés szerint a Storage-fiókokban lévő adatforgalom a Microsoft által felügyelt kulcsokkal van titkosítva. Hivatkozhat a Microsoft által felügyelt kulcsokra az adatok titkosításához, vagy kezelheti a titkosítást a saját kulcsaival. Ha Key Vault használatával felügyeli a saját kulcsait, győződjön meg arról, hogy a helyreállítható törlés engedélyezve van.
 
-* [A biztonsági másolatok hosszú távú megőrzésének Azure SQL Database kezelése](https://docs.microsoft.com/azure/sql-database/sql-database-long-term-backup-retention-configure)
+* [A biztonsági másolatok hosszú távú megőrzésének Azure SQL Database kezelése](../azure-sql/database/long-term-backup-retention-configure.md)
 
-* [Inaktív adatok Azure Storage-titkosítása](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
+* [Inaktív adatok Azure Storage-titkosítása](../storage/common/storage-service-encryption.md)
 
-* [A Soft delete engedélyezése Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+* [A Soft delete engedélyezése Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center figyelés**: N/A
 
@@ -1067,13 +1067,13 @@ Alapértelmezés szerint a Storage-fiókokban lévő adatforgalom a Microsoft á
 
 ## <a name="incident-response"></a>Incidensmegoldás
 
-*További információ [: Security Control: incidens válasza](/azure/security/benchmarks/security-control-incident-response).*
+*További információ [: Security Control: incidens válasza](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: incidens-válaszi útmutató létrehozása
 
 **Útmutató**: Ellenőrizze, hogy vannak-e írásos incidensekre vonatkozó válaszok, amelyek meghatározzák a személyzet szerepköreit, valamint az incidensek kezelésének és kezelésének fázisait.
 
-* [Munkafolyamat-automatizálás konfigurálása Azure Security Centeron belül](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+* [Munkafolyamat-automatizálás konfigurálása Azure Security Centeron belül](../security-center/security-center-planning-and-operations-guide.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -1083,7 +1083,7 @@ Alapértelmezés szerint a Storage-fiókokban lévő adatforgalom a Microsoft á
 
 **Útmutató**: a Security Center súlyosságot rendel a riasztásokhoz, így könnyebben rangsorolhatja az egyes riasztásokban való részvétel sorrendjét, hogy az erőforrások biztonsága esetén azonnal elérhető legyen. A súlyosság azon alapul, hogy az Security Center milyen mértékben szerepel a riasztás kibocsátásához használt elemzésben vagy elemzésben, valamint azt a megbízhatósági szintet, amely a riasztáshoz vezető tevékenység mögött rosszindulatú szándékú volt.
 
-* [Biztonsági riasztások az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+* [Biztonsági riasztások az Azure Security Centerben](../security-center/security-center-alerts-overview.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -1103,7 +1103,7 @@ Alapértelmezés szerint a Storage-fiókokban lévő adatforgalom a Microsoft á
 
 **Útmutató**: a Microsoft a biztonsági incidensek elérhetőségi adatait arra használja fel, hogy felvegye Önnel a kapcsolatot, ha a Microsoft Security Response Center (MSRC) felfedi, hogy az adatokat egy törvénytelen vagy jogosulatlan fél is hozzáférte.
 
-* [A Azure Security Center biztonsági kapcsolattartó beállítása](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [A Azure Security Center biztonsági kapcsolattartó beállítása](../security-center/security-center-provide-security-contact-details.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -1113,9 +1113,9 @@ Alapértelmezés szerint a Storage-fiókokban lévő adatforgalom a Microsoft á
 
 **Útmutató**: az Azure Security Center-riasztások és-javaslatok exportálása a folyamatos exportálás funkció használatával. A folyamatos exportálás lehetővé teszi a riasztások és javaslatok manuális és folyamatos exportálását. Használhatja a Azure Security Center adatösszekötőt a riasztások a Sentinelbe való továbbításához.
 
-* [Folyamatos exportálás konfigurálása](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [Folyamatos exportálás konfigurálása](../security-center/continuous-export.md)
 
-* [Riasztások streamelése az Azure Sentinelbe](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [Riasztások streamelése az Azure Sentinelbe](../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -1125,7 +1125,7 @@ Alapértelmezés szerint a Storage-fiókokban lévő adatforgalom a Microsoft á
 
 **Útmutató**: a Azure Security Center munkafolyamat-automatizálási funkciója segítségével automatikusan aktiválhatja a válaszokat a "Logic apps" használatával a biztonsági riasztások és javaslatok esetében.
 
-* [A Munkafolyamat-automatizálás és a Logic Apps konfigurálása](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [A Munkafolyamat-automatizálás és a Logic Apps konfigurálása](../security-center/workflow-automation.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -1133,7 +1133,7 @@ Alapértelmezés szerint a Storage-fiókokban lévő adatforgalom a Microsoft á
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Behatolási tesztek és Red Team-gyakorlatok
 
-*További információkért lásd [: biztonsági ellenőrzés: behatolási tesztek és Red Team-gyakorlatok](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*További információkért lásd [: biztonsági ellenőrzés: behatolási tesztek és Red Team-gyakorlatok](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: az Azure-erőforrások rendszeres behatolásának tesztelése, valamint az összes kritikus biztonsági vizsgálat szervizelésének biztosítása
 
@@ -1147,5 +1147,5 @@ Alapértelmezés szerint a Storage-fiókokban lévő adatforgalom a Microsoft á
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Lásd az [Azure biztonsági teljesítménytesztét](/azure/security/benchmarks/overview)
-- További tudnivalók az [Azure biztonsági alapterveiről](/azure/security/benchmarks/security-baselines-overview)
+- Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
+- További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

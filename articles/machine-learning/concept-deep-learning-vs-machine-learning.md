@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 12/15/2020
+ms.date: 01/14/2020
 ms.custom: contperf-fy21q1,contperfq1
-ms.openlocfilehash: 17c5cc265b4199d745325bf2c9d9fbca24cc6506
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 61305e4f9ba45cb7c13a96bee9d1aab81108bb4d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617119"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220694"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Mélyreható tanulás és gépi tanulás a Azure Machine Learning
 
@@ -57,7 +57,7 @@ A következő táblázat részletesebben összehasonlítja a két technikát:
 |  **Végrehajtási idő** | Viszonylag kevés időt vesz igénybe a betanítás, néhány másodperctől néhány órára. | A tanítás általában hosszú időt vesz igénybe, mivel a Deep learning algoritmus számos réteget magában foglal. |
 |  **Kimenet** | A kimenet általában numerikus érték, például pontszám vagy besorolás. | A kimenetnek több formátuma is lehet, például egy szöveg, egy pontszám vagy egy hang. |
 
-## <a name="transfer-learning"></a>Transzfertanulás
+## <a name="what-is-transfer-learning"></a>Mi az az adatátviteli tanulás?
 
 A Deep learning-modellek betanításához gyakran nagy mennyiségű betanítási adatok, nagy teljesítményű számítási erőforrások (GPU, TPU) és hosszú betanítási idő szükséges. Abban az esetben, ha nem rendelkezik ezekkel a lehetőségekkel, a betanítási folyamatot az *adatátviteli tanulási* módszernek nevezett eljárással teheti meg.
 
@@ -65,7 +65,7 @@ Az átvitel a tanulás olyan technika, amely az egyik probléma megoldását egy
 
 A neurális hálózatok szerkezete miatt az első rétegek általában alacsonyabb szintű funkciókat tartalmaznak, míg a rétegek végső készlete magasabb szintű funkciót tartalmaz, amely közelebb áll a szóban forgó tartományhoz. Ha a végső rétegeket új tartományba vagy problémába kívánja használni, jelentősen csökkentheti az új modell betanításához szükséges idő, adatok és számítási erőforrások mennyiségét. Ha például már rendelkezik egy olyan modellel, amely az autókat ismeri fel, ezt a modellt átviheti a Learning használatával is, és felismerheti a teherautók, motorkerékpárok és más típusú járművek használatát.
 
-Ismerje meg, hogyan alkalmazhatja az átvitelt a képbesorolásra egy nyílt forráskódú keretrendszer használatával Azure Machine Learning: [rendszerképek osztályozása Pytorch-modell használatával](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri).
+Ismerje meg, hogyan alkalmazhatja az átvitelt a képbesorolásra a Azure Machine Learning egy nyílt forráskódú keretrendszer használatával: [a Deep learning PyTorch-modell betanítása az adatátviteli tanulással](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri).
 
 ## <a name="deep-learning-use-cases"></a>Mély tanulási használati esetek
 
@@ -121,7 +121,7 @@ A többrendszeres neurális hálózat egy különösen hatékony mesterséges ne
 
 A többszintű neurális hálózatok olyan területeken lettek felhasználva, mint a videó-felismerés, a képfelismerés és az ajánlott rendszerek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkek további lehetőségeket mutatnak be a nyílt forráskódú mély tanulási modellek [Azure Machine Learningban](./index.yml?WT.mc_id=docs-article-lazzeri)való használatára:
 

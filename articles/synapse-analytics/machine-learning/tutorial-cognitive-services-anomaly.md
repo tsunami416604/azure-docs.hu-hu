@@ -9,16 +9,16 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 4052d6a0773aa27e0a378ee04975c7946f1ffbfe
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5e7b914d459d2452704f93987ce1bf91bfba988c
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468258"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222207"
 ---
 # <a name="tutorial-anomaly-detection-with-cognitive-services-preview"></a>Oktatóanyag: anomáliák észlelése Cognitive Servicessal (előzetes verzió)
 
-Ebből az oktatóanyagból megtudhatja, hogyan gazdagíthatja adatait az Azure Szinapszisban [Cognitive Services](https://go.microsoft.com/fwlink/?linkid=2147492)segítségével. A anomáliák észleléséhez az [anomália detektort](https://go.microsoft.com/fwlink/?linkid=2147493) fogjuk használni. Az Azure szinapszis egyik felhasználója egyszerűen kiválaszthat egy táblázatot, amely gazdagabbá teszi a rendellenességek észlelését.
+Ebből az oktatóanyagból megtudhatja, hogyan gazdagíthatja adatait az Azure Szinapszisban [Cognitive Services](../../cognitive-services/index.yml)segítségével. A anomáliák észleléséhez az [anomália detektort](../../cognitive-services/anomaly-detector/index.yml) fogjuk használni. Az Azure szinapszis egyik felhasználója egyszerűen kiválaszthat egy táblázatot, amely gazdagabbá teszi a rendellenességek észlelését.
 
 Ez az oktatóanyag az alábbiakkal foglalkozik:
 
@@ -94,11 +94,11 @@ Az imént megnyitott jegyzetfüzet a [mmlspark könyvtárat](https://github.com/
 
 A megadott Azure Key Vault adatok lehetővé teszik, hogy a tapasztalatok alapján biztonságosan hivatkozzon a titkos kulcsokra.
 
-Mostantól az **összes cellát futtathatja** a anomáliák észlelésének elvégzéséhez. További információ a [Cognitive Services-anomália detektorról](https://go.microsoft.com/fwlink/?linkid=2147493).
+Mostantól az **összes cellát futtathatja** a anomáliák észlelésének elvégzéséhez. További információ a [Cognitive Services-anomália detektorról](../../cognitive-services/anomaly-detector/index.yml).
 
 ![Anomáliák észlelésének futtatása](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-00f.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Oktatóanyag: érzelmek elemzése az Azure Cognitive Services](tutorial-cognitive-services-sentiment.md)
 - [Oktatóanyag: gépi tanulási modellek pontozása az Azure szinapszis dedikált SQL-készletekben](tutorial-sql-pool-model-scoring-wizard.md)

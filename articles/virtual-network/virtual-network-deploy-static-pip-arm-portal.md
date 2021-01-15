@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/12/2020
 ms.author: allensu
-ms.openlocfilehash: 1ae0b869b24c4e05c88b936eceb1b9b1db3a9405
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: d416af3d3a8eb8ab8057f13cc0d9a133adcb849a
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506311"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221156"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>Statikus nyilvános IP-címmel rendelkező virtuális gép létrehozása a Azure Portal használatával
 
@@ -40,10 +40,10 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
     |-----------------------|----------------------------------|
     | **Projekt részletei** |  |
     | Előfizetés | Válassza ki az Azure-előfizetését |
-    | Erőforráscsoport | Válassza az **Új létrehozása** lehetőséget. </br> A **név** mezőben adja meg a **myResourceGroup**. </br> Kattintson az **OK** gombra. |
+    | Erőforráscsoport | Válassza az **Új létrehozása** lehetőséget. </br> A **név** mezőben adja meg a **myResourceGroup**. </br> Válassza az **OK** lehetőséget. |
     | **Példány adatai** |  |
     | Virtuális gép neve | **MyVM** megadása |
-    | Régió | Válassza ki az **USA keleti** régióját |
+    | Region | Válassza ki az **USA keleti** régióját |
     | Rendelkezésre állási beállítások | Válassza az **infrastruktúra-redundancia nem szükséges** lehetőséget |
     | Kép | Válassza a **Windows Server 2019 Datacenter – Gen1** elemet. |
     | Azure Spot-példány | Válassza a **nem** lehetőséget |
@@ -53,7 +53,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
     | Jelszó | Adja meg a jelszót |
     | Jelszó megerősítése | Jelszó újbóli megadása |
 
-3. Válassza a **hálózatkezelés** lapot, vagy válassza a **Tovább: lemezek** , majd a **Tovább: hálózatkezelés** lehetőséget.
+3. Válassza a **hálózatkezelés** lapot, vagy válassza a **Tovább: lemezek**, majd a **Tovább: hálózatkezelés** lehetőséget.
   
 4. A hálózatkezelés lapon válassza ki vagy írja be a következőket:
 
@@ -62,15 +62,15 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
     | **Hálózati adapter** |  |
     | Virtuális hálózat | Fogadja el az alapértelmezett hálózatnév nevét. |
     | Alhálózat | Fogadja el az alapértelmezett alhálózati konfigurációt. |
-    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. </br> A **nyilvános IP-cím létrehozása** mezőben adja meg a **myPublicIP** nevet. </br> Az **SKU** esetében válassza a **standard** lehetőséget. </br> **Hozzárendelés** , válassza a **statikus** lehetőséget. </br> Kattintson az **OK** gombra.  |
+    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. </br> A **nyilvános IP-cím létrehozása** mezőben adja meg a **myPublicIP** nevet. </br> Az **SKU** esetében válassza a **standard** lehetőséget. </br> **Hozzárendelés**, válassza a **statikus** lehetőséget. </br> Válassza az **OK** lehetőséget.  |
     | NIC hálózati biztonsági csoport | **Alapszintű** kiválasztása|
     | Nyilvános bejövő portok | Válassza a **kiválasztott portok engedélyezése** lehetőséget. |
     | Válassza ki a bejövő portokat | **RDP kiválasztása (3389)** |
 
     > [!WARNING]
-    > A portál 3389 van kiválasztva, hogy engedélyezze a távoli hozzáférést a Windows Server rendszerű virtuális géphez az internetről. Az 3389-as port az internetre való megnyitása nem ajánlott az éles számítási feladatok kezeléséhez. </br> Az Azure Virtual Machines szolgáltatáshoz való biztonságos hozzáférésért lásd: **[Mi az az Azure Bastion?](/azure/bastion/bastion-overview)**
+    > A portál 3389 van kiválasztva, hogy engedélyezze a távoli hozzáférést a Windows Server rendszerű virtuális géphez az internetről. Az 3389-as port az internetre való megnyitása nem ajánlott az éles számítási feladatok kezeléséhez. </br> Az Azure Virtual Machines szolgáltatáshoz való biztonságos hozzáférésért lásd: **[Mi az az Azure Bastion?](../bastion/bastion-overview.md)**
    
-5. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. 
+5. Válassza az **Áttekintés + létrehozás** lehetőséget. 
   
 6. Tekintse át a beállításokat, majd kattintson a **Létrehozás** gombra.
 
@@ -95,7 +95,7 @@ A virtuális gép nyilvános IP-címéhez tartozó SKU-nak meg kell egyeznie Azu
 
 Letöltheti a tartományok (előtagok) listáját az Azure [nyilvános](https://www.microsoft.com/download/details.aspx?id=56519), valamint [US government](https://www.microsoft.com/download/details.aspx?id=57063), [China](https://www.microsoft.com/download/details.aspx?id=57062) és [Germany](https://www.microsoft.com/download/details.aspx?id=57064) felhője esetében.
 
-- További információ a [statikus nyilvános IP-címekről](virtual-network-ip-addresses-overview-arm.md#allocation-method).
-- További információ az Azure [-beli nyilvános IP-címekről](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) .
+- További információ a [statikus nyilvános IP-címekről](./public-ip-addresses.md#allocation-method).
+- További információ az Azure [-beli nyilvános IP-címekről](./public-ip-addresses.md#public-ip-addresses) .
 - További információ az összes [nyilvános IP-cím beállításról](virtual-network-public-ip-address.md#create-a-public-ip-address).
-- További információk a [magánhálózati IP-címekről](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) és a [statikus magánhálózati IP-](virtual-network-network-interface-addresses.md#add-ip-addresses) címek egy Azure-beli virtuális géphez való hozzárendeléséről.
+- További információk a [magánhálózati IP-címekről](./private-ip-addresses.md) és a [statikus magánhálózati IP-](virtual-network-network-interface-addresses.md#add-ip-addresses) címek egy Azure-beli virtuális géphez való hozzárendeléséről.

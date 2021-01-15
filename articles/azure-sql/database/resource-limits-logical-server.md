@@ -10,13 +10,13 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
-ms.date: 09/15/2020
-ms.openlocfilehash: 9dfe70cf6c91a0c12604f91e583a9a4eb9b4e088
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 1/14/2021
+ms.openlocfilehash: e21a5a5be03ffa4ada362247c488ee7d12bd50f7
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308824"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222224"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>A Azure SQL Database és az Azure szinapszis Analytics-kiszolgálók erőforrás-korlátai
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -61,7 +61,7 @@ Ha magas számítási kihasználtságot tapasztal, a kockázatcsökkentő lehet�
 - Az adatbázis vagy a rugalmas készlet számítási méretének növelése az adatbázis további számítási erőforrásokkal való biztosításához. Lásd: [önálló adatbázis-erőforrások méretezése](single-database-scale.md) és [rugalmas készlet erőforrásainak méretezése](elastic-pool-scale.md).
 - Lekérdezések optimalizálása az egyes lekérdezések CPU-erőforrásai kihasználtságának csökkentése érdekében. További információkért lásd: [Lekérdezések finomhangolása/Javaslatok](performance-guidance.md#query-tuning-and-hinting).
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Tárolás
 
 Ha az adatbázis-terület eléri a maximális méretkorlátot, az adatbázis-beszúrások és az adatméretet növelő frissítések sikertelenek lesznek, és az ügyfelek [hibaüzenetet](troubleshoot-common-errors-issues.md)kapnak. A SELECT és DELETE utasítások továbbra is sikeresek lesznek.
 
@@ -80,13 +80,13 @@ A magas munkamenet vagy munkavégző kihasználtsága esetén a kockázatcsökke
 - Az adatbázis vagy a rugalmas készlet szolgáltatási szintjeinek vagy számítási méretének növelése. Lásd: [önálló adatbázis-erőforrások méretezése](single-database-scale.md) és [rugalmas készlet erőforrásainak méretezése](elastic-pool-scale.md).
 - A lekérdezések optimalizálása az egyes lekérdezések erőforrás-kihasználtságának csökkentése érdekében, ha a munkavégzők nagyobb kihasználtságának oka a számítási erőforrások miatti kihasználása. További információkért lásd: [Lekérdezések finomhangolása/Javaslatok](performance-guidance.md#query-tuning-and-hinting).
 - Csökkentse a [MAXDOP](/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option#Guidelines) (maximális párhuzamossági fok) beállítást.
-- A lekérdezési munkaterhelés optimalizálása az előfordulások számának csökkentése és a lekérdezés letiltásának időtartama alapján.
+- A lekérdezési munkaterhelés optimalizálása az előfordulások számának csökkentése és a lekérdezés letiltásának időtartama alapján. További információ: az [Azure SQL-blokkoló problémáinak megismerése és megoldása](understand-resolve-blocking.md).
 
 ### <a name="memory"></a>Memória
 
 Más erőforrásokkal (CPU, munkavégzők, tárterület) ellentétben a memória korlátja nem befolyásolja negatívan a lekérdezési teljesítményt, és nem okoz hibákat és hibákat. A [memória-kezelési architektúra útmutatójában](/sql/relational-databases/memory-management-architecture-guide)leírtak szerint a SQL Server adatbázismotor gyakran használja az összes rendelkezésre álló memóriát a tervezés szerint. A memóriát elsősorban az adatgyorsítótárazáshoz használják, hogy elkerülje a drágább tárterület-hozzáférést. Így a magasabb memóriahasználat általában a memóriából való gyorsabb olvasások miatt javítja a lekérdezési teljesítményt, nem pedig a tárterület lassabb olvasását.
 
-Az adatbázismotor elindítása után, ahogy a munkaterhelés elkezdi beolvasni az adatok tárolásból való beolvasását, az adatbázismotor agresszív módon gyorsítótárazza a memóriában tárolt adatok mennyiségét. A kezdeti felfutási időszak után gyakori és várható, hogy a `avg_memory_usage_percent` sys.dm_db_resource_stats és az `avg_instance_memory_percent` oszlopok az 100 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) %-ban vagy azzal egyenlőek legyenek, különösen olyan adatbázisok esetén, amelyek nem tétlenek, és nem teljes mértékben illenek a memóriába.
+Az adatbázismotor elindítása után, ahogy a munkaterhelés elkezdi beolvasni az adatok tárolásból való beolvasását, az adatbázismotor agresszív módon gyorsítótárazza a memóriában tárolt adatok mennyiségét. A kezdeti felfutási időszak után gyakori és várható, hogy a `avg_memory_usage_percent` sys.dm_db_resource_stats és az `avg_instance_memory_percent` oszlopok az 100 [](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) %-ban vagy azzal egyenlőek legyenek, különösen olyan adatbázisok esetén, amelyek nem tétlenek, és nem teljes mértékben illenek a memóriába.
 
 Az adatgyorsítótáron kívül a rendszer a memóriát használja az adatbázismotor más összetevőiben. Ha igény van a memóriára, és az összes rendelkezésre álló memóriát felhasználta az adatgyorsítótár, az adatbázismotor dinamikusan csökkenti az adatgyorsítótár méretét, hogy a memóriát elérhetővé tegye más összetevők számára, és dinamikusan növelje az adatgyorsítótárat, amikor más összetevők kibocsátják a memóriát.
 

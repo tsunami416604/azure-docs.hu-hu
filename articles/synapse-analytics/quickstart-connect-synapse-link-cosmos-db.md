@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 14c71d5888aefc11485c03935c5d8c7ff7d17045
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7462c78ecad718c30980a98ff7659a2a4d2ea020
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995879"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222156"
 ---
 # <a name="quickstart-connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Gyors útmutató: csatlakozás az Azure szinapszis-hoz Azure Cosmos DB
 
@@ -24,8 +24,8 @@ Ez a cikk bemutatja, hogyan férhet hozzá egy Azure Cosmos DB-adatbázishoz az 
 
 A Azure Cosmos DB-fiók munkaterülethez való kapcsolódása előtt néhány dolog szükséges.
 
-* Meglévő Azure Cosmos DB fiók, vagy hozzon létre egy új [fiókot a rövid](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-database-account) útmutató után
-* Meglévő szinapszis munkaterület, vagy hozzon létre egy új munkaterületet [a rövid](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace) útmutató után 
+* Meglévő Azure Cosmos DB fiók, vagy hozzon létre egy új [fiókot a rövid](../cosmos-db/how-to-manage-database-account.md) útmutató után
+* Meglévő szinapszis munkaterület, vagy hozzon létre egy új munkaterületet [a rövid](./quickstart-create-workspace.md) útmutató után 
 
 ## <a name="enable-azure-cosmos-db-analytical-store"></a>Azure Cosmos DB analitikus tároló engedélyezése
 
@@ -47,7 +47,7 @@ Az adatok Object Explorer a következő lépések végrehajtásával közvetlen�
 4. Válassza a **_Folytatás_* _
 5. Nevezze el a társított szolgáltatást. A név megjelenik a Object Explorerban, és a szinapszis futtatási idejének használatával csatlakozik az adatbázishoz és a tárolóhoz. A felhasználóbarát név használatát javasoljuk.
 6. Válassza ki az _ *Cosmos db fiók nevét** és az **adatbázis nevét** .
-7. Választható Ha nincs megadva régió, a szinapszis futásidejű műveletei a legközelebbi régió felé irányítva lesznek, ahol az analitikai tároló engedélyezve van. Manuálisan is beállíthatja, hogy mely régióhoz szeretné elérni a felhasználókat Cosmos DB analitikus tárolóban. Válassza a **további kapcsolatok tulajdonságai** lehetőséget, majd az **új** elemet. A **tulajdonságnév** alatt írja **_PreferredRegions_*be a PreferredRegions _ értéket, és állítsa a _* értéket** a kívánt régióra (például: WestUS2, nincs szóköz a szavak és a számok között)
+7. Választható Ha nincs megadva régió, a szinapszis futásidejű műveletei a legközelebbi régió felé irányítva lesznek, ahol az analitikai tároló engedélyezve van. Manuálisan is beállíthatja, hogy mely régióhoz szeretné elérni a felhasználókat Cosmos DB analitikus tárolóban. Válassza a **további kapcsolatok tulajdonságai** lehetőséget, majd az **új** elemet. A **tulajdonságnév** alatt írja ***be a PreferredRegions _ értéket, és állítsa a _* értéket** a kívánt régióra (például: WestUS2, nincs szóköz a szavak és a számok között)
 8. A **_create_* _ kiválasztása
 
 Azure Cosmos DB adatbázisok láthatók a Azure Cosmos DB szakaszban található _ *linked** lapon. A HTAP engedélyezett Azure Cosmos DB tárolót egy csak OLTP tárolóból lehet megkülönböztetni a következő ikonokkal:
@@ -64,7 +64,7 @@ Azure Cosmos DB adatbázisok láthatók a Azure Cosmos DB szakaszban található
 
 Ha a jobb gombbal rákattint egy tárolóra, megjelenik egy olyan kézmozdulatok listája, amelyek a Spark vagy az SQL futási idejét indítják el. A tárolóba való írás a Azure Cosmos DB tranzakciós tárolójával történik, és a rendszer a kérelmek egységeit fogja felhasználni.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ismerkedjen meg a szinapszis és a Azure Cosmos DB között támogatottak között](./synapse-link/concept-synapse-link-cosmos-db-support.md)
 * [Megtudhatja, hogyan kérdezheti le a Apache Spark for Azure szinapszis Analytics szolgáltatással rendelkező analitikus tárolót](synapse-link/how-to-query-analytical-store-spark.md)

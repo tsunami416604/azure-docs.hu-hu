@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, responsible-ml
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
 ms.date: 12/21/2020
-ms.openlocfilehash: f004f0f052e466441999c1bfd511823edd6b907e
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: ebc14d6c9d0ebaa6e0258578f94771c9f286bdb4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722436"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221935"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>Különbözeti adatvédelem használata Azure Machine Learningban (előzetes verzió)
 
@@ -148,7 +148,7 @@ A könyvtár használatával összetettebb elemzési diagramokat hozhat létre, 
 | Darabszám         | Gauss   | Típuskonverzió       |
 | Hisztogram     | Lévő értékek mértani  | Befogó   |
 | Középérték          | Laplace    | Digitalizálni   |
-| Kvantilisek     |            | Szűrés     |
+| Kvantilisek     |            | Szűrő     |
 | Sum           |            | Beszámítás |
 | Variancia/szórás |      | Átalakítás  |
 
@@ -245,6 +245,6 @@ with sn.Analysis() as analysis:
 További információ: a [szórásos jegyzetfüzet](
 https://github.com/opendifferentialprivacy/smartnoise-samples/blob/master/analysis/covariance.ipynb)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerkedjen meg a [SmartNoise-minta notebookokkal](https://github.com/opendifferentialprivacy/smartnoise-samples/tree/master/analysis).

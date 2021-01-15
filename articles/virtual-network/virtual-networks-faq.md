@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 5ce5f5cea5d689720455dd8d60f6fff4692a9d3d
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 2cf28565818f6de4d52b57040a80c21d0e03a76c
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179299"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218518"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – Gyakori kérdések (GYIK)
 
@@ -36,7 +36,7 @@ Virtuális hálózatok használata a következőhöz:
 * Hibrid Felhőbeli forgatókönyvek engedélyezése. A virtuális hálózatok révén rugalmasan támogathatja a hibrid felhőalapú forgatókönyvek széles körét. Biztonságosan csatlakoztathatók a felhőalapú alkalmazások bármilyen típusú helyszíni rendszerhez, például nagyszámítógépekhez és UNIX rendszerekhez.
 
 ### <a name="how-do-i-get-started"></a>Hogyan kezdhetek hozzá?
-A kezdéshez látogasson el a [virtuális hálózat dokumentációjában](https://docs.microsoft.com/azure/virtual-network/) . Ez a tartalom áttekintést nyújt az összes VNet-szolgáltatásról, és a központi telepítési információkat tartalmazza.
+A kezdéshez látogasson el a [virtuális hálózat dokumentációjában](./index.yml) . Ez a tartalom áttekintést nyújt az összes VNet-szolgáltatásról, és a központi telepítési információkat tartalmazza.
 
 ### <a name="can-i-use-vnets-without-cross-premises-connectivity"></a>Használhatok virtuális hálózatok a létesítmények közötti kapcsolat nélkül?
 Igen. A VNet a helyszíni csatlakoztatása nélkül is használhatja. Futtathatja például a Microsoft Windows Server Active Directory tartományvezérlőket és a SharePoint-farmokat kizárólag Azure-VNet.
@@ -52,7 +52,7 @@ A VNet létrehozásához és konfigurálásához a következő eszközöket hasz
 * Azure Portal
 * PowerShell
 * Azure CLI
-* Egy hálózati konfigurációs fájl (netcfg – csak a klasszikus virtuális hálózatok). Tekintse meg a [VNet konfigurálása hálózati konfigurációs fájl használatával](virtual-networks-using-network-configuration-file.md) című cikket.
+* Egy hálózati konfigurációs fájl (netcfg – csak a klasszikus virtuális hálózatok). Tekintse meg a [VNet konfigurálása hálózati konfigurációs fájl használatával](/previous-versions/azure/virtual-network/virtual-networks-using-network-configuration-file) című cikket.
 
 ### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>Milyen címtartományok használhatók a virtuális hálózatok?
 Azt javasoljuk, hogy használja a [1918-es számú RFC-dokumentumban](https://tools.ietf.org/html/rfc1918)felsorolt címtartományt, amelyeket az IETF a magánjellegű, nem irányítható tárolóhelyek számára is meghatároz:
@@ -162,7 +162,7 @@ Igen. A Resource Manager-alapú üzemi modellen keresztül üzembe helyezett vir
   - **Resource Manager**: a dinamikus vagy statikus metódushoz rendelt magánhálózati IP-címek továbbra is hozzá vannak rendelve egy virtuális géphez (Resource Manager), amíg az erőforrást nem törlik. A különbség az, hogy kijelöli a statikus használatakor hozzárendelni kívánt címeket, az Azure pedig dinamikus használata esetén választ. 
   - **Klasszikus**: a dinamikus módszerhez rendelt magánhálózati IP-címek megváltozhatnak, ha a virtuális gép (klasszikus) VM újraindul, miután a leállított (fel nem foglalt) állapotú. Ha meg kell győződnie arról, hogy a klasszikus üzemi modellel központilag telepített erőforrások magánhálózati IP-címe soha nem változik, rendeljen hozzá egy magánhálózati IP-címet a statikus metódushoz.
 
-* **Nyilvános:** Opcionálisan hozzá van rendelve a Azure Resource Manager üzemi modellel üzembe helyezett virtuális gépekhez csatolt hálózati adapterekhez. A címeket a statikus vagy dinamikus kiosztási módszerrel lehet hozzárendelni. A klasszikus üzemi modellel telepített összes virtuális gép és Cloud Services szerepkör-példány egy felhőalapú szolgáltatásban található, amely egy *dinamikus*, nyilvános virtuális IP-címet (VIP) rendel hozzá. Egy [fenntartott IP-címnek](virtual-networks-reserved-public-ip.md)nevezett nyilvános *statikus* IP-cím opcionálisan VIP-ként is hozzárendelhető. Nyilvános IP-címeket rendelhet az egyes virtuális gépekhez, vagy Cloud Services a klasszikus üzemi modellel telepített szerepkör-példányokat. Ezeket a címeket [példányok szintjének nyilvános IP-](virtual-networks-instance-level-public-ip.md) címének NEVEZZÜK (ILPIP-címek, és dinamikusan is hozzárendelhetők.
+* **Nyilvános:** Opcionálisan hozzá van rendelve a Azure Resource Manager üzemi modellel üzembe helyezett virtuális gépekhez csatolt hálózati adapterekhez. A címeket a statikus vagy dinamikus kiosztási módszerrel lehet hozzárendelni. A klasszikus üzemi modellel telepített összes virtuális gép és Cloud Services szerepkör-példány egy felhőalapú szolgáltatásban található, amely egy *dinamikus*, nyilvános virtuális IP-címet (VIP) rendel hozzá. Egy [fenntartott IP-címnek](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip)nevezett nyilvános *statikus* IP-cím opcionálisan VIP-ként is hozzárendelhető. Nyilvános IP-címeket rendelhet az egyes virtuális gépekhez, vagy Cloud Services a klasszikus üzemi modellel telepített szerepkör-példányokat. Ezeket a címeket [példányok szintjének nyilvános IP-](/previous-versions/azure/virtual-network/virtual-networks-instance-level-public-ip) címének NEVEZZÜK (ILPIP-címek, és dinamikusan is hozzárendelhetők.
 
 ### <a name="can-i-reserve-a-private-ip-address-for-a-vm-that-i-will-create-at-a-later-time"></a>Foglalhatok le egy magánhálózati IP-címet egy olyan virtuális géphez, amelyet később létre fogok hozni?
 Nem. Privát IP-címet nem foglalhat le. Ha a magánhálózati IP-cím elérhető, a DHCP-kiszolgáló egy virtuális géphez vagy szerepkör-példányhoz rendeli hozzá. Előfordulhat, hogy a virtuális gép nem az, amelyhez hozzá szeretné rendelni a magánhálózati IP-címet. Megváltoztathatja azonban egy már létrehozott virtuális gép magánhálózati IP-címét bármely elérhető magánhálózati IP-címhez.
@@ -177,7 +177,7 @@ Igen, de nem ajánlott, ha szükséges, például ha több IP-címet rendel egy 
 Semmit nem fogok észlelni. Az IP-címek (nyilvános VIP, Public és Private) továbbra is hozzá vannak rendelve a Cloud Service üzembe helyezési ponthoz vagy virtuális géphez.
 
 ### <a name="can-i-move-vms-from-one-subnet-to-another-subnet-in-a-vnet-without-redeploying"></a>Áthelyezhetek virtuális gépeket az egyik alhálózatból egy másik alhálózatba egy VNet újratelepítése nélkül?
-Igen. További információt a [virtuális gép vagy szerepkör példányának áthelyezése másik alhálózatra](virtual-networks-move-vm-role-to-subnet.md) című cikkben talál.
+Igen. További információt a [virtuális gép vagy szerepkör példányának áthelyezése másik alhálózatra](/previous-versions/azure/virtual-network/virtual-networks-move-vm-role-to-subnet) című cikkben talál.
 
 ### <a name="can-i-configure-a-static-mac-address-for-my-vm"></a>Tudok statikus MAC-címeket konfigurálni a virtuális géphez?
 Nem. A MAC-címek nem konfigurálhatók statikusan.
@@ -220,7 +220,7 @@ Nem. A szolgáltatások nem helyezhetők át a virtuális hálózatok és a szol
 A virtuális hálózatok el vannak különítve egymástól, és az Azure-infrastruktúrában üzemeltetett egyéb szolgáltatások. A VNet egy megbízhatósági kapcsolat határa.
 
 ### <a name="can-i-restrict-inbound-or-outbound-traffic-flow-to-vnet-connected-resources"></a>Korlátozható a bejövő vagy a kimenő forgalom a VNet-hez csatlakoztatott erőforrásokra?
-Igen. A [hálózati biztonsági csoportokat](security-overview.md) az egyes alhálózatokra alkalmazhatja egy VNet, VNet csatlakoztatott hálózati adapterek vagy mindkettő használatával.
+Igen. A [hálózati biztonsági csoportokat](./network-security-groups-overview.md) az egyes alhálózatokra alkalmazhatja egy VNet, VNet csatlakoztatott hálózati adapterek vagy mindkettő használatával.
 
 ### <a name="can-i-implement-a-firewall-between-vnet-connected-resources"></a>Használhatok tűzfalat a VNet-hez csatlakoztatott erőforrások között?
 Igen. Az Azure Marketplace-en keresztül üzembe helyezhet egy [tűzfal hálózati virtuális készüléket](https://azure.microsoft.com/marketplace/?term=firewall) több gyártótól.
@@ -234,13 +234,13 @@ Nem. A virtuális hálózatok nem tárolnak ügyféladatokat.
 ## <a name="apis-schemas-and-tools"></a>API-k, sémák és eszközök
 
 ### <a name="can-i-manage-vnets-from-code"></a>Kezelhetem a virtuális hálózatok a kódból?
-Igen. A virtuális hálózatok REST API-kat használhat a [Azure Resource Manager](/rest/api/virtual-network) és a [klasszikus](https://go.microsoft.com/fwlink/?LinkId=296833) üzembe helyezési modellekben.
+Igen. A virtuális hálózatok REST API-kat használhat a [Azure Resource Manager](/rest/api/virtual-network) és a [klasszikus](/previous-versions/azure/ee460799(v=azure.100)) üzembe helyezési modellekben.
 
 ### <a name="is-there-tooling-support-for-vnets"></a>Támogatott-e a virtuális hálózatok-eszközök támogatása?
 Igen. További információ a használatáról:
-- A virtuális hálózatok üzembe helyezésének Azure Portal a [Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network) és a [klasszikus](virtual-networks-create-vnet-classic-pportal.md) üzembe helyezési modelleken keresztül.
+- A virtuális hálózatok üzembe helyezésének Azure Portal a [Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network) és a [klasszikus](/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-pportal) üzembe helyezési modelleken keresztül.
 - PowerShell a [Resource Managerrel](/powershell/module/az.network) és a [klasszikus](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0) üzemi modellel telepített virtuális hálózatok kezeléséhez.
-- Az Azure parancssori felülete (CLI) a [Resource Managerrel](/cli/azure/network/vnet) és a [klasszikus](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-resources) üzemi modellel üzembe helyezett virtuális hálózatok üzembe helyezéséhez és kezeléséhez.  
+- Az Azure parancssori felülete (CLI) a [Resource Managerrel](/cli/azure/network/vnet) és a [klasszikus](/previous-versions/azure/virtual-machines/azure-cli-arm-commands?toc=%2fazure%2fvirtual-network%2ftoc.json#network-resources) üzemi modellel üzembe helyezett virtuális hálózatok üzembe helyezéséhez és kezeléséhez.  
 
 ## <a name="vnet-peering"></a>Virtuális hálózatok közötti társviszony
 
@@ -289,7 +289,7 @@ Nem. A "távoli átjáró használata" beállítás csak az egyik virtuális há
 Nem számítunk fel díjat a VNet-társi kapcsolatok létrehozásához. A rendszer felszámítja az adatátvitelt a partneri kapcsolatokon keresztül. [Lásd itt](https://azure.microsoft.com/pricing/details/virtual-network/).
 
 ### <a name="is-vnet-peering-traffic-encrypted"></a>Titkosítva van-e a VNet-társítási forgalom?
-Ha az Azure-forgalom átkerül az adatközpontok között (a Microsoft vagy a Microsoft nevében nem szabályozott fizikai határokon kívül), a [MACsec adatkapcsolati rétegének titkosítása](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit) a mögöttes hálózati hardveren alapul.  Ez a VNet-társítási forgalomra vonatkozik.
+Ha az Azure-forgalom átkerül az adatközpontok között (a Microsoft vagy a Microsoft nevében nem szabályozott fizikai határokon kívül), a [MACsec adatkapcsolati rétegének titkosítása](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit) a mögöttes hálózati hardveren alapul.  Ez a VNet-társítási forgalomra vonatkozik.
 
 ### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>Miért van a társam kapcsolata *leválasztott* állapotban?
 A VNet-társítási kapcsolatok *leválasztott* állapotba kerülnek, ha töröl egy VNet-társítási hivatkozást. A sikeres társ-létesítési kapcsolat létrehozásához mindkét hivatkozást törölnie kell.
@@ -319,7 +319,7 @@ Igen. Ugyanezen a virtuális hálózati KOPPINTÁSi erőforráson keresztül a t
 
 ### <a name="are-there-any-performance-considerations-on-production-traffic-if-i-enable-a-virtual-network-tap-configuration-on-a-network-interface"></a>Vannak-e az éles forgalomra vonatkozó teljesítményi megfontolások, ha engedélyezem a virtuális hálózatok konfigurációját egy hálózati adapteren?
 
-A virtuális hálózat KOPPINTÁS előzetes verzióban érhető el. Az előzetes verzió ideje alatt nincs szolgáltatói szerződés. A képesség nem használható éles számítási feladatokhoz. Ha egy virtuális gép hálózati adaptere egy KOPPINTÁSi konfigurációval van engedélyezve, ugyanazokat az erőforrásokat kell használni az Azure-gazdagépen, amelyet a virtuális géphez rendeltek, hogy elküldjék az éles forgalmat a tükrözési funkció végrehajtásához és a tükrözött csomagok elküldéséhez. A megfelelő [linuxos](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [Windowsos](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gép méretének kiválasztásával biztosíthatja, hogy elegendő erőforrás álljon rendelkezésre ahhoz, hogy a virtuális gép el lehessen küldeni az üzemi forgalmat és a tükrözött forgalmat.
+A virtuális hálózat KOPPINTÁS előzetes verzióban érhető el. Az előzetes verzió ideje alatt nincs szolgáltatói szerződés. A képesség nem használható éles számítási feladatokhoz. Ha egy virtuális gép hálózati adaptere egy KOPPINTÁSi konfigurációval van engedélyezve, ugyanazokat az erőforrásokat kell használni az Azure-gazdagépen, amelyet a virtuális géphez rendeltek, hogy elküldjék az éles forgalmat a tükrözési funkció végrehajtásához és a tükrözött csomagok elküldéséhez. A megfelelő [linuxos](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [Windowsos](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gép méretének kiválasztásával biztosíthatja, hogy elegendő erőforrás álljon rendelkezésre ahhoz, hogy a virtuális gép el lehessen küldeni az üzemi forgalmat és a tükrözött forgalmat.
 
 ### <a name="is-accelerated-networking-for-linux-or-windows-supported-with-virtual-network-tap"></a>A gyorsított hálózatkezelés [Linux](create-vm-accelerated-networking-cli.md) vagy [Windows rendszeren](create-vm-accelerated-networking-powershell.md) támogatott a Virtual Network-sel?
 
@@ -370,7 +370,7 @@ Alapértelmezés szerint a virtuális hálózatokhoz biztosított Azure-szolgál
 Ahhoz, hogy az Azure-szolgáltatások több alhálózatra is biztonságossá váljon egy virtuális hálózaton vagy több virtuális hálózaton belül, engedélyezze a szolgáltatási végpontokat az egyes alhálózatokon egymástól függetlenül, majd a megfelelő VNet ACL-ek beállításával gondoskodjon az Azure szolgáltatási erőforrásairól az összes alhálózathoz.
  
 ### <a name="how-can-i-filter-outbound-traffic-from-a-virtual-network-to-azure-services-and-still-use-service-endpoints"></a>Hogyan szűrhetik a kimenő forgalmat egy virtuális hálózatról az Azure-szolgáltatásokra, és továbbra is használhatom a szolgáltatási végpontokat?
-Ha egy virtuális hálózatról szeretné megvizsgálni vagy szűrni egy Azure-szolgáltatásra irányuló forgalmat, üzembe helyezhet egy hálózati virtuális berendezést a virtuális hálózaton belül. Ezután szolgáltatási végpontokat alkalmazhat arra az alhálózatra, ahol a hálózati virtuális berendezés üzembe lett helyezve, és az Azure-szolgáltatások erőforrásai csak erre az alhálózatra VNet ACL-eken keresztül is biztonságossá tehetők. Ez a forgatókönyv akkor is hasznos lehet, ha a virtuális hálózatról csak bizonyos Azure-erőforrásokra szeretné korlátozni az Azure-szolgáltatások elérését a hálózati virtuális berendezés szűrése használatával. További információkért lásd a [kimenő forgalommal és a hálózati virtuális berendezésekkel](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha) foglalkozó témakört.
+Ha egy virtuális hálózatról szeretné megvizsgálni vagy szűrni egy Azure-szolgáltatásra irányuló forgalmat, üzembe helyezhet egy hálózati virtuális berendezést a virtuális hálózaton belül. Ezután szolgáltatási végpontokat alkalmazhat arra az alhálózatra, ahol a hálózati virtuális berendezés üzembe lett helyezve, és az Azure-szolgáltatások erőforrásai csak erre az alhálózatra VNet ACL-eken keresztül is biztonságossá tehetők. Ez a forgatókönyv akkor is hasznos lehet, ha a virtuális hálózatról csak bizonyos Azure-erőforrásokra szeretné korlátozni az Azure-szolgáltatások elérését a hálózati virtuális berendezés szűrése használatával. További információkért lásd a [kimenő forgalommal és a hálózati virtuális berendezésekkel](/azure/architecture/reference-architectures/dmz/nva-ha) foglalkozó témakört.
 
 ### <a name="what-happens-when-you-access-an-azure-service-account-that-has-a-virtual-network-access-control-list-acl-enabled-from-outside-the-vnet"></a>Mi történik, ha olyan Azure-szolgáltatásfiók elérésére kerül sor, amely a VNet kívülről engedélyezett virtuális hálózati hozzáférés-vezérlési listával (ACL) rendelkezik?
 A rendszer a HTTP 403 vagy a HTTP 404 hibát adja vissza.
@@ -400,7 +400,7 @@ Nem, az olyan alhálózatból származó ICMP-forgalom, amelyeken engedélyezve 
 Az Azure-szolgáltatás eléréséhez NSG kell a kimenő kapcsolat használatát. Ha a NSG az összes internetes kimenő forgalomra megnyitják, akkor a szolgáltatási végpont forgalmának működnie kell. A kimenő forgalmat a szolgáltatási IP-címekre is korlátozhatja, csak a szolgáltatás címkéit használva.  
  
 ### <a name="what-permissions-do-i-need-to-set-up-service-endpoints"></a>Milyen engedélyek szükségesek a szolgáltatási végpontok beállításához?
-A szolgáltatási végpontokat a virtuális hálózatokon a virtuális hálózathoz írási hozzáféréssel rendelkező felhasználóktól függetlenül lehet konfigurálni. Az Azure-szolgáltatási erőforrások VNet való biztonságossá tételéhez a felhasználónak engedéllyel kell rendelkeznie a **Microsoft. Network/virtualNetworks/Subnets/joinViaServiceEndpoint/Action** szolgáltatáshoz az alhálózatok hozzáadásához. Ez az engedély alapértelmezés szerint szerepel a beépített szolgáltatás-rendszergazdai szerepkörben, és egyéni szerepkörök létrehozásával módosítható. További információk a beépített szerepkörökről és a bizonyos engedélyek [egyéni szerepkörökhöz](https://docs.microsoft.com/azure/role-based-access-control/custom-roles?toc=%2fazure%2fvirtual-network%2ftoc.json) való hozzárendeléséről.
+A szolgáltatási végpontokat a virtuális hálózatokon a virtuális hálózathoz írási hozzáféréssel rendelkező felhasználóktól függetlenül lehet konfigurálni. Az Azure-szolgáltatási erőforrások VNet való biztonságossá tételéhez a felhasználónak engedéllyel kell rendelkeznie a **Microsoft. Network/virtualNetworks/Subnets/joinViaServiceEndpoint/Action** szolgáltatáshoz az alhálózatok hozzáadásához. Ez az engedély alapértelmezés szerint szerepel a beépített szolgáltatás-rendszergazdai szerepkörben, és egyéni szerepkörök létrehozásával módosítható. További információk a beépített szerepkörökről és a bizonyos engedélyek [egyéni szerepkörökhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) való hozzárendeléséről.
  
 
 ### <a name="can-i-filter-virtual-network-traffic-to-azure-services-allowing-only-specific-azure-service-resources-over-vnet-service-endpoints"></a>Szűrhetik-e a virtuális hálózati forgalmat az Azure-szolgáltatásokra, így csak bizonyos Azure-szolgáltatások erőforrásait VNet szolgáltatási végpontokon keresztül? 
@@ -409,7 +409,7 @@ A Virtual Network (VNet) szolgáltatás végponti házirendjei lehetővé teszik
 
 ### <a name="does-azure-active-directory-azure-ad-support-vnet-service-endpoints"></a>Támogatja az Azure Active Directory (Azure AD) a VNet-szolgáltatási végpontok támogatását?
 
-Azure Active Directory (Azure AD) nem támogatja natív módon a szolgáltatási végpontokat. [Itt](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)megtekintheti az VNet szolgáltatási végpontokat támogató Azure-szolgáltatások teljes listáját. Vegye figyelembe, hogy a szolgáltatások támogatása szolgáltatási végpontok területen felsorolt "Microsoft. AzureActiveDirectory" címkét a rendszer az 1. generációs ADLS-végpontok támogatásához használja. Az 1. generációs ADLS-hez készült Virtual Network Integration for Azure Data Lake Storage Gen1 a virtuális hálózat és a Azure Active Directory (Azure AD) közötti virtuális hálózati szolgáltatás végpontjának biztonságát használja a hozzáférési jogkivonat további biztonsági jogcímeinek létrehozásához. Ezután e jogcímek használatával hitelesíti a virtuális hálózatot az 1. generációs Data Lake Storage-fiókkal, és engedélyezi a hozzáférést. További információ az [1. generációs VNet-integrációról Azure Data Lake Store](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+Azure Active Directory (Azure AD) nem támogatja natív módon a szolgáltatási végpontokat. [Itt](./virtual-network-service-endpoints-overview.md)megtekintheti az VNet szolgáltatási végpontokat támogató Azure-szolgáltatások teljes listáját. Vegye figyelembe, hogy a szolgáltatások támogatása szolgáltatási végpontok területen felsorolt "Microsoft. AzureActiveDirectory" címkét a rendszer az 1. generációs ADLS-végpontok támogatásához használja. Az 1. generációs ADLS-hez készült Virtual Network Integration for Azure Data Lake Storage Gen1 a virtuális hálózat és a Azure Active Directory (Azure AD) közötti virtuális hálózati szolgáltatás végpontjának biztonságát használja a hozzáférési jogkivonat további biztonsági jogcímeinek létrehozásához. Ezután e jogcímek használatával hitelesíti a virtuális hálózatot az 1. generációs Data Lake Storage-fiókkal, és engedélyezi a hozzáférést. További információ az [1. generációs VNet-integrációról Azure Data Lake Store](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
 ### <a name="are-there-any-limits-on-how-many-vnet-service-endpoints-i-can-set-up-from-my-vnet"></a>Van-e korlátozás arra vonatkozóan, hogy hány VNet szolgáltatás-végpontot állíthatok be a VNet?
 A virtuális hálózatok VNet-végpontok teljes száma nincs korlátozva. Az Azure-szolgáltatási erőforrások (például egy Azure Storage-fiók) esetében a szolgáltatások korlátozhatják az erőforrás biztosításához használt alhálózatok számát. A következő táblázat néhány példát mutat be: 
@@ -428,10 +428,6 @@ A virtuális hálózatok VNet-végpontok teljes száma nincs korlátozva. Az Azu
 >[!NOTE]
 > A korlátok az Azure-szolgáltatás belátása szerint változnak. A szolgáltatások részleteiért tekintse meg a vonatkozó szolgáltatási dokumentációt. 
 
-
-
-
-  
 
 
 

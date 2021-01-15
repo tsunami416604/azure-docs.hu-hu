@@ -8,12 +8,12 @@ ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: e582415d9a83dc506b77d506f3e0803002129a07
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 24487d3028b90d28f302a6f259096ba68c964541
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180047"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222122"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Azure Maps beltéri Térkép frissítése az Azure digitális Twins használatával
 
@@ -31,7 +31,7 @@ Ez a útmutató a következő módon fog kiterjedni:
     * Ezt a Twin-t egy további végponttal és útvonallal kell kiterjeszteni. Az oktatóanyagból egy másik függvényt is hozzáadhat a Function alkalmazáshoz. 
 * Kövesse a Azure Maps [*oktatóanyagot: a Azure Maps Creator használatával beltéri térképeket hozhat*](../azure-maps/tutorial-creator-indoor-maps.md) létre, amelyekkel Azure Maps fedett térképet hozhat létre a *szolgáltatás stateset*.
     * A [statesets](../azure-maps/creator-indoor-maps.md#feature-statesets) olyan dinamikus tulajdonságok (állapotok) gyűjteményei, amelyek adatkészlet-funkciókhoz, például helyiségekhez vagy berendezésekhez vannak rendelve. A fenti Azure Maps oktatóanyagban a funkció stateset a térképen megjelenített szoba állapotát tárolja.
-    * Szüksége lesz a szolgáltatás *STATESET azonosítóra* és Azure Maps *előfizetés-azonosítóra*.
+    * Szüksége lesz a szolgáltatás *stateset-azonosítójára* és Azure Maps *előfizetési kulcsára*.
 
 ### <a name="topology"></a>Topológia
 
@@ -43,7 +43,7 @@ Az alábbi képen látható, hogy az oktatóanyag Indoor Maps integrációs elem
 
 Először létre kell hoznia egy útvonalat az Azure Digital Ikrekben, hogy az összes, az Event Grid-témakörbe tartozó eseményt továbbítsa. Ezután egy függvény használatával olvassa be ezeket a frissítési üzeneteket, és frissítse a szolgáltatások stateset a Azure Mapsban. 
 
-## <a name="create-a-route-and-filter-to-twin-update-notifications"></a>Útvonal és szűrő létrehozása a kettős frissítési értesítésekhez
+## <a name="create-a-route-and-filter-to-twin-update-notifications"></a>Útvonal létrehozása és szűrés az ikerpéldány frissítési értesítéseire
 
 Az Azure Digital Twins-példányok dupla frissítési eseményeket bocsátanak ki, amikor a Twin állapot frissül. Az Azure Digital Twins [*oktatóanyaga: a fenti lépésekhez kapcsolódó végpontok közötti megoldás összekapcsolása*](./tutorial-end-to-end.md) egy olyan forgatókönyvvel, amelyben egy hőmérőt használ egy szoba Twin-hez csatolt hőmérséklet-attribútum frissítéséhez. Ezt a megoldást kiterjesztheti az ikrek frissítési értesítéseire való feliratkozással, és ezekkel az információkkal frissítheti a térképeket.
 
@@ -59,12 +59,12 @@ Ez a minta közvetlenül a IoT-eszköz helyett a Twin szobaból olvassa be, amel
     az dt endpoint create eventgrid --endpoint-name <Event-Grid-endpoint-name> --eventgrid-resource-group <Event-Grid-resource-group-name> --eventgrid-topic <your-Event-Grid-topic-name> -n <your-Azure-Digital-Twins-instance-name>
     ```
 
-3. Hozzon létre egy útvonalat az Azure Digital Ikrekben, hogy dupla frissítési eseményt küldjön a végpontnak.
+3. Hozzon létre egy útvonalat az Azure Digital Twinsben, amelyen elküldheti az ikerpéldányok frissítési eseményeit a végpontnak.
 
     >[!NOTE]
-    >Jelenleg egy **ismert probléma** van a Cloud shellt érintő következő parancsokkal: `az dt route` , `az dt model` , `az dt twin` .
+    >A Cloud Shellben jelenleg egy **ismert probléma** akadályozza az alábbi parancscsoportokat: `az dt route`, `az dt model`, `az dt twin`.
     >
-    >A probléma megoldásához futtassa a `az login` parancsot Cloud Shell a parancs futtatása előtt, vagy használja a [helyi](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) parancssori felületet Cloud Shell helyett. Erről további részleteket a [*Hibaelhárítás: az Azure digitális Twins ismert problémái*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)című témakörben talál.
+    >Ennek feloldásához futtassa az `az login` parancsot a parancs előtt a Cloud Shellben, vagy használja a [helyi CLI-t](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) a Cloud Shell helyett. Erről további részleteket a [*Hibaelhárítás: az Azure digitális Twins ismert problémái*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)című témakörben talál.
 
     ```azurecli-interactive
     az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
@@ -72,7 +72,7 @@ Ez a minta közvetlenül a IoT-eszköz helyett a Twin szobaból olvassa be, amel
 
 ## <a name="create-a-function-to-update-maps"></a>Leképezést frissítő függvény létrehozása
 
-Létre fog hozni egy Event Grid által aktivált függvényt a Function alkalmazásban a teljes körű oktatóanyagban ([*oktatóanyag: végpontok közötti megoldás összekapcsolása*](./tutorial-end-to-end.md)). Ez a függvény kicsomagolja ezeket az értesítéseket, és frissítéseket küld egy Azure Maps szolgáltatás stateset egy szoba hőmérsékletének frissítéséhez. 
+Létre fog hozni egy *Event Grid által aktivált függvényt* a Function alkalmazásban a teljes körű oktatóanyagban ([*oktatóanyag: végpontok közötti megoldás összekapcsolása*](./tutorial-end-to-end.md)). Ez a függvény kicsomagolja ezeket az értesítéseket, és frissítéseket küld egy Azure Maps szolgáltatás stateset egy szoba hőmérsékletének frissítéséhez. 
 
 Tekintse meg a következő dokumentumot a hivatkozási információkhoz: [*Azure Event Grid trigger Azure functions*](../azure-functions/functions-bindings-event-grid-trigger.md).
 
@@ -83,8 +83,8 @@ Cserélje le a függvény kódját a következő kódra. Csak a Space ikrek fris
 A Function alkalmazásban két környezeti változót kell beállítania. Az egyik a [Azure Maps elsődleges előfizetési kulcs](../azure-maps/quick-demo-map-app.md#get-the-primary-key-for-your-account), és az egyik a [Azure Maps stateset azonosítója](../azure-maps/tutorial-creator-indoor-maps.md#create-a-feature-stateset).
 
 ```azurecli-interactive
-az functionapp config appsettings set --settings "subscription-key=<your-Azure-Maps-primary-subscription-key> -g <your-resource-group> -n <your-App-Service-(function-app)-name>"
-az functionapp config appsettings set --settings "statesetID=<your-Azure-Maps-stateset-ID> -g <your-resource-group> -n <your-App-Service-(function-app)-name>
+az functionapp config appsettings set --name <your-App-Service-(function-app)-name> --resource-group <your-resource-group> --settings "subscription-key=<your-Azure-Maps-primary-subscription-key>"
+az functionapp config appsettings set --name <your-App-Service-(function-app)-name>  --resource-group <your-resource-group> --settings "statesetID=<your-Azure-Maps-stateset-ID>"
 ```
 
 ### <a name="view-live-updates-on-your-map"></a>Élő frissítések megtekintése a térképen
@@ -94,7 +94,7 @@ Az élő frissítés hőmérsékletének megtekintéséhez kövesse az alábbi l
 1. Szimulált IoT-adatok küldésének megkezdése a **DeviceSimulator** -projekt futtatásával az Azure Digital Twins [*oktatóanyagból: Kapcsolódás végpontok közötti megoldáshoz*](tutorial-end-to-end.md). Az ehhez tartozó útmutatást a a [*configure és a Run The szimuláció*](././tutorial-end-to-end.md#configure-and-run-the-simulation) szakaszban találja.
 2. [A **Azure Maps beltéri** modul](../azure-maps/how-to-use-indoor-module.md) használatával jelenítheti meg a Azure Maps creatorben létrehozott beltéri térképeket.
     1. Másolja a HTML-t a [*példából: használja*](../azure-maps/how-to-use-indoor-module.md#example-use-the-indoor-maps-module) a beltéri térképek című oktatóanyag beltéri térképek modulját [*: használja a Azure Maps beltéri térképek modult*](../azure-maps/how-to-use-indoor-module.md) egy helyi fájlba.
-    1. Cserélje le a *tilesetId* és a *STATESETID* a helyi HTML-fájlba az értékekkel.
+    1. Cserélje le az *előfizetési kulcsot*, a *TilesetId* és a *statesetID*  a helyi HTML-fájlba az értékekkel.
     1. Nyissa meg a fájlt a böngészőben.
 
 Mindkét minta egy kompatibilis tartományba küldi a hőmérsékletet, ezért 30 másodpercenként a térképen a 121-es frissítés színét kell látnia.

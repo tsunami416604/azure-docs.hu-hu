@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: bd35d3288591a01c14e306960601eef6dea7e761
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 02a6e934b517cdd118b6175d9cfef73bee4c996d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97954141"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223006"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-the-azure-portal"></a>Gyors útmutató: nyilvános IP-cím létrehozása a Azure Portal használatával
 
-Ez a cikk bemutatja, hogyan hozhat létre egy nyilvános IP-cím-erőforrást a Azure Portal használatával. További információ arról, hogy mely erőforrásokhoz lehet társítva, az alapszintű és a standard SKU és az egyéb kapcsolódó információk között a [nyilvános IP-címek](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses)című részben talál.  Ebben a példában csak IPv4-címekre fogunk összpontosítani; További információ az IPv6-címekről: [IPv6 for Azure VNet](https://docs.microsoft.com/azure/virtual-network/ipv6-overview).
+Ez a cikk bemutatja, hogyan hozhat létre egy nyilvános IP-cím-erőforrást a Azure Portal használatával. További információ arról, hogy mely erőforrásokhoz lehet társítva, az alapszintű és a standard SKU és az egyéb kapcsolódó információk között a [nyilvános IP-címek](./public-ip-addresses.md)című részben talál.  Ebben a példában csak IPv4-címekre fogunk összpontosítani; További információ az IPv6-címekről: [IPv6 for Azure VNet](./ipv6-overview.md).
 
 # <a name="standard-sku---using-zones"></a>[**Szabványos SKU – zónák használatával**](#tab/option-create-public-ip-standard-zones)
 
@@ -46,9 +46,9 @@ A következő lépések végrehajtásával hozzon létre egy **myStandardZRPubli
     | Hely                | Válassza az **USA 2. keleti** régióját      |
     | Rendelkezésre állási zóna       | Válasszon **zónát – redundáns** vagy válasszon ki egy adott zónát (lásd az alábbi megjegyzést) |
 
-Vegye figyelembe, hogy ezek csak a [Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones)-val rendelkező régiókban érvényesek.  (Kiválaszthat egy adott zónát ezekben a régiókban, bár nem lesz rugalmas a zónabeli meghibásodás miatt.)
+Vegye figyelembe, hogy ezek csak a [Availability Zones](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones)-val rendelkező régiókban érvényesek.  (Kiválaszthat egy adott zónát ezekben a régiókban, bár nem lesz rugalmas a zónabeli meghibásodás miatt.)
 
-\* = A réteg a [régiók közötti Load Balancer](https://docs.microsoft.com/azure/load-balancer/cross-region-overview) funkcióra vonatkozik, amely jelenleg előzetes verzióban érhető el.
+\* = A réteg a [régiók közötti Load Balancer](../load-balancer/cross-region-overview.md) funkcióra vonatkozik, amely jelenleg előzetes verzióban érhető el.
 
 # <a name="basic-sku"></a>[**Alapszintű termékváltozat**](#tab/option-create-public-ip-basic)
 
@@ -78,9 +78,9 @@ Ha elfogadható az IP-cím időbeli változása, akkor kiválaszthatja a **dinam
 
 ## <a name="additional-information"></a>További információ 
 
-A fent felsorolt egyes mezőkről további részleteket a [nyilvános IP-címek kezelése](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#create-a-public-ip-address)című témakörben talál.
+A fent felsorolt egyes mezőkről további részleteket a [nyilvános IP-címek kezelése](./virtual-network-public-ip-address.md#create-a-public-ip-address)című témakörben talál.
 
-## <a name="next-steps"></a>További lépések
-- [Nyilvános IP-cím hozzárendelése virtuális géphez](https://docs.microsoft.com/azure/virtual-network/associate-public-ip-address-vm#azure-portal)
-- További információ az Azure [-beli nyilvános IP-címekről](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) .
+## <a name="next-steps"></a>Következő lépések
+- [Nyilvános IP-cím hozzárendelése virtuális géphez](./associate-public-ip-address-vm.md#azure-portal)
+- További információ az Azure [-beli nyilvános IP-címekről](./public-ip-addresses.md#public-ip-addresses) .
 - További információ az összes [nyilvános IP-cím beállításról](virtual-network-public-ip-address.md#create-a-public-ip-address).

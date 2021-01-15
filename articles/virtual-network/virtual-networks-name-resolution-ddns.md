@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: subsarma
-ms.openlocfilehash: 9f5b535a341956e5675ba96ba9570bd3f2ff3443
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad91eb94aedcdd0e4e715162e3ae064a1d2fb1ea
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84710949"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220422"
 ---
 # <a name="use-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>Dinamikus DNS használata a gazdagépek regisztrálásához a saját DNS-kiszolgálón
 
@@ -28,7 +28,7 @@ Az Azure a virtuális gépek (VM) és a szerepkör-példányok névfeloldását 
 Ha az egyéni DNS-kiszolgálók Azure-beli virtuális gépekként vannak tárolva, a gazdagépek feloldásához továbbíthatja az állomásnév-lekérdezéseket ugyanarra a virtuális hálózatra az Azure-ban. Ha nem szeretné használni ezt a beállítást, a DNS-kiszolgálón regisztrálhatja a virtuális gép állomásnevét a dinamikus DNS (DDNS) használatával. Az Azure nem rendelkezik a hitelesítő adatokkal a DNS-kiszolgálókon lévő rekordok közvetlen létrehozásához, ezért az alternatív megoldások gyakran szükségesek. Néhány gyakori forgatókönyv, a következő alternatívákkal:
 
 ## <a name="windows-clients"></a>Windows-ügyfelek
-A tartományhoz nem csatlakoztatott Windows-ügyfelek megkísérlik a nem biztonságos DDNS-frissítéseket a rendszerindításkor vagy az IP-címük változásakor. A DNS-név az állomásnév és az elsődleges DNS-utótag. Az Azure üresen hagyja az elsődleges DNS-utótagot, de beállíthatja a virtuális gép utótagját a [felhasználói felületen](https://technet.microsoft.com/library/cc794784.aspx) vagy a [powershellen](/powershell/module/dnsclient/set-dnsclient)keresztül.
+A tartományhoz nem csatlakoztatott Windows-ügyfelek megkísérlik a nem biztonságos DDNS-frissítéseket a rendszerindításkor vagy az IP-címük változásakor. A DNS-név az állomásnév és az elsődleges DNS-utótag. Az Azure üresen hagyja az elsődleges DNS-utótagot, de beállíthatja a virtuális gép utótagját a [felhasználói felületen](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc794784(v=ws.10)) vagy a [powershellen](/powershell/module/dnsclient/set-dnsclient)keresztül.
 
 A tartományhoz csatlakoztatott Windows-ügyfelek a biztonságos DDNS használatával regisztrálják az IP-címüket a tartományvezérlőhöz. A tartományhoz való csatlakozás folyamata beállítja az elsődleges DNS-utótagot az ügyfélen, és létrehozza és karbantartja a megbízhatósági kapcsolatot.
 

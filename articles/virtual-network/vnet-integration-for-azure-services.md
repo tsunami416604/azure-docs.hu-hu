@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: kumud
-ms.openlocfilehash: a25d6d0d1990682287b5962a7bd93a0c525db133
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: a29454f09268406511730c63dcc3bc3063b909c6
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882364"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218654"
 ---
 # <a name="integrate-azure-services-with-virtual-networks-for-network-isolation"></a>Azure-szolgáltatások integrálása virtuális hálózatokkal hálózati elkülönítéshez
 
@@ -66,7 +66,7 @@ További információ: [Virtual Network szolgáltatás-végpontok](virtual-netwo
 
 ## <a name="service-tags"></a>Szolgáltatáscímkék
 
-A szolgáltatás címkéje egy adott Azure-szolgáltatás IP-címeinek egy csoportját jelöli. A szolgáltatás-címkék használatával hálózati [biztonsági csoportokon](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) vagy [Azure Firewallon](https://docs.microsoft.com/azure/firewall/service-tags)is meghatározhat hálózati hozzáférés-vezérlést. A szolgáltatási címke nevének (például AzureEventGrid) megadásával a szabály megfelelő forrás vagy cél mezőjében engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát.
+A szolgáltatás címkéje egy adott Azure-szolgáltatás IP-címeinek egy csoportját jelöli. A szolgáltatás-címkék használatával hálózati [biztonsági csoportokon](./network-security-groups-overview.md#security-rules) vagy [Azure Firewallon](../firewall/service-tags.md)is meghatározhat hálózati hozzáférés-vezérlést. A szolgáltatási címke nevének (például AzureEventGrid) megadásával a szabály megfelelő forrás vagy cél mezőjében engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát.
 
 ![Forgalom engedélyezése vagy megtagadása szolgáltatás-címkék használatával](./media/network-isolation/service-tags.png)
 
@@ -74,8 +74,8 @@ A szolgáltatás-címkék használatával hálózati elkülönítést érhet el,
 
 További információ az azokat támogató szolgáltatási címkékről és Azure-szolgáltatásokról: a [szolgáltatási címkék áttekintése](service-tags-overview.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [integrálhatja az alkalmazást egy Azure-hálózattal](../app-service/web-sites-integrate-with-vnet.md).
 - Megtudhatja, hogyan [korlátozhatja az erőforrásokhoz való hozzáférést a szolgáltatás-címkék használatával](tutorial-restrict-network-access-to-resources.md).
-- Ismerje meg, hogyan csatlakozhat az Azure [Cosmos-fiókhoz az Azure Private link használatával](../private-link/create-private-endpoint-cosmosdb-portal.md).
+- Ismerje meg, hogyan csatlakozhat az Azure [Cosmos-fiókhoz az Azure Private link használatával](../private-link/tutorial-private-endpoint-cosmosdb-portal.md).

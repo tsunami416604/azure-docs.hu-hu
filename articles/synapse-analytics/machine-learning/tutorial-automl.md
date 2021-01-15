@@ -9,16 +9,16 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: e219531a88787f19197a2e8c2a80040497c6dc1e
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: f3b0c5f1487951d05bc83973e5b4b9f3634a694b
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901419"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222258"
 ---
 # <a name="tutorial-train-a-machine-learning-model-without-code"></a>Oktatóanyag: gépi tanulási modell betanítása kód nélkül
 
-A Spark-táblázatokban lévő adatait az [automatikus gépi tanulás](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml)használatával betanított új gépi tanulási modellekkel bővítheti. Az Azure szinapszis Analyticsben kiválaszthat egy Spark-táblázatot a munkaterületen, amely képzési adatkészletként használható a gépi tanulási modellek létrehozásához, és ezt kód nélküli felhasználói élményben teheti meg.
+A Spark-táblázatokban lévő adatait az [automatikus gépi tanulás](../../machine-learning/concept-automated-ml.md)használatával betanított új gépi tanulási modellekkel bővítheti. Az Azure szinapszis Analyticsben kiválaszthat egy Spark-táblázatot a munkaterületen, amely képzési adatkészletként használható a gépi tanulási modellek létrehozásához, és ezt kód nélküli felhasználói élményben teheti meg.
 
 Ebből az oktatóanyagból megtudhatja, hogyan végezheti el a gépi tanulási modellek betanítását az Azure szinapszis Analytics Studio kód nélküli felhasználói felületének használatával. Az automatizált gépi tanulást Azure Machine Learning használhatja a felhasználói felület manuális kódolása helyett. A betanított modell típusa a megoldani kívánt problémától függ.
 

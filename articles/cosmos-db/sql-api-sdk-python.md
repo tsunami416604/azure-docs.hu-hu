@@ -9,14 +9,14 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-python
-ms.openlocfilehash: b69b3a3888b2d6e19b8eaa92ba9b2fedf0e15545
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 27bcb220c67392661cc1b2875823abdca4593bd4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091118"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220949"
 ---
-# <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK for SQL API: kibocsátási megjegyzések és erőforrások
+# <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>SQL API-hoz készült Azure Cosmos DB Python SDK: Kibocsátási megjegyzések és erőforrások
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
@@ -320,34 +320,34 @@ A B1-es verzió a 4.0.0 első előzetes verziója, amely a Python nyelvi ajánlo
 A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivonásáról, hogy zökkenőmentes legyen az áttérés egy újabb/támogatott verzióra. Új szolgáltatásokkal, funkciókkal és optimalizálásokkal csak az aktuális SDK bővül, ezért azt javasoljuk, hogy a mindig lehető leghamarabb frissítsen a legújabb SDK-verzióra.
 
 > [!WARNING]
-> A 2022. augusztus 31-ig a Azure Cosmos DB többé nem javít hibajavításokat, új funkciókat adhat hozzá, és támogatást biztosít az SQL API-hoz készült Azure Cosmos DB Python SDK 1. x vagy 2. x verziójához. Ha nem szeretné, hogy a rendszer ne frissítse az SDK 1. x és 2. x verziójában küldött kérelmeket, továbbra is a Azure Cosmos DB szolgáltatás fogja kiszolgálni.
+> 2022. augusztus 31-ig a Azure Cosmos DB többé nem javít, vagy nem nyújt támogatást az SQL API-hoz készült Azure Cosmos DB Python SDK 1. x és 2. x verziójához. Ha nem szeretné, hogy a rendszer ne frissítse az SDK 1. x és 2. x verziójában küldött kérelmeket, továbbra is a Azure Cosmos DB szolgáltatás fogja kiszolgálni.
 
 | Verzió | Kiadás dátuma | Kivonás dátuma |
 | --- | --- | --- |
 | [4.0.0](#400) |2020. május 20. |--- |
 | [3.0.2](#302) |November 15., 2018 |--- |
 | [3.0.1](#301) |Oct 04, 2018 |--- |
-| [2.3.3](#233) |Szeptember 08., 2018 |2020. augusztus 30-ig |
-| [2.3.2](#232) |2018. május 8. |2020. augusztus 30-ig |
-| [2.3.1](#231) |December 21., 2017 |2020. augusztus 30-ig |
-| [2.3.0](#230) |November 10., 2017 |2020. augusztus 30-ig |
-| [2.2.1](#221) |Szeptember 29., 2017 |2020. augusztus 30-ig |
-| [2.2.0](#220) |2017. május 10. |2020. augusztus 30-ig |
-| [2.1.0](#210) |Május 01., 2017 |2020. augusztus 30-ig |
-| [2.0.1](#201) |Október 30-ig 2016 |2020. augusztus 30-ig |
-| [2.0.0](#200) |Szeptember 29., 2016 |2020. augusztus 30-ig |
-| [1.9.0](#190) |2016. július 7. |2020. augusztus 30-ig |
-| [1.8.0](#180) |Június 14., 2016 |2020. augusztus 30-ig |
-| [1.7.0](#170) |2016. április 26. |2020. augusztus 30-ig |
-| [1.6.1](#161) |2016. április 08. |2020. augusztus 30-ig |
-| [1.6.0](#160) |Március 29., 2016 |2020. augusztus 30-ig |
-| [1.5.0](#150) |2016. január 03. |2020. augusztus 30-ig |
-| [1.4.2](#142) |Október 06.2015 |2020. augusztus 30-ig |
-| 1.4.1 |Október 06.2015 |2020. augusztus 30-ig |
-| [1.2.0](#120) |Augusztus 06, 2015 |2020. augusztus 30-ig |
-| [1.1.0](#110) |Július 9., 2015 |2020. augusztus 30-ig |
-| [1.0.1](#101) |2015. május 25. |2020. augusztus 30-ig |
-| 1.0.0 |2015. április 7. |2020. augusztus 30-ig |
+| [2.3.3](#233) |Szeptember 08., 2018 |Augusztus 31., 2022 |
+| [2.3.2](#232) |2018. május 8. |Augusztus 31., 2022 |
+| [2.3.1](#231) |December 21., 2017 |Augusztus 31., 2022 |
+| [2.3.0](#230) |November 10., 2017 |Augusztus 31., 2022 |
+| [2.2.1](#221) |Szeptember 29., 2017 |Augusztus 31., 2022 |
+| [2.2.0](#220) |2017. május 10. |Augusztus 31., 2022 |
+| [2.1.0](#210) |Május 01., 2017 |Augusztus 31., 2022 |
+| [2.0.1](#201) |Október 30-ig 2016 |Augusztus 31., 2022 |
+| [2.0.0](#200) |Szeptember 29., 2016 |Augusztus 31., 2022 |
+| [1.9.0](#190) |2016. július 7. |Augusztus 31., 2022 |
+| [1.8.0](#180) |Június 14., 2016 |Augusztus 31., 2022 |
+| [1.7.0](#170) |2016. április 26. |Augusztus 31., 2022 |
+| [1.6.1](#161) |2016. április 08. |Augusztus 31., 2022 |
+| [1.6.0](#160) |Március 29., 2016 |Augusztus 31., 2022 |
+| [1.5.0](#150) |2016. január 03. |Augusztus 31., 2022 |
+| [1.4.2](#142) |Október 06.2015 |Augusztus 31., 2022 |
+| 1.4.1 |Október 06.2015 |Augusztus 31., 2022 |
+| [1.2.0](#120) |Augusztus 06, 2015 |Augusztus 31., 2022 |
+| [1.1.0](#110) |Július 9., 2015 |Augusztus 31., 2022 |
+| [1.0.1](#101) |2015. május 25. |Augusztus 31., 2022 |
+| 1.0.0 |2015. április 7. |Augusztus 31., 2022 |
 | 0.9.4 – előbérlet |Január 14., 2015 |Február 29., 2016 |
 | 0.9.3 – előbérlet |December 9., 2014 |Február 29., 2016 |
 | 0.9.2 – előbérlet |November 25., 2014 |Február 29., 2016 |

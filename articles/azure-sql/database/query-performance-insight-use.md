@@ -10,13 +10,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
-ms.date: 03/10/2020
-ms.openlocfilehash: a016781e5b05c8f43c043bf1f3368a58064e43ad
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 1/14/2021
+ms.openlocfilehash: db24f280f66e567572821297cfc9bb9b1e19743b
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501260"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222343"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Azure SQL Database Lekérdezési terheléselemző
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -155,7 +155,7 @@ A lekérdezés részleteinek megtekintése:
 
 A Lekérdezési terheléselemző két mérőszáma segíthet megtalálni a potenciális szűk keresztmetszeteket: időtartam és végrehajtások száma.
 
-A hosszan futó lekérdezések a lehető legnagyobb potenciállal rendelkeznek az erőforrások hosszabb zárolásához, más felhasználók blokkolásához és a méretezhetőség korlátozásához. Ők is a legjobb választás az optimalizáláshoz.
+A hosszan futó lekérdezések a lehető legnagyobb potenciállal rendelkeznek az erőforrások hosszabb zárolásához, más felhasználók blokkolásához és a méretezhetőség korlátozásához. Ők is a legjobb választás az optimalizáláshoz. További információ: az [Azure SQL-blokkoló problémáinak megismerése és megoldása](understand-resolve-blocking.md).
 
 A hosszú ideig futó lekérdezések azonosítása:
 
@@ -276,6 +276,6 @@ Ezen beállítások alkalmazása végül a Query Store telemetria gyűjti az új
     ALTER DATABASE [YourDB] SET QUERY_STORE CLEAR;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Érdemes [Azure SQL Analyticst](../../azure-monitor/insights/azure-sql.md) használni az önálló és készletezett adatbázisok, rugalmas készletek, felügyelt példányok és példány-adatbázisok nagy flottájának speciális teljesítményének figyelésére.

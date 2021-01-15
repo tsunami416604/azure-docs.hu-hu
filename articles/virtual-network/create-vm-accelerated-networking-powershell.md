@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 04/15/2020
 ms.author: gsilva
-ms.openlocfilehash: fd50af98fe0d7f20273c45e2b86c18215a3626f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3728a2b67529bab0900d42b3e39140d9329bc83
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87289631"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223635"
 ---
-# <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>Gyorsított hálózatkezeléssel rendelkező Windows rendszerű virtuális gép létrehozása Azure PowerShell használatával
+# <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>Gyorsított hálózatkezeléssel rendelkező, Windows rendszerű virtuális gép létrehozása az Azure PowerShell használatával
 
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy gyorsított hálózatkezeléssel rendelkező Windows rendszerű virtuális gépet (VM).
 
@@ -65,7 +65,7 @@ A gyorsított hálózatkezelést a legtöbb általános célú és a számítás
 
 Az feleznie-t támogató példányokon a gyorsított hálózatkezelést a négy vagy több vCPU rendelkező virtuálisgép-példányok támogatják. A támogatott adatsorozatok: D/Dsv3, D/Dsv4, da/Dasv4, E/Esv3, EA/Easv4, Fsv2, Lsv2, MS/MMS és MS/Mmsv2.
 
-A virtuálisgép-példányokkal kapcsolatos további információkért lásd: [a Windows rendszerű virtuális gépek méretei az Azure-ban](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+A virtuálisgép-példányokkal kapcsolatos további információkért lásd: [a Windows rendszerű virtuális gépek méretei az Azure-ban](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ### <a name="custom-images"></a>Egyéni képek
 
@@ -85,7 +85,7 @@ A virtuális gépek (klasszikus) nem helyezhetők üzembe gyorsított hálózatk
 
 ## <a name="vm-creation-using-the-portal"></a>VIRTUÁLIS gépek létrehozása a portál használatával
 
-Bár ez a cikk a gyorsított hálózatkezelést használó virtuális gépek Azure PowerShell használatával történő létrehozásának lépéseit ismerteti, a Azure Portal is használhatja a gyorsított hálózatkezelést lehetővé tevő [virtuális gép létrehozásához](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) . Amikor létrehoz egy virtuális gépet a portálon, a **virtuális gép létrehozása** lapon válassza a **hálózatkezelés** lapot. Ezen a lapon megadható a **gyorsított hálózatkezelés**. Ha a [támogatott operációs rendszert](#supported-operating-systems) és virtuálisgép- [méretet](#supported-vm-instances)választotta, akkor **Ez a beállítás**automatikusan be értékre van állítva. Ellenkező esetben a beállítás **ki**értékre van állítva, és az Azure megjeleníti az okát, hogy miért nem engedélyezhető.
+Bár ez a cikk a gyorsított hálózatkezelést használó virtuális gépek Azure PowerShell használatával történő létrehozásának lépéseit ismerteti, a Azure Portal is használhatja a gyorsított hálózatkezelést lehetővé tevő [virtuális gép létrehozásához](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) . Amikor létrehoz egy virtuális gépet a portálon, a **virtuális gép létrehozása** lapon válassza a **hálózatkezelés** lapot. Ezen a lapon megadható a **gyorsított hálózatkezelés**. Ha a [támogatott operációs rendszert](#supported-operating-systems) és virtuálisgép- [méretet](#supported-vm-instances)választotta, akkor **Ez a beállítás** automatikusan be értékre van állítva. Ellenkező esetben a beállítás **ki** értékre van állítva, és az Azure megjeleníti az okát, hogy miért nem engedélyezhető.
 
 > [!NOTE]
 > Csak a támogatott operációs rendszerek engedélyezhetők a portálon keresztül. Ha egyéni rendszerképet használ, és a rendszerkép támogatja a gyorsított hálózatkezelést, akkor a parancssori felület vagy a PowerShell használatával hozza létre a virtuális gépet. 
@@ -96,7 +96,7 @@ A virtuális gép létrehozása után ellenőrizheti, hogy engedélyezve van-e a
 
 2. A virtuális gép listából válassza ki az új virtuális gépet.
 
-3. A virtuális gép menüsorában válassza a **hálózatkezelés**lehetőséget.
+3. A virtuális gép menüsorában válassza a **hálózatkezelés** lehetőséget.
 
 A hálózati adapteren, a **gyorsított hálózati** címke mellett a portál vagy a **letiltott** , vagy a gyorsított hálózatkezelési állapothoz **engedélyezve** érték jelenik meg.
 
@@ -104,7 +104,7 @@ A hálózati adapteren, a **gyorsított hálózati** címke mellett a portál va
 
 A folytatás előtt telepítse a [Azure PowerShell](/powershell/azure/install-az-ps) vagy újabb verziójú 1.0.0-t. A jelenleg telepített verziójának megkereséséhez futtassa a parancsot `Get-Module -ListAvailable Az` . Ha telepíteni vagy frissíteni szeretne, telepítse az az modul legújabb verzióját a [PowerShell-Galéria](https://www.powershellgallery.com/packages/Az). Egy PowerShell-munkamenetben jelentkezzen be egy Azure-fiókba a Connection [-AzAccount](/powershell/module/az.accounts/connect-azaccount)használatával.
 
-Az alábbi példákban cserélje le a példában szereplő paraméterek nevét a saját értékeire. Példa a paraméterek neveire: *myResourceGroup*, *myNic*és *myVM*.
+Az alábbi példákban cserélje le a példában szereplő paraméterek nevét a saját értékeire. Példa a paraméterek neveire: *myResourceGroup*, *myNic* és *myVM*.
 
 ### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
@@ -114,7 +114,7 @@ Az alábbi példákban cserélje le a példában szereplő paraméterek nevét a
     New-AzResourceGroup -Name "myResourceGroup" -Location "centralus"
     ```
 
-2. Hozzon létre egy alhálózati konfigurációt a [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.Network/New-azVirtualNetworkSubnetConfig). A következő parancs létrehoz egy *mySubnet*nevű alhálózatot:
+2. Hozzon létre egy alhálózati konfigurációt a [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.Network/New-azVirtualNetworkSubnetConfig). A következő parancs létrehoz egy *mySubnet* nevű alhálózatot:
 
     ```azurepowershell
     $subnet = New-AzVirtualNetworkSubnetConfig `
@@ -208,7 +208,7 @@ Az alábbi példákban cserélje le a példában szereplő paraméterek nevét a
     $vmConfig = New-AzVMConfig -VMName "myVm" -VMSize "Standard_DS4_v2"
     ```
 
-    A virtuális gépek méretének és jellemzőinek listáját lásd: [Windows rendszerű virtuális gépek mérete](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    A virtuális gépek méretének és jellemzőinek listáját lásd: [Windows rendszerű virtuális gépek mérete](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 3. Hozza létre a virtuális gép többi konfigurációját a [set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem) és a [set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage). A következő parancs egy Windows Server 2016 rendszerű virtuális gépet hoz létre:
 
@@ -246,13 +246,13 @@ Miután létrehozta a virtuális gépet az Azure-ban, kapcsolódjon a virtuális
 
 2. A virtuális gép listából válassza ki az új virtuális gépet.
 
-3. A virtuális gép áttekintése lapon, ha a virtuális gép **állapota** **létrehozáskor**szerepel, várjon, amíg az Azure befejezi a virtuális gép létrehozását. A virtuális gép létrehozása után az **állapot** a **futtatásra** módosul.
+3. A virtuális gép áttekintése lapon, ha a virtuális gép **állapota** **létrehozáskor** szerepel, várjon, amíg az Azure befejezi a virtuális gép létrehozását. A virtuális gép létrehozása után az **állapot** a **futtatásra** módosul.
 
-4. A virtuális gép áttekintő eszköztárán válassza az **Connect**  >  **RDP**-  >  **Letöltés RDP-fájljának**összekapcsolását.
+4. A virtuális gép áttekintő eszköztárán válassza az   >  **RDP**-  >  **Letöltés RDP-fájljának** összekapcsolását.
 
 5. Nyissa meg az. rdp-fájlt, majd jelentkezzen be a virtuális gépre a [virtuális gép létrehozása és a hálózati adapter csatlakoztatása](#create-a-vm-and-attach-the-network-interface) című szakaszban megadott hitelesítő adatokkal. Ha még soha nem kapcsolódott az Azure-beli Windows rendszerű virtuális géphez, tekintse meg a [Csatlakozás virtuális géphez](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#connect-to-virtual-machine)című témakört.
 
-6. Miután megjelenik a virtuális gép távoli asztali munkamenete, kattintson a jobb gombbal a Windows Start gombra, és válassza a **Eszközkezelő**lehetőséget.
+6. Miután megjelenik a virtuális gép távoli asztali munkamenete, kattintson a jobb gombbal a Windows Start gombra, és válassza a **Eszközkezelő** lehetőséget.
 
 7. A **Eszközkezelő** ablakban bontsa ki a **hálózati adapterek** csomópontot.
 

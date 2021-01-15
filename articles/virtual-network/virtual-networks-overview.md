@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/03/2020
 ms.author: kumud
-ms.openlocfilehash: 11651b7a76ea0e61f78f3b2f305e39ed621df391
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: e1efd02d60ba874178f24da2b441fc122e4a1912
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109317"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218534"
 ---
 # <a name="what-is-azure-virtual-network"></a>Mi az Azure Virtual Network?
 
@@ -31,7 +31,7 @@ Az Azure Virtual Network lehetővé teszi az Azure-erőforrások számára, hogy
 A VNet összes erőforrása alapértelmezés szerint képes kommunikálni az internet felé. Bejövő kommunikációt létesíthet egy erőforrással egy nyilvános IP-cím vagy Load Balancer hozzárendelésével. A kimenő kapcsolatok kezeléséhez is használhat nyilvános IP-címet vagy Load Balancert.  Az Azure kimenő kapcsolataira vonatkozó további információkat a [kimenő kapcsolatokat](../load-balancer/load-balancer-outbound-connections.md), a [nyilvános IP-címeket](virtual-network-public-ip-address.md) vagy a [Load Balancert](../load-balancer/load-balancer-overview.md) ismertető cikkekben talál.
 
 >[!NOTE]
->Ha csak belső [Standard Load Balancert](../load-balancer/load-balancer-standard-overview.md) használ, akkor a kimenő kapcsolat mindaddig nem lesz elérhető, amíg meg nem határozza, hogyan működjenek együtt a [kimenő kapcsolatok](../load-balancer/load-balancer-outbound-connections.md) egy példányszintű nyilvános IP-vel vagy egy nyilvános Load Balancerrel.
+>Ha csak belső [Standard Load Balancert](../load-balancer/load-balancer-overview.md) használ, akkor a kimenő kapcsolat mindaddig nem lesz elérhető, amíg meg nem határozza, hogyan működjenek együtt a [kimenő kapcsolatok](../load-balancer/load-balancer-outbound-connections.md) egy példányszintű nyilvános IP-vel vagy egy nyilvános Load Balancerrel.
 
 ### <a name="communicate-between-azure-resources"></a>Azure-erőforrások közötti kommunikáció
 
@@ -53,7 +53,7 @@ Az alábbiak bármely kombinációjával csatlakoztathatja helyszíni számító
 
 A hálózati forgalom alhálózatok közötti szűrése az alábbi lehetőségek egyikével vagy akár mindkettővel elvégezhető:
 
-- **Hálózati biztonsági csoportok:** A hálózati biztonsági csoportok és az alkalmazás biztonsági csoportjai több bejövő és kimenő biztonsági szabályt is tartalmazhatnak, amelyekkel a forrás és a cél IP-címe, portja és protokollja alapján szűrheti a forgalmat és az erőforrásokat. További információ: [hálózati biztonsági csoportok](security-overview.md#network-security-groups) vagy [alkalmazás biztonsági csoportjai](security-overview.md#application-security-groups).
+- **Hálózati biztonsági csoportok:** A hálózati biztonsági csoportok és az alkalmazás biztonsági csoportjai több bejövő és kimenő biztonsági szabályt is tartalmazhatnak, amelyekkel a forrás és a cél IP-címe, portja és protokollja alapján szűrheti a forgalmat és az erőforrásokat. További információ: [hálózati biztonsági csoportok](./network-security-groups-overview.md#network-security-groups) vagy [alkalmazás biztonsági csoportjai](./network-security-groups-overview.md#application-security-groups).
 - **Hálózati virtuális berendezések:** A hálózati virtuális berendezések olyan virtuális gépek, amelyek egy hálózati funkciót látnak el, például tűzfal, WAN-optimalizáció vagy egyéb hálózati funkciók. A virtuális hálózatokban üzembe helyezhető hálózati virtuális berendezések listáját az [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances) találja.
 
 ### <a name="route-network-traffic"></a>Hálózati forgalom továbbítása

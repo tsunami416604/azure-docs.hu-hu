@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 906d3d28aabf8f6ecd6e04c38b4519937fa95c2b
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 68b113de63cfefde805c1c46e9303829c4eb33a7
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092159"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222139"
 ---
 # <a name="machine-learning-capabilities-in-azure-synapse-analytics"></a>Az Azure szinapszis Analytics Machine Learning képességei
 
@@ -40,7 +40,7 @@ A legtöbb gépi tanulási projekt jól kialakított lépéseket tesz elérhető
 
 #### <a name="data-source-and-pipelines"></a>Adatforrás és folyamatok
 
-A [Azure Data Factorynak](/azure/data-factory/introduction)köszönhetően az Azure szinapszis natívan integrált része, amely az adatfeldolgozási és adatelőkészítési folyamatok számára is hatékony eszközkészlettel rendelkezik. Ez lehetővé teszi az adatfolyamatok egyszerű kiépítését, amelyekkel a gépi tanulás számára felhasználható formátumhoz férhet hozzá és alakíthatja át azokat. További információ a Szinapszisban található [adatfolyamatokról](/azure/data-factory/concepts-pipelines-activities?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) . 
+A [Azure Data Factorynak](../../data-factory/introduction.md)köszönhetően az Azure szinapszis natívan integrált része, amely az adatfeldolgozási és adatelőkészítési folyamatok számára is hatékony eszközkészlettel rendelkezik. Ez lehetővé teszi az adatfolyamatok egyszerű kiépítését, amelyekkel a gépi tanulás számára felhasználható formátumhoz férhet hozzá és alakíthatja át azokat. További információ a Szinapszisban található [adatfolyamatokról](../../data-factory/concepts-pipelines-activities.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) . 
 
 #### <a name="data-preparation-and-explorationvisualization"></a>Az adatelőkészítés és a feltárás/vizualizáció
 
@@ -64,13 +64,13 @@ A MLlib mellett az olyan népszerű kódtárak is használhatók, mint a [Scikit
 
 #### <a name="train-models-with-azure-machine-learning-automated-ml"></a>Modellek betanítása Azure Machine Learning automatizált ML-vel
 
-A gépi tanulási modellek betanításának egy másik módja, amely nem igényli a gépi tanuláshoz szükséges jóval korábbi ismereteket, az automatikus ML-t használja. Az [automatikus ml](/azure/machine-learning/concept-automated-ml) egy olyan szolgáltatás, amely automatikusan betanítja a gépi tanulási modellek készletét, és lehetővé teszi, hogy a felhasználó kiválassza a legjobb modellt adott mérőszámok alapján. Az Azure szinapszis-jegyzetfüzetek Azure Machine Learningával való zökkenőmentes integrációnak köszönhetően a felhasználók könnyedén használhatják az automatikus ML-t a Szinapszisban a továbbító Azure Active Directory hitelesítéssel.  Ez azt jelenti, hogy csak a Azure Machine Learning munkaterületre kell mutatnia, és nem kell megadnia a hitelesítő adatokat. Itt talál egy [AUTOMATIZÁLT ml-oktatóanyagot](../spark/apache-spark-azure-machine-learning-tutorial.md) , amely leírja, hogyan kell betanítani a modelleket a szinapszis Spark-készleteken található Azure Machine learning automatizált ml használatával.
+A gépi tanulási modellek betanításának egy másik módja, amely nem igényli a gépi tanuláshoz szükséges jóval korábbi ismereteket, az automatikus ML-t használja. Az [automatikus ml](../../machine-learning/concept-automated-ml.md) egy olyan szolgáltatás, amely automatikusan betanítja a gépi tanulási modellek készletét, és lehetővé teszi, hogy a felhasználó kiválassza a legjobb modellt adott mérőszámok alapján. Az Azure szinapszis-jegyzetfüzetek Azure Machine Learningával való zökkenőmentes integrációnak köszönhetően a felhasználók könnyedén használhatják az automatikus ML-t a Szinapszisban a továbbító Azure Active Directory hitelesítéssel.  Ez azt jelenti, hogy csak a Azure Machine Learning munkaterületre kell mutatnia, és nem kell megadnia a hitelesítő adatokat. Itt talál egy [AUTOMATIZÁLT ml-oktatóanyagot](../spark/apache-spark-azure-machine-learning-tutorial.md) , amely leírja, hogyan kell betanítani a modelleket a szinapszis Spark-készleteken található Azure Machine learning automatizált ml használatával.
 
 ### <a name="model-deployment-and-scoring"></a>Modell üzembe helyezése és pontozása
 
 Az Azure Szinapszisban vagy az Azure szinapszison kívül már betanított modellek könnyen használhatók a Batch-pontozáshoz. Jelenleg a Szinapszisban kétféle módon futtatható a Batch-pontozási szolgáltatás.
 
-* A szinapszis SQL-készletekben a [TSQL prediktív függvény](../sql-data-warehouse/sql-data-warehouse-predict.md) használatával a jóslatokat a megfelelő módon futtathatja. Ez a hatékony és skálázható funkció lehetővé teszi, hogy az adattárházból kifelé irányuló összes adat áthelyezése nélkül gazdagítsa az adatait. A [szinapszis Studióban egy új, interaktív gépi tanulási modellt](https://aka.ms/synapse-ml-ui) ismertetünk, amelyen üzembe HELYEZHET egy ONNX modellt a Azure Machine learning modell beállításjegyzékében a szinapszis SQL-készletekben a Batch-pontozáshoz az előrejelzés használatával.
+* A szinapszis SQL-készletekben a [TSQL prediktív függvény](../sql-data-warehouse/sql-data-warehouse-predict.md) használatával a jóslatokat a megfelelő módon futtathatja. Ez a hatékony és skálázható funkció lehetővé teszi, hogy az adattárházból kifelé irányuló összes adat áthelyezése nélkül gazdagítsa az adatait. A [szinapszis Studióban egy új, interaktív gépi tanulási modellt](./tutorial-sql-pool-model-scoring-wizard.md) ismertetünk, amelyen üzembe HELYEZHET egy ONNX modellt a Azure Machine learning modell beállításjegyzékében a szinapszis SQL-készletekben a Batch-pontozáshoz az előrejelzés használatával.
 
 * Az Azure Szinapszisban a gépi tanulási modellek egy másik lehetősége az Azure szinapszis Apache Spark készletének kihasználása. A modellek betanításához használt könyvtáraktól függően a Batch-pontozási futtatásához használhat programkódot.
 

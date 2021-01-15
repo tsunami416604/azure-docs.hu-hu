@@ -9,16 +9,16 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 1b407cbee5218149f794ab125ac058e32b422558
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6a4833cf0d73939e01fd3e3e7263c6cba3c0a28a
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468615"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222190"
 ---
 # <a name="tutorial-sentiment-analysis-with-cognitive-services-preview"></a>Oktatóanyag: érzelmek elemzése a Cognitive Services (előzetes verzió)
 
-Ebből az oktatóanyagból megtudhatja, hogyan gazdagíthatja adatait az Azure Szinapszisban [Cognitive Services](https://go.microsoft.com/fwlink/?linkid=2147492)segítségével. A [text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) képességeket fogjuk használni az érzelmek elemzéséhez. Az Azure szinapszis egyik felhasználója egyszerűen kijelölhet egy olyan táblázatot, amely az érzelmekkel gazdagított szöveges oszlopot tartalmaz. Ezek az érzelmek pozitívak, negatívak, vegyesek vagy semlegesek is lehetnek, és a rendszer a valószínűséget is visszaadja.
+Ebből az oktatóanyagból megtudhatja, hogyan gazdagíthatja adatait az Azure Szinapszisban [Cognitive Services](../../cognitive-services/index.yml)segítségével. A [text Analytics](../../cognitive-services/text-analytics/index.yml) képességeket fogjuk használni az érzelmek elemzéséhez. Az Azure szinapszis egyik felhasználója egyszerűen kijelölhet egy olyan táblázatot, amely az érzelmekkel gazdagított szöveges oszlopot tartalmaz. Ezek az érzelmek pozitívak, negatívak, vegyesek vagy semlegesek is lehetnek, és a rendszer a valószínűséget is visszaadja.
 
 Ez az oktatóanyag az alábbiakkal foglalkozik:
 
@@ -98,11 +98,11 @@ Az imént megnyitott jegyzetfüzet a [mmlspark könyvtárat](https://github.com/
 
 A megadott Azure Key Vault adatok lehetővé teszik, hogy a tapasztalatok alapján biztonságosan hivatkozzon a titkos kulcsokra.
 
-Mostantól az **összes** cella használatával gazdagíthatja adatait az érzelmekkel. Az érzelmek pozitív/negatív/semleges/vegyes értékként lesznek visszaadva, és a rendszer az egyes érzelmeket is felhasználja. További információ a [Cognitive Services-hangulat elemzéséről](https://go.microsoft.com/fwlink/?linkid=2147792).
+Mostantól az **összes** cella használatával gazdagíthatja adatait az érzelmekkel. Az érzelmek pozitív/negatív/semleges/vegyes értékként lesznek visszaadva, és a rendszer az egyes érzelmeket is felhasználja. További információ a [Cognitive Services-hangulat elemzéséről](../../cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md).
 
 ![Hangulatelemzés futtatása](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00h.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Oktatóanyag: anomáliák észlelése az Azure Cognitive Services](tutorial-cognitive-services-sentiment.md)
 - [Oktatóanyag: gépi tanulási modellek pontozása az Azure szinapszis dedikált SQL-készletekben](tutorial-sql-pool-model-scoring-wizard.md)
 - [Az Azure Azure szinapszis Analytics Machine Learning képességei](what-is-machine-learning.md)

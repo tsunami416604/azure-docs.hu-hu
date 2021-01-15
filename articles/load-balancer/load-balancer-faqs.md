@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: 2e559d574413b8eb0be2303798e0b16bfffad2cb
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: e9f46b11d9c0b5251ee4d52f64d657926f6f9c5e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695401"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222989"
 ---
 # <a name="load-balancer-frequently-asked-questions"></a>Load Balancer gyakori kérdések
 
@@ -36,7 +36,7 @@ A NAT-szabályok olyan háttér-erőforrás megadására szolgálnak, amely a fo
 ## <a name="what-is-ip-1686312916"></a>Mi az IP-168.63.129.16?
 Az Azure-infrastruktúra Load Balancer címkézett gazdagéphez tartozó virtuális IP-cím, amelyen az Azure Health-Szondák származnak. A háttérbeli példányok konfigurálásakor engedélyezni kell, hogy az adott IP-címről érkező forgalom sikeresen válaszoljon az állapot-próbára. Ez a szabály nem működik együtt a Load Balancer előtér-felületéhez való hozzáféréssel. Ha nem használja a Azure Load Balancer, felülbírálhatja ezt a szabályt. A szolgáltatással kapcsolatos címkékkel kapcsolatban [itt](../virtual-network/service-tags-overview.md#available-service-tags)talál további információt.
 
-## <a name="can-i-use-global-vnet-peering-with-basic-load-balancer"></a>Használhatom a globális VNET-társítást az alapszintű Load Balancerokkal?
+## <a name="can-i-use-global-vnet-peering-with-basic-load-balancer"></a>Használhatom a globális VNet-társítást az alapszintű Load Balancerokkal?
 Nem. Az alapszintű Load Balancer nem támogatja a globális VNET-társítást. Ehelyett a standard Load Balancer is használhatja. A zökkenőmentes frissítés érdekében tekintse meg az [alapszintről standard verzióra való frissítést](upgrade-basic-standard.md) .
 
 ## <a name="how-can-i-discover-the-public-ip-that-an-azure-vm-uses"></a>Hogyan deríthető fel az Azure-beli virtuális gépek által használt nyilvános IP-cím?
@@ -45,6 +45,9 @@ A kimenő kapcsolatok nyilvános forrás IP-címének meghatározása számos m�
 Az nslookup parancs használatával DNS-lekérdezést küldhet a myip.opendns.com név számára a nyit feloldójának. A szolgáltatás visszaadja a lekérdezés küldéséhez használt forrás IP-címet. Ha a következő lekérdezést futtatja a virtuális gépről, a válasz az adott virtuális géphez használt nyilvános IP-cím:
 
  ```nslookup myip.opendns.com resolver1.opendns.com```
+ 
+## <a name="can-i-add-a-vm-from-the-same-availability-set-to-different-backend-pools-of-a-load-balancer"></a>Hozzáadhatok egy virtuális gépet ugyanabból a rendelkezésre állási csoportból egy Load Balancer különböző háttér-készletekbe?
+Nem, ez nem lehetséges.
 
 ## <a name="how-do-connections-to-azure-storage-in-the-same-region-work"></a>Hogyan működnek a kapcsolatok az Azure Storage-ban ugyanabban a régióban?
 A fenti forgatókönyvekben a kimenő kapcsolat nem szükséges a virtuális géppel azonos régióban lévő tárolóhoz való csatlakozáshoz. Ha ezt nem szeretné, a fentiekben leírtak szerint használjon hálózati biztonsági csoportokat (NSG). A más régiókban található tároláshoz való kapcsolódáshoz kimenő kapcsolat szükséges. Vegye figyelembe, hogy amikor egy adott régióban található virtuális gépről csatlakozik a tárolóhoz, a tároló diagnosztikai naplóiban található forrás IP-cím egy belső szolgáltatói cím lesz, nem pedig a virtuális gép nyilvános IP-címe. Ha szeretné korlátozni a Storage-fiókhoz való hozzáférést egy vagy több Virtual Network alhálózatban ugyanabban a régióban, akkor a Storage-fiók tűzfalának konfigurálásakor használja [Virtual Network szolgáltatási végpontokat](../virtual-network/virtual-network-service-endpoints-overview.md) , és ne a nyilvános IP-címét. A szolgáltatási végpontok konfigurálása után a rendszer a tároló diagnosztikai naplóiban fogja látni a Virtual Network magánhálózati IP-címét, nem pedig a belső szolgáltató címét.

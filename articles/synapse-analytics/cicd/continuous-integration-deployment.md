@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: d38c57a8c8504e1e03406f7cd8a0b61725cb0511
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 7a665bf05167a6bdf20c7325c66a5d0e439aa7f1
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008085"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223686"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Folyamatos integráció és kézbesítés az Azure szinapszis-munkaterülethez
 
@@ -21,7 +21,7 @@ ms.locfileid: "97008085"
 
 A folyamatos integráció (CI) a kód kiépítésének és tesztelésének automatizálása minden alkalommal, amikor egy csapattag véglegesíti a verziókövetés változásait. A folyamatos üzembe helyezés (CD) az a folyamat, amellyel több tesztelési vagy átmeneti környezetből lehet éles környezetbe felépíteni, tesztelni, konfigurálni és üzembe helyezni.
 
-Az Azure szinapszis munkaterülete esetében a folyamatos integráció és a szállítás (CI/CD) minden entitást az egyik környezetből (fejlesztés, tesztelés, termelés) helyez át egy másikra. Ha a munkaterületet egy másik munkaterületre szeretné előléptetni, két részből áll: a munkaterület-erőforrások (készletek és munkaterületek) létrehozásához vagy frissítéséhez [Azure Resource Manager-sablonok](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview) használatával. az összetevők (SQL-parancsfájlok, jegyzetfüzetek, Spark-feladattípusok, folyamatok, adatforgalom stb.) áttelepíthetők a szinapszis CI/CD-eszközökkel az Azure DevOps-ben. 
+Az Azure szinapszis munkaterülete esetében a folyamatos integráció és a szállítás (CI/CD) minden entitást az egyik környezetből (fejlesztés, tesztelés, termelés) helyez át egy másikra. Ha a munkaterületet egy másik munkaterületre szeretné előléptetni, két részből áll: a munkaterület-erőforrások (készletek és munkaterületek) létrehozásához vagy frissítéséhez [Azure Resource Manager-sablonok](../../azure-resource-manager/templates/overview.md) használatával. az összetevők (SQL-parancsfájlok, jegyzetfüzetek, Spark-feladattípusok, folyamatok, adatforgalom stb.) áttelepíthetők a szinapszis CI/CD-eszközökkel az Azure DevOps-ben. 
 
 Ebből a cikkből megtudhatja, hogyan automatizálható a szinapszis-munkaterület telepítése több környezetbe az Azure kiadási folyamat használatával.
 
@@ -46,7 +46,7 @@ Ebből a cikkből megtudhatja, hogyan automatizálható a szinapszis-munkaterül
 
 1.  A **szakasz neve** mezőben adja meg a környezet nevét.
 
-1.  Válassza az összetevő **hozzáadása** lehetőséget, majd válassza ki a fejlesztési szinapszis Studióval konfigurált git-tárházat. Válassza ki a készletek és munkaterületek ARM-sablonjának kezeléséhez használt git-tárházat. Ha a GitHubot használja forrásként, létre kell hoznia egy szolgáltatási kapcsolódást a GitHub-fiókjához, és le kell kérnie a tárolókat. További információ a [szolgáltatás kapcsolatairól](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints) 
+1.  Válassza az összetevő **hozzáadása** lehetőséget, majd válassza ki a fejlesztési szinapszis Studióval konfigurált git-tárházat. Válassza ki a készletek és munkaterületek ARM-sablonjának kezeléséhez használt git-tárházat. Ha a GitHubot használja forrásként, létre kell hoznia egy szolgáltatási kapcsolódást a GitHub-fiókjához, és le kell kérnie a tárolókat. További információ a [szolgáltatás kapcsolatairól](/azure/devops/pipelines/library/service-endpoints) 
 
     ![Közzétételi ág hozzáadása](media/release-creation-github.png)
 
@@ -87,7 +87,7 @@ Azure Resource Manager telepítési feladat hozzáadása erőforrások létrehoz
     ![engedély megadása](media/release-creation-grant-permission.png)
 
  > [!WARNING]
-> A teljes üzembe helyezési módban az erőforráscsoporthoz tartozó, de az új Resource Manager-sablonban nem megadott erőforrások **törlődni** fognak. További információkért tekintse meg [Azure Resource Manager telepítési módokat](https://docs.microsoft.com/azure/azure-resource-manager/templates/deployment-modes)
+> A teljes üzembe helyezési módban az erőforráscsoporthoz tartozó, de az új Resource Manager-sablonban nem megadott erőforrások **törlődni** fognak. További információkért tekintse meg [Azure Resource Manager telepítési módokat](../../azure-resource-manager/templates/deployment-modes.md)
 
 ## <a name="set-up-a-stage-task-for-artifacts-deployment"></a>Fázis-feladat beállítása az összetevők üzembe helyezéséhez 
 
@@ -122,7 +122,7 @@ A [szinapszis munkaterület üzembe](https://marketplace.visualstudio.com/items?
 
 ## <a name="create-release-for-deployment"></a>Kiadás létrehozása az üzembe helyezéshez 
 
-Az összes módosítás mentése után kiválaszthatja, hogy a kiadás **létrehozása** lehetőséggel manuálisan hozzon létre egy kiadást. A kiadások létrehozásának automatizálásához tekintse meg az [Azure DevOps kiadási eseményindítók](https://docs.microsoft.com/azure/devops/pipelines/release/triggers) című témakört.
+Az összes módosítás mentése után kiválaszthatja, hogy a kiadás **létrehozása** lehetőséggel manuálisan hozzon létre egy kiadást. A kiadások létrehozásának automatizálásához tekintse meg az [Azure DevOps kiadási eseményindítók](/azure/devops/pipelines/release/triggers) című témakört.
 
    ![Válassza a kiadás létrehozása lehetőséget](media/release-creation-manually.png)
 
@@ -133,6 +133,4 @@ Ha git-integrációt használ a szinapszis-munkaterülettel, és rendelkezik egy
 -   **Git-integráció**. Csak a fejlesztési szinapszis munkaterületet konfigurálja a git-integrációval. A teszt-és éles munkaterületek változásai a CI/CD-n keresztül telepíthetők, és nincs szükség git-integrációra.
 -   **Készletek előkészítése az összetevők migrálása előtt**. Ha a fejlesztői munkaterületen a készletekhez csatolt SQL-parancsfájl vagy jegyzetfüzet van, akkor a rendszer a különböző környezetekben lévő készletek azonos nevét is elvárta. 
 -   **Infrastruktúra-kód (IaC)**. Az infrastruktúra (hálózatok, virtuális gépek, terheléselosztó és a kapcsolatok topológiája) kezelése egy leíró modellben ugyanazt a verziószámozást használja, mint a DevOps-csapat a forráskódot használja. 
--   **Mások**. Lásd: [ajánlott eljárások az ADF](/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd) -összetevőkhöz
-
-
+-   **Mások**. Lásd: [ajánlott eljárások az ADF](../../data-factory/continuous-integration-deployment.md#best-practices-for-cicd) -összetevőkhöz

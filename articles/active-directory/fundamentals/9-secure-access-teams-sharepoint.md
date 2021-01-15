@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64a5bd409a29643c1a51630d6f029da7c90d29ad
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 18036644dc4df51bfacc5019f70ae7694757f753
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97743971"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222241"
 ---
 # <a name="secure-external-access-to-microsoft-teams-sharepoint-and-onedrive-for-business"></a>Biztonságos külső hozzáférés a Microsoft Teams, a SharePoint és a OneDrive for Business szolgáltatáshoz 
 
@@ -175,7 +175,7 @@ Ha többet szeretne megtudni a SharePoint külső elérésének szabályozásár
 
 * [SharePoint-és OneDrive-integráció az Azure AD B2B-vel](https://docs.microsoft.com/sharepoint/sharepoint-azureb2b-integration-preview)
 
-#### <a name="next-steps"></a>További lépések
+#### <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a következő cikkeket az erőforrásokhoz való külső hozzáférés biztonságossá tételéhez. Javasoljuk, hogy a felsorolt sorrendben végezze el a műveleteket.
 

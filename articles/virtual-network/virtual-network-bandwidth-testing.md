@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: 0b009b7c44084e76194c1447fefdb2ff59f8086a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a2f6750a4d0a48c6971f60241976fb55410b65c
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91812284"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221442"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>Sávszélesség/átviteli sebesség tesztelése (NTTTCP)
 
@@ -26,7 +26,7 @@ Az Azure-ban a hálózati teljesítmény teljesítményének tesztelésekor érd
 Másolja az eszközt két azonos méretű Azure-beli virtuális gépre. Egy virtuális gép KÜLDŐként és a másikat FOGADÓként működik.
 
 #### <a name="deploying-vms-for-testing"></a>Virtuális gépek üzembe helyezése teszteléshez
-Ebben a tesztben a két virtuális gépnek ugyanabban a [közelségi elhelyezési csoportban](../virtual-machines/windows/co-location.md) vagy ugyanazon a rendelkezésre állási csoporton kell lennie, hogy a belső IP-címeket használják, és kizárja a terheléselosztó a tesztből való kizárását. A virtuális IP-címen tesztelhető, de az ilyen típusú tesztelés kívül esik a jelen dokumentum hatókörén.
+Ebben a tesztben a két virtuális gépnek ugyanabban a [közelségi elhelyezési csoportban](../virtual-machines/co-location.md) vagy ugyanazon a rendelkezésre állási csoporton kell lennie, hogy a belső IP-címeket használják, és kizárja a terheléselosztó a tesztből való kizárását. A virtuális IP-címen tesztelhető, de az ilyen típusú tesztelés kívül esik a jelen dokumentum hatókörén.
 
 Jegyezze fel a fogadó IP-címét. Nevezzük ezt az IP-címet: "a. b. c. r"
 
@@ -65,7 +65,7 @@ A ntttcp engedélyezése a Windows tűzfalon keresztül:
 
 netsh advfirewall Firewall Add Rule program = \<PATH\> \\ntttcp.exe Name = "ntttcp" protokoll = bármely dir = in Action = Enable engedélyezése = Yes Profile = any
 
-Ha például a "c: Tools" mappába másolta ntttcp.exe \\ , akkor ez a következő lesz: 
+Ha például a "c: Tools" mappába másolta ntttcp.exe \\ , akkor ez a következő lesz: 
 
 netsh advfirewall Firewall Add Rule program = c: \\ eszközök \\ntttcp.exe név = "ntttcp" protokoll = bármely dir = in Action = Allow Enable = Yes Profile = any
 
@@ -82,7 +82,7 @@ ntttcp-r – m 8, \* , 10.0.0.4-t 300
 
 NTTTCP elindítása a KÜLDŐn (**Futtatás a cmd-ből**, nem a powershellből):
 
-ntttcp-s – m 8, \* , 10.0.0.4-t 300 
+ntttcp-s – m 8, \* , 10.0.0.4-t 300 
 
 Várjon az eredményekre.
 
@@ -95,19 +95,19 @@ A Linux rendszerű virtuális gépeken (a küldő és a FOGADÓn is) futtassa ez
 
 CentOS – a git telepítése:
 ``` bash
-  yum install gcc -y  
-  yum install git -y
+  yum install gcc -y  
+  yum install git -y
 ```
 Ubuntu – a git telepítése:
 ``` bash
- apt-get -y install build-essential  
- apt-get -y install git
+ apt-get -y install build-essential  
+ apt-get -y install git
 ```
 Mindkettőn végezze el és telepítse a következőt:
 ``` bash
- git clone https://github.com/Microsoft/ntttcp-for-linux
- cd ntttcp-for-linux/src
- make && make install
+ git clone https://github.com/Microsoft/ntttcp-for-linux
+ cd ntttcp-for-linux/src
+ make && make install
 ```
 
 A Windows példához hasonlóan feltételezzük, hogy a linuxos fogadó IP-címe 10.0.0.4
@@ -123,7 +123,7 @@ ntttcp -r -t 300
 ``` bash
 ntttcp -s10.0.0.4 -t 300
 ```
- 
+ 
 A teszt hossza alapértelmezett értéke 60 másodperc, ha nincs megadva a Time paraméter
 
 ## <a name="testing-between-vms-running-windows-and-linux"></a>Windows és LINUX rendszerű virtuális gépek közötti tesztelés:
