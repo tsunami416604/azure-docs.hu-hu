@@ -12,6 +12,9 @@
       href: manage-ddos-protection-powershell.md
     - name: DDoS Protection-csomag létrehozása – parancssori felület
       href: manage-ddos-protection-cli.md
+    - name: DDoS Protection-csomag létrehozása – ARM-sablon
+      displayName: Resource Manager
+      href: manage-ddos-protection-template.md
 - name: Oktatóanyagok
   items:
     - name: DDoS Protection-telemetria megtekintése és konfigurálása

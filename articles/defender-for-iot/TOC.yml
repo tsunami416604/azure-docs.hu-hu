@@ -201,6 +201,10 @@
       items:
         - name: A Defender for IoT API-k használata
           href: references-work-with-defender-for-iot-apis.md
+        - name: Horizon API
+          href: references-horizon-api.md
+        - name: Horizon SDK
+          href: references-horizon-sdk.md
         - name: A Defender for IoT parancssori felületi parancsainak használata
           href: references-work-with-defender-for-iot-cli-commands.md
         - name: Saját fejlesztésű protokollok kezelése (Horizon)

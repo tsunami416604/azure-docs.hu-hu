@@ -31,6 +31,8 @@
           href: cache-python-get-started.md
         - name: Go-alkalmazás
           href: cache-go-get-started.md
+        - name: Rust-alkalmazás
+          href: cache-rust-get-started.md
 - name: Oktatóanyagok
   items:
     - name: ASP.NET
