@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: 1e46cf78c76e873bcb78af4942f42a5c4be45391
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: deb9f60cd3f75eacdf0adc06f6f7470819949555
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955586"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223227"
 ---
 # <a name="public-ip-addresses"></a>Nyilvános IP-címek
 
@@ -44,7 +44,7 @@ Az SKU frissítésével kapcsolatos további tudnivalókért tekintse meg a [nyi
 A nyilvános IP-címek a következő termékváltozatok valamelyikével jönnek létre:
 
 >[!IMPORTANT]
-> A Load Balancerhez és a nyilvános IP-erőforrásokhoz megfelelő SKU-ket kell megadni. Az alapszintű és a standard SKU-erőforrások nem kombinálhatók. Nem csatolhat mindkét SKU-hoz egyszerre önálló virtuális gépeket, rendelkezésre állási csoportban lévő virtuális gépeket vagy virtuálisgép-méretezési csoport típusú erőforrásokat.  Új kialakítások esetén a standard SKU-erőforrások használata ajánlott.  Részletekért tekintse át a [Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) című részt.
+> A Load Balancerhez és a nyilvános IP-erőforrásokhoz megfelelő SKU-ket kell megadni. Az alapszintű és a standard SKU-erőforrások nem kombinálhatók. Nem csatolhat mindkét SKU-hoz egyszerre önálló virtuális gépeket, rendelkezésre állási csoportban lévő virtuális gépeket vagy virtuálisgép-méretezési csoport típusú erőforrásokat.  Új kialakítások esetén a standard SKU-erőforrások használata ajánlott.  Részletekért tekintse át a [Standard Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) című részt.
 
 ### <a name="standard"></a>Standard
 
@@ -52,13 +52,13 @@ Standard SKU nyilvános IP-címei:
 
 - Mindig használjon statikus kiosztási módszert.
 - Egy állítható bejövő, 4-30 perces üresjárati időkorláttal rendelkezik, amely alapértéke 4 perc, a rögzített kimenő folyamat pedig 4 perces üresjárati időkorlátot tartalmaz.
-- Alapértelmezés szerint biztonságos és a bejövő forgalomhoz zárva van. Engedélyezi a bejövő forgalom listázását egy [hálózati biztonsági csoporttal](security-overview.md#network-security-groups).
-- A hálózati adapterekhez, a standard nyilvános terheléselosztóhoz vagy az Application Gatewayhez van rendelve. További információ a standard Load balancerről: [Azure standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-- Lehet zóna-redundáns (az összes 3 zónából való hirdetés) vagy a zonay (egy adott rendelkezésre állási zónában létrehozható, és egy adott rendelkezésre állási zónában is biztosítható). További információ a rendelkezésre állási zónákról: [A rendelkezésre állási zónák áttekintése](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és [A Standard Load Balancer és a rendelkezésre állási zónák](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json). **A zóna redundáns IP-címei csak olyan régiókban hozhatók létre, [amelyekben 3 rendelkezésre állási zóna](https://docs.microsoft.com/azure/availability-zones/az-region) él.** A zónák élő létrehozása előtt létrehozott IP-címek nem lesznek redundáns zónában.
-- A többrégiós terheléselosztó (előzetes verzió) számára is használható a [többhelyes terheléselosztási](https://docs.microsoft.com/azure/load-balancer/cross-region-overview) IP-címekhez.
+- Alapértelmezés szerint biztonságos és a bejövő forgalomhoz zárva van. Engedélyezi a bejövő forgalom listázását egy [hálózati biztonsági csoporttal](./network-security-groups-overview.md#network-security-groups).
+- A hálózati adapterekhez, a standard nyilvános terheléselosztóhoz vagy az Application Gatewayhez van rendelve. További információ a standard Load balancerről: [Azure standard Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Lehet zóna-redundáns (az összes 3 zónából való hirdetés) vagy a zonay (egy adott rendelkezésre állási zónában létrehozható, és egy adott rendelkezésre állási zónában is biztosítható). További információ a rendelkezésre állási zónákról: [A rendelkezésre állási zónák áttekintése](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és [A Standard Load Balancer és a rendelkezésre állási zónák](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json). **A zóna redundáns IP-címei csak olyan régiókban hozhatók létre, [amelyekben 3 rendelkezésre állási zóna](../availability-zones/az-region.md) él.** A zónák élő létrehozása előtt létrehozott IP-címek nem lesznek redundáns zónában.
+- A többrégiós terheléselosztó (előzetes verzió) számára is használható a [többhelyes terheléselosztási](../load-balancer/cross-region-overview.md) IP-címekhez.
  
 > [!NOTE]
-> A standard SKU-erőforrással való bejövő kommunikáció meghiúsul, amíg létre nem hoz egy [hálózati biztonsági csoportot](security-overview.md#network-security-groups) , és kifejezetten engedélyezi a kívánt bejövő forgalmat.
+> A standard SKU-erőforrással való bejövő kommunikáció meghiúsul, amíg létre nem hoz egy [hálózati biztonsági csoportot](./network-security-groups-overview.md#network-security-groups) , és kifejezetten engedélyezi a kívánt bejövő forgalmat.
 
 > [!NOTE]
 > A [példány metaadatainak szolgáltatás IMDS](../virtual-machines/windows/instance-metadata-service.md)használata esetén csak az alapszintű SKU-val rendelkező nyilvános IP-címek érhetők el. A standard SKU nem támogatott.
@@ -150,7 +150,7 @@ Az [SKU](#sku) -hoz tartozó nyilvános IP-címet társíthatja egy [Azure Load 
 
 Hozzárendelhet egy dinamikus vagy egy statikus nyilvános IP-címet egy terheléselosztó előtérrendszerhez. Több nyilvános IP-címet is hozzárendelhet egy terheléselosztó kezelőfelületéhez. Ez a konfiguráció lehetővé teszi a [több-VIP](../load-balancer/load-balancer-multivip-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) forgatókönyvek, például a több-bérlős környezetek számára a TLS-alapú webhelyeket. 
 
-Az Azure Load Balancer termékváltozataival kapcsolatos további információkért tekintse meg [az Azure Load Balancer standard termékváltozatáról](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szóló cikket.
+Az Azure Load Balancer termékváltozataival kapcsolatos további információkért tekintse meg [az Azure Load Balancer standard termékváltozatáról](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szóló cikket.
 
 ## <a name="vpn-gateways"></a>VPN-átjárók
 
@@ -163,7 +163,7 @@ A távoli hálózattal való kommunikáció engedélyezéséhez egy nyilvános I
 
 ## <a name="application-gateways"></a>Alkalmazásátjárók
 
-A nyilvános IP-címet társíthatja egy [Azure Application Gateway átjáróval](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json), ha hozzárendeli az átjáró **előtér**-konfigurációjához. 
+A nyilvános IP-címet társíthatja egy [Azure Application Gateway átjáróval](../application-gateway/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), ha hozzárendeli az átjáró **előtér**-konfigurációjához. 
 
 * Rendeljen egy **dinamikus** alapszintű nyilvános IP-címet egy Application Gateway v1 kezelőfelületi konfigurációhoz. 
 * Rendeljen **statikus** szabványos SKU-címeket egy v2 előtér-konfigurációhoz.
@@ -197,7 +197,6 @@ A korlátok régiónként és előfizetésenként értendőek. [Vegye fel a kapc
 
 A nyilvános IP-címek kapcsán névleges díjak merülhetnek fel. Ha többet szeretne megtudni az Azure-ban használt IP-címek díjszabásáról, tekintse át az [IP-címek díjszabását](https://azure.microsoft.com/pricing/details/ip-addresses) ismertető oldalt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ [Az Azure-beli magánhálózati IP-címekről](private-ip-addresses.md)
 * [Statikus nyilvános IP-címmel rendelkező virtuális gép telepítése az Azure Portal használatával](virtual-network-deploy-static-pip-arm-portal.md)
-

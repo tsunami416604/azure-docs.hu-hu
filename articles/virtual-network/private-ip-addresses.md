@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: 13688b73c0cd73e13e407f1b75beb8dda61a754f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36db885cab734c037b0032c714de28b905595ef0
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84172374"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223261"
 ---
 # <a name="private-ip-addresses"></a>Privát IP-címek
 A magánhálózati IP-címek lehetővé teszik az Azure-beli erőforrások közötti kommunikációt. 
@@ -82,8 +82,8 @@ Az Azure által felügyelt DNS-sel konfigurált virtuális gépek az ugyanazon a
 
 Egy magánhálózati IP-címet rendelhet az **előtér-** konfigurációhoz:
 
-* [Azure belső terheléselosztó](../load-balancer/load-balancer-internal-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (ILB)
-* [Azure Application Gateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
+* [Azure belső terheléselosztó](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (ILB)
+* [Azure Application Gateway](../application-gateway/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
 
 Ez a magánhálózati IP-cím belső végpontként szolgál. A belső végpont csak a virtuális hálózaton belüli erőforrásokhoz és a hozzájuk kapcsolódó távoli hálózatokhoz érhető el. Dinamikus vagy statikus IP-címet rendelhet hozzá.
 
@@ -98,12 +98,12 @@ A lehetséges használható kiosztási módszerek is megjelennek:
 | Legfelső szintű erőforrás | IP-cím társítása | Dinamikus | Statikus |
 | --- | --- | --- | --- |
 | Virtuális gép |Hálózati adapter |Igen |Igen |
-| Terheléselosztó |Előtér-konfiguráció |Igen |Igen |
+| Terheléselosztóval |Előtér-konfiguráció |Igen |Igen |
 | Alkalmazásátjáró |Előtér-konfiguráció |Igen |Igen |
 
 ## <a name="limits"></a>Korlátok
 Az IP-címzés korlátai az Azure-ban a [hálózatkezelés korlátainak](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) teljes készletében találhatók. A korlátok régiónként és előfizetésenként értendőek. [Vegye fel a kapcsolatot az ügyfélszolgálattal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , és növelje az alapértelmezett korlátokat az üzleti igényeknek megfelelő maximális korlátig.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az [Azure-nyilvános IP-címek](public-ip-addresses.md) megismerése
 * [Statikus magánhálózati IP-címmel rendelkező virtuális gép telepítése az Azure Portal használatával](virtual-networks-static-private-ip-arm-pportal.md)

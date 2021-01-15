@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8dd570a31813ef12ee8a007c84facb8aa5e7aca4
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 64209a4d9ca200c69783a4ae317b38beef8ded89
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97933132"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222309"
 ---
 # <a name="manage-external-access-with-conditional-access-policies"></a>Külső hozzáférés kezelése feltételes hozzáférési szabályzatokkal 
 
@@ -100,7 +100,7 @@ Számos gyakori feltételes hozzáférési szabályzat dokumentálva van. Tekint
 
 * [Használati feltételek megkövetelése](../conditional-access/terms-of-use.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a következő cikkeket az erőforrásokhoz való külső hozzáférés biztonságossá tételéhez. Javasoljuk, hogy a felsorolt sorrendben végezze el a műveleteket.
 

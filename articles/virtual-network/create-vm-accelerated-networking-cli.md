@@ -16,20 +16,20 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: bccbfed96dd6cd87bdfe986baf4b52817a160ac0
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 5b91d6e58f4ae93bbf020f202991f878e7773114
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95533361"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222955"
 ---
-# <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Linux rendszerű virtuális gép létrehozása gyorsított hálózatkezeléssel az Azure CLI használatával
+# <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Gyorsított hálózatkezeléssel rendelkező, Linux rendszerű virtuális gép létrehozása az Azure CLI-vel
 
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy linuxos virtuális gépet (VM) a gyorsított hálózatkezeléssel. A gyorsított hálózatkezeléssel rendelkező Windows rendszerű virtuális gépek létrehozásával kapcsolatban lásd: [Windows rendszerű virtuális gép létrehozása gyorsított hálózatkezeléssel](create-vm-accelerated-networking-powershell.md). A gyorsított hálózatkezelés lehetővé teszi az egyszintű I/O-virtualizálás (SR-IOV) használatát egy virtuális gépre, nagy mértékben javítja hálózati teljesítményét. Ez a nagy teljesítményű elérési út megkerüli a gazdagépet a DataPath, csökkenti a késést, a vibrálás és a CPU-kihasználtságot, és a legszigorúbb hálózati számítási feladatokhoz használja a támogatott virtuálisgép-típusoknál. Az alábbi képen a két virtuális gép közötti kommunikáció gyorsított hálózatkezeléssel és anélkül látható:
 
 ![Összehasonlítás](./media/create-vm-accelerated-networking/accelerated-networking.png)
 
-A gyorsított hálózatkezelés nélkül a virtuális GÉPEN belüli és kívüli összes hálózati forgalomnak át kell haladnia a gazdagépen és a virtuális kapcsolón. A virtuális kapcsoló biztosítja az összes házirend-kényszerítést, például a hálózati biztonsági csoportokat, a hozzáférés-vezérlési listát, az elkülönítést és az egyéb, a hálózati forgalomhoz tartozó virtualizált szolgáltatásokat. Ha többet szeretne megtudni a virtuális kapcsolókról, olvassa el a [Hyper-V hálózati virtualizálás és a virtuális kapcsoló](https://technet.microsoft.com/library/jj945275.aspx) című cikket.
+A gyorsított hálózatkezelés nélkül a virtuális GÉPEN belüli és kívüli összes hálózati forgalomnak át kell haladnia a gazdagépen és a virtuális kapcsolón. A virtuális kapcsoló biztosítja az összes házirend-kényszerítést, például a hálózati biztonsági csoportokat, a hozzáférés-vezérlési listát, az elkülönítést és az egyéb, a hálózati forgalomhoz tartozó virtualizált szolgáltatásokat. Ha többet szeretne megtudni a virtuális kapcsolókról, olvassa el a [Hyper-V hálózati virtualizálás és a virtuális kapcsoló](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134230(v=ws.11)) című cikket.
 
 A gyorsított hálózatkezeléssel a hálózati forgalom a virtuális gép hálózati adapterén (NIC) érkezik, majd továbbítva lesz a virtuális géphez. A virtuális kapcsoló által érintett összes hálózati házirend már ki van kiszervezve és alkalmazva a hardveren. A szabályzat a hardveren való alkalmazása lehetővé teszi, hogy a hálózati adapter közvetlenül a virtuális gépre továbbítsa a hálózati forgalmat, megkerülve a gazdagépet és a virtuális kapcsolót, miközben a gazdagépen alkalmazott összes házirendet megőrzi.
 
@@ -60,7 +60,7 @@ A gyorsított hálózatkezelést a legtöbb általános célú és a számítás
 
 A feleznie támogató példányokon a gyorsított hálózatkezelést a 4 vagy több vCPU rendelkező virtuálisgép-példányok támogatják. Támogatott adatsorozatok: D/Dsv3, D/Dsv4, DD/Ddv4, da/Dasv4, E/Esv3, E/Esv4, Ed/Edsv4, EA/Easv4, Fsv2, Lsv2, MS/MMS és MS/Mmsv2.
 
-A virtuálisgép-példányokkal kapcsolatos további információkért lásd: Linux rendszerű [virtuális gépek mérete](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+A virtuálisgép-példányokkal kapcsolatos további információkért lásd: Linux rendszerű [virtuális gépek mérete](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ### <a name="custom-images"></a>Egyéni rendszerképek
 Ha egyéni rendszerképet használ, és a rendszerkép támogatja a gyorsított hálózatkezelést, győződjön meg arról, hogy a szükséges illesztőprogramok működnek a Mellanox ConnectX-3 és a ConnectX-4 LX hálózati adapterek használatával az Azure-ban.
@@ -173,7 +173,7 @@ az vm create \
     --nics myNic
 ```
 
-A virtuális gépek méretének és jellemzőinek listáját lásd: Linux rendszerű [virtuális gépek méretei](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+A virtuális gépek méretének és jellemzőinek listáját lásd: Linux rendszerű [virtuális gépek méretei](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 A virtuális gép létrehozása után a rendszer a következő példában szereplő kimenethez hasonló kimenetet ad vissza. Jegyezze fel a **publicIpAddress** értékét. Ez a címe a virtuális gép a következő lépésekben való elérésére szolgál.
 
@@ -310,5 +310,4 @@ A gyorsított hálózatkezelést használó virtuális gépek nem méretezhetők
 
 * Állítsa le/szabadítsa fel a virtuális gépet, vagy ha rendelkezésre állási csoport/VMSS, állítsa le/szabadítsa fel a set/VMSS összes virtuális gépét.
 * A gyorsított hálózatkezelést le kell tiltani a virtuális gép hálózati adapterén, vagy ha rendelkezésre állási csoport/VMSS, a set/VMSS összes virtuális gépe.
-* Ha a gyorsított hálózatkezelés le van tiltva, a virtuális gép/rendelkezésre állási csoport/VMSS olyan új méretre helyezhető át, amely nem támogatja a gyorsított hálózatkezelést és az újraindítást.  
-
+* Ha a gyorsított hálózatkezelés le van tiltva, a virtuális gép/rendelkezésre állási csoport/VMSS olyan új méretre helyezhető át, amely nem támogatja a gyorsított hálózatkezelést és az újraindítást.

@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 19bebb5c1817882dcb641a284332926e51a8dd2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0bc7ddde7964ecdd003b951a8562a840b8b88e4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91313994"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223210"
 ---
 # <a name="route-traffic-through-a-network-virtual-appliance-script-sample"></a>Forgalom irányítása hálózati virtuális készüléken keresztül – példaszkript
 
@@ -61,8 +61,8 @@ Ez a szkript az alábbi parancsokkal létrehoz egy erőforráscsoportot, egy vir
 | [New-AzVM](/powershell/module/az.compute/new-azvm) | Létrehoz egy virtuális gépet, és csatolja hozzá a NIC-t. A parancs megadja továbbá a használandó virtuálisgép-rendszerképet és a rendszergazdai hitelesítő adatokat. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)  | Töröl egy erőforráscsoportot és a benne található összes erőforrást. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/azure/).
+Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](/powershell/azure/).
 
 A [Virtuális hálózatokra vonatkozó PowerShell-minták](../powershell-samples.md) között további, a virtuális hálózatokra vonatkozó PowerShell-példaszkripteket talál.

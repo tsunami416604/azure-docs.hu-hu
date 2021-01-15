@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 12/16/2020
-ms.openlocfilehash: d987d21700e5f19ad8228b08508e8da842cc39eb
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.date: 01/14/2020
+ms.openlocfilehash: 983e037376be48f497118b06cce8b23c430b1501
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914110"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223074"
 ---
 # <a name="open-source-integration-with-azure-machine-learning-projects"></a>Nyílt forráskódú integráció Azure Machine Learning projektekkel
 
@@ -42,11 +42,11 @@ A "neurális hálózatok" néven ismert nyílt forráskódú gépi tanulási alg
 
 A nyílt forráskódú mélyreható tanulási keretrendszerek és útmutatók a következők:
 
- *  [PyTorch](https://github.com/pytorch/pytorch): [mély tanulási képbesorolási modell betanítása a PyTorch](how-to-train-pytorch.md) 
+ *  [PyTorch](https://github.com/pytorch/pytorch): [mély tanulási képbesorolási modell betanítása az adatátviteli tanulással](how-to-train-pytorch.md) 
  *  [TensorFlow](https://github.com/tensorflow/tensorflow): [kézzel írt számjegyek felismerése a TensorFlow használatával](how-to-train-tensorflow.md)
  *  [Kerasz](https://github.com/keras-team/keras): [neurális hálózat létrehozása a rendszerképek elemzéséhez a kerasz használatával](how-to-train-keras.md)
 
-A mély tanulási modellek a semmiből való betanítása gyakran nagy mennyiségű időt, adatmennyiséget és számítási erőforrást igényel. A betanítási folyamat az átvitelsel való tanulással is felhasználható. Az átvitel a tanulás olyan technika, amely az egyik probléma megoldását egy másik, de kapcsolódó problémára is kiszolgálja. Ez azt jelenti, hogy egy meglévő modellt is igénybe vehet. A tanulással kapcsolatos további információkért tekintse meg a [Deep learning cikket](concept-deep-learning-vs-machine-learning.md#transfer-learning) .
+A mély tanulási modellek a semmiből való betanítása gyakran nagy mennyiségű időt, adatmennyiséget és számítási erőforrást igényel. A betanítási folyamat az átvitelsel való tanulással is felhasználható. Az átvitel a tanulás olyan technika, amely az egyik probléma megoldását egy másik, de kapcsolódó problémára is kiszolgálja. Ez azt jelenti, hogy egy meglévő modellt is igénybe vehet. A tanulással kapcsolatos további információkért tekintse meg a [Deep learning vs Machine learning című cikket](concept-deep-learning-vs-machine-learning.md#what-is-transfer-learning) .
 
 ### <a name="reinforcement-learning-ray-rllib"></a>Megerősítő tanulás: Ray RLLib
 

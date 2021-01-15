@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: f44751feca67fdd4473dd3f427fcf2b9d1bbe717
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: dde6af75b751037c10d7786fa5b0b03ae31d969e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916490"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222615"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db"></a>Az Azure Cosmos DB-hez készült Azure Synapse Link konfigurálása és használata
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -32,7 +32,7 @@ Az Azure szinapszis hivatkozás Azure Cosmos DB SQL API-tárolók vagy a Mongo D
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/).
 
 1. [Hozzon létre egy új Azure-fiókot](create-sql-api-dotnet.md#create-account), vagy válasszon ki egy meglévő Azure Cosmos db fiókot.
 
@@ -79,16 +79,15 @@ A tároló létrehozásakor bekapcsolhatja az analitikus tárolót egy Azure Cos
 A következő kód egy tárolót hoz létre az analitikai tárolóval a .NET SDK használatával. Állítsa be az analitikai TTL tulajdonságot a szükséges értékre. Az engedélyezett értékek listájának megtekintéséhez tekintse meg az [analitikai TTL által támogatott értékek](analytical-store-introduction.md#analytical-ttl) című cikket:
 
 ```csharp
-// Create a container with a partition key, and analytical TTL configured to  -1 (infinite retention)
-string containerId = “myContainerName”;
-int analyticalTtlInSec = -1;
-ContainerProperties cpInput = new ContainerProperties()
-            {
-Id = containerId,
-PartitionKeyPath = "/id",
-AnalyticalStorageTimeToLiveInSeconds = analyticalTtlInSec,
+// Create a container with a partition key, and analytical TTL configured to -1 (infinite retention)
+ContainerProperties properties = new ContainerProperties()
+{
+    Id = "myContainerId",
+    PartitionKeyPath = "/id",
+    AnalyticalStoreTimeToLiveInSeconds = -1,
 };
- await this. cosmosClient.GetDatabase("myDatabase").CreateContainerAsync(cpInput);
+CosmosClient cosmosClient = new CosmosClient("myConnectionString");
+await cosmosClient.GetDatabase("myDatabase").CreateContainerAsync(properties);
 ```
 
 ### <a name="java-v4-sdk"></a>Java v4 SDK

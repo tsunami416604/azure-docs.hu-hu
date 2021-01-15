@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e28714e2557027a3f8f5504f7052973a77720b6
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: f83e5584f8f9c6823e1259cb5e6034d8b13ae3a6
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97744060"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222377"
 ---
 # <a name="securing-external-access-with-groups"></a>A külső hozzáférés biztonságossá tétele a csoportokkal 
 
@@ -170,7 +170,7 @@ Kiválaszthatja az e-mail aliast, az adatvédelmet, valamint azt, hogy engedély
 
 A telepítés után hozzáadhat tagokat, és konfigurálhatja az e-mailek használatának beállításait stb.
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a következő cikkeket az erőforrásokhoz való külső hozzáférés biztonságossá tételéhez. Javasoljuk, hogy a felsorolt sorrendben végezze el a műveleteket.
 

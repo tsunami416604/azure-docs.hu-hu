@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7589b13dc517a23e8d9d65907fb3342e4e2490a9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d2cabecfb2a70e6d325129335c066bb35aeb02ba
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000589"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221846"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>Hálózati forgalom szűrése hálózati biztonsági csoporttal az Azure CLI használatával
 
@@ -239,8 +239,8 @@ Ha már nincs rá szükség, az [az Group delete](/cli/azure/group) paranccsal t
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben létrehozott egy hálózati biztonsági csoportot, és hozzárendelte azt egy virtuális hálózati alhálózathoz. A hálózati biztonsági csoportokkal kapcsolatos további információ: [Hálózati biztonsági csoportok áttekintése](security-overview.md) és [Hálózati biztonsági csoportok kezelése](manage-network-security-group.md).
+Ebben a cikkben létrehozott egy hálózati biztonsági csoportot, és hozzárendelte azt egy virtuális hálózati alhálózathoz. A hálózati biztonsági csoportokkal kapcsolatos további információ: [Hálózati biztonsági csoportok áttekintése](./network-security-groups-overview.md) és [Hálózati biztonsági csoportok kezelése](manage-network-security-group.md).
 
 Az Azure alapértelmezés szerint irányítja a forgalmat az alhálózatok között. Ehelyett lehetősége van arra, hogy egy virtuális gépen keresztül irányítsa a forgalmat az alhálózatok között, amely így például tűzfalként is szolgálhat. További információt az [útválasztási táblázat létrehozása](tutorial-create-route-table-cli.md)című témakörben talál.

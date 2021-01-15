@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: dd5197f99f7187e21eb466bfa213f68a7638e24d
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 54001cde76bd89305eb77544c6e6858defda6096
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045342"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222547"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Digitális ikrek gráfjának kezelése kapcsolatok használatával
 
@@ -157,7 +157,7 @@ Itt látható a fenti program konzoljának kimenete:
 > [!TIP]
 > A Twin Graph az ikrek közötti kapcsolatok létrehozási fogalma. Ha meg szeretné tekinteni a Twin gráf vizuális ábrázolását, tekintse meg a jelen cikk [*vizualizációs*](how-to-manage-graph.md#visualization) szakaszát. 
 
-### <a name="create-a-twin-graph-from-a-csv-file"></a>Dupla gráf létrehozása CSV-fájlból
+## <a name="create-graph-from-a-csv-file"></a>Gráf létrehozása CSV-fájlból
 
 Gyakorlati használati esetekben a különálló hierarchiák gyakran egy másik adatbázisban tárolt adatokból jönnek létre, vagy akár egy táblázatkezelőben vagy CSV-fájlban is. Ez a szakasz azt szemlélteti, hogyan lehet beolvasni egy CSV-fájl adatait, és létrehozni egy különálló gráfot.
 
@@ -176,7 +176,7 @@ Az alábbi kódban a CSV-fájl neve *data.csv*, és az Azure Digital Twins-péld
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graphFromCSV.cs":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tudnivalók az Azure Digital Twins Twin Graph lekérdezéséről:
 * [*Fogalmak: lekérdezési nyelv*](concepts-query-language.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: allensu
-ms.openlocfilehash: 62c1b323899f03a043904f4b10d5fe3bb551e0f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4ef8e6207d53a192b19f8343a60093e82368fa6
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441766"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223380"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Virtuális hálózatok tervezése NAT Gateway-erőforrásokkal
 
@@ -60,7 +60,7 @@ A következő ábrán a különböző Azure Resource Manager erőforrások köz�
 
 A legtöbb számítási feladathoz a NAT használata ajánlott, kivéve, ha a [készleten alapuló Load Balancer kimenő kapcsolathoz](../load-balancer/load-balancer-outbound-connections.md)adott függősége van.  
 
-Áttelepítheti a standard Load Balancer-forgatókönyveket, beleértve a [kimenő szabályokat](../load-balancer/load-balancer-outbound-rules-overview.md)is a NAT-átjáróra. A Migrálás érdekében helyezze át a nyilvános IP-címet és a nyilvános IP-előtag erőforrásait a terheléselosztó felületéről a NAT-átjáróra. A NAT-átjáró új IP-címei nem szükségesek. A standard nyilvános IP-címek erőforrásai és a nyilvános IP-előtag erőforrása újra felhasználható, ha az összeg nem haladja meg a 16 IP-címet. Tervezze meg a szolgáltatás-megszakítással való áttelepítést az áttérés során.  A folyamat automatizálásával csökkentheti a megszakítást. Először tesztelje az áttelepítést átmeneti környezetben.  Az áttérés során a bejövő folyamatokat nem érinti a rendszer.
+Áttelepítheti a standard Load Balancer-forgatókönyveket, beleértve a [kimenő szabályokat](../load-balancer/load-balancer-outbound-connections.md#outboundrules)is a NAT-átjáróra. A Migrálás érdekében helyezze át a nyilvános IP-címet és a nyilvános IP-előtag erőforrásait a terheléselosztó felületéről a NAT-átjáróra. A NAT-átjáró új IP-címei nem szükségesek. A standard nyilvános IP-címek erőforrásai és a nyilvános IP-előtag erőforrása újra felhasználható, ha az összeg nem haladja meg a 16 IP-címet. Tervezze meg a szolgáltatás-megszakítással való áttelepítést az áttérés során.  A folyamat automatizálásával csökkentheti a megszakítást. Először tesztelje az áttelepítést átmeneti környezetben.  Az áttérés során a bejövő folyamatokat nem érinti a rendszer.
 
 
 A következő példa egy Azure Resource Manager sablonból származó kódrészlet.  Ez a sablon számos erőforrást telepít, beleértve a NAT-átjárót is.  Ebben a példában a sablon a következő paraméterekkel rendelkezik:
@@ -230,7 +230,7 @@ Amíg a forgatókönyv működni fog, az állapot modellje és a meghibásodási
 
 Az egyes NAT-átjáró-erőforrások akár 50 GB/s átviteli sebességet is biztosíthatnak. Az üzemelő példányokat több alhálózatra is feloszthatja, és az egyes alhálózatokat vagy alhálózatokat hozzárendelheti egy NAT-átjáróhoz a vertikális felskálázás érdekében.
 
-Az egyes NAT-átjárók a TCP és az UDP 64 000 folyamatát támogatják a hozzárendelt kimenő IP-címekhez.  Tekintse át a következő, a forrásoldali hálózati címfordítással (SNAT) foglalkozó szakaszt, valamint a probléma megoldására vonatkozó útmutatást a [hibaelhárítási cikkben](https://docs.microsoft.com/azure/virtual-network/troubleshoot-nat) .
+Az egyes NAT-átjárók a TCP és az UDP 64 000 folyamatát támogatják a hozzárendelt kimenő IP-címekhez.  Tekintse át a következő, a forrásoldali hálózati címfordítással (SNAT) foglalkozó szakaszt, valamint a probléma megoldására vonatkozó útmutatást a [hibaelhárítási cikkben](./troubleshoot-nat.md) .
 
 ## <a name="source-network-address-translation"></a>Forrás hálózati címfordítás
 
@@ -264,7 +264,7 @@ A NAT-átjárók felhasználják a forrás-(SNAT-) portok használatát.  A köv
 |:---:|:---:|:---:|
 | 4 | 192.168.0.16:4285 | 65.52.0.2:80 |
 
-Egy NAT-átjáró valószínűleg lefordítja a 4. folyamatot egy olyan portra, amely más célállomásokhoz is használható.  Az IP-címek kiosztásának megfelelő méretezésével kapcsolatban lásd: [Méretezés](https://docs.microsoft.com/azure/virtual-network/nat-gateway-resource#scaling) további megbeszélésekhez.
+Egy NAT-átjáró valószínűleg lefordítja a 4. folyamatot egy olyan portra, amely más célállomásokhoz is használható.  Az IP-címek kiosztásának megfelelő méretezésével kapcsolatban lásd: [Méretezés](#scaling) további megbeszélésekhez.
 
 | Folyamat | Forrás rekord | SNAT'ed-forrás rekordja | Cél rekord | 
 |:---:|:---:|:---:|:---:|
@@ -307,7 +307,7 @@ A NAT-átjáró erőforrásai felhasználják a forrás-(SNAT-) portok használa
 
 Ha lehetséges, a SNAT-portok a különböző célhelyekre való használata valószínűleg újra felhasználható. A SNAT-portok kimerülésének módszerei azonban sikertelenek lehetnek.  
 
-Lásd például a [SNAT alapjai](https://docs.microsoft.com/azure/virtual-network/nat-gateway-resource#source-network-address-translation) című témakört.
+Lásd például a [SNAT alapjai](#source-network-address-translation) című témakört.
 
 
 ### <a name="protocols"></a>Protokollok
@@ -359,10 +359,10 @@ Szeretnénk tudni, hogyan lehet javítani a szolgáltatást. Hiányzik egy képe
   - [Portál](./quickstart-create-nat-gateway-portal.md)
   - [Sablon](./quickstart-create-nat-gateway-template.md)
 * Tudnivalók a NAT Gateway Resource API-ról
-  - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
-  - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway)
-  - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)
+  - [REST API](/rest/api/virtualnetwork/natgateways)
+  - [Azure CLI](/cli/azure/network/nat/gateway)
+  - [PowerShell](/powershell/module/az.network/new-aznatgateway)
 * További információ a [rendelkezésre állási zónákról](../availability-zones/az-overview.md).
-* Ismerje meg a [standard Load balancert](../load-balancer/load-balancer-standard-overview.md).
+* Ismerje meg a [standard Load balancert](../load-balancer/load-balancer-overview.md).
 * További információ a [rendelkezésre állási zónákról és a standard Load balancerről](../load-balancer/load-balancer-standard-availability-zones.md).
 * [Ossza meg velünk a következőt Virtual Network NAT UserVoice-ben való létrehozásához](https://aka.ms/natuservoice).

@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 12/03/2020
+ms.date: 01/14/2020
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: enterprise-users
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e940c6eb2710ea43e756e4ea7956a39df9e0ce8
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: bf2d0d3335468147575eb53a99940866baa18375
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575550"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222521"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>A vendég hozzáférési engedélyei (előzetes verzió) korlátozása Azure Active Directory
 
@@ -139,14 +139,15 @@ Támogatott módon azt értjük, hogy a tapasztalatok a várt módon működnek.
 - Teams
 - Outlook (OWA)
 - SharePoint
+- Planner a Teams szolgáltatásban
+- Planner webalkalmazás
 
 ### <a name="services-currently-not-supported"></a>A szolgáltatások jelenleg nem támogatottak
 
 Az aktuális támogatás nélküli szolgáltatás kompatibilitási problémákba ütközhet az új vendég korlátozási beállítással.
 
 - Űrlapok
-- Planner a Teams szolgáltatásban
-- Planner alkalmazás
+- Planner Mobile-alkalmazás
 - Project
 - Yammer
 
@@ -158,12 +159,12 @@ Hová kell alkalmazni ezeket az engedélyeket? | Ezek a címtár-szintű engedé
 Hogyan befolyásolják a korlátozott engedélyek, hogy mely csoportok láthatják a vendégeket? | Az alapértelmezett vagy a korlátozott vendég engedélyeitől függetlenül a vendégek nem tudják enumerálni a csoportok vagy felhasználók listáját. Az engedélyektől függően a vendégek a Azure Portal és a saját alkalmazások portálon is megtekinthetik a csoportok tagjait:<li>**Alapértelmezett engedélyek**: Ha meg szeretné keresni azokat a csoportokat, amelyek tagjai a Azure Portalnak, a vendégnek a **minden felhasználó** listában meg kell KERESNIe az objektum azonosítóját, majd ki kell választania a **csoportokat**. Itt láthatják azoknak a csoportoknak a listáját, amelyeknek tagjai, beleértve az összes csoport részleteit, beleértve a nevet, az e-maileket stb. A saját alkalmazások portálon megtekinthetik azoknak a csoportoknak a listáját, amelyeknek a tulajdonosai és csoportjaik tagjai.</li><li>**Korlátozott vendég engedélyei**: a Azure Portalban továbbra is megtalálják azoknak a csoportoknak a listáját, amelyeknek a tagjai a minden felhasználó listában megkeresik a hozzájuk tartozó objektumazonosítók keresését, majd kiválasztja a csoportok lehetőséget. A csoportnak csak nagyon kevés részlete látható, különösen az objektumazonosító. A tervezés szerint a név és az e-mail-oszlopok üresek, és a csoport típusa nem ismerhető fel. A saját alkalmazások portálon nem férhetnek hozzá azok a csoportok, amelyeknek a tulajdonosai vagy csoportjaik tagjai.</li><br>A Graph APIből származó címtár-engedélyek részletesebb összehasonlítását lásd: [alapértelmezett felhasználói engedélyek](../fundamentals/users-default-permissions.md#member-and-guest-users).
 A My apps portál mely részeit érinti ez a funkció? | A saját alkalmazások portál csoportok funkciója tiszteletben tartja ezeket az új engedélyeket. Ide tartozik a csoportok listájának és a csoporttagságok a saját alkalmazásokban való megtekintéséhez szükséges összes elérési út. Nem történt változás a csoport csempe rendelkezésre állása során. A csoport csempe rendelkezésre állását továbbra is a Azure Portal meglévő csoportjának beállításai vezérlik.
 Felülbírálják ezeket az engedélyeket a SharePoint vagy a Microsoft Teams vendég beállításainak? | Nem. Ezek a meglévő beállítások továbbra is szabályozzák az alkalmazások élményét és elérését. Ha például problémát tapasztal a SharePointban, ellenőrizze a külső megosztási beállításokat.
-Mik a Planner és a Yammer ismert kompatibilitási problémái? | <li>Ha az engedélyek "korlátozott" értékre vannak beállítva, a Planner alkalmazásba bejelentkezett, vagy a Microsoft Teams-tervezőhöz való hozzáférés nem fog tudni hozzáférni a terveihez vagy a feladatokhoz.<li>A "korlátozott" értékre beállított engedélyek esetén a Yammer bejelentkezett vendégek nem hagyhatják el a csoportot.
+Mik a Planner és a Yammer ismert kompatibilitási problémái? | <li>Ha a "korlátozott" értékre van állítva, a Planner Mobile alkalmazásba bejelentkezett vendégek nem fognak tudni hozzáférni a csomagokhoz vagy a feladatokhoz.<li>Ha az engedélyek "korlátozott" értékre vannak beállítva, a Yammer-be bejelentkezett vendégek nem hagyhatják el a csoportot.
 Módosulnak a meglévő vendég engedélyei a bérlőn? | Nem történt változás az aktuális beállításokban. A meglévő beállításokkal visszamenőleges kompatibilitást biztosítunk. Ön dönti el, hogy szeretne-e módosításokat végezni.
 A rendszer alapértelmezés szerint beállítja ezeket az engedélyeket? | Nem. A meglévő alapértelmezett engedélyek változatlanok maradnak. Igény szerint beállíthatja, hogy az engedélyek szigorúbbak legyenek.
 Vannak a szolgáltatásra vonatkozó licencfeltételek? | Nem, a szolgáltatáshoz nem tartozik új licencelési követelmény.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha többet szeretne megtudni az Azure AD-ben meglévő vendég engedélyekről, tekintse meg [a mi az alapértelmezett felhasználói engedélyek a Azure Active Directory?](../fundamentals/users-default-permissions.md)
 - A vendég hozzáférésének korlátozására szolgáló Microsoft Graph API-metódusok megtekintéséhez lásd: [authorizationPolicy-erőforrás típusa](/graph/api/resources/authorizationpolicy)

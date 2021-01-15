@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d0116d903bab0cefc6ab58d37a66963da49a53c6
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 89923bbbb6f1745a4efe033d795a6ee90d1e4d32
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "96013904"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223193"
 ---
 # <a name="configure-ipv6-frontend-in-virtual-network-script-sample-with-standard-load-balancerpreview"></a>IPv6-előtérbeli konfiguráció konfigurálása a Virtual Network script mintában standard Load Balancer (előzetes verzió)
 
@@ -267,8 +267,8 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 | [New-AzVM](/powershell/module/az.compute/new-azvm)  | Létrehozza a virtuális gépet, és csatlakoztatja a hálózati kártyához, a virtuális hálózathoz, az alhálózathoz és az NSG-hez. A parancs megadja továbbá a használandó virtuálisgép-rendszerképet és a rendszergazdai jelszavakat.  |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/azure/).
+Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](/powershell/azure/).
 
 További hálózatkezelési PowerShell-példaszkripteket az [Azure-hálózatkezelés áttekintő dokumentációjában](../powershell-samples.md?toc=%2fazure%2fnetworking%2ftoc.json) találhat.

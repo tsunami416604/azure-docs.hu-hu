@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: e76086db36642664ca15acee26f4e0aca85ff272
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 114c723b127a17ffdd9c7ed91c6e777838d68e8e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184459"
+ms.locfileid: "98223346"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Az Azure DDoS Protection Standard áttekintése
 
@@ -36,7 +36,7 @@ Az Azure DDoS Protection nem tárolja az ügyféladatokat.
 - **Kulcsrakész védelem:** Az egyszerűsített konfiguráció azonnal megvédi a virtuális hálózat összes erőforrását, amint DDoS Protection standard engedélyezve van. Nincs szükség beavatkozásra vagy felhasználói definícióra. 
 - **Folyamatos forgalom figyelése:** Az alkalmazás forgalmi mintáit napi 24 órában, hetente 7 nappal figyelik, a DDoS-támadások mutatóit keresve. A rendszer azonnal DDoS Protection a standardot, és automatikusan csökkenti a támadásokat, amint azt észlelte.
 - **Adaptív hangolás:** Az intelligens forgalmi profilkészítés az idő múlásával megtanulja az alkalmazás forgalmát, és kiválasztja és frissíti a szolgáltatás számára legmegfelelőbb profilt. A profil a forgalmi változások időbeli változásával változik.
-- **Többrétegű védelem:** A teljes verem DDoS-védelmet biztosít webalkalmazási tűzfallal való használat esetén, hogy a hálózati réteg (3. réteg és Azure DDoS Protection 4. réteg) és az alkalmazási réteg (a WAF által kínált 7. réteg) esetében is védelmet kapjon. A WAF-ajánlatok közé tartoznak az Azure [Application Gateway WAF SKU](../web-application-firewall/ag/ag-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , valamint az [Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall)elérhető, harmadik féltől származó webalkalmazási tűzfalak is.
+- **Többrétegű védelem:** A webalkalmazási tűzfallal (WAF) való üzembe helyezéskor a DDoS Protection standard védelmet biztosít mind a hálózati rétegben (3. és 4. réteg, Azure DDoS Protection standard által kínált), valamint az alkalmazás rétegében (7. réteg, amelyet egy WAF kínál). A WAF-ajánlatok közé tartoznak az Azure [Application Gateway WAF SKU](../web-application-firewall/ag/ag-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , valamint az [Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall)elérhető, harmadik féltől származó webalkalmazási tűzfalak is.
 - **Széleskörű kockázatcsökkentő skála:** Több mint 60 különböző támadási típust lehet mérsékelni, globális kapacitással, hogy védelmet nyújtson a legnagyobb ismert DDoS-támadásokkal szemben.
 - **Támadási elemzés:** A támadás során öt percenkénti lépésekben részletes jelentéseket kaphat, és a támadás befejezése után teljes összefoglalás is elérhető. A stream-elhárítási folyamat naplóit az [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md) vagy egy offline biztonsági információ-és ESEMÉNYKEZELŐ (SIEM) rendszer ismerteti a támadás során a közel valós idejű figyeléshez.
 - **Támadási metrikák:** Az egyes támadások összesített metrikái a Azure Monitoron keresztül érhetők el.

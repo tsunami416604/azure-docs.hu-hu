@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/14/2019
 ms.author: kumud
-ms.openlocfilehash: 759bd94aee98aa04dee56acf0e50ca90cd0541b8
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 3df89b84e748f041f13866c1eb3c0b8a3341209c
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "96000606"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220830"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-standard-internal-load-balancer-in-azure---powershell-preview"></a>IPv6-alapú kettős stack-alkalmazás üzembe helyezése standard belső Load Balancer az Azure-ban – PowerShell (előzetes verzió)
 
@@ -62,7 +62,7 @@ A regisztráció befejeződése után futtassa a következő parancsot:
 Register-AzResourceProvider -ProviderNamespace Microsoft.Network
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 A kettős veremből álló virtuális hálózat létrehozása előtt létre kell hoznia egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)használatával. A következő példában létrehozunk egy *dsStd_ILB_RG* nevű erőforráscsoportot az *USA keleti* régiójában:
 
@@ -302,7 +302,7 @@ $NIC_2 = New-AzNetworkInterface `
 
 ### <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 
-A [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) paranccsal állítsa be a virtuális gépek rendszergazdai felhasználónevét és jelszavát:
+A [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) paranccsal állítsa be a virtuális gépek rendszergazdai felhasználónevét és jelszavát:
 
 ```azurepowershell
 $cred = get-credential -Message "DUAL STACK VNET SAMPLE:  Please enter the Administrator credential to log into the VM's"
@@ -344,6 +344,6 @@ Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](/powershel
 Remove-AzResourceGroup -Name dsStd_ILB_RG
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben létrehozta a standard Load Balancer egy kettős előtér-IP-konfigurációval (IPv4 és IPv6). Létrehozott két virtuális gépet is, amelyek a terheléselosztó háttér-készletéhez hozzáadott kettős IP-konfigurációval (IPV4 + IPv6) rendelkező hálózati adaptereket tartalmaznak. További információ az Azure-beli virtuális hálózatok IPv6-támogatásáról: [Mi az IPv6 for azure Virtual Network?](ipv6-overview.md)

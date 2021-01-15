@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63d6c37f6cd32985e540164ef8b308652a5e7414
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: e6814cafcf6dafa6f007bdd9d3623d30ef079084
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97744051"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222445"
 ---
 # <a name="determine-your-security-posture-for-external-access"></a>A külső hozzáférés biztonsági helyzetének meghatározása 
 
@@ -73,7 +73,7 @@ A szervezete és a forgatókönyvei közül a következőket kell elvégeznie:
 
 * **A megfelelőség megerősítéséhez rendszeresen tekintse át a tevékenységeket és a** naplót. A jogosultsági felügyeleten keresztül delegálhatja a hozzáférési döntéseket az üzleti tulajdonosoknak, míg a hozzáférési felülvizsgálatok lehetővé teszik a folyamatos hozzáférés rendszeres időközönkénti megerősítését. Az adatelemzési címkékkel rendelkező automatizált adatok besorolásával automatizálható a bizalmas tartalmak titkosítása, így az alkalmazottak a felhasználók számára könnyen betartják a felhasználókat.
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 Tekintse meg a következő cikkeket az erőforrásokhoz való külső hozzáférés biztonságossá tételéhez. Javasoljuk, hogy a felsorolt sorrendben végezze el a műveleteket.
 

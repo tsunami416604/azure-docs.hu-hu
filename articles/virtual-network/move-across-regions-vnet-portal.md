@@ -6,18 +6,18 @@ ms.service: virtual-network
 ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: ed3da649ba65484a79b42ba5bb45431839e123d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a80c731e4245b1a295364e5b8c87f90290f7f74
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84711442"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223308"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-the-azure-portal"></a>Azure-beli virtuális hálózat áthelyezése másik régióba a Azure Portal használatával
 
 A meglévő Azure-beli virtuális hálózatok egyik régióból a másikba való áthelyezésének különböző forgatókönyvei vannak. Előfordulhat például, hogy egy virtuális hálózatot szeretne létrehozni ugyanazzal a konfigurációval a teszteléshez és a rendelkezésre álláshoz, mint a meglévő virtuális hálózatot. Vagy előfordulhat, hogy a vész-helyreállítási terv részeként egy éles virtuális hálózatot szeretne áthelyezni egy másik régióba.
 
-A virtuális hálózat áthelyezését egy másik régióba Azure Resource Manager sablon használatával végezheti el. Ezt úgy teheti meg, hogy a virtuális hálózatot sablonba exportálja, módosítja a paramétereket, hogy azok megfeleljenek a célként megadott régiónak, majd üzembe helyezi a sablont az új régióban. A Resource Manager-sablonokkal kapcsolatos további információkért tekintse meg a rövid útmutató [: Azure Resource Manager sablonok létrehozása és telepítése a Azure Portal használatával](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)című témakört.
+A virtuális hálózat áthelyezését egy másik régióba Azure Resource Manager sablon használatával végezheti el. Ezt úgy teheti meg, hogy a virtuális hálózatot sablonba exportálja, módosítja a paramétereket, hogy azok megfeleljenek a célként megadott régiónak, majd üzembe helyezi a sablont az új régióban. A Resource Manager-sablonokkal kapcsolatos további információkért tekintse meg a rövid útmutató [: Azure Resource Manager sablonok létrehozása és telepítése a Azure Portal használatával](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)című témakört.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -32,7 +32,7 @@ A virtuális hálózat áthelyezését egy másik régióba Azure Resource Manag
 
 - Ellenőrizze, hogy az Azure-előfizetése lehetővé teszi-e a virtuális hálózatok létrehozását a célcsoportban. A szükséges kvóta engedélyezéséhez forduljon az ügyfélszolgálathoz.
 
-- Győződjön meg arról, hogy az előfizetése elegendő erőforrással rendelkezik a virtuális hálózatok ezen folyamathoz való hozzáadásának támogatásához. További információk: [Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
+- Győződjön meg arról, hogy az előfizetése elegendő erőforrással rendelkezik a virtuális hálózatok ezen folyamathoz való hozzáadásának támogatásához. További információk: [Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
 
 
 ## <a name="prepare-for-the-move"></a>Felkészülés az áthelyezésre
@@ -40,12 +40,12 @@ Ebben a szakaszban egy Resource Manager-sablon használatával készíti elő a 
 
 A virtuális hálózat exportálásához és a cél virtuális hálózatnak a Azure Portal használatával történő üzembe helyezéséhez tegye a következőket:
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), majd válassza az **erőforráscsoportok**lehetőséget.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), majd válassza az **erőforráscsoportok** lehetőséget.
 1. Keresse meg azt az erőforráscsoportot, amely a forrás virtuális hálózatot tartalmazza, majd jelölje ki.
-1. Válassza a **Beállítások**  >  **Exportálás sablon**lehetőséget.
-1. A **sablon exportálása** panelen válassza a **telepítés**lehetőséget.
-1. Ha meg szeretné nyitni a *parameters.js* fájlt az online szerkesztőben, válassza a **sablon**  >  **szerkesztése paraméterek**lehetőséget.
-1. A virtuális hálózat nevének paraméterének szerkesztéséhez módosítsa a **Value** tulajdonságot a **Paraméterek**alatt:
+1. Válassza a **Beállítások**  >  **Exportálás sablon** lehetőséget.
+1. A **sablon exportálása** panelen válassza a **telepítés** lehetőséget.
+1. Ha meg szeretné nyitni a *parameters.js* fájlt az online szerkesztőben, válassza a **sablon**  >  **szerkesztése paraméterek** lehetőséget.
+1. A virtuális hálózat nevének paraméterének szerkesztéséhez módosítsa a **Value** tulajdonságot a **Paraméterek** alatt:
 
     ```json
     {
@@ -63,9 +63,9 @@ A virtuális hálózat exportálásához és a cél virtuális hálózatnak a Az
 
 1. Válassza a **Mentés** lehetőséget a szerkesztőben.
 
-1. Az online szerkesztőben a *template.js* fájl megnyitásához válassza **a sablon**  >  **szerkesztése**lehetőséget.
+1. Az online szerkesztőben a *template.js* fájl megnyitásához válassza **a sablon**  >  **szerkesztése** lehetőséget.
 
-1. Az online szerkesztőben annak a célcsoportnak a szerkesztéséhez, ahol a virtuális hálózat át lesz helyezve, módosítsa a **Location (hely** ) tulajdonságot az **erőforrások**területen.
+1. Az online szerkesztőben annak a célcsoportnak a szerkesztéséhez, ahol a virtuális hálózat át lesz helyezve, módosítsa a **Location (hely** ) tulajdonságot az **erőforrások** területen.
 
     ```json
     "resources": [
@@ -89,7 +89,7 @@ A virtuális hálózat exportálásához és a cél virtuális hálózatnak a Az
 
 1. Választható A követelményektől függően a sablon egyéb paramétereit is módosíthatja:
 
-    * **Címterület**: a fájl mentése előtt megváltoztathatja a virtuális hálózat addressSpace, ha módosítja az **erőforrások**  >  **addressSpace** szakaszát, és megváltoztatja a **addressPrefixes** tulajdonságot:
+    * **Címterület**: a fájl mentése előtt megváltoztathatja a virtuális hálózat addressSpace, ha módosítja az **erőforrások**  >   szakaszát, és megváltoztatja a **addressPrefixes** tulajdonságot:
 
         ```json
                 "resources": [
@@ -176,38 +176,38 @@ A virtuális hálózat exportálásához és a cél virtuális hálózatnak a Az
          ]
         ```
 
-1. Az online szerkesztőben válassza a **Mentés**lehetőséget.
+1. Az online szerkesztőben válassza a **Mentés** lehetőséget.
 
-1. Válassza **ki azt az**előfizetést, amelyben a cél virtuális hálózat üzembe lesz helyezni, majd válassza az alapszintű  >  **előfizetés**lehetőséget.
+1. Válassza **ki azt az** előfizetést, amelyben a cél virtuális hálózat üzembe lesz helyezni, majd válassza az alapszintű  >  **előfizetés** lehetőséget.
 
-1. Válassza **ki azt az**erőforráscsoportot, amelybe a célként megadott virtuális hálózatot telepíteni kívánja, válassza az alapértékek  >  **erőforráscsoport**elemet. 
+1. Válassza **ki azt az** erőforráscsoportot, amelybe a célként megadott virtuális hálózatot telepíteni kívánja, válassza az alapértékek  >  **erőforráscsoport** elemet. 
 
-    Ha létre kell hoznia egy új erőforráscsoportot a célként megadott virtuális hálózathoz, válassza az **új létrehozása**lehetőséget. Győződjön meg arról, hogy a név nem ugyanaz, mint a forrás erőforráscsoport neve a meglévő virtuális hálózaton.
+    Ha létre kell hoznia egy új erőforráscsoportot a célként megadott virtuális hálózathoz, válassza az **új létrehozása** lehetőséget. Győződjön meg arról, hogy a név nem ugyanaz, mint a forrás erőforráscsoport neve a meglévő virtuális hálózaton.
 
-1. Győződjön meg **arról, hogy az**alapértékek  >  **helye** arra a célhelyre van beállítva, ahol a virtuális hálózatot telepíteni szeretné.
+1. Győződjön meg **arról, hogy az** alapértékek  >  **helye** arra a célhelyre van beállítva, ahol a virtuális hálózatot telepíteni szeretné.
 
-1. A **Beállítások**területen ellenőrizze, hogy a név megegyezik-e a korábban a paraméterek szerkesztőjében megadott névvel.
+1. A **Beállítások** területen ellenőrizze, hogy a név megegyezik-e a korábban a paraméterek szerkesztőjében megadott névvel.
 
 1. Jelölje be a **feltételek és kikötések** jelölőnégyzetet.
 
-1. A cél virtuális hálózat üzembe helyezéséhez válassza a **vásárlás**lehetőséget.
+1. A cél virtuális hálózat üzembe helyezéséhez válassza a **vásárlás** lehetőséget.
 
 ## <a name="delete-the-target-virtual-network"></a>A célként megadott virtuális hálózat törlése
 
 A cél virtuális hálózat elvetéséhez törölje a célként szolgáló virtuális hálózatot tartalmazó erőforráscsoportot. Ehhez tegye a következőket:
 1. A Azure Portal irányítópulton válassza ki az erőforráscsoportot.
-1. Az **Áttekintés** panel felső részén válassza a **Törlés**lehetőséget.
+1. Az **Áttekintés** panel felső részén válassza a **Törlés** lehetőséget.
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
 A módosítások elvégzéséhez és a virtuális hálózati áthelyezés befejezéséhez törölje a forrás virtuális hálózatot vagy az erőforráscsoportot. Ehhez tegye a következőket:
 1. A Azure Portal irányítópulton válassza ki a virtuális hálózatot vagy az erőforráscsoportot.
-1. Az egyes ablaktábla tetején válassza a **Törlés**lehetőséget.
+1. Az egyes ablaktábla tetején válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy Azure-beli virtuális hálózatot helyezett át egyik régióból a másikba a Azure Portal használatával, majd megtisztította a szükségtelen forrás-erőforrásokat. Ha többet szeretne megtudni a régiók és a vész-helyreállítási erőforrások közötti áthelyezésről az Azure-ban, tekintse meg a következőket:
 
 
-- [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [Azure-beli virtuális gépek áthelyezése másik régióba](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../azure-resource-manager/management/move-resource-group-and-subscription.md)
+- [Azure-beli virtuális gépek áthelyezése másik régióba](../site-recovery/azure-to-azure-tutorial-migrate.md)

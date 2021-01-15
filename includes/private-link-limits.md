@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-network
 author: KumudD
 ms.service: virtual-network
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/21/2020
 ms.author: kumud
 ms.custom: include file
-ms.openlocfilehash: 49a9917d925ebc7a36d14ff6679ad4b1737f9627
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: defcce3a00a38c88e1bff944075f0987fbdedd4b
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86515872"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98225664"
 ---
  Az Azure Private-hivatkozásra a következő korlátozások vonatkoznak:
 
@@ -26,4 +26,6 @@ ms.locfileid: "86515872"
 |Privát végpontok száma ugyanazon a privát kapcsolati szolgáltatáson   |  1000       |
 |Privát végpontok száma Key vaultban | 64 |
 |Privát végpontokkal rendelkező kulcstartók száma előfizetés esetén | 400 |
+|Privát végponthoz csatolható privát DNS-zónák száma | 1 |
+|A DNS-zónák száma az egyes csoportokban | 5 |
 

@@ -10,13 +10,13 @@ ms.topic: troubleshooting
 author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
-ms.date: 06/12/2020
-ms.openlocfilehash: c42db1445c939069f334d04ea26d54cdb843c336
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 1/14/2021
+ms.openlocfilehash: 3b57172daeffd1766da456e56cb5e445427a4858
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488833"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220388"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>A Azure SQL Database és az Azure SQL felügyelt példányok teljesítménnyel kapcsolatos problémáinak elhárítása Intelligent Insights
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -36,7 +36,7 @@ Intelligent Insights automatikusan észleli a teljesítménnyel kapcsolatos prob
 | :------------------- | ------------------- | ------------------- |
 | [Erőforrás-korlátok elérése](intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | Az elérhető erőforrások (DTU), az adatbázis-feldolgozó szálak vagy a figyelt előfizetésben elérhető adatbázis-bejelentkezési munkamenetek felhasználása elérte az erőforrás korlátait. Ez hatással van a teljesítményre. | A CPU-erőforrások felhasználása eléri az erőforrás-korlátozásokat. Ez hatással van az adatbázis teljesítményére. |
 | [Munkaterhelés növekedése](intelligent-insights-troubleshoot-performance.md#workload-increase) | A rendszer észlelte a munkaterhelés növelését vagy a számítási feladatok folyamatos felhalmozódását az adatbázisban. Ez hatással van a teljesítményre. | A rendszer a munkaterhelés növelését észlelte. Ez hatással van az adatbázis teljesítményére. |
-| [Memória nyomása](intelligent-insights-troubleshoot-performance.md#memory-pressure) | A memóriát igénylő munkavállalóknak meg kell várniuk a memória kiosztását a statisztikailag jelentős mennyiségű időszakra, vagy a feldolgozók megnövekedett felhalmozódását, amelyek a rendelkezésre álló memória-támogatást igényelték. Ez hatással van a teljesítményre. | A rendelkezésre álló memória-támogatást igénylő munkatársak statisztikaian jelentős mennyiségű időt várnak a memória kiosztására. Ez hatással van az adatbázis teljesítményére. |
+| [Memóriaterhelés](intelligent-insights-troubleshoot-performance.md#memory-pressure) | A memóriát igénylő munkavállalóknak meg kell várniuk a memória kiosztását a statisztikailag jelentős mennyiségű időszakra, vagy a feldolgozók megnövekedett felhalmozódását, amelyek a rendelkezésre álló memória-támogatást igényelték. Ez hatással van a teljesítményre. | A rendelkezésre álló memória-támogatást igénylő munkatársak statisztikaian jelentős mennyiségű időt várnak a memória kiosztására. Ez hatással van az adatbázis teljesítményére. |
 | [Zárolás](intelligent-insights-troubleshoot-performance.md#locking) | A rendszer túlzott adatbázis-zárolást észlelt a teljesítmény befolyásolása érdekében. | A rendszer túlzott adatbázis-zárolást észlelt, ami hatással volt az adatbázis teljesítményére. |
 | [Megnövekedett MAXDOP](intelligent-insights-troubleshoot-performance.md#increased-maxdop) | A maximális párhuzamossági lehetőség (MAXDOP) módosult a lekérdezés végrehajtásának hatékonyságát érintően. Ez hatással van a teljesítményre. | A maximális párhuzamossági lehetőség (MAXDOP) módosult a lekérdezés végrehajtásának hatékonyságát érintően. Ez hatással van a teljesítményre. |
 | [Pagelatch-tartalom](intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | Több szál párhuzamosan próbálkozik ugyanahhoz a memóriában tárolt adatpuffer-lapok eléréséhez, ami megnöveli a várakozási időt, és pagelatch-tartalmat okoz. Ez hatással van a teljesítményre. | Több szál párhuzamosan próbálkozik ugyanahhoz a memóriában tárolt adatpuffer-lapok eléréséhez, ami megnöveli a várakozási időt, és pagelatch-tartalmat okoz. Ez hatással van az adatbázis teljesítményére. |
@@ -128,7 +128,9 @@ A diagnosztikai napló kimenete a hibaelhárítás alapjaként használható zá
 
 A probléma enyhítésének legegyszerűbb és legbiztonságosabb módja a tranzakciók rövid és a legdrágább lekérdezések zárolási lábnyomának csökkentése. A műveletek nagy kötegeit kisebb műveletekre lehet bontani. Az ajánlott eljárás a lekérdezési zárolási lábnyom csökkentése a lekérdezés lehető leghatékonyabb megtételével. Csökkentse a nagy mennyiségű vizsgálatot, mivel azok egyre nagyobb eséllyel csökkentik a holtpontokat, és a teljes adatbázis-teljesítményt befolyásolhatják. A zárolást okozó azonosított lekérdezések esetén létrehozhat új indexeket, vagy hozzáadhat oszlopokat a meglévő indexhez, hogy elkerülje a tábla vizsgálatát.
 
-További javaslatokat a következő témakörben talál: az [SQL Server zárolásának feloldása által okozott blokkoló problémák megoldása](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in).
+További javaslatokat a következő témakörben talál:
+- [Az Azure SQL-blokkoló problémáinak megismerése és megoldása](understand-resolve-blocking.md)
+- [A zárolási eszkaláció okozta blokkolási problémák megoldása SQL Server](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in)
 
 ## <a name="increased-maxdop"></a>Megnövekedett MAXDOP
 
@@ -328,7 +330,7 @@ Intelligent Insights a Azure Portal keresztül érheti el a Azure SQL Analytics.
 
 Intelligent Insights általában egy órányi időt kell igénybe vennie a teljesítménnyel kapcsolatos probléma kiváltó okának elemzéséhez. Ha nem találja a problémát Intelligent Insights és kritikus fontosságú az Ön számára, a lekérdezési tároló használatával manuálisan azonosíthatja a teljesítménnyel kapcsolatos probléma okát. (Általában ezek a problémák kevesebb, mint egy órával régebbiek.) További információ: [a teljesítmény figyelése a lekérdezési tároló használatával](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerkedjen meg [Intelligent Insights](intelligent-insights-overview.md) fogalmakkal.
 - Használja a [Intelligent Insights Performance Diagnostics-naplót](intelligent-insights-use-diagnostics-log.md).

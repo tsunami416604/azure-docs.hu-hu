@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/02/2020
 ms.author: mnayak
-ms.openlocfilehash: 35e4b90e9bdd52a20bf892f0784b191384f271ac
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: beb670106690645a80aa12b930e3a005efb4282a
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533706"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221646"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-the-azure-portal"></a>Útválasztási beállítások konfigurálása virtuális géphez a Azure Portal használatával
 
@@ -77,7 +77,7 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot és a benne lév�
 2. Válassza az **Erőforráscsoport törlése** elemet.
 3. Írja be a *myResourceGroup* nevet az **ÍRJA BE AZ ERŐFORRÁSCSOPORT NEVÉT:** mezőbe, majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a [nyilvános IP-címekről az útválasztási beállításokkal](routing-preference-overview.md).
-- További információ az Azure [-beli nyilvános IP-címekről](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) .
+- További információ az Azure [-beli nyilvános IP-címekről](./public-ip-addresses.md#public-ip-addresses) .
 - További információ az összes [nyilvános IP-cím beállításról](virtual-network-public-ip-address.md#create-a-public-ip-address).

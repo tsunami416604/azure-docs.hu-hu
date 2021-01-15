@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: mnayak
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ccd04a43e6781e8d58234cc382b2739d800e5fe7
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: d375b860c6b23fd6033e985e23c6f12dfe9a3c68
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510675"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223567"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-azure-cli"></a>Útválasztási beállítások konfigurálása virtuális géphez az Azure CLI használatával
 
@@ -30,7 +30,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy nyilvános IP-címmel rendelkező 
 > Az útválasztási preferencia jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 1. Ha a Cloud Shell használja, ugorjon a 2. lépésre. Nyisson meg egy parancssori munkamenetet, és jelentkezzen be az Azure-ba `az login` .
 2. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) paranccsal. Az alábbi példa egy erőforráscsoportot hoz létre az USA keleti régiója Azure-régióban:
 
@@ -58,7 +58,7 @@ A virtuális gép üzembe helyezése előtt létre kell hoznia a támogató hál
 
 ### <a name="create-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
 
-Hozzon létre egy hálózati biztonsági csoportot a VNet bejövő és kimenő kommunikációját szabályozó szabályokhoz az [az Network NSG Create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create)
+Hozzon létre egy hálózati biztonsági csoportot a VNet bejövő és kimenő kommunikációját szabályozó szabályokhoz az [az Network NSG Create](/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create)
 
 ```azurecli
 az network nsg create \
@@ -69,7 +69,7 @@ az network nsg create \
 
 ### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-Hozzon létre egy virtuális hálózatot az [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create) paranccsal. Az alábbi példa egy *myVNET* nevű virtuális hálózatot hoz létre az alhálózatok *mySubNet*:
+Hozzon létre egy virtuális hálózatot az [az network vnet create](/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create) paranccsal. Az alábbi példa egy *myVNET* nevű virtuális hálózatot hoz létre az alhálózatok *mySubNet*:
 
 ```azurecli
 # Create a virtual network
@@ -89,7 +89,7 @@ az network vnet subnet create \
 
 ### <a name="create-a-nic"></a>Hálózati adapter létrehozása
 
-Hozzon létre egy virtuális hálózati adaptert a virtuális GÉPHEZ az [az Network NIC Create](https://docs.microsoft.com/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create)paranccsal. A következő példa egy virtuális hálózati adaptert hoz létre, amelyet a virtuális GÉPHEZ fog csatolni.
+Hozzon létre egy virtuális hálózati adaptert a virtuális GÉPHEZ az [az Network NIC Create](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create)paranccsal. A következő példa egy virtuális hálózati adaptert hoz létre, amelyet a virtuális GÉPHEZ fog csatolni.
 
 ```azurecli-interactive
 # Create a NIC
@@ -105,7 +105,7 @@ az network nic create \
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
-Hozzon létre egy virtuális gépet az [az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) paranccsal. A következő példa egy Windows Server 2019 rendszerű virtuális GÉPET és a szükséges virtuális hálózati összetevőket hozza létre, ha azok még nem léteznek.
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm?view=azure-cli-latest#az-vm-create) paranccsal. A következő példa egy Windows Server 2019 rendszerű virtuális GÉPET és a szükséges virtuális hálózati összetevőket hozza létre, ha azok még nem léteznek.
 
 ```azurecli
 az vm create \
@@ -128,5 +128,5 @@ az group delete --name myResourceGroup --yes
 ## <a name="next-steps"></a>Következő lépések
 
 - További információ az [útválasztási beállításokról a nyilvános IP-címekben](routing-preference-overview.md).
-- További információ az Azure [-beli nyilvános IP-címekről](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) .
+- További információ az Azure [-beli nyilvános IP-címekről](./public-ip-addresses.md#public-ip-addresses) .
 - További információ a [nyilvános IP-címek beállításairól](virtual-network-public-ip-address.md#create-a-public-ip-address).

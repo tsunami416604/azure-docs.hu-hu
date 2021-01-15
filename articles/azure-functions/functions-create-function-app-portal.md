@@ -1,48 +1,81 @@
 ---
-title: Függvényalkalmazás létrehozása az Azure Portal használatával
-description: Hozzon létre egy új Function alkalmazást az Azure-ban a portálon.
+title: Az első függvény létrehozása az Azure portálon
+description: Ismerje meg, hogyan hozhatja létre az első Azure-függvényét kiszolgáló nélküli végrehajtáshoz az Azure Portalon.
 ms.topic: how-to
-ms.date: 08/29/2019
-ms.custom: mvc
-ms.openlocfilehash: 8d19a269903de309bf219c2546fa70c3abe7be10
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.date: 03/26/2020
+ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
+ms.openlocfilehash: bebef4e8964576b968af8f8aebd06030ca0d0227
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093589"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222717"
 ---
-# <a name="create-a-function-app-from-the-azure-portal"></a>Függvényalkalmazás létrehozása az Azure Portal használatával
+# <a name="create-your-first-function-in-the-azure-portal"></a>Az első függvény létrehozása az Azure portálon
 
-Ebből a témakörből megtudhatja, hogyan hozhat létre egy Function-alkalmazást a Azure Portal a Azure Functions használatával. A függvényalkalmazás olyan tároló, amely a különálló függvények végrehajtását futtatja. 
+Azure Functions lehetővé teszi a kód kiszolgáló nélküli környezetben való futtatását anélkül, hogy először létre kellene hoznia egy virtuális gépet (VM), vagy közzé kellene tennie egy webalkalmazást. Ebből a cikkből megtudhatja, hogyan használhatja a Azure Functionst a "Hello World" HTTP-trigger függvény létrehozásához a Azure Portalban.
+
+Javasoljuk, hogy [helyileg fejlessze a függvényeket](functions-develop-local.md) , és tegye közzé az Azure-ban egy Function alkalmazásban.  
+A következő hivatkozások egyikével kezdheti meg a választott helyi fejlesztési környezet és nyelv használatát:
+
+| Visual Studio Code | Terminál/parancssor | Visual Studio |
+| --- | --- | --- |
+|  &bull;&nbsp;[Ismerkedés a C-vel #](./create-first-function-vs-code-csharp.md)<br/>&bull;&nbsp;[Ismerkedés a Javával](./create-first-function-vs-code-java.md)<br/>&bull;&nbsp;[Ismerkedés a JavaScripttel](./create-first-function-vs-code-node.md)<br/>&bull;&nbsp;[Ismerkedés a PowerShell-lel](./create-first-function-vs-code-powershell.md)<br/>&bull;&nbsp;[Ismerkedés a Pythontal](./create-first-function-vs-code-python.md) |&bull;&nbsp;[Ismerkedés a C-vel #](./create-first-function-cli-csharp.md)<br/>&bull;&nbsp;[Ismerkedés a Javával](./create-first-function-cli-java.md)<br/>&bull;&nbsp;[Ismerkedés a JavaScripttel](./create-first-function-cli-node.md)<br/>&bull;&nbsp;[Ismerkedés a PowerShell-lel](./create-first-function-cli-powershell.md)<br/>&bull;&nbsp;[Ismerkedés a Pythontal](./create-first-function-cli-python.md) | [Ismerkedés a C-vel #](functions-create-your-first-function-visual-studio.md) |
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjával.
 
 ## <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 
-[!INCLUDE [functions-create-function-app-portal](../../includes/functions-create-function-app-portal.md)]
+Rendelkeznie kell egy függvényalkalmazással a függvények végrehajtásának biztosításához. A Function app lehetővé teszi, hogy logikai egységként csoportosítsa a függvényeket az erőforrások egyszerűbb felügyelete, üzembe helyezése, skálázása és megosztása érdekében.
 
-A függvényalkalmazás létrehozása után létrehozhatja a különálló függvényeket egy vagy több nyelven. A [portál használatával](functions-create-first-azure-function.md#create-function), [folyamatos üzembe helyezéssel](functions-continuous-deployment.md), vagy [FTP-s feltöltéssel](https://github.com/projectkudu/kudu/wiki/Accessing-files-via-ftp) is létrehozhatja a függvényeket.
+[!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
-## <a name="service-plans"></a>Szolgáltatáscsomagok
+Ezután hozzon létre egy függvényt az új függvény alkalmazásban.
 
-Azure Functions három különböző szolgáltatási csomaggal rendelkezik: fogyasztási terv, Prémium csomag és dedikált (App Service) csomag. A Function app létrehozásakor ki kell választania a szolgáltatási tervet, és azt később nem lehet módosítani. További információ: [Azure Functions szolgáltatási csomag kiválasztása](functions-scale.md).
+## <a name="create-an-http-trigger-function"></a><a name="create-function"></a>HTTP-trigger függvény létrehozása
 
-Ha a JavaScript-függvények dedikált (App Service) csomagon való futtatását tervezi, válasszon egy kevesebb magot tartalmazó csomagot. További információ: [JavaScript-referencia a Functionshöz](functions-reference-node.md#choose-single-vcpu-app-service-plans).
+1. A **függvények** ablak bal oldali menüjében válassza a **függvények** lehetőséget, majd a felső menüben válassza a **Hozzáadás** lehetőséget. 
+ 
+1. Az **új függvény** ablakban válassza a **http-trigger** lehetőséget.
 
-<a name="storage-account-requirements"></a>
+    ![HTTP-trigger függvény kiválasztása](./media/functions-create-first-azure-function/function-app-select-http-trigger.png)
 
-## <a name="storage-account-requirements"></a>Storage-fiókra vonatkozó követelmények
+1. Az **új függvény** ablakban fogadja el az **új függvény** alapértelmezett nevét, vagy adjon meg egy új nevet. 
 
-A Function app létrehozásakor létre kell hoznia vagy hivatkoznia kell egy általános célú Azure Storage-fiókra, amely támogatja a blob, a üzenetsor és a Table Storage használatát. A Functions a Storage-ot használja olyan belső műveletekre, mint például az eseményindítók kezelése és a függvénykivételek naplózása. Egyes Storage-fiókok, mint például a csak blobok tárolására alkalmas tárfiókok, az Azure Premium Storage és a ZRS-replikációval rendelkező általános célú tárolófiókok nem támogatják az üzenetsorokat és a táblákat. 
+1. Válassza a **Névtelen** lehetőséget az **engedélyezési szint** legördülő listából, majd kattintson a **függvény létrehozása** elemre.
 
-A nem támogatott típusú fiókokat a rendszer kiszűri, amikor létrehoz egy Function alkalmazást a Azure Portal. A portál lehetővé teszi a meglévő Storage-fiók használatát is, ha a fiók ugyanabban a régióban található, mint a létrehozandó Function alkalmazás. Ha valamilyen okból szeretné megsérteni a Function alkalmazás által az adott régióban használt Storage-fiókkal kapcsolatos bevált gyakorlatot, akkor a Function alkalmazást a portálon kívül kell létrehoznia. 
+    Az Azure létrehozza a HTTP trigger függvényt. Mostantól egy HTTP-kérelem küldésével futtathatja az új függvényt.
 
->[!NOTE]
->A használatalapú szolgáltatási csomag használatakor a rendszer az Azure File Storage a fő tárfiókjában tárolja a függvénykódot és a kötéskonfigurációs fájlokat. Ha törli ezt a fő tárfiókot, ez a tartalom is törlődik, és nem állítható helyre. 
+## <a name="test-the-function"></a>A függvény tesztelése
 
-További információ a tárfiókok típusairól: [Az Azure Storage szolgáltatásainak bemutatása](../storage/common/storage-introduction.md#core-storage-services). 
+1. Az új HTTP-trigger függvényben válassza a **kód + tesztelés** elemet a bal oldali menüben, majd a felső menüben válassza a **függvény URL-címének beolvasása** elemet.
+
+    ![Válassza a függvény URL-címének beolvasása](./media/functions-create-first-azure-function/function-app-select-get-function-url.png)
+
+1. A **függvény URL-címének beolvasása** párbeszédpanelen válassza az **alapértelmezett** lehetőséget a legördülő listából, majd válassza a **Másolás a vágólapra** ikont. 
+
+    ![A függvény URL-címének másolása az Azure portálról](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
+
+1. Illessze be a függvény URL-címét a böngésző címsorába. Adja hozzá a lekérdezési karakterlánc értékét `?name=<your_name>` az URL végéhez, majd nyomja le az ENTER billentyűt a kérelem futtatásához. 
+
+    Az alábbi példa a böngészőben visszaadott választ mutatja:
+
+    ![A függvény által visszaadott válasz a böngészőben.](./media/functions-create-first-azure-function/function-app-browser-testing.png)
+
+    Ha a kérelem URL-címe tartalmaz egy [hozzáférési kulcsot](functions-bindings-http-webhook-trigger.md#authorization-keys) (), az azt jelenti, hogy a függvény `?code=...` létrehozásakor a **Névtelen** hozzáférési szint helyett a **függvényt** választja. Ebben az esetben inkább fűzze hozzá a következőt: `&name=<your_name>` .
+
+1. A függvény futásakor a rendszer nyomkövetési adatok ír a naplókba. A nyomkövetés kimenetének megtekintéséhez térjen vissza a **kód + teszt** lapra a portálon, és bontsa ki a lap alján található **naplók** nyilat.
+
+   ![A függvények naplómegtekintője az Azure Portalon.](./media/functions-create-first-azure-function/function-view-logs.png)
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+[!INCLUDE [Clean-up resources](../../includes/functions-quickstart-cleanup.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 
-Míg a Azure Portal megkönnyíti a függvények létrehozását és kipróbálását, javasoljuk a [helyi fejlesztést](functions-develop-local.md). Miután létrehozta a Function alkalmazást a portálon, továbbra is hozzá kell adnia egy függvényt. 
-
-> [!div class="nextstepaction"]
-> [HTTP által aktivált függvény hozzáadása](functions-create-first-azure-function.md#create-function)
+[!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff656887081681a804285e9a96352feef15fc675
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 7557985b23991f1a53d45f6f2d2283500c0d73f3
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97744038"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222411"
 ---
 # <a name="discover-the-current-state-of-external-collaboration-in-your-organization"></a>A szervezeten belüli külső együttműködés aktuális állapotának felderítése 
 
@@ -46,9 +46,9 @@ A külső szervezeteket a külső felhasználók e-mail-címeinek tartományneve
 
 ### <a name="use-allow-or-deny-lists"></a>Engedélyezési vagy megtagadási listák használata
 
-Azt is megtudhatja, hogy ki és kivel is együttműködik a szolgáltatással, és hogy az együttműködés letiltotta-e az [engedélyezési vagy letiltási listához](../external-identities/allow-deny-list.md)hozzáadott bármely szervezetet.
+Gondolja át, hogy a szervezete csak bizonyos szervezetekkel kíván-e együttműködést engedélyezni. Azt is megteheti, hogy a szervezet szeretné letiltani az adott szervezetekkel való együttműködést.  A bérlői szinten van egy [engedélyezési vagy megtagadási lista](../external-identities/allow-deny-list.md), amely a forrástól (például a csapatoktól, a sharepointtól és az Azure portaltól függetlenül) teljes B2B-meghívások és beváltások vezérlésére használható.
+Ha jogosultság-kezelést használ, a hozzáférési csomagokat a partnerek egy részhalmazához is elérheti az alább látható módon megadott csatlakoztatott szervezetek beállítással.
 
-Gondolja át, hogy a szervezet csak bizonyos szervezetekkel kíván-e együttműködni. Azt is vegye figyelembe, hogy a szervezet szeretné-e blokkolni az adott szervezetekkel való együttműködést. Ezek a beállítások a B2B teljes beváltására vagy csak egy adott hozzáférési csomagra vonatkozhatnak.
 
 ![Képernyőkép a Megtagadás engedélyezése listáról új hozzáférési csomag létrehozásához.](media/secure-external-access/2-new-access-package.png)
 
@@ -67,7 +67,7 @@ Kifejezetten vizsgálja meg az üzleti szempontból bizalmas és az üzleti szem
 ### <a name="detect-ad-hoc-sharing"></a>Ad hoc megosztás észlelése
 Ha e-mail-címe és hálózati csomagjai lehetővé teszik, a tartalmat megvizsgálhatja e-mailben vagy jogosulatlan szoftveres (SaaS) alkalmazásokon keresztül. [Microsoft 365 adatvesztés elleni védelem](https://docs.microsoft.com/microsoft-365/compliance/data-loss-prevention-policies?view=o365-worldwide) segítségével azonosíthatja, megakadályozhatja és figyelheti a bizalmas információk véletlen megosztását a Microsoft 365-infrastruktúrában. A [Microsoft Cloud app Security](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/cloud-app-security) segítségével azonosíthatja a jogosulatlan SaaS-alkalmazások használatát a környezetben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a következő cikkeket az erőforrásokhoz való külső hozzáférés biztonságossá tételéhez. Javasoljuk, hogy a felsorolt sorrendben végezze el a műveleteket.
 

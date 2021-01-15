@@ -11,26 +11,26 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: 76af225b6f93e0a47799234e3e2b430344f68787
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 70fb502e45a6cdcc196f5fb97ee4c8c59ba6c27d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009993"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223533"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-cli"></a>Rövid útmutató: nyilvános IP-cím létrehozása az Azure CLI használatával
 
-Ez a cikk bemutatja, hogyan hozható létre nyilvános IP-cím erőforrás az Azure CLI használatával. További információ arról, hogy mely erőforrásokhoz lehet társítva, az alapszintű és a standard SKU és az egyéb kapcsolódó információk között a [nyilvános IP-címek](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses)című részben talál.  Ebben a példában csak IPv4-címekre fogunk összpontosítani; További információ az IPv6-címekről: [IPv6 for Azure VNet](https://docs.microsoft.com/azure/virtual-network/ipv6-overview).
+Ez a cikk bemutatja, hogyan hozható létre nyilvános IP-cím erőforrás az Azure CLI használatával. További információ arról, hogy mely erőforrásokhoz lehet társítva, az alapszintű és a standard SKU és az egyéb kapcsolódó információk között a [nyilvános IP-címek](./public-ip-addresses.md)című részben talál.  Ebben a példában csak IPv4-címekre fogunk összpontosítani; További információ az IPv6-címekről: [IPv6 for Azure VNet](./ipv6-overview.md).
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 - Ehhez a cikkhez az Azure CLI 2.0.28 verziójára vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
-Hozzon létre egy erőforráscsoportot az [az Group Create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) **myResourceGroup** nevű **eastus2** helyen.
+Hozzon létre egy erőforráscsoportot az [az Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create) **myResourceGroup** nevű **eastus2** helyen.
 
 ```azurecli-interactive
   az group create \
@@ -44,9 +44,9 @@ Hozzon létre egy erőforráscsoportot az [az Group Create](https://docs.microso
 # <a name="standard-sku---using-zones"></a>[**Szabványos SKU – zónák használatával**](#tab/option-create-public-ip-standard-zones)
 
 >[!NOTE]
->A következő parancs az API 2020-08-01-es vagy újabb verziójával működik.  Az aktuálisan használt API-verzióval kapcsolatos további információkért tekintse meg az [erőforrás-szolgáltatók és típusok](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)című témakört.
+>A következő parancs az API 2020-08-01-es vagy újabb verziójával működik.  Az aktuálisan használt API-verzióval kapcsolatos további információkért tekintse meg az [erőforrás-szolgáltatók és típusok](../azure-resource-manager/management/resource-providers-and-types.md)című témakört.
 
-Az [az Network Public-IP Create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) paranccsal hozzon létre egy standard zóna – REDUNDÁNS nyilvános IP-címet a **myStandardZRPublicIP** nevű **myResourceGroup**.
+Az [az Network Public-IP Create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) paranccsal hozzon létre egy standard zóna – REDUNDÁNS nyilvános IP-címet a **myStandardZRPublicIP** nevű **myResourceGroup**.
 
 ```azurecli-interactive
   az network public-ip create \
@@ -69,14 +69,14 @@ Ahhoz, hogy a **myResourceGroup** nevű **myStandardZonalPublicIP** -ben hozzon 
     --zone 2
 ```
 
-Vegye figyelembe, hogy a zónák fenti beállításai csak a [Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones)-vel rendelkező régiókban érvényesek.
+Vegye figyelembe, hogy a zónák fenti beállításai csak a [Availability Zones](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones)-vel rendelkező régiókban érvényesek.
 
 # <a name="standard-sku---no-zones"></a>[**Szabványos SKU – nincsenek zónák**](#tab/option-create-public-ip-standard)
 
 >[!NOTE]
->A következő parancs az API 2020-08-01-es vagy újabb verziójával működik.  Az aktuálisan használt API-verzióval kapcsolatos további információkért tekintse meg az [erőforrás-szolgáltatók és típusok](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)című témakört.
+>A következő parancs az API 2020-08-01-es vagy újabb verziójával működik.  Az aktuálisan használt API-verzióval kapcsolatos további információkért tekintse meg az [erőforrás-szolgáltatók és típusok](../azure-resource-manager/management/resource-providers-and-types.md)című témakört.
 
-Az [az Network Public-IP Create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) paranccsal hozzon létre egy szabványos nyilvános IP-címet, amely egy **myStandardPublicIP** nevű, nem zónákból álló erőforrás a **myResourceGroup**-ben.
+Az [az Network Public-IP Create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) paranccsal hozzon létre egy szabványos nyilvános IP-címet, amely egy **myStandardPublicIP** nevű, nem zónákból álló erőforrás a **myResourceGroup**-ben.
 
 ```azurecli-interactive
   az network public-ip create \
@@ -84,11 +84,11 @@ Az [az Network Public-IP Create](https://docs.microsoft.com/cli/azure/network/pu
     --name myStandardPublicIP \
     --sku Standard
 ```
-Ez a kijelölés minden régióban érvényes, és a szabványos nyilvános IP-címek alapértelmezett kiválasztása [Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones)nélküli régiókban.
+Ez a kijelölés minden régióban érvényes, és a szabványos nyilvános IP-címek alapértelmezett kiválasztása [Availability Zones](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones)nélküli régiókban.
 
 # <a name="basic-sku"></a>[**Alapszintű termékváltozat**](#tab/option-create-public-ip-basic)
 
-Az [az Network Public-IP Create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) paranccsal hozzon létre egy **myBasicPublicIP** nevű alapszintű statikus nyilvános IP-címet a **myResourceGroup**-ben.  Az alapszintű nyilvános IP-címek nem rendelkeznek a rendelkezésre állási zónák fogalmával.
+Az [az Network Public-IP Create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) paranccsal hozzon létre egy **myBasicPublicIP** nevű alapszintű statikus nyilvános IP-címet a **myResourceGroup**-ben.  Az alapszintű nyilvános IP-címek nem rendelkeznek a rendelkezésre állási zónák fogalmával.
 
 ```azurecli-interactive
   az network public-ip create \
@@ -103,9 +103,9 @@ Ha az IP-cím időbeli változása elfogadható, a **dinamikus** IP-hozzárendel
 
 ## <a name="additional-information"></a>További információ 
 
-A fent felsorolt változókról további információt a [nyilvános IP-címek kezelése](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#create-a-public-ip-address)című témakörben talál.
+A fent felsorolt változókról további információt a [nyilvános IP-címek kezelése](./virtual-network-public-ip-address.md#create-a-public-ip-address)című témakörben talál.
 
-## <a name="next-steps"></a>További lépések
-- Rendeljen [hozzá egy nyilvános IP-címet egy virtuális géphez](https://docs.microsoft.com/azure/virtual-network/associate-public-ip-address-vm#azure-portal).
-- További információ az Azure [-beli nyilvános IP-címekről](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) .
+## <a name="next-steps"></a>Következő lépések
+- Rendeljen [hozzá egy nyilvános IP-címet egy virtuális géphez](./associate-public-ip-address-vm.md#azure-portal).
+- További információ az Azure [-beli nyilvános IP-címekről](./public-ip-addresses.md#public-ip-addresses) .
 - További információ az összes [nyilvános IP-cím beállításról](virtual-network-public-ip-address.md#create-a-public-ip-address).

@@ -6,18 +6,18 @@ ms.service: virtual-network
 ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: e13164c3ec6049a8ae3954528a02d20e313dd883
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bc504034f8d4565dd365b8d92dc2b2e6eadc1dae
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008123"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223329"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-azure-powershell"></a>Azure-beli virtuális hálózat áthelyezése egy másik régióba Azure PowerShell használatával
 
 A meglévő Azure-beli virtuális hálózatok egyik régióból a másikba való áthelyezésének különböző forgatókönyvei vannak. Előfordulhat például, hogy egy virtuális hálózatot szeretne létrehozni ugyanazzal a konfigurációval a teszteléshez és a rendelkezésre álláshoz, mint a meglévő virtuális hálózatot. Vagy előfordulhat, hogy a vész-helyreállítási terv részeként egy éles virtuális hálózatot szeretne áthelyezni egy másik régióba.
 
-A virtuális hálózat áthelyezését egy másik régióba Azure Resource Manager sablon használatával végezheti el. Ezt úgy teheti meg, hogy a virtuális hálózatot sablonba exportálja, módosítja a paramétereket, hogy azok megfeleljenek a célként megadott régiónak, majd üzembe helyezi a sablont az új régióban. A Resource Manager-sablonokkal kapcsolatos további információkért lásd: [erőforráscsoportok exportálása sablonokba](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates).
+A virtuális hálózat áthelyezését egy másik régióba Azure Resource Manager sablon használatával végezheti el. Ezt úgy teheti meg, hogy a virtuális hálózatot sablonba exportálja, módosítja a paramétereket, hogy azok megfeleljenek a célként megadott régiónak, majd üzembe helyezi a sablont az új régióban. A Resource Manager-sablonokkal kapcsolatos további információkért lásd: [erőforráscsoportok exportálása sablonokba](../azure-resource-manager/management/manage-resource-groups-powershell.md#export-resource-groups-to-templates).
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -32,7 +32,7 @@ A virtuális hálózat áthelyezését egy másik régióba Azure Resource Manag
 
 - Ellenőrizze, hogy az Azure-előfizetése lehetővé teszi-e a virtuális hálózatok létrehozását a célcsoportban. A szükséges kvóta engedélyezéséhez forduljon az ügyfélszolgálathoz.
 
-- Győződjön meg arról, hogy az előfizetése elegendő erőforrással rendelkezik a virtuális hálózatok ezen folyamathoz való hozzáadásának támogatásához. További információk: [Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
+- Győződjön meg arról, hogy az előfizetése elegendő erőforrással rendelkezik a virtuális hálózatok ezen folyamathoz való hozzáadásának támogatásához. További információk: [Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
 
 
 ## <a name="prepare-for-the-move"></a>Felkészülés az áthelyezésre
@@ -42,19 +42,19 @@ Ebben a szakaszban egy Resource Manager-sablon használatával készíti elő a 
 
 A virtuális hálózat exportálásához és a cél virtuális hálózat PowerShell használatával történő üzembe helyezéséhez tegye a következőket:
 
-1. Jelentkezzen be az Azure-előfizetésbe a [AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) paranccsal, majd kövesse a képernyőn megjelenő utasításokat:
+1. Jelentkezzen be az Azure-előfizetésbe a [AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) paranccsal, majd kövesse a képernyőn megjelenő utasításokat:
     
     ```azurepowershell-interactive
     Connect-AzAccount
     ```
 
-1. Szerezze be annak a virtuális hálózatnak az erőforrás-AZONOSÍTÓját, amelyet át szeretne helyezni a célként megadott régióba, majd helyezze egy változóba a [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0)használatával:
+1. Szerezze be annak a virtuális hálózatnak az erőforrás-AZONOSÍTÓját, amelyet át szeretne helyezni a célként megadott régióba, majd helyezze egy változóba a [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0)használatával:
 
     ```azurepowershell-interactive
     $sourceVNETID = (Get-AzVirtualNetwork -Name <source-virtual-network-name> -ResourceGroupName <source-resource-group-name>).Id
     ```
 
-1. Exportálja a forrásként szolgáló virtuális hálózatot egy. JSON-fájlba abban a könyvtárban, ahol az [export-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0)parancsot futtatja:
+1. Exportálja a forrásként szolgáló virtuális hálózatot egy. JSON-fájlba abban a könyvtárban, ahol az [export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0)parancsot futtatja:
    
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
@@ -98,7 +98,7 @@ A virtuális hálózat exportálásához és a cél virtuális hálózat PowerSh
 
     ```
   
-1. A régióbeli hely kódjának beszerzéséhez használja a [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) Azure PowerShell parancsmagot a következő parancs futtatásával:
+1. A régióbeli hely kódjának beszerzéséhez használja a [Get-AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) Azure PowerShell parancsmagot a következő parancs futtatásával:
 
     ```azurepowershell-interactive
 
@@ -107,7 +107,7 @@ A virtuális hálózat exportálásához és a cél virtuális hálózat PowerSh
 
 1. Választható A további paramétereket a *\<resource-group-name> . JSON* fájlban is módosíthatja, a követelményektől függően:
 
-    * **Címterület**: a fájl mentése előtt megváltoztathatja a virtuális hálózat addressSpace, ha módosítja az **erőforrások**  >  **addressSpace** szakaszát, és megváltoztatja a **addressPrefixes** tulajdonságot:
+    * **Címterület**: a fájl mentése előtt megváltoztathatja a virtuális hálózat addressSpace, ha módosítja az **erőforrások**  >   szakaszát, és megváltoztatja a **addressPrefixes** tulajdonságot:
 
         ```json
                 "resources": [
@@ -195,20 +195,20 @@ A virtuális hálózat exportálásához és a cél virtuális hálózat PowerSh
 
 1. Mentse a *\<resource-group-name> . JSON* fájlt.
 
-1. Hozzon létre egy erőforráscsoportot a cél régióban a cél virtuális hálózat [új-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)használatával történő telepítéséhez:
+1. Hozzon létre egy erőforráscsoportot a cél régióban a cél virtuális hálózat [új-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)használatával történő telepítéséhez:
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-1. Telepítse a szerkesztett *\<resource-group-name> . JSON* fájlt az előző lépésben létrehozott erőforráscsoporthoz a [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)használatával:
+1. Telepítse a szerkesztett *\<resource-group-name> . JSON* fájlt az előző lépésben létrehozott erőforráscsoporthoz a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)használatával:
 
     ```azurepowershell-interactive
 
     New-AzResourceGroupDeployment -ResourceGroupName <target-resource-group-name> -TemplateFile <source-resource-group-name>.json
     ```
 
-1. A [Get-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) és a [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0)használatával ellenőrizheti, hogy létrejöttek-e az erőforrások a célként megadott régióban:
+1. A [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) és a [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0)használatával ellenőrizheti, hogy létrejöttek-e az erőforrások a célként megadott régióban:
     
     ```azurepowershell-interactive
 
@@ -224,33 +224,33 @@ A virtuális hálózat exportálásához és a cél virtuális hálózat PowerSh
 
 A virtuális hálózat üzembe helyezését követően a virtuális hálózat megkezdéséhez vagy elvetéséhez törölje a megcélzott régióban létrehozott erőforráscsoportot, és a rendszer törli az áthelyezett virtuális hálózatot. 
 
-Az erőforráscsoport eltávolításához használja a [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0):
+Az erőforráscsoport eltávolításához használja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0):
 
 ```azurepowershell-interactive
 
 Remove-AzResourceGroup -Name <target-resource-group-name>
 ```
 
-## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
 A módosítások véglegesítéséhez és a virtuális hálózat áthelyezésének befejezéséhez tegye a következők egyikét:
 
-* Törölje az erőforráscsoportot a [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0)használatával:
+* Törölje az erőforráscsoportot a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0)használatával:
 
     ```azurepowershell-interactive
 
     Remove-AzResourceGroup -Name <source-resource-group-name>
     ```
 
-* Törölje a forrás virtuális hálózatot a [Remove-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/remove-azvirtualnetwork?view=azps-2.6.0)használatával:  
+* Törölje a forrás virtuális hálózatot a [Remove-AzVirtualNetwork](/powershell/module/az.network/remove-azvirtualnetwork?view=azps-2.6.0)használatával:  
     ``` azurepowershell-interactive
 
     Remove-AzVirtualNetwork -Name <source-virtual-network-name> -ResourceGroupName <source-resource-group-name>
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban áthelyezett egy virtuális hálózatot az egyik régióból a másikba a PowerShell használatával, majd megtisztította a szükségtelen források forrásait. Ha többet szeretne megtudni a régiók és a vész-helyreállítási erőforrások közötti áthelyezésről az Azure-ban, tekintse meg a következőket:
 
-- [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [Azure-beli virtuális gépek áthelyezése másik régióba](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../azure-resource-manager/management/move-resource-group-and-subscription.md)
+- [Azure-beli virtuális gépek áthelyezése másik régióba](../site-recovery/azure-to-azure-tutorial-migrate.md)

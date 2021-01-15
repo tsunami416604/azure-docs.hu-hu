@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: kumud
-ms.openlocfilehash: 664e3851370be812cd7a0e58cf9beb1fddb5d991
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8c38f4e84a6a653c3a4d887c82340409fc363af
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87290994"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220592"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Útválasztási táblázat létrehozása, módosítása vagy törlése
 
@@ -43,9 +43,9 @@ Az Azure-helyek és-előfizetések által létrehozható útválasztási táblá
 
 1. Az [Azure Portal](https://portal.azure.com) menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet.
 
-1. A keresőmezőbe írja be az *útválasztási táblázat*kifejezést. Ha az **útválasztási tábla** megjelenik a keresési eredmények között, válassza ki.
+1. A keresőmezőbe írja be az *útválasztási táblázat* kifejezést. Ha az **útválasztási tábla** megjelenik a keresési eredmények között, válassza ki.
 
-1. Az **útválasztási táblázat** lapon válassza a **Létrehozás**lehetőséget.
+1. Az **útválasztási táblázat** lapon válassza a **Létrehozás** lehetőséget.
 
 1. Az **útválasztási táblázat létrehozása** párbeszédpanelen:
 
@@ -53,7 +53,7 @@ Az Azure-helyek és-előfizetések által létrehozható útválasztási táblá
     1. Válassza ki az **Előfizetést**.
     1. Válasszon ki egy meglévő **erőforráscsoportot** , vagy válassza az **új létrehozása** lehetőséget egy új erőforráscsoport létrehozásához.
     1. Válasszon egy **helyet**.
-    1. Ha azt tervezi, hogy az útválasztási táblázatot egy olyan virtuális hálózat alhálózatához rendeli hozzá, amely VPN-átjárón keresztül csatlakozik a helyszíni hálózathoz, és nem szeretné a helyszíni útvonalakat az alhálózat hálózati adapterei között terjeszteni, állítsa le a **virtuális hálózati átjáró útvonal-propagálását** **Letiltva**értékre.
+    1. Ha azt tervezi, hogy az útválasztási táblázatot egy olyan virtuális hálózat alhálózatához rendeli hozzá, amely VPN-átjárón keresztül csatlakozik a helyszíni hálózathoz, és nem szeretné a helyszíni útvonalakat az alhálózat hálózati adapterei között terjeszteni, állítsa le a **virtuális hálózati átjáró útvonal-propagálását** **Letiltva** értékre.
 
 1. Válassza a **Létrehozás** lehetőséget az új útválasztási táblázat létrehozásához.
 
@@ -81,7 +81,7 @@ A virtuális hálózat kezeléséhez lépjen a [Azure Portal](https://portal.azu
 
 1. Az útválasztási táblázat listából válassza ki azt az útválasztási táblázatot, amelyre vonatkozóan meg szeretné tekinteni a részleteit.
 
-1. Az útválasztási táblázat lap **Beállítások**területén tekintse meg az útválasztási táblázatban szereplő **útvonalakat** , illetve azt az **alhálózatot** , amelyhez az útválasztási tábla hozzá van rendelve.
+1. Az útválasztási táblázat lap **Beállítások** területén tekintse meg az útválasztási táblázatban szereplő **útvonalakat** , illetve azt az **alhálózatot** , amelyhez az útválasztási tábla hozzá van rendelve.
 
 Az általános Azure-beállításokkal kapcsolatos további tudnivalókért tekintse meg a következő információkat:
 
@@ -121,15 +121,15 @@ Az útválasztási táblázatot igény szerint hozzárendelheti egy alhálózath
 
 1. A virtuális hálózat listán válassza ki azt az alhálózatot tartalmazó virtuális hálózatot, amelyhez hozzá szeretné rendelni az útválasztási táblázatot.
 
-1. A virtuális hálózat menüsávján válassza az **alhálózatok**lehetőséget.
+1. A virtuális hálózat menüsávján válassza az **alhálózatok** lehetőséget.
 
 1. Válassza ki azt az alhálózatot, amelyhez az útválasztási táblázatot hozzá szeretné rendelni.
 
-1. Az **útválasztási táblázatban**válassza ki azt az útválasztási táblázatot, amelyet az alhálózathoz kíván rendelni.
+1. Az **útválasztási táblázatban** válassza ki azt az útválasztási táblázatot, amelyet az alhálózathoz kíván rendelni.
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
-Ha a virtuális hálózat egy Azure VPN Gateway-átjáróhoz csatlakozik, ne társítson útválasztási táblázatot az [átjáró-alhálózathoz](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) , amely tartalmazza a *0.0.0.0/0*rendeltetésű útvonalat. Ellenkező esetben előfordulhat, hogy az átjárószolgáltatás nem működik megfelelően. További információ a *0.0.0.0/0* útvonalon való használatáról: [virtuális hálózati forgalom útválasztása](virtual-networks-udr-overview.md#default-route).
+Ha a virtuális hálózat egy Azure VPN Gateway-átjáróhoz csatlakozik, ne társítson útválasztási táblázatot az [átjáró-alhálózathoz](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) , amely tartalmazza a *0.0.0.0/0* rendeltetésű útvonalat. Ellenkező esetben előfordulhat, hogy az átjárószolgáltatás nem működik megfelelően. További információ a *0.0.0.0/0* útvonalon való használatáról: [virtuális hálózati forgalom útválasztása](virtual-networks-udr-overview.md#default-route).
 
 ### <a name="associate-a-route-table---commands"></a>Útválasztási táblázat hozzárendelése – parancsok
 
@@ -146,13 +146,13 @@ Amikor alhálózatból választ ki egy útválasztási táblázatot, az Azure az
 
 1. A virtuális hálózat listán válassza ki azt az alhálózatot tartalmazó virtuális hálózatot, amelyről el szeretné választani az útválasztási táblázatot.
 
-1. A virtuális hálózat menüsávján válassza az **alhálózatok**lehetőséget.
+1. A virtuális hálózat menüsávján válassza az **alhálózatok** lehetőséget.
 
 1. Válassza ki azt az alhálózatot, amelyből el szeretné választani az útválasztási táblázatot.
 
-1. Az **útválasztási táblázatban**válassza a **nincs**lehetőséget.
+1. Az **útválasztási táblázatban** válassza a **nincs** lehetőséget.
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ### <a name="dissociate-a-route-table---commands"></a>Útválasztási táblázat leválasztása – parancsok
 
@@ -169,7 +169,7 @@ Nem törölhet olyan útválasztási táblázatot, amely egyetlen alhálózathoz
 
 1. Az útválasztási táblázat listában válassza ki a törölni kívánt útválasztási táblázatot.
 
-1. Válassza a **Törlés**lehetőséget, majd a megerősítő párbeszédpanelen válassza az **Igen** lehetőséget.
+1. Válassza a **Törlés** lehetőséget, majd a megerősítő párbeszédpanelen válassza az **Igen** lehetőséget.
 
 ### <a name="delete-a-route-table---commands"></a>Útválasztási táblázat törlése – parancsok
 
@@ -186,17 +186,17 @@ Az útválasztási táblázatokban az Azure-beli hely és az előfizetés alapj�
 
 1. Az útválasztási táblázat listából válassza ki azt az útválasztási táblázatot, amelyhez hozzá kíván adni egy útvonalat.
 
-1. Az útválasztási táblázat menüsávján válassza az **útvonalak**  >  **Hozzáadás**lehetőséget.
+1. Az útválasztási táblázat menüsávján válassza az **útvonalak**  >  **Hozzáadás** lehetőséget.
 
 1. Adja meg az útvonal egyedi **útvonalának nevét** az útválasztási táblázatban.
 
-1. Adja meg a **címnek**az osztály nélküli Inter-Domain ÚTVÁLASZTÁSI (CIDR) jelölését, amelynek a forgalmát át szeretné irányítani. Az előtag nem duplikálható egynél több útvonalon az útválasztási táblában, bár az előtag egy másik előtagjan belül is lehet. Ha például *10.0.0.0/16* előtagot adott meg egy útvonalon, akkor továbbra is definiálhat egy másik útvonalat a *10.0.0.0/22-* előtaggal. Az Azure a leghosszabb előtag-egyezés alapján kiválasztja a forgalom útvonalát. További információ: [how Azure kiválasztja az útvonalat](virtual-networks-udr-overview.md#how-azure-selects-a-route).
+1. Adja meg a **címnek** az osztály nélküli Inter-Domain ÚTVÁLASZTÁSI (CIDR) jelölését, amelynek a forgalmát át szeretné irányítani. Az előtag nem duplikálható egynél több útvonalon az útválasztási táblában, bár az előtag egy másik előtagjan belül is lehet. Ha például *10.0.0.0/16* előtagot adott meg egy útvonalon, akkor továbbra is definiálhat egy másik útvonalat a *10.0.0.0/22-* előtaggal. Az Azure a leghosszabb előtag-egyezés alapján kiválasztja a forgalom útvonalát. További információ: [how Azure kiválasztja az útvonalat](virtual-networks-udr-overview.md#how-azure-selects-a-route).
 
 1. Válasszon egy **következő ugrási típust**. További információ a következő ugrási típusokról: [virtuális hálózati forgalom útválasztása](virtual-networks-udr-overview.md).
 
 1. Ha a **virtuális berendezés** **következő ugrási típusát** választotta, adjon meg egy IP-címet a **következő ugrási címhez**.
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 ### <a name="create-a-route---commands"></a>Útvonal-parancsok létrehozása
 
@@ -249,7 +249,7 @@ Az útválasztási táblázat nulla vagy több útvonalat tartalmaz. Ha többet 
 
 1. Válassza ki a módosítani kívánt útvonalat.
 
-1. Módosítsa a meglévő beállításokat az új beállításokra, majd válassza a **Mentés**lehetőséget.
+1. Módosítsa a meglévő beállításokat az új beállításokra, majd válassza a **Mentés** lehetőséget.
 
 ### <a name="change-a-route---commands"></a>Route-parancsok módosítása
 
@@ -268,7 +268,7 @@ Az útválasztási táblázat nulla vagy több útvonalat tartalmaz. Ha többet 
 
 1. Válassza ki a törölni kívánt útvonalat.
 
-1. Válassza a **Törlés**lehetőséget, majd válassza az **Igen** lehetőséget a megerősítő párbeszédpanelen.
+1. Válassza a **Törlés** lehetőséget, majd válassza az **Igen** lehetőséget a megerősítő párbeszédpanelen.
 
 ### <a name="delete-a-route---commands"></a>Útvonal törlése – parancsok
 
@@ -285,11 +285,11 @@ Az egyes virtuális gépekhez csatlakoztatott hálózati adapterek érvényes ú
 
 1. A virtuális gép listából válassza ki azt a virtuális gépet, amely számára a hatályos útvonalakat meg szeretné tekinteni.
 
-1. A virtuális gép menüsorában válassza a **hálózatkezelés**lehetőséget.
+1. A virtuális gép menüsorában válassza a **hálózatkezelés** lehetőséget.
 
 1. Válassza ki a hálózati adapter nevét.
 
-1. A hálózati adapter menüsávján válassza az **érvényes útvonalak**elemet.
+1. A hálózati adapter menüsávján válassza az **érvényes útvonalak** elemet.
 
 1. Tekintse át az érvényes útvonalak listáját, és ellenőrizze, hogy a megfelelő útvonal létezik-e, ahová a forgalmat át szeretné irányítani. További információ a következő ugrási típusokról, amelyeket ebben a listában a [virtuális hálózati forgalom útválasztásában](virtual-networks-udr-overview.md)talál.
 
@@ -306,7 +306,7 @@ Megadhatja a következő ugrás típusát egy virtuális gép és egy másik Azu
 
 1. A hálózati figyelők kezeléséhez nyissa meg a [Azure Portal](https://portal.azure.com) . Keresse meg és válassza ki a **Network Watcher**.
 
-1. A Network Watcher menüsávban válassza a **következő ugrás**lehetőséget.
+1. A Network Watcher menüsávban válassza a **következő ugrás** lehetőséget.
 
 1. A **Network Watcherban | Következő ugrás** oldal:
 
@@ -318,7 +318,7 @@ Megadhatja a következő ugrás típusát egy virtuális gép és egy másik Azu
 
     1. Adja meg a **cél IP-címet** , amelyre érvényesíteni szeretné az útválasztást.
 
-1. Válassza a **következő ugrás**lehetőséget.
+1. Válassza a **következő ugrás** lehetőséget.
 
 Rövid várakozás után az Azure megadja a következő ugrás típusát és a forgalmat átirányító útvonal AZONOSÍTÓját. További információ a [virtuális hálózati forgalom útválasztásának](virtual-networks-udr-overview.md)következő ugrási típusairól:.
 
@@ -333,7 +333,7 @@ Rövid várakozás után az Azure megadja a következő ugrás típusát és a f
 
 A táblák és útvonalak útválasztási feladatainak elvégzéséhez a fiókját hozzá kell rendelni a [hálózati közreműködő szerepkörhöz](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) vagy egy [Egyéni szerepkörhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , amely az alábbi táblázatban felsorolt megfelelő műveletekhez van rendelve:
 
-| Művelet                                                          |   Name (Név)                                                  |
+| Művelet                                                          |   Name                                                  |
 |--------------------------------------------------------------   |   -------------------------------------------           |
 | Microsoft. Network/routeTables/READ                              |   Útválasztási táblázat beolvasása                                    |
 | Microsoft. Network/routeTables/Write                             |   Útválasztási táblázat létrehozása vagy frissítése                        |
@@ -345,7 +345,7 @@ A táblák és útvonalak útválasztási feladatainak elvégzéséhez a fiókj�
 | Microsoft. Network/networkInterfaces/effectiveRouteTable/Action  |   A hálózati adapter érvényes útválasztási táblázatának beolvasása |
 | Microsoft. Network/networkWatchers/nextHop/Action                |   Egy virtuális gép következő ugrásának beolvasása                           |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Útválasztási táblázat létrehozása a [PowerShell](powershell-samples.md) vagy az [Azure CLI](cli-samples.md) parancsfájlokkal vagy Azure [Resource Manager-sablonokkal](template-samples.md)
-- [Azure Policy-definíciók](policy-samples.md) létrehozása és társítása virtuális hálózatokhoz
+- [Azure Policy-definíciók](./policy-reference.md) létrehozása és társítása virtuális hálózatokhoz

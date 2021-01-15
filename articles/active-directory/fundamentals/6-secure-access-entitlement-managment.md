@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aeba704f315c6aabb2f9892777e483074e4bc90d
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 9de0ce5e83b33cd793953e2b863f26dffafe58ee
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97744027"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222394"
 ---
 # <a name="manage-external-access-with-entitlement-management"></a>A külső hozzáférés kezelése a jogosultságok kezelésével 
 
@@ -149,7 +149,7 @@ A **[katalógusok és hozzáférési csomagok felügyeletének delegálása](../
 
 További információ: [hozzáférés szabályozása külső felhasználók számára az Azure ad-jogosultságok kezelésében](../governance/entitlement-management-external-users.md) 
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a következő cikkeket az erőforrásokhoz való külső hozzáférés biztonságossá tételéhez. Javasoljuk, hogy a felsorolt sorrendben végezze el a műveleteket.
 

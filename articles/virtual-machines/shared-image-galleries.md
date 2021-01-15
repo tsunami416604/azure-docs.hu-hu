@@ -9,16 +9,16 @@ ms.workload: infrastructure
 ms.date: 10/14/2020
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 4156308fa58ea1f02e6e3f2c5174839dc1cd381c
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 2731a7f263db223c258ddfc434bc84f59632d1f5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96841446"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223363"
 ---
 # <a name="shared-image-galleries-overview"></a>Megosztott képgyűjtemények – áttekintés
 
-A megosztott képkatalógus egy olyan szolgáltatás, amely segít felépíteni a lemezképek körét a szerkezet és a szervezet számára. A megosztott képtárak a következőket biztosítják:
+A Shared Image Gallery szolgáltatás segít struktúrát és rendszert kialakítani a képek köré. A megosztott képtárak a következőket biztosítják:
 
 - Lemezképek globális replikálása.
 - A könnyebb felügyelet érdekében a rendszerképek verziószámozása és csoportosítása.
@@ -144,7 +144,7 @@ Az a régió, amelyet a megosztott rendszerkép replikál, a rendszer a létreho
 
 ![A képek replikálásának módját bemutató ábra](./media/shared-image-galleries/replication.png)
 
-## <a name="access"></a>Hozzáférés
+## <a name="access"></a>Access
 
 Mivel a megosztott képtára, a képdefiníció és a rendszerkép verziója minden erőforrás, a beépített natív Azure RBAC-vezérlőkkel is megoszthatók. A RBAC használatával ezeket az erőforrásokat megoszthatja más felhasználókkal, egyszerű szolgáltatásokkal és csoportokkal is. Akár a bérlőn kívüli személyekhez is megoszthatja a hozzáférést. Miután egy felhasználó hozzáfér a megosztott lemezkép verziójához, üzembe helyezhet egy virtuális gépet vagy egy virtuálisgép-méretezési készletet.  Itt látható a megosztási mátrix, amely segít megérteni, hogy a felhasználó milyen módon férhet hozzá:
 
@@ -317,7 +317,12 @@ A virtuális gépek és a virtuálisgép-méretezési csoport rendszerképeket h
 
 Igen, frissítheti a méretezési csoport képhivatkozását egy felügyelt lemezképből egy megosztott lemezkép-katalógusba, ha az operációs rendszer típusa, a Hyper-V generációja és az adatlemez elrendezése megegyezik a lemezképek között.
 
-## <a name="next-steps"></a>További lépések
+## <a name="troubleshoot-shared-image-gallery-issues"></a>Megosztott rendszerkép-katalógussal kapcsolatos problémák elhárítása
+Ha a megosztott képkatalógus erőforrásaiban bármilyen művelet végrehajtásával kapcsolatos problémái vannak, tekintse meg a gyakori hibák listáját a [hibaelhárítási útmutatóban](troubleshooting-shared-images.md).
+
+Emellett a kérdését a következő címen teheti közzé és címkézheti `azure-virtual-machines-images` : [Q&a](/answers/topics/azure-virtual-machines-images.html).
+
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan helyezhet üzembe megosztott rendszerképeket az [Azure CLI](shared-images-cli.md) vagy a [PowerShell](shared-images-powershell.md)használatával.
 

@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 09a0574666441138c143932e843080e8745f1b40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b95b3cfdf8fea6e31015d945566803569b4ba064
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87289585"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222921"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>Az Azure Virtual Network tárolóalapú hálózati adaptere beépülő moduljának üzembe helyezése
 
-Az Azure Virtual Network tárolóalapú hálózati adapterének beépülő modulja egy Azure-beli virtuális gépen települ, és virtuális hálózati képességeket biztosít a Kubernetes-podok és a Docker-tárolók számára. A beépülő modullal kapcsolatos további információért tekintse meg az [Azure Virtual Network-képességek használatának engedélyezése a tárolók számára](container-networking-overview.md) című részt. A beépülő modult továbbá az Azure Kubernetes Service (AKS) szolgáltatással is lehet használni a [Speciális hálózatkezelés](../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lehetőség kiválasztásával, amely automatikusan egy virtuális hálózatba helyezi az AKS-tárolókat.
+Az Azure Virtual Network tárolóalapú hálózati adapterének beépülő modulja egy Azure-beli virtuális gépen települ, és virtuális hálózati képességeket biztosít a Kubernetes-podok és a Docker-tárolók számára. A beépülő modullal kapcsolatos további információért tekintse meg az [Azure Virtual Network-képességek használatának engedélyezése a tárolók számára](container-networking-overview.md) című részt. A beépülő modult továbbá az Azure Kubernetes Service (AKS) szolgáltatással is lehet használni a [Speciális hálózatkezelés](../aks/configure-azure-cni.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lehetőség kiválasztásával, amely automatikusan egy virtuális hálózatba helyezi az AKS-tárolókat.
 
 ## <a name="deploy-plug-in-for-acs-engine-kubernetes-cluster"></a>ACS-motorral üzembe helyezett Kubernetes-fürt beépülő moduljának üzembe helyezése
 
@@ -95,10 +95,10 @@ A beépülő modul egy Kubernetes-fürt összes Azure-beli virtuális gépén va
 1. [Töltse le és telepítse a beépülő modult](#download-and-install-the-plug-in).
 2. Előre foglaljon le egy virtuális hálózati IP-címkészletet minden egyes olyan virtuális gépen, amelyről IP-címeket fog a podokhoz rendelni. Minden Azure-beli virtuális gép rendelkezik egy elsődleges virtuális magánhálózati IP-címmel az összes hálózati adapterhez. A podok IP-címkészletében szereplő címek másodlagos címként (*ipconfig*) vannak megadva a virtuális gép hálózati adapterén, a következő lehetőségek egyikének használatával:
 
-   - **CLI**: [több IP-cím társítása az Azure CLI használatával](virtual-network-multiple-ip-addresses-cli.md)
-   - **PowerShell**: [több IP-cím kiosztása a PowerShell használatával](virtual-network-multiple-ip-addresses-powershell.md)
-   - **Portál**: [több IP-cím kiosztása a Azure Portal használatával](virtual-network-multiple-ip-addresses-portal.md)
-   - **Azure Resource Manager sablon**: [több IP-cím társítása sablonok használatával](virtual-network-multiple-ip-addresses-template.md)
+   - **CLI**: [Több IP-cím hozzárendelése az Azure CLI használatával](virtual-network-multiple-ip-addresses-cli.md)
+   - **PowerShell**: [Több IP-cím hozzárendelése a PowerShell használatával](virtual-network-multiple-ip-addresses-powershell.md)
+   - **Portal**: [Több IP-cím hozzárendelése az Azure Portal használatával](virtual-network-multiple-ip-addresses-portal.md)
+   - **Azure Resource Manager-sablon**: [Több IP-cím hozzárendelése sablonok használatával](./template-samples.md)
 
    Győződjön meg arról, hogy megfelelő számú IP-címet ad hozzá azon podok számára, amelyeket el szeretne indítani a virtuális gépen.
 
@@ -106,7 +106,7 @@ A beépülő modul egy Kubernetes-fürt összes Azure-beli virtuális gépén va
 4. Ha szeretné, hogy podjai elérjék az internetet, adja hozzá a következő *iptables* szabályt Linux rendszerű virtuális gépén az internetforgalom forráshálózati címfordításához. A következő példában a megadott IP-címtartomány a következő: 10.0.0.0/8.
 
    ```bash
-   iptables -t nat -A POSTROUTING -m iprange ! --dst-range 168.63.129.16 -m
+   iptables -t nat -A POSTROUTING -m iprange ! --dst-range 168.63.129.16 -m
    addrtype ! --dst-type local ! -d 10.0.0.0/8 -j MASQUERADE
    ```
 
@@ -157,10 +157,10 @@ A CNI hálózati konfigurációs fájlja JSON formátumban van megadva. Alapért
 
 #### <a name="settings-explanation"></a>Beállítások magyarázata
 
-- **cniVersion**: az Azure Virtual Network CNI beépülő moduljai támogatják a [CNI specifikációjának](https://github.com/containernetworking/cni/blob/master/SPEC.md)a 0.3.0 és a 0.3.1 verzióját.
+- **cniVersion** (CNI verziója): Az Azure Virtual Network CNI beépülő moduljai a [CNI spec](https://github.com/containernetworking/cni/blob/master/SPEC.md) 0.3.0-ás és 0.3.1-es verzióit támogatják.
 - **name** (név): A hálózat neve. Ehhez a tulajdonsághoz bármilyen egyedi érték megadható.
 - **type** (típus): A hálózati beépülő modul neve. Állítsa az *azure-vnet* értékre.
-- **mode** (mód): Működési mód. A mező nem kötelező. A „híd” az egyetlen támogatott mód. További információ: [működési módok](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md).
+- **mode** (mód): Működési mód. A mező nem kötelező. A „híd” az egyetlen támogatott mód. További információért tekintse meg a [működési módokról](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md) szóló részt.
 - **bridge** (híd): Azon híd neve, amellyel a tárolók és a virtuális hálózatok össze lesznek kötve. A mező nem kötelező. Ha nincs megadva, a beépülő modul automatikusan választ egy egyedi nevet a fő felületindex alapján.
 - **ipam type** (IPAM típusa): Az IPAM beépülő modul neve. Mindig az *azure-vnet-ipam* értékre van állítva.
 

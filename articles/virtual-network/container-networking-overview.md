@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: bd86b2ec803b2327d3daa2d4274f13328fec8c27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 727e79cede9319cb7aae701082d5842ad895a61d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87283214"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223516"
 ---
 # <a name="enable-containers-to-use-azure-virtual-network-capabilities"></a>Azure Virtual Network-képességek használatának engedélyezése a tárolók számára
 
@@ -59,11 +59,11 @@ A beépülő modul virtuális gépenként legfeljebb 250 podot, és virtuális h
 
 A beépülő modul a következő módokon használható a podok vagy Docker-tárolók alapszintű virtuális hálózati csatolásához:
 
-- **Azure Kubernetes Service**: A beépülő modul az Azure Kubernetes Service-be (AKS) van integrálva, és a *Speciális hálózatkezelés* lehetőség kiválasztásával használható. A speciális hálózatkezeléssel Kubernetes-fürtöt helyezhet üzembe egy meglévő vagy új virtuális hálózaton. A speciális hálózatkezeléssel és annak beállítási lépéseivel kapcsolatos további információért lásd: [Hálózati konfiguráció az AKS-ben](../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- **Azure Kubernetes Service**: A beépülő modul az Azure Kubernetes Service-be (AKS) van integrálva, és a *Speciális hálózatkezelés* lehetőség kiválasztásával használható. A speciális hálózatkezeléssel Kubernetes-fürtöt helyezhet üzembe egy meglévő vagy új virtuális hálózaton. A speciális hálózatkezeléssel és annak beállítási lépéseivel kapcsolatos további információért lásd: [Hálózati konfiguráció az AKS-ben](../aks/configure-azure-cni.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - **AK-motor**: AKS-Engine egy olyan eszköz, amely létrehoz egy Azure Resource Manager sablont egy Kubernetes-fürt Azure-beli telepítéséhez. Részletes útmutatásért lásd: [a beépülő modul telepítése AKS-Engine Kubernetes-fürtökhöz](deploy-container-networking.md#deploy-the-azure-virtual-network-container-network-interface-plug-in).
 - **Saját Kubernetes-fürt létrehozása az Azure**-ban: a beépülő modul segítségével alapszintű hálózatkezelést biztosíthat a hüvelyek számára a saját maga által üzembe helyezett Kubernetes-fürtökben anélkül, hogy AK-ra kellene támaszkodnia, vagy eszközöket, például az AK-motort. Ebben az esetben a beépülő modul egy fürt összes virtuális gépén telepítve és engedélyezve lesz. Részletes információ: [A beépülő modul üzembe helyezése saját kezűleg üzembe helyezett Kubernetes-fürthöz](deploy-container-networking.md#deploy-plug-in-for-a-kubernetes-cluster).
 - **Virtuális hálózat csatlakoztatása Docker-tárolókhoz az Azure-ban**: A beépülő modul olyan esetekben is használható, amikor nem Kubernetes-fürtöt, hanem inkább Docker-tárolókat szeretne létrehozni a virtuális gépeken virtuális hálózat csatlakoztatásával. Részletes információ: [Docker beépülő moduljának üzembe helyezése](deploy-container-networking.md#deploy-plug-in-for-docker-containers).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A beépülő modul üzembe helyezése](deploy-container-networking.md) Kubernetes-fürtökhöz vagy Docker-tárolókhoz

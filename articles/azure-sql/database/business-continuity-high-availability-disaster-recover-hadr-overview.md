@@ -13,12 +13,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: eedc3dc1422d4eb6dcce80766077e8056f8509cf
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 7bd991bd709bb4be69325afe967d7e5600a9e1a4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678046"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222564"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -48,10 +48,10 @@ A SQL Database és az SQL felügyelt példánya számos üzletmenet-folytonossá
 
 - A [historikus táblák](../temporal-tables.md) segítségével a sorverziókat bármely időpontra visszaállíthatja.
 - A [beépített automatizált biztonsági mentések](automated-backups-overview.md) és [időpontok visszaállítása](recovery-using-backups.md#point-in-time-restore) lehetővé teszi a teljes adatbázis visszaállítását egy bizonyos időpontra a beállított megőrzési időtartamon belül, legfeljebb 35 napig.
-- [Visszaállíthat egy törölt adatbázist](recovery-using-backups.md#deleted-database-restore) arra a pontra, amelyen törölve lett, ha a **kiszolgáló nem lett törölve** .
+- [Visszaállíthat egy törölt adatbázist](recovery-using-backups.md#deleted-database-restore) arra a pontra, amelyen törölve lett, ha a **kiszolgáló nem lett törölve**.
 - A [biztonsági másolatok hosszú távú megőrzése](long-term-retention-overview.md) lehetővé teszi, hogy a biztonsági mentések akár 10 évig is megmaradjanak. Ez a felügyelt SQL-példányok korlátozott nyilvános előzetes verziója
 - Az [aktív geo-replikáció](active-geo-replication-overview.md) lehetővé teszi, hogy a rendszer olvasható replikákat hozzon létre, és manuálisan végezze el a feladatátvételt bármely replikára adatközpont-leállás vagy alkalmazás frissítése esetén.
-- Az [automatikus feladatátvételi csoport](auto-failover-group-overview.md#terminology-and-capabilities) lehetővé teszi az alkalmazás számára, hogy adatközpont-kimaradás esetén automatikusan helyreállítsa a helyreállítást.
+- Az [automatikus feladatátvételi csoport](auto-failover-group-overview.md#terminology-and-capabilities) lehetővé teszi, hogy az alkalmazás automatikusan helyreállítsa az adatközpont-leállás esetén.
 
 ## <a name="recover-a-database-within-the-same-azure-region"></a>Adatbázis helyreállítása ugyanazon az Azure-régión belül
 

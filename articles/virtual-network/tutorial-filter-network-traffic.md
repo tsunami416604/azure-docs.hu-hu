@@ -14,16 +14,16 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
-ms.openlocfilehash: b5a136ae05b3cd410ca252b6d5a1df443aff6f7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97690618de5d58fa4022d01fa36a872f9d220083
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75350141"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221680"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Oktatóanyag: hálózati forgalom szűrése hálózati biztonsági csoporttal a Azure Portal használatával
 
-A virtuális hálózatok alhálózatainak bejövő vagy kimenő hálózati forgalmát hálózati biztonsági csoport segítségével szűrheti. A hálózati biztonsági csoportok biztonsági szabályokat tartalmaznak, amelyek IP-cím, port és protokoll szerint szűrik a hálózati forgalmat. A biztonsági szabályok az egyes alhálózatokban üzembe helyezett erőforrásokra vonatkoznak. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+A virtuális hálózatok alhálózatainak bejövő vagy kimenő hálózati forgalmát hálózati biztonsági csoport segítségével szűrheti. A hálózati biztonsági csoportok biztonsági szabályokat tartalmaznak, amelyek IP-cím, port és protokoll szerint szűrik a hálózati forgalmat. A biztonsági szabályok az egyes alhálózatokban üzembe helyezett erőforrásokra vonatkoznak. Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Hálózati biztonsági csoport és biztonsági szabályok létrehozása
@@ -33,7 +33,7 @@ A virtuális hálózatok alhálózatainak bejövő vagy kimenő hálózati forga
 
 Igény szerint az oktatóanyag az [Azure CLI](tutorial-filter-network-traffic-cli.md) vagy a [PowerShell](tutorial-filter-network-traffic-powershell.md) használatával is elvégezhető.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -89,7 +89,7 @@ Az alkalmazásbiztonsági csoportok lehetővé teszik, hogy egy csoportba rendez
     |---|---|
     |Név|myNsg|
     |Előfizetés| Válassza ki előfizetését.|
-    |Erőforráscsoport | Válassza a **meglévő használata** , majd a *myResourceGroup*lehetőséget.|
+    |Erőforráscsoport | Válassza a **meglévő használata** , majd a *myResourceGroup* lehetőséget.|
     |Hely|USA keleti régiója|
 
 ## <a name="associate-network-security-group-to-subnet"></a>Hálózati biztonsági csoport társítása alhálózathoz
@@ -114,7 +114,7 @@ Az alkalmazásbiztonsági csoportok lehetővé teszik, hogy egy csoportba rendez
     | Cél             | Válassza az **Alkalmazásbiztonsági csoport** lehetőséget, majd válassza a **myAsgWebServers** elemet az **Alkalmazásbiztonsági csoport** számára.  |
     | Célporttartományok | Írja be a 80,443 értéket.                                                                                                    |
     | Protokoll                | Válassza a TCP lehetőséget.                                                                                                      |
-    | Név                    | Allow-Web-All                                                                                                   |
+    | Name                    | Allow-Web-All                                                                                                   |
 
 3. Hajtsa végre ismét a 2. lépést az alábbi értékeket használva:
 
@@ -124,7 +124,7 @@ Az alkalmazásbiztonsági csoportok lehetővé teszik, hogy egy csoportba rendez
     | Célporttartományok | Írja be a 3389 értéket.                                                                                                      |
     | Protokoll                | Válassza a TCP lehetőséget.                                                                                                      |
     | Prioritás                | Írja be a 110 értéket.                                                                                                       |
-    | Név                    | Allow-RDP-All                                                                                                   |
+    | Name                    | Allow-RDP-All                                                                                                   |
 
     Ebben az oktatóanyagban az RDP (3389-es port) közvetlenül az internetre csatlakozik a *myAsgMgmtServers* alkalmazásbiztonsági csoporthoz rendelt virtuális gépen. Éles környezet esetében a 3389-es port közvetlenül az internetre való csatlakoztatása helyett javasolt VPN vagy privát hálózati kapcsolat használatával csatlakozni a kezelni kívánt Azure-erőforrásokhoz.
 
@@ -146,7 +146,7 @@ Hozzon létre két virtuális gépet a virtuális hálózaton.
     |---|---|
     |Előfizetés| Válassza ki előfizetését.|
     |Erőforráscsoport| Válassza a **Meglévő használata** lehetőséget, majd a **myResourceGroup** elemet.|
-    |Név|myVmWeb|
+    |Name|myVmWeb|
     |Hely| Válassza az **USA keleti régiója** lehetőséget.|
     |Felhasználónév| Adjon meg egy tetszőleges felhasználónevet.|
     |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúnak kell lennie, és meg kell felelnie a [meghatározott összetettségi követelményeknek](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
@@ -154,11 +154,11 @@ Hozzon létre két virtuális gépet a virtuális hálózaton.
    
 
 4. Válassza ki a virtuális gép méretét, majd kattintson a **Kiválasztás** gombra.
-5. A **hálózat**területen válassza ki a következő értékeket, és fogadja el a fennmaradó alapértékeket:
+5. A **hálózat** területen válassza ki a következő értékeket, és fogadja el a fennmaradó alapértékeket:
 
     |Beállítás|Érték|
     |---|---|
-    |Virtuális hálózat |Válassza a **myVirtualNetwork**lehetőséget.|
+    |Virtuális hálózat |Válassza a **myVirtualNetwork** lehetőséget.|
     |NIC hálózati biztonsági csoport |Válassza a **Nincs** lehetőséget.|
   
 
@@ -182,7 +182,7 @@ Amikor a portál létrehozta a virtuális gépeket, létrehozott egy hálózati 
 ## <a name="test-traffic-filters"></a>Forgalomszűrők tesztelése
 
 1. Csatlakozzon a *myVmMgmt* virtuális géphez. Írja be a *myVmMgmt* nevet a portál tetején lévő keresőmezőbe. Amikor a **myVmMgmt** elem megjelenik a keresési eredmények között, válassza ki. Kattintson a **Csatlakozás** gombra.
-2. Válassza az **RDP-fájl letöltése**lehetőséget.
+2. Válassza az **RDP-fájl letöltése** lehetőséget.
 3. Nyissa meg a letöltött RDP-fájlt, és válassza a **Csatlakozás** lehetőséget. Írja be a virtuális gép létrehozásakor megadott felhasználónevet és jelszót. Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához a **További lehetőségek**, majd a **Másik fiók használata** lehetőségre kell kattintania.
 4. Válassza az **OK** lehetőséget.
 5. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha figyelmeztetést kap, kattintson az **Igen** vagy a **Folytatás** gombra a csatlakozás folytatásához.
@@ -219,9 +219,9 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot és a benne lév�
 2. Válassza az **Erőforráscsoport törlése** elemet.
 3. Írja be a *myResourceGroup* nevet az **ÍRJA BE AZ ERŐFORRÁSCSOPORT NEVÉT:** mezőbe, majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban létrehozott egy hálózati biztonsági csoportot, és hozzárendelte azt egy virtuális hálózat alhálózatához. A hálózati biztonsági csoportokkal kapcsolatos további információ: [Hálózati biztonsági csoportok áttekintése](security-overview.md) és [Hálózati biztonsági csoportok kezelése](manage-network-security-group.md).
+Ebben az oktatóanyagban létrehozott egy hálózati biztonsági csoportot, és hozzárendelte azt egy virtuális hálózat alhálózatához. A hálózati biztonsági csoportokkal kapcsolatos további információ: [Hálózati biztonsági csoportok áttekintése](./network-security-groups-overview.md) és [Hálózati biztonsági csoportok kezelése](manage-network-security-group.md).
 
 Az Azure alapértelmezés szerint irányítja a forgalmat az alhálózatok között. Ehelyett lehetősége van arra, hogy egy virtuális gépen keresztül irányítsa a forgalmat az alhálózatok között, amely így például tűzfalként is szolgálhat. Ha meg szeretné ismerni, hogyan hozhat létre útválasztási táblázatot, folytassa a következő oktatóanyaggal.
 

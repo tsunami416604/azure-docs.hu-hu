@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 08/05/2020
-ms.openlocfilehash: 459cb1f7ea6c756b8cf6eba70af5ebabe76cc8b0
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.custom: responsible-ml
+ms.openlocfilehash: 29e29e73aa1094a2941592655af78a24d95c53b5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335758"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223091"
 ---
 # <a name="mitigate-fairness-in-machine-learning-models-preview"></a>A gépi tanulási modellek tisztaságának enyhítése (előzetes verzió)
 
@@ -83,7 +84,7 @@ A Fairlearn nyílt forráskódú csomag számos, a méltánytalanság enyhítés
 
 A Fairlearn nyílt forráskódú csomagja a következő típusú paritásos korlátozásokat támogatja: 
 
-|Paritásos megkötés  | Rendeltetés  |Gépi tanulási feladat  |
+|Paritásos megkötés  | Cél  |Gépi tanulási feladat  |
 |---------|---------|---------|
 |Demográfiai paritás     |  A foglalási károsodások enyhítése | Bináris besorolás, regresszió |
 |Equaled odds  | Kiosztási és szolgáltatásminőség-károsodások diagnosztizálása | Bináris besorolás        |
@@ -106,7 +107,7 @@ A Fairlearn nyílt forráskódú csomag utófeldolgozó biztosít, és csökkent
 | `GridSearch` | A fekete Box megközelítése, amely a valós regressziós teljesítmény-keresés változatát valósítja meg a [valós regresszió: mennyiségi definíciók és a redukáló algoritmusok](https://arxiv.org/abs/1905.12843) által leírt, kötött csoportok elvesztésének algoritmusával. | Regresszió | Bináris | [Kötött csoport elvesztése](#parity-constraints) | Csökkentése |
 | `ThresholdOptimizer` | Utófeldolgozó algoritmus a [felügyelt tanulásban az esélyegyenlőségi lehetőség](https://arxiv.org/abs/1610.02413)alapján. Ez a módszer egy meglévő osztályozó és a bizalmas szolgáltatás bemenetét veszi figyelembe, és az osztályozó előrejelzésének monoton átalakítását származtatja a megadott paritásos megkötések érvénybe léptetéséhez. | Bináris besorolás | Kategorikus | [Demográfiai paritás](#parity-constraints), [equald odds](#parity-constraints) | Feldolgozás utáni |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan használhatja a különböző összetevőket a Fairlearn [GitHub](https://github.com/fairlearn/fairlearn/), [felhasználói útmutató](https://fairlearn.github.io/master/user_guide/index.html), [példák](https://fairlearn.github.io/master/auto_examples/)és [minta jegyzetfüzetek](https://github.com/fairlearn/fairlearn/tree/master/notebooks)használatával történő ellenőrzésével.
 - Megtudhatja, [Hogyan](how-to-machine-learning-fairness-aml.md) engedélyezheti Azure Machine learning gépi tanulási modelljeinek méltányos értékelését.

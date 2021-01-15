@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd04d24e0e46b053381858be037a009b1987f8e9
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 40738f8fcb14c48ccfe3bc7869e5176c4ab63165
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97932520"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222330"
 ---
 # <a name="3-create-a-security-plan-for-external-access"></a>3. biztonsági terv létrehozása külső hozzáféréshez 
 
@@ -159,7 +159,7 @@ Az Azure AD P2 és a Microsoft 365 E5 teljes körű biztonsági és irányítás
 
 ### <a name="provisioning-signing-in-reviewing-access-and-deprovisioning-bolded-entries-are-preferred-methods"></a>A kiépítés, a bejelentkezés, a hozzáférés áttekintése és a megszüntetés. A félkövérrel szedett bejegyzések előnyben részesített módszerek
 
-| Szolgáltatás| Külső felhasználók kiépítése| A bejelentkezési reqs betartatása.| Hozzáférés áttekintése| Hozzáférés megszüntetése |
+| Funkció| Külső felhasználók kiépítése| A bejelentkezési reqs betartatása.| Hozzáférés áttekintése| Hozzáférés megszüntetése |
 | - | - | - | - | - |
 | Azure AD B2B-együttműködés| Meghívás e-mailben, OTP, önkiszolgáló| | **Rendszeres felülvizsgálat partnerként**| Fiók eltávolítása<br>Bejelentkezés korlátozása |
 | Jogosultságok kezelése| **Felhasználó hozzáadása hozzárendelés vagy önkiszolgáló hozzáférés használatával**| | Hozzáférési felülvizsgálatok|**Hozzáférési csomag lejárta vagy eltávolítása**|
@@ -170,7 +170,7 @@ Az Azure AD P2 és a Microsoft 365 E5 teljes körű biztonsági és irányítás
 
  ### <a name="access-to-resources-bolded-entries-are-preferred-methods"></a>Hozzáférés az erőforrásokhoz. A félkövérrel szedett bejegyzések előnyben részesített módszerek
 
-|Szolgáltatás | ALKALMAZÁS-& erőforrás-hozzáférés| SharePoint & OneDrive-hozzáférés| Csapatok hozzáférése| E-mail & dokumentumok biztonsága |
+|Funkció | ALKALMAZÁS-& erőforrás-hozzáférés| SharePoint & OneDrive-hozzáférés| Csapatok hozzáférése| E-mail & dokumentumok biztonsága |
 | - |-|-|-|-|
 | Jogosultságok kezelése| **Felhasználó hozzáadása hozzárendelés vagy önkiszolgáló hozzáférés használatával**| **Hozzáférési csomagok**| **Hozzáférési csomagok**|  |
 | Office 365-csoport| | Hozzáférés a csoporthoz tartozó hely (ek) hez (és kapcsolódó tartalomhoz)| Hozzáférés a csoportokhoz tartozó csapatokhoz (és kapcsolódó tartalmakhoz)|  |
@@ -190,7 +190,7 @@ Az Azure AD P1-sel és a Microsoft 365 E3-mel is robusztus irányítás érhető
 ### <a name="provisioning-signing-in-reviewing-access-and-deprovisioning"></a>Kiépítés, bejelentkezés, hozzáférés áttekintése és megszüntetés
 
 
-|Szolgáltatás | Külső felhasználók kiépítése| Bejelentkezési követelmények betartatása| Hozzáférés áttekintése| Hozzáférés megszüntetése |
+|Funkció | Külső felhasználók kiépítése| Bejelentkezési követelmények betartatása| Hozzáférés áttekintése| Hozzáférés megszüntetése |
 | - |-|-|-|-|
 | Azure AD B2B-együttműködés| **Meghívás e-mailben, OTP, önkiszolgáló**| Közvetlen B2B-összevonás| **Rendszeres felülvizsgálat partnerként**| Fiók eltávolítása<br>Bejelentkezés korlátozása |
 | Microsoft-vagy Office 365-csoportok| | | | A csoport lejárata vagy törlése.<br>Eltávolítás a csoportból. |
@@ -200,7 +200,7 @@ Az Azure AD P1-sel és a Microsoft 365 E3-mel is robusztus irányítás érhető
 
  ### <a name="access-to-resources"></a>Hozzáférés az erőforrásokhoz.
 
-|Szolgáltatás | ALKALMAZÁS-& erőforrás-hozzáférés| SharePoint & OneDrive-hozzáférés| Csapatok hozzáférése| E-mail & dokumentumok biztonsága |
+|Funkció | ALKALMAZÁS-& erőforrás-hozzáférés| SharePoint & OneDrive-hozzáférés| Csapatok hozzáférése| E-mail & dokumentumok biztonsága |
 | - |-|-|-|-|
 | Microsoft-vagy Office 365-csoportok| | **Hozzáférés a (z) csoporthoz (és a kapcsolódó tartalomhoz) tartozó helyekhez**|**Hozzáférés a Microsoft 365 csoporthoz (és a kapcsolódó tartalomhoz) tartozó csapatokhoz**|  |
 | Bizalmassági címkék| | A hozzáférés manuális osztályozása és korlátozása| A hozzáférés manuális besorolása és korlátozása.| Manuális besorolás a korlátozáshoz és a titkosításhoz |
@@ -208,7 +208,7 @@ Az Azure AD P1-sel és a Microsoft 365 E3-mel is robusztus irányítás érhető
 | További módszerek| | A SharePoint-webhely hozzáférését a biztonsági csoportokkal való részletességgel korlátozhatja.<br>Közvetlen megosztás letiltása.| **Külső meghívók korlátozása a csapatokból**|  |
 
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a következő cikkeket az erőforrásokhoz való külső hozzáférés biztonságossá tételéhez. Javasoljuk, hogy a felsorolt sorrendben végezze el a műveleteket.
 

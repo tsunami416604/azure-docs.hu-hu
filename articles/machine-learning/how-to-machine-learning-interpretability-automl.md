@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, automl
+ms.custom: how-to, automl, responsible-ml
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: ce13e0431827bb2c72a03ca33a1ecaefc53d4970
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 19cebefd64f5b6dce9c265a591c8d5072fcd83db
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97702521"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222734"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Értelmezhetőség: modellmagyarázatok az automatizált gépi tanulásban (előzetes verzió)
 
@@ -226,6 +226,6 @@ A funkció fontossága diagramot a munkaterületen, [Azure Machine learning Stud
 
 A magyarázó irányítópult-vizualizációkkal és az egyes mintaterületekkel kapcsolatos további információkért tekintse meg a következő [témakört: útmutató a tolmácsoláshoz](how-to-machine-learning-interpretability-aml.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogyan engedélyezheti a modell magyarázatait és funkcióit a Azure Machine Learning SDK azon területein, amelyek [nem az automatizált](how-to-machine-learning-interpretability.md)gépi tanulást ismertetik.

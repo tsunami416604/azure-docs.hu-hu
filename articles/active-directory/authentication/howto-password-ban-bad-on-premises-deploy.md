@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: deb1f74902fe28d53a5180e4f341547f339a83ac
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: d0a082149d85736000b5bb6a91e2fc7132205a88
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741984"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220286"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Helyszíni Azure Active Directory jelszavas védelem tervezése és üzembe helyezése
 
@@ -99,7 +99,7 @@ A következő alapvető követelmények érvényesek:
 
 Az Azure AD Password Protection DC-ügynökre az alábbi követelmények vonatkoznak:
 
-* Az Azure AD jelszavas védelem tartományvezérlő-ügynök szoftverét futtató összes gépnek Windows Server 2012 vagy újabb rendszernek kell futnia.
+* Az Azure AD jelszavas védelem tartományvezérlő-ügynök szoftverét futtató összes gépnek Windows Server 2012 vagy újabb rendszert kell futtatnia, beleértve a Windows Server Core kiadásait is.
     * A Active Directory tartományhoz vagy erdőhöz nem szükséges a Windows Server 2012 tartomány működési szintjének (DFL) vagy az erdő működési szintje (FFL). A [tervezési alapelvekben](concept-password-ban-bad-on-premises.md#design-principles)említettek szerint a DC-ügynök vagy a proxy szoftver futtatásához nincs szükség minimális DFL vagy FFL.
 * Az Azure AD jelszavas védelem DC-ügynökét futtató összes gépnek telepítve kell lennie a .NET 4,5-nek.
 * Az Azure AD jelszavas védelem DC Agent szolgáltatást futtató Active Directory tartományoknak elosztott fájlrendszer replikációt (DFSR) kell használniuk a SYSVOL-replikációhoz.
@@ -116,7 +116,7 @@ Az Azure AD Password Protection DC-ügynökre az alábbi követelmények vonatko
 
 Az Azure AD jelszavas védelem proxy szolgáltatására az alábbi követelmények vonatkoznak:
 
-* Az Azure AD jelszavas védelem-proxy szolgáltatást futtató összes gépnek Windows Server 2012 R2 vagy újabb rendszernek kell futnia.
+* Az Azure AD jelszavas védelem-proxy szolgáltatást futtató összes gépnek Windows Server 2012 R2 vagy újabb rendszert kell futtatnia, beleértve a Windows Server Core kiadásait is.
 
     > [!NOTE]
     > Az Azure AD jelszavas védelmi proxy szolgáltatás üzembe helyezése kötelezően szükséges az Azure AD-jelszavas védelem üzembe helyezéséhez, annak ellenére, hogy a tartományvezérlő rendelkezik kimenő közvetlen internetkapcsolattal.
@@ -419,6 +419,6 @@ Előfordulhat, hogy a szoftverfrissítés szabványos MSI-eljárásokat használ
 
 A `Get-AzureADPasswordProtectionDCAgent` parancsmag segítségével lekérdezhető az összes jelenleg telepített Azure ad Password Protection DC-ügynök szoftveres verziója egy erdőben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy telepítette az Azure AD jelszavas védelemhez szükséges szolgáltatásokat a helyszíni kiszolgálókon, [engedélyezze az Azure ad jelszavas védelmet a Azure Portal](howto-password-ban-bad-on-premises-operations.md) az üzembe helyezés befejezéséhez.

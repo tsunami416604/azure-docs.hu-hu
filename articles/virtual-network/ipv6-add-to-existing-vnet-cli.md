@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: de8d63fb5181e324738e082cbb36a40ee59e36b0
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 04f50396ea9ced4b4377f264b4952efa7a75d170
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "96005248"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223499"
 ---
 # <a name="add-ipv6-to-an-ipv4-application-in-azure-virtual-network---azure-cli"></a>IPv6 hozzáadása IPv4-alkalmazáshoz az Azure Virtual Networkben – Azure CLI
 
@@ -48,7 +48,7 @@ az network public-ip create \
 
 ## <a name="configure-ipv6-load-balancer-frontend"></a>Az IPv6 Load Balancer felületének konfigurálása
 
-Konfigurálja a Load balancert az új IPv6 IP-címmel az [az Network LB frontend-IP Create](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create) paranccsal:
+Konfigurálja a Load balancert az új IPv6 IP-címmel az [az Network LB frontend-IP Create](/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create) paranccsal:
 
 ```azurecli-interactive
 az network lb frontend-ip create \
@@ -60,7 +60,7 @@ az network lb frontend-ip create \
 
 ## <a name="configure-ipv6-load-balancer-backend-pool"></a>IPv6 Load Balancer backend-készlet konfigurálása
 
-Hozza létre az IPv6-címekkel rendelkező hálózati adapterek háttér-készletét az [az Network LB Address-Pool Create](https://docs.microsoft.com/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create) paranccsal a következőképpen:
+Hozza létre az IPv6-címekkel rendelkező hálózati adapterek háttér-készletét az [az Network LB Address-Pool Create](/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create) paranccsal a következőképpen:
 
 ```azurecli-interactive
 az network lb address-pool create \
@@ -71,7 +71,7 @@ az network lb address-pool create \
 
 ## <a name="configure-ipv6-load-balancer-rules"></a>IPv6 Load Balancer-szabályok konfigurálása
 
-Hozzon létre IPv6 Load Balancer-szabályokat az [az Network LB Rule Create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create)paranccsal.
+Hozzon létre IPv6 Load Balancer-szabályokat az [az Network LB Rule Create](/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create)paranccsal.
 
 ```azurecli-interactive
 az network lb rule create \
@@ -104,7 +104,7 @@ az network vnet subnet update \
 
 ## <a name="add-ipv6-configuration-to-nics"></a>IPv6-konfiguráció hozzáadása hálózati adapterekhez
 
-Konfigurálja a virtuális hálózati adaptereket egy IPv6-címmel az [az Network NIC IP-config Create](https://docs.microsoft.com/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-create) paranccsal:
+Konfigurálja a virtuális hálózati adaptereket egy IPv6-címmel az [az Network NIC IP-config Create](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-create) paranccsal:
 
 ```azurecli-interactive
 az network nic ip-config create \
@@ -155,6 +155,6 @@ Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](/powershel
 az group delete --name MyAzureResourceGroupSLB
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben frissített egy meglévő standard Load Balancer IPv4-es előtér-IP-konfigurációval egy kettős verem (IPv4 és IPv6) konfigurációra. Az IPv6-konfigurációkat a háttér-készletben található virtuális gépek hálózati adapterei számára is felvette. További információ az Azure-beli virtuális hálózatok IPv6-támogatásáról: [Mi az IPv6 for azure Virtual Network?](ipv6-overview.md)

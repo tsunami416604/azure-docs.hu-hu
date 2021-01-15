@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan használható a fürt automatikus méretezése,
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: e644a931152c83a5232c8233d519f7807ab708af
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5f0754638be1aa29672b6a59218a6c9d695261a5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542641"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223142"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Fürt automatikus skálázása az alkalmazás igényeinek kielégítéséhez az Azure Kubernetes Service-ben (AKS)
 
@@ -97,7 +97,7 @@ A fürt frissítése néhány percet vesz igénybe, és konfigurálja a fürt au
 > [!IMPORTANT]
 > Ha több Node-készlettel rendelkezik az AK-fürtben, ugorjon az [autoskálázás több ügynök-készlettel szakaszra](#use-the-cluster-autoscaler-with-multiple-node-pools-enabled). A több ügynököt tartalmazó fürtökhöz a `az aks nodepool` parancs használatával kell beállítani a csomópont-készletre vonatkozó tulajdonságok módosítása helyett `az aks` .
 
-Az előző lépésben egy AK-fürt létrehozásához vagy egy meglévő csomópont-készlet frissítéséhez a fürthöz tartozó minimális csomópontok számának értéke *1* , a csomópontok maximális száma pedig *3* . Az alkalmazás követelményeinek változása esetén előfordulhat, hogy módosítania kell a fürt automatikusan méretezhető csomópontjának darabszámát.
+Az előző lépésben egy AK-fürt létrehozásához vagy egy meglévő csomópont-készlet frissítéséhez a fürthöz tartozó minimális csomópontok számának értéke *1*, a csomópontok maximális száma pedig *3*. Az alkalmazás követelményeinek változása esetén előfordulhat, hogy módosítania kell a fürt automatikusan méretezhető csomópontjának darabszámát.
 
 A csomópontok számának módosításához használja az az [AK Update][az-aks-update] parancsot.
 
@@ -132,12 +132,13 @@ A fürt autoskálázásának részletesebb adatait úgy is konfigurálhatja, hog
 | méretezés lefelé-kihasználtsága – küszöbérték | A csomópont kihasználtsági szintje, amely a kért erőforrások összegeként van meghatározva a kapacitás alapján elosztva | 0,5 |
 | maximális – kecses megszakítás – mp     | Maximális időtartam másodpercben, ameddig a fürt autoskálázása a csomópontok skálázására tett kísérlet során megvárja a pod-megszakítást. | 600 másodperc   |
 | egyenleg – hasonló csomópont-csoportok      | Észleli a hasonló csomópont-készleteket, és kiegyenlíti a közöttük lévő csomópontok számát                 | hamis         |
-| bővítő                         | A vertikális felskálázáshoz használandó Node Pool [Expander](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) típusa Lehetséges értékek: `most-pods` , `random` , `least-waste` | véletlenszerű | 
+| bővítő                         | A vertikális felskálázáshoz használandó Node Pool [Expander](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) típusa Lehetséges értékek: `most-pods` , `random` , `least-waste` , `priority` | véletlenszerű | 
 | Kihagyás – csomópontok – helyi tároló    | Ha az igaz fürt automéretezője soha nem törli a helyi tárolóval rendelkező, a hüvelyekkel rendelkező csomópontokat, például EmptyDir vagy HostPath | true |
 | Kihagyás – csomópontok – a-System-hüvelyek      | Ha az igaz fürt automéretezője soha nem törli a Kube-rendszerből származó (kivéve a Daemonset elemet vagy a Mirror hüvelyeket) csomópontokat. | true | 
-| maximális – üres – tömeges törlés            | Az egy időben törölhető üres csomópontok maximális száma.                      | 10 csomópont      |
-| új – Pod – vertikális felskálázás           | Olyan forgatókönyvek esetében, mint például a burst/batch skálázás, ahol nem szeretné, hogy a CA a kubernetes ütemező az összes hüvelyt ütemezheti, a HITELESÍTÉSSZOLGÁLTATÓtól a nem ütemezett hüvelyek figyelmen kívül hagyása előtt is eldöntheti,                                                                                                                | 10 másodperc    |
-| Max-Total – nem olvasott – százalék     | A fürtben lévő nem olvasott csomópontok maximális százalékos aránya. A százalékos arány túllépése után a CA leállítja a műveleteket | 45% | 
+| maximális – üres – tömeges törlés            | Egy időben törölhető üres csomópontok maximális száma                       | 10 csomópont      |
+| új – Pod – vertikális felskálázás           | Olyan forgatókönyvek esetében, mint például a burst/batch skálázás, ahol nem szeretné, hogy a CA a kubernetes ütemező az összes hüvelyt ütemezheti, a CA-nak a nem ütemezett hüvelyek figyelmen kívül hagyásához kell lennie, mielőtt azok már bizonyos korban vannak.                                                                                                                | 0 másodperc    |
+| Max-Total – nem olvasott – százalék     | A fürtben lévő nem olvasott csomópontok maximális százalékos aránya. A százalékos arány túllépése után a CA leállítja a műveleteket | 45% |
+| Max-Node-kiépítés ideje          | Az a maximális idő, ameddig az autoskálázás megvárja a csomópont kiosztását                           | 15 perc    |   
 | ok – összesen – nem olvasott – darabszám           | Az engedélyezett nem olvasott csomópontok száma, a maximális összegtől függetlenül – nem olvasott – százalék            | 3 csomópont       |
 
 > [!IMPORTANT]
@@ -273,7 +274,7 @@ az aks nodepool update \
 
 Ha újra engedélyezni szeretné a fürt automéretezőjét egy meglévő fürtön, újra engedélyezheti azt az az [AK nodepool Update][az-aks-nodepool-update] paranccsal, amely megadja a `--enable-cluster-autoscaler` , a és a `--min-count` `--max-count` paramétereket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk azt mutatja be, hogyan lehet automatikusan méretezni az AK-csomópontok számát. A vízszintes Pod automatikus méretezés használatával automatikusan módosíthatja az alkalmazást futtató hüvelyek számát. A horizontális Pod automéretező használatának lépéseiért lásd: [alkalmazások méretezése az AK-ban][aks-scale-apps].
 

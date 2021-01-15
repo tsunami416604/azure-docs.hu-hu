@@ -1,8 +1,6 @@
 ---
-title: Saját üzemeltetésű integrációs modul automatikus frissítése és elévülési értesítés
+title: Helyi integrációs modul automatikus frissítésre és lejáratra vonatkozó értesítése
 description: További információ a saját üzemeltetésű integrációs modul automatikus frissítéséről és a lejárati értesítésekről
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
@@ -11,14 +9,14 @@ ms.author: lle
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 12/25/2020
-ms.openlocfilehash: 6a6c897d92d469fd6247dd51f2bacb91032ac123
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 8c51839e760dcca32bfc0d150c5e4d10767d95a4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98122437"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222683"
 ---
-# <a name="self-hosted-integration-runtime-auto-update-and-expire-notification"></a>Saját üzemeltetésű integrációs modul automatikus frissítése és elévülési értesítés
+# <a name="self-hosted-integration-runtime-auto-update-and-expire-notification"></a>Helyi integrációs modul automatikus frissítésre és lejáratra vonatkozó értesítése
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -33,7 +31,7 @@ A legkényelmesebb módszer az automatikus frissítés engedélyezése a saját 
 
 Az utolsó frissítés DateTime értéket a saját üzemeltetésű Integration Runtime-ügyfélben tekintheti meg.
 
-![Automatikus frissítés engedélyezése](media/create-self-hosted-integration-runtime/shir-auto-update-2.png)
+![A frissítési idő ellenőrzésének képernyőképe](media/create-self-hosted-integration-runtime/shir-auto-update-2.png)
 
 > [!NOTE]
 > A saját üzemeltetésű integrációs modul stabilitásának biztosítása érdekében, bár két verziót bocsátunk ki, a rendszer havonta egyszer automatikusan frissíti. Néha azt is tapasztalja, hogy az automatikusan frissített verzió a legújabb verzió korábbi verziója. Ha a legújabb verziót szeretné beszerezni, lépjen a [letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=39717).

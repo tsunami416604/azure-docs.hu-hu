@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/20/2020
 ms.author: allensu
-ms.openlocfilehash: 690543ebc91e346e77509fbf993493f6978374ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70410e58acb30c7694e6fe4a6dcaff57bee98607
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836105"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223431"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Az Azure Virtual Network NAT-kapcsolat hibáinak megoldása
 
@@ -68,16 +68,16 @@ _**Megoldás:**_ A megfelelő minták és ajánlott eljárások használata
 A SNAT-kimerültség az alapul szolgáló alkalmazásban más anti-mintákkal is felerősíthető. Tekintse át ezeket a további mintákat és ajánlott eljárásokat a szolgáltatás méretezésének és megbízhatóságának javítása érdekében.
 
 - Fedezze fel a [TCP Üresjárati időkorlát](nat-gateway-resource.md#timers) alacsonyabb értékekre való csökkentésének hatásait, beleértve az alapértelmezett üresjárati időkorlátot (4 perc), hogy a SNAT-készletet a korábbi
-- A hosszú ideig futó műveletek esetében érdemes [aszinkron lekérdezési mintákat](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply) felvenni a kapcsolatok erőforrásainak más műveletekhez való felszabadítására.
+- A hosszú ideig futó műveletek esetében érdemes [aszinkron lekérdezési mintákat](/azure/architecture/patterns/async-request-reply) felvenni a kapcsolatok erőforrásainak más műveletekhez való felszabadítására.
 - A hosszú élettartamú folyamatokban (például az újrafelhasznált TCP-kapcsolatok esetében) a TCP-Keepalives vagy az Keepalives kell használnia, hogy elkerülje a köztes rendszerek időtúllépését. Az Üresjárati időkorlát növelése egy utolsó megoldás, amely nem oldja fel a kiváltó okot. A hosszú időtúllépés miatt alacsony a meghibásodás, ha az időtúllépés lejár, és késlelteti és szükségtelen hibákat jelez.
-- A kecses [újrapróbálkozási mintákat](https://docs.microsoft.com/azure/architecture/patterns/retry) az átmeneti hibák vagy a meghibásodások helyreállítása során el kell kerülni az agresszív újrapróbálkozások/törések elkerülése érdekében.
-Egy új TCP-kapcsolat létrehozása minden HTTP-művelethez (más néven "Atomic connections") egy anti-minta.  Az Atomic Connections szolgáltatás megakadályozza, hogy az alkalmazás a jól méretezhető és a hulladék erőforrásokat is kihasználja.  Mindig több műveletet kell ugyanabba a hálózatba csatlakoztatni.  Az alkalmazás a tranzakciós sebességet és az erőforrások költségét is kihasználja.  Ha az alkalmazás Transport Layer encryption (például TLS) protokollt használ, az új kapcsolatok feldolgozásának jelentős díja van.  Tekintse át az [Azure Cloud design-mintákat](https://docs.microsoft.com/azure/architecture/patterns/) az ajánlott eljárások további mintáinak megtekintéséhez.
+- A kecses [újrapróbálkozási mintákat](/azure/architecture/patterns/retry) az átmeneti hibák vagy a meghibásodások helyreállítása során el kell kerülni az agresszív újrapróbálkozások/törések elkerülése érdekében.
+Egy új TCP-kapcsolat létrehozása minden HTTP-művelethez (más néven "Atomic connections") egy anti-minta.  Az Atomic Connections szolgáltatás megakadályozza, hogy az alkalmazás a jól méretezhető és a hulladék erőforrásokat is kihasználja.  Mindig több műveletet kell ugyanabba a hálózatba csatlakoztatni.  Az alkalmazás a tranzakciós sebességet és az erőforrások költségét is kihasználja.  Ha az alkalmazás Transport Layer encryption (például TLS) protokollt használ, az új kapcsolatok feldolgozásának jelentős díja van.  Tekintse át az [Azure Cloud design-mintákat](/azure/architecture/patterns/) az ajánlott eljárások további mintáinak megtekintéséhez.
 
 #### <a name="additional-possible-mitigations"></a>További lehetséges enyhítések
 
 _**Megoldás:**_ A kimenő kapcsolatok méretezése az alábbiak szerint történik:
 
-| Forgatókönyv | Bizonyíték |Kockázatcsökkentés |
+| Használati eset | Bizonyíték |Kockázatcsökkentés |
 |---|---|---|
 | A SNAT-portok és a SNAT-portok kimerülése a magas kihasználtságú időszakok során tapasztalható. | A (z) Azure Monitor SNAT-kapcsolatok [metrikájának](nat-metrics.md) "sikertelen" kategóriája az idő és a magas csatlakozási kötet esetében átmeneti vagy állandó hibákat mutat be.  | Állapítsa meg, hogy adhat-e további nyilvános IP-cím erőforrásokat vagy nyilvános IP-előtag-erőforrásokat. Ez a Hozzáadás legfeljebb 16 IP-címet tesz lehetővé a NAT-átjáró számára. Ez a Hozzáadás további leltárt nyújt a rendelkezésre álló SNAT-portok (64 000/IP-címek) számára, és lehetővé teszi a forgatókönyv további skálázását.|
 | Már 16 IP-címet adott meg, és továbbra is SNAT a portok kimerülése. | További IP-cím hozzáadására tett kísérlet sikertelen. Az IP-címek teljes száma a nyilvános IP-címek erőforrásaiból vagy a nyilvános IP-előtag erőforrásaiból összesen meghaladja a 16 értéket. | Terjessze az alkalmazási környezetet több alhálózatra, és adjon meg egy NAT Gateway-erőforrást az egyes alhálózatokhoz.  A tervezési minta (ok) újraértékelése az előző [útmutatás](#design-patterns)alapján optimalizálható. |
@@ -96,7 +96,7 @@ A következő táblázat kiindulási pontot használhat, amellyel a tesztek elin
 | Operációs rendszer | Általános TCP-kapcsolatok tesztelése | TCP-alkalmazás rétegének tesztelése | UDP |
 |---|---|---|---|
 | Linux | NC (általános kapcsolatok tesztelése) | Curl (TCP-alkalmazás rétegének tesztelése) | alkalmazás-specifikus |
-| Windows | [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) | PowerShell [-meghívás – Webkérés](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) | alkalmazás-specifikus |
+| Windows | [PsPing](/sysinternals/downloads/psping) | PowerShell [-meghívás – Webkérés](/powershell/module/microsoft.powershell.utility/invoke-webrequest) | alkalmazás-specifikus |
 
 ### <a name="connectivity-failures"></a>Csatlakozási hibák
 
@@ -113,7 +113,7 @@ A következőhöz hasonló eszközök használhatók az érvényesítéshez: Az 
 | Operációs rendszer | Általános TCP-kapcsolatok tesztelése | TCP-alkalmazás rétegének tesztelése | UDP |
 |---|---|---|---|
 | Linux | NC (általános kapcsolatok tesztelése) | Curl (TCP-alkalmazás rétegének tesztelése) | alkalmazás-specifikus |
-| Windows | [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) | PowerShell [-meghívás – Webkérés](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) | alkalmazás-specifikus |
+| Windows | [PsPing](/sysinternals/downloads/psping) | PowerShell [-meghívás – Webkérés](/powershell/module/microsoft.powershell.utility/invoke-webrequest) | alkalmazás-specifikus |
 
 #### <a name="configuration"></a>Konfiguráció
 
@@ -202,4 +202,3 @@ Ha továbbra is problémákba ütközött, nyisson meg egy támogatási esetet a
 * Tudnivalók a [NAT-átjáró erőforrásáról](nat-gateway-resource.md)
 * Tudnivalók a [NAT-átjáró erőforrásaira vonatkozó mérőszámokról és riasztásokról](nat-metrics.md).
 * [Ossza meg velünk a következőt Virtual Network NAT UserVoice-ben való létrehozásához](https://aka.ms/natuservoice).
-

@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: kumud
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: c0b0d366518b786b33048d2d2f182abd787856ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f72264e49a155068f866559db7edf79e68585c55
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89075103"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222275"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-powershell"></a>Hálózati forgalom szűrése hálózati biztonsági csoporttal a PowerShell használatával
 
@@ -35,7 +35,7 @@ A virtuális hálózatok alhálózatainak bejövő vagy kimenő hálózati forga
 * Virtuális gépek üzembe helyezése egy alhálózaton
 * Forgalomszűrők tesztelése
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -302,6 +302,6 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben létrehozott egy hálózati biztonsági csoportot, és hozzárendelte azt egy virtuális hálózati alhálózathoz. A hálózati biztonsági csoportokkal kapcsolatos további információ: [Hálózati biztonsági csoportok áttekintése](security-overview.md) és [Hálózati biztonsági csoportok kezelése](manage-network-security-group.md).
+Ebben a cikkben létrehozott egy hálózati biztonsági csoportot, és hozzárendelte azt egy virtuális hálózati alhálózathoz. A hálózati biztonsági csoportokkal kapcsolatos további információ: [Hálózati biztonsági csoportok áttekintése](./network-security-groups-overview.md) és [Hálózati biztonsági csoportok kezelése](manage-network-security-group.md).
 
 Az Azure alapértelmezés szerint irányítja a forgalmat az alhálózatok között. Ehelyett lehetősége van arra, hogy egy virtuális gépen keresztül irányítsa a forgalmat az alhálózatok között, amely így például tűzfalként is szolgálhat. További információt az [útválasztási táblázat létrehozása](tutorial-create-route-table-powershell.md)című témakörben talál.

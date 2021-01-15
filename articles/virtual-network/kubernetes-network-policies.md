@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 36e5bb33b7d555c3b457b63f94d9032ff390e6cb
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: b7c683edd15ab05e9efc239ffe07759078754607
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342314"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222649"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Az Azure Kubernetes hálózati házirendjeinek áttekintése
 
@@ -38,7 +38,7 @@ A fürt biztonságának megvalósításakor a hálózati biztonsági csoportok (
 Az Azure NPM a következő módokon használható a hüvelyek mikro-szegmentálásának biztosítására.
 
 ### <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
-A NPM natív módon elérhető az AK-ban, és a fürt létrehozásakor engedélyezhető. További információ a [hüvelyek közötti biztonságos adatforgalomról az Azure Kubernetes szolgáltatásban (ak) lévő hálózati szabályzatok használatával](https://docs.microsoft.com/azure/aks/use-network-policies).
+A NPM natív módon elérhető az AK-ban, és a fürt létrehozásakor engedélyezhető. További információ a [hüvelyek közötti biztonságos adatforgalomról az Azure Kubernetes szolgáltatásban (ak) lévő hálózati szabályzatok használatával](../aks/use-network-policies.md).
 
 ### <a name="aks-engine"></a>AK – motor
 AKS-Engine egy olyan eszköz, amely egy Azure Resource Manager sablont hoz létre egy Kubernetes-fürt Azure-beli telepítéséhez. A fürtkonfiguráció egy JSON-fájlban van meghatározva, amelyet a sablon létrehozásakor a rendszer továbbít az eszköznek. A támogatott fürtbeállítások teljes listájával és a beállítások leírásával kapcsolatos további részletekért tekintse meg a Microsoft Azure Container Service Engine – Fürtdefiníció című részt.
@@ -112,7 +112,7 @@ A felhasználók korábban csak a parancssorban futtatott paranccsal tudtak megi
 ### <a name="supported-metrics"></a>Támogatott metrikák
 A támogatott metrikák listája a következő:
 
-|Metrika neve |Description  |Prometheus-metrika típusa  |Címkék  |
+|Metrika neve |Leírás  |Prometheus-metrika típusa  |Címkék  |
 |---------|---------|---------|---------|
 |`npm_num_policies`     |hálózati házirendek száma          |Kijelző         |-         |
 |`npm_num_iptables_rules`     | Iptables-szabályok száma     | Kijelző        |-         |         
@@ -130,7 +130,7 @@ Minden "exec_time" összegző metrika esetében létezik egy "exec_time_count" �
 A metrikák Azure Monitor a tárolók vagy a Prometheus-n keresztül is megtekinthetők.
 
 ### <a name="setup-for-azure-monitor"></a>A Azure Monitor beállítása
-Az első lépés az Azure Monitor engedélyezése a Kubernetes-fürthöz tartozó tárolók számára. A [Azure monitor a tárolók áttekintése című](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview)témakörben talál útmutatást. Ha engedélyezve van Azure Monitor a tárolók számára, konfigurálja a [tárolók ConfigMap Azure monitor](https://aka.ms/container-azm-ms-agentconfig) a NPM-integráció és a Prometheus NPM-metrikák gyűjtésének engedélyezéséhez. Az Azure monitor for containers ConfigMap tartalmaz egy ```integrations``` szakaszt, amely tartalmazza a NPM-metrikák gyűjtéséhez szükséges beállításokat. Ezek a beállítások alapértelmezés szerint le vannak tiltva a ConfigMap. Az alapszintű beállítás engedélyezésével az ```collect_basic_metrics = true``` alapszintű NPM mérőszámok gyűjtése történik. A speciális beállítás engedélyezése ```collect_advanced_metrics = true``` az alapmetrikák mellett speciális mérőszámokat is gyűjt. 
+Az első lépés az Azure Monitor engedélyezése a Kubernetes-fürthöz tartozó tárolók számára. A [Azure monitor a tárolók áttekintése című](../azure-monitor/insights/container-insights-overview.md)témakörben talál útmutatást. Ha engedélyezve van Azure Monitor a tárolók számára, konfigurálja a [tárolók ConfigMap Azure monitor](https://aka.ms/container-azm-ms-agentconfig) a NPM-integráció és a Prometheus NPM-metrikák gyűjtésének engedélyezéséhez. Az Azure monitor for containers ConfigMap tartalmaz egy ```integrations``` szakaszt, amely tartalmazza a NPM-metrikák gyűjtéséhez szükséges beállításokat. Ezek a beállítások alapértelmezés szerint le vannak tiltva a ConfigMap. Az alapszintű beállítás engedélyezésével az ```collect_basic_metrics = true``` alapszintű NPM mérőszámok gyűjtése történik. A speciális beállítás engedélyezése ```collect_advanced_metrics = true``` az alapmetrikák mellett speciális mérőszámokat is gyűjt. 
 
 A ConfigMap szerkesztése után mentse helyileg, és alkalmazza a ConfigMap a fürtre a következőképpen.
 
@@ -143,7 +143,7 @@ integrations: |-
 ```
 A speciális mérőszámok nem kötelezőek, és a bekapcsolás automatikusan bekapcsolja az alapszintű mérőszámok gyűjteményét. Jelenleg csak a speciális mérőszámok tartoznak ide `npm_ipset_counts`
 
-További információ az [Azure monitor for containers Collection beállításairól a konfigurációs térképen](https://aka.ms/azmon-containers-agent-collection-settings-doc)
+További információ az [Azure monitor for containers Collection beállításairól a konfigurációs térképen](../azure-monitor/insights/container-insights-agent-config.md)
 
 ### <a name="visualization-options-for-azure-monitor"></a>Vizualizációs beállítások a Azure Monitor
 Ha a NPM metrikáinak gyűjteménye engedélyezve van, a Azure Portal a tároló-és Grafana használatával megtekintheti a metrikákat.
@@ -154,7 +154,7 @@ Nyissa meg az Azure Portalt. Miután a fürtben megtalálta az adatait, navigál
 A munkafüzet megtekintése mellett (az alábbi képeken) közvetlenül is lekérdezheti a Prometheus-metrikákat az elemzések szakasz "naplók" szakaszában. Ez a lekérdezés például az összes összegyűjtött metrikát visszaküldi.
 | ahol a TimeGenerated > ezelőtt (5h) | ahol a név tartalmazza a "npm_"
 
-Log Analytics közvetlenül a metrikák esetében is lekérdezheti. További információ a [első lépésekról log Analytics lekérdezésekkel](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-log-search) 
+Log Analytics közvetlenül a metrikák esetében is lekérdezheti. További információ a [első lépésekról log Analytics lekérdezésekkel](../azure-monitor/insights/container-insights-log-search.md) 
 
 #### <a name="viewing-in-grafana-dashboard"></a>Megtekintés a Grafana-irányítópulton
 Állítsa be a Grafana-kiszolgálót, és konfiguráljon egy Log Analytics adatforrást az [itt](https://grafana.com/grafana/plugins/grafana-azure-monitor-datasource)leírtak szerint. Ezután importálja a [Grafana-irányítópultot egy log Analytics háttérrel](https://grafana.com/grafana/dashboards/10956) a Grafana Labs-be.
@@ -266,4 +266,3 @@ Az alábbiakban néhány példa a NPM metrikák a Container bepillantást a CI-b
 -  A [tároló hálózatkezelésének](container-networking-overview.md)megismerése.
 - [Telepítse a beépülő](deploy-container-networking.md) modult a Kubernetes-fürtök vagy a Docker-tárolók számára.
 
-    

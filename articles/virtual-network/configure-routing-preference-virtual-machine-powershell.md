@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: mnayak
-ms.openlocfilehash: 65f5b27ecc7b526c4b3e4f5ed62ac90149df1ce1
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: cdd86984e5594d330f0080ee5f4cf0e9a8374652
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510607"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223543"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-azure-powershell"></a>Útválasztási beállítások konfigurálása virtuális géphez Azure PowerShell használatával
 
@@ -29,7 +29,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre egy nyilvános IP-címmel re
 > Az útválasztási preferencia jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 1. Ha a Cloud Shell használja, ugorjon a 2. lépésre. Nyisson meg egy parancssori munkamenetet, és jelentkezzen be az Azure-ba `Connect-AzAccount` .
 2. Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) paranccsal. Az alábbi példa egy erőforráscsoportot hoz létre az USA keleti régiója Azure-régióban:
 
@@ -147,8 +147,8 @@ Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](/powershel
  Remove-AzResourceGroup -Name MyResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az [útválasztási beállításokról a nyilvános IP-címekben](routing-preference-overview.md).
-* További információ az Azure [-beli nyilvános IP-címekről](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) .
+* További információ az Azure [-beli nyilvános IP-címekről](./public-ip-addresses.md#public-ip-addresses) .
 * További információ a [nyilvános IP-címek beállításairól](virtual-network-public-ip-address.md#create-a-public-ip-address).

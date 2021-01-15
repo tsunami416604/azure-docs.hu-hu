@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/15/2019
 ms.author: genli
-ms.openlocfilehash: 03c1badf984fb150631c157f3fdc07856b60e965
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1e304bc30a48c92fdff576723dae6af1e26ef3da
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088897"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222581"
 ---
 # <a name="what-is-ip-address-1686312916"></a>Mi az IP-168.63.129.16?
 
@@ -37,7 +37,7 @@ Az IP-168.63.129.16 egy virtuális nyilvános IP-cím, amely az Azure platform e
 
 ## <a name="scope-of-ip-address-1686312916"></a>IP-168.63.129.16 hatóköre
 
-A nyilvános IP-168.63.129.16 minden régióban és minden nemzeti felhőben használatos. Ez a speciális nyilvános IP-cím a Microsoft tulajdonában van, és nem fog változni. Azt javasoljuk, hogy engedélyezze ezt az IP-címet bármely helyi (virtuális gép) tűzfal-házirendben (kimenő irány). A speciális IP-cím és az erőforrások közötti kommunikáció biztonságos, mert csak a belső Azure-platform tud üzenetet kiszolgálni ebből az IP-címről. Ha ez a címe le van tiltva, a váratlan viselkedés különböző helyzetekben fordulhat elő. a 168.63.129.16 a [gazdagép csomópontjának virtuális IP-címe](../virtual-network/security-overview.md#azure-platform-considerations) , ezért a felhasználó által megadott útvonalak nem érvényesek.
+A nyilvános IP-168.63.129.16 minden régióban és minden nemzeti felhőben használatos. Ez a speciális nyilvános IP-cím a Microsoft tulajdonában van, és nem fog változni. Azt javasoljuk, hogy engedélyezze ezt az IP-címet bármely helyi (virtuális gép) tűzfal-házirendben (kimenő irány). A speciális IP-cím és az erőforrások közötti kommunikáció biztonságos, mert csak a belső Azure-platform tud üzenetet kiszolgálni ebből az IP-címről. Ha ez a címe le van tiltva, a váratlan viselkedés különböző helyzetekben fordulhat elő. a 168.63.129.16 a [gazdagép csomópontjának virtuális IP-címe](./network-security-groups-overview.md#azure-platform-considerations) , ezért a felhasználó által megadott útvonalak nem érvényesek.
 
 - A virtuálisgép-ügynök a 80/TCP és a 32526/TCP portokon keresztül kimenő kommunikációt igényel a WireServer (168.63.129.16) protokollal. Ezeket a virtuális gép helyi tűzfalán kell megnyitni. Ezeknek a portoknak a 168.63.129.16-mel való kommunikációja nem vonatkozik a konfigurált hálózati biztonsági csoportokra.
 
@@ -49,5 +49,5 @@ A nyilvános IP-168.63.129.16 minden régióban és minden nemzeti felhőben has
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Biztonsági csoportok](security-overview.md)
+- [Biztonsági csoportok](./network-security-groups-overview.md)
 - [Hálózati biztonsági csoport létrehozása, módosítása vagy törlése](manage-network-security-group.md)

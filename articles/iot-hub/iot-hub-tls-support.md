@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 11/25/2020
+ms.date: 01/14/2020
 ms.author: jlian
-ms.openlocfilehash: f4438aebcb81d665a19a595ac7ade4fea27fc43f
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: e569cbe9030b2ac5a42bd99233b4fefc925a5662
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621008"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220310"
 ---
 # <a name="transport-layer-security-tls-support-in-iot-hub"></a>Transport Layer Security (TLS) támogatása IoT Hub
 
@@ -46,9 +46,16 @@ A további biztonság érdekében konfigurálja a IoT hubokat úgy, hogy *csak* 
 * USA déli középső régiója
 * USA 2. nyugati régiója
 * USA-beli államigazgatás – Arizona
-* USA-beli államigazgatás – Virginia
+* US Gov Virginia (a TLS 1.0/1.1 támogatás nem érhető el ebben a régióban – a TLS 1,2 kényszerítést engedélyezni kell, vagy a IoT hub létrehozása sikertelen lesz)
 
-Erre a célra hozzon létre egy új IoT Hub a bármelyik támogatott régióban, és állítsa be a `minTlsVersion` tulajdonságot a `1.2` Azure Resource Manager sablon IoT hub erőforrás-specifikációjában:
+A TLS 1,2 kényszerítésének engedélyezéséhez kövesse az [IoT hub létrehozása Azure Portalban](/.iot-hub-create-through-portal.md)című témakör lépéseit, kivéve a következőt:
+
+- Válasszon egy **régiót** a fenti listában található egyikből.
+- A **felügyelet – > Advanced-> Transport Layer Security (TLS) – > minimális TLS-verziónál** válassza a **1,2** lehetőséget. Ez a beállítás csak a támogatott régióban létrehozott IoT hub esetében jelenik meg.
+
+    :::image type="content" source="media/iot-hub-tls-12-enforcement.png" alt-text="A TLS 1,2 kényszerítésének bekapcsolását bemutató képernyőkép a IoT hub létrehozása során":::
+
+Ha az ARM-sablont a létrehozáshoz szeretné használni, hozzon létre egy új IoT Hub a bármelyik támogatott régióban, és állítsa a `minTlsVersion` tulajdonságot az `1.2` erőforrás-specifikációba:
 
 ```json
 {
@@ -112,7 +119,7 @@ Az alábbi hivatkozásokkal konfigurálhatja a TLS 1,2 és az engedélyezett tit
 
 | Nyelv | A TLS 1,2-et támogató verziók | Dokumentáció |
 |----------|------------------------------------|---------------|
-| C#        | 2019-12-11 vagy újabb címke            | [Hivatkozás](https://aka.ms/Tls_C_SDK_IoT) |
+| C        | 2019-12-11 vagy újabb címke            | [Hivatkozás](https://aka.ms/Tls_C_SDK_IoT) |
 | Python   | 2.0.0 vagy újabb verzió             | [Hivatkozás](https://aka.ms/Tls_Python_SDK_IoT) |
 | C#       | 1.21.4 vagy újabb verzió            | [Hivatkozás](https://aka.ms/Tls_CSharp_SDK_IoT) |
 | Java     | 1.19.0 vagy újabb verzió            | [Hivatkozás](https://aka.ms/Tls_Java_SDK_IoT) |
@@ -136,7 +143,7 @@ A nyilvános előzetes verzióhoz tartozó hivatalos SDK-támogatás még nem é
 1. Az OpenSSL használatakor hívja meg a [SSL_CTX_set_tlsext_max_fragment_lengtht](https://manpages.debian.org/testing/libssl-doc/SSL_CTX_set_max_send_fragment.3ssl.en.html) a töredék méretének megadásához.
 1. Kapcsolja össze az ügyfelet az előzetes verzió IoT Hubával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A IoT Hub biztonsági és hozzáférés-vezérléssel kapcsolatos további tudnivalókért tekintse meg a [IoT hub hozzáférésének szabályozása](iot-hub-devguide-security.md)című témakört.
 - További információ az X509-tanúsítvány használatáról az eszközök hitelesítéséhez: [eszközök hitelesítése X. 509 hitelesítésszolgáltatói tanúsítványokkal](iot-hub-x509ca-overview.md)

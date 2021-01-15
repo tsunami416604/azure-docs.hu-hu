@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2020
 ms.author: blehr
 ms.custom: references_regions
-ms.openlocfilehash: 3e2905019244279129528c177a76291cb7d75e11
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: d6e8c4f4b6646254aeea12cf587f47047e661e3f
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825777"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222870"
 ---
 # <a name="upgrade-public-ip-addresses"></a>Nyilvános IP-címek frissítése
 
@@ -33,15 +33,15 @@ Ebben a cikkben a következő forgatókönyveket tekintjük át:
 
 ## <a name="upgrade-public-ip-address-from-basic-to-standard-sku"></a>Nyilvános IP-cím frissítése alapszintről standard SKU-ra
 
-Nyilvános IP-cím frissítéséhez nem köthető erőforráshoz ( [ebben az oldalon](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address) további információt talál a nyilvános IP-címek társításának megszüntetéséről).
+Nyilvános IP-cím frissítéséhez nem köthető erőforráshoz ( [ebben az oldalon](./virtual-network-public-ip-address.md#view-modify-settings-for-or-delete-a-public-ip-address) további információt talál a nyilvános IP-címek társításának megszüntetéséről).
 
 >[!IMPORTANT]
->Az alapszintről standard SKU-ra frissített nyilvános IP-címek továbbra is rendelkeznek [rendelkezésre állási zónákkal](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones).  Ez azt jelenti, hogy nem társítható olyan Azure-erőforráshoz, amely akár zónán kívüli, akár egy előre meghatározott zónához van kötve, ahol ez elérhető.
+>Az alapszintről standard SKU-ra frissített nyilvános IP-címek továbbra is rendelkeznek [rendelkezésre állási zónákkal](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones).  Ez azt jelenti, hogy nem társítható olyan Azure-erőforráshoz, amely akár zónán kívüli, akár egy előre meghatározott zónához van kötve, ahol ez elérhető.
 
 ---
 # <a name="basic-to-standard---powershell"></a>[**Alapszintű, standard – PowerShell**](#tab/option-upgrade-powershell)
 
-Az alábbi példa egy alapszintű SKU nyilvános IP-cím előző létrehozását feltételezi, amely az [ezen a lapon](https://docs.microsoft.com/azure/virtual-network/create-public-ip-powershell?tabs=option-create-public-ip-basic) megadott példát használja a **myResourceGroup** alapszintű nyilvános IP- **myBasicPublicIP** .
+Az alábbi példa egy alapszintű SKU nyilvános IP-cím előző létrehozását feltételezi, amely az [ezen a lapon](./create-public-ip-powershell.md?tabs=option-create-public-ip-basic) megadott példát használja a **myResourceGroup** alapszintű nyilvános IP- **myBasicPublicIP** .
 
 Az IP-cím frissítéséhez egyszerűen hajtsa végre az alábbi parancsokat a PowerShell használatával.  Vegye figyelembe, hogy az IP-cím már statikusan le van foglalva, ezért a szakasz kihagyható.
 
@@ -63,7 +63,7 @@ Set-AzPublicIpAddress -PublicIpAddress $pubIP
 
 # <a name="basic-to-standard---cli"></a>[**Alapszintű – standard – parancssori felület**](#tab/option-upgrade-cli)
 
-Az alábbi példa egy alapszintű SKU nyilvános IP-cím előző létrehozását feltételezi, amely az [ezen a lapon](https://docs.microsoft.com/azure/virtual-network/create-public-ip-cli?tabs=option-create-public-ip-basic) megadott példát használja a **myResourceGroup** alapszintű nyilvános IP- **myBasicPublicIP** .
+Az alábbi példa egy alapszintű SKU nyilvános IP-cím előző létrehozását feltételezi, amely az [ezen a lapon](./create-public-ip-cli.md?tabs=option-create-public-ip-basic) megadott példát használja a **myResourceGroup** alapszintű nyilvános IP- **myBasicPublicIP** .
 
 Az IP-cím frissítéséhez egyszerűen hajtsa végre az alábbi parancsokat az Azure CLI használatával.  Vegye figyelembe, hogy az IP-cím már statikusan le van foglalva, ezért a szakasz kihagyható.
 
@@ -95,7 +95,7 @@ A Azure Resource Manager új képességeinek kihasználásához áttelepítheti 
 
 # <a name="reserved-to-basic---powershell"></a>[**Alapszintű – PowerShell számára fenntartva**](#tab/option-migrate-powershell)
 
-Az alábbi példa egy klasszikus Azure Fenntartott IP **myReservedIP** korábbi létrehozását feltételezi a **myResourceGroup**-ben. A Migrálás egy másik előfeltétele annak biztosítása, hogy a Azure Resource Manager előfizetés regisztrálva legyen az áttelepítéshez. Ezt az [oldal](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-ps)3. és 4. lépésében részletesen tárgyaljuk.
+Az alábbi példa egy klasszikus Azure Fenntartott IP **myReservedIP** korábbi létrehozását feltételezi a **myResourceGroup**-ben. A Migrálás egy másik előfeltétele annak biztosítása, hogy a Azure Resource Manager előfizetés regisztrálva legyen az áttelepítéshez. Ezt az [oldal](../virtual-machines/migration-classic-resource-manager-ps.md)3. és 4. lépésében részletesen tárgyaljuk.
 
 A Fenntartott IP migrálása érdekében hajtsa végre az alábbi parancsokat a PowerShell használatával.  Vegye figyelembe, hogy ha az IP-cím nincs társítva egyetlen szolgáltatáshoz sem (az alatta van egy **myService** nevű szolgáltatás), akkor a lépés kihagyható.
 
@@ -119,7 +119,7 @@ A rendszer létrehoz egy új erőforráscsoportot a Azure Resource Managerben az
 
 # <a name="reserved-to-basic---cli"></a>[**Alapszintű – parancssori felület**](#tab/option-migrate-cli)
 
-Az alábbi példa egy klasszikus Azure Fenntartott IP **myReservedIP** korábbi létrehozását feltételezi a **myResourceGroup**-ben. A Migrálás egy másik előfeltétele annak biztosítása, hogy a Azure Resource Manager előfizetés regisztrálva legyen az áttelepítéshez. Ezt az [oldal](https://docs.microsoft.com/azure/virtual-machines/linux/migration-classic-resource-manager-cli)3. és 4. lépésében részletesen tárgyaljuk.
+Az alábbi példa egy klasszikus Azure Fenntartott IP **myReservedIP** korábbi létrehozását feltételezi a **myResourceGroup**-ben. A Migrálás egy másik előfeltétele annak biztosítása, hogy a Azure Resource Manager előfizetés regisztrálva legyen az áttelepítéshez. Ezt az [oldal](../virtual-machines/migration-classic-resource-manager-cli.md)3. és 4. lépésében részletesen tárgyaljuk.
 
 A Fenntartott IP migrálása érdekében hajtsa végre az alábbi parancsokat az Azure CLI használatával.  Vegye figyelembe, hogy az IP-cím nincs társítva egyetlen szolgáltatáshoz sem (a **myService** és az üzembe helyezési **myDeployment** nevű szolgáltatás), ezt a lépést kihagyhatja.
 
@@ -145,12 +145,12 @@ A rendszer létrehoz egy új erőforráscsoportot a Azure Resource Managerben az
 
 ## <a name="limitations"></a>Korlátozások
 
-* Egy alapszintű nyilvános IP-cím frissítéséhez nem társítható egyetlen Azure-erőforráshoz sem.  A nyilvános IP-címek hozzárendelésével kapcsolatos további információkért tekintse át [ezt a lapot](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address) .  Hasonlóképpen, a Fenntartott IP átmigrálása nem rendelhető hozzá semmilyen felhőalapú szolgáltatáshoz.  A fenntartott IP-címek hozzárendelésével kapcsolatos további információkért tekintse át [ezt a lapot](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm) .  
-* Az alapszintről standard SKU-ra frissített nyilvános IP-címek továbbra is nem rendelkeznek [rendelkezésre állási zónákkal](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones) , ezért nem társíthatók olyan Azure-erőforrásokkal, amelyek akár zónában redundáns, akár nem.  Vegye figyelembe, hogy ez csak a rendelkezésre állási zónákat tartalmazó régiókra vonatkozik.
+* Egy alapszintű nyilvános IP-cím frissítéséhez nem társítható egyetlen Azure-erőforráshoz sem.  A nyilvános IP-címek hozzárendelésével kapcsolatos további információkért tekintse át [ezt a lapot](./virtual-network-public-ip-address.md#view-modify-settings-for-or-delete-a-public-ip-address) .  Hasonlóképpen, a Fenntartott IP átmigrálása nem rendelhető hozzá semmilyen felhőalapú szolgáltatáshoz.  A fenntartott IP-címek hozzárendelésével kapcsolatos további információkért tekintse át [ezt a lapot](./remove-public-ip-address-vm.md) .  
+* Az alapszintről standard SKU-ra frissített nyilvános IP-címek továbbra is nem rendelkeznek [rendelkezésre állási zónákkal](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones) , ezért nem társíthatók olyan Azure-erőforrásokkal, amelyek akár zónában redundáns, akár nem.  Vegye figyelembe, hogy ez csak a rendelkezésre állási zónákat tartalmazó régiókra vonatkozik.
 * A standard és az alapszintű érték között nem lehetséges a visszalépés.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- További információ az Azure-beli [nyilvános IP-címekről](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) , beleértve az SKU-típusok közötti különbséget, valamint a [nyilvános IP-cím beállításait](virtual-network-public-ip-address.md#create-a-public-ip-address).
-- Ismerje meg, hogyan [frissítheti az Azure nyilvános Load balancert alapszintről standard szintre](https://docs.microsoft.com/azure/load-balancer/upgrade-basic-standard).
-- Ismerje meg a [klasszikus Azure-beli fenntartott IP-címeket](https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) és [a klasszikus erőforrások áttelepítését Azure Resource Managerra](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview).
+- További információ az Azure-beli [nyilvános IP-címekről](./public-ip-addresses.md#public-ip-addresses) , beleértve az SKU-típusok közötti különbséget, valamint a [nyilvános IP-cím beállításait](virtual-network-public-ip-address.md#create-a-public-ip-address).
+- Ismerje meg, hogyan [frissítheti az Azure nyilvános Load balancert alapszintről standard szintre](../load-balancer/upgrade-basic-standard.md).
+- Ismerje meg a [klasszikus Azure-beli fenntartott IP-címeket](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) és [a klasszikus erőforrások áttelepítését Azure Resource Managerra](../virtual-machines/migration-classic-resource-manager-overview.md).
