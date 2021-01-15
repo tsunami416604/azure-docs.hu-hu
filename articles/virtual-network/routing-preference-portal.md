@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/02/2020
 ms.author: mnayak
-ms.openlocfilehash: ef1e33a2e43f26dcaf794b2ed81f27d39639b52d
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 2c6295db96f951abd1fd069535b98639e723d93a
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533978"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217566"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-the-azure-portal"></a>A nyilvános IP-cím útválasztási beállításainak konfigurálása a Azure Portal használatával
 
-Ebből a cikkből megtudhatja, hogyan konfigurálhatja az [útválasztási](https://docs.microsoft.com/azure/virtual-network/routing-preference-overview) beállításokat a nyilvános IP-címekhez tartozó ISP-hálózat (**internetes** beállítás) használatával. A nyilvános IP-cím létrehozása után a következő Azure-erőforrásokkal társíthatja a bejövő és kimenő adatforgalmat az internethez:
+Ebből a cikkből megtudhatja, hogyan konfigurálhatja az [útválasztási](./routing-preference-overview.md) beállításokat a nyilvános IP-címekhez tartozó ISP-hálózat (**internetes** beállítás) használatával. A nyilvános IP-cím létrehozása után a következő Azure-erőforrásokkal társíthatja a bejövő és kimenő adatforgalmat az internethez:
 
 * Virtuális gép
 * Virtuálisgép-méretezési csoport
@@ -52,9 +52,9 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 A fenti létrehozott nyilvános IP-címet egy Windows vagy [Linux](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) [rendszerű](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális géppel társíthatja. A CLI szakasz az oktatóanyag oldalon: [nyilvános IP-cím hozzárendelése egy virtuális géphez](associate-public-ip-address-vm.md#azure-cli) , hogy a nyilvános IP-címet a virtuális géphez rendelje. A fent létrehozott nyilvános IP-címet egy [Azure Load Balancer](../load-balancer/load-balancer-overview.md)is társíthatja, ha hozzárendeli a terheléselosztó előtér **-konfigurációjához.** A nyilvános IP-cím terheléselosztásos virtuális IP-címként (VIP) szolgál majd.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a [nyilvános IP-címekről az útválasztási beállításokkal](routing-preference-overview.md).
 - [Konfigurálja a virtuális gép útválasztási beállításait](tutorial-routing-preference-virtual-machine-portal.md).
 - [Konfigurálja a nyilvános IP-cím útválasztási beállításait a PowerShell használatával](routing-preference-powershell.md).
-- További információ az Azure [-beli nyilvános IP-címekről](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) .
+- További információ az Azure [-beli nyilvános IP-címekről](./public-ip-addresses.md#public-ip-addresses) .
 - További információ az összes [nyilvános IP-cím beállításról](virtual-network-public-ip-address.md#create-a-public-ip-address).

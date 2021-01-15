@@ -6,17 +6,17 @@ ms.topic: how-to
 ms.date: 11/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 101b3a05591a7815ba28756bb5b07e855b64e769
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 85026092e513ecc9ec3c23e292a416297774a2e4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505546"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217838"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>A Microsoft Teams használata a Windows rendszerű virtuális asztalon
 
 >[!IMPORTANT]
->A csapatok multimédia-optimalizálása Microsoft 365 Government (GCC) környezetekben támogatott. A Teams szolgáltatáshoz való multimédia-optimalizálás GCC-High vagy DoD esetében nem támogatott.
+>A csapatok számára a média optimalizálása Microsoft 365 kormányzati (GCC) és GCC-High környezetekben támogatott. A Teams szolgáltatáshoz való multimédia-optimalizálás GCC-High vagy DoD esetében nem támogatott.
 
 >[!NOTE]
 >A Microsoft Teams szolgáltatáshoz készült média-optimalizálás csak Windows 10-es gépeken futó Windows asztali ügyfélprogram esetében érhető el. A média-optimalizáláshoz a Windows asztali ügyfél verziója 1.2.1026.0 vagy újabb verzió szükséges.
@@ -120,7 +120,7 @@ A WebSocket szolgáltatás és a csapatok asztali alkalmazás telepítése után
 
 3. Válassza a **verzió** elemet.
 
-      Ha a média-optimalizálás be van töltve, a szalagcím megjeleníti a **WVD média optimalizált beállításait**. Ha a szalagcímben a **WVD adathordozó nincs csatlakoztatva** , lépjen ki a csapatok alkalmazásból, és próbálkozzon újra.
+      Ha a média-optimalizálás be van töltve, a szalagcím megjeleníti a **WVD média optimalizált beállításait**. Ha a szalagcímben a **WVD adathordozó nincs csatlakoztatva**, lépjen ki a csapatok alkalmazásból, és próbálkozzon újra.
 
 4. Válassza ki a felhasználói profil rendszerképét, majd válassza a **Beállítások** lehetőséget.
 
@@ -140,7 +140,7 @@ A virtualizált környezetekben lévő csapatok használata eltér a nem virtual
 
 ### <a name="calls-and-meetings"></a>Hívások és értekezletek
 
-- A Windows rendszerű virtuális asztali környezetekben a Teams asztali ügyfél nem támogatja az élő eseményeket. Egyelőre azt javasoljuk, hogy a [csapat webes ügyfelétől](https://teams.microsoft.com) érkező élő eseményeket a távoli munkamenetben vegyen részt.
+- A Windows rendszerű virtuális asztali környezetekben a Teams asztali ügyfél nem támogatja az élő események létrehozását, de élő eseményekhez is csatlakozhat. Egyelőre azt javasoljuk, hogy hozzon létre élő eseményeket a [csapat webes ügyfeléből](https://teams.microsoft.com) a távoli munkamenetben.
 - A hívások vagy értekezletek jelenleg nem támogatják az alkalmazások megosztását. Az asztali munkamenetek támogatják az asztali megosztást.
 - A vezérlés és az irányítás szabályozása jelenleg nem támogatott.
 - A Windows rendszerű virtuális asztali csapatok csak egy bejövő videó bemenetet támogatnak egyszerre. Ez azt jelenti, hogy ha valaki megpróbálja megosztani a képernyőjét, a képernyője az értekezlet vezetője képernyőjén fog megjelenni.

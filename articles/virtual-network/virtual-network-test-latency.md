@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: steveesp
-ms.openlocfilehash: 77ea14097538f722569acb5a0371674776aac8e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8f167a7947c42ce837ec83b336ae636f593f2e4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84687803"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219258"
 ---
 # <a name="test-vm-network-latency"></a>Virtuális gép hálózati késleltetésének tesztelése
 
@@ -55,7 +55,7 @@ Ezeknek az eszközöknek a használatával biztosíthatja, hogy csak a TCP-vagy 
 A virtuális gép konfigurációjának létrehozásakor vegye figyelembe az alábbi javaslatokat:
 - Használja a Windows vagy Linux legújabb verzióját.
 - A legjobb eredmények érdekében engedélyezze a gyorsított hálózatkezelést.
-- Virtuális gépek üzembe helyezése [Azure Proximity-elhelyezési csoporttal](https://docs.microsoft.com/azure/virtual-machines/linux/co-location).
+- Virtuális gépek üzembe helyezése [Azure Proximity-elhelyezési csoporttal](../virtual-machines/co-location.md).
 - A nagyobb méretű virtuális gépek általában jobb teljesítményt biztosítanak a kisebb virtuális gépeknél.
 
 ### <a name="tips-for-analysis"></a>Elemzési tippek
@@ -77,7 +77,7 @@ Fontolja meg latte.exe külön mappába helyezését, például *c:\Tools*.
 
 ### <a name="allow-latteexe-through-windows-defender-firewall"></a>latte.exe engedélyezése a Windows Defender-tűzfalon keresztül
 
-A *fogadón*hozzon létre egy engedélyezési szabályt a Windows Defender-tűzfalon, hogy a latte.exe forgalom megérkezik. A legegyszerűbben úgy engedélyezheti a teljes latte.exe program nevét, hogy nem engedélyezi a megadott TCP-portok bejövő elérését.
+A *fogadón* hozzon létre egy engedélyezési szabályt a Windows Defender-tűzfalon, hogy a latte.exe forgalom megérkezik. A legegyszerűbben úgy engedélyezheti a teljes latte.exe program nevét, hogy nem engedélyezi a megadott TCP-portok bejövő elérését.
 
 A következő parancs futtatásával engedélyezze latte.exe a Windows Defender-tűzfalon keresztül:
 
@@ -91,7 +91,7 @@ Ha például átmásolta latte.exet a *c:\Tools* mappába, a parancs a következ
 
 ### <a name="run-latency-tests"></a>Késési tesztek futtatása
 
-* A *fogadón*indítsa el latte.exe (futtassa a parancsot a cmd ablakból, ne a powershellből):
+* A *fogadón* indítsa el latte.exe (futtassa a parancsot a cmd ablakból, ne a powershellből):
 
     ```cmd
     latte -a <Receiver IP address>:<port> -i <iterations>
@@ -105,13 +105,13 @@ Ha például átmásolta latte.exet a *c:\Tools* mappába, a parancs a következ
 
     `latte -a 10.0.0.4:5005 -i 65100`
 
-* A *feladón*indítsa el latte.exe (futtassa a parancsot a cmd ablakból, ne a powershellből):
+* A *feladón* indítsa el latte.exe (futtassa a parancsot a cmd ablakból, ne a powershellből):
 
     ```cmd
     latte -c -a <Receiver IP address>:<port> -i <iterations>
     ```
 
-    Az eredményül kapott parancs megegyezik a fogadóval, kivéve a &nbsp; *-c* hozzáadásával, amely azt jelzi, hogy ez az *ügyfél*vagy a *Feladó*:
+    Az eredményül kapott parancs megegyezik a fogadóval, kivéve a &nbsp; *-c* hozzáadásával, amely azt jelzi, hogy ez az *ügyfél* vagy a *Feladó*:
 
     `latte -c -a 10.0.0.4:5005 -i 65100`
 
@@ -123,7 +123,7 @@ A Linux rendszerű virtuális gépek teszteléséhez használja a [SockPerf](htt
 
 ### <a name="install-sockperf-on-the-vms"></a>A SockPerf telepítése a virtuális gépeken
 
-A Linux rendszerű virtuális gépeken, a *küldőn* és a *fogadón*futtassa a következő parancsokat a SockPerf előkészítéséhez a virtuális gépeken. A fő disztribúciók parancsai vannak megadva.
+A Linux rendszerű virtuális gépeken, a *küldőn* és a *fogadón* futtassa a következő parancsokat a SockPerf előkészítéséhez a virtuális gépeken. A fő disztribúciók parancsai vannak megadva.
 
 #### <a name="for-red-hat-enterprise-linux-rhelcentos"></a>Red Hat Enterprise Linux (RHEL)/CentOS
 
@@ -199,8 +199,8 @@ Várjon az eredményekre. Attól függően, hogy a virtuális gépek milyen táv
 Ez a SockPerf példa egy átlagos csomagra jellemző 350 bájtos üzenet méretét használja. Nagyobb vagy alacsonyabb méretet is megadhat, hogy az eredmények pontosabban képviseljék a virtuális gépeken futó számítási feladatokat.
 
 
-## <a name="next-steps"></a>További lépések
-* Növelje a késést egy [Azure közelségi elhelyezési csoporttal](https://docs.microsoft.com/azure/virtual-machines/linux/co-location).
+## <a name="next-steps"></a>Következő lépések
+* Növelje a késést egy [Azure közelségi elhelyezési csoporttal](../virtual-machines/co-location.md).
 * Útmutató a [virtuális gépek hálózatkezelésének optimalizálásához](../virtual-network/virtual-network-optimize-network-bandwidth.md) a forgatókönyvhöz.
 * Olvassa el [, hogy a sávszélesség hogyan legyen lefoglalva a virtuális gépekhez](../virtual-network/virtual-machine-network-throughput.md).
 * További információ: [Azure Virtual Network GYIK](../virtual-network/virtual-networks-faq.md).

@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: f26b54a18ff137575cac208d70e4693c0b9914a8
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: c88371eb450d5b0e2e8b821cdec0e87190e291f8
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572286"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218195"
 ---
 # <a name="how-to-manage-synapse-rbac-role-assignments-in-synapse-studio"></a>A szinapszis RBAC szerepkör-hozzárendeléseinek kezelése a szinapszis Studióban
 
@@ -65,7 +65,7 @@ Ha egy szerepkört finomabb hatókörben szeretne hozzárendelni, válassza ki a
 
 ![Munkaterület-elem szerepkör-hozzárendelésének hozzáadása – elem típusának kiválasztása](./media/how-to-manage-synapse-rbac-role-assignments/access-control-add-workspace-item-assignment-select-item-type.png) 
 
-Válassza ki a hatókörként használni kívánt adott **elemet** , majd válassza ki a legördülő listából azt a **szerepkört** , amelyet hozzá szeretne rendelni.  A legördülő lista csak azokat a szerepköröket sorolja fel, amelyek a kiválasztott elemtípus esetében érvényesek. [További információ](https://go.microsoft.com/fwlink/?linkid=2148306).  
+Válassza ki a hatókörként használni kívánt adott **elemet** , majd válassza ki a legördülő listából azt a **szerepkört** , amelyet hozzá szeretne rendelni.  A legördülő lista csak azokat a szerepköröket sorolja fel, amelyek a kiválasztott elemtípus esetében érvényesek. [További információ](./synapse-workspace-synapse-rbac.md).  
 
 ![Munkaterület-elem szerepkör-hozzárendelésének hozzáadása – szerepkör kiválasztása](./media/how-to-manage-synapse-rbac-role-assignments/access-control-add-workspace-item-assignment-select-role.png) 
  
@@ -79,6 +79,6 @@ A szinapszis RBAC-hozzáférés visszavonásához el kell távolítania a megfel
 
 Ne feledje, hogy a szerepkör-hozzárendelések módosítása 2-5 percet vesz igénybe.   
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Az általános feladatok végrehajtásához szükséges szinapszis RBAC szerepköreinek megismerése](./synapse-workspace-understand-what-role-you-need.md) 
+[Az általános feladatok végrehajtásához szükséges szinapszis RBAC szerepköreinek megismerése](./synapse-workspace-understand-what-role-you-need.md)

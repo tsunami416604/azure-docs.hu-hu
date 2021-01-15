@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
-ms.openlocfilehash: 1d7ba163f05e827e9262215fd604fa175efa6fc8
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 36b7c5caf54001abba1f17500c680f96934657eb
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955603"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216784"
 ---
 # <a name="manage-public-ip-addresses"></a>Nyilvános IP-címek kezelése
 
@@ -49,9 +49,9 @@ A nyilvános IP-címekhez névleges díj tartozik. A díjszabás megtekintéséh
 
 A nyilvános IP-címek a portál, a PowerShell vagy a CLI használatával történő létrehozásával kapcsolatos utasításokért tekintse meg a következő lapokat:
 
- * [Nyilvános IP-címek létrehozása – Portal](https://docs.microsoft.com/azure/virtual-network/create-public-ip-portal?tabs=option-create-public-ip-standard-zones)
- * [Nyilvános IP-címek létrehozása – PowerShell](https://docs.microsoft.com/azure/virtual-network/create-public-ip-powershell?tabs=option-create-public-ip-standard-zones)
- * [Nyilvános IP-címek létrehozása – Azure CLI](https://docs.microsoft.com/azure/virtual-network/create-public-ip-cli?tabs=option-create-public-ip-standard-zones)
+ * [Nyilvános IP-címek létrehozása – Portal](./create-public-ip-portal.md?tabs=option-create-public-ip-standard-zones)
+ * [Nyilvános IP-címek létrehozása – PowerShell](./create-public-ip-powershell.md?tabs=option-create-public-ip-standard-zones)
+ * [Nyilvános IP-címek létrehozása – Azure CLI](./create-public-ip-cli.md?tabs=option-create-public-ip-standard-zones)
 
 >[!NOTE]
 >Bár a portálon két nyilvános IP-cím erőforrás (egy IPv4 és egy IPv6) hozható létre, a PowerShell-és CLI-parancsok egyetlen erőforrást hoznak létre egy IP-verzióhoz vagy a másikhoz. Ha két nyilvános IP-cím-erőforrást szeretne használni, egyet az egyes IP-verziókhoz, a parancsot kétszer kell futtatnia, és a nyilvános IP-cím erőforrásaihoz különböző neveket és IP-verziókat kell megadnia.
@@ -61,7 +61,7 @@ A nyilvános IP-címek a létrehozás során történő megadásával kapcsolato
    |Beállítás|Kötelező?|Részletek|
    |---|---|---|
    |IP-verzió|Igen| Válassza az IPv4 vagy az IPv6 lehetőséget, vagy mindkettőt. Ha mindkettőt választja, 2 nyilvános IP-címet hoz létre – 1 IPv4-címet és 1 IPv6-címet. További információ az [IPv6-ról az Azure virtuális hálózatok](../virtual-network/ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).|
-   |Termékváltozat|Igen|A SKU-bevezetés előtt létrehozott összes nyilvános IP-cím **alapszintű** SKU nyilvános IP-címek. A nyilvános IP-cím létrehozása után az SKU nem módosítható. Az önálló virtuális gépek, a rendelkezésre állási csoporton belüli virtuális gépek, illetve a virtuálisgép-méretezési csoportok alapszintű vagy standard SKU-ket használhatnak. A rendelkezésre állási csoportokban vagy a méretezési csoportokban, illetve az önálló virtuális gépeken belüli virtuális gépek közötti adatkészletek nem engedélyezettek. **Alapszintű** SKU: Ha nyilvános IP-címet hoz létre a rendelkezésre állási zónákat támogató régióban, a **rendelkezésre állási zóna** beállítása alapértelmezés szerint *nincs* . Az alapszintű nyilvános IP-címek nem támogatják a rendelkezésre állási zónákat. **Standard szintű** SKU: A standard SKU nyilvános IP-címe egy virtuális géphez vagy egy terheléselosztó kezelőfelületéhez társítható. Ha olyan régióban hoz létre nyilvános IP-címet, amely támogatja a rendelkezésre állási zónákat, a **rendelkezésre állási zóna** beállítása alapértelmezés szerint a *zóna-redundáns* értékre van állítva. A rendelkezésre állási zónákról további információt a **rendelkezésre állási zóna** beállításában talál. A standard SKU megadása kötelező, ha a címeket standard Load Balancerhez rendeli. A standard Load balancerekkel kapcsolatos további tudnivalókért lásd: [Azure Load Balancer standard SKU](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ha egy standard termékváltozatú nyilvános IP-címet hozzárendel egy virtuális gép hálózati adapteréhez, kifejezetten engedélyeznie kell a kívánt forgalmat egy [hálózati biztonsági csoporttal](security-overview.md#network-security-groups). Az erőforrással történő kommunikáció meghiúsul, amíg nem hoz létre és rendel hozzá egy hálózati biztonsági csoportot, és kifejezetten nem engedélyezi a kívánt forgalmat.|
+   |Termékváltozat|Igen|A SKU-bevezetés előtt létrehozott összes nyilvános IP-cím **alapszintű** SKU nyilvános IP-címek. A nyilvános IP-cím létrehozása után az SKU nem módosítható. Az önálló virtuális gépek, a rendelkezésre állási csoporton belüli virtuális gépek, illetve a virtuálisgép-méretezési csoportok alapszintű vagy standard SKU-ket használhatnak. A rendelkezésre állási csoportokban vagy a méretezési csoportokban, illetve az önálló virtuális gépeken belüli virtuális gépek közötti adatkészletek nem engedélyezettek. **Alapszintű** SKU: Ha nyilvános IP-címet hoz létre a rendelkezésre állási zónákat támogató régióban, a **rendelkezésre állási zóna** beállítása alapértelmezés szerint *nincs* . Az alapszintű nyilvános IP-címek nem támogatják a rendelkezésre állási zónákat. **Standard szintű** SKU: A standard SKU nyilvános IP-címe egy virtuális géphez vagy egy terheléselosztó kezelőfelületéhez társítható. Ha olyan régióban hoz létre nyilvános IP-címet, amely támogatja a rendelkezésre állási zónákat, a **rendelkezésre állási zóna** beállítása alapértelmezés szerint a *zóna-redundáns* értékre van állítva. A rendelkezésre állási zónákról további információt a **rendelkezésre állási zóna** beállításában talál. A standard SKU megadása kötelező, ha a címeket standard Load Balancerhez rendeli. A standard Load balancerekkel kapcsolatos további tudnivalókért lásd: [Azure Load Balancer standard SKU](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ha egy standard termékváltozatú nyilvános IP-címet hozzárendel egy virtuális gép hálózati adapteréhez, kifejezetten engedélyeznie kell a kívánt forgalmat egy [hálózati biztonsági csoporttal](./network-security-groups-overview.md#network-security-groups). Az erőforrással történő kommunikáció meghiúsul, amíg nem hoz létre és rendel hozzá egy hálózati biztonsági csoportot, és kifejezetten nem engedélyezi a kívánt forgalmat.|
    |Szint|Igen|Azt jelzi, hogy az IP-cím társítva van-e egy régióhoz (**regionális**), vagy a több régióból (**globális**) származó "nem megfelelő". *Vegye figyelembe, hogy a "globális szint" IP-cím a szabványos IP-címek előzetes funkciója, és jelenleg csak a régiók közötti Load Balancer*.|
    |Name|Igen|A névnek egyedinek kell lennie a kiválasztott erőforráscsoporthoz.|
    |IP-cím hozzárendelése|Igen|**Dinamikus:** A dinamikus címek hozzárendelése csak akkor történik meg, ha egy nyilvános IP-cím egy Azure-erőforráshoz van társítva, és az erőforrás első alkalommal indul el. A dinamikus címek megváltozhatnak, ha egy erőforráshoz (például virtuális géphez) vannak rendelve, és a virtuális gép le van állítva (felszabadítva), majd újraindul. A címnek a virtuális gép újraindításakor vagy leállításakor (de nem lefoglalt) marad. A dinamikus címek akkor jelennek meg, ha egy nyilvános IP-cím erőforrás le van rendelve egy hozzá társított erőforrásból. **Statikus:** A statikus címeket a rendszer a nyilvános IP-cím létrehozásakor rendeli hozzá. A statikus címek csak akkor jelennek meg, ha a nyilvános IP-cím erőforrás törlődik. Ha a címnek nincs erőforráshoz társítva, akkor a hozzárendelési módszert a létrehozás után módosíthatja. Ha a címe egy erőforráshoz van társítva, előfordulhat, hogy nem tudja módosítani a hozzárendelési módszert. Ha az *IPv6-ot* választja az **IP-verzióhoz**, a hozzárendelési módszernek *dinamikusnak* kell lennie az alapszintű SKU esetében.  A standard SKU-címek az IPv4 és az IPv6 esetében egyaránt *statikusak* . |
@@ -77,7 +77,7 @@ A nyilvános IP-címek a létrehozás során történő megadásával kapcsolato
 ## <a name="view-modify-settings-for-or-delete-a-public-ip-address"></a>Nyilvános IP-cím megtekintése, beállításainak módosítása vagy törlése
 
    - **Megtekintés/lista**: a nyilvános IP-címek beállításainak áttekintése, beleértve az SKU-t, a címet, a megfelelő társítást (például a virtuális gép hálózati adapterét, Load Balancer előtért).
-   - **Módosítás**: Ha módosítani szeretné a beállításokat a [nyilvános IP-cím létrehozása](#create-a-public-ip-address)szakasz 4. lépésében található információk alapján, például az üresjárati IDŐKORLÁT, a DNS-név címke vagy a hozzárendelési módszer használatával.  (A nyilvános IP-címek alapszintről standard verzióra való frissítésének teljes folyamatát lásd: az [Azure nyilvános IP-címeinek frissítése](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address-upgrade).)
+   - **Módosítás**: Ha módosítani szeretné a beállításokat a [nyilvános IP-cím létrehozása](#create-a-public-ip-address)szakasz 4. lépésében található információk alapján, például az üresjárati IDŐKORLÁT, a DNS-név címke vagy a hozzárendelési módszer használatával.  (A nyilvános IP-címek alapszintről standard verzióra való frissítésének teljes folyamatát lásd: az [Azure nyilvános IP-címeinek frissítése](./virtual-network-public-ip-address-upgrade.md).)
    >[!WARNING]
    >Ha egy nyilvános IP-cím hozzárendelését statikusról dinamikusra szeretné módosítani, először el kell távolítania a címet a megfelelő IP-konfigurációkból (lásd: **Törlés** szakasz).  Azt is vegye figyelembe, hogy ha a hozzárendelési módszert statikusról dinamikusra módosítja, akkor a nyilvános IP-címhez rendelt IP-címet elveszíti. Míg az Azure nyilvános DNS-kiszolgálók fenntartanak egy leképezést a statikus és a dinamikus címek és a DNS-nevek címkéje között (ha Ön definiált ilyet), a dinamikus IP-címek megváltozhatnak, amikor a virtuális gép elindul a leállított (megszüntetett) állapot után. Ha meg szeretné akadályozni, hogy a cím megváltozzon, rendeljen hozzá egy statikus IP-címet.
    
@@ -91,9 +91,9 @@ A nyilvános IP-címek a létrehozás során történő megadásával kapcsolato
 
 |Erőforrás|Azure Portal|Azure PowerShell|Azure CLI|
 |---|---|---|---|
-|[Virtuális gép](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm)|Válassza **a társítás lehetőséget az IP** -cím leválasztásához a NIC-konfigurációban, majd válassza a **Törlés** lehetőséget.|[Set-AzPublicIpAddress](/powershell/module/az.network/set-azpublicipaddress) – az IP-cím leválasztása a NIC-konfigurációból; A DELETE [-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) törlése|az [Network Public-IP Update--Remove](/cli/azure/network/public-ip#az-network-public-ip-update) to leválasztani az IP-címet a NIC-konfigurációból; [az Network Public-IP delete](/cli/azure/network/public-ip#az-network-public-ip-delete) to delete |
+|[Virtuális gép](./remove-public-ip-address-vm.md)|Válassza **a társítás lehetőséget az IP** -cím leválasztásához a NIC-konfigurációban, majd válassza a **Törlés** lehetőséget.|[Set-AzPublicIpAddress](/powershell/module/az.network/set-azpublicipaddress) – az IP-cím leválasztása a NIC-konfigurációból; A DELETE [-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) törlése|az [Network Public-IP Update--Remove](/cli/azure/network/public-ip#az-network-public-ip-update) to leválasztani az IP-címet a NIC-konfigurációból; [az Network Public-IP delete](/cli/azure/network/public-ip#az-network-public-ip-delete) to delete |
 |Load Balancer frontend | Nyisson meg egy nem használt nyilvános IP-címet, és válassza a **hozzárendelés** lehetőséget, és jelölje ki a megfelelő előtér-IP-konfigurációval rendelkező Load Balancer a helyére (majd a régi IP-címet ugyanazzal a módszerrel törölheti, mint a virtuális gép esetében)  | [Set-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/set-azloadbalancerfrontendipconfig) – új ELŐTÉRI IP-konfiguráció hozzárendelése nyilvános Load Balancer; [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) törölni; a [Remove-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/remove-azloadbalancerfrontendipconfig) használatával is eltávolíthatja a ELŐTÉRBELI IP-konfigurációt, ha egynél több van |[az Network LB frontend-IP Update](/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az_network_lb_frontend_ip_update) új előtér-IP-konfiguráció hozzárendelése nyilvános Load Balancer; [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) törölni; használhatja [az az Network LB frontend-IP delete](/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az_network_lb_frontend_ip_delete) parancsot is az előtér-IP-konfiguráció eltávolításához, ha egynél több van|
-|Firewall|N.A.| [Felszabadítás ()](https://docs.microsoft.com/azure/firewall/firewall-faq#how-can-i-stop-and-start-azure-firewall) a tűzfal felszabadítása és az összes IP-konfiguráció eltávolítása | [az Network Firewall IP-config delete](/cli/azure/ext/azure-firewall/network/firewall/ip-config#ext_azure_firewall_az_network_firewall_ip_config_delete) az IP-címek eltávolításához (de a PowerShellt kell használnia az első felszabadításához)|
+|Firewall|N.A.| [Felszabadítás ()](../firewall/firewall-faq.yml#how-can-i-stop-and-start-azure-firewall) a tűzfal felszabadítása és az összes IP-konfiguráció eltávolítása | [az Network Firewall IP-config delete](/cli/azure/ext/azure-firewall/network/firewall/ip-config#ext_azure_firewall_az_network_firewall_ip_config_delete) az IP-címek eltávolításához (de a PowerShellt kell használnia az első felszabadításához)|
 
 ## <a name="virtual-machine-scale-sets"></a>Virtual Machine Scale Sets
 
@@ -101,17 +101,17 @@ Nyilvános IP-címekkel rendelkező virtuálisgép-méretezési csoport használ
 
 A virtuálisgép-méretezési csoport nyilvános IP-címeinek listázásához használhatja a PowerShellt ([Get-AzPublicIpAddress-VirtualMachineScaleSetName](/powershell/module/az.network/get-azpublicipaddress)) vagy a CLI-t ([az vmss List-instance-Public-IP](/cli/azure/vmss?view=azure-cli-latest#az_vmss_list_instance_public_ips)-címek).
 
-További információ: [hálózatkezelés az Azure-beli virtuálisgép-méretezési csoportokhoz](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-networking#public-ipv4-per-virtual-machine).
+További információ: [hálózatkezelés az Azure-beli virtuálisgép-méretezési csoportokhoz](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine).
 
 ## <a name="assign-a-public-ip-address"></a>Nyilvános IP-cím kiosztása
 
 Ismerje meg, hogyan rendeljen hozzá egy nyilvános IP-címet a következő erőforrásokhoz:
 
 - Windows vagy [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) [rendszerű](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gép (létrehozásakor) vagy [meglévő virtuális géphez](virtual-network-network-interface-addresses.md#add-ip-addresses)
-- [Nyilvános Load Balancer](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [Application Gateway](../application-gateway/application-gateway-create-gateway-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [Helyek közötti kapcsolat VPN Gateway használatával](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [Virtuálisgép-méretezési csoport](../virtual-machine-scale-sets/virtual-machine-scale-sets-portal-create.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Nyilvános Load Balancer](../load-balancer/quickstart-load-balancer-standard-public-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Application Gateway](../application-gateway/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Helyek közötti kapcsolat VPN Gateway használatával](../vpn-gateway/tutorial-site-to-site-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Virtuálisgép-méretezési csoport](../virtual-machine-scale-sets/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
 ## <a name="permissions"></a>Engedélyek
 
@@ -124,7 +124,7 @@ A nyilvános IP-címekre vonatkozó feladatok végrehajtásához a fiókját hoz
 | Microsoft. Network/nyilvános IP/delete                         | Nyilvános IP-cím törlése                                     |
 | Microsoft. Network/nyilvános IP/csatlakozás/művelet                    | Nyilvános IP-cím hozzárendelése erőforráshoz                    |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Nyilvános IP-cím létrehozása a [PowerShell](powershell-samples.md) vagy az [Azure CLI](cli-samples.md) parancsfájl használatával vagy Azure [Resource Manager-sablonok](template-samples.md) használatával
-- Nyilvános IP-címekhez tartozó [Azure Policy-definíciók](policy-samples.md) létrehozása és kiosztása
+- Nyilvános IP-címekhez tartozó [Azure Policy-definíciók](./policy-reference.md) létrehozása és kiosztása

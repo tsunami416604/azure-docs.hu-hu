@@ -9,12 +9,12 @@ ms.subservice: business-intelligence
 ms.date: 10/27/2020
 ms.author: jocaplan
 ms.reviewer: jrasnick
-ms.openlocfilehash: 996233e2526b8b69c13abd4340ead4c5e2175916
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9c63e5e24495f373f288d2789780a6c671a7cc24
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450667"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218399"
 ---
 # <a name="quickstart-linking-a-power-bi-workspace-to-a-synapse-workspace"></a>Gyors útmutató: Power BI munkaterület összekapcsolása egy szinapszis-munkaterülettel
 
@@ -25,7 +25,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [a Kezdés előtt hozzon létre egy in
 ## <a name="prerequisites"></a>Előfeltételek
 
 - [Azure-beli szinapszis-munkaterület és társított Storage-fiók létrehozása](quickstart-create-workspace.md)
-- [Power BI Professional vagy Premium munkaterületen](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces)
+- [Power BI Professional vagy Premium munkaterületen](/power-bi/service-create-the-new-workspaces)
 
 ## <a name="link-power-bi-workspace-to-your-synapse-workspace"></a>Power BI munkaterület összekapcsolása a szinapszis munkaterülettel
 
@@ -49,7 +49,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [a Kezdés előtt hozzon létre egy in
 
     ![Power BI társított szolgáltatás telepítésének megjelenítése.](media/quickstart-link-powerbi/workspace-link-dialog.png)
 
-6. Kattintson a **Létrehozás** gombra.
+6. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="view-power-bi-workspace-in-synapse-studio"></a>Power BI munkaterület megtekintése a szinapszis Studióban
 
@@ -68,6 +68,6 @@ A munkaterületek összekapcsolása után böngészhet a Power BI adatkészletek
 ![Power BI jelentés megtekintése és szerkesztése.](media/quickstart-link-powerbi/powerbi-report.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az [Azure Storage-ban tárolt fájlokról Power bi jelentés létrehozásáról](sql/tutorial-connect-power-bi-desktop.md).

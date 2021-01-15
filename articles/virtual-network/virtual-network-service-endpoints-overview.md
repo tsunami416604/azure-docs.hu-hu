@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 7d937542201792c0d1c0be69df9bd1c2b34edea3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 93feaef01b234eeb7ac363c18d8e9d8f52b009de
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004942"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216529"
 ---
 # <a name="virtual-network-service-endpoints"></a>Virtuális hálózati szolgáltatásvégpontok
 
@@ -33,14 +33,14 @@ Ez a funkció a következő Azure-szolgáltatásokhoz és-régiókhoz érhető e
 - **[Azure szinapszis Analytics](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): általánosan elérhető az összes Azure-régióban.
 - **[Azure Database for PostgreSQL-kiszolgáló](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): általánosan elérhető az Azure-régiókban, ahol az adatbázis-szolgáltatás elérhető.
 - **[Azure Database for MySQL-kiszolgáló](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): általánosan elérhető az Azure-régiókban, ahol az adatbázis-szolgáltatás elérhető.
-- **[Azure Database for MariaDB](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)** (*Microsoft. SQL*): általánosan elérhető az Azure-régiókban, ahol az adatbázis-szolgáltatás elérhető.
-- **[Azure Cosmos db](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. AzureCosmosDB*): általánosan elérhető az összes Azure-régióban.
+- **[Azure Database for MariaDB](../mariadb/concepts-data-access-security-vnet.md)** (*Microsoft. SQL*): általánosan elérhető az Azure-régiókban, ahol az adatbázis-szolgáltatás elérhető.
+- **[Azure Cosmos db](../cosmos-db/how-to-configure-vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. AzureCosmosDB*): általánosan elérhető az összes Azure-régióban.
 - **[Azure Key Vault](../key-vault/general/overview-vnet-service-endpoints.md)** (*Microsoft.* kulcstartó): általánosan elérhető az összes Azure-régióban.
 - **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. ServiceBus*): általánosan elérhető az összes Azure-régióban.
 - **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. EventHub*): általánosan elérhető az összes Azure-régióban.
 - **[Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. AzureActiveDirectory*): általánosan elérhető minden olyan Azure-régióban, ahol ADLS Gen1 elérhető.
-- **[Azure app Service](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)** (*Microsoft. Web*): általánosan elérhető minden olyan Azure-régióban, ahol az App Service elérhető.
-- **[Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)** (*Microsoft. CognitiveServices*): általánosan elérhető minden olyan Azure-régióban, ahol a kognitív szolgáltatások elérhetők.
+- **[Azure app Service](../app-service/app-service-ip-restrictions.md)** (*Microsoft. Web*): általánosan elérhető minden olyan Azure-régióban, ahol az App Service elérhető.
+- **[Azure Cognitive Services](../cognitive-services/cognitive-services-virtual-networks.md?tabs=portal)** (*Microsoft. CognitiveServices*): általánosan elérhető minden olyan Azure-régióban, ahol a kognitív szolgáltatások elérhetők.
 
 **Nyilvános előzetes verzió**
 
@@ -98,7 +98,7 @@ A szolgáltatásvégpontok az alábbi előnyöket nyújtják:
 
 - Hálózati biztonsági csoportok (NSG-k) szolgáltatásvégpontokkal:
   - Alapértelmezés szerint a NSG engedélyezi a kimenő internetes forgalmat, és lehetővé teszi, hogy a VNet érkező forgalmat az Azure-szolgáltatásokba is engedélyezzék. Ez a forgalom továbbra is együttműködik a szolgáltatás-végpontokkal. 
-  - Ha meg szeretné tagadni az összes kimenő internetes forgalmat, és csak bizonyos Azure-szolgáltatásoknak engedélyezi a forgalmat, ezt a NSG használhatja a [szolgáltatási címkék](security-overview.md#service-tags) használatával. A NSG-szabályokban megadhatja a támogatott Azure-szolgáltatásokat célként, és az Azure biztosítja az egyes címkéken alapuló IP-címek karbantartását is. További információért lásd az [NSG-khez elérhető Azure-szolgáltatáscímkéket](security-overview.md#service-tags) ismertető szakaszt. 
+  - Ha meg szeretné tagadni az összes kimenő internetes forgalmat, és csak bizonyos Azure-szolgáltatásoknak engedélyezi a forgalmat, ezt a NSG használhatja a [szolgáltatási címkék](./network-security-groups-overview.md#service-tags) használatával. A NSG-szabályokban megadhatja a támogatott Azure-szolgáltatásokat célként, és az Azure biztosítja az egyes címkéken alapuló IP-címek karbantartását is. További információért lásd az [NSG-khez elérhető Azure-szolgáltatáscímkéket](./network-security-groups-overview.md#service-tags) ismertető szakaszt. 
 
 ### <a name="scenarios"></a>Forgatókönyvek
 
@@ -138,18 +138,18 @@ Bizonyos Azure-szolgáltatások, például az Azure Storage-fiókok korlátozhat
 
 ## <a name="vnet-service-endpoint-policies"></a>VNet szolgáltatás-végponti házirendek 
 
-A VNet szolgáltatás-végponti házirendek lehetővé teszik a virtuális hálózati forgalom szűrését az Azure-szolgáltatásokra. Ez a szűrő csak bizonyos Azure szolgáltatásbeli erőforrásokat engedélyez a szolgáltatási végpontokon. A szolgáltatás-végponti szabályzatok részletes hozzáférés-vezérlést biztosítanak az Azure-szolgáltatásokhoz való virtuális hálózati forgalomhoz. További információ: [Virtual Network szolgáltatás-végponti szabályzatok](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview).
+A VNet szolgáltatás-végponti házirendek lehetővé teszik a virtuális hálózati forgalom szűrését az Azure-szolgáltatásokra. Ez a szűrő csak bizonyos Azure szolgáltatásbeli erőforrásokat engedélyez a szolgáltatási végpontokon. A szolgáltatás-végponti szabályzatok részletes hozzáférés-vezérlést biztosítanak az Azure-szolgáltatásokhoz való virtuális hálózati forgalomhoz. További információ: [Virtual Network szolgáltatás-végponti szabályzatok](./virtual-network-service-endpoint-policies-overview.md).
 
 ## <a name="faqs"></a>Gyakori kérdések
 
-A gyakori kérdésekért lásd: [Virtual Network szolgáltatási végponttal kapcsolatos gyakori kérdések](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#virtual-network-service-endpoints).
+A gyakori kérdésekért lásd: [Virtual Network szolgáltatási végponttal kapcsolatos gyakori kérdések](./virtual-networks-faq.md#virtual-network-service-endpoints).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Virtuális hálózati szolgáltatásvégpontok konfigurálása](tutorial-restrict-network-access-to-resources.md)
+- [Virtuális hálózati szolgáltatás-végpontok konfigurálása](tutorial-restrict-network-access-to-resources.md)
 - [Azure Storage-fiók biztonságossá tétele virtuális hálózathoz](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Azure SQL Database biztonságossá tétele virtuális hálózathoz](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Azure szinapszis-elemzés biztonságossá tétele virtuális hálózathoz](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
 - [Azure-szolgáltatás integrációja virtuális hálózatokban](virtual-network-for-azure-services.md)
-- [Virtual Network szolgáltatási végpont házirendjei](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
-- [Azure Resource Manager sablon](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)
+- [Virtual Network szolgáltatási végpont házirendjei](./virtual-network-service-endpoint-policies-overview.md)
+- [Azure Resource Manager-sablon](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)

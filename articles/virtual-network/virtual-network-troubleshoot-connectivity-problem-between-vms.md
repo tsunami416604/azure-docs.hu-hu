@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: eb94b67b026ed108f31f6cd802010577665ec0d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ece3e639e0ef3516696e2a0bad7deeb833433a6
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87286087"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219198"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Azure-beli virtuális gépek közötti kapcsolatok hibaelhárítása
 
@@ -49,7 +49,7 @@ A probléma elhárításához kövesse az alábbi lépéseket. Az egyes lépése
 
 ### <a name="step-1-check-whether-nic-is-misconfigured"></a>1. lépés: Győződjön meg arról, hogy a hálózati adapter helytelenül van-e konfigurálva
 
-Kövesse az [Azure-beli Windows rendszerű virtuális gép hálózati adapterének alaphelyzetbe állítása](../virtual-machines/windows/reset-network-interface.md)című témakör lépéseit. 
+Kövesse az [Azure-beli Windows rendszerű virtuális gép hálózati adapterének alaphelyzetbe állítása](../virtual-machines/troubleshooting/reset-network-interface.md)című témakör lépéseit. 
 
 Ha a probléma a hálózati adapter (NIC) módosítása után következik be, kövesse az alábbi lépéseket:
 
@@ -62,8 +62,8 @@ További információ: [hálózati adapterek hozzáadása vagy eltávolítása a
 
 **Egyetlen hálózati adapteres virtuális gép** 
 
-- [Windows rendszerű virtuális gép újbóli üzembe helyezése](../virtual-machines/windows/redeploy-to-new-node.md)
-- [Linux rendszerű virtuális gép újbóli üzembe helyezése](../virtual-machines/linux/redeploy-to-new-node.md)
+- [Windows rendszerű virtuális gép újbóli üzembe helyezése](../virtual-machines/troubleshooting/redeploy-to-new-node-windows.md)
+- [Linux rendszerű virtuális gép újbóli üzembe helyezése](../virtual-machines/troubleshooting/redeploy-to-new-node-linux.md)
 
 ### <a name="step-2-check-whether-network-traffic-is-blocked-by-nsg-or-udr"></a>2. lépés: Győződjön meg arról, hogy a NSG vagy a UDR blokkolja-e a hálózati forgalmat
 
@@ -103,7 +103,7 @@ A hozzáférés-vezérlési lista (ACL) lehetővé teszi a virtuális gépek vé
 
 ### <a name="step-7-check-whether-the-endpoint-is-created-for-the-classic-vm"></a>7. lépés: annak meghatározása, hogy a végpont létrejött-e a klasszikus virtuális géphez
 
-Az Azure-ban a klasszikus üzemi modell használatával létrehozott összes virtuális gép automatikusan képes kommunikálni egy magán hálózati csatornán keresztül más, azonos felhőalapú szolgáltatásban vagy virtuális hálózaton lévő virtuális gépekkel. A más virtuális hálózatokon található számítógépek azonban végpontokat igényelnek a virtuális gépek bejövő hálózati forgalmának irányításához. További információ: [a végpontok beállítása](../virtual-machines/windows/classic/setup-endpoints.md).
+Az Azure-ban a klasszikus üzemi modell használatával létrehozott összes virtuális gép automatikusan képes kommunikálni egy magán hálózati csatornán keresztül más, azonos felhőalapú szolgáltatásban vagy virtuális hálózaton lévő virtuális gépekkel. A más virtuális hálózatokon található számítógépek azonban végpontokat igényelnek a virtuális gépek bejövő hálózati forgalmának irányításához. További információ: [a végpontok beállítása](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints).
 
 ### <a name="step-8-try-to-connect-to-a-vm-network-share"></a>8. lépés: próbáljon meg csatlakozni egy virtuálisgép-hálózati megosztáshoz
 

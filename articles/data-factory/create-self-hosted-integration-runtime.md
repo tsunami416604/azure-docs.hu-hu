@@ -11,12 +11,12 @@ ms.author: lle
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 12/25/2020
-ms.openlocfilehash: 76d53458154a7e66589c16f955373975bb04b25b
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: fd56ef74a7641a01eae2354f149f45e84ff56833
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121616"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217447"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Helyi integrációs modul létrehozása és konfigurálása
 
@@ -157,21 +157,21 @@ Az itt található információk az alkalmazás műveleteiről és argumentumokr
 
 |MŰVELET|args|Leírás|
 |------|----|-----------|
-|RN<br/>-RegisterNewNode|"`<AuthenticationKey>`" ["`<NodeName>`"]|Regisztrálja a saját üzemeltetésű Integration Runtime csomópontot a megadott hitelesítési kulccsal és csomópont nevével.|
-|éra<br/>-EnableRemoteAccess|"`<port>`" ["`<thumbprint>`"]|A magas rendelkezésre állású fürt beállításához engedélyezze a távelérést az aktuális csomóponton. Vagy engedélyezze a hitelesítő adatok közvetlen beállítását a saját üzemeltetésű IR-n keresztül anélkül, hogy Azure Data Factory. Ezt az utóbbit a **New-AzDataFactoryV2LinkedServiceEncryptedCredential** parancsmag használatával végezheti el ugyanazon a hálózaton lévő távoli gépről.|
-|-erac,<br/>-EnableRemoteAccessInContainer|"`<port>`" ["`<thumbprint>`"]|Engedélyezze a távoli hozzáférést az aktuális csomóponthoz, amikor a csomópont egy tárolóban fut.|
-|DRA<br/>-DisableRemoteAccess||Távoli hozzáférés letiltása az aktuális csomóponthoz. A többcsomópontos telepítéshez távoli hozzáférés szükséges. A **New-AzDataFactoryV2LinkedServiceEncryptedCredential PowerShell-** parancsmag még akkor is működik, ha a távoli hozzáférés le van tiltva. Ez a viselkedés akkor igaz, ha a parancsmagot a saját üzemeltetésű IR-csomóponttal megegyező gépen hajtja végre.|
-|-k<br/>– Kulcs|"`<AuthenticationKey>`"|Felülírja vagy frissítse az előző hitelesítési kulcsot. Ügyeljen erre a műveletre. A korábbi saját üzemeltetésű IR-csomópont offline állapotba léphet, ha a kulcs egy új integrációs modul.|
-|-gbf,<br/>-GenerateBackupFile|"`<filePath>`" "`<password>`"|Biztonságimásolat-fájl létrehozása az aktuális csomóponthoz. A biztonságimásolat-fájl tartalmazza a csomópont kulcsát és az adattároló hitelesítő adatait.|
-|IBF<br/>-ImportBackupFile|"`<filePath>`" "`<password>`"|Állítsa vissza a csomópontot egy biztonságimásolat-fájlból.|
-|r<br/>-Restart||Indítsa újra a saját üzemeltetésű Integration Runtime Host szolgáltatást.|
-|s<br/>– Indítás||Indítsa el a saját üzemeltetésű Integration Runtime Host szolgáltatást.|
-|t<br/>– Leállítás||Állítsa le a saját üzemeltetésű Integration Runtime Host szolgáltatást.|
-|SUS<br/>-StartUpgradeService||Indítsa el a saját üzemeltetésű Integration Runtime verziófrissítési szolgáltatását.|
-|tus<br/>-StopUpgradeService||Állítsa le a saját üzemeltetésű Integration Runtime verziófrissítési szolgáltatását.|
-|-tonau,<br/>-TurnOnAutoUpdate||Kapcsolja be a saját üzemeltetésű Integration Runtime automatikus frissítését.|
-|-toffau,<br/>-TurnOffAutoUpdate||Kapcsolja ki a saját üzemeltetésű Integration Runtime automatikus frissítését.|
-|SSA<br/>-SwitchServiceAccount|"`<domain\user>`" ["`<password>`"]|Állítsa be úgy a DIAHostService, hogy az új fiókként fusson. A rendszerfiókok és a virtuális fiókok esetében használja az üres jelszót.|
+|`-rn`,<br/>`-RegisterNewNode`|"`<AuthenticationKey>`" ["`<NodeName>`"]|Regisztrálja a saját üzemeltetésű Integration Runtime csomópontot a megadott hitelesítési kulccsal és csomópont nevével.|
+|`-era`,<br/>`-EnableRemoteAccess`|"`<port>`" ["`<thumbprint>`"]|A magas rendelkezésre állású fürt beállításához engedélyezze a távelérést az aktuális csomóponton. Vagy engedélyezze a hitelesítő adatok közvetlen beállítását a saját üzemeltetésű IR-n keresztül anélkül, hogy Azure Data Factory. Ezt az utóbbit a **New-AzDataFactoryV2LinkedServiceEncryptedCredential** parancsmag használatával végezheti el ugyanazon a hálózaton lévő távoli gépről.|
+|`-erac`,<br/>`-EnableRemoteAccessInContainer`|"`<port>`" ["`<thumbprint>`"]|Engedélyezze a távoli hozzáférést az aktuális csomóponthoz, amikor a csomópont egy tárolóban fut.|
+|`-dra`,<br/>`-DisableRemoteAccess`||Távoli hozzáférés letiltása az aktuális csomóponthoz. A többcsomópontos telepítéshez távoli hozzáférés szükséges. A **New-AzDataFactoryV2LinkedServiceEncryptedCredential PowerShell-** parancsmag még akkor is működik, ha a távoli hozzáférés le van tiltva. Ez a viselkedés akkor igaz, ha a parancsmagot a saját üzemeltetésű IR-csomóponttal megegyező gépen hajtja végre.|
+|`-k`,<br/>`-Key`|"`<AuthenticationKey>`"|Felülírja vagy frissítse az előző hitelesítési kulcsot. Ügyeljen erre a műveletre. A korábbi saját üzemeltetésű IR-csomópont offline állapotba léphet, ha a kulcs egy új integrációs modul.|
+|`-gbf`,<br/>`-GenerateBackupFile`|"`<filePath>`" "`<password>`"|Biztonságimásolat-fájl létrehozása az aktuális csomóponthoz. A biztonságimásolat-fájl tartalmazza a csomópont kulcsát és az adattároló hitelesítő adatait.|
+|`-ibf`,<br/>`-ImportBackupFile`|"`<filePath>`" "`<password>`"|Állítsa vissza a csomópontot egy biztonságimásolat-fájlból.|
+|`-r`,<br/>`-Restart`||Indítsa újra a saját üzemeltetésű Integration Runtime Host szolgáltatást.|
+|`-s`,<br/>`-Start`||Indítsa el a saját üzemeltetésű Integration Runtime Host szolgáltatást.|
+|`-t`,<br/>`-Stop`||Állítsa le a saját üzemeltetésű Integration Runtime Host szolgáltatást.|
+|`-sus`,<br/>`-StartUpgradeService`||Indítsa el a saját üzemeltetésű Integration Runtime verziófrissítési szolgáltatását.|
+|`-tus`,<br/>`-StopUpgradeService`||Állítsa le a saját üzemeltetésű Integration Runtime verziófrissítési szolgáltatását.|
+|`-tonau`,<br/>`-TurnOnAutoUpdate`||Kapcsolja be a saját üzemeltetésű Integration Runtime automatikus frissítését.|
+|`-toffau`,<br/>`-TurnOffAutoUpdate`||Kapcsolja ki a saját üzemeltetésű Integration Runtime automatikus frissítését.|
+|`-ssa`,<br/>`-SwitchServiceAccount`|"`<domain\user>`" ["`<password>`"]|Állítsa be úgy a DIAHostService, hogy az új fiókként fusson. A rendszerfiókok és a virtuális fiókok esetében használja az üres jelszót.|
 
 
 ## <a name="install-and-register-a-self-hosted-ir-from-microsoft-download-center"></a>Saját üzemeltetésű integrációs modul telepítése és regisztrálása a Microsoft letöltőközpontból
@@ -205,9 +205,9 @@ A saját üzemeltetésű Integration Runtime alapértelmezett bejelentkezési fi
 
 Győződjön meg arról, hogy a fiók rendelkezik a szolgáltatásként való bejelentkezés engedélyével. Ellenkező esetben a saját üzemeltetésű integrációs modul nem tud sikeresen elindulni. Megtekintheti az engedélyt a **helyi biztonsági házirendben – > biztonsági beállítások – > helyi házirendek – > felhasználói jogok kiosztása – > Bejelentkezés szolgáltatásként**
 
-![Szolgáltatásfiók engedélye](media/create-self-hosted-integration-runtime/shir-service-account-permission.png)
+![Képernyőfelvétel a helyi biztonsági házirendről – felhasználói jogok kiosztása](media/create-self-hosted-integration-runtime/shir-service-account-permission.png)
 
-![Szolgáltatásfiók engedélye](media/create-self-hosted-integration-runtime/shir-service-account-permission-2.png)
+![Képernyőkép a szolgáltatás felhasználói jogosultságok kiosztásának bejelentkezni](media/create-self-hosted-integration-runtime/shir-service-account-permission-2.png)
 
 
 ## <a name="notification-area-icons-and-notifications"></a>Értesítési területek ikonjai és értesítései

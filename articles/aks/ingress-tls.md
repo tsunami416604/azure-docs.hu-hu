@@ -5,12 +5,12 @@ description: Megtudhatja, hogyan telepíthet és konfigurálhat egy olyan NGINX 
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 3cf7b069d6f010a4461b22c5326589ad3ec31204
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 0b0e26262f75ba8030188a2bffbce8282b38bca8
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186260"
+ms.locfileid: "98219640"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>HTTPS bejövő adatkezelő létrehozása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -262,7 +262,7 @@ kubectl apply -f aks-helloworld-two.yaml --namespace ingress-basic
 
 Mindkét alkalmazás már fut a Kubernetes-fürtön. Azonban olyan típusú szolgáltatással vannak konfigurálva, amely `ClusterIP` nem érhető el az internetről. A nyilvánosan elérhetővé tételéhez hozzon létre egy Kubernetes-bejövő erőforrást. A bejövő erőforrás konfigurálja azokat a szabályokat, amelyek átirányítják a forgalmat a két alkalmazás egyikére.
 
-A következő példában a *Hello-World-beáramló címekre irányuló forgalom. MY_CUSTOM_DOMAIN* az *AK-HelloWorld* szolgáltatáshoz van irányítva. A *Hello-World-beáramló címekre irányuló forgalom. MY_CUSTOM_DOMAIN/Hello-World-Two* átirányítva az *AK-HelloWorld-Two* szolgáltatáshoz. Forgalom a *Hello-World-inbehatolással. MY_CUSTOM_DOMAIN/statikus* a rendszer a (z) *HelloWorld* nevű szolgáltatáshoz irányítja a statikus eszközökhöz.
+A következő példában a *Hello-World-beáramló címekre irányuló forgalom. MY_CUSTOM_DOMAIN* az *AK-HelloWorld-One* szolgáltatáshoz van irányítva. A *Hello-World-beáramló címekre irányuló forgalom. MY_CUSTOM_DOMAIN/Hello-World-Two* átirányítva az *AK-HelloWorld-Two* szolgáltatáshoz. Forgalom a *Hello-World-inbehatolással. MY_CUSTOM_DOMAIN/statikus* a (z) *HelloWorld-One* nevű szolgáltatáshoz van irányítva a statikus eszközökhöz.
 
 > [!NOTE]
 > Ha az egyéni tartomány helyett a bejövő vezérlő IP-címéhez teljes tartománynevet állított be, akkor a *Hello-World-beáramló helyett használja a teljes tartománynevet. MY_CUSTOM_DOMAIN*. Például ha a teljes tartománynév *demo-AKS-ingress.eastus.cloudapp.Azure.com*, cserélje le a *Hello-World-inbehatolást. MY_CUSTOM_DOMAIN* a *demo-AKS-ingress.eastus.cloudapp.Azure.com* a alkalmazásban `hello-world-ingress.yaml` .

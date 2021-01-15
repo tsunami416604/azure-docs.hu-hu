@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 062bd41b0803cbb08f74fbcbcebb89bbddeb0d45
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 4c58968cb6a38a10433915ec8fa00336ccad301e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559803"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216410"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Válasszon árképzési szintet az Azure Cognitive Search
 
@@ -78,7 +78,7 @@ Az Azure Cognitive Search-ra épülő megoldások a következő módokon vehetik
   + ügyfél által felügyelt kulcsok és kettős titkosítás ( [Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/)szükséges)
   + privát végpontok nem Internet-hozzáférési modellhez ( [Azure Private-hivatkozást](https://azure.microsoft.com/pricing/details/private-link/)igényel)
 
-### <a name="service-costs"></a>Szolgáltatási költségek
+### <a name="service-costs"></a>Szolgáltatás költségei
 
 A virtuális gépekkel vagy más, a díjak elkerülésére szolgáló egyéb erőforrásokkal ellentétben az Azure Cognitive Search szolgáltatás mindig a kizárólagos használatra dedikált hardveren érhető el. Ennek megfelelően a szolgáltatás létrehozása olyan számlázható esemény, amely a szolgáltatás létrehozásakor kezdődik, és a szolgáltatás törlésekor lejár. 
 
@@ -88,15 +88,13 @@ Ha megbecsüli egy keresési megoldás költségét, ne feledje, hogy a díjszab
 
 ### <a name="bandwidth-charges"></a>Sávszélességgel kapcsolatos díjak
 
-Az [Indexelő](search-indexer-overview.md) használata hatással lehet a számlázásra, ha az Azure-adatforrás az Azure Cognitive Searchtól eltérő régióban található. Ebben az esetben a kimenő adatok Azure-adatforrásból az Azure-Cognitive Searchba való áthelyezésének díja. 
+Az [Indexelő](search-indexer-overview.md) használata hatással lehet a számlázásra, ha az Azure-adatforrás az Azure Cognitive Searchtól eltérő régióban található. Ebben az esetben a kimenő adatok Azure-adatforrásból az Azure-Cognitive Searchba való áthelyezésének díja lehet. Részletekért tekintse meg az Azure-beli adatplatform díjszabási oldalát.
 
 Ha az Azure Cognitive Search szolgáltatást ugyanabban a régióban hozza létre, mint az adatait, teljes mértékben kiküszöbölheti az adatforgalom díját. Íme néhány információ a sávszélesség- [díjszabási lapról](https://azure.microsoft.com/pricing/details/bandwidth/):
 
-+ A Microsoft nem számít fel semmilyen beérkező adatforgalomra az Azure szolgáltatásban.
-+ Az Azure Cognitive Search nem rendelkezik kimenő adatforgalommal. Ha például a Search szolgáltatás az USA nyugati régiójában található, és egy Azure-webalkalmazás az USA keleti régiójában található, a Microsoft nem számít fel díjat az USA nyugati régiójából származó lekérdezési válaszokra vonatkozó hasznos adatokért.
-+ A többszolgáltatásos megoldásokban nem számítunk fel díjat a vezeték nélküli adatátvitel során, ha az összes szolgáltatás ugyanabban a régióban található.
++ Bejövő adatforgalom: a Microsoft nem számít fel díjat semmilyen, az Azure-beli szolgáltatásba beérkező adatforgalomért. 
 
-A kimenő adatokra akkor számítunk fel díjat, ha a szolgáltatások különböző régiókban találhatók. Ezek a díjak valójában nem részei az Azure Cognitive Search-számlájának. Itt említik, mert ha adatok vagy mesterséges intelligenciával rendelkező indexelő használatával kéri le az adatok különböző régiókban való lekérését, akkor a teljes számlán látható költségeket fogja látni.
++ Kimenő adatforgalom: a kimenő adatforgalom a lekérdezési eredményekre hivatkozik. Cognitive Search a kimenő adatokért nem számítunk fel díjat, de az Azure-beli kimenő díjak akkor is lehetségesek, ha a szolgáltatások különböző régiókban találhatók. Ezek a díjak valójában nem részei az Azure Cognitive Search-számlájának. Itt említik, mert ha más régióknak vagy nem Azure-alkalmazásoknak küldi az eredményeket, láthatja, hogy ezek a költségek a teljes számlán szerepelnek.
 
 ### <a name="ai-enrichment-with-cognitive-services"></a>AI-gazdagítás Cognitive Services
 
@@ -125,7 +123,7 @@ A számlázási díj óradíja/SU. Az egyes szintek fokozatosan magasabb arányb
 
 A legtöbb ügyfél csak egy részét a teljes kapacitás online állapotba helyezi, a többi pedig tartalékban tartja. A számlázáshoz a SU-képlet alapján kiszámított partíciók és replikák száma határozza meg, hogy mit fizet óránként.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Cost Management a kapacitás megtervezésének szerves részét képezi. Következő lépésként folytassa a következő cikkel, amely útmutatást nyújt a kapacitás becsléséhez és a költségek kezeléséhez.
 

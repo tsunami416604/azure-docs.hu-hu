@@ -8,21 +8,21 @@ ms.subservice: core
 ms.author: minxia
 author: mx-iao
 ms.reviewer: peterlu
-ms.date: 12/10/2020
+ms.date: 01/14/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: e3bf77406df302c4ba83cb7a8f1a30fba9f6339e
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 962054943a68aa61ac681de97eeebc10fe3f2b0a
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795937"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216631"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>PyTorch-modellek betanítása méretekben Azure Machine Learning
 
 Ebből a cikkből megtudhatja, hogyan futtathat nagyvállalati szintű [PyTorch](https://pytorch.org/) -betanítási szkripteket Azure Machine learning használatával.
 
-Az ebben a cikkben szereplő szkriptek a csirkék és a Törökország képeinek osztályozására szolgálnak a Deep learning neurális hálózat (DNN) létrehozásához, amely a PyTorch adatátviteli [oktatóanyagán](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)alapul. Az átvitel a tanulás olyan technika, amely az egyik probléma megoldását egy másik, de kapcsolódó problémára is kiszolgálja. Ez a tanítási folyamat lerövidítésével kevesebb adatmennyiséget, időt és számítási erőforrást igényel, mint a teljesen új képzés.
+Az ebben a cikkben szereplő szkriptek a csirkék és a Törökország képeinek osztályozására szolgálnak a Deep learning neurális hálózat (DNN) létrehozásához, amely a PyTorch adatátviteli [oktatóanyagán](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)alapul. Az átvitel a tanulás olyan technika, amely az egyik probléma megoldását egy másik, de kapcsolódó problémára is kiszolgálja. Ez a tanítási folyamat lerövidítésével kevesebb adatmennyiséget, időt és számítási erőforrást igényel, mint a teljesen új képzés. A tanulással kapcsolatos további információkért tekintse meg a [Deep learning vs Machine learning](./concept-deep-learning-vs-machine-learning.md#what-is-transfer-learning) című cikket.
 
 Legyen szó akár egy mély tanulási PyTorch modellről az alapoktól, akár egy meglévő modellt hoz létre a felhőben, a Azure Machine Learning segítségével rugalmas Felhőbeli számítási erőforrásokkal bővítheti a nyílt forráskódú képzési feladatokat. A Azure Machine Learning használatával előkészítheti, üzembe helyezheti, telepítheti és figyelheti a termelési szintű modelleket. 
 
@@ -323,7 +323,7 @@ Az elosztott PyTorch Azure ML-re való futtatásával kapcsolatos teljes oktató
 
 Ha optimalizálni szeretné a következtetést a [ONNX futtatókörnyezettel](concept-onnx.md), alakítsa át a betanított PyTorch modelljét a ONNX formátumba. A következtetés vagy a modell pontozása az a fázis, ahol az üzembe helyezett modellt az előrejelzéshez használják, leggyakrabban a termelési adatforgalomban. Példaként tekintse meg az [oktatóanyagot](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben a PyTorch-on Azure Machine Learning-on keresztül tanult és regisztrált egy mély tanulási és neurális hálózatot. A modellek üzembe helyezésének megismeréséhez folytassa a modell üzembe helyezésével kapcsolatos cikket.
 

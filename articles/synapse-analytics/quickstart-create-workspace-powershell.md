@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: alehall
 ms.reviewer: jrasnick
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 005e3a3b717d4b1b8e5eb02b77a1d228908f8707
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 0537d2353d6b372ed19127101c488b872bbc5224
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92210625"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218858"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-powershell"></a>Rövid útmutató: Azure szinapszis-munkaterület létrehozása Azure PowerShell
 
@@ -30,9 +30,9 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 - [Azure Data Lake Storage Gen2 Storage-fiók](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
     > [!IMPORTANT]
-    > Az Azure szinapszis-munkaterületnek képesnek kell lennie olvasni és írni a kiválasztott ADLS Gen2 fiókot. Minden olyan Storage-fiókhoz, amelyet elsődleges Storage-fiókként csatol, engedélyeznie kell a **hierarchikus névteret** a Storage-fiók létrehozásakor a Storage-fiók [létrehozása](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-powershell#create-a-storage-account)című témakörben leírtak szerint.
+    > Az Azure szinapszis-munkaterületnek képesnek kell lennie olvasni és írni a kiválasztott ADLS Gen2 fiókot. Minden olyan Storage-fiókhoz, amelyet elsődleges Storage-fiókként csatol, engedélyeznie kell a **hierarchikus névteret** a Storage-fiók létrehozásakor a Storage-fiók [létrehozása](../storage/common/storage-account-create.md?tabs=azure-powershell#create-a-storage-account)című témakörben leírtak szerint.
 
-Ha a Cloud Shell használatát választja, további információt [a Azure Cloud Shell áttekintése](https://docs.microsoft.com/azure/cloud-shell/overview) című témakörben talál.
+Ha a Cloud Shell használatát választja, további információt [a Azure Cloud Shell áttekintése](../cloud-shell/overview.md) című témakörben talál.
 
 ### <a name="install-the-azure-powershell-module-locally"></a>A Azure PowerShell modul helyi telepítése
 
@@ -43,7 +43,7 @@ A Azure PowerShell-hitelesítéssel kapcsolatos további információkért tekin
 ### <a name="install-the-azure-synapse-powershell-module"></a>Az Azure szinapszis PowerShell-modul telepítése
 
 > [!IMPORTANT]
-> Míg az az **. szinapszis** PowerShell-modul előzetes verzióban érhető el, a parancsmaggal külön kell telepítenie `Install-Module` . Miután a PowerShell-modul általánosan elérhetővé válik, az a PowerShell-modul kiadásainak része lesz, és alapértelmezés szerint elérhető a Azure Cloud Shellon belülről.
+> Míg az az **. szinapszis** PowerShell-modul előzetes verzióban érhető el, a parancsmaggal külön kell telepítenie `Install-Module` . Miután ez a PowerShell-modul általánosan elérhetővé válik, a jövőbeli Az PowerShell modulkiadások részévé válik, és natívan elérhető lesz az Azure Cloud Shellből.
 
 ```azurepowershell-interactive
 Install-Module -Name Az.Synapse
@@ -59,7 +59,7 @@ Install-Module -Name Az.Synapse
    | StorageAccountResourceGroup | A meglévő ADLS Gen2 Storage-fiók erőforráscsoport neve.                                             |
    | FileShareName               | A meglévő Storage-fájlrendszer neve.                                                                  |
    | SynapseResourceGroup        | Válassza ki az Azure szinapszis-erőforráscsoport új nevét.                                                    |
-   | Régió                      | Válasszon egy Azure- [régiót](https://azure.microsoft.com/global-infrastructure/geographies/#overview). |
+   | Region                      | Válasszon egy Azure- [régiót](https://azure.microsoft.com/global-infrastructure/geographies/#overview). |
    | SynapseWorkspaceName        | Válasszon egyedi nevet az új Azure szinapszis-munkaterülethez.                                                  |
    | SqlUser                     | Válasszon egy értéket egy új felhasználónévhez.                                                                          |
    | SqlPassword                 | Válasszon biztonságos jelszót.                                                                                   |

@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: bfecae4775655f732df8fd6cffea613cd39fb828
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e5495b466bf9b16319b788ec32c7b3a03100f505
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782008"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218142"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Tárfiók monitorozása az Azure Portalon
 
@@ -31,6 +31,8 @@ Javasoljuk, hogy tekintse át [Azure monitor a Storage szolgáltatáshoz](../../
 >
 > Az Azure Storage szolgáltatással kapcsolatos problémák azonosítására, diagnosztizálására és hibaelhárítására vonatkozó részletes útmutató a Storage Analytics és egyéb eszközök használatáról: [Microsoft Azure Storage figyelése, diagnosztizálása és hibaelhárítása](storage-monitoring-diagnosing-troubleshooting.md).
 >
+
+<a id="modify-retention-policy"></a>
 
 ## <a name="configure-monitoring-for-a-storage-account"></a>Storage-fiók figyelésének konfigurálása
 
@@ -101,8 +103,8 @@ Riasztásokat hozhat létre, amelyekkel értesítést kaphat, ha elérte a táro
 1. A **riasztási szabályok** panel megnyitásához görgessen le a **figyelés** szakaszhoz a **menü** panelen, és válassza a **riasztások (klasszikus)** lehetőséget.
 2. A **riasztási szabály hozzáadása** panel megnyitásához válassza a **metrikus riasztás hozzáadása (klasszikus) lehetőséget.**
 3. Adja meg az új riasztási szabály **nevét** és **leírását** .
-4. Válassza ki azt a **metrikát** , amelynek hozzá szeretne adni egy riasztást, egy riasztási **feltételt** és egy **küszöbértéket** . A küszöbérték-egység típusa a választott mérőszámtól függően változik. Például a "Count" a *ContainerCount* egység típusa, míg a *percentnetworkerror értéket mutatnak* metrika egysége százalék.
-5. Válassza ki az **időszakot** . A riasztást kiváltó időszakon belüli küszöbértéket elérő vagy annál nagyobb mérőszámok.
+4. Válassza ki azt a **metrikát** , amelynek hozzá szeretne adni egy riasztást, egy riasztási **feltételt** és egy **küszöbértéket**. A küszöbérték-egység típusa a választott mérőszámtól függően változik. Például a "Count" a *ContainerCount* egység típusa, míg a *percentnetworkerror értéket mutatnak* metrika egysége százalék.
+5. Válassza ki az **időszakot**. A riasztást kiváltó időszakon belüli küszöbértéket elérő vagy annál nagyobb mérőszámok.
 6. Választható **E-mailek** és **webhookok** értesítéseinek konfigurálása. A webhookokkal kapcsolatos további információkért lásd: [webhook konfigurálása Azure metrikai riasztáshoz](../../azure-monitor/platform/alerts-webhooks.md). Ha nem konfigurálja az e-mail-vagy webhook-értesítéseket, a riasztások csak a Azure Portal fognak megjelenni.
 
 !["Riasztási szabály hozzáadása" panel a Azure Portal](./media/storage-monitor-storage-account/add-alert-rule.png)

@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 352d5218f91fa55134a7515b6aeee49857847468
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 345cbe2efb644fe2b84d4a6021ff962337e29285
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173209"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219912"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Hogyan hívhatják meg a felhasználók a vendégeket egy alkalmazásba
 
@@ -28,8 +28,8 @@ Miután hozzáadta a vendég felhasználóját a címtárhoz az Azure AD-ben, az
  - Az alkalmazás konfigurálása önkiszolgáló használatra és a csoport társítása az alkalmazáshoz
 
 > [!NOTE]
-> Ez a cikk bemutatja, hogyan állíthat be önkiszolgáló felügyeletet az Azure AD-bérlőhöz hozzáadott katalógushoz és SAML-alapú alkalmazásokhoz. [Beállíthat önkiszolgáló Microsoft 365 csoportokat](../enterprise-users/groups-self-service-management.md) is, így a felhasználók kezelhetik a saját Microsoft 365 csoportjaihoz való hozzáférést. A felhasználók az Office-fájlok és-alkalmazások megoszthatók a vendég felhasználókkal, a [vendég hozzáférés Microsoft 365 csoportokban](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) és a [SharePoint-fájlok és-mappák megosztása](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c)című témakörben talál további lehetőségeket.
-
+> * Ez a cikk bemutatja, hogyan állíthat be önkiszolgáló felügyeletet az Azure AD-bérlőhöz hozzáadott katalógushoz és SAML-alapú alkalmazásokhoz. [Beállíthat önkiszolgáló Microsoft 365 csoportokat](../enterprise-users/groups-self-service-management.md) is, így a felhasználók kezelhetik a saját Microsoft 365 csoportjaihoz való hozzáférést. A felhasználók az Office-fájlok és-alkalmazások megoszthatók a vendég felhasználókkal, a [vendég hozzáférés Microsoft 365 csoportokban](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) és a [SharePoint-fájlok és-mappák megosztása](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c)című témakörben talál további lehetőségeket.
+> * A felhasználók csak akkor hívhatják meg a vendégeket, ha a **vendég meghívói** szerepkörrel rendelkeznek.
 ## <a name="invite-a-guest-user-to-an-app-from-the-access-panel"></a>Vendég felhasználó meghívása egy alkalmazásra a hozzáférési panelen
 
 Ha egy alkalmazás önkiszolgálásra van konfigurálva, az alkalmazás tulajdonosai a saját hozzáférési paneljén meghívhatnak egy vendég felhasználót a megosztani kívánt alkalmazáshoz. A vendég felhasználót nem feltétlenül kell az Azure AD-be előre hozzáadni. 
@@ -86,7 +86,7 @@ Az önkiszolgáló alkalmazások felügyeletéhez a globális rendszergazda és 
 3. Válassza a **csoportok** lehetőséget.
 4. A **Beállítások** területen válassza az **általános** lehetőséget.
 5. Az **önkiszolgáló csoport felügyelete** alatt **a tulajdonosok lehetőség mellett a hozzáférési panelen is kezelhet csoporttagság-kérelmeket**, és válassza az **Igen** lehetőséget.
-6. Kattintson a **Mentés** gombra.
+6. Válassza a **Mentés** lehetőséget.
 
 ### <a name="create-a-group-to-assign-to-the-app-and-make-the-user-an-owner"></a>Hozzon létre egy csoportot, amelyet hozzá szeretne rendelni az alkalmazáshoz, és tegye a felhasználót a tulajdonosnak
 1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com) Azure ad-rendszergazdaként vagy globális rendszergazdaként.

@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 08/25/2020
 ms.author: alehall
 ms.reviewer: jrasnick
-ms.openlocfilehash: 46ab1df1b776bf8dc9d6d917e5394c3efeec0de4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 2658240e670e617f7296881f733ff369b9bf8f87
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659386"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219028"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-cli"></a>Rövid útmutató: Azure szinapszis-munkaterület létrehozása az Azure CLI-vel
 
@@ -30,7 +30,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy szinapszis-
 - [Azure Data Lake Storage Gen2 Storage-fiók](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
     > [!IMPORTANT]
-    > Az Azure szinapszis-munkaterületnek képesnek kell lennie olvasni és írni a kiválasztott ADLS Gen2 fiókot. Továbbá minden olyan Storage-fiókhoz, amelyet elsődleges Storage-fiókként csatol, a Storage-fiók [létrehozásához](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal#create-a-storage-account) engedélyezni kell a **hierarchikus névteret** a Storage-fiók létrehozása lapon leírtak szerint. 
+    > Az Azure szinapszis-munkaterületnek képesnek kell lennie olvasni és írni a kiválasztott ADLS Gen2 fiókot. Továbbá minden olyan Storage-fiókhoz, amelyet elsődleges Storage-fiókként csatol, a Storage-fiók [létrehozásához](../storage/common/storage-account-create.md?tabs=azure-portal#create-a-storage-account) engedélyezni kell a **hierarchikus névteret** a Storage-fiók létrehozása lapon leírtak szerint. 
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
@@ -44,7 +44,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy szinapszis-
     |StorageAccountResourceGroup| A meglévő ADLS Gen2 Storage-fiók erőforráscsoport neve. |
     |FileShareName| A meglévő Storage-fájlrendszer neve.|
     |SynapseResourceGroup| Válassza ki az Azure szinapszis-erőforráscsoport új nevét. |
-    |Régió| Válasszon egy Azure- [régiót](https://azure.microsoft.com/global-infrastructure/geographies/#overview). |
+    |Region| Válasszon egy Azure- [régiót](https://azure.microsoft.com/global-infrastructure/geographies/#overview). |
     |SynapseWorkspaceName| Válasszon egyedi nevet az új Azure szinapszis-munkaterülethez. |
     |SqlUser| Válasszon egy értéket egy új felhasználónévhez.|
     |SqlPassword| Válasszon biztonságos jelszót.|

@@ -5,12 +5,12 @@ description: Ismerje meg, hogyan frissítheti az AK-csomópontokat a GitHub-műv
 services: container-service
 ms.topic: article
 ms.date: 11/27/2020
-ms.openlocfilehash: 504c99a7305a5010f8dbe56a30b53d6fc3a13c5b
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 6876cf1e5044246492e249d8a61060cbeac46f96
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607840"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217957"
 ---
 # <a name="apply-security-updates-to-azure-kubernetes-service-aks-nodes-automatically-using-github-actions"></a>Biztonsági frissítések alkalmazása az Azure Kubernetes szolgáltatás (ak) csomópontjaira automatikusan GitHub-műveletek használatával
 
@@ -157,7 +157,7 @@ Az Azure CLI-parancsok végrehajtásához szükséges lépések létrehozásáho
           - name: Upgrade node images
             uses: Azure/cli@v1.0.0
             with:
-              inlineScript: az aks upgrade -g {resourceGroupName} -n {aksClusterName} --node-image-only
+              inlineScript: az aks upgrade -g {resourceGroupName} -n {aksClusterName} --node-image-only --yes
     ```
 
     > [!TIP]
@@ -199,7 +199,7 @@ jobs:
       # Code for upgrading one or more node pools
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A legújabb csomópont-lemezképekkel kapcsolatos információkért tekintse meg az [AK kibocsátási megjegyzéseit](https://github.com/Azure/AKS/releases) .
 - Ismerje meg, hogyan frissítheti a Kubernetes-verziót [egy AK-fürt frissítésével][cluster-upgrades-article].

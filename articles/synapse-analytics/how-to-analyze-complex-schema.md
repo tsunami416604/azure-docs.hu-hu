@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 06/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 43e4027c9d88b209ed0606e045dd5b4d47d3ff6e
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: a35cdebe5ff4db562b19dc4ceed069a831af4305
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088516"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219997"
 ---
 # <a name="analyze-complex-data-types-in-azure-synapse-analytics"></a>Összetett adattípusok elemzése az Azure szinapszis Analyticsben
 
@@ -28,7 +28,7 @@ Az adatmérnököknek ismerniük kell, hogyan kell hatékonyan feldolgozni az ö
 
 ## <a name="what-are-arrays-and-nested-structures"></a>Mik azok a tömbök és beágyazott struktúrák?
 
-A következő objektum a [Application Insightsból](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)származik. Ebben az objektumban beágyazott struktúrákat és tömböket tartalmaz, amelyek beágyazott struktúrákat tartalmaznak.
+A következő objektum a [Application Insightsból](../azure-monitor/app/app-insights-overview.md)származik. Ebben az objektumban beágyazott struktúrákat és tömböket tartalmaz, amelyek beágyazott struktúrákat tartalmaznak.
 
 ```json
 {
@@ -221,4 +221,4 @@ Két különböző típusú művelet létezik:
 ## <a name="next-steps"></a>Következő lépések
 
 * [Megtudhatja, hogyan kérdezheti le a Azure Cosmos DBhoz készült szinapszis-hivatkozást a Spark használatával](./synapse-link/how-to-query-analytical-store-spark.md)
-* [A Parquet beágyazott típusainak lekérdezése](./sql/query-parquet-nested-types.md) 
+* [A Parquet beágyazott típusainak lekérdezése](./sql/query-parquet-nested-types.md)

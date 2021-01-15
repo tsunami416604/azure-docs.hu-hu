@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/03/2020
-ms.openlocfilehash: 207679ad5b508b687c9cad372d144839fcaa501d
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: cb0fd5464f7025d71dd384c56233aefa6a6cd364
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94743847"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218722"
 ---
 # <a name="quickstart-transform-data-using-mapping-data-flows"></a>Gyors útmutató: az adatátalakítás a leképezési folyamatokkal
 
@@ -58,7 +58,7 @@ A folyamatok egy adott tevékenységek végrehajtásának logikai folyamatát ta
 
 1. Az *áthelyezés és átalakítás* területen a *tevékenységek* ablaktáblán húzza az **adatfolyamot** a folyamat vászonra.
 
-1. Az **adatfolyamatok hozzáadása** lap előugró ablakában válassza az **új adatfolyam**-adatfolyam létrehozása lehetőséget  ->  **Data flow**. Ha elkészült, kattintson **az OK gombra** .
+1. Az **adatfolyamatok hozzáadása** lap előugró ablakában válassza az **új adatfolyam**-adatfolyam létrehozása lehetőséget  ->  . Ha elkészült, kattintson **az OK gombra** .
 
    ![Adatfolyam létrehozása](media/quickstart-data-flow/new-data-flow.png)
 
@@ -68,7 +68,7 @@ A folyamatok egy adott tevékenységek végrehajtásának logikai folyamatát ta
 
 Miután létrehozta az adatfolyamatot, a rendszer automatikusan elküldi az adatfolyam-vásznon. Ebben a lépésben egy olyan adatfolyamatot fog létrehozni, amely a ADLS-tárolóban lévő MoviesDB.csv viszi, és összesíti a vígjátékok 1910 és 2000 közötti átlagos minősítését. Ezt a fájlt ezután vissza kell írnia a ADLS-tárolóba.
 
-1. Az adatáramlási vászon felett csúsztassa az **adatfolyam hibakeresési** csúszkáját. A hibakeresési mód lehetővé teszi az átalakítási logika interaktív tesztelését egy élő Spark-fürtön. Az adatfolyam-fürtök 5-7 percet vesznek igénybe, és a felhasználóknak javasoljuk, hogy először bekapcsolják a hibakeresést, ha az adatforgalom fejlesztését tervezik. További információ: [hibakeresési mód](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-debug-mode?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+1. Az adatáramlási vászon felett csúsztassa az **adatfolyam hibakeresési** csúszkáját. A hibakeresési mód lehetővé teszi az átalakítási logika interaktív tesztelését egy élő Spark-fürtön. Az adatfolyam-fürtök 5-7 percet vesznek igénybe, és a felhasználóknak javasoljuk, hogy először bekapcsolják a hibakeresést, ha az adatforgalom fejlesztését tervezik. További információ: [hibakeresési mód](../data-factory/concepts-data-flow-debug-mode.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json).
 
     ![A hibakeresés bevetítése](media/quickstart-data-flow/debug-on.png)
 
@@ -104,7 +104,7 @@ Miután létrehozta az adatfolyamatot, a rendszer automatikusan elküldi az adat
 
 1. Nevezze el a szűrő átalakítási **FilterYears**. Kattintson a **szűrés** elem melletti kifejezés mezőre a Kifejezésszerkesztő megnyitásához. Itt adja meg a szűrési feltételt.
 
-1. Az adatfolyam-kifejezés-szerkesztővel interaktív módon hozhat létre kifejezéseket különböző átalakításokban való használatra. A kifejezések tartalmazhatnak beépített függvényeket, a bemeneti sémából származó oszlopokat és a felhasználó által definiált paramétereket. A kifejezések létrehozásával kapcsolatos további információkért lásd: [adatáramlási kifejezés-szerkesztő](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-expression-builder?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+1. Az adatfolyam-kifejezés-szerkesztővel interaktív módon hozhat létre kifejezéseket különböző átalakításokban való használatra. A kifejezések tartalmazhatnak beépített függvényeket, a bemeneti sémából származó oszlopokat és a felhasználó által definiált paramétereket. A kifejezések létrehozásával kapcsolatos további információkért lásd: [adatáramlási kifejezés-szerkesztő](../data-factory/concepts-data-flow-expression-builder.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json).
 
     Ebben a rövid útmutatóban a műfaji komédia olyan filmjeit szeretné szűrni, amelyek a 1910-es és a 2000-os évek közötti időszakban jöttek létre. Az év jelenleg karakterlánc, a függvény használatával át kell alakítani egész számra ```toInteger()``` . Használja a nagyobb vagy egyenlő értéket (>=), és kisebb vagy egyenlő, mint a (<=) operátorok az 1910 és a 200 – literális Year értékekkel való összehasonlításhoz. Egyesítse ezeket a kifejezéseket a és a (&&) operátorral együtt. A kifejezés a következőképpen érkezik:
 
@@ -150,7 +150,7 @@ Miután létrehozta az adatfolyamatot, a rendszer automatikusan elküldi az adat
 
     ![Fogadó hozzáadása](media/quickstart-data-flow/add-sink.png)
 
-1. Nevezze el a **Sink** fogadó fogadót. A fogadó adatkészlet létrehozásához kattintson az **új** elemre.
+1. Nevezze el a fogadó fogadót. A fogadó adatkészlet létrehozásához kattintson az **új** elemre.
 
 1. Válassza a **Azure Data Lake Storage Gen2** lehetőséget. Kattintson a Folytatás gombra.
 
@@ -190,6 +190,6 @@ Ha ezt követően helyesen követte ezt a rövid útmutatót, a fogadó mappáj�
 Folytassa a következő cikkekkel az Azure szinapszis Analytics támogatásának megismeréséhez:
 
 > [!div class="nextstepaction"]
-> [Folyamat és tevékenységek](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 
->  A [leképezési adatfolyam áttekintése](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 
->  [Adatfolyam kifejezésének nyelve](https://docs.microsoft.com/azure/data-factory/data-flow-expression-functions?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+> [Folyamat és tevékenységek](../data-factory/concepts-pipelines-activities.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) 
+>  A [leképezési adatfolyam áttekintése](../data-factory/concepts-data-flow-overview.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) 
+>  [Adatfolyam kifejezésének nyelve](../data-factory/data-flow-expression-functions.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)

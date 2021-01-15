@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: 3a8982b5626e3c19dbd49a3d2e20542d44b1a1da
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 18f2128b6869b4047cc6f35e1638aca81233a014
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368587"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219249"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Hálózati virtuális berendezések problémái az Azure-ban
 
@@ -87,13 +87,13 @@ A PowerShell használata
 
 **Győződjön meg arról, hogy a forgalom átirányítható-e a NVA**
 
-1. [Azure Portalon](https://portal.azure.com)nyissa meg a **Network Watcher**, majd válassza a **következő ugrás**lehetőséget.
+1. [Azure Portalon](https://portal.azure.com)nyissa meg a **Network Watcher**, majd válassza a **következő ugrás** lehetőséget.
 2. Olyan virtuális gépet válasszon, amely átirányítja a forgalmat a NVA, valamint egy cél IP-címet, amelyen a következő ugrás megtekinthető. 
 3. Ha a NVA nem szerepel a **következő ugrásként**, ellenőrizze és frissítse az Azure Route-táblákat.
 
 **Annak megkeresése, hogy a forgalom elérheti-e a NVA**
 
-1. [Azure Portal](https://portal.azure.com)nyissa meg a **Network Watcher**, majd válassza az **IP-folyamat ellenőrzése**lehetőséget. 
+1. [Azure Portal](https://portal.azure.com)nyissa meg a **Network Watcher**, majd válassza az **IP-folyamat ellenőrzése** lehetőséget. 
 2. Adja meg a virtuális gépet és a NVA IP-címét, majd győződjön meg arról, hogy bármely hálózati biztonsági csoport (NSG) blokkolja-e a forgalmat.
 3. Ha van olyan NSG-szabály, amely blokkolja a forgalmat, keresse meg a NSG a **hatályos biztonsági** szabályokban, majd frissítse azt a forgalom továbbításának engedélyezéséhez. Ezután futtassa újra az **IP-folyamatot** , és használja a **kapcsolati HIBÁit** a virtuális gépekről a belső vagy külső IP-CÍMÉRE irányuló TCP-kommunikáció teszteléséhez.
 
@@ -127,7 +127,7 @@ Ha a virtuálisgép-hálózat tüskéket használ, vagy magas kihasználtságú 
 ## <a name="advanced-network-administrator-troubleshooting"></a>A hálózati rendszergazda speciális hibaelhárítása
 
 ### <a name="capture-network-trace"></a>Hálózati nyomkövetés rögzítése
-Rögzítse egyidejű hálózati nyomkövetést a forrásoldali virtuális gépen, a NVA és a cél virtuális gépen a **[PsPing](https://docs.microsoft.com/sysinternals/downloads/psping)** vagy az **nmap**futtatása közben, majd állítsa le a nyomkövetést.
+Rögzítse egyidejű hálózati nyomkövetést a forrásoldali virtuális gépen, a NVA és a cél virtuális gépen a **[PsPing](/sysinternals/downloads/psping)** vagy az **nmap** futtatása közben, majd állítsa le a nyomkövetést.
 
 1. Egyidejű hálózati nyomkövetés rögzítéséhez futtassa a következő parancsot:
 
@@ -135,7 +135,7 @@ Rögzítse egyidejű hálózati nyomkövetést a forrásoldali virtuális gépen
 
    netsh Trace Start Capture = Yes tracefile = c:\ server_IP. etl forgatókönyv = NETCONNECTION
 
-   **Linux esetén**
+   **Linux rendszerhez**
 
    sudo tcpdump-S0-i ETH0-X-w vmtrace. Cap
 

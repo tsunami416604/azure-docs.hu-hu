@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: allensu
-ms.openlocfilehash: 135504ad4956836614bfc0f2cb107e610de17c0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0dab64aac8bc5fa68a53fad6cd8e6f6bb4bac03
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87543486"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217141"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Több IP-cím hozzárendelését a virtuális gépekhez a Azure Portal használatával
 
 > [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 > 
-> Ez a cikk azt ismerteti, hogyan hozhat létre virtuális gépet (VM) a Azure Resource Manager üzemi modellel a Azure Portal használatával. Több IP-cím nem rendelhető hozzá a klasszikus üzemi modellel létrehozott erőforrásokhoz. Ha többet szeretne megtudni az Azure-beli üzembe helyezési modellekről, olvassa el a [telepítési modellek ismertetése](../resource-manager-deployment-model.md) című cikket.
+> Ez a cikk azt ismerteti, hogyan hozhat létre virtuális gépet (VM) a Azure Resource Manager üzemi modellel a Azure Portal használatával. Több IP-cím nem rendelhető hozzá a klasszikus üzemi modellel létrehozott erőforrásokhoz. Ha többet szeretne megtudni az Azure-beli üzembe helyezési modellekről, olvassa el a [telepítési modellek ismertetése](../azure-resource-manager/management/deployment-models.md) című cikket.
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
@@ -39,21 +39,21 @@ A következő lépések végrehajtásával adhat hozzá privát és nyilvános I
 ### <a name="core-steps"></a><a name="coreadd"></a>Alapvető lépések
 
 1. Szükség esetén keresse meg a Azure Portal https://portal.azure.com , és jelentkezzen be.
-2. A portálon kattintson a **További szolgáltatások** > írja be a *virtuális gépek* értéket a szűrő mezőbe, majd kattintson a **virtuális gépek**elemre.
+2. A portálon kattintson a **További szolgáltatások** > írja be a *virtuális gépek* értéket a szűrő mezőbe, majd kattintson a **virtuális gépek** elemre.
 3. A **virtuális gépek** ablaktáblán kattintson arra a virtuális gépre, amelyhez IP-címeket szeretne hozzáadni. Navigáljon a **hálózatkezelés** lapra. a lapon kattintson a **hálózati adapter** elemre. Ahogy az alábbi képen is látható: 
 
 
     ![Nyilvános IP-cím hozzáadása virtuális géphez](./media/virtual-network-multiple-ip-addresses-portal/figure200319.png)
-4. A **hálózati adapter** ablaktáblán kattintson az **IP-konfigurációk**elemre.
+4. A **hálózati adapter** ablaktáblán kattintson az **IP-konfigurációk** elemre.
 
-5. A kiválasztott hálózati adapterhez megjelenő ablaktáblán kattintson az **IP-konfigurációk**elemre. Kattintson a **Hozzáadás**gombra, hajtsa végre az alábbi szakaszokban ismertetett lépéseket a hozzáadni kívánt IP-cím alapján, majd kattintson **az OK**gombra. 
+5. A kiválasztott hálózati adapterhez megjelenő ablaktáblán kattintson az **IP-konfigurációk** elemre. Kattintson a **Hozzáadás** gombra, hajtsa végre az alábbi szakaszokban ismertetett lépéseket a hozzáadni kívánt IP-cím alapján, majd kattintson **az OK** gombra. 
 
 ### <a name="add-a-private-ip-address"></a>Magánhálózati IP-cím hozzáadása
 
 Új magánhálózati IP-cím hozzáadásához hajtsa végre a következő lépéseket:
 
 1. Hajtsa végre a jelen cikk [alapvető lépések](#coreadd) szakaszának lépéseit, és győződjön meg arról, hogy a virtuális gép hálózati adapterének **IP-konfigurációk** szakaszában található.  Tekintse át az alapértelmezettként megjelenő alhálózatot (például 10.0.0.0/24).
-2. Kattintson a **Hozzáadás** parancsra. A megjelenő **IP-konfiguráció hozzáadása** panelen hozzon létre egy *ipconfig-4* nevű IP-konfigurációt egy új *statikus* magánhálózati IP-címmel úgy, hogy kivesz egy új számot a végső Oktetthez, majd kattintson **az OK**gombra.  (A 10.0.0.0/24 alhálózathoz egy példa IP- *10.0.0.7*lenne.)
+2. Kattintson a **Hozzáadás** parancsra. A megjelenő **IP-konfiguráció hozzáadása** panelen hozzon létre egy *ipconfig-4* nevű IP-konfigurációt egy új *statikus* magánhálózati IP-címmel úgy, hogy kivesz egy új számot a végső Oktetthez, majd kattintson **az OK** gombra.  (A 10.0.0.0/24 alhálózathoz egy példa IP- *10.0.0.7* lenne.)
 
     > [!NOTE]
     > Statikus IP-cím hozzáadásakor meg kell adnia egy nem használt, érvényes címet azon az alhálózaton, amelyhez a hálózati adapter csatlakozik. Ha a kiválasztott cím nem érhető el, a portál egy X értéket jelenít meg az IP-címhez, és ki kell választania egy másikat.
@@ -75,8 +75,8 @@ A nyilvános IP-címet egy nyilvános IP-cím típusú erőforrás társításá
 A nyilvános IP-cím a nyilvános IP-cím erőforrásának egyik beállítása. Ha van olyan nyilvános IP-cím erőforrása, amely jelenleg nincs olyan IP-konfigurációhoz társítva, amelyet egy IP-konfigurációhoz szeretne társítani, ugorja át a következő lépéseket, és hajtsa végre az alábbi lépések egyikét, ahogy szükséges. Ha nincs elérhető nyilvános IP-cím erőforrása, a következő lépésekkel hozhat létre egyet:
 
 1. Szükség esetén keresse meg a Azure Portal https://portal.azure.com , és jelentkezzen be.
-3. A portálon kattintson az **erőforrás létrehozása**  >  **hálózati**  >  **nyilvános IP-cím**elemre.
-4. A megjelenő **nyilvános IP-cím létrehozása** panelen adjon meg egy **nevet**, válasszon ki egy **IP-cím-hozzárendelési** típust, egy **előfizetést**, egy **erőforráscsoportot**és egy **helyet**, majd kattintson a **Létrehozás**gombra, ahogy az alábbi képen látható:
+3. A portálon kattintson az **erőforrás létrehozása**  >  **hálózati**  >  **nyilvános IP-cím** elemre.
+4. A megjelenő **nyilvános IP-cím létrehozása** panelen adjon meg egy **nevet**, válasszon ki egy **IP-cím-hozzárendelési** típust, egy **előfizetést**, egy **erőforráscsoportot** és egy **helyet**, majd kattintson a **Létrehozás** gombra, ahogy az alábbi képen látható:
 
     ![Nyilvános IP-cím erőforrás létrehozása](./media/virtual-network-multiple-ip-addresses-portal/figure5.png)
 
@@ -85,7 +85,7 @@ A nyilvános IP-cím a nyilvános IP-cím erőforrásának egyik beállítása. 
 #### <a name="associate-the-public-ip-address-resource-to-a-new-ip-configuration"></a>A nyilvános IP-cím erőforrásának hozzárendelése új IP-konfigurációhoz
 
 1. Hajtsa végre a jelen cikk [alapvető lépések](#coreadd) szakaszának lépéseit.
-2. Kattintson a **Hozzáadás** parancsra. A megjelenő **IP-konfiguráció hozzáadása** panelen hozzon létre egy *ipconfig-4*nevű IP-konfigurációt. Engedélyezze a **nyilvános IP-címet** , és válasszon ki egy meglévő, elérhető nyilvános IP-cím erőforrást a megjelenő **nyilvános IP-cím kiválasztása** ablaktáblán.
+2. Kattintson a **Hozzáadás** parancsra. A megjelenő **IP-konfiguráció hozzáadása** panelen hozzon létre egy *ipconfig-4* nevű IP-konfigurációt. Engedélyezze a **nyilvános IP-címet** , és válasszon ki egy meglévő, elérhető nyilvános IP-cím erőforrást a megjelenő **nyilvános IP-cím kiválasztása** ablaktáblán.
 
     Miután kiválasztotta a nyilvános IP-cím erőforrást, kattintson az **OK** gombra, és zárja be a panelt. Ha nem rendelkezik meglévő nyilvános IP-címmel, létrehozhat egyet a jelen cikk [nyilvános IP-cím létrehozása erőforrásának létrehozása](#create-public-ip) című szakaszában ismertetett lépések végrehajtásával. 
 
@@ -97,7 +97,7 @@ A nyilvános IP-cím a nyilvános IP-cím erőforrásának egyik beállítása. 
 
 1. Hajtsa végre a jelen cikk [alapvető lépések](#coreadd) szakaszának lépéseit.
 2. Kattintson arra az IP-konfigurációra, amelyhez hozzá szeretné adni a nyilvános IP-cím erőforrást.
-3. A megjelenő IPConfig ablaktáblán kattintson az **IP-cím**elemre.
+3. A megjelenő IPConfig ablaktáblán kattintson az **IP-cím** elemre.
 4. A megjelenő **nyilvános IP-cím kiválasztása** panelen válassza ki a nyilvános IP-címet.
 5. Kattintson a **Save (Mentés** ) gombra, és a Bezárás ablaktáblán Ha nem rendelkezik meglévő nyilvános IP-címmel, létrehozhat egyet a jelen cikk [nyilvános IP-cím létrehozása erőforrásának létrehozása](#create-public-ip) című szakaszában ismertetett lépések végrehajtásával.
 3. Tekintse át az új IP-konfigurációt.

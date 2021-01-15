@@ -9,13 +9,13 @@ ms.custom: seo-lt-2019, OKR 11/2019, sqldbrb=1
 author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: sstein,vanto
-ms.date: 01/14/2020
-ms.openlocfilehash: bcf11ef9b64a02383aad5175c19c5db58c3c39cf
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 01/14/2021
+ms.openlocfilehash: 7c797c7e002f40a28e4be674c125c6ea5d60a13f
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791341"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219062"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>A kapcsolódási problémák és a Azure SQL Database és az Azure SQL felügyelt példányával kapcsolatos egyéb hibák elhárítása
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -24,7 +24,7 @@ Hibaüzenetek jelenhetnek meg, ha a Azure SQL Database vagy az Azure SQL felügy
 
 ## <a name="transient-fault-error-messages-40197-40613-and-others"></a>Átmeneti hibák hibaüzenetei (40197, 40613 és egyebek)
 
-Az Azure-infrastruktúra az SQL Database szolgáltatásban fellépő nagy mértékű terhelés esetén dinamikusan újra tudja konfigurálni a kiszolgálókat.  Ez a dinamikus viselkedés azt okozhatja, hogy az ügyfélprogram elveszíti a kapcsolatát az adatbázissal vagy a példánnyal. Az ilyen típusú hiba feltételének neve *átmeneti hiba* . Az adatbázis-újrakonfigurálási események egy tervezett esemény (például egy szoftverfrissítés) vagy egy nem tervezett esemény (például egy folyamat összeomlása vagy terheléselosztás) miatt történnek. A legtöbb újrakonfigurálási esemény általában rövid életű, és legfeljebb 60 másodpercnél rövidebb idő alatt elvégezhető. Ezek az események azonban esetenként hosszabb időt vehetnek igénybe, például ha egy nagy tranzakció hosszan futó helyreállítást okoz. A következő táblázat felsorolja azokat az átmeneti hibákat, amelyeket az alkalmazások fogadhatnak SQL Databasehoz való csatlakozáskor.
+Az Azure-infrastruktúra az SQL Database szolgáltatásban fellépő nagy mértékű terhelés esetén dinamikusan újra tudja konfigurálni a kiszolgálókat.  Ez a dinamikus viselkedés azt okozhatja, hogy az ügyfélprogram elveszíti a kapcsolatát az adatbázissal vagy a példánnyal. Az ilyen típusú hiba feltételének neve *átmeneti hiba*. Az adatbázis-újrakonfigurálási események egy tervezett esemény (például egy szoftverfrissítés) vagy egy nem tervezett esemény (például egy folyamat összeomlása vagy terheléselosztás) miatt történnek. A legtöbb újrakonfigurálási esemény általában rövid életű, és legfeljebb 60 másodpercnél rövidebb idő alatt elvégezhető. Ezek az események azonban esetenként hosszabb időt vehetnek igénybe, például ha egy nagy tranzakció hosszan futó helyreállítást okoz. A következő táblázat felsorolja azokat az átmeneti hibákat, amelyeket az alkalmazások fogadhatnak SQL Databasehoz való csatlakozáskor.
 
 ### <a name="list-of-transient-fault-error-codes"></a>Az átmeneti hibák hibakódjának listája
 
@@ -32,11 +32,11 @@ Az Azure-infrastruktúra az SQL Database szolgáltatásban fellépő nagy mért�
 | ---:| ---:|:--- |
 | 4060 |16 |A bejelentkezés által kért "%. &#x2a;ls" adatbázis nem nyitható meg. A bejelentkezés sikertelen volt. További információ: [4000 – 4999. hibák](/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999)|
 | 40197 |17 |A szolgáltatás hibát észlelt a kérelem feldolgozásakor. Próbálkozzon újra. Hibakód:% d.<br/><br/>Ez a hibaüzenet akkor jelenik meg, ha a szolgáltatás szoftver vagy hardveres frissítés, hardverhiba vagy bármilyen más feladatátvételi probléma miatt leáll. A 40197-es hiba üzenetében beágyazott hibakód (% d) további információkat nyújt a hiba vagy a feladatátvételi típusról. Néhány példa a hibakódokra a 40197-es hiba üzenetében található, 40020, 40143, 40166 és 40540.<br/><br/>Az újracsatlakozás automatikusan csatlakozik az adatbázis egy kifogástalan állapotú példányához. Az alkalmazásnak meg kell fognia a 40197-es hibát, be kell jelentkeznie a (z) "% d" beágyazott hibakódra az üzenetben a hibaelhárításhoz, és újra kell csatlakoznia SQL Database, amíg az erőforrások elérhetővé válnak, és a kapcsolat újból létrejön. További információ: [átmeneti hibák](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults).|
-| 40501 |20 |A szolgáltatás jelenleg foglalt. Próbálja megismételni a kérést 10 másodperc múlva. Incidens azonosítója:% ls. Kód:% d. További információkért lásd: <br/>&bull;&nbsp; [Logikai SQL Server erőforrás-korlátok](resource-limits-logical-server.md)<br/>&bull;&nbsp; [DTU-alapú korlátok önálló adatbázisokhoz](service-tiers-dtu.md)<br/>&bull;&nbsp; [Rugalmas készletek DTU-alapú korlátai](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [virtuális mag-alapú korlátok önálló adatbázisokhoz](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [rugalmas készletek virtuális mag-alapú korlátai](resource-limits-vcore-elastic-pools.md)<br/>&bull;Az &nbsp; [Azure SQL felügyelt példányának erőforrás-korlátai](../managed-instance/resource-limits.md).|
+| 40501 |20 |A szolgáltatás jelenleg foglalt. Próbálja megismételni a kérést 10 másodperc múlva. Incidens azonosítója:% ls. Kód:% d. További információ: <br/>&bull;&nbsp; [Logikai SQL Server erőforrás-korlátok](resource-limits-logical-server.md)<br/>&bull;&nbsp; [DTU-alapú korlátok önálló adatbázisokhoz](service-tiers-dtu.md)<br/>&bull;&nbsp; [Rugalmas készletek DTU-alapú korlátai](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [virtuális mag-alapú korlátok önálló adatbázisokhoz](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [rugalmas készletek virtuális mag-alapú korlátai](resource-limits-vcore-elastic-pools.md)<br/>&bull;Az &nbsp; [Azure SQL felügyelt példányának erőforrás-korlátai](../managed-instance/resource-limits.md).|
 | 40613 |17 |A (z)%. &#x2a;ls kiszolgáló "%. &#x2a;ls" adatbázisa jelenleg nem érhető el. Később próbálja megismételni a kapcsolatokat. Ha a probléma továbbra is fennáll, forduljon az ügyfél-támogatási szolgálathoz, és adja meg nekik a (z)%. &#x2a;ls munkamenet-nyomkövetési AZONOSÍTÓját.<br/><br/> Ez a hiba akkor fordulhat elő, ha már létezik egy meglévő dedikált rendszergazdai kapcsolódás (DAC) az adatbázishoz. További információ: [átmeneti hibák](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults).|
-| 49918 |16 |A kérelem nem dolgozható fel. Nincs elég erőforrás a kérelem feldolgozásához.<br/><br/>A szolgáltatás jelenleg foglalt. Próbálkozzon újra a kéréssel. További információkért lásd: <br/>&bull;&nbsp; [Logikai SQL Server erőforrás-korlátok](resource-limits-logical-server.md)<br/>&bull;&nbsp; [DTU-alapú korlátok önálló adatbázisokhoz](service-tiers-dtu.md)<br/>&bull;&nbsp; [Rugalmas készletek DTU-alapú korlátai](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [virtuális mag-alapú korlátok önálló adatbázisokhoz](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [rugalmas készletek virtuális mag-alapú korlátai](resource-limits-vcore-elastic-pools.md)<br/>&bull;Az &nbsp; [Azure SQL felügyelt példányának erőforrás-korlátai](../managed-instance/resource-limits.md). |
-| 49919 |16 |A létrehozási vagy frissítési kérelem nem dolgozható fel. Túl sok létrehozási vagy frissítési művelet van folyamatban a (z) "% ld" előfizetéshez.<br/><br/>A szolgáltatás foglalt, több létrehozására vagy frissítésre vonatkozó kérelmet dolgoz fel az előfizetéshez vagy a kiszolgálóhoz. A kérések jelenleg le vannak tiltva az erőforrás-optimalizáláshoz. Lekérdezés [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) a függőben lévő műveletekhez. Várjon, amíg a függőben lévő létrehozási vagy frissítési kérelmek befejeződik, vagy törölje a függőben lévő kérelmek valamelyikét, majd ismételje meg a kérést. További információkért lásd: <br/>&bull;&nbsp; [Logikai SQL Server erőforrás-korlátok](resource-limits-logical-server.md)<br/>&bull;&nbsp; [DTU-alapú korlátok önálló adatbázisokhoz](service-tiers-dtu.md)<br/>&bull;&nbsp; [Rugalmas készletek DTU-alapú korlátai](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [virtuális mag-alapú korlátok önálló adatbázisokhoz](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [rugalmas készletek virtuális mag-alapú korlátai](resource-limits-vcore-elastic-pools.md)<br/>&bull;Az &nbsp; [Azure SQL felügyelt példányának erőforrás-korlátai](../managed-instance/resource-limits.md). |
-| 49920 |16 |A kérelem nem dolgozható fel. Túl sok művelet van folyamatban a (z) "% ld" előfizetéshez.<br/><br/>A szolgáltatás foglalt több kérést dolgoz fel ehhez az előfizetéshez. A kérések jelenleg le vannak tiltva az erőforrás-optimalizáláshoz. A műveleti állapot lekérdezési [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) . Várjon, amíg a függőben lévő kérelmek befejeződik, vagy törölje a függőben lévő kérelmek valamelyikét, majd ismételje meg a kérést. További információkért lásd: <br/>&bull;&nbsp; [Logikai SQL Server erőforrás-korlátok](resource-limits-logical-server.md)<br/>&bull;&nbsp; [DTU-alapú korlátok önálló adatbázisokhoz](service-tiers-dtu.md)<br/>&bull;&nbsp; [Rugalmas készletek DTU-alapú korlátai](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [virtuális mag-alapú korlátok önálló adatbázisokhoz](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [rugalmas készletek virtuális mag-alapú korlátai](resource-limits-vcore-elastic-pools.md)<br/>&bull;Az &nbsp; [Azure SQL felügyelt példányának erőforrás-korlátai](../managed-instance/resource-limits.md). |
+| 49918 |16 |A kérelem nem dolgozható fel. Nincs elég erőforrás a kérelem feldolgozásához.<br/><br/>A szolgáltatás jelenleg foglalt. Próbálkozzon újra a kéréssel. További információ: <br/>&bull;&nbsp; [Logikai SQL Server erőforrás-korlátok](resource-limits-logical-server.md)<br/>&bull;&nbsp; [DTU-alapú korlátok önálló adatbázisokhoz](service-tiers-dtu.md)<br/>&bull;&nbsp; [Rugalmas készletek DTU-alapú korlátai](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [virtuális mag-alapú korlátok önálló adatbázisokhoz](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [rugalmas készletek virtuális mag-alapú korlátai](resource-limits-vcore-elastic-pools.md)<br/>&bull;Az &nbsp; [Azure SQL felügyelt példányának erőforrás-korlátai](../managed-instance/resource-limits.md). |
+| 49919 |16 |A létrehozási vagy frissítési kérelem nem dolgozható fel. Túl sok létrehozási vagy frissítési művelet van folyamatban a (z) "% ld" előfizetéshez.<br/><br/>A szolgáltatás foglalt, több létrehozására vagy frissítésre vonatkozó kérelmet dolgoz fel az előfizetéshez vagy a kiszolgálóhoz. A kérések jelenleg le vannak tiltva az erőforrás-optimalizáláshoz. Lekérdezés [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) a függőben lévő műveletekhez. Várjon, amíg a függőben lévő létrehozási vagy frissítési kérelmek befejeződik, vagy törölje a függőben lévő kérelmek valamelyikét, majd ismételje meg a kérést. További információ: <br/>&bull;&nbsp; [Logikai SQL Server erőforrás-korlátok](resource-limits-logical-server.md)<br/>&bull;&nbsp; [DTU-alapú korlátok önálló adatbázisokhoz](service-tiers-dtu.md)<br/>&bull;&nbsp; [Rugalmas készletek DTU-alapú korlátai](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [virtuális mag-alapú korlátok önálló adatbázisokhoz](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [rugalmas készletek virtuális mag-alapú korlátai](resource-limits-vcore-elastic-pools.md)<br/>&bull;Az &nbsp; [Azure SQL felügyelt példányának erőforrás-korlátai](../managed-instance/resource-limits.md). |
+| 49920 |16 |A kérelem nem dolgozható fel. Túl sok művelet van folyamatban a (z) "% ld" előfizetéshez.<br/><br/>A szolgáltatás foglalt több kérést dolgoz fel ehhez az előfizetéshez. A kérések jelenleg le vannak tiltva az erőforrás-optimalizáláshoz. A műveleti állapot lekérdezési [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) . Várjon, amíg a függőben lévő kérelmek befejeződik, vagy törölje a függőben lévő kérelmek valamelyikét, majd ismételje meg a kérést. További információ: <br/>&bull;&nbsp; [Logikai SQL Server erőforrás-korlátok](resource-limits-logical-server.md)<br/>&bull;&nbsp; [DTU-alapú korlátok önálló adatbázisokhoz](service-tiers-dtu.md)<br/>&bull;&nbsp; [Rugalmas készletek DTU-alapú korlátai](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [virtuális mag-alapú korlátok önálló adatbázisokhoz](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [rugalmas készletek virtuális mag-alapú korlátai](resource-limits-vcore-elastic-pools.md)<br/>&bull;Az &nbsp; [Azure SQL felügyelt példányának erőforrás-korlátai](../managed-instance/resource-limits.md). |
 | 4221 |16 |A "HADR_DATABASE_WAIT_FOR_TRANSITION_TO_VERSIONING" hosszú várakozás miatt nem sikerült bejelentkezni a Read-másodlagosra. A replika nem érhető el a bejelentkezéshez, mert a rendszer a replikák újrahasznosítása során a folyamatban lévő tranzakciók esetében hiányzik a sorok verziószáma. A probléma megoldásához visszaállíthatja vagy véglegesítheti az aktív tranzakciókat az elsődleges replikán. Ennek az állapotnak az előfordulásait a hosszú írási tranzakciók elkerülésével lehet csökkenteni. |
 
 ### <a name="steps-to-resolve-transient-connectivity-issues"></a>Az átmeneti kapcsolódási problémák megoldásának lépései
@@ -124,7 +124,7 @@ A szolgáltatás rendszergazdája általában a következő lépésekkel adhatja
 
    ```sql
    CREATE LOGIN <SQL_login_name, sysname, login_name>
-   WITH PASSWORD = ‘<password, sysname, Change_Password>’
+   WITH PASSWORD = '<password, sysname, Change_Password>'
    GO
    ```
 
@@ -141,7 +141,7 @@ A szolgáltatás rendszergazdája általában a következő lépésekkel adhatja
    GO
    -- Add user to the database owner role
 
-   EXEC sp_addrolemember N’db_owner’, N’<user_name, sysname, user_name>’
+   EXEC sp_addrolemember N'db_owner', N'<user_name, sysname, user_name>'
    GO
    ```
 
@@ -183,22 +183,20 @@ A probléma megkerüléséhez próbálkozzon az alábbi módszerek egyikével:
 - Ellenőrizze, hogy vannak-e hosszan futó lekérdezések.
 
   > [!NOTE]
-  > Ez egy minimalista megközelítés, amely esetleg nem oldja meg a problémát.
+  > Ez egy minimalista megközelítés, amely esetleg nem oldja meg a problémát. A lekérdezések blokkolásával kapcsolatos részletes információkért lásd: az [Azure SQL-blokkoló problémáinak megismerése és megoldása](understand-resolve-blocking.md).
 
 1. A következő SQL-lekérdezés futtatásával tekintse meg a [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) nézetet a blokkoló kérelmek megtekintéséhez:
 
    ```sql
-   SELECT * FROM dm_exec_requests
+   SELECT * FROM sys.dm_exec_requests;
    ```
 
 2. A fej-blokkoló **bemeneti pufferének** meghatározása.
 3. A fej-blokkoló lekérdezésének hangolása.
 
-   Részletes hibaelhárítási eljárás: a [lekérdezés a felhőben fut?](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
+   Részletes hibaelhárítási eljárás: a [lekérdezés a felhőben fut?](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud). 
 
 Ha az adatbázis folyamatosan eléri a korlátot a blokkoló és a hosszan futó lekérdezések kezelése előtt, érdemes lehet egy kiadásra frissíteni a [további erőforrás-kiadásokkal](https://azure.microsoft.com/pricing/details/sql-database/)).
-
-További információ a dinamikus felügyeleti nézetekről: [rendszerdinamikus felügyeleti nézetek](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views).
 
 Az adatbázis-korlátokkal kapcsolatos további információkért lásd:  [a kiszolgálók erőforrás-korlátainak SQL Database](./resource-limits-logical-server.md).
 
@@ -234,7 +232,7 @@ A következő lépések segíthetnek a probléma megkerülésében vagy további
    FROM sys.objects o
    JOIN sys.dm_db_partition_stats p on p.object_id = o.object_id
    GROUP BY o.name
-   ORDER BY [Table Size (MB)] DESC
+   ORDER BY [Table Size (MB)] DESC;
    ```
 
 2. Ha az aktuális méret nem haladja meg a kiadásban támogatott maximális méretet, az ALTER DATABASE paranccsal növelheti a MAXSIZE beállítást.
@@ -253,7 +251,7 @@ Ha többször is megtapasztalja ezt a hibát, próbálja meg elhárítani a prob
 1. Tekintse meg a sys.dm_exec_requests nézetet, hogy megjelenjenek-e a total_elapsed_time oszlop magas értékkel rendelkező nyitott munkamenetei. A következő SQL-szkript futtatásával végezze el az ellenőrzés végrehajtását:
 
    ```sql
-   SELECT * FROM dm_exec_requests
+   SELECT * FROM sys.dm_exec_requests;
    ```
 
 2. A hosszú ideig futó lekérdezés bemeneti pufferének meghatározása.
@@ -299,7 +297,7 @@ Részletes hibaelhárítási eljárás: a [lekérdezés a felhőben fut?](/archi
 | Hibakód | Súlyosság | Leírás |
 | ---:| ---:|:--- |
 | 10928 |20 |Erőforrás-azonosító:% d. Az adatbázis% s korlátja% d, és elérte a következőt:. További információ: [az önálló és a készletezett adatbázisok SQL Database erőforrás-korlátai](resource-limits-logical-server.md).<br/><br/>Az erőforrás-azonosító azt az erőforrást jelzi, amely elérte a korlátot. Munkaszálak esetében az erőforrás-azonosító = 1. A munkamenetek esetében az erőforrás-azonosító = 2.<br/><br/>A hibával és megoldásával kapcsolatos további információkért lásd: <br/>&bull;&nbsp; [Logikai SQL Server erőforrás-korlátok](resource-limits-logical-server.md)<br/>&bull;&nbsp; [DTU-alapú korlátok önálló adatbázisokhoz](service-tiers-dtu.md)<br/>&bull;&nbsp; [Rugalmas készletek DTU-alapú korlátai](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [virtuális mag-alapú korlátok önálló adatbázisokhoz](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [rugalmas készletek virtuális mag-alapú korlátai](resource-limits-vcore-elastic-pools.md)<br/>&bull;Az &nbsp; [Azure SQL felügyelt példányának erőforrás-korlátai](../managed-instance/resource-limits.md). |
-| 10929 |20 |Erőforrás-azonosító:% d. A (z)% s minimális garancia% d, a maximális korlát% d, az adatbázis jelenlegi használata pedig% d. Azonban a kiszolgáló jelenleg túl elfoglalt ahhoz, hogy támogassa a (z)% d-nál nagyobb kérelmeket ehhez az adatbázishoz. Az erőforrás-azonosító azt az erőforrást jelzi, amely elérte a korlátot. Munkaszálak esetében az erőforrás-azonosító = 1. A munkamenetek esetében az erőforrás-azonosító = 2. További információkért lásd: <br/>&bull;&nbsp; [Logikai SQL Server erőforrás-korlátok](resource-limits-logical-server.md)<br/>&bull;&nbsp; [DTU-alapú korlátok önálló adatbázisokhoz](service-tiers-dtu.md)<br/>&bull;&nbsp; [Rugalmas készletek DTU-alapú korlátai](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [virtuális mag-alapú korlátok önálló adatbázisokhoz](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [rugalmas készletek virtuális mag-alapú korlátai](resource-limits-vcore-elastic-pools.md)<br/>&bull;Az &nbsp; [Azure SQL felügyelt példányának erőforrás-korlátai](../managed-instance/resource-limits.md). <br/>Ellenkező esetben próbálkozzon újra később. |
+| 10929 |20 |Erőforrás-azonosító:% d. A (z)% s minimális garancia% d, a maximális korlát% d, az adatbázis jelenlegi használata pedig% d. Azonban a kiszolgáló jelenleg túl elfoglalt ahhoz, hogy támogassa a (z)% d-nál nagyobb kérelmeket ehhez az adatbázishoz. Az erőforrás-azonosító azt az erőforrást jelzi, amely elérte a korlátot. Munkaszálak esetében az erőforrás-azonosító = 1. A munkamenetek esetében az erőforrás-azonosító = 2. További információ: <br/>&bull;&nbsp; [Logikai SQL Server erőforrás-korlátok](resource-limits-logical-server.md)<br/>&bull;&nbsp; [DTU-alapú korlátok önálló adatbázisokhoz](service-tiers-dtu.md)<br/>&bull;&nbsp; [Rugalmas készletek DTU-alapú korlátai](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [virtuális mag-alapú korlátok önálló adatbázisokhoz](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [rugalmas készletek virtuális mag-alapú korlátai](resource-limits-vcore-elastic-pools.md)<br/>&bull;Az &nbsp; [Azure SQL felügyelt példányának erőforrás-korlátai](../managed-instance/resource-limits.md). <br/>Ellenkező esetben próbálkozzon újra később. |
 | 40544 |20 |Az adatbázis elérte a méretre vonatkozó kvótát. Particionálja vagy törölje az adatvesztést, az indexek eldobását, vagy a lehetséges megoldásokról a dokumentációban tájékozódhat. Az adatbázis-méretezéssel kapcsolatban lásd: [önálló adatbázis-erőforrások méretezése](single-database-scale.md) és [rugalmas készlet erőforrásainak méretezése](elastic-pool-scale.md).|
 | 40549 |16 |A munkamenet meg lett szakítva, mert hosszú ideig futó tranzakció van. Próbálja meg lerövidíteni a tranzakciót. A kötegelt feldolgozással kapcsolatos további információkért lásd: [a Batch használata az SQL Database alkalmazások teljesítményének javításához](../performance-improve-use-batching.md).|
 | 40550 |16 |A munkamenet meg lett szakítva, mert túl sok zárolást szerzett. Próbáljon meg egy tranzakción belül kevesebb sort olvasni vagy módosítani. A kötegelt feldolgozással kapcsolatos további információkért lásd: [a Batch használata az SQL Database alkalmazások teljesítményének javításához](../performance-improve-use-batching.md).|
@@ -315,7 +313,7 @@ A rugalmas készletek létrehozásával és használatával kapcsolatos hibák a
 |:--- |:--- |:--- |:--- |
 | 1132 | 17 |A rugalmas készlet elérte a tárolási korlátot. A rugalmas készlet tárolási kihasználtsága nem haladhatja meg a (z) (% d) MB-ot. Egy adatbázisba való adatírásra tett kísérlet, ha elérte a rugalmas készlet tárolási korlátját. Az erőforrás-korlátokkal kapcsolatos további információkért lásd: <br/>&bull;&nbsp; [Rugalmas készletek DTU-alapú korlátai](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [rugalmas készletek virtuális mag-alapú korlátai](resource-limits-vcore-elastic-pools.md). <br/> |Ha lehetséges, növelje a rugalmas készlethez való DTU és/vagy a tárterület hozzáadását, csökkentse a rugalmas készletben lévő egyes adatbázisok által használt tárterületet, vagy távolítsa el az adatbázisokat a rugalmas készletből. A rugalmas készlet skálázásával kapcsolatban lásd: [rugalmas készlet erőforrásainak](elastic-pool-scale.md)méretezése.|
 | 10929 | 16 |A (z)% s minimális garancia% d, a maximális korlát% d, az adatbázis jelenlegi használata pedig% d. Azonban a kiszolgáló jelenleg túl elfoglalt ahhoz, hogy támogassa a (z)% d-nál nagyobb kérelmeket ehhez az adatbázishoz. Az erőforrás-korlátokkal kapcsolatos további információkért lásd: <br/>&bull;&nbsp; [Rugalmas készletek DTU-alapú korlátai](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [rugalmas készletek virtuális mag-alapú korlátai](resource-limits-vcore-elastic-pools.md). <br/> Ellenkező esetben próbálkozzon újra később. DTU/virtuális mag/perc/adatbázis; DTU/virtuális mag-adatbázis maximális száma. Az egyidejű feldolgozók (kérelmek) teljes száma a rugalmas készletben lévő összes adatbázisban, a készlet korlátjának túllépése miatt. |Ha lehetséges, érdemes lehet növelni a rugalmas készlet DTU vagy virtuális mag, hogy növelje a munkavégző korlátot, vagy távolítsa el az adatbázisokat a rugalmas készletből. |
-| 40844 | 16 |A (z) "% ls" kiszolgáló "% ls" adatbázisa egy rugalmas készletben lévő "% ls" kiadási adatbázis, és nem lehet folytonos másolási kapcsolat.  |N/A |
+| 40844 | 16 |A (z) "% ls" kiszolgáló "% ls" adatbázisa egy rugalmas készletben lévő "% ls" kiadási adatbázis, és nem lehet folytonos másolási kapcsolat.  |N.A. |
 | 40857 | 16 |Nem található rugalmas készlet a következő kiszolgálóhoz: "% ls", rugalmas készlet neve: "% ls". A megadott rugalmas készlet nem létezik a megadott kiszolgálón. | Adja meg a rugalmas készlet érvényes nevét. |
 | 40858 | 16 |A (z) "% ls" rugalmas készlet már létezik a következő kiszolgálón: "% ls". A megadott rugalmas készlet már létezik a megadott kiszolgálón. | Adja meg az új rugalmas készlet nevét. |
 | 40859 | 16 |A rugalmas készlet nem támogatja a (z)% ls szolgáltatási szintet. A megadott szolgáltatási szintet nem támogatja a rugalmas készlet kiépítés. |Adja meg a megfelelő kiadást, vagy hagyja üresen a szolgáltatási szintet, hogy az alapértelmezett szolgáltatási szintet használja. |
@@ -340,7 +338,7 @@ Ez a probléma azért fordul elő, mert a fióknak nincs engedélye a Master ada
 
 A probléma megoldásához kövesse az alábbi lépéseket:
 
-1. A SSMS bejelentkezési képernyőjén válassza a **Beállítások** , majd a **kapcsolatok tulajdonságai** elemet.
+1. A SSMS bejelentkezési képernyőjén válassza a **Beállítások**, majd a **kapcsolatok tulajdonságai** elemet.
 2. A **Kapcsolódás az adatbázishoz** mezőben adja meg a felhasználó alapértelmezett adatbázisának nevét az alapértelmezett bejelentkezési adatbázisként, majd válassza a **Kapcsolódás** lehetőséget.
 
    ![Kapcsolat tulajdonságai](./media/troubleshoot-common-errors-issues/cannot-open-database-master.png)
@@ -390,5 +388,5 @@ A naplózás engedélyezésével kapcsolatos további információkért lásd: a
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Azure SQL Database kapcsolati architektúra](./connectivity-architecture.md)
+- [Az Azure SQL Database kapcsolati architektúrája](./connectivity-architecture.md)
 - [A Azure SQL Database és az Azure szinapszis Analytics hálózati hozzáférés-vezérlés](./network-access-controls-overview.md)

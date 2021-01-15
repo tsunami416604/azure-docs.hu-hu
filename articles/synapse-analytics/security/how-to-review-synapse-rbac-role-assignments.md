@@ -8,16 +8,16 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9ebbe54dd41cd7d7b83ef12f465326db3ef2b9ab
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: ee3b2c69d7782dca10b16a3b1726b75bfd99326e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572184"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218125"
 ---
 # <a name="how-to-review-synapse-rbac-role-assignments"></a>A szinapszis RBAC szerepkör-hozzárendeléseinek áttekintése
 
-A szinapszis RBAC szerepkörei lehetővé teszik a felhasználók, csoportok és más rendszerbiztonsági tag engedélyeinek hozzárendelését a szinapszis-erőforrások hozzáférésének és használatának engedélyezéséhez.  [További információ](https://go.microsoft.com/fwlink/?linkid=2148306)
+A szinapszis RBAC szerepkörei lehetővé teszik a felhasználók, csoportok és más rendszerbiztonsági tag engedélyeinek hozzárendelését a szinapszis-erőforrások hozzáférésének és használatának engedélyezéséhez.  [További információ](./synapse-workspace-synapse-rbac.md)
 
 Ez a cikk a munkaterület aktuális szerepkör-hozzárendeléseinek áttekintését ismerteti.
 
@@ -56,7 +56,7 @@ A listát egyszerű név vagy e-mail-cím alapján szűrheti, és szelektív mó
 
 Ha új munkaterületet hoz létre, Ön és a munkaterület MSI egyszerű szolgáltatása automatikusan megkapja a szinapszis rendszergazdai szerepkört a munkaterület hatókörében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg [, hogyan kezelheti a SZINAPSZIS RBAC szerepkör-hozzárendeléseit](./how-to-manage-synapse-rbac-role-assignments.md).
 

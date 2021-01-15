@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan használhatja a HRE Pod által felügyelt ident
 services: container-service
 ms.topic: article
 ms.date: 12/01/2020
-ms.openlocfilehash: 150e2e71a4db8ab07caad479ae098d5b9eb746da
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d992c5c5384c04fe39511481550ab7b0ea47069e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466825"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217872"
 ---
 # <a name="use-azure-active-directory-pod-managed-identities-in-azure-kubernetes-service-preview"></a>Azure Active Directory Pod által felügyelt identitások használata az Azure Kubernetes Service-ben (előzetes verzió)
 
@@ -56,7 +56,7 @@ Hozzon létre egy AK-fürtöt a felügyelt identitás és a pod által felügyel
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
-az aks create -g myResourceGroup -n myAKSCluster --enable-managed-identity --enable-pod-identity
+az aks create -g myResourceGroup -n myAKSCluster --enable-managed-identity --enable-pod-identity --network-plugin azure
 ```
 
 Az [az AK Get-hitelesítő adatok][az-aks-get-credentials] használatával jelentkezzen be az AK-fürtbe. Ez a parancs az ügyféltanúsítványt is letölti és konfigurálja a `kubectl` fejlesztői számítógépen.
@@ -158,7 +158,7 @@ successfully made GET on instance metadata
 ...
 ```
 
-## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
 A HRE Pod által felügyelt identitás fürtből való eltávolításához távolítsa el a minta alkalmazást és a pod-identitást a fürtből. Ezután távolítsa el az identitást.
 
@@ -168,7 +168,7 @@ az aks pod-identity delete --name ${POD_IDENTITY_NAME} --namespace ${POD_IDENTIT
 az identity delete -g ${IDENTITY_RESOURCE_GROUP} -n ${IDENTITY_NAME}
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felügyelt identitásokkal kapcsolatos további információkért lásd: [felügyelt identitások az Azure-erőforrásokhoz][az-managed-identities].
 

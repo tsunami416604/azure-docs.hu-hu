@@ -9,12 +9,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.openlocfilehash: 307786c0df744751122487b8c931d0e9572d5f22
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.custom: responsible-ml
+ms.openlocfilehash: 22ba505a2e13b2f88f212f2fe1b85d07f79f77e5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97723490"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218960"
 ---
 # <a name="preserve-data-privacy-by-using-differential-privacy-and-the-smartnoise-package-preview"></a>Az adatvédelem megőrzése a differenciált adatvédelem és a SmartNoise-csomag (előzetes verzió) használatával
 
@@ -77,7 +78,7 @@ A rendszerkönyvtár a következő eszközöket és szolgáltatásokat biztosít
 |Szolgáltatás     | A végrehajtási szolgáltatás, amely REST-végpontot biztosít a kérelmek és a megosztott adatforrások közötti lekérdezések kiszolgálásához. A szolgáltatás úgy lett kialakítva, hogy lehetővé tegye a differenciált adatvédelmi modulok összeállítását, amelyek különböző Delta és epszilon értékeket, más néven heterogén kérelmeket tartalmaznak. Ez a hivatkozási implementáció a korrelált adatok lekérdezéseit érintő további hatásokra utal. |
 |Értékelő     | A sztochasztikus értékelő, amely az adatvédelem megsértését, a pontosságot és a torzítást ellenőrzi. Az értékelő a következő teszteket támogatja: <ul><li>Adatvédelmi teszt – meghatározza, hogy a jelentés megfelel-e a különbözeti adatvédelem feltételeinek.</li><li>Pontossági teszt – meghatározza, hogy a jelentések megbízhatósága a 95%-os megbízhatósági szint miatt a felső és az alsó határokon belülre esik-e.</li><li>Segédprogram tesztelése – meghatározza, hogy a jelentések megbízhatósági határai elég lezárultak-e az adatokhoz, miközben továbbra is maximalizálják az adatvédelmet.</li><li>Torzítási teszt – a jelentések ismétlődő lekérdezésekre való terjesztését méri, így biztosítva, hogy ne legyenek kiegyensúlyozva</li></ul> |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adatvédelem [megőrzése](how-to-differential-privacy.md) Azure Machine Learningban.
 

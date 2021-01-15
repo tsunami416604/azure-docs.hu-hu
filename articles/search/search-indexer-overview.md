@@ -9,18 +9,18 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 0405db2b68abefbfdc424def9e35e363e45043cd
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 5861e79054bed0d9d75258dfa9cb39b198f0f93d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180132"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216444"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Indexelők az Azure Cognitive Searchben
 
 Az Azure Cognitive Search *Indexelő* egy olyan webbejáró, amely egy külső Azure-adatforrásból Kinyeri a kereshető adatokat és metaadatokat, és a keresési indexet a forrásadatok és az index közötti mező-mező leképezések használatával tölti fel. Ezt a módszert más néven "lekéréses modellnek" is nevezzük, mert a szolgáltatás olyan kódot kér le, amely nem rendelkezik olyan kóddal, amely az adott indexbe felveszi az adattípust.
 
-Az indexelő csak az Azure-ban, az Azure SQL, az Azure Cosmos db, az Azure Table Storage és a blob Storage egyéni indexelő szolgáltatásával. Az indexelő konfigurálásakor meg kell adnia egy adatforrást (forrás), valamint egy indexet (célhelyet). Számos adatforrás, például a blob Storage-indexelő további tulajdonságokkal rendelkezik az adott tartalomtípushoz.
+Az indexelő csak az Azure-ban, az [Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), az [Azure Cosmos db](search-howto-index-cosmosdb.md), az [Azure Table Storage](search-howto-indexing-azure-tables.md) és a [blob Storage](search-howto-indexing-azure-blob-storage.md)egyéni indexelő szolgáltatásával. Az indexelő konfigurálásakor meg kell adnia egy adatforrást (forrás), valamint egy indexet (cél). Számos forrás – például a blob Storage – rendelkezik az adott tartalomtípushoz tartozó további konfigurációs tulajdonságokkal.
 
 Az Indexelő szolgáltatást igény szerint vagy ismétlődő adatfrissítési ütemezés szerint futtathatja, amely akár öt percenként is futtatható. A gyakoribb frissítések esetében olyan leküldéses modellre van szükség, amely egyszerre frissíti az Azure Cognitive Search és a külső adatforrás adatait is.
 
@@ -28,11 +28,11 @@ Az Indexelő szolgáltatást igény szerint vagy ismétlődő adatfrissítési �
 
 Az indexelő egyetlen eszközként használhatja az adatfeldolgozáshoz, vagy használhat olyan technikák kombinációját, amelyek csak néhány mezőt töltenek be az indexből, igény szerint átalakíthatja vagy gazdagíthatja a tartalmat az út mentén. A következő táblázat összefoglalja a főbb forgatókönyveket.
 
-| Használati példa |Stratégia |
+| Használati eset |Stratégia |
 |----------|---------|
 | Önálló forrás | Ez a minta a legegyszerűbb: az egyik adatforrás a keresési index egyetlen szolgáltatója. A forrásból egy olyan mezőt fog azonosítani, amely egyedi értékeket tartalmaz, amelyek a keresési indexben a dokumentum kulcsaként szolgálnak. A rendszer az egyedi értéket fogja használni azonosítóként. Minden más forrás mező implicit módon vagy explicit módon van leképezve az index megfelelő mezőihez. </br></br>Fontos elvihetőség, hogy a dokumentum kulcsa a forrásadatokből származik. A keresési szolgáltatás nem hoz alapértékeket. A későbbi futtatások során új kulcsokkal rendelkező bejövő dokumentumok lesznek hozzáadva, míg a meglévő kulcsokkal rendelkező bejövő dokumentumok egyesítése vagy felülírása attól függően, hogy az index mezői null értékűek vagy fel vannak-e töltve. |
-| Több forrás| Az indexek több forrásból is fogadhatnak tartalmakat, ahol minden egyes Futtatás új tartalmat hoz egy másik forrásból. </br></br>Az egyik eredmény lehet egy olyan index, amely minden indexelő futtatása után a dokumentumokat fogja megnyerni, és az összes forrásból származó teljes dokumentum teljes egészében létrejött. Ennek a forgatókönyvnek a feladata az összes bejövő adathoz használható index séma kialakítása, valamint a keresési indexben egységes dokumentum kulcsa. Ha például egy dokumentum egyedi azonosítására szolgáló értékek egy blob-tárolóban és egy SQL-tábla elsődleges kulcsában metadata_storage_path, akkor elképzelhető, hogy az egyik vagy mindkét forrást módosítani kell, hogy a kulcsfontosságú értékeket közös formátumban adja meg, függetlenül a tartalom eredetétől. Ebben az esetben várhatóan bizonyos szintű előfeldolgozást kell végeznie az adatok homogenizálása érdekében, hogy azt egyetlen indexbe lehessen húzni.</br></br>Lehetséges, hogy az első futtatáskor részlegesen kitöltött dokumentumok kereshetők, majd a későbbi futtatások további kitöltésével más forrásokból származó értékeket hoznak. Ennek a mintának az a kihívása, hogy minden indexelési Futtatás ugyanazt a dokumentumot célozza meg. A mezők meglévő dokumentumba való egyesítéséhez meg kell egyeznie a dokumentum kulcsával. A forgatókönyv bemutatását lásd [: oktatóanyag: index több adatforrásból](tutorial-multiple-data-sources.md). |
-| Tartalom átalakítása | A Cognitive Search támogatja a választható [AI-gazdagító](cognitive-search-concept-intro.md) viselkedéseket, amelyek képelemzést és természetes nyelvi feldolgozást hoznak létre új kereshető tartalom és struktúra létrehozásához. Az AI-gazdagítás egy [készségkészlet](cognitive-search-working-with-skillsets.md)van definiálva, amely egy indexelő van csatolva. Ha AI-bővítést szeretne végezni, az indexelő továbbra is indexre és adatforrásra van szüksége, de ebben az esetben a készségkészlet-feldolgozást hozzáadja az indexelő végrehajtásához. |
+| Több forrás| Az indexek több forrásból is fogadhatnak tartalmakat, ahol minden egyes Futtatás új tartalmat hoz egy másik forrásból. </br></br>Az egyik eredmény lehet egy olyan index, amely minden indexelő futtatása után a dokumentumokat fogja megnyerni, és az összes forrásból származó teljes dokumentum teljes egészében létrejött. Az 1-100-as dokumentumok például a blob Storage-ból származnak, a 101-200-es dokumentumok pedig az Azure SQL-ből, és így tovább. Ennek a forgatókönyvnek a feladata az összes bejövő adathoz használható index séma megtervezése, valamint a keresési indexben egységes dokumentum-kulcs szerkezete. Natív módon a dokumentumok egyedi azonosítására szolgáló értékek egy blob-tárolóban és egy SQL-tábla elsődleges kulcsa metadata_storage_path. Képzelje el, hogy az egyik vagy mindkét forrást módosítani kell, hogy a kulcsfontosságú értékeket közös formátumban adja meg, függetlenül a tartalom eredetétől. Ebben az esetben várhatóan bizonyos szintű előfeldolgozást kell végeznie az adatok homogenizálása érdekében, hogy azt egyetlen indexbe lehessen húzni.</br></br>Lehetséges, hogy az első futtatáskor részlegesen kitöltött dokumentumok kereshetők, majd a későbbi futtatások további kitöltésével más forrásokból származó értékeket hoznak. Például a 1-10 mezők blob Storage-ból, 11-20 az Azure SQL-ből és így tovább. Ennek a mintának az a kihívása, hogy minden indexelési Futtatás ugyanazt a dokumentumot célozza meg. A mezők meglévő dokumentumba való egyesítéséhez meg kell egyeznie a dokumentum kulcsával. A forgatókönyv bemutatását lásd [: oktatóanyag: index több adatforrásból](tutorial-multiple-data-sources.md). |
+| Tartalom átalakítása | A Cognitive Search támogatja a választható [AI-gazdagító](cognitive-search-concept-intro.md) viselkedéseket, amelyek képelemzést és természetes nyelvi feldolgozást hoznak létre új kereshető tartalom és struktúra létrehozásához. Az AI-bővítés Indexer-alapú, csatolt [készségkészlet](cognitive-search-working-with-skillsets.md)keresztül történik. Ha AI-bővítést szeretne végezni, az indexelő továbbra is indexre és adatforrásra van szüksége, de ebben az esetben a készségkészlet-feldolgozást hozzáadja az indexelő végrehajtásához. |
 
 ## <a name="approaches-for-creating-and-managing-indexers"></a>Indexelők létrehozásának és kezelésének módszerei
 
@@ -58,11 +58,11 @@ Az indexelő adattárakat térképez fel az Azure-ban.
 
 + [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 + [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) (előzetes verzió)
-+ [Azure Table Storage](search-howto-indexing-azure-tables.md)
++ [Azure-Table Storage](search-howto-indexing-azure-tables.md)
 + [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 + [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 + [SQL Managed Instance](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
-+ [Azure-beli virtuális gépen futó SQL Server](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
++ [SQL Server az Azure Virtual Machines szolgáltatásban](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 
 ## <a name="stages-of-indexing"></a>Az indexelés szakaszai
 
@@ -92,9 +92,9 @@ A készségkészlet-végrehajtás egy opcionális lépés, amely a beépített v
 
 ### <a name="stage-4-output-field-mappings"></a>4. fázis: kimeneti mezők leképezése
 
-A készségkészlet kimenete valójában a dúsított dokumentumnak nevezett információk fája. A kimeneti mezők leképezése lehetővé teszi, hogy kiválassza a fa azon részeit, amelyek az index mezőibe képezhetők le. Útmutató a [kimeneti mezők leképezésének definiálásához](cognitive-search-output-field-mapping.md).
+Ha készségkészlet tartalmaz, valószínűleg a kimeneti mezők leképezéseit is meg kell adnia. A készségkészlet kimenete valójában a dúsított dokumentumnak nevezett információk fája. A kimeneti mezők leképezése lehetővé teszi, hogy kiválassza a fa azon részeit, amelyek az index mezőibe képezhetők le. Útmutató a [kimeneti mezők leképezésének definiálásához](cognitive-search-output-field-mapping.md).
 
-Ugyanúgy, mint az olyan mező-hozzárendelések, amelyek a forrás és a cél mezőhöz tartozó Verbatim-értékeket rendelik, a kimeneti mezők leképezései azt mondják, hogy az indexelő Hogyan rendeli hozzá az átalakított értékeket a dúsított dokumentumhoz az indexben lévő cél mezőkhöz A mező-hozzárendelések eltérően, amelyek nem kötelezőnek számítanak, minden esetben meg kell adnia egy kimeneti mező leképezését minden olyan átalakított tartalomhoz, amelynek egy indexben kell lennie.
+Míg a mező-hozzárendelések az adatforrásból a cél mezőkhöz társított Verbatim-értékeket, a kimeneti mezők leképezései azt mondják el, hogy az indexelő Hogyan rendeli hozzá az átalakított értékeket a dúsított dokumentumhoz az indexben lévő cél mezőkhöz. A mező-hozzárendelések eltérően, amelyek nem kötelezőnek számítanak, minden esetben meg kell adnia egy kimeneti mező leképezését minden olyan átalakított tartalomhoz, amelynek egy indexben kell lennie.
 
 A következő képen egy példa indexelő [hibakeresési munkamenetének](cognitive-search-debug-session.md) ábrázolása látható az indexelő szakaszaiban: dokumentum repedések, mező-hozzárendelések, készségkészlet-végrehajtás és kimeneti mezők leképezése.
 
@@ -187,6 +187,6 @@ Az alapok megismerése után következő lépés a követelmények és az egyes 
 + [Azure SQL Database, SQL felügyelt példány vagy SQL Server Azure-beli virtuális gépen](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 + [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 + [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
-+ [Azure Table Storage](search-howto-indexing-azure-tables.md)
++ [Azure-Table Storage](search-howto-indexing-azure-tables.md)
 + [CSV-Blobok indexelése az Azure Cognitive Search blob indexelő használatával](search-howto-index-csv-blobs.md)
 + [JSON-Blobok indexelése az Azure Cognitive Search blob indexelő](search-howto-index-json-blobs.md)

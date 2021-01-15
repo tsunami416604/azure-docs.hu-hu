@@ -5,12 +5,12 @@ ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: 2526fd60d6e07ecf43864945f2b05858b41ca567
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 70aecc2613fbe21d34e36f9487d7ba383e140bc8
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98035206"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217362"
 ---
 # <a name="manage-your-function-app"></a>A Function alkalmazás kezelése 
 
@@ -19,11 +19,6 @@ Azure Functions a functions-alkalmazás biztosítja az egyes függvények végre
 A functions alkalmazásban az egyes függvények együtt vannak telepítve, és a méretezésük együtt történik. Az azonos Function alkalmazásban található összes függvény egy példányban, a Function alkalmazás méretezése szerint. 
 
 A rendszer a kapcsolatok karakterláncait, környezeti változóit és egyéb beállításait külön definiálja az egyes functions-alkalmazásokhoz. A Function Apps-alkalmazások között megosztható összes adatnak külsőleg kell lennie a megőrzött tárolóban.
-
-Ez a cikk bemutatja, hogyan konfigurálhatja és kezelheti a függvények alkalmazásait. 
-
-> [!TIP]  
-> Az [Azure CLI]használatával számos konfigurációs beállítás is kezelhető. 
 
 ## <a name="get-started-in-the-azure-portal"></a>Első lépések az Azure Portalon
 
@@ -37,15 +32,17 @@ A függvény alkalmazásának áttekintés oldaláról, különösen az **[Alkal
 
 ## <a name="work-with-application-settings"></a><a name="settings"></a>Alkalmazás-beállítások használata
 
-Az **Alkalmazásbeállítások** lapon megtarthatja a Function alkalmazás által használt beállításokat. Ezeket a beállításokat a rendszer titkosított formában tárolja, és a portál értékeinek megjelenítéséhez ki kell választania az **értékek megjelenítése** elemet. Az Alkalmazásbeállítások az Azure CLI használatával is elérhetők.
+Az Alkalmazásbeállítások kezelhetők a [Azure Portal](functions-how-to-use-azure-function-app-settings.md?tabs=portal#settings) és az [Azure CLI](functions-how-to-use-azure-function-app-settings.md?tabs=azurecli#settings) és a [Azure PowerShell](functions-how-to-use-azure-function-app-settings.md?tabs=powershell#settings)használatával. A [Visual Studio Code](functions-develop-vs-code.md#application-settings-in-azure) -ból és a [Visual studióból](functions-develop-vs.md#function-app-settings)is kezelheti az Alkalmazásbeállítások beállításait. 
 
-### <a name="portal"></a>Portál
+Ezeket a beállításokat a rendszer titkosított formában tárolja. További információ: [Alkalmazásbeállítások biztonsága](security-concepts.md#application-settings).
 
-Egy beállítás a portálon való hozzáadásához válassza az **új Alkalmazásbeállítás** lehetőséget, és adja hozzá az új kulcs-érték párokat.
+# <a name="portal"></a>[Portál](#tab/portal)
+
+Az **Alkalmazásbeállítások** lapon megtarthatja a Function alkalmazás által használt beállításokat. A portál értékeinek megjelenítéséhez ki kell választania az **értékek megjelenítése** elemet. Egy beállítás a portálon való hozzáadásához válassza az **új Alkalmazásbeállítás** lehetőséget, és adja hozzá az új kulcs-érték párokat.
 
 ![A Azure Portalban található Function app-beállítások.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
 
-### <a name="azure-cli"></a>Azure CLI
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
 A [`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-list) parancs az alkalmazás meglévő beállításait adja vissza, ahogy az alábbi példában is látható:
 
@@ -62,6 +59,22 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 --resource-group <RESOURCE_GROUP_NAME> \
 --settings CUSTOM_FUNCTION_APP_SETTING=12345
 ```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+A [`Get-AzFunctionAppSetting`](/powershell/module/az.functions/get-azfunctionappsetting) parancsmag az alkalmazás meglévő beállításait adja vissza, ahogy az alábbi példában is látható: 
+
+```azurepowershell-interactive
+Get-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOURCE_GROUP_NAME>
+```
+
+A [`Update-AzFunctionAppSetting`](/powershell/module/az.functions/update-azfunctionappsetting) parancs egy Alkalmazásbeállítás hozzáadására vagy frissítésére szolgál. A következő példa létrehoz egy beállítást egy nevű kulccsal `CUSTOM_FUNCTION_APP_SETTING` és egy értékkel `12345` :
+
+```azurepowershell-interactive
+Update-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOURCE_GROUP_NAME> -AppSetting @{"CUSTOM_FUNCTION_APP_SETTING" = "12345"}
+```
+
+---
 
 ### <a name="use-application-settings"></a>Alkalmazásbeállítások használata
 
@@ -131,7 +144,7 @@ A cikk további részében a következő, a függvények számára hasznos App S
 + [App Service szerkesztő](#editor)
 + [Console](#console)
 + [Speciális eszközök (kudu)](#kudu)
-+ [Üzembe helyezési beállítások](#deployment)
++ [Üzembe helyezési lehetőségek](#deployment)
 + [CORS](#cors)
 + [Hitelesítés](#auth)
 
@@ -193,7 +206,7 @@ A [`az functionapp cors show`](/cli/azure/functionapp/cors#az-functionapp-cors-s
 Ha a függvények HTTP-triggert használnak, megkövetelheti, hogy először hitelesíteni lehessen a hívásokat. App Service támogatja a Azure Active Directory hitelesítését és a közösségi szolgáltatókkal való bejelentkezést, például a Facebookot, a Microsoftot és a Twittert. Az egyes hitelesítő szolgáltatók konfigurálásával kapcsolatos részletekért tekintse meg a [Azure app Service Authentication áttekintése](../app-service/overview-authentication-authorization.md)című témakört. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 + [Azure App Service beállítások konfigurálása](../app-service/configure-common.md)
 + [Azure Functions – folyamatos üzembe helyezés](functions-continuous-deployment.md)

@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 62c30356017b5ea5d93351e6f22b8b7b0c22718c
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 7dbbe3afb2a5eb19b5c4893bd73eddbf11e788d4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109266"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218076"
 ---
 # <a name="how-to-set-up-access-control-for-your-synapse-workspace"></a>Hozzáférés-vezérlés beállítása a szinapszis-munkaterülethez 
 
@@ -73,8 +73,8 @@ A `workspace1_SQLAdmins` rendszer akkor fogja használni a csoportot, ha az SQL-
 Alapszintű beállítás esetén ez az öt csoport elegendő. Később hozzáadhat biztonsági csoportokat azon felhasználók kezeléséhez, akiknek több specializált hozzáférésre van szükségük, vagy csak adott erőforrásokhoz férnek hozzá a felhasználóknak.
 
 > [!NOTE]
->- [Ebből a cikkből](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal)megtudhatja, hogyan hozhat létre biztonsági csoportot ebben a cikkben.
->- [Ebből a cikkből](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-membership-azure-portal)megtudhatja, hogyan adhat hozzá biztonsági csoportot egy másik biztonsági csoportból ebben a cikkben.
+>- [Ebből a cikkből](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)megtudhatja, hogyan hozhat létre biztonsági csoportot ebben a cikkben.
+>- [Ebből a cikkből](../../active-directory/fundamentals/active-directory-groups-membership-azure-portal.md)megtudhatja, hogyan adhat hozzá biztonsági csoportot egy másik biztonsági csoportból ebben a cikkben.
 
 >[!Tip]
 >Az egyes szinapszis-felhasználók a Azure Portal Azure Active Directory segítségével megtekinthetik a csoporttagság alapján, hogy meghatározzák, mely szerepköröket adtak meg.

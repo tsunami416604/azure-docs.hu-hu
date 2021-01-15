@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2020
 ms.author: rdhillon
-ms.openlocfilehash: 13535a82f8aca741a1e25755e5a2d971ce45514e
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 9766379807e6d2708fd6935dd2ffbd7660f9988f
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739297"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216648"
 ---
 # <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Virtuális hálózati szolgáltatásvégpont-szabályzatok létrehozása az Azure Storage-hez
 
@@ -32,7 +32,7 @@ A virtuális hálózati szolgáltatásvégpont-szabályzatok a következő előn
 
 - __Nagyobb biztonság az Azure Storage-ba irányuló Virtual Network-forgalom számára__
 
-  [A hálózati biztonsági csoportok Azure-szolgáltatási címkéi](https://aka.ms/servicetags) lehetővé teszik a virtuális hálózat kimenő forgalmának korlátozását adott Azure Storage-régiókra. Ez azonban lehetővé teszi, hogy a forgalmat a kiválasztott Azure Storage-régióban lévő fiókokra irányítsa.
+  [A hálózati biztonsági csoportok Azure-szolgáltatási címkéi](./network-security-groups-overview.md) lehetővé teszik a virtuális hálózat kimenő forgalmának korlátozását adott Azure Storage-régiókra. Ez azonban lehetővé teszi, hogy a forgalmat a kiválasztott Azure Storage-régióban lévő fiókokra irányítsa.
   
   A végponti házirendek segítségével megadhatja azokat az Azure Storage-fiókokat, amelyek engedélyezik a virtuális hálózat kimenő elérését, és korlátozza a hozzáférést az összes többi Storage-fiókhoz. Ez sokkal részletesebb biztonsági szabályozást biztosít a virtuális hálózatról származó adatok kiszűrése védelméhez.
 
@@ -141,7 +141,7 @@ A következő korlátozásokat érvényesíti a rendszer a szolgáltatásvégpon
  |ServiceEndpointPoliciesPerSubnet|100 |
  |ServiceResourcesPerServiceEndpointPolicyDefinition|200 |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tudnivalók [a virtuális hálózati szolgáltatásvégpont-szabályzatok konfigurálásáról](virtual-network-service-endpoint-policies-portal.md)
 - További információk a [virtuális hálózati szolgáltatásvégpontokról](virtual-network-service-endpoints-overview.md)

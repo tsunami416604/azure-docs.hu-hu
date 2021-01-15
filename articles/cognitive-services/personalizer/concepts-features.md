@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: edd1549ddabef0ae1ba37150ad75a371ac6e6d85
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 55d1b7171201c962278d7c526528b36848c19449
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94365516"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217889"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>A funkciók a műveletekkel és környezettel kapcsolatos információk
 
@@ -37,12 +37,12 @@ A személyre szabott funkció nem írja elő, korlátozza vagy kijavítja a műv
 
 ## <a name="supported-feature-types"></a>Támogatott szolgáltatások típusai
 
-A személyre szabás a sztring, a numerikus és a logikai típusok funkcióit támogatja.
+A személyre szabás a sztring, a numerikus és a logikai típusok funkcióit támogatja. Nagyon valószínű, hogy az alkalmazása általában a karakterlánc-funkciókat fogja használni, néhány kivétellel.
 
 ### <a name="how-choice-of-feature-type-affects-machine-learning-in-personalizer"></a>A szolgáltatás típusának kiválasztása a személyre szabás Machine Learningét érinti
 
-* **Karakterláncok** : karakterlánc-típusok esetén a kulcs és érték minden kombinációja új súlyozást hoz létre a személyre szabott gépi tanulási modellben. 
-* **Numerikus** értékek: numerikus értékeket kell használnia, ha a számnak arányosan kell érintenie a személyre szabási eredményt. Ez a forgatókönyv függ. Egy egyszerűsített példában például a kiskereskedelmi élmény személyre szabása esetén a NumberOfPetsOwned olyan funkció lehet, amely numerikus, ha 2 vagy 3 személyre szabottan szeretné, hogy a megszemélyesítési eredmények kétszer vagy háromszor legyenek felhasználva, mint 1 kisállat. A numerikus egységeken alapuló, de ha a jelentés nem lineáris – például az életkor, a hőmérséklet vagy a személy magassága – a legjobb karakterláncként kódolva, és a szolgáltatás minősége általában tartományok használatával javítható. Például a kor kódolása "Age": "0-5", "Age": "6-10" stb.
+* **Karakterláncok**: a sztringek esetében a kulcs és az érték minden kombinációja One-Hot szolgáltatásként kezelendő (pl. Műfaj: "ScienceFiction" és "műfaj": "dokumentumfilm", amely két új bemeneti funkciót hoz létre a Machine learning-modellhez.
+* **Numerikus** értékek: numerikus értékeket kell használnia, ha a szám egy olyan magnitúdó, amely arányosan befolyásolhatja a személyre szabási eredményt. Ez a forgatókönyv függ. Egy egyszerűsített példában például a kiskereskedelmi élmény személyre szabása esetén a NumberOfPetsOwned olyan funkció lehet, amely numerikus, ha 2 vagy 3 személyre szabottan szeretné, hogy a megszemélyesítési eredmények kétszer vagy háromszor legyenek felhasználva, mint 1 kisállat. A numerikus egységeken alapuló, de a jelentés nem lineáris – például az életkor, a hőmérséklet vagy a személy magassága – a legmegfelelőbb karakterláncként kódolva. Például a DayOfMonth karakterlánc: "1", "2"... "31". Ha sok kategóriája van, akkor a funkciók minősége általában tartományok használatával javítható. Például a kor kódolása "Age": "0-5", "Age": "6-10" stb.
 * A "false" értékkel ellátott **logikai** értékek úgy vannak megadva, mintha egyáltalán nem küldték el őket.
 
 A nem jelen lévő funkciókat ki kell hagyni a kérelemből. Kerülje a funkciók NULL értékkel történő küldését, mert az a modell betanításakor a meglévőként és a "NULL" értékkel lesz feldolgozva.
@@ -80,12 +80,14 @@ A JSON-objektumok tartalmazhatnak beágyazott JSON-objektumokat és egyszerű tu
         { 
             "user": {
                 "profileType":"AnonymousUser",
-                "latlong": [47.6, -122.1]
+                "latlong": ["47.6", "-122.1"]
             }
         },
         {
-            "state": {
-                "timeOfDay": "noon",
+            "environment": {
+                "dayOfMonth": "28",
+                "monthOfYear": "8",
+                "timeOfDay": "13:00",
                 "weather": "sunny"
             }
         },
@@ -93,6 +95,13 @@ A JSON-objektumok tartalmazhatnak beágyazott JSON-objektumokat és egyszerű tu
             "device": {
                 "mobile":true,
                 "Windows":true
+            }
+        },
+        {
+            "userActivity" : {
+                "itemsInCart": 3,
+                "cartValue": 250,
+                "appliedCoupon": true
             }
         }
     ]
@@ -112,6 +121,8 @@ A névtér elnevezéséhez használt karakterláncnak bizonyos korlátozásokat 
 Egy jó szolgáltatáskészlet segít személyre szabni, hogyan jósolhatja meg a legmagasabb jutalmat eredményező műveletet. 
 
 Vegye fontolóra a funkciók küldését a személyre szabási rangsor API-ra, amely az alábbi ajánlásokat követi:
+
+* A kategorikus és a karakterlánc típusú típusok olyan funkciókhoz használhatók, amelyek nem magnitúdók. 
 
 * A személyre szabáshoz elegendő funkció áll rendelkezésre. Minél pontosabban célozza meg a tartalmat, annál több szolgáltatásra van szükség.
 
@@ -177,9 +188,9 @@ A műveletek rangsorolásakor ne küldjön több mint 50 műveletet. Ezek az 50-
 
 A Rank API-nak küldött műveletek attól függnek, hogy mit próbál személyre szabni.
 
-Néhány példa:
+Íme néhány példa:
 
-|Rendeltetés|Művelet|
+|Cél|Művelet|
 |--|--|
 |Személyre szabhatja, hogy mely cikkek legyenek kiemelve a hírek webhelyén.|Minden művelet egy lehetséges újságcikk.|
 |Optimalizálja az ad-elhelyezést egy webhelyen.|Minden művelet elrendezést vagy szabályokat tartalmaz a hirdetések elrendezésének létrehozásához (például felül, a jobb oldalon, a kis képeken és a nagyméretű képeken).|
@@ -320,6 +331,6 @@ A JSON-objektumok tartalmazhatnak beágyazott JSON-objektumokat és egyszerű tu
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Megerősítő tanulás](concepts-reinforcement-learning.md)

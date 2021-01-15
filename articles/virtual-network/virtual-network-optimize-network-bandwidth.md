@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: a9db2bcc0b44dfb6146517de8a139f34cd8584af
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: bb9235f4d1190bf7f71ddc007f09c9666c353234
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654455"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216801"
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Az Azure-beli virtuális gépek hálózati teljesítményének optimalizálása
 
@@ -152,7 +152,7 @@ sudo ./install.sh #or upgrade.sh if prior LIS was previously installed
 További információ a Hyper-V-hez készült Linux Integration Services 4,2-es verziójáról a [letöltési oldal](https://www.microsoft.com/download/details.aspx?id=55106)megtekintésével.
 
 ## <a name="next-steps"></a>Következő lépések
-* Virtuális gépek üzembe helyezése közel egymáshoz a [közelségi elhelyezési csoporttal](../virtual-machines/windows/co-location.md) való alacsony késés érdekében
+* Virtuális gépek üzembe helyezése közel egymáshoz a [közelségi elhelyezési csoporttal](../virtual-machines/co-location.md) való alacsony késés érdekében
 * Tekintse meg az optimalizált eredményt a [sávszélesség/átviteli sebesség tesztelése Azure virtuális gépen](virtual-network-bandwidth-testing.md) a forgatókönyvhöz.
 * További információ arról [, hogyan vannak lefoglalva a sávszélesség a virtuális gépekhez](virtual-machine-network-throughput.md)
 * További információ az [Azure Virtual Network gyakori kérdéseiről (GYIK)](virtual-networks-faq.md)

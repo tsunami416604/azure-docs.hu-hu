@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: fb3c7dd7b3d7e8e42e230eedcd0d1b43af104327
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: af6afa2b0285fe741241183ed99712a132953a30
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452530"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220116"
 ---
 # <a name="secure-a-linked-service-with-private-links"></a>Társított szolgáltatás biztonságossá tétele privát hivatkozásokkal
 
@@ -23,7 +23,7 @@ Ebből a cikkből megtudhatja, hogyan védheti egy társított szolgáltatást a
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) .
-* **Azure Storage-fiók**: a 2. generációs Azure Data Lake használja *forrás* adattárként. Ha nem rendelkezik Storage-fiókkal, tekintse meg az [Azure Storage-fiók létrehozása](../../storage/blobs/data-lake-storage-quickstart-create-account.md) lépéseit. Győződjön meg arról, hogy a Storage-fiók rendelkezik a szinapszis Studio IP-szűréssel a hozzáféréshez, és hogy csak a **kiválasztott hálózatok** férhetnek hozzá a Storage-fiókhoz. A panel alatti **tűzfalak és a virtuális hálózatok** beállításának az alábbi ábrához hasonlóan kell kinéznie.
+* **Azure Storage-fiók**: a 2. generációs Azure Data Lake használja *forrás* adattárként. Ha nem rendelkezik Storage-fiókkal, tekintse meg az [Azure Storage-fiók létrehozása](../../storage/common/storage-account-create.md) lépéseit. Győződjön meg arról, hogy a Storage-fiók rendelkezik a szinapszis Studio IP-szűréssel a hozzáféréshez, és hogy csak a **kiválasztott hálózatok** férhetnek hozzá a Storage-fiókhoz. A panel alatti **tűzfalak és a virtuális hálózatok** beállításának az alábbi ábrához hasonlóan kell kinéznie.
 
 ![Biztonságos Storage-fiók](./media/secure-storage-account.png)
 
@@ -66,7 +66,7 @@ Ha a fenti kapcsolat tesztelésekor nem választotta ki a hiperhivatkozást, kö
 
 Ezzel létrehozott egy biztonságos és privát kapcsolatot a szinapszis és a társított szolgáltatás között.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 
 A felügyelt privát végpont Azure szinapszis Analyticsben való megismeréséhez lásd: [felügyelt privát végpontok](../security/synapse-workspace-managed-private-endpoints.md).

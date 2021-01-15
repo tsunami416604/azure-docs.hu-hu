@@ -8,20 +8,20 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 699a7321646167b0a9fb20a77a40999ec33b14f0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9782cce4165487b612c0295dc893d120ed043225
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461339"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218263"
 ---
 # <a name="connect-to-your-azure-synapse-workspace-using-private-links"></a>Csatlakozás saját Azure Synapse-munkaterülethez privát hivatkozással
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre egy privát végpontot az Azure szinapszis-munkaterülethez. További információért tekintse meg a [privát hivatkozások és a privát végpontok](https://docs.microsoft.com/azure/private-link/) című témakört.
+Ebből a cikkből megtudhatja, hogyan hozhat létre egy privát végpontot az Azure szinapszis-munkaterülethez. További információért tekintse meg a [privát hivatkozások és a privát végpontok](../../private-link/index.yml) című témakört.
 
 ## <a name="step-1-register-network-resource-provider"></a>1. lépés: a hálózati erőforrás-szolgáltató regisztrálása
 
-Ha még nem tette meg, regisztrálja a hálózati erőforrás-szolgáltatót. Az erőforrás-szolgáltató regisztrálása konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre. A [regisztráláskor](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)válassza a *Microsoft. Network* elemet az erőforrás-szolgáltatók listájából. Ha a hálózati erőforrás-szolgáltató már regisztrálva van, folytassa a 2. lépéssel.
+Ha még nem tette meg, regisztrálja a hálózati erőforrás-szolgáltatót. Az erőforrás-szolgáltató regisztrálása konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre. A [regisztráláskor](../../azure-resource-manager/management/resource-providers-and-types.md)válassza a *Microsoft. Network* elemet az erőforrás-szolgáltatók listájából. Ha a hálózati erőforrás-szolgáltató már regisztrálva van, folytassa a 2. lépéssel.
 
 ## <a name="step-2-open-your-azure-synapse-workspace-in-azure-portal"></a>2. lépés: az Azure szinapszis-munkaterület megnyitása Azure Portal
 
@@ -58,7 +58,7 @@ Ha a telepítés befejeződött, nyissa meg az Azure szinapszis munkaterületét
 
 ![Az előfizetés és a régió részleteinek kiválasztása 4](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-5.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [felügyelt munkaterületről Virtual Network](./synapse-workspace-managed-vnet.md)
 

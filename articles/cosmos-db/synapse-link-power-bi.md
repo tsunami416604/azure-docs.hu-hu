@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: acomet
-ms.openlocfilehash: be2657d9606f260fcea06d2535be87fc6976577c
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 8a3142199502b912f20ebe05c625aa40be9fab11
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915674"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218671"
 ---
 # <a name="use-power-bi-and-serverless-synapse-sql-pool-preview-to-analyze-azure-cosmos-db-data-with-synapse-link"></a>A Power BI és a kiszolgáló nélküli szinapszis SQL-készlet (előzetes verzió) használatával elemezheti a Azure Cosmos DB-alapú és a szinapszis-hivatkozásokat 
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -41,7 +41,7 @@ A Kezdés előtt győződjön meg arról, hogy a következő erőforrásokat hoz
 
 ## <a name="create-a-database-and-views"></a>Adatbázis és nézetek létrehozása
 
-A szinapszis munkaterületen lépjen a **fejlesztés** lapra, válassza ki az **+** ikont, majd válassza az **SQL-szkript** elemet.
+A mesteralakzatok vagy az alapértelmezett adatbázisok nézeteinek létrehozása nem ajánlott és nem támogatott. Ezért egy adatbázis létrehozásával kell elindítania ezt a lépést. A szinapszis munkaterületen lépjen a **fejlesztés** lapra, válassza ki az **+** ikont, majd válassza az **SQL-szkript** elemet.
 
 :::image type="content" source="./media/synapse-link-power-bi/add-sql-script.png" alt-text="SQL-szkript hozzáadása a szinapszis Analytics-munkaterülethez":::
 

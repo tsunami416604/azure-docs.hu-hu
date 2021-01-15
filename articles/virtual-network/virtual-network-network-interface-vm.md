@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: f7253be2844f40ca52df2f9b3bc9cbba552fea2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b45bd2e2b9ad971891cbcb944286f40b4f66883
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85480133"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216954"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>Hálózati adapterek hozzáadása vagy eltávolítása virtuális gépekről
 
@@ -61,16 +61,16 @@ Hálózati adapter hozzáadása a virtuális géphez:
 
 1. Egy meglévő virtuális gép kereséséhez nyissa meg a [Azure Portal](https://portal.azure.com) . Keresse meg és válassza ki a **virtuális gépeket**.
 
-2. Válassza ki a virtuális gép nevét. A virtuális gépnek támogatnia kell a felvenni kívánt hálózati adapterek számát. Annak megállapításához, hogy az egyes virtuálisgép-méretek hány hálózati adaptert támogatnak, tekintse meg a Linux rendszerű [virtuális gépek](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és a [Windows rendszerű virtuális gépek](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)méretét
+2. Válassza ki a virtuális gép nevét. A virtuális gépnek támogatnia kell a felvenni kívánt hálózati adapterek számát. Annak megállapításához, hogy az egyes virtuálisgép-méretek hány hálózati adaptert támogatnak, tekintse meg a Linux rendszerű [virtuális gépek](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és a [Windows rendszerű virtuális gépek](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)méretét
 
 3. A virtuális gép parancssáv mezőjében válassza a **Leállítás**, majd az **OK gombot** a megerősítő párbeszédpanelen. Ezután várjon, amíg a virtuális gép **állapota** leállítva értékre nem változik (fel van **foglalva)**.
 
-4. A virtuális gép menüsorában **válassza a**  >  **hálózati adapter csatlakoztatása**lehetőséget. Ezután a **meglévő hálózati adapter csatolása**elemnél válassza ki a csatolni kívánt hálózati adaptert, majd kattintson **az OK gombra**.
+4. A virtuális gép menüsorában **válassza a**  >  **hálózati adapter csatlakoztatása** lehetőséget. Ezután a **meglévő hálózati adapter csatolása** elemnél válassza ki a csatolni kívánt hálózati adaptert, majd kattintson **az OK gombra**.
 
     >[!NOTE]
     >A kiválasztott hálózati adapter nem rendelkezhet a gyorsított hálózatkezelés engedélyezésével, nem rendelkezhet hozzá IPv6-címekkel, és ugyanabban a virtuális hálózatban kell lennie, mint a virtuális GÉPHEZ aktuálisan csatlakoztatott hálózati adapternek.
 
-    Ha nem rendelkezik meglévő hálózati adapterrel, először létre kell hoznia egyet. Ehhez válassza a **hálózati adapter létrehozása**lehetőséget. A hálózati adapterek létrehozásával kapcsolatos további tudnivalókért tekintse meg [a hálózati adapterek](virtual-network-network-interface.md#create-a-network-interface)létrehozásával foglalkozó témakört. Ha többet szeretne megtudni a hálózati adapterek virtuális gépekhez adásával kapcsolatos további korlátozásokról, lásd: [megkötések](#constraints).
+    Ha nem rendelkezik meglévő hálózati adapterrel, először létre kell hoznia egyet. Ehhez válassza a **hálózati adapter létrehozása** lehetőséget. A hálózati adapterek létrehozásával kapcsolatos további tudnivalókért tekintse meg [a hálózati adapterek](virtual-network-network-interface.md#create-a-network-interface)létrehozásával foglalkozó témakört. Ha többet szeretne megtudni a hálózati adapterek virtuális gépekhez adásával kapcsolatos további korlátozásokról, lásd: [megkötések](#constraints).
 
 5. A virtuális gép menüsávján válassza az **Áttekintés**  >  **indítása** lehetőséget a virtuális gép újraindításához.
 
@@ -94,7 +94,7 @@ Megtekintheti a virtuális géphez csatlakozó hálózati adaptereket, és megis
 
 2. Válassza ki annak a virtuális gépnek a nevét, amelynek a csatlakoztatott hálózati adaptereit meg szeretné tekinteni.
 
-3. A virtuális gép menüsorában válassza a **hálózatkezelés**lehetőséget.
+3. A virtuális gép menüsorában válassza a **hálózatkezelés** lehetőséget.
 
 A hálózati adapterek beállításairól és azok módosításáról a [hálózati adapterek kezelése](virtual-network-network-interface.md)című témakörben olvashat bővebben. A hálózati adapterhez hozzárendelt IP-címek hozzáadásával, módosításával vagy eltávolításával kapcsolatos további információkért lásd: a [hálózati adapter IP-címeinek kezelése](virtual-network-network-interface-addresses.md).
 
@@ -115,9 +115,9 @@ A hálózati adapterek beállításairól és azok módosításáról a [hálóz
 
 4. Várjon, amíg a virtuális gép **állapota** leállítva értékre nem változik (fel van **foglalva)**.
 
-5. A virtuális gép menüsorában **válassza a**  >  **hálózat leválasztása hálózati adapter**lehetőséget.
+5. A virtuális gép menüsorában **válassza a**  >  **hálózat leválasztása hálózati adapter** lehetőséget.
 
-6. A **hálózati adapter leválasztása** párbeszédpanelen válassza ki a leválasztani kívánt hálózati adaptert. Ezután válassza az **OK** gombot.
+6. A **hálózati adapter leválasztása** párbeszédpanelen válassza ki a leválasztani kívánt hálózati adaptert. Ez után válassza az **OK** gombot.
 
     >[!NOTE]
     >Ha csak egy hálózati adapter van felsorolva, akkor nem lehet leválasztani, mert a virtuális gépnek mindig legalább egy hálózati adapterrel kell rendelkeznie.
@@ -133,7 +133,7 @@ A hálózati adapterek beállításairól és azok módosításáról a [hálóz
 
 - A virtuális gépekhez legalább egy hálózati adapternek hozzá kell tartoznia.
 
-- A virtuális gépek csak annyi hálózati csatolóval rendelkezhetnek, amennyit a virtuálisgép-méret is támogat. Ha többet szeretne megtudni arról, hogy az egyes virtuálisgép-méretek hány hálózati adaptert támogatnak, tekintse meg a Linux rendszerű [virtuális gépek](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és a [Windows rendszerű virtuális gépek](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)méreteit Minden méret legalább két hálózati adaptert támogat.
+- A virtuális gépek csak annyi hálózati csatolóval rendelkezhetnek, amennyit a virtuálisgép-méret is támogat. Ha többet szeretne megtudni arról, hogy az egyes virtuálisgép-méretek hány hálózati adaptert támogatnak, tekintse meg a Linux rendszerű [virtuális gépek](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és a [Windows rendszerű virtuális gépek](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)méreteit Minden méret legalább két hálózati adaptert támogat.
 
 - A virtuális géphez hozzáadott hálózati adapterek jelenleg nem csatlakoztathatók egy másik virtuális géphez. A hálózati adapterek létrehozásával kapcsolatos további tudnivalókért tekintse meg [a hálózati adapterek](virtual-network-network-interface.md#create-a-network-interface)létrehozásával foglalkozó témakört.
 
@@ -143,7 +143,7 @@ A hálózati adapterek beállításairól és azok módosításáról a [hálóz
 
 - Megadhatja, hogy melyik hálózati adapterre küldje a kimenő forgalmat. Azonban a virtuális gép alapértelmezés szerint az összes kimenő forgalmat az elsődleges hálózati adapter elsődleges IP-konfigurációjához rendelt IP-címhez küldi.
 
-- A múltban az azonos rendelkezésre állási csoportba tartozó összes virtuális gépnek egyetlen vagy több hálózati adapterrel kell rendelkeznie. A tetszőleges számú hálózati adapterrel rendelkező virtuális gépek már ugyanabban a rendelkezésre állási készletben létezhetnek, a virtuális gép mérete által támogatott számmal. A létrehozáskor csak egy virtuális gépet adhat hozzá rendelkezésre állási készlethez. További információ a rendelkezésre állási csoportokról: [virtuális gépek rendelkezésre állásának kezelése az Azure-ban](../virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy).
+- A múltban az azonos rendelkezésre állási csoportba tartozó összes virtuális gépnek egyetlen vagy több hálózati adapterrel kell rendelkeznie. A tetszőleges számú hálózati adapterrel rendelkező virtuális gépek már ugyanabban a rendelkezésre állási készletben létezhetnek, a virtuális gép mérete által támogatott számmal. A létrehozáskor csak egy virtuális gépet adhat hozzá rendelkezésre állási készlethez. További információ a rendelkezésre állási csoportokról: [virtuális gépek rendelkezésre állásának kezelése az Azure-ban](../virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy).
 
 - Az azonos virtuális GÉPEN lévő hálózati adaptereket a virtuális hálózatban lévő különböző alhálózatokhoz is összekapcsolhatjuk. A hálózati adaptereknek azonban mind ugyanahhoz a virtuális hálózathoz kell csatlakozniuk.
 
@@ -153,7 +153,7 @@ A hálózati adapterek beállításairól és azok módosításáról a [hálóz
 
 - Az optimális teljesítmény dokumentációjának megvalósításához gyorsított hálózatkezelésre van szükség. Bizonyos esetekben explicit módon engedélyeznie kell a gyorsított hálózatkezelést a Windows vagy [Linux](create-vm-accelerated-networking-cli.md) [rendszerű](create-vm-accelerated-networking-powershell.md) virtuális gépekhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Több hálózati adapterrel vagy IP-címmel rendelkező virtuális gép létrehozásához tekintse meg a következőt:
 

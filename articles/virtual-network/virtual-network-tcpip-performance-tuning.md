@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
-ms.openlocfilehash: 67b635f09cb9407279e89b5f7b8526dab3c08946
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1f6abbf68d4f648aeee6c025800f24140c9459e9
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017610"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219317"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>TCP/IP teljesítmény-hangolás Azure-beli virtuális gépekhez
 
@@ -89,7 +89,7 @@ Nem javasoljuk ügyfeleinknek a virtuális gépek MTU növelését. Ebben a tém
 
 #### <a name="large-send-offload"></a>Nagyméretű küldés kiszervezése
 
-A nagyméretű küldés kiszervezése (LSO) javíthatja a hálózati teljesítményt azáltal, hogy kiszervezi a csomagok szegmentálását az Ethernet-adapterre. Ha a LSO engedélyezve van, a TCP/IP-verem egy nagyméretű TCP-csomagot hoz létre, majd a továbbítás előtt elküldi az Ethernet-adapternek a szegmentáláshoz. A LSO előnye, hogy felszabadítja a PROCESSZORt a csomagok szegmentálásához, amely megfelel az MTU-nek, és a feldolgozást a hardveren végzett Ethernet-felületre végzi. Ha többet szeretne megtudni a LSO előnyeiről, tekintse meg a [nagyméretű küldési kiürítés támogatása](https://docs.microsoft.com/windows-hardware/drivers/network/performance-in-network-adapters#supporting-large-send-offload-lso)című témakört.
+A nagyméretű küldés kiszervezése (LSO) javíthatja a hálózati teljesítményt azáltal, hogy kiszervezi a csomagok szegmentálását az Ethernet-adapterre. Ha a LSO engedélyezve van, a TCP/IP-verem egy nagyméretű TCP-csomagot hoz létre, majd a továbbítás előtt elküldi az Ethernet-adapternek a szegmentáláshoz. A LSO előnye, hogy felszabadítja a PROCESSZORt a csomagok szegmentálásához, amely megfelel az MTU-nek, és a feldolgozást a hardveren végzett Ethernet-felületre végzi. Ha többet szeretne megtudni a LSO előnyeiről, tekintse meg a [nagyméretű küldési kiürítés támogatása](/windows-hardware/drivers/network/performance-in-network-adapters#supporting-large-send-offload-lso)című témakört.
 
 Ha a LSO engedélyezve van, előfordulhat, hogy az Azure-ügyfelek nagy méretű kereteket látnak a csomagok rögzítésekor. Ezek a nagyméretű keretek azt eredményezik, hogy egyes ügyfelek meggondolják a töredezettséget, vagy nagy MTU-t használnak, ha nem. A LSO segítségével az Ethernet-adapter nagyobb méretű, maximális mennyiségű (MSS) szegmenst tud reklámozni a TCP/IP-verem számára egy nagyobb TCP-csomag létrehozásához. Ezt a teljes nem szegmentált keretet ezután továbbítja az Ethernet-adapternek, és láthatóvá válik a virtuális gépen végrehajtott csomagok rögzítése során. A csomag azonban az Ethernet-adapter által az Ethernet-adapter MTU-értéke szerint számos kisebb képkockára lesz bontva.
 
@@ -117,7 +117,7 @@ A PMTUD folyamat nem hatékony, és hatással van a hálózati teljesítményre.
 
 Ha olyan virtuális gépeket használ, amelyek beágyazást végeznek (például IPsec VPN-eket), a csomagok méretével és az MTU-val kapcsolatos további szempontokat is figyelembe kell venni A VPN-EK további fejléceket adhatnak hozzá a csomagokhoz, ami növeli a csomagok méretét, és kisebb MSS-t igényel.
 
-Az Azure esetében javasoljuk, hogy állítsa be a TCP MSS 1 350 bájt és a bújtatási interfész MTU értékét 1 400-re. További információ: [VPN-eszközök és IPSec/IKE-paraméterek lap](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices).
+Az Azure esetében javasoljuk, hogy állítsa be a TCP MSS 1 350 bájt és a bújtatási interfész MTU értékét 1 400-re. További információ: [VPN-eszközök és IPSec/IKE-paraméterek lap](../vpn-gateway/vpn-gateway-about-vpn-devices.md).
 
 ### <a name="latency-round-trip-time-and-tcp-window-scaling"></a>Késés, oda-és visszaút ideje, valamint a TCP-ablak skálázása
 
@@ -210,7 +210,7 @@ A `Get-NetTCPSetting` PowerShell-parancs használatával megtekintheti az egyes 
 Get-NetTCPSetting
 ```
 
-A kezdeti TCP-ablakméret és a TCP-méretezési tényező a Windowsban a PowerShell-parancs használatával állítható be `Set-NetTCPSetting` . További információ:  [set-NetTCPSetting](https://docs.microsoft.com/powershell/module/nettcpip/set-nettcpsetting?view=win10-ps).
+A kezdeti TCP-ablakméret és a TCP-méretezési tényező a Windowsban a PowerShell-parancs használatával állítható be `Set-NetTCPSetting` . További információ:  [set-NetTCPSetting](/powershell/module/nettcpip/set-nettcpsetting?view=win10-ps).
 
 ```powershell
 Set-NetTCPSetting
@@ -253,13 +253,13 @@ A gyorsított hálózatkezelés javítja a teljesítményt azáltal, hogy lehet�
 
 - **Csökkentett CPU-kihasználtság**: a gazdagépen lévő virtuális kapcsoló megkerülése kevesebb CPU-kihasználtságot eredményez a hálózati forgalom feldolgozásakor.
 
-A gyorsított hálózatkezelés használatához explicit módon engedélyeznie kell azt az egyes alkalmazható virtuális gépeken. Útmutatásért lásd: [Linux rendszerű virtuális gép létrehozása gyorsított hálózatkezeléssel](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) .
+A gyorsított hálózatkezelés használatához explicit módon engedélyeznie kell azt az egyes alkalmazható virtuális gépeken. Útmutatásért lásd: [Linux rendszerű virtuális gép létrehozása gyorsított hálózatkezeléssel](./create-vm-accelerated-networking-cli.md) .
 
 #### <a name="receive-side-scaling"></a>Fogadó oldali skálázás
 
-A fogadó oldali skálázás (RSS) egy olyan hálózati illesztőprogram-technológia, amely hatékonyabban osztja el a hálózati adatforgalmat azáltal, hogy több processzoron több CPU-ra terjeszti a fogadási feldolgozást többprocesszoros rendszerekben. Egyszerű feltételek mellett az RSS lehetővé teszi, hogy a rendszer több fogadott forgalmat feldolgozzon, mivel az összes rendelkezésre álló CPU-t csak egy helyett használja. Az RSS további technikai megvitatására lásd: [Bevezetés a fogadási oldali skálázásba](https://docs.microsoft.com/windows-hardware/drivers/network/introduction-to-receive-side-scaling).
+A fogadó oldali skálázás (RSS) egy olyan hálózati illesztőprogram-technológia, amely hatékonyabban osztja el a hálózati adatforgalmat azáltal, hogy több processzoron több CPU-ra terjeszti a fogadási feldolgozást többprocesszoros rendszerekben. Egyszerű feltételek mellett az RSS lehetővé teszi, hogy a rendszer több fogadott forgalmat feldolgozzon, mivel az összes rendelkezésre álló CPU-t csak egy helyett használja. Az RSS további technikai megvitatására lásd: [Bevezetés a fogadási oldali skálázásba](/windows-hardware/drivers/network/introduction-to-receive-side-scaling).
 
-A legjobb teljesítmény érdekében, ha a gyorsított hálózatkezelés engedélyezve van egy virtuális gépen, engedélyeznie kell az RSS-t. Az RSS a gyorsított hálózatkezelést nem használó virtuális gépeken is biztosít előnyöket. Tekintse át, hogyan állapíthatja meg, hogy az RSS engedélyezve van-e, és hogyan engedélyezheti azt: az Azure-beli [virtuális gépek hálózati átviteli sebességének optimalizálása](https://aka.ms/FastVM).
+A legjobb teljesítmény érdekében, ha a gyorsított hálózatkezelés engedélyezve van egy virtuális gépen, engedélyeznie kell az RSS-t. Az RSS a gyorsított hálózatkezelést nem használó virtuális gépeken is biztosít előnyöket. Tekintse át, hogyan állapíthatja meg, hogy az RSS engedélyezve van-e, és hogyan engedélyezheti azt: az Azure-beli [virtuális gépek hálózati átviteli sebességének optimalizálása](./virtual-network-optimize-network-bandwidth.md).
 
 ### <a name="tcp-time_wait-and-time_wait-assassination"></a>TCP TIME_WAIT és TIME_WAIT merénylet
 
@@ -271,7 +271,7 @@ A kimenő szoftvercsatornák porttartomány értéke általában az operációs 
 
 Ezt a skálázási korlátozást a TIME_WAIT merénylettel kezelheti. TIME_WAIT merénylet lehetővé teszi, hogy a szoftvercsatorna bizonyos helyzetekben újra felhasználható legyen, például ha az új kapcsolat IP-csomagjaiban szereplő sorozatszám meghaladja az előző kapcsolat utolsó csomagjának sorszámát. Ebben az esetben az operációs rendszer lehetővé teszi az új kapcsolódás létrejöttét (az új SYN/ACK-t fogadja el), és kényszeríti az előző, TIME_WAIT állapotban lévő kapcsolódás bezárását. Ez a képesség az Azure-beli Windows rendszerű virtuális gépeken támogatott. Ha további információt szeretne a más virtuális gépek támogatásáról, tekintse meg az operációs rendszer gyártójával foglalkozó témakört.
 
-A TCP TIME_WAIT beállításainak és a forrásport tartományának konfigurálásáról további információt a [hálózati teljesítmény javítása érdekében módosítható beállítások](https://docs.microsoft.com/biztalk/technical-guides/settings-that-can-be-modified-to-improve-network-performance)című témakörben talál.
+A TCP TIME_WAIT beállításainak és a forrásport tartományának konfigurálásáról további információt a [hálózati teljesítmény javítása érdekében módosítható beállítások](/biztalk/technical-guides/settings-that-can-be-modified-to-improve-network-performance)című témakörben talál.
 
 ## <a name="virtual-network-factors-that-can-affect-performance"></a>A teljesítményt befolyásoló virtuális hálózati tényezők
 
@@ -287,7 +287,7 @@ A gyorsított hálózatkezelés úgy lett kialakítva, hogy javítsa a hálózat
 
 Az Azure-beli virtuális gépekhez legalább egy hálózati adapter csatlakozik. Lehet, hogy több van. A virtuális gép számára lefoglalt sávszélesség az összes kimenő forgalom összege a számítógéphez csatlakoztatott összes hálózati adapteren. Más szóval a sávszélesség virtuális gépenként van lefoglalva, függetlenül attól, hogy hány hálózati adapter van csatlakoztatva a számítógéphez.
 
-A várt kimenő átviteli sebesség és az egyes virtuálisgép-méretek által támogatott hálózati adapterek száma az Azure-beli [Windows rendszerű virtuális gépek méretében](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)van részletezve. Ha meg szeretné tekinteni a maximális átviteli sebességet, válasszon egy típust, például az **általános célú** elemet, majd keresse meg az eredményül kapott oldalon található méretezési sorozat szakaszát (például "Dv2-sorozat"). Minden adatsorozathoz van egy táblázat, amely az utolsó oszlopban tartalmaz hálózati specifikációkat, amelyek a "Max NIC/várt hálózati sávszélesség (Mbps)" címmel rendelkeznek.
+A várt kimenő átviteli sebesség és az egyes virtuálisgép-méretek által támogatott hálózati adapterek száma az Azure-beli [Windows rendszerű virtuális gépek méretében](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)van részletezve. Ha meg szeretné tekinteni a maximális átviteli sebességet, válasszon egy típust, például az **általános célú** elemet, majd keresse meg az eredményül kapott oldalon található méretezési sorozat szakaszát (például "Dv2-sorozat"). Minden adatsorozathoz van egy táblázat, amely az utolsó oszlopban tartalmaz hálózati specifikációkat, amelyek a "Max NIC/várt hálózati sávszélesség (Mbps)" címmel rendelkeznek.
 
 Az átviteli sebesség korlátja a virtuális gépre vonatkozik. Az átviteli sebességet a következő tényezők nem érintik:
 
@@ -299,7 +299,7 @@ Az átviteli sebesség korlátja a virtuális gépre vonatkozik. Az átviteli se
 
 - **Protokoll**: az összes protokollon keresztüli kimenő forgalom a korlát irányába számít.
 
-További információ: [virtuális gép hálózati sávszélessége](https://aka.ms/AzureBandwidth).
+További információ: [virtuális gép hálózati sávszélessége](./virtual-machine-network-throughput.md).
 
 ### <a name="internet-performance-considerations"></a>Internetes teljesítménnyel kapcsolatos megfontolások
 
@@ -333,7 +333,7 @@ Az Azure-beli üzemelő példányok az Azure-on kívüli végpontokkal is kommun
 
 Minden kimenő kapcsolatok esetében a Azure Load Balancernak meg kell őriznie ezt a leképezést egy bizonyos ideig. Az Azure több-bérlős jellegéből adódóan ez a leképezés minden virtuális gép kimenő forgalmához erőforrás-igényes lehet. Így az Azure-Virtual Network konfigurációján alapuló korlátok vannak beállítva. Azt is megteheti, hogy egy Azure-beli virtuális gép csak bizonyos számú kimenő kapcsolatot tud kiszolgálni egy adott időpontban. Ha eléri ezeket a korlátokat, a virtuális gép nem tud több kimenő kapcsolatot létesíteni.
 
-Ez a viselkedés azonban konfigurálható. A SNAT és a SNAT-portok kimerülésével kapcsolatos további információkért tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections).
+Ez a viselkedés azonban konfigurálható. A SNAT és a SNAT-portok kimerülésével kapcsolatos további információkért tekintse meg [ezt a cikket](../load-balancer/load-balancer-outbound-connections.md).
 
 ## <a name="measure-network-performance-on-azure"></a>Hálózati teljesítmény mérése az Azure-ban
 
@@ -341,13 +341,13 @@ A cikk teljesítménybeli maximális száma a két virtuális gép közötti há
 
 ### <a name="measure-round-trip-time-and-packet-loss"></a>A kerekítési idő és a csomagok elvesztésének mérése
 
-A TCP-teljesítmény nagy mértékben támaszkodik a RTT és a csomagok elvesztésére. A Windows és a Linux rendszerben elérhető PING segédprogram biztosítja a legegyszerűbb módszert a RTT és a csomagok elvesztésének mérésére. A PING kimenete a forrás és a cél minimális/maximális/átlagos késését mutatja. Emellett a csomagok elvesztését is megjeleníti. A PING alapértelmezés szerint az ICMP protokollt használja. A PsPing a TCP-RTT tesztelésére is használható. További információ: [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping).
+A TCP-teljesítmény nagy mértékben támaszkodik a RTT és a csomagok elvesztésére. A Windows és a Linux rendszerben elérhető PING segédprogram biztosítja a legegyszerűbb módszert a RTT és a csomagok elvesztésének mérésére. A PING kimenete a forrás és a cél minimális/maximális/átlagos késését mutatja. Emellett a csomagok elvesztését is megjeleníti. A PING alapértelmezés szerint az ICMP protokollt használja. A PsPing a TCP-RTT tesztelésére is használható. További információ: [PsPing](/sysinternals/downloads/psping).
 
 ### <a name="measure-actual-throughput-of-a-tcp-connection"></a>TCP-kapcsolatok tényleges átviteli sebességének mérése
 
 A NTttcp egy olyan eszköz, amellyel tesztelheti a Linux vagy Windows rendszerű virtuális gépek TCP-teljesítményét. Módosíthatja a különböző TCP-beállításokat, majd tesztelheti az előnyöket a NTttcp használatával. További információkért tekintse meg a következő forrásokat:
 
-- [Sávszélesség/átviteli sebesség tesztelése (NTttcp)](https://aka.ms/TestNetworkThroughput)
+- [Sávszélesség/átviteli sebesség tesztelése (NTttcp)](./virtual-network-bandwidth-testing.md)
 
 - [NTttcp segédprogram](https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769)
 
@@ -357,9 +357,9 @@ A iPerf nevű eszköz használatával tesztelheti a különböző virtuálisgép
 
 További információért lásd a következő cikkeket:
 
-- [Expressroute hálózati teljesítményének hibaelhárítása](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-network-performance)
+- [Expressroute hálózati teljesítményének hibaelhárítása](../expressroute/expressroute-troubleshooting-network-performance.md)
 
-- [VPN teljesítményének érvényesítése virtuális hálózaton](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-validate-throughput-to-vnet)
+- [VPN teljesítményének érvényesítése virtuális hálózaton](../vpn-gateway/vpn-gateway-validate-throughput-to-vnet.md)
 
 ### <a name="detect-inefficient-tcp-behaviors"></a>Nem hatékony TCP-viselkedések észlelése
 
@@ -369,6 +369,6 @@ Azt is vegye figyelembe, hogy egyes újraküldési és ismétlődő nyugták a h
 
 Ezek a csomagok azonban arra utalnak, hogy a TCP-átviteli sebesség nem tudja elérni a maximális teljesítményt, a cikk más részeiben tárgyalt okok miatt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Most, hogy megismerte az Azure-beli virtuális gépek TCP/IP-teljesítményének finomhangolását, érdemes elolvasnia a [virtuális hálózatok megtervezésével](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm) kapcsolatos egyéb szempontokat, vagy többet is [megtudhat a virtuális hálózatok csatlakoztatásáról és konfigurálásáról](https://docs.microsoft.com/azure/virtual-network/).
+Most, hogy megismerte az Azure-beli virtuális gépek TCP/IP-teljesítményének finomhangolását, érdemes elolvasnia a [virtuális hálózatok megtervezésével](./virtual-network-vnet-plan-design-arm.md) kapcsolatos egyéb szempontokat, vagy többet is [megtudhat a virtuális hálózatok csatlakoztatásáról és konfigurálásáról](./index.yml).

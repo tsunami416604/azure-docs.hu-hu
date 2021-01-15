@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: a5d84b936679cdd5ebd5bec4938d6db7fcb641e7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 800cbf9b7a7fa415452f29b253347188c8917c52
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455505"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219453"
 ---
 # <a name="quickstart-create-a-new-azure-machine-learning-linked-service-in-synapse"></a>Gyors útmutató: új Azure Machine Learning társított szolgáltatás létrehozása a Szinapszisban
 
@@ -22,7 +22,7 @@ Ebben a rövid útmutatóban egy Azure szinapszis Analytics-munkaterületet csat
 
 Egy Azure Machine Learning munkaterületre való hivatkozás például lehetővé teszi a következő élményeket:
 
-- A Azure Machine Learning-folyamatokat a szinapszis-folyamatok lépéseként futtathatja. További információ: [Azure Machine learning folyamatok végrehajtása](/azure/data-factory/transform-data-machine-learning-service).
+- A Azure Machine Learning-folyamatokat a szinapszis-folyamatok lépéseként futtathatja. További információ: [Azure Machine learning folyamatok végrehajtása](../../data-factory/transform-data-machine-learning-service.md).
 
 - Az adatok a Azure Machine Learning modell beállításjegyzékből való kibővítésével és a modellnek a szinapszis SQL-készletekből való kiértékelésével gazdagíthatja adatait. További részletek: [oktatóanyag: gépi tanulási modell pontozási varázslója a SZINAPSZIS SQL-készletekhez](tutorial-sql-pool-model-scoring-wizard.md).
 
@@ -30,7 +30,7 @@ Egy Azure Machine Learning munkaterületre való hivatkozás például lehetőv�
 
 - Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/).
 - A [szinapszis Analytics-munkaterület](../get-started-create-workspace.md) egy ADLS Gen2 Storage-fiókkal, amely alapértelmezett tárolóként van konfigurálva. A ADLS Gen2-fájlrendszer **Storage blob-Adatközreműködőinek** kell lennie.
-- [Azure Machine learning-munkaterület](/azure/machine-learning/how-to-manage-workspace).
+- [Azure Machine learning-munkaterület](../../machine-learning/how-to-manage-workspace.md).
 - A társított szolgáltatás létrehozásához használhatja az engedélyeket (vagy egy olyan személy kérelmét, aki rendelkezik engedélyekkel). Vegye figyelembe, hogy ezt a szolgáltatásnevet a Azure Machine Learning-munkaterület közreműködői szerepköréhez kell rendelni.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
@@ -77,7 +77,7 @@ Ez a lépés létrehoz egy új egyszerű szolgáltatásnevet. Ha egy meglévő s
 
    Ha a kapcsolatok tesztelése nem sikerült, győződjön meg arról, hogy az egyszerű szolgáltatásnév és a titkos kód helyes, és próbálkozzon újra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Oktatóanyag: gépi tanulási modell pontozása varázsló – dedikált SQL-készlet](tutorial-sql-pool-model-scoring-wizard.md)
 - [Az Azure szinapszis Analytics Machine Learning képességei](what-is-machine-learning.md)

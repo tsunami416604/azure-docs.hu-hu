@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f09d2050617cbda539eee9fcda1ecfb204a015a
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: bc8ec364380fc5cb9f6e33a29cd8dac96ea1fb69
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059279"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219827"
 ---
 # <a name="securing-external-collaboration-in-azure-active-directory-and-microsoft-365"></a>A külső együttműködés biztonságossá tétele Azure Active Directory és Microsoft 365
 
@@ -38,7 +38,7 @@ A Microsoft átfogó eszközöket kínál a külső hozzáférés biztonságos e
 
 A dokumentumkészlet úgy lett kialakítva, hogy lehetővé tegye, hogy az ad hoc vagy lazán irányított külső együttműködésből egy biztonságosabb állapotba lépjen. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a következő cikkeket az erőforrásokhoz való külső hozzáférés biztonságossá tételéhez. Javasoljuk, hogy a felsorolt sorrendben végezze el a műveleteket.
 

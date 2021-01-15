@@ -3,17 +3,17 @@ title: Azure Relay hálózati biztonsága
 description: Ez a cikk azt ismerteti, hogyan használhatók az IP-tűzfalszabályok és a magánhálózati végpontok a Azure Relay használatával.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 608224f42fac8cd2d8ff06ab84989b1f675d418c
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 735a0b7dc303ad63cb301151e3e14e4488c856b1
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134466"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217243"
 ---
 # <a name="network-security-for-azure-relay"></a>Azure Relay hálózati biztonsága 
 Ez a cikk azt ismerteti, hogyan használhatók a következő biztonsági szolgáltatások a Azure Relay használatával: 
 
-- IP-tűzfalszabályok (előzetes verzió)
+- IP-tűzfalszabályok
 - Privát végpontok 
 
 > [!NOTE]
@@ -28,9 +28,6 @@ Ez a funkció olyan helyzetekben hasznos, amikor a Azure Relay csak bizonyos jó
 Az IP-tűzfalszabályok a továbbítási névtér szintjén lesznek alkalmazva. Ezért a szabályok az ügyfelek összes kapcsolatára érvényesek bármely támogatott protokoll használatával. A továbbítási névtérben lévő engedélyezett IP-szabálynak nem megfelelő IP-címről érkező kapcsolódási kísérleteket a rendszer nem engedélyezettként fogadja el. A válasz nem említi az IP-szabályt. Az IP-szűrési szabályok sorrendben lesznek alkalmazva, és az IP-címnek megfelelő első szabály határozza meg az elfogadás vagy az elutasítás műveletet.
 
 További információ: az [IP-tűzfal konfigurálása továbbító névtérhez](ip-firewall-virtual-networks.md)
-
-> [!NOTE]
-> Ez a funkció jelenleg **előzetes** verzióban érhető el. 
 
 ## <a name="private-endpoints"></a>Privát végpontok
 

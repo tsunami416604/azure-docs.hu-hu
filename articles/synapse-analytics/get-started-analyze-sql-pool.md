@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: 38332492ba9f20ea7c6682d8341ddf6b5f1f11dd
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 683da659dcfa07c0a105382f4cc93d1f4dfb21b5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209422"
+ms.locfileid: "98219535"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Az adatelemzés dedikált SQL-készletekkel
 
@@ -24,7 +24,7 @@ Az Azure szinapszis Analytics lehetővé teszi az adatelemzést egy dedikált SQ
 ## <a name="load-the-nyc-taxi-data-into-sqlpool1"></a>A New York-i taxi-szolgáltatás betöltése a SQLPOOL1
 
 1. A szinapszis Studióban navigáljon a **fejlesztés** hubhoz, kattintson a **+** gombra új erőforrás hozzáadásához, majd hozzon létre új SQL-parancsfájlt.
-1. Válassza ki a "SQLPOOL1" készletet (az oktatóanyag [1. lépésében](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace#create-a-sql-pool) létrehozott készletet) a parancsfájl feletti "kapcsolódás" legördülő listához.
+1. Válassza ki a "SQLPOOL1" készletet (az oktatóanyag [1. lépésében](./get-started-create-workspace.md) létrehozott készletet) a parancsfájl feletti "kapcsolódás" legördülő listához.
 1. Írja be a következő kódot:
     ```
     CREATE TABLE [dbo].[Trip]
@@ -103,4 +103,3 @@ Az Azure szinapszis Analytics lehetővé teszi az adatelemzést egy dedikált SQ
 
 > [!div class="nextstepaction"]
 > [Elemzés a Spark használatával](get-started-analyze-spark.md)
-

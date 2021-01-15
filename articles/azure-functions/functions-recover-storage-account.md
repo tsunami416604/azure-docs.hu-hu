@@ -3,12 +3,12 @@ title: 'Hibakeresési hiba: Azure Functions-futtatókörnyezet nem érhető el'
 description: Ismerje meg, hogyan lehet elhárítani egy érvénytelen Storage-fiókot.
 ms.topic: article
 ms.date: 09/05/2018
-ms.openlocfilehash: 0b6778a08bf04367f2a0ef10f7cd4fe29a52dd61
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 9f6592b6d5ef88127a9dfca1e868564be0aa4ed5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579011"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217294"
 ---
 # <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>Hibakeresési hiba: "a Azure Functions-futtatókörnyezet nem érhető el"
 
@@ -16,15 +16,15 @@ Ez a cikk segítséget nyújt a Azure Portalban megjelenő következő hibaüzen
 
 > "Hiba: a Azure Functions-futtatókörnyezet nem érhető el. Kattintson ide a tárolási konfiguráció részleteinek megtekintéséhez.
 
-Ez a probléma akkor fordul elő, ha a Azure Functions-futtatókörnyezet nem indítható el. A probléma leggyakoribb oka, hogy a Function alkalmazás elvesztette a hozzáférést a Storage-fiókjához. További információ: a [Storage-fiókra vonatkozó követelmények](./functions-create-function-app-portal.md#storage-account-requirements).
+Ez a probléma akkor fordul elő, ha a functions futtatókörnyezet nem indítható el. Ennek a leggyakoribb oka az, hogy a Function alkalmazás elveszítette a hozzáférését a Storage-fiókjához. További információ: a [Storage-fiókra vonatkozó követelmények](storage-considerations.md#storage-account-requirements).
 
-A cikk további részében a hiba következő okának elhárítása segít, beleértve az egyes esetek azonosítását és megoldását.
+A cikk további része segítséget nyújt a hiba konkrét okainak elhárításában, beleértve az egyes esetek azonosítását és megoldását.
 
 ## <a name="storage-account-was-deleted"></a>A Storage-fiók törölve
 
-Minden Function alkalmazás működéséhez szükség van egy Storage-fiókra. Ha a fiók törölve lett, a függvény nem fog működni.
+Minden Function alkalmazás működéséhez szükség van egy Storage-fiókra. Ha a fiók törölve lett, a függvények nem fognak működni.
 
-Első lépésként tekintse meg a Storage-fiók nevét az alkalmazás beállításaiban. `AzureWebJobsStorage`Vagy `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` tartalmazza a Storage-fiók nevét, amely egy kapcsolatok karakterláncában van becsomagolva. További információ: [az Alkalmazásbeállítások referenciája Azure functions](./functions-app-settings.md#azurewebjobsstorage).
+Első lépésként tekintse meg a Storage-fiók nevét az alkalmazás beállításaiban. `AzureWebJobsStorage`Vagy `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` tartalmazza a Storage-fiók nevét a kapcsolati karakterlánc részeként. További információ: [az Alkalmazásbeállítások referenciája Azure functions](./functions-app-settings.md#azurewebjobsstorage).
 
 Keresse meg a Storage-fiókját a Azure Portalban, és ellenőrizze, hogy még létezik-e. Ha törölték, hozza létre újra a Storage-fiókot, és cserélje le a tárolási kapcsolatok karakterláncait. A függvény kódja elveszett, és újra kell telepítenie.
 
@@ -44,7 +44,7 @@ További információ: [az Alkalmazásbeállítások referenciája Azure functio
 
 ### <a name="guidance"></a>Útmutató
 
-* Ezeknél a beállításoknál ne a "tárolóhely beállítása" lehetőséget. Ha az üzembe helyezési pontokat cseréli, a Function alkalmazás megszakítja a műveletet.
+* Ne vizsgálja meg a **tárolóhelyek beállítását** ezen beállítások közül. Ha az üzembe helyezési pontokat cseréli, a Function alkalmazás megszakítja a műveletet.
 * Ne módosítsa ezeket a beállításokat az automatikus telepítések részeként.
 * Ezeket a beállításokat meg kell adni, és érvényesnek kell lenniük a létrehozáskor. Egy automatikus központi telepítés, amely nem tartalmazza ezeket a beállításokat, a függvény alkalmazás nem fog futni, még akkor sem, ha később hozzáadják a beállításokat.
 
@@ -56,7 +56,7 @@ A tárolási kulcsok újragenerálása esetén frissíteni kell a korábban tár
 
 A Function alkalmazásnak képesnek kell lennie hozzáférni a Storage-fiókhoz. A Function app egy Storage-fiókhoz való hozzáférését letiltó gyakori problémák a következők:
 
-* A Function alkalmazást a rendszer a megfelelő hálózati szabályok nélkül helyezi üzembe a App Service Environment a Storage-fiókba irányuló és onnan érkező forgalom engedélyezéséhez.
+* A Function alkalmazást a rendszer a megfelelő hálózati szabályok nélkül helyezi üzembe a App Service Environment (bevezetésre) a Storage-fiókba irányuló és onnan érkező forgalom engedélyezéséhez.
 
 * A Storage-fiók tűzfala engedélyezve van, és nincs konfigurálva a függvények felé irányuló és onnan érkező forgalom engedélyezéséhez. További információ: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](../storage/common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
@@ -72,7 +72,7 @@ A probléma megoldásához távolítsa el vagy növelje meg a napi kvótát, maj
 
 ## <a name="app-is-behind-a-firewall"></a>Az alkalmazás tűzfal mögött van
 
-Előfordulhat, hogy a függvény futtatókörnyezete a következő okok valamelyike miatt nem érhető el:
+Előfordulhat, hogy a Function alkalmazás a következő okok valamelyike miatt nem érhető el:
 
 * A Function alkalmazást [belső terheléselosztású app Service Environment](../app-service/environment/create-ilb-ase.md) üzemelteti, és úgy van konfigurálva, hogy letiltsa a bejövő internetes forgalmat.
 
@@ -80,8 +80,8 @@ Előfordulhat, hogy a függvény futtatókörnyezete a következő okok valamely
 
 A Azure Portal közvetlenül a futó alkalmazásban hívja meg a függvények listáját, és HTTP-hívásokat kezdeményez az kudu-végpontra. A platform **szolgáltatásai** lap platform szintű beállításai továbbra is elérhetők.
 
-A App Service Environment konfiguráció ellenőrzése:
-1. Nyissa meg annak az alhálózatnak a hálózati biztonsági csoportját (NSG), ahol a App Service Environment található.
+A bemutató konfiguráció ellenőrzése:
+1. Nyissa meg annak az alhálózatnak a hálózati biztonsági csoportját (NSG), ahol a központilag található.
 1. Ellenőrizze, hogy a bejövő szabályok lehetővé teszik-e az alkalmazáshoz hozzáférő számítógép nyilvános IP-címéről érkező forgalom engedélyezését. 
    
 A portált olyan számítógépről is használhatja, amely az alkalmazást futtató virtuális hálózathoz vagy a virtuális hálózatban futó virtuális géphez van csatlakoztatva. 

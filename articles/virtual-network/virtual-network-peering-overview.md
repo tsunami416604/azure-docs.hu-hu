@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: kumud
-ms.openlocfilehash: 61617777efa8241c93b2b5ffe42fc1d914b6ebcf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: feea2d54edd8a93e6e0effbef03389ef895d5ffb
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004976"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216750"
 ---
-# <a name="virtual-network-peering"></a>Virtuális hálózati társviszony
+# <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
 
 A virtuális hálózatok közötti kapcsolat lehetővé teszi két vagy több [virtuális hálózat](virtual-networks-overview.md) zökkenőmentes összekapcsolását az Azure-ban. A virtuális hálózatok a kapcsolati céloknak megfelelően jelennek meg. A virtuális gépek közötti forgalom a Microsoft gerinc-infrastruktúrát használja. Az azonos hálózatban lévő virtuális gépek közötti forgalomhoz hasonlóan a forgalmat csak a Microsoft *magánhálózati* hálózata irányítja át.
 
@@ -48,7 +48,7 @@ Az azonos régióban lévő virtuális társhálózaton belüli virtuális gépe
 A virtuális társhálózatokon belüli virtuális gépek közötti forgalom közvetlenül a Microsoft gerincinfrastruktúráján halad át, nem pedig átjárón vagy a nyilvános interneten.
 
 Bármelyik virtuális hálózaton hálózati biztonsági csoportokat is alkalmazhat, hogy letiltsa a hozzáférést más virtuális hálózatokhoz vagy alhálózatokhoz.
-A virtuális hálózati kapcsolatok konfigurálásakor nyissa meg vagy zárjunk be a hálózati biztonsági csoport szabályait a virtuális hálózatok között. Ha megnyitja a teljes kapcsolatot a kihelyezett virtuális hálózatok között, akkor a hálózati biztonsági csoportok alkalmazásával blokkolhatja vagy megtagadhatja a megadott hozzáférést. A teljes kapcsolat az alapértelmezett beállítás. A hálózati biztonsági csoportokkal kapcsolatos további tudnivalókért tekintse meg a [biztonsági csoportok](security-overview.md)című témakört.
+A virtuális hálózati kapcsolatok konfigurálásakor nyissa meg vagy zárjunk be a hálózati biztonsági csoport szabályait a virtuális hálózatok között. Ha megnyitja a teljes kapcsolatot a kihelyezett virtuális hálózatok között, akkor a hálózati biztonsági csoportok alkalmazásával blokkolhatja vagy megtagadhatja a megadott hozzáférést. A teljes kapcsolat az alapértelmezett beállítás. A hálózati biztonsági csoportokkal kapcsolatos további tudnivalókért tekintse meg a [biztonsági csoportok](./network-security-groups-overview.md)című témakört.
 
 ## <a name="service-chaining"></a>Szolgáltatásláncolás
 
@@ -106,7 +106,7 @@ Az átjáró-átvitel egy olyan társítási tulajdonság, amely lehetővé tesz
 >[!NOTE]
 > A dokumentum egy korábbi verziója azt állapította meg, hogy a virtuális hálózati társítási díjak nem vonatkoznak a küllős VNet (vagy nem átjáró VNet) az átjáró-Átvitelsel. Mostantól a díjszabási oldalon a pontos díjszabást tükrözi.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Két virtuális hálózat közötti társítást hozhat létre. A hálózatok ugyanahhoz az előfizetéshez, különböző üzembe helyezési modellekhez tartozhatnak ugyanabban az előfizetésben, vagy eltérő előfizetésekben is. Végezzen el egy oktatóanyagot a következő forgatókönyvek egyikéhez:
 

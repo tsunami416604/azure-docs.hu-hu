@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 27372207df66b4198bd9c785ecc099fa88cbe548
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: b974af343907c98ebd7a318bc60a0e553a07a233
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335694"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219351"
 ---
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>Hibaelhárítás: nem sikerült törölni a virtuális hálózatot az Azure-ban
 
@@ -64,15 +64,15 @@ Ha van egy Application Gateway, el kell távolítania a virtuális hálózat tö
 ### <a name="check-whether-azure-container-instances-still-exist-in-the-virtual-network"></a>Győződjön meg arról, hogy az Azure Container instances még léteznek a virtuális hálózaton
 
 1. A Azure Portal nyissa meg az erőforráscsoport **Áttekintés** lapját.
-1. Az erőforráscsoport erőforrásai listájának fejlécében válassza a **rejtett típusok megjelenítése** lehetőséget. Alapértelmezés szerint a hálózati profil típusa rejtett a Azure Portal.
+1. Az erőforráscsoport erőforráslistájának fejlécében jelölje be a **Rejtett típusok megjelenítése** jelölőnégyzetet. Alapértelmezés szerint a hálózati profil típusa rejtett a Azure Portal.
 1. Válassza ki a tároló csoportokhoz kapcsolódó hálózati profilt.
 1. Válassza a **Törlés** elemet.
 
    ![Képernyőkép a rejtett hálózati profilok listájáról.](media/virtual-network-troubleshoot-cannot-delete-vnet/container-instances.png)
 
-1. Törölje újra az alhálózatot vagy a virtuális hálózatot.
+1. Törölje ismét az alhálózatot vagy a virtuális hálózatot.
 
-Ha ezek a lépések nem oldják meg a problémát, használja ezeket az [Azure CLI-parancsokat](https://docs.microsoft.com/azure/container-instances/container-instances-vnet#clean-up-resources) az erőforrások törléséhez. 
+Ha ezek a lépések nem oldják meg a problémát, használja ezeket az [Azure CLI-parancsokat](../container-instances/container-instances-vnet.md#clean-up-resources) az erőforrások törléséhez. 
 
 ### <a name="check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network"></a>Annak megállapítása, hogy a Azure Active Directory tartományi szolgáltatás engedélyezve van-e a virtuális hálózaton
 
@@ -106,7 +106,7 @@ Ha a virtuális hálózat áttelepítési állapotban van, nem törölhető. Fut
 Move-AzureVirtualNetwork -VirtualNetworkName "Name" -Abort
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Virtual Network](virtual-networks-overview.md)
 - [Azure Virtual Network – Gyakori kérdések (GYIK)](virtual-networks-faq.md)

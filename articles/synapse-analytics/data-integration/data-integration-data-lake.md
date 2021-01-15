@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: 495300d677d6d898bfc916e5115b801c815bd587
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: fbc4f11b450a645002daedc800d4fed74ed37a3d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461484"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219572"
 ---
 # <a name="ingest-data-into-azure-data-lake-storage-gen2"></a>Adatbevitel a Azure Data Lake Storage Gen2ba 
 
@@ -23,7 +23,7 @@ Ebből a cikkből megtudhatja, hogyan végezheti el az adatok egyik helyről a m
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) .
-* **Azure Storage-fiók**: a 2. generációs Azure Data Lake használja *forrás* adattárként. Ha nem rendelkezik Storage-fiókkal, tekintse meg az [Azure Storage-fiók létrehozása](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) lépéseit.
+* **Azure Storage-fiók**: a 2. generációs Azure Data Lake használja *forrás* adattárként. Ha nem rendelkezik Storage-fiókkal, tekintse meg az [Azure Storage-fiók létrehozása](../../storage/common/storage-account-create.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) lépéseit.
 
 ## <a name="create-linked-services"></a>Társított szolgáltatások létrehozása
 
@@ -70,6 +70,6 @@ Ebben a lépésben az előző lépésben közzétett folyamatot manuálisan ind�
 1. Ellenőrizze, hogy az adatai helyesen vannak-e írva a dedikált SQL-készletben.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure szinapszis Analytics adatintegrálásával kapcsolatos további információkért tekintse meg az adatok betöltése [egy DEDIKÁLT SQL-készletbe](data-integration-sql-pool.md) című cikket.

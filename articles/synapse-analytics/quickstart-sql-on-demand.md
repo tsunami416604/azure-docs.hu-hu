@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: e75bab664bdd0d6a4ac898905226c9956f62b4ff
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ffa9e7b5685f9a200f6a403045687626f67f66f4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450506"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218297"
 ---
 # <a name="quickstart-use-serverless-sql-pool"></a>Gyors útmutató: kiszolgáló nélküli SQL-készlet használata
 
@@ -26,7 +26,7 @@ Ez a rövid útmutató a következő lekérdezéseket mutatja be: CSV, Apache Pa
 
 Válasszon ki egy SQL-ügyfelet a lekérdezések kibocsátásához:
 
-- Az [Azure szinapszis Studio](quickstart-synapse-studio.md) egy webes eszköz, amellyel böngészheti a fájlokat a tárolóban, és SQL-lekérdezéseket hozhat létre.
+- Az [Azure szinapszis Studio](./get-started-create-workspace.md) egy webes eszköz, amellyel böngészheti a fájlokat a tárolóban, és SQL-lekérdezéseket hozhat létre.
 - A [Azure Data Studio](sql/get-started-azure-data-studio.md) egy ügyfél-eszköz, amely lehetővé teszi, hogy SQL-lekérdezéseket és jegyzetfüzeteket futtasson az igény szerinti adatbázison.
 - A [SQL Server Management Studio](sql/get-started-ssms.md) egy ügyfél-eszköz, amely lehetővé teszi, hogy SQL-lekérdezéseket futtasson az igény szerinti adatbázison.
 
@@ -178,7 +178,7 @@ WHERE
 > [!IMPORTANT]
 > A teljes JSON-fájlt egysoros/oszlopként olvasjuk. Így a FIELDTERMINATOR, a FIELDQUOTE és a ROWTERMINATOR a 0x0b értékre van állítva, mert nem várjuk, hogy megkeresjük a fájlban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most már készen áll a folytatásra a következő cikkekkel:
 

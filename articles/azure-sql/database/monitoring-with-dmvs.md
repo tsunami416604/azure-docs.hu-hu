@@ -11,18 +11,18 @@ ms.topic: how-to
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
-ms.date: 04/19/2020
-ms.openlocfilehash: 480e9f9031481621ac9d568a7bd97b942f47b947
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 1/14/2021
+ms.openlocfilehash: b87d0a2446eb2b65c20ae0bef408320686cb5165
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493641"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219130"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>A Microsoft Azure SQL Database és a felügyelt Azure SQL-példány teljesítményének monitorozása dinamikus felügyeleti nézetekkel
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-A Microsoft Azure SQL Database és az Azure SQL felügyelt példánya lehetővé teszi a dinamikus felügyeleti nézetek egy részhalmazát a teljesítményproblémák diagnosztizálására, ami a blokkolt vagy hosszan futó lekérdezések, az erőforrás szűk keresztmetszetei, a rossz lekérdezési csomagok és így tovább. Ez a témakör arról nyújt tájékoztatást, hogyan észlelhetők a gyakori teljesítményproblémák a dinamikus felügyeleti nézetek használatával.
+A Microsoft Azure SQL Database és az Azure SQL felügyelt példánya lehetővé teszi a dinamikus felügyeleti nézetek egy részhalmazát a teljesítményproblémák diagnosztizálására, ami a blokkolt vagy hosszan futó lekérdezések, az erőforrás szűk keresztmetszetei, a rossz lekérdezési csomagok és így tovább. Ez a cikk ismerteti, hogyan észlelhetők a gyakori teljesítményproblémák a dinamikus felügyeleti nézetek használatával.
 
 A Microsoft Azure SQL Database és az Azure SQL felügyelt példánya részben a dinamikus felügyeleti nézetek három kategóriáját támogatja:
 
@@ -131,7 +131,7 @@ Az I/O-teljesítménnyel kapcsolatos problémák azonosítása során az I/O-pro
 
 ### <a name="if-the-io-issue-is-occurring-right-now"></a>Ha az IO-probléma most következik be
 
-A és [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) a sys.dm_exec_requests [sys.dm_os_waiting_tasks](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) használatával tekintheti meg a és a programot `wait_type` `wait_time` .
+A és [](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) a sys.dm_exec_requests [sys.dm_os_waiting_tasks](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) használatával tekintheti meg a és a programot `wait_type` `wait_time` .
 
 #### <a name="identify-data-and-log-io-usage"></a>Adatok és naplók IO-használatának azonosítása
 
@@ -254,12 +254,12 @@ GO
 
 Az IO-teljesítménnyel kapcsolatos problémák azonosításakor a problémákhoz társított legfelső szintű várakozási típusok `tempdb` `PAGELATCH_*` (nem `PAGEIOLATCH_*` ). Azonban a `PAGELATCH_*` várakozások nem mindig azt jelentik, hogy van-e a `tempdb` tartalom.  A várakozás annak a jele is lehet, hogy a felhasználó és az objektum adatlapjai között van versengés, mivel egyszerre több kérés célozza ugyanazt az adatlapot. A versengés további megerősítése érdekében `tempdb` [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) segítségével ellenőrizze, hogy a wait_resource érték kezdődik-e, ahol a `2:x:y` 2 az `tempdb` adatbázis-azonosító, a `x` a fájl azonosítója, és `y` a lap azonosítója.  
 
-A tempdb-tartalom esetében a gyakori módszer a-t használó alkalmazás kódjának csökkentése vagy újbóli írása `tempdb` .  A gyakori `tempdb` felhasználási területek a következők:
+A tempdb-tartalom esetében egy közös módszer az alkalmazás kódjának csökkentése vagy újraírása `tempdb` .  A gyakori `tempdb` felhasználási területek a következők:
 
 - Ideiglenes táblák
 - Ideiglenes változók
 - Ideiglenes értékű paraméterek
-- Verziótároló használata (elsősorban a hosszú ideig futó tranzakciók esetében)
+- Verzió-áruház használata (a hosszú ideig futó tranzakciókhoz társítva)
 - Lekérdezések, amelyek lekérdezési terve rendezéseket, kivonatillesztéseket és sorba állításokat használ.
 
 ### <a name="top-queries-that-use-table-variables-and-temporary-tables"></a>A táblázat változóit és az ideiglenes táblákat használó leggyakoribb lekérdezések
@@ -563,14 +563,14 @@ SELECT resource_name, AVG(avg_cpu_percent) AS Average_Compute_Utilization
 FROM sys.server_resource_stats
 WHERE start_time BETWEEN @s AND @e  
 GROUP BY resource_name  
-HAVING AVG(avg_cpu_percent) >= 80
+HAVING AVG(avg_cpu_percent) >= 80;
 ```
 
 ### <a name="sysresource_stats"></a>sys.resource_stats
 
 A **Master** adatbázis [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) nézete további információkat tartalmaz, amelyek segítségével figyelheti az adatbázis teljesítményét az adott szolgáltatási rétegben és a számítási méretekben. Az adatok gyűjtése 5 percenként történik, és körülbelül 14 napig tart fenn. Ez a nézet hasznos lehet a hosszú távú múltbeli elemzésekhez, hogy az adatbázis hogyan használja az erőforrásokat.
 
-A következő gráf a prémium szintű adatbázisok CPU-erőforrásait mutatja be a P2 számítási mérettel a hét minden órájában. Ez a gráf hétfőn kezdődik, 5 munkanapot mutat, majd egy hétvégét jeleníti meg, ha sokkal kevesebb történik az alkalmazásnál.
+A következő gráf a prémium szintű adatbázisok CPU-erőforrásait mutatja be a P2 számítási mérettel a hét minden órájában. Ez a gráf hétfőn kezdődik, öt munkanapot mutat, majd egy hétvégét jeleníti meg, ha sokkal kevesebb történik az alkalmazásnál.
 
 ![Adatbázis-erőforrás használata](./media/monitoring-with-dmvs/sql_db_resource_utilization.png)
 
@@ -589,7 +589,7 @@ Ez a példa bemutatja, hogyan jelennek meg az ebben a nézetben látható adatte
 SELECT TOP 10 *
 FROM sys.resource_stats
 WHERE database_name = 'resource1'
-ORDER BY start_time DESC
+ORDER BY start_time DESC;
 ```
 
 ![A sys.resource_stats katalógus nézet](./media/monitoring-with-dmvs/sys_resource_stats.png)
@@ -624,7 +624,7 @@ A következő példa különböző módokon mutatja be, hogy az adatbázis hogya
     WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
     ```
 
-3. Az egyes erőforrás-metrikák átlagos és maximális értékeivel kapcsolatos információk alapján kiértékelheti, hogy a munkaterhelés milyen mértékben illeszkedik a kiválasztott számítási mérethez. A **sys.resource_stats** átlagos értékei általában megfelelő alapkonfigurációt biztosítanak a célként megadott mérethez képest. Az elsődleges mérési sticknek kell lennie. Előfordulhat például, hogy a standard szolgáltatási szintet S2 számítási mérettel használja. A CPU és az i/o-olvasások és írások átlagos kihasználtsági aránya 40% alatti, a feldolgozók átlagos száma pedig 50, a munkamenetek átlagos száma pedig 200. A munkaterhelés az S1 számítási méretéhez igazodhat. Könnyen megtekinthető, hogy az adatbázis megfelel-e a munkavégző és a munkamenet korlátainak. Ha szeretné megtekinteni, hogy egy adatbázis kisebb számítási mérettel rendelkezik-e a CPU-ra, az olvasásra és az írásra vonatkozóan, ossza meg az alacsonyabb számítási méret DTU számát az aktuális számítási méret DTU számával, majd szorozza meg az eredményt a 100 értékkel:
+3. Az egyes erőforrás-metrikák átlagos és maximális értékeivel kapcsolatos információk alapján kiértékelheti, hogy a munkaterhelés milyen mértékben illeszkedik a kiválasztott számítási mérethez. A **sys.resource_stats** átlagos értékei általában megfelelő alapkonfigurációt biztosítanak a célként megadott mérethez képest. Az elsődleges mérési sticknek kell lennie. Előfordulhat például, hogy a standard szolgáltatási szintet S2 számítási mérettel használja. A CPU és az i/o-olvasások és írások átlagos kihasználtsági aránya 40% alatti, a feldolgozók átlagos száma pedig 50, a munkamenetek átlagos száma pedig 200. A munkaterhelés az S1 számítási méretéhez igazodhat. Könnyen megtekinthető, hogy az adatbázis megfelel-e a munkavégző és a munkamenet korlátainak. Ha szeretné megtekinteni, hogy egy adatbázis alacsonyabb számítási mérettel rendelkezik-e a CPU-ra, az olvasásra és az írásra vonatkozóan, ossza meg az alacsonyabb számítási méret DTU számát az aktuális számítási méret DTU, majd szorozza meg az eredményt a 100-es értékkel:
 
     `S1 DTU / S2 DTU * 100 = 20 / 50 * 100 = 40`
 
@@ -699,7 +699,7 @@ Az aktuális aktív munkamenetek számának megtekintéséhez futtassa ezt a Tra
 
 ```sql
 SELECT COUNT(*) AS [Sessions]
-FROM sys.dm_exec_connections
+FROM sys.dm_exec_connections;
 ```
 
 Ha SQL Server munkaterhelést elemez, módosítsa a lekérdezést úgy, hogy az egy adott adatbázisra összpontosítsanak. Ez a lekérdezés segít meghatározni a lehetséges munkamenet-igényeket az adatbázishoz, ha azt tervezi, hogy áthelyezi az Azure-ba.
@@ -709,7 +709,7 @@ SELECT COUNT(*) AS [Sessions]
 FROM sys.dm_exec_connections C
 INNER JOIN sys.dm_exec_sessions S ON (S.session_id = C.session_id)
 INNER JOIN sys.databases D ON (D.database_id = S.database_id)
-WHERE D.name = 'MyDatabase'
+WHERE D.name = 'MyDatabase';
 ```
 
 Ezek a lekérdezések ismét egy időponthoz tartozó értéket adnak vissza. Ha az idő múlásával több mintát gyűjt, akkor a munkamenet-használat legjobb ismerete lesz.
@@ -743,7 +743,7 @@ ORDER BY 2 DESC;
 
 ### <a name="monitoring-blocked-queries"></a>Letiltott lekérdezések figyelése
 
-A lassú vagy hosszan futó lekérdezések hozzájárulhatnak a túlzott erőforrás-használathoz, és a letiltott lekérdezések következményeként is. A blokkolás oka lehet gyenge az alkalmazások megtervezése, a rossz lekérdezési csomagok, a hasznos indexek hiánya stb. Az adatbázis aktuális zárolási tevékenységével kapcsolatos információkat a sys.dm_tran_locks nézet használatával kérheti le. Például a kód: [sys.dm_tran_locks (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql).
+A lassú vagy hosszan futó lekérdezések hozzájárulhatnak a túlzott erőforrás-használathoz, és a letiltott lekérdezések következményeként is. A blokkolás oka lehet gyenge az alkalmazások megtervezése, a rossz lekérdezési csomagok, a hasznos indexek hiánya stb. Az adatbázis aktuális zárolási tevékenységével kapcsolatos információkat a sys.dm_tran_locks nézet használatával kérheti le. Például a kód: [sys.dm_tran_locks (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql). A blokkolás hibaelhárításával kapcsolatos további információkért lásd: az [Azure SQL-blokkoló problémáinak megismerése és megoldása](understand-resolve-blocking.md).
 
 ### <a name="monitoring-query-plans"></a>A lekérdezési csomagok figyelése
 
@@ -769,6 +769,6 @@ CROSS APPLY sys.dm_exec_sql_text(plan_handle) AS q
 ORDER BY highest_cpu_queries.total_worker_time DESC;
 ```
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 [A Azure SQL Database és az Azure SQL felügyelt példányának bemutatása](sql-database-paas-overview.md)

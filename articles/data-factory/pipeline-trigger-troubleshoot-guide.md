@@ -7,46 +7,40 @@ ms.date: 12/15/2020
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: 0e67a316b012eda61607c84edfd8e10d6aa3318d
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 0ceee3c65e8c4df5d843bb441fb6426a0f4eb696
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589168"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220252"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>A folyamat-összehangolás és az eseményindítók hibáinak megoldása Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-A folyamatfuttatás egy folyamat-végrehajtás egy példányát határozza meg az Azure Data Factoryben. Tegyük fel, hogy van egy olyan folyamata, amely a 8:00-es, 9:00-as és 10:00-es időpontban fut. Ebben az esetben a folyamat vagy a folyamat futtatásának három különálló futtatása van. Minden folyamathoz tartozik egy egyedi folyamatfuttatási azonosító. A futtatási azonosító egy GUID (globálisan egyedi azonosító), amely meghatározza, hogy az adott folyamat fusson.
+A folyamatfuttatás egy folyamat-végrehajtás egy példányát határozza meg az Azure Data Factoryben. Tegyük fel például, hogy rendelkezik egy olyan folyamattal, amely a következő időpontban fut: 8:00, 9:00 AM és 10:00. Ebben az esetben három külön folyamat fut. Minden folyamathoz tartozik egy egyedi folyamatfuttatási azonosító. A futtatási azonosító egy globálisan egyedi azonosító (GUID), amely meghatározza, hogy az adott folyamat fusson.
 
-A folyamatfuttatások példányosítása jellemzően az argumentumoknak a folyamatban meghatározott paraméterekhez történő továbbításával történik. A folyamatok manuálisan vagy egy eseményindító használatával hajthatók végre. A részletekért tekintse meg a [folyamat-végrehajtást és a Azure Data Factory eseményindítókat](concepts-pipeline-execution-triggers.md) .
+A folyamatfuttatások példányosítása jellemzően az argumentumoknak a folyamatban meghatározott paraméterekhez történő továbbításával történik. A folyamatokat manuálisan vagy trigger használatával is futtathatja. Részletekért lásd: [folyamat-végrehajtás és eseményindítók Azure Data Factory](concepts-pipeline-execution-triggers.md) .
 
 ## <a name="common-issues-causes-and-solutions"></a>Gyakori problémák, okok és megoldások
 
-### <a name="pipeline-with-azure-function-throws-error-with-private-end-point-connectivity"></a>A folyamat és az Azure Function dob hibát jelez a privát végponti kapcsolattal
+### <a name="an-azure-functions-app-pipeline-throws-an-error-with-private-endpoint-connectivity"></a>Egy Azure Functions alkalmazási folyamat hibát jelez a privát végponti kapcsolattal
  
-#### <a name="issue"></a>Probléma
-Egyes környezetekben Data Factory és Azure függvényalkalmazás fut egy privát végponton. Olyan folyamatot próbál beolvasni, amely együttműködik az Azure függvényalkalmazásával. Három különböző metódust próbált meg, de egy hibát ad vissza `Bad Request` , a másik két metódus visszatér `103 Error Forbidden` .
+Egy privát végponton Data Factory és egy Azure Function-alkalmazás fut. Olyan folyamatot próbál futtatni, amely együttműködik a Function alkalmazással. Három különböző metódust próbált meg használni, de az egyik a "hibás kérelem" hibaüzenetet adja vissza, a másik két metódus pedig "103 hibát tiltott".
 
-#### <a name="cause"></a>Ok 
-A Data Factory jelenleg nem támogatja az Azure függvényalkalmazáshez készült magánhálózati végpont-összekötőt. Ennek az az oka, hogy az Azure függvényalkalmazás elutasítja a hívásokat, mivel úgy lett konfigurálva, hogy csak privát kapcsolaton keresztül engedélyezze a kapcsolatokat.
+**OK**: a Data Factory jelenleg nem támogatja a Function apps szolgáltatáshoz tartozó privát végpont-összekötőt. Azure Functions elutasítja a hívásokat, mert úgy van konfigurálva, hogy csak privát kapcsolaton keresztül engedélyezze a kapcsolatokat.
 
-#### <a name="resolution"></a>Feloldás
-Létrehozhat egy **PrivateLinkService** típusú privát végpontot, és megadhatja a függvény alkalmazásának DNS-t, és a hálózatnak működnie kell.
+**Megoldás**: hozzon létre egy **PrivateLinkService** -végpontot, és adja meg a függvény alkalmazásának DNS-ét.
 
-### <a name="pipeline-run-is-killed-but-the-monitor-still-shows-progress-status"></a>A folyamat futása megszakadt, de a figyelő továbbra is megjeleníti a folyamat állapotát.
+### <a name="a-pipeline-run-is-canceled-but-the-monitor-still-shows-progress-status"></a>A folyamat futása megszakadt, de a figyelő továbbra is megjeleníti a folyamat állapotát.
 
-#### <a name="issue"></a>Probléma
-Amikor megöl egy folyamat futását, a folyamat figyelése továbbra is a folyamat állapotát mutatja. Ez azért fordulhat elő, mert a böngésző gyorsítótárazza a problémát, és nem megfelelő szűrőket használ a figyeléshez.
+A folyamat futásának megszakításakor a folyamat figyelése gyakran továbbra is a folyamat állapotát mutatja. Ez egy böngésző gyorsítótárának hibája miatt fordul elő. Előfordulhat, hogy nem rendelkezik a megfelelő figyelési szűrőkkel.
 
-#### <a name="resolution"></a>Feloldás
-Frissítse a böngészőt, és alkalmazza a megfelelő szűrőket a figyeléshez.
+**Megoldás**: frissítse a böngészőt, és alkalmazza a megfelelő figyelési szűrőket.
  
-### <a name="copy-pipeline-failure--found-more-columns-than-expected-column-count-delimitedtextmorecolumnsthandefined"></a>Másolási folyamat hibája – a várt oszlopoknál több oszlop található (DelimitedTextMoreColumnsThanDefined)
-
-#### <a name="issue"></a>Probléma  
-Ha a másolandó mappában található fájlok különböző sémákkal (például változó számú oszlopokkal, különböző elválasztó karakterekkel, idézőjelekkel vagy valamilyen adatproblémával) rendelkeznek, akkor a Data Factory folyamat a következő hibaüzenettel végződik:
+### <a name="you-see-a-delimitedtextmorecolumnsthandefined-error-when-copying-a-pipeline"></a>A folyamat másolásakor "DelimitedTextMoreColumnsThanDefined" hibaüzenet jelenik meg
+ 
+Ha a másolt mappa különböző sémákkal rendelkező fájlokat tartalmaz, például az oszlopok változó számát, a különböző elválasztó karaktereket, az idézőjelek karakteres beállításait vagy valamilyen adatproblémát, akkor a Data Factory folyamat ezt a hibát okozhatja:
 
 `
 Operation on target Copy_sks  failed: Failure happened on 'Sink' side.
@@ -56,51 +50,41 @@ Message=Error found when processing 'Csv/Tsv Format Text' source '0_2020_11_09_1
 Source=Microsoft.DataTransfer.Common,'
 `
 
-#### <a name="resolution"></a>Feloldás
-A Adatok másolása tevékenység létrehozásakor válassza a "bináris másolás" lehetőséget. Így az adatok tömeges másolása vagy áttelepítése az egyik Data Lakeról a másikra **bináris** beállítással Data Factory nem nyitja meg a fájlokat a séma olvasására, de csak bináris fájlként kezeli az összes fájlt, és átmásolja azokat a másik helyre.
+**Megoldás**: válassza a **bináris másolás** lehetőséget a másolási tevékenység létrehozásakor. Így az adatok tömeges másolása vagy áttelepítése az egyik adattóból egy másikba, Data Factory nem fogja megnyitni a fájlokat a séma olvasásához. Ehelyett Data Factory az egyes fájlokat bináris fájlként fogja kezelni, és a másik helyre másolja.
 
-### <a name="pipeline-run-fails-when-capacity-limit-of-integration-runtime-is-reached"></a>A folyamat futtatása meghiúsul, ha elérte az integrációs modul kapacitásának korlátját
+### <a name="a-pipeline-run-fails-when-you-reach-the-capacity-limit-of-the-integration-runtime"></a>Egy folyamat futtatása meghiúsul, ha eléri az integrációs modul kapacitásának korlátját
 
-#### <a name="issue"></a>Probléma
 Hibaüzenet:
 
 `
 Type=Microsoft.DataTransfer.Execution.Core.ExecutionException,Message=There are substantial concurrent MappingDataflow executions which is causing failures due to throttling under Integration Runtime 'AutoResolveIntegrationRuntime'.
 `
 
-A hiba a jelenleg 50-os integrációs futtatókörnyezet korlátozását jelzi. További részletekért tekintse meg a [határértékeket](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#version-2) .
+**OK**: elérte az Integration Runtime kapacitási korlátját. Lehet, hogy nagy mennyiségű adatfolyamot futtat ugyanazon integrációs modul egyidejű használatával. Részletekért lásd az [Azure-előfizetések és-szolgáltatások korlátozásait, kvótáit és korlátozásait](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#version-2) .
 
-Ha egy időben nagy mennyiségű adatfolyamatot hajt végre ugyanazzal az integrációs futtatókörnyezettel, akkor az ilyen típusú hibákhoz vezethet.
+**Megoldás**:
+ 
+- A folyamatokat különböző indító időpontokban futtathatja.
+- Hozzon létre egy új integrációs modult, és ossza szét a folyamatokat több integrációs modul között.
 
-#### <a name="resolution"></a>Feloldás 
-- Elkülönítheti ezeket a folyamatokat a végrehajtás különböző elindítási idejére.
-- Hozzon létre egy új integrációs modult, és ossza szét ezeket a folyamatokat több integrációs modul között.
+### <a name="you-have-activity-level-errors-and-failures-in-pipelines"></a>Tevékenység-szintű hibák és hibák vannak a folyamatokban
 
-### <a name="how-to-monitor-pipeline-failures-on-regular-interval"></a>Folyamat-meghibásodások figyelése rendszeres időközönként
+Azure Data Factory az előkészítés lehetővé teszi a feltételes logikát, és lehetővé teszi, hogy a felhasználók a korábbi tevékenységek eredményétől függően különböző útvonalakat használjanak. Négy feltételes elérési utat tesz lehetővé: **sikeres** (alapértelmezett pass), **hiba** esetén, **befejezéskor** és **kihagyás után**. 
 
-#### <a name="issue"></a>Probléma
-Gyakran van szükség az Data Factory-folyamatok időközönkénti figyelésére, azaz 5 percre. A folyamat a végpont használatával kérdezheti le és szűrheti a folyamat futtatását egy adatok előállítóján. 
+Azure Data Factory kiértékeli az összes levél szintű tevékenység eredményét. A folyamat eredményei csak akkor lesznek sikeresek, ha az összes művelet sikeresen befejeződött. Ha a levél tevékenység ki lett hagyva, a fölérendelt tevékenységet kiértékeljük. 
 
-#### <a name="recommendation"></a>Ajánlás
-1. Állítson be egy Azure logikai alkalmazást, amely 5 percenként lekérdezi az összes sikertelen folyamatot.
-2. Ezt követően az incidenseket bejelenthetjük a [QueryByFactory](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory).
+**Resolution** (Osztás)
 
-#### <a name="reference"></a>Referencia
-- [Külső – értesítések küldése Data Factoryról](https://www.mssqltips.com/sqlservertip/5962/send-notifications-from-an-azure-data-factory-pipeline--part-2/)
+1. Tevékenység szintű ellenőrzések végrehajtása a [folyamat hibáinak és hibáinak kezelésével](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459).
+1. A Azure Logic Apps használatával rendszeres időközönként figyelheti a folyamatokat a [gyár lekérdezését](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory)követően.
 
-### <a name="how-to-handle-activity-level-errors-and-failures-in-pipelines"></a>Tevékenység-szintű hibák és hibák kezelése a folyamatokban
+## <a name="monitor-pipeline-failures-in-regular-intervals"></a>Folyamat-meghibásodások figyelése rendszeres időközönként
 
-#### <a name="issue"></a>Probléma
-Azure Data Factory a koordinálás lehetővé teszi a feltételes logikát, és lehetővé teszi, hogy a felhasználó a korábbi tevékenységek eredményei alapján különböző útvonalakat tegyen. Négy feltételes elérési utat tesz lehetővé: "a sikeres (alapértelmezett pass)", "sikertelen", "Befejezés után" és "a kihagyás után". A különböző elérési utak használata engedélyezett.
+Előfordulhat, hogy a sikertelen Data Factory folyamatokat nem kell figyelnie, például 5 percet. A folyamatot a végpont használatával kérdezheti le és szűrheti a folyamat futtatását egy adatok gyárában. 
 
-Azure Data Factory a folyamat sikeres és sikertelen működésének meghatározása a következőképpen történik:
+Állítson be egy Azure Logic app-alkalmazást, amely 5 percenként lekérdezi az összes meghiúsult folyamatot a következő témakörben leírtak szerint: [query by Factory](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory). Ezt követően az incidenseket bejelenthetjük a Ticketing rendszerbe.
 
-- Kiértékeli az összes levél szintű tevékenység eredményét. Ha a levél tevékenység ki lett hagyva, a fölérendelt tevékenységet kiértékeljük.
-- A folyamat eredménye sikeres, és csak akkor, ha az összes művelet sikeres.
-
-#### <a name="recommendation"></a>Ajánlás
-- A tevékenységek szintjének ellenőrzésének végrehajtása [a folyamat hibáinak és hibáinak kezelése](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459)után.
-- Az Azure Logic App használatával rendszeres időközönként figyelheti a folyamatokat a [DataFactory által végzett lekérdezés]( https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory)után.
+További információ: [értesítések küldése Data Factoryről, 2. rész](https://www.mssqltips.com/sqlservertip/5962/send-notifications-from-an-azure-data-factory-pipeline--part-2/).
 
 ## <a name="next-steps"></a>Következő lépések
 
