@@ -3,14 +3,14 @@ title: 'Gyors útmutató: AK-fürt üzembe helyezése a PowerShell használatáv
 description: Megtudhatja, hogyan hozhat létre gyorsan Kubernetes-fürtöt, hogyan helyezhet üzembe egy alkalmazást, és hogyan figyelheti a teljesítményt az Azure Kubernetes szolgáltatásban (ak) a PowerShell használatával.
 services: container-service
 ms.topic: quickstart
-ms.date: 09/11/2020
+ms.date: 01/13/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e5abcf9bfbf661abf5212d94d849d27c25fe9a8d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 41412a4ec95bb9b89df5fded6962965594e823fc
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91461053"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98248513"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-powershell"></a>Gyors útmutató: Azure Kubernetes Service-fürt üzembe helyezése a PowerShell használatával
 
@@ -66,7 +66,7 @@ A [New-AzAks][new-azaks] parancsmag használatával hozzon létre egy AK-fürtö
 > AK-fürt létrehozásakor a rendszer automatikusan létrehoz egy második erőforráscsoportot az AK-erőforrások tárolásához. További információ: [miért jön létre két erőforráscsoport az AK-val?](./faq.md#why-are-two-resource-groups-created-with-aks)
 
 ```azurepowershell-interactive
-New-AzAks -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 1
+New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 1
 ```
 
 Néhány perc elteltével a parancs befejeződik, és visszaadja a fürtre vonatkozó információkat.
@@ -218,7 +218,7 @@ A folyamat állapotának monitorozásához használja [kubectl get service][kube
 .\kubectl get service azure-vote-front --watch
 ```
 
-Kezdetben a **külső IP-cím** az **Azure-vote-elülső** szolgáltatáshoz **függőben**jelenik meg.
+Kezdetben a **külső IP-cím** az **Azure-vote-elülső** szolgáltatáshoz **függőben** jelenik meg.
 
 ```plaintext
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE

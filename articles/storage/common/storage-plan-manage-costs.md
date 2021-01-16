@@ -9,12 +9,12 @@ ms.date: 11/13/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: 6942c3ecd631a141f1df741ff827a6889605e536
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 14e53efb7be9eef3ca388e6524e5ffd678671cd0
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498200"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251641"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Az Azure Blob Storage költségeinek megtervezése és kezelése
 
@@ -75,20 +75,20 @@ További információ: [Az Azure Blob Storage életciklusának kezelése](../blo
 
 ## <a name="create-budgets"></a>Költségvetések létrehozása
 
-A költségek kezeléséhez [költségvetéseket](../../cost-management-billing/costs/tutorial-acm-create-budgets.md) és riasztásokat hozhat létre, amelyek automatikusan figyelmeztetik az érdekelt feleket a rendellenes kiadásokról és a túlköltekezési kockázatokról. A riasztások a költségvetés és a költségek küszöbértékei alapján működnek. Az Azure-előfizetésekhez és-erőforráscsoportokhöz költségvetést és riasztásokat hoznak létre, így azok a teljes költségű figyelési stratégia részeként hasznosak. Előfordulhat azonban, hogy az egyes Azure-szolgáltatásokhoz hasonló költségekkel járnak, mint például az Azure Storage költségei, mert a költségek magasabb szinten való nyomon követésére szolgálnak.
+A költségek kezeléséhez [költségvetéseket](../../cost-management-billing/costs/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) és riasztásokat hozhat létre, amelyek automatikusan figyelmeztetik az érdekelt feleket a rendellenes kiadásokról és a túlköltekezési kockázatokról. A riasztások a költségvetés és a költségek küszöbértékei alapján működnek. Az Azure-előfizetésekhez és-erőforráscsoportokhöz költségvetést és riasztásokat hoznak létre, így azok a teljes költségű figyelési stratégia részeként hasznosak. Előfordulhat azonban, hogy az egyes Azure-szolgáltatásokhoz hasonló költségekkel járnak, mint például az Azure Storage költségei, mert a költségek magasabb szinten való nyomon követésére szolgálnak.
 
 ## <a name="monitor-costs"></a>Költségek figyelése
 
-Amikor Azure-erőforrásokat használ az Azure Storage-ban, költségek merülnek fel. Az erőforrás-használati egység költségei időintervallumok (másodperc, perc, óra és nap), vagy egységenkénti használat (bájt, megabájt stb.) szerint változnak. A költségek az Azure Storage használatának megkezdésekor azonnal felmerülnek. A költségeket a Azure Portal [költség elemzése](../../cost-management-billing/costs/quick-acm-cost-analysis.md) ablaktábláján tekintheti meg.
+Amikor Azure-erőforrásokat használ az Azure Storage-ban, költségek merülnek fel. Az erőforrás-használati egység költségei időintervallumok (másodperc, perc, óra és nap), vagy egységenkénti használat (bájt, megabájt stb.) szerint változnak. A költségek az Azure Storage használatának megkezdésekor azonnal felmerülnek. A költségeket a Azure Portal [költség elemzése](../../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) ablaktábláján tekintheti meg.
 
 A Cost Analysis használatakor különböző időintervallumok esetén megtekintheti az Azure Storage-költségeket gráfokban és táblázatokban. Néhány példa: nap, aktuális és előző hónap, év. A költségeket a költségvetések és az előre jelzett költségek között is megtekintheti. Ha a hosszabb nézetekre vált, az idő múlásával azonosíthatja a kiadási trendeket, és megtekintheti, hogy hol történt a túltöltés. Ha költségvetéseket hozott létre, azt is megteheti, hogy a megadottak hol vannak túllépve.
 
 >[!NOTE]
-> A költségelemzés különböző Azure-fióktípusokat támogat. A támogatott fióktípusok teljes listáját lásd: [A Cost Management adatainak értelmezése](../../cost-management-billing/costs/understand-cost-mgt-data.md). A költségadatok megtekintéséhez legalább olvasási jogosultsággal kell rendelkeznie az Azure-fiókjához. További információért az Azure Cost Management adataihoz való hozzáférés hozzárendeléséről: [Adatokhoz való hozzáférés hozzárendelése](../../cost-management-billing/costs/assign-access-acm-data.md).
+> A költségelemzés különböző Azure-fióktípusokat támogat. A támogatott fióktípusok teljes listáját lásd: [A Cost Management adatainak értelmezése](../../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn). A költségadatok megtekintéséhez legalább olvasási jogosultsággal kell rendelkeznie az Azure-fiókjához. További információért az Azure Cost Management adataihoz való hozzáférés hozzárendeléséről: [Adatokhoz való hozzáférés hozzárendelése](../../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 
 Az Azure Storage költségeinek megtekintése a Cost Analysis szolgáltatásban:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com).
 
 2. Nyissa meg a **Cost Management + számlázás** ablakot, válassza ki a menüből a **Cost Management** elemet, majd válassza a **Cost Analysis** lehetőséget. Ezután módosíthatja egy adott előfizetés hatókörét a **hatókör** legördülő menüből.
 

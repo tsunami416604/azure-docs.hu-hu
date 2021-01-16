@@ -9,17 +9,17 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 06/04/2020
-ms.openlocfilehash: 44a37a912c5c7a882d21631b8ce2da2c7ba9c05e
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 27719663acfbdbcd7293defc4b746153359adb61
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97967701"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251852"
 ---
 # <a name="request-quota-increases-for-azure-sql-database-and-sql-managed-instance"></a>A kérelmek kvótájának növekedése Azure SQL Database és az SQL felügyelt példányainál
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Ez a cikk a Azure SQL Database és az Azure SQL felügyelt példányaira vonatkozó kvóta-növelés igénylését ismerteti. Azt is ismerteti, hogyan engedélyezhető az előfizetés-hozzáférés egy adott régióhoz.
+Ez a cikk a Azure SQL Database és az Azure SQL felügyelt példányaira vonatkozó kvóta-növelés igénylését ismerteti. Azt is ismerteti, hogyan engedélyezhető az előfizetés-hozzáférés egy adott régióhoz, és hogyan lehet az adott hardvert egy adott régióban engedélyezni.
 
 ## <a name="create-a-new-support-request"></a><a id="newquota"></a> Új támogatási kérelem létrehozása
 
@@ -62,8 +62,7 @@ A következő szakaszok ismertetik a kvóta-növelési lehetőségeket a **SQL D
 
 - Adatbázis-tranzakciós egységek (DTU) kiszolgálónként
 - Kiszolgálók/előfizetés
-- Az M-sorozat régióhoz való hozzáférése
-- Régió elérése
+- Régió-hozzáférés előfizetésekhez vagy adott hardverekhez
 
 ### <a name="database-transaction-units-dtus-per-server"></a>Adatbázis-tranzakciós egységek (DTU) kiszolgálónként
 
@@ -109,30 +108,15 @@ Ha az előfizetéshez egy adott régióban hozzáférésre van szüksége, vála
 
    ![Kérelem régióhoz való hozzáférése](./media/quota-increase-request/quota-request.png)
 
-<!--
-### <a id="mseries"></a> Enable M-series access to a region
+### <a name="request-enabling-specific-hardware-in-a-region"></a>Adott hardver adott régióban való engedélyezésére vonatkozó kérelem
 
-To enable M-series hardware for a subscription and region, a support request must be opened.
+Ha a használni kívánt [hardver-létrehozás](service-tiers-vcore.md#hardware-generations) nem érhető el a régióban (lásd a [hardver rendelkezésre állását](service-tiers-vcore.md#hardware-availability)), akkor a következő lépésekkel kérheti le.
 
-1. Select the **M-series region access** quota type.
+1. Válassza ki az **egyéb kvóta-kérelem** típusú kvótát.
 
-1. In the **Select a location** list, select the Azure region to use. The quota is per subscription in each region.
+1. A **Leírás** mezőben adja meg a kérelmét, beleértve a hardver generációjának nevét, valamint annak a régiónak a nevét, amelyhez szüksége van.
 
-
-   ![Request M-series region access](./media/quota-increase-request/quota-m-series.png)
--->
-
-## <a name="sql-managed-instance-quota-type"></a><a id="sqlmiquota"></a> SQL felügyelt példány kvótájának típusa
-
-A **felügyelt SQL-példányok** kvótájának típusához kövesse az alábbi lépéseket:
-
-1. A **régió** listáról válassza ki a célként használni kívánt Azure-régiót.
-
-1. Adja meg az **alhálózat** és a **virtuális mag** számára kért új korlátozásokat.
-
-   ![SQL felügyelt példány kvótájának részletei](./media/quota-increase-request/quota-details-managed-instance.png)
-
-További információ: az [Azure SQL felügyelt példányok erőforrás-korlátainak áttekintése](../managed-instance/resource-limits.md).
+   ![Hardver kérése egy új régióban](./media/quota-increase-request/hardware-in-new-region.png)
 
 ## <a name="submit-your-request"></a>A kérés elküldése
 

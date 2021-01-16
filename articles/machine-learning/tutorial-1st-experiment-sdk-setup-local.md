@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 2f33fe4fafbe194238fcfbd4942807ed2fc4d6ff
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 0d099d31db3619e14da4fe66e26b25a0e36ee39c
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183540"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250689"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>Oktatóanyag: a Azure Machine Learning első lépései a fejlesztési környezetben (4. rész)
 
@@ -36,8 +36,9 @@ Az oktatóanyag-sorozat 1. részében a következőket fogja elsajátítani:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálkozzon [Azure Machine learning](https://aka.ms/AMLFree).
-- [Anaconda](https://www.anaconda.com/download/) vagy [Miniconda](https://www.anaconda.com/download/) a Python virtuális környezetek kezeléséhez és csomagok telepítéséhez.
+- Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálkozzon [Azure Machine learning](https://aka.ms/AMLFree).
+- [Anaconda](https://www.anaconda.com/download/) vagy [Miniconda](https://www.anaconda.com/download/) a Python virtuális környezetek kezeléséhez és csomagok telepítéséhez.  
+- Ha még nem ismeri a Conda használatát, tekintse meg [a Conda használatának első lépéseit](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html)ismertető témakört.
 
 ## <a name="install-the-azure-machine-learning-sdk"></a>Az Azure Machine Learning SDK telepítése
 
@@ -219,7 +220,7 @@ Jelentkezzen be [Azure Machine learning studióba](https://ml.azure.com) , és t
 
 Ez a nézet megjeleníti a kiépített számítási fürtöt, valamint az üresjárati csomópontok, a foglalt csomópontok és a nem kiépített csomópontok számát.  Mivel még nem használta a fürtöt, az összes csomópontot jelenleg nem lehet kiépíteni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a beállítási oktatóanyagban a következőket teheti:
 

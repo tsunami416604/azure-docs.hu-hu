@@ -3,14 +3,14 @@ title: Azure-on futó Kubernetes oktatóanyag – Alkalmazások skálázása
 description: Ebben az Azure Kubernetes Service-hez (AKS-hez) tartozó oktatóanyagban megismerheti, hogyan skálázhat csomópontokat és podokat a Kubernetesben, és hogyan valósíthatja meg a podok horizontális felskálázását.
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/12/2021
 ms.custom: mvc
-ms.openlocfilehash: 7f16ba3ffe6b6f96f17df540eb67e9cec0bfea8c
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: dfebb6561e83c51063515ec655153aaaa7a09c0c
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825691"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251369"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazások skálázása az Azure Kubernetes Service-ben (AKS)
 
@@ -21,7 +21,7 @@ Ha követte az oktatóanyagokat, rendelkezik egy működő Kubernetes-fürttel a
 > * Az alkalmazást futtató Kubernetes-podok manuális skálázása
 > * Az alkalmazás kezelőfelületét futtató automatikus skálázású podok konfigurálása
 
-A további oktatóanyagokban az Azure vote alkalmazás új verzióra frissül.
+A későbbi oktatóanyagokban az Azure vote alkalmazás új verzióra frissül.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -39,7 +39,7 @@ kubectl get pods
 
 A következő példa egy előtérbeli podot és egy háttérbeli podot mutat be:
 
-```
+```output
 NAME                               READY     STATUS    RESTARTS   AGE
 azure-vote-back-2549686872-4d2r5   1/1       Running   0          31m
 azure-vote-front-848767080-tf34m   1/1       Running   0          31m
@@ -51,7 +51,7 @@ Ha manuálisan szeretné módosítani az *azure-vote-front* üzemelő példány 
 kubectl scale --replicas=5 deployment/azure-vote-front
 ```
 
-Futtassa újra a [kubectl][kubectl-get] , és ellenőrizze, hogy az AK létrehozza-e a további hüvelyeket. Hozzávetőleg egy perc elteltével az újabb podok elérhetők a fürtön:
+Futtassa újra a [kubectl][kubectl-get] , és ellenőrizze, hogy az AK sikeresen létrehozta-e a további hüvelyeket. Egy perc múlva a hüvelyek elérhetők a fürtben:
 
 ```console
 kubectl get pods
@@ -131,7 +131,7 @@ spec:
 
 A használatával `kubectl apply` alkalmazza a jegyzékfájlban definiált autoskálázást `azure-vote-hpa.yaml` .
 
-```
+```console
 kubectl apply -f azure-vote-hpa.yaml
 ```
 
@@ -158,7 +158,7 @@ az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3
 
 Ha a fürt méretezése sikeresen megtörtént, a kimenet a következő példához hasonló:
 
-```
+```output
 "agentPoolProfiles": [
   {
     "count": 3,

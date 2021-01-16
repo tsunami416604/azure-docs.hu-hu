@@ -3,14 +3,14 @@ title: Az Azure-on futó Kubernetes oktatóanyaga – Alkalmazás üzembe helyez
 description: Az Azure Kubernetes Service (AKS) ezen oktatóanyagában üzembe fog helyezni egy többtárolós alkalmazást a fürtön egy, az Azure Container Registryben tárolt egyéni rendszerkép használatával.
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/12/2021
 ms.custom: mvc
-ms.openlocfilehash: 8114aa0b6c2483d543376727a44d14041ed02b37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0de097a545a831e39a671fe4cf5eadcd336ce24
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576489"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250179"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazások futtatása az Azure Kubernetes Service-ben (AKS)
 
@@ -21,7 +21,7 @@ A Kubernetes tárolóalapú alkalmazásokhoz kínál elosztott platformot. Ön h
 > * Alkalmazás futtatása a Kubernetesben
 > * Az alkalmazás tesztelése
 
-A további oktatóanyagokban az alkalmazás méretezése és frissítése megtörtént.
+A későbbi oktatóanyagokban az alkalmazás méretezése és frissítése megtörtént.
 
 A rövid útmutató feltételezi, hogy rendelkezik a Kubernetes használatára vonatkozó alapvető ismeretekkel. További információ: [Az Azure Kubernetes Service (ak) Kubernetes alapfogalmai][kubernetes-concepts].
 
@@ -49,7 +49,7 @@ Az első oktatóanyagban klónozott, Git-adattárból származó mintajegyzékf�
 vi azure-vote-all-in-one-redis.yaml
 ```
 
-Helyettesítse be a *microsoft* nevet az Ön ACR bejelentkezési kiszolgálójának nevével. A rendszerkép neve a jegyzékfájl 51. sorában található. Az alábbi példa az alapértelmezett rendszerképnevet mutatja:
+Helyettesítse be a *microsoft* nevet az Ön ACR bejelentkezési kiszolgálójának nevével. A rendszerkép neve a jegyzékfájl 60. sorában található. Az alábbi példa az alapértelmezett rendszerképnevet mutatja:
 
 ```yaml
 containers:
@@ -77,7 +77,7 @@ kubectl apply -f azure-vote-all-in-one-redis.yaml
 
 A következő példa kimenetében az AK-fürt sikeresen létrehozott erőforrásai láthatók:
 
-```
+```console
 $ kubectl apply -f azure-vote-all-in-one-redis.yaml
 
 deployment "azure-vote-back" created
@@ -96,21 +96,21 @@ A folyamat állapotának monitorozásához használja [kubectl get service][kube
 kubectl get service azure-vote-front --watch
 ```
 
-Kezdetben az *Azure-vote-elülső* szolgáltatás *külső IP-címe* az *alábbi módon jelenik*meg:
+Kezdetben az *Azure-vote-elülső* szolgáltatás *külső IP-címe* az *alábbi módon jelenik* meg:
 
-```
+```output
 azure-vote-front   LoadBalancer   10.0.34.242   <pending>     80:30676/TCP   5s
 ```
 
 Ha a *külső IP-* cím *függőben* ÁLLAPOTRÓL tényleges nyilvános IP-címről változik, akkor a `CTRL-C` figyelési folyamat leállításához használja a következőt: `kubectl` . A következő példa kimenete a szolgáltatáshoz hozzárendelt érvényes nyilvános IP-címet jeleníti meg:
 
-```
+```output
 azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   67s
 ```
 
 Az alkalmazás működés közbeni megtekintéséhez nyisson meg egy webböngészőt a szolgáltatás külső IP-címére:
 
-![Egy Azure-beli Kubernetes-fürt képe](media/container-service-kubernetes-tutorials/azure-vote.png)
+:::image type="content" source="./media/container-service-kubernetes-tutorials/azure-vote.png" alt-text="Képernyőfelvétel: a tároló rendszerképét megjelenítő Azure-beli szavazási alkalmazás, amely egy helyi webböngészőben megnyitott AK-fürtön fut" lightbox="./media/container-service-kubernetes-tutorials/azure-vote.png":::
 
 Ha az alkalmazás nem töltődött be, lehetséges, hogy az a rendszerkép-beállításjegyzékkel kapcsolatos hitelesítési probléma oka. A tárolók állapotának megtekintéséhez használja a `kubectl get pods` parancsot. Ha a tároló lemezképeit nem lehet kihúzni, tekintse meg a [hitelesítés a Azure Container Registry az Azure Kubernetes szolgáltatással](cluster-container-registry-integration.md)című témakört.
 

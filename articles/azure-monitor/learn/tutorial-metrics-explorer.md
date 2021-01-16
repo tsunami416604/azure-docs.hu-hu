@@ -6,12 +6,12 @@ ms.author: bwren
 ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 03/09/2020
-ms.openlocfilehash: 5dcb86ff4af2a68ecf0bb361e6da4f788ea32b62
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 121de67ddb251e7431873c76e379eb223ceacd0d
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881293"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250672"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>Oktatóanyag: metrikai diagram létrehozása Azure Monitor
 Azure Portal a metrikák Explorer a Azure Monitor egyik funkciója, amely lehetővé teszi, hogy diagramokat hozzon létre a metrikák értékeiből, vizuálisan korrelálja a trendeket, és vizsgálja meg a mérőszámok és a dips értékeit. A metrikák Explorerrel megvizsgálhatja az Azure-erőforrások állapotát és kihasználtságát, illetve diagramokat rajzolhat az egyéni metrikák használatával. 
@@ -70,20 +70,20 @@ A diagram egy érdekes területének (például egy tüske vagy egy dip) vizsgá
 ## <a name="apply-dimension-filters-and-splitting"></a>Dimenzió szűrők alkalmazása és felosztás
 Tekintse át a következő, speciális funkciókra mutató hivatkozásokat, amelyek lehetővé teszik a metrikák további elemzését, valamint az adatok lehetséges kiugró állapotának azonosítását.
 
-- A [szűréssel](../platform/metrics-charts.md#apply-filters-to-charts) kiválaszthatja, hogy mely dimenzió értékeket tartalmazza a diagram. Előfordulhat például, hogy csak a sikeres kérelmeket szeretné megjeleníteni a *kiszolgálói válaszidő* mérőszámának ábrázolásakor. 
+- A [szűréssel](../platform/metrics-charts.md#filters) kiválaszthatja, hogy mely dimenzió értékeket tartalmazza a diagram. Előfordulhat például, hogy csak a sikeres kérelmeket szeretné megjeleníteni a *kiszolgálói válaszidő* mérőszámának ábrázolásakor. 
 
-- A [felosztás](../platform/metrics-charts.md#apply-splitting-to-a-chart) azt szabályozza, hogy a diagram külön sorokat jelenít-e meg egy dimenzió minden értékéhez, vagy összesíti az értékeket egyetlen sorba. Előfordulhat például, hogy egy sort szeretne látni az összes kiszolgálói példány átlagos válaszideje esetén, vagy ha külön sort szeretne használni az egyes kiszolgálókon. 
+- A [felosztás](../platform/metrics-charts.md#apply-splitting) azt szabályozza, hogy a diagram külön sorokat jelenít-e meg egy dimenzió minden értékéhez, vagy összesíti az értékeket egyetlen sorba. Előfordulhat például, hogy egy sort szeretne látni az összes kiszolgálói példány átlagos válaszideje esetén, vagy ha külön sort szeretne használni az egyes kiszolgálókon. 
 
 Tekintse át a szűrést és a felosztást alkalmazó [diagramok példáit](../platform/metric-chart-samples.md) .
 
 ## <a name="advanced-chart-settings"></a>Speciális diagram beállításai
 
-Testreszabhatja a diagram stílusát, címét és a speciális diagram beállításainak módosítását. Ha végzett a testreszabással, rögzítse azt egy irányítópulton, hogy mentse a munkáját. A metrikák riasztásait is konfigurálhatja. Tekintse meg az [Azure Metrikaböngésző speciális funkcióit](../platform/metrics-charts.md#lock-boundaries-of-chart-y-axis) , amelyekkel megismerheti a Azure monitor metrikák Explorer egyéb speciális funkcióit.
+Testreszabhatja a diagram stílusát, címét és a speciális diagram beállításainak módosítását. Ha végzett a testreszabással, rögzítse azt egy irányítópulton, hogy mentse a munkáját. A metrikák riasztásait is konfigurálhatja. Tekintse meg az [Azure Metrikaböngésző speciális funkcióit](../platform/metrics-charts.md#locking the-range-of-the-y-axis) , amelyekkel megismerheti a Azure monitor metrikák Explorer egyéb speciális funkcióit.
 
 
 ## <a name="next-steps"></a>További lépések
 Most, hogy megismerte, hogyan használhatók a metrikák a Azure Monitorban, megtudhatja, hogyan küldhet mérőszámokat az proaktív riasztások küldéséhez.
 
 > [!div class="nextstepaction"]
-> [Metrikariasztások létrehozása, megtekintése és kezelése az Azure Monitorral](../platform/metrics-charts.md#create-alert-rules)
+> [Metrikariasztások létrehozása, megtekintése és kezelése az Azure Monitorral](../platform/metrics-charts.md#alert-rules)
 

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 10/02/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a47126a48ea63efd4e49097428679b85b7a95a61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ec900f0537030d3ed0d1c875e8125806159bd51
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667163"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251454"
 ---
 # <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>Windows rendszerű virtuális asztali címkészlet létrehozása a PowerShell-lel
 
@@ -92,8 +92,8 @@ A virtuális gépek előkészítéséhez a következő műveleteket kell elvége
 A tartományhoz való csatlakozás sikeres végrehajtásához tegye a következőket az egyes virtuális gépeken:
 
 1. [Kapcsolódjon a virtuális géphez](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) a virtuális gép létrehozásakor megadott hitelesítő adatokkal.
-2. A virtuális gépen indítsa el a **Vezérlőpultot** , és válassza a **rendszer**elemet.
-3. Válassza ki a **számítógép nevét**, válassza a **beállítások módosítása**lehetőséget, majd válassza a **módosítás...** lehetőséget.
+2. A virtuális gépen indítsa el a **Vezérlőpultot** , és válassza a **rendszer** elemet.
+3. Válassza ki a **számítógép nevét**, válassza a **beállítások módosítása** lehetőséget, majd válassza a **módosítás...** lehetőséget.
 4. Válassza a **tartomány** lehetőséget, majd adja meg a Active Directory tartományt a virtuális hálózaton.
 5. A hitelesítést olyan tartományi fiókkal végezze el, amely jogosultságokkal rendelkezik a tartományhoz csatlakozó gépekhez.
 
@@ -124,20 +124,20 @@ A Windows rendszerű virtuális asztali ügynökök regisztrálásához tegye a 
 
 Ha a következő esetek valamelyike van, frissítenie kell az ügynököt:
 
-- Előzőleg regisztrált munkamenetet szeretne áttelepíteni egy új gazdagépre
+- Előzőleg regisztrált munkamenet-gazdagépet szeretne áttelepíteni egy új gazdagépre
 - Frissítés után a munkamenet-gazdagép nem jelenik meg a gazdagép-készletben
 
 Az ügynök frissítése:
 
 1. Jelentkezzen be rendszergazdaként a virtuális gépre.
-2. Lépjen a **szolgáltatások**elemre, majd állítsa le a **Rdagent** és **Távoli asztal ügynök** betöltési folyamatait.
+2. Lépjen a **szolgáltatások** elemre, majd állítsa le a **Rdagent** és **Távoli asztal ügynök** betöltési folyamatait.
 3. Ezután keresse meg az ügynököt és a rendszerbetöltő rendszercsomagok. Ezek a **C:\DeployAgent** mappában vagy a telepítéskor mentett helyükön találhatók.
 4. Keresse meg a következő fájlokat, és távolítsa el őket:
      
      - Microsoft. RDInfra. RDAgent. Installer-x64-verx. x. x
      - Microsoft. RDInfra. RDAgentBootLoader. Installer-x64
 
-   A fájlok eltávolításához kattintson a jobb gombbal az egyes fájlokra, majd válassza az **Eltávolítás**lehetőséget.
+   A fájlok eltávolításához kattintson a jobb gombbal az egyes fájlokra, majd válassza az **Eltávolítás** lehetőséget.
 5. Igény szerint a következő beállításjegyzék-beállításokat is eltávolíthatja:
      
      - Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\RDInfraAgent
@@ -146,7 +146,7 @@ Az ügynök frissítése:
 6. Miután eltávolította ezeket az elemeket, az összes társítást el kell távolítania a régi gazdagép-készlettel. Ha szeretné újra regisztrálni a gazdagépet a szolgáltatásban, kövesse a [virtuális gépek regisztrálása a Windows rendszerű virtuális asztali alkalmazáskészletbe](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)című témakör utasításait.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy létrehozott egy gazdagépet, feltöltheti azt a RemoteApps szolgáltatással. Ha többet szeretne megtudni az alkalmazások kezeléséről a Windows Virtual Desktopban, tekintse meg az alkalmazáscsoport kezelése oktatóanyagot.
 

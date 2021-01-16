@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 05/15/2020
+ms.date: 01/15/2021
 ms.author: jingwang
-ms.openlocfilehash: 4f5d691ef99ac4647d2031d6588d0b3922edd8cf
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: dfd2ed47c3fd963d7e119d235719771b25bdaf34
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505988"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249516"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>Adatok biztonságos másolása az Azure Blob Storage-ból egy SQL-adatbázisba privát végpontok használatával
 
@@ -82,7 +82,7 @@ Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Fact
 
    Az Azure-beli adatgyár nevének *globálisan egyedinek* kell lennie. Ha a név értékével kapcsolatos hibaüzenetet kap, adjon meg egy másik nevet az adatelőállítónak (például Sajátneveadftutorialdatafactory). A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](./naming-rules.md) ismertető cikkben találja.
 
-1. Válassza ki azt az **Azure-előfizetést** , amelyben az adat-előállítót létre szeretné hozni.
+1. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni.
 
 1. **Erőforráscsoport:** hajtsa végre a következő lépések egyikét:
 
@@ -95,7 +95,7 @@ Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Fact
 
 1. A **Hely** területen válassza ki az adat-előállító helyét. A legördülő listában csak a támogatott helyszínek jelennek meg. Az adat-előállítók által használt adattárak (például az Azure Storage és az SQL Database) és számítási erőforrások (például az Azure HDInsight) más régiókban is lehetnek.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 1. A létrehozás befejezése után megjelenik az értesítési központban megjelenő értesítés. Válassza az **Ugrás az erőforráshoz** lehetőséget, hogy megnyissa a **Data Factory** lapot.
 
@@ -107,13 +107,14 @@ Ebben a lépésben létrehoz egy Azure Integration Runtime-t, és engedélyezi D
 1. Az Data Factory portálon lépjen a **kezelés** elemre, és válassza az **új** lehetőséget az új Azure Integration Runtime létrehozásához.
 
    ![Képernyőkép, amely egy új Azure Integration Runtime létrehozását mutatja be.](./media/tutorial-copy-data-portal-private/create-new-azure-ir.png)
-1. Válassza az **Azure** Integration Runtime létrehozását.
+1. Az **Integration Runtime telepítése** lapon válassza ki, hogy melyik integrációs modult szeretné létrehozni a szükséges képességek alapján. Ebben az oktatóanyagban válassza az **Azure, saját** üzemeltetésű lehetőséget, majd kattintson a **Continue (folytatás**) gombra. 
+1. Válassza az **Azure** lehetőséget, majd kattintson a **Folytatás** gombra egy Azure Integration Runtime létrehozásához.
 
    ![Képernyőkép, amely egy új Azure Integration Runtime-t jelenít meg.](./media/tutorial-copy-data-portal-private/azure-ir.png)
 1. A **virtuális hálózat konfigurációja (előzetes verzió)** alatt válassza az **Engedélyezés** lehetőséget.
 
    ![Az új Azure Integration Runtime engedélyezését bemutató képernyőkép.](./media/tutorial-copy-data-portal-private/enable-managed-vnet.png)
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="create-a-pipeline"></a>Folyamat létrehozása
 Ebben a lépésben létrehoz egy másolási tevékenységgel rendelkező folyamatot az adat-előállítóban. A másolási tevékenység adatokat másol egy Blob Storage-ból egy SQL Database-be. A [rövid útmutatóban](./quickstart-create-data-factory-portal.md) létrehozott egy folyamatot az alábbi lépéseket követve:
@@ -136,7 +137,7 @@ Ebben az oktatóanyagban egy folyamat létrehozásával kezdi meg a folyamatot. 
 ### <a name="configure-a-source"></a>Forrás konfigurálása
 
 >[!TIP]
->Ebben az oktatóanyagban a **fiók kulcsát** használja a forrás adattároló hitelesítési típusaként. Más támogatott hitelesítési módszereket is kiválaszthat, például **sas URI** -t, **egyszerű szolgáltatásnevet** és **felügyelt identitást** , ha szükséges. További információkért tekintse meg az [adatok másolása és átalakítása az Azure Blob Storage-ban](./connector-azure-blob-storage.md#linked-service-properties)című témakör megfelelő részeit a Azure Data Factory használatával.
+>Ebben az oktatóanyagban a **fiók kulcsát** használja a forrás adattároló hitelesítési típusaként. Más támogatott hitelesítési módszereket is kiválaszthat, például **sas URI**-t,**egyszerű szolgáltatásnevet** és **felügyelt identitást** , ha szükséges. További információkért tekintse meg az [adatok másolása és átalakítása az Azure Blob Storage-ban](./connector-azure-blob-storage.md#linked-service-properties)című témakör megfelelő részeit a Azure Data Factory használatával.
 >
 >Ha biztonságosan szeretné tárolni az adattárak titkos adatait, javasoljuk, hogy használja a Azure Key Vault. További információ és illusztrációk: [hitelesítő adatok tárolása Azure Key Vaultban](./store-credentials-in-key-vault.md).
 
@@ -144,13 +145,13 @@ Ebben az oktatóanyagban egy folyamat létrehozásával kezdi meg a folyamatot. 
 
 1. Nyissa meg a **forrás** lapot. Forrás adatkészlet létrehozásához válassza az **+ új** lehetőséget.
 
-1. Az **új adatkészlet** párbeszédpanelen válassza az **Azure Blob Storage** lehetőséget, majd kattintson a **Folytatás** gombra. A forrásadatok egy Blob Storage-ban vannak, tehát forrásadatkészletként az **Azure Blob Storage** -ot válassza.
+1. Az **új adatkészlet** párbeszédpanelen válassza az **Azure Blob Storage** lehetőséget, majd kattintson a **Folytatás** gombra. A forrásadatok egy Blob Storage-ban vannak, tehát forrásadatkészletként az **Azure Blob Storage**-ot válassza.
 
-1. A **formátum kiválasztása** párbeszédpanelen válassza ki az adatformátum típusát, majd kattintson a **Continue (folytatás** ) elemre.
+1. A **formátum kiválasztása** párbeszédpanelen válassza ki az adatformátum típusát, majd kattintson a **Continue (folytatás**) elemre.
 
 1. A **Tulajdonságok megadása** párbeszédpanelen adja meg a **sourceblobdataset lehetőség** **nevet**. Jelölje be az **első sor jelölőnégyzetét fejlécként**. A **társított szolgáltatás** szövegmezőben válassza az **+ új** lehetőséget.
 
-1. Az **új társított szolgáltatás (Azure Blob Storage)** párbeszédpanelen írja be a **AzureStorageLinkedService** **nevet** , és válassza ki a Storage-fiók nevét a **Storage-fiók neve** listából. 
+1. Az **új társított szolgáltatás (Azure Blob Storage)** párbeszédpanelen írja be a **AzureStorageLinkedService** **nevet**, és válassza ki a Storage-fiók nevét a **Storage-fiók neve** listából. 
 
 1. Győződjön meg arról, hogy az **interaktív szerzői műveletek** engedélyezve vannak. Egy percet is igénybe vehet.
 
@@ -170,7 +171,7 @@ Ebben az oktatóanyagban egy folyamat létrehozásával kezdi meg a folyamatot. 
 
 1. Nyissa meg a **adftutorial/input** mappát, válassza ki a **emp.txt** fájlt, majd kattintson az **OK gombra**.
 
-1. Kattintson az **OK** gombra. Automatikusan a folyamat lapra kerül. A **forrás** lapon ellenőrizze, hogy a **sourceblobdataset lehetőség** van-e kiválasztva. A lapon lévő adatok előnézetének megtekintéséhez válassza az **Adatok előnézete** elemet.
+1. Válassza az **OK** lehetőséget. Automatikusan a folyamat lapra kerül. A **forrás** lapon ellenőrizze, hogy a **sourceblobdataset lehetőség** van-e kiválasztva. A lapon lévő adatok előnézetének megtekintéséhez válassza az **Adatok előnézete** elemet.
 
     ![A forrás adatkészletet megjelenítő képernyőkép.](./media/tutorial-copy-data-portal-private/source-dataset-selected.png)
 
@@ -193,7 +194,7 @@ Ha a kapcsolat tesztelésekor nem választotta ki a hiperhivatkozást, kövesse 
 
 1. Adja meg a létrehozott Storage-fiók nevét.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 1. Néhány másodperc elteltével látnia kell, hogy a privát hivatkozás létrehozása jóváhagyást igényel.
 
@@ -259,7 +260,7 @@ Ha a kapcsolat tesztelésekor nem választotta ki a hiperhivatkozást, kövesse 
 
 1. Válassza ki a **Azure SQL Database** csempét a listából, majd válassza a **Folytatás** lehetőséget.
 1. Adja meg a kiválasztott SQL-kiszolgáló nevét.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 1. Néhány másodperc elteltével látnia kell, hogy a privát hivatkozás létrehozása jóváhagyást igényel.
 1. Válassza ki a létrehozott privát végpontot. Megtekintheti a hiperhivatkozást, amellyel jóváhagyhatja a privát végpontot az SQL Server szintjén.
 

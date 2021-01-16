@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 70b7042e4006cc59419d0ea6798fe7626a82c086
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 872a67d8d9f41c0c809df54304352b2a5f58e011
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621076"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251760"
 ---
 # <a name="required-url-list"></a>Szükséges URL-címek listája
 
@@ -32,6 +32,7 @@ A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli vi
 |* xt.blob.core.windows.net|443|Ügynök forgalma|AzureCloud|
 |* eh.servicebus.windows.net|443|Ügynök forgalma|AzureCloud|
 |* xt.table.core.windows.net|443|Ügynök forgalma|AzureCloud|
+|* xt.queue.core.windows.net|443|Ügynök forgalma|AzureCloud|
 |catalogartifact.azureedge.net|443|Azure Piactér|AzureCloud|
 |kms.core.windows.net|1688|A Windows aktiválása|Internet|
 |mrsglobalsteus2prod.blob.core.windows.net|443|Ügynök-és SXS-verem frissítései|AzureCloud|
@@ -99,7 +100,7 @@ A használt Távoli asztal ügyfeleknek hozzáféréssel kell rendelkezniük a k
 |go.microsoft.com|443|Microsoft-Fwlinkek|Mind|Nincs|
 |aka.ms|443|Microsoft URL-rövidített|Mind|Nincs|
 |docs.microsoft.com|443|Dokumentáció|Mind|Nincs|
-|privacy.microsoft.com|443|Adatvédelem|Mind|Nincs|
+|privacy.microsoft.com|443|Adatvédelmi nyilatkozat|Mind|Nincs|
 |query.prod.cms.rt.microsoft.com|443|Ügyfelek frissítései|Windows asztali rendszer|Nincs|
 
 >[!IMPORTANT]

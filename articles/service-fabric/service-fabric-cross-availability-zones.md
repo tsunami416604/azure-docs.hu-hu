@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: f729c00d3b78631a32013ec9453302584cecbd16
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 82161a8f66dd717a9dc448a743b818a9ab9938db
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962431"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250978"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Azure Service Fabric-fürt üzembe helyezése Availability Zones
 Az Azure-beli Availability Zones magas rendelkezésre állású ajánlat, amely védelmet nyújt alkalmazásai és adatai számára az adatközpont hibáiból. A rendelkezésre állási zónák egy Azure-régión belüli, független energiaellátással, hűtéssel és hálózatkezeléssel ellátott egyedi fizikai helyek.
@@ -345,7 +345,7 @@ A zónák virtuálisgép-méretezési csoportokon való engedélyezéséhez a k�
 
 * Az első érték a **Zones** tulajdonság, amely meghatározza a virtuálisgép-méretezési csoport Availability Zones.
 * A második érték a "singlePlacementGroup" tulajdonság, amelyet igaz értékre kell beállítani. **A 3 AZ-ra kiterjedő méretezési csoport legfeljebb 300 virtuális gépet képes méretezni, akár "singlePlacementGroup = true" értékkel.**
-* A harmadik érték "zoneBalance", és nem kötelező, ami biztosítja a zónák szigorú kiegyensúlyozását, ha az igaz értékre van állítva. További információ a [zoneBalancing](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing).
+* A harmadik érték a "zoneBalance", amely biztosítja a zónák szigorú kiegyensúlyozását, ha az igaz értékre van állítva. Azt javasoljuk, hogy ezt a beállítást állítsa igaz értékre a virtuális gépek zónák közötti kiegyensúlyozatlan eloszlásának elkerülése érdekében. További információ a [zoneBalancing](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing).
 * A FaultDomain és a UpgradeDomain felülbírálásokat nem szükséges konfigurálni.
 
 ```json
@@ -357,7 +357,7 @@ A zónák virtuálisgép-méretezési csoportokon való engedélyezéséhez a k�
     "zones": ["1", "2", "3"],
     "properties": {
         "singlePlacementGroup": "true",
-        "zoneBalance": false
+        "zoneBalance": true
     }
 }
 ```

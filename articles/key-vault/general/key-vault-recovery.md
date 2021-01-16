@@ -8,12 +8,12 @@ ms.author: mbaldwin
 author: msmbaldwin
 manager: rkarlin
 ms.date: 09/30/2020
-ms.openlocfilehash: a9a783333d8edd40556b7744eb7cf7dfb52953a7
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 4a6b3e4c6354c292d000a307bc25f8532aa9a096
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97933982"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250791"
 ---
 # <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>Azure Key Vault helyreállítási felügyelet a Soft delete és a Purge Protection szolgáltatással
 
@@ -29,6 +29,8 @@ További információ a Key Vaultról:
 * [PowerShell-modul](https://docs.microsoft.com/powershell/azure/install-az-ps).
 * [Azure CLI](/cli/azure/install-azure-cli)
 * A Key Vault létrehozhat egyet [Azure Portal](../general/quick-create-portal.md) [Azure CLI](../general/quick-create-cli.md)használatával, vagy [Azure PowerShell](../general/quick-create-powershell.md)
+* A felhasználónak a következő engedélyekre van szüksége (előfizetési szinten), hogy végrehajtsa a műveleteket a Soft Deleted-tárolók esetén: | Microsoft. kulcstartó/Locations/deletedVaults/READ | A Soft delete Key Vault tulajdonságainak megtekintése | | Microsoft. kulcstartó/Locations/deletedVaults/Purge/művelet | A törölt kulcstartó törlése |
+
 
 ## <a name="what-are-soft-delete-and-purge-protection"></a>Mi a Soft delete és a Purge Protection
 
@@ -392,6 +394,6 @@ A helyreállítható törléssel kapcsolatos további információkért lásd: [
 - [Azure CLI-parancsok Key Vault](https://docs.microsoft.com/cli/azure/keyvault)
 - [Azure Key Vault biztonsági mentés](backup.md)
 - [Key Vault naplózás engedélyezése](howto-logging.md)
-- [Biztonságos hozzáférés a kulcstartóhoz](secure-your-key-vault.md)
+- [Biztonságos hozzáférés egy kulcstartóhoz](secure-your-key-vault.md)
 - [Azure Key Vault fejlesztői útmutató](developers-guide.md)
 - [Ajánlott eljárások a Key Vault használatához](security-overview.md)

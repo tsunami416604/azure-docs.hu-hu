@@ -1,90 +1,93 @@
 ---
-title: Több erőforrás megtekintése Metrikaböngésző
-description: Ismerje meg, hogyan jelenítheti meg több erőforrást Azure Monitor Metrikaböngésző
+title: Több erőforrás megtekintése az Azure mérőszámok Explorerben
+description: Ismerje meg, hogyan jelenítheti meg több erőforrást az Azure metrika-kezelő használatával.
 author: ritaroloff
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: riroloff
 ms.subservice: metrics
-ms.openlocfilehash: 9d1460a8bebe75a3ee471eb304fcf642d566b5dd
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 4c895b287f72929e2a0571ccc2cae8cc4f673388
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614642"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250485"
 ---
-# <a name="viewing-multiple-resources-in-metrics-explorer"></a>Több erőforrás megtekintése Metrikaböngésző
+# <a name="view-multiple-resources-in-the-azure-metrics-explorer"></a>Több erőforrás megtekintése az Azure mérőszámok Explorerben
 
-Az erőforrás-hatókör-választó lehetővé teszi, hogy az azonos előfizetésben és régióban található több erőforrás mérőszámait is megtekinthesse. Az alábbiakban a Azure Monitor Metrikaböngésző több erőforrásának megtekintését ismertető cikkben talál útmutatást. 
+Az erőforrás-hatókör-választó lehetővé teszi, hogy az azonos előfizetésben és régióban található több erőforrás mérőszámait is megtekinthesse. Ez a cikk azt ismerteti, hogyan lehet több erőforrást megtekinteni a Azure Monitor Azure Metrics Explorer szolgáltatásának használatával. 
 
-## <a name="selecting-a-resource"></a>Erőforrás kiválasztása 
+## <a name="select-a-resource"></a>Erőforrás kiválasztása 
 
-Válassza a **metrikák** lehetőséget a **Azure monitor** menüből vagy az erőforrás menüjének **figyelés** szakaszában. Kattintson a "hatókör kiválasztása" gombra az erőforrás hatókör-választójának megnyitásához, amely lehetővé teszi, hogy kiválassza azokat az erőforrásokat, amelyeknek a mérőszámait meg szeretné jeleníteni. Ha az erőforrás menüjéből megnyitotta a metrikák Explorert, ezt már fel kell töltenie. 
+Válassza a **metrikák** lehetőséget a **Azure monitor** menüből vagy az erőforrás menüjének **figyelés** szakaszában. Ezután a hatókör **kiválasztása elemre** kattintva nyissa meg a hatókör-választót. 
 
-![A piros színnel jelölt erőforrás-hatókör választó képernyőképe](./media/metrics-charts/019.png)
+A hatókör-választó használatával válassza ki azokat az erőforrásokat, amelyek mérőszámait meg szeretné jeleníteni. A hatókört fel kell tölteni, ha megnyitotta a metrikák Explorert egy erőforrás menüjéből. 
 
-## <a name="selecting-multiple-resources"></a>Több erőforrás kiválasztása 
+![Az erőforrás hatókör-választójának megnyitását bemutató képernyőkép.](./media/metrics-charts/019.png)
 
-Egyes erőforrástípusok lehetővé tették a metrikák lekérdezését több erőforráson keresztül, feltéve, hogy ugyanazon az előfizetésen és helyen belül vannak. Ezek az erőforrástípusok az "erőforrástípusok" legördülő lista tetején találhatók. 
+## <a name="select-multiple-resources"></a>Több erőforrás kiválasztása 
 
-![Képernyőkép, amely a többerőforrásos kompatibilitású erőforrások legördülő listáját jeleníti meg ](./media/metrics-charts/020.png)
+Néhány erőforrástípus több erőforráson is lekérdezheti a metrikákat. A mérőszámoknak ugyanahhoz az előfizetéshez és helyhez kell esniük. **Az erőforrástípusok menü felső** részén keresse meg ezeket az erőforrásokat.
+
+![Képernyőkép, amely a több erőforrással kompatibilis erőforrások menüjét jeleníti meg.](./media/metrics-charts/020.png)
 
 > [!WARNING] 
-> A mérőszámok több erőforrás, erőforráscsoport vagy előfizetés alapján történő megjelenítéséhez az előfizetés szintjén kell figyelnie az olvasói jogosultságot. Ennek elvégzéséhez kövesse a [jelen dokumentum](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)utasításait.
+> A mérőszámok több erőforrás, erőforráscsoport vagy előfizetés alapján történő megjelenítéséhez az előfizetés szintjén kell figyelnie az olvasó engedélyét. További információ: [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
 
-Több erőforrásra vonatkozó mérőszámok megjelenítéséhez először válassza ki az erőforrás hatókör-választóján belül több erőforrást. 
+Több erőforráshoz tartozó mérőszámok megjelenítéséhez először válassza ki az erőforrás hatókör-választóján belül több erőforrást. 
 
-![A több erőforrás kijelölését bemutató képernyőkép](./media/metrics-charts/021.png)
+![A több erőforrás kijelölését bemutató képernyőkép.](./media/metrics-charts/021.png)
 
 > [!NOTE]
-> Csak több erőforrást lehet kijelölni ugyanazon az erőforrás-típuson, helyen és előfizetésen belül. A feltételen kívüli erőforrások nem választhatók ki. 
+> A kiválasztott erőforrásoknak ugyanazon az erőforrás-típuson, helyen és előfizetésen belül kell lenniük. Azok az erőforrások, amelyek nem felelnek meg a feltételeknek, nem választhatók. 
 
-Ha végzett a kijelöléssel, kattintson az "alkalmaz" gombra a választás mentéséhez. 
+Ha végzett, kattintson az **alkalmaz** gombra a beállítások mentéséhez. 
 
-## <a name="selecting-a-resource-group-or-subscription"></a>Erőforráscsoport vagy előfizetés kiválasztása 
+## <a name="select-a-resource-group-or-subscription"></a>Válasszon erőforráscsoportot vagy előfizetést 
 
 > [!WARNING]
-> A mérőszámok több erőforrás, erőforráscsoport vagy előfizetés alapján történő megjelenítéséhez az előfizetés szintjén kell figyelnie az olvasói jogosultságot. 
+> A mérőszámok több erőforrás, erőforráscsoport vagy előfizetés alapján történő megjelenítéséhez az előfizetés szintjén kell figyelnie az olvasó engedélyét. 
 
-A többerőforrásos kompatibilis típusok esetében lekérdezheti a metrikákat egy előfizetésben vagy több erőforráscsoport között is. Először válasszon ki egy előfizetést, vagy válasszon ki egy vagy több erőforráscsoportot: 
+Több erőforrással kompatibilis típusok esetén lekérdezheti a metrikákat egy előfizetésben vagy több erőforráscsoport között. Először válasszon ki egy előfizetést, vagy válasszon ki egy vagy több erőforráscsoportot: 
 
-![A több erőforráscsoport közötti lekérdezés módját bemutató képernyőkép ](./media/metrics-charts/022.png)
+![Képernyőkép, amely bemutatja, hogyan lehet lekérdezni több erőforráscsoport között.](./media/metrics-charts/022.png)
 
-Ezután ki kell választania egy erőforrástípust és egy helyet az új hatókör alkalmazásának folytatásához. 
+Válassza ki az erőforrás típusát és helyét. 
 
-![A kiválasztott erőforráscsoportokat bemutató képernyőkép ](./media/metrics-charts/023.png)
+![A kiválasztott erőforráscsoportokat bemutató képernyőkép.](./media/metrics-charts/023.png)
 
-A kijelölt hatókörök kibontásával is ellenőrizheti, hogy mely erőforrások lesznek érvényesek a alkalmazásra.
+A kijelölt hatókörök kibontásával ellenőrizheti, hogy a kiválasztott erőforrások használhatók-e.
 
-![A csoportok kiválasztott erőforrásait megjelenítő képernyőkép ](./media/metrics-charts/024.png)
+![A csoportok kiválasztott erőforrásait bemutató képernyőkép.](./media/metrics-charts/024.png)
 
-Ha befejezte a hatókörök kiválasztását, kattintson az "alkalmaz" gombra a beállítások mentéséhez. 
+Amikor befejezte a hatókörök kiválasztását, kattintson az **alkalmaz** gombra. 
 
-## <a name="splitting-and-filtering-by-resource-group-or-resources"></a>Felosztás és szűrés erőforráscsoport vagy erőforrások alapján
+## <a name="split-and-filter-by-resource-group-or-resources"></a>Felosztás és szűrés erőforráscsoport vagy erőforrások alapján
 
-Az erőforrások ábrázolása után az elosztás és szűrés eszközzel további információkhoz juthat az adataihoz. 
+Az erőforrások ábrázolása után a felosztás és a szűrés használatával további információkat szerezhet az adatairól. 
 
-A felosztás lehetővé teszi, hogy megjelenítse, hogy a metrika különböző szakaszai hogyan hasonlíthatók össze egymással. Ha például több erőforráshoz szeretne mérőszámot ábrázolni, használhatja az "elosztás alkalmazása" eszközt az erőforrás-azonosító vagy az erőforráscsoport felosztásához. Ez lehetővé teszi, hogy egyszerűen hasonlítson össze egy mérőszámot több erőforrás vagy erőforráscsoport között.  
+A felosztás lehetővé teszi, hogy megjelenítse, hogy a metrika különböző szakaszai hogyan hasonlíthatók össze egymással. Ha például egy mérőszámot több erőforráshoz ábrázol, válassza a **felosztás** az erőforrás-azonosító vagy az erőforráscsoport alapján felosztásra lehetőséget. A felosztás lehetővé teszi egyetlen metrika összehasonlítását több erőforrás vagy erőforráscsoport között.  
 
-Például az alábbi táblázat a százalékos CPU-t mutatja a 9VMs között. Az erőforrás-azonosító alapján történő felosztással könnyedén megtekintheti, hogy a CPU hány százalékban különbözik a virtuális gépektől. 
+Az alábbi diagramon például látható a CPU százalékos aránya kilenc virtuális gépen. Ha erőforrás-azonosító alapján bontja a felosztást, láthatja, hogy a PROCESSZORok százalékos aránya eltér a virtuális gépektől. 
 
-![Képernyőkép, amely bemutatja, hogyan használhatja a felosztást a PROCESSZORok százalékos arányának megjelenítéséhez virtuális gépenként](./media/metrics-charts/026.png)
+![Képernyőkép, amely bemutatja, hogyan használhatja a felosztást a PROCESSZORok százalékos arányának megtekintéséhez a virtuális gépek között.](./media/metrics-charts/026.png)
 
-A felosztás mellett a szűrés funkció használatával csak a megtekinteni kívánt erőforráscsoportok jeleníthetők meg.  Ha például meg szeretné tekinteni a virtuális gépek százalékos CPU-értékét egy adott erőforráscsoport esetében, a "szűrő hozzáadása" eszközzel szűrheti az erőforráscsoportot. Ebben a példában a TailspinToysDemo alapján szűrünk, amely eltávolítja az erőforrásokhoz társított metrikákat a keljfeljancsi-ben. 
+A felosztással együtt a szűrés használatával csak a megtekinteni kívánt erőforráscsoportok jeleníthetők meg.  Ha például a virtuális gépek százalékos CPU-értékét szeretné megtekinteni egy adott erőforráscsoport esetében, válassza a **szűrő hozzáadása** lehetőséget az erőforráscsoport szerinti szűréshez. 
 
-![Az erőforráscsoport szerinti szűrést bemutató képernyőkép](./media/metrics-charts/027.png)
+Ebben a példában a TailspinToysDemo alapján szűrhet. Itt a szűrő eltávolítja az erőforrásokhoz társított metrikákat a keljfeljancsi-ben. 
 
-## <a name="pinning-your-multi-resource-charts"></a>Több erőforrást tartalmazó diagramok rögzítése 
+![Képernyőkép, amely bemutatja, hogyan szűrhető az erőforráscsoport.](./media/metrics-charts/027.png)
 
-> [!WARNING] 
-> A mérőszámok több erőforrás, erőforráscsoport vagy előfizetés alapján történő megjelenítéséhez az előfizetés szintjén kell figyelnie az olvasói jogosultságot. Ennek elvégzéséhez kövesse a [jelen dokumentum](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)utasításait. 
+## <a name="pin-multiple-resource-charts"></a>Több erőforrást tartalmazó diagramok rögzítése 
 
-A multi-Resource diagram rögzítéséhez kövesse az [itt](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts#pin-charts-to-dashboards)található utasításokat. 
+Az erőforráscsoportok és előfizetések mérőszámait ábrázoló több erőforrásból álló diagramok esetében a felhasználónak az előfizetés szintjén kell figyelnie az *olvasói* engedélyekkel. Győződjön meg arról, hogy az irányítópultok minden olyan felhasználója, amelynél több erőforrást tartalmazó diagramot rögzít, megfelelő engedélyekkel rendelkezik. További információ: [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+
+Ha több erőforrást tartalmazó diagramot szeretne rögzíteni egy irányítópulton, tekintse meg a [rögzítés az irányítópultokon](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts#pinning-to-dashboards)című témakört. 
 
 ## <a name="next-steps"></a>További lépések
 
-* [A Metrikaböngésző hibaelhárítása](metrics-troubleshoot.md)
+* [A metrikák kezelője – problémamegoldás](metrics-troubleshoot.md)
 * [Az Azure-szolgáltatásokhoz elérhető metrikák listájának megtekintése](metrics-supported.md)
 * [A konfigurált diagramok példáinak megtekintése](metric-chart-samples.md)
 

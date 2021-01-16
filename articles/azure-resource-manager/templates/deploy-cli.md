@@ -2,13 +2,13 @@
 title: Erőforrások üzembe helyezése az Azure CLI-vel és sablonnal
 description: Erőforrások üzembe helyezése az Azure-ban a Azure Resource Manager és az Azure CLI használatával. Az erőforrások egy Resource Manager-sablonban vannak meghatározva.
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: a2caea70a51a737bfa433a089c03b43f252b5d6e
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.date: 01/15/2021
+ms.openlocfilehash: d79a5c93bf79c5851beabbba2eb3a663c6ab5999
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028148"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251080"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>Erőforrások üzembe helyezése ARM-sablonokkal és Azure CLI-vel
 
@@ -134,7 +134,7 @@ Az egyidejű központi telepítésekkel való ütközések elkerülése érdeké
 
 Helyi vagy távoli sablon telepítése helyett hozzon létre egy [specifikációt](template-specs.md). A sablon spec egy ARM-sablont tartalmazó Azure-előfizetésben található erőforrás. Megkönnyíti a sablon biztonságos megosztását a szervezetben lévő felhasználókkal. Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával hozzáférést biztosíthat a sablon specifikációjának. Ez a funkció jelenleg előzetes verzióban érhető el.
 
-Az alábbi példák bemutatják, hogyan hozhat létre és helyezhet üzembe egy sablon-specifikációt. Ezek a parancsok csak akkor érhetők el, ha [regisztrált az előzetes](https://aka.ms/templateSpecOnboarding)verzióra.
+Az alábbi példák bemutatják, hogyan hozhat létre és helyezhet üzembe egy sablon-specifikációt.
 
 Először hozza létre a sablon specifikációját az ARM-sablon biztosításával.
 
@@ -240,7 +240,7 @@ az deployment group create \
 
 ## <a name="handle-extended-json-format"></a>Kiterjesztett JSON-formátum kezelése
 
-Ha többsoros karakterláncokkal vagy megjegyzésekkel rendelkező sablont szeretne üzembe helyezni az Azure CLI-vel, a 2.3.0 vagy régebbi verziójával, akkor a kapcsolót kell használnia `--handle-extended-json-format` .  Példa:
+Ha többsoros karakterláncokkal vagy megjegyzésekkel rendelkező sablont szeretne üzembe helyezni az Azure CLI-vel, a 2.3.0 vagy régebbi verziójával, akkor a kapcsolót kell használnia `--handle-extended-json-format` .  Például:
 
 ```json
 {

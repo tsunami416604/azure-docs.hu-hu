@@ -3,14 +3,14 @@ title: Az Azure-on futó Kubernetes oktatóanyaga – Tárolóregisztrációs ad
 description: Az Azure Kubernetes Service (AKS) jelen oktatóanyagában egy Azure Container Registry-példányt hozhat létre, és feltöltheti egy mintaalkalmazás tárolórendszerképét.
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/12/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: b0f78c3969f3d02c19824fdb6d1e3b786dceb43c
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: d1dce1c59c4bf40eaead89e4a8a088e9a8ea4f76
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747067"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250621"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>Oktatóanyag: Az Azure Container Registry üzembe helyezése és használata
 
@@ -22,7 +22,7 @@ A Azure Container Registry (ACR) a tároló lemezképek privát beállításjegy
 > * A rendszerkép feltöltése az ACR-be
 > * A regisztrációs adatbázisban lévő rendszerképek megtekintése
 
-A további oktatóanyagokban ez az ACR-példány integrálva van egy Kubernetes-fürttel az AK-ban, és az alkalmazás központi telepítése a lemezképből történik.
+A későbbi oktatóanyagokban ez az ACR-példány egy AK-beli Kubernetes-fürttel van integrálva, és egy alkalmazás a lemezképből lett üzembe helyezve.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -60,12 +60,12 @@ A parancs a *Bejelentkezés sikeres* üzenetet adja vissza, ha befejeződött.
 
 A meglévő helyi rendszerképek listájának megtekintéséhez használja a [docker images][docker-images] parancsot:
 
-```azurecli
+```console
 $ docker images
 ```
-A fenti parancs kimenete az aktuális helyi rendszerképek listáját jeleníti meg:
+A fenti parancs kimenete a jelenlegi helyi rendszerképek listáját jeleníti meg:
 
-```
+```output
 REPOSITORY                                     TAG                 IMAGE ID            CREATED             SIZE
 mcr.microsoft.com/azuredocs/azure-vote-front   v1                  84b41c268ad9        7 minutes ago       944MB
 mcr.microsoft.com/oss/bitnami/redis            6.0.8               3a54a920bb6c        2 days ago          103MB
@@ -122,7 +122,7 @@ az acr repository list --name <acrName> --output table
 
 A következő példakimeneten az *azure-vote-front* rendszerkép szerepel a regisztrációs adatbázis listájában:
 
-```
+```output
 Result
 ----------------
 azure-vote-front
@@ -136,7 +136,7 @@ az acr repository show-tags --name <acrName> --repository azure-vote-front --out
 
 A következő példakimeneten az egyik előző lépésben felcímkézett *v1* rendszerkép látható:
 
-```
+```output
 Result
 --------
 v1
@@ -144,7 +144,7 @@ v1
 
 Így most rendelkezik egy privát Azure Container Registry-példányon tárolt tárolórendszerképpel. Ezt a rendszerképet telepítjük az ACR-ből egy Kubernetes-fürtre a következő oktatóanyagban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy Azure Container Registry tárolóregisztrációs adatbázist hozott létre, és leküldött egy rendszerképet egy AKS-fürtben való használatra. Megtanulta végrehajtani az alábbi műveleteket:
 

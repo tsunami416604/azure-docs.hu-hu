@@ -7,12 +7,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 01/13/2021
-ms.openlocfilehash: 34210d08ad5328f200f5b92c13bfcf85cfead3ec
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 92513a8c24b5106e3a59c8cfa4d743e900b957bf
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98199478"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249771"
 ---
 # <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>A replikáció késésének elhárítása az Azure Database for MySQL-ben
 
@@ -32,9 +32,7 @@ A másodlagos olvasási replikák replikációs késése számos tényezőtől f
 Ebből a cikkből megtudhatja, hogyan lehet elhárítani a Azure Database for MySQL replikációs késését. Azt is megismerheti, hogy a replika kiszolgálók nagyobb replikációs késésének gyakori okai.
 
 > [!NOTE]
-> Elfogultság – ingyenes kommunikáció
->
-> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a _fő_ és a _Slave_ kifejezésre mutató hivatkozásokat tartalmaz. A [torzítás nélküli kommunikációhoz használható Microsoft-stílusú útmutató](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) ezeket a kizáró szavakat ismeri fel. A jelen cikkben szereplő szavak a konzisztencia miatt használatosak, mivel jelenleg a szoftverben megjelenő szavak. Ha a szoftver frissítve lett a szavak eltávolítására, a rendszer a cikket úgy frissíti, hogy az legyen az igazítás.
+> Ez a cikk a _Slave_ kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
 >
 
 ## <a name="replication-concepts"></a>Replikációs fogalmak
@@ -246,6 +244,6 @@ Hasznos lehet a binlog_group_commit_sync_delay paraméter beállítása 1000-re 
 
 A sok önálló tranzakciót tartalmazó, alacsony párhuzamosságú számítási feladatokhoz a binlog_group_commit_sync_delay-beállítás növelheti a késést. A késés megnövelhető, mert az IO-szál a tömeges bináris naplók frissítésére vár, még akkor is, ha csak néhány tranzakció véglegesítve van.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg a [MySQL BinLog-replikáció áttekintését](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).

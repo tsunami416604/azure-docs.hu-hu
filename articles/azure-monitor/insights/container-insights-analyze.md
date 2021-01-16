@@ -3,12 +3,12 @@ title: Kubernetes-figyelés a Azure Monitor for containers szolgáltatással | M
 description: Ez a cikk azt ismerteti, hogyan tekintheti meg és elemezheti a Kubernetes-fürtök teljesítményét a tárolók Azure Monitorával.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: a1f661089b3a6357abb3eed584401e6a8ae2e2fb
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 68d0ac03ae0f6029e0f984e296a89048536f4eb7
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905706"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251284"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>A Kubernetes-fürt teljesítményének figyelése a Azure Monitor for containers szolgáltatással
 
@@ -66,7 +66,7 @@ Az állapot kiszámítja a fürt általános állapotát úgy, hogy a három ál
 
 A következő táblázat a megfigyelt fürt állapotának a többfürtes nézeten belüli állapotát szabályozó számítás részletezését tartalmazza.
 
-| Figyelt fürt |status |Rendelkezésre állás |
+| Figyelt fürt |Állapot |Rendelkezésre állás |
 |-------|-------|-----------------|
 |**Felhasználói Pod**| | |
 | |Kifogástalan |100% |
@@ -93,7 +93,7 @@ A tárolók Azure monitorhoz való hozzáférése közvetlenül egy AK-fürtből
 - Fürt
 - Csomópontok
 - Vezérlők
-- Containers
+- Tárolók
 
 >[!NOTE]
 >A cikk további részében ismertetett tapasztalatok a Azure Stack vagy más környezetben üzemeltetett Kubernetes-fürtök teljesítményének és állapotának megtekintésére is érvényesek, ha a több fürtből álló nézetből van kiválasztva.
@@ -130,7 +130,7 @@ A metrikák Explorerben megtekintheti az összesített csomópont-és Pod-kihasz
 | bepillantást nyerhet. tároló/hüvely | |
 | | PodCount | A Kubernetes származó Pod-szám.|
 
-[A mérőszámokat megtekintheti](../platform/metrics-charts.md#apply-splitting-to-a-chart) dimenzió alapján, és megjelenítheti, hogy a különböző szegmensek hogyan hasonlítanak egymáshoz. Csomópont esetén a diagramot a *gazdagép* dimenziója alapján is szegmentálhatja. Egy Pod-ból a következő méretek alapján szegmentálhatja azt:
+[A mérőszámokat megtekintheti](../platform/metrics-charts.md#apply-splitting) dimenzió alapján, és megjelenítheti, hogy a különböző szegmensek hogyan hasonlítanak egymáshoz. Csomópont esetén a diagramot a *gazdagép* dimenziója alapján is szegmentálhatja. Egy Pod-ból a következő méretek alapján szegmentálhatja azt:
 
 * Vezérlő
 * Kubernetes-névtér
@@ -192,10 +192,10 @@ A **csomópontok** lap megtekintésekor megjelenő információkat az alábbi t�
 | Oszlop | Leírás |
 |--------|-------------|
 | Név | A gazdagép neve. |
-| status | A csomópont állapotának Kubernetes. |
+| Állapot | A csomópont állapotának Kubernetes. |
 | Min. &nbsp; %, AVG &nbsp; %, 50 &nbsp; %, 90 &nbsp; %, 95. &nbsp; %, Max&nbsp;%  | A csomópontok átlagos százalékos aránya a megadott időtartamon belül a percentilis alapján. |
 | Min, AVG, 50, 90, 95., Max | A csomópontok átlagos tényleges értéke a percentilis alapján a megadott időtartam alatt. Az átlagos értéket a rendszer a csomópont processzor-/memória-korlátja alapján méri. A hüvelyek és a tárolók esetében ez a gazdagép által jelentett átlagos érték. |
-| Containers | Tárolók száma. |
+| Tárolók | Tárolók száma. |
 | Üzemidő | A csomópont elindítása vagy újraindítása óta eltelt időt jelöli. |
 | Vezérlő | Csak a tárolók és a hüvelyek esetében. Azt mutatja, hogy melyik vezérlő található a ben. Nem minden hüvely van vezérlőben, ezért előfordulhat, hogy egyesek **N/a**-t jelenítenek meg. |
 | Trend min &nbsp; %, AVG &nbsp; %, 50 &nbsp; %, 90 &nbsp; %, 95. &nbsp; %, Max&nbsp;% | A oszlopdiagram trendje a vezérlő átlagos százalékos értékének százalékos arányát jelöli. |
@@ -235,10 +235,10 @@ A vezérlők megtekintésekor megjelenő információkat az alábbi táblázat i
 | Oszlop | Leírás |
 |--------|-------------|
 | Név | A vezérlő neve.|
-| status | A tárolók összesítési állapota, miután befejezte az állapotot, például *az OK*, a leállítva *, a* *sikertelen*, a *leállított* vagy a *szüneteltetve* állapotot. Ha a tároló fut, de az állapot nem volt megfelelően megjelenítve, vagy nem az ügynök vette át, és 30 percnél nem válaszolt, az állapot *ismeretlen*. Az állapotjelző ikon további részleteit a következő táblázat tartalmazza.|
+| Állapot | A tárolók összesítési állapota, miután befejezte az állapotot, például *az OK*, a leállítva *, a* *sikertelen*, a *leállított* vagy a *szüneteltetve* állapotot. Ha a tároló fut, de az állapot nem volt megfelelően megjelenítve, vagy nem az ügynök vette át, és 30 percnél nem válaszolt, az állapot *ismeretlen*. Az állapotjelző ikon további részleteit a következő táblázat tartalmazza.|
 | Min. &nbsp; %, AVG &nbsp; %, 50 &nbsp; %, 90 &nbsp; %, 95. &nbsp; %, Max&nbsp;%| Az egyes entitások átlagos százalékának összesítési átlaga a kiválasztott metrika és a percentilis esetében. |
 | Min, AVG, 50, 90, 95., Max  | A kiválasztott százalékos értékhez tartozó tároló átlagos CPU-millicore vagy memória-teljesítményének összesítése. Az átlagos értéket a hüvely processzor-/memória-korlátja határozza meg. |
-| Containers | A vezérlő vagy a pod tárolók teljes száma. |
+| Tárolók | A vezérlő vagy a pod tárolók teljes száma. |
 | Újraindítja | A tárolók újraindítási számának összesítése. |
 | Üzemidő | A tároló elindítása óta eltelt időt jelöli. |
 | Csomópont | Csak a tárolók és a hüvelyek esetében. Azt mutatja, hogy melyik vezérlő található a ben. |
@@ -246,7 +246,7 @@ A vezérlők megtekintésekor megjelenő információkat az alábbi táblázat i
 
 Az állapot mezőben lévő ikonok jelzik a tárolók online állapotát.
 
-| Ikon | status |
+| Ikon | Állapot |
 |--------|-------------|
 | ![Futtatásra kész állapot ikonja](./media/container-insights-analyze/containers-ready-icon.png) | Futtatás (kész)|
 | ![Várakozó vagy szüneteltetett állapot ikonja](./media/container-insights-analyze/containers-waiting-icon.png) | Várakozás vagy szüneteltetve|
@@ -272,7 +272,7 @@ A tárolók megtekintésekor megjelenő információkat az alábbi táblázat is
 | Oszlop | Leírás |
 |--------|-------------|
 | Név | A vezérlő neve.|
-| status | A tárolók állapota, ha van ilyen. Az állapot ikon további részleteket tartalmaz a következő táblázatban.|
+| Állapot | A tárolók állapota, ha van ilyen. Az állapot ikon további részleteket tartalmaz a következő táblázatban.|
 | Min. &nbsp; %, AVG &nbsp; %, 50 &nbsp; %, 90 &nbsp; %, 95. &nbsp; %, Max&nbsp;% | Az egyes entitások átlagos százalékos arányának összesítése a kiválasztott metrika és percentilis esetében. |
 | Min, AVG, 50, 90, 95., Max | A kiválasztott százalékos értékhez tartozó tároló átlagos CPU-millicore vagy memória-teljesítményének összesítése. Az átlagos értéket a hüvely processzor-/memória-korlátja határozza meg. |
 | Pod | A tároló, ahol a pod található.|
@@ -283,7 +283,7 @@ A tárolók megtekintésekor megjelenő információkat az alábbi táblázat is
 
 Az állapot mezőben látható ikonok a hüvelyek online állapotát jelzik, az alábbi táblázatban leírtak szerint.
 
-| Ikon | status |
+| Ikon | Állapot |
 |--------|-------------|
 | ![Futtatásra kész állapot ikonja](./media/container-insights-analyze/containers-ready-icon.png) | Futtatás (kész)|
 | ![Várakozó vagy szüneteltetett állapot ikonja](./media/container-insights-analyze/containers-waiting-icon.png) | Várakozás vagy szüneteltetve|
@@ -300,7 +300,7 @@ Az Azure Network Policy Manager olyan tájékoztató Prometheus-metrikákat tart
 A munkafüzetek szövegeket, naplókat, metrikákat és paramétereket egyesítenek olyan gazdag interaktív jelentésekben, amelyek lehetővé teszik a fürt teljesítményének elemzését. A tárolók Azure Monitor számára elérhető munkafüzetek leírását a [tárolók Azure monitorban található munkafüzetek](container-insights-reports.md) című részben tekintheti meg.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át a [teljesítménnyel kapcsolatos riasztások létrehozása a Azure monitor for containers](./container-insights-log-alerts.md) szolgáltatással című témakört, amelyből megtudhatja, hogyan hozhat létre riasztásokat magas CPU-és memóriahasználat esetén a DevOps vagy működési folyamatok és eljárások
 

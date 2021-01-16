@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2021
 ms.custom: references_regions
-ms.openlocfilehash: f4a97f5534e4fd3847bf1cce6874de0f006cce38
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: c380a3edb556adb72d067cb2910c8afbf66b99a0
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201008"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250264"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Olvasási replikák az Azure Database for MySQL-ben
 
@@ -23,9 +23,7 @@ A replikák olyan új kiszolgálók, amelyeket a rendszeres Azure Database for M
 Ha többet szeretne megtudni a MySQL-replikációs funkciókról és problémákról, tekintse meg a [MySQL-replikáció dokumentációját](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html).
 
 > [!NOTE]
-> Elfogultság – ingyenes kommunikáció
->
-> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a _fő_ és a _Slave_ kifejezésre mutató hivatkozásokat tartalmaz. A [torzítás nélküli kommunikációhoz használható Microsoft-stílusú útmutató](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) ezeket a kizáró szavakat ismeri fel. A jelen cikkben szereplő szavak a konzisztencia miatt használatosak, mivel jelenleg a szoftverben megjelenő szavak. Ha a szoftver frissítve lett a szavak eltávolítására, a rendszer a cikket úgy frissíti, hogy az legyen az igazítás.
+> Ez a cikk a _Slave_ kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
 >
 
 ## <a name="when-to-use-a-read-replica"></a>Mikor használjon olvasási replikát
@@ -218,7 +216,7 @@ Ha a GTID engedélyezve van a forráskiszolgálón, az újonnan létrehozott rep
 * Győződjön meg arról, hogy a forráskiszolgáló táblái rendelkeznek elsődleges kulccsal. Az elsődleges kulcsok hiánya replikációs késést eredményezhet a forrás-és a replikák között.
 * A MySQL- [dokumentációban](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) található MySQL-replikálási korlátozások teljes listájának áttekintése
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat a Azure Portal használatával](howto-read-replicas-portal.md)
 * Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat az Azure CLI és a REST API használatával](howto-read-replicas-cli.md)

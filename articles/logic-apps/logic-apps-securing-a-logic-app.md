@@ -3,15 +3,15 @@ title: Hozzáférés- és adatvédelem
 description: Biztonságos hozzáférés a bemenetekhez, a kimenetekhez, a kérelmeken alapuló triggerekhez, a futtatási előzményekhez, a felügyeleti feladatokhoz és a más erőforrásokhoz való hozzáférés Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: rarayudu, logicappspm
+ms.reviewer: estfan, logicappspm, azla, rarayudu
 ms.topic: conceptual
-ms.date: 01/09/2020
-ms.openlocfilehash: 5ad01e31cb9af18fa018d99424b25dee338981d7
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.date: 01/15/2021
+ms.openlocfilehash: c889498d6341875682055e9d67b8d2b958bac70a
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034509"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251063"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Biztonságos hozzáférés és az adatAzure Logic Apps
 
@@ -911,6 +911,10 @@ A HTTP-és HTTPS-végpontok különböző típusú hitelesítést támogatnak. E
 > A logikai alkalmazás által kezelt bizalmas információk védelme érdekében biztonságos paramétereket használjon, és szükség szerint kódolja az adatokat.
 > A paraméterek használatával és biztonságossá tételével kapcsolatos további információkért lásd: [hozzáférés paraméter bemenetekhez](#secure-action-parameters).
 
+<a name="authentication-types-supported-triggers-actions"></a>
+
+#### <a name="authentication-types-for-triggers-and-actions-that-support-authentication"></a>A hitelesítést támogató eseményindítók és műveletek hitelesítési típusai
+
 Ez a táblázat az eseményindítók és műveletek által elérhető hitelesítési típusokat azonosítja, ahol kiválaszthat egy hitelesítési típust:
 
 | Hitelesítéstípus | Támogatott eseményindítók és műveletek |
@@ -919,12 +923,12 @@ Ez a táblázat az eseményindítók és műveletek által elérhető hitelesít
 | [Ügyféltanúsítvány](#client-certificate-authentication) | Azure API Management, Azure App Services, HTTP, HTTP + hencegés, HTTP webhook |
 | [Active Directory OAuth](#azure-active-directory-oauth-authentication) | Azure API Management, Azure App Services, Azure Functions, HTTP, HTTP + hencegés, HTTP webhook |
 | [Nyers](#raw-authentication) | Azure API Management, Azure App Services, Azure Functions, HTTP, HTTP + hencegés, HTTP webhook |
-| [Kezelt identitás](#managed-identity-authentication) | Azure API Management, Azure App Services, Azure Functions, HTTP, HTTP webhook |
+| [Kezelt identitás](#managed-identity-authentication) | **Beépített eseményindítók és műveletek** <p><p>Azure API Management, Azure App Services, Azure Functions, HTTP, HTTP webhook <p><p>**Felügyelt összekötők** <p><p>Azure AD Identity Protection, Azure Automation, Azure Container instance, Azure Adatkezelő, Azure Data Factory, Azure Data Lake, Azure Event Grid, Azure IoT Central v3, Azure Key Vault, Azure Log Analytics, Azure Monitor naplók, Azure Resource Manager, Azure Sentinel, HTTP az Azure AD-vel <p><p>**Megjegyzés**: a felügyelt összekötők támogatása jelenleg előzetes verzióban érhető el. |
 |||
 
 <a name="basic-authentication"></a>
 
-### <a name="basic-authentication"></a>Alapszintű hitelesítés
+#### <a name="basic-authentication"></a>Alapszintű hitelesítés
 
 Ha az [alapszintű](../active-directory-b2c/secure-rest-api.md) beállítás elérhető, akkor a következő tulajdonságértékeket kell megadnia:
 
@@ -955,7 +959,7 @@ Ha [biztonságos paramétereket](#secure-action-parameters) használ a bizalmas 
 
 <a name="client-certificate-authentication"></a>
 
-### <a name="client-certificate-authentication"></a>Ügyféltanúsítvány-alapú hitelesítés
+#### <a name="client-certificate-authentication"></a>Ügyféltanúsítvány-alapú hitelesítés
 
 Ha az [ügyféltanúsítvány](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) lehetőség elérhető, akkor a következő tulajdonságértékeket kell megadnia:
 
@@ -994,7 +998,7 @@ A szolgáltatások ügyféltanúsítvány-alapú hitelesítéssel történő biz
 
 <a name="azure-active-directory-oauth-authentication"></a>
 
-### <a name="azure-active-directory-open-authentication"></a>Azure Active Directory nyílt hitelesítés
+#### <a name="azure-active-directory-open-authentication"></a>Azure Active Directory nyílt hitelesítés
 
 Kéréses eseményindítók esetén [Azure Active Directory nyílt hitelesítés (Azure ad OAuth)](../active-directory/develop/index.yml)használatával hitelesítheti a bejövő hívásokat, miután [beállította az Azure ad-engedélyezési szabályzatokat](#enable-oauth) a logikai alkalmazáshoz. Az **Active Directory OAuth** hitelesítési típust megadó összes más eseményindító és művelet esetében adja meg a következő tulajdonságértékeket:
 
@@ -1034,7 +1038,7 @@ Ha [biztonságos paramétereket](#secure-action-parameters) használ a bizalmas 
 
 <a name="raw-authentication"></a>
 
-### <a name="raw-authentication"></a>Nyers hitelesítés
+#### <a name="raw-authentication"></a>Nyers hitelesítés
 
 Ha a **RAW** beállítás elérhető, akkor használhatja ezt a hitelesítési típust, ha olyan [hitelesítési sémákat](https://iana.org/assignments/http-authschemes/http-authschemes.xhtml) kell használnia, amelyek nem követik a [OAuth 2,0 protokollt](https://oauth.net/2/). Ezzel a típussal manuálisan hozza létre a kimenő kérelemmel elküldött engedélyezési fejléc értékét, és adja meg a fejléc értékét az triggerben vagy a műveletben.
 
@@ -1077,15 +1081,17 @@ Ha [biztonságos paramétereket](#secure-action-parameters) használ a bizalmas 
 
 <a name="managed-identity-authentication"></a>
 
-### <a name="managed-identity-authentication"></a>Felügyelt identitás hitelesítése
+#### <a name="managed-identity-authentication"></a>Felügyelt identitás hitelesítése
 
-Ha a [felügyelt identitás](../active-directory/managed-identities-azure-resources/overview.md) beállítás egy [adott triggeren vagy műveleten](#add-authentication-outbound)érhető el, a logikai alkalmazás a rendszer által hozzárendelt identitást vagy *egy manuálisan létrehozott* , felhasználó által hozzárendelt identitást használhat a Azure Active Directory (Azure ad) által védett más erőforrásokhoz való hozzáférés hitelesítése nélkül. Az Azure kezeli ezt az identitást, és segít a hitelesítő adatok védelmében, mivel nem kell megadnia vagy elforgatni a titkokat. További információ az Azure [AD-hitelesítés felügyelt identitásait támogató Azure-szolgáltatásokról](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+Ha a [felügyelt identitás](../active-directory/managed-identities-azure-resources/overview.md) beállítás elérhető a [felügyelt identitás hitelesítését támogató triggeren vagy műveleten](#add-authentication-outbound), a logikai alkalmazás a rendszer által hozzárendelt identitást vagy *egy manuálisan létrehozott* , felhasználó által hozzárendelt identitást használhat a Azure Active Directory (Azure ad) által védett Azure-erőforrásokhoz való hozzáférés hitelesítéséhez, nem pedig a hitelesítő adatokat, a titkokat vagy az Azure ad-jogkivonatokat. Az Azure kezeli ezt az identitást, és segít a hitelesítő adatok védelmében, mivel nem rendelkezik a titkok kezelésével, vagy közvetlenül nem használja az Azure AD-jogkivonatokat. További információ az Azure [AD-hitelesítés felügyelt identitásait támogató Azure-szolgáltatásokról](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
 1. Mielőtt a logikai alkalmazás felügyelt identitást tud használni, kövesse az [Azure-erőforrásokhoz való hozzáférés hitelesítése a Azure Logic apps felügyelt identitások használatával](../logic-apps/create-managed-service-identity.md)című témakör lépéseit. Ezekkel a lépésekkel engedélyezheti a felügyelt identitást a logikai alkalmazáson, és beállíthatja az identitás hozzáférését a cél Azure-erőforráshoz.
 
 1. Mielőtt egy Azure-függvény felügyelt identitást használhat, először [engedélyezze az Azure functions hitelesítést](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-functions).
 
-1. Az triggerben vagy a műveletben, ahol a felügyelt identitást szeretné használni, a következő tulajdonságértékeket kell megadnia:
+1. A felügyelt identitást támogató triggerben vagy műveletben adja meg a következő információkat:
+
+   **Beépített eseményindítók és műveletek**
 
    | Tulajdonság (Designer) | Tulajdonság (JSON) | Kötelező | Érték | Leírás |
    |---------------------|-----------------|----------|-------|-------------|
@@ -1094,7 +1100,7 @@ Ha a [felügyelt identitás](../active-directory/managed-identities-azure-resour
    | **Célközönség** | `audience` | Igen | <*cél – erőforrás-azonosító*> | Az elérni kívánt cél erőforráshoz tartozó erőforrás-azonosító. <p>Például `https://storage.azure.com/` az összes Storage-fiók esetében érvényes lesz a [hozzáférési tokenek](../active-directory/develop/access-tokens.md) hitelesítése. Megadhat azonban egy gyökérszintű szolgáltatás URL-címét is, például `https://fabrikamstorageaccount.blob.core.windows.net` egy adott Storage-fiókhoz. <p>**Megjegyzés**: Előfordulhat, hogy a **célközönség** tulajdonság egyes eseményindítókban vagy műveletekben el van rejtve. A tulajdonság láthatóvá tételéhez az triggerben vagy a műveletben nyissa meg az **új paraméter hozzáadása** listát, és válassza a **célközönség** lehetőséget. <p><p>**Fontos**: Ügyeljen arra, hogy a célként megadott erőforrás-azonosító *pontosan EGYEZZEN* az Azure ad által várt értékkel, beleértve a szükséges záró perjeleket is. Így az `https://storage.azure.com/` összes Azure Blob Storage-fiók erőforrás-azonosítója záró perjelet igényel. Egy adott Storage-fiók erőforrás-azonosítója azonban nem igényel záró perjelet. Az erőforrás-azonosítók megkereséséhez tekintse meg az [Azure ad-t támogató Azure-szolgáltatásokat](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). |
    |||||
 
-   Ha [biztonságos paramétereket](#secure-action-parameters) használ a bizalmas adatok kezelésére és védelmére, például egy [Azure Resource Manager sablonban az üzembe helyezés automatizálásához](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), használhat kifejezéseket a paraméterek értékének futtatásához futásidőben. Ez a példa a HTTP-művelet definíciója határozza meg a hitelesítést `type` , `ManagedServiceIdentity` és a [Parameters () függvényt](../logic-apps/workflow-definition-language-functions-reference.md#parameters) használja a paraméterek értékének lekéréséhez:
+   Ha [biztonságos paramétereket](#secure-action-parameters) használ a bizalmas adatok kezelésére és védelmére, például egy [Azure Resource Manager sablonban az üzembe helyezés automatizálásához](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), használhat kifejezéseket a paraméterek értékének futtatásához futásidőben. Ez a HTTP-műveleti definíció például meghatározza a hitelesítést `type` , `ManagedServiceIdentity` és a [Parameters () függvényt](../logic-apps/workflow-definition-language-functions-reference.md#parameters) használja a paraméterek értékének beolvasásához:
 
    ```json
    "HTTP": {
@@ -1111,6 +1117,15 @@ Ha a [felügyelt identitás](../active-directory/managed-identities-azure-resour
       "runAfter": {}
    }
    ```
+
+   **Felügyelt összekötő-eseményindítók és műveletek**
+
+   | Tulajdonság (Designer) | Kötelező | Érték | Leírás |
+   |---------------------|----------|-------|-------------|
+   | **Kapcsolatok neve** | Igen | <*kapcsolattípus*> ||
+   | **Kezelt identitás** | Igen | **Rendszer által hozzárendelt felügyelt identitás** <br>vagy <br> <*felhasználó által hozzárendelt – felügyelt azonosító – név*> | A használni kívánt hitelesítési típus |
+   |||||
+
 
 <a name="block-connections"></a>
 

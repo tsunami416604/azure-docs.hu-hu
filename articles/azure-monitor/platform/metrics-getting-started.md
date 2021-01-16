@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 710de93a24037031784ca8d37a8ae0be76bff9e6
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 2bf56379a32bf8035ea2d0d3fe797776ec6ba40d
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614593"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250400"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Bevezetés az Azure Metrikaböngésző használatába
 
@@ -38,7 +38,7 @@ Metrikus diagram létrehozásához az erőforrás, Erőforráscsoport, előfizet
 
     > ![Metrika kiválasztása](./media/metrics-getting-started/metrics-dropdown.png)
 
-4. Igény szerint [módosíthatja a metrikák összesítését](metrics-charts.md#changing-aggregation). Előfordulhat például, hogy a diagramot a metrika minimális, maximális vagy átlagos értékének megjelenítésére szeretné megjeleníteni.
+4. Igény szerint [módosíthatja a metrikák összesítését](metrics-charts.md#aggregation). Előfordulhat például, hogy a diagramot a metrika minimális, maximális vagy átlagos értékének megjelenítésére szeretné megjeleníteni.
 
 > [!TIP]
 > Használja a **metrika hozzáadása** gombot, és ismételje meg ezeket a lépéseket, ha több, ugyanabban a diagramban ábrázolt mérőszámot szeretne látni. Ha egy nézetben több diagramot szeretne megjeleníteni, kattintson a felül található **diagram hozzáadása** gombra.
@@ -57,7 +57,7 @@ Alapértelmezés szerint a diagram a legutóbbi 24 órányi metrikai adatokat je
 
 ## <a name="apply-dimension-filters-and-splitting"></a>Dimenzió szűrők alkalmazása és felosztás
 
-A [szűrés](metrics-charts.md#apply-filters-to-charts) és a [felosztás](metrics-charts.md#apply-splitting-to-a-chart) a dimenziókkal rendelkező mérőszámok hatékony diagnosztikai eszközei. Ezek a funkciók azt mutatják be, hogy a különböző metrikai szegmensek ("dimenzió értékek") milyen hatással vannak a metrika összesített értékére, és lehetővé teszik a lehetséges kiugró értékek azonosítását.
+A [szűrés](metrics-charts.md#filters) és a [felosztás](metrics-charts.md#apply-splitting) a dimenziókkal rendelkező mérőszámok hatékony diagnosztikai eszközei. Ezek a funkciók azt mutatják be, hogy a különböző metrikai szegmensek ("dimenzió értékek") milyen hatással vannak a metrika összesített értékére, és lehetővé teszik a lehetséges kiugró értékek azonosítását.
 
 - A **szűréssel** kiválaszthatja, hogy mely dimenzió értékeket tartalmazza a diagram. Előfordulhat például, hogy meg szeretné jeleníteni a sikeres kérelmeket a *kiszolgáló válaszideje* mérőszámának ábrázolásakor. A szűrőt a kérelem dimenziójának *sikerességére* kell alkalmaznia. 
 

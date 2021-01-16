@@ -3,7 +3,7 @@ title: 'Gyors útmutató: AK-fürt üzembe helyezése az Azure CLI használatáv
 description: Megtudhatja, hogyan hozhat létre gyorsan Kubernetes-fürtöt, hogyan helyezhet üzembe egy alkalmazást, és hogyan figyelheti a teljesítményt az Azure Kubernetes szolgáltatásban (ak) az Azure CLI használatával.
 services: container-service
 ms.topic: quickstart
-ms.date: 09/11/2020
+ms.date: 01/12/2021
 ms.custom:
 - H1Hack27Feb2017
 - mvc
@@ -13,12 +13,12 @@ ms.custom:
 - seo-python-october2019
 - devx-track-azurecli
 - contperf-fy21q1
-ms.openlocfilehash: e69db59789dbaf45c0830ba6e6ac3afbe87f9a19
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: afa1aaafe7ea339eb82e35039980009908295008
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029430"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98248615"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>Gyors útmutató: Azure Kubernetes Service-fürt üzembe helyezése az Azure CLI használatával
 
@@ -39,7 +39,7 @@ A rövid útmutató feltételezi, hogy rendelkezik a Kubernetes használatára v
 > [!NOTE]
 > Ha a rövid útmutatóban helyileg futtatja a parancsokat (Azure Cloud Shell helyett), győződjön meg arról, hogy rendszergazdaként futtatja a parancsokat.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik. Az erőforráscsoportok létrehozásakor meg kell adnia egy helyet. Ez a hely határozza meg, hogy az erőforráscsoport metaadatai hol vannak tárolva, és az erőforrások hol futnak az Azure-ban, ha nem ad meg másik régiót az erőforrások létrehozásakor. Hozzon létre egy erőforráscsoportot az az [Group Create][az-group-create] paranccsal.
 
@@ -49,7 +49,7 @@ A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscso
 az group create --name myResourceGroup --location eastus
 ```
 
-A következő példa kimenete azt mutatja, hogy az erőforráscsoport sikeresen létrejött:
+Az alábbi példához hasonló kimenet azt jelzi, hogy az erőforráscsoport sikeresen létrejött:
 
 ```json
 {
@@ -100,7 +100,7 @@ A Kubernetes-fürtök kezeléséhez a [kubectl][kubectl], a Kubernetes parancsso
 az aks install-cli
 ```
 
-Az [aks get-credentials][az-aks-get-credentials] paranccsal konfigurálható`kubectl` a Kubernetes-fürthöz való csatlakozásra. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes CLI-t a használatára.
+Az [az aks get-credentials][az-aks-get-credentials] paranccsal konfigurálható `kubectl` a Kubernetes-fürthöz való csatlakozásra. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes CLI-t a használatára.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -277,7 +277,7 @@ Ebben a rövid útmutatóban előre létrehozott tároló-lemezképeket használ
 
 [https://github.com/Azure-Samples/azure-voting-app-redis][azure-vote-app]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban egy Kubernetes-fürtöt és azon egy többtárolós alkalmazást helyezett üzembe. [A Kubernetes webes irányítópultját is elérheti][kubernetes-dashboard] az AK-fürthöz.
 
@@ -297,10 +297,10 @@ Az AKS-sel kapcsolatos további információkért és a kódtól az üzembe hely
 [kubernetes-concepts]: concepts-clusters-workloads.md
 [aks-monitor]: ../azure-monitor/insights/container-insights-onboard.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
-[az-aks-browse]: /cli/azure/aks?view=azure-cli-latest#az-aks-browse
-[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
-[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
-[az-aks-install-cli]: /cli/azure/aks?view=azure-cli-latest#az-aks-install-cli
+[az-aks-browse]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-browse
+[az-aks-create]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-create
+[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-get-credentials
+[az-aks-install-cli]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-install-cli
 [az-group-create]: /cli/azure/group#az-group-create
 [az-group-delete]: /cli/azure/group#az-group-delete
 [azure-cli-install]: /cli/azure/install-azure-cli

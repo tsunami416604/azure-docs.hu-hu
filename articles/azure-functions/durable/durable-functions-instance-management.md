@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 2b99d032b953caecfca2b34d5eadafe94f45f307
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ec3892c5e47c372d9f54d4a4224e94183e31f181
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009534"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251131"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Durable Functions-példányok kezelése az Azure-ban
 
@@ -300,6 +300,10 @@ public static async Task Run(
     {
         log.LogInformation(JsonConvert.SerializeObject(instance));
     }
+    
+    // Note: ListInstancesAsync only returns the first page of results.
+    // To request additional pages provide the result.ContinuationToken
+    // to the OrchestrationStatusQueryCondition's ContinuationToken property.
 }
 ```
 
@@ -543,7 +547,7 @@ func durable terminate --id 0ab8c55a66644d68a3a8b220b12d209c --reason "It was ti
 
 Bizonyos helyzetekben fontos, hogy a Orchestrator függvények várni tudják a külső események figyelését. Ez magában foglalja az [emberi interakcióra](durable-functions-overview.md#human)váró [figyelési funkciókat](durable-functions-overview.md#monitoring) és függvényeket.
 
-Értesítés küldése a példányok futtatásához a `RaiseEventAsync` (.net) metódus vagy a `raiseEvent` (JavaScript) metódus használatával. [orchestration client binding](durable-functions-bindings.md#orchestration-client) Az ilyen eseményeket kezelő példányok olyanok, amelyek a (.net) hívására várnak, `WaitForExternalEvent` vagy egy `waitForExternalEvent` (JavaScript) hívást végeznek.
+Értesítés küldése a példányok futtatásához a `RaiseEventAsync` (.net) metódus vagy a `raiseEvent` (JavaScript) metódus használatával. [](durable-functions-bindings.md#orchestration-client) Az ilyen eseményeket kezelő példányok olyanok, amelyek a (.net) hívására várnak, `WaitForExternalEvent` vagy egy `waitForExternalEvent` (JavaScript) hívást végeznek.
 
 A `RaiseEventAsync` (.net) és a `raiseEvent` (JavaScript) paraméterek a következők:
 
@@ -800,7 +804,7 @@ Ha nem várt okból végez előkészítési hibát *, a példányt* visszahelyez
 > [!NOTE]
 > Ez az API nem helyettesíti a megfelelő hibakezelés és újrapróbálkozási házirendeket. Ehelyett csak olyan esetekben javasolt használni, ahol a hangszerelési példányok váratlan okok miatt sikertelenek. A hibakezelés és az újrapróbálkozási szabályzatokkal kapcsolatos további információkért tekintse meg [a hibakezelés című cikket.](durable-functions-error-handling.md)
 
-A `RewindAsync` koordinációs ügyfél-kötés (.net) vagy `rewind` (JavaScript [orchestration client binding](durable-functions-bindings.md#orchestration-client) ) metódusának használatával állítsa vissza a koordinációt a *futó* állapotba. Ezzel a módszerrel a rendszer Újrafuttatja a tevékenység-vagy alfolyamatok végrehajtásával kapcsolatos hibákat is, amelyek az eljárási hibát okozták.
+A `RewindAsync` koordinációs ügyfél-kötés (.net) vagy `rewind` (JavaScript [](durable-functions-bindings.md#orchestration-client) ) metódusának használatával állítsa vissza a koordinációt a *futó* állapotba. Ezzel a módszerrel a rendszer Újrafuttatja a tevékenység-vagy alfolyamatok végrehajtásával kapcsolatos hibákat is, amelyek az eljárási hibát okozták.
 
 Tegyük fel például, hogy van egy munkafolyamata, amely egy sor [emberi jóváhagyást](durable-functions-overview.md#human)tartalmaz. Tegyük fel, hogy van olyan tevékenységi függvény, amely értesíti valakit, hogy jóváhagyása szükséges, és várjon a valós idejű válaszra. Ha az összes jóváhagyási tevékenység kapott választ vagy időtúllépés történt, tegyük fel, hogy egy másik tevékenység meghiúsul az alkalmazások helytelen konfigurációja miatt, például érvénytelen adatbázis-kapcsolati karakterlánc. Ennek eredményeképpen a munkafolyamat mélyen bekerül a munkafolyamatba. A `RewindAsync` (.net) vagy a `rewind` (JavaScript) API használatával az alkalmazás rendszergazdája kijavíthatja a konfigurációs hibát, és a hiba előtt visszatekerheti a sikertelen előkészítést az állapotba. Az emberi beavatkozást nem igénylő lépések egyikét sem kell újra jóváhagyni, és a folyamat sikeresen elvégezhető.
 
@@ -1001,7 +1005,7 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-A Azure Functions Core Tools parancs használatával törölheti az előkészítési példány előzményeit [Azure Functions Core Tools](../functions-run-local.md) `durable purge-history` . Az előző szakaszban szereplő második C# példához hasonlóan a rendszer a megadott időintervallumban létrehozott összes összehangoló példány előzményeit is törli. A kitörölhető példányok tovább szűrhetők futtatókörnyezeti állapot alapján. A parancsnak több paramétere van:
+A Azure Functions Core Tools parancs használatával törölheti az előkészítési példány előzményeit [](../functions-run-local.md) `durable purge-history` . Az előző szakaszban szereplő második C# példához hasonlóan a rendszer a megadott időintervallumban létrehozott összes összehangoló példány előzményeit is törli. A kitörölhető példányok tovább szűrhetők futtatókörnyezeti állapot alapján. A parancsnak több paramétere van:
 
 * **`created-after` (nem kötelező)**: az ezen dátum/idő (UTC) után létrehozott példányok előzményeinek kiürítése. ISO 8601 formázott dátum/idő.
 * **`created-before` (nem kötelező)**: az ezen dátum/idő (UTC) előtt létrehozott példányok előzményeinek kiürítése. ISO 8601 formázott dátum/idő.

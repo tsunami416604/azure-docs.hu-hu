@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 61bd23c74fd7960317dff17175b355b473cd6dc7
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 921c05b76640935a1bd9e65d556933c23093e5b2
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233831"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251437"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Virtuális gépek minősítésének hibáinak megoldása
 
@@ -23,19 +23,6 @@ Ez a cikk a virtuálisgép-rendszerkép közzétételekor, valamint a kapcsolód
 > [!NOTE]
 > Ha kérdése van a cikkről vagy a fejlesztésre vonatkozó javaslatokról, forduljon a [partner Center támogatási szolgálatához](https://aka.ms/marketplacepublishersupport).
 
-## <a name="approved-base-image"></a>Jóváhagyott alaprendszerkép
-
-Ha olyan kérést küld, amely a rendszerkép frissítéssel való újbóli közzétételét kéri, akkor előfordulhat, hogy a részleges ellenőrzés tesztelési esete meghiúsul. Ha nem sikerül, a rendszerkép nem lesz jóváhagyva.
-
-Ez a hiba akkor fordul elő, ha egy másik közzétevőhöz tartozó alaprendszerképet használ, és frissítette a rendszerképet. Ebben az esetben a rendszerkép közzététele nem engedélyezett.
-
-A probléma megoldásához kérje le a rendszerképet az Azure Marketplace-ről, és végezze el a módosítását. További információért tekintse át a következő cikkeket:
-
-- [Linux-rendszerképek](../virtual-machines/linux/endorsed-distros.md?toc=/azure/virtual-machines/linux/toc.json)
-- [Windows-rendszerképek](azure-vm-create-using-approved-base.md)
-
-> [!Note]
-> Ha olyan linuxos alaprendszerképet használ, amely nem az Azure Marketplace-en található, győződjön meg arról, hogy az első 2048-szektor (az egyes szektorok 512 bájtban) üresek, így az Azure továbbra is közzéteszi a virtuális gépet az Azure Marketplace-en.  
 
 ## <a name="vm-extension-failure"></a>VM-bővítmény hibája
 
@@ -170,7 +157,7 @@ Tekintse meg az alábbi táblázatot a tesztelési esetek futtatásakor előford
 A következő táblázat felsorolja az eszközkészlet által futtatott Windows-tesztelési eseteket, valamint a tesztek ellenőrzésének leírását:
 
 |Használati eset |Tesztelési esetek|Leírás|
-|---|---|---|---|
+|---|---|---|
 |1|Operációs rendszer architektúrája|Az Azure csak a 64 bites operációs rendszereket támogatja.|
 |2|Felhasználói fióktól való függőség|Az alkalmazás végrehajtása nem függhet a rendszergazdai fióktól.|
 |3|Feladatátvevő fürt|A Windows Server feladatátvételi fürtszolgáltatás még nem támogatott. Az alkalmazás nem függ ettől a szolgáltatástól.|
@@ -250,7 +237,7 @@ Ha a rendszerkép nincs telepítve a következő kernel-verziók egyikével, fri
 |OPERÁCIÓSRENDSZER-család|Verzió|Kernel|
 |---|---|---|
 |Ubuntu|14,04 LTS|4.4.0 – 151| 
-||14,04 LTS|4.15.0-1049-*-Azure|
+||14,04 LTS|4.15.0-1049- \* -Azure|
 ||16,04 LTS|4.15.0 – 1049|
 ||18,04 LTS|4.18.0 – 1023|
 ||18,04 LTS|5.0.0 – 1025|
@@ -283,9 +270,9 @@ Ha a rendszerkép nincs telepítve a következő kernel-verziók egyikével, fri
 |Oracle|6,10|UEK2 2.6.39-400.312.2<br>UEK3 3.8.13-118.35.2<br>RHCK 2.6.32-754.15.3 
 ||7.0 – 7.5|UEK3 3.8.13-118.35.2<br>UEK4 4.1.12-124.28.3<br>A RHCK a fenti RHEL követi|
 ||7.6|RHCK 3.10.0-957.21.3<br>UEK5 4.14.35-1902.2.0|
-|CoreOS stabil 2079.6.0|4.19.43*|
-||Bétaverziós 2135.3.1|4.19.50*|
-||Alpha 2163.2.1|4.19.50*|
+|CoreOS stabil 2079.6.0|4.19.43\*|
+||Bétaverziós 2135.3.1|4.19.50\*|
+||Alpha 2163.2.1|4.19.50\*|
 |Debian|Jessie (biztonság)|3.16.68 – 2|
 ||Jessie backports|4.9.168 – 1 + deb9u3|
 ||stretch (biztonság)|4.9.168 – 1 + deb9u3|
@@ -328,14 +315,11 @@ A következő táblázat tartalmazza azokat a problémákat, amelyek a virtuáli
 |6|HTTP feltételes fejléc|A SAS URL-címe érvénytelen.|Szerezze be a megfelelő SAS URL-címet.|
 |7|Érvénytelen VHD-név|Ellenőrizze, hogy létezik-e speciális karakter (például egy százalék `%` vagy idézőjel `"` ) a VHD-névben.|Nevezze át a VHD-fájlt a speciális karakterek eltávolításával.|
 
-## <a name="first-1mb-2048-sectors-each-sector-of-512-bytes-partition-linux-only"></a>Első 1MB (2048 szektor, 512 bájtos szektor) partíció (csak Linux)
+## <a name="first-1-mb-partition-2048-sectors-each-sector-of-512-bytes"></a>Első 1 MB-os partíció (2 048 szektor, 512 bájtos szektorok)
 
-A virtuális merevlemez elküldésekor győződjön meg arról, hogy a VHD első 2048 szektora (1MB) üres. Ellenkező esetben a kérés sikertelen lesz. Vegye figyelembe, hogy ez a rendszerindító/operációsrendszer-lemezre, és nem a további adatlemezekre is érvényes lesz.
+Ha [saját lemezképet](azure-vm-create-using-own-image.md)készít, győződjön meg arról, hogy az operációsrendszer-lemez első 2 048 szektora (1 MB) üres. Ellenkező esetben a közzététel sikertelen lesz. Ez a követelmény csak az operációsrendszer-lemezre vonatkozik (adatlemezekre nem). Ha [jóváhagyta](azure-vm-create-using-approved-base.md)a rendszerképét, kihagyhatja ezt a követelményt. 
 
->[!NOTE]
->Bizonyos speciális rendszerképekhez, például az Azure Marketplace-ről készült Azure Windows alaplemezképekre épülő, vagy a VHD első 1MB-as (2048 szektor) értékének megadásával. 
-
-### <a name="create-a-first-1mb-2048-sectors-each-sector-of-512-bytes-partition-on-an-empty-vhd"></a>Hozzon létre egy első 1MB-ot (2048-es szektort, a 512 bájtos egyes szektorokat) egy üres VHD-partíción
+### <a name="create-a-1-mb-partition-2048-sectors-each-sector-of-512-bytes-on-an-empty-vhd-linux-only-steps"></a>Hozzon létre egy 1 MB méretű partíciót (2 048-es szektorok, 512 bájtos szektorok) üres virtuális merevlemezen (csak linuxos lépések)
 
 Ezek a lépések csak a Linux rendszerre vonatkoznak.
 
@@ -400,7 +384,7 @@ Ezek a lépések csak a Linux rendszerre vonatkoznak.
 
 1. Válassza le a virtuális MEREVLEMEZt a virtuális gépről, és törölje a virtuális GÉPET.
 
-### <a name="create-a-first-mb-2048-sectors-each-sector-of-512-bytes-partition-by-moving-existing-data-on-vhd"></a>Hozzon létre egy első MB-ot (2048 szektort, 512 bájtos szektort) a meglévő adat virtuális merevlemezen való áthelyezésével
+### <a name="create-a-first-1-mb-partition-2048-sectors-each-sector-of-512-bytes-by-moving-existing-data-on-vhd"></a>Hozzon létre egy első 1 MB méretű partíciót (2 048 szektor, minden 512 bájtos szektor) a meglévő adat virtuális merevlemezen való áthelyezésével
 
 Ezek a lépések csak a Linux rendszerre vonatkoznak.
 

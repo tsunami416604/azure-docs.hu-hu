@@ -1,15 +1,15 @@
 ---
 title: Támogatott Azure Resource Manager erőforrástípusok
 description: Adja meg az Azure Resource Graph és a Change History által támogatott Azure Resource Manager-erőforrástípusok listáját.
-ms.date: 11/20/2020
+ms.date: 01/06/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: fa5a5f5741f05e6f5f30a3d04958ba0b450a1bb7
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 4198c60bc298eb6a1b9902bb92e3df44648b2c0b
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94988340"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251777"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Az Azure Resource Graph táblázat-és erőforrástípus-referenciája
 
@@ -35,33 +35,57 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. Maintenance/configurationassignments
 - Microsoft. Maintenance/Updates
 
+## <a name="patchassessmentresources"></a>patchassessmentresources
+
+- Microsoft. számítás/virtualmachines/patchassessmentresults
+- Microsoft. számítás/virtualmachines/patchassessmentresults/softwarepatches
+- Microsoft. hybridcompute/Machines/patchassessmentresults
+- Microsoft. hybridcompute/Machines/patchassessmentresults/softwarepatches
+
+## <a name="patchinstallationresources"></a>patchinstallationresources
+
+- Microsoft. számítás/virtualmachines/patchinstallationresults
+- Microsoft. számítás/virtualmachines/patchinstallationresults/softwarepatches
+- Microsoft. hybridcompute/Machines/patchinstallationresults
+- Microsoft. hybridcompute/Machines/patchinstallationresults/softwarepatches
+
 ## <a name="policyresources"></a>policyresources
 
 - Microsoft. policyinsights/policystates
 
+## <a name="recoveryservicesresources"></a>recoveryservicesresources
+
+- Microsoft. dataprotection/backupvaults/backupinstances
+- Microsoft. dataprotection/backupvaults/backupjobs
+- Microsoft. dataprotection/backupvaults/backuppolicies
+- Microsoft. recoveryservices szolgáltatónál/tárolók/riasztások
+- Microsoft. Recoveryservices szolgáltatónál/Vaults/backupFabrics/protectionContainers/protectedItems (biztonsági másolati elemek)
+- Microsoft. recoveryservices szolgáltatónál/tárolók/backupjobs
+- Microsoft. recoveryservices szolgáltatónál/tárolók/backuppolicies
+
 ## <a name="resourcecontainers"></a>resourcecontainers
 
-- Microsoft. Resources/előfizetések
-- Microsoft. Resources/Subscriptions/resourcegroups
+- Microsoft. Resources/Subscriptions (előfizetések)
+- Microsoft. Resources/Subscriptions/resourceGroups (erőforráscsoportok)
 
 ## <a name="resources"></a>resources
 
-- 84codes. cloudamqp/kiszolgálók
-- Citrix. Services/xenappessentials
-- Citrix. Services/xendesktopessentials
-- conexlink. mycloudit/fiókok
-- crypteron. datasecurity/alkalmazások
+- 84codes. CloudAMQP/kiszolgálók (CloudAMQP)
+- Citrix. Services/XenAppEssentials (Citrix Virtual apps Essentials)
+- Citrix. Services/XenDesktopEssentials (Citrix virtuális asztalok Essentials)
+- Conexlink. MyCloudIt/fiókok (MyCloudIT – Azure Desktop-üzemeltetés)
+- Crypteron. DataSecurity/apps (Crypteron)
 - gridpro. evops/fiókok
 - gridpro. evops/fiókok/eventrules
 - gridpro. evops/fiókok/requesttemplates
 - gridpro. evops/fiókok/nézetek
-- struktúra. streaming/szolgáltatások
+- Struktúra. streaming/Services (struktúra streaming)
 - inkapszula. WAF/fiókok
-- livearena. Broadcast/Services
-- mailjet. e-mailek/szolgáltatások
-- Microsoft. HRE/domainservices
+- LiveArena. Broadcast/Services (LiveArena-szórás)
+- Mailjet. email/szolgáltatások (mailjet E-mail szolgáltatás)
+- Microsoft. HRE/domainServices (Azure AD Domain Services)
 - Microsoft. aadiam/azureadmetrics
-- Microsoft. aadiam/privatelinkforazuread
+- Microsoft. aadiam/privateLinkForAzureAD (privát hivatkozás az Azure AD-hez)
 - Microsoft. aadiam/bérlők
 - Microsoft. agfoodplatform/farmbeats
 - Microsoft. aisupercomputer/fiókok
@@ -70,29 +94,30 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. alertsmanagement/actionrules
 - Microsoft. alertsmanagement/resourcehealthalertrules
 - Microsoft. alertsmanagement/smartdetectoralertrules
-- Microsoft. AnalysisServices/kiszolgálók
-- Microsoft. apimanagement/szolgáltatás
+- Microsoft. AnalysisServices/Servers (Analysis Services)
+- Microsoft. anybuild/fürtök
+- Microsoft. ApiManagement/Service (API Management Services)
 - Microsoft. appassessment/migrateprojects
-- Microsoft. appconfiguration/configurationstores
-- Microsoft. appplatform/Spring
+- Microsoft. AppConfiguration/configurationStores (alkalmazás konfigurációja)
+- Microsoft. AppPlatform/Spring (Azure Spring Cloud)
 - Microsoft. Archive/Collections
-- Microsoft. igazolás/attestationproviders
-- Microsoft. Authorization/resourcemanagementprivatelinks
+- Microsoft. igazolás/attestationProviders (tanúsító szolgáltatók)
+- Microsoft. Authorization/resourceManagementPrivateLinks (erőforrás-kezelési privát hivatkozások)
 - Microsoft. automanage/accounts
 - Microsoft. automanage/configurationprofilepreferences
-- Microsoft. Automation/automationaccounts
+- Microsoft. Automation/AutomationAccounts (Automation-fiókok)
 - Microsoft. Automation/automationaccounts/konfigurációk
-- Microsoft. Automation/automationaccounts/runbookok
+- Microsoft. Automation/automationAccounts/runbookok (Runbook)
 - Microsoft. autonomousdevelopmentplatform/fiókok
-- Microsoft. autonomoussystems/munkaterületek
-- Microsoft. AVS/privateclouds
+- Microsoft. AutonomousSystems/munkaterületek (Bonsai)
+- Microsoft. AVS/privateClouds (AVS Private felhők)
 - Microsoft. azconfig/configurationstores
-- Microsoft. azureactivedirectory/b2cdirectories
-- Microsoft. azureactivedirectory/guestusages
-- Microsoft. azurearcdata/datacontrollers
-- Microsoft. azurearcdata/postgresinstances
-- Microsoft. azurearcdata/sqlmanagedinstances
-- Microsoft. azurearcdata/sqlserverinstances
+- Microsoft. AzureActiveDirectory/b2cDirectories (B2C-bérlők)
+- Microsoft. AzureActiveDirectory/guestUsages (vendég használat)
+- Microsoft. AzureArcData/dataControllers (Azure arc adatkezelők)
+- Microsoft. AzureArcData/postgresInstances (Azure Database for PostgreSQL-kiszolgálócsoportok – Azure arc)
+- Microsoft. AzureArcData/sqlManagedInstances (SQL felügyelt példányok – Azure arc)
+- Microsoft. AzureArcData/sqlServerInstances (SQL Server – Azure arc)
 - Microsoft. azuredata/datacontrollers
 - Microsoft. azuredata/hybriddatamanagers
 - Microsoft. azuredata/postgresinstances
@@ -100,87 +125,92 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. azuredata/sqlinstances
 - Microsoft. azuredata/sqlmanagedinstances
 - Microsoft. azuredata/sqlserverinstances
-- Microsoft. azuredata/sqlserverregistrations
+- Microsoft. AzureData/sqlServerRegistrations (SQL Server nyilvántartók)
 - Microsoft. azurestack/edgesubscriptions
 - Microsoft. azurestack/linkedsubscriptions
-- Microsoft. azurestack/regisztrációk
-- Microsoft. azurestackhci/fürtök
+- Microsoft. Azurestack/regisztrációk (Azure Stack hubok)
+- Microsoft. AzureStackHCI/fürtök (Azure Stack HCI)
 - Microsoft. baremetal/consoleconnections
-- Microsoft. baremetal/crayservers
-- Microsoft. baremetal/monitoringservers
-- Microsoft. baremetalinfrastructure/baremetalinstances
-- microsoft.batCH/batchaccounts
+- Microsoft. BareMetal/crayServers (Cray-kiszolgálók)
+- Microsoft. BareMetal/monitoringServers (figyelési kiszolgálók)
+- Microsoft. BareMetalInfrastructure/bareMetalInstances (BareMetal-példányok)
+- Microsoft.BatCH/batchAccounts (batch-fiókok)
 - microsoft.batChai/fürtök
 - microsoft.batChai/fileservers
 - microsoft.batChai/feladatok
 - microsoft.batChai/munkaterületek
-- Microsoft. Bing/fiókok
-- Microsoft. bingmaps/mapapis
+- Microsoft. Bing/fiókok (Bing-erőforrások)
+- Microsoft. BingMaps/mapApis (Bing Maps API vállalat számára)
 - Microsoft. biztalkservices/BizTalk
-- Microsoft. blockchain/blockchainmembers
-- Microsoft. blockchain/cordamembers
-- Microsoft. blockchain/figyelők
-- Microsoft. botservice/botservices
-- Microsoft. cache/Redis
-- Microsoft. cache/redisenterprise
-- Microsoft. CDN/cdnwebapplicationfirewallpolicies
-- Microsoft. CDN/profilok
-- Microsoft. CDN/profilok/végpontok
-- Microsoft. certificateregistration/tanúsítványrendelések
+- Microsoft. Blockchain/blockchainMembers (Azure Blockchain szolgáltatás)
+- Microsoft. Blockchain/cordaMembers (Corda)
+- Microsoft. Blockchain/figyelők (Blockchain Data Manager)
+- Microsoft. BotService/botServices (bot Services)
+- Microsoft. cache/Redis (Azure cache a Redis-hoz)
+- Microsoft. cache/RedisEnterprise (Redis Enterprise)
+- Microsoft. CDN/CdnWebApplicationFirewallPolicies (webalkalmazási tűzfal házirendjei (WAF))
+- Microsoft. CDN/profilok (CDN-profilok)
+- Microsoft. CDN/profilok/afdendpoints
+- Microsoft. CDN/profilok/végpontok (végpontok)
+- Microsoft. CertificateRegistration/Tanúsítványrendelések (App Service tanúsítványok)
 - Microsoft. Chaos/chaosexperiments
-- Microsoft. classiccompute/tartománynév
-- Microsoft. classiccompute/virtualmachines
-- Microsoft. classicnetwork/networksecuritygroups
-- Microsoft. classicnetwork/reservedips
-- Microsoft. classicnetwork/virtualnetworks
-- Microsoft. classicstorage/storageaccounts
+- Microsoft. classicCompute/tartománynév (Cloud Services (klasszikus))
+- Microsoft. ClassicCompute/VirtualMachines (Virtual Machines (klasszikus))
+- Microsoft. ClassicNetwork/networkSecurityGroups (hálózati biztonsági csoportok (klasszikus))
+- Microsoft. ClassicNetwork/reservedIps (Fenntartott IP címek (klasszikus))
+- Microsoft. ClassicNetwork/virtualNetworks (virtuális hálózatok (klasszikus))
+- Microsoft. ClassicStorage/StorageAccounts (Storage-fiókok (klasszikus))
 - Microsoft. cloudes/fiókok
 - Microsoft. cloudsearch/indexek
-- Microsoft. cloudtest/fiókok
-- Microsoft. cloudtest/hostedpools
-- Microsoft. cloudtest/lemezképek
-- Microsoft. cloudtest/készletek
+- Microsoft. CloudTest/fiókok (CloudTest-fiókok)
+- Microsoft. CloudTest/hostedpools (1ES üzemeltetett készletek)
+- Microsoft. CloudTest/images (CloudTest-lemezképek)
+- Microsoft. CloudTest/készletek (CloudTest-készletek)
 - Microsoft. codespaces/csomagok
-- Microsoft. Cognition/syntheticsaccounts
-- Microsoft. cognitiveservices/fiókok
-- Microsoft. számítás/availabilitysets
-- Microsoft. számítás/cloudservices
-- Microsoft. számítás/diskaccesses
-- Microsoft. számítás/diskencryptionsets
-- Microsoft. számítás/lemezek
-- Microsoft. számítás/galériák
+- Microsoft. Cognition/syntheticsAccounts (szintetikus fiókok)
+- Microsoft. CognitiveServices/fiókok (Cognitive Services)
+- Microsoft. számítási/availabilitySets (rendelkezésre állási készletek)
+- Microsoft. számítás/capacityreservationgroups
+- Microsoft. számítás/capacityreservationgroups/capacityreservations
+- Microsoft. számítás/capacityreservations
+- Microsoft. számítási/cloudServices (Cloud Services (bővített támogatás))
+- Microsoft. számítási/diskAccesses (lemezes elérés)
+- Microsoft. számítási/diskEncryptionSets (lemezes titkosítási készletek)
+- Microsoft. számítás/lemezek (lemezek)
+- Microsoft. számítási/galériák (megosztott képtárak)
 - Microsoft. számítás/galériák/alkalmazások
 - Microsoft. számítás/galériák/alkalmazások/verziók
-- Microsoft. számítás/galériák/lemezképek
-- Microsoft. számítási/galériák/lemezképek/verziók
-- Microsoft. számítás/hostgroups
-- Microsoft. számítási/hostgroups/gazdagépek
-- Microsoft. számítás/lemezképek
-- Microsoft. számítás/proximityplacementgroups
+- Microsoft. számítási/galériák/lemezképek (képdefiníciók)
+- Microsoft. számítási/galériák/lemezképek/verziók (lemezkép-verziók)
+- Microsoft. számítási/hostgroups (gazdagép-csoportok)
+- Microsoft. számítási/hostgroups/gazdagépek (gazdagépek)
+- Microsoft. számítási/rendszerképek (lemezképek)
+- Microsoft. számítási/ProximityPlacementGroups (Proximity elhelyezési csoportok)
 - Microsoft. számítás/restorepointcollections
 - Microsoft. számítás/sharedvmextensions
 - Microsoft. számítási/sharedvmextensions/verziók
 - Microsoft. számítás/sharedvmimages
 - Microsoft. számítási/sharedvmimages/verziók
-- Microsoft. számítás/Pillanatképek
-- Microsoft. számítás/sshpublickeys
+- Microsoft. számítási/Pillanatképek (Pillanatképek)
+- Microsoft. számítási/sshPublicKeys (SSH-kulcsok)
 - Microsoft. számítás/swiftlets
-- Microsoft. számítás/virtualmachines
+- Microsoft. számítási/VirtualMachines (virtuális gépek)
 - Microsoft. számítás/virtualmachines/bővítmények
 - Microsoft. számítás/virtualmachines/runcommands
-- Microsoft. számítás/virtualmachinescalesets
-- Microsoft. Fluent/szervezetek
-- Microsoft. connectedcache/cachenodes
-- Microsoft. containerinstance/containergroups
-- Microsoft. containerregistry/nyilvántartók
+- Microsoft. számítási/virtualMachineScaleSets (virtuálisgép-méretezési csoportok)
+- Microsoft. Fluent/szervezetek (Fluent szervezetek)
+- Microsoft. ConnectedCache/cacheNodes (csatlakoztatott gyorsítótár-erőforrások)
+- Microsoft. connectedvehicle/platformaccounts
+- Microsoft. ContainerInstance/containerGroups (Container instances)
+- Microsoft. ContainerRegistry/nyilvántartók (tároló-nyilvántartók)
 - Microsoft. containerregistry/nyilvántartók/agentpools
 - Microsoft. containerregistry/nyilvántartók/buildtasks
-- Microsoft. containerregistry/kibocsátásiegység-forgalmi jegyzékek/replikálások
+- Microsoft. ContainerRegistry/nyilvántartások/replikálások (tároló-beállításjegyzék replikálása)
 - Microsoft. containerregistry/nyilvántartók/taskruns
 - Microsoft. containerregistry/nyilvántartások/feladatok
-- Microsoft. containerregistry/nyilvántartók/webhookok
-- Microsoft. tárolószolgáltatás/containerservices
-- Microsoft. tárolószolgáltatás/managedclusters
+- Microsoft. ContainerRegistry/nyilvántartók/webhookok (Container Registry-webhookok)
+- Microsoft. Tárolószolgáltatás/containerServices (Container Services (elavult))
+- Microsoft. Tárolószolgáltatás/managedClusters (Kubernetes Services)
 - Microsoft. tárolószolgáltatás/openshiftmanagedclusters
 - Microsoft. contoso/fürtök
 - Microsoft. contoso/alkalmazottak
@@ -188,230 +218,244 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. costmanagement/összekötők
 - Microsoft. customproviders/resourceproviders
 - Microsoft. d365customerinsights/példányok
-- Microsoft. databox/feladatok
-- Microsoft. databoxedge/databoxedgedevices
-- Microsoft. databricks/munkaterületek
-- Microsoft. datacatalog/katalógusok
+- Microsoft. DataBox/feladatok (Data Box)
+- Microsoft. DataBoxEdge/dataBoxEdgeDevices (Azure Stack Edge/Data Box Gateway)
+- Microsoft. Databricks/munkaterületek (Azure Databricks szolgáltatások)
+- Microsoft. DataCatalog/katalógusok (Data Catalog)
 - Microsoft. datacatalog/datacatalogs
-- Microsoft. datacollaboration/munkaterületek
-- Microsoft. datadoggal/figyelők
-- Microsoft. DataFactory/datafactories
-- Microsoft. DataFactory/gyárak
-- Microsoft. datalakeanalytics/fiókok
-- Microsoft. Data Lake Store/fiókok
-- Microsoft. datamigration/szolgáltatások
-- Microsoft. datamigration/szolgáltatások/projektek
+- Microsoft. DataCollaboration/munkaterületek (adategyüttműködések)
+- Microsoft. Datadoggal/figyelők (Datadoggal)
+- Microsoft. DataFactory/dataFactories (adatfeldolgozók)
+- Microsoft. DataFactory/gyárak (adatgyárak (v2))
+- Microsoft. DataLakeAnalytics/fiókok (Data Lake Analytics)
+- Microsoft. Data Lake Store/fiókok (Data Lake Storage Gen1)
+- Microsoft. datamigration/vezérlők
+- Microsoft. DataMigration/Services (Azure Database Migration Services)
+- Microsoft. DataMigration/szolgáltatások/projektek (Azure Database Migration projects)
 - Microsoft. datamigration/bővítőhelyek
-- Microsoft. dataprotection/backupvaults
+- Microsoft. DataProtection/BackupVaults (Backup-tárolók)
 - Microsoft. dataprotection/resourceoperationgatekeepers
-- Microsoft. DataShare/fiókok
-- Microsoft. dbformariadb/kiszolgálók
-- Microsoft. dbformysql/flexibleservers
-- Microsoft. dbformysql/kiszolgálók
-- Microsoft. dbforpostgresql/flexibleservers
-- Microsoft. dbforpostgresql/servergroups
-- Microsoft. dbforpostgresql/kiszolgálók
-- Microsoft. dbforpostgresql/serversv2
+- Microsoft. DataShare/fiókok (adatmegosztások)
+- Microsoft. DBforMariaDB/Servers (Azure Database for MariaDB-kiszolgálók)
+- Microsoft. DBforMySQL/flexibleServers (Azure Database for MySQL rugalmas kiszolgálók)
+- Microsoft. DBforMySQL/Servers (Azure Database for MySQL-kiszolgálók)
+- Microsoft. DBforPostgreSQL/flexibleServers (Azure Database for PostgreSQL rugalmas kiszolgálók)
+- Microsoft. DBforPostgreSQL/serverGroups (Azure Database for PostgreSQL Server groups)
+- Microsoft. DBforPostgreSQL/Servers (Azure Database for PostgreSQL-kiszolgálók)
+- Microsoft. DBforPostgreSQL/serversv2 (Azure Database for PostgreSQL Servers v2)
 - Microsoft. dbforpostgresql/singleservers
 - Microsoft. delegatednetwork/vezérlő
 - Microsoft. delegatednetwork/delegatedsubnets
 - Microsoft. delegatednetwork/orchestratorinstances
 - Microsoft. deploymentmanager/artifactsources
-- Microsoft. deploymentmanager/bevezetések
+- Microsoft. DeploymentManager/bevezetések (Bevezetés)
 - Microsoft. deploymentmanager/servicetopologies
 - Microsoft. deploymentmanager/servicetopologies/Services
 - Microsoft. deploymentmanager/servicetopologies/Services/serviceunits
 - Microsoft. deploymentmanager/lépések
-- Microsoft. desktopvirtualization/applicationgroups
-- Microsoft. desktopvirtualization/hostpools
-- Microsoft. desktopvirtualization/munkaterületek
+- Microsoft. DesktopVirtualization/ApplicationGroups (alkalmazáscsoport)
+- Microsoft. DesktopVirtualization/HostPools (alkalmazáskészletek)
+- Microsoft. desktopvirtualization/scalingplans
+- Microsoft. DesktopVirtualization/munkaterületek (munkaterületek)
 - Microsoft. Devices/elasticpools
 - Microsoft. Devices/elasticpools/iothubtenants
-- Microsoft. Devices/iothubs
-- Microsoft. Devices/provisioningservices
-- Microsoft. deviceupdate/fiókok
+- Microsoft. Devices/IotHubs (IoT Hub)
+- Microsoft. Devices/ProvisioningServices (eszközök kiépítési szolgáltatásai)
+- Microsoft. DeviceUpdate/fiókok (az IoT hubok eszközének frissítése)
 - Microsoft. deviceupdate/fiókok/példányok
-- Microsoft. devops/folyamatok
+- Microsoft. devops/folyamatok (DevOps Starter)
 - Microsoft. devspaces/vezérlők
 - Microsoft. segédösszetevője/labcenters
-- Microsoft. segédösszetevője/Labs
+- Microsoft. segédösszetevője/Labs (DevTest Labs)
 - Microsoft. segédösszetevője/Labs/servicerunners
-- Microsoft. segédösszetevője/Labs/virtualmachines
+- Microsoft. segédösszetevője/Labs/virtualMachines (Virtual machines)
 - Microsoft. segédösszetevője/ütemtervek
-- Microsoft. digitaltwins/digitaltwinsinstances
-- microsoft.documentdb/databaseaccounts
-- Microsoft. domainregistration/tartományok
+- Microsoft. DigitalTwins/digitalTwinsInstances (Azure digitális ikrek)
+- Microsoft.DocumentDb/databaseAccounts (Azure Cosmos DB fiókok)
+- Microsoft. DomainRegistration/tartományok (App Service tartományok)
+- Microsoft. rugalmas/figyelők (rugalmas)
 - Microsoft. enterpriseknowledgegraph/szolgáltatások
-- Microsoft. eventgrid/tartományok
-- Microsoft. eventgrid/partnernamespaces
-- Microsoft. eventgrid/partnerregistrations
-- Microsoft. eventgrid/partnertopics
-- Microsoft. eventgrid/systemtopics
-- Microsoft. eventgrid/témakörök
-- Microsoft. eventhub/fürtök
-- Microsoft. eventhub/névterek
-- Microsoft. kísérletezés/experimentworkspaces
-- Microsoft. extendedlocation/customlocations
+- Microsoft. EventGrid/tartományok (Event Grid tartományok)
+- Microsoft. EventGrid/partnerNamespaces (Event Grid partneri névterek)
+- Microsoft. EventGrid/partnerRegistrations (Event Grid partner regisztrációja)
+- Microsoft. EventGrid/partnerTopics (Event Grid partneri témák)
+- Microsoft. EventGrid/systemTopics (Event Grid rendszertémakörök)
+- Microsoft. EventGrid/témakörök (Event Grid témakörök)
+- Microsoft. EventHub/fürtök (Event Hubs fürtök)
+- Microsoft. EventHub/névterek (Event Hubs névterek)
+- Microsoft. kísérletezés/experimentWorkspaces (kísérlet munkaterületek)
+- Microsoft. ExtendedLocation/CustomLocations (egyéni hely)
 - Microsoft. Falcon/névterek
 - Microsoft. footprintmonitoring/profilok
 - Microsoft. Gaming/titles
-- Microsoft. genomika/fiókok
+- Microsoft. genomika/fiókok (genomikai fiókok)
 - Microsoft. guestconfiguration/automanagedaccounts
-- Microsoft. hanaonazure/hanainstances
-- Microsoft. hanaonazure/sapmonitors
+- Microsoft. HanaOnAzure/hanaInstances (SAP HANA az Azure-on)
+- Microsoft. HanaOnAzure/sapMonitors (Azure-figyelők SAP-megoldásokhoz)
 - Microsoft. hardwaresecuritymodules/dedicatedhsms
-- Microsoft. hdinsight/fürtök
-- Microsoft. healthcareapis/szolgáltatások
+- Microsoft. HDInsight/fürtök (HDInsight-fürtök)
+- Microsoft. HealthBot/healthBots (Azure Health bot)
+- Microsoft. HealthcareApis/Services (Azure API a FHIR-hez)
 - Microsoft. healthcareapis/szolgáltatások/privateendpointconnections
-- Microsoft. hybridcompute/gépek
+- Microsoft. healthcareapis/munkaterületek
+- Microsoft. healthcareapis/munkaterületek/dicomservices
+- Microsoft. HybridCompute/Machines (kiszolgálók – Azure arc)
 - Microsoft. hybridcompute/gépek/bővítmények
-- Microsoft. hybridcompute/privatelinkscopes
-- Microsoft. hybriddata/datamanagers
-- Microsoft. hybridnetwork/eszközök
-- Microsoft. hybridnetwork/networkfunctions
+- Microsoft. HybridCompute/privateLinkScopes (Azure arc Private link Scopes)
+- Microsoft. HybridData/dataManagers (StorSimple-adatkezelők)
+- Microsoft. HybridNetwork/eszközök (Azure Network Function Manager – eszközök)
+- Microsoft. HybridNetwork/networkFunctions (Azure Network Function Manager – hálózati függvények)
 - Microsoft. hybridnetwork/virtualnetworkfunctions
-- Microsoft. importexport/feladatok
+- Microsoft. ImportExport/feladatok (importálási/exportálási feladatok)
 - Microsoft. industrydatalifecycle/basemodels
 - Microsoft. industrydatalifecycle/custodiancollaboratives
 - Microsoft. industrydatalifecycle/derivedmodels
 - Microsoft. industrydatalifecycle/membercollaboratives
+- Microsoft. industrydatalifecycle/modelmappings
 - Microsoft. industrydatalifecycle/pipelinesets
 - Microsoft. bepillantások/actiongroups
 - Microsoft. bepillantások/activitylogalerts
 - Microsoft. bepillantások/alertrules
 - Microsoft. bepillantások/autoscalesettings
-- Microsoft. bepillantások/összetevők
-- Microsoft. bepillantások/datacollectionrules
+- Microsoft. ininsights/Components (Application Insights)
+- Microsoft. elemzések/datacollectionrules (adatgyűjtési szabályok)
 - Microsoft. bepillantások/guestdiagnosticsettings
 - Microsoft. bepillantások/metricalerts
 - Microsoft. bepillantások/notificationgroups
 - Microsoft. bepillantások/notificationrules
-- Microsoft. bepillantások/privatelinkscopes
+- Microsoft. ininsights/privateLinkScopes (Azure Monitor Private link Scopes)
 - Microsoft. bepillantások/querypacks
 - Microsoft. bepillantások/scheduledqueryrules
-- Microsoft. bepillantások/webtesztek
-- Microsoft. bepillantások/munkafüzetek
-- Microsoft. bepillantások/workbooktemplates
-- Microsoft. intelligentitdigitaltwin/digitaltwins
-- Microsoft. iotcentral/iotapps
-- Microsoft. iotspaces/Graph
+- Microsoft. bepillantások/webtesztek (rendelkezésre állási tesztek)
+- Microsoft. bepillantások/munkafüzetek (Azure-munkafüzetek)
+- Microsoft. ininsights/workbooktemplates (Azure munkafüzet-sablonok)
+- Microsoft. IntelligentITDigitalTwin/digitalTwins (Minerva)
+- Microsoft. intelligentitdigitaltwin/digitaltwins/eszközök
+- Microsoft. IoTCentral/IoTApps (IoT Central alkalmazások)
+- Microsoft. IoTSpaces/Graph (digitális ikrek (elavult))
 - Microsoft. kulcstartó/hsmpools
 - Microsoft. kulcstartó/managedhsms
-- Microsoft. kulcstartó/tárolók
-- Microsoft. kubernetes/connectedclusters
-- Microsoft. kusto/fürtök
-- Microsoft. kusto/fürtök/adatbázisok
-- Microsoft. labservices/labaccounts
-- Microsoft. Logic/integrationaccounts
-- Microsoft. Logic/integrationserviceenvironments
-- Microsoft. Logic/integrationserviceenvironments/król
-- Microsoft. Logic/munkafolyamatok
-- Microsoft. machinelearning/commitmentplans
-- Microsoft. machinelearning/webszolgáltatások
-- Microsoft. machinelearning/munkaterületek
+- Microsoft. kulcstartó/tárolók (Key vaultok)
+- Microsoft. Kubernetes/connectedClusters (Kubernetes-Azure arc)
+- Microsoft. Kusto/fürtök (Azure Adatkezelő-fürtök)
+- Microsoft. Kusto/fürtök/adatbázisok (Azure Adatkezelő-adatbázisok)
+- Microsoft. LabServices/labAccounts (labor Services)
+- Microsoft. LoadTestService/LoadTests (Felhőbeli natív terhelési tesztek)
+- Microsoft. Logic/integrationAccounts (integrációs fiókok)
+- Microsoft. Logic/integrationServiceEnvironments (integrációs szolgáltatási környezetek)
+- Microsoft. Logic/integrationServiceEnvironments/król (felügyelt összekötő)
+- Microsoft. Logic/munkafolyamatok (Logic apps)
+- Microsoft. Logz/figyelők (Logz fő fiók)
+- Microsoft. Logz/figyelők/fiókok (Logz-fiók)
+- Microsoft. MachineLearning/commitmentPlans (Machine Learning Studio (klasszikus) webszolgáltatás-csomagok)
+- Microsoft. MachineLearning/webszolgáltatás (Machine Learning Studio (klasszikus) webszolgáltatások)
+- Microsoft. MachineLearning/munkaterületek (Machine Learning Studio (klasszikus) munkaterületek)
 - Microsoft. machinelearningcompute/operationalizationclusters
-- Microsoft. machinelearningservices/munkaterületek
+- Microsoft. machinelearningservices/modelinventories
+- Microsoft. machinelearningservices/modelinventory
+- Microsoft. MachineLearningServices/munkaterületek (Machine Learning)
 - Microsoft. machinelearningservices/munkaterületek/batchendpoints
+- Microsoft. machinelearningservices/munkaterületek/batchendpoints/központi telepítések
 - Microsoft. machinelearningservices/munkaterületek/inferenceendpoints
 - Microsoft. machinelearningservices/munkaterületek/inferenceendpoints/központi telepítések
-- Microsoft. machinelearningservices/munkaterületek/onlineendpoints
-- Microsoft. machinelearningservices/munkaterületek/onlineendpoints/központi telepítések
-- Microsoft. Maintenance/maintenanceconfigurations
+- Microsoft. MachineLearningServices/munkaterületek/onlineEndpoints (ML-alkalmazások)
+- Microsoft. MachineLearningServices/munkaterületek/onlineEndpoints/központi telepítések (ML-alkalmazások telepítései)
+- Microsoft. Maintenance/maintenanceConfigurations (karbantartási konfigurációk)
 - Microsoft. Maintenance/maintenancepolicies
 - Microsoft. managedidentity/csoportok
-- Microsoft. managedidentity/userassignedidentities
+- Microsoft. ManagedIdentity/userAssignedIdentities (felügyelt identitások)
 - Microsoft. managednetwork/managednetworkgroups
 - Microsoft. managednetwork/managednetworkpeeringpolicies
 - Microsoft. managednetwork/managednetworks
 - Microsoft. managednetwork/managednetworks/managednetworkgroups
 - Microsoft. managednetwork/managednetworks/managednetworkpeeringpolicies
-- Microsoft. Maps/fiókok
+- Microsoft. Maps/fiókok (Azure Maps fiókok)
 - Microsoft. Maps/fiókok/alkotók
-- Microsoft. Maps/fiókok/privateatlases
-- Microsoft. marketplaceapps/classicdevservices
-- Microsoft. Media/Mediaservices
-- Microsoft. Media/Mediaservices/liveevents
-- Microsoft. Media/Mediaservices/streamingendpoints
+- Microsoft. Maps/accounts/privateAtlases (Azure Maps létrehozói erőforrások)
+- Microsoft. MarketplaceApps/classicDevServices (klasszikus fejlesztői szolgáltatások)
+- Microsoft. Media/Mediaservices (Media Services)
+- Microsoft. Media/Mediaservices/liveevents (élő események)
+- Microsoft. Media/Mediaservices/streamingEndpoints (folyamatos átviteli végpontok)
 - Microsoft. Media/Mediaservices/átalakítások
 - Microsoft. microservices4spring/appclusters
 - Microsoft. Migrálás/assessmentprojects
 - Microsoft. Migrálás/migrateprojects
 - Microsoft. Migrálás/movecollections
-- Microsoft. Migrálás/projektek
-- Microsoft. mixedreality/holographicsbroadcastaccounts
-- Microsoft. mixedreality/objectunderstandingaccounts
-- Microsoft. mixedreality/remoterenderingaccounts
-- Microsoft. mixedreality/spatialanchorsaccounts
+- Microsoft. Migrálás/projektek (áttelepítési projektek)
+- Microsoft. MixedReality/holographicsBroadcastAccounts (Holographics-szórásos fiókok)
+- Microsoft. MixedReality/objectUnderstandingAccounts (objektum-megértési fiókok)
+- Microsoft. MixedReality/remoteRenderingAccounts (távoli renderelési fiókok)
+- Microsoft. MixedReality/spatialAnchorsAccounts (térbeli horgonyok fiókjai)
 - Microsoft. mixedreality/surfacereconstructionaccounts
-- Microsoft. NetApp/netappaccounts
+- Microsoft. NetApp/netAppAccounts (NetApp-fiókok)
 - Microsoft. NetApp/netappaccounts/backuppolicies
-- Microsoft. NetApp/netappaccounts/capacitypools
-- Microsoft. NetApp/netappaccounts/capacitypools/kötetek
+- Microsoft. NetApp/netAppAccounts/capacityPools (Capacity Pools)
+- Microsoft. NetApp/netAppAccounts/capacityPools/kötetek (kötetek)
 - Microsoft. NetApp/netappaccounts/capacitypools/kötetek/mounttargets
-- Microsoft. NetApp/netappaccounts/capacitypools/kötetek/Pillanatképek
-- Microsoft. Network/applicationgateways
-- Microsoft. Network/applicationgatewaywebapplicationfirewallpolicies
-- Microsoft. Network/applicationsecuritygroups
-- Microsoft. Network/azurefirewalls
-- Microsoft. Network/bastionhosts
-- Microsoft. Network/Connections
+- Microsoft. NetApp/netAppAccounts/capacityPools/kötetek/Pillanatképek (Pillanatképek)
+- Microsoft. Network/applicationGateways (Application Gateway átjárók)
+- Microsoft. Network/ApplicationGatewayWebApplicationFirewallPolicies (webalkalmazási tűzfal házirendjei (WAF))
+- Microsoft. Network/applicationSecurityGroups (alkalmazás biztonsági csoportjai)
+- Microsoft. Network/azureFirewalls (tűzfalak)
+- Microsoft. Network/bastionHosts (bástya)
+- Microsoft. Network/Connections (kapcsolatok)
 - Microsoft. Network/customipprefixes
 - Microsoft. Network/ddoscustompolicies
-- Microsoft. Network/ddosprotectionplans
-- Microsoft. Network/dnszones
+- Microsoft. Network/ddosProtectionPlans (DDoS Protection-tervek)
+- Microsoft. Network/dnsZones (DNS-zónák)
 - Microsoft. Network/dscpconfigurations
-- Microsoft. Network/expressroutecircuits
+- Microsoft. Network/expressRouteCircuits (ExpressRoute-áramkörök)
 - Microsoft. Network/expressroutecrossconnections
 - Microsoft. Network/expressroutegateways
-- Microsoft. Network/expressrouteports
-- Microsoft. Network/firewallpolicies
-- Microsoft. Network/frontdoors
-- Microsoft. Network/frontdoorwebapplicationfirewallpolicies
+- Microsoft. Network/expressRoutePorts (ExpressRoute Direct)
+- Microsoft. Network/firewallPolicies (tűzfal-házirendek)
+- Microsoft. Network/frontdoors (bejárati ajtók)
+- Microsoft. Network/FrontDoorWebApplicationFirewallPolicies (webalkalmazási tűzfal házirendjei (WAF))
 - Microsoft. Network/ipallocations
-- Microsoft. Network/ipgroups
-- Microsoft. Network/loadbalancers
-- Microsoft. Network/localnetworkgateways
+- Microsoft. Network/ipGroups (IP-csoportok)
+- Microsoft. Network/LoadBalancers (terheléselosztó)
+- Microsoft. Network/localnetworkgateways (helyi hálózati átjárók)
 - Microsoft. Network/mastercustomipprefixes
-- Microsoft. Network/natgateways
-- Microsoft. Network/networkexperimentprofiles
+- Microsoft. Network/natGateways (NAT-átjárók)
+- Microsoft. Network/NetworkExperimentProfiles (Internet Analyzer-profilok)
 - Microsoft. Network/networkintentpolicies
-- Microsoft. Network/networkinterfaces
-- Microsoft. Network/networkmanagers
+- Microsoft. Network/networkinterfaces (hálózati adapterek)
+- Microsoft. Network/networkManagers (hálózati kezelők)
 - Microsoft. Network/networkprofiles
-- Microsoft. Network/networksecuritygroups
+- Microsoft. Network/NetworkSecurityGroups (hálózati biztonsági csoportok)
 - Microsoft. Network/networkvirtualappliances
-- Microsoft. Network/networkwatchers
+- Microsoft. Network/networkwatchers (hálózati figyelők)
 - Microsoft. Network/networkwatchers/connectionmonitors
-- Microsoft. Network/networkwatchers/flowlogs
+- Microsoft. Network/networkwatchers/flowlogs (NSG flow-naplók)
 - Microsoft. Network/networkwatchers/objektívek
 - Microsoft. Network/networkwatchers/pingmeshes
 - Microsoft. Network/p2svpngateways
-- Microsoft. Network/privatednszones
+- Microsoft. Network/privateDnsZones (saját DNS zónák)
 - Microsoft. Network/privatednszones/virtualnetworklinks
 - Microsoft. Network/privateendpointredirectmaps
-- Microsoft. Network/privateendpoints
-- Microsoft. Network/privatelinkservices
-- Microsoft. Network/nyilvános IP
-- Microsoft. Network/publicipprefixes
-- Microsoft. Network/routefilters
-- Microsoft. Network/routetables
+- Microsoft. Network/privateEndpoints (privát végpontok)
+- Microsoft. Network/privateLinkServices (Private link Services)
+- Microsoft. Network/nyilvános IP (nyilvános IP-címek)
+- Microsoft. Network/publicIpPrefixes (nyilvános IP-előtagok)
+- Microsoft. Network/routeFilters (útvonal-szűrők)
+- Microsoft. Network/routeTables (útválasztási táblázatok)
 - Microsoft. Network/sampleresources
 - Microsoft. Network/securitypartnerproviders
-- Microsoft. Network/serviceendpointpolicies
-- Microsoft. Network/trafficmanagerprofiles
+- Microsoft. Network/serviceEndpointPolicies (szolgáltatási végponti házirendek)
+- Microsoft. Network/trafficmanagerprofiles (Traffic Manager profilok)
 - Microsoft. Network/virtualhubs
 - Microsoft. Network/virtualhubs/bgpconnections
 - Microsoft. Network/virtualhubs/ipconfigurations
-- Microsoft. Network/virtualnetworkgateways
-- Microsoft. Network/virtualnetworks
+- Microsoft. Network/virtualNetworkGateways (virtuális hálózati átjárók)
+- Microsoft. Network/virtualNetworks (virtuális hálózatok)
 - Microsoft. Network/virtualnetworktaps
 - Microsoft. Network/virtualrouters
-- Microsoft. Network/virtualwans
+- Microsoft. Network/virtualWans (virtuális WAN)
 - Microsoft. Network/vpngateways
 - Microsoft. Network/vpnserverconfigurations
 - Microsoft. Network/vpnsites
-- Microsoft. notificationhubs/névterek
-- Microsoft. notificationhubs/névterek/notificationhubs
+- Microsoft. NotificationHubs/névterek (értesítési központ névterei)
+- Microsoft. NotificationHubs/névterek/notificationHubs (Notification Hubs)
 - Microsoft. nutanix/felületek
 - Microsoft. nutanix/csomópontok
 - Microsoft. objectstore/osnamespaces
@@ -420,161 +464,163 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. offazure/mastersites
 - Microsoft. offazure/serversites
 - Microsoft. offazure/vmwaresites
-- Microsoft. openlogisticsplatform/munkaterületek
+- Microsoft. OpenLogisticsPlatform/munkaterületek (nyitott ellátási lánc platform)
 - Microsoft. operationalinsights/fürtök
-- Microsoft. operationalinsights/querypacks
-- Microsoft. operationalinsights/munkaterületek
-- Microsoft. operationsmanagement/megoldások
+- Microsoft. OperationalInsights/querypacks (Log Analytics lekérdezési csomagok)
+- Microsoft. OperationalInsights/munkaterületek (Log Analytics munkaterületek)
+- Microsoft. OperationsManagement/Solutions (megoldások)
 - Microsoft. operationsmanagement/nézetek
 - Microsoft. orbitális/contactprofiles
 - Microsoft. orbitális/űrhajók
-- Microsoft. peering/társaik
-- Microsoft. peering/peeringservices
-- Microsoft. Portal/irányítópultok
+- Microsoft. peering/társai (társak)
+- Microsoft. peering/peeringServices (peering Services)
+- Microsoft. Portal/irányítópultok (megosztott irányítópultok)
 - Microsoft. portalsdk/rootresources
 - Microsoft. powerbi/privatelinkservicesforpowerbi
 - Microsoft. powerbi/bérlők
 - Microsoft. powerbi/workspacecollections
-- Microsoft. powerbidedicated/kapacitások
-- Microsoft. projectbabylon/fiókok
-- Microsoft. hatáskörébe/fiókok
-- Microsoft. Quantum/munkaterületek
-- Microsoft. recoveryservices szolgáltatónál/tárolók
-- Microsoft. redhatopenshift/openshiftclusters
-- Microsoft. Relay/névterek
+- Microsoft. PowerBIDedicated/kapacitások (Power BI Embedded)
+- Microsoft. ProjectBabylon/fiókok (Babylon-fiókok)
+- Microsoft. hatáskörébe/fiókok (hatáskörébe tartozó fiókok)
+- Microsoft. Quantum/munkaterületek (Quantum-munkaterületek)
+- Microsoft. Recoveryservices szolgáltatónál/vaultok (Recovery Services-tárolók)
+- Microsoft. RedHatOpenShift/openShiftClusters (OpenShift-fürtök)
+- Microsoft. Relay/névterek (Relays)
 - Microsoft. RemoteApp/gyűjtemények
 - Microsoft. rugalmasság/chaosexperiments
-- Microsoft. resourcegraph/lekérdezések
-- Microsoft. Resources/deploymentscripts
-- Microsoft. Resources/templatespecs
+- Microsoft. resourceconnector/berendezések
+- Microsoft. resourcegraph/lekérdezések (Resource Graph-lekérdezések)
+- Microsoft. Resources/deploymentScripts (üzembehelyezési parancsfájlok)
+- Microsoft. Resources/templateSpecs (sablon specifikációi)
 - Microsoft. Resources/templatespecs/Versions
-- Microsoft. SaaS/alkalmazások
-- Microsoft. Scheduler/feladatgyűjtemények
+- Microsoft. SaaS/alkalmazások (szoftveres szolgáltatás (klasszikus))
+- Microsoft. Scheduler/Feladatgyűjtemények (ütemező feladatok gyűjteményei)
 - Microsoft. SCVMM/felhők
-- Microsoft. SCVMM/virtualmachines
+- Microsoft. SCVMM/virtualMachines (SCVMM virtuális gép – Azure arc)
 - Microsoft. SCVMM/virtualmachinetemplates
 - Microsoft. SCVMM/virtualnetworks
 - Microsoft. SCVMM/vmmservers
-- Microsoft. Search/searchservices
+- Microsoft. Search/searchServices (keresési szolgáltatások)
 - Microsoft. Security/automations
 - Microsoft. Security/iotsecuritysolutions
-- Microsoft. securitydetonation/Chambers
-- Microsoft. servicebus/névterek
-- Microsoft. servicefabric/fürtök
+- Microsoft. SecurityDetonation/Chambers (biztonsági robbantási kamarák)
+- Microsoft. ServiceBus/névterek (Service Bus névterek)
+- Microsoft. ServiceFabric/fürtök (Service Fabric fürtök)
 - Microsoft. servicefabric/containergroupsets
-- Microsoft. servicefabric/managedclusters
-- Microsoft. servicefabricmesh/alkalmazások
+- Microsoft. ServiceFabric/managedclusters (felügyelt Service Fabric-fürtök)
+- Microsoft. ServiceFabricMesh/alkalmazások (mesh-alkalmazások)
 - Microsoft. servicefabricmesh/átjárók
 - Microsoft. servicefabricmesh/hálózatok
 - Microsoft. servicefabricmesh/Secrets
 - Microsoft. servicefabricmesh/kötetek
-- Microsoft. serviceshub/összekötők
-- Microsoft. signalrservice/szignáló
+- Microsoft. ServicesHub/Connectors (szolgáltatások hub-összekötők)
+- Microsoft. SignalRService/jelző (szignáló)
 - Microsoft. szingularitás/fiókok
 - Microsoft. Solutions/appliancedefinitions
 - Microsoft. Solutions/készülékek
-- Microsoft. Solutions/applicationdefinitions
-- Microsoft. Solutions/alkalmazások
+- Microsoft. Solutions/applicationDefinitions (a Service Catalog által kezelt alkalmazások definíciói)
+- Microsoft. Solutions/alkalmazások (felügyelt alkalmazások)
 - Microsoft. Solutions/jitrequests
 - Microsoft. spoolservice/orsók
-- Microsoft. SQL/instancepools
-- Microsoft. SQL/managedinstances
-- Microsoft. SQL/managedinstances/adatbázisok
-- Microsoft. SQL/kiszolgálók
-- Microsoft. SQL/kiszolgálók/adatbázisok
-- Microsoft. SQL/kiszolgálók/elasticpools
+- Microsoft. SQL/instancePools (példány-készletek)
+- Microsoft. SQL/managedInstances (SQL felügyelt példányok)
+- Microsoft. SQL/managedInstances/adatbázisok (felügyelt adatbázisok)
+- Microsoft. SQL/Servers (SQL Servers)
+- Microsoft. SQL/kiszolgálók/adatbázisok (SQL-adatbázisok)
+- Microsoft. SQL/Servers/elasticpools (rugalmas SQL-készletek)
 - Microsoft. SQL/kiszolgálók/jobaccounts
-- Microsoft. SQL/kiszolgálók/jobagents
-- Microsoft. SQL/virtualclusters
+- Microsoft. SQL/Servers/jobAgents (rugalmas feladatok ügynökök)
+- Microsoft. SQL/virtualClusters (virtuális fürtök)
 - Microsoft. sqlvirtualmachine/sqlvirtualmachinegroups
-- Microsoft. sqlvirtualmachine/sqlvirtualmachines
+- Microsoft. SqlVirtualMachine/SqlVirtualMachines (SQL virtuális gépek)
 - Microsoft. sqlvm/dwvm
-- Microsoft. Storage/storageaccounts
-- Microsoft. storagecache/gyorsítótárak
-- Microsoft. storagesync/storagesyncservices
-- Microsoft. storagesyncdev/storagesyncservices
-- Microsoft. storagesyncint/storagesyncservices
-- Microsoft. storsimple/vezetők
-- Microsoft. streamanalytics/fürtök
-- Microsoft. streamanalytics/streamingjobs
+- Microsoft. Storage/StorageAccounts (Storage-fiókok)
+- Microsoft. StorageCache/cache (HPC-gyorsítótárak)
+- Microsoft. storagepool/diskpools
+- Microsoft. StorageSync/storageSyncServices (Storage Sync Services)
+- Microsoft. StorageSyncDev/storageSyncServices (Storage Sync Services)
+- Microsoft. StorageSyncInt/storageSyncServices (Storage Sync Services)
+- Microsoft. StorSimple/menedzserek (StorSimple-eszközkezelők)
+- Microsoft. StreamAnalytics/fürtök (Stream Analytics fürtök)
+- Microsoft. StreamAnalytics/StreamingJobs (Stream Analytics feladatok)
 - Microsoft. szalangána/virtualmachines
 - Microsoft. szalangána/virtualmachinesnapshots
-- Microsoft. szinapszis/privatelinkhubs
-- Microsoft. szinapszis/munkaterületek
-- Microsoft. szinapszis/munkaterületek/bigdatapools
+- Microsoft. szinapszis/privateLinkHubs (Azure szinapszis Analytics (Private link hubok))
+- Microsoft. szinapszis/munkaterületek (Azure szinapszis Analytics)
+- Microsoft. szinapszis/munkaterületek/bigDataPools (Apache Spark készletek)
 - Microsoft. szinapszis/munkaterületek/sqldatabases
-- Microsoft. szinapszis/munkaterületek/sqlpools
+- Microsoft. szinapszis/munkaterületek/sqlPools (dedikált SQL-készletek)
 - Microsoft. terraformoss/providerregistrations
-- Microsoft. timeseriesinsights/Environments
-- Microsoft. timeseriesinsights/Environments/eventsources
-- Microsoft. timeseriesinsights/Environments/referencedatasets
+- Microsoft. TimeSeriesInsights/Environments (Time Series Insights környezetek)
+- Microsoft. TimeSeriesInsights/Environments/eventsources (Time Series Insights Event sources)
+- Microsoft. TimeSeriesInsights/Environments/referenceDataSets (Time Series Insights hivatkozási adatkészletek)
 - Microsoft. token/áruházak
 - Microsoft. tokenvault/tárolók
 - Microsoft. virtualmachineimages/imagetemplates
-- Microsoft. VisualStudio/fiók
+- Microsoft. VisualStudio/fiók (Azure DevOps-szervezetek)
 - Microsoft. VisualStudio/fiók/bővítmény
-- Microsoft. VisualStudio/fiók/projekt
+- Microsoft. VisualStudio/Account/Project (DevOps Starter)
 - Microsoft. vmware/arczones
 - Microsoft. vmware/resourcepools
 - Microsoft. VMware/vCenter
-- Microsoft. vmware/virtualmachines
+- Microsoft. VMware/VirtualMachines (AVS Virtual machines)
 - Microsoft. vmware/virtualmachinetemplates
 - Microsoft. vmware/virtualnetworks
-- Microsoft. vmwarecloudsimple/dedicatedcloudnodes
-- Microsoft. vmwarecloudsimple/dedicatedcloudservices
-- Microsoft. vmwarecloudsimple/virtualmachines
+- Microsoft. VMwareCloudSimple/dedicatedCloudNodes (CloudSimple-csomópontok)
+- Microsoft. VMwareCloudSimple/dedicatedCloudServices (CloudSimple Services)
+- Microsoft. VMwareCloudSimple/virtualMachines (CloudSimple Virtual Machines)
 - Microsoft. vmwareonazure/privateclouds
 - Microsoft. vmwarevirtustream/privateclouds
 - Microsoft. VSOnline/fiókok
-- Microsoft. VSOnline/csomagok
+- Microsoft. VSOnline/csomagok (Visual Studio online-csomagok)
 - Microsoft. Web/apimanagementaccounts
 - Microsoft. Web/apimanagementaccounts/API-k
 - Microsoft. Web/tanúsítványok
-- Microsoft. Web/connectiongateways
-- Microsoft. Web/kapcsolatok
-- Microsoft. Web/customapis
-- Microsoft. Web/hostingenvironments
-- Microsoft. Web/kubeenvironments
-- Microsoft. Web/kiszolgálófarmok
-- Microsoft. Web/Sites
+- Microsoft. Web/connectionGateways (helyszíni adatátjárók)
+- Microsoft. Web/Connections (API-kapcsolatok)
+- Microsoft. Web/customApis (Logic Apps egyéni összekötő)
+- Microsoft. Web/HostingEnvironments (App Service környezetek)
+- Microsoft. Web/KubeEnvironments (App Service Kubernetes környezetek)
+- Microsoft. Web/kiszolgálófarmok (App Service csomagok)
+- Microsoft. Web/Sites (App Services)
 - Microsoft. Web/Sites/premieraddons
-- Microsoft. Web/Sites/Slots
-- Microsoft. Web/staticsites
-- Microsoft. windowsesu/multipleactivationkeys
-- Microsoft. windowsiot/deviceservices
+- Microsoft. Web/Sites/Slots (App Service (bővítőhely))
+- Microsoft. Web/StaticSites (statikus Web Apps (előzetes verzió))
+- Microsoft. WindowsESU/multipleActivationKeys (Windows több aktiválási kulcs)
+- Microsoft. WindowsIoT/DeviceServices (Windows 10 IoT Core Services)
 - Microsoft. workloadbuilder/munkaterhelések
-- myget. packagemanagement/Services
-- paraleap. cloudmonix/Services
-- pokitdok. platform/szolgáltatások
-- szolgáltatók. test/statefulibizaengines
+- MyGet. PackageManagement/Services (MyGet-üzemeltetett NuGet, NPM, Bower és Vsix)
+- Paraleap. CloudMonix/Services (CloudMonix)
+- Pokitdok. platform/szolgáltatások (PokitDok platform)
+- Szolgáltatók. teszt/statefulIbizaEngines (alkalmazás-értékelések)
 - szolgáltatók. test/statefulresources
 - szolgáltatók. test/statefulresources/nestedresources
 - szolgáltatók. test/statelessresources
-- ravenhq. db/adatbázisok
-- Raygun. crashreporting/alkalmazások
-- sendgrid. email/fiókok
-- sparkpost. Basic/Services
-- stackify. retrace/Services
+- RavenHq. db/adatbázisok (RavenHQ)
+- Raygun. CrashReporting/apps (Raygun)
+- Sendgrid. email/fiókok (SendGrid-fiókok)
+- Sparkpost. Basic/Services (SparkPost)
+- stackify. retrace/Services (Stackify)
 - test. Shoebox/testresources
 - test. Shoebox/testresources2
-- TrendMicro. deepsecurity/fiókok
-- u2uconsult. theidentityhub/Services
-- wandisco. Fusion/fusiongroups
-- wandisco. Fusion/fusiongroups/azurezones
-- wandisco. Fusion/fusiongroups/azurezones/plugins
-- wandisco. Fusion/fusiongroups/hivereplicationrules
-- wandisco. Fusion/fusiongroups/managedonpremzones
+- TrendMicro. DeepSecurity/fiókok (Deep Security SaaS)
+- U2uconsult. TheIdentityHub/Services (az Identity hub)
+- Wandisco. Fusion/fusionGroups (LiveData-repülőgépek)
+- Wandisco. Fusion/fusionGroups/azureZones (Azure-zónák)
+- Wandisco. Fusion/fusionGroups/azureZones/plugins (plugins)
+- Wandisco. Fusion/fusionGroups/hiveReplicationRules (struktúra-replikációs szabályok)
+- Wandisco. Fusion/fusionGroups/managedOnPremZones (helyszíni zónák)
 - wandisco. Fusion/fusiongroups/onpremzones
-- wandisco. Fusion/fusiongroups/replicationrules
-- wandisco. Fusion/áttelepítések
-- wandisco. Fusion/áttelepítési/livedatamigrations
-- wandisco. Fusion/migrálók/célok
+- Wandisco. Fusion/fusionGroups/replicationRules (replikációs szabályok)
+- Wandisco. Fusion/áttelepítési (LiveData-áttelepítési)
+- Wandisco. Fusion/áttelepítési/liveDataMigrations (Migrálás)
+- Wandisco. Fusion/migrálók/célok (célok)
 
 ## <a name="securityresources"></a>securityresources
 
 - Microsoft. Security/értékelések
 - Microsoft. Security/értékelések/alértékelések
-- Microsoft. Security/Locations/riasztások
+- Microsoft. Security/Locations/riasztások (biztonsági riasztások (előzetes verzió))
 - Microsoft. Security/díjszabás
 - Microsoft. Security/regulatorycompliancestandards
 - Microsoft. Security/regulatorycompliancestandards/regulatorycompliancecontrols
@@ -586,7 +632,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 
 - Microsoft. resourcehealth/események
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [lekérdezési nyelvről](../concepts/query-language.md).
 - További információ az [erőforrások feltárásáról](../concepts/explore-resources.md).

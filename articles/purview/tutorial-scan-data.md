@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: feda969a5818402f4a5f2dadc80c70c324ad7492
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: eafa2187308c0324b85596ce25e8310fd8506a97
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559964"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249602"
 ---
 # <a name="tutorial-scan-data-with-azure-purview-preview"></a>Oktatóanyag: az adatvizsgálat az Azure hatáskörébe (előzetes verzió)
 
@@ -115,7 +115,7 @@ Ha saját maga hozta létre az Azure-beli hatáskörébe tartozó fiókot, akkor
 
 1. Adja meg a parancsfájlt futtató felhasználó nevét a **Select (kiválasztás**) mezőben.
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 1. Ismételje meg az előző lépéseket a *szerepkör* a **hatáskörébe tartozó adatforrás-rendszergazdai szerepkör** beállításnál.
 
@@ -189,6 +189,8 @@ A fiók létrehozásakor a rendszer automatikusan létrehozza az Azure-beli hat�
 1. Ismételje meg a Azure Data Lake Storage Gen2 előző lépéseit.
 
 ### <a name="scan-your-data-sources"></a>Adatforrások vizsgálata
+
+1. Nyissa meg az Azure-beli hatáskörébe tartozó erőforrást a [Azure Portalon](https://portal.azure.com) , és válassza a *hatáskörébe Studio megnyitása* lehetőséget. A rendszer automatikusan átveszi a hatáskörébe Studio kezdőlapját.
 
 1. A katalógus weboldalán válassza a **források** lehetőséget, majd válassza a **regisztráció** lehetőséget. Ezután válassza az **Azure Blob Storage** és a **Folytatás** lehetőséget.
 

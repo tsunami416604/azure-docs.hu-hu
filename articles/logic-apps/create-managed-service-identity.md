@@ -3,31 +3,48 @@ title: Hitelesítés felügyelt identitásokkal
 description: A Azure Active Directory által védett erőforrások elérése a hitelesítő adatokkal vagy titkos kódokkal való bejelentkezés nélkül felügyelt identitás használatával
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 10/27/2020
-ms.openlocfilehash: 1152c8b72bcb830a7ba4efa053d3ffff667f9dc8
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.date: 01/15/2021
+ms.openlocfilehash: 9ac8a23569d9a85787768419a0377967026e9bd9
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034169"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251595"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Az Azure-erőforrásokhoz való hozzáférés hitelesítése felügyelt identitások használatával Azure Logic Apps
 
-A Azure Active Directory (Azure AD) által védett egyéb erőforrások egyszerű eléréséhez és az identitás bejelentkezés nélküli hitelesítéséhez a logikai alkalmazás [felügyelt identitást](../active-directory/managed-identities-azure-resources/overview.md) (korábban Managed Service Identity vagy msi) is használhat a hitelesítő adatok és a titkos kódok helyett. Az Azure kezeli Ön helyett ezt az identitást, és segít biztonságban tartani az Ön hitelesítő adatait, mivel így nincs szükség titkos kulcsok megadására és rendszeres módosítására.
+A Azure Active Directory (Azure AD) által védett egyéb erőforrásokhoz való egyszerű hozzáféréshez és az identitás hitelesítéséhez a logikai alkalmazás [felügyelt identitást](../active-directory/managed-identities-azure-resources/overview.md) (korábban Managed Service Identity vagy msi) használhat a hitelesítő adatok, titkok vagy Azure ad-tokenek helyett. Az Azure kezeli ezt az identitást, és segít a hitelesítő adatok védelmében, mivel nem kell a titkokat kezelnie, vagy közvetlenül az Azure AD-tokeneket használni.
 
-Azure Logic Apps a [*rendszer által hozzárendelt*](../active-directory/managed-identities-azure-resources/overview.md) és [*felhasználó által hozzárendelt*](../active-directory/managed-identities-azure-resources/overview.md) felügyelt identitásokat is támogatja. A logikai alkalmazás a rendszerhez hozzárendelt identitást vagy *egyetlen* felhasználó által hozzárendelt identitást is használhat, amely a logikai alkalmazások egy csoportján belül megosztható, de nem mindkettő. Jelenleg csak az [adott beépített eseményindítók és műveletek](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound) támogatják a felügyelt identitásokat, nem felügyelt összekötőket és kapcsolatokat, például:
+Azure Logic Apps a [*rendszer által hozzárendelt*](../active-directory/managed-identities-azure-resources/overview.md) és [*felhasználó által hozzárendelt*](../active-directory/managed-identities-azure-resources/overview.md) felügyelt identitásokat is támogatja. A logikai alkalmazás vagy az egyedi kapcsolatok a rendszer által hozzárendelt identitást vagy *egyetlen* felhasználó által hozzárendelt identitást is használhatnak, amelyet a logikai alkalmazások egy csoportján oszthat meg, de mindkettőt nem.
 
-* HTTP
-* Azure Functions
+## <a name="where-can-logic-apps-use-managed-identities"></a>Hol használhatják a Logic apps a felügyelt identitásokat?
+
+Jelenleg csak az Azure AD-OAuth támogató [beépített eseményindítók és műveletek](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions) [, valamint a felügyelt](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions) identitások is használhatók a hitelesítéshez. Például itt a következő lehetőségek közül választhat:
+
+**Beépített eseményindítók és műveletek**
+
 * Azure API Management
 * Azure App Services
+* Azure Functions
+* HTTP
+* HTTP + webhook
+
+**Felügyelt összekötők**
+
+* Azure Automation
+* Azure Event Grid
+* Azure Key Vault
+* Azure Monitor-naplók
+* Azure Resource Manager
+* HTTP az Azure AD-vel
+
+A felügyelt összekötők támogatása jelenleg előzetes verzióban érhető el. Az aktuális listán tekintse meg az [Eseményindítók és a hitelesítést támogató műveletek hitelesítési típusai](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)című témakört.
 
 Ez a cikk bemutatja, hogyan állíthat be mindkét fajta felügyelt identitást a logikai alkalmazáshoz. További információt az alábbi témakörökben talál:
 
-* [A felügyelt identitásokat támogató eseményindítók és műveletek](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
-* [A kimenő hívások támogatott hitelesítési típusai](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
+* [A felügyelt identitásokat támogató eseményindítók és műveletek](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)
 * [A Logic apps felügyelt identitásának korlátai](../logic-apps/logic-apps-limits-and-config.md#managed-identity)
 * [Az Azure AD-hitelesítést támogató Azure-szolgáltatások felügyelt identitásokkal](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)
 
@@ -39,7 +56,7 @@ Ez a cikk bemutatja, hogyan állíthat be mindkét fajta felügyelt identitást 
 
 * Az elérni kívánt cél Azure-erőforrás. Ezen az erőforráson hozzá fog adni egy szerepkört a felügyelt identitáshoz, amely segít a logikai alkalmazásnak a cél erőforráshoz való hozzáférés hitelesítésében.
 
-* A logikai alkalmazás, amelyen használni szeretné a [felügyelt identitásokat támogató triggert vagy műveleteket](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
+* Az a logikai alkalmazás, amelyen használni szeretné a [felügyelt identitásokat támogató triggert vagy műveleteket](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions).
 
 ## <a name="enable-managed-identity"></a>Felügyelt identitás engedélyezése
 
@@ -55,7 +72,7 @@ A használni kívánt felügyelt identitás beállításához kövesse az identi
 A felhasználó által hozzárendelt identitásokkal ellentétben nem kell manuálisan létrehoznia a rendszer által hozzárendelt identitást. A logikai alkalmazás rendszer által hozzárendelt identitásának beállításához a következő lehetőségeket használhatja:
 
 * [Azure Portal](#azure-portal-system-logic-app)
-* [Azure Resource Manager sablonok](#template-system-logic-app)
+* [Azure Resource Manager-sablonok](#template-system-logic-app)
 
 <a name="azure-portal-system-logic-app"></a>
 
@@ -70,7 +87,7 @@ A felhasználó által hozzárendelt identitásokkal ellentétben nem kell manu�
    > [!NOTE]
    > Ha olyan hibaüzenetet kap, amely csak egyetlen felügyelt identitással rendelkezhet, a logikai alkalmazás már társítva van a felhasználó által hozzárendelt identitással. A rendszerhez rendelt identitás hozzáadása előtt először *el kell távolítania* a felhasználó által hozzárendelt identitást a logikai alkalmazásból.
 
-   A logikai alkalmazás mostantól a rendszer által hozzárendelt identitást is használhatja, amely Azure Active Directory regisztrálva van, és egy objektumazonosító jelképezi.
+   A logikai alkalmazás mostantól használhatja a rendszerhez rendelt identitást, amely regisztrálva van az Azure AD-ben, és az objektum azonosítója jelképezi.
 
    ![Rendszer által hozzárendelt identitáshoz tartozó objektumazonosító](./media/create-managed-service-identity/object-id-system-assigned-identity.png)
 
@@ -133,7 +150,7 @@ Amikor az Azure létrehozza a logikai alkalmazás erőforrás-definícióját, a
 Ha felhasználó által hozzárendelt felügyelt identitást szeretne beállítani a logikai alkalmazáshoz, először létre kell hoznia ezt az identitást külön önálló Azure-erőforrásként. A következő lehetőségek használhatók:
 
 * [Azure Portal](#azure-portal-user-identity)
-* [Azure Resource Manager sablonok](#template-user-identity)
+* [Azure Resource Manager-sablonok](#template-user-identity)
 * Azure PowerShell
   * [Felhasználó által hozzárendelt identitás létrehozása](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
   * [Szerepkör-hozzárendelés hozzáadása](../active-directory/managed-identities-azure-resources/howto-assign-access-powershell.md)
@@ -294,6 +311,8 @@ Ahhoz, hogy használni tudja a logikai alkalmazás felügyelt identitását a hi
 
 ### <a name="assign-access-in-the-azure-portal"></a>Hozzáférés kiosztása a Azure Portal
 
+Ahhoz a cél Azure-erőforráshoz, amelyhez a felügyelt identitásnak hozzáférésre van szüksége, adja meg az identitás szerepköralapú hozzáférését a célként megadott erőforráshoz.
+
 1. A [Azure Portal](https://portal.azure.com)nyissa meg azt az Azure-erőforrást, ahol a felügyelt identitásának hozzáférése van.
 
 1. Az erőforrás menüjében válassza a **hozzáférés-vezérlés (iam)**  >  **szerepkör-hozzárendelések** lehetőséget, ahol áttekintheti az adott erőforráshoz tartozó aktuális szerepkör-hozzárendeléseket. Az eszköztáron válassza a **Hozzáadás**  >  **szerepkör-hozzárendelés hozzáadása** elemet.
@@ -345,7 +364,7 @@ Ahhoz, hogy használni tudja a logikai alkalmazás felügyelt identitását a hi
 
 ## <a name="authenticate-access-with-managed-identity"></a>Hozzáférés hitelesítése felügyelt identitással
 
-Miután [engedélyezte a logikai alkalmazás felügyelt identitását](#azure-portal-system-logic-app) , és lehetővé teszi, [hogy az identitás hozzáférjen a célként megadott erőforráshoz vagy entitáshoz](#access-other-resources), a [felügyelt identitásokat támogató eseményindítókban és műveletekben](logic-apps-securing-a-logic-app.md#managed-identity-authentication)is használhatja ezt az identitást.
+Miután [engedélyezte a logikai alkalmazás felügyelt identitását](#azure-portal-system-logic-app) , és lehetővé teszi, [hogy az identitás hozzáférjen a célként megadott erőforráshoz vagy entitáshoz](#access-other-resources), a [felügyelt identitásokat támogató eseményindítókban és műveletekben](logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)is használhatja ezt az identitást.
 
 > [!IMPORTANT]
 > Ha rendelkezik olyan Azure-függvénnyel, ahol a rendszer által hozzárendelt identitást szeretné használni, először [engedélyezze az Azure functions hitelesítést](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-functions).
@@ -354,44 +373,120 @@ Ezek a lépések bemutatják, hogyan használható a felügyelt identitás egy t
 
 1. A [Azure Portalban](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic app Designerben.
 
-1. Ha még nem tette meg, adja hozzá a [felügyelt identitásokat támogató triggert vagy műveletet](logic-apps-securing-a-logic-app.md#managed-identity-authentication).
+1. Ha még nem tette meg, adja hozzá a [felügyelt identitásokat támogató triggert vagy műveletet](logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions).
 
-   A HTTP-trigger vagy a művelet például használhatja a logikai alkalmazáshoz engedélyezett rendszer által hozzárendelt identitást. Általánosságban elmondható, hogy a HTTP-trigger vagy-művelet ezeket a tulajdonságokat használja az elérni kívánt erőforrás vagy entitás megadásához:
+   > [!NOTE]
+   > Nem minden eseményindító és művelet támogatja a hitelesítési típus hozzáadását. További információ: hitelesítési [típusok az eseményindítók és a hitelesítést támogató műveletek](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)számára.
 
-   | Tulajdonság | Kötelező | Leírás |
-   |----------|----------|-------------|
-   | **Metódus** | Igen | A futtatni kívánt művelet által használt HTTP-metódus |
-   | **URI** | Igen | A cél Azure-erőforrás vagy-entitás eléréséhez használt végpont URL-címe. Az URI-szintaxis általában magában foglalja az Azure-erőforrás vagy-szolgáltatás [erőforrás-azonosítóját](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) . |
-   | **Fejlécek** | Nem | Minden szükséges vagy a kimenő kérelembe belefoglalni kívánt fejléc-érték, például a tartalom típusa |
-   | **Lekérdezések** | Nem | A kérelembe belefoglalni kívánt lekérdezési paramétereket, például egy adott művelet paraméterét vagy a futtatni kívánt művelet API-verzióját |
-   | **Hitelesítés** | Igen | A célként megadott erőforráshoz vagy entitáshoz való hozzáférés hitelesítéséhez használandó hitelesítési típus |
-   ||||
+1. A hozzáadott trigger vagy művelet esetén kövesse az alábbi lépéseket:
 
-   Tegyük fel, hogy a [Pillanatkép-blob műveletet](/rest/api/storageservices/snapshot-blob) egy olyan Azure Storage-fiókban lévő blobon szeretné futtatni, amelyben korábban beállította a hozzáférést az identitásához. Az [Azure Blob Storage-összekötő](/connectors/azureblob/) azonban jelenleg nem nyújtja ezt a műveletet. Ehelyett ezt a műveletet a [http-művelet](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action) vagy egy másik [blob Service REST API művelet](/rest/api/storageservices/operations-on-blobs)használatával futtathatja.
+   * **A felügyelt identitást támogató beépített eseményindítók és műveletek**
 
-   > [!IMPORTANT]
-   > Ha a tűzfal mögötti Azure Storage-fiókokat HTTP-kérések és felügyelt identitások használatával szeretné elérni, ügyeljen arra, hogy a Storage-fiókját a [megbízható Microsoft-szolgáltatások általi hozzáférést lehetővé tevő kivételt](../connectors/connectors-create-api-azureblobstorage.md#access-trusted-service)is állítsa be.
+     1. Adja hozzá a **hitelesítési** tulajdonságot, ha a tulajdonság még nem jelenik meg.
 
-   A pillanatkép- [blob művelet](/rest/api/storageservices/snapshot-blob)futtatásához a http-művelet a következő tulajdonságokat adja meg:
+     1. A **Hitelesítés típusa** területen válassza a **felügyelt identitás** elemet.
 
-   | Tulajdonság | Kötelező | Példaérték | Leírás |
-   |----------|----------|---------------|-------------|
-   | **Metódus** | Igen | `PUT`| A pillanatkép-blob művelet által használt HTTP-metódus |
-   | **URI** | Igen | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | Egy Azure-Blob Storage fájl erőforrás-azonosítója az Azure globális (nyilvános) környezetében, amely ezt a szintaxist használja |
-   | **Fejlécek** | Azure Storage-hoz | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` <p>`x-ms-date` = `@{formatDateTime(utcNow(),'r'}` | Az `x-ms-blob-type` `x-ms-version` Azure Storage-műveletekhez a, a és a `x-ms-date` fejléc értékének megadása szükséges. <p><p>**Fontos**: a kimenő http-triggerben és az Azure Storage-beli műveleti kérelmekben a fejléchez a `x-ms-version` futtatni kívánt művelethez szükséges tulajdonság és API-verzió szükséges. Az `x-ms-date` aktuális dátumnak kell lennie. Ellenkező esetben a logikai alkalmazás `403 FORBIDDEN` hibát jelez. Az aktuális dátum a szükséges formátumban való lekéréséhez használhatja a példában szereplő kifejezést. <p>További információt az alábbi témakörökben talál: <p><p>- [Kérések fejlécei – pillanatkép-blob](/rest/api/storageservices/snapshot-blob#request) <br>- [Verziószámozás az Azure Storage-szolgáltatásokhoz](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
-   | **Lekérdezések** | Csak a pillanatkép-blob művelethez | `comp` = `snapshot` | A művelet lekérdezési paraméterének neve és értéke. |
-   |||||
+     További információ [: példa: beépített trigger vagy művelet hitelesítése felügyelt identitással](#authenticate-built-in-managed-identity).
+ 
+   * **Kezelt összekötő-eseményindítók és felügyelt identitást támogató műveletek**
 
-   Az alábbi példa HTTP-művelet az összes tulajdonság értékét megjeleníti:
+     1. A bérlő kiválasztása lapon válassza a **kapcsolat felügyelt identitással** lehetőséget.
 
-   ![HTTP-művelet hozzáadása az Azure-erőforrásokhoz való hozzáféréshez](./media/create-managed-service-identity/http-action-example.png)
+     1. A következő lapon adja meg a kapcsolatok nevét.
 
-1. Most adja hozzá a **hitelesítési** tulajdonságot a http-művelethez. Az **új paraméter hozzáadása** listából válassza a **hitelesítés** lehetőséget.
+        Alapértelmezés szerint a felügyelt identitás lista csak a jelenleg engedélyezett felügyelt identitást jeleníti meg, mert egy logikai alkalmazás egyszerre csak egy felügyelt identitás engedélyezését támogatja, például:
+
+        ![A kapcsolatok neve lapot és a kijelölt felügyelt identitást megjelenítő képernyőkép.](./media/create-managed-service-identity/system-assigned-managed-identity.png)
+
+     További információ [: példa: felügyelt összekötő-trigger vagy művelet felügyelt identitással való hitelesítése](#authenticate-managed-connector-managed-identity).
+
+     A felügyelt identitás használatára létrehozott kapcsolatok speciális kapcsolattípus, amely csak felügyelt identitással működik. Futásidőben a kapcsolatok a logikai alkalmazásban engedélyezett felügyelt identitást használják. Ez a konfiguráció a logikai alkalmazás erőforrás-definíciójának objektumában lesz mentve `parameters` , amely tartalmazza `$connections` azt az objektumot, amely a kapcsolat erőforrás-azonosítójával és az identitás erőforrás-azonosítójával, valamint ha engedélyezve van a felhasználó által hozzárendelt identitás.
+
+     Ez a példa azt mutatja be, hogy a konfiguráció milyen módon néz ki, amikor a logikai alkalmazás engedélyezi a rendszer által hozzárendelt felügyelt identitást:
+
+     ```json
+     "parameters": {
+        "$connections": {
+           "value": {
+              "<action-name>": {
+                 "connectionId": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/connections/{connection-name}",
+                 "connectionName": "{connection-name}",
+                 "connectionProperties": {
+                    "authentication": {
+                       "type": "ManagedServiceIdentity"
+                    }
+                 },
+                 "id": "/subscriptions/{Azure-subscription-ID}/providers/Microsoft.Web/locations/{Azure-region}/managedApis/{managed-connector-type}"
+              }
+           }
+        }
+     }
+     ```
+
+     Ez a példa azt mutatja be, hogy a konfiguráció milyen módon néz ki, amikor a logikai alkalmazás engedélyezi a felhasználó által hozzárendelt felügyelt identitást:
+
+     ```json
+     "parameters": {
+        "$connections": {
+           "value": {
+              "<action-name>": {
+                 "connectionId": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/connections/{connection-name}",
+                 "connectionName": "{connection-name}",
+                 "connectionProperties": {
+                    "authentication": {
+                       "identity": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{resourceGroupName}/providers/microsoft.managedidentity/userassignedidentities/{managed-identity-name}",
+                       "type": "ManagedServiceIdentity"
+                    }
+                 },
+                 "id": "/subscriptions/{Azure-subscription-ID}/providers/Microsoft.Web/locations/{Azure-region}/managedApis/{managed-connector-type}"
+              }
+           }
+        }
+     }
+     ```
+
+     A futtatókörnyezet során a Logic Apps szolgáltatás ellenőrzi, hogy a logikai alkalmazásban lévő felügyelt összekötő-triggerek és műveletek a felügyelt identitás használatára vannak-e beállítva, és hogy az összes szükséges engedély be van-e állítva a felügyelt identitás használatára a trigger és a műveletek által megadott cél erőforrások eléréséhez. Ha a művelet sikeres, a Logic Apps szolgáltatás lekérdezi a felügyelt identitáshoz társított Azure AD-tokent, és ezt az identitást használja a célként megadott erőforráshoz való hozzáférés hitelesítéséhez, valamint az aktiválási és műveletekben konfigurált művelet végrehajtásához.
+
+<a name="authenticate-built-in-managed-identity"></a>
+
+#### <a name="example-authenticate-built-in-trigger-or-action-with-a-managed-identity"></a>Példa: beépített trigger vagy művelet hitelesítése felügyelt identitással
+
+A HTTP-trigger vagy-művelet használhatja a logikai alkalmazáshoz engedélyezett rendszer által hozzárendelt identitást. Általánosságban elmondható, hogy a HTTP-trigger vagy-művelet ezeket a tulajdonságokat használja az elérni kívánt erőforrás vagy entitás megadásához:
+
+| Tulajdonság | Kötelező | Leírás |
+|----------|----------|-------------|
+| **Metódus** | Igen | A futtatni kívánt művelet által használt HTTP-metódus |
+| **URI** | Igen | A cél Azure-erőforrás vagy-entitás eléréséhez használt végpont URL-címe. Az URI-szintaxis általában magában foglalja az Azure-erőforrás vagy-szolgáltatás [erőforrás-azonosítóját](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) . |
+| **Fejlécek** | Nem | Minden szükséges vagy a kimenő kérelembe belefoglalni kívánt fejléc-érték, például a tartalom típusa |
+| **Lekérdezések** | Nem | A kérelembe belefoglalni kívánt lekérdezési paramétereket, például egy adott művelet paraméterét vagy a futtatni kívánt művelet API-verzióját |
+| **Hitelesítés** | Igen | A célként megadott erőforráshoz vagy entitáshoz való hozzáférés hitelesítéséhez használandó hitelesítési típus |
+||||
+
+Tegyük fel, hogy a [Pillanatkép-blob műveletet](/rest/api/storageservices/snapshot-blob) egy olyan Azure Storage-fiókban lévő blobon szeretné futtatni, amelyben korábban beállította a hozzáférést az identitásához. Az [Azure Blob Storage-összekötő](/connectors/azureblob/) azonban jelenleg nem nyújtja ezt a műveletet. Ehelyett ezt a műveletet a [http-művelet](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action) vagy egy másik [blob Service REST API művelet](/rest/api/storageservices/operations-on-blobs)használatával futtathatja.
+
+> [!IMPORTANT]
+> Ha a tűzfal mögötti Azure Storage-fiókokat HTTP-kérések és felügyelt identitások használatával szeretné elérni, ügyeljen arra, hogy a Storage-fiókját a [megbízható Microsoft-szolgáltatások általi hozzáférést lehetővé tevő kivételt](../connectors/connectors-create-api-azureblobstorage.md#access-trusted-service)is állítsa be.
+
+A pillanatkép- [blob művelet](/rest/api/storageservices/snapshot-blob)futtatásához a http-művelet a következő tulajdonságokat adja meg:
+
+| Tulajdonság | Kötelező | Példaérték | Leírás |
+|----------|----------|---------------|-------------|
+| **Metódus** | Igen | `PUT`| A pillanatkép-blob művelet által használt HTTP-metódus |
+| **URI** | Igen | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | Egy Azure-Blob Storage fájl erőforrás-azonosítója az Azure globális (nyilvános) környezetében, amely ezt a szintaxist használja |
+| **Fejlécek** | Azure Storage-hoz | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` <p>`x-ms-date` = `@{formatDateTime(utcNow(),'r'}` | Az `x-ms-blob-type` `x-ms-version` Azure Storage-műveletekhez a, a és a `x-ms-date` fejléc értékének megadása szükséges. <p><p>**Fontos**: a kimenő http-triggerben és az Azure Storage-beli műveleti kérelmekben a fejléchez a `x-ms-version` futtatni kívánt művelethez szükséges tulajdonság és API-verzió szükséges. Az `x-ms-date` aktuális dátumnak kell lennie. Ellenkező esetben a logikai alkalmazás `403 FORBIDDEN` hibát jelez. Az aktuális dátum a szükséges formátumban való lekéréséhez használhatja a példában szereplő kifejezést. <p>További információt az alábbi témakörökben talál: <p><p>- [Kérések fejlécei – pillanatkép-blob](/rest/api/storageservices/snapshot-blob#request) <br>- [Verziószámozás az Azure Storage-szolgáltatásokhoz](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
+| **Lekérdezések** | Csak a pillanatkép-blob művelethez | `comp` = `snapshot` | A művelet lekérdezési paraméterének neve és értéke. |
+|||||
+
+Az alábbi példa HTTP-művelet az összes tulajdonság értékét megjeleníti:
+
+![HTTP-művelet hozzáadása az Azure-erőforrásokhoz való hozzáféréshez](./media/create-managed-service-identity/http-action-example.png)
+
+1. A HTTP-művelet hozzáadása után adja hozzá a **hitelesítési** tulajdonságot a http-művelethez. Az **új paraméter hozzáadása** listából válassza a **hitelesítés** lehetőséget.
 
    !["Hitelesítés" tulajdonság hozzáadása HTTP-művelethez](./media/create-managed-service-identity/add-authentication-property.png)
 
    > [!NOTE]
-   > Nem minden eseményindító és művelet támogatja a hitelesítési típus hozzáadását. További információ: [hitelesítés hozzáadása kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
+   > Nem minden eseményindító és művelet támogatja a hitelesítési típus hozzáadását. További információ: hitelesítési [típusok az eseményindítók és a hitelesítést támogató műveletek](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)számára.
 
 1. A **Hitelesítés típusa** listából válassza a **felügyelt identitás** elemet.
 
@@ -425,6 +520,32 @@ Ezek a lépések bemutatják, hogyan használható a felügyelt identitás egy t
 
 1. Folytassa a logikai alkalmazás létrehozásával a kívánt módon.
 
+<a name="authenticate-managed-connector-managed-identity"></a>
+
+#### <a name="example-authenticate-managed-connector-trigger-or-action-with-a-managed-identity"></a>Példa: felügyelt összekötő-trigger vagy-művelet hitelesítése felügyelt identitással
+
+A Azure Resource Manager művelet, **erőforrás olvasása**, használhatja a logikai alkalmazáshoz engedélyezett felügyelt identitást. Ez a példa bemutatja, hogyan használhatja a rendszer által hozzárendelt felügyelt identitást.
+
+1. Miután hozzáadta a műveletet a munkafolyamathoz, a bérlő kiválasztása lapon válassza a **Kapcsolódás felügyelt identitással** lehetőséget.
+
+   ![A Azure Resource Manager műveletet és a "kapcsolat felügyelt identitással" beállítást megjelenítő képernyőkép.](./media/create-managed-service-identity/select-connect-managed-identity.png)
+
+   A művelet mostantól megjeleníti a kapcsolat neve lapot a felügyelt identitások listájával, amely tartalmazza a logikai alkalmazásban jelenleg engedélyezett felügyelt identitás típusát.
+
+1. A kapcsolatok neve lapon adja meg a kapcsolatok nevét. A felügyelt identitás listából válassza ki a felügyelt identitást, amely ebben a példában a **rendszer által hozzárendelt felügyelt identitás** , majd válassza a **Létrehozás** lehetőséget. Ha engedélyezte a felhasználó által hozzárendelt felügyelt identitást, válassza ki ezt az identitást.
+
+   ![Képernyőfelvétel: a megadott kapcsolati névvel és a "rendszer által hozzárendelt felügyelt identitással" jelölt Azure Resource Manager művelet.](./media/create-managed-service-identity/system-assigned-managed-identity.png)
+
+   Ha a felügyelt identitás nincs engedélyezve, a következő hibaüzenet jelenik meg, amikor megpróbálja létrehozni a kapcsolódást:
+
+   *Engedélyeznie kell a logikai alkalmazás felügyelt identitását, majd meg kell adnia a szükséges hozzáférést az identitáshoz a cél erőforrásban.*
+
+   ![Képernyőfelvétel: a Azure Resource Manager művelet hibával jelenik meg, ha nincs engedélyezve a felügyelt identitás.](./media/create-managed-service-identity/system-assigned-managed-identity-disabled.png)
+
+1. A kapcsolatok sikeres létrehozása után a tervező felügyelt identitás-hitelesítéssel képes bármilyen dinamikus értéket, tartalmat vagy sémát beolvasni.
+
+1. Folytassa a logikai alkalmazás létrehozásával a kívánt módon.
+
 <a name="remove-identity"></a>
 
 ## <a name="disable-managed-identity"></a>Felügyelt identitás letiltása
@@ -432,7 +553,7 @@ Ezek a lépések bemutatják, hogyan használható a felügyelt identitás egy t
 Ha nem szeretne felügyelt identitást használni a logikai alkalmazáshoz, a következő lehetőségek állnak rendelkezésre:
 
 * [Azure Portal](#azure-portal-disable)
-* [Azure Resource Manager sablonok](#template-disable)
+* [Azure Resource Manager-sablonok](#template-disable)
 * Azure PowerShell
   * [Szerepkör-hozzárendelés eltávolítása](../role-based-access-control/role-assignments-powershell.md)
   * [Felhasználó által hozzárendelt identitás törlése](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)

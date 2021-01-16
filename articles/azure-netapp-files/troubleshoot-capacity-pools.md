@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/06/2020
+ms.date: 01/14/2021
 ms.author: b-juche
-ms.openlocfilehash: a07898692c8af70fab0d2634ed1513f0f3666a4d
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 759759b67582b241d0bab1e043dd15e54a804faf
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505460"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251539"
 ---
 # <a name="troubleshoot-capacity-pool-issues"></a>Kapacitáskészletekkel kapcsolatos hibák elhárítása
 
@@ -35,16 +35,13 @@ Ez a cikk azokat a problémákat ismerteti, amelyekkel a kapacitási készletek 
 
 ## <a name="issues-when-changing-the-capacity-pool-of-a-volume"></a>Kötetek kapacitási készletének módosításakor felmerülő problémák 
 
-> [!IMPORTANT] 
-> A mennyiségi nyilvános előzetes regisztráció [szolgáltatási szintjének dinamikus módosítása](dynamic-change-volume-service-level.md) további értesítésig tart.
-
 |     Hibafeltétel    |     Feloldás    |
 |-|-|
 | A kötetek kapacitási készletének módosítása nem engedélyezett. | Lehet, hogy még nem engedélyezte ezt a funkciót. <br> A kötetek egy másik kapacitási készletbe való áthelyezésének funkciója jelenleg előzetes verzióban érhető el. Ha első alkalommal használja ezt a szolgáltatást, először regisztrálnia kell a funkciót, és be kell állítania a szolgáltatást `-FeatureName ANFTierChange` . Tekintse meg a [kötetek szolgáltatási szintjének dinamikus módosítása](dynamic-change-volume-service-level.md)című témakörben található regisztráció lépéseit. |
 | A kapacitási készlet mérete túl kicsi a teljes kötet méretéhez. |  A hiba oka, hogy a célként megadott kapacitási készlet nem rendelkezik az áthelyezett kötet rendelkezésre álló kapacitásával.  <br> Növelje a cél készlet méretét, vagy válasszon egy nagyobb készletet.  Lásd: [Kapacitási készlet vagy kötet átméretezése](azure-netapp-files-resize-capacity-pools-or-volumes.md).   |
 |  A készlet módosítása nem hajtható végre, mert egy nevű kötet `'{source pool name}'` már létezik a célként megadott készletben. `'{target pool name}'` | Ez a hiba azért fordul elő, mert már létezik ilyen nevű kötet a cél kapacitási készletben.  Válasszon egy másik olyan kapacitási készletet, amely nem rendelkezik azonos nevű kötettel.   | 
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 * [Kapacitáskészlet beállítása](azure-netapp-files-set-up-capacity-pool.md)
 * [Manuális QoS-kapacitáskészlet kezelése](manage-manual-qos-capacity-pool.md)

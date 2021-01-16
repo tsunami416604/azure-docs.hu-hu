@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: ec4917aa378f746eb2caac6a7b4ce99d1c44db90
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 55e618a7e4e0d21f6d4afab270e257c26fa15634
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127651"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251114"
 ---
 # <a name="configure-and-submit-training-runs"></a>Betanítási futtatások konfigurálása és elküldése
 
@@ -75,6 +75,9 @@ experiment = Experiment(workspace=ws, name=experiment_name)
 Válassza ki azt a számítási célt, amelyen a betanítási parancsfájl futni fog. Ha nincs megadva számítási cél a ScriptRunConfig, vagy ha az `compute_target='local'` Azure ml a parancsfájlt helyileg fogja végrehajtani. 
 
 A cikkben szereplő mintakód azt feltételezi, hogy már létrehozott egy számítási célt `my_compute_target` az "Előfeltételek" szakaszból.
+
+>[!Note]
+>A Azure Databricks nem támogatott számítási célként a modell betanításához. Az adatelőkészítési és-telepítési feladatokhoz Azure Databricks is használhatja. 
 
 ## <a name="create-an-environment"></a>Környezet létrehozása
 Azure Machine Learning [környezetek](concept-environments.md) a gépi tanulási képzést végző környezet beágyazását jelentik. Megadják a Python-csomagokat, a Docker-rendszerképet, a környezeti változókat és a szoftver beállításait a képzés és a pontozási szkriptek köré. Emellett a futtatókörnyezeteket (Python, Spark vagy Docker) is megadják.
@@ -220,7 +223,7 @@ Tekintse meg ezeket a jegyzetfüzeteket a futtatások konfigurálására példá
 
 * A **számítási cél elkezdése hosszú időt vesz igénybe**: a számítási célokhoz tartozó Docker-rendszerképek betöltődik Azure Container Registryból (ACR). Alapértelmezés szerint a Azure Machine Learning létrehoz egy ACR-t, *amely az alapszintű* szolgáltatási szintet használja. A munkaterületre vonatkozó ACR a standard vagy a prémium szintre való módosítása csökkentheti a lemezképek létrehozásához és betöltéséhez szükséges időt. További információ: [Azure Container Registry szolgáltatási szintek](../container-registry/container-registry-skus.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Oktatóanyag: a betanítási modell](tutorial-train-models-with-aml.md) felügyelt számítási célt használ a modellek betanításához.
 * Megtudhatja, hogyan taníthat modelleket konkrét ML-keretrendszerekkel, például a [Scikit-Learn](how-to-train-scikit-learn.md), a [TensorFlow](how-to-train-tensorflow.md)és a [PyTorch](how-to-train-pytorch.md).

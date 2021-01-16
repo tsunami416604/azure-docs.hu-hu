@@ -3,14 +3,14 @@ title: Azure-on futó Kubernetes oktatóanyag – Alkalmazás frissítése
 description: Ebben az Azure Kubernetes Service-hez (AKS-hez) tartozó oktatóanyagban megismerheti, hogyan frissítheti a meglévő alkalmazástelepítéseket az AKS-ben az alkalmazáskód új verziójával.
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
-ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: c8401a81a36d86b871df9fc428c393007b97c400
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.date: 01/12/2021
+ms.custom: mvc
+ms.openlocfilehash: b969e3ec1c670c0a12129289c8ff7eb81df51ff9
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833911"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250655"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazások frissítése az Azure Kubernetes Service-ben (AKS)
 
@@ -64,7 +64,7 @@ docker-compose up --build -d
 
 Ha ellenőrizni szeretné, hogy a frissített tárolórendszerkép megjeleníti-e a módosításokat, nyissa meg a `http://localhost:8080` címet egy helyi böngészőben.
 
-:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated.png" alt-text="Képernyőkép – a frissített Container-rendszerképre mutató példa a helyi webböngészővel és helyi gazdagéptel megnyitott Azure szavazó alkalmazásra.":::
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated.png" alt-text="Képernyőkép, amely egy helyi webböngészőben helyileg megnyitott Azure-beli szavazási alkalmazás frissített tároló-rendszerképére mutat példát.":::
 
 A *config_file. cfg* fájlban megadott frissített értékek a futó alkalmazásban jelennek meg.
 
@@ -143,11 +143,11 @@ A frissített alkalmazás megtekintéséhez először kérje le az `azure-vote-f
 kubectl get service azure-vote-front
 ```
 
-Most nyisson meg egy helyi webböngészőt a szolgáltatás IP-címére:
+Most nyisson meg egy webböngészőt a szolgáltatás IP-címére:
 
-:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated-external.png" alt-text="Képernyőkép: a frissített alkalmazás Azure-beli szavazási alkalmazásának megnyitása egy helyi böngészőben.":::
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated-external.png" alt-text="Képernyőkép, amely egy helyi webböngészőben megnyitott AK-fürtben futó frissített Rendszerképbeli Azure-beli szavazási alkalmazásra mutat példát.":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban frissített egy alkalmazást, és felvetítette ezt a frissítést az AK-fürtbe. Megtanulta végrehajtani az alábbi műveleteket:
 

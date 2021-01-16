@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 08/17/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: c3b3848e4e4f7b0445f882265dbe66bb10b48833
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0bb0a7833e9ee3b499ae013b665ecf137c667005
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968587"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250995"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>SAP-megoldások Azure Monitor üzembe helyezése Azure Portal
 
@@ -46,7 +46,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen
 
    :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-3.png" alt-text="Megjeleníti a szolgáltató lapot, és további szolgáltatókat adhat hozzá a Azure Monitor SAP-megoldásokhoz." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-3.png":::
 
-2. Válassza a **szolgáltató hozzáadása** lehetőséget, majd a legördülő listából válassza a **SAP HANA** lehetőséget. 
+2. Válassza a **szolgáltató hozzáadása** lehetőséget, majd a legördülő menüből válassza a **SAP HANA** lehetőséget. 
 
    > [!IMPORTANT]
    > Győződjön meg arról, hogy SAP HANA szolgáltató konfigurálva van a SAP HANA "Master" csomóponthoz.
@@ -59,13 +59,13 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen
 
 6. Adja meg a használni kívánt adatbázis-felhasználónevet. Győződjön meg arról, hogy az adatbázis-felhasználónak van hozzárendelve a **figyelés** és a **katalógus olvasási** szerepköre. 
 
-7. Ha elkészült, válassza a **szolgáltató hozzáadása** elemet. Szükség esetén folytassa a további szolgáltatók hozzáadását, vagy válassza a **felülvizsgálat + létrehozás** lehetőséget a telepítés befejezéséhez.
+7. Ha elkészült, válassza a **szolgáltató hozzáadása** elemet. Továbbra is szükség esetén további szolgáltatókat adhat hozzá, vagy a telepítés befejezéséhez válassza a **felülvizsgálat + létrehozás** lehetőséget.
 
    :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-4.png" alt-text="A szolgáltatói információk hozzáadásakor a konfigurációs beállítások képe." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-4.png":::
 
 ### <a name="high-availability-cluster-pacemaker-provider"></a>Magas rendelkezésre állású fürt (pacemaker) szolgáltatója
 
-1. Válassza ki a **magas rendelkezésre állású fürtöt (pacemaker)** a legördülő listából. 
+1. Válassza ki a **magas rendelkezésre állású fürtöt (pacemaker)** a legördülő menüből. 
 
    > [!IMPORTANT]
    > A magas rendelkezésre állású fürt (pacemaker) szolgáltatójának konfigurálásához győződjön meg arról, hogy a ha_cluster_provider telepítve van az egyes csomópontokon. További információ: [Ha a fürt exportőre](https://github.com/ClusterLabs/ha_cluster_exporter#installation)
@@ -74,9 +74,21 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen
  
 3. Adja meg a rendszerazonosító (SID), az állomásnév és a fürt nevét.
 
-4. Ha elkészült, válassza a **szolgáltató hozzáadása** elemet. Szükség esetén folytassa a további szolgáltatók hozzáadását, vagy válassza a **felülvizsgálat + létrehozás** lehetőséget a telepítés befejezéséhez.
+4. Ha elkészült, válassza a **szolgáltató hozzáadása** elemet. Továbbra is szükség esetén további szolgáltatókat adhat hozzá, vagy a telepítés befejezéséhez válassza a **felülvizsgálat + létrehozás** lehetőséget.
 
    :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-5.png" alt-text="A rendszerkép a HA-fürt pacemaker-szolgáltatójához kapcsolódó beállításokat jeleníti meg." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-5.png":::
+
+
+### <a name="os-linux-provider"></a>Operációs rendszer (Linux) szolgáltatója 
+
+1. Válassza az operációs rendszer (Linux) lehetőséget a legördülő menüből 
+
+> [!IMPORTANT]
+> Az operációs rendszer (Linux) szolgáltatójának konfigurálásához győződjön meg arról, hogy a Node_Exporter telepítve van az egyes BareMetal-példányokban. További információ: [Node_Exporter](https://github.com/prometheus/node_exporter)
+
+2. Adjon meg egy nevet, amely a BareMetal-példány azonosítója lesz.
+3. Adja meg a Node exportőr végpontot a formájában http://IP:9100/metrics .
+4. Ha elkészült, válassza a **szolgáltató hozzáadása** elemet. Továbbra is szükség esetén további szolgáltatókat adhat hozzá, vagy a telepítés befejezéséhez válassza a **felülvizsgálat + létrehozás** lehetőséget   . 
 
 
 ### <a name="microsoft-sql-server-provider"></a>Microsoft SQL Server szolgáltató
@@ -108,14 +120,14 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen
    GO
    ``` 
 
-2. Válassza a **szolgáltató hozzáadása** lehetőséget, majd a legördülő listából válassza a **Microsoft SQL Server** lehetőséget. 
+2. Válassza a **szolgáltató hozzáadása** lehetőséget, majd a legördülő menüből válassza a **Microsoft SQL Server** lehetőséget. 
 
 3. Töltse ki a mezőket a Microsoft SQL Serverhoz tartozó adatok használatával. 
 
-4. Ha elkészült, válassza a **szolgáltató hozzáadása** elemet. Szükség esetén folytassa a további szolgáltatók hozzáadását, vagy válassza a **felülvizsgálat + létrehozás** lehetőséget a telepítés befejezéséhez.
+4. Ha elkészült, válassza a **szolgáltató hozzáadása** elemet. Továbbra is szükség esetén további szolgáltatókat adhat hozzá, vagy a telepítés befejezéséhez válassza a **felülvizsgálat + létrehozás** lehetőséget.
 
      :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-6.png" alt-text="A rendszerkép a Microsoft SQL Server-szolgáltató hozzáadásával kapcsolatos információkat jeleníti meg." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-6.png":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az [SAP-megoldások Azure monitor](azure-monitor-overview.md)

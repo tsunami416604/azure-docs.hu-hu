@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 12/09/2020
+ms.date: 01/15/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: a1307aa19c66e3f6fcb71f677e6c67551d2a01f9
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: f799ed5c18537b862a4971075ae9107b7a722fdd
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928324"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251505"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Gyakran ismételt kérdések (GYIK) a Microsoft Authenticator alkalmazásról
 
@@ -33,13 +33,17 @@ A Microsoft Authenticator alkalmazás felváltotta a Azure Authenticator alkalma
 
 **A**: az eszköz regisztrálása lehetővé teszi, hogy az eszköz hozzáférjen a szervezet szolgáltatásaihoz, és nem teszi lehetővé a szervezet számára az eszköz hozzáférését.
 
-## <a name="too-many-app-permissions"></a>Túl sok alkalmazás-engedély
+### <a name="too-many-app-permissions"></a>Túl sok alkalmazás-engedély
 
 **K**: Miért kéri az alkalmazás a sok engedélyt?
 
-**A**: itt látható a megadható engedélyek teljes listája, valamint az alkalmazás által használt alkalmazások. A megjelenő konkrét engedélyek a telefon típusától függenek.
+**A**: itt látható a megadható engedélyek teljes listája, valamint az alkalmazás által használt alkalmazások. A megjelenő konkrét engedélyek a telefon típusától függenek. Előfordulhat, hogy a szervezete szeretné tudni a **tartózkodási helyét** , mielőtt engedélyezi bizonyos erőforrások elérését. Az alkalmazás csak abban az esetben fogja kérni ezt az engedélyt, ha a szervezete rendelkezik egy helyet igénylő házirenddel.
 
-- **Hely**. Előfordulhat, hogy a szervezete szeretné tudni a tartózkodási helyét, mielőtt engedélyezi bizonyos erőforrások elérését. Az alkalmazás csak abban az esetben fogja kérni ezt az engedélyt, ha a szervezete rendelkezik egy helyet igénylő házirenddel. 
+### <a name="error-adding-account"></a>Hiba a fiók hozzáadásakor
+
+**K**: ha megpróbálom felvenni a fiókomat, hibaüzenet jelenik meg, amely azt jelzi, hogy a hozzáadni kívánt fiók jelenleg nem érvényes. A probléma megoldásához forduljon a rendszergazdához (egyediség ellenőrzése). " Mit tegyek?
+
+Válasz **: forduljon** a rendszergazdához, és tudassa velük, hogy nem tudja hozzáadni a fiókját a hitelesítő számára az egyediség-ellenőrzési probléma miatt. Meg kell adnia a bejelentkezési felhasználónevét, hogy a rendszergazda meg tudja keresni a szervezetében.
 
 ### <a name="legacy-apns-support-deprecated"></a>Örökölt APNs-támogatás elavult
 
@@ -276,7 +280,7 @@ Válasz **: a** hitelesítő hozzáadása az új eszközhöz nem távolítja el 
 
 **A**: a hitelesítő alkalmazásban hozzáadott összes vállalatot vagy iskolát engedélyezni kell – az alkalmazás tulajdonosának a hitelesítő szolgáltatásban történő automatikus kitöltéséhez. A korlátozás alól kivételt képez, ha az alkalmazott vagy a tanuló a munkahelyi vagy iskolai fiókját hozzáadja a Microsoft felhőalapú multi-Factor Authentication szolgáltatáshoz [külső vagy harmadik féltől származó fiókkal](user-help-auth-app-add-non-ms-account.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha nem sikerül beszereznie a személyes Microsoft-fiók ellenőrzési kódját, tekintse meg az **ellenőrző kód problémáinak elhárítása** című szakaszt a [Microsoft-fiók biztonsági adatok & ellenőrző kódok](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes) című cikkben.
 

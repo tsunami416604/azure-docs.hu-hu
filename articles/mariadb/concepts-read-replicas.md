@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/15/2021
 ms.custom: references_regions
-ms.openlocfilehash: 576ff68961a68a8b54037d661a51a9d2de7a56df
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: c91aab2bf59f93cf897f9a1b9109172523ae4e57
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231791"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251403"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Olvasási replikák az Azure Database for MariaDB-ben
 
@@ -23,10 +23,7 @@ A replikák olyan új kiszolgálók, amelyeket a rendszeres Azure Database for M
 A GTID replikálásával kapcsolatos további tudnivalókért tekintse meg a [MariaDB-replikáció dokumentációját](https://mariadb.com/kb/en/library/gtid/).
 
 > [!NOTE]
-> Elfogultság – ingyenes kommunikáció
->
-> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a _fő_ és a _Slave_ kifejezésre mutató hivatkozásokat tartalmaz. A [torzítás nélküli kommunikációhoz használható Microsoft-stílusú útmutató](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) ezeket a kizáró szavakat ismeri fel. A jelen cikkben szereplő szavak a konzisztencia miatt használatosak, mivel jelenleg a szoftverben megjelenő szavak. Ha a szoftver frissítve lett a szavak eltávolítására, a rendszer a cikket úgy frissíti, hogy az legyen az igazítás.
->
+> Ez a cikk a _Slave_ kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
 
 ## <a name="when-to-use-a-read-replica"></a>Mikor használjon olvasási replikát
 
@@ -123,8 +120,11 @@ Mivel a replikáció aszinkron, a forrás és a replika között késés van. A 
 Miután úgy döntött, hogy feladatátvételt kíván replikálni egy replikára,
 
 1. A replika replikálásának leállítása<br/>
+
    Ez a lépés szükséges ahhoz, hogy a replika-kiszolgáló el tudja fogadni az írásokat. Ennek a folyamatnak a részeként a replika kiszolgáló leválasztása a főkiszolgálóról történik. A replikálás leállítása után a háttérrendszer folyamata általában 2 percet vesz igénybe. A művelet következményeinek megismeréséhez tekintse meg a jelen cikk [replikálás leállítása](#stop-replication) című szakaszát.
-2. Az alkalmazás átirányítása a (korábbi) replikára<br/>
+
+2. Az alkalmazás átirányítása a (korábbi) replikára
+
    Minden kiszolgálón egyedi a kapcsolatok karakterlánca. Frissítse az alkalmazást, hogy a főkiszolgáló helyett a (korábbi) replikára mutasson.
 
 Miután az alkalmazás sikeresen feldolgozta az olvasásokat és az írásokat, befejezte a feladatátvételt. Az alkalmazás által tapasztalható állásidő mennyisége a probléma észlelése és a fenti 1. és 2. lépés elvégzése után függ.

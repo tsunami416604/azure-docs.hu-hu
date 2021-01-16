@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 05/19/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 460cca051d743102e734971cf45069362e24c147
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: e7ed4ba181d3730ebbea7725451567c93433afb8
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106003"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251097"
 ---
 # <a name="metrics-overview"></a>A metrikák áttekintése
 
@@ -30,7 +30,7 @@ A kommunikációs szolgáltatások metrikáján két típusú kérelem szerepel:
 
 A csevegési és SMS API-kérelmek metrikája három olyan dimenziót tartalmaz, amelyeket a metrikák adatai szűrésére használhat. Ezek a méretek összevonhatók az `Count` összesítési típussal, és támogatják az összes szabványos Azure-összesítési idősorozatot, beleértve a következőket:,, `Sum` `Average` `Min` és `Max` .
 
-További információ a támogatott összesítési típusokról és az idősorozatok összesítéséről [Az Azure speciális funkciói találhatók Metrikaböngésző](../../azure-monitor/platform/metrics-charts.md#changing-aggregation)
+További információ a támogatott összesítési típusokról és az idősorozatok összesítéséről [Az Azure speciális funkciói találhatók Metrikaböngésző](../../azure-monitor/platform/metrics-charts.md#aggregation)
 
 - **Művelet** – az ACS-csevegési átjárón hívható összes művelet vagy útvonal.
 - **Állapotkód** – az állapotkód válasza a kérelem után elküldve.
@@ -88,6 +88,6 @@ A következő műveletek érhetők el a hitelesítési API-kérelmek metrikájá
 | Okta          | Létrehoz egy hozzáférési jogkivonatot. |
 | RevokeToken          | A megadott idő előtt visszavonja az identitáshoz létrehozott összes hozzáférési tokent. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [adatplatform-mérőszámokról](../../azure-monitor/platform/data-platform-metrics.md)

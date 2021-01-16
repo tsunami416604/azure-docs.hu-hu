@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 06/17/2020
-ms.openlocfilehash: ce528e268e0ed1e34f53e32196bceef5ad8a2fcb
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9fe0c79a2f65b27b35aa5029d0a53de62ef08078
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452488"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251658"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL Database és az Azure szinapszis IP-tűzfalszabályok
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -98,7 +98,7 @@ Amikor egy számítógép az internetről próbál csatlakozni a kiszolgálóhoz
 
 ### <a name="connections-from-inside-azure"></a>Kapcsolatok az Azure-on belül
 
-Ha engedélyezni szeretné az Azure-ban üzemeltetett alkalmazások számára az SQL Serverhez való csatlakozást, engedélyezni kell az Azure-kapcsolatokat. Ha egy Azure-alkalmazás megpróbál csatlakozni a kiszolgálóhoz, a tűzfal ellenőrzi, hogy az Azure-kapcsolatok engedélyezettek-e. Ez közvetlenül a Azure Portal panelről kapcsolható be a tűzfalszabályok beállításával, valamint az **Azure-szolgáltatások és-erőforrások engedélyezésének engedélyezése a kiszolgálóhoz való hozzáféréshez** a **ON** **tűzfalak és a virtuális hálózatok** beállításaiban. Ha a kapcsolat nem engedélyezett, a kérelem nem éri el a kiszolgálót.
+Ha engedélyezni szeretné az Azure-ban üzemeltetett alkalmazások számára az SQL Serverhez való csatlakozást, engedélyezni kell az Azure-kapcsolatokat. Ha egy Azure-alkalmazás megpróbál csatlakozni a kiszolgálóhoz, a tűzfal ellenőrzi, hogy az Azure-kapcsolatok engedélyezettek-e. Ez közvetlenül a Azure Portal panelről kapcsolható be a tűzfalszabályok beállításával, valamint az **Azure-szolgáltatások és-erőforrások engedélyezésének engedélyezése a kiszolgálóhoz való hozzáféréshez** a  **tűzfalak és a virtuális hálózatok** beállításaiban. Ha a kapcsolat nem engedélyezett, a kérelem nem éri el a kiszolgálót.
 
 > [!IMPORTANT]
 > Ez a beállítás úgy konfigurálja a tűzfalat, hogy engedélyezze az Azure összes kapcsolatát, beleértve a más ügyfelek előfizetései által létesített kapcsolatokat is. Ha ezt a beállítást választja, győződjön meg arról, hogy a bejelentkezési és felhasználói engedélyei csak a jogosult felhasználókra korlátozzák a hozzáférést.
@@ -152,7 +152,7 @@ Megnyílik a kiszolgáló Áttekintés lapja. Megjeleníti a teljes kiszolgáló
 
 ### <a name="use-transact-sql-to-manage-ip-firewall-rules"></a>Az IP-tűzfalszabályok kezelése a Transact-SQL használatával
 
-| Katalógus nézet vagy tárolt eljárás | Level | Description |
+| Katalógus nézet vagy tárolt eljárás | Level | Leírás |
 | --- | --- | --- |
 | [sys.firewall_rules](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database) |Kiszolgáló |Megjeleníti az aktuális kiszolgálói szintű IP-tűzfalszabályok szabályait |
 | [sp_set_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database) |Kiszolgáló |Kiszolgálói szintű IP-tűzfalszabályok létrehozása vagy frissítése |
@@ -186,7 +186,7 @@ EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 > [!IMPORTANT]
 > Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a fejlesztés most már az az. SQL modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](/powershell/module/AzureRM.Sql/). Az az és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
 
-| Parancsmag | Level | Description |
+| Parancsmag | Level | Leírás |
 | --- | --- | --- |
 | [Get-AzSqlServerFirewallRule](/powershell/module/az.sql/get-azsqlserverfirewallrule) |Kiszolgáló |Az aktuális kiszolgálószintű tűzfalszabályokat adja vissza |
 | [Új – AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) |Kiszolgáló |Új kiszolgálószintű tűzfalszabály létrehozása |
@@ -208,7 +208,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 
 ### <a name="use-cli-to-manage-server-level-ip-firewall-rules"></a>Kiszolgálói szintű IP-tűzfalszabályok kezelése a CLI használatával
 
-| Parancsmag | Level | Description |
+| Parancsmag | Level | Leírás |
 | --- | --- | --- |
 |[az SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|Kiszolgáló|Kiszolgálói IP-tűzfalszabály létrehozása|
 |[az SQL Server Firewall-Rule List](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|Kiszolgáló|A kiszolgálón található IP-tűzfalszabályok listája|
@@ -230,7 +230,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 
 ### <a name="use-a-rest-api-to-manage-server-level-ip-firewall-rules"></a>A kiszolgálói szintű IP-tűzfalszabályok kezelésére szolgáló REST API használata
 
-| API | Level | Description |
+| API | Level | Leírás |
 | --- | --- | --- |
 | [Tűzfalszabályok listázása](/rest/api/sql/firewallrules/listbyserver) |Kiszolgáló |Megjeleníti az aktuális kiszolgálói szintű IP-tűzfalszabályok szabályait |
 | [Tűzfalszabályok létrehozása vagy frissítése](/rest/api/sql/firewallrules/createorupdate) |Kiszolgáló |Kiszolgálói szintű IP-tűzfalszabályok létrehozása vagy frissítése |
@@ -270,7 +270,7 @@ Vegye figyelembe a következő szempontokat, amikor a Azure SQL Databasehoz val�
 ## <a name="next-steps"></a>További lépések
 
 - Ellenőrizze, hogy a vállalati hálózati környezet lehetővé teszi-e a bejövő kommunikációt az Azure-adatközpontok által használt számítási IP-címtartományok (beleértve az SQL-tartományokat is). Előfordulhat, hogy ezeket az IP-címeket fel kell vennie az engedélyezési listára. Lásd: [Microsoft Azure adatközpont IP-tartományai](https://www.microsoft.com/download/details.aspx?id=41653).  
-- A kiszolgálói szintű IP-Tűzfalszabályok létrehozásával kapcsolatos rövid útmutató: [önálló adatbázis létrehozása Azure SQL Databaseban](single-database-create-quickstart.md).
+- Tekintse meg a gyors üzembe helyezési útmutatót, amelyből megtudhatja [, hogyan hozhat létre Azure SQL Database](single-database-create-quickstart.md)
 - A nyílt forráskódú vagy harmadik féltől származó alkalmazásokból Azure SQL Database adatbázishoz való csatlakozással kapcsolatos segítségért tekintse meg a következő témakört: ügyfél-útmutató- [kód minták Azure SQL Database](connect-query-content-reference-guide.md#libraries).
 - További információ a megnyitható további portokról: a [ADO.NET 4,5-es és a 1433 SQL Database-es porton túli portok](adonet-v12-develop-direct-route-ports.md) "SQL Database: külső vs belső" szakasza.
 - A Azure SQL Database biztonság áttekintését lásd: [az adatbázis biztonságossá tétele](security-overview.md).

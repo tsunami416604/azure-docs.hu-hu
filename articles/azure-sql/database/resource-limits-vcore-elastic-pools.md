@@ -10,13 +10,13 @@ ms.topic: reference
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 10/15/2020
-ms.openlocfilehash: e706f64a7caab6873a3eec86505eaee11374ae2c
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.date: 01/15/2021
+ms.openlocfilehash: 2daa07315be85e1fcd543480cd30a57c118d8547
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882304"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251488"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Rugalmas készletek erőforrás-korlátai a virtuális mag beszerzési modell használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -235,6 +235,39 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 
 <sup>3</sup> az egyidejű feldolgozók (kérelmek) maximális száma az egyes adatbázisokhoz: [Egyadatbázisos erőforrás-korlátok](resource-limits-vcore-single-databases.md). Ha például a rugalmas készlet Gen5 használ, és az adatbázis max. virtuális mag értéke 2, akkor az egyidejű feldolgozók maximális száma 200.  Ha az adatbázis max. virtuális mag értéke 0,5, akkor az egyidejű feldolgozók maximális száma értéke 50, mivel a Gen5-ben legfeljebb 100 egyidejű dolgozó van. Ha az adatbázis más maximális virtuális mag-beállításai kevesebb, mint 1 virtuális mag vagy kevesebb, az egyidejű feldolgozók maximális száma hasonlóan átméretezhető.
 
+
+## <a name="general-purpose---provisioned-compute---dc-series"></a>Általános célú kiépített számítás – DC sorozat
+
+|Számítási méret (szolgáltatási cél)|GP_DC_2|GP_DC_4|GP_DC_6|GP_DC_8|
+|:--- | --: |--: |--: |--: |
+|Számítási generáció|DC|DC|DC|DC|
+|Virtuális mag|2|4|6|8|
+|Memória (GB)|9|18|27|36|
+|Adatbázisok maximális száma <sup>1</sup> . készletben|100|400|400|400|
+|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|
+|Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|
+|Maximális adatméret (GB)|756|1536|2048|2048|
+|Napló maximális mérete (GB)|227|461|614|614|
+|TempDB maximális adatméret (GB)|64|128|192|256|
+|Tárolási típus|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|
+|IO-késés (hozzávetőleges)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|
+|Maximális adatmennyiség IOPS/készletben <sup>2</sup>|800|1600|2400|3200|
+|Maximális naplózási arány (MB/s)|9,4|18,8|28,1|32,8|
+|Egyidejű feldolgozók maximális száma (kérelem) <sup>3</sup>|168|336|504|672|
+|Egyidejű bejelentkezések maximális száma (kérelem) <sup>3</sup>|168|336|504|672|
+|Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|
+|Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|2|2... 4|2... 6|2... 8|
+|Replikák száma|1|1|1|1|
+|Több – AZ|N.A.|N.A.|N.A.|N.A.|
+|Olvasási felskálázás|N.A.|N.A.|N.A.|N.A.|
+|Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
+
+<sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
+
+<sup>2</sup> az i/o-méretek maximális értéke 8 kb és 64 kb között mozog. A tényleges IOPS számítási feladatok függenek. Részletekért lásd: [adat IO-szabályozás](resource-limits-logical-server.md#resource-governance).
+
+<sup>3</sup> az egyidejű feldolgozók (kérelmek) maximális száma az egyes adatbázisokhoz: [Egyadatbázisos erőforrás-korlátok](resource-limits-vcore-single-databases.md). Ha például a rugalmas készlet Gen5 használ, és az adatbázis max. virtuális mag értéke 2, akkor az egyidejű feldolgozók maximális száma 200.  Ha az adatbázis max. virtuális mag értéke 0,5, akkor az egyidejű feldolgozók maximális száma értéke 50, mivel a Gen5-ben legfeljebb 100 egyidejű dolgozó van. Ha az adatbázis más maximális virtuális mag-beállításai kevesebb, mint 1 virtuális mag vagy kevesebb, az egyidejű feldolgozók maximális száma hasonlóan átméretezhető.
+
 ## <a name="business-critical---provisioned-compute---gen4"></a>Üzleti szempontból kritikus – kiépített számítás – Gen4
 
 > [!IMPORTANT]
@@ -406,8 +439,6 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 
 Ha a rugalmas készlet összes virtuális mag foglalt, akkor a készletben lévő összes adatbázis egyenlő mennyiségű számítási erőforrást kap a lekérdezések feldolgozásához. Azure SQL Database biztosítja az erőforrások egyenlő elosztását az adatbázisok között azáltal, hogy egyenlő mennyiségű számítási időt biztosít. A rugalmas készlet erőforrásainak megosztása a méltányosság érdekében az egyes adatbázisok számára más módon garantált erőforrásokhoz is, ha a virtuális mag min/adatbázis értéke nem nulla értékre van állítva.
 
-
-
 ### <a name="m-series-compute-generation-part-2"></a>M sorozatú számítási generáció (2. rész)
 
 |Számítási méret (szolgáltatási cél)|BC_M_20|BC_M_24|BC_M_32|BC_M_64|BC_M_128|
@@ -441,6 +472,37 @@ Ha a rugalmas készlet összes virtuális mag foglalt, akkor a készletben lév�
 
 Ha a rugalmas készlet összes virtuális mag foglalt, akkor a készletben lévő összes adatbázis egyenlő mennyiségű számítási erőforrást kap a lekérdezések feldolgozásához. Azure SQL Database biztosítja az erőforrások egyenlő elosztását az adatbázisok között azáltal, hogy egyenlő mennyiségű számítási időt biztosít. A rugalmas készlet erőforrásainak megosztása a méltányosság érdekében az egyes adatbázisok számára más módon garantált erőforrásokhoz is, ha a virtuális mag min/adatbázis értéke nem nulla értékre van állítva.
 
+## <a name="business-critical---provisioned-compute---dc-series"></a>Üzleti szempontból kritikus – kiépített számítás – DC sorozat
+
+|Számítási méret (szolgáltatási cél)|BC_DC_2|BC_DC_4|BC_DC_6|BC_DC_8|
+|:--- | --: |--: |--: |--: |
+|Számítási generáció|DC|DC|DC|DC|
+|Virtuális mag|2|4|6|8|
+|Memória (GB)|9|18|27|36|
+|Adatbázisok maximális száma <sup>1</sup> . készletben|50|100|100|100|
+|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|
+|Memóriában tárolt OLTP-tároló (GB)|1,7|3.7|5.9|8.2|
+|Maximális adatméret (GB)|768|768|768|768|
+|Napló maximális mérete (GB)|230|230|230|230|
+|TempDB maximális adatméret (GB)|64|128|192|256|
+|Tárolási típus|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
+|IO-késés (hozzávetőleges)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|
+|Maximális adatmennyiség IOPS/készletben <sup>2</sup>|15750|31500|47250|56000|
+|Maximális naplózási arány (MB/s)|20|60|90|120|
+|Egyidejű feldolgozók maximális száma (kérelem) <sup>3</sup>|168|336|504|672|
+|Egyidejű bejelentkezések maximális száma (kérelem) <sup>3</sup>|168|336|504|672|
+|Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|
+|Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|2|2... 4|2... 6|2... 8|
+|Replikák száma|4|4|4|4|
+|Több – AZ|Nem|Nem|Nem|Nem|
+|Olvasási felskálázás|Igen|Igen|Igen|Igen|
+|Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
+
+<sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
+
+<sup>2</sup> az i/o-méretek maximális értéke 8 kb és 64 kb között mozog. A tényleges IOPS számítási feladatok függenek. Részletekért lásd: [adat IO-szabályozás](resource-limits-logical-server.md#resource-governance).
+
+<sup>3</sup> az egyidejű feldolgozók (kérelmek) maximális száma az egyes adatbázisokhoz: [Egyadatbázisos erőforrás-korlátok](resource-limits-vcore-single-databases.md). Ha például a rugalmas készlet Gen5 használ, és az adatbázis max. virtuális mag értéke 2, akkor az egyidejű feldolgozók maximális száma 200.  Ha az adatbázis max. virtuális mag értéke 0,5, akkor az egyidejű feldolgozók maximális száma értéke 50, mivel a Gen5-ben legfeljebb 100 egyidejű dolgozó van. Ha az adatbázis más maximális virtuális mag-beállításai kevesebb, mint 1 virtuális mag vagy kevesebb, az egyidejű feldolgozók maximális száma hasonlóan átméretezhető.
 
 ## <a name="database-properties-for-pooled-databases"></a>A készletezett adatbázisok adatbázis-tulajdonságai
 

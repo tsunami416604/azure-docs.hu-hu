@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 7c3af0865282475ded0172d18aecad1dfb61721b
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 5219553fe300d607212af1ef6cedf72ce6506762
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814261"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250332"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Metrikadiagramok hibaelhárítása
 
@@ -48,7 +48,7 @@ Néhány erőforrás nem bocsát ki folyamatosan metrikákat. Az Azure például
 
 ### <a name="all-metric-values-were-outside-of-the-locked-y-axis-range"></a>Minden metrikaérték az y tengely zárolt tartományán kívülre esett
 
-A [diagram y tengelye határainak zárolásával](metrics-charts.md#lock-boundaries-of-chart-y-axis) akaratlanul is azt állíthatja be, hogy a diagram megjelenítési területén ne jelenjen meg a diagramvonal. Ha az y tengely például a 0% és az 50% közötti tartományban van zárolva, és a metrika állandóan 100% értékű, akkor a vonal mindig a látható területen kívülre esik, így a diagram üresnek látszik.
+A [diagram y tengelye határainak zárolásával](metrics-charts.md#locking-the-range-of-the-y-axis) akaratlanul is azt állíthatja be, hogy a diagram megjelenítési területén ne jelenjen meg a diagramvonal. Ha az y tengely például a 0% és az 50% közötti tartományban van zárolva, és a metrika állandóan 100% értékű, akkor a vonal mindig a látható területen kívülre esik, így a diagram üresnek látszik.
 
 **Megoldás:** Ellenőrizze, hogy a diagram y tengelyének határai nem zárolva vannak-e a metrikai értékek tartományán kívül. Ha az y tengely határai zárolva vannak, érdemes lehet ideiglenesen alaphelyzetbe állítani őket annak érdekében, hogy a metrikaértékek ne essenek a diagramtartományon kívül. Az y tengely tartományának zárolása nem ajánlott az **összeg**, **min** és **max** összesítésű diagramok automatikus részletessége esetén, mert az értékeik a böngészőablak átméretezésekor vagy az egyik képernyőfelbontásról egy másikra lépéskor a részletességgel együtt változnak. A részletesség módosításakor a diagram megjelenítési területe üres maradhat.
 

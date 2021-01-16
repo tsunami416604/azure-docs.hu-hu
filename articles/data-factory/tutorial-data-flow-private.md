@@ -7,13 +7,13 @@ ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/19/2019
-ms.openlocfilehash: 9a4b57f3813adfeee53891f733dd4d303dbbef8d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 01/15/2021
+ms.openlocfilehash: a5c93244862d72f9c8ea2928c41e699302b1752b
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497129"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249438"
 ---
 # <a name="transform-data-securely-by-using-mapping-data-flow"></a>Az adatforgalom biztonságos átalakítása a leképezési adatfolyam használatával
 
@@ -34,6 +34,7 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 > * Adatfolyam-tevékenység figyelése.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 * **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 * **Azure Storage-fiók**. A Data Lake Storage *forrásként* *és fogadó* adattárakként használja. Ha még nem rendelkezik tárfiókkal, tekintse meg az [Azure Storage-fiók létrehozásának](../storage/common/storage-account-create.md?tabs=azure-portal) lépéseit ismertető cikket. *Győződjön meg arról, hogy a Storage-fiók csak a kiválasztott hálózatokról engedélyezi a hozzáférést.* 
 
@@ -59,17 +60,19 @@ Ebben a lépésben létrehoz egy adatelőállítót, és megnyitja a Data Factor
 1. A **Verzió** résznél válassza a **V2** értéket.
 1. A **Hely** területen válassza ki az adat-előállító helyét. A legördülő listában csak a támogatott helyszínek jelennek meg. Az adattárak (például az Azure Storage és a Azure SQL Database) és a számítási erőforrások (például az Azure HDInsight) más régiókban is használhatók.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 1. A létrehozás befejezése után megjelenik az értesítési központban megjelenő értesítés. Válassza az **Ugrás az erőforráshoz** lehetőséget, hogy megnyissa a **Data Factory** lapot.
 1. A Data Factory felhasználói felületének külön lapon történő elindításához válassza a **Létrehozás és figyelés** csempét.
 
 ## <a name="create-an-azure-ir-in-data-factory-managed-virtual-network"></a>Azure IR létrehozása Data Factory felügyelt Virtual Network
+
 Ebben a lépésben létrehoz egy Azure IR, és engedélyezi Data Factory felügyelt Virtual Network.
 
 1. A Data Factory portálon lépjen a **kezelés** elemre, és válassza az **új** lehetőséget új Azure IR létrehozásához.
 
    ![Képernyőkép, amely egy új Azure IR létrehozását mutatja be.](./media/tutorial-copy-data-portal-private/create-new-azure-ir.png)
-1. Válassza az **Azure** IR lehetőséget.
+1. Az **Integration Runtime telepítése** lapon válassza ki, hogy melyik integrációs modult szeretné létrehozni a szükséges képességek alapján. Ebben az oktatóanyagban válassza az **Azure, saját** üzemeltetésű lehetőséget, majd kattintson a **Continue (folytatás**) gombra. 
+1. Válassza az **Azure** lehetőséget, majd kattintson a **Folytatás** gombra egy Azure Integration Runtime létrehozásához.
 
    ![Az új Azure IR bemutató képernyőkép.](./media/tutorial-copy-data-portal-private/azure-ir.png)
 
@@ -77,7 +80,7 @@ Ebben a lépésben létrehoz egy Azure IR, és engedélyezi Data Factory felügy
 
    ![Az új Azure IR engedélyezését bemutató képernyőkép.](./media/tutorial-copy-data-portal-private/enable-managed-vnet.png)
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="create-a-pipeline-with-a-data-flow-activity"></a>Folyamat létrehozása adatfolyam-tevékenységgel
 
@@ -155,7 +158,7 @@ Ha a fenti kapcsolat tesztelésekor nem használja a hiperhivatkozást, kövesse
 
 1. Válassza ki a **Azure Data Lake Storage Gen2** csempét a listából, majd válassza a **Folytatás** lehetőséget.
 1. Adja meg a létrehozott Storage-fiók nevét.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 1. Néhány másodperc elteltével látnia kell, hogy a privát hivatkozás létrehozása jóváhagyást igényel.
 1. Válassza ki a létrehozott privát végpontot. Megtekintheti a hivatkozásokat, amelyekkel jóváhagyhatja a magánhálózati végpontot a Storage-fiók szintjén.
 
@@ -226,7 +229,7 @@ Ha a fenti kapcsolat tesztelésekor nem használja a hiperhivatkozást, kövesse
 1. Ezután hozzá kíván **adni egy** fogadó átalakítást a **célhely** területen.
 
     ![A fogadó felvételét bemutató képernyőkép.](media/tutorial-data-flow-private/add-sink.png)
-1. Nevezze el a **Sink** fogadó fogadót. Válassza az **új** lehetőséget a fogadó adatkészlet létrehozásához.
+1. Nevezze el a fogadó fogadót. Válassza az **új** lehetőséget a fogadó adatkészlet létrehozásához.
 
     ![A fogadó létrehozását bemutató képernyőkép.](media/tutorial-data-flow-private/create-sink.png)
 1. Az **új adatkészlet** lapon válassza a **Azure Data Lake Storage Gen2** lehetőséget, majd kattintson a **Folytatás** gombra.

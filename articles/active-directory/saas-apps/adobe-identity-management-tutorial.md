@@ -2,26 +2,21 @@
 title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az Adobe Identity Management szolgáltatással | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és az Adobe Identity Management között.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9db7f01d-7f15-492f-a839-55963790a12e
+manager: CelesteDG
+ms.reviewer: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/26/2019
+ms.date: 01/15/2021
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96a49df85f02083571e84ec884b37fb43b0d4001
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 18c626a11724b585bf699f8be470b439177991ae
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97622217"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250846"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adobe-identity-management"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az Adobe Identity Management szolgáltatással
 
@@ -30,8 +25,6 @@ Ez az oktatóanyag azt ismerteti, hogyan integrálható az Adobe Identity Manage
 * Az Adobe Identity Management szolgáltatáshoz hozzáférő Azure AD-beli vezérlés.
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek az Adobe Identity Managementbe az Azure AD-fiókkal.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
-
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -50,18 +43,18 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 Az Adobe Identity Management Azure AD-be való integrálásának konfigurálásához hozzá kell adnia az Adobe Identity Management szolgáltatást a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
 1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a keresőmezőbe az **Adobe Identity Management** kifejezést.
 1. Válassza az **Adobe Identity Management** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-adobe-identity-management"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése az Adobe Identity Management szolgáltatásban
+## <a name="configure-and-test-azure-ad-sso-for-adobe-identity-management"></a>Az Azure AD SSO konfigurálása és tesztelése az Adobe Identity Management szolgáltatásban
 
 Konfigurálja és tesztelje az Azure AD SSO-t az Adobe Identity Management segítségével egy **B. Simon** nevű tesztelési felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között az Adobe Identity Management szolgáltatásban.
 
-Az Azure AD SSO az Adobe Identity managementtel való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Az Azure AD SSO az Adobe Identity managementtel való konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
@@ -74,9 +67,9 @@ Az Azure AD SSO az Adobe Identity managementtel való konfigurálásához és te
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)az **Adobe Identity Management** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. A Azure Portal az **Adobe Identity Management** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikonra a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -107,7 +100,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -116,38 +109,63 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
 1. Az alkalmazások listában válassza az **Adobe Identity Management** lehetőséget.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
-
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
 1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
-
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
-
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
 ## <a name="configure-adobe-identity-management-sso"></a>Az Adobe Identity Management egyszeri bejelentkezésének konfigurálása
 
-Az egyszeri bejelentkezés az **Adobe Identity Management** oldalán való konfigurálásához el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portal az [Adobe Identity Management támogatási csapatának](mailto:identity@adobe.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+1. Az Adobe Identity Management konfigurációjának automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése** lehetőségre kattintva.
+
+    ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
+
+2. Miután hozzáadta a bővítményt a böngészőhöz, az **Adobe Identity Management beállítása** lehetőségre kattintva megnyithatja az Adobe Identity Management alkalmazást. Itt adja meg a rendszergazdai hitelesítő adatokat az Adobe Identity Management szolgáltatásba való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-8-es lépést.
+
+    ![Telepítési konfiguráció](common/setup-sso.png)
+
+3. Ha manuálisan szeretné beállítani az Adobe Identity managementet, egy másik böngészőablakban jelentkezzen be az Adobe Identity Management vállalati webhelyre rendszergazdaként.
+
+4. Lépjen a **Beállítások** lapra, és kattintson a **create Directory (könyvtár létrehozása**) elemre.
+
+    ![Adobe Identity Management-beállítások](./media/adobe-identity-management-tutorial/settings.png)
+
+5. Adja meg a könyvtárnév nevét a szövegmezőben, és válassza az **összevont azonosító** lehetőséget, majd kattintson a **tovább** gombra.
+
+    ![Adobe Identity Management – címtár létrehozása](./media/adobe-identity-management-tutorial/create-directory.png)
+
+6. Válassza ki a **többi SAML-szolgáltatót** , és kattintson a **tovább** gombra.
+ 
+    ![Adobe Identity Management SAML-szolgáltatók](./media/adobe-identity-management-tutorial/saml-providers.png)
+
+7. Kattintson a **kiválasztás** elemre a Azure Portal letöltött **metaadat-XML-** fájl feltöltéséhez.
+
+    ![Adobe Identity Management SAML-konfiguráció](./media/adobe-identity-management-tutorial/saml-configuration.png)
+
+8. Kattintson a **kész** gombra.
 
 ### <a name="create-adobe-identity-management-test-user"></a>Adobe Identity Management test felhasználó létrehozása
 
-Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre az Adobe Identity Management szolgáltatásban. Az Adobe Identity [Management támogatási csapatával](mailto:identity@adobe.com) felveheti a felhasználókat az Adobe Identity Management platformon. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+1. Lépjen a **felhasználók** lapra, és kattintson a **felhasználó hozzáadása** elemre.
 
-## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
+    ![Adobe Identity Management – felhasználó hozzáadása](./media/adobe-identity-management-tutorial/add-user.png)
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+2. Az adja meg a **felhasználó e-mail címe** szövegmezőben adja meg az **e-mail-címet**.
 
-Amikor az Adobe Identity Management csempére kattint a hozzáférési panelen, automatikusan be kell jelentkeznie az Adobe Identity Management szolgáltatásba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+    ![Adobe Identity Management – felhasználó mentése](./media/adobe-identity-management-tutorial/save-user.png)
 
-## <a name="additional-resources"></a>További források
+3. Kattintson a **Mentés** gombra.
 
-- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját.
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. A rendszer átirányítja az Adobe Identity Management bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot.
 
-- [Az Adobe Identity Management kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
+* Lépjen közvetlenül az Adobe Identity Management bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
 
+* Használhatja a Microsoft saját alkalmazásait. Amikor a saját alkalmazások Adobe Identity Management csempére kattint, a rendszer átirányítja az Adobe Identity Management bejelentkezési URL-címére. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
+
+## <a name="next-steps"></a>További lépések
+
+Az Adobe Identity Management konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

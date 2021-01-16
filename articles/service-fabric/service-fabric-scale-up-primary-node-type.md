@@ -1,71 +1,173 @@
 ---
 title: Azure Service Fabric elsődleges csomópont-típus vertikális felskálázása
-description: Megtudhatja, hogyan méretezheti Service Fabric fürtöt egy csomópont-típus hozzáadásával.
-ms.topic: article
-ms.date: 08/06/2020
+description: A Service Fabric-fürt vertikális méretezéséhez adjon hozzá egy új csomópont-típust, és távolítsa el az előzőt.
+ms.date: 12/11/2020
 ms.author: pepogors
-ms.openlocfilehash: a18a40cc9e467b089ea9d6be3d0ca81a21d2c474
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.topic: how-to
+ms.openlocfilehash: 325ece761481077171a670c52e9d98071237601a
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89228715"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251179"
 ---
-# <a name="scale-up-a-service-fabric-cluster-primary-node-type-by-adding-a-node-type"></a>Service Fabric-fürt elsődleges csomópont-típusának vertikális felskálázása csomópont-típus hozzáadásával
-Ez a cikk azt ismerteti, hogyan méretezhető egy Service Fabric-fürt elsődleges csomópontjának típusa egy további csomópont-típusnak a fürthöz való hozzáadásával. A Service Fabric-fürt olyan virtuális vagy fizikai gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait. Egy fürt részét képező gépet vagy virtuális gépet csomópontnak nevezzük. A virtuálisgép-méretezési csoportok egy Azure-beli számítási erőforrás, amely készletként telepíti és felügyeli a virtuális gépek gyűjteményét. Az Azure-fürtben definiált összes csomópont-típus [külön méretezési csoportként van beállítva](service-fabric-cluster-nodetypes.md). Ezután mindegyik csomópont-típust külön lehet kezelni.
+# <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Service Fabric-fürt elsődleges csomóponttípusának vertikális felskálázása
 
-A következő oktatóanyagban található minta sablonok itt találhatók: [Service Fabric elsődleges csomópont típusú méretezési minták](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Primary-NodeType-Scaling-Sample)
+Ez a cikk azt ismerteti, hogyan lehet felskálázást végezni egy Service Fabric-fürt elsődleges csomópont-típusát minimális állásidővel. Service Fabric fürtcsomópontok típusának frissítésére vonatkozó általános stratégia a következő:
+
+1. Adjon hozzá egy új csomópont-típust a Service Fabric-fürthöz, amelyet a frissített (vagy módosított) virtuálisgép-méretezési csoport SKU és konfiguráció alapján támogat. Ez a lépés egy új terheléselosztó, alhálózat és nyilvános IP-cím beállítását is magában foglalja a méretezési csoport számára.
+
+1. Ha az eredeti és a frissített méretezési csoportok is futnak egymás mellett, tiltsa le az eredeti csomópont-példányokat egy időben, hogy a rendszerszolgáltatások (vagy az állapot-nyilvántartó szolgáltatások replikái) át legyenek telepítve az új méretezési csoportba.
+
+1. Ellenőrizze, hogy a fürt és az új csomópontok állapota Kifogástalan-e, majd távolítsa el az eredeti méretezési készletet (és a kapcsolódó erőforrásokat) és a csomópont állapotát a törölt csomópontok számára.
+
+Az alábbi lépés végigvezeti a virtuális gépek méretének és operációs rendszerének a megadásával, amely az [ezüst tartósságú](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster), egyetlen, öt csomóponttal rendelkező méretezési csoporttal támogatott Az elsődleges csomópont típusát fogjuk frissíteni:
+
+- A virtuális gép méretétől *Standard_D2_V2* a *standard D4_V2ig*, és
+- A virtuális gép operációs rendszerének *Windows server 2016 Datacenter tárolókkal* a *Windows Server 2019 Datacenter tárolókkal*.
 
 > [!WARNING]
-> Ha a fürt állapota nem kifogástalan, ne próbálkozzon az elsődleges csomópont típusú vertikális Felskálázási eljárással, mivel ez a művelet csak a fürt destabilizálására szolgál.
+> Az eljárás üzemi fürtön való megkísérlése előtt javasoljuk, hogy tanulmányozza a minta sablonokat, és ellenőrizze a folyamatot egy tesztelési fürtön. Előfordulhat, hogy a fürt rövid ideig nem érhető el.
 >
+> Ha a fürt állapota nem kifogástalan, ne próbálkozzon az elsődleges csomópont típusú vertikális Felskálázási eljárással, mivel ez a művelet csak a fürt destabilizálására szolgál.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Az alábbi lépésről lépésre haladó Azure-telepítési sablonokat fogjuk használni a minta-frissítési forgatókönyv elvégzéséhez: https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade
 
-## <a name="process-to-upgrade-the-size-and-operating-system-of-the-primary-node-type"></a>Az elsődleges csomópont típusú méret és operációs rendszer frissítésének folyamata
-A következő eljárással frissítheti a virtuális gépek méretét és operációs rendszerét az elsődleges csomópont típusaként.  A frissítés után az elsődleges csomópont típusú virtuális gépek szabványos D4_V2 és a Windows Server 2019 Datacenter tárolókkal futnak.
+## <a name="set-up-the-test-cluster"></a>A tesztelési fürt beállítása
 
-> [!WARNING]
-> Az eljárás üzemi fürtön való megkísérlése előtt javasoljuk, hogy tanulmányozza a minta sablonokat, és ellenőrizze a folyamatot egy tesztelési fürtön. Előfordulhat, hogy a fürt rövid ideig nem érhető el. 
+Állítsa be a kezdeti Service Fabric tesztelési fürtöt. Először [töltse le](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade) a forgatókönyv végrehajtásához használni kívánt Azure Resource Manager-mintákat.
 
-### <a name="deploy-the-initial-service-fabric-cluster"></a>A kezdeti Service Fabric fürt üzembe helyezése 
-Ha követni szeretné a mintát, telepítse a kezdeti fürtöt egyetlen elsődleges csomópont-típussal, és egyetlen méretezési készletet [Service Fabric-kezdeti fürtöt](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-1.json). Ezt a lépést kihagyhatja, ha már telepítve van egy meglévő Service Fabric-fürt. 
+Ezután jelentkezzen be az Azure-fiókjába.
 
-1. Jelentkezzen be az Azure-fiókjába. 
 ```powershell
-# sign in to your Azure account and select your subscription
-Login-AzAccount -SubscriptionId "<your subscription ID>"
+# Sign in to your Azure account
+Login-AzAccount -SubscriptionId "<subscription ID>"
 ```
-2. Új erőforráscsoport létrehozása. 
-```powershell
-# create a resource group for your cluster deployment
-$resourceGroupName = "myResourceGroup"
-$location = "WestUS"
 
-New-AzResourceGroup `
-    -Name $resourceGroupName `
-    -Location $location
+Ezután nyissa meg a [*parameters.js*](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade/parameters.json) fájlt, és frissítse a értékét a következőre: `clusterName` valami egyedi (az Azure-on belül).
+
+A következő parancsok végigvezetik egy új önaláírt tanúsítvány létrehozásán és a tesztelési fürt üzembe helyezésén. Ha már rendelkezik egy használni kívánt tanúsítvánnyal, ugorjon [a meglévő tanúsítvány használata a fürt üzembe helyezéséhez](#use-an-existing-certificate-to-deploy-the-cluster).
+
+### <a name="generate-a-self-signed-certificate-and-deploy-the-cluster"></a>Önaláírt tanúsítvány létrehozása és a fürt üzembe helyezése
+
+Először rendelje hozzá az Service Fabric-fürt üzembe helyezéséhez szükséges változókat. Módosítsa a, a, a és a értékét az `resourceGroupName`  `certSubjectName` `parameterFilePath` `templateFilePath` adott fiókhoz és környezethez:
+
+```powershell
+# Assign deployment variables
+$resourceGroupName = "sftestupgradegroup"
+$certOutputFolder = "c:\certificates"
+$certPassword = "Password!1" | ConvertTo-SecureString -AsPlainText -Force
+$certSubjectName = "sftestupgrade.southcentralus.cloudapp.azure.com"
+$parameterFilePath = "C:\parameters.json"
+$templateFilePath = "C:\Initial-TestClusterSetup.json"
 ```
-3. Adja meg a sablonfájlok paramétereinek értékét. 
-4. Telepítse a fürtöt a 2. lépésben létrehozott erőforráscsoporthoz. 
-```powershell
-# deploy the template files to the resource group created above
-$templateFilePath = "C:\AzureDeploy-1.json"
-$parameterFilePath = "C:\AzureDeploy.Parameters.json"
 
+> [!NOTE]
+> A parancs futtatása előtt győződjön meg arról, hogy a `certOutputFolder` hely létezik a helyi gépen, mielőtt új Service Fabric fürtöt szeretne üzembe helyezni.
+
+Ezután telepítse a Service Fabric test-fürtöt:
+
+```powershell
+# Deploy the initial test cluster
+New-AzServiceFabricCluster `
+    -ResourceGroupName $resourceGroupName `
+    -CertificateOutputFolder $certOutputFolder `
+    -CertificatePassword $certPassword `
+    -CertificateSubjectName $certSubjectName `
+    -TemplateFile $templateFilePath `
+    -ParameterFile $parameterFilePath
+```
+
+Miután az üzembe helyezés befejeződött, keresse meg a *. pfx* -fájlt a `$certPfx` helyi gépen, és importálja a tanúsítványtárolóba:
+
+```powershell
+cd c:\certificates
+$certPfx = ".\sftestupgradegroup20200312121003.pfx"
+
+Import-PfxCertificate `
+     -FilePath $certPfx `
+     -CertStoreLocation Cert:\CurrentUser\My `
+     -Password (ConvertTo-SecureString Password!1 -AsPlainText -Force)
+```
+
+A művelet visszaküldi a tanúsítvány ujjlenyomatát, amellyel mostantól [csatlakozhat az új fürthöz](#connect-to-the-new-cluster-and-check-health-status) , és megtekintheti annak állapotát. (Hagyja ki a következő szakaszt, amely a fürt üzembe helyezésének alternatív megközelítése.)
+
+### <a name="use-an-existing-certificate-to-deploy-the-cluster"></a>Meglévő tanúsítvány használata a fürt üzembe helyezéséhez
+
+Másik lehetőségként meglévő Azure Key Vault tanúsítvány használatával telepítheti a tesztelési fürtöt. Ehhez meg kell [szereznie a Key Vault és a tanúsítvány ujjlenyomatára mutató hivatkozásokat](#obtain-your-key-vault-references) .
+
+```powershell
+# Key Vault variables
+$certUrlValue = "https://sftestupgradegroup.vault.azure.net/secrets/sftestupgradegroup20200309235308/dac0e7b7f9d4414984ccaa72bfb2ea39"
+$sourceVaultValue = "/subscriptions/########-####-####-####-############/resourceGroups/sftestupgradegroup/providers/Microsoft.KeyVault/vaults/sftestupgradegroup"
+$thumb = "BB796AA33BD9767E7DA27FE5182CF8FDEE714A70"
+```
+
+Ezután jelöljön ki egy erőforráscsoport-nevet a fürthöz, és állítsa be a `templateFilePath` és a `parameterFilePath` helyet:
+
+> [!NOTE]
+> A kijelölt erőforráscsoport már léteznie kell, és ugyanabban a régióban kell lennie, mint a Key Vault.
+
+```powershell
+$resourceGroupName = "sftestupgradegroup"
+$templateFilePath = "C:\Initial-TestClusterSetup.json"
+$parameterFilePath = "C:\parameters.json"
+```
+
+Végül futtassa a következő parancsot a kezdeti tesztelési fürt üzembe helyezéséhez:
+
+```powershell
+# Deploy the initial test cluster
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -TemplateFile $templateFilePath `
-    -TemplateParameterFile $parameterFilePath
+    -TemplateParameterFile $parameterFilePath `
+    -CertificateThumbprint $thumb `
+    -CertificateUrlValue $certUrlValue `
+    -SourceVaultValue $sourceVaultValue `
+    -Verbose
 ```
 
-### <a name="add-a-new-primary-node-type-to-the-cluster"></a>Új elsődleges csomópont-típus hozzáadása a fürthöz
+### <a name="connect-to-the-new-cluster-and-check-health-status"></a>Kapcsolódás az új fürthöz és az állapot állapotának ellenõrzése
+
+Kapcsolódjon a fürthöz, és győződjön meg arról, hogy mind az öt csomópontja kifogástalan állapotban van (a `clusterName` és a `thumb` változókat a saját értékeire cseréli):
+
+```powershell
+# Connect to the cluster
+$clusterName = "sftestupgrade.southcentralus.cloudapp.azure.com:19000"
+$thumb = "BB796AA33BD9767E7DA27FE5182CF8FDEE714A70"
+
+Connect-ServiceFabricCluster `
+    -ConnectionEndpoint $clusterName `
+    -KeepAliveIntervalInSec 10 `
+    -X509Credential `
+    -ServerCertThumbprint $thumb  `
+    -FindType FindByThumbprint `
+    -FindValue $thumb `
+    -StoreLocation CurrentUser `
+    -StoreName My
+
+# Check cluster health
+Get-ServiceFabricClusterHealth
+```
+
+Ezzel készen áll a frissítési eljárás megkezdésére.
+
+## <a name="deploy-a-new-primary-node-type-with-upgraded-scale-set"></a>Új elsődleges csomópont-típus üzembe helyezése frissített méretezési csoporttal
+
+A csomópontok típusának (vertikális skálázás) frissítéséhez először egy új, a méretezési csoport és a támogató erőforrások által támogatott csomópont-típust kell üzembe helyezni. Az új méretezési csoport elsődlegesként () lesz megjelölve `isPrimary: true` , ugyanúgy, mint az eredeti méretezési csoport (kivéve, ha nem elsődleges csomópont típusú frissítést végez). A következő szakaszban létrehozott erőforrások végső soron a fürt új elsődleges csomópont-típusa lesz, és a rendszer törli az eredeti elsődleges csomópont típusú erőforrásokat.
+
+### <a name="update-the-cluster-template-with-the-upgraded-scale-set"></a>A fürt sablonjának frissítése a frissített méretezési csoporttal
+
+Az alábbi, az eredeti fürt központi telepítési sablonjának szakasz – szakasz szerinti módosításaival új elsődleges csomópont-típust és támogató erőforrásokat adhat hozzá.
+
+Az ehhez a lépéshez szükséges módosítások már megtörténtek a sablonban lévő [*Step1-AddPrimaryNodeType.jsban*](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade/Step1-AddPrimaryNodeType.json) , és a következők részletesen ismertetik ezeket a módosításokat. Ha szeretné, kihagyhatja a magyarázatot, és folytathatja a [Key Vault hivatkozásainak beszerzését](#obtain-your-key-vault-references) és [a frissített sablon üzembe helyezését](#deploy-the-updated-template) , amely új elsődleges csomópont-típust ad hozzá a fürthöz.
+
 > [!Note]
-> A skálázási művelet befejezése után a következő lépésekben létrehozott erőforrások lesznek a fürt új elsődleges csomópont-típusa. Győződjön meg arról, hogy a kezdeti alhálózat, a nyilvános IP-cím, a Load Balancer, a virtuálisgép-méretezési csoport és a csomópont típusa alapján egyedi neveket használ. 
+> Győződjön meg arról, hogy az eredeti csomópont típusa, a méretezési csoport, a terheléselosztó, a nyilvános IP-cím és az eredeti elsődleges csomópont típusú alhálózat alapján egyedi neveket használ, mivel ezeket az erőforrásokat a folyamat egy későbbi lépése fogja törölni.
 
-A következő lépések mindegyikével megtalálhatja a sablont: [Service Fabric – új csomópont típusú fürt](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-2.json). Az alábbi lépések olyan részleges erőforrás-kódrészleteket tartalmaznak, amelyek kiemelik az új erőforrások változásait.  
+#### <a name="create-a-new-subnet-in-the-existing-virtual-network"></a>Új alhálózat létrehozása a meglévő virtuális hálózaton
 
-1. Hozzon létre egy új alhálózatot a meglévő Virtual Networkban.
 ```json
 {
     "name": "[variables('subnet1Name')]",
@@ -74,7 +176,9 @@ A következő lépések mindegyikével megtalálhatja a sablont: [Service Fabric
     }
 }
 ```
-2. Hozzon létre egy új nyilvános IP-erőforrást egy egyedi Domainnamelabel értékkel. 
+
+#### <a name="create-a-new-public-ip-with-a-unique-domainnamelabel"></a>Új nyilvános IP-cím létrehozása egyedi Domainnamelabel értékkel
+
 ```json
 {
     "apiVersion": "[variables('publicIPApiVersion')]",
@@ -83,7 +187,7 @@ A következő lépések mindegyikével megtalálhatja a sablont: [Service Fabric
     "location": "[variables('computeLocation')]",
     "properties": {
     "dnsSettings": {
-        "domainNameLabel": "[concat(variables('dnsName'),'-','nt2')]"
+        "domainNameLabel": "[concat(variables('dnsName'),'-','nt1')]"
     },
     "publicIPAllocationMethod": "Dynamic"
     },
@@ -93,20 +197,25 @@ A következő lépések mindegyikével megtalálhatja a sablont: [Service Fabric
     }
 }
 ```
-3. Hozzon létre egy új Load Balancer-erőforrást, amely a fent létrehozott nyilvános IP-címektől függ. 
+
+#### <a name="create-a-new-load-balancer-for-the-public-ip"></a>Új terheléselosztó létrehozása a nyilvános IP-címhez
+
 ```json
 "dependsOn": [
     "[concat('Microsoft.Network/publicIPAddresses/',concat(variables('lbIPName'),'-',variables('vmNodeType1Name')))]"
 ]
 ```
-4. Hozzon létre egy új virtuálisgép-méretezési készletet, amely az új virtuális gép SKU-t és az operációs rendszer SKU-át használja. 
 
-Csomópont típusa ref 
+#### <a name="create-a-new-virtual-machine-scale-set-with-upgraded-vm-and-os-skus"></a>Új virtuálisgép-méretezési csoport létrehozása (frissített virtuális géppel és operációs rendszerű SKU-val)
+
+Csomópont típusa ref
+
 ```json
 "nodeTypeRef": "[variables('vmNodeType1Name')]"
 ```
 
 Virtuális gép termékváltozata
+
 ```json
 "sku": {
     "name": "[parameters('vmNodeType1Size')]",
@@ -115,7 +224,8 @@ Virtuális gép termékváltozata
 }
 ```
 
-OPERÁCIÓS RENDSZER SKU 
+OPERÁCIÓS RENDSZER SKU
+
 ```json
 "imageReference": {
     "publisher": "[parameters('vmImagePublisher1')]",
@@ -125,134 +235,12 @@ OPERÁCIÓS RENDSZER SKU
 }
 ```
 
-Az alábbi kódrészlet egy új virtuálisgép-méretezési csoport erőforrás, amely egy Service Fabric fürt új csomópont-típusának létrehozására szolgál. Győződjön meg arról, hogy a számítási feladathoz szükséges további bővítmények is elérhetők. 
+Továbbá győződjön meg arról, hogy a számítási feladathoz szükséges további bővítmények is elérhetők.
 
-```json
-    {
-      "apiVersion": "[variables('vmssApiVersion')]",
-      "type": "Microsoft.Compute/virtualMachineScaleSets",
-      "name": "[variables('vmNodeType1Name')]",
-      "location": "[variables('computeLocation')]",
-      "dependsOn": [
-        "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]",
-        "[concat('Microsoft.Network/loadBalancers/', concat('LB','-', parameters('clusterName'),'-',variables('vmNodeType1Name')))]",
-        "[concat('Microsoft.Storage/storageAccounts/', variables('supportLogStorageAccountName'))]",
-        "[concat('Microsoft.Storage/storageAccounts/', variables('applicationDiagnosticsStorageAccountName'))]"
-      ],
-      "properties": {
-        "overprovision": "[variables('overProvision')]",
-        "upgradePolicy": {
-          "mode": "Automatic"
-        },
-        "virtualMachineProfile": {
-          "extensionProfile": {
-            "extensions": [
-              {
-                "name": "[concat('ServiceFabricNodeVmExt_',variables('vmNodeType1Name'))]",
-                "properties": {
-                  "type": "ServiceFabricNode",
-                  "autoUpgradeMinorVersion": true,
-                  "protectedSettings": {
-                    "StorageAccountKey1": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key1]",
-                    "StorageAccountKey2": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key2]"
-                  },
-                  "publisher": "Microsoft.Azure.ServiceFabric",
-                  "settings": {
-                    "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
-                    "nodeTypeRef": "[variables('vmNodeType1Name')]",
-                    "dataPath": "D:\\SvcFab",
-                    "durabilityLevel": "Bronze",
-                    "enableParallelJobs": true,
-                    "nicPrefixOverride": "[variables('subnet1Prefix')]",
-                    "certificate": {
-                      "thumbprint": "[parameters('certificateThumbprint')]",
-                      "x509StoreName": "[parameters('certificateStoreValue')]"
-                    }
-                  },
-                  "typeHandlerVersion": "1.0"
-                }
-              }
-            ]
-          },
-          "networkProfile": {
-            "networkInterfaceConfigurations": [
-              {
-                "name": "[concat(variables('nicName'), '-1')]",
-                "properties": {
-                  "ipConfigurations": [
-                    {
-                      "name": "[concat(variables('nicName'),'-',1)]",
-                      "properties": {
-                        "loadBalancerBackendAddressPools": [
-                          {
-                            "id": "[variables('lbPoolID1')]"
-                          }
-                        ],
-                        "loadBalancerInboundNatPools": [
-                          {
-                            "id": "[variables('lbNatPoolID1')]"
-                          }
-                        ],
-                        "subnet": {
-                          "id": "[variables('subnet1Ref')]"
-                        }
-                      }
-                    }
-                  ],
-                  "primary": true
-                }
-              }
-            ]
-          },
-          "osProfile": {
-            "adminPassword": "[parameters('adminPassword')]",
-            "adminUsername": "[parameters('adminUsername')]",
-            "computernamePrefix": "[variables('vmNodeType1Name')]",
-            "secrets": [
-              {
-                "sourceVault": {
-                  "id": "[parameters('sourceVaultValue')]"
-                },
-                "vaultCertificates": [
-                  {
-                    "certificateStore": "[parameters('certificateStoreValue')]",
-                    "certificateUrl": "[parameters('certificateUrlValue')]"
-                  }
-                ]
-              }
-            ]
-          },
-          "storageProfile": {
-            "imageReference": {
-              "publisher": "[parameters('vmImagePublisher1')]",
-              "offer": "[parameters('vmImageOffer1')]",
-              "sku": "[parameters('vmImageSku1')]",
-              "version": "[parameters('vmImageVersion1')]"
-            },
-            "osDisk": {
-              "caching": "ReadOnly",
-              "createOption": "FromImage",
-              "managedDisk": {
-                "storageAccountType": "[parameters('storageAccountType')]"
-              }
-            }
-          }
-        }
-      },
-      "sku": {
-        "name": "[parameters('vmNodeType1Size')]",
-        "capacity": "[parameters('nt1InstanceCount')]",
-        "tier": "Standard"
-      },
-      "tags": {
-        "resourceType": "Service Fabric",
-        "clusterName": "[parameters('clusterName')]"
-      }
-    },
+#### <a name="add-a-new-primary-node-type-to-the-cluster"></a>Új elsődleges csomópont-típus hozzáadása a fürthöz
 
-```
+Most, hogy az új csomópont típusa (vmNodeType1Name) rendelkezik a saját nevével, alhálózatával, IP-címével, terheléselosztó és méretezési csoporttal, a többi változót újra felhasználhatja az eredeti csomópont típusától (például, `nt0applicationEndPort` `nt0applicationStartPort` , és `nt0fabricTcpGatewayPort` ):
 
-5. Adjon hozzá egy új csomópont-típust a fürthöz, amely a fent létrehozott virtuálisgép-méretezési csoportra hivatkozik. A csomópont **isPrimary** tulajdonságát True értékre kell állítani. 
 ```json
 "name": "[variables('vmNodeType1Name')]",
 "applicationPorts": {
@@ -270,72 +258,97 @@ Az alábbi kódrészlet egy új virtuálisgép-méretezési csoport erőforrás,
 "reverseProxyEndpointPort": "[variables('nt0reverseProxyEndpointPort')]",
 "vmInstanceCount": "[parameters('nt1InstanceCount')]"
 ```
-6. Telepítse a frissített ARM-sablont. 
+
+Miután végrehajtotta a sablon és a paraméterek fájljaiban történt összes változást, folytassa a következő szakasszal a Key Vault referenciáinak beolvasásához és a frissítések fürtön való telepítéséhez.
+
+### <a name="obtain-your-key-vault-references"></a>A Key Vault-referenciák beszerzése
+
+A frissített konfiguráció üzembe helyezéséhez több hivatkozásra lesz szüksége a Key Vault tárolt fürt tanúsítványára. Az értékek megkeresésének legegyszerűbb módja a Azure Portal. A következők szükségesek:
+
+* **A fürt tanúsítványának Key Vault URL-címe.** A Azure Portal Key Vault válassza a **tanúsítványok**  >  *a kívánt tanúsítvány*  >  **titkos azonosítóját**:
+
+    ```powershell
+    $certUrlValue="https://sftestupgradegroup.vault.azure.net/secrets/sftestupgradegroup20200309235308/dac0e7b7f9d4414984ccaa72bfb2ea39"
+    ```
+
+* **A fürt tanúsítványának ujjlenyomata.** (Ha [a kezdeti fürthöz kapcsolódott az](#connect-to-the-new-cluster-and-check-health-status) állapotának vizsgálatához, valószínűleg már ezt is megteheti.) Ugyanabból a tanúsítványból (**a tanúsítvány**  >  *a kívánt tanúsítvánnyal*) Azure Portal másolja az **X. 509 SHA-1 ujjlenyomatot (hexadecimális)**:
+
+    ```powershell
+    $thumb = "BB796AA33BD9767E7DA27FE5182CF8FDEE714A70"
+    ```
+
+* **A Key Vault erőforrás-azonosítója.** A Azure Portal Key Vault válassza a **Tulajdonságok**  >  **erőforrás-azonosító** elemet:
+
+    ```powershell
+    $sourceVaultValue = "/subscriptions/########-####-####-####-############/resourceGroups/sftestupgradegroup/providers/Microsoft.KeyVault/vaults/sftestupgradegroup"
+    ```
+
+### <a name="deploy-the-updated-template"></a>A frissített sablon üzembe helyezése
+
+Módosítsa az `templateFilePath` igény szerint, és futtassa a következő parancsot:
+
 ```powershell
-# deploy the updated template files to the existing resource group
-$templateFilePath = "C:\AzureDeploy-2.json"
-$parameterFilePath = "C:\AzureDeploy.Parameters.json"
+# Deploy the new node type and its resources
+$templateFilePath = "C:\Step1-AddPrimaryNodeType.json"
 
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -TemplateFile $templateFilePath `
     -TemplateParameterFile $parameterFilePath `
+    -CertificateThumbprint $thumb `
+    -CertificateUrlValue $certUrlValue `
+    -SourceVaultValue $sourceVaultValue `
+    -Verbose
 ```
 
-A Service Fabric-fürt most két csomópont-típussal fog rendelkezni, amikor a telepítés befejeződött. 
+Amikor az üzembe helyezés befejeződik, ellenőrizze újra a fürt állapotát, és győződjön meg arról, hogy a csomópontok minden csomópontja kifogástalan állapotú.
 
-### <a name="remove-the-existing-node-type"></a>A meglévő csomópont típusának eltávolítása 
-Ha az erőforrások üzembe helyezése befejeződött, megkezdheti a csomópontok letiltását az eredeti csomópont-típusban. Mivel a csomópontok le vannak tiltva, a rendszerszolgáltatások a fenti lépésben üzembe helyezett új elsődleges csomópont-típusra lesznek áttelepítve.
+```powershell
+Get-ServiceFabricClusterHealth
+```
 
-1. Állítsa hamis értékre a Service Fabric fürterőforrás elsődleges csomópont-típus tulajdonságát. 
+## <a name="migrate-seed-nodes-to-the-new-node-type"></a>A vetőmag-csomópontok migrálása az új csomópont-típusba
+
+Most már készen áll arra, hogy az eredeti csomópont típusát nem elsődlegesként frissítse, és megkezdje a csomópontok letiltását. Mivel a csomópontok le vannak tiltva, a fürt rendszerszolgáltatásai és a magok csomópontjai áttelepülnek az új méretezési csoportba.
+
+### <a name="unmark-the-original-node-type-as-primary"></a>Az eredeti csomópont típusának megjelölése elsődlegesként
+
+Először távolítsa el a `isPrimary` megjelölést a sablonból az eredeti csomópont-típusból.
+
 ```json
 {
-    "name": "[variables('vmNodeType0Name')]",
-    "applicationPorts": {
-        "endPort": "[variables('nt0applicationEndPort')]",
-        "startPort": "[variables('nt0applicationStartPort')]"
-    },
-    "clientConnectionEndpointPort": "[variables('nt0fabricTcpGatewayPort')]",
-    "durabilityLevel": "Bronze",
-    "ephemeralPorts": {
-        "endPort": "[variables('nt0ephemeralEndPort')]",
-        "startPort": "[variables('nt0ephemeralStartPort')]"
-    },
-    "httpGatewayEndpointPort": "[variables('nt0fabricHttpGatewayPort')]",
     "isPrimary": false,
-    "reverseProxyEndpointPort": "[variables('nt0reverseProxyEndpointPort')]",
-    "vmInstanceCount": "[parameters('nt0InstanceCount')]"
 }
 ```
-2. Telepítse a sablont a frissített isPrimary tulajdonsággal az eredeti csomópont-típuson. Az elsődleges jelzővel rendelkező sablon hamis értékre van állítva az eredeti csomópont-típusnál: [Service Fabric – elsődleges csomópont típusa false (hamis](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-3.json)).
+
+Ezután telepítse a sablont a frissítéssel. Ez elindítja a vetőmag-csomópontok áttelepítését az új méretezési csoportba.
 
 ```powershell
-# deploy the updated template files to the existing resource group
-$templateFilePath = "C:\AzureDeploy-3.json"
-$parameterFilePath = "C:\AzureDeploy.Parameters.json"
+$templateFilePath = "C:\Step2-UnmarkOriginalPrimaryNodeType.json"
 
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -TemplateFile $templateFilePath `
     -TemplateParameterFile $parameterFilePath `
+    -CertificateThumbprint $thumb `
+    -CertificateUrlValue $certUrlValue `
+    -SourceVaultValue $sourceVaultValue `
+    -Verbose
 ```
 
-3. Tiltsa le a csomópontokat a 0. típusú csomópontban. 
+> [!Note]
+> Eltarthat egy ideig a magok csomópontjának az új méretezési csoportba való áttelepítésének befejezéséhez. Az adatkonzisztencia garantálása érdekében egyszerre csak egy mag-csomópont módosítható. Minden egyes mag-csomópont változásához szükség van egy fürt frissítésére; így a magok csomópontjának cseréje két fürt frissítését igényli (egyet a csomópontok hozzáadásához és eltávolításához). A példában szereplő öt mag-csomópont frissítése tíz fürt frissítését eredményezi.
+
+A Service Fabric Explorer használatával figyelheti a vetőmag-csomópontok áttelepítését az új méretezési csoportba. Az eredeti csomópont típusú (nt0vm) csomópontok mindegyikének *false értékűnek* kell lennie a **mag csomópont** oszlopban, és az új csomópont típusa (nt1vm) *igaz* lesz.
+
+### <a name="disable-the-nodes-in-the-original-node-type-scale-set"></a>Csomópontok letiltása az eredeti csomópont típusú méretezési csoportokban
+
+Miután az összes vetőmag-csomópontot áttelepítette az új méretezési csoportba, letilthatja az eredeti méretezési csoport csomópontjait.
+
 ```powershell
-Connect-ServiceFabricCluster -ConnectionEndpoint $ClusterConnectionEndpoint `
-    -KeepAliveIntervalInSec 10 `
-    -X509Credential `
-    -ServerCertThumbprint $thumb  `
-    -FindType FindByThumbprint `
-    -FindValue $thumb `
-    -StoreLocation CurrentUser `
-    -StoreName My 
-
-Write-Host "Connected to cluster"
-
-
-$nodeType = "nt1vm" # specify the name of node type
-$nodes = Get-ServiceFabricNode 
+# Disable the nodes in the original scale set.
+$nodeType = "nt0vm"
+$nodes = Get-ServiceFabricNode
 
 Write-Host "Disabling nodes..."
 foreach($node in $nodes)
@@ -348,14 +361,23 @@ foreach($node in $nodes)
   }
 }
 ```
-* A bronz tartósság érdekében várjon, amíg az összes csomópont letiltott állapotba kerül.
-* Az ezüst és az arany tartóssága érdekében egyes csomópontok le lesznek tiltva, a REST pedig letiltási állapotba kerül. Ellenőrizze, hogy a csomópontok részletek lapján letiltott állapotban van-e, ha mind beragadt az infrastruktúra-szolgáltatási partíciók Kvórumának biztosítására, akkor biztonságos a folytatás.
 
-> [!Note]
-> Ez a lépés hosszabb időt is igénybe vehet. 
+A Service Fabric Explorer használatával figyelheti az eredeti méretezési csoport csomópontjainak a *letiltott* állapotba való *letiltásának* folyamatát.
 
-4. Állítsa le az adattípust a 0. csomóponton. 
+:::image type="content" source="./media/scale-up-primary-node-type/service-fabric-explorer-node-status.png" alt-text="A letiltott csomópontok állapotának megjelenítése Service Fabric Explorer":::
+
+Az ezüst és az arany tartóssága érdekében egyes csomópontok letiltott állapotba kerülnek, míg mások *letiltási* állapotban maradhatnak. A Service Fabric Explorer a csomópontok **részletek** lapján a Letiltás állapotot. Ha a *EnsurePartitionQuorem* (az infrastruktúra-szolgáltatási partíciók Kvórumának biztosítása) *függőben lévő biztonsági ellenőrzését* jeleníti meg, akkor biztonságos a folytatás.
+
+:::image type="content" source="./media/scale-up-primary-node-type/service-fabric-explorer-node-status-disabling.png" alt-text="Folytathatja az adatgyűjtés leállítását és a &quot;letiltás&quot; állapotba ragadt csomópontok eltávolítását, ha a &quot;EnsurePartitionQuorum&quot; függőben lévő biztonsági ellenőrzését is megjeleníti.":::
+
+Ha a fürt bronz tartósságú, várjon, amíg az összes csomópont le nem éri a *letiltott* állapotot.
+
+### <a name="stop-data-on-the-disabled-nodes"></a>A letiltott csomópontokon lévő adatsorok leállítása
+
+Most leállíthatja az adatvesztést a letiltott csomópontokon.
+
 ```powershell
+# Stop data on the disabled nodes.
 foreach($node in $nodes)
 {
   if ($node.NodeType -eq $nodeType)
@@ -366,44 +388,62 @@ foreach($node in $nodes)
   }
 }
 ```
-5. Csomópontok felszabadítása az eredeti virtuálisgép-méretezési csoportból 
+
+## <a name="remove-the-original-node-type-and-cleanup-its-resources"></a>Távolítsa el az eredeti csomópont típusát, és törölje erőforrásait
+
+Készen áll az eredeti csomópont-típus és a hozzá tartozó erőforrások eltávolítására a vertikális skálázási eljárás megkötése érdekében.
+
+### <a name="remove-the-original-scale-set"></a>Az eredeti méretezési csoport eltávolítása
+
+Először távolítsa el a csomópont-típus biztonsági méretezési csoportját.
+
 ```powershell
-$scaleSetName="nt1vm"
-$scaleSetResourceType="Microsoft.Compute/virtualMachineScaleSets"
+$scaleSetName = "nt0vm"
+$scaleSetResourceType = "Microsoft.Compute/virtualMachineScaleSets"
 
 Remove-AzResource -ResourceName $scaleSetName -ResourceType $scaleSetResourceType -ResourceGroupName $resourceGroupName -Force
 ```
-> [!Note]
-> A 6. és 7. lépés megadása nem kötelező, ha már használ szabványos SKU nyilvános IP-címet és standard SKU Load balancert. Ebben az esetben előfordulhat, hogy több virtuálisgép-méretezési csoport vagy csomópont-típus is van ugyanazon a terheléselosztó alatt. 
 
-6. Most már törölheti az eredeti IP-címet, és Load Balancer erőforrásokat is. Ebben a lépésben a DNS-nevet is frissíti. 
+### <a name="delete-the-original-ip-and-load-balancer-resources"></a>Az eredeti IP-és terheléselosztó-erőforrások törlése
+
+Most már törölheti az eredeti IP-címet és a Load Balancer erőforrásait. Ebben a lépésben a DNS-nevet is frissíti.
+
+> [!Note]
+> Ez a lépés nem kötelező, ha már használja a *standard* SKU nyilvános IP-címet és a Load balancert. Ebben az esetben több méretezési csoportot vagy csomópont-típust is használhat ugyanahhoz a terheléselosztó alá.
+
+Futtassa az alábbi parancsokat, és `$lbname` szükség szerint módosítsa az értéket.
 
 ```powershell
-$lbname="LB-cluster-name-nt1vm"
-$lbResourceType="Microsoft.Network/loadBalancers"
-$ipResourceType="Microsoft.Network/publicIPAddresses"
-$oldPublicIpName="PublicIP-LB-FE-nt1vm"
-$newPublicIpName="PublicIP-LB-FE-nt2vm"
+# Delete the original IP and load balancer resources
+$lbName = "LB-sftestupgrade-nt0vm"
+$lbResourceType = "Microsoft.Network/loadBalancers"
+$ipResourceType = "Microsoft.Network/publicIPAddresses"
+$oldPublicIpName = "PublicIP-LB-FE-nt0vm"
+$newPublicIpName = "PublicIP-LB-FE-nt1vm"
 
-$oldprimaryPublicIP = Get-AzPublicIpAddress -Name $oldPublicIpName  -ResourceGroupName $resourceGroupName
-$primaryDNSName = $oldprimaryPublicIP.DnsSettings.DomainNameLabel
-$primaryDNSFqdn = $oldprimaryPublicIP.DnsSettings.Fqdn
+$oldPrimaryPublicIP = Get-AzPublicIpAddress -Name $oldPublicIpName  -ResourceGroupName $resourceGroupName
+$primaryDNSName = $oldPrimaryPublicIP.DnsSettings.DomainNameLabel
+$primaryDNSFqdn = $oldPrimaryPublicIP.DnsSettings.Fqdn
 
-Remove-AzResource -ResourceName $lbname -ResourceType $lbResourceType -ResourceGroupName $resourceGroupName -Force
+Remove-AzResource -ResourceName $lbName -ResourceType $lbResourceType -ResourceGroupName $resourceGroupName -Force
 Remove-AzResource -ResourceName $oldPublicIpName -ResourceType $ipResourceType -ResourceGroupName $resourceGroupName -Force
 
 $PublicIP = Get-AzPublicIpAddress -Name $newPublicIpName  -ResourceGroupName $resourceGroupName
 $PublicIP.DnsSettings.DomainNameLabel = $primaryDNSName
 $PublicIP.DnsSettings.Fqdn = $primaryDNSFqdn
 Set-AzPublicIpAddress -PublicIpAddress $PublicIP
-``` 
-
-7. Frissítse a fürt felügyeleti végpontját az új IP-címhez való hivatkozáshoz. 
-```json
-  "managementEndpoint": "[concat('https://',reference(concat(variables('lbIPName'),'-',variables('vmNodeType1Name'))).dnsSettings.fqdn,':',variables('nt0fabricHttpGatewayPort'))]",
 ```
-8. Csomópont-állapot eltávolítása a 0. típusú csomópontból
+
+### <a name="remove-node-state-from-the-original-node-type"></a>Csomópont állapotának eltávolítása az eredeti csomópont-típusból
+
+Az eredeti csomópont típusú csomópontok mostantól *hibát* jeleznek **az állapotukban.** Távolítsa el a csomópont állapotát a fürtből.
+
 ```powershell
+# Remove state of the obsolete nodes from the cluster
+$nodeType = "nt0vm"
+$nodes = Get-ServiceFabricNode
+
+Write-Host "Removing node state..."
 foreach($node in $nodes)
 {
   if ($node.NodeType -eq $nodeType)
@@ -414,7 +454,25 @@ foreach($node in $nodes)
   }
 }
 ```
-9. Távolítsa el az eredeti csomópont típusú hivatkozást az ARM-sablon Service Fabric erőforrásáról. 
+
+A Service Fabric Explorernak most csak az új csomópont-típus (nt1vm) öt csomópontját kell tükröznie, az *OK* állapotának megfelelő értékekkel. A fürt állapotának állapota továbbra is *hibát* jelez. A következő lépésekkel frissítjük a sablont, hogy az tükrözze a legújabb módosításokat és az újbóli üzembe helyezést.
+
+### <a name="update-the-deployment-template-to-reflect-the-newly-scaled-up-primary-node-type"></a>A központi telepítési sablon frissítése az újonnan felméretezett elsődleges csomópont típusának megfelelően
+
+Az ehhez a lépéshez szükséges módosítások már megtörténtek a sablonban lévő [*Step3-CleanupOriginalPrimaryNodeType.jsban*](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade/Step3-CleanupOriginalPrimaryNodeType.json) , és a következő szakaszokban részletesen ismertetjük a sablon változásait. Ha szeretné, kihagyhatja a magyarázatot, és folytathatja a [frissített sablon üzembe helyezését](#deploy-the-finalized-template) és az oktatóanyag elvégzését.
+
+#### <a name="update-the-cluster-management-endpoint"></a>A fürt felügyeleti végpontjának frissítése
+
+Frissítse a fürtöt `managementEndpoint` a központi telepítési sablonban, hogy az új IP-re hivatkozzon (a *vmNodeType0Name* *vmNodeType1Name*-vel való frissítésével).
+
+```json
+  "managementEndpoint": "[concat('https://',reference(concat(variables('lbIPName'),'-',variables('vmNodeType1Name'))).dnsSettings.fqdn,':',variables('nt0fabricHttpGatewayPort'))]",
+```
+
+#### <a name="remove-the-original-node-type-reference"></a>Az eredeti csomópont-típus hivatkozásának eltávolítása
+
+Távolítsa el az eredeti csomópont-típus hivatkozását a Service Fabric erőforrásból a központi telepítési sablonban:
+
 ```json
 "name": "[variables('vmNodeType0Name')]",
 "applicationPorts": {
@@ -432,7 +490,11 @@ foreach($node in $nodes)
 "reverseProxyEndpointPort": "[variables('nt0reverseProxyEndpointPort')]",
 "vmInstanceCount": "[parameters('nt0InstanceCount')]"
 ```
-Csak ezüst és magasabb tartósságú fürtök esetén frissítse a sablonban szereplő fürterőforrás-erőforrást, és konfigurálja az állapotfigyelő házirendeket a háló:/rendszeralkalmazási állapot mellőzéséhez, ha az alább megadott módon applicationDeltaHealthPolicies-t ad hozzá a fürterőforrás-tulajdonságok területen. Az alábbi házirend figyelmen kívül hagyja a meglévő hibákat, de nem engedélyezi az új állapotú hibákat.
+
+#### <a name="configure-health-policies-to-ignore-existing-errors"></a>Állapotházirendek konfigurálása a meglévő hibák figyelmen kívül hagyásához
+
+Csak ezüst és magasabb tartósságú fürtök esetén frissítse a sablonban lévő fürterőforrás-erőforrást, és konfigurálja az állapotfigyelő házirendeket az alkalmazás állapotának figyelmen kívül hagyásával úgy, hogy az `fabric:/System` alább megadott módon hozzáadja a *applicationDeltaHealthPolicies* a fürterőforrás-tulajdonságok területen. Az alábbi szabályzat figyelmen kívül hagyja a meglévő hibákat, de nem engedélyezi az új állapottal kapcsolatos hibákat.
+
 ```json
 "upgradeDescription":  
 { 
@@ -465,25 +527,55 @@ Csak ezüst és magasabb tartósságú fürtök esetén frissítse a sablonban s
  } 
 }
 ```
-10. Távolítsa el az ARM-sablon eredeti csomópont-típusához kapcsolódó összes többi erőforrást. Lásd: [Service Fabric – új csomópont típusú fürt](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-4.json) egy sablonhoz az összes ilyen eredeti erőforrás eltávolításával.
 
-11. Telepítse a módosított Azure Resource Manager sablont. * * Ez a lépés eltarthat egy ideig, általában akár két óráig is. Ez a frissítés megváltoztatja a beállításokat a InfrastructureService; Ezért szükség van egy csomópont újraindítására. Ebben az esetben a rendszer figyelmen kívül hagyja a forceRestart. A upgradeReplicaSetCheckTimeout paraméter határozza meg azt a maximális időtartamot, ameddig Service Fabric a partíció biztonságos állapotba kerül, ha még nem biztonságos állapotban van. Miután a biztonsági ellenőrzés egy csomóponton lévő összes partícióra kiterjed, Service Fabric folytatja a frissítést a csomóponton. A upgradeTimeout paraméter értéke 6 órára csökkenthető, de a maximális biztonság érdekében 12 órát kell használni.
-Ezután ellenőrizze, hogy a portálon a Service Fabric erőforrás készként jelenik-e meg. 
+#### <a name="remove-supporting-resources-for-the-original-node-type"></a>Az eredeti csomópont-típus támogatási erőforrásainak eltávolítása
+
+Távolítsa el az eredeti csomópont-típushoz kapcsolódó összes egyéb erőforrást az ARM-sablonból és a Parameters fájlból. Törölje a következőket:
+
+```json
+    "vmImagePublisher": {
+      "value": "MicrosoftWindowsServer"
+    },
+    "vmImageOffer": {
+      "value": "WindowsServer"
+    },
+    "vmImageSku": {
+      "value": "2016-Datacenter-with-Containers"
+    },
+    "vmImageVersion": {
+      "value": "latest"
+    },
+```
+
+#### <a name="deploy-the-finalized-template"></a>A véglegesített sablon üzembe helyezése
+
+Végezetül telepítse a módosított Azure Resource Manager sablont.
 
 ```powershell
-# deploy the updated template files to the existing resource group
-$templateFilePath = "C:\AzureDeploy-4.json"
-$parameterFilePath = "C:\AzureDeploy.Parameters.json"
+# Deploy the updated template file
+$templateFilePath = "C:\Step3-CleanupOriginalPrimaryNodeType"
 
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -TemplateFile $templateFilePath `
     -TemplateParameterFile $parameterFilePath `
+    -CertificateThumbprint $thumb `
+    -CertificateUrlValue $certUrlValue `
+    -SourceVaultValue $sourceVaultValue `
+    -Verbose
 ```
 
-A fürt elsődleges csomópontjának típusa már frissítve lett. Ellenőrizze, hogy a telepített alkalmazások megfelelően működnek-e, és hogy a fürt állapota rendben van-e.
+> [!NOTE]
+> Ez a lépés eltarthat egy ideig, általában akár két óráig is.
 
-## <a name="next-steps"></a>Következő lépések
+A frissítés a beállításokat a *InfrastructureService* fogja módosítani; Ezért szükség van egy csomópont újraindítására. Ebben az esetben a rendszer figyelmen kívül hagyja a *forceRestart* . A paraméter `upgradeReplicaSetCheckTimeout` Megadja azt a maximális időtartamot, ameddig Service Fabric a partíció biztonságos állapotba kerül, ha még nem biztonságos állapotban van. Miután a biztonsági ellenőrzés egy csomóponton lévő összes partícióra kiterjed, Service Fabric folytatja a frissítést a csomóponton. A paraméter értéke `upgradeTimeout` 6 órára csökkenthető, de a maximális biztonság érdekében 12 órát kell használni.
+
+Miután az üzembe helyezés befejeződött, ellenőrizze Azure Portal, hogy a Service Fabric erőforrás állapota *kész*. Ellenőrizze, hogy el tudja-e érni az új Service Fabric Explorer végpontot, a **fürt állapotának állapota** *rendben* van-e, és hogy a telepített alkalmazások megfelelően működnek-e.
+
+Ezzel a beállítással vertikálisan méretezhető a fürt elsődleges csomópontjának típusa!
+
+## <a name="next-steps"></a>További lépések
+
 * Megtudhatja, hogyan [adhat hozzá csomópont-típust fürthöz](virtual-machine-scale-set-scale-node-type-scale-out.md)
 * Az [alkalmazások méretezhetőségének](service-fabric-concepts-scalability.md)megismerése.
 * [Azure-fürt méretezése vagy](service-fabric-tutorial-scale-cluster.md)kibontása.

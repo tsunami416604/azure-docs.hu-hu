@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: a2a385b2be4e1005a7aabd76261b3190ecd2a506
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: af8d0300b533d9f25cddf225f4ffbe78ca6bf2cb
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684219"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249635"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Azure RBAC használata Kubernetes-engedélyezéshez (előzetes verzió)
 
@@ -115,7 +115,7 @@ Az AK a következő négy beépített szerepkört biztosítja:
 
 | Szerepkör                                | Leírás  |
 |-------------------------------------|--------------|
-| Az Azure Kubernetes Service RBAC megjelenítője  | Lehetővé teszi a csak olvasási hozzáférést a névtérben lévő legtöbb objektum megtekintéséhez. Nem teszi lehetővé a szerepkörök és a szerepkör-kötések megtekintését. Ez a szerepkör nem teszi lehetővé a megtekintést `Secrets` , mivel a titkok tartalmának olvasása lehetővé teszi a ServiceAccount hitelesítő adatainak elérését a névtérben, ami lehetővé tenné az API-hozzáférést a névtérben található bármely ServiceAccount (a jogosultságok eszkalációjának formája)  |
+| Azure Kubernetes Service RBAC-olvasó  | Lehetővé teszi a csak olvasási hozzáférést a névtérben lévő legtöbb objektum megtekintéséhez. Nem teszi lehetővé a szerepkörök és a szerepkör-kötések megtekintését. Ez a szerepkör nem teszi lehetővé a megtekintést `Secrets` , mivel a titkok tartalmának olvasása lehetővé teszi a ServiceAccount hitelesítő adatainak elérését a névtérben, ami lehetővé tenné az API-hozzáférést a névtérben található bármely ServiceAccount (a jogosultságok eszkalációjának formája)  |
 | Az Azure Kubernetes Service RBAC-írója | Olvasási/írási hozzáférést tesz lehetővé a névtér legtöbb objektumához. Ez a szerepkör nem teszi lehetővé a szerepkörök vagy szerepkör-kötések megtekintését és módosítását. Ez a szerepkör azonban lehetővé teszi a `Secrets` hüvelyek elérését és futtatását a névtér bármely ServiceAccount, így felhasználható a névtérben található bármely SERVICEACCOUNT API-hozzáférési szintjeinek megszerzésére. |
 | Az Azure Kubernetes Service RBAC rendszergazdája  | A rendszergazdai hozzáférés engedélyezése a névtéren belül. Írási/olvasási hozzáférés engedélyezése a névtér (vagy a fürt hatóköre) legtöbb erőforrásához, beleértve a szerepkörök és a szerepkör-kötések létrehozását a névtéren belül. Ez a szerepkör nem engedélyez írási hozzáférést az erőforrás-kvótához vagy magához a névtérhez. |
 | Azure Kubernetes Service RBAC-fürt rendszergazdája  | Lehetővé teszi a felügyelők számára, hogy bármilyen műveletet végezzenek bármilyen erőforráson. Teljes hozzáférést biztosít a fürt összes erőforrásához és az összes névtérhez. |
@@ -270,7 +270,7 @@ az role definition delete -n "AKS Deployment Viewer"
 az group delete -n MyResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az AK-hitelesítésről, az engedélyezésről, a Kubernetes RBAC és az [Azure RBAC.](concepts-identity.md)
 - További információk az Azure RBAC-ről [itt](../role-based-access-control/overview.md)olvashat.

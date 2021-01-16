@@ -10,13 +10,13 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 10/15/2020
-ms.openlocfilehash: 4ffe663c1a1651891af5f6e65ee231cbe3e8d650
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.date: 01/15/2021
+ms.openlocfilehash: db3b168826223e4eb958f7700e65623a115e5779
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882303"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251471"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Önálló adatbázisok erőforráskorlátai a virtuálismag-alapú vásárlási modell használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -231,6 +231,37 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 
 **2. Megjegyzés**: a késés 1-2 MS a helyi számítási replika SSD-re vonatkozó adatok esetében, amely a leggyakrabban használt adatlapokat gyorsítótárazza. A lapozófájlokból beolvasott adatok nagyobb késése.
 
+## <a name="hyperscale---provisioned-compute---dc-series"></a>Nagy kapacitású – kiépített számítás – DC sorozat
+
+|Számítási méret (szolgáltatási cél)|HS_DC_2|HS_DC_4|HS_DC_6|HS_DC_8|
+|:--- | --: |--: |--: |--: |---: | 
+|Számítási generáció|DC sorozat|DC sorozat|DC sorozat|DC sorozat|
+|Virtuális mag|2|4|6|8|
+|Memória (GB)|9|18|27|36|
+|[RBPEX](service-tier-hyperscale.md#compute) Méret|3X memória|3X memória|3X memória|3X memória|
+|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|
+|Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|
+|Maximális adatméret (TB)|100 |100 |100 |100 |
+|Napló maximális mérete (TB)|Korlátlan |Korlátlan |Korlátlan |Korlátlan |
+|TempDB maximális adatméret (GB)|64|128|192|256|
+|Tárolási típus| [1. Megjegyzés](#notes) |[1. Megjegyzés](#notes)|[1. Megjegyzés](#notes) |[1. Megjegyzés](#notes) |
+|Maximális helyi SSD-IOPS *|8000 |16000 |24000 |32000 |
+|Maximális naplózási arány (MBps)|100 |100 |100 |100 |
+|IO-késés (hozzávetőleges)|[2. Megjegyzés](#notes)|[2. Megjegyzés](#notes)|[2. Megjegyzés](#notes)|[2. Megjegyzés](#notes)|
+|Egyidejű feldolgozók maximális száma (kérelem)|160|320|480|640|
+|Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|
+|Másodlagos replikák|0-4|0-4|0-4|0-4|
+|Több – AZ|N.A.|N.A.|N.A.|N.A.|
+|Olvasási felskálázás|Igen|Igen|Igen|Igen|
+|Biztonsági mentési tár megőrzése|7 nap|7 nap|7 nap|7 nap|
+|||
+
+### <a name="notes"></a>Jegyzetek
+
+**1. Megjegyzés**: a nagy kapacitású egy többrétegű architektúra, külön számítási és tárolási összetevőkkel: a [nagy kapacitású szolgáltatási réteg architektúrája](service-tier-hyperscale.md#distributed-functions-architecture)
+
+**2. Megjegyzés**: a késés 1-2 MS a helyi számítási replika SSD-re vonatkozó adatok esetében, amely a leggyakrabban használt adatlapokat gyorsítótárazza. A lapozófájlokból beolvasott adatok nagyobb késése.
+
 ## <a name="general-purpose---provisioned-compute---gen4"></a>Általános célú kiépített számítás – Gen4
 
 > [!IMPORTANT]
@@ -389,6 +420,32 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |Több – AZ|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
 |Olvasási felskálázás|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
+
+\* Az i/o-méretek maximális értéke 8 KB és 64 KB között mozog. A tényleges IOPS számítási feladatok függenek. Részletekért lásd: [adat IO-szabályozás](resource-limits-logical-server.md#resource-governance).
+
+## <a name="general-purpose---provisioned-compute---dc-series"></a>Általános célú kiépített számítás – DC sorozat
+
+|Számítási méret (szolgáltatási cél)|GP_DC_2|GP_DC_4|GP_DC_6|GP_DC_8| 
+|:---| ---:|---:|---:|---:|
+|Számítási generáció|DC sorozat|DC sorozat|DC sorozat|DC sorozat|
+|Virtuális mag|2|4|6|8|
+|Memória (GB)|9|18|27|36|
+|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|
+|Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|
+|Maximális adatméret (GB)|1024|1536|3072|3072|
+|Napló maximális mérete (GB)|307|461|922|922|
+|TempDB maximális adatméret (GB)|64|128|192|256|
+|Tárolási típus|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|
+|IO-késés (hozzávetőleges)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|
+|Maximális adatmennyiség IOPS *|640|1280|1920|2560|
+|Maximális naplózási arány (MBps)|9|18|27|36|
+|Egyidejű feldolgozók maximális száma (kérelem)|160|320|480|640|
+|Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|
+|Replikák száma|1|1|1|1|
+|Több – AZ|N.A.|N.A.|N.A.|N.A.|
+|Olvasási felskálázás|N.A.|N.A.|N.A.|N.A.|
+|Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
+
 
 \* Az i/o-méretek maximális értéke 8 KB és 64 KB között mozog. A tényleges IOPS számítási feladatok függenek. Részletekért lásd: [adat IO-szabályozás](resource-limits-logical-server.md#resource-governance).
 
@@ -563,6 +620,31 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 > [!IMPORTANT]
 > Bizonyos körülmények között előfordulhat, hogy az adatbázist fel kell zsugorodnia a fel nem használt területek visszaigényléséhez. További információ: [a tárterület kezelése Azure SQL Databaseban](file-space-manage.md).
 
+## <a name="business-critical---provisioned-compute---dc-series"></a>Üzleti szempontból kritikus – kiépített számítás – DC sorozat
+
+|Számítási méret (szolgáltatási cél)|BC_DC_2|BC_DC_4|BC_DC_6|BC_DC_8|
+|:--- | --: |--: |--: |--: |
+|Számítási generáció|DC sorozat|DC sorozat|DC sorozat|DC sorozat|
+|Virtuális mag|2|4|6|8|
+|Memória (GB)|9|18|27|36|
+|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|
+|Memóriában tárolt OLTP-tároló (GB)|1,7|3.7|5.9|8.2|
+|Maximális adatméret (GB)|768|768|768|768|
+|Napló maximális mérete (GB)|230|230|230|230|
+|TempDB maximális adatméret (GB)|64|128|192|256|
+|Tárolási típus|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
+|IO-késés (hozzávetőleges)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|
+|Maximális adatmennyiség IOPS *|14000|28000|42000|56000|
+|Maximális naplózási arány (MBps)|24|48|72|96|
+|Egyidejű feldolgozók maximális száma (kérelem)|200|400|600|800|
+|Egyidejű bejelentkezések maximális száma|200|400|600|800|
+|Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|
+|Replikák száma|4|4|4|4|
+|Több – AZ|Nem|Nem|Nem|Nem|
+|Olvasási felskálázás|Nem|Nem|Nem|Nem|
+|Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
+
+\* Az i/o-méretek maximális értéke 8 KB és 64 KB között mozog. A tényleges IOPS számítási feladatok függenek. Részletekért lásd: [adat IO-szabályozás](resource-limits-logical-server.md#resource-governance).
 
 
 ## <a name="next-steps"></a>További lépések

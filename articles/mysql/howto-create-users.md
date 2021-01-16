@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2021
-ms.openlocfilehash: de4e7959a5778c7275427450ead876338f052882
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 9a6346a2b62c81dd74cf0ebe9a85df12d3488679
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196775"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251250"
 ---
 # <a name="create-databases-and-users-in-azure-database-for-mysql"></a>Adatbázisok és felhasználók létrehozása a Azure Database for MySQLban
 
@@ -20,9 +20,7 @@ ms.locfileid: "98196775"
 Ez a cikk azt ismerteti, hogyan hozhatók létre felhasználók a Azure Database for MySQLban.
 
 > [!NOTE]
-> Elfogultság – ingyenes kommunikáció
->
-> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a _fő_ és a _Slave_ kifejezésre mutató hivatkozásokat tartalmaz. A [torzítás nélküli kommunikációhoz használható Microsoft-stílusú útmutató](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) ezeket a kizáró szavakat ismeri fel. A jelen cikkben szereplő szavak a konzisztencia miatt használatosak, mivel jelenleg a szoftverben megjelenő szavak. Ha a szoftver frissítve lett a szavak eltávolítására, a rendszer a cikket úgy frissíti, hogy az legyen az igazítás.
+> Ez a cikk a _Slave_ kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
 >
 
 Amikor először hozta létre a Azure Database for MySQL-kiszolgálót, a kiszolgálói rendszergazda felhasználónevet és jelszót adott meg. További [információt ebben a](quickstart-create-mysql-server-database-using-azure-portal.md)rövid útmutatóban talál. A kiszolgáló rendszergazdájának felhasználónevét a Azure Portalban határozhatja meg.
@@ -115,7 +113,7 @@ Azure Database for MySQL-kiszolgáló létrehozása után az első kiszolgálói
 
 Az összes Azure Database for MySQL-kiszolgáló egy "azure_superuser" nevű felhasználóval jön létre. Ez egy, a Microsoft által létrehozott rendszerfiók, amely a kiszolgáló felügyeletét, biztonsági mentését és egyéb rendszeres karbantartását végzi. A hívási mérnökök ezt a fiókot is használhatják a kiszolgáló elérésére a tanúsítványalapú hitelesítéssel rendelkező incidensek során, és az igény szerinti (JIT) folyamatokat kell használniuk.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Nyissa meg a tűzfalat az új felhasználói gépek IP-címei számára, hogy a kapcsolódásuk lehetővé váljon:
 

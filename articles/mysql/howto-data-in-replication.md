@@ -6,21 +6,19 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2021
-ms.openlocfilehash: f7103a83d115f30367cc07ff4e1ea64a9cc617b9
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 22974a47a6b1e9d49e5055a85f46286497cfe149
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98199546"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250532"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database for MySQL konfigurálása felhőbe irányuló replikálás
 
 Ez a cikk azt ismerteti, hogyan állíthatja be a Azure Database for MySQL [felhőbe irányuló replikálás](concepts-data-in-replication.md) a forrás-és a replika-kiszolgálók konfigurálásával. Ez a cikk azt feltételezi, hogy a MySQL-kiszolgálókkal és-adatbázisokkal kapcsolatos korábbi tapasztalatokkal rendelkezik.
 
 > [!NOTE]
-> Elfogultság – ingyenes kommunikáció
->
-> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a _fő_ és a _Slave_ kifejezésre mutató hivatkozásokat tartalmaz. A [torzítás nélküli kommunikációhoz használható Microsoft-stílusú útmutató](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) ezeket a kizáró szavakat ismeri fel. A jelen cikkben szereplő szavak a konzisztencia miatt használatosak, mivel jelenleg a szoftverben megjelenő szavak. Ha a szoftver frissítve lett a szavak eltávolítására, a rendszer a cikket úgy frissíti, hogy az legyen az igazítás.
+> Ez a cikk a _Slave_ kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
 >
 
 Ahhoz, hogy replikát hozzon létre a Azure Database for MySQL szolgáltatásban, [felhőbe irányuló replikálás](concepts-data-in-replication.md)  szinkronizálja az adatokat egy helyszíni MySQL-kiszolgálóról, a virtuális gépekről vagy a Felhőbeli adatbázis-szolgáltatásokból. A beérkező adatokra épülő replikáció a MySQL natív bináris naplójának (binlog) fájlpozíció-alapú replikációján alapul. A BinLog-replikációval kapcsolatos további tudnivalókért tekintse meg a [MySQL BinLog-replikáció áttekintése](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)című témakört.
@@ -82,7 +80,7 @@ Az alábbi lépéseket követve elkészítheti és konfigurálhatja a helyszíne
       ping <output of step 2b>
       ```
 
-      Példa:
+      Például:
 
       ```bash
       C:\Users\testuser> ping e299ae56f000.tr1830.westus1-a.worker.database.windows.net
@@ -296,6 +294,6 @@ A replikálási hibák kihagyásához és a replikálás folytatásához haszná
 CALL mysql.az_replication_skip_counter;
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a Azure Database for MySQL [felhőbe irányuló replikálásról](concepts-data-in-replication.md) .

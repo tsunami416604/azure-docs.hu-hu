@@ -3,12 +3,12 @@ title: Azure Relay GYIK | Microsoft Docs
 description: Ez a cikk a Azure Relay szolgáltatással kapcsolatos gyakori kérdésekre adott válaszokat tartalmaz.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 77d3122942289654c0f651f9f648307123b23546
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 83cbc4b02bb8b63878abd046ed2314728546e87a
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131848"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250051"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay GYIK
 
@@ -70,7 +70,7 @@ A **netTCPRelay** WCF-kötéssel megnyitott továbbítások nem önálló üzene
 ## <a name="quotas"></a>Kvóták
 | Kvóta neve | Hatókör |  Jegyzetek | Érték |
 | --- | --- | --- | --- |
-| Párhuzamos figyelők egy továbbítón |Entitás |A további kapcsolatokra vonatkozó további kérelmeket a rendszer elutasítja, és a hívó kód kivételt kap. |25 |
+| Párhuzamos figyelők egy továbbítón |Entitás (hibrid kapcsolatok vagy WCF-továbbító) |A további kapcsolatokra vonatkozó további kérelmeket a rendszer elutasítja, és a hívó kód kivételt kap. |25 |
 | Egyidejű továbbítási kapcsolatok egy szolgáltatási névtér összes továbbítási végpontján |Névtér |- |5000 |
 | Továbbító végpontok szolgáltatási névtérben |Névtér |- |10,000 |
 | Az üzenetek mérete a [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) és a [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) relék számára |Névtér |Az ezeket a kvótákat meghaladó bejövő üzenetek elutasításra kerülnek, és a hívó kód kivételt kap. |64 KB |
@@ -121,7 +121,7 @@ A közös hozzáférésű aláírások (SAS) az SHA-256 biztonságos kivonatokon
 ### <a name="is-it-possible-to-allow-only-some-relay-endpoints"></a>Lehetséges a továbbítási végpontok engedélyezése?
 Igen. A továbbító ügyfél teljes tartománynevek használatával kapcsolatot létesít a Azure Relay szolgáltatással. Az ügyfelek hozzáadhatnak egy olyan bejegyzést a `*.servicebus.windows.net` tűzfalakhoz, amely támogatja a DNS-jóváhagyások listáját.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Névtér létrehozása](relay-create-namespace-portal.md)
 * [Ismerkedés a .NET-tel](relay-hybrid-connections-dotnet-get-started.md)
 * [Bevezetés a Node használatába](relay-hybrid-connections-node-get-started.md)

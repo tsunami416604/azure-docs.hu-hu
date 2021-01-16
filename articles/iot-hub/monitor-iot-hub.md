@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: conceptual
 ms.service: iot-hub
 ms.date: 11/06/2020
-ms.openlocfilehash: 2fabf75f74ccf57f57e7b47720ceda8885420842
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 35134f3ee4946d294ba6c6f71bd3953823d6d138
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460905"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250028"
 ---
 # <a name="monitoring-azure-iot-hub"></a>Az Azure IoT Hub figyelése
 
@@ -87,7 +87,7 @@ Az Azure IoT Hub gyűjtött platform-metrikák listáját az [Azure Monitoring I
 
 A darabszámú egységekben összegyűjtött IoT Hub platform metrikák esetében előfordulhat, hogy egyes összesítések nem lesznek elérhetők vagy használhatók. További információ: [támogatott összesítések a monitoring Azure IoT hub adatreferenciában](monitor-iot-hub-reference.md#supported-aggregations).
 
-Egyes IoT Hub mérőszámok, például [útválasztási metrikák](monitor-iot-hub-reference.md#routing-metrics), többdimenziós. Ezekben a mérőszámokban [szűrőket](../azure-monitor/platform/metrics-charts.md#apply-filters-to-charts) alkalmazhat, és egy dimenzió alapján [feloszthatja](../azure-monitor/platform/metrics-charts.md#apply-splitting-to-a-chart) a diagramokat.
+Egyes IoT Hub mérőszámok, például [útválasztási metrikák](monitor-iot-hub-reference.md#routing-metrics), többdimenziós. Ezekben a mérőszámokban [szűrőket](../azure-monitor/platform/metrics-charts.md#filters) alkalmazhat, és egy dimenzió alapján [feloszthatja](../azure-monitor/platform/metrics-charts.md#apply-splitting) a diagramokat.
 
 ## <a name="analyzing-logs"></a>Naplók elemzése
 
@@ -95,7 +95,7 @@ Azure Monitor naplókban lévő, az egyes táblákban található, egyedi tulajd
 
 Az adatok Azure Monitor naplókba való továbbításához létre kell hoznia egy diagnosztikai beállítást, amely erőforrás-naplókat vagy platform-metrikákat küld egy Log Analytics munkaterületre. További információ: [gyűjtemény és útválasztás](#collection-and-routing).
 
-Azure Portal a IoT hub bal oldali paneljén **Monitoring** található **naplók** lehetőség kiválasztásával elvégezheti log Analytics lekérdezések hatókörét, alapértelmezés szerint az IoT hub Azure monitor naplóiban gyűjtött naplókhoz és metrikához.
+Azure Portal a IoT hub bal oldali paneljén  található **naplók** lehetőség kiválasztásával elvégezheti log Analytics lekérdezések hatókörét, alapértelmezés szerint az IoT hub Azure monitor naplóiban gyűjtött naplókhoz és metrikához.
 
 :::image type="content" source="media/monitor-iot-hub/logs-portal.png" alt-text="Az IoT hub naplóinak lapja.":::
 
@@ -133,7 +133,7 @@ A következő táblázat a különböző Azure IoT SDK-k által használt SDK-ne
 | com. microsoft. Azure. iothub. Service. SDK | Java Service SDK |
 | com. microsoft. Azure. SDK. IOT. IOT-Device-Client | Java-eszköz SDK |
 | com. microsoft. Azure. SDK. IOT. IOT-Service-Client | Java Service SDK |
-| C# | Beágyazott C |
+| C | Beágyazott C |
 | C + (OSSimplified = Azure RTOS) | Azure RTOS |
 
 Ha IoT Hub erőforrás-naplókon végez lekérdezéseket, kinyerheti az SDK Version tulajdonságát. A következő lekérdezés például kinyeri az SDK Version tulajdonságát (és az eszköz AZONOSÍTÓját) a kapcsolatok műveletek által visszaadott tulajdonságokból. Ez a két tulajdonság a művelet időpontjával és annak az IoT hub erőforrás-azonosítójával együtt íródik, amelyhez az eszköz csatlakozik.

@@ -3,12 +3,12 @@ title: Az Azure-alkalmazások teljesítményének javítása az Advisor szolgál
 description: Az üzleti szempontból kritikus fontosságú alkalmazások sebességének és reagálásának javítása érdekében Azure Advisor teljesítményre vonatkozó javaslatokat használhat.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 8937272f8b6ef945d80076732ea38523f7b475a1
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: d7d4e87670ca529f38465e928c4067daec802b8f
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802541"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98248428"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Az Azure-alkalmazások teljesítményének növelése Azure Advisor használatával
 
@@ -177,7 +177,7 @@ További információ a [magával ejtő olvasói SDK](../cognitive-services/imme
 
 ## <a name="improve-vm-performance-by-changing-the-maximum-session-limit"></a>A virtuális gépek teljesítményének növelése a munkamenet maximális korlátjának módosításával
 
-Az Advisor azt észleli, hogy rendelkezik egy, a terheléselosztási algoritmust elsőként tartalmazó gazdagép-készlettel, és az alkalmazáskészlet maximális munkamenet-korlátja nagyobb vagy egyenlő, mint 99999. A mélységi terheléselosztás a maximális munkamenetkorlát alapján határozza meg, hogy legfeljebb hány felhasználó futtathat egyidejű munkameneteket egy adott munkamenet-gazdagépen. Ha a maximális munkamenet-korlát túl magas, a rendszer az összes felhasználói munkamenetet ugyanarra a munkamenet-gazdagépre irányítja, és ez a teljesítménnyel és a megbízhatósággal kapcsolatos problémákat okoz. Ezért, amikor a gazdagépet úgy állítja be, hogy az első terheléselosztással rendelkezzen, a telepítés és a virtuális gépek kapacitása alapján kell beállítania a megfelelő maximális munkamenet-korlátot. 
+Az Advisor azt észleli, hogy rendelkezik egy, a terheléselosztási algoritmust elsőként tartalmazó gazdagép-készlettel, és az alkalmazáskészlet maximális munkamenet-korlátja nagyobb vagy egyenlő, mint 999999. A mélységi terheléselosztás a maximális munkamenetkorlát alapján határozza meg, hogy legfeljebb hány felhasználó futtathat egyidejű munkameneteket egy adott munkamenet-gazdagépen. Ha a maximális munkamenet-korlát túl magas, a rendszer az összes felhasználói munkamenetet ugyanarra a munkamenet-gazdagépre irányítja, és ez a teljesítménnyel és a megbízhatósággal kapcsolatos problémákat okoz. Ezért, amikor a gazdagépet úgy állítja be, hogy az első terheléselosztással rendelkezzen, a telepítés és a virtuális gépek kapacitása alapján kell beállítania a megfelelő maximális munkamenet-korlátot. 
 
 A Windows rendszerű virtuális asztali terheléselosztással kapcsolatos további tudnivalókért tekintse meg [a Windows rendszerű virtuális asztali terheléselosztási módszer konfigurálása](/azure/virtual-desktop/troubleshoot-set-up-overview)című témakört.
 

@@ -4,12 +4,12 @@ description: A Service Fabric, Virtual Machines, Web Apps és Cloud Services szo
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.subservice: autoscale
-ms.openlocfilehash: a29b5d11a6ea06af9d5b6a8b5120c6f0caa6601e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c4589acd17e76d1341d5aceada67e565c8f8c37
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979043"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251267"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Az Azure-méretezés hibaelhárítása
  
@@ -51,20 +51,20 @@ Tekintsük át az autoskálázási szolgáltatás mérőszámait.
 
 ![Virtuálisgép-méretezési csoport százalékos CPU-példája](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-2.png)
 
-***1a. ábra – a virtuálisgép-méretezési csoport százalékos CPU-mérőszáma és a megfigyelt metrikus érték mérőszáma az automata skálázási beállításhoz***
+**_1a. ábra – a virtuálisgép-méretezési csoport százalékos CPU-mérőszáma és a megfigyelt metrikus érték mérőszáma_* _
 
 ![Metrika küszöbértéke és megfigyelt kapacitás](media/autoscale-troubleshoot/autoscale-metric-threshold-capacity-ex-full.png)
 
-***1b. ábra – metrikus küszöbérték és megfigyelt kapacitás***
+_*_1b. ábra – metrikus küszöbérték és megfigyelt kapacitás_*_
 
-Az 1b. ábrán a kibővíthető szabály **metrikai küszöbértéke** (világoskék vonal) 70.  A **megfigyelt kapacitás** (sötétkék vonal) az aktív példányok számát jeleníti meg, amely jelenleg 3. 
+Az 1b. ábrán a kibővíthető szabályhoz tartozó _ *metrikus küszöbérték** (világoskék vonal) 70.  A **megfigyelt kapacitás** (sötétkék vonal) az aktív példányok számát jeleníti meg, amely jelenleg 3. 
 
 > [!NOTE]
 > A **metrikai küszöbértéket** a metrikai szabály dimenziójának kiskálázása (növelés) szabály alapján kell szűrnie, hogy megjelenjen a kibővíthető küszöbérték és a szabály (csökkenés) skálázása. 
 
 ## <a name="example-2---advanced-autoscaling-for-a-virtual-machine-scale-set"></a>2. példa – a virtuálisgép-méretezési csoport speciális automatikus skálázása
 
-Van egy olyan automata méretezési beállítás, amely lehetővé teszi, hogy a virtuálisgép-méretezési csoport erőforrásai a saját metrika **kimenő folyamatai**alapján felskálázásra legyenek kibővítve. Figyelje meg, hogy a metrika küszöbértékének **felosztása példányok száma** beállítás be van jelölve. 
+Van egy olyan automata méretezési beállítás, amely lehetővé teszi, hogy a virtuálisgép-méretezési csoport erőforrásai a saját metrika **kimenő folyamatai** alapján felskálázásra legyenek kibővítve. Figyelje meg, hogy a metrika küszöbértékének **felosztása példányok száma** beállítás be van jelölve. 
 
 A skálázási művelet szabálya: 
 
@@ -76,18 +76,18 @@ Ebben az esetben a rendszer kiszámítja az autoskálázási motor megfigyelt me
 
 ![Virtuálisgép-méretezési csoportra vonatkozó mérőszámok – példa](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-2.png)
 
-***2. ábra – virtuálisgép-méretezési csoport autoskálázási metrikái diagramja – példa***
+**_2. ábra – virtuálisgép-méretezési csoport autoskálázási metrikái diagramok – példa_* _
 
 A 2. ábrán két mérőszámot tartalmazó diagramot láthat. 
 
-A fent látható diagram a **kimenő folyamatok** metrikájának tényleges értékét jeleníti meg. A tényleges érték 6. 
+A fent látható diagram a _ *kimenő folyamatok** metrika tényleges értékét jeleníti meg. A tényleges érték 6. 
 
 Az alsó diagramon néhány érték látható. 
  - A **megfigyelt metrikai érték** (világoskék) 3, mert 2 aktív példány van, és 6 osztva 2 3. 
  - A **megfigyelt kapacitás** (lila) megjeleníti az autoskálázási motor által látott példányszámot. 
  - A **metrika küszöbértéke** (Világoszöld) 10 értékre van állítva. 
 
-Ha több méretezési műveletre vonatkozó szabály van, akkor a metrikák, illetve a **szűrő hozzáadása** lehetőséggel egy adott forrás vagy szabály alapján megtekintheti a metrikát. A metrikai diagramok felosztásával kapcsolatos további információkért lásd a [metrikus diagramok speciális funkcióit – felosztás](metrics-charts.md#apply-splitting-to-a-chart)
+Ha több méretezési műveletre vonatkozó szabály van, akkor a metrikák, illetve a **szűrő hozzáadása** lehetőséggel egy adott forrás vagy szabály alapján megtekintheti a metrikát. A metrikai diagramok felosztásával kapcsolatos további információkért lásd a [metrikus diagramok speciális funkcióit – felosztás](metrics-charts.md#apply-splitting)
 
 ## <a name="example-3---understanding-autoscale-events"></a>3. példa – az autoscale-események ismertetése
 
@@ -111,7 +111,7 @@ A Azure Monitor támogatott szolgáltatásokhoz hasonlóan a [diagnosztikai beá
 
 ![Diagnosztikai beállítások autoskálázása](media/autoscale-troubleshoot/diagnostic-settings.png)
 
-Az előző képen az Azure Portal autoscale diagnosztikai beállítások láthatók. Itt kiválaszthatja a diagnosztikai/erőforrás-naplók lapot, és engedélyezheti a naplók gyűjtését és útválasztását. Ugyanezt a műveletet a REST API, a CLI, a PowerShell és a Resource Manager-sablonok használatával is végrehajthatja a diagnosztikai beállításokhoz. Ehhez válassza ki az erőforrástípust a *Microsoft. elemzések/AutoscaleSettings*lehetőség kiválasztásával. 
+Az előző képen az Azure Portal autoscale diagnosztikai beállítások láthatók. Itt kiválaszthatja a diagnosztikai/erőforrás-naplók lapot, és engedélyezheti a naplók gyűjtését és útválasztását. Ugyanezt a műveletet a REST API, a CLI, a PowerShell és a Resource Manager-sablonok használatával is végrehajthatja a diagnosztikai beállításokhoz. Ehhez válassza ki az erőforrástípust a *Microsoft. elemzések/AutoscaleSettings* lehetőség kiválasztásával. 
 
 ## <a name="troubleshooting-using-autoscale-logs"></a>Hibaelhárítás az autoscale logs használatával 
 
@@ -205,5 +205,5 @@ Riasztási szabályok létrehozásával értesítést kaphat az autoscale művel
 
 További információ: az [erőforrás-naplók autoskálázása](autoscale-resource-log-schema.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Olvassa el az [autoscale ajánlott eljárásaival](autoscale-best-practices.md)kapcsolatos információkat. 

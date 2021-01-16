@@ -2,13 +2,13 @@
 title: Erőforrások üzembe helyezése a PowerShell és a sablon használatával
 description: Erőforrások üzembe helyezése az Azure-ban Azure Resource Manager és Azure PowerShell használatával. Az erőforrások egy Resource Manager-sablonban vannak meghatározva.
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: 40ee659f5892c983f84409a10634c6a8d6d78cc5
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.date: 01/15/2021
+ms.openlocfilehash: d895c6e029b0b4a70333dde987706549609c8bd3
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028489"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251023"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>Erőforrások üzembe helyezése ARM-sablonokkal és Azure PowerShell
 
@@ -135,7 +135,7 @@ Az egyidejű központi telepítésekkel való ütközések elkerülése érdeké
 
 Helyi vagy távoli sablon telepítése helyett hozzon létre egy [specifikációt](template-specs.md). A sablon spec egy ARM-sablont tartalmazó Azure-előfizetésben található erőforrás. Megkönnyíti a sablon biztonságos megosztását a szervezetben lévő felhasználókkal. Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával hozzáférést biztosíthat a sablon specifikációjának. Ez a funkció jelenleg előzetes verzióban érhető el.
 
-Az alábbi példák bemutatják, hogyan hozhat létre és helyezhet üzembe egy sablon-specifikációt. Ezek a parancsok csak akkor érhetők el, ha [regisztrált az előzetes](https://aka.ms/templateSpecOnboarding)verzióra.
+Az alábbi példák bemutatják, hogyan hozhat létre és helyezhet üzembe egy sablon-specifikációt.
 
 Először hozza létre a sablon specifikációját az ARM-sablon biztosításával.
 

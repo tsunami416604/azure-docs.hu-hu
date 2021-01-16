@@ -3,14 +3,14 @@ title: Azure-on futó Kubernetes oktatóanyag – Fürtök üzembe helyezése
 description: Az Azure Kubernetes Service (AKS) ezen oktatóanyagában egy AKS-fürtöt fog létrehozni, és kapcsolódni fog a Kubernetes-főcsomóponthoz a kubectl használatával.
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/12/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 0e034ebede39a3fd9046ced9716323d0c7d874df
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: a8e0ddcd77c26a00cf784fb8c2372734314dc0bb
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684070"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250638"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Oktatóanyag: Azure Kubernetes Service- (AKS-) fürt üzembe helyezése
 
@@ -21,7 +21,7 @@ A Kubernetes tárolóalapú alkalmazásokhoz kínál elosztott platformot. Az AK
 > * A Kubernetes parancssori felület (kubectl) telepítése
 > * A kubectl konfigurálása az AKS-fürthöz való csatlakozásra
 
-A további oktatóanyagokban az Azure vote-alkalmazás üzembe helyezése a fürtön történik, méretezhető és frissítve.
+A későbbi oktatóanyagokban az Azure vote alkalmazást üzembe helyezi a fürtön, méretezhető és frissül.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -33,9 +33,9 @@ Ehhez az oktatóanyaghoz az Azure CLI 2.0.53 vagy újabb verzióját kell futtat
 
 Az AK-fürtök Kubernetes szerepköralapú hozzáférés-vezérlést (Kubernetes RBAC) használhatnak. Ezekkel a vezérlőkkel a felhasználókhoz rendelt szerepkörök alapján definiálható az erőforrásokhoz való hozzáférés. Az engedélyek kombinálva vannak, ha egy felhasználó több szerepkörhöz van rendelve, és az engedélyek hatóköre egyetlen névtérre vagy a teljes fürtre is kiterjed. Alapértelmezés szerint az Azure CLI automatikusan engedélyezi a Kubernetes RBAC, amikor létrehoz egy AK-fürtöt.
 
-AKS-fürtöket az [az aks create][] paranccsal hozhat létre. A következő példában létrehozunk egy *myAKSCluster* nevű fürtöt a *myResourceGroup* nevű erőforráscsoportban. Ez az erőforráscsoport az [előző oktatóanyagban][aks-tutorial-prepare-acr] , a *eastus* régióban lett létrehozva. A következő példa nem ad meg régiót, így az AK-fürt is létrejön az *eastus* régióban. Az AK-ra vonatkozó erőforrás-korlátokkal és a régió rendelkezésre állásával kapcsolatos további információkért lásd: [kvóták, virtuálisgép-méretre vonatkozó korlátozások és régiók rendelkezésre állása az Azure Kubernetes szolgáltatásban (ak)][quotas-skus-regions] .
+AKS-fürtöket az [az aks create][] paranccsal hozhat létre. A következő példában létrehozunk egy *myAKSCluster* nevű fürtöt a *myResourceGroup* nevű erőforráscsoportban. Ez az erőforráscsoport az [előző oktatóanyagban][aks-tutorial-prepare-acr] , a *eastus* régióban lett létrehozva. A következő példa nem ad meg régiót, így az AK-fürt is létrejön az *eastus* régióban. További információ: a [kvóták, a virtuálisgép-méretre vonatkozó korlátozások és a régió rendelkezésre állása az Azure Kubernetes szolgáltatásban (ak)][quotas-skus-regions] további információ az erőforrás-korlátokról és a régió rendelkezésre állásáról az AK-ban.
 
-Annak engedélyezéséhez, hogy egy AK-fürt más Azure-erőforrásokkal is működjön, automatikusan létrejön egy Azure Active Directory egyszerű szolgáltatás, mert nem adott meg ilyet. Ebben az egyszerű szolgáltatásban [megkapta a jogot arra, hogy][container-registry-integration] az előző oktatóanyagban létrehozott Azure Container Registry (ACR) példányból lekérje a lemezképeket. Vegye figyelembe, hogy egy egyszerű szolgáltatásnév helyett [felügyelt identitást](use-managed-identity.md) használhat a könnyebb kezelés érdekében.
+Annak engedélyezéséhez, hogy egy AK-fürt más Azure-erőforrásokkal is működjön, automatikusan létrejön egy Azure Active Directory egyszerű szolgáltatás, mert nem adott meg ilyet. Ebben az egyszerű szolgáltatásban [megkapta a jogot arra, hogy][container-registry-integration] az előző oktatóanyagban létrehozott Azure Container Registry (ACR) példányból lekérje a lemezképeket. A parancs sikeres végrehajtásához rendelkeznie kell egy **tulajdonos** vagy **Azure-fiók rendszergazdai** szerepkörrel az Azure-előfizetésben.
 
 ```azurecli
 az aks create \
@@ -46,7 +46,7 @@ az aks create \
     --attach-acr <acrName>
 ```
 
-Manuálisan is konfigurálhat egy egyszerű szolgáltatást a képek ACR-ből való lekéréséhez. További információkért tekintse meg az [ACR-hitelesítés egyszerű szolgáltatásokkal](../container-registry/container-registry-auth-service-principal.md) vagy a [Kubernetes egy lekéréses titokkal történő hitelesítését](../container-registry/container-registry-auth-kubernetes.md)ismertető témakört.
+Ha el szeretné kerülni a **tulajdonos** vagy az **Azure-fiók rendszergazdai** szerepkörének megkövetelését, manuálisan is konfigurálhat egy egyszerű szolgáltatást a rendszerképek ACR-ből való lekéréséhez. További információkért tekintse meg az [ACR-hitelesítés egyszerű szolgáltatásokkal](../container-registry/container-registry-auth-service-principal.md) vagy a [Kubernetes egy lekéréses titokkal történő hitelesítését](../container-registry/container-registry-auth-kubernetes.md)ismertető témakört. Azt is megteheti, hogy az egyszerű felügyelet érdekében [felügyelt identitást](use-managed-identity.md) használ egy egyszerű szolgáltatás helyett.
 
 Néhány perc elteltével az üzembe helyezés befejeződik, és visszaadja a JSON-formátumú adatokat az AK-beli telepítésről.
 
@@ -65,7 +65,7 @@ az aks install-cli
 
 ## <a name="connect-to-cluster-using-kubectl"></a>Csatlakozás fürthöz a kubectl használatával
 
-Az [aks get-credentials][] paranccsal konfigurálható`kubectl` a Kubernetes-fürthöz való csatlakozásra. A következő példa a *myAKSCluster* nevű AK-fürt hitelesítő adatait kéri le a *myResourceGroup*:
+Az [az aks get-credentials][] paranccsal konfigurálható `kubectl` a Kubernetes-fürthöz való csatlakozásra. A következő példa a *myAKSCluster* nevű AK-fürt hitelesítő adatait kéri le a *myResourceGroup*:
 
 ```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -76,11 +76,12 @@ A fürthöz való kapcsolódás ellenőrzéséhez futtassa a [kubectl Get Nodes]
 ```
 $ kubectl get nodes
 
-NAME                       STATUS   ROLES   AGE   VERSION
-aks-nodepool1-12345678-0   Ready    agent   32m   v1.14.8
+NAME                                STATUS   ROLES   AGE     VERSION
+aks-nodepool1-37463671-vmss000000   Ready    agent   2m37s   v1.18.10
+aks-nodepool1-37463671-vmss000001   Ready    agent   2m28s   v1.18.10
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy Kubernetes-fürtöt helyezett üzembe az AKS-ben, és úgy konfigurálta a `kubectl` elemet, hogy a fürthöz csatlakozzon. Megtanulta végrehajtani az alábbi műveleteket:
 

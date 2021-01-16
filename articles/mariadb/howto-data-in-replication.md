@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/15/2021
-ms.openlocfilehash: fb7d9f78ac5498affa10521e17cff4348eecb5eb
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 5ebae41e68633eb10959c56011dd71952f9564bd
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231944"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250417"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>felhőbe irányuló replikálás konfigurálása Azure Database for MariaDB
 
@@ -23,12 +23,6 @@ A jelen cikkben ismertetett lépések végrehajtása előtt tekintse át az adat
 
 > [!NOTE]
 > Ha a forráskiszolgáló 10,2-es vagy újabb verziójú, javasoljuk, hogy a [globális tranzakció-azonosító](https://mariadb.com/kb/en/library/gtid/)használatával állítsa be felhőbe irányuló replikálás.
-
-> [!NOTE]
-> Elfogultság – ingyenes kommunikáció
->
-> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a _fő_ és a _Slave_ kifejezésre mutató hivatkozásokat tartalmaz. A [torzítás nélküli kommunikációhoz használható Microsoft-stílusú útmutató](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) ezeket a kizáró szavakat ismeri fel. A jelen cikkben szereplő szavak a konzisztencia miatt használatosak, mivel jelenleg a szoftverben megjelenő szavak. Ha a szoftver frissítve lett a szavak eltávolítására, a rendszer a cikket úgy frissíti, hogy az legyen az igazítás.
->
 
 ## <a name="create-a-mariadb-server-to-use-as-a-replica"></a>Replikaként használandó MariaDB-kiszolgáló létrehozása
 
@@ -46,6 +40,10 @@ A jelen cikkben ismertetett lépések végrehajtása előtt tekintse át az adat
 3. Adja hozzá a forráskiszolgáló IP-címét a replika tűzfalszabály-szabályaihoz. 
 
    A tűzfalszabályokat az [Azure Portallal](howto-manage-firewall-portal.md) vagy az [Azure CLI-vel](howto-manage-firewall-cli.md) frissítheti.
+
+> [!NOTE]
+> Ez a cikk a _Slave_ kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
+>
 
 ## <a name="configure-the-source-server"></a>A forráskiszolgáló konfigurálása
 

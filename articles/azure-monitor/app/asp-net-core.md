@@ -4,12 +4,12 @@ description: ASP.NET Core webalkalmazások figyelése a rendelkezésre állás, 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 2921c6379b34e002013b5f0087cefd502ab0ab84
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 2f17f4fbed196932ad7a5680338c459740e4d3bd
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904533"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249108"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights ASP.NET Core alkalmazásokhoz
 
@@ -59,7 +59,7 @@ Visual Studio for Mac használja a [manuális útmutatót](#enable-application-i
 
      ![Képernyőfelvétel: a Application Insights csomag kiválasztása a frissítéshez](./media/asp-net-core/update-nuget-package.png)
 
-6. Ha követte a választható tippet, és hozzáadta a projektet a forrás vezérlőelemhez, lépjen a **View**  >  **Team Explorer**  >  **változások** megtekintése elemre. Ezután válassza ki az egyes fájlokat, és tekintse meg a Application Insights telemetria által végzett módosítások különbségeit.
+6. Ha követte a választható tippet, és hozzáadta a projektet a forrás vezérlőelemhez, lépjen a   >  **Team Explorer**  >  **változások** megtekintése elemre. Ezután válassza ki az egyes fájlokat, és tekintse meg a Application Insights telemetria által végzett módosítások különbségeit.
 
 ## <a name="enable-application-insights-server-side-telemetry-no-visual-studio"></a>Application Insights kiszolgálóoldali telemetria engedélyezése (nincs Visual Studio)
 
@@ -69,7 +69,7 @@ Visual Studio for Mac használja a [manuális útmutatót](#enable-application-i
 
     ```xml
         <ItemGroup>
-          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.13.1" />
+          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.16.0" />
         </ItemGroup>
     ```
 
@@ -232,7 +232,7 @@ A legnaprakészebb listához tekintse [meg `ApplicationInsightsServiceOptions` a
 
 ### <a name="configuration-recommendation-for-microsoftapplicationinsightsaspnetcore-sdk-2150--above"></a>A Microsoft. ApplicationInsights. AspNetCore SDK-beli 2.15.0-& konfigurációs javaslata
 
-A Microsoft. ApplicationInsights. AspNetCore [SDK verziójától](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0) kezdődően a javaslat az összes rendelkezésre álló beállítás konfigurálása a `ApplicationInsightsServiceOptions` alkalmazásban, beleértve az alkalmazások példányát használó instrumentationkey is `IConfiguration` . A beállításoknak a "ApplicationInsights" szakasz alá kell esnie, ahogy az alábbi példában is látható. A következő szakasz a rendszerállapot-kulcs konfigurálásának appsettings.js, valamint az adaptív mintavételi és teljesítményszámláló-gyűjtemény letiltására is lehetőséget nyújt.
+A Microsoft. ApplicationInsights. AspNetCore SDK [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0)verziójától kezdődően a következő javaslat szerint kell konfigurálni az összes rendelkezésre álló beállítást `ApplicationInsightsServiceOptions` , beleértve az alkalmazások példányát használó instrumentationkey is `IConfiguration` . A beállításoknak a "ApplicationInsights" szakasz alá kell esnie, ahogy az alábbi példában is látható. A következő szakasz a rendszerállapot-kulcs konfigurálásának appsettings.js, valamint az adaptív mintavételi és teljesítményszámláló-gyűjtemény letiltására is lehetőséget nyújt.
 
 ```json
 {
@@ -522,7 +522,7 @@ Ehhez az SDK `HttpContext` -hoz szükséges, ezért nem működik semmilyen nem 
 
 A legújabb frissítések és hibajavítások [olvassa el a kibocsátási megjegyzéseket](./release-notes.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Fedezze fel a felhasználói folyamatokat](./usage-flows.md) , hogy megtudja, hogyan navigálnak a felhasználók az alkalmazáson keresztül.
 * [Egy pillanatkép-gyűjtemény konfigurálásával](./snapshot-debugger.md) megtekintheti a forráskód és a változók állapotát a kivétel pillanatában.

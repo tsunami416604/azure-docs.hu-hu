@@ -4,12 +4,12 @@ description: Tekintse át, hogy mit tehet a metrikus riasztásokkal, és hogyan 
 ms.date: 01/13/2021
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: d8e0621f88455a68ad0ee1b236f6b423c9d54b52
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: ab80496784b5d86d270830546cec73aadbcc50a6
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179894"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251233"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>A metrikariasztások működése az Azure Monitorban
 
@@ -26,7 +26,7 @@ Tegyük fel, hogy létrehozott egy egyszerű statikus küszöbérték-metrika ri
 - Célként megadott erőforrás (a figyelni kívánt Azure-erőforrás): myVM
 - Metrika: százalékos CPU
 - Feltétel típusa: statikus
-- Idő összesítése (a nyers metrika értékeit futtató statisztika. A [támogatott időösszesítések](metrics-charts.md#changing-aggregation) a következők: min., max., átlag, összeg, darabszám): átlag
+- Idő összesítése (a nyers metrika értékeit futtató statisztika. A [támogatott időösszesítések](metrics-charts.md#aggregation) a következők: min., max., átlag, összeg, darabszám): átlag
 - Időtartam (a visszatekintő ablak, amelyen a metrika értékei be vannak jelölve): az elmúlt 5 percben
 - Gyakoriság (az a gyakoriság, amellyel a metrika riasztása ellenőrzi, hogy teljesülnek-e a feltételek): 1 perc
 - Operátor: nagyobb, mint
@@ -43,7 +43,7 @@ Tegyük fel, hogy létrehozott egy egyszerű dinamikus küszöbértékek mérős
 - Célként megadott erőforrás (a figyelni kívánt Azure-erőforrás): myVM
 - Metrika: százalékos CPU
 - Feltétel típusa: dinamikus
-- Idő összesítése (a nyers metrika értékeit futtató statisztika. A [támogatott időösszesítések](metrics-charts.md#changing-aggregation) a következők: min., max., átlag, összeg, darabszám): átlag
+- Idő összesítése (a nyers metrika értékeit futtató statisztika. A [támogatott időösszesítések](metrics-charts.md#aggregation) a következők: min., max., átlag, összeg, darabszám): átlag
 - Időtartam (a visszatekintő ablak, amelyen a metrika értékei be vannak jelölve): az elmúlt 5 percben
 - Gyakoriság (az a gyakoriság, amellyel a metrika riasztása ellenőrzi, hogy teljesülnek-e a feltételek): 1 perc
 - Operátor: nagyobb, mint
@@ -139,9 +139,9 @@ Eddig azt tapasztalta, hogy egyetlen metrikai riasztást is használhat egy vagy
 
 Ez a funkció jelenleg a platform metrikái (nem egyéni metrikák) esetén támogatott a következő szolgáltatásokhoz a következő Azure-felhőkben:
 
-| Szolgáltatás | Nyilvános Azure | Government | Kína |
+| Szolgáltatás | Nyilvános Azure | Államigazgatás | Kína |
 |:--------|:--------|:--------|:--------|
-| Virtuális gépek<sup>1</sup>  | **Igen** | **Igen** | No |
+| Virtuális gépek<sup>1</sup>  | **Igen** | **Igen** | Nem |
 | SQL Server-adatbázisok | **Igen** | **Igen** | **Igen** |
 | SQL Server rugalmas készletek | **Igen** | **Igen** | **Igen** |
 | NetApp-fájlok kapacitásának készletei | **Igen** | **Igen** | **Igen** |
@@ -177,10 +177,10 @@ A metrikákhoz kapcsolódó riasztások esetében általában 5 percen belül é
 A támogatott erőforrástípusok teljes listáját ebben a [cikkben](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)találja.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Megtudhatja, hogyan hozhat létre, tekinthet meg és kezelhet metrikus riasztásokat az Azure-ban](alerts-metric.md)
-- [Ismerje meg, hogyan hozhat létre riasztásokat az Azure Monti Metrikaböngésző](./metrics-charts.md#create-alert-rules)
+- [Ismerje meg, hogyan hozhat létre riasztásokat az Azure Monti Metrikaböngésző](./metrics-charts.md#alert-rules)
 - [Megtudhatja, hogyan helyezhet üzembe metrikus riasztásokat Azure Resource Manager sablonok használatával](./alerts-metric-create-templates.md)
 - [További információ a műveleti csoportokról](action-groups.md)
 - [További információ a dinamikus küszöbértékek feltételének típusáról](alerts-dynamic-thresholds.md)

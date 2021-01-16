@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
-ms.date: 09/30/2020
-ms.openlocfilehash: b4473ea304176615c35205494f342922869b71ea
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 01/15/2021
+ms.openlocfilehash: 6589f451d4db8f2ed77ce70a2bdfa9d76927c1e2
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793143"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251216"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Virtuális mag-modell áttekintése – Azure SQL Database és az Azure SQL felügyelt példánya 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -34,8 +34,8 @@ A virtuális mag modellben található szolgáltatási rétegek beállításai k
 |-|**Általános célú**|**Üzletileg kritikus**|**Rugalmas skálázás**|
 |---|---|---|---|
 |A következőkre alkalmas|A legtöbb üzleti számítási feladat. Költséghatékony, kiegyensúlyozott és skálázható számítási és tárolási lehetőségeket nyújt. |Több elkülönített replika használatával a lehető legnagyobb rugalmasságot nyújtja az üzleti alkalmazások számára, és az adatbázis-replikák esetében a legmagasabb I/O-teljesítményt biztosítja.|A legtöbb üzleti számítási feladat nagy mértékben méretezhető tárolási és olvasási méretezési követelményekkel.  Nagyobb rugalmasságot biztosít a hibákhoz azáltal, hogy lehetővé teszi több elkülönített adatbázis-replika konfigurációját. |
-|Storage|Távoli tárterületet használ.<br/>**SQL Database kiépített számítás** :<br/>5 GB – 4 TB<br/>**Kiszolgáló nélküli számítás** :<br/>5 GB – 3 TB<br/>**SQL felügyelt példány** : 32 GB – 8 TB |A helyi SSD-tárolót használ.<br/>**SQL Database kiépített számítás** :<br/>5 GB – 4 TB<br/>**SQL felügyelt példány** :<br/>32 GB – 4 TB |A tárterület rugalmas automatikus növekedése igény szerint. Akár 100 TB tárterületet is támogat. A helyi SSD-tárolót használ a helyi puffer-készlet gyorsítótárához és a helyi adattároláshoz. Az Azure-beli távoli tárterületet használja végső hosszú távú adattárként. |
-|IOPS és átviteli sebesség (hozzávetőleges)|**SQL Database** : az [önálló adatbázisok](resource-limits-vcore-single-databases.md) és a [rugalmas készletek](resource-limits-vcore-elastic-pools.md)erőforrás-korlátai.<br/>**SQL felügyelt példány** : lásd az [Azure SQL felügyelt példányok erőforrás-korlátainak áttekintése](../managed-instance/resource-limits.md#service-tier-characteristics)című témakört.|Tekintse meg az [önálló adatbázisok](resource-limits-vcore-single-databases.md) és a [rugalmas készletek](resource-limits-vcore-elastic-pools.md)erőforrás-korlátozásait.|A nagy kapacitású egy többrétegű architektúra, több szinten történő gyorsítótárazással. A hatékony IOPS és az átviteli sebesség a munkaterheléstól függ.|
+|Storage|Távoli tárterületet használ.<br/>**SQL Database kiépített számítás**:<br/>5 GB – 4 TB<br/>**Kiszolgáló nélküli számítás**:<br/>5 GB – 3 TB<br/>**SQL felügyelt példány**: 32 GB – 8 TB |A helyi SSD-tárolót használ.<br/>**SQL Database kiépített számítás**:<br/>5 GB – 4 TB<br/>**SQL felügyelt példány**:<br/>32 GB – 4 TB |A tárterület rugalmas automatikus növekedése igény szerint. Akár 100 TB tárterületet is támogat. A helyi SSD-tárolót használ a helyi puffer-készlet gyorsítótárához és a helyi adattároláshoz. Az Azure-beli távoli tárterületet használja végső hosszú távú adattárként. |
+|IOPS és átviteli sebesség (hozzávetőleges)|**SQL Database**: az [önálló adatbázisok](resource-limits-vcore-single-databases.md) és a [rugalmas készletek](resource-limits-vcore-elastic-pools.md)erőforrás-korlátai.<br/>**SQL felügyelt példány**: lásd az [Azure SQL felügyelt példányok erőforrás-korlátainak áttekintése](../managed-instance/resource-limits.md#service-tier-characteristics)című témakört.|Tekintse meg az [önálló adatbázisok](resource-limits-vcore-single-databases.md) és a [rugalmas készletek](resource-limits-vcore-elastic-pools.md)erőforrás-korlátozásait.|A nagy kapacitású egy többrétegű architektúra, több szinten történő gyorsítótárazással. A hatékony IOPS és az átviteli sebesség a munkaterheléstól függ.|
 |Rendelkezésre állás|1 replika, nincsenek olvasási méretezésű replikák|3 replika, 1 [olvasási léptékű replika](read-scale-out.md),<br/>zóna – redundáns magas rendelkezésre állás (HA)|1 írható-olvasható replika, valamint 0-4 [-es olvasási léptékű replika](read-scale-out.md)|
 |Biztonsági másolatok|[Olvasási hozzáférés – geo-redundáns tárolás (ra-GRS)](../../storage/common/geo-redundant-design.md), 7-35 nap (alapértelmezés szerint 7 nap)|[Ra-GRS](../..//storage/common/geo-redundant-design.md), 7-35 nap (alapértelmezés szerint 7 nap)|Pillanatkép-alapú biztonsági másolatok az Azure-beli távoli tárolóban. A visszaállítja ezeket a pillanatképeket a gyors helyreállításhoz. A biztonsági másolatok azonnaliek, és nem befolyásolják a számítási I/O-teljesítményt. A visszaállítások gyorsak, és nem az adatmennyiség (óra vagy nap helyett percekben).|
 |Memóriabeli|Nem támogatott|Támogatott|Nem támogatott|
@@ -69,7 +69,7 @@ A [kiszolgáló nélküli számítási réteg](serverless-tier-overview.md) auto
 
 ## <a name="hardware-generations"></a>Hardver generációi
 
-A virtuális mag modell hardver-létrehozási lehetőségei közé tartozik a Gen 4/5, az M-sorozat és a Fsv2 sorozat. A hardverek létrehozása általában meghatározza a számítási és a memóriabeli korlátokat, valamint azokat a jellemzőket, amelyek hatással vannak a munkaterhelés teljesítményére.
+A virtuális mag-modell hardver-létrehozási lehetőségei közé tartozik a Gen 4/5, az M sorozat, a Fsv2 sorozat és a DC sorozat. A hardverek létrehozása általában meghatározza a számítási és a memóriabeli korlátokat, valamint azokat a jellemzőket, amelyek hatással vannak a munkaterhelés teljesítményére.
 
 ### <a name="gen4gen5"></a>Gen4/Gen5
 
@@ -84,7 +84,6 @@ Azokon a régiókban, ahol a Gen4/Gen5 elérhető, tekintse meg a [Gen4/Gen5 ren
 - A Fsv2 kevesebb memóriát és tempdb biztosít, mint a többi hardver, így a korlátokra érzékeny munkaterhelések Ehelyett a Gen5 vagy az M sorozatokat is érdemes figyelembe venni.  
 
 A Fsv2 sorozat csak a általános célú szinten támogatott. Azokon a régiókban, ahol elérhető a Fsv2 sorozat, tekintse meg a [Fsv2-sorozat elérhetőségét](#fsv2-series-1)ismertető témakört.
-
 
 ### <a name="m-series"></a>M sorozat
 
@@ -101,6 +100,22 @@ Az M sorozat eléréséhez az előfizetésnek fizetős ajánlat típusúnak kell
 To enable M-series hardware for a subscription and region, a support request must be opened. The subscription must be a paid offer type including Pay-As-You-Go or Enterprise Agreement (EA).  If the support request is approved, then the selection and provisioning experience of M-series follows the same pattern as for other hardware generations. For regions where M-series is available, see [M-series availability](#m-series).
 -->
 
+### <a name="dc-series"></a>DC sorozat
+
+> [!NOTE]
+> A DC-Series szolgáltatás jelenleg **nyilvános előzetes** verzióban érhető el.
+
+- A DC sorozat hardvere Intel processzorokat használ a Software Guard Extensions (Intel SGX ENKLÁVÉHOZ) technológiával.
+- [Biztonságos enklávékkal rendelkező Always encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves)esetén a DC sorozat szükséges, amely más hardverkonfiguráció esetén nem támogatott.
+- A DC sorozat olyan számítási feladatokhoz lett tervezve, amelyek érzékeny adatokat dolgoznak fel, és a Always Encrypted biztonságos enklávék által biztosított bizalmas lekérdezés-feldolgozási képességeket igényelnek.
+- A DC-Series hardver kiegyensúlyozott számítási és memória-erőforrásokat biztosít.
+
+A DC sorozat csak a kiépített számítási feladatokhoz támogatott (nem támogatott a kiszolgáló nélkül), és nem támogatja a zóna-redundanciát. A DC sorozat elérhetőségét biztosító régiók esetében lásd: a [DC-sorozat rendelkezésre állása](#dc-series-1).
+
+#### <a name="azure-offer-types-supported-by-dc-series"></a>A DC sorozat által támogatott Azure-ajánlatok típusai
+
+A DC sorozat eléréséhez az előfizetésnek fizetős ajánlatnak kell lennie, beleértve az utólagos elszámolású vagy a Nagyvállalati Szerződés (EA) értéket.  A DC sorozat által támogatott Azure-ajánlatok teljes listájáért tekintse meg a [jelenlegi ajánlatokat költségkeret nélkül](https://azure.microsoft.com/support/legal/offer-details).
+
 ### <a name="compute-and-memory-specifications"></a>Számítási és memória-specifikációk
 
 
@@ -110,6 +125,7 @@ To enable M-series hardware for a subscription and region, a support request mus
 |Gen5     |**Kiépített számítás**<br>-Intel® E5-2673 v4 (Broadwell) 2,3-GHz, Intel® SP-8160 (Skylake) \* és intel® 8272CL (Cascade Lake) 2,5 GHz-es \* processzorok<br>– Akár 80 virtuális mag (1 virtuális mag = 1 Hyper-thread)<br><br>**Kiszolgáló nélküli számítástechnika**<br>-Intel® E5-2673 v4 (Broadwell) 2,3-GHz és Intel® SP-8160 (Skylake) * processzorok<br>– Akár 40 virtuális mag automatikus méretezése (1 virtuális mag = 1 Hyper-thread)|**Kiépített számítás**<br>-5,1 GB/virtuális mag<br>– Akár 408 GB-nyi kiépítés<br><br>**Kiszolgáló nélküli számítástechnika**<br>– Akár 24 GB-os automatikus méretezés virtuális mag<br>-Legfeljebb 120 GB-ig terjedő automatikus méretezés|
 |Fsv2 sorozat     |-Intel® 8168 (Skylake) processzorok<br>– A 3,4 GHz-es és az összes Core Turbo órajel-sebesség, valamint a 3,7 GHz-es maximális, egyetlen Core Turbo órajel.<br>– Akár 72 virtuális mag (1 virtuális mag = 1 Hyper-thread)|-1,9 GB/virtuális mag<br>– Akár 136 GB-nyi kiépítés|
 |M sorozat     |-Intel® E7-8890 v3 2,5 GHz és Intel® 8280M 2,7 GHz (Cascade Lake) processzorok<br>– Akár 128 virtuális mag (1 virtuális mag = 1 Hyper-thread)|– 29 GB/virtuális mag<br>– Akár 3,7 TB-os kiépítés|
+|DC sorozat     | -Intel XEON E-2288G processzorok<br>-Az Intel Software Guard bővítmény (Intel SGX ENKLÁVÉHOZ)<br>-Akár 8 virtuális mag (1 virtuális mag = 1 fizikai mag) | 4,5 GB/virtuális mag |
 
 \* A [sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) dinamikus felügyeleti nézetében az Intel® SP-8160 (Skylake) processzorokat használó adatbázisok hardveres generálása Gen6, míg az Intel® 8272CL (Cascade Lake) használó adatbázisok hardveres generálása Gen7 néven jelenik meg. Az összes Gen5-adatbázis erőforrás-korlátja azonos a processzor típusától (Broadwell, Skylake vagy Cascade Lake) függetlenül.
 
@@ -226,7 +242,16 @@ On the **Details** page, provide the following:
 Approved support requests are typically fulfilled within 5 business days.
 -->
 
-## <a name="next-steps"></a>Következő lépések
+#### <a name="dc-series"></a>DC sorozat
+
+> [!NOTE]
+> A DC-Series szolgáltatás jelenleg **nyilvános előzetes** verzióban érhető el.
+
+A DC sorozat a következő régiókban érhető el: Közép-Kanada, Kelet-Kanada, USA keleti régiója, Észak-Európa, Egyesült Királyság déli régiója, Nyugat-Európa, USA nyugati régiója.
+
+Ha egy jelenleg nem támogatott régióban található DC-sorozatra van szüksége, [küldjön egy támogatási jegyet](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) a [kérelmek kvótájának a Azure SQL Database és az SQL felügyelt példányra való növelésére](quota-increase-request.md)vonatkozó utasításokat követve.
+
+## <a name="next-steps"></a>További lépések
 
 Első lépésként tekintse meg a következőt: 
 - [SQL Database létrehozása a Azure Portal használatával](single-database-create-quickstart.md)
