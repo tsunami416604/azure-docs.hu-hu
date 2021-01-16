@@ -7,18 +7,18 @@ ms.author: shhazam
 ms.date: 12/2/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 2bd994f14863715274e137bce2dd6873eeec1135
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 49a0129ff26d4a12392066aa6304317d71fdb0f1
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98208760"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247590"
 ---
 # <a name="defender-for-iot-installation"></a>Defender a IoT telepítéséhez
 
 Ez a cikk azt ismerteti, hogyan telepítheti az Azure Defender következő elemeit a IoT:
 
-- **Érzékelő**: a IoT érzékelők Defender a passzív (ügynök nélküli) figyelés használatával gyűjti az internetkapcsolattal rendelkező hálózati forgalmat. A passzív és a nem befolyásolják, az érzékelők nulla hatással vannak az OT és a IoT hálózatokra és eszközökre. Az érzékelő egy SPAN porthoz vagy egy hálózati KOPPINTÁShoz csatlakozik, és azonnal megkezdi a hálózat figyelését. Észlelések jelennek meg az érzékelő konzolon. Itt megtekintheti, megvizsgálhatja és elemezheti őket egy hálózati térképen, az eszközök leltárában és a jelentések széles skáláján. Ilyenek például a kockázatértékelési jelentések, az adatbányászati lekérdezések és a támadási vektorok. További információ az érzékelő képességeiről a [Defender for IoT szenzor felhasználói útmutatója (közvetlen letöltés) című](https://aka.ms/AzureDefenderforIoTUserGuide)témakörben.
+- **Érzékelő**: a IoT érzékelők Defender a passzív (ügynök nélküli) figyelés használatával gyűjti az internetkapcsolattal rendelkező hálózati forgalmat. A passzív és a nem befolyásolják, az érzékelők nulla hatással vannak az OT és a IoT hálózatokra és eszközökre. Az érzékelő egy SPAN porthoz vagy egy hálózati KOPPINTÁShoz csatlakozik, és azonnal megkezdi a hálózat figyelését. Észlelések jelennek meg az érzékelő konzolon. Itt megtekintheti, megvizsgálhatja és elemezheti őket egy hálózati térképen, az eszközök leltárában és a jelentések széles skáláján. Ilyenek például a kockázatértékelési jelentések, az adatbányászati lekérdezések és a támadási vektorok. További információ az érzékelő képességeiről a [Defender for IoT szenzor felhasználói útmutatója (közvetlen letöltés) című](./getting-started.md)témakörben.
 
 - Helyszíni **felügyeleti konzol**: a helyszíni felügyeleti konzol lehetővé teszi az eszközök felügyeletét, a kockázatkezelést és a sebezhetőségek kezelését. Azt is felhasználhatja, hogy elvégezze a fenyegetések figyelését és az incidensek megválaszolását a vállalaton belül. Egységes áttekintést nyújt az összes hálózati eszközről, a legfontosabb IoT, valamint az olyan létesítményekben észlelt kockázati mutatókról és riasztásokról, amelyeken az érzékelők üzembe vannak helyezve. A helyszíni felügyeleti konzol segítségével megtekintheti és kezelheti az érzékelők gapped hálózatokban történő megtekintését és kezelését.
 
@@ -1071,6 +1071,6 @@ Bújtatás engedélyezése:
 
 4. Írja be a következő szöveget: `--port 10000`.
 
-### <a name="next-steps"></a>Következő lépések
+### <a name="next-steps"></a>További lépések
 
 [A hálózat beállítása](how-to-set-up-your-network.md)

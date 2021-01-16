@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 05/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bf446c858e40014a4085721d646f819e08542064
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97741423fa8b689a92bd9db78b810e6b86aefcbd
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87497885"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247063"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>Windows Server-tároló létrehozása Azure Kubernetes-szolgáltatásbeli (ak-) fürtön a PowerShell használatával
 
@@ -24,7 +24,11 @@ Ez a cikk azt feltételezi, hogy alapvető ismereteket Kubernetes a fogalmakról
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-Ha a PowerShell helyi használatát választja, akkor ehhez a cikkhez telepítenie kell az az PowerShell-modult, és csatlakoznia kell az Azure-fiókjához a [AzAccount](/powershell/module/az.accounts/Connect-AzAccount) parancsmag használatával. Az az PowerShell-modul telepítésével kapcsolatos további információkért lásd: [Install Azure PowerShell][install-azure-powershell].
+Ha a PowerShell helyi használatát választja, akkor ehhez a cikkhez telepítenie kell az az PowerShell-modult, és csatlakoznia kell az Azure-fiókjához a [AzAccount](/powershell/module/az.accounts/Connect-AzAccount) parancsmag használatával. Az az PowerShell-modul telepítésével kapcsolatos további információkért lásd: [Install Azure PowerShell][install-azure-powershell]. Az az. AK PowerShell-modult is telepítenie kell: 
+
+```azurepowershell-interactive
+Install-Module Az.Aks
+```
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
@@ -46,14 +50,14 @@ A következő további korlátozások érvényesek a Windows Server Node-készle
 * Az AK-fürt legfeljebb 100 csomópontot tartalmazhat az egyes csomópont-készletekben.
 * A Windows Server-csomópontok készletének neve legfeljebb 6 karakterből állhat.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) olyan logikai csoport, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Az erőforráscsoportok létrehozásakor meg kell adnia egy helyet. Ez a hely határozza meg, hogy az erőforráscsoport metaadatai hol vannak tárolva, és az erőforrások hol futnak az Azure-ban, ha nem ad meg másik régiót az erőforrások létrehozásakor. Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup][new-azresourcegroup] parancsmag használatával.
 
 A következő példában létrehozunk egy **myResourceGroup** nevű erőforráscsoportot az **eastus** helyen.
 
 > [!NOTE]
-> Ez a cikk PowerShell-szintaxist használ az oktatóanyag parancsaihoz. Ha Azure Cloud Shell használ, győződjön meg arról, hogy a Cloud Shell ablak bal felső részén található legördülő lista a **PowerShell**értékre van állítva.
+> Ez a cikk PowerShell-szintaxist használ az oktatóanyag parancsaihoz. Ha Azure Cloud Shell használ, győződjön meg arról, hogy a Cloud Shell ablak bal felső részén található legördülő lista a **PowerShell** értékre van állítva.
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroup -Location eastus
@@ -73,14 +77,14 @@ ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 
 Az `ssh-keygen` SSH-kulcspár létrehozásához használja a parancssori segédprogramot. További részletekért lásd a [gyors lépések: SSH nyilvános magánhálózati kulcspár létrehozása és használata az Azure-ban linuxos virtuális gépekhez](../virtual-machines/linux/mac-create-ssh-keys.md)című témakört.
 
-Ha olyan AK-fürtöt szeretne futtatni, amely támogatja a Windows Server-tárolók csomópont-készleteit, a fürtnek az [Azure CNI][azure-cni-about] (Advanced) hálózati beépülő modult használó hálózati házirendet kell használnia. További információ a szükséges alhálózati tartományok és hálózati megfontolások megtervezéséhez: az [Azure CNI hálózatkezelésének konfigurálása][use-advanced-networking]. Az alábbi [New-AzAks][new-azaks] parancsmag használatával hozzon létre egy **myAKSCluster**nevű AK-fürtöt. A következő példa létrehozza a szükséges hálózati erőforrásokat, ha nem léteznek.
+Ha olyan AK-fürtöt szeretne futtatni, amely támogatja a Windows Server-tárolók csomópont-készleteit, a fürtnek az [Azure CNI][azure-cni-about] (Advanced) hálózati beépülő modult használó hálózati házirendet kell használnia. További információ a szükséges alhálózati tartományok és hálózati megfontolások megtervezéséhez: az [Azure CNI hálózatkezelésének konfigurálása][use-advanced-networking]. Az alábbi [New-AzAks][new-azaks] parancsmag használatával hozzon létre egy **myAKSCluster** nevű AK-fürtöt. A következő példa létrehozza a szükséges hálózati erőforrásokat, ha nem léteznek.
 
 > [!NOTE]
 > Annak biztosítása érdekében, hogy a fürt megbízhatóan működjön, legalább 2 (két) csomópontot kell futtatnia az alapértelmezett csomópont-készletben.
 
 ```azurepowershell-interactive
 $Password = Read-Host -Prompt 'Please enter your password' -AsSecureString
-New-AzAKS -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 2 -KubernetesVersion 1.16.7 -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets -WindowsProfileAdminUserName akswinuser -WindowsProfileAdminUserPassword $Password
+New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 2 -KubernetesVersion 1.16.7 -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets -WindowsProfileAdminUserName akswinuser -WindowsProfileAdminUserPassword $Password
 ```
 
 > [!Note]
@@ -204,7 +208,7 @@ A folyamat állapotának monitorozásához használja [kubectl get service][kube
 kubectl get service sample --watch
 ```
 
-Kezdetben a **minta** szolgáltatás **külső IP-címe** **függőben**jelenik meg.
+Kezdetben a **minta** szolgáltatás **külső IP-címe** **függőben** jelenik meg.
 
 ```plaintext
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE

@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0d833c32000eb91511782184ef4455bc1973a714
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: a7ee4e205851a751f7a50ac0ddadfb4e4c7eb81a
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97807909"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247403"
 ---
 # <a name="azure-synapse-analytics-frequently-asked-questions"></a>Azure szinapszis Analytics – gyakori kérdések
 
@@ -71,7 +71,7 @@ A: a Apache Spark szinapszis hivatkozása a GA. A kiszolgáló nélküli SQL-ké
 
 Válasz: igen! A folyamat összes összetevője, jegyzetfüzete, SQL-szkriptje és Spark-feladatának definíciója a git-ben fog megjelenni. Az összes készlet-definíciót a git as ARM-sablonokban tárolja a rendszer. A dedikált SQL Pool-objektumokat (sémákat, táblákat, nézeteket stb.) a CI/CD-támogatással rendelkező adatbázis-projektekkel felügyeli a rendszer.
 
-## <a name="pipelines"></a>Folyamatok
+## <a name="pipelines"></a>Pipelines
 
 ### <a name="q-how-do-i-ensure-i-know-what-credential-is-being-used-to-run-a-pipeline"></a>K: Hogyan arról, hogy tudom, milyen hitelesítő adatokat használ a folyamat futtatásához? 
 
@@ -138,11 +138,6 @@ A: nincs "Move" vagy "Migration". Választhat, hogy engedélyezi-e az új munkat
 ### <a name="q-what-is-the-default-deployment-of-dedicated-sql-pools-now"></a>K: mi a dedikált SQL-készletek alapértelmezett telepítése? 
 
 A: alapértelmezés szerint az összes új dedikált SQL-készletet egy munkaterületre telepíti a rendszer. Ha azonban továbbra is létre kell hoznia egy dedikált SQL-készletet (korábban SQL DW) egy önálló űrlapon. 
-
-
-### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-sql-pools"></a>K: melyek a dedikált SQL-készletek és a kiszolgáló nélküli SQL-készletek közötti funkcionális különbségek?
-
-A: teljes listát talál a [T-SQL szolgáltatásbeli különbségekről a SZINAPSZIS SQL-ben](./sql/overview-features.md).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/27/2020
-ms.openlocfilehash: b038834df3889a8b4b7f4a749568635e99f8408e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8b63dfb015c7337e36dac3812e92ddc53914206d
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188751"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247165"
 ---
 # <a name="how-to-review-and-publish-an-offer-to-the-commercial-marketplace"></a>Ajánlat áttekintése és közzététele a kereskedelmi piactéren
 
@@ -150,7 +150,7 @@ Az alábbi képernyőképen egy SaaS-ajánlat **ajánlat áttekintése** lapja l
 ### <a name="previewing-and-approving-your-offer"></a>Az ajánlat előzetes megtekintése és jóváhagyása
 
 > [!IMPORTANT]
-> A végpontok közötti vásárlási és beállítási folyamat ellenőrzéséhez vásárolja meg ajánlatát, amíg az előzetes verzióban is elérhető. Először értesítse a Microsoftot egy [támogatási jegyről](https://aka.ms/marketplacesupport) , hogy ne dolgozzon fel díjat.
+> A végpontok közötti vásárlási és beállítási folyamat ellenőrzéséhez vásárolja meg ajánlatát, amíg az előzetes verzióban is elérhető. Először értesítse a Microsoftot egy [támogatási jegyről](https://aka.ms/marketplacesupport) , hogy ne dolgozzon fel díjat. Ha az ajánlata egy kapcsolatfelvételi listával rendelkezik, tesztelje, hogy az érdeklődő a várt módon jön létre, ha az előzetes verzióban megadja a kapcsolatfelvételi adatokat.
 
 Az **ajánlat áttekintése** lapon a **Go Live** gomb alatt láthatók az előzetes verziójú hivatkozások. A AppSource előzetes verziójához, az Azure Marketplace előzetes verziójához vagy mindkettőhöz az ajánlat létrehozásakor választott beállításoktól függően lesz hivatkozás. Ha úgy dönt, hogy az ajánlatot a Microsofton keresztül értékesíti, akkor bárki, aki hozzá lett adva az előzetes verzió célközönségéhez, tesztelheti az ajánlat beszerzését és üzembe helyezését, hogy az megfeleljen a jelen szakaszban foglalt követelményeknek.
 
@@ -262,6 +262,6 @@ Az [érvényesítési és a közzétételi lépéseknek](#validation-and-publish
 
 [![Példa arra, hogy az előzmények oldal hogyan jeleníti meg az érvényesítési és közzétételi lépéseket.](./media/review-publish-offer/validation-and-publishing-event.png)](./media/review-publish-offer/validation-and-publishing-event.png#lightbox)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A partner Center kereskedelmi piactérről származó analitikai jelentések elérése](partner-center-portal/analytics.md)

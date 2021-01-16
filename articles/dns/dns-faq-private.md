@@ -5,14 +5,14 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: article
-ms.date: 10/05/2019
+ms.date: 01/15/2021
 ms.author: rohink
-ms.openlocfilehash: 24f2ca238288854b99160a25c3d4dcedf8ce3368
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3272f4fea4169fd5e91b1ba2b97ad72dfbb49080
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952386"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247386"
 ---
 # <a name="azure-private-dns-faq"></a>Azure Private DNS – gyakori kérdések
 
@@ -89,6 +89,10 @@ Ha a meglévő privát DNS-zónát az előzetes verziójú API-val hozták létr
 
 Javasoljuk, hogy a lehető leghamarabb telepítse át az új erőforrás-modellre. A régi erőforrás-modell támogatott lesz, azonban a modellen felül további funkciók nem lesznek kifejlesztve. A jövőben azt szeretnénk, hogy az új erőforrás-modell mellett is érvénytelenítse azt. A meglévő privát DNS-zónák új erőforrás-modellre való áttelepítésével kapcsolatos útmutatásért lásd:[Azure DNS privát zónák áttelepítési útmutatója](private-dns-migration-guide.md).
 
-## <a name="next-steps"></a>Következő lépések
+### <a name="does-azure-dns-private-zones-store-any-customer-content"></a>A privát zónák Azure DNS a vásárlói tartalmat?
+
+Nem, Azure DNS privát zónák nem tárolnak felhasználói tartalmakat.
+
+## <a name="next-steps"></a>További lépések
 
 - [További információ az Azure saját DNS](private-dns-overview.md)

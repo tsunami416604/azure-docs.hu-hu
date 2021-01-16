@@ -3,12 +3,12 @@ title: Azure Event Grid kézbesítés és újrapróbálkozás
 description: Leírja, hogy Azure Event Grid hogyan kézbesíti az eseményeket, és hogyan kezeli a kézbesítetlen üzeneteket.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 51473cf457a1c713e6694edd23c344be8c4d439e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3c4ed6ec2c9eae4dbcf70a831e3e7f70a28a57a0
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463237"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247369"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid üzenet kézbesítése és újrapróbálkozás
 
@@ -57,7 +57,7 @@ Az Azure CLI és a Event Grid használatával kapcsolatos további információk
 
 Ha a EventGrid hibaüzenetet kap egy esemény kézbesítési kísérlete során, a EventGrid eldönti, hogy újra kell-e próbálkoznia a kézbesítéssel vagy a kézbesítetlen levelekkel, vagy el kell dobnia az eseményt a hiba típusa alapján. 
 
-Ha az előfizetett végpont által visszaadott hiba olyan konfigurációval kapcsolatos hiba, amely nem oldható fel az újrapróbálkozásokkal (például ha a végpont törölve van), a EventGrid elküldi az eseményt, vagy eldobja az eseményt, ha a kézbesítetlen levél nincs konfigurálva.
+Ha az előfizetett végpont által visszaadott hiba olyan konfigurációval kapcsolatos hiba, amely nem oldható fel az újrapróbálkozásokkal (például ha a végpont törölve van), akkor a EventGrid elküldheti az eseményt vagy eldobja az eseményt, ha a kézbesítetlen levél nincs konfigurálva.
 
 A következő típusú végpontok típusai nem történnek újra:
 
@@ -67,7 +67,7 @@ A következő típusú végpontok típusai nem történnek újra:
 | Webhook | 400 hibás kérelem, 413 kérelem entitása túl nagy, 403 Tiltott, 404 nem található, 401 jogosulatlan |
  
 > [!NOTE]
-> Ha a Dead-Letter nincs konfigurálva a végponthoz, az események a fenti hibák miatt elvesznek, ezért érdemes a kézbesítetlen levelek konfigurálását használni, ha nem szeretné, hogy az ilyen típusú események el legyenek dobva.
+> Ha a Dead-Letter nincs konfigurálva a végponthoz, az események a fenti hibák miatt el lesznek dobva. Ha nem szeretné, hogy az ilyen típusú események el legyenek dobva, érdemes lehet a kézbesítetlen levelek konfigurálása.
 
 Ha az előfizetett végpont által visszaadott hiba nem szerepel a fenti listában, a EventGrid a lent ismertetett szabályzatok használatával hajtja végre az újrapróbálkozást:
 
@@ -80,7 +80,10 @@ Az üzenet kézbesítése után a Event Grid 30 másodpercet vár a válaszra. 3
 - 10 perc
 - 30 perc
 - 1 óra
-- Óránként legfeljebb 24 óráig
+- 3 óra
+- 6 óra
+- 12 óránként akár 24 óráig
+
 
 Ha a végpont 3 percen belül válaszol, Event Grid megpróbálja eltávolítani az eseményt az újrapróbálkozási sorból a legjobb erőfeszítés alapján, de a duplikált elemek továbbra is fogadhatók.
 
@@ -104,7 +107,7 @@ Ha Event Grid egy adott időszakon belül nem tud eseményt kézbesíteni, vagy 
 
 Ha a feltételek bármelyike teljesül, az esemény eldobása vagy elutasítása nem történik meg.  Alapértelmezés szerint a Event Grid nem kapcsolja be a kézbesítetlen betűket. Az engedélyezéshez meg kell adnia egy Storage-fiókot, amely az esemény-előfizetés létrehozásakor nem kézbesítési eseményeket tart fenn. A kézbesítések feloldásához le kell kérnie az eseményeket ebből a Storage-fiókból.
 
-Event Grid küld egy eseményt a kézbesítetlen levelek helyére, amikor megpróbálta az összes újrapróbálkozási kísérletet. Ha a Event Grid 400 (hibás kérés) vagy 413 (kérelem entitás túl nagy) választ kap, az azonnal elküldi az eseményt a kézbesítetlen levelek végpontjának. Ezek a hibakódok jelzik, hogy az esemény kézbesítése soha nem fog sikerülni.
+Event Grid küld egy eseményt a kézbesítetlen levelek helyére, amikor megpróbálta az összes újrapróbálkozási kísérletet. Ha a Event Grid 400 (hibás kérés) vagy 413 (kérelem entitás túl nagy) választ kap, a rendszer azonnal a kézbesítetlen levelekre vonatkozó eseményt ütemezhet. Ezek a hibakódok jelzik, hogy az esemény kézbesítése soha nem fog sikerülni.
 
 Az élettartam lejáratát csak a következő ütemezett kézbesítési kísérletnél ellenőrzi a rendszer. Ezért annak ellenére, hogy a következő ütemezett kézbesítési kísérlet előtt lejárnak az események, az esemény lejárati idejét csak a következő kézbesítéskor kell ellenőrizni, majd ezt követően kézbesíteni kell. 
 

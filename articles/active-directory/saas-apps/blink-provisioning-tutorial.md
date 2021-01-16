@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: 5f49d2c918164fa529b12313e000aff5f8893a65
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: d691807f673dcd6c8147c9ff18a95c6ce0c88ae6
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201849"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247437"
 ---
 # <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>Oktatóanyag: a Blink konfigurálása automatikus felhasználó-kiépítés esetén
 
@@ -50,7 +50,7 @@ Az automatikus felhasználó-kiépítés konfigurálása és engedélyezése el�
 
 ## <a name="setup-blink-for-provisioning"></a>A telepítő villog a kiépítés során
 
-1. A SCIM-token igényléséhez jelentkezzen be a [támogatási esetre](https://support.joinblink.com) vagy az e-mailek **Blink-támogatására** support@joinblink.com . .
+1. A SCIM-token igényléséhez jelentkezzen be a [támogatási esetre](https://support.joinblink.com) vagy az e-mailek **Blink-támogatására** support@joinblink.com .
 
 2.  Másolja a **scim hitelesítési tokent**. Ez az érték a Azure Portalban a Blink-alkalmazás üzembe helyezés lapjának titkos jogkivonat mezőjében lesz megadva.
 
@@ -117,7 +117,23 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 9. Tekintse át az Azure AD-ból szinkronizált felhasználói attribútumokat az **attribútumok leképezése** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok az Update műveletekhez a Blink-ben használt felhasználói fiókokkal egyeznek meg. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![Blink felhasználói attribútumok](media/blink-provisioning-tutorial/new-user-attributes.png)
+   |Attribútum|Típus|Szűréshez támogatott|
+   |---|---|---|
+   |userName (Felhasználónév)|Sztring|&check;|
+   |active|Logikai|
+   |cím|Sztring|
+   |emails[type eq "work"].value|Sztring|
+   |name.givenName|Sztring|
+   |name.familyName|Sztring|
+   |phoneNumbers[type eq "work"].value|Sztring|
+   |phoneNumbers[type eq "mobile"].value|Sztring|
+   |externalId|Sztring|
+   |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: részleg|Sztring|
+   |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: employeeNumber|Sztring|
+   |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Manager|Referencia|
+   |urn: IETF: params: scim: sémák: bővítmény: Blink: 2.0: felhasználó: vállalat|Sztring|
+   urn: IETF: params: scim: sémák: bővítmény: Blink: 2.0: User: Description|Sztring|
+   urn: IETF: params: scim: sémák: bővítmény: Blink: 2.0: felhasználó: hely|Sztring|
 
 10. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
 
@@ -137,15 +153,23 @@ Ez a művelet elindítja a **Beállítások** szakaszban a **hatókörben** defi
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
+## <a name="step-6-monitor-your-deployment"></a>6. lépés Az üzemelő példány figyelése
+Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja az üzemelő példányt:
+
+* Az [átadási naplókkal](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) határozhatja meg, hogy mely felhasználók átadása sikeres, és melyeké sikertelen.
+* A [folyamatjelzőn](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
+* Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) találhat további információt.  
+
+
 ## <a name="change-log"></a>Változási napló
 
-* 01/14/2021 – az egyéni bővítmény attribútumának **vállalata** , **leírása** és **helye** hozzá lett adva.
+* 01/14/2021 – az egyéni bővítmény attribútumainak **vállalata**, **leírása** és **helye** hozzá lett adva.
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)
+* [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../manage-apps/check-status-user-account-provisioning.md)

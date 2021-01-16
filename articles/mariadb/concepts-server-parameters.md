@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: 4432178d5908d4360cda05a62b62d05687be4235
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 7797ee9d20b33a25c1b51289036651c7ad9f22a1
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541130"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247498"
 ---
 # <a name="server-parameters-in-azure-database-for-mariadb"></a>Kiszolgálói paraméterek a Azure Database for MariaDB
 
@@ -33,7 +33,7 @@ Az alábbi részekben tájékozódhat a számos gyakran frissített kiszolgáló
 
 Azure Database for MariaDB a bináris naplók mindig engedélyezve vannak (azaz `log_bin` be van állítva). Ha triggereket szeretne használni, akkor ehhez hasonló hibaüzenetet kap, *Ha nem rendelkezik a felügyelői jogosultsággal, és engedélyezve van a bináris naplózás (a kevésbé biztonságos `log_bin_trust_function_creators` változót érdemes használni)*.
 
-A bináris naplózási formátum mindig **sor** , és a kiszolgálóval létesített összes kapcsolat **mindig** sor alapú bináris naplózást használ. A sor-alapú bináris naplózással nem léteznek biztonsági problémák, és a bináris naplózás nem törhető le, így a biztonságos beállítás értéke [`log_bin_trust_function_creators`](https://mariadb.com/docs/reference/mdb/system-variables/log_bin_trust_function_creators/) **true (igaz** ) lehet.
+A bináris naplózási formátum mindig **sor** , és a kiszolgálóval létesített összes kapcsolat **mindig** sor alapú bináris naplózást használ. A sor-alapú bináris naplózással nem léteznek biztonsági problémák, és a bináris naplózás nem törhető le, így a biztonságos beállítás értéke [`log_bin_trust_function_creators`](https://mariadb.com/docs/reference/mdb/system-variables/log_bin_trust_function_creators/) **true (igaz**) lehet.
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 
@@ -82,7 +82,7 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MariaDB d
 
 A MariaDB a tábla létrehozása során megadott konfiguráció alapján különböző tablespaces-ben tárolja a InnoDB táblát. A [System tablespace](https://mariadb.com/kb/en/innodb-system-tablespaces/) a InnoDB adatszótárának tárolóhelye. A [file-by-Table tablespace](https://mariadb.com/kb/en/innodb-file-per-table-tablespaces/) egyetlen InnoDB-táblához tartalmaz adatmennyiséget és indexeket, és a fájlrendszerben tárolja a saját adatfájljában. Ezt a viselkedést a `innodb_file_per_table` Server paraméter vezérli. A `innodb_file_per_table` beállítás `OFF` hatására a InnoDB táblákat hozhat létre a System tablespaceben. Ellenkező esetben a InnoDB táblákat hoz létre a fájl-/táblázatos tablespaces-ben.
 
-A Azure Database for MariaDB a legnagyobb **1 TB** -ot támogatja egyetlen adatfájlban. Ha az adatbázis mérete meghaladja az 1 TB-ot, hozzon létre egy táblázatot [innodb_file_per_table](https://mariadb.com/kb/en/innodb-system-variables/#innodb_file_per_table) tablespace-ban. Ha 1 TB-nál nagyobb méretű tábla van, akkor a partíciós táblát kell használnia.
+A Azure Database for MariaDB a legnagyobb **1 TB**-ot támogatja egyetlen adatfájlban. Ha az adatbázis mérete meghaladja az 1 TB-ot, hozzon létre egy táblázatot [innodb_file_per_table](https://mariadb.com/kb/en/innodb-system-variables/#innodb_file_per_table) tablespace-ban. Ha 1 TB-nál nagyobb méretű tábla van, akkor a partíciós táblát kell használnia.
 
 ### <a name="join_buffer_size"></a>join_buffer_size
 
@@ -159,7 +159,7 @@ A lekérdezési gyorsítótár alapértelmezés szerint engedélyezve van a Mari
 
 A paraméterrel kapcsolatos további információkért tekintse meg a [MariaDB dokumentációját](https://mariadb.com/kb/en/server-system-variables/#query_cache_size) .
 
-|**Tarifacsomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|* * Maximális érték * *|
+|**Tarifacsomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|**Maximális érték (bájt)**|
 |---|---|---|---|---|
 |Alapszintű|1|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
 |Alapszintű|2|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
@@ -233,7 +233,7 @@ Az alábbi kiszolgálói paraméterek nem konfigurálhatók a szolgáltatásban:
 
 Az itt felsorolt egyéb kiszolgálói paraméterek a [MariaDB](https://mariadb.com/kb/en/server-system-variables/)alapértelmezett értékeit adják meg a MariaDB.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan [konfigurálhat sever-paramétereket a Azure Portal használatával](./howto-server-parameters.md)
 - Megtudhatja, hogyan [konfigurálhat sever-paramétereket az Azure CLI használatával](./howto-configure-server-parameters-cli.md)

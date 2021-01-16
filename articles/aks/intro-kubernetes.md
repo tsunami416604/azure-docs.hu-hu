@@ -5,12 +5,12 @@ services: container-service
 ms.topic: overview
 ms.date: 05/06/2019
 ms.custom: mvc
-ms.openlocfilehash: 75f4602be15ef2487272ed5790d92c4c884c551f
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 4115ab2140cd3bf67135e494e16fb8121c040ff6
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681550"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246196"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
@@ -60,15 +60,15 @@ A verziók életciklusáról további tudnivalókat [Az AKS-ben támogatott Kube
 
 ### <a name="gpu-enabled-nodes"></a>GPU-kompatibilis csomópontok
 
-Az AKS támogatja a GPU-kompatibilis csomópontkészletek létrehozását. Az Azure jelenlegi kínálatában egy vagy több GPU-val kompatibilis virtuális gépek érhetők el. A GPU-kompatibilis virtuális gépeket a nagy számítási és grafikai igényű, valamint vizualizációs számítási feladatok elvégzésére tervezték.
+Az AK támogatja a GPU-kompatibilis csomópont-készletek létrehozását. Az Azure jelenleg egy vagy több GPU-t támogató virtuális gépet biztosít. A GPU-kompatibilis virtuális gépek nagy számítási igényű, grafikus igényű és vizualizációs munkaterhelésekhez készültek.
 
 További információ: [GPU-k használata az AKS-en][aks-gpu].
 
 ### <a name="confidential-computing-nodes-public-preview"></a>Bizalmas számítástechnikai csomópontok (nyilvános előzetes verzió)
 
-Az AK támogatja az Intel SGX ENKLÁVÉHOZ-alapú bizalmas számítástechnikai csomópont-készletek (DCSv2 virtuális gépek) létrehozását. A bizalmas számítástechnikai csomópontok lehetővé teszik, hogy a tárolók hardveres, megbízható és elszigetelt végrehajtási környezetben (enklávékban) fussanak. A tárolók és a kód integritása közötti elkülönítés az igazolással együtt segíti a védelmi részletes biztonsági stratégiát. A bizalmas számítástechnikai csomópontok egyaránt támogatják a bizalmas tárolókat (a meglévő Docker-alkalmazásokat) és az enklávéban lévő Aware tárolókat.
+Az AK támogatja az Intel SGX ENKLÁVÉHOZ-alapú bizalmas számítástechnikai csomópont-készletek (DCSv2 virtuális gépek) létrehozását. A bizalmas számítástechnikai csomópontok lehetővé teszik, hogy a tárolók hardveres megbízható végrehajtási környezetben (enklávékban) fussanak. A tárolók közötti elkülönítés, amely a kód integritásával együtt igazolható, segíthet a védelmi részletes biztonsági stratégiában. A bizalmas számítástechnikai csomópontok egyaránt támogatják a bizalmas tárolókat (a meglévő Docker-alkalmazásokat) és az enklávét támogató tárolókat.
 
-További információ: [bizalmas számítástechnikai csomópontok az AK][conf-com-node] -ban
+További információ: [bizalmas számítástechnikai csomópontok az AK-on][conf-com-node].
 
 ### <a name="storage-volume-support"></a>A tárkötetek támogatását
 
@@ -80,7 +80,7 @@ A dinamikus állandó kötetek használatának első lépései az [Azure-lemezek
 
 ## <a name="virtual-networks-and-ingress"></a>Virtuális hálózatok és bejövő forgalom
 
-Az AKS-fürtök egy már meglévő virtuális hálózaton is üzembe helyezhetők. Ebben a konfigurációban a rendszer a fürtben található összes podhoz hozzárendel egy IP-címet a virtuális hálózatban, így azok közvetlenül kommunikálhatnak a fürtben található más podokkal és a virtuális hálózat egyéb csomópontjaival. A podok a virtuális társhálózaton belül más szolgáltatásokhoz is csatlakozhatnak, illetve az ExpressRoute és a helyek közötti (S2S) VPN-kapcsolat segítségével helyszíni hálózatokhoz is.
+Az AKS-fürtök egy már meglévő virtuális hálózaton is üzembe helyezhetők. Ebben a konfigurációban a rendszer a fürtben található összes podhoz hozzárendel egy IP-címet a virtuális hálózatban, így azok közvetlenül kommunikálhatnak a fürtben található más podokkal és a virtuális hálózat egyéb csomópontjaival. A hüvelyek a ExpressRoute és helyek közötti (S2S) VPN-kapcsolatokon keresztül is csatlakozhatnak más szolgáltatásokhoz egy társ virtuális hálózaton, illetve helyszíni hálózatokon.
 
 További információ: az [AK-beli alkalmazások hálózati fogalmai][aks-networking].
 
@@ -98,15 +98,15 @@ A Kubernetes a fejlesztési és felügyeleti eszközök, például a Helm és a 
 
 Emellett az Azure Dev Spaces gyors, iteratív Kubernetes-fejlesztési élményt biztosít a csapatok számára. Minimális konfigurálással futtathat tárolókat és végezhet rajtuk hibakeresést közvetlenül az AKS-ben. Ismerkedés az [Azure Dev Spaces][azure-dev-spaces] használatával.
 
-Az Azure DevOps Project egy egyszerű megoldást kínál a már létező kódoknak és Git-adattáraknak az Azure-ba való áthelyezéséhez. A DevOps Project olyan Azure-erőforrásokat hoz létre automatikusan, mint az AKS, amely egy, a CI-hez való buildelési folyamatot tartalmazó kiadási folyamat az Azure DevOps Servicesben, továbbá beállít egy kiadási folyamatot a CD-hez, majd létrehoz egy Azure Application Insights-erőforrást a monitorozáshoz.
+A DevOps Starter egyszerű megoldást kínál a meglévő kódok és git-adattárak Azure-ba való bevezetésére. A DevOps Starter automatikusan létrehozza az Azure-erőforrásokat, például az AK-t, az Azure DevOps-szolgáltatások olyan kiadási folyamatát, amely tartalmazza a CI-hez készült Build folyamatot, beállít egy kiadási folyamatot CD-re, majd létrehoz egy Azure Application Insights erőforrást a figyeléshez.
 
-További információ: [Azure DevOps Project][azure-devops].
+További információ: [DevOps Starter][azure-devops].
 
 ## <a name="docker-image-support-and-private-container-registry"></a>Docker-rendszerképek támogatása és privát tárolóregisztrációs adatbázis
 
 Az AKS támogatja a Docker rendszerképformátumát. Integrálhatja az AKS-szolgáltatást az Azure Container Registryvel (ACR-rel) a Docker-rendszerképek privát tárolásához.
 
-Privát rendszerképtárolók létrehozásával kapcsolatban lásd: [Azure Container Registry][acr-docs].
+Privát rendszerkép-tároló létrehozásához lásd: [Azure Container Registry][acr-docs].
 
 ## <a name="kubernetes-certification"></a>Kubernetes-tanúsítvány
 
@@ -116,7 +116,7 @@ Az Azure Kubernetes Service (AKS) CNCF-tanúsítvánnyal rendelkezik, mivel megf
 
 Az Azure Kubernetes Service (AKS) az SOC, az ISO, a PCI DSS és a HIPAA szabványnak is megfelel. További információ: [az Microsoft Azure megfelelőségének áttekintése][compliance-doc].
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI gyors útmutatójának segítségével többet tudhat meg az AKS üzembe helyezéséről és felügyeletéről.
 

@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/11/2020
-ms.openlocfilehash: a740ad62dacc9a29cab1cc144f1789e125ec2e89
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 31b96f03a8519b068eaa816443be0a0f374a4a8c
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368579"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247029"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Gyakori kérdések a kiosztott átviteli sebességről Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -48,7 +48,7 @@ Igen. Ha a fenntartott kapacitást egyszeri írási régióval rendelkező fiók
 A többszörös írási régió számára fenntartott kapacitás ugyanúgy működik, mint az automatikus skálázás és a standard (manuális) kiosztott átviteli sebesség. [Azure Cosmos db fenntartott kapacitás](cosmos-db-reserved-capacity.md)
 
 ### <a name="does-autoscale-work-with-free-tier"></a>Működik az autoscale ingyenes szintje?
-Igen. Az ingyenes szinten az adatátviteli sebességet használhatja egy tárolón. A megosztott átviteli sebességű adatbázisok egyéni maximális RU/s-vel való támogatása még nem érhető el. Megtudhatja [, hogy az ingyenes szintű számlázás hogyan működik az autoscale szolgáltatással](understand-your-bill.md#billing-examples-with-free-tier-accounts).
+Igen. Az ingyenes szinten az adatátviteli sebességet használhatja egy tárolón. A megosztott átviteli sebességű adatbázisok egyéni maximális RU/s-vel való támogatása még nem érhető el. Megtudhatja [, hogy az ingyenes szintű számlázás hogyan működik az autoscale szolgáltatással](understand-your-bill.md#azure-free-tier).
 
 ### <a name="is-autoscale-supported-for-all-apis"></a>Támogatott-e az összes API-t használó autoskálázás?
 Igen, az autoscale minden API esetében támogatott: Core (SQL), Gremlin, Table, Cassandra és API a MongoDB-hez.
@@ -144,7 +144,7 @@ Másodszor, ha van egy gyakori partíció, azaz egy logikai partíciós kulcs é
 Ha például az 20 000 RU/s maximális átviteli sebesség lehetőséget választja, és 200 GB tárhellyel rendelkezik, és négy fizikai partícióval rendelkezik, az egyes fizikai partíciók akár 5000 RU/s-ra is felméretezhetők. Ha egy adott logikai partíción egy gyors partíció található, akkor a 429s jelenik meg, ha a mögöttes fizikai partíció mérete meghaladja az 5000 RU/s-t, azaz meghaladja az 100%-os normalizált kihasználtságot.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, hogyan [engedélyezhető az Azure Cosmos db-adatbázis vagy-tárolók autoskálázása](how-to-provision-autoscale-throughput.md).
 * Ismerje meg, hogy milyen [előnyökkel jár a kiépített átviteli sebesség az autoskálázással](provision-throughput-autoscale.md#benefits-of-autoscale).

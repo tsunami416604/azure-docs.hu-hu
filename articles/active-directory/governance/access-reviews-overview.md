@@ -17,12 +17,12 @@ ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 08399c1b2d930abfdd5832cb102a789844931d61
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 22bfef17f68b2e83e4f7462d8e9af6fb8aacc284
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027696"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246740"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Mik azok az Azure AD-hozzáférési felülvizsgálatok?
 
@@ -97,17 +97,17 @@ További információ a licencekről: [licencek kiosztása vagy eltávolítása 
 
 Íme néhány példa a licencekre, amelyek segítségével meghatározhatja a szükséges licencek számát.
 
-| Forgatókönyv | Számítás | Licencek száma |
+| Használati eset | Számítás | Licencek száma |
 | --- | --- | --- |
 | A rendszergazda létrehoz egy hozzáférési felülvizsgálatot az A csoportban a 75-felhasználók és 1 csoport tulajdonosa számára, és a csoport tulajdonosát a véleményezőként rendeli hozzá. | 1 a csoport tulajdonosának licence felülvizsgáló | 1 |
 | A rendszergazda az 500-es és 3 csoportbeli tulajdonosok hozzáférési felülvizsgálatát hozza létre a B csoport számára, és a 3 csoport tulajdonosait felülvizsgáló rendeli hozzá. | 3 licenc minden csoport tulajdonosának felülvizsgáló | 3 |
 | A rendszergazda 500 felhasználóval hoz létre hozzáférési felülvizsgálatot a B csoport számára. Saját felülvizsgálatot tesz lehetővé. | 500 licenc az egyes felhasználókhoz, mint önfelülvizsgáló | 500 |
 | A rendszergazda a C csoport hozzáférési felülvizsgálatát 50 tag felhasználókkal és 25 vendég felhasználóval hozza létre. Saját felülvizsgálatot tesz lehetővé. | 50 licenc az egyes felhasználókhoz, mint önfelülvizsgáló. * | 50 |
-| A rendszergazda a D csoporthoz tartozó hozzáférési felülvizsgálatot hoz létre 6 tagú felhasználóval és 108 vendég felhasználóval. Saját felülvizsgálatot tesz lehetővé. | 6 licenc minden felhasználóhoz, mint önfelülvizsgáló. A vendég felhasználóinak havi aktív felhasználó (MAU) alapján kell fizetniük. Nincs szükség további licencekre. *  | - |
+| A rendszergazda a D csoporthoz tartozó hozzáférési felülvizsgálatot hoz létre 6 tagú felhasználóval és 108 vendég felhasználóval. Saját felülvizsgálatot tesz lehetővé. | 6 licenc minden felhasználóhoz, mint önfelülvizsgáló. A vendég felhasználóinak havi aktív felhasználó (MAU) alapján kell fizetniük. Nincs szükség további licencekre. *  | 6 |
 
 \* Az Azure AD külső identitások (vendég felhasználó) díjszabása a havi aktív felhasználók (MAU) alapján történik, amely a naptári hónapon belül a hitelesítési tevékenységgel rendelkező egyedi felhasználók száma. Ez a modell a 1:5 arányú számlázási modellt váltja fel, amely legfeljebb öt vendéget engedélyez a bérlő minden prémium szintű Azure AD licence számára. Ha a bérlő egy előfizetéshez van csatolva, és külső identitási funkciókat használ a vendég felhasználókkal való együttműködésre, akkor a MAU-alapú számlázási modell alapján automatikusan számlázunk. További információ: az Azure AD külső identitások számlázási modellje.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Csoportok vagy alkalmazások hozzáférési felülvizsgálatának létrehozása](create-access-review.md)
 - [Hozzáférési felülvizsgálat létrehozása Azure AD rendszergazdai szerepkörrel rendelkező felhasználókhoz](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)

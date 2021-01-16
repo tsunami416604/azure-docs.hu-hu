@@ -1,20 +1,20 @@
 ---
-title: Szükséges berendezések azonosítása
+title: A szükséges berendezések azonosítása
 description: Ismerje meg a IoT érzékelőkhöz és a helyszíni felügyeleti konzolhoz készült Certified Defender hardvereit és virtuális készülékeit.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/21/2020
+ms.date: 01/13/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b22f880eee1b691b6b50b8151a64a2d501b891b3
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 25685d7e933c9d171e1547be2f5899c08443321a
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97840340"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246570"
 ---
-# <a name="identify-required-appliances"></a>Szükséges berendezések azonosítása
+# <a name="identify-required-appliances"></a>A szükséges berendezések azonosítása
 
 Ez a cikk a Certified Defender IoT-érzékelő készülékekről nyújt információt. A Defender Fort IoT fizikai és virtuális készülékeken is üzembe helyezhető.
 
@@ -41,7 +41,7 @@ Ez a szakasz áttekintést nyújt a fizikai érzékelők elérhető modelljeirő
 | Központi telepítés típusa | Vállalat | Enterprise | SMB |
 |--|--|--|--|
 | Kép | :::image type="content" source="media/how-to-prepare-your-network/corporate-hpe-proliant-dl360-v2.png" alt-text="A vállalati szintű modell."::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="A nagyvállalati szintű modell."::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="Az SMB-szintű modell."::: |
-| Modell | HPE ProLiant DL360 | HPE ProLiant DL20 | HPE ProLiant DL20 |
+| Modellezés | HPE ProLiant DL360 | HPE ProLiant DL20 | HPE ProLiant DL20 |
 | Portok figyelése | Legfeljebb 15 RJ45 vagy 8 OPT | Legfeljebb 8 RJ45 vagy 6 OPT | 4 RJ45 |
 | Maximális sávszélesség [1](#anchortext) | másodpercenként 3 GB | másodpercenként 1 GB | 200 MB/másodperc |
 | Maximálisan védett eszközök | 30 000 | 15 000 | 1,000 |
@@ -223,7 +223,7 @@ Ez a szakasz azokat a további készülékeket részletezi, amelyeket a Microsof
 | Központi telepítés típusa | Enterprise |
 |--|--|
 | Kép | :::image type="content" source="media/how-to-prepare-your-network/deployment-type-enterprise-for-azure-defender-for-iot-v2.png" alt-text="Vállalati központi telepítési típus."::: |
-| Modell | Dell PowerEdge R340 XL |
+| Modellezés | Dell PowerEdge R340 XL |
 | Portok figyelése | Legfeljebb kilenc RJ45 vagy hat OPT |
 | Maximális sávszélesség [1](#anchortext2)| 1G MB/mp |
 | Maximálisan védett eszközök | 10,000 |
@@ -254,28 +254,6 @@ A készülék megvásárlása után nyissa meg a **Defender for IoT**  >  **Netw
 ## <a name="dell-r340-bom"></a>Dell R340 ANYAGJEGYZÉK
 
 :::image type="content" source="media/how-to-prepare-your-network/enterprise-deployment-for-azure-defender-for-iot-dell-r340-bom.png" alt-text="Dell R340 ANYAGJEGYZÉK.":::
-
-## <a name="smb-deployment-neousys-nuvo-5006lp"></a>SMB-telepítés: Neousys NUVO-5006LP
-
-| Összetevő | Technikai specifikációk |
-|--|--|
-| Építőipar | Alumínium-, fanless-és por-ellenőrző kialakítás |
-| Dimenziók | 240 mm (W) x 225 mm (D) x 77 mm (H) |
-| Tömeg | 3,1 kg (beleértve a PROCESSZORt, a memóriát és a HDD-t) |
-| CPU | Intel Core i5-6500TE (6M gyorsítótár, legfeljebb 3,30 GHz) S1151 |
-| Lapkakészletének | Intel Q170 platform Controller hub |
-| Memória | 8 GB DDR4 2133 MHz széles hőmérsékletű nátrium |
-| Storage | 128 – GB 3ME3 széles hőmérsékletű mSATA SSD |
-| Hálózati vezérlő | 6x Gigabit Ethernet-portok Intel I219 |
-| Eszköz-hozzáférés | 4 USBs: két elülső, két hátsó, egy belső |
-| Hálózati adapter | 120/240VAC – 20VDC/6A |
-| Szerelési | Mounting Kit, DIN sín |
-| Működési hőmérséklet | \-25 °C ~ 70 °C |
-| Tárolási hőmérséklet | \-40 °C ~ 85 °C |
-| Páratartalom | 10% ~ 90%, nem kondenzációs |
-| Rezgés | Üzemeltetés, 5 Grms, 5-500 Hz, 3 tengely <br>(w/SSD, a IEC60068-2-64 alapján) |
-| Sokk | Operációs, 50 Grms, félig sine 11-MS időtartam (w/SSD, a IEC60068-2-27 szerint) |
-| EMC | CE/FCC-osztály, az EN 55022, az EN 55024 és az EN 55032 szerint |
 
 ## <a name="next-steps"></a>További lépések
 

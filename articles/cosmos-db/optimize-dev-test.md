@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: b0e2cc3f23a8c39e51523e6f6fd974ebf46f7322
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3ddae808fbb2e3dcfe20909c8b3d0c5a20bb04bd
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097447"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247522"
 ---
 # <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>Fejlesztési és tesztelési költségek optimalizálása az Azure Cosmos DB-ben
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -37,7 +37,7 @@ Az ingyenes szinten határozatlan ideig tart a fiók élettartama, és a rendsze
 
 ## <a name="azure-free-account"></a>Ingyenes Azure-fiók
 
-A Azure Cosmos DBt az [ingyenes Azure-fiók](https://azure.microsoft.com/free)tartalmazza, amely egy adott időszakra ingyenesen kínál Azure-krediteket és-erőforrásokat. Kifejezetten a Azure Cosmos DB esetében ez az ingyenes fiók 5 GB tárhelyet és 400 RUs-t biztosít az egész évre kiépített átviteli sebességhez. Ez a megoldás lehetővé teszi, hogy a fejlesztők egyszerűen teszteljék Azure Cosmos DB funkcióit, vagy más Azure-szolgáltatásokkal integrálják azt nulla áron. Az ingyenes Azure-fiókkal $200 kreditet kap, amelyet az első 30 napban kell költeni. Nem számítunk fel díjat, még akkor sem, ha a szolgáltatást a frissítés megkezdése előtt elkezdi használni. Első lépésként látogasson el az [ingyenes Azure-fiók](https://azure.microsoft.com/free) oldalra.
+A Azure Cosmos DBt az [ingyenes Azure-fiók](https://azure.microsoft.com/free)tartalmazza, amely egy adott időszakra ingyenesen kínál Azure-krediteket és-erőforrásokat. Kifejezetten a Azure Cosmos DB esetében ez az ingyenes fiók 25 GB tárhelyet és 400 RUs-t biztosít az egész évre kiosztott átviteli sebességről. Ez a megoldás lehetővé teszi, hogy a fejlesztők egyszerűen teszteljék Azure Cosmos DB funkcióit, vagy más Azure-szolgáltatásokkal integrálják azt nulla áron. Az ingyenes Azure-fiókkal $200 kreditet kap, amelyet az első 30 napban kell költeni. Nem számítunk fel díjat, még akkor sem, ha a szolgáltatást a frissítés megkezdése előtt elkezdi használni. Első lépésként látogasson el az [ingyenes Azure-fiók](https://azure.microsoft.com/free) oldalra.
 
 ## <a name="azure-cosmos-db-serverless"></a>Kiszolgáló nélküli Azure Cosmos DB
 
@@ -49,7 +49,7 @@ Egy [megosztott átviteli sebességű adatbázisban](set-throughput.md#set-throu
 
 Tegyük fel például, hogy a fejlesztési vagy tesztelési fiók négy tárolóval rendelkezik. Ha négy tárolót hoz létre dedikált átviteli sebességgel (legalább 400 RU/s), akkor a teljes RU/s a 1600 RU/s lesz. Ezzel szemben, ha létrehoz egy megosztott átviteli sebességű adatbázist (minimum 400 RU/s), és elhelyezi a tárolókat, a teljes RU/s csak 400 RU/s lesz. Általánosságban elmondható, hogy a megosztott átviteli sebességű adatbázisok kiválóan alkalmasak olyan forgatókönyvek esetén, amelyeknél nincs szükség a garantált átviteli sebességre minden egyes tárolón  További információ a [megosztott átviteli sebességű adatbázisokról.](set-throughput.md#set-throughput-on-a-database)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az emulátor vagy az ingyenes Azure Cosmos DB fiókok használatának első lépései a következő cikkekkel szerezhetők be:
 

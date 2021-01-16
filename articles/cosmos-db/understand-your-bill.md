@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b51be165d3d05ae753c7e0e5536a157fbbacf1ab
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: b0d27cb2f941db374a144cbd5c026444730e24e8
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938630"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247488"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Az Azure Cosmos DB számláinak ismertetése
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -215,8 +215,12 @@ A teljes havi számla (feltéve, hogy a havi 30 nap/720 óra) a következőképp
 | | |Átviteli sebesség 2 további régióban: USA keleti régiója, Észak-Európa (az összes régió írható)  |`(1 + 1) * (70 K RU/sec /100 * $0.016) * 20 hours = $448`  |$224  |
 || |**Teljes havi költség**  | |**$38 688**   |
 
-## <a name="billing-examples-with-free-tier-accounts"></a>Számlázási példák ingyenes szintű fiókokkal
+## <a name="billing-examples-with-azure-cosmos-db-free-tier-accounts"></a><a id="azure-free-tier"></a>Számlázási példák Azure Cosmos DB ingyenes szintű fiókokkal
+
 A Azure Cosmos DB ingyenes csomaggal az első 400 RU/s és 5 GB tárterületet ingyenesen veheti fel a fiókjába, a fiók szintjén alkalmazva. Az összes RU/s, valamint a 400 RU/s és 5 GB-nál nagyobb tárterület számlázása a díjszabási oldalon érvényes díjszabási díjszabás szerint történik. A számlán nem fog megjelenni az ingyenes 400 ru/s és 5 GB-os díj vagy vonal tétel, csak az RU/s és a tárhely, amely az ingyenes szinten lefedett. Az 400 RU/s bármilyen típusú RU/s-kiosztott átviteli sebességre, az autoskálázásra és a többrégiós írásokra vonatkozik.  
+
+> [!NOTE]
+> A Azure Cosmos DB ingyenes szintje eltér az ingyenes Azure-fióktól. Az ingyenes Azure-fiók korlátozott ideig ingyenesen kínál Azure-krediteket és-erőforrásokat. Ha az ingyenes fiók részeként Azure Cosmos DB használ, a kiosztott átviteli sebesség 12 hónapig 25 GB tárhelyet és 400 RU/s-t kap.
 
 ### <a name="billing-example---container-or-database-with-provisioned-throughput"></a>Számlázási példa – tároló vagy adatbázis kiépített átviteli sebességgel
 - Tegyük fel, hogy létrehozunk egy adatbázist vagy egy tárolót egy ingyenes szintű fiókban, amely 400 RU/s és 5 GB tárterülettel rendelkezik.

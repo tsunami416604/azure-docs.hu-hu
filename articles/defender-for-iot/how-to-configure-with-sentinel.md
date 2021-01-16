@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/28/2020
 ms.author: shhazam
-ms.openlocfilehash: d4686f1d7192d1469e52e653185f1fc9389764de
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 2d82aaadf158e45cb8faaeee0b9b4e0fc80a3420
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832318"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247335"
 ---
 # <a name="connect-your-data-from-defender-for-iot-to-azure-sentinel"></a>Az adatok összekötése a Defendertől az Azure Sentinel IoT 
 
@@ -65,5 +65,5 @@ Az **előfizetés** csatlakoztatása után körülbelül 15 perccel később el�
 
 Ebből a dokumentumból megtanulta, hogyan csatlakoztatható a Defender a IoT az Azure Sentinelhez. A veszélyforrások észlelésével és a biztonsági adathozzáféréssel kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 
-- Ismerje meg, hogyan használhatja az Azure Sentinelt az [adatai és a potenciális fenyegetések](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)megismerésére.
+- Ismerje meg, hogyan használhatja az Azure Sentinelt az [adatai és a potenciális fenyegetések](../sentinel/quickstart-get-visibility.md)megismerésére.
 - Ismerje meg, hogyan [férhet hozzá a IoT biztonsági adataihoz](how-to-security-data-access.md)

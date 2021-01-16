@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
-ms.openlocfilehash: 9d351bc945c08c82e96791059b00dc94eb94b918
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 793ff9eedb747da0edcbbf2df50b62f06f407892
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368738"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247424"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB szolgáltatási kvóták
 
@@ -256,7 +256,8 @@ A következő táblázat felsorolja az ingyenes próbaverzióra vonatkozó [kipr
 
 Próbálja ki, Cosmos DB támogatja a globális terjesztést csak az USA középső, Észak-és Délkelet-ázsiai régiójában. Nem hozhatók létre Azure-támogatási jegyek az Azure Cosmos DB-fiókok kipróbálásához. Azonban támogatást biztosítanak a meglévő támogatási csomagokkal rendelkező előfizetőknek.
 
-## <a name="free-tier-account-limits"></a>Ingyenes szintű fiókok korlátozásai
+## <a name="azure-cosmos-db-free-tier-account-limits"></a>Az ingyenes szintű fiókokra vonatkozó korlátozások Azure Cosmos DB
+
 A következő táblázat felsorolja az [ingyenes szintű fiókok Azure Cosmos db](optimize-dev-test.md#azure-cosmos-db-free-tier) korlátozásait.
 
 | Erőforrás | Alapértelmezett korlát |
@@ -268,9 +269,12 @@ A következő táblázat felsorolja az [ingyenes szintű fiókok Azure Cosmos db
 | Megosztott átviteli sebességű adatbázisok maximális száma | 5 |
 | Tárolók maximális száma egy megosztott átviteli sebességű adatbázisban | 25 <br>Az ingyenes szintű fiókok esetében a közös átviteli sebességű adatbázishoz legfeljebb 25 tárolóval rendelkező minimális RU/s 400 RU/s. |
 
-  A fentiek mellett a [fiókra vonatkozó korlátok](#per-account-limits) az ingyenes szintű fiókok esetében is érvényesek.
+A fentiek mellett a [fiókra vonatkozó korlátok](#per-account-limits) az ingyenes szintű fiókok esetében is érvényesek.
 
-## <a name="next-steps"></a>Következő lépések
+> [!NOTE]
+> A Azure Cosmos DB ingyenes szintje eltér az ingyenes Azure-fióktól. Az ingyenes Azure-fiók korlátozott ideig ingyenesen kínál Azure-krediteket és-erőforrásokat. Ha az ingyenes fiók részeként Azure Cosmos DB használ, a kiosztott átviteli sebesség 12 hónapig 25 GB tárhelyet és 400 RU/s-t kap.
+
+## <a name="next-steps"></a>További lépések
 
 További információ a Cosmos DB alapvető fogalmak [globális eloszlásáról](distribute-data-globally.md) , [particionálásáról](partitioning-overview.md) és kiosztott [átviteli sebességéről](request-units.md).
 

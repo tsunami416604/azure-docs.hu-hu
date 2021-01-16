@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 01/11/2021
 ms.author: rohink
-ms.openlocfilehash: c468b1216670ce7e6b5d252a7f7fee807199d20c
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: cb14cb95ec1362782a634b0e62cfa2f8237a5852
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131491"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246382"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS GYIK
 
@@ -195,11 +195,7 @@ A nemzetközi tartománynevek (IDNs) az egyes DNS-neveket az [punycode](https://
 
 A IDNs Azure DNS-ben való konfigurálásához alakítsa át a zóna nevét vagy a punycode nevet. Azure DNS jelenleg nem támogatja a punycode-re vagy-re történő beépített átalakítást.
 
-### <a name="does-azure-dns-private-zones-store-any-customer-content"></a>A privát zónák Azure DNS a vásárlói tartalmat?
-
-Nem, Azure DNS privát zónák nem tárolnak felhasználói tartalmakat.
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [További információ a Azure DNSról](dns-overview.md).
 

@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6c8be064ade8182355c320e948b3b60b846033d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 7454733233f1fd487d774d52a6f46187354ae05c
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348058"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246706"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect Sync: függvények referenciája
 Azure AD Connect a függvények egy attribútumérték manipulálására szolgálnak a szinkronizálás során.  
@@ -115,7 +115,7 @@ A **mvbin**, **mvstr** és **mvref** típusú függvények csak többértékű a
 * **Többszörös * érték**
   * [Tartalmaz](#contains)
   * [Száma](#count)
-  * [Item](#item)
+  * [Elem](#item)
   * [ItemOrNull](#itemornull)
   * [Csatlakozás](#join)
   * [RemoveDuplicates](#removeduplicates)
@@ -664,7 +664,7 @@ A formátum lehetséges értékei itt találhatók: [Egyéni dátum-és időform
 
 **Példa**  
 
-`FormatDateTime(CDate("12/25/2007"),"yyyy-mm-dd")`  
+`FormatDateTime(CDate("12/25/2007"),"yyyy-MM-dd")`  
 Eredmények: "2007-12-25".
 
 `FormatDateTime(DateFromNum([pwdLastSet]),"yyyyMMddHHmmss.0Z")`  
@@ -868,7 +868,7 @@ A függvény inverzének neve IsNullOrEmpty.
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
 
 ---
-### <a name="item"></a>Item
+### <a name="item"></a>Elem
 **Leírás:**  
 Az Item függvény egy elemet ad vissza egy többértékű karakterlánc/attribútumból.
 

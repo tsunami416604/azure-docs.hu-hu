@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd1c7f5dec57127f92da52be908bd6faa2c90e85
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d348b8c2325c7bc2cdaa28356151647a9430684f
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500223"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247046"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrálás felhőalapú hitelesítésre előkészített bevezetéssel (előzetes verzió)
 
@@ -67,7 +67,7 @@ A szakaszos bevezetéshez a következő forgatókönyvek támogatottak. A szolg�
 
 A következő forgatókönyvek nem támogatottak a szakaszos bevezetésnél:
 
-- Az alkalmazások vagy a Cloud Services örökölt hitelesítést alkalmaz, például a POP3 és az SMTP protokollt.
+- Az örökölt hitelesítés (például a POP3 és az SMTP) nem támogatott.
 
 - Bizonyos alkalmazások a hitelesítés során elküldik a "domain_hint" lekérdezési paramétert az Azure AD-nek. Ezek a folyamatok folytatódnak, és az előkészített bevezetésre engedélyezett felhasználók továbbra is a hitelesítéshez használják az összevonást.
 

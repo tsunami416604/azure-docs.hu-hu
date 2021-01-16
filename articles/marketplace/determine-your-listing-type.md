@@ -6,21 +6,15 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 12/18/2020
-ms.openlocfilehash: 091af70383eb3cab32a0453d7f7542d8a4395d0b
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.date: 01/14/2021
+ms.openlocfilehash: 89cd9f46474e8e311f003f317b90bdb21eae55fe
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98107395"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247547"
 ---
 # <a name="introduction-to-listing-options"></a>A listázási lehetőségek bemutatása
-
-A kereskedelmi piactér elérhető _listaelem-beállításaival_ számos különböző módon veheti igénybe a potenciális ügyfeleket. Az ajánlat közzététele után az ajánlathoz választott listázási lehetőség (ek) az ajánlat tőzsdei lapjának bal felső sarkában jelenik meg az online áruház (ok) ban. Az alábbi képernyőfelvétel például a Microsoft AppSource online áruházban található ajánlati lista lapot jeleníti meg a **Contact me** és **Test Drive** gombokkal.
-
-:::image type="content" source="./media/listing-options.png" alt-text="Egy ajánlat listázási lapját mutatja be. Megjelenik a kapcsolatfelvétel és a tesztelési meghajtó gomb.":::
-
-## <a name="available-listing-options-by-offer-type"></a>Elérhető listaelem-beállítások az ajánlat típusa szerint
 
 Ajánlat típusának létrehozásakor válasszon ki egy vagy több listaelem-beállítást. Ezek a beállítások határozzák meg, hogy az ügyfelek milyen gombokat látnak az online áruházakban az ajánlati lista lapon. A listázási lehetőségek közé tartozik az _ingyenes próbaverzió_, a _Test Drive_, a _Kapcsolatfelvétel_ _és a letöltés._
 
@@ -42,7 +36,7 @@ Ebben a táblázatban látható, hogy az egyes ajánlatok milyen listaelemeket b
 | Szolgáltatott szoftver | &#10004; | &#10004; | &#10004; | &#10004; |
 ||||||
 
-`*` Az azonnali letöltés lehetőség magában foglalja a Get it (ingyenes), a saját licenc (BYOL), az előfizetés és a használati alapú díjszabás használatát. Részletekért [lásd: Letöltés.](#get-it-now)
+&#42; a Letöltés most (ingyenes) lehetőséget, a saját licencét (BYOL), az előfizetést és a használaton alapuló díjszabást is tartalmazza. Részletekért [lásd: Letöltés.](#get-it-now)
 
 ### <a name="free-trial"></a>Ingyenes próba
 
@@ -102,9 +96,15 @@ Ebből a táblázatból megtekintheti, hogy mely típusú ajánlatok támogatjá
 
 Ezzel a listával ingyenesen kínálhatja alkalmazását. Az ügyfelek az _azonnali letöltés_ gombra kattintva vehetik igénybe az ingyenes ajánlatot.
 
-#### <a name="byol"></a>BYOL
+> [!NOTE]
+> A szolgáltatás azonnali (ingyenes) ajánlatai nem jogosultak a piactéren elérhető előnyökre a visszagörgethető ajánlatok esetében. Mivel a kirakaton nincs tranzakció, ezeket a rendszer "próbaverziónak" minősíti. Tekintse meg az alábbi [Marketplace-jutalmakat](#marketplace-rewards) .
 
-A kereskedelmi piactéren javíthatja a felderíthetővé tételét, automatizálhatja a megoldás üzembe helyezését, és elvégezheti a pénzügyi tranzakciót a piactértől elkülönítve. A saját licenc használata (BYOL) listaelem ideális megoldás a helyszíni és a felhőalapú áttelepítéshez. Az ügyfelek az _azonnali letöltés_ gomb használatával vásárolhatják meg az ajánlatot az Ön által előre megvásárolt licenccel.
+#### <a name="bring-your-own-license-byol"></a>Saját licenc használata (BYOL)
+
+Ezzel a listával engedélyezheti, hogy az ügyfelek a kereskedelmi piactéren kívül vásárolt licenccel telepítsenek ajánlatot. Ez a lehetőség ideális a helyszíni – felhő áttelepítésekhez. Az ügyfelek az _azonnali letöltés_ gomb használatával vásárolhatják meg az ajánlatot az Ön által előre megvásárolt licenccel.
+
+> [!NOTE]
+> A BYOL-ajánlatok nem jogosultak a piaci előnyökre a visszagörgethető ajánlatok esetében. Mivel ezek megkövetelik, hogy az ügyfél megszerezze a licencet a partnertől, és nincs tranzakció a kereskedelmi piactéren, a "List" kategóriába sorolja. Tekintse meg az alábbi [Marketplace-jutalmakat](#marketplace-rewards) .
 
 #### <a name="subscription"></a>Előfizetés
 
@@ -117,11 +117,17 @@ A következő típusú ajánlatokra vonatkozó átalány-díjat számíthat:
 
 A következő ajánlati típusok támogatják a használaton alapuló díjszabást:
 
-- Az Azure-alkalmazás (felügyelt alkalmazás) kínál támogatást a mért számlázáshoz. További részletekért lásd: [felügyelt alkalmazás mért számlázása](./partner-center-portal/azure-app-metered-billing.md).
-- Az SaaS-ajánlatok a mért számlázást és felhasználónkénti (munkaállomásonkénti) díjszabást is támogatják. A mért számlázással kapcsolatos további információkért lásd: [a kereskedelmi Piactéri mérési szolgáltatással az SaaS díjas számlázása](./partner-center-portal/saas-metered-billing.md).
+- Az Azure-alkalmazás (felügyelt alkalmazás) kínál támogatást a mért számlázáshoz. További részletekért lásd: [felügyelt alkalmazás mért számlázása](partner-center-portal/azure-app-metered-billing.md).
+- Az SaaS-ajánlatok a mért számlázást és felhasználónkénti (munkaállomásonkénti) díjszabást is támogatják. A mért számlázással kapcsolatos további információkért lásd: [a kereskedelmi Piactéri mérési szolgáltatással az SaaS díjas számlázása](partner-center-portal/saas-metered-billing.md).
 - Az Azure-beli virtuális gépek az alapszintű, az alapméretű és a piaci és a alapméret szerinti díjszabással támogatottak. Ezek az árképzési lehetőségek óradíjat és havi számlázást is igénybe vesznek.
 
 A Transact-ajánlat létrehozásakor fontos megérteni a díjszabást, a számlázást, a számlázást és a kifizetési szempontokat az ajánlat típusának kiválasztása és az ajánlat létrehozása előtt. További információ: [kereskedelmi piactér online áruházak](overview.md#commercial-marketplace-online-stores).
+
+## <a name="sample-offer"></a>Minta ajánlat
+
+Az ajánlat közzététele után a kiválasztott listaelem (ek) gomb jelenik meg az online áruház (ok) listázási lapjának bal felső sarkában. A következő képernyőn például a Microsoft AppSource online áruházban található ajánlati lista oldal látható a **Letöltés most** és a **Test Drive** gombokkal:
+
+:::image type="content" source="media/listing-options.png" alt-text="A partneri kapcsolat és a test Drive gombokkal rendelkező ajánlat listázási lapját mutatja be.":::
 
 ## <a name="listing-and-pricing-options-by-online-store"></a>Listázási és díjszabási lehetőségek online áruház szerint
 
@@ -149,10 +155,14 @@ A következő táblázat azokat a lehetőségeket mutatja be, amelyek a különb
 
 A &#42;&#42; Microsoft 365 bővítmények ingyenesen telepíthetők, és egy SaaS-ajánlat használatával is feltölthetők. További információkért tekintse [meg az Office 365-bővítmények a Microsoft kereskedelmi piactéren keresztüli bevételeit ismertető részt](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
 
-## <a name="marketplace-rewards"></a>Marketplace-jutalmak
+## <a name="marketplace-rewards"></a>Marketplace Rewards
 
 A Piactéri jutalmak a választott listaelem alapján különböztethetők meg. További információkért tekintse [meg a kereskedelmi Marketplace előnyeit](gtm-your-marketplace-benefits.md).
 
-## <a name="next-steps"></a>Következő lépések
+Ha az ajánlata feldolgozható, akkor a számlázott értékesítések megnövelt előnyeit fogja keresni.
 
-- A létrehozandó ajánlat típusának kiválasztásához lásd: [közzétételi útmutató ajánlat típusa szerint](./publisher-guide-by-offer-type.md).
+A nem visszagörgethető ajánlatok előnyt biztosítanak attól függően, hogy az ingyenes próbaverzió csatolva van-e.
+
+## <a name="next-steps"></a>További lépések
+
+- A létrehozandó ajánlat típusának kiválasztásához lásd: [közzétételi útmutató ajánlat típusa szerint](publisher-guide-by-offer-type.md).

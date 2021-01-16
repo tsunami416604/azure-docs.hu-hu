@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: b4dabee6a725fd02b7be6dd12c8a032e3d816835
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 5bea2cf256e30bd896957bbee0e0ad824057a569
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489369"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247182"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>HTTPS-végpont használata a kereskedelmi Piactéri érdeklődők felügyeletéhez
 
@@ -66,6 +66,10 @@ Ez a cikk azt ismerteti, hogyan hozhat létre egy új folyamatot a Power Gyorsb�
         },
         "LeadSource": {
           "id": "/properties/LeadSource",
+          "type": "string"
+        },
+        "Description": {
+          "id": "/properties/Description",
           "type": "string"
         },
         "UserDetails": {
@@ -162,15 +166,15 @@ Ez a cikk azt ismerteti, hogyan hozhat létre egy új folyamatot a Power Gyorsb�
 
 1. Az **E-mail küldése** ablakban adja meg a következő kötelező mezőket:
 
-   - **Címzett** : adjon meg legalább egy érvényes e-mail-címet, ahol a rendszer elküldi az érdeklődőket.
-   - **Subject** : a Power automatizálás lehetőséget ad a dinamikus tartalmak hozzáadására, például a következő képernyőn látható **LeadSource** . Kezdje a mező nevének megadásával. Ezután válassza ki a dinamikus tartalom kiválasztása listát az előugró ablakban. 
+   - **Címzett**: adjon meg legalább egy érvényes e-mail-címet, ahol a rendszer elküldi az érdeklődőket.
+   - **Subject**: a Power automatizálás lehetőséget ad a dinamikus tartalmak hozzáadására, például a következő képernyőn látható **LeadSource** . Kezdje a mező nevének megadásával. Ezután válassza ki a dinamikus tartalom kiválasztása listát az előugró ablakban. 
 
         >[!NOTE] 
         > Mezők neveinek hozzáadásakor az egyes neveket kettősponttal (:) majd az **ENTER** gombra kattintva hozzon létre egy új sort. Miután hozzáadta a mezőneveket, hozzáadhatja az egyes társított paramétereket a dinamikus kivételezések listájából.
 
         ![E-mail művelet hozzáadása dinamikus tartalom használatával](./media/commercial-marketplace-lead-management-instructions-https/add-email-using-dynamic-content.png)
 
-   - **Törzs** : a dinamikus tartalom kiválasztása listából adja hozzá a kívánt adatokat az e-mail törzsébe. Használhatja például a LastName, a FirstName, az E-mail és a Company címet. Ha elkészült az e-mail-értesítés beállításával, az a következő képernyőn látható példához hasonlóan néz ki.
+   - **Törzs**: a dinamikus tartalom kiválasztása listából adja hozzá a kívánt adatokat az e-mail törzsébe. Használhatja például a LastName, a FirstName, az E-mail és a Company címet. Ha elkészült az e-mail-értesítés beállításával, az a következő képernyőn látható példához hasonlóan néz ki.
 
 
        ![Példa e-mail-értesítésre](./media/commercial-marketplace-lead-management-instructions-https/send-an-email.png)
@@ -202,7 +206,7 @@ A konfigurációt a [Poster](https://app.getpostman.com/app/download/win64)segí
 1. Térjen vissza a [Power automatizáláshoz](https://flow.microsoft.com/). Keresse meg az érdeklődők küldéséhez létrehozott folyamatot a Power automatizáló menüsorból a **saját folyamatok** lehetőségre kattintva. Kattintson a folyamat neve melletti három pontra a további beállítások megjelenítéséhez, majd válassza a **Szerkesztés** lehetőséget.
 
 
-1. Válassza a **tesztelés** lehetőséget a jobb felső sarokban, válassza **az indítás műveletet** , majd a **teszt** lehetőséget. Megjelenik egy jelzés a képernyő felső részén, amelyen a teszt elindult.
+1. Válassza a **tesztelés** lehetőséget a jobb felső sarokban, válassza **az indítás műveletet**, majd a **teszt** lehetőséget. Megjelenik egy jelzés a képernyő felső részén, amelyen a teszt elindult.
 
    ![Elvégezem az trigger művelet lehetőséget](./media/commercial-marketplace-lead-management-instructions-https/test-flow-trigger-action.png)
 
@@ -238,7 +242,7 @@ Ha készen áll az ajánlathoz tartozó érdeklődő-felügyeleti információk 
 
 1. A **kapcsolattartási e-mail** cím alatt adja meg a vállalat azon tagjainak e-mail-címeit, akiknek új érdeklődő fogadása esetén e-mail-értesítéseket kell kapniuk. A pontosvesszővel elválasztva több e-mailt is megadhat.
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 Az **Érvényesítés** gombra kattintva győződjön meg arról, hogy sikeresen csatlakozott egy érdeklődői célhoz. Ha a művelet sikeres, a vezető célhelyen egy teszt vezet.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2020
 ms.author: rkarlin
-ms.openlocfilehash: 0c303adb4ee7c7551c6b389ec169d92a661a63bc
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 678b50ffb2df2cd16312548109b93f6f1a7f08ff
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835023"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247465"
 ---
 # <a name="azure-defender-for-iot-frequently-asked-questions"></a>Azure Defender a IoT-hez – gyakori kérdések
 
@@ -38,7 +38,7 @@ A IoT készült Azure Defender átfogó protokoll-támogatást biztosít. A beá
 Ez az egyedi megoldás a protokollok beépülő modulként való fejlesztéséhez, nem igényel dedikált fejlesztői csapatot vagy verziót az új protokoll támogatásához. A fejlesztők, a partnerek és az ügyfelek biztonságosan fejleszthet protokollokat, és megoszthatják a horizonton keresztüli információkat és ismereteket. 
 
 ## <a name="do-i-have-to-purchase-hardware-appliances-from-microsoft-partners"></a>Kell-e hardveres készülékeket vásárolni a Microsoft partnereitől?
-Az Azure Defender for IoT-érzékelő a [hardver specifikációs útmutatójában](https://aka.ms/AzureDefenderforIoTBareMetalAppliance)leírtak szerint a hardveres specifikációk útmutatójában leírtak szerint a Microsoft partnereitől származó minősített hardvereket vásárolhat, vagy használhatja a mellékelt anyagjegyzéket, és saját maga is megvásárolhatja azokat. 
+Az Azure Defender for IoT-érzékelő a [hardver specifikációs útmutatójában](./how-to-identify-required-appliances.md)leírtak szerint a hardveres specifikációk útmutatójában leírtak szerint a Microsoft partnereitől származó minősített hardvereket vásárolhat, vagy használhatja a mellékelt anyagjegyzéket, és saját maga is megvásárolhatja azokat. 
 
 A minősítéssel rendelkező hardvereket a laborban teszteltük az illesztőprogramok stabilitása, a csomagok elejtése és a hálózat méretezése érdekében.
 

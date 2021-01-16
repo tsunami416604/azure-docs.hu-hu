@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/10/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b61bef89d53da280961b818425d11a6f81bbf5ea
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 25f47be98b11f05ee6ac27018152ece05c0de4e4
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210239"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246689"
 ---
 # <a name="manage-individual-sensors"></a>Különálló érzékelők kezelése
 
@@ -84,7 +84,7 @@ Hibaüzenet jelenik meg, ha az aktiválási fájlt nem lehet feltölteni. Előfo
 
 - **Helyileg csatlakoztatott érzékelők esetén**: az aktiválási fájl érvénytelen. Ha a fájl érvénytelen, nyissa meg a Defender for IoT portált. Az **érzékelő kezelése** lapon válassza ki az érvénytelen fájllal rendelkező érzékelőt, és töltsön le egy új aktiválási fájlt.
 
-- **Felhőhöz csatlakoztatott érzékelők esetén**: az érzékelő nem tud csatlakozni az internethez. Keresse meg az érzékelő hálózati konfigurációját. Ha az érzékelő webproxyn keresztül csatlakozik az internethez, ellenőrizze, hogy a proxykiszolgáló megfelelően van-e konfigurálva az **érzékelő hálózati konfiguráció** képernyőjén. Ellenőrizze, hogy \* a. Azure-Devices.net:443 engedélyezett-e a tűzfalban és/vagy a proxyban. Ha a helyettesítő karakterek használata nem támogatott, vagy ha további szabályozásra van szüksége, akkor a IoT hub-hoz tartozó egyedi teljes tartománynevet meg kell nyitni a tűzfalban és/vagy a proxyban. Részletekért lásd: [referenciák IoT hub végpontok](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-endpoints).  
+- **Felhőhöz csatlakoztatott érzékelők esetén**: az érzékelő nem tud csatlakozni az internethez. Keresse meg az érzékelő hálózati konfigurációját. Ha az érzékelő webproxyn keresztül csatlakozik az internethez, ellenőrizze, hogy a proxykiszolgáló megfelelően van-e konfigurálva az **érzékelő hálózati konfiguráció** képernyőjén. Ellenőrizze, hogy \* a. Azure-Devices.net:443 engedélyezett-e a tűzfalban és/vagy a proxyban. Ha a helyettesítő karakterek használata nem támogatott, vagy ha további szabályozásra van szüksége, akkor a IoT hub-hoz tartozó egyedi teljes tartománynevet meg kell nyitni a tűzfalban és/vagy a proxyban. Részletekért lásd: [referenciák IoT hub végpontok](../iot-hub/iot-hub-devguide-endpoints.md).  
 
 - **Felhőhöz csatlakoztatott érzékelők esetén**: az aktiválási fájl érvényes, de a IoT Defender visszautasította azt. Ha nem tudja elhárítani ezt a problémát, egy másik aktiválást is letölthet a Defender IoT-portál **Sensor Management** oldaláról. Ha ez nem működik, forduljon a Microsoft ügyfélszolgálatahoz.
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: acomet
-ms.openlocfilehash: 8a3142199502b912f20ebe05c625aa40be9fab11
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: f0111228b9b0030cbbceb9fc70d829a7a22fda01
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218671"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247012"
 ---
 # <a name="use-power-bi-and-serverless-synapse-sql-pool-preview-to-analyze-azure-cosmos-db-data-with-synapse-link"></a>A Power BI és a kiszolgáló nélküli szinapszis SQL-készlet (előzetes verzió) használatával elemezheti a Azure Cosmos DB-alapú és a szinapszis-hivatkozásokat 
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -41,7 +41,7 @@ A Kezdés előtt győződjön meg arról, hogy a következő erőforrásokat hoz
 
 ## <a name="create-a-database-and-views"></a>Adatbázis és nézetek létrehozása
 
-A mesteralakzatok vagy az alapértelmezett adatbázisok nézeteinek létrehozása nem ajánlott és nem támogatott. Ezért egy adatbázis létrehozásával kell elindítania ezt a lépést. A szinapszis munkaterületen lépjen a **fejlesztés** lapra, válassza ki az **+** ikont, majd válassza az **SQL-szkript** elemet.
+A szinapszis munkaterületen lépjen a **fejlesztés** lapra, válassza ki az **+** ikont, majd válassza az **SQL-szkript** elemet.
 
 :::image type="content" source="./media/synapse-link-power-bi/add-sql-script.png" alt-text="SQL-szkript hozzáadása a szinapszis Analytics-munkaterülethez":::
 
@@ -49,7 +49,7 @@ Minden munkaterület kiszolgáló nélküli SQL-végpontot tartalmaz. Miután l�
 
 :::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="Az SQL-parancsfájl engedélyezése a kiszolgáló nélküli SQL-végpont használatára a munkaterületen":::
 
-Hozzon létre egy új, **RetailCosmosDB** nevű adatbázist, és egy SQL-nézetet a szinapszis kapcsolattal rendelkező tárolók között. A következő parancs bemutatja, hogyan hozhat létre adatbázist:
+A **mesteralakzatok** vagy az **alapértelmezett** adatbázisok nézeteinek létrehozása nem ajánlott és nem támogatott. Hozzon létre egy új, **RetailCosmosDB** nevű adatbázist, és egy SQL-nézetet a szinapszis kapcsolattal rendelkező tárolók között. A következő parancs bemutatja, hogyan hozhat létre adatbázist:
 
 ```sql
 -- Create database
@@ -144,7 +144,7 @@ Miután kiválasztotta ezeket a beállításokat, az alábbi képernyőképhez h
 
 :::image type="content" source="./media/synapse-link-power-bi/household-size-average-revenue-report.png" alt-text="Jelentés, amely összehasonlítja a háztartások méretének relatív fontosságát az áruházbeli átlagos bevételhez képest.":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Azure Cosmos DB-adatlekérdezés a T-SQL használatával az Azure szinapszis hivatkozás használatával](../synapse-analytics/sql/query-cosmos-db-analytical-store.md)
 

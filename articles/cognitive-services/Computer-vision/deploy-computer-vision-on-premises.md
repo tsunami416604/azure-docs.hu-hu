@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 11/23/2020
 ms.author: aahi
-ms.openlocfilehash: d79c52c05d09eedab2dd964acb544c9cdb405380
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: b3e1bb3f418f21c75e29b5a1cad337c6f3c10145
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562599"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246638"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Computer Vision tároló használata a Kubernetes és a Helm használatával
 
@@ -27,7 +27,7 @@ Computer Vision tárolók helyszíni használata előtt a következő előfelté
 
 | Kötelező | Cél |
 |----------|---------|
-| Azure-fiók | Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot][free-azure-account], mielőtt hozzákezd. |
+| Azure-fiók | Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot][free-azure-account]. |
 | Kubernetes CLI | A megosztott hitelesítő adatok a tároló-beállításjegyzékből való kezeléséhez a [KUBERNETES CLI][kubernetes-cli] szükséges. A Kubernetes a Helm előtt is szükséges, amely a Kubernetes csomagkezelő. |
 | Helm parancssori felület | Telepítse a [Helm CLI][helm-install]-t, amely a Helm-diagram (Container Package Definition) telepítéséhez használatos. |
 | Erőforrás Computer Vision |A tároló használatához a következőket kell tennie:<br><br>Egy Azure **Computer Vision** erőforrás és a hozzá tartozó API-kulcs a végpont URI-ja. Mindkét érték elérhető az erőforrás áttekintés és kulcsok oldalain, és a tároló indításához szükséges.<br><br>**{API_KEY}**: a **kulcsok** oldalon található két elérhető erőforrás-kulcs egyike<br><br>**{ENDPOINT_URI}**: az **Áttekintés** lapon megadott végpont|
@@ -258,6 +258,8 @@ A tervezés szerint minden v3-tároló rendelkezik egy diszpécserrel és egy fe
 
 A kérést fogadó tároló megoszthatja a feladatot egyoldalas alfeladatokbe, és hozzáadhatja őket az univerzális várólistához. Egy kevésbé forgalmas tárolóból származó felismerő feldolgozó egyetlen oldal alfeladatot is felhasználhat a várólistából, elvégezheti az elismerést, és feltöltheti az eredményt a tárolóba. Az átviteli sebesség az `n` üzembe helyezett tárolók számától függően akár időnként is javítható.
 
+A v3 tároló az elérési út alatt teszi elérhetővé az élettartam mintavételi API-ját `/ContainerLiveness` . A következő üzembe helyezési példa használatával konfigurálhatja a Kubernetes való élő mintavételt. 
+
 Másolja és illessze be a következő YAML egy nevű fájlba `deployment.yaml` . Cserélje le a `# {ENDPOINT_URI}` és a `# {API_KEY}` megjegyzéseket a saját értékeire. Cserélje le a `# {AZURE_STORAGE_CONNECTION_STRING}` megjegyzést az Azure Storage-beli kapcsolatok karakterláncára. Adja meg `replicas` a kívánt számot, amely az `3` alábbi példához van beállítva.
 
 ```yaml
@@ -293,6 +295,13 @@ spec:
           value: # {AZURE_STORAGE_CONNECTION_STRING}
         - name: Queue__Azure__ConnectionString
           value: # {AZURE_STORAGE_CONNECTION_STRING}
+        livenessProbe:
+          httpGet:
+            path: /ContainerLiveness
+            port: 5000
+          initialDelaySeconds: 60
+          periodSeconds: 60
+          timeoutSeconds: 20
 --- 
 apiVersion: v1
 kind: Service

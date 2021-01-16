@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/07/2020
 ms.topic: article
-ms.openlocfilehash: fc82d046caa3663cffcda585258642813ab3a7d8
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 76bb9d289e984dd8c229bdaaab09e679e11283fe
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207257"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246281"
 ---
 # <a name="camera"></a>Kamera
 
@@ -32,7 +32,7 @@ A kamera beállításai a következő tulajdonságokkal módosíthatók:
 
 **Közel és messzi síkja:**
 
-Győződjön meg arról, hogy nem állíthatók be érvénytelen tartományok, a **NearPlane** és a **FarPlane** tulajdonság csak olvasható, és egy különálló függvény **SetNearAndFarPlane** létezik a tartomány módosításához. Ezeket az adatfájlokat a rendszer a keret végén küldi el a kiszolgálónak.
+Győződjön meg arról, hogy nem állíthatók be érvénytelen tartományok, a **NearPlane** és a **FarPlane** tulajdonság csak olvasható, és egy különálló függvény **SetNearAndFarPlane** létezik a tartomány módosításához. Ezeket az adatfájlokat a rendszer a keret végén küldi el a kiszolgálónak. Ezeknek az értékeknek a beállításakor a **NearPlane** kisebbnek kell lennie, mint a **FarPlane**. Ellenkező esetben hiba történik.
 
 > [!IMPORTANT]
 > Az egységben ez automatikusan, a fő kamera közelében és a távoli síkok módosításakor lesz kezelve.
@@ -44,6 +44,21 @@ Néha hasznos lehet letiltani a távoli rendszerkép pufferének a hibakeresési
 > [!TIP]
 > Az egységben egy **EnableDepthComponent** nevű hibakeresési összetevő van megadva, amely a funkció a szerkesztő felhasználói felületen való váltására használható.
 
+**InverseDepth**:
+
+> [!NOTE]
+> Ez a beállítás csak akkor fontos, ha a értéke `EnableDepth` `true` . Ellenkező esetben ez a beállítás nincs hatással.
+
+A mélységi pufferek általában a (z) [0; 1] lebegőpontos tartományba rögzítik az értékeket, a 0 értékkel pedig a sík mélységét, a távolságot pedig 1. Ezen tartomány megfordítása és az [1; 0] tartományba tartozó mélységi értékek is megadhatók, azaz a közel sík mélysége 1 lesz, a távolabbi sík mélysége pedig 0 lesz. Az utóbbi általában növeli a lebegőpontos pontosság eloszlását a nem lineáris z-tartományon belül.
+
+> [!WARNING]
+> Egy közös megközelítéssel megtalálhatók a közeli sík és a távoli sík értékei a kamera objektumain. Ez sikertelen lesz az Azure távoli renderelés hibája esetén, amikor ezt a-t próbálja meg `CameraSettings` .
+
+Az Azure Remote rendering API-nak tudnia kell a helyi megjelenítő mélységi puffer-konvencióját, hogy helyesen lehessen a helyi mélységi pufferbe állítani a távoli mélységet. Ha a mélységi puffer tartománya [0; 1], akkor hagyja ezt a jelzőt `false` . Ha fordított mélységi puffert használ [1; 0] tartománnyal, állítsa a jelölőt a következőre: `InverseDepth` `true` .
+
+> [!NOTE]
+> Az Unity esetében a megfelelő beállítást már alkalmazza a rendszer, `RemoteManager` így nincs szükség manuális beavatkozásra.
+
 A kamera beállításainak módosítása a következőképpen végezhető el:
 
 ```cs
@@ -53,6 +68,7 @@ void ChangeCameraSetting(AzureSession session)
 
     settings.SetNearAndFarPlane(0.1f, 20.0f);
     settings.EnableDepth = false;
+    settings.InverseDepth = false;
 }
 ```
 
@@ -63,6 +79,7 @@ void ChangeStageSpace(ApiHandle<AzureSession> session)
 
     settings->SetNearAndFarPlane(0.1f, 20.0f);
     settings->SetEnableDepth(false);
+    settings->SetInverseDepth(false);
 }
 ```
 
@@ -73,7 +90,7 @@ void ChangeStageSpace(ApiHandle<AzureSession> session)
 * [C# GraphicsBindingSimD3d11. Update függvény](/dotnet/api/microsoft.azure.remoterendering.graphicsbindingsimd3d11.update)
 * [C++ GraphicsBindingSimD3d11:: Update függvény](/cpp/api/remote-rendering/graphicsbindingsimd3d11#update)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Grafikus kötés](../../concepts/graphics-bindings.md)
 * [Újravetítés késői fázisban](late-stage-reprojection.md)

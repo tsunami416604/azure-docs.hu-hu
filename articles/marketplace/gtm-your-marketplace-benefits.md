@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/13/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 8843bc803cdad07d8b66f9aeb87688c816158200
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 07535add495484abae06fc6ac8ac435d84bccc52
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202274"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246247"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>A kereskedelmi piactér előnyei
 
@@ -26,7 +26,7 @@ A Piactéri juttatások célja, hogy támogassa Önt a növekedés adott fázis�
 
 A program létrehoz egy pozitív visszajelzési ciklust: a növekedés minden szakaszának előnyeit úgy tervezték, hogy a következő szakaszra haladjon, ami lehetővé teszi, hogy az üzleti piactért platformként hasznosítsa a Microsoft ügyfeleinek, a Microsoft mezője és a Microsoft csatornáján keresztül.
 
-Az Ön által kínált előnyök a következők alapján különböztethetők meg, hogy az ajánlat [lista, próbaverzió vagy Transact](determine-your-listing-type.md#available-listing-options-by-offer-type).
+Az Ön által kínált előnyök a következők alapján különböztethetők meg, hogy az ajánlat [lista, próbaverzió vagy Transact](determine-your-listing-type.md).
 
 A jutalmak csapatának egy tagja fogja felvenni Önnel a kapcsolatot, ha az ajánlata életbe lép, a jogosultsága alapján.
 
@@ -121,7 +121,7 @@ Ezt az ajánlatot angol nyelven, az Azure Marketplace-en vagy Microsoft AppSourc
 
 A megtévesztőnek bizonyuló tranzakciók nem számítanak bele a kiadó által számlázott értékesítési program szintjébe, ahogy azt a [lista, a próbaverzió, a Consulting](#list-trial-and-consulting-benefits) szakasz és a [Transact partner előnyei](#marketplace-rewards-for-transact-partners) című szakasz tartalmazza. A csalás eltávolítását követően a Microsoft kiosztja a partnereket a jogosultsági szintek szerint a tényleges számlázott értékesítések alapján.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az ajánlat létrehozásához vagy konfigurálásához jelentkezzen be a [partner Centerben](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) .
 - A piactér előnyeinek aktiválása a [partner Centerben](https://partner.microsoft.com/dashboard/commercial-marketplace/overview).

@@ -8,14 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 11/25/2020
+ms.date: 01/15/2021
 ms.custom: designer
-ms.openlocfilehash: 14be695f2f58b9738af11a3d2ca3f06592a1cc6e
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 6bba5ad17cbb6f1ed72d06b37c6d6af9ebd26495
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575958"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246468"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Oktatóanyag: gépi tanulási modell üzembe helyezése a tervezővel
 
@@ -81,7 +81,7 @@ A megjelenő párbeszédpanelen bármelyik meglévő Azure Kubernetes Service-(a
     
 1. Válasszon egy közeli régiót, amely elérhető a **régió** számára.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
     > [!NOTE]
     > Egy új AK-szolgáltatás létrehozása körülbelül 15 percet vesz igénybe. A kiépítési állapotot megtekintheti a **következtetési fürtök** oldalon.
@@ -97,11 +97,30 @@ Miután az AK-szolgáltatás befejezte a kiépítést, térjen vissza a valós i
 
 1. Válassza ki a létrehozott AK-fürtöt.
 
-1. Válassza az **Üzembe helyezés** lehetőséget.
-    
     :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="Az új valós idejű végpont beállítását bemutató képernyőkép":::
 
+    A valós idejű végpont **speciális** beállítása is megváltoztatható.
+    
+    |Speciális beállítás|Leírás|
+    |---|---|
+    |Application Insights diagnosztika és adatgyűjtés engedélyezése| Azt határozza meg, hogy az Azure Application Ingishts lehetővé teszi-e az adatok gyűjtését az üzembe helyezett végpontokról. </br> Alapértelmezés szerint: false |
+    |Pontozási időkorlát| A webszolgáltatásra irányuló pontozási hívások kényszerített időkorlátja ezredmásodpercben.</br>Alapértelmezés szerint: 60000|
+    |Automatikus méretezés engedélyezve|   Azt határozza meg, hogy engedélyezi-e az automatikus skálázást a webszolgáltatáshoz.</br>Alapértelmezés szerint: true|
+    |Replikák minimális száma| A webszolgáltatás automatikus skálázásakor használandó tárolók minimális száma.</br>Alapértelmezés szerint: 1|
+    |Replikák maximális száma| A webszolgáltatás automatikus skálázásakor használandó tárolók maximális száma.</br> Alapértelmezés szerint: 10|
+    |Cél kihasználtsága|A cél kihasználtsága (az 100-as százalékban kifejezve), amelyet az autoskálázásnak meg kell próbálnia fenntartani a webszolgáltatás számára.</br> Alapértelmezés szerint: 70|
+    |Frissítési időszak|Az autoskálázás milyen gyakran próbálkozik a webszolgáltatás skálázásával.</br> Alapértelmezés szerint: 1|
+    |CPU-foglalási kapacitás|A webszolgáltatás számára lefoglalható CPU-magok száma.</br> Alapértelmezés szerint: 0,1|
+    |Memória foglalási kapacitása|A webszolgáltatás számára lefoglalható memória mennyisége (GB-ban).</br> Alapértelmezés szerint: 0,5|
+        
+
+1. Válassza az **Üzembe helyezés** lehetőséget. 
+
     Az üzembe helyezés befejeződése után a vászon fölötti sikeres értesítés jelenik meg. Néhány percet is igénybe vehet.
+
+> [!TIP]
+> Az Azure Container **instance** (ACI) szolgáltatásban is üzembe helyezhető, ha a valós idejű végpont-beállítás mezőben a **számítási típushoz** az **Azure Container instance** elemet választja.
+> Az Azure Container instance tesztelésre vagy fejlesztésre szolgál. Az ACI-t alacsony léptékű CPU-alapú számítási feladatokhoz használhatja, amelyek kevesebb mint 48 GB RAM memóriát igényelnek.
 
 ## <a name="view-the-real-time-endpoint"></a>Valós idejű végpont megtekintése
 

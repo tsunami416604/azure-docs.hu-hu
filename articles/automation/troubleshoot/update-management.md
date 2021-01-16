@@ -2,15 +2,15 @@
 title: Azure Automation Update Management problémák elhárítása
 description: Ez a cikk azt ismerteti, hogyan lehet elhárítani a Azure Automation Update Managementekkel kapcsolatos problémákat.
 services: automation
-ms.date: 12/04/2020
+ms.date: 01/13/2021
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: f00002c7374e0c35c7bb91c28b2dd87ad71e3350
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 55e58c92004f4f4cf4ba6a96620b4f037c80cdb4
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184917"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246264"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Az Update Management hibáinak elhárítása
 
@@ -144,13 +144,11 @@ Ezt a problémát a helyi konfigurációs problémák vagy a nem megfelelően ko
    | summarize by Computer, Solutions
    ```
 
-4. Ha nem látja a gépet a lekérdezés eredményei között, a közelmúltban nem volt bejelölve. Valószínűleg van egy helyi konfigurációs probléma, és újra kell [telepítenie az ügynököt](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows).
+    Ha nem látja a gépet a lekérdezés eredményei között, a közelmúltban nem volt bejelölve. Valószínűleg van egy helyi konfigurációs probléma, és újra kell [telepítenie az ügynököt](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows).
 
-5. Ha a gép megjelenik a lekérdezés eredményei között, ellenőrizze a hatókör-konfigurációs problémákat. A [hatókör-konfiguráció](../update-management/scope-configuration.md) határozza meg, hogy mely gépek vannak konfigurálva a Update Managementhoz.
+    Ha a gép megjelenik a lekérdezés eredményei között, ellenőrizze, hogy szerepel-e a **frissítések** listáján szereplő **Solutions (megoldások** ) tulajdonság alatt. Ez ellenőrzi, hogy regisztrálva van-e Update Management. Ha nem, ellenőrizze a hatókör-konfigurációs problémákat. A [hatókör-konfiguráció](../update-management/scope-configuration.md) határozza meg, hogy mely gépek vannak konfigurálva a Update Managementhoz. A számítógép céljának hatókör-konfigurációjának konfigurálásához lásd: [gépek engedélyezése a munkaterületen](../update-management/enable-from-automation-account.md#enable-machines-in-the-workspace).
 
-6. Ha a gép megjelenik a munkaterületen, de nem Update Managementban, akkor a hatókör-konfigurációt úgy kell konfigurálnia, hogy az a gépet célozza meg. Ennek módjáról a következő témakörben talál további információt: [gépek engedélyezése a munkaterületen](../update-management/enable-from-automation-account.md#enable-machines-in-the-workspace).
-
-7. A munkaterületen futtassa ezt a lekérdezést.
+4. A munkaterületen futtassa ezt a lekérdezést.
 
    ```kusto
    Operation
@@ -158,9 +156,9 @@ Ezt a problémát a helyi konfigurációs problémák vagy a nem megfelelően ko
    | sort by TimeGenerated desc
    ```
 
-8. Ha ezt `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` az eredményt kapja, elérte a munkaterületen definiált kvótát, amely leállította az adatok mentését. A munkaterületen válassza az **adatmennyiség-kezelés** a **használat és a becsült költségek** lehetőséget, majd módosítsa vagy távolítsa el a kvótát.
+   Ha ezt `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` az eredményt kapja, elérte a munkaterületen definiált kvótát, amely leállította az adatok mentését. A munkaterületen válassza az **adatmennyiség-kezelés** a **használat és a becsült költségek** lehetőséget, majd módosítsa vagy távolítsa el a kvótát.
 
-9. Ha a probléma továbbra is megoldatlan, kövesse a [Windows Hybrid Runbook Worker telepítése](../automation-windows-hrw-install.md) a hibrid feldolgozó Windows rendszerre való újratelepítésének lépéseit. Linux esetén kövesse a [Linux Hybrid Runbook Worker üzembe helyezése](../automation-linux-hrw-install.md)című témakör lépéseit.
+5. Ha a probléma továbbra is megoldatlan, kövesse a [Windows Hybrid Runbook Worker telepítése](../automation-windows-hrw-install.md) a hibrid feldolgozó Windows rendszerre való újratelepítésének lépéseit. Linux esetén kövesse a [Linux Hybrid Runbook Worker üzembe helyezése](../automation-linux-hrw-install.md)című témakör lépéseit.
 
 ## <a name="scenario-unable-to-register-automation-resource-provider-for-subscriptions"></a><a name="rp-register"></a>Forgatókönyv: nem sikerült regisztrálni az Automation erőforrás-szolgáltatót az előfizetésekhez
 
@@ -628,7 +626,7 @@ Ha Linuxon dolgozik, a frissítések besorolás szerinti („kritikus és bizton
 
 A KB2267602 a [Windows Defender definíciófrissítése](https://www.microsoft.com/wdsi/definitions). Naponta frissül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha nem látja a problémát, vagy nem tudja elhárítani a problémát, próbálja ki a következő csatornák egyikét a további támogatáshoz.
 

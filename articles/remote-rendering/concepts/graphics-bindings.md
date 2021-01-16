@@ -10,12 +10,12 @@ ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 853c71ed4803f717188568ec051c40c4f73afe95
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: cefd00609062c30b036f87a0a01a75dc2afb868b
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202871"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246145"
 ---
 # <a name="graphics-binding"></a>Grafikus kötés
 
@@ -123,7 +123,7 @@ Ahol a fentieknek olyan `ptr` natív objektumra mutató mutatónak kell lenniük
 Az egyes keretek elején a távoli keretet a hátsó pufferbe kell megjeleníteni. Ezt a meghívásával végezheti el `BlitRemoteFrame` , amely mindkét szem színét és részletes információit kitölti a jelenleg kötött megjelenítési célra. Ezért fontos, hogy ezt követően a teljes hátsó puffert leképezési célként kell kötni.
 
 > [!WARNING]
-> Miután a távoli rendszerkép be lett blit a backbuffer, a helyi tartalmat egy egyszeri továbbítású sztereó renderelési technikával kell megjeleníteni, például **SV_RenderTargetArrayIndex**használatával. Más sztereó renderelési technikák (például az egyes szemeknek külön pass-alapú renderelés) használatával jelentős teljesítmény-romlást vagy grafikus összetevőket eredményezhet, és el kell kerülni.
+> Miután a távoli rendszerkép be lett blit a backbuffer, a helyi tartalmat egy egyszeri továbbítású sztereó renderelési technikával kell megjeleníteni, például **SV_RenderTargetArrayIndex** használatával. Más sztereó renderelési technikák (például az egyes szemeknek külön pass-alapú renderelés) használatával jelentős teljesítmény-romlást vagy grafikus összetevőket eredményezhet, és el kell kerülni.
 
 ```cs
 AzureSession currentSession = ...;
@@ -150,13 +150,13 @@ Két kamera szükséges:
 
 Az alapszintű megközelítés az, hogy a távoli rendszerkép és a helyi tartalom is egy off-screen célra jelenik meg a proxy kamera használatával. A rendszer ezután újratervezi a proxy képét a helyi kamera területére, ami további magyarázatot mutat a [késői fázisok újravetítése](../overview/features/late-stage-reprojection.md)során.
 
-A telepítő egy kicsit nagyobb szerepet játszik, és a következőképpen működik:
+`GraphicsApiType.SimD3D11` támogatja a térhatású renderelést is, amelyet az `InitSimulation` alábbi beállítási hívás során engedélyezni kell. A telepítő egy kicsit nagyobb szerepet játszik, és a következőképpen működik:
 
 #### <a name="create-proxy-render-target"></a>Proxy megjelenítési cél létrehozása
 
 A távoli és a helyi tartalmat egy "proxy" nevű bemásolási szín/mélység megjelenítési célra kell megjeleníteni a függvény által biztosított proxy-kamerás adat használatával `GraphicsBindingSimD3d11.Update` .
 
-A proxynak meg kell egyeznie a hátsó puffer felbontásával, és *DXGI_FORMAT_R8G8B8A8_UNORM* vagy *DXGI_FORMAT_B8G8R8A8_UNORM* formátumban kell lennie. Ha a munkamenet elkészült, a `GraphicsBindingSimD3d11.InitSimulation` csatlakozás előtt meg kell hívni a következőhöz:
+A proxynak meg kell egyeznie a hátsó puffer felbontásával, és *DXGI_FORMAT_R8G8B8A8_UNORM* vagy *DXGI_FORMAT_B8G8R8A8_UNORM* formátumban kell lennie. Térhatású megjelenítés esetén a színproxy textúrája és a mélység használata esetén a mélységi proxy textúrájának két tömb réteget kell használnia egy helyett. Ha a munkamenet elkészült, a `GraphicsBindingSimD3d11.InitSimulation` csatlakozás előtt meg kell hívni a következőhöz:
 
 ```cs
 AzureSession currentSession = ...;
@@ -166,8 +166,9 @@ IntPtr depth = ...; // native pointer to ID3D11Texture2D
 float refreshRate = 60.0f; // Monitor refresh rate up to 60hz.
 bool flipBlitRemoteFrameTextureVertically = false;
 bool flipReprojectTextureVertically = false;
+bool stereoscopicRendering = false;
 GraphicsBindingSimD3d11 simBinding = (currentSession.GraphicsBinding as GraphicsBindingSimD3d11);
-simBinding.InitSimulation(d3dDevice, depth, color, refreshRate, flipBlitRemoteFrameTextureVertically, flipReprojectTextureVertically);
+simBinding.InitSimulation(d3dDevice, depth, color, refreshRate, flipBlitRemoteFrameTextureVertically, flipReprojectTextureVertically, stereoscopicRendering);
 ```
 
 ```cpp
@@ -178,8 +179,9 @@ void* depth = ...; // native pointer to ID3D11Texture2D
 float refreshRate = 60.0f; // Monitor refresh rate up to 60hz.
 bool flipBlitRemoteFrameTextureVertically = false;
 bool flipReprojectTextureVertically = false;
+bool stereoscopicRendering = false;
 ApiHandle<GraphicsBindingSimD3d11> simBinding = currentSession->GetGraphicsBinding().as<GraphicsBindingSimD3d11>();
-simBinding->InitSimulation(d3dDevice, depth, color, refreshRate, flipBlitRemoteFrameTextureVertically, flipReprojectTextureVertically);
+simBinding->InitSimulation(d3dDevice, depth, color, refreshRate, flipBlitRemoteFrameTextureVertically, flipReprojectTextureVertically, stereoscopicRendering);
 ```
 
 Az init függvényt a natív D3D-eszközhöz tartozó mutatókkal, valamint a proxy megjelenítési célpontjának szín-és mélységmérő mintázatával kell megadni. A inicializálása után többször is `AzureSession.ConnectToRuntime` `DisconnectFromRuntime` hívható, de ha egy másik munkamenetre vált, `GraphicsBindingSimD3d11.DeinitSimulation` először a régi munkamenetben kell meghívni, mielőtt `GraphicsBindingSimD3d11.InitSimulation` egy másik munkamenetben is meghívható.
@@ -196,13 +198,14 @@ Ha a visszaadott proxy frissítése `SimulationUpdate.frameId` null értékű, a
 ```cs
 AzureSession currentSession = ...;
 GraphicsBindingSimD3d11 simBinding = (currentSession.GraphicsBinding as GraphicsBindingSimD3d11);
-SimulationUpdate update = new SimulationUpdate();
+SimulationUpdateParameters updateParameters = new SimulationUpdateParameters();
 // Fill out camera data with current camera data
+// (see "Simulation Update structures" section below)
 ...
-SimulationUpdate proxyUpdate = new SimulationUpdate();
-simBinding.Update(update, out proxyUpdate);
+SimulationUpdateResult updateResult = new SimulationUpdateResult();
+simBinding.Update(updateParameters, out updateResult);
 // Is the frame data valid?
-if (proxyUpdate.frameId != 0)
+if (updateResult.frameId != 0)
 {
     // Bind proxy render target
     simBinding.BlitRemoteFrameToProxy();
@@ -223,13 +226,14 @@ else
 ApiHandle<AzureSession> currentSession;
 ApiHandle<GraphicsBindingSimD3d11> simBinding = currentSession->GetGraphicsBinding().as<GraphicsBindingSimD3d11>();
 
-SimulationUpdate update;
+SimulationUpdateParameters updateParameters;
 // Fill out camera data with current camera data
+// (see "Simulation Update structures" section below)
 ...
-SimulationUpdate proxyUpdate;
-simBinding->Update(update, &proxyUpdate);
+SimulationUpdateResult updateResult;
+simBinding->Update(updateParameters, &updateResult);
 // Is the frame data valid?
-if (proxyUpdate.frameId != 0)
+if (updateResult.frameId != 0)
 {
     // Bind proxy render target
     simBinding->BlitRemoteFrameToProxy();
@@ -246,6 +250,112 @@ else
 }
 ```
 
+#### <a name="simulation-update-structures"></a>Szimulációs frissítési struktúrák
+
+Az előző szakaszból származó **renderelési hurok frissítése** megköveteli, hogy a helyi kamerának megfelelő kamera-paramétereket adjon meg, amely a következő rendelkezésre álló keret kamerájának megfelelő kamera-paramétereket adja vissza. A két készlet a `SimulationUpdateParameters` és a szerkezetekben rögzítve van `SimulationUpdateResult` :
+
+```cs
+public struct SimulationUpdateParameters
+{
+    public UInt32 frameId;
+    public StereoMatrix4x4 viewTransform;
+    public StereoCameraFOV fieldOfView;
+};
+
+public struct SimulationUpdateResult
+{
+    public UInt32 frameId;
+    public float nearPlaneDistance;
+    public float farPlaneDistance;
+    public StereoMatrix4x4 viewTransform;
+    public StereoCameraFOV fieldOfView;
+};
+```
+
+A struktúra tagjai a következőkkel bírnak:
+
+| Tag | Leírás |
+|--------|-------------|
+| frameId | Folyamatos keret azonosítója A SimulationUpdateParameters-bevitelhez szükséges, és folyamatosan növelni kell az egyes új kereteket. A SimulationUpdateResult 0 lesz, ha még nem érhető el frame-érték. |
+| viewTransform | A keret kamera-átalakulási mátrixának bal és jobb oldali sztereó párja. A monoscopic megjelenítéséhez csak a `left` tag érvényes. |
+| fieldOfView | A keretben lévő kamera mezőinek bal-jobb sztereó párja a [View egyezmény OpenX mezőjében](https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#angles). A monoscopic megjelenítéséhez csak a `left` tag érvényes. |
+| nearPlaneDistance | az aktuális távoli keret kivetítési mátrixához használt, közel sík távolság. |
+| farPlaneDistance | az aktuális távoli keret kivetítési mátrixához használt távoli távolság. |
+
+A sztereó párok `viewTransform` és `fieldOfView` lehetővé teszik a szem-kamera értékek beállítását, ha a térhatású megjelenítés engedélyezve van. Ellenkező esetben a `right` tagok figyelmen kívül lesznek hagyva. Amint láthatja, csak a kamera átalakítását kell átadni egyszerű 4x4-transzformációs mátrixként, amíg nincs kivetítési mátrix megadva. A tényleges mátrixok kiszámítása az Azure távoli renderelési funkciójával történik, a megadott mezőkkel és a [CAMERASETTINGS API](../overview/features/camera.md)-hoz tartozó aktuális, közel-sík és távolabbi területtel.
+
+Mivel a [CameraSettings](../overview/features/camera.md) a közeljövőben és a távoli síkon is módosítható a kívánt módon, és a szolgáltatás aszinkron módon alkalmazza ezeket a beállításokat, az egyes SimulationUpdateResult a megfelelő keret megjelenítésekor is elvégzik a meghatározott közel-sík és a távoli síkok használatát. Ezekkel a sík értékekkel igazíthatja a kivetítési mátrixokat a helyi objektumok megjelenítéséhez, hogy azok megfeleljenek a távoli keret megjelenítésének.
+
+Végül, míg a **szimulációs frissítési** híváshoz a OpenX-egyezményben, a szabványosítás és az algoritmusok biztonsági okaiban is meg kell jeleníteni a nézetet, a következő szerkezeti populációs példákban bemutatott konverziós függvények használhatók:
+
+```cs
+public SimulationUpdateParameters CreateSimulationUpdateParameters(UInt32 frameId, Matrix4x4 viewTransform, Matrix4x4 projectionMatrix)
+{
+    SimulationUpdateParameters parameters;
+    parameters.frameId = frameId;
+    parameters.viewTransform.left = viewTransform;
+    if(parameters.fieldOfView.left.fromProjectionMatrix(projectionMatrix) != Result.Success)
+    {
+        // Invalid projection matrix
+        return null;
+    }
+    return parameters;
+}
+
+public void GetCameraSettingsFromSimulationUpdateResult(SimulationUpdateResult result, out Matrix4x4 projectionMatrix, out Matrix4x4 viewTransform, out UInt32 frameId)
+{
+    if(result.frameId == 0)
+    {
+        // Invalid frame data
+        return;
+    }
+    
+    // Use the screenspace depth convention you expect for your projection matrix locally
+    if(result.fov.left.toProjectionMatrix(result.nearPlaneDistance, result.farPlaneDistance, DepthConvention.ZeroToOne, projectionMatrix) != Result.Success)
+    {
+        // Invalid field-of-view
+        return;
+    }
+    viewTransform = result.viewTransform.left;
+    frameId = result.frameId;
+}
+```
+
+```cpp
+SimulationUpdateParameters CreateSimulationUpdateParameters(uint32_t frameId, Matrix4x4 viewTransform, Matrix4x4 projectionMatrix)
+{
+    SimulationUpdateParameters parameters;
+    parameters.frameId = frameId;
+    parameters.viewTransform.left = viewTransform;
+    if(FovFromProjectionMatrix(projectionMatrix, parameters.fieldOfView.left) != Result::Success)
+    {
+        // Invalid projection matrix
+        return {};
+    }
+    return parameters;
+}
+
+void GetCameraSettingsFromSimulationUpdateResult(const SimulationUpdateResult& result, Matrix4x4& projectionMatrix, Matrix4x4& viewTransform, uint32_t& frameId)
+{
+    if(result.frameId == 0)
+    {
+        // Invalid frame data
+        return;
+    }
+    
+    // Use the screenspace depth convention you expect for your projection matrix locally
+    if(FovToProjectionMatrix(result.fieldOfView.left, result.nearPlaneDistance, result.farPlaneDistance, DepthConvention::ZeroToOne, projectionMatrix) != Result::Success)
+    {
+        // Invalid field-of-view
+        return;
+    }
+    viewTransform = result.viewTransform.left;
+    frameId = result.frameId;
+}
+```
+
+Ezek az átalakítási függvények lehetővé teszik, hogy a helyi megjelenítéstől függően gyorsan váltani lehessen a nézet specifikációja és egy egyszerű, 4x4-es perspektíva-kivetítési mátrix között. Ezek az átalakítási függvények ellenőrzési logikát tartalmaznak, és nem érvényes eredmény megadása nélkül térnek vissza a hibákra, ha a bemeneti vetületi mátrixok vagy a bemeneti mezők érvénytelenek.
+
 ## <a name="api-documentation"></a>API-dokumentáció
 
 * [C# RemoteManagerStatic. StartupRemoteRendering ()](/dotnet/api/microsoft.azure.remoterendering.remotemanagerstatic.startupremoterendering)
@@ -257,7 +367,7 @@ else
 * [C++ GraphicsBindingWmrD3d11 osztály](/cpp/api/remote-rendering/graphicsbindingwmrd3d11)
 * [C++ GraphicsBindingSimD3d11 osztály](/cpp/api/remote-rendering/graphicsbindingsimd3d11)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Fényképezőgép](../overview/features/camera.md)
 * [Újravetítés késői fázisban](../overview/features/late-stage-reprojection.md)
