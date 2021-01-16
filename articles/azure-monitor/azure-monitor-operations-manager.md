@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2021
-ms.openlocfilehash: 85172e2430a3e65edb0c5ec119c920e2c7d20217
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 877251ba7e0c1f3c33cab37e20d609479b69520c
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234854"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251828"
 ---
 # <a name="azure-monitor-for-existing-operations-manager-customers"></a>Azure Monitor meglévő Operations Manager ügyfelek számára
 Ez a cikk útmutatást nyújt azokhoz az ügyfelekhez, akik jelenleg használják a [System Center Operations Managert](https://docs.microsoft.com/system-center/scom/welcome) , és az üzleti alkalmazások és egyéb erőforrások az Azure-ba való áttelepítésének megtervezése [Azure Monitorre](overview.md) Azt feltételezi, hogy a végső cél a felhőbe való teljes átállás, amely a lehető legtöbb Operations Manager funkciót helyettesíti a Azure Monitor, az üzleti és informatikai működési követelmények veszélyeztetése nélkül. 
@@ -63,7 +63,7 @@ Minden üzleti alkalmazás esetében engedélyezheti a Application Insights. Azo
 A Azure Monitor megismeréséhez olyan riasztási szabályokat hozhat létre, amelyek képesek a felügyeleti csomagok bizonyos funkcióinak cseréjére, és megkezdik az üzleti folyamatok fejlesztését az új figyelési platform használatára. Ez lehetővé teszi, hogy elindítsa a gépek és a felügyeleti csomagok eltávolítását a Operations Manager felügyeleti csoportból. Továbbra is a felügyeleti csomagokat használja a kritikus kiszolgálói szoftverekhez és a helyszíni infrastruktúrához, de továbbra is figyelje a Azure Monitor új funkcióit, amelyek lehetővé teszik további funkciók kivonását.
 
 ## <a name="monitor-azure-services"></a>Azure-szolgáltatások figyelése
-Az Azure-szolgáltatásokhoz ténylegesen Azure Monitor szükséges a telemetria gyűjtéséhez, és lehetővé teszi az Azure-előfizetések létrehozásának pillanatát. A rendszer automatikusan összegyűjti a [tevékenység naplóját](platform/activity-log.md) az előfizetéshez, és a rendszer automatikusan összegyűjti a [platform metrikáit](platform/data-platform-metrics.md) a létrehozott Azure-erőforrásoktól. Azonnal megkezdheti a [metrikák Explorer](platform/metrics-getting-started.md)használatát, amely hasonló az operatív konzol teljesítmény nézeteihez, de interaktív elemzést és [speciális adatösszesítéseket](platform/metrics-charts.md) is biztosít. [Hozzon létre egy metrikai riasztást](platform/alerts-metric.md) , amely értesítést kap, ha egy érték túllép egy küszöbértéket, vagy [hozzáadhat egy diagramot egy Azure-irányítópulthoz](platform/metrics-charts.md#pin-charts-to-dashboards) a láthatóság érdekében.
+Az Azure-szolgáltatásokhoz ténylegesen Azure Monitor szükséges a telemetria gyűjtéséhez, és lehetővé teszi az Azure-előfizetések létrehozásának pillanatát. A rendszer automatikusan összegyűjti a [tevékenység naplóját](platform/activity-log.md) az előfizetéshez, és a rendszer automatikusan összegyűjti a [platform metrikáit](platform/data-platform-metrics.md) a létrehozott Azure-erőforrásoktól. Azonnal megkezdheti a [metrikák Explorer](platform/metrics-getting-started.md)használatát, amely hasonló az operatív konzol teljesítmény nézeteihez, de interaktív elemzést és [speciális adatösszesítéseket](platform/metrics-charts.md) is biztosít. [Hozzon létre egy metrikai riasztást](platform/alerts-metric.md) , amely értesítést kap, ha egy érték túllép egy küszöbértéket, vagy [hozzáadhat egy diagramot egy Azure-irányítópulthoz](platform/metrics-charts.md#pinning-to-dashboards) a láthatóság érdekében.
 
 [![Metrikaböngésző](media/azure-monitor-operations-manager/metrics-explorer.png)](media/azure-monitor-operations-manager/metrics-explorer.png#lightbox)
 

@@ -4,12 +4,12 @@ ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 12/09/2020
 ms.topic: include
-ms.openlocfilehash: a53b316f6d942f070ef925b369bcea8476fbfffd
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 8890a0132e5f510a0af2862c483206fd025a68d8
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97853709"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98256566"
 ---
 Ismerkedjen meg a Custom Vision REST APIával. Az alábbi lépéseket követve meghívhatja az API-t, és felépítheti a rendszerkép besorolási modelljét. Létrehoz egy projektet, címkéket ad hozzá, betanítja a projektet, és a projekt előrejelzési végpontjának URL-címét használja a programozott teszteléshez. Ez a példa sablonként használható a saját rendszerkép-felismerő alkalmazás létrehozásához.
 
@@ -102,6 +102,9 @@ A következőhöz hasonló JSON-választ fog kapni. Mentse az `"id"` egyes címk
 ## <a name="upload-and-tag-images"></a>Képek feltöltése és címkézése
 
 Ezután töltse le a projekthez tartozó mintaképeket. Mentse a [Sample images mappa](https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/CustomVision/ImageClassification/Images) tartalmát a helyi eszközre.
+
+> [!NOTE]
+> A Microsoft garázs-projekt, amely lehetővé teszi, hogy beszerezze a betanítási célokra szánt lemezképek készleteit. A képek összegyűjtése után letöltheti őket, majd a szokásos módon importálhatja őket a Custom Vision-projektbe. További információért látogasson el az [adattárház oldalára](https://www.microsoft.com/en-us/ai/trove?activetab=pivot1:primaryr3) .
 
 A következő parancs használatával töltse fel a képeket, és alkalmazza a címkéket; egyszer a "Hemlock" és a "Japanese Cherry" rendszerképekhez. További lehetőségekért tekintse meg a [képek létrehozása az adatok API-ból](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb5) című témakört.
 

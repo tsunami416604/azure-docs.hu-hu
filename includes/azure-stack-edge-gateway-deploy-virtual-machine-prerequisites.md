@@ -2,14 +2,14 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 12/21/2020
+ms.date: 01/15/2021
 ms.author: alkohli
-ms.openlocfilehash: f2443765ecc9116193cefbc729ced25fa5657e59
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 56fc24966fa60c3a5e91f92b57332ae2f6a525ff
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763428"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98256434"
 ---
 Mielőtt üzembe helyezi a virtuális gépeket az Azure Stack Edge-eszközön, konfigurálnia kell az ügyfelet, hogy Azure Resource Manageron keresztül kapcsolódjon az eszközhöz Azure PowerShellon keresztül. A részletes lépésekért lépjen a [kapcsolódás Azure Resource Managerhoz az Azure stack Edge-eszközön](../articles/databox-online/azure-stack-edge-j-series-connect-resource-manager.md).
 
@@ -38,11 +38,3 @@ Győződjön meg arról, hogy a következő lépések használhatók az eszköz 
     > Ha GPU virtuális gépeket hoz létre, válassza ki az internethez csatlakozó hálózati adaptert. Ez lehetővé teszi a GPU-bővítmény telepítését az eszközön.
 
 
-1. Virtuálisgép-szerepkör engedélyezése a Azure Portal. Ez a lépés létrehoz egy egyedi előfizetést az eszközhöz, amely a virtuális gépek helyi API-k használatával történő létrehozására szolgál. 
-
-    1. A virtuálisgép-szerepkör engedélyezéséhez lépjen a Azure Portal Azure Stack Edge-erőforrásra az Azure Stack Edge-eszközhöz. Ugrás az **Edge számítási > Virtual Machines**.
-
-        ![VM-rendszerkép hozzáadása 1](../articles/databox-online/media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-1.png)
-
-    1. Válassza a **Virtual Machines** lehetőséget az **Áttekintés** oldalra való ugráshoz. A virtuális gépek Felhőbeli felügyeletének **engedélyezése** .
-        ![VM-rendszerkép hozzáadása 2](../articles/databox-online/media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-2.png)

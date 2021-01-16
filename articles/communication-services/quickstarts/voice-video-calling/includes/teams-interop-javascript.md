@@ -5,26 +5,18 @@ ms.author: mikben
 ms.date: 10/10/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: c72083f205fae77de366125e666cee479fd46805
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: dbba87be839d7f172d42827698a8e485c2edddd8
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97691954"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98256413"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Egy működő [kommunikációs szolgáltatás, amely meghívja az alkalmazást](../getting-started-with-calling.md).
 - [Csapatok üzembe helyezése](/deployoffice/teams-install).
 
-## <a name="enable-teams-interoperability"></a>Csoportok együttműködésének engedélyezése
-
-A csapatok együttműködési funkciója jelenleg privát előzetes verzióban érhető el. Ha engedélyezni szeretné ezt a funkciót a kommunikációs szolgáltatások erőforrásához, küldjön e-mailt a következő címre [acsfeedback@microsoft.com](mailto:acsfeedback@microsoft.com) :
-
-1. A kommunikációs szolgáltatások erőforrását tartalmazó Azure-előfizetés előfizetés-azonosítója.
-2. Csapatának bérlői azonosítója. Ennek a legegyszerűbb módja a [csapatra mutató hivatkozás beszerzése és megosztása](https://support.microsoft.com/office/create-a-link-or-a-code-for-joining-a-team-11b0de3b-9288-4cb4-bc49-795e7028296f).
-
-A funkció használatához mindkét entitás tulajdonos szervezetének tagjának kell lennie.
 
 ## <a name="add-the-teams-ui-controls"></a>A csapatok felhasználói felületi vezérlőinek hozzáadása
 

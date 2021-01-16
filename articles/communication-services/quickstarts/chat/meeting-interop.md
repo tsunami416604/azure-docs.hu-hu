@@ -7,12 +7,12 @@ ms.author: askaur
 ms.date: 12/08/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: ea66e4295e8228aa382aa29a46fcca8147dcbc98
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 1ad6b7241c7167c6da8952e7db2797fa275b7246
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97578123"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251921"
 ---
 # <a name="quickstart-join-your-chat-app-to-a-teams-meeting"></a>Gyors útmutató: csatlakozás a csevegési alkalmazáshoz egy csapat-értekezleten
 
@@ -29,11 +29,7 @@ Ismerkedés az Azure kommunikációs szolgáltatásokkal a csevegési megoldás 
 
 A kommunikációs szolgáltatások felhasználója, amely egy vendégként működő csapathoz csatlakozik, csak akkor férhet hozzá az értekezlet csevegéséhez, ha csatlakoztak a Teams Meeting híváshoz. Tekintse meg a [csapatok együttműködési](../voice-video-calling/get-started-teams-interop.md) dokumentációját, amelyből megtudhatja, hogyan adhat hozzá kommunikációs szolgáltatásokat használó felhasználókat egy csapat-értekezlethez.
 
-A csapatok együttműködési funkciója jelenleg privát előzetes verzióban érhető el. Ha engedélyezni szeretné ezt a funkciót a kommunikációs szolgáltatások erőforrásához, küldjön e-mailt a következő címre acsfeedback@microsoft.com : 
-1. A kommunikációs szolgáltatások erőforrását tartalmazó Azure-előfizetés előfizetés-azonosítója. 
-2. Csapatának bérlői azonosítója. Ennek a legegyszerűbb módja a csapatra mutató hivatkozás beszerzése és megosztása. 
-
-A funkció használatához mindkét entitás tulajdonos szervezetének tagjának kell lennie. 
+A funkció használatához mindkét entitás tulajdonos szervezetének tagjának kell lennie.
 
 [!INCLUDE [Join Teams meetings](./includes/meeting-interop-javascript.md)]
 

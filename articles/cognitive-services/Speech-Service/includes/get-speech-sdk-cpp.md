@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 5a06a0663601c221dd456b9cf4437cb9f32a18f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99bc49dfe7b3f7b6a9d49c2947d8d8c01ad98dac
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81399960"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98256341"
 ---
 :::row:::
     :::column span="3":::
@@ -30,20 +30,6 @@ A C++ Speech SDK a következő paranccsal telepíthető a **Package managerből*
 ```powershell
 Install-Package Microsoft.CognitiveServices.Speech
 ```
-
-#### <a name="c-binaries-and-header-files"></a>C++ bináris fájlok és fejlécek
-
-Másik lehetőségként a C++ Speech SDK telepíthető bináris fájlokból is. Töltse le az SDK-t <a href="https://aka.ms/csspeech/linuxbinary" target="_blank">. tar <span class="docon docon-navigate-external x-hidden-focus"></span> -csomagként</a> , és csomagolja ki a fájlokat egy tetszőleges könyvtárba. A csomag tartalma (amely tartalmazza az x86-és x64-es megcélzott architektúrák fejléc-fájljait is) a következőképpen strukturált:
-
-  | Elérési út                   | Leírás                                          |
-  |------------------------|------------------------------------------------------|
-  | `license.md`           | Licenc                                              |
-  | `ThirdPartyNotices.md` | Harmadik felekkel kapcsolatos közlemények                                  |
-  | `include`              | A C++ fejléc fájljai                                 |
-  | `lib/x64`              | Natív x64-es függvénytár az alkalmazással való összekapcsoláshoz |
-  | `lib/x86`              | Natív x86-függvénytár az alkalmazással való összekapcsoláshoz |
-
-  Alkalmazás létrehozásához másolja vagy helyezze át a szükséges bináris fájlokat (és könyvtárakat) a fejlesztői környezetbe. A létrehozási folyamat során szükség szerint vegye fel őket.
 
 #### <a name="additional-resources"></a>További források
 

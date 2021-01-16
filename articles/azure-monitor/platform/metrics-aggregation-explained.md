@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.subservice: metrics
-ms.openlocfilehash: 79728e53c1d53a8a4463fc0bd1ddee5db89fc013
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 1d83ef07714e0ce69f01aa240cc3058195c7b1af
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234809"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251981"
 ---
 # <a name="azure-monitor-metrics-metrics-aggregation-and-display-explained"></a>Azure Monitor metrikák metrikáinak összesítése és megjelenítése
 
@@ -125,7 +125,7 @@ A szűrés használata lehetővé teszi a diagram törlését, hogy meglássuk, 
 
 :::image type="content" source="media/metrics-aggregation-explained/split-filter-total-disk write-bytes-all-VMs.png" alt-text="Képernyőfelvétel: lemezek írási bájtjai az összes virtuális gép számára a contoso Hotels erőforráscsoport felosztása és szűrése a virtuális gép neve alapján" border="true" lightbox="media/metrics-aggregation-explained/split-filter-total-disk write-bytes-all-VMs.png":::
 
-További információ a feldarabolt dimenziók adatainak metrikus Explorer-diagramon való megjelenítéséről: [a metrikák Explorer speciális funkciói – szűrők és felosztás](metrics-charts.md#apply-filters-to-charts).
+További információ a feldarabolt dimenziók adatainak metrikus Explorer-diagramon való megjelenítéséről: [a metrikák Explorer speciális funkciói – szűrők és felosztás](metrics-charts.md#filters).
 
 ### <a name="null-and-zero-values"></a>NULL és nulla érték
 
