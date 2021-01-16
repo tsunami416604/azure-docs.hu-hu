@@ -227,7 +227,7 @@
           href: /samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/
         - name: A SignalR integrációs mintája
           href: /samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/
-        - name: Az Azure Digital Twins egyéni swaggerei Logic Apps-összekötőhöz
+        - name: Egyéni swaggerek Logic Apps-összekötőhöz
           href: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
     - name: Azure-eszközök
       items:
