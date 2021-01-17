@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 68ffde11059de4809e519c1ac4f79503f25b0004
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 38eee59ecffa0c09403f47678e588b678e038413
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653741"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98537974"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>Hozzon létre egy GitHub-fiókkal történő regisztrációt és bejelentkezést Azure Active Directory B2C
 
@@ -38,9 +38,9 @@ ms.locfileid: "97653741"
 
 ## <a name="create-a-github-oauth-application"></a>GitHub OAuth-alkalmazás létrehozása
 
-Ha a GitHub-fiókot Azure Active Directory B2C (Azure AD B2C) [identitás-szolgáltatóként](authorization-code-flow.md) szeretné használni, létre kell hoznia egy alkalmazást a bérlőben, amely azt képviseli. Ha még nem rendelkezik GitHub-fiókkal, regisztrálhat a következő címen: [https://www.github.com/](https://www.github.com/) .
+Ha Azure Active Directory B2C (Azure AD B2C) GitHub-fiókkal kívánja engedélyezni a bejelentkezést, létre kell hoznia egy alkalmazást a [GitHub fejlesztői](https://github.com/settings/developers) portálon. További információ: OAuth- [alkalmazás létrehozása](https://docs.github.com/en/free-pro-team@latest/developers/apps/creating-an-oauth-app). Ha még nem rendelkezik GitHub-fiókkal, regisztrálhat a következő címen: [https://www.github.com/](https://www.github.com/) .
 
-1. Jelentkezzen be a [GitHub fejlesztői](https://github.com/settings/developers) webhelyére a GitHub hitelesítő adataival.
+1. Jelentkezzen be a [GitHub-fejlesztőbe](https://github.com/settings/developers) a GitHub-hitelesítő adataival.
 1. Válassza a **OAuth-alkalmazások** lehetőséget, majd az **új OAuth alkalmazást**.
 1. Adja meg az **alkalmazás nevét** és a **Kezdőlap URL-címét**.
 1. Adja meg `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` az **engedélyezési visszahívási URL-címet**. Cserélje le a helyére `your-tenant-name` a Azure ad B2C bérlő nevét. A bérlő nevének megadásakor használja az összes kisbetűt, még akkor is, ha a bérlőt nagybetűvel definiálják Azure AD B2Cban.
@@ -77,7 +77,7 @@ A Azure AD B2C bérlőben korábban rögzített ügyfél-titkos kulcsot kell tá
 1. Adja meg a szabályzat kulcsának **nevét** . Például: `GitHubSecret`. A rendszer automatikusan hozzáadja az előtagot a `B2C_1A_` kulcs nevéhez.
 1. A **Secret (titkos kulcs**) mezőben adja meg a korábban rögzített ügyfél-titkot.
 1. A **kulcshasználat** beállításnál válassza a elemet `Signature` .
-1. Kattintson a **Létrehozás** gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="add-a-claims-provider"></a>Jogcím-szolgáltató hozzáadása
 
@@ -218,7 +218,7 @@ Most, hogy van egy gomb a helyén, össze kell kapcsolni egy művelettel. A műv
 ## <a name="add-github-identity-provider-to-a-user-flow"></a>GitHub-identitás szolgáltatójának hozzáadása felhasználói folyamathoz 
 
 1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok** lehetőséget.
-1. Kattintson arra a felhasználói folyamatra, amelyet a GitHub-identitás szolgáltatójának szeretne használni.
+1. Kattintson arra a felhasználói folyamatra, amelyhez hozzá szeretné adni a GitHub-identitás szolgáltatóját.
 1. A **közösségi identitás-szolgáltatók** területen válassza a **GitHub** lehetőséget.
 1. Válassza a **Mentés** lehetőséget.
 1. A szabályzat teszteléséhez válassza a **felhasználói folyamat futtatása** lehetőséget.

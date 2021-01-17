@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/24/2019
+ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 1fec471e4047707f2b7cbaa55fdc7f2256bebe93
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 6914fb50cdb157cf8ef7b5433ebbde47eff8fc32
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519866"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539800"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>Oktatóanyag: Azure Active Directory integráció a Zscaler Betatal
 
@@ -26,9 +26,6 @@ A Zscaler Beta és az Azure AD integrálásával a következőket teheti:
 * A Zscaler Beta elérését biztosító Azure AD-beli vezérlés.
 * Lehetővé teszi a felhasználók számára, hogy automatikusan bejelentkezzenek a Zscaler Beta szolgáltatásba az Azure AD-fiókjával. A hozzáférés-vezérlés neve egyszeri bejelentkezés (SSO).
 * A fiókokat egy központi helyen kezelheti a Azure Portal használatával.
-
-További információ az Azure AD-vel való szolgáltatott szoftver-(SaaS-) alkalmazások integrálásáról: [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,68 +38,47 @@ Az Azure AD-integráció Zscaler Beta-nal való konfigurálásához a következ�
 
 Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* A Zscaler Beta támogatja az SP által kezdeményezett egyszeri bejelentkezést.
-* A Zscaler Beta az igény szerinti felhasználói üzembe helyezést is támogatja.
+* A Zscaler Beta támogatja az **SP** által kezdeményezett egyszeri bejelentkezést.
+* A Zscaler Beta **csak időben támogatja a** felhasználók üzembe helyezését.
 
-## <a name="add-zscaler-beta-from-the-azure-marketplace"></a>Zscaler Beta hozzáadása az Azure Marketplace-ről
+## <a name="adding-zscaler-beta-from-the-gallery"></a>Zscaler Beta hozzáadása a katalógusból
 
-A Zscaler Beta Azure AD-be való integrálásának konfigurálásához adja hozzá a Zscaler Beta-t az Azure piactéren a felügyelt SaaS-alkalmazások listájához.
+A Zscaler Beta Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Zscaler Beta alkalmazást a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-Az Zscaler Beta Azure piactéren való hozzáadásához kövesse az alábbi lépéseket.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **Zscaler Beta** kifejezést a keresőmezőbe.
+1. Válassza az **Zscaler Beta** elemet az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-1. A [Azure Portal](https://portal.azure.com)bal oldali navigációs paneljén válassza a **Azure Active Directory**lehetőséget.
+## <a name="configure-and-test-azure-ad-sso-for-zscaler-beta"></a>Azure AD SSO konfigurálása és tesztelése a Zscaler Beta-hoz
 
-    ![Azure Active Directory gomb](common/select-azuread.png)
+Konfigurálja és tesztelje az Azure AD SSO-t a Zscaler Beta használatával egy **B. Simon** nevű tesztelési felhasználóval. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Zscaler Beta-ban.
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+Az Azure AD SSO Zscaler Beta-vel való konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához válassza a párbeszédpanel tetején található **új alkalmazás** lehetőséget.
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. **[Zscaler Beta SSO konfigurálása](#configure-zscaler-beta-sso)** – az egyes Sign-On beállításainak konfigurálása az alkalmazás oldalán.
+    1. **[Zscaler beta-teszt felhasználó létrehozása](#create-zscaler-beta-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-Zscaler rendelkezik.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-    ![Új alkalmazás gomb](common/add-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-4. A keresőmezőbe írja be a **Zscaler Beta**kifejezést. Válassza a **Zscaler Beta** elemet az eredmények panelen, majd válassza a **Hozzáadás**lehetőséget.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-     ![Zscaler Beta az eredmények listájában](common/search-new-app.png)
+1. A Azure Portal a **Zscaler Beta** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
+1. Az **egyszeres Sign-On beállítása az SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** ceruza ikonjára a beállítások szerkesztéséhez.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést a Zscaler Beta szolgáltatással konfigurálja és teszteli a Simon Britta teszt felhasználó alapján.
-Az egyszeri bejelentkezés működéséhez hozzon létre egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Zscaler Beta-ban.
+1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-Az Azure AD egyszeri bejelentkezés Zscaler Beta használatával történő konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
-
-- Az [Azure ad egyszeri bejelentkezés konfigurálásával](#configure-azure-ad-single-sign-on) engedélyezheti a felhasználók számára a funkció használatát.
-- [Konfigurálja a Zscaler Beta egyszeri bejelentkezést](#configure-zscaler-beta-single-sign-on) az alkalmazás oldalának egyszeri bejelentkezési beállításainak konfigurálásához.
-- [Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user) az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-- [Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user) , hogy a Britta Simon engedélyezze az Azure ad egyszeri bejelentkezés használatát.
-- [Hozzon létre egy Zscaler béta-tesztelési felhasználót](#create-a-zscaler-beta-test-user) , hogy a felhasználó Azure ad-képviseletéhez kapcsolódó, a Zscaler Beta-ban található Britta Simon partnere legyen.
-- [Tesztelje az egyszeri bejelentkezést](#test-single-sign-on) annak ellenőrzéséhez, hogy a konfiguráció működik-e.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
-
-Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
-
-Az Azure AD egyszeri bejelentkezés a Zscaler Beta használatával történő konfigurálásához kövesse az alábbi lépéseket.
-
-1. A [Azure Portal](https://portal.azure.com/)a **Zscaler Beta** Application Integration lapon válassza az **egyszeri bejelentkezés**lehetőséget.
-
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
-
-2. Az egyszeri **bejelentkezési módszer kiválasztása** párbeszédpanelen válassza ki az **SAML/ws-fed** módot az egyszeri bejelentkezés engedélyezéséhez.
-
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
-
-3. Az **egyszeres Sign-On beállítása az SAML-vel** lapon válassza a **Szerkesztés** lehetőséget az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
-
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
-
-4. Az **alapszintű SAML-konfiguráció** szakaszban kövesse ezt a lépést:
-
-    ![Zscaler Beta-tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-intiated.png)
-
-    - A **bejelentkezési URL-cím** mezőbe írja be a felhasználók által a Zscaler Beta alkalmazásba való bejelentkezéshez használt URL-címet.
+    A **bejelentkezési URL-cím** mezőbe írja be a felhasználók által a Zscaler Beta Beta-alkalmazásba való bejelentkezéshez használt URL-címet.
 
     > [!NOTE]
     > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-értékkel. Az érték beszerzéséhez forduljon a [Zscaler Beta ügyfél-támogatási csapatához](https://www.zscaler.com/company/contact).
@@ -119,15 +95,11 @@ Az Azure AD egyszeri bejelentkezés a Zscaler Beta használatával történő ko
 
     a. Válassza az **új jogcím hozzáadása** elemet a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
-    ![Felhasználói jogcímek párbeszédpanel](common/new-save-attribute.png)
-
-    ![Felhasználói jogcímek kezelése párbeszédpanel](common/new-attribute-details.png)
-
     b. A **név** mezőbe írja be az adott sorhoz megjelenített attribútum nevét.
 
     c. Hagyja üresen a **névtér** mezőt.
 
-    d. A **forrás**mezőben válassza az **attribútum**lehetőséget.
+    d. A **forrás** mezőben válassza az **attribútum** lehetőséget.
 
     e. A **forrás attribútum** listáról adja meg az adott sorhoz megjelenő attribútum értékét.
 
@@ -136,7 +108,7 @@ Az Azure AD egyszeri bejelentkezés a Zscaler Beta használatával történő ko
     : Válassza a **Mentés** lehetőséget.
 
     > [!NOTE]
-    > A szerepkörök az Azure AD-ben való konfigurálásával kapcsolatos további információkért lásd: [a szerepkör-jogcím konfigurálása](../develop/active-directory-enterprise-app-role-management.md).
+    > [Ide kattintva](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui) megtudhatja, hogyan konfigurálhatja a szerepkört az Azure ad-ben.
 
 7. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **Letöltés** elemet a tanúsítvány letöltéséhez **(Base64)**. Mentse a számítógépére.
 
@@ -146,13 +118,33 @@ Az Azure AD egyszeri bejelentkezés a Zscaler Beta használatával történő ko
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    - Bejelentkezési URL
-    - Azure AD-azonosító
-    - Kijelentkezési URL-cím
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-### <a name="configure-zscaler-beta-single-sign-on"></a>Zscaler Beta egyszeri bejelentkezés konfigurálása
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Zscaler Beta-on belüli konfiguráció automatizálásához telepítse a **saját alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőség kiválasztásával.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Létrehozás** lehetőségre.
+
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
+
+Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát a Zscaler Beta elérésének biztosításával.
+
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **Zscaler Beta** elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha a fentiekben ismertetett módon állította be a szerepköröket, kiválaszthatja a **szerepkör kiválasztása** legördülő listából.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+
+## <a name="configure-zscaler-beta-sso"></a>Zscaler Beta SSO konfigurálása
+
+1. A Zscaler Beta-on belüli konfiguráció automatizálásához telepítse a **saját alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése** lehetőség kiválasztásával.
 
     ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
 
@@ -166,9 +158,9 @@ Az Azure AD egyszeri bejelentkezés a Zscaler Beta használatával történő ko
    
     ![Felügyelet](./media/zscaler-beta-tutorial/ic800206.png "Felügyelet")
 
-    a. A **Hitelesítés típusa**területen válassza az **SAML**lehetőséget.
+    a. A **Hitelesítés típusa** területen válassza az **SAML** lehetőséget.
 
-    b. Válassza az **SAML konfigurálása**lehetőséget.
+    b. Válassza az **SAML konfigurálása** lehetőséget.
 
 5. Az **SAML szerkesztése** ablakban kövesse az alábbi lépéseket: 
             
@@ -176,7 +168,7 @@ Az Azure AD egyszeri bejelentkezés a Zscaler Beta használatával történő ko
     
     a. Az **SAML-portál URL-címe** mezőbe illessze be a Azure Portalból másolt **bejelentkezési URL-címet** .
 
-    b. A **bejelentkezési név attribútum** mezőbe írja be a **NameID**nevet.
+    b. A **bejelentkezési név attribútum** mezőbe írja be a **NameID** nevet.
 
     c. A **nyilvános SSL-tanúsítvány** mezőben válassza a **feltöltés** lehetőséget a Azure Portal letöltött Azure SAML-aláíró tanúsítvány feltöltéséhez.
 
@@ -196,7 +188,7 @@ Az Azure AD egyszeri bejelentkezés a Zscaler Beta használatával történő ko
 
     a. Vigye a kurzort a bal alsó sarokban lévő **aktiválási** menüre.
 
-    b. Válassza az **aktiválás**lehetőséget.
+    b. Válassza az **aktiválás** lehetőséget.
 
 ## <a name="configure-proxy-settings"></a>Proxybeállítások konfigurálása
 A proxybeállítások az Internet Explorerben való konfigurálásához kövesse az alábbi lépéseket.
@@ -221,7 +213,7 @@ A proxybeállítások az Internet Explorerben való konfigurálásához kövesse
 
     b. A **címterület** mezőbe írja be az **átjáró értéket. Zscaler Beta.net**.
 
-    c. A **port** mezőbe írja be a **80**értéket.
+    c. A **port** mezőbe írja be a **80** értéket.
 
     d. Jelölje be a **proxykiszolgáló kihagyása helyi címeknél** jelölőnégyzetet.
 
@@ -229,77 +221,24 @@ A proxybeállítások az Internet Explorerben való konfigurálásához kövesse
 
 6. Az **Internetbeállítások** párbeszédpanel bezárásához kattintson **az OK gombra** .
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
+### <a name="create-zscaler-beta-test-user"></a>Zscaler beta-teszt felhasználó létrehozása
 
-Hozzon létre egy teszt felhasználót a Britta Simon nevű Azure Portalban.
-
-1. A Azure Portal a bal oldali ablaktáblán válassza a **Azure Active Directory**  >  **felhasználók**  >  **minden felhasználó**lehetőséget.
-
-    ![Felhasználók és minden felhasználó hivatkozása](common/users.png)
-
-2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
-
-    ![Új felhasználó gomb](common/new-user.png)
-
-3. A **felhasználó** párbeszédpanelen kövesse az alábbi lépéseket:
-
-    ![Felhasználó párbeszédpanel](common/user-properties.png)
-
-    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
-  
-    b. A **Felhasználónév** mezőben adja meg a következőt: `brittasimon@yourcompanydomain.extension`. Például: BrittaSimon@contoso.com.
-
-    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet. Jegyezze fel a **jelszó** mezőben megjelenő értéket.
-
-    d. Kattintson a **Létrehozás** gombra.
-
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
-
-Engedélyezze a Britta Simon számára az Azure egyszeri bejelentkezés használatát a Zscaler Beta elérésének biztosításával.
-
-1. A Azure Portal válassza a **Nagyvállalati alkalmazások**  >  **minden alkalmazás**  >  **Zscaler Beta**elemet.
-
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
-
-2. Az alkalmazások listájában adja meg és válassza a **Zscaler Beta**elemet.
-
-    ![Zscaler Beta-hivatkozás az alkalmazások listájában](common/all-applications.png)
-
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
-
-    ![Felhasználók és csoportok hivatkozása](common/users-groups-blade.png)
-
-4. Válassza a **Felhasználó hozzáadása** elemet. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok**lehetőséget.
-
-    ![Felhasználó hozzáadása gomb](common/add-assign-user.png)
-
-5. A **felhasználók és csoportok** párbeszédpanelen válassza ki a listáról azt a felhasználót, mint a **Britta Simon** . Ezután válassza a **kijelölés** lehetőséget a képernyő alján.
-
-    ![Felhasználók és csoportok párbeszédpanel](./media/zscaler-beta-tutorial/tutorial_zscalerbeta_users.png)
-
-6. A **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő felhasználói szerepkört a listában. Ezután válassza a **kijelölés** lehetőséget a képernyő alján.
-
-    ![Szerepkör kiválasztása párbeszédpanel](./media/zscaler-beta-tutorial/tutorial_zscalerbeta_roles.png)
-
-7. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés**lehetőséget.
-
-    ![Hozzárendelés hozzáadása párbeszédpanel](./media/zscaler-beta-tutorial/tutorial_zscalerbeta_assign.png)
-
-### <a name="create-a-zscaler-beta-test-user"></a>Zscaler Beta tesztelési felhasználó létrehozása
-
-Ebben a szakaszban a Simon Britta felhasználó a Zscaler Beta-ban jön létre. A Zscaler Beta támogatja az **igény szerinti felhasználói üzembe**helyezést, amely alapértelmezés szerint engedélyezve van. Ebben a szakaszban semmi teendője van. Ha egy felhasználó még nem létezik a Zscaler Beta-ban, a hitelesítés után létrejön egy újat.
+Ebben a szakaszban a Simon Britta felhasználó a Zscaler Beta-ban jön létre. A Zscaler Beta támogatja az **igény szerinti felhasználói üzembe** helyezést, amely alapértelmezés szerint engedélyezve van. Ebben a szakaszban semmi teendője van. Ha egy felhasználó még nem létezik a Zscaler Beta-ban, a hitelesítés után létrejön egy újat.
 
 >[!Note]
 >Ha manuálisan szeretné létrehozni a felhasználót, forduljon a [Zscaler Beta támogatási csapatához](https://www.zscaler.com/company/contact).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Tesztelje az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panel használatával.
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
-Amikor kiválasztja a Zscaler Beta csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a Zscaler Beta-ra, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. A rendszer átirányítja a Zscaler Beta bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot. 
 
-## <a name="additional-resources"></a>További források
+* Lépjen közvetlenül a Zscaler Beta bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
-- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)
+* Használhatja a Microsoft saját alkalmazásait. Amikor a saját alkalmazások Zscaler Beta csempére kattint, a rendszer átirányítja a Zscaler Beta bejelentkezési URL-címére. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
+
+
+## <a name="next-steps"></a>További lépések
+
+A Zscaler Beta konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

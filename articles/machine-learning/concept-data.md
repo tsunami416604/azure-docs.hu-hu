@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 6d8c04e48a3d0009a152830a4ee332cd706c4b2c
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 8b73676adbb9aa12e6f3b42dd26bed94b22780a8
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360173"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539890"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Adatelérés védelme Azure Machine Learning
 
@@ -42,7 +42,7 @@ Ha készen áll a felhőalapú tárolási megoldásban tárolt adatfelhasználá
 
     1. Használja közvetlenül a Azure Machine Learning-megoldásokban, például az automatikus gépi tanulás (automatizált ML) kísérleteket, a gépi tanulási folyamatokat vagy a [Azure Machine learning designert](concept-designer.md).
 
-4. Hozzon létre [adatkészlet-figyelőket](#data-drift) a modell kimeneti adatkészletéhez az adateltolódás észleléséhez. 
+4. Hozzon létre [adatkészlet-figyelőket](#drift) a modell kimeneti adatkészletéhez az adateltolódás észleléséhez. 
 
 5. Ha az adateltolódás észlelhető, frissítse a bemeneti adatkészletet, és ennek megfelelően módosítsa a modellt.
 
@@ -50,7 +50,8 @@ Az alábbi ábra a javasolt munkafolyamat vizuális bemutatását mutatja be.
 
 ![A diagram megjeleníti az Azure Storage szolgáltatást, amely egy adatkészletbe áramló adattárba kerül. Az adatkészlet a modell betanításba kerül, amely adateltolódásba kerül, és az adatkészletbe kerül vissza.](./media/concept-data/data-concept-diagram.svg)
 
-## <a name="datastores"></a>Adattárak
+<a name="datastores"></a>
+## <a name="connect-to-storage-with-datastores"></a>Kapcsolódás a tárolóhoz adattárral
 
 Azure Machine Learning adattárolók biztonságosan megőrzik a kapcsolódási adatokat az Azure Storage-ban, így nem kell azt a parancsfájlokba beírni. [Regisztráljon, és hozzon létre egy](how-to-access-data.md) adattárolót, amellyel könnyedén csatlakozhat a Storage-fiókjához, és elérheti a mögöttes Azure Storage szolgáltatásban tárolt adatokat. 
 
@@ -65,7 +66,8 @@ Az Azure-ban támogatott felhőalapú tárolási szolgáltatások, amelyek adatt
 + Databricks fájlrendszer
 + Azure Database for MySQL
 
-## <a name="datasets"></a>Adathalmazok
+<a name="datasets"></a>
+## <a name="reference-data-in-storage-with-datasets"></a>A tárolóban lévő adatkészletekkel való adatforrások
 
 Azure Machine Learning adathalmazok nem másolják az adatokat. Adatkészlet létrehozásával a Storage szolgáltatásban lévő adatokra mutató hivatkozást, valamint a hozzá tartozó metaadatok másolatát is létrehozhatja. 
 
@@ -105,7 +107,7 @@ Az adatkészletekkel számos gépi tanulási feladatot hajthat végre Azure Mach
 
 <a name="label"></a>
 
-## <a name="data-labeling"></a>Adatfelirat
+## <a name="label-data-with-data-labeling-projects"></a>Adatcímkéző projektekkel rendelkező adatfeliratok
 
 A nagyméretű adatmennyiségek címkézése gyakran fejfájást eredményezett a gépi tanulási projektekben. A számítógépes látási összetevőkkel, például a képbesorolással vagy az objektum-észleléssel rendelkezők általában több ezer képet és a hozzájuk tartozó címkéket igényelnek.
 
@@ -115,13 +117,13 @@ Hozzon létre egy [adatcímkéző projektet](how-to-create-labeling-projects.md)
 
 <a name="drift"></a>
 
-## <a name="data-drift"></a>Adateltolódás
+## <a name="monitor-model-performance-with-data-drift"></a>Modell teljesítményének figyelése az adateltolódással
 
 A gépi tanulás kontextusában az adateltolódás a modellben a teljesítmény romlását eredményező bemeneti adatok változása. Ez az egyik legfontosabb ok, hogy a modell pontossága az idő múlásával csökken, így az adateltolódás monitorozása segít a modell teljesítményével kapcsolatos problémák észlelésében.
 
 Az adatkészlet létrehozása című cikkből megtudhatja, hogyan azonosíthatja és [figyelheti](how-to-monitor-datasets.md) az adateltolódást az adatkészletekben lévő új adatokat.
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 + Hozzon létre egy adatkészletet a Azure Machine Learning Studióban vagy a Python SDK-val az [alábbi lépések segítségével.](how-to-create-register-datasets.md)
 + A [minta-jegyzetfüzetekkel](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/)kipróbálhatja az adatkészlet tanítási példáit.

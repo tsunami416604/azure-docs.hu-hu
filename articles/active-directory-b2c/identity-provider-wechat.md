@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: af840a7becb0fb2c23e01153828458ee1cfa51a1
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 1dd9af3abd723b3a7adad82f3bbb4a09fc4464f7
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654234"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538015"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-wechat-account-using-azure-active-directory-b2c"></a>WeChat-fiókkal történő regisztráció és bejelentkezés beállítása Azure Active Directory B2C
 
@@ -33,7 +33,7 @@ ms.locfileid: "97654234"
 
 ## <a name="create-a-wechat-application"></a>WeChat-alkalmazás létrehozása
 
-Ha a WeChat-fiókot Azure Active Directory B2C (Azure AD B2C) identitás-szolgáltatóként szeretné használni, létre kell hoznia egy alkalmazást a bérlőben, amely azt képviseli. Ha még nem rendelkezik WeChat-fiókkal, a következő címen kérhet információt: [https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html](https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html) .
+Ha Azure Active Directory B2C (Azure AD B2C) WeChat-fiókkal rendelkező felhasználók számára szeretné engedélyezni a bejelentkezést, létre kell hoznia egy alkalmazást a [WeChat felügyeleti központban](https://open.weixin.qq.com/). Ha még nem rendelkezik WeChat-fiókkal, a következő címen kérhet információt: [https://kf.qq.com](https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html) .
 
 ### <a name="register-a-wechat-application"></a>WeChat-alkalmazás regisztrálása
 
@@ -73,7 +73,7 @@ A Azure AD B2C bérlőben korábban rögzített ügyfél-titkos kulcsot kell tá
 7. Adja meg a szabályzat kulcsának **nevét** . Például: `WeChatSecret`. A rendszer automatikusan hozzáadja az előtagot a `B2C_1A_` kulcs nevéhez.
 8. A **Secret (titkos kulcs**) mezőben adja meg a korábban rögzített ügyfél-titkot.
 9. A **kulcshasználat** beállításnál válassza a elemet `Signature` .
-10. Kattintson a **Létrehozás** gombra.
+10. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="add-a-claims-provider"></a>Jogcím-szolgáltató hozzáadása
 
@@ -183,7 +183,7 @@ Most, hogy van egy gomb a helyén, össze kell kapcsolni egy művelettel. Ebben 
 ## <a name="add-wechat-identity-provider-to-a-user-flow"></a>WeChat-identitás szolgáltatójának hozzáadása felhasználói folyamathoz 
 
 1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok** lehetőséget.
-1. Kattintson arra a felhasználói folyamatra, amelyet a WeChat-identitás szolgáltatója szeretne.
+1. Kattintson arra a felhasználói folyamatra, amelyhez hozzá szeretné adni a WeChat-identitás szolgáltatóját.
 1. A **közösségi identitás-szolgáltatók** területen válassza a **WeChat** lehetőséget.
 1. Válassza a **Mentés** lehetőséget.
 1. A szabályzat teszteléséhez válassza a **felhasználói folyamat futtatása** lehetőséget.

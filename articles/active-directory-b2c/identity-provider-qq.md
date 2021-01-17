@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: b497176deff896e785387f4b64a8e66ff4d6d58e
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 5b7c6a229cfee5b543d1169b30be336cc97ba7ed
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654319"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538085"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Egy QQ-fiókkal történő bejelentkezés és bejelentkezés beállítása Azure Active Directory B2C
 
@@ -31,7 +31,7 @@ ms.locfileid: "97654319"
 
 ## <a name="create-a-qq-application"></a>QQ-alkalmazás létrehozása
 
-Ha a QQ-fiókot Azure Active Directory B2C (Azure AD B2C) identitás-szolgáltatóként kívánja használni, létre kell hoznia egy alkalmazást a bérlőben, amely azt jelképezi. Ha még nem rendelkezik QQ-fiókkal, regisztrálhat a következő címen: [https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033](https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033) .
+Ha egy QQ-fiókkal rendelkező felhasználók számára szeretné engedélyezni a bejelentkezést Azure Active Directory B2C (Azure AD B2C), létre kell hoznia egy alkalmazást a [QQ fejlesztői portálon](http://open.qq.com). Ha még nem rendelkezik QQ-fiókkal, regisztrálhat a következő címen: [https://ssl.zc.qq.com](https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033) .
 
 ### <a name="register-for-the-qq-developer-program"></a>Regisztráljon a QQ fejlesztői programra
 
@@ -83,7 +83,7 @@ A Azure AD B2C bérlőben korábban rögzített ügyfél-titkos kulcsot kell tá
 7. Adja meg a szabályzat kulcsának **nevét** . Például: `QQSecret`. A rendszer automatikusan hozzáadja az előtagot a `B2C_1A_` kulcs nevéhez.
 8. A **Secret (titkos kulcs**) mezőben adja meg a korábban rögzített ügyfél-titkot.
 9. A **kulcshasználat** beállításnál válassza a elemet `Signature` .
-10. Kattintson a **Létrehozás** gombra.
+10. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="add-a-claims-provider"></a>Jogcím-szolgáltató hozzáadása
 
@@ -189,7 +189,7 @@ Most, hogy van egy gomb a helyén, össze kell kapcsolni egy művelettel. A műv
 ## <a name="add-qq-identity-provider-to-a-user-flow"></a>QQ-identitás szolgáltatójának hozzáadása felhasználói folyamathoz 
 
 1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok** lehetőséget.
-1. Kattintson arra a felhasználói folyamatra, amelyet a QQ-identitás szolgáltatójának szeretne használni.
+1. Kattintson arra a felhasználói folyamatra, amelyhez hozzá szeretné adni a QQ-identitás szolgáltatóját.
 1. A **közösségi identitás-szolgáltatók** területen válassza a **QQ** lehetőséget.
 1. Válassza a **Mentés** lehetőséget.
 1. A szabályzat teszteléséhez válassza a **felhasználói folyamat futtatása** lehetőséget.

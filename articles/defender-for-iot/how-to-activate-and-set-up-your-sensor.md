@@ -4,15 +4,15 @@ description: Ez a cikk azt ismerteti, hogyan jelentkezhet be és aktiválható a
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/26/2020
+ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 9305609b624a96e4d785657dfb63af6639e132c4
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 4ad1562bdd9853b6ff3c537790a54dbeab96b5b8
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97840324"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538564"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>Az érzékelő aktiválása és beállítása
 
@@ -65,10 +65,13 @@ Két biztonsági szint érhető el:
 A konzol a következő típusú tanúsítványokat támogatja:
 
 - Magán-és nagyvállalati kulcsokra épülő infrastruktúra (privát PKI)
+
 - Nyilvános kulcsokra épülő infrastruktúra (nyilvános PKI)
+
 - Helyileg generált a készüléken (helyileg önaláírt) 
 
-  > FONTOS Azt javasoljuk, hogy ne használja az alapértelmezett önaláírt tanúsítványt. A tanúsítvány nem biztonságos, és csak tesztelési környezetekhez használható. Nem lehet érvényesíteni a tanúsítvány tulajdonosát, és a számítógép biztonsága nem tartható fenn. Soha ne használja ezt a lehetőséget éles hálózatokhoz.
+  > [!IMPORTANT]
+  > Azt javasoljuk, hogy ne használja az alapértelmezett önaláírt tanúsítványt. A tanúsítvány nem biztonságos, és csak tesztelési környezetekhez használható. Nem lehet érvényesíteni a tanúsítvány tulajdonosát, és a számítógép biztonsága nem tartható fenn. Soha ne használja ezt a lehetőséget éles hálózatokhoz.
 
 ### <a name="sign-in-and-activate-the-sensor"></a>Bejelentkezés és az érzékelő aktiválása
 
@@ -217,4 +220,4 @@ A konzol eszközei az oldal menüjéből érhetők el.
 
 [Érzékelő-aktiválási fájlok kezelése](how-to-manage-individual-sensors.md#manage-sensor-activation-files)
 
-[A figyelt forgalom szabályozása](how-to-control-what-traffic-is-monitored.md)
+[A monitorozandó forgalom szabályozása](how-to-control-what-traffic-is-monitored.md)

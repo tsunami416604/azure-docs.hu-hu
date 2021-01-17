@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: e3a665e3615c9ff3a68cf13eeaef5e8f41632f6a
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 55042c8d1e612598cc5728668c9e87b054fb3afa
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900360"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98537843"
 ---
 # <a name="test-through-simulations"></a>Tesztelés szimulációk használatával
 
@@ -42,9 +42,9 @@ A [BreakingPoint Cloud](https://www.ixiacom.com/products/breakingpoint-cloud)-t,
     |---------      |---------                                          |
     |Cél IP-címe           | Adja meg a tesztelni kívánt nyilvános IP-cím egyikét.                     |
     |Portszám   | Adja meg a _443_ értéket.                       |
-    |DDoS-profil | A lehetséges értékek közé tartozik a **DNS-árvíz**, a **NTPv2-árvíz**, az **SSDP-árvíz**, a **TCP syn-árvíz**, az **UDP 64b**-árvíz, az **UDP-128B**, az UDP- **256B** árvíz, az **UDP 512B**-árvíz, az **UDP 1024B**-árvíz, az **UDP 1514B Flood** **, UDP-** **töredezettség**|
-    |Teszt mérete       | A lehetséges értékek a következők lehetnek: **100k PPS, 50 Mbps és 4 forrás IP**-cím, **több mint 200.000 PPS, 100 Mbps és 8 forrás IP**-cím, **400K PPS, MB/s és 16 forrás IP**-cím, **800K PPS, 400 Mbps és 32 forrás IP**-címek.                                  |
-    |Teszt időtartama | A lehetséges értékek a következők lehetnek: **10 perc**, **15 perc**, **20 perc**, **25 perc**, **30 perc**.|
+    |DDoS-profil | A lehetséges értékek a következők:,,,,,, `DNS Flood` `NTPv2 Flood` ,, `SSDP Flood` `TCP SYN Flood` `UDP 64B Flood` `UDP 128B Flood` `UDP 256B Flood` `UDP 512B Flood` `UDP 1024B Flood` , `UDP 1514B Flood` , `UDP Fragmentation` , `UDP Memcached` .|
+    |Teszt mérete       | A lehetséges értékek a következők:,, `100K pps, 50 Mbps and 4 source IPs` `200K pps, 100 Mbps and 8 source IPs` `400K pps, 200Mbps and 16 source IPs` , `800K pps, 400 Mbps and 32 source IPs` .                                  |
+    |Teszt időtartama | A lehetséges értékek a következők:,, `10 Minutes` `15 Minutes` `20 Minutes` , `25 Minutes` , `30 Minutes` .|
 
 Ekkor az alábbihoz hasonlónak kell megjelennie:
 
@@ -65,7 +65,7 @@ Ha az erőforrás támadás alatt áll, látnia kell, hogy az érték **0** és 
 
 Ezzel az [API-szkripttel](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Breaking%20Point%20SDK) automatizálhatja a DDoS-teszteket, ha egyszer vagy a cron használatával futtatja a normál teszteket. Ez akkor hasznos, ha ellenőrizni szeretné, hogy a naplózás megfelelően van-e konfigurálva, és hogy az észlelési és a reagálási eljárások érvényesek-e A szkriptek Linux operációs rendszerre (Ubuntu 18,04 LTS) és Python 3-ra van szükség. Telepítse az előfeltételeket és az API-ügyfelet a mellékelt parancsfájllal vagy a [BreakingPoint Cloud](http://breakingpoint.cloud/) webhelyén található dokumentáció használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja [, hogyan tekintheti meg és konfigurálhatja a DDoS Protection telemetria](telemetry.md).
 - Megtudhatja, hogyan [tekintheti meg és konfigurálhatja a DDoS diagnosztikai naplózást](diagnostic-logging.md).

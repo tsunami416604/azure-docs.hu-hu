@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: yelevin
-ms.openlocfilehash: b5d98a834ed4f87fb95a13e666967a7b2d80975d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: c54b5b785f6da1bb651d8b1f508da42ab0fb802d
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656054"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538376"
 ---
 # <a name="connect-data-from-azure-ddos-protection"></a>Adatok összekapcsolásának Azure DDoS Protection
 
@@ -38,7 +38,7 @@ Az elosztott szolgáltatásmegtagadási (DDoS) támadások megpróbálnak kimer�
 
 1. Válassza a **Azure DDoS Protection** lehetőséget az adatösszekötők katalógusában, majd az előnézet ablaktáblán válassza az **összekötő megnyitása lapot** .
 
-1. Engedélyezze a **diagnosztikai naplókat** az összes olyan tűzfalon, amelynek a naplóihoz csatlakozni szeretne:
+1. Engedélyezze a **diagnosztikai naplókat** az összes olyan nyilvános IP-címen, amelynek a naplóihoz csatlakozni szeretne:
 
     1. Válassza a **diagnosztikai beállítások megnyitása >** hivatkozást, és válasszon egy **nyilvános IP-cím** erőforrást a listából.
 
@@ -59,7 +59,7 @@ Az elosztott szolgáltatásmegtagadási (DDoS) támadások megpróbálnak kimer�
 >
 > Ezzel az adatösszekötővel a kapcsolati állapot mutatói (az adatösszekötők katalógusában és az adattípusok neve melletti kapcsolati ikonokban lévő színcsíkok) csak akkor jelennek *meg, ha* az adatok betöltése az elmúlt két hétben egy bizonyos pontján történik. Ha két hét telt el az adatfeldolgozás nélkül, az összekötő leválasztva jelenik meg. Minél több információ érkezik, a *csatlakoztatott* állapot vissza fog térni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a dokumentumból megtudhatta, hogyan csatlakozhat Azure DDoS Protection naplókat az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).

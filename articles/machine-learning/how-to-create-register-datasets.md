@@ -1,5 +1,5 @@
 ---
-title: Azure Machine Learning adatkészletek létrehozása az adateléréshez
+title: Azure Machine Learning-adathalmazok létrehozása
 titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan hozhat létre Azure Machine Learning adatkészleteket a gépi tanulási kísérletekhez szükséges adateléréshez.
 services: machine-learning
@@ -12,16 +12,14 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: fa6cdeaa47c7fdf9e90cdab96397473d8498afa0
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 8dac15f359d8ab6c7a84bbc30dba392322e84bb5
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108704"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538191"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning-adathalmazok létrehozása
-
-
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre Azure Machine Learning adatkészleteket a helyi vagy távoli kísérletek adataihoz való hozzáféréshez a Azure Machine Learning Python SDK-val. Annak megismeréséhez, hogy az adatkészletek hogyan illeszkednek Azure Machine Learning összesített adatelérési munkafolyamataihoz, tekintse meg a [biztonságos hozzáférés adatai](concept-data.md#data-workflow) című cikket.
 
@@ -127,6 +125,7 @@ Az adatkészletek újbóli felhasználása és megosztása a munkaterületen a k
 > Töltse fel a fájlokat egy helyi könyvtárból, és hozzon létre egy FileDataset egyetlen metódusban a nyilvános előnézet metódussal, [upload_directory ()](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?preserve-view=true&view=azure-ml-py#upload-directory-src-dir--target--pattern-none--overwrite-false--show-progress-true-). Ez a módszer egy [kísérleti](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) előzetes funkció, és bármikor megváltozhat. 
 > 
 >  Ezzel a módszerrel feltöltheti az adatokat a mögöttes tárolóba, így a tárolási költségek is felmerülhetnek. 
+
 ### <a name="create-a-tabulardataset"></a>TabularDataset létrehozása
 
 Az osztályban lévő metódus használatával olvassa be a [`from_delimited_files()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory) `TabularDatasetFactory` . csv vagy a. TSV formátumú fájlokat, és hozzon létre egy nem regisztrált TabularDataset. Ha több fájlt olvas be, az eredmények egy táblázatos ábrázolásba lesznek összesítve. 
@@ -176,7 +175,6 @@ titanic_ds.take(3).to_pandas_dataframe()
 2|3|Igaz|3|Heikkinen, Miss. Laina 's|female|26,0|0|0|STON/O2. 3101282|7,9250||S
 
 Az adatkészletek a munkaterületen végzett kísérletek közötti újrafelhasználásához és megosztásához [regisztrálja az adatkészletet](#register-datasets).
-
 
 ## <a name="explore-data"></a>Adatok feltárása
 
@@ -288,7 +286,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
                                  create_new_version = True)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, [Hogyan lehet betanítani az adatkészleteket](how-to-train-with-datasets.md).
 * Az automatizált gépi tanulást a TabularDatasets-mel való [betanításhoz](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)használhatja.

@@ -1,7 +1,7 @@
 ---
 title: Adatkészlet verziószámozása
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan használható az adatkészletek legjobb verziója, és hogyan működik a verziószámozás a Machine learning-folyamatokkal.
+description: Ismerje meg, hogyan használható a Machine learning-adatkészletek verziója, és hogyan működik a verziószámozás a Machine learning-folyamatokkal.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +11,14 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 7eb8010853ba370f4502b6bc155c6a098e64965b
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 3290574b26abe544c8c749165e22bef41a83ecf3
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133446"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538151"
 ---
-# <a name="version-and-track-datasets-in-experiments"></a>Adatkészletek verziója és nyomon követése kísérletekben
+# <a name="version-and-track-azure-machine-learning-datasets"></a>Azure Machine Learning adatkészletek verziója és nyomon követése
 
 Ebből a cikkből megtudhatja, hogyan lehet a reprodukálni Azure Machine Learning adatkészletek verzióját és nyomon követését. Az adatkészlet verziószámozása lehetővé teszi az adathalmazok könyvjelzővel való megjelölését, így az adatkészlet egy adott verzióját később is alkalmazhatja a jövőbeli kísérletekhez.
 
@@ -213,7 +213,7 @@ A következő nézet az **adatkészletek** ablaktábla **eszközök** területé
 
 ![Bemeneti adatkészletek modelljei](./media/how-to-version-track-datasets/dataset-models.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Betanítás adathalmazok használatával](how-to-train-with-datasets.md)
 * [További minta-adathalmazi jegyzetfüzetek](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/)

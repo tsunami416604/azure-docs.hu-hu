@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 10/19/2020
-ms.openlocfilehash: 921c05b76640935a1bd9e65d556933c23093e5b2
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/15/2021
+ms.openlocfilehash: 8c2739503f00848b1515f2061c2a9aa250c091a3
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251437"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539864"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Virtuális gépek minősítésének hibáinak megoldása
 
@@ -22,7 +22,6 @@ Ez a cikk a virtuálisgép-rendszerkép közzétételekor, valamint a kapcsolód
 
 > [!NOTE]
 > Ha kérdése van a cikkről vagy a fejlesztésre vonatkozó javaslatokról, forduljon a [partner Center támogatási szolgálatához](https://aka.ms/marketplacepublishersupport).
-
 
 ## <a name="vm-extension-failure"></a>VM-bővítmény hibája
 
@@ -60,12 +59,12 @@ A kiépítési problémák a következő meghibásodási helyzetekben lehetnek:
 |1|Érvénytelen virtuális merevlemez (VHD)|Ha a VHD-láblécben megadott cookie-érték helytelen, a VHD-fájl érvénytelennek tekintendő.|Hozza létre újra a lemezképet, és küldje el a kérést.|
 |2|Érvénytelen blob-típus|A virtuális gép kiépítés meghiúsult, mert a használt blokk egy oldal típusa helyett blob típusú.|Hozza létre újra a lemezképet, és küldje el a kérést.|
 |3|Kiépítési időtúllépés vagy nem megfelelően általánosítva|Probléma van a virtuális gépek általánosításával.|Hozza létre újra a rendszerképet az általánosítással, és küldje el a kérelmet.|
+|
 
 > [!NOTE]
 > A virtuális gépek általánosításával kapcsolatos további információkért lásd:
 > - [Linux-dokumentáció](azure-vm-create-using-approved-base.md#generalize-the-image)
 > - [Windows-dokumentáció](../virtual-machines/windows/capture-image-resource.md#generalize-the-windows-vm-using-sysprep)
-
 
 ## <a name="vhd-specifications"></a>VHD-specifikációk
 
@@ -93,7 +92,7 @@ Ellenőrzőösszeg|4
 Egyedi azonosító|16
 Mentett állapot|1
 Fenntartva|427
-
+|
 
 ### <a name="vhd-specifications"></a>VHD-specifikációk
 
@@ -139,6 +138,7 @@ A következő táblázat felsorolja az eszközkészlet által futtatott Linux-te
 |8|Ügyfél élettartamának intervalluma|ClientAliveInterval beállítása 180-re. Az alkalmazásra van szükség, amely 30 és 235 között állítható be. Ha engedélyezi az SSH-t a végfelhasználók számára, ezt az értéket a magyarázatnak megfelelően kell beállítani.|
 |9|Operációs rendszer architektúrája|Kizárólag a 64 bites operációs rendszerek támogatottak.|
 |10|Automatikus frissítés|Meghatározza, hogy engedélyezve van-e a Linux-ügynök automatikus frissítése.|
+|
 
 ### <a name="common-test-case-errors"></a>Gyakori tesztelési hibák
 
@@ -150,7 +150,7 @@ Tekintse meg az alábbi táblázatot a tesztelési esetek futtatásakor előford
 | 2 | Bash-előzmények tesztelési esete | Hiba történik, ha az elküldött képen a bash-előzmények mérete meghaladja az 1 kilobájtot (KB). A méret 1 KB-ra korlátozódik annak biztosítására, hogy a bash History-fájlja ne tartalmazzon potenciálisan bizalmas adatokat. | Oldja fel a virtuális merevlemezt egy másik működő virtuális gépre, és módosítsa a méretet 1 KB vagy annál kisebb értékre. Törölje például az `.bash` Előzmények fájljait. |
 | 3 | Szükséges kernel-paraméterek tesztelési esete | Ez a hibaüzenet akkor jelenik meg, ha a nem értékre van `console` állítva `ttyS0` . A következő parancs futtatásával győződjön meg arról, hogy: <br /> `cat /proc/cmdline` | Állítsa be a értéket a értékre `console` `ttyS0` , majd küldje el újra a kérelmet. |
 | 4 | ClientAlive intervalluma – tesztelési eset | Ha az eszközkészlet sikertelen eredményt ad a tesztelési esethez, nem megfelelő érték van a következőhöz: `ClientAliveInterval` . | Állítsa az értéket `ClientAliveInterval` 235-nél kisebb vagy egyenlő értékre, majd küldje el újra a kérelmet. |
-
+|
 
 ### <a name="windows-test-cases"></a>Windows-tesztelési esetek
 
@@ -175,8 +175,9 @@ A következő táblázat felsorolja az eszközkészlet által futtatott Windows-
 |15|SNMP-szolgáltatások|A Simple Network Management Protocol (SNMP) szolgáltatások szolgáltatás még nem támogatott. Az alkalmazás nem függ ettől a szolgáltatástól.|
 |16|Windows Internet Name Service|Windows Internet Name Service. Ez a kiszolgálói funkció még nem támogatott. Az alkalmazás nem függ ettől a szolgáltatástól.|
 |17|Vezeték nélküli helyi hálózat szolgáltatás|Vezeték nélküli LAN szolgáltatás. Ez a kiszolgálói funkció még nem támogatott. Az alkalmazás nem függ ettől a szolgáltatástól.|
+|
 
-Ha az előző tesztelési esetekkel kapcsolatos hibákkal találkozik, tekintse meg a megoldás táblázatának **Leírás** oszlopát. További információért forduljon a támogatási csoporthoz. 
+Ha az előző tesztelési esetekkel kapcsolatos hibákkal találkozik, tekintse meg a megoldás táblázatának **Leírás** oszlopát. További információért forduljon a támogatási csoporthoz.
 
 ## <a name="data-disk-size-verification"></a>Adatlemez méretének ellenőrzése
 
@@ -192,6 +193,7 @@ Az operációsrendszer-lemez méretére vonatkozó korlátozásokkal kapcsolatba
 |---|---|
 |Linux|1 GB – 1023 GB|
 |Windows|30 GB – 250 GB|
+|
 
 Mivel a virtuális gépek engedélyezik a hozzáférést az alapul szolgáló operációs rendszerhez, győződjön meg arról, hogy a VHD-méret elég nagy a VHD-hez. A lemezek leállás nélkül nem bővíthetők. A lemez mérete 30 GB és 50 GB között legyen.
 
@@ -199,6 +201,7 @@ Mivel a virtuális gépek engedélyezik a hozzáférést az alapul szolgáló op
 |---|---|---|
 |>500 tebibájt (TiB)|n.a.|Kivétel jóváhagyásához forduljon a támogatási csoporthoz.|
 |250-500 TiB|>200 gibibájtban értendők (GiB) eltérés a blob méretétől|Kivétel jóváhagyásához forduljon a támogatási csoporthoz.|
+|
 
 > [!NOTE]
 > A nagyobb méretű lemezek nagyobb költségekkel járnak, és a telepítés és a replikálás során is késést okoznak. A késés és a költséghatékonyság miatt a támogatási csoport indoklást kérhet a kivétel jóváhagyásáról.
@@ -209,7 +212,7 @@ A WannaCry vírussal kapcsolatos potenciális támadás megelőzése érdekében
 
 A rendszerkép fájljának verziószámát a vagy a rendszerből is ellenőrizheti `C:\windows\system32\drivers\srv.sys` `srv2.sys` .
 
-A következő táblázat a Windows Server minimális javított verzióját tartalmazza: 
+A következő táblázat a Windows Server minimális javított verzióját tartalmazza:
 
 |Operációs rendszer|Verzió|
 |---|---|
@@ -218,6 +221,7 @@ A következő táblázat a Windows Server minimális javított verzióját tarta
 |Windows Server 2012 R2|6.3.9600.18604|
 |Windows Server 2016|10.0.14393.953|
 |Windows Server 2019|NA|
+|
 
 > [!NOTE]
 > A Windows Server 2019 nem rendelkezik a kötelező verzióra vonatkozó követelményekkel.
@@ -230,8 +234,8 @@ Frissítse a kernelt jóváhagyott verzióval, majd küldje el újra a kérelmet
 
 Ha a rendszerkép nincs telepítve a következő kernel-verziók egyikével, frissítse a megfelelő javításokkal. Kérje meg a szükséges jóváhagyást a támogatási csapattól a rendszerkép frissítése után a szükséges javításokkal:
 
-- CVE-2019-11477 
-- CVE-2019-11478 
+- CVE-2019-11477
+- CVE-2019-11478
 - CVE-2019-11479
 
 |OPERÁCIÓSRENDSZER-család|Verzió|Kernel|
@@ -278,6 +282,7 @@ Ha a rendszerkép nincs telepítve a következő kernel-verziók egyikével, fri
 ||stretch (biztonság)|4.9.168 – 1 + deb9u3|
 ||Debian GNU/Linux 10 (Buster)|Debian 6.3.0-18 + deb9u1|
 ||Buster, SID (stretch backports)|4.19.37 – 5|
+|
 
 ## <a name="image-size-should-be-in-multiples-of-megabytes"></a>A képméretnek megabájtnál többnek kell lennie
 
@@ -303,7 +308,7 @@ Ha a kérést SSH-letiltott képpel szeretné elküldeni a minősítési folyama
 3. Küldje el újra a minősítési kérelmet.
 
 ## <a name="download-failure"></a>Letöltési hiba
-    
+
 A következő táblázat tartalmazza azokat a problémákat, amelyek a virtuálisgép-rendszerkép közös hozzáférési aláírással (SAS) való letöltésekor merülnek fel.
 
 |Használati eset|Hiba|Ok|Megoldás|
@@ -314,12 +319,13 @@ A következő táblázat tartalmazza azokat a problémákat, amelyek a virtuáli
 |4|Érvénytelen aláírás|A virtuális merevlemezhez tartozó SAS URL-cím helytelen.|Szerezze be a megfelelő SAS URL-címet.|
 |6|HTTP feltételes fejléc|A SAS URL-címe érvénytelen.|Szerezze be a megfelelő SAS URL-címet.|
 |7|Érvénytelen VHD-név|Ellenőrizze, hogy létezik-e speciális karakter (például egy százalék `%` vagy idézőjel `"` ) a VHD-névben.|Nevezze át a VHD-fájlt a speciális karakterek eltávolításával.|
+|
 
-## <a name="first-1-mb-partition-2048-sectors-each-sector-of-512-bytes"></a>Első 1 MB-os partíció (2 048 szektor, 512 bájtos szektorok)
+## <a name="first-1-mb-2048-sectors-each-sector-of-512-bytes-partition"></a>Az első 1 MB (2048 szektor, 512 bájtos szektor) partíció
 
-Ha [saját lemezképet](azure-vm-create-using-own-image.md)készít, győződjön meg arról, hogy az operációsrendszer-lemez első 2 048 szektora (1 MB) üres. Ellenkező esetben a közzététel sikertelen lesz. Ez a követelmény csak az operációsrendszer-lemezre vonatkozik (adatlemezekre nem). Ha [jóváhagyta](azure-vm-create-using-approved-base.md)a rendszerképét, kihagyhatja ezt a követelményt. 
+Ha [saját lemezképet](azure-vm-create-using-own-image.md)készít, győződjön meg arról, hogy az operációsrendszer-lemez első 2048 szektora (1 MB) üres. Ellenkező esetben a közzététel sikertelen lesz. Ez a követelmény csak az operációsrendszer-lemezre vonatkozik (nem adatlemezek). Ha [jóváhagyta](azure-vm-create-using-approved-base.md)a rendszerképét, kihagyhatja ezt a követelményt.
 
-### <a name="create-a-1-mb-partition-2048-sectors-each-sector-of-512-bytes-on-an-empty-vhd-linux-only-steps"></a>Hozzon létre egy 1 MB méretű partíciót (2 048-es szektorok, 512 bájtos szektorok) üres virtuális merevlemezen (csak linuxos lépések)
+### <a name="create-a-1-mb-2048-sectors-each-sector-of-512-bytes-partition-on-an-empty-vhd"></a>Hozzon létre egy 1 MB-ot (2048 szektor, 512 bájtos szektor) partíciót egy üres VHD-ben
 
 Ezek a lépések csak a Linux rendszerre vonatkoznak.
 
@@ -374,17 +380,17 @@ Ezek a lépések csak a Linux rendszerre vonatkoznak.
 
       ![A PuTTY ügyféloldali parancssori képernyőképe a törölt adatokat tartalmazó parancsokat és kimenetet mutatja.](./media/create-vm/vm-certification-issues-solutions-22.png)
 
-   1. `w`A partíció létrehozásának megerősítéséhez írja be a következőt:. 
+   1. `w`A partíció létrehozásának megerősítéséhez írja be a következőt:.
 
       ![A PuTTY ügyfél parancssori képernyőképe a partíció létrehozásához szükséges parancsokat mutatja.](./media/create-vm/vm-certification-issues-solutions-23.png)
 
-   1. A partíciós táblát ellenőrizheti a parancs futtatásával `n fdisk /dev/sdb` és a beírásával `p` . Látni fogja, hogy a partíció 2048 eltolási értékkel lett létrehozva. 
+   1. A partíciós táblát ellenőrizheti a parancs futtatásával `n fdisk /dev/sdb` és a beírásával `p` . Látni fogja, hogy a partíció 2048 eltolási értékkel lett létrehozva.
 
       ![A PuTTY ügyféloldali parancssori képernyőképe az 2048 eltolás létrehozásához szükséges parancsokat mutatja.](./media/create-vm/vm-certification-issues-solutions-24.png)
 
 1. Válassza le a virtuális MEREVLEMEZt a virtuális gépről, és törölje a virtuális GÉPET.
 
-### <a name="create-a-first-1-mb-partition-2048-sectors-each-sector-of-512-bytes-by-moving-existing-data-on-vhd"></a>Hozzon létre egy első 1 MB méretű partíciót (2 048 szektor, minden 512 bájtos szektor) a meglévő adat virtuális merevlemezen való áthelyezésével
+### <a name="create-a-1-mb-2048-sectors-each-sector-of-512-bytes-partition-by-moving-existing-data-on-vhd"></a>Hozzon létre egy 1 MB-ot (2048 szektort, egyes 512 bájtos szektorokat) a meglévő adat virtuális merevlemezen való áthelyezésével
 
 Ezek a lépések csak a Linux rendszerre vonatkoznak.
 
@@ -452,11 +458,11 @@ Rendszerkép létrehozásakor előfordulhat, hogy a rendszer leképezi vagy hozz
 
 Ha az Azure Marketplace-ről származó összes lemezképet újra fel kell használni, általánosítva kell lennie az operációs rendszer virtuális merevlemezének.
 
-* **Linux rendszeren** a következő folyamat általánosítja a Linux rendszerű virtuális gépet, és újratelepíti külön virtuális gépre.
+- **Linux rendszeren** a következő folyamat általánosítja a Linux rendszerű virtuális gépet, és újratelepíti külön virtuális gépre.
 
   Az SSH ablakban adja meg a következő parancsot: `sudo waagent -deprovision+user` .
 
-* **Windows** esetén a használatával általánosíthatja a Windows-lemezképeket `sysreptool` .
+- **Windows** esetén a használatával általánosíthatja a Windows-lemezképeket `sysreptool` .
 
   További információ az `sysreptool` eszközről: a [rendszer-előkészítés (Sysprep) áttekintése](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
 

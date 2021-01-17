@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: bde7c1adefea88ed5b5d86e2c0e17f475be1bc71
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: e2c576c97d170726f5ec1b06e5a6d0d859a85e64
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654370"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538106"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Bejelentkezés és bejelentkezés beállítása LinkedIn-fiókkal Azure Active Directory B2C használatával
 
@@ -36,7 +36,7 @@ ms.locfileid: "97654370"
 
 ## <a name="create-a-linkedin-application"></a>LinkedIn-alkalmazás létrehozása
 
-Ha Azure Active Directory B2C (Azure AD B2C) identitás- [szolgáltatóként](authorization-code-flow.md) szeretné használni a LinkedIn-fiókot, létre kell hoznia egy alkalmazást a bérlőben, amely azt jelképezi. Ha még nem rendelkezik LinkedIn-fiókkal, regisztrálhat a következő címen: [https://www.linkedin.com/](https://www.linkedin.com/) .
+Ha Azure Active Directory B2C (Azure AD B2C) LinkedIn-fiókkal rendelkező felhasználók számára szeretné engedélyezni a bejelentkezést, létre kell hoznia egy alkalmazást a [LinkedIn Developers webhelyén](https://www.developer.linkedin.com/). További információ: [engedélyezési kód folyamata](https://docs.microsoft.com/linkedin/shared/authentication/authorization-code-flow). Ha még nem rendelkezik LinkedIn-fiókkal, regisztrálhat a következő címen: [https://www.linkedin.com/](https://www.linkedin.com/) .
 
 1. Jelentkezzen be a [LinkedIn Developers webhelyére](https://www.developer.linkedin.com/) a LinkedIn-fiókja hitelesítő adataival.
 1. Válassza **a saját alkalmazások** lehetőséget, majd kattintson az **alkalmazás létrehozása** elemre.
@@ -78,7 +78,7 @@ A Azure AD B2C bérlőben korábban rögzített ügyfél-titkos kulcsot kell tá
 7. Adja meg a szabályzat kulcsának **nevét** . Például: `LinkedInSecret`. A rendszer automatikusan hozzáadja a kulcs nevét a *B2C_1A_* előtaghoz.
 8. A **Secret (titkos kulcs**) mezőben adja meg a korábban rögzített ügyfél-titkot.
 9. A **kulcshasználat** beállításnál válassza a elemet `Signature` .
-10. Kattintson a **Létrehozás** gombra.
+10. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="add-a-claims-provider"></a>Jogcím-szolgáltató hozzáadása
 
@@ -232,7 +232,7 @@ Most, hogy van egy gomb a helyén, össze kell kapcsolni egy művelettel. A műv
 ## <a name="add-linkedin-identity-provider-to-a-user-flow"></a>LinkedIn Identity Provider hozzáadása felhasználói folyamathoz 
 
 1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok** lehetőséget.
-1. Kattintson arra a felhasználói folyamatra, amelyre a LinkedIn Identity providert szeretné használni.
+1. Kattintson arra a felhasználói folyamatra, amelyhez hozzá szeretné adni a LinkedIn Identity providert.
 1. A **közösségi identitás-szolgáltatók** területen válassza a **LinkedIn** lehetőséget.
 1. Válassza a **Mentés** lehetőséget.
 1. A szabályzat teszteléséhez válassza a **felhasználói folyamat futtatása** lehetőséget.

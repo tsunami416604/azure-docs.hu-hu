@@ -4,15 +4,15 @@ description: A Azure File Sync üzemelő példányok gyakori problémáinak elh�
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 1/13/2021
+ms.date: 1/15/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: a262c2b4351c96217001ba42e8c745f7d71c7d45
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 71de1d17731e086d012da5365fa6671bcb9e6e3b
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233899"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539248"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -916,6 +916,22 @@ Ez a hiba azért fordul elő, mert Azure File Sync nem támogatja a HTTP-átirá
 | **Szervizelés szükséges** | Nem |
 
 Ez a hiba akkor fordul elő, ha egy adatfeldolgozási művelet túllépi az időkorlátot. Ez a hiba figyelmen kívül hagyható, ha a szinkronizálás folyamatban van (a AppliedItemCount nagyobb, mint 0). Lásd: [hogyan a jelenlegi szinkronizálási munkamenet előrehaladásának figyelése?](#how-do-i-monitor-the-progress-of-a-current-sync-session).
+
+<a id="-2134375814"></a>**A szinkronizálás nem sikerült, mert a kiszolgálói végpont elérési útja nem található a kiszolgálón.**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c8027a |
+| **HRESULT (decimális)** | – 2134375814 |
+| **Hibasztring** | ECS_E_SYNC_ROOT_DIRECTORY_NOT_FOUND |
+| **Szervizelés szükséges** | Igen |
+
+Ez a hiba akkor fordul elő, ha a kiszolgáló-végpont elérési útjaként használt könyvtárat átnevezték vagy törölték. Ha átnevezték a könyvtárat, nevezze vissza a könyvtárat az eredeti névre, és indítsa újra a Storage Sync Agent szolgáltatást (FileSyncSvc).
+
+Ha a könyvtárat törölték, hajtsa végre a következő lépéseket a meglévő kiszolgálói végpont eltávolításához, és hozzon létre egy új kiszolgálói végpontot egy új elérési úttal:
+
+1. Távolítsa el a kiszolgálói végpontot a szinkronizálási csoportban a [kiszolgálói végpont eltávolítása](./storage-sync-files-server-endpoint.md#remove-a-server-endpoint)című témakörben leírt lépéseket követve.
+2. Hozzon létre egy új kiszolgálói végpontot a szinkronizálási csoportban a [kiszolgálói végpont hozzáadása](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#add-a-server-endpoint)című cikkben ismertetett lépéseket követve.
 
 ### <a name="common-troubleshooting-steps"></a>Gyakori hibaelhárítási lépések
 <a id="troubleshoot-storage-account"></a>**Ellenőrizze, hogy létezik-e a Storage-fiók.**  

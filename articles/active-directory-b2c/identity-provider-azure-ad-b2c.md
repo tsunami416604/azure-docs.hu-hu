@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/14/2021
+ms.date: 01/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: b8be516051f8eed0649064ae0f7c29a4dde85675
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 8a0d69ea57eb5b8b2a074c37d4798a99c576ce95
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98224464"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538177"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-azure-ad-b2c-account-from-another-azure-ad-b2c-tenant"></a>Regisztráció és bejelentkezés beállítása egy másik Azure AD B2C bérlő Azure AD B2C fiókjából
 
@@ -43,7 +43,7 @@ Ez a cikk azt ismerteti, hogyan lehet összevonást beállítani egy másik Azur
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Azure AD B2C-alkalmazás létrehozása
 
-Azure AD B2C fiók használata [identitás-szolgáltatóként](openid-connect.md) a Azure ad B2C-bérlőben (például contoso) a többi Azure ad B2Cban (például Fabrikam):
+A bejelentkezés engedélyezése a felhasználók számára egy másik Azure AD B2C bérlőtől (például Fabrikam) származó fiókkal a Azure AD B2Cban (például contoso):
 
 1. Hozzon létre egy [felhasználói folyamatot](tutorial-create-user-flows.md)vagy egy [Egyéni szabályzatot](custom-policy-get-started.md).
 1. Ezután hozzon létre egy alkalmazást a Azure AD B2Cban az ebben a szakaszban ismertetett módon. 
@@ -268,6 +268,6 @@ Frissítse a függő entitás (RP) fájlját, amely kezdeményezi a létrehozott
 
 ::: zone-end
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan [adhat át más Azure ad B2C tokent az alkalmazásnak](idp-pass-through-user-flow.md).

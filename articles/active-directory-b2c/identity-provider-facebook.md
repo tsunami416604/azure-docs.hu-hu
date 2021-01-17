@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 37fc33ae8084a2b4e99e7b5dc417eac70060eef5
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 02c3890a9aca03d9d79b55098297174401cab37d
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516206"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98537947"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés beállítása Facebook-fiókkal Azure Active Directory B2C használatával
 
@@ -36,7 +36,7 @@ ms.locfileid: "97516206"
 
 ## <a name="create-a-facebook-application"></a>Facebook-alkalmazás létrehozása
 
-Ha Azure Active Directory B2C (Azure AD B2C) identitás- [szolgáltatóként](authorization-code-flow.md) szeretné használni a Facebook-fiókot, létre kell hoznia egy alkalmazást a bérlőben, amely azt jelképezi. Ha még nem rendelkezik Facebook-fiókkal, regisztrálhat a következő címen: [https://www.facebook.com/](https://www.facebook.com/) .
+Ha Azure Active Directory B2C (Azure AD B2C) Facebook-fiókkal rendelkező felhasználók számára szeretné engedélyezni a bejelentkezést, létre kell hoznia egy alkalmazást a [Facebook-alkalmazás irányítópultján](https://developers.facebook.com/). További információ: [alkalmazásfejlesztés](https://developers.facebook.com/docs/development). Ha még nem rendelkezik Facebook-fiókkal, regisztrálhat a következő címen: [https://www.facebook.com/](https://www.facebook.com/) .
 
 1. A Facebook-fiók hitelesítő adataival jelentkezzen be a [facebookba a fejlesztők számára](https://developers.facebook.com/) .
 1. Ha még nem tette meg, regisztrálnia kell Facebook-fejlesztőként. Ehhez válassza az első **lépések** lehetőséget az oldal jobb felső sarkában, fogadja el a Facebook szabályzatait, és végezze el a regisztráció lépéseit.
@@ -69,7 +69,7 @@ Ha Azure Active Directory B2C (Azure AD B2C) identitás- [szolgáltatóként](au
 1. Adjon meg egy **nevet**. Például: *Facebook*.
 1. Az **ügyfél-azonosító** mezőben adja meg a korábban létrehozott Facebook-alkalmazás alkalmazás-azonosítóját.
 1. Az **ügyfél titka** mezőben adja meg a rögzített alkalmazás titkát.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ::: zone-end
 
@@ -93,9 +93,9 @@ Ha Azure Active Directory B2C (Azure AD B2C) identitás- [szolgáltatóként](au
 ## <a name="add-facebook-identity-provider-to-a-user-flow"></a>Facebook-identitás szolgáltatójának hozzáadása felhasználói folyamathoz 
 
 1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok** lehetőséget.
-1. Kattintson arra a felhasználói folyamatra, amelyet a Facebook-identitás szolgáltatójának szeretne használni.
+1. Kattintson arra a felhasználói folyamatra, amelyhez hozzá szeretné adni a Facebook-identitás szolgáltatóját.
 1. A **közösségi identitás-szolgáltatók** területen válassza a **Facebook** lehetőséget.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 1. A szabályzat teszteléséhez válassza a **felhasználói folyamat futtatása** lehetőséget.
 1. Az **alkalmazás** lapon válassza ki a korábban regisztrált *testapp1* nevű webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
 1. Kattintson a **felhasználói folyamat futtatása** elemre.

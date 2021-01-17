@@ -4,15 +4,15 @@ description: A felügyeleti konzol aktiválása és beállítása biztosítja, h
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/24/2020
+ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 56092d61e1eed4e4ebe4f8cb7f97d01e91e8543e
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: d344b3d9ea54243d61cc6a1f3f0982eb5ab1d238
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97841332"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538587"
 ---
 # <a name="activate-and-set-up-your-on-premises-management-console"></a>A helyszíni felügyeleti konzol aktiválása és beállítása 
 
@@ -51,7 +51,7 @@ A kezdeti aktiválás után a figyelt eszközök száma túllépheti a bevezeté
 
 ## <a name="set-up-a-certificate"></a>Tanúsítvány beállítása
 
-A felügyeleti konzol telepítése után létrejön egy helyi önaláírt tanúsítvány, amely a konzol elérésére szolgál. Miután a rendszergazda első alkalommal bejelentkezett a felügyeleti konzolra, a rendszer az SSL/TLS-tanúsítvány bevezetését kéri. Javasoljuk, hogy használjon megbízható HITELESÍTÉSSZOLGÁLTATÓ által aláírt tanúsítványt, és ne használja a helyileg generált önaláírt tanúsítványt.
+A felügyeleti konzol telepítése után létrejön egy helyi önaláírt tanúsítvány, amely a konzol elérésére szolgál. Miután a rendszergazda első alkalommal bejelentkezett a felügyeleti konzolra, a rendszer az SSL/TLS-tanúsítvány bevezetését kéri. 
 
 Két biztonsági szint érhető el:
 
@@ -61,7 +61,9 @@ Két biztonsági szint érhető el:
 A konzol a következő típusú tanúsítványokat támogatja:
 
 - Magán-és nagyvállalati kulcsokra épülő infrastruktúra (privát PKI)
+
 - Nyilvános kulcsokra épülő infrastruktúra (nyilvános PKI)
+
 - Helyileg generált a készüléken (helyileg önaláírt) 
 
   > [!IMPORTANT]
@@ -316,4 +318,4 @@ Minden zónához hozzá kell rendelnie a helyi forgalom elemzését és a riaszt
 
 ## <a name="see-also"></a>További információ
 
-[Az érzékelő és a helyszíni felügyeleti konzol hibáinak megoldása](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md)
+[Az érzékelő és a helyszíni felügyeleti konzol hibaelhárítása](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md)

@@ -5,14 +5,14 @@ author: savjani
 ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 01/15/2021
+ms.date: 01/18/2021
 ms.custom: references_regions
-ms.openlocfilehash: c91aab2bf59f93cf897f9a1b9109172523ae4e57
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 39547e3156a684293a0624f974a8b0930f656485
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251403"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98540009"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Olvasási replikák az Azure Database for MariaDB-ben
 
@@ -27,13 +27,13 @@ A GTID replikálásával kapcsolatos további tudnivalókért tekintse meg a [Ma
 
 ## <a name="when-to-use-a-read-replica"></a>Mikor használjon olvasási replikát
 
-Az olvasási replika funkcióval javítható a nagy olvasási igényű számítási feladatok teljesítménye és méretezése. Az olvasási számítási feladatok a replikákba izolálhatók, míg az írási feladatok a főkiszolgálóra irányíthatók.
+Az olvasási replika funkcióval javítható a nagy olvasási igényű számítási feladatok teljesítménye és méretezése. Az olvasási munkaterhelések elkülöníthetők a replikákkal, míg az írási munkaterhelések az elsődlegesre irányíthatók.
 
 Gyakori forgatókönyv, hogy a BI-és analitikai munkaterhelések az olvasási replikát használják adatforrásként a jelentéskészítéshez.
 
-Mivel a replikák csak olvashatók, nem csökkentik közvetlenül az írási kapacitás terheit a főkiszolgálón. Ez a funkció nem a nagy írási igényű számítási feladatokhoz ideális.
+Mivel a replikák csak olvashatók, nem csökkentik közvetlenül a írási kapacitás terheit az elsődlegesen. Ez a funkció nem a nagy írási igényű számítási feladatokhoz ideális.
 
-Az olvasási replika funkció aszinkron replikálást használ. A funkció nem a szinkron replikációs forgatókönyvek esetében jelent meg. A forrás és a replika között mérhető késleltetés történik. A replikán lévő adatok végül konzisztensek maradnak a főkiszolgálón lévő adatokkal. Használja ezt a szolgáltatást olyan számítási feladatokhoz, amelyek alkalmasak erre a késésre.
+Az olvasási replika funkció aszinkron replikálást használ. A funkció nem a szinkron replikációs forgatókönyvek esetében jelent meg. A forrás és a replika között mérhető késleltetés történik. A replikán lévő adatértékek végül konzisztensek az elsődlegesen tárolt értékekkel. Használja ezt a szolgáltatást olyan számítási feladatokhoz, amelyek alkalmasak erre a késésre.
 
 ## <a name="cross-region-replication"></a>Régiók közötti replikáció
 
@@ -44,11 +44,13 @@ A forráskiszolgáló bármely [Azure Database for MariaDB régióban](https://a
 [![Replika-régiók olvasása](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>Univerzális replika-régiók
+
 A következő régiókban hozhat létre olvasási replikát, függetlenül attól, hogy hol található a forráskiszolgáló. A támogatott univerzális replika-régiók a következők:
 
 Kelet-Ausztrália, Délkelet-Ausztrália, Dél-Brazília, Közép-Kanada, Kelet-Kanada, Közép-Európa, Kelet-Ázsia, USA keleti régiója, USA 2. keleti régiója, Kelet-Japán, Nyugat-Japán, Korea középső régiója, Dél-Korea, Észak-Európa, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Nyugat-Európa
 
 ### <a name="paired-regions"></a>Párosított régiók
+
 Az univerzális replika régión kívül egy olvasási replikát is létrehozhat a forráskiszolgáló Azure párosított régiójában. Ha nem ismeri a régió pár elemét, többet is megtudhat az [Azure párosított régiókról szóló cikkből](../best-practices-availability-paired-regions.md).
 
 Ha régiók közötti replikákat használ a vész-helyreállítási tervezéshez, javasoljuk, hogy a többi régió helyett a párosított régióban hozza létre a replikát. A párosított régiók elkerülik az egyidejű frissítéseket, és rangsorolják a fizikai elkülönítést és az adattárolást.  
@@ -56,7 +58,7 @@ Ha régiók közötti replikákat használ a vész-helyreállítási tervezéshe
 Azonban a következő szempontokat kell figyelembe venni: 
 
 * Regionális elérhetőség: Azure Database for MariaDB a közép-Franciaországban, Észak-és Közép-Németország középső régiójában érhető el. A párosított régiói azonban nem érhetők el.
-    
+
 * Egyirányú párok: egyes Azure-régiók csak egyetlen irányban vannak párosítva. Ezek a régiók közé tartoznak a Nyugat-India, Dél-Brazília és US Gov Virginia. 
    Ez azt jelenti, hogy a Nyugat-Indiában található forráskiszolgáló létrehozhat egy replikát Dél-Indiában. A dél-indiai forráskiszolgáló azonban nem tud replikát létrehozni Nyugat-Indiában. Ennek az az oka, hogy Nyugat-India másodlagos régiója Dél-India, de Dél-India másodlagos régiója nem Nyugat-India.
 
@@ -110,7 +112,7 @@ Megtudhatja, hogyan [állíthatja le a replikálást egy replikára](howto-read-
 
 ## <a name="failover"></a>Feladatátvétel
 
-Nincs automatikus feladatátvétel a forrás-és a replika-kiszolgálók között. 
+Nincs automatikus feladatátvétel a forrás-és a replika-kiszolgálók között.
 
 Mivel a replikáció aszinkron, a forrás és a replika között késés van. A késés mértékét számos tényező befolyásolja, például a forráskiszolgálón futó munkaterhelés, valamint az adatközpontok közötti késés. A legtöbb esetben a replika késése pár másodperc vagy pár perc. A tényleges replikációs késést a metrikai *replika késésének* használatával követheti nyomon, amely az egyes replikák esetében elérhető. Ez a metrika az utolsó újrajátszott tranzakció óta eltelt időt mutatja. Azt javasoljuk, hogy azonosítsa az átlagos késést úgy, hogy a replika késését egy adott időszakra figyelje. Beállíthat egy riasztást a replika késésével kapcsolatban, hogy ha az a várt tartományon kívül esik, megteheti a műveletet.
 
@@ -119,13 +121,13 @@ Mivel a replikáció aszinkron, a forrás és a replika között késés van. A 
 
 Miután úgy döntött, hogy feladatátvételt kíván replikálni egy replikára,
 
-1. A replika replikálásának leállítása<br/>
+1. Állítsa le a replikálást a replikára.
 
-   Ez a lépés szükséges ahhoz, hogy a replika-kiszolgáló el tudja fogadni az írásokat. Ennek a folyamatnak a részeként a replika kiszolgáló leválasztása a főkiszolgálóról történik. A replikálás leállítása után a háttérrendszer folyamata általában 2 percet vesz igénybe. A művelet következményeinek megismeréséhez tekintse meg a jelen cikk [replikálás leállítása](#stop-replication) című szakaszát.
+   Ez a lépés szükséges ahhoz, hogy a replika-kiszolgáló el tudja fogadni az írásokat. Ennek a folyamatnak a részeként a replika-kiszolgáló le lesz csatolva az elsődlegesről. A replikálás leállítása után a háttérrendszer folyamata általában 2 percet vesz igénybe. A művelet következményeinek megismeréséhez tekintse meg a jelen cikk [replikálás leállítása](#stop-replication) című szakaszát.
 
-2. Az alkalmazás átirányítása a (korábbi) replikára
+2. Mutasson az alkalmazást a (korábbi) replikára.
 
-   Minden kiszolgálón egyedi a kapcsolatok karakterlánca. Frissítse az alkalmazást, hogy a főkiszolgáló helyett a (korábbi) replikára mutasson.
+   Minden kiszolgálón egyedi a kapcsolatok karakterlánca. Frissítse az alkalmazást, hogy az elsődleges helyett a (korábbi) replikára mutasson.
 
 Miután az alkalmazás sikeresen feldolgozta az olvasásokat és az írásokat, befejezte a feladatátvételt. Az alkalmazás által tapasztalható állásidő mennyisége a probléma észlelése és a fenti 1. és 2. lépés elvégzése után függ.
 
@@ -148,10 +150,10 @@ Az olvasási replika új Azure Database for MariaDB-kiszolgálóként jön létr
 
 ### <a name="replica-configuration"></a>Replika konfigurációja
 
-A replikát ugyanazzal a kiszolgáló-konfigurációval hozza létre a rendszer, mint a főkiszolgálót. A replika létrehozása után több beállítás is módosítható a forráskiszolgálóról függetlenül: számítási generáció, virtuális mag, tárterület, biztonsági másolat megőrzési ideje és MariaDB motor verziója. Az árképzési szint külön is módosítható, kivéve az alapszintű csomagból vagy abból.
+A replika az elsődleges kiszolgálóval megegyező kiszolgálói konfigurációval jön létre. A replika létrehozása után több beállítás is módosítható a forráskiszolgálóról függetlenül: számítási generáció, virtuális mag, tárterület, biztonsági másolat megőrzési ideje és MariaDB motor verziója. Az árképzési szint külön is módosítható, kivéve az alapszintű csomagból vagy abból.
 
 > [!IMPORTANT]
-> Mielőtt a forráskiszolgálói konfigurációt új értékekre frissítené, frissítse a replika konfigurációját az értékekkel egyenlő vagy nagyobb értékekre. Ez a művelet biztosítja, hogy a replika összhangban lehessen a főkiszolgálón végrehajtott módosításokkal.
+> Mielőtt a forráskiszolgálói konfigurációt új értékekre frissítené, frissítse a replika konfigurációját az értékekkel egyenlő vagy nagyobb értékekre. Ez a művelet biztosítja, hogy a replika képes legyen az elsődlegesen végrehajtott módosításokkal.
 
 A tűzfalszabályok és a paraméterek beállításait a rendszer a forráskiszolgálóról a replikára örökli a replika létrehozásakor. Ezt követően a replika szabályai függetlenek.
 
@@ -172,20 +174,21 @@ A forráskiszolgálón lévő felhasználókat a rendszer replikálja az olvasá
 Az adatszinkronizálás biztosítása és az esetleges adatvesztés vagy -sérülés elkerülése érdekében bizonyos kiszolgálóparaméterek zárolva vannak, hogy ne lehessen őket módosítani olvasási replikák használata során.
 
 A következő kiszolgálói paraméterek a forrás-és a replika-kiszolgálókon is zárolva vannak:
-- [`innodb_file_per_table`](https://mariadb.com/kb/en/library/innodb-system-variables/#innodb_file_per_table) 
-- [`log_bin_trust_function_creators`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#log_bin_trust_function_creators)
+
+* [`innodb_file_per_table`](https://mariadb.com/kb/en/library/innodb-system-variables/#innodb_file_per_table) 
+* [`log_bin_trust_function_creators`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#log_bin_trust_function_creators)
 
 A [`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables/#event_scheduler) paraméter zárolva van a replika-kiszolgálókon.
 
-A fenti paraméterek egyikének a forráskiszolgálón való frissítéséhez törölje a replika-kiszolgálókat, frissítse a paraméter értékét a főkiszolgálón, majd hozza létre újra a replikákat.
+A fenti paraméterek egyikének a forráskiszolgálón való frissítéséhez törölje a replika-kiszolgálókat, frissítse a paraméter értékét az elsődlegesen, és hozza létre újból a replikákat.
 
 ### <a name="other"></a>Egyéb
 
-- Replika replikájának létrehozása nem támogatott.
-- A memóriában tárolt táblázatok miatt a replikák nem lesznek szinkronban. Ez a MariaDB replikációs technológia korlátozása.
-- Győződjön meg arról, hogy a forráskiszolgáló táblái rendelkeznek elsődleges kulccsal. Az elsődleges kulcsok hiánya replikációs késést eredményezhet a forrás-és a replikák között.
+* Replika replikájának létrehozása nem támogatott.
+* A memóriában tárolt táblázatok miatt a replikák nem lesznek szinkronban. Ez a MariaDB replikációs technológia korlátozása.
+* Győződjön meg arról, hogy a forráskiszolgáló táblái rendelkeznek elsődleges kulccsal. Az elsődleges kulcsok hiánya replikációs késést eredményezhet a forrás-és a replikák között.
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat a Azure Portal használatával](howto-read-replicas-portal.md)
-- Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat az Azure CLI és a REST API használatával](howto-read-replicas-cli.md)
+* Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat a Azure Portal használatával](howto-read-replicas-portal.md)
+* Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat az Azure CLI és a REST API használatával](howto-read-replicas-cli.md)

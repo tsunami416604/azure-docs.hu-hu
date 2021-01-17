@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 06/12/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 43718f8ebc851f27035f2999bfb4ff3ec12ca5b4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7bbd54ed68863a4704319a25af96b6463ad2377b
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021962"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539707"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Azure CDN végpont létrehozása
 Ez a cikk az [Azure Content Delivery Network-(CDN-)](cdn-overview.md) VÉGPONT meglévő CDN-profilban való létrehozásának összes beállítását ismerteti. Miután létrehozott egy profilt és egy végpontot, megkezdheti a tartalom továbbítását az ügyfeleknek. A profil és a végpont létrehozásával kapcsolatos rövid útmutató: gyors üzembe helyezés [Azure CDN profil és végpont létrehozása](cdn-create-new-endpoint.md).
@@ -97,7 +97,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjáv
     Mivel némi időre van szükség a regisztráció propagálásához, a végpont nem vehető használatba azonnal: 
     - A **Microsoft Azure CDN Standard** típusú profilok propagálása általában 10 perc alatt fejeződik be. 
     - Az **Akamai Azure CDN Standard** típusú profilok propagálása általában egy percen belül befejeződik. 
-    - A **Verizon Azure CDN Standard** és a **Verizon Azure CDN Premium** típusú profilok propagálása általában 90 percen belül fejeződik be. 
+    - A verizontól a Verizon és a **Azure CDN Premium** **Azure CDN standard** szint esetén a propagálás általában 30 percen belül befejeződik. 
    
     Ha a CDN-tartománynevet úgy kísérli meg használni, hogy a végpont konfigurációja propagálva legyen a jelenléti pontra (POP) szolgáló kiszolgálókra, előfordulhat, hogy HTTP 404-válasz állapotot kap. Ha a végpont létrehozása óta több óra van, és továbbra is 404 választ kap, tekintse meg [a 404 állapotkódot visszaadó Azure CDN-végpontok hibaelhárítása](cdn-troubleshoot-endpoint.md)című témakört.
 

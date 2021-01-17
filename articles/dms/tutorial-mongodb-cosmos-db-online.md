@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-nov-2020
 ms.topic: tutorial
 ms.date: 09/25/2019
-ms.openlocfilehash: 6a13d0a0ac0b37b5faf59e19cd13e5c3c2ee94dc
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: fed568d67c688a8c2adab979eb68eaf384a72172
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965561"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539288"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>Oktatóanyag: a MongoDB migrálása Azure Cosmos DB API-ra a MongoDB online-hoz a DMS használatával
 
@@ -53,7 +53,7 @@ Ez a cikk a MongoDB-ről Azure Cosmos DB API-MongoDB való online áttelepítés
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 * [Hajtsa végre az áttelepítés előtti](../cosmos-db/mongodb-pre-migration.md) lépéseket, például az átviteli sebesség becslését, a partíciós kulcs kiválasztását és az indexelési házirendet.
-* [Hozzon létre egy Azure Cosmos db API-ját a MongoDB-fiókhoz](https://ms.portal.azure.com/#create/Microsoft.DocumentDB).
+* [Hozzon létre egy Azure Cosmos db API-ját a MongoDB-fiókhoz](https://ms.portal.azure.com/#create/Microsoft.DocumentDB) , és győződjön meg arról, hogy a [SSR (kiszolgálóoldali újrapróbálkozás)](../cosmos-db/prevent-rate-limiting-errors.md) engedélyezve van.
 * Hozzon létre egy Microsoft Azure Virtual Network a Azure Database Migration Servicehoz Azure Resource Manager üzembe helyezési modell használatával, amely helyek közötti kapcsolatot biztosít a helyszíni forráskiszolgáló számára a [ExpressRoute](../expressroute/expressroute-introduction.md) vagy a [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)használatával.
 
     > [!NOTE]
@@ -169,7 +169,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
    ![Forrás adatainak megadása](media/tutorial-mongodb-to-cosmosdb-online/dms-specify-source1.png)
 
-2. Kattintson a **Mentés** gombra.
+2. Válassza a **Mentés** lehetőséget.
 
    > [!NOTE]
    > A forráskiszolgáló címe legyen az elsődleges, ha a forrás egy replikakészlet, és az útválasztó, ha a forrás egy szilánkos MongoDB-fürt. A többplatformos MongoDB-fürtök esetében a Azure Database Migration Servicenak képesnek kell lennie csatlakozni a fürtben lévő egyes szegmensekhez, ami szükségessé teheti a tűzfal megnyitását több gépen.
@@ -180,7 +180,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
     ![Cél adatainak megadása](media/tutorial-mongodb-to-cosmosdb-online/dms-specify-target1.png)
 
-2. Kattintson a **Mentés** gombra.
+2. Válassza a **Mentés** lehetőséget.
 
 ## <a name="map-to-target-databases"></a>Leképezés céladatbázisokra
 
@@ -194,7 +194,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
    ![Leképezés céladatbázisokra](media/tutorial-mongodb-to-cosmosdb-online/dms-map-target-databases1.png)
 
-2. Kattintson a **Mentés** gombra.
+2. Válassza a **Mentés** lehetőséget.
 
 3. A **gyűjtemény beállítása** képernyőn bontsa ki a gyűjtemények listáját, majd tekintse át az áttelepíteni kívánt gyűjtemények listáját.
 
@@ -209,7 +209,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
    ![Gyűjtemények táblázatának kiválasztása](media/tutorial-mongodb-to-cosmosdb-online/dms-collection-setting1.png)
 
-4. Kattintson a **Mentés** gombra.
+4. Válassza a **Mentés** lehetőséget.
 
 5. **A migrálás összegzése** képernyő **Tevékenység neve** szövegbeviteli mezőjében adja meg a migrálási tevékenység nevét.
 
@@ -255,6 +255,6 @@ Miután áttelepítette a MongoDB-adatbázisban tárolt adatAzure Cosmos DB API-
 
 * [Cosmos DB szolgáltatás adatai](https://azure.microsoft.com/services/cosmos-db/)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tekintse át az áttelepítési útmutatót a Microsoft [Database áttelepítési útmutatóban](https://datamigration.microsoft.com/)található további forgatókönyvekhez.

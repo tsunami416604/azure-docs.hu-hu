@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 12/16/2020
+ms.date: 01/15/2021
 ms.custom: generated
-ms.openlocfilehash: f22b74b16594419b0eff33f0c73d6e9c3a62ac15
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 8f44de679c9b0280652b0020d1e454a70f7114a3
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655033"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538525"
 ---
 # <a name="azure-built-in-roles"></a>Beépített Azure-szerepkörök
 
@@ -27,7 +27,7 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 ## <a name="all"></a>Mind
 
 > [!div class="mx-tableFixed"]
-> | Beépített szerepkör | Description | ID (Azonosító) |
+> | Beépített szerepkör | Leírás | ID (Azonosító) |
 > | --- | --- | --- |
 > | **Általános** |  |  |
 > | [Közreműködő](#contributor) | Teljes hozzáférést biztosít az összes erőforrás kezeléséhez, de nem teszi lehetővé a szerepkörök hozzárendelését az Azure RBAC, a hozzárendelések kezelését az Azure-tervekben, illetve a képtárak megosztását. | b24988ac-6180-42a0-ab88-20f7382dd24c |
@@ -119,9 +119,12 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 > | [HDInsight tartományi szolgáltatások közreműködője](#hdinsight-domain-services-contributor) | Elolvashatja, létrehozhatja, módosíthatja és törölheti a HDInsight kapcsolatos tartományi szolgáltatásokat Enterprise Security Package | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
 > | [Log Analytics közreműködő](#log-analytics-contributor) | Log Analytics közreműködő képes olvasni az összes figyelési és szerkesztési beállítást. A figyelési beállítások szerkesztése magában foglalja a virtuálisgép-bővítmény virtuális gépekhez való hozzáadását. a Storage-fiók kulcsainak beolvasása az Azure Storage-ból származó naplók gyűjtésének konfigurálásához; Automation-fiókok létrehozása és konfigurálása; megoldások hozzáadása; és az Azure Diagnostics konfigurálása az összes Azure-erőforráshoz. | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
 > | [Log Analytics olvasó](#log-analytics-reader) | Log Analytics olvasó megtekintheti és megkeresheti az összes figyelési adatait, valamint megtekintheti a figyelési beállításokat, beleértve az Azure Diagnostics konfigurációjának megtekintését az összes Azure-erőforráson. | 73c42c96-874c-492b-b04d-ab87d138a893 |
+> | [A hatáskörébe tartozó adatkurátor](#purview-data-curator) | A Microsoft. hatáskörébe tartozó adatkezelő képes a katalógus-adatobjektumok létrehozására, olvasására, módosítására és törlésére, valamint az objektumok közötti kapcsolatok létrehozására. Ez a szerepkör előzetes verzióban érhető el, és változhat. | 8a3c2885-9b38-4fd2-9d99-91af537c1347 |
+> | [A hatáskörébe tartozó Adatolvasó](#purview-data-reader) | A Microsoft. hatáskörébe Adatolvasó képes olvasni a katalógus adatobjektumait. Ez a szerepkör előzetes verzióban érhető el, és változhat. | ff100721-1b9d-43d8-af52-42b69c1272db |
+> | [A hatáskörébe tartozó adatforrás rendszergazdája](#purview-data-source-administrator) | A Microsoft. hatáskörébe adatforrás-rendszergazdája az adatforrások és az adatvizsgálatok kezelésére képes. Ez a szerepkör előzetes verzióban érhető el, és változhat. | 200bba9e-f0c8-430f-892b-6f0794863803 |
 > | [Séma beállításjegyzékbeli közreműködői (előzetes verzió)](#schema-registry-contributor-preview) | Séma-beállításjegyzékbeli csoportok és sémák olvasása, írása és törlése. | 5dffeca3-4936-4216-b2bc-10343a5abb25 |
 > | [Séma beállításjegyzék-olvasója (előzetes verzió)](#schema-registry-reader-preview) | Séma-beállításjegyzékbeli csoportok és sémák olvasása és listázása. | 2c56ea50-c6b3-40a6-83c0-9d98858bc7d2 |
-> | **Blockchain** |  |  |
+> | **Blokklánc** |  |  |
 > | [Blockchain-hozzáférés (előzetes verzió)](#blockchain-member-node-access-preview) | Engedélyezi a hozzáférést a Blockchain-tagok csomópontjaihoz | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
 > | **AI és gépi tanulás** |  |  |
 > | [Cognitive Services közreműködő](#cognitive-services-contributor) | Lehetővé teszi Cognitive Services kulcsainak létrehozását, olvasását, frissítését, törlését és kezelését. | 25fbc0a9-bd7c-42a3-aa1a-3b75d497ee68 |
@@ -688,7 +691,7 @@ Tekintse meg Virtual Machines a portálon, és jelentkezzen be normál felhaszn�
 }
 ```
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 
 ### <a name="cdn-endpoint-contributor"></a>CDN-végpont közreműködői
@@ -2589,7 +2592,7 @@ Azure Storage-várólisták és üzenetsor-üzenetek olvasása és listázása. 
 }
 ```
 
-## <a name="web"></a>Webes
+## <a name="web"></a>Web
 
 
 ### <a name="azure-maps-data-reader"></a>Adatolvasó Azure Maps
@@ -4888,6 +4891,133 @@ Log Analytics olvasó megtekintheti és megkeresheti az összes figyelési adata
 }
 ```
 
+### <a name="purview-data-curator"></a>A hatáskörébe tartozó adatkurátor
+
+A Microsoft. hatáskörébe tartozó adatkezelő képes a katalógus-adatobjektumok létrehozására, olvasására, módosítására és törlésére, valamint az objektumok közötti kapcsolatok létrehozására. Ez a szerepkör előzetes verzióban érhető el, és változhat.
+
+> [!div class="mx-tableFixed"]
+> | Műveletek | Leírás |
+> | --- | --- |
+> | [Microsoft. hatáskörébe](resource-provider-operations.md#microsoftpurview)/accounts/READ | A Microsoft hatáskörébe tartozó fiók erőforrásának beolvasása. |
+> | **NotActions** |  |
+> | *nincs* |  |
+> | **DataActions** |  |
+> | [Microsoft. hatáskörébe](resource-provider-operations.md#microsoftpurview)/accounts/Data/READ | Adatobjektumok olvasása. |
+> | [Microsoft. hatáskörébe](resource-provider-operations.md#microsoftpurview)/accounts/Data/Write | Adatobjektumok létrehozása, frissítése és törlése. |
+> | **NotDataActions** |  |
+> | *nincs* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "The Microsoft.Purview data curator can create, read, modify and delete catalog data objects and establish relationships between objects. This role is in preview and subject to change.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8a3c2885-9b38-4fd2-9d99-91af537c1347",
+  "name": "8a3c2885-9b38-4fd2-9d99-91af537c1347",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Purview/accounts/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Purview/accounts/data/read",
+        "Microsoft.Purview/accounts/data/write"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Purview Data Curator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="purview-data-reader"></a>A hatáskörébe tartozó Adatolvasó
+
+A Microsoft. hatáskörébe Adatolvasó képes olvasni a katalógus adatobjektumait. Ez a szerepkör előzetes verzióban érhető el, és változhat.
+
+> [!div class="mx-tableFixed"]
+> | Műveletek | Leírás |
+> | --- | --- |
+> | [Microsoft. hatáskörébe](resource-provider-operations.md#microsoftpurview)/accounts/READ | A Microsoft hatáskörébe tartozó fiók erőforrásának beolvasása. |
+> | **NotActions** |  |
+> | *nincs* |  |
+> | **DataActions** |  |
+> | [Microsoft. hatáskörébe](resource-provider-operations.md#microsoftpurview)/accounts/Data/READ | Adatobjektumok olvasása. |
+> | **NotDataActions** |  |
+> | *nincs* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "The Microsoft.Purview data reader can read catalog data objects. This role is in preview and subject to change.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/ff100721-1b9d-43d8-af52-42b69c1272db",
+  "name": "ff100721-1b9d-43d8-af52-42b69c1272db",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Purview/accounts/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Purview/accounts/data/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Purview Data Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="purview-data-source-administrator"></a>A hatáskörébe tartozó adatforrás rendszergazdája
+
+A Microsoft. hatáskörébe adatforrás-rendszergazdája az adatforrások és az adatvizsgálatok kezelésére képes. Ez a szerepkör előzetes verzióban érhető el, és változhat.
+
+> [!div class="mx-tableFixed"]
+> | Műveletek | Leírás |
+> | --- | --- |
+> | [Microsoft. hatáskörébe](resource-provider-operations.md#microsoftpurview)/accounts/READ | A Microsoft hatáskörébe tartozó fiók erőforrásának beolvasása. |
+> | **NotActions** |  |
+> | *nincs* |  |
+> | **DataActions** |  |
+> | [Microsoft. hatáskörébe](resource-provider-operations.md#microsoftpurview)/accounts/Scan/READ | Az adatforrások és a vizsgálatok beolvasása. |
+> | [Microsoft. hatáskörébe](resource-provider-operations.md#microsoftpurview)/accounts/Scan/Write | Adatforrások létrehozása, frissítése és törlése, valamint a vizsgálatok kezelése. |
+> | **NotDataActions** |  |
+> | *nincs* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "The Microsoft.Purview data source administrator can manage data sources and data scans. This role is in preview and subject to change.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/200bba9e-f0c8-430f-892b-6f0794863803",
+  "name": "200bba9e-f0c8-430f-892b-6f0794863803",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Purview/accounts/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Purview/accounts/scan/read",
+        "Microsoft.Purview/accounts/scan/write"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Purview Data Source Administrator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="schema-registry-contributor-preview"></a>Séma beállításjegyzékbeli közreműködői (előzetes verzió)
 
 Séma-beállításjegyzékbeli csoportok és sémák olvasása, írása és törlése.
@@ -4970,7 +5100,7 @@ Séma-beállításjegyzékbeli csoportok és sémák olvasása és listázása.
 }
 ```
 
-## <a name="blockchain"></a>Blockchain
+## <a name="blockchain"></a>Blokklánc
 
 
 ### <a name="blockchain-member-node-access-preview"></a>Blockchain-hozzáférés (előzetes verzió)
@@ -7015,7 +7145,9 @@ A kulcsok metaadatainak olvasása, valamint a becsomagolási/kicsomagolási műv
 > [!div class="mx-tableFixed"]
 > | Műveletek | Leírás |
 > | --- | --- |
-> | *nincs* |  |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/Write | EventSubscription létrehozása vagy frissítése |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/READ | EventSubscription beolvasása |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/delete | EventSubscription törlése |
 > | **NotActions** |  |
 > | *nincs* |  |
 > | **DataActions** |  |
@@ -7035,7 +7167,11 @@ A kulcsok metaadatainak olvasása, valamint a becsomagolási/kicsomagolási műv
   "name": "e147488a-f6f5-4113-8e2d-b22465e65bf6",
   "permissions": [
     {
-      "actions": [],
+      "actions": [
+        "Microsoft.EventGrid/eventSubscriptions/write",
+        "Microsoft.EventGrid/eventSubscriptions/read",
+        "Microsoft.EventGrid/eventSubscriptions/delete"
+      ],
       "notActions": [],
       "dataActions": [
         "Microsoft.KeyVault/vaults/keys/read",
@@ -7438,6 +7574,9 @@ Security Center engedélyeinek megtekintése. Megtekintheti a javaslatokat, a ri
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/READ | Erőforráscsoportok beolvasása vagy felsorolása. |
 > | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)/*/READ | Biztonsági összetevők és szabályzatok olvasása |
 > | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/*/READ |  |
+> | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)/iotDefenderSettings/packageDownloads/Action | Lekéri a letölthető IoT Defender-csomagok adatait |
+> | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)/iotDefenderSettings/downloadManagerActivation/Action | Az előfizetés-kvótával rendelkező kezelői aktiválási fájl letöltése |
+> | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)/iotSensors/downloadResetPassword/Action | A IoT-érzékelők letöltésének új jelszava |
 > | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/READ | Felügyeleti csoportok listázása a hitelesített felhasználó számára. |
 > | **NotActions** |  |
 > | *nincs* |  |
@@ -7464,6 +7603,9 @@ Security Center engedélyeinek megtekintése. Megtekintheti a javaslatokat, a ri
         "Microsoft.Resources/subscriptions/resourceGroups/read",
         "Microsoft.Security/*/read",
         "Microsoft.Support/*/read",
+        "Microsoft.Security/iotDefenderSettings/packageDownloads/action",
+        "Microsoft.Security/iotDefenderSettings/downloadManagerActivation/action",
+        "Microsoft.Security/iotSensors/downloadResetPassword/action",
         "Microsoft.Management/managementGroups/read"
       ],
       "notActions": [],
@@ -7634,7 +7776,7 @@ Lehetővé teszi, hogy új laborokat hozzon létre az Azure Lab-fiókjaiban. [To
 }
 ```
 
-## <a name="monitor"></a>Figyelés
+## <a name="monitor"></a>Monitor
 
 
 ### <a name="application-insights-component-contributor"></a>Application Insights összetevő közreműködője
@@ -8611,8 +8753,8 @@ Szerepkör-definíció a connectedClusters [-erőforrások](../azure-arc/kuberne
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/operationresults/READ | Az előfizetési művelet eredményeinek beolvasása. |
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/READ | Az előfizetések listájának beolvasása. |
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/READ | Erőforráscsoportok beolvasása vagy felsorolása. |
-> | Microsoft. Kubernetes/connectedClusters/Write |  |
-> | Microsoft. Kubernetes/connectedClusters/READ |  |
+> | [Microsoft. Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/Write | ConnectedClusters írása |
+> | [Microsoft. Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/READ | ConnectedClusters olvasása |
 > | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Támogatási jegy létrehozása és frissítése |
 > | **NotActions** |  |
 > | *nincs* |  |
@@ -9751,7 +9893,7 @@ Lehetővé teszi a Scheduler-feladatok összegyűjtését, de nem fér hozzájuk
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Erőforrás-szolgáltató egyeztetése a szolgáltatással](../azure-resource-manager/management/azure-services-resource-providers.md)
 - [Egyéni Azure-szerepkörök](custom-roles.md)

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c8b942e66a76bcc3a095f9bd3d40b44bf4217e50
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 286f4f5ca8a18a67da2ac24beb4c6935de35778d
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584884"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538120"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés beállítása Google-fiókkal Azure Active Directory B2C használatával
 
@@ -37,7 +37,7 @@ ms.locfileid: "97584884"
 
 ## <a name="create-a-google-application"></a>Google-alkalmazás létrehozása
 
-Ha a Google-fiókot identitás- [szolgáltatóként](authorization-code-flow.md) szeretné használni Azure Active Directory B2C (Azure ad B2C), létre kell hoznia egy alkalmazást a Google fejlesztői konzolján. Ha még nem rendelkezik Google-fiókkal, regisztrálhat a következő címen: [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp) .
+Ha Azure Active Directory B2C (Azure AD B2C) Google-fiókkal rendelkező felhasználók számára szeretné engedélyezni a bejelentkezést, létre kell hoznia egy alkalmazást a [Google fejlesztői konzolon](https://console.developers.google.com/). További információ: a [OAuth 2,0 beállítása](https://support.google.com/googleapi/answer/6158849). Ha még nem rendelkezik Google-fiókkal, regisztrálhat a következő címen: [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp) .
 
 1. Jelentkezzen be a [Google fejlesztői konzolra](https://console.developers.google.com/) a Google-fiókja hitelesítő adataival.
 1. A lap bal felső sarkában válassza ki a Project (projekt) listát, majd válassza az **új projekt** lehetőséget.
@@ -48,7 +48,7 @@ Adja meg az alkalmazás **nevét** . Adja meg a *b2clogin.com* a **jogosultságg
 1. Válassza a bal oldali menüben a **hitelesítő adatok** lehetőséget, majd válassza a **hitelesítő adatok létrehozása**  >  **OAuth-ügyfél-azonosító** lehetőséget.
 1. Az **alkalmazás típusa** területen válassza a **webalkalmazás** lehetőséget.
 1. Adja meg az alkalmazás **nevét** , adja meg `https://your-tenant-name.b2clogin.com` a megfelelő **JavaScript-eredetet**, és `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` a **jóváhagyott átirányítási URI**-k között. Cserélje le a helyére a `your-tenant-name` bérlő nevét. A bérlő nevének megadásakor az összes kisbetűt kell használnia, még akkor is, ha a bérlőt nagybetűvel definiálták Azure AD B2C.
-1. Kattintson a **Létrehozás** gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 1. Másolja ki az **ügyfél-azonosító** és az **ügyfél titkos kulcsának** értékeit. Mindkettőre szüksége lesz a Google identitás-szolgáltatóként való konfigurálásához a bérlőben. Az **ügyfél titkos kulcsa** fontos biztonsági hitelesítő adat.
 
 ::: zone pivot="b2c-user-flow"
@@ -81,7 +81,7 @@ A Azure AD B2C bérlőben korábban rögzített ügyfél-titkos kulcsot kell tá
 7. Adja meg a szabályzat kulcsának **nevét** . Például: `GoogleSecret`. A rendszer automatikusan hozzáadja az előtagot a `B2C_1A_` kulcs nevéhez.
 8. A **Secret (titkos kulcs**) mezőben adja meg a korábban rögzített ügyfél-titkot.
 9. A **kulcshasználat** beállításnál válassza a elemet `Signature` .
-10. Kattintson a **Létrehozás** gombra.
+10. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="add-a-claims-provider"></a>Jogcím-szolgáltató hozzáadása
 
@@ -189,7 +189,7 @@ Most, hogy van egy gomb a helyén, össze kell kapcsolni egy művelettel. A műv
 ## <a name="add-google-identity-provider-to-a-user-flow"></a>Google Identity Provider hozzáadása felhasználói folyamathoz 
 
 1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok** lehetőséget.
-1. Kattintson arra a felhasználói folyamatra, amelyre a Google Identity providert szeretné használni.
+1. Kattintson arra a felhasználói folyamatra, amelyhez hozzá szeretné adni a Google Identity providert.
 1. A **közösségi identitás-szolgáltatók** területen válassza a **Google** lehetőséget.
 1. Válassza a **Mentés** lehetőséget.
 1. A szabályzat teszteléséhez válassza a **felhasználói folyamat futtatása** lehetőséget.
@@ -215,6 +215,6 @@ Frissítse a függő entitás (RP) fájlját, amely kezdeményezi a létrehozott
 
 ::: zone-end
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan [adhat át Google-tokent az alkalmazásnak](idp-pass-through-user-flow.md).

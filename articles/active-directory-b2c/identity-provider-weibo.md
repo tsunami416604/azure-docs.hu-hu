@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 24e267b66d11cb3c5ca2b70ed09b7acb3653da99
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 36b7618fbacc18ec506f12eabc642246d3148ce0
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653605"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98537915"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>WeiBo-fiókkal történő regisztráció és bejelentkezés beállítása Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ ms.locfileid: "97653605"
 
 ## <a name="create-a-weibo-application"></a>WeiBo-alkalmazás létrehozása
 
-Ha a WeiBo-fiókot Azure Active Directory B2C (Azure AD B2C) identitás-szolgáltatóként szeretné használni, létre kell hoznia egy alkalmazást a bérlőben, amely azt képviseli. Ha még nem rendelkezik WeiBo-fiókkal, regisztrálhat a következő címen: [https://weibo.com/signup/signup.php?lang=en-us](https://weibo.com/signup/signup.php?lang=en-us) .
+Ha Azure Active Directory B2C (Azure AD B2C) WeiBo-fiókkal rendelkező felhasználók számára szeretné engedélyezni a bejelentkezést, létre kell hoznia egy alkalmazást a [WeiBo fejlesztői portálon](https://open.weibo.com/). Ha még nem rendelkezik WeiBo-fiókkal, regisztrálhat a következő címen: [https://weibo.com](https://weibo.com/signup/signup.php?lang=en-us) .
 
 1. Jelentkezzen be a [WeiBo fejlesztői portálra](https://open.weibo.com/) a WeiBo-fiókja hitelesítő adataival.
 1. A bejelentkezést követően válassza ki a megjelenítendő nevet a jobb felső sarokban.
@@ -85,7 +85,7 @@ A Azure AD B2C bérlőben korábban rögzített ügyfél-titkos kulcsot kell tá
 7. Adja meg a szabályzat kulcsának **nevét** . Például: `WeiboSecret`. A rendszer automatikusan hozzáadja az előtagot a `B2C_1A_` kulcs nevéhez.
 8. A **Secret (titkos kulcs**) mezőben adja meg a korábban rögzített ügyfél-titkot.
 9. A **kulcshasználat** beállításnál válassza a elemet `Signature` .
-10. Kattintson a **Létrehozás** gombra.
+10. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="add-a-claims-provider"></a>Jogcím-szolgáltató hozzáadása
 
@@ -263,7 +263,7 @@ Most, hogy van egy gomb a helyén, össze kell kapcsolni egy művelettel. Ebben 
 ## <a name="add-weibo-identity-provider-to-a-user-flow"></a>WeiBo-identitás szolgáltatójának hozzáadása felhasználói folyamathoz 
 
 1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok** lehetőséget.
-1. Kattintson arra a felhasználói folyamatra, amelyet a WeiBo-identitás szolgáltatója szeretne.
+1. Kattintson arra a felhasználói folyamatra, amelyhez hozzá szeretné adni a WeiBo-identitás szolgáltatóját.
 1. A **közösségi identitás-szolgáltatók** területen válassza a **WeiBo** lehetőséget.
 1. Válassza a **Mentés** lehetőséget.
 1. A szabályzat teszteléséhez válassza a **felhasználói folyamat futtatása** lehetőséget.

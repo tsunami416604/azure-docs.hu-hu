@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: chrande
-ms.openlocfilehash: 06a06d275ba6f5ded475ffd693ee61e7a72b9516
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 26097408d0b83b043f4a25183146c892fc4b48ad
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127702"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538549"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-dbs-api-for-mongodb"></a>Az Azure Cosmos DB API-MongoDB kapcsolatos gyakori problémák elhárítása
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -36,13 +36,13 @@ A következő cikk a MongoDB-hez készült Azure Cosmos DB API-val történő ü
 | 67 | CannotCreateIndex | Az index létrehozásának kérelme nem hajtható végre. | Akár 500 egymezős index hozható létre egy tárolóban. Egy összetett indexben legfeljebb nyolc mező szerepelhet (az összetett indexek a 3.6 + verzióban támogatottak). |
 | 115 | CommandNotSupported | A megkísérelt kérés nem támogatott. | A hibaüzenetben további részleteket is meg kell adni. Ha az üzemelő példányok esetében ez a funkció fontos, kérjük, tudassa velünk, ha létrehoz egy támogatási jegyet a [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). |
 | 11000 | DuplicateKey | A beszúrt dokumentum (Azure Cosmos DB partíciós kulcsa) már létezik a gyűjteményben, vagy egy egyedi index mező megkötése meg lett sértve. | Egy meglévő dokumentum frissítéséhez használja a Update () függvényt. Ha az egyedi index mező megkötését megsértették, szúrja be vagy frissítse a dokumentumot olyan értékkel, amely még nem szerepel a szegmensben/partícióban. |
-| 16500 | TooManyRequests  | A felhasznált kérelemegységek teljes száma nagyobb, mint a gyűjteményhez kiosztott kérelemegységek száma, ezért szabályozva lett. | Érdemes lehet skálázni az adott tárolóhoz vagy tárolókészlethez megadott átviteli sebességet az Azure portálon, vagy újból elvégezni a műveletet. Ha engedélyezi a SSR (kiszolgálóoldali újrapróbálkozás) lehetőséget, a Azure Cosmos DB automatikusan újrapróbálkozik a hiba miatt meghiúsult kérelmekkel. |
+| 16500 | TooManyRequests  | A felhasznált kérelemegységek teljes száma nagyobb, mint a gyűjteményhez kiosztott kérelemegységek száma, ezért szabályozva lett. | Érdemes lehet skálázni az adott tárolóhoz vagy tárolókészlethez megadott átviteli sebességet az Azure portálon, vagy újból elvégezni a műveletet. Ha [engedélyezi a SSR](prevent-rate-limiting-errors.md) (kiszolgálóoldali újrapróbálkozás) lehetőséget, a Azure Cosmos db automatikusan újrapróbálkozik a hiba miatt meghiúsult kérelmekkel. |
 | 16501 | ExceededMemoryLimit | Több-bérlős szolgáltatásként a művelet túllépte az ügyfél memóriájának kiosztását. | Csökkentse a művelet hatókörét szigorúbb lekérdezési feltételekkel, vagy forduljon a [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)támogatási szolgálatához. Például: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
 | 40324 | Ismeretlen a folyamat fázisának neve. | Nem ismerhető fel a szakasz neve az összesítési folyamat kérelmében. | Győződjön meg arról, hogy az összes aggregációs folyamat neve érvényes a kérelemben. |
 | - | A MongoDB vonalprotokoll-verziójával kapcsolatos problémák | A MongoDB-illesztőprogramok régebbi verziói nem tudják felderíteni az Azure Cosmos-fiók nevét a kapcsolódási karakterláncokban. | Fűzze hozzá a *appName = @**accountName** @* a Cosmos db API-ját a MongoDB-kapcsolatok karakterláncához, ahol a ***accountName*** a Cosmos db fiók neve. |
 | - | MongoDB-ügyfél hálózati problémái (például szoftvercsatorna-vagy endOfStream-kivételek)| A hálózati kérelem sikertelen volt. Ezt gyakran a MongoDB-ügyfél által megkísérelt inaktív TCP-kapcsolatok okozzák. A MongoDB-illesztőprogramok gyakran használják a kapcsolatok készletezését, ami véletlenszerű kapcsolatokat eredményez a kérelemhez használt készletből. Az inaktív kapcsolatok jellemzően időtúllépést okoznak a Azure Cosmos DB négy perc után. | Próbálja megismételni a sikertelen kérelmeket az alkalmazás kódjában, módosítsa a MongoDB-ügyfél (illesztőprogram) beállításait úgy, hogy az inaktív TCP-kapcsolatokat Teardown a négy perces időtúllépési időszak előtt, vagy konfigurálja az operációs rendszer életben tartási beállításait a TCP-kapcsolatok aktív állapotban való fenntartásához. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan [használhatja a Studio 3T](mongodb-mongochef.md) Azure Cosmos db API-ját a MongoDB.
 - Ismerje meg, hogyan [használhatja a Robo 3T](mongodb-robomongo.md) -t a Azure Cosmos db API-MongoDB.

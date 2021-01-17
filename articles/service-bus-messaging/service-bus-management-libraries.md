@@ -5,24 +5,30 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/13/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 97d89db17af9cde3afadee430b3d0c2a434e12c9
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 57192ab2ee1624cb18de832ac91c95290da727df
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210137"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539870"
 ---
 # <a name="dynamically-provision-service-bus-namespaces-and-entities"></a>Service Bus névterek és entitások dinamikus kiépítése 
 A Azure Service Bus felügyeleti kódtárak dinamikusan tudnak kiépíteni Service Bus névtereket és entitásokat. Ez összetett központi telepítéseket és üzenetkezelési forgatókönyveket tesz lehetővé, és lehetővé teszi, hogy programozott módon határozza meg, hogy milyen entitásokat kell kiépíteni. Ezek a kódtárak jelenleg a .NET-hez érhetők el.
 
-## <a name="supported-functionality"></a>Támogatott funkciók
+## <a name="overview"></a>Áttekintés
+A Service Bus entitások létrehozásához és kezeléséhez három felügyeleti függvénytár érhető el. Ezek a következők:
 
-* Névtér létrehozása, frissítése, törlése
-* Üzenetsor létrehozása, frissítése, törlése
-* Témakör létrehozása, frissítése, törlése
-* Előfizetés létrehozása, frissítése, törlése
+- [Azure. Messaging. ServiceBus. Administration](#azuremessagingservicebusadministration)
+- [Microsoft. Azure. ServiceBus. Management](#microsoftazureservicebusmanagement)
+- [Microsoft.Azure.Management.ServiceBus](#microsoftazuremanagementservicebus)
 
-## <a name="azuremessagingservicebusadministration-recommended"></a>Azure. Messaging. ServiceBus. Administration (ajánlott)
+Ezen csomagok mindegyike támogatja a **várólistákon, témakörökön és előfizetéseken** végrehajtott létrehozási, lekérési, listázási, törlési, frissítési, törlési és frissítési műveleteket. Azonban csak a [Microsoft. Azure. Management. ServiceBus](#microsoftazuremanagementservicebus) támogatja a **névterek** létrehozási, frissítési, listázási, lekérési és törlési műveleteit, valamint a sas-kulcsok listázását és újragenerálását stb. 
+
+A Microsoft. Azure. Management. ServiceBus függvénytár csak Azure Active Directory (Azure AD) hitelesítéssel működik, és nem támogatja a kapcsolatok karakterláncának használatát. Míg a másik két függvénytár (Azure. Messaging. ServiceBus és a Microsoft. Azure. ServiceBus) támogatja a szolgáltatással való hitelesítéshez szükséges kapcsolódási karakterláncot, és könnyebben használható. Ezen könyvtárak között az Azure. Messaging. ServiceBus a legújabb, és ez az, amit ajánlott használni.
+
+A következő szakaszokban további részleteket talál a könyvtárakról. 
+
+## <a name="azuremessagingservicebusadministration"></a>Azure. Messaging. ServiceBus. Administration
 A névterek, várólisták, témakörök és előfizetések kezeléséhez használhatja az [Azure. Messaging. ServiceBus. felügyeleti](/dotnet/api/azure.messaging.servicebus.administration) névtér [ServiceBusAdministrationClient](/dotnet/api/azure.messaging.servicebus.administration.servicebusadministrationclient) osztályát. Itt látható a mintakód. A teljes példa: a [szifilisz példája](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/tests/Samples/Sample07_CrudOperations.cs).
 
 ```csharp
@@ -89,7 +95,7 @@ namespace adminClientTrack2
 A [ManagementClient](/dotnet/api/microsoft.azure.servicebus.management.managementclient) osztályt a [Microsoft. Azure. ServiceBus. Management](/dotnet/api/microsoft.azure.servicebus.management) névtérben használhatja a névterek, várólisták, témakörök és előfizetések kezeléséhez. A mintakód a következő: 
 
 > [!NOTE]
-> Javasoljuk, hogy az `ServiceBusAdministrationClient` osztályt a `Azure.Messaging.ServiceBus.Administration` könyvtárból használja, amely a legújabb SDK. Részletekért tekintse meg az [első szakaszt](#azuremessagingservicebusadministration-recommended). 
+> Javasoljuk, hogy az `ServiceBusAdministrationClient` osztályt a `Azure.Messaging.ServiceBus.Administration` könyvtárból használja, amely a legújabb SDK. Részletekért tekintse meg az [első szakaszt](#azuremessagingservicebusadministration). 
 
 ```csharp
 using System;
@@ -156,7 +162,7 @@ A könyvtár használatának megkezdéséhez hitelesítenie kell magát a Azure 
 
 * [A Azure Portal használatával hozzon létre Active Directory alkalmazást és egyszerű szolgáltatást, amely hozzáférhet az erőforrásokhoz](../active-directory/develop/howto-create-service-principal-portal.md)
 * [Szolgáltatásnév létrehozása erőforrások eléréséhez az Azure PowerShell használatával](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
-* [Szolgáltatásnév létrehozása erőforrások eléréséhez az Azure CLI használatával](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)
+* [Szolgáltatásnév létrehozása erőforrások eléréséhez az Azure CLI használatával](/cli/azure/create-an-azure-service-principal-azure-cli)
 
 Ezek az oktatóanyagok egy `AppId` (ügyfél-azonosító), `TenantId` és `ClientSecret` (hitelesítési kulcs) használatát teszik lehetővé, amelyek mindegyike a felügyeleti kódtárak általi hitelesítéshez használatos. Legalább [**Azure Service Bus adattulajdonosi**](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner) vagy [**közreműködői**](../role-based-access-control/built-in-roles.md#contributor) engedélyekkel kell rendelkeznie ahhoz az erőforráscsoporthoz, amelyen futtatni szeretné a szolgáltatást.
 
@@ -284,7 +290,7 @@ namespace SBusADApp
 ## <a name="fluent-library"></a>Fluent könyvtár
 Az Service Bus entitások felügyeletére szolgáló Fluent könyvtár használatával kapcsolatban tekintse meg [ezt](https://github.com/Azure/azure-libraries-for-net/tree/master/Samples/ServiceBus)a példát. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse meg a következő témaköröket: 
 
 - [Azure. Messaging. ServiceBus. Administration](/dotnet/api/azure.messaging.servicebus.administration.servicebusadministrationclient)

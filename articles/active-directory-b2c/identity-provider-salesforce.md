@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/05/2021
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 129809a83bcebdcf80b05a7300dd9acf862e5886
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 92c5850c3e8c6db63bb5f6287078d2b0345a051c
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900399"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538044"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-salesforce-account-using-azure-active-directory-b2c"></a>Salesforce-fiókkal történő regisztráció és bejelentkezés beállítása Azure Active Directory B2C
 
@@ -37,7 +37,7 @@ ms.locfileid: "97900399"
 
 ## <a name="create-a-salesforce-application"></a>Salesforce-alkalmazás létrehozása
 
-Ha Azure Active Directory B2C (Azure AD B2C) Salesforce-fiókot szeretne használni, létre kell hoznia egy alkalmazást a Salesforce **app Managerben**. További információ: az [alapszintű csatlakoztatott alkalmazások beállításainak konfigurálása](https://help.salesforce.com/articleView?id=connected_app_create_basics.htm)és [az OAuth-beállítások engedélyezése az API-integrációhoz](https://help.salesforce.com/articleView?id=connected_app_create_api_integration.htm)
+Ha Azure Active Directory B2C (Azure AD B2C) Salesforce-fiókkal rendelkező felhasználók számára szeretné engedélyezni a bejelentkezést, létre kell hoznia egy alkalmazást a Salesforce [app Managerben](https://login.salesforce.com/). További információ: az [alapszintű csatlakoztatott alkalmazások beállításainak konfigurálása](https://help.salesforce.com/articleView?id=connected_app_create_basics.htm)és [az OAuth-beállítások engedélyezése az API-integrációhoz](https://help.salesforce.com/articleView?id=connected_app_create_api_integration.htm)
 
 1. [Jelentkezzen be a Salesforce](https://login.salesforce.com/).
 1. A menüben válassza a **telepítés** lehetőséget.
@@ -102,7 +102,7 @@ A Azure AD B2C bérlőben korábban rögzített ügyfél-titkos kulcsot kell tá
 7. Adja meg a szabályzat kulcsának **nevét** . Például: `SalesforceSecret`. A rendszer automatikusan hozzáadja az előtagot a `B2C_1A_` kulcs nevéhez.
 8. A **Secret (titkos kulcs**) mezőben adja meg a korábban rögzített ügyfél-titkot.
 9. A **kulcshasználat** beállításnál válassza a elemet `Signature` .
-10. Kattintson a **Létrehozás** gombra.
+10. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="add-a-claims-provider"></a>Jogcím-szolgáltató hozzáadása
 
@@ -210,7 +210,7 @@ Most, hogy van egy gomb a helyén, össze kell kapcsolni egy művelettel. Ebben 
 ## <a name="add-salesforce-identity-provider-to-a-user-flow"></a>Salesforce-identitás szolgáltatójának hozzáadása felhasználói folyamathoz 
 
 1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok** lehetőséget.
-1. Kattintson arra a felhasználói folyamatra, amelyet a Salesforce-identitás szolgáltatója szeretne.
+1. Kattintson arra a felhasználói folyamatra, amelyhez hozzá szeretné adni a Salesforce-identitás szolgáltatóját.
 1. A **közösségi identitás-szolgáltatók** területen válassza a **Salesforce** lehetőséget.
 1. Válassza a **Mentés** lehetőséget.
 1. A szabályzat teszteléséhez válassza a **felhasználói folyamat futtatása** lehetőséget.
@@ -236,6 +236,6 @@ Frissítse a függő entitás (RP) fájlját, amely kezdeményezi a létrehozott
 
 ::: zone-end
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan [adhat át Salesforce tokent az alkalmazásnak](idp-pass-through-user-flow.md).

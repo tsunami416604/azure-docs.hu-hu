@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 123b36ba854bec8b363d59bbed5e70f18da1e578
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: d9cba08e5b6650edc0decd3ff9df4060e9ad815c
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653707"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538008"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés beállítása Microsoft-fiók használatával Azure Active Directory B2C
 
@@ -36,7 +36,7 @@ ms.locfileid: "97653707"
 
 ## <a name="create-a-microsoft-account-application"></a>Microsoft-fiók-alkalmazás létrehozása
 
-Ha Microsoft-fiók [identitás-szolgáltatóként](openid-connect.md) szeretné használni Azure Active Directory B2C (Azure ad B2C), létre kell hoznia egy alkalmazást az Azure ad-bérlőben. Az Azure AD-bérlő nem azonos a Azure AD B2C Bérlővel. Ha még nem rendelkezik Microsoft-fiókval, beszerezhet egyet [https://www.live.com/](https://www.live.com/) .
+Ha engedélyezni szeretné a bejelentkezést a Azure Active Directory B2C (Azure AD B2C) Microsoft-fiók rendelkező felhasználók számára, létre kell hoznia egy alkalmazást a [Azure Portalban](https://portal.azure.com). További információ: [alkalmazás regisztrálása a Microsoft Identity platformmal](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app). Ha még nem rendelkezik Microsoft-fiókval, beszerezhet egyet [https://www.live.com/](https://www.live.com/) .
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Győződjön meg arról, hogy az Azure AD-bérlőt tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki az Azure ad-bérlőt tartalmazó könyvtárat.
@@ -97,7 +97,7 @@ Most, hogy létrehozta az alkalmazást az Azure AD-bérlőben, az alkalmazás ü
 1. Adja meg a szabályzat kulcsának **nevét** . Például: `MSASecret`. A rendszer automatikusan hozzáadja az előtagot a `B2C_1A_` kulcs nevéhez.
 1. A **Secret (titkos kulcs**) mezőben adja meg az előző szakaszban rögzített ügyfél-titkos kulcsot.
 1. A **kulcshasználat** beállításnál válassza a elemet `Signature` .
-1. Kattintson a **Létrehozás** gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="add-a-claims-provider"></a>Jogcím-szolgáltató hozzáadása
 
@@ -210,7 +210,7 @@ Most, hogy van egy gomb a helyén, össze kell kapcsolni egy művelettel. A műv
 ## <a name="add-microsoft-identity-provider-to-a-user-flow"></a>Microsoft Identity Provider hozzáadása felhasználói folyamathoz 
 
 1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok** lehetőséget.
-1. Kattintson arra a felhasználói folyamatra, amelyre a Microsoft Identity providert szeretné használni.
+1. Kattintson arra a felhasználói folyamatra, amelyhez hozzá szeretné adni a Microsoft Identity providert.
 1. A **közösségi identitás-szolgáltatók** területen válassza a **Microsoft-fiók** lehetőséget.
 1. Válassza a **Mentés** lehetőséget.
 1. A szabályzat teszteléséhez válassza a **felhasználói folyamat futtatása** lehetőséget.

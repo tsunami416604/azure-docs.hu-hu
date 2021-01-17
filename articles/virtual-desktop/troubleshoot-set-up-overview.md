@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d051594572f742b290867d12e0fb148f2abbf370
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 4d4bdc4fa15f634b36f12a650b70b9ffd89b40e0
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621314"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539104"
 ---
 # <a name="troubleshooting-overview-feedback-and-support-for-windows-virtual-desktop"></a>Hibaelhárítás – áttekintés, visszajelzés és a Windows rendszerű virtuális asztalok támogatása
 
@@ -32,7 +32,7 @@ Mielőtt bármit végrehajtaná, győződjön meg róla, hogy az Azure-beli szol
 
 A következő táblázat segítségével azonosíthatja és megoldhatja a környezetek Távoli asztal-ügyfél használatával történő beállításakor felmerülő problémákat. A környezet beállítása után az új [diagnosztikai szolgáltatás](diagnostics-role-service.md) segítségével azonosíthatja a gyakori forgatókönyvek problémáit.
 
-| **Probléma**                                                            | **Javasolt megoldás**  |
+| **Kérdés**                                                            | **Javasolt megoldás**  |
 |----------------------------------------------------------------------|-------------------------------------------------|
 | Session Host Pool Azure Virtual Network (VNET) és Express Route-beállítások               | [Nyisson meg egy Azure-támogatási kérést](https://azure.microsoft.com/support/create-ticket/), majd válassza ki a megfelelő szolgáltatást (a hálózatkezelés kategóriában). |
 | A munkamenet-gazdagép virtuális gép (VM) létrehozása, ha Azure Resource Manager a Windows rendszerű virtuális asztallal elérhető sablonok nincsenek használatban | [Nyisson meg egy Azure-támogatási kérést](https://azure.microsoft.com/support/create-ticket/), majd válassza a **Windows virtuális asztal** lehetőséget a szolgáltatáshoz. <br> <br> A Windows rendszerű virtuális asztal szolgáltatásban elérhető Azure Resource Manager sablonokkal kapcsolatos problémákért lásd: a gazdagép-készletek [létrehozásának](troubleshoot-set-up-issues.md)Azure Resource Manager sablon hibái szakasza. |
@@ -53,6 +53,7 @@ A következő táblázat segítségével azonosíthatja és megoldhatja a körny
 
 - A gazdagépek Windows rendszerű virtuális asztali környezetben való létrehozásakor felmerülő problémák elhárításához tekintse meg az [alkalmazáskészlet létrehozása](troubleshoot-set-up-issues.md)című témakört.
 - A virtuális gép (VM) Windows rendszerű virtuális asztali gépen való konfigurálása során felmerülő problémák elhárításával kapcsolatban lásd: a [munkamenet-gazdagép virtuális gép konfigurálása](troubleshoot-vm-configuration.md).
+- A Windows rendszerű virtuális asztali ügynökkel vagy a munkamenet-kapcsolattal kapcsolatos problémák elhárításához lásd: a [Windows rendszerű virtuális asztali ügynökkel kapcsolatos gyakori problémák elhárítása](troubleshoot-agent.md).
 - A Windows rendszerű virtuális asztali ügyfélkapcsolatokkal kapcsolatos problémák elhárításához tekintse meg a [Windows rendszerű virtuális asztali szolgáltatások kapcsolatai](troubleshoot-service-connection.md)című témakört.
 - Távoli asztal-ügyfelekkel kapcsolatos problémák elhárításához tekintse meg [a távoli asztal-ügyfél hibaelhárítása](troubleshoot-client.md) című témakört.
 - A PowerShell és a Windows virtuális asztal használatával kapcsolatos problémák elhárításához tekintse meg a [Windows rendszerű virtuális asztali PowerShell](troubleshoot-powershell.md)című témakört.

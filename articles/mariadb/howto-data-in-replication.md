@@ -5,13 +5,13 @@ author: savjani
 ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
-ms.date: 01/15/2021
-ms.openlocfilehash: 5ebae41e68633eb10959c56011dd71952f9564bd
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/18/2021
+ms.openlocfilehash: 67e4da13d6954342b9979eb57a35c812cb63bb3e
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250417"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539995"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>felhőbe irányuló replikálás konfigurálása Azure Database for MariaDB
 
@@ -23,6 +23,9 @@ A jelen cikkben ismertetett lépések végrehajtása előtt tekintse át az adat
 
 > [!NOTE]
 > Ha a forráskiszolgáló 10,2-es vagy újabb verziójú, javasoljuk, hogy a [globális tranzakció-azonosító](https://mariadb.com/kb/en/library/gtid/)használatával állítsa be felhőbe irányuló replikálás.
+
+> [!NOTE]
+> Ez a cikk a _Slave_ kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
 
 ## <a name="create-a-mariadb-server-to-use-as-a-replica"></a>Replikaként használandó MariaDB-kiszolgáló létrehozása
 
@@ -40,10 +43,6 @@ A jelen cikkben ismertetett lépések végrehajtása előtt tekintse át az adat
 3. Adja hozzá a forráskiszolgáló IP-címét a replika tűzfalszabály-szabályaihoz. 
 
    A tűzfalszabályokat az [Azure Portallal](howto-manage-firewall-portal.md) vagy az [Azure CLI-vel](howto-manage-firewall-cli.md) frissítheti.
-
-> [!NOTE]
-> Ez a cikk a _Slave_ kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
->
 
 ## <a name="configure-the-source-server"></a>A forráskiszolgáló konfigurálása
 
@@ -95,7 +94,7 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
 
 3. A bináris naplózás bekapcsolása.
 
-    Ha szeretné megtekinteni, hogy engedélyezve van-e a bináris naplózás a főkiszolgálón, írja be a következő parancsot:
+    Ha szeretné megtekinteni, hogy engedélyezve van-e a bináris naplózás az elsődleges számítógépen, írja be a következő parancsot:
 
    ```sql
    SHOW VARIABLES LIKE 'log_bin';

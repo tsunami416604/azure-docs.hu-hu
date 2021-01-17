@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/04/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c9ac92f836e1d0c1210bb16b5c1d6e232fd5c22e
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 7ffd7b4db39e6a9ced4cee37cadfc6b3cfc87301
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858467"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98537903"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Több-bérlős Azure Active Directory bejelentkezésének beállítása egyéni házirendek használatával Azure Active Directory B2C
 
@@ -40,7 +40,8 @@ Ez a cikk bemutatja, hogyan engedélyezheti a bejelentkezést a Azure Active Dir
 
 ## <a name="register-an-application"></a>Alkalmazás regisztrálása
 
-Ha egy adott Azure AD-szervezet felhasználói számára engedélyezni szeretné a bejelentkezést, regisztrálnia kell egy alkalmazást a szervezeti Azure AD-bérlőn belül.
+Ha Azure Active Directory B2C (Azure AD B2C) Azure AD-fiókkal rendelkező felhasználók számára szeretné engedélyezni a bejelentkezést, létre kell hoznia egy alkalmazást a [Azure Portalban](https://portal.azure.com). További információ: [alkalmazás regisztrálása a Microsoft Identity platformmal](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
+
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Győződjön meg arról, hogy a szervezeti Azure AD-bérlőt (például contoso.com) tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés szűrőt** a felső menüben, majd válassza ki a bérlőt tartalmazó könyvtárat.
@@ -85,7 +86,7 @@ A Azure AD B2C bérlőben létrehozott alkalmazás-kulcsot kell tárolnia.
 1. Adja meg a szabályzat kulcsának **nevét** . Például: `AADAppSecret`.  A rendszer `B2C_1A_` automatikusan hozzáadja az előtagot a kulcs neveként a létrehozáskor, ezért a következő szakaszban található XML-ben szereplő hivatkozás a *B2C_1A_AADAppSecret*.
 1. A **Secret (titkos kulcs**) mezőben adja meg a korábban feljegyzett ügyfél-titkot.
 1. A **kulcshasználat** beállításnál válassza a elemet `Signature` .
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="add-a-claims-provider"></a>Jogcím-szolgáltató hozzáadása
 

@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 01/15/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 6877a82d81b46ac2ffda8d0f0bf3fb0d7b337ff3
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: c7d43a55878a07e424ce1b6f55782502c244239c
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97663632"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98537942"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-idme-account-using-azure-active-directory-b2c"></a>ID.me-fiókkal történő regisztráció és bejelentkezés beállítása Azure Active Directory B2C
 
@@ -39,7 +39,7 @@ ms.locfileid: "97663632"
 
 ## <a name="create-an-idme-application"></a>ID.me-alkalmazás létrehozása
 
-Ha a ID.me-fiókot Azure Active Directory B2C (Azure AD B2C) identitás-szolgáltatóként szeretné használni, létre kell hoznia egy alkalmazást a [ID.me fejlesztői erőforrásaiban az API & SDK](https://developers.id.me/)-hoz. Ha még nem rendelkezik ID.me-fejlesztői fiókkal, regisztrálhat a következő címen: [https://developers.id.me/registration/new](https://developers.id.me/registration/new) .
+Ha Azure Active Directory B2C (Azure AD B2C) ID.me-fiókkal rendelkező felhasználók számára szeretné engedélyezni a bejelentkezést, létre kell hoznia egy alkalmazást a [ID.me fejlesztői erőforrásaiban az API & SDK](https://developers.id.me/)-hoz. További információ: OAuth- [integrációs útmutató](https://developers.id.me/documentation/oauth/overview/kyc). Ha még nem rendelkezik ID.me-fejlesztői fiókkal, regisztrálhat a következő címen: [https://developers.id.me/registration/new](https://developers.id.me/registration/new) .
 
 1. Jelentkezzen be a [ID.me fejlesztői erőforrásaiba API & SDK](https://developers.id.me/) -val a id.me-fiókja hitelesítő adataival.
 1. Válassza **a saját alkalmazások megtekintése** lehetőséget, majd válassza a **Folytatás** lehetőséget.
@@ -62,7 +62,7 @@ A Azure AD B2C bérlőben korábban rögzített ügyfél-titkos kulcsot kell tá
 7. Adja meg a szabályzat kulcsának **nevét** . Például: `IdMeSecret`. A rendszer automatikusan hozzáadja az előtagot a `B2C_1A_` kulcs nevéhez.
 8. A **Secret (titkos kulcs**) mezőben adja meg a korábban rögzített ügyfél-titkot.
 9. A **kulcshasználat** beállításnál válassza a elemet `Signature` .
-10. Kattintson a **Létrehozás** gombra.
+10. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="add-a-claims-provider"></a>Jogcím-szolgáltató hozzáadása
 

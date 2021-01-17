@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 9a6e46c0b52c22df0682034deaebd58bbfeb34a7
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 2f0889732ac756e16465659ee2e5b52335d1148f
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210069"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539270"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>Hibaelhárítás az ITSM-összekötőben
 
@@ -31,47 +31,7 @@ A ITSMC irányítópult használatával megjelenítheti az incidenst és módos�
 
 Az irányítópult az összekötő állapotáról is tartalmaz információkat, amelyeket kiindulási pontként használhat a kapcsolatokkal kapcsolatos problémák elemzéséhez.
 
-### <a name="error-investigation-using-the-dashboard"></a>Hibák vizsgálata az irányítópult használatával
-
-Az irányítópulton található hibák megtekintéséhez kövesse a következő lépéseket:
-
-1. Az **összes erőforrás** területen keresse meg a **ügyfélszolgálati (*a munkaterület neve*)**:
-
-   ![A Azure Portal legutóbbi erőforrásait bemutató képernyőkép.](media/itsmc-definition/create-new-connection-from-resource.png)
-
-2. A bal oldali ablaktábla **munkaterület-adatforrások** területén válassza a **ITSM-kapcsolatok** elemet:
-
-   ![Képernyőkép, amely megjeleníti a ITSM-kapcsolatok menüpontot.](media/itsmc-overview/add-new-itsm-connection.png)
-
-3. A bal oldali mező **Összegzés** területén **it-szolgáltatásmenedzsmenti csatoló** válassza az **Összefoglalás megtekintése** lehetőséget:
-
-    ![A megtekintés összegzését bemutató képernyőkép.](media/itsmc-resync-servicenow/dashboard-view-summary.png)
-
-4. A bal oldali mező **Összegzés** területén **it-szolgáltatásmenedzsmenti csatoló** kattintson a gráfra:
-
-    ![A diagramot bemutató képernyőkép.](media/itsmc-resync-servicenow/dashboard-graph-click.png)
-
-5. Az irányítópult használatával áttekintheti az összekötő állapotát és hibáit.
-    ![Az összekötő állapotát megjelenítő képernyőkép.](media/itsmc-resync-servicenow/connector-dashboard.png)
-
-### <a name="dashboard-elements"></a>Irányítópult-elemek
-
-Az irányítópult a ITSM eszközre a jelen összekötő használatával továbbított riasztásokkal kapcsolatos információkat tartalmaz.
-Az irányítópult 4 részre oszlik:
-
-1. Munkaelem létrehozva: a gráf és az alábbi táblázat a munkaelemek számát tartalmazza típus szerint. Ha a diagramra vagy a táblázatra kattint, további részleteket láthat a munkaelemekről.
-    ![Képernyőkép, amely a létrehozott munkaelemet jeleníti meg.](media/itsmc-resync-servicenow/itsm-dashboard-workitems.png)
-2. Érintett számítógépek: a táblák tartalmazzák a konfigurációs elemeket létrehozó konfigurációs elemek részleteit.
-    A táblázatok soraira kattintva további részleteket tudhat meg a konfigurációs elemekről.
-    A tábla csak korlátozott számú sort tartalmaz, ha az összes listát látni szeretné, kattintson az összes megjelenítése lehetőségre.
-    ![Az érintett számítógépeket bemutató képernyőkép.](media/itsmc-resync-servicenow/itsm-dashboard-impacted-comp.png)
-3. Összekötő állapota: a gráf és az alábbi táblázat az összekötő állapotával kapcsolatos üzeneteket tartalmaz. A táblázat soraira kattintva további részleteket tudhat meg az összekötő állapota üzenetekről.
-    A tábla csak korlátozott számú sort tartalmaz, ha az összes listát látni szeretné, kattintson az összes megjelenítése lehetőségre.
-    ![Az összekötő állapotát megjelenítő képernyőkép.](media/itsmc-resync-servicenow/itsm-dashboard-connector-status.png)
-4. Riasztási szabályok: a táblák tartalmazzák az észlelt riasztási szabályok számával kapcsolatos információkat.
-    A táblák soraira kattintva további részleteket tudhat meg az észlelt szabályokról.
-    A tábla csak korlátozott számú sort tartalmaz, ha az összes listát látni szeretné, kattintson az összes megjelenítése lehetőségre.
-    ![A riasztási szabályokat bemutató képernyőkép.](media/itsmc-resync-servicenow/itsm-dashboard-alert-rules.png)
+Az irányítópult vizsgálatával kapcsolatos további információkért lásd: [hibajelentés az irányítópult használatával](./itsmc-dashboard.md).
 
 ### <a name="service-map"></a>Szolgáltatás térképe
 

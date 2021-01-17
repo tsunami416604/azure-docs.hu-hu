@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 05c4d36f266fb526a1d0232cc32f0408e4322c80
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 2b640730bac410136ef8fdd4ea8e0261f68a3284
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654387"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538137"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Bejelentkezés beállítása egy adott Azure Active Directory szervezet számára Azure Active Directory B2C
 
@@ -38,7 +38,7 @@ Ez a cikk bemutatja, hogyan engedélyezheti a bejelentkezést egy adott Azure AD
 
 ## <a name="register-an-azure-ad-app"></a>Azure AD-alkalmazás regisztrálása
 
-Ha egy adott Azure AD-szervezet felhasználói számára engedélyezni szeretné a bejelentkezést, regisztrálnia kell egy alkalmazást a szervezeti Azure AD-bérlőn belül.
+Ha engedélyezni szeretné a bejelentkezést az Azure AD-fiókkal rendelkező felhasználók számára egy adott Azure AD-szervezetből, Azure Active Directory B2C (Azure AD B2C), létre kell hoznia egy alkalmazást a [Azure Portal](https://portal.azure.com). További információ: [alkalmazás regisztrálása a Microsoft Identity platformmal](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Győződjön meg arról, hogy a szervezeti Azure AD-bérlőt (például contoso.com) tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés szűrőt** a felső menüben, majd válassza ki azt a könyvtárat, amely tartalmazza az Azure ad-bérlőt.
@@ -238,7 +238,7 @@ Most, hogy van egy gomb a helyén, össze kell kapcsolni egy művelettel. Ebben 
 ## <a name="add-azure-ad-identity-provider-to-a-user-flow"></a>Azure AD Identity Provider hozzáadása felhasználói folyamathoz 
 
 1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok** lehetőséget.
-1. Kattintson arra a felhasználói folyamatra, amelyet az Azure AD-identitás szolgáltatójának szeretne használni.
+1. Kattintson arra a felhasználói folyamatra, amelyhez hozzá szeretné adni az Azure AD-identitás szolgáltatóját.
 1. A **közösségi identitás-szolgáltatók** területen válassza a **contoso Azure ad** elemet.
 1. Válassza a **Mentés** lehetőséget.
 1. A szabályzat teszteléséhez válassza a **felhasználói folyamat futtatása** lehetőséget.
@@ -266,7 +266,7 @@ Frissítse a függő entitás (RP) fájlját, amely kezdeményezi a létrehozott
 
 Ha a bejelentkezési folyamat sikeres, a böngésző átirányítja a `https://jwt.ms` -ra, amely megjeleníti a Azure ad B2C által visszaadott jogkivonat tartalmát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Egyéni szabályzatok használatakor előfordulhat, hogy további információra van szüksége, amikor a fejlesztés során hibaelhárítást végez a házirendben.
 

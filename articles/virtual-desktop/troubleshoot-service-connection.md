@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 10/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6a9eb99ae7af88e77fa597fa92ff8e6278c307e6
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 42502864cfed177adfe487e9c59247579628fec8
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108949"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539069"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows rendszerű virtuális asztali szolgáltatások kapcsolatai
 
@@ -50,13 +50,14 @@ Ez akkor is előfordulhat, ha egy CSP-szolgáltató létrehozta az előfizetést
 
 1. Jelentkezzen be az Azure portálra.
 2. Nyissa meg az **előfizetést**, majd válassza ki az előfizetését.
-3. Az oldal bal oldalán található menüben válassza az **erőforrás-szolgáltató**elemet.
-4. Keresse meg és válassza ki a **Microsoft. DesktopVirtualization**elemet, majd válassza az **ismételt regisztrálás**lehetőséget.
+3. Az oldal bal oldalán található menüben válassza az **erőforrás-szolgáltató** elemet.
+4. Keresse meg és válassza ki a **Microsoft. DesktopVirtualization** elemet, majd válassza az **ismételt regisztrálás** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
 - A Windows rendszerű virtuális asztalok és a eszkalációs sávok hibaelhárításával kapcsolatban lásd: [Hibaelhárítás – áttekintés, visszajelzés és támogatás](troubleshoot-set-up-overview.md).
 - A Windows rendszerű virtuális asztali környezetek és a gazdagépek Windows rendszerű virtuális asztali környezetben való létrehozásakor felmerülő problémák elhárításához tekintse meg a [környezet és az alkalmazáskészlet létrehozása](troubleshoot-set-up-issues.md)című témakört
 - A virtuális gép (VM) Windows rendszerű virtuális asztali gépen való konfigurálása során felmerülő problémák elhárításával kapcsolatban lásd: a [munkamenet-gazdagép virtuális gép konfigurálása](troubleshoot-vm-configuration.md).
+- A Windows rendszerű virtuális asztali ügynökkel vagy a munkamenet-kapcsolattal kapcsolatos problémák elhárításához lásd: a [Windows rendszerű virtuális asztali ügynökkel kapcsolatos gyakori problémák elhárítása](troubleshoot-agent.md).
 - A PowerShell és a Windows virtuális asztal használatával kapcsolatos problémák elhárításához tekintse meg a [Windows rendszerű virtuális asztali PowerShell](troubleshoot-powershell.md)című témakört.
 - A következő témakörben talál útmutatást a hibakereséshez [: oktatóanyag: Resource Manager-sablonok telepítésének hibája](../azure-resource-manager/templates/template-tutorial-troubleshoot.md).

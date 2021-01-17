@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 31e9b4b065b2acb8378c2eeac332341f48b28165
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84a49ea2f6ce4a5119af024ab3de67fa2b89c02e
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88005231"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539744"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Munkamenetgazda virtuális gép konfigurációja
 
@@ -82,7 +82,7 @@ A virtuális gépek üzembe helyezésének ajánlott módja a Azure Portal létr
 
 Kövesse ezeket az utasításokat az összetevők telepítésének megerősítéséhez és a hibaüzenetek ellenőrzéséhez.
 
-1. Ellenőrizze, hogy a két összetevő telepítve van-e a **Vezérlőpult**  >  **programok**  >  **programok és szolgáltatások**elemének ellenőrzésével. Ha a **Windows rendszerű virtuális asztali ügynök** és a **Windows rendszerű virtuális asztali ügynök rendszerindító betöltőprogramja** nem látható, akkor azok nincsenek telepítve a virtuális gépen.
+1. Ellenőrizze, hogy a két összetevő telepítve van-e a **Vezérlőpult**  >  **programok**  >  **programok és szolgáltatások** elemének ellenőrzésével. Ha a **Windows rendszerű virtuális asztali ügynök** és a **Windows rendszerű virtuális asztali ügynök rendszerindító betöltőprogramja** nem látható, akkor azok nincsenek telepítve a virtuális gépen.
 2. Nyissa meg a **fájlkezelőt** , és navigáljon a **C:\Windows\Temp\ScriptLog.log**. Ha a fájl hiányzik, az azt jelzi, hogy a két összetevőt telepítő PowerShell DSC nem tudott futni a megadott biztonsági környezetben.
 3. Ha a fájl **C:\Windows\Temp\ScriptLog.log** van, nyissa meg, és ellenőrizze a hibaüzeneteket.
 
@@ -178,7 +178,7 @@ Ha a Windows rendszerű virtuális asztali ügynök először van telepítve a m
 
 ## <a name="troubleshooting-issues-with-the-windows-virtual-desktop-side-by-side-stack"></a>A Windows rendszerű virtuális asztalok egymás melletti veremével kapcsolatos hibák elhárítása
 
-A Windows rendszerű virtuális asztali párhuzamos verem automatikusan települ a Windows Server 2019-es verzióra. A Microsoft Installer (MSI) használatával telepítse a párhuzamos stacket a Microsoft Windows Server 2016 vagy a Windows Server 2012 R2 rendszerre. A Microsoft Windows 10 rendszerben a Windows rendszerű virtuális asztali párhuzamos verem **enablesxstackrs.ps1tel **van engedélyezve.
+A Windows rendszerű virtuális asztali párhuzamos verem automatikusan települ a Windows Server 2019-es verzióra. A Microsoft Installer (MSI) használatával telepítse a párhuzamos stacket a Microsoft Windows Server 2016 vagy a Windows Server 2012 R2 rendszerre. A Microsoft Windows 10 rendszerben a Windows rendszerű virtuális asztali párhuzamos verem **enablesxstackrs.ps1tel** van engedélyezve.
 
 A munkamenet-gazdagépen futó virtuális gépeken a következő három fő módszert kell telepíteni vagy engedélyezni:
 
@@ -310,7 +310,7 @@ Ha ezeket az üzeneteket látja, ez azt jelenti, hogy a lemezképen nincsenek te
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>A Távoli asztal licencelési mód csoportházirend-beállításának letiltása
 
-A csoportházirend-beállítás megadásával nyissa meg a csoportházirend-szerkesztőt a virtuális gépen, és navigáljon **Felügyeleti sablonok**  >  **Windows-összetevőkhöz**  >  **Távoli asztali szolgáltatások**  >  **Távoli asztal a munkamenet-gazdagép**  >  **licencelése**  >  **Beállítja a távoli asztal licencelési módját**. Ha a csoportházirend-beállítás **engedélyezve**van, módosítsa a szolgáltatást **Letiltva**értékre. Ha már le van tiltva, akkor hagyja a következőképpen:.
+A csoportházirend-beállítás megadásával nyissa meg a csoportházirend-szerkesztőt a virtuális gépen, és navigáljon **Felügyeleti sablonok**  >  **Windows-összetevőkhöz**  >  **Távoli asztali szolgáltatások**  >  **Távoli asztal a munkamenet-gazdagép**  >  **licencelése**  >  **Beállítja a távoli asztal licencelési módját**. Ha a csoportházirend-beállítás **engedélyezve** van, módosítsa a szolgáltatást **Letiltva** értékre. Ha már le van tiltva, akkor hagyja a következőképpen:.
 
 >[!NOTE]
 >Ha a csoportházirendet a tartományon keresztül állítja be, tiltsa le ezt a beállítást a Windows 10 Enterprise több munkamenetet használó virtuális gépeket megcélozó házirendekben.
@@ -321,7 +321,7 @@ Ha szeretné megtekinteni, hogy a Windows 10 Enterprise több munkamenetének me
 
 1. Jelentkezzen be a rendszergazdai fiókjával.
 2. Adja meg a "Névjegy" kifejezést a Start menü melletti keresési sávon.
-3. Válassza **a számítógép névjegye**elemet.
+3. Válassza **a számítógép névjegye** elemet.
 4. A "version" felirat melletti szám bejelölése A számnak "1809" vagy "1903" értékűnek kell lennie, ahogy az alábbi képen is látható.
 
     > [!div class="mx-imgBorder"]
@@ -343,11 +343,12 @@ Ha a felhasználók egy biztonsági hiba miatt nem sikerült csatlakozni a távo
 
 A szabályzattal kapcsolatos további információkért lásd: [bejelentkezés engedélyezése távoli asztali szolgáltatásokon](/windows/security/threat-protection/security-policy-settings/allow-log-on-through-remote-desktop-services).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A Windows rendszerű virtuális asztalok és a eszkalációs sávok hibaelhárításával kapcsolatban lásd: [Hibaelhárítás – áttekintés, visszajelzés és támogatás](troubleshoot-set-up-overview.md).
 - A gazdagépek Windows rendszerű virtuális asztali környezetben való létrehozásakor felmerülő problémák elhárításához tekintse meg a [környezet és az Alkalmazáskészletek létrehozása](troubleshoot-set-up-issues.md)című témakört.
 - A virtuális gép (VM) Windows rendszerű virtuális asztali gépen való konfigurálása során felmerülő problémák elhárításával kapcsolatban lásd: a [munkamenet-gazdagép virtuális gép konfigurálása](troubleshoot-vm-configuration.md).
+- A Windows rendszerű virtuális asztali ügynökkel vagy a munkamenet-kapcsolattal kapcsolatos problémák elhárításához lásd: a [Windows rendszerű virtuális asztali ügynökkel kapcsolatos gyakori problémák elhárítása](troubleshoot-agent.md).
 - A Windows rendszerű virtuális asztali ügyfélkapcsolatokkal kapcsolatos problémák elhárításához tekintse meg a [Windows rendszerű virtuális asztali szolgáltatások kapcsolatai](troubleshoot-service-connection.md)című témakört.
 - Távoli asztal-ügyfelekkel kapcsolatos problémák elhárításához tekintse meg [a távoli asztal-ügyfél hibaelhárítása](troubleshoot-client.md) című témakört.
 - A PowerShell és a Windows virtuális asztal használatával kapcsolatos problémák elhárításához tekintse meg a [Windows rendszerű virtuális asztali PowerShell](troubleshoot-powershell.md)című témakört.
