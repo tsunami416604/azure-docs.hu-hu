@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 327dce053c38fdb7b03e7ceb0d7a62ec8b8e7248
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 87af99d5136a8bed93854e9396895cddeb22549a
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96993066"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98540474"
 ---
 ## <a name="download-and-install"></a>Letöltés és telepítés
 
@@ -59,11 +59,11 @@ A következő lépésekkel telepítheti a Speech CLI-t egy Docker-tárolóba:
 
 1. A <a href="https://www.docker.com/get-started" target="_blank">Docker Desktop <span class="docon docon-navigate-external x-hidden-focus"></span> telepítése</a> a platformon, ha még nincs telepítve.
 2. Írja be a következő parancsot egy új parancssorba vagy terminálba:
-   ```shell   
+   ```console   
    docker pull msftspeech/spx
    ```
 3. Írja be ezt a parancsot. A Speech CLI-vel kapcsolatos súgóban talál:
-   ```shell 
+   ```console 
    docker run -it --rm msftspeech/spx help
    ```
 
@@ -93,27 +93,27 @@ Amikor a `spx` parancsot egy Docker-tárolóban hívja meg, csatlakoztatnia kell
 
 Windows rendszeren a parancsok a következőképpen fognak kezdődni:
 
-```shell
+```console
 docker run -it -v c:\spx-data:/data --rm msftspeech/spx
 ```
 
 Linux vagy macOS rendszeren a parancsok az alábbi példához hasonlóan jelennek meg. Cserélje le a `ABSOLUTE_PATH` értéket a csatlakoztatott könyvtár abszolút elérési útjára. Ezt az elérési utat az `pwd` előző szakaszban szereplő parancs adta vissza. 
 
 Ha a kulcs és a régió beállítása előtt futtatja ezt a parancsot, hibaüzenet jelenik meg a kulcs és a régió beállításakor:
-```shell   
+```console   
 sudo docker run -it -v ABSOLUTE_PATH:/data --rm msftspeech/spx
 ```
 
 A `spx` tárolóban telepített parancs használatához mindig adja meg a fent látható teljes parancsot, majd a kérés paramétereit.
 Windows rendszeren például a következő parancs állítja be a kulcsot:
 
-```shell
+```console
 docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCRIPTION-KEY
 ```
 
 A parancssori eszközzel való nagyobb körű interakcióhoz egy BelépésiPont paraméter hozzáadásával elindíthat egy tárolót interaktív bash-rendszerhéj használatával.
 Windows rendszeren írja be ezt a parancsot egy olyan tároló elindításához, amely egy interaktív parancssori felületet tesz elérhetővé, ahol több parancsot is megadhat `spx` :
-```shell
+```console
 docker run -it --entrypoint=/bin/bash -v c:\spx-data:/data --rm msftspeech/spx
 ```
 
@@ -160,7 +160,7 @@ Follow these instructions to create a shortcut:
 A beszédfelismerési parancssori felület használatának megkezdéséhez meg kell adnia a beszédfelismerési előfizetési kulcsot és a régió azonosítóját. Szerezze be ezeket a hitelesítő adatokat a [beszédfelismerési szolgáltatás ingyenes kipróbálásához](../overview.md#try-the-speech-service-for-free)szükséges lépések követésével.
 Miután megtörtént az előfizetési kulcs és a régió azonosítója (pl. `eastus`, `westus` ) futtassa a következő parancsokat.
 
-```shell
+```console
 spx config @key --set SUBSCRIPTION-KEY
 spx config @region --set REGION
 ```

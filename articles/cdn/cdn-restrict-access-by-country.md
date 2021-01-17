@@ -1,37 +1,34 @@
 ---
-title: Azure CDN tartalom korlátozása ország/régió szerint | Microsoft Docs
+title: Azure CDN tartalmának korlátozása ország/régió szerint
 description: Megtudhatja, hogyan korlátozhatja az ország/régió hozzáférését a Azure CDN tartalomhoz a Geo-szűrés funkció használatával.
 services: cdn
 documentationcenter: ''
 author: asudbring
-manager: danielgi
-editor: ''
-ms.assetid: 12c17cc5-28ee-4b0b-ba22-2266be2e786a
 ms.service: azure-cdn
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
-ms.date: 06/19/2018
+ms.date: 01/16/2021
 ms.author: allensu
-ms.openlocfilehash: ed82adcc1432bde27042d5775c454bfabcdb96ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8901dffb752409acd7fb08a2025bed9a4cc70132
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358134"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539505"
 ---
 # <a name="restrict-azure-cdn-content-by-countryregion"></a>Azure CDN tartalmának korlátozása ország/régió szerint
 
 ## <a name="overview"></a>Áttekintés
-Amikor egy felhasználó a tartalmat kéri, a rendszer alapértelmezés szerint a tartalmat is kézbesíti, függetlenül attól, hogy melyik felhasználó a kérést. Bizonyos esetekben azonban előfordulhat, hogy az ország/régió alapján korlátozni szeretné a tartalmakhoz való hozzáférést. A *geo-szűrés* funkcióval szabályokat hozhat létre a CDN-végponton megadott elérési utakon, így engedélyezheti vagy letilthatja a tartalmat a kiválasztott országokban/régiókban.
+Amikor egy felhasználó megkéri a tartalmat, a tartalmat a rendszer minden helyen a felhasználók számára kézbesíti. Előfordulhat, hogy ország/régió szerint szeretné korlátozni a tartalmakhoz való hozzáférést. 
+
+A *geo-szűrési* funkcióval szabályokat hozhat létre a CDN-végponton megadott elérési utakon. A szabályokat beállíthatja úgy, hogy engedélyezze vagy tiltsa le a tartalmat a kiválasztott országokban/régiókban.
 
 > [!IMPORTANT]
 > **A Microsoft-profilokból Azure CDN standard** nem támogatja az elérésiút-alapú földrajzi szűrést.
 > 
 
 ## <a name="standard-profiles"></a>Standard profilok
-Az ebben a szakaszban ismertetett eljárások a Akamai és a **Azure CDN standard szintű** , csak a Verizon-profilokból származó **Azure CDN szabványokra** vonatkoznak. 
+
+Ezek az utasítások a Verizon-profilokból származó Akamai és **Azure CDN standard** szintű **Azure CDN szabványokra** vonatkoznak.
 
 A Verizon-profilokból **származó Azure CDN Premium** esetén a Geo-szűrés aktiválásához a **Manage** Portalt kell használnia. További információ: [Azure CDN Premium from Verizon Profiles](#azure-cdn-premium-from-verizon-profiles).
 
@@ -42,7 +39,7 @@ A Geo-szűrés funkció eléréséhez válassza ki a CDN-végpontot a portálon 
 
 Az **elérési út** mezőben határozza meg annak a helynek a relatív elérési útját, amelyhez a felhasználók engedélyezik vagy megtagadják a hozzáférést. 
 
-A földrajzi szűrést alkalmazhatja az összes fájlhoz egy továbbítási perjel (/) használatával, vagy kiválaszthat meghatározott mappákat a könyvtár elérési útjának megadásával (például */Pictures/*). A földrajzi szűrést egyetlen fájlba is alkalmazhatja (például */pictures/city.png*). Több szabály is engedélyezett; a szabály megadása után egy üres sor jelenik meg, amely megadja a következő szabályt.
+A földrajzi szűrést alkalmazhatja az összes fájlhoz egy továbbítási perjel (/) használatával, vagy kiválaszthat meghatározott mappákat a könyvtár elérési útjának megadásával (például */Pictures/*). A földrajzi szűrést egyetlen fájlba is alkalmazhatja (például */pictures/city.png*). Több szabály is engedélyezett. A szabály megadása után egy üres sor jelenik meg, amely megadja a következő szabályt.
 
 A következő könyvtár-elérésiút-szűrők például érvényesek:   
 */*                                 
@@ -52,7 +49,7 @@ A következő könyvtár-elérésiút-szűrők például érvényesek:
 
 ### <a name="define-the-type-of-action"></a>A művelet típusának meghatározása
 
-A **művelet** listából válassza az **Engedélyezés** vagy a **Letiltás**lehetőséget: 
+A **művelet** listából válassza az **Engedélyezés** vagy a **Letiltás** lehetőséget: 
 
 - **Engedélyezés**: csak a megadott országokból/régiókból származó felhasználók férhetnek hozzá a rekurzív elérési útról kért eszközökhöz.
 
@@ -63,6 +60,7 @@ Például a */photos/Strasbourg/* elérési út blokkolására szolgáló geo-sz
  *http: \/ / \<endpoint> . azureedge.net/photos/Strasbourg/Cathedral/1000.jpg*
 
 ### <a name="define-the-countriesregions"></a>Országok/régiók meghatározása
+
 Az **országkódok** listából válassza ki azokat az országokat/régiókat, amelyeket le kíván tiltani, vagy engedélyezni kívánja az elérési utat. 
 
 Miután befejezte az országok/régiók kijelölését, válassza a **Mentés** lehetőséget az új geo-szűrési szabály aktiválásához. 
@@ -70,31 +68,33 @@ Miután befejezte az országok/régiók kijelölését, válassza a **Mentés** 
 ![A képernyőképen az országok és régiók letiltására és engedélyezésére használt országkódok láthatók.](./media/cdn-filtering/cdn-geo-filtering-rules.png)
 
 ### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Egy szabály törléséhez válassza ki a listából a **geo-szűrés** lapon, majd válassza a **Törlés**lehetőséget.
+
+Egy szabály törléséhez válassza ki a listából a **geo-szűrés** lapon, majd válassza a **Törlés** lehetőséget.
 
 ## <a name="azure-cdn-premium-from-verizon-profiles"></a>Prémium szintű Azure CDN Verizon-profilokból
+
 A Verizon-profilokból **származó Azure CDN Premium** esetén a Geo-szűrési szabály létrehozásához használt felhasználói felület különbözik:
 
-1. A Azure CDN profil felső menüjében válassza a **kezelés**lehetőséget.
+1. A Azure CDN profil felső menüjében válassza a **kezelés** lehetőséget.
 
-2. A Verizon portálon válassza a **http Large**, majd az **ország szűrése**lehetőséget.
+2. A Verizon portálon válassza a **http Large**, majd az **ország szűrése** lehetőséget.
 
-    ![Képernyőfelvétel: az ország szűrésének kiválasztása az Azure C D N-ben.](./media/cdn-filtering/cdn-geo-filtering-premium.png)
+    :::image type="content" source="./media/cdn-filtering/cdn-geo-filtering-premium.png" alt-text="Képernyőfelvétel: az ország szűrésének kiválasztása Azure CDN" border="true":::
+  
+3. Válassza az **ország szűrő hozzáadása** lehetőséget.
 
-3. Válassza az **ország szűrő hozzáadása**lehetőséget.
+4. Az első **lépés:** mezőben adja meg a könyvtár elérési útját. Válassza a **Letiltás** vagy **Hozzáadás** lehetőséget, majd kattintson a **tovább** gombra.
 
-    Az **első lépés:** oldal jelenik meg.
-
-4. Adja meg a könyvtár elérési útját, válassza a **Letiltás** vagy **Hozzáadás**lehetőséget, majd kattintson a **tovább**gombra.
-
-    A **második lépés:** oldal jelenik meg. 
-
-5. Válasszon ki egy vagy több országot/régiót a listából, majd válassza a **Befejezés** gombot a szabály aktiválásához. 
+    > [!IMPORTANT]
+    > A végpont nevének az elérési útnak kell lennie.  Példa: **/myendpoint8675/MyFolder**.  Cserélje le a **myendpoint8675** nevet a végpont nevére.
+    > 
+    
+5. A **második lépésben** válasszon ki egy vagy több országot/régiót a listából. A szabály aktiválásához válassza a **Befejezés** gombot. 
     
     Az új szabály megjelenik az **ország szűrése** lap táblázatban.
-
-    ![A képernyőképen látható, hogy a szabály hol jelenik meg az ország-szűrésben.](./media/cdn-filtering/cdn-geo-filtering-premium-rules.png)
-
+    
+    :::image type="content" source="./media/cdn-filtering/cdn-geo-filtering-premium-rules.png" alt-text="A képernyőképen látható, hogy a szabály hol jelenik meg az ország-szűrésben." border="true":::
+ 
 ### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Az ország/régió szűrési szabályok táblázatban válassza a törlés ikont egy szabály mellett a törléshez, vagy a Szerkesztés ikont a módosításhoz.
 

@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 126a8e48a8db1c41299a7cb7a34f172342110667
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 0a5439a9d1fd43154379c1dc1a95a6e98b6e877b
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023122"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539642"
 ---
 # <a name="host-pool-creation"></a>Gazdagépkészlet létrehozása
 
@@ -26,7 +26,7 @@ Látogasson el a [Windows rendszerű virtuális asztali technikai Közösségbe]
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>A Windows 10 Enterprise több munkamenetet ábrázoló rendszerképének beszerzése
 
-A Windows 10 Enterprise multi-session rendszerképek használatához nyissa meg az Azure Marketplace-t **Get Started**, válassza a  >  **Microsoft Windows 10** > és a [Windows 10 Enterprise multi-session, 1809-es verziójának](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice)első lépései lehetőséget.
+A Windows 10 Enterprise multi-session rendszerképek használatához nyissa meg az Azure Marketplace-t , válassza a  >  **Microsoft Windows 10** > és a [Windows 10 Enterprise multi-session, 1809-es verziójának](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice)első lépései lehetőséget.
 
 ## <a name="issues-with-using-the-azure-portal-to-create-host-pools"></a>A gazdagépek létrehozásával kapcsolatos problémák a Azure Portal használatával
 
@@ -265,10 +265,11 @@ the VM.\\\"
 
 **Javítás:** Helyezze a munkamenet-gazdagépet kiürítési módba, jelentkezzen ki az összes felhasználót a munkamenet-gazdagépről, majd törölje a gazdagépet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A Windows rendszerű virtuális asztalok és a eszkalációs sávok hibaelhárításával kapcsolatban lásd: [Hibaelhárítás – áttekintés, visszajelzés és támogatás](troubleshoot-set-up-overview.md).
 - A virtuális gép (VM) Windows rendszerű virtuális asztali gépen való konfigurálása során felmerülő problémák elhárításával kapcsolatban lásd: a [munkamenet-gazdagép virtuális gép konfigurálása](troubleshoot-vm-configuration.md).
+- A Windows rendszerű virtuális asztali ügynökkel vagy a munkamenet-kapcsolattal kapcsolatos problémák elhárításához lásd: a [Windows rendszerű virtuális asztali ügynökkel kapcsolatos gyakori problémák elhárítása](troubleshoot-agent.md).
 - A Windows rendszerű virtuális asztali ügyfélkapcsolatokkal kapcsolatos problémák elhárításához tekintse meg a [Windows rendszerű virtuális asztali szolgáltatások kapcsolatai](troubleshoot-service-connection.md)című témakört.
 - Távoli asztal-ügyfelekkel kapcsolatos problémák elhárításához tekintse meg [a távoli asztal-ügyfél hibaelhárítása](troubleshoot-client.md) című témakört.
 - A PowerShell és a Windows virtuális asztal használatával kapcsolatos problémák elhárításához tekintse meg a [Windows rendszerű virtuális asztali PowerShell](troubleshoot-powershell.md)című témakört.

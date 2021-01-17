@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
-ms.openlocfilehash: a708fb76b5a3d0fd0683cdb8915d1a5e1824a57c
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 4ad362b983f81e2cdc10cdbccafd8dda951482d7
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251668"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539555"
 ---
 # <a name="how-to-estimate-and-manage-costs-of-an-azure-cognitive-search-service"></a>Azure Cognitive Search-szolgáltatás költségeinek becslése és kezelése
 
@@ -25,7 +25,12 @@ Az Azure Cognitive Search skálázhatósági architektúrája a replikák és pa
 
 A keresési szolgáltatás által használt erőforrások mennyisége, a szolgáltatási szinten meghatározott számlázási aránysal megszorozva meghatározza a szolgáltatás futtatásának költségeit. A költségek és a kapacitás szorosan kötődik. A költségek becslése során az indexelés és a lekérdezési feladatok futtatásához szükséges kapacitás megismerése a legjobb ötlet, hogy a tervezett költségek milyenek lesznek.
 
-Számlázási célokra Cognitive Search egy *keresési egység* (su) fogalmát. A SU a szolgáltatás által használt *replikák* és *partíciók* terméke: **(R x P = su)**. Az SUs száma a számlázási arány **(Su * arány = havi ráfordítás)** szorzata a kereséssel kapcsolatos költségek elsődleges tényezője. 
+Számlázási célokra két egyszerű képletet kell figyelembe venni:
+
+| Képlet | Leírás |
+|---------|-------------|
+| **R x P = SU** | A használt replikák száma, a felhasznált partíciók számával szorozva a szolgáltatás által használt *keresési egységek* (su) mennyiségével egyenlő. A SU erőforrás-egység, amely lehet partíció vagy replika is. |
+| **SU * számlázási arány = havi ráfordítás** | A teljes havi számla elsődleges tényezője, hogy az SUs száma megszorozza a szolgáltatás kiépített szintjének számlázási arányával. Bizonyos funkciók vagy munkaterhelések más Azure-szolgáltatások függőségeivel is rendelkeznek, ami növelheti a megoldás költségeit az előfizetés szintjén. Az alábbi számlázható események szakasz azokat a funkciókat azonosítja, amelyek hozzáadhatók a számlához. |
 
 Minden szolgáltatás egy SU-val kezdődik (az egyik replikát egy partícióval szorozva) a minimális értékkel. Bármely szolgáltatás esetében a maximális érték 36 SUs. A maximális érték több módon is elérhető: 6 partíció x 6 replika vagy 3 partíció x 12 replika, például. Gyakori, hogy a teljes kapacitásnál kevesebbet használ (például egy 3 replika, 3 partíciós szolgáltatás, amely 9 SUs-ként lett kiszámlázva). Tekintse meg a [partíciós és replika kombinációk](search-capacity-planning.md#chart) diagramot az érvényes kombinációk esetében.
 

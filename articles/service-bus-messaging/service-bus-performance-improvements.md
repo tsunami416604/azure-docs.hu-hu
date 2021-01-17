@@ -2,14 +2,14 @@
 title: Ajánlott eljárások a teljesítmény javításához a Azure Service Bus használatával
 description: Ismerteti, hogyan optimalizálható a teljesítmény a Service Bus használatával a felügyelt üzenetek cseréjekor.
 ms.topic: article
-ms.date: 11/11/2020
+ms.date: 01/15/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6a0457537712ccb85191f320fd348446eed9b229
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 7bfff1a31365724ed1d1cb6ff1956a4e2ef4f4c0
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655628"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539425"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Ajánlott eljárások a teljesítmény javításához a Service Bus-üzenetkezelés használatával
 
@@ -24,22 +24,27 @@ Service Bus lehetővé teszi az ügyfelek számára az üzenetek küldését és
 2. Service Bus üzenetküldési protokoll (SBMP)
 3. Hypertext Transfer Protocol (HTTP)
 
-A AMQP a leghatékonyabb, mert a Service Bus kapcsolatot tart fenn. Emellett a kötegelt és a beolvasási művelet is megvalósítható. Hacsak nem kifejezetten említettük, az ebben a cikkben szereplő összes tartalom a AMQP vagy a SBMP használatát feltételezi.
+A AMQP a leghatékonyabb, mert a Service Bus kapcsolatot tart fenn. Emellett a [kötegelt](#batching-store-access) és a [beolvasási](#prefetching)művelet is megvalósítható. Hacsak nem kifejezetten említettük, az ebben a cikkben szereplő összes tartalom a AMQP vagy a SBMP használatát feltételezi.
 
 > [!IMPORTANT]
 > A SBMP csak a .NET-keretrendszerhez érhető el. A AMQP a .NET Standard alapértelmezett értéke.
 
 ## <a name="choosing-the-appropriate-service-bus-net-sdk"></a>A megfelelő Service Bus .NET SDK kiválasztása
-Két támogatott .NET SDK-Azure Service Bus létezik. Az API-k hasonlóak, és zavaró lehet, hogy melyiket érdemes választani. A döntés meghozatalához tekintse meg a következő táblázatot. Javasoljuk, hogy használja a Microsoft. Azure. ServiceBus SDK-t, mint a modernebb, a teljesítmény és a platformfüggetlen kompatibilitás. Emellett támogatja a AMQP-t a websocketeken keresztül, és része a nyílt forráskódú projektek Azure .NET SDK-gyűjteményének.
+A .NET SDK-k három Azure Service Bus támogatottak. Az API-k hasonlóak, és zavaró lehet, hogy melyiket érdemes választani. A döntés meghozatalához tekintse meg a következő táblázatot. Az Azure. Messaging. ServiceBus SDK a legújabb, és azt javasoljuk, hogy más SDK-kat használjon. Az Azure. Messaging. ServiceBus és a Microsoft. Azure. ServiceBus SDK-k a modern, a teljesítményű és a platformfüggetlen platformon kompatibilisek. Emellett támogatják a AMQP-t a websocketeken keresztül, és a nyílt forráskódú projektek Azure .NET SDK-gyűjteményének részét képezik.
 
 | NuGet-csomag | Elsődleges névtér (ek) | Minimális platform (ok) | Protokoll(ok) |
 |---------------|----------------------|---------------------|-------------|
-| <a href="https://www.nuget.org/packages/Microsoft.Azure.ServiceBus" target="_blank">Microsoft. Azure. ServiceBus <span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.Azure.ServiceBus`<br>`Microsoft.Azure.ServiceBus.Management` | .NET Core 2.0<br>.NET-keretrendszer 4.6.1<br>Monó 5,4<br>Xamarin. iOS 10,14<br>Xamarin. Mac 3,8<br>Xamarin. Android 8,0<br>Univerzális Windows-platform 10.0.16299 | AMQP<br>HTTP |
-| <a href="https://www.nuget.org/packages/WindowsAzure.ServiceBus" target="_blank">WindowsAzure. ServiceBus <span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.ServiceBus`<br>`Microsoft.ServiceBus.Messaging` | .NET-keretrendszer 4.6.1 | AMQP<br>SBMP<br>HTTP |
+| [Azure. Messaging. ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus) | `Azure.Messaging.ServiceBus`<br>`Azure.Messaging.ServiceBus.Administration` | .NET Core 2.0<br>.NET-keretrendszer 4.6.1<br>Monó 5,4<br>Xamarin. iOS 10,14<br>Xamarin. Mac 3,8<br>Xamarin. Android 8,0<br>Univerzális Windows-platform 10.0.16299 | AMQP<br>HTTP |
+| [Microsoft. Azure. ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus/) | `Microsoft.Azure.ServiceBus`<br>`Microsoft.Azure.ServiceBus.Management` | .NET Core 2.0<br>.NET-keretrendszer 4.6.1<br>Monó 5,4<br>Xamarin. iOS 10,14<br>Xamarin. Mac 3,8<br>Xamarin. Android 8,0<br>Univerzális Windows-platform 10.0.16299 | AMQP<br>HTTP |
+| [WindowsAzure. ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus) | `Microsoft.ServiceBus`<br>`Microsoft.ServiceBus.Messaging` | .NET-keretrendszer 4.6.1 | AMQP<br>SBMP<br>HTTP |
 
 További információ a .NET Standard szintű platform támogatásáról: [.net-implementáció támogatása](/dotnet/standard/net-standard#net-implementation-support).
 
 ## <a name="reusing-factories-and-clients"></a>Üzemek és ügyfelek újrafelhasználása
+# <a name="azuremessagingservicebus-sdk"></a>[Azure. Messaging. ServiceBus SDK](#tab/net-standard-sdk-2)
+A szolgáltatással kommunikáló Service Bus objektumokat (például a [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient), a [ServiceBusSender](/dotnet/api/azure.messaging.servicebus.servicebussender), a [ServiceBusReceiver](/dotnet/api/azure.messaging.servicebus.servicebusreceiver)és a [ServiceBusProcessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor)) regisztrálni kell a függőségi injektáláshoz (vagy egyszeres és megosztott példányként). A ServiceBusClient regisztrálható a függőségi injektáláshoz a [ServiceBusClientBuilderExtensions](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/src/Compatibility/ServiceBusClientBuilderExtensions.cs). 
+
+Azt javasoljuk, hogy az egyes üzenetek küldése vagy fogadása után ne zárjunk be vagy ne távolítsa el ezeket az objektumokat. Az entitás-specifikus objektumok (ServiceBusSender/fogadó/processzor) bezárása vagy ártalmatlanítása a Service Bus szolgáltatásra mutató hivatkozás lebontását eredményezi. A ServiceBusClient ártalmatlanítása a Service Bus szolgáltatással létesített kapcsolatok lebontását eredményezi. A kapcsolatok létrehozása költséges művelet, amellyel elkerülhető, hogy újra ugyanazzal a ServiceBusClient használja, és létrehozza a szükséges entitás-specifikus objektumokat ugyanabból a ServiceBusClient-példányból. Ezeket az ügyféloldali objektumokat biztonságosan használhatja egyidejű aszinkron műveletekhez és több szálból is.
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
@@ -55,6 +60,27 @@ Service Bus-objektumok, például `QueueClient` a vagy a `MessageSender` egy [Me
 Az olyan műveletek, mint a küldés, fogadás, törlés stb., eltarthat egy ideig. Ez az idő magában foglalja azt az időpontot, ameddig a Service Bus szolgáltatásnak a művelet feldolgozásához és a kérés késéséhez, valamint a válaszhoz kell kapcsolódnia. A műveletek másodpercenkénti számának növeléséhez a műveleteknek egyidejűleg kell futniuk.
 
 Az ügyfél **aszinkron** műveletek végrehajtásával ütemezhet egyidejű műveleteket. A következő kérelem az előző kérelem befejeződése előtt indul el. A következő kódrészlet példa egy aszinkron küldési műveletre:
+
+# <a name="azuremessagingservicebus-sdk"></a>[Azure. Messaging. ServiceBus SDK](#tab/net-standard-sdk-2)
+```csharp
+var messageOne = new ServiceBusMessage(body);
+var messageTwo = new ServiceBusMessage(body);
+
+var sendFirstMessageTask =
+    sender.SendMessageAsync(messageOne).ContinueWith(_ =>
+    {
+        Console.WriteLine("Sent message #1");
+    });
+var sendSecondMessageTask =
+    sender.SendMessageAsync(messageTwo).ContinueWith(_ =>
+    {
+        Console.WriteLine("Sent message #2");
+    });
+
+await Task.WhenAll(sendFirstMessageTask, sendSecondMessageTask);
+Console.WriteLine("All messages sent");
+
+```
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
@@ -101,6 +127,35 @@ Console.WriteLine("All messages sent");
 ---
 
 Az alábbi kód egy aszinkron fogadási műveletre mutat példát.
+
+# <a name="azuremessagingservicebus-sdk"></a>[Azure. Messaging. ServiceBus SDK](#tab/net-standard-sdk-2)
+
+```csharp
+var client = new ServiceBusClient(connectionString);
+var options = new ServiceBusProcessorOptions 
+{
+
+      AutoCompleteMessages = false,
+      MaxConcurrentCalls = 20
+};
+await using ServiceBusProcessor processor = client.CreateProcessor(queueName,options);
+processor.ProcessMessageAsync += MessageHandler;
+processor.ProcessErrorAsync += ErrorHandler;
+
+static Task ErrorHandler(ProcessErrorEventArgs args)
+{
+    Console.WriteLine(args.Exception);
+    return Task.CompletedTask;
+};
+
+static async Task MessageHandler(ProcessMessageEventArgs args)
+{
+Console.WriteLine("Handle message");
+      await args.CompleteMessageAsync(args.Message);
+}
+
+await processor.StartProcessingAsync();
+```
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
@@ -168,6 +223,9 @@ A Service Bus nem támogatja a fogadási és törlési műveletek tranzakcióit.
 
 Az ügyféloldali kötegek lehetővé teszik egy üzenetsor vagy egy témakör-ügyfél számára, hogy egy adott időtartamon belül késleltetni lehessen az üzenet küldését. Ha az ügyfél további üzeneteket küld ezen időszakon belül, a rendszer egyetlen kötegben továbbítja ezen üzeneteket. Az ügyféloldali kötegek azt is eredményezik, hogy egy üzenetsor vagy egy előfizetési ügyfél több **teljes** kérelmet küld egyetlen kérelembe. A kötegelt feldolgozás csak aszinkron **küldési** és **befejezési** műveletekhez érhető el. A szinkron műveleteket a rendszer azonnal elküldi a Service Bus szolgáltatásnak. A betekintési és fogadási műveletekhez nem kerül sor, és a kötegelt feldolgozás nem történik meg az ügyfeleken.
 
+# <a name="azuremessagingservicebus-sdk"></a>[Azure. Messaging. ServiceBus SDK](#tab/net-standard-sdk-2)
+A .NET Standard SDK batching funkciója még nem tesz elérhetővé egy tulajdonságot a kezeléshez.
+
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
 A .NET Standard SDK batching funkciója még nem tesz elérhetővé egy tulajdonságot a kezeléshez.
@@ -217,6 +275,19 @@ Egy üzenetsor, témakör vagy előfizetés átviteli sebességének növelésé
 Az ezen intervallumban megjelenő további tárolási műveletek hozzáadódnak a köteghez. A kötegelt tárolók hozzáférése csak a **küldési** és a **befejezési** műveleteket érinti; a fogadási műveletek nem érintettek. A kötegelt tár hozzáférése egy entitás egyik tulajdonsága. A kötegelt tárolás az összes olyan entitáson megtörténik, amelyek engedélyezik a Batch-tárolók elérését.
 
 Új üzenetsor, témakör vagy előfizetés létrehozásakor a kötegelt tároló-hozzáférés alapértelmezés szerint engedélyezve van.
+
+
+# <a name="azuremessagingservicebus-sdk"></a>[Azure. Messaging. ServiceBus SDK](#tab/net-standard-sdk-2)
+A kötegelt tárolás hozzáférésének letiltásához szüksége lesz egy példányára `ServiceBusAdministrationClient` . Hozzon létre egy `CreateQueueOptions` üzenetsor-leírást, amely a `EnableBatchedOperations` tulajdonságot állítja be `false` .
+
+```csharp
+var options = new CreateQueueOptions(path)
+{
+    EnableBatchedOperations = false
+};
+var queue = await administrationClient.CreateQueueAsync(options);
+```
+
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
@@ -270,6 +341,12 @@ Az üzenet élettartam (TTL) tulajdonságát a kiszolgáló ellenőrzi, amikor a
 
 Az előolvasás nem befolyásolja a számlázható üzenetkezelési műveletek számát, és csak az Service Bus ügyfél protokollja számára érhető el. A HTTP protokoll nem támogatja a beolvasást. Az előhívás a szinkron és aszinkron fogadási műveletekhez is elérhető.
 
+# <a name="azuremessagingservicebus-sdk"></a>[Azure. Messaging. ServiceBus SDK](#tab/net-standard-sdk-2)
+További információkért lásd a következő `PrefetchCount` tulajdonságokat:
+
+- [ServiceBusReceiver.PrefetchCount](/dotnet/api/azure.messaging.servicebus.servicebusreceiver.prefetchcount)
+- [ServiceBusProcessor.PrefetchCount](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.prefetchcount)
+
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
 További információkért lásd a következő `PrefetchCount` tulajdonságokat:
@@ -287,10 +364,6 @@ További információkért lásd a következő `PrefetchCount` tulajdonságokat:
 ---
 
 ## <a name="prefetching-and-receivebatch"></a>Előhívás és ReceiveBatch
-
-> [!NOTE]
-> Ez a szakasz csak a WindowsAzure. ServiceBus SDK-ra vonatkozik, mivel a Microsoft. Azure. ServiceBus SDK nem tesz elérhetővé batch-függvényeket.
-
 Habár a több üzenet előhívásának fogalmai hasonló szemantikai feladattal rendelkeznek a Batch () üzeneteinek feldolgozásához `ReceiveBatch` , néhány kisebb eltérést kell szem előtt tartani, amikor ezeket a módszereket együtt használják.
 
 A kiküldés egy konfiguráció (vagy mód) az ügyfélen ( `QueueClient` és `SubscriptionClient` ), és `ReceiveBatch` egy művelet (amely a kérés-válasz szemantikagal rendelkezik).
@@ -309,7 +382,7 @@ Ha egyetlen üzenetsor vagy témakör nem tudja kezelni a vártat, használjon t
 ## <a name="development-and-testing-features"></a>Fejlesztési és tesztelési funkciók
 
 > [!NOTE]
-> Ez a szakasz csak a WindowsAzure. ServiceBus SDK-ra vonatkozik, mivel a Microsoft. Azure. ServiceBus SDK nem teszi elérhetővé ezt a funkciót.
+> Ez a szakasz csak a WindowsAzure. ServiceBus SDK-ra vonatkozik, mivel a Microsoft. Azure. ServiceBus és az Azure. Messaging. ServiceBus nem teszi elérhetővé ezt a funkciót.
 
 Service Bus rendelkezik egy, a fejlesztéshez használt funkcióval, amelyet **soha nem szabad éles konfigurációban használni**: [`TopicDescription.EnableFilteringMessagesBeforePublishing`][TopicDescription.EnableFiltering] .
 
@@ -372,9 +445,9 @@ Az átviteli sebesség maximalizálása érdekében kövesse az alábbi irányel
 * A kötegelt tárolók elérésének engedélyezése engedélyezve. Ez a hozzáférés csökkenti az entitás teljes terhelését. Emellett csökkenti az üzenetek üzenetsor vagy témakörbe való írásának általános sebességét is.
 * Állítsa be a prefektusi számot egy kis értékre (például PrefetchCount = 10). Ez a szám megakadályozza, hogy a fogadók tétlenek legyenek, míg a többi fogadó nagy számú üzenetet gyorsítótárazott.
 
-### <a name="topic-with-a-small-number-of-subscriptions"></a>Témakör kis számú előfizetéssel
+### <a name="topic-with-a-few-subscriptions"></a>Témakör néhány előfizetéssel
 
-Cél: egy adott témakör átviteli sebességének maximalizálása kis számú előfizetéssel. Számos előfizetés fogad egy üzenetet, ami azt jelenti, hogy az összes előfizetéshez tartozó összesített fogadási arány nagyobb a küldési aránynál. A küldők száma kicsi. Az előfizetéshez tartozó fogadók száma kicsi.
+Cél: a témakör teljesítményének maximalizálása néhány előfizetéssel. Számos előfizetés fogad egy üzenetet, ami azt jelenti, hogy az összes előfizetéshez tartozó összesített fogadási arány nagyobb a küldési aránynál. A küldők száma kicsi. Az előfizetéshez tartozó fogadók száma kicsi.
 
 Az átviteli sebesség maximalizálása érdekében kövesse az alábbi irányelveket:
 

@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan kezelheti az egyes érzékelőket, beleértve a
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 01/10/2021
+ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 25f47be98b11f05ee6ac27018152ece05c0de4e4
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 68fa3ea15199ec1d9cc99f92f497847fb029acd6
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246689"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539575"
 ---
 # <a name="manage-individual-sensors"></a>Különálló érzékelők kezelése
 
@@ -98,11 +98,34 @@ Ez a cikk a tanúsítványok frissítéséről, a tanúsítvány CLI-parancsaina
 
 A IoT készült Azure Defender SSL/TLS-tanúsítványokat használ a következőhöz:
 
-1. A HITELESÍTÉSSZOLGÁLTATÓ által aláírt tanúsítvány feltöltésével teljesítheti a szervezet által kért bizonyos tanúsítvány-és titkosítási követelményeket.
+- A HITELESÍTÉSSZOLGÁLTATÓ által aláírt tanúsítvány feltöltésével teljesítheti a szervezet által kért bizonyos tanúsítvány-és titkosítási követelményeket.
 
-1. A felügyeleti konzol és a csatlakoztatott érzékelők, valamint a felügyeleti konzol és a magas rendelkezésre állású felügyeleti konzol közötti ellenőrzés engedélyezése. Az érvényesítések kiértékelése a visszavont tanúsítványok listáján és a tanúsítvány lejárati dátumán történik. **Ha az ellenőrzés sikertelen, a felügyeleti konzol és az érzékelő közötti kommunikáció leállt, és a konzolon egy érvényesítési hiba jelenik meg. Ez a beállítás alapértelmezés szerint engedélyezve van a telepítés után.**
+- A felügyeleti konzol és a csatlakoztatott érzékelők, valamint a felügyeleti konzol és a magas rendelkezésre állású felügyeleti konzol közötti ellenőrzés engedélyezése. Az érvényesítések kiértékelése a visszavont tanúsítványok listáján és a tanúsítvány lejárati dátumán történik. *Ha az ellenőrzés sikertelen, a felügyeleti konzol és az érzékelő közötti kommunikáció leállt, és a konzolon egy érvényesítési hiba jelenik meg*. Ez a beállítás alapértelmezés szerint engedélyezve van a telepítés után.
 
  Harmadik féltől származó továbbítási szabályok, például a SYSLOG, a splunk vagy a ServiceNow számára továbbított riasztási információk. vagy a Active Directoryval való kommunikáció nincs érvényesítve.
+
+#### <a name="ssl-certificates"></a>SSL-tanúsítványok
+
+A Defender for IoT szenzor és a helyszíni felügyeleti konzol SSL-és TLS-tanúsítványokat használ a következő függvényekhez: 
+
+ - Biztonságos kommunikáció a felhasználók és a készülék webkonzolja között. 
+ 
+ - Biztonságos kommunikáció a REST API az érzékelő és a helyszíni felügyeleti konzolon.
+ 
+ - Biztonságos kommunikáció az érzékelők és a helyszíni felügyeleti konzol között. 
+
+A telepítés után a készülék létrehoz egy helyi önaláírt tanúsítványt, hogy engedélyezze az előzetes hozzáférést a webkonzolhoz. A vállalati SSL és a TLS-tanúsítványok a parancssori eszköz használatával telepíthetők [`cyberx-xsense-certificate-import`](#cli-commands) . 
+
+ > [!NOTE]
+ > Az integrációk és a továbbítási szabályok esetében, ahol a berendezés a munkamenet ügyfele és kezdeményezője, a rendszer bizonyos tanúsítványokat használ, és nem kapcsolódik a rendszertanúsítványokhoz.  
+ >
+ >Ezekben az esetekben a rendszer általában a-kiszolgálótól fogadja a tanúsítványokat, vagy aszimmetrikus titkosítást használ, ha az integráció beállításához egy adott tanúsítvány lesz megadva.
+
+A berendezések egyedi tanúsítványfájl használatát is használhatják. Ha cserélnie kell egy tanúsítványt, feltöltött;
+
+- A 10,0-es verzióból a tanúsítvány a rendszerbeállítások menüből lehet lecserélve.
+
+- Az 10,0-es verziónál korábbi verziók esetén az SSL-tanúsítvány a parancssori eszköz használatával cserélhető le.
 
 ### <a name="update-certificates"></a>Tanúsítványok frissítése
 
@@ -111,15 +134,19 @@ Az érzékelő rendszergazdájának felhasználói frissíthetik a tanúsítván
 Tanúsítvány frissítése:  
 
 1. Válassza a **Rendszerbeállítások** lehetőséget.
+
 1. Válassza az **SSL/TLS-tanúsítványok lehetőséget.**
 1. Törölje vagy szerkessze a tanúsítványt, és adjon hozzá egy újat.
+
     - Adja meg a tanúsítvány nevét.
+    
     - Töltse fel a CRT-fájlt és a kulcsot tartalmazó fájlt, és adjon meg egy jelszót.
-    - Ha szükséges, töltsön fel egy PEM-fájlt.
+    - Szükség esetén töltse fel a PEM-fájlt.
 
 Az érvényesítési beállítás módosítása:
 
 1. A **tanúsítvány-ellenőrzés engedélyezése** váltógomb engedélyezése vagy letiltása.
+
 1. Válassza a **Mentés** lehetőséget.
 
 Ha a beállítás engedélyezve van, és az érvényesítés sikertelen, a felügyeleti konzol és az érzékelő közötti kommunikáció leállt, és a konzolon egy érvényesítési hiba jelenik meg.
@@ -128,87 +155,167 @@ Ha a beállítás engedélyezve van, és az érvényesítés sikertelen, a felü
 
 A következő tanúsítványok támogatottak:
 
-- Magán-/nagyvállalati kulcsokra épülő infrastruktúra (privát PKI) 
-- Nyilvános kulcsokra épülő infrastruktúra (nyilvános PKI) 
-- Helyileg generált a készüléken (helyileg önaláírt). **Önaláírt tanúsítványok használata nem ajánlott.** Ez a hálózat nem *biztonságos* , és csak tesztelési környezetekhez használható. A tanúsítvány tulajdonosa nem érvényesíthető, és a számítógép biztonsága nem tartható fenn. Az önaláírt tanúsítványokat soha nem szabad éles hálózatokhoz használni.  
+- Magán-és nagyvállalati kulcsokra épülő infrastruktúra (privát PKI)
 
-A következő paraméterek támogatottak. Tanúsítvány CRT
+- Nyilvános kulcsokra épülő infrastruktúra (nyilvános PKI) 
+
+- Helyileg generált a készüléken (helyileg önaláírt). 
+
+> [!IMPORTANT]
+> Nem javasoljuk önaláírt tanúsítványok használatát. Az ilyen típusú kapcsolatok nem biztonságosak, és csak tesztelési környezetekben használhatók. Mivel a tanúsítvány tulajdonosa nem érvényesíthető, és a rendszer biztonsága nem tartható fenn, az önaláírt tanúsítványok soha nem használhatók éles hálózatokhoz.
+
+### <a name="supported-ssl-certificates"></a>Támogatott SSL-tanúsítványok 
+
+A következő paraméterek támogatottak. 
+
+**Tanúsítvány CRT**
 
 - A tartománynévhez tartozó elsődleges tanúsítványfájl
+
 - Aláírási algoritmus = SHA256RSA
 - Aláírás-kivonatoló algoritmus = SHA256
 - Érvényességi idő = érvényes korábbi dátum
 - Érvényes: = érvényes jövőbeli dátum
-- Nyilvános kulcs = RSA 2048bits (minimum) vagy 4096bits
+- Nyilvános kulcs = RSA 2048 BITS (minimum) vagy 4096 bit
 - CRL terjesztési pontja = a. CRL fájl URL-címe
-- A tulajdonos CN = URL-cím lehet helyettesítő tanúsítvány, például example.contoso.com vagy  *. contoso.com**
-- Tárgy (C) ountry = meghatározott, pl. US
-- Tulajdonos (OU) szervezeti egység = definiálva, például contoso Labs
+- A tulajdonos CN = URL-cím lehet helyettesítő tanúsítvány; például: Sensor. contoso. <span> com vagy *. contoso. <span> com
+- Tárgy (C) ountry = meghatározott, például USA
+- Tulajdonos (OU) szervezeti egység = meghatározott, például contoso Labs
 - Tárgy (O) rvezet = meghatározva, például: contoso Inc.
 
-Kulcsfájl
+**Kulcsfájl**
 
-- A CSR létrehozásakor generált kulcsfájl
-- RSA-2048bits (minimum) vagy 4096bits
+- A CSR létrehozásakor generált kulcsfájl.
 
-Tanúsítványlánc
+- RSA 2048 BITS (minimum) vagy 4096 bit.
+
+ > [!Note]
+ > A 4096bits kulcs hosszának használata:
+ > - Az SSL-kézfogás az egyes kapcsolatok elején lassabb lesz.  
+ > - A kézfogások során a CPU-használat növekedése növekszik. 
+
+**Tanúsítványlánc**
 
 - A HITELESÍTÉSSZOLGÁLTATÓ által megadott köztes tanúsítványfájl (ha van ilyen)
+
 - A kiszolgáló tanúsítványát kiállító HITELESÍTÉSSZOLGÁLTATÓI tanúsítványnak először a fájlban kell lennie, amelyet a többinek a gyökérig kell megadnia. 
 - Tartalmazhat táska-attribútumokat is.
 
-Jelszót
+**Jelszót**
 
-- 1 kulcs támogatott
-- Telepítés a tanúsítvány importálásakor
+- Egy kulcs támogatott.
 
-A más paraméterekkel rendelkező tanúsítványok működhetnek, de a Microsoft nem támogatja.
+- A tanúsítvány importálásakor be kell állítani.
+
+A más paraméterekkel rendelkező tanúsítványok is működhetnek, de a Microsoft nem támogatja őket.
 
 #### <a name="encryption-key-artifacts"></a>Titkosítási kulcs összetevői
 
 **. PEM – tanúsítvány-tároló fájl**
 
-A név Privacy Enhanced Mail (PEM), a biztonságos e-mailek egy korábbi módszere, de a használt tároló formátuma a (z), és az x509 ASN. 1 kulcs Base64-fordítása.  
+A Privacy Enhanced Mail (PEM) fájlok az e-mailek védelméhez használt általános fájltípusok voltak. Napjainkban a PEM-fájlok tanúsítványokkal vannak ellátva, és x509 ASN1 kulcsokat használnak.  
 
-A 1421 – 1424. számú RFC-ben definiált: olyan tároló-formátum, amely csak a nyilvános tanúsítványt (például az Apache-telepítőket és a HITELESÍTÉSSZOLGÁLTATÓI tanúsítványfájl/etc/SSL/certs) is magában foglalhatja, vagy tartalmazhat egy teljes tanúsítványláncot, beleértve a nyilvános kulcsot, a titkos kulcsot és a főtanúsítványokat is.  
+A tároló-fájl a 1421 – 1424, a csak nyilvános tanúsítványt tartalmazó tároló formátuma alapján van meghatározva. Például az Apache telepíti, a HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt, a fájlokat, az SSL-t vagy a TANÚSÍTVÁNYokat. Ez magában foglalhatja a teljes tanúsítványláncot, beleértve a nyilvános kulcsokat, a titkos kulcsokat és a főtanúsítványokat is.  
 
-Emellett a CSR-t is kódolhatja, mivel a PKCS10 formátuma a PEM-ba fordítható le.
+Emellett a CSR-t PKCS10 formátumban is kódolhatja, amely a PEM-ba fordítható le.
 
 **. CERT. cer. CRT – tanúsítvány-tároló fájl**
 
-Egy. PEM (vagy egy ritkán. der) formázott fájl, amely más kiterjesztéssel rendelkezik. A Windows Intéző tanúsítványként ismeri fel. A Windows Intéző nem ismeri fel a. PEM fájlt.
+Egy `.pem` `.der` másik kiterjesztéssel rendelkező vagy formázott fájl. A Windows Intéző tanúsítványként ismeri fel a fájlt. A `.pem`   Windows Intéző nem ismeri fel a fájlt.
 
 **. Key – titkos kulcs fájlja**
 
-A kulcsfájl ugyanaz, mint a "Format" a PEM-fájlként, de más kiterjesztéssel rendelkezik.
-##### <a name="use-cli-commands-to-deploy-certificates"></a>Tanúsítványok központi telepítése CLI-parancsok használatával
+A kulcsfájl formátuma azonos a PEM-fájllal, de más kiterjesztéssel rendelkezik.
 
-A tanúsítványok importálásához használja az *cyberx-xsense-Certificate-import* CLI-parancsot. Az eszköz használatához a tanúsítvány fájljait fel kell tölteni az eszközre (a megnyerő vagy a wget eszközzel).
+#### <a name="additional-commonly-available-key-artifacts"></a>További általánosan elérhető főbb összetevők
+
+**. CSR – tanúsítvány-aláírási kérelem**.  
+
+Ez a fájl a hitelesítésszolgáltatók számára történő küldéshez használatos. A tényleges formátum a PKCS10, amely az RFC 2986-ben van meghatározva, és tartalmazhat néhányat vagy a kért tanúsítvány legfontosabb részleteit. Például a tárgy, a szervezet és az állapot. Ez a HITELESÍTÉSSZOLGÁLTATÓ által aláírt tanúsítvány nyilvános kulcsa, és a rendszer visszaküldi a tanúsítványt.  
+
+A visszaadott tanúsítvány a nyilvános tanúsítvány, amely magában foglalja a nyilvános kulcsot, de nem a titkos kulcsot. 
+
+**. PKCS12/pfx-profil. pfx. P12 – jelszó tároló**. 
+
+Az RSA által eredetileg az Public-Key titkosítási szabványokban (PKCS) definiált, a 12 változatot eredetileg a Microsoft fejlesztette ki, később pedig RFC 7292-ként lett elküldve.  
+
+A tároló formátumához a nyilvános és a privát tanúsítvány párokat egyaránt tartalmazó jelszó szükséges. `.pem`   A fájlokkal ellentétben ez a tároló teljesen titkosítva van.  
+
+Az OpenSSL használatával egy `.pem`   nyilvános és titkos kulccsal rendelkező fájlba is bekapcsolhatja a következőt: `openssl pkcs12 -in file-to-convert.p12 -out converted-file.pem -nodes`  
+
+**. der – bináris kódolású PEM**.
+
+Az ASN. 1 szintaxis bináris fájlban való kódolásának módja egy `.pem`   fájlon keresztül történik, amely csak egy Base64 kódolású `.der` fájl. 
+
+Az OpenSSL konvertálhatja ezeket a fájlokat a következőre `.pem` :  `openssl x509 -inform der -in to-convert.der -out converted.pem` .  
+
+A Windows a fájlokat tanúsítványfájlként fogja felismerni. Alapértelmezés szerint a Windows a tanúsítványokat `.der` más kiterjesztésű formázott fájlként fogja exportálni.  
+
+**. CRL – visszavont tanúsítványok listája**.  
+A hitelesítésszolgáltatók ezeket a fájlokat a lejárat előtt előállítják a tanúsítványok megszüntetéséhez.
+ 
+##### <a name="cli-commands"></a>Parancssori felületi parancsok
+
+`cyberx-xsense-certificate-import`Tanúsítványok importálásához használja a CLI-parancsot. Az eszköz használatához a tanúsítványokat a megnyerő vagy a wget eszközzel kell feltölteni az eszközre.
 
 A parancs a következő bemeneti jelzőket támogatja:
 
--h a parancssori Súgó szintaxisának megjelenítése
+- `-h`: A parancssori Súgó szintaxisát jeleníti meg.
 
-– a tanúsítványfájl CRT-elérési útja (CRT-bővítmény)
+- `--crt`: Egy tanúsítványfájl elérési útja (. CRT kiterjesztés).
 
---Key *. key fájl, a kulcs hosszának legalább 2048 bitenek kell lennie
+- `--key`:  \* . key fájl. A kulcs hosszának legalább 2 048 bitenek kell lennie.
 
-– lánc elérési útja a tanúsítványlánc fájljához (nem kötelező)
+- `--chain`: Tanúsítványlánc-fájl elérési útja (nem kötelező).
 
---pass a tanúsítvány titkosításához használt jelszava (nem kötelező)
+- `--pass`: A tanúsítvány titkosításához használt jelszó (nem kötelező).
 
---jelszó – az alapértelmezett = hamis beállítása, nem használt. Értéke TRUE (igaz) – a korábbi tanúsítványhoz megadott korábbi jelszó használata (opcionális)
+- `--passphrase-set`: Default = `False` , nincs használatban. Állítsa az értékre az `True` előző tanúsítvánnyal megadott előző jelszó használatára (nem kötelező).
 
 A CLI-parancs használatakor:
 
 - Ellenőrizze, hogy a tanúsítvány fájljai olvashatók-e a készüléken.
 
-- Ellenőrizze, hogy a tanúsítványban szereplő tartománynév és IP-cím megegyezik-e az informatikai részleg által tervezett konfigurációval.
+- Ellenőrizze, hogy a tanúsítványban szereplő tartománynév és az IP-cím megegyezik-e az informatikai részleg által tervezett konfigurációval.
 
+### <a name="use-openssl-to-manage-certificates"></a>A tanúsítványok kezelése az OpenSSL használatával
+
+A tanúsítványokat a következő parancsokkal kezelheti:
+
+| Leírás | CLI-parancs |
+|--|--|
+| Új titkos kulcs és tanúsítvány-aláírási kérelem létrehozása | `openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout privateKey.key` |
+| Önaláírt tanúsítvány létrehozása | `openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt` |
+| Tanúsítvány-aláírási kérelem (CSR) létrehozása egy meglévő titkos kulcshoz | `openssl req -out CSR.csr -key privateKey.key -new` |
+| Tanúsítvány-aláírási kérelem létrehozása egy meglévő tanúsítvány alapján | `openssl x509 -x509toreq -in certificate.crt -out CSR.csr -signkey privateKey.key` |
+| Jelszó eltávolítása titkos kulcsból | `openssl rsa -in privateKey.pem -out newPrivateKey.pem` |
+
+Ha ellenőriznie kell a tanúsítványon, a CSR-en vagy a titkos kulcson belüli adatokat, használja a következő parancsokat:
+
+| Leírás | CLI-parancs |
+|--|--|
+| Tanúsítvány-aláírási kérelem (CSR) keresése | `openssl req -text -noout -verify -in CSR.csr` |
+| Titkos kulcs keresése | `openssl rsa -in privateKey.key -check` |
+| Tanúsítvány keresése | `openssl x509 -in certificate.crt -text -noout`  |
+
+Ha hibaüzenet jelenik meg arról, hogy a titkos kulcs nem egyezik a tanúsítvánnyal, vagy ha egy helyre telepített tanúsítvány nem megbízható, a következő parancsokkal javítsa ki a hibát;
+
+| Leírás | CLI-parancs |
+|--|--|
+| A nyilvános kulcs MD5-kivonatának ellenőrzése annak biztosításához, hogy az megfelel-e a CSR vagy a titkos kulcsnak | 1. `openssl x509 -noout -modulus -in certificate.crt | openssl md5` <br /> 2. `openssl rsa -noout -modulus -in privateKey.key | openssl md5` <br /> 3. `openssl req -noout -modulus -in CSR.csr | openssl md5 ` |
+
+Ha a tanúsítványokat és a kulcsokat különböző formátumokra szeretné átalakítani, hogy azok kompatibilisek legyenek a kiszolgálók vagy szoftverek bizonyos típusaival, használja a következő parancsokat:
+
+| Leírás | CLI-parancs |
+|--|--|
+| DER-fájl konvertálása (. CRT. cer. der) a PEM-ba  | `openssl x509 -inform der -in certificate.cer -out certificate.pem`  |
+| PEM-fájl átalakítása DER-re | `openssl x509 -outform der -in certificate.pem -out certificate.der`  |
+| PKCS # 12 fájl konvertálása (. pfx. P12), amely egy titkos kulcsot és a PEM-tanúsítványokat tartalmaz. | `openssl pkcs12 -in keyStore.pfx -out keyStore.pem -nodes` <br />A Hozzáadás `-nocerts` gombra kattintva csak a titkos kulcsot kell kiadnia, vagy a Hozzáadás lehetőséggel `-nokeys` csak a tanúsítványokat kell kiadnia. |
+| PEM-tanúsítványfájl és egy titkos kulcs átalakítása PKCS # 12 (. pfx. P12) fájlba | `openssl pkcs12 -export -out certificate.pfx -inkey privateKey.key -in certificate.crt -certfile CACert.crt` |
 
 ## <a name="connect-a-sensor-to-the-management-console"></a>Érzékelő összekötése a Felügyeleti konzollal
 
-Ez a szakasz az érzékelő és a helyszíni felügyeleti konzol közötti kapcsolat biztosítását ismerteti. Ezt akkor kell megtennie, ha gapped hálózaton dolgozik, és az érzékelőtől az eszköz-és riasztási adatokat szeretné elküldeni a felügyeleti konzolra. Ez a kapcsolódás azt is lehetővé teszi, hogy a felügyeleti konzol leküldje a rendszerbeállításokat az érzékelőre, és más felügyeleti feladatokat hajtson végre az érzékelőn.
+Ez a szakasz az érzékelő és a helyszíni felügyeleti konzol közötti kapcsolat biztosítását ismerteti. Akkor tegye ezt, ha gapped hálózaton dolgozik, és az érzékelőből az eszköz-és riasztási adatokat szeretné elküldeni a felügyeleti konzolra. Ez a kapcsolódás azt is lehetővé teszi, hogy a felügyeleti konzol leküldje a rendszerbeállításokat az érzékelőre, és más felügyeleti feladatokat hajtson végre az érzékelőn.
 
 A kapcsolódáshoz:
 
