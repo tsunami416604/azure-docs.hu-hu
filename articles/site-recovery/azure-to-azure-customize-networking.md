@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: sideeksh
-ms.openlocfilehash: 599ad76f38833e06cc458fd0687921e6975e190b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f63021275574e294fa372357d6e62724f5efe0f7
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89426367"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541190"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>A cél Azure-beli virtuális gép hálózati konfigurációjának testreszabása
 
@@ -40,16 +40,16 @@ Az Azure-beli virtuális gépek replikálásakor a következő fő erőforrás-k
 
 1. Nyissa meg a **replikált elemeket**. 
 2. Válassza ki a kívánt Azure-beli virtuális gépet.
-3. Válassza a **számítás és hálózat** lehetőséget, majd válassza a **Szerkesztés**lehetőséget. Figyelje meg, hogy a hálózati adapter konfigurációs beállításai tartalmazzák a forráshoz tartozó megfelelő erőforrásokat. 
+3. Válassza a **számítás és hálózat** lehetőséget, majd válassza a **Szerkesztés** lehetőséget. Figyelje meg, hogy a hálózati adapter konfigurációs beállításai tartalmazzák a forráshoz tartozó megfelelő erőforrásokat. 
 
      ![A feladatátvételi hálózati konfigurációk testreszabása](media/azure-to-azure-customize-networking/edit-networking-properties.png)
 
-4. Válassza ki a feladatátvételi teszt virtuális hálózatot. Dönthet úgy is, hogy üresen hagyja, és kijelöli a feladatátvételi teszt időpontját.
+4. Válassza ki a feladatátvételi teszt virtuális hálózatot.
 5. A feladatátvételi hálózat a konfigurálni kívánt hálózati adapter közelében válassza a **Szerkesztés** lehetőséget. A megnyíló következő panelen válassza ki a megfelelő előre létrehozott erőforrásokat a feladatátvételi teszt és a feladatátvételi hely között.
 
     ![A NIC-konfiguráció szerkesztése](media/azure-to-azure-customize-networking/nic-drilldown.png) 
 
-6. Kattintson az **OK** gombra.
+6. Válassza az **OK** lehetőséget.
 
 Site Recovery most megtartja ezeket a beállításokat, és gondoskodik arról, hogy a feladatátvételi virtuális gép a megfelelő hálózati adapteren keresztül kapcsolódjon a kiválasztott erőforráshoz.
 

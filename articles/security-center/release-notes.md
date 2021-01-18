@@ -1,6 +1,6 @@
 ---
 title: A Azure Security Center kibocsátási megjegyzései
-description: A Azure Security Center újdonságait és változásait ismertető leírás.
+description: A Azure Security Center újdonságait és változásait ismertető Leírás
 services: security-center
 documentationcenter: na
 author: memildin
@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/07/2021
+ms.date: 01/17/2021
 ms.author: memildin
-ms.openlocfilehash: 86da6c0a3393dd3f47143355597cd9ccdec9928d
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 48e7093c30ffb135231f5843cb0767848f242d89
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539938"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541383"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -32,6 +32,24 @@ Ha szeretne többet megtudni a Security Center hamarosan elérhető *tervezett* 
 
 
 ## <a name="january-2021"></a>2021. január
+
+A decemberi frissítések a következők:
+
+- [Az ajánlatok szűrt listájának CSV-exportálása](#csv-export-of-filtered-list-of-recommendations)
+- [A helyszíni és a többfelhős gépek sebezhetőségi felmérése általánosan elérhető](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-generally-available)
+
+
+### <a name="csv-export-of-filtered-list-of-recommendations"></a>Az ajánlatok szűrt listájának CSV-exportálása 
+
+November 2020-én szűrők lettek hozzáadva a javaslatok oldalhoz (a[javaslatok listája mostantól tartalmazza a szűrőket is](#recommendations-list-now-includes-filters)). Decemberben kibővítettük ezeket a szűrőket (a[javaslatok oldalon új szűrők találhatók a környezethez, a súlyossághoz és a rendelkezésre álló válaszokhoz](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses)). 
+
+Ebben a közleményben a **Letöltés CSV-** re gombra változik, így a CSV-Exportálás csak a szűrt listában jelenleg megjelenő javaslatokat tartalmazza. 
+
+Az alábbi képen például láthatja, hogy a lista két javaslatra van szűrve. A létrehozott CSV-fájl tartalmazza a két javaslat által érintett összes erőforrás állapotának részleteit.   
+
+:::image type="content" source="media/security-center-managing-and-responding-alerts/export-to-csv-with-filters.png" alt-text="Szűrt javaslatok exportálása CSV-fájlba":::
+
+További tudnivalókat a [Azure Security Center biztonsági javaslataiban](security-center-recommendations.md)olvashat.
 
 ### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-generally-available"></a>A helyszíni és a többfelhős gépek sebezhetőségi felmérése általánosan elérhető
 

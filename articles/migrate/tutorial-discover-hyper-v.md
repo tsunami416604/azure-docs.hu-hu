@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 90532a88e145507b09de9d36f704bc5c88899e95
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 109f61d9ff76d084b292dbe3cc8ce663b50141ae
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861900"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541325"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>Oktatóanyag: Hyper-V virtuális gépek felderítése kiszolgáló-értékeléssel
 
@@ -42,16 +42,14 @@ Az oktatóanyag megkezdése előtt győződjön meg arról, hogy ezek az előfel
 **Követelmény** | **Részletek**
 --- | ---
 **Hyper-V gazdagép** | Azok a Hyper-V-gazdagépek, amelyeken a virtuális gépek találhatók, önállóak vagy fürtben is.<br/><br/> A gazdagépen a Windows Server 2019, a Windows Server 2016 vagy a Windows Server 2012 R2 rendszernek kell futnia.<br/><br/> Ellenőrizze, hogy a bejövő kapcsolatok engedélyezve vannak-e a WinRM 5985-es portján (HTTP), hogy a készülék csatlakozni tud-e a lekéréses virtuális gépek metaadatainak és teljesítményadatait a CIM (CIM) munkamenet használatával.
-**Berendezések üzembe helyezése** | A Hyper-V-gazdagépnek erőforrásokra van szüksége ahhoz, hogy lefoglaljon egy virtuális gépet a készülékhez:<br/><br/> - Windows Server 2016<br/><br/> – 16 GB RAM<br/><br/> – Nyolc vCPU<br/><br/> -Körülbelül 80 GB lemezes tárterület.<br/><br/> – Külső virtuális kapcsoló.<br/><br/> -Internet-hozzáférés a virtuális géphez közvetlenül vagy egy proxyn keresztül.
+**Berendezések üzembe helyezése** | A Hyper-V-gazdagépnek erőforrásokra van szüksége ahhoz, hogy lefoglaljon egy virtuális gépet a készülékhez:<br/><br/> -16 GB RAM, 8 vCPU, és körülbelül 80 GB lemezes tárterület.<br/><br/> -Külső virtuális kapcsoló és internet-hozzáférés a készülék virtuális gépén közvetlenül vagy proxyn keresztül.
 **Virtuális gépek** | A virtuális gépek Windows vagy Linux operációs rendszert is használhatnak. 
-
-Mielőtt elkezdené, [áttekintheti a](migrate-appliance.md#collected-data---hyper-v) készülék által a felderítés során gyűjtött adatokat.
 
 ## <a name="prepare-an-azure-user-account"></a>Azure-beli felhasználói fiók előkészítése
 
 Azure Migrate projekt létrehozásához és a Azure Migrate berendezés regisztrálásához a következő fiókra van szüksége:
 - Közreműködő vagy tulajdonosi engedélyek egy Azure-előfizetéshez.
-- Azure Active Directory alkalmazások regisztrálásához szükséges engedélyek.
+- Azure Active Directory-(HRE-) alkalmazások regisztrálásához szükséges engedélyek.
 
 Ha most hozott létre egy ingyenes Azure-fiókot, akkor Ön az előfizetés tulajdonosa. Ha nem Ön az előfizetés tulajdonosa, a tulajdonossal együtt az alábbi módon rendelheti hozzá az engedélyeket:
 
@@ -71,20 +69,20 @@ Ha most hozott létre egy ingyenes Azure-fiókot, akkor Ön az előfizetés tula
 
     ![A szerepkör-hozzárendelés hozzáadása lap megnyitása a szerepkör a fiókhoz való hozzárendeléséhez](./media/tutorial-discover-hyper-v/assign-role.png)
 
-7. A portálon keressen felhasználókat, és a **szolgáltatások** területen válassza a **felhasználók** lehetőséget.
-8. A **felhasználói beállítások** területen ellenőrizze, hogy az Azure ad-felhasználók regisztrálhatják-e az alkalmazásokat (alapértelmezés szerint az **Igen** értékre van állítva).
+1. A készülék regisztrálásához az Azure-fióknak rendelkeznie kell a **HRE-alkalmazások regisztrálásához szükséges engedélyekkel.**
+1. A Azure Portal területen navigáljon a  >  **felhasználók**  >  **felhasználói beállításainak** Azure Active Directory.
+1. A **felhasználói beállítások** területen ellenőrizze, hogy az Azure ad-felhasználók regisztrálhatják-e az alkalmazásokat (alapértelmezés szerint az **Igen** értékre van állítva).
 
     ![A felhasználók által Active Directory alkalmazások regisztrálásához használt felhasználói beállítások ellenőrzése](./media/tutorial-discover-hyper-v/register-apps.png)
 
-9. Másik lehetőségként a bérlő/globális rendszergazda hozzárendelheti az **alkalmazás fejlesztői** szerepkörét egy fiókhoz, hogy engedélyezze a HRE-alkalmazás (ok) regisztrációját. [További információ](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
+9. Ha a "Alkalmazásregisztrációk" beállítások "nem" értékre van állítva, kérje meg a bérlőt/globális rendszergazdát, hogy rendelje hozzá a szükséges engedélyeket. Másik lehetőségként a bérlő/globális rendszergazda hozzárendelheti az **alkalmazás fejlesztői** szerepkörét egy fiókhoz, hogy engedélyezze a HRE-alkalmazás regisztrálását. [További információ](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="prepare-hyper-v-hosts"></a>Hyper-V-gazdagépek előkészítése
 
 Rendszergazdai hozzáféréssel rendelkező fiók beállítása a Hyper-V-gazdagépeken. A készülék ezt a fiókot használja a felderítéshez.
 
 - 1. lehetőség: a Hyper-V gazdagéphez rendszergazdai hozzáféréssel rendelkező fiók előkészítése.
-- 2. lehetőség: helyi rendszergazdai fiók vagy tartományi rendszergazdai fiók előkészítése, és a fiók hozzáadása a következő csoportokhoz: távfelügyeleti felhasználók, Hyper-V-rendszergazdák és Teljesítményfigyelő felhasználók.
-
+- 2. lehetőség: Ha nem szeretne rendszergazdai jogosultságokat hozzárendelni, hozzon létre egy helyi vagy tartományi felhasználói fiókot, és adja hozzá a felhasználói fiókot ezekhez a csoportokhoz – távfelügyeleti felhasználók, Hyper-V-rendszergazdák és Teljesítményfigyelő felhasználók számára.
 
 ## <a name="set-up-a-project"></a>Projekt beállítása
 
@@ -98,27 +96,29 @@ Hozzon létre egy új Azure Migrate projektet.
 
    ![A projekt neve és a régió mezői](./media/tutorial-discover-hyper-v/new-project.png)
 
-7. Kattintson a **Létrehozás** gombra.
-8. Várjon néhány percet, amíg az Azure Migrate-projekt telepítése megtörténik.
-
-A **Azure Migrate: a Server Assessment** eszköz alapértelmezés szerint hozzá lett adva az új projekthez.
+7. Válassza a **Létrehozás** lehetőséget.
+8. Várjon néhány percet, amíg a Azure Migrate-projekt üzembe helyezése megtörténik. A **Azure Migrate: a Server Assessment** eszköz alapértelmezés szerint hozzá lett adva az új projekthez.
 
 ![Az alapértelmezés szerint hozzáadott kiszolgáló-értékelési eszközt megjelenítő oldal](./media/tutorial-discover-hyper-v/added-tool.png)
 
+> [!NOTE]
+> Ha már létrehozott egy projektet, ugyanezzel a projekttel regisztrálhat további készülékeket, és több virtuális gépet is felderítheti. további[információ](create-manage-projects.md#find-a-project)
 
 ## <a name="set-up-the-appliance"></a>A készülék beállítása
 
+Azure Migrate: a kiszolgáló értékelése egy könnyű Azure Migrate berendezést használ. A készülék virtuálisgép-felderítést végez, és a virtuális gép konfigurációját és a teljesítmény metaadatait a Azure Migrateba küldi. A készülék olyan VHD-fájl telepítésével állítható be, amely letölthető a Azure Migrate projektből.
+
+> [!NOTE]
+> Ha valamilyen okból nem tudja beállítani a készüléket a sablon használatával, beállíthatja egy PowerShell-parancsfájl használatával egy meglévő Windows Server 2016-kiszolgálón. [További információ](deploy-appliance-script.md#set-up-the-appliance-for-hyper-v).
+
 Ez az oktatóanyag egy Hyper-V virtuális gépen állítja be a készüléket, a következőképpen:
 
-- Adja meg a készülék nevét, és állítson be egy Azure Migrate Project-kulcsot a portálon.
-- Töltsön le egy tömörített Hyper-V virtuális merevlemezt a Azure Portal.
-- Hozza létre a készüléket, és győződjön meg róla, hogy tud kapcsolódni Azure Migrate Server Assessmenthez.
-- Konfigurálja a készüléket első alkalommal, és regisztrálja a Azure Migrate projekttel a Azure Migrate Project Key használatával.
-> [!NOTE]
-> Ha valamilyen okból nem tudja beállítani a készüléket sablon használatával, beállíthatja egy PowerShell-parancsfájl használatával. [További információ](deploy-appliance-script.md#set-up-the-appliance-for-hyper-v).
+1. Adja meg a készülék nevét, és állítson be egy Azure Migrate Project-kulcsot a portálon.
+1. Töltsön le egy tömörített Hyper-V virtuális merevlemezt a Azure Portal.
+1. Hozza létre a készüléket, és győződjön meg róla, hogy tud kapcsolódni Azure Migrate Server Assessmenthez.
+1. Konfigurálja a készüléket első alkalommal, és regisztrálja a Azure Migrate projekttel a Azure Migrate Project Key használatával.
 
-
-### <a name="generate-the-azure-migrate-project-key"></a>A Azure Migrate projekt kulcsának előállítása
+### <a name="1-generate-the-azure-migrate-project-key"></a>1. a Azure Migrate projekt kulcsának előállítása
 
 1. A **Migrálási célok** > **Kiszolgálók** > **Azure Migrate: Kiszolgáló értékelése** területen válassza a **Felderítés** lehetőséget.
 2. A **felderítési gépek** a  >  **gépek virtualizáltak?** területen válassza **az igen, a Hyper-V** lehetőséget.
@@ -127,10 +127,9 @@ Ez az oktatóanyag egy Hyper-V virtuális gépen állítja be a készüléket, a
 1. Az Azure-erőforrások sikeres létrehozása után létrejön egy **Azure Migrate projekt kulcsa** .
 1. Másolja a kulcsot, mert szüksége lesz rá, hogy elvégezze a berendezés regisztrációját a konfiguráció során.
 
-### <a name="download-the-vhd"></a>A VHD letöltése
+### <a name="2-download-the-vhd"></a>2. a VHD letöltése
 
-**2.: töltse le Azure Migrate készüléket**, és válassza a (z) elemet. VHD-fájl, majd kattintson a **Letöltés** gombra. 
-
+**2.: töltse le Azure Migrate készüléket**, és válassza a (z) elemet. VHD-fájl, majd kattintson a **Letöltés** gombra.
 
 ### <a name="verify-security"></a>Biztonság ellenőrzése
 
@@ -156,7 +155,7 @@ A telepítése előtt győződjön meg arról, hogy a tömörített fájl bizton
         --- | --- | ---
         Hyper-V (85,8 MB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2140424) |  cfed44bb52c9ab3024a628dc7a5d0df8c624f156ec1ecc3507116bae330b257f
 
-### <a name="create-the-appliance-vm"></a>A berendezés virtuális gép létrehozása
+### <a name="3-create-the-appliance-vm"></a>3. a berendezés virtuális gép létrehozása
 
 Importálja a letöltött fájlt, és hozza létre a virtuális gépet.
 
@@ -177,7 +176,7 @@ Importálja a letöltött fájlt, és hozza létre a virtuális gépet.
 
 Győződjön meg arról, hogy a készülék virtuális gépe tud csatlakozni az Azure URL-címekhez a [nyilvános](migrate-appliance.md#public-cloud-urls) és a [kormányzati](migrate-appliance.md#government-cloud-urls) felhők számára.
 
-### <a name="configure-the-appliance"></a>A berendezés konfigurálása
+### <a name="4-configure-the-appliance"></a>4. a berendezés konfigurálása
 
 Állítsa be a készüléket első alkalommal.
 
@@ -214,8 +213,6 @@ Győződjön meg arról, hogy a készülék virtuális gépe tud csatlakozni az 
 1. Miután sikeresen bejelentkezett, lépjen vissza az előző lapra a készülék Configuration Managerrel.
 4. Ha a naplózáshoz használt Azure-beli felhasználói fiók rendelkezik a megfelelő engedélyekkel a kulcs létrehozása során létrehozott Azure-erőforrásokhoz, a készülék regisztrációja kezdeményezve lesz.
 1. A készülék sikeres regisztrálása után a **részletek megtekintése** lehetőségre kattintva megtekintheti a regisztráció részleteit.
-
-
 
 ### <a name="delegate-credentials-for-smb-vhds"></a>Az SMB virtuális merevlemezek hitelesítő adatainak delegálása
 

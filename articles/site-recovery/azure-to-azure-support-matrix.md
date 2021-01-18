@@ -4,12 +4,12 @@ description: Összefoglalja az Azure-beli virtuális gépek vész-helyreállít�
 ms.topic: article
 ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: e2cbea433d56d4c1290a5d1cdc54b56e81b4cd73
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: f0c7e23e45a84fa73c7e63b5aaa6280177cf8b27
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234324"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541308"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure-beli virtuális gépek Azure-régiók közti vészhelyreállításának támogatási mátrixa
 
@@ -44,13 +44,13 @@ A virtuális gépeket replikálhatja és helyreállíthatja az azonos földrajzi
 **Földrajzi fürt** | **Azure-régiók**
 -- | --
 Államok | Kelet-Kanada, Közép-Kanada, az USA déli középső régiója, az USA nyugati középső régiója, az USA keleti régiója, USA 2. keleti régiója, USA nyugati régiója, USA 2. középső régiója, USA
-Európa | Egyesült Királyság nyugati régiója, Egyesült Királyság déli régiója, Észak-Európa, Nyugat-Európa, Dél-Afrika nyugati régiója, Dél-Afrika északi régiója, Kelet-Kanada, Norvégia nyugati régiója, Közép-Németország, Észak-Svájc
+Európa | Egyesült Királyság nyugati régiója, Egyesült Királyság déli régiója, Észak-Európa, Nyugat-Európa, Dél-Afrika nyugati régiója, Dél-Afrika, Észak-Norvégia, Kelet-Kanada, Közép-Németország, Észak-Svájc
 Ázsia | Dél-India, Közép-India, Nyugat-India, Délkelet-Ázsia, Kelet-Ázsia, Kelet-Japán, Nyugat-Japán, Korea középső régiója, Dél-Korea
 Ausztrália    | Kelet-Ausztrália, Délkelet-Ausztrália, Ausztrália középső régiója, Ausztrália 2. középső régiója
 Azure Government    | USA-beli államigazgatás – Virginia, USA-beli államigazgatás, Egyesült Államok
 Németország    | Közép-Németország, Északkelet-Németország
 Kína | Kelet-Kína, Észak-Kína, China North2, China készletek
-Országon belüli vész-helyreállításra fenntartott korlátozott régiók |A Középnyugat-Németország számára fenntartott Észak-Németország számára fenntartott Nyugat-Svájc Észak-Svájc, Franciaország déli régiója számára fenntartott, Egyesült Arab Emírségek, Észak-ügyfelek
+Országon belüli vész-helyreállításra fenntartott korlátozott régiók |Észak-Németország a Középnyugat-Németország számára fenntartott, Nyugat-Svájc számára fenntartott Észak-Svájc, Franciaország déli régiója számára fenntartott, Egyesült Arab Emírségek, Észak-és Nyugat-Kanada, Kelet-Kanada, Norvégia keleti ügyfelei
 
 >[!NOTE]
 >

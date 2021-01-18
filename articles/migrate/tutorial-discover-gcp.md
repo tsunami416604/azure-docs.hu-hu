@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 181f645540a267d65b15a0345a61752a8a5f78fa
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 079f176a741fa3423081cb96503691f0f2e2e7b2
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704731"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541427"
 ---
 # <a name="tutorial-discover-google-cloud-platform-gcp-instances-with-server-assessment"></a>Oktatóanyag: Google Cloud Platform-(GCP-) példányok felderítése kiszolgáló-értékeléssel
 
@@ -40,7 +40,7 @@ Az oktatóanyag megkezdése előtt győződjön meg arról, hogy ezek az előfel
 
 **Követelmény** | **Részletek**
 --- | ---
-**Berendezés** | Szüksége van egy GCP virtuálisgép-példányra, amelyen futtatni szeretné a Azure Migrate készüléket. A gépnek a következőket kell tartalmaznia:<br/><br/> – A Windows Server 2016 telepítve van. A készülék futtatása a Windows Server 2019 rendszerű gépen nem támogatott.<br/><br/> -16 GB RAM, 8 vCPU, körülbelül 80 GB lemezes tárterület, valamint egy külső virtuális kapcsoló.<br/><br/> -Statikus vagy dinamikus IP-cím, internet-hozzáféréssel, közvetlenül vagy proxyn keresztül.
+**Berendezés** | Szüksége van egy GCP virtuálisgép-példányra, amelyen futtatni szeretné a Azure Migrate készüléket. A gépnek a következőket kell tartalmaznia:<br/><br/> – A Windows Server 2016 telepítve van.<br/> _A készülék futtatása a Windows Server 2019 rendszerű gépen nem támogatott_.<br/><br/> -16 GB RAM, 8 vCPU, körülbelül 80 GB lemezes tárterület, valamint egy külső virtuális kapcsoló.<br/><br/> -Statikus vagy dinamikus IP-cím, internet-hozzáféréssel, közvetlenül vagy proxyn keresztül.
 **Windowsos VM-példányok** | Engedélyezze a bejövő kapcsolatokat a WinRM 5985-as porton (HTTP), hogy a készülék lekérje a konfiguráció és a teljesítmény metaadatait.
 **Linuxos VM-példányok** | Bejövő kapcsolatok engedélyezése a 22-es porton (TCP).
 
@@ -48,7 +48,7 @@ Az oktatóanyag megkezdése előtt győződjön meg arról, hogy ezek az előfel
 
 Azure Migrate projekt létrehozásához és a Azure Migrate berendezés regisztrálásához a következő fiókra van szüksége:
 - Közreműködő vagy tulajdonosi engedélyek egy Azure-előfizetéshez.
-- Azure Active Directory alkalmazások regisztrálásához szükséges engedélyek.
+- Azure Active Directory-(HRE-) alkalmazások regisztrálásához szükséges engedélyek.
 
 Ha most hozott létre egy ingyenes Azure-fiókot, akkor Ön az előfizetés tulajdonosa. Ha nem Ön az előfizetés tulajdonosa, a tulajdonossal együtt az alábbi módon rendelheti hozzá az engedélyeket:
 
@@ -67,22 +67,24 @@ Ha most hozott létre egy ingyenes Azure-fiókot, akkor Ön az előfizetés tula
 
     ![A szerepkör-hozzárendelés hozzáadása lap megnyitása a szerepkör a fiókhoz való hozzárendeléséhez](./media/tutorial-discover-gcp/assign-role.png)
 
-7. A portálon keressen felhasználókat, és a **szolgáltatások** területen válassza a **felhasználók** lehetőséget.
-8. A **felhasználói beállítások** területen ellenőrizze, hogy az Azure ad-felhasználók regisztrálhatják-e az alkalmazásokat (alapértelmezés szerint az **Igen** értékre van állítva).
+1. A készülék regisztrálásához az Azure-fióknak rendelkeznie kell a **HRE-alkalmazások regisztrálásához szükséges engedélyekkel.**
+1. A Azure Portal területen navigáljon a  >  **felhasználók**  >  **felhasználói beállításainak** Azure Active Directory.
+1. A **felhasználói beállítások** területen ellenőrizze, hogy az Azure ad-felhasználók regisztrálhatják-e az alkalmazásokat (alapértelmezés szerint az **Igen** értékre van állítva).
 
     ![A felhasználók által Active Directory alkalmazások regisztrálásához használt felhasználói beállítások ellenőrzése](./media/tutorial-discover-gcp/register-apps.png)
 
+1. Ha a "Alkalmazásregisztrációk" beállítások "nem" értékre van állítva, kérje meg a bérlőt/globális rendszergazdát, hogy rendelje hozzá a szükséges engedélyeket. Másik lehetőségként a bérlő/globális rendszergazda hozzárendelheti az **alkalmazás fejlesztői** szerepkörét egy fiókhoz, hogy engedélyezze a HRE-alkalmazás regisztrálását. [További információ](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="prepare-gcp-instances"></a>GCP-példányok előkészítése
 
 Állítson be egy fiókot, amelyet a készülék használhat a GCP VM-példányok eléréséhez.
 
-- Windows-kiszolgálók esetén
+- **Windows-kiszolgálók** esetén:
     - Helyi felhasználói fiók beállítása a tartományhoz nem csatlakoztatott gépeken, valamint egy tartományi fiók a tartományhoz nem csatlakoztatott gépeken, amelyeket fel szeretne venni a felderítésbe. Adja hozzá a felhasználói fiókot a következő csoportokhoz: 
         - Rendszerfelügyeleti felhasználók
         - Teljesítményfigyelő felhasználói
         - Teljesítménynapló felhasználói.
-- Linux-kiszolgálók esetén:
+- **Linux-kiszolgálók** esetén:
     - Szüksége lesz egy rendszergazdai fiókra a felderíteni kívánt Linux-kiszolgálókon. Ha nem tud főfiókot biztosítani, tekintse meg a [támogatási mátrix](migrate-support-matrix-physical.md#physical-server-requirements) utasításait egy másik megoldáshoz.
     - A Azure Migrate a jelszó-hitelesítést használja az AWS-példányok felfedése során. Az AWS-példányok alapértelmezés szerint nem támogatják a jelszó-hitelesítést. A példány felderítése előtt engedélyeznie kell a jelszó-hitelesítést.
         1. Jelentkezzen be az egyes Linux-gépekre.
@@ -107,12 +109,13 @@ Hozzon létre egy új Azure Migrate projektet.
 
    ![A projekt neve és a régió mezői](./media/tutorial-discover-gcp/new-project.png)
 
-7. Kattintson a **Létrehozás** gombra.
-8. Várjon néhány percet, amíg az Azure Migrate-projekt telepítése megtörténik.
-
-A **Azure Migrate: a Server Assessment** eszköz alapértelmezés szerint hozzá lett adva az új projekthez.
+7. Válassza a **Létrehozás** lehetőséget.
+8. Várjon néhány percet, amíg a Azure Migrate-projekt üzembe helyezése megtörténik. A **Azure Migrate: a Server Assessment** eszköz alapértelmezés szerint hozzá lett adva az új projekthez.
 
 ![Az alapértelmezés szerint hozzáadott kiszolgáló-értékelési eszközt megjelenítő oldal](./media/tutorial-discover-gcp/added-tool.png)
+
+> [!NOTE]
+> Ha már létrehozott egy projektet, ugyanezzel a projekttel regisztrálhat további készülékeket, és több kiszolgáló nem használható fel. [További információ](create-manage-projects.md#find-a-project)
 
 ## <a name="set-up-the-appliance"></a>A készülék beállítása
 
@@ -123,17 +126,14 @@ A Azure Migrate berendezés egy könnyű berendezés, amelyet Azure Migrate Serv
 
 [További](migrate-appliance.md) információ az Azure Migrate készülékről.
 
-
-## <a name="appliance-deployment-steps"></a>Berendezések üzembe helyezésének lépései
-
 A készülék beállítása:
-- Adja meg a készülék nevét, és állítson be egy Azure Migrate Project-kulcsot a portálon.
-- Töltse le a Azure Migrate telepítő parancsfájlt tartalmazó tömörített fájlt a Azure Portal.
-- Bontsa ki a tömörített fájl tartalmát. Indítsa el a PowerShell-konzolt rendszergazdai jogosultságokkal.
-- Futtassa a PowerShell-szkriptet a berendezés webalkalmazásának elindításához.
-- Konfigurálja a készüléket első alkalommal, és regisztrálja a Azure Migrate projekttel a Azure Migrate Project Key használatával.
+1. Adja meg a készülék nevét, és állítson be egy Azure Migrate Project-kulcsot a portálon.
+1. Töltse le a Azure Migrate telepítő parancsfájlt tartalmazó tömörített fájlt a Azure Portal.
+1. Bontsa ki a tömörített fájl tartalmát. Indítsa el a PowerShell-konzolt rendszergazdai jogosultságokkal.
+1. Futtassa a PowerShell-szkriptet a berendezés webalkalmazásának elindításához.
+1. Konfigurálja a készüléket első alkalommal, és regisztrálja a Azure Migrate projekttel a Azure Migrate Project Key használatával.
 
-### <a name="generate-the-azure-migrate-project-key"></a>A Azure Migrate projekt kulcsának előállítása
+### <a name="1-generate-the-azure-migrate-project-key"></a>1. a Azure Migrate projekt kulcsának előállítása
 
 1. A **Migrálási célok** > **Kiszolgálók** > **Azure Migrate: Kiszolgáló értékelése** területen válassza a **Felderítés** lehetőséget.
 2. A **Discover Machines** szolgáltatásban  >  **a gépek virtualizáltak?**, válassza a **fizikai vagy egyéb (AWS, GCP, Xen stb.)** lehetőséget.
@@ -142,10 +142,9 @@ A készülék beállítása:
 5. Az Azure-erőforrások sikeres létrehozása után létrejön egy **Azure Migrate projekt kulcsa** .
 6. Másolja a kulcsot, mert szüksége lesz rá, hogy elvégezze a berendezés regisztrációját a konfiguráció során.
 
-### <a name="download-the-installer-script"></a>A telepítő parancsfájl letöltése
+### <a name="2-download-the-installer-script"></a>2. a telepítő parancsfájl letöltése
 
 **2.: töltse le Azure Migrate készüléket**, és kattintson a **Letöltés** gombra.
-
 
 ### <a name="verify-security"></a>Biztonság ellenőrzése
 
@@ -170,7 +169,7 @@ A telepítése előtt győződjön meg arról, hogy a tömörített fájl bizton
         Fizikai (85 MB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2140338) | ae132ebc574caf231bf41886891040ffa7abbe150c8b50436818b69e58622276
  
 
-### <a name="run-the-azure-migrate-installer-script"></a>A Azure Migrate telepítő parancsfájl futtatása
+### <a name="3-run-the-azure-migrate-installer-script"></a>3. Futtassa a Azure Migrate telepítő parancsfájlt
 A telepítő parancsfájl a következő műveleteket végzi el:
 
 - Telepíti az ügynököket és egy webalkalmazást a GCP-kiszolgáló felderítéséhez és értékeléséhez.
@@ -199,13 +198,11 @@ Futtassa a szkriptet a következő módon:
 
 Ha bármilyen probléma merül fel, a parancsfájl-naplókat a C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log naplófájlban érheti el a hibaelhárításhoz.
 
-
-
 ### <a name="verify-appliance-access-to-azure"></a>A készülék Azure-beli hozzáférésének ellenőrzése
 
 Győződjön meg arról, hogy a készülék virtuális gépe tud csatlakozni az Azure URL-címekhez a [nyilvános](migrate-appliance.md#public-cloud-urls) és a [kormányzati](migrate-appliance.md#government-cloud-urls) felhők számára.
 
-### <a name="configure-the-appliance"></a>A berendezés konfigurálása
+### <a name="4-configure-the-appliance"></a>4. a berendezés konfigurálása
 
 Állítsa be a készüléket első alkalommal.
 
@@ -237,7 +234,6 @@ Győződjön meg arról, hogy a készülék virtuális gépe tud csatlakozni az 
 1. Miután sikeresen bejelentkezett, lépjen vissza az előző lapra a készülék Configuration Managerrel.
 4. Ha a naplózáshoz használt Azure-beli felhasználói fiók rendelkezik a megfelelő [engedélyekkel](#prepare-an-azure-user-account) a kulcs létrehozása során létrehozott Azure-erőforrásokhoz, a készülék regisztrációja kezdeményezve lesz.
 5. A készülék sikeres regisztrálása után a **részletek megtekintése** lehetőségre kattintva megtekintheti a regisztráció részleteit.
-
 
 ## <a name="start-continuous-discovery"></a>Folyamatos felderítés indítása
 
