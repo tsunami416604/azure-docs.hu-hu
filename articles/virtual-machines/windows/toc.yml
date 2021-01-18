@@ -228,7 +228,7 @@
         - name: Lemezes tároláshoz kapcsolódó lefoglalások
           href: ../../cost-management-billing/reservations/understand-disk-reservations.md
         - name: Virtuálisgép- és lemezteljesítmény
-          href: disk-performance-windows.md
+          href: ../disks-performance.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Nagy teljesítményű rendszer tervezése
           href: ../premium-storage-performance.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Lemezek adatlöket-kezelése
@@ -814,10 +814,8 @@
           href: snapshot-copy-managed-disk.md
         - name: Lemezes tárolás lefoglalása
           href: ../disks-reserved-capacity.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-        - name: Növekményes pillanatkép létrehozása – PowerShell
-          href: disks-incremental-snapshots.md
-        - name: Növekményes pillanatkép létrehozása – portál
-          href: disks-incremental-snapshots-portal.md
+        - name: Növekményes pillanatkép létrehozása
+          href: ../disks-incremental-snapshots.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Nem felügyelt lemezek biztonsági mentése
           href: incremental-snapshots.md
         - name: Titkosítás
@@ -851,7 +849,7 @@
             - name: Ultra szintű lemezek használata
               href: ../disks-enable-ultra-ssd.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Lemez teljesítménytesztelése
-              href: disks-benchmarks.md
+              href: ../disks-benchmarks.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Nem csatlakoztatott lemezek keresése – PowerShell
           href: find-unattached-disks.md
         - name: Nem csatlakoztatott lemezek keresése – portál

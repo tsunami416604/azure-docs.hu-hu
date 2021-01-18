@@ -1094,25 +1094,26 @@
     - name: Oktatóanyagok
       items:
         - name: Adatvizualizáció az Apache Spark használatával
+          displayname: machine learning
           href: ./spark/apache-spark-data-visualization-tutorial.md
-          displayname: machine learning
         - name: A pontozási varázsló használata a dedikált SQL-készletekhez
-          href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
           displayname: machine learning
+          href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
         - name: Modell kódolás nélküli betanítása automatizált gépi tanulással
+          displayname: machine learning
           href: ./machine-learning/tutorial-automl.md
         - name: Modell Pythonban történő betanítása automatizált gépi tanulással
+          displayname: machine learning
           href: ./spark/apache-spark-azure-machine-learning-tutorial.md
-          displayname: machine learning
         - name: Modell létrehozása az Apache Spark MLlib használatával
-          href: ./spark/apache-spark-machine-learning-mllib-notebook.md
           displayname: machine learning
+          href: ./spark/apache-spark-machine-learning-mllib-notebook.md
+        - name: A Cognitive Services konfigurálása az Azure Synapse-hez
+          href: ./machine-learning/tutorial-configure-cognitive-services-synapse.md
         - name: Hangulatelemzés a Cognitive Services használatával
           href: ./machine-learning/tutorial-cognitive-services-sentiment.md
         - name: Rendellenességek észlelése a Cognitive Services használatával
           href: ./machine-learning/tutorial-cognitive-services-anomaly.md
-        - name: A Cognitive Services konfigurálása az Azure Synapse-hez
-          href: ./machine-learning/tutorial-configure-cognitive-services-synapse.md
 - name: Adatkatalógus és adatgazdálkodás
   items:
     - name: Rövid útmutatók
