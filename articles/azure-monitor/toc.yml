@@ -571,7 +571,11 @@
             - name: Az ITSM-termékből szinkronizált adatok
               href: platform/itsmc-synced-data.md
             - name: Hibaelhárítás az ITSM-összekötőben
-              href: platform/itsmc-resync-servicenow.md
+              items:
+                - name: Áttekintés
+                  href: platform/itsmc-resync-servicenow.md
+                - name: Irányítópult vizsgálata
+                  href: platform/itsmc-dashboard.md
             - name: Integrálás a Secure Exporttal
               items:
                 - name: Áttekintés
