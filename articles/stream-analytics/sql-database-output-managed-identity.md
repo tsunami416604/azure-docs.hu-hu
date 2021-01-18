@@ -6,12 +6,12 @@ ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/30/2020
-ms.openlocfilehash: 244f8a446e33102e018881b3ec8f32ba9d8cbcc6
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 7d624f2dd2c0c9b4c7e99d5628a1d47e4303da7f
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014145"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555593"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-or-azure-synapse-analytics-from-an-azure-stream-analytics-job-preview"></a>Felügyelt identitások használata Azure SQL Database vagy Azure szinapszis Analytics eléréséhez egy Azure Stream Analytics feladatokból (előzetes verzió)
 
@@ -123,7 +123,7 @@ Miután létrehozott egy tárolt adatbázis-felhasználót, és hozzáférést k
 
 Miután létrehozott egy tárolt adatbázis-felhasználót, és hozzáférést kapott az Azure-szolgáltatásokhoz a portálon az előző szakaszban leírtak szerint, a Stream Analyticsi feladatnak rendelkeznie kell engedéllyel a felügyelt identitástól az Azure szinapszis adatbázis-erőforráshoz való **kapcsolódáshoz** a felügyelt identitáson keresztül. Javasoljuk, hogy az adatbázis TÖMEGES MŰVELETEInek kiválasztása, beszúrása és felügyelete engedélyeit a Stream Analytics feladathoz adja meg, mivel a Stream Analytics munkafolyamatban később szükség lesz rájuk. A **Select** engedély lehetővé teszi a feladatoknak, hogy tesztelje a kapcsolatát az Azure szinapszis-adatbázisban lévő táblával. Az **adatbázis TÖMEGES műveleteinek** **beszúrása** és felügyelete lehetővé teszi a végpontok közötti stream Analytics lekérdezések tesztelését, miután konfigurálta a bemenetet és az Azure szinapszis-adatbázis kimenetét.
 
-Ahhoz, hogy a felügyeleti adatbázis TÖMEGES műveletei engedélyt kapjanak, meg kell adnia minden olyan engedélyt, amely a **vezérlés alá tartozó vezérlőelemként** van megjelölve [a stream Analytics](/sql/t-sql/statements/grant-database-permissions-transact-sql?view=azure-sqldw-latest#remarks) feladatra vonatkozóan. Erre az engedélyre azért van szükség, mert a Stream Analytics feladat végrehajtja a COPY utasítást, amely megköveteli az [adatbázis TÖMEGES műveleteinek és beszúrásának felügyeletét](/sql/t-sql/statements/copy-into-transact-sql).
+Ahhoz, hogy a felügyeleti adatbázis TÖMEGES műveletei engedélyt kapjanak, meg kell adnia minden olyan engedélyt, amely a **vezérlés alá tartozó vezérlőelemként** van megjelölve [a stream Analytics](/sql/t-sql/statements/grant-database-permissions-transact-sql?view=azure-sqldw-latest&preserve-view=true#remarks) feladatra vonatkozóan. Erre az engedélyre azért van szükség, mert a Stream Analytics feladat végrehajtja a COPY utasítást, amely megköveteli az [adatbázis TÖMEGES műveleteinek és beszúrásának felügyeletét](/sql/t-sql/statements/copy-into-transact-sql).
 
 ---
 
@@ -179,7 +179,7 @@ Győződjön meg arról, hogy létrehozott egy táblát az Azure szinapszis-adat
 
 A Stream Analytics feladatokhoz létrehozott felügyelt identitást csak akkor törli a rendszer, ha a feladatot törlik. A felügyelt identitást nem lehet törölni a feladatok törlése nélkül. Ha már nem szeretné használni a felügyelt identitást, módosíthatja a kimenet hitelesítési módszerét. A felügyelt identitás továbbra is érvényben marad, amíg el nem törli a feladatot, és a rendszer akkor fogja használni, ha úgy dönt, hogy újra felügyelt identitás-hitelesítést használ.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Azure Stream Analytics kimenetének megismerése](stream-analytics-define-outputs.md)
 * [Azure Stream Analytics kimenet Azure SQL Database](stream-analytics-sql-output-perf.md)

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: ''
 ms.date: 05/04/2020
-ms.openlocfilehash: fd9e78b6bc3513f79b05c9522e891d346e3d31a0
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 754f58fe7ee9bc8d10ba1fa973615781ce4d6dce
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637513"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555916"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>Adatok növekményes betöltése az Azure SQL felügyelt példányairól az Azure Storage-ba az adatváltozások rögzítése (CDC) használatával
 
@@ -52,13 +52,13 @@ Ebben az oktatóanyagban létrehoz egy folyamatot, amely a következő művelete
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Azure SQL Database felügyelt példány** . Ezt az adatbázist használjuk **forrásadattárként** . Ha nem rendelkezik Azure SQL Database felügyelt példánnyal, tekintse meg az egy [Azure SQL Database felügyelt példány létrehozása](../azure-sql/managed-instance/instance-create-quickstart.md) című cikket a létrehozás lépéseihez.
-* **Azure Storage-fiók** . A blobtárolót használjuk majd **fogadóadattárként** . Ha még nem rendelkezik Azure Storage-fiókkal, a létrehozás folyamatáért lásd a [tárfiók létrehozását](../storage/common/storage-account-create.md) ismertető cikket. Hozzon létre egy **RAW** nevű tárolót. 
+* **Azure SQL Database felügyelt példány**. Ezt az adatbázist használjuk **forrásadattárként**. Ha nem rendelkezik Azure SQL Database felügyelt példánnyal, tekintse meg az egy [Azure SQL Database felügyelt példány létrehozása](../azure-sql/managed-instance/instance-create-quickstart.md) című cikket a létrehozás lépéseihez.
+* **Azure Storage-fiók**. A blobtárolót használjuk majd **fogadóadattárként**. Ha még nem rendelkezik Azure Storage-fiókkal, a létrehozás folyamatáért lásd a [tárfiók létrehozását](../storage/common/storage-account-create.md) ismertető cikket. Hozzon létre egy **RAW** nevű tárolót. 
 
 ### <a name="create-a-data-source-table-in-azure-sql-database"></a>Adatforrás-tábla létrehozása Azure SQL Databaseban
 
-1. Indítsa el **SQL Server Management Studio** , és kapcsolódjon az Azure SQL felügyelt példányok kiszolgálójához.
-2. A **Kiszolgálókezelőben** kattintson a jobb gombbal az **adatbázisra** , és válassza az **Új lekérdezés** elemet.
+1. Indítsa el **SQL Server Management Studio**, és kapcsolódjon az Azure SQL felügyelt példányok kiszolgálójához.
+2. A **Kiszolgálókezelőben** kattintson a jobb gombbal az **adatbázisra**, és válassza az **Új lekérdezés** elemet.
 3. Futtassa a következő SQL-parancsot az Azure SQL felügyelt példányok adatbázisán, és hozzon létre egy nevű táblát az `customers` adatforrás-tárolóban.  
 
     ```sql
@@ -75,7 +75,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
     > [!NOTE]
     > - Cserélje le &lt; a forrásoldali séma nevét a &gt; Customers (ügyfelek) táblát tartalmazó Azure SQL mi-sémára.
-    > - Az adatváltozások rögzítése nem tesz semmit a nyomon követett táblát módosító tranzakciók részeként. Ehelyett az INSERT, az Update és a DELETE művelet íródik a tranzakciónaplóba. A módosítási táblákban elhelyezett adatmennyiség nem felügyelhető, ha nem rendszeres időközönként és szisztematikusan aszalt szilva az adatmennyiséget. További információ: az [adatváltozások rögzítésének engedélyezése adatbázishoz](/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server?enable-change-data-capture-for-a-database=&view=sql-server-ver15)
+    > - Az adatváltozások rögzítése nem tesz semmit a nyomon követett táblát módosító tranzakciók részeként. Ehelyett az INSERT, az Update és a DELETE művelet íródik a tranzakciónaplóba. A módosítási táblákban elhelyezett adatmennyiség nem felügyelhető, ha nem rendszeres időközönként és szisztematikusan aszalt szilva az adatmennyiséget. További információ: az [adatváltozások rögzítésének engedélyezése adatbázishoz](/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server#enable-change-data-capture-for-a-database)
 
     ```sql
     EXEC sys.sp_cdc_enable_db 
@@ -103,11 +103,11 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 ## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
-1. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **adatok és Analitika**  >  **Data Factory** :
+1. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **adatok és Analitika**  >  **Data Factory**:
 
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-azure-data-factory-menu.png)
 
-2. Az **Új adat-előállító** lapon, a **Név** mezőben adja meg a következőt: **ADFTutorialDataFactory** .
+2. Az **Új adat-előállító** lapon, a **Név** mezőben adja meg a következőt: **ADFTutorialDataFactory**.
 
      ![Új adat-előállító lap](./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-azure-data-factory.png)
 
@@ -115,16 +115,16 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
     *A "ADFTutorialDataFactory" nevű adatgyár nem érhető el.*
 3. A **Verzió** résznél válassza a **V2** értéket.
-4. Válassza ki azt az **Azure-előfizetést** , amelyben az adat-előállítót létre szeretné hozni.
+4. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni.
 5. Az **erőforráscsoport** esetében hajtsa végre az alábbi lépések egyikét:
 
    1. Válassza a **meglévő használata** lehetőséget, majd válasszon ki egy meglévő erőforráscsoportot a legördülő listából.
    2. Válassza az **új létrehozása** lehetőséget, és adja meg az erőforráscsoport nevét.   
          
     Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
-5. Válassza ki a Data Factory **helyét** . A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
+5. Válassza ki a Data Factory **helyét**. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 6. Válassza ki a **git engedélyezése** lehetőséget.     
-7. Kattintson a **Létrehozás** gombra.
+7. Kattintson a **Létrehozás** lehetőségre.
 8. Miután az üzembe helyezés befejeződött, kattintson az **Ugrás erőforrásra** elemre.
 
    ![A képernyőképen egy üzenet jelenik meg, amely szerint a telepítés befejeződött, és az erőforráshoz való ugrás lehetősége.](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png)
@@ -142,7 +142,7 @@ Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattára
 ### <a name="create-azure-storage-linked-service"></a>Azure Storage-beli társított szolgáltatás létrehozása
 Ebben a lépésben az Azure Storage-fiókot társítja az adat-előállítóval.
 
-1. Kattintson a **Kapcsolatok** , majd az **+ Új** elemre.
+1. Kattintson a **Kapcsolatok**, majd az **+ Új** elemre.
 
    ![Új kapcsolat gomb](./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-connection-button-storage.png)
 2. A **New Linked Service** (Új társított szolgáltatás) ablakban válassza az **Azure Blob Storage** lehetőséget, majd kattintson a **Continue** (Folytatás) elemre.
@@ -163,11 +163,11 @@ Ebben a lépésben összekapcsolja az Azure SQL-adatbázisát az adatelőállít
 > [!NOTE]
 > Az SQL MI használatával a nyilvános és magánhálózati végponton keresztüli hozzáférésre vonatkozó információkat [itt](./connector-azure-sql-managed-instance.md#prerequisites) tekintheti meg. Ha az egyik privát végpontot használja, a folyamatot saját üzemeltetésű integrációs modul használatával kell futtatnia. Ugyanez vonatkozik azokra a SQL Server helyszíni gépekre is, amelyek virtuális gépeken vagy VNet-forgatókönyvekben futnak.
 
-1. Kattintson a **Kapcsolatok** , majd az **+ Új** elemre.
+1. Kattintson a **Kapcsolatok**, majd az **+ Új** elemre.
 2. Az **új társított szolgáltatás** ablakban válassza **Azure SQL Database felügyelt példány** lehetőséget, majd kattintson a **Folytatás** gombra.
 3. A **New Linked Service** (Új társított szolgáltatás) ablakban végezze el az alábbi lépéseket:
 
-   1. Adja **AzureSqlMI1** meg a AzureSqlMI1 **nevet a név** mezőben.
+   1. Adja  meg a AzureSqlMI1 **nevet a név** mezőben.
    2. Válassza ki a **kiszolgáló neve** mezőhöz tartozó SQL Servert.
    4. Válassza ki az **adatbázis neve** mezőhöz tartozó SQL-adatbázist.
    5. A **Felhasználónév** mezőben adja meg a felhasználó nevét.
@@ -192,8 +192,8 @@ Ebben a lépésben egy adatkészletet hoz létre, amely a forrásadatokat jelöl
    
 3. A **készlet tulajdonságai** lapon állítsa be az adatkészlet nevét és a kapcsolatok adatait:
  
-   1. Válassza a **AzureSqlMI1** elemet a **társított szolgáltatáshoz** .
-   2. Válassza a **[dbo] lehetőséget. [** a **tábla neve** dbo_customers_CT].  Megjegyzés: Ez a tábla automatikusan jött létre, amikor a CDC engedélyezve lett az ügyfelek táblában. A módosított adatok soha nem jelennek meg közvetlenül ebből a táblából, hanem a [CDC funkcióival](/sql/relational-databases/system-functions/change-data-capture-functions-transact-sql?view=sql-server-ver15)kinyerve.
+   1. Válassza a **AzureSqlMI1** elemet a **társított szolgáltatáshoz**.
+   2. Válassza a **[dbo] lehetőséget. [** a **tábla neve** dbo_customers_CT].  Megjegyzés: Ez a tábla automatikusan jött létre, amikor a CDC engedélyezve lett az ügyfelek táblában. A módosított adatok soha nem jelennek meg közvetlenül ebből a táblából, hanem a [CDC funkcióival](/sql/relational-databases/system-functions/change-data-capture-functions-transact-sql)kinyerve.
 
    ![Forráskapcsolat](./media/tutorial-incremental-copy-change-data-capture-feature-portal/source-dataset-configuration.png)
 
@@ -224,7 +224,7 @@ Ebben a lépésben létrehoz egy folyamatot, amely először ellenőrzi a válto
 1. A Data Factory felhasználói felületen váltson a **Szerkesztés** lapra. Kattintson a **+ (plusz)** gombra a bal oldali ablaktáblán, majd kattintson a **folyamat** elemre.
 
     ![Új folyamat menü](./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-pipeline-menu.png)
-2. Megjelenik egy új, a folyamat konfigurálására szolgáló lap. A folyamat fanézetben is megjelenik. A **Tulajdonságok** ablakban módosítsa a folyamat nevét a következőre: **IncrementalCopyPipeline** .
+2. Megjelenik egy új, a folyamat konfigurálására szolgáló lap. A folyamat fanézetben is megjelenik. A **Tulajdonságok** ablakban módosítsa a folyamat nevét a következőre: **IncrementalCopyPipeline**.
 
     ![Folyamat neve](./media/tutorial-incremental-copy-change-data-capture-feature-portal/incremental-copy-pipeline-name.png)
 3. A **Tevékenységek** eszközkészletben bontsa ki az **Általános** elemet, és húzza a **Keresés** tevékenységet a folyamat tervezőfelületére. Állítsa a tevékenység nevét **GetChangeCount** értékre. Ez a tevékenység beolvassa a rekordok számát a módosítási táblában egy adott időszakra vonatkozóan.
@@ -269,14 +269,14 @@ Ebben a lépésben létrehoz egy folyamatot, amely először ellenőrzi a válto
 8. Futtassa a folyamatot **hibakeresési** módban a folyamat sikeres végrehajtásának ellenőrzéséhez. 
 
    ![Folyamat – hibakeresés](./media/tutorial-incremental-copy-change-data-capture-feature-portal/incremental-copy-pipeline-debug.png)
-9. Ezután térjen vissza az igaz feltétel lépésre, és törölje a **várakozási** tevékenységet. A **tevékenységek** eszközkészletben bontsa ki az **Áthelyezés & átalakítás** elemet, majd húzza a **másolási** tevékenységet a folyamat tervező felületére. Állítsa a tevékenység nevét a következőre: **IncrementalCopyActivity** . 
+9. Ezután térjen vissza az igaz feltétel lépésre, és törölje a **várakozási** tevékenységet. A **tevékenységek** eszközkészletben bontsa ki az **Áthelyezés & átalakítás** elemet, majd húzza a **másolási** tevékenységet a folyamat tervező felületére. Állítsa a tevékenység nevét a következőre: **IncrementalCopyActivity**. 
 
    ![Másolási tevékenység – név](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-name.png)
 10. Váltson a **Forrás** lapra a **tulajdonságok** ablakában, és hajtsa végre a következő lépéseket:
 
    1. Adja meg a **forrás adatkészlet** mezőhöz tartozó SQL mi adatkészlet nevét. 
    2. A **Lekérdezés használata** elemnél válassza a **Lekérdezés** lehetőséget.
-   3. Adja meg a következőt a **lekérdezéshez** .
+   3. Adja meg a következőt a **lekérdezéshez**.
 
       ```sql
       DECLARE @from_lsn binary(10), @to_lsn binary(10); 
@@ -309,7 +309,7 @@ Ebben a lépésben létrehoz egy folyamatot, amely először ellenőrzi a válto
 ### <a name="configure-the-tumbling-window-trigger-and-cdc-window-parameters"></a>A bukdácsoló ablak trigger és a CDC ablak paramétereinek konfigurálása 
 Ebben a lépésben egy kieséses ablakos triggert hoz létre, amely rendszeres időközönként futtatja a feladatot. A WindowStart és a WindowEnd rendszerváltozóit fogja használni a bukdácsoló ablakos triggerhez, és paraméterként továbbítja őket a folyamathoz a CDC-lekérdezésben való használathoz.
 
-1. Navigáljon a **IncrementalCopyPipeline** folyamat **Parameters (paraméterek** ) lapjára, és használja a folyamathoz a **+ New (+ új** ) gombot, és adja hozzá a két paramétert ( **triggerStartTime** és **triggerEndTime** ). Hibakeresési célokra adja hozzá az alapértelmezett értékeket az **éééé-hh-nn HH24: mi: SS. fff** formátumban, de győződjön meg arról, hogy a TRIGGERSTARTTIME a CDC előtt nem engedélyezett a táblán, ellenkező esetben hibaüzenetet fog eredményezni.
+1. Navigáljon a **IncrementalCopyPipeline** folyamat **Parameters (paraméterek** ) lapjára, és használja a folyamathoz a **+ New (+ új** ) gombot, és adja hozzá a két paramétert (**triggerStartTime** és **triggerEndTime**). Hibakeresési célokra adja hozzá az alapértelmezett értékeket az **éééé-hh-nn HH24: mi: SS. fff** formátumban, de győződjön meg arról, hogy a TRIGGERSTARTTIME a CDC előtt nem engedélyezett a táblán, ellenkező esetben hibaüzenetet fog eredményezni.
 
     ![Aktiválás most menü](./media/tutorial-incremental-copy-change-data-capture-feature-portal/incremental-copy-pipeline-parameters.png)
 2. Kattintson a **keresési** tevékenység beállítások fülére, és konfigurálja a lekérdezést a kezdő és a záró paraméterek használatára. Másolja a következőt a lekérdezésbe:
@@ -369,7 +369,7 @@ Ebben a lépésben egy kieséses ablakos triggert hoz létre, amely rendszeres i
 
    2. Adja meg az trigger nevét, és adjon meg egy kezdési időpontot, amely megegyezik a fenti hibakeresési időszak befejezési időpontjával.
 
-   ![Átfedésmentes ablakos eseményindító](./media/tutorial-incremental-copy-change-data-capture-feature-portal/tumbling-window-trigger.png)
+   ![Ablak kiesése trigger](./media/tutorial-incremental-copy-change-data-capture-feature-portal/tumbling-window-trigger.png)
 
    3. A következő képernyőn a kezdő és a záró paraméterekhez a következő értékeket kell megadnia.
     ```sql

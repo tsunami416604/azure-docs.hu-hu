@@ -10,12 +10,12 @@ author: meiyl
 ms.reviewer: sawinark
 manager: yidetu
 ms.date: 06/07/2020
-ms.openlocfilehash: ede36b20353f00ed9a4f80bec2d7bc5a3512a9ea
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 698a9c062596a3439d95ac0d586854fc6616fdd6
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637955"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556545"
 ---
 # <a name="use-the-diagnose-connectivity-feature-in-the-ssis-integration-runtime"></a>Használja a kapcsolat diagnosztizálása funkciót a SSIS Integration Runtime-ban
 
@@ -38,13 +38,13 @@ A következő fejezetekben megismerheti a kapcsolatok tesztelésekor előfordul�
 
 ## <a name="error-code-invalidinput"></a>Hibakód: InvalidInput
 
-- **Hibaüzenet** : "Ellenőrizze, hogy helyes-e a bevitele."
-- **Lehetséges ok** : helytelen a bevitele.
-- **Javaslat** : vizsgálja meg a bemenetet.
+- **Hibaüzenet**: "Ellenőrizze, hogy helyes-e a bevitele."
+- **Lehetséges ok**: helytelen a bevitele.
+- **Javaslat**: vizsgálja meg a bemenetet.
 
 ## <a name="error-code-firewallornetworkissue"></a>Hibakód: FirewallOrNetworkIssue
 
-- **Hibaüzenet** : "Ellenőrizze, hogy a port nyitva van-e a tűzfalon/kiszolgálón/NSG, és hogy a hálózat stabil-e."
+- **Hibaüzenet**: "Ellenőrizze, hogy a port nyitva van-e a tűzfalon/kiszolgálón/NSG, és hogy a hálózat stabil-e."
 - **Lehetséges okok:**
   - A kiszolgáló nem nyitja meg a portot.
   - A hálózati biztonsági csoport elutasította a kimenő forgalmat a porton.
@@ -56,7 +56,7 @@ A következő fejezetekben megismerheti a kapcsolatok tesztelésekor előfordul�
 
 ## <a name="error-code-misconfigureddnssettings"></a>Hibakód: MisconfiguredDnsSettings
 
-- **Hibaüzenet** : "Ha saját DNS-kiszolgálót használ a Azure-SSIS IRhoz csatlakoztatott VNet, ellenőrizze, hogy képes-e az állomásnév feloldására."
+- **Hibaüzenet**: "Ha saját DNS-kiszolgálót használ a Azure-SSIS IRhoz csatlakoztatott VNet, ellenőrizze, hogy képes-e az állomásnév feloldására."
 - **Lehetséges okok:**
   -  Probléma van az egyéni DNS-sel.
   -  Nem teljes tartománynevet (FQDN) használ a saját gazdagép neveként.
@@ -66,7 +66,7 @@ A következő fejezetekben megismerheti a kapcsolatok tesztelésekor előfordul�
 
 ## <a name="error-code-servernotallowremoteconnection"></a>Hibakód: ServerNotAllowRemoteConnection
 
-- **Hibaüzenet** : "Ellenőrizze, hogy a kiszolgáló engedélyezi-e a távoli TCP-kapcsolatokat ezen a porton keresztül."
+- **Hibaüzenet**: "Ellenőrizze, hogy a kiszolgáló engedélyezi-e a távoli TCP-kapcsolatokat ezen a porton keresztül."
 - **Lehetséges okok:**
   -  A kiszolgáló tűzfala nem engedélyezi a távoli TCP-kapcsolatokat.
   -  A kiszolgáló nem online állapotú.
@@ -76,7 +76,7 @@ A következő fejezetekben megismerheti a kapcsolatok tesztelésekor előfordul�
    
 ## <a name="error-code-misconfigurednsgsettings"></a>Hibakód: MisconfiguredNsgSettings
 
-- **Hibaüzenet** : "Ellenőrizze, hogy a VNet NSG engedélyezi-e a kimenő forgalmat ezen a porton keresztül. Ha Azure ExpressRoute és UDR használ, ellenőrizze, hogy a port nyitva van-e a tűzfalon/kiszolgálón. "
+- **Hibaüzenet**: "Ellenőrizze, hogy a VNet NSG engedélyezi-e a kimenő forgalmat ezen a porton keresztül. Ha Azure ExpressRoute és UDR használ, ellenőrizze, hogy a port nyitva van-e a tűzfalon/kiszolgálón. "
 - **Lehetséges okok:**
   -  A hálózati biztonsági csoport elutasította a kimenő forgalmat a porton.
   -  A NVA/Azure Firewall/helyszíni tűzfal nem nyitja meg a portot.
@@ -86,24 +86,24 @@ A következő fejezetekben megismerheti a kapcsolatok tesztelésekor előfordul�
 
 ## <a name="error-code-genericissues"></a>Hibakód: GenericIssues
 
-- **Hibaüzenet** : "a kapcsolódási teszt általános problémák miatt nem sikerült."
-- **Lehetséges ok** : a tesztelési kapcsolatban általános átmeneti probléma merült fel.
-- **Javaslat** : később próbálkozzon újra a tesztelési kapcsolatban. Ha az Újrapróbálkozás nem segít, lépjen kapcsolatba a Azure Data Factory támogatási csapatával.
+- **Hibaüzenet**: "a kapcsolódási teszt általános problémák miatt nem sikerült."
+- **Lehetséges ok**: a tesztelési kapcsolatban általános átmeneti probléma merült fel.
+- **Javaslat**: később próbálkozzon újra a tesztelési kapcsolatban. Ha az Újrapróbálkozás nem segít, lépjen kapcsolatba a Azure Data Factory támogatási csapatával.
 
 ## <a name="error-code-pspingexecutiontimeout"></a>Hibakód: PSPingExecutionTimeout
 
-- **Hibaüzenet** : "a kapcsolat időtúllépésének tesztelése, próbálkozzon újra később."
-- **Lehetséges ok** : a kapcsolat tesztelése időtúllépés miatt megszakadt.
-- **Javaslat** : később próbálkozzon újra a tesztelési kapcsolatban. Ha az Újrapróbálkozás nem segít, lépjen kapcsolatba a Azure Data Factory támogatási csapatával.
+- **Hibaüzenet**: "a kapcsolat időtúllépésének tesztelése, próbálkozzon újra később."
+- **Lehetséges ok**: a kapcsolat tesztelése időtúllépés miatt megszakadt.
+- **Javaslat**: később próbálkozzon újra a tesztelési kapcsolatban. Ha az Újrapróbálkozás nem segít, lépjen kapcsolatba a Azure Data Factory támogatási csapatával.
 
 ## <a name="error-code-networkinstable"></a>Hibakód: NetworkInstable
 
-- **Hibaüzenet** : "a hálózat instabilitása miatt szabálytalanul sikerült tesztelni a kapcsolódást."
-- **Lehetséges ok** : átmeneti hálózati probléma.
-- **Javaslat** : Győződjön meg arról, hogy a kiszolgáló vagy a tűzfal hálózata stabil-e.
+- **Hibaüzenet**: "a hálózat instabilitása miatt szabálytalanul sikerült tesztelni a kapcsolódást."
+- **Lehetséges ok**: átmeneti hálózati probléma.
+- **Javaslat**: Győződjön meg arról, hogy a kiszolgáló vagy a tűzfal hálózata stabil-e.
 
 ## <a name="next-steps"></a>Következő lépések
 
 - [SSIS-projekt üzembe helyezése az Azure-ban a SSMS használatával](/sql/integration-services/ssis-quickstart-deploy-ssms)
 - [SSIS-csomagok futtatása az Azure-ban a SSMS](/sql/integration-services/ssis-quickstart-run-ssms)
-- [SSIS-csomagok ütemezett beosztása az Azure-ban](/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15)
+- [SSIS-csomagok ütemezett beosztása az Azure-ban](/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)

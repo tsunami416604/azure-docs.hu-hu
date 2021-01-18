@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: b4902e1fb7a2a181d3d5b2ce2ac6d1d458500fce
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 9609c382161514611ddc41af040e8fb438431fdf
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844182"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556001"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>A csomagok végrehajtásának megoldása a SSIS Integration Runtime-ban
 
@@ -28,7 +28,7 @@ Ez a cikk a SQL Server Integration Services-(SSIS-) csomagok a SSIS Integration 
 
 A SSIS-csomag végrehajtási tevékenység kimenetének vizsgálatához használja a Azure Data Factory portált. A kimenet tartalmazza a végrehajtás eredményét, a hibaüzeneteket és a művelet AZONOSÍTÓját. Részletekért lásd: [a folyamat figyelése](how-to-invoke-ssis-package-ssis-activity.md#monitor-the-pipeline).
 
-A SSIS-katalógus (SSISDB) segítségével keresse meg a végrehajtás részletes naplóit. Részletekért lásd: [futó csomagok és egyéb műveletek figyelése](/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017).
+A SSIS-katalógus (SSISDB) segítségével keresse meg a végrehajtás részletes naplóit. Részletekért lásd: [futó csomagok és egyéb műveletek figyelése](/sql/integration-services/performance/monitor-running-packages-and-other-operations).
 
 ## <a name="common-errors-causes-and-solutions"></a>Gyakori hibák, okok és megoldások
 
@@ -91,7 +91,7 @@ Ez a hiba azt jelenti, hogy a helyi lemez a SSIS Integration Runtime csomópontj
 Ez a hiba akkor fordul elő, ha a csomag végrehajtása nem talál fájlt a helyi lemezen a SSIS Integration Runtime-ban. Próbálkozzon a következő műveletekkel:
 * Ne használja az abszolút elérési utat a SSIS Integration Runtime-ban végrehajtandó csomagban. A jelenlegi végrehajtási munkakönyvtár (.) vagy a temp mappa (% TEMP%) használata helyett.
 * Ha néhány fájlt meg kell őriznie a SSIS Integration Runtime csomópontjain, készítse elő a fájlokat a [konfiguráció testreszabása](how-to-configure-azure-ssis-ir-custom-setup.md)című részben leírtak szerint. A rendszer a munkakönyvtárban lévő összes fájlt törli a végrehajtás befejezése után.
-* A SSIS Integration Runtime csomópontjában a fájl tárolása helyett használja a Azure Files. Részletekért lásd: [Az Azure-fájlmegosztás használata](/sql/integration-services/lift-shift/ssis-azure-files-file-shares?view=sql-server-2017#use-azure-file-shares).
+* A SSIS Integration Runtime csomópontjában a fájl tárolása helyett használja a Azure Files. Részletekért lásd: [Az Azure-fájlmegosztás használata](/sql/integration-services/lift-shift/ssis-azure-files-file-shares#use-azure-file-shares).
 
 ### <a name="error-message-the-database-ssisdb-has-reached-its-size-quota"></a>Hibaüzenet: "a (z) SSISDB adatbázis elérte a méretre vonatkozó kvótát"
 
@@ -154,7 +154,7 @@ Az egyik lehetséges ok az Self-Hosted Integration Runtime telepítése vagy fri
 
 * Lehetséges ok és javasolt művelet:
   * Ha a végrehajtási naplóban "az összetevő nem támogatja a Csatlakozáskezelő és a ConnectByProxy értéke true" beállítást, ez azt jelenti, hogy a Csatlakozáskezelő olyan összetevőn van használatban, amely még nem támogatott "ConnectByProxy". A támogatott összetevők a következő helyen találhatók: [Self-Hosted IR beállítása proxyként Azure-SSIS IRhoz az ADF-ben](self-hosted-integration-runtime-proxy-ssis.md#enable-ssis-packages-to-connect-by-proxy)
-  * A végrehajtási napló a SSMS- [jelentésben](/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017#reports) vagy a SSIS-csomag végrehajtási tevékenységében megadott log mappában található.
+  * A végrehajtási napló a SSMS- [jelentésben](/sql/integration-services/performance/monitor-running-packages-and-other-operations#reports) vagy a SSIS-csomag végrehajtási tevékenységében megadott log mappában található.
   * a vNet használható a helyszíni adatkapcsolatok Alternatív megoldásként való elérésére is. További részleteket az [Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz](join-azure-ssis-integration-runtime-virtual-network.md) című rész tartalmaz.
 
 ### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>Hibaüzenet: "az előkészítési feladat állapota: sikertelen. Előkészítési feladat hibája: ErrorCode: 2906, ErrorMessage: a csomag végrehajtása nem sikerült., kimenet: {"OperationErrorMessages": "SSIS végrehajtó kilépési kód:-1. \ n", "LogLocation": "... \\ SSISTelemetry \\ ExecutionLog \\ ... "," effectiveIntegrationRuntime ":"... "," executionDuration ":...," durationInQueue ": {" integrationRuntimeQueue ":...}}"

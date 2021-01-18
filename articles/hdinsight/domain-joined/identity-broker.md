@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: c6bc5ca748a35b17c61d314e96f7284d30e7fc3b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b8dfe9a23e5c6697323142212156006cb65d2f9b
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96338129"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556528"
 ---
 # <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight ID Broker (HIB)
 
@@ -126,9 +126,9 @@ A hitelesítési problémák elhárításához tekintse meg [ezt az útmutatót]
 
 A HDInsight ID Broker beállításban az átjáróhoz csatlakozó egyéni alkalmazások és ügyfelek frissíthetők a szükséges OAuth-token beszerzéséhez. Kövesse a [jelen dokumentumban](../../storage/common/storage-auth-aad-app.md) ismertetett lépéseket a jogkivonat megszerzéséhez a következő információkkal:
 
-*   OAuth erőforrás URI-ja: `https://hib.azurehdinsight.net` 
+*    OAuth erőforrás URI-ja: `https://hib.azurehdinsight.net` 
 *   AppId: 7865c1d2-f040-46cc-875f-831a1ef6a28a
-*   Engedély: (név: cluster. ReadWrite, azonosító: 8f89faa0-ffef-4007-974d-4989b39ad77d)
+*    Engedély: (név: cluster. ReadWrite, azonosító: 8f89faa0-ffef-4007-974d-4989b39ad77d)
 
 Az OAuth-jogkivonat beszerzése után a HTTP-kérelem engedélyezési fejlécében használja a fürt átjáróját (például https:// <clustername> -int.azurehdinsight.net). Az Apache Livy API-hoz hasonló minta curl-parancs a következő példához hasonlóan néz ki:
     
@@ -146,7 +146,7 @@ Minden egyes fürthöz egy harmadik féltől származó alkalmazás lesz regiszt
 A HRE-ben minden harmadik féltől származó alkalmazáshoz beleegyezett, mielőtt hitelesíteni tudja a felhasználókat vagy az adatelérést.
 
 ### <a name="can-the-consent-be-approved-programatically"></a>Jóvá lehet-e hagyni a jóváhagyást programozott módon?
-A Microsoft Graph API lehetővé teszi a beleegyezikés automatizálását: az [API dokumentációja](/graph/api/resources/oauth2permissiongrant?view=graph-rest-1.0) , amely automatizálja a beleegyezik, a következőt:
+A Microsoft Graph API lehetővé teszi a beleegyezikés automatizálását: az [API dokumentációja](/graph/api/resources/oauth2permissiongrant) , amely automatizálja a beleegyezik, a következőt:
 
 * Regisztráljon egy alkalmazást, és adja meg az Application. ReadWrite. All engedélyeket az alkalmazáshoz, hogy hozzáférjen Microsoft Graph
 * Miután létrehozta a fürtöt, az azonosító URI alapján kérdezi le a fürtöt.
@@ -157,7 +157,7 @@ Ha a fürt törölve lett, a HDInsight törli az alkalmazást, és nincs szüks�
  
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [HDInsight-fürt konfigurálása Enterprise Security Package használatával Azure Active Directory Domain Services](apache-domain-joined-configure-using-azure-adds.md)
 * [Azure Active Directory-felhasználók HDInsight-fürttel való szinkronizálása](../hdinsight-sync-aad-users-to-cluster.md)

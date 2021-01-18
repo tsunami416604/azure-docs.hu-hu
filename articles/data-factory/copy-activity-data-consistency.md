@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
-ms.openlocfilehash: 3591bfe046fa1c3e1e55aa49a0ae3ad698bc57b3
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 274250fecdf69b6a488c33ff25df3728a1c90af0
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593671"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556375"
 ---
 #  <a name="data-consistency-verification-in-copy-activity"></a>Adatkonzisztencia-ellenőrzés a másolási tevékenységben
 
@@ -74,14 +74,14 @@ Az alábbi példa egy JSON-definíciót biztosít az adatkonzisztencia-ellenőrz
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | -------- 
-validateDataConsistency | Ha a True értéket állítja be ehhez a tulajdonsághoz, a bináris fájlok másolásakor a másolási tevékenység a forrás és a cél tároló közötti adatkonzisztencia biztosítása érdekében minden bináris fájl esetében a fájl méretét, lastModifiedDate és MD5 ellenőrzőösszegét fogja ellenőrizni. Táblázatos adatok másolásakor a másolási tevékenység a feladatok befejezése után ellenőrizni fogja a sorok teljes számát, így biztosítva, hogy a forrásból beolvasott sorok teljes száma megegyezzen a célhelyre másolt sorok számával és a kihagyott inkompatibilis sorok számával. Vegye figyelembe, hogy a másolási teljesítmény a beállítás engedélyezésével lesz hatással.  | Igaz<br/>False (alapértelmezett) | Nem
-dataInconsistency | A skipErrorFile tulajdonság táska egyik kulcs-érték párja, amely meghatározza, hogy ki szeretné-e hagyni a inkonzisztens fájlokat. <br/> -True (igaz): az inkonzisztens fájlok kihagyásával szeretné átmásolni a többit.<br/> -False (hamis): a másolási tevékenységet a fájl inkonzisztens leállítása után szeretné megszakítani.<br/>Ügyeljen arra, hogy ez a tulajdonság csak akkor érvényes, ha bináris fájlokat másol, és a validateDataConsistency értéke TRUE (igaz).  | Igaz<br/>False (alapértelmezett) | Nem
-logSettings | Olyan tulajdonságok csoportja, amelyek lehetővé teszik a munkamenet naplójának a kihagyott fájlok naplóba való beadását. | | Nem
-linkedServiceName | Az [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) vagy [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) társított szolgáltatása a munkamenet naplófájljainak tárolására. | Egy `AzureBlobStorage` vagy több `AzureBlobFS` típusú társított szolgáltatás neve, amely a naplófájlok tárolásához használt példányra hivatkozik. | Nem
-path | A naplófájlok elérési útja. | Itt adhatja meg a naplófájlok tárolásához használni kívánt elérési utat. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót. | Nem
+validateDataConsistency | Ha a True értéket állítja be ehhez a tulajdonsághoz, a bináris fájlok másolásakor a másolási tevékenység a forrás és a cél tároló közötti adatkonzisztencia biztosítása érdekében minden bináris fájl esetében a fájl méretét, lastModifiedDate és MD5 ellenőrzőösszegét fogja ellenőrizni. Táblázatos adatok másolásakor a másolási tevékenység a feladatok befejezése után ellenőrizni fogja a sorok teljes számát, így biztosítva, hogy a forrásból beolvasott sorok teljes száma megegyezzen a célhelyre másolt sorok számával és a kihagyott inkompatibilis sorok számával. Vegye figyelembe, hogy a másolási teljesítmény a beállítás engedélyezésével lesz hatással.  | Igaz<br/>False (alapértelmezett) | No
+dataInconsistency | A skipErrorFile tulajdonság táska egyik kulcs-érték párja, amely meghatározza, hogy ki szeretné-e hagyni a inkonzisztens fájlokat. <br/> -True (igaz): az inkonzisztens fájlok kihagyásával szeretné átmásolni a többit.<br/> -False (hamis): a másolási tevékenységet a fájl inkonzisztens leállítása után szeretné megszakítani.<br/>Ügyeljen arra, hogy ez a tulajdonság csak akkor érvényes, ha bináris fájlokat másol, és a validateDataConsistency értéke TRUE (igaz).  | Igaz<br/>False (alapértelmezett) | No
+logSettings | Olyan tulajdonságok csoportja, amelyek lehetővé teszik a munkamenet naplójának a kihagyott fájlok naplóba való beadását. | | No
+linkedServiceName | Az [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) vagy [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) társított szolgáltatása a munkamenet naplófájljainak tárolására. | Egy `AzureBlobStorage` vagy több `AzureBlobFS` típusú társított szolgáltatás neve, amely a naplófájlok tárolásához használt példányra hivatkozik. | No
+path | A naplófájlok elérési útja. | Itt adhatja meg a naplófájlok tárolásához használni kívánt elérési utat. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót. | No
 
 >[!NOTE]
->- Ha bináris fájlokat másol a vagy az Azure Blobba vagy Azure Data Lake Storage Gen2ba, az ADF az [Azure Blob API](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy) -t és a [Azure Data Lake Storage Gen2 API](/rest/api/storageservices/datalakestoragegen2/path/update#request-headers)-t kihasználva blokkolja a szintű MD5 ellenőrzőösszeg-ellenőrzést. Ha az Azure blobon vagy Azure Data Lake Storage Gen2 adatforrásként ContentMD5 vannak, az ADF a fájlok elolvasása után a fájl szintű MD5 ellenőrzőösszeg-ellenőrzést is támogatja. Miután fájlokat másol az Azure Blobba vagy Azure Data Lake Storage Gen2 adatcélhelyként, az ADF az Azure Blobba vagy Azure Data Lake Storage Gen2ba írja az ContentMD5, amelyet az alárendelt alkalmazások tovább használhatnak adatkonzisztencia-ellenőrzés céljából.
+>- Ha bináris fájlokat másol a vagy az Azure Blobba vagy Azure Data Lake Storage Gen2ba, az ADF az [Azure Blob API](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy&preserve-view=true) -t és a [Azure Data Lake Storage Gen2 API](/rest/api/storageservices/datalakestoragegen2/path/update#request-headers)-t kihasználva blokkolja a szintű MD5 ellenőrzőösszeg-ellenőrzést. Ha az Azure blobon vagy Azure Data Lake Storage Gen2 adatforrásként ContentMD5 vannak, az ADF a fájlok elolvasása után a fájl szintű MD5 ellenőrzőösszeg-ellenőrzést is támogatja. Miután fájlokat másol az Azure Blobba vagy Azure Data Lake Storage Gen2 adatcélhelyként, az ADF az Azure Blobba vagy Azure Data Lake Storage Gen2ba írja az ContentMD5, amelyet az alárendelt alkalmazások tovább használhatnak adatkonzisztencia-ellenőrzés céljából.
 >- Az ADF a fájl méretének ellenőrzését végzi a bináris fájlok bármely tárolási tároló közötti másolásakor.
 
 ## <a name="monitoring"></a>Figyelés
@@ -109,14 +109,14 @@ A másolási tevékenység teljes futtatása után megtekintheti az adatkonziszt
 Az adatkonzisztencia-ellenőrzés részleteit a "dataConsistencyVerification" tulajdonságban tekintheti meg.
 
 **VerificationResult** értéke: 
--   **Ellenőrizve** : a másolt adatai konzisztensek a forrás-és a célhely-tároló között. 
--   **NotVerified** : a másolt adatait nem ellenőrizte, hogy konzisztensek legyenek, mert nem engedélyezte a validateDataConsistency a másolási tevékenységben. 
--   Nem **támogatott** : a másolt adatok nem lettek konzisztensek, mert az adatkonzisztencia-ellenőrzés nem támogatott az adott másolási pár esetében. 
+-   **Ellenőrizve**: a másolt adatai konzisztensek a forrás-és a célhely-tároló között. 
+-   **NotVerified**: a másolt adatait nem ellenőrizte, hogy konzisztensek legyenek, mert nem engedélyezte a validateDataConsistency a másolási tevékenységben. 
+-   Nem **támogatott**: a másolt adatok nem lettek konzisztensek, mert az adatkonzisztencia-ellenőrzés nem támogatott az adott másolási pár esetében. 
 
 **InconsistentData** értéke: 
--   **Found** : Az ADF másolási tevékenysége inkonzisztens adathalmazt talált. 
--   **Kihagyva** : Az ADF-másolási tevékenység megtalálta és kihagyta a inkonzisztens adatértékeket. 
--   **Nincs** : Az ADF másolási tevékenysége nem talált inkonzisztens adathalmazt. Ennek oka az lehet, hogy az adatai konzisztensek a forrás-és a célhelyek között, vagy azért, mert letiltotta a validateDataConsistency a másolási tevékenységben. 
+-   **Found**: Az ADF másolási tevékenysége inkonzisztens adathalmazt talált. 
+-   **Kihagyva**: Az ADF-másolási tevékenység megtalálta és kihagyta a inkonzisztens adatértékeket. 
+-   **Nincs**: Az ADF másolási tevékenysége nem talált inkonzisztens adathalmazt. Ennek oka az lehet, hogy az adatai konzisztensek a forrás-és a célhelyek között, vagy azért, mert letiltotta a validateDataConsistency a másolási tevékenységben. 
 
 ### <a name="session-log-from-copy-activity"></a>Munkamenet-napló a másolási tevékenységből
 
@@ -126,8 +126,8 @@ A naplófájl sémája a következő:
 
 Oszlop | Leírás 
 -------- | -----------  
-Timestamp | A nem konzisztens fájlok kihagyása az ADF-ben.
-Szint | Az adott tétel naplózási szintje. A fájl kihagyása esetén a rendszer figyelmeztetési szinten jeleníti meg az elemeket.
+Időbélyeg | A nem konzisztens fájlok kihagyása az ADF-ben.
+Level | Az adott tétel naplózási szintje. A fájl kihagyása esetén a rendszer figyelmeztetési szinten jeleníti meg az elemeket.
 OperationName | Az ADF másolási tevékenységének működési viselkedése minden fájlban. A kihagyni kívánt fájl megadásához "FileSkip" lesz.
 OperationItem | A kihagyni kívánt fájl neve.
 Üzenet | További információ a kihagyott fájlok okának szemléltetéséről.

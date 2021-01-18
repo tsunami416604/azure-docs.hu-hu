@@ -223,14 +223,12 @@
           items:
             - name: Renderelés az Azure használatával
               href: batch-rendering-service.md
-            - name: Virtuálisgép-rendszerképek renderelése
+            - name: Batch Rendering – virtuálisgép-rendszerképek
               href: batch-rendering-applications.md
             - name: A Batch Rendering szolgáltatás képességei
               href: batch-rendering-functionality.md
             - name: A Batch Rendering használata
               href: batch-rendering-using.md
-            - name: Rendereléskezelők használata
-              href: batch-rendering-render-managers.md
             - name: Alkalmazásreferencia renderelése
               href: batch-rendering-application-reference.md
             - name: Tárolás és adatáthelyezés

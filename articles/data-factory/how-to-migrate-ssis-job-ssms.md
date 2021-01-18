@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
-ms.openlocfilehash: 5566717387f6da375129a0e70c9ad825198d66b7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1072f915c5d8483676874422703820dc75719256
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005707"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555746"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>SQL Server Agent feladatok migrálása az ADF-be a SSMS-mel
 
@@ -41,7 +41,7 @@ Helyszíni [SQL Server Integration Services (SSIS) számítási feladatok ADF-be
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikkben ismertetett szolgáltatáshoz SQL Server Management Studio 18,5-es vagy újabb verziójúnak kell lennie. A SSMS legújabb verziójának beszerzéséhez tekintse meg a [SQL Server Management Studio letöltése (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)című témakört.
+A cikkben ismertetett szolgáltatáshoz SQL Server Management Studio 18,5-es vagy újabb verziójúnak kell lennie. A SSMS legújabb verziójának beszerzéséhez tekintse meg a [SQL Server Management Studio letöltése (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)című témakört.
 
 ## <a name="migrate-ssis-jobs-to-adf"></a>SSIS-feladatok migrálása az ADF-be
 
@@ -80,6 +80,6 @@ A cikkben ismertetett szolgáltatáshoz SQL Server Management Studio 18,5-es vag
 1. Telepítse át, majd vizsgálja meg az eredményeket.
 ![A képernyőképen az áttelepítési eredmény lap látható, amely megjeleníti az áttelepítés előrehaladását.](media/how-to-migrate-ssis-job-ssms/step5.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Folyamat futtatása és figyelése](how-to-invoke-ssis-package-ssis-activity.md)

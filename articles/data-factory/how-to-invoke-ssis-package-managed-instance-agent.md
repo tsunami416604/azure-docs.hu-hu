@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lle
 author: lle
 ms.date: 04/14/2020
-ms.openlocfilehash: 98484655dec069c3a284dce0ea83477faf75d9a8
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 5f8b18375c517ab5b620b2d6d897f5133b14705d
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637751"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556460"
 ---
 # <a name="run-ssis-packages-by-using-azure-sql-managed-instance-agent"></a>SSIS-csomagok futtatása az Azure SQL felügyelt példány-ügynök használatával
 
@@ -24,7 +24,7 @@ Ezzel a szolgáltatással futtathatja a SSISDB-ben tárolt SSIS-csomagokat egy S
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A szolgáltatás használatához [töltse le](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) és telepítse a legújabb SQL Server Management Studiot (SSMS). A verzió támogatásának részletei az alábbiak szerint:
+A szolgáltatás használatához [töltse le](/sql/ssms/download-sql-server-management-studio-ssms) és telepítse a legújabb SQL Server Management Studiot (SSMS). A verzió támogatásának részletei az alábbiak szerint:
 
 - A csomagok SSISDB vagy fájlrendszerben történő futtatásához telepítse a SSMS 18,5-es vagy újabb verzióját.
 - Ha csomagokat szeretne futtatni a Package Store-ban, telepítse a SSMS 18,6-es vagy újabb verzióját.
@@ -52,7 +52,7 @@ Ebben az eljárásban az SQL felügyelt példány-ügynök használatával megh�
 
 1. A **konfiguráció** lapon a következőket teheti:
   
-   - A paraméterek területen állítsa be a **paramétereket** .
+   - A paraméterek területen állítsa be a **paramétereket**.
    - Felülbírálja az értékeket a **kapcsolatkezelő** alatt.
    - Bírálja felül a tulajdonságot, és válassza a naplózási szintet a **speciális** területen.
 
@@ -78,7 +78,7 @@ Ebben az eljárásban az SQL felügyelt példány-ügynök használatával futta
 
    1. A **csomag helye** területen válassza a **fájlrendszer** lehetőséget.
 
-   1. A **forrásfájl típusa** :
+   1. A **forrásfájl típusa**:
 
       - Ha a csomag fel van töltve Azure Filesre, válassza az **Azure-fájlmegosztás** lehetőséget.
 
@@ -86,7 +86,7 @@ Ebben az eljárásban az SQL felügyelt példány-ügynök használatával futta
 
         A csomag elérési útja: **`\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`** .
 
-        Az Azure-fájl eléréséhez adja meg az Azure-fiók nevét és a fiók kulcsát a **fájl-hozzáférési hitelesítő adatok** megadása alatt. A tartomány az **Azure** -ban van beállítva.
+        Az Azure-fájl eléréséhez adja meg az Azure-fiók nevét és a fiók kulcsát a **fájl-hozzáférési hitelesítő adatok** megadása alatt. A tartomány az **Azure**-ban van beállítva.
 
       - Ha a csomag egy hálózati megosztásra van feltöltve, válassza a **hálózati megosztás** lehetőséget.
 
@@ -123,7 +123,7 @@ Ebben az eljárásban az SQL felügyelt példány-ügynök használatával futta
 
    1. A **csomag helye** területen válassza a **csomag tároló** elemet.
 
-   1. **Csomag elérési útja** :
+   1. **Csomag elérési útja**:
 
       A csomag elérési útja: **`<package store name>\<folder name>\<package name>`** .
 
@@ -146,12 +146,12 @@ Ebben az eljárásban az SQL felügyelt példány-ügynök használatával futta
 
 Ha vissza szeretné vonni a csomagok végrehajtását egy SQL felügyelt példány-ügynök feladataiból, hajtsa végre az alábbi lépéseket az ügynök feladat közvetlen leállítása helyett:
 
-1. Az SQL Agent **jobId** megkeresése **msdb.dbo.sysfeladatokból** .
+1. Az SQL Agent **jobId** megkeresése **msdb.dbo.sysfeladatokból**.
 1. Keresse meg a megfelelő SSIS- **executionId** a feladatsor alapján a következő lekérdezés használatával:
    ```sql
    select * from '{table for job execution}' where  parameter_value = 'SQL_Agent_Job_{jobId}' order by execution_id desc
    ```
-   Ha a SSIS-csomagok SSISDB vannak, akkor a feladatok végrehajtásához használja a **ssisdb.internal.execution_parameter_values** . Ha a SSIS-csomagok a fájlrendszerben vannak, akkor használja a **ssisdb.internal.execution_parameter_values_noncatalog** .
+   Ha a SSIS-csomagok SSISDB vannak, akkor a feladatok végrehajtásához használja a **ssisdb.internal.execution_parameter_values** . Ha a SSIS-csomagok a fájlrendszerben vannak, akkor használja a **ssisdb.internal.execution_parameter_values_noncatalog**.
 1. Kattintson a jobb gombbal a SSISDB-katalógusra, majd válassza az **aktív műveletek** elemet.
 
    !["Aktív műveletek" a SSISDB-katalógus helyi menüjében](./media/how-to-invoke-ssis-package-managed-instance-agent/catalog-active-operations.png)

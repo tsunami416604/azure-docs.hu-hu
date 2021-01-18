@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dd1c7c20441d12600e2101f738904caf6260509e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0305094d3883fa6fc3254a682f9aa6f3202c9e48
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496006"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555542"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Azure-beli adatüzemek létrehozása, figyelése és kezelése Azure Data Factory .NET SDK használatával
 > [!NOTE]
@@ -27,7 +27,7 @@ ms.locfileid: "96496006"
 Az Azure-beli adatüzemeket Data Factory .NET SDK-val programozott módon hozhatja létre, figyelheti és kezelheti. Ez a cikk egy olyan bemutatót tartalmaz, amelyből megtudhatja, hogyan hozhat létre egy olyan .NET-konzolos alkalmazást, amely egy adatelőállítót hoz létre és figyeli. 
 
 > [!NOTE]
-> Ez a cikk nem tárgyalja a Data Factory teljes .NET API-ját. A Data Factory .NET API-val kapcsolatos átfogó dokumentációért tekintse meg [Data Factory .NET API-referenciát](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1) . 
+> Ez a cikk nem tárgyalja a Data Factory teljes .NET API-ját. A Data Factory .NET API-val kapcsolatos átfogó dokumentációért tekintse meg [Data Factory .NET API-referenciát](/dotnet/api/overview/azure/data-factory) . 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -93,7 +93,7 @@ Hozzon létre egy Azure Active Directory-alkalmazást, hozza létre az alkalmaz�
 9. Szerezze be az alkalmazásazonosítót.
 
     ```powershell
-    $azureAdApplication 
+    $azureAdApplication    
     ```
     Írja le az alkalmazásazonosítót (a parancs kimenetében szereplő applicationID paraméter értéke).
 
@@ -454,7 +454,7 @@ A másolási tevékenység végzi az adattovábbítást az Azure Data Factoryban
     John, Doe
     Jane, Doe
     ```
-17. Futtassa a mintát úgy, **Debug** hogy  ->  a menüben a hibakeresés **megkezdése** parancsra kattint. Ha megjelenik a **Getting run details of a data slice** (Adatszelet futtatási adatainak lekérése) felirat, várjon néhány percet, majd nyomja le az **ENTER** billentyűt.
+17. Futtassa a mintát úgy, hogy  ->  a menüben a hibakeresés **megkezdése** parancsra kattint. Ha megjelenik a **Getting run details of a data slice** (Adatszelet futtatási adatainak lekérése) felirat, várjon néhány percet, majd nyomja le az **ENTER** billentyűt.
 18. Az Azure Portalon ellenőrizze, hogy az **APITutorialFactory** nevű adat-előállító létrejött-e az alábbi összetevőkkel:
     * Társított szolgáltatás: **AzureStorageLinkedService**
     * Adatkészlet: **DatasetBlobSource** és **DatasetBlobDestination**.
@@ -500,7 +500,7 @@ do
 while (response != null);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az alábbi példát követve hozhat létre egy folyamatot a .NET SDK-val, amely az Azure Blob Storage-ból másolja az Azure SQL Database: 
 
 - [Folyamat létrehozása az adatok Blob Storageról SQL Databaseba másolásához](data-factory-copy-activity-tutorial-using-dotnet-api.md)

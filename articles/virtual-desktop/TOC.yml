@@ -128,6 +128,8 @@
       href: authentication.md
     - name: A Windows Virtual Desktop környezete
       href: environment-setup.md
+    - name: Windows Virtual Desktop-ügynök
+      href: agent-overview.md
     - name: Hálózati kapcsolat
       items:
         - name: Ismerkedés a hálózati kapcsolatokkal
@@ -180,6 +182,8 @@
       href: troubleshoot-vm-configuration.md
     - name: Távoli asztali szolgáltatások kapcsolatai
       href: troubleshoot-service-connection.md
+    - name: Windows Virtual Desktop-ügynök
+      href: troubleshoot-agent.md
     - name: Távoli asztali ügyfelekkel kapcsolatos problémák
       href: troubleshoot-client.md
     - name: Windows Virtual Desktop – PowerShell

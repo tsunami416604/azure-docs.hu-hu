@@ -10,12 +10,12 @@ ms.technology: integration-services
 author: swinarko
 ms.author: sawinark
 ms.reviewer: maghan
-ms.openlocfilehash: 545f698f444e99d3f3807f22b308963172018fcb
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 77283596e4b0d7e25d757c9de76c284ca4f5d4f2
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746665"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556393"
 ---
 # <a name="access-data-stores-and-file-shares-with-windows-authentication-from-ssis-packages-in-azure"></a>Adattárak és fájlmegosztások elérése Windows-hitelesítéssel, Azure-beli SSIS-csomagokból
 
@@ -170,4 +170,4 @@ Ha az Azure-ban futó csomagokból Azure Files fájlmegosztást szeretne elérni
 
 - Telepítse a csomagokat. További információ: [SSIS-projekt üzembe helyezése az Azure-ban a SSMS használatával](/sql/integration-services/ssis-quickstart-deploy-ssms).
 - Futtassa a csomagokat. További információ: [SSIS-csomagok futtatása az Azure-ban a SSMS-](/sql/integration-services/ssis-quickstart-run-ssms)mel.
-- A csomagok beosztása. További információ: [SSIS-csomagok beosztása az Azure-ban](/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15).
+- A csomagok beosztása. További információ: [SSIS-csomagok beosztása az Azure-ban](/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).

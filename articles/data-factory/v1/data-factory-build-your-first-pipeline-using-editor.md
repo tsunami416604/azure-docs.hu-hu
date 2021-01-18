@@ -11,19 +11,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 360fbc3e1bfe7890f1f3b05899eb95ce7a3a72c2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 4e19991de20b130b878a230313d87ca09d31a84e
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496620"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556443"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Oktatóanyag: Az első adat-előállító létrehozása az Azure Portal használatával
 > [!div class="op_single_selector"]
 > * [Áttekintés és előfeltételek](data-factory-build-your-first-pipeline.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
-> * [Azure Resource Manager sablon](data-factory-build-your-first-pipeline-using-arm.md)
+> * [Azure Resource Manager-sablon](data-factory-build-your-first-pipeline-using-arm.md)
 > * [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
 
@@ -31,7 +31,7 @@ ms.locfileid: "96496620"
 > Ez a cikk az Azure Data Factory általánosan elérhető 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse meg az [adat-előállító Data Factoryvel való létrehozását ismertető rövid útmutatót](../quickstart-create-data-factory-dot-net.md) című cikket.
 
 > [!WARNING]
-> Az Azure Portalon az ADF v1-es & üzembe helyezésére szolgáló JSON-szerkesztő a 2019. július 31-én ki lesz kapcsolva. 2019. július 31-ig továbbra is használhatja az [ADF v1 PowerShell-parancsmagokat](/powershell/module/az.datafactory/?view=azps-2.4.0&viewFallbackFrom=azps-2.3.2), az [ADF v1 .net SDK](/dotnet/api/microsoft.azure.management.datafactories.models?view=azure-dotnet)-t, az [ADF v1 REST API-kat](/rest/api/datafactory/) a szerzői & üzembe helyezéséhez az ADF v1-es folyamataihoz.
+> Az Azure Portalon az ADF v1-es & üzembe helyezésére szolgáló JSON-szerkesztő a 2019. július 31-én ki lesz kapcsolva. 2019. július 31-ig továbbra is használhatja az [ADF v1 PowerShell-parancsmagokat](/powershell/module/az.datafactory/), az [ADF v1 .net SDK](/dotnet/api/microsoft.azure.management.datafactories.models)-t, az [ADF v1 REST API-kat](/rest/api/datafactory/) a szerzői & üzembe helyezéséhez az ADF v1-es folyamataihoz.
 
 Ez az oktatóanyag bemutatja, hogyan hozhatja létre első adat-előállítóját az[Azure Portal](https://portal.azure.com/) használatával. Ha ezt az oktatóanyagot más eszközök/SDK-k használatával szeretné elvégezni, válassza ki az egyik lehetőséget a legördülő listából. 
 
@@ -76,7 +76,7 @@ Adat-előállító létrehozásához kövesse az alábbi lépéseket:
 
 1. Jelölje be a **Rögzítés az irányítópulton** jelölőnégyzetet.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
    > [!IMPORTANT]
    > Data Factory példányok létrehozásához a [Data Factory közreműködő](../../role-based-access-control/built-in-roles.md#data-factory-contributor) szerepkör tagjának kell lennie az előfizetés/erőforráscsoport szintjén.
@@ -93,7 +93,7 @@ Adat-előállító létrehozásához kövesse az alábbi lépéseket:
 Mielőtt létrehozna egy folyamatot az adat-előállítóban, először létre kell hoznia néhány adatelőállító-entitást. Először hozza létre a társított szolgáltatásokat, amelyek összekapcsolják az adattárakat/számításokat az Ön adattárával. Majd definiálja a bemeneti és kimeneti adatkészleteket, amelyek a kapcsolódó adattárakban lévő bemeneti és kimeneti adatokat képviselik. Végül hozza létre a folyamatot egy tevékenységgel, amely ezeket az adatkészleteket használja.
 
 ## <a name="create-linked-services"></a>Társított szolgáltatások létrehozása
-Ebben a lépésben az Azure Storage-fiókját és egy igény szerinti HDInsight-fürtöt társít az adat-előállítóhoz. Ebben a példában a tárfiók a folyamat bemeneti és kimeneti adatait tárolja. A HDInsight társított szolgáltatás a mintában szereplő folyamat tevékenységében meghatározott Hive-szkriptet futtatja. Azonosítsa [data store](data-factory-data-movement-activities.md) / a forgatókönyvben használt adattár-[számítási szolgáltatásokat](data-factory-compute-linked-services.md) . Ezután társítsa ezeket a szolgáltatásokat az adat-előállítóhoz társított szolgáltatások létrehozásával.  
+Ebben a lépésben az Azure Storage-fiókját és egy igény szerinti HDInsight-fürtöt társít az adat-előállítóhoz. Ebben a példában a tárfiók a folyamat bemeneti és kimeneti adatait tárolja. A HDInsight társított szolgáltatás a mintában szereplő folyamat tevékenységében meghatározott Hive-szkriptet futtatja. Azonosítsa [](data-factory-data-movement-activities.md) / a forgatókönyvben használt adattár-[számítási szolgáltatásokat](data-factory-compute-linked-services.md) . Ezután társítsa ezeket a szolgáltatásokat az adat-előállítóhoz társított szolgáltatások létrehozásával.  
 
 ### <a name="create-a-storage-linked-service"></a>Storage-beli társított szolgáltatás létrehozása
 Ebben a lépésben társítja a tárfiókot az adat-előállítójához. A jelen oktatóanyag esetében ugyanazt a tárfiókot fogja használni a bemeneti/kimeneti adatok és a HQL-szkript tárolásához.
@@ -431,7 +431,7 @@ Az oktatóanyag során létrehozott egy adat-előállítót, amely egy HDInsight
 * Két adatkészlet létrehozása, amelyek leírják a bemeneti és kimeneti adatokat a folyamat HDInsight Hive-tevékenysége számára.
 * Egy HDInsight Hive-tevékenységgel rendelkező folyamat létrehozása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az oktatóanyag során létrehozott egy folyamatot egy adatátalakítási tevékenységgel (HDInsight-tevékenység), amely egy Hive-szkriptet futtat egy igény szerinti HDInsight-fürtön. A másolási tevékenység a blob Storage-ból Azure SQL Databaseba való másolásával kapcsolatos információkért lásd [: oktatóanyag: adatok másolása blob Storage-ból a SQL Databaseba](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="see-also"></a>Lásd még

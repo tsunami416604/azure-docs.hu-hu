@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 35d2073dca21b4a0d48a43bed9933bb7549cf8f3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d1325ac1afbca8b30cc640f1f22cb598506a5c91
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497894"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555712"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Data Factory figyelése és riasztása Azure Monitor használatával
 
@@ -135,7 +135,7 @@ A monitor segítségével megtekintheti az Azure-beli számítási feladatok tel
 
 Íme néhány a Azure Data Factory 2. verziójában kibocsátott mérőszámok közül:
 
-| **Metrika**                           | **Metrika megjelenítendő neve**                  | **Egység** | **Összesítés típusa** | **Leírás**                |
+| **Metrika**                           | **Metrika megjelenítendő neve**                  | **Unit (Egység)** | **Összesítés típusa** | **Leírás**                |
 |--------------------------------------|------------------------------------------|----------|----------------------|--------------------------------|
 | ActivityCancelledRuns                 | A megszakított tevékenység metrikákat futtat           | Darabszám    | Összesen                | Egy percen belül megszakított tevékenység-futtatások teljes száma. |
 | ActivityFailedRuns                   | Sikertelen tevékenység-futtatási metrikák             | Darabszám    | Összesen                | A meghiúsult tevékenység-futtatások teljes száma egy percen belül. |
@@ -162,7 +162,7 @@ A metrikák eléréséhez hajtsa végre az [Azure monitor adatplatformon](../azu
 
 ## <a name="data-factory-alerts"></a>Riasztások Data Factory
 
-Jelentkezzen be a Azure Portalba, és válassza a riasztások **figyelése** lehetőséget a  >  **Alerts** riasztások létrehozásához.
+Jelentkezzen be a Azure Portalba, és válassza a riasztások **figyelése** lehetőséget a  >   riasztások létrehozásához.
 
 ![Riasztások a portál menüjében](media/monitor-using-azure-monitor/alerts_image3.png)
 
@@ -278,7 +278,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | **naplók**| Összetett típus| Az erőforrástípus diagnosztikai-naplózási kategóriájának neve. Az erőforráshoz tartozó diagnosztikai naplók listájának beszerzéséhez hajtsa végre a diagnosztikai beállítások beolvasása műveletet. |
 | **Kategória**| Sztring| Naplózási kategóriák és adatmegőrzési szabályzatok tömbje. |
 | **timeGrain** | Sztring | A metrikák részletessége ISO 8601 időtartam formátumban rögzítve. A tulajdonság értékének a értéket kell tartalmaznia `PT1M` , amely egy percet ad meg. |
-| **engedélyezve**| Logikai érték | Meghatározza, hogy engedélyezve van-e a metrika vagy a napló kategóriájának gyűjteménye ehhez az erőforráshoz. |
+| **engedélyezve**| Logikai | Meghatározza, hogy engedélyezve van-e a metrika vagy a napló kategóriájának gyűjteménye ehhez az erőforráshoz. |
 | **retentionPolicy**| Összetett típus| A metrika vagy a napló kategóriájának adatmegőrzési szabályát ismerteti. Ez a tulajdonság csak a Storage-fiókok esetében használatos. |
 |**nap**| Int| A metrikák vagy naplók megtartására szolgáló napok száma. Ha a tulajdonság értéke 0, a naplók örökre megmaradnak. Ez a tulajdonság csak a Storage-fiókok esetében használatos. |
 
@@ -444,14 +444,14 @@ További információ: [diagnosztikai beállítások](/rest/api/monitor/diagnost
 
 | Tulajdonság | Típus | Leírás | Példa |
 | --- | --- | --- | --- |
-| **Level** |Sztring | A diagnosztikai naplók szintje. A tevékenységek futtatására szolgáló naplók esetében állítsa a tulajdonság értékét 4 értékre. | `4` |
+| **Szintű** |Sztring | A diagnosztikai naplók szintje. A tevékenységek futtatására szolgáló naplók esetében állítsa a tulajdonság értékét 4 értékre. | `4` |
 | **correlationId** |Sztring | Egy adott kérelem nyomon követésére szolgáló egyedi azonosító. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
 | **idő** | Sztring | Az esemény időpontja a TimeSpan UTC formátumban `YYYY-MM-DDTHH:MM:SS.00000Z` . | `2017-06-28T21:00:27.3534352Z` |
 |**activityRunId**| Sztring| A tevékenység futtatásának azonosítója. | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
 |**pipelineRunId**| Sztring| A folyamat futtatásának azonosítója. | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
 |**resourceId**| Sztring | Az adatfeldolgozó erőforráshoz társított azonosító. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |**Kategória**| Sztring | A diagnosztikai naplók kategóriája. Állítsa a tulajdonság értékét értékre `ActivityRuns` . | `ActivityRuns` |
-|**szintű**| Sztring | A diagnosztikai naplók szintje. Állítsa a tulajdonság értékét értékre `Informational` . | `Informational` |
+|**szint**| Sztring | A diagnosztikai naplók szintje. Állítsa a tulajdonság értékét értékre `Informational` . | `Informational` |
 |**operationName**| Sztring | Az állapottal rendelkező tevékenység neve. Ha a tevékenység a kezdő szívverés, a tulajdonság értéke `MyActivity -` . Ha a tevékenység a záró szívverés, a tulajdonság értéke `MyActivity - Succeeded` . | `MyActivity - Succeeded` |
 |**pipelineName**| Sztring | A folyamat neve. | `MyPipeline` |
 |**activityName**| Sztring | A tevékenység neve. | `MyActivity` |
@@ -490,13 +490,13 @@ További információ: [diagnosztikai beállítások](/rest/api/monitor/diagnost
 
 | Tulajdonság | Típus | Leírás | Példa |
 | --- | --- | --- | --- |
-| **Level** |Sztring | A diagnosztikai naplók szintje. A tevékenységek futtatására szolgáló naplók esetében állítsa a tulajdonság értékét 4 értékre. | `4` |
+| **Szintű** |Sztring | A diagnosztikai naplók szintje. A tevékenységek futtatására szolgáló naplók esetében állítsa a tulajdonság értékét 4 értékre. | `4` |
 | **correlationId** |Sztring | Egy adott kérelem nyomon követésére szolgáló egyedi azonosító. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
 | **idő** | Sztring | Az esemény időpontja a TimeSpan UTC formátumban `YYYY-MM-DDTHH:MM:SS.00000Z` . | `2017-06-28T21:00:27.3534352Z` |
 |**runId**| Sztring| A folyamat futtatásának azonosítója. | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
 |**resourceId**| Sztring | Az adatfeldolgozó erőforráshoz társított azonosító. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |**Kategória**| Sztring | A diagnosztikai naplók kategóriája. Állítsa a tulajdonság értékét értékre `PipelineRuns` . | `PipelineRuns` |
-|**szintű**| Sztring | A diagnosztikai naplók szintje. Állítsa a tulajdonság értékét értékre `Informational` . | `Informational` |
+|**szint**| Sztring | A diagnosztikai naplók szintje. Állítsa a tulajdonság értékét értékre `Informational` . | `Informational` |
 |**operationName**| Sztring | A folyamat neve az állapotával együtt. A folyamat futásának befejeződése után a tulajdonság értéke `Pipeline - Succeeded` . | `MyPipeline - Succeeded`. |
 |**pipelineName**| Sztring | A folyamat neve. | `MyPipeline` |
 |**Start**| Sztring | A tevékenység kezdési időpontja TimeSpan UTC formátumban fut. | `2017-06-26T20:55:29.5007959Z`. |
@@ -533,13 +533,13 @@ További információ: [diagnosztikai beállítások](/rest/api/monitor/diagnost
 
 | Tulajdonság | Típus | Leírás | Példa |
 | --- | --- | --- | --- |
-| **Level** |Sztring | A diagnosztikai naplók szintje. A tevékenységek futtatására szolgáló naplók esetében állítsa a tulajdonság értékét 4 értékre. | `4` |
+| **Szintű** |Sztring | A diagnosztikai naplók szintje. A tevékenységek futtatására szolgáló naplók esetében állítsa a tulajdonság értékét 4 értékre. | `4` |
 | **correlationId** |Sztring | Egy adott kérelem nyomon követésére szolgáló egyedi azonosító. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
 | **idő** | Sztring | Az esemény időpontja a TimeSpan UTC formátumban `YYYY-MM-DDTHH:MM:SS.00000Z` . | `2017-06-28T21:00:27.3534352Z` |
 |**triggerId**| Sztring| Az trigger futtatásának azonosítója. | `08587023010602533858661257311` |
 |**resourceId**| Sztring | Az adatfeldolgozó erőforráshoz társított azonosító. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |**Kategória**| Sztring | A diagnosztikai naplók kategóriája. Állítsa a tulajdonság értékét értékre `PipelineRuns` . | `PipelineRuns` |
-|**szintű**| Sztring | A diagnosztikai naplók szintje. Állítsa a tulajdonság értékét értékre `Informational` . | `Informational` |
+|**szint**| Sztring | A diagnosztikai naplók szintje. Állítsa a tulajdonság értékét értékre `Informational` . | `Informational` |
 |**operationName**| Sztring | Az trigger neve a végső állapottal, amely azt jelzi, hogy az trigger sikeresen kilőtte-e. Ha a szívverés sikeres volt, a tulajdonság értéke `MyTrigger - Succeeded` . | `MyTrigger - Succeeded` |
 |**triggerName**| Sztring | Az trigger neve. | `MyTrigger` |
 |**triggerType**| Sztring | Az trigger típusa. A lehetséges tulajdonságok értékei a következők: `Manual Trigger` és `Schedule Trigger` . | `ScheduleTrigger` |
@@ -576,14 +576,14 @@ Itt láthatók a SSIS IR indítási/leállítási/karbantartási műveleteinek n
 | **correlationId**          | Sztring | Egy adott művelet nyomon követésére szolgáló egyedi azonosító             | `f13b159b-515f-4885-9dfa-a664e949f785Deprovision0059035558` |
 | **dataFactoryName**        | Sztring | Az ADF neve                                          | `MyADFv2` |
 | **integrationRuntimeName** | Sztring | A SSIS IR neve                                      | `MySSISIR` |
-| **szintű**                  | Sztring | A diagnosztikai naplók szintje                                  | `Informational` |
+| **szint**                  | Sztring | A diagnosztikai naplók szintje                                  | `Informational` |
 | **resultType**             | Sztring | A SSIS IR-művelet eredménye                          | `Started/InProgress/Succeeded/Failed` |
 | **üzenetet**                | Sztring | A SSIS IR-művelet kimeneti üzenete                  | `The stopping of your SSIS integration runtime has succeeded.` |
 | **resourceId**             | Sztring | Az ADF-erőforrás egyedi azonosítója                            | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 
 #### <a name="ssis-event-message-context-log-attributes"></a>SSIS-események környezeti naplójának attribútumai
 
-Itt láthatók a SSIS-csomag végrehajtásával a SSIS IR-ben létrehozott esemény-üzenetekre vonatkozó feltételek naplózási attribútumai. Hasonló információkat közvetítenek, mint a [SSIS Catalog (SSISDB) esemény-üzenet környezeti táblázata vagy nézete](/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15) , amely a SSIS-csomagok számos tulajdonságának futásidejű értékeit jeleníti meg. Ezek akkor jönnek létre, amikor kiválasztja `Basic/Verbose` a naplózási szint lehetőséget, és hasznos a hibakereséshez/megfelelőség ellenőrzéséhez.
+Itt láthatók a SSIS-csomag végrehajtásával a SSIS IR-ben létrehozott esemény-üzenetekre vonatkozó feltételek naplózási attribútumai. Hasonló információkat közvetítenek, mint a [SSIS Catalog (SSISDB) esemény-üzenet környezeti táblázata vagy nézete](/sql/integration-services/system-views/catalog-event-message-context) , amely a SSIS-csomagok számos tulajdonságának futásidejű értékeit jeleníti meg. Ezek akkor jönnek létre, amikor kiválasztja `Basic/Verbose` a naplózási szint lehetőséget, és hasznos a hibakereséshez/megfelelőség ellenőrzéséhez.
 
 ```json
 {
@@ -616,11 +616,11 @@ Itt láthatók a SSIS-csomag végrehajtásával a SSIS IR-ben létrehozott esem�
 | **correlationId**          | Sztring | Egy adott művelet nyomon követésére szolgáló egyedi azonosító                    | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
 | **dataFactoryName**        | Sztring | Az ADF neve                                                 | `MyADFv2` |
 | **integrationRuntimeName** | Sztring | A SSIS IR neve                                             | `MySSISIR` |
-| **szintű**                  | Sztring | A diagnosztikai naplók szintje                                         | `Informational` |
+| **szint**                  | Sztring | A diagnosztikai naplók szintje                                         | `Informational` |
 | **operationId**            | Sztring | Egy adott művelet nyomon követésére szolgáló egyedi azonosító a SSISDB-ben          | `1` (1 a **nem** a SSISDB-ben tárolt és a T-SQL-n keresztül meghívott csomagokkal kapcsolatos műveleteket jelenti.) |
 | **contextDepth**           | Sztring | Az esemény-üzenet környezetének mélysége                              | `0` (0 azt jelenti, hogy a csomag végrehajtásának elindulása előtt 1 jelzi a kontextust, amikor hiba történik, és a környezet a hiba miatt tovább nő) |
 | **packagePath**            | Sztring | A Package objektum elérési útja az esemény üzenetének környezeti forrásaként      | `\Package` |
-| **contextType**            | Sztring | A Package objektum típusa az esemény üzenetei környezetének forrásaként      | `60`( [további környezeti típusok](/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15#remarks):) |
+| **contextType**            | Sztring | A Package objektum típusa az esemény üzenetei környezetének forrásaként      | `60`( [további környezeti típusok](/sql/integration-services/system-views/catalog-event-message-context#remarks):) |
 | **contextSourceName**      | Sztring | A Package objektum neve az esemény üzenetei környezetének forrásaként      | `MyPackage` |
 | **contextSourceId**        | Sztring | A Package objektum egyedi azonosítója az esemény üzenetei környezetének forrásaként | `{E2CF27FB-EA48-41E9-AF6F-3FE938B4ADE1}` |
 | **propertyName**           | Sztring | Az esemény üzenetének környezeti forrása csomag tulajdonságának neve   | `DelayValidation` |
@@ -629,7 +629,7 @@ Itt láthatók a SSIS-csomag végrehajtásával a SSIS IR-ben létrehozott esem�
 
 #### <a name="ssis-event-messages-log-attributes"></a>SSIS-üzenetek naplózási attribútumai
 
-Itt láthatók a SSIS-csomag végrehajtása által a SSIS IR-ben létrehozott esemény-üzenetek naplózási attribútumai. Hasonló információkat közvetítenek, mint az [SSISDB tábla vagy nézet](/sql/integration-services/system-views/catalog-event-messages?view=sql-server-ver15) , amely az események részletes szövegét/metaadatait jeleníti meg. Minden naplózási szinten jönnek létre, kivéve a következőt: `None` .
+Itt láthatók a SSIS-csomag végrehajtása által a SSIS IR-ben létrehozott esemény-üzenetek naplózási attribútumai. Hasonló információkat közvetítenek, mint az [SSISDB tábla vagy nézet](/sql/integration-services/system-views/catalog-event-messages) , amely az események részletes szövegét/metaadatait jeleníti meg. Minden naplózási szinten jönnek létre, kivéve a következőt: `None` .
 
 ```json
 {
@@ -666,11 +666,11 @@ Itt láthatók a SSIS-csomag végrehajtása által a SSIS IR-ben létrehozott es
 | **correlationId**          | Sztring | Egy adott művelet nyomon követésére szolgáló egyedi azonosító                  | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
 | **dataFactoryName**        | Sztring | Az ADF neve                                               | `MyADFv2` |
 | **integrationRuntimeName** | Sztring | A SSIS IR neve                                           | `MySSISIR` |
-| **szintű**                  | Sztring | A diagnosztikai naplók szintje                                       | `Informational` |
+| **szint**                  | Sztring | A diagnosztikai naplók szintje                                       | `Informational` |
 | **operationId**            | Sztring | Egy adott művelet nyomon követésére szolgáló egyedi azonosító a SSISDB-ben        | `1` (1 a **nem** a SSISDB-ben tárolt és a T-SQL-n keresztül meghívott csomagokkal kapcsolatos műveleteket jelenti.) |
 | **messageTime**            | Sztring | Az az idő, amikor az esemény üzenete UTC formátumban lett létrehozva          | `2017-06-28T21:00:27.3534352Z` |
-| **messageType**            | Sztring | Az üzenet típusa                                     | `70`( [további üzenetek típusai](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)) |
-| **messageSourceType**      | Sztring | Az esemény-üzenet forrásának típusa                              | `20`(lásd: [több üzenet típusú Forrástípus](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)) |
+| **messageType**            | Sztring | Az üzenet típusa                                     | `70`( [további üzenetek típusai](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database#remarks)) |
+| **messageSourceType**      | Sztring | Az esemény-üzenet forrásának típusa                              | `20`(lásd: [több üzenet típusú Forrástípus](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database#remarks)) |
 | **üzenetet**                | Sztring | Az üzenet szövege                                     | `MyPackage:Validation has started.` |
 | **packageName**            | Sztring | A végrehajtott csomagfájl neve                             | `MyPackage.dtsx` |
 | **eventName**              | Sztring | A kapcsolódó futásidejű esemény neve                                 | `OnPreValidate` |
@@ -683,7 +683,7 @@ Itt láthatók a SSIS-csomag végrehajtása által a SSIS IR-ben létrehozott es
 
 #### <a name="ssis-executable-statistics-log-attributes"></a>SSIS végrehajtható statisztikai napló attribútumai
 
-Az alábbi, a SSIS IR SSIS-csomag végrehajtásával létrehozott végrehajtható statisztikai adatok naplózási attribútumai, ahol a végrehajtható fájlok tárolók vagy feladatok a csomagok vezérlési folyamatában. Hasonló információkat továbbítanak a [SSISDB végrehajtható statisztikai táblájának vagy nézetének](/sql/integration-services/system-views/catalog-executable-statistics?view=sql-server-ver15) , amely az egyes futó végrehajtható fájlok sorát jeleníti meg, beleértve az iterációkat is. Ezek a naplózási szinten keletkeznek `None` , kivéve, ha a feladat-szintű szűk keresztmetszetek/hibák azonosításához hasznosak.
+Az alábbi, a SSIS IR SSIS-csomag végrehajtásával létrehozott végrehajtható statisztikai adatok naplózási attribútumai, ahol a végrehajtható fájlok tárolók vagy feladatok a csomagok vezérlési folyamatában. Hasonló információkat továbbítanak a [SSISDB végrehajtható statisztikai táblájának vagy nézetének](/sql/integration-services/system-views/catalog-executable-statistics) , amely az egyes futó végrehajtható fájlok sorát jeleníti meg, beleértve az iterációkat is. Ezek a naplózási szinten keletkeznek `None` , kivéve, ha a feladat-szintű szűk keresztmetszetek/hibák azonosításához hasznosak.
 
 ```json
 {
@@ -715,7 +715,7 @@ Az alábbi, a SSIS IR SSIS-csomag végrehajtásával létrehozott végrehajthat�
 | **correlationId**          | Sztring | Egy adott művelet nyomon követésére szolgáló egyedi azonosító                | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
 | **dataFactoryName**        | Sztring | Az ADF neve                                             | `MyADFv2` |
 | **integrationRuntimeName** | Sztring | A SSIS IR neve                                         | `MySSISIR` |
-| **szintű**                  | Sztring | A diagnosztikai naplók szintje                                     | `Informational` |
+| **szint**                  | Sztring | A diagnosztikai naplók szintje                                     | `Informational` |
 | **executionId**            | Sztring | Egy adott végrehajtás követésének egyedi azonosítója a SSISDB-ben      | `1` (1 a **nem** a SSISDB-ben tárolt vagy T-SQL-n keresztül meghívott csomagokhoz kapcsolódó végrehajtásokat jelenti.) |
 | **executionPath**          | Sztring | A szülő csomag teljes elérési útja a végrehajtott összetevőre          | `\Transformation\Data Flow Task` (Ez az elérési út az összetevők iterációját is rögzíti) |
 | **startTime**              | Sztring | Az az idő, amikor a végrehajtható fájl a végrehajtás előtti fázisba lép UTC formátumban  | `2017-06-28T21:00:27.3534352Z` |
@@ -727,7 +727,7 @@ Az alábbi, a SSIS IR SSIS-csomag végrehajtásával létrehozott végrehajthat�
 
 #### <a name="ssis-execution-component-phases-log-attributes"></a>SSIS-végrehajtási összetevő fázisainak naplózási attribútumai
 
-Itt láthatók a SSIS-csomag végrehajtásával a SSIS IR-ben létrehozott adatfolyam-összetevőkre vonatkozó futásidejű statisztikai adatok naplózási attribútumai. Hasonló információkat közvetítenek, mint a [SSISDB-végrehajtási összetevő szakaszának táblázata vagy nézete](/sql/integration-services/system-views/catalog-execution-component-phases?view=sql-server-ver15) , amely az adatfolyam-összetevők által az összes végrehajtási fázisban töltött időt mutatja. Ezek akkor jönnek létre, amikor kiválasztja `Performance/Verbose` a naplózási szint lehetőséget, és hasznos az adatfolyam-végrehajtási statisztikák rögzítéséhez.
+Itt láthatók a SSIS-csomag végrehajtásával a SSIS IR-ben létrehozott adatfolyam-összetevőkre vonatkozó futásidejű statisztikai adatok naplózási attribútumai. Hasonló információkat közvetítenek, mint a [SSISDB-végrehajtási összetevő szakaszának táblázata vagy nézete](/sql/integration-services/system-views/catalog-execution-component-phases) , amely az adatfolyam-összetevők által az összes végrehajtási fázisban töltött időt mutatja. Ezek akkor jönnek létre, amikor kiválasztja `Performance/Verbose` a naplózási szint lehetőséget, és hasznos az adatfolyam-végrehajtási statisztikák rögzítéséhez.
 
 ```json
 {
@@ -760,7 +760,7 @@ Itt láthatók a SSIS-csomag végrehajtásával a SSIS IR-ben létrehozott adatf
 | **correlationId**          | Sztring | Egy adott művelet nyomon követésére szolgáló egyedi azonosító                   | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
 | **dataFactoryName**        | Sztring | Az ADF neve                                                | `MyADFv2` |
 | **integrationRuntimeName** | Sztring | A SSIS IR neve                                            | `MySSISIR` |
-| **szintű**                  | Sztring | A diagnosztikai naplók szintje                                        | `Informational` |
+| **szint**                  | Sztring | A diagnosztikai naplók szintje                                        | `Informational` |
 | **executionId**            | Sztring | Egy adott végrehajtás követésének egyedi azonosítója a SSISDB-ben         | `1` (1 a **nem** a SSISDB-ben tárolt vagy T-SQL-n keresztül meghívott csomagokhoz kapcsolódó végrehajtásokat jelenti.) |
 | **packageName**            | Sztring | A végrehajtott csomagfájl neve                              | `MyPackage.dtsx` |
 | **Feladatnév**               | Sztring | A végrehajtott adatfolyam-feladat neve                                 | `Data Flow Task` |
@@ -773,7 +773,7 @@ Itt láthatók a SSIS-csomag végrehajtásával a SSIS IR-ben létrehozott adatf
 
 #### <a name="ssis-execution-data-statistics-log-attributes"></a>SSIS-végrehajtási adatok statisztikai naplójának attribútumai
 
-Itt láthatók az adatáramlási folyamatok egyes szakaszain átmenő adatmozgások naplózási attribútumai az SSIS-csomagok végrehajtásával a SSIS IR-n. Hasonló információkat közvetítenek, mint a [SSISDB-végrehajtási adatok statisztikájának táblázata vagy nézete](/sql/integration-services/system-views/catalog-execution-data-statistics?view=sql-server-ver15) , amely az adatfolyam-feladatok által áthelyezett adatsorok számát mutatja. Ezek akkor jönnek létre, amikor kiválasztja `Verbose` a naplózási szint lehetőséget, és hasznos a számítási folyamat adatforgalmának eléréséhez.
+Itt láthatók az adatáramlási folyamatok egyes szakaszain átmenő adatmozgások naplózási attribútumai az SSIS-csomagok végrehajtásával a SSIS IR-n. Hasonló információkat közvetítenek, mint a [SSISDB-végrehajtási adatok statisztikájának táblázata vagy nézete](/sql/integration-services/system-views/catalog-execution-data-statistics) , amely az adatfolyam-feladatok által áthelyezett adatsorok számát mutatja. Ezek akkor jönnek létre, amikor kiválasztja `Verbose` a naplózási szint lehetőséget, és hasznos a számítási folyamat adatforgalmának eléréséhez.
 
 ```json
 {
@@ -808,7 +808,7 @@ Itt láthatók az adatáramlási folyamatok egyes szakaszain átmenő adatmozgá
 | **correlationId**            | Sztring | Egy adott művelet nyomon követésére szolgáló egyedi azonosító                  | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
 | **dataFactoryName**          | Sztring | Az ADF neve                                               | `MyADFv2` |
 | **integrationRuntimeName**   | Sztring | A SSIS IR neve                                           | `MySSISIR` |
-| **szintű**                    | Sztring | A diagnosztikai naplók szintje                                       | `Informational` |
+| **szint**                    | Sztring | A diagnosztikai naplók szintje                                       | `Informational` |
 | **executionId**              | Sztring | Egy adott végrehajtás követésének egyedi azonosítója a SSISDB-ben        | `1` (1 a **nem** a SSISDB-ben tárolt vagy T-SQL-n keresztül meghívott csomagokhoz kapcsolódó végrehajtásokat jelenti.) |
 | **packageName**              | Sztring | A végrehajtott csomagfájl neve                             | `MyPackage.dtsx` |
 | **Feladatnév**                 | Sztring | A végrehajtott adatfolyam-feladat neve                                | `Data Flow Task` |
@@ -833,7 +833,7 @@ A Log Analytics a következő kivételekkel örökli a sémát a Figyelőtől:
     | --- | --- | --- |
     | $. properties. UserProperties | UserProperties | Dinamikus |
     | $. properties. Széljegyzetek | Széljegyzetek | Dinamikus |
-    | $. properties. Bemeneti | Input (Bemenet) | Dinamikus |
+    | $. properties. Bemeneti | Bevitel | Dinamikus |
     | $. properties. Kimeneti | Kimenet | Dinamikus |
     | $. properties. Hiba. errorCode | ErrorCode | int |
     | $. properties. Hiba. üzenet | ErrorMessage | sztring |
@@ -907,5 +907,5 @@ Ha a SSIS-csomag végrehajtási naplóit kérdezi le a naplók Analytics szolgá
 
 ![SSIS-csomag-végrehajtási naplók lekérdezése Log Analytics](media/data-factory-monitor-oms/log-analytics-query2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Folyamatok programozott figyelése és kezelése](monitor-programmatically.md)

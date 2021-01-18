@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: 86bff161e29384b10030ed3d524301f6dea6037e
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: fb622bdb1d7aa485c421122cdfbd2493a32cf5db
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634164"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555662"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Az Azure SQL felügyelt példányának használata SQL Server Integration Services (SSIS) használatával Azure Data Factory
 
@@ -54,7 +54,7 @@ Most már áthelyezheti SQL Server Integration Services (SSIS) projektjeit, csom
 
         - Ha Azure-SSIS IR nem a virtuális hálózaton belül (előnyben részesített)
 
-            **Az SQL felügyelt példányának bejövő követelménye** , hogy engedélyezze a Azure-SSIS IR érkező bejövő forgalmat.
+            **Az SQL felügyelt példányának bejövő követelménye**, hogy engedélyezze a Azure-SSIS IR érkező bejövő forgalmat.
 
             | Átviteli protokoll | Forrás | Forrásporttartomány | Cél | Célporttartomány |
             |---|---|---|---|---|
@@ -66,7 +66,7 @@ Most már áthelyezheti SQL Server Integration Services (SSIS) projektjeit, csom
 
             Ha az SQL felügyelt példány olyan régióban található, amely Azure-SSIS IR nem támogatott, az Azure-SSIS IR egy virtuális hálózaton belül van, anélkül, hogy VNet a globális VNet-társítási korlátozás miatt. Ebben az esetben a **virtuális hálózatokon belüli Azure-SSIS IR** a **nyilvános végponton keresztül** kapcsolódik az SQL felügyelt példányához. Használja az alábbi hálózati biztonsági csoport (NSG) szabályait az SQL felügyelt példány és a Azure-SSIS IR közötti adatforgalom engedélyezéséhez:
 
-            1. **Az SQL felügyelt példányának bejövő követelménye** , hogy engedélyezze a Azure-SSIS IR érkező bejövő forgalmat.
+            1. **Az SQL felügyelt példányának bejövő követelménye**, hogy engedélyezze a Azure-SSIS IR érkező bejövő forgalmat.
 
                 | Átviteli protokoll | Forrás | Forrásporttartomány | Cél |Célporttartomány |
                 |---|---|---|---|---|
@@ -80,12 +80,12 @@ Most már áthelyezheti SQL Server Integration Services (SSIS) projektjeit, csom
 
 ### <a name="configure-virtual-network"></a>Virtuális hálózat konfigurálása
 
-1. **Felhasználói engedély** . A Azure-SSIS IR létrehozó felhasználónak legalább az alábbi lehetőségek egyikével kell rendelkeznie a [szerepkör-hozzárendeléssel](../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-for-a-user-at-a-scope) Azure Data Factory erőforráson:
+1. **Felhasználói engedély**. A Azure-SSIS IR létrehozó felhasználónak legalább az alábbi lehetőségek egyikével kell rendelkeznie a [szerepkör-hozzárendeléssel](../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-for-a-user-at-a-scope) Azure Data Factory erőforráson:
 
     - Használja a beépített hálózati közreműködő szerepkört. Ehhez a szerepkörhöz a _Microsoft. Network/ \*_ engedély tartozik, amely a szükségesnél sokkal nagyobb hatókörű.
     - Hozzon létre egy egyéni szerepkört, amely csak a szükséges _Microsoft. Network/virtualNetworks/ \* /JOIN/Action_ engedélyt tartalmazza. Ha a Azure-SSIS IR saját nyilvános IP-címeit is szeretné csatlakoztatni a Azure Resource Manager virtuális hálózathoz való csatlakozáshoz, akkor a szerepkörben a _Microsoft. Network/nyilvános IP/*/JOIN/Action_ engedély is szerepel.
 
-1. **Virtuális hálózat** .
+1. **Virtuális hálózat**.
 
     1. Győződjön meg arról, hogy a virtuális hálózat erőforráscsoport létrehozhat és törölhet bizonyos Azure-hálózati erőforrásokat.
 
@@ -103,7 +103,7 @@ Most már áthelyezheti SQL Server Integration Services (SSIS) projektjeit, csom
         - Microsoft. Network/NetworkSecurityGroups
 
     1. A hálózati biztonsági csoport (NSG) szabály forgalmának engedélyezése a felügyelt SQL-példány és a Azure-SSIS IR közötti forgalom, valamint a Azure-SSIS IR által igényelt forgalom engedélyezéséhez.
-        1. **Az SQL felügyelt példányának bejövő követelménye** , hogy engedélyezze a Azure-SSIS IR érkező bejövő forgalmat.
+        1. **Az SQL felügyelt példányának bejövő követelménye**, hogy engedélyezze a Azure-SSIS IR érkező bejövő forgalmat.
 
             | Átviteli protokoll | Forrás | Forrásporttartomány | Cél | Célporttartomány | Megjegyzések |
             |---|---|---|---|---|---|
@@ -116,10 +116,10 @@ Most már áthelyezheti SQL Server Integration Services (SSIS) projektjeit, csom
         | TCP | VirtualNetwork | * | VirtualNetwork | 1433, 11000-11999 |A kimenő adatforgalom engedélyezése a felügyelt SQL-példányok számára. Ha az **átirányítás** helyett a kapcsolódási szabályzat **proxyra** van beállítva, akkor csak az 1433-es port szükséges. |
         | TCP | VirtualNetwork | * | AzureCloud | 443 | A virtuális hálózat Azure-SSIS IR csomópontjai ezt a portot használják az Azure-szolgáltatások, például az Azure Storage és az Azure Event Hubs eléréséhez. |
         | TCP | VirtualNetwork | * | Internet | 80 | Választható A virtuális hálózat Azure-SSIS IR csomópontjai ezt a portot használják a visszavont tanúsítványok listájának internetről való letöltéséhez. Ha letiltja ezt a forgalmat, akkor a teljesítmény-visszalépést tapasztalhatja, ha elindítja az IR-t, és elveszti a tanúsítvány-visszavonási listát a tanúsítvány használatának ellenőrzése érdekében. Ha a célhelyet bizonyos FQDN-re szeretné szűkíteni, tekintse meg az [Azure ExpressRoute vagy a felhasználó által megadott útvonal (UDR) használatát](./join-azure-ssis-integration-runtime-virtual-network.md#route)ismertető témakört.|
-        | TCP | VirtualNetwork | * | Storage | 445 | Választható Ez a szabály csak akkor szükséges, ha a Azure Filesban tárolt SSIS-csomagot szeretné végrehajtani. |
+        | TCP | VirtualNetwork | * | Tárolás | 445 | Választható Ez a szabály csak akkor szükséges, ha a Azure Filesban tárolt SSIS-csomagot szeretné végrehajtani. |
         |||||||
 
-        1. A **Azure-SSIS IR bejövő követelménye** , amely lehetővé teszi a Azure-SSIS IR számára szükséges forgalom engedélyezését.
+        1. A **Azure-SSIS IR bejövő követelménye**, amely lehetővé teszi a Azure-SSIS IR számára szükséges forgalom engedélyezését.
 
         | Átviteli protokoll | Forrás | Forrásporttartomány | Cél | Célporttartomány | Megjegyzések |
         |---|---|---|---|---|---|
@@ -163,7 +163,7 @@ A Azure-SSIS IR létrehozásával kapcsolatos további információkért lásd: 
 
 ## <a name="clean-up-ssisdb-logs"></a>SSISDB-naplók törlése
 
-A SSISDB-naplók adatmegőrzési házirendjét az alábbi tulajdonságok határozzák meg [Catalog.catalog_propertiesban](/sql/integration-services/system-views/catalog-catalog-properties-ssisdb-database?view=sql-server-ver15):
+A SSISDB-naplók adatmegőrzési házirendjét az alábbi tulajdonságok határozzák meg [Catalog.catalog_propertiesban](/sql/integration-services/system-views/catalog-catalog-properties-ssisdb-database):
 
 - OPERATION_CLEANUP_ENABLED
 

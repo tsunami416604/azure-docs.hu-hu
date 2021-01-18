@@ -1,0 +1,15 @@
+- name: Az Azure partneri megoldások dokumentációja
+  href: overview.md
+- name: Partneri megoldások
+  items:
+    - name: Apache Kafka a Confluent Cloudon
+      items:
+        - name: Áttekintés
+          displayName: 'Apache, Kafka, Confluent'
+          href: ./apache-kafka-confluent-cloud/overview.md
+        - name: Létrehozás
+          href: ./apache-kafka-confluent-cloud/create.md
+        - name: Kezelés
+          href: ./apache-kafka-confluent-cloud/manage.md
+        - name: Hibaelhárítás
+          href: ./apache-kafka-confluent-cloud/troubleshoot.md

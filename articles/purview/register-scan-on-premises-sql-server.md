@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/18/2020
-ms.openlocfilehash: 9003366ec0d64057ca7426d5b6b99986bc21fc9d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 0d282ee805ac61ba17ceb3ecc6a3d8179ea7b319
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920298"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555899"
 ---
 # <a name="register-and-scan-an-on-premises-sql-server"></a>Helyszíni SQL Server-kiszolgáló regisztrálása és vizsgálata
 
@@ -34,7 +34,7 @@ Az SQL Server helyszíni adatforrása a következőket támogatja:
 
 ### <a name="known-limitations"></a>Ismert korlátozások
 
-Az Azure-beli hatáskörébe nem támogatottak a SQL Server [nézeteinek](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15) vizsgálata. 
+Az Azure-beli hatáskörébe nem támogatottak a SQL Server [nézeteinek](/sql/relational-databases/views/views) vizsgálata.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

@@ -3,17 +3,17 @@ title: Azure-költségek kezelése automatizálással
 description: Ez a cikk az Azure-költségek automatizálással való kezelését ismerteti.
 author: bandersmsft
 ms.author: banders
-ms.date: 11/19/2020
+ms.date: 01/06/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 47d9c2838c5c806214e3be2f9ba7ce335bc0af67
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 02215bace693ac5ac36f9fc29758215d45b23eb1
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94956092"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051785"
 ---
 # <a name="manage-costs-with-automation"></a>Költségek kezelése automatizálással
 
@@ -56,6 +56,22 @@ Azt javasoljuk, hogy naponta _ne küldjön egynél több kérelmet_ a Usage Deta
 **Legfelső szintű hatókörök megcélzása szűrés nélkül**
 
 Az API-val lekérheti az összes szükséges adatot az Ön számára elérhető legmagasabb szintű hatókörben. A szűrés, a csoportosítás és az összesített elemzés elvégzése előtt várja meg, amíg a rendszer betölti a szükséges adatokat. Az API-t kifejezetten a nagy mennyiségű, nem összesített, nyers költségadatok biztosítására optimalizálták. További információk a Cost Management hatóköreiről [a hatókörök ismertetését és használatát](./understand-work-scopes.md) bemutató szakaszban találhatók. Miután letöltötte a hatókör szükséges adatait, Excelben a szűrőkkel és a kimutatásokkal lehetőség nyílik a további elemzésükre.
+
+### <a name="notes-about-pricing"></a>Megjegyzések a díjszabásról
+
+Ha össze szeretné vetni a használati adatokat és a költségeket az árlistával vagy számlával, vegye figyelembe a következőket.
+
+Árlistán szereplő árak viselkedése – Az árlistán szereplő árak az Azure-tól kapott árak. Ezek adott mértékegységekhez vannak skálázva. Sajnos a mértékegység nem minden esetben igazodik ahhoz a mértékegységhez, amelyen az erőforrás tényleges használatát és költségeit kibocsátják.
+
+Használati adatok árának viselkedése – A használati adatokat tartalmazó fájlokban skálázott adatok láthatók, és előfordulhat, hogy ezek nem pontosan felelnek meg az árlistán látható adatoknak. Ezek konkrétan a következők:
+
+- Egységár – Az ár úgy van skálázva, hogy egyezzen azzal a mértékegységgel, amelyben az Azure-erőforrások ténylegesen kibocsátják a költségeket. Skálázás esetén az ár nem fog egyezni az árlistán található árral.
+- Mértékegység – Azt a mértékegységet jelöli, amelyben az Azure-erőforrások ténylegesen kibocsátják a költségeket.
+- Tényleges ár / Erőforrás-díjszabás – Az ár az egységenként fizetett, tényleges díjat jelenti, a kedvezmények levonása után. Ezt az árat kell használni a mennyiséggel az ár és a mennyiség szorzatának kiszámítása során a költségek egyeztetéséhez. Az ár az alábbi forgatókönyveket és a fájlokban szintén megtalálható skálázott egységárat veszi figyelembe. Ennek következtében ez eltérhet a skálázott egységártól.
+  - Szintezett díjszabás – Például: az első 100 egység ára 10 dollár, a következő 100 egység ára 8 dollár.
+  - Szolgáltatási keret – Például: Az első 100 egység ingyenes, utána minden egység 10 dollár.
+  - Lefoglalások
+  - A számítás során alkalmazott kerekítés – A kerekítés a felhasznált mennyiséget, a szintezett díjszabást/a szolgáltatási keret díjszabását és a skálázott egységárat veszi figyelembe.
 
 ## <a name="example-usage-details-api-requests"></a>Példák a Usage Details API kéréseire
 
@@ -325,7 +341,7 @@ Az Azure-műveletcsoportokkal konfigurálhatja, hogy a költségvetések automat
 
 ## <a name="data-latency-and-rate-limits"></a>Adatkésés és sebességkorlátok
 
-Azt javasoljuk, hogy naponta csak egy alkalommal hívja meg az API-kat. A Cost Management adatai négyóránként frissülnek. A rendszer ekkor kapja meg az új használati adatokat az Azure-beli erőforrás-szolgáltatóktól. Az ennél gyakoribb hívás nem szolgál további adatokkal. Csak a terhelést növeli meg. További információk az adatok frissítési gyakoriságáról és az adatkésés kezeléséről [a költségkezelési adatok értelmezését](understand-cost-mgt-data.md) ismertető szakaszban találhatók.
+Azt javasoljuk, hogy naponta csak egy alkalommal hívja meg az API-kat. A Cost Management adatai négyóránként frissülnek. A rendszer ekkor kapja meg az új használati adatokat az Azure-beli erőforrás-szolgáltatóktól. A gyakoribb hívás nem biztosít több információt. Csak a terhelést növeli meg. További információk az adatok frissítési gyakoriságáról és az adatkésés kezeléséről [a költségkezelési adatok értelmezését](understand-cost-mgt-data.md) ismertető szakaszban találhatók.
 
 ### <a name="error-code-429---call-count-has-exceeded-rate-limits"></a>429-es hibakód – A hívások száma meghaladta a korlátokat
 

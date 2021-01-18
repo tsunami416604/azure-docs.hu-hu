@@ -8,6 +8,8 @@
       href: faq.md
     - name: Újdonságok
       href: whats-new.md
+    - name: Migrálás Operations Managerről
+      href: azure-monitor-operations-manager.md
 - name: Rövid útmutatók
   items:
     - name: Azure-erőforrás monitorozása
@@ -196,6 +198,8 @@
               href: platform/metric-chart-samples.md
             - name: Metrikadiagramok hibaelhárítása
               href: platform/metrics-troubleshoot.md
+            - name: A metrikák aggregálásának ismertetése
+              href: platform/metrics-aggregation-explained.md
     - name: Azure Monitor-naplók
       items:
         - name: Áttekintés
@@ -664,6 +668,8 @@
                       href: app/javascript-react-native-plugin.md
                     - name: Angular beépülő modul
                       href: app/javascript-angular-plugin.md
+                    - name: Kattintson az Analytics automatikus gyűjtési beépülő moduljára
+                      href: app/javascript-click-analytics-plugin.md
                 - name: Hibaelhárítás
                   items:
                     - name: SDK-betöltési hiba

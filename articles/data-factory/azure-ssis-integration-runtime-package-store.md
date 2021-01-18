@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 09/29/2020
-ms.openlocfilehash: 29d072c513d9a75055d4bb486f44b17b00b7f0a9
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: c7fc1a6c6aa29bfbc074bfa797f31ca8ee4e8fec
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638346"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556406"
 ---
 # <a name="manage-packages-with-azure-ssis-integration-runtime-package-store"></a>Csomagok kezelése Azure-SSIS Integration Runtime Package Store-val
 
@@ -28,7 +28,7 @@ A helyszíni SQL Server Integration Services (SSIS) számítási feladatok felh�
 - Azure SQL Database kiszolgáló/felügyelt példány által üzemeltetett SSIS-katalógusba (SSISDB) telepített csomagok futtatása (projekt-telepítési modell)
 - Az Azure SQL felügyelt példányai által üzemeltetett fájlrendszerbe, Azure Filesba vagy SQL Server adatbázisba (MSDB) telepített csomagok futtatása (csomag-telepítési modell)
 
-A csomag-telepítési modell használata esetén kiválaszthatja, hogy szeretné-e kiépíteni a Azure-SSIS IRt a csomagok tárolói között. Biztosítanak egy csomagkezelő réteget az Azure SQL felügyelt példánya által üzemeltetett fájlrendszer, Azure Files vagy MSDB felett. A Azure-SSIS IR Package Store lehetővé teszi a csomagok importálását/exportálását, törlését és futtatását, valamint a csomagok futtatásának figyelését/leállítását SQL Server Management Studio (SSMS) használatával, hasonlóan a [régi SSIS-csomag tárolójához](/sql/integration-services/service/package-management-ssis-service?view=sql-server-2017). 
+A csomag-telepítési modell használata esetén kiválaszthatja, hogy szeretné-e kiépíteni a Azure-SSIS IRt a csomagok tárolói között. Biztosítanak egy csomagkezelő réteget az Azure SQL felügyelt példánya által üzemeltetett fájlrendszer, Azure Files vagy MSDB felett. A Azure-SSIS IR Package Store lehetővé teszi a csomagok importálását/exportálását, törlését és futtatását, valamint a csomagok futtatásának figyelését/leállítását SQL Server Management Studio (SSMS) használatával, hasonlóan a [régi SSIS-csomag tárolójához](/sql/integration-services/service/package-management-ssis-service). 
 
 ## <a name="connect-to-azure-ssis-ir"></a>Kapcsolódás Azure-SSIS IRhoz
 
@@ -42,39 +42,39 @@ A SSMS **Object Explorer** ablakában válassza a **Azure-SSIS Integration Runti
 
 ## <a name="manage-folders-and-packages"></a>Mappák és csomagok kezelése
 
-Miután kapcsolódott a Azure-SSIS IRhoz a SSMS-on, a jobb gombbal kattintson bármelyik csomag-áruházra, mappára vagy csomagra a menü felugró menüjében, majd válassza az **új mappa** , **csomag importálása** , **csomag exportálása** , **Törlés** vagy **frissítés** lehetőséget.
+Miután kapcsolódott a Azure-SSIS IRhoz a SSMS-on, a jobb gombbal kattintson bármelyik csomag-áruházra, mappára vagy csomagra a menü felugró menüjében, majd válassza az **új mappa**, **csomag importálása**, **csomag exportálása**, **Törlés** vagy **frissítés** lehetőséget.
 
    ![Mappák és csomagok kezelése](media/azure-ssis-integration-runtime-package-store/ssms-package-store-manage.png)
 
    *  Válassza az **új mappa** lehetőséget az importált csomagok új mappájának létrehozásához.
 
-   *  Válassza a **csomag importálása** lehetőséget, hogy csomagokat importáljon a **fájlrendszerből** , **SQL Server** (MSDB) vagy a régi **SSIS-Package áruházból** a csomag tárolójába.
+   *  Válassza a **csomag importálása** lehetőséget, hogy csomagokat importáljon a **fájlrendszerből**, **SQL Server** (MSDB) vagy a régi **SSIS-Package áruházból** a csomag tárolójába.
 
       ![Csomag importálása](media/azure-ssis-integration-runtime-package-store/ssms-package-store-import.png)
 
-      Attól függően, hogy melyik **csomagot** szeretné importálni, válassza ki a megfelelő **kiszolgálói** / **hitelesítési típust** , adja meg a hozzáférési hitelesítő adatokat, ha szükséges, válassza ki a **csomag elérési útját** , és adja meg az új **csomag nevét** . Csomagok importálásakor a védelmi szintje nem módosítható. A módosításhoz használja a SQL Server Data Tools (SSDT) vagy a `dtutil` parancssori segédprogramot.
+      Attól függően, hogy melyik **csomagot** szeretné importálni, válassza ki a megfelelő **kiszolgálói** / **hitelesítési típust**, adja meg a hozzáférési hitelesítő adatokat, ha szükséges, válassza ki a **csomag elérési útját**, és adja meg az új **csomag nevét**. Csomagok importálásakor a védelmi szintje nem módosítható. A módosításhoz használja a SQL Server Data Tools (SSDT) vagy a `dtutil` parancssori segédprogramot.
 
       > [!NOTE]
       > A SSIS-csomagok Azure-SSIS IR Package Store-ba történő importálása csak egyszer hajtható végre, és egyszerűen másolja őket az alapul szolgáló MSDB/File System/Azure Filesba, miközben megőrzi a SQL Server/SSIS verzióját. 
       >
-      > Mivel a Azure-SSIS IR jelenleg **SQL Server 2017** -es verzión alapul, az alacsonyabb verziójú csomagok futtatásával a rendszer a SSIS 2017-csomagokba frissíti őket. A magasabb verziójú csomagok végrehajtása nem támogatott.
+      > Mivel a Azure-SSIS IR jelenleg **SQL Server 2017**-es verzión alapul, az alacsonyabb verziójú csomagok futtatásával a rendszer a SSIS 2017-csomagokba frissíti őket. A magasabb verziójú csomagok végrehajtása nem támogatott.
       >
       > Továbbá, mivel a régi SSIS-csomagok tárolói meghatározott SQL Server-verzióhoz vannak kötve, és az adott verzióhoz csak a SSMS érhetők el, a régi SSIS-csomagok alacsonyabb verziójú csomagjait először a kijelölt SSMS-verzióval kell exportálni, mielőtt a SSMS 2019-as vagy újabb verziókkal importálják őket Azure-SSIS IR-csomagokba.
       >
-      > Azt is megteheti, hogy több SSIS-csomagot is importál Azure-SSIS IR Package Store-ba a védelmi szint átváltásakor. a [dtutil](/sql/integration-services/dtutil-utility?view=sql-server-2017) parancssori segédprogramot a következő témakörben tekintheti meg: [több csomag telepítése dtutil](#deploying-multiple-packages-with-dtutil)használatával.
+      > Azt is megteheti, hogy több SSIS-csomagot is importál Azure-SSIS IR Package Store-ba a védelmi szint átváltásakor. a [dtutil](/sql/integration-services/dtutil-utility) parancssori segédprogramot a következő témakörben tekintheti meg: [több csomag telepítése dtutil](#deploying-multiple-packages-with-dtutil)használatával.
 
-   *  Válassza a csomag **exportálása** lehetőséget a csomagok tárolóból való exportálásához a **fájlrendszerbe** , **SQL Server** (MSDB) vagy az örökölt **SSIS-csomag tárolóba** .
+   *  Válassza a csomag **exportálása** lehetőséget a csomagok tárolóból való exportálásához a **fájlrendszerbe**, **SQL Server** (MSDB) vagy az örökölt **SSIS-csomag tárolóba**.
 
       ![Csomag exportálása](media/azure-ssis-integration-runtime-package-store/ssms-package-store-export.png)
 
-      Az exportálandó **csomag helyétől** függően válassza ki a megfelelő **kiszolgálói** / **hitelesítési típust** , adja meg a hozzáférési hitelesítő adatokat, ha szükséges, majd válassza ki a **csomag elérési útját** . A csomagok exportálásakor, ha titkosítva vannak, adja meg azokat a jelszavakat, amelyeket először vissza kell fejteni, majd módosíthatja a védelmi szintet, például a bizalmas adatok tárolásának elkerüléséhez, vagy a felhasználói kulccsal vagy jelszóval rendelkező adatok titkosításához.
+      Az exportálandó **csomag helyétől** függően válassza ki a megfelelő **kiszolgálói** / **hitelesítési típust**, adja meg a hozzáférési hitelesítő adatokat, ha szükséges, majd válassza ki a **csomag elérési útját**. A csomagok exportálásakor, ha titkosítva vannak, adja meg azokat a jelszavakat, amelyeket először vissza kell fejteni, majd módosíthatja a védelmi szintet, például a bizalmas adatok tárolásának elkerüléséhez, vagy a felhasználói kulccsal vagy jelszóval rendelkező adatok titkosításához.
 
       > [!NOTE]
       > Az Azure-SSIS IR SSIS származó csomagok exportálása csak egyszer hajtható végre, és a védelmi szint átállítása nélkül egyszerűen másolja őket a SQL Server/SSIS verziójának megőrzése mellett, ellenkező esetben a rendszer a SSIS 2019-as vagy újabb verziójú csomagokat fogja frissíteni.
       >
-      > Mivel a Azure-SSIS IR jelenleg **SQL Server 2017** -es verzión alapul, az alacsonyabb verziójú csomagok futtatásával a rendszer a SSIS 2017-csomagokba frissíti őket. A magasabb verziójú csomagok végrehajtása nem támogatott.
+      > Mivel a Azure-SSIS IR jelenleg **SQL Server 2017**-es verzión alapul, az alacsonyabb verziójú csomagok futtatásával a rendszer a SSIS 2017-csomagokba frissíti őket. A magasabb verziójú csomagok végrehajtása nem támogatott.
       >
-      > Azt is megteheti, hogy Azure-SSIS IR Package Store-ból több SSIS-csomagot is exportál a védelmi szint átállítása közben. a [dtutil](/sql/integration-services/dtutil-utility?view=sql-server-2017) parancssori segédprogramot a következő témakörben tekintheti meg: [több csomag telepítése dtutil](#deploying-multiple-packages-with-dtutil)használatával.
+      > Azt is megteheti, hogy Azure-SSIS IR Package Store-ból több SSIS-csomagot is exportál a védelmi szint átállítása közben. a [dtutil](/sql/integration-services/dtutil-utility) parancssori segédprogramot a következő témakörben tekintheti meg: [több csomag telepítése dtutil](#deploying-multiple-packages-with-dtutil)használatával.
 
    *  A **Törlés** lehetőség kiválasztásával törölheti a meglévő mappákat/csomagokat a csomag tárolójából.
 
@@ -88,7 +88,7 @@ Miután kapcsolódott a Azure-SSIS IR a SSMS-on, a jobb gombbal bármelyik táro
 
 ![Csomagfuttató Pages 3 & 4](media/azure-ssis-integration-runtime-package-store/ssms-package-store-execute2.png)
 
-**Csomagfuttató** párbeszédpanel **általános** , **konfigurációk** , **végrehajtási beállításai** és **naplózási** lapjai megfelelnek a SSIS-csomag végrehajtása tevékenység **Beállítások** lapjának. Ezeken az oldalakon megadhatja a csomag titkosítási jelszavát, és elérheti a csomag konfigurációs fájljának hozzáférési információit. Megadhatja a csomag végrehajtási hitelesítő adatait és tulajdonságait, valamint a naplófájl elérési adatait is.  Az **Csomagfuttató** párbeszédablak **set Values (értékek beállítása** ) lapján a SSIS-csomag végrehajtása tevékenységben szereplő **Tulajdonságok felülbírálása lapra kerül** , ahol megadhatja a meglévő csomag tulajdonságait a felülbíráláshoz. További információ: [SSIS-csomagok futtatása az ADF-folyamatokban végrehajtható SSIS-csomag tevékenységként](./how-to-invoke-ssis-package-ssis-activity.md).
+**Csomagfuttató** párbeszédpanel **általános**, **konfigurációk**, **végrehajtási beállításai** és **naplózási** lapjai megfelelnek a SSIS-csomag végrehajtása tevékenység **Beállítások** lapjának. Ezeken az oldalakon megadhatja a csomag titkosítási jelszavát, és elérheti a csomag konfigurációs fájljának hozzáférési információit. Megadhatja a csomag végrehajtási hitelesítő adatait és tulajdonságait, valamint a naplófájl elérési adatait is.  Az **Csomagfuttató** párbeszédablak **set Values (értékek beállítása** ) lapján a SSIS-csomag végrehajtása tevékenységben szereplő **Tulajdonságok felülbírálása lapra kerül** , ahol megadhatja a meglévő csomag tulajdonságait a felülbíráláshoz. További információ: [SSIS-csomagok futtatása az ADF-folyamatokban végrehajtható SSIS-csomag tevékenységként](./how-to-invoke-ssis-package-ssis-activity.md).
 
 A **végrehajtás** gomb kiválasztásakor a rendszer automatikusan generálja és elindítja az új ADF-folyamatot a SSIS-csomag végrehajtásával. Ha már létezik azonos beállításokkal rendelkező ADF-folyamat, az újra lesz futtatva, és új folyamat nem jön létre. Az ADF-folyamat és a SSIS-csomag végrehajtása tevékenység a neve `Pipeline_SSMS_YourPackageName_HashString` `Activity_SSMS_YourPackageName` , illetve a lesz.
 
@@ -122,9 +122,9 @@ Miután kapcsolódott a Azure-SSIS IR a SSMS-on, kattintson rá a jobb gombbal, 
 
 A helyszíni SSIS számítási feladatok SSIS való átváltásához az ADF-ben a régi csomag-telepítési modell fenntartása mellett telepítenie kell a csomagokat a fájlrendszerből, a SQL Server által üzemeltetett MSDB, vagy az örökölt SSIS-csomagok tárolóit a Azure Files, az Azure SQL felügyelt példánya által üzemeltetett MSDB vagy Azure-SSIS IR csomag tárolja. & Ugyanakkor ha még nem tette meg, akkor a titkosítási szintet a felhasználói kulcs titkosítása nélkül is át kell váltania titkosítatlan vagy titkosításra a jelszóval.
 
-A SQL Server/SSIS telepítéséhez használható [dtutil](/sql/integration-services/dtutil-utility?view=sql-server-2017) parancssori segédprogramot több csomag kötegekben történő üzembe helyezéséhez is használhatja. Az adott SSIS-verzióhoz van kötve, így ha az alacsonyabb verziójú csomagokat a védelmi szint átállítása nélkül helyezi üzembe, akkor egyszerűen másolja őket, miközben megőrzi a SSIS verzióját. Ha ezt a lehetőséget használja az üzembe helyezéséhez és a védelmi szint egyidejű átállításához, akkor az a SSIS verziójára frissíti őket.
+A SQL Server/SSIS telepítéséhez használható [dtutil](/sql/integration-services/dtutil-utility) parancssori segédprogramot több csomag kötegekben történő üzembe helyezéséhez is használhatja. Az adott SSIS-verzióhoz van kötve, így ha az alacsonyabb verziójú csomagokat a védelmi szint átállítása nélkül helyezi üzembe, akkor egyszerűen másolja őket, miközben megőrzi a SSIS verzióját. Ha ezt a lehetőséget használja az üzembe helyezéséhez és a védelmi szint egyidejű átállításához, akkor az a SSIS verziójára frissíti őket.
 
- Mivel a Azure-SSIS IR jelenleg **SQL Server 2017** -es verzión alapul, az alacsonyabb verziójú csomagok futtatásával a rendszer a SSIS 2017-csomagokba frissíti őket. A magasabb verziójú csomagok végrehajtása nem támogatott.
+ Mivel a Azure-SSIS IR jelenleg **SQL Server 2017**-es verzión alapul, az alacsonyabb verziójú csomagok futtatásával a rendszer a SSIS 2017-csomagokba frissíti őket. A magasabb verziójú csomagok végrehajtása nem támogatott.
 
 Ennek következtében, ha el szeretné kerülni a futásidejű frissítéseket, a csomagok üzembe helyezése Azure-SSIS IR a csomag üzembe helyezési modelljében a dtutil 2017-et kell használnia, amely a SQL Server/SSIS 2017 telepítéshez tartozik. Erre a célra letöltheti és telepítheti az ingyenes [SQL Server/SSIS 2017 fejlesztői kiadást](https://go.microsoft.com/fwlink/?linkid=853016) . A telepítést követően a dtutil 2017 a következő mappában található: `YourLocalDrive:\Program Files\Microsoft SQL Server\140\DTS\Binn` .
 
@@ -148,13 +148,13 @@ for %f in (*.dtsx) do dtutil.exe /FILE %f /ENCRYPT FILE;Z:\%f;2;YourEncryptionPa
 
 A fenti parancsok batch-fájlban való futtatásához cserélje le a következőt: `%f` `%%f` .
 
-Ha több csomagot kíván üzembe helyezni a fájlrendszeren felül lévő örökölt SSIS-csomagokból a Azure Filesba, és a védelmi szintjét egyszerre kell átállítania, ugyanazokat a parancsokat használhatja, de a helyére a `YourLocalDrive:\...\YourPackageFolder` régi SSIS-csomagok által használt helyi mappák is használhatók: `YourLocalDrive:\Program Files\Microsoft SQL Server\YourSQLServerDefaultCompatibilityLevel\DTS\Packages\YourPackageFolder` . Ha például a régi SSIS-csomag tárolója SQL Server 2016-hez van kötve, ugorjon a következő helyre: `YourLocalDrive:\Program Files\Microsoft SQL Server\130\DTS\Packages\YourPackageFolder` .  A értéket az `YourSQLServerDefaultCompatibilityLevel` [SQL Server alapértelmezett kompatibilitási szintjeinek listájából](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15#arguments)találja.
+Ha több csomagot kíván üzembe helyezni a fájlrendszeren felül lévő örökölt SSIS-csomagokból a Azure Filesba, és a védelmi szintjét egyszerre kell átállítania, ugyanazokat a parancsokat használhatja, de a helyére a `YourLocalDrive:\...\YourPackageFolder` régi SSIS-csomagok által használt helyi mappák is használhatók: `YourLocalDrive:\Program Files\Microsoft SQL Server\YourSQLServerDefaultCompatibilityLevel\DTS\Packages\YourPackageFolder` . Ha például a régi SSIS-csomag tárolója SQL Server 2016-hez van kötve, ugorjon a következő helyre: `YourLocalDrive:\Program Files\Microsoft SQL Server\130\DTS\Packages\YourPackageFolder` .  A értéket az `YourSQLServerDefaultCompatibilityLevel` [SQL Server alapértelmezett kompatibilitási szintjeinek listájából](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#arguments)találja.
 
 Ha Azure-SSIS IR csomag-áruházakat Azure Files-on felül konfigurálta, akkor a telepített csomagok a SSMS 2019-as vagy újabb verziójában a Azure-SSIS IRhoz való csatlakozáskor fognak megjelenni.
 
 ### <a name="deploying-multiple-packages-from-msdb-on-premises-into-msdb-in-azure-with-dtutil"></a>Több csomag üzembe helyezése a MSDB a helyszínen a MSDB az Azure-ban a dtutil
 
- Ha SQL Server vagy örökölt SSIS-MSDB által üzemeltetett MSDB több csomagot szeretne üzembe helyezni az Azure SQL felügyelt példányai által üzemeltetett MSDB, és a védelmi szintjét egy időben át szeretné kapcsolni, akkor a SSMS-on lévő SQL Serverhoz kattintson a jobb gombbal a `Databases->System Databases->msdb` csomópontra a SSMS **Object Explorer** , és **New Query** futtassa az alábbi T-SQL-szkriptet. Cserélje le az esethez tartozó összes karakterláncot:  
+ Ha SQL Server vagy örökölt SSIS-MSDB által üzemeltetett MSDB több csomagot szeretne üzembe helyezni az Azure SQL felügyelt példányai által üzemeltetett MSDB, és a védelmi szintjét egy időben át szeretné kapcsolni, akkor a SSMS-on lévő SQL Serverhoz kattintson a jobb gombbal a `Databases->System Databases->msdb` csomópontra a SSMS **Object Explorer** , és  futtassa az alábbi T-SQL-szkriptet. Cserélje le az esethez tartozó összes karakterláncot:  
   
 ```sql
 BEGIN

@@ -188,16 +188,6 @@
               href: manage/pay-by-invoice.md
             - name: További előfizetések létrehozása
               href: manage/create-subscription.md
-            - name: EA-előfizetések programozott létrehozása
-              href: manage/programmatically-create-subscription-enterprise-agreement.md
-            - name: MCA-előfizetések programozott létrehozása
-              href: manage/programmatically-create-subscription-microsoft-customer-agreement.md
-            - name: MPA-előfizetések programozott létrehozása
-              href: manage/programmatically-create-subscription-microsoft-partner-agreement.md
-            - name: Előfizetések létrehozása – ARM-sablon
-              href: manage/create-subscription-template.md
-            - name: Előfizetések programozott létrehozása – előzetes verzió
-              href: manage/programmatically-create-subscription-preview.md
             - name: Hozzáférés biztosítása EA-előfizetések létrehozásához
               href: manage/grant-access-to-create-subscription.md
             - name: Előfizetési adatok exportálása
@@ -214,6 +204,20 @@
               href: manage/transfer-subscriptions-subscribers-csp.md
             - name: Előfizetés lemondása
               href: manage/cancel-azure-subscription.md
+        - name: Előfizetések programozott létrehozása
+          items:
+            - name: Előfizetések programozott létrehozása
+              href: manage/programmatically-create-subscription.md
+            - name: EA-előfizetések programozott létrehozása
+              href: manage/programmatically-create-subscription-enterprise-agreement.md
+            - name: MCA-előfizetések programozott létrehozása
+              href: manage/programmatically-create-subscription-microsoft-customer-agreement.md
+            - name: MPA-előfizetések programozott létrehozása
+              href: manage/programmatically-create-subscription-microsoft-partner-agreement.md
+            - name: Előfizetések létrehozása – ARM-sablon
+              href: manage/create-subscription-template.md
+            - name: Előfizetések programozott létrehozása – előzetes verziójú API-k
+              href: manage/programmatically-create-subscription-preview.md
         - name: Nagyvállalati szerződéses előfizetések kezelése
           items:
             - name: Nagyvállalati szerződéses szerepkörök az Azure-ban

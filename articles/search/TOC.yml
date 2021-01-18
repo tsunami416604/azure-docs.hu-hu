@@ -308,10 +308,10 @@
       items:
         - name: Szint kiválasztása
           href: search-sku-tier.md
-        - name: Kapacitás és költségek becslése
-          href: search-sku-manage-costs.md
-        - name: Kapacitás módosítása
+        - name: Kapacitás becslése és kezelése
           href: search-capacity-planning.md
+        - name: A költségek megbecslése
+          href: search-sku-manage-costs.md
         - name: Szolgáltatási korlátozások
           href: search-limits-quotas-capacity.md
         - name: Teljesítményorientált skálázás

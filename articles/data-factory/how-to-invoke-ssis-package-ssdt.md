@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 09/06/2020
-ms.openlocfilehash: 6b3c94023daf51559623f69e34b8e2b1f42fde92
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: a455d547fa3db2fd6e963458a29c77f516112e18
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637241"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556511"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>SSIS-csomagok végrehajtása az Azure-ban a SSDT-ből
 
@@ -29,7 +29,7 @@ Ezzel a funkcióval egy újonnan létrehozott/meglévő Azure-SSIS IR is csatolh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A szolgáltatás használatához töltse le és telepítse a legújabb SSDT a SSIS projects bővítménnyel a Visual studióhoz (VS) innen [.](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects) Azt is megteheti, hogy [innen](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)letöltheti és telepítheti a legújabb SSDT önálló telepítőként.
+A szolgáltatás használatához töltse le és telepítse a legújabb SSDT a SSIS projects bővítménnyel a Visual studióhoz (VS) innen [.](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects) Azt is megteheti, hogy [innen](/sql/ssdt/download-sql-server-data-tools-ssdt#ssdt-for-vs-2017-standalone-installer)letöltheti és telepítheti a legújabb SSDT önálló telepítőként.
 
 ## <a name="azure-enable-ssis-projects"></a>Azure – SSIS-projektek engedélyezése
 
@@ -53,11 +53,11 @@ A meglévő SSIS-projektek esetében az alábbi lépéseket követve engedélyez
 
    ![Azure – meglévő SSIS-projekt engedélyezése](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-for-existing-project.png)
 
-2. A **Visual Studio konfigurációjának kiválasztása** lapon válassza ki a meglévő vs konfigurációt, hogy alkalmazza a csomag-végrehajtási beállításokat az Azure-ban. Létrehozhat egy újat is, ha még nem tette meg, tekintse meg [az új vs konfiguráció létrehozása](/visualstudio/ide/how-to-create-and-edit-configurations?view=vs-2019)című témakört. Javasoljuk, hogy a helyi és a felhőalapú környezetekben legalább két különböző VS konfigurációval rendelkezzen a csomagok végrehajtásához, így az Azure-ban engedélyezheti a projektet a felhő konfigurációjával. Ily módon, ha a projekt vagy a csomagok paramétereit konfigurálta, különböző értékeket rendelhet a projekthez vagy a csomag paramétereinek futtatásához a különböző végrehajtási környezetek alapján (akár a helyi gépen, akár az Azure-ban). Lásd például: [csomagok végrehajtási környezetének váltása](#switchenvironment).
+2. A **Visual Studio konfigurációjának kiválasztása** lapon válassza ki a meglévő vs konfigurációt, hogy alkalmazza a csomag-végrehajtási beállításokat az Azure-ban. Létrehozhat egy újat is, ha még nem tette meg, tekintse meg [az új vs konfiguráció létrehozása](/visualstudio/ide/how-to-create-and-edit-configurations)című témakört. Javasoljuk, hogy a helyi és a felhőalapú környezetekben legalább két különböző VS konfigurációval rendelkezzen a csomagok végrehajtásához, így az Azure-ban engedélyezheti a projektet a felhő konfigurációjával. Ily módon, ha a projekt vagy a csomagok paramétereit konfigurálta, különböző értékeket rendelhet a projekthez vagy a csomag paramétereinek futtatásához a különböző végrehajtási környezetek alapján (akár a helyi gépen, akár az Azure-ban). Lásd például: [csomagok végrehajtási környezetének váltása](#switchenvironment).
 
    ![Visual Studio-konfiguráció kiválasztása](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-select-visual-studio-configurations.png)
 
-3. Azure – a meglévő SSIS-projektek engedélyezése megköveteli a célkiszolgáló verziójának beállítását, hogy az Azure-SSIS IR által támogatott legkésőbbi legyen. Azure-SSIS IR jelenleg **SQL Server 2017** -alapú. Győződjön meg arról, hogy a csomagok nem tartalmaznak olyan további összetevőket, amelyeket nem támogat a SQL Server 2017. Győződjön meg arról is, hogy az összes kompatibilis további összetevő is telepítve van a Azure-SSIS IR egyéni telepítéseken keresztül: [a Azure-SSIS IR testreszabása](./how-to-configure-azure-ssis-ir-custom-setup.md). A folytatáshoz kattintson a **tovább** gombra.
+3. Azure – a meglévő SSIS-projektek engedélyezése megköveteli a célkiszolgáló verziójának beállítását, hogy az Azure-SSIS IR által támogatott legkésőbbi legyen. Azure-SSIS IR jelenleg **SQL Server 2017**-alapú. Győződjön meg arról, hogy a csomagok nem tartalmaznak olyan további összetevőket, amelyeket nem támogat a SQL Server 2017. Győződjön meg arról is, hogy az összes kompatibilis további összetevő is telepítve van a Azure-SSIS IR egyéni telepítéseken keresztül: [a Azure-SSIS IR testreszabása](./how-to-configure-azure-ssis-ir-custom-setup.md). A folytatáshoz kattintson a **tovább** gombra.
 
    ![A célkiszolgáló verziójának váltása](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-switch-target-server-version-step.png)
 
@@ -74,7 +74,7 @@ Az Azure-kompatibilis projektek ADF-SSIS való csatlakoztatásával feltöltheti
 2. Az **SSIS IR kiválasztása az ADF-ben** lapon válassza ki a meglévő ADF-t, és Azure-SSIS IR a csomagok futtatásához. Újakat is létrehozhat, ha nem rendelkezik ilyen lehetőségekkel.
    - A meglévő Azure-SSIS IR kiválasztásához először válassza ki a megfelelő Azure-előfizetést és az ADF-t.
    - Ha kijelöli a meglévő ADF-t, amelynek nincs Azure-SSIS IRa, válassza a **SSIS létrehozása IR** -t, és hozzon létre egy újat az ADF-portálon. A létrehozás után visszatérhet erre a lapra az új Azure-SSIS IR kiválasztásához.
-   - Ha olyan meglévő Azure-előfizetést választ ki, amely nem rendelkezik ADF-vel, akkor a **Integration Runtime létrehozási varázsló** elindításához kattintson a **SSIS létrehozása** elemre. A varázslóban megadhatja a kijelölt helyét és előtagját, hogy automatikusan létrehozzon egy új Azure-erőforráscsoportot, Data Factory és SSIS az Ön nevében, a következő mintában: **YourPrefix-RG/DF/IR-YourCreationTime** . A létrehozás után visszatérhet erre a lapra, és kiválaszthatja az új ADF-t és Azure-SSIS IR.
+   - Ha olyan meglévő Azure-előfizetést választ ki, amely nem rendelkezik ADF-vel, akkor a **Integration Runtime létrehozási varázsló** elindításához kattintson a **SSIS létrehozása** elemre. A varázslóban megadhatja a kijelölt helyét és előtagját, hogy automatikusan létrehozzon egy új Azure-erőforráscsoportot, Data Factory és SSIS az Ön nevében, a következő mintában: **YourPrefix-RG/DF/IR-YourCreationTime**. A létrehozás után visszatérhet erre a lapra, és kiválaszthatja az új ADF-t és Azure-SSIS IR.
 
    ![Válassza ki a SSIS IR-t az ADF-ben](media/how-to-invoke-ssis-package-ssdt/ssis-in-adf-connection-wizard2.png)
 
@@ -109,7 +109,7 @@ Ha biztos benne, hogy egyes lehetséges Felhőbeli kompatibilitási problémák 
 
    ![Értékelési szabály letiltási beállításai](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assessment-rule-suppression-settings.png)
 
--  Azt is megteheti, hogy a jobb gombbal rákattint a projekt csomópontjára a SSDT Megoldáskezelő ablakában a menü felugró menüjében. Válassza ki az **Azure-kompatibilis beállítások** elemet a **SSIS Azure Data Factory** almenüben a Project Property lapjait tartalmazó ablak felugró ablakban. Válassza a **letiltott értékelési szabályok azonosítói** tulajdonságát az **Azure-kompatibilis beállítások** szakaszban. Végül a három pont ( **..** .) gombra kattintva megnyithatja az **értékelési szabály letiltási beállításainak** ablakát, ahol kiválaszthatja a letiltani kívánt értékelési szabályokat.
+-  Azt is megteheti, hogy a jobb gombbal rákattint a projekt csomópontjára a SSDT Megoldáskezelő ablakában a menü felugró menüjében. Válassza ki az **Azure-kompatibilis beállítások** elemet a **SSIS Azure Data Factory** almenüben a Project Property lapjait tartalmazó ablak felugró ablakban. Válassza a **letiltott értékelési szabályok azonosítói** tulajdonságát az **Azure-kompatibilis beállítások** szakaszban. Végül a három pont (**..**.) gombra kattintva megnyithatja az **értékelési szabály letiltási beállításainak** ablakát, ahol kiválaszthatja a letiltani kívánt értékelési szabályokat.
 
    ![Azure-kompatibilis beállítások](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-azure-enabled-setting.png)
 
@@ -125,11 +125,11 @@ A csomagok Azure-ban való végrehajtása előtt beállíthatja az Azure-ban eng
 
    ![Azure-kompatibilis beállítások](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-azure-enabled-setting.png)
 
-2. Jelölje be a **Windows-hitelesítés engedélyezése** tulajdonságot az **Azure-kompatibilis beállítások** szakaszban, majd válassza a **true (igaz** ) lehetőséget a legördülő menüben. Ezután válassza ki a **Windows-hitelesítés hitelesítő adatai** tulajdonságot, majd válassza ki a három pont ( **...** ) gombot a **Windows-hitelesítés hitelesítő adatainak** ablakának megjelenítéséhez.
+2. Jelölje be a **Windows-hitelesítés engedélyezése** tulajdonságot az **Azure-kompatibilis beállítások** szakaszban, majd válassza a **true (igaz** ) lehetőséget a legördülő menüben. Ezután válassza ki a **Windows-hitelesítés hitelesítő adatai** tulajdonságot, majd válassza ki a három pont (**...**) gombot a **Windows-hitelesítés hitelesítő adatainak** ablakának megjelenítéséhez.
 
    ![Windows-hitelesítés engedélyezése](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-windows-authentication-open.png)
 
-3. Adja meg a Windows-hitelesítéshez tartozó hitelesítő adatait. A Azure Fileshoz való hozzáféréshez például megadhatja `Azure` a `YourStorageAccountName` tartományt, `YourStorageAccountKey` a **felhasználónevet** és a **jelszót** , illetve a **tartomány** , a Felhasználónév és a jelszó megadását.
+3. Adja meg a Windows-hitelesítéshez tartozó hitelesítő adatait. A Azure Fileshoz való hozzáféréshez például megadhatja `Azure` a `YourStorageAccountName` tartományt, `YourStorageAccountKey` a **felhasználónevet** és a **jelszót**, illetve a **tartomány**, a Felhasználónév és a jelszó megadását.
 
    ![Windows-hitelesítés hitelesítő adatai](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-windows-authentication-credential.png)
 
@@ -164,7 +164,7 @@ Ha a csomagok olyan csomagokat hajtanak végre, amelyek ugyanabban a projektben 
 A SSIS-csomagok Azure-ban való végrehajtása nem támogatja a **EncryptSensitiveWithUserKey** / **EncryptAllWithUserKey** -védelmi szinteket. Következésképpen, ha a csomagjai a használatára vannak konfigurálva, a rendszer átmenetileg átalakítja azokat a **EncryptSensitiveWithPassword** / **EncryptAllWithPassword** védelmi szintjeinek használatával. A titkosítási jelszavakat véletlenszerűen is létrehozjuk, amikor a csomagokat Azure Filesba töltjük fel a Azure-SSIS IR végrehajtásához.
 
 > [!NOTE]
-> Ha a csomagok végrehajtják a **EncryptSensitiveWithUserKey** EncryptAllWithUserKey védelmi szintek használatára konfigurált alcsomagokra hivatkozó csomagokat / **EncryptAllWithUserKey** , akkor a csomagok végrehajtása előtt manuálisan kell konfigurálnia ezeket a gyermek csomagokat a **EncryptSensitiveWithPassword** / **EncryptAllWithPassword** -védelmi szintjének használatára.
+> Ha a csomagok végrehajtják a **EncryptSensitiveWithUserKey** EncryptAllWithUserKey védelmi szintek használatára konfigurált alcsomagokra hivatkozó csomagokat /  , akkor a csomagok végrehajtása előtt manuálisan kell konfigurálnia ezeket a gyermek csomagokat a **EncryptSensitiveWithPassword** / **EncryptAllWithPassword** -védelmi szintjének használatára.
 
 Ha a csomagok már úgy vannak konfigurálva, hogy **EncryptSensitiveWithPassword** / **EncryptAllWithPassword** védelmi szinteket használjanak, változatlanok maradnak. Ha a csomagokat Azure Filesba tölti fel a Azure-SSIS IR-ban, a rendszer továbbra is véletlenszerűen generált titkosítási jelszavakat.
 
@@ -180,7 +180,7 @@ Ha projekt-/csomagjait parametrizálja a projekt-telepítési modellben, több V
 
    ![Parametrizálja](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-example-update-task-with-parameters.png)
 
-3. Alapértelmezés szerint a csomag végrehajtásához a **fejlesztés** nevű helyi környezetben már létezik egy meglévő vs konfiguráció. Hozzon létre egy új, VS konfigurációt a csomagok végrehajtásához az **Azure** nevű felhőalapú környezetben: [új vs konfiguráció létrehozása](/visualstudio/ide/how-to-create-and-edit-configurations?view=vs-2019), ha még nem tette volna meg.
+3. Alapértelmezés szerint a csomag végrehajtásához a **fejlesztés** nevű helyi környezetben már létezik egy meglévő vs konfiguráció. Hozzon létre egy új, VS konfigurációt a csomagok végrehajtásához az **Azure** nevű felhőalapú környezetben: [új vs konfiguráció létrehozása](/visualstudio/ide/how-to-create-and-edit-configurations), ha még nem tette volna meg.
 
 4. Ha megtekinti a csomag paramétereit, válassza a **Paraméterek hozzáadása konfigurációkhoz** gombot a csomag paramétereinek **kezelése** ablak megnyitásához. Ezután rendeljen hozzá különböző értékeket a célfájl elérési útjához a **filepath** Package paraméterhez a **fejlesztési** és az **Azure** -konfigurációk alatt.
 

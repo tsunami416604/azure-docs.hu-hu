@@ -12,12 +12,12 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 11/06/2020
-ms.openlocfilehash: bc5d2cad7b4fbf1871d2c02dc91db30daf55e855
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: b9dc88c5773d1329ad4fb4d1c45a0cbc88737423
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600727"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556579"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime beállításainak testreszabása
 
@@ -345,7 +345,7 @@ A standard egyéni telepítések egyes mintáinak megtekintéséhez és újrafel
 
       * Egy *tls 1,2* mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz, hogy erős titkosítást és biztonságosabb hálózati protokollt (TLS 1,2) használjon a Azure-SSIS IR mindegyik csomópontján. A parancsfájl letiltja a régebbi SSL/TLS-verziókat is.
 
-      * Egy *ZULU OPENJDK* mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) és egy PowerShell-fájlt (*install_openjdk.ps1*) tartalmaz a Zulu-OPENJDK telepítéséhez a Azure-SSIS IR egyes csomópontjain. Ez a beállítás lehetővé teszi, hogy Azure Data Lake Store és rugalmas fájl-összekötőket használjon az ork és a Parquet fájlok feldolgozásához. További információ: [Az Azure Feature Pack az integrációs szolgáltatásokhoz](/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-ver15#dependency-on-java). 
+      * Egy *ZULU OPENJDK* mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) és egy PowerShell-fájlt (*install_openjdk.ps1*) tartalmaz a Zulu-OPENJDK telepítéséhez a Azure-SSIS IR egyes csomópontjain. Ez a beállítás lehetővé teszi, hogy Azure Data Lake Store és rugalmas fájl-összekötőket használjon az ork és a Parquet fájlok feldolgozásához. További információ: [Az Azure Feature Pack az integrációs szolgáltatásokhoz](/sql/integration-services/azure-feature-pack-for-integration-services-ssis#dependency-on-java). 
       
         Először [töltse le a legújabb Zulu-OpenJDK](https://www.azul.com/downloads/zulu/zulu-windows/) (például *zulu8.33.0.1-jdk8.0.192-win_x64.zip*), majd töltse fel a *Main. cmd fájllal* együtt, és *install_openjdk.ps1* a tárolóba.
 
@@ -359,7 +359,7 @@ A standard egyéni telepítések egyes mintáinak megtekintéséhez és újrafel
 
 1. A normál egyéni telepítés befejezése és a Azure-SSIS IR elindítása után megtalálhatja az összes egyéni telepítési naplót a tároló *fő. cmd. log* mappájába. Ezek tartalmazzák a *Main. cmd* és más végrehajtási naplók szabványos kimenetét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure-SSIS IR Enterprise kiadásának beállítása](how-to-configure-azure-ssis-ir-enterprise-edition.md)
 - [Fizetett vagy licencelt összetevők fejlesztése a Azure-SSIS IR](how-to-develop-azure-ssis-ir-licensed-components.md)

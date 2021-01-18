@@ -55,6 +55,8 @@
               href: ./database/security-controls-policy.md
             - name: Biztonsági alapkonfiguráció
               href: database/security-baseline.md
+            - name: Always Encrypted
+              href: database/always-encrypted-landing.yml
             - name: Azure Defender SQL-hez
               href: database/azure-defender-for-sql.md
             - name: Fejlett fenyegetésvédelem
@@ -255,6 +257,8 @@
               href: database/service-tier-hyperscale.md
             - name: Rugalmas skálázással kapcsolatos gyakori kérdések
               href: database/service-tier-hyperscale-frequently-asked-questions-faq.md
+        - name: Költségtervezés és a költségek kezelése
+          href: database/cost-management.md
     - name: Rövid útmutatók
       href: database/quickstart-content-reference-guide.md
       items:
@@ -293,14 +297,16 @@
               href: database/active-geo-replication-configure-portal.md
         - name: Biztonság
           items:
+            - name: Biztonságos enklávékkal ellátott Always Encrypted
+              href: database/always-encrypted-enclaves-getting-started.md
             - name: Biztonság konfigurálása
               href: database/secure-database-tutorial.md
+            - name: Felhasználók létrehozása szolgáltatásnevek használatával
+              href: database/authentication-aad-service-principal-tutorial.md
             - name: TDE BYOK-kulcsok váltása
               href: database/transparent-data-encryption-byok-key-rotation.md
             - name: A TDE-védő eltávolítása
               href: database/transparent-data-encryption-byok-remove-tde-protector.md
-            - name: Felhasználók létrehozása szolgáltatásnevek használatával
-              href: database/authentication-aad-service-principal-tutorial.md
         - name: Adatok áthelyezése
           items:
             - name: Migrálás DMS használatával
@@ -371,6 +377,19 @@
               href: database/sql-data-sync-troubleshoot.md
         - name: Biztonság
           items:
+            - name: Always Encrypted
+              href: database/always-encrypted-landing.yml
+            - name: Biztonságos enklávékkal ellátott Always Encrypted
+              href: database/always-encrypted-with-secure-enclaves-landing.yml
+              items:
+                - name: Az Always Encrypted konfigurálása és használata biztonságos enklávékkal >
+                  href: /sql/relational-databases/security/encryption/configure-always-encrypted-enclaves
+                - name: Intel SGX-enklávék és -igazolás tervezése
+                  href: database/always-encrypted-enclaves-plan.md
+                - name: Az Intel SGX engedélyezése
+                  href: database/always-encrypted-enclaves-enable-sgx.md
+                - name: Az Azure Attestation konfigurálása
+                  href: database/always-encrypted-enclaves-configure-attestation.md
             - name: Azure SQL-naplózás
               href: database/auditing-overview.md
             - name: Auditnapló formátuma
@@ -922,10 +941,12 @@
               href: /sql/relational-databases/database-mail/database-mail?toc=%2fazure%2fazure-sql%2ftoc.json
         - name: Biztonság
           items:
-            - name: Nyilvános végpontok biztonságossá tétele
-              href: managed-instance/public-endpoint-overview.md
+            - name: Always Encrypted
+              href: database/always-encrypted-landing.yml
             - name: Naplózás
               href: managed-instance/auditing-configure.md
+            - name: Nyilvános végpontok biztonságossá tétele
+              href: managed-instance/public-endpoint-overview.md
             - name: Kiszolgálói megbízhatósági csoportok
               href: managed-instance/server-trust-group-overview.md
     - name: Útmutató

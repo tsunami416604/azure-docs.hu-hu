@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 9fe1b7a077142b00aaf2a8502faa0e166c4311c4
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 219f8728eb90101e7437cbb82b44a1f7124ef14d
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915623"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556426"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Azure HDInsight-fürtök biztonságossá tétele és elkülönítése privát kapcsolattal (előzetes verzió)
 
@@ -60,7 +60,7 @@ A standard Load balancerek nem biztosítják automatikusan a [nyilvános kimenő
 
 ### <a name="prepare-your-environment"></a>A környezet előkészítése
 
-A privát successgfull létrehozásához explicit módon [le kell tiltania a magánhálózati kapcsolati szolgáltatáshoz tartozó hálózati házirendeket](../private-link/disable-private-link-service-network-policy.md).
+A Private link Services sikeres létrehozásához explicit módon [le kell tiltania a magánhálózati kapcsolati szolgáltatáshoz tartozó hálózati házirendeket](../private-link/disable-private-link-service-network-policy.md).
 
 A következő ábrán egy példa látható a fürt létrehozása előtt szükséges hálózati konfigurációra. Ebben a példában az összes kimenő forgalom Azure Firewall UDR használatával van [kényszerítve](../firewall/forced-tunneling.md) , és a szükséges kimenő függőségeknek "engedélyezett"nek kell lenniük a tűzfalon a fürt létrehozása előtt. Enterprise Security Package-fürtök esetében a VNet-társítással a Azure Active Directory Domain Services hálózati kapcsolata is elérhető.
 
@@ -100,12 +100,12 @@ networkProperties: {
 
 A HDInsight nagyvállalati biztonsági funkcióival, beleértve a privát hivatkozásokat is, a [HDInsight Enterprise biztonsági sablon](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/ESP-HIB-PL-Template)című témakörben talál teljes sablont.
 
-### <a name="use-azure-powershell"></a>Az Azure PowerShell használata
+### <a name="use-azure-powershell"></a>Azure PowerShell használatával
 
-A PowerShell használatához tekintse meg [a példát.](/powershell/module/az.hdinsight/new-azhdinsightcluster?view=azps-5.1.0#example-4--create-an-azure-hdinsight-cluster-with-relay-outbound-and-private-link-feature)
+A PowerShell használatához tekintse meg a [következő példát.](/powershell/module/az.hdinsight/new-azhdinsightcluster#example-4--create-an-azure-hdinsight-cluster-with-relay-outbound-and-private-link-feature)
 
 ### <a name="use-azure-cli"></a>Az Azure parancssori felület használatával
-Az Azure CLI használatához tekintse meg a [következő példát:](/cli/azure/hdinsight?view=azure-cli-latest#az_hdinsight_create-examples).
+Az Azure CLI használatához tekintse meg a [következő példát:](/cli/azure/hdinsight#az_hdinsight_create-examples).
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: e0a1d8dba9ea284322584de3b4be2ae390d15fdf
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: c95f8b9e4466b22519a4dea580a86a0dcda83857
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920253"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555933"
 ---
 # <a name="register-and-scan-azure-synapse-analytics"></a>Az Azure szinapszis Analytics regisztrálása és vizsgálata
 
@@ -24,7 +24,7 @@ Az Azure szinapszis Analytics (korábbi nevén SQL DW) teljes és növekményes 
 
 ### <a name="known-limitations"></a>Ismert korlátozások
 
-Az Azure-beli hatáskörébe nem támogatott a [nézetek](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15) vizsgálata az Azure szinapszis Analyticsben
+Az Azure-beli hatáskörébe nem támogatott a [nézetek](/sql/relational-databases/views/views?view=azure-sqldw-latest&preserve-view=true) vizsgálata az Azure szinapszis Analyticsben
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,7 +45,7 @@ Az Azure Blob Storage hitelesítésének Háromféleképpen állítható be:
 
 ### <a name="managed-identity-recommended"></a>Felügyelt identitás (ajánlott) 
    
-A hatáskörébe tartozó fióknak saját felügyelt identitása van, amely alapvetően a hatáskörébe tartozik a létrehozásakor. Létre kell hoznia egy Azure AD-felhasználót az Azure szinapszis Analyticsben (korábbi nevén SQL DW) a hatáskörébe tartozó felügyelt identitás nevét követve az Azure [ad-felhasználók Azure ad-alkalmazásokkal történő létrehozásához](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial)szükséges előfeltételek és oktatóanyag alapján.
+A hatáskörébe tartozó fióknak saját felügyelt identitása van, amely alapvetően a hatáskörébe tartozik a létrehozásakor. Létre kell hoznia egy Azure AD-felhasználót az Azure szinapszis Analyticsben (korábbi nevén SQL DW) a hatáskörébe tartozó felügyelt identitás nevét követve az Azure [ad-felhasználók Azure ad-alkalmazásokkal történő létrehozásához](/azure/azure-sql/database/authentication-aad-service-principal-tutorial)szükséges előfeltételek és oktatóanyag alapján.
 
 SQL-szintaxis – példa felhasználói és engedélyezési engedélyek létrehozására:
 
@@ -102,7 +102,7 @@ GO
 
 ### <a name="sql-authentication"></a>SQL-hitelesítés
 
-Ha még nem rendelkezik ilyennel, kövesse a [create login (bejelentkezés létrehozása](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1) ) című témakör utasításait az Azure szinapszis Analytics (korábban SQL DW) bejelentkezési azonosítójának létrehozásához.
+Ha még nem rendelkezik ilyennel, kövesse a [create login (bejelentkezés létrehozása](/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest&preserve-view=true#examples-1) ) című témakör utasításait az Azure szinapszis Analytics (korábban SQL DW) bejelentkezési azonosítójának létrehozásához.
 
 Ha a kiválasztott hitelesítési módszer **SQL-hitelesítés**, a Key vaultban be kell szereznie a jelszavát, és tárolnia kell a következőt:
 

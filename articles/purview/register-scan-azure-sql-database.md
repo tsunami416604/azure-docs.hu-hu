@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 15708e35fa27bb4a1f72368df6f49ff747eb799b
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 36781e7f975ee9d4a03cf899650701bf2d3940ac
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739790"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555950"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Azure SQL Database regisztrálása és vizsgálata
 
@@ -28,7 +28,7 @@ A Azure SQL Database adatforrás a következő funkciókat támogatja:
 
 ### <a name="known-limitations"></a>Ismert korlátozások
 
-Az Azure-beli hatáskörébe nem támogatottak a Azure SQL Database [nézeteinek](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15&preserve-view=true) vizsgálata. 
+Az Azure-beli hatáskörébe nem támogatottak a Azure SQL Database [nézeteinek](/sql/relational-databases/views/views?view=azuresqldb-current&preserve-view=true) vizsgálata.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -50,7 +50,7 @@ Hitelesítés Azure SQL Database vizsgálatához. Ha új hitelesítést kell lé
 > [!Note]
 > Csak a kiszolgálói szintű rendszerbiztonsági tag (a kiépítési folyamat által létrehozott) vagy a `loginmanager` Master adatbázisban lévő adatbázis-szerepkör tagjai hozhatnak létre új bejelentkezéseket. Az engedélyek megadása után körülbelül **15 perccel** tart, a hatáskörébe tartozó fióknak rendelkeznie kell a megfelelő engedélyekkel az erőforrás (ok) vizsgálatához.
 
-Ha nem rendelkezik ezzel a lehetőséggel, kövesse a [Bejelentkezés létrehozása](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1) Azure SQL Database bejelentkezés létrehozásához című témakör utasításait. A következő lépésekhez szüksége lesz a **felhasználónévre** és a **jelszóra** .
+Ha nem rendelkezik ezzel a lehetőséggel, kövesse a [Bejelentkezés létrehozása](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1) Azure SQL Database bejelentkezés létrehozásához című témakör utasításait. A következő lépésekhez szüksége lesz a **felhasználónévre** és a **jelszóra** .
 
 1. Navigáljon a Key vaulthoz a Azure Portal
 1. **Beállítások kiválasztása > titkok**
@@ -100,7 +100,7 @@ Az egyszerű szolgáltatásnak vagy a felügyelt identitásnak engedéllyel kell
     ```
 
     > [!Note]
-    > Az a `Username` saját szolgáltatásnév vagy a hatáskörébe tartozó felügyelt identitás. További információk a [rögzített adatbázis-szerepkörökről és azok képességeiről](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15&preserve-view=true#fixed-database-roles).
+    > Az a `Username` saját szolgáltatásnév vagy a hatáskörébe tartozó felügyelt identitás. További információk a [rögzített adatbázis-szerepkörökről és azok képességeiről](/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15&preserve-view=true#fixed-database-roles).
     
 ##### <a name="add-service-principal-to-key-vault-and-purviews-credential"></a>Egyszerű szolgáltatásnév hozzáadása a Key vaulthoz és a hatáskörébe hitelesítő adataihoz
 
@@ -161,7 +161,7 @@ A **források regisztrálása (Azure SQL Database)** képernyőn tegye a követk
 > [!NOTE]
 > A vizsgálat törlése nem törli a korábbi Azure SQL Database vizsgálatokból származó eszközöket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure-beli hatáskörébe tartozó adatkatalógus tallózása](how-to-browse-catalog.md)
 - [Keresés az Azure-beli hatáskörébe Data Catalog](how-to-search-catalog.md)

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 6eb17537fd64b192f64c36b38bab57e11d751328
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 3513ba0cd1a894b55da604d54964affa79b6adf4
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400777"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555967"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>Azure SQL Database felügyelt példány regisztrálása és bevizsgálása
 
@@ -28,19 +28,19 @@ Az Azure SQL Database felügyelt példány adatforrás a következő funkciókat
 
 ### <a name="known-limitations"></a>Ismert korlátozások
 
-Az Azure-beli hatáskörébe nem használhatók a [nézetek](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15) vizsgálata az Azure SQL felügyelt példányában.
+Az Azure-beli hatáskörébe nem használhatók a [nézetek](/sql/relational-databases/views/views?view=azuresqldb-mi-current&preserve-view=true) vizsgálata az Azure SQL felügyelt példányában.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Ha még nem rendelkezik ilyennel, hozzon létre egy új hatáskörébe tartozó fiókot.
 
-- [Nyilvános végpont konfigurálása az Azure SQL felügyelt példányában](https://docs.microsoft.com/azure/azure-sql/managed-instance/public-endpoint-configure)
+- [Nyilvános végpont konfigurálása az Azure SQL felügyelt példányában](/azure/azure-sql/managed-instance/public-endpoint-configure)
     > [!Note]
     > A szervezetnek képesnek kell lennie arra, hogy nyilvános végpontot engedélyezzen, mivel a hatáskörébe **nem támogatja a saját végpontot** . Ha privát végpontot használ, a vizsgálat sikertelen lesz.
 
 ### <a name="setting-up-authentication-for-a-scan"></a>Hitelesítés beállítása vizsgálathoz
 
-Hitelesítés Azure SQL Database felügyelt példány vizsgálatához. Ha új hitelesítést kell létrehoznia, engedélyeznie kell az [adatbázis-hozzáférést SQL Database felügyelt példányhoz](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage). A hatáskörébe három hitelesítési módszer létezik:
+Hitelesítés Azure SQL Database felügyelt példány vizsgálatához. Ha új hitelesítést kell létrehoznia, engedélyeznie kell az [adatbázis-hozzáférést SQL Database felügyelt példányhoz](/azure/azure-sql/database/logins-create-manage). A hatáskörébe három hitelesítési módszer létezik:
 
 - SQL-hitelesítés
 - Szolgáltatásnév
@@ -51,7 +51,7 @@ Hitelesítés Azure SQL Database felügyelt példány vizsgálatához. Ha új hi
 > [!Note]
 > Csak a kiszolgálói szintű rendszerbiztonsági tag (a kiépítési folyamat által létrehozott) vagy a `loginmanager` Master adatbázisban lévő adatbázis-szerepkör tagjai hozhatnak létre új bejelentkezéseket. Az engedélyek megadása után körülbelül **15 perccel** tart, a hatáskörébe tartozó fióknak rendelkeznie kell a megfelelő engedélyekkel az erőforrás (ok) vizsgálatához.
 
-Ha nem rendelkezik ezzel a lehetőséggel, kövesse a [Bejelentkezés létrehozása](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1) Azure SQL Database a felügyelt példányhoz tartozó bejelentkezés létrehozásához című témakör utasításait. A következő lépésekhez szüksége lesz a **felhasználónévre** és a **jelszóra** .
+Ha nem rendelkezik ezzel a lehetőséggel, kövesse a [Bejelentkezés létrehozása](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1) Azure SQL Database a felügyelt példányhoz tartozó bejelentkezés létrehozásához című témakör utasításait. A következő lépésekhez szüksége lesz a **felhasználónévre** és a **jelszóra** .
 
 1. Navigáljon a Key vaulthoz a Azure Portal
 1. **Beállítások kiválasztása > titkok**
@@ -85,8 +85,8 @@ Egyszerű szolgáltatásnév használatához használhat egy meglévőt, vagy l�
 ##### <a name="configure-azure-ad-authentication-in-the-database-account"></a>Az Azure AD-hitelesítés konfigurálása az adatbázis-fiókban
 
 Az egyszerű szolgáltatásnak vagy a felügyelt identitásnak engedéllyel kell rendelkeznie az adatbázis, a sémák és a táblák metaadatainak beszerzéséhez. Emellett képesnek kell lennie a táblázatok lekérdezésére is a besoroláshoz.
-- [Azure AD-hitelesítés konfigurálása és kezelése az Azure SQL-sel](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure)
-- Hozzon létre egy Azure AD-felhasználót Azure SQL Database felügyelt példányban az [Azure ad-identitásokhoz hozzárendelt, foglalt felhasználók létrehozásához](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#create-contained-users-mapped-to-azure-ad-identities) szükséges előfeltételeket és oktatóanyagot követve
+- [Azure AD-hitelesítés konfigurálása és kezelése az Azure SQL-sel](/azure/azure-sql/database/authentication-aad-configure)
+- Hozzon létre egy Azure AD-felhasználót Azure SQL Database felügyelt példányban az [Azure ad-identitásokhoz hozzárendelt, foglalt felhasználók létrehozásához](/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#create-contained-users-mapped-to-azure-ad-identities) szükséges előfeltételeket és oktatóanyagot követve
 - Hozzárendelés `db_owner` (**ajánlott**) engedély az identitáshoz
 
 ##### <a name="add-service-principal-to-key-vault-and-purviews-credential"></a>Egyszerű szolgáltatásnév hozzáadása a Key vaulthoz és a hatáskörébe hitelesítő adataihoz

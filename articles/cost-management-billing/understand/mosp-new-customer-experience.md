@@ -6,14 +6,14 @@ ms.reviewer: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 01/11/2021
 ms.author: banders
-ms.openlocfilehash: 7bec455b804d1f4b13ab7e13677092077214a121
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: f0645115246995c9605563626d99bbf6a76784e1
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965850"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133562"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>A frissített Azure-beli számlázási fiók használatának első lépései
 
@@ -40,7 +40,7 @@ A számlákat és a fizetési módokat a számlázási profilok segítségével 
 
 A fiók frissítésekor mindegyik előfizetéshez automatikusan létrejön egy számlázási profil. Az előfizetés díjait a rendszer a megfelelő számlázási profilnál számolja fel, és feltünteti a számlán.
 
-A számlázási profilok szerepkörei rendelkeznek a számlák és a fizetési módok megtekintéséhez és kezeléséhez szükséges engedéllyel. Ezeket a szerepköröket a számlák kifizetéséért felelős felhasználókhoz kell hozzárendelni, például a cég könyvelői csapatának tagjaihoz. További információkért lásd [a számlázási profil szerepköreit és azok feladatait](../manage/understand-mca-roles.md#billing-profile-roles-and-tasks) ismertető cikket. 
+A számlázási profilok szerepkörei rendelkeznek a számlák és a fizetési módok megtekintéséhez és kezeléséhez szükséges engedéllyel. Ezeket a szerepköröket a számlák kifizetéséért felelős felhasználókhoz kell hozzárendelni, például a cég könyvelői csapatának tagjaihoz. További információkért lásd [a számlázási profil szerepköreit és azok feladatait](../manage/understand-mca-roles.md#billing-profile-roles-and-tasks) ismertető cikket.
 
 A fiók frissítésekor minden olyan előfizetésben, amelyben engedélyt adott mások számára a [számlák megtekintésére](download-azure-invoice.md#allow-others-to-download-the-your-subscription-invoice), a tulajdonosi, közreműködői, olvasói vagy számlázási olvasói Azure-szerepkörrel rendelkező felhasználók olvasói szerepkört kapnak a megfelelő számlázási profilhoz.
 
@@ -106,6 +106,57 @@ Ha Cost Management vagy Billing API-kkal kérdezi le vagy frissíti a számláz�
 |---------|---------|
 |[Billing Accounts – List](/rest/api/billing/2019-10-01-preview/billingaccounts/list) | A Billing Accounts – List API-ban a régi számlázási fiók agreementType tulajdonsága **MicrosoftOnlineServiceProgram**, az új számlázási fiók agreementType tulajdonsága pedig **MicrosoftCustomerAgreement**. Ha függőséget szeretne felvenni az agreementType tulajdonsághoz, frissítse. |
 |[Invoices – List By Billing Subscription](/rest/api/billing/2019-10-01-preview/invoices/listbybillingsubscription)     | Ez az API csak a fiók frissítése előtt létrehozott számlákat fogja visszaadni. Az új számlázási fiókban létrehozott számlák az [Invoices – List By Billing Subscription](/rest/api/billing/2019-10-01-preview/invoices/listbybillingaccount) API használatával tekinthetők meg. |
+
+## <a name="cost-management-updates-after-account-update"></a>A Cost Management frissítése a fiók frissítése után
+
+A Microsoft Ügyfélszerződéséhez tartozó frissített Azure-számlázási fiókkal hozzáférhet az Azure Portal új és kibővített Cost Management-felületeihez, amelyek nem szerepelnek a használatalapú fizetéses fiókjában.
+
+### <a name="new-capabilities"></a>Új képességek
+
+Az alábbi új képességek érhetők el az Azure-számlázási fiókban.
+
+#### <a name="new-billing-scopes"></a>Új számlázási hatókörök
+
+A fiók frissítésének eredményeként új hatókörök érhetők el a Költségkezelés + Számlázás területen. Ezek segítséget nyújtanak a hierarchikus szervezettel és a számlázással kapcsolatban, illetve a segítségükkel megtekinthetők a mögöttes előfizetések összesített költségei is. További információ a számlázási hatókörökkel kapcsolatban: [A Microsoft Ügyfélszerződés hatókörei](../costs/understand-work-scopes.md#microsoft-customer-agreement-scopes).
+
+Emellett a Cost Management API-khoz is hozzáférhet, és megtekintheti a költségek összesített nézeteit magasabb hatókörön. Az előfizetés hatókörét használó Cost Management API-k továbbra is elérhetők a sémában, azonban tartalmaznak néhány apró módosítást. Az ezekkel az API-kkal kapcsolatos további információért tekintse meg az [Azure Cost Management API-k](/rest/api/cost-management/) és [Azure Consumption API-k](/rest/api/consumption/) című dokumentumokat.
+
+#### <a name="cost-allocation"></a>Költséglefoglalás
+
+A fiók frissítése után a költséglefoglalási funkciókkal feloszthatja a szervezet megosztott szolgáltatásainak költségeit. További információ a költségek lefoglalásáról: [Azure-beli költséglefoglalási szabályok létrehozása és kezelése](../costs/allocate-costs.md).
+
+#### <a name="power-bi"></a>Power BI
+
+A Power BI Desktophoz készült Azure Cost Management-összekötővel egyéni vizualizációkat és jelentéseket hozhat létre az Azure-beli használatról és költségekről. A költség- és használati adatokat a frissített fiókhoz való csatlakozás után érheti el. További információ a Power BI Desktophoz készült Azure Cost Management-összekötőről: [Vizualizációk és jelentések létrehozása az Azure Cost Management-összekötővel a Power BI Desktopban](/power-bi/connect-data/desktop-connect-azure-cost-management).
+
+### <a name="updated-capabilities"></a>Frissített képességek
+
+Az alábbi frissített képességek érhetők el az Azure-számlázási fiókban.
+
+#### <a name="cost-analysis"></a>Költségelemzés
+
+Továbbra is megtekintheti és nyomon követheti a havi használati költségeket, és mostantól megtekintheti a foglalások és a Marketplace-vásárlások költségeit a Költségelemzésben.
+
+A fiók frissítése után egyetlen számlát fog kapni, amely az Azure összes költségét tartalmazza. Ezenkívül mostantól egy egyszerűbb havi naptárnézet érhető el a számlázási időszakok korábbi nézete helyett.
+
+Ha például a régi fiók számlázási időszaka november 24-től december 23-ig tartott, akkor a frissítés után az időszak megváltozik, és november 1-től november 30-ig tart, december 1-től december 31-ig tart stb.
+
+:::image type="content" source="./media/mosp-new-customer-experience/billing-periods.png" alt-text="A régi és az új számlázási időszak összehasonlítását ábrázoló kép " lightbox="./media/mosp-new-customer-experience/billing-periods.png" :::
+
+#### <a name="budgets"></a>Költségvetések
+
+Mostantól létrehozhatja a számlázási fiók költségvetését, amely lehetővé teszi az előfizetések költségeinek nyomon követését. A költségvetésekkel naprakész lehet a vásárlások költségeivel kapcsolatban is. További információ a költségvetésekről: [Azure-költségvetések létrehozása és kezelése](../costs/tutorial-acm-create-budgets.md).
+
+#### <a name="exports"></a>Exportálások
+
+Az új számlázási fiók továbbfejlesztett exportálási funkciókat biztosít. Például létrehozhat exportálásokat az aktuális költségekhez, amelyek tartalmazzák a vásárlások költségeit és az amortizált költségeket (a foglalás vásárlási költségeit a vásárlási időtartamra elosztva). A számlázási fiókhoz is létrehozhat exportálást, amelyből megtudhatja a számlázási fiókban lévő előfizetések díj- és költségadatait. További információ az exportálásokról: [Exportált adatok létrehozása és kezelése](../costs/tutorial-export-acm-data.md).
+
+> [!NOTE]
+> A fiók frissítése előtt létrehozott, **A múlt havi költségek havi exportálása** típussal rendelkező exportálások az utolsó naptári hónap adatait exportálják, nem pedig az utolsó számlázási időszakét.
+
+Például a december 23. és a január 22. közötti számlázási időszak esetén az exportált CSV-fájl az erre az időszakra vonatkozó költség- és használati adatokat tartalmazná. A frissítés után az exportálás a naptári hónapra vonatkozó adatokat fogja tartalmazni. Például a január 1. és január 31. közötti adatokat stb.
+
+:::image type="content" source="./media/mosp-new-customer-experience/export-amortized-costs.png" alt-text="A régi és az új exportálási adatok összehasonlítását ábrázoló kép" lightbox="./media/mosp-new-customer-experience/export-amortized-costs.png" :::
 
 ## <a name="additional-information"></a>További információ
 

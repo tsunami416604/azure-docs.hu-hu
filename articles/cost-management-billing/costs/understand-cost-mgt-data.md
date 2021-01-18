@@ -3,18 +3,18 @@ title: Az Azure Cost Management adatainak ismertetése
 description: Ez a cikk segít az Azure Cost Managementben található adatok, valamint azok feldolgozási, gyűjtési, megjelenítési és lezárási gyakoriságának jobb megértésében.
 author: bandersmsft
 ms.author: banders
-ms.date: 10/26/2020
+ms.date: 01/06/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 97ae2ba26818bbc306da71af814d9b4f95858b6a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e6096c259ec1870a711a515bf02d5d00b4f75345
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032575"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964150"
 ---
 # <a name="understand-cost-management-data"></a>A Cost Management adatainak értelmezése
 
@@ -112,13 +112,13 @@ Az Azure Cost Management a címkéket az egyes szolgáltatások által küldött
 - A címkéket közvetlenül az erőforrásokra kell alkalmazni, és nem öröklődnek implicit módon a szülő erőforráscsoportból.
 - Az erőforráscímkék csak az erőforráscsoportokban üzembe helyezett erőforrások esetén támogatottak.
 - Előfordulhat, hogy néhány üzembe helyezett erőforrás nem támogatja a címkéket vagy nem tartalmaz címkéket a használati adatokban.
-- Az erőforráscímkék csak a címke alkalmazásának idején szerepelnek a használati adatokban, így az előzményadatokra nem lesznek alkalmazva.
+- Az erőforráscímkék csak a címke alkalmazásakor szerepelnek a használati adatokban, így az előzményadatokra nem lesznek alkalmazva.
 - Az erőforráscímkék csak az adatok frissítése után érhetők el a Cost Managementben.
-- Az erőforráscímkék csak akkor érhetők el a Cost Managementben, ha az erőforrás aktív/fut, és használati adatokat hoz létre (például akkor nem, ha a virtuális gép felszabadított állapotban van).
+- Az erőforráscímkék csak akkor érhetők el a Cost Managementben, ha az erőforrás aktív/fut, és használati adatokat hoz létre. Például akkor, ha a virtuális gép fel van szabadítva.
 - A címkék kezeléséhez minden erőforrás esetében közreműködői hozzáférés szükséges.
 - A címkeszabályzatok kezeléséhez tulajdonosi vagy szabályzat-közreműködői hozzáférés szükséges egy felügyeleti csoporthoz, egy előfizetéshez vagy egy erőforráscsoporthoz.
     
-Ha nem talál egy adott címkét a Cost Managementben, vegye figyelembe a következőket:
+Ha nem talál egy adott címkét a Cost Managementben, gondolja át az alábbi kérdéseket:
 
 - A címke közvetlenül az erőforrásra lett alkalmazva?
 - A címke több mint 24 órával ezelőtt lett alkalmazva?
@@ -141,7 +141,6 @@ Ha nem talál egy adott címkét a Cost Managementben, vegye figyelembe a követ
 - Az Azure Policy használatával az erőforráscsoportok címkéit egyéni erőforrásokra másolhatja, és biztosíthatja a címkézési stratégia betartását.
 - A Tags API és a Query vagy a UsageDetails API együttes használatával az összes költség lekérhető az aktuális címkék alapján.
 
-
 ## <a name="cost-and-usage-data-updates-and-retention"></a>Költség- és használati adatok frissítése és megőrzése
 
 A költség- és használati adatok általában 8-24 órán belül válnak elérhetővé az Azure Portal Költségkezelés + Számlázás területén és a támogató API-kban. A költségek áttekintésekor tartsa szem előtt a következő szempontokat:
@@ -151,17 +150,18 @@ A költség- és használati adatok általában 8-24 órán belül válnak elér
 - Az egyre több használattal az aktuális számlázási időszak becsült költségei változhatnak.
 - Az egyes frissítések kumulatívak, így az előző frissítésből származó összes sorelemet és információt tartalmazzák.
 - Az Azure a számlázási időszak vége után legfeljebb 72 órával véglegesíti vagy _zárja le_ az aktuális számlázási időszakot.
+- A nyitott hónap időszakában (nem számlázott időszak) a költségkezelési adatokat becslésként kell kezelni. Néhány esetben előfordulhat, hogy a költségek késve érkeznek meg a rendszerbe a tényleges használat után.
 
 Az alábbi példák bemutatják, hogyan érhetnek véget a számlázási időszakok:
 
 * Nagyvállalati Szerződéses (EA-) előfizetések – Ha a számlázási hónap május 31-én ér véget, a becsült díjak legfeljebb 72 órával később frissülnek. Ebben a példában április 4. éjfélig (UTC).
 * Használatalapú fizetéses előfizetések – Ha a számlázási hónap május 15-én ér véget, előfordulhat, hogy a becsült díjak legfeljebb 72 órával később frissülnek. Ebben a példában május 19. éjfélig (UTC).
 
-Miután a költség- és használati adatok elérhetővé váltak a Költségkezelés + Számlázás területen, a rendszer legalább további 7 éven át megőrzi őket.
+Miután a költség- és használati adatok elérhetővé váltak a Költségkezelés + Számlázás területen, a rendszer legalább hét éven át megőrzi őket.
 
 ### <a name="rerated-data"></a>Újraszámolt adatok
 
-Függetlenül attól, hogy a Cost Management API-k, a Power BI vagy az Azure Portal használatával kéri le az adatokat, számítson arra, hogy a jelenlegi számlázási időszakhoz tartozó díjakat a rendszer újraszámolja, ezért azok módosulnak, amíg a rendszer le nem zárja a számlát.
+Függetlenül attól, hogy a Cost Management API-k, a Power BI vagy az Azure Portal használatával kéri le az adatokat, számítson arra, hogy az aktuális számlázási időszakhoz tartozó díjakat a rendszer újraszámolja, ezért módosulnak, amíg a rendszer le nem zárja a számlát.
 
 ## <a name="cost-rounding"></a>Költségek kerekítése
 
@@ -184,6 +184,6 @@ Előfordulhat, hogy a kreditalapú és előre fizetett ajánlatok korábbi adata
 - MSDN (MS-AZR-0062P)
 - Visual Studio (MS-AZR-0029P, MS-AZR-0059P, MS-AZR-0060P, MS-AZR-0063P, MS-AZR-0064P)
 
-## <a name="see-also"></a>Lásd még
+## <a name="next-steps"></a>További lépések
 
 - Ha még nem végezte el a Cost Management első lépéseit, itt megtekintheti a [költségelemzés elkezdésének](./quick-acm-cost-analysis.md) lépéseit.
