@@ -3,12 +3,12 @@ title: Biztonsági mentési adatai titkosítása az ügyfél által felügyelt k
 description: Megtudhatja, hogyan titkosíthatja a biztonsági mentési adatait az ügyfél által felügyelt kulcsokkal (CMK) a Azure Backup segítségével.
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: cc6ad2f67b84bcd62bcc18566a4ac5d159ea32c4
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 30bcf907e1a2759c8a9977e50cb4880c2e254ca2
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197756"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562760"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Biztonsági mentési adatai titkosítása az ügyfél által felügyelt kulcsokkal
 
@@ -37,7 +37,10 @@ Ez a cikk a következőket ismerteti:
 
 - Az CMK titkosított Recovery Services tárolójának áthelyezése az erőforráscsoportok és az előfizetések között jelenleg nem támogatott.
 
-- Ez a funkció jelenleg csak a Azure Portal konfigurálható.
+- Ez a funkció a Azure Portal és a PowerShell használatával is konfigurálható.
+
+    >[!NOTE]
+    >Az az Module 5.3.0 vagy a more paranccsal használhatja az ügyfél által felügyelt kulcsokat a Recovery Services-tárolóban található biztonsági mentésekhez.
 
 Ha még nem hozta létre és konfigurálta a Recovery Services-tárolót, [olvassa el a következő témakört](backup-create-rs-vault.md):.
 
@@ -62,6 +65,8 @@ Azure Backup a rendszerhez rendelt felügyelt identitás használatával hiteles
 >[!NOTE]
 >Ha engedélyezve van, a felügyelt identitás **nem** tiltható le (akár átmenetileg is). A felügyelt identitás letiltása inkonzisztens viselkedést eredményezhet.
 
+**A portálon:**
+
 1. Ugrás a Recovery Services-tárolóra – > **identitás**
 
     ![Identitás beállításai](./media/encryption-at-rest-with-cmk/managed-identity.png)
@@ -70,9 +75,33 @@ Azure Backup a rendszerhez rendelt felügyelt identitás használatával hiteles
 
 1. Létrejön egy objektumazonosító, amely a tároló rendszer által hozzárendelt felügyelt identitása.
 
+**PowerShell-lel:**
+
+Az [Update-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesvault) parancs használatával engedélyezheti a rendszerhez rendelt felügyelt identitást a Recovery Services-tárolóhoz.
+
+Példa:
+
+```AzurePowerShell
+$vault=Get-AzRecoveryServicesVault -ResourceGroupName "testrg" -Name "testvault"
+
+Update-AzRecoveryServicesVault -IdentityType SystemAssigned -VaultId $vault.ID
+
+$vault.Identity | fl
+```
+
+Kimenet:
+
+```output
+PrincipalId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+TenantId    : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Type        : SystemAssigned
+```
+
 ### <a name="assign-permissions-to-the-recovery-services-vault-to-access-the-encryption-key-in-the-azure-key-vault"></a>Engedélyek kiosztása a Recovery Services-tárolóhoz a titkosítási kulcs eléréséhez a Azure Key Vault
 
 Most engedélyeznie kell a Recovery Services-tárolónak a titkosítási kulcsot tartalmazó Azure Key Vault elérését. Ezt úgy teheti meg, hogy engedélyezi a Recovery Services tár felügyelt identitását a Key Vault eléréséhez.
+
+**A portálon**:
 
 1. Nyissa meg a Azure Key Vault > **hozzáférési szabályzatokat**. Folytassa a **+ hozzáférési szabályzatok hozzáadásával**.
 
@@ -89,6 +118,32 @@ Most engedélyeznie kell a Recovery Services-tárolónak a titkosítási kulcsot
 1. Ha elkészült, válassza a **Hozzáadás** lehetőséget az új hozzáférési szabályzat hozzáadásához.
 
 1. Válassza a **Mentés** lehetőséget a Azure Key Vault hozzáférési házirendjében történt módosítások mentéséhez.
+
+**PowerShell**-lel:
+
+A [set-AzRecoveryServicesVaultProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty) parancs használatával engedélyezheti a titkosítást az ügyfél által felügyelt kulcsokkal, valamint a használni kívánt titkosítási kulcs hozzárendelését vagy frissítését.
+
+Példa:
+
+```azurepowershell
+$keyVault = Get-AzKeyVault -VaultName "testkeyvault" -ResourceGroupName "testrg" 
+$key = Get-AzKeyVaultKey -VaultName $keyVault -Name "testkey" 
+Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $key.ID -KeyVaultSubscriptionId "xxxx-yyyy-zzzz"  -VaultId $vault.ID
+
+
+$enc=Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
+$enc.encryptionProperties | fl
+```
+
+Kimenet:
+
+```output
+EncryptionAtRestType          : CustomerManaged
+KeyUri                        : testkey
+SubscriptionId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx 
+LastUpdateStatus              : Succeeded
+InfrastructureEncryptionState : Disabled
+```
 
 ### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>A Azure Key Vault eltávolításának és törlésének engedélyezése
 
@@ -220,6 +275,8 @@ A visszaállítás befejezése után titkosíthatja a visszaállított lemezt/vi
 
 #### <a name="select-a-disk-encryption-set-while-restoring-from-vault-recovery-point"></a>Lemezes titkosítási csoport kiválasztása a tár helyreállítási pontjából való visszaállításkor
 
+**A portálon**:
+
 A lemez titkosítási készletét a visszaállítás ablaktábla titkosítási beállítások területén, az alábbi ábrán látható módon kell megadni:
 
 1. A **lemez (ek) titkosítása a kulcs használatával** válassza az **Igen** lehetőséget.
@@ -230,6 +287,21 @@ A lemez titkosítási készletét a visszaállítás ablaktábla titkosítási b
 >A DES kiválasztásának lehetősége nem érhető el, ha Azure Disk Encryptiont használó virtuális gépet állít helyre.
 
 ![Lemez titkosítása a kulcs használatával](./media/encryption-at-rest-with-cmk/encrypt-disk-using-your-key.png)
+
+**PowerShell**-lel:
+
+Használja a [Get-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) parancsot a (z) [] paraméterrel a `-DiskEncryptionSetId <string>` visszaállított lemez TITKOSÍTÁSához használandó [des megadásához](https://docs.microsoft.com/powershell/module/az.compute/get-azdiskencryptionset) . További információ a virtuális gépek biztonsági mentéséről a lemezek visszaállításáról: [ebben a cikkben](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#restore-an-azure-vm).
+
+Példa:
+
+```azurepowershell
+$namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM" -VaultId $vault.ID
+$backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $vault.ID
+$startDate = (Get-Date).AddDays(-7)
+$endDate = Get-Date
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $backupitem -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime() -VaultId $vault.ID
+$restorejob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -DiskEncryptionSetId “testdes1” -VaultId $vault.ID
+```
 
 #### <a name="restoring-files"></a>Fájlok visszaállítása
 
@@ -265,6 +337,6 @@ Nem követi a cikkben szereplő lépéseket, és az elemek védelemének folytat
 
 A CMK titkosítás használata a biztonsági mentéshez nem jár további költségekkel. Azonban továbbra is felmerülhetnek a költségek arra, hogy a Azure Key Vault, ahol a kulcsot tárolják.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A Azure Backup biztonsági funkcióinak áttekintése](security-overview.md)

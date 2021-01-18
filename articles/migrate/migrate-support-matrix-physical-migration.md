@@ -6,16 +6,16 @@ ms.author: rahugup
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: a1203133d8749b43a92d89e7251539a1e002bfd8
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: a3e8b19810a58031b4d11cc6e361215afbc85de2
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968568"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562640"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>A fizikai kiszolgáló áttelepítésének támogatási mátrixa
 
-Ez a cikk a fizikai kiszolgálók [Azure Migrate: kiszolgáló áttelepítéssel](migrate-services-overview.md#azure-migrate-server-migration-tool) való áttelepítésének támogatási beállításait és korlátozásait foglalja össze. Ha a fizikai kiszolgálók Azure-ba való áttelepítésére vonatkozó információkat keres, tekintse át az [értékelés támogatási mátrixát](migrate-support-matrix-physical.md).
+Ez a cikk a fizikai kiszolgálók Azure-ba történő áttelepítésére vonatkozó támogatási beállításokat és korlátozásokat foglalja össze [Azure Migrate: a kiszolgáló áttelepítése](migrate-services-overview.md#azure-migrate-server-migration-tool) . Ha a fizikai kiszolgálók Azure-ba való áttelepítésére vonatkozó információkat keres, tekintse át az [értékelés támogatási mátrixát](migrate-support-matrix-physical.md).
 
 ## <a name="migrating-machines-as-physical"></a>Gépek áttelepítése fizikaiként
 
@@ -25,7 +25,7 @@ A helyszíni gépeket fizikai kiszolgálóként is áttelepítheti az ügynök-a
 - A platformokkal virtualizált virtuális gépek, például Xen, KVM.
 - Hyper-V virtuális gépek vagy VMware virtuális gépek, ha valamilyen okból kifolyólag nem kívánja használni a szabványos [Hyper-v-](tutorial-migrate-hyper-v.md) vagy [VMware](server-migrate-overview.md) -folyamatokat.
 - Privát felhőben futó virtuális gépek.
-- Nyilvános felhőben futó virtuális gépek, például Amazon Web Services (AWS) vagy Google Cloud Platform (GCP).
+- Nyilvános felhőben futó virtuális gépek, beleértve a Amazon Web Services (AWS) vagy a Google Cloud Platform (GCP) szolgáltatást.
 
 
 ## <a name="migration-limitations"></a>A migrálásra vonatkozó korlátozások
@@ -57,7 +57,6 @@ A tábla az áttelepíteni kívánt fizikai kiszolgálók támogatását összeg
 **NFS** | A gépek kötetként csatlakoztatott NFS-kötetei nem lesznek replikálva.
 **iSCSI-tárolók** | Az iSCSI-tárolókkal rendelkező gépek nem támogatottak az ügynök nélküli Migrálás esetén.
 **Többutas IO** | Nem támogatott.
-**Tárolási vMotion** | Támogatott
 **Összevont hálózati adapterek** | Nem támogatott.
 **IPv6** | Nem támogatott.
 
@@ -92,6 +91,6 @@ Kapcsolat az áttelepítés után – Windows | Kapcsolódás a Windows rendszer
 Kapcsolat Migrálás után – Linux | Kapcsolódás az Azure-beli virtuális gépekhez az SSH használatával történő áttelepítés után:<br/> Az áttelepítés előtt a helyszíni gépen győződjön meg arról, hogy a Secure Shell szolgáltatás indításra van beállítva, és hogy a tűzfalszabályok engedélyezik az SSH-kapcsolatokat.<br/> A feladatátvételt követően az Azure-beli virtuális gépen engedélyezze az SSH-porthoz való bejövő kapcsolatokat a hálózati biztonsági csoportra vonatkozó szabályokra vonatkozóan a feladatátvételen átesett virtuális gépen, valamint azt az Azure-alhálózatot, amelyhez csatlakoztatva van. Továbbá adjon hozzá egy nyilvános IP-címet a virtuális géphez. |  
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Fizikai kiszolgálók [áttelepíthetők](tutorial-migrate-physical-virtual-machines.md) .

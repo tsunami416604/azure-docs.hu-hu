@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 6c1f323828eb48b61b38370bc2fe56d4c93bf036
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 889ee48c43119086047d6f52737266f4c611fc8d
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127209"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562743"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor – ügyfél által kezelt kulcs 
 
@@ -83,19 +83,19 @@ Néhány konfigurációs lépés aszinkron módon fut, mert nem hajthatók végr
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N.A.
+N/A
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-N.A.
+N/A
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-N.A.
+N/A
 
 # <a name="rest"></a>[REST](#tab/rest)
 
-A REST használatakor a válasz kezdetben egy 200-as HTTP-állapotkódot (OK) és egy, az *Azure-AsyncOperation* tulajdonsággal rendelkező fejlécet ad vissza, ha elfogadják:
+A REST használatakor a válasz a 202 (elfogadva) HTTP-állapotkódot és az *Azure-AsyncOperation* tulajdonsággal rendelkező fejlécet adja vissza:
 ```json
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
 ```
@@ -160,7 +160,7 @@ A művelet aszinkron, és hosszabb időt is igénybe vehet.
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N.A.
+N/A
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -200,7 +200,7 @@ A kulcs propagálásának elvégzése néhány percet vesz igénybe. A frissít�
 1. Másolja a Azure-AsyncOperation URL-címet a válaszból, és kövesse az [aszinkron műveletek állapotának ellenőrzését](#asynchronous-operations-and-status-check).
 2. Küldjön egy GET kérelmet a fürtre, és tekintse meg a *KeyVaultProperties* tulajdonságait. A legutóbb frissített kulcsnak a válaszban kell visszaadnia.
 
-A kérésre adott válasznak a következőhöz hasonlóan kell kinéznie, amikor a kulcs frissítése befejeződött: 200 OK és fejléc
+A kérésre adott válasznak a következőhöz hasonlóan kell kinéznie, amikor a kulcs frissítése befejeződött: 202 (elfogadva) és fejléc
 ```json
 {
   "identity": {
@@ -283,7 +283,7 @@ Storage-fiók összekapcsolása *a* munkaterülethez – a *mentett keresési* l
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N.A.
+N/A
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -327,7 +327,7 @@ Storage-fiók csatolása a munkaterülethez tartozó *riasztásokhoz* – a *log
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N.A.
+N/A
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -482,7 +482,7 @@ A Customer-Managed kulcs dedikált fürtön van megadva, és ezek a műveletek [
   **Munkaterület leválasztása**
   -  404 – a munkaterület nem található. A megadott munkaterület nem létezik vagy törölték.
   -  409 – a munkaterület hivatkozása vagy a művelet leválasztása folyamatban.
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [log Analytics dedikált fürt számlázásáról](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)
 - A [log Analytics-munkaterületek megfelelő kialakításának](../platform/design-logs-deployment.md) megismerése

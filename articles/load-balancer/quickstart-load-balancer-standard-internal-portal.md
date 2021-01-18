@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 14203021846e97a53f59c3bc24a1586774613dec
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: f70116847a8743cf8b3cb56ff35f9d913f13f359
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704333"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562352"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rövid útmutató: belső terheléselosztó létrehozása a virtuális gépek terheléselosztásához a Azure Portal használatával
 
@@ -41,11 +41,13 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 >[!NOTE]
 >A standard SKU Load Balancer használata éles számítási feladatokhoz ajánlott.  További információ az SKU-ról: **[Azure Load Balancer SKU](skus.md)**-ban.
 
-:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal.png" alt-text="A gyors üzembe helyezéshez létrehozott Standard Load Balancer-erőforrások." border="false":::
-
 Ebben a szakaszban létrehoz egy terheléselosztó, amely terheléselosztást végez a virtuális gépeken. 
 
 Belső terheléselosztó létrehozásakor a rendszer a terheléselosztó hálózatként konfigurálja a virtuális hálózatot. 
+
+Az alábbi ábrán az ebben a rövid útmutatóban létrehozott erőforrások láthatók:
+
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal.png" alt-text="A gyors üzembe helyezéshez létrehozott Standard Load Balancer-erőforrások." border="false":::
 
 A virtuális hálózatban a magánhálózati IP-címek úgy vannak konfigurálva, mint a terheléselosztó (alapértelmezés szerint **LoadBalancerFrontend** ). 
 
@@ -66,7 +68,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
     | Erőforráscsoport   | **CreateIntLBQS kiválasztása – RG** |
     | **Példány adatai** |                                                                 |
     | Name             | **MyVNet** megadása                                    |
-    | Régió           | **Nyugat-Európa** kiválasztása |
+    | Region           | **Nyugat-Európa** kiválasztása |
 
 3. Válassza az **IP-címek** lapot, vagy válassza a **következő: IP-címek** gombot az oldal alján.
 
@@ -100,7 +102,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
 
 8. Válassza a **felülvizsgálat + létrehozás** lapot, vagy kattintson a **felülvizsgálat + létrehozás** gombra.
 
-9. Kattintson a **Létrehozás** gombra.
+9. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="create-load-balancer"></a>Terheléselosztó létrehozása
 
@@ -112,8 +114,8 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
     | ---                     | ---                                                |
     | Előfizetés               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza az előző lépésben létrehozott **CreateIntLBQS-RG** elemet.|
-    | Név                   | **MyLoadBalancer** megadása                                   |
-    | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
+    | Name                   | **MyLoadBalancer** megadása                                   |
+    | Region         | Válassza a **Nyugat-Európa** régiót.                                        |
     | Típus          | Válassza a **belső** lehetőséget.                                        |
     | Termékváltozat           | **Standard** kiválasztása |
     | Virtuális hálózat | Válassza ki az előző lépésben létrehozott **myVNet** . |
@@ -199,12 +201,8 @@ Ebben a szakaszban egy terheléselosztó-szabályt fog létrehozni:
     | Állapotadat-mintavétel | Válassza a **myHealthProbe** lehetőséget. |
     | Üresjárati időkorlát (perc) | Mozgassa a csúszkát **15** percre. |
     | TCP alaphelyzetbe állítása | Válassza az **Engedélyezve** lehetőséget. |
-    | Kimenő forrás hálózati címfordítása (SNAT) | Válassza **a (javasolt) a kimenő szabályok használata lehetőséget, hogy a háttér-készlet tagjai hozzáférjenek az internethez.** |
-
+    
 4. Hagyja meg a többi alapértelmezett beállítást, majd kattintson az **OK gombra**.
-
->[!NOTE]
->A háttér-készletben lévő virtuális gépek nem rendelkeznek kimenő internetkapcsolattal ezzel a konfigurációval. </br> A kimenő kapcsolatok nyújtásával kapcsolatos további információkért lásd: </br> **[Kimenő kapcsolatok az Azure-ban](load-balancer-outbound-connections.md)**</br> Kapcsolatok biztosításának lehetőségei: </br> **[Csak kifelé irányuló terheléselosztó konfigurációja](egress-only.md)** </br> **[Mi az Virtual Network NAT?](../virtual-network/nat-overview.md)**
 
 ## <a name="create-backend-servers"></a>Háttérkiszolgálók létrehozása
 
@@ -230,7 +228,7 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
     | Erőforráscsoport | **CreateIntLBQS kiválasztása – RG** |
     | **Példány adatai** |  |
     | Virtuális gép neve | **MyVM1** megadása |
-    | Régió | **Nyugat-Európa** kiválasztása |
+    | Region | **Nyugat-Európa** kiválasztása |
     | Rendelkezésre állási beállítások | **Rendelkezésre állási zónák** kiválasztása |
     | A rendelkezésre állási zóna | **1** . választás |
     | Kép | **Windows Server 2019 Datacenter** kiválasztása |
@@ -260,7 +258,7 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
     | Terheléselosztó kiválasztása | **MyLoadBalancer** kiválasztása  |
     | Háttérbeli készlet kiválasztása | **MyBackendPool** kiválasztása |
    
-5. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. 
+5. Válassza az **Áttekintés + létrehozás** lehetőséget. 
   
 6. Tekintse át a beállításokat, majd kattintson a **Létrehozás** gombra.
 
@@ -268,9 +266,9 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
 
     | Beállítás | VM 2 | 3. VIRTUÁLIS GÉP |
     | ------- | ----- | ---- |
-    | Név |  **myVM2** | **myVM3** |
+    | Name |  **myVM2** | **myVM3** |
     | A rendelkezésre állási zóna | **2** | **3** |
-    | Hálózati biztonsági csoport | Meglévő **myNSG** kiválasztása| Meglévő **myNSG** kiválasztása |
+    | Hálózati biztonsági csoporttal | Meglévő **myNSG** kiválasztása| Meglévő **myNSG** kiválasztása |
 
 
 # <a name="basic-sku"></a>[**Alapszintű termékváltozat**](#tab/option-1-create-internal-load-balancer-basic)
@@ -278,11 +276,13 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
 >[!NOTE]
 >A standard SKU Load Balancer használata éles számítási feladatokhoz ajánlott.  További információ az SKU-ról: **[Azure Load Balancer SKU](skus.md)**-ban.
 
-:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="A rövid útmutatóban létrehozott alapszintű Load Balancer-erőforrások." border="false":::
-
 Ebben a szakaszban létrehoz egy terheléselosztó, amely terheléselosztást végez a virtuális gépeken. 
 
 Belső terheléselosztó létrehozásakor a rendszer a terheléselosztó hálózatként konfigurálja a virtuális hálózatot. 
+
+Az alábbi ábrán az ebben a rövid útmutatóban létrehozott erőforrások láthatók:
+
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="A rövid útmutatóban létrehozott alapszintű Load Balancer-erőforrások." border="false":::
 
 A virtuális hálózatban a magánhálózati IP-címek úgy vannak konfigurálva, mint a terheléselosztó (alapértelmezés szerint **LoadBalancerFrontend** ). 
 
@@ -303,7 +303,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
     | Erőforráscsoport   | **CreateIntLBQS kiválasztása – RG** |
     | **Példány adatai** |                                                                 |
     | Name             | **MyVNet** megadása                                    |
-    | Régió           | **Nyugat-Európa** kiválasztása |
+    | Region           | **Nyugat-Európa** kiválasztása |
 
 3. Válassza az **IP-címek** lapot, vagy válassza a **következő: IP-címek** gombot az oldal alján.
 
@@ -337,7 +337,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
 
 8. Válassza a **felülvizsgálat + létrehozás** lapot, vagy kattintson a **felülvizsgálat + létrehozás** gombra.
 
-9. Kattintson a **Létrehozás** gombra.
+9. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="create-load-balancer"></a>Terheléselosztó létrehozása
 
@@ -349,8 +349,8 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
     | ---                     | ---                                                |
     | Előfizetés               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza az előző lépésben létrehozott **CreateIntLBQS-RG** elemet.|
-    | Név                   | **MyLoadBalancer** megadása                                   |
-    | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
+    | Name                   | **MyLoadBalancer** megadása                                   |
+    | Region         | Válassza a **Nyugat-Európa** régiót.                                        |
     | Típus          | Válassza a **belső** lehetőséget.                                        |
     | Termékváltozat           | **Alapszintű** kiválasztása |
     | Virtuális hálózat | Válassza ki az előző lépésben létrehozott **myVNet** . |
@@ -472,7 +472,7 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
     | Erőforráscsoport | **CreateIntLBQS kiválasztása – RG** |
     | **Példány adatai** |  |
     | Virtuális gép neve | **MyVM1** megadása |
-    | Régió | **Nyugat-Európa** kiválasztása |
+    | Region | **Nyugat-Európa** kiválasztása |
     | Rendelkezésre állási beállítások | **Rendelkezésre állási csoport** kiválasztása |
     | Rendelkezésre állási csoport | Válassza az **Új létrehozása** lehetőséget. </br> Adja meg a **MyAvailabilitySet** **nevet**. </br> Válassza az **OK** gombot. |
     | Kép | **Windows Server 2019 Datacenter** |
@@ -498,7 +498,7 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
     | **Terheléselosztás**  |
     | Elhelyezi ezt a virtuális gépet egy meglévő terheléselosztási megoldás mögött? | Válassza a **nem** lehetőséget |
 
-5. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. 
+5. Válassza az **Áttekintés + létrehozás** lehetőséget. 
   
 6. Tekintse át a beállításokat, majd kattintson a **Létrehozás** gombra.
 
@@ -506,9 +506,9 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
 
     | Beállítás | VM 2 | 3. VIRTUÁLIS GÉP |
     | ------- | ----- | ---- |
-    | Név |  **myVM2** | **myVM3** |
+    | Name |  **myVM2** | **myVM3** |
     | Rendelkezésre állási csoport | **MyAvailabilitySet** kiválasztása | **MyAvailabilitySet** kiválasztása |
-    | Hálózati biztonsági csoport | Meglévő **myNSG** kiválasztása | Meglévő **myNSG** kiválasztása |
+    | Hálózati biztonsági csoporttal | Meglévő **myNSG** kiválasztása | Meglévő **myNSG** kiválasztása |
 
 ### <a name="add-virtual-machines-to-the-backend-pool"></a>Virtuális gépek hozzáadása a háttérbeli készlethez
 
@@ -544,7 +544,7 @@ Ebben a szakaszban létrehoz egy **myTestVM** nevű virtuális gépet.  Ezt a vi
     | Erőforráscsoport | **CreateIntLBQS kiválasztása – RG** |
     | **Példány adatai** |  |
     | Virtuális gép neve | **MyTestVM** megadása |
-    | Régió | **Nyugat-Európa** kiválasztása |
+    | Region | **Nyugat-Európa** kiválasztása |
     | Rendelkezésre állási beállítások | Válassza az **infrastruktúra-redundancia nem szükséges** lehetőséget |
     | Kép | **Windows Server 2019 Datacenter** kiválasztása |
     | Azure Spot-példány | Válassza a **nem** lehetőséget |
@@ -567,7 +567,7 @@ Ebben a szakaszban létrehoz egy **myTestVM** nevű virtuális gépet.  Ezt a vi
     | NIC hálózati biztonsági csoport | Válassza a **speciális** lehetőséget|
     | Hálózati biztonsági csoport konfigurálása | Válassza ki az előző lépésben létrehozott **MyNSG** .|
        
-5. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. 
+5. Válassza az **Áttekintés + létrehozás** lehetőséget. 
   
 6. Tekintse át a beállításokat, majd kattintson a **Létrehozás** gombra.
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: dd6c6248fcdf30350daecaa4857a81447bbdb7a8
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 8e26a4d996e4c1767856b3dd98ae318d8992a89b
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280321"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562692"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor megoldás – gyakori kérdések
 
@@ -34,7 +34,7 @@ Az alábbiakban az NPM különböző képességeire vonatkozó platformokra vona
 - A NPM ExpressRoute-figyelő funkciója csak a Windows Server (2008 SP1 vagy újabb) operációs rendszert támogatja.
 
 ### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>Használhatok Linux rendszerű gépeket figyelési csomópontként a NPM-ben?
-A Linux-alapú csomópontokat használó hálózatok figyelésének lehetősége jelenleg előzetes verzióban érhető el. [Itt](../../virtual-machines/extensions/oms-linux.md)nyilára az ügynököt. Forduljon a fiók kezelőjéhez, és tudjon meg többet. A Linux-ügynökök csak a NPM számára biztosítanak figyelési képességet, és nem érhetők el a szolgáltatás-kapcsolódási figyelőhöz és a ExpressRoute figyelési képességeihez
+A hálózatok a Linux-alapú csomópontok használatával történő figyelésének képessége már általánosan elérhető. [Itt](../../virtual-machines/extensions/oms-linux.md)nyilára az ügynököt. A Linux-ügynökök csak a NPM számára biztosítanak figyelési képességet, és nem érhetők el a szolgáltatás-kapcsolódási figyelőhöz és a ExpressRoute figyelési képességeihez
 
 ### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>Mik a NPM által a figyeléshez használt csomópontok méretére vonatkozó követelmények?
 Ahhoz, hogy a NPM megoldás a csomópontokon futó virtuális gépeken a hálózatok figyelésére fusson, a csomópontoknak legalább 500 MB memóriával és egy mag kell rendelkezniük. Nem kell külön csomópontokat használnia a NPM futtatásához. A megoldás olyan csomópontokon is futhat, amelyeken más munkaterhelések futnak. A megoldás képes a figyelési folyamat leállítására, ha az több mint 5%-os CPU-t használ.
@@ -297,7 +297,7 @@ A figyeléshez használt csomópontok állapotát a következő nézetből tekin
 ### <a name="can-npm-report-latency-numbers-in-microseconds"></a>NPM a jelentés késési számait a másodpercenként?
 A NPM felkerekíti a késési számokat a felhasználói felületen és ezredmásodpercben. Ugyanazokat az adatokat a rendszer magasabb részletességgel tárolja (esetenként akár négy tizedesjegy is).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a Network Performance Monitorről az [Azure-beli Network Performance monitor megoldásra](./network-performance-monitor.md)való hivatkozással.
 

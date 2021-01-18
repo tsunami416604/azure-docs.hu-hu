@@ -1,6 +1,6 @@
 ---
-title: Egyéni szerepkörök társítása Azure PowerShell használatával – Azure AD | Microsoft Docs
-description: Az Azure AD-rendszergazda egyéni szerepkör tagjainak kezelése Azure PowerShell.
+title: Egyéni szerepkörök társítása az Azure AD PowerShell-lel – Azure AD | Microsoft Docs
+description: Azure AD-rendszergazdai egyéni szerepkör tagjainak kezelése az Azure AD PowerShell-lel.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4695d0844ef8b707edce53a05de611c91223a46
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 8b155ccd7f8f0d7f6d63d906d7d0baaa3243512b
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861952"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562777"
 ---
 # <a name="assign-custom-roles-with-resource-scope-using-powershell-in-azure-active-directory"></a>Egyéni szerepkörök társítása erőforrás-hatókörrel a PowerShell használatával Azure Active Directory
 
@@ -32,26 +32,26 @@ A szerepkörök hozzárendeléséhez vagy eltávolításához globális rendszer
 
 ## <a name="prepare-powershell"></a>A PowerShell előkészítése
 
-Telepítse az Azure AD PowerShell-modult a [PowerShell-Galéria](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17). Ezután importálja az Azure AD PowerShell előzetes verzióját a következő parancs használatával:
+Telepítse az Azure AD PowerShell-modult a [PowerShell-Galéria](https://www.powershellgallery.com/packages/AzureADPreview). Ezután importálja az Azure AD PowerShell előzetes verzióját a következő parancs használatával:
 
 ``` PowerShell
-import-module azureadpreview
+Import-Module AzureADPreview
 ```
 
 Annak ellenőrzéséhez, hogy a modul készen áll-e a használatra, a következő parancs által visszaadott verziónak kell megfelelnie az itt felsoroltak közül:
 
 ``` PowerShell
-get-module azureadpreview
+Get-Module AzureADPreview
   ModuleType Version      Name                         ExportedCommands
   ---------- ---------    ----                         ----------------
   Binary     2.0.0.115    azureadpreview               {Add-AzureADMSAdministrati...}
 ```
 
-Most már elkezdheti használni a parancsmagokat a modulban. Az Azure AD-modulban található parancsmagok teljes leírását az [Azure ad Preview-modul](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17)online dokumentációjában találja.
+Most már elkezdheti használni a parancsmagokat a modulban. Az Azure AD-modulban található parancsmagok teljes leírását az [Azure ad Preview-modul](https://www.powershellgallery.com/packages/AzureADPreview)online dokumentációjában találja.
 
-## <a name="assign-a-role-to-a-user-or-service-principal-with-resource-scope"></a>Szerepkör társítása egy felhasználóhoz vagy egy egyszerű szolgáltatáshoz erőforrás-hatókörrel
+## <a name="assign-a-directory-role-to-a-user-or-service-principal-with-resource-scope"></a>Címtárbeli szerepkör kiosztása egy felhasználóhoz vagy egyszerű szolgáltatáshoz erőforrás-hatókörrel
 
-1. Nyissa meg az Azure AD Preview PowerShell-modult.
+1. Töltse be az Azure AD PowerShell (előzetes verzió) modult.
 1. Jelentkezzen be a parancs végrehajtásával `Connect-AzureAD` .
 1. Hozzon létre egy új szerepkört a következő PowerShell-parancsfájl használatával.
 
@@ -69,13 +69,13 @@ $resourceScope = '/' + $appRegistration.objectId
 $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
 ```
 
-Ha a szerepkört felhasználó helyett egy egyszerű szolgáltatáshoz szeretné rendelni, használja a [Get-AzureADMSServicePrincipal parancsmagot](/powershell/module/azuread/get-azureadserviceprincipal).
+Ha a szerepkört felhasználó helyett egy egyszerű szolgáltatáshoz szeretné rendelni, használja a [Get-AzureADMSServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal) parancsmagot.
 
-## <a name="operations-on-roledefinition"></a>Definíciós-műveletek
+## <a name="role-definitions"></a>Szerepkör-definíciók
 
-A szerepkör-definíciós objektumok tartalmazzák a beépített vagy az egyéni szerepkör definícióját, valamint az adott szerepkör-hozzárendelés által biztosított engedélyeket. Ez az erőforrás az egyéni szerepkör-definíciókat és a beépített directoryRoles jeleníti meg (amelyek definíciós egyenértékű formában jelennek meg). Napjainkban az Azure AD-szervezeteknek legfeljebb 30 egyedi egyéni RoleDefinitions lehet definiálni.
+A szerepkör-definíciós objektumok tartalmazzák a beépített vagy az egyéni szerepkör definícióját, valamint az adott szerepkör-hozzárendelés által biztosított engedélyeket. Ez az erőforrás az egyéni szerepkör-definíciókat és a beépített címtárbeli szerepköröket jeleníti meg (amelyek a definíciós egyenértékű formában jelennek meg). Az Azure AD-szervezet jelenleg legfeljebb 30 egyedi egyéni szerepkör-definíciót tartalmazhat.
 
-### <a name="create-operations-on-roledefinition"></a>Műveletek létrehozása a definíciós-on
+### <a name="create-a-role-definition"></a>Szerepkör-definíció létrehozása
 
 ``` PowerShell
 # Basic information
@@ -83,32 +83,32 @@ $description = "Can manage credentials of application registrations"
 $displayName = "Application Registration Credential Administrator"
 $templateId = (New-Guid).Guid
 
-# Set of actions to grant
-$allowedResourceAction =
-@(
-    "microsoft.directory/applications/standard/read",
-    "microsoft.directory/applications/credentials/update"
-)
-$rolePermissions = @{'allowedResourceActions'= $allowedResourceAction}
+# Set of actions to include
+$rolePermissions = @{
+    "allowedResourceActions" = @(
+        "microsoft.directory/applications/standard/read",
+        "microsoft.directory/applications/credentials/update"
+    )
+}
 
-# Create new custom admin role
+# Create new custom directory role
 $customAdmin = New-AzureADMSRoleDefinition -RolePermissions $rolePermissions -DisplayName $displayName -Description $description -TemplateId $templateId -IsEnabled $true
 ```
 
-### <a name="read-operations-on-roledefinition"></a>Olvasási műveletek a definíciós-on
+### <a name="read-and-list-role-definitions"></a>Szerepkör-definíciók olvasása és listázása
 
 ``` PowerShell
 # Get all role definitions
 Get-AzureADMSRoleDefinitions
 
-# Get single role definition by objectId
+# Get single role definition by ID
 Get-AzureADMSRoleDefinition -Id 86593cfc-114b-4a15-9954-97c3494ef49b
 
 # Get single role definition by templateId
 Get-AzureADMSRoleDefinition -Filter "templateId eq 'c4e39bd9-1100-46d3-8c65-fb160da0071f'"
 ```
 
-### <a name="update-operations-on-roledefinition"></a>Frissítési műveletek a definíciós
+### <a name="update-a-role-definition"></a>Szerepkör-definíció frissítése
 
 ``` PowerShell
 # Update role definition
@@ -117,18 +117,18 @@ Get-AzureADMSRoleDefinition -Filter "templateId eq 'c4e39bd9-1100-46d3-8c65-fb16
 Set-AzureADMSRoleDefinition -Id c4e39bd9-1100-46d3-8c65-fb160da0071f -DisplayName "Updated DisplayName"
 ```
 
-### <a name="delete-operations-on-roledefinition"></a>Műveletek törlése a definíciós
+### <a name="delete-a-role-definition"></a>Szerepkör-definíció törlése
 
 ``` PowerShell
 # Delete role definition
 Remove-AzureADMSRoleDefinitions -Id c4e39bd9-1100-46d3-8c65-fb160da0071f
 ```
 
-## <a name="operations-on-roleassignment"></a>RoleAssignment-műveletek
+## <a name="role-assignments"></a>Szerepkör-hozzárendelések
 
-A szerepkör-hozzárendelések olyan információkat tartalmaznak, amelyek egy adott rendszerbiztonsági tag (felhasználó vagy alkalmazás-szolgáltatásnév) egy szerepkör-definícióhoz való csatolásával kapcsolatosak. Szükség esetén egyetlen Azure AD-erőforrás hatókörét is hozzáadhatja a hozzárendelt engedélyekhez.  Az engedélyek hatókörének korlátozása beépített és egyéni szerepkörök esetén támogatott.
+A szerepkör-hozzárendelések olyan információkat tartalmaznak, amelyek egy adott rendszerbiztonsági tag (felhasználó vagy alkalmazás-szolgáltatásnév) egy szerepkör-definícióhoz való csatolásával kapcsolatosak. Szükség esetén egyetlen Azure AD-erőforrás hatókörét is hozzáadhatja a hozzárendelt engedélyekhez.  A szerepkör-hozzárendelés hatókörének korlátozása beépített és egyéni szerepkörök esetén támogatott.
 
-### <a name="create-operations-on-roleassignment"></a>Műveletek létrehozása a RoleAssignment-on
+### <a name="create-a-role-assignment"></a>Szerepkör-hozzárendelés létrehozása
 
 ``` PowerShell
 # Get the user and role definition you want to link
@@ -143,7 +143,7 @@ $resourceScope = '/' + $appRegistration.objectId
 $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
 ```
 
-### <a name="read-operations-on-roleassignment"></a>Olvasási műveletek a RoleAssignment-on
+### <a name="read-and-list-role-assignments"></a>Szerepkör-hozzárendelések olvasása és listázása
 
 ``` PowerShell
 # Get role assignments for a given principal
@@ -153,14 +153,14 @@ Get-AzureADMSRoleAssignment -Filter "principalId eq '27c8ca78-ab1c-40ae-bd1b-eae
 Get-AzureADMSRoleAssignment -Filter "roleDefinitionId eq '355aed8a-864b-4e2b-b225-ea95482e7570'"
 ```
 
-### <a name="delete-operations-on-roleassignment"></a>Műveletek törlése a RoleAssignment
+### <a name="delete-a-role-assignment"></a>Szerepkör-hozzárendelés törlése
 
 ``` PowerShell
 # Delete role assignment
 Remove-AzureADMSRoleAssignment -Id 'qiho4WOb9UKKgng_LbPV7tvKaKRCD61PkJeKMh7Y458-1'
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ossza meg velünk az [Azure ad rendszergazdai szerepkörökkel foglalkozó fórumát](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)
 - A szerepkörökről és az Azure AD rendszergazdai szerepkör-hozzárendeléseiről további információt a [rendszergazdai szerepkörök hozzárendelése](permissions-reference.md) című témakörben talál.

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 34524626cc213233c3db2ca438261b238eb18a2a
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 93b05a5535b80d0e0d1a07c88aa9b19052f1b703
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831771"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562675"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor a dedikált fürtöket naplózza
 
@@ -58,7 +58,7 @@ További részletek: Log Analytics dedikált fürtök számlázása [itt]( https
 
 ## <a name="asynchronous-operations-and-status-check"></a>Aszinkron műveletek és állapot-ellenőrzések
 
-Néhány konfigurációs lépés aszinkron módon fut, mert nem hajthatók végre gyorsan. A válaszban szereplő állapot a következők egyike lehet: "Inprogress", "frissítés", "Törlés", "sikeres vagy" sikertelen ", beleértve a hibakódot. A REST használatakor a válasz kezdetben egy 200-as HTTP-állapotkódot (OK) és egy Azure-AsyncOperation tulajdonságú fejlécet ad vissza, ha elfogadják:
+Néhány konfigurációs lépés aszinkron módon fut, mert nem hajthatók végre gyorsan. A válaszban szereplő állapot a következők egyike lehet: "Inprogress", "frissítés", "Törlés", "sikeres vagy" sikertelen ", beleértve a hibakódot. A REST használatakor a válasz először egy 202-as HTTP-állapotkódot (elfogadva) és egy Azure-AsyncOperation tulajdonságú fejlécet ad vissza:
 
 ```JSON
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
@@ -125,7 +125,7 @@ Content-type: application/json
 
 *Válasz*
 
-200 OK és fejlécnek kell lennie.
+A következőnek kell lennie: 202 (elfogadva) és egy fejléc.
 
 ### <a name="check-cluster-provisioning-status"></a>Fürt kiépítési állapotának keresése
 
@@ -229,7 +229,7 @@ Content-type: application/json
 
 *Válasz*
 
-200 OK és fejléc.
+202 (elfogadva) és fejléc.
 
 ### <a name="check-workspace-link-status"></a>Munkaterület-hivatkozás állapotának megtekintése
   
