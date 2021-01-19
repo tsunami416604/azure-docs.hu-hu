@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 06/10/2019
+ms.date: 01/18/2021
 ms.author: jingwang
-ms.openlocfilehash: 48928c5c4f3a2787e8f00e4084daacf6a64f1ea7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 34a2e423e06782b0d43766cccac9319ce68239d4
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461577"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569470"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Rövid útmutató: Azure-beli adat-előállító és folyamat létrehozása a REST API használatával
 
@@ -303,7 +303,7 @@ Itt látható a minta kimenete:
 ```
 ## <a name="create-pipeline"></a>Folyamat létrehozása
 
-Ebben a példában a folyamat egy tevékenységet tartalmaz, és két paraméter szükséges hozzá: a bemeneti blob elérési útja és a kimeneti blob elérési útja. A paraméterek értékei a folyamat indításakor/futtatásakor lesznek beállítva. A másolási tevékenység az előző lépésben kimenetként és bemenetként létrehozott blob-adatkészletre hivatkozik. Ha az adatkészlet bemeneti adatkészletként van használatban, a bemeneti elérési út van megadva. Ha az adatkészlet kimeneti adatkészletként van használatban, a kimeneti elérési út van megadva.
+Ebben a példában ez a folyamat egy másolási tevékenységet tartalmaz. A másolási tevékenység a "InputDataset" és az "OutputDataset" kifejezésre hivatkozik, amelyet az előző lépésben hozott létre bemenetként és kimenetként.
 
 ```powershell
 $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${dataFactoryName}/pipelines/Adfv2QuickStartPipeline?api-version=${apiVersion}"
@@ -383,10 +383,7 @@ Itt látható a minta kimenete:
 
 ## <a name="create-pipeline-run"></a>Folyamat futásának létrehozása
 
-Ebben a lépésben a folyamatban meghatározott **inputPath** és **outputPath** paraméter értékét adhatja meg, a forrás- és fogadó-blob elérési útjának tényleges értéke alapján, illetve elindíthatja egy folyamat futását. A folyamat futásának kéréstörzsben visszaadott azonosítója a későbbi monitorozó API-nál lesz használatban.
-
-Cserélje le a **inputPath** és a **outputPath** értéket a forrás-és a fogadó blob elérési útjára, hogy a fájl mentése előtt a és a rendszerből másolja az adatokból.
-
+Ebben a lépésben elindítja a folyamat futtatását. A folyamat futásának kéréstörzsben visszaadott azonosítója a későbbi monitorozó API-nál lesz használatban.
 
 ```powershell
 $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/pipelines/Adfv2QuickStartPipeline/createRun?api-version=${apiVersion}"

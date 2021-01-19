@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 07/20/2020
+ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: 805cdc0713afd43502bb224cce60167adbc418ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e97be7fef09287e6c4f8696e217702b97853fa6a
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90969518"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569453"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-sap-successfactors"></a>A Azure Active Directory kiépítés integrálása az SAP SuccessFactors 
 
@@ -52,24 +52,25 @@ A SuccessFactors összes felhasználója esetében az Azure AD kiépítési szol
 | 3  | PerPhone                               | phoneNav                     | Mindig           |
 | 4  | PerEmail                               | emailNav                     | Mindig           |
 | 5  | EmpEmployment                          | employmentNav                | Mindig           |
-| 6  | Felhasználó                                   | employmentNav/userNav        | Mindig           |
+| 6  | User                                   | employmentNav/userNav        | Mindig           |
 | 7  | EmpJob                                 | employmentNav/jobInfoNav     | Mindig           |
 | 8  | EmpEmploymentTermination               | activeEmploymentsCount       | Mindig           |
-| 9  | FOCompany                              | employmentNav/jobInfoNav/companyNav | Csak akkor, ha `company` vagy `companyId` attribútum van leképezve |
-| 10 | FODepartment                           | employmentNav/jobInfoNav/departmentNav | Csak akkor, ha `department` vagy `departmentId` attribútum van leképezve |
-| 11 | FOBusinessUnit                         | employmentNav/jobInfoNav/businessUnitNav | Csak akkor, ha `businessUnit` vagy `businessUnitId` attribútum van leképezve |
-| 12 | FOCostCenter                           | employmentNav/jobInfoNav/costCenterNav | Csak akkor, ha `costCenter` vagy `costCenterId` attribútum van leképezve |
-| 13 | FODivision                             | employmentNav/jobInfoNav/divisionNav  | Csak akkor, ha `division` vagy `divisionId` attribútum van leképezve |
-| 14 | FOJobCode                              | employmentNav/jobInfoNav/jobCodeNav  | Csak akkor, ha `jobCode` vagy `jobCodeId` attribútum van leképezve |
-| 15 | FOPayGrade                             | employmentNav/jobInfoNav/payGradeNav  | Csak akkor `payGrade` , ha az attribútum le van képezve |
-| 16 | FOLocation                             | employmentNav/jobInfoNav/locationNav  | Csak akkor `location` , ha az attribútum le van képezve |
-| 17 | FOCorporateAddressDEFLT                | employmentNav/jobInfoNav/addressNavDEFLT  | Ha a leképezés a következő attribútumok egyikét tartalmazza: `officeLocationAddress,  officeLocationCity, officeLocationZipCode` |
-| 18 | FOEventReason                          | employmentNav/jobInfoNav/eventReasonNav  | Csak akkor `eventReason` , ha az attribútum le van képezve |
-| 19 | EmpGlobalAssignment                    | employmentNav/empGlobalAssignmentNav | Csak akkor `assignmentType` , ha le van képezve |
-| 20 | EmploymentType-lista                | employmentNav/jobInfoNav/employmentTypeNav | Csak akkor `employmentType` , ha le van képezve |
-| 21 | EmployeeClass-lista                 | employmentNav/jobInfoNav/employeeClassNav | Csak akkor `employeeClass` , ha le van képezve |
-| 22 | EmplStatus-lista                    | employmentNav/jobInfoNav/emplStatusNav | Csak akkor `emplStatus` , ha le van képezve |
-| 23 | AssignmentType-lista                | employmentNav/empGlobalAssignmentNav/assignmentTypeNav | Csak akkor `assignmentType` , ha le van képezve |
+| 9  | Felhasználó felettese                         | employmentNav/userNav/Manager/empInfo | Mindig  |
+| 10 | FOCompany                              | employmentNav/jobInfoNav/companyNav | Csak akkor, ha `company` vagy `companyId` attribútum van leképezve |
+| 11 | FODepartment                           | employmentNav/jobInfoNav/departmentNav | Csak akkor, ha `department` vagy `departmentId` attribútum van leképezve |
+| 12 | FOBusinessUnit                         | employmentNav/jobInfoNav/businessUnitNav | Csak akkor, ha `businessUnit` vagy `businessUnitId` attribútum van leképezve |
+| 13 | FOCostCenter                           | employmentNav/jobInfoNav/costCenterNav | Csak akkor, ha `costCenter` vagy `costCenterId` attribútum van leképezve |
+| 14 | FODivision                             | employmentNav/jobInfoNav/divisionNav  | Csak akkor, ha `division` vagy `divisionId` attribútum van leképezve |
+| 15 | FOJobCode                              | employmentNav/jobInfoNav/jobCodeNav  | Csak akkor, ha `jobCode` vagy `jobCodeId` attribútum van leképezve |
+| 16 | FOPayGrade                             | employmentNav/jobInfoNav/payGradeNav  | Csak akkor `payGrade` , ha az attribútum le van képezve |
+| 17 | FOLocation                             | employmentNav/jobInfoNav/locationNav  | Csak akkor `location` , ha az attribútum le van képezve |
+| 18 | FOCorporateAddressDEFLT                | employmentNav/jobInfoNav/addressNavDEFLT  | Ha a leképezés a következő attribútumok egyikét tartalmazza: `officeLocationAddress,  officeLocationCity, officeLocationZipCode` |
+| 19 | FOEventReason                          | employmentNav/jobInfoNav/eventReasonNav  | Csak akkor `eventReason` , ha az attribútum le van képezve |
+| 20 | EmpGlobalAssignment                    | employmentNav/empGlobalAssignmentNav | Csak akkor `assignmentType` , ha le van képezve |
+| 21 | EmploymentType-lista                | employmentNav/jobInfoNav/employmentTypeNav | Csak akkor `employmentType` , ha le van képezve |
+| 22 | EmployeeClass-lista                 | employmentNav/jobInfoNav/employeeClassNav | Csak akkor `employeeClass` , ha le van képezve |
+| 23 | EmplStatus-lista                    | employmentNav/jobInfoNav/emplStatusNav | Csak akkor `emplStatus` , ha le van képezve |
+| 24 | AssignmentType-lista                | employmentNav/empGlobalAssignmentNav/assignmentTypeNav | Csak akkor `assignmentType` , ha le van képezve |
 
 ## <a name="how-full-sync-works"></a>A teljes szinkronizálás működése
 Az attribútum-leképezés alapján a teljes szinkronizálás során az Azure AD-létesítési szolgáltatás az alábbi "GET" OData API-lekérdezést küldi le az összes aktív felhasználó tényleges adatának beolvasásához. 
@@ -113,9 +114,9 @@ Amikor az Azure AD-létesítési szolgáltatás lekérdezi a SuccessFactors, egy
 
 További attribútumok lekéréséhez kövesse az alábbi lépéseket:
     
-1. Keresse meg a **vállalati alkalmazások**  ->  **SuccessFactors az alkalmazás**  ->  **Provisioning**  ->  -hozzárendelés**szerkesztése kiépítési**  ->  **attribútum leképezése lapot**.
-1. Görgessen le, és kattintson a **Speciális beállítások megjelenítése**elemre.
-1. Kattintson az **attribútumok szerkesztése SuccessFactors**elemre. 
+1. Keresse meg a **vállalati alkalmazások**  ->  **SuccessFactors az alkalmazás**  ->    ->  -hozzárendelés **szerkesztése kiépítési**  ->  **attribútum leképezése lapot**.
+1. Görgessen le, és kattintson a **Speciális beállítások megjelenítése** elemre.
+1. Kattintson az **attribútumok szerkesztése SuccessFactors** elemre. 
 
    > [!NOTE] 
    > Ha az **attribútumok szerkesztése SuccessFactors** beállítás nem jelenik meg a Azure Portalban, használja az URL-címet az *https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true* oldal eléréséhez. 
@@ -166,9 +167,9 @@ Az Azure AD SuccessFactors alapértelmezett kiépítési alkalmazási sémája [
    * Ha az attribútum a *felhasználói* entitás része, keresse meg az attribútumot a *employmentNav/userNav* csomópont alatt.
    * Ha az attribútum a *EmpJob* entitás részét képezi, keresse meg az attribútumot a *employmentNav/jobInfoNav* csomópont alatt. 
 1. Hozza létre az attribútumhoz társított JSON-útvonalat, és adja hozzá ezt az új attribútumot a SuccessFactors-attribútumok listájához. 
-   * 1. példa: tegyük fel, hogy hozzá kívánja adni a *okToRehire*attribútumot, amely a *employmentNav* entitás részét képezi, majd használja a JSONPath  `$.employmentNav.results[0].okToRehire`
+   * 1. példa: tegyük fel, hogy hozzá kívánja adni a *okToRehire* attribútumot, amely a *employmentNav* entitás részét képezi, majd használja a JSONPath  `$.employmentNav.results[0].okToRehire`
    * 2. példa: tegyük fel, hogy hozzá szeretné adni az *userNav* entitás részét képező *időzóna-időzónát*, majd használja a JSONPath`$.employmentNav.results[0].userNav.timeZone`
-   * 3. példa: tegyük fel, hogy hozzá kívánja adni a *flsaStatus*attribútumot, amely a *jobInfoNav* entitás részét képezi, majd használja a JSONPath `$.employmentNav.results[0].jobInfoNav.results[0].flsaStatus`
+   * 3. példa: tegyük fel, hogy hozzá kívánja adni a *flsaStatus* attribútumot, amely a *jobInfoNav* entitás részét képezi, majd használja a JSONPath `$.employmentNav.results[0].jobInfoNav.results[0].flsaStatus`
 1. Mentse a sémát. 
 1. Indítsa újra az üzembe helyezést.
 
@@ -181,7 +182,7 @@ Alapértelmezés szerint a következő egyéni attribútumok előre definiálva 
 
 Tegyük fel, hogy az alkalmazott központi példányában a *EmpJobInfo* *customString35* attribútuma tárolja a hely leírását. Ezt az értéket át szeretné állítani Active Directory *physicalDeliveryOfficeName* attribútumra. Az attribútum hozzárendelésének konfigurálásához használja az alábbi lépéseket: 
 
-1. Szerkessze a SuccessFactors attribútum listáját, és vegyen fel egy *empJobNavCustomString35*nevű új attribútumot.
+1. Szerkessze a SuccessFactors attribútum listáját, és vegyen fel egy *empJobNavCustomString35* nevű új attribútumot.
 1. Állítsa be a JSONPath API-kifejezést ehhez az attribútumhoz a következőként: `$.employmentNav.results[0].jobInfoNav.results[0].customString35`
 1. Mentse és töltse be újra a megfeleltetés változását a Azure Portalban.  
 1. Az attribútum-hozzárendelés panelen a Térkép *EmpJobNavCustomString35* *physicalDeliveryOfficeName*.
@@ -196,7 +197,7 @@ A forgatókönyv kiterjesztése:
 A munkavégzők átalakítása a meglévő teljes körű alkalmazott átalakítása egy alvállalkozó vagy egy vállalkozó számára teljes munkaidőben. Ebben a forgatókönyvben az Employee Central új *EmpEmployment* entitást hoz létre, és egy új *felhasználói* entitást hoz létre ugyanahhoz a *személy* entitáshoz. Az előző *EmpEmployment* entitásban beágyazott *felhasználói* entitás NULL értékűre van állítva. Ha úgy szeretné kezelni ezt a forgatókönyvet, hogy az új munkafolyamati adatai megjelenjenek az átalakítás során, az alábbi lépésekkel tömegesen frissítheti a kiépítési alkalmazás sémáját:  
 
 1. Nyissa meg az SuccessFactors üzembe helyezési alkalmazásának attribútum-leképezési paneljét. 
-1. Görgessen le, és kattintson a **Speciális beállítások megjelenítése**elemre.
+1. Görgessen le, és kattintson a **Speciális beállítások megjelenítése** elemre.
 1. Az itt található hivatkozásra kattintva **megtekintheti** a séma-szerkesztőt. 
 
    >![A képernyőfelvételen a séma-szerkesztőt megnyitó hivatkozás látható.](media/sap-successfactors-integration-reference/review-schema.png#lightbox)
@@ -226,7 +227,7 @@ Ha a HR-folyamat az 1. lehetőséget használja, akkor a létesítési sémához
 A rehires forgatókönyv (2. lehetőség) kezeléséhez, hogy a legújabb foglalkoztatási adatai megjelenjenek a felhasználható profilok esetében, az alábbi lépésekkel tömegesen frissítheti a kiépítési alkalmazás sémáját:  
 
 1. Nyissa meg az SuccessFactors üzembe helyezési alkalmazásának attribútum-leképezési paneljét. 
-1. Görgessen le, és kattintson a **Speciális beállítások megjelenítése**elemre.
+1. Görgessen le, és kattintson a **Speciális beállítások megjelenítése** elemre.
 1. Az itt található hivatkozásra kattintva **megtekintheti** a séma-szerkesztőt.   
 1. A **Letöltés** hivatkozásra kattintva mentheti a séma másolatát a Szerkesztés előtt.   
 1. A sémakezelő szerkesztőben nyomja le a CTRL-H billentyűt a Find-replace vezérlő megnyitásához.
@@ -250,7 +251,7 @@ Ha az alkalmazotti központ egy felhasználóját a globális hozzárendeléshez
 A standard hozzárendelés és a globális hozzárendelés felhasználói profilhoz tartozó attribútumok beolvasásához kövesse az alábbi lépéseket: 
 
 1. Nyissa meg az SuccessFactors üzembe helyezési alkalmazásának attribútum-leképezési paneljét. 
-1. Görgessen le, és kattintson a **Speciális beállítások megjelenítése**elemre.
+1. Görgessen le, és kattintson a **Speciális beállítások megjelenítése** elemre.
 1. Az itt található hivatkozásra kattintva **megtekintheti** a séma-szerkesztőt.   
 1. A **Letöltés** hivatkozásra kattintva mentheti a séma másolatát a Szerkesztés előtt.   
 1. A sémakezelő szerkesztőben nyomja le a CTRL-H billentyűt a Find-replace vezérlő megnyitásához.
@@ -262,8 +263,8 @@ A standard hozzárendelés és a globális hozzárendelés felhasználói profil
    * Régi JSONPath: `$.employmentNav.results[0].jobInfoNav.results[0].departmentNav.name_localized`
    * Új JSONPath: `$.employmentNav.results[?(@.assignmentClass == 'ST')].jobInfoNav.results[0].departmentNav.name_localized`
 1. Töltse be újra az alkalmazás attribútum-hozzárendelési paneljét. 
-1. Görgessen le, és kattintson a **Speciális beállítások megjelenítése**elemre.
-1. Kattintson az **attribútumok szerkesztése SuccessFactors**elemre.
+1. Görgessen le, és kattintson a **Speciális beállítások megjelenítése** elemre.
+1. Kattintson az **attribútumok szerkesztése SuccessFactors** elemre.
 1. Adja hozzá az új attribútumokat a globális hozzárendelési adat beolvasásához. Például: Ha egy globális hozzárendelési profillal társított részleg nevét szeretné beolvasni, adja hozzá a *globalAssignmentDepartment* attribútumot a JSONPath kifejezéshez `$.employmentNav.results[?(@.assignmentClass == 'GA')].jobInfoNav.results[0].departmentNav.name_localized` . 
 1. Most már két részleg értékeit is elvégezheti Active Directory attribútumokra, vagy szelektíven átadhat egy értéket a kifejezés-hozzárendelés használatával. Példa: az alábbi kifejezés azt állítja be, hogy az AD *Department* attribútum értéke *globalAssignmentDepartment* , ha van, akkor az értéket a normál hozzárendeléshez társított *részlegre* állítja be. 
    * `IIF(IsPresent([globalAssignmentDepartment]),[globalAssignmentDepartment],[department])`
@@ -276,8 +277,8 @@ A standard hozzárendelés és a globális hozzárendelés felhasználói profil
 Ha az alkalmazotti központ egyik felhasználója egyidejűleg/több feladatot is tartalmaz, két *EmpEmployment* és *felhasználói* entitás létezik, és a *assignmentClass* beállítása "St". A mindkét feladathoz tartozó attribútumok lekéréséhez kövesse az alábbi lépéseket: 
 
 1. Nyissa meg az SuccessFactors üzembe helyezési alkalmazásának attribútum-leképezési paneljét. 
-1. Görgessen le, és kattintson a **Speciális beállítások megjelenítése**elemre.
-1. Kattintson az **attribútumok szerkesztése SuccessFactors**elemre.
+1. Görgessen le, és kattintson a **Speciális beállítások megjelenítése** elemre.
+1. Kattintson az **attribútumok szerkesztése SuccessFactors** elemre.
 1. Tegyük fel, hogy az 1. feladatokhoz és a 2. feladatokhoz tartozó részleget szeretné lekérni. Az előre definiált attribútum *részleg* már beolvassa az első feladatokhoz tartozó részleg értékét. Megadhat egy *secondJobDepartment* nevű új attribútumot, és a JSONPath kifejezést a következőre állíthatja `$.employmentNav.results[1].jobInfoNav.results[0].departmentNav.name_localized`
 1. Most már két részleg értékeit is elvégezheti Active Directory attribútumokra, vagy szelektíven átadhat egy értéket a kifejezés-hozzárendelés használatával. 
 1. Mentse a leképezést. 
@@ -306,7 +307,7 @@ Ez a szakasz a különböző írási forgatókönyveket ismerteti. Azt javasolja
 * Az alkalmazottak középső régiójában a vállalati telefon elsődlegesként van beállítva. A write-back alkalmazás nem változtathatja meg ezt, és nem állíthatja be elsődlegesként a mobiltelefont.
 * A visszaírási alkalmazás nem tudja olvasni az elsődleges jelző aktuális beállításait, és ugyanazokat az értékeket használja az írási művelethez. Az attribútumban konfigurált jelző értékek mindig használatban lesznek. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Megtudhatja, hogyan konfigurálhatja a SuccessFactors Active Directory kiépítés céljából](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)
 * [Ismerje meg, hogyan konfigurálhatja a visszaírási a SuccessFactors-be](../saas-apps/sap-successfactors-writeback-tutorial.md)

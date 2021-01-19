@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 08/05/2020
+ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: a62943c1a808424ded1a5e46ed115cda332bf7d5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6a73ecf18a4bd89567dc603758d9ff8501267a1f
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020755"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98570038"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning"></a>Oktatóanyag: SAP-SuccessFactors konfigurálása az Azure AD-beli felhasználók üzembe helyezéséhez
 Ennek az oktatóanyagnak a célja, hogy megmutassa azokat a lépéseket, amelyeket el kell végeznie a munkavégző adatok SuccessFactors való kiépítéséhez a Azure Active Directoryba, az e-mail-cím opcionális visszaírásával a SuccessFactors. 
@@ -49,7 +49,7 @@ Ez a SuccessFactors Azure Active Directory a felhasználói üzembe helyezési m
 
 * Az e-maileket Microsoft 365 használó szervezetek
 
-## <a name="solution-architecture"></a>Megoldási architektúra
+## <a name="solution-architecture"></a>Megoldásarchitektúra
 
 Ez a szakasz a teljes körű felhasználói üzembe helyezési megoldás architektúráját ismerteti a csak felhőalapú felhasználók számára. Két kapcsolódó folyamat létezik:
 
@@ -91,51 +91,61 @@ A SuccessFactors felügyeleti csapatával vagy a megvalósítási partnerrel egy
 
 ### <a name="create-an-api-permissions-role"></a>API-engedélyek szerepkör létrehozása
 
-* Jelentkezzen be az SAP SuccessFactors egy olyan felhasználói fiókkal, amely hozzáféréssel rendelkezik a felügyeleti központhoz.
-* Keressen rá az *engedélyek kezelése* lehetőségre, majd válassza a **jogosultsági szerepkörök kezelése** elemet a keresési eredmények közül.
+1. Jelentkezzen be az SAP SuccessFactors egy olyan felhasználói fiókkal, amely hozzáféréssel rendelkezik a felügyeleti központhoz.
+1. Keressen rá az *engedélyek kezelése* lehetőségre, majd válassza a **jogosultsági szerepkörök kezelése** elemet a keresési eredmények közül.
   ![Engedélyezési szerepkörök kezelése](./media/sap-successfactors-inbound-provisioning/manage-permission-roles.png)
-* Az engedélyezési szerepkör listából válassza az **új létrehozása** lehetőséget.
-  > [!div class="mx-imgBorder"]
-  > ![Új engedélyezési szerepkör létrehozása](./media/sap-successfactors-inbound-provisioning/create-new-permission-role-1.png)
-* Adja hozzá az új engedély szerepkörhöz tartozó **szerepkör nevét** és **leírását** . A név és a Leírás azt jelzi, hogy a szerepkör API-használati engedélyekkel rendelkezik.
-  > [!div class="mx-imgBorder"]
-  > ![Engedélyezési szerepkör részletei](./media/sap-successfactors-inbound-provisioning/permission-role-detail.png)
-* Az engedély beállításai területen kattintson az **engedély...** elemre, majd görgessen le az engedélyezési listáról, és kattintson az **integrációs eszközök kezelése** lehetőségre. Jelölje be a **rendszergazda számára a ODATA API alapszintű hitelesítéssel való elérésének engedélyezése** jelölőnégyzetet.
-  > [!div class="mx-imgBorder"]
-  > ![Integrációs eszközök kezelése](./media/sap-successfactors-inbound-provisioning/manage-integration-tools.png)
-* Görgessen le ugyanabban a mezőben, és válassza az **Employee Central API** elemet. Az alább látható engedélyek hozzáadásával olvassa el a ODATA API-t és a szerkesztést a ODATA API használatával. Válassza a szerkesztés lehetőséget, ha azt tervezi, hogy ugyanazt a fiókot használja a visszaírási SuccessFactors-forgatókönyvhöz. 
-  > [!div class="mx-imgBorder"]
-  > ![Írási engedélyek olvasása](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
-* Kattintson a **kész** gombra. Kattintson a **Save Changes** (Módosítások mentése) gombra.
+1. Az engedélyezési szerepkör listából válassza az **új létrehozása** lehetőséget.
+    > [!div class="mx-imgBorder"]
+    > ![Új engedélyezési szerepkör létrehozása](./media/sap-successfactors-inbound-provisioning/create-new-permission-role-1.png)
+1. Adja hozzá az új engedély szerepkörhöz tartozó **szerepkör nevét** és **leírását** . A név és a Leírás azt jelzi, hogy a szerepkör API-használati engedélyekkel rendelkezik.
+    > [!div class="mx-imgBorder"]
+    > ![Engedélyezési szerepkör részletei](./media/sap-successfactors-inbound-provisioning/permission-role-detail.png)
+1. Az engedély beállításai területen kattintson az **engedély...** elemre, majd görgessen le az engedélyezési listáról, és kattintson az **integrációs eszközök kezelése** lehetőségre. Jelölje be a **rendszergazda számára a ODATA API alapszintű hitelesítéssel való elérésének engedélyezése** jelölőnégyzetet.
+    > [!div class="mx-imgBorder"]
+    > ![Integrációs eszközök kezelése](./media/sap-successfactors-inbound-provisioning/manage-integration-tools.png)
+1. Görgessen le ugyanabban a mezőben, és válassza az **Employee Central API** elemet. Az alább látható engedélyek hozzáadásával olvassa el a ODATA API-t és a szerkesztést a ODATA API használatával. Válassza a szerkesztés lehetőséget, ha azt tervezi, hogy ugyanazt a fiókot használja a visszaírási SuccessFactors-forgatókönyvhöz. 
+    > [!div class="mx-imgBorder"]
+    > ![Írási engedélyek olvasása](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
+
+1. Ugyanezen engedélyek mezőben válassza a **felhasználói engedélyek – > alkalmazotti adatok** elemet, és tekintse át azokat az attribútumokat, amelyeket a szolgáltatásfiók a SuccessFactors-bérlőből tud olvasni. Ha például a SuccessFactors-ből szeretné lekérni a *username* attribútumot, győződjön meg arról, hogy a "View" engedély van megadva ehhez az attribútumhoz. Hasonlóan tekintse át az egyes attribútumokat a megtekintési engedélyekhez. 
+
+    > [!div class="mx-imgBorder"]
+    > ![Alkalmazotti adatkezelési engedélyek](./media/sap-successfactors-inbound-provisioning/review-employee-data-permissions.png)
+   
+
+    >[!NOTE]
+    >A kiépítési alkalmazás által beolvasott attribútumok teljes listájáért tekintse meg a [SuccessFactors attribútum-referenciát](../app-provisioning/sap-successfactors-attribute-reference.md) .
+
+1. Kattintson a **kész** gombra. Kattintson a **Save Changes** (Módosítások mentése) gombra.
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>Engedélyezési csoport létrehozása az API-felhasználó számára
 
-* A SuccessFactors felügyeleti központban keressen rá az *engedélyek kezelése csoportra*, majd válassza az **engedélyek kezelése** lehetőséget a keresési eredmények közül.
-  > [!div class="mx-imgBorder"]
-  > ![Engedélyezési csoportok kezelése](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
-* A jogosultsági csoportok kezelése ablakban kattintson az **új létrehozása** elemre.
-  > [!div class="mx-imgBorder"]
-  > ![Új csoport hozzáadása](./media/sap-successfactors-inbound-provisioning/create-new-group.png)
-* Adja hozzá a csoport nevét az új csoporthoz. A csoport nevének azt kell jeleznie, hogy a csoport API-felhasználók számára készült.
-  > [!div class="mx-imgBorder"]
-  > ![Engedély csoportjának neve](./media/sap-successfactors-inbound-provisioning/permission-group-name.png)
-* Tagok hozzáadása a csoporthoz. Például kiválaszthatja a **Felhasználónév** elemet a személyek készlet legördülő menüből, majd megadhatja az integrációhoz használni kívánt API-fiók felhasználónevét. 
-  > [!div class="mx-imgBorder"]
-  > ![Csoporttagok hozzáadása](./media/sap-successfactors-inbound-provisioning/add-group-members.png)
-* Kattintson a **kész** gombra az engedély csoport létrehozásának befejezéséhez.
+1. A SuccessFactors felügyeleti központban keressen rá az *engedélyek kezelése csoportra*, majd válassza az **engedélyek kezelése** lehetőséget a keresési eredmények közül.
+    > [!div class="mx-imgBorder"]
+    > ![Engedélyezési csoportok kezelése](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
+1. A jogosultsági csoportok kezelése ablakban kattintson az **új létrehozása** elemre.
+    > [!div class="mx-imgBorder"]
+    > ![Új csoport hozzáadása](./media/sap-successfactors-inbound-provisioning/create-new-group.png)
+1. Adja hozzá a csoport nevét az új csoporthoz. A csoport nevének azt kell jeleznie, hogy a csoport API-felhasználók számára készült.
+    > [!div class="mx-imgBorder"]
+    > ![Engedély csoportjának neve](./media/sap-successfactors-inbound-provisioning/permission-group-name.png)
+1. Tagok hozzáadása a csoporthoz. Például kiválaszthatja a **Felhasználónév** elemet a személyek készlet legördülő menüből, majd megadhatja az integrációhoz használni kívánt API-fiók felhasználónevét. 
+    > [!div class="mx-imgBorder"]
+    > ![Csoporttagok hozzáadása](./media/sap-successfactors-inbound-provisioning/add-group-members.png)
+1. Kattintson a **kész** gombra az engedély csoport létrehozásának befejezéséhez.
 
 ### <a name="grant-permission-role-to-the-permission-group"></a>Engedélyezési szerepkör megadása az engedélyezési csoportnak
 
-* A SuccessFactors felügyeleti központban keressen rá az *engedélyezési szerepkörök kezelése* lehetőségre, majd válassza az **engedélyezési szerepkörök kezelése** lehetőséget a keresési eredmények közül.
-* Az **engedélyezési szerepkör listából** válassza ki az API-használati engedélyekhez létrehozott szerepkört.
-* Az adja **meg ezt a szerepkört a következőhöz:...** kattintson a **Hozzáadás...** gombra.
-* Válassza az **engedély csoport.** .. lehetőséget a legördülő menüből, majd kattintson a **kiválasztás...** elemre a csoportok ablak megnyitásához, és válassza ki a fenti létrehozott csoportot. 
-  > [!div class="mx-imgBorder"]
-  > ![Engedély csoportjának hozzáadása](./media/sap-successfactors-inbound-provisioning/add-permission-group.png)
-* Tekintse át az engedélyezési szerepkör engedélyezését az engedély csoport számára. 
-  > [!div class="mx-imgBorder"]
-  > ![Engedélyezési szerepkör és csoport részletei](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
-* Kattintson a **Save Changes** (Módosítások mentése) gombra.
+1. A SuccessFactors felügyeleti központban keressen rá az *engedélyezési szerepkörök kezelése* lehetőségre, majd válassza az **engedélyezési szerepkörök kezelése** lehetőséget a keresési eredmények közül.
+1. Az **engedélyezési szerepkör listából** válassza ki az API-használati engedélyekhez létrehozott szerepkört.
+1. Az adja **meg ezt a szerepkört a következőhöz:...** kattintson a **Hozzáadás...** gombra.
+1. Válassza az **engedély csoport.** .. lehetőséget a legördülő menüből, majd kattintson a **kiválasztás...** elemre a csoportok ablak megnyitásához, és válassza ki a fenti létrehozott csoportot. 
+    > [!div class="mx-imgBorder"]
+    > ![Engedély csoportjának hozzáadása](./media/sap-successfactors-inbound-provisioning/add-permission-group.png)
+1. Tekintse át az engedélyezési szerepkör engedélyezését az engedély csoport számára. 
+    > [!div class="mx-imgBorder"]
+    > ![Engedélyezési szerepkör és csoport részletei](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
+1. Kattintson a **Save Changes** (Módosítások mentése) gombra.
 
 ## <a name="configuring-user-provisioning-from-successfactors-to-azure-ad"></a>A felhasználók üzembe helyezésének konfigurálása a SuccessFactors-ből az Azure AD-be
 

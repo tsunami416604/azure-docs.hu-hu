@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: 5342c4505bd300d1287acba246ca59610f2697bd
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 0d0597c2df8731171505a090de6959d8a112c004
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858637"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569980"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Az erőforrás-hibaelhárítás bemutatása az Azure Network Watcher
 
@@ -209,7 +209,9 @@ Elapsed Time            330 sec
 ```
 
 ## <a name="considerations"></a>Megfontolandó szempontok 
+* Egy előfizetésen keresztül egyszerre csak egy hibakeresési művelet futhat. Egy másik hibakeresési művelet futtatásához várjon, amíg az előző befejeződik. Ha még nem fejeződött be további műveletek, a későbbi műveletek sikertelenek lesznek. 
 * CLI-hiba: Ha az Azure CLI-t használja a parancs futtatásához, akkor a VPN Gatewaynak és a Storage-fióknak ugyanabban az erőforráscsoporthoz kell lennie. A különböző erőforráscsoportok erőforrásaival rendelkező ügyfelek Ehelyett a PowerShellt vagy a Azure Portal használhatják.  
+
 
 ## <a name="next-steps"></a>További lépések
 

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 95993b35174b80dae8c878c22554ee60afeb8a14
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 57a9f6f11283e020efc25f55f1df473a6cb2d321
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206220"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569997"
 ---
 # <a name="server-side-performance-queries"></a>Kiszolgálóoldali teljesítménylekérdezések
 
@@ -65,9 +65,9 @@ A beolvasott `FrameStatistics` objektum a következő tagokat tartalmazza:
 | Tag | Magyarázat |
 |:-|:-|
 | latencyPoseToReceive | A kamera késése becslést jelent az eszközön, amíg az alkalmazáshoz tartozó kiszolgálói keret teljes mértékben elérhető az ügyfélalkalmazás számára. Ez az érték magában foglalja a hálózati bemutatót, a kiszolgáló megjelenítési idejét, a videó-dekódolást és a jitter-kompenzációt. Lásd **a fenti ábrán az 1. intervallumot.**|
-| latencyReceiveToPresent | A fogadott távoli keretek rendelkezésre állásának késése, amíg az ügyfélalkalmazás nem hívja meg a PresentFrame a PROCESSZORon. |
-| latencyPresentToDisplay  | Egy keretnek a CPU-ban való megjelenítésének késése, amíg a kijelző fel nem villan. Ez az érték tartalmazza az ügyfél GPU-időpontját, az operációs rendszer által végrehajtott összes frame-pufferelést, a hardverek újravetítését és az eszköztől függő megjelenítési vizsgálat időpontját. Lásd **a fenti ábrán a 2. intervallumot.**|
-| timeSinceLastPresent | A következő, a PROCESSZORon PresentFrame meghívások közötti idő. A megjelenítési időtartamnál nagyobb értékek (például az 16,6 MS egy 60-Hz-es ügyfélszámítógépen) jelzik, hogy az ügyfélalkalmazás által okozott problémák nem fejezik be a CPU-munkaterhelést időben. Lásd **a fenti ábrán látható 3. intervallumot.**|
+| latencyReceiveToPresent | A fogadott távoli keretek rendelkezésre állásának késése, amíg az ügyfélalkalmazás nem hívja meg a PresentFrame a PROCESSZORon. Lásd **a fenti ábrán a 2. intervallumot.**|
+| latencyPresentToDisplay  | Egy keretnek a CPU-ban való megjelenítésének késése, amíg a kijelző fel nem villan. Ez az érték tartalmazza az ügyfél GPU-időpontját, az operációs rendszer által végrehajtott összes frame-pufferelést, a hardverek újravetítését és az eszköztől függő megjelenítési vizsgálat időpontját. Lásd **a fenti ábrán látható 3. intervallumot.**|
+| timeSinceLastPresent | A következő, a PROCESSZORon PresentFrame meghívások közötti idő. A megjelenítési időtartamnál nagyobb értékek (például az 16,6 MS egy 60-Hz-es ügyfélszámítógépen) jelzik, hogy az ügyfélalkalmazás által okozott problémák nem fejezik be a CPU-munkaterhelést időben.|
 | videoFramesReceived | A kiszolgálóról az elmúlt másodpercben fogadott keretek száma. |
 | videoFrameReusedCount | A fogadott képkockák száma az elmúlt másodpercben, amely többször is használatban volt az eszközön. A nullától eltérő értékek azt jelzik, hogy a rendszer újra felhasználta a képkockákat, és a hálózati Jitter vagy a kiszolgáló túlzott megjelenítési ideje miatt újra feldolgozta őket. |
 | videoFramesSkipped | Az elmúlt másodpercben a visszakapott képkockák száma, amelyek dekódolása megtörtént, de a megjelenítés nem látható, mert újabb keret érkezett. A nullától eltérő értékek azt jelzik, hogy a hálózati vibrálás több képkockát okozott, majd az eszközön együtt megérkezik a burst állapotba. |
@@ -132,7 +132,7 @@ Az objektummal ellentétben `FrameStatistics` az `PerformanceAssessment` objektu
 | networkLatency | Az átlagos kétirányú hálózati késés ezredmásodpercben megadva. A fenti ábrán ez a piros nyilak összegének felel meg. Az értéket a rendszer a tényleges kiszolgáló renderelési idejének kivonásával számítja ki `latencyPoseToReceive` `FrameStatistics` . Habár ez a közelítés nem pontos, a hálózati késést is jelzi, amely az ügyfélen számított késési értékektől elkülönített. |
 | polygonsRendered | Az egyik keretben megjelenített háromszögek száma Ez a szám a renderelés során később kiselejtezett háromszögeket is tartalmazza. Ez azt jelenti, hogy ez a szám nem változik a különböző kamera-pozíciók között, de a teljesítmény jelentősen változhat, a háromszög-kiselejtezési aránytól függően.|
 
-Az értékek felmérése érdekében minden részhez tartozik egy minőségi besorolás, például **nagyszerű**, **jó**, **közepes**vagy **rossz**.
+Az értékek felmérése érdekében minden részhez tartozik egy minőségi besorolás, például **nagyszerű**, **jó**, **közepes** vagy **rossz**.
 Ez az értékelési metrika a kiszolgáló állapotának durva jelzését biztosítja, de nem tekinthető abszolútnak. Tegyük fel például, hogy a GPU-idő "közepes" pontszámot tartalmaz. A rendszer közepesnek tekinti, mivel az a teljes keretre vonatkozó költségkerethez tartozó korláthoz közeledik. Ebben az esetben azonban érdemes lehet jó értéket adni, mert összetett modellt tesz elérhetővé.
 
 ## <a name="statistics-debug-output"></a>Statisztikák hibakeresési kimenete
@@ -178,7 +178,7 @@ A tagoknak vannak olyan változatai is, amelyek az értékeket az idő múlásá
 * [C# RemoteManager. QueryServerPerformanceAssessmentAsync ()](/dotnet/api/microsoft.azure.remoterendering.remotemanager.queryserverperformanceassessmentasync)
 * [C++ RemoteManager:: QueryServerPerformanceAssessmentAsync ()](/cpp/api/remote-rendering/remotemanager#queryserverperformanceassessmentasync)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Teljesítmény-nyomkövetés létrehozása](../../how-tos/performance-tracing.md)
 * [A modell átalakításának konfigurálása](../../how-tos/conversion/configure-model-conversion.md)

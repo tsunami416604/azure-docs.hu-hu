@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 01/12/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2d2b65261e09d056ec76b25d6fcb6627bc54770b
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 65794c695fa4b36586b23a308845b1f12a20b7cb
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165722"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569946"
 ---
 # <a name="synapse-managed-private-endpoints"></a>Szinapszis felügyelt privát végpontok
 
@@ -23,7 +23,7 @@ Ez a cikk ismerteti a felügyelt privát végpontokat az Azure szinapszis Analyt
 
 A felügyelt privát végpontok az Azure szinapszis-munkaterülethez társított felügyelt Virtual Networkban létrehozott privát végpontok. A felügyelt privát végpontok az Azure-erőforrásokra mutató privát hivatkozást létesítenek. Az Azure szinapszis ezeket a privát végpontokat az Ön nevében kezeli. Az Azure szinapszis-munkaterületről felügyelt privát végpontokat hozhat létre az Azure-szolgáltatások (például az Azure Storage vagy a Azure Cosmos DB) és az Azure által üzemeltetett ügyfél/partner szolgáltatások eléréséhez.
 
-Privát végpontok kezelésekor az Azure szinapszis-munkaterület és más Azure-erőforrások közötti forgalom teljes egészében a Microsoft gerinc hálózatán halad át. Felügyelt privát végpontok védik az kiszűrése. A felügyelt privát végpontok a felügyelt Virtual Network magánhálózati IP-címet használnak, így az Azure-szolgáltatás hatékonyan bekerül az Azure-beli szinapszis-munkaterületre a Virtual Networkba. A felügyelt privát végpontok egy adott erőforrásra vannak leképezve az Azure-ban, és nem a teljes szolgáltatás. Az ügyfelek korlátozhatják a szervezete által jóváhagyott adott erőforráshoz való kapcsolódást. 
+Felügyelt privát végpontok használata esetén az Azure szinapszis-munkaterület és más Azure-erőforrások közötti forgalom teljes egészében a Microsoft gerinc hálózatán halad át. Felügyelt privát végpontok védik az kiszűrése. A felügyelt privát végpontok a felügyelt Virtual Network magánhálózati IP-címet használnak, így az Azure-szolgáltatás hatékonyan bekerül az Azure-beli szinapszis-munkaterületre a Virtual Networkba. A felügyelt privát végpontok egy adott erőforrásra vannak leképezve az Azure-ban, és nem a teljes szolgáltatás. Az ügyfelek korlátozhatják a szervezete által jóváhagyott adott erőforráshoz való kapcsolódást. 
 
 További információ a [privát kapcsolatokról és a privát végpontokról](../../private-link/index.yml).
 
@@ -50,6 +50,6 @@ A felügyelt magánhálózati végpont, amely az SQL-készletet célozza, *szina
 
 Ez a két felügyelt magánhálózati végpont automatikusan létrejön az Azure szinapszis-munkaterület létrehozásakor. Ez a két felügyelt magánhálózati végpont esetében nem számítunk fel díjat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információt a [felügyelt privát végpontok létrehozása az adatforrásokhoz](./how-to-create-managed-private-endpoints.md) című cikkben talál.

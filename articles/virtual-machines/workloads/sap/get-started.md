@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/05/2021
+ms.date: 01/18/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e3a4c367bbe0770495a63c00ca33861ac815460f
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 0b323268c625ed25236cf4a9f9faa17606bd967c
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121005"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98570065"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -49,7 +49,8 @@ Ha konkrét kérdései vannak, egy adott dokumentumra vagy folyamatra fogunk rá
 - Mi a legjobb megoldás az Azure Storage számára a forgatókönyvhöz? [Az Azure Storage-típusok](./planning-guide-storage.md) beolvasása SAP számítási feladatokhoz
 - Az SAP támogatja az Oracle Enterprise Linux Red Hat kernelét? SAP [SAP-támogatási Megjegyzés](https://launchpad.support.sap.com/#/notes/1565179) olvasása #1565179
 - Miért nem tanúsítottak SAP HANA az Azure [da (s) v4](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series) / [EA (k) VM-](https://docs.microsoft.com/azure/virtual-machines/eav4-easv4-series) családoknak? Az Azure Das/EAS virtuálisgép-családok az AMD processzorral vezérelt hardveren alapulnak. A SAP HANA nem támogatja az AMD processzorokat, még virtualizált helyzetekben sem
-- Miért vagyok a következő üzenet: "a RDTSCP utasításhoz tartozó CPU-jelzők vagy constant_tsc vagy nonstop_tsc CPU-jelzői nincsenek beállítva, vagy current_clocksource, és a available_clocksource nem megfelelően vannak konfigurálva" a SAP HANA, annak ellenére, hogy a legújabb Linux-kerneleket futtatom. A válaszhoz tekintse meg az [SAP-támogatási megjegyzés #2791572](https://launchpad.support.sap.com/#/notes/2791572) 
+- Miért vagyok a következő üzenet: "a RDTSCP utasításhoz tartozó CPU-jelzők vagy constant_tsc vagy nonstop_tsc CPU-jelzői nincsenek beállítva, vagy current_clocksource, és a available_clocksource nem megfelelően vannak konfigurálva" a SAP HANA, annak ellenére, hogy a legújabb Linux-kerneleket futtatom. A válaszhoz tekintse meg az [SAP-támogatási megjegyzés #2791572](https://launchpad.support.sap.com/#/notes/2791572)
+- Hol találhatok architektúrát az SAP Fiori Azure-beli üzembe helyezéséhez? Tekintse meg az [Azure-beli blogot: Application Gateway webalkalmazási tűzfal (WAF) v2 telepítője az internetre irányuló SAP Fiori-alkalmazásokhoz](https://blogs.sap.com/2020/12/03/sap-on-azure-application-gateway-web-application-firewall-waf-v2-setup-for-internet-facing-sap-fiori-apps/) 
 
  
 ## <a name="sap-hana-on-azure-large-instances"></a>SAP HANA az Azure-ban (nagyméretű példányok)
@@ -83,6 +84,7 @@ Ebben a szakaszban olyan dokumentumokat talál, amelyek a Microsoft Power BI az 
 
 ## <a name="change-log"></a>Módosítási napló
 
+- 01/18/2021: az Azure net apps Files-alapú NFS az Azure-ban való támogatása az Oracle-ben [Virtual Machines Oracle adatbázis-kezelő üzembe helyezése SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_oracle) - [munkaSAP HANA Azure NetApp Files](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp) terheléshez
 - 01/11/2021: kisebb változások a [Ha for SAP NW Azure-beli virtuális gépeken a RHEL for SAP Applications](./high-availability-guide-rhel.md)esetében, [Ha az SAP NW Azure-beli virtuális gépeken](./high-availability-guide-rhel-netapp-files.md) , a ANF-on és a RHEL-on futó Azure [-](./high-availability-guide-rhel-multi-sid.md) beli virtuális gépeken, valamint a RHEL8 és a RHEL7, valamint a ENSA1 és a ENSA2 való működéshez szükséges parancsok módosításához
 - 01/05/2021: az Azure-beli [virtuális gépek készenléti csomópontján SAP HANA ANF a SLES](./sap-hana-scale-out-standby-netapp-files-suse.md) -on keresztül, és az [Azure-beli virtuális gépek készenléti csomópontjának használatával kibővítheti az ANF-t a RHEL-on, SAP HANA és áttekintheti](./sap-hana-scale-out-standby-netapp-files-rhel.md)az ajánlott konfigurációt, hogy az SAP-gazdagép ügynöke felügyelje a helyi porttartomány  
 - 01/04/2021: adja hozzá a HLI által támogatott új Azure-régiókat a [SAP HANA Azure-ban (nagyméretű példányok)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)

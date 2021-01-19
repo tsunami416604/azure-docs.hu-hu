@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/28/2020
+ms.date: 01/18/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 511801962d07e5fb99000b2fc19adce2489b46d3
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2c7ea804e9e85578076969f0ec6bdf90b571bb75
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967482"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98570082"
 ---
 # <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>NFS 4.1-es verziójú kötetek az SAP HANA-hoz készült Azure NetApp Filesban
 
@@ -69,10 +69,10 @@ A LIF és az egyetlen Linux-munkamenet maximális átviteli sebessége 1,2 és 1
 | 1 TB | 16 MB/s | 64 MB/s | 128 MB/s |
 | 2 TB | 32 MB/s | 128 MB/s | 256 MB/s |
 | 4 TB | 64 MB/s | 256 MB/s | 512 MB/s |
-| 10 TB | 160 MB/s | 640 MB/s | 1,280 MB/s |
-| 15 TB | 240 MB/s | 960 MB/s | 1,400 MB/s |
-| 20 TB | 320 MB/s | 1,280 MB/s | 1,400 MB/s |
-| 40 TB | 640 MB/s | 1,400 MB/s | 1,400 MB/s |
+| 10 TB | 160 MB/s | 640 MB/s | 1 280 MB/s |
+| 15 TB | 240 MB/s | 960 MB/s | 1 400 MB/s |
+| 20 TB | 320 MB/s | 1 280 MB/s | 1 400 MB/s |
+| 40 TB | 640 MB/s | 1 400 MB/s | 1 400 MB/s |
 
 Fontos tisztában lenni azzal, hogy az adatbevitel ugyanarra az SSD-re történik a tárolási háttérben. A rendszer létrehozta a kapacitásépítési kvótát a környezet kezeléséhez.
 A tárolási KPI-k az összes HANA-adatbázis méretével egyenlőek. Szinte minden esetben ez a feltételezés nem tükrözi a valóságot és az ügyfelek elvárásait. A HANA-rendszerek mérete nem feltétlenül jelenti azt, hogy egy kis rendszernek alacsony tárolási átviteli sebességre van szüksége, és egy nagy rendszernek nagy tárolási sebességre van szüksége. De általában nagyobb átviteli sebességre is számíthatunk nagyobb HANA-adatbázis-példányok esetén. Az SAP által a mögöttes hardverre vonatkozó méretezési szabályok következtében, például a nagyobb HANA-példányok több processzor-erőforrást és nagyobb párhuzamosságot biztosítanak olyan feladatokban, mint például az adatok betöltése egy példány újraindítása után. Ennek eredményeképpen a mennyiségi méreteket az ügyfelek elvárásainak és követelményeinek megfelelően kell elfogadni. És nem csak a tiszta kapacitásra vonatkozó követelmények vezérlik.
@@ -193,7 +193,7 @@ Ha például egy napi pillanatképet szinkronizálni kell az Azure Blob-tároló
 root # > azcopy sync '/hana/data/SID/mnt00001/.snapshot' 'https://azacsnaptmytestblob01.blob.core.windows.net/abc?sv=2021-02-02&ss=bfqt&srt=sco&sp=rwdlacup&se=2021-02-04T08:25:26Z&st=2021-02-04T00:25:26Z&spr=https&sig=abcdefghijklmnopqrstuvwxyz' --recursive=true --delete-destination=true
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Olvassa el a következő cikket:
 
 - [SAP HANA magas rendelkezésre állás az Azure Virtual Machines szolgáltatásban](./sap-hana-availability-overview.md)

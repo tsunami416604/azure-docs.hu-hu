@@ -5,15 +5,15 @@ author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: security
-ms.date: 04/15/2020
+ms.date: 01/18/2021
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 949b7e55569cc6fceacc37677ed06a28bb85d7c2
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: f55251932c8aa8f632bd3b498943ac722f006dee
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116364"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569909"
 ---
 # <a name="azure-synapse-analytics-managed-virtual-network"></a>Azure szinapszis Analytics által felügyelt Virtual Network
 
@@ -52,12 +52,25 @@ Ha a jelölőnégyzet nincs bejelölve, a munkaterülethez nem tartozik Virtual 
 
 ![Felügyelt munkaterület engedélyezése Virtual Network](./media/synapse-workspace-managed-vnet/enable-managed-vnet-1.png)
 
+Miután felügyelt munkaterületet társít Virtual Network a munkaterülethez, a felügyelt munkaterület Virtual Network csak a [felügyelt privát végpontokat](./synapse-workspace-managed-private-endpoints.md)használó jóváhagyott célokhoz engedélyezheti a kiszűrése az adatok védelme érdekében. Válassza az **Igen** lehetőséget a felügyelt munkaterületről Virtual Network a kezelt privát végpontokon keresztüli célokra vonatkozó kimenő forgalom korlátozásához. 
 
-Megtekintheti, hogy az Azure szinapszis-munkaterülete felügyelt munkaterülethez van-e társítva Virtual Network a Azure Portal **Áttekintés** lehetőség kiválasztásával.
+
+>[!IMPORTANT]
+>A metaadattár le van tiltva olyan szinapszis-munkaterületeken, amelyeken engedélyezve van az kiszűrése Protection által kezelt Virtual Network. Ezekben a munkaterületeken nem fogja tudni használni a Spark SQL-t.
+
+![Felügyelt privát végpontokat használó kimenő forgalom](./media/synapse-workspace-managed-vnet/select-outbound-connectivity.png)
+
+Válassza a **nem** lehetőséget, ha engedélyezni szeretné a munkaterület kimenő forgalmát bármely célra.
+
+Az Azure szinapszis-munkaterületről is szabályozhatja azokat a célokat, amelyekhez a felügyelt magánhálózati végpontok létre lettek hozva. Alapértelmezés szerint a felügyelt privát végpontok olyan erőforrásokhoz tartoznak, amelyek ugyanabban az HRE-bérlőben vannak, amelyhez az előfizetés tartozik. Ha egy felügyelt privát végpontot szeretne létrehozni egy olyan HRE-bérlőben lévő erőforráshoz, amely eltér az előfizetéséhez tartozótól, akkor a **+ Hozzáadás** gombra kattintva adhatja hozzá a HRE-bérlőt. Kiválaszthatja a HRE bérlőt a legördülő listából, vagy manuálisan is megadhatja a HRE-bérlő AZONOSÍTÓját.
+
+![További HRE-bérlők hozzáadása](./media/synapse-workspace-managed-vnet/add-additional-azure-active-directory-tenants.png)
+
+A munkaterület létrehozása után megtekintheti, hogy az Azure szinapszis-munkaterülete felügyelt munkaterülethez van-e társítva Virtual Network a Azure Portal **Áttekintés** lehetőség kiválasztásával.
 
 ![A munkaterület áttekintése Azure Portal](./media/synapse-workspace-managed-vnet/enable-managed-vnet-2.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Azure szinapszis-munkaterület](../quickstart-create-workspace.md) létrehozása
 

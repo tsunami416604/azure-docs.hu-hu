@@ -159,6 +159,20 @@
           href: how-to-troubleshoot-the-sensor-and-on-premises-management-console.md
         - name: Az SNMP MIB-monitorozás beállítása
           href: how-to-set-up-snmp-mib-monitoring.md
+        - name: Integrálás partnerekkel
+          items:
+            - name: Cisco ISE pxGrid-integráció
+              href: integration-cisco-ise-pxgrid.md
+            - name: Forescout-integráció
+              href: integration-forescout.md
+            - name: Fortinet-integráció
+              href: integration-fortinet.md
+            - name: Palo Alto-integráció
+              href: integration-palo-alto.md
+            - name: ServiceNow-integráció
+              href: integration-servicenow.md
+            - name: Splunk-integráció
+              href: integration-splunk.md
     - name: Ügynökalapú megoldás eszközkészítők számára
       items:
         - name: Az Azure RTOS biztonsági moduljának használata

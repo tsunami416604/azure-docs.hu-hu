@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 05/26/2020
+ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: 5cbfdd57ebd25da013bfb82b761839b1e74ee012
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 8e83841031593d0d1af4499f3ef9a15400ce7794
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97609020"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569552"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: munkanapok konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -41,11 +41,11 @@ A felhasználói fiókok kiépítéséhez az [Azure Active Directory felhasznál
 ### <a name="whats-new"></a>Újdonságok
 Ez a szakasz a legutóbbi munkanap-integráció fejlesztéseit rögzíti. Az átfogó frissítések, a tervezett módosítások és az archívumok listájáért látogasson el a [Azure Active Directory újdonságait](../fundamentals/whats-new.md) ismertető oldalra? 
 
+* **Október 2020 – engedélyezett igény a munkanapokhoz:** [Igény szerinti kiépítés](../app-provisioning/provision-on-demand.md) használatával mostantól egy adott felhasználói profil végpontok közötti kiosztását is tesztelheti az attribútum-hozzárendelés és a kifejezés logikájának ellenőrzéséhez.   
+
 * **Május 2020 – képesség a telefonszámok visszaírási a munkanapokon:** Az e-mailek és a felhasználónevek mellett mostantól visszaírási munkahelyi telefonszámot és mobiltelefon-számot is az Azure AD-ből munkanapokra. További részletekért tekintse meg a [visszaírási-alkalmazás oktatóanyagát](workday-writeback-tutorial.md).
 
 * **Április 2020 – a munkanap webszolgáltatások (WWS) API legújabb verziójának támogatása:** Az év márciusában és szeptemberben évente kétszer elérhetővé teszi a funkciókban gazdag frissítéseket, amelyek segítenek az üzleti célok teljesítésében és a munkaerő iránti igények módosításában. A munkanapokhoz tartozó új funkciók megtartásához mostantól közvetlenül megadhatja a WWS API-verziót, amelyet a kapcsolódási URL-címben használni szeretne. A munkanap API verziójának megadásával kapcsolatos részletekért tekintse meg a [munkanap-kapcsolat konfigurálásának](#part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory)szakaszát. 
-
-* **Jan 2020 – az ad accountExpires attribútum beállításának képessége:** A [NumFromDate](../app-provisioning/functions-for-customizing-application-data.md#numfromdate) függvény használatával mostantól leképezheti a munkanapokat, például a *EndContractDate* vagy a *StatusTerminationDate*. 
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Ki ez a felhasználó-kiépítési megoldás a legmegfelelőbb?
 
@@ -61,7 +61,7 @@ Ez a munkanap felhasználói kiépítési megoldás ideális a következőkhöz:
 
 * Az e-maileket Microsoft 365 használó szervezetek
 
-## <a name="solution-architecture"></a>Megoldási architektúra
+## <a name="solution-architecture"></a>Megoldásarchitektúra
 
 Ez a szakasz a közös hibrid környezetek teljes körű felhasználói üzembe helyezési megoldásának architektúráját ismerteti. Két kapcsolódó folyamat létezik:
 
@@ -151,51 +151,37 @@ Ebben a lépésben "tartományi biztonsági" házirend-engedélyeket ad a munkav
 
 **Tartományi biztonsági házirend engedélyeinek konfigurálása:**
 
-1. A keresőmezőbe írja be a **tartomány biztonsági konfigurációját** , majd kattintson a **tartomány biztonsági konfigurációs jelentés** hivatkozására.  
+1. Adja meg a **biztonsági csoport tagságát és hozzáférését** a keresőmezőbe, és kattintson a jelentés hivatkozására.
    >[!div class="mx-imgBorder"]
-   >![Képernyőfelvétel: "tartományi biztonsági konfiguráció" a keresőmezőbe, az eredmények között megjelenik a "tartományi biztonsági konfiguráció – jelentés".](./media/workday-inbound-tutorial/wd_isu_06.png "Tartományi biztonsági házirendek")  
-2. A **tartomány** szövegmezőben keresse meg a következő tartományokat, és adja hozzá őket a szűrőhöz eggyel.  
+   >![Biztonsági csoporttagság keresése](./media/workday-inbound-tutorial/security-group-membership-access.png)
+
+1. Keresse meg és válassza ki az előző lépésben létrehozott biztonsági csoportot. 
+   >[!div class="mx-imgBorder"]
+   >![Biztonsági csoport kiválasztása](./media/workday-inbound-tutorial/select-security-group-msft-wdad.png)
+
+1. Kattintson a csoport neve melletti három pontra (...), majd a menüben válassza a **biztonsági csoport > tartományi engedélyek fenntartása biztonsági csoport számára** elemet.
+   >[!div class="mx-imgBorder"]
+   >![Válassza a tartományi engedélyek megőrzése lehetőséget](./media/workday-inbound-tutorial/select-maintain-domain-permissions.png)
+
+1. Az **integrációs engedélyek** területen adja hozzá a következő tartományokat a listához a **tartományi biztonsági házirendekhez, amelyek engedélyezik a Put-hozzáférést**
    * *Külső fiók kiépítés*
+   * *Worker-jelentések: Public Worker-jelentések* 
+   * *Személyes adatok: munkahelyi kapcsolattartási adatok* (akkor szükségesek, ha az Azure ad-ből munkanapokon szeretné visszaírási a kapcsolattartási adatokat)
+   * *Munkanap-fiókok* (kötelező, ha az Azure ad-ből munkanapokra szeretné visszaírási Felhasználónév/UPN-t)
+
+1. Az **integrációs engedélyek** területen adja hozzá a következő tartományokat a listához, amely **engedélyezi a hozzáférést a tartomány biztonsági házirendjeihez**
    * *Feldolgozói adatfeldolgozók: feldolgozók*
-   * *Worker-jelentések: Public Worker-jelentések*
-   * *Személyes adatok: munkahelyi kapcsolattartási adatok*
    * *Feldolgozói adatfeldolgozás: összes pozíció*
    * *Munkavégző adatok: aktuális személyzeti információ*
    * *Worker-adatfeldolgozók: a munkavégző profilban szereplő üzleti cím*
-   * *Munkanap-fiókok*
+   * *Worker-alapú adatfeldolgozók: minősített* munkavégzők (opcionális – a feldolgozói minősítési adatgyűjtés beolvasása az üzembe helyezéshez)
+   * *Worker-alapú adatfeldolgozás: szaktudás és tapasztalat* (opcionális – ezt a lehetőséget felhasználva beolvashatja a feldolgozói készségeket az üzembe helyezéshez)
 
-     >[!div class="mx-imgBorder"]
-     >![A "tartomány" szövegmezőben a "külső fiók" nevű tartományi biztonsági konfigurációs jelentést megjelenítő képernyőkép.](./media/workday-inbound-tutorial/wd_isu_07.png "Tartományi biztonsági házirendek")  
-
-     >[!div class="mx-imgBorder"]
-     >![Képernyőfelvétel: a tartományi biztonsági konfigurációs jelentés megjelenítése a kiválasztott tartományok listájával.](./media/workday-inbound-tutorial/wd_isu_08.png "Tartományi biztonsági házirendek") 
-
-     Kattintson az **OK** gombra.
-
-3. A megjelenített jelentésben válassza ki a **külső fiók kiépítés** mellett megjelenő három pontot (...), majd kattintson a **tartomány – > biztonsági házirend módosítása engedélyekre** .
+1. A fenti lépések elvégzése után az engedélyek képernyő a lent látható módon jelenik meg:
    >[!div class="mx-imgBorder"]
-   >![Tartományi biztonsági házirendek](./media/workday-inbound-tutorial/wd_isu_09.png "Tartományi biztonsági házirendek")  
+   >![Minden tartományi biztonsági engedély](./media/workday-inbound-tutorial/all-domain-security-permissions.png)
 
-4. A **tartomány biztonsági házirendjének szerkesztése** lapon görgessen le az **integrációs engedélyek** szakaszhoz. A "+" jelre kattintva adja hozzá az integrációs rendszer csoportot a biztonsági csoportok listájához a **Get** és a **put** integrációs engedélyekkel.
-   >[!div class="mx-imgBorder"]
-   >![Képernyőfelvétel: az "integrációs permissons" szakasz kiemelve.](./media/workday-inbound-tutorial/wd_isu_10.png "Szerkesztési engedély")  
-
-5. A "+" jelre kattintva adja hozzá az integrációs rendszer csoportot a biztonsági csoportok listájához a **Get** és a **put** integrációs engedélyekkel.
-
-   >[!div class="mx-imgBorder"]
-   >![Szerkesztési engedély](./media/workday-inbound-tutorial/wd_isu_11.png "Szerkesztési engedély")  
-
-6. Ismételje meg a fenti 3-5. lépést a fennmaradó biztonsági házirendek mindegyikéhez:
-
-   | Művelet | Tartományi biztonsági házirend |
-   | ---------- | ---------- |
-   | Beolvasás és üzembe helyezés | Worker-jelentések: Public Worker-jelentések |
-   | Beolvasás és üzembe helyezés | Személyes adatok: munkahelyi kapcsolattartási adatok |
-   | Lekérés | Feldolgozói adatfeldolgozók: feldolgozók |
-   | Lekérés | Feldolgozói adatfeldolgozás: összes pozíció |
-   | Lekérés | Munkavégző adatok: aktuális személyzeti információ |
-   | Lekérés | Worker-adatfeldolgozók: a munkavégző profilban szereplő üzleti cím |
-   | Beolvasás és üzembe helyezés | Munkanap-fiókok |
+1. A konfigurálás befejezéséhez kattintson az **OK gombra** **, és a következő képernyőn végezze** el a kívánt beállítást. 
 
 ### <a name="configuring-business-process-security-policy-permissions"></a>Üzleti folyamatokra vonatkozó biztonsági házirend engedélyeinek konfigurálása
 
@@ -240,35 +226,9 @@ Ebben a lépésben az "üzleti folyamatok biztonsága" házirend engedélyeit fo
    >[!div class="mx-imgBorder"]
    >![A függőben lévő biztonság aktiválása](./media/workday-inbound-tutorial/wd_isu_18.png "A függőben lévő biztonság aktiválása")  
 
-## <a name="configure-active-directory-service-account"></a>Active Directory szolgáltatásfiók konfigurálása
+## <a name="provisioning-agent-installation-prerequisites"></a>A kiépítési ügynök telepítési előfeltételei
 
-Ez a szakasz az Azure AD Connect létesítési ügynök telepítéséhez és konfigurálásához szükséges AD szolgáltatásfiók-engedélyeket ismerteti.
-
-### <a name="permissions-required-to-run-the-provisioning-agent-installer"></a>A kiépítési ügynök telepítőjének futtatásához szükséges engedélyek
-Miután azonosította a kiépítési ügynököt futtató Windows Servert, jelentkezzen be a kiszolgáló gazdagépére a helyi rendszergazda vagy a tartományi rendszergazdai hitelesítő adatok használatával. Az ügynök telepítési folyamata biztonságos kulcstároló-hitelesítő fájlokat hoz létre, és frissíti a szolgáltatásprofil konfigurációját a gazdagép-kiszolgálón. Ehhez rendszergazdai hozzáférésre van szükség az ügynököt üzemeltető kiszolgálón. 
-
-### <a name="permissions-required-to-configure-the-provisioning-agent-service"></a>A kiépítési ügynök szolgáltatás konfigurálásához szükséges engedélyek
-Az alábbi lépésekkel állíthatja be az ügynök műveleteihez használható szolgáltatásfiókot. 
-1. Az AD-tartományvezérlőn nyissa meg *Active Directory felhasználók és számítógépek* beépülő modult. 
-2. Hozzon létre egy új tartományi felhasználót (például: *provAgentAdmin*)  
-3. Kattintson a jobb gombbal a szervezeti egység vagy a tartomány nevére, és válassza a *vezérlés delegálása* lehetőséget, amely megnyitja a *vezérlés delegálása varázslót*. 
-
-> [!NOTE] 
-> Ha korlátozni szeretné a kiépítési ügynököt úgy, hogy az csak bizonyos szervezeti egységeket hozzon létre és olvasson el tesztelési célból, javasoljuk, hogy a teszt futtatásakor a megfelelő szervezeti egység szintjén végezze el a vezérlés delegálását.
-
-4. Az üdvözlő képernyőn kattintson a **tovább** gombra. 
-5. A **felhasználók vagy csoportok kiválasztása** képernyőn adja meg a 2. lépésben létrehozott tartományi felhasználót. Kattintson a **Tovább** gombra.
-   >[!div class="mx-imgBorder"]
-   >![Képernyő hozzáadása](./media/workday-inbound-tutorial/delegation-wizard-01.png "Képernyő hozzáadása")
-
-6. A **delegálni kívánt feladatok** képernyőn válassza ki a következő feladatokat: 
-   * Felhasználói fiókok létrehozása, törlése és kezelése
-   * Az összes felhasználó információinak olvasása
-
-   >[!div class="mx-imgBorder"]
-   >![Feladatok képernyő](./media/workday-inbound-tutorial/delegation-wizard-02.png "Feladatok képernyő")
-
-7. Kattintson a **tovább** gombra, és **mentse** a konfigurációt.
+A következő szakasz folytatásához tekintse át a [kiépítési ügynök telepítésének előfeltételeit](../cloud-provisioning/how-to-prerequisites.md) . 
 
 ## <a name="configuring-user-provisioning-from-workday-to-active-directory"></a>A felhasználó üzembe helyezésének beállítása munkahelyről Active Directory
 
@@ -305,72 +265,9 @@ Ez a szakasz a felhasználói fiókok kiépítésének lépéseit ismerteti a mu
 
 ### <a name="part-2-install-and-configure-on-premises-provisioning-agents"></a>2. rész: a helyszíni kiépítési ügynök (ek) telepítése és konfigurálása
 
-A helyszíni Active Directory létrehozásához a kiépítési ügynököt olyan kiszolgálóra kell telepíteni, amely .NET 4.7.1 + keretrendszert és hálózati hozzáférést biztosít a kívánt Active Directory tartomány (ok) hoz.
+A helyszíni Active Directory való kiépítéshez a létesítési ügynököt olyan tartományhoz csatlakoztatott kiszolgálóra kell telepíteni, amely hálózati hozzáféréssel rendelkezik a kívánt Active Directory tartomány (ok) hoz.
 
-> [!TIP]
-> A .NET-keretrendszer verzióját a kiszolgálón tekintheti meg az [itt](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)megadott utasítások alapján.
-> Ha a kiszolgáló nem rendelkezik .NET 4.7.1 vagy újabb verzióval, letöltheti [innen.](https://support.microsoft.com/help/4033342/the-net-framework-4-7-1-offline-installer-for-windows)  
-
-Vigye át a letöltött ügynök telepítőjét a kiszolgálói gazdagépre, és kövesse az alábbi lépéseket az ügynök konfigurációjának befejezéséhez.
-
-1. Jelentkezzen be arra a Windows Serverre, amelyre telepíteni kívánja az új ügynököt.
-
-1. Indítsa el a kiépítési ügynök telepítőjét, fogadja el a feltételeket, majd kattintson a **telepítés** gombra.
-
-   >[!div class="mx-imgBorder"]
-   >![Telepítési képernyő](./media/workday-inbound-tutorial/pa_install_screen_1.png "Telepítési képernyő")
-
-1. A telepítés befejezése után elindul a varázsló, és megjelenik az **Azure ad** -hez való csatlakozási képernyő. Az Azure AD-példányhoz való kapcsolódáshoz kattintson a **hitelesítés** gombra.
-
-   >[!div class="mx-imgBorder"]
-   >![Az Azure AD csatlakoztatása](./media/workday-inbound-tutorial/pa_install_screen_2.png "Az Azure AD csatlakoztatása")
-
-1. Hitelesítés az Azure AD-példányon hibrid identitás-rendszergazdai hitelesítő adatok használatával.
-
-   >[!div class="mx-imgBorder"]
-   >![Rendszergazdai hitelesítés](./media/workday-inbound-tutorial/pa_install_screen_3.png "Rendszergazdai hitelesítés")
-
-   > [!NOTE]
-   > Az Azure AD rendszergazdai hitelesítő adatai csak az Azure AD-bérlőhöz való kapcsolódáshoz használatosak. Az ügynök nem tárolja helyileg a hitelesítő adatokat a kiszolgálón.
-
-1. Az Azure AD-vel való sikeres hitelesítés után megjelenik a **csatlakozási Active Directory** képernyő. Ebben a lépésben adja meg az AD-tartománynevet, és kattintson a **könyvtár hozzáadása** gombra.
-
-   >[!div class="mx-imgBorder"]
-   >![Könyvtár hozzáadása](./media/workday-inbound-tutorial/pa_install_screen_4.png "Könyvtár hozzáadása")
-
-1. Ekkor a rendszer felszólítja az AD-tartományhoz való csatlakozáshoz szükséges hitelesítő adatok megadására. Ugyanazon a képernyőn a **tartományvezérlő kiválasztása prioritással** adhatja meg azokat a tartományvezérlőket, amelyeket az ügynöknek használnia kell a kiépítési kérelmek küldéséhez.
-
-   >[!div class="mx-imgBorder"]
-   >![Tartományi hitelesítő adatok](./media/workday-inbound-tutorial/pa_install_screen_5.png)
-
-1. A tartomány konfigurálása után a telepítő megjeleníti a konfigurált tartományok listáját. Ezen a képernyőn megismételheti a #5 és #6 lépést, ha további tartományokat szeretne hozzáadni, vagy kattintson a **tovább** gombra az ügynök regisztrációjának folytatásához.
-
-   >[!div class="mx-imgBorder"]
-   >![Konfigurált tartományok](./media/workday-inbound-tutorial/pa_install_screen_6.png "Konfigurált tartományok")
-
-   > [!NOTE]
-   > Ha több AD-tartománnyal is rendelkezik (például na.contoso.com, emea.contoso.com), akkor egyenként adja hozzá az egyes tartományokat a listához.
-   > Csak a szülőtartomány hozzáadása (például contoso.com) nem elegendő. Minden alárendelt tartományt regisztrálnia kell az ügynökkel.
-
-1. Tekintse át a konfiguráció részleteit, és kattintson a **Confirm (megerősítés** ) gombra az ügynök regisztrálásához.
-
-   >[!div class="mx-imgBorder"]
-   >![Képernyő megerősítése](./media/workday-inbound-tutorial/pa_install_screen_7.png "Képernyő megerősítése")
-
-1. A konfigurációs varázsló megjeleníti az ügynök regisztrációjának állapotát.
-
-   >[!div class="mx-imgBorder"]
-   >![Ügynök regisztrációja](./media/workday-inbound-tutorial/pa_install_screen_8.png "Ügynök regisztrációja")
-
-1. Ha az ügynök regisztrációja sikeres volt, kattintson a **Kilépés** gombra a varázslóból való kilépéshez.
-
-   >[!div class="mx-imgBorder"]
-   >![Kilépés képernyő](./media/workday-inbound-tutorial/pa_install_screen_9.png "Kilépés képernyő")
-
-1. Ellenőrizze az ügynök telepítését, és győződjön meg arról, hogy fut a "szolgáltatások" Snap-In megnyitásával, és keresse meg a "Microsoft Azure AD kapcsolat létesítése ügynök" nevű szolgáltatást.
-
-   >[!div class="mx-imgBorder"]
-   >![Képernyőfelvétel a szolgáltatásokban futó Microsoft Azure AD-létesítési ügynökről.](./media/workday-inbound-tutorial/services.png)
+Vigye át a letöltött ügynök telepítőjét a kiszolgálói gazdagépre, és kövesse az ügynök [ **telepítése** című szakaszban](../cloud-provisioning/how-to-install.md) felsorolt lépéseket az ügynök konfigurálásának befejezéséhez.
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory"></a>3. rész: a kiépítési alkalmazásban konfigurálja a munkanapokhoz és a Active Directoryhoz való kapcsolódást.
 Ebben a lépésben kapcsolatot létesít a munkanapokkal, és Active Directory a Azure Portal. 
@@ -514,24 +411,22 @@ Ebben a szakaszban azt fogja beállítani, hogy a felhasználói adatok hogyan �
 | **LocalReference** |  preferredLanguage  |     |  Létrehozás + frissítés |                                               
 | **Switch ( \[ önkormányzat \] , "OU = default Users, DC = contoso, DC = com", "Dallas", "OU = Dallas, OU = felhasználók, DC = contoso, DC = com", "Austin", "OU = Austin, OU = Users, DC = contoso, DC = com", "Seattle", "OU = Seattle, OU = Users, DC = contoso, DC = com", "London", "OU = London, OU = Users, DC = contoso, DC = com")**  | parentDistinguishedName     |     |  Létrehozás + frissítés |
 
-Miután az attribútum-hozzárendelési konfiguráció elkészült, mostantól [engedélyezheti és elindíthatja a felhasználó kiépítési szolgáltatását](#enable-and-launch-user-provisioning).
+Ha elkészült az attribútum-hozzárendelési konfigurációval, az [igény szerinti](../app-provisioning/provision-on-demand.md) kiépítés használatával tesztelheti az üzembe [helyezést, majd engedélyezheti és elindíthatja a felhasználó kiépítési szolgáltatását](#enable-and-launch-user-provisioning).
 
 ## <a name="enable-and-launch-user-provisioning"></a>A felhasználók üzembe helyezésének engedélyezése és elindítása
 
-Miután befejezte a munkaidő-kiépítési alkalmazás konfigurációját, bekapcsolhatja a kiépítési szolgáltatást a Azure Portal.
+Miután befejezte a munkanap-kiépítési alkalmazás konfigurációját, és egy [igény szerinti](../app-provisioning/provision-on-demand.md)kiépítéssel rendelkező felhasználó számára ellenőrizte az üzembe helyezést, bekapcsolhatja a létesítési szolgáltatást a Azure Portal.
 
 > [!TIP]
-> Alapértelmezés szerint a kiépítési szolgáltatás bekapcsolásakor a rendszer kiépítési műveleteket kezdeményez a hatókörben lévő összes felhasználó számára. Ha hibák léptek fel a leképezési vagy a munkanapokon tárolt adatokkal kapcsolatban, a kiépítési feladat meghiúsulhat, és a karanténba helyezési állapotba kerülhet. Ennek elkerüléséhez ajánlott eljárásként Azt javasoljuk, hogy a **forrás objektum hatókör** -szűrőjét konfigurálja, és tesztelje az attribútumok hozzárendeléseit néhány tesztelési felhasználóval, mielőtt elindítja a teljes szinkronizálást az összes felhasználó számára. Miután meggyőződött arról, hogy a leképezések működnek, és megadja a kívánt eredményeket, távolítsa el a szűrőt, vagy fokozatosan bontsa ki, hogy több felhasználót is tartalmazzon.
+> Alapértelmezés szerint a kiépítési szolgáltatás bekapcsolásakor a rendszer kiépítési műveleteket kezdeményez a hatókörben lévő összes felhasználó számára. Ha hibák léptek fel a leképezési vagy a munkanapokon tárolt adatokkal kapcsolatban, a kiépítési feladat meghiúsulhat, és a karanténba helyezési állapotba kerülhet. Ennek elkerüléséhez ajánlott eljárásként Azt javasoljuk, hogy a **forrás objektum hatókör** -szűrőjét konfigurálja, és tesztelje az attribútum-hozzárendeléseket néhány, [igény szerinti](../app-provisioning/provision-on-demand.md) kiosztást használó tesztelési felhasználóval, mielőtt elindítja a teljes szinkronizálást az összes felhasználó számára. Miután meggyőződött arról, hogy a leképezések működnek, és megadja a kívánt eredményeket, távolítsa el a szűrőt, vagy fokozatosan bontsa ki, hogy több felhasználót is tartalmazzon.
 
-1. A **létesítés** lapon állítsa be a **kiépítési állapotot** **a** következőre:.
+1. Lépjen a **kiépítés** panelre, és kattintson a **kiépítés megkezdése** elemre.
 
-2. Kattintson a **Mentés** gombra.
+1. Ez a művelet elindítja a kezdeti szinkronizálást, amely a munkanapokhoz tartozó bérlők számától függően több órát is igénybe vehet. A folyamatjelző sáv a szinkronizálási ciklus előrehaladásának nyomon követésére használható. 
 
-3. Ez a művelet elindítja a kezdeti szinkronizálást, amely a munkanapokhoz tartozó bérlők számától függően több órát is igénybe vehet. 
+1. A Azure Portal **naplók** lapján bármikor megtekintheti a kiépítési szolgáltatás által végrehajtott műveleteket. A naplók a kiépítési szolgáltatás által végrehajtott összes egyéni szinkronizálási eseményt felsorolják, például hogy mely felhasználók olvasnak el munkanapokon, majd ezt követően hozzáadják vagy frissítették Active Directory. A naplók áttekintésével és a kiépítési hibák kijavításával kapcsolatos utasításokért tekintse meg a hibaelhárítás című szakaszt.
 
-4. A Azure Portal **naplók** lapján bármikor megtekintheti a kiépítési szolgáltatás által végrehajtott műveleteket. A naplók a kiépítési szolgáltatás által végrehajtott összes egyéni szinkronizálási eseményt felsorolják, például hogy mely felhasználók olvasnak el munkanapokon, majd ezt követően hozzáadják vagy frissítették Active Directory. A naplók áttekintésével és a kiépítési hibák kijavításával kapcsolatos utasításokért tekintse meg a hibaelhárítás című szakaszt.
-
-5. A kezdeti szinkronizálás befejezésekor a rendszer egy naplózási összesítő jelentést ír a **létesítés** lapon az alább látható módon.
+1. A kezdeti szinkronizálás befejezésekor a rendszer egy naplózási összesítő jelentést ír a **létesítés** lapon az alább látható módon.
    > [!div class="mx-imgBorder"]
    > ![Kiépítés folyamatjelző sáv](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
 
@@ -540,12 +435,10 @@ Miután befejezte a munkaidő-kiépítési alkalmazás konfigurációját, bekap
 * **Megoldási képességgel kapcsolatos kérdések**
   * [Amikor új bérletet dolgoz fel a munkanapokból, hogyan állítja be a megoldás az új felhasználói fiók jelszavát Active Directory?](#when-processing-a-new-hire-from-workday-how-does-the-solution-set-the-password-for-the-new-user-account-in-active-directory)
   * [Támogatja a megoldás az e-mail-értesítések küldését a kiépítési műveletek befejeződése után?](#does-the-solution-support-sending-email-notifications-after-provisioning-operations-complete)
-  * [Hogyan a jelszavak kézbesítését az új bérlők számára, és biztonságosan biztosítson egy mechanizmust a jelszavuk alaphelyzetbe állításához?](#how-do-i-manage-delivery-of-passwords-for-new-hires-and-securely-provide-a-mechanism-to-reset-their-password)
   * [Az Azure AD-felhőben vagy a létesítési ügynök rétegében a megoldás gyorsítótár-munkanapokhoz tartozó felhasználói profilok vannak?](#does-the-solution-cache-workday-user-profiles-in-the-azure-ad-cloud-or-at-the-provisioning-agent-layer)
   * [Támogatja a megoldás a helyszíni AD-csoportok a felhasználóhoz való hozzárendelését?](#does-the-solution-support-assigning-on-premises-ad-groups-to-the-user)
   * [Milyen munkanap API-kat használ a megoldás a munkanap-munkavégző profilok lekérdezéséhez és frissítéséhez?](#which-workday-apis-does-the-solution-use-to-query-and-update-workday-worker-profiles)
   * [Konfigurálható a munkanap HCM-bérlő két Azure AD-Bérlővel?](#can-i-configure-my-workday-hcm-tenant-with-two-azure-ad-tenants)
-  * [Miért nem támogatott a "munkanap – Azure AD" felhasználó-kiépítési alkalmazás, ha üzembe helyezte a Azure AD Connect?](#why-workday-to-azure-ad-user-provisioning-app-is-not-supported-if-we-have-deployed-azure-ad-connect)
   * [Hogyan a munkanapokkal és az Azure AD-integrációval kapcsolatos új funkciókra vonatkozó javaslatokat?](#how-do-i-suggest-improvements-or-request-new-features-related-to-workday-and-azure-ad-integration)
 
 * **Kiépítési ügynökkel kapcsolatos kérdések**
@@ -577,19 +470,13 @@ Ha a helyszíni kiépítési ügynök új AD-fiók létrehozására vonatkozó k
 
 Nem, e-mail-értesítések küldése a kiépítési műveletek befejezése után az aktuális kiadásban nem támogatott.
 
-#### <a name="how-do-i-manage-delivery-of-passwords-for-new-hires-and-securely-provide-a-mechanism-to-reset-their-password"></a>Hogyan a jelszavak kézbesítését az új bérlők számára, és biztonságosan biztosítson egy mechanizmust a jelszavuk alaphelyzetbe állításához?
-
-Az új AD-fiók üzembe helyezésének egyik végső lépése a felhasználó AD-fiókjához rendelt ideiglenes jelszó továbbítása. Számos vállalat továbbra is a hagyományos módszert használja az ideiglenes jelszó továbbítására a felhasználó felettesének, aki ezt követően átadja a jelszót az új bérlet/függő feldolgozónak. Ez a folyamat tartalmaz egy belső biztonsági hibát, és rendelkezésre áll egy lehetőség az Azure AD-funkciókkal való jobb megközelítés megvalósítására.
-
-A felvételi folyamat részeként a HR-csapatok általában egy háttér-ellenőrzési műveletet futtatnak, és az új bérlet mobil számát. Ha az AD-t a felhasználók kiépítéséhez szeretné kiépíteni, akkor a tényre épülve kiépítheti a felhasználó önkiszolgáló jelszó-visszaállítási funkcióját az 1. napon. Ezt úgy érheti el, hogy az új bérlet "Mobile Number" attribútumát az AD-be, majd az AD-ből az Azure AD-be a Azure AD Connect használatával propagálja. Miután az Azure AD-ban szerepel a "Mobile Number" (mobil szám), engedélyezheti a felhasználói fiókhoz tartozó önkiszolgáló [jelszó-visszaállítást (SSPR)](../authentication/howto-sspr-authenticationdata.md) , így az 1. napon az új bérlet a regisztrált és ellenőrzött mobil számot is használhatja a hitelesítéshez.
-
 #### <a name="does-the-solution-cache-workday-user-profiles-in-the-azure-ad-cloud-or-at-the-provisioning-agent-layer"></a>Az Azure AD-felhőben vagy a létesítési ügynök rétegében a megoldás gyorsítótár-munkanapokhoz tartozó felhasználói profilok vannak?
 
 Nem, a megoldás nem tart fenn felhasználói profilok gyorsítótárát. Az Azure AD-kiépítési szolgáltatás egyszerűen adatfeldolgozóként funkcionál, adatok beolvasása a munkanapokból, és írás a cél Active Directory vagy az Azure AD-ba. Tekintse meg a [személyes adatok kezelése](#managing-personal-data) a felhasználói adatvédelmet és az adatmegőrzéssel kapcsolatos részleteket ismertető szakaszt.
 
 #### <a name="does-the-solution-support-assigning-on-premises-ad-groups-to-the-user"></a>Támogatja a megoldás a helyszíni AD-csoportok a felhasználóhoz való hozzárendelését?
 
-Ez a funkció jelenleg nem támogatott. Ajánlott megkerülő megoldásként olyan PowerShell-parancsfájlt helyezzen üzembe, amely lekérdezi a Microsoft Graph API-végpontot a [naplózási adatokhoz](/graph/api/resources/azure-ad-auditlog-overview?view=graph-rest-beta) , és ezzel olyan forgatókönyveket indít el, mint a csoport hozzárendelése Ez a PowerShell-parancsfájl csatolható egy Feladatütemezőhöz, és a kiépítési ügynököt futtató ugyanazon a gépen is üzembe helyezhető.  
+Ez a funkció jelenleg nem támogatott. Ajánlott megkerülő megoldásként olyan PowerShell-parancsfájlt helyezzen üzembe, amely lekérdezi a Microsoft Graph API-végpontot a [naplózási adatokhoz](/graph/api/resources/azure-ad-auditlog-overview) , és ezzel olyan forgatókönyveket indít el, mint a csoport hozzárendelése Ez a PowerShell-parancsfájl csatolható egy Feladatütemezőhöz, és a kiépítési ügynököt futtató ugyanazon a gépen is üzembe helyezhető.  
 
 #### <a name="which-workday-apis-does-the-solution-use-to-query-and-update-workday-worker-profiles"></a>Milyen munkanap API-kat használ a megoldás a munkanap-munkavégző profilok lekérdezéséhez és frissítéséhez?
 
@@ -611,10 +498,6 @@ Igen, ez a konfiguráció támogatott. A forgatókönyv konfigurálásának lép
 * A kiépítési ügynök üzembe helyezése #2 és regisztrálása az Azure AD-bérlő #2.
 * Az egyes kiépítési ügynökök által felügyelt "gyermektartomány" alapján minden ügynököt konfigurálhat a tartomány (ok) hoz. Egy ügynök több tartományt is képes kezelni.
 * A Azure Portalban állítsa be a munkanapokat az AD-felhasználó kiépítési alkalmazására minden egyes bérlőn, és konfigurálja azt a megfelelő tartományokkal.
-
-#### <a name="why-workday-to-azure-ad-user-provisioning-app-is-not-supported-if-we-have-deployed-azure-ad-connect"></a>Miért nem támogatott a "munkanap – Azure AD" felhasználó-kiépítési alkalmazás, ha üzembe helyezte a Azure AD Connect?
-
-Ha az Azure AD hibrid módban van használatban (ahol a Felhőbeli és a helyszíni felhasználók kombinációját tartalmazza), fontos, hogy egyértelmű definíciót tartalmazzon a "szolgáltatói forrás" kifejezésből. A hibrid forgatókönyvek általában a Azure AD Connect üzembe helyezését igénylik. Azure AD Connect telepítésekor a helyszíni AD a szolgáltató forrása. Az Azure AD Connectornak a mix szolgáltatásba való bevezetésével olyan helyzetet eredményezhet, amelyben a munkanap attribútum értékei felülírhatják a Azure AD Connect által beállított értékeket. Így a "munkanap – Azure AD" kiépítési alkalmazás használata nem támogatott, ha Azure AD Connect engedélyezve van. Ilyen helyzetekben azt javasoljuk, hogy a felhasználók helyszíni AD-be való beszerzéséhez és az Azure Azure AD Connect AD-ba való szinkronizálásához használja a "munkanap az AD-felhasználó számára" kiépítési alkalmazást.
 
 #### <a name="how-do-i-suggest-improvements-or-request-new-features-related-to-workday-and-azure-ad-integration"></a>Hogyan a munkanapokkal és az Azure AD-integrációval kapcsolatos új funkciókra vonatkozó javaslatokat?
 
@@ -845,35 +728,69 @@ Ez a szakasz részletesen ismerteti, hogyan lehet elhárítani az Azure AD-napl�
 
 Ez a szakasz a hibaelhárítás következő szempontjait ismerteti:
 
+* [A kiépítési ügynök konfigurálása Eseménynapló naplók kibocsátásához](#configure-provisioning-agent-to-emit-event-viewer-logs)
 * [Windows Eseménynapló beállítása az ügynökhöz – hibaelhárítás](#setting-up-windows-event-viewer-for-agent-troubleshooting)
 * [Azure Portal naplók beállítása a szolgáltatás hibaelhárításához](#setting-up-azure-portal-audit-logs-for-service-troubleshooting)
 * [Az AD felhasználói fiók létrehozási műveleteinek naplói](#understanding-logs-for-ad-user-account-create-operations)
 * [A kezelői frissítési műveletek naplóinak ismertetése](#understanding-logs-for-manager-update-operations)
 * [Gyakran előforduló hibák elhárítása](#resolving-commonly-encountered-errors)
 
+### <a name="configure-provisioning-agent-to-emit-event-viewer-logs"></a>A kiépítési ügynök konfigurálása Eseménynapló naplók kibocsátásához
+1. Jelentkezzen be arra a Windows Server-gépre, amelyen a kiépítési ügynök telepítve van
+1. Állítsa le a szolgáltatás Microsoft Azure AD a létesítési **ügynök összekapcsolását**.
+1. Hozza létre az eredeti konfigurációs fájl másolatát: *C:\Program Files\Microsoft Azure ad Connect kiépítési Agent\AADConnectProvisioningAgent.exe.config*.
+1. Cserélje le a meglévő `<system.diagnostics>` szakaszt a következőre. 
+   * A figyelő konfigurációs **ETW** üzeneteket bocsát ki a eseménymegjelenítőt-naplókba
+   * A figyelő konfigurációs **textWriterListener** nyomkövetési üzeneteket küld a *ProvAgentTrace. log* fájlba. A textWriterListener kapcsolódó sorok megjegyzésének visszakeresése csak a speciális hibaelhárítás érdekében. 
+
+   ```xml
+     <system.diagnostics>
+         <sources>
+         <source name="AAD Connect Provisioning Agent">
+             <listeners>
+             <add name="console"/>
+             <add name="etw"/>
+             <!-- <add name="textWriterListener"/> -->
+             </listeners>
+         </source>
+         </sources>
+         <sharedListeners>
+         <add name="console" type="System.Diagnostics.ConsoleTraceListener" initializeData="false"/>
+         <add name="etw" type="System.Diagnostics.EventLogTraceListener" initializeData="Azure AD Connect Provisioning Agent">
+             <filter type="System.Diagnostics.EventTypeFilter" initializeData="All"/>
+         </add>
+         <!-- <add name="textWriterListener" type="System.Diagnostics.TextWriterTraceListener" initializeData="C:/ProgramData/Microsoft/Azure AD Connect Provisioning Agent/Trace/ProvAgentTrace.log"/> -->
+         </sharedListeners>
+     </system.diagnostics>
+
+   ```
+1. Indítsa el a szolgáltatást **Microsoft Azure ad a kiépítési ügynök összekapcsolását**.
+
 ### <a name="setting-up-windows-event-viewer-for-agent-troubleshooting"></a>Windows Eseménynapló beállítása az ügynökhöz – hibaelhárítás
 
-* Jelentkezzen be arra a Windows Server-gépre, amelyen a kiépítési ügynök telepítve van
-* Nyissa meg a **Windows Server Eseménynapló** asztali alkalmazást.
-* Válassza a **Windows-naplók > alkalmazást**.
-* Az **aktuális napló szűrése..** . lehetőség a forrás HRE alatt naplózott összes esemény megtekintéséhez **. A. ProvisioningAgent** és az "5" azonosítójú események kihagyása az alább látható "-5" szűrő megadásával.
+1. Jelentkezzen be arra a Windows Server-gépre, amelyen a kiépítési ügynök telepítve van
+1. Nyissa meg a **Windows Server Eseménynapló** asztali alkalmazást.
+1. Válassza a **Windows-naplók > alkalmazást**.
+1. Az **aktuális napló szűrése..** . lehetőség a forrás **Azure ad Connect kiépítési ügynökben** naplózott összes esemény megtekintésére és a (z) "5" azonosítójú események kizárására az alább látható "-5" szűrő megadásával.
+   > [!NOTE]
+   > Az 5. AZONOSÍTÓJÚ esemény rögzíti az ügynök rendszerindítási üzeneteit az Azure AD Cloud Service-be, ezért a naplófájlok elemzése során szűrni fogjuk. 
 
-  ![Windows Eseménynapló](media/workday-inbound-tutorial/wd_event_viewer_01.png))
+   ![Windows Eseménynapló](media/workday-inbound-tutorial/wd_event_viewer_01.png)
 
-* Kattintson **az OK gombra** , és rendezze az eredmény nézetet **dátum és idő** oszlop szerint.
+1. Kattintson **az OK gombra** , és rendezze az eredmény nézetet **dátum és idő** oszlop szerint.
 
 ### <a name="setting-up-azure-portal-audit-logs-for-service-troubleshooting"></a>Azure Portal naplók beállítása a szolgáltatás hibaelhárításához
 
-* Indítsa el a [Azure Portalt](https://portal.azure.com), és navigáljon a munkaidő-kiépítési alkalmazás **naplók** szakaszához.
-* A naplók lapon lévő **oszlopok** gomb használatával csak a következő oszlopokat jelenítheti meg a nézetben (dátum, tevékenység, állapot, állapot oka). Ez a konfiguráció biztosítja, hogy csak a hibaelhárításhoz szükséges adatokat koncentrálja.
+1. Indítsa el a [Azure Portalt](https://portal.azure.com), és navigáljon a munkaidő-kiépítési alkalmazás **naplók** szakaszához.
+1. A naplók lapon lévő **oszlopok** gomb használatával csak a következő oszlopokat jelenítheti meg a nézetben (dátum, tevékenység, állapot, állapot oka). Ez a konfiguráció biztosítja, hogy csak a hibaelhárításhoz szükséges adatokat koncentrálja.
 
-  ![Naplók oszlopai](media/workday-inbound-tutorial/wd_audit_logs_00.png)
+   ![Naplók oszlopai](media/workday-inbound-tutorial/wd_audit_logs_00.png)
 
-* A nézet szűréséhez használja a **cél** és a **dátumtartomány** lekérdezési paramétereit. 
-  * Állítsa a **cél** lekérdezési paramétert a munkanap Worker objektum "Worker id" vagy "Employee id" értékére.
-  * Állítsa be a **dátumtartományt** arra a megfelelő időszakra, amelyre vonatkozóan meg szeretné vizsgálni a hibákat vagy a kiépítés során felmerülő problémákat.
+1. A nézet szűréséhez használja a **cél** és a **dátumtartomány** lekérdezési paramétereit. 
+   * Állítsa a **cél** lekérdezési paramétert a munkanap Worker objektum "Worker id" vagy "Employee id" értékére.
+   * Állítsa be a **dátumtartományt** arra a megfelelő időszakra, amelyre vonatkozóan meg szeretné vizsgálni a hibákat vagy a kiépítés során felmerülő problémákat.
 
-  ![Naplók szűrése](media/workday-inbound-tutorial/wd_audit_logs_01.png)
+   ![Naplók szűrése](media/workday-inbound-tutorial/wd_audit_logs_01.png)
 
 ### <a name="understanding-logs-for-ad-user-account-create-operations"></a>Az AD felhasználói fiók létrehozási műveleteinek naplói
 

@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/20/2020
+ms.date: 01/18/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3e99b3a8960eb49856e9a016eb054eed41eccde9
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b4cf2e79acf4cd58ff94a2e90f07202341672a1d
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965255"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569436"
 ---
 # <a name="azure-virtual-machines-oracle-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines Oracle adatbázis-kezelő üzembe helyezése SAP-munkaterheléshez
 
@@ -445,15 +445,19 @@ Ebben az esetben javasoljuk, hogy telepítse vagy keresse meg az Oracle Home, a 
 
 ### <a name="storage-configuration"></a>Tároló konfigurálása
 
-Az ext4, a xfs vagy az Oracle ASM fájlrendszerei az Azure-ban Oracle Database-fájlok esetén támogatottak. Az összes adatbázisfájlt a VHD-k vagy Managed Disks-k alapján kell tárolni ezeken a fájlrendszereken. Ezek a lemezek az Azure-beli virtuális géphez vannak csatlakoztatva, és az [Azure-oldal blob Storage](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) vagy az [Azure Managed Diskson](../../managed-disks-overview.md)alapulnak.
+A (z) ext4, XFS, NFSv 4.1 (csak Azure NetApp Files (ANF)) vagy Oracle ASM fájlrendszerben (lásd az SAP-Megjegyzés [#2039619](https://launchpad.support.sap.com/#/notes/2039619) kiadási/verziószámi követelmények esetén) támogatottak az Azure-beli Oracle Database-fájlok esetében. Az összes adatbázisfájlt a VHD-k, Managed Disks vagy ANF alapján kell tárolni ezeken a fájlrendszereken. Ezek a lemezek az Azure-beli virtuális géphez vannak csatlakoztatva, és az [Azure Page blob Storage](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs), az [Azure Managed Disks](../../managed-disks-overview.md)vagy a [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)alapján érhetők el.
 
-Oracle Linux UEK kernelek esetében az [Azure Premium SSD](../../premium-storage-performance.md#disk-caching)-k támogatásához legalább 4 UEK 4-es verzió szükséges.
+Minimális követelmények listája, például: 
+
+- Oracle Linux UEK kernelek esetében az [Azure Premium SSD](../../premium-storage-performance.md#disk-caching)-k támogatásához legalább 4 UEK 4-es verzió szükséges.
+- Az Oracle és a ANF esetében a minimális támogatott Oracle Linux 8,2.
+- Az Oracle és a ANF esetében a támogatott Oracle-verzió a 19c (19.8.0.0)
 
 A cikkből megtudhatja, hogyan használható az [Azure Storage az SAP](./planning-guide-storage.md) számítási feladatokhoz, hogy további részleteket kapjon az adatbázis-kezelő számítási feladatokhoz megfelelő Azure Block-tárolási típusok
 
-Erősen ajánlott az [Azure Managed Disks](../../managed-disks-overview.md)használata. Azt is javasoljuk, hogy az [Azure Premium SSD](../../disks-types.md) -ket a Oracle Database üzemelő példányokhoz is használja.
+Az Azure Block Storage használata esetén erősen ajánlott az [Azure Managed Disks](../../managed-disks-overview.md) és az [Azure Premium SSD](../../disks-types.md) -k használata az Oracle Database üzemelő példányokhoz.
 
-A hálózati meghajtók vagy távoli megosztások, például az Azure file Services nem támogatottak Oracle Database fájlok esetében. További információkat a következő cikkekben talál: 
+A Azure NetApp Files, más megosztott lemezek, hálózati meghajtók vagy távoli megosztások, például az Azure file Services (AFS) nem támogatottak Oracle Database fájlokhoz. További információkat a következő cikkekben talál: 
 
 - [Introducing Microsoft Azure File Service (A Microsoft Azure File szolgáltatás bemutatása)](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
@@ -469,10 +473,10 @@ Minimális konfiguráció:
 
 | Összetevő | Lemez | Gyorsítótárazás | Csíkot |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA & mirrlogB | Prémium vagy Ultra Disk | Nincs | Nem szükséges |
-| /Oracle/ \<SID> /origlogaB & mirrlogA | Prémium vagy Ultra Disk | Nincs | Nem szükséges |
-| /Oracle/ \<SID> /sapdata1... n | Prémium vagy Ultra Disk | Csak olvasható | Prémium szintű használatra is használható |
-| /Oracle/ \<SID> /oraarch | Standard | Nincs | Nem szükséges |
+| /Oracle/ \<SID> /origlogaA & mirrlogB | Prémium, ultrakönnyű lemez vagy ANF | Nincs | Nem szükséges |
+| /Oracle/ \<SID> /origlogaB & mirrlogA | Prémium, ultrakönnyű lemez vagy ANF | Nincs | Nem szükséges |
+| /Oracle/ \<SID> /sapdata1... n | Prémium, ultrakönnyű lemez vagy ANF | Csak olvasható | Prémium szintű használatra is használható |
+| /Oracle/ \<SID> /oraarch | Standard vagy ANF | Nincs | Nem szükséges |
 | Oracle Home, `saptrace` ,... | OPERÁCIÓSRENDSZER-lemez (prémium) | | Nem szükséges |
 
 * Kiszerelés: LVM Stripe vagy MDADM a RAID0 használatával
@@ -483,13 +487,13 @@ Teljesítmény konfigurációja:
 
 | Összetevő | Lemez | Gyorsítótárazás | Csíkot |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható  |
-| /Oracle/ \<SID> /origlogaB | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható |
-| /Oracle/ \<SID> /mirrlogAB | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható |
-| /Oracle/ \<SID> /mirrlogBA | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható |
-| /Oracle/ \<SID> /sapdata1... n | Prémium vagy Ultra Disk | Csak olvasható | Prémium szintű ajánlott  |
-| /Oracle/ \<SID> /sapdata (n + 1) * | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható |
-| /Oracle/ \<SID> /oraarch * | Prémium vagy Ultra Disk | Nincs | Nem szükséges |
+| /Oracle/ \<SID> /origlogaA | Prémium, ultrakönnyű lemez vagy ANF | Nincs | Prémium szintű használatra is használható  |
+| /Oracle/ \<SID> /origlogaB | Prémium, ultrakönnyű lemez vagy ANF | Nincs | Prémium szintű használatra is használható |
+| /Oracle/ \<SID> /mirrlogAB | Prémium, ultrakönnyű lemez vagy ANF | Nincs | Prémium szintű használatra is használható |
+| /Oracle/ \<SID> /mirrlogBA | Prémium, ultrakönnyű lemez vagy ANF | Nincs | Prémium szintű használatra is használható |
+| /Oracle/ \<SID> /sapdata1... n | Prémium, ultrakönnyű lemez vagy ANF | Csak olvasható | Prémium szintű ajánlott  |
+| /Oracle/ \<SID> /sapdata (n + 1) * | Prémium, ultrakönnyű lemez vagy ANF | Nincs | Prémium szintű használatra is használható |
+| /Oracle/ \<SID> /oraarch * | Prémium, ultrakönnyű lemez vagy ANF | Nincs | Nem szükséges |
 | Oracle Home, `saptrace` ,... | OPERÁCIÓSRENDSZER-lemez (prémium) | Nem szükséges |
 
 * Kiszerelés: LVM Stripe vagy MDADM a RAID0 használatával
@@ -500,6 +504,10 @@ Teljesítmény konfigurációja:
 
 
 Ha további IOPS van szükség az Azure Premium Storage használatakor, javasoljuk, hogy az LVM (logikai kötet-kezelő) vagy a MDADM használatával hozzon létre egy nagy logikai kötetet több csatlakoztatott lemezen. További információkért lásd: [Az Azure Virtual Machines adatbázis-kezelő rendszerbeli üzembe helyezésének szempontjai az SAP](dbms_guide_general.md) -számítási feladatokhoz, valamint az LVM vagy a MDADM kihasználása az irányelvek és mutatók alapján. Ez a megközelítés leegyszerűsíti a lemezterület kezelésének adminisztrációs terhelését, és segít elkerülni a fájlok manuális terjesztését több csatlakoztatott lemez között.
+
+Ha azt tervezi, hogy Azure NetApp Files használni, ellenőrizze, hogy a dNFS-ügyfél megfelelően van-e konfigurálva. A dNFS használata kötelező, ha támogatott környezettel rendelkezik. A dNFS konfigurációját a [Oracle Database közvetlen NFS-en való létrehozása](https://docs.oracle.com/en/database/oracle/oracle-database/19/ntdbi/creating-an-oracle-database-on-direct-nfs.html#GUID-2A0CCBAB-9335-45A8-B8E3-7E8C4B889DEA)című cikkben dokumentálja.
+
+Az Azure NetApp Files-alapú NFS Oracle-adatbázisok használatát bemutató példa az [SAP AnyDB (Oracle 19c) Azure NetApp Files használatával történő üzembe helyezését](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/deploy-sap-anydb-oracle-19c-with-azure-netapp-files/ba-p/2064043)mutatja be a blogban.
 
 
 #### <a name="write-accelerator"></a>Írásgyorsító
@@ -528,7 +536,7 @@ sudo curl -so /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules https://raw.gi
 </code></pre>
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A cikk elolvasása 
 
 - [Az Azure Virtual Machines adatbázis-kezelő üzembe helyezésének szempontjai az SAP-munkaterheléshez](dbms_guide_general.md)

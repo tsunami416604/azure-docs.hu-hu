@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/23/2020
+ms.date: 01/18/2021
 ms.author: alkohli
-ms.openlocfilehash: 059aad8b45aa449f5cd28c97f4ba55e2204c04ce
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 31947ca4d5eb632998f5c50257c12ef9a52dfc66
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937066"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98570099"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>Mi az a GPU-val rendelkező Azure Stack Edge Pro?
 
@@ -71,13 +71,13 @@ Az Azure Stack Edge Pro-megoldás Azure Stack Edge-erőforrásból, Azure Stack 
 
 Azure Stack Edge Pro fizikai eszköz, az Azure-erőforrás és a célként megadott Storage-fiók, amelybe az adatok átvitele nem feltétlenül azonos régióban kell, hogy legyen.
 
-- **Erőforrás rendelkezésre állása** – ebben az előzetes kiadásban az erőforrás az USA keleti régiójában, Nyugat-Európában és dél-Kelet-Ázsia régióban érhető el.
+- **Erőforrás rendelkezésre állása** – ebben a kiadásban az erőforrás az USA keleti régiójában, Nyugat-Európában és dél-Kelet-Ázsia régióban érhető el.
 
 - **Eszköz rendelkezésre állása** – az összes olyan országban/régióban, ahol az Azure stack Edge Pro-eszköz elérhető, válassza a **rendelkezésre állási** szakaszt az [Azure Stack Edge Pro díjszabásának](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgePro) **Azure stack Edge Pro** lapján.
     
 - **Céloldali tárfiókok** – Az adatokat tároló tárfiókok minden Azure-régióban elérhetők. Azokat a régiókat, amelyekben a Storage-fiókok Azure Stack Edge Pro-adataikat tárolják, közel kell lennie ahhoz, hogy az eszköz az optimális teljesítmény érdekében legyen. Az eszköztől távol található tárfiók esetében hosszú késések és lassabb teljesítmény várható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át az [Azure stack Edge Pro rendszerkövetelményeit](azure-stack-edge-gpu-system-requirements.md).
 

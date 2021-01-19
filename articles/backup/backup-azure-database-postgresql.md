@@ -4,12 +4,12 @@ description: Ismerkedjen meg Azure Database for PostgreSQL biztonsági mentésse
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: 32837e5bb871f7db5024569efc27940047aeacd7
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 628f43788c11558185a7b8a735373f0a663fdad1
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734640"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569487"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Azure Database for PostgreSQL biztonsági mentés hosszú távú adatmegőrzéssel (előzetes verzió)
 
@@ -135,7 +135,7 @@ Az alábbi utasítások részletes útmutatóul szolgálnak az Azure PostgreSQL-
 
 1. **Adatmegőrzési** beállítások megadása. Egy vagy több megőrzési szabályt is hozzáadhat. Az egyes adatmegőrzési szabályok feltételezik az adott biztonsági másolatok bemeneteit, valamint az adattárak és a megőrzés időtartamát.
 
-1. Dönthet úgy, hogy a biztonsági másolatokat a két adattár (vagy rétegek) egyikében tárolja: **biztonsági mentési** adattár (forró szint) vagy **archiválási** adattár (előzetes verzió). **Kétszintű rétegbeli beállítás** közül választhat, amelyekkel meghatározhatja, hogy a biztonsági másolatok hogyan legyenek a két adattárra bontva:
+1. Dönthet úgy, hogy a biztonsági másolatokat a két adattár (vagy rétegek) egyikében tárolja: **biztonsági mentési** adattár (standard szint) vagy **archiválási** adattár (előzetes verzió). **Kétszintű rétegbeli beállítás** közül választhat, amelyekkel meghatározhatja, hogy a biztonsági másolatok hogyan legyenek a két adattárra bontva:
 
     - Ha szeretné, hogy a rendszer **azonnal** készítsen biztonsági másolatot a biztonsági mentési és az archiválási adattárakban, válassza a másolást.
     - Ha a biztonsági mentési adattár lejárta után szeretné áthelyezni a biztonsági mentést az archiválási adattárba, válassza a **lejárati idő** áthelyezése lehetőséget.

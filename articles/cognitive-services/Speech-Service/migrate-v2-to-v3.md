@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: rbeckers
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e9e5db87f983c5db59715eb8b6a9561acf5fad14
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 9c8016b566db8be1b7f5c5ddb8d92123d6673db5
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630615"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569844"
 ---
 # <a name="migrate-code-from-v20-to-v30-of-the-rest-api"></a>Telepítse át a 2.0-s és a v 3.0-s verzióját a REST API
 
@@ -24,11 +24,51 @@ A v2-höz képest a beszédfelismerési REST API szolgáltatások v3-as verziój
 
 ## <a name="forward-compatibility"></a>Továbbítási kompatibilitás
 
-A v2-ből származó összes entitást a V3 API-ban is megtalálhatja ugyanazzal az identitással. Ha az eredmény sémája megváltozott (például átírások), az API v3-as verziójának lekérésének eredménye a v3 sémát használja. Az API v2-es verziójának beolvasásának eredménye ugyanazt a v2-sémát használja. A v3-es újonnan létrehozott entitások **nem** érhetők el a v2 API-k eredményeiben.
+A v2-ből származó összes entitás a V3 API-ban is megtalálható ugyanazon identitás alatt. Ha az eredmény sémája megváltozott (például átírások), az API v3-as verziójának lekérésének eredménye a v3 sémát használja. Az API v2-es verziójának beolvasásának eredménye ugyanazt a v2-sémát használja. A v3-es újonnan létrehozott entitások **nem**   érhetők el a v2 API-k válaszában. 
+
+## <a name="migration-steps"></a>A migrálás lépései
+
+Az áttelepítésre való felkészülés során figyelembe kell venni az elemek összegzését. Részletek az egyes hivatkozásokban találhatók. Az API aktuális használatából függően nem minden itt felsorolt lépés alkalmazható. Csak néhány módosítás nem triviális módosításokat igényel a hívó kódban. A legtöbb módosításhoz csak az elemek nevének módosítása szükséges. 
+
+Általános módosítások: 
+
+1. [Állomásnév módosítása](#host-name-changes)
+
+1. [A tulajdonság azonosítójának átnevezése az ügyfél kódjában](#identity-of-an-entity) 
+
+1. [Kód módosítása az entitások gyűjteményének megismétléséhez](#working-with-collections-of-entities)
+
+1. [Nevezze át a tulajdonság nevét a displayName értékre az ügyfél kódjában](#name-of-an-entity)
+
+1. [A hivatkozott entitások metaadatainak lekérésének módosítása](#accessing-referenced-entities)
+
+1. Ha batch-átírást használ: 
+
+    * [Kód módosítása a Batch-átírások létrehozásához](#creating-transcriptions) 
+
+    * [Kód átalakítása az új átírási eredmények sémájába](#format-of-v3-transcription-results)
+
+    * [Kód módosítása az eredmények lekéréséhez](#getting-the-content-of-entities-and-the-results)
+
+1. Ha egyéni Modelles képzést/tesztelési API-kat használ: 
+
+    * [Módosítások alkalmazása az egyéni modell betanításához](#customizing-models)
+
+    * [Az alap-és az egyéni modellek beolvasásának módosítása](#retrieving-base-and-custom-models)
+
+    * [Az elérésiút-szegmens accuracytests átnevezése az ügyfél kódjában szereplő értékelésekhez](#accuracy-tests)
+
+1. Ha endpoints API-kat használ:
+
+    * [A végponti naplók lekérésének módosítása](#retrieving-endpoint-logs)
+
+1. Egyéb kisebb változások: 
+
+    * [Adja át az összes egyéni tulajdonságot customProperties-ként a POST-kérések tulajdonságai helyett](#using-custom-properties)
+
+    * [A válasz fejlécének helye a művelet helye helyett](#response-headers)
 
 ## <a name="breaking-changes"></a>Kompatibilitástörő változások
-
-A feltörési változások listáját az alkalmazkodáshoz szükséges módosítások nagyságrendje alapján rendezi a lista. Csak néhány módosítás nem triviális módosításokat igényel a hívó kódban. A legtöbb módosításhoz csak az elemek nevének módosítása szükséges.
 
 ### <a name="host-name-changes"></a>Állomásnév módosítása
 
@@ -476,7 +516,7 @@ A pontossági tesztek átnevezve lettek az értékelésre, mert az új név jobb
 >Nevezze át az elérésiút-szegmenst az `accuracytests` `evaluations` ügyfél kódjába.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Vizsgálja meg a Speech Services által biztosított gyakran használt REST API-k összes funkcióját:
 

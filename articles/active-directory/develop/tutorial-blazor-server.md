@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: d499a0e7d3ca7933632b52d5edbd8094a29dbcaa
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: b67d75ac99f247659723ac0b5a90fd32ebf627e3
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979895"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569878"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>Oktatóanyag: a Microsoft Identity platformot használó blézer-kiszolgálói alkalmazás létrehozása a hitelesítéshez
 
@@ -71,7 +71,7 @@ dotnet new blazorserver2 --auth SingleOrg --calls-graph -o {APP NAME} --client-i
 Most navigáljon az új Blazer-alkalmazáshoz a szerkesztőben, és adja hozzá az ügyfél titkos kulcsát a *appsettings.js* fájlhoz, és cserélje le a "Secret-from-app-Registration" szöveget.
 
 ```json
-"ClientSecret": "xkAlNiG70000000_UI~d.OS4Dl.-Cy-1m3",
+"ClientSecret": "secret-from-app-registration",
 ```
 
 ## <a name="test-the-app"></a>Az alkalmazás tesztelése
@@ -201,7 +201,7 @@ A jóváhagyás megadása után navigáljon az "adat lekérése" lapra, és olva
 
 :::image type="content" source="./media/tutorial-blazor-server/final-app-2.png" alt-text="Képernyőkép a végleges alkalmazásról. Van egy fejléce, amely szerint a Hello Nicholas, és megjeleníti a Nicholas-hoz tartozó e-mailek listáját.":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan hívhat meg olyan webalkalmazásokat, amelyek a többrészes forgatókönyvek felhasználói számára jelentkeznek be:
 

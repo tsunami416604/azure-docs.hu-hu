@@ -3,12 +3,12 @@ title: Az Azure Backup újdonságai
 description: Ismerkedjen meg a Azure Backup új szolgáltatásaival.
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: ba29ddea5d5f096640f2bfc012c44ab06bb3e131
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: 62a6146990863c339917777b2624fee76ebe60d8
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309664"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569419"
 ---
 # <a name="whats-new-in-azure-backup"></a>Az Azure Backup újdonságai
 
@@ -18,6 +18,9 @@ Az új kiadásokról további információt az oldal könyvjelzővel vagy a [fri
 
 ## <a name="updates-summary"></a>Frissítések összegzése
 
+- 2021. január
+  - [Azure Disk Backup (előzetes verzió)](disk-backup-overview.md)
+  - [Az ügyfél által felügyelt kulcsok mostantól általánosan elérhetők a REST-alapú titkosításhoz](encryption-at-rest-with-cmk.md)
 - 2020. november
   - [Az Azure file share (AFS) biztonsági mentésének Azure Resource Manager sablonja](#azure-resource-manager-template-for-afs-backup)
   - [Az Azure-beli virtuális gépeken SAP HANA adatbázisok növekményes biztonsági mentései](#incremental-backups-for-sap-hana-databases)
@@ -31,6 +34,18 @@ Az új kiadásokról további információt az oldal könyvjelzővel vagy a [fri
   - [Backup SAP HANA a RHEL Azure-ban Virtual Machines](#backup-sap-hana-in-rhel-azure-virtual-machines)
   - [A zóna redundáns tárolója (ZRS) a biztonsági másolati adatként](#zone-redundant-storage-zrs-for-backup-data)
   - [Az Azure-beli virtuális gépek SQL Server és SAP HANA számítási feladatainak törlése](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="azure-disk-backup-in-preview"></a>Azure Disk Backup (előzetes verzió)
+
+Az Azure Disk Backup olyan kulcsrakész megoldást kínál, amely a pillanatképek életciklusának kezelését teszi lehetővé az [azure Managed Disks](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview) számára a pillanatképek rendszeres létrehozásával, és a biztonsági mentési házirend használatával megőrzi a beállított időtartamot. A lemez-pillanatképeket az infrastrukturális költségek nélkül kezelheti, és nincs szükség egyéni parancsfájlok vagy felügyeleti terhelésre. Ez egy összeomlás-konzisztens biztonsági mentési megoldás, amely egy felügyelt lemez adott időpontban történő biztonsági mentését teszi lehetővé [növekményes Pillanatképek](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots) használatával, és naponta több biztonsági mentést támogat. Ez egy ügynök nélküli megoldás is, amely nem befolyásolja az üzemi alkalmazások teljesítményét. Támogatja az operációs rendszer és az adatlemezek (beleértve a megosztott lemezeket is) biztonsági mentését és visszaállítását, függetlenül attól, hogy jelenleg egy futó Azure-beli virtuális géphez vannak-e csatolva.
+
+További információ: [Azure Disk Backup (előzetes verzió)](disk-backup-overview.md).
+
+## <a name="encryption-at-rest-using-customer-managed-keys"></a>Inaktív adatok titkosítása az ügyfél által felügyelt kulcsok használatával
+
+Az ügyfelek által felügyelt kulcsok használatával már általánosan elérhető az inaktív titkosítás támogatása. Ez lehetővé teszi, hogy az Azure Key Vaultban tárolt saját kulcsokkal Titkosítsa a Recovery Services-tárolók biztonsági másolati adatait. A Recovery Services-tárolóban található biztonsági másolatok titkosításához használt titkosítási kulcs különbözhet a forrás titkosításához használttól. Az adatvédelmet AES 256-alapú adattitkosítási kulcs (ADATTITKOSÍTÁSI kulcsot) védi, amely a Key Vaultban tárolt kulcsok használatával védett. A platform által felügyelt kulcsokkal (amely alapértelmezés szerint elérhető) a titkosításhoz képest nagyobb mértékben szabályozhatja a kulcsokat, és jobban teljesítheti a megfelelőségi igényeket.
+
+További információ: [biztonsági mentési adatok titkosítása az ügyfél által felügyelt kulcsok használatával](encryption-at-rest-with-cmk.md).
 
 ## <a name="azure-resource-manager-template-for-afs-backup"></a>Az AFS biztonsági mentésének Azure Resource Manager sablonja
 
