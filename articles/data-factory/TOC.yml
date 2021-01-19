@@ -791,7 +791,7 @@
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.datafactory/allversions
     - name: Python
-      href: /python/api/overview/azure/datafactory?view=azure-python
+      href: /python/api/overview/azure/datafactory
 - name: További források
   items:
     - name: Tanulmányok
