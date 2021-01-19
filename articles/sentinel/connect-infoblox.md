@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: c8af1c32607e5fc7bf548b40069e18923c666303
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28abb9f09e3bca2522b959c6a9b890de5320b17a
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87089651"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567437"
 ---
 # <a name="connect-your-infoblox-nios-to-azure-sentinel"></a>A Infoblox-NIOS összekötése az Azure Sentinel használatával
 
 > [!IMPORTANT]
 > Az Azure Sentinel Infoblox NIOS-adatösszekötője jelenleg nyilvános előzetes verzióban érhető el.
-> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Ez a cikk azt ismerteti, hogyan csatlakoztatható a [Infoblox Network Identity Operating System (NIOS) készülék](https://www.infoblox.com/glossary/network-identity-operating-system-nios/) az Azure sentinelhez. A Infoblox NIOS-adatösszekötővel könnyedén csatlakoztathatja a Infoblox-naplókat az Azure Sentinel segítségével, megtekintheti az irányítópultokat, egyéni riasztásokat hozhat létre, és javíthatja a vizsgálatot. A Infoblox NIOS és az Azure Sentinel közötti integráció a syslog használatát teszi lehetővé.
 
@@ -34,7 +34,7 @@ Ez a cikk azt ismerteti, hogyan csatlakoztatható a [Infoblox Network Identity O
 
 ## <a name="forward-infoblox-logs-to-the-syslog-agent"></a>Infoblox-naplók továbbítása a syslog-ügynökhöz  
 
-Konfigurálja a Infoblox, hogy a syslog-ügynökön keresztül továbbítsa a syslog-üzeneteket az Azure-munkaterületre.
+Konfigurálja a Infoblox, hogy a syslog-ügynökön keresztül továbbítsa a syslog-üzeneteket az Azure Sentinel-munkaterületre.
 
 1. Az Azure Sentinel-portálon kattintson az **adatösszekötők** elemre, és válassza a **Infoblox NIOS** -összekötő lehetőséget.
 
@@ -50,7 +50,7 @@ A sikeres kapcsolatok létrejötte után az adat Log Analytics a syslog alatt je
 
 Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek a Log Analytics. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható a Infoblox NIOS az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

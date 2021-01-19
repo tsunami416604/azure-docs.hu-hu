@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan állíthatja helyre a fájlok
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: b4bd64fb00c2f341e474ecb96738fab47d717474
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 9bd66c1e3c89c8974adc3970f8595e5100878088
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831669"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567135"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gép biztonsági mentéséből
 
@@ -188,7 +188,7 @@ A Linux rendszerben a helyreállítási pont kötetei ahhoz a mappához vannak c
 Ha a fájl-helyreállítási folyamat a fájl-visszaállítási parancsfájl futtatása után leáll (például ha a lemezek soha nem vannak csatlakoztatva, vagy csatlakoztatva vannak, de a kötetek nem jelennek meg), hajtsa végre a következő lépéseket:
 
 1. A fájl/etc/iSCSI/iscsid.conf módosítsa a beállítást a következőről:
-    - `node.conn[0].timeo.noop_out_timeout = 5`  hogy `node.conn[0].timeo.noop_out_timeout = 30`
+    - `node.conn[0].timeo.noop_out_timeout = 5`  hogy `node.conn[0].timeo.noop_out_timeout = 120`
 2. A fenti módosítások végrehajtása után futtassa újra a parancsfájlt. Átmeneti hibák esetén győződjön meg arról, hogy az ismétlések között 20 – 30 percet vesz igénybe, hogy elkerülje a célzott előkészítést érintő kérelmek egymást követő feltöréseit. A ismételt futtatások közötti időköz biztosítja, hogy a cél készen álljon a parancsfájlból való kapcsolódásra.
 3. A fájlok helyreállítása után lépjen vissza a portálra, és válassza a **lemezek leválasztása** lehetőséget a helyreállítási pontokhoz, ahol nem tudta csatlakoztatni a köteteket. Ez a lépés lényegében törli a meglévő folyamatokat/munkameneteket, és növeli a helyreállítás esélyét.
 

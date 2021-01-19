@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/12/2021
 ms.author: yelevin
-ms.openlocfilehash: 549b4e1e5e1aef3f6957fa52d69d252c55934286
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.openlocfilehash: 989520e079988e1821d8bb9a936f857e1f62c11a
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541580"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567770"
 ---
 # <a name="connect-your-trend-micro-tippingpoint-solution-to-azure-sentinel"></a>A Trend Micro TippingPoint-megoldás összekapcsolhatók az Azure Sentinel szolgáltatással
 
@@ -50,13 +50,13 @@ A naplók Azure Sentinelbe való beszerzéséhez konfigurálja a TippingPoint TP
 
     1. **1. Linux syslog-ügynök konfigurációja** – ezt a lépést akkor hajtsa végre, ha még nem fut a naplózási továbbító, vagy ha még egy másikra van szüksége. További részletekért és magyarázatért tekintse meg az [1. lépés: a naplózási továbbító üzembe helyezése](connect-cef-agent.md) az Azure Sentinel dokumentációjában.
 
-    1. **2. a Trend Micro TIPPINGPOINT SMS-naplóinak továbbítása a syslog-ügynökhöz** – ennek a konfigurációnak a következő elemeket kell tartalmaznia:
+    1. A **2. résznél. Trend Micro TippingPoint SMS-naplók továbbítása a syslog-ügynöknek** – ennek a konfigurációnak a következő elemeket kell tartalmaznia:
         - Napló célhelye – a naplófájl-továbbító kiszolgáló állomásneve és/vagy IP-címe
         - Protokoll és port – **TCP 514** (ha ez nem ajánlott, ne feledje, hogy a párhuzamos módosítást a naplófájl-továbbító kiszolgálón a syslog démonon végezze el)
         - Napló formátuma – **ARCSIGHT CEF Format v 4.2**
         - Naplózási típusok – az összes elérhető
 
-    1. **3. a csatlakozás** ellenőrzése – ellenőrizze az adatok betöltését úgy, hogy átmásolja a parancsot az összekötő lapra, és futtatja a napló-továbbítón. Részletesebb útmutatást és magyarázatot a [3. lépés: a kapcsolat ellenőrzése](connect-cef-verify.md) az Azure Sentinel dokumentációjában talál.
+    1. **3. alatt. Csatlakozás ellenőrzése** – az adatok betöltésének ellenőrzéséhez másolja a parancsot az összekötő lapra, és futtassa azt a napló-továbbítón. Részletesebb útmutatást és magyarázatot a [3. lépés: a kapcsolat ellenőrzése](connect-cef-verify.md) az Azure Sentinel dokumentációjában talál.
 
         Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek a Log Analytics.
 

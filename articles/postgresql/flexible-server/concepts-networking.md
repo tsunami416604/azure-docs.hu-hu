@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: cf7c5fa8563544add55a7fad5075848eb5116fe1
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: c30c01a18a17981b4e034c9df2cf822e6580430e
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96901932"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567729"
 ---
 # <a name="networking-overview---azure-database-for-postgresql---flexible-server"></a>Hálózatkezelés – áttekintés – Azure Database for PostgreSQL – rugalmas kiszolgáló
 
@@ -74,7 +74,7 @@ Az alábbiakban néhány olyan fogalmat talál, amely ismeri a PostgreSQL rugalm
 Megtudhatja, hogyan hozhat létre a [Azure Portal](how-to-manage-virtual-network-portal.md) vagy [Az Azure CLI](how-to-manage-virtual-network-cli.md)-vel egy rugalmas, privát hozzáféréssel (VNet-integrációval) rendelkező kiszolgálót.
 
 > [!NOTE]
-> Ha az egyéni DNS-kiszolgálót használja, akkor a DNS-továbbítót kell használnia a Azure Database for MySQL-rugalmas kiszolgáló teljes tartománynevének feloldásához. További információért tekintse meg a névfeloldást [, amely a saját DNS-kiszolgálóját használja](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) .
+> Ha az egyéni DNS-kiszolgálót használja, akkor a DNS-továbbítót kell használnia a Azure Database for PostgreSQL-rugalmas kiszolgáló teljes tartománynevének feloldásához. További információért tekintse meg a névfeloldást [, amely a saját DNS-kiszolgálóját használja](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) .
 
 ## <a name="public-access-allowed-ip-addresses"></a>Nyilvános hozzáférés (engedélyezett IP-címek)
 A nyilvános hozzáférési módszer jellemzői a következők:
@@ -122,6 +122,6 @@ Azure Database for PostgreSQL – a rugalmas kiszolgáló támogatja az ügyfél
 
 Azure Database for PostgreSQL – a rugalmas kiszolgáló csak Transport Layer Security használatával támogatja a titkosított kapcsolatokat. A TLS 1,0 és a TLS 1,1 összes bejövő kapcsolata meg lesz tagadva. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Megtudhatja, hogyan hozhat létre a [Azure Portal](how-to-manage-virtual-network-portal.md) vagy [Az Azure CLI](how-to-manage-virtual-network-cli.md)-vel egy rugalmas, **privát hozzáféréssel (VNet-integrációval)** rendelkező kiszolgálót.
 * Megtudhatja, hogyan hozhat létre egy rugalmas kiszolgálót **nyilvános hozzáféréssel (engedélyezett IP-címekkel)** [a Azure Portal](how-to-manage-firewall-portal.md) vagy [Az Azure CLI](how-to-manage-firewall-cli.md)-ben.

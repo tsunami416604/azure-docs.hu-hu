@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 67d4137a21753b221e17a1effde35bc1b89600d3
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: f52c0296023098c755feb1bf0baba980f2988bd7
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753807"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567715"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vmware-solution"></a>A kiszolgáló értékelésének áttekintése (Migrálás az Azure VMware-megoldásba)
 
@@ -207,6 +207,8 @@ A tényleges kihasználtsági érték meghatározása után a tároló, a háló
 
 Ha helyszíni *méretezést* használ, a kiszolgáló értékelése nem veszi figyelembe a virtuális gépek és lemezek teljesítményének előzményeit. Ehelyett az AVS-csomópontokat a helyszínen lefoglalt méret alapján foglalja le. Az alapértelmezett tárolási típus a vSAN az AVS-ben.
 
+[További](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware-azure-vmware-solution#review-an-assessment) információ az Azure VMware-megoldás értékelésének áttekintéséről.
+
 ## <a name="confidence-ratings"></a>Megbízhatósági minősítések
 
 Azure Migrate minden teljesítmény-alapú értékelése egy olyan megbízhatósági minősítéssel van társítva, amely egy (legalacsonyabb) és öt csillag közötti (a legmagasabb) tartományba esik.
@@ -235,9 +237,15 @@ Az elérhető adatpontok százalékos arányának függvényében az értékelé
 
 Íme néhány ok, amiért egy értékelés alacsony megbízhatósági minősítést kaphat:
 
-- Nem tudta felmérni a környezetét arra az időtartamra, amelyhez az értékelést létrehozza. Ha például az értékelést egy napra állítja be, akkor az összes adatpont felderítésének megkezdése után legalább egy nappal meg kell várnia a begyűjtést.
-- Néhány virtuális gép leállt az értékelés kiszámításának időtartama alatt. Ha bármely virtuális gép ki van kapcsolva bizonyos időtartamra, a kiszolgáló értékelése nem tudja összegyűjteni az adott időszak teljesítményadatait.
-- Néhány virtuális gép az értékelés kiszámításának időtartama alatt lett létrehozva. Ha például az előző hónap teljesítmény-előzményeire vonatkozó értékelést hozott létre, de egyes virtuális gépeket csak egy héttel ezelőtt hoztak létre a környezetben, akkor az új virtuális gépek teljesítménybeli előzményei nem állnak a teljes időtartamra.
+- Nem tudta felmérni a környezetét arra az időtartamra, amelyhez az értékelést létrehozza. Ha például az értékelést egy napra állítja be, akkor az összes adatpont felderítésének megkezdése után legalább egy napot várnia kell a begyűjtéshez.
+- Az értékelés nem tudja összegyűjteni az értékelési időszakban egy vagy több virtuális gép teljesítményadatait. Magas megbízhatósági minősítés esetén ügyeljen a következőre: 
+    - A virtuális gépek az értékelés időtartamára vannak bekapcsolva
+    - A 443-es portokon engedélyezett kimenő kapcsolatok engedélyezettek
+    - Hyper-V virtuális gépek dinamikus memóriájának engedélyezése 
+    
+    Számítsa újra az értékelést, hogy tükrözze a megbízhatósági minősítés legújabb módosításait.
+
+- Néhány virtuális gép az értékelés kiszámításának ideje alatt lett létrehozva. Tegyük fel például, hogy létrehozta az előző hónap teljesítmény-előzményeinek értékelését, de néhány virtuális gép csak egy hetet hozott létre. Ilyen esetekben az új virtuális gépek teljesítményadatai a teljes időtartamra vonatkozóan nem lesznek elérhetőek, és a megbízhatósági minősítés alacsony lesz.
 
 > [!NOTE]
 > Ha az értékelések megbízhatósági minősítése kevesebb, mint öt csillag, javasoljuk, hogy várjon legalább egy napot, amíg a készülék felkeresi a környezetet, majd számítsa ki újra az értékelést. Ha nem, akkor előfordulhat, hogy a teljesítmény-alapú méretezés nem megbízható. Ebben az esetben javasoljuk, hogy az értékelést a helyszíni méretezésre állítsa át.

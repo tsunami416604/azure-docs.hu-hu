@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: f8a4f29114f7e0a2ed7868f01e05e25c8a0d0ce1
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 9bdf907ede2c09f7e314df619cd81059956f17dc
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752226"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567740"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vms"></a>A kiszolgáló értékelésének áttekintése (Migrálás az Azure-beli virtuális gépekre)
 
@@ -268,8 +268,14 @@ Ez a táblázat a kiértékelési megbízhatósági minősítéseket mutatja be,
 Íme néhány ok, amiért egy értékelés alacsony megbízhatósági minősítést kaphat:
 
 - Nem tudta felmérni a környezetét arra az időtartamra, amelyhez az értékelést létrehozza. Ha például az értékelést egy napra állítja be, akkor az összes adatpont felderítésének megkezdése után legalább egy napot várnia kell a begyűjtéshez.
-- Néhány virtuális gép le lett állítva az értékelés kiszámításának ideje alatt. Ha bármely virtuális gép ki van kapcsolva bizonyos időtartamra, a kiszolgáló értékelése nem tudja összegyűjteni az adott időszak teljesítményadatait.
-- Néhány virtuális gép az értékelés kiszámításának ideje alatt lett létrehozva. Tegyük fel például, hogy létrehozta az előző hónap teljesítmény-előzményeinek értékelését, de néhány virtuális gép csak egy hetet hozott létre. Az új virtuális gépek teljesítménybeli előzményei nem léteznek a teljes időtartamra.
+- Az értékelés nem tudja összegyűjteni az értékelési időszakban egy vagy több virtuális gép teljesítményadatait. Magas megbízhatósági minősítés esetén ügyeljen a következőre: 
+    - A virtuális gépek az értékelés időtartamára vannak bekapcsolva
+    - A 443-es portokon engedélyezett kimenő kapcsolatok engedélyezettek
+    - Hyper-V virtuális gépek dinamikus memóriájának engedélyezése 
+    
+    Számítsa újra az értékelést, hogy tükrözze a megbízhatósági minősítés legújabb módosításait.
+
+- Néhány virtuális gép az értékelés kiszámításának ideje alatt lett létrehozva. Tegyük fel például, hogy létrehozta az előző hónap teljesítmény-előzményeinek értékelését, de néhány virtuális gép csak egy hetet hozott létre. Ilyen esetekben az új virtuális gépek teljesítményadatai a teljes időtartamra vonatkozóan nem lesznek elérhetőek, és a megbízhatósági minősítés alacsony lesz.
 
 > [!NOTE]
 > Ha az értékelések megbízhatósági minősítése kevesebb, mint öt csillag, javasoljuk, hogy várjon legalább egy napot, amíg a készülék felkeresi a környezetet, majd számítsa ki újra az értékelést. Ellenkező esetben a teljesítmény-alapú méretezés megbízhatatlan lehet. Ebben az esetben javasoljuk, hogy az értékelést a helyszíni méretezésre állítsa át.

@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 93d17ec2a4fb5c191ce02c73a7a3532e9c854b00
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: fb1ec55bc68ccc323f8dee90982a9169e3085219
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752073"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567645"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a>Azure VMware-megoldás (AVS) értékelésének létrehozása
 
@@ -58,27 +58,29 @@ Futtassa az Azure VMware-megoldás (AVS) értékelését az alábbiak szerint:
 
     ![A képernyőképen Azure Migrate-kiszolgálók láthatók a kiértékelési eszközök területen.](./media/how-to-create-assessment/assess.png)
 
-3. A **kiszolgálók értékelése** területen válassza ki az értékelés típusát "Azure VMware Solution (AVS)" néven, válassza ki a felderítés forrását, és adja meg az értékelés nevét.
+3. A **kiszolgálók értékelése** területen válassza ki az értékelés típusát "Azure VMware-megoldásként (AVS)", válassza ki a felderítési forrást.
 
-    ![A kiértékelés alapjai](./media/how-to-create-avs-assessment/assess-servers-avs.png)
+    :::image type="content" source="./media/how-to-create-avs-assessment/assess-servers-avs.png" alt-text="Értékelési alapismeretek hozzáadása":::
 
-4. Kattintson az **Összes megtekintése** elemre az értékelési tulajdonságok áttekintéséhez.
+4. Kattintson a **Szerkesztés** elemre az értékelési tulajdonságok áttekintéséhez.
 
-    ![AVS Assessment-tulajdonságok](./media/how-to-create-avs-assessment/avs-view-all.png)
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-servers.png" alt-text="A Szerkesztés gomb helye az értékelési tulajdonságok áttekintéséhez":::
 
-5. Kattintson a **Tovább** gombra az **értékelni kívánt gépek kiválasztásához**. A **Csoport kiválasztása vagy létrehozása** területen válassza az **Új létrehozása** lehetőséget, majd adja meg a csoport nevét. A csoport egy vagy több virtuális gépet foglal magába a kiértékeléshez.
+1. Az értékelési név kiértékeléséhez a **gépek kiválasztása**  >   > adja meg az értékelés nevét. 
+ 
+1. A **válasszon ki vagy hozzon létre egy csoportot** > válassza az **új létrehozása** elemet, és adja meg a csoport nevét. A csoport egy vagy több virtuális gépet foglal magába a kiértékeléshez.
+    
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-group.png" alt-text="Virtuális gépek felvétele egy csoportba":::
 
-6. A **számítógépek hozzáadása a csoporthoz** területen válassza ki a csoportba felvenni kívánt virtuális gépeket.
+1. A **számítógépek hozzáadása a csoporthoz** területen válassza ki a csoportba felvenni kívánt virtuális gépeket.
 
-7. Kattintson a **Tovább** gombra a **Felülvizsgálat + létrehozás** területre lépéshez, a kiértékelés részleteinek áttekintéséhez.
+1. Kattintson a **Tovább** gombra a **Felülvizsgálat + létrehozás** területre lépéshez, a kiértékelés részleteinek áttekintéséhez.
 
-8. A csoport létrehozásához kattintson az **Értékelés létrehozása** elemre, majd futtassa az értékelést.
+1. A csoport létrehozásához kattintson az **Értékelés létrehozása** elemre, majd futtassa az értékelést.
 
-    ![AVS-felmérés létrehozása](./media/how-to-create-avs-assessment/avs-assessment-create.png)
+1. A kiértékelés létrehozása után megtekintheti a **Kiszolgálók** > **Azure Migrate: Kiszolgáló értékelése** > **Értékelések** területen.
 
-9. A kiértékelés létrehozása után megtekintheti a **Kiszolgálók** > **Azure Migrate: Kiszolgáló értékelése** > **Értékelések** területen.
-
-10. Az értékelés az **Értékelés exportálása** gombra kattintva Excel-fájlként letölthető.
+1. Az értékelés az **Értékelés exportálása** gombra kattintva Excel-fájlként letölthető.
 
 
 ## <a name="review-an-azure-vmware-solution-avs-assessment"></a>Azure-beli VMware-megoldás (AVS) értékelésének áttekintése
@@ -88,6 +90,8 @@ Az Azure VMware-megoldás (AVS) értékelése a következőket ismerteti:
 - **Azure VMware-megoldás (AVS) készültsége**: azt határozza meg, hogy a helyszíni virtuális gépek alkalmasak-e az Azure VMware-megoldásra (AVS) való áttelepítésre.
 - **AVS-csomópontok száma**: a virtuális gépek futtatásához szükséges AVS-csomópontok becsült száma.
 - **Használat az AVS-csomópontok között**: a processzor, a memória és a tárhely kihasználtsága az összes csomóponton keresztül.
+    - A kihasználtság a következő fürtszolgáltatási (például a vCenter Server, a NSX Manager (nagy), az NSX Edge és a HCX üzembe helyezése esetén is magában foglalja az első tényezőket, ha a HCX-kezelő és a IX-es berendezés is a ~ 44vCPU (11 CPU), a RAM és a 75GB 722GB a tömörítés és a deduplikálás előtt.
+    - A memória, a dedupe és a tömörítés jelenleg 100%-os kihasználtságot biztosít a memóriához, és 1,5 a dedupet és a tömörítést, amely a következő kiadásokban a felhasználó által megadott bemenettel rendelkezik, ami lehetővé teszi a felhasználó számára a szükséges méretezés finomhangolását.
 - **Havi költségbecslés**: a helyszíni virtuális gépeket futtató összes Azure VMware Solution (AVS) csomópont becsült havi költségei.
 
 
@@ -97,7 +101,7 @@ Az Azure VMware-megoldás (AVS) értékelése a következőket ismerteti:
 
 2. Az **értékelésekben** kattintson egy értékelésre a megnyitásához.
 
-    ![AVS Assessment – összefoglalás](./media/how-to-create-avs-assessment/avs-assessment-summary.png)
+    :::image type="content" source="./media/how-to-create-avs-assessment/avs-assessment-summary.png" alt-text="AVS Assessment – összefoglalás":::
 
 ### <a name="review-azure-vmware-solution-avs-readiness"></a>Az Azure VMware-megoldás (AVS) készültségének áttekintése
 

@@ -1,21 +1,21 @@
 ---
 title: Azure Migrate-projektek létrehozása és kezelése
 description: Projektek keresése, létrehozása, kezelése és törlése Azure Migrateban.
-author: ms-psharma
-ms.author: panshar
+author: vineetvikram
+ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 445e08b255e5b4dd67dd1c6a47c8df6ce59df5bd
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: de0c48bb775b96052fe16d60aa58049bfd58ca4d
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753824"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567783"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Azure Migrate-projektek létrehozása és kezelése
 
-Ez a cikk bemutatja, hogyan hozhat létre, kezelhet és törölhet [Azure Migrate](migrate-services-overview.md) projekteket.
+Ez a cikk bemutatja, hogyan hozhat létre, kezelhet és törölhet [Azure Migrate](migrate-services-overview.md) projekteket. Ha klasszikus Azure Migrate projekteket használ, törölje ezeket a projekteket, és kövesse a lépéseket egy új Azure Migrate projekt létrehozásához. A klasszikus Azure Migrate projektek vagy összetevők nem frissíthetők a Azure Migratera.
 
 Azure Migrate-projekttel a rendszer az Ön által értékelt vagy áttelepíteni kívánt környezetből gyűjtött felderítési, értékelési és áttelepítési metaadatok tárolására szolgál. Egy projektben nyomon követheti a felderített eszközöket, kiértékelheti az Azure-ba való áttelepítést, és elvégezheti az áttelepítést.  
 
@@ -46,7 +46,7 @@ Hozzon létre egy új Azure Migrate projektet egy Azure-előfizetésben.
     - A földrajzi hely csak a helyszíni gépekről összegyűjtött metaadatok tárolására szolgál. Bármelyik célhelyet kiválaszthatja az áttelepítéshez. 
     - Tekintse át a nyilvános és a [kormányzati felhők](migrate-support-matrix.md#supported-geographies-azure-government)támogatott földrajzi [területeit](migrate-support-matrix.md#supported-geographies-public-cloud) .
 
-8. Kattintson a **Létrehozás** gombra.
+8. Válassza a **Létrehozás** lehetőséget.
 
    ![A projekt beállításainak bevitelére szolgáló oldal](./media/create-manage-projects/project-details.png)
 

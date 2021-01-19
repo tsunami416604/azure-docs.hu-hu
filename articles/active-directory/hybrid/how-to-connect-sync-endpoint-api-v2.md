@@ -12,12 +12,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07acd71eb1a77592c82b80aa574d79b98c48f60e
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 0067ed618f95e7f83fc041fe214bbc4d715a504f
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608299"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567634"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api"></a>Azure AD Connect Sync v2 végpont API 
 A Microsoft új végpontot (API-t) helyezett üzembe a Azure AD Connect számára, amely javítja a szinkronizálási szolgáltatás műveleteinek teljesítményét Azure Active Directory. Az új v2-végpont kihasználása az Azure AD-ba való exportálás és importálás során észrevehető teljesítménybeli nyereséget tapasztal. Ez az új végpont a következőket támogatja:
@@ -28,7 +28,7 @@ A Microsoft új végpontot (API-t) helyezett üzembe a Azure AD Connect számár
 > [!NOTE]
 > Jelenleg az új végpont nem rendelkezik konfigurált csoport mérettel a visszaállított Microsoft 365 csoportokhoz. Ez hatással lehet a Active Directoryra és a szinkronizálási ciklus késésére. A csoportok méretének növekményes növelését javasoljuk.  
 
-## <a name="pre-requisites"></a>Előfeltételek  
+## <a name="prerequisites"></a>Előfeltételek  
 Az új v2-végpont használatához [Azure ad Connect 1.5.30.0](https://www.microsoft.com/download/details.aspx?id=47594) vagy újabb verziót kell használnia, és az alábbi üzembe helyezési lépések végrehajtásával engedélyezheti a v2-végpontot a Azure ad Connect-kiszolgálóhoz.   
 
 ## <a name="deployment-guidance"></a>Üzembe helyezési útmutató 
@@ -176,7 +176,7 @@ Ha engedélyezte a v2-végpontot, és vissza kell állítania a visszaállítás
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések  
  
 **Mikor lesz az új végpont a frissítések és az új telepítések alapértelmezett értéke?**  
-</br>A AADConnect új kiadását tervezzük a 2021-es januári letöltéshez. Ez a kiadás alapértelmezés szerint a v2 végpontot fogja használni, és lehetővé teszi az 50 000-nél nagyobb withuot-csoportok további konfigurálását. Ezt a kiadást később közzé fogjuk tenni a jogosult kiszolgálókra való automatikus verziófrissítéshez.
+</br>A AADConnect új kiadását tervezzük a 2021-es januári letöltéshez. Ez a kiadás alapértelmezés szerint a v2 végpontot fogja használni, és lehetővé teszi, hogy további konfiguráció nélkül engedélyezze az 50 000-nél nagyobb szinkronizálási csoportokat. Ezt a kiadást később közzé fogjuk tenni a jogosult kiszolgálókra való automatikus verziófrissítéshez.
  
 ## <a name="next-steps"></a>További lépések
 

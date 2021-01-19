@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 01/15/2021
-ms.openlocfilehash: 8c2739503f00848b1515f2061c2a9aa250c091a3
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.date: 01/18/2021
+ms.openlocfilehash: f802292d9723179b36d5291993bd4e07487fe6a8
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539864"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567385"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Virtuális gépek minősítésének hibáinak megoldása
 
@@ -70,7 +70,7 @@ A kiépítési problémák a következő meghibásodási helyzetekben lehetnek:
 
 ### <a name="conectix-cookie-and-other-vhd-specifications"></a>Conectix cookie-k és egyéb VHD-specifikációk
 
-A "conectix" karakterlánc a VHD-specifikáció részét képezi. A fájl létrehozóját azonosító VHD-láblécben 8 bájtos cookie-ként van definiálva. A Microsoft által létrehozott összes VHD-fájl rendelkezik ezzel a cookie-val. 
+A "conectix" karakterlánc a VHD-specifikáció részét képezi. A fájl létrehozóját azonosító VHD-láblécben 8 bájtos cookie-ként van definiálva. A Microsoft által létrehozott összes VHD-fájl rendelkezik ezzel a cookie-val.
 
 A VHD-formázott Blobok 512 bájtos lábléctel rendelkeznek ebben a formátumban:
 
@@ -311,14 +311,14 @@ Ha a kérést SSH-letiltott képpel szeretné elküldeni a minősítési folyama
 
 A következő táblázat tartalmazza azokat a problémákat, amelyek a virtuálisgép-rendszerkép közös hozzáférési aláírással (SAS) való letöltésekor merülnek fel.
 
-|Használati eset|Hiba|Ok|Megoldás|
-|---|---|---|---|
-|1|A blob nem található|Lehet, hogy a VHD-t törölték vagy áthelyezték a megadott helyről.|| 
-|2|BLOB használatban|A virtuális merevlemezt egy másik belső folyamat használja.|A VHD-nek használatban lévő állapotban kell lennie, amikor letölti egy SAS URL-címmel.|
-|3|Érvénytelen SAS URL-cím|A virtuális merevlemezhez tartozó SAS URL-cím helytelen.|Szerezze be a megfelelő SAS URL-címet.|
-|4|Érvénytelen aláírás|A virtuális merevlemezhez tartozó SAS URL-cím helytelen.|Szerezze be a megfelelő SAS URL-címet.|
-|6|HTTP feltételes fejléc|A SAS URL-címe érvénytelen.|Szerezze be a megfelelő SAS URL-címet.|
-|7|Érvénytelen VHD-név|Ellenőrizze, hogy létezik-e speciális karakter (például egy százalék `%` vagy idézőjel `"` ) a VHD-névben.|Nevezze át a VHD-fájlt a speciális karakterek eltávolításával.|
+|Hiba|Ok|Megoldás|
+|---|---|---|
+|A blob nem található|Lehet, hogy a VHD-t törölték vagy áthelyezték a megadott helyről.|| 
+|BLOB használatban|A virtuális merevlemezt egy másik belső folyamat használja.|A VHD-nek használatban lévő állapotban kell lennie, amikor letölti egy SAS URL-címmel.|
+|Érvénytelen SAS URL-cím|A virtuális merevlemezhez tartozó SAS URL-cím helytelen.|Szerezze be a megfelelő SAS URL-címet.|
+|Érvénytelen aláírás|A virtuális merevlemezhez tartozó SAS URL-cím helytelen.|Szerezze be a megfelelő SAS URL-címet.|
+|HTTP feltételes fejléc|A SAS URL-címe érvénytelen.|Szerezze be a megfelelő SAS URL-címet.|
+|Érvénytelen VHD-név|Ellenőrizze, hogy létezik-e speciális karakter (például egy százalék `%` vagy idézőjel `"` ) a VHD-névben.|Nevezze át a VHD-fájlt a speciális karakterek eltávolításával.|
 |
 
 ## <a name="first-1-mb-2048-sectors-each-sector-of-512-bytes-partition"></a>Az első 1 MB (2048 szektor, 512 bájtos szektor) partíció
@@ -558,7 +558,7 @@ Rögzített virtuálisgép-rendszerkép megadásával olyan virtuálisgép-rends
 
 #### <a name="provide-a-new-vm-image-to-address-the-security-vulnerability-or-exploit"></a>Adjon meg egy új virtuálisgép-rendszerképet a biztonsági rések vagy a biztonsági rés megoldásához
 
-A lépések elvégzéséhez készítse elő a technikai eszközöket a hozzáadni kívánt virtuálisgép-rendszerképhez. További információkért lásd: [virtuális gép létrehozása jóváhagyott alap használatával](azure-vm-create-using-approved-base.md)vagy [virtuális gép létrehozása saját rendszerkép használatával](azure-vm-create-using-own-image.md) , valamint [sas URI létrehozása a virtuálisgép-rendszerképhez](azure-vm-get-sas-uri.md).
+A lépések elvégzéséhez készítse elő a technikai eszközöket a hozzáadni kívánt virtuálisgép-rendszerképhez. További információkért lásd: [virtuális gép létrehozása jóváhagyott alap használatával](azure-vm-create-using-approved-base.md) vagy [virtuális gép létrehozása saját rendszerkép használatával](azure-vm-create-using-own-image.md) , valamint [sas URI létrehozása a virtuálisgép-rendszerképhez](azure-vm-get-sas-uri.md).
 
 1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard/home).
 1. A bal oldali panelen válassza a **kereskedelmi piactér**  >  **áttekintése** elemet.

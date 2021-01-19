@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/04/2020
-ms.openlocfilehash: a2e5cd43add6db080441812e4350d6f003ef81a2
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: b8f3a8e06bb27051417205c4dc3141948960bb00
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538504"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567794"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Gyors útmutató: Azure Database for MySQL-kiszolgáló létrehozása a Azure Portal használatával
 
@@ -45,7 +45,7 @@ Azure-előfizetésre van szükség. Ha nem rendelkezik Azure-előfizetéssel, mi
    Kiszolgálónév | **mydemoserver** | Adjon meg egy egyedi nevet. A kiszolgálónév csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. Az értéknek 3 – 63 karaktert kell tartalmaznia.
    Adatforrás |**Nincs** | Válassza a **Nincs** lehetőséget egy teljesen új kiszolgáló létrehozásához. Csak akkor válassza a **biztonsági mentést** , ha egy meglévő kiszolgáló geo-biztonsági másolatából végzi a visszaállítást.
    Hely |A kívánt hely | Válasszon ki egy helyet a listából.
-   Verzió | A legújabb főverzió| Használja a legújabb főverziót. Tekintse meg [az összes támogatott verziót](../mysql/concepts-supported-versions.md).
+   Verzió | A legújabb főverzió| Használja a legújabb főverziót. Tekintse meg [az összes támogatott verziót](concepts-supported-versions.md).
    Számítás + tárolás | Az alapértelmezett beállítások használata| Az alapértelmezett díjszabási csomag **4 virtuális mag** és **100 GB** tárhellyel **általános célú** . A biztonsági másolatok megőrzésének beállítása **7 nap**, a **földrajzilag redundáns** biztonsági mentési lehetőséggel.<br/>Tekintse át a [díjszabási](https://azure.microsoft.com/pricing/details/mysql/) oldalt, és ha szükséges, frissítse az alapértelmezett értékeket.
    Rendszergazdai felhasználónév | **mydemoadmin** | Adja meg a kiszolgáló rendszergazdájának felhasználónevét. A rendszergazdai felhasználónévhez nem használhatja **azure_superuser**, **Admin**, **Administrator**, **root**, **Guest** vagy **Public** .
    Jelszó | Jelszó | Új jelszó a kiszolgáló-rendszergazda felhasználó számára. A jelszónak 8 – 128 karakter hosszúnak kell lennie, és tartalmaznia kell kis-és nagybetűket, számokat és nem alfanumerikus karaktereket (!, $, #,% stb.).

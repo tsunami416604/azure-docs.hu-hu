@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: c95f8b9e4466b22519a4dea580a86a0dcda83857
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 3ba43b83166b5548dee4ea4e52c7411db48d23f5
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555933"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567269"
 ---
 # <a name="register-and-scan-azure-synapse-analytics"></a>Az Azure szinapszis Analytics regisztrálása és vizsgálata
 
@@ -34,7 +34,7 @@ Az Azure-beli hatáskörébe nem támogatott a [nézetek](/sql/relational-databa
  
 ## <a name="setting-up-authentication-for-a-scan"></a>Hitelesítés beállítása vizsgálathoz
 
-Az Azure Blob Storage hitelesítésének Háromféleképpen állítható be:
+Az Azure szinapszis Analytics hitelesítésének Háromféleképpen állítható be:
 
 - Felügyelt identitás
 - SQL-hitelesítés
@@ -136,7 +136,7 @@ A **források regisztrálása (Azure szinapszis Analytics)** képernyőn tegye a
 
 [!INCLUDE [create and manage scans](includes/manage-scans.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure-beli hatáskörébe tartozó adatkatalógus tallózása](how-to-browse-catalog.md)
 - [Keresés az Azure-beli hatáskörébe Data Catalog](how-to-search-catalog.md)
