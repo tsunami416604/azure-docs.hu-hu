@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 3fc6971c66d06ae9f25584f5be28b051075bfa49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: afb63b76666f47217f9c19376d81aa4ed73991bf
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88921970"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572561"
 ---
 # <a name="azure-signalr-service-internals"></a>Az Azure SignalR szolgáltatás belső elemei
 
@@ -42,7 +42,7 @@ Az alkalmazáskiszolgáló elindítása után
 - ASP.NET Core-jelző esetében az Azure Signaler Service SDK 5 WebSocket-kapcsolatot nyit meg a Signaler szolgáltatáshoz. 
 - A ASP.NET-jelző esetében az Azure Signaler Service SDK 5 WebSocket-kapcsolatot nyit meg a Signaler szolgáltatáshoz, és egy alkalmazás-WebSocket-kapcsolaton keresztül.
 
-5 a WebSocket-kapcsolatok az alapértelmezett érték, amely a [konfigurációban](https://github.com/Azure/azure-signalr/blob/dev/docs/use-signalr-service.md#connectioncount)módosítható.
+5 a WebSocket-kapcsolatok az alapértelmezett érték, amely a [konfigurációban](https://github.com/Azure/azure-signalr/blob/dev/docs/run-asp-net-core.md#connectioncount)módosítható.
 
 Az ügyfelek felé irányuló és onnan érkező üzenetek a következő kapcsolatokba lesznek felépítve.
 

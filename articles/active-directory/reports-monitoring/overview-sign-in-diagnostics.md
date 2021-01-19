@@ -1,6 +1,6 @@
 ---
-title: Mi a bejelentkezési diagnosztika az Azure AD-ben? | Microsoft Docs
-description: Általános áttekintést nyújt a bejelentkezési diagnosztika szolgáltatásról az Azure AD-ben.
+title: Mi a Azure Active Directory bejelentkezési diagnosztika?
+description: Általános áttekintést nyújt a Azure Active Directory bejelentkezési diagnosztika szolgáltatásáról.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -17,170 +17,161 @@ ms.date: 12/15/2020
 ms.author: markvi
 ms.reviewer: tspring
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e85de1edd94a0430a4b28b332d9e43b967afba76
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: cdef3e1f1a60c9eb0c751855837e9cbe77e015e9
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608918"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572289"
 ---
-# <a name="what-is-sign-in-diagnostic-in-azure-ad"></a>Mi a bejelentkezési diagnosztika az Azure AD-ben?
+# <a name="what-is-the-sign-in-diagnostic-in-azure-ad"></a>Mi a bejelentkezési diagnosztika az Azure AD-ben?
 
-Az Azure AD rugalmas biztonsági modellt biztosít annak szabályozására, hogy a felhasználók milyen műveleteket végezhetnek a felügyelt erőforrásokkal. Az ehhez az erőforrásokhoz való hozzáférést nem csak **a maga vezérli, hanem azt is** , **hogy hogyan** férhet hozzájuk. A rugalmasság általában egy bizonyos fokú összetettséggel jár, mivel a konfigurációs beállítások száma megtörtént. A bonyolultság a hibák kockázatának növelésére is képes.
+Azure Active Directory (Azure AD) rugalmas biztonsági modellt biztosít, amellyel szabályozható, hogy a felhasználók hogyan végezhetik el a felügyelt erőforrásokat. Az ehhez az erőforrásokhoz való hozzáférést nem csak *azok végzik, hanem azok* elérésével is.  A rugalmas modell általában bizonyos fokú összetettséggel jár, mivel a konfigurációs beállítások száma megtörtént. A bonyolultság a hibák kockázatának növelésére is képes.
 
-Rendszergazdaként olyan megoldásra van szüksége, amely megfelelő szintű betekintést nyújt a rendszer tevékenységeibe, így könnyen diagnosztizálhatja és megoldhatja a problémákat. Az Azure AD-hez készült bejelentkezési diagnosztika példa erre a megoldásra. A diagnosztika segítségével elemezheti, hogy mi történt a bejelentkezés során, és milyen műveleteket hajthat végre a problémák megoldásához anélkül, hogy a Microsoft támogatási szolgálatához kellene tartoznia.
+Rendszergazdaként olyan megoldásra van szüksége, amely betekintést nyújt a rendszer tevékenységeibe. Ez a láthatóság lehetővé teszi a problémák diagnosztizálását és megoldását. Az Azure AD-hez készült bejelentkezési diagnosztika példa erre a megoldásra. A diagnosztika segítségével elemezheti, hogy mi történt a bejelentkezési kísérlet során, és javaslatokat kaphat a problémák megoldásához anélkül, hogy a Microsoft-támogatást kellene bevonnia.
 
 Ez a cikk áttekintést nyújt a megoldás működéséről, valamint arról, hogyan használhatja azt.
 
-
 ## <a name="requirements"></a>Követelmények
 
-A bejelentkezési diagnosztika az Azure AD minden kiadásában elérhető.<br> Az Azure AD-ben globális rendszergazdának kell lennie ahhoz, hogy használhassa.
+A bejelentkezési diagnosztika az Azure AD minden kiadásában elérhető.
+
+Az Azure AD-ben globális rendszergazdának kell lennie ahhoz, hogy használhassa.
 
 ## <a name="how-it-works"></a>Működés
 
-Az Azure AD-ben a bejelentkezési kísérletre adott válasz ahhoz kötődik, hogy **ki** és **Hogyan** fér hozzá a bérlőhöz. Rendszergazdaként például a bérlő minden aspektusát beállíthatja, amikor bejelentkezik a vállalati hálózatról. Előfordulhat azonban, hogy akkor is le van tiltva, ha nem megbízható hálózatról jelentkezik be ugyanazzal a fiókkal.
- 
+Az Azure AD-ben a bejelentkezési kísérletre adott válasz kötődik, hogy *ki* és *Hogyan* fér hozzá a bérlőhöz. A rendszergazdák például általában a bérlő minden aspektusát konfigurálhatják, amikor bejelentkeznek a vállalati hálózatról. Azonban előfordulhat, hogy az azonos felhasználó blokkolva van, amikor ugyanazzal a fiókkal jelentkezik be egy nem megbízható hálózatról.
+
 Mivel a rendszer nagyobb rugalmasságot biztosít a bejelentkezési kísérletek megválaszolására, előfordulhat, hogy az olyan helyzetekben fejeződik be, ahol a bejelentkezések hibakeresése szükséges. A bejelentkezési diagnosztika szolgáltatás a következőket eredményezi:
 
-- A bejelentkezések adatainak elemzése. 
+- A bejelentkezési eseményekről származó adatok elemzése.
 
-- Megjeleníti, hogy mi történt, és javaslatokat tesz a problémák megoldására. 
+- Megjeleníti, hogy mi történt.
+
+- Ajánlásokat nyújt a problémák megoldásához.
 
 Az Azure AD bejelentkezési diagnosztika célja, hogy lehetővé tegye a bejelentkezési hibák öndiagnosztizálását. A diagnosztikai folyamat elvégzéséhez a következőket kell tennie:
 
-![Bejelentkezési diagnosztika folyamata](./media/overview-sign-in-diagnostics/process.png)
- 
-1. A bejelentkezési események hatókörének **meghatározása**
+![A bejelentkezési diagnosztika bemutató ábrája.](./media/overview-sign-in-diagnostics/process.png)
 
-2. **Válassza ki** az áttekinteni kívánt bejelentkezést
+1. A bejelentkezési események hatókörének meghatározása.
 
-3. A diagnosztikai eredmény **áttekintése**
+2. Válassza ki az áttekinteni kívánt bejelentkezést.
 
-4. Műveletek **elvégzése**
+3. Tekintse át a diagnosztikai eredményeket.
 
- 
+4. Végezze el a műveletet.
+
 ### <a name="define-scope"></a>Hatókör definiálása
 
-Ennek a lépésnek a célja, hogy meghatározza a vizsgálni kívánt bejelentkezések hatókörét. A hatókör vagy egy felhasználó vagy egy azonosító (correlationId, kérelemazonosító) és egy időtartomány alapján történik. A hatókör további csökkentése érdekében megadhatja az alkalmazás nevét is. Az Azure AD a hatókör-információkat használja a megfelelő események megkereséséhez.  
+Ennek a lépésnek a célja, hogy meghatározza a kivizsgáláshoz szükséges bejelentkezési események hatókörét. A hatókör vagy egy felhasználó vagy egy azonosító (correlationId, kérelemazonosító) és egy időtartomány alapján történik. Ha tovább szeretné szűkíteni a hatókört, megadhatja az alkalmazás nevét. Az Azure AD a hatókör-információkat használja a megfelelő események megkereséséhez.  
 
 ### <a name="select-sign-in"></a>Bejelentkezés kiválasztása  
 
-A keresési feltételek alapján az Azure AD lekéri az összes egyező bejelentkezést, és egy hitelesítési összefoglaló lista nézetben jeleníti meg azokat. 
+A keresési feltételek alapján az Azure AD lekéri az összes egyező bejelentkezési eseményt, és egy hitelesítési összesítő listanézet-nézetben jeleníti meg azokat.
 
-![Hitelesítés összegzése](./media/overview-sign-in-diagnostics/authentication-summary.png)
- 
+![Részleges képernyőkép a hitelesítési összefoglalás szakaszról.](./media/overview-sign-in-diagnostics/authentication-summary.png)
+
 A nézetben megjelenített oszlopokat testre szabhatja.
 
-### <a name="review-diagnostic"></a>Diagnosztika áttekintése 
+### <a name="review-diagnostic"></a>Diagnosztika áttekintése
 
-A kiválasztott bejelentkezési esemény esetén az Azure AD diagnosztikai eredményt biztosít. 
+A kiválasztott bejelentkezési esemény esetén az Azure AD diagnosztikai eredményeket biztosít.
 
-![Diagnosztikai eredmények](./media/overview-sign-in-diagnostics/diagnostics-results.png)
+![A diagnosztikai eredmények szakaszt bemutató részleges képernyőkép.](./media/overview-sign-in-diagnostics/diagnostics-results.png)
 
- 
-Az eredmény értékeléssel kezdődik. Az értékelés néhány mondatban elmagyarázza, mi történt. A magyarázat segít megérteni a rendszerviselkedést. 
+Ezek az eredmények értékeléssel kezdődnek, ami elmagyarázza, hogy mi történt néhány mondatban. A magyarázat segít megérteni a rendszerviselkedést.
 
-A következő lépés a kiválasztott bejelentkezésre alkalmazott feltételes hozzáférési szabályzatok összefoglalása. A probléma megoldásához ezt a részt a javasolt szervizelési lépések elvégzésével végezheti el. Mivel nem minden esetben lehetséges problémák megoldására további segítség nélkül, egy javasolt lépés lehet egy támogatási jegy megnyitása. 
+Ezután összefoglalja a kiválasztott bejelentkezési eseményre alkalmazott feltételes hozzáférési szabályzatok összegzését. A diagnosztikai eredmények a probléma megoldásához ajánlott szervizelési lépéseket is tartalmaznak. Mivel a problémák További segítség nélkül nem mindig oldhatók fel, egy javasolt lépés lehet egy támogatási jegy megnyitása.
 
-### <a name="take-action"></a>Művelet elvégzése 
+### <a name="take-action"></a>Művelet elvégzése
+
 Ezen a ponton meg kell adnia a probléma megoldásához szükséges információkat.
-
 
 ## <a name="scenarios"></a>Forgatókönyvek
 
-Ez a szakasz áttekintést nyújt az érintett diagnosztikai forgatókönyvekről. A következő forgatókönyvek implementálva vannak: 
- 
+A bejelentkezési diagnosztika a következő forgatókönyvekre vonatkozik:
+
 - Feltételes hozzáférés által blokkolva
 
 - Sikertelen feltételes hozzáférés
 
-- MFA a feltételes hozzáférésből
+- Többtényezős hitelesítés (MFA) a feltételes hozzáférésből
 
 - MFA más követelmények alapján
 
 - MFA-ellenőrzés szükséges
 
-- Az MFA ellenőrzése kötelező, de a felhasználó bejelentkezési kísérlete nem biztonságos helyről
+- MFA-ellenőrzés szükséges (kockázatos bejelentkezési hely)
 
 - Sikeres bejelentkezés
 
-
 ### <a name="blocked-by-conditional-access"></a>Feltételes hozzáférés által blokkolva
 
-Ez a forgatókönyv egy feltételes hozzáférési szabályzat által blokkolt bejelentkezésen alapul.
+Ebben a forgatókönyvben egy feltételes hozzáférési szabályzat blokkolta a bejelentkezési kísérletet.
 
-![Hozzáférés letiltása](./media/overview-sign-in-diagnostics/block-access.png)
+![Képernyőfelvétel: hozzáférés-konfiguráció kijelölve a blokkolási hozzáféréssel.](./media/overview-sign-in-diagnostics/block-access.png)
 
-A forgatókönyv diagnosztikai szakasza a felhasználói bejelentkezés és az alkalmazott szabályzatok részleteit jeleníti meg.
-
+A forgatókönyv diagnosztikai szakasza a felhasználói bejelentkezési esemény és az alkalmazott szabályzatok részleteit jeleníti meg.
 
 ### <a name="failed-conditional-access"></a>Sikertelen feltételes hozzáférés
 
-Ez a forgatókönyv általában egy olyan bejelentkezés eredménye, amely nem sikerült, mert a feltételes hozzáférési szabályzat követelményei nem teljesültek. Néhány gyakori példa:
+Ez a forgatókönyv általában egy olyan bejelentkezési kísérlet eredménye, amely nem sikerült, mert a feltételes hozzáférési szabályzat követelményei nem teljesültek. Néhány gyakori példa:
 
-![Vezérlők megkövetelése](./media/overview-sign-in-diagnostics/require-controls.png)
+![Képernyőfelvétel: hozzáférés-konfiguráció általános házirend-példákkal, és hozzáférés engedélyezése kiválasztva.](./media/overview-sign-in-diagnostics/require-controls.png)
 
 - Hibrid Azure AD-hez csatlakoztatott eszköz megkövetelése
 
 - Jóváhagyott ügyfélalkalmazás megkövetelése
 
-- Alkalmazásvédelmi szabályzat megkövetelése   
+- Alkalmazásvédelmi szabályzat megkövetelése
 
-
-A forgatókönyv diagnosztikai szakasza a felhasználói bejelentkezés és az alkalmazott szabályzatok részleteit jeleníti meg.
-
+A forgatókönyv diagnosztikai szakasza a felhasználói bejelentkezési kísérlet és az alkalmazott szabályzatok részleteit jeleníti meg.
 
 ### <a name="mfa-from-conditional-access"></a>MFA a feltételes hozzáférésből
 
-Ez a forgatókönyv egy feltételes hozzáférési szabályzaton alapul, amely a multi-Factor Authentication-készlettel való bejelentkezés követelménye.
+Ebben az esetben a feltételes hozzáférési szabályzatnak a többtényezős hitelesítési készlettel való bejelentkezésre van szükségük.
 
-![Többtényezős hitelesítés megkövetelése](./media/overview-sign-in-diagnostics/require-mfa.png)
+![Képernyőfelvétel: a hozzáférés konfigurálása a többtényezős hitelesítés megkövetelése beállítással.](./media/overview-sign-in-diagnostics/require-mfa.png)
 
-A forgatókönyv diagnosztikai szakasza a felhasználói bejelentkezés és az alkalmazott szabályzatok részleteit jeleníti meg.
-
-
+A forgatókönyv diagnosztikai szakasza a felhasználói bejelentkezési kísérlet és az alkalmazott szabályzatok részleteit jeleníti meg.
 
 ### <a name="mfa-from-other-requirements"></a>MFA más követelmények alapján
 
-Ez a forgatókönyv olyan többtényezős hitelesítési követelményen alapul, amelyet a feltételes hozzáférési szabályzat nem kényszerített ki. Például a többtényezős hitelesítés felhasználónként történik.
+Ebben a forgatókönyvben egy feltételes hozzáférési szabályzat nem kényszerített egy többtényezős hitelesítési követelményt. Például többtényezős hitelesítés felhasználónkénti alapon.
 
-
-![Multi-Factor Authentication felhasználónként való megkövetelése](./media/overview-sign-in-diagnostics/mfa-per-user.png)
-
+![Képernyőfelvétel: többtényezős hitelesítés felhasználónkénti konfiguráció alapján.](./media/overview-sign-in-diagnostics/mfa-per-user.png)
 
 Ennek a diagnosztikai forgatókönyvnek a célja, hogy további részletekkel lássa el a következőket:
 
-- A multi-Factor Authentication megszakítás forrása. 
-- Az ügyfél interakciójának eredménye.
+- A többtényezős hitelesítés megszakításának forrása
+- Az ügyfél interakciójának eredménye
 
-Emellett ez a szakasz a felhasználó bejelentkezési kísérletével kapcsolatos összes részletet is tartalmazza. 
-
+Megtekintheti a felhasználó bejelentkezési kísérletének összes részletét is.
 
 ### <a name="mfa-proof-up-required"></a>MFA-ellenőrzés szükséges
 
-Ez a forgatókönyv a többtényezős hitelesítés beállítására irányuló kérések által megszakított bejelentkezéseken alapul. Ezt a telepítőt "ellenőrzésnek" is nevezzük.
+Ebben az esetben a bejelentkezési kísérleteket a többtényezős hitelesítés beállítására irányuló kérelmek megszakították. Ennek a beállításnak a használata is ismert.
 
-A többtényezős hitelesítés olyankor fordul elő, amikor egy felhasználónak a többtényezős hitelesítést kell használnia, de még nincs konfigurálva, vagy ha a rendszergazda konfigurálta a felhasználót a konfigurálásához.
+A többtényezős hitelesítés akkor fordul elő, ha a felhasználónak többtényezős hitelesítést kell használnia, de még nincs konfigurálva, vagy a rendszergazdának be kell állítania a felhasználót a konfigurálásához.
 
-Ennek a diagnosztikai forgatókönyvnek a célja, hogy betekintést nyújtson arról, hogy a többtényezős hitelesítés megszakítása volt a beállítás, és hogy a felhasználó elvégezte az ellenőrzés elvégzését.
+Ennek a diagnosztikai forgatókönyvnek a célja, hogy feltárja, hogy a többtényezős hitelesítés megszakítása a felhasználói konfiguráció hiánya miatt történt. Az ajánlott megoldás a felhasználó számára az ellenőrzés befejezésére szolgál.
 
-### <a name="mfa-proof-up-required-from-a-risky-sign-in"></a>A kockázatos bejelentkezéshez szükséges MFA-ellenőrzés
+### <a name="mfa-proof-up-required-risky-sign-in-location"></a>MFA-ellenőrzés szükséges (kockázatos bejelentkezési hely)
 
-Ez a forgatókönyv olyan bejelentkezések eredményét eredményezi, amelyeket a többtényezős hitelesítés kockázatos bejelentkezéssel való beállítására vonatkozó kérelem megszakított. 
+Ebben a forgatókönyvben a bejelentkezési kísérleteket megszakította egy, a kockázatos bejelentkezési hely többtényezős hitelesítésének beállítására irányuló kérelem.
 
-Ennek a diagnosztikai forgatókönyvnek a célja, hogy betekintést nyújtson arról, hogy a többtényezős hitelesítés megszakítása volt a beállítás, hogy a felhasználó elvégezze az ellenőrzés elvégzését, azonban olyan hálózati helyről, amely nem kockázatos. Ha például egy vállalati hálózat megnevezett helyként van definiálva, akkor a rendszer megkísérli a vállalati hálózatról érkező ellenőrzés elvégzését.
+Ennek a diagnosztikai forgatókönyvnek a célja, hogy feltárja, hogy a többtényezős hitelesítés megszakítása a felhasználói konfiguráció hiánya miatt történt. Az ajánlott megoldás az, hogy a felhasználó végrehajtsa a vizsgálatot, különösen olyan hálózati helyről, amely nem kockázatos.
 
+Ha például egy vállalati hálózat elnevezett helyként van meghatározva, a felhasználónak Ehelyett a vállalati hálózatról kell próbálkoznia.
 
 ### <a name="successful-sign-in"></a>Sikeres bejelentkezés
 
-Ez a forgatókönyv a feltételes hozzáférés vagy a többtényezős hitelesítés által nem megszakított bejelentkezéseken alapul.
+Ebben a forgatókönyvben a bejelentkezési eseményeket a feltételes hozzáférés vagy a többtényezős hitelesítés nem szakította meg.
 
-Ennek a diagnosztikai forgatókönyvnek a célja, hogy betekintést nyújtson arról, hogy a felhasználó milyen módon adta meg a bejelentkezést, ha feltételes hozzáférési szabályzatot vagy házirendeket alkalmaztak, vagy egy konfigurált többtényezős hitelesítést, amely a felhasználói bejelentkezés megszakadását várta.
-
-
+Ez a diagnosztikai forgatókönyv a feltételes hozzáférési házirendek vagy a többtényezős hitelesítés miatt várhatóan megszakított felhasználói bejelentkezési események részleteit tartalmazza.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Mik azok az Azure Active Directory-jelentések?](overview-reports.md)
-* [Mi az Azure Active Directory-figyelés?](overview-monitoring.md)
+- [Mik azok az Azure Active Directory-jelentések?](overview-reports.md)
+- [Mi az Azure Active Directory-figyelés?](overview-monitoring.md)

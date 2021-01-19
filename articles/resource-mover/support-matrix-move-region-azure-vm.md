@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: raynew
-ms.openlocfilehash: 4da707ab698599c8ea5dd8e1ea8647f543eb2a68
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 00b220e07dc3fa7580100d6d36108c14fe598d40
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95524249"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572187"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Azure-beli virtuális gépek Azure-régiók közötti áthelyezésének támogatása
 
@@ -113,7 +113,7 @@ Bővítmények | Nem támogatott | A bővítmények nem másolódnak át a célk
 
 ## <a name="supported-vm-storage-settings"></a>Támogatott virtuális gépek tárolási beállításai
 
-Ez a táblázat az Azure VM operációsrendszer-lemez, az adatlemez és az ideiglenes lemez támogatását foglalja össze. Fontos, hogy megfigyelje a virtuálisgép-lemezek korlátait és a [Linux](../virtual-machines/linux/disk-scalability-targets.md) és [Windows rendszerű](../virtual-machines/windows/disk-scalability-targets.md) virtuális gépekre vonatkozó célokat, hogy elkerülje a teljesítménnyel kapcsolatos problémákat.
+Ez a táblázat az Azure VM operációsrendszer-lemez, az adatlemez és az ideiglenes lemez támogatását foglalja össze. Fontos, hogy megfigyelje a virtuálisgép-lemezek korlátait és a [felügyelt lemezekre](../virtual-machines/disks-scalability-targets.md) vonatkozó célokat, hogy elkerülje a teljesítménnyel kapcsolatos problémákat.
 
 > [!NOTE]
 > A cél virtuális gép méretének egyenlőnek vagy annál nagyobbnak kell lennie a forrás virtuális géppel. Az érvényesítéshez használt paraméterek a következők: adatlemezek száma, hálózati adapterek száma, rendelkezésre álló processzorok, memória GB-ban. Ha nem ad meg hibát, a rendszer nem adja ki.
@@ -122,7 +122,7 @@ Ez a táblázat az Azure VM operációsrendszer-lemez, az adatlemez és az ideig
 **Összetevő** | **Támogatás** | **Részletek**
 --- | --- | ---
 OPERÁCIÓSRENDSZER-lemez maximális mérete | 2048 GB | [További](../virtual-machines/managed-disks-overview.md) információ a VM-lemezekről.
-Ideiglenes lemez | Nem támogatott | Az ideiglenes lemez mindig ki van zárva az előkészítési folyamatból.<br/><br/> Ne tároljon állandó adatmennyiséget az ideiglenes lemezen. [További információk](../virtual-machines/managed-disks-overview.md#temporary-disk).
+Ideiglenes lemez | Nem támogatott | Az ideiglenes lemez mindig ki van zárva az előkészítési folyamatból.<br/><br/> Ne tároljon állandó adatmennyiséget az ideiglenes lemezen. [További információ](../virtual-machines/managed-disks-overview.md#temporary-disk).
 Adatlemez maximális mérete | 8192 GB felügyelt lemezekhez
 Adatlemez minimális mérete |  2 GB a felügyelt lemezekhez |
 Adatlemez maximális száma | Akár 64-ig, egy adott Azure-beli virtuálisgép-méret támogatásával összhangban | [További](../virtual-machines/sizes.md) információ a virtuális gépek méreteiről.
@@ -156,7 +156,7 @@ Hálózati adapter | Támogatott | Válasszon egy meglévő erőforrást a célk
 Belső terheléselosztó | Támogatott | Válasszon egy meglévő erőforrást a célként megadott régióban, vagy hozzon létre egy új erőforrást az előkészítési folyamat során.  
 Nyilvános Load Balancer | Egyelőre nem támogatott | Válasszon egy meglévő erőforrást a célként megadott régióban, vagy hozzon létre egy új erőforrást az előkészítési folyamat során.  
 Nyilvános IP-cím | Támogatott | Válasszon egy meglévő erőforrást a célként megadott régióban, vagy hozzon létre egy új erőforrást az előkészítési folyamat során.<br/><br/> A nyilvános IP-cím a régióra jellemző, és az áthelyezés után nem lesz megtartva a célként megadott régióban. Tartsa szem előtt, ha módosítja a hálózati beállításokat (beleértve a terheléselosztási szabályokat is) a célhelyen.
-Hálózati biztonsági csoport | Támogatott | Válasszon egy meglévő erőforrást a célként megadott régióban, vagy hozzon létre egy új erőforrást az előkészítési folyamat során.  
+Hálózati biztonsági csoporttal | Támogatott | Válasszon egy meglévő erőforrást a célként megadott régióban, vagy hozzon létre egy új erőforrást az előkészítési folyamat során.  
 Fenntartott (statikus) IP-cím | Támogatott | Jelenleg nem konfigurálható. Az érték alapértelmezés szerint a forrás értékét. <br/><br/> Ha a forrás virtuális gépen lévő hálózati adapter statikus IP-címmel rendelkezik, és a célként megadott alhálózatnak ugyanaz az IP-címe, akkor a cél virtuális géphez van rendelve.<br/><br/> Ha a célként megadott alhálózat nem rendelkezik ugyanazzal az IP-címmel, akkor a virtuális gép kezdeményezésének áthelyezése sikertelen lesz.
 Dinamikus IP-cím | Támogatott | Jelenleg nem konfigurálható. Az érték alapértelmezés szerint a forrás értékét.<br/><br/> Ha a forrás hálózati adaptere dinamikus IP-címmel rendelkezik, a célként megadott virtuális gép hálózati adaptere alapértelmezés szerint is dinamikus.
 IP-konfigurációk | Támogatott | Jelenleg nem konfigurálható. Az érték alapértelmezés szerint a forrás értékét.
@@ -172,7 +172,7 @@ Az áthelyezni kívánt Azure-beli virtuális gépeknek kimenő hozzáférésre 
 
 **Név** | **Azure nyilvános felhő** | **Részletek** 
 --- | --- | --- 
-Tárolás | `*.blob.core.windows.net`  | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. 
+Storage | `*.blob.core.windows.net`  | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. 
 Azure Active Directory | `login.microsoftonline.com`  | Hitelesítést és engedélyezést biztosít a Site Recovery szolgáltatás URL-címeihez. 
 Replikáció | `*.hypervrecoverymanager.windowsazure.com` | Lehetővé teszi a virtuális gép és a Site Recovery szolgáltatás közötti kommunikációt. 
 Service Bus | `*.servicebus.windows.net` | Lehetővé teszi a virtuális gép számára a Site Recovery monitorozási és diagnosztikai adatainak írását. 
@@ -188,6 +188,6 @@ Ha hálózati biztonsági csoport (NSG) szabályokat használ a kimenő kapcsola
 - Javasoljuk, hogy tesztelje a szabályokat nem éles környezetben. [Tekintse át a példákat](../site-recovery/azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags). 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Próbáljon [egy Azure-beli virtuális gépet](tutorial-move-region-virtual-machines.md) egy másik régióba helyezni az erőforrás-mozgató használatával.

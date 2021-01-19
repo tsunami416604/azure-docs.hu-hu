@@ -1,15 +1,15 @@
 ---
 title: Ismerje meg, hogyan működnek a metrikus riasztások Azure Monitorban.
 description: Tekintse át, hogy mit tehet a metrikus riasztásokkal, és hogyan működnek Azure Monitorban.
-ms.date: 01/13/2021
+ms.date: 01/19/2021
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: ab80496784b5d86d270830546cec73aadbcc50a6
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 031768b8a72fbe9498abd3c17e0f79fd157d4f52
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251233"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572731"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>A metrikariasztások működése az Azure Monitorban
 
@@ -26,7 +26,7 @@ Tegyük fel, hogy létrehozott egy egyszerű statikus küszöbérték-metrika ri
 - Célként megadott erőforrás (a figyelni kívánt Azure-erőforrás): myVM
 - Metrika: százalékos CPU
 - Feltétel típusa: statikus
-- Idő összesítése (a nyers metrika értékeit futtató statisztika. A [támogatott időösszesítések](metrics-charts.md#aggregation) a következők: min., max., átlag, összeg, darabszám): átlag
+- Összesítési típus (olyan statisztika, amely nyers metrikai értékeken fut. A [támogatott összesítési típusok](./metrics-aggregation-explained.md#aggregation-types) a következők: minimum, maximum, átlag, összeg, darabszám): átlag
 - Időtartam (a visszatekintő ablak, amelyen a metrika értékei be vannak jelölve): az elmúlt 5 percben
 - Gyakoriság (az a gyakoriság, amellyel a metrika riasztása ellenőrzi, hogy teljesülnek-e a feltételek): 1 perc
 - Operátor: nagyobb, mint
@@ -43,7 +43,7 @@ Tegyük fel, hogy létrehozott egy egyszerű dinamikus küszöbértékek mérős
 - Célként megadott erőforrás (a figyelni kívánt Azure-erőforrás): myVM
 - Metrika: százalékos CPU
 - Feltétel típusa: dinamikus
-- Idő összesítése (a nyers metrika értékeit futtató statisztika. A [támogatott időösszesítések](metrics-charts.md#aggregation) a következők: min., max., átlag, összeg, darabszám): átlag
+- Összesítési típus (olyan statisztika, amely nyers metrikai értékeken fut. A [támogatott összesítési típusok](./metrics-aggregation-explained.md#aggregation-types) a következők: minimum, maximum, átlag, összeg, darabszám): átlag
 - Időtartam (a visszatekintő ablak, amelyen a metrika értékei be vannak jelölve): az elmúlt 5 percben
 - Gyakoriság (az a gyakoriság, amellyel a metrika riasztása ellenőrzi, hogy teljesülnek-e a feltételek): 1 perc
 - Operátor: nagyobb, mint
@@ -80,7 +80,7 @@ Tegyük fel, hogy van egy App Service terve a webhelyhez. Szeretné figyelni a C
 - Feltétel típusa: statikus
 - Dimenziók
   - Példány = InstanceName1, InstanceName2
-- Idő összesítése: átlag
+- Összesítés típusa: átlag
 - Időszak: az elmúlt 5 percben
 - Gyakoriság: 1 perc
 - Operátor: GreaterThan
@@ -95,7 +95,7 @@ Tegyük fel, hogy van egy webalkalmazása, amely nagy mennyiségű igényt lát,
 - Feltétel típusa: statikus
 - Dimenziók
   - Példány = *
-- Idő összesítése: átlag
+- Összesítés típusa: átlag
 - Időszak: az elmúlt 5 percben
 - Gyakoriság: 1 perc
 - Operátor: GreaterThan
@@ -112,7 +112,7 @@ Tegyük fel, hogy van egy webalkalmazása, amely sok példánnyal rendelkezik, �
 - Feltétel típusa: dinamikus
 - Dimenziók
   - Példány = *
-- Idő összesítése: átlag
+- Összesítés típusa: átlag
 - Időszak: az elmúlt 5 percben
 - Gyakoriság: 1 perc
 - Operátor: GreaterThan

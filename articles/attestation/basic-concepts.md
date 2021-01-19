@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 51c22346ee89150194fb1dc83752e2ba2a2e0cf0
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: c6c09dc771692cb2fc2f36840e729874cfaf2d09
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185444"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572816"
 ---
 # <a name="basic-concepts"></a>Alapfogalmak
 
@@ -28,9 +28,7 @@ A [JSON webkulcs](https://tools.ietf.org/html/rfc7517) (JWK) egy olyan JSON-adat
 
 ## <a name="attestation-provider"></a>Igazolási szolgáltató
 
-Az igazolási szolgáltató a Microsoft. igazolás nevű Azure-erőforrás-szolgáltatóhoz tartozik. Az erőforrás-szolgáltató egy olyan szolgáltatási végpont, amely Azure igazolási REST-szerződést biztosít, és [Azure Resource Manager](../azure-resource-manager/management/overview.md)használatával van üzembe helyezve. Minden igazolási szolgáltató egy konkrét, felderíthető házirendet tart fenn. 
-
-Az igazolási szolgáltatók minden egyes igazolási típushoz alapértelmezett szabályzattal jönnek létre (vegye figyelembe, hogy a VBS enklávé nem tartalmaz alapértelmezett szabályzatot). A SGX ENKLÁVÉHOZ vonatkozó alapértelmezett szabályzattal kapcsolatos további részletekért tekintse meg az [igazolási szabályzat példáit](policy-examples.md) .
+Az igazolási szolgáltató a Microsoft. igazolás nevű Azure-erőforrás-szolgáltatóhoz tartozik. Az erőforrás-szolgáltató egy olyan szolgáltatási végpont, amely Azure igazolási REST-szerződést biztosít, és [Azure Resource Manager](../azure-resource-manager/management/overview.md)használatával van üzembe helyezve. Minden igazolási szolgáltató egy konkrét, felderíthető házirendet tart fenn. Az igazolási szolgáltatók minden egyes igazolási típushoz alapértelmezett szabályzattal jönnek létre (vegye figyelembe, hogy a VBS enklávé nem tartalmaz alapértelmezett szabályzatot). A SGX ENKLÁVÉHOZ vonatkozó alapértelmezett szabályzattal kapcsolatos további részletekért tekintse meg az [igazolási szabályzat példáit](policy-examples.md) .
 
 ### <a name="regional-default-provider"></a>Regionális alapértelmezett szolgáltató
 
@@ -47,7 +45,7 @@ Az Azure-igazolás minden régióban alapértelmezett szolgáltatót biztosít. 
 | Észak-Európa | `https://sharedneu.neu.attest.azure.net` | 
 | Nyugat-Európa| `https://sharedweu.weu.attest.azure.net` | 
 | USA 2. keleti régiója | `https://sharedeus2.eus2.attest.azure.net` | 
-| USA középső régiója | `https://sharedcus.cus.attest.azure.net` | 
+| Az USA középső régiója | `https://sharedcus.cus.attest.azure.net` | 
 
 ## <a name="attestation-request"></a>Igazolási kérelem
 
@@ -63,7 +61,7 @@ Az igazolási szabályzat az igazolási tanúsítványok feldolgozására szolg�
 
 Ha az igazolási szolgáltató alapértelmezett szabályzata nem felel meg az igényeknek, az ügyfelek az Azure-igazolás által támogatott bármely régióban létrehozhatnak egyéni házirendeket. A házirend-kezelés az Azure-igazolás által az ügyfeleknek biztosított kulcsfontosságú szolgáltatás. A szabályzatok az igazolási típusra vonatkoznak, és felhasználhatók a enklávék azonosítására, illetve jogcímek hozzáadására a kimeneti jogkivonathoz, vagy a jogcímek módosítása kimeneti jogkivonatban. 
 
-Tekintse meg az alapértelmezett házirend-tartalomra és-mintákra vonatkozó [igazolási szabályzat példáit](policy-examples.md) .
+Tekintse meg a házirend-mintákhoz tartozó [igazolási szabályzat példáit](policy-examples.md) .
 
 ## <a name="benefits-of-policy-signing"></a>A szabályzat aláírásának előnyei
 
@@ -85,25 +83,55 @@ SGX ENKLÁVÉHOZ enklávéhoz generált JWT-példa:
 
 ```
 {
-  “alg”: “RS256”,
-  “jku”: “https://tradewinds.us.attest.azure.net/certs”,
-  “kid”: “f1lIjBlb6jUHEUp1/Nh6BNUHc6vwiUyMKKhReZeEpGc=”,
-  “typ”: “JWT”
+  "alg": "RS256",
+  "jku": "https://tradewinds.us.attest.azure.net/certs",
+  "kid": <self signed certificate reference to perform signature verification of attestation token,
+  "typ": "JWT"
 }.{
-  “maa-ehd”: <input enclave held data>,
-  “exp”: 1568187398,
-  “iat”: 1568158598,
-  “is-debuggable”: false,
-  “iss”: “https://tradewinds.us.attest.azure.net”,
-  “nbf”: 1568158598,
-  “product-id”: 4639,
-  “sgx-mrenclave”: “”,
-  “sgx-mrsigner”: “”,
-  “svn”: 0,
-  “tee”: “sgx”
+  "aas-ehd": <input enclave held data>,
+  "exp": 1568187398,
+  "iat": 1568158598,
+  "is-debuggable": false,
+  "iss": "https://tradewinds.us.attest.azure.net",
+  "maa-attestationcollateral": 
+    {
+      "qeidcertshash": <SHA256 value of QE Identity issuing certs>,
+      "qeidcrlhash": <SHA256 value of QE Identity issuing certs CRL list>,
+      "qeidhash": <SHA256 value of the QE Identity collateral>,
+      "quotehash": <SHA256 value of the evaluated quote>, 
+      "tcbinfocertshash": <SHA256 value of the TCB Info issuing certs>, 
+      "tcbinfocrlhash": <SHA256 value of the TCB Info issuing certs CRL list>, 
+      "tcbinfohash": <SHA256 value of the TCB Info collateral>
+     },
+  "maa-ehd": <input enclave held data>,
+  "nbf": 1568158598,
+  "product-id": 4639,
+  "sgx-mrenclave": <SGX enclave mrenclave value>,
+  "sgx-mrsigner": <SGX enclave msrigner value>,
+  "svn": 0,
+  "tee": "sgx"
+  "x-ms-attestation-type": "sgx", 
+  "x-ms-policy-hash": <>,
+  "x-ms-sgx-collateral": 
+    {
+      "qeidcertshash": <SHA256 value of QE Identity issuing certs>,
+      "qeidcrlhash": <SHA256 value of QE Identity issuing certs CRL list>,
+      "qeidhash": <SHA256 value of the QE Identity collateral>,
+      "quotehash": <SHA256 value of the evaluated quote>, 
+      "tcbinfocertshash": <SHA256 value of the TCB Info issuing certs>, 
+      "tcbinfocrlhash": <SHA256 value of the TCB Info issuing certs CRL list>, 
+      "tcbinfohash": <SHA256 value of the TCB Info collateral>
+     },
+  "x-ms-sgx-ehd": <>, 
+  "x-ms-sgx-is-debuggable": true,
+  "x-ms-sgx-mrenclave": <SGX enclave mrenclave value>,
+  "x-ms-sgx-mrsigner": <SGX enclave msrigner value>, 
+  "x-ms-sgx-product-id": 1, 
+  "x-ms-sgx-svn": 1,
+  "x-ms-ver": "1.0"
 }.[Signature]
 ```
-Az olyan jogcímeket, mint az "exp", a "IAT", az "ISS", a "NBF", a [JWT RFC](https://tools.ietf.org/html/rfc7517) által definiált, és a fennmaradó értéket az Azure-igazolás hozza létre. További információkért lásd: [Az Azure-igazolás által kiállított jogcímek](claim-sets.md) .
+A fent használt jogcímek némelyike elavultnak minősül, de teljes mértékben támogatott.  Azt javasoljuk, hogy minden jövőbeli kód és eszköz használja a nem elavult jogcímek nevét. További információkért lásd: [Az Azure-igazolás által kiállított jogcímek](claim-sets.md) .
 
 ## <a name="encryption-of-data-at-rest"></a>Inaktív adatok titkosítása
 
@@ -114,7 +142,7 @@ Az Azure Storage-ban tárolt adatok védelme mellett az Azure igazolása Azure D
 Az Azure igazolási példány helyi merevlemez-meghajtóján nem maradnak meg ügyféladatok.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Igazolási szabályzat létrehozása és aláírása](author-sign-policy.md)
 - [Az Azure-igazolás beállítása a PowerShell használatával](quickstart-powershell.md)

@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: fb0e56c5eeebb4f3a869feacb996d690ea7dde86
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: e003d0121721838bd5ae038a3a8b4d1b8cd9d1eb
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124169"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573190"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box Disk korlátok
 
@@ -44,8 +44,8 @@ Az Azure Storage szolgáltatás korlátaival és a megosztások, tárolók és f
 
 ## <a name="data-upload-caveats"></a>Az adatfeltöltés kikötései
 
-- Ne másolja közvetlenül a lemezekre az Adatmásolást. Az Adatmásolás előre létrehozott *BlockBlob*,*PageBlob*és *AzureFile* mappákba.
-- A *BlockBlob* és a *PageBlob* alá tartozó mappa egy tároló. A tárolók például *BlockBlob/tárolóként* és *PageBlob/tárolóként*jönnek létre.
+- Ne másolja közvetlenül a lemezekre az Adatmásolást. Az Adatmásolás előre létrehozott *BlockBlob*,*PageBlob* és *AzureFile* mappákba.
+- A *BlockBlob* és a *PageBlob* alá tartozó mappa egy tároló. A tárolók például *BlockBlob/tárolóként* és *PageBlob/tárolóként* jönnek létre.
 - Ha van egy meglévő Azure-objektuma (például egy blob) a felhőben, amelynek a neve megegyezik az éppen másolt objektum nevével, Data Box Disk átnevezi a fájlt fájlként (1) a felhőben.
 - A rendszer a *BlockBlob* és a *PageBlob* -megosztásba írt összes fájlt feltöltötte egy blokk-blobként és egy oldal blobként.
 - A *BlockBlob* és a *PageBlob* mappák alatt létrehozott összes üres címtár-hierarchia nincs feltöltve.
@@ -76,7 +76,7 @@ Itt láthatók a megírható Azure-objektumok méretei. Győződjön meg arról,
 | BLOB letiltása        | ~ 4,75 TiB                                                 |
 | Oldal Blobja         | 8 TiB <br> (Az oldal blob-formátumában feltöltött összes fájlnak 512 bájtnak kell lennie, különben a feltöltés meghiúsul. <br> A VHD és a VHDX egyaránt 512 bájtra van igazítva.) |
 |Azure Files        | 1 TiB <br> Legfeljebb a megosztás mérete 5 TiB     |
-| Felügyelt lemezek     |4 TiB <br> A mérettel és a korlátokkal kapcsolatos további információkért lásd: <li>[A felügyelt lemezek skálázhatósági céljai](../virtual-machines/windows/disk-scalability-targets.md#managed-virtual-machine-disks)</li>|
+| Felügyelt lemezek     |4 TiB <br> A mérettel és a korlátokkal kapcsolatos további információkért lásd: <li>[A felügyelt lemezek skálázhatósági céljai](../virtual-machines/disks-scalability-targets.md#managed-virtual-machine-disks)</li>|
 
 
 ## <a name="azure-block-blob-page-blob-and-file-naming-conventions"></a>Az Azure Block blob, az oldal blobja és a fájl elnevezési konvenciói
@@ -93,6 +93,6 @@ Itt láthatók a megírható Azure-objektumok méretei. Győződjön meg arról,
 |-------------------|-----------------------------------------------------------|
 | Felügyelt lemezek nevei       | <li> A névnek 1 – 80 karakter hosszúnak kell lennie. </li><li> A névnek betűvel vagy számmal kell kezdődnie, betűvel, számmal vagy aláhúzással kell végződnie. </li><li> A név csak betűket, számokat, aláhúzásokat, pontokat és kötőjeleket tartalmazhat. </li><li>   A névnek nem lehetnek szóközök vagy `/` .                                              |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A [rendszerkövetelmények áttekintése Data Box Disk](data-box-disk-system-requirements.md)

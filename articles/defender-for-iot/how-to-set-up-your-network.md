@@ -4,15 +4,15 @@ description: Ismerkedjen meg a megoldási architektúrával, a hálózati elők�
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/06/2020
+ms.date: 01/03/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 3e9380f067b091c4473b8c29bda3d31bb93cbc6d
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 2053632f24504f896d1045f99d581b9aa6050b55
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97840844"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573139"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>Tudnivalók az Azure Defender for IoT Network telepítőről
 
@@ -54,7 +54,7 @@ A hely adatainak rögzítése, például:
 
 - Konfigurációs munkaállomás.
 
-- SSL-tanúsítványok (nem kötelező).
+- SSL-tanúsítványok (nem kötelező, de ajánlott).
 
 - SMTP-hitelesítés (nem kötelező). Ha az SMTP-kiszolgálót hitelesítéssel szeretné használni, készítse elő a kiszolgálóhoz szükséges hitelesítő adatokat.
 
@@ -103,7 +103,7 @@ Győződjön meg arról, hogy a szervezet biztonsági házirendje lehetővé tes
 | **Külső NTP-kiszolgálóhoz csatlakoztatott érzékelő (ha van ilyen)** | NTP | UDP | Be vagy ki| 123 | Időszinkronizálás |
 | **Kapcsolat a Defender for IoT platform és a felügyeleti platform és a levelezési kiszolgáló között (ha szükséges)** | SMTP | TCP | Az érzékelő felügyelete | 25 | E-mail |
 | **A helyszíni felügyeleti konzolról a syslog-kiszolgálóra küldött naplók (ha szükséges)** | Rendszernapló | UDP | Az érzékelő felügyelete| 514 | LEEF |
-| **DNS-kiszolgáló portja (ha szükséges)** | DNS | N.A. | Be vagy ki| 53 | DNS |
+| **DNS-kiszolgáló portja (ha szükséges)** | DNS | N/A | Be vagy ki| 53 | DNS |
 | **Kapcsolat a Defender for IoT platform és a helyszíni felügyeleti konzol között Active Directory (ha szükséges)** | LDAPS | TCP | Be vagy ki | 636 <br />389 | Active Directory |
 | **Távoli SNMP-gyűjtők (ha vannak ilyenek)** | SNMP | UDP | Az érzékelő felügyelete| 161 | Figyelés |
 | **Windows-végpont figyelése (ha szükséges)** | WMI | UDP | Az érzékelő felügyelete| 135 | Figyelés |
@@ -223,7 +223,7 @@ Egy csillag hálózatban minden gazdagép egy központi hubhoz csatlakozik. Lege
 
 Íme néhány javaslat a több érzékelő üzembe helyezéséhez:
 
-| * * Szám * *| **Méterre** | **Függőség** | **Érzékelők száma** |
+| **Szám** | **Méterre** | **Függőség** | **Érzékelők száma** |
 |--|--|--|--|
 | A kapcsolók közötti maximális távolság | 80 méter | Előkészített Ethernet-kábel | Több mint 1 |
 | Az OT-hálózatok száma | Több mint 1 | Nincs fizikai kapcsolat | Több mint 1 |
@@ -363,7 +363,7 @@ A portok figyeléséhez KOPPINTson az aggregators lehetőségre. Ezek az eszköz
 
 Ezeket a modelleket tesztelték a kompatibilitás érdekében. Más gyártók és modellek is kompatibilisek lehetnek.
 
-| Kép | Modell |
+| Kép | Modellezés |
 | -- | -- |
 | :::image type="content" source="media/how-to-set-up-your-network/garland-p1gccas-v2.png" alt-text="Képernyőfelvétel a Garland P1GCCAS.":::  | Garland P1GCCAS  |
 | :::image type="content" source="media/how-to-set-up-your-network/ixia-tpa2-cu3-v2.png" alt-text="Az IXIA TPA2-CU3 képernyőképe.":::  | IXIA TPA2 – CU3  |
@@ -569,7 +569,7 @@ Az ipari hálózat diagramjának áttekintése lehetővé teszi, hogy meghatáro
     > [!NOTE]
     > A IoT készülékhez tartozó Defendernek egy alacsonyabb szintű kapcsolóhoz kell csatlakoznia, amely a kapcsolón lévő portok közötti forgalmat látja.  
 
-2. Adja meg az eszközök hozzávetőleges számát a hálózatokban (nem kötelező).
+2. Adja meg a figyelni kívánt hálózati eszközök hozzávetőleges számát. Ezekre az információkra szüksége lesz, amikor előkészíti az előfizetést az Azure Defender for IoT portálra. A bevezetési folyamat során a rendszer felszólítja, hogy adja meg az eszközök számát a 1000-es növekményekben.
 
 3. Adjon meg egy alhálózati listát az üzemi hálózatokhoz és egy leírást (nem kötelező). 
 
@@ -591,7 +591,7 @@ Az ipari hálózat diagramjának áttekintése lehetővé teszi, hogy meghatáro
 
 5. Annak ellenőrzéséhez, hogy a kapcsolók rendelkeznek-e a port tükrözési képességével, adja meg, hogy a Defender for IoT platform milyen számú kapcsolóval kapcsolódjon:
 
-    | **#** | **Kapcsoló (switch)** | **Modell** | **Forgalom tükrözésének támogatása (SPAN, RSPAN vagy none)** |
+    | **#** | **Kapcsoló (switch)** | **Modellezés** | **Forgalom tükrözésének támogatása (SPAN, RSPAN vagy none)** |
     |--|--|--|--|
     | 1 |  |  |
     | 2 |  |  |
@@ -694,6 +694,6 @@ Vegye fel a kapcsolatot egy Active Directory rendszergazdájával, és hozzon l�
 | Kamera | |
 | X-ray gép | |
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 [Tudnivalók a IoT-beli Defender-telepítésről](how-to-install-software.md)

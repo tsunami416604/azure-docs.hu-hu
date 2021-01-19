@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: erhopf
-ms.openlocfilehash: dae7b8e0485c1a2456b85e0910f60b2164d4e41c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 966b11e2c9a0f7ffc5e6ec9238080b9076d37af6
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026318"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572425"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Hangminták rögzítése egyéni hang létrehozásához
 
@@ -24,6 +24,14 @@ A kiváló minőségű éles környezetből származó egyéni hang létrehozás
 A felvételek elvégzéséhez azonban szükség van egy parancsfájlra: a hangfelvételek által a hangmintáknak kimondott szavak. A legjobb eredmények elérése érdekében a szkriptnek jó fonetikusan kell rendelkeznie, és elegendő különbözőnek kell lennie az egyéni hangmodell betanításához.
 
 Sok kicsi, de fontos részlet a professzionális hangfelvételek létrehozásában. Ez az útmutató egy olyan folyamat ütemterve, amely segítséget nyújt a jó és konzisztens eredmények megszerzésében.
+
+> [!NOTE]
+> Ha szeretné betanítani a neurális hangvételt, meg kell adnia egy hangtehetségi profilt a hangfelvételt tartalmazó hangfelvételi fájllal, amely a beszédfelismerési adatok használatával betanítja az egyéni hangmodellt. A rögzítési parancsfájl előkészítésekor ügyeljen rá, hogy tartalmazza az alábbi mondatot. 
+
+> "I [állapot az első és az utolsó név] tisztában vagyok azzal, hogy a hangfelvételeket [a vállalat neve] fogja használni a hang szintetikus verziójának létrehozásához és használatához."
+Ezt a mondatot fogjuk használni annak ellenőrzéséhez, hogy ugyanaz a személy végzi-e a betanítási adatgyűjtést, aki a beleegyezik. További információ a [hangalapú tehetségek ellenőrzéséről](https://aka.ms/CNV-data-privacy) itt olvashat.
+
+> Az egyéni neurális hang korlátozott hozzáféréssel érhető el. Győződjön meg róla, hogy tisztában van a [felelős AI-követelményekkel](https://aka.ms/gating-overview) , és [alkalmazza a hozzáférést itt](https://aka.ms/customneural). 
 
 > [!TIP]
 > A legjobb minőség érdekében érdemes megfontolni a Microsoftot abban, hogy fejlessze saját hangját. A Microsoft széles körű tapasztalattal rendelkezik a saját termékeire, például a Cortana és az Office-ra való kiváló minőségű hangok készítésére.
@@ -56,7 +64,7 @@ A hangtehetség az egyenlet másik fele. Képesnek kell lenniük az állandó, a
 
 Az egyéni hangminták rögzítése több fárasztó is lehet, mint más típusú hangminták. A legtöbb hangtehetség naponta kettő vagy három órát is képes rögzíteni. A munkamenetek legfeljebb három vagy négy hétig állíthatók be, és ha lehetséges, az egyik napról a másikra.
 
-A hangmodellek számára készített felvételeknek érzelmileg semlegesnek kell lenniük. Ez azt eredményezi, hogy egy szomorú Kimondás nem olvasható be szomorú módon. A prosody vezérlők segítségével később is hozzáadhatók a szintetizált beszédekhez. A hangtehetségek használatával olyan "Personát" fejleszthet, amely az egyéni hang teljes hangját és érzelmi tónusát határozza meg. A folyamat során meg kell határoznia, hogy milyen "semleges" hangzik a Persona számára.
+A hangtehetségek használatával olyan "Personát" fejleszthet, amely az egyéni hang teljes hangját és érzelmi tónusát határozza meg. A folyamat során meg kell határoznia, hogy milyen "semleges" hangzik a Persona számára. Az egyéni neurális hangképességgel olyan modellt is betaníthat, amely az érzelmekkel beszél. Adja meg a "beszélő stílusokat", és kérje meg a hangvételt, hogy olvassa el a szkriptet úgy, hogy rezonál a kívánt stílusokat.  
 
 Előfordulhat például, hogy egy Persona egy természetesen optimista személyiséggel rendelkezik. Tehát a "saját" hangon is szerepelhetnek az optimizmussal kapcsolatos megjegyzések, még akkor is, ha semleges módon beszélnek. Egy ilyen személyiségi tulajdonság azonban finom és konzisztens lehet. Hallgassa meg a meglévő hangok olvasásait, hogy megtudja, mi a célja.
 
@@ -104,7 +112,7 @@ A szerzői jogi törvények szerint a szerzői jog által védett szöveg elolva
 
 Szerencsére lehetséges elkerülni ezeket a problémákat. A szöveg számos forrást használhat engedély vagy licenc nélkül.
 
-|Szöveges forrás|Description|
+|Szöveges forrás|Leírás|
 |-|-|
 |[CMU Arctic Corpus](http://festvox.org/cmu_arctic/)|Az out-of-Copyright által kiválasztott 1100 mondatok kifejezetten a beszédfelismerési projektekben használhatók. Kiváló kiindulási pont.|
 |Már nem működik<br>szerzői jog|A általában a 1923-nél korábbi verziókban van közzétéve. Angol nyelven a [Project Gutenberg](https://www.gutenberg.org/) több tízezer ilyen munkát kínál. Érdemes lehet az újabb verzióra összpontosítani, mivel a nyelv közelebb lesz a modern angolhoz.|
@@ -211,11 +219,11 @@ Hallgassa meg figyelmesen az egyes fájlokat. Ebben a szakaszban szerkesztheti a
 
 Konvertálja az egyes fájlokat 16 bitesre, a Mentés előtt pedig 16 kHz-es mintavételezési sebességet, és ha rögzítette a Studio csevegést, távolítsa el a második csatornát. Mentse az összes fájlt WAV formátumban, nevezze el a fájlokat a szkriptből a teljes számmal.
 
-Végül hozza létre azt az *átiratot* , amely az egyes WAV-fájlokat a megfelelő kifejezés szöveges verziójával társítja. Az [Egyéni hangbetűkészletek létrehozása](./how-to-custom-voice-create-voice.md) a szükséges formátum részleteit tartalmazza. A szöveget közvetlenül a szkriptből is másolhatja. Ezután hozzon létre egy zip-fájlt a WAV-fájlokból és a szöveges átiratból.
+Végül hozza létre azt az *átiratot* , amely az egyes WAV-fájlokat a megfelelő kifejezés szöveges verziójával társítja. Az [egyéni hangok létrehozása](./how-to-custom-voice-create-voice.md) a szükséges formátum részleteit tartalmazza. A szöveget közvetlenül a szkriptből is másolhatja. Ezután hozzon létre egy zip-fájlt a WAV-fájlokból és a szöveges átiratból.
 
 Ha később szüksége van rájuk, archiválja az eredeti felvételeket biztonságos helyen. Őrizze meg a parancsfájlt és a jegyzeteket is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Készen áll a felvételek feltöltésére és az egyéni hang létrehozására.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 53fd2332224d903c5a4b33563470cf3569f82b13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec605fd30252b9a0cfb80d0bc3ff145ed3b5a1d4
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86526656"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573309"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Azure-beli virtuális gépek teljesítményének megoldása Linux vagy Windows rendszeren
 
@@ -40,11 +40,11 @@ A VM-diagnosztika engedélyezése:
 
 1. Ugrás a virtuális gépre
 2. Kattintson a **diagnosztikai beállítások** elemre.
-3. Válassza ki a Storage-fiókot, és kattintson a **vendég szintű figyelés engedélyezése**lehetőségre.
+3. Válassza ki a Storage-fiókot, és kattintson a **vendég szintű figyelés engedélyezése** lehetőségre.
 
    ![Kattintson a beállítások, majd a diagnosztika elemre.](media/troubleshoot-performance-virtual-machine-linux-windows/2-virtual-machines-diagnostics.png)
 
-Az **ügynök** lapon a diagnosztika beállításnál használt Storage-fiókot a **diagnosztikai beállítások**területen tekintheti meg.
+Az **ügynök** lapon a diagnosztika beállításnál használt Storage-fiókot a **diagnosztikai beállítások** területen tekintheti meg.
 
 ![Storage-fiók keresése](media/troubleshoot-performance-virtual-machine-linux-windows/3-check-storage-account.png)
 
@@ -52,7 +52,7 @@ Az **ügynök** lapon a diagnosztika beállításnál használt Storage-fiókot 
 
 A tárterület nagyon fontos, ha az Azure-ban egy virtuális gép i/o-teljesítményét szeretnénk elemezni. A tárolással kapcsolatos mérőszámokhoz további lépésként engedélyeznie kell a diagnosztikát. Ezt is engedélyezheti, ha csak a Storage szolgáltatással kapcsolatos számlálókat szeretné elemezni.
 
-1. A virtuális gép kiválasztásával azonosítsa a virtuális gép által használt Storage-fiókot (vagy fiókokat). Kattintson a **Beállítások**, majd a **lemezek**elemre:
+1. A virtuális gép kiválasztásával azonosítsa a virtuális gép által használt Storage-fiókot (vagy fiókokat). Kattintson a **Beállítások**, majd a **lemezek** elemre:
 
    ![Kattintson a beállítások, majd a lemezek elemre.](media/troubleshoot-performance-virtual-machine-linux-windows/4-storage-disks-disks-selection.png)
 
@@ -72,7 +72,7 @@ A következő beállítások konfigurálása:
 1.  Válassza a **Metrikák** lehetőséget.
 2.  Válassza ki az **erőforrást** (Storage-fiók).
 3.  Válassza ki a **névteret**
-4.  Válassza a **metrika**elemet.
+4.  Válassza a **metrika** elemet.
 5.  Válassza ki az **Összesítés** típusát
 6.  Ezt a nézetet rögzítheti az irányítópulton.
 
@@ -82,7 +82,7 @@ Ha a szükséges mérőszámok kezdeti telepítési folyamatán keresztül köve
 
 ### <a name="accessing-the-monitoring"></a>A figyelés elérése
 
-Válassza ki a vizsgálni kívánt Azure-beli virtuális gépet, és válassza a **figyelés**lehetőséget.
+Válassza ki a vizsgálni kívánt Azure-beli virtuális gépet, és válassza a **figyelés** lehetőséget.
 
 ![Figyelés kiválasztása](media/troubleshoot-performance-virtual-machine-linux-windows/7-select-monitoring.png)
  
@@ -129,7 +129,7 @@ A metrikák megtekintése:
 1. Szakasz hozzáadása.
 2. Csempe hozzáadása
 3. Nyissa meg a gyűjteményt.
-4. Válassza ki a memóriahasználat és a húzás elemet. Ha a csempe dokkolva van, kattintson a jobb gombbal, és válassza a **6x4**lehetőséget.
+4. Válassza ki a memóriahasználat és a húzás elemet. Ha a csempe dokkolva van, kattintson a jobb gombbal, és válassza a **6x4** lehetőséget.
 
 ### <a name="memory-observe-trends"></a>Memória megfigyelésének trendjei
 
@@ -198,7 +198,7 @@ A AverageE2ELatency az ügyfél késését jelöli. Ellenőrizze, hogy az alkalm
 
 #### <a name="check-for-azure-storage-throttling---add-the-storage-account-metrics-throttlingerror"></a>Az Azure Storage szabályozásának keresése – a Storage-fiók metrikáinak hozzáadása: ThrottlingError
 
-A szabályozás értéke azt jelzi, hogy a tárolási fiók szintjén szabályozza a szabályozást, ami azt jelenti, hogy a fiók IOPS korlátja. A metrika **TotalRequests**ellenőrzésével meghatározhatja, hogy a IOPs küszöbértéket éri-e el.
+A szabályozás értéke azt jelzi, hogy a tárolási fiók szintjén szabályozza a szabályozást, ami azt jelenti, hogy a fiók IOPS korlátja. A metrika **TotalRequests** ellenőrzésével meghatározhatja, hogy a IOPs küszöbértéket éri-e el.
 
 Vegye figyelembe, hogy a virtuális merevlemezek 500 IOPS vagy 60 MBit-os korláttal rendelkeznek, de a IOPS 20000-os összesített korlátja köti őket.
 
@@ -208,7 +208,7 @@ Ha meg szeretné állapítani, hogy az IOPS-korlátot használja-e, lépjen be a
 
 Ha a standard szintű tárolóban új lemezes ajánlatokat használ, a IOPS és az átviteli sebesség korlátai eltérőek lehetnek, de a standard szintű Storage-fiók összesített korlátja 20000 IOPS (a Premium Storage-nak eltérő korlátai vannak a fiók vagy a lemez szintjén). További információ a különböző standard szintű lemezes ajánlatokról és a lemezes korlátokról:
 
-* A [Windows rendszerű virtuálisgép-lemezek méretezhetősége és teljesítménybeli céljai](../windows/disk-scalability-targets.md).
+* A [Windows rendszerű virtuálisgép-lemezek méretezhetősége és teljesítménybeli céljai](../disks-scalability-targets.md).
 
 #### <a name="references"></a>Hivatkozások
 
@@ -224,7 +224,7 @@ A virtuális géphez csatlakoztatott virtuális merevlemezek átviteli sebesség
 
 A standard szintű tárolóban az új lemezes ajánlatok különböző IOPS és átviteli korlátokkal rendelkeznek (a IOPS nem teszik közzé VHD-n). Tekintse meg az adatait, és ellenőrizze, hogy a virtuális merevlemezen a VHD (k) kombinált átviteli sebessége (i) a lemez olvasása és írása paranccsal, majd a virtuális gép tárolási konfigurációjának optimalizálása a múltbeli egyszeri VHD-korlátok skálázására. További információ a különböző standard szintű lemezes ajánlatokról és a lemezes korlátokról:
 
-* A [Windows rendszerű virtuálisgép-lemezek méretezhetősége és teljesítménybeli céljai](../windows/disk-scalability-targets.md).
+* A [Windows rendszerű virtuálisgép-lemezek méretezhetősége és teljesítménybeli céljai](../disks-scalability-targets.md).
 
 ### <a name="high-disk-utilizationlatency-remediation"></a>Nagy lemezterület-kihasználtság/késés szervizelése
 
@@ -252,4 +252,4 @@ Ezek a cikkek a konkrét forgatókönyveket tárgyalják:
 
 Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban és stack overflow fórumokon](https://azure.microsoft.com/support/forums/).
 
-Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.
+Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése** lehetőséget.

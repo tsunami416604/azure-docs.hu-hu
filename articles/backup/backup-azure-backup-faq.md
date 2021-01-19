@@ -3,12 +3,12 @@ title: Gyakori kérdésekre adott válaszok
 description: 'Gyakori kérdésekre adott válaszok a következő témakörökben: az Azure Backup szolgáltatásai, mint például a Recovery Services-tárolók, a biztonsági mentés lehetséges elemei, működése, titkosítás és korlátozások. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: d85866e490b2c56abb7de1e94cd0ffaa8f714615
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: bd84ff553b486d200ec4501b89b42335335b223f
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327151"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572527"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Gyakori kérdések
 
@@ -61,6 +61,10 @@ Ha már konfigurálta a biztonsági mentést, és a GRS-ről LRS-re kell váltan
 ### <a name="how-can-i-move-data-from-the-recovery-services-vault-to-on-premises"></a>Hogyan helyezhetők át adatok a Recovery Services-tárolóból a helyszíni rendszerbe?
 
 Az adatok közvetlenül a Recovery Services-tárolóból a helyszíni rendszerbe való exportálása a Data Box használatával nem támogatott. Az adatkészletet vissza kell állítani egy Storage-fiókba, majd [Data Box](../databox/data-box-overview.md) vagy [Importálás/exportálás](../storage/common/storage-import-export-service.md)használatával áthelyezhető a helyszíni környezetbe.
+
+### <a name="what-is-the-difference-between-a-geo-redundant-storage-grs-vault-with-and-without-the-cross-region-restore-crr-capability-enabled"></a>Mi a különbség a Geo-redundáns tárolási (GRS) tárolók között, és nem engedélyezett a régiók közötti visszaállítási (CRR) képesség?
+
+Ha engedélyezve van a [CRR](azure-backup-glossary.md#cross-region-restore-crr) képesség nélküli [GRS](azure-backup-glossary.md#grs) -tár, a másodlagos régióban lévő adatmennyiség nem érhető el, amíg az Azure be nem jelent egy katasztrófát az elsődleges régióban. Ilyen esetben a visszaállítás a másodlagos régióból történik. Ha a CRR engedélyezve van, még akkor is, ha az elsődleges régió működik, és a másodlagos régióban is aktiválhatja a visszaállítást.
 
 ## <a name="azure-backup-agent"></a>Az Azure Backup ügynöke
 

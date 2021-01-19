@@ -11,18 +11,18 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
-ms.openlocfilehash: 2e26bfa484d573c0158e518b31087fb10bdcdfb9
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 8e749e5f6ea6bcf76a1b4f143bce03ceb41cbb07
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185682"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573292"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>Adatfelosztások és keresztvalidálás konfigurálása az automatizált gépi tanulásban
 
 Ebből a cikkből megtudhatja, hogyan konfigurálhatja a betanítási/érvényesítési adatmegosztásokat, és hogyan végezheti el az automatikus gépi tanulás, a kísérletek automatizálását.
 
-Ha Azure Machine Learning, ha az automatizált ML-t több ML modell kiépítésére használja, minden gyermeknek a modell minőségi metrikáinak kiszámításával ellenőriznie kell a kapcsolódó modellt, például a pontosságot vagy a AUC súlyozottan. Ezek a metrikák az egyes modellekhez tartozó előrejelzések összehasonlításával vannak kiszámítva, és az érvényesítési adatokban szereplő korábbi észrevételekből származó valódi címkékkel vannak ellátva. 
+Ha Azure Machine Learning, ha az automatizált ML-t több ML modell kiépítésére használja, minden gyermeknek a modell minőségi metrikáinak kiszámításával ellenőriznie kell a kapcsolódó modellt, például a pontosságot vagy a AUC súlyozottan. Ezek a metrikák az egyes modellekhez tartozó előrejelzések összehasonlításával vannak kiszámítva, és az érvényesítési adatokban szereplő korábbi észrevételekből származó valódi címkékkel vannak ellátva. [További információ a metrikák kiszámításáról az ellenőrzési típus alapján](#metric-calculation-for-cross-validation-in-machine-learning). 
 
 Az automatizált ML-kísérletek automatikusan végzik a modell érvényesítését. Az alábbi szakaszok azt ismertetik, hogyan lehet tovább testreszabni az érvényesítési beállításokat a [Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py)-val. 
 
@@ -43,9 +43,9 @@ Ehhez a cikkhez szükséges,
 
     * [A betanítási, ellenőrzési és tesztelési készletek ismertetése Machine Learning](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7)
 
-    * [A gépi tanulásban való több ellenőrzés ismertetése](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd)
+    * [A gépi tanulásban való több ellenőrzés ismertetése](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd) 
 
-## <a name="default-data-splits-and-cross-validation"></a>Alapértelmezett adatmegosztások és több ellenőrzés
+## <a name="default-data-splits-and-cross-validation-in-machine-learning"></a>A gépi tanulásban az alapértelmezett adatfelosztás és a több érvényesítés
 
 A kísérlet és a betanítási beállítások megadásához használja a [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) objektumot. A következő kódrészletben figyelje meg, hogy csak a szükséges paraméterek vannak definiálva, azaz a vagy a paraméterei `n_cross_validation` `validation_ data` **nem** szerepelnek benne.
 
@@ -156,7 +156,14 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 > [!NOTE]
 > A `cv_split_column_names` és a `training_data` használata `label_column_name` esetén frissítse a Azure Machine learning Python SDK-1.6.0 vagy újabb verzióját. Az előző SDK-verziók esetében tekintse meg a használatát `cv_splits_indices` , de vegye figyelembe, hogy a `X` és az `y` adatkészletek csak a bemenettel együtt használatosak. 
 
-## <a name="next-steps"></a>Következő lépések
+
+## <a name="metric-calculation-for-cross-validation-in-machine-learning"></a>Metrikai számítás a gépi tanulásban való kereszt-ellenőrzéshez
+
+Ha a k-fold vagy a Monte Carlo kereszt-ellenőrzés van használatban, a metrikák kiszámítása az egyes ellenőrzésekhez szükséges, majd összesítve történik. Az összesítési művelet a skaláris mérőszámok és a diagramok összegének átlaga. A több ellenőrzés során kiszámított metrikák az összes hajtogatáson alapulnak, ezért a betanítási készletből származó összes mintát. [További információ a mérőszámokról az automatizált gépi tanulásban](how-to-understand-automated-ml.md).
+
+Ha egy egyéni ellenőrző készlet vagy egy automatikusan kiválasztott ellenőrzési készlet van használatban, a modell értékelési mérőszámai csak az adott ellenőrzési készletből vannak kiszámítva, nem a betanítási adatokból.
+
+## <a name="next-steps"></a>További lépések
 
 * [A kiegyensúlyozatlan és a túlterheléses adatkezelés megakadályozása](concept-manage-ml-pitfalls.md).
 * [Oktatóanyag: automatikus gépi tanulás használata a taxi viteldíjak előrejelzéséhez – az Adatfelosztás szakasz](tutorial-auto-train-models.md#split-the-data-into-train-and-test-sets).

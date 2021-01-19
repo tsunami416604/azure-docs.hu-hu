@@ -3,12 +3,12 @@ title: Azure-Managed Disks biztonsági mentése
 description: Ismerje meg, hogyan készíthet biztonsági mentést az Azure Managed Disksról a Azure Portalról.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: c4e2d4e649d59389ac3f8bd115e43acabc792eb2
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 2169e2f44e3ffb2c05c674d633efabed2c531878
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98557826"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573122"
 ---
 # <a name="back-up-azure-managed-disks-in-preview"></a>Azure Managed Disks biztonsági mentése (előzetes verzió)
 
@@ -130,6 +130,8 @@ A felügyelt lemezek biztonsági mentésének konfigurálásához a következő 
 
    ![Lemez pillanatkép-közreműködői szerepkör hozzáadása](./media/backup-managed-disks/disk-snapshot-contributor-role.png)
 
+1. Ha a biztonsági mentésre szolgáló lemez titkosítása az [ügyfél által felügyelt kulcsokkal (CMK)](https://docs.microsoft.com/azure/virtual-machines/disks-enable-customer-managed-keys-portal) történik, vagy ha a [platform által felügyelt kulcsokkal és az ügyfél által felügyelt kulcsokkal kettős titkosítást](https://docs.microsoft.com/azure/virtual-machines/disks-enable-double-encryption-at-rest-portal)használ, akkor rendelje hozzá az **olvasó** szerepkört a biztonságimásolat-tár felügyelt identitásához a **lemez titkosítási készletének** erőforrásán.
+
 1. Ellenőrizze, hogy a biztonságimásolat-tároló felügyelt identitása rendelkezik-e a megfelelő szerepkör-hozzárendelésekkel a forrás lemezen és az erőforráscsoporthoz, amely pillanatfelvétel-adattárként szolgál.
 
    1. Lépjen a **Backup-tároló – > identitás** elemre, és válassza az **Azure szerepkör-hozzárendelések** lehetőséget.
@@ -217,6 +219,6 @@ A Azure Backup szolgáltatás létrehoz egy feladatot az ütemezett biztonsági 
 
    ![A részletek megtekintéséhez válassza a feladatok lehetőséget.](./media/backup-managed-disks/select-job.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure-Managed Disks visszaállítása](restore-managed-disks.md)

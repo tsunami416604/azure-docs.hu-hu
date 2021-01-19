@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 10/07/2020
+ms.date: 01/19/2021
 ms.author: alkohli
-ms.openlocfilehash: 225cb9a31b73f330d8b4ed5790caacc4fa729477
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d40d26e8fab0832a37a43c353e11189f8f193f14
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839945"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573326"
 ---
 # <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>A GPU-val Azure Stack Edge Pro műszaki specifikációi és megfelelőségi követelményei 
 
@@ -26,7 +26,7 @@ Az Azure Stack Edge Pro-eszköz a következő specifikációkkal rendelkezik a s
 | Specifikáció           | Érték                  |
 |-------------------------|----------------------------|
 | CPU                     | 2 X Intel Xeon Silver 4214 (Cascade-tó) CPU            |
-| Memória                  | 128 (8x16 GB) GB RAM                     |
+| Memória                  | 128 (8x16 GB) GB RAM <br> Dell-kompatibilis 16 GB PC4-23400 DDR4-2933Mhz 2Rx8 1.2 v ECC regisztrált RDIMM       |
 
 
 ## <a name="compute-acceleration-specifications"></a>Számítási gyorsítási specifikációk
@@ -45,7 +45,7 @@ Az Azure Stack Edge Pro-eszköz két 100-240 V-os tápegységgel (PSUs) rendelke
 | Specifikáció           | 750 W PSU                  |
 |-------------------------|----------------------------|
 | Maximális kimeneti teljesítmény    | 750 W                     |
-| Frequency               | 50/60 Hz                   |
+| Gyakoriság               | 50/60 Hz                   |
 | Feszültség-tartomány kiválasztása | Automatikus hatókör: 100-240 V AC |
 | Gyors csatlakoztatás           | Igen                        |
 
@@ -56,7 +56,7 @@ Az Azure Stack Edge Pro-eszköz hat hálózati adapterrel rendelkezik, a PORT1-P
 
 | Specifikáció           | Leírás                 |
 |-------------------------|----------------------------|
-|  Hálózati adapterek    | **2 X 1 GbE-illesztő** – 1 felügyeleti felület az 1. port a kezdeti beállításhoz van használatban, és alapértelmezés szerint statikus. A kezdeti beállítás befejeződése után bármely IP-címmel rendelkező adatkapcsolatot használhat. Alaphelyzetbe állításkor azonban a felület visszaáll a statikus IP-címekre. <br>A másik 2. port a felhasználó által konfigurálható, adatátvitelre is használható, és alapértelmezés szerint a DHCP. <br>**4 X 25 GbE interfész** – ezeket az adatillesztőket, a 3-as portot a 6-os porton keresztül, a felhasználó DHCP-ként (alapértelmezett) vagy statikusként is konfigurálhatja. Ezek 10 GbE interfészként is működhetnek.  | 
+|  Hálózati adapterek    | **2 X 1 GbE-illesztő** – 1 felügyeleti felület az 1. port a kezdeti beállításhoz van használatban, és alapértelmezés szerint statikus. A kezdeti beállítás befejeződése után bármely IP-címmel rendelkező adatkapcsolatot használhat. Alaphelyzetbe állításkor azonban a felület visszaáll a statikus IP-címekre. <br>A másik 2. port a felhasználó által konfigurálható, adatátvitelre is használható, és alapértelmezés szerint a DHCP. <br>**4 X 25 GbE interfész** – ezeket az adatillesztőket, a 3-as portot a 6-os porton keresztül, a felhasználó DHCP-ként (alapértelmezett) vagy statikusként is konfigurálhatja. Akár 10 GbE interfészként is működhetnek.  | 
 
 Az Azure Stack Edge Pro-eszköz a következő hálózati hardverrel rendelkezik:
 
@@ -67,8 +67,8 @@ A Mellanox kártya részletei:
 
 | Paraméter           | Leírás                 |
 |-------------------------|----------------------------|
-| Modell    | ConnectX®-4 LX EN hálózati csatolókártya                      |
-| Modell leírása               | 25GbE Dual-port SFP28; PCIe 3.0 x8; ROHS R6                    |
+| Modellezés    | ConnectX®-4 LX EN hálózati csatolókártya                      |
+| Modell leírása               | 25 GbE Dual-port SFP28; PCIe 3.0 x8; ROHS R6                    |
 | Eszköz részének száma (R640) | MCX4121A – ACAT  |
 | PSID (R640)           | MT_2420110034                         |
 
@@ -88,11 +88,9 @@ Az Azure Stack Edge Pro-eszközök öt 2,5 "NVMe DC SSD-P4610 rendelkeznek, amel
 |    Rendszerindítási SATA SSD-meghajtók (SSD)      |    1                  |
 |    Rendszerindítási SSD-kapacitás                       |    240 GB             |
 |    Teljes kapacitás                          |    8,0 TB             |
-|    Teljes felhasználható kapacitás *                  |    ~ 4,19 TB          |
+|    Teljes felhasználható kapacitás                   |    ~ 4,19 TB          |
+|    RAID-konfiguráció                      |    Közvetlen tárolóhelyek tükrözés és paritás együttesével  |
 |    SAS-vezérlő                          |    HBA330 12 GB/s     |
-
-
-**A paritásos rugalmasság és a belső használatra való tárterület megőrzése után.*
 
 <!--Remove based on feedback from Ravi
 ## Other hardware specifications
@@ -150,6 +148,7 @@ Ez a szakasz felsorolja a bekerítési környezettel kapcsolatos specifikációk
 |     Ház                           |     Üzemeltetési specifikációk                                                                                                                                                                                         |
 |-----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |    Légáramlás                              |    A rendszer légáram elölről hátrafelé. A rendszert alacsony terhelésű, hátsó kimeneti telepítéssel kell működtetni. <!--Back pressure created by rack doors and obstacles should not exceed 5 pascals (0.5 mm water gauge).-->    |
+| Behatolás elleni védelem (IP)                 |    Az ilyen típusú, beltéri használatra szánt berendezések általában nem teszteltek a behatolás elleni védelemre (a szilárd anyagok és a folyadékok elleni védelem egy elektromos ház esetében). A gyártó biztonsági értékelése a IPXO (nincs beáramló védelem) jeleníti meg.  |
 |    Maximális magasság, működési        |    3048 méter (10 000 láb), amely az üzemeltetési hőmérséklet által meghatározott maximális működési hőmérsékletet határozza meg, az [üzemi hőmérséklet-minősítési specifikációk](#operating-temperature-de-rating-specifications)alapján.                                                                                |
 |    Maximális magasság, nem működő    |    12 000 méter (39 370 láb)                                                                                                                                                                                         |
 |    Sokk, működési                   |    6 G 11 ezredmásodpercnél 6 percnél                                                                                                                                                                         |
@@ -170,6 +169,6 @@ Ez a szakasz felsorolja a bekerítési környezettel kapcsolatos specifikációk
 |    35 °C – 40 °C (95 °f – 104 °F)            |    A maximális hőmérsékletet 1 °C/175 m (1 °F/319 Ft) csökkenti 950 m felett (3 117 Ft).    |
 |    40 °C-ról 45 °C-ra (104 °F – 113 °F)           |    A maximális hőmérsékletet 1 °C/125 m (1 °F/228 Ft) csökkenti 950 m felett (3 117 Ft).    |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Az Azure Stack Edge Pro üzembe helyezése](azure-stack-edge-gpu-deploy-prep.md)

@@ -4,12 +4,12 @@ description: Összefoglalja az Azure-beli virtuális gépek vész-helyreállít�
 ms.topic: article
 ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: fdd5b8f9cea549f64c4857d1c45b95b0d9b9ec53
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 2dbd7cd756e386b44c6933697ff50180021ac035
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569963"
+ms.locfileid: "98572306"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure-beli virtuális gépek Azure-régiók közti vészhelyreállításának támogatási mátrixa
 
@@ -213,7 +213,7 @@ Védett lemezek offline módosításai | A lemezek leválasztása és a kapcsola
 
 Ez a táblázat az Azure VM operációsrendszer-lemez, az adatlemez és az ideiglenes lemez támogatását foglalja össze.
 
-- Fontos, hogy megfigyelje a virtuálisgép-lemezek korlátait és a [Linux](../virtual-machines/linux/disk-scalability-targets.md) és [Windows rendszerű](../virtual-machines/windows/disk-scalability-targets.md) virtuális gépekre vonatkozó célokat, hogy elkerülje a teljesítménnyel kapcsolatos problémákat.
+- Fontos, hogy megfigyelje a virtuálisgép-lemezek korlátait és a [felügyelt lemezekre](../virtual-machines/disks-scalability-targets.md) vonatkozó célokat, hogy elkerülje a teljesítménnyel kapcsolatos problémákat.
 - Ha az alapértelmezett beállításokkal telepíti a szolgáltatást, Site Recovery automatikusan létrehozza a lemezeket és a Storage-fiókokat a forrás beállításai alapján.
 - Ha testreszabja, győződjön meg arról, hogy kövesse az irányelveket.
 
@@ -261,7 +261,7 @@ Gyorssegéd-kompatibilis lemezek írása | Nem támogatott
 Címkék  | A felhasználó által generált címkéket 24 óránként replikálja a rendszer.
 
 >[!IMPORTANT]
-> A teljesítményproblémák elkerülése érdekében győződjön meg arról, hogy a virtuálisgép-lemezek méretezhetőségére és teljesítményére vonatkozó célokat követ a [Linux](../virtual-machines/linux/disk-scalability-targets.md) vagy a [Windows rendszerű](../virtual-machines/windows/disk-scalability-targets.md) virtuális gépek esetében. Ha az alapértelmezett beállításokat használja, Site Recovery létrehozza a szükséges lemezeket és a Storage-fiókokat a forrás konfigurációja alapján. Ha testreszabja és kiválasztja a saját beállításait, kövesse a forrásként szolgáló virtuális gépek lemezének méretezhetőségét és teljesítményére vonatkozó célokat.
+> A teljesítményproblémák elkerülése érdekében győződjön meg arról, hogy követte a virtuális gépek méretezhetőségét és a teljesítményre vonatkozó célokat a [felügyelt lemezeken](../virtual-machines/disks-scalability-targets.md). Ha az alapértelmezett beállításokat használja, Site Recovery létrehozza a szükséges lemezeket és a Storage-fiókokat a forrás konfigurációja alapján. Ha testreszabja és kiválasztja a saját beállításait, kövesse a forrásként szolgáló virtuális gépek lemezének méretezhetőségét és teljesítményére vonatkozó célokat.
 
 ## <a name="limits-and-data-change-rates"></a>Korlátok és adatváltozások aránya
 

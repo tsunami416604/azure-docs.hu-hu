@@ -3,12 +3,12 @@ title: Támogatási mátrix a VMware/fizikai vész-helyreállításhoz Azure Sit
 description: Összefoglalja a VMware virtuális gépek és a fizikai kiszolgálók vész-helyreállításának támogatását az Azure-ban Azure Site Recovery használatával.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: eaf12a9799f834046bc3914816f38d672fcc931b
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 4bf0227cf11b21d7cde2807d465385bfc2b998b5
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234086"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573054"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>A VMware virtuális gépek és fizikai kiszolgálók Azure-ba való vész-helyreállítási mátrixának támogatása
 
@@ -57,6 +57,9 @@ IIS | Győződjön meg róla, hogy:<br/><br/> -Nem rendelkezik egy korábban lé
 Hálózati adapter típusa | VMXNET3 (VMware virtuális gépként való üzembe helyezéskor)
 IP-cím típusa | Statikus
 Portok | 443 a vezérlési csatorna koordinálásához használatos<br/>9443 adatátvitelhez
+
+> [!NOTE]
+Az operációs rendszert angol nyelvvel kell telepíteni. A területi beállítások telepítésének átalakítása potenciális problémákat eredményezhet.
 
 ## <a name="replicated-machines"></a>Replikált gépek
 

@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 01/19/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5a09a2083c1258a3120f8696aa39a0252dbfcf2d
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 83a4a2aa8328a6e3de9eab44bbf19fc76921b128
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209692"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573357"
 ---
 # <a name="azure-storage-redundancy"></a>Redundancia az Azure Storage szolgáltatásban
 
@@ -35,11 +35,15 @@ Az Azure Storage-fiókban lévő adategységek mindig háromszor replikálódnak
 
 ### <a name="locally-redundant-storage"></a>Helyileg redundáns tárolás
 
-A helyileg redundáns tárolás (LRS) háromszor replikálja az adatait az elsődleges régióban található egyetlen fizikai helyen belül. A LRS legalább 99,999999999%-os (11 kilenc) tartósságot biztosít az objektumok számára egy adott évben.
+A helyileg redundáns tárolás (LRS) háromszor replikálja az adatait az elsődleges régió egyetlen adatközpontjában. A LRS legalább 99,999999999%-os (11 kilenc) tartósságot biztosít az objektumok számára egy adott évben.
 
 A LRS a legalacsonyabb árú redundancia-beállítás, és a lehető legkevesebb tartósságot kínálja a többi lehetőséghez képest. A LRS megvédi adatait a Server rack és a meghajtó meghibásodása ellen. Ha azonban az adatközponton belül egy sérülés, például a tűz vagy az árvíz történik, a LRS használó Storage-fiókok összes replikája elveszhet vagy helyreállíthatatlan lehet. A kockázat enyhítése érdekében a [Microsoft a ZRS](#zone-redundant-storage) -t, a [geo-redundáns tárolást](#geo-redundant-storage) (GRS) vagy a [geo-zóna redundáns tárolást](#geo-zone-redundant-storage) (GZRS) javasolja.
 
 A LRS-t használó Storage-fiókra vonatkozó írási kérelem szinkron módon történik. Az írási művelet csak akkor tér vissza sikeresen, ha az adatok mindhárom replikára íródnak.
+
+Az alábbi ábra bemutatja, hogyan replikálódnak az adatai egyetlen adatközpontban a LRS:
+
+:::image type="content" source="media/storage-redundancy/locally-redundant-storage.png" alt-text="Ábra, amely bemutatja, hogyan replikálódnak az egyes adatközpontokban lévő adategységek az LRS":::
 
 A LRS jó választás a következő esetekben:
 
@@ -54,7 +58,11 @@ A ZRS esetében az adatok továbbra is elérhetők olvasási és írási művele
 
 A ZRS-t használó Storage-fiókra vonatkozó írási kérelem szinkron módon történik. Az írási művelet csak akkor ad eredményül, ha az adatok a három rendelkezésre állási zónában lévő összes replikára íródnak.
 
-A Microsoft a ZRS használatát javasolja az elsődleges régióban olyan forgatókönyvek esetében, amelyek következetességet, tartósságot és magas rendelkezésre állást igényelnek. Javasoljuk továbbá a ZRS használatát is, ha az adatirányítási követelmények miatt korlátozni szeretné az alkalmazások replikálását az adott országban vagy régióban.
+A Microsoft a ZRS használatát javasolja az elsődleges régióban olyan forgatókönyvek esetében, amelyek következetességet, tartósságot és magas rendelkezésre állást igényelnek. A ZRS azt is javasoljuk, hogy az adatkezelési követelmények teljesítése érdekében korlátozza az adatreplikációt egy adott országon vagy régióban.
+
+Az alábbi ábra bemutatja, hogyan replikálódnak az adatai a rendelkezésre állási zónák között az elsődleges régió ZRS:
+
+:::image type="content" source="media/storage-redundancy/zone-redundant-storage.png" alt-text="Ábra, amely bemutatja, hogyan replikálódnak az adatreplikálás az elsődleges régióban a ZRS":::
 
 A ZRS kiváló teljesítményt, kis késleltetést és rugalmasságot biztosít az adatai számára, ha átmenetileg elérhetetlenné válik. A ZRS önmagában azonban nem nyújt védelmet az adatainak olyan regionális katasztrófák ellenében, ahol a rendszer több zónát tartósan érint. A regionális katasztrófák elleni védelem érdekében a Microsoft azt javasolja, hogy a [geo-Zone-redundáns tárolást](#geo-zone-redundant-storage) (GZRS) használja, amely az elsődleges régióban lévő ZRS használja, és földrajzilag replikálja az adatait egy másodlagos régióba.
 
@@ -197,7 +205,7 @@ Az egyes redundancia-lehetőségek díjszabásáról az [Azure Storage díjszab�
 
 Az Azure Storage rendszeresen ellenőrzi a ciklikus redundancia-ellenőrzések (FCSF) használatával tárolt adatok integritását. Ha a rendszer az adatsérülést észleli, a redundáns adatvesztéssel kerül kijavításra. Az Azure Storage az összes hálózati forgalom ellenőrzőösszegét is kiszámítja, hogy észlelje az adatcsomagok sérülését az adatok tárolása vagy beolvasása során.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [A Storage-fiók utolsó szinkronizálási ideje tulajdonságának megtekintése](last-sync-time-get.md)
 - [Storage-fiók redundancia beállításának módosítása](redundancy-migration.md)
