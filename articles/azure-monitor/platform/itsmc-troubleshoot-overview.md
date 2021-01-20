@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 14f1056bf761eb7b591d04db34610468058bc255
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 2ffe7c8994d32917a08896c7d25f20d4adf09066
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562852"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601910"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>Hibaelhárítás az ITSM-összekötőben
 
@@ -53,11 +53,36 @@ Ha Service Map használ, megtekintheti a ITSM-megoldásokban létrehozott ügyf�
      - Győződjön meg arról, hogy a webalkalmazás üzembe helyezése sikeres volt, és hogy a hibrid kapcsolat létrejött. Annak ellenőrzéséhez, hogy a kapcsolat sikeresen létrejött-e a helyszíni Service Manager számítógéppel, lépjen a webalkalmazás URL-címére a [hibrid kapcsolat](./itsmc-connections-scsm.md#configure-the-hybrid-connection)létrehozásához szükséges dokumentációban leírtak szerint.  
 
 - Ha Log Analytics riasztások tüzet, de a munkaelemek nem jönnek létre a ITSM termékben, ha a konfigurációs elemek nem jönnek létre/nem kapcsolódnak munkaelemekhez vagy egyéb információkhoz, tekintse meg ezeket az erőforrásokat:
-   -  ITSMC: a megoldás a kapcsolatok, a munkaelemek, a számítógépek és egyebek összegzését jeleníti meg. Válassza ki az **összekötő állapota** címkével ellátott csempét. Ekkor a **Keresés** a megfelelő lekérdezéssel történik. További információért tekintse meg a rekordokat `LogType_S` `ERROR` .
+   -  ITSMC: a megoldás a kapcsolatok, a munkaelemek, a számítógépek és egyebek [összegzését](itsmc-dashboard.md)jeleníti meg. Válassza ki az **összekötő állapota** címkével ellátott csempét. Ekkor a **Keresés** a megfelelő lekérdezéssel történik. További információért tekintse meg a rekordokat `LogType_S` `ERROR` .
+   A táblázatban található üzenetekre vonatkozó részleteket [itt](itsmc-dashboard-errors.md)tekintheti meg.
    - **Naplók keresése** oldalon: a hibákat és a kapcsolódó információkat közvetlenül a lekérdezés használatával tekintheti meg `*ServiceDeskLog_CL*` .
 
-### <a name="troubleshoot-service-manager-web-app-deployment"></a>Service Manager webalkalmazás központi telepítésének hibáinak megoldása
+## <a name="common-symptoms---how-it-should-be-resolved"></a>Gyakori tünetek – Hogyan oldható fel?
 
--   Ha problémák merülnek fel a webalkalmazások üzembe helyezésével kapcsolatban, győződjön meg arról, hogy rendelkezik az előfizetés erőforrásainak létrehozásához/üzembe helyezéséhez szükséges engedélyekkel.
--   Ha a [parancsfájl](itsmc-service-manager-script.md)futtatásakor nem az objektumra **vonatkozó hiba példányára van beállítva** , akkor ellenőrizze, hogy érvényes értékeket adott-e meg a **Felhasználó konfigurációja** szakaszban.
--   Ha nem sikerül létrehoznia a Service Bus Relay-névteret, győződjön meg arról, hogy a szükséges erőforrás-szolgáltató regisztrálva van az előfizetésben. Ha nincs regisztrálva, manuálisan hozza létre a Service Bus Relay-névteret a Azure Portalból. Azt is létrehozhatja, amikor [létrehozza a hibrid kapcsolatokat](./itsmc-connections-scsm.md#configure-the-hybrid-connection) a Azure Portalban.
+Az alábbi lista általános tüneteket tartalmaz, és hogyan oldható meg a megoldás:
+
+* **Tünet**: ismétlődő munkaelemek jönnek létre
+
+    **OK**: az ok a két lehetőség egyike lehet:
+    * A riasztáshoz egynél több ITSM művelet van definiálva.
+    * A riasztás megoldódott.
+
+    **Megoldás**: két megoldás lehet:
+    * Győződjön meg arról, hogy a ITSM műveleti csoport egyetlen riasztással rendelkezik.
+    * ITSM-csatoló a riasztás feloldásakor nem támogatja a munkaelemek állapotának egyeztetését. Létrejön egy új megoldott munkaelem.
+* **Tünet**: a munkaelemek nincsenek létrehozva
+
+    **OK**: a hibajelenség néhány oka lehet:
+    * Kód módosítása a ServiceNow oldalon
+    * Helytelen konfigurálási engedélyek
+    * A ServiceNow arányának korlátai túl magasak/alacsonyak
+    * A frissítési jogkivonat lejárt
+    * ITSM-csatoló törölve
+
+    **Megoldás**: megtekintheti az [irányítópultot](itsmc-dashboard.md) , és áttekintheti a hibákat az összekötő állapota szakaszban. Tekintse át a [gyakori hibákat](itsmc-dashboard-errors.md) , és Ismerje meg, hogyan oldja meg a hibát.
+
+* **Tünet**: nem sikerült létrehozni a műveleti csoport ITSM műveletét
+
+    **OK**: az újonnan létrehozott ITSM-csatoló még befejezte a kezdeti szinkronizálást.
+
+    **Megoldás**: áttekintheti a [gyakori felhasználói felületi hibákat](itsmc-dashboard-errors.md#ui-common-errors) , és megtudhatja, hogyan oldja meg a hibát.

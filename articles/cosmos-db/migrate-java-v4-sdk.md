@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 6bbf87689b577eda7de491744156e63eaa3b440c
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: e537c964d6063b76df63b3d80c5ef72b1ea56c92
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546879"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600249"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>Az alkalmazás migrálása a Azure Cosmos DB Java SDK v4 használatára
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -90,7 +90,8 @@ A Azure Cosmos DB Java SDK 3. x. x verziójában az `CosmosItemProperties` objek
 ### <a name="imports"></a>Importálja
 
 * A Azure Cosmos DB Java SDK 4,0 csomagok kezdete `com.azure.cosmos`
-  * Azure Cosmos DB Java SDK 3. x. x csomag kezdete `com.azure.data.cosmos`
+* Azure Cosmos DB Java SDK 3. x. x csomag kezdete `com.azure.data.cosmos`
+* A Azure Cosmos DB Java SDK 2. x. x szinkronizációs API-csomagjai a következővel kezdődnek: `com.microsoft.azure.documentdb`
 
 * Azure Cosmos DB Java SDK 4,0 több osztályt helyez el egy beágyazott csomagban `com.azure.cosmos.models` . A csomagok némelyike az alábbiakat tartalmazza:
 
@@ -114,7 +115,7 @@ Ez különbözik a Azure Cosmos DB Java SDK 3. x. x verziótól, amely egy Fluen
 
 ### <a name="create-resources"></a>Az erőforrások létrehozása
 
-A következő kódrészlet a 4,0 és 3. x. x aszinkron API-k közötti erőforrások közötti különbségeket mutatja be:
+A következő kódrészlet bemutatja, hogy az erőforrások hogyan jönnek létre a 4,0, 3. x. x aszinkron API-k és 2. x. x sync API-k között:
 
 # <a name="java-sdk-40-async-api"></a>[Java SDK 4,0 aszinkron API](#tab/java-v4-async)
 
@@ -150,11 +151,38 @@ client.createDatabaseIfNotExists("YourDatabaseName")
         return Mono.empty();
 }).subscribe();
 ```
+
+# <a name="java-sdk-2xx-sync-api"></a>[Java SDK 2. x. x szinkronizációs API](#tab/java-v2-sync)
+
+```java
+ConnectionPolicy defaultPolicy = ConnectionPolicy.GetDefault();
+//  Setting the preferred location to Cosmos DB Account region
+defaultPolicy.setPreferredLocations(Lists.newArrayList("Your Account Location"));
+
+//  Create document client
+//  <CreateDocumentClient>
+client = new DocumentClient("your.hostname", "your.masterkey", defaultPolicy, ConsistencyLevel.Eventual)
+
+// Create database with specified name
+Database databaseDefinition = new Database();
+databaseDefinition.setId("YourDatabaseName");
+ResourceResponse<Database> databaseResourceResponse = client.createDatabase(databaseDefinition, new RequestOptions());
+
+// Read database with specified name
+String databaseLink = "dbs/YourDatabaseName";
+databaseResourceResponse = client.readDatabase(databaseLink, new RequestOptions());
+Database database = databaseResourceResponse.getResource();
+
+// Create container with specified name
+DocumentCollection documentCollection = new DocumentCollection();
+documentCollection.setId("YourContainerName");
+documentCollection = client.createCollection(database.getSelfLink(), documentCollection, new RequestOptions()).getResource();
+```
 ---
 
 ### <a name="item-operations"></a>Elemek műveletei
 
-A következő kódrészlet a 4,0 és 3. x. x aszinkron API-k közötti műveletek különbségeit mutatja be:
+A következő kódrészlet a 4,0, 3. x. x aszinkron API és 2. x. x sync API-k közötti műveletek különbségeit mutatja be:
 
 # <a name="java-sdk-40-async-api"></a>[Java SDK 4,0 aszinkron API](#tab/java-v4-async)
 
@@ -172,11 +200,22 @@ Flux.fromIterable(docs)
     .flatMap(doc -> container.createItem(doc))
     .subscribe(); // ...Subscribing triggers stream execution.
 ```
+
+# <a name="java-sdk-2xx-sync-api"></a>[Java SDK 2. x. x szinkronizációs API](#tab/java-v2-sync)
+
+```java
+//  Container is created. Generate documents to insert.
+Document document = new Document();
+document.setId("YourDocumentId");
+ResourceResponse<Document> documentResourceResponse = client.createDocument(documentCollection.getSelfLink(), document,
+    new RequestOptions(), true);
+Document responseDocument = documentResourceResponse.getResource();
+```
 ---
 
 ### <a name="indexing"></a>Indexelés
 
-A következő kódrészlet a 4,0 és 3. x. x aszinkron API-k közötti adatindexelési különbségeket mutatja be:
+A következő kódrészlet a 4,0, 3. x. x aszinkron API-k és 2. x. x szinkronizálási API-k közötti különbségeket mutatja be:
 
 # <a name="java-sdk-40-async-api"></a>[Java SDK 4,0 aszinkron API](#tab/java-v4-async)
 
@@ -196,7 +235,7 @@ List<IncludedPath> includedPaths = new ArrayList<>();
 IncludedPath includedPath = new IncludedPath();
 includedPath.path("/*");
 includedPaths.add(includedPath);
-indexingPolicy.setIncludedPaths(includedPaths);
+indexingPolicy.includedPaths(includedPaths);
 
 // Excluded paths
 List<ExcludedPath> excludedPaths = new ArrayList<>();
@@ -211,11 +250,39 @@ CosmosContainer containerIfNotExists = database.createContainerIfNotExists(conta
                                                .block()
                                                .container();
 ```
+
+# <a name="java-sdk-2xx-sync-api"></a>[Java SDK 2. x. x szinkronizációs API](#tab/java-v2-sync)
+
+```java
+// Custom indexing policy
+IndexingPolicy indexingPolicy = new IndexingPolicy();
+indexingPolicy.setIndexingMode(IndexingMode.Consistent); //To turn indexing off set IndexingMode.NONE
+
+// Included paths
+List<IncludedPath> includedPaths = new ArrayList<>();
+IncludedPath includedPath = new IncludedPath();
+includedPath.setPath("/*");
+includedPaths.add(includedPath);
+indexingPolicy.setIncludedPaths(includedPaths);
+
+// Excluded paths
+List<ExcludedPath> excludedPaths = new ArrayList<>();
+ExcludedPath excludedPath = new ExcludedPath();
+excludedPath.setPath("/name/*");
+excludedPaths.add(excludedPath);
+indexingPolicy.setExcludedPaths(excludedPaths);
+
+// Create container with specified name and indexing policy
+DocumentCollection documentCollection = new DocumentCollection();
+documentCollection.setId("YourContainerName");
+documentCollection.setIndexingPolicy(indexingPolicy);
+documentCollection = client.createCollection(database.getSelfLink(), documentCollection, new RequestOptions()).getResource();
+```
 ---
 
 ### <a name="stored-procedures"></a>Tárolt eljárások
 
-A következő kódrészlet az 4,0 és 3. x. x aszinkron API-k közötti tárolt eljárások különbségeit mutatja be:
+A következő kódrészlet azt mutatja, hogy a tárolt eljárások hogyan jönnek létre a 4,0, 3. x. x aszinkron API és 2. x. x sync API-k között:
 
 # <a name="java-sdk-40-async-api"></a>[Java SDK 4,0 aszinkron API](#tab/java-v4-async)
 
@@ -262,6 +329,45 @@ container.getScripts()
             return Mono.empty();
         }).block();
 ```
+
+# <a name="java-sdk-2xx-sync-api"></a>[Java SDK 2. x. x szinkronizációs API](#tab/java-v2-sync)
+
+```java
+logger.info("Creating stored procedure...\n");
+
+String sprocId = "createMyDocument";
+String sprocBody = "function createMyDocument() {\n" +
+    "var documentToCreate = {\"id\":\"test_doc\"}\n" +
+    "var context = getContext();\n" +
+    "var collection = context.getCollection();\n" +
+    "var accepted = collection.createDocument(collection.getSelfLink(), documentToCreate,\n" +
+    "    function (err, documentCreated) {\n" +
+    "if (err) throw new Error('Error' + err.message);\n" +
+    "context.getResponse().setBody(documentCreated.id)\n" +
+    "});\n" +
+    "if (!accepted) return;\n" +
+    "}";
+StoredProcedure storedProcedureDef = new StoredProcedure();
+storedProcedureDef.setId(sprocId);
+storedProcedureDef.setBody(sprocBody);
+StoredProcedure storedProcedure = client.createStoredProcedure(documentCollection.getSelfLink(), storedProcedureDef, new RequestOptions())
+                                        .getResource();
+
+// ...
+
+logger.info(String.format("Executing stored procedure %s...\n\n", sprocId));
+
+RequestOptions options = new RequestOptions();
+options.setPartitionKey(new PartitionKey("test_doc"));
+
+StoredProcedureResponse storedProcedureResponse =
+    client.executeStoredProcedure(storedProcedure.getSelfLink(), options, null);
+logger.info(String.format("Stored procedure %s returned %s (HTTP %d), at cost %.3f RU.\n",
+    sprocId,
+    storedProcedureResponse.getResponseAsString(),
+    storedProcedureResponse.getStatusCode(),
+    storedProcedureResponse.getRequestCharge()));
+```
 ---
 
 ### <a name="change-feed"></a>Csatorna módosítása
@@ -306,11 +412,15 @@ ChangeFeedProcessor.Builder()
                             .subscribeOn(Schedulers.elastic())
                             .subscribe();
 ```
+
+# <a name="java-sdk-2xx-sync-api"></a>[Java SDK 2. x. x szinkronizációs API](#tab/java-v2-sync)
+
+* Ez a funkció Java SDK v2-szinkronizálás esetén nem támogatott. 
 ---
 
 ### <a name="container-level-time-to-livettl"></a>Tárolói szint élettartama (TTL)
 
-A következő kódrészlet a 4,0 és 3. x. x aszinkron API-k használatával mutatja be, hogyan lehet időt létrehozni a tárolóban lévő adatai számára.
+A következő kódrészlet azt mutatja be, hogyan lehet időt létrehozni a tárolóban lévő adatai számára a 4,0, 3. x. x aszinkron API-k és 2. x. x sync API-k használatával:
 
 # <a name="java-sdk-40-async-api"></a>[Java SDK 4,0 aszinkron API](#tab/java-v4-async)
 
@@ -326,11 +436,21 @@ CosmosContainerProperties containerProperties = new CosmosContainerProperties("m
 containerProperties.defaultTimeToLive(90 * 60 * 60 * 24);
 container = database.createContainerIfNotExists(containerProperties, 400).block().container();
 ```
+
+# <a name="java-sdk-2xx-sync-api"></a>[Java SDK 2. x. x szinkronizációs API](#tab/java-v2-sync)
+
+```java
+DocumentCollection documentCollection;
+
+// Create a new container with TTL enabled with default expiration value
+documentCollection.setDefaultTimeToLive(90 * 60 * 60 * 24);
+documentCollection = client.createCollection(database.getSelfLink(), documentCollection, new RequestOptions()).getResource();
+```
 ---
 
 ### <a name="item-level-time-to-livettl"></a>Elemek szintjének élettartama (TTL)
 
-A következő kódrészlet a 4,0 és 3. x. x aszinkron API-kat használó elemek élettartamának létrehozásával kapcsolatos különbségeket mutatja be:
+A következő kódrészlet azt mutatja be, hogyan lehet időt létrehozni egy elemhez a 4,0, 3. x. x aszinkron API-k és 2. x. x szinkronizálási API-k használatával:
 
 # <a name="java-sdk-40-async-api"></a>[Java SDK 4,0 aszinkron API](#tab/java-v4-async)
 
@@ -371,9 +491,20 @@ SalesOrder salesOrder = new SalesOrder(
     60 * 60 * 24 * 30  // Expire sales orders in 30 days
 );
 ```
+
+# <a name="java-sdk-2xx-sync-api"></a>[Java SDK 2. x. x szinkronizációs API](#tab/java-v2-sync)
+
+```java
+Document document = new Document();
+document.setId("YourDocumentId");
+document.setTimeToLive(60 * 60 * 24 * 30 ); // Expire document in 30 days
+ResourceResponse<Document> documentResourceResponse = client.createDocument(documentCollection.getSelfLink(), document,
+    new RequestOptions(), true);
+Document responseDocument = documentResourceResponse.getResource();
+```
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Java-alkalmazás létrehozása](create-sql-api-java.md) Azure Cosmos db SQL API-alapú adatkezeléshez a v4 SDK használatával
 * Tudnivalók a [reaktor-alapú Java SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-pattern-guide.md) -k használatáról

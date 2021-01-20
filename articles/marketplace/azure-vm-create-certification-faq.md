@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 01/18/2021
-ms.openlocfilehash: f802292d9723179b36d5291993bd4e07487fe6a8
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 80dc19a58d212bb6ab8d608e222cd3a0bd3990d1
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567385"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600992"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Virtuális gépek minősítésének hibáinak megoldása
 
@@ -321,7 +321,7 @@ A következő táblázat tartalmazza azokat a problémákat, amelyek a virtuáli
 |Érvénytelen VHD-név|Ellenőrizze, hogy létezik-e speciális karakter (például egy százalék `%` vagy idézőjel `"` ) a VHD-névben.|Nevezze át a VHD-fájlt a speciális karakterek eltávolításával.|
 |
 
-## <a name="first-1-mb-2048-sectors-each-sector-of-512-bytes-partition"></a>Az első 1 MB (2048 szektor, 512 bájtos szektor) partíció
+## <a name="first-partition-starts-at-1-mb-2048-sectors"></a>Az első partíció 1 MB-ban kezdődik (2048 szektor)
 
 Ha [saját lemezképet](azure-vm-create-using-own-image.md)készít, győződjön meg arról, hogy az operációsrendszer-lemez első 2048 szektora (1 MB) üres. Ellenkező esetben a közzététel sikertelen lesz. Ez a követelmény csak az operációsrendszer-lemezre vonatkozik (nem adatlemezek). Ha [jóváhagyta](azure-vm-create-using-approved-base.md)a rendszerképét, kihagyhatja ezt a követelményt.
 

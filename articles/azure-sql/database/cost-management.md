@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: sql-database
 ms.topic: how-to
 ms.date: 01/15/2021
-ms.openlocfilehash: 19531b9d0019fb000efe5aeb2d1b9fed34ce23f1
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 8d36166a67e683dd7f15eef18d589562b39ba568
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253360"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600631"
 ---
 # <a name="plan-and-manage-costs-for-azure-sql-database"></a>A Azure SQL Database költségeinek megtervezése és kezelése
 
@@ -67,7 +67,7 @@ A Azure SQL Database (a kiszolgáló nélküli) számlázása kiszámítható, �
 
 ### <a name="using-monetary-credit-with-azure-sql-database"></a>Pénzügyi kreditek használata Azure SQL Database
 
-Az nagyvállalati szerződéssel rendelkező pénzügyi kötelezettségvállalással kapcsolatos díjakért Azure SQL Database díjat is fizethet. Nem használhatja azonban az EA pénzügyi kötelezettségvállalását, hogy díjat fizessen a harmadik féltől származó termékekért és szolgáltatásért, például az Azure piactéren.
+Az Azure-előfizetéssel (korábban pénzügyi kötelezettségvállalásnak nevezett) Kredittel Azure SQL Database díjat fizethet. Az Azure-beli előfizetési kreditek azonban nem használhatók fel a harmadik féltől származó termékekhez és szolgáltatásokhoz, például az Azure piactéren fizetendő díjakért.
 
 ## <a name="review-estimated-costs-in-the-azure-portal"></a>A becsült költségek áttekintése az Azure Portalon
 

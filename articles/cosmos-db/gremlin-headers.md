@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/03/2019
 author: christopheranderson
 ms.author: chrande
-ms.openlocfilehash: 3f5996b281c1985747f754e3796e9fb84f90fdd3
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 0442d21aebe1cf577c50d14a5aeff40bd1f6cd9c
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356960"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600520"
 ---
 # <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Azure Cosmos DB Gremlin-kiszolgáló válaszának fejlécei
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -36,13 +36,12 @@ Ne feledje, hogy ezen fejlécek függőségének figyelembevételével korlátoz
 
 ## <a name="status-codes"></a>Állapotkódok
 
-A kiszolgáló által visszaadott leggyakoribb állapotkódok alább láthatók.
+`x-ms-status-code`Az állapot attribútumhoz a kiszolgáló által visszaadott leggyakoribb kódokat az alábbi lista tartalmazza.
 
-| status | Magyarázat |
+| Állapot | Magyarázat |
 | --- | --- |
 | **401** | Hibaüzenet jelenik meg `"Unauthorized: Invalid credentials provided"` , ha a hitelesítési jelszó nem egyezik Cosmos db a fiók kulcsával. Navigáljon a Azure Portal Cosmos DB Gremlin-fiókjához, és győződjön meg arról, hogy a kulcs helyes.|
 | **404** | Egyidejű műveletek, amelyek egyazon Edge vagy csúcspont törlését és frissítését kísérli meg egyszerre. Az `"Owner resource does not exist"` (Tulajdonos-erőforrás nem létezik) hibaüzenet azt jelzi, hogy a kapcsolati paraméterekben `/dbs/<database name>/colls/<collection or graph name>` formátumban megadott adatbázis vagy gyűjtemény helytelen.|
-| **408** | `"Server timeout"` azt jelzi, hogy a bejárás **30 másodpercnél több időt** vett igénybe, és a kiszolgáló megszakította. Optimalizálja a bejárásokat, hogy gyorsan fusson a csúcspontok vagy élek a bejárási ugrások között, hogy szűkítse a keresési hatókört.|
 | **409** | `"Conflicting request to resource has been attempted. Retry to avoid conflicts."` Ez általában akkor fordul elő, ha a gráfban már létezik egy adott azonosítójú csúcspont vagy él.| 
 | **412** | Az állapotkód a következő hibaüzenettel egészül ki: `"PreconditionFailedException": One of the specified pre-condition is not met` . Ez a hiba azt jelzi, hogy egy optimista egyidejűségi szabályozás sérti az Edge vagy a csúcspont beolvasása és az áruházba való visszaírása között a módosítás után. A hiba előfordulásának leggyakoribb esetei a tulajdonságok módosítása, például: `g.V('identifier').property('name','value')` . A Gremlin motor beolvassa a csúcspontot, módosítja, és visszaírja azt. Ha egy másik, párhuzamosan futó bejárási kísérlet ugyanazt a csúcspontot vagy szegélyt próbálja meg írni, akkor az egyik ilyen hibaüzenetet kap. Az alkalmazásnak újra be kell küldenie a kiszolgálóra a bejárást.| 
 | **429** | A kérelem szabályozása megtörtént, és a rendszer az **x-MS-újrapróbálkozás** után újrapróbálkozik a-MS értékkel| 
@@ -53,6 +52,7 @@ A kiszolgáló által visszaadott leggyakoribb állapotkódok alább láthatók.
 | **1004** | Ez az állapotkód helytelenül formázott gráf-kérelmet jelez. A kérelem helytelenül formázható, ha a deszerializálás sikertelen, a nem érték típusú típus deszerializálása érték típusú vagy nem támogatott Gremlin művelet. Az alkalmazás nem próbálkozhat újra a kéréssel, mert nem lesz sikeres. | 
 | **1007** | Ezt az állapotkódot általában a hibaüzenet adja vissza `"Could not process request. Underlying connection has been closed."` . Ez a helyzet akkor fordulhat elő, ha az ügyfél illesztőprogramja a kiszolgáló által lezárt kapcsolatok használatát kísérli meg. Az alkalmazásnak újra kell próbálkoznia a bejárással egy másik kapcsolatban.
 | **1008** | Cosmos DB Gremlin-kiszolgáló megszakíthatja a kapcsolatokat a fürt forgalmának újraelosztása érdekében. Az ügyfél-illesztőprogramoknak ezt a helyzetet kell használniuk, és csak élő kapcsolatok használatával küldhetnek kérelmeket a kiszolgálónak. Esetenként előfordulhat, hogy az ügyfél-illesztőprogramok nem észlelik, hogy a kapcsolatok bezárultak. Ha az alkalmazás hibát észlel, `"Connection is too busy. Please retry after sometime or open more connections."` akkor újra kell próbálkoznia egy másik kapcsolatban való bejárással.
+| **1009** | A művelet nem fejeződött be a megadott időn belül, és a kiszolgáló megszakította a műveletet. Optimalizálja a bejárásokat, hogy gyorsan fusson a csúcsok vagy élek a keskeny keresési hatókörbe való bejáráskor. A kérelem időtúllépésének alapértelmezett értéke **60 másodperc**. |
 
 ## <a name="samples"></a>Példák
 
@@ -108,7 +108,7 @@ try {
 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Azure Cosmos DB HTTP-állapotkódok](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) 
 * [Gyakori Azure Cosmos DB REST-válaszok fejlécei](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers)
 * [A TinkerPop Graph-illesztőprogram szolgáltatójának követelményei]( http://tinkerpop.apache.org/docs/current/dev/provider/#_graph_driver_provider_requirements)

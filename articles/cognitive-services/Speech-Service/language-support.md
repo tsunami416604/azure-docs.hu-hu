@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 3f8e497fb21b3fac6a2bc5842e6bc56c47444c8b
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: e51354b1c2905d0532ce4eb49236dda8550f98a4
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572493"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600089"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Beszédfelismerési szolgáltatás nyelvi és hangalapú támogatása
 
@@ -128,6 +128,8 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 ## <a name="text-to-speech"></a>Szövegfelolvasás
 
 A Microsoft Speech SDK és a REST API-k egyaránt támogatják ezeket a hangokat, amelyek mindegyike egy adott nyelvet és dialektust támogat, amelyet a területi beállítás azonosít. Az egyes régiókban vagy végpontokban támogatott nyelvek és hangok teljes listáját a [Voices/List API](rest-text-to-speech.md#get-a-list-of-voices)-n keresztül is elérheti. 
+
+Ha szeretné megtudni, hogyan konfigurálhatja és módosíthatja a beszélő stílusokat, beleértve a neurális hangokat, tekintse meg a [How-to](speech-synthesis-markup.md#adjust-speaking-styles) on Speech szintézis Markup Language című témakört.
 
 > [!IMPORTANT]
 > A díjszabás a standard, az egyéni és a neurális hangok esetében is változhat. További információkért tekintse meg a [díjszabási](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) oldalt.
@@ -286,8 +288,6 @@ Az alábbi neurális hangok nyilvános előzetes verzióban érhetők el.
 > A nyilvános előzetes verzióban elérhető hangok csak 3 szolgáltatási régióban érhetők el: USA keleti régiója, Nyugat-Európa és Délkelet-Ázsia.
 
 További információ a regionális elérhetőségről: [régiók](regions.md#standard-and-neural-voices).
-
-A következő témakörből megtudhatja, hogyan konfigurálhat és állíthat be neurális hangokat, például a beszéd stílusait: [beszéd szintézisének leíró nyelve](speech-synthesis-markup.md#adjust-speaking-styles).
 
 > [!IMPORTANT]
 > A hang a következőre `en-US-JessaNeural` változott: `en-US-AriaNeural` . Ha korábban a "Jessa" kifejezést használta, váltson át az "aria" kifejezésre.

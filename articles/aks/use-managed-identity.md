@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan használhatók a felügyelt identitások az Azu
 services: container-service
 ms.topic: article
 ms.date: 12/16/2020
-ms.openlocfilehash: 948a189e1c6e03efca046b6d43dddcaf3d141957
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: fe11170b1cdf18aacf832f4c8171bfc082339395
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607286"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599600"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Felügyelt identitások használata az Azure Kubernetes szolgáltatásban
 
@@ -34,7 +34,7 @@ A következő erőforrást kell telepítenie:
 
 Az AK számos felügyelt identitást használ a beépített szolgáltatásokhoz és bővítményekhez.
 
-| Identitás                       | Név    | Használati eset | Alapértelmezett engedélyek | Saját identitás használata
+| Identitás                       | Name    | Használati eset | Alapértelmezett engedélyek | Saját identitás használata
 |----------------------------|-----------|----------|
 | Vezérlősík | nem látható | Az AK-vezérlési sík összetevői használják a fürt erőforrásainak kezelésére, beleértve a bejövő terheléselosztást és az AK által felügyelt nyilvános IP-címeket, valamint a fürt automatikus méretezési műveleteit | A csomópont-erőforráscsoport közreműködői szerepköre | támogatott
 | Kubelet | AK-fürt neve – agentpool | Hitelesítés Azure Container Registry (ACR) | NA (kubernetes v 1.15 +) | Egyelőre nem támogatott
@@ -131,7 +131,7 @@ A felhasználó által hozzárendelt identitás frissítése:
 az aks update -g <RGName> -n <AKSName> --enable-managed-identity --assign-identity <UserAssignedIdentityResourceID> 
 ```
 > [!NOTE]
-> Miután a rendszer által hozzárendelt vagy felhasználó által hozzárendelt identitásokat frissítette a felügyelt identitásra, hajtson végre egy műveletet a `az nodepool upgrade --node-image-only` csomópontokon a felügyelt identitás frissítésének befejezéséhez.
+> Miután a rendszer által hozzárendelt vagy felhasználó által hozzárendelt identitásokat frissítette a felügyelt identitásra, hajtson végre egy műveletet a `az aks nodepool upgrade --node-image-only` csomópontokon a felügyelt identitás frissítésének befejezéséhez.
 
 ## <a name="bring-your-own-control-plane-mi"></a>Saját vezérlő síkja
 Az egyéni vezérlő sík identitása lehetővé teszi, hogy a fürt létrehozása előtt hozzáférést biztosítson a meglévő identitáshoz. Ez a funkció olyan forgatókönyveket tesz lehetővé, mint például az egyéni VNET vagy a UDR outboundType egy előre létrehozott felügyelt identitás használatával.

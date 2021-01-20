@@ -3,17 +3,17 @@ title: 'Gyors útmutató: Azure Blob Storage ügyféloldali kódtár v10 a JavaS
 description: Blobok és tárolók létrehozása, feltöltése és törlése a Node.jsban az Azure Storage ügyféloldali kódtár v10 a JavaScripthez
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 07/24/2020
+ms.date: 01/19/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 1f47c35997fe060fd3c318602bcad17de83b530c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2371c789b9e4a9fc70f4207fd8a634e419c97912
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91249620"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599449"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>Gyors útmutató: Blobok kezelése a JavaScript v10 SDK-val Node.js
 
@@ -139,7 +139,7 @@ const ONE_MEGABYTE = 1024 * 1024;
 const FOUR_MEGABYTES = 4 * ONE_MEGABYTE;
 ```
 
-Az API által kezdeményezett kérelmek egy adott intervallum után időkorlátra állíthatók be. Az [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-legacy) osztály feladata a kérelmek időtúllépésének kezelése, és a mintában az időtúllépések meghatározása a következő állandó alkalmazásával történik.
+Az API által kezdeményezett kérelmek egy adott intervallum után időkorlátra állíthatók be. Az [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-legacy&preserve-view=true) osztály feladata a kérelmek időtúllépésének kezelése, és a mintában az időtúllépések meghatározása a következő állandó alkalmazásával történik.
 
 ```javascript
 const ONE_MINUTE = 60 * 1000;
@@ -178,13 +178,13 @@ const serviceURL = new ServiceURL(`https://${STORAGE_ACCOUNT_NAME}.blob.core.win
 
 Ebben a kódblokkban a következő osztályokat használjuk:
 
-- A [SharedKeyCredential](/javascript/api/%40azure/storage-blob/sharedkeycredential?view=azure-node-legacy) osztály a tárfiókok hitelesítő adatainak beburkolását végzi a kérelemfolyamatoknak való átadás érdekében.
+- A [SharedKeyCredential](/javascript/api/%40azure/storage-blob/sharedkeycredential?view=azure-node-legacy&preserve-view=true) osztály a tárfiókok hitelesítő adatainak beburkolását végzi a kérelemfolyamatoknak való átadás érdekében.
 
-- A [StorageURL](/javascript/api/%40azure/storage-blob/storageurl?view=azure-node-legacy) osztály az új folyamatok létrehozására szolgál.
+- A [StorageURL](/javascript/api/%40azure/storage-blob/storageurl?view=azure-node-legacy&preserve-view=true) osztály az új folyamatok létrehozására szolgál.
 
-- A [ServiceURL](/javascript/api/%40azure/storage-blob/serviceurl?view=azure-node-legacy) osztály egy, a REST API-ban használt URL modellezését végzi. Az osztály példányaival olyan műveletek hajthatók végre, mint például a tárolók listázása és a környezeti információk megadása a tárolók URL-címeinek létrehozásához.
+- A [ServiceURL](/javascript/api/%40azure/storage-blob/serviceurl?view=azure-node-legacy&preserve-view=true) osztály egy, a REST API-ban használt URL modellezését végzi. Az osztály példányaival olyan műveletek hajthatók végre, mint például a tárolók listázása és a környezeti információk megadása a tárolók URL-címeinek létrehozásához.
 
-A *ServiceURL*-példányt a [ContainerURL](/javascript/api/%40azure/storage-blob/containerurl?view=azure-node-legacy)- és [BlockBlobURL](/javascript/api/%40azure/storage-blob/blockbloburl?view=azure-node-legacy)-példányokkal együtt használva kezelhetők a tárfiókban lévő tárolók és blobok.
+A *ServiceURL*-példányt a [ContainerURL](/javascript/api/%40azure/storage-blob/containerurl?view=azure-node-legacy&preserve-view=true)- és [BlockBlobURL](/javascript/api/%40azure/storage-blob/blockbloburl?view=azure-node-legacy&preserve-view=true)-példányokkal együtt használva kezelhetők a tárfiókban lévő tárolók és blobok.
 
 ```javascript
 const containerURL = ContainerURL.fromServiceURL(serviceURL, containerName);

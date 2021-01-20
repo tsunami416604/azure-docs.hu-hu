@@ -11,16 +11,16 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
-ms.openlocfilehash: 8e749e5f6ea6bcf76a1b4f143bce03ceb41cbb07
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: a781900534156e455c125dffe3b1334820fdf4d5
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573292"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599056"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>Adatfelosztások és keresztvalidálás konfigurálása az automatizált gépi tanulásban
 
-Ebből a cikkből megtudhatja, hogyan konfigurálhatja a betanítási/érvényesítési adatmegosztásokat, és hogyan végezheti el az automatikus gépi tanulás, a kísérletek automatizálását.
+Ebből a cikkből megtudhatja, hogyan konfigurálhatja a betanítási és az érvényesítési adatmegosztási lehetőségeket, valamint az automatikus gépi tanulás, az automatizált ML és a kísérletek több ellenőrzési beállítását is.
 
 Ha Azure Machine Learning, ha az automatizált ML-t több ML modell kiépítésére használja, minden gyermeknek a modell minőségi metrikáinak kiszámításával ellenőriznie kell a kapcsolódó modellt, például a pontosságot vagy a AUC súlyozottan. Ezek a metrikák az egyes modellekhez tartozó előrejelzések összehasonlításával vannak kiszámítva, és az érvényesítési adatokban szereplő korábbi észrevételekből származó valódi címkékkel vannak ellátva. [További információ a metrikák kiszámításáról az ellenőrzési típus alapján](#metric-calculation-for-cross-validation-in-machine-learning). 
 
@@ -29,7 +29,7 @@ Az automatizált ML-kísérletek automatikusan végzik a modell érvényesítés
 Az alacsony kódú vagy a kód nélküli felhasználói élményért lásd: [az automatizált gépi tanulási kísérletek létrehozása Azure Machine learning Studióban](how-to-use-automated-ml-for-ml-models.md). 
 
 > [!NOTE]
-> A Studio jelenleg támogatja a betanítási/érvényesítési adatfelosztást és az ellenőrzési lehetőségeket, de nem támogatja az egyes adatfájlok megadását az ellenőrzési készlethez. 
+> A Studio jelenleg támogatja a betanítási és érvényesítési adatfelosztást, valamint a több ellenőrzési lehetőséget is, de nem támogatja az egyes adatfájlok megadását az érvényesítési csoport számára. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,7 +41,7 @@ Ehhez a cikkhez szükséges,
 
 * A betanítási/érvényesítési adatmegosztások és a gépi tanulásra vonatkozó fogalmak megismerése. A magas szintű magyarázathoz
 
-    * [A betanítási, ellenőrzési és tesztelési készletek ismertetése Machine Learning](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7)
+    * [Tudnivalók a gépi tanulásban betanítási, ellenőrzési és tesztelési célú információkról](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7)
 
     * [A gépi tanulásban való több ellenőrzés ismertetése](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd) 
 
@@ -62,7 +62,7 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
                             )
 ```
 
-Ha nem ad meg explicit módon a vagy a `validation_data` `n_cross_validation` paramétert, a AutoML az egyetlen megadott adatkészlet sorainak számától függően alkalmazza az alapértelmezett technikákat `training_data` :
+Ha explicit módon nem ad meg `validation_data` vagy `n_cross_validation` paramétert, az automatikus ml az alapértelmezett technikákat alkalmazza az egyetlen adatkészletben megadott sorok számától függően `training_data` :
 
 |Betanítási &nbsp; &nbsp; adatméret| Érvényesítési módszer |
 |---|-----|
@@ -71,7 +71,7 @@ Ha nem ad meg explicit módon a vagy a `validation_data` `n_cross_validation` pa
 
 ## <a name="provide-validation-data"></a>Érvényesítési információ megadása
 
-Ebben az esetben akár egyetlen adatfájllal is elindíthat, és kioszthatja azokat képzési és ellenőrzési készletekben, vagy megadhat egy külön adatfájlt az érvényesítési csoport számára. Mindkét `validation_data` esetben az objektumban lévő paraméter `AutoMLConfig` hozzárendeli az érvényesítési csoportként használandó összes adattípust. Ez a paraméter csak [Azure Machine learning adatkészlet](how-to-create-register-datasets.md) vagy pandák dataframe formájában fogad adatkészleteket.   
+Ebben az esetben akár egyetlen adatfájllal is elindítható, és kioszthatja azokat a betanítási és érvényesítési adatkészletekben, vagy megadhat egy külön adatfájlt az érvényesítési készlethez. Mindkét `validation_data` esetben az objektumban lévő paraméter `AutoMLConfig` hozzárendeli az érvényesítési csoportként használandó összes adattípust. Ez a paraméter csak [Azure Machine learning adatkészlet](how-to-create-register-datasets.md) vagy pandák dataframe formájában fogad adatkészleteket.   
 
 A következő mintakód kifejezetten meghatározza, hogy a megadott adatmennyiség mely részét `dataset` használja a betanításhoz és az érvényesítéshez.
 

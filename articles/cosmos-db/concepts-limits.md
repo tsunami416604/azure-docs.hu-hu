@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/19/2020
-ms.openlocfilehash: 793ff9eedb747da0edcbbf2df50b62f06f407892
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.date: 01/19/2021
+ms.openlocfilehash: 9ace9a319f4cc6bcc1545d6d1becce61b1892765
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247424"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598670"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB szolgáltatási kvóták
 
@@ -37,7 +37,7 @@ Az átviteli sebességet tároló szinten vagy adatbázis-szinten is kiépíthet
 | Tárolók maximális száma | Korlátlan |
 | Tárolók maximális száma adatbázis szerint | Korlátlan |
 | A mellékletek maximális mérete (a melléklet funkció elavult) | 2 GB |
-| 1 GB-os minimálisan szükséges RU/s | 10 RU/s<br>**Megjegyzés:** ha a tároló vagy az adatbázis több mint 1 TB adatmennyiséget tartalmaz, előfordulhat, hogy a fiókja jogosult a ["nagy tárterület/alacsony átviteli sebesség" program](set-throughput.md#high-storage-low-throughput-program) használatára. |
+| 1 GB-os minimálisan szükséges RU/s | 10 RU/s<br>**Megjegyzés:** ez a minimum akkor csökkenthető, ha a fiókja jogosult a ["nagy tárterület/alacsony átviteli sebesség" program](set-throughput.md#high-storage-low-throughput-program) használatára |
 
 > [!NOTE]
 > Ha többet szeretne megtudni a tárolási vagy átviteli sebességre vonatkozó magasabb korlátot igénylő munkaterhelések kezelésével kapcsolatos ajánlott eljárásokról, olvassa el [a szintetikus partíciós kulcs létrehozása](synthetic-partition-keys.md)című témakört.
@@ -60,7 +60,7 @@ A manuális átviteli sebességű tárolók minimális átviteli sebességének 
 
 Példa: tegyük fel, hogy rendelkezik egy 400 RU/s és 0 GB tárhelytel kiépített tárolóval. Növelje az átviteli sebességet 50 000 RU/s értékre, és 20 GB adat importálását. A minimális RU/s most `MAX(400, 20 * 10 RU/s per GB, 50,000 RU/s / 100)` = 500 ru/s. Az idő múlásával a tárterület 200 GB-ra nő. A minimális RU/s most `MAX(400, 200 * 10 RU/s per GB, 50,000 / 100)` = 2000 ru/s. 
 
-**Megjegyzés:** ha a tároló vagy az adatbázis több mint 1 TB adatmennyiséget tartalmaz, előfordulhat, hogy a fiókja jogosult a ["nagy tárterület/alacsony átviteli sebesség" program](set-throughput.md#high-storage-low-throughput-program)használatára.
+**Megjegyzés:** ha a fiókja jogosult a ["nagy tárterület/alacsony átviteli sebesség" programra](set-throughput.md#high-storage-low-throughput-program), a minimális átviteli sebesség (GB/s) is csökkenthető.
 
 #### <a name="minimum-throughput-on-shared-throughput-database"></a>Minimális átviteli sebesség a megosztott átviteli sebességű adatbázison 
 A megosztott átviteli sebességű adatbázis manuális átviteli sebességgel szükséges minimális átviteli sebességének becsléséhez keresse meg a maximális értéket:
@@ -72,7 +72,7 @@ A megosztott átviteli sebességű adatbázis manuális átviteli sebességgel s
 
 Példa: tegyük fel, hogy rendelkezik egy, a 400 RU/s, 15 GB tárterülettel és 10 tárolóval kiépített adatbázissal. A minimális RU/s érték `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 ru/s. Ha az adatbázisban 30 tároló található, a minimális RU/s érték `400 + MAX(30 - 25, 0) * 100 RU/s` = 900 ru/s. 
 
-**Megjegyzés:** ha a tároló vagy az adatbázis több mint 1 TB adatmennyiséget tartalmaz, előfordulhat, hogy a fiókja jogosult a ["nagy tárterület/alacsony átviteli sebesség" program](set-throughput.md#high-storage-low-throughput-program)használatára.
+**Megjegyzés:** ha a fiókja jogosult a ["nagy tárterület/alacsony átviteli sebesség" programra](set-throughput.md#high-storage-low-throughput-program), a minimális átviteli sebesség (GB/s) is csökkenthető.
 
 Összefoglalva: itt vannak a minimálisan kiépített RU-korlátok. 
 

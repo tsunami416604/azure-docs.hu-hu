@@ -3,19 +3,22 @@ title: Fő VHD-rendszerkép előkészítése és testreszabása – Azure
 description: Windows rendszerű virtuális asztali rendszerképek előkészítése, testreszabása és feltöltése az Azure-ba.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 10/14/2019
+ms.date: 01/19/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9e4cb4fe8a701600290d24c055e2be5187a711c5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 33af83934e8ecc5745f2edad3a7832a870406452
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023394"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602371"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Fő VHD-rendszerkép létrehozása és testreszabása
 
 Ebből a cikkből megtudhatja, hogyan készítse elő a fő virtuális merevlemez (VHD) lemezképét az Azure-ba való feltöltéshez, beleértve a virtuális gépek (VM-EK) létrehozását és a szoftverek telepítését. Ezek az utasítások egy olyan Windows rendszerű virtuális asztali konfigurációra vonatkoznak, amelyet a szervezet meglévő folyamataihoz használhat.
+
+>[!IMPORTANT]
+>Javasoljuk, hogy az Azure rendszerkép-katalógusában található rendszerképet használja. Ha azonban egyéni rendszerképet szeretne használni, győződjön meg arról, hogy még nincs telepítve az eszközön a WIndows rendszerű virtuális asztali ügynök. A Windows rendszerű virtuális asztali ügynökkel testreszabott rendszerkép használata problémákat okozhat a rendszerképben.  
 
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 
@@ -204,7 +207,7 @@ Az alábbi útmutatást követve megtudhatja, hogyan töltheti fel a fő lemezk�
     > [!div class="mx-imgBorder"]
     > ![A "rendszerkép létrehozása sikeres" értesítés képernyőképe.](media/1f41b7192824a2950718a2b7bb9e9d69.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy már rendelkezik rendszerképtel, létrehozhat vagy frissíthet gazdagép-készleteket. A gazdagép-készletek létrehozásával és frissítésével kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

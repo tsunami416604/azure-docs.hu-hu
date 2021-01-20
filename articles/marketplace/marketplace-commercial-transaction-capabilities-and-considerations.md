@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: d602687ea623b90ea5dcae4ece09a1ccc438ea57
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 5a2a7abf0227812826428557b86c4468f7693c82
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822386"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600386"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Kereskedelmi Piactéri Transact-képességek
 
@@ -40,7 +40,7 @@ A Transact kapcsoló használata esetén a Microsoft engedélyezi harmadik félt
 
 A Transact Publishing lehetőség jelenleg a következő típusú ajánlatok esetében támogatott:
 
-- Virtuális gépek
+- Virtual machines (Virtuális gépek)
 - Azure-alkalmazások
 - SaaS-alkalmazás
 
@@ -160,7 +160,7 @@ Ebben az esetben a Microsoft $100,00-es számlákat küld a szoftverlicenc szám
 
 **Bankkártyák és havi számla** – az ügyfelek bankkártyával és havi számlával is fizethetnek. Ebben az esetben a szoftverlicenc-díjat a Nagyvállalati Szerződés-forgatókönyvhöz hasonlóan számítjuk fel, amely az Azure-specifikus használati költségektől függ.
 
-**Ingyenes kreditek és pénzügyi kötelezettségvállalás** – egyes ügyfelek a nagyvállalati szerződés pénzügyi kötelezettségvállalását választják, vagy az Azure-ban ingyenes krediteket adtak meg az Azure-ban. Bár ezek a kreditek felhasználhatók az Azure-használat megfizetésére, nem használhatók a kiadói szoftverlicenc-díjakért.
+**Ingyenes kreditek és Azure-előfizetések** – egyes ügyfelek az Azure-előfizetéssel (korábbi nevén pénzügyi kötelezettségvállalással), nagyvállalati szerződés az Azure-ban pedig ingyenes krediteket is megválasztanak. Bár ezek a kreditek felhasználhatók az Azure-használat megfizetésére, nem használhatók a kiadói szoftverlicenc-díjakért.
 
 **Számlázás és gyűjtemények** – a kiadói szoftverlicenc számlázása az ügyfél által választott számlázási módszer használatával történik, és a számlázási ütemtervet követi. A Nagyvállalati Szerződés nélküli ügyfelek számlázása havonta történik a piactér szoftverlicenc esetében. A Nagyvállalati Szerződés rendelkező ügyfelekért havonta kell fizetnie egy negyedévente bemutatott számlán keresztül.
 

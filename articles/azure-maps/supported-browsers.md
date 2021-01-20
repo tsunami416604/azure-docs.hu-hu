@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 43bf70d66c42bc0ecd5e26e4cc724456bd4bf84e
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: f51b46efcaf9be4f51e96b038b93562d0e3eae0b
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896922"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601150"
 ---
 # <a name="web-sdk-supported-browsers"></a>A webes SDK által támogatott böngészők
 
@@ -36,11 +36,11 @@ A Azure Maps web SDK a következő asztali böngészőket támogatja:
 - Microsoft Edge (jelenlegi és korábbi verzió)
 - Google Chrome (aktuális és korábbi verzió)
 - Mozilla Firefox (aktuális és korábbi verzió)
-- Apple Safari (Mac OS X) (aktuális és korábbi verzió)
+- Apple Safari (macOS X) (aktuális és korábbi verzió)
 
 Lásd még: [korábbi böngészők megcélzása](#Target-Legacy-Browsers) a cikk későbbi részében.
 
-## <a name="mobile"></a>Mobiltelefon
+## <a name="mobile"></a>Mobil
 
 A Azure Maps web SDK a következő mobil böngészőket támogatja:
 
@@ -63,7 +63,7 @@ A következő web SDK-modulok is támogatottak a Node.jsban:
 
 ## <a name="target-legacy-browsers"></a><a name="Target-Legacy-Browsers"></a>Cél örökölt böngészők
 
-Előfordulhat, hogy olyan régebbi böngészőket szeretne megcélozni, amelyek nem támogatják a WebGL, vagy csak korlátozott támogatással rendelkeznek. Ilyen esetekben javasoljuk, hogy Azure Maps-szolgáltatásokat, valamint egy nyílt forráskódú Térkép vezérlőelemet, például a [betegtájékoztatót](https://leafletjs.com/)használja. Íme egy példa:
+Előfordulhat, hogy olyan régebbi böngészőket szeretne megcélozni, amelyek nem támogatják a WebGL, vagy csak korlátozott támogatással rendelkeznek. Ilyen esetekben javasoljuk, hogy Azure Maps-szolgáltatásokat, valamint egy nyílt forráskódú Térkép vezérlőelemet, például a [betegtájékoztatót](https://leafletjs.com/)használja. Íme egy példa, amely a nyílt forráskódú [Azure Maps szórólap beépülő modul](https://github.com/azure-samples/azure-maps-leaflet)használatát teszi lehetővé.
 
 <br/>
 
@@ -71,8 +71,9 @@ Előfordulhat, hogy olyan régebbi böngészőket szeretne megcélozni, amelyek 
 Tekintse meg a tollat <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure Maps + prospektust</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
+A Azure Mapst használó további mintakód [itt](https://azuremapscodesamples.azurewebsites.net/?search=leaflet)található.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Azure Maps web SDK-ról:
 

@@ -4,17 +4,17 @@ description: Ismerje meg, hogyan hozhat létre és törölhet várólistákat az
 author: mhopkins-msft
 ms.author: mhopkins
 ms.reviewer: dineshm
-ms.date: 08/25/2020
+ms.date: 01/19/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: seo-javascript-october2019, devx-track-python
-ms.openlocfilehash: e473bf5c2761010a6aeea94e6430d34ca34989fb
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 82d18fd79b10a8500cfd9191f143438d69fda401
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588277"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600804"
 ---
 # <a name="how-to-use-azure-queue-storage-from-python"></a>Az Azure Queue Storage használata a Pythonból
 
@@ -69,7 +69,7 @@ Az [`QueueClient`](/azure/developer/python/sdk/storage/azure-storage-queue/azure
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Az [`QueueService`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2) objektum lehetővé teszi a várólistákkal való munkavégzést. A következő kód létrehoz egy `QueueService` objektumot. Adja hozzá a következő kódot bármely olyan Python-fájlhoz, amelyben programozottan szeretné elérni az Azure Storage-t:
+Az [`QueueService`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true) objektum lehetővé teszi a várólistákkal való munkavégzést. A következő kód létrehoz egy `QueueService` objektumot. Adja hozzá a következő kódot bármely olyan Python-fájlhoz, amelyben programozottan szeretné elérni az Azure Storage-t:
 
 ```python
 from azure.storage.queue import (
@@ -127,7 +127,7 @@ Ha üzenetet szeretne beszúrni egy várólistába, használja a [`send_message`
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Egy üzenet üzenetsorbe való beszúrásához használja az [`put_message`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#put-message-queue-name--content--visibility-timeout-none--time-to-live-none--timeout-none-) metódust egy új üzenet létrehozásához, és adja hozzá a várólistához.
+Egy üzenet üzenetsorbe való beszúrásához használja az [`put_message`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true#put-message-queue-name--content--visibility-timeout-none--time-to-live-none--timeout-none-) metódust egy új üzenet létrehozásához, és adja hozzá a várólistához.
 
 ```python
 message = u"Hello, World"
@@ -167,7 +167,7 @@ Az üzenetekben anélkül is betekintést nyerhet, hogy a metódus meghívásáv
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Az üzenetekben anélkül is betekintést nyerhet, hogy a metódus meghívásával eltávolítja őket a várólistából [`peek_messages`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#peek-messages-queue-name--num-messages-none--timeout-none-) . Alapértelmezés szerint ez a metódus egyetlen üzenetbe van bepillantva.
+Az üzenetekben anélkül is betekintést nyerhet, hogy a metódus meghívásával eltávolítja őket a várólistából [`peek_messages`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true#peek-messages-queue-name--num-messages-none--timeout-none-) . Alapértelmezés szerint ez a metódus egyetlen üzenetbe van bepillantva.
 
 ```python
 messages = queue_service.peek_messages(queue_name)
@@ -190,7 +190,7 @@ A következő kód a [`update_message`](/azure/developer/python/sdk/storage/azur
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-A következő kód a [`update_message`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#update-message-queue-name--message-id--pop-receipt--visibility-timeout--content-none--timeout-none-) metódust használja egy üzenet frissítéséhez. A láthatósági időkorlát 0 értékre van állítva, ami azt jelenti, hogy az üzenet azonnal megjelenik, és a tartalom frissül.
+A következő kód a [`update_message`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true#update-message-queue-name--message-id--pop-receipt--visibility-timeout--content-none--timeout-none-) metódust használja egy üzenet frissítéséhez. A láthatósági időkorlát 0 értékre van állítva, ami azt jelenti, hogy az üzenet azonnal megjelenik, és a tartalom frissül.
 
 ```python
 messages = queue_service.get_messages(queue_name)
@@ -214,7 +214,7 @@ A [get_queue_properties](/azure/developer/python/sdk/storage/azure-storage-queue
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-A [`get_queue_metadata`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#get-queue-metadata-queue-name--timeout-none-) metódus a várólista tulajdonságait adja vissza, beleértve a következőket: `approximate_message_count` .
+A [`get_queue_metadata`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true#get-queue-metadata-queue-name--timeout-none-) metódus a várólista tulajdonságait adja vissza, beleértve a következőket: `approximate_message_count` .
 
 ```python
 metadata = queue_service.get_queue_metadata(queue_name)
@@ -238,7 +238,7 @@ Az eredmény csak hozzávetőleges, mert az üzenetek hozzáadhatók vagy eltáv
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-[Get_messages](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-)hívásakor a rendszer alapértelmezés szerint a következő üzenetet kapja a várólistában. A visszaadott üzenet a `get_messages` várólistából beolvasott más kódokba is láthatatlanná válik. Alapértelmezés szerint az üzenet 30 másodpercig marad láthatatlan. Az üzenet várólistából való eltávolításának befejezéséhez meg kell hívnia a [delete_messaget](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#delete-message-queue-name--message-id--pop-receipt--timeout-none-)is.
+[Get_messages](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-)hívásakor a rendszer alapértelmezés szerint a következő üzenetet kapja a várólistában. A visszaadott üzenet a `get_messages` várólistából beolvasott más kódokba is láthatatlanná válik. Alapértelmezés szerint az üzenet 30 másodpercig marad láthatatlan. Az üzenet várólistából való eltávolításának befejezéséhez meg kell hívnia a [delete_messaget](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true#delete-message-queue-name--message-id--pop-receipt--timeout-none-)is.
 
 ```python
 messages = queue_service.get_messages(queue_name)
@@ -260,7 +260,7 @@ A következő kódrészlet a metódus használatával kéri le az [`receive_mess
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-A következő kódrészlet a [`get_messages`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-) metódus használatával 16 üzenetet kap egy hívásban. Ezután az összes üzenetet feldolgozza egy `for` hurok használatával. Mindemellett a láthatatlansági időkorlátot minden üzenethez öt percre állítja be.
+A következő kódrészlet a [`get_messages`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-) metódus használatával 16 üzenetet kap egy hívásban. Ezután az összes üzenetet feldolgozza egy `for` hurok használatával. Mindemellett a láthatatlansági időkorlátot minden üzenethez öt percre állítja be.
 
 ```python
 messages = queue_service.get_messages(queue_name, num_messages=16, visibility_timeout=5*60)
@@ -282,7 +282,7 @@ Ha törölni szeretne egy várólistát és a benne található összes üzenete
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Ha törölni szeretne egy várólistát és a benne található összes üzenetet, hívja meg a [`delete_queue`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#delete-queue-queue-name--fail-not-exist-false--timeout-none-) metódust.
+Ha törölni szeretne egy várólistát és a benne található összes üzenetet, hívja meg a [`delete_queue`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true#delete-queue-queue-name--fail-not-exist-false--timeout-none-) metódust.
 
 ```python
 print("Deleting queue: " + queue_name)
@@ -293,7 +293,7 @@ queue_service.delete_queue(queue_name)
 
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte Queue Storage alapjait, kövesse az alábbi hivatkozásokat további információért.
 

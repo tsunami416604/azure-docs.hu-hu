@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 02194bd6122cc97ac9dfd6887c6ae2161182c13a
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 0fbf5c07b2d8fd5d754a46484d6b072cc9b682d6
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120427"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599850"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Külső táblák használata a szinapszis SQL használatával
 
@@ -381,7 +381,7 @@ SELECT TOP 1 * FROM census_external_table
 
 ## <a name="create-and-query-external-tables-from-a-file-in-azure-data-lake"></a>Külső táblák létrehozása és lekérdezése egy fájlból Azure Data Lake
 
-A Data Lake feltárási képességek használatával létrehozhat és lekérdezheti a külső táblákat a dedikált SQL Pool vagy a kiszolgáló nélküli SQL-készlet használatával, és egyszerűen rákattinthat a fájlra.
+A Data Lake feltárási képességek használatával létrehozhat és lekérdezheti a külső táblákat a dedikált SQL Pool vagy a kiszolgáló nélküli SQL-készlet használatával, és egyszerűen rákattinthat a fájlra. Az egykattintásos kézmozdulat, amellyel külső táblákat hozhat létre a ADLS Gen2 Storage-fiókból, csak a Parquet-fájlok esetében támogatott. 
 
 ### <a name="prerequisites"></a>Előfeltételek
 
@@ -410,6 +410,6 @@ A külső tábla most létrejön, a külső tábla tartalmának későbbi feltá
 > [!div class="mx-imgBorder"]
 >![externaltable5](./media/develop-tables-external-tables/external-table-5.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A lekérdezés eredményeinek az Azure Storage külső táblájába való mentéséhez olvassa el a [CETAS](develop-tables-cetas.md) című cikket. Vagy megkezdheti [a Apache Spark lekérdezését az Azure szinapszis külső tábláihoz](develop-storage-files-spark-tables.md).

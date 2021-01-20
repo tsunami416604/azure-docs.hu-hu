@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: fd958c09a14334d8230e52413c590febb2148851
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 37bd7d91dfe9e4b9e620f89e7504331d8f631a6a
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98048953"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602116"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Oktatóanyag: kódolás az Azure Digital Twins API-kkal
 
@@ -57,9 +57,12 @@ Ez több fájlt hoz létre a címtárban, például egy *program.cs* , ahol a k�
 
 Tartsa megnyitva a parancssorablakot, ahogy az oktatóanyag során is használni fogja.
 
-Ezután **vegyen fel két függőséget a projekthez** , amely szükséges lesz az Azure digitális ikrekkel való együttműködéshez. Az alábbi hivatkozásokat követve megkeresheti a NuGet lévő csomagokat, ahol megtalálhatja a konzol parancsait (beleértve a .NET CLI-t is), hogy hozzáadja az egyes projektekhez tartozó legújabb verziót.
-* [**Azure. DigitalTwins. Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Ez a csomag a .NET-hez készült [Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)-hoz.
-* [**Azure. Identity**](https://www.nuget.org/packages/Azure.Identity). Ez a kódtár eszközöket biztosít az Azure-beli hitelesítéshez.
+Ezután **vegyen fel két függőséget a projekthez** , amely szükséges lesz az Azure digitális ikrekkel való együttműködéshez. Az első a .NET-hez készült [Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)csomag, a második pedig az Azure-hoz való hitelesítéshez segítséget nyújtó eszközöket biztosít.
+
+```cmd/sh
+dotnet add package Azure.DigitalTwins.Core
+dotnet add package Azure.Identity
+```
 
 ## <a name="get-started-with-project-code"></a>Első lépések a Project Code-ban
 
@@ -181,7 +184,7 @@ Ha most futtatja a programot a `dotnet run` parancssori ablakban, látni fogja, 
 
 Ettől a ponttól kezdve az oktatóanyag a kipróbálási és a fogási kezelőben a szolgáltatási metódusok összes hívását lezárja.
 
-### <a name="create-digital-twins"></a>Digitális ikrek létrehozása
+### <a name="create-digital-twins"></a>Digitális ikerpéldányok létrehozása
 
 Most, hogy feltöltött egy modellt az Azure digitális Twins-ba, a modell definíciójában **digitális ikreket** hozhat létre. A [digitális ikrek](concepts-twins-graph.md) egy modell példányai, és az üzleti környezetben található entitásokat képviselik, például a farmon lévő érzékelők, a helyiségek egy épületben vagy egy autóban található fények. Ez a szakasz néhány digitális ikreket hoz létre a korábban feltöltött modell alapján.
 

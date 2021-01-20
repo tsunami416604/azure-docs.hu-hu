@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 81d9a6bcbd910a60e1f659e430bbe527eb3077c6
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 5be02ff698dac02d702e47f8929c6f8ddf2adbb7
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251743"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602555"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>A Azure Machine Learning költségeinek megtervezése és kezelése
 
@@ -81,9 +81,9 @@ ws.delete(delete_dependent_resources=True)
 
 Ha az Azure Kubernetes szolgáltatást (ak) hozza létre a munkaterületen, vagy ha bármilyen számítási erőforrást csatlakoztat a munkaterülethez, ezeket külön kell törölnie [Azure Portalban](https://portal.azure.com).
 
-### <a name="using-monetary-credit-with-azure-machine-learning"></a>Pénzügyi kreditek használata Azure Machine Learning
+### <a name="using-azure-prepayment-credit-with-azure-machine-learning"></a>Azure-előfizetési kredit használata Azure Machine Learning
 
-Az nagyvállalati szerződéssel rendelkező pénzügyi kötelezettségvállalással kapcsolatos díjakért Azure Machine Learning díjat is fizethet. Nem használhatja azonban az EA pénzügyi kötelezettségvállalását, hogy díjat fizessen a harmadik féltől származó termékekért és szolgáltatásért, például az Azure piactéren.
+Az Azure-előfizetéssel (korábban pénzügyi kötelezettségvállalásnak nevezett) Kredittel Azure Machine Learning díjat fizethet. Az Azure-előfizetések azonban nem használhatók fel a harmadik féltől származó termékekhez és szolgáltatásokhoz, például az Azure piactéren fizetendő díjakért.
 
 
 ## <a name="create-budgets"></a>Költségvetések létrehozása

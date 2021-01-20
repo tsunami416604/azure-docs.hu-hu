@@ -6,26 +6,26 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: 5e12ca3bf626ae212f44fe0378ccb6649738753c
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 7240c1b0f19dc49ab4130c5ee2516dcfefb2e2c2
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562857"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602184"
 ---
 # <a name="errors-in-the-connector-status"></a>Az összekötő állapotával kapcsolatos hibák
 
-Az összekötő állapota listában olyan hibákat talál, amelyek segíthetnek a ITSM-összekötő javításában.
+Az összekötő állapota listán olyan hibák találhatók, amelyek segíthetnek a ITSM-összekötő hibáinak kijavításában.
 
 ## <a name="status-common-errors"></a>Gyakori hibák állapota
 
-Ebben a szakaszban megtalálhatja a leggyakoribb hibát, amelyet az állapot listában talál, és hogyan oldja meg a megoldást:
+Ebben a szakaszban megtalálhatja az összekötő állapota szakaszban bemutatott gyakori hibákat és a megoldás módját:
 
-*  **Hiba**: "váratlan válasz érkezett a ServiceNow, valamint a sikeres állapotkód. Válasz: {"import_set": "{import_set_id}", "staging_table": "x_mioms_microsoft_oms_incident", "result": [{"transform_map": "OMS incidens", "Table": "incidens", "status": "hiba", "error_message": "{a cél rekord nem található | Érvénytelen tábla | Érvénytelen előkészítési tábla: "}"
+* **Hiba**: "váratlan válasz érkezett a ServiceNow, valamint a sikeres állapotkód. Válasz: {"import_set": "{import_set_id}", "staging_table": "x_mioms_microsoft_oms_incident", "result": [{"transform_map": "OMS incidens", "Table": "incidens", "status": "hiba", "error_message": "{a cél rekord nem található | Érvénytelen tábla | Érvénytelen előkészítési tábla: "}"
 
     **OK**: ezt a hibát a ServiceNow a következő esetekben adja vissza:
-    * A ServiceNow-példányban üzembe helyezett egyéni parancsfájlok figyelmen kívül hagyják az incidenseket.
-    * A "OMS integrátori alkalmazás" kódját maga a ServiceNow oldalon módosították, például a onBefore-szkriptet.
+  * A ServiceNow-példányban üzembe helyezett egyéni parancsfájlok figyelmen kívül hagyják az incidenseket.
+  * A "OMS integrátori alkalmazás" kódját maga a ServiceNow oldalon módosították, például a onBefore-szkriptet.
 
     **Megoldás**: tiltsa le az Adatimportálási útvonal összes egyéni parancsfájlját vagy programkódjának módosításait.
 
@@ -43,7 +43,7 @@ Ebben a szakaszban megtalálhatja a leggyakoribb hibát, amelyet az állapot lis
 
 * **Hiba**: "ServiceDeskHttpBadRequestException: statuscode = 429"
 
-    **OK**: a ServiceNow arányának korlátai túl alacsonyak.
+    **OK**: a ServiceNow arányának korlátai túl magasak/alacsonyak.
 
     **Megoldás**: növelje vagy szakítsa meg a ServiceNow-példányon a díjszabási korlátokat az [itt](https://docs.servicenow.com/bundle/london-application-development/page/integrate/inbound-rest/task/investigate-rate-limit-violations.html)leírtak szerint.
 
@@ -57,14 +57,14 @@ Ebben a szakaszban megtalálhatja a leggyakoribb hibát, amelyet az állapot lis
 
     **OK**: ITSM-csatoló törölve.
 
-    **Megoldás**: a ITSM-csatoló törölve lett, de még ITSM művelet van definiálva a használatára. A probléma megoldásához 2 lehetőség közül választhat:
+    **Megoldás**: a ITSM-csatoló törölve lett, de még ITSM-műveleti csoportok vannak társítva. A probléma megoldásához 2 lehetőség közül választhat:
   * A művelet megkeresése és letiltása vagy törlése
   * [Konfigurálja újra a műveleti csoportot](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts) meglévő ITSM-csatoló használatára.
   * [Hozzon létre egy új ITSM-összekötőt](./itsmc-definition.md#create-an-itsm-connection) , és [konfigurálja újra a műveleti csoportot a használatára](itsmc-definition.md#create-itsm-work-items-from-azure-alerts).
 
 ## <a name="ui-common-errors"></a>Gyakori felhasználói felületi hibák
 
-* **Hiba**: "probléma történt. Nem lehetett lekérni a kapcsolat részleteit. "
+* **Hiba**: "probléma történt. Nem lehetett lekérni a kapcsolat részleteit. " Ez a hiba akkor jelenik meg, amikor az ügyfél definiálja az ITSM műveleti csoportot.
 
     **OK**: az újonnan létrehozott ITSM-csatoló még befejezte a kezdeti szinkronizálást.
 

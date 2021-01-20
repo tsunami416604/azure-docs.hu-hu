@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/15/2021
+ms.date: 01/19/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 02c3890a9aca03d9d79b55098297174401cab37d
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 64a4404fa881181f92d442a73e5da4c16ae87ae3
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98537947"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598871"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés beállítása Facebook-fiókkal Azure Active Directory B2C használatával
 
@@ -60,7 +60,7 @@ Ha Azure Active Directory B2C (Azure AD B2C) Facebook-fiókkal rendelkező felha
 
 ::: zone pivot="b2c-user-flow"
 
-## <a name="configure-a-facebook-account-as-an-identity-provider"></a>Facebook-fiók konfigurálása identitás-szolgáltatóként
+## <a name="configure-facebook-as-an-identity-provider"></a>A Facebook konfigurálása identitás-szolgáltatóként
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure AD B2C-bérlő globális rendszergazdájaként.
 1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
@@ -70,25 +70,6 @@ Ha Azure Active Directory B2C (Azure AD B2C) Facebook-fiókkal rendelkező felha
 1. Az **ügyfél-azonosító** mezőben adja meg a korábban létrehozott Facebook-alkalmazás alkalmazás-azonosítóját.
 1. Az **ügyfél titka** mezőben adja meg a rögzített alkalmazás titkát.
 1. Válassza a **Mentés** lehetőséget.
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-## <a name="add-facebook-as-an-identity-provider"></a>Facebook hozzáadása identitás-szolgáltatóként
-
-1. A `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** fájlban cserélje le a `client_id` Facebook-alkalmazás azonosítóját a (z) értékre:
-
-   ```xml
-   <TechnicalProfile Id="Facebook-OAUTH">
-     <Metadata>
-     <!--Replace the value of client_id in this technical profile with the Facebook app ID"-->
-       <Item Key="client_id">00000000000000</Item>
-   ```
-
-::: zone-end
-
-::: zone pivot="b2c-user-flow"
 
 ## <a name="add-facebook-identity-provider-to-a-user-flow"></a>Facebook-identitás szolgáltatójának hozzáadása felhasználói folyamathoz 
 
@@ -103,6 +84,17 @@ Ha Azure Active Directory B2C (Azure AD B2C) Facebook-fiókkal rendelkező felha
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
+
+## <a name="configure-a-facebook-account-as-an-identity-provider"></a>Facebook-fiók konfigurálása identitás-szolgáltatóként
+
+1. A `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** fájlban cserélje le a `client_id` Facebook-alkalmazás azonosítóját a (z) értékre:
+
+   ```xml
+   <TechnicalProfile Id="Facebook-OAUTH">
+     <Metadata>
+     <!--Replace the value of client_id in this technical profile with the Facebook app ID"-->
+       <Item Key="client_id">00000000000000</Item>
+   ```
 
 ## <a name="upload-and-test-the-policy"></a>A szabályzat feltöltése és tesztelése
 

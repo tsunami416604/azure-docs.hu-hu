@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: f2170aad9bc0218d39244d08f5cc838235f8fee9
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 9021d933e3808867ec784ad3c6d0f8810d608ea3
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134364"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600060"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált gépi tanulási kísérletek konfigurálása Pythonban
 
@@ -65,7 +65,7 @@ automl_config = AutoMLConfig(task = "classification")
 
 Az automatizált gépi tanulás támogatja a helyi számítógépen vagy a felhőben, például az Azure Blob Storage-ban található adatokat. Az információk egy **Panda DataFrame** vagy egy **Azure Machine learning TabularDataset** is beolvashatók. [További információ az adathalmazokról](how-to-create-register-datasets.md).
 
-Betanítási adatokra vonatkozó követelmények:
+A gépi tanulásban bekövetkező betanítási követelmények:
 - Az adatokat táblázatos formában kell megadni.
 - Az előre jelzett értéknek, a célként megadott oszlopnak szerepelnie kell az adatsorokban.
 
@@ -96,9 +96,9 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 ## <a name="training-validation-and-test-data"></a>Képzés, érvényesítés és tesztelés
 
-Külön **betanítási és érvényesítési készleteket** is megadhat közvetlenül a `AutoMLConfig` konstruktorban. További információ az [adatfelosztások és a AutoML-kísérletek határokon való ellenőrzésének konfigurálásáról](how-to-configure-cross-validation-data-splits.md) . 
+Külön **betanítási és érvényesítési adatkészleteket** is megadhat közvetlenül a `AutoMLConfig` konstruktorban. További információ az [adatfelosztások és a AutoML-kísérletek határokon való ellenőrzésének konfigurálásáról](how-to-configure-cross-validation-data-splits.md) . 
 
-Ha nem ad meg explicit módon a `validation_data` vagy a `n_cross_validation` paramétert, a AutoML az érvényesítési műveletek elvégzésének módjára vonatkozó alapértelmezett technikákat alkalmazza. Ez a meghatározás a paraméterhez rendelt adatkészlet sorainak számától függ `training_data` . 
+Ha nem ad meg explicit módon egy `validation_data` vagy `n_cross_validation` paramétert, az automatikus ml az alapértelmezett technikákat alkalmazza az érvényesítés módjának meghatározásához. Ez a meghatározás a paraméterhez rendelt adatkészlet sorainak számától függ `training_data` . 
 
 |Betanítási &nbsp; &nbsp; adatméret| Érvényesítési módszer |
 |---|-----|
@@ -183,7 +183,7 @@ A következő táblázat összefoglalja a feladattípus által támogatott model
 > [!NOTE]
 > Ha úgy tervezi, hogy az automatikus ML által létrehozott modelleket egy [ONNX-modellbe](concept-onnx.md)exportálja, csak a * * értékkel jelzett algoritmusok alakíthatók át a ONNX formátumba. További információ a [modellek ONNX való átalakításáról](concept-automated-ml.md#use-with-onnx). <br> <br> Azt is vegye figyelembe, hogy a ONNX jelenleg csak a besorolási és a regressziós feladatokat támogatja. 
 
-Osztályozás | Regresszió | Idősoros előrejelzés
+Besorolás | Regresszió | Idősoros előrejelzés
 |-- |-- |--
 [Logisztikai regresszió](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)* | [Rugalmas háló](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)* | [Rugalmas háló](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
 [Világos GBM](https://lightgbm.readthedocs.io/en/latest/index.html)* |[Világos GBM](https://lightgbm.readthedocs.io/en/latest/index.html)*|[Világos GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
@@ -205,7 +205,7 @@ A `primary metric` paraméter határozza meg, hogy milyen mérőszámot kell has
 
 Ismerje meg a mérőszámok konkrét definícióit az [automatizált gépi tanulás eredményeinek megismeréséhez](how-to-understand-automated-ml.md).
 
-|Osztályozás | Regresszió | Idősoros előrejelzés
+|Besorolás | Regresszió | Idősoros előrejelzés
 |--|--|--
 |accuracy| spearman_correlation | spearman_correlation
 |AUC_weighted | normalized_root_mean_squared_error | normalized_root_mean_squared_error
@@ -479,7 +479,7 @@ Tekintse meg az [útmutató](how-to-machine-learning-interpretability-automl.md)
         - `pip uninstall PyJWT` a parancs-rendszerhéjban, és adja meg `y` a megerősítést.
         - Telepítés a használatával `pip install 'PyJWT<2.0.0'` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 + További információ a [modellek telepítéséről és helyéről](how-to-deploy-and-where.md).
 

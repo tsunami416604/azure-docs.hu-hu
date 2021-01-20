@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/15/2021
-ms.openlocfilehash: 9291689b362b5cbe651a72220196dd30b40745cf
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 9a43318ed935dd1e71b6da75c9f078fbebbd29eb
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540621"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599026"
 ---
 # <a name="error-investigation-using-the-dashboard"></a>Hibák vizsgálata az irányítópult használatával
 
@@ -53,6 +53,9 @@ Az irányítópult négy részre oszlik:
     ![Az érintett számítógépeket bemutató képernyőkép.](media/itsmc-resync-servicenow/itsm-dashboard-impacted-comp.png)
 3. Összekötő állapota: a gráf és az alábbi táblázat az összekötő állapotával kapcsolatos üzeneteket tartalmaz. A táblázat soraiban található gráfra kattintva további részleteket tudhat meg az összekötő állapota üzenetekről.
     A tábla csak korlátozott számú sort tartalmaz, ha meg szeretné tekinteni az összes listát, amelyre rákattinthat az "összes megjelenítése" lehetőségre.
+
+    A táblázatban található üzenetekre vonatkozó részleteket [itt](itsmc-dashboard-errors.md)tekintheti meg.
+
     ![Az összekötő állapotát megjelenítő képernyőkép.](media/itsmc-resync-servicenow/itsm-dashboard-connector-status.png)
 4. Riasztási szabályok: a táblák tartalmazzák az észlelt riasztási szabályok számával kapcsolatos információkat.
     A táblák soraira kattintva további részleteket is megtudhat az észlelt szabályokról.

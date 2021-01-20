@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cognitive-services
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: 4fe06edbb3e02f23ef56a3e7fff848682e36e3af
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 925a092eb67fa459213a37df0fc6b3f7a1b8a0fb
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251318"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602360"
 ---
 # <a name="plan-and-manage-costs-for-azure-cognitive-services"></a>Az Azure Cognitive Services költségeinek megtervezése és kezelése
 
@@ -60,9 +60,9 @@ QnA Maker erőforrások törlését követően a következő erőforrások tová
 - [Azure App Service (a futtatókörnyezethez)](https://azure.microsoft.com/pricing/details/app-service/)
 - [Azure Cognitive Search (az adatkezeléshez)](https://azure.microsoft.com/pricing/details/search/)
 
-### <a name="using-monetary-credit-with-cognitive-services"></a>Pénzügyi kreditek használata Cognitive Services
+### <a name="using-azure-prepayment-credit-with-cognitive-services"></a>Azure-előfizetési kredit használata Cognitive Services
 
-Az nagyvállalati szerződéssel rendelkező pénzügyi kötelezettségvállalással kapcsolatos díjakért Cognitive Services díjat is fizethet. Nem használhatja azonban az EA pénzügyi kötelezettségvállalását, hogy díjat fizessen a harmadik féltől származó termékekért és szolgáltatásért, például az Azure piactéren.
+Az Azure-előfizetéssel (korábban pénzügyi kötelezettségvállalásnak nevezett) Kredittel Cognitive Services díjat fizethet. Az Azure-beli előfizetési kreditek azonban nem használhatók fel a harmadik féltől származó termékekhez és szolgáltatásokhoz, például az Azure piactéren fizetendő díjakért.
 
 ## <a name="create-budgets"></a>Költségvetések létrehozása
 

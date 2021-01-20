@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 9356cbb6eb210d6745d90e8ad001917e73592cd3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 597a7c3954912a3a86b5db9f92ba75e8aaee63f6
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96021986"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601814"
 ---
 # <a name="about-the-speech-sdk"></a>A Speech SDK ismertetése
 
@@ -58,7 +58,7 @@ A **szöveg-beszéd (TTS)** a következő platformokon érhető el:
 
 ### <a name="voice-assistants"></a>Hangvezérelt asszisztensek
 
-A Speech SDK-t használó [hangsegédek](voice-assistants.md) lehetővé teszik, hogy a fejlesztők természetes, emberi jellegű társalgási felületet hozzanak létre alkalmazásaikban és tapasztalataikban. A hangsegéd szolgáltatás gyors, megbízható interakciót biztosít egy eszköz és egy segéd között. A megvalósítás a bot Framework közvetlen vonalas beszédfelismerési csatornáját vagy az integrált egyéni parancsok (előzetes verzió) szolgáltatást használja a feladatok befejezéséhez. Emellett a hangsegédek az [Egyéni Hangportálon](https://aka.ms/customvoice) létrehozott egyéni hangokat is felhasználhatják egy egyedi hangkimeneti élmény hozzáadásához.
+A Speech SDK-t használó [hangsegédek](voice-assistants.md) lehetővé teszik, hogy a fejlesztők természetes, emberi jellegű társalgási felületet hozzanak létre alkalmazásaikban és tapasztalataikban. A hangsegéd szolgáltatás gyors, megbízható interakciót biztosít egy eszköz és egy segéd között. A megvalósítás a bot Framework közvetlen vonalas beszéd csatornáját vagy az integrált Custom commands szolgáltatást használja a feladatok befejezéséhez. Emellett a hangsegédek az [Egyéni Hangportálon](https://aka.ms/customvoice) létrehozott egyéni hangokat is felhasználhatják egy egyedi hangkimeneti élmény hozzáadásához.
 
 A **hangsegédek** a következő platformokon érhetők el:
 

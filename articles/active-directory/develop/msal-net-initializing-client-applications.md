@@ -13,12 +13,12 @@ ms.date: 09/18/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: fd836afd6b8574be71ad22d26d67f49971834a88
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 6616b0573019703f287d3be521569f5953aeb032
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064725"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600290"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>Ügyfélalkalmazások inicializálása a MSAL.NET használatával
 Ez a cikk a nyilvános ügyfél és a bizalmas ügyfélalkalmazások inicializálását ismerteti a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatával.  Az ügyfélalkalmazások típusairól és az alkalmazás konfigurációs lehetőségeiről az [Áttekintés](msal-client-applications.md)című témakörben olvashat bővebben.
@@ -96,7 +96,7 @@ Az alkalmazás-építőket használó kódrészletekben számos `.With` metódus
 
 A nyilvános ügyfélen vagy a bizalmas ügyfélalkalmazás-szerkesztőben beállítható módosítók a következők:
 
-|Módosító | Description|
+|Módosító | Leírás|
 |--------- | --------- |
 |`.WithAuthority()` 7 felülbírálás | Az alkalmazás alapértelmezett szolgáltatóját egy Azure AD-szolgáltatóra állítja be, és kiválaszthatja az Azure-felhőt, a célközönséget, a bérlőt (bérlői azonosítót vagy tartománynevet), vagy közvetlenül a szolgáltatói URI-t.|
 |`.WithAdfsAuthority(string)` | Az alkalmazás alapértelmezett szolgáltatójának beállítása ADFS-szolgáltatóként.|
@@ -115,7 +115,7 @@ A nyilvános ügyfélen vagy a bizalmas ügyfélalkalmazás-szerkesztőben beál
 
 A Xamarin. iOS nyilvános ügyfélalkalmazás-építője számára beállítható módosítók a következők:
 
-|Módosító | Description|
+|Módosító | Leírás|
 |--------- | --------- |
 |`.WithIosKeychainSecurityGroup()` | **Csak Xamarin. iOS esetén**: beállítja az iOS-kulcstartó biztonsági csoportját (a gyorsítótár megőrzéséhez).|
 
@@ -123,7 +123,7 @@ A Xamarin. iOS nyilvános ügyfélalkalmazás-építője számára beállíthat�
 
 A bizalmas ügyfélalkalmazás-szerkesztőben beállítható módosítók a következők:
 
-|Módosító | Description|
+|Módosító | Leírás|
 |--------- | --------- |
 |`.WithCertificate(X509Certificate2 certificate)` | Beállítja az alkalmazást az Azure AD-vel azonosító tanúsítványt.|
 |`.WithClientSecret(string clientSecret)` | Az alkalmazás az Azure AD-vel való azonosítására szolgáló ügyfél titkos kulcsának (alkalmazás jelszavának) beállítása.|
@@ -166,3 +166,12 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .WithB2CAuthority("https://fabrikamb2c.b2clogin.com/tfp/{tenant}/{PolicySignInSignUp}")
         .Build();
 ```
+
+## <a name="next-steps"></a>További lépések
+
+Az ügyfélalkalmazás inicializálását követően a következő feladat a felhasználói bejelentkezés, a hitelesítő API-hozzáférés vagy mindkettő támogatásának hozzáadása.
+
+Az alkalmazási forgatókönyv dokumentációja útmutatást nyújt a felhasználóhoz való bejelentkezéshez és egy hozzáférési jogkivonat beszerzéséhez, hogy hozzáférjen egy API-hoz az adott felhasználó nevében:
+
+- [Felhasználók számára bejelentkező webes alkalmazás: bejelentkezés és kijelentkezés](scenario-web-app-sign-user-sign-in.md)
+- [Webes API-kat meghívó webalkalmazás: token beszerzése](scenario-web-app-call-api-acquire-token.md)

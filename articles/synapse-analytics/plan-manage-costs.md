@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.date: 12/09/2020
-ms.openlocfilehash: ab772043c681684836e3c488419584d94dd0b45a
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: c7a0be6f1d402cc994532ab4bc5a5d0ea39bc8b7
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220643"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599049"
 ---
 # <a name="plan-and-manage-costs-for-azure-synapse-analytics"></a>Az Azure szinapszis Analytics költségeinek megtervezése és kezelése
 
@@ -48,9 +48,9 @@ Az Azure szinapszis-erőforrások törlése után a következő erőforrások to
 
 - Data Lake Storage Gen2
 
-### <a name="using-monetary-credit-with-azure-synapse"></a>Pénzügyi kreditek használata az Azure szinapszis használatával 
+### <a name="using-azure-prepayment-credit-with-azure-synapse"></a>Azure-előfizetési kredit használata az Azure szinapszis használatával 
 
-Az Azure szinapszis díjait a nagyvállalati szerződéssel rendelkező pénzügyi kötelezettségvállalása alapján fizetheti ki. Nem használhatja azonban az EA pénzügyi kötelezettségvállalását, hogy díjat fizessen a harmadik féltől származó termékekért és szolgáltatásért, például az Azure piactéren.
+Az Azure szinapszis díjait az Azure-előfizetéssel (korábban pénzügyi kötelezettségvállalásnak nevezett) Kredittel fizetheti ki. Az Azure-beli előfizetési kreditek azonban nem használhatók fel a harmadik féltől származó termékekhez és szolgáltatásokhoz, például az Azure piactéren fizetendő díjakért.
 
 ## <a name="review-estimated-costs-in-the-azure-portal"></a>A becsült költségek áttekintése az Azure Portalon
 
@@ -119,7 +119,7 @@ A dedikált SQL-készlet költségeit a nem használt erőforrás szünetelteté
 
 További információ az adatintegrációs költségekről: [a Azure Data Factory költségeinek tervezése és kezelése](../data-factory/plan-manage-costs.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja [, hogyan optimalizálhatja a felhőalapú befektetéseit Azure Cost Managementokkal](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 - További információ a költségek a [Cost Analysis](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)szolgáltatással történő kezeléséről.

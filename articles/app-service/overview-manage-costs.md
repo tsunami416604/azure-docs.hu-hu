@@ -5,12 +5,12 @@ ms.custom: subject-cost-optimization
 ms.service: app-service
 ms.topic: how-to
 ms.date: 01/01/2021
-ms.openlocfilehash: f92b766fc1122456fda70d2deff81fa80a02d159
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 85035ff894127df4e9eb8334702fd9546d7a63c3
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250111"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598710"
 ---
 # <a name="plan-and-manage-costs-for-azure-app-service"></a>A Azure App Service költségeinek megtervezése és kezelése
 
@@ -61,7 +61,7 @@ Azure App Service erőforrások törlése után a kapcsolódó Azure-szolgáltat
 
 ### <a name="using-monetary-credit-with-azure-app-service"></a>Pénzügyi kreditek használata Azure App Service
 
-Az nagyvállalati szerződéssel rendelkező pénzügyi kötelezettségvállalással kapcsolatos díjakért Azure App Service díjat is fizethet. Nem használhatja azonban az EA pénzügyi kötelezettségvállalását a harmadik féltől származó termékek és szolgáltatások díjainak kifizetésére, beleértve az Azure piactéren lévőket is.
+Az Azure-előfizetéssel (korábban pénzügyi kötelezettségvállalásnak nevezett) Kredittel Azure App Service díjat fizethet. Az Azure-előfizetési kreditek azonban nem használhatók a harmadik féltől származó termékek és szolgáltatások díjainak kifizetésére, beleértve az Azure piactéren lévőket is.
 
 ## <a name="estimate-costs"></a>A költségek megbecslése
 

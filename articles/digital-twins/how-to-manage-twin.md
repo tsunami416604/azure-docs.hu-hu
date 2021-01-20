@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6d9df48839505714deead567b3d342febdb41c90
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 4e8ba291f32456bf2b8432620d1f9ea313629c9d
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051768"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600507"
 ---
 # <a name="manage-digital-twins"></a>Digitális ikereszközök kezelése
 
@@ -72,7 +72,7 @@ A segítő osztály `BasicDigitalTwin` lehetővé teszi, hogy közvetlenül egy 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="CreateTwin_withHelper":::
 
 >[!NOTE]
-> `BasicDigitalTwin` az objektumok egy `Id` mezővel rendelkeznek. Ezt a mezőt üresen hagyhatja, de ha egy azonosító értéket ad hozzá, akkor meg kell egyeznie a hívásnak átadott ID paraméterrel `CreateOrReplaceDigitalTwinAsync()` . Példa:
+> `BasicDigitalTwin` az objektumok egy `Id` mezővel rendelkeznek. Ezt a mezőt üresen hagyhatja, de ha egy azonosító értéket ad hozzá, akkor meg kell egyeznie a hívásnak átadott ID paraméterrel `CreateOrReplaceDigitalTwinAsync()` . Például:
 >
 >```csharp
 >twin.Id = "myRoomId";
@@ -227,9 +227,12 @@ A kódrészlet a modell definíciójában szereplő [Room.js](https://github.com
 A minta futtatása előtt tegye a következőket:
 1. Töltse le a modell fájlját, helyezze el a projektbe, és cserélje le a `<path-to>` helyőrzőt az alábbi kódban, hogy a program hol találja meg.
 2. Cserélje le a helyőrzőt az `<your-instance-hostname>` Azure Digital ikrek példányának állomásnévre.
-3. Vegyen fel két függőséget a projekthez, amely szükséges lesz az Azure digitális ikrekkel való együttműködéshez. Az alábbi hivatkozásokat követve megkeresheti a NuGet lévő csomagokat, ahol megtalálhatja a konzol parancsait (beleértve a .NET CLI-t is), hogy hozzáadja az egyes projektekhez tartozó legújabb verziót.
-    * [**Azure. DigitalTwins. Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Ez a csomag a .NET-hez készült [Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)-hoz.
-    * [**Azure. Identity**](https://www.nuget.org/packages/Azure.Identity). Ez a kódtár eszközöket biztosít az Azure-beli hitelesítéshez.
+3. Vegyen fel két függőséget a projekthez, amely szükséges lesz az Azure digitális ikrekkel való együttműködéshez. Az első a .NET-hez készült [Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)csomag, a második pedig az Azure-hoz való hitelesítéshez segítséget nyújtó eszközöket biztosít.
+
+      ```cmd/sh
+      dotnet add package Azure.DigitalTwins.Core
+      dotnet add package Azure.Identity
+      ```
 
 Ha közvetlenül szeretné futtatni a mintát, helyi hitelesítő adatokat is be kell állítania. A következő szakasz végigvezeti a lépéseken.
 [!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](../../includes/digital-twins-local-credentials-outer.md)]

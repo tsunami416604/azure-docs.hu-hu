@@ -3,12 +3,12 @@ title: Költségek megtakarítása az Azure VMware-megoldás fenntartott példá
 description: Megtudhatja, hogyan vásárolhat fenntartott példányt az Azure VMware-megoldáshoz.
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: 80780e9718001893b6960220b5004c1c29b2fec5
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 74344889cd107350e5026c4a0369382fb9c7ef51
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327397"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600862"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>Költségek megtakarítása Azure VMware-megoldással
 
@@ -54,11 +54,11 @@ Ezek a követelmények a fenntartott dedikált gazdagép-példány megvásárlá
 
    | Mező        |  Leírás |
    | ------------ | ------------ |
-   | Előfizetés | A foglalás kifizetéséhez használt előfizetés. Az előfizetésnél rögzített fizetési mód szerint lesznek számlázva a foglalás költségei. Az előfizetés típusának nagyvállalati szerződésnek kell lennie (ajánlati számok: MS-AZR-0017P vagy MS-AZR-0148P), Microsoft Customer Agreement vagy egyéni előfizetés utólagos elszámolású díjszabással (ajánlati számok: MS-AZR-0003P vagy MS-AZR-0023P). A díjak a pénzügyi keretek egyenlegéből lesznek levonva (ha van ilyen), vagy kerettúllépésként lesznek számlázva. Az utólagos elszámolású előfizetések díjait az előfizetés bankkártyája vagy számlás fizetési mód alapján számítjuk fel. |
+   | Előfizetés | A foglalás kifizetéséhez használt előfizetés. Az előfizetésnél rögzített fizetési mód szerint lesznek számlázva a foglalás költségei. Az előfizetés típusának nagyvállalati szerződésnek kell lennie (ajánlati számok: MS-AZR-0017P vagy MS-AZR-0148P), Microsoft Customer Agreement vagy egyéni előfizetés utólagos elszámolású díjszabással (ajánlati számok: MS-AZR-0003P vagy MS-AZR-0023P). A díjak levonhatók az Azure-előfizetésből (korábban pénzügyi kötelezettségvállalásnak nevezett) egyenlegre, ha van ilyen, vagy felszámított díj. Az utólagos elszámolású előfizetések díjait az előfizetés bankkártyája vagy számlás fizetési mód alapján számítjuk fel. |
    | Hatókör        | A foglalás hatóköre egyetlen előfizetésre vagy több előfizetésre (megosztott hatókörre) is vonatkozhat. Ha a következőket választja:<br><ul><li><b>Egy erőforráscsoport hatóköre</b> – a foglalási kedvezményt a kiválasztott erőforráscsoport megfelelő erőforrásaira alkalmazza.</li><li><b>Egyszeri előfizetés hatóköre</b> – a foglalási kedvezményt a kiválasztott előfizetésben lévő megfelelő erőforrásokra alkalmazza.</li><li><b>Megosztott hatókör</b> – a foglalási kedvezményt a megfelelő, a számlázási környezetben található jogosult előfizetésekben lévő erőforrásokra alkalmazza. Az EA-ügyfelek esetében a számlázási környezet a beléptetés. A használatalapú díjas, egyéni előfizetések esetében a számlázási hatókör a fiókadminisztrátor által létrehozott, jogosult előfizetéseket foglalja magában.</li></ul>       |
-   | Régió       | A foglalás által érintett Azure-régió.   |
+   | Region       | A foglalás által érintett Azure-régió.   |
    | Gazdagép mérete    | AV36    |
-   | Időszak         | Egy vagy három év.  |
+   | Kifejezés         | Egy vagy három év.  |
    | Mennyiség     | A foglaláson belül megvásárolni kívánt példányok száma. A mennyiség azon Azure VMware-megoldási gazdagépek száma, amelyek beszerezhetik a számlázási kedvezményt.    |
 
 ### <a name="buy-reserved-instances-for-a-csp-subscription"></a>Fenntartott példányok vásárlása CSP-előfizetéshez
@@ -85,9 +85,9 @@ Azokat a CSP-ket, amelyeknek fenntartott példányokat kívánnak vásárolni ü
    | ------------ | ------------ |
    | Előfizetés | A foglalás kifizetéséhez használt előfizetés. Az előfizetésnél rögzített fizetési mód szerint lesznek számlázva a foglalás költségei. Az előfizetés típusának jogosultnak kell lennie, amely ebben az esetben CSP-előfizetés|
    | Hatókör        | A foglalás hatóköre egyetlen előfizetésre vagy több előfizetésre (megosztott hatókörre) is vonatkozhat. Ha a következőket választja:<br><ul><li><b>Egy erőforráscsoport hatóköre</b> – a foglalási kedvezményt a kiválasztott erőforráscsoport megfelelő erőforrásaira alkalmazza.</li><li><b>Egyszeri előfizetés hatóköre</b> – a foglalási kedvezményt a kiválasztott előfizetésben lévő megfelelő erőforrásokra alkalmazza.</li><li><b>Megosztott hatókör</b> – a foglalási kedvezményt a megfelelő, a számlázási környezetben található jogosult előfizetésekben lévő erőforrásokra alkalmazza. Az EA-ügyfelek esetében a számlázási környezet a beléptetés. A használatalapú díjas, egyéni előfizetések esetében a számlázási hatókör a fiókadminisztrátor által létrehozott, jogosult előfizetéseket foglalja magában.</li></ul>       |
-   | Régió       | A foglalás által érintett Azure-régió.   |
+   | Region       | A foglalás által érintett Azure-régió.   |
    | Gazdagép mérete    | AV36    |
-   | Időszak         | Egy vagy három év.  |
+   | Kifejezés         | Egy vagy három év.  |
    | Mennyiség     | A foglaláson belül megvásárolni kívánt példányok száma. A mennyiség azon Azure VMware-megoldási gazdagépek száma, amelyek beszerezhetik a számlázási kedvezményt.     |
 
 Ha többet szeretne megtudni arról, hogyan tekintheti meg az ügyfél megvásárolt foglalásait, tekintse meg az [Azure-foglalások felhőalapú megoldás-szolgáltatóként (CSP) történő megtekintését](../cost-management-billing/reservations/how-to-view-csp-reservations.md) ismertető cikket.

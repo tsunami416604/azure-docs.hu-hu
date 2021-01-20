@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/08/2020
+ms.date: 01/18/2021
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: bc3640fecbe1138e46fd0d36975691740bc669dd
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: f6ae9ff27e773c36626812387b1284d660cbf39d
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369259"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602460"
 ---
 # <a name="understand-azure-role-definitions"></a>Az Azure szerepkör-definíciók ismertetése
 
@@ -291,11 +291,27 @@ Az `Actions` engedély meghatározza azokat a felügyeleti műveleteket, amelyek
 
 ## <a name="notactions"></a>NotActions
 
-Az `NotActions` engedély meghatározza azokat a felügyeleti műveleteket, amelyek ki vannak zárva az engedélyezetttől `Actions` . Akkor használja az `NotActions` engedélyt, ha az engedélyezni kívánt műveletek csoportja a korlátozott műveletek kizárásával könnyebben definiálható. A szerepkör (hatályos engedélyek) által biztosított hozzáférés kiszámítása a műveletek műveletből való kivonásával történik `NotActions` `Actions` .
+Az `NotActions` engedély meghatározza azokat a felügyeleti műveleteket, amelyek ki vannak vonva vagy ki vannak zárva a `Actions` helyettesítő karakterrel ( `*` ). Akkor használja az `NotActions` engedélyt, ha az engedélyezni kívánt műveletek csoportja könnyebben definiálható, ha kivonja a `Actions` helyettesítő karaktert ( `*` ). A szerepkör (hatályos engedélyek) által biztosított hozzáférés kiszámítása a műveletek műveletből való kivonásával történik `NotActions` `Actions` .
+
+`Actions - NotActions = Effective management permissions`
+
+A következő táblázat két példát mutat be a [Microsoft. CostManagement](resource-provider-operations.md#microsoftcostmanagement) helyettesítő karakteres műveletének hatályos engedélyeire:
+
+> [!div class="mx-tableFixed"]
+> | Actions | NotActions | Hatályos felügyeleti engedélyek |
+> | --- | --- | --- |
+> | `Microsoft.CostManagement/exports/*` | *nincs* | `Microsoft.CostManagement/exports/action`</br>`Microsoft.CostManagement/exports/read`</br>`Microsoft.CostManagement/exports/write`</br>`Microsoft.CostManagement/exports/delete`</br>`Microsoft.CostManagement/exports/run/action` |
+> | `Microsoft.CostManagement/exports/*` | `Microsoft.CostManagement/exports/delete` | `Microsoft.CostManagement/exports/action`</br>`Microsoft.CostManagement/exports/read`</br>`Microsoft.CostManagement/exports/write`</br>`Microsoft.CostManagement/exports/run/action` |
 
 > [!NOTE]
 > Ha a felhasználó olyan szerepkört rendel hozzá, amely kizár egy műveletet a alkalmazásban `NotActions` , és olyan második szerepkörhöz van rendelve, amely hozzáférést biztosít ugyanahhoz a művelethez, a felhasználó számára engedélyezett a művelet végrehajtása. `NotActions` nem megtagadási szabály – egyszerűen egy kényelmes módszer, amely lehetővé teszi, hogy az egyes műveleteket ki kell zárni.
 >
+
+### <a name="differences-between-notactions-and-deny-assignments"></a>A nem Tapintatok és a megtagadási hozzárendelések közötti különbségek
+
+`NotActions` a és a megtagadási hozzárendelések nem egyeznek meg, és különböző célokra szolgálnak. `NotActions` a helyettesítő karakteres () műveletből származó konkrét műveletek kivonásának kényelmes módja `*` .
+
+A hozzárendelések megtagadása esetén a felhasználók akkor is elvégezhetnek konkrét műveleteket, ha a szerepkör-hozzárendelés hozzáférést biztosít számukra. További információ: az [Azure megtagadási hozzárendeléseinek megismerése](deny-assignments.md).
 
 ## <a name="dataactions"></a>DataActions
 
@@ -311,7 +327,17 @@ Az `DataActions` engedély meghatározza azokat az adatműveleteket, amelyeket a
 
 ## <a name="notdataactions"></a>NotDataActions
 
-Az `NotDataActions` engedély meghatározza azokat az adatműveleteket, amelyek ki vannak zárva az engedélyezett tartományból `DataActions` . A szerepkör (hatályos engedélyek) által biztosított hozzáférés kiszámítása a műveletek műveletből való kivonásával történik `NotDataActions` `DataActions` . Mindegyik erőforrás-szolgáltató biztosítja az API-k megfelelő készletét az adatműveletek teljesítéséhez.
+Az `NotDataActions` engedély meghatározza azokat az adatműveleteket, amelyek ki vannak vonva vagy ki vannak zárva a `DataActions` helyettesítő karakterrel ( `*` ). Akkor használja az `NotDataActions` engedélyt, ha az engedélyezni kívánt műveletek csoportja könnyebben definiálható, ha kivonja a `DataActions` helyettesítő karaktert ( `*` ). A szerepkör (hatályos engedélyek) által biztosított hozzáférés kiszámítása a műveletek műveletből való kivonásával történik `NotDataActions` `DataActions` . Mindegyik erőforrás-szolgáltató biztosítja az API-k megfelelő készletét az adatműveletek teljesítéséhez.
+
+`DataActions - NotDataActions = Effective data permissions`
+
+A következő táblázat két példát mutat be a [Microsoft. Storage](resource-provider-operations.md#microsoftstorage) helyettesítő műveletének hatályos engedélyeire:
+
+> [!div class="mx-tableFixed"]
+> | DataActions | NotDataActions | Érvényes adatengedélyek |
+> | --- | --- | --- |
+> | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/*` | *nincs* | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/read`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/write`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/add/action`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/process/action` |
+> | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/*` | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete`</br> | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/read`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/write`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/add/action`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/process/action` |
 
 > [!NOTE]
 > Ha egy felhasználó olyan szerepkört kap, amely kizár egy adatműveletet a alkalmazásban `NotDataActions` , és olyan második szerepkört rendel hozzá, amely ugyanahhoz az adatművelethez hozzáférést biztosít, akkor a felhasználó elvégezheti az adatműveletet. `NotDataActions` nem megtagadási szabály – egyszerűen csak egy kényelmes módszer, amely lehetővé teszi az adatműveletek egy készletének kizárását, ha bizonyos adatműveleteket ki kell zárni.
@@ -335,7 +361,7 @@ A beépített szerepkörök `AssignableScopes` a gyökérszintű hatókörre () 
 
 További információ az `AssignableScopes` Egyéni szerepkörökről: [Egyéni Azure-szerepkörök](custom-roles.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Beépített Azure-szerepkörök](built-in-roles.md)
 * [Egyéni Azure-szerepkörök](custom-roles.md)

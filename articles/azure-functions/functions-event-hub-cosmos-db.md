@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 20792d58ab259f93d7725fbafda1507f9eddc740
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 6be6ee87f760eec01dc9883f0e4ca39f73aaf050
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862156"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602500"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>Oktatóanyag: függvény létrehozása javában Event hub-eseményindítóval és Azure Cosmos DB kimeneti kötéssel
 
@@ -84,7 +84,7 @@ set LOCATION=<value>
 
 Az oktatóanyag többi része ezeket a változókat használja. Vegye figyelembe, hogy ezek a változók csak az aktuális Azure CLI-vagy Cloud Shell-munkamenet időtartama alatt maradnak meg. Ezeket a parancsokat újra futtatnia kell, ha más helyi terminált használ, vagy ha a Cloud Shell munkamenet időtúllépést tapasztal.
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure erőforráscsoportok használatával gyűjti össze a fiókban lévő összes kapcsolódó erőforrást. Így megtekintheti őket egységként, és egyetlen paranccsal törölheti őket, ha elkészült velük.
 
@@ -369,6 +369,7 @@ mvn archetype:generate --batch-mode \
     -DarchetypeArtifactId=azure-functions-archetype \
     -DappName=$FUNCTION_APP \
     -DresourceGroup=$RESOURCE_GROUP \
+    -DappRegion=$LOCATION \
     -DgroupId=com.example \
     -DartifactId=telemetry-functions
 ```
@@ -381,6 +382,7 @@ mvn archetype:generate --batch-mode ^
     -DarchetypeArtifactId=azure-functions-archetype ^
     -DappName=%FUNCTION_APP% ^
     -DresourceGroup=%RESOURCE_GROUP% ^
+    -DappRegion=%LOCATION% ^ 
     -DgroupId=com.example ^
     -DartifactId=telemetry-functions
 ```
@@ -656,7 +658,7 @@ az group delete --name %RESOURCE_GROUP%
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egy Azure-függvényt, amely az Event hub-eseményeket kezeli, és frissíti a Cosmos DB. További információ: [Azure functions Java fejlesztői útmutató](./functions-reference-java.md). A használt megjegyzésekkel kapcsolatos információkért tekintse meg a következőt: [com. microsoft. Azure. functions. Megjegyzés](/java/api/com.microsoft.azure.functions.annotation) leírása.
 

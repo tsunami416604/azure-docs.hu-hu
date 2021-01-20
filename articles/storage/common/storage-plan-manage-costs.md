@@ -9,12 +9,12 @@ ms.date: 11/13/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: 14e53efb7be9eef3ca388e6524e5ffd678671cd0
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 0bad4637f13bbcf02047416499e4f82fdc53eb4f
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251641"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601301"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Az Azure Blob Storage költségeinek megtervezése és kezelése
 
@@ -41,7 +41,7 @@ Az [Azure díjszabási számológépével](https://azure.microsoft.com/pricing/c
 4. Módosítsa a hátralévő beállításokat, hogy azok hatással legyenek a becsült értékekre.
 
    > [!NOTE]
-   > Az Azure Blob Storage díjait az Azure Nagyvállalati Szerződés pénzügyi kötelezettségvállalásával kapcsolatos díjakért kell fizetnie. A pénzügyi kötelezettségvállalással kapcsolatos kreditek azonban nem használhatók fel a harmadik féltől származó termékekkel és szolgáltatásokkal, például az Azure Marketplace-ről fizetett díjakért.
+   > Az Azure Blob Storage díjait az Azure-előfizetéssel (korábban pénzügyi kötelezettségvállalásnak nevezett) Kredittel fizetheti ki. Az Azure-beli előfizetési kreditek azonban nem használhatók fel a harmadik féltől származó termékekhez és szolgáltatásokhoz, például az Azure piactéren fizetendő díjakért.
 
 ## <a name="optimize-costs"></a>Költségek optimalizálása
 

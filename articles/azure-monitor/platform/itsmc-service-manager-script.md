@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
-ms.openlocfilehash: d620df0b55b024cd5d7c25ea17d9b09c5c5da8ff
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 3d9360b167a246e257d8c0b2ec4cb88f1ae39dcd
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722878"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600159"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>Service Manager Webalkalmazás létrehozása az automatikus parancsfájl használatával
 
@@ -317,6 +317,11 @@ if(!$err)
 }
 ```
 
+## <a name="troubleshoot-service-manager-web-app-deployment"></a>Service Manager webalkalmazás központi telepítésének hibáinak megoldása
+
+-   Ha problémák merülnek fel a webalkalmazások üzembe helyezésével kapcsolatban, győződjön meg arról, hogy rendelkezik az előfizetés erőforrásainak létrehozásához/üzembe helyezéséhez szükséges engedélyekkel.
+-   Ha a [parancsfájl](itsmc-service-manager-script.md)futtatásakor nem az objektumra **vonatkozó hiba példányára van beállítva** , akkor ellenőrizze, hogy érvényes értékeket adott-e meg a **Felhasználó konfigurációja** szakaszban.
+-   Ha nem sikerül létrehoznia a Service Bus Relay-névteret, győződjön meg arról, hogy a szükséges erőforrás-szolgáltató regisztrálva van az előfizetésben. Ha nincs regisztrálva, manuálisan hozza létre a Service Bus Relay-névteret a Azure Portalból. Azt is létrehozhatja, amikor [létrehozza a hibrid kapcsolatokat](./itsmc-connections-scsm.md#configure-the-hybrid-connection) a Azure Portalban.
+
 ## <a name="next-steps"></a>További lépések
 [A hibrid kapcsolatok konfigurálása](./itsmc-connections-scsm.md#configure-the-hybrid-connection).
-

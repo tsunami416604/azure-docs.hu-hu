@@ -7,18 +7,18 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 7af91e2065235d749d3a690a3c4c244fc45c0e5a
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 51e8f01726c732604199ff08323f073d508da66e
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572765"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602316"
 ---
 # <a name="examples-of-an-attestation-policy"></a>Példa igazolási házirendre
 
 Az igazolási szabályzat az igazolási tanúsítványok feldolgozására szolgál, és meghatározza, hogy az Azure-igazolás kiadja-e az igazolási jogkivonatot. Az igazolási jogkivonat létrehozása egyéni házirendekkel szabályozható. Az alábbiakban néhány példa az igazolási házirendre.
 
-## <a name="default-policy-for-an-sgx-enclave-in-text-format"></a>SGX ENKLÁVÉHOZ enklávé alapértelmezett szabályzata szöveges formátumban
+## <a name="default-policy-for-an-sgx-enclave"></a>SGX ENKLÁVÉHOZ enklávé alapértelmezett szabályzata 
 
 ```
 version= 1.0;
@@ -38,26 +38,17 @@ issuancerules
 };
 ```
 
-## <a name="sample-custom-policy-for-an-sgx-enclave-in-text-format"></a>Egyéni szabályzat mintája egy SGX ENKLÁVÉHOZ enklávéhoz szöveges formátumban
+## <a name="sample-custom-policy-for-an-sgx-enclave"></a>Egyéni szabályzat mintája egy SGX ENKLÁVÉHOZ enklávéhoz 
 
 ```
-Version= 1.0;
-authorizationrules 
+version= 1.0;
+authorizationrules
 {
        [ type=="x-ms-sgx-is-debuggable", value==false ]
         && [ type=="x-ms-sgx-product-id", value==<product-id> ]
         && [ type=="x-ms-sgx-svn", value>= 0 ]
-        && [ type=="x-ms-sgx-mrsigner", value=="<mrsigner>"] 
+        && [ type=="x-ms-sgx-mrsigner", value=="<mrsigner>"]
     => permit();
-};
-issuancerules
-{
-    c:[type=="x-ms-sgx-is-debuggable"] => issue(type="is-debuggable", value=c.value);
-    c:[type=="x-ms-sgx-mrsigner"] => issue(type="sgx-mrsigner", value=c.value);
-    c:[type=="x-ms-sgx-mrenclave"] => issue(type="sgx-mrenclave", value=c.value);
-    c:[type=="x-ms-sgx-product-id"] => issue(type="product-id", value=c.value);
-    c:[type=="x-ms-sgx-svn"] => issue(type="svn", value=c.value);
-    c:[type=="x-ms-sgx-tee"] => issue(type="tee", value=c.value);
 };
 ```
 

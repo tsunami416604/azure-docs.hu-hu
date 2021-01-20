@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/08/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 1c957330fbd54660367fa350d6985929f0bbd3d1
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 6fd791495602846b95e2dd3e99423db5505f5307
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95531389"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600921"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>A fenntartott kapacitású Blob Storage költségeinek optimalizálása
 
@@ -82,7 +82,7 @@ A fenntartott kapacitás megvásárlásához kövesse az alábbi lépéseket:
    |Mező  |Leírás  |
    |---------|---------|
    |**Hatókör**   |  Azt jelzi, hogy hány előfizetés használhatja a foglaláshoz kapcsolódó számlázási kedvezményt. Azt is meghatározza, hogy a foglalás hogyan legyen alkalmazva az adott előfizetésekre. <br/><br/> Ha a **megosztott** lehetőséget választja, a foglalási kedvezmény az Azure Storage-kapacitásra vonatkozik a számlázási környezetben található bármely előfizetésben. A számlázási környezet az Azure-ra való feliratkozáson alapul. A vállalati ügyfelek esetében a közös hatókör a regisztráció, és a regisztráción belüli összes előfizetés szerepel. Az utólagos elszámolású ügyfelek esetében a megosztott hatókör magában foglalja az összes olyan előfizetést, amely a fiók rendszergazdája által létrehozott utólagos elszámolású díjszabású.  <br/><br/>  Ha az **egyszeri előfizetést** választja, a foglalási kedvezményt a rendszer a kijelölt előfizetés Azure Storage-kapacitására alkalmazza. <br/><br/> Ha **egyetlen erőforráscsoportot** választ, a foglalási kedvezményt a rendszer a kijelölt előfizetésben és a kiválasztott erőforráscsoporthoz alkalmazza az Azure Storage-kapacitásra. <br/><br/> A foglalási hatókört a foglalás megvásárlása után módosíthatja.  |
-   |**Előfizetés**  | Az Azure Storage-foglalás kifizetéséhez használt előfizetés. A kiválasztott előfizetéshez tartozó fizetési mód a költségek kitöltésére szolgál. Az előfizetésnek a következő típusok egyikének kell lennie: <br/><br/>  Nagyvállalati Szerződés (ajánlati számok: MS-AZR-0017P vagy MS-AZR-0148P): nagyvállalati előfizetések esetén a díjakat a beléptetés pénzügyi kötelezettségvállalásának egyenlegére, vagy felszámított összegként kell levonni. <br/><br/> Egyéni előfizetés utólagos elszámolású díjszabással (ajánlati számok: MS-AZR-0003P vagy MS-AZR-0023P): egyéni előfizetés utólagos elszámolású díjszabással, a díjak számlázása a hitelkártyára vagy a számla fizetési módjára történik az előfizetésben.    |
+   |**Előfizetés**  | Az Azure Storage-foglalás kifizetéséhez használt előfizetés. A kiválasztott előfizetéshez tartozó fizetési mód a költségek kitöltésére szolgál. Az előfizetésnek a következő típusok egyikének kell lennie: <br/><br/>  Nagyvállalati Szerződés (ajánlati számok: MS-AZR-0017P vagy MS-AZR-0148P): nagyvállalati előfizetések esetén a díjakat a regisztrációhoz tartozó Azure-előfizetésből (korábban pénzügyi kötelezettségvállalásnak nevezett) egyenlegből, vagy a túlterhelésnek megfelelően számoljuk el. <br/><br/> Egyéni előfizetés utólagos elszámolású díjszabással (ajánlati számok: MS-AZR-0003P vagy MS-AZR-0023P): egyéni előfizetés utólagos elszámolású díjszabással, a díjak számlázása a hitelkártyára vagy a számla fizetési módjára történik az előfizetésben.    |
    | **Régió** | Az a régió, ahol a foglalás érvényben van. |
    | **Hozzáférési szint** | Az a hozzáférési szintet, amelyben a foglalás érvényes. A lehetőségek *közé tartoznak* a *gyakori, a* ritka elérésű és az *archív* beállítások. A hozzáférési szintekkel kapcsolatos további információkért lásd [: Azure Blob Storage: gyakori, ritka elérésű és archív hozzáférési szintek](storage-blob-storage-tiers.md). |
    | **Redundancia** | A foglalás redundancia lehetősége. A lehetőségek közé tartoznak a következők: *LRS*, *ZRS*, *GRS*, *GZRS*, *ra-GRS* és *ra-GZRS*. További információ a redundancia lehetőségeiről: [Azure Storage redundancia](../common/storage-redundancy.md). |

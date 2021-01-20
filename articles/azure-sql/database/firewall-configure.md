@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 06/17/2020
-ms.openlocfilehash: 9fe0c79a2f65b27b35aa5029d0a53de62ef08078
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: e85c97df29bbbcc5d446d788cc190f3c90f24024
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251658"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602229"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL Database és az Azure szinapszis IP-tűzfalszabályok
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -43,6 +43,9 @@ A kiszolgálói szintű IP-tűzfalszabályok a Azure Portal, a PowerShell vagy a
 
 - A portál vagy a PowerShell használatához az előfizetés tulajdonosának vagy az előfizetés közreműködőinek kell lennie.
 - A Transact-SQL használatához csatlakoznia kell a *főadatbázishoz* kiszolgálói szintű rendszerbiztonsági azonosítóként vagy Azure Active Directory rendszergazdaként. (A kiszolgálói szintű IP-tűzfalszabályok először egy Azure szintű engedélyekkel rendelkező felhasználónak kell létrehoznia.)
+
+> [!NOTE]
+> Alapértelmezés szerint a Azure Portal új logikai SQL-kiszolgáló létrehozásakor az **Azure-szolgáltatások és-erőforrások hozzáférésének engedélyezése ezen a kiszolgálón** beállítás a **nem** értékre van állítva.
 
 ### <a name="database-level-ip-firewall-rules"></a>Adatbázis szintű IP-tűzfalszabályok
 

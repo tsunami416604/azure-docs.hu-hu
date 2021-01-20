@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: szöveg – beszéd
-ms.openlocfilehash: af0c9338cb9661402c3a76bab55f34b01304c7b6
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 54db794d4e9cf0cd2a049a865f2e7bb52698a4bd
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024517"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599544"
 ---
 # <a name="what-is-text-to-speech"></a>Mi az a szövegfelolvasás?
 
@@ -39,9 +39,9 @@ Ebben az áttekintésben megismerheti a szöveg és a beszéd közötti szolgál
 
 * Neurális hangok – a mély neurális hálózatokkal leküzdhető a hagyományos beszédfelismerés korlátai a hangsúlyt és a hanglejtést illetően a beszélt nyelven. A Prosody előrejelzése és a hangszintézis párhuzamosan történik, ami több folyadékot és természetes hangzású kimenetet eredményez. A neurális hangokat felhasználhatja az csevegőrobotok-és hangsegédekkel való interakciót természetesebb és vonzó, digitális szövegek, például e-könyvek hangoskönyvekbe való átalakítására és az autós navigációs rendszerek fejlesztésére. Az emberi jellegű természetes prosody és a szavak egyértelmű megfogalmazásával a neurális hangok jelentősen csökkentik a figyelés fáradtságot, amikor az AI-rendszerekkel kommunikál. A neurális hangok teljes listáját lásd: [támogatott nyelvek](language-support.md#text-to-speech).
 
-* Speech szintézis Markup Language (SSML) – XML-alapú leíró nyelv, amely a beszédfelismerési kimenetek testreszabására szolgál. A SSML beállíthatja a Pitch, a szüneteltetések hozzáadását, a kiejtés növelését, a sebesség növelését vagy lelassulását, a kötetek növelését és csökkentését, valamint több hang megadását egyetlen dokumentumra. Lásd: [SSML](speech-synthesis-markup.md).
+* A beszédfelismerési stílusok a SSML-hangszintézis Markup Language (SSML) nyelvvel való beállítása egy XML-alapú Markup-nyelv, amely a beszéd-szöveg kimenetek testreszabására szolgál. A SSML beállíthatja a Pitch, a szüneteltetések hozzáadását, a kiejtés növelését, a sebesség növelését vagy lelassulását, a kötetek növelését és csökkentését, valamint több hang megadását egyetlen dokumentumra. Lásd: [útmutató](speech-synthesis-markup.md) a beszéd stílusainak módosításához.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 Tekintse [meg az első lépéseket a szöveg](get-started-text-to-speech.md) és a beszéd megismeréséhez. A szöveg-beszéd szolgáltatás a [SPEECH SDK](speech-sdk.md), a [REST API](rest-text-to-speech.md)és a [Speech CLI](spx-overview.md) használatával érhető el.
 

@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 07/29/2020
+ms.date: 01/20/2021
 ms.author: tisande
-ms.openlocfilehash: 35232f95bc18432db05775807d95f23ceab66aea
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 09148e65e446d723fbfe7a54602db59ee0739f83
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93333783"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599344"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB kulcsszavai
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -107,6 +107,73 @@ Az összesített rendszerfunkcióval és allekérdezéssel rendelkező lekérdez
 ```sql
 SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 ```
+
+## <a name="like"></a>PÉLDÁUL
+
+Egy logikai értéket ad vissza attól függően, hogy egy adott karakterlánc megfelel-e egy megadott mintának. A minta tartalmazhat normál karaktereket és helyettesítő karaktereket. Logikusan egyenértékű lekérdezéseket írhat a `LIKE` kulcsszó vagy a [RegexMatch](sql-query-regexmatch.md) System függvény használatával. Ugyanazt az indexelési kihasználtságot kell figyelembe vennie, függetlenül attól, hogy melyiket választja. Ezért akkor érdemes használni, `LIKE` Ha a szintaxisa nagyobb, mint a reguláris kifejezés.
+
+> [!NOTE]
+> Mivel `LIKE` a képes indexet használni, [létre kell hoznia egy tartomány-indexet](indexing-policy.md) a használatával összehasonlítható tulajdonságokhoz `LIKE` .
+
+A következő helyettesítő karaktereket használhatja hasonló módon:
+
+| Helyettesítő karakter | Leírás                                                  | Példa                                     |
+| -------------------- | ------------------------------------------------------------ | ------------------------------------------- |
+| %                    | Bármely nulla vagy több karakterből álló sztring                      | WHERE c. Description LIKE "% SO% PS%"      |
+| _ (aláhúzás)     | Egyetlen karakter                                       | WHERE c. Description LIKE "% SO_PS%"      |
+| [ ]                  | A megadott tartományon belüli egyetlen karakter ([a-f]) vagy a set ([ABCDEF]). | AHOL c. Description LIKE "% SO [t-z] PS%"  |
+| [^]                  | A megadott tartományba ([^ a-f]) vagy a set ([^ ABCDEF]) nem tartozó egyetlen karakter. | AHOL c. Description LIKE "% SO [^ ABC] PS%" |
+
+
+### <a name="using-like-with-the--wildcard-character"></a>Használat a (z)% helyettesítő karakterrel
+
+A `%` karakter bármely nulla vagy több karakterből álló sztringnek felel meg. Például a `%` minta elején és végén a következő lekérdezés visszaadja az összes olyan elemet, amely tartalmaz egy leírást, amely tartalmazza a következőket `fruit` :
+
+```sql
+SELECT *
+FROM c
+WHERE c.description LIKE "%fruit%"
+```
+
+Ha csak a `%` minta elején használt karaktert használta, csak olyan elemeket ad vissza, amelyek a következővel kezdődnek `fruit` :
+
+```sql
+SELECT *
+FROM c
+WHERE c.description LIKE "fruit%"
+```
+
+
+### <a name="using-not-like"></a>NEM hasonló használata
+
+Az alábbi példa az összes olyan elemet visszaadja, amely tartalmaz egy leírást, amely nem tartalmazza a következőt `fruit` :
+
+```sql
+SELECT *
+FROM c
+WHERE c.description NOT LIKE "%fruit%"
+```
+
+### <a name="using-the-escape-clause"></a>A Escape záradék használata
+
+A ESCAPE záradék használatával olyan mintákat kereshet, amelyek egy vagy több helyettesítő karaktert tartalmaznak. Ha például a sztringet tartalmazó leírások keresését szeretné megkeresni `20-30%` , azt nem érdemes `%` helyettesítő karakterként értelmezni.
+
+```sql
+SELECT *
+FROM c
+WHERE c.description LIKE '%20-30!%%' ESCAPE '!'
+```
+
+### <a name="using-wildcard-characters-as-literals"></a>Helyettesítő karakterek használata literálként
+
+Zárójelben lévő helyettesítő karakterekkel is rendelkezhet, hogy literál karakterként kezeljék őket. Ha egy helyettesítő karaktert szögletes zárójelben, akkor minden speciális attribútumot el kell távolítania. Íme néhány példa:
+
+| Mintázat           | Értelmezés |
+| ----------------- | ------- |
+| PÉLDÁUL: "20-30 [%]" | 20-30%  |
+| PÉLDÁUL "[_] n"     | _n      |
+| PÉLDÁUL: "[[]"    | [       |
+| PÉLDÁUL "]"        | ]       |
 
 ## <a name="in"></a>IN
 

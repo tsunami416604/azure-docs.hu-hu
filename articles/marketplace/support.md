@@ -1,18 +1,18 @@
 ---
-title: Támogatás kérése a kereskedelmi piactér portálhoz a partner Centerben
-description: Ismerje meg a partner Center támogatási lehetőségeit, beleértve a támogatási kérések beszerzését.
+title: Támogatás kérése a kereskedelmi piactér programhoz a partner Centerben
+description: Ismerje meg a partner Centerben elérhető kereskedelmi piactér program támogatási lehetőségeit, beleértve a támogatási kérések beszerzését.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: navits09
 ms.author: navits
-ms.date: 01/14/2020
-ms.openlocfilehash: 8979a94ee63ef50c0a3abacd5ab3515226200131
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.date: 01/19/2020
+ms.openlocfilehash: 6075027124352746a3adbb8f6937d3787eb22b9d
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183438"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602588"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>A kereskedelmi piactér program támogatása a partner Centerben
 
@@ -22,60 +22,43 @@ A Microsoft számos termék és szolgáltatás támogatását biztosítja. A meg
 - Ha Ön közzétevő, és biztonsági problémát észlelt az Azure-on futó alkalmazással kapcsolatban, tekintse meg [a biztonsági eseményekre vonatkozó támogatási jegy naplózása](/azure/security/fundamentals/event-support-ticket)című témakört. A kiadóknak a lehető leghamarabb jelenteniük kell a feltételezett biztonsági eseményeket, beleértve az Azure Marketplace-szoftverek és-szolgáltatások biztonsági incidenseit és biztonsági réseit.
 - Ha Ön kiadó, és az alkalmazásával vagy szolgáltatásával kapcsolatos kérdése van, tekintse át a következő támogatási lehetőségeket.
 
-## <a name="support-options-for-publishers"></a>A közzétevők támogatási lehetőségei
+## <a name="get-help-or-open-a-support-ticket"></a>Segítség kérése vagy támogatási jegy megnyitása
 
-1. Jelentkezzen be a [kereskedelmi piactér programba a partner centeren](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) a munkahelyi fiókjával (ha még nem tette meg, akkor [létre kell hoznia egy partner Center-fiókot](partner-center-portal/create-account.md).
+1. Jelentkezzen be a munkahelyi fiókjával. Ha még nem tette meg, akkor [létre kell hoznia egy partner Center-fiókot](partner-center-portal/create-account.md).
 
-2. A lap jobb oldalán található felső menüben válassza a **támogatás** ikont.
+1. A lap jobb felső részén található menüben válassza a **támogatás** ikont. A **Súgó és támogatás** panel a lap jobb oldalán jelenik meg.
 
-3. A **Súgó és támogatás** panel az oldal jobb oldaláról fog megjelenni.
+1. Ha segítségre van a kereskedelmi piactéren, válassza a **kereskedelmi piactér** lehetőséget.
 
    ![Támogatás legördülő menü](./media/support/commercial-marketplace-support-pane.png)
 
-    Vagy nyissa meg a **Kezdőlap** ablaktáblát, és kattintson a **Súgó és támogatás** elemre.
+1. A **probléma összegzése** mezőben adja meg a probléma rövid leírását.
 
-   ![Súgó és támogatás a kezdőlapon](./media/support/homepage-help-support.png)
+1. A **probléma típusa** mezőben tegye a következők egyikét:
 
-4. Válassza ki a **[dokumentációt](../index.yml)** a kérdésekre és erőforrásokra vonatkozó átfogó válaszok áttekintéséhez.
+    - **1. lehetőség**: olyan kulcsszavakat adjon meg, mint például a piactér, az Azure-alkalmazás, az SaaS-ajánlat, a fiókok kezelése, az érdeklődők felügyelete, a üzembe helyezési probléma, a kifizetés vagy a közös értékesítés ajánlata. Ezután válassza ki a megjelenő ajánlott listából a probléma típusát.
 
-5. Válassza ki a **[Piactéri partnerek közösségi fórumát](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** , hogy válaszoljon a kérdéseire más Microsoft-közzétevők ismeretének kihasználásával.
+    - **2. lehetőség**: válassza a **témakörök tallózása** lehetőséget a **Kategória** listából, majd válassza a **kereskedelmi piactér** lehetőséget. Ezután válassza ki a megfelelő **témakört** és **altémakört**.
 
-6. Válassza a **[további Súgó](https://aka.ms/marketplacepublishersupport)** lehetőséget egy **új támogatási kérelem** jegyének megnyitásához.  
+1. Miután megtalálta a kívánt témakört, válassza a **megoldások áttekintése** elemet.
 
-## <a name="how-to-open-a-support-ticket"></a>Támogatási jegy megnyitása
+    ![Következő lépés](./media/support/next-step.png)
 
-Most már készen áll egy támogatási jegy megnyitására a **Súgó és támogatás** képernyőjén.
+A következő lehetőségek jelennek meg:
 
-![Súgó és támogatás](./media/support/help-and-support.png)
+- Egy másik témakör kiválasztásához kattintson **a másik probléma kiválasztása** lehetőségre.
+- A probléma megoldásához tekintse át az ajánlott lépéseket és dokumentumokat, ha vannak ilyenek.
 
->[!Note]
->Ha bejelentkezett a partner Centerben, a támogatással jobb élményt kaphat.
+    ![Ajánlott megoldások](./media/support/recommended-solutions.png)
 
-**1. lehetőség:** Adja meg a kulcsszavakat, például: piactér, Azure-alkalmazás, SaaS-ajánlat, Fiókkezelés, vezető felügyelet, üzembe helyezési probléma, fizetés stb.
-
-**2. lehetőség:** Témakörök tallózása – > **Kategória** kiválasztása = kereskedelmi piactér – > válassza ki a megfelelő **témakört** , majd **altémakört**.
-
-Ha megtalálta a kívánt témakört, válassza a **megoldások áttekintése** elemet.
-
-![Következő lépés](./media/support/next-step.png)
-
-A következő lehetőségek lesznek elérhetők:
-
-- Egy másik témakör kiválasztásához válasszon egy másik témakör-hivatkozást a **kiválasztott probléma** területen.
-- Tekintse át a probléma leírását, ha van ilyen.  Ez az **ajánlott lépések** felett látható szöveg.
-- Tekintse át az **ajánlott lépéseket**, ha vannak ilyenek.
-- Tekintse át az **ajánlott dokumentumokat**, ha vannak ilyenek.
-
-![Ajánlott megoldások](./media/support/recommended-solutions.png)
-
-Ha nem találja a választ a **javasolt megoldásokban**, válassza a **probléma részleteinek megadása** lehetőséget. Fejezze be az összes kötelező mezőt a megoldási folyamat felgyorsításához, majd válassza a **Küldés** lehetőséget.
+Ha nem találja a választ a saját súgójában, válassza a **probléma részleteinek megadása** lehetőséget. Fejezze be az összes kötelező mezőt a megoldási folyamat felgyorsításához, majd válassza a **Küldés** lehetőséget.
 
 >[!Note]
->Ha még nem jelentkezett be a partner Centerben, és a témakör hitelesítésre szorul, a folytatáshoz a rendszer kérni fogja a bejelentkezést.  Nyilvános témakörök esetén nincs szükség hitelesítésre.
+>Ha még nem jelentkezett be a partner központba, előfordulhat, hogy a jegy létrehozása előtt be kell jelentkeznie.
 
 ## <a name="track-your-existing-support-requests"></a>Meglévő támogatási kérelmek nyomon követése
 
-A nyitott és lezárt jegyek áttekintéséhez nyissa meg a **kereskedelmi piactér** elemet a bal oldali navigációs sávon, majd válassza a **támogatás** lehetőséget.
+A nyitott és lezárt jegyek áttekintéséhez a bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **támogatás** lehetőséget.
 
 ## <a name="record-issue-details-with-a-har-file"></a>Probléma részleteinek rögzítése egy HAR-fájllal
 
@@ -136,6 +119,6 @@ HAR-fájl létrehozása a **Safari** használatával:
 
     ![HAR-fájl exportálása a Safari alkalmazásba](media/support/safari-network-export-har.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](partner-center-portal/update-existing-offer.md)

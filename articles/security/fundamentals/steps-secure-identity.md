@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: 4703a76ff0a0b55a438f9f0d164cd7f2d3242a02
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: ffc5bafca305086b0c524c76eb91b8aec2e2655d
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842022"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602440"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Öt lépés a személyazonossági infrastruktúra biztonságossá tételéhez
 
@@ -81,7 +81,7 @@ A PowerShell használatával [megakadályozhatja, hogy a jelszavak lejárjanak](
 
 Ha a szervezet hibrid identitási megoldást használ átmenő hitelesítéssel vagy összevonással, akkor a jelszó-kivonatolási szinkronizálást a következő két okból kell engedélyeznie:
 
-* A [kiszivárgott hitelesítő adatokkal rendelkező felhasználók](../../active-directory/identity-protection/overview-identity-protection.md) az Azure ad-ben figyelmeztetnek a Felhasználónév és a jelszó párokra, amelyek elérhetők a "Dark web"-ben. A rendszer az adathalászat, a kártevők és a jelszavak újbóli felhasználását a későbbiekben megsértő külső webhelyeken végezheti el. A Microsoft megkeresi ezeket a kiszivárgott hitelesítő adatokat, és tájékoztatja Önt a jelentésben, ha megfelelnek a szervezet hitelesítő adatainak, de csak akkor, ha [engedélyezi a jelszó-kivonatok szinkronizálását](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md).
+* A [kiszivárgott hitelesítő adatokkal rendelkező felhasználók](../../active-directory/identity-protection/overview-identity-protection.md) az Azure ad-ben figyelmeztetnek a Felhasználónév és a jelszó párokra, amelyek elérhetők a "Dark web"-ben. A rendszer az adathalászat, a kártevők és a jelszavak újbóli felhasználását a későbbiekben megsértő külső webhelyeken végezheti el. A Microsoft megkeresi ezeket a kiszivárgott hitelesítő adatokat, és tájékoztatja Önt arról, ha a szervezet hitelesítő adatai egyeznek, de csak akkor, ha [engedélyezi a jelszó-kivonatok szinkronizálását](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) , vagy csak a csak Felhőbeli identitásokat.
 * Helyszíni leállás esetén (például egy ransomware támadás esetében) a [jelszó-kivonatolási szinkronizálás használatával](../../active-directory/hybrid/choose-ad-authn.md)átválthat a Felhőbeli hitelesítés használatára. Ez a biztonsági mentési hitelesítési módszer lehetővé teszi, hogy továbbra is hozzáférjen a hitelesítéshez konfigurált alkalmazások Azure Active Directory, például a Microsoft 365hoz. Ebben az esetben az informatikai részlegnek nem kell személyes e-mail-fiókokat használnia az adatmegosztáshoz, amíg a helyszíni leállás megoldódik.
 
 További információ a [jelszó-kivonatolási szinkronizálás](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) működéséről.
@@ -199,7 +199,7 @@ Az Azure AD lehetővé teszi a nem rendszergazdák számára az erőforrásokhoz
 
 Az [Azure ad hozzáférési felülvizsgálatok](../../active-directory/governance/access-reviews-overview.md)segítségével kezelheti a hozzáférési csomagokat és a csoporttagságok, a vállalati alkalmazásokhoz való hozzáférést és a Kiemelt szerepkör-hozzárendeléseket, így biztosítva a biztonsági szabványok fenntartását.  A felhasználók saját maguk, az erőforrás-tulajdonosok és az egyéb felülvizsgálók rendszeres felügyelete biztosítja, hogy a felhasználók ne tartsanak meg hosszabb ideig a hozzáférést, amikor már nincs rá szükségük.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 A biztonságos identitás-infrastruktúrának számos aspektusa van, de ez az öt lépésből álló ellenőrzőlista segítséget nyújt a biztonságosabb és biztonságos identitás-infrastruktúra gyors megvalósításához:
 
@@ -211,7 +211,7 @@ A biztonságos identitás-infrastruktúrának számos aspektusa van, de ez az ö
 
 Nagyra értékeljük, hogy milyen komolyan vesszük a személyazonossági biztonságot, és reméljük, hogy ez a dokumentum hasznos útiterv a szervezete számára biztonságosabb testhelyzethez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha segítségre van szüksége a javaslatok megtervezéséhez és üzembe helyezéséhez, tekintse meg az [Azure ad projekt üzembe helyezési terveit](../../active-directory/fundamentals/active-directory-deployment-plans.md) .
 

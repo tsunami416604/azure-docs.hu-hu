@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6c4f23406c97d647002fbb3ab4a3544866303cf4
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 6f74f973abc33d809624bd8abd5a514a52ccfe70
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051343"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602694"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>Function Apps-alkalmazások összekapcsolhatók az Azure-ban az adatfeldolgozáshoz
 
@@ -27,7 +27,7 @@ Az itt látható lépések áttekintése:
 1. Hozzon létre egy Azure Functions-projektet a Visual Studióban
 2. Függvény írása [Event Grid](../event-grid/overview.md) triggerrel
 3. Hitelesítési kód hozzáadása a függvényhez (az Azure digitális Twins eléréséhez)
-4. A Function alkalmazás közzététele az Azure-ban
+4. A függvényalkalmazás közzététele az Azure-ban
 5. [Biztonsági](concepts-security.md) hozzáférés beállítása a Function alkalmazáshoz
 
 ## <a name="prerequisite-set-up-azure-digital-twins-instance"></a>Előfeltétel: az Azure Digital Twins-példány beállítása
@@ -63,24 +63,20 @@ Az SDK használatához a következő csomagokat kell felvennie a projektbe. A cs
 Ehhez kattintson a jobb gombbal a projektre, és válassza a _NuGet-csomagok kezelése_ elemet a listából. Ezután a megnyíló ablakban válassza a _Tallózás_ fület, és keresse meg a következő csomagokat. Válassza a _telepítés_ lehetőséget, és _fogadja el_ a licencszerződést a csomagok telepítéséhez.
 
 * `Azure.DigitalTwins.Core`
-* `Azure.Identity` 
-
-Ahhoz, hogy az Azure SDK-folyamat megfelelően beállítható legyen a Azure Functionshoz, a következő csomagokra is szüksége lesz. Az összes csomag telepítéséhez ismételje meg a fenti eljárást.
-
+* `Azure.Identity`
 * `System.Net.Http`
-* `Azure.Core.Pipeline`
+* `Azure.Core`
 
 **2. lehetőség. Csomagok hozzáadása a `dotnet` parancssori eszközzel:**
 
 Azt is megteheti, hogy a következő `dotnet add` parancsokat használja egy parancssori eszközben:
-```cmd/sh
-dotnet add package System.Net.Http
-dotnet add package Azure.Core.Pipeline
-```
 
-Ezután vegyen fel két további függőséget a projekthez, amely az Azure digitális Twins-mel való együttműködéshez szükséges lesz. Az alábbi hivatkozásokat követve megkeresheti a NuGet lévő csomagokat, ahol megtalálhatja a konzol parancsait (beleértve a .NET CLI-t is), hogy hozzáadja az egyes projektekhez tartozó legújabb verziót.
- * [**Azure. DigitalTwins. Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Ez a csomag a .NET-hez készült [Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)-hoz.
- * [**Azure. Identity**](https://www.nuget.org/packages/Azure.Identity). Ez a kódtár eszközöket biztosít az Azure-beli hitelesítéshez.
+```cmd/sh
+dotnet add package Azure.DigitalTwins.Core
+dotnet add package Azure.Identity
+dotnet add package System.Net.Http
+dotnet add package Azure.Core
+```
 
 Ezután a Visual Studio Megoldáskezelő nyissa meg a _function.cs_ fájlt, ahol a mintakód szerepel, és adja hozzá a következő _using_ utasításokat a függvényhez. 
 
@@ -110,7 +106,7 @@ A módosítások után a függvény kódja a következőhöz hasonló lesz:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs":::
 
-## <a name="publish-the-function-app-to-azure"></a>A Function alkalmazás közzététele az Azure-ban
+## <a name="publish-the-function-app-to-azure"></a>A függvényalkalmazás közzététele az Azure-ban
 
 Ha közzé szeretné tenni a projektet egy Azure-beli Function alkalmazásban, kattintson a jobb gombbal a függvény projektre (nem a megoldásra) Megoldáskezelő, és válassza a **Közzététel** lehetőséget.
 
@@ -154,7 +150,7 @@ A rendszerfelügyelt identitás létrehozásához használja a következő paran
 ```azurecli-interactive 
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>   
 ```
-A következő parancs _principalId_ értékének használatával rendelje hozzá a Function alkalmazás identitását az Azure Digital _Twins-adattulajdonosi_ szerepkörhöz az Azure Digital Twins-példányhoz.
+Az alábbi parancsban a _principalId_ érték használatával rendelje hozzá a függvényalkalmazás identitását az Azure Digital Twins-példány _Azure Digital Twins-adattulajdonosi_ szerepköréhez.
 
 ```azurecli-interactive 
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"

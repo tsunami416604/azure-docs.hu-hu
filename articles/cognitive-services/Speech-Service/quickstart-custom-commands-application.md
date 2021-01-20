@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.custom: references_regions
-ms.openlocfilehash: c5f8be87e7ee95e1deff12cce09204b5fe8a0bb7
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 2cc37cc66c06dc9e6997c6a031a9c60ad050c01a
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694184"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601770"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>Hangvezérelt asszisztens létrehozása egyéni parancsokkal
 
-Ebben a rövid útmutatóban egy alapszintű egyéni parancsok alkalmazását hozza létre és teszteli a Speech Studio használatával. Ezt az alkalmazást egy Windows-ügyfélalkalmazás is elérheti. Az **egyéni parancsok** megkönnyítik a hangvezérelt hangvezérelt alkalmazások készítését a hang-első interakciós élményhez. Egységes szerzői élményt, automatikus üzemeltetési modellt és viszonylag alacsony bonyolultságot biztosít, amely segít a legjobb megoldás kialakításában a hangvezérelt forgatókönyvekhez.
+Ebben a rövid útmutatóban egy alapszintű egyéni parancsok alkalmazását hozza létre és teszteli a Speech Studio használatával. Ezt az alkalmazást egy Windows-ügyfélalkalmazás is elérheti.
 
 ## <a name="region-availability"></a>Régió elérhetősége
 Jelenleg az egyéni parancsok támogatják a következő régiókban létrehozott beszédfelismerési előfizetéseket:

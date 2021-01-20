@@ -9,12 +9,12 @@ ms.custom: devx-track-csharp, contperf-fy21q1
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.author: alkemper
-ms.openlocfilehash: d1582cda4b083623daf7bb756d0bc8aa3e74eae8
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: d0e564b98ab6331677451afd32a0848e7f5594dd
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033646"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598746"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Gyors útmutató: ASP.NET Core-alkalmazás létrehozása az Azure-alkalmazás konfigurálásával
 
@@ -70,7 +70,7 @@ dotnet new mvc --no-https --output TestAppConfig
     ```
 
     > [!IMPORTANT]
-    > Egyes rendszerhéjak levágja a kapcsolatok karakterláncát, kivéve, ha idézőjelek közé vannak zárva. Győződjön meg arról, hogy a `dotnet user-secrets` parancs kimenete a teljes kapcsolatok sztringjét jeleníti meg. Ha nem, futtassa újra a parancsot, és foglalja bele a kapcsolatok karakterláncát idézőjelek közé.
+    > Egyes rendszerhéjak levágja a kapcsolatok karakterláncát, kivéve, ha idézőjelek közé vannak zárva. Győződjön meg arról, hogy a `dotnet user-secrets list` parancs kimenete a teljes kapcsolatok sztringjét jeleníti meg. Ha nem, futtassa újra a parancsot, és foglalja bele a kapcsolatok karakterláncát idézőjelek közé.
 
     A Secret Manager csak a webalkalmazás helyi tesztelésére szolgál. Ha az alkalmazás telepítve van a [Azure app Servicere](https://azure.microsoft.com/services/app-service/web), a Secret Manager helyett használja a app Service **a kapcsolódási karakterláncok alkalmazása beállítást** a kapcsolódási sztring tárolásához.
 
@@ -173,7 +173,7 @@ Az előző kódban az alkalmazás konfigurációs tárolójának kulcsait a köv
 
 [!INCLUDE[Azure App Configuration cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban a következőket hajtja végre:
 

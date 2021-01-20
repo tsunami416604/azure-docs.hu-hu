@@ -1,5 +1,5 @@
 ---
-title: NFS-megosztás létrehozása – Azure Files
+title: NFS-megosztás létrehozása – Azure Files (előzetes verzió)
 description: Megtudhatja, hogyan hozhat létre olyan Azure-fájlmegosztást, amely a hálózati fájlrendszer protokollal csatlakoztatható.
 author: roygara
 ms.service: storage
@@ -8,12 +8,12 @@ ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 3cf22ee22c35b850aff33290a59a7043bb57c984
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 323eed77d6f7a6ccfcdd0a7c7aecff3a125300dc
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620944"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602668"
 ---
 # <a name="how-to-create-an-nfs-share"></a>NFS-megosztás létrehozása
 
@@ -124,7 +124,7 @@ Most, hogy létrehozott egy FileStorage-fiókot, és konfigurálta a hálózatot
     - Nincs root deverés – a távoli adminisztrátor (root) a root-ként kapja meg a hozzáférést.
     - Minden squash – minden felhasználói hozzáférés az UID (65534) és a GID (65534) számára van leképezve.
     
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
     :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/create-nfs-file-share.png" alt-text="Képernyőfelvétel a fájlmegosztás létrehozási paneljéről":::
 

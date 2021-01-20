@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: api-management
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: 90449a29f58f31827e2a36b5f6c41563e88ac032
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 799ef33e78737bfd2e1c1a1cfa4991f44c8f5ec0
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251352"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599643"
 ---
 # <a name="plan-and-manage-costs-for-api-management"></a>A API Management költségeinek megtervezése és kezelése
 
@@ -49,7 +49,7 @@ A díjszabással és a szolgáltatással kapcsolatos további részletekért lá
 
 ### <a name="using-monetary-credit-with-api-management"></a>Pénzügyi kreditek használata API Management
 
-Az nagyvállalati szerződéssel rendelkező pénzügyi kötelezettségvállalással kapcsolatos díjakért API Management díjat is fizethet. Nem használhatja azonban az EA pénzügyi kötelezettségvállalását, hogy díjat fizessen a harmadik féltől származó termékek és szolgáltatások díjaként, beleértve az Azure piactéren lévőket is.
+Az Azure-előfizetéssel (korábbi nevén pénzügyi kötelezettségvállalással) járó API Management díjakat fizethet. Azonban nem használhatja az Azure-előfizetési kreditet, hogy díjat fizessen a harmadik féltől származó termékekhez és szolgáltatásokhoz, például az Azure piactéren.
 
 ## <a name="monitor-costs"></a>Költségek figyelése
 

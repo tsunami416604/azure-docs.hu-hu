@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 433875e52e77a8992197b47fe0424cd0b7e9f50c
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: d9e26b6388223ae252a5e85e6e9fb9783a3b8429
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628288"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600401"
 ---
 # <a name="how-to-plan-a-virtual-machine-offer"></a>Virtuális gépek ajánlatának megtervezése
 
@@ -73,7 +73,7 @@ A VM-ajánlatokhoz legalább egy csomag szükséges. A terv meghatározza a mego
 A virtuális gépek teljes mértékben elérhetők az utólagos elszámolású vagy a saját licencű (BYOL) licencelési modellek használatával. A Microsoft üzemelteti a kereskedelmi tranzakciót, és az Ön nevében számlázza az ügyfelet. Az ügyfél és a Microsoft közötti előnyben részesített fizetési kapcsolat előnyeit használhatja, beleértve a nagyvállalati szerződéseket is. További információ: [kereskedelmi Piactéri Transact-képességek](./marketplace-commercial-transaction-capabilities-and-considerations.md).
 
 > [!NOTE]
-> Az Nagyvállalati Szerződéshoz kapcsolódó pénzügyi kötelezettségek a virtuális gép Azure-beli használatára használhatók, de a szoftver licencelési díjaival nem.
+> Az Azure-előfizetések (korábbi nevén: pénzügyi kötelezettségvállalás) egy Nagyvállalati Szerződéshöz társítva használhatók a virtuális gép Azure-beli használatára, de nem a szoftveres licencelési díjakra.
 
 ### <a name="licensing-options"></a>Licencelési lehetőségek
 

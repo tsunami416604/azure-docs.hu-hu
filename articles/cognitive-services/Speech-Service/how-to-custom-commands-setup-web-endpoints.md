@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: e50d7aba5cc5b3d5d620d844cc9ad169ad8b3bf6
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 6f2dfdbb5833b34441b4abba7359ad70c4717d1d
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025891"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602162"
 ---
 # <a name="set-up-web-endpoints"></a>Webes végpontok beállítása
 
@@ -23,7 +23,7 @@ Ebből a cikkből megismerheti, hogyan állíthat be webes végpontokat Custom C
 
 - Webes végpontok beállítása a Custom Commands-alkalmazásban
 - Webes végpontok hívása a Custom Commands-alkalmazásban
-- A webes végpontok válaszának fogadása 
+- A webes végpontok válaszának fogadása
 - Webes végpontok válaszának integrálása egyéni JSON-adatokba, elküldése, illetve vizualizációja egy C# UWP Speech SDK-ügyfélalkalmazásból
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -35,7 +35,7 @@ Ebből a cikkből megismerheti, hogyan állíthat be webes végpontokat Custom C
 
 ## <a name="setup-web-endpoints"></a>Webes végpontok beállítása
 
-1. Nyissa meg a korábban létrehozott Custom Commands-alkalmazást. 
+1. Nyissa meg a korábban létrehozott Custom Commands-alkalmazást.
 1. Nyissa meg a „Webes végpontok” elemet, majd kattintson az „Új webes végpont” lehetőségre.
 
    > [!div class="mx-imgBorder"]
@@ -61,7 +61,7 @@ Ebből a cikkből megismerheti, hogyan állíthat be webes végpontokat Custom C
 1. Lépjen a **TurnOnOff** parancsra, válassza a **ConfirmationResponse** befejezési szabályt, majd válassza a **Művelet hozzáadása** lehetőséget.
 1. Az **Új művelet – Típus** elemnél válassza a **Webes végpont hívása** lehetőséget
 1. A **Művelet szerkesztése – Végpontok** elemnél válassza az **UpdateDeviceState** lehetőséget, ami a létrehozott webes végpont.  
-1. A **Konfigurálás** elemnél adja meg a következő értékeket: 
+1. A **Konfigurálás** elemnél adja meg a következő értékeket:
    > [!div class="mx-imgBorder"]
    > ![Webes végpontok hívásának műveletparaméterei](media/custom-commands/setup-web-endpoint-edit-action-parameters.png)
 
@@ -75,16 +75,16 @@ Ebből a cikkből megismerheti, hogyan állíthat be webes végpontokat Custom C
     > - A javasolt lekérdezési paraméterek csak a példavégponthoz szükségesek
 
 1. A **Siker esetén – Végrehajtandó művelet** elemnél válassza a **Szóbeli válasz küldése** lehetőséget.
-    
+
     Az **Egyszerű szerkesztőben** adja meg a következőt: `{SubjectDevice} is {OnOff}`.
-   
+
    > [!div class="mx-imgBorder"]
    > ![Képernyőkép, amely megjeleníti a végrehajtáskor végrehajtandó sikeres művelet képernyőjét.](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
 
    | Beállítás | Ajánlott érték | Leírás |
    | ------- | --------------- | ----------- |
    | Végrehajtandó művelet | Szóbeli válasz küldése | A webes végpontra irányuló kérés sikeressége esetén végrehajtandó művelet |
-   
+
    > [!NOTE]
    > - A HTTP-válasz mezőit közvetlenül is elérheti a `{YourWebEndpointName.FieldName}` használatával. Például: `{UpdateDeviceState.TV}`
 
@@ -101,7 +101,7 @@ Ebből a cikkből megismerheti, hogyan állíthat be webes végpontokat Custom C
 
    > [!NOTE]
    > - A(z) `{WebEndpointErrorMessage}` nem kötelező. Eltávolíthatja, ha nem kíván hibaüzeneteket megjeleníteni.
-   > - A példában szereplő végpontban a HTTP-választ részletes hibaüzenetekkel küldjük vissza, amelyek olyan gyakori hibákról értesítenek, mint például a hiányzó fejlécparaméterek. 
+   > - A példában szereplő végpontban a HTTP-választ részletes hibaüzenetekkel küldjük vissza, amelyek olyan gyakori hibákról értesítenek, mint például a hiányzó fejlécparaméterek.
 
 ### <a name="try-it-out-in-test-portal"></a>Próbálja ki a tesztportálon
 - Válasz Siker esetén\
@@ -119,7 +119,7 @@ Az [Útmutató: Tevékenység küldése az ügyfélalkalmazásnak (előzetes ver
 A legtöbb esetben azonban csak akkor szeretné elküldeni a tevékenységet az ügyfélalkalmazásnak, amikor a webes végpont hívása sikeres. Ebben a példában ez akkor történik, amikor az eszköz állapota sikeresen frissül.
 
 1. Törölje a korábban hozzáadott **Tevékenység küldése az ügyfélnek** műveletet.
-1. Webes végpont hívásának szerkesztése: 
+1. Webes végpont hívásának szerkesztése:
     1. A **Konfigurálás** lapon győződjön meg róla, hogy a **Lekérdezési paraméterek** értéke `item={SubjectDevice}&&value={OnOff}`
     1. A **Siker esetén** elemnél módosítsa a **Végrehajtandó művelet** beállítást **Tevékenység küldése az ügyfélnek** lehetőségre
     1. Másolja az alábbi JSON-t a **Tevékenység tartalma** mezőbe
@@ -133,7 +133,6 @@ A legtöbb esetben azonban csak akkor szeretné elküldeni a tevékenységet az 
       }
     }
    ```
-   
 Mostantól a tevékenységet csak akkor küldi el az ügyfélnek, ha a webes végpontra irányuló kérés sikeres.
 
 ### <a name="create-visuals-for-syncing-device-state"></a>Vizualizációk létrehozása az eszközállapotok szinkronizálásához
@@ -147,7 +146,7 @@ Adja hozzá a következő XML-t a `MainPage.xaml` fájlhoz az `"EnableMicrophone
         .........../>
 ```
 
-### <a name="sync-device-state"></a>Eszközállapot szinkronizálása 
+### <a name="sync-device-state"></a>Eszközállapot szinkronizálása
 
 A `MainPage.xaml.cs` alatt vegye fel az `using Windows.Web.Http;` hivatkozást. Adja hozzá az alábbi kódot a `MainPage` osztályhoz. Ez a metódus egy GET-kérést küld a példavégpontnak, és kinyeri az aktuális eszközállapotot az alkalmazása számára. Ne feledje megváltoztatni a `<your_app_name>` kifejezést arra az értékre, amelyet a Custom Command webes végpontjának **fejlécében** használt
 
@@ -157,7 +156,7 @@ private async void SyncDeviceState_ButtonClicked(object sender, RoutedEventArgs 
     //Create an HTTP client object
     var httpClient = new HttpClient();
 
-    //Add a user-agent header to the GET request. 
+    //Add a user-agent header to the GET request.
     var your_app_name = "<your-app-name>";
 
     Uri endpoint = new Uri("https://webendpointexample.azurewebsites.net/api/DeviceState");

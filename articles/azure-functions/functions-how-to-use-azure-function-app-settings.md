@@ -5,12 +5,12 @@ ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: 70aecc2613fbe21d34e36f9487d7ba383e140bc8
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 4db6abeb3e6f4a07780268a6455177e0ca237205
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217362"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598491"
 ---
 # <a name="manage-your-function-app"></a>A Function alkalmazás kezelése 
 
@@ -84,7 +84,7 @@ Amikor helyileg fejleszt egy Function-alkalmazást, a Project fájl local.settin
 
 ## <a name="hosting-plan-type"></a>Üzemeltetési csomag típusa
 
-Egy Function-alkalmazás létrehozásakor létre kell hoznia egy App Service üzemeltetési csomagot is, amelyben az alkalmazás fut. Egy csomaghoz egy vagy több Function-alkalmazás is tartozhat. A függvények funkcionalitása, skálázása és díjszabása a csomag típusától függ. További információkért tekintse meg a [Azure functions díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/functions/).
+Egy Function-alkalmazás létrehozásakor létre kell hoznia egy üzemeltetési csomagot is, amelyben az alkalmazás fut. Egy csomaghoz egy vagy több Function-alkalmazás is tartozhat. A függvények funkcionalitása, skálázása és díjszabása a csomag típusától függ. További információ: [Azure functions üzemeltetési lehetőségek](functions-scale.md).
 
 Meghatározhatja, hogy milyen típusú tervet használ a Function alkalmazás a Azure Portal vagy az Azure CLI vagy a Azure PowerShell API-k használatával. 
 
@@ -131,6 +131,75 @@ Az előző példában cserélje le `<RESOURCE_GROUP>` a és az `<FUNCTION_APP_NA
 
 ---
 
+## <a name="plan-migration"></a>Migrálás tervezése
+
+Az Azure CLI-parancsokkal áttelepítheti a Function alkalmazást egy használati terv és egy prémium csomag között Windows rendszeren. Az adott parancsok az áttelepítés iránya alapján változnak. A dedikált (App Service) tervbe való közvetlen áttelepítés jelenleg nem támogatott.
+
+Ez a Migrálás Linux rendszeren nem támogatott.
+
+### <a name="consumption-to-premium"></a>Fogyasztás a prémium szintre
+
+A következő eljárással áttelepítheti a használati tervet a Windows Premium csomagra:
+
+1. A következő parancs futtatásával hozzon létre egy új App Service tervet (rugalmas prémium) ugyanabban a régióban és erőforráscsoporthoz, mint a meglévő Function alkalmazás.  
+
+    ```azurecli-interactive
+    az functionapp plan create --name <NEW_PREMIUM_PLAN_NAME> --resource-group <MY_RESOURCE_GROUP> --location <REGION> --sku EP1
+    ```
+
+1. Futtassa a következő parancsot a meglévő Function alkalmazás új prémium csomagra való átirányításához
+
+    ```azurecli-interactive
+    az functionapp update --name <MY_APP_NAME> --resource-group <MY_RESOURCE_GROUP> --plan <NEW_PREMIUM_PLAN>
+    ```
+
+1. Ha már nincs szüksége az előző felhasználási funkció alkalmazási csomagra, törölje az eredeti Function app-csomagot, miután megerősítette, hogy sikeresen áttelepítette az újat az új verzióra. A következő parancs futtatásával lekérheti az erőforráscsoport összes felhasználási csomagjának listáját.
+
+    ```azurecli-interactive
+    az functionapp plan list --resource-group <MY_RESOURCE_GROUP> --query "[?sku.family=='Y'].{PlanName:name,Sites:numberOfSites}" -o table
+    ```
+
+    A csomagot biztonságosan törölheti nulla helyekkel, amelyek közül az egyiket áttelepítette.
+
+1. A következő parancs futtatásával törölheti a alkalmazásból áttelepített fogyasztási tervet.
+
+    ```azurecli-interactive
+    az functionapp plan delete --name <CONSUMPTION_PLAN_NAME> --resource-group <MY_RESOURCE_GROUP>
+    ```
+
+### <a name="premium-to-consumption"></a>Prémium felhasználás
+
+Az alábbi eljárást követve áttelepítheti a prémium csomagról a Windows rendszerre készült használati tervet:
+
+1. Futtassa a következő parancsot egy új Function-alkalmazás (felhasználás) létrehozásához ugyanabban a régióban és erőforráscsoporthoz, mint a meglévő Function alkalmazás. Ez a parancs egy új, a Function alkalmazást futtató használati tervet is létrehoz.
+
+    ```azurecli-interactive
+    az functionapp create --resource-group <MY_RESOURCE_GROUP> --name <NEW_CONSUMPTION_APP_NAME> --consumption-plan-location <REGION> --runtime dotnet --functions-version 3 --storage-account <STORAGE_NAME>
+    ```
+
+1. A következő parancs futtatásával áttelepítheti a meglévő Function alkalmazást az új felhasználási tervbe.
+
+    ```azurecli-interactive
+    az functionapp update --name <MY_APP_NAME> --resource-group <MY_RESOURCE_GROUP> --plan <NEW_CONSUMPTION_PLAN>
+    ```
+
+1. Törölje az 1. lépésben létrehozott Function alkalmazást, mert csak a meglévő Function app futtatásához létrehozott csomagra van szükség.
+
+    ```azurecli-interactive
+    az functionapp delete --name <NEW_CONSUMPTION_APP_NAME> --resource-group <MY_RESOURCE_GROUP>
+    ```
+
+1. Ha már nincs szüksége az előző prémium szintű Function-csomagra, törölje az eredeti Function app-csomagot, miután megerősítette, hogy sikeresen áttelepítette az alkalmazást az új verzióra. Vegye figyelembe, hogy ha a csomag nincs törölve, a prémium csomagért továbbra is díjat számítunk fel. A következő parancs futtatásával lekérheti az erőforráscsoport összes prémium csomagjának listáját.
+
+    ```azurecli-interactive
+    az functionapp plan list --resource-group <MY_RESOURCE_GROUP> --query "[?sku.family=='EP'].{PlanName:name,Sites:numberOfSites}" -o table
+    ```
+
+1. Futtassa a következő parancsot az áttelepített Prémium csomag törléséhez.
+
+    ```azurecli-interactive
+    az functionapp plan delete --name <PREMIUM_PLAN> --resource-group <MY_RESOURCE_GROUP>
+    ```
 
 ## <a name="platform-features"></a>Platform-funkciók
 
@@ -206,7 +275,7 @@ A [`az functionapp cors show`](/cli/azure/functionapp/cors#az-functionapp-cors-s
 Ha a függvények HTTP-triggert használnak, megkövetelheti, hogy először hitelesíteni lehessen a hívásokat. App Service támogatja a Azure Active Directory hitelesítését és a közösségi szolgáltatókkal való bejelentkezést, például a Facebookot, a Microsoftot és a Twittert. Az egyes hitelesítő szolgáltatók konfigurálásával kapcsolatos részletekért tekintse meg a [Azure app Service Authentication áttekintése](../app-service/overview-authentication-authorization.md)című témakört. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 + [Azure App Service beállítások konfigurálása](../app-service/configure-common.md)
 + [Azure Functions – folyamatos üzembe helyezés](functions-continuous-deployment.md)

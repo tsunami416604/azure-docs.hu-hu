@@ -1,5 +1,5 @@
 ---
-title: Rendszerkép létrehozása virtuális gépről (előzetes verzió)
+title: Rendszerkép létrehozása virtuális gépről
 description: Megtudhatja, hogyan hozhat létre egy rendszerképet egy meglévő virtuális gépről az Azure-ban a Azure PowerShell használatával egy megosztott Képtárban.
 author: cynthn
 ms.topic: how-to
@@ -9,14 +9,14 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 3a7ca8236307bbf8a419d2988e1a6dc1e4c40597
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1a0bfb79b03b778696faef29597cabbcff47e6df
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964864"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601668"
 ---
-# <a name="preview-create-an-image-from-a-vm"></a>Előzetes verzió: rendszerkép létrehozása virtuális gépről
+# <a name="create-an-image-from-a-vm"></a>Rendszerkép létrehozása virtuális gépről
 
 Ha rendelkezik egy meglévő virtuális géppel, amelyet több, azonos virtuális gép létrehozásához kíván használni, akkor a virtuális gép használatával létrehozhat egy rendszerképet egy megosztott rendszerkép-katalógusban Azure PowerShell segítségével. Az [Azure CLI](image-version-vm-cli.md)használatával is létrehozhat egy rendszerképet egy virtuális gépről.
 
@@ -136,7 +136,7 @@ $job.State
 > A rendszerképet a Premium Storage-ban is tárolhatja `-StorageAccountType Premium_LRS` , ha a rendszerkép verziójának létrehozásakor hozzáadja vagy zónába helyezi a [redundáns tárolást](../storage/common/storage-redundancy.md) `-StorageAccountType Standard_ZRS` .
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután meggyőződött róla, hogy az új rendszerkép verziója megfelelően működik, létrehozhat egy virtuális gépet. Hozzon létre egy virtuális gépet egy [speciális rendszerkép-verzióból](vm-specialized-image-version-powershell.md) vagy egy [általánosított rendszerkép-verzióból](vm-generalized-image-version-powershell.md).
 

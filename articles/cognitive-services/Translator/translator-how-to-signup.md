@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: a9050b85c974a3c04ca717e8fe3d5188c1bf7a40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6773c6b29ecfd8354c54a6214cfe0b4050edcd38
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88244312"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602654"
 ---
 # <a name="how-to-sign-up-for-translator"></a>Regisztráció a Translatorre
 
@@ -41,7 +41,7 @@ Miután bejelentkezett a portálra, a következő módon hozhat létre előfizet
 A fordítóra való feliratkozáskor egy személyre szabott hozzáférési kulcsot kap, amely egyedi az előfizetésében. Erre a kulcsra a fordító minden egyes hívásakor szükség van.
 
 1. Kérje le a hitelesítési kulcsot úgy, hogy először kiválasztja a megfelelő előfizetést.
-1. Az előfizetés részleteinek **Erőforrás-kezelés** szakaszában válassza a **kulcsok** lehetőséget.
+1. Az előfizetés részleteinek erőforrás- **kezelés** szakaszában válassza a **kulcsok és végpont** lehetőséget.
 1. Másolja a felsorolt kulcsok valamelyikét az előfizetéséhez.
 
 ## <a name="learn-test-and-get-support"></a>Tanulás, tesztelés és támogatás kérése
@@ -53,7 +53,7 @@ A Microsoft Translator általában lehetővé teszi az első néhány kérelem t
 
 ## <a name="pricing-options"></a>Árképzési lehetőségek
 
-- [Fordító](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
+- [Translator](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
 
 ## <a name="customization"></a>Testreszabás
 

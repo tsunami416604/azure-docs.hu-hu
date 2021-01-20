@@ -8,12 +8,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: banders
-ms.openlocfilehash: a527b75d376f05ab6190187b7a03d6da775055ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a4f7de0cacb17087e346123f53dad45ae1de357
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81759285"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602614"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Előre fizetés Azure-szoftvercsomagokért
 
@@ -32,7 +32,7 @@ A Azure Portalban a SUSE és a RedHat szoftvercsomag is megvásárolható. Csoma
 Töltse ki a kötelező mezőket. Minden olyan SUSE Linux rendszerű virtuális gép vagy RedHat virtuális gép, amely megfelel a megvásárolni kívánt mennyiségnek, a kedvezményt kapja. A kedvezményt megkapó központi telepítések tényleges száma a kiválasztott hatókörtől és mennyiségtől függ.
 3. Válasszon egy előfizetést. A csomagért kell fizetni.
 Az előfizetés fizetési módja a foglalás előzetes díjait terheli. Az előfizetés típusának Nagyvállalati Szerződésnak kell lennie (ajánlati számok: MS-AZR-0017P vagy MS-AZR-0148P) vagy külön szerződés az utólagos elszámolású díjszabással (ajánlati számok: MS-AZR-0003P vagy MS-AZR-0023P).
-    - Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva.
+    - A nagyvállalati előfizetések esetében a díjakat a beléptetési Azure-előfizetésből (korábban pénzügyi kötelezettségvállalásnak nevezett) egyenlegből és a túlterhelésnek megfelelően kell levonni.
     - Az utólagos elszámolású előfizetések díját az előfizetés bankkártyája vagy a számla fizetési módja alapján számítjuk fel.
 4. Válassza ki a hatókört. A hatókör egyetlen előfizetésre vagy több előfizetésre (megosztott hatókörre) is vonatkozhat.
     - Egyszeri előfizetés – a csomagra vonatkozó kedvezményt a rendszer az előfizetésben szereplő használatra alkalmazza.

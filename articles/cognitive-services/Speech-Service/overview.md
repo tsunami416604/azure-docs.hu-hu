@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 11/23/2020
 ms.author: trbye
-ms.openlocfilehash: 3b20773de62f036b507f1612f2b38d613d54ba2f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d3d9f41876cf1310fe25a275624f609031c05b00
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485195"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601880"
 ---
 # <a name="what-is-the-speech-service"></a>Mi az a beszédszolgáltatás?
 
@@ -35,9 +35,9 @@ A következő funkciók a Speech Service részét képezik. A táblázatban tal�
 | | [Custom Speech modellek létrehozása](#customize-your-speech-experience) | Ha egy egyedi környezetben beszéd-szövegeket használ az elismeréshez és az átíráshoz, létrehozhat és betaníthat egyéni akusztikai, nyelvi és kiejtési modelleket a környezeti zajok vagy az iparági specifikus szókincsek kezeléséhez. | Nem | [Igen](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) |
 | [Szöveg – beszéd](text-to-speech.md) | Szövegfelolvasás | A szöveg és a beszéd szöveggé alakítja át a bemeneti szöveget az emberi környezetbe, például a [Speech szintézis Markup Language (SSML)](speech-synthesis-markup.md)használatával. A standard hangok és a neurális hangok közül választhat (lásd a [nyelvi támogatást](language-support.md)). | [Igen](./speech-sdk.md) | [Igen](#reference-docs) |
 | | [Egyéni hangok létrehozása](#customize-your-speech-experience) | Egyedi hangbetűkészletek létrehozása a márka vagy a termék számára. | Nem | [Igen](#reference-docs) |
-| [Speech Translation](speech-translation.md) | Beszédfordítás | A beszédfelismerés valós idejű, többnyelvű fordítást tesz lehetővé alkalmazásaihoz, eszközeihez és eszközeihez. Használja ezt a szolgáltatást beszéd – beszéd és beszéd – szöveg fordításához. | [Igen](./speech-sdk.md) | Nem |
-| [Hangvezérelt asszisztensek](voice-assistants.md) | Hangvezérelt asszisztensek | A beszédfelismerési szolgáltatást használó hangsegédek lehetővé teszik a fejlesztők számára, hogy természetes, emberi jellegű társalgási felületet hozzanak létre alkalmazásaikban és tapasztalataikban. A hangsegéd szolgáltatás gyors, megbízható interakciót biztosít egy eszköz és egy asszisztens implementáció között, amely a bot Framework közvetlen vonalas vagy integrált egyéni parancsait (előzetes verzió) használja a feladatok befejezéséhez. | [Igen](voice-assistants.md) | Nem |
-| [Speaker Recognition](speaker-recognition-overview.md) | A hangszórók ellenőrzése & azonosítása | A Speaker Recognition szolgáltatás olyan algoritmusokat biztosít, amelyek egyedi hangtulajdonságokkal rendelkeznek a hangszórók ellenőrzéséhez és azonosításához. Speaker Recognition a "ki beszél?" kérdésre válaszol. | Igen | [Igen](/rest/api/speakerrecognition/) |
+| [Beszéd fordítása](speech-translation.md) | Beszédfordítás | A beszédfelismerés valós idejű, többnyelvű fordítást tesz lehetővé alkalmazásaihoz, eszközeihez és eszközeihez. Használja ezt a szolgáltatást beszéd – beszéd és beszéd – szöveg fordításához. | [Igen](./speech-sdk.md) | Nem |
+| [Hangvezérelt asszisztensek](voice-assistants.md) | Hangvezérelt asszisztensek | A beszédfelismerési szolgáltatást használó hangsegédek lehetővé teszik a fejlesztők számára, hogy természetes, emberi jellegű társalgási felületet hozzanak létre alkalmazásaikban és tapasztalataikban. A hangsegéd szolgáltatás gyors, megbízható interakciót biztosít egy eszköz és egy asszisztens implementáció között, amely a bot Framework közvetlen vonalú beszédfelismerési csatornáját vagy az integrált egyéni parancsok szolgáltatást használja a feladatok befejezéséhez. | [Igen](voice-assistants.md) | Nem |
+| [Beszélőfelismerés](speaker-recognition-overview.md) | A hangszórók ellenőrzése & azonosítása | A Speaker Recognition szolgáltatás olyan algoritmusokat biztosít, amelyek egyedi hangtulajdonságokkal rendelkeznek a hangszórók ellenőrzéséhez és azonosításához. Speaker Recognition a "ki beszél?" kérdésre válaszol. | Igen | [Igen](/rest/api/speakerrecognition/) |
 
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
@@ -74,7 +74,7 @@ A Speech Service-erőforrások (ingyenes vagy fizetős szintek) hozzáadása az 
    - Válassza ki azt a [régiót](regions.md) , ahol az erőforrást használni szeretné. Az Azure egy globális felhőalapú platform, amely világszerte számos régióban általánosan elérhető. A legjobb teljesítmény eléréséhez válasszon egy Önhöz legközelebb eső régiót, vagy az alkalmazás futását. A beszédfelismerési szolgáltatás elérhetősége különböző régiókban változhat. Győződjön meg arról, hogy az erőforrást egy támogatott régióban hozza létre. Lásd: [régió támogatása a Speech Services számára](./regions.md#speech-to-text-text-to-speech-and-translation).
    - Válassza az ingyenes (F0) vagy a fizetős (S0) árképzési szintet. Az egyes csomagokra vonatkozó díjszabási és használati kvótákkal kapcsolatos teljes információkért válassza a **teljes díjszabás megtekintése** vagy a [Speech Services díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)című témakört. Az erőforrásokra vonatkozó korlátokat az [Azure Cognitive Services korlátai](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cognitive-services-limits)című témakörben tekintheti meg.
    - Hozzon létre egy új erőforráscsoportot ehhez a beszédfelismerési előfizetéshez, vagy rendelje hozzá az előfizetést egy meglévő erőforráscsoporthoz. Az erőforráscsoportok segítségével megőrizheti különböző Azure-előfizetéseit.
-   - Kattintson a **Létrehozás** gombra. Ezzel áttekintheti a központi telepítés áttekintését és megjeleníti az üzembe helyezési folyamat üzeneteit.  
+   - Válassza a **Létrehozás** lehetőséget. Ezzel áttekintheti a központi telepítés áttekintését és megjeleníti az üzembe helyezési folyamat üzeneteit.  
 <!--
 > [!NOTE]
 > You can create an unlimited number of standard-tier subscriptions in one or multiple regions. However, you can create only one free-tier subscription. Model deployments on the free tier that remain unused for 7 days will be decommissioned automatically.
@@ -129,7 +129,7 @@ A beszédfelismerési szolgáltatás a beépített modellekkel jól működik, a
 
 Más termékek olyan beszédfelismerési modelleket ajánlanak, mint például az egészségügyi ellátás vagy a biztosítás, de mindenki számára elérhetők. Az Azure Speech-ben való Testreszabás az *egyedülálló* versenyelőny részévé válik, amely bármely más felhasználó vagy ügyfél számára nem érhető el. Ez azt jelenti, hogy a modelleket saját és egyéni használatra beállították a használati esetekhez.
 
-| Beszédszolgáltatás | Platform | Description |
+| Beszédszolgáltatás | Platform | Leírás |
 | -------------- | -------- | ----------- |
 | Speech-to-Text | [Custom Speech](https://aka.ms/customspeech) | Testreszabhatja a beszédfelismerési modelleket igényeihez és rendelkezésre álló adataihoz. Leküzdheti a beszédfelismerési akadályokat, például a beszéd stílusát, a szókincset és a háttérzajt. |
 | Text-to-Speech | [Egyéni hang](https://aka.ms/customvoice) | Létrehozhat egy felismerhető és egyedülálló hangot szövegfelolvasási alkalmazásaihoz az elérhető beszédadatokkal. A hangkimeneteket tovább finomíthatja a hangparaméterek készletének módosításával. |

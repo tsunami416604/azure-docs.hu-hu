@@ -3,17 +3,17 @@ title: Hely keresése Azure Maps Search Services használatával
 description: További információ a Azure Maps Search szolgáltatásról. Tekintse meg, hogyan használhatók ezen API-k a helymeghatározáshoz, a fordított helymeghatározáshoz, a zavaros keresések és a fordított keresztek közötti keresésekhez.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 10/05/2020
+ms.date: 01/19/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 00ddb53276c052d538d658f2c40384e86cf72aee
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: dddf56edf2037d87a28589a59834db32f8d04a4c
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910984"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598362"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Hely keresése Azure Maps Search Services használatával
 
@@ -94,7 +94,7 @@ Ebben a példában a alkalmazásban a teljes világ keresésére használjuk a f
 
 4. Az alapértelmezett viselkedés a teljes világon való keresés, ami felesleges eredményeket ad vissza. Ezután a pizzát csak a Egyesült Államok fogjuk keresni. Adja hozzá a `countrySet` kulcsot a **Paraméterek** szakaszhoz, és állítsa be a értékét a következőre: `US` . A `countrySet` kulcs beállítása, hogy az `US` eredményeket a Egyesült Államokhoz kösse.
 
-    :::image type="content" source="./media/how-to-search-for-address/search-fuzzy-country.png" alt-text="Keresés a címben":::
+    :::image type="content" source="./media/how-to-search-for-address/search-fuzzy-country.png" alt-text="Pizza keresése a Egyesült Államokban":::
 
     Az eredmények mostantól az országkód szerint vannak kötve, és a lekérdezés a Egyesült Államok pizzás éttermeit adja vissza.
 
@@ -107,7 +107,7 @@ Ebben a példában a alkalmazásban a teljes világ keresésére használjuk a f
     | Lat | 47,620525 |
     | Lon | – 122,349274 |
     | RADIUS- | 400 |
-    | korlátot | 5|
+    | korlát | 5|
 
 6. Kattintson a **Küldés** gombra. A válasz a Seattle Space tű közelében található pizza-éttermek eredményeit is tartalmazza.
 
@@ -142,13 +142,13 @@ Ebben a példában az elérhető választható paraméterek közül néhányat v
     | returnRoadUse | true | A következő címen adja vissza a közúti használat típusait:. Az összes lehetséges közúti használati típushoz lásd: [országúti használat típusai](/rest/api/maps/search/getsearchaddressreverse#uri-parameters).|
     | returnMatchType | true| A egyezés típusát adja vissza. A lehetséges értékekért lásd: [keresési eredmények fordított címe](/rest/api/maps/search/getsearchaddressreverse#searchaddressreverseresult)
 
-   :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="Keresés a címben":::
+   :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="Keresés fordított.":::
 
 5. Kattintson a **Küldés** gombra, és tekintse át a válasz törzsét.
 
 6. Ezután adja hozzá a `entityType` kulcsot, és állítsa be a értékét a következőre: `Municipality` . A `entityType` kulcs felülbírálja a `returnMatchType` kulcsot az előző lépésben. Emellett el kell távolítani `returnSpeedLimit` a-t és a-t is, `returnRoadUse` mivel adatokat kérnek a településről.  Az összes lehetséges entitás típusával kapcsolatban lásd: [entitások típusai](/rest/api/maps/search/getsearchaddressreverse#entitytype).
 
-    :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="Keresés a címben":::
+    :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="Keresés fordított entityType.":::
 
 7. Kattintson a **Küldés** gombra. Hasonlítsa össze az eredményeket az 5. lépésben visszaadott eredményekkel.  Mivel a kért entitás típusa már megtörtént `municipality` , a válasz nem tartalmazza az utca címe információit. Emellett a visszaadott `geometryId` érték a határ sokszög kérésére is használható Azure Maps Get [Search sokszög API](/rest/api/maps/search/getsearchpolygon)-val.
 
@@ -167,11 +167,11 @@ Ebben a példában a címek koordinátái alapján keresünk egy kereszt utcát.
    https://atlas.microsoft.com/search/address/reverse/crossstreet/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=47.591180,-122.332700
     ```
 
-    :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="Keresés a címben":::
+    :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="Keresés a Cross Streeten.":::
   
-3. Kattintson a **Küldés** gombra, és tekintse át a válasz törzsét. Figyelje meg, hogy a válasz tartalmazza a `crossStreet` értékét `Occidental Avenue South` .
+3. Kattintson a **Küldés** gombra, és tekintse át a válasz törzsét. Figyelje meg, hogy a válasz tartalmazza a `crossStreet` értékét `South Atlantic Street` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Azure Maps Search Service REST API](/rest/api/maps/search)
