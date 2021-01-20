@@ -20,6 +20,8 @@
       href: ../../search/cognitive-search-custom-skill-form.md
     - name: A Form Recognizer használata AI Builderrel
       href: tutorial-ai-builder.md
+    - name: Űrlapadatok tömeges kinyerése
+      href: tutorial-bulk-processing.md
 - name: Alapelvek
   items:
     - name: Elrendezés kinyerése

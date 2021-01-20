@@ -129,90 +129,92 @@
               href: troubleshoot-error-403.md
 - name: Referencia
   items:
-    - name: Digital Twins szolgáltatási korlátok
-      href: reference-service-limits.md
-    - name: A Digital Twins díjszabása
-      href: 'https://azure.microsoft.com/pricing/details/digital-twins/'
-    - name: API-k és SDK-k
+    - name: REST API-referencia
+      href: /rest/api/azure-digitaltwins/
+    - name: SDK-k
       items:
-        - name: REST API-referencia
-          href: /rest/api/azure-digitaltwins/
         - name: Vezérlősík
           items:
-            - name: Swagger
+            - name: .NET (C#) SDK
+              href: /dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet
+            - name: Java SDK
+              href: /azure/developer/java/sdk/
+        - name: Adatsík
+          items:
+            - name: .NET (C#) SDK
+              href: /dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet
+            - name: Java SDK
+              href: /java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-stable
+            - name: JavaScript SDK
+              href: /javascript/api/@azure/digital-twins-core/?branch=master&view=azure-node-latest
+            - name: Python SDK
+              href: /python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python
+    - name: Digital Twins CLI
+      href: /cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true
+- name: További források
+  items:
+    - name: API-k és SDK-k
+      items:
+        - name: Vezérlősík
+          items:
+            - name: Vezérlősík – Swagger
               href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/stable'
             - name: .NET (C#) SDK – NuGet
               href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/'
-            - name: .NET (C#) SDK – referencia
-              href: /dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet
-            - name: .NET (C#) SDK – forrás
+            - name: .NET (C#) SDK – Forráskód
               href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins'
             - name: Java SDK – Maven
               href: 'https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar'
-            - name: Java SDK – referencia
-              href: /azure/developer/java/sdk/
-            - name: Java SDK – forrás
+            - name: Java SDK – Forráskód
               href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31'
-            - name: JavaScript SDK
+            - name: JavaScript SDK – NPM
               href: 'https://www.npmjs.com/package/@azure/arm-digitaltwins'
-            - name: JavaScript SDK – forrás
+            - name: JavaScript SDK – Forráskód
               href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins'
             - name: Python SDK – PyPi
               href: 'https://pypi.org/project/azure-mgmt-digitaltwins/'
-            - name: Python SDK – forrás
+            - name: Python SDK – Forráskód
               href: 'https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins'
             - name: Go SDK – GoDoc
               href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins'
-            - name: Go – forrás
+            - name: Go – Forráskód
               href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins'
         - name: Adatsík
           items:
-            - name: Swagger
+            - name: Adatsík – Swagger
               href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins'
             - name: .NET (C#) SDK – NuGet
               href: 'https://www.nuget.org/packages/Azure.DigitalTwins.Core'
-            - name: .NET (C#) SDK – referencia
-              href: /dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet
-            - name: .NET (C#) SDK – forrás
+            - name: .NET (C#) SDK – Forráskód
               href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core'
             - name: Java SDK – Maven
               href: 'https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0/jar'
-            - name: Java SDK – referencia
-              href: /java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-stable
-            - name: Java SDK – forrás
+            - name: Java SDK – Forráskód
               href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core'
             - name: JavaScript SDK – NPM
               href: 'https://www.npmjs.com/package/@azure/digital-twins-core'
-            - name: JavaScript SDK – referencia
-              href: /javascript/api/@azure/digital-twins-core/?branch=master&view=azure-node-latest
-            - name: JavaScript SDK – forrás
+            - name: JavaScript SDK – Forráskód
               href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core'
             - name: Python SDK – PyPi
               href: 'https://pypi.org/project/azure-digitaltwins-core/'
-            - name: Python SDK – referencia
-              href: /python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python
-            - name: Python SDK – forrás
+            - name: Python SDK – Forráskód
               href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core'
-    - name: Digital Twins CLI
-      items:
-        - name: Digital Twins CLI-referencia
-          href: /cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true
-        - name: CLI-csomag
-          href: 'https://github.com/Azure/azure-iot-cli-extension/releases'
+    - name: Digital Twins CLI-csomag
+      href: 'https://github.com/Azure/azure-iot-cli-extension/releases'
     - name: Digital Twins Azure PowerShell-modul
       href: 'https://www.powershellgallery.com/packages/Az.DigitalTwins/'
-    - name: DTDL
+    - name: Terraform-modulok
       items:
-        - name: DTDL v2-specifikáció
-          href: 'https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md'
-        - name: DTDL-bővítmény VS Code-hoz
-          href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl'
-        - name: DTDL-elemzőkódtár – NuGet
-          href: 'https://www.nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/'
-        - name: DTDL-érvényesítő (minta)
-          href: /samples/azure-samples/dtdl-validator/dtdl-validator/
-        - name: DTMI-specifikáció
-          href: 'https://github.com/Azure/digital-twin-model-identifier'
+        - name: Digital Twins-példány erőforrása
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_instance'
+        - name: Digital Twins-példány adatforrása
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/digital_twins_instance'
+        - name: Event Hub-végpont erőforrása
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_endpoint_eventhub'
+        - name: Event Grid-végpont erőforrása
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_endpoint_eventgrid'
+        - name: Service Bus-végpont erőforrása
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_endpoint_servicebus'
     - name: Eszközök és mintaprojektek
       items:
         - name: Eszközszimulációs szolgáltatás
@@ -229,6 +231,34 @@
           href: /samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/
         - name: Egyéni swaggerek Logic Apps-összekötőhöz
           href: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
+    - name: DTDL
+      items:
+        - name: DTDL v2-specifikáció
+          href: 'https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md'
+        - name: DTDL-bővítmény VS Code-hoz
+          href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl'
+        - name: DTDL-elemzőkódtár – NuGet
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/'
+        - name: DTDL-érvényesítő (minta)
+          href: /samples/azure-samples/dtdl-validator/dtdl-validator/
+        - name: DTMI-specifikáció
+          href: 'https://github.com/Azure/digital-twin-model-identifier'
+        - name: Ügyfelek adatkérései
+      href: resources-customer-data-requests.md
+    - name: Díjszabás és rendelkezésre állás
+      items:
+        - name: Díjszabás
+          href: 'https://azure.microsoft.com/pricing/details/digital-twins'
+        - name: SLA
+          href: 'https://azure.microsoft.com/support/legal/sla/digital-twins'
+        - name: Régiók és rendelkezésre állás
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins'
+        - name: Digital Twins szolgáltatási korlátok
+          href: reference-service-limits.md
+    - name: Ügyfelek történetei
+      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Digital%20Twins%22&ff=&p=0&so=story_publish_date%20desc'
+    - name: Channel 9-videók
+      href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22'
     - name: Azure-eszközök
       items:
         - name: Azure Cloud Shell
@@ -239,21 +269,5 @@
           href: 'https://portal.azure.com'
     - name: Az Azure RBAC dokumentációja
       href: ../role-based-access-control/overview.md
-- name: További források
-  items:
     - name: Támogatási és súgólehetőségek
       href: ../iot-fundamentals/iot-support-help.md
-    - name: Ügyfelek történetei
-      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Digital%20Twins%22&ff=&p=0&so=story_publish_date%20desc'
-    - name: Channel 9-videók
-      href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22'
-    - name: Ügyfelek adatkérései
-      href: resources-customer-data-requests.md
-    - name: Díjszabás és rendelkezésre állás
-      items:
-        - name: Díjszabás
-          href: 'https://azure.microsoft.com/pricing/details/digital-twins'
-        - name: SLA
-          href: 'https://azure.microsoft.com/support/legal/sla/digital-twins'
-        - name: Régiók és rendelkezésre állás
-          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins'
