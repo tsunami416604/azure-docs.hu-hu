@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 6a587ecbe7ff67908b22d4f2429cfdd0c511e07d
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 0d1b2bd039f3e110c83d7ad4bf32f1e53e4c7a79
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96748773"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610148"
 ---
 # <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure Attestation (előzetes verzió)
 
@@ -39,6 +39,12 @@ Az ügyfélalkalmazások úgy is kiállíthatók, hogy kihasználják a SGX ENKL
 Az [Open enklávé](https://openenclave.io/sdk/) (OE) olyan kódtárak gyűjteménye, amelyek egyetlen egységes enclaving absztrakciót hoznak létre a fejlesztők számára a Tee-alapú alkalmazások létrehozásához. Univerzális biztonságos alkalmazás-modellt kínál, amely a platform sajátosságait is lekicsinyíti. A Microsoft fontos lépésként tekinti át a demokratizálása-alapú enklávé-technológiákat, például a SGX ENKLÁVÉHOZ, és növeli az Azure-ban való felvételét.
 
 Az OE az enklávé-tanúsítványok ellenőrzésére vonatkozó konkrét követelményeket Szabványosít. Ez megfelel az OE-nek, amely az Azure-igazolások kiválóan illeszkedő tanúsítvány-felhasználója.
+
+### <a name="tpm-attestation"></a>TPM-igazolás 
+
+A platformmegbízhatósági modul (TPM) alapú igazolás kritikus fontosságú a platformok állapotának igazolásához. A TPM a megbízhatóság gyökerének és a biztonsági munkafolyamatnak a mérések (bizonyíték) titkosítási érvényességének biztosítására szolgál. A TPM-sel rendelkező eszközök igazolják az igazolást, hogy igazolják, hogy a rendszerindítási integritás nem sérül, és nem sérült meg a szolgáltatás állapotának észlelése a rendszerindításkor. 
+
+Az ügyfélalkalmazások úgy is kiállíthatók, hogy kihasználják a TPM-igazolás előnyeit azáltal, hogy a biztonsági szempontból kényes feladatokat csak akkor végzik el, ha a platformot a biztonságos állapotba helyezték. Az ilyen alkalmazások ezt követően az Azure-igazolás használatával rutinszerűen hozhatnak létre megbízhatóságot a platformon, és képesek hozzáférni a bizalmas adatokhoz.
 
 ## <a name="azure-attestation-can-run-in-a-tee"></a>Az Azure-igazolás egy PÓLÓban is futtatható
 
@@ -77,7 +83,7 @@ A két régióban üzembe helyezett fürtök normál körülmények között egy
 - A vezérlési sík összes művelete le lesz tiltva. Az ügyfelek nem tudnak tanúsítvány-előállítók létrehozására és a szabályzatok frissítésére az elsődleges régióban
 - Az összes adatsík művelet, beleértve a tanúsító hívásokat, továbbra is az elsődleges régióban fog működni
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ismerje meg az [Azure igazolásának alapfogalmait](basic-concepts.md)
 - [Igazolási szabályzat létrehozása és aláírása](author-sign-policy.md)
 - [Az Azure-igazolás beállítása a PowerShell használatával](quickstart-powershell.md)

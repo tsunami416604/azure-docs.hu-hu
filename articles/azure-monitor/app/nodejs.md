@@ -4,12 +4,12 @@ description: Teljesítmény figyelése és problémák diagnosztizálása a Node
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 7aea6c03b0ce35fa0e74c39ff5f94f714447ad6f
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 0d414ce44a8d6ab308bd31f7372bb1c146fac9f5
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920575"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611015"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>A Node.js szolgáltatások és appok figyelése az Application Insights segítségével
 
@@ -334,6 +334,12 @@ server.on("listening", () => {
   appInsights.defaultClient.trackMetric({name: "server startup time", value: duration});
 });
 ```
+
+### <a name="flush"></a>Flush
+
+Alapértelmezés szerint a telemetria 15 másodpercig pufferelt, mielőtt a rendszer elküldi a betöltési kiszolgálónak. Ha az alkalmazás rövid élettartammal (például CLI-eszközzel) rendelkezik, szükség lehet a pufferelt telemetria manuális kiürítésére az alkalmazás leállításakor `appInsights.defaultClient.flush()` .
+
+Ha az SDK észleli, hogy az alkalmazás összeomlik, a rendszer a kiürítést hívja meg Önnek `appInsights.defaultClient.flush({ isAppCrashing: true })` . A flush beállítással az `isAppCrashing` alkalmazás rendellenes állapotban van, nem alkalmas a telemetria küldésére. Az SDK Ehelyett az összes pufferelt telemetria menti az [állandó tárterületre](./data-retention-privacy.md#nodejs) , és lehetővé teszi az alkalmazás befejezését. Az alkalmazás újraindításakor a rendszer megpróbálja elküldeni az állandó tárolóba mentett összes telemetria.
 
 ### <a name="preprocess-data-with-telemetry-processors"></a>Az telemetria processzorokkal rendelkező adatfeldolgozás
 

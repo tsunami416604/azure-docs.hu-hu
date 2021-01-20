@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 8e310ea487818f6d82869fe1973c8e9ed0b04195
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: d9ae9cae1a0a8014f007cd7c4a3d1f97f27128bb
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797111"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610964"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics munkaterület-adatexportálás Azure Monitorban (előzetes verzió)
 Log Analytics munkaterület-adatexportálás Azure Monitor lehetővé teszi, hogy folyamatosan exportálja a Log Analytics munkaterület kijelölt tábláiból származó adatokat egy Azure Storage-fiókba vagy az Azure-Event Hubsba az összegyűjtött adatok alapján. Ez a cikk részletesen ismerteti ezt a funkciót, valamint az adatexportálás konfigurálásának lépéseit a munkaterületeken.
@@ -35,13 +35,16 @@ Log Analytics munkaterület-adatok exportálásával folyamatosan exportálhatja
 
 ## <a name="current-limitations"></a>Aktuális korlátozások
 
-- A konfigurációt jelenleg csak parancssori felület vagy REST-kérelmek használatával lehet elvégezni. A Azure Portal vagy a PowerShell nem használható.
+- A konfiguráció a CLI-vagy REST-kérelmekkel jelenleg is elvégezhető. A Azure Portal vagy a PowerShell még nem támogatott.
 - A ```--export-all-tables``` CLI-ben és a REST-ben való beállítás nem támogatott, és el lesz távolítva. Explicit módon meg kell adnia a táblák listáját az exportálási szabályokban.
-- A támogatott táblázatok jelenleg csak a [támogatott táblák](#supported-tables) szakaszban vannak korlátozva. Ha az adatexportálási szabály nem támogatott táblát tartalmaz, akkor a művelet sikeres lesz, de a rendszer nem exportálja az adott táblára vonatkozó adatvesztést. Ha az adatexportálási szabály olyan táblát tartalmaz, amely nem létezik, a hiba miatt sikertelen lesz. ```Table <tableName> does not exist in the workspace.```
+- A támogatott táblázatok jelenleg csak a [támogatott táblák](#supported-tables) szakaszban vannak korlátozva. 
+- Ha az adatexportálási szabály nem támogatott táblát tartalmaz, a művelet sikeres lesz, de a tábla mindaddig nem exportálja az összes adatimportálást, amíg a tábla nem támogatott lesz. 
+- Ha az adatexportálási szabály olyan táblát tartalmaz, amely nem létezik, a hiba miatt sikertelen lesz ```Table <tableName> does not exist in the workspace``` .
 - A Log Analytics munkaterület a következők kivételével bármely régióban lehet:
   - Észak-Svájc
   - Nyugat-Svájc
   - Azure Government-régiók
+- Létrehozhat két exportálási szabályt egy munkaterületen – a-ben egy szabály lehet az Event hub és egy szabály a Storage-fiókhoz.
 - A célként megadott Storage-fióknak vagy az Event hub-nek ugyanabban a régióban kell lennie, mint a Log Analytics munkaterületnek.
 - Az exportálandó táblázatok neve nem lehet hosszabb 60 karakternél egy Storage-fióknál, és legfeljebb 47 karakterből állhat az Event hub-ban. A hosszú névvel rendelkező táblákat a rendszer nem exportálja.
 
@@ -58,12 +61,12 @@ Log Analytics munkaterület-adatok exportálásával folyamatosan exportálhatja
 ## <a name="data-completeness"></a>Az adatteljesség
 Az adatexportálás továbbra is újra próbálkozik az adatok küldésével akár 30 percig, ha a cél nem érhető el. Ha a 30 perc elteltével sem érhető el, akkor a rendszer elveti az adatvesztést, amíg a célhely elérhetővé nem válik.
 
-## <a name="cost"></a>Költség
+## <a name="cost"></a>Költségek
 Az adatexportálási szolgáltatáshoz jelenleg nem számítunk fel további díjakat. Az adatexportálás díjszabása a jövőben lesz bejelentve, és a számlázás megkezdése előtt megjelenő értesítés. Ha úgy dönt, hogy az adatexportálást a felmondási időszak után is használja, akkor a díjszabást a vonatkozó díjak alapján számítjuk fel.
 
 ## <a name="export-destinations"></a>Célhelyek exportálása
 
-### <a name="storage-account"></a>Tárfiók
+### <a name="storage-account"></a>A(z)
 Az adatküldés óránként történik a Storage-fiókok számára. Az adatexportálási konfiguráció egy tárolót hoz létre a Storage *-* fiókban lévő összes táblához a (z) nevű tárolóban, amelyet a tábla neve követ. Például a tábla *SecurityEvent* egy *am-SecurityEvent* nevű tárolóba fog elküldeni.
 
 A Storage-fiók blobjának elérési útja a következő: *WorkspaceResourceId =/Subscriptions/Subscription-ID/resourcegroups/ \<resource-group\> /providers/Microsoft.operationalinsights/workspaces/ \<workspace\> /y = \<four-digit numeric year\> /m = \<two-digit numeric month\> /d =/h =/m = \<two-digit numeric day\> \<two-digit 24-hour clock hour\> 00/PT1H.js*. Mivel a hozzáfűzési Blobok a Storage-ban lévő 50K-írásokra korlátozódnak, az exportált Blobok száma kiterjeszthető, ha a Hozzáfűzések száma magas. Ilyen esetben a Blobok elnevezési mintája PT1H_ #. JSON lesz, ahol a # a növekményes Blobok száma.
@@ -115,16 +118,16 @@ Ha úgy állította be a Storage-fiókot, hogy az engedélyezze a hozzáférést
 
 
 ### <a name="create-or-update-data-export-rule"></a>Adatexportálási szabály létrehozása vagy frissítése
-Az adatexportálási szabály a táblák egy adott célhelyére exportálandó adatmennyiséget határozza meg. Minden célhoz létrehozhat egy szabályt.
+Az adatexportálási szabály a táblák egy adott célhelyére exportálandó adatmennyiséget határozza meg. Minden célhoz létrehozhat egyetlen szabályt.
 
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N.A.
+N/A
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-N.A.
+N/A
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -402,11 +405,11 @@ A következő parancs használatával hozzon létre egy adatexportálási szabá
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N.A.
+N/A
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-N.A.
+N/A
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -426,7 +429,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 # <a name="template"></a>[Sablon](#tab/json)
 
-N.A.
+N/A
 
 ---
 
@@ -434,11 +437,11 @@ N.A.
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N.A.
+N/A
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-N.A.
+N/A
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -481,11 +484,11 @@ Az exportálási szabályok letilthatók, így leállíthatja az exportálást, 
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N.A.
+N/A
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-N.A.
+N/A
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -505,7 +508,7 @@ DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegrou
 
 # <a name="template"></a>[Sablon](#tab/json)
 
-N.A.
+N/A
 
 ---
 
@@ -513,11 +516,11 @@ N.A.
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N.A.
+N/A
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-N.A.
+N/A
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -537,7 +540,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 # <a name="template"></a>[Sablon](#tab/json)
 
-N.A.
+N/A
 
 ---
 
@@ -551,7 +554,7 @@ Ha az adatexportálási szabály olyan táblát tartalmaz, amely nem létezik, a
 A támogatott táblázatok jelenleg az alább megadott értékekre korlátozódnak. A rendszer minden, a táblából származó adattal exportál, hacsak nincsenek korlátozások megadva. A rendszer frissíti a listát a további táblázatok támogatásával.
 
 
-| Táblázat | Korlátozások |
+| Tábla | Korlátozások |
 |:---|:---|
 | AADDomainServicesAccountLogon | |
 | AADDomainServicesAccountManagement | |
@@ -725,6 +728,6 @@ A támogatott táblázatok jelenleg az alább megadott értékekre korlátozódn
 | WVDManagement | |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az exportált adatok lekérdezése az Azure Adatkezelőból](azure-data-explorer-query-storage.md).

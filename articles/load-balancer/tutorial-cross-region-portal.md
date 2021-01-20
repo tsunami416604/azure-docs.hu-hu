@@ -7,18 +7,18 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 11/24/2020
-ms.openlocfilehash: 7ee203595a796529ae0aefe8b0c52a689ac29968
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: d94736656f691da9e893e4619a2299a061acd8e8
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96762329"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611202"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>Oktatóanyag: régiók közötti Azure Load Balancer létrehozása a Azure Portal használatával
 
 A régiók közötti terheléselosztó biztosítja, hogy a szolgáltatások globálisan elérhetők legyenek több Azure-régió között. Ha az egyik régió meghibásodik, a rendszer átirányítja a forgalmat a legközelebbi, legközelebb egészséges regionális Load balancerbe.  
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Hozza létre a régiók közötti Load balancert.
@@ -41,7 +41,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 ## <a name="sign-in-to-azure-portal"></a>Bejelentkezés az Azure portálra
 
-[Jelentkezzen](https://preview.portal.azure.com) be az Azure betekintő portálra.
+[Jelentkezzen](https://portal.azure.com) be az Azure betekintő portálra.
 
 ## <a name="create-cross-region-load-balancer"></a>Régiók közötti Load Balancer létrehozása
 
@@ -56,7 +56,7 @@ Ebben a szakaszban egy régiók közötti terheléselosztó és egy nyilvános I
     | Előfizetés               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza az **új létrehozása** elemet, és írja be a **CreateCRLBTutorial-RG** karakterláncot a szövegmezőbe.|
     | Name                   | Adja meg a **myLoadBalancer-CR** értéket                                   |
-    | Régió         | Válassza az **USA nyugati** régiója lehetőséget.                                        |
+    | Region         | Válassza az **USA nyugati** régiója lehetőséget.                                        |
     | Típus          | Válassza a **Nyilvános** lehetőséget.                                        |
     | Termékváltozat           | **Standard** kiválasztása |
     | Szint           | **Globális** kiválasztása |
@@ -128,7 +128,7 @@ Ebben a szakaszban egy állapot-mintavételt hoz létre a terheléselosztási sz
     | Időköz | Adja meg az **5** értéket. |
     | Nem kifogástalan állapot küszöbértéke | Adja meg a **2** értéket. |
 
-4. Kattintson az **OK** gombra.
+4. Válassza az **OK** lehetőséget.
 
     > [!NOTE]
     > A több régióból álló Load Balancer beépített állapotú mintavételt tartalmaz. Ez a mintavétel a terheléselosztási szabály létrehozásához használható helyőrző.  További információ: **[a régiók közötti Load Balancer korlátai](cross-region-overview.md#limitations)**.

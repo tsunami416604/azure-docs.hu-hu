@@ -4,12 +4,12 @@ description: Annak megakadályozása, hogy a felhasználók az összes felhaszn�
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7efeb8a073a04f78f77046c07c107abf0c7526f4
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 53054f89c992139fbbd4f087d2a0344e26d97efc
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602200"
+ms.locfileid: "98610199"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Erőforrások zárolása a váratlan módosítások megelőzése érdekében
 
@@ -254,10 +254,17 @@ Egy erőforráscsoport összes zárolásának beszerzéséhez használja a köve
 Get-AzResourceLock -ResourceGroupName exampleresourcegroup
 ```
 
-A zárolás törléséhez használja a következőt:
+Egy erőforrás zárolásának törléséhez használja a következőt:
 
 ```azurepowershell-interactive
 $lockId = (Get-AzResourceLock -ResourceGroupName exampleresourcegroup -ResourceName examplesite -ResourceType Microsoft.Web/sites).LockId
+Remove-AzResourceLock -LockId $lockId
+```
+
+Egy erőforráscsoport zárolásának törléséhez használja a következőt:
+
+```azurepowershell-interactive
+$lockId = (Get-AzResourceLock -ResourceGroupName exampleresourcegroup).LockId
 Remove-AzResourceLock -LockId $lockId
 ```
 
@@ -295,10 +302,17 @@ Egy erőforráscsoport összes zárolásának beszerzéséhez használja a köve
 az lock list --resource-group exampleresourcegroup
 ```
 
-A zárolás törléséhez használja a következőt:
+Egy erőforrás zárolásának törléséhez használja a következőt:
 
 ```azurecli
 lockid=$(az lock show --name LockSite --resource-group exampleresourcegroup --resource-type Microsoft.Web/sites --resource-name examplesite --output tsv --query id)
+az lock delete --ids $lockid
+```
+
+Egy erőforráscsoport zárolásának törléséhez használja a következőt:
+
+```azurecli
+lockid=$(az lock show --name LockSite --resource-group exampleresourcegroup  --output tsv --query id)
 az lock delete --ids $lockid
 ```
 
@@ -325,7 +339,7 @@ A kérelemben adjon meg egy JSON-objektumot, amely meghatározza a zárolás tul
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az erőforrások logikus rendszerezésével kapcsolatos további információkért lásd: [címkék használata az erőforrások rendszerezéséhez](tag-resources.md).
 * Az előfizetésre vonatkozó korlátozásokat és konvenciókat egyéni szabályzatokkal is alkalmazhat. További információ: [Mi az az Azure Policy?](../../governance/policy/overview.md)

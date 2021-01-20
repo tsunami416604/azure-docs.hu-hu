@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: ecea9dcd28aede92ef255bf002b9195ded43c68b
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 53093edb1d3c142336f06ec8544aaa7b55e37477
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296114"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611253"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service-ben (AKS) támogatott Kubernetes-verziók
 
@@ -138,13 +138,14 @@ A korábbi kiadási előzményekért lásd: [Kubernetes](https://en.wikipedia.or
 
 |  K8s verziója | Felsőbb rétegbeli kiadás  | AK – előzetes verzió  | AK-GA  | Elhasználódott |
 |--------------|-------------------|--------------|---------|-------------|
-| 1.16  | Sep – 19-19  | Jan 2019   | Mar 2020  | Jan 2021 * | 
+| 1.16  | Sep – 19-19  | Jan 2019   | Mar 2020  | Jan 2021| 
 | 1,17  | Dec-09-19  | Jan 2019   | Jul 2020  | 1,20 GA | 
 | 1,18  | Mar-23-20  | 2020. május   | Augusztus 2020  | 1,21 GA | 
 | 1,19  | Aug-04-20  | Sep 2020   | November 2020  | 1,22 GA | 
 | 1,20  | Dec-08-20  | Jan 2021   | Mar 2021  | 1,23 GA |
+| 1,21  | Apr-08-21 * | 2021. május   | Jul 2021  | 1,24 GA |
 
-\* A nyaralási szezon miatt az AK 1,16 november 2020-2021 ig meghosszabbítja a-es élettartamot. [További információk](https://github.com/Azure/AKS/releases/tag/2020-10-12).
+\* A Kubernetes 1,21 felsőbb rétegbeli kiadás a felsőbb rétegbeli naptárban még a véglegesítésig változhat.
 
 
 ## <a name="faq"></a>GYIK
@@ -182,7 +183,7 @@ A vezérlési síkon az összes csomópont-készlet verziójának egy ablakában
 
 Ha egy támogatott AK-fürtöt frissít, a Kubernetes alverzióit nem lehet kihagyni. Például a *1.12. x*  ->  *1.13. x* vagy *1.13. x*  ->  *1.14. x* közötti frissítések engedélyezettek, a *1.12. x*  ->  *1.14. x* azonban nem.
 
-A frissítéshez *1.12. x*  ->  *1,14. x*-ről először a *1.12. x* 1.13. x verzióról kell frissíteni,  ->  *1.13.x* majd az *1.13. x*  ->  *1.14. x* verziójáról kell frissíteni.
+A frissítéshez *1.12. x*  ->  *1,14. x*-ről először a *1.12. x* 1.13. x verzióról kell frissíteni,  ->  majd az *1.13. x*  ->  *1.14. x* verziójáról kell frissíteni.
 
 Több verzió kihagyása csak akkor végezhető el, ha nem támogatott verzióról frissít vissza egy támogatott verzióra. Például nem támogatott *1.10. x* – > egy támogatott *1.15. x-et* lehet befejezni.
 

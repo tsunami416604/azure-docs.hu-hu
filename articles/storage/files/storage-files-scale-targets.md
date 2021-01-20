@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 43d593a65fd08542eb2829fcebcea81ea0c99986
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: e10f45af89e19f6fe62ff729f96d870e008c96ec
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995447"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611100"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Az Azure Files méretezhetőségi és teljesítménycéljai
 
@@ -31,7 +31,7 @@ Az Azure-fájlmegosztás szülő erőforrása egy Azure Storage-fiók. A Storage
 > [!Important]  
 > Az általános célú Storage-fiókok más tárolási szolgáltatásokból való kihasználtsága hatással van az Azure-fájlmegosztás használatára a Storage-fiókban. Ha például eléri a Storage-fiók kapacitását az Azure Blob Storage-ban, nem fog tudni új fájlokat létrehozni az Azure-fájlmegosztás számára, még akkor is, ha az Azure-fájlmegosztás a megosztások maximális mérete alá esik.
 
-## <a name="azure-files-scale-targets"></a>Azure Files méretezési célok
+## <a name="azure-files-scale-targets"></a>Azure Files – skálázási célok
 
 Háromféle korlátozást kell figyelembe venni a Azure Files: Storage-fiókok,-megosztások és-fájlok esetében.
 
@@ -87,16 +87,16 @@ Az alábbi szakaszokban megtervezheti az üzembe helyezést, és a belső teszte
 | Objektumok száma | 25 000 000 objektum |
 | Adatkészlet mérete| ~ 4,7 TiB |
 | Fájlméret átlagos mérete | ~ 200 KiB (legnagyobb fájl: 100 GiB) |
-| A felhő kezdeti változásának számbavétele | 7 objektum másodpercenként  |
+| A felhő kezdeti változásának számbavétele | 20 objektum másodpercenként  |
 | Feltöltési sebesség | 20 objektum másodpercenként/szinkronizálási csoportonként |
 | Névtér letöltési átviteli sebessége | 400 objektum/másodperc |
 
 ### <a name="initial-one-time-provisioning"></a>Egyszeri kiépítés kezdeti időpontja
 
 **Kezdeti Felhőbeli módosítás enumerálása**: új szinkronizálási csoport létrehozásakor a kezdeti Felhőbeli változások számbavétele az első lépés, amelyet a rendszer végrehajt. Ebben a folyamatban a rendszer az Azure-fájlmegosztás összes elemét enumerálja. A folyamat során nem lesz szinkronizálási tevékenység, azaz egyetlen elem sem lesz letöltve a Felhőbeli végpontról a kiszolgálói végpontra, és egyetlen elem sem lesz feltöltve a kiszolgálói végpontról a Felhőbeli végpontra. A szinkronizálási tevékenység akkor folytatódik, amikor a kezdeti Felhőbeli változás enumerálása befejeződik.
-A teljesítmény sebessége 7 objektum/másodperc. Az ügyfelek a Felhőbeli megosztásban lévő elemek számának meghatározásával, valamint a következő képletek használatával tudják megbecsülni a Felhőbeli módosítások számbavételének befejezéséhez szükséges időt. 
+A teljesítmény sebessége 20 objektum másodpercenként. Az ügyfelek a Felhőbeli megosztásban lévő elemek számának meghatározásával, valamint a következő képletek használatával tudják megbecsülni a Felhőbeli módosítások számbavételének befejezéséhez szükséges időt. 
 
-   **Kezdeti Felhőbeli számbavétel időpontja (nap) = (objektumok száma a Felhőbeli végpontban)/(7 * 60 * 60 * 24)**
+   **Kezdeti Felhőbeli számbavétel időpontja (napokban) = (objektumok száma a Felhőbeli végpontban)/(20 * 60 * 60 * 24)**
 
 **Névtér letöltési átviteli sebessége** Ha új kiszolgálói végpontot ad hozzá egy meglévő szinkronizálási csoporthoz, a Azure File Sync ügynök nem tölti le a fájl tartalmát a Felhőbeli végpontból. Először szinkronizálja a teljes névteret, majd elindítja a háttérben való visszahívást, hogy letöltse a fájlokat, akár teljes egészében, akár a felhőalapú rétegek engedélyezése esetén a kiszolgálói végponton beállított felhő-előállítási házirendhez.
 

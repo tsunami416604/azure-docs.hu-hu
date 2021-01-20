@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: c32f90221a73d04fd6c54c8332826232d0e6a6f3
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 30c13adfebb911e443fb042821e09628da3b9405
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968534"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610981"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>A Spark &-struktúra eszközeinek használata a Visual Studio Code-hoz
 
@@ -211,31 +211,30 @@ A PySpark interaktív parancs használatával küldje el a lekérdezéseket, kö
 
    ![a pyspark telepítése sikerült](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)
 
-7. Futtassa a parancssorban a **pip install NumPy = = 1.19.3** parancsot, majd újra töltse újra a VSCode ablakot.
 
-8. A menüsávban navigáljon a parancs-paletta **megtekintéséhez**.  >  **..** vagy használja a **SHIFT + CTRL + P** billentyűparancsot, és írja be a **Python: Select tolmács elemet a Jupyter-kiszolgáló indításához**.
+7. A menüsávban navigáljon a parancs-paletta **megtekintéséhez**.  >  **..** vagy használja a **SHIFT + CTRL + P** billentyűparancsot, és írja be a **Python: Select tolmács elemet a Jupyter-kiszolgáló indításához**.
 
    ![a jupyter-kiszolgáló indításához válassza a tolmács elemet.](./media/hdinsight-for-vscode/select-interpreter-to-start-jupyter-server.png)
 
-9. Válassza ki az alábbi Python-beállítást.
+8. Válassza ki az alábbi Python-beállítást.
 
    ![Válassza az alábbi lehetőséget](./media/hdinsight-for-vscode/choose-the-below-option.png)
     
-10. A menüsávban navigáljon a parancs-paletta **megtekintéséhez**.  >  **..** vagy használja a **SHIFT + CTRL + P** billentyűparancsot, és adja meg a **fejlesztő: újratöltési ablak** elemet.
+9. A menüsávban navigáljon a parancs-paletta **megtekintéséhez**.  >  **..** vagy használja a **SHIFT + CTRL + P** billentyűparancsot, és adja meg a **fejlesztő: újratöltési ablak** elemet.
 
     ![ablak újratöltése](./media/hdinsight-for-vscode/reload-window.png)
 
-11. [Kapcsolódjon](#connect-to-an-azure-account) az Azure-fiókjához, vagy kapcsolja össze a fürtöt, ha még nem tette meg.
+10. [Kapcsolódjon](#connect-to-an-azure-account) az Azure-fiókjához, vagy kapcsolja össze a fürtöt, ha még nem tette meg.
 
-12. Válassza ki az összes kódot, kattintson a jobb gombbal a parancsfájl-szerkesztőre, majd válassza a **Spark: PySpark Interactive/szinapszis: PySpark Interactive** parancsot a lekérdezés elküldéséhez. 
+11. Válassza ki az összes kódot, kattintson a jobb gombbal a parancsfájl-szerkesztőre, majd válassza a **Spark: PySpark Interactive/szinapszis: PySpark Interactive** parancsot a lekérdezés elküldéséhez. 
 
     ![pyspark interaktív helyi menü](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
 
-13. Ha nem adott meg alapértelmezett fürtöt, válassza ki a fürtöt. Néhány pillanat elteltével a **Python interaktív** eredményei egy új lapon jelennek meg. Kattintson a PySpark elemre a kernel **PySpark/szinapszis PySpark** való átváltásához, és a kód futtatása sikeresen megtörténik. Ha a szinapszis Pyspark kernelre szeretne váltani, tiltsa le az Azure Portal automatikus beállításait. Ellenkező esetben hosszú időt vehet igénybe a fürt felébresztése és a szinapszis-kernel első használatba vételének beállítása. Ha az eszközök azt is lehetővé teszik, hogy a teljes parancsfájl helyett programkódot küldjön a helyi menü használatával:
+12. Ha nem adott meg alapértelmezett fürtöt, válassza ki a fürtöt. Néhány pillanat elteltével a **Python interaktív** eredményei egy új lapon jelennek meg. Kattintson a PySpark elemre a kernel **PySpark/szinapszis PySpark** való átváltásához, és a kód futtatása sikeresen megtörténik. Ha a szinapszis Pyspark kernelre szeretne váltani, tiltsa le az Azure Portal automatikus beállításait. Ellenkező esetben hosszú időt vehet igénybe a fürt felébresztése és a szinapszis-kernel első használatba vételének beállítása. Ha az eszközök azt is lehetővé teszik, hogy a teljes parancsfájl helyett programkódot küldjön a helyi menü használatával:
 
     ![pyspark interaktív Python interaktív ablak](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
 
-14. Adja meg a **%% info** értéket, majd nyomja le a SHIFT + ENTER billentyűkombinációt a feladatok adatainak megtekintéséhez (nem kötelező):
+13. Adja meg a **%% info** értéket, majd nyomja le a SHIFT + ENTER billentyűkombinációt a feladatok adatainak megtekintéséhez (nem kötelező):
 
     ![pyspark interaktív megtekintési feladatának adatai](./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png)
 
@@ -376,7 +375,7 @@ Küldje el a fájlt, és figyelje meg, hogy a `.vscode` rendszer automatikusan h
 
   | name | leírás | típus |
   | --- | ---| --- |
-  | ID | Munkamenet-azonosító | Int |
+  | ID (Azonosító) | Munkamenet-azonosító | Int |
   | appId | A munkamenet alkalmazás-azonosítója | Sztring |
   | alkalmazásadatokat | Részletes alkalmazásadatok | Kulcs leképezése = val |
   | napló | Naplózási sorok | Karakterláncok listája |
@@ -461,7 +460,7 @@ Ha a feladatot egy HDInsight-fürtre küldi, a rendszer arra kéri, hogy kapcsol
    >
    >![Spark &-struktúra eszközei a Visual Studio Code Readerhez csatolt](./media/hdinsight-for-vscode/list-cluster-result1.png)
 
-## <a name="azure-data-lake-storage-gen2"></a>2\. generációs Azure Data Lake Storage
+## <a name="azure-data-lake-storage-gen2"></a>2. generációs Azure Data Lake Storage
 
 ### <a name="browse-a-data-lake-storage-gen2-account"></a>Data Lake Storage Gen2-fiók tallózása
 

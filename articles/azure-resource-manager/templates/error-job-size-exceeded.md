@@ -2,17 +2,17 @@
 title: A feladatok mérete túllépte a hibát.
 description: Leírja, hogyan lehet elhárítani a hibákat, amikor a feladatok mérete vagy a sablon túl nagy.
 ms.topic: troubleshooting
-ms.date: 10/07/2020
-ms.openlocfilehash: 638bdef246fc908ab997bfb99e7526febdb3792e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/19/2021
+ms.openlocfilehash: 1fde4918aff6e3bf494876f83c5b4313b3c5f3d2
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822142"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610403"
 ---
 # <a name="resolve-errors-for-job-size-exceeded"></a>Túllépte a feladatokhoz tartozó hibák elhárítását
 
-Ez a cikk a **JobSizeExceededException** és a **DeploymentSizeExceededException** hibák elhárítását ismerteti.
+Ez a cikk a **JobSizeExceededException** és a **DeploymentJobSizeExceededException** hibák elhárítását ismerteti.
 
 ## <a name="symptom"></a>Hibajelenség
 
@@ -20,9 +20,12 @@ A sablonok telepítésekor hibaüzenetet kap, amely túllépte az üzemelő pél
 
 ## <a name="cause"></a>Ok
 
-Ez a hiba akkor jelenik meg, ha a sablon mérete meghaladja a 4 MB-ot. A 4 MB-os korlát a sablon végső állapotára vonatkozik, miután kibővítettük azokat az erőforrás-definíciókat, amelyek számos példány létrehozásához a [másolást](copy-resources.md) használják. A végső állapot a változók és paraméterek megoldott értékeit is tartalmazza.
+Ez a hibaüzenet akkor jelenik meg, ha az üzemelő példány túllépi az engedélyezett határértékek valamelyikét. Ez a hiba általában akkor jelenik meg, ha a sablon vagy a központi telepítést futtató művelet túl nagy.
 
-A telepítési feladathoz a kérelemmel kapcsolatos metaadatok is tartoznak. Nagyméretű sablonok esetén a sablonnal összevont metaadatok meghaladják a feladatok megengedett méretét.
+Az üzembe helyezési feladatok nem haladhatják meg az 1 MB-ot. A feladatban szerepelnek metaadatok a kérelemről. Nagyméretű sablonok esetén a sablonnal összevont metaadatok meghaladják a feladatok megengedett méretét.
+
+
+A sablon mérete nem haladhatja meg a 4 MB-ot. A 4 MB-os korlát a sablon végső állapotára vonatkozik, miután kibővítettük azokat az erőforrás-definíciókat, amelyek számos példány létrehozásához a [másolást](copy-resources.md) használják. A végső állapot a változók és paraméterek megoldott értékeit is tartalmazza.
 
 A sablon egyéb korlátai a következők:
 
@@ -44,4 +47,4 @@ Próbálja megrövidíteni a [paraméterekhez](template-parameters.md), [változ
 
 ## <a name="solution-3---use-serial-copy"></a>3. megoldás – soros másolás használata
 
-A második lehetőség a másolási hurok [párhuzamosról soros feldolgozásra](copy-resources.md#serial-or-parallel)való módosítása. Ezt a lehetőséget csak akkor használja, ha azt gyanítja, hogy a hiba nagy számú erőforrásnak a másolással történő központi telepítését eredményezi. Ez a változás jelentősen növelheti a központi telepítési időt, mert az erőforrások párhuzamosan nincsenek telepítve.
+Érdemes lehet [párhuzamosról soros feldolgozásra](copy-resources.md#serial-or-parallel)módosítani a másolási ciklust. Ezt a lehetőséget csak akkor használja, ha azt gyanítja, hogy a hiba nagy számú erőforrásnak a másolással történő központi telepítését eredményezi. Ez a változás jelentősen növelheti a központi telepítési időt, mert az erőforrások párhuzamosan nincsenek telepítve.

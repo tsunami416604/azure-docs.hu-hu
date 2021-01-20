@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: 7240c1b0f19dc49ab4130c5ee2516dcfefb2e2c2
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 9521c13b21317bb0a782b0bea0b08312ff24b113
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602184"
+ms.locfileid: "98610352"
 ---
 # <a name="errors-in-the-connector-status"></a>Az összekötő állapotával kapcsolatos hibák
 
@@ -27,7 +27,7 @@ Ebben a szakaszban megtalálhatja az összekötő állapota szakaszban bemutatot
   * A ServiceNow-példányban üzembe helyezett egyéni parancsfájlok figyelmen kívül hagyják az incidenseket.
   * A "OMS integrátori alkalmazás" kódját maga a ServiceNow oldalon módosították, például a onBefore-szkriptet.
 
-    **Megoldás**: tiltsa le az Adatimportálási útvonal összes egyéni parancsfájlját vagy programkódjának módosításait.
+  **Megoldás**: tiltsa le az Adatimportálási útvonal összes egyéni parancsfájlját vagy programkódjának módosításait.
 
 * **Hiba**: a (z) "{" hiba ": {" üzenet ":" sikertelen művelet "," Részletek ":" ACL-kivétel frissítése sikertelen volt a biztonsági korlátozások miatt "}
 

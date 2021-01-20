@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 5d160c46b235c6890426cab9de52ec7b827efe4a
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 37753265afa7e76e87dbcdc5893595bea66798f4
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750713"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610250"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez
 
@@ -29,7 +29,7 @@ Ez a cikk ismerteti azokat a függőségeket, konfigurációkat és kódokat, am
 
 Az Azure Spring Cloud a következőket támogatja:
 
-* .NET Core 3,1
+* .NET Core 3.1
 * Steeltoe 2,4 és 3,0
 
 ## <a name="dependencies"></a>Függőségek
@@ -91,7 +91,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 Azon a konfigurációs forráson, amelyet az alkalmazás az Azure Spring Cloud-ban való futtatásakor fog használni, állítsa a `spring.application.name` nevet ugyanarra a névre, mint az Azure Spring Cloud alkalmazásra, amelyhez a projekt telepítve lesz.
 
-Ha például egy nevű .NET-projektet helyez üzembe `EurekaDataProvider` aappSettings.jsfájl nevű Azure Spring Cloud-alkalmazáshoz, a `planet-weather-provider` következő JSON-t kell tartalmaznia: *appSettings.json*
+Ha például egy nevű .NET-projektet helyez üzembe `EurekaDataProvider` aappSettings.jsfájl nevű Azure Spring Cloud-alkalmazáshoz, a `planet-weather-provider` következő JSON-t kell tartalmaznia: 
 
 ```json
 "spring": {
@@ -146,40 +146,14 @@ Az Azure Spring Cloud csak Spring boot-alkalmazásokat támogat, vagy a Spring b
 
 Spring boot-verzió | Tavaszi felhő verziója
 ---|---
-2.1 | Greenwich. RELEASE
 2,2 | Hoxton. SR8
 2.3 | Hoxton. SR8
+2.4.1 + | 2020.0.0
 
 > [!NOTE]
-> A Spring boot 2,4-as számú, az alkalmazások és az Eureka közötti TLS-hitelesítéssel kapcsolatos hibát észlelt, és jelenleg a Spring Közösséggel dolgozik a megoldásban. A megkerülő megoldásért tekintse meg a [gyakori kérdéseket](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-faq?pivots=programming-language-java#development) .
+> A Spring boot 2.4.0 az alkalmazások és az Eureka közötti TLS-hitelesítéssel kapcsolatos hibát észlelt, használja a 2.4.1 vagy újabb rendszert. Ha ragaszkodik a 2.4.0 használatához, tekintse meg a megkerülő megoldással kapcsolatos [gyakori kérdéseket](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-faq?pivots=programming-language-java#development) .
 
-### <a name="dependencies-for-spring-boot-version-21"></a>A Spring boot 2,1-es verziójának függőségei
-
-A Spring boot 2,1-es verziójában adja hozzá a következő függőségeket az Application POM-fájlhoz.
-
-```xml
-    <!-- Spring Boot dependencies -->
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.12.RELEASE</version>
-    </parent>
-
-    <!-- Spring Cloud dependencies -->
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Greenwich.RELEASE</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-```
-
-### <a name="dependencies-for-spring-boot-version-22"></a>A Spring boot 2,2-es verziójának függőségei
+### <a name="dependencies-for-spring-boot-version-2223"></a>A Spring boot 2.2/2.3-as verziójának függőségei
 
 A Spring boot 2,2-es verziójában adja hozzá a következő függőségeket az Application POM-fájlhoz.
 
@@ -204,16 +178,17 @@ A Spring boot 2,2-es verziójában adja hozzá a következő függőségeket az 
         </dependencies>
     </dependencyManagement>
 ```
-### <a name="dependencies-for-spring-boot-version-23"></a>A Spring boot 2,3-es verziójának függőségei
 
-A Spring boot 2,3-es verziójában adja hozzá a következő függőségeket az Application POM-fájlhoz.
+### <a name="dependencies-for-spring-boot-version-24"></a>A Spring boot 2,4-es verziójának függőségei
+
+A Spring boot 2,2-es verziójában adja hozzá a következő függőségeket az Application POM-fájlhoz.
 
 ```xml
     <!-- Spring Boot dependencies -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.0.RELEASE</version>
+        <version>2.4.1.RELEASE</version>
     </parent>
 
     <!-- Spring Cloud dependencies -->
@@ -222,34 +197,14 @@ A Spring boot 2,3-es verziójában adja hozzá a következő függőségeket az 
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Hoxton.SR8</version>
+                <version>2020.0.0</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
 ```
-## <a name="azure-spring-cloud-client-dependency"></a>Azure Spring Cloud ügyfél-függőség
 
-Az Azure Spring Cloud üzemelteti és kezeli a Spring Cloud-összetevőket. Az összetevők közé tartoznak a Spring Cloud Service Registry és a Spring Cloud config Server. A Spring boot 2,2 vagy a 2,3 használatát javasoljuk. A Spring boot 2,1 esetében az Azure Spring Cloud ügyféloldali kódtárat is meg kell adnia a függőségekben, hogy lehetővé váljon a kommunikáció az Azure Spring Cloud Service-példánnyal.
-
-A következő táblázat felsorolja a Spring boot és Spring Cloud-t használó alkalmazás megfelelő Azure Spring Cloud-verzióit.
-
-Spring boot-verzió | Tavaszi felhő verziója | Azure Spring Cloud-ügyfél kezdő verziója
----|---|---
-2.1. x | Greenwich. RELEASE | 2.1.2
-2.2. x | Hoxton. SR8 | Nem szükséges
-2.3. x | Hoxton. SR8 | Nem szükséges
-
-Ha a Spring boot 2,1-et használja, vegye fel a következő dependenciy a pom.xml-fájlba.
-
-```xml
-<dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.1.2</version>
-</dependency>
-```
 > [!WARNING]
 > Ne adja meg `server.port` a konfigurációt. Az Azure Spring Cloud ezt a beállítást egy rögzített Overide fogja beállítani. Vegye figyelembe ezt a beállítást is, és ne adja meg a kiszolgáló portját a kódban.
 
@@ -329,6 +284,9 @@ Vegye fel a függőséget a `spring-boot-starter-actuator` pom.xml fájl függő
 
 ### <a name="distributed-tracing"></a>Elosztott nyomkövetés
 
+Emellett engedélyeznie kell egy Azure Application Insights-példány működését az Azure Spring Cloud Service-példányával. Az Azure Spring Cloudtel való Application Insights használatáról az [elosztott nyomkövetés dokumentációjában](spring-cloud-tutorial-distributed-tracing.md)talál további információt.
+
+#### <a name="spring-boot-2223"></a>Spring boot 2.2/2.3
 Adja meg a következő `spring-cloud-starter-sleuth` és `spring-cloud-starter-zipkin` függőségeket a pom.xml fájl függőségek szakaszában:
 
 ```xml
@@ -342,16 +300,24 @@ Adja meg a következő `spring-cloud-starter-sleuth` és `spring-cloud-starter-z
 </dependency>
 ```
 
- Emellett engedélyeznie kell egy Azure Application Insights-példány működését az Azure Spring Cloud Service-példányával. Az Azure Spring Cloudtel való Application Insights használatáról az [elosztott nyomkövetés dokumentációjában](spring-cloud-tutorial-distributed-tracing.md)talál további információt.
+#### <a name="spring-boot-24"></a>Spring boot 2,4
+Adja meg a következő függőséget a `spring-cloud-sleuth-zipkin` pom.xml fájl függőségek részében:
 
-## <a name="see-also"></a>További információ
+```xml
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-sleuth-zipkin</artifactId>
+</dependency>
+```
+
+## <a name="see-also"></a>Lásd még
 * [Alkalmazások naplófájljainak és metrikáinak elemzése](./diagnostic-services.md)
 * [A Config Server beállítása](./spring-cloud-tutorial-config-server.md)
 * [Elosztott nyomkövetés használata az Azure Spring Cloud használatával](./spring-cloud-tutorial-distributed-tracing.md)
 * [Spring rövid útmutató](https://spring.io/quickstart)
 * [Spring boot – dokumentáció](https://spring.io/projects/spring-boot)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a témakörben megtanulta, hogyan konfigurálhatja a Java Spring-alkalmazást az Azure Spring Cloud üzembe helyezéséhez. A konfigurációs kiszolgálópéldány beállításával kapcsolatos további információkért lásd: [konfigurációs kiszolgálói példány beállítása](spring-cloud-tutorial-config-server.md).
 

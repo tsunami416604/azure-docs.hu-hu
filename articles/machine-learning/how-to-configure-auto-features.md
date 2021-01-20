@@ -11,26 +11,28 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to,automl,contperf-fy21q2
 ms.date: 12/18/2020
-ms.openlocfilehash: 5fcb57d1ef909d7c15e21b34c3f584c6615a6a44
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: c90ef9fe49a87c18c7f4f55175bafaebfd31d722
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134415"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610301"
 ---
 # <a name="data-featurization-in-automated-machine-learning"></a>Az automatizált gépi tanulásban tárolt featurization
 
-
-
-Ismerkedjen meg a Azure Machine Learning featurization beállításaival, és hogyan szabhatja testre ezeket a szolgáltatásokat [AUTOMATIZÁLT ml-kísérletek](concept-automated-ml.md)esetén.
+Ismerkedjen meg a Azure Machine Learning featurization beállításaival, és hogyan szabhatja testre ezeket a funkciókat az [automatizált gépi tanulási kísérletekhez](concept-automated-ml.md).
 
 ## <a name="feature-engineering-and-featurization"></a>Szolgáltatások mérnöki és featurization
 
-A *szolgáltatás-mérnöki* folyamat az adat tartományon alapuló ismeretét használja olyan funkciók létrehozásához, amelyek segítenek a Machine learning (ml) algoritmusok jobb megismerésében. Azure Machine Learning az adatméretezési és-normalizálás technikákat a funkciók mérnöki működésének megkönnyítésére alkalmazza a rendszer. Ezeket a technikákat és a szolgáltatás-fejlesztéseket együttesen *featurization* nevezzük az automatizált gépi tanulásban, vagy *autoML*, kísérletekben.
+A betanítási információ sorokból és oszlopokból áll. Minden sor egy megfigyelési vagy rekord, az egyes sorok oszlopai pedig az egyes rekordokat leíró funkciók. A prediktív modellek létrehozásához jellemzően az adatmintákat legjobban jellemző funkciók vannak kiválasztva.
+
+Bár a nyers adatmezők közül sok használható közvetlenül a modellek betanításához, gyakran szükséges további (megtervezett) funkciókat létrehozni, amelyek olyan információkat biztosítanak, amelyek jobban megkülönböztetik a mintákat az adatokban. Ennek a folyamatnak a neve a **szolgáltatás mérnöki** környezete, ahol az adat tartományon alapuló ismeretét kihasználva olyan funkciók hozhatók létre, amelyek segítségével a gépi tanulási algoritmusok segítenek a jobb megismerésben. 
+
+Azure Machine Learning az adatméretezési és-normalizálás technikákat a funkciók mérnöki működésének megkönnyítésére alkalmazza a rendszer. Együttesen ezek a technikák és a szolgáltatások mérnöki funkciói az automatikus ML-kísérletek **featurization** vannak elnevezve.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk azt feltételezi, hogy már tudja, hogyan konfigurálhat egy AutoML-kísérletet. A konfigurálással kapcsolatos további információkért tekintse meg a következő cikkeket:
+Ez a cikk azt feltételezi, hogy már tudja, hogyan konfigurálhat egy automatizált ML-kísérletet. A konfigurálással kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 - Első [lépésként: az automatikus ml-kísérletek konfigurálása a Pythonhoz készült Azure Machine learning SDK használatával](how-to-configure-auto-train.md).
 - Alacsony kódú vagy nem kódolású felhasználói élmény: [automatizált gépi tanulási modellek létrehozása, áttekintése és üzembe helyezése a Azure Machine learning Studio használatával](how-to-use-automated-ml-for-ml-models.md).
@@ -59,7 +61,7 @@ A következő táblázat a `featurization` [AutoMLConfig osztály](/python/api/a
 Az alábbi táblázat összefoglalja az adataira automatikusan alkalmazott technikákat. Ezeket a technikákat az SDK-val vagy a Studióval konfigurált kísérletekre alkalmazza a rendszer. Ha le szeretné tiltani ezt a viselkedést, állítsa be `"featurization": 'off'` az `AutoMLConfig` objektumban.
 
 > [!NOTE]
-> Ha úgy tervezi, hogy a AutoML által létrehozott modelleket egy [ONNX-modellbe](concept-onnx.md)exportálja, csak a csillaggal ("*") jelölt featurization-beállítások támogatottak a ONNX formátumban. További információ a [modellek ONNX való átalakításáról](concept-automated-ml.md#use-with-onnx).
+> Ha úgy tervezi, hogy a AutoML által létrehozott modelleket egy [ONNX-modellbe](concept-onnx.md)exportálja, csak a csillaggal ("*") jelölt featurization-beállítások támogatottak a ONNX formátumban. További információ a [modellek ONNX való átalakításáról](how-to-use-automl-onnx-model-dotnet.md).
 
 |Featurization &nbsp; lépések| Leírás |
 | ------------- | ------------- |

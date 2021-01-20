@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.openlocfilehash: e87c9efc910d08307d40d42e58f8272a01902a41
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: b351be1e7212dc9923f701599dd951a73254afe0
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552842"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610369"
 ---
 # <a name="role-based-access-control-in-azure-purviews-data-plane"></a>Szerepköralapú hozzáférés-vezérlés az Azure-beli hatáskörébe adatsíkon
 
@@ -23,7 +23,7 @@ Ez a cikk azt ismerteti, hogyan valósul meg a Role-Based Access Control (RBAC) 
 
 ## <a name="azure-purviews-pre-defined-data-plane-roles"></a>Az Azure hatáskörébe tartozó előre definiált adatsíkok szerepkörei
 
-Az Azure hatáskörébe olyan előre definiált adatsíkok-szerepköröket határozhat meg, amelyek segítségével szabályozhatja, hogy ki férhet hozzá az Azure hatáskörébe. Ezek a szerepkörök a következők:
+Az Azure hatáskörébe olyan előre definiált adatsíkok-szerepköröket határozhat meg, amelyek segítségével szabályozhatja, hogy ki férhet hozzá az Azure hatáskörébe. Ezek a szerepkörök az alábbiak:
 
 * A **hatáskörébe tartozó Adatolvasói szerepkör** – hozzáfér a hatáskörébe-portálhoz, és az összes tartalmat beolvashatja az Azure hatáskörébe, kivéve a vizsgálati kötéseket
 * A **hatáskörébe tartozó Adatkurátori szerepkör** – hozzáféréssel rendelkezik a hatáskörébe-portálhoz, és az összes tartalmat beolvashatja az Azure hatáskörébe, kivéve a vizsgálat kötéseit, szerkesztheti az eszközökre vonatkozó információkat, szerkesztheti a besorolási definíciókat és a szószedetet, és a besorolásokat és a szószedetet is alkalmazhatja az eszközökre.
@@ -31,9 +31,9 @@ Az Azure hatáskörébe olyan előre definiált adatsíkok-szerepköröket hatá
 
 ## <a name="understanding-how-to-use-azure-purviews-data-plane-roles"></a>Az Azure hatáskörébe tartozó adatsík-szerepkörök használatának ismertetése
 
-Egy Azure-beli hatáskörébe tartozó fiók létrehozásakor a rendszer úgy kezeli a létrehozót, mintha a hatáskörébe tartozó adatkezelőben és a hatáskörébe tartozó adatforrások rendszergazdai szerepköreiben vannak. A fiók létrehozója azonban nincs hozzárendelve ezekhez a szerepkörökhöz a szerepkör-tárolóban. Az Azure hatáskörébe tartozik, hogy a rendszerbiztonsági tag a fiók létrehozója, és az identitásuk alapján kiterjeszti ezeket a képességeket.
+Egy Azure-beli hatáskörébe tartozó fiók létrehozásakor a rendszer úgy kezeli a létrehozót, mintha a hatáskörébe tartozó adatkezelőben és a hatáskörébe tartozó adatforrások rendszergazdai szerepköreiben vannak. A rendszer azonban nem rendeli hozzá a fióklétrehozót ezekkel a szerepkörökkel a szerepkörtárolóhoz. Az Azure Purview felismeri, hogy a rendszerbiztonsági tag a fiók létrehozója, és az identitása alapján kiterjeszti rá ezeket a képességeket.
 
-Az összes többi felhasználó csak akkor használhatja az Azure-beli hatáskörébe tartozó fiókot, ha azok legalább egy ilyen szerepkörbe kerülnek. Ez azt jelenti, hogy amikor létrejön egy Azure-beli hatáskörébe tartozó fiók, egyetlen, de a létrehozó hozzáférhet a fiókhoz, vagy használhatja az API-kat, amíg azok egy vagy több előző meghatározott szerepkörbe bekerülnek.
+Az összes többi felhasználó csak akkor használhatja az Azure Purview-fiókot, ha legalább e szerepkörök egyikét hozzájuk rendelik. Ez azt jelenti, hogy amikor létrejön egy Azure-beli hatáskörébe tartozó fiók, egyetlen, de a létrehozó hozzáférhet a fiókhoz, vagy használhatja az API-kat, amíg azok egy vagy több előző meghatározott szerepkörbe bekerülnek.
 
 Vegye figyelembe, hogy a hatáskörébe tartozó adatforrás-rendszergazdai szerepkör két támogatott forgatókönyvet tartalmaz. Az első forgatókönyv olyan felhasználók számára készült, akik már a hatáskörébe tartozó adatolvasók vagy a hatáskörébe tartozó adatkezelők számára is lehetővé kell tenni a vizsgálatok létrehozását. Ezeknek a felhasználóknak két szerepkörrel kell rendelkezniük, amelyek közül legalább az egyik a hatáskörébe tartozó Adatolvasó vagy a hatáskörébe tartozó adatkezelő, valamint a hatáskörébe tartozó adatforrás-rendszergazdai szerepkörbe kerül.
 
@@ -77,8 +77,8 @@ Azok a felhasználók, akik hozzáférnek a vállalata [Azure Portalhoz](https:/
 |Engedélyezni kell egy egyszerű szolgáltatásnevet vagy más programozási identitást az Azure-beli vizsgálatok beállításához és figyeléséhez anélkül, hogy a programozott identitás hozzáférhessen a katalógus adataihoz |A hatáskörébe tartozó adatforrás rendszergazdai szerepköre|
 |Szerepkörökbe kell helyezni a felhasználókat az Azure hatáskörébe | Tulajdonos vagy felhasználói hozzáférés rendszergazdája |
 
-A következő cikkből megtudhatja, hogyan adhat hozzá egy rendszerbiztonsági tag szerepkörhöz.
+A rendszerbiztonsági tag szerepkörhöz való hozzáadásával kapcsolatos további információkért tekintse meg a rövid útmutató [: Azure hatáskörébe tartozó fiók létrehozása](create-catalog-portal.md) című témakört.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Rövid útmutató: Azure-beli hatáskörébe tartozó fiók létrehozása](create-catalog-portal.md)
+* [Adatokkal kapcsolatos megállapítások](concept-insights.md)

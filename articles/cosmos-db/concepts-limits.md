@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/19/2021
-ms.openlocfilehash: 9ace9a319f4cc6bcc1545d6d1becce61b1892765
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 007bf845bab6f493fae91debefde27a4929d9f95
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598670"
+ms.locfileid: "98611032"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB szolgáltatási kvóták
 
@@ -236,7 +236,8 @@ A következő táblázat felsorolja a MongoDB funkcióinak támogatására vonat
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
 | Maximális MongoDB-lekérdezési memória mérete (ez a korlátozás csak a 3,2-es verziójú kiszolgáló esetében érvényes) | 40 MB |
-| MongoDB műveletek maximális végrehajtási ideje| 30-as |
+|MongoDB műveletek maximális végrehajtási ideje (3,2-es kiszolgáló verziója esetén)| 15 másodperc|
+|MongoDB műveletek maximális végrehajtási ideje (3,6-es kiszolgáló verziója esetén)| 60 másodperc|
 | Tétlen kapcsolat időtúllépése a kiszolgálóoldali kapcsolat bezárásakor * | 30 perc |
 
 \* Azt javasoljuk, hogy az ügyfélalkalmazások a tétlen kapcsolat időkorlátját 2-3 percre állítsa be, mert az [Azure terheléselosztó alapértelmezett időtúllépése 4 perc](../load-balancer/load-balancer-tcp-idle-timeout.md).  Ez az időkorlát biztosítja, hogy az üresjárati kapcsolatok ne legyenek lezárva egy köztes terheléselosztó között az ügyfélszámítógép és a Azure Cosmos DB között.
@@ -274,7 +275,7 @@ A fentiek mellett a [fiókra vonatkozó korlátok](#per-account-limits) az ingye
 > [!NOTE]
 > A Azure Cosmos DB ingyenes szintje eltér az ingyenes Azure-fióktól. Az ingyenes Azure-fiók korlátozott ideig ingyenesen kínál Azure-krediteket és-erőforrásokat. Ha az ingyenes fiók részeként Azure Cosmos DB használ, a kiosztott átviteli sebesség 12 hónapig 25 GB tárhelyet és 400 RU/s-t kap.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Cosmos DB alapvető fogalmak [globális eloszlásáról](distribute-data-globally.md) , [particionálásáról](partitioning-overview.md) és kiosztott [átviteli sebességéről](request-units.md).
 

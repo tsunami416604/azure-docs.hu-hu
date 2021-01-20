@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: 4052a9c8614a17c3b5cdd871ad78be8cc3258c5a
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 3bacec27f5253741b340688374d64402fdbc2836
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202589"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610386"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>A PostgreSQL telepítése és konfigurálása az Azure-ban
 A PostgreSQL egy fejlett, nyílt forráskódú adatbázis, amely az Oracle és a DB2 számára is hasonló. Olyan nagyvállalati használatra kész funkciókat tartalmaz, mint például a teljes sav megfelelősége, a megbízható tranzakciós feldolgozás és a többverziós Egyidejűség-vezérlés. Emellett olyan szabványokat is támogat, mint például az ANSI SQL és az SQL/MED (beleértve az Oracle, a MySQL, a MongoDB és számos más adatburkolót is). A szolgáltatás nagyszámú, több mint 12 eljárási nyelv, a GIN és a lényegi indexek, a térbeli adattámogatás, valamint a JSON-vagy kulcs-érték alapú alkalmazások több NoSQL funkciójának támogatásával bővíthető.
@@ -35,7 +35,7 @@ Kapcsolódjon a PuTTY használatával létrehozott linuxos virtuális géphez. H
 1. Futtassa a következő parancsot a gyökérre való váltáshoz (rendszergazda):
 
     ```console
-    # sudo su -
+    sudo su -
     ```
 
 2. Egyes eloszlások olyan függőségekkel rendelkeznek, amelyeket telepítenie kell a PostgreSQL telepítése előtt. Keresse meg a disztribúciót a listában, és futtassa a megfelelő parancsot:
@@ -43,27 +43,27 @@ Kapcsolódjon a PuTTY használatával létrehozott linuxos virtuális géphez. H
    * Red Hat Base Linux:
 
         ```console
-        # yum install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y
+        yum install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y
         ```
 
    * Debian Base Linux:
 
         ```console
-        # apt-get install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam libxslt-devel tcl-devel python-devel -y
+        apt-get install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam libxslt-devel tcl-devel python-devel -y
         ```
 
    * SUSE Linux:
 
         ```console
-        # zypper install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y
+        zypper install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y
         ```
 
 3. Töltse le a PostgreSQL-t a gyökérkönyvtárba, majd bontsa ki a csomagot:
 
     ```console
-    # wget https://ftp.postgresql.org/pub/source/v9.3.5/postgresql-9.3.5.tar.bz2 -P /root/
+    wget https://ftp.postgresql.org/pub/source/v9.3.5/postgresql-9.3.5.tar.bz2 -P /root/
 
-    # tar jxvf  postgresql-9.3.5.tar.bz2
+    tar jxvf  postgresql-9.3.5.tar.bz2
     ```
 
     A fenti példa. A részletesebb letöltési címeket a [/pub/Source/indexében](https://ftp.postgresql.org/pub/source/)találja.
@@ -71,15 +71,15 @@ Kapcsolódjon a PuTTY használatával létrehozott linuxos virtuális géphez. H
 4. A Build elindításához futtassa a következő parancsokat:
 
     ```console
-    # cd postgresql-9.3.5
+    cd postgresql-9.3.5
 
-    # ./configure --prefix=/opt/postgresql-9.3.5
+    ./configure --prefix=/opt/postgresql-9.3.5
     ```
 
 5. Ha mindent létre szeretne készíteni, beleértve a dokumentációt (HTML-és Man-lapokat) és további modulokat is ( `contrib` ), futtassa a következő parancsot:
 
     ```console
-    # gmake install-world
+    gmake install-world
     ```
 
     A következő megerősítő üzenetet kell kapnia:
@@ -92,23 +92,23 @@ Kapcsolódjon a PuTTY használatával létrehozott linuxos virtuális géphez. H
 1. Választható Hozzon létre egy szimbolikus hivatkozást, amely lerövidíti a PostgreSQL-hivatkozást, hogy ne tartalmazza a verziószámot:
 
     ```console
-    # ln -s /opt/postgresql-9.3.5 /opt/pgsql
+    ln -s /opt/postgresql-9.3.5 /opt/pgsql
     ```
 
 2. Hozzon létre egy könyvtárat az adatbázishoz:
 
     ```console
-    # mkdir -p /opt/pgsql_data
+    mkdir -p /opt/pgsql_data
     ```
 
 3. Hozzon létre egy nem gyökérszintű felhasználót, és módosítsa a felhasználó profilját. Ezután váltson erre az új felhasználóra (a példában a *postgres* néven látható):
 
     ```console
-    # useradd postgres
+    useradd postgres
    
-    # chown -R postgres.postgres /opt/pgsql_data
+    chown -R postgres.postgres /opt/pgsql_data
    
-    # su - postgres
+    su - postgres
     ```
    
    > [!NOTE]
@@ -135,13 +135,13 @@ Kapcsolódjon a PuTTY használatával létrehozott linuxos virtuális géphez. H
 5. A *bash_profile* fájl végrehajtása:
 
     ```console
-    $ source .bash_profile
+    source .bash_profile
     ```
 
 6. Ellenőrizze a telepítést a következő paranccsal:
 
     ```console
-    $ which psql
+    which psql
     ```
 
     Ha a telepítés sikeres, a következő választ fogja látni:
@@ -153,13 +153,13 @@ Kapcsolódjon a PuTTY használatával létrehozott linuxos virtuális géphez. H
 7. A PostgreSQL-verziót is megtekintheti:
 
     ```sql
-    $ psql -V
+    psql -V
     ```
 
 8. Az adatbázis inicializálása:
 
     ```console
-    $ initdb -D $PGDATA -E UTF8 --locale=C -U postgres -W
+    initdb -D $PGDATA -E UTF8 --locale=C -U postgres -W
     ```
 
     A következő kimenetnek kell megjelennie:
@@ -172,17 +172,17 @@ Kapcsolódjon a PuTTY használatával létrehozott linuxos virtuális géphez. H
 Futtassa az alábbi parancsot:
 
 ```console
-# cd /root/postgresql-9.3.5/contrib/start-scripts
+cd /root/postgresql-9.3.5/contrib/start-scripts
 
-# cp linux /etc/init.d/postgresql
+cp linux /etc/init.d/postgresql
 ```
 
 Módosítsa két változót a/etc/init.d/PostgreSQL fájlban. Az előtag a PostgreSQL: **/opt/pgsql** telepítési útvonalára van beállítva. A PGDATA a PostgreSQL: **/opt/pgsql_data** adattároló elérési útjára van beállítva.
 
 ```config
-# sed -i '32s#usr/local#opt#' /etc/init.d/postgresql
+sed -i '32s#usr/local#opt#' /etc/init.d/postgresql
 
-# sed -i '35s#usr/local/pgsql/data#opt/pgsql_data#' /etc/init.d/postgresql
+sed -i '35s#usr/local/pgsql/data#opt/pgsql_data#' /etc/init.d/postgresql
 ```
 
 ![A telepítési előtagot és az adatkönyvtárat bemutató képernyőkép.](./media/postgresql-install/no2.png)
@@ -190,19 +190,19 @@ Módosítsa két változót a/etc/init.d/PostgreSQL fájlban. Az előtag a Postg
 Módosítsa a fájlt úgy, hogy végrehajtható legyen:
 
 ```console
-# chmod +x /etc/init.d/postgresql
+chmod +x /etc/init.d/postgresql
 ```
 
 A PostgreSQL elindítása:
 
 ```console
-# /etc/init.d/postgresql start
+/etc/init.d/postgresql start
 ```
 
 Ellenőrizze, hogy a PostgreSQL végpontja be van-e kapcsolva:
 
 ```console
-# netstat -tunlp|grep 1999
+netstat -tunlp|grep 1999
 ```
 
 A következő kimenetnek kell megjelennie:
@@ -213,19 +213,19 @@ A következő kimenetnek kell megjelennie:
 Váltson újra a postgres-felhasználóra:
 
 ```console
-# su - postgres
+su - postgres
 ```
 
 Hozzon létre egy postgres-adatbázist:
 
 ```console
-$ createdb events
+createdb events
 ```
 
 Kapcsolódjon az imént létrehozott Events adatbázishoz:
 
 ```console
-$ psql -d events
+psql -d events
 ```
 
 ## <a name="create-and-delete-a-postgres-table"></a>Postgres-tábla létrehozása és törlése

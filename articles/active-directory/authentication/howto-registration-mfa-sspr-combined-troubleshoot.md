@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 04/15/2020
+ms.date: 01/19/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ba1e280e3c14a24e33246799ca0d7ef8221294f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: db87887fc2b51c7cb8cb300eb8e711d3ae9b6ac8
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741694"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610784"
 ---
 # <a name="troubleshooting-combined-security-information-registration"></a>A kombinált biztonsági információk regisztrációjának hibaelhárítása
 
@@ -24,7 +24,7 @@ A cikkben található információk arra szolgálnak, hogy miként lehet a felha
 
 ## <a name="audit-logs"></a>Naplók
 
-A kombinált regisztrációhoz naplózott események az Azure AD-naplók hitelesítési módszerek kategóriájában találhatók.
+A kombinált regisztrációhoz naplózott események az Azure AD-naplók hitelesítési módszerek szolgáltatásában találhatók.
 
 ![Az Azure AD naplóinak kezelőfelülete, amely a regisztrációs eseményeket mutatja](media/howto-registration-mfa-sspr-combined-troubleshoot/combined-security-info-audit-log.png)
 
@@ -32,14 +32,14 @@ A következő táblázat felsorolja a kombinált regisztráció által generált
 
 | Tevékenység | Állapot | Ok | Leírás |
 | --- | --- | --- | --- |
-| A felhasználó az összes szükséges biztonsági adatot regisztrálta | Success | A felhasználó regisztrálta az összes szükséges biztonsági adatot. | Ez az esemény akkor következik be, amikor egy felhasználó sikeresen befejezte a regisztrációt.|
+| A felhasználó az összes szükséges biztonsági adatot regisztrálta | Siker | A felhasználó regisztrálta az összes szükséges biztonsági adatot. | Ez az esemény akkor következik be, amikor egy felhasználó sikeresen befejezte a regisztrációt.|
 | A felhasználó az összes szükséges biztonsági adatot regisztrálta | Hiba | A felhasználó megszakította a biztonsági adatok regisztrálását. | Ez az esemény akkor következik be, amikor egy felhasználó megszakítja a regisztrációt a megszakítási módból.|
-| Felhasználó által regisztrált biztonsági adatok | Success | Felhasználó által regisztrált *metódus*. | Ez az esemény akkor következik be, amikor egy felhasználó egy egyéni metódust regisztrál. A *metódus* lehet hitelesítő alkalmazás, telefon, E-mail, biztonsági kérdés, alkalmazás jelszava, alternatív telefon stb.| 
-| A felhasználó által felülvizsgált biztonsági információ | Success | A felhasználó sikeresen áttekintette a biztonsági adatokat. | Ez az esemény akkor következik be, amikor a felhasználó a biztonsági adatok áttekintése oldalon kiválasztja a **megfelelőt** .|
+| Felhasználó által regisztrált biztonsági adatok | Siker | Felhasználó által regisztrált *metódus*. | Ez az esemény akkor következik be, amikor egy felhasználó egy egyéni metódust regisztrál. A *metódus* lehet hitelesítő alkalmazás, telefon, E-mail, biztonsági kérdés, alkalmazás jelszava, alternatív telefon stb.| 
+| A felhasználó által felülvizsgált biztonsági információ | Siker | A felhasználó sikeresen áttekintette a biztonsági adatokat. | Ez az esemény akkor következik be, amikor a felhasználó a biztonsági adatok áttekintése oldalon kiválasztja a **megfelelőt** .|
 | A felhasználó által felülvizsgált biztonsági információ | Hiba | A felhasználó nem tudta áttekinteni a biztonsági adatokat. | Ez az esemény akkor következik be, amikor a felhasználó a biztonsági adatok áttekintése lapon kiválasztja a **megfelelőt** , de a háttér nem működik.|
-| A felhasználó törölte a biztonsági adatokat | Success | Felhasználó által törölt *metódus*. | Ez az esemény akkor következik be, amikor egy felhasználó töröl egy egyéni metódust. A *metódus* lehet hitelesítő alkalmazás, telefon, E-mail, biztonsági kérdés, alkalmazás jelszava, alternatív telefon stb.|
+| A felhasználó törölte a biztonsági adatokat | Siker | Felhasználó által törölt *metódus*. | Ez az esemény akkor következik be, amikor egy felhasználó töröl egy egyéni metódust. A *metódus* lehet hitelesítő alkalmazás, telefon, E-mail, biztonsági kérdés, alkalmazás jelszava, alternatív telefon stb.|
 | A felhasználó törölte a biztonsági adatokat | Hiba | A felhasználó nem tudta törölni a *metódust*. | Ez az esemény akkor következik be, amikor egy felhasználó megpróbál törölni egy metódust, de a kísérlet valamilyen okból meghiúsul. A *metódus* lehet hitelesítő alkalmazás, telefon, E-mail, biztonsági kérdés, alkalmazás jelszava, alternatív telefon stb.|
-| A felhasználó módosította az alapértelmezett biztonsági adatokat | Success | A felhasználó megváltoztatta a *metódus* alapértelmezett biztonsági adatait. | Ez az esemény akkor következik be, amikor a felhasználó megváltoztatja az alapértelmezett metódust. A *metódus* lehet a hitelesítő alkalmazás értesítése, a saját hitelesítő alkalmazásból vagy tokenből származó kód, a Call + X xxxxxxxxxx, a szöveg a kód + x XXXXXXXXX, és így tovább.|
+| A felhasználó módosította az alapértelmezett biztonsági adatokat | Siker | A felhasználó megváltoztatta a *metódus* alapértelmezett biztonsági adatait. | Ez az esemény akkor következik be, amikor a felhasználó megváltoztatja az alapértelmezett metódust. A *metódus* lehet a hitelesítő alkalmazás értesítése, a saját hitelesítő alkalmazásból vagy tokenből származó kód, a Call + X xxxxxxxxxx, a szöveg a kód + x XXXXXXXXX, és így tovább.|
 | A felhasználó módosította az alapértelmezett biztonsági adatokat | Hiba | A felhasználó nem tudta módosítani az alapértelmezett biztonsági adatokat a *metódushoz*. | Ez az esemény akkor következik be, amikor egy felhasználó megpróbálja módosítani az alapértelmezett metódust, de a kísérlet valamilyen okból meghiúsul. A *metódus* lehet a hitelesítő alkalmazás értesítése, a saját hitelesítő alkalmazásból vagy tokenből származó kód, a Call + X xxxxxxxxxx, a szöveg a kód + x XXXXXXXXX, és így tovább.|
 
 ## <a name="troubleshooting-interrupt-mode"></a>Megszakítási mód hibaelhárítása
@@ -155,6 +155,6 @@ A frissített felhasználói élmény letiltásához hajtsa végre az alábbi l�
 
 A rendszer a továbbiakban nem fogja tudni regisztrálni a felhasználókat a frissített felhasználói élmény használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További információ az önkiszolgáló jelszó-visszaállítás és az Azure AD-Multi-Factor Authentication együttes regisztrálásáról](concept-registration-mfa-sspr-combined.md)

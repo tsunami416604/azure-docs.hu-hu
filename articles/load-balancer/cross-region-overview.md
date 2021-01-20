@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 8a2ad6cea4ab97742261b1cfd84975b243a46e87
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 4a9663e1356f616ed5f428c993f3367ce67cdbb5
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938715"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610912"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Régiók közötti Load Balancer (előzetes verzió)
 
@@ -35,7 +35,7 @@ Az Azure standard Load Balancer támogatja a régiók közötti terheléseloszt�
 * [Meglévő terheléselosztó megoldás létrehozása](#build-cross-region-solution-on-existing-azure-load-balancer) tanulási görbe nélkül
 
 > [!IMPORTANT]
-> A régiók közötti terheléselosztó jelenleg előzetes verzióban érhető el, és a betekintő portálon rejtett. **https://preview.portal.azure.com** A szolgáltatás megtekintéséhez és telepítéséhez jelentkezzen be. </br> </br>
+> A régiók közötti terheléselosztó jelenleg előzetes verzióban érhető el, és a portálon helyezhető üzembe. **https://portal.azure.com** A szolgáltatás megtekintéséhez és telepítéséhez jelentkezzen be. </br> </br>
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A régiók közötti terheléselosztás a regionális standard Load Balancer esetében is ugyanazokat az előnyöket kínálja, mint a nagy teljesítmény és a kis késleltetés. 
@@ -101,7 +101,7 @@ A **hazai régió** , ahol a régiók közötti terheléselosztó üzembe van he
 * USA nyugati régiója
 * Nyugat-Európa
 * Délkelet-Ázsia
-* USA középső régiója
+* Az USA középső régiója
 * Észak-Európa
 * Kelet-Ázsia
 

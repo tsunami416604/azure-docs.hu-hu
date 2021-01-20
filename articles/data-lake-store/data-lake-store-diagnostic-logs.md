@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 434917c1cee26a4a8eeb7f27808e3fcb487f3f55
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: aac0139e09866ce44d25989119b2eafb31e76961
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350041"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610454"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Diagnosztikai naplók elérése Azure Data Lake Storage Gen1hoz
 Megtudhatja, hogyan engedélyezheti a diagnosztikai naplózást a Azure Data Lake Storage Gen1-fiókjához, és hogyan tekintheti meg a fiókjához gyűjtött naplókat.
@@ -136,8 +136,10 @@ A naplózási és a kérési naplók JSON formátumúak. Ebben a szakaszban a JS
 | Ügyfélkérelem |Sztring |A kérelmet egyedileg azonosító azonosító |
 | StartTime |Sztring |Az az idő, amikor a kiszolgáló megkapta a kérést |
 | EndTime |Sztring |Az az idő, amikor a kiszolgáló választ küldött |
+| StoreIngressSize |Hosszú |Ingressed bájtban kifejezett méret Data Lake Store |
+| StoreEgressSize |Hosszú |Data Lake Store egressed bájtban kifejezett mérete |
 
-### <a name="audit-logs"></a>Auditnaplók
+### <a name="audit-logs"></a>Naplók
 Íme egy minta bejegyzés a JSON-formátumú naplóban. Mindegyik blob egyetlen **, a log** objektumokat tartalmazó tömböt tartalmazó root objektummal rendelkezik
 
 ```json

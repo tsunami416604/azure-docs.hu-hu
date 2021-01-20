@@ -8,12 +8,12 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 32aa94c986c90b7bd46b9f5561021c34c0f142af
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 29f7f241f119ca7fab50409881b517961b00cf20
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492092"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610471"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 
@@ -50,6 +50,9 @@ A szinkronizálási csoportok a **Storage Sync Services szolgáltatásba** vanna
 Ahhoz, hogy szinkronizált csoportot hozzon létre egy Storage Sync szolgáltatásban, először regisztrálnia kell egy Windows-kiszolgálót a Storage Sync szolgáltatással. Ez létrehoz egy **regisztrált kiszolgáló** objektumot, amely megbízhatósági kapcsolatot képvisel a kiszolgáló vagy a fürt és a Storage Sync szolgáltatás között. A Storage Sync szolgáltatás regisztrálásához először telepítenie kell a Azure File Sync ügynököt a kiszolgálóra. Egy adott kiszolgáló vagy fürt egyszerre csak egy Storage Sync szolgáltatással regisztrálható.
 
 A szinkronizálási csoport egy Felhőbeli végpontot, vagy egy Azure-fájlmegosztást, valamint legalább egy kiszolgálói végpontot tartalmaz. A kiszolgálói végpont objektum azokat a beállításokat tartalmazza, amelyek az Azure File Sync gyorsítótárazási funkcióját biztosítják a **felhő** -előállítók számára. Az Azure-fájlmegosztás használatával történő szinkronizáláshoz az Azure-fájlmegosztást tartalmazó Storage-fióknak ugyanabban az Azure-régióban kell lennie, mint a Storage Sync szolgáltatásnak.
+
+> [!Important]  
+> A szinkronizálási csoportban bármilyen Felhőbeli végpontot vagy kiszolgálói végpontot módosíthat, és a fájlok szinkronizálva vannak a szinkronizálási csoport többi végpontján. Ha közvetlenül módosítja a Felhőbeli végpontot (Azure-fájlmegosztás), a módosításokat először egy Azure File Sync változás-észlelési feladatokkal kell felderíteni. A változás-észlelési feladatok csak 24 óránként egyszer indíthatók el egy Felhőbeli végponton. További információ: [Azure Files gyakori kérdések](storage-files-faq.md#afs-change-detection).
 
 ### <a name="management-guidance"></a>Kezelési útmutató
 Azure File Sync telepítésekor a következőket javasoljuk:
@@ -147,7 +150,7 @@ Csak NTFS-kötetek támogatottak; A ReFS, a FAT, a FAT32 és más fájlrendszere
 
 Az alábbi táblázat az NTFS fájlrendszer szolgáltatásainak együttműködési állapotát mutatja be: 
 
-| Jellemző | Támogatás állapota | Jegyzetek |
+| Funkció | Támogatás állapota | Jegyzetek |
 |---------|----------------|-------|
 | Hozzáférés-vezérlési lista (ACL-ek) | Teljes mértékben támogatott | A Windows-stílusú tulajdonosi hozzáférés-vezérlési listát a Azure File Sync őrzi meg, és a Windows Server a kiszolgálói végpontokon kényszeríti ki. Az ACL-ek az Azure-fájlmegosztás közvetlen csatlakoztatása esetén is kikényszeríthető, azonban ez további konfigurálást igényel. További információért tekintse meg az [Identity szakaszt](#identity) . |
 | Rögzített hivatkozások | Kimarad | |
@@ -245,7 +248,7 @@ Bár a közvetlenül az Azure-fájlmegosztást érintő módosítások hosszabb 
 > [!Important]  
 > A Storage-fiók Active Directoryhoz való csatlakoztatása nem szükséges a Azure File Sync sikeres telepítéséhez. Ez egy szigorúan opcionális lépés, amely lehetővé teszi az Azure-fájlmegosztás számára a helyszíni ACL-ek kényszerítését, amikor a felhasználók közvetlenül csatlakoztatják az Azure-fájlmegosztást.
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 A Azure File Sync ügynök kommunikál a Storage Sync szolgáltatással és az Azure-fájlmegosztás használatával a Azure File Sync REST protokoll és a legtitkosítási protokoll segítségével, amely mindkét esetben HTTPS protokollt használ a 443-as porton keresztül. Az SMB soha nem használja fel az adatok feltöltését és letöltését a Windows Server és az Azure-fájlmegosztás között. Mivel a legtöbb szervezet engedélyezi a HTTPS-forgalmat az 443-as porton keresztül, a legtöbb webhely felkeresésének követelménye, a speciális hálózati konfiguráció általában nem szükséges a Azure File Sync telepítéséhez.
 
 A szervezet házirendje vagy az egyedi szabályozási követelmények alapján több korlátozó kommunikációra lehet szükség az Azure-ban, így a Azure File Sync számos mechanizmust biztosít a hálózatkezelés konfigurálásához. A követelmények alapján a következőket teheti:
@@ -326,7 +329,7 @@ Azure File Sync a következő régiókban érhető el:
 | Nyilvános | EAE | Észak-Egyesült Arab | `uaenorth` |
 | Nyilvános | Egyesült Királyság | Az Egyesült Királyság déli régiója | `uksouth` |
 | Nyilvános | Egyesült Királyság | Az Egyesült Királyság nyugati régiója | `ukwest` |
-| Nyilvános | USA | USA középső régiója | `centralus` |
+| Nyilvános | USA | Az USA középső régiója | `centralus` |
 | Nyilvános | USA | USA keleti régiója | `eastus` |
 | Nyilvános | USA | USA 2. keleti régiója | `eastus2` |
 | Nyilvános | USA | USA északi középső régiója | `northcentralus` |
@@ -381,7 +384,7 @@ Ha helyszíni biztonsági mentési megoldást szeretne használni, akkor a bizto
 ## <a name="azure-file-sync-agent-update-policy"></a>Az Azure File Sync ügynökének frissítési szabályzata
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A tűzfal és a proxy beállításainak megfontolása](storage-sync-files-firewall-and-proxy.md)
 * [Azure Files üzembe helyezésének tervezése](storage-files-planning.md)
 * [Az Azure Files üzembe helyezése](storage-files-deployment-guide.md)

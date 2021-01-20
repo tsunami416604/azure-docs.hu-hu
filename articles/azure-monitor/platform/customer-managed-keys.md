@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 889ee48c43119086047d6f52737266f4c611fc8d
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 6061980ec556fccde3de882a291bc390b88c5a24
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562743"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611083"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor – ügyfél által kezelt kulcs 
 
@@ -386,15 +386,11 @@ A Customer-Managed kulcs dedikált fürtön van megadva, és ezek a műveletek [
 
 ## <a name="limitations-and-constraints"></a>Korlátozások és megkötések
 
-- Az ügyfél által felügyelt kulcs támogatott a dedikált Log Analytics-fürtön, és alkalmas az olyan ügyfelek számára, akik napi 1 TB-ot küldenek.
-
 - A fürt maximális száma régiónként és az előfizetés 2
 
-- A fürthöz csatolt munkaterületek maximális száma 1000
+- A fürthöz társítható munkaterületek maximális száma 1000
 
 - A munkaterületet összekapcsolhatja a fürttel, majd leválaszthatja azt. Az adott munkaterületen a munkaterület-csatolási műveletek száma legfeljebb 2 lehet, 30 napon belül.
-
-- A fürtre mutató hivatkozás csak akkor hajtható végre, ha meggyőződött arról, hogy a Log Analytics-fürt üzembe helyezése befejeződött. A rendszer eldobta a munkaterületre a befejezés előtt elküldett adatait, és nem lesz helyreállítható.
 
 - Az ügyfél által felügyelt kulcs titkosítása a konfigurációs idő után az újonnan betöltött adatmennyiségre vonatkozik. A konfiguráció előtt betöltött adatmennyiség továbbra is titkosítva marad a Microsoft-kulccsal. Az ügyfél által felügyelt kulcsok zökkenőmentes konfigurálása előtt és után lekérdezheti az adatmennyiséget.
 
@@ -404,14 +400,12 @@ A Customer-Managed kulcs dedikált fürtön van megadva, és ezek a műveletek [
 
 - A fürt más erőforráscsoporthoz vagy előfizetéshez való áthelyezése jelenleg nem támogatott.
 
-- A Azure Key Vault, a fürtnek és a csatolt munkaterületnek ugyanabban a régióban és ugyanabban a Azure Active Directory (Azure AD) bérlőben kell lennie, de különböző előfizetésekben lehet.
-
-- A fürtre mutató hivatkozás sikertelen lesz, ha egy másik fürthöz van csatolva.
+- A Azure Key Vault, a fürtnek és a munkaterületnek ugyanabban a régióban és ugyanabban a Azure Active Directory (Azure AD) bérlőben kell lennie, de különböző előfizetésekben lehet.
 
 - A kulcstároló jelenleg nem érhető el Kínában. 
 
-- A [kettős titkosítás](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) automatikusan konfigurálva van a támogatott régiókban a 2020 október 1-jétől létrehozott fürtökhöz. Ellenőrizheti, hogy a fürt a GET kérelem alapján kettős titkosításra van-e konfigurálva, és megfigyelheti a `"isDoubleEncryptionEnabled"` tulajdonság értékét – ez `true` a kettős titkosítással rendelkező fürtök esetében engedélyezett. 
-  - Ha létrehoz egy fürtöt, és "<region-Name> nem támogatja a fürtök kettős titkosítását", akkor továbbra is létrehozhatja a fürtöt dupla titkosítás nélkül. `"properties": {"isDoubleEncryptionEnabled": false}`Tulajdonság hozzáadása a REST-kérelem törzsében.
+- A [kettős titkosítás](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) automatikusan konfigurálva van a támogatott régiókban a 2020 október 1-jétől létrehozott fürtökhöz. Megtekintheti, hogy a fürt kettős titkosításra van-e konfigurálva egy GET kérelem küldésével a fürtön, és annak megfigyelése, hogy az érték olyan fürtök esetében van-e, amelyeken engedélyezve van a `isDoubleEncryptionEnabled` `true` dupla titkosítás. 
+  - Ha létrehoz egy fürtöt, és "<régió neve> nem támogatja a fürtök kettős titkosítását", akkor továbbra is létrehozhatja a fürtöt dupla titkosítás nélkül, `"properties": {"isDoubleEncryptionEnabled": false}` a REST-kérelem törzsének hozzáadásával.
   - A fürt létrehozása után a kettős titkosítási beállítás nem módosítható.
 
   - Ha a fürt felhasználó által hozzárendelt felügyelt identitással van beállítva, akkor a beállítás `UserAssignedIdentities` `None` felfüggeszti a fürtöt, és meggátolja az adatokhoz való hozzáférést, de nem tudja visszaállítani a visszavonást, és nem aktiválja a fürtöt a támogatási kérelem megnyitása nélkül. Ez a korlátozás nem vonatkozik a rendszerhez rendelt felügyelt identitásra.
@@ -429,13 +423,15 @@ A Customer-Managed kulcs dedikált fürtön van megadva, és ezek a műveletek [
 
   - Key Vault hozzáférési arány – a Azure Monitor Storage Key Vault a becsomagolási és a kicsomagolási műveletekhez való hozzáférésének gyakorisága 6 – 60 másodperc.
 
-- Ha létrehoz egy fürtöt, és azonnal megadja a KeyVaultProperties, a művelet sikertelen lehet, mivel a hozzáférési házirend nem definiálható, amíg a rendszer identitása hozzá nem rendeli a fürthöz.
-
-- Ha a meglévő fürtöt frissíti a KeyVaultProperties, és a "Get" kulcs-hozzáférési szabályzat hiányzik a Key Vault, a művelet sikertelen lesz.
+- Ha frissíti a fürtöt, amíg a fürt üzembe helyezése vagy frissítése folyamatban van, a frissítés sikertelen lesz.
 
 - Ha a fürt létrehozásakor ütközési hiba lép fel, akkor előfordulhat, hogy az elmúlt 14 napban törölte a fürtöt, és ez egy nem kötelező törlési időszak. A fürt neve a Soft-delete időszakban marad fenntartva, és nem hozhat létre ilyen nevű új fürtöt. A név akkor jelenik meg, ha a rendszer véglegesen törli a fürtöt.
 
-- Ha egy művelet végrehajtása közben frissíti a fürtöt, a művelet sikertelen lesz.
+- A fürtre mutató hivatkozás sikertelen lesz, ha egy másik fürthöz van csatolva.
+
+- Ha létrehoz egy fürtöt, és azonnal megadja a KeyVaultProperties, a művelet sikertelen lehet, mivel a hozzáférési házirend nem definiálható, amíg a rendszer identitása hozzá nem rendeli a fürthöz.
+
+- Ha a meglévő fürtöt frissíti a KeyVaultProperties, és a "Get" kulcs-hozzáférési szabályzat hiányzik a Key Vault, a művelet sikertelen lesz.
 
 - Ha nem sikerül telepíteni a fürtöt, ellenőrizze, hogy a Azure Key Vault, a fürt és a csatolt Log Analytics-munkaterületek ugyanabban a régióban találhatók-e. A lehet különböző előfizetésekben.
 
@@ -482,7 +478,7 @@ A Customer-Managed kulcs dedikált fürtön van megadva, és ezek a műveletek [
   **Munkaterület leválasztása**
   -  404 – a munkaterület nem található. A megadott munkaterület nem létezik vagy törölték.
   -  409 – a munkaterület hivatkozása vagy a művelet leválasztása folyamatban.
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [log Analytics dedikált fürt számlázásáról](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)
 - A [log Analytics-munkaterületek megfelelő kialakításának](../platform/design-logs-deployment.md) megismerése

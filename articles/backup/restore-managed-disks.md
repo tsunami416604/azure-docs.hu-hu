@@ -3,12 +3,12 @@ title: Azure-Managed Disks visszaállítása
 description: Ismerje meg, hogyan állíthatja vissza az Azure Managed Diskst a Azure Portalból.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 043a10a7359c95529ff1c4dcc181ea4aba75cb5f
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 848a7476b1c5095d4e4d3156d4c7ce33da777090
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98557834"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611134"
 ---
 # <a name="restore-azure-managed-disks-in-preview"></a>Az Azure Managed Disks visszaállítása (előzetes verzió)
 
@@ -65,6 +65,8 @@ A visszaállítási művelet végrehajtásához a következő előfeltételek sz
     >Noha a szerepkör-hozzárendelések helyesen jelennek meg a portálon, körülbelül 15 percet vesz igénybe, hogy az engedély a biztonsági mentési tár felügyelt identitására legyen alkalmazva.
     >
     >Ütemezett biztonsági mentések vagy igény szerinti biztonsági mentési művelet során a Azure Backup a lemez biztonsági mentésének konfigurálása során megadott pillanatkép-erőforráscsoport lemezes növekményes pillanatképeit tárolja. A Azure Backup ezeket a növekményes pillanatképeket használja a visszaállítási művelet során. Ha a pillanatképeket törli vagy áthelyezi a pillanatkép-erőforráscsoporthoz, vagy ha a biztonságimásolat-tároló szerepkör-hozzárendeléseit visszavonják a pillanatkép-erőforráscsoport esetében, a visszaállítási művelet sikertelen lesz.
+
+1. Ha a visszaállítani kívánt lemez az [ügyfél által felügyelt kulcsokkal (CMK)](https://docs.microsoft.com/azure/virtual-machines/disks-enable-customer-managed-keys-portal) van titkosítva, vagy ha a [platform által felügyelt kulcsokkal és az ügyfél által felügyelt](https://docs.microsoft.com/azure/virtual-machines/disks-enable-double-encryption-at-rest-portal)kulcsokkal használja a kettős titkosítást, akkor a **lemez titkosítási készletének** erőforrásában rendelje hozzá az **olvasói** szerepkört a biztonságimásolat-tároló felügyelt identitásához.
 
 Ha az előfeltételek teljesülnek, kövesse az alábbi lépéseket a visszaállítási művelet végrehajtásához.
 

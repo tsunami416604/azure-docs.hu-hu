@@ -9,12 +9,12 @@ ms.custom:
 - references_regions
 - fasttrack-edit
 - devx-track-azurecli
-ms.openlocfilehash: d944512e5f6126920ab4fba99fb70513b93177ba
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 26dd3f7df5a71c687bfb4935f290e7a54b4e01fe
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936821"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610267"
 ---
 # <a name="azure-functions-premium-plan"></a>Prémium csomag Azure Functions
 
@@ -154,6 +154,8 @@ Ha egy olyan gépen fut, amely több memóriát használ, nem mindig jelenti azt
 
 A JavaScript-függvények alkalmazásait például a Node.js alapértelmezett memória-korlátja korlátozza. A rögzített memória korlátjának növeléséhez adja hozzá az alkalmazás `languageWorkers:node:arguments` értékét a következő értékkel: `--max-old-space-size=<max memory in MB>` .
 
+A 4 GB-nál több memóriával rendelkező csomagok esetében ügyeljen arra, hogy a bitszáma platform beállítása az `64 Bit` [általános beállítások](/azure/app-service/configure-common#configure-general-settings)területen legyen.
+
 ## <a name="region-max-scale-out"></a>Régió maximális felskálázása
 
 Az alábbiakban láthatók az egyes régiók és operációs rendszerek konfigurációjának egyetlen csomagjának jelenleg támogatott maximális Felskálázási értékei. A növekedés igényléséhez nyisson meg egy támogatási jegyet.
@@ -168,7 +170,7 @@ Tekintse meg a függvények teljes regionális elérhetőségét az [Azure webhe
 |Délkelet-Ausztrália | 100 | 20 |
 |Dél-Brazília| 100 | 20 |
 |Közép-Kanada| 100 | 20 |
-|USA középső régiója| 100 | 20 |
+|Az USA középső régiója| 100 | 20 |
 |Kelet-Kína 2| 100 | 20 |
 |Észak-Kína 2| 100 | 20 |
 |Kelet-Ázsia| 100 | 20 |
@@ -200,7 +202,7 @@ Tekintse meg a függvények teljes regionális elérhetőségét az [Azure webhe
 |USA nyugati régiója| 100 | 20 |
 |USA 2. nyugati régiója| 100 | 20 |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Az Azure Functions üzemeltetési lehetőségeinek megismerése](functions-scale.md)

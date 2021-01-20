@@ -3,12 +3,12 @@ title: Biztonsági mentési hibák elhárítása az Azure Disk Backup szolgálta
 description: Ismerje meg, hogy miként lehet elhárítani a biztonsági mentési hibákat az Azure Disk Backup szolgáltatásban
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 0a2ef1ea20ee8d6b7a3f32e244d3e00f3add80a2
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 3e7c81d70fc898528532a841a484bf6fff8b83a7
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98558202"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611236"
 ---
 # <a name="troubleshooting-backup-failures-in-azure-disk-backup-in-preview"></a>Biztonsági mentési hibák elhárítása az Azure Disk Backup szolgáltatásban (előzetes verzió)
 
@@ -153,11 +153,29 @@ Hibaüzenet: a visszaállítási pont lemez-pillanatképének metaadatai töröl
 
 Javasolt művelet: érdemes lehet egy másik helyreállítási pontot használni a visszaállításhoz. További információ: [Restore dokumentáció](restore-managed-disks.md).
 
+### <a name="error-code-backupagentpluginhostvalidateprotectionerror"></a>Hibakód: BackupAgentPluginHostValidateProtectionError
+
+Hibaüzenet: a lemezes biztonsági mentés még nem érhető el a Backup-tároló azon régiójában, amelyben a védelem konfigurálása folyamatban van.
+
+Javasolt művelet: a Backup-tárolónak az előzetes verzióban támogatott régióban kell lennie. A régió elérhetőségét lásd a [támogatási mátrixban](disk-backup-support-matrix.md).
+
+### <a name="error-code-usererrordppdatasourcealreadyhasbackupinstance"></a>Hibakód: UserErrorDppDatasourceAlreadyHasBackupInstance
+
+Hibaüzenet: az a lemez, amelyre a biztonsági másolatot kívánja beállítani, már védett. A lemez már társítva van egy backup-tároló biztonsági másolati példányához.
+
+Javasolt művelet: Ez a lemez már társítva van egy backup-tároló biztonsági másolati példányához. Ha újra szeretné védeni ezt a lemezt, akkor törölje a Backup-tárolót a biztonsági mentési tárolóból, ahol a lemez jelenleg védett, és minden más tárolóban újra meg kell védeni a lemezt.
+
+### <a name="error-code-usererrordppdatasourcealreadyprotected"></a>Hibakód: UserErrorDppDatasourceAlreadyProtected
+
+Hibaüzenet: az a lemez, amelyre a biztonsági másolatot kívánja beállítani, már védett. A lemez már társítva van egy backup-tároló biztonsági másolati példányához.
+
+Javasolt művelet: Ez a lemez már társítva van egy backup-tároló biztonsági másolati példányához. Ha újra szeretné védeni ezt a lemezt, akkor törölje a Backup-tárolót a biztonsági mentési tárolóból, ahol az jelenleg védett, és minden más tárolóban védje a lemezt.
+
 ### <a name="error-code-usererrormaxconcurrentoperationlimitreached"></a>Hibakód: UserErrorMaxConcurrentOperationLimitReached
 
-Hibaüzenet: nem lehet elindítani a műveletet, mert elérte az egyidejű műveletek engedélyezett maximális számát.
+Hibaüzenet: nem indítható el a művelet, mert elérte az egyidejű biztonsági másolatok maximális számát.
 
-Javasolt művelet: Várjon, amíg az előző művelet befejeződik.
+Javasolt művelet: Várjon, amíg az előző futó biztonsági mentés be nem fejeződik.
 
 ## <a name="next-steps"></a>Következő lépések
 

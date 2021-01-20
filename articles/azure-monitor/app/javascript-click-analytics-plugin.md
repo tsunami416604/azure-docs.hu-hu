@@ -8,16 +8,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: lagayhar
-ms.openlocfilehash: e69d5cc76f8f4b14ab87e13546c98859bb801418
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 7af26be91ff129e4c968bcb131cc98290cd8d7b9
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234844"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610080"
 ---
 # <a name="click-analytics-auto-collection-plugin-for-application-insights-javascript-sdk"></a>Kattintson az Analytics Auto-Collection beépülő modul Application Insights JavaScript SDK-hoz
 
-Kattintson az Analytics Auto-Collection beépülő modul Application Insights JavaScript SDK-hoz lehetőségre, lehetővé teszi, hogy a metaadatok alapján a weblapokon kattintson az események elemre `data-*` . Ez a beépülő modul a `data-*` globális attribútumokkal rögzíti a kattintási eseményeket, és feltölti a telemetria adatokat.
+Ez a beépülő modul automatikusan nyomon követi a weblapok eseményeit, és a HTML-elemek adatattribútumait használja az Event telemetria feltöltéséhez.
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -101,19 +101,19 @@ appInsights.loadAppInsights();
 
 ### <a name="icustomdatatags"></a>ICustomDataTags
 
-| Név                      | Típus    | Alapértelmezett   | Leírás                                                                                       |
-|---------------------------|---------|-----------|---------------------------------------------------------------------------------------------------|
-| useDefaultContentNameOrId | boolean | hamis     | Ha egy adott elem nem szerepel az alapértelmezett customDataPrefix, vagy a felhasználó nem rendelkezik a customDataPrefix, ez a jelző a szabványos HTML-attribútum gyűjtésére szolgál a contentName számára. |
-| customDataPrefix          | sztring  | `data-`   | A megadott előtaggal címkézett elemek tartalmának és értékének automatikus rögzítése.       |
-| aiBlobAttributeTag        | sztring  | `ai-blob` | A beépülő modul támogatja a JSON blob Content meta adatcímkézést az egyes `data-*` attribútumok helyett. |
-| metaDataPrefix            | sztring  | null      | A HTML-fejlécben szereplő meta elem nevének és tartalmának automatikus rögzítése a megadott előtaggal. |
-| captureAllMetaDataContent | sztring  | null      | A HTML-fejléc összes meta elemének neve és tartalma automatikus rögzítése. Az alapértelmezett érték a false (hamis). Ha engedélyezve van, a rendszer felülbírálja a megadott metaDataPrefix. |
-| parentDataTag             | sztring  | null      | Leállítja a DOM bejárását a tartalom nevének és az elemek értékének rögzítéséhez, amikor a rendszer ezt a címkét észlelte.|
-| dntDataTag                | sztring  | `ai-dnt`  | Az attribútummal rendelkező HTML-elemeket a beépülő modul figyelmen kívül hagyja a telemetria-adatrögzítéshez.|
+| Név                      | Típus    | Alapértelmezett   | HTML-kódban használandó alapértelmezett címke |   Leírás                                                                                |
+|---------------------------|---------|-----------|-------------|----------------------------------------------------------------------------------------------|
+| useDefaultContentNameOrId | boolean | hamis     | N/A         |A standard HTML attribútumot gyűjti a contentName, ha egy adott elem nem az alapértelmezett customDataPrefix van címkézve, vagy ha a felhasználó nem biztosít customDataPrefix. |
+| customDataPrefix          | sztring  | `data-`   | `data-*`| A megadott előtaggal címkézett elemek tartalmának és értékének automatikus rögzítése. Például a ( `data-*-id` ) `data-<yourcustomattribute>` HTML-címkékben is használható.   |
+| aiBlobAttributeTag        | sztring  | `ai-blob` |  `data-ai-blob`| A beépülő modul támogatja a JSON blob attribútumot az egyes `data-*` attribútumok helyett. |
+| metaDataPrefix            | sztring  | null      | N/A  | A HTML-fej meta-elemének és tartalmának automatikus rögzítése a rögzítéskor megadott előtaggal. Például `custom-` a HTML meta-címkében is használható. |
+| captureAllMetaDataContent | boolean | hamis     | N/A   | A HTML-fejléc összes meta elemének neve és tartalma automatikus rögzítése. Az alapértelmezett érték a false (hamis). Ha engedélyezve van, a rendszer felülbírálja a megadott metaDataPrefix. |
+| parentDataTag             | sztring  | null      |  N/A  | Leállítja a DOM bejárását a tartalom nevének és az elemek értékének rögzítéséhez, amikor a rendszer ezt a címkét észlelte. `data-<yourparentDataTag>`Használhatja például a HTML-címkéket.|
+| dntDataTag                | sztring  | `ai-dnt`  |  `data-ai-dnt`| Az attribútummal rendelkező HTML-elemeket a beépülő modul figyelmen kívül hagyja a telemetria-adatrögzítéshez.|
 
 ### <a name="behaviorvalidator"></a>behaviorValidator
 
-Használhatja a behaviorValidator függvényt, ha biztosítani szeretné az adatkonzisztenciaot, de az automatikus ellenőrzés, hogy a kódban a címkézett viselkedések megegyeznek-e a vállalaton belüli ismert és elfogadott besorolások előre meghatározott listájával. Nem szükséges vagy várható, hogy a legtöbb Azure Monitor ügyfél ezt fogja használni, de speciális forgatókönyvekhez is elérhető. A bővítmény részeként három különböző behaviorValidator visszahívási függvény van kitéve. A felhasználók azonban használhatják a saját visszahívási funkcióit, ha az elérhető függvények nem oldják meg a követelményt. A cél az, hogy saját viselkedési adatstruktúrát vigyen fel, a beépülő modul ezt az érvényesítő függvényt használja, miközben Kinyeri a viselkedéseket az adatcímkékből.
+A behaviorValidator függvények automatikusan ellenőrzik, hogy a kódban szereplő címkézett viselkedések megfelelnek-e egy előre definiált listának. Ez biztosítja, hogy a címkézett viselkedések összhangban legyenek a vállalata által bevezetett besorolással. Nem szükséges vagy várható, hogy a legtöbb Azure Monitor ügyfél ezt fogja használni, de speciális forgatókönyvekhez is elérhető. A bővítmény részeként három különböző behaviorValidator visszahívási függvény van kitéve. A felhasználók azonban használhatják a saját visszahívási funkcióit, ha az elérhető függvények nem oldják meg a követelményt. A cél az, hogy saját viselkedési adatstruktúrát vigyen fel, a beépülő modul ezt az érvényesítő függvényt használja, miközben Kinyeri a viselkedéseket az adatcímkékből.
 
 | Név                   | Leírás                                                                        |
 | ---------------------- | -----------------------------------------------------------------------------------|
@@ -310,8 +310,9 @@ appInsights.loadAppInsights();
 
 [Egyszerű webalkalmazás a Click Analytics automatikus gyűjtési beépülő moduljában engedélyezve](https://go.microsoft.com/fwlink/?linkid=2152871).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
+- Tekintse meg a [GitHub-tárházat](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-clickanalytics-js) és a [NPM csomagot](https://www.npmjs.com/package/@microsoft/applicationinsights-clickanalytics-js) a Click Analytics automatikus gyűjtemény beépülő moduljában.
 - Használja az [események elemzését használati élményben](usage-segmentation.md) a leggyakoribb kattintások és a szeletek elérhető dimenziók alapján történő elemzéséhez.
 - Keresse meg az adatokat a CustomEvents tábla customDimensions attribútumában a Content (tartalom) mezőben a [log Analyticsban](../log-query/log-analytics-tutorial.md#write-a-query).
 - Hozzon létre egy [munkafüzetet](../platform/workbooks-overview.md) egyéni vizualizációk létrehozásához, kattintson az adatelemre.
