@@ -18,7 +18,7 @@ ms.locfileid: "92202413"
 
 A ExpressRoute magas rendelkezésre állású, hogy a szolgáltatói szintű magánhálózati kapcsolatot biztosítson a Microsoft erőforrásaihoz. Más szóval, a Microsoft hálózaton belüli ExpressRoute útvonalon nem létezik egyetlen meghibásodási pont. A ExpressRoute áramkör rendelkezésre állásának maximalizálására szolgáló tervezési szempontokat lásd: [a magas rendelkezésre állás tervezése a ExpressRoute][HA].
 
-Azonban a Murphy népszerű példabeszédének betartása – *Ha bármi rosszat tud,* ez a cikk figyelembe veszi, hogy olyan megoldásokra koncentrálunk, amelyek túlmutatnak az egyetlen ExpressRoute áramkörrel kapcsolatos hibákon. Más szóval, ebben a cikkben megvizsgáljuk a hálózati architektúra szempontjait a robusztus háttérbeli hálózati kapcsolat kiépítéséhez a vész-helyreállításhoz a Geo-redundáns ExpressRoute-áramkörök használatával.
+Azonban a Murphy népszerű példabeszédének betartása –*Ha bármi rosszat tud,* ez a cikk figyelembe veszi, hogy olyan megoldásokra koncentrálunk, amelyek túlmutatnak az egyetlen ExpressRoute áramkörrel kapcsolatos hibákon. Más szóval, ebben a cikkben megvizsgáljuk a hálózati architektúra szempontjait a robusztus háttérbeli hálózati kapcsolat kiépítéséhez a vész-helyreállításhoz a Geo-redundáns ExpressRoute-áramkörök használatával.
 
 >[!NOTE]
 >Az ebben a cikkben ismertetett fogalmak akkor is érvényesek, ha egy ExpressRoute-áramkör virtuális WAN vagy azon kívül jön létre.
@@ -131,7 +131,7 @@ A megoldást az alábbi ábra szemlélteti. Ahogy az ábrán látható, a forgat
 [![10]][10]
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben azt beszéltünk, hogyan lehet megtervezni egy ExpressRoute-áramkör magánhálózati kapcsolatának vész-helyreállítását. A következő cikkek az alkalmazások és a előtér-hozzáférési perspektívák vész-helyreállítását tárgyalják:
 
@@ -141,9 +141,9 @@ Ebben a cikkben azt beszéltünk, hogyan lehet megtervezni egy ExpressRoute-ára
 <!--Image References-->
 [1]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/one-region.png "kis-és közepes méretű helyszíni hálózati megfontolások"
 [2]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/specificroute.png "az elérési út kiválasztásának befolyásolása konkrétabb útvonalak használatával"
-[3]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/configure-weight.pnga "kapcsolatok súlyozásának beállítása Azure Portal használatával"
+[3]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/configure-weight.png "a kapcsolatok súlyozásának beállítása Azure Portal használatával"
 [4]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/connectionweight.png "az elérési út kiválasztásának befolyásolása a kapcsolatok súlyozásával"
-[5]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/aspath.png "befolyásoló útvonal kiválasztása az as Path" előtaggal
+[5]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/aspath.png "befolyásoló útvonal kiválasztása az as Path előtaggal"
 [6]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region.png "nagyméretű elosztott helyszíni hálózati megfontolás"
 [7]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-arch1.png. "forgatókönyv 1"
 [8]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-sol1.png "aktív-aktív ExpressRoute-áramköri megoldás 1"
