@@ -4,16 +4,16 @@ description: Annak megakadályozása, hogy a felhasználók az összes felhaszn�
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f1073d8c4a6902ea00a9b4098ef87bc411b3e6c0
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 7efeb8a073a04f78f77046c07c107abf0c7526f4
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555668"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602200"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Erőforrások zárolása a váratlan módosítások megelőzése érdekében
 
-Rendszergazdaként szüksége lehet egy előfizetés, erőforráscsoport vagy erőforrás zárolására annak érdekében, hogy a szervezet többi felhasználója ne tudja véletlenül törölni vagy módosítani a kritikus fontosságú erőforrásokat. A zárolási szintet **CanNotDelete** (nem törölhető) vagy **ReadOnly** (csak olvasható) értékre állíthatja be. A portálon a zárolások neve **Törlés** és **csak olvasható** .
+Előfordulhat, hogy egy rendszergazdának zárolnia kell egy előfizetést, erőforráscsoportot vagy erőforrást, így akadályozva meg más vállalati felhasználókat a kritikus erőforrások véletlen törlésében vagy módosításában. A zárolási szintet **CanNotDelete** (nem törölhető) vagy **ReadOnly** (csak olvasható) értékre állíthatja be. A portálon a zárolások neve **Törlés** és **csak olvasható** .
 
 * A **CanNotDelete** azt jelzi, hogy a jogosult felhasználók továbbra is olvashatják és módosíthatják az erőforrásokat, de nem tudják törölni az erőforrást.
 * A **readonly** érték azt jelenti, hogy a jogosult felhasználók olvasni tudnak egy erőforrást, de nem tudják törölni vagy frissíteni az erőforrást. A zárolás alkalmazása hasonló ahhoz, hogy korlátozza az összes jogosult felhasználót az **olvasó** szerepkör által megadott engedélyekkel.
@@ -28,7 +28,7 @@ A Resource Manager zárolásai csak a felügyeleti síkon történő műveletekr
 
 ## <a name="considerations-before-applying-locks"></a>Szempontok a zárolások alkalmazása előtt
 
-A zárolások alkalmazása váratlan eredményekhez vezethet, mert egyes olyan műveletek, amelyek látszólag nem módosítják az erőforrást, ténylegesen megkövetelik a zárolás által letiltott műveleteket. Néhány gyakori példa a zárolások által blokkolt műveletekre:
+A zárolások alkalmazása váratlan eredményekhez vezethet, mert egyes olyan műveletek, amelyek látszólag nem módosítják az erőforrást, ténylegesen megkövetelik a zárolás által letiltott műveleteket. A zárolások megakadályozza, hogy a Azure Resource Manager API-nak POST-kérést igénylő műveletek is meglegyenek. Néhány gyakori példa a zárolások által blokkolt műveletekre:
 
 * A **Storage-fiók** írásvédett zárolása megakadályozza, hogy minden felhasználó hozzáférjen a kulcsokhoz. A kulcsok listázásának művelete POST kérelmen keresztül történik, mert a visszaadott kulcsokon írási műveleteket is végre lehet hajtani.
 
@@ -312,7 +312,7 @@ Zárolás létrehozásához futtassa a következő parancsot:
 PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/locks/{lock-name}?api-version={api-version}
 ```
 
-A hatókör lehet előfizetés, erőforráscsoport vagy erőforrás. A zárolási név a zárolás meghívásához szükséges. Az API-Version esetében használja az **2016-09-01** -es verziót.
+A hatókör lehet előfizetés, erőforráscsoport vagy erőforrás. A zárolási név a zárolás meghívásához szükséges. Az API-Version esetében használja az **2016-09-01**-es verziót.
 
 A kérelemben adjon meg egy JSON-objektumot, amely meghatározza a zárolás tulajdonságait.
 
@@ -325,7 +325,7 @@ A kérelemben adjon meg egy JSON-objektumot, amely meghatározza a zárolás tul
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az erőforrások logikus rendszerezésével kapcsolatos további információkért lásd: [címkék használata az erőforrások rendszerezéséhez](tag-resources.md).
 * Az előfizetésre vonatkozó korlátozásokat és konvenciókat egyéni szabályzatokkal is alkalmazhat. További információ: [Mi az az Azure Policy?](../../governance/policy/overview.md)

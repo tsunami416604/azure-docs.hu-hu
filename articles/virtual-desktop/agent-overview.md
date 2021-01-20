@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 6450b44e5c7281f0a24fd5000c9feec6e61fa29c
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 325502255e84e38a39ca5b90ee4126354c0d425b
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540629"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601238"
 ---
 # <a name="get-started-with-the-windows-virtual-desktop-agent"></a>Ismerkedés a Windows rendszerű virtuális asztali ügynökkel
 
@@ -44,5 +44,4 @@ A frissítés telepítése általában 2-3 percet vesz igénybe egy új virtuál
 
 Most, hogy jobban megértette a Windows rendszerű virtuális asztali ügynököt, íme néhány olyan erőforrás, amely segíthet:
 
-- Tekintse meg a [Windows rendszerű virtuális asztali ügynök frissítései](whats-new.md) szakaszt, és tekintse meg az új ügynök frissítésével kapcsolatos információkat.
 - Ha ügynökkel vagy kapcsolattal kapcsolatos problémákat tapasztal, tekintse meg a [Windows rendszerű virtuális asztali ügynökkel kapcsolatos hibaelhárítási útmutatót](troubleshoot-agent.md).

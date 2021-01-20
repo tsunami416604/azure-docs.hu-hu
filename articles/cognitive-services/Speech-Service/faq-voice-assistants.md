@@ -1,7 +1,7 @@
 ---
 title: Hangvezérelt asszisztensek – gyakori kérdések
 titleSuffix: Azure Cognitive Services
-description: Választ kaphat a hangasszisztensekkel kapcsolatos legnépszerűbb kérdésekre az egyéni parancsok (előzetes verzió) vagy a közvetlen vonalas beszéd csatorna használatával.
+description: Választ kaphat a hangasszisztensekkel kapcsolatos legnépszerűbb kérdésekre egyéni parancsok vagy a közvetlen vonalas beszéd csatorna használatával.
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: b43d446930d1f8c40c12e5d0aeba6eb202ef47ef
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 4b0bbb982ed48dc052b1a15514ad36b1d69b62b5
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353731"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599414"
 ---
 # <a name="voice-assistants-frequently-asked-questions"></a>Hangvezérelt asszisztensek – gyakori kérdések
 
@@ -25,11 +25,11 @@ Ha a jelen dokumentumban nem talál választ a kérdéseire, tekintse meg az [eg
 
 **K: Mi az a hangsegéd?**
 
-**A:** A Cortana hasonlóan a hangsegéd olyan megoldás, amely figyeli a felhasználó által kimondott hosszúságú kimondott szöveg, elemzi a jelentés tartalmának tartalmát, a teljes szándékra válaszul egy vagy több műveletet hajt végre, majd választ ad arra a felhasználóra, aki gyakran tartalmaz egy szóbeli összetevőt. Ez egy "hangvételt, hangvételt" kínál a rendszerekkel való interakcióhoz. a hangsegéd szerzők létrehoznak egy on-Device alkalmazást a `DialogServiceConnector` SPEECH SDK használatával, amely az [Egyéni parancsokkal (előzetes verzió)](custom-commands.md) vagy a bot-keretrendszer [közvetlen vonalas](direct-line-speech.md) hangcsatornájának használatával létrehozott asszisztenssel kommunikál. Ezek az asszisztensek egyéni kulcsszavakat, egyéni beszédeket és egyéni hangvételt használhatnak, hogy a márka vagy termék számára szabott élményt nyújtsanak.
+**A:** A Cortana hasonlóan a hangsegéd olyan megoldás, amely figyeli a felhasználó által kimondott hosszúságú kimondott szöveg, elemzi a jelentés tartalmának tartalmát, a teljes szándékra válaszul egy vagy több műveletet hajt végre, majd választ ad arra a felhasználóra, aki gyakran tartalmaz egy szóbeli összetevőt. Ez egy "hangvételt, hangvételt" kínál a rendszerekkel való interakcióhoz. a hangsegéd szerzők létrehozhatnak egy on-Device alkalmazást a `DialogServiceConnector` SPEECH SDK használatával, amely az [Egyéni parancsokkal](custom-commands.md) létrehozott asszisztenssel vagy a bot-keretrendszer [közvetlen beszédfelismerési](direct-line-speech.md) csatornájának használatával kommunikál. Ezek az asszisztensek egyéni kulcsszavakat, egyéni beszédeket és egyéni hangvételt használhatnak, hogy a márka vagy termék számára szabott élményt nyújtsanak.
 
-**K: használhatok egyéni parancsokat (előzetes verzió) vagy közvetlen vonalas beszédet? Mi a különbség?**
+**K: használhatok egyéni parancsokat vagy közvetlen vonalas beszédet? Mi a különbség?**
 
-**A:** az [egyéni parancsok (előzetes verzió)](custom-commands.md) egy alacsonyabb bonyolultságú eszközkészletet biztosítanak, amellyel könnyedén létrehozhatók és beállíthatók a feladat-végrehajtási forgatókönyvekhez jól illeszkedő asszisztensek. A [közvetlen vonalas beszéd](direct-line-speech.md) gazdagabb és kifinomultabb képességeket biztosít, amelyek lehetővé teszik robusztus társalgási forgatókönyvek használatát. További információért lásd a [segéd-megoldások összehasonlítását](voice-assistants.md#choosing-an-assistant-solution) ismertető témakört.
+**A:** az [egyéni parancsok](custom-commands.md) egy kevésbé összetett eszköz, amellyel könnyedén létrehozhatók és beállíthatók a feladat-végrehajtási forgatókönyvekhez jól illeszkedő asszisztensek. A [közvetlen vonalas beszéd](direct-line-speech.md) gazdagabb és kifinomultabb képességeket biztosít, amelyek lehetővé teszik robusztus társalgási forgatókönyvek használatát. További információért lásd a [segéd-megoldások összehasonlítását](voice-assistants.md#choosing-an-assistant-solution) ismertető témakört.
 
 **K: Hogyan első lépések?**
 
@@ -61,7 +61,7 @@ Részletesebb útmutatásért tekintse meg az [oktatóanyag című szakaszt](tut
 
 **A:** Ez a hiba kommunikációs problémát jelez a segéd és a hangsegéd szolgáltatás között.
 
-- Egyéni parancsok (előzetes verzió) esetén győződjön meg arról, hogy az egyéni parancsok (előzetes verzió) alkalmazás közzé van téve
+- Egyéni parancsok esetén győződjön meg arról, hogy az egyéni parancsok alkalmazás közzé van téve.
 - A közvetlen vonalas beszédhez győződjön meg arról, hogy [csatlakoztatta a robotot a közvetlen vonalas hangcsatornához](/azure/bot-service/bot-service-channel-connect-directlinespeech), [hozzáadta a folyamatos átviteli protokoll támogatását](/azure/bot-service/directline-speech-bot) a robothoz (a kapcsolódó webes szoftvercsatorna-támogatással), majd ellenőrizze, hogy a robot válaszol-e a csatorna bejövő kéréseire.
 
 **K: Ez a kód továbbra sem működik, és/vagy más hibaüzenetet kapok a használatakor `DialogServiceConnector` . Mit tegyek?**

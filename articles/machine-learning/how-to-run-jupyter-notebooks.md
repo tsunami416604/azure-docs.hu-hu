@@ -1,7 +1,7 @@
 ---
 title: Jupyter-jegyzetfüzetek futtatása a munkaterületen
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan futtathat egy Jupyter Notebook a munkaterület Azure Machine Learning Studióban való elhagyása nélkül.
+description: Ismerje meg, hogyan futtathat Jupyter notebookot a munkaterület Azure Machine Learning Studióban való elhagyása nélkül.
 services: machine-learning
 author: abeomor
 ms.author: osomorog
@@ -10,25 +10,17 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
-ms.date: 06/27/2020
-ms.openlocfilehash: d253699199617489947dd95a44d9bcd1eff17334
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 01/19/2021
+ms.openlocfilehash: 7bb1ce8141f609feb4f354aa85f202915e197f37
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325410"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599302"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Jupyter-jegyzetfüzetek futtatása a munkaterületen
 
-
 Megtudhatja, hogyan futtathat Jupyter-jegyzetfüzeteket közvetlenül a munkaterületen a Azure Machine Learning Studióban. A [Jupyter](https://jupyter.org/) vagy a [JupyterLab](https://jupyterlab.readthedocs.io)elindításához lehetősége van a jegyzetfüzetek szerkesztésére és futtatására is a munkaterület elhagyása nélkül.
-
-Ismerje meg, hogyan teheti meg:
-
-* Jupyter-jegyzetfüzetek létrehozása a munkaterületen
-* Kísérlet futtatása jegyzetfüzetből
-* A notebook-környezet módosítása
-* A jegyzetfüzetek futtatásához használt számítási példányok részleteinek megkeresése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -48,9 +40,9 @@ A Azure Machine Learning munkaterületen hozzon létre egy új Jupyter-jegyzetf�
     :::image type="content" source="media/how-to-run-jupyter-notebooks/create-new-file.png" alt-text="Új fájl létrehozása":::
 
 1. Nevezze el a fájlt. 
-1. Jupyter Notebook fájlok esetében válassza a **Jegyzetfüzet** lehetőséget fájltípusként.
+1. Jupyter notebook-fájlok esetén válassza a **Jegyzetfüzet** lehetőséget fájltípusként.
 1. Válassza ki a kívánt könyvtárat.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 Szövegfájlokat is létrehozhat.  Válassza ki a kívánt **szöveget** , és adja hozzá a kiterjesztést a névhez (például myfile.py vagy myfile.txt)  
 
@@ -153,18 +145,6 @@ Minden jegyzetfüzetet 30 másodpercenként kell megtakarítani. Az automatikus 
  
 Válassza az **ellenőrzőpontok** lehetőséget a notebook menüben egy elnevezett ellenőrzőpont létrehozásához és a jegyzetfüzet egy mentett ellenőrzőpontra való visszavonásához.
 
-
-### <a name="useful-keyboard-shortcuts"></a>Hasznos billentyűparancsok
-
-|Billentyűzet  |Művelet  |
-|---------|---------|
-|SHIFT + ENTER     |  Cella futtatása       |
-|CTRL + SZÓKÖZ | IntelliSense aktiválása |
-|CTRL + M (Windows)     |  A lapfülek alátöltésének engedélyezése/letiltása a jegyzetfüzetben.       |
-|CTRL + SHIFT + M (Mac & Linux)     |    A lapfülek alátöltésének engedélyezése/letiltása a jegyzetfüzetben.     |
-|Tab (ha engedélyezve van a TAB trap) | "\T" karakter hozzáadása (behúzás)
-|Tab (ha a TAB trap le van tiltva) | Fókusz módosítása a következő fókuszálható elemre (cella törlése gomb, Futtatás gomb stb.)
-
 ## <a name="delete-a-notebook"></a>Jegyzetfüzet törlése
 
 A **mintákat** tartalmazó jegyzetfüzetek *nem* törölhetők.  Ezek a jegyzetfüzetek a stúdió részét képezik, és minden alkalommal frissülnek, amikor új SDK kerül közzétételre.  
@@ -175,20 +155,38 @@ A következő módokon *törölheti* a **felhasználói fájlok** jegyzetfüzete
 * Bármely jegyzetfüzet eszköztárból válassza a [**terminál megnyitása**](#terminal)  lehetőséget a számítási példányhoz tartozó terminál ablak eléréséhez.
 * A Jupyter vagy a JupyterLab eszközzel.
 
-## <a name="run-an-experiment"></a>Kísérlet futtatása
+## <a name="run-a-notebook-or-python-script"></a>Jegyzetfüzet vagy Python-szkript futtatása
 
-Egy kísérlet jegyzetfüzetből való futtatásához először egy futó [számítási példányhoz](concept-compute-instance.md)kell csatlakoznia. Ha nem rendelkezik számítási példánnyal, az alábbi lépésekkel hozhat létre egyet: 
+Jegyzetfüzet vagy Python-szkript futtatásához először egy futó [számítási példányhoz](concept-compute-instance.md)kell csatlakoznia. Ha nem rendelkezik számítási példánnyal, az alábbi lépésekkel hozhat létre egyet: 
 
-1. Válassza ki **+** a jegyzetfüzet eszköztárát. 
+1. Válassza **+** a jegyzetfüzet vagy a parancsfájl eszköztárát. 
 2. Nevezze el a számítást, és válassza ki a **virtuális gép méretét**. 
-3. Kattintson a **Létrehozás** gombra.
-4. A számítási példány automatikusan csatlakozik a jegyzetfüzethez, és most már futtathatja a cellákat.
+3. Válassza a **Létrehozás** lehetőséget.
+4. A számítási példány automatikusan csatlakozik a fájlhoz.  Most már futtathatja a jegyzetfüzet-cellákat vagy a Python-szkriptet a számítási példány bal oldalán található eszköz használatával.
 
 Csak az Ön által létrehozott számítási példányok láthatók és használhatók.  A **felhasználói fájlokat** a rendszer külön tárolja a virtuális gépen, és a munkaterület összes számítási példánya között meg van osztva.
 
 ### <a name="view-logs-and-output"></a>Naplók és kimenet megtekintése
 
 A Futtatás és a naplók előrehaladásának megtekintéséhez [Jegyzetfüzet-minialkalmazások](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py) használhatók. A widgetek aszinkron módon frissülnek, és frissítéseket biztosítanak, amíg befejeződik a képzés. A Azure Machine Learning widgeteket a Jupyter és a JupterLab is támogatja.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/jupyter-widget.png" alt-text="Képernyőkép: Jupyter notebook widget ":::
+
+## <a name="explore-variables-in-the-notebook"></a>A jegyzetfüzetben szereplő változók megismerése
+
+A jegyzetfüzet eszköztárán a **változó Explorer** eszköz használatával jelenítse meg a jegyzetfüzetben létrehozott összes változó nevét, típusát, hosszát és mintájának értékét.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/variable-explorer.png" alt-text="Képernyőfelvétel: változó Explorer eszköz":::
+
+Válassza ki az eszközt a változó Explorer ablak megjelenítéséhez.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/variable-explorer-window.png" alt-text="Képernyőfelvétel: változó Explorer ablak":::
+
+## <a name="navigate-with-a-toc"></a>Navigáljon a TARTALOMJEGYZÉKbe
+
+A jegyzetfüzet eszköztárán a tartalomjegyzék eszköz használatával jelenítheti meg vagy elrejtheti  **a tartalomjegyzéket** .  Kezdjen el egy fejlécet tartalmazó Markdown cellát a tartalomjegyzékbe való felvételhez. Kattintson egy bejegyzésre a táblázatban, és görgessen a cellához a jegyzetfüzetben.  
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/table-of-contents.png" alt-text="Képernyőfelvétel: tartalomjegyzék a jegyzetfüzetben":::
 
 ## <a name="change-the-notebook-environment"></a>A notebook-környezet módosítása
 
@@ -234,7 +232,7 @@ A jegyzetfüzet automatikusan megkeresi a csatlakoztatott számítási példány
     ```
 
 > [!NOTE]
-> Jegyzetfüzeten belüli csomagkezelő esetén a **% pip** vagy **% Conda** Magic functions használatával automatikusan telepíthet csomagokat a **jelenleg futó kernelre** , nem pedig **! pip** vagy **! Conda** , amely az összes csomagra vonatkozik (beleértve a jelenleg futó kernelen kívüli csomagokat is)
+> Jegyzetfüzeten belüli csomagkezelő esetén a **% pip** vagy **% Conda** Magic functions használatával automatikusan telepíthet csomagokat a **jelenleg futó kernelre**, nem pedig **! pip** vagy **! Conda** , amely az összes csomagra vonatkozik (beleértve a jelenleg futó kernelen kívüli csomagokat is)
 
 A [rendelkezésre álló Jupyter-kernelek](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) bármelyike telepíthető.
 
@@ -257,11 +255,94 @@ A **kernel** legördülő lista melletti kijelző megjeleníti az állapotát.
 |  Zöld |Kernel csatlakoztatva, tétlen, foglalt|
 |  Szürke |A kernel nincs csatlakoztatva |
 
-## <a name="find-compute-details"></a>Számítási részletek keresése 
+## <a name="shortcut-keys"></a>Billentyűparancsok
+A Jupyter-jegyzetfüzetekhez hasonlóan a Azure Machine Learning Studio notebookok modális felhasználói felülettel rendelkeznek. A billentyűzet különböző műveleteket végez, attól függően, hogy a jegyzetfüzet-cella milyen módban van. Azure Machine Learning Studio jegyzetfüzetek az alábbi két módot támogatják egy adott kódú cellához: parancs mód és szerkesztési mód.
+
+### <a name="command-mode-shortcuts"></a>Parancs mód parancsikonjai
+
+A cella parancs módban van, ha nincs beírni kívánt szöveg. Ha egy cella parancs módban van, a jegyzetfüzetet teljes egészében szerkesztheti, de nem lehet egyéni cellákba írni. A parancs mód megadásához nyomja le `ESC` vagy az egér használatával válassza ki a cella szerkesztő területén kívüli lehetőséget.  Az aktív cella bal oldali szegélye kék és tömör, a **Futtatás** gombja pedig kék.
+
+   :::image type="content" source="media/how-to-run-jupyter-notebooks/command-mode.png" alt-text="Jegyzetfüzet-cella parancs módban ":::
+
+| Helyi                      | Leírás                          |
+| ----------------------------- | ------------------------------------|
+| Enter                         | A szerkesztési mód megnyitása             |        
+| Shift + Enter                 | Cella futtatása, válassza az alábbi lehetőséget         |     
+| Vezérlő/parancs + ENTER       | Cella futtatása                            |
+| ALT + ENTER                   | Cella futtatása, kód cellájának beszúrása lent    |
+| Vezérlő/parancs + ALT + ENTER | Cella futtatása, Markdown-cella beszúrása alul|
+| ALT + R                       | Az összes futtatása      |                       
+| Y                             | Cella konvertálása kódra    |                         
+| M                             | Cella konvertálása Markdown  |                       
+| Fel/K                          | Cella kijelölése    |               
+| Lefelé/J                        | Válassza ki az alábbi cellát    |               
+| A                             | A fenti kód cellájának beszúrása  |            
+| B                             | Az alábbi kód cellájának beszúrása   |           
+| Control/Command + Shift + A   | A fenti Markdown cella beszúrása    |      
+| Control/Command + Shift + B   | Az alábbi Markdown-cella beszúrása   |       
+| X                             | Kijelölt cella kivágása    |               
+| C#                             | Kijelölt cella másolása   |               
+| Shift + V                     | A fent kiválasztott cella beillesztése           |
+| V                             | Lenti kijelölt cella beillesztése    |       
+| D D                           | Kijelölt cella törlése|                
+| O                             | Kimenet váltása         |              
+| SHIFT + O                     | Kimenet görgetésének váltása   |          
+| ÉN                           | Kernel megszakítása |                   
+| 0 0                           | Kernel újraindítása |                     
+| Shift + szóköz                 | Görgetés felfelé  |                         
+| Space (Szóköz)                         | Görgetés lefelé|
+| Tab                           | Fókusz módosítása a következő fókuszálható elemre (ha a TAB trap le van tiltva)|
+| Vezérlő/parancs + S           | Jegyzetfüzet mentése |                      
+| 1                             | Módosítás H1-re|                       
+| 2                             | Váltás a H2-re|                        
+| 3                             | Váltás H3-re|                        
+| 4                             | Váltás H4-re |                       
+| 5                             | Váltás a H5-re |                       
+| 6                             | Váltás a H6 |                       
+
+### <a name="edit-mode-shortcuts"></a>Szerkesztési mód parancsikonjai
+
+A szerkesztési módot egy szöveges kurzor jelzi, amely arra kéri, hogy írja be a szerkesztőt. Ha egy cella szerkesztési módban van, beírhatja a cellába. Adja meg a szerkesztési módot úgy, hogy lenyomja `Enter` vagy felhasználja az egeret a cella szerkesztői területein való kiválasztáshoz. Az aktív cella bal oldali szegélyének zöld színűnek kell lennie, és a Futtatás gombja zöld színnel van **elindítva** . A kurzor rákérdez a cellában szerkesztési módban is látható.
+
+   :::image type="content" source="media/how-to-run-jupyter-notebooks/edit-mode.png" alt-text="Jegyzetfüzet-cella szerkesztési módban":::
+
+A következő billentyűleütés-billentyűparancsokkal könnyebben navigálhat és futtathat Azure Machine Learning jegyzetfüzetekben lévő kódokat szerkesztési módban.
+
+| Helyi                      | Leírás|                                     
+| ----------------------------- | ----------------------------------------------- |
+| Escape                        | Adja meg a parancs módját|  
+| Vezérlő/parancs + szóköz       | IntelliSense aktiválása |
+| Shift + Enter                 | Cella futtatása, válassza az alábbi lehetőséget |                         
+| Vezérlő/parancs + ENTER       | Cella futtatása  |                                      
+| ALT + ENTER                   | Cella futtatása, kód cellájának beszúrása lent  |              
+| Vezérlő/parancs + ALT + ENTER | Cella futtatása, Markdown-cella beszúrása alul  |          
+| ALT + R                       | Az összes cella futtatása     |                              
+| Fel                            | Kurzor feljebb vagy az előző cellában    |             
+| Le                          | Kurzor mozgatása lefelé vagy a következő cellába |                  
+| Vezérlő/parancs + S           | Jegyzetfüzet mentése   |                                
+| Vezérlés/Command + fel          | Ugrás a cella elejére   |                             
+| Vezérlő/parancs + lefelé        | Ugrás a cella végére |                                 
+| Tab                           | Kód befejezése vagy behúzása (ha engedélyezve van a TAB trap) |
+| Vezérlő/parancs + M           | Tab-trap engedélyezése/letiltása  |                       
+| Control/Command +]           | Behúzás |                                         
+| Control/Command + [           | Kihúzás  |                                        
+| Control/Command + A           | Az összes kijelölése|                                      
+| Vezérlő/parancs + Z           | Visszavonás |                                           
+| Control/Command + Shift + Z   | Ismétlés |                                           
+| Control/Command + Y           | Ismétlés |                                           
+| Control/Command + Home        | Ugrás a cella elejére|                                
+| Vezérlő/parancs + vége         | Ugrás a cella végére   |                               
+| Vezérlő/parancs + balra        | Ugrás egy szóval balra |                               
+| Control/Command + Right       | Egy szó jobbra |                              
+| Control/Command + Backspace   | A Word törlése előtt |                             
+| Vezérlő/parancs + törlés      | Szó törlése a következő után |                              
+| Control/Command +/           | Megjegyzés bekapcsolása a cu-on
+
+## <a name="find-compute-details"></a>Számítási részletek keresése
 
 A számítási példányok részleteit a [Studióban](https://ml.azure.com), a **számítási** oldalon találhatja meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az első kísérlet futtatása](tutorial-1st-experiment-sdk-train.md)
 * [A file Storage biztonsági mentése pillanatképekkel](../storage/files/storage-snapshots-files.md)

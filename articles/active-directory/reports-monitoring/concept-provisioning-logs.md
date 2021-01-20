@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 12/28/2020
+ms.date: 1/19/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56818862b6bc4eb38b819185aceb121e6e78488e
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 05a514debcf8036a296bbe66b2dd75c7dacacdc2
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803527"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600748"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Jelentések kiépítési jelentései a Azure Active Directory portálon (előzetes verzió)
 
@@ -121,7 +121,7 @@ Amikor kiválaszt egy egyéni időkeretet, beállíthatja a kezdési és a befej
 Az **állapot** szűrő segítségével a következőket választhatja ki:
 
 - Mind
-- Success
+- Siker
 - Hiba
 - Kimarad
 
@@ -174,7 +174,7 @@ A részletek a következő kategóriák alapján vannak csoportosítva:
 
 - Módosított tulajdonságok
 
-- Összegzés
+- Összefoglalás
 
 
 ![Kiépítés részletei](./media/concept-provisioning-logs/provisioning-tabs.png "Tabulátorok")
@@ -206,7 +206,7 @@ A **hibakeresés és javaslatok** lap a hibakódot és az okot adja meg. A hiba 
 A **módosított tulajdonságok** a régi értéket és az új értéket jelenítik meg. Olyan esetekben, amikor nincs régi érték, a régi érték oszlop üres. 
 
 
-### <a name="summary"></a>Összegzés
+### <a name="summary"></a>Összefoglalás
 
 Az **Összefoglalás** lapon áttekintheti, hogy mi történt, és milyen azonosítókat tartalmaz a forrás és a cél rendszer objektumához. 
 
@@ -215,8 +215,6 @@ Az **Összefoglalás** lapon áttekintheti, hogy mi történt, és milyen azonos
 - Ha ingyenes kiadással rendelkezik, a Azure Portal 30 napig tárolja a kiépítési adatgyűjtési jelentést. A kiépítési naplók 30 napon túli megőrzés céljából közzétehetők a [log Analyticsben](../app-provisioning/application-provisioning-log-analytics.md) . 
 
 - A Change ID attribútum egyedi azonosítóként használható. Ez például a terméktámogatással való interakció esetén hasznos.
-
-- Jelenleg nincs lehetőség a kiépítési adatainak CSV-fájlként való letöltésére, de az adatexportálást [Microsoft Graph](/graph/api/provisioningobjectsummary-list?tabs=http&view=graph-rest-beta)használatával végezheti el.
 
 - A kihagyott eseményeket a hatókörön kívüli felhasználók számára is megtekintheti. Ez várható, különösen akkor, ha a szinkronizálási hatókör az összes felhasználóra és csoportra van beállítva. A szolgáltatás a bérlő összes objektumát kiértékeli, még a hatókörön kívül is. 
 

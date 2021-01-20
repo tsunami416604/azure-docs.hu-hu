@@ -9,22 +9,26 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: ec7459a356221fb7b599cbbc02f1cb825920b5b3
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: b6fcf39e05c4649503f0b7a80aadaaa16df24674
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890666"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599559"
 ---
 # <a name="show-traffic-on-the-map"></a>Forgalom megjelenítése a térképen
 
 A Azure Mapsban kétféle forgalmi adatok érhetők el:
 
 - Incidensek – olyan pont-és vonal-alapú adatmennyiségből állnak, mint például az építőipar, a közúti bezárások és a balesetek.
-- Flow-adatok – mérőszámokat biztosít a forgalom forgalmáról az utakon. Gyakran a forgalmi forgalomra vonatkozó adatokat használják az utak színezésére. A színek attól függnek, hogy mekkora forgalom lassul le a folyamaton, a sebességkorlátozás vagy más metrika alapján. Azure Maps adatforgalmának adatai három különböző mérőszámtal rendelkeznek:
-    - `relative` -az út szabad áramlási sebességéhez viszonyítva.
-    - `absolute` – az összes jármű teljes sebessége az úton.
-    - `relative-delay` – a vártnál lassabban megjelenő területeket jeleníti meg.
+- Flow-adatok – mérőszámokat biztosít a forgalom forgalmáról az utakon. Gyakran a forgalmi forgalomra vonatkozó adatokat használják az utak színezésére. A színek attól függnek, hogy mekkora forgalom lassul le a folyamaton, a sebességkorlátozás vagy más metrika alapján. Négy érték adható át a `flow` Térkép forgalmi lehetőségéhez.
+
+    |Folyamat értéke | Leírás|
+    | :-- | :-- |
+    | `none` | Nem jeleníti meg a forgalmi adatokat a térképen |
+    | `relative` | Az út szabad áramlási sebességéhez viszonyított forgalmi adatokat jeleníti meg |
+    | `relative-delay` | A várt átlagos késésnél lassabb területeket jelenít meg. |
+    | `absolute` | Az összes jármű teljes sebességét jeleníti meg az úton |
 
 A következő kód bemutatja, hogyan jelenítheti meg a forgalmi adatokat a térképen.
 
@@ -40,7 +44,7 @@ Alább látható a fenti funkciók teljes futási kódjának mintája.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Térkép forgalmának megjelenítése' src='//codepen.io/azuremaps/embed/WMLRPw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>A CodePen-on található Azure Maps () használatával megtekintheti az <a href='https://codepen.io/azuremaps/pen/WMLRPw/'>adatforgalom megjelenítése a térképen</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Térkép forgalmának megjelenítése' src='//codepen.io/azuremaps/embed/WMLRPw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>A CodePen-on található Azure Maps () használatával megtekintheti az <a href='https://codepen.io/azuremaps/pen/WMLRPw/'>adatforgalom megjelenítése a térképen</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'></a>.
 </iframe>
 
 ## <a name="traffic-overlay-options"></a>Forgalom átfedési beállításai
@@ -75,7 +79,7 @@ Tekintse meg a Pen <a href='https://codepen.io/azuremaps/pen/ZEWaeLJ'>Traffic Co
 </iframe>
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a cikkben használt osztályokról és módszerekről:
 

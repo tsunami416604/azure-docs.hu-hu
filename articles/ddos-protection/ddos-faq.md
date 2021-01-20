@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: yitoh
-ms.openlocfilehash: e87fd8724ab9a967bf3b75579eb0e375a324a7b1
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: b53501bf5aa4bafb0229158edfe0cb244116b909
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183098"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600841"
 ---
 # <a name="azure-ddos-protection-standard-frequent-asked-questions"></a>Azure DDoS Protection standard gyakori kérdések
 
@@ -34,6 +34,12 @@ A DDoS Protection-csomagok havi $2 944-os fix havi díja, amely akár 100 nyilv�
 A bérlők egy DDoS Protection-tervet is használhatnak több előfizetésben, így nincs szükség több DDoS Protection-csomag létrehozására.
 
 További részletekért tekintse meg a [Azure DDoS Protection standard díjszabását](https://azure.microsoft.com/pricing/details/ddos-protection/) .
+
+## <a name="is-the-service-zone-resilient"></a>A szolgáltatási zóna rugalmas?
+Igen. A Azure DDoS Protection alapértelmezés szerint rugalmas.
+
+## <a name="how-do-i-configure-the-service-to-be-zone-resilient"></a>Hogyan konfigurálja a szolgáltatást zónákra rugalmasan?
+A zóna rugalmasságának engedélyezéséhez nincs szükség ügyfél-konfigurációra. A Azure DDoS Protection erőforrások rugalmassága alapértelmezés szerint elérhető, és maga a szolgáltatás kezeli.
 
 ## <a name="what-about-protection-at-the-service-layer-layer-7"></a>Mi a védelem a szolgáltatási rétegben (7. réteg)?
 Az ügyfelek a webalkalmazási tűzfallal (WAF) együtt használhatják a Azure DDoS Protection szolgáltatást a hálózati rétegben (3. és 4. réteg, Azure DDoS Protection standard által kínált) és az alkalmazási rétegben (7. réteg, WAF által felkínált). A WAF-ajánlatok közé tartoznak az Azure [Application Gateway WAF SKU](../web-application-firewall/ag/ag-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , valamint az [Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall)elérhető, harmadik féltől származó webalkalmazási tűzfalak is.

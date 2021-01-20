@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a531692264a768e4f6cb8e6475807789df049d03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e257ab39257b23c52aaadbe32f0325e8d71a8409
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049146"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98597970"
 ---
 # <a name="conditional-access-block-access-by-location"></a>Feltételes hozzáférés: hozzáférés letiltása hely szerint
 
@@ -26,9 +26,9 @@ A feltételes hozzáférés helyének feltételével a felhasználó hálózati 
 
 1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
 1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférés**  >  **elnevezett helyeinek nevét**.
-1. Válassza az **új hely**lehetőséget.
+1. Válassza az **új hely** lehetőséget.
 1. Adjon nevet a helynek.
-1. Válassza az **IP-címtartományok** lehetőséget, ha ismeri az adott helyet vagy **országokat vagy régiókat**alkotó, külsőleg elérhető IPv4-címtartományt.
+1. Válassza az **IP-címtartományok** lehetőséget, ha ismeri az adott helyet vagy **országokat vagy régiókat** alkotó, külsőleg elérhető IPv4-címtartományt.
    1. Adja meg az **IP-tartományokat** , vagy válassza ki a megadott hely **országait/régióit** .
       * Ha az országok/régiók lehetőséget választja, dönthet úgy, hogy ismeretlen területeket is tartalmaz.
 1. **Mentés** kiválasztása
@@ -39,21 +39,23 @@ A feltételes hozzáférés hely feltételével kapcsolatos további informáci�
 
 1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
 1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférését**.
-1. Válassza az **új szabályzat**lehetőséget.
+1. Válassza az **új szabályzat** lehetőséget.
 1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
-1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
-   1. A **Belefoglalás**területen válassza a **minden felhasználó**lehetőséget.
-1. A **Cloud apps vagy a műveletek**területen  >  válassza a **minden felhőalapú alkalmazás**lehetőséget.**Include**
-1. A **feltételek**  >  **helye**alatt.
+1. A **hozzárendelések** alatt válassza a **felhasználók és csoportok** lehetőséget.
+   1. A **Belefoglalás** területen válassza a **minden felhasználó** lehetőséget.
+   1. A **kizárás** területen válassza a **felhasználók és csoportok** lehetőséget, majd válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat. 
+   1. Válassza a **Kész** lehetőséget.
+1. A **Cloud apps vagy a műveletek** területen  >  válassza a **minden felhőalapú alkalmazás** lehetőséget.
+1. A **feltételek**  >  **helye** alatt.
    1. **Konfigurálás** beállítása **Igen** értékre
-   1. A **Belefoglalás**területen válassza a **kiválasztott helyszínek** elemet.
+   1. A **Belefoglalás** területen válassza a **kiválasztott helyszínek** elemet.
    1. Válassza ki a szervezet számára létrehozott tiltott helyet.
    1. Kattintson a **Kiválasztás** elemre.
-1. A **hozzáférés-vezérlés** > válassza a **hozzáférés letiltása**lehetőséget, majd válassza a **kiválasztás**lehetőséget.
-1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
+1. A **hozzáférés-vezérlés** > válassza a **hozzáférés letiltása** lehetőséget, majd válassza a **kiválasztás** lehetőséget.
+1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva** értékre.
 1. Feltételes hozzáférési szabályzat létrehozásához válassza a **Létrehozás** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
 

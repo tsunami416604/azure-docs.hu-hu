@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
-ms.openlocfilehash: 07e165382608f4fde5433de0f4436cb86f5083af
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 2bea2324817986654de6689a2be15d0cbf999b38
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251896"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602146"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>A Azure Cosmos DB költségeinek megtervezése és kezelése
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -73,7 +73,7 @@ A Azure Portal Azure Cosmos DB erőforrásainak használatának megkezdése utá
 
 Ha az Azure-előfizetése költségkerettel rendelkezik, az Azure megakadályozza a kreditek összegének megadását. Az Azure-erőforrások létrehozásakor és használatakor a rendszer felhasználja a krediteket. Ha eléri a hitelkeretét, az üzembe helyezett erőforrások a számlázási időszak további részében le lesznek tiltva. A hitelkeret nem módosítható, de eltávolíthatja. További információ a költségkeretekről: az [Azure](../cost-management-billing/manage/spending-limit.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)költségkerete.
 
-Az Azure Nagyvállalati Szerződés pénzügyi kötelezettségvállalásával kapcsolatos díjakért Azure Cosmos DB díjat is fizethet. A pénzügyi kötelezettségvállalással kapcsolatos kreditek azonban nem használhatók fel a harmadik féltől származó termékekkel és szolgáltatásokkal, például az Azure Marketplace-ről fizetett díjakért.
+Az Azure-előfizetéssel (korábban pénzügyi kötelezettségvállalásnak nevezett) Kredittel Azure Cosmos DB díjat fizethet. Az Azure-előfizetési kreditek azonban nem használhatók fel a harmadik féltől származó termékekkel és szolgáltatásokkal, például az Azure Marketplace-en keresztül fizetendő díjakért.
 
 ## <a name="monitor-costs"></a>Költségek figyelése
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: f464664737ab56b43ca0c0a159837487494a1eaa
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 2da90a2c8950d85d8db2a414bbe63dfc7b94cf01
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97826049"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601319"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Hozzon létre & a szoftveres környezetek használatával Azure Machine Learning
 
@@ -131,6 +131,8 @@ myenv.docker.base_image_registry="your_registry_location"
 #### <a name="use-your-own-dockerfile"></a>Saját Docker használata 
 
 Egyéni Docker is megadhat. Legegyszerűbben a Docker parancs használatával kezdheti el Azure Machine Learning alaplemezképek egyikét ```FROM``` , majd felveheti a saját egyéni lépéseit. Akkor használja ezt a módszert, ha a nem Python-csomagokat függőségként kell telepíteni. Ne felejtse el beállítani az alapképet a none értékre.
+
+Vegye figyelembe, hogy a Python a Azure Machine Learning implicit függősége, így az egyéni Docker telepítve kell lennie a Pythonnak.
 
 ```python
 # Specify docker steps as a string. 

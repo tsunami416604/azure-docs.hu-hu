@@ -6,21 +6,21 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 08/27/2020
+ms.date: 01/19/2021
 ms.author: victorh
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: d4b6fc296ae41667d271e243e9aca9b594e4a5b6
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 1a691d8ab212dd436b0dc9f7aafbc19a406b12b7
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886702"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601779"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>Első lépések – A webes forgalom irányítása az Azure Application Gateway szolgáltatással – Azure CLI
 
 Ebben a rövid útmutatóban az Azure CLI használatával hozzon létre egy Application Gateway-t. Ezt követően ellenőrizze, hogy megfelelően működik-e. 
 
-Az Application Gateway az alkalmazás webes forgalmát egy háttér-készlet adott erőforrásaira irányítja. A figyelőket hozzárendelheti a portokhoz, szabályokat hozhat létre, és erőforrásokat adhat hozzá egy háttér-készlethez. Az egyszerűség kedvéért ez a cikk egy egyszerű telepítőt használ egy nyilvános előtér-IP-címmel, egy alapszintű figyelővel, amely egyetlen helyet üzemeltet az Application gatewayben, egy alapszintű kérelem-útválasztási szabályt és két virtuális gépet a háttér-készletben.
+Az Application Gateway az alkalmazás webes forgalmát egy háttér-készlet adott erőforrásaira irányítja. A figyelőket hozzárendelheti a portokhoz, szabályokat hozhat létre, és erőforrásokat adhat hozzá egy háttér-készlethez. Az egyszerűség kedvéért ez a cikk egy egyszerű telepítőt használ egy nyilvános előtéri IP-címmel, egy alapszintű figyelőt, amely egyetlen helyet üzemeltet az Application gatewayben, egy alapszintű kérelem-útválasztási szabályt és két virtuális gépet a háttér-készletben.
 
 A rövid útmutató [Azure PowerShell](quick-create-powershell.md) vagy a [Azure Portal](quick-create-portal.md)használatával is elvégezhető.
 
@@ -68,7 +68,7 @@ az network public-ip create \
 
 ## <a name="create-the-backend-servers"></a>A háttér-kiszolgálók létrehozása
 
-A háttérrendszer rendelkezhet hálózati adapterekkel, virtuálisgép-méretezési csoportokkal, nyilvános IP-címekkel, belső IP-címekkel, teljes tartománynévvel (FQDN) és több-bérlős háttérrel, például Azure App Service. Ebben a példában két virtuális gépet hoz létre, amelyeket háttér-kiszolgálóként használ az Application Gateway számára. Az IIS-t a virtuális gépeken is telepítheti az Application Gateway teszteléséhez.
+A háttérrendszer rendelkezhet hálózati adapterekkel, virtuálisgép-méretezési csoportokkal, nyilvános IP-címekkel, belső IP-címekkel, teljes tartománynévvel (FQDN) és több-bérlős háttérrel (például Azure App Service). Ebben a példában két virtuális gépet hoz létre, amelyeket háttér-kiszolgálóként használ az Application Gateway számára. Az IIS-t a virtuális gépeken is telepítheti az Application Gateway teszteléséhez.
 
 #### <a name="create-two-virtual-machines"></a>Két virtuális gép létrehozása
 
@@ -192,7 +192,7 @@ Ha már nincs szüksége az Application Gateway használatával létrehozott er�
 az group delete --name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Webes forgalom kezelése Application Gatewayjel az Azure CLI segítségével](./tutorial-manage-web-traffic-cli.md)

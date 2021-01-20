@@ -8,12 +8,12 @@ author: emuench
 ms.author: mingshen
 ms.date: 10/15/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d8cb5179583dd23ea2bd4baf5ebe7d84b0ae9cbf
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 748b6c3506127de8fce153a77571664ea531ffa1
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814431"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601364"
 ---
 # <a name="azure-consumption-commitment-benefit"></a>Az Azure-beli használati kötelezettségvállalás előnyei
 
@@ -24,7 +24,7 @@ A Microsoft kereskedelmi piactérek kiválasztott csoportja a szervezet Microsof
 
 A programban részt vevő összes ajánlatot érvényesítjük, így biztosítva, hogy magas színvonalú megoldásokat kapjon.
 
-Az előny kihasználása érdekében egyszerűen vásárolhat az Azure Marketplace-en egy olyan előfizetést, amely az Azure-szerződéshez kapcsolódik. Az Azure-előfizetések és a pénzügyi kötelezettségvállalások nem jogosultak erre az előnyre.
+Az előny kihasználása érdekében egyszerűen vásárolhat az Azure Marketplace-en egy olyan előfizetést, amely az Azure-szerződéshez kapcsolódik. Az Azure-előfizetések (korábbi nevén pénzügyi kötelezettségvállalás) nem jogosultak erre az előnyre.
 
 > [!IMPORTANT]
 > A kizárások a Piactéri juttatás előtt aláírt CtC-megállapodásokra vonatkozhatnak. Ha kérdése van a jogosultsággal kapcsolatban, forduljon a Microsoft-fiók ügyvezetőhöz.

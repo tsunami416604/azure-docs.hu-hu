@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 76232a917e8856a06645fabc0ab4716195c5c0e1
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: a303f5e6177d0dc4205eaec8c3b1911e8e004fe3
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094199"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602433"
 ---
 # <a name="request-elevation-data-using-the-azure-maps-elevation-service-preview"></a>Jogosultságszint-emelési kérések igénylése a Azure Maps jogosultságszint-emelési szolgáltatással (előzetes verzió)
 
@@ -471,7 +471,7 @@ A CodePen-on lévő Azure Maps () alapján megtekintheti a tollas <a href='https
 
 ### <a name="get-elevation-data-by-polyline-path"></a>Jogosultságszint-emelési érték lekérése a vonallánc elérési útján
 
-A következő minta weblap azt mutatja be, hogyan használható a Térkép vezérlőelem a jogosultságszint-emelési adatelérési út mentén. A felhasználó az elérési utat úgy határozza meg `PolyLine` , hogy a bal felső sarokban lévő ikonra kattint, és lerajzolja a vonalláncot a térképen. A Térkép vezérlőelem ezután a jobb felső sarokban található kulcsban megadott színekben jeleníti meg a jogosultságszint-emelési adatértékeket.
+A következő minta weblap azt mutatja be, hogyan használható a Térkép vezérlőelem a jogosultságszint-emelési adatelérési út mentén. A felhasználó az elérési utat úgy határozza meg `Polyline` , hogy a bal felső sarokban lévő ikonra kattint, és lerajzolja a vonalláncot a térképen. A Térkép vezérlőelem ezután a jobb felső sarokban található kulcsban megadott színekben jeleníti meg a jogosultságszint-emelési adatértékeket.
 
 <br/>
 
@@ -480,7 +480,7 @@ Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/7bee08e5cb13d05cb0
 </iframe>
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Azure Maps jogosultságszint-emelési (előnézet) API-k további megismeréséhez lásd:
 

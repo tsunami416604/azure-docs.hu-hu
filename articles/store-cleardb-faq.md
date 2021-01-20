@@ -12,12 +12,12 @@ ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: references_regions
-ms.openlocfilehash: 25cc4dfaabee58a47cc33fe4be8dc7375bc804d2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d9d4ae746c192e8b4afd1781c1e072fc0dc70422
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96491642"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599796"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Gyakori kérdések ClearDB MySql-adatbázisok Azure App Service
 Ez a gyakori kérdések az Azure Web Apps ClearDB MySQL-adatbázisainak használatával és megvásárlásával kapcsolatos gyakori kérdésekre adnak választ.
@@ -42,7 +42,7 @@ Ez a használt előfizetés típusától függ. Íme néhány gyakran használt 
 * [Fizetés menet](https://azure.microsoft.com/offers/ms-azr-0003p/)közben: hitelkártyát igényel, és fizetős MySQL-adatbázis vásárlása esetén bankkártyáját kell fizetni.
 * [Ingyenes próbaverzió](https://azure.microsoft.com/pricing/free-trial/): Microsoft Azure-szolgáltatásokkal való használatra szánt krediteket tartalmaz, de nem engedélyezi harmadik féltől származó erőforrások megvásárlását. Harmadik féltől származó szolgáltatások vagy fizetős MySQL-adatbázis vásárlásához bankkártya-kompatibilis előfizetést kell használnia. Web Apps létrehozhat egy ingyenes ClearDB MySQL-adatbázist.
 * Az MSDN- [előfizetés](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/) és az **MSDN dev-teszt** díja: az ingyenes PRÓBAVERZIÓhoz hasonlóan az MSDN-előfizetés használatához bankkártyával kell rendelkeznie a fizetős MySQL-megoldás ClearDB való megvásárlásához.
-* [Nagyvállalati szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/): az nagyvállalati szerződéssel rendelkező ügyfeleket minden negyedévben az Azure Marketplace (harmadik féltől származó) vásárlások után külön, konszolidált számlán számoljuk el. A piactéren vásárolt vásárlásokra vonatkozó pénzügyi kötelezettségvállaláson kívüli díjat számítunk fel. Fontos megjegyezni, hogy jelenleg az Azure áruház nem érhető el az Azerbajdzsánban, Horvátországban, Norvégiában és Puerto Rico-ban regisztrált ügyfelek számára. 
+* [Nagyvállalati szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/): az nagyvállalati szerződéssel rendelkező ügyfeleket minden negyedévben az Azure Marketplace (harmadik féltől származó) vásárlások után külön, konszolidált számlán számoljuk el. Az Azure-előfizetést (korábban pénzügyi kötelezettségvállalásnak nevezett) kívül a piactéren vásárolt vásárlásokra is kiszámlázjuk. Fontos megjegyezni, hogy jelenleg az Azure áruház nem érhető el az Azerbajdzsánban, Horvátországban, Norvégiában és Puerto Rico-ban regisztrált ügyfelek számára. 
 
 ## <a name="why-was-i-charged-350-for-a-web-app--mysql-from-the-azure-marketplace"></a>Miért számolok fel $3,50-ra egy webalkalmazást és egy MySQL-t az Azure piactéren?
 Az alapértelmezett adatbázis-beállítás a Titan, amely $3,50. Az adatbázis létrehozása során nem mutatjuk be a költségeket, és előfordulhat, hogy véletlenül megvásárolta a nem kívánt adatbázist. Megpróbáljuk megkeresni a felhasználói élmény javítását, de addig is meg kell adnia a webalkalmazás és az adatbázis kiválasztott díjszabását, mielőtt a **create (létrehozás** ) gombra kattintana, és megkezdi az erőforrások üzembe helyezését.
@@ -94,10 +94,10 @@ A meglévő ClearDB-adatbázisok a meglévő előfizetésekhez társított bankk
 * Frissítse az alkalmazást az új adatbázis használatára.
 * Törölje a régi ClearDB-adatbázist.
 
-Amikor új webalkalmazást hoz létre a MySQL-sel (ClearDB), vagy létrehoz egy MySQL-adatbázist (ClearDB), a kiválasztott előfizetés határozza meg, hogy a szolgáltatásért milyen díjat kell fizetnie. EA-előfizetéssel nem tiltjuk le a harmadik féltől származó szolgáltatások, például a Azure Portal ClearDB beszerzését. Az EA-előfizetéseket a rendszer a pénzügyi kötelezettségvállaláson kívül számlázza, és negyedévente és utólag számlázza. Az EA-ügyfélnek olyan fizetési módot kell beállítania, mint például egy hitelkártyát, amelyet bármely harmadik féltől származó Piactéri szolgáltatásért fizetni kell.
+Amikor új webalkalmazást hoz létre a MySQL-sel (ClearDB), vagy létrehoz egy MySQL-adatbázist (ClearDB), a kiválasztott előfizetés határozza meg, hogy a szolgáltatásért milyen díjat kell fizetnie. EA-előfizetéssel nem tiltjuk le a harmadik féltől származó szolgáltatások, például a Azure Portal ClearDB beszerzését. Az EA-előfizetések számlázása az Azure-előfizetésen kívül történik, és negyedévente és hátralékban történik. Az EA-ügyfélnek olyan fizetési módot kell beállítania, mint például egy hitelkártyát, amelyet bármely harmadik féltől származó Piactéri szolgáltatásért fizetni kell.
 
 ## <a name="where-can-i-see-the-charges-for-cleardb-resources-in-an-ea-subscription"></a>Hol tekinthetem meg a ClearDB-erőforrások díjait az EA-előfizetésekben?
-A közvetlen nagyvállalati szerződéssel rendelkező ügyfelek esetében az Azure Marketplace díjai láthatók a Enterprise Portal. Vegye figyelembe, hogy a piactéren beszerzett összes vásárlás és felhasználás a pénzügyi kötelezettségvállaláson kívül kerül kiszámlázásra, és negyedévente és utólag számlázunk. A nagyvállalati szerződéssel rendelkező ügyfeleknek közvetlenül kell fizetniük a harmadik féltől származó szolgáltatók számára, és ezt megtehetik, ha a fizetési módot, például bankkártyát a saját EA-fiókjával szeretné megtenni.
+A közvetlen nagyvállalati szerződéssel rendelkező ügyfelek esetében az Azure Marketplace díjai láthatók a Enterprise Portal. Vegye figyelembe, hogy az Azure-előfizetésen kívül minden piactér-vásárlás és-felhasználás számlázása negyedévente és utólag történik. A nagyvállalati szerződéssel rendelkező ügyfeleknek közvetlenül kell fizetniük a harmadik féltől származó szolgáltatók számára, és ezt megtehetik, ha a fizetési módot, például bankkártyát a saját EA-fiókjával szeretné megtenni.
 
 A közvetett nagyvállalati szerződéssel rendelkező ügyfelek megtalálhatják az Azure Marketplace-előfizetéseit a Enterprise Portal- **Előfizetések kezelése** lapján, de a díjszabás rejtve. A Marketplace díjaival kapcsolatos információkért az ügyfeleknek licencmegoldás-szolgáltatójukhoz kell fordulniuk.
 

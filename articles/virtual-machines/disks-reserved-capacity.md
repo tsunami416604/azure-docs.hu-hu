@@ -7,12 +7,12 @@ ms.date: 01/30/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: e3642a621253b79fdfcdd8cb2b648dee534c6758
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: db6575894904e6ced2d4be48fec5961f5b8b8a54
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968685"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602626"
 ---
 # <a name="reduce-costs-with-azure-disks-reservation"></a>Költségek csökkentése Azure-beli lemezfoglalással
 
@@ -69,11 +69,11 @@ A fenntartott kapacitás megvásárlásához kövesse az alábbi lépéseket:
 
    |Elem  |Leírás  |
    |---------|---------|
-   |**Hatókör**   |  Hány előfizetés használhatja a foglaláshoz kapcsolódó számlázási kedvezményt. Ez az érték határozza meg azt is, hogy a foglalás hogyan legyen alkalmazva az adott előfizetésekre. <br/><br/> Ha a **megosztott**lehetőséget választja, a foglalási kedvezmény az Azure Storage-kapacitásra lesz alkalmazva a számlázási környezetben lévő összes előfizetésben. A számlázási környezet az Azure-ra való feliratkozáson alapul. A vállalati ügyfelek esetében a közös hatókör a regisztráció, és a regisztráción belüli összes előfizetés szerepel. Az utólagos elszámolású ügyfelek esetében a megosztott hatókör magában foglalja az összes olyan előfizetést, amely a fiók rendszergazdája által létrehozott utólagos elszámolású díjszabású.  <br/><br/>  Ha az **egyszeri előfizetést**választja, a foglalási kedvezményt a rendszer a kijelölt előfizetés Azure Storage-kapacitására alkalmazza. <br/><br/> Ha **egyetlen erőforráscsoportot**választ, a foglalási kedvezményt a kiválasztott előfizetésben és az előfizetés kiválasztott erőforráscsoporthoz tartozó Azure Storage-kapacitásra alkalmazza a rendszer. <br/><br/> A foglalási hatókört a foglalás megvásárlása után módosíthatja.  |
-   |**Előfizetés**  | Az Azure Storage-foglalás kifizetéséhez használt előfizetés. A kiválasztott előfizetéshez tartozó fizetési mód a költségek kitöltésére szolgál. Az előfizetésnek a következő típusok egyikének kell lennie:<br/><ul><li> Nagyvállalati Szerződés (ajánlati számok: MS-AZR-0017P és MS-AZR-0148P). A nagyvállalati előfizetések esetében a díjakat a beléptetés pénzügyi kötelezettségvállalásának egyenlege vagy a felszámított díj alapján kell levonni.</li><br/><li>Egyéni előfizetés utólagos elszámolású díjszabással (ajánlati számok: MS-AZR-0003P és MS-AZR-0023P). Az utólagos elszámolású előfizetések esetében az előfizetés díjait a hitelkártyára vagy a számla fizetési módjára kell fizetni.</li></ul>    |
+   |**Hatókör**   |  Hány előfizetés használhatja a foglaláshoz kapcsolódó számlázási kedvezményt. Ez az érték határozza meg azt is, hogy a foglalás hogyan legyen alkalmazva az adott előfizetésekre. <br/><br/> Ha a **megosztott** lehetőséget választja, a foglalási kedvezmény az Azure Storage-kapacitásra lesz alkalmazva a számlázási környezetben lévő összes előfizetésben. A számlázási környezet az Azure-ra való feliratkozáson alapul. A vállalati ügyfelek esetében a közös hatókör a regisztráció, és a regisztráción belüli összes előfizetés szerepel. Az utólagos elszámolású ügyfelek esetében a megosztott hatókör magában foglalja az összes olyan előfizetést, amely a fiók rendszergazdája által létrehozott utólagos elszámolású díjszabású.  <br/><br/>  Ha az **egyszeri előfizetést** választja, a foglalási kedvezményt a rendszer a kijelölt előfizetés Azure Storage-kapacitására alkalmazza. <br/><br/> Ha **egyetlen erőforráscsoportot** választ, a foglalási kedvezményt a kiválasztott előfizetésben és az előfizetés kiválasztott erőforráscsoporthoz tartozó Azure Storage-kapacitásra alkalmazza a rendszer. <br/><br/> A foglalási hatókört a foglalás megvásárlása után módosíthatja.  |
+   |**Előfizetés**  | Az Azure Storage-foglalás kifizetéséhez használt előfizetés. A kiválasztott előfizetéshez tartozó fizetési mód a költségek kitöltésére szolgál. Az előfizetésnek a következő típusok egyikének kell lennie:<br/><ul><li> Nagyvállalati Szerződés (ajánlati számok: MS-AZR-0017P és MS-AZR-0148P). A nagyvállalati előfizetések esetében a díjakat a beléptetési Azure-előfizetésből (korábban pénzügyi kötelezettségvállalásnak nevezett) egyenlegből és a túlterhelésnek megfelelően kell levonni.</li><br/><li>Egyéni előfizetés utólagos elszámolású díjszabással (ajánlati számok: MS-AZR-0003P és MS-AZR-0023P). Az utólagos elszámolású előfizetések esetében az előfizetés díjait a hitelkártyára vagy a számla fizetési módjára kell fizetni.</li></ul>    |
    | **Lemezek** | A létrehozni kívánt SKU. |
    | **Régió** | Az a régió, ahol a foglalás érvényben van. |
-   | **Számlázási gyakoriság** | Milyen gyakran történik a fiók számlázása a foglaláshoz. A lehetőségek közé tartoznak a **havi** és a **kezdeti**beállítások. |
+   | **Számlázási gyakoriság** | Milyen gyakran történik a fiók számlázása a foglaláshoz. A lehetőségek közé tartoznak a **havi** és a **kezdeti** beállítások. |
 
     ![A purchase.png kívánt termék kiválasztására szolgáló ablaktábla](media/disks-reserved-capacity/premium-ssd-reserved-purchase-selection.png)
 

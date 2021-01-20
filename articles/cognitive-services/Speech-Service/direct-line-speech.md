@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: e8c7e21b0784aacc85bd02e3c1702e1a710e76ab
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 501a0e954efbdbc9a0396fd94c915efaf0fde9fc
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021881"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601125"
 ---
 # <a name="what-is-direct-line-speech"></a>Mi az a Direct Line Speech?
 
@@ -23,7 +23,7 @@ A **Direct line Speech** egy robusztus, teljes körű megoldás egy rugalmas, b�
 
 A [hangvezérelt asszisztensek](voice-assistants.md) meghallgatják a felhasználókat, és válaszként reagálnak, gyakran beszélnek vissza. A felhasználók beszédének [szövegét](speech-to-text.md) használják a felhasználó beszédének átírására, majd a szöveg természetes nyelvének megismerésére. Ez a művelet gyakran tartalmazza a [szöveg-beszéd](text-to-speech.md)kapcsolattal generált segédből származó beszédes kimenetet.
 
-A közvetlen vonalas beszédfelismerés a lehető legmagasabb szintű testreszabást és kifinomultságot kínálja a hangsegédek számára. A szolgáltatás a két nyílt végű, természetes vagy hibrid, a feladatok befejezését, illetve a parancs-és vezérlési használatot használó beszélgetési forgatókönyvekhez készült. Ez a nagyfokú rugalmasság nagyobb bonyolultságot jelent, és a természetes nyelvi bevitelt használó, jól definiált feladatokra vonatkozó forgatókönyvek esetében előfordulhat, hogy az [egyéni parancsokat (előzetes verzió)](custom-commands.md) érdemes megfontolni a zökkenőmentes megoldáshoz.
+A közvetlen vonalas beszédfelismerés a lehető legmagasabb szintű testreszabást és kifinomultságot kínálja a hangsegédek számára. A szolgáltatás a két nyílt végű, természetes vagy hibrid, a feladatok befejezését, illetve a parancs-és vezérlési használatot használó beszélgetési forgatókönyvekhez készült. Ez a nagyfokú rugalmasság nagyobb bonyolultságot eredményez, és a természetes nyelvi bevitelt használó, jól definiált feladatokhoz tartozó forgatókönyvek esetében érdemes megfontolni az [egyéni parancsokat](custom-commands.md) a zökkenőmentes megoldási élmény érdekében.
 
 ## <a name="getting-started-with-direct-line-speech"></a>Első lépések a közvetlen vonalas Beszédtel
 
@@ -35,7 +35,7 @@ Az egyszerű hangsegédek közvetlen vonalas Beszédtel való létrehozásával 
 
 Emellett olyan gyors útmutatókat is kínálunk, amelyekkel a kód futtatásával és az API-kkal való ismerkedéssel gyorsan elsajátítható. Ez a táblázat a hangsegédek nyelvén és platformon szervezett rövid útmutatóit sorolja fel.
 
-| Gyorsútmutató | Platform | API-referencia |
+| Első lépések | Platform | API-referencia |
 |------------|----------|---------------|
 | C#, UWP | Windows | [Tallózás](/dotnet/api/microsoft.cognitiveservices.speech) |
 | Java | Windows, macOS, Linux | [Tallózás](/java/api/com.microsoft.cognitiveservices.speech) |
@@ -45,7 +45,7 @@ Emellett olyan gyors útmutatókat is kínálunk, amelyekkel a kód futtatásáv
 
 Hangsegéd létrehozásához használható mintakód a GitHubon érhető el. Ezek a minták lefedik az ügyfélalkalmazás számára a Segédhez való csatlakozást számos népszerű programozási nyelven.
 
-* [Hangsegéd-minták (SDK)](https://aka.ms/csspeech/samples)
+* [Hangsegéd-minták (SDK)](https://aka.ms/csspeech/samples/#voice-assistants-quickstarts)
 * [Oktatóanyag: hang engedélyezése a Segéd számára a Speech SDK, C #](tutorial-voice-enable-your-bot-speech-sdk.md)
 
 ## <a name="customization"></a>Testreszabás

@@ -8,12 +8,12 @@ author: AlexandraKemperMS
 ms.author: alkemper
 ms.topic: conceptual
 ms.date: 3/9/2020
-ms.openlocfilehash: 13857580d434736fbf0b12f52d39537ca864a497
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 39455c4bc193cce036bd169c702b5c020d53d2f6
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203130"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602286"
 ---
 # <a name="use-feature-filters-to-enable-conditional-feature-flags"></a>Funkciós szűrők használata a feltételes funkciók jelzőjének engedélyezéséhez
 
@@ -31,7 +31,7 @@ Létrehozhat egy saját szolgáltatáskészlet-szűrőt is, amely megvalósítja
 
 ## <a name="registering-a-feature-filter"></a>Szolgáltatás szűrőjének regisztrálása
 
-A szolgáltatás szűréséhez hívja meg a `AddFeatureFilter` metódust, és adja meg a szolgáltatás szűrőjének nevét. Például a következő kód regisztrálása `PercentageFilter` :
+Ha a metódus meghívásával regisztrálja a szolgáltatás szűrőjét `AddFeatureFilter` , adja meg a kívánt szolgáltatás-szűrő típusának nevét. Például a következő kód regisztrálása `PercentageFilter` :
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -56,14 +56,14 @@ Ezeket a beállításokat konfigurálhatja az Azure-alkalmazások konfiguráció
     > [!div class="mx-imgBorder"]
     > ![Bétaverzió funkciójának szerkesztése](./media/edit-beta-feature-flag.png)
 
-1. Ha még nincs bejelölve, a **Szerkesztés** képernyőn jelölje be a **szolgáltatás jelző engedélyezése** gombját. Ezután kattintson a **szolgáltatás szűrő használata** gombra, és válassza az **Egyéni** lehetőséget. 
+1. Ha még nincs engedélyezve, a **Szerkesztés** képernyőn jelölje be a **szolgáltatás jelző engedélyezése** jelölőnégyzetet. Jelölje be a **szolgáltatás szűrőjének használata** jelölőnégyzetet, és válassza az **Egyéni** lehetőséget. 
 
-1. A **kulcs** mezőben adja meg a *Microsoft. százalék* értéket.
+1. A **név** mezőben válassza a *Microsoft. százalék* elemet.
 
     > [!div class="mx-imgBorder"]
     > ![Szolgáltatás-szűrő hozzáadása](./media/feature-flag-add-filter.png)
 
-1. Kattintson a funkció szűrő kulcs melletti helyi menüre. Kattintson a **szűrő paramétereinek szerkesztése** elemre.
+1. Kattintson a szolgáltatás szűrőjének neve melletti helyi menüre. Kattintson a **szűrő paramétereinek szerkesztése** elemre.
 
     > [!div class="mx-imgBorder"]
     > ![Szolgáltatás-szűrő paramétereinek szerkesztése](./media/feature-flags-edit-filter-parameters.png)
@@ -75,10 +75,10 @@ Ezeket a beállításokat konfigurálhatja az Azure-alkalmazások konfiguráció
 
 1. Kattintson az **alkalmaz** gombra a **funkció-jelölő szerkesztése** képernyőre való visszatéréshez. Ezután kattintson ismét az **alkalmaz** gombra a szolgáltatás jelölő beállításainak mentéséhez.
 
-1. A szolgáltatás jelző **állapota** most *feltételesként* jelenik meg. Ez az állapot azt jelzi, hogy a szolgáltatás jelölője a szolgáltatás szűrője által kényszerített feltételek alapján lesz engedélyezve vagy letiltva a kérelmek alapján.
+1. A Feature **Manager** lapon a szolgáltatás jelölője mostantól az egyéni **szolgáltatás szűrő** értékét is tartalmazhatja. 
 
     > [!div class="mx-imgBorder"]
-    > ![Feltételes szolgáltatás jelzője](./media/feature-flag-filter-enabled.png)
+    > ![A szolgáltatás jelölője az "egyéni" szolgáltatáskészlet-értékkel szerepel](./media/feature-flag-filter-custom.png)
 
 ## <a name="feature-filters-in-action"></a>Funkciós szűrők működés közben
 
@@ -87,7 +87,7 @@ A szolgáltatás jelző hatásainak megtekintéséhez indítsa el az alkalmazás
 > [!div class="mx-imgBorder"]
 > ![TargetingFilter működés közben](./media/feature-flags-percentagefilter.gif)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [A funkciók lépcsőzetes bevezetésének engedélyezése a megcélzott célközönségek számára](./howto-targetingfilter-aspnet-core.md)
