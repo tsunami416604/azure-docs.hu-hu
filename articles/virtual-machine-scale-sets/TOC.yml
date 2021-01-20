@@ -182,7 +182,7 @@
         - name: Rövid élettartamú operációsrendszer-lemezek
           href: ../virtual-machines/ephemeral-os-disks.md
         - name: Lemezek skálázási célértékei
-          href: ../virtual-machines/windows/disk-scalability-targets.md
+          href: ../virtual-machines/disks-scalability-targets.md
           maintainContext: true
         - name: Lemezek biztonsági mentése és vészhelyreállítása
           href: ../virtual-machines/backup-and-disaster-recovery-for-azure-iaas-disks.md
