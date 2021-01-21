@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: ee32749e2c6f0118507fcfc6d4994a04ea3a6d69
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 759adea3cf34b79c76b6facec3bd4626ca54107e
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997273"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625032"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Oktatóanyag: Geokerítés beállítása az Azure Maps használatával
 
@@ -205,7 +205,7 @@ Ezután két [logikai alkalmazás](../event-grid/handler-webhooks.md#logic-apps)
 
     :::image type="content" source="./media/tutorial-geofence/logic-app-create.png" alt-text="Képernyőkép a logikai alkalmazás létrehozásáról.":::
 
-6. Válassza a **felülvizsgálat + létrehozás** lehetőséget. Tekintse át a beállításokat, és válassza a **Létrehozás** lehetőséget a telepítés elküldéséhez. Ha a telepítés sikeresen befejeződött, válassza az **Ugrás az erőforráshoz** lehetőséget. A **Logic app Designer alkalmazásban** végezhető el.
+6. Válassza a **Felülvizsgálat és létrehozás** lehetőséget. Tekintse át a beállításokat, és válassza a **Létrehozás** lehetőséget a telepítés elküldéséhez. Ha a telepítés sikeresen befejeződött, válassza az **Ugrás az erőforráshoz** lehetőséget. A **Logic app Designer alkalmazásban** végezhető el.
 
 7. Válasszon ki egy trigger típust. Görgessen le a **Start with a Common trigger** szakaszhoz. Válassza ki **a HTTP-kérelem fogadásának időpontját**.
 
@@ -254,7 +254,7 @@ A következő lépések bemutatják, hogyan hozhat létre esemény-előfizetést
 
     :::image type="content" source="./media/tutorial-geofence/events-subscription.png" alt-text="Képernyőkép a Azure Maps Events-előfizetés részleteiről.":::
 
-4. Kattintson a **Létrehozás** gombra.
+4. Válassza a **Létrehozás** lehetőséget.
 
 Ismételje meg a 1-4. lépést az előző szakaszban létrehozott logikai alkalmazás kilépési végpontján. A 3. lépésnél ügyeljen arra, hogy válassza ki `Geofence Exited` az esemény típusát.
 
@@ -282,7 +282,7 @@ A következő részekben az API-kérelmek a berendezések öt különböző föl
    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.638237&lon=-122.1324831&searchBuffer=5&isAsync=True&mode=EnterAndExit
    ```
 
-3. Válassza a **Küldés** lehetőséget. A válasz ablakban a következő GeoJSON jelennek meg.
+3. Kattintson a **Küldés** gombra. A válasz ablakban a következő GeoJSON jelennek meg.
 
     ```json
     {
@@ -322,7 +322,7 @@ Az előző GeoJSON-válaszban a fő hely geokerítésen negatív távolság azt 
    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63800&lon=-122.132531&searchBuffer=5&isAsync=True&mode=EnterAndExit
    ```
 
-3. Válassza a **Küldés** lehetőséget. A következő GeoJSON jelenik meg a válasz ablakban:
+3. Kattintson a **Küldés** gombra. A következő GeoJSON jelenik meg a válasz ablakban:
 
     ```json
     {
@@ -362,7 +362,7 @@ Az előző GeoJSON-válaszban a berendezés a fő hely geokerítésen maradt, é
       https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.63810783315048&lon=-122.13336020708084&searchBuffer=5&isAsync=True&mode=EnterAndExit
       ```
 
-3. Válassza a **Küldés** lehetőséget. A következő GeoJSON jelenik meg a válasz ablakban:
+3. Kattintson a **Küldés** gombra. A következő GeoJSON jelenik meg a válasz ablakban:
 
     ```json
     {
@@ -405,7 +405,7 @@ Az előző GeoJSON-válaszban a berendezés a fő hely geokerítésen maradt, de
     https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.637988&userTime=2023-01-16&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
     ```
 
-3. Válassza a **Küldés** lehetőséget. A következő GeoJSON jelenik meg a válasz ablakban:
+3. Kattintson a **Küldés** gombra. A következő GeoJSON jelenik meg a válasz ablakban:
 
     ```json
     {
@@ -439,7 +439,7 @@ Az előző GeoJSON-válaszban a berendezés a fő hely geokerítésen maradt, de
     https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.63799&lon=-122.134505&searchBuffer=5&isAsync=True&mode=EnterAndExit
     ```
 
-3. Válassza a **Küldés** lehetőséget. A következő GeoJSON jelenik meg a válasz ablakban:
+3. Kattintson a **Küldés** gombra. A következő GeoJSON jelenik meg a válasz ablakban:
 
     ```json
     {
@@ -472,7 +472,11 @@ Az előző GeoJSON-válaszban a berendezés kilépett a fő hely geokerítésen.
 
 Az [e-mailes értesítéseket Event Grid és Logic apps is elküldheti](../event-grid/publish-iot-hub-events-to-logic-apps.md) , és a Event Grid a Azure Maps használatával megtekintheti [a támogatott események kezelőit](../event-grid/event-handlers.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Nincsenek karbantartást igénylő erőforrások.
+
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Tartalomtípusok kezelése Azure Logic Appsban](../logic-apps/logic-apps-content-type.md)

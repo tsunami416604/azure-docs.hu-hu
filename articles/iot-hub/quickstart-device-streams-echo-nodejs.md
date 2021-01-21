@@ -1,5 +1,5 @@
 ---
-title: Kommunikáció az Node.js az Azure IoT Hub Device Streams szolgáltatással
+title: Gyors útmutató – kommunikáció az Node.js az Azure IoT Hub-eszközök Streams szolgáltatásával
 description: Ebben a rövid útmutatóban egy Node.js szolgáltatás-oldali alkalmazást fog futtatni, amely egy IoT-eszközzel kommunikál egy eszköz-adatfolyamon keresztül.
 author: robinsh
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-js, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 678955970f3eeb87a10c43cd43effc3464db7794
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 335014f032162866e4780bf1294ddcd108b4fd03
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832007"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624388"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>Gyors útmutató: Node.js eszközön keresztüli kommunikáció IoT Hub eszköz streamen keresztül (előzetes verzió)
 
@@ -47,7 +47,7 @@ A Microsoft Azure IoT Hub jelenleg [előzetes verziójú szolgáltatásként](ht
 > [!IMPORTANT]
 > Az adatfolyamok előnézete jelenleg csak a következő régiókban létrehozott IoT hubok esetében támogatott:
 >
-> * USA középső régiója
+> * Az USA középső régiója
 > * USA középső – EUAP
 > * Észak-Európa
 > * Délkelet-Ázsia
@@ -79,7 +79,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
     **YourIoTHubName**: az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
 
     ```azurecli-interactive
-    az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
+    az iot hub connection-string show --policy-name service --name {YourIoTHubName} --output table
     ```
 
     Jegyezze fel a visszaadott szolgáltatás-kapcsolatok karakterláncát a rövid útmutató későbbi verzióihoz. Az alábbi példához hasonlóan néz ki:
@@ -154,4 +154,4 @@ Ebben a rövid útmutatóban egy IoT hub, egy eszköz regisztrálása, az eszkö
 Az alábbi hivatkozásokat követve további információkat tudhat meg az eszközök streamekről:
 
 > [!div class="nextstepaction"]
-> [Az eszközök adatfolyamának áttekintése](./iot-hub-device-streams-overview.md) 
+> [Az eszközök adatfolyamának áttekintése](./iot-hub-device-streams-overview.md)

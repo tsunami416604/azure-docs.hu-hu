@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: f30b99a1d9c8303d5b2ed4b02819d0ca837946d2
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 7a33cf4e66ce31f8fb8534de25d7564a5784ca3a
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905740"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625049"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Oktatóanyag: elektromos járművek átirányítása Azure Notebooks használatával (Python)
 
@@ -62,7 +62,7 @@ Ennek az oktatóanyagnak a követéséhez létre kell hoznia egy Azure Notebooks
  
     ![Az új projekt létrehozása panel](./media/tutorial-ev-routing/create-project-window.png)
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 1. A projekt létrehozása után töltse le ezt a [Jupyter notebook dokumentumot](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb) a [Azure Maps Jupyter notebook adattárból](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook).
 
@@ -89,7 +89,7 @@ A kód Jupyter Notebook-ben való futtatásához a következő lépések végreh
     a. Az első legördülő listában válassza a **Requirements.txt** lehetőséget.  
     b. A második legördülő listában válassza ki a *requirements.txt* fájlt.  
     c. A harmadik legördülő listában válassza ki a **Python 3,6** -es verzióját.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
     ![Csomagok telepítése](./media/tutorial-ev-routing/install-packages.png)
 
@@ -398,6 +398,10 @@ Az oktatóanyagban használt Azure Maps API-k megismeréséhez tekintse meg a k�
 * [Útvonal-mátrix küldése](/rest/api/maps/route/postroutematrix)
 * [Útvonal irányának beolvasása](/rest/api/maps/route/getroutedirections)
 * [Azure Maps REST API-k](./consumption-model.md)
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Nincsenek karbantartást igénylő erőforrások.
 
 ## <a name="next-steps"></a>Következő lépések
 

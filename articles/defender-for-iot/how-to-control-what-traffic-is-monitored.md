@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b2f95ddb13896ed461a20f1948fef34569586d1f
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: bfe3e00c4930ba57c930eb1bc2f2dd4ed11886e0
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97977072"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624684"
 ---
 # <a name="control-what-traffic-is-monitored"></a>A monitorozandó forgalom szabályozása
 
@@ -186,11 +186,11 @@ DHCP-címtartomány beállítása:
 
 ## <a name="configure-dns-servers-for-reverse-lookup-resolution"></a>DNS-kiszolgálók konfigurálása a névlekérdezési feloldáshoz
 
-Az eszközök dúsításának növeléséhez több DNS-kiszolgálót is beállíthat, hogy carryout a fordított kereséseket. A hálózati alhálózatokban észlelt IP-címekhez társított állomásnevek vagy teljes tartománynevek feloldása is megoldható. Ha például egy érzékelő felfedi az IP-címet, akkor előfordulhat, hogy több DNS-kiszolgálót is lekérdez az állomásnév feloldásához.
+Az eszközök bővítésének növeléséhez több DNS-kiszolgálót is beállíthat, hogy carryout a fordított kereséseket. A hálózati alhálózatokban észlelt IP-címekhez társított állomásnevek vagy teljes tartománynevek feloldása is megoldható. Ha például egy érzékelő felfedi az IP-címet, akkor előfordulhat, hogy több DNS-kiszolgálót is lekérdez az állomásnév feloldásához.
 
 A CIDR összes formátuma támogatott.
 
-Az állomásnév megjelenik az eszközök leltárában és az objektum-hozzárendelésben, valamint a jelentésekben.
+Az állomásnév megjelenik az eszköz leltárában, valamint az eszközök és a jelentések között.
 
 Megadhatja a névkeresési feloldási ütemterveket adott óránkénti időközökre, például 12 óránként. Vagy ütemezhet egy adott időpontot is.
 

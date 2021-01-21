@@ -3,12 +3,12 @@ title: Kivételek Azure Relay és azok feloldása | Microsoft Docs
 description: Azure Relay kivételek és javasolt műveletek listája, melyekkel megoldhatja a megoldást.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: a644dfe80255c64980400866a5e3d197f75375bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44eeba6eb7b8cfd4e81a923c2d9a3155f1709f2c
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87532968"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625148"
 ---
 # <a name="azure-relay-exceptions"></a>Kivételek Azure Relay
 
@@ -18,16 +18,16 @@ Ez a cikk a Azure Relay API-k által esetlegesen generált kivételeket sorolja 
 
 A Relay API-k olyan kivételeket állítanak elő, amelyek a következő kategóriákba sorolhatók. A felsorolt javaslatok a kivételek megoldásához szükséges műveleteket is tartalmazzák.
 
-*   **Felhasználói kódolási hiba**: [System. ArgumentException](/dotnet/api/system.argumentexception?view=netcore-3.1), [System. InvalidOperationException](/dotnet/api/system.invalidoperationexception?view=netcore-3.1), [System. OperationCanceledException](/dotnet/api/system.operationcanceledexception?view=netcore-3.1), [System. Runtime. szerializálás. SerializationException](/dotnet/api/system.runtime.serialization.serializationexception?view=netcore-3.1). 
+*   **Felhasználói kódolási hiba**: [System. ArgumentException](/dotnet/api/system.argumentexception), [System. InvalidOperationException](/dotnet/api/system.invalidoperationexception), [System. OperationCanceledException](/dotnet/api/system.operationcanceledexception), [System. Runtime. szerializálás. SerializationException](/dotnet/api/system.runtime.serialization.serializationexception). 
 
     **Általános művelet**: próbálkozzon a kód kijavításával a folytatás előtt.
-*   **Telepítési/konfigurációs hiba**: [System. UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1). 
+*   **Telepítési/konfigurációs hiba**: [System. UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception). 
 
     **Általános művelet**: Tekintse át a konfigurációt. Ha szükséges, módosítsa a konfigurációt.
 *   **Átmeneti kivételek**: [Microsoft. ServiceBus. Messaging. MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception), [Microsoft. ServiceBus. Messaging. ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception), [Microsoft. ServiceBus. Messaging. MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception). 
 
     **Általános művelet**: Próbálja megismételni a műveletet, vagy értesítse a felhasználókat.
-*   **Egyéb kivételek**: [System. Transactions. TransactionException](/dotnet/api/system.transactions.transactionexception?view=netcore-3.1), [System. timeoutexception osztályról](/dotnet/api/system.timeoutexception?view=netcore-3.1). 
+*   **Egyéb kivételek**: [System. Transactions. TransactionException](/dotnet/api/system.transactions.transactionexception), [System. timeoutexception osztályról](/dotnet/api/system.timeoutexception). 
 
     **Általános művelet**: a kivétel típusára jellemző. Tekintse meg a következő szakaszban található táblázatot. 
 
@@ -37,11 +37,11 @@ Az alábbi táblázat az üzenetkezelési kivételek típusait és azok okait so
 
 | **Kivételtípus** | **Leírás** | **Javasolt művelet** | **Megjegyzés automatikus vagy azonnali újrapróbálkozás** |
 | --- | --- | --- | --- |
-| [Időtúllépés](/dotnet/api/system.timeoutexception?view=netcore-3.1) |A kiszolgáló a megadott időn belül nem válaszolt a kért műveletre, amelyet a [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout)vezérel. Lehet, hogy a kiszolgáló végrehajtotta a kért műveletet. Ez hálózati vagy más infrastrukturális késések miatt fordulhat elő. |Ellenőrizze a rendszerállapotot a konzisztencia beállításnál, majd próbálkozzon újra, ha szükséges. Lásd: [timeoutexception osztályról](#timeoutexception). |Előfordulhat, hogy az Újrapróbálkozás bizonyos esetekben segíthet. adja hozzá az újrapróbálkozási logikát a kódhoz. |
-| [Érvénytelen művelet](/dotnet/api/system.invalidoperationexception?view=netcore-3.1) |A kért felhasználói művelet nem engedélyezett a kiszolgálón vagy a szolgáltatáson belül. A részletekért tekintse meg a kivételt jelző üzenetet. |Keresse meg a kódot és a dokumentációt. Győződjön meg arról, hogy a kért művelet érvényes. |Az újrapróbálkozás nem segít. |
-| [A művelet megszakítva](/dotnet/api/system.operationcanceledexception?view=netcore-3.1) |Kísérlet történt egy olyan objektum műveletének meghívására, amely már be van zárva, megszakadt vagy el lett távolítva. Ritka esetekben a környezeti tranzakció már el van távolítva. |Ellenőrizze a kódot, és győződjön meg arról, hogy nem indít el műveleteket egy eldobott objektumon. |Az újrapróbálkozás nem segít. |
-| [Jogosulatlan hozzáférés](/dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1) |A [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) objektum nem tudott jogkivonatot beszerezni, a jogkivonat érvénytelen, vagy a jogkivonat nem tartalmazza a művelet végrehajtásához szükséges jogcímeket. |Győződjön meg arról, hogy a jogkivonat-szolgáltató a megfelelő értékekkel lett létrehozva. Vizsgálja meg a Access Control szolgáltatás konfigurációját. |Előfordulhat, hogy az Újrapróbálkozás bizonyos esetekben segíthet. adja hozzá az újrapróbálkozási logikát a kódhoz. |
-| [Argumentum kivétel](/dotnet/api/system.argumentexception?view=netcore-3.1),<br /> [Argumentum null](/dotnet/api/system.argumentnullexception?view=netcore-3.1),<br />[Argumentum az engedélyezett tartományon kívül](/dotnet/api/system.argumentoutofrangeexception?view=netcore-3.1) |A következők közül egy vagy több történt:<br />A metódushoz megadott egy vagy több argumentum érvénytelen.<br /> A [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) vagy [létrehozáshoz](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) megadott URI egy vagy több elérésiút-szegmenst tartalmaz.<br />A [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) vagy- [létrehozáshoz](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) megadott URI-séma érvénytelen. <br />A tulajdonság értéke nagyobb, mint 32 KB. |Ellenőrizze a hívó kódját, és ellenőrizze, hogy helyesek-e az argumentumok. |Az újrapróbálkozás nem segít. |
+| [Időtúllépés](/dotnet/api/system.timeoutexception) |A kiszolgáló a megadott időn belül nem válaszolt a kért műveletre, amelyet a [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout)vezérel. Lehet, hogy a kiszolgáló végrehajtotta a kért műveletet. Ez hálózati vagy más infrastrukturális késések miatt fordulhat elő. |Ellenőrizze a rendszerállapotot a konzisztencia beállításnál, majd próbálkozzon újra, ha szükséges. Lásd: [timeoutexception osztályról](#timeoutexception). |Előfordulhat, hogy az Újrapróbálkozás bizonyos esetekben segíthet. adja hozzá az újrapróbálkozási logikát a kódhoz. |
+| [Érvénytelen művelet](/dotnet/api/system.invalidoperationexception) |A kért felhasználói művelet nem engedélyezett a kiszolgálón vagy a szolgáltatáson belül. A részletekért tekintse meg a kivételt jelző üzenetet. |Keresse meg a kódot és a dokumentációt. Győződjön meg arról, hogy a kért művelet érvényes. |Az újrapróbálkozás nem segít. |
+| [A művelet megszakítva](/dotnet/api/system.operationcanceledexception) |Kísérlet történt egy olyan objektum műveletének meghívására, amely már be van zárva, megszakadt vagy el lett távolítva. Ritka esetekben a környezeti tranzakció már el van távolítva. |Ellenőrizze a kódot, és győződjön meg arról, hogy nem indít el műveleteket egy eldobott objektumon. |Az újrapróbálkozás nem segít. |
+| [Jogosulatlan hozzáférés](/dotnet/api/system.unauthorizedaccessexception) |A [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) objektum nem tudott jogkivonatot beszerezni, a jogkivonat érvénytelen, vagy a jogkivonat nem tartalmazza a művelet végrehajtásához szükséges jogcímeket. |Győződjön meg arról, hogy a jogkivonat-szolgáltató a megfelelő értékekkel lett létrehozva. Vizsgálja meg a Access Control szolgáltatás konfigurációját. |Előfordulhat, hogy az Újrapróbálkozás bizonyos esetekben segíthet. adja hozzá az újrapróbálkozási logikát a kódhoz. |
+| [Argumentum kivétel](/dotnet/api/system.argumentexception),<br /> [Argumentum null](/dotnet/api/system.argumentnullexception),<br />[Argumentum az engedélyezett tartományon kívül](/dotnet/api/system.argumentoutofrangeexception) |A következők közül egy vagy több történt:<br />A metódushoz megadott egy vagy több argumentum érvénytelen.<br /> A [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) vagy [létrehozáshoz](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) megadott URI egy vagy több elérésiút-szegmenst tartalmaz.<br />A [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) vagy- [létrehozáshoz](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) megadott URI-séma érvénytelen. <br />A tulajdonság értéke nagyobb, mint 32 KB. |Ellenőrizze a hívó kódját, és ellenőrizze, hogy helyesek-e az argumentumok. |Az újrapróbálkozás nem segít. |
 | [Kiszolgáló foglalt](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) |A szolgáltatás jelenleg nem tudja feldolgozni a kérelmet. |Az ügyfél hosszabb ideig is megvárhat, majd próbálja megismételni a műveletet. |Előfordulhat, hogy az ügyfél egy adott intervallum után újrapróbálkozik. Ha az újrapróbálkozások eltérő kivételt eredményeznek, ellenőrizze a kivétel újrapróbálkozási viselkedését. |
 | [Kvóta túllépve](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) |Az üzenetküldési entitás elérte a maximálisan engedélyezett méretet. |Hozzon létre helyet az entitásban az entitásból vagy annak alvárólistából érkező üzenetek fogadásával. Lásd: [quotaexceededexception osztályról](#quotaexceededexception). |Az újrapróbálkozás akkor lehet hasznos, ha az üzenetek időközben el lettek távolítva. |
 | [Az üzenet mérete túllépve](/dotnet/api/microsoft.servicebus.messaging.messagesizeexceededexception) |Az üzenet tartalma meghaladja az 256-KB korlátot. Vegye figyelembe, hogy az 256-KB korlát a teljes üzenet mérete. Az üzenetek teljes mérete magában foglalhatja a rendszertulajdonságokat és a Microsoft .NET terhelését is. |Csökkentse az üzenet adattartalmát, majd próbálja megismételni a műveletet. |Az újrapróbálkozás nem segít. |
@@ -50,12 +50,12 @@ Az alábbi táblázat az üzenetkezelési kivételek típusait és azok okait so
 
 A [quotaexceededexception osztályról](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) azt jelzi, hogy egy adott entitásra vonatkozó kvóta túllépve.
 
-A Relay esetében ez a kivétel a [System. ServiceModel. quotaexceededexception osztályról](/dotnet/api/system.servicemodel.quotaexceededexception?view=dotnet-plat-ext-3.1)takarja, amely azt jelzi, hogy a figyelő maximális száma túllépte a végpontot. Ezt a kivételt jelző üzenet **MaximumListenersPerEndpoint** értéke jelzi.
+A Relay esetében ez a kivétel a [System. ServiceModel. quotaexceededexception osztályról](/dotnet/api/system.servicemodel.quotaexceededexception)takarja, amely azt jelzi, hogy a figyelő maximális száma túllépte a végpontot. Ezt a kivételt jelző üzenet **MaximumListenersPerEndpoint** értéke jelzi.
 
 ## <a name="timeoutexception"></a>Timeoutexception osztályról
-A [timeoutexception osztályról](/dotnet/api/system.timeoutexception?view=netcore-3.1) azt jelzi, hogy a felhasználó által kezdeményezett művelet a művelet időkorlátja alatt hosszabb időt vesz igénybe. 
+A [timeoutexception osztályról](/dotnet/api/system.timeoutexception) azt jelzi, hogy a felhasználó által kezdeményezett művelet a művelet időkorlátja alatt hosszabb időt vesz igénybe. 
 
-Keresse meg a [ServicePointManager. DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit?view=netcore-3.1#System_Net_ServicePointManager_DefaultConnectionLimit) tulajdonság értékét. A korlát eléréséhez [timeoutexception osztályról](/dotnet/api/system.timeoutexception?view=netcore-3.1)is vezethet.
+Keresse meg a [ServicePointManager. DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit#System_Net_ServicePointManager_DefaultConnectionLimit) tulajdonság értékét. A korlát eléréséhez [timeoutexception osztályról](/dotnet/api/system.timeoutexception)is vezethet.
 
 A Relay esetében időtúllépési kivételek jelenhetnek meg, amikor először nyit meg egy Relay feladói kapcsolatát. Ennek a kivételnek két gyakori oka van:
 
@@ -79,7 +79,7 @@ Ennek a hibának két gyakori oka van:
 
     Időnként előfordulhat, hogy a továbbító szolgáltatás késéseket tapasztal a feldolgozási kérelmekben. Ez például a nagy forgalmú időszakok esetében fordulhat elő. Ha ez történik, próbálkozzon újra a művelettel egy késleltetés után, amíg a művelet nem sikerült. Ha ugyanaz a művelet több kísérlet után is folytatódik, ellenőrizze az [Azure szolgáltatás állapotát](https://azure.microsoft.com/status/) , és győződjön meg róla, hogy ismert szolgáltatások kimaradása történt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Azure Relay GYIK](relay-faq.md)
 * [Relay-névtér létrehozása](relay-create-namespace-portal.md)
 * [Ismerkedés a Azure Relay és a .NET használatával](relay-hybrid-connections-dotnet-get-started.md)

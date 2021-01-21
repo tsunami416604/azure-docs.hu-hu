@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: philmea
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 857ae8d824443e9a8abdac7c4a66e2b014be2be0
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 3772988e9bf4f733323adae6c0527c8b811c4d04
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566350"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624456"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Oktatóanyag: Azure IoT Hub-eseményekkel kapcsolatos e-mail-értesítések küldése az Event Grid és a Logic Apps használatával
 
@@ -69,7 +69,7 @@ Ezután hozzon létre egy logikai alkalmazást, és adjon hozzá egy HTTP Event 
 
    ![A logikai alkalmazás létrehozására szolgáló mezők](./media/publish-iot-hub-events-to-logic-apps/create-logic-app-fields.png)
 
-1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
 1. Ellenőrizze a beállításokat, majd válassza a **Létrehozás** lehetőséget.
 
@@ -127,7 +127,7 @@ A műveletek azok a lépések, azután mennek végbe, hogy a trigger elindítja 
 
 1. Keresse meg az **Outlookot**.
 
-1. Az e-mail-szolgáltató alapján keresse meg és válassza ki a megfelelő összekötőt. Ez az oktatóanyag az **Outlook.com** -t használja. Az egyéb e-mail-szolgáltatókra vonatkozó lépések is hasonlók. 
+1. Az e-mail-szolgáltató alapján keresse meg és válassza ki a megfelelő összekötőt. Ez az oktatóanyag az **Outlook.com**-t használja. Az egyéb e-mail-szolgáltatókra vonatkozó lépések is hasonlók. 
 
    ![E-mail-szolgáltató összekötőjének kiválasztása](./media/publish-iot-hub-events-to-logic-apps/outlook-step.png)
 
@@ -137,17 +137,17 @@ A műveletek azok a lépések, azután mennek végbe, hogy a trigger elindítja 
 
 1. Készítse el az e-mail-sablont. 
 
-   * **Címzett** : Adja meg az értesítési e-maileket fogadó e-mail-címet. Ehhez az oktatóanyaghoz olyan e-mail-fiókot használjon, amelyhez hozzáfér majd a tesztelés során. 
+   * **Címzett**: Adja meg az értesítési e-maileket fogadó e-mail-címet. Ehhez az oktatóanyaghoz olyan e-mail-fiókot használjon, amelyhez hozzáfér majd a tesztelés során. 
 
-   * **Tárgy** : Írja be a tárgy szövegét. Ha a tárgy szövegmezőre kattint, kiválaszthatja a felvenni kívánt dinamikus tartalmat is. Ez az oktatóanyag például a következőt használja: `IoT Hub alert: {eventType}` . Ha nem látja a dinamikus tartalmat, válassza a **dinamikus tartalom hozzáadása** hiperhivatkozást. Ez a beállítás be-és kikapcsolható.
+   * **Tárgy**: Írja be a tárgy szövegét. Ha a tárgy szövegmezőre kattint, kiválaszthatja a felvenni kívánt dinamikus tartalmat is. Ez az oktatóanyag például a következőt használja: `IoT Hub alert: {eventType}` . Ha nem látja a dinamikus tartalmat, válassza a **dinamikus tartalom hozzáadása** hiperhivatkozást. Ez a beállítás be-és kikapcsolható.
 
-   * **Törzs** : Írja meg az e-mail szövegét. A választó eszközről választott JSON-tulajdonságokkal az esemény adataira alapuló dinamikus tartalmat illeszthet be. Ha nem látja a dinamikus tartalmat, válassza a **dinamikus tartalom hozzáadása** hiperhivatkozást a **szövegtörzs** szövegmezőben. Ha nem jeleníti meg a kívánt mezőket, a dinamikus tartalom képernyőn kattintson a *továbbiak* lehetőségre, hogy az előző műveletből származó mezőket is tartalmazza.
+   * **Törzs**: Írja meg az e-mail szövegét. A választó eszközről választott JSON-tulajdonságokkal az esemény adataira alapuló dinamikus tartalmat illeszthet be. Ha nem látja a dinamikus tartalmat, válassza a **dinamikus tartalom hozzáadása** hiperhivatkozást a **szövegtörzs** szövegmezőben. Ha nem jeleníti meg a kívánt mezőket, a dinamikus tartalom képernyőn kattintson a *továbbiak* lehetőségre, hogy az előző műveletből származó mezőket is tartalmazza.
 
    Az e-mail-sablon a következő példához hasonló lehet:
 
    ![E-mail-adatok kitöltése](./media/publish-iot-hub-events-to-logic-apps/email-content.png)
 
-1. Válassza a **Mentés** lehetőséget a Logic apps Designerben.  
+1. A Logic Apps Designerben válassza a **Mentés** elemet.  
 
 ### <a name="copy-the-http-url"></a>A HTTP URL-cím másolása
 
@@ -167,32 +167,32 @@ Ebben a szakaszban konfiguráljuk az IoT-központot, hogy közzétegye a beköve
 
 1. Az Azure Portalon keresse meg az IoT-központot. Ehhez válassza az **erőforráscsoportok** lehetőséget, majd jelölje ki az oktatóanyaghoz tartozó erőforráscsoportot, majd válassza ki az IoT hubot az erőforrások listájából.
 
-1. Válassza az **események** lehetőséget.
+1. Válassza az **Események** elemet.
 
    ![Az Event Grid-adatok megnyitása](./media/publish-iot-hub-events-to-logic-apps/event-grid.png)
 
-1. Válassza az **esemény-előfizetés** lehetőséget. 
+1. Válassza az **Eseményfeliratkozás** elemet. 
 
    ![Új esemény-előfizetés létrehozása](./media/publish-iot-hub-events-to-logic-apps/event-subscription.png)
 
 1. Hozza létre az esemény-előfizetést a következő értékekkel: 
 
-   1. Az **esemény-előfizetés részletei** szakaszban:
+   1. Az **ESEMÉNYFELIRATKOZÁS RÉSZLETEI** szakaszban:
       1. Adja meg az esemény-előfizetés **nevét** . 
       2. Válassza ki **Event Grid sémát** az **eseményvezérelt sémához**. 
-   2. A **témakör részletei** szakaszban:
-      1. Ellenőrizze, hogy a **témakör típusa** **IoT hub** értékre van-e állítva. 
-      2. Győződjön meg róla, hogy az IoT hub neve a **forrás erőforrás** mező értékeként van beállítva. 
+   2. A **TÉMAKÖR RÉSZLETEI** szakaszban:
+      1. Erősítse meg, hogy a **Témakör típusa** az **IoT Hub** értékre van állítva. 
+      2. Erősítse meg, hogy a **Forrás-erőforrás** mező értékeként az IoT-központ neve van megadva. 
       3. Adja meg annak a **rendszertémakörnek** a nevét, amelyet létre fog hozni Önnek. A rendszertémakörökről a [rendszertémakörök áttekintésében](system-topics.md)talál további információt.
-   3. Az **események típusai** szakaszban:
-      1. Válassza ki a **szűrőt az események típusai** legördülő listából.
+   3. Az **ESEMÉNYTÍPUSOK** szakaszban:
+      1. Válassza a **Szűrés eseménytípusra** legördülő listát.
       1. Törölje a **létrehozott eszközt** és az **eszköz törölte** jelölőnégyzeteket, és csak a **csatlakoztatott eszközt** és az **eszköz leválasztott** jelölőnégyzeteit hagyja ki.
 
-         ![előfizetési események típusának kiválasztása](./media/publish-iot-hub-events-to-logic-apps/subscription-event-types.png)
+         ![feliratkozási eseménytípusok választása](./media/publish-iot-hub-events-to-logic-apps/subscription-event-types.png)
    
-   4. A **VÉGPONT részletei** szakaszban: 
+   4. A **VÉGPONT ADATAI** szakaszban: 
        1. Válassza ki a **végpont típusát** **webhookként**.
-       2. Kattintson a **válasszon ki egy végpontot** , illessze be a logikai alkalmazásból másolt URL-címet, és erősítse meg a kijelölést.
+       2. Kattintson a **végpont kiválasztása** elemre, illessze be a logikai alkalmazásból kimásolt URL-címet, és erősítse meg a választását.
 
          ![végpont url-jének kiválasztása](./media/publish-iot-hub-events-to-logic-apps/endpoint-webhook.png)
 
@@ -200,7 +200,7 @@ Ebben a szakaszban konfiguráljuk az IoT-központot, hogy közzétegye a beköve
 
          ![Esemény-előfizetési űrlapminta](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
 
-1.  Kattintson a **Létrehozás** gombra.
+1.  Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="simulate-a-new-device-connecting-and-sending-telemetry"></a>Telemetria-csatlakozást és-küldést szolgáló új eszköz szimulálása
 
@@ -242,4 +242,7 @@ Az oktatóanyagban létrehozott összes erőforrás törléséhez törölje az e
 * [Ismerje meg, hogyan rendezheti az eszközhöz csatlakoztatott és nem csatlakoztatott eseményeket](../iot-hub/iot-hub-how-to-order-connection-state-events.md)
 * Ismerje meg részletesebben az [Event Grid](overview.md) által kínált lehetőségeket.
 
-A támogatott Logic apps-összekötők teljes listájáért tekintse meg az [Összekötők áttekintése](/connectors/)című témakört.
+A támogatott Logic apps-összekötők teljes listáját lásd: 
+
+> [!div class="nextstepaction"]
+> Az [Összekötők áttekintése](/connectors/).

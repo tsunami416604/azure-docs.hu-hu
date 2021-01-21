@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 0004a250173ce6707462b852016d205782479717
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d8aaf093a7e2a0ad1470d72d815e919f5b4e2d05
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896680"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624983"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>Oktatóanyag: útvonal-utasítások megjelenítése a Azure Maps Route Service és a Map Control használatával
 
@@ -174,7 +174,7 @@ Ebben az oktatóanyagban az útvonalat egy vonal réteggel fogjuk megjeleníteni
 
 3. Mentse **MapRoute.html** -t, és frissítse a böngészőt. A Térkép most már a Seattle-i középpontban van. A könnycsepp kék PIN-kód a kezdőpontot jelöli. A kerek kék PIN-kód a végpontot jelöli.
 
-    :::image type="content" source="./media/tutorial-route-location/map-pins.png" alt-text="Térkép vezérlőelem alapszintű leképezése":::
+    :::image type="content" source="./media/tutorial-route-location/map-pins.png" alt-text="Útvonalak megnézetének kezdete és vége a térképen":::
 
 <a id="getroute"></a>
 
@@ -183,7 +183,7 @@ Ebben az oktatóanyagban az útvonalat egy vonal réteggel fogjuk megjeleníteni
 Ebből a szakaszból megtudhatja, hogyan használhatja a Azure Maps Route Directions API-t az útvonal irányának lekérésére és az egyik pontról a másikra való érkezés várható időpontjára.
 
 >[!TIP]
->A Azure Maps Route Services API-kat kínál az útvonalak megtervezéséhez különböző útvonal-típusok alapján, például a *leggyorsabb* , *legrövidebb* , *Eco* vagy *izgalmas* útvonalakon a távolság, a forgalmi feltételek és a felhasznált átviteli mód alapján. A szolgáltatás azt is lehetővé teszi, hogy a felhasználók a korábbi forgalmi feltételek alapján tervezzék meg a jövőbeli útvonalakat. A felhasználók megtekinthetik az útvonal időtartamának előrejelzését egy adott időpontra vonatkozóan. További információkért lásd: [Route Directions API beszerzése](/rest/api/maps/route/getroutedirections).
+>A Azure Maps Route Services API-kat kínál az útvonalak megtervezéséhez különböző útvonal-típusok alapján, például a *leggyorsabb*, *legrövidebb*, *Eco* vagy *izgalmas* útvonalakon a távolság, a forgalmi feltételek és a felhasznált átviteli mód alapján. A szolgáltatás azt is lehetővé teszi, hogy a felhasználók a korábbi forgalmi feltételek alapján tervezzék meg a jövőbeli útvonalakat. A felhasználók megtekinthetik az útvonal időtartamának előrejelzését egy adott időpontra vonatkozóan. További információkért lásd: [Route Directions API beszerzése](/rest/api/maps/route/getroutedirections).
 
 1. A `GetMap` függvényben a vezérlő `ready` eseménykezelőján belül adja hozzá a következőt a JavaScript-kódhoz.
 
@@ -216,9 +216,13 @@ Ebből a szakaszból megtudhatja, hogyan használhatja a Azure Maps Route Direct
 
 3. Mentse a **MapRoute.html** fájlt, és frissítse a webböngészőt. A térképnek most az elejétől a végpontig kell megjelenítenie az útvonalat.
 
-     :::image type="content" source="./media/tutorial-route-location/map-route.png" alt-text="Térkép vezérlőelem alapszintű leképezése":::
+     :::image type="content" source="./media/tutorial-route-location/map-route.png" alt-text="Azure Map Control és Route Service":::
 
 A minta teljes forráskódját [itt](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)szerezheti be. [Itt](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)találhat egy élő mintát.
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Nincsenek karbantartást igénylő erőforrások.
 
 ## <a name="next-steps"></a>Következő lépések
 

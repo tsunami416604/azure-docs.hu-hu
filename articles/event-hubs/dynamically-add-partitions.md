@@ -3,12 +3,12 @@ title: Partíciók dinamikus hozzáadása az Azure-beli Event hub-Event Hubs
 description: Ebből a cikkből megtudhatja, hogyan adhat hozzá dinamikusan partíciókat az Azure Event Hubs egy Event hub-hoz.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 4ebe4491338c24a331812041f4d3e6d37b934117
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: e6efdc7bab309f825032555c97f1e1128f5addd6
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132171"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625265"
 ---
 # <a name="dynamically-add-partitions-to-an-event-hub-apache-kafka-topic-in-azure-event-hubs"></a>Partíciók dinamikus hozzáadása egy Event hub-hoz (Apache Kafka témakörhöz) az Azure-ban Event Hubs
 Az Event Hubs üzenetstreamelést biztosít egy particionált felhasználói mintán keresztül, amelyben mindegyik felhasználó az üzenetstream csak egy adott részét, vagyis partícióját olvassa. Ez a minta biztosítja a horizontális skálázhatóságot az eseményfeldolgozáshoz, és egyéb, streamközpontú szolgáltatásokat is nyújt, amelyek az üzenetsorokban vagy témakörökben nem érhetők el. A partíció események egy rendezett sorozata az eseményközpontban. Ahogy újabb események érkeznek, a rendszer hozzáadja a sorozatot a végéhez. A partíciókkal kapcsolatos további információkért lásd: [partíciók](event-hubs-scalability.md#partitions)
@@ -26,14 +26,14 @@ Az Event hub létrehozásakor megadhatja a partíciók számát. Bizonyos esetek
 Ebből a szakaszból megtudhatja, hogyan frissítheti az Event hub partícióinak számát különböző módokon (PowerShell, CLI stb.).
 
 ### <a name="powershell"></a>PowerShell
-Az Event hub partícióinak frissítéséhez használja a [set-AzureRmEventHub PowerShell-](/powershell/module/azurerm.eventhub/Set-AzureRmEventHub?view=azurermps-6.13.0) parancsot. 
+Az Event hub partícióinak frissítéséhez használja a [set-AzureRmEventHub PowerShell-](/powershell/module/azurerm.eventhub/Set-AzureRmEventHub) parancsot. 
 
 ```azurepowershell-interactive
 Set-AzureRmEventHub -ResourceGroupName MyResourceGroupName -Namespace MyNamespaceName -Name MyEventHubName -partitionCount 12
 ```
 
 ### <a name="cli"></a>parancssori felület
-Az [`az eventhubs eventhub update`](/cli/azure/eventhubs/eventhub?view=azure-cli-latest#az-eventhubs-eventhub-update) Event hub partícióinak frissítéséhez használja a CLI-parancsot. 
+Az [`az eventhubs eventhub update`](/cli/azure/eventhubs/eventhub#az-eventhubs-eventhub-update) Event hub partícióinak frissítéséhez használja a CLI-parancsot. 
 
 ```azurecli-interactive
 az eventhubs eventhub update --resource-group MyResourceGroupName --namespace-name MyNamespaceName --name MyEventHubName --partition-count 12

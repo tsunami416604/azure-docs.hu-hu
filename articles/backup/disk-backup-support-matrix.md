@@ -4,12 +4,12 @@ description: Összefoglalja a támogatási beállításokat és az Azure Disk Ba
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 950651148237c7b9374c378e27ef5cd76697ae9e
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 099e83d8a2fb109da862657265dad8be8143f608
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98557871"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624934"
 ---
 # <a name="azure-disk-backup-support-matrix-in-preview"></a>Az Azure Disk Backup támogatási mátrixa (előzetes verzió)
 
@@ -55,6 +55,8 @@ További régiók lesznek bejelentve, amikor elérhetővé válnak.
 - A biztonsági mentési szabályzat jelenleg nem módosítható, és a biztonságimásolat-készítési példányhoz rendelt pillanatkép-erőforráscsoport nem módosítható a lemez biztonsági mentésének konfigurálásakor.
 
 - Jelenleg a lemezek biztonsági mentésének konfigurálásához szükséges Azure Portal-élmény az azonos előfizetésből legfeljebb 20 lemezre korlátozódik.
+
+- Jelenleg (az előzetes verzió alatt) a PowerShell és az Azure CLI használata a lemezek biztonsági mentésének és visszaállításának konfigurálásához nem támogatott.
 
 - A biztonsági mentés konfigurálásakor a rendszer biztonsági mentésre kijelölt lemezt és a pillanatképek tárolására szolgáló pillanatkép-erőforráscsoportot ugyanahhoz az előfizetéshez kell tartoznia. Nem hozható létre növekményes pillanatkép a lemez előfizetésén kívüli adott lemezhez. További információ a felügyelt lemez [növekményes pillanatképekről](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) . A pillanatképek erőforráscsoport kiválasztásával kapcsolatos további információkért lásd:  [biztonsági mentés konfigurálása](backup-managed-disks.md#configure-backup).
 

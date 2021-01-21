@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: f3058953e702f40fa1500441e382898b0314ddbb
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 9c868685ad943c1ab9ab263a164111e46294c042
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97839740"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625431"
 ---
-# <a name="investigate-sensor-detections-in-a-device-inventory"></a>Érzékelő észlelésének vizsgálata egy eszköz leltározásakor
+# <a name="investigate-sensor-detections-in-a-device-inventory"></a>Egy eszközkészlet érzékelői általi észlelések vizsgálata
 
 Az eszköz leltára az eszköz által észlelt attribútumok széles körét jeleníti meg. A következő lehetőségek érhetők el:
 
@@ -223,8 +223,8 @@ CSV-fájl exportálása:
 
 - Az eszközök leltárának jobb felső menüjében válassza a elemet :::image type="icon" source="media/how-to-work-with-asset-inventory-information/csv-excel-export-icon.png" border="false"::: . A CSV-jelentés létrehozása és letöltése megtörténik.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
-[Az eszközök leltárában szereplő összes vállalati érzékelő észlelésének vizsgálata](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)
+[Egy eszközkészlet összes vállalati érzékelője általi észlelések vizsgálata](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)
 
 [Webhelyszerkezet-nézetek használata](how-to-gain-insight-into-global-regional-and-local-threats.md#work-with-site-map-views)

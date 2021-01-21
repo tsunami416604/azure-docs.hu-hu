@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 125ca501dbad74263f32632db44eebd097c3b0a1
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: dbf2331dc6bcd3187175554b61d347e8bb2c04a4
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896701"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624999"
 ---
 # <a name="tutorial-find-and-display-routes-for-different-modes-of-travel-using-azure-maps"></a>Oktatóanyag: útvonalak keresése és megjelenítése különböző utazási módokhoz Azure Maps használatával
 
-Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Azure Maps [Route Service](/rest/api/maps/route) -t és a [Térkép vezérlőelemet](./how-to-use-map-control.md) a személygépkocsik és a kereskedelmi gépjárművek (kamionok) útvonali irányának megjelenítésére a `USHazmatClass2` rakomány típusával. Emellett végigvezeti Önt a valós idejű adatforgalmi adatok térképeken való megjelenítésének módján. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Azure Maps [Route Service](/rest/api/maps/route) -t és a [Térkép vezérlőelemet](./how-to-use-map-control.md) a személygépkocsik és a kereskedelmi gépjárművek (kamionok) útvonali irányának megjelenítésére a `USHazmatClass2` rakomány típusával. Emellett végigvezeti Önt a valós idejű adatforgalmi adatok térképeken való megjelenítésének módján. Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * A Térkép vezérlőelem létrehozása és megjelenítése egy weblapon
@@ -121,7 +121,7 @@ A következő lépések bemutatják, hogyan hozhatja létre és jelenítheti meg
 
 2. Mentse a **MapTruckRoute.html** fájlt, és frissítse a lapot a böngészőben. Ha bármely városba, például a Los Angeles-be nagyítja, látni fogja, hogy az utcák a jelenlegi forgalmi flow-adatokkal jelennek meg.
 
-    :::image type="content" source="./media/tutorial-prioritized-routes/traffic-map.png" alt-text="Térkép vezérlőelem alapszintű leképezése":::
+    :::image type="content" source="./media/tutorial-prioritized-routes/traffic-map.png" alt-text="Térkép forgalmának megtekintése":::
 
 <a id="queryroutes"></a>
 
@@ -197,7 +197,7 @@ Ebben az oktatóanyagban két útvonalat számítunk ki és jelenítünk meg a t
 
 3. Mentse **TruckRoute.html** -t, és frissítse a böngészőt. A Térkép most már a Seattle-i középpontban van. A könnycsepp kék PIN-kód a kezdőpontot jelöli. A kerek kék PIN-kód a végpontot jelöli.
 
-   :::image type="content" source="./media/tutorial-prioritized-routes/pins-map.png" alt-text="Térkép vezérlőelem alapszintű leképezése":::
+   :::image type="content" source="./media/tutorial-prioritized-routes/pins-map.png" alt-text="Az indulási és célpontokat jelölő térkép megtekintése":::
 
 <a id="multipleroutes"></a>
 
@@ -206,7 +206,7 @@ Ebben az oktatóanyagban két útvonalat számítunk ki és jelenítünk meg a t
 Ebből a szakaszból megtudhatja, hogyan használhatja a Azure Maps Route Service-t az egyik pontról a másikra, a szállítási mód alapján. Kétféle átviteli módot fogunk használni: kamion és autó.
 
 >[!TIP]
->Az útválasztási szolgáltatás API-kat biztosít a *leggyorsabb* , *legrövidebb* , *Eco* vagy *izgalmas* útvonalak tervezéséhez a távolság, a forgalmi feltételek és a felhasznált átviteli mód alapján. A szolgáltatás azt is lehetővé teszi, hogy a felhasználók a korábbi forgalmi feltételek alapján tervezzék meg a jövőbeli útvonalakat. A felhasználók megtekinthetik az útvonal időtartamának előrejelzését egy adott időpontra vonatkozóan. További információkért lásd: [Route Directions API beszerzése](/rest/api/maps/route/getroutedirections).
+>Az útválasztási szolgáltatás API-kat biztosít a *leggyorsabb*, *legrövidebb*, *Eco* vagy *izgalmas* útvonalak tervezéséhez a távolság, a forgalmi feltételek és a felhasznált átviteli mód alapján. A szolgáltatás azt is lehetővé teszi, hogy a felhasználók a korábbi forgalmi feltételek alapján tervezzék meg a jövőbeli útvonalakat. A felhasználók megtekinthetik az útvonal időtartamának előrejelzését egy adott időpontra vonatkozóan. További információkért lásd: [Route Directions API beszerzése](/rest/api/maps/route/getroutedirections).
 
 1. A `GetMap` függvényben a vezérlő `ready` eseménykezelőján belül adja hozzá a következőt a JavaScript-kódhoz.
 
@@ -277,7 +277,7 @@ Ebből a szakaszból megtudhatja, hogyan használhatja a Azure Maps Route Servic
 
 4. Mentse a **TruckRoute.html** fájlt, és frissítse a böngészőt. A térképnek ekkor a teherautó-és autós útvonalakat kell megjelenítenie.
 
-    :::image type="content" source="./media/tutorial-prioritized-routes/prioritized-routes.png" alt-text="Térkép vezérlőelem alapszintű leképezése":::
+    :::image type="content" source="./media/tutorial-prioritized-routes/prioritized-routes.png" alt-text="Magán-és haszongépjármű-útvonalak egy térképen az Azure Route Service":::
 
     A teherautó útvonala sűrű kék vonal használatával jelenik meg. Az autó útvonala egy vékony lila vonal használatával jelenik meg. Az autó útvonala az I-90-n keresztül halad végig Washington államon keresztül, és a lakossági területeken lévő alagutakon keresztül halad. Mivel az alagutak megközelítik a lakossági területeket, a veszélyes hulladékok mennyisége korlátozott. A tehergépkocsi útvonala, amely megadja a `USHazmatClass2` rakomány típusát, egy másik autópálya használatára van irányítva.
 
@@ -285,7 +285,9 @@ A minta teljes forráskódját [itt](https://github.com/Azure-Samples/AzureMapsC
 
 Az [adatvezérelt stílusú kifejezéseket is használhatja](data-driven-style-expressions-web-sdk.md)
 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
+Nincsenek karbantartást igénylő erőforrások.
 
 ## <a name="next-steps"></a>Következő lépések
 

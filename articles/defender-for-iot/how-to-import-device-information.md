@@ -1,5 +1,5 @@
 ---
-title: Eszköz adatainak importálása
+title: Eszközadatok importálása
 description: A Defender for IoT érzékelők figyelik és elemzik a tükrözött forgalmat. Ezekben az esetekben előfordulhat, hogy adatokat szeretne importálni a már észlelt eszközökre vonatkozó gazdagító információkra.
 author: shhazam-ms
 manager: rkarlin
@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 0a443ba7b41615fc62882bd8de6bf077c6b5a137
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 7cb805f60ba9feb0ae2d1483b2ab2df4e03639d8
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97840300"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625414"
 ---
 # <a name="import-device-information-to-a-sensor"></a>Eszköz adatainak importálása az érzékelőbe
 
@@ -67,7 +67,7 @@ Ez a szakasz azt ismerteti, hogyan importálható az eszköz IP-címe, az operá
 
 Az IP-cím, az operációs rendszer és a javítás szintjének importálása:
 
-1. Töltse le a [assets_info_2.2.8 és up.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) fájlt a [Súgó központjából](https://cyberx-labs.zendesk.com/hc/en-us) , és adja meg az adatokat a következő módon:
+1. Töltse le a [devices_info_2.2.8 és up.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) fájlt a [Súgó központjából](https://cyberx-labs.zendesk.com/hc/en-us) , és adja meg az adatokat a következő módon:
 
    - **IP-cím**: adja meg az eszköz IP-címét.
 
@@ -85,7 +85,7 @@ Az IP-cím, az operációs rendszer és a javítás szintjének importálása:
 
 Az engedélyezési állapot importálása:
 
-1. Töltse le és mentse a [authorized_assets.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) fájlt a Defender for IoT súgójában. Ellenőrizze, hogy mentette-e a fájlt CSV-fájlként.
+1. Töltse le és mentse a [authorized_devices.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) fájlt a Defender for IoT súgójában. Ellenőrizze, hogy mentette-e a fájlt CSV-fájlként.
 
 2. Adja meg az adatokat a következőképpen:
 
@@ -154,7 +154,7 @@ Ez a szakasz azt ismerteti, hogyan importálható az eszköz IP-címe, az operá
 
 Az IP-cím, az operációs rendszer és a javítás szintjének importálása:
 
-1. Töltse le a [assets_info_2.2.8 és up.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) fájlt a [Súgó központjából](https://cyberx-labs.zendesk.com/hc/en-us) , és adja meg az adatokat a következő módon:
+1. Töltse le a [devices_info_2.2.8 és up.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) fájlt a [Súgó központjából](https://cyberx-labs.zendesk.com/hc/en-us) , és adja meg az adatokat a következő módon:
 
    - **IP-cím**: az eszköz IP-címe.
 
@@ -172,7 +172,7 @@ Az IP-cím, az operációs rendszer és a javítás szintjének importálása:
 
 Az engedélyezési állapot importálása:
 
-1. Töltse le és mentse a [authorized_assets.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) fájlt a Defender for IoT súgójában. Ellenőrizze, hogy mentette-e a fájlt CSV-fájlként.
+1. Töltse le és mentse a [authorized_devices.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) fájlt a Defender for IoT súgójában. Ellenőrizze, hogy mentette-e a fájlt CSV-fájlként.
 
 2. Adja meg az adatokat a következőképpen:
 
@@ -188,8 +188,8 @@ Az engedélyezési állapot importálása:
 
 Az adatok importálásakor a rendszer riasztást küld az összes olyan eszközről, amely nem szerepel ezen a listán.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
-[A figyelt forgalom szabályozása](how-to-control-what-traffic-is-monitored.md)
+[A monitorozandó forgalom szabályozása](how-to-control-what-traffic-is-monitored.md)
 
-[Érzékelő észlelésének vizsgálata egy eszköz leltározásakor](how-to-investigate-sensor-detections-in-a-device-inventory.md)
+[Egy eszközkészlet érzékelői általi észlelések vizsgálata](how-to-investigate-sensor-detections-in-a-device-inventory.md)

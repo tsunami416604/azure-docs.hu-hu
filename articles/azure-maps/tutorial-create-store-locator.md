@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 398e964ad773e4c015129c6dd3d4784f1300e16b
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 801c2fe1710952a12584bf10dd8e5c77de3b839c
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905774"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625098"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Oktatóanyag: tároló-lokátor létrehozása Azure Maps használatával
 
-Ez az oktatóanyag végigvezeti egy egyszerű tároló-lokátor létrehozásának folyamatán Azure Maps használatával. Az áruházbeli lokátorok gyakoriak. Az ilyen típusú alkalmazásokban használt fogalmak számos más típusú alkalmazásra alkalmazhatók. Az ügyfeleknek nyújtott áruházi lokátort a legtöbb, közvetlenül a fogyasztóknak értékesítő vállalat számára ajánlott biztosítani. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag végigvezeti egy egyszerű tároló-lokátor létrehozásának folyamatán Azure Maps használatával. Az áruházbeli lokátorok gyakoriak. Az ilyen típusú alkalmazásokban használt fogalmak számos más típusú alkalmazásra alkalmazhatók. Az ügyfeleknek nyújtott áruházi lokátort a legtöbb, közvetlenül a fogyasztóknak értékesítő vállalat számára ajánlott biztosítani. Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Hozzon létre egy új weblapot az Azure térképkezelés API használatával.
@@ -935,6 +935,10 @@ Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egy alapszintű tárol
  * Tárolja adatait egy adatbázisban, és keressen a közeli helyekre. További információ: [SQL Server térbeli adattípusok áttekintése](/sql/relational-databases/spatial/spatial-data-types-overview?preserve-view=true&view=sql-server-2017) és [térbeli adatainak lekérdezése a legközelebbi szomszédban](/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?preserve-view=true&view=sql-server-2017).
 
 Megtekintheti a [teljes forráskódot](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator), [megtekintheti az élő mintát](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator) , és további információkat tudhat meg a Azure Maps lefedettségéről és képességeiről a [nagyítási szintek és a csempék rácsának](zoom-levels-and-tile-grid.md)használatával. Az üzleti logikára [vonatkozó adatvezérelt stílusú kifejezéseket is használhat](data-driven-style-expressions-web-sdk.md) .
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Nincsenek karbantartást igénylő erőforrások.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 36db1b23d8fb17cec4fe981c938f8c7003543b4d
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 73eb693ab9f06535fd523eb386969e2cce961eef
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97839833"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624591"
 ---
 # <a name="manage-sensors-from-the-management-console"></a>Érzékelők kezelése a felügyeleti konzolról
 
@@ -150,7 +150,7 @@ Az érzékelők védelmét a IoT-motorok öt védelmezője védi. Engedélyezhet
 | Házirend-megsértési motor | A szabályzat megsértése a megtanult vagy konfigurált szabályzatban meghatározott alapkonfigurációi viselkedéstől való eltéréssel történik. | "Jogosulatlan HTTP-felhasználói ügynök" riasztás. Ez a riasztás azt jelzi, hogy a szabályzat által nem megtanult vagy jóváhagyott alkalmazás HTTP-ügyfélként van használatban az eszközön. Ez lehet egy új böngésző vagy alkalmazás az eszközön. |
 | Kártevő motor | A kártevő motor kártékony hálózati tevékenységet észlel. | "Rosszindulatú tevékenység gyanúja (Stuxnet)" riasztás. Ez a riasztás azt jelzi, hogy az érzékelő olyan gyanús hálózati tevékenységet észlelt, amely a Stuxnet kártevő szoftverrel kapcsolatos, ami egy fejlett, az ipari szabályozást és a SCADA hálózatokat célzó állandó fenyegetés. |
 | Anomália motor | A kártevő-kezelő észleli a hálózati működés rendellenességét. | "Rendszeres viselkedés a kommunikációs csatornában" Ez egy olyan összetevő, amely ellenőrzi a hálózati kapcsolatokat, és megkeresi az adatátvitel időszakos vagy ciklikus viselkedését, ami általános az ipari hálózatokban. |
-| Működési motor | Ez a motor észleli a működési incidenseket vagy az üzemzavart okozó entitásokat. | "Az eszköz gyanús, hogy le van választva (nem válaszol)" riasztás. Ez a riasztás akkor aktiválódik, ha egy eszköz nem válaszol az előre meghatározott időszakra vonatkozó kérelmekre. Előfordulhat, hogy az eszköz leállítását, leválasztását vagy meghibásodását jelzi.
+| Működési motor | Ez a motor észleli a működési incidenseket vagy az üzemzavart okozó entitásokat. | `Device is Suspected to be Disconnected (Unresponsive)` riasztás. Ez a riasztás akkor aktiválódik, ha egy eszköz nem válaszol az előre meghatározott időszakra vonatkozó kérelmekre. Előfordulhat, hogy az eszköz leállítását, leválasztását vagy meghibásodását jelzi.
 |
 
 A csatlakoztatott érzékelőkhöz tartozó motorok engedélyezése vagy letiltása:
@@ -215,7 +215,7 @@ A foglalások tárolási korlátait meghaladó információk:
 
 Ha túllépi a biztonsági másolatok megőrzött számát, a rendszer törli a legrégebbi biztonsági mentést tartalmazó fájlt, hogy az újat befogadja.
 
-Az érzékelő biztonsági mentési fájljai a következő formátumban lesznek automatikusan elnevezve: `<sensor name>-backup-version-<version>-<date>.tar` . Például: `Sensor_1-backup-version-2.6.0.102-2019-06-24_09:24:55.tar`. 
+Az érzékelő biztonsági mentési fájljai a következő formátumban lesznek automatikusan elnevezve: `<sensor name>-backup-version-<version>-<date>.tar` . Példa: `Sensor_1-backup-version-2.6.0.102-2019-06-24_09:24:55.tar`. 
 
 Érzékelők biztonsági mentése:
 
@@ -315,6 +315,6 @@ Egy SMB-kiszolgáló beállításához, hogy az érzékelő biztonsági mentés�
 
 9. Állítsa a következőre: `Backup.shared_location` `<backup_folder_name_on_cyberx_server>` .
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
-[Egyéni érzékelők kezelése](how-to-manage-individual-sensors.md)
+[Különálló érzékelők kezelése](how-to-manage-individual-sensors.md)

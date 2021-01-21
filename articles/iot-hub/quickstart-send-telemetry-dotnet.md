@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – Telemetria küldése az Azure IoT Hubra (C#) | Microsoft Docs
+title: Gyors útmutató – telemetria küldése az Azure IoT Hub gyors útmutatóba (C#) | Microsoft Docs
 description: Ebben a rövid útmutatóban két C#-alkalmazást fog futtatni szimulált telemetria egy IoT Hubra való küldéséhez és telemetria olvasásához az IoT Hubról a felhőben történő feldolgozás érdekében.
 author: robinsh
 manager: philmea
@@ -14,12 +14,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 06/01/2020
-ms.openlocfilehash: b515274ef4bcf494c071ddb487590ff9cdccf4c0
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 914df5b80dee7da041b268a3aaf25ac493d0cf5b
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121479"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624439"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-service-application-net"></a>Gyors útmutató: telemetria küldése egy eszközről egy IoT-hubhoz, és elolvasása egy szolgáltatásalkalmazás (.NET) használatával
 

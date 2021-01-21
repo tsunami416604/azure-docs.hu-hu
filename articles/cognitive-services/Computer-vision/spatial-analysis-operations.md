@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 63184a623c6f0a8c53e09e6af92c05e45c5e0794
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: b530fc320f6c29dd7a86a39c5a7019265bb6b724
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185978"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624422"
 ---
 # <a name="spatial-analysis-operations"></a>Térbeli elemzési műveletek
 
@@ -69,6 +69,38 @@ Ezek a térbeli elemzési műveletek által igényelt paraméterek.
 | DETECTOR_NODE_CONFIG | JSON, amely azt jelzi, hogy melyik GPU-t kell futtatni a detektor csomópontot. A következő formátumúnak kell lennie: `"{ \"gpu_index\": 0 }",`|
 | SPACEANALYTICS_CONFIG | A zóna és a vonal JSON-konfigurációja az alább vázolt módon.|
 | ENABLE_FACE_MASK_CLASSIFIER | `True` annak engedélyezéséhez, hogy a videó streamben a Face maszkot viselő személyeket észlelje, `False` Tiltsa le azt. Alapértelmezés szerint ez a beállítás le van tiltva. A maszk észleléséhez a bemeneti videó szélessége paraméterének 1920-nek kell lennie `"INPUT_VIDEO_WIDTH": 1920` . Az Arcfelismerés attribútum nem lesz visszaadva, ha a rendszer észleli, hogy a felhasználók nem néznek szembe a kamerával, vagy túl messze vannak. További információért tekintse meg a [kamera elhelyezési](spatial-analysis-camera-placement.md) útmutatóját |
+
+Ez az összes térbeli elemzési művelet DETECTOR_NODE_CONFIG paramétereinek példája.
+
+```json
+{
+"gpu_index": 0,
+"do_calibration": true,
+"enable_recalibration": true,
+"calibration_quality_check_frequency_seconds":86400,
+"calibration_quality_check_sampling_num": 80,
+"calibration_quality_check_sampling_times": 5,
+"calibration_quality_check_sample_collect_frequency_seconds": 300,
+"calibration_quality_check_one_round_sample_collect_num":10,
+"calibration_quality_check_queue_max_size":1000,
+"recalibration_score": 75
+}
+```
+
+| Név | Típus| Description|
+|---------|---------|---------|
+| `gpu_index` | sztring| A GPU-index, amelyen a művelet futni fog.|
+| `do_calibration` | sztring | Azt jelzi, hogy a kalibrálás be van kapcsolva. `do_calibration` a **cognitiveservices. vizualizáció. spatialanalysis-persondistance** megfelelő működéséhez igaznak kell lennie. az do_calibration alapértelmezés szerint True (igaz) értékre van állítva. |
+| `enable_recalibration` | logikai | Azt jelzi, hogy be van-e kapcsolva az automatikus újrakalibrálás. Az alapértelmezett szint a `true`.|
+| `calibration_quality_check_frequency_seconds` | int | Az egyes minőségi ellenőrzések közötti másodpercek minimális száma annak megállapításához, hogy szükség van-e az újrakalibrálásra. Az alapértelmezett érték `86400` (24 óra). Csak akkor használatos, ha `enable_recalibration=True` .|
+| `calibration_quality_check_sampling_num` | int | A véletlenszerűen kiválasztott tárolt adatminták száma minőségi ellenőrzés esetén – hiba mérése. Az alapértelmezett szint a `80`. Csak akkor használatos, ha `enable_recalibration=True` .|
+| `calibration_quality_check_sampling_times` | int | Az időpontok száma, ha a hibák mérése a véletlenszerűen kiválasztott adatminták különböző csoportjain történik minőség-ellenőrzés során. Az alapértelmezett szint a `5`. Csak akkor használatos, ha `enable_recalibration=True` .|
+| `calibration_quality_check_sample_collect_frequency_seconds` | int | Az új adatmintáknak az újrakalibráláshoz és a minőség-ellenőrzéshez való begyűjtésének minimális száma másodpercben. Az alapértelmezett érték `300` (5 perc). Csak akkor használatos, ha `enable_recalibration=True` .|
+| `calibration_quality_check_one_round_sample_collect_num` | int | A begyűjthető új adatminták minimális száma egy adott mintavételi kör alapján. Az alapértelmezett szint a `10`. Csak akkor használatos, ha `enable_recalibration=True` .|
+| `calibration_quality_check_queue_max_size` | int | A kamera-modell kalibrálásakor tárolandó adatminták maximális száma. Az alapértelmezett szint a `1000`. Csak akkor használatos, ha `enable_recalibration=True` .|
+| `recalibration_score` | int | Maximális minőségi küszöbérték az újrakalibrálás megkezdéséhez. Az alapértelmezett szint a `75`. Csak akkor használatos, ha `enable_recalibration=True` . A kalibrációs minőséget a program a képcél-újravetítési hiba miatti inverz kapcsolat alapján számítja ki. Az észlelt célok a 2D képkockákban a célok a 3D térben vannak kialakítva, és a meglévő kamera-kalibrálási paraméterek használatával újra feltervezve a 2D képkeretbe. Az újravetítési hibát az észlelt célok és az újratervezett célok közötti átlagos távolságok mérik.|
+| `enable_breakpad`| logikai | Azt jelzi, hogy engedélyezni kívánja-e a Breakpad, amely összeomlási memóriakép létrehozásához használható a hibakereséshez. Alapértelmezés szerint ez a `false` beállítás. Ha a értékre állítja be `true` , akkor a tároló részét is hozzá kell adnia `"CapAdd": ["SYS_PTRACE"]` `HostConfig` `createOptions` . Alapértelmezés szerint az összeomlási memóriakép fel van töltve a [RealTimePersonTracking](https://appcenter.ms/orgs/Microsoft-Organization/apps/RealTimePersonTracking/crashes/errors?version=&appBuild=&period=last90Days&status=&errorType=all&sortCol=lastError&sortDir=desc) AppCenter alkalmazásba, ha azt szeretné, hogy az összeomlási memóriaképek feltöltve legyenek a saját AppCenter-alkalmazásba, felülbírálhatja a környezeti változót az `RTPT_APPCENTER_APP_SECRET` alkalmazás alkalmazási titkával.
+
 
 ### <a name="zone-configuration-for-cognitiveservicesvisionspatialanalysis-personcount"></a>Cognitiveservices. vízió. spatialanalysis – personcount
 
@@ -142,10 +174,10 @@ Ez egy példa egy olyan JSON-bemenetre a SPACEANALYTICS_CONFIG paraméter szám�
 | `line` | list| A sor definíciója. Ez egy irányított vonal, amely lehetővé teszi a "belépés" és a "kilépés" megértését.|
 | `start` | érték pár| x, y koordináták a vonal kezdőpontja számára. A lebegőpontos értékek a csúcspont pozícióját jelölik, a bal felső sarokban. Az abszolút x és y értékek kiszámításához szorozza meg ezeket az értékeket a keret méretével. |
 | `end` | érték pár| x, y koordináták a vonal záró pontjához. A lebegőpontos értékek a csúcspont pozícióját jelölik, a bal felső sarokban. Az abszolút x és y értékek kiszámításához szorozza meg ezeket az értékeket a keret méretével. |
-| `threshold` | float| Az események akkor egressed, ha az AI-modellek megbízhatósága nagyobb vagy egyenlő ez az érték. |
+| `threshold` | float| Az események akkor egressed, ha az AI-modellek megbízhatósága nagyobb vagy egyenlő ez az érték. Az alapértelmezett érték a 16. Ez az ajánlott érték a maximális pontosság eléréséhez. |
 | `type` | sztring| A **cognitiveservices. vízió. spatialanalysis-personcrossingline** esetében ennek a következőnek kell lennie: `linecrossing` .|
 |`trigger`|sztring|Egy esemény küldésére szolgáló eseményindító típusa.<br>Támogatott értékek: "Event": tűz, ha valaki keresztezi a vonalat.|
-| `focus` | sztring| Az események kiszámításához használt, a személyre vonatkozó határoló mezőben lévő pont helye. A fókusz értéke lehet `footprint` (a személy lábnyoma), `bottom_center` (a személy határoló mezőjének alsó középpontja), `center` (a személy határoló mezőjének középpontja).|
+| `focus` | sztring| Az események kiszámításához használt, a személyre vonatkozó határoló mezőben lévő pont helye. A fókusz értéke lehet `footprint` (a személy lábnyoma), `bottom_center` (a személy határoló mezőjének alsó középpontja), `center` (a személy határoló mezőjének középpontja). Az alapértelmezett érték a lábnyom.|
 
 ### <a name="zone-configuration-for-cognitiveservicesvisionspatialanalysis-personcrossingpolygon"></a>Cognitiveservices. vízió. spatialanalysis – personcrossingpolygon
 
@@ -186,10 +218,10 @@ Ez egy példa a SPACEANALYTICS_CONFIG paraméter JSON-bemenetére, amely egy zó
 | `zones` | list| Zónák listája. |
 | `name` | sztring| A zóna rövid neve.|
 | `polygon` | list| Minden érték pár a sokszög csúcspontjának x, y értékét jelöli. A sokszög a személyek nyomon követésének vagy megszámlálásának területét jelöli. A lebegőpontos értékek a csúcspont pozícióját jelölik, a bal felső sarokban. Az abszolút x és y értékek kiszámításához szorozza meg ezeket az értékeket a keret méretével. 
-| `threshold` | float| Az események akkor egressed, ha az AI-modellek megbízhatósága nagyobb vagy egyenlő ez az érték. |
+| `threshold` | float| Az események akkor egressed, ha az AI-modellek megbízhatósága nagyobb vagy egyenlő ez az érték. Az alapértelmezett érték 48, ha a típus zonecrossing, és 16 az idő DwellTime. Ezek az ajánlott értékek a maximális pontosság eléréséhez.  |
 | `type` | sztring| A **cognitiveservices. vízió. spatialanalysis-personcrossingpolygon** esetében ennek a következőnek kell lennie: `zonecrossing` vagy `zonedwelltime` .|
 | `trigger`|sztring|Egy esemény küldéséhez használt eseményindító típusa<br>Támogatott értékek: "Event": tűz, ha valaki belép vagy kilép a zónából.|
-| `focus` | sztring| Az események kiszámításához használt, a személyre vonatkozó határoló mezőben lévő pont helye. A fókusz értéke lehet `footprint` (a személy lábnyoma), `bottom_center` (a személy határoló mezőjének alsó középpontja), `center` (a személy határoló mezőjének középpontja).|
+| `focus` | sztring| Az események kiszámításához használt, a személyre vonatkozó határoló mezőben lévő pont helye. A fókusz értéke lehet `footprint` (a személy lábnyoma), `bottom_center` (a személy határoló mezőjének alsó középpontja), `center` (a személy határoló mezőjének középpontja). Az alapértelmezett érték a lábnyom.|
 
 ### <a name="zone-configuration-for-cognitiveservicesvisionspatialanalysis-persondistance"></a>Cognitiveservices. vízió. spatialanalysis – persondistance
 
@@ -228,29 +260,6 @@ Ez egy példa a SPACEANALYTICS_CONFIG paraméter JSON-bemenetére, amely egy zó
 | `minimum_distance_threshold` | float| A távolság a lábon, amely egy "TooClose" eseményt indít el, ha az emberek kisebbek, mint a távolságok egymástól.|
 | `maximum_distance_threshold` | float| A távolság a lábon, amely egy "TooFar" eseményt indít el, ha az emberek nagyobbak, mint a távolságok egymástól.|
 | `focus` | sztring| Az események kiszámításához használt, a személyre vonatkozó határoló mezőben lévő pont helye. A fókusz értéke lehet `footprint` (a személy lábnyoma), `bottom_center` (a személy határoló mezőjének alsó középpontja), `center` (a személy határoló mezőjének középpontja).|
-
-Ez egy példa a DETECTOR_NODE_CONFIG paraméter JSON-bemenetére, amely egy **cognitiveservices. vízió. spatialanalysis-persondistance** zónát konfigurál.
-
-```json
-{ 
-"gpu_index": 0, 
-"do_calibration": true
-}
-```
-
-| Név | Típus| Description|
-|---------|---------|---------|
-| `gpu_index` | sztring| A GPU-index, amelyen a művelet futni fog.|
-| `do_calibration` | sztring | Azt jelzi, hogy a kalibrálás be van kapcsolva. `do_calibration` a **cognitiveservices. vizualizáció. spatialanalysis-persondistance** megfelelő működéséhez igaznak kell lennie.|
-| `enable_recalibration` | logikai | Azt jelzi, hogy be van-e kapcsolva az automatikus újrakalibrálás. Az alapértelmezett szint a `true`.|
-| `calibration_quality_check_frequency_seconds` | int | Az egyes minőségi ellenőrzések közötti másodpercek minimális száma annak megállapításához, hogy szükség van-e az újrakalibrálásra. Az alapértelmezett érték `86400` (24 óra). Csak akkor használatos, ha `enable_recalibration=True` .|
-| `calibration_quality_check_sampling_num` | int | A véletlenszerűen kiválasztott tárolt adatminták száma minőségi ellenőrzés esetén – hiba mérése. Az alapértelmezett szint a `80`. Csak akkor használatos, ha `enable_recalibration=True` .|
-| `calibration_quality_check_sampling_times` | int | Az időpontok száma, ha a hibák mérése a véletlenszerűen kiválasztott adatminták különböző csoportjain történik minőség-ellenőrzés során. Az alapértelmezett szint a `5`. Csak akkor használatos, ha `enable_recalibration=True` .|
-| `calibration_quality_check_sample_collect_frequency_seconds` | int | Az új adatmintáknak az újrakalibráláshoz és a minőség-ellenőrzéshez való begyűjtésének minimális száma másodpercben. Az alapértelmezett érték `300` (5 perc). Csak akkor használatos, ha `enable_recalibration=True` .|
-| `calibration_quality_check_one_round_sample_collect_num` | int | A begyűjthető új adatminták minimális száma egy adott mintavételi kör alapján. Az alapértelmezett szint a `10`. Csak akkor használatos, ha `enable_recalibration=True` .|
-| `calibration_quality_check_queue_max_size` | int | A kamera-modell kalibrálásakor tárolandó adatminták maximális száma. Az alapértelmezett szint a `1000`. Csak akkor használatos, ha `enable_recalibration=True` .|
-| `recalibration_score` | int | Maximális minőségi küszöbérték az újrakalibrálás megkezdéséhez. Az alapértelmezett szint a `75`. Csak akkor használatos, ha `enable_recalibration=True` . A kalibrációs minőséget a program a képcél-újravetítési hiba miatti inverz kapcsolat alapján számítja ki. Az észlelt célok a 2D képkockákban a célok a 3D térben vannak kialakítva, és a meglévő kamera-kalibrálási paraméterek használatával újra feltervezve a 2D képkeretbe. Az újravetítési hibát az észlelt célok és az újratervezett célok közötti átlagos távolságok mérik.|
-| `enable_breakpad`| logikai | Azt jelzi, hogy engedélyezni kívánja-e a Breakpad, amely összeomlási memóriakép létrehozásához használható a hibakereséshez. Alapértelmezés szerint ez a `false` beállítás. Ha a értékre állítja be `true` , akkor a tároló részét is hozzá kell adnia `"CapAdd": ["SYS_PTRACE"]` `HostConfig` `createOptions` . Alapértelmezés szerint az összeomlási memóriakép fel van töltve a [RealTimePersonTracking](https://appcenter.ms/orgs/Microsoft-Organization/apps/RealTimePersonTracking/crashes/errors?version=&appBuild=&period=last90Days&status=&errorType=all&sortCol=lastError&sortDir=desc) AppCenter alkalmazásba, ha azt szeretné, hogy az összeomlási memóriaképek feltöltve legyenek a saját AppCenter-alkalmazásba, felülbírálhatja a környezeti változót az `RTPT_APPCENTER_APP_SECRET` alkalmazás alkalmazási titkával.
 
 A zónák és a vonalak konfigurációjának megismeréséhez tekintse meg a [kamera elhelyezésére](spatial-analysis-camera-placement.md) vonatkozó irányelveket.
 
@@ -606,7 +615,7 @@ Példa a JSON-t a művelet észlelési kimenetére `zonedwelltime` SPACEANALYTIC
 | `trackinId` | sztring| A észlelt személy egyedi azonosítója|
 | `status` | sztring| A sokszög-kereszteződések iránya, vagy "Enter" vagy "Exit"|
 | `side` | int| A sokszög azon oldalának száma, amelyet a személy áthaladt. Mindkét oldal a sokszög két csúcspontja közötti, a zónát jelképező, számozott szegély. A sokszög első két csúcspontja közötti szegély az első oldal.|
-| `durationMs` | int | A zónában töltött személy időpontját jelölő ezredmásodpercek száma. Ez a mező akkor van megadva, ha az esemény típusa _personZoneDwellTimeEvent_ .|
+| `durationMs` | float | A zónában töltött személy időpontját jelölő ezredmásodpercek száma. Ez a mező akkor van megadva, ha az esemény típusa _personZoneDwellTimeEvent_ .|
 | `zone` | sztring | A keresztben lévő zónát jelölő sokszög "Name" mezője|
 
 | Észlelések mező neve | Típus| Description|

@@ -3,12 +3,12 @@ title: AMQP 1,0 Azure Service Bus és Event Hubs protokoll útmutatójában | Mi
 description: A Azure Service Bus és Event Hubs AMQP 1,0-es kifejezésekre és leírására vonatkozó protokoll-útmutató
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e001327c2c7da08cb9a3552f97fc9a7d8b7921a2
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 2154221ebfe69b659ff83100ed614133e178ccdb
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95736714"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624489"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1,0 Azure Service Bus és Event Hubs protokoll útmutatója
 
@@ -73,7 +73,7 @@ A kapcsolatok, a csatornák és a munkamenetek elmúlóak. Ha az alapul szolgál
 
 ### <a name="amqp-outbound-port-requirements"></a>AMQP kimenő portokra vonatkozó követelmények
 
-A TCP protokollon keresztül AMQP-kapcsolatokat használó ügyfeleknek a helyi tűzfalon kell megnyitnia a 5671-es és a 5672-es portot. A portok mellett szükség lehet további portok megnyitására is, ha a [EnableLinkRedirect](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect?view=azure-dotnet) szolgáltatás engedélyezve van. `EnableLinkRedirect` a egy új üzenetkezelési funkció, amely segít az egyugrásos kihagyásban az üzenetek fogadása közben, így segítve az átviteli sebesség növelését. Az ügyfél az alábbi képen látható módon elkezdi a közvetlen kommunikációt a 104XX a porttartomány-tartományon keresztül. 
+A TCP protokollon keresztül AMQP-kapcsolatokat használó ügyfeleknek a helyi tűzfalon kell megnyitnia a 5671-es és a 5672-es portot. A portok mellett szükség lehet további portok megnyitására is, ha a [EnableLinkRedirect](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect) szolgáltatás engedélyezve van. `EnableLinkRedirect` a egy új üzenetkezelési funkció, amely segít az egyugrásos kihagyásban az üzenetek fogadása közben, így segítve az átviteli sebesség növelését. Az ügyfél az alábbi képen látható módon elkezdi a közvetlen kommunikációt a 104XX a porttartomány-tartományon keresztül. 
 
 ![Cél portok listája][4]
 
@@ -222,8 +222,8 @@ Az alkalmazás által definiált összes tulajdonságot le kell képezni a AMQP 
 | --- | --- | --- |
 | üzenet-azonosító |Az üzenet alkalmazás által definiált, szabad formátumú azonosítója. Ismétlődő észleléshez használatos. |[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | felhasználói azonosító |Az alkalmazás által definiált felhasználói azonosító, Service Bus nem értelmezhető. |Nem érhető el a Service Bus API-n keresztül. |
-| a következőre: |Az alkalmazás által definiált cél-azonosító, amelyet a Service Bus nem értelmez. |[Hogy](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| tulajdonos |Az alkalmazás által definiált üzenet céljának azonosítója Service Bus szerint nem értelmezhető. |[Címke](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| a következőre: |Az alkalmazás által definiált cél-azonosító, amelyet a Service Bus nem értelmez. |[Ide:](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| tárgy |Az alkalmazás által definiált üzenet céljának azonosítója Service Bus szerint nem értelmezhető. |[Címke](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | Válasz címzettje |Az alkalmazás által definiált válasz-elérésiút jelző, amelyet a Service Bus nem értelmez. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | korrelációs azonosító |Az alkalmazás által definiált korrelációs azonosító Service Bus nem értelmezhető. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | Content-Type |Az alkalmazás által definiált Content-Type jelző a törzshöz, amelyet a Service Bus nem értelmez. |[ContentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
@@ -240,14 +240,14 @@ Néhány más Service Bus-üzenet tulajdonságai is vannak, amelyek nem részei 
 
 | Jegyzet leképezési kulcsa | Használat | API neve |
 | --- | --- | --- |
-| x-opt-Scheduled-sorba helyezni-Time | Deklarálja, hogy mikor jelenjen meg az üzenet az entitáson |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc?view=azure-dotnet) |
-| x-opt-Partition-Key | Az alkalmazás által definiált kulcs, amely azt határozza meg, hogy az üzenet melyik partíción belül kell, hogy legyen. | [PartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey?view=azure-dotnet) |
-| x – opt-on-Partition-Key | Az alkalmazás által definiált partíciós kulcs értéke, ha tranzakciót kell használni az üzenetek átviteli várólistán keresztüli küldéséhez. | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey?view=azure-dotnet) |
-| x – opt-várólistán lévő – idő | A szolgáltatás által definiált UTC-idő, amely az üzenet enqueuing tényleges időpontját jelöli. A bemenet figyelmen kívül hagyva. | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc?view=azure-dotnet) |
-| x – opt-Sequence – szám | A szolgáltatás által meghatározott egyedi szám, amely egy üzenethez van rendelve. | [Sorszám](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber?view=azure-dotnet) |
-| x – opt-offset | Az üzenet szolgáltatás által definiált várólistán lévő sorszáma. | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber?view=azure-dotnet) |
-| x – opt-Locked – csak | Szolgáltatás által definiált. Az a dátum és idő, ameddig az üzenet zárolva lesz a várólistában/előfizetésben. | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc?view=azure-dotnet) |
-| x – opt-kézbesítetlen levelek – forrás | Szolgáltatás által definiált. Ha az üzenet a kézbesítetlen levelek várólistáról érkezik, az eredeti üzenet forrása. | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource?view=azure-dotnet) |
+| x-opt-Scheduled-sorba helyezni-Time | Deklarálja, hogy mikor jelenjen meg az üzenet az entitáson |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc) |
+| x-opt-Partition-Key | Az alkalmazás által definiált kulcs, amely azt határozza meg, hogy az üzenet melyik partíción belül kell, hogy legyen. | [PartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey) |
+| x – opt-on-Partition-Key | Az alkalmazás által definiált partíciós kulcs értéke, ha tranzakciót kell használni az üzenetek átviteli várólistán keresztüli küldéséhez. | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey) |
+| x – opt-várólistán lévő – idő | A szolgáltatás által definiált UTC-idő, amely az üzenet enqueuing tényleges időpontját jelöli. A bemenet figyelmen kívül hagyva. | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc) |
+| x – opt-Sequence – szám | A szolgáltatás által meghatározott egyedi szám, amely egy üzenethez van rendelve. | [Sorszám](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber) |
+| x – opt-offset | Az üzenet szolgáltatás által definiált várólistán lévő sorszáma. | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber) |
+| x – opt-Locked – csak | Szolgáltatás által definiált. Az a dátum és idő, ameddig az üzenet zárolva lesz a várólistában/előfizetésben. | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc) |
+| x – opt-kézbesítetlen levelek – forrás | Szolgáltatás által definiált. Ha az üzenet a kézbesítetlen levelek várólistáról érkezik, az eredeti üzenet forrása. | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource) |
 
 ### <a name="transaction-capability"></a>Tranzakciós képesség
 
@@ -359,10 +359,10 @@ A kérelem üzenete a következő alkalmazás-tulajdonságokkal rendelkezik:
 
 | Kulcs | Választható | Érték típusa | Érték tartalma |
 | --- | --- | --- | --- |
-| művelet |No |sztring |**Put-token** |
-| típus |No |sztring |A felhelyezni kívánt jogkivonat típusa. |
-| name |No |sztring |A "hallgatóság", amelyre a jogkivonat vonatkozik. |
-| lejárati |Yes |időbélyeg |A jogkivonat lejárati ideje. |
+| művelet |Nem |sztring |**Put-token** |
+| típus |Nem |sztring |A felhelyezni kívánt jogkivonat típusa. |
+| name |Nem |sztring |A "hallgatóság", amelyre a jogkivonat vonatkozik. |
+| lejárati |Igen |időbélyeg |A jogkivonat lejárati ideje. |
 
 A *Name (név* ) tulajdonság azonosítja azt az entitást, amelyhez a token társítva van. Service Bus a várólista elérési útja, vagy témakör/előfizetés. A *Type* tulajdonság azonosítja a jogkivonat típusát:
 
@@ -378,8 +378,8 @@ A válaszüzenet a következő *alkalmazás-tulajdonságok* értékekkel rendelk
 
 | Kulcs | Választható | Érték típusa | Érték tartalma |
 | --- | --- | --- | --- |
-| állapot kódja |No |int |HTTP-válasz kódja **[RFC2616]**. |
-| állapot – Leírás |Yes |sztring |Az állapot leírása. |
+| állapot kódja |Nem |int |HTTP-válasz kódja **[RFC2616]**. |
+| állapot – Leírás |Igen |sztring |Az állapot leírása. |
 
 Az ügyfél többször is meghívhatja a *put-tokent* , illetve az üzenetkezelési infrastruktúra bármely entitására. A jogkivonatok hatóköre az aktuális ügyfél, és az aktuális kapcsolatra van rögzítve, ami azt jelenti, hogy a kiszolgáló eldobja a megőrzött jogkivonatokat, amikor a kapcsolat megszakad.
 

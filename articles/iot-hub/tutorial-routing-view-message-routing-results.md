@@ -1,6 +1,6 @@
 ---
-title: Azure-IoT Hub üzenet-útválasztási eredmények (.NET) megtekintése | Microsoft Docs
-description: Miután beállította az összes erőforrást az oktatóanyag 1. részével, adja hozzá az üzeneteket a Azure Stream Analyticshoz, és tekintse meg az eredményeket a PowerBI.
+title: Oktatóanyag – Azure IoT Hub üzenet-útválasztási eredmények (.NET) megtekintése | Microsoft Docs
+description: Oktatóanyag – miután az oktatóanyag 1. részében az összes erőforrást beállította, adja hozzá az üzeneteket a Azure Stream Analyticshoz, és tekintse meg az eredményeket Power BI.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 14f6fc685e99060474a17503cb13ba09a61a5a9a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 0db05c8caae8483de3b55448bfbe6b2bcfc23187
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149208"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625282"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Oktatóanyag: 2. rész – az átirányított üzenetek megtekintése
 
@@ -38,7 +38,7 @@ Most hozza létre azokat az erőforrásokat, amelyekhez az üzeneteket át szere
 
 A Service Bus-üzenetsor a kritikusként megjelölt üzenetek fogadására használható. Állítson be egy logikai alkalmazást a Service Bus-üzenetsor monitorozására, illetve arra, hogy e-mailt küldjön, amikor a rendszer hozzáad egy üzenetet az üzenetsorhoz.
 
-1. A [Azure Portal](https://portal.azure.com)válassza az **+ erőforrás létrehozása**lehetőséget. A keresőmezőbe írja a **logikai alkalmazás** kifejezést, és nyomja le az Enter billentyűt. A találatok között válassza a logikai alkalmazás lehetőséget, majd a **Létrehozás** gombra kattintva folytassa a **logikai alkalmazás létrehozása** panelt. Töltse ki a mezőket.
+1. A [Azure Portal](https://portal.azure.com)válassza az **+ erőforrás létrehozása** lehetőséget. A keresőmezőbe írja a **logikai alkalmazás** kifejezést, és nyomja le az Enter billentyűt. A találatok között válassza a logikai alkalmazás lehetőséget, majd a **Létrehozás** gombra kattintva folytassa a **logikai alkalmazás létrehozása** panelt. Töltse ki a mezőket.
 
    **Név**: Ez a mező a logikai alkalmazás neve. Ez az oktatóanyag a **ContosoLogicApp** nevet használja.
 
@@ -52,9 +52,9 @@ A Service Bus-üzenetsor a kritikusként megjelölt üzenetek fogadására haszn
 
    ![A logikai alkalmazás létrehozása képernyő](./media/tutorial-routing-view-message-routing-results/create-logic-app.png)
 
-   Kattintson a **Létrehozás** gombra. Az alkalmazás üzembe helyezése néhány percet igénybe vehet.
+   Válassza a **Létrehozás** lehetőséget. Az alkalmazás üzembe helyezése néhány percet igénybe vehet.
 
-2. Lépjen a logikai alkalmazáshoz. A logikai alkalmazás elérésének legegyszerűbb módja az **erőforráscsoportok**kiválasztása, válassza ki az erőforráscsoportot (ez az oktatóanyag az **ContosoResources**-t használja), majd válassza ki a logikai alkalmazást az erőforrások listájából. 
+2. Lépjen a logikai alkalmazáshoz. A logikai alkalmazás elérésének legegyszerűbb módja az **erőforráscsoportok** kiválasztása, válassza ki az erőforráscsoportot (ez az oktatóanyag az **ContosoResources**-t használja), majd válassza ki a logikai alkalmazást az erőforrások listájából. 
 
     Megjelenik a Logic Apps Designer lap (előfordulhat, hogy jobbra kell görgetnie, hogy megjelenjen a teljes lap). A Logic Apps Designer lapon görgessen lefelé, amíg meg nem jelenik az **üres Logic app +** elemet tartalmazó csempe, és válassza ki azt. Az alapértelmezett lap az "Ön". Ha ez az ablaktábla üres, válassza az **összes** lehetőséget az összes elérhető összekötő és eseményindító megjelenítéséhez.
 
@@ -70,7 +70,7 @@ A Service Bus-üzenetsor a kritikusként megjelölt üzenetek fogadására haszn
 
    ![A Service Bus üzenetsor csatlakoztatásának beállítása](./media/tutorial-routing-view-message-routing-results/logic-app-define-connection.png)
 
-   Válassza ki a Service Bus névteret. Ez az oktatóanyag a **ContosoSBNamespace** névteret használja. A névtér kiválasztásakor a Portal lekérdezi a Service Bus-névteret a kulcsok lekéréséhez. Válassza a **RootManageSharedAccessKey** elemet, majd válassza a **Létrehozás**lehetőséget.
+   Válassza ki a Service Bus névteret. Ez az oktatóanyag a **ContosoSBNamespace** névteret használja. A névtér kiválasztásakor a Portal lekérdezi a Service Bus-névteret a kulcsok lekéréséhez. Válassza a **RootManageSharedAccessKey** elemet, majd válassza a **Létrehozás** lehetőséget.
 
    ![A kapcsolatok beállításának befejezése](./media/tutorial-routing-view-message-routing-results/logic-app-finish-connection.png)
 
@@ -78,7 +78,7 @@ A Service Bus-üzenetsor a kritikusként megjelölt üzenetek fogadására haszn
 
    ![Az üzenetsor beállításai](./media/tutorial-routing-view-message-routing-results/logic-app-queue-options.png)
 
-7. Állítsa be a műveletet, hogy e-mailt küldjön, amikor egy üzenet érkezik az üzenetsorba. A Logic Apps Designerben válassza az **+ új lépés** lehetőséget egy lépés hozzáadásához, majd válassza az **összes** lehetőséget az összes elérhető lehetőség megjelenítéséhez. A **válasszon műveletet** ablaktáblán keresse meg és válassza ki az **Office 365 Outlook**elemet. A műveletek képernyőn válassza az **E-mail küldése/Office 365 Outlook**lehetőséget.  
+7. Állítsa be a műveletet, hogy e-mailt küldjön, amikor egy üzenet érkezik az üzenetsorba. A Logic Apps Designerben válassza az **+ új lépés** lehetőséget egy lépés hozzáadásához, majd válassza az **összes** lehetőséget az összes elérhető lehetőség megjelenítéséhez. A **válasszon műveletet** ablaktáblán keresse meg és válassza ki az **Office 365 Outlook** elemet. A műveletek képernyőn válassza az **E-mail küldése/Office 365 Outlook** lehetőséget.  
 
    ![A Office 365 beállításai](./media/tutorial-routing-view-message-routing-results/logic-app-select-outlook.png)
 
@@ -88,7 +88,7 @@ A Service Bus-üzenetsor a kritikusként megjelölt üzenetek fogadására haszn
 
    ![A logikai alkalmazás e-mail-beállításai](./media/tutorial-routing-view-message-routing-results/logic-app-send-email.png)
 
-9. Kattintson a **Mentés** gombra. Ezután zárja be a Logic App Designert.
+9. Válassza a **Mentés** lehetőséget. Ezután zárja be a Logic App Designert.
 
 ## <a name="set-up-azure-stream-analytics"></a>Az Azure Stream Analytics beállítása
 
@@ -112,11 +112,11 @@ A Power BI-vizualizáció adatainak megtekintéséhez először állítson be eg
 
 3. Válassza a **Létrehozás** lehetőséget a feladatok létrehozásához. A telepítés eltarthat néhány percig.
 
-    Ha vissza szeretne térni a feladatokhoz, válassza az **erőforráscsoportok**lehetőséget. Ez az oktatóanyag a **ContosoResources** erőforráscsoportot használja. Válassza ki az erőforráscsoportot, majd válassza ki a Stream Analytics feladatot az erőforrások listájában.
+    Ha vissza szeretne térni a feladatokhoz, válassza az **erőforráscsoportok** lehetőséget. Ez az oktatóanyag a **ContosoResources** erőforráscsoportot használja. Válassza ki az erőforráscsoportot, majd válassza ki a Stream Analytics feladatot az erőforrások listájában.
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Bemenet hozzáadása a Stream Analytics-feladathoz
 
-1. A **feladatok topológiája**területen válassza a **bemenetek**lehetőséget.
+1. A **feladatok topológiája** területen válassza a **bemenetek** lehetőséget.
 
 2. A **bemenetek** ablaktáblán válassza a **stream-bemenet hozzáadása** lehetőséget, és válassza a IoT hub lehetőséget. A megjelenő képernyőn töltse ki az alábbi mezőket:
 
@@ -130,7 +130,7 @@ A Power BI-vizualizáció adatainak megtekintéséhez először állítson be eg
 
    **Végpont**: Válassza az **Üzenetkezelés** lehetőséget. (Ha a Műveletek monitorozása lehetőséget választja, akkor az IoT Hub telemetriaadatait kapja meg, nem pedig az átküldött adatokat.) 
 
-   **Megosztott elérési házirend neve**: válassza a **szolgáltatás**elemet. A Portal automatikusan kitölti a megosztott elérési házirend kulcsát.
+   **Megosztott elérési házirend neve**: válassza a **szolgáltatás** elemet. A Portal automatikusan kitölti a megosztott elérési házirend kulcsát.
 
    **Fogyasztói csoport**: válassza ki az oktatóanyag 1. részében beállított fogyasztói csoportot. Ez az oktatóanyag a **contosoconsumers** csoportot használja.
    
@@ -138,13 +138,13 @@ A Power BI-vizualizáció adatainak megtekintéséhez először állítson be eg
 
    ![A stream Analytics-feladathoz tartozó bemenetek beállítása](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-inputs.png)
 
-3. Kattintson a **Mentés** gombra.
+3. Válassza a **Mentés** lehetőséget.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Kimenet hozzáadása a Stream Analytics-feladathoz
 
-1. A **feladatok topológiája**területen válassza a **kimenetek**lehetőséget.
+1. A **feladatok topológiája** területen válassza a **kimenetek** lehetőséget.
 
-2. A **kimenetek** ablaktáblán válassza a **Hozzáadás**lehetőséget, majd válassza a **Power bi**lehetőséget. A megjelenő képernyőn töltse ki az alábbi mezőket:
+2. A **kimenetek** ablaktáblán válassza a **Hozzáadás** lehetőséget, majd válassza a **Power bi** lehetőséget. A megjelenő képernyőn töltse ki az alábbi mezőket:
 
    **Kimeneti áljel**: A kimenet egyedi áljele. Ez az oktatóanyag a **contosooutputs** áljelet használja. 
 
@@ -154,15 +154,15 @@ A Power BI-vizualizáció adatainak megtekintéséhez először állítson be eg
 
    A többi mezőnél fogadja el az alapértelmezett beállításokat.
 
-3. Válassza az **Engedélyezés**lehetőséget, majd jelentkezzen be Power bi-fiókjába. (Ez több próbálkozást is igénybe vehet).
+3. Válassza az **Engedélyezés** lehetőséget, majd jelentkezzen be Power bi-fiókjába. (Ez több próbálkozást is igénybe vehet).
 
    ![A stream Analytics-feladatokhoz tartozó kimenetek beállítása](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-outputs.png)
 
-4. Kattintson a **Mentés** gombra.
+4. Válassza a **Mentés** lehetőséget.
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>A Stream Analytics-feladat lekérdezésének konfigurálása
 
-1. A **feladatok topológiája**területen válassza a **lekérdezés**lehetőséget.
+1. A **feladatok topológiája** területen válassza a **lekérdezés** lehetőséget.
 
 2. A `[YourInputAlias]` elemet cserélje le a feladat bemeneti áljelére. Ez az oktatóanyag a **contosoinputs** bemeneti áljelet használja.
 
@@ -170,13 +170,13 @@ A Power BI-vizualizáció adatainak megtekintéséhez először állítson be eg
 
    ![A stream Analytics-feladatokhoz tartozó lekérdezés beállítása](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-query.png)
 
-4. Kattintson a **Mentés** gombra.
+4. Válassza a **Mentés** lehetőséget.
 
 5. Zárja be a Lekérdezés panelt. Visszatérhet az erőforráscsoport erőforrásainak nézetéhez. Válassza ki a Stream Analytics feladatot. Ebben az oktatóanyagban a neve: **contosoJob**.
 
 ### <a name="run-the-stream-analytics-job"></a>Stream Analytics-feladat futtatása
 
-A stream Analyticsi feladatokban válassza az **Indítás**  >  **most**  >  **Indítás**lehetőséget. Ha a feladat sikeresen elindult, a feladat állapota **Leállítva** értékről **Fut** értékre változik.
+A stream Analyticsi feladatokban válassza az **Indítás**  >  **most**  >  **Indítás** lehetőséget. Ha a feladat sikeresen elindult, a feladat állapota **Leállítva** értékről **Fut** értékre változik.
 
 A Power BI-jelentés beállításához adatokra van szükség, ezért a Power BI-t az eszköz létrehozása és az eszközszimulációs alkalmazás futtatása után fogja beállítani.
 
@@ -218,7 +218,7 @@ Ha minden helyesen lett beállítva, a következő eredményeket fogja látni:
 
 2. A [Azure Portal](https://portal.azure.com)válassza az **erőforráscsoportok** lehetőséget, majd válassza ki az erőforráscsoportot. Ez az oktatóanyag a **ContosoResources** erőforráscsoportot használja. 
 
-    Válassza ki a Storage-fiókot, válassza a tárolók **lehetőséget, majd**válassza ki a tárolót. Ez az oktatóanyag a **contosoresults** tárolót használja. Megjelenik egy mappa, amelyben lefúrhat a könyvtárakba, amíg egy vagy több fájlt nem lát. Nyissa meg az egyik fájlt. A fájlok a tárfiókhoz irányított bejegyzéseket tartalmazzák. 
+    Válassza ki a Storage-fiókot, válassza a tárolók **lehetőséget, majd** válassza ki a tárolót. Ez az oktatóanyag a **contosoresults** tárolót használja. Megjelenik egy mappa, amelyben lefúrhat a könyvtárakba, amíg egy vagy több fájlt nem lát. Nyissa meg az egyik fájlt. A fájlok a tárfiókhoz irányított bejegyzéseket tartalmazzák. 
 
    ![Az eredmény fájljai a Storage-ban](./media/tutorial-routing-view-message-routing-results/results-in-storage.png)
 
@@ -234,11 +234,11 @@ Most, hogy az alkalmazás továbbra is fut, állítsa be az Power BI vizualizác
 
 2. Lépjen a **Munkaterületek** részhez, és válassza ki azt a munkaterületet, amelyet a Stream Analytics-feladat kimenetének létrehozásakor állított be. Ez az oktatóanyag a **My Workspace** nevű munkaterületet használja. 
 
-3. Válassza az **adatkészletek**lehetőséget. Ha nem rendelkezik adatkészletekkel, várjon néhány percet, és ellenőrizze újra.
+3. Válassza az **adatkészletek** lehetőséget. Ha nem rendelkezik adatkészletekkel, várjon néhány percet, és ellenőrizze újra.
 
    Megjelenik az adatkészlet, amelyet a Stream Analytics-feladat kimenetének létrehozásakor adott meg. Ez az oktatóanyag a **contosodataset** nevet használja. (Akár 5-10 percet is igénybe vehet, mire az adatkészlet először megjelenik.)
 
-4. A **műveletek**területen válassza az első ikont a jelentés létrehozásához.
+4. A **műveletek** területen válassza az első ikont a jelentés létrehozásához.
 
    ![Power BI munkaterület a műveletekkel és jelentés ikonnal kiemelve](./media/tutorial-routing-view-message-routing-results/power-bi-actions.png)
 
@@ -280,7 +280,7 @@ Jelentkezzen be a [Power BI](https://powerbi.microsoft.com/)-fiókjába. Lépjen
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>Erőforrások törlése az Azure CLI használatával
 
-Az erőforráscsoport az [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal távolítható el. `$resourceGroup` az oktatóanyag elején a **ContosoResources** vissza lett állítva.
+Az erőforráscsoport az [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) paranccsal távolítható el. `$resourceGroup` az oktatóanyag elején a **ContosoResources** vissza lett állítva.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup

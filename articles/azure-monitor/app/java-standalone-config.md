@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 953a9cfeed558291fba1cb517039f26860444904
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 98499961f55b55b15687d5742b4d593e3d461e49
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233661"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625330"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Konfigurációs beállítások – Azure Monitor Application Insights Javához
 
@@ -39,14 +39,14 @@ Alább további részleteket és további konfigurációs beállításokat talá
 
 ## <a name="configuration-file-path"></a>Konfigurációs fájl elérési útja
 
-Alapértelmezés szerint a Application Insights Java 3,0 elvárja, hogy a konfigurációs fájl legyen elnevezve `applicationinsights.json` , és hogy ugyanabban a könyvtárban legyen elhelyezve `applicationinsights-agent-3.0.1.jar` .
+Alapértelmezés szerint a Application Insights Java 3,0 elvárja, hogy a konfigurációs fájl legyen elnevezve `applicationinsights.json` , és hogy ugyanabban a könyvtárban legyen elhelyezve `applicationinsights-agent-3.0.2.jar` .
 
 Megadhatja saját konfigurációs fájljának elérési útját a következők használatával
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE` környezeti változó, vagy
 * `applicationinsights.configuration.file` Java rendszertulajdonság
 
-Ha relatív elérési utat ad meg, a rendszer a helyen található könyvtárhoz viszonyítva megoldódik `applicationinsights-agent-3.0.1.jar` .
+Ha relatív elérési utat ad meg, a rendszer a helyen található könyvtárhoz viszonyítva megoldódik `applicationinsights-agent-3.0.2.jar` .
 
 ## <a name="connection-string"></a>Kapcsolati sztring
 
@@ -170,7 +170,7 @@ Ha egyéni dimenziókat szeretne hozzáadni az összes telemetria:
 `${...}` a megadott környezeti változó értékének beolvasására használható az indításkor.
 
 > [!NOTE]
-> A 3.0.1-es verziótól kezdve, ha egy nevű egyéni dimenziót ad hozzá `service.version` , az érték a `application_Version` Application Insights naplók tábla oszlopában lesz tárolva egyéni dimenzió helyett.
+> Ha egy nevű egyéni dimenziót ad hozzá az 3.0.2 verziótól kezdődően `service.version` , az érték a `application_Version` Application Insights naplók tábla oszlopában lesz tárolva egyéni dimenzió helyett.
 
 ## <a name="telemetry-processors-preview"></a>Telemetria processzorok (előzetes verzió)
 
@@ -241,7 +241,7 @@ A Mikrométer metrikáinak automatikus gyűjtésének letiltása (beleértve a S
 
 ## <a name="suppressing-specific-auto-collected-telemetry"></a>Meghatározott automatikusan összegyűjtött telemetria letiltása
 
-Az 3.0.1-es verziótól kezdődően a megadott automatikusan összegyűjtött telemetria ezekkel a konfigurációs beállításokkal lehet letiltani:
+A 3.0.2 verziótól kezdődően a megadott automatikusan összegyűjtött telemetria ezekkel a konfigurációs beállításokkal lehet letiltani:
 
 ```json
 {
@@ -338,7 +338,7 @@ Alapértelmezés szerint a Application Insights Java 3,0 `INFO` a fájlra `appli
 
 `level` lehet a,,,,, `OFF` `ERROR` `WARN` `INFO` `DEBUG` vagy `TRACE` .
 
-`path` abszolút vagy relatív elérési út lehet. A relatív elérési utak feloldása a mappában található könyvtáron történik `applicationinsights-agent-3.0.1.jar` .
+`path` abszolút vagy relatív elérési út lehet. A relatív elérési utak feloldása a mappában található könyvtáron történik `applicationinsights-agent-3.0.2.jar` .
 
 `maxSizeMb` a naplófájl maximális mérete a bedobás előtt.
 

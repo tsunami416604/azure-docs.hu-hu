@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: Blackmist
 ms.author: nigup
 author: nishankgu
-ms.date: 11/09/2020
+ms.date: 01/20/2020
 ms.custom: how-to, seodec18, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: 636f63b3f7e43bd8f27d1df58ab82d24bd19a616
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 8420aecbc160fa6df2640d2ba0ae8a8b77702b67
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033748"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624540"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning-munkaterülethez való hozzáférés kezelése
 
@@ -161,6 +161,10 @@ Az új szerepkör-definíció teljes hatókörére vonatkozó engedélyekkel kel
 > [!NOTE]
 > A szerepkör frissítései 15 percet is igénybe vehetnek, hogy az adott hatókörben lévő összes szerepkör-hozzárendelésre érvényesek legyenek.
 
+## <a name="use-azure-resource-manager-templates-for-repeatability"></a>Azure Resource Manager-sablonok használata az ismételhetőséghez
+
+Ha azt tervezi, hogy újra létre kell hoznia egy összetett szerepkör-hozzárendelést, egy Azure Resource Manager sablon nagy segítség lehet. Az [201-Machine-learning-függőségek-szerepkör-hozzárendelési sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-dependencies-role-assignment) azt mutatja be, hogyan adható meg a szerepkör-hozzárendelés a forráskódban az újrafelhasználáshoz. 
+
 ## <a name="common-scenarios"></a>Gyakori forgatókönyvek
 
 A következő táblázat a Azure Machine Learning tevékenységek összegzését, valamint a minimális hatókörön belüli végrehajtáshoz szükséges engedélyeket tartalmazza. Ha például egy tevékenység a munkaterület hatókörével (4. oszlop) végezhető el, akkor az ezzel az engedéllyel rendelkező összes magasabb hatókör automatikusan is működni fog:
@@ -207,7 +211,7 @@ A MLflow-műveletek a Azure Machine Learning munkaterületen való végrehajtás
 
 ## <a name="example-custom-roles"></a>Példa egyéni szerepkörökre
 
-### <a name="data-scientist"></a>Adattudós
+### <a name="data-scientist"></a>Adatelemző
 
 Lehetővé teszi, hogy az adattudós a munkaterületen belül minden műveletet elvégezzen, **kivéve** a következőket:
 

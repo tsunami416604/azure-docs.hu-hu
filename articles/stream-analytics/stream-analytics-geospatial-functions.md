@@ -6,16 +6,16 @@ ms.author: krishmam
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 8d01f43dd6e404bb8f8ae0898625ae1ea9d09fd6
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: dc590593b9bff8f646ee6155d32a2ce3f9790f6e
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020434"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625248"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>Stream Analytics térinformatikai függvények bemutatása
 
-A Azure Stream Analytics térinformatikai funkciói lehetővé teszik a valós idejű elemzést a térinformatikai adatok folyamatos átviteléhez. Mindössze néhány sornyi kóddal, összetett forgatókönyvekhez fejlesztheti az éles környezet kialakítására szolgáló megoldást. 
+A Azure Stream Analytics térinformatikai funkciói lehetővé teszik a valós idejű elemzést a térinformatikai adatok folyamatos átviteléhez. Mindössze néhány sornyi kóddal, összetett forgatókönyvekhez fejlesztheti az éles környezet kialakítására szolgáló megoldást. Ezek a függvények támogatják az összes WKT-típust, valamint a GeoJSON pontot, a sokszöget és a LineString.
 
 Példa a térinformatikai függvények előnyeit kihasználó forgatókönyvekre:
 
@@ -110,7 +110,7 @@ További tudnivalókért tekintse meg a [CreatePolygon](/stream-analytics-query/
 
 
 ## <a name="st_distance"></a>ST_DISTANCE
-A `ST_DISTANCE` függvény a két pont közötti távolságot adja vissza méterben. 
+A `ST_DISTANCE` függvény a két geometria közötti távolságot adja vissza méterben. 
 
 A következő lekérdezés `ST_DISTANCE` egy esemény előállítására szolgál, ha a gáz állomása kevesebb, mint 10 km az autótól.
 
@@ -123,7 +123,7 @@ JOIN Station s ON ST_DISTANCE(c.Location, s.Location) < 10 * 1000
 További tudnivalókért tekintse meg a [ST_DISTANCE](/stream-analytics-query/st-distance) -referenciát.
 
 ## <a name="st_overlaps"></a>ST_OVERLAPS
-A `ST_OVERLAPS` függvény két sokszöget hasonlít össze. Ha a sokszögek átfedésben vannak, a függvény egy 1 értéket ad vissza. A függvény a 0 értéket adja vissza, ha a sokszögek nem fedik át egymást. 
+A `ST_OVERLAPS` függvény összehasonlítja a két geometriát. Ha a geometriák átfedésben vannak, a függvény 1 értéket ad vissza. A függvény 0 értéket ad vissza, ha a geometriák nem fedik át egymást. 
 
 A következő lekérdezés a használatával `ST_OVERLAPS` hoz létre egy eseményt, amikor egy épület egy lehetséges árvízi zónán belül van.
 
@@ -144,7 +144,7 @@ JOIN Storm s ON ST_OVERLAPS(c.Location, s.Course)
 További tudnivalókért tekintse meg a [ST_OVERLAPS](/stream-analytics-query/st-overlaps) -referenciát.
 
 ## <a name="st_intersects"></a>ST_INTERSECTS
-A `ST_INTERSECTS` függvény összehasonlítja a két LineString. Ha a LineString metszi egymást, akkor a függvény az 1 értéket adja vissza. A függvény a 0 értéket adja vissza, ha a LineString nem metszi egymást.
+A `ST_INTERSECTS` függvény összehasonlítja a két geometriát. Ha a geometriák metszik egymást, akkor a függvény 1 értéket ad vissza. A függvény a 0 értéket adja vissza, ha a geometriák nem metszik egymást.
 
 A következő példában a lekérdezés `ST_INTERSECTS` azt határozza meg, hogy egy burkolt út a Dirt Roadot metszi-e.
 
@@ -170,7 +170,7 @@ FROM input
 További tudnivalókért tekintse meg a [ST_INTERSECTS](/stream-analytics-query/st-intersects) -referenciát.
 
 ## <a name="st_within"></a>ST_WITHIN
-A `ST_WITHIN` függvény meghatározza, hogy egy pont vagy sokszög egy sokszögen belül van-e. Ha a sokszög a pontot vagy a sokszöget tartalmazza, a függvény 1 értéket ad vissza. A függvény 0 értéket ad vissza, ha a pont vagy a sokszög nem a deklarált sokszögen belül található.
+A `ST_WITHIN` függvény meghatározza, hogy a geometria egy másik geometrián belül van-e. Ha az első az utolsó, a függvény 1 értéket ad vissza. A függvény a 0 értéket fogja visszaadni, ha az első geometria nem az utolsón belül található.
 
 A következő példa a lekérdezés használatával `ST_WITHIN` határozza meg, hogy a kézbesítési célhely a megadott raktári sokszögen belülre esik-e.
 
@@ -195,7 +195,7 @@ FROM input
 
 További tudnivalókért tekintse meg a [ST_WITHIN](/stream-analytics-query/st-within) -referenciát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)

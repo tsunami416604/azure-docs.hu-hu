@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: e46bb87788de27916860720284087643db7153dc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a63c309c8e728e3f76ad904d479557b368388954
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913402"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624775"
 ---
 # <a name="use-azure-storage-explorer-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a> kezelése az Azure Storage Explorerrel az Azure Data Lake Storage Gen2-ben
 
@@ -80,7 +80,7 @@ A fájlok **Azure Storage Explorer** használatával történő letöltéséhez 
 
 A tároló gyökerén is beállíthat engedélyeket. Ehhez be kell jelentkeznie Azure Storage Explorerba az egyéni fiókjával (a kapcsolódási karakterlánccal ellentétben). Kattintson a jobb gombbal a tárolóra, és válassza az **engedélyek kezelése** lehetőséget, és hozza létre az **engedély kezelése** párbeszédpanelt.
 
-![Microsoft Azure Storage Explorer – címtár-hozzáférés kezelése](media/storage-quickstart-blobs-storage-Explorer/manageperms.png)
+![Microsoft Azure Storage Explorer – címtár-hozzáférés kezelése](media/storage-quickstart-blobs-storage-explorer/manageperms.png)
 
 Az **engedély kezelése** párbeszédpanel lehetővé teszi a tulajdonos és a tulajdonosok csoport engedélyeinek kezelését. Azt is lehetővé teszi, hogy új felhasználókat és csoportokat vegyen fel a hozzáférés-vezérlési listára, ahol az engedélyeket kezelheti.
 
@@ -106,7 +106,11 @@ Mindkét kategórián belül három engedély van a fájlok vagy könyvtárak ho
 
 Az egyes címtárakra, valamint az egyes fájlokra vonatkozó engedélyeket is kezelheti, ami lehetővé teszi a részletes hozzáférés-vezérlést. A könyvtárak és fájlok engedélyeinek kezelésére szolgáló folyamat ugyanaz, mint a fentiekben leírtak szerint. Kattintson a jobb gombbal arra a fájlra vagy könyvtárra, amelyre az engedélyeket szeretné kezelni, és kövesse ugyanezt a folyamatot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="private-endpoints-in-azure-data-lake-storage-gen2"></a>Privát végpontok a Azure Data Lake Storage Gen2
+
+A Storage Explorer a blob (blob) & Data Lake Storage Gen2 (DFS) [végpontok](../common/storage-private-endpoints.md#private-endpoints-for-azure-storage) használatát is lehetővé teszi a Azure Data Lake Storage Gen2 használatakor. Ha a Azure Data Lake Storage Gen2hoz való hozzáférés privát végpontok használatával van konfigurálva, győződjön meg arról, hogy a Storage-fiókhoz két privát végpont jön létre: egyet a cél alerőforrással, `blob` a másikat pedig a cél alerőforrással `dfs` .
+
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg Data Lake Storage Gen2 hozzáférés-vezérlési listájával.
 

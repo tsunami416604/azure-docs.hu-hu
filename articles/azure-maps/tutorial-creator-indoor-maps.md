@@ -8,20 +8,18 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: eab8a2729209bb0023662b652f862b4fa678470e
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: dac5a434d7f7c62d7a20e971294992ea91c79d2b
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905723"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625015"
 ---
 # <a name="tutorial-use-creator-preview-to-create-indoor-maps"></a>Oktatóanyag: a Creator (előzetes verzió) használata beltéri térképek létrehozásához
 
 > [!IMPORTANT]
 > A Azure Maps Creator Services jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-
 
 Ez az oktatóanyag bemutatja, hogyan hozhat létre beltéri térképeket. Ebből az oktatóanyagból megtudhatja, hogyan használhatja az API-t a következőkre:
 
@@ -316,7 +314,7 @@ A tileset a térképen megjelenített vektoros csempék halmaza. A tilesets a me
     https://atlas.microsoft.com/featureState/stateset?api-version=1.0&datasetId={datasetId}&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-3. A **post** kérelem **fejlécében** állítsa a következőre `Content-Type` : `application/json` . A **törzsben** adja meg az alábbi stílusokat a és az állapot változásainak megfelelően `occupied` `temperature` *states*. Ha elkészült, kattintson a **Küldés** gombra.
+3. A **post** kérelem **fejlécében** állítsa a következőre `Content-Type` : `application/json` . A **törzsben** adja meg az alábbi stílusokat a és az állapot változásainak megfelelően `occupied` `temperature` . Ha elkészült, kattintson a **Küldés** gombra.
 
     ```json
     {
@@ -411,6 +409,10 @@ A tileset a térképen megjelenített vektoros csempék halmaza. A tilesets a me
 A szolgáltatások [beolvasása API](/rest/api/maps/featurestate/getstatespreview) lehetővé teszi egy szolgáltatás állapotának lekérését a funkciójának használatával `ID` . A stateset és erőforrásait a [szolgáltatás állapota törlés API](/rest/api/maps/featurestate/deletestatesetpreview)használatával is törölheti.
 
 Ha többet szeretne megtudni a jelen cikkben tárgyalt különböző Azure Maps Creator-szolgáltatásokról (előzetes verzió), a [Creator beltéri térképek](creator-indoor-maps.md)című témakörben talál további információt.
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Nincsenek karbantartást igénylő erőforrások.
 
 ## <a name="next-steps"></a>Következő lépések
 

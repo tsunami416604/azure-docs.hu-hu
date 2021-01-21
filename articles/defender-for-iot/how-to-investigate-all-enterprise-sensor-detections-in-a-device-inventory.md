@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 47e3833fe9f35467c1d16945a9b336d4014b2efd
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 9da5c8c89ee124e527584164b21b096ac815e5ca
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97839772"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625464"
 ---
 # <a name="investigate-all-enterprise-sensor-detections-in-the-device-inventory"></a>Az eszközök leltárában szereplő összes vállalati érzékelő észlelésének vizsgálata
 
@@ -131,13 +131,13 @@ A Defender használata a IoT API-parancsokkal az információk lekéréséhez é
 
 Az eszközök leltározását szűrheti a fontos oszlopok megjelenítéséhez. Például megtekintheti a PLC-eszközök adatait.
 
-:::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-inventory-view-v2.png" alt-text="Képernyőfelvétel az eszközök leltározásáról.":::
+:::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-inventory-view-v2.png" alt-text="Képernyőfelvétel az eszközök leltáráról.":::
 
 Ha elhagyja az ablakot, a szűrő törlődik.
 
 Ha többször is ugyanazt a szűrőt szeretné használni, mentheti a szűrőket vagy a szükséges szűrők kombinációját. Megnyithatja a bal oldali ablaktáblát, és megtekintheti a mentett szűrőket:
 
-:::image type="content" source="media/how-to-work-with-asset-inventory-information/view-your-asset-inventories-v2.png" alt-text="Az eszközök leltározási képernyője.":::
+:::image type="content" source="media/how-to-work-with-asset-inventory-information/view-your-asset-inventories-v2.png" alt-text="Eszközök leltározása képernyő.":::
 
 Az eszköz leltározásának szűrése:
 
@@ -187,7 +187,7 @@ Az eszközök és az eszközök térképről való megtekintéséhez a következ
 
 - Az **eszköz tulajdonságainak megtekintése**: például az eszköz és az alapszintű eszköz tulajdonságait figyelő érzékelő. Kattintson a jobb gombbal az eszközre az eszköz tulajdonságainak megtekintéséhez.
 
-  :::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-properties-v2.png" alt-text="Képernyőkép az objektum tulajdonságai nézetről.":::
+  :::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-properties-v2.png" alt-text="Képernyőkép az eszköz tulajdonságainak nézetéről.":::
 
 - **Eszközhöz társított riasztás:** A kapcsolódó riasztások megtekintéséhez kattintson a jobb gombbal az eszközre.
 
@@ -225,6 +225,6 @@ A következő további zónák információi érhetők el:
 
 - **Frissítés** állapota: Ha a csatlakoztatott érzékelő frissítése folyamatban van, a frissítési állapotok jelennek meg. A frissítés során a helyszíni felügyeleti konzol nem fogadja az eszköz adatait az érzékelőtől.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
-[Érzékelő észlelésének vizsgálata egy eszköz leltározásakor](how-to-investigate-sensor-detections-in-a-device-inventory.md)
+[Egy eszközkészlet érzékelői általi észlelések vizsgálata](how-to-investigate-sensor-detections-in-a-device-inventory.md)

@@ -1,5 +1,5 @@
 ---
-title: A Defender használata a IoT API-kkal
+title: A Defender for IoT API-k használata
 description: Külső REST API használatával férhet hozzá az érzékelők és a felügyeleti konzol által felderített adatokhoz, és műveleteket hajthat végre ezekkel az adatokkal.
 author: shhazam-ms
 manager: rkarlin
@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/14/2020
 ms.topic: reference
 ms.service: azure
-ms.openlocfilehash: d49aa50b1b8843dfb5c3d32983ff0bb129543bb0
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 44ea6e8343203a9cb18947f31f45aa0b023178b0
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97841233"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624574"
 ---
 # <a name="defender-for-iot-sensor-and-management-console-apis"></a>Defender a IoT-érzékelő és a felügyeleti konzol API-jai számára
 
@@ -44,7 +44,7 @@ Jogkivonat létrehozása:
 
 5. Válassza a **Befejezés** gombot. A létrehozott tokenek megjelennek a **hozzáférési jogkivonatok** párbeszédpanelen.
    
-   :::image type="content" source="media/references-work-with-defender-for-iot-apis/access-token-window.png" alt-text="Az Asset tokens párbeszédpanel képernyőképe kitöltött tokenekkel":::
+   :::image type="content" source="media/references-work-with-defender-for-iot-apis/access-token-window.png" alt-text="A kitöltött tokenekkel rendelkező eszköz-jogkivonatok párbeszédpanel képernyőképe":::
 
    A **használat** azt jelzi, hogy a rendszer mikor fogadta el a tokenhez tartozó külső hívást.
 
@@ -84,7 +84,7 @@ Ezzel az API-val lekérheti az összes olyan eszköz listáját, amelyet a Defen
 
 #### <a name="apiv1devices"></a>/api/v1/devices
 
-#### <a name="method"></a>Módszer
+#### <a name="method"></a>Metódus
 
 **GET**
 
@@ -114,7 +114,7 @@ Az eszközöket jelölő JSON-objektumok tömbje.
 |--|--|--|--|
 | **id** | Numerikus | Nem | - |
 | **erőforrásrekordjaiba** | JSON-tömb | Igen | IP-címek (a két hálózati adapterrel rendelkező eszközök esetében több cím is lehet) |
-| **név** | Sztring | Nem | - |
+| **name** | Sztring | Nem | - |
 | **típusa** | Sztring | Nem | Ismeretlen, mérnöki állomás, PLC, HMI, történész, tartományvezérlő, adatbázis-kiszolgáló, vezeték nélküli hozzáférési pont, útválasztó, kapcsoló, kiszolgáló, munkaállomás, IP-kamera, nyomtató, tűzfal, terminál, VPN Gateway, Internet vagy csoportos küldés és szórás |
 | **macAddresses** | JSON-tömb | Igen | MAC-címek (két hálózati adapterrel rendelkező eszköz esetén több cím is lehet) |
 | **operatingSystem** | Sztring | Igen | - |
@@ -285,7 +285,7 @@ Ezzel az API-val egy eszközön lévő összes kapcsolat listáját kérheti le.
 
 #### <a name="apiv1devicesconnections"></a>/api/v1/devices/connections
 
-#### <a name="method"></a>Módszer
+#### <a name="method"></a>Metódus
 
 **GET**
 
@@ -344,7 +344,7 @@ Az eszközök kapcsolatait képviselő JSON-objektumok tömbje.
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **név** | Sztring | Nem | - |
+| **name** | Sztring | Nem | - |
 | **parancsok** | Sztringtömb | Nem | - |
 
 #### <a name="response-example"></a>Példa válaszra
@@ -453,7 +453,7 @@ Ezzel az API-val lekérheti a hálózatban lévő eszközökön észlelt összes
 
 #### <a name="apiv1devicescves"></a>/api/v1/devices/cves
 
-#### <a name="method"></a>Módszer
+#### <a name="method"></a>Metódus
 
 **GET**
 
@@ -563,7 +563,7 @@ Ezzel az API-val lekérheti az összes olyan riasztás listáját, amelyeket a D
 
 #### <a name="apiv1alerts"></a>/api/v1/alerts
 
-#### <a name="method"></a>Módszer
+#### <a name="method"></a>Metódus
 
 **GET**
 
@@ -691,7 +691,7 @@ Ezzel az API-val az esemény idővonalára jelentett események listáját kérh
 
 #### <a name="apiv1events"></a>/api/v1/events
 
-#### <a name="method"></a>Módszer
+#### <a name="method"></a>Metódus
 
 **GET**
 
@@ -808,7 +808,7 @@ Ezzel az API-val megkérheti a sebezhetőségi felmérés eredményeit az egyes 
 
 #### <a name="apiv1reportsvulnerabilitiesdevices"></a>/api/v1/reports/vulnerabilities/devices
 
-#### <a name="method"></a>Módszer
+#### <a name="method"></a>Metódus
 
 **GET**
 
@@ -832,7 +832,7 @@ Az eszköz objektum a következőket tartalmazza:
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **név** | Sztring | Nem | - |
+| **name** | Sztring | Nem | - |
 | **erőforrásrekordjaiba** | JSON-tömb | Nem | - |
 | **securityScore** | Numerikus | Nem | - |
 | **gyártó** | Sztring | Igen |  |
@@ -1060,7 +1060,7 @@ Ez az értékelés az általános hálózati és rendszerinformáción alapul, n
 
 #### <a name="apiv1reportsvulnerabilitiessecurity"></a>/api/v1/reports/vulnerabilities/security
 
-#### <a name="method"></a>Módszer
+#### <a name="method"></a>Metódus
 
 **GET**
 
@@ -1081,7 +1081,7 @@ A vizsgált eredményeket jelölő JSON-objektum. Minden kulcs lehet üres. Elle
 | Mező neve | Típus | Értékek listája |
 | ---------- | ---- | -------------- |
 | **Cím** | Sztring | IP-cím |
-| **név** | Sztring | - |
+| **name** | Sztring | - |
 | **firstDetectionTime** | Numerikus | EPOCH (UTC) |
 | lastSeen | Numerikus | EPOCH (UTC) |
 
@@ -1109,7 +1109,7 @@ A vizsgált eredményeket jelölő JSON-objektum. Minden kulcs lehet üres. Elle
 | **macAddress** | Sztring | MAC-cím |
 | **gyártó** | Sztring | Szállító neve |
 | **IP-cím** | Sztring | IP-cím vagy N/A |
-| **név** | Sztring | Eszköz neve vagy N/A |
+| **name** | Sztring | Eszköz neve vagy N/A |
 | **Szikratávíró** | Sztring | Nem, feltételezett vagy igen |
 
 **connectionsBetweenSubnets**
@@ -1301,7 +1301,7 @@ Ezzel az API-val egy általános sebezhetőségi felmérés eredményeit kérhet
 
 #### <a name="apiv1reportsvulnerabilitiesoperational"></a>/api/v1/reports/vulnerabilities/operational
 
-#### <a name="method"></a>Módszer
+#### <a name="method"></a>Metódus
 
 **GET**
 
@@ -1496,7 +1496,7 @@ Ehhez az API-hoz nem szükséges a IoT hozzáférési tokenhez tartozó Defender
 
 #### <a name="apiexternalauthenticationvalidation"></a>/api/external/authentication/validation
 
-#### <a name="method"></a>Módszer
+#### <a name="method"></a>Metódus
 
 **POST**
 
@@ -1557,7 +1557,7 @@ Ezzel az API-val engedélyezheti, hogy a felhasználók megváltoztassák a saj�
 
 #### <a name="externalauthenticationset_password"></a>/External/Authentication/set_password
 
-#### <a name="method"></a>Módszer
+#### <a name="method"></a>Metódus
 
 **POST**
 
@@ -1627,7 +1627,7 @@ Ezzel az API-val engedélyezheti a rendszergazdáknak a megadott felhasználók 
 
 #### <a name="externalauthenticationset_password_by_admin"></a>/External/Authentication/set_password_by_admin
 
-#### <a name="method"></a>Módszer
+#### <a name="method"></a>Metódus
 
 **POST**
 
@@ -1744,7 +1744,7 @@ Ez az API a Defender által a helyszíni felügyeleti konzolhoz csatlakozó IoT 
 
 - **/external/v1/devices**
 
-#### <a name="method"></a>Módszer
+#### <a name="method"></a>Metódus
 
 **GET**
 
@@ -1788,7 +1788,7 @@ Az eszközöket jelölő JSON-objektumok tömbje.
 | **Zónaazonosító** | Numerikus | Igen | - |
 | **siteId** | Numerikus | Igen | - |
 | **erőforrásrekordjaiba** | JSON-tömb | Igen | IP-címek (a két hálózati adapterrel rendelkező eszközök esetében több cím is lehet) |
-| **név** | Sztring | Nem | - |
+| **name** | Sztring | Nem | - |
 | **típusa** | Sztring | Nem | Ismeretlen, mérnöki állomás, PLC, HMI, történész, tartományvezérlő, adatbázis-kiszolgáló, vezeték nélküli hozzáférési pont, útválasztó, kapcsoló, kiszolgáló, munkaállomás, IP-kamera, nyomtató, tűzfal, terminál, VPN Gateway, Internet vagy csoportos küldés és szórás |
 | **macAddresses** | JSON-tömb | Igen | MAC-címek (két hálózati adapterrel rendelkező eszköz esetén több cím is lehet) |
 | **operatingSystem** | Sztring | Igen | - |
@@ -1803,7 +1803,7 @@ Az eszközöket jelölő JSON-objektumok tömbje.
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| Név | Sztring | Nem | - |
+| Name | Sztring | Nem | - |
 | Címek | JSON-tömb | Igen | Fő vagy numerikus értékek |
 
 #### <a name="firmware-fields"></a>Belső vezérlőprogram mezői
@@ -1965,7 +1965,7 @@ Ezzel az API-val lekérheti az összes vagy szűrt riasztást egy helyszíni fel
 
 #### <a name="externalv1alerts"></a>/external/v1/alerts
 
-#### <a name="method"></a>Módszer
+#### <a name="method"></a>Metódus
 
 **GET**
 
@@ -2140,7 +2140,7 @@ Példa a QRadar eljuttatott adattartalomra:
 
 #### <a name="externalv1alertsltuuidgt"></a>/External/v1/Alerts/ &lt; UUID&gt;
 
-#### <a name="method"></a>Módszer
+#### <a name="method"></a>Metódus
 
 **PUT**
 
@@ -2361,10 +2361,10 @@ A karbantartási időszakra vonatkozó műveleteket jelölő JSON-objektumok tö
 | **dateTime** | Sztring | Példa: "2012-04-23T18:25:43.511 Z" | nem |
 | **ticketId** | Sztring | Példa: "9a5fe99c-d914-4bda-9332-307384fe40bf" | nem |
 | **tokenName** | Sztring | - | nem |
-| **végrehajtók** | A sztring tömbje | - | yes |
-| **sensorIds** | A sztring tömbje | - | yes |
-| **alhálózatok** | A sztring tömbje | - | yes |
-| **TTL** | Numerikus | - | yes |
+| **végrehajtók** | A sztring tömbje | - | igen |
+| **sensorIds** | A sztring tömbje | - | igen |
+| **alhálózatok** | A sztring tömbje | - | igen |
+| **ttl** | Numerikus | - | igen |
 | **operationType** | Sztring | Az értékek a következők: "OPEN", "UPDATE" és "Bezárás" | nem |
 
 ### <a name="authenticate-user-credentials"></a>Felhasználói hitelesítő adatok hitelesítése
@@ -2373,7 +2373,7 @@ Ezzel az API-val érvényesítheti a felhasználói hitelesítő adatokat. A IoT
 
 #### <a name="externalauthenticationvalidation"></a>/external/authentication/validation
 
-#### <a name="method"></a>Módszer
+#### <a name="method"></a>Metódus
 
 **POST**
 
@@ -2432,7 +2432,7 @@ Ezzel az API-val engedélyezheti, hogy a felhasználók megváltoztassák a saj�
 
 #### <a name="externalauthenticationset_password"></a>/External/Authentication/set_password
 
-#### <a name="method"></a>Módszer
+#### <a name="method"></a>Metódus
 
 **POST**
 
@@ -2502,7 +2502,7 @@ Ezzel az API-val engedélyezheti a rendszergazdáknak a megadott felhasználók 
 
 #### <a name="externalauthenticationset_password_by_admin"></a>/External/Authentication/set_password_by_admin
 
-#### <a name="method"></a>Módszer
+#### <a name="method"></a>Metódus
 
 **POST**
 
@@ -2572,6 +2572,6 @@ response:
 | **username** | Sztring | Nem |
 | **new_password** | Sztring | Nem |
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 [Érzékelő észlelésének vizsgálata egy eszköz leltározásakor](how-to-investigate-sensor-detections-in-a-device-inventory.md) 
  Az [eszközök leltárában szereplő összes vállalati érzékelő észlelésének vizsgálata](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)

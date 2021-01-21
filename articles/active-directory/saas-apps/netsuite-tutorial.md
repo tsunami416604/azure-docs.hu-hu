@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/09/2020
+ms.date: 01/20/2021
 ms.author: jeedes
-ms.openlocfilehash: 9272114dd472717e59680b40c07d8435dea19682
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d99a19efcef0cae518d8d21d3371adaf37d32ff7
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181968"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625481"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>Oktatóanyag: az Azure AD egyszeri bejelentkezés (SSO) integrálása a NetSuite-nal
 
@@ -41,7 +41,6 @@ A NetSuite a következőket támogatja:
 
 * IDENTITÁSSZOLGÁLTATÓ által kezdeményezett egyszeri bejelentkezés.
 * JIT (igény szerinti) felhasználó kiépítés.
-* [Automatikus felhasználó-kiépítés](NetSuite-provisioning-tutorial.md).
 
 > [!NOTE]
 > Mivel az alkalmazás azonosítója egy rögzített karakterlánc-érték, csak egy példány konfigurálható egyetlen bérlőn.
@@ -104,7 +103,7 @@ Ha engedélyezni szeretné az Azure AD SSO használatát a Azure Portalban, tegy
 
 1. A fentieken kívül a NetSuite alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Name (Név) | Forrás attribútum |
+    | Name | Forrás attribútum |
     | ---------------| --------------- |
     | account  | `account id` |
 
@@ -132,7 +131,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    a. A név mezőbe írja be a **B. Simon** **nevet** .  
    b. A **Felhasználónév** mezőbe írja be a username@companydomain.extension (például B.Simon@contoso.com ) nevet.  
    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.  
-   d. Kattintson a **Létrehozás** gombra.
+   d. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -215,7 +214,7 @@ Ebben a szakaszban engedélyezheti a B. Simon felhasználó számára az Azure e
 
     ![Képernyőfelvétel: a telepítéskezelő, ahol megadhatja a szerepkör nevét.](./media/NetSuite-tutorial/ns-new-role.png)
 
-    e. Kattintson a **Mentés** gombra.
+    e. Válassza a **Mentés** lehetőséget.
 
     f. A felső navigációs sávon válassza az **engedélyek** lehetőséget. Ezután válassza a **telepítés** lehetőséget.
 
@@ -223,7 +222,7 @@ Ebben a szakaszban engedélyezheti a B. Simon felhasználó számára az Azure e
 
     : Válassza az **SAML egyszeri bejelentkezés** lehetőséget, majd válassza a **Hozzáadás** lehetőséget.
 
-    h. Kattintson a **Mentés** gombra.
+    h. Válassza a **Mentés** lehetőséget.
 
     i. A felső navigációs sávon válassza a **beállítás**, majd a **telepítéskezelő** lehetőséget.
 
@@ -241,7 +240,7 @@ Ebben a szakaszban engedélyezheti a B. Simon felhasználó számára az Azure e
 
     ![A képernyőképen az alkalmazottak közül kiválasztott rendszergazda látható.](./media/NetSuite-tutorial/ns-add-role.png)
 
-    m. Kattintson a **Mentés** gombra.
+    m. Válassza a **Mentés** lehetőséget.
 
 ### <a name="create-the-netsuite-test-user"></a>A NetSuite test felhasználó létrehozása
 

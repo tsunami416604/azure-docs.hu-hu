@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/08/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: de3ff6ead1f0dd86e07c86b992a720a676a2095c
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 399eee06d472204eaf6dbc333f15cee7c4373739
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97840924"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624642"
 ---
 # <a name="define-global-access-control"></a>Globális hozzáférés-vezérlés meghatározása
 
@@ -20,7 +20,7 @@ A nagyméretű szervezeteknél a felhasználói engedélyek bonyolultak lehetnek
 
 A globális és összetettebb felhasználói hozzáférési engedélyek iránti igény támogatásához létrehozhat egy üzleti egységeken, régiókban és webhelyeken alapuló globális üzleti topológiát is. Ezután megadhat felhasználói hozzáférési engedélyeket ezen entitások köré.
 
-Az üzleti topológiához való hozzáférési eszközök használata segít a szervezeteknek a nulla megbízhatóságú stratégiák megvalósításában azáltal, hogy jobb szabályozást biztosítanak a felhasználók számára az Azure Defender for IoT platformhoz tartozó eszközök kezeléséhez és elemzéséhez.
+Az üzleti topológiához való hozzáférési eszközök használata segít a szervezeteknek a nulla megbízhatóságú stratégiák megvalósításában azáltal, hogy jobban szabályozzák, hogy a felhasználók miként kezelhetik és elemezik az eszközöket az Azure Defender for IoT platformon.
 
 ## <a name="about-access-groups"></a>Hozzáférési csoportok
 
@@ -88,6 +88,6 @@ Szabályok létrehozásakor vegye figyelembe a következő információkat:
 
 - Ha nincs kiválasztva üzleti egység vagy régió, a felhasználók hozzáférhetnek az összes meghatározott üzleti egységhez és régióhoz.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 [A IoT-konzol felhasználói](how-to-create-and-manage-users.md)

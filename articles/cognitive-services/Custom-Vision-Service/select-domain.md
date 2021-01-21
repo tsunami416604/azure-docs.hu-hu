@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
-ms.openlocfilehash: 0dbd6ea13069b72e6bca5c065af92568a5c7cdb8
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 2259d0114d91af2e688df66ff8dc4e8d293c2b03
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97844943"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624835"
 ---
 # <a name="select-a-domain-for-a-custom-vision-project"></a>Tartomány kiválasztása Custom Vision projekthez
 
@@ -25,10 +25,11 @@ A Custom Vision projekt beállítások lapján választhat egy tartományt a pro
 
 |Tartomány|Cél|
 |---|---|
-|__Általános__| A képbesorolási feladatok széles körére optimalizált. Ha a többi tartomány egyike sem megfelelő, vagy nem biztos benne, hogy melyik tartományt szeretné kiválasztani, válassza az általános tartományt. ID `ee85a74c-405e-4adc-bb47-ffa8ca0c9f31`|
+|__Általános__| A képbesorolási feladatok széles körére optimalizált. Ha a többi tartomány egyike sem megfelelő, vagy ha nem biztos abban, hogy melyik tartományt kell választania, válassza az általános tartományt. ID `ee85a74c-405e-4adc-bb47-ffa8ca0c9f31`|
+|__Általános [a1]__| A jobb pontosság érdekében az általános tartományhoz hasonló következtetési idő van optimalizálva. Nagyobb adatkészletekhez vagy nehezebb felhasználói forgatókönyvekhez ajánlott. Ehhez a tartományhoz több betanítási idő szükséges. ID `a8e3c40f-fb4a-466f-832a-5e457ae4a344`|
 |__Élelmiszer__|Az ételek fényképeihez optimalizált, ahogy azt egy étterem menüjében láthatja. Ha egyéni gyümölcsökből vagy zöldségekből származó fényképeket szeretne osztályozni, használja az élelmiszer-tartományt. ID `c151d5b5-dd07-472a-acc8-15d29dea8518`|
 |__Arcrészek__|Felismerhető tereptárgyak számára optimalizált, természetes és mesterséges is. Ez a tartomány akkor működik a legjobban, ha a tereptárgy jól látható a fényképben. Ez a tartomány akkor is működik, ha a tereptárgyat az előttük lévő személyek kis mértékben akadályozzák. ID `ca455789-012d-4b50-9fec-5bb63841c793`|
-|__Retail__|A vásárlási katalógusban vagy a vásárlási webhelyen található rendszerképekre optimalizált. Ha a ruhák, nadrágok és ingek között nagy pontosságú osztályozást szeretne, használja ezt a tartományt. ID `b30a91ae-e3c1-4f73-a81e-c270bff27c39`|
+|__Retail__|A vásárlási katalógusban vagy a vásárlási webhelyen található rendszerképekre optimalizált. Ha magas pontosságú osztályozást szeretne a ruhák, nadrágok és ingek között, használja ezt a tartományt. ID `b30a91ae-e3c1-4f73-a81e-c270bff27c39`|
 |__Kompakt tartományok__| Az Edge-eszközök valós idejű besorolásának korlátaira optimalizált.|
 
 ## <a name="object-detection"></a>Objektumészlelés
@@ -36,6 +37,7 @@ A Custom Vision projekt beállítások lapján választhat egy tartományt a pro
 |Tartomány|Cél|
 |---|---|
 |__Általános__| Az objektum-észlelési feladatok széles körére optimalizált. Ha a többi tartomány egyike sem megfelelő, vagy nem biztos benne, hogy melyik tartományt szeretné kiválasztani, válassza az általános tartományt. ID `da2e3a8a-40a5-4171-82f4-58522f70fbc1`|
+|__Általános [a1]__| A jobb pontosság érdekében az általános tartományhoz hasonló következtetési idő van optimalizálva. A régió pontos elhelyezésére, nagyobb adatkészletekre vagy bonyolultabb felhasználói forgatókönyvekre ajánlott. Ehhez a tartományhoz több betanítási idő szükséges, és az eredmények nem determinisztikus: a rendszer egy +-1%-os leképezési különbözetet vár a megadott betanítási adatokkal. ID `9c616dff-2e7d-ea11-af59-1866da359ce6`|
 |__Embléma__|A képeken található márka emblémák keresésére optimalizált. ID `1d8ffafe-ec40-4fb2-8f90-72b3b6cecea4`|
 |__Termékek a polcokon__|A polcokon található termékek észlelésére és besorolására optimalizált. ID `3780a898-81c3-4516-81ae-3a139614e1f3`|
 |__Kompakt tartományok__| Az Edge-eszközök valós idejű objektum-észlelésének korlátaira optimalizált.|
@@ -48,7 +50,8 @@ A modell teljesítménye a kiválasztott tartománytól függ. Az alábbi tábl�
 
 |Feladat|Tartomány|ID (Azonosító)|Modell mérete|CPU-következtetési idő|GPU-következtetési idő|
 |---|---|---|---|---|---|
-|Besorolás|General (compact) (Általános (kompakt))|`0732100f-1a38-4e49-a514-c9b44c697ab5`|5 MB|13 MS|5 MS|
+|Besorolás|General (compact) (Általános (kompakt))|`0732100f-1a38-4e49-a514-c9b44c697ab5`|6 MB|10 MS|5 MS|
+|Besorolás|Általános (Compact) [S1]|`a1db07ca-a19a-4830-bae8-e004a42dc863`|43 MB|50 MS|5 MS|
 |Objektumészlelés|General (compact) (Általános (kompakt))|`a27d5ca5-bb19-49d8-a70a-fec086c47f5b`|45 MB|35 MS|5 MS|
 |Objektumészlelés|Általános (Compact) [S1]|`7ec2ac80-887b-48a6-8df9-8b1357765430`|14 MB|27 MS|7 MS|
 

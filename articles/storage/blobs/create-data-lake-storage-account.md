@@ -8,12 +8,12 @@ ms.date: 08/31/2020
 ms.service: storage
 ms.reviewer: stewu
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 6b63933fc625079bb490942cf3a32232a484fe38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 712f1dc0679ee49791831e782fb68c39a757870a
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89270165"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624337"
 ---
 # <a name="create-a-storage-account-to-use-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2hez használandó Storage-fiók létrehozása
 
@@ -39,7 +39,10 @@ A következő képen a **Storage-fiók létrehozása** lapon látható ez a beá
 > [!div class="mx-imgBorder"]
 > ![Hierarchikus névtér beállítása](./media/create-data-lake-storage-account/hierarchical-namespace-feature.png)
 
-Ha rendelkezik egy meglévő Storage-fiókkal, amelyet Data Lake Storagehoz kíván használni, és a hierarchikus névtér beállítása le van tiltva, akkor az új Storage-fiókba kell áttelepítenie az adatkészletet, amelyen engedélyezve van a beállítás.
+Ha van olyan meglévő Storage-fiókja, amelyet Data Lake Storagehoz kíván használni, és a hierarchikus névtér beállítás le van tiltva, akkor át kell telepítenie az új Storage-fiókba, amelyen engedélyezve van a beállítás.
+
+> [!NOTE]
+> **Az adatvédelem** és a **hierarchikus névtér** nem engedélyezhető egyszerre.
 
 ## <a name="next-steps"></a>Következő lépések
 
