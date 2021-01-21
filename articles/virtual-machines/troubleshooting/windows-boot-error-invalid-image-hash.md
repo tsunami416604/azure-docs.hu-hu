@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/03/2020
 ms.author: v-miegge
-ms.openlocfilehash: e58e349d7b7385ec913986c39462c17deadcb61d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 22db9c7966b6f988ca0ea799104275f3f86c77ea
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969602"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629572"
 ---
 # <a name="windows-boot-manager-error---0xc0000428-status-invalid-image-hash"></a>Windows rendszerindítási kezelő – hiba – a 0xC0000428 állapota érvénytelen képkivonat
 
@@ -65,6 +65,9 @@ Az előzetes verziójú rendszerkép lejárati dátumát nem tudja meghosszabbí
 - Az Azure-ban az előzetes verziójú Windows rendszerhez készült összes rendszerkép tartalmazni fogja a leírását, hogy azok nem éles környezetben való használatra szántak, és csak a megadott próbaidőszakra vagy "előzetes kiadásra" használhatók.
 
 ## <a name="solution"></a>Megoldás
+
+> [!TIP]
+> Ha a virtuális gép nemrég készült biztonsági másolattal rendelkezik, a rendszerindítási probléma megoldásához próbálja meg [visszaállítani a virtuális gépet a biztonsági mentésből](../../backup/backup-azure-arm-restore-vms.md) .
 
 Ha a rendszerkép egy előnézeti kép, nem lehet kiterjeszteni a használt lemezkép lejárati idejét, hanem egy [új virtuális gépet kell telepítenie](../windows/quick-create-portal.md) egy nem előzetes verziójú lemezkép használatával. Az alábbi lépések segítséget nyújtanak annak azonosításában, hogy az előnézeti képet használta-e, valamint olyan erőforrásokat biztosít, amelyek segítséget nyújtanak az adatoknak a virtuális gépről egy új virtuális gépre való átvitelében. Ha pozitívan azonosította a rendszerképet előzetes képként, a rendszerkép nem helyreállítható, mert már lejárt.
 

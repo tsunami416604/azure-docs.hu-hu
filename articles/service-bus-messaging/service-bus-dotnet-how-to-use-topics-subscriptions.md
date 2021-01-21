@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 11/13/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5dfdf846410e9b622f3ef1e9006aa9846de9979c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 60504bcf9e2c3f9460eee9a2e72d18767c0cfa71
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498710"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631674"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-net"></a>Üzenetek küldése egy Azure Service Bus témakörnek, és üzenetek fogadása az előfizetésből a témakörbe (.NET)
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre olyan .NET Core Console-alkalmazást, amely üzeneteket küld egy Service Bus témakörnek, és üzeneteket fogad a témakör előfizetéséről. 
@@ -265,9 +265,9 @@ Próbálkozzon újra a portálon.
     
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a következő dokumentációt és mintákat:
 
 - [A .NET-hez készült ügyféloldali kódtár Azure Service Bus – readme](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus)
 - [Példák a GitHubon](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus/samples)
-- [.NET API-referencia](/dotnet/api/azure.messaging.servicebus?preserve-view=true&view=azure-dotnet-preview)
+- [.NET API-referencia](/dotnet/api/azure.messaging.servicebus?preserve-view=true)

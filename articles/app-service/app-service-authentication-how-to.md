@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan szabhatja testre a hitelesítési és engedély
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 85fd7fdba4c62f4837a419af44c83f7e46cb9e39
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 4f2f43b142b290d29a4a90e504422b6c9ba2739c
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601781"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630327"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>A hitelesítés és az engedélyezés speciális használata Azure App Service
 
@@ -280,6 +280,150 @@ Az identitás-szolgáltató bizonyos kulcsrakész engedélyezést is biztosítha
 
 Ha a többi szint valamelyike nem rendelkezik a szükséges engedélyekkel, vagy ha a platform vagy az identitás szolgáltatója nem támogatott, egyéni kódot kell írnia a felhasználók engedélyezéséhez a [felhasználói jogcímek](#access-user-claims)alapján.
 
+## <a name="updating-the-configuration-version-preview"></a>A konfiguráció verziójának frissítése (előzetes verzió)
+
+A felügyeleti API két verziója létezik a hitelesítés/engedélyezés szolgáltatáshoz. Az előnézeti v2 verziója szükséges a (z) "hitelesítés (előzetes verzió)" felhasználói felületéhez a Azure Portal. Egy alkalmazás, amely már a v1 API-t használja, a v2 verzióra frissíthet néhány módosítás után. A titkos konfigurációt a tárolóhely-Sticky alkalmazás beállításaiba kell áthelyezni. A Microsoft-fiók szolgáltatójának konfigurálása jelenleg nem támogatott a v2-ben.
+
+> [!WARNING]
+> A v2 előzetes verzióra való Migrálás letilthatja az alkalmazás App Service hitelesítési/engedélyezési funkciójának kezelését egyes ügyfeleken, például a Azure Portal, az Azure CLI és a Azure PowerShell meglévő felhasználói felületén. Ez nem vonható vissza. Az előzetes verzió ideje alatt a termelési számítási feladatok áttelepítése nem javasolt vagy nem támogatott. Csak kövesse az ebben a szakaszban ismertetett lépéseket az alkalmazások teszteléséhez.
+
+### <a name="moving-secrets-to-application-settings"></a>A titkok áthelyezése az alkalmazás beállításaiba
+
+1. Szerezze be meglévő konfigurációját a v1 API használatával:
+
+   ```azurecli
+   # For Web Apps
+   az webapp auth show -g <group_name> -n <site_name>
+
+   # For Azure Functions
+   az functionapp auth show -g <group_name> -n <site_name>
+   ```
+
+   Az eredményül kapott JSON-adattartalomban jegyezze fel az egyes konfigurált szolgáltatóhoz használt titkos értéket:
+
+   * HRE `clientSecret`
+   * Google `googleClientSecret`
+   * Facebook `facebookAppSecret`
+   * Twitter `twitterConsumerSecret`
+   * Microsoft-fiók: `microsoftAccountClientSecret`
+
+   > [!IMPORTANT]
+   > A titkos értékek fontos biztonsági hitelesítő adatok, és körültekintően kell kezelni őket. Ne ossza meg ezeket az értékeket, és ne maradjon meg a helyi gépen.
+
+1. Tárolóhely-Sticky Alkalmazásbeállítások létrehozása minden titkos értékhez. Megadhatja az egyes Alkalmazásbeállítások nevét. Az értéknek egyeznie kell azzal, amit az előző lépésben kapott, vagy az adott értékkel létrehozott [Key Vault titokra hivatkozik](./app-service-key-vault-references.md?toc=/azure/azure-functions/toc.json) .
+
+   A beállítás létrehozásához használja a Azure Portal, vagy futtassa a következő variációját minden szolgáltatónál:
+
+   ```azurecli
+   # For Web Apps, Google example    
+   az webapp config appsettings set -g <group_name> -n <site_name> --slot-settings GOOGLE_PROVIDER_AUTHENTICATION_SECRET=<value_from_previous_step>
+
+   # For Azure Functions, Twitter example
+   az functionapp config appsettings set -g <group_name> -n <site_name> --slot-settings TWITTER_PROVIDER_AUTHENTICATION_SECRET=<value_from_previous_step>
+   ```
+
+   > [!NOTE]
+   > Ennek a konfigurációnak az alkalmazási beállításait tárolóhelyként kell megjelölni, ami azt jelenti, hogy a rendszer nem helyezi át a környezetek között egy [tárolóhely-swap művelet](./deploy-staging-slots.md)során. Ennek az az oka, hogy maga a hitelesítési konfiguráció a környezethez van kötve. 
+
+1. Hozzon létre egy nevű új JSON-fájlt `authsettings.json` . Végezze el a korábban kapott kimenetet, és távolítsa el az összes titkos értéket. Írja a fennmaradó kimenetet a fájlba, és ügyeljen arra, hogy a rendszer ne tartalmazza a titkos kulcsot. Bizonyos esetekben előfordulhat, hogy a konfiguráció üres karakterláncokat tartalmazó tömbökkel rendelkezik. Győződjön meg arról `microsoftAccountOAuthScopes` , hogy a nem, és ha igen, ezt az értéket állítsa a következőre: `null` .
+
+1. Adjon hozzá egy olyan tulajdonságot, `authsettings.json` amely az egyes szolgáltatóknál korábban létrehozott alkalmazás-beállítási névre mutat:
+ 
+   * HRE `clientSecretSettingName`
+   * Google `googleClientSecretSettingName`
+   * Facebook `facebookAppSecretSettingName`
+   * Twitter `twitterConsumerSecretSettingName`
+   * Microsoft-fiók: `microsoftAccountClientSecretSettingName`
+
+   A művelet után egy példa a következőhöz hasonlóan néz ki: ebben az esetben csak a HRE van konfigurálva:
+
+   ```json
+   {
+       "id": "/subscriptions/00d563f8-5b89-4c6a-bcec-c1b9f6d607e0/resourceGroups/myresourcegroup/providers/Microsoft.Web/sites/mywebapp/config/authsettings",
+       "name": "authsettings",
+       "type": "Microsoft.Web/sites/config",
+       "location": "Central US",
+       "properties": {
+           "enabled": true,
+           "runtimeVersion": "~1",
+           "unauthenticatedClientAction": "AllowAnonymous",
+           "tokenStoreEnabled": true,
+           "allowedExternalRedirectUrls": null,
+           "defaultProvider": "AzureActiveDirectory",
+           "clientId": "3197c8ed-2470-480a-8fae-58c25558ac9b",
+           "clientSecret": null,
+           "clientSecretSettingName": "MICROSOFT_IDENTITY_AUTHENTICATION_SECRET",
+           "clientSecretCertificateThumbprint": null,
+           "issuer": "https://sts.windows.net/0b2ef922-672a-4707-9643-9a5726eec524/",
+           "allowedAudiences": [
+               "https://mywebapp.azurewebsites.net"
+           ],
+           "additionalLoginParams": null,
+           "isAadAutoProvisioned": true,
+           "aadClaimsAuthorization": null,
+           "googleClientId": null,
+           "googleClientSecret": null,
+           "googleClientSecretSettingName": null,
+           "googleOAuthScopes": null,
+           "facebookAppId": null,
+           "facebookAppSecret": null,
+           "facebookAppSecretSettingName": null,
+           "facebookOAuthScopes": null,
+           "gitHubClientId": null,
+           "gitHubClientSecret": null,
+           "gitHubClientSecretSettingName": null,
+           "gitHubOAuthScopes": null,
+           "twitterConsumerKey": null,
+           "twitterConsumerSecret": null,
+           "twitterConsumerSecretSettingName": null,
+           "microsoftAccountClientId": null,
+           "microsoftAccountClientSecret": null,
+           "microsoftAccountClientSecretSettingName": null,
+           "microsoftAccountOAuthScopes": null,
+           "isAuthFromFile": "false"
+       }   
+   }
+   ```
+
+1. A fájl elküldése az alkalmazás új hitelesítési/engedélyezési konfigurációjához:
+
+   ```azurecli
+   az rest --method PUT --url "/subscriptions/<subscription_id>/resourceGroups/<group_name>/providers/Microsoft.Web/sites/<site_name>/config/authsettings?api-version=2020-06-01" --body @./authsettings.json
+   ```
+
+1. Ellenőrizze, hogy az alkalmazás továbbra is a várt módon működik-e a kézmozdulat után.
+
+1. Törölje az előző lépésekben használt fájlt.
+
+Ekkor áttelepítette az alkalmazást, hogy az identitás-szolgáltatói titkokat az alkalmazás beállításainak megfelelően tárolja.
+
+### <a name="support-for-microsoft-account-registrations"></a>Microsoft-fiók regisztrációk támogatása
+
+A v2 API jelenleg nem támogatja a Microsoft-fiókot eltérő szolgáltatóként. Ehelyett az átszervezett [Microsoft Identity platformot](../active-directory/develop/v2-overview.md) használja a személyes Microsoft-fiókkal rendelkező felhasználók bejelentkezésére. A v2 API-ra való áttéréskor a v1 Azure Active Directory konfiguráció a Microsoft Identity platform szolgáltatójának konfigurálására szolgál.
+
+Ha a meglévő konfigurációja Microsoft-fiókot tartalmaz, és nem tartalmaz Azure Active Directory szolgáltatót, átválthatja a konfigurációt a Azure Active Directory szolgáltatóra, majd elvégezheti az áttelepítést. Ehhez tegye a következőket:
+
+1. Nyissa meg [**Alkalmazásregisztrációk**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) a Azure Portalban, és keresse meg a Microsoft-fiókjához társított regisztrációt. Előfordulhat, hogy a "személyes fiókból származó alkalmazások" fejléc alatt található.
+1. Navigáljon a "hitelesítés" lapra a regisztrációhoz. Az "URI-k átirányítása" alatt egy bejegyzést kell megjelennie `/.auth/login/microsoftaccount/callback` . Másolja ezt az URI-t.
+1. Vegyen fel egy olyan új URI-t, amely megfelel az imént másolt elemnek, kivéve, ha az már véget ért `/.auth/login/aad/callback` . Ez lehetővé teszi a regisztráció használatát a App Service hitelesítés/engedélyezés konfigurációjában.
+1. Navigáljon a App Service hitelesítés/engedélyezési konfigurációhoz az alkalmazáshoz.
+1. Gyűjtse össze a Microsoft-fiók szolgáltatójának konfigurációját.
+1. Konfigurálja a Azure Active Directory szolgáltatót a "speciális" felügyeleti mód használatával, és adja meg az előző lépésben összegyűjtött ügyfél-azonosítót és az ügyfél titkos kulcsának értékeit. A kibocsátó URL-címéhez használja a use (használat) `<authentication-endpoint>/<tenant-id>/v2.0` kifejezést, és cserélje le a (z) és a (z) helyére *\<authentication-endpoint>* a [felhőalapú környezet hitelesítési végpontját](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (például https://login.microsoftonline.com : "" a globális Azure-hoz) *\<tenant-id>* . 
+1. Miután mentette a konfigurációt, tesztelje a bejelentkezési folyamatot úgy, hogy a böngészőben navigál a `/.auth/login/aad` webhelyen található végponthoz, és befejezi a bejelentkezési folyamatot.
+1. Ezen a ponton sikeresen átmásolta a konfigurációt, de a Microsoft-fiókok meglévő konfigurációja továbbra is fennáll. Mielőtt eltávolítja, győződjön meg arról, hogy az alkalmazás összes része hivatkozik a Azure Active Directory szolgáltatóra a bejelentkezési hivatkozások használatával stb. Ellenőrizze, hogy az alkalmazás összes része a várt módon működik-e.
+1. Ha ellenőrizte, hogy a dolgok a HRE Azure Active Directory szolgáltatón keresztül működnek, eltávolíthatja a Microsoft-fiók szolgáltatójának konfigurációját.
+
+Előfordulhat, hogy egyes alkalmazások már külön regisztrációval rendelkeznek Azure Active Directory és a Microsoft-fiókhoz. Ezek az alkalmazások jelenleg nem telepíthetők át. 
+
+> [!WARNING]
+> A két regisztráció megszervezése a HRE-alkalmazás által [támogatott fióktípus](../active-directory/develop/supported-accounts-validation.md) módosításával lehetséges. Ez azonban a Microsoft-fiókok felhasználói számára új beleegyezés-kérést kényszerít, és a felhasználók identitási jogcímei eltérőek lehetnek a szerkezetben, `sub` különösen az értékek módosítása óta, mivel új alkalmazás-azonosító van használatban. Ez a megközelítés nem ajánlott, ha alaposan megértette. Ehelyett várnia kell a két regisztráció támogatását a v2 API felületén.
+
+### <a name="switching-to-v2"></a>Váltás a v2-re
+
+A fenti lépések elvégzése után navigáljon az alkalmazáshoz a Azure Portal. Válassza a "hitelesítés (előzetes verzió)" szakaszt. 
+
+Azt is megteheti, hogy egy PUT-kérelmet helyez el az `config/authsettingsv2` erőforráshoz a hely erőforrása alatt. A hasznos adatok sémája ugyanaz, mint a [fájl használata](#config-file) szakaszban rögzített konfiguráció.
+
 ## <a name="configure-using-a-file-preview"></a><a name="config-file"> </a>Konfigurálás fájl használatával (előzetes verzió)
 
 Az Auth beállításai opcionálisan konfigurálhatók az üzemelő példány által biztosított fájlon keresztül is. Erre szükség lehet a App Service hitelesítés/engedélyezés bizonyos előzetes verziójú képességeitől.
@@ -547,7 +691,7 @@ A helyére írja `<my_app_name>` be az alkalmazás nevét. Az `<my_resource_grou
 
 Ezt a parancsot a [Azure Cloud Shell](../cloud-shell/overview.md) futtathatja, ha az előző kódrészletben a **kipróbálás** lehetőséget választja. Az [Azure CLI helyi](/cli/azure/install-azure-cli) használatával is végrehajthatja ezt a parancsot az [az login (bejelentkezés](/cli/azure/reference-index#az-login) ) parancs végrehajtása után.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Felhasználók teljes körű hitelesítése és engedélyezése](tutorial-auth-aad.md)

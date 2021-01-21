@@ -6,12 +6,12 @@ ms.author: harshacs
 ms.service: site-recovery
 ms.topic: article
 ms.date: 07/14/2020
-ms.openlocfilehash: f23efa8d0439422fef685480ed270dce6e78a204
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7f10654e1c96f1756e5864d20fa2a6817385e994
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366853"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629793"
 ---
 # <a name="replicate-on-premises-machines-by-using-private-endpoints"></a>Helyszíni gépek replikálása privát végpontok használatával
 
@@ -55,11 +55,11 @@ A Recovery Services tároló tartalmazza a gépek replikációs információit. 
 
 A [felügyelt identitás](../active-directory/managed-identities-azure-resources/overview.md) lehetővé teszi a tároló számára a Storage-fiókok elérését. A követelményektől függően előfordulhat, hogy a Site Recoverynak hozzá kell férnie a cél tárolási és a gyorsítótár-és a naplófájl-fiókhoz. A felügyelt identitás elérésére akkor van szükség, ha a Private link Service-t használja a tárolóhoz.
 
-1. Nyissa meg a Recovery Services-tárolót. Válassza ki az **identitás** elemet a **Beállítások**területen:
+1. Nyissa meg a Recovery Services-tárolót. Válassza ki az **identitás** elemet a **Beállítások** területen:
 
-   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/enable-managed-identity-in-vault.png" alt-text="A Azure Site Recovery és privát végpontok architektúráját bemutató ábra.":::
+   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/enable-managed-identity-in-vault.png" alt-text="Képernyőkép, amely az Identity Settings oldalt jeleníti meg.":::
 
-1. Módosítsa az **állapotot** **be értékre, majd** válassza a **Mentés**lehetőséget.
+1. Módosítsa az **állapotot** **be értékre, majd** válassza a **Mentés** lehetőséget.
 
    A rendszer létrehoz egy objektumazonosító-azonosítót. A tár már regisztrálva van Azure Active Directoryban.
 
@@ -69,25 +69,25 @@ A helyszíni forrásoldali hálózat számítógépeinek ellátásához egy priv
 
 1. A Azure Portal keresési mezőben keressen rá a "privát hivatkozás" kifejezésre. Válassza ki a privát **hivatkozás** elemet a privát hivatkozás központjához való ugráshoz:
 
-   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/search-private-links.png" alt-text="A Azure Site Recovery és privát végpontok architektúráját bemutató ábra.":::
+   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/search-private-links.png" alt-text="Képernyőkép, amely a privát kapcsolati központ Azure Portal keresésére mutat.":::
 
-1. A bal oldali ablaktáblán válassza a **privát végpontok**lehetőséget. A **privát végpontok** lapon válassza a **Hozzáadás** lehetőséget a saját tárolóhoz tartozó privát végpont létrehozásának megkezdéséhez:
+1. A bal oldali ablaktáblán válassza a **privát végpontok** lehetőséget. A **privát végpontok** lapon válassza a **Hozzáadás** lehetőséget a saját tárolóhoz tartozó privát végpont létrehozásának megkezdéséhez:
 
-   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-endpoints.png" alt-text="A Azure Site Recovery és privát végpontok architektúráját bemutató ábra.":::
+   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-endpoints.png" alt-text="Képernyőkép, amely bemutatja, hogyan hozhat létre privát végpontot a privát kapcsolati központban.":::
 
 1. A **privát végpont létrehozása** lapon adja meg a saját végponti kapcsolat létrehozásához szükséges adatokat.
 
    1. **Alapvető beállítások**. Adja meg a privát végpontok alapszintű részleteit. Használja a mellőzési hálózathoz használt régiót:
 
-      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-endpoints-basic-tab.png" alt-text="A Azure Site Recovery és privát végpontok architektúráját bemutató ábra.":::
+      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-endpoints-basic-tab.png" alt-text="Képernyőkép, amely az alapszintű lapot mutatja a privát végpontok létrehozásához.":::
 
-   1. **Erőforrás**. Ezen a lapon meg kell adnia azt a platform-szolgáltatás típusú erőforrást, amelyhez létre kívánja hozni a kapcsolódást. A kiválasztott előfizetéshez tartozó **erőforrástípus** területen válassza a **Microsoft. recoveryservices szolgáltatónál/Vaults**lehetőséget. Válassza ki az Recovery Services-tároló nevét az **erőforrás**területen. Válassza a **Azure site Recovery** lehetőséget a **célként szolgáló alerőforrásként**.
+   1. **Erőforrás**. Ezen a lapon meg kell adnia azt a platform-szolgáltatás típusú erőforrást, amelyhez létre kívánja hozni a kapcsolódást. A kiválasztott előfizetéshez tartozó **erőforrástípus** területen válassza a **Microsoft. recoveryservices szolgáltatónál/Vaults** lehetőséget. Válassza ki az Recovery Services-tároló nevét az **erőforrás** területen. Válassza a **Azure site Recovery** lehetőséget a **célként szolgáló alerőforrásként**.
 
-      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-endpoints-resource-tab.png" alt-text="A Azure Site Recovery és privát végpontok architektúráját bemutató ábra.":::
+      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-endpoints-resource-tab.png" alt-text="Képernyőkép, amely az erőforrás fület jeleníti meg egy privát végponthoz való hivatkozáshoz.":::
 
    1. **Konfiguráció**. Ezen a lapon adhatja meg a mellőzési hálózatot és alhálózatot, ahol létre szeretné hozni a privát végpontot. 
 
-      Az **Igen gombra**kattintva engedélyezheti az integrációt egy privát DNS-zónával.
+      Az **Igen gombra** kattintva engedélyezheti az integrációt egy privát DNS-zónával.
       Válasszon egy meglévő DNS-zónát, vagy hozzon létre egy újat. Az **Igen** lehetőség kiválasztásával automatikusan összekapcsolja a zónát a mellőzési hálózattal. Ez a művelet hozzáadja azokat a DNS-rekordokat is, amelyek szükségesek az új IP-címek és a magánhálózati végponthoz létrehozott teljes tartománynevek DNS-feloldásához.
 
       Győződjön meg arról, hogy új DNS-zónát hoz létre minden olyan új magánhálózati végponthoz, amely ugyanahhoz a tárolóhoz csatlakozik. Ha meglévő privát DNS-zónát választ, a rendszer felülírja az előző CNAME rekordokat. A folytatás előtt tekintse meg a [privát végponti útmutatót](../private-link/private-endpoint-overview.md#private-endpoint-properties) .
@@ -96,7 +96,7 @@ A helyszíni forrásoldali hálózat számítógépeinek ellátásához egy priv
 
       A magánhálózati DNS-zóna manuális létrehozásához kövesse a [saját DNS-zónák létrehozása és a DNS-rekordok manuális hozzáadása](#create-private-dns-zones-and-add-dns-records-manually)című témakör lépéseit.
 
-      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-endpoints-configuration-tab.png" alt-text="A Azure Site Recovery és privát végpontok architektúráját bemutató ábra.":::
+      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-endpoints-configuration-tab.png" alt-text="Képernyőkép, amely a privát végpont konfigurációjának konfiguráció lapját jeleníti meg.":::
 
    1. **Címkék**. Igény szerint hozzáadhat címkéket a privát végponthoz.
 
@@ -114,16 +114,19 @@ Ha létrehozza a privát végpontot, és Ön is a Recovery Services-tároló tul
 
 A folytatás előtt tekintse át a magánhálózati végpont erőforrását a kapcsolódás állapotának áttekintéséhez:
 
-:::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/vault-private-endpoint-connections.png" alt-text="A Azure Site Recovery és privát végpontok architektúráját bemutató ábra.":::
+:::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/vault-private-endpoint-connections.png" alt-text="A tár privát Endpoint Connections lapját és a kapcsolatok listáját megjelenítő képernyőkép.":::
 
 ### <a name="optional-create-private-endpoints-for-the-cache-storage-account"></a><a name="create-private-endpoints-for-the-cache-storage-account"></a>Választható Magánhálózati végpontok létrehozása a gyorsítótárbeli Storage-fiókhoz
 
 Egy privát végpontot használhat az Azure Storage-hoz. A privát végpontok tárolási hozzáféréshez való létrehozása nem kötelező Azure Site Recovery replikáláshoz. Ha privát végpontot hoz létre a tárhelyhez, szüksége van egy privát végpontra a gyorsítótár-és a naplófájl-tároló fiókhoz a kikerülő virtuális hálózatban.
 
 > [!NOTE]
+> Ha a magánhálózati végpontok nincsenek engedélyezve a Storage-fiókon, a védelem még sikeres lesz. A replikálási forgalom azonban az interneten keresztül az Azure Site Recovery nyilvános végpontokra is áthaladhat. Annak érdekében, hogy a replikációs forgalom magánhálózati kapcsolaton keresztül történjen, a Storage-fióknak engedélyeznie kell a magánhálózati végpontokat.
+
+> [!NOTE]
 > A tárolóhoz tartozó magánhálózati végpontok csak általános célú v2 Storage-fiókokon hozhatók létre. A díjszabással kapcsolatos információkért lásd: az [Azure Page Blobs díjszabása](https://azure.microsoft.com/pricing/details/storage/page-blobs/).
 
-A [privát tárolók létrehozásával kapcsolatos útmutatást](../private-link/tutorial-private-endpoint-storage-portal.md#create-storage-account-with-a-private-endpoint) követve hozzon létre egy privát végponttal rendelkező Storage-fiókot. Ügyeljen arra, hogy az **Igen** lehetőséget válassza a **saját DNS-zóna integrálása**területen. Válasszon ki egy meglévő DNS-zónát, vagy hozzon létre egy újat.
+A [privát tárolók létrehozásával kapcsolatos útmutatást](../private-link/tutorial-private-endpoint-storage-portal.md#create-storage-account-with-a-private-endpoint) követve hozzon létre egy privát végponttal rendelkező Storage-fiókot. Ügyeljen arra, hogy az **Igen** lehetőséget válassza a **saját DNS-zóna integrálása** területen. Válasszon ki egy meglévő DNS-zónát, vagy hozzon létre egy újat.
 
 ### <a name="grant-required-permissions-to-the-vault"></a>Szükséges engedélyek megadása a tárolóhoz
 
@@ -145,13 +148,13 @@ Ezek a lépések azt írják le, hogyan adhat hozzá szerepkör-hozzárendelést
 
 1. Nyissa meg a tárfiókot. A bal oldali ablaktáblán válassza a **hozzáférés-vezérlés (iam)** lehetőséget.
 
-1. A **szerepkör-hozzárendelés hozzáadása** szakaszban válassza a **Hozzáadás**lehetőséget:
+1. A **szerepkör-hozzárendelés hozzáadása** szakaszban válassza a **Hozzáadás** lehetőséget:
 
-   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/storage-role-assignment.png" alt-text="A Azure Site Recovery és privát végpontok architektúráját bemutató ábra.":::
+   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/storage-role-assignment.png" alt-text="A Storage-fiók hozzáférés-vezérlés (IAM) lapját megjelenítő képernyőkép.":::
 
-1. A **szerepkör-hozzárendelés hozzáadása** oldalon a **szerepkör** listában válassza ki a szerepkört a szakasz elején lévő listából. Adja meg a tároló nevét, majd kattintson a **Mentés**gombra.
+1. A **szerepkör-hozzárendelés hozzáadása** oldalon a **szerepkör** listában válassza ki a szerepkört a szakasz elején lévő listából. Adja meg a tároló nevét, majd kattintson a **Mentés** gombra.
 
-   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/storage-role-assignment-select-role.png" alt-text="A Azure Site Recovery és privát végpontok architektúráját bemutató ábra.":::
+   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/storage-role-assignment-select-role.png" alt-text="A szerepkör-hozzárendelés hozzáadása lapot megjelenítő képernyőkép.":::
 
 Az engedélyek hozzáadása után engedélyeznie kell a Microsoft megbízható szolgáltatásainak elérését. Válassza a **tűzfalak és virtuális hálózatok** lehetőséget, és jelölje be a **megbízható Microsoft-szolgáltatások hozzáférésének engedélyezése a Storage-fiókhoz** **kivételeket**.
 
@@ -174,15 +177,15 @@ Hozzon létre egy privát DNS-zónát, amely engedélyezi a Site Recovery szolg�
 
    1. Keresse meg a "privát DNS-zóna" kifejezést a **minden szolgáltatás** keresési mezőben, majd válassza ki **saját DNS zónát** az eredmények között:
 
-      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/search-private-dns-zone.png" alt-text="A Azure Site Recovery és privát végpontok architektúráját bemutató ábra.":::
+      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/search-private-dns-zone.png" alt-text="Az Azure Portal új erőforrások lapján található privát DNS-zóna keresését bemutató képernyőkép.":::
 
    1. A **saját DNS zónák** lapon kattintson a **Hozzáadás** gombra egy új zóna létrehozásához.
 
    1. A **saját DNS-zóna létrehozása** lapon adja meg a szükséges adatokat. Adja meg a **privatelink.siterecovery.windowsazure.com** nevet a saját DNS-zóna neveként. Bármelyik erőforráscsoportot és előfizetést is kiválaszthatja.
 
-      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-dns-zone.png" alt-text="A Azure Site Recovery és privát végpontok architektúráját bemutató ábra.":::
+      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-dns-zone.png" alt-text="A saját DNS zóna létrehozása lap alapok lapját bemutató képernyőkép.":::
 
-   1. A DNS-zóna áttekintéséhez és létrehozásához folytassa a ** \+ create (létrehozás** ) lappal.
+   1. A DNS-zóna áttekintéséhez és létrehozásához folytassa a **\+ create (létrehozás** ) lappal.
 
 1. Kapcsolja össze a magánhálózati DNS-zónát a virtuális hálózattal.
 
@@ -192,7 +195,7 @@ Hozzon létre egy privát DNS-zónát, amely engedélyezi a Site Recovery szolg�
 
    1. Adja meg a szükséges adatokat. Az **előfizetés** és a **virtuális hálózat** listában válassza a Mellőzés hálózatnak megfelelő részleteket. A többi mezőben hagyja meg az alapértelmezett értékeket.
 
-      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/add-virtual-network-link.png" alt-text="A Azure Site Recovery és privát végpontok architektúráját bemutató ábra.":::
+      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/add-virtual-network-link.png" alt-text="A virtuális hálózati kapcsolat hozzáadása lapot megjelenítő képernyőkép.":::
 
 1. Adja hozzá a DNS-rekordokat.
 
@@ -205,11 +208,11 @@ Hozzon létre egy privát DNS-zónát, amely engedélyezi a Site Recovery szolg�
 
    1. Nyissa meg a saját DNS-zónáját, és nyissa meg a bal oldali ablaktábla **Áttekintés** szakaszát. Rekord hozzáadásának megkezdéséhez **válassza a** rekordhalmaz lehetőséget.
 
-   1. A **rekordazonosító hozzáadása** lapon adjon hozzá egy bejegyzést az egyes teljes tartománynevek és magánhálózati IP- **címek bejegyzéstípusként** . A teljes tartománynevek és IP-címek listáját a **privát végpont** oldalon **tekintheti**meg az Áttekintés lapon. Ahogy az alábbi képernyőképen is látható, a magánhálózati végpont első teljes tartományneve hozzá lesz adva a saját DNS-zónában lévő rekordhoz.
+   1. A **rekordazonosító hozzáadása** lapon adjon hozzá egy bejegyzést az egyes teljes tartománynevek és magánhálózati IP- **címek bejegyzéstípusként** . A teljes tartománynevek és IP-címek listáját a **privát végpont** oldalon **tekintheti** meg az Áttekintés lapon. Ahogy az alábbi képernyőképen is látható, a magánhálózati végpont első teljes tartományneve hozzá lesz adva a saját DNS-zónában lévő rekordhoz.
 
       Ezek a teljes tartománynevek megfelelnek a következő mintának: `{Vault-ID}-asr-pod01-{type}-.{target-geo-code}.siterecovery.windowsazure.com`
 
-      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/add-record-set.png" alt-text="A Azure Site Recovery és privát végpontok architektúráját bemutató ábra.":::
+      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/add-record-set.png" alt-text="A rekordazonosító hozzáadása lapot megjelenítő képernyőkép.":::
 
 ## <a name="next-steps"></a>Következő lépések
 

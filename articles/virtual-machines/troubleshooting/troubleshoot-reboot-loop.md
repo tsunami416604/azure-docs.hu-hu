@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
-ms.openlocfilehash: 4c336fe9a65d7bcc44790a4bfb02bed44f028733
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad0ed7e9619f0b789bf8949fe398aa27bc36b9e0
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86500922"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629640"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Windows újraindítási hurok Azure-beli virtuális gépen
 Ez a cikk a Windows rendszerű virtuális gépeken (VM) tapasztalható újraindítási hurkot ismerteti Microsoft Azureban.
@@ -32,11 +32,11 @@ Ha [rendszerindítási diagnosztikát](./boot-diagnostics.md) használ egy virtu
 
 Az újraindítási hurok a következő okok miatt fordul elő:
 
-### <a name="cause-1"></a>1. ok
+### <a name="cause-1"></a>1\. ok
 
 Létezik egy harmadik féltől származó szolgáltatás, amely kritikusként van megjelölve, és nem indítható el. Ez az operációs rendszer újraindítását okozza.
 
-### <a name="cause-2"></a>2. ok
+### <a name="cause-2"></a>2\. ok
 
 Néhány módosítás történt az operációs rendszeren. Ezek általában a frissítés telepítésével, az alkalmazások telepítésével vagy egy új házirenddel kapcsolatosak. További részletekért tekintse meg a következő naplókat:
 
@@ -49,6 +49,9 @@ Néhány módosítás történt az operációs rendszeren. Ezek általában a fr
 A fájlrendszer sérülése ezt okozhatta. Azonban nehéz diagnosztizálni és azonosítani az operációs rendszer sérülését okozó változást.
 
 ## <a name="solution"></a>Megoldás
+
+> [!TIP]
+> Ha a virtuális gép nemrég készült biztonsági másolattal rendelkezik, a rendszerindítási probléma megoldásához próbálja meg [visszaállítani a virtuális gépet a biztonsági mentésből](../../backup/backup-azure-arm-restore-vms.md) .
 
 A probléma megoldásához [végezze el az operációsrendszer-lemez biztonsági mentését](../windows/snapshot-copy-managed-disk.md), és [csatlakoztassa az operációsrendszer-lemezt egy mentési virtuális géphez](./troubleshoot-recovery-disks-portal-windows.md), majd kövesse a megoldás beállításait, vagy próbálja meg egyenként a megoldásokat.
 
@@ -66,7 +69,7 @@ A probléma megoldásához [végezze el az operációsrendszer-lemez biztonsági
 
 6. Keresse meg a rendszerfájlt a **\Windows\System32\config** mappában.
 
-7. Válassza a **Megnyitás**elemet, írja be a **BROKENSYSTEM** nevet, bontsa ki a **HKEY_LOCAL_MACHINE** kulcsot, majd megjelenik egy további, **BROKENSYSTEM**nevű kulcs.
+7. Válassza a **Megnyitás** elemet, írja be a **BROKENSYSTEM** nevet, bontsa ki a **HKEY_LOCAL_MACHINE** kulcsot, majd megjelenik egy további, **BROKENSYSTEM** nevű kulcs.
 
 8. Győződjön meg arról, hogy a számítógép melyik ControlSet indul el. A kulcs számát a következő beállításkulcs fogja látni.
 
@@ -78,7 +81,7 @@ A probléma megoldásához [végezze el az operációsrendszer-lemez biztonsági
 
 10. Ha a beállításkulcs értéke nem **2**, akkor folytassa a következő enyhítéssel.
 
-11. Ha a beállításkulcs értéke **2**, akkor módosítsa az értéket **2** – **1**értékre.
+11. Ha a beállításkulcs értéke **2**, akkor módosítsa az értéket **2** – **1** értékre.
 
 12. Ha a következő kulcsok bármelyike létezik, és a **2** . vagy **3**. értékkel rendelkezik, majd módosítsa ezeket az értékeket **1** ennek megfelelően:
 

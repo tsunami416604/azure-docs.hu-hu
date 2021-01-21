@@ -1,53 +1,51 @@
 ---
 title: Gyors útmutató Azure IoT Edge-eszköz létrehozásához Windows rendszeren | Microsoft Docs
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre IoT Edge eszközt, majd távolról is üzembe helyezheti az előre elkészített kódot a Azure Portal.
-author: kgremban
-manager: philmea
-ms.author: kgremban
-ms.date: 06/30/2020
+author: rsameser
+manager: kgremban
+ms.author: riameser
+ms.date: 01/20/2021
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 547bf111e73813c939caa917c0117dac6c8989e9
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+monikerRange: =iotedge-2018-06
+ms.openlocfilehash: f3af2b7839465f886d1edba01eb9988419761dac
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922466"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630979"
 ---
-# <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Rövid útmutató: az első IoT Edge modul üzembe helyezése virtuális Windows-eszközön
+# <a name="quickstart-deploy-your-first-iot-edge-module-to-a-windows-device-preview"></a>Rövid útmutató: az első IoT Edge modul üzembe helyezése Windows-eszközön (előzetes verzió)
 
-Próbálja ki Azure IoT Edge ebben a rövid útmutatóban, ha egy virtuális Windows IoT Edge eszközre helyez üzembe tároló kódot. IoT Edge lehetővé teszi a kódok távoli kezelését az eszközökön, így több számítási feladatot is elküldhet a peremhálózat számára. Ebben a rövid útmutatóban azt javasoljuk, hogy használjon egy Azure-beli virtuális gépet a IoT Edge eszközhöz. A virtuális gépek segítségével gyorsan létrehozhat egy tesztelési gépet, telepítheti az előfeltételeket, majd törölheti azt, amikor elkészült.
+Próbálja ki Azure IoT Edge ebben a rövid útmutatóban, ha a Windows IoT Edge eszközön egy Linux rendszerbe helyez üzembe egy tároló kódot. IoT Edge lehetővé teszi a kódok távoli kezelését az eszközökön, így több számítási feladatot is elküldhet a peremhálózat számára. Ebben a rövid útmutatóban azt javasoljuk, hogy használja a saját eszközét, hogy megtekintse, milyen egyszerűen használható Azure IoT Edge Linux rendszerhez Windows rendszeren.
 
 Ennek a rövid útmutatónak a segítségével megtanulhatja az alábbiakat:
 
 * Hozzon létre egy IoT hubot.
 * IoT Edge-eszköz regisztrálása az IoT Hubon
-* Telepítse és indítsa el a IoT Edge futtatókörnyezetet a virtuális eszközön.
-* Modul távoli üzembe helyezése IoT Edge-eszközön és Telemetria küldése az IoT Hubnak
+* Telepítse és indítsa el a Linux rendszerhez készült IoT Edge a Windows Runtime eszközön.
+* Modul távoli üzembe helyezése egy IoT Edge eszközön és telemetria küldése.
 
 ![Diagram – az eszköz és a felhő gyors üzembe helyezési architektúrája](./media/quickstart/install-edge-full.png)
 
-Ez a rövid útmutató végigvezeti a Windows rendszerű virtuális gépek létrehozásának és a IoT Edge eszközre való konfigurálásának lépésein. Ezután telepítsen egy modult a Azure Portal az eszközre. Az ebben a rövid útmutatóban használt modul egy szimulált érzékelő, amely hőmérséklet-, páratartalom-és adatterhelési adattípust generál. A többi Azure IoT Edge oktatóanyag az itt végzett munkára építve olyan további modulok üzembe helyezésével végezhető el, amelyek elemzik az üzleti információk szimulált adatait.
+Ez a rövid útmutató bemutatja, hogyan állíthatja be a Linux rendszerhez készült Azure IoT Edge a Windows-eszközökön. Ezután telepítsen egy modult a Azure Portal az eszközre. Az ebben a rövid útmutatóban használt modul egy szimulált érzékelő, amely hőmérséklet-, páratartalom-és adatterhelési adattípust generál. A többi Azure IoT Edge oktatóanyag az itt végzett munkára építve olyan további modulok üzembe helyezésével végezhető el, amelyek elemzik az üzleti információk szimulált adatait.
 
 Ha nem rendelkezik aktív Azure-előfizetéssel, kezdetnek hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free).
+
+>[!NOTE]
+>A Windows rendszerhez készült Linux IoT Edge [nyilvános előzetes](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verzióban érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Készítse elő a környezetet az Azure CLI-hez.
 
-- Használja a [Azure Cloud shellt](/azure/cloud-shell/quickstart-powershell) a PowerShell-környezet használatával.
-
-   [![Indítás beágyazása](https://shell.azure.com/images/launchcloudshell.png "Az Azure Cloud Shell elindítása")](https://shell.azure.com)   
-- A CLI-referenciaparancsok futtatásához [telepítheti](/cli/azure/install-azure-cli) az Azure CLI-t is.
-   - Ha helyi telepítést használ, jelentkezzen be az Azure CLI-vel az [az login](/cli/azure/reference-index#az-login) parancs futtatásával.  A hitelesítési folyamat befejezéséhez kövesse a terminálon megjelenő lépéseket.  További bejelentkezési lehetőségek megismeréséhez tekintse meg a [Bejelentkezés az Azure CLI használatával](/cli/azure/authenticate-azure-cli) című szakaszt.
-  - Ha a rendszer kéri, az első használatkor telepítse az Azure CLI-bővítményeket.  További információ a bővítményekről: [Bővítmények használata az Azure CLI-vel](/cli/azure/azure-cli-extensions-overview).
-  - Futtassa az [az version](/cli/azure/reference-index?#az_version) parancsot a telepített verzió és a függő kódtárak megkereséséhez. A legújabb verzióra az [az upgrade](/cli/azure/reference-index?#az_upgrade) paranccsal frissíthet.
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 Felhőerőforrások:
 
-- Egy erőforráscsoport a rövid útmutató során létrehozott összes erőforrás kezelésére.
+* Egy erőforráscsoport a rövid útmutató során létrehozott összes erőforrás kezelésére.
 
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus2
@@ -55,28 +53,9 @@ Felhőerőforrások:
 
 IoT Edge-eszköz:
 
-- Egy Windows rendszerű virtuális gép, amely IoT Edge eszközként működik. Ezt a virtuális gépet a következő paranccsal hozhatja létre a `{password}` biztonságos jelszó helyett:
-
-  ```azurecli-interactive
-  az vm create --resource-group IoTEdgeResources --name EdgeVM --image MicrosoftWindowsDesktop:Windows-10:rs5-pro:latest --admin-username azureuser --admin-password {password} --size Standard_DS1_v2
-  ```
-
-  Az új virtuális gép létrehozása és elindítása néhány percet is igénybe vehet.
-
-  A virtuális gép elindítása után letöltheti a virtuális géphez való csatlakozáskor használandó RDP-fájlt:
-
-  1. Navigáljon az új Windowsos virtuális géphez a Azure Portal.
-  1. Válassza a **Kapcsolódás** lehetőséget.
-  1. Az **RDP** lapon válassza az **RDP-fájl letöltése** lehetőséget.
-
-  Nyissa meg ezt a fájlt a Távoli asztali kapcsolat használatával a Windows rendszerű virtuális géphez való kapcsolódáshoz a paranccsal megadott rendszergazdai névvel és jelszóval `az vm create` .
-
-> [!NOTE]
-> A Windows rendszerű virtuális gép a Windows 1809-es verziójával (Build 17763) kezdődik, amely a [Windows hosszú távú támogatásának legújabb felépítése](/windows/release-information/). A Windows alapértelmezés szerint minden 22 órában automatikusan ellenőrzi a frissítéseket. A virtuális gép ellenőrzését követően a Windows olyan verziófrissítést küld, amely nem kompatibilis a Windows IoT Edgeével, ami megakadályozza a IoT Edge további használatát a Windows-szolgáltatásokban. Javasoljuk, hogy a virtuális gép használatát 22 órán belül korlátozza, vagy [átmenetileg szüneteltesse a Windows-frissítéseket](https://support.microsoft.com/help/4028233/windows-10-manage-updates).
->
-> Ez a rövid útmutató az egyszerűség kedvéért egy Windows rendszerű virtuális gépet használ. További információ arról, hogy mely Windows operációs rendszerek érhetők el általánosan az éles környezetekben: [Azure IoT Edge támogatott rendszerek](support.md).
->
-> Ha saját Windows-eszközét szeretné konfigurálni IoT Edgehoz, beleértve az IoT Core-ot futtató eszközöket is, kövesse az [Azure IoT Edge futtatókörnyezet telepítése](how-to-install-iot-edge.md)című témakör lépéseit.
+* Az eszköznek Windows rendszerű SZÁMÍTÓGÉPnek vagy kiszolgálónak, 1809-es vagy újabb verziónak kell lennie
+* Legalább 4 GB memória, ajánlott 8 GB memória
+* 10 GB szabad lemezterület
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
@@ -97,6 +76,7 @@ A következő kód egy ingyenes **F1** -hubot hoz létre az erőforráscsoportho
 ## <a name="register-an-iot-edge-device"></a>IoT Edge-eszköz regisztrálása
 
 Regisztráljon egy IoT Edge-eszközt az újonnan létrehozott IoT Hubon.
+
 ![Diagram – eszköz regisztrálása IoT Hub identitással](./media/quickstart/register-device.png)
 
 Hozzon létre egy eszközidentitást a szimulált eszközhöz, hogy az kommunikálhasson az IoT Hubbal. Az eszközidentitás a felhőben található, és egy egyedi eszközkapcsolati sztringgel társíthat fizikai eszközt az eszközidentitáshoz.
@@ -123,75 +103,63 @@ Mivel IoT Edge-eszközök viselkedése és kezelése eltérően történik a szo
 
 ## <a name="install-and-start-the-iot-edge-runtime"></a>Az IoT Edge-futtatókörnyezet telepítése és elindítása
 
-Telepítse az Azure IoT Edge-futtatókörnyezetet az IoT Edge-eszközön, és a konfigurálást eszközkapcsolati sztring használatával végezze el.
-![Diagram – a futtatókörnyezet elindítása az eszközön](./media/quickstart/start-runtime.png)
+Telepítse a Linux rendszerhez készült IoT Edge a Windowson az eszközön, és konfigurálja azt egy eszköz-csatlakoztatási karakterlánccal.
 
-Az IoT Edge-futtatókörnyezet minden IoT Edge-eszközön üzembe van helyezve. Három összetevőből áll. A *IoT Edge biztonsági démon* minden alkalommal elindul, amikor egy IoT Edge-eszköz elindul, és elindítja az eszközt a IoT Edge ügynök elindításával. A *IoT Edge ügynök* kezeli a IoT Edge eszközön található modulok telepítését és figyelését, beleértve az IoT Edge hubot is. Az *IoT Edge hub* kezeli a IoT Edge eszközön található modulok közötti kommunikációt, valamint az eszköz és a IoT hub között.
+![Diagram – a IoT Edge futtatókörnyezet elindítása az eszközön](./media/quickstart/start-runtime.png)
 
-A telepítési parancsfájl tartalmaz egy Moby nevű tároló motort is, amely a IoT Edge eszközön lévő tároló lemezképeit kezeli.
+1. [Töltse le a Windows felügyeleti központot](https://aka.ms/WACDownloadEFLOW).
+2. Az eszközön a Windows felügyeleti központ beállításához kövesse a telepítővarázsló utasításait.
+3. Ha a Windows felügyeleti központban van, a képernyő jobb felső részén kattintson a **Beállítások fogaskerék ikonra** .  
+4. A beállítások menü átjáró területén válassza a **bővítmények** lehetőséget.
+5. Az **elérhető bővítmények** listájából válassza a **Azure IoT Edge**
+6. A bővítmény **telepítése**
 
-A futtatókörnyezet telepítése során a rendszer rá fog kérdezni az eszközkapcsolati sztringre. Ez esetben az Azure CLI-ről lekért sztringet használja. Ez a sztring társítja a fizikai eszközt az IoT Edge-eszköz identitásához az Azure-ban.
+7. Miután telepítette a bővítményt, navigáljon a fő irányítópult lapra a képernyő bal felső sarkában a **Windows felügyeleti központ** lehetőség kiválasztásával.
 
-### <a name="connect-to-your-iot-edge-device"></a>Kapcsolódás a IoT Edge eszközhöz
+8. Ekkor megjelenik a helyi gazdagép-kapcsolatok, amely a Windows felügyeleti központot futtató számítógépet jelöli.
 
-Az ebben a szakaszban foglalt lépések mindegyike a IoT Edge eszközön történik, így most a Távoli asztalról szeretne csatlakozni a virtuális géphez.
+   :::image type="content" source="media/quickstart/windows-admin-center-start-page.png" alt-text="Képernyőfelvétel – Windows-rendszergazda kezdőlapja":::
 
-### <a name="install-and-configure-the-iot-edge-service"></a>A IoT Edge szolgáltatás telepítése és konfigurálása
+9. Válassza a **Hozzáadás** elemet.
 
-Az IoT Edge-futtatókörnyezet letöltése és telepítése a PowerShell használatával történik. Az eszköz konfigurálásához az IoT Hubról lekért eszközkapcsolati sztringet használja.
+   :::image type="content" source="media/quickstart/windows-admin-center-start-page-add.png" alt-text="Képernyőfelvétel – Windows-rendszergazda Kezdőlap hozzáadása gomb":::
 
-1. A virtuális gépen futtassa a PowerShellt rendszergazdaként.
+10. Keresse meg a Azure IoT Edge csempét, és válassza az **új létrehozása** lehetőséget. Ekkor elindul a telepítővarázsló.
 
-   >[!NOTE]
-   >A PowerShell AMD64-munkamenetének használatával telepítse a IoT Edge, nem a PowerShellt (x86). Ha nem biztos abban, hogy melyik munkamenet-típust használja, futtassa a következő parancsot:
-   >
-   >```powershell
-   >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
-   >```
+    :::image type="content" source="media/quickstart/select-tile-screen.png" alt-text="Képernyőfelvétel – Azure IoT Edge Linux rendszeren a Windows csempén":::
 
-2. Az **Deploy-IoTEdge** parancs ellenőrzi, hogy a Windows rendszerű számítógép támogatott verziójú-e, bekapcsolja a tárolók szolgáltatást, letölti a Moby Runtime-t, majd letölti a IoT Edge futtatókörnyezetet.
+11. A végfelhasználói licencszerződés elfogadásához folytassa a telepítővarázsló lépéseit, és válassza a **Next (tovább** ) lehetőséget.
 
-   ```powershell
-   . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
-   Deploy-IoTEdge -ContainerOs Windows
-   ```
+    :::image type="content" source="media/quickstart/wizard-welcome-screen.png" alt-text="Képernyőfelvétel – varázsló – üdvözli":::
 
-3. Előfordulhat, hogy a gép automatikusan újraindul. Ha a Deploy-IoTEdge parancs kéri az újraindítást, tegye meg most.
+12. Válassza ki a **választható diagnosztikai adatait** , hogy kibővített diagnosztikai adatait biztosítson, amelyek segítségével a Microsoft figyeli és karbantarthatja a szolgáltatás minőségét, és kattintson a **Tovább gombra: üzembe helyezés**
 
-4. Futtassa újra a PowerShellt rendszergazdaként.
+    :::image type="content" source="media/quickstart/diagnostic-data-screen.png" alt-text="Képernyőfelvétel – diagnosztikai adatszolgáltatások":::
 
-5. Az **inicializálás-IoTEdge** parancs konfigurálja a IoT Edge futtatókörnyezetet a gépen. A parancs alapértelmezett értéke a Windows-tárolók manuális kiépítés.
+13. A **cél eszköz kiválasztása** képernyőn válassza ki a kívánt céleszköz annak ellenőrzéséhez, hogy az megfelel-e a minimális követelményeknek. Ebben a rövid útmutatóban IoT Edget telepítünk a helyi eszközön, ezért válassza a localhost-kapcsolatokat. Miután megerősítette **, válassza a Tovább gombot** a folytatáshoz.
 
-   ```powershell
-   . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
-   Initialize-IoTEdge -ContainerOs Windows
-   ```
+    :::image type="content" source="media/quickstart/wizard-select-target-device-screen.png" alt-text="Képernyőfelvétel – céleszköz kiválasztása":::
 
-6. Ha a rendszer a **DeviceConnectionString** megadására kéri, akkor illessze be az előző szakaszból átmásolt sztringet. A kapcsolati sztring elé és után ne írjon idézőjeleket.
+14. Fogadja el az alapértelmezett beállításokat a **Next (tovább**) lehetőség választásával.
 
-### <a name="view-the-iot-edge-runtime-status"></a>Az IoT Edge-futtatókörnyezet állapotának megtekintése
+15. A telepítési képernyő a csomag letöltésének folyamatát, a csomag telepítését, a gazdagép konfigurálását és a Linux rendszerű virtuális gép végleges beállítását mutatja be.  A sikeres üzembe helyezés a következőképpen fog megjelenni:
 
-Ellenőrizze, hogy a futtatókörnyezet megfelelően lett-e telepítve és konfigurálva. Eltarthat néhány percig, amíg a telepítés befejeződik, és elindul a IoT Edge Agent modul.
+    :::image type="content" source="media/quickstart/wizard-deploy-success-screen.png" alt-text="Képernyőfelvétel – a varázsló sikeres üzembe helyezése":::
 
-1. Ellenőrizze az IoT Edge-szolgáltatás állapotát.
+16. Kattintson a Next (tovább) gombra **: kapcsolódjon** a folytatáshoz, és folytassa az utolsó lépéssel, hogy kiépítse Azure IoT Edge eszközét az IoT hub-példány eszköz-azonosítójával.
 
-   ```powershell
-   Get-Service iotedge
-   ```
+17. Másolja az eszközről az Azure-IoT Hub a kapcsolatok karakterláncát, és illessze be az eszköz-kapcsolatok karakterlánc mezőjébe. Ezután válassza **a kiépítés lehetőséget a kiválasztott módszerrel**.
 
-2. Ha hibaelhárításra van szükség, kérje le a szolgáltatás naplóit.
+    > [!NOTE]
+    > A kapcsolódási karakterlánc lekéréséhez tekintse meg az előző szakasz 3. lépését, [regisztráljon IoT Edge eszközt](#register-an-iot-edge-device).
 
-   ```powershell
-   . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
-   ```
+    :::image type="content" source="media/quickstart/wizard-provision.png" alt-text="Képernyőfelvétel – varázsló kiépítés":::
 
-3. Tekintse meg az IoT Edge-eszközön futó összes modult. Mivel első alkalommal indította el ezt a szolgáltatást, csak az **edgeAgent** modulnak szabad futnia. A edgeAgent modul alapértelmezés szerint fut, és az eszközre telepített további modulok telepítését és elindítását is lehetővé teszi.
+18. A kiépítés befejezése után válassza a **Befejezés** lehetőséget, és térjen vissza a Windows felügyeleti központ kezdőképernyőn. Most már láthatja, hogy az eszköz IoT Edge eszközként jelenik meg.
 
-    ```powershell
-    iotedge list
-    ```
+    :::image type="content" source="media/quickstart/windows-admin-center-device-screen.png" alt-text="Képernyőfelvétel – Windows felügyeleti központ Azure IoT Edge eszköz":::
 
-   ![Egy modul megtekintése az eszközön](./media/quickstart/iotedge-list-1.png)
+19. Válassza ki Azure IoT Edge eszközét az irányítópult megtekintéséhez. Látnia kell, hogy az eszközön lévő munkaterhelések üzembe helyezése az Azure IoT Hub. A **IoT Edge modulnak** egy, a-t, a **edgeAgent**-t és a **IoT Edge-állapotot** futtató modult **kell megjelenítenie.**
 
 Ezzel konfigurálta az IoT Edge-eszközt. Az eszköz készen áll a felhőben üzembe helyezett modulok futtatására.
 
@@ -209,24 +177,36 @@ Ebben a rövid útmutatóban létrehozott egy új IoT Edge-eszközt, és telepí
 
 Ebben az esetben a lekért modul olyan minta környezeti adatfeldolgozást hoz létre, amelyet később tesztelésre használhat. A szimulált érzékelő a gépet és a környezetet is figyeli a gép körül. Ez az érzékelő lehet például egy kiszolgálóteremben, egy üzemben vagy akár szélturbinán. Az üzenet tartalmazza a környezeti hőmérsékletet, a páratartalmat, a gép hőmérsékletét, a nyomást és egy timestampet. A IoT Edge oktatóanyagok a modul által létrehozott adatelemzési adatként használják.
 
-Győződjön meg arról, hogy a felhőből üzembe helyezett modul fut az IoT Edge-eszközön.
+Ellenőrizze, hogy a felhőben üzembe helyezett modul fut-e a IoT Edge eszközön a Windows felügyeleti központban a parancssori felületre való navigálással.
 
-```powershell
-iotedge list
-```
+1. Kapcsolódás az újonnan létrehozott IoT Edge eszközhöz
 
-   ![Három modul megtekintése az eszközön](./media/quickstart/iotedge-list-2.png)
+   :::image type="content" source="media/quickstart/connect-edge-screen.png" alt-text="Képernyőfelvétel – eszköz csatlakoztatása":::
 
-Megtekintheti a hőmérséklet-érzékelő modulból a felhőbe küldött üzeneteket.
+2. Az **Áttekintés** oldalon látni fogja a **IoT Edge modul listáját** , és **IoT Edge állapotot** , ahol megtekintheti a különböző telepített modulokat, valamint az eszköz állapotát.  
 
-```powershell
-iotedge logs SimulatedTemperatureSensor -f
-```
+3. Az **eszközök** területen válassza a **parancs rendszerhéj** elemet. A parancshéj egy PowerShell-terminál, amely automatikusan SSH-t (Secure Shell) használ a Azure IoT Edge-eszköz Linux rendszerű virtuális géphez való kapcsolódásra a Windows-számítógépen.
+
+   :::image type="content" source="media/quickstart/command-shell-screen.png" alt-text="Képernyőfelvétel – Command Shell":::
+
+4. Az eszközön található három modul ellenőrzéséhez futtassa a következő **bash-parancsot**:
+
+   ```bash
+   sudo iotedge list
+   ```
+
+   :::image type="content" source="media/quickstart/iotedge-list-screen.png" alt-text="Képernyőfelvétel – parancssori rendszerhéj-lista":::
+
+5. Megtekintheti a hőmérséklet-érzékelő modulból a felhőbe küldött üzeneteket.
+
+   ```bash
+   iotedge logs SimulatedTemperatureSensor -f
+   ```
 
    >[!TIP]
    >IoT Edge parancsok a kis-és nagybetűk megkülönböztetésére szolgálnak a modulok neveire való hivatkozáskor.
 
-   ![A modulból származó adatok megtekintése](./media/quickstart/iotedge-logs.png)
+   :::image type="content" source="media/quickstart/temperature-sensor-screen.png" alt-text="Képernyőfelvétel – hőmérséklet-érzékelő":::
 
 A [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)-hoz készült Azure IoT hub-bővítmény használatával megtekintheti az IoT hub-ra érkező üzeneteket is.
 
@@ -251,6 +231,15 @@ Az erőforráscsoport törlését az erőforráscsoportok listájának megtekint
 az group list
 ```
 
+### <a name="clean-removal-of-azure-iot-edge-for-linux-on-windows"></a>A Linux rendszerhez készült Azure IoT Edge tiszta eltávolítása Windows rendszeren
+
+A Windows rendszerű számítógépeken a Windows felügyeleti központban található irányítópult-bővítmény segítségével távolíthatja el a Linux rendszerhez IoT Edge készült Azure IoT Edge.
+
+1. Kapcsolódjon a Linux rendszerhez készült Azure IoT Edge Windows-eszközök kapcsolatáról a Windows felügyeleti központban. Az Azure Dashboard Tool bővítmény betöltődik.
+2. Válassza az **Eltávolítás** lehetőséget. A Windows rendszerű Linux rendszeren való Azure IoT Edge eltávolítását követően a Windows felügyeleti központ megnyitja a kezdőlapot, és eltávolítja a listából a Azure IoT Edge eszköz kapcsolódási bejegyzését.
+
+A Azure IoT Edge a Windows rendszerből való eltávolításának egy másik módja, ha a  >  IoT Edge eszközön a Start **Settings**  >  **apps**  >  **Azure IoT Edge**  >  **Eltávolítás** elemre lép. Ezzel eltávolítja Azure IoT Edge a IoT Edge eszközről, de a Windows felügyeleti központban marad. A Windows felügyeleti központ a beállítások menüből is eltávolítható.
+
 ## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy IoT Edge eszközt, és a Azure IoT Edge Cloud Interface használatával helyezi üzembe a kódot az eszközön. Most már van egy teszteszköze, amely nyers adatokat állít elő a környezetéről.
@@ -258,4 +247,4 @@ Ebben a rövid útmutatóban létrehozott egy IoT Edge eszközt, és a Azure IoT
 A következő lépés a helyi fejlesztési környezet beállítása, amelynek segítségével megkezdheti az üzleti logikát futtató IoT Edge-modulok létrehozását.
 
 > [!div class="nextstepaction"]
-> [IoT Edge-modulok fejlesztésének megkezdése Windows-eszközökön](tutorial-develop-for-windows.md)
+> [IoT Edge-modulok fejlesztésének megkezdése](tutorial-develop-for-linux.md)

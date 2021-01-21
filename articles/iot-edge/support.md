@@ -4,16 +4,16 @@ description: Megtudhatja, hogy mely operációs rendszerek futtathatják a Azure
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/12/2020
+ms.date: 12/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b1bd437da50ae5989e46ac5c5f881b28b0e99703
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: b17f1f32a3e49e9161afe92d62b85a162affcd9f
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539909"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630530"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge támogatott rendszerek
 
@@ -50,27 +50,46 @@ Azure IoT Edge a tárolók futtatására képes legtöbb operációs rendszeren 
 
 A gazda operációs rendszer családjának mindig egyeznie kell a modul tárolójában használt vendég operációs rendszer családjának. Ez azt jelenti, hogy a Linux-tárolókat csak Linux-és Windows-tárolókban használhatja Windows rendszeren. A Windows használata esetén csak az elkülönített tárolók feldolgozása támogatott, a Hyper-V elkülönített tárolók nem.  
 
-<br>
-<center>
-
-![A gazdagép operációs rendszere megfelel a vendég operációs rendszernek](./media/support/edge-on-device.png)
-</center>
+A Windows rendszerhez készült Linux-IoT Edge a Windows-gazdagépen futó Linux virtuális gépen IoT Edget használ. Így Linux-modulokat futtathat Windows-eszközökön.
 
 ### <a name="tier-1"></a>Első réteg
 
-A Microsoft a következő táblázatban felsorolt rendszereket támogatja: általánosan elérhető vagy nyilvános előzetes verzióban, és minden új kiadással tesztelve van. 
+A Microsoft a következő táblázatokban felsorolt rendszereket támogatja: általánosan elérhető vagy nyilvános előzetes verzióban, és minden új kiadással tesztelve van.
+
+Azure IoT Edge támogatja a Linux vagy Windows rendszerű tárolóként létrehozott modulokat. A Linux-tárolók telepíthetők Linux rendszerű eszközökre, vagy Windows rendszerű eszközökre üzembe helyezhetők a Windows IoT Edge for Linux használatával. A Windows-tárolók csak Windows-eszközökre telepíthetők.
+
+#### <a name="linux-containers"></a>Linux-tárolók
+
+A Linux-tárolóként létrehozott modulok Linux vagy Windows rendszerű eszközökön is üzembe helyezhetők. Linux rendszerű eszközök esetén a IoT Edge futtatókörnyezet közvetlenül települ a gazdagép eszközén. Windows-eszközökön a IoT Edge futtatókörnyezettel előre összeépített linuxos virtuális gép fut a gazdagépen.
+
+A Windows rendszerhez készült Linux-IoT Edge jelenleg nyilvános előzetes verzióban érhető el, de a IoT Edge Windows-eszközökön való futtatásának ajánlott módja.
 
 | Operációs rendszer | AMD64 | ARM32v7 | ARM64 |
 | ---------------- | ----- | ------- | ----- |
 | Málna PI-OS stretch |  | ![Málna PI OS stretch + ARM32v7](./media/tutorial-c-module/green-check.png) |  |
-| [Ubuntu Server 16.04](https://wiki.ubuntu.com/XenialXerus/ReleaseNotes) | ![Ubuntu Server 16,04 + AMD64](./media/tutorial-c-module/green-check.png) |  | Nyilvános előzetes verzió  |
-| [Ubuntu Server 18.04](https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes) | ![Ubuntu Server 18,04 + AMD64](./media/tutorial-c-module/green-check.png) |  | Nyilvános előzetes verzió |
-| [Windows 10 IoT Enterprise](/windows/iot-core/windows-iot-enterprise), Build 17763 | ![Windows 10 IoT Enterprise + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
-| [Windows 10 IoT Core](/windows/iot-core/windows-iot-core), Build 17763 | ![Windows IoT Core + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
-| [Windows Server 2019](/windows-server/get-started-19/rel-notes-19), 17763-es Build | ![Windows Server 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
-| [Windows Server IoT 2019](/windows/iot-core/windows-server), Build 17763 | ![Windows Server IoT 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
+| Ubuntu Server 16.04 | ![Ubuntu Server 16,04 + AMD64](./media/tutorial-c-module/green-check.png) |  | Nyilvános előzetes verzió  |
+| Ubuntu Server 18.04 | ![Ubuntu Server 18,04 + AMD64](./media/tutorial-c-module/green-check.png) |  | Nyilvános előzetes verzió |
+| Windows 10 Pro | Nyilvános előzetes verzió |  |  |
+| Windows 10 Enterprise | Nyilvános előzetes verzió |  |  |
+| Windows 10 IoT Enterprise | Nyilvános előzetes verzió |  |  |
+| Windows Server 2019 | Nyilvános előzetes verzió |  |  |
 
-A fent felsorolt Windows operációs rendszerek a Windows-tárolókat futtató eszközökre vonatkozó követelmények a Windows rendszeren, amely az egyetlen támogatott konfiguráció az éles környezetben. A Windows Azure IoT Edge telepítési csomagjai lehetővé teszik a Linux-tárolók használatát Windows rendszeren; Ez a konfiguráció azonban csak fejlesztési és tesztelési célokra használható. 
+Az összes Windows operációs rendszernek 1809 (Build 17763) vagy újabb verziójúnak kell lennie.
+
+#### <a name="windows-containers"></a>Windows-tárolók
+
+A Windows-tárolóként létrehozott modulok csak Windows-eszközökre telepíthetők.
+
+| Operációs rendszer | AMD64 | ARM32v7 | ARM64 |
+| ---------------- | ----- | ------- | ----- |
+| Windows 10 IoT Enterprise | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
+| Windows 10 IoT Core<sup>1</sup><br> | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
+| Windows Server 2019  | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
+| Windows Server IoT 2019<br> | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
+
+<sup>1</sup> a Windows 10 IoT Core verziója a 1.0.10 verzió után nem lesz támogatott.
+
+Az összes Windows operációs rendszernek 1809 (Build 17763) verziójúnak kell lennie. A Windows adott Windows-buildje szükséges a Windows IoT Edge, mert a Windows-tárolók verziószámának pontosan egyeznie kell a gazdagép Windows-eszközének verziójával. A Windows-tárolók jelenleg csak a Build 17763-et használják.
 
 ### <a name="tier-2"></a>Második réteg
 

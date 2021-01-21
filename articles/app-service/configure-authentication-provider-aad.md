@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 0c06cb11d916b417cf577b7b8f3578749feddd62
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 3d1e0eb90005abf69d90b46acc59e0258c9914c6
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092227"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630030"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>App Service vagy Azure Functions alkalmazás konfigurálása az Azure AD-bejelentkezés használatára
 
@@ -52,7 +52,7 @@ Az alkalmazás és a hitelesítés beállításakor kövesse az alábbi ajánlot
 
     > [!CAUTION]
     > A hozzáférés ily módon való korlátozása az alkalmazás összes hívására vonatkozik, ami nem kívánatos olyan alkalmazások esetében, amelyek nyilvánosan elérhető kezdőlaptal rendelkeznek, mint sok egyoldalas alkalmazásban. Ilyen alkalmazások esetén **engedélyezze a névtelen kérelmeket (nincs művelet)** előnyben részesített, ha az alkalmazás manuálisan indítja el a bejelentkezést. További információ: [hitelesítési folyamat](overview-authentication-authorization.md#authentication-flow).
-6. Kattintson a **Mentés** gombra.
+6. Válassza a **Mentés** lehetőséget.
 
 Az Azure AD-bejelentkezés az Azure Storage-hoz és Microsoft Graphhoz hozzáférő webalkalmazáshoz való konfigurálását [bemutató példát ebben az oktatóanyagban](scenario-secure-app-authentication-app-service.md)talál.
 
@@ -78,7 +78,7 @@ Hajtsa végre a következő lépéseket:
 1. Válassza **Azure Active Directory**  >  **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.
 1. Az **alkalmazás regisztrálása** lapon adja meg az alkalmazás regisztrációjának **nevét** .
 1. Az **átirányítási URI**-ban válassza a **webes** és típus lehetőséget `<app-url>/.auth/login/aad/callback` . Például: `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
-1. Válassza a **Létrehozás** lehetőséget.
+1. Válassza a **regisztráció** lehetőséget.
 1. Az alkalmazás regisztrációjának létrehozása után másolja az **alkalmazás (ügyfél) azonosítóját** és a **címtár (bérlő) azonosítóját** később.
 1. Válassza a **Hitelesítés** lehetőséget. Az **implicit támogatás** lehetőségnél engedélyezze az **azonosító jogkivonatokat** az OpenID Connect felhasználói bejelentkezések app Serviceból való engedélyezéséhez.
 1. Választható Válassza a **branding** elemet. A **Kezdőlap URL-címe** mezőben adja meg app Service alkalmazásának URL-címét, majd válassza a **Mentés** lehetőséget.

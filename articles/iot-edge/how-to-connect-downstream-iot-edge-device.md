@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 37c237cdaf6c0d4f766d4b2e39c10e3e96215463
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1258fd4b5c69b399b70d1f2db1be63765771e631
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187833"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629403"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway-preview"></a>Alsóbb rétegbeli IoT Edge eszköz csatlakoztatása Azure IoT Edge átjáróhoz (előzetes verzió)
 
@@ -63,7 +63,7 @@ A Azure Portal a szülő-gyermek kapcsolatot kezelheti új eszköz-identitások 
 
 Új IoT Edge-eszköz létrehozásakor lehetősége van a szülő és gyermek eszközök kiválasztására az adott központban lévő meglévő IoT Edge-eszközök listájából.
 
-1. Az [Azure Portalon](https://portal.azure.com) keresse meg az IoT hubot.
+1. A [Azure Portal](https://portal.azure.com)navigáljon az IoT hubhoz.
 1. A navigációs menüből válassza a **IoT Edge** lehetőséget.
 1. Válassza **a IoT Edge eszköz hozzáadása** lehetőséget.
 1. Az eszköz-azonosító és a hitelesítési beállítások megadása mellett beállíthat **egy fölérendelt eszközt** , vagy **kiválaszthatja a gyermek eszközöket**.
@@ -71,7 +71,7 @@ A Azure Portal a szülő-gyermek kapcsolatot kezelheti új eszköz-identitások 
 
 A meglévő eszközökhöz szülő-gyermek kapcsolatokat is létrehozhat vagy kezelhet.
 
-1. Az [Azure Portalon](https://portal.azure.com) keresse meg az IoT hubot.
+1. A [Azure Portal](https://portal.azure.com)navigáljon az IoT hubhoz.
 1. A navigációs menüből válassza a **IoT Edge** lehetőséget.
 1. Válassza ki a felügyelni kívánt eszközt a **IoT Edge eszközök** listájából.
 1. Válassza **a szülő eszköz beállítása vagy a** **gyermek eszközök kezelése** lehetőséget.
@@ -118,7 +118,7 @@ Az átjárók felderítésének engedélyezéséhez minden IoT Edge átjáró-es
 
 A biztonságos kapcsolatok engedélyezéséhez az átjáró-forgatókönyvben minden IoT Edge eszközt egyedi HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal kell konfigurálni, és az átjáró-hierarchia összes eszköze által megosztott legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány másolatát.
 
-Az eszközön már telepítve kell lennie IoT Edge. Ha nem, kövesse a [Azure IoT Edge futtatókörnyezet telepítéséhez](how-to-install-iot-edge.md) szükséges lépéseket, majd helyezze üzembe az eszközt [szimmetrikus kulcsos hitelesítéssel](how-to-manual-provision-symmetric-key.md) vagy [X. 509 tanúsítványalapú hitelesítéssel](how-to-manual-provision-x509.md).
+Az eszközön már telepítve kell lennie IoT Edge. Ha nem, kövesse az [IoT Edge-eszköz regisztrálásának](how-to-register-device.md) lépéseit IoT hub, majd [telepítse a Azure IoT Edge futtatókörnyezetet](how-to-install-iot-edge.md).
 
 Az ebben a szakaszban ismertetett lépések a **legfelső szintű hitelesítésszolgáltatói tanúsítványra** és az **eszköz hitelesítésszolgáltatói tanúsítványára, valamint** a jelen cikk korábbi részében tárgyalt titkos kulcsra hivatkoznak. Ha egy másik eszközön hozta létre ezeket a tanúsítványokat, azok elérhetők lesznek az eszközön. Átviheti a fájlokat fizikailag, például USB-meghajtóval, egy szolgáltatással (például [Azure Key Vault](../key-vault/general/overview.md)), vagy egy olyan funkcióval, mint a [biztonságos fájlmásolás](https://www.ssh.com/ssh/scp/).
 
@@ -206,7 +206,7 @@ Habár ez a funkció nyilvános előzetes verzióban érhető el, konfigurálnia
 
 1. Konfigurálja az alábbi környezeti változókat a edgeHub modulhoz:
 
-   | Name (Név) | Érték |
+   | Name | Érték |
    | - | - |
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__nestedEdgeEnabled` | `true` |
@@ -248,7 +248,7 @@ Az átjáró-hierarchia legfelső rétegében lévő IoT Edge eszköz olyan szü
 
 Az API-proxy modul úgy lett kialakítva, hogy testre legyen szabva a leggyakoribb átjáró-forgatókönyvek kezeléséhez. Ebből a cikkből megtudhatja, hogyan állíthatja be a modulokat egy alapszintű konfigurációban. Részletesebb információkat és példákat a következő témakörben talál: [az API-proxy modul konfigurálása az átjáró-hierarchia forgatókönyvéhez](how-to-configure-api-proxy-module.md) .
 
-1. Az [Azure Portalon](https://portal.azure.com) keresse meg az IoT hubot.
+1. A [Azure Portal](https://portal.azure.com)navigáljon az IoT hubhoz.
 1. A navigációs menüből válassza a **IoT Edge** lehetőséget.
 1. Válassza ki a legfelső rétegbeli eszközt, amelyet a **IoT Edge eszközök** listájáról konfigurál.
 1. Válassza a **Set modules** (Modulok beállítása) lehetőséget.
@@ -378,7 +378,7 @@ Az **API-proxy modul** szükséges a felhő és az alsóbb rétegbeli IoT Edge e
 
 Az API-proxy modul úgy lett kialakítva, hogy testre legyen szabva a leggyakoribb átjáró-forgatókönyvek kezeléséhez. Ez a cikk röviden ismerteti a modulok alapszintű konfigurációban való beállításának lépéseit. Részletesebb információkat és példákat a következő témakörben talál: [az API-proxy modul konfigurálása az átjáró-hierarchia forgatókönyvéhez](how-to-configure-api-proxy-module.md) .
 
-1. Az [Azure Portalon](https://portal.azure.com) keresse meg az IoT hubot.
+1. A [Azure Portal](https://portal.azure.com)navigáljon az IoT hubhoz.
 1. A navigációs menüből válassza a **IoT Edge** lehetőséget.
 1. Válassza ki az alsó rétegbeli eszközt, amelyet a **IoT Edge eszközök** listájáról konfigurál.
 1. Válassza a **Set modules** (Modulok beállítása) lehetőséget.

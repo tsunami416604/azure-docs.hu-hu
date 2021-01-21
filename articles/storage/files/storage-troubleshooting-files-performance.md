@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 960b3c29f97c43e1247018a60f6c6310c7cf02de
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 729c3e46cf329c525ce9204b26d4c6aefa04c89d
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724663"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632495"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Az Azure file shares teljesítményével kapcsolatos problémák elhárítása
 
@@ -46,7 +46,7 @@ Annak ellenőrzéséhez, hogy a megosztást szabályozzák-e, elérheti és hasz
 ### <a name="solution"></a>Megoldás
 
 - Ha szabványos fájlmegosztást használ, engedélyezze a [nagyméretű fájlmegosztást](./storage-files-how-to-create-large-file-share.md?tabs=azure-portal) a Storage-fiókban. A nagyméretű fájlmegosztás akár 10 000 IOPS-t is támogat.
-- Ha prémium szintű fájlmegosztást használ, növelje a kiosztott fájlmegosztás méretét, hogy növelje a IOPS korlátját. További információt a [prémium szintű fájlmegosztás kiépítés ismertetése](./understanding-billing.md#provisioned-billing)című témakörben talál.
+- Ha prémium szintű fájlmegosztást használ, növelje a kiosztott fájlmegosztás méretét, hogy növelje a IOPS korlátját. További információt a [prémium szintű fájlmegosztás kiépítés ismertetése](./understanding-billing.md#provisioned-model)című témakörben talál.
 
 ### <a name="cause-2-metadata-or-namespace-heavy-workload"></a>2. ok: a metaadatok vagy a névtér nagy terhelése
 

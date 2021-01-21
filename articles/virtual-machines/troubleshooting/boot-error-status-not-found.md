@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: ff7d5a4e1181dccedc3584d958038a1d695c57ca
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: a91add684d7b7aaee67e7dd4f4f2d0c6df078132
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657124"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632224"
 ---
 # <a name="troubleshoot-windows-boot-manager-error----0xc0000225-status-not-found"></a>A Windows rendszerindítási kezelőjével kapcsolatos hiba – 0xC0000225 "állapot nem található"
  
@@ -76,9 +76,12 @@ A beállításjegyzék-struktúra sérülésének oka a következő lehet:
 - A struktúra sikertelen
 - A kaptár csatlakoztatása, de üres
 - A struktúra nem zárult megfelelően
-## <a name="solution"></a>Megvalósítás
+## <a name="solution"></a>Megoldás
 
 ### <a name="process-overview"></a>Folyamat áttekintése
+
+> [!TIP]
+> Ha a virtuális gép nemrég készült biztonsági másolattal rendelkezik, a rendszerindítási probléma megoldásához próbálja meg [visszaállítani a virtuális gépet a biztonsági mentésből](../../backup/backup-azure-arm-restore-vms.md) .
 
 1. Hozzon létre és nyissa meg a javítási virtuális gépet.
 1. Válasszon megoldást:

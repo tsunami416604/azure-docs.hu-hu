@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 5cc112767b2204d019cb1b7bd23b1603cefdf416
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 71ee21c971b71c4000a123d1561e7e93d21203e1
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882517"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629147"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Az Azure Service Bus – Azure Event Grid integráció áttekintése
 
@@ -174,7 +174,7 @@ Három különböző módon hozhatók létre Event Grid-előfizetések a Service
 Új Event Grid-előfizetést a következő módon hozhat létre:
 1. Az Azure Portalon lépjen a névteréhez.
 2. A bal oldali panelen válassza az **Event Grid** elemet. 
-3. Válassza az **Esemény-előfizetés** lehetőséget.  
+3. Válassza az **esemény-előfizetés** lehetőséget.  
 
    Az alábbi képen egy olyan névtér látható, amely rendelkezik Event Grid-feliratkozással:
 
@@ -186,7 +186,7 @@ Három különböző módon hozhatók létre Event Grid-előfizetések a Service
 
 ## <a name="azure-cli-instructions"></a>Azure CLI utasítások
 
-Győződjön meg róla, hogy telepítve van az Azure CLI 2.0-s vagy újabb verziója. [Töltse le a telepítőt](/cli/azure/install-azure-cli?view=azure-cli-latest). Válassza a **Windows + X** lehetőséget, majd nyisson meg egy új PowerShell-konzolt rendszergazdai jogosultságokkal. Parancsrendszerhéjat is használhat az Azure Portalon.
+Győződjön meg róla, hogy telepítve van az Azure CLI 2.0-s vagy újabb verziója. [Töltse le a telepítőt](/cli/azure/install-azure-cli). Válassza a **Windows + X** lehetőséget, majd nyisson meg egy új PowerShell-konzolt rendszergazdai jogosultságokkal. Parancsrendszerhéjat is használhat az Azure Portalon.
 
 Hajtsa végre a következő kódot:
 
@@ -222,7 +222,7 @@ New-AzEVentGridSubscription -EventSubscriptionName "<YOUR EVENT GRID SUBSCRIPTIO
 
 Innen felfedezheti a többi beállítási lehetőséget, vagy tesztelheti az események áramlását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Service Bus és Event Grid [példák](service-bus-to-event-grid-integration-example.md) megtekintése.
 * További tudnivalók az [Event Grid](../event-grid/index.yml) szolgáltatásról.

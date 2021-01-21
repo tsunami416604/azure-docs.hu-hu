@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/01/2020
 ms.author: v-miegge
-ms.openlocfilehash: f59903ed111be1fe414f4b3ded250d754c91d323
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75d1cf8638f922bb0275322568eb1399db4f49e8
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87069142"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629725"
 ---
 # <a name="troubleshoot-boot-error---disk-read-error-occurred"></a>Rendszerindítási hiba – hiba történt a lemez olvasásakor
 
@@ -33,11 +33,14 @@ Ha [rendszerindítási diagnosztikát](./boot-diagnostics.md) használ a virtuá
 
 ## <a name="cause"></a>Ok
 
-Ez a hibaüzenet azt jelzi, hogy a lemez szerkezete sérült, és nem olvasható. Ha 1. generációs virtuális gépet használ, az is előfordulhat, hogy a rendszerindítási konfigurációt tartalmazó lemezpartíció nem **aktív**értékre van állítva.
+Ez a hibaüzenet azt jelzi, hogy a lemez szerkezete sérült, és nem olvasható. Ha 1. generációs virtuális gépet használ, az is előfordulhat, hogy a rendszerindítási konfigurációt tartalmazó lemezpartíció nem **aktív** értékre van állítva.
 
 ## <a name="solution"></a>Megoldás
 
 ### <a name="process-overview"></a>Folyamat áttekintése
+
+> [!TIP]
+> Ha a virtuális gép nemrég készült biztonsági másolattal rendelkezik, a rendszerindítási probléma megoldásához próbálja meg [visszaállítani a virtuális gépet a biztonsági mentésből](../../backup/backup-azure-arm-restore-vms.md) .
 
 1. Hozzon létre és nyissa meg a javítási virtuális gépet.
 1. Válasszon megoldást:
@@ -56,7 +59,7 @@ Ez a hibaüzenet azt jelzi, hogy a lemez szerkezete sérült, és nem olvasható
 
 ### <a name="set-partition-status-to-active"></a>Partíció állapotának beállítása aktívra
 
-Az 1. generációs virtuális gépeknek először ellenőriznie kell, hogy a BCD-tárolót birtokló operációsrendszer-partíció **aktívként**van-e megjelölve. Ha 2. generációs virtuális géppel rendelkezik, ugorjon előre a [lemezpartíció kijavítása](#fix-the-disk-partition)érdekében, mivel a későbbi generációban az állapot jelzője elavult volt.
+Az 1. generációs virtuális gépeknek először ellenőriznie kell, hogy a BCD-tárolót birtokló operációsrendszer-partíció **aktívként** van-e megjelölve. Ha 2. generációs virtuális géppel rendelkezik, ugorjon előre a [lemezpartíció kijavítása](#fix-the-disk-partition)érdekében, mivel a későbbi generációban az állapot jelzője elavult volt.
 
 1. Nyisson meg egy rendszergazda jogú parancssort (cmd.exe).
 1. Adja meg a **DiskPart** eszközt a **DiskPart** eszköz elindításához.

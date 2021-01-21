@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/21/2020
+ms.date: 01/18/2021
 ms.author: jeedes
-ms.openlocfilehash: d7cafdcbbf44f3f501d54c13d1b4549c446ed8c8
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: ebd07990767d91c88f245b4ed7f8a66f93de0b85
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97723966"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631378"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>Oktatóanyag: Azure Active Directory integráció a Citrix ShareFile
 
@@ -31,8 +31,8 @@ A Citrix ShareFile és az Azure AD integrálásával a következő előnyöket n
 
 Az Azure AD-integráció Citrix ShareFile való konfigurálásához a következő elemek szükségesek:
 
-* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
-* Citrix ShareFile egyszeri bejelentkezésre alkalmas előfizetés
+* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/)kérhet egy hónapos próbaverziót.
+* Citrix ShareFile egyszeri bejelentkezésre alkalmas előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -126,7 +126,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
 ## <a name="configure-citrix-sharefile-sso"></a>A Citrix ShareFile SSO konfigurálása
@@ -165,7 +165,9 @@ Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja
     
     f. A **kijelentkezési URL** szövegmezőben illessze be a **KIJELENTKEZÉSI URL-címet** , amelyet a Azure Portalból másolt.
 
-5. Kattintson a **Save (Mentés** ) gombra a Citrix ShareFile felügyeleti portálon.
+    : A **választható beállítások** területen válassza az **SP-ben kezdeményezett hitelesítési környezet** **felhasználónevet és jelszót** , valamint a **pontos** beállítást.
+
+5. Kattintson a **Mentés** gombra.
 
 ## <a name="create-citrix-sharefile-test-user"></a>Citrix ShareFile-teszt felhasználó létrehozása
 
@@ -201,6 +203,6 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 * Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások Citrix ShareFile csempére kattint, a rendszer átirányítja a Citrix ShareFile bejelentkezési URL-címére. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Citrix ShareFile konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 98499961f55b55b15687d5742b4d593e3d461e49
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 397c650d1d7a593a855c8f26e61dbf12ec6360fa
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625330"
+ms.locfileid: "98631321"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Konfigurációs beállítások – Azure Monitor Application Insights Javához
 
@@ -296,7 +296,9 @@ Ha az alkalmazás tűzfal mögött található, és nem tud közvetlenül kapcso
 }
 ```
 
-[//]: # "Vegye figyelembe, hogy a OpenTelemetry támogatása nem támogatott, amíg nem támogatjuk a 0.10.0"
+Application Insights a Java 3,0 is tiszteletben tartja a globális `-Dhttps.proxyHost` és a `-Dhttps.proxyPort` beállított értékeit.
+
+[//]: # "Megjegyzés: a OpenTelemetry-támogatás privát előzetes verzióban érhető el, amíg a OpenTelemetry API eléri a 1,0-et"
 
 [//]: # "# # Támogatás a OpenTelemetry API pre-1,0 kiadásához"
 
@@ -343,6 +345,8 @@ Alapértelmezés szerint a Application Insights Java 3,0 `INFO` a fájlra `appli
 `maxSizeMb` a naplófájl maximális mérete a bedobás előtt.
 
 `maxHistory` a megőrzött naplófájlok száma (az aktuális naplófájlon kívül).
+
+A 3.0.2 verziótól kezdődően a környezeti változó használatával is beállíthatja az öndiagnosztika lehetőséget `level` `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` .
 
 ## <a name="an-example"></a>Példa
 

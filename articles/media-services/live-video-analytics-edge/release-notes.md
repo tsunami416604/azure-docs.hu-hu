@@ -3,12 +3,12 @@ title: Élő videó-elemzések IoT Edge kibocsátási megjegyzésekben – Azure
 description: Ez a témakör az élő videó-elemzések IoT Edge kiadásokra, javításokra, hibajavításokra és ismert problémákra vonatkozó kibocsátási megjegyzéseit tartalmazza.
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 7f8957d1ec93259cf6defe7980f19298f782ea5e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 328fe97c4e03f039a1224d13ce6712ccff06b3b7
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121243"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629776"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>Élő videó-elemzések IoT Edge kibocsátási megjegyzésekben
 
@@ -51,9 +51,12 @@ Ez a kiadás a IoT Edge Live Video Analytics nyilvános előzetes verziójának 
 * A lemezterület-kezelés támogatása a fogadó csomópontok számára.
 * `MediaGraphGrpcExtension` a csomópont mostantól támogatja a [extensionConfiguration](grpc-extension-protocol.md) tulajdonságot több AI-modell használatára egyetlen gRPC-kiszolgálón belül.
 * Az élő videó Analytics modul metrikáinak begyűjtésének támogatása a [Prometheus formátumban](https://prometheus.io/docs/practices/naming/). További információ a [metrikák gyűjtéséről és a Azure monitor való megtekintéséről.](monitoring-logging.md#azure-monitor-collection-via-telegraf) 
+* Lehetőség van a kimenet kijelölésének szűrésére. **Csak hang-** vagy **video-** , illetve **hang-és video** -átadható is lehet, ha bármilyen gráf-csomóponthoz segítségére van szüksége `outputSelectors` . 
 * A frame rate szűrő processzora **elavult**.  
     * A frame rate Management mostantól elérhető a Graph bővítmény processzor-csomópontjain belül.
 
+### <a name="visual-studio-code-extension"></a>Visual Studio Code-bővítmény
+* Megjelent [az élő videók elemzése IoT Edge](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge) – egy Visual Studio Code-bővítmény, amely segít a LVA-diagramok kezelésében. Ez a bővítmény a **LVA 2,0 modullal** működik együtt, és a nagy teljesítményű és könnyen használható grafikus felülettel rendelkező adathordozó-diagramok szerkesztését és kezelését kínálja.
 ## <a name="september-22-2020"></a>Szeptember 22., 2020
 
 Ez a kiadási címke a modul szeptember 2020 frissítésére szolgál:

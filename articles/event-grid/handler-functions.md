@@ -3,12 +3,12 @@ title: Függvény használata az Azure-ban Azure Event Grid események eseményk
 description: Azt ismerteti, hogyan használhatók a Azure Functions által létrehozott és a Event Grid események eseménykezelői által üzemeltetett függvények.
 ms.topic: conceptual
 ms.date: 09/18/2020
-ms.openlocfilehash: 5a1ec575b58829a422e4d263ae0324e0343d5ad3
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: beddc35f2dd8db974492d14aec27ce754a74737c
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034968"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632512"
 ---
 # <a name="use-a-function-as-an-event-handler-for-event-grid-events"></a>Függvény használata Event Grid eseményekhez eseménykezelőként
 
@@ -75,10 +75,10 @@ A meglévő előfizetések ezen értékeit a **Event Grid témakör** lap **szol
 **MaxEventsPerBatch** és **preferredBatchSizeInKilobytes** is beállíthat egy Azure Resource Manager sablonban. További információ: [Microsoft. EventGrid eventSubscriptions-sablon referenciája](/azure/templates/microsoft.eventgrid/eventsubscriptions).
 
 ### <a name="azure-cli"></a>Azure CLI
-A Batch szolgáltatáshoz kapcsolódó beállításokat az az [eventgrid Event-előfizetés Create](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_create&preserve-view=true) vagy [az eventgrid Event-előfizetés Update](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_update&preserve-view=true) paranccsal konfigurálhatja a következő paraméterekkel: `--max-events-per-batch` vagy `--preferred-batch-size-in-kilobytes` .
+A Batch szolgáltatáshoz kapcsolódó beállításokat az az [eventgrid Event-előfizetés Create](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_create&preserve-view=true) vagy [az eventgrid Event-előfizetés Update](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_update&preserve-view=true) paranccsal konfigurálhatja a következő paraméterekkel: `--max-events-per-batch` vagy `--preferred-batch-size-in-kilobytes` .
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 A [New-AzEventGridSubscription](/powershell/module/az.eventgrid/new-azeventgridsubscription) vagy az [Update-AzEventGridSubscription](/powershell/module/az.eventgrid/update-azeventgridsubscription) parancsmaggal konfigurálhatja a Batch szolgáltatáshoz kapcsolódó beállításokat a következő paraméterekkel: `-MaxEventsPerBatch` vagy `-PreferredBatchSizeInKiloBytes` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A támogatott eseménykezelők listáját az [eseménykezelők](event-handlers.md) című cikkben tekintheti meg.

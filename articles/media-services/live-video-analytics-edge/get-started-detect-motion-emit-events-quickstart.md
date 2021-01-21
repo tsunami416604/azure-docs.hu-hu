@@ -3,12 +3,12 @@ title: Ismerkedés a Live Video Analytics szolgáltatással IoT Edge-Azure-ban
 description: Ez a rövid útmutató bemutatja, hogyan kezdheti el a IoT Edge Live Video Analytics szolgáltatást. Ismerje meg, hogyan derítheti fel a mozgást egy élő videó streamben.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 276c2ceaa9e0bef254c70f91541a3a3db7c02d47
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: cbe4b1280897064938222680fc932cfe289d2f32
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060401"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631936"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Gyors útmutató: első lépések – élő videó-elemzés IoT Edge
 
@@ -26,6 +26,10 @@ Az alábbi videót részletesen megtekintheti a IoT Edge élő videó-elemzésse
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) , ha még nem rendelkezik ilyennel.
+
+  > [!NOTE]
+  > Szüksége lesz egy Azure-előfizetésre, amely az egyszerű szolgáltatások létrehozásához szükséges engedélyekkel rendelkezik (ez a **tulajdonosi szerepkör** ). Ha nem rendelkezik a megfelelő engedélyekkel, lépjen kapcsolatba a fiók rendszergazdájával, és adja meg a megfelelő engedélyeket.  
+
 * A [Visual Studio Code](https://code.visualstudio.com/) a fejlesztői gépen. Győződjön meg arról, hogy rendelkezik az [Azure IoT Tools bővítménnyel](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 * Győződjön meg arról, hogy a fejlesztői számítógép hálózata csatlakozik a speciális üzenetsor-kezelési protokoll (AMQP) engedélyezéséhez a 5671-es porton keresztül. Ez a telepítő lehetővé teszi az Azure IoT-eszközök számára az Azure IoT Hub való kommunikációt.
 
@@ -37,13 +41,13 @@ Az alábbi videót részletesen megtekintheti a IoT Edge élő videó-elemzésse
 Az oktatóanyaghoz a következő Azure-erőforrások szükségesek:
 
 * IoT Hub
-* Tárfiók
+* A(z)
 * Azure Media Services fiók
 * Egy Linux rendszerű virtuális gép az Azure-ban, [IoT Edge futtatókörnyezettel](../../iot-edge/how-to-install-iot-edge.md) telepítve
 
 Ebben a rövid útmutatóban azt javasoljuk, hogy az Azure-előfizetésében lévő szükséges erőforrások üzembe helyezéséhez használja az [élő videó elemzési erőforrásainak telepítési parancsfájlját](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) . Ehhez kövesse az alábbi lépéseket:
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com) , és válassza a Cloud Shell ikont.
+1. Lépjen a [Azure Portalra](https://portal.azure.com) , és válassza a Cloud Shell ikont.
 1. Ha első alkalommal használja a Cloud Shell, a rendszer kérni fogja, hogy válasszon egy előfizetést egy Storage-fiók és egy Microsoft Azure-fájlmegosztás létrehozásához. Válassza a **tároló létrehozása** lehetőséget a Cloud Shell munkamenet-információhoz tartozó Storage-fiók létrehozásához. Ez a Storage-fiók elkülönül a parancsfájl által a Azure Media Services-fiókkal való használatra létrehozott fióktól.
 1. A Cloud Shell ablak bal oldalán lévő legördülő menüben válassza a **bash** lehetőséget a környezetében.
 
@@ -700,7 +704,7 @@ Próbálkozzon a következő lépésekkel:
 
 Ha nem folytatja az alkalmazás használatát, törölje az ebben a rövid útmutatóban létrehozott erőforrásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan [rögzíthet videót a IoT Edge élő video Analytics használatával](continuous-video-recording-tutorial.md).
 * További információ a [diagnosztikai üzenetekről](monitoring-logging.md).

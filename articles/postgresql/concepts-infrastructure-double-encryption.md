@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 03d52611c89012d1132b4a27820f7f47e6cdd512
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 83635b732318a4ada76d1d71c1ce419cae8b35e9
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242024"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630143"
 ---
 # <a name="azure-database-for-postgresql-infrastructure-double-encryption"></a>Azure Database for PostgreSQL infrastruktúra kettős titkosítása
 
@@ -59,12 +59,6 @@ A Azure Database for PostgreSQL által biztosított titkosítási képességek e
 Azure Database for PostgreSQL esetében a szolgáltatás által felügyelt kulccsal történő kettős titkosítás támogatása a következő korlátozásokkal jár:
 
 * A funkció támogatása a **általános célú** és a **memória optimalizált** díjszabási szintjeire korlátozódik.
-* A következő régiókban hozhat létre olyan Azure Database for PostgreSQL, amelyeken engedélyezve van az infrastruktúra kettős titkosítása:
-
-   * USA keleti régiója
-   * USA déli középső régiója
-   * USA 2. nyugati régiója
-   
 * Ez a funkció csak a 16 TB-ig terjedő tárterületet támogató régiókban és kiszolgálókon támogatott. A tárterületet 16 TB-ot támogató Azure-régiók listájáért tekintse meg a [Storage dokumentációját](concepts-pricing-tiers.md#storage).
 
     > [!NOTE]

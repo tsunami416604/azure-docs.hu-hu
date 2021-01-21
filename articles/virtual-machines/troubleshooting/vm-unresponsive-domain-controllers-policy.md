@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: v-miegge
-ms.openlocfilehash: 4f181a6dee7ed182150bd0cad2b51690b6c77d7a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6c139398182ca9d875de0d3b21c58afe503bd8a5
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963125"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632274"
 ---
 # <a name="vm-is-unresponsive-while-applying-default-domain-controllers-policy"></a>A virtuális gép nem válaszol az alapértelmezett tartományvezérlő-szabályzat alkalmazása közben
 
@@ -28,7 +28,7 @@ Ez a cikk olyan problémák megoldását ismerteti, amelyekben az Alapértelmeze
 
 ## <a name="symptom"></a>Hibajelenség
 
-Ha [rendszerindítási diagnosztikát](./boot-diagnostics.md) használ a virtuális gép képernyőképének megtekintéséhez, látni fogja, hogy a képernyőképen az operációs rendszer nem válaszol, miközben az **Alapértelmezett tartományvezérlői házirendet**indítja.
+Ha [rendszerindítási diagnosztikát](./boot-diagnostics.md) használ a virtuális gép képernyőképének megtekintéséhez, látni fogja, hogy a képernyőképen az operációs rendszer nem válaszol, miközben az **Alapértelmezett tartományvezérlői házirendet** indítja.
 
   ![Az 1. ábra a "Default Domain Controllers Policy" üzenettel beragadt operációs rendszert jeleníti meg.](./media/vm-unresponsive-domain-controllers-policy/1-default-domain-controllers-policy.png)
 
@@ -37,6 +37,9 @@ Ha [rendszerindítási diagnosztikát](./boot-diagnostics.md) használ a virtuá
 Ezt a problémát az Alapértelmezett tartományvezérlői házirendben történt legutóbbi módosítások okozhatja. Ellenkező esetben a rendszer elvégzi a memóriakép-fájlok elemzését a kiváltó ok okának megállapításához.
 
 ## <a name="solution"></a>Megoldás
+
+> [!TIP]
+> Ha a virtuális gép nemrég készült biztonsági másolattal rendelkezik, a rendszerindítási probléma megoldásához próbálja meg [visszaállítani a virtuális gépet a biztonsági mentésből](../../backup/backup-azure-arm-restore-vms.md) .
 
 Ha nemrég módosította az Alapértelmezett tartományvezérlői házirendet, előfordulhat, hogy vissza kívánja vonni ezeket a módosításokat a probléma megoldásához. Ha nem biztos benne, hogy mi okozza a problémát, gyűjtsön egy memóriaképet, majd küldje el a támogatási jegyet.
 

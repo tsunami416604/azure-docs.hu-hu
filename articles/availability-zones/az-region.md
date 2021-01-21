@@ -1,5 +1,5 @@
 ---
-title: Az Availability Zonest támogató Azure-szolgáltatások
+title: A rendelkezésreállási zónákat támogató Azure-szolgáltatások
 description: Az Azure-ban kiválóan elérhető és rugalmas alkalmazások hozhatók létre, Availability Zones biztosítanak fizikailag különálló helyet, amellyel erőforrásokat futtathat.
 author: cynthn
 ms.service: azure
@@ -7,14 +7,14 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 0365a60317538ba31f39928cd30a57e2c969c832
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: ea21a56249c8eaa7c6b329b755e96b21b91ebaa1
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97723038"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632308"
 ---
-# <a name="azure-services-that-support-availability-zones"></a>Az Availability Zonest támogató Azure-szolgáltatások
+# <a name="azure-services-that-support-availability-zones"></a>A rendelkezésreállási zónákat támogató Azure-szolgáltatások
 
 A Availability Zones magas rendelkezésre állású ajánlat, amely védelmet nyújt alkalmazásai és adatai számára az adatközpont hibáiból. Az Availability Zonest támogató meglévő és közelgő régiók listáját lásd: [régiók és Availability Zones az Azure-ban](az-overview.md).  
 
@@ -124,7 +124,7 @@ Az Azure-ban elérhető átfogó Üzletmenet-folytonosság érdekében az Azure 
 | [Azure Data Explorer](/azure/data-explorer/create-cluster-database-portal) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Azure Database for MySQL – rugalmas kiszolgáló](../mysql/flexible-server/concepts-high-availability.md) | x | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Azure Database for PostgreSQL – rugalmas kiszolgáló](../postgresql/flexible-server/overview.md) | x | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure SQL Database (általános célú szintű)](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | x | : heavy_check_mark: (előzetes verzió) | x | : heavy_check_mark: (előzetes verzió) |
+| [Azure SQL Database (általános célú szintű)](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | : heavy_check_mark: (előzetes verzió) | : heavy_check_mark: (előzetes verzió) | x | : heavy_check_mark: (előzetes verzió) |
 | [Azure SQL Database (prémium szintű & üzletileg kritikus szinten)](../azure-sql/database/high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Elemzés** |  |  |  |  |
 | [Event Hubs](../event-hubs/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -169,7 +169,7 @@ Az Azure-ban elérhető átfogó Üzletmenet-folytonosság érdekében az Azure 
 | [Azure Data Explorer](/azure/data-explorer/create-cluster-database-portal) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Azure Database for MySQL – rugalmas kiszolgáló](../mysql/flexible-server/concepts-high-availability.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Azure Database for PostgreSQL – rugalmas kiszolgáló](../postgresql/flexible-server/overview.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure SQL Database (általános célú szintű)](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | x | : heavy_check_mark: (előzetes verzió) | : heavy_check_mark: (előzetes verzió) |
+| [Azure SQL Database (általános célú szintű)](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | : heavy_check_mark: (előzetes verzió) | : heavy_check_mark: (előzetes verzió) | : heavy_check_mark: (előzetes verzió) |
 | [Azure SQL Database (prémium szintű & üzletileg kritikus szinten)](../azure-sql/database/high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Elemzés** |  |  |  |
 | [Event Hubs](../event-hubs/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -218,7 +218,7 @@ A rendelkezésre állási zónában üzembe helyezett virtuális gépekhez nem k
 - [Availability Zonest használó Azure Kubernetes-szolgáltatásbeli (ak-beli) fürt létrehozása](../aks/availability-zones.md)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Régiók és rendelkezésre állási zónák az Azure-ban](az-overview.md)

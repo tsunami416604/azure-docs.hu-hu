@@ -4,12 +4,12 @@ description: Hogyan biztosítható a maximális rendelkezésre állás és konzi
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 81bacd5507396352bb814310979498234ee35347
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 7b97d76f29ee8b7e44373c865baa09ba5ea4dd23
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902901"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631919"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Rendelkezésre állás és konzisztencia az Event Hubsban
 
@@ -30,10 +30,10 @@ A Event Hubs particionált adatmodellre épül. A telepítés során beállítha
 A Event Hubs használatának legegyszerűbb módja az alapértelmezett viselkedés használata. 
 
 #### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure. Messaging. EventHubs (5.0.0 vagy újabb)](#tab/latest)
-Ha létrehoz egy új **[EventHubProducerClient](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient?view=azure-dotnet)** -objektumot, és a **[SendAsync](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.sendasync?view=azure-dotnet)** metódust használja, az események automatikusan el lesznek osztva az Event hub partíciói között. Ez a viselkedés lehetővé teszi a legnagyobb mennyiségű időt.
+Ha létrehoz egy új **[EventHubProducerClient](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient)** -objektumot, és a **[SendAsync](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.sendasync)** metódust használja, az események automatikusan el lesznek osztva az Event hub partíciói között. Ez a viselkedés lehetővé teszi a legnagyobb mennyiségű időt.
 
 #### <a name="microsoftazureeventhubs-410-or-earlier"></a>[Microsoft. Azure. EventHubs (4.1.0 vagy korábbi)](#tab/old)
-Ha létrehoz egy új **[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** objektumot, és a **[Send](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** metódust használja, az események automatikusan el lesznek osztva az Event hub partíciói között. Ez a viselkedés lehetővé teszi a legnagyobb mennyiségű időt.
+Ha létrehoz egy új **[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** objektumot, és a **[Send](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** metódust használja, az események automatikusan el lesznek osztva az Event hub partíciói között. Ez a viselkedés lehetővé teszi a legnagyobb mennyiségű időt.
 
 ---
 
@@ -145,4 +145,4 @@ Ez a példa az eseményt az Event hub egyik elérhető partíciójában küldi e
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
 * [Event Hubs szolgáltatás áttekintése](./event-hubs-about.md)
-* [Event hub létrehozása](event-hubs-create.md)
+* [Eseményközpont létrehozása](event-hubs-create.md)

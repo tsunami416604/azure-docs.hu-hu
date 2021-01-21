@@ -4,22 +4,22 @@ description: Ismerje meg, hogyan értelmezheti az Azure-fájlmegosztás kiépít
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/1/2020
+ms.date: 01/20/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 880ec90ce1cf0efffce0cfd6800bdbaed23f8dd0
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 19ecbea70d9cb6b8cc31c72ed3c1294cd137ce93
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831465"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632478"
 ---
 # <a name="understanding-azure-files-billing"></a>Azure Files számlázás ismertetése
 Azure Files két különböző számlázási modellt biztosít: kiépített és utólagos elszámolású. A kiépített modell csak a prémium szintű fájlmegosztás esetében érhető el, amelyek a **FileStorage** -fiókban üzembe helyezett fájlmegosztás. Az utólagos elszámolású modell csak a standard fájlmegosztás esetében érhető el, amelyek az **általános célú 2-es verziójú (GPv2)** Storage-fiókban üzembe helyezett fájlmegosztás. Ez a cikk azt ismerteti, hogyan működik mindkét modell a havi Azure Files számla megismerése érdekében.
 
 A Azure Files aktuális díjszabása a [Azure Files díjszabási oldalán](https://azure.microsoft.com/pricing/details/storage/files/)található.
 
-## <a name="provisioned-billing"></a>Kiépített számlázás
+## <a name="provisioned-model"></a>Kiépített modell
 Azure Files a prémium szintű fájlmegosztás számára kiépített modellt használ. Egy kiépített üzleti modellben proaktív módon megadhatja a Azure Files szolgáltatásnak, hogy a tárolási követelményei milyenek, és nem a használatuk alapján történik. Ez hasonló a helyszíni hardveres vásárláshoz, abban az esetben, ha egy bizonyos mennyiségű tárterülettel rendelkező Azure-fájlmegosztást kiépít, a tárterületért kell fizetnie, függetlenül attól, hogy használja-e, vagy sem, ugyanúgy, mint a helyszíni fizikai adathordozók költségeinek kifizetését. A helyszíni fizikai adathordozótól eltérően a kiosztott fájlmegosztás a tárterülettől és az i/o-teljesítménytől függően dinamikusan méretezhető.
 
 Prémium fájlmegosztás kiépítésekor meg kell adnia, hogy hány GiBs van szükség a munkaterheléshez. Az Ön által kiépített összes GiB egy rögzített arányú további IOPS és átviteli sebességre jogosítja fel Önt. Az Ön által garantált alapszintű IOPS mellett minden prémium fájlmegosztás támogatja a lehető legjobb adatmennyiséget. A IOPS és az átviteli sebességre vonatkozó képletek a következők:
@@ -63,7 +63,7 @@ A megosztási kreditek három állapottal rendelkeznek:
 
 Az új fájlmegosztás a teljes számú Kredittel kezdődik a burst gyűjtőben. A burst kreditek nem lesznek felhalmozva, ha a megosztás IOPS az alapszintű IOPS alá esik a kiszolgáló általi szabályozás miatt.
 
-## <a name="pay-as-you-go-billing"></a>Utólagos elszámolású számlázás
+## <a name="pay-as-you-go-model"></a>Utólagos elszámolású modell
 A Azure Files a szabványos fájlmegosztás esetében az utólagos elszámolású üzleti modellt használja. Az utólagos elszámolású üzleti modellekben a fizetendő összeget a ténylegesen felhasznált mennyiség határozza meg, nem pedig kiosztott mennyiség alapján. Magas szinten a lemezen tárolt adatok mennyiségére, majd az adatok használata alapján egy további tranzakcióra számítunk fel díjat. Az utólagos elszámolású modellek költséghatékonyak lehetnek, mivel nem kell túlzott mértékben kiépíteni a jövőbeli növekedési vagy teljesítménnyel kapcsolatos követelményeket, vagy ha a számítási feladatnak az adatlábnyoma az idő múlásával változik. Másfelől az utólagos elszámolású modelleket is nehéz lehet megtervezni a költségvetési folyamat részeként, mivel az utólagos elszámolású számlázási modellt a végfelhasználók általi használat vezérli.
 
 ### <a name="differences-in-standard-tiers"></a>Különbségek a standard szinteken

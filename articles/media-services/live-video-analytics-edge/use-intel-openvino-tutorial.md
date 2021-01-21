@@ -4,12 +4,12 @@ description: Ebben az oktatóanyagban az Intel által biztosított AI-modell-kis
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: 9fb2f533d433c89d13ee0c29058f87aab3521a78
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 4ef0b919384839108c003488b0697054ebfa14a0
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060197"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629164"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Oktatóanyag: élő videó elemzése a OpenVINO™ Model Server – AI bővítménnyel az Intel használatával 
 
@@ -23,6 +23,8 @@ Ez az oktatóanyag egy Azure-beli virtuális gépet használ IoT Edge eszközké
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy aktív előfizetést tartalmazó Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) , ha még nem rendelkezik ilyennel.
+  > [!NOTE]
+  > Szüksége lesz egy Azure-előfizetésre, amely az egyszerű szolgáltatások létrehozásához szükséges engedélyekkel rendelkezik (ez a **tulajdonosi szerepkör** ). Ha nem rendelkezik a megfelelő engedélyekkel, lépjen kapcsolatba a fiók rendszergazdájával, és adja meg a megfelelő engedélyeket. 
 * [Visual Studio Code](https://code.visualstudio.com/)a következő kiterjesztésekkel:
     * [Azure IoT-eszközök](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
     * [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
@@ -389,7 +391,7 @@ Most megismételheti a fenti lépéseket a minta program újbóli futtatásához
 
 Ha más rövid útmutatókat vagy oktatóanyagokat szeretne kipróbálni, tartsa meg a létrehozott erőforrásokat. Ellenkező esetben lépjen a Azure Portalra, nyissa meg az erőforráscsoportot, válassza ki azt az erőforráscsoportot, amelyben az oktatóanyagot futtatta, és törölje az összes erőforrást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a speciális felhasználókra vonatkozó további kihívásokat:
 

@@ -9,12 +9,12 @@ ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 705910a9e2f4ebc80a63ab22ac4edecc5ae03cd0
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 7f72d703e5377f725addc4aa8c52e1cdb0fa571d
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724799"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630751"
 ---
 # <a name="create-an-azure-file-share"></a>Azure-fájlmegosztás létrehozása
 Azure-fájlmegosztás létrehozásához három kérdést kell megválaszolnia, hogy miként fogja használni:
@@ -172,7 +172,7 @@ A **kvóta** tulajdonság azt jelenti, hogy némileg eltérő a prémium és a s
 
 - A standard fájlmegosztás esetében ez az Azure-fájlmegosztás felső határa, amelyen kívül a végfelhasználók nem mehetnek el. A standard fájlmegosztás kvótájának elsődleges célja a költségvetés: "nem szeretném, hogy ez a fájlmegosztás ne növelje ezt a pontot". Ha nincs megadva kvóta, a normál fájlmegosztás akár 100 TiB-ra (vagy 5 TiB-ra) is terjedhet, ha a nagyméretű fájlmegosztás tulajdonság nincs beállítva a Storage-fiókhoz.
 
-- A prémium fájlmegosztás esetében a kvóta túl van terhelve a **kiépített mérethez**. A kiosztott méret az a mennyiség, amelyet a rendszer a tényleges használattól függetlenül számláz. A prémium fájlmegosztás kiépítésekor két tényezőt érdemes figyelembe venni: 1.) a megosztás jövőbeli növekedése a terület kihasználtsága szempontjából, és 2) a számítási feladatok IOPS szükséges. Minden kiépített GiB felhatalmazza Önt további fenntartott és burst IOPS. A prémium szintű fájlmegosztás tervezésével kapcsolatos további információkért lásd a [prémium szintű fájlmegosztás](understanding-billing.md#provisioned-billing)kiosztása című témakört.
+- A prémium fájlmegosztás esetében a kvóta túl van terhelve a **kiépített mérethez**. A kiosztott méret az a mennyiség, amelyet a rendszer a tényleges használattól függetlenül számláz. A prémium fájlmegosztás kiépítésekor két tényezőt érdemes figyelembe venni: 1.) a megosztás jövőbeli növekedése a terület kihasználtsága szempontjából, és 2) a számítási feladatok IOPS szükséges. Minden kiépített GiB felhatalmazza Önt további fenntartott és burst IOPS. A prémium szintű fájlmegosztás tervezésével kapcsolatos további információkért lásd a [prémium szintű fájlmegosztás](understanding-billing.md#provisioned-model)kiosztása című témakört.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 Ha most hozta létre a Storage-fiókját, akkor az **erőforrás keresése** lehetőségre kattintva megnyithatja azt a telepítési képernyőről. Ha korábban már létrehozta a Storage-fiókot, megnyithatja azt az azt tartalmazó erőforráscsoport használatával. Miután a Storage-fiókban kijelöli a **fájlmegosztás** címkét (a **fájlmegosztást** a Storage-fiók tartalomjegyzékében is megnyithatja).
@@ -295,7 +295,7 @@ az storage share-rm update \
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Tervezze meg Azure Files telepítését,](storage-files-planning.md) vagy [tervezze meg Azure file Sync központi telepítését](storage-sync-files-planning.md). 
 - [Hálózatkezelés – áttekintés](storage-files-networking-overview.md).
 - Windows, [MacOS](storage-how-to-use-files-mac.md)és [Linux](storage-how-to-use-files-linux.md) [rendszerű](storage-how-to-use-files-windows.md)fájlmegosztás csatlakoztatása és csatlakoztatása.

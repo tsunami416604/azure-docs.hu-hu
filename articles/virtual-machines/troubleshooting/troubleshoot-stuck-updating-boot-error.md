@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: fe2d444bbdc09ed5ab0205d4139591e3288e3358
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 3090b7b889d914fc0cdb598b8bf29a73c81f50cb
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734565"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632003"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Az Azure-beli virtuális gép indítása a Windows Update szolgáltatásban megakadt
 
@@ -37,6 +37,8 @@ Ez a cikk segítséget nyújt a probléma megoldásában, ha a virtuális gép (
 
 
 ## <a name="solution"></a>Megoldás
+> [!TIP]
+> Ha a virtuális gép nemrég készült biztonsági másolattal rendelkezik, a rendszerindítási probléma megoldásához próbálja meg [visszaállítani a virtuális gépet a biztonsági mentésből](../../backup/backup-azure-arm-restore-vms.md) .
 
 Attól függően, hogy hány frissítést telepít vagy állít vissza, a frissítési folyamat eltarthat egy ideig. A virtuális gépet 8 órán keresztül hagyja ebben az állapotban. Ha a virtuális gép az adott időszak után még mindig ebben az állapotban van, indítsa újra a virtuális gépet a Azure Portalból, és ellenőrizze, hogy elindulhat-e a szokásos módon. Ha ez a lépés nem működik, próbálja ki a következő megoldást.
 

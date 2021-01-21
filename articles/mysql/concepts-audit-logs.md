@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/24/2020
-ms.openlocfilehash: aac8e6e04b8bac7a1d27fefc780fb9fadb3122dc
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: fa845e7c402073a64f51d75b1da51f56142eee2e
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534177"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630499"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Naplók naplózása Azure Database for MySQL
 
@@ -43,7 +43,7 @@ Az egyéb paraméterek a következők:
 | `DCL` | Lekérdezések, például "engedély megadása" |
 | `ADMIN` | Lekérdezések, például "állapot megjelenítése" |
 | `GENERAL` | Összes DML_SELECT, DML_NONSELECT, DML, DDL, DCL és ADMIN |
-| `TABLE_ACCESS` | – Csak MySQL 5,7 esetén érhető el <br> – Táblázatos olvasási utasítások, például kijelölés vagy Beszúrás a következőbe:... Válassza <br> – Tábla-törlési utasítások, például törlés vagy TRUNCATE TABLE <br> – Táblázatos beszúrási utasítások, például INSERT vagy replace <br> – Táblázatos frissítési utasítások, például frissítés |
+| `TABLE_ACCESS` | -Elérhető a MySQL 5,7 és a MySQL 8,0-hez <br> – Táblázatos olvasási utasítások, például kijelölés vagy Beszúrás a következőbe:... Válassza <br> – Tábla-törlési utasítások, például törlés vagy TRUNCATE TABLE <br> – Táblázatos beszúrási utasítások, például INSERT vagy replace <br> – Táblázatos frissítési utasítások, például frissítés |
 
 ## <a name="access-audit-logs"></a>Hozzáférés az auditnaplókhoz
 
@@ -79,7 +79,7 @@ A következő szakaszok ismertetik a MySQL-naplók kimenetét az esemény típus
 | `db_s` | A következőhöz kapcsolódó adatbázis neve |
 | `\_ResourceId` | Erőforrás URI-ja |
 
-### <a name="general"></a>Általános kérdések
+### <a name="general"></a>Általános
 
 Az alábbi séma az általános, a DML_SELECT, a DML_NONSELECT, a DML, a DDL, a DCL és a rendszergazdai események típusára vonatkozik.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 4f4cd8189c9166ee08c1e4ccd800a1202d3b5893
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: cbded0a9c905bb488e1bae0f92d777e2e7ed7441
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724816"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630853"
 ---
 # <a name="smb-multichannel-performance"></a>Többcsatornás SMB teljesítménye
 
@@ -119,7 +119,7 @@ A következő tippek segíthetnek a teljesítmény optimalizálásában:
 - Győződjön meg arról, hogy a Storage-fiók és az ügyfél ugyanabban az Azure-régióban található, hogy csökkentse a hálózati késést.
 - Több szálon futó alkalmazások használata és az elosztott terhelés több fájl között.
 - A többcsatornás SMB teljesítménybeli előnyei a terhelést elosztó fájlok számával növekednek.
-- A prémium szintű megosztási teljesítményt a kiosztott megosztási méret (IOPS/kimenő/bejövő forgalom) és az egyetlen fájl korlátai kötik. Részletekért lásd a [prémium szintű fájlmegosztás kiépítés ismertetése](understanding-billing.md#provisioned-billing)című témakört.
+- A prémium szintű megosztási teljesítményt a kiosztott megosztási méret (IOPS/kimenő/bejövő forgalom) és az egyetlen fájl korlátai kötik. Részletekért lásd a [prémium szintű fájlmegosztás kiépítés ismertetése](understanding-billing.md#provisioned-model)című témakört.
 - Egyetlen virtuálisgép-ügyfél maximális teljesítménye továbbra is a virtuális gépek korlátaihoz kötődik. Például a [Standard_D32s_v3](../../virtual-machines/dv3-dsv3-series.md) legfeljebb 16 000 MB/s (vagy 2GBps) sávszélességet tud támogatni, a virtuális gépről érkező kimenő forgalom (a tárolóba való írás), a bejövő forgalom (a tárolóból való olvasás) nem. A fájlmegosztás teljesítményét a számítógép hálózati korlátai, a processzorok, a belső tárterület rendelkezésre álló hálózati sávszélesség, az IO-méretek, a párhuzamosságok és egyéb tényezők határozzák meg.
 - A kezdeti teszt általában bemelegítő, elveti az eredményeket, és megismétli a tesztet.
 - Ha a teljesítményt egyetlen ügyfél korlátozza, és a munkaterhelés még nem éri el a kiosztott megosztási korlátokat, a nagyobb teljesítmény a több ügyfél terhelésének elosztásával is megvalósítható.
@@ -130,7 +130,7 @@ A következő tippek segíthetnek a teljesítmény optimalizálásában:
 
 A magasabb i/o-méretek nagyobb átviteli sebességet eredményeznek, és nagyobb késéssel fognak rendelkezni, ami alacsonyabb számú nettó IOPS eredményez. A kisebb i/o-méretek magasabb IOPS fognak vezetni, de alacsonyabb nettó átviteli sebességet és késést eredményeznek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Többcsatornás SMB engedélyezése FileStorage-fiókban (előzetes verzió)](storage-files-enable-smb-multichannel.md)
 - A többcsatornás SMB-vel kapcsolatos további információkért tekintse meg a [Windows dokumentációját](/azure-stack/hci/manage/manage-smb-multichannel) .

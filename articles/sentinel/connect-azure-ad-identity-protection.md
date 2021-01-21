@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 06/24/2020
 ms.author: yelevin
-ms.openlocfilehash: 69ab76bf213653ea10db8dfd181b615a7e0f47b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f420e80f10072c440f5401c042d6370a061b1a7f
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85564479"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632241"
 ---
 # <a name="connect-data-from-azure-active-directory-azure-ad-identity-protection"></a>Adatok összekapcsolása Azure Active Directory (Azure AD) Identity Protectionből
 
@@ -24,7 +24,6 @@ A naplók a [Azure ad Identity Protectionból](../active-directory/identity-prot
 
 - [Prémium szintű Azure ad P2-előfizetéssel](https://azure.microsoft.com/pricing/details/active-directory/)kell rendelkeznie.
 - Globális rendszergazdai vagy biztonsági rendszergazdai engedélyekkel rendelkező felhasználónak kell lennie.
-
 
 ## <a name="connect-to-azure-ad-identity-protection"></a>Kapcsolódás Azure AD Identity Protectionhoz
 
@@ -38,7 +37,7 @@ Ha prémium szintű Azure AD P2-előfizetéssel rendelkezik, Azure AD Identity P
 
 Ha tesztelni kívánja az összekötőt, [szimulálhatja az észleléseket](../active-directory/identity-protection/howto-identity-protection-simulate-risk.md) , hogy az Azure sentinelbe továbbítható minta-riasztásokat készítsen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a dokumentumból megtanulta, hogyan csatlakozhat Azure AD Identity Protection az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).

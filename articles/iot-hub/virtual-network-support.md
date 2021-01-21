@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: jlian
-ms.openlocfilehash: 08f033cbe121135e281379a013e11a33ae962dfb
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 1e28c7767868904fb20ae6d27c6aea9e7077eb62
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97703806"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630293"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT Hub a magánhálózati és felügyelt identitású virtuális hálózatok támogatása
 
@@ -70,6 +70,9 @@ A [beépített Event hub-kompatibilis végpont](iot-hub-devguide-messages-read-b
 
 :::image type="content" source="media/virtual-network-support/private-built-in-endpoint.png" alt-text="A kép két privát végpontot mutat IoT Hub privát kapcsolaton keresztül":::
 
+IoT Hub [IP-szűrője](iot-hub-ip-filtering.md) opcionálisan képes a beépített végponthoz való nyilvános hozzáférés szabályozására. 
+
+Ha teljes mértékben le szeretné tiltani az IoT hub nyilvános hálózati hozzáférését, [kapcsolja ki a nyilvános hálózati hozzáférést](iot-hub-public-network-access.md) , vagy használja az IP-szűrő funkciót az összes IP-cím letiltásához, és válassza a szabályok alkalmazása a beépített végpontra lehetőséget.
 
 ### <a name="pricing-for-private-link"></a>Privát hivatkozás díjszabása
 
@@ -290,7 +293,7 @@ A Python esetében töltse le a korlátozott verziót a GitHubról.
     > pip install./azure_iot_hub-2.2.0_limited-py2. py3-none-any. WHL
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi hivatkozásokra kattintva további információt találhat IoT Hub szolgáltatásairól:
 

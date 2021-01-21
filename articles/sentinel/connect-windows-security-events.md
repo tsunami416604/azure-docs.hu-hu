@@ -1,6 +1,6 @@
 ---
 title: A Windows biztonsági eseményeinek összekötése az Azure Sentinel szolgáltatással | Microsoft Docs
-description: Ismerje meg, hogy a biztonsági események összekötővel hogyan továbbíthatja a Windows rendszerű rendszerek összes biztonsági eseményét az Azure Sentinel-munkaterületre. 
+description: Ismerje meg, hogy a biztonsági események összekötővel hogyan továbbíthatja a Windows rendszerű rendszerek összes biztonsági eseményét az Azure Sentinel-munkaterületre.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: a16afcafa03ef2ab8642316db560e30a473a526b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 226d5a46482d6611fdecf214d040fc27af9ac586
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883708"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632046"
 ---
 # <a name="connect-windows-security-events"></a>A Windows biztonsági eseményeinek csatlakoztatása 
 
@@ -52,21 +52,21 @@ A Security Events Connector lehetővé teszi, hogy a Windows rendszerű (kiszolg
 
 Windowsos biztonsági események összegyűjtése az Azure Sentinelben:
 
-1. Az Azure Sentinel navigációs menüjében válassza az **adatösszekötők**lehetőséget. Az összekötők listájában kattintson a **biztonsági események**elemre, majd a jobb alsó sarokban található **összekötő megnyitása lap** gombra. Ezután kövesse az **utasítások** lapon látható képernyőn megjelenő utasításokat a szakasz további részében leírtak szerint.
+1. Az Azure Sentinel navigációs menüjében válassza az **adatösszekötők** lehetőséget. Az összekötők listájában kattintson a **biztonsági események** elemre, majd a jobb alsó sarokban található **összekötő megnyitása lap** gombra. Ezután kövesse az **utasítások** lapon látható képernyőn megjelenő utasításokat a szakasz további részében leírtak szerint.
 
-1. Ellenőrizze, hogy rendelkezik-e a megfelelő engedélyekkel az **Előfeltételek**szakaszban leírtak szerint.
+1. Ellenőrizze, hogy rendelkezik-e a megfelelő engedélyekkel az összekötő lapon az **Előfeltételek** részben leírtak szerint.
 
 1. Töltse le és telepítse a [log Analytics-ügynököt](../azure-monitor/platform/log-analytics-agent.md) (más néven Microsoft monitoring agentet vagy MMA-t) azon gépekre, amelyeken biztonsági eseményeket szeretne továbbítani az Azure Sentinel szolgáltatásba.
 
     Azure-Virtual Machines esetén:
     
-    1. Kattintson az **ügynök telepítése az Azure Windows rendszerű virtuális gépen**lehetőségre, majd az alább megjelenő hivatkozásra.
-    1. Minden csatlakozni kívánt virtuális géphez kattintson a nevére a jobb oldalon megjelenő listában, majd kattintson a **Kapcsolódás**elemre.
+    1. Kattintson az **ügynök telepítése az Azure Windows rendszerű virtuális gépen** lehetőségre, majd az alább megjelenő hivatkozásra.
+    1. Minden csatlakozni kívánt virtuális géphez kattintson a nevére a jobb oldalon megjelenő listában, majd kattintson a **Kapcsolódás** elemre.
 
     Nem Azure-beli Windows rendszerű gépek esetén (fizikai, virtuális helyszíni vagy virtuális egy másik felhőben):
 
-    1. Kattintson az **ügynök telepítése nem Azure-beli Windows-gépen**elemre, majd az alább megjelenő hivatkozásra.
-    1. Kattintson a jobb oldalon, a **Windows rendszerű számítógépek**alatt megjelenő megfelelő letöltési hivatkozásokra.
+    1. Kattintson az **ügynök telepítése nem Azure-beli Windows-gépen** elemre, majd az alább megjelenő hivatkozásra.
+    1. Kattintson a jobb oldalon, a **Windows rendszerű számítógépek** alatt megjelenő megfelelő letöltési hivatkozásokra.
     1. A letöltött végrehajtható fájl használatával telepítse az ügynököt az Ön által választott Windows-rendszerekre, és konfigurálja azt a **munkaterület-azonosító és** a fent említett letöltési hivatkozások alatt megjelenő kulcsok használatával.
 
     > [!NOTE]
@@ -92,7 +92,7 @@ Előfordulhat, hogy körülbelül 20 percet vesz igénybe, amíg a naplók meg n
 > [!IMPORTANT]
 > A rendellenes RDP-bejelentkezési észlelés jelenleg nyilvános előzetes verzióban érhető el.
 > Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott.
-> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Az Azure Sentinel gépi tanulást (ML) alkalmazhat a biztonsági események adataira a rendellenes RDP protokoll (RDP) bejelentkezési tevékenységek azonosításához. A forgatókönyvek a következők:
 
@@ -106,7 +106,7 @@ Az Azure Sentinel gépi tanulást (ML) alkalmazhat a biztonsági események adat
 
 1. Az RDP bejelentkezési adatok (eseményazonosító: 4624) gyűjtését a **biztonsági események** adatösszekötőn keresztül kell gyűjteni. Győződjön meg arról, hogy a "None" érték mellett kiválasztott egy [eseményt](#event-sets) az Azure sentinelbe való továbbításhoz.
 
-1. Az Azure Sentinel-portálon kattintson az **elemzés**elemre, majd kattintson a **szabály sablonok** fülre. Válassza ki az **(előzetes verzió) rendellenes RDP-bejelentkezés észlelési** szabályát, és **engedélyezze**az **állapot** csúszkát.
+1. Az Azure Sentinel-portálon kattintson az **elemzés** elemre, majd kattintson a **szabály sablonok** fülre. Válassza ki az **(előzetes verzió) rendellenes RDP-bejelentkezés észlelési** szabályát, és **engedélyezze** az **állapot** csúszkát.
 
     > [!NOTE]
     > Mivel a gépi tanulási algoritmus 30 napos adatmennyiséget igényel a felhasználói viselkedés alapkonfigurációjának összeállításához, az incidensek észlelése előtt 30 napig kell engedélyeznie a biztonsági események gyűjtését.

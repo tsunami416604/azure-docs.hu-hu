@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: 7d1233c97ec80d5a2efa8b53c68e9e07a823165d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: cbfdb9a73f53e194b43010c0b2d84357aa3e2e5b
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977031"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631985"
 ---
 # <a name="windows-stop-error---0x00000074-bad-system-config-info"></a>Windows Stop Error-0x00000074 rossz rendszerkonfigurációs információ
 
@@ -27,7 +27,7 @@ Ez a cikk azokat a problémákat ismerteti, amelyekkel a Windows nem indítható
 
 ## <a name="symptom"></a>Hibajelenség
 
-Ha [rendszerindítási diagnosztikát](./boot-diagnostics.md) használ a virtuális gép képernyőképének megtekintéséhez, látni fogja, hogy a képernyőképen a Windows leállítási kódja **#0x00000074** vagy **BAD_SYSTEM_CONFIG_INFO**jelenik meg.
+Ha [rendszerindítási diagnosztikát](./boot-diagnostics.md) használ a virtuális gép képernyőképének megtekintéséhez, látni fogja, hogy a képernyőképen a Windows leállítási kódja **#0x00000074** vagy **BAD_SYSTEM_CONFIG_INFO** jelenik meg.
 
 *A számítógép hibát észlelt, és újra kell indítania. Újra lehet indítani.* 
  *A problémával és a lehetséges javításokkal kapcsolatos további információkért http://windows.com/stopcode látogasson el a következő webhelyre:* 
@@ -47,6 +47,9 @@ A **BAD_SYSTEM_CONFIG_INFO** leállítási kód akkor fordul elő, ha **a beáll
 ## <a name="solution"></a>Megoldás
 
 ### <a name="process-overview"></a>Folyamat áttekintése:
+
+> [!TIP]
+> Ha a virtuális gép nemrég készült biztonsági másolattal rendelkezik, a rendszerindítási probléma megoldásához próbálja meg [visszaállítani a virtuális gépet a biztonsági mentésből](../../backup/backup-azure-arm-restore-vms.md) .
 
 1. Hozzon létre és nyissa meg a javítási virtuális gépet.
 1. A kaptár sérülésének keresése.
@@ -72,7 +75,7 @@ Az alábbi utasítások segítenek megállapítani, hogy az ok a kaptár sérül
 
 1. A javítási virtuális gépen nyissa meg a **Rendszerleíróadatbázis-szerkesztő** alkalmazást. A megkereséséhez írja be a "regedit" kifejezést a Windows keresősávba.
 1. A Rendszerleíróadatbázis-szerkesztőben válassza a **HKEY_LOCAL_MACHINE** elemet a kiemeléséhez, majd válassza a **fájl > a struktúra betöltése..** . lehetőséget. a menüből.
-1. Tallózással keresse `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM` meg és válassza a **Megnyitás**lehetőséget.
+1. Tallózással keresse `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM` meg és válassza a **Megnyitás** lehetőséget.
 1. Amikor a rendszer kéri, hogy adjon meg egy nevet, adja meg a **BROKENSYSTEM**.
 
    1. Ha a struktúra nem nyílik meg, vagy ha üres, akkor a struktúra sérült. Ha a struktúra sérült, [Nyisson meg egy támogatási jegyet](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 233dcbeee0bccc714e3b4fe93e7c8b19aa9f2df0
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: e9182a2a0b88f85af5305f5794fec2ffe7935701
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242449"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631733"
 ---
 # <a name="azure-database-for-mysql-infrastructure-double-encryption"></a>Azure Database for MySQL infrastruktúra kettős titkosítása
 
@@ -20,7 +20,7 @@ A Azure Database for MySQL a Microsoft által felügyelt kulcsok használatával
 Az infrastruktúra-dupla titkosítás a szolgáltatás által felügyelt kulcsok használatával egy második titkosítási réteget helyez el. FIPS 140-2 hitelesített titkosítási modult használ, de egy másik titkosítási algoritmussal. Ez egy további védelmi réteget biztosít az adatokhoz a nyugalmi állapotban. Az infrastruktúra kettős titkosításához használt kulcsot a Azure Database for MySQL szolgáltatás is kezeli. Az infrastruktúra kettős titkosítása alapértelmezés szerint nincs engedélyezve, mert a további titkosítási réteg hatással lehet a teljesítményre.
 
 > [!NOTE]
-> Ez a funkció csak a "általános célú" és a "memória-optimalizált" árképzési szintek esetén támogatott a Azure Database for PostgreSQLban.
+> Ez a funkció csak a "általános célú" és a "memória-optimalizált" árképzési szintek esetén támogatott a Azure Database for MySQLban.
 
 Az infrastruktúra-réteg titkosításának előnye az, hogy a tárolóeszközhöz vagy a hálózati vezetékekhez legközelebb eső rétegben valósul meg. Azure Database for MySQL megvalósítja a két titkosítási réteget a szolgáltatás által felügyelt kulcsok használatával. Bár a szolgáltatási rétegben még mindig technikailag van, nagyon közel van az adatok tárolására szolgáló hardverekhez. Továbbra is engedélyezheti az inaktív adatok titkosítását az [ügyfél által felügyelt kulcs](concepts-data-encryption-mysql.md) használatával a kiépített MySQL-kiszolgálóhoz. 
 
@@ -59,13 +59,7 @@ A Azure Database for MySQL által biztosított titkosítási képességek együt
 Azure Database for MySQL esetében a szolgáltatás által felügyelt kulccsal történő kettős titkosítás támogatása a következő korlátozásokkal jár:
 
 * A funkció támogatása a **általános célú** és a **memória optimalizált** díjszabási szintjeire korlátozódik.
-* A következő régiókban hozhat létre olyan Azure Database for MySQL, amelyeken engedélyezve van az infrastruktúra-titkosítás:
-
-   * USA keleti régiója
-   * USA déli középső régiója
-   * USA 2. nyugati régiója
-   
-* * Ez a funkció csak a 16 TB-ig terjedő tárterületet támogató régiókban és kiszolgálókon támogatott. A tárterületet 16 TB-ot támogató Azure-régiók listájáért tekintse meg a [Storage dokumentációját](concepts-pricing-tiers.md#storage).
+* Ez a funkció csak a 16 TB-ig terjedő tárterületet támogató régiókban és kiszolgálókon támogatott. A tárterületet 16 TB-ot támogató Azure-régiók listájáért tekintse meg a [Storage dokumentációját](concepts-pricing-tiers.md#storage).
 
     > [!NOTE]
     > - A fent felsorolt régiókban létrehozott összes **új** MySQL-kiszolgáló támogatja az ügyfél-kezelő kulcsaival való adattitkosítást is. Ebben az esetben az időponthoz tartozó visszaállítás (PITR) vagy az olvasási replikák használatával létrehozott kiszolgálók nem minősülnek "új" értéknek.

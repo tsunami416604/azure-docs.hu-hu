@@ -5,19 +5,19 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: mijos, rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 11/20/2020
-ms.openlocfilehash: 0057a4671dbc63bf53bafa8d2d742d4edcda1e5e
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.date: 01/20/2021
+ms.openlocfilehash: d31fbd813f0c5d63ee9eddbff5b299209618626b
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741048"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629674"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Ügyfél által felügyelt kulcsok beállítása az integrációs szolgáltatási környezetek (ISEs-EK) Azure Logic Apps-beli inaktív adatok titkosításához
 
 Azure Logic Apps az Azure Storage-ra támaszkodik az adatok tárolására és automatikus [titkosítására](../storage/common/storage-service-encryption.md). Ez a titkosítás védi az adatait, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében. Alapértelmezés szerint az Azure Storage a Microsoft által felügyelt kulcsokat használja az adatai titkosítására. További információ az Azure Storage-titkosítás működéséről: [Az Azure Storage titkosítása a REST](../storage/common/storage-service-encryption.md) -alapú adatok és az Azure-beli [adattitkosítás – nyugalmi](../security/fundamentals/encryption-atrest.md)állapotban.
 
-Ha [integrációs szolgáltatási környezetet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) hoz létre a logikai alkalmazások üzemeltetéséhez, és az Azure Storage által használt titkosítási kulcsok hatékonyabb vezérlését szeretné végezni, akkor a [Azure Key Vault](../key-vault/general/overview.md)használatával beállíthatja, használhatja és kezelheti a saját kulcsát. Ezt a képességet "Bring Your Own Key" (BYOK) néven is nevezik, és a kulcs neve "ügyfél által felügyelt kulcs".
+Ha [integrációs szolgáltatási környezetet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) hoz létre a logikai alkalmazások üzemeltetéséhez, és az Azure Storage által használt titkosítási kulcsok hatékonyabb vezérlését szeretné végezni, akkor a [Azure Key Vault](../key-vault/general/overview.md)használatával beállíthatja, használhatja és kezelheti a saját kulcsát. Ez a képesség "Bring Your Own Key" (BYOK) néven ismert, és a kulcs neve "ügyfél által felügyelt kulcs". Ezzel a képességgel az Azure Storage automatikusan lehetővé teszi a [kettős titkosítást vagy az *infrastruktúra titkosítását* a kulcshoz tartozó platform által felügyelt kulcsok használatával](../security/fundamentals/double-encryption.md) . További információ: az [adattitkosítás megkettőzése az infrastruktúra titkosításával](../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption).
 
 Ebből a témakörből megtudhatja, hogyan állíthatja be és adhatja meg saját titkosítási kulcsát, amelyet az ISE a Logic Apps REST API használatával történő létrehozásakor használ. Az ISE Logic Apps REST API használatával történő létrehozásának általános lépéseiért tekintse meg az [integrációs szolgáltatási környezet (ISE) létrehozása az Logic Apps REST API segítségével](../logic-apps/create-integration-service-environment-rest-api.md)című témakört.
 
@@ -240,7 +240,7 @@ Ehhez a feladathoz használhatja a Azure PowerShell [set-AzKeyVaultAccessPolicy]
 
       ![Válassza a "kulcskezelő" > "kulcs engedélyei" elemet.](./media/customer-managed-keys-integration-service-environment/select-key-permissions.png)
 
-   1. Válassza a **tag kiválasztása** lehetőséget, majd a **nincs kiválasztva** lehetőséget. A **résztvevő** ablaktábla megnyitása után keresse meg és válassza ki az ISE elemet a keresőmezőbe. Ha elkészült, válassza a Hozzáadás **lehetőséget**  >  **Add**.
+   1. Válassza a **tag kiválasztása** lehetőséget, majd a **nincs kiválasztva** lehetőséget. A **résztvevő** ablaktábla megnyitása után keresse meg és válassza ki az ISE elemet a keresőmezőbe. Ha elkészült, válassza a Hozzáadás **lehetőséget**  >  .
 
       ![Válassza ki a rendszerbiztonsági tagként használni kívánt ISE-t](./media/customer-managed-keys-integration-service-environment/select-service-principal-ise.png)
 
@@ -248,6 +248,6 @@ Ehhez a feladathoz használhatja a Azure PowerShell [set-AzKeyVaultAccessPolicy]
 
 További információ: a [hitelesítés Key Vault](../key-vault/general/authentication.md) és [egy Key Vault hozzáférési szabályzat kiosztása](../key-vault/general/assign-access-policy-portal.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [Azure Key Vault](../key-vault/general/overview.md)

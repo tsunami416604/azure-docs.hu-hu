@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: b012da0b2aea4a50002e9adbc0876396ddd4b5e7
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 2503355a24a7452ca1ff9886a80f2956897889c4
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368729"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630395"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Részletes olvasó erőforrás létrehozása és Azure Active Directory hitelesítés konfigurálása
 
@@ -143,21 +143,27 @@ A szkript rugalmasnak lett tervezve. Először az előfizetésben található, a
     }
     ```
 
-1. Futtassa a függvényt `Create-ImmersiveReaderResource` , és szükség szerint adja meg a paramétereket.
+1. Futtassa a függvényt `Create-ImmersiveReaderResource` , és adja meg az alábbi "<PARAMETER_VALUES>" helyőrzőket a megfelelő értékekkel.
 
     ```azurepowershell-interactive
+    Create-ImmersiveReaderResource -SubscriptionName '<SUBSCRIPTION_NAME>' -ResourceName '<RESOURCE_NAME>' -ResourceSubdomain '<RESOURCE_SUBDOMAIN>' -ResourceSKU '<RESOURCE_SKU>' -ResourceLocation '<RESOURCE_LOCATION>' -ResourceGroupName '<RESOURCE_GROUP_NAME>' -ResourceGroupLocation '<RESOURCE_GROUP_LOCATION>' -AADAppDisplayName '<AAD_APP_DISPLAY_NAME>' -AADAppIdentifierUri '<AAD_APP_IDENTIFIER_URI>' -AADAppClientSecret '<AAD_APP_CLIENT_SECRET>' -AADAppClientSecretExpiration '<AAD_APP_CLIENT_SECRET_EXPIRATION>'
+    ```
+
+    A teljes parancs a következőhöz hasonlóan fog kinézni. Itt minden paramétert saját sorban helyezünk el az érthetőség kedvéért, így a teljes parancs látható. Ne másolja és ne használja ezt a parancsot. Másolja ki és használja a fenti parancsot a saját értékeivel. Ebben a példában a fenti "<PARAMETER_VALUES>" dummy értékei vannak. A tiéd más lesz, hiszen a saját nevét is elérheti ezekhez az értékekhez.
+
+    ```
     Create-ImmersiveReaderResource
-      -SubscriptionName '<SUBSCRIPTION_NAME>' `
-      -ResourceName '<RESOURCE_NAME>' `
-      -ResourceSubdomain '<RESOURCE_SUBDOMAIN>' `
-      -ResourceSKU '<RESOURCE_SKU>' `
-      -ResourceLocation '<RESOURCE_LOCATION>' `
-      -ResourceGroupName '<RESOURCE_GROUP_NAME>' `
-      -ResourceGroupLocation '<RESOURCE_GROUP_LOCATION>' `
-      -AADAppDisplayName '<AAD_APP_DISPLAY_NAME>' `
-      -AADAppIdentifierUri '<AAD_APP_IDENTIFIER_URI>' `
-      -AADAppClientSecret '<AAD_APP_CLIENT_SECRET>'
-      -AADAppClientSecretExpiration '<AAD_APP_CLIENT_SECRET_EXPIRATION>'
+        -SubscriptionName 'MyOrganizationSubscriptionName'
+        -ResourceName 'MyOrganizationImmersiveReader'
+        -ResourceSubdomain 'MyOrganizationImmersiveReader'
+        -ResourceSKU 'S0'
+        -ResourceLocation 'westus2'
+        -ResourceGroupName 'MyResourceGroupName'
+        -ResourceGroupLocation 'westus2'
+        -AADAppDisplayName 'MyOrganizationImmersiveReaderAADApp'
+        -AADAppIdentifierUri 'https://MyOrganizationImmersiveReaderAADApp'
+        -AADAppClientSecret 'SomeStrongPassword'
+        -AADAppClientSecretExpiration '2021-12-31'
     ```
 
     | Paraméter | Megjegyzések |
@@ -165,7 +171,7 @@ A szkript rugalmasnak lett tervezve. Először az előfizetésben található, a
     | SubscriptionName |Annak az Azure-előfizetésnek a neve, amelyet a magától elolvasó erőforráshoz kíván használni. Erőforrás létrehozásához előfizetés szükséges. |
     | ResourceName nevű erőforrásáról |  Alfanumerikusnak kell lennie, és tartalmazhat "-" karaktert, feltéve, hogy a "-" nem az első vagy az utolsó karakter. A hossz nem lehet hosszabb 63 karakternél.|
     | ResourceSubdomain |Egy egyéni altartományra van szükség a magától elolvasó erőforráshoz. Az SDK ezt az altartományt használja, amikor meghívja az olvasót, hogy elindítsa a lebilincselő olvasó szolgáltatást. Az altartománynak globálisan egyedinek kell lennie. Az altartománynak alfanumerikusnak kell lennie, és tartalmazhat "-" karaktert, feltéve, hogy a "-" nem az első vagy az utolsó karakter. A hossz nem lehet hosszabb 63 karakternél. Ez a paraméter nem kötelező, ha az erőforrás már létezik. |
-    | ResourceSKU |Beállítások: `S0` . Az egyes rendelkezésre álló SKU-ra vonatkozó további információkért látogasson el [Cognitive Services díjszabási oldalára](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/) . Ez a paraméter nem kötelező, ha az erőforrás már létezik. |
+    | ResourceSKU |Beállítások: `S0` (standard szint) vagy `S1` (oktatási/nonprofit szervezetek). Az egyes rendelkezésre álló SKU-ra vonatkozó további információkért látogasson el [Cognitive Services díjszabási oldalára](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/) . Ez a paraméter nem kötelező, ha az erőforrás már létezik. |
     | ResourceLocation |Beállítások:,,,, `eastus` `eastus2` `southcentralus` `westus` `westus2` , `australiaeast` , `southeastasia` , `centralindia` , `japaneast` , `northeurope` , `uksouth` , `westeurope` . Ez a paraméter nem kötelező, ha az erőforrás már létezik. |
     | ResourceGroupName |Erőforrások jönnek létre az előfizetésekben található erőforráscsoportok között. Adja meg egy meglévő erőforráscsoport nevét. Ha az erőforráscsoport még nem létezik, a rendszer létrehoz egy új nevet. |
     | ResourceGroupLocation |Ha az erőforráscsoport nem létezik, meg kell adnia egy helyet, amelyben létre kívánja hozni a csoportot. A helyszínek listájának megkereséséhez futtassa a parancsot `az account list-locations` . Használja a visszaadott eredmény *Name* (szóközök nélkül) tulajdonságát. Ez a paraméter nem kötelező, ha az erőforráscsoport már létezik. |
@@ -189,7 +195,7 @@ A szkript rugalmasnak lett tervezve. Először az előfizetésben található, a
     }
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse meg a [Node.js](./quickstarts/client-libraries.md?pivots=programming-language-nodejs) rövid útmutatót, amelyből megtudhatja, hogy mit tehet a magától az olvasói SDK-val a Node.js használatával
 * Tekintse meg az [Android-oktatóanyagot](./tutorial-android.md) , amelyből megtudhatja, hogy mi a teendő a Java vagy a Kotlin for Android használatával.

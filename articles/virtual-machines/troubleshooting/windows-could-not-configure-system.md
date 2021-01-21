@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/09/2020
 ms.author: v-miegge
-ms.openlocfilehash: bde091b4a4559c3574ee122d74574d1f9477f3fd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6cb3467fec99bd12810ed058a61de1be7b39cdd0
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977048"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629589"
 ---
 # <a name="troubleshoot-windows-could-not-finish-configuring-the-system"></a>Hibaelhárítás – a Windows nem tudta befejezni a rendszer konfigurálását
 
@@ -39,5 +39,8 @@ Ha [rendszerindítási diagnosztikát](./boot-diagnostics.md) használ a virtuá
 Ezt a hibát az okozza, hogy az operációs rendszer (OS) nem tudja befejezni a [Sysprep-folyamatot](/windows-hardware/manufacture/desktop/sysprep-process-overview). Ez a hiba akkor fordul elő, amikor egy általánosított virtuális gép kezdeti rendszerindítását kísérli meg. Ha ezzel a problémával találkozik, hozza létre újra az általánosított rendszerképet, mert a rendszerkép nem telepíthető állapotú, és nem állítható helyre.
 
 ## <a name="solution"></a>Megoldás
+
+> [!TIP]
+> Ha a virtuális gép nemrég készült biztonsági másolattal rendelkezik, a rendszerindítási probléma megoldásához próbálja meg [visszaállítani a virtuális gépet a biztonsági mentésből](../../backup/backup-azure-arm-restore-vms.md) .
 
 A probléma megoldásához kövesse az [Azure-útmutatást a rendszerkép előkészítéséhez/rögzítéséhez](../windows/upload-generalized-managed.md) és egy új általánosított rendszerkép előkészítéséhez.

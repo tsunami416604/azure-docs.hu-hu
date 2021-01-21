@@ -14,20 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2020
 ms.author: yelevin
-ms.openlocfilehash: 4d3e3615ede7406a3b581171ae759ec0ec53f13e
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 05848eb2761284669e659b3875e96acdfa71f90f
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655370"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632182"
 ---
-# <a name="connect-office-365-logs-to-azure-sentinel"></a>Az Office 365-naplók összekapcsolhatók az Azure Sentinel-vel
+# <a name="connect-office-365-logs-to-azure-sentinel"></a>Office 365-naplók Azure Sentinelhez csatlakoztatása
 
 Az [Office 365](/office/) log Connector Azure Sentinel-információkat biztosít az **Exchange** -ben és a **SharePointban** (beleértve a **OneDrive**-t is) és most a **Teams** szolgáltatásban zajló folyamatos felhasználói és rendszergazdai tevékenységekről. Ezek az információk többek között olyan műveletek részleteit foglalják magukban, mint a fájlok letöltése, a hozzáférési kérelmek, az események csoportosításának módosításai, a postaláda-műveletek, a csapat eseményei (például csevegés, csapat, tag és csatorna eseményei), valamint a műveleteket végrehajtó felhasználó adatai. Ha az Office 365-naplókat az Azure Sentinelhez csatlakoztatja, lehetővé teszi az adatok megtekintését és elemzését a munkafüzetekben, lekérdezheti az egyéni riasztásokat, és beépítheti azt a vizsgálati folyamat javítására, így jobban betekintést nyerhet az Office 365-biztonságba.
-
-> [!IMPORTANT]
-> Az Office 365 log Connector **Microsoft Teams-naplókhoz készült bővítménye** jelenleg nyilvános előzetes verzióban érhető el.
-> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 

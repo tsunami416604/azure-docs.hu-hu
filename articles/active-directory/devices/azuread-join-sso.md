@@ -11,22 +11,22 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba802cb86d68298cd4dfff94162069590744833c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da22a4e5e9ab13ec18347e58bea6cfc5f45333de
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91256462"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630700"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>A helyszíni erőforrásokra történő egyszeri bejelentkezés működése Azure AD-be léptetett eszközökön
 
-Valószínűleg nem meglepő, hogy egy Azure Active Directory (Azure AD) csatlakoztatott eszköz egyszeri bejelentkezéses (SSO) élményt biztosít a bérlő felhőalapú alkalmazásai számára. Ha a környezet helyszíni Active Directory (AD), kiterjesztheti ezen eszközök egyszeri bejelentkezéses felületét olyan erőforrásokra és alkalmazásokra, amelyek helyszíni AD-t is használnak. 
+Valószínűleg nem meglepő, hogy egy Azure Active Directory (Azure AD) csatlakoztatott eszköz egyszeri bejelentkezéses (SSO) élményt biztosít a bérlő felhőalapú alkalmazásai számára. Ha a környezet helyszíni Active Directory (AD) szolgáltatással rendelkezik, az Azure AD-hez csatlakoztatott eszközökön is bejelentkezhet az egyszeri bejelentkezésre a helyszíni AD-t használó erőforrásokhoz és alkalmazásokhoz. 
 
 Ez a cikk a működésének módját ismerteti.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
- Ha az Azure AD-hez csatlakoztatott gépek nincsenek csatlakoztatva a szervezet hálózatához, VPN-vagy egyéb hálózati infrastruktúrára van szükség. A helyszíni egyszeri bejelentkezéshez a helyszíni AD DS tartományvezérlőkkel való helyszíni kommunikáció szükséges.
+A helyszíni egyszeri bejelentkezéshez a helyszíni AD DS tartományvezérlőkkel való helyszíni kommunikáció szükséges. Ha az Azure AD-hez csatlakoztatott eszközök nem csatlakoznak a szervezet hálózatához, VPN-vagy egyéb hálózati infrastruktúrára van szükség. 
 
 ## <a name="how-it-works"></a>Működés 
 
@@ -34,10 +34,13 @@ Az Azure AD-hez csatlakoztatott eszközzel a felhasználók már rendelkeznek eg
 
 Az Azure AD-hez csatlakoztatott eszközök nem rendelkeznek a helyszíni AD-környezettel kapcsolatos ismeretekkel, mivel azok nem csatlakoznak hozzá. A helyszíni AD-vel kapcsolatos további információkat azonban Azure AD Connect használatával is megadhat.
 
-Az Azure AD-t és a helyszíni AD-t egyaránt tartalmazó környezetek is ismertek hibrid környezettel. Ha hibrid környezettel rendelkezik, valószínű, hogy már rendelkezik Azure AD Connect központilag, hogy szinkronizálja a helyszíni identitás adatait a felhőbe. A szinkronizálási folyamat részeként Azure AD Connect szinkronizálja a helyszíni felhasználói adatokat az Azure AD-vel. Amikor egy felhasználó egy hibrid környezetben jelentkezik be egy Azure AD-hez csatlakoztatott eszközre:
+Ha hibrid környezettel rendelkezik, és az Azure AD-t és a helyszíni AD-t is, akkor valószínű, hogy már rendelkezik Azure AD Connect központilag, hogy szinkronizálja a helyszíni identitás adatait a felhőbe. A szinkronizálási folyamat részeként Azure AD Connect szinkronizálja a helyszíni felhasználói és tartományi információkat az Azure AD-be. Amikor egy felhasználó egy hibrid környezetben jelentkezik be egy Azure AD-hez csatlakoztatott eszközre:
 
 1. Az Azure AD a felhasználó helyszíni tartományának adatait visszaküldi az eszközre az [elsődleges frissítési jogkivonattal](concept-primary-refresh-token.md) együtt.
 1. A helyi biztonsági szervezet (LSA) szolgáltatás lehetővé teszi a Kerberos és az NTLM hitelesítés használatát az eszközön.
+
+>[!NOTE]
+> A vállalati Windows Hello használatához további konfiguráció szükséges, amely lehetővé teszi a helyszíni egyszeri bejelentkezést egy Azure AD-hez csatlakoztatott eszközről. További információ: az [Azure ad-hez csatlakoztatott eszközök konfigurálása helyszíni Single-Signhoz a Windows Hello for Business használatával](/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base). 
 
 A Kerberost vagy NTLM-t kérő erőforráshoz való hozzáférési kísérlet során a felhasználó helyszíni környezetében az eszköz:
 
@@ -45,8 +48,6 @@ A Kerberost vagy NTLM-t kérő erőforráshoz való hozzáférési kísérlet so
 1. Kerberos [-jegy (TGT)](/windows/desktop/secauthn/ticket-granting-tickets) vagy NTLM-token fogadása a helyszíni erőforrás vagy alkalmazás által támogatott protokoll alapján. Ha a tartomány Kerberos-TGT vagy NTLM-jogkivonatának beolvasására tett kísérlet meghiúsul (a kapcsolódó DCLocator időtúllépése késleltetést okozhat), a Hitelesítőadat-kezelő bejegyzéseinek megkeresése vagy a felhasználó kaphat egy hitelesítési felugró ablakot, amely a cél erőforráshoz tartozó hitelesítő adatokat kér le.
 
 Minden, a **Windows rendszerhez integrált hitelesítéshez** konfigurált alkalmazás ZÖKKENŐMENTESEN egyszeri bejelentkezést kap, amikor egy felhasználó megpróbál hozzáférni azokhoz.
-
-A vállalati Windows Hello használatához további konfiguráció szükséges, amely lehetővé teszi a helyszíni egyszeri bejelentkezést egy Azure AD-hez csatlakoztatott eszközről. További információ: az [Azure ad-hez csatlakoztatott eszközök konfigurálása helyszíni Single-Signhoz a Windows Hello for Business használatával](/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base). 
 
 ## <a name="what-you-get"></a>Amihez jut
 

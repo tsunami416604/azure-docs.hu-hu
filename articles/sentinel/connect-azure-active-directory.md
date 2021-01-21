@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/20/2021
 ms.author: yelevin
-ms.openlocfilehash: 9700e5d9179f7c1e33b2371eea89be9bb1c8d08f
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: e84484990725b0c39b132aead51e9b01dbb7e7ef
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621362"
+ms.locfileid: "98632291"
 ---
 # <a name="connect-data-from-azure-active-directory-azure-ad"></a>Adatok összekötése Azure Active Directoryról (Azure AD)
 
@@ -28,7 +28,7 @@ Az Azure Sentinel beépített összekötője segítségével adatokat gyűjthet 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A bejelentkezési naplók Azure Sentinelbe való betöltéséhez [prémium szintű Azure ad P2](https://azure.microsoft.com/pricing/details/active-directory/) -előfizetéssel kell rendelkeznie. A Azure Monitor (Log Analytics) és az Azure Sentinel további GB-os díjat is igényelhet.
+- Minden Azure AD-licenc (ingyenes/O365/P1/P2) elegendő a bejelentkezési naplók Azure Sentinelbe való betöltéséhez. A Azure Monitor (Log Analytics) és az Azure Sentinel további GB-os díjat is igényelhet.
 
 - A felhasználónak hozzá kell rendelnie az Azure Sentinel közreműködő szerepkört a munkaterületen.
 
@@ -42,11 +42,27 @@ Az Azure Sentinel beépített összekötője segítségével adatokat gyűjthet 
 
 1. Az adatösszekötők katalógusában válassza a **Azure Active Directory** lehetőséget, majd válassza az **összekötő lap megnyitása** lehetőséget.
 
-1. Jelölje be az Azure Sentinelbe továbbítani kívánt naplók melletti jelölőnégyzeteket, majd kattintson a **Kapcsolódás** gombra.
+1. Jelölje be azon naplók melletti jelölőnégyzeteket, amelyeket az Azure Sentinelbe szeretne továbbítani, majd kattintson a **Kapcsolódás** elemre. A következő típusú naplók közül választhat:
 
-1. Kiválaszthatja, hogy az Azure AD-riasztások automatikusan előállítanak-e incidenseket az Azure Sentinel szolgáltatásban. Az **incidensek létrehozása** területen válassza az **Engedélyezés** lehetőséget az alapértelmezett elemzési szabály engedélyezéséhez, amely automatikusan létrehozza az incidenseket a csatlakoztatott biztonsági szolgáltatásban létrehozott riasztásokból. Ezt a szabályt az **elemzés** , majd az **aktív szabályok** területen módosíthatja.
+    - Bejelentkezési naplók
+    - Naplók
+    - Nem interaktív felhasználói bejelentkezési naplók
+    - Egyszerű szolgáltatás bejelentkezési naplói
+    - Felügyelt identitású bejelentkezési naplók
+    - Üzembehelyezési naplók
 
-1. Ha az Azure AD-riasztások lekérdezéséhez a Log Analytics vonatkozó sémát szeretné használni, írja be `SigninLogs` a vagy értéket `AuditLogs` a lekérdezési ablakba.
+## <a name="find-your-data"></a>Az adatai megkeresése
+
+A sikeres kapcsolatok létrejötte után az adat a **naplók** területen, a **LogManagement** szakaszban jelenik meg, az alábbi táblázatokban:
+
+- `SigninLogs`
+- `AuditLogs`
+- `AADNonInteractiveUserSignInLogs`
+- `AADServicePrincipalSignInLogs`
+- `AADManagedIdentitySignInLogs`
+- `AADProvisioningLogs`
+
+Az Azure AD-naplók lekérdezéséhez írja be a megfelelő táblanév nevet a lekérdezési ablak tetején.
 
 ## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtanulta, hogyan csatlakozhat Azure Active Directory az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:

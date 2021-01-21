@@ -5,17 +5,18 @@ description: Ismerje meg a Azure Machine Learning erőforrásaira vonatkozó kv�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-author: nishankgu
-ms.author: nigup
+ms.reviewer: jmartens
+author: SimranArora904
+ms.author: siarora
 ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: 3f08f401f24d95431bcd3bba48976641cebb28e9
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 78cc0aa6beb9ab83fea2039b271b071de1662fc1
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072207"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629180"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Erőforrások kvótáinak kezelése és növelése Azure Machine Learning
 
@@ -47,7 +48,7 @@ Ebben a szakaszban az alábbi erőforrásokra vonatkozó alapértelmezett és ma
 + Eszközök Azure Machine Learning
   + Azure Machine Learning számítás
   + Azure Machine Learning folyamatok
-+ Virtuális gépek
++ Virtual machines (Virtuális gépek)
 + Azure Container Instances
 + Azure Storage
 
@@ -110,7 +111,7 @@ A következő táblázat a platform további korlátozásait mutatja be. Ha kiv�
 | A folyamat lépései | 30 000 |
 | Munkaterületek erőforráscsoport szerint | 800 |
 
-### <a name="virtual-machines"></a>Virtuális gépek
+### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
 Minden Azure-előfizetés korlátozza a virtuális gépek számát az összes szolgáltatáson belül. A virtuálisgép-magok méretének regionális korlátja és a regionális korlátok száma. Mindkét korlátot külön kényszeríti a rendszer.
 
 Például tegyük fel, hogy egy előfizetés az USA keleti régiójára vonatkozó teljes magkorlátja 30, az A sorozatú magkorlátja 30, és a D sorozatú magkorlátja is 30. Ez az előfizetés 30 a1-es virtuális gép vagy 30 D1 virtuális gép üzembe helyezését, illetve a kettő olyan kombinációját teszi lehetővé, amely nem haladja meg az összesen 30 magot.
@@ -123,7 +124,7 @@ A virtuális gépekre vonatkozó korlátok az alábbi táblázatban látható é
 
 További információ: [Container instances korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md#container-instances-limits).
 
-### <a name="storage"></a>Tárolás
+### <a name="storage"></a>Storage
 Az Azure Storage-ban legfeljebb 250 Storage-fiók lehet, előfizetése pedig régiónként. Ez a korlát a standard és a Premium Storage-fiókokat is tartalmazza.
 
 A korlát növeléséhez kérjen egy kérést az [Azure-támogatáson](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/)keresztül. Az Azure Storage csapata áttekinti az esetet, és legfeljebb 250 Storage-fiókot tud jóváhagyni egy adott régióban.

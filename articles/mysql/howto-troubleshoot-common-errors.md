@@ -7,16 +7,28 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: 986bc5ef24855ac0014975edc0a26a11a82ec6ca
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ca75416a66bcf2c90028c7f1dc11fbe23a9a9bd9
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510962"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631367"
 ---
 # <a name="common-errors"></a>Gyakori hibák
 
 A Azure Database for MySQL egy teljes körűen felügyelt szolgáltatás, amelyet a MySQL közösségi verziója működtet. A felügyelt szolgáltatási környezetekben a MySQL-élmény eltérhet a saját környezetében futó MySQL-től. Ebből a cikkből megtudhatja, hogy a felhasználók milyen gyakori hibákba ütköznek a Azure Database for MySQL szolgáltatásba való Migrálás vagy fejlesztés során.
+
+## <a name="common-connection-errors"></a>Gyakori csatlakoztatási hibák
+
+#### <a name="error-1184-08s01-aborted-connection-22-to-db-db-name-user-user-host-hostip-init_connect-command-failed"></a>HIBA 1184 (08S01): megszakított kapcsolódás 22-adatbázishoz: "db-Name" felhasználó: "user" host: "hostIP" (init_connect parancs sikertelen)
+A fenti hiba a sikeres bejelentkezés után következik be, de a munkamenet létrehozásakor minden parancs végrehajtása előtt. A fenti üzenet azt jelzi, hogy helytelen értéket adott meg init_connect Server paraméter értéke, ami miatt a munkamenet inicializálása sikertelen lesz.
+
+Vannak olyan kiszolgálói paraméterek, mint a require_secure_transport, amelyek a munkamenet szintjén nem támogatottak, ezért a paraméterek értékének módosítását a init_connect használatával a 1184-as hiba okozhatja a MySQL-kiszolgálóhoz való csatlakozáskor az alábbi ábrán látható módon.
+
+MySQL> adatbázisok megjelenítése; HIBA 2006 (HY000): a MySQL-kiszolgáló nem lépett fel a kapcsolatok között. Kísérlet az újracsatlakozásra... Kapcsolódási azonosító: 64897 aktuális adatbázis: * * * nincs * * _ hiba 1184 (08S01): a megszakított kapcsolódás a 22-es adatbázishoz: "db-Name" felhasználó: "user" host: "hostIP" (init_connect parancs sikertelen)
+
+_ *Megoldás**: alaphelyzetbe kell állítania init_connect értéket a Azure Portal kiszolgálói paraméterek lapján, és csak a támogatott kiszolgálói paramétereket kell beállítania a init_connect paraméter használatával. 
+
 
 ## <a name="errors-due-to-lack-of-super-privilege-and-dba-role"></a>A SUPER Privilege és a DBA szerepkör hiánya miatti hibák
 
@@ -92,7 +104,7 @@ A fenti hiba a következő esetekben fordul elő:
   ```
 * Ha a fenti lekérdezés végrehajtásához nem tud bejelentkezni a MySQL-be, javasoljuk, hogy [Azure Portal használatával állítsa alaphelyzetbe a rendszergazdai jelszót](howto-create-manage-server-portal.md). A jelszó alaphelyzetbe állítása lehetőség a Azure Portal segítségével újból létrehozhatja a felhasználót, alaphelyzetbe állíthatja a jelszót, és visszaállíthatja a rendszergazdai engedélyeket, ami lehetővé teszi a kiszolgáló-rendszergazda használatával történő bejelentkezést és további műveletek elvégzését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha nem találta meg a keresett választ, vegye figyelembe a következőket:
 
 - Tegye fel kérdéseit a [Microsoft Q&a kérdéses oldalra](/answers/topics/azure-database-mysql.html) vagy [stack Overflowra](https://stackoverflow.com/questions/tagged/azure-database-mysql).

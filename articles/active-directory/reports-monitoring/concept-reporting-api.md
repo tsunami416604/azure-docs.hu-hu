@@ -13,16 +13,16 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 01/21/2021
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af448d5d28c5add39176500b988824b17f85b9fb
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 2027f713baf2b8039187e933ffc7bb0b68b5cc5f
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861969"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631961"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Ismerkedés a Azure Active Directory Reporting API-val
 
@@ -49,8 +49,10 @@ Részletes útmutatást a [Azure Active Directory jelentési API elérésének e
 
 A naplók Microsoft Graph API-végpontja, `https://graph.microsoft.com/v1.0/auditLogs/directoryAudits` valamint a bejelentkezések Microsoft Graph API-végpontja `https://graph.microsoft.com/v1.0/auditLogs/signIns` . További információkért tekintse meg a [naplózási API-referenciát](/graph/api/resources/directoryaudit) és a [bejelentkezési API-referenciát](/graph/api/resources/signIn).
 
-Emellett az [Identity Protection kockázati észlelések API](/graph/api/resources/identityriskevent?view=graph-rest-beta) -val programozási hozzáférést nyerhet a biztonsági észlelésekhez Microsoft Graph használatával. További információ: Ismerkedés [a Azure Active Directory Identity Protection és Microsoft Graphával](../identity-protection/howto-identity-protection-graph-api.md). 
+Az [Identity Protection kockázati észlelések API](/graph/api/resources/identityriskevent?view=graph-rest-beta) -val programozási hozzáférést nyerhet a biztonsági észlelésekhez Microsoft Graph használatával. További információ: Ismerkedés [a Azure Active Directory Identity Protection és Microsoft Graphával](../identity-protection/howto-identity-protection-graph-api.md). 
   
+A [kiépítési naplók API](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) -val programozási hozzáférést is kaphat a bérlőben lévő események kiépítési eseményeihez. 
+
 ## <a name="apis-with-microsoft-graph-explorer"></a>API-k Microsoft Graph Explorerrel
 
 A bejelentkezési és a naplózási API-adatai a [Microsoft Graph Explorerrel](https://developer.microsoft.com/graph/graph-explorer) ellenőrizhetők. Ügyeljen arra, hogy jelentkezzen be a fiókjába a Graph Explorer felhasználói felületének mindkét bejelentkezési gombján, és állítsa be a **AuditLog. Read. All** és a **Directory. Read. All** engedélyeket a bérlőhöz az ábrán látható módon.   

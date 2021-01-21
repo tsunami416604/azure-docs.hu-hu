@@ -4,12 +4,12 @@ description: A Azure Service Bus kézbesítetlen levelek várólistáinak leír�
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: 4dbd1216d3ff81e785f16ebed6ceabfa5d5897db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad62f946584071e7ce6fd55f48b5f7ee8db44a2f
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91301023"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630098"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>A kézbesítetlen levelek várólistájának Service Bus áttekintése
 
@@ -30,7 +30,7 @@ A kézbesítetlen levelek várólistáján lévő üzenetek száma nem lehetség
 
 ![DLQ üzenetek száma](./media/service-bus-dead-letter-queues/dead-letter-queue-message-count.png)
 
-A DLQ-üzenetek számát az Azure CLI parancs használatával is lekérheti: [`az servicebus topic subscription show`](/cli/azure/servicebus/topic/subscription?view=azure-cli-latest#az-servicebus-topic-subscription-show) . 
+A DLQ-üzenetek számát az Azure CLI parancs használatával is lekérheti: [`az servicebus topic subscription show`](/cli/azure/servicebus/topic/subscription#az-servicebus-topic-subscription-show) . 
 
 ## <a name="moving-messages-to-the-dlq"></a>Üzenetek áthelyezése a DLQ
 
@@ -80,7 +80,7 @@ A kézbesítetlen üzenetek lekéréséhez létrehozhat egy fogadót a [FormatTr
 
 ## <a name="example"></a>Példa
 
-A következő kódrészlet létrehoz egy üzenetet fogadót. A fő üzenetsor fogadási ciklusában a kód lekéri az üzenetet a [Receive (TimeSpan. Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver)üzenettel, amely arra kéri a közvetítőt, hogy azonnal visszaadja az összes azonnal elérhető üzenetet, vagy ha eredmény nélkül szeretne visszatérni. Ha a kód üzenetet kap, azonnal elhagyja azt, ami növeli a következőt:  `DeliveryCount` . Ha a rendszer áthelyezi az üzenetet a DLQ, a fő várólista üres, és a hurok kilép, mivel [ReceiveAsync](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) a ReceiveAsync **Null**értéket ad vissza.
+A következő kódrészlet létrehoz egy üzenetet fogadót. A fő üzenetsor fogadási ciklusában a kód lekéri az üzenetet a [Receive (TimeSpan. Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver)üzenettel, amely arra kéri a közvetítőt, hogy azonnal visszaadja az összes azonnal elérhető üzenetet, vagy ha eredmény nélkül szeretne visszatérni. Ha a kód üzenetet kap, azonnal elhagyja azt, ami növeli a következőt:  `DeliveryCount` . Ha a rendszer áthelyezi az üzenetet a DLQ, a fő várólista üres, és a hurok kilép, mivel [](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) a ReceiveAsync **Null** értéket ad vissza.
 
 ```csharp
 var receiver = await receiverFactory.CreateMessageReceiverAsync(queueName, ReceiveMode.PeekLock);

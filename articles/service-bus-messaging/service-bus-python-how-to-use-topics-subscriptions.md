@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 11/18/2020
 ms.author: spelluru
 ms.custom: devx-track-python
-ms.openlocfilehash: 43f633e427e20cfb0b044bd42b77f866e4cc0c61
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 4eba3ea055e78888d482927fa6eed5c7d41fa0ba
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489411"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630047"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-python"></a>Üzenetek küldése egy Azure Service Bus témakörnek, és üzenetek fogadása az előfizetésből a témakörbe (Python)
 Ez a cikk bemutatja, hogyan lehet a Python használatával üzeneteket küldeni egy Service Bus témakörből, és üzeneteket fogadni egy előfizetésből a témakörbe. 
@@ -210,11 +210,11 @@ Ha kiírja a fogadási kódot, az aktív üzenetek száma 16.
 
 :::image type="content" source="./media/service-bus-python-how-to-use-topics-subscriptions/active-message-count-2.png" alt-text="Aktív üzenetek száma – nincs fogadás":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a következő dokumentációt és mintákat: 
 
 - [Azure Service Bus a Pythonhoz készült ügyféloldali kódtár](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus)
 - [Minták](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus/samples). 
     - A **sync_samples** mappa olyan mintákat tartalmaz, amelyek bemutatják, hogyan kezelhető a Service Bus szinkron módon. Ebben a rövid útmutatóban ezt a módszert használta. 
     - A **async_samples** mappa olyan mintákat tartalmaz, amelyek bemutatják, hogyan lehet aszinkron módon kommunikálni a Service Busokkal. 
-- [Az Azure-servicebus dokumentációja](/python/api/azure-servicebus/azure.servicebus?preserve-view=true&view=azure-python-preview)
+- [Az Azure-servicebus dokumentációja](/python/api/azure-servicebus/azure.servicebus?preserve-view=true)
