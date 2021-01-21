@@ -13,18 +13,16 @@ ms.workload: infrastructure
 ms.date: 11/20/2020
 ms.author: genli
 ms.custom: has-adal-ref
-ms.openlocfilehash: 00095eed3fe6d143d9ed7a0c748c4702028f4632
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 87bf311b5199ec187c24c28a42314d9dc6787998
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832060"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633027"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>BitLocker rendszerindítási hibák egy Azure-beli virtuális gépen
 
  Ez a cikk azokat a BitLocker-hibákat ismerteti, amelyek akkor jelentkezhetnek, ha a Windows rendszerű virtuális gépet (VM) elindítja Microsoft Azureban.
-
- 
 
 ## <a name="symptom"></a>Hibajelenség
 
@@ -42,6 +40,9 @@ ms.locfileid: "97832060"
 Ez a probléma akkor fordulhat elő, ha a virtuális gép nem találta meg a BitLocker helyreállítási kulcs (BEK) fájlját a titkosított lemez visszafejtéséhez.
 
 ## <a name="solution"></a>Megoldás
+
+> [!TIP]
+> Ha a virtuális gép nemrég készült biztonsági másolattal rendelkezik, a rendszerindítási probléma megoldásához próbálja meg [visszaállítani a virtuális gépet a biztonsági mentésből](../../backup/backup-azure-arm-restore-vms.md) .
 
 A probléma megoldásához állítsa le és szabadítsa fel a virtuális gépet, majd indítsa el. Ez a művelet arra kényszeríti a virtuális gépet, hogy lekérje a BEK-fájlt a Azure Key Vaultból, majd helyezze a titkosított lemezre. 
 

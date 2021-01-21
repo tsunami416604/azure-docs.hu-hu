@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 55dcd65e901a5ce8665ef8d3a2a29d7943581df9
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 145d58013b259bf14c26d0840b8cd4299cfe85f0
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200719"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632622"
 ---
 # <a name="vm-is-unresponsive-with-c01a001d-error-when-applying-windows-update"></a>A virtuális gép nem válaszol "C01A001D" hibaüzenettel Windows Update alkalmazása során
 
@@ -38,6 +38,9 @@ Nem hozható létre alapvető fájl a fájlrendszerben. Az operációs rendszer 
 ## <a name="resolution"></a>Feloldás
 
 ### <a name="process-overview"></a>Folyamat áttekintése
+
+> [!TIP]
+> Ha a virtuális gép nemrég készült biztonsági másolattal rendelkezik, a rendszerindítási probléma megoldásához próbálja meg [visszaállítani a virtuális gépet a biztonsági mentésből](../../backup/backup-azure-arm-restore-vms.md) .
 
 1. [Hozzon létre és nyissa meg a javítási virtuális gépet](#create-and-access-a-repair-vm).
 2. [Szabadítson fel lemezterületet a merevlemezen](#free-up-space-on-the-hard-disk).

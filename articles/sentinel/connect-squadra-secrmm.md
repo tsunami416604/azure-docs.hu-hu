@@ -10,24 +10,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/20/2020
+ms.date: 01/20/2021
 ms.author: yelevin
-ms.openlocfilehash: d904e51321870fb4b61a237c23e425034b76dc0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a00b4b1e81c0d644cf1475aa46dda3848fda1365
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77588110"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632901"
 ---
 # <a name="connect-your-squadra-technologies-secrmm-data-to-azure-sentinel"></a>A Squadra Technologies integrálása-adatai összekapcsolhatók az Azure Sentinel szolgáltatással 
 
-> [!IMPORTANT]
-> A Squadra Technologies Security cserélhető adathordozó-kezelő (integrálása) adatösszekötő az Azure Sentinel szolgáltatásban jelenleg nyilvános előzetes verzióban érhető el.
-> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-
 A Squadra Technologies integrálása-összekötővel könnyedén csatlakoztathatja Squadra-technológiáit integrálása biztonsági megoldási naplóit az Azure Sentinel használatával. Lehetővé teszi az irányítópultok megtekintését, az egyéni riasztások létrehozását és a vizsgálat tökéletesítését. Ez az összekötő az USB cserélhető tároló eseményeinek betekintését teszi lehetővé. A Squadra Technologies integrálása és az Azure Sentinel közötti integráció a REST API használatát teszi lehetővé.
-
 
 > [!NOTE]
 > Az Azure Sentinel-t futtató munkaterület földrajzi helye tárolja az adatmennyiséget.
@@ -39,19 +33,20 @@ A Squadra Technologies integrálása közvetlenül az Azure Sentinelbe integrál
 
 2. Kövesse az [Azure Sentinel Squadra Technologies](http://www.squadratechnologies.com/StaticContent/ProductDownload/secRMM/9.9.0.0/secRMMAzureSentinelAdministratorGuide.pdf) bevezetési útmutatójában ismertetett lépéseket, hogy Squadra integrálása-adatbázisokat kapjon az Azure sentinelben.   
 
-
 ## <a name="find-your-data"></a>Az adatai megkeresése
 
-A sikeres kapcsolatok létrejötte után az adat a Log Analytics CustomLogs secRMM_CL alatt jelenik meg.
-Ha a Squadra Technologies integrálása vonatkozó sémát szeretné használni a Log Analyticsban, keressen rá a secRMM_CL kifejezésre.
+A sikeres kapcsolatok létrejötte után az adat megjelenik a **naplókban** a **CustomLogs** szakaszban, a `secRMM_CL` táblázatban.
+
+A Squadra Technologies integrálása-naplók lekérdezéséhez írja be a tábla nevét a lekérdezési ablak elejére.
 
 ## <a name="validate-connectivity"></a>Kapcsolat ellenőrzése
+
 Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek a Log Analytics. 
 
+## <a name="next-steps"></a>Következő lépések
 
-## <a name="next-steps"></a>További lépések
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztathatók a Squadra Technologies integrálása az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).
 - Az adatait a [munkafüzetek használatával](tutorial-monitor-your-data.md) figyelheti.
-

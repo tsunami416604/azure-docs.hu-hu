@@ -3,12 +3,12 @@ title: Azure Event Grid rendszertémakörök létrehozása, megtekintése és ke
 description: Ez a cikk bemutatja, hogyan hozhat létre, tekinthet meg és törölhet rendszertémaköröket az Azure CLI használatával.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 354afb89b145e288f525e40ad700e8f8a67c6dad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1c847c7f25e3a656b798e186a408e560b9ee9e6
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86115043"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633222"
 ---
 # <a name="create-view-and-manage-event-grid-system-topics-using-azure-cli"></a>Event Grid rendszertémakörök létrehozása, megtekintése és kezelése az Azure CLI használatával
 Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet rendszertémaköröket az Azure CLI használatával. A rendszertémakörök áttekintését itt találja: [rendszertémakörök](system-topics.md).
@@ -30,7 +30,7 @@ Helyi telepítés esetén:
 ## <a name="create-a-system-topic"></a>Rendszerbeli témakör létrehozása
 
 - Először hozzon létre egy rendszertémakört egy Azure-forráson, majd hozzon létre egy esemény-előfizetést az adott témakörhöz a következő témakörökben talál:
-    - [az eventgrid System-topic Create](/cli/azure/ext/eventgrid/eventgrid/system-topic?view=azure-cli-latest#ext-eventgrid-az-eventgrid-system-topic-create)
+    - [az eventgrid System-topic Create](/cli/azure/ext/eventgrid/eventgrid/system-topic#ext-eventgrid-az-eventgrid-system-topic-create)
 
         ```azurecli-interactive
         # Get the ID of the Azure source (for example: Azure Storage account)
@@ -53,14 +53,14 @@ Helyi telepítés esetén:
         ```azurecli-interactive
         az eventgrid topic-type  list --output json | grep -w id
         ```
-    - [az eventgrid System-topic Event-előfizetés Create](/cli/azure/ext/eventgrid/eventgrid/system-topic/event-subscription?view=azure-cli-latest#ext-eventgrid-az-eventgrid-system-topic-event-subscription-create)
+    - [az eventgrid System-topic Event-előfizetés Create](/cli/azure/ext/eventgrid/eventgrid/system-topic/event-subscription#ext-eventgrid-az-eventgrid-system-topic-event-subscription-create)
 
         ```azurecli-interactive
         az eventgrid system-topic event-subscription create --name <SPECIFY EVENT SUBSCRIPTION NAME> \
             -g rg1 --system-topic-name <SYSTEM TOPIC NAME> \
             --endpoint <ENDPOINT URL>         
         ```
-- Ha egy Azure-forrásra vonatkozó esemény-előfizetés létrehozásakor szeretne létrehozni egy rendszertémakört (implicit módon), használja az az [eventgrid Event-előfizetés Create](/cli/azure/ext/eventgrid/eventgrid/event-subscription?view=azure-cli-latest#ext-eventgrid-az-eventgrid-event-subscription-create) metódust. Bemutatunk egy példát:
+- Ha egy Azure-forrásra vonatkozó esemény-előfizetés létrehozásakor szeretne létrehozni egy rendszertémakört (implicit módon), használja az az [eventgrid Event-előfizetés Create](/cli/azure/ext/eventgrid/eventgrid/event-subscription#ext-eventgrid-az-eventgrid-event-subscription-create) metódust. Bemutatunk egy példát:
     
     ```azurecli-interactive
     storageid=$(az storage account show --name <AZURE STORAGE ACCOUNT NAME> --resource-group <AZURE RESOURCE GROUP NAME> --query id --output tsv)
@@ -76,12 +76,12 @@ Helyi telepítés esetén:
 ## <a name="view-all-system-topics"></a>Az összes rendszertémakör megtekintése
 A következő parancsokkal megtekintheti az összes rendszertémakört és a kiválasztott rendszer részleteit:
 
-- [az eventgrid System-topic List](/cli/azure/ext/eventgrid/eventgrid/system-topic?view=azure-cli-latest#ext-eventgrid-az-eventgrid-system-topic-list)
+- [az eventgrid System-topic List](/cli/azure/ext/eventgrid/eventgrid/system-topic#ext-eventgrid-az-eventgrid-system-topic-list)
 
     ```azurecli-interactive
     az eventgrid system-topic list   
      ```
-- [az eventgrid System-topic show](/cli/azure/ext/eventgrid/eventgrid/system-topic?view=azure-cli-latest#ext-eventgrid-az-eventgrid-system-topic-show)
+- [az eventgrid System-topic show](/cli/azure/ext/eventgrid/eventgrid/system-topic#ext-eventgrid-az-eventgrid-system-topic-show)
 
     ```azurecli-interactive
     az eventgrid system-topic show -g <AZURE RESOURCE GROUP NAME> -n <SYSTEM TOPIC NAME>     
@@ -90,11 +90,11 @@ A következő parancsokkal megtekintheti az összes rendszertémakört és a kiv
 ## <a name="delete-a-system-topic"></a>Rendszer-témakör törlése
 Egy rendszertémakör törléséhez használja a következő parancsot: 
 
-- [az eventgrid System-topic delete](/cli/azure/ext/eventgrid/eventgrid/system-topic?view=azure-cli-latest#ext-eventgrid-az-eventgrid-system-topic-delete)
+- [az eventgrid System-topic delete](/cli/azure/ext/eventgrid/eventgrid/system-topic#ext-eventgrid-az-eventgrid-system-topic-delete)
 
     ```azurecli-interactive
     az eventgrid system-topic delete -g <AZURE RESOURCE GROUP NAME> --name <SYSTEM TOPIC NAME>   
      ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Event Grid által támogatott rendszertémakörökkel és a témakörökkel kapcsolatos további tudnivalókért tekintse meg [Azure Event Grid szakasz rendszertémaköreit](system-topics.md) . 

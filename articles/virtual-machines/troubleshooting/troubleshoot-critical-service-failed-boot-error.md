@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: 8c3e76f1a7edffefc8773dfa548773ec0932fae6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a937528e3bfd8bea16912d614133988763748bab
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86129851"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632959"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>A Windows egy Azure-beli virtuális gép indításakor a "kritikus szolgáltatás sikertelen" állapotot jeleníti meg a kék képernyőn
 Ez a cikk a "kritikus szolgáltatás nem sikerült" hibát mutatja be, amely akkor fordulhat elő, amikor Windows rendszerű virtuális gépet (VM) indít el Microsoft Azure. Hibaelhárítási lépéseket biztosít a problémák megoldásához. 
@@ -38,6 +38,9 @@ A leállítási hibák számos oka lehet. A leggyakoribb okok a következők:
 - Az alkalmazás a memória tiltott szektorához fér hozzá
 
 ## <a name="solution"></a>Megoldás 
+
+> [!TIP]
+> Ha a virtuális gép nemrég készült biztonsági másolattal rendelkezik, a rendszerindítási probléma megoldásához próbálja meg [visszaállítani a virtuális gépet a biztonsági mentésből](../../backup/backup-azure-arm-restore-vms.md) .
 
 A probléma megoldásához [forduljon az ügyfélszolgálathoz, és küldjön el egy memóriaképfájl-fájlt](./troubleshoot-common-blue-screen-error.md#collect-memory-dump-file), amely segít a probléma gyorsabb diagnosztizálásában, vagy próbálja ki a következő önsegítő megoldást.
 
@@ -96,7 +99,7 @@ A memóriaképek és a soros konzol engedélyezéséhez futtassa az alábbi szkr
 
 2. [Válassza le az operációsrendszer-lemezt, majd csatlakoztassa újra az operációsrendszer-lemezt az érintett virtuális géphez](troubleshoot-recovery-disks-portal-windows.md). A virtuális gép biztonságos módba fog indulni. Ha továbbra is tapasztalja a hibát, lépjen a választható lépésre.
 3. Nyissa meg a **Futtatás** mezőt, és futtassa a vezérlőt **az illesztőprogram-ellenőrző** kezelő eszköz elindításához.
-4. Jelölje be az **aláíratlan illesztőprogramok automatikus kiválasztása**jelölőnégyzetet, majd kattintson a **tovább**gombra.
+4. Jelölje be az **aláíratlan illesztőprogramok automatikus kiválasztása** jelölőnégyzetet, majd kattintson a **tovább** gombra.
 5. Ekkor megjelenik az Aláíratlan illesztőprogram-fájlok listája. Jegyezze fel a fájlneveket.
 6. Másolja a fájlok ugyanazon verzióját egy működő virtuális gépről, majd cserélje le ezeket a nem aláírt fájlokat. 
 
@@ -115,15 +118,15 @@ A memóriakép-naplók elemzéséhez kövesse az alábbi lépéseket:
 1. Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális géphez.
 2. A csatlakoztatott operációsrendszer-lemezen keresse meg a **\Windows\System32\Config**. Másolja az összes fájlt biztonsági másolatként arra az esetre, ha visszaállításra van szükség.
 3. Indítsa el a **Beállításszerkesztőt** (regedit.exe).
-4. Válassza ki a **HKEY_LOCAL_MACHINE** kulcsot. A menüben válassza a **fájl**  >  **Load struktúra**elemet.
+4. Válassza ki a **HKEY_LOCAL_MACHINE** kulcsot. A menüben válassza a **fájl**  >  **Load struktúra** elemet.
 5. Keresse meg a **\windows\system32\config\SYSTEM** mappát a csatlakoztatott operációsrendszer-lemezen. A struktúra neveként írja be a következőt: **BROKENSYSTEM**. Az új beállításjegyzék-struktúra a **HKEY_LOCAL_MACHINE** kulcs alatt jelenik meg.
 6. Tallózással keresse meg a **HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Control\CrashControl** , és végezze el a következő módosításokat:
 
     Autoújraindítás = 0
 
     CrashDumpEnabled = 2
-7.  Válassza a **BROKENSYSTEM**lehetőséget. A menüből válassza ki a **fájl**  >  **kitöltése struktúrát**.
-8.  Módosítsa a BCD-telepítőt hibakeresési módba való indításra. Futtassa a következő parancsokat egy rendszergazda jogú parancssorból:
+7.  Válassza a **BROKENSYSTEM** lehetőséget. A menüből válassza ki a **fájl**  >  **kitöltése struktúrát**.
+8.  Módosítsa a BCD-telepítőt hibakeresési módba való indításra. Futtassa a következő parancsokat egy rendszergazdai jogú parancssorból:
 
     ```cmd
     REM Setup some debugging flags on the boot manager

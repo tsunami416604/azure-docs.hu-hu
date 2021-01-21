@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 2457952051f575306de46e3e8145cc26678a1ef8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f83f4871d5cde23194ff51a90a22031b526cf91
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86526538"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632563"
 ---
 # <a name="windows-vm-cannot-boot-due-to-windows-boot-manager"></a>A Windows rendszerű virtuális gép a Windows rendszerindítási kezelője miatt nem indítható el
 
@@ -41,6 +41,9 @@ A hiba oka a Windows rendszerindító kezelőjében található BCD-jelző *disp
 
 ## <a name="solution"></a>Megoldás
 
+> [!TIP]
+> Ha a virtuális gép nemrég készült biztonsági másolattal rendelkezik, a rendszerindítási probléma megoldásához próbálja meg [visszaállítani a virtuális gépet a biztonsági mentésből](../../backup/backup-azure-arm-restore-vms.md) .
+
 Folyamat áttekintése:
 
 1. A soros konzollal történő gyorsabb rendszerindítás beállítása.
@@ -58,7 +61,7 @@ Ha rendelkezik hozzáféréssel a soros konzolhoz, kétféleképpen érheti el g
    > [!NOTE]
    > Ha nem fér hozzá a soros konzolhoz, ugorjon előre a [javítási virtuális gép létrehozásához és eléréséhez](#create-and-access-a-repair-vm).
 
-2. " **A" lehetőség: A**várakozási idő csökkentése
+2. " **A" lehetőség: A** várakozási idő csökkentése
 
    a. A várakozási idő alapértelmezés szerint 30 másodpercre van beállítva, de gyorsabb lehet (például 5 másodperc).
 

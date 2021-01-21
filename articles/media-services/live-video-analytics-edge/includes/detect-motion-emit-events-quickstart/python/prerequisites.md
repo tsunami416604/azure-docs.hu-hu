@@ -1,12 +1,14 @@
 ---
-ms.openlocfilehash: f0f04db80472785a4e50f8deefb43293b0888c0c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: eb35b21c607eadf0ee16487b7f06c6a1f22982c6
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88691012"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633489"
 ---
 * Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) , ha még nem rendelkezik ilyennel.
+  > [!NOTE]
+  > Szüksége lesz egy Azure-előfizetésre, amely az egyszerű szolgáltatások létrehozásához szükséges engedélyekkel rendelkezik (ez a **tulajdonosi szerepkör** ). Ha nem rendelkezik a megfelelő engedélyekkel, lépjen kapcsolatba a fiók rendszergazdájával, és adja meg a megfelelő engedélyeket. 
 * [Visual Studio Code](https://code.visualstudio.com/) a következő kiterjesztésekkel:
     * [Azure IoT-eszközök](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
     * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)

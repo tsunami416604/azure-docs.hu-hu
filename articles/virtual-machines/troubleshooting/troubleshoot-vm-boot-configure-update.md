@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: d7e56fe36af3d841cfd888dd6c1bf05502837cdd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3e4d51b4d41fa0dc23e9b12ac0251c14215de5c
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87079842"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633010"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>A virtuális gép indítása beragadt a Windows rendszerre kész állapotba. A számítógép kikapcsolása az Azure-ban
 
@@ -39,6 +39,9 @@ Egy Windows rendszerű virtuális gép nem indul el. Ha **rendszerindítási dia
 Ez a probléma általában akkor fordul elő, ha a kiszolgáló a konfiguráció módosítása után a végső újraindítást végzi. Előfordulhat, hogy a konfigurációs módosítást a Windows-frissítések vagy a kiszolgáló szerepkörei/funkciójának módosításai inicializálják. Windows Update esetén, ha a frissítések mérete nagy, az operációs rendszernek több időre van szüksége a módosítások újrakonfigurálásához.
 
 ## <a name="collect-an-os-memory-dump"></a>Operációs rendszer memóriaképének begyűjtése
+
+> [!TIP]
+> Ha a virtuális gép nemrég készült biztonsági másolattal rendelkezik, a rendszerindítási probléma megoldásához próbálja meg [visszaállítani a virtuális gépet a biztonsági mentésből](../../backup/backup-azure-arm-restore-vms.md) .
 
 Ha a probléma nem oldódik meg a módosítások feldolgozásának megkezdése után, be kell gyűjtenie egy memóriakép-fájlt, és kapcsolatba kell lépnie a támogatási szolgálattal. A memóriakép-fájl összegyűjtéséhez kövesse az alábbi lépéseket:
 

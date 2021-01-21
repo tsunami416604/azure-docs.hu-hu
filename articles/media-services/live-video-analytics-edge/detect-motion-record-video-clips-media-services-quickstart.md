@@ -3,12 +3,12 @@ title: Mozgás észlelése, videó rögzítése Azure Media Services
 description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a IoT Edge élő videós elemzéseket, hogy felderítse az élő videó streamben való mozgást, és videoklipeket rögzítsen a Azure Media Services.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 33deabf27fe9b74fd01dba5d6fbe3883b54dda63
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 15a9def78c7dddda7e63db66d2b21794506f6a92
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060418"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632724"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Gyors útmutató: mozgás észlelése, videó rögzítése Media Services
 
@@ -19,6 +19,8 @@ Ez a cikk a [első lépések](get-started-detect-motion-emit-events-quickstart.m
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+  > [!NOTE]
+  > Szüksége lesz egy Azure-előfizetésre, amely az egyszerű szolgáltatások létrehozásához szükséges engedélyekkel rendelkezik (ez a **tulajdonosi szerepkör** ). Ha nem rendelkezik a megfelelő engedélyekkel, lépjen kapcsolatba a fiók rendszergazdájával, és adja meg a megfelelő engedélyeket. 
 * [Visual Studio Code](https://code.visualstudio.com/) a gépen az [Azure IoT Tools bővítménnyel](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 * Ha korábban nem végezte el a [első lépések](get-started-detect-motion-emit-events-quickstart.md) rövid útmutatót, folytassa a következő lépésekkel:
     * [Az Azure-erőforrások beállítása](get-started-detect-motion-emit-events-quickstart.md#set-up-azure-resources)
@@ -862,7 +864,7 @@ Ezután használhatja a Azure Portal a rögzített videó lejátszásához.
 
 Ha nem folytatja az alkalmazás használatát, törölje az ebben a rövid útmutatóban létrehozott erőforrásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan hívhat meg programozott módon az élő videó-elemzéseket IoT Edge [közvetlen módszerekkel](direct-methods.md) .
 * További információ a diagnosztikai üzenetekről.    

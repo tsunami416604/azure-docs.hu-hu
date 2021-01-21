@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: d3ba7baf79ee972ed7289a1aab93484108da70cf
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 6d06a46d2eaaad362890f1e3e44dbc746fa10898
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724229"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633357"
 ---
 A Azure Files négyféle tárterületet kínál, a prémium, a tranzakciós optimalizált, a gyakori és a ritka elérésű csomagokat, hogy lehetővé tegye a megosztások testreszabását a forgatókönyv teljesítményére és árára vonatkozó követelmények szerint:
 
@@ -22,7 +22,7 @@ A Azure Files négyféle tárterületet kínál, a prémium, a tranzakciós opti
 - Gyakori **: a** gyakori fájlmegosztás olyan általános célú fájlmegosztás-forgatókönyvekhez optimalizált tárterületet kínál, mint például a csoportok megosztása. A gyors fájlmegosztást a HDD-k által támogatott szabványos tároló hardveren kínáljuk.
 - **Cool**: a lassú fájlmegosztás költséghatékony tárterületet kínál, amely online archiválási tárolási forgatókönyvekhez van optimalizálva. A lassú fájlmegosztást a HDD-k által támogatott szabványos tárolóeszközön kínáljuk.
 
-A prémium szintű fájlmegosztás üzembe helyezése a **FileStorage-fiókban** történik, és csak kiépített számlázási modellben érhetők el. A prémium szintű fájlmegosztás kiépített számlázási modelljével kapcsolatos további információkért lásd a [prémium szintű fájlmegosztás kiépítés ismertetése](../articles/storage/files/understanding-billing.md#provisioned-billing)című témakört. A standard fájlmegosztás, beleértve a tranzakcióra optimalizált, a gyakori és a ritka fájlmegosztást, üzembe kerül az **általános célú 2-es verziójú (GPv2) Storage-fiókban** , és a számlázás után is elérhető. A gyakori és ritka elérésű fájlmegosztás az összes Azure nyilvános és Azure Government régióban elérhető. A tranzakciós optimalizált fájlmegosztás minden Azure-régióban elérhető, beleértve az Azure China-t és az Azure Germany-régiókat.
+A prémium szintű fájlmegosztás üzembe helyezése a **FileStorage-fiókban** történik, és csak kiépített számlázási modellben érhetők el. A prémium szintű fájlmegosztás kiépített számlázási modelljével kapcsolatos további információkért lásd a [prémium szintű fájlmegosztás kiépítés ismertetése](../articles/storage/files/understanding-billing.md#provisioned-model)című témakört. A standard fájlmegosztás, beleértve a tranzakcióra optimalizált, a gyakori és a ritka fájlmegosztást, üzembe kerül az **általános célú 2-es verziójú (GPv2) Storage-fiókban** , és a számlázás után is elérhető. A gyakori és ritka elérésű fájlmegosztás az összes Azure nyilvános és Azure Government régióban elérhető. A tranzakciós optimalizált fájlmegosztás minden Azure-régióban elérhető, beleértve az Azure China-t és az Azure Germany-régiókat.
 
 A számítási feladatok tárolási szintjeinek kiválasztásakor vegye figyelembe a teljesítményre és a használatra vonatkozó követelményeket. Ha a számítási feladatok esetében egyszámjegyű késésre van szükség, vagy ha a helyszínen SSD-tárolóeszközt használ, a prémium szint valószínűleg a legmegfelelőbb. Ha az alacsony késés nem annyira fontos, mint például az Azure-ból a helyszínen vagy a helyszínen gyorsítótárazott csoportos megosztások a Azure File Sync használatával, a standard szintű tárterület jobban illeszkedik a költségmegtakarításhoz.
 

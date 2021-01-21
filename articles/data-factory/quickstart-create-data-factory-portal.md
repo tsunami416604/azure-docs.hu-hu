@@ -5,18 +5,17 @@ services: data-factory
 documentationcenter: ''
 author: linda33wj
 manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
 ms.date: 12/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 76a490ed28f940620db7835c4cec145740f48503
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 0f22d4695a6324b0f0cde466e252b1a3a504f433
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509019"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632749"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Gyorsútmutató: Adat-előállító létrehozása az Azure Data Factory felhasználói felületén 
 
@@ -26,7 +25,7 @@ ms.locfileid: "97509019"
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Ez a rövid útmutató ismerteti, hogyan használható az Azure Data Factory felhasználói felülete egy adat-előállító létrehozásához és monitorozásához. Az adat-előállítóban létrehozott folyamat adatokat *másol* az Azure-blobtároló egyik mappájából egy másikba. Az adatAzure Data Factory használatával történő *átalakításával* kapcsolatban lásd: az adatfolyam és a huzavona-adatfolyam [(előzetes verzió)](wrangling-data-flow-overview.md) [leképezése](concepts-data-flow-overview.md) .
+Ez a rövid útmutató ismerteti, hogyan használható az Azure Data Factory felhasználói felülete egy adat-előállító létrehozásához és monitorozásához. Az adat-előállítóban létrehozott folyamat adatokat *másol* az Azure-blobtároló egyik mappájából egy másikba. Az adatAzure Data Factory használatával történő *átalakításával* kapcsolatban lásd: [az adatforgalom leképezése](concepts-data-flow-overview.md).
 
 > [!NOTE]
 > Ha még csak ismerkedik az Azure Data Factory szolgáltatással, a gyors útmutató elvégzése előtt tekintse meg a következő cikket: [Bevezetés az Azure Data Factory használatába](introduction.md). 
@@ -231,5 +230,5 @@ Az oktatóanyagnak ez a feladata nem kötelező. A folyamat rendszeres időköz�
 
 1. Győződjön meg arról, hogy a megadott befejezési dátumig és időpontig futtatott minden folyamatfuttatáshoz létrejött egy kimeneti fájl az **output** mappában. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A példában szereplő folyamat adatokat másol az egyik helyről egy másikra az Azure Blob Storage-ban. A Data Factory más forgatókönyvekben való használatát ismertető további információért tekintse meg az [oktatóanyagokat](tutorial-copy-data-portal.md).

@@ -10,16 +10,16 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/28/2020
 ms.author: juliako
-ms.openlocfilehash: b25341fb58c1e758d807e3c7b4345fd0ab1baa53
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 07e4b05e12a5994c707a171c5736aea04a9c9723
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610420"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632926"
 ---
 # <a name="add-video-clips-to-your-projects"></a>Videoklipek hozzáadása a projektekhez
 
-A [video Indexer](https://www.videoindexer.ai/) webhely lehetővé teszi, hogy a videók mélyreható megállapításait használja: keresse meg a megfelelő médiatartalom tartalmát, keresse meg a kívánt részeket, és használja az eredményeket egy teljesen új projekt létrehozásához. 
+A [video Indexer](https://www.videoindexer.ai/) webhely lehetővé teszi, hogy a videó mélyreható megállapításait használja: keresse meg a megfelelő médiatartalom tartalmát, keresse meg a kívánt részeket, és használja az eredményeket egy teljesen új projekt létrehozásához. 
 
 A létrehozást követően a projekt megjeleníthető és letölthető Video Indexer, és használható a saját szerkesztési alkalmazásaiban vagy az alárendelt munkafolyamatokban.
 
@@ -104,7 +104,7 @@ Létrehozhat egy új projektet közvetlenül a fiókjában található videóbó
 
     Ezzel az oldalra kerül, amelyet egy új projekt létrehozásához használt. Az új projekttől eltérően a videó időbélyegzővel ellátott bepillantást nyerhet, amelyet korábban már elkezdett szerkeszteni.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 [A Video Indexer áttekintése](video-indexer-overview.md)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/22/2020
 ms.author: v-mibufo
-ms.openlocfilehash: cfeb040893ae2be5842959ed8458bd713bebe6ee
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: d8d2ab2bb3f24e1faa4791ebdc1ce3852f6a790e
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512137"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632690"
 ---
 # <a name="os-start-up--computer-restarted-unexpectedly-or-encountered-an-unexpected-error"></a>Operációs rendszer indítása – a számítógép váratlanul újraindult, vagy váratlan hibát észlelt.
 
@@ -52,6 +52,9 @@ Ez a probléma leggyakrabban akkor jön létre, amikor a sysprept egy helyszíni
 ## <a name="solution"></a>Megoldás
 
 ### <a name="do-not-use-unattendxml"></a>Ne használja a Unattend.xml
+
+> [!TIP]
+> Ha a virtuális gép nemrég készült biztonsági másolattal rendelkezik, a rendszerindítási probléma megoldásához próbálja meg [visszaállítani a virtuális gépet a biztonsági mentésből](../../backup/backup-azure-arm-restore-vms.md) .
 
 A probléma megoldásához kövesse [Az Azure-útmutatást a rendszerkép előkészítéséhez/rögzítéséhez](../windows/upload-generalized-managed.md) és egy új általánosított rendszerkép előkészítéséhez. A Sysprep alatt ne **használja a `/unattend:<your file’s name>` jelzőt**. Ehelyett csak az alábbi jelzőket használja:
 

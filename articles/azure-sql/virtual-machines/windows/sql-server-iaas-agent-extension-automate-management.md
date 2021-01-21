@@ -17,12 +17,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 3fe87f94ce05efa4a784ba7e3f65e53abb00fd05
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 7ddc13306f4adb1730169c4811b9d2227dedca33
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914246"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632766"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>A felügyelet automatizálása a SQL Server IaaS-ügynök bővítménnyel
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -115,7 +115,7 @@ A bővítmény háromféleképpen regisztrálhat:
 
 ### <a name="named-instance-support"></a>Megnevezett példányok támogatása
 
-A SQL Server IaaS-ügynök bővítmény a SQL Server megnevezett példányával működik, ha a virtuális gépen az egyetlen SQL Server példány érhető el. A bővítmény nem telepíthető olyan virtuális gépekre, amelyeken több SQL Server példány található. 
+A SQL Server IaaS-ügynök bővítmény a SQL Server megnevezett példányával működik, ha a virtuális gépen csak az egyetlen SQL Server példány érhető el. A bővítmény nem telepíthető olyan virtuális gépekre, amelyeken több névvel ellátott SQL Server példány található, ha a virtuális gépen nincs alapértelmezett példány. 
 
 SQL Server elnevezett példányának használatához helyezzen üzembe egy Azure-beli virtuális gépet, telepítsen egy nevű SQL Server példányt, majd regisztrálja az [SQL IaaS bővítménnyel](sql-agent-extension-manually-register-single-vm.md).
 
@@ -228,7 +228,7 @@ Nem. A virtuális gépnek rendelkeznie kell legalább egy SQL Server (adatbázis
 
 **Regisztrálhatok egy virtuális gépet az SQL IaaS-ügynök bővítménnyel, ha több SQL Server példány is van?**
 
-Igen. Az SQL IaaS-ügynök bővítmény csak egy SQL Server (adatbázismotor) példányt regisztrál. Az SQL IaaS-ügynök bővítmény több példány esetén regisztrálja az alapértelmezett SQL Server példányt. Ha nincs alapértelmezett példány, akkor a rendszer csak az egyszerűsített módban történő regisztrációt támogatja. A lightweightről teljes kezelhetőségi üzemmódra való frissítéshez vagy az alapértelmezett SQL Server példánynak léteznie kell, vagy a virtuális gépnek csak egy névvel ellátott SQL Server példánynak kell lennie.
+Igen, a virtuális gépen alapértelmezett példány van megadva. Az SQL IaaS-ügynök bővítmény csak egy SQL Server (adatbázismotor) példányt regisztrál. Az SQL IaaS-ügynök bővítmény több példány esetén regisztrálja az alapértelmezett SQL Server példányt.
 
 **Regisztrálhatok egy SQL Server feladatátvevő fürt példányát az SQL IaaS-ügynök bővítménnyel?**
 

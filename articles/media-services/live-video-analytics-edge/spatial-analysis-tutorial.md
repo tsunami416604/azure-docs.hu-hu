@@ -3,12 +3,12 @@ title: Élő videók elemzése Computer Vision térbeli elemzéshez – Azure
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Live Video Analytics szolgáltatást az Azure Cognitive Services Computer Vision térbeli Analysis AI funkciójának használatával egy élő videó-hírcsatorna (szimulált) IP-kamerából való elemzéséhez.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 5b979bfeb6961b285cfeb2287888d8f157608d96
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 1c6fe6e10a91034d794437f31d495b85ef086848
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060180"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632943"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Élő videó elemzése a Computer Vision for térbeli Analysis (előzetes verzió)
 
@@ -23,7 +23,8 @@ Ebben az oktatóanyagban a következőket fogja elsajátítani:
 > * Események figyelése.
  
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
-
+  > [!NOTE]
+  > Szüksége lesz egy Azure-előfizetésre, amely az egyszerű szolgáltatások létrehozásához szükséges engedélyekkel rendelkezik (ez a **tulajdonosi szerepkör** ). Ha nem rendelkezik a megfelelő engedélyekkel, lépjen kapcsolatba a fiók rendszergazdájával, és adja meg a megfelelő engedélyeket. 
 ## <a name="suggested-pre-reading"></a>Javasolt előzetes olvasás
 
 A Kezdés előtt olvassa el a következő cikkeket:
@@ -136,10 +137,10 @@ Az üzembe helyezési sablon fájljában néhány dolgot kell figyelnie:
 1. `IpcMode` a lvaEdge és a térbeli elemzési modul createOptions azonosnak kell lennie, és a gazdagépre kell beállítani.
 1. Az RTSP-szimulátor működéséhez győződjön meg arról, hogy beállította a kötet határait. További információ: [Setup Docker Volume mounts](deploy-azure-stack-edge-how-to.md#optional-setup-docker-volume-mounts).
 
-    1. [Kapcsolódjon az SMB-megosztáshoz](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share) , és másolja a [minta buldózer-videofájl](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv) a helyi megosztásba.
+    1. [Kapcsolódjon az SMB-megosztáshoz](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share) , és másolja a [minta buldózer-videofájl](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv) a helyi megosztásba.  
+        > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Mesi]  
     1. Ellenőrizze, hogy a rtspsim modul a következő konfigurációval rendelkezik-e:
-        
-        ```json
+        ```
         "createOptions": {
                             "HostConfig": {
                               "Mounts": [
@@ -159,6 +160,8 @@ Az üzembe helyezési sablon fájljában néhány dolgot kell figyelnie:
                             }
                           }
         ```
+        
+
 ## <a name="generate-and-deploy-the-deployment-manifest"></a>Az üzembe helyezési jegyzék előállítása és üzembe helyezése
 
 Az üzembe helyezési jegyzék meghatározza, hogy a rendszer mely modulokat telepíti egy peremhálózati eszközre. Emellett meghatározza a modulok konfigurációs beállításait is.
@@ -375,7 +378,7 @@ Minta kimenete a personZoneEvent (a cognitiveservices. vízió. spatialanalysis-
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbálkozzon a modul által kínált különböző műveletekkel, `spatialAnalysis` például a **personCount** és a **personDistance** . ehhez a telepítési jegyzékfájl Graph csomópontjában az "enabled" jelzőt kell bekapcsolni.
 >[!Tip]

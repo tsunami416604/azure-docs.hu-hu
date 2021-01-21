@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/22/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 8af8d7695c48c6ac682109bb38935e98921fa9e4
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: fc3bd5d2590e969db07e9dffa61b4902ea4604c3
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681907"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632546"
 ---
 # <a name="vm-is-unresponsive-while-waiting-for-the-local-session-manager-service"></a>A virtuális gép nem válaszol a helyi munkamenet-kezelő szolgáltatásra való várakozás közben
 
@@ -34,6 +34,9 @@ Ha [rendszerindítási diagnosztika](./boot-diagnostics.md) használatával teki
 Több oka lehet annak, hogy a virtuális gép a helyi munkamenet-kezelőre várakozik. Ha a probléma továbbra is fennáll, össze kell gyűjtenie egy memóriaképet az elemzéshez.
 
 ## <a name="solution"></a>Megoldás
+
+> [!TIP]
+> Ha a virtuális gép nemrég készült biztonsági másolattal rendelkezik, a rendszerindítási probléma megoldásához próbálja meg [visszaállítani a virtuális gépet a biztonsági mentésből](../../backup/backup-azure-arm-restore-vms.md) .
 
 Bizonyos esetekben egyszerűen csak arra vár, hogy a befejezési folyamat megoldja a problémát. Ha a virtuális gép nem válaszol, és a várakozási képernyőn több mint egy óra alatt marad, akkor Gyűjtse össze a memóriaképet, és forduljon a Microsoft ügyfélszolgálatához.
 

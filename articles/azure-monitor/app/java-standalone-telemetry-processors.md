@@ -6,12 +6,12 @@ ms.date: 10/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: 39897e490e4653fbaad7a64ecc0b33f161d1264b
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: c0745dd4069c64292fbcaef666d843ae2d25f7b3
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165790"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632580"
 ---
 # <a name="telemetry-processors-preview---azure-monitor-application-insights-for-java"></a>Telemetria processzorok (előzetes verzió) – Azure Monitor Application Insights Javához
 
@@ -38,7 +38,7 @@ A span a következő három dolog egyik általános kifejezése:
 
 A telemetria processzorok esetében a span fontos összetevői a következők:
 
-* Név
+* Name
 * Attribútumok
 
 A span neve a kérelmekhez és a függőségekhez használt elsődleges megjelenítés a Azure Portalban.
@@ -241,7 +241,7 @@ A `hash` művelethez a következők szükségesek
 ### `extract`
 
 > [!NOTE]
-> Ez a funkció csak az 3.0.1-es és újabb verzióiban érhető el
+> Ez a funkció csak a 3.0.2 és újabb verziókban érhető el
 
 Kinyeri az értékeket a szabályban megadott, a bemeneti kulcstól a reguláris kifejezési szabály használatával. Ha a célként megadott kulcs már létezik, a rendszer felülbírálja. Ehhez hasonlóan viselkedik a [](#extract-attributes-from-span-name) `toAttributes` meglévő attribútummal rendelkező span Processor beállításhoz a forrásként.
 

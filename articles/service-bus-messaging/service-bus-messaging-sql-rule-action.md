@@ -3,16 +3,16 @@ title: Azure Service Bus előfizetési szabály SQL-műveletének szintaxisa | M
 description: Ez a cikk az SQL-szabály műveleti szintaxisára mutató hivatkozást tartalmaz. A műveletek olyan SQL-Language-alapú szintaxisban íródnak, amely egy üzeneten történik.
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: 7ce3332fb1a2025e89135e5e42e72d4afe1e7a5e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 606281d42d5598d7f73312990d3a19775a202c08
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489394"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632811"
 ---
 # <a name="subscription-rule-sql-action-syntax"></a>Előfizetési szabály SQL-műveletének szintaxisa
 
-A rendszer egy *SQL-műveletet* használ az üzenetek metaadatainak kezeléséhez, miután egy előfizetési szabály szűrője kiválasztott egy üzenetet. Ez egy szöveges kifejezés, amely az SQL-92 szabvány egy részhalmazára támaszkodik. A műveleti kifejezések a `sqlExpression` Azure Resource Manager sablonban található Service Bus "Action" tulajdonságának elemével `Rule` vagy az [Azure Resource Manager template](service-bus-resource-manager-namespace-topic-with-rule.md)Azure CLI `az servicebus topic subscription rule create` parancs [`--action-sql-expression`](/cli/azure/servicebus/topic/subscription/rule?preserve-view=true&view=azure-cli-latest#az_servicebus_topic_subscription_rule_create) ARGUMENTUMával, valamint számos olyan SDK-függvénnyel használhatók, amelyek lehetővé teszik az előfizetés-szabályok kezelését.
+A rendszer egy *SQL-műveletet* használ az üzenetek metaadatainak kezeléséhez, miután egy előfizetési szabály szűrője kiválasztott egy üzenetet. Ez egy szöveges kifejezés, amely az SQL-92 szabvány egy részhalmazára támaszkodik. A műveleti kifejezések a `sqlExpression` Azure Resource Manager sablonban található Service Bus "Action" tulajdonságának elemével `Rule` vagy az [](service-bus-resource-manager-namespace-topic-with-rule.md)Azure CLI `az servicebus topic subscription rule create` parancs [`--action-sql-expression`](/cli/azure/servicebus/topic/subscription/rule#az_servicebus_topic_subscription_rule_create) ARGUMENTUMával, valamint számos olyan SDK-függvénnyel használhatók, amelyek lehetővé teszik az előfizetés-szabályok kezelését.
   
   
 ```  
@@ -208,7 +208,7 @@ A `property(name)` függvény a által hivatkozott tulajdonság értékét adja 
 - A művelet nem sikerül, ha a nem létező felhasználói tulajdonságok hivatkoztak.
 - A nem létező felhasználói tulajdonságokat belsőleg "ismeretlen" értékként értékeli ki a rendszer, és a [SQLFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) a kezelők kiértékelése során megjelenő szemantikat követve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [SQLRuleAction osztály (.NET-keretrendszer)](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
 - [SQLRuleAction osztály (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlruleaction)

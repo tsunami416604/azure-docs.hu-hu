@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: ff21975c34c28d7476635467e0c1abb8e6575e35
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f286542c91ba473d13595d8e8299b1bbd8c93856
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977952"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632605"
 ---
 # <a name="virtual-machine-is-unresponsive-while-applying-audit-policy-configuration-policy"></a>A virtuális gép nem válaszol a naplózási házirend konfigurációs házirendjének alkalmazása közben
 
@@ -27,7 +27,7 @@ Ez a cikk olyan problémák megoldását ismerteti, amelyekkel a virtuális gép
 
 ## <a name="symptom"></a>Hibajelenség
 
-Ha [rendszerindítási diagnosztika](./boot-diagnostics.md) használatával tekinti meg a virtuális gép képernyőképét, látni fogja, hogy az operációs rendszer (os) nem válaszol a **naplózási házirend konfigurációs házirendjét alkalmazó**üzenet indításakor.
+Ha [rendszerindítási diagnosztika](./boot-diagnostics.md) használatával tekinti meg a virtuális gép képernyőképét, látni fogja, hogy az operációs rendszer (os) nem válaszol a **naplózási házirend konfigurációs házirendjét alkalmazó** üzenet indításakor.
 
   ![Az operációs rendszer indítása a következő üzenettel: "a naplózási házirend konfigurációs szabályzatának alkalmazása"](./media/vm-unresponsive-applying-audit-configuration-policy/1.png)
 
@@ -45,6 +45,9 @@ A problémás szabályzat: a *számítógép-Computer sablonok \ rendszer/felhas
 ## <a name="solution"></a>Megoldás
 
 ### <a name="process-overview"></a>Folyamat áttekintése
+
+> [!TIP]
+> Ha a virtuális gép nemrég készült biztonsági másolattal rendelkezik, a rendszerindítási probléma megoldásához próbálja meg [visszaállítani a virtuális gépet a biztonsági mentésből](../../backup/backup-azure-arm-restore-vms.md) .
 
 1. Hozzon létre és nyissa meg a javítási virtuális gépet.
 1. Tiltsa le a házirendet.
@@ -105,7 +108,7 @@ A problémás szabályzat: a *számítógép-Computer sablonok \ rendszer/felhas
       `bcdedit /store <LETTER OF THE EFI SYSTEM PARTITION>:EFI\Microsoft\boot\bcd /enum`
 
       - A parancsban cserélje le az `<LETTER OF THE EFI SYSTEM PARTITION>` EFI rendszerpartíció betűjét.
-      - Hasznos lehet a Lemezkezelés konzol elindítása az **EFI rendszerpartícióként**címkézett megfelelő rendszerpartíció azonosításához.
+      - Hasznos lehet a Lemezkezelés konzol elindítása az **EFI rendszerpartícióként** címkézett megfelelő rendszerpartíció azonosításához.
       - Az azonosító lehet egyedi GUID, vagy lehet az alapértelmezett **Csizmadia**.
 
 1. Futtassa az alábbi parancsot:

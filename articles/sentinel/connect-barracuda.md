@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 1131c8e79d9df2883dcf7e975af9732c21318a49
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: e1462246b95da67591cbdfd1f9ed819220de5764
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621164"
+ms.locfileid: "98633061"
 ---
 # <a name="connect-your-barracuda-waf-appliance"></a>A Barracuda WAF-berendezés összekötése 
 
@@ -30,12 +30,16 @@ A Barracuda webalkalmazási tűzfal (WAF) összekötő segítségével könnyed�
 > Az Azure Sentinel-t futtató munkaterület földrajzi helye tárolja az adatmennyiséget.
 
 ## <a name="configure-and-connect-barracuda-waf"></a>A Barracuda WAF konfigurálása és összekapcsolása
-A Barracuda webalkalmazási tűzfal a naplókat közvetlenül az Azure Sentinelbe integrálhatja és exportálhatja Log Analytics ügynök használatával.
-1. Lépjen a [BARRACUDA WAF konfigurációs folyamathoz](https://campus.barracuda.com/product/webapplicationfirewall/doc/73696965/configure-the-barracuda-web-application-firewall-to-integrate-with-the-oms-server-and-export-logs/), és kövesse az utasításokat a kapcsolódás beállításához a következő paraméterek használatával:
-    - **Munkaterület azonosítója**: másolja a munkaterület-azonosító értékét az Azure Sentinel Barracuda-összekötő oldaláról.
-    - **Elsődleges kulcs**: másolja az elsődleges kulcs értékét az Azure Sentinel Barracuda-összekötő oldaláról.
-1. A Barracuda-események Log Analytics vonatkozó sémájának használatához keresse meg a **CommonSecurityLog** és a **barracuda_CL**.
 
+A Barracuda webalkalmazási tűzfal a naplókat közvetlenül az Azure Sentinelbe integrálhatja és exportálhatja Log Analytics ügynök használatával.
+
+1. Lépjen a [BARRACUDA WAF konfigurációs folyamathoz](https://campus.barracuda.com/product/webapplicationfirewall/doc/73696965/configure-the-barracuda-web-application-firewall-to-integrate-with-the-oms-server-and-export-logs/), és kövesse az utasításokat a kapcsolódás beállításához a következő paraméterek használatával:
+
+    - **Munkaterület azonosítója**: másolja a munkaterület-azonosító értékét az Azure Sentinel Barracuda-összekötő oldaláról.
+
+    - **Elsődleges kulcs**: másolja az elsődleges kulcs értékét az Azure Sentinel Barracuda-összekötő oldaláról.
+
+1. A Barracuda-események Log Analytics vonatkozó sémájának használatához keresse meg a **CommonSecurityLog** és a **barracuda_CL**.
 
 ## <a name="validate-connectivity"></a>Kapcsolat ellenőrzése
 

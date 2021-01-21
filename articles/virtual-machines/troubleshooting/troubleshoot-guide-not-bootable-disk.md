@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 16f6919577955bda5b04db26deb9fe78a467e364
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14da41815e177ece64c72ac27a7cb126e69fdc62
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86509035"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633188"
 ---
 # <a name="boot-error--this-is-not-a-bootable-disk"></a>Rendszerindítási hiba – ez nem rendszerindító lemez
 
@@ -41,6 +41,9 @@ Ez a hibaüzenet azt jelenti, hogy az operációs rendszer rendszerindítási fo
 
 ### <a name="process-overview"></a>Folyamat áttekintése
 
+> [!TIP]
+> Ha a virtuális gép nemrég készült biztonsági másolattal rendelkezik, a rendszerindítási probléma megoldásához próbálja meg [visszaállítani a virtuális gépet a biztonsági mentésből](../../backup/backup-azure-arm-restore-vms.md) .
+
 1. Hozzon létre és nyissa meg a javítási virtuális gépet.
 2. A partíció állapotának beállítása aktívra.
 3. Javítsa ki a lemez partícióját.
@@ -57,7 +60,7 @@ Ez a hibaüzenet azt jelenti, hogy az operációs rendszer rendszerindítási fo
 
 ### <a name="set-partition-status-to-active"></a>Partíció állapotának beállítása aktívra
 
-Az 1. generációs virtuális gépeknek először ellenőriznie kell, hogy a BCD-tárolót birtokló operációsrendszer-partíció *aktívként*van-e megjelölve. Ha 2. generációs virtuális géppel rendelkezik, ugorjon előre a [lemezpartíció kijavítása](#fix-the-disk-partition)érdekében, mivel a későbbi generációban az *állapot* jelzője elavult volt.
+Az 1. generációs virtuális gépeknek először ellenőriznie kell, hogy a BCD-tárolót birtokló operációsrendszer-partíció *aktívként* van-e megjelölve. Ha 2. generációs virtuális géppel rendelkezik, ugorjon előre a [lemezpartíció kijavítása](#fix-the-disk-partition)érdekében, mivel a későbbi generációban az *állapot* jelzője elavult volt.
 
 1. Nyisson meg egy rendszergazda jogú parancssort *(cmd.exe)*.
 2. Adja meg a *DiskPart* eszközt a DiskPart eszköz elindításához.
@@ -86,7 +89,7 @@ Az 1. generációs virtuális gépeknek először ellenőriznie kell, hogy a BCD
    ![Az 5. ábrán a * DISKPART * ablak látható a * detail Partition * parancs kimenetével, ha az 1. partíció az * Active: Igen * értékre van állítva.](media/troubleshoot-guide-not-bootable-disk/5.jpg)
 
 8. Ha a partíció **nem aktív** *, az aktív jelző* megváltoztatásához adja meg az *aktív* értéket.
-9. A *részletek partíció*beírásával győződjön meg róla, hogy az állapot változása megfelelően lett végrehajtva.
+9. A *részletek partíció* beírásával győződjön meg róla, hogy az állapot változása megfelelően lett végrehajtva.
 
    6. ábra
 

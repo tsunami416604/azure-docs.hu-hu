@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 06/17/2020
-ms.openlocfilehash: e85c97df29bbbcc5d446d788cc190f3c90f24024
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: bbad7dcaa1d92df4969c88e4ba86a62987509e39
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602229"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632799"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL Database és az Azure szinapszis IP-tűzfalszabályok
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -101,7 +101,9 @@ Amikor egy számítógép az internetről próbál csatlakozni a kiszolgálóhoz
 
 ### <a name="connections-from-inside-azure"></a>Kapcsolatok az Azure-on belül
 
-Ha engedélyezni szeretné az Azure-ban üzemeltetett alkalmazások számára az SQL Serverhez való csatlakozást, engedélyezni kell az Azure-kapcsolatokat. Ha egy Azure-alkalmazás megpróbál csatlakozni a kiszolgálóhoz, a tűzfal ellenőrzi, hogy az Azure-kapcsolatok engedélyezettek-e. Ez közvetlenül a Azure Portal panelről kapcsolható be a tűzfalszabályok beállításával, valamint az **Azure-szolgáltatások és-erőforrások engedélyezésének engedélyezése a kiszolgálóhoz való hozzáféréshez** a  **tűzfalak és a virtuális hálózatok** beállításaiban. Ha a kapcsolat nem engedélyezett, a kérelem nem éri el a kiszolgálót.
+Ha engedélyezni szeretné az Azure-ban üzemeltetett alkalmazások számára az SQL Serverhez való csatlakozást, engedélyezni kell az Azure-kapcsolatokat. Az Azure-kapcsolatok engedélyezéséhez olyan tűzfalszabály szükséges, amelyben a kezdő és a záró IP-cím értéke 0.0.0.0.
+
+Ha egy Azure-alkalmazás megpróbál csatlakozni a kiszolgálóhoz, a tűzfal ellenőrzi, hogy az Azure-kapcsolatok engedélyezve vannak-e a tűzfalszabály meglétének ellenőrzésével. Ez közvetlenül a Azure Portal panelről kapcsolható be, ha átváltja az **Azure-szolgáltatások és-erőforrások engedélyezése a kiszolgálóhoz** a **tűzfalon és a virtuális hálózatok** beállításaiban való elérését.  Ha a ON értékre van állítva, a létrehoz egy bejövő tűzfalszabály a **AllowAllWindowsIP** nevű IP 0.0.0.0-0.0.0.0 számára. Ha nem a portált használja, a PowerShell vagy az Azure CLI használatával hozzon létre egy olyan tűzfalszabályot, amelynek kezdő és záró IP-címe a 0.0.0.0 értékre van állítva. 
 
 > [!IMPORTANT]
 > Ez a beállítás úgy konfigurálja a tűzfalat, hogy engedélyezze az Azure összes kapcsolatát, beleértve a más ügyfelek előfizetései által létesített kapcsolatokat is. Ha ezt a beállítást választja, győződjön meg arról, hogy a bejelentkezési és felhasználói engedélyei csak a jogosult felhasználókra korlátozzák a hozzáférést.
@@ -270,7 +272,7 @@ Vegye figyelembe a következő szempontokat, amikor a Azure SQL Databasehoz val�
   - Kérje meg az internetszolgáltatót a kiszolgálót elérő ügyfélszámítógépekhez rendelt IP-címtartomány megadására. Adja hozzá az IP-címtartományt IP-tűzfalszabályként.
   - Az ügyfélszámítógépek helyett statikus IP-címzést kell lekérnie. Adja hozzá az IP-címeket IP-tűzfalszabályokként.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ellenőrizze, hogy a vállalati hálózati környezet lehetővé teszi-e a bejövő kommunikációt az Azure-adatközpontok által használt számítási IP-címtartományok (beleértve az SQL-tartományokat is). Előfordulhat, hogy ezeket az IP-címeket fel kell vennie az engedélyezési listára. Lásd: [Microsoft Azure adatközpont IP-tartományai](https://www.microsoft.com/download/details.aspx?id=41653).  
 - Tekintse meg a gyors üzembe helyezési útmutatót, amelyből megtudhatja [, hogyan hozhat létre Azure SQL Database](single-database-create-quickstart.md)

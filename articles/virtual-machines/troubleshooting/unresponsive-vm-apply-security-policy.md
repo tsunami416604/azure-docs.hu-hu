@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 06/15/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 6b50bffd1a44c0cf53f15650f5ff4d938f45df4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 047c8afbfe7b489e5c3ac0ccb677f6fc021443a8
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84908195"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632639"
 ---
 # <a name="azure-vm-is-unresponsive-while-applying-security-policy-to-the-system"></a>Az Azure-beli virtuális gép nem válaszol, miközben biztonsági házirendet alkalmaz a rendszerre.
 
@@ -33,7 +33,7 @@ Ha [rendszerindítási diagnosztika](boot-diagnostics.md) használatával tekint
 
 :::image type="content" source="media/unresponsive-vm-apply-security-policy/apply-policy.png" alt-text="A Windows Server 2012 R2 indítási képernyőjének képernyőképe megakadt.":::
 
-:::image type="content" source="media/unresponsive-vm-apply-security-policy/apply-policy-2.png" alt-text="A Windows Server 2012 R2 indítási képernyőjének képernyőképe megakadt.":::
+:::image type="content" source="media/unresponsive-vm-apply-security-policy/apply-policy-2.png" alt-text="Az operációs rendszer indítási képernyőjének képernyőképe megakadt.":::
 
 ## <a name="cause"></a>Ok
 
@@ -42,6 +42,9 @@ A probléma számos lehetséges oka lehet. Addig nem fogja tudni a forrást, am�
 ## <a name="resolution"></a>Feloldás
 
 ### <a name="process-overview"></a>Folyamat áttekintése
+
+> [!TIP]
+> Ha a virtuális gép nemrég készült biztonsági másolattal rendelkezik, a rendszerindítási probléma megoldásához próbálja meg [visszaállítani a virtuális gépet a biztonsági mentésből](../../backup/backup-azure-arm-restore-vms.md) .
 
 1. [Javítási virtuális gép létrehozása és elérése](#create-and-access-a-repair-vm)
 2. [Soros konzol és memóriakép-gyűjtemény engedélyezése](#enable-serial-console-and-memory-dump-collection)
@@ -68,7 +71,54 @@ A memóriakép-gyűjtés és a soros konzol engedélyezéséhez futtassa a köve
 
         A parancsban cserélje le a \<BOOT PARTITON> betűt a partíció betűjelére a csatlakoztatott lemezen, amely tartalmazza a rendszerindító mappát.
 
-        :::image type="content" source="media/unresponsive-vm-apply-security-policy/store-data.png" alt-text="A Windows Server 2012 R2 indítási képernyőjének képernyőképe megakadt." /v NMICrashDump /t REG_DWORD /d 1 /f
+        :::image type="content" source="media/unresponsive-vm-apply-security-policy/store-data.png" alt-text="A diagram megjeleníti a BCD-tárolónak egy 1. generációs virtuális gépen való listázásának kimenetét, amely a Windows rendszerindítási azonosító alatt található.":::
+
+     2. A 2. generációs virtuális gépek esetében írja be a következő parancsot, és jegyezze fel a felsorolt azonosítót:
+
+        ```console
+        bcdedit /store <LETTER OF THE EFI SYSTEM PARTITION>:EFI\Microsoft\boot\bcd /enum
+        ```
+
+        - A parancsban cserélje le az \<LETTER OF THE EFI SYSTEM PARTITION> EFI rendszerpartíció betűjét.
+        - Hasznos lehet a Lemezkezelés konzol elindítása az "EFI rendszerpartíció" címkével rendelkező megfelelő rendszerpartíció azonosításához.
+        - Az azonosító lehet egyedi GUID, vagy lehet az alapértelmezett "Csizmadia".
+3. Futtassa a következő parancsokat a soros konzol engedélyezéséhez:
+
+    ```console
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON
+    ```
+
+    ```console
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
+    ```
+
+    - A parancsban cserélje le a helyére a \<VOLUME LETTER WHERE THE BCD FOLDER IS> BCD-mappa betűjét.
+    - A parancsban cserélje le \<BOOT LOADER IDENTIFIER> az parancsot az előző lépésben megtalált azonosítóra.
+4. Győződjön meg arról, hogy az operációsrendszer-lemez szabad területe nagyobb, mint a virtuális gép memóriájának mérete (RAM).
+
+    1. Ha nincs elég hely az operációsrendszer-lemezen, akkor módosítania kell a memóriakép fájljának helyét. Ahelyett, hogy a fájlt az operációsrendszer-lemezen hozza létre, áttekintheti a virtuális géphez csatlakoztatott bármely más adatlemezre, amely elegendő szabad hellyel rendelkezik. Ha módosítani szeretné a helyet, cserélje le a "% SystemRoot%" betűjelet a meghajtóbetűjelre (például "F:") az alábbi parancsokban szereplő adatlemezre.
+    2. Adja meg az alábbi parancsokat (a javasolt memóriakép konfigurációja):
+
+        Sérült operációsrendszer-lemez betöltése:
+
+        ```console
+        REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM
+        ```
+
+        Engedélyezés a ControlSet001:
+
+        ```console
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
+        ```
+
+        Engedélyezés a ControlSet002:
+
+        ```console
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
         ```
 
         Sérült operációsrendszer-lemez eltávolítása:
@@ -96,6 +146,6 @@ A probléma megoldásához először össze kell gyűjtenie az összeomláshoz t
     - Keresse meg a Memory. dmp fájlt, majd [küldjön el egy támogatási jegyet](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a memóriakép fájljával.
     - Ha nem sikerül megkeresni a Memory. dmp fájlt, előfordulhat, hogy [nem maszkolt megszakítási (NMI) hívásokat kíván használni a soros konzolon](serial-console-windows.md#use-the-serial-console-for-nmi-calls) . Az [összeomlási memóriakép fájljának NMI-hívásokkal történő létrehozásához](/windows/client-management/generate-kernel-or-complete-crash-dump)kövesse az útmutatót.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha problémák merülnek fel a helyi felhasználók és csoportok alkalmazása során, tekintse meg [a virtuális gép nem válaszol csoportházirend helyi felhasználók és csoportok házirend alkalmazásakor](unresponsive-vm-apply-group-policy.md)

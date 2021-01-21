@@ -3,16 +3,16 @@ title: Azure Service Bus előfizetési szabály SQL-szűrő szintaxisa | Microso
 description: Ez a cikk az SQL-szűrési nyelvtan részleteit ismerteti. Az SQL-szűrők az SQL-92 szabvány egy részhalmazát támogatják.
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: 9bff18b2161e419d728c360c9ed950ac2867fea8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 60f3cb6e85cef7a166c353f78cfb50405b962bdd
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498676"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633171"
 ---
 # <a name="subscription-rule-sql-filter-syntax"></a>Előfizetési szabály SQL-szűrési szintaxisa
 
-Az *SQL-szűrő* a Service Bus témakör-előfizetések egyik elérhető szűrőtípus. Ez egy szöveges kifejezés, amely az SQL-92 szabvány egy részhalmazára támaszkodik. A szűrési kifejezések a `sqlExpression` Azure Resource Manager sablonban található Service Bus "sqlFilter" tulajdonságának elemével `Rule` vagy [Azure Resource Manager template](service-bus-resource-manager-namespace-topic-with-rule.md)az Azure CLI `az servicebus topic subscription rule create` parancs [`--filter-sql-expression`](/cli/azure/servicebus/topic/subscription/rule?preserve-view=true&view=azure-cli-latest#az_servicebus_topic_subscription_rule_create) ARGUMENTUMával, valamint számos olyan SDK-függvénnyel használhatók, amelyek lehetővé teszik az előfizetés-szabályok kezelését.
+Az *SQL-szűrő* a Service Bus témakör-előfizetések egyik elérhető szűrőtípus. Ez egy szöveges kifejezés, amely az SQL-92 szabvány egy részhalmazára támaszkodik. A szűrési kifejezések a `sqlExpression` Azure Resource Manager sablonban található Service Bus "sqlFilter" tulajdonságának elemével `Rule` vagy [](service-bus-resource-manager-namespace-topic-with-rule.md)az Azure CLI `az servicebus topic subscription rule create` parancs [`--filter-sql-expression`](/cli/azure/servicebus/topic/subscription/rule#az_servicebus_topic_subscription_rule_create) ARGUMENTUMával, valamint számos olyan SDK-függvénnyel használhatók, amelyek lehetővé teszik az előfizetés-szabályok kezelését.
 
 Az Service Bus Premium a [JMS SQL-üzenet választójának szintaxisát](https://docs.oracle.com/javaee/7/api/javax/jms/Message.html) is támogatja a JMS 2,0 API-n keresztül.
 
@@ -321,7 +321,7 @@ sys.To NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','S
 C#-minta esetén tekintse [meg a githubon a témakör szűrők minta](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Azure.Messaging.ServiceBus/BasicSendReceiveTutorialwithFilters)című szakaszát.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [SQLFilter osztály (.NET-keretrendszer)](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
 - [SQLFilter osztály (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlfilter)

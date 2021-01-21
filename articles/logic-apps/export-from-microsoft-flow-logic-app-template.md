@@ -3,17 +3,19 @@ title: Folyamatok exportálása a Power Gyorsbüféból a Azure Logic Appsba
 description: Áttelepítheti a folyamatokat a Power Gyorsbüféból a Azure Logic Apps Azure Resource Manager sablonként való exportálással
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, sneshaf, pinath, logicappspm
 ms.topic: conceptual
-ms.date: 06/03/2020
-ms.openlocfilehash: 1c2f0a2c54be7adbc7b8babd596f18e08c67a024
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/20/2021
+ms.openlocfilehash: 2192ae5f3de551cb8ff2b6c36e233804c3c56bf1
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014414"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633247"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Folyamatok exportálása a Power Automate-ből és üzembe helyezés az Azure Logic Appsben
+
+> A 2020 októbere után létrehozott folyamatok esetében már nem lehet exportálni az Energiagazdálkodásból, és nem telepíthető a Azure Logic Appsba.
 
 A flow képességeinek bővítéséhez és kibővítéséhez áttelepítheti a folyamatot a [Power gyorsbüféból](https://flow.microsoft.com) a [Azure Logic Appsba](../logic-apps/logic-apps-overview.md). Exportálhatja a folyamatot Azure Resource Manager sablonként egy logikai alkalmazáshoz, üzembe helyezheti a logikai alkalmazás sablonját egy Azure-erőforráscsoporthoz, majd megnyithatja a logikai alkalmazást a Logic app Designerben.
 
@@ -82,7 +84,7 @@ További információ: [Grow up to Azure Logic apps](https://flow.microsoft.com/
 
    1. Ha elkészült, tekintse át a szükséges Azure-erőforrások létrehozásával és az Azure-előfizetés megfelelő számlázásával kapcsolatos **feltételeket és kikötéseket** .
 
-   1. Ha elkészült, válassza az Elfogadom a megvásárolt **feltételek és kikötések** lehetőséget  >  **Purchase**.
+   1. Ha elkészült, válassza az Elfogadom a megvásárolt **feltételek és kikötések** lehetőséget  >  .
 
       Az Azure a sablont logikai alkalmazásként telepíti a megadott erőforráscsoporthoz.
 
@@ -146,7 +148,7 @@ Ha a Visual studiót a Logic apps létrehozásához szükséges [előfeltételek
 
    1. Mentse a megoldást a logikai alkalmazás üzembe helyezése előtt.
 
-1. A Megoldáskezelőban nyissa meg a projekt helyi menüt, **Deploy** és válassza az  >  **új** telepítése lehetőséget. Ha szükséges, jelentkezzen be Azure-fiókjával.
+1. A Megoldáskezelőban nyissa meg a projekt helyi menüt, és válassza az  >  **új** telepítése lehetőséget. Ha szükséges, jelentkezzen be Azure-fiókjával.
 
 1. Amikor a rendszer kéri, erősítse meg az Azure-előfizetést, az Azure-erőforráscsoportot, valamint az üzembe helyezéshez használni kívánt egyéb beállításokat, például a sablon paramétereinek átadásához használandó [paramétereket](../azure-resource-manager/templates/parameter-files.md) , majd válassza a **telepítés** lehetőséget.
 
@@ -172,7 +174,7 @@ Ha a Visual studiót a Logic apps létrehozásához szükséges [előfeltételek
 
 További információ ezekről az üzembe helyezési lépésekről: rövid útmutató [: automatizált feladatok, folyamatok és munkafolyamatok létrehozása Azure Logic apps-Visual Studióval](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-to-Azure)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az [Azure Logic apps-összekötők számára](../connectors/apis-list.md)
 * További információ a [Azure Logic apps](../logic-apps/logic-apps-overview.md)

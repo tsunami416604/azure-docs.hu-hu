@@ -3,12 +3,12 @@ title: Események kézbesítésének hitelesítése az eseménykezelők számár
 description: Ez a cikk bemutatja, hogyan hitelesíthető a kézbesítés az eseménykezelők számára a Azure Event Gridban.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 8360aa49e3d83879499af79448ff9f85082f47ac
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 98d7a4a0dee6c355ec340668bef7d8b306f97496
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015538"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633120"
 ---
 # <a name="authenticate-event-delivery-to-event-handlers-azure-event-grid"></a>Események kézbesítésének hitelesítése az eseménykezelők számára (Azure Event Grid)
 Ez a cikk tájékoztatást nyújt az események az eseménykezelők számára történő hitelesítéséről. Azt is bemutatja, hogyan védheti meg az Event Grid események fogadására használt webhook-végpontokat Azure Active Directory (Azure AD) vagy közös titok használatával.
@@ -35,7 +35,7 @@ Az Azure AD segítségével biztonságossá teheti a webhook-végpontot, amely a
 ### <a name="using-client-secret-as-a-query-parameter"></a>Az ügyfél titkos kulcsa lekérdezési paraméterként
 A webhook-végpontot úgy is biztonságossá teheti, ha lekérdezési paramétereket ad hozzá a webhook cél URL-címéhez, amely az esemény-előfizetés létrehozása részeként van megadva. Állítsa be az egyik lekérdezési paramétert, hogy az ügyfél titka legyen, például egy [hozzáférési jogkivonat](https://en.wikipedia.org/wiki/Access_token) vagy egy közös titok. Event Grid szolgáltatás tartalmazza az összes lekérdezési paramétert minden esemény kézbesítési kérelmében a webhookban. A webhook szolgáltatás lekérheti és érvényesítheti a titkos kulcsot. Ha az ügyfél titkos kulcsát frissíti, a rendszer az esemény-előfizetést is frissítenie kell. Ha el szeretné kerülni a kézbesítési hibákat a titkos rotáció során, akkor a webhook a régi és az új titkos kulcsot is elfogadja korlátozott időtartamra, mielőtt frissíti az esemény-előfizetést az új titokkal. 
 
-Mivel a lekérdezési paraméterek tartalmazhatják az ügyfél titkos kulcsait, a rendszer extra gondossággal kezeli őket. A rendszer titkosított formában tárolja őket, és nem érhető el a szolgáltatási operátorok számára. Nincsenek naplózva a szolgáltatási naplók/Nyomkövetések részeként. Az esemény-előfizetés tulajdonságainak beolvasása során a rendszer alapértelmezés szerint nem adja vissza a cél lekérdezési paramétereket. Például: [--include-Full-Endpoint-URL](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) paramétert kell használni az Azure [CLI](/cli/azure?view=azure-cli-latest)-ben.
+Mivel a lekérdezési paraméterek tartalmazhatják az ügyfél titkos kulcsait, a rendszer extra gondossággal kezeli őket. A rendszer titkosított formában tárolja őket, és nem érhető el a szolgáltatási operátorok számára. Nincsenek naplózva a szolgáltatási naplók/Nyomkövetések részeként. Az esemény-előfizetés tulajdonságainak beolvasása során a rendszer alapértelmezés szerint nem adja vissza a cél lekérdezési paramétereket. Például: [--include-Full-Endpoint-URL](/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-show) paramétert kell használni az Azure [CLI](/cli/azure)-ben.
 
 További információ az események webhookok általi kézbesítéséről: [webhook-esemény kézbesítése](webhook-event-delivery.md)
 
@@ -46,5 +46,5 @@ A Azure Event Grid csak a **https** webhook-végpontokat támogatja.
 Ha már ismeri a Event Gridt, előfordulhat, hogy a visszaélések megelőzése érdekében a végpont-ellenőrzési kézfogást ismeri. A CloudEvents 1.0-s verziójában a **http-beállítások** módszer használatával valósítja meg a saját [visszaélés elleni védelem szemantikai](webhook-event-delivery.md) beállításait. További információ: [HTTP 1,1 Webhookok az Event Delivery – 1,0-es verzióhoz](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection). Ha a kimenethez a CloudEvents sémát használja, akkor a Event Grid a Event Grid érvényesítési esemény mechanizmusa helyett az CloudEvents 1.0-s verziójának védelme funkciót használja. További információ: [a CloudEvents 1.0-s verziójának használata Event Grid használatával](cloudevents-schema.md). 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a [közzétételi ügyfelek hitelesítése](security-authenticate-publishing-clients.md) című témakört, amelyből megtudhatja, hogyan hitelesítheti az ügyfeleket a témakörök vagy tartományok számára 

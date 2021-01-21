@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: c04f3b27c7214dcf821c7698796bfaea399b947d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8279aee4a0df8155b23e6f984d259bf92555dc95
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86509103"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632833"
 ---
 # <a name="windows-stop-error---0x000000ef-critical-process-died"></a>Windows Stop Error-#0x000000EF "kritikus folyamat meghalt"
 
@@ -38,6 +38,9 @@ Ezt általában az okozza, hogy egy kritikus rendszerfolyamat nem működik a re
 ## <a name="solution"></a>Megoldás
 
 ### <a name="process-overview"></a>Folyamat áttekintése:
+
+> [!TIP]
+> Ha a virtuális gép nemrég készült biztonsági másolattal rendelkezik, a rendszerindítási probléma megoldásához próbálja meg [visszaállítani a virtuális gépet a biztonsági mentésből](../../backup/backup-azure-arm-restore-vms.md) .
 
 1. Hozzon létre és nyissa meg a javítási virtuális gépet.
 2. Javítsa ki az operációs rendszer sérülését.

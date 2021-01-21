@@ -3,12 +3,12 @@ title: Az Azure Service Bus-üzenetkezelés áttekintése | Microsoft Docs
 description: Ez a cikk átfogó áttekintést nyújt a Azure Service Busről, amely egy teljes körűen felügyelt Enterprise Integration Message Broker.
 ms.topic: overview
 ms.date: 11/20/2020
-ms.openlocfilehash: 70e9d966a14f78866d72865eed4cbb2dfd6c18dd
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: d9103557eb7b32f376ba6590bbca5f557bf32764
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755735"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632867"
 ---
 # <a name="what-is-azure-service-bus"></a>Mi az Azure Service Bus?
 A Microsoft Azure Service Bus egy teljes körűen felügyelt vállalati üzenetsor az üzenetsor-kezelés és a közzététel – előfizetés témakörökben. Service Bus az alkalmazások és szolgáltatások egymástól való elválasztására szolgálnak, a következő előnyöket biztosítva:
@@ -138,11 +138,11 @@ A nemkívánatos forgalom elleni védelem érdekében Service Bus olyan [biztons
 
 Az Azure SDK-n keresztül teljes mértékben támogatott Service Bus ügyféloldali kódtárak érhetők el.
 
-- [.NET-Azure Service Bus](/dotnet/api/overview/azure/service-bus?preserve-view=true&view=azure-dotnet)
-- [Java-kódtárak Azure Service Bus](/java/api/overview/azure/servicebus?preserve-view=true&view=azure-java-stable)
+- [.NET-Azure Service Bus](/dotnet/api/overview/azure/service-bus?preserve-view=true)
+- [Java-kódtárak Azure Service Bus](/java/api/overview/azure/servicebus?preserve-view=true)
 - [Azure Service Bus-szolgáltató a Java JMS 2,0-hez](how-to-use-java-message-service-20.md)
-- [A JavaScript és az írógéppel Azure Service Bus moduljai](/javascript/api/overview/azure/service-bus?preserve-view=true&view=azure-node-latest)
-- [Azure Service Bus kódtárak a Pythonhoz](/python/api/overview/azure/servicebus?preserve-view=true&view=azure-python)
+- [A JavaScript és az írógéppel Azure Service Bus moduljai](/javascript/api/overview/azure/service-bus?preserve-view=true)
+- [Azure Service Bus kódtárak a Pythonhoz](/python/api/overview/azure/servicebus?preserve-view=true)
 
 [Azure Service Bus ' az elsődleges protokoll a AMQP 1,0](service-bus-amqp-overview.md) , és bármely AMQP 1,0-kompatibilis protokoll-ügyfélről használható. Számos nyílt forráskódú AMQP-ügyfél olyan mintákat tartalmaz, amelyek kifejezetten bemutatják Service Bus együttműködési képességet. Tekintse át a [AMQP 1,0 protokoll útmutatóját](service-bus-amqp-protocol-guide.md) , amelyből megtudhatja, hogyan használhatja a AMQP 1,0-ügyfeleket közvetlenül a Service Bus funkcióit.
 
@@ -159,7 +159,7 @@ Service Bus teljes mértékben integrálható a Microsoft és az Azure számos s
 * [Dynamics 365](https://dynamics.microsoft.com)
 * [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Service Bus-üzenetküldéssel való megismerkedéshez tekintse meg a következő cikkeket:
 

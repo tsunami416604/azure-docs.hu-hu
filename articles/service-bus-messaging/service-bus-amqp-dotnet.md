@@ -3,12 +3,12 @@ title: Azure Service Bus .NET-tel és AMQP 1,0 | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan használható a Azure Service Bus egy .NET-alkalmazásból a AMQP (Advanced Messaging Queueing Protocol) használatával.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 0d6d7d01a56d2e7068f9c4ccb8ec505914a31ecf
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 20800363327aefda073cd484dc737b28e60466a7
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233933"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632850"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>Service Bus használata a .NET-ről a AMQP 1,0 használatával
 
@@ -107,12 +107,12 @@ A AMQP használata során a Service Bus .NET API viselkedése némileg különb�
 
 A [.NET API](/dotnet/api/) -k számos beállítást tesznek elérhetővé az AMQP protokoll működésének szabályozásához:
 
-* **[MessageReceiver. PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver.prefetchcount?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)**: a hivatkozásra alkalmazott kezdeti jóváírást vezérli. Az alapértelmezett érték a 0.
-* **[MessagingFactorySettings. AmqpTransportSettings. MaxFrameSize](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.maxframesize?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)**: szabályozza a maximális AMQP, amely a csatlakozáskor az egyeztetés során elérhető. Az alapértelmezett érték 65 536 bájt.
-* **[MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)**: Ha az átvitelek kötegeltek, ez az érték határozza meg a leküldések küldésének maximális késleltetését. Alapértelmezés szerint a küldők/fogadók öröklik. Az egyéni küldő/fogadó felülbírálhatja az alapértelmezett értéket, ami 20 ezredmásodperc.
-* **[MessagingFactorySettings. AmqpTransportSettings. UseSslStreamSecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)**: azt határozza meg, hogy a AMQP kapcsolatok létesítettek-e TLS-kapcsolaton keresztül. Az alapértelmezett érték a **true (igaz**).
+* **[MessageReceiver. PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver.prefetchcount#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)**: a hivatkozásra alkalmazott kezdeti jóváírást vezérli. Az alapértelmezett érték a 0.
+* **[MessagingFactorySettings. AmqpTransportSettings. MaxFrameSize](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.maxframesize#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)**: szabályozza a maximális AMQP, amely a csatlakozáskor az egyeztetés során elérhető. Az alapértelmezett érték 65 536 bájt.
+* **[MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)**: Ha az átvitelek kötegeltek, ez az érték határozza meg a leküldések küldésének maximális késleltetését. Alapértelmezés szerint a küldők/fogadók öröklik. Az egyéni küldő/fogadó felülbírálhatja az alapértelmezett értéket, ami 20 ezredmásodperc.
+* **[MessagingFactorySettings. AmqpTransportSettings. UseSslStreamSecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)**: azt határozza meg, hogy a AMQP kapcsolatok létesítettek-e TLS-kapcsolaton keresztül. Az alapértelmezett érték a **true (igaz**).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Készen áll a tanulásra? Látogasson el a következő hivatkozásokra:
 
@@ -120,10 +120,10 @@ Készen áll a tanulásra? Látogasson el a következő hivatkozásokra:
 * [AMQP 1.0 protokoll – útmutató]
 
 [Create a Service Bus namespace using the Azure portal]: service-bus-create-namespace-portal.md
-[DataContractSerializer]: /dotnet/api/system.runtime.serialization.datacontractserializer?view=netcore-3.1
-[BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azureservicebus-4.0.0
-[Microsoft.ServiceBus.Messaging.MessagingFactory.AcceptMessageSession]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory.acceptmessagesession?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessagingFactory_AcceptMessageSession
-[OperationTimeout]: /dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessagingFactorySettings_OperationTimeout
+[DataContractSerializer]: /dotnet/api/system.runtime.serialization.datacontractserializer
+[BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
+[Microsoft.ServiceBus.Messaging.MessagingFactory.AcceptMessageSession]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory.acceptmessagesession#Microsoft_ServiceBus_Messaging_MessagingFactory_AcceptMessageSession
+[OperationTimeout]: /dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout#Microsoft_ServiceBus_Messaging_MessagingFactorySettings_OperationTimeout
 [NuGet]: https://nuget.org/packages/WindowsAzure.ServiceBus/
 [Azure portal]: https://portal.azure.com
 [Service Bus AMQP áttekintése]: service-bus-amqp-overview.md

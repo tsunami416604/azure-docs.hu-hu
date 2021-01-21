@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: yelevin
-ms.openlocfilehash: b37675d46d501fc43446eafc83d6c0a02f238177
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: bb188aa79015c2123b9d9d8b6baf277dfadf2f9c
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655952"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633044"
 ---
 # <a name="connect-azure-defender-alert-data-from-azure-security-center"></a>Azure Defender-riasztási adatok összekötése Azure Security Center
 
@@ -39,6 +39,8 @@ Az Azure Defender riasztási összekötő használatával betöltheti az Azure D
 1. Ha az Azure Defender-riasztások esetében a Log Analytics vonatkozó sémát szeretné használni, keresse meg a **SecurityAlert**.
 
 ## <a name="next-steps"></a>Következő lépések
+
 Ebből a dokumentumból megtanulta, hogyan csatlakoztatható az Azure Defender az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

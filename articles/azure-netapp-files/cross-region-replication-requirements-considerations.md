@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/16/2020
+ms.date: 01/20/2021
 ms.author: b-juche
-ms.openlocfilehash: 7b664dcd1cb12808960ffacf91c6d02d58632c4e
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 4a4fff18d21ccb0c729ecb1f79df17225c8086bc
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95243137"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632673"
 ---
 # <a name="requirements-and-considerations-for-using-cross-region-replication"></a>A régiók közötti replikáció használatára vonatkozó követelmények és szempontok 
 
@@ -31,6 +31,7 @@ Vegye figyelembe az alábbi követelményeket és szempontokat a Azure NetApp Fi
 * Azure NetApp Files replikáció csak bizonyos rögzített régiós párokban érhető el. Lásd: [támogatott régió párok](cross-region-replication-introduction.md#supported-region-pairs). 
 * Az SMB-kötetek az NFS-kötetekkel együtt támogatottak. Az SMB-kötetek replikálásához Active Directory kapcsolat szükséges a forrás-és a cél NetApp-fiókokban. A cél AD-kapcsolatnak hozzáféréssel kell rendelkeznie a DNS-kiszolgálókhoz, vagy hozzá kell adnia azokat a tartományvezérlőket, amelyek elérhetők a célként megadott régióban lévő delegált alhálózatból. További információ: [Active Directory kapcsolatokra vonatkozó követelmények](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections). 
 * A célként megadott fióknak a forrás kötet régiójától eltérő régióban kell lennie. Másik régióban is kiválaszthat egy meglévő NetApp-fiókot.  
+* A replikálási cél kötete csak olvasható, amíg át nem adja a rendeltetési [régiónak](cross-region-replication-manage-disaster-recovery.md#fail-over-to-destination-volume) , hogy a cél kötetet olvasási és írási célra engedélyezze. 
 * Azure NetApp Files replikáció jelenleg nem támogatja több előfizetést; az összes replikációt egyetlen előfizetés alatt kell végrehajtani.
 * Régiónként legfeljebb öt kötetet állíthat be egy adott előfizetésen belül. A támogatási jegyet megnyitva kérheti, hogy a rendszer az öt replikációs célként megadott kötet alapértelmezett kvótáját (egy adott régióban előfizetésben) növelje. 
 * Akár öt percet is igénybe vehet, amíg a felület egy újonnan hozzáadott pillanatképet tükröz a forrás köteten.  
@@ -41,11 +42,11 @@ Vegye figyelembe az alábbi követelményeket és szempontokat a Azure NetApp Fi
 * Nem lehet visszaállítani olyan pillanatképet, amely a replikálási cél kötetének létrehozása előtt lett elvégezve.
 
 ## <a name="next-steps"></a>Következő lépések
-* [Kötet replikálásának létrehozása](cross-region-replication-create-peering.md)
+* [Kötetreplikáció létrehozása](cross-region-replication-create-peering.md)
 * [Replikációs kapcsolat állapotának megjelenítése](cross-region-replication-display-health-status.md)
 * [Vészhelyreállítás kezelése](cross-region-replication-manage-disaster-recovery.md)
 * [Kötet replikációs metrikái](azure-netapp-files-metrics.md#replication)
-* [Kötetek replikálásának vagy köteteinek törlése](cross-region-replication-delete.md)
+* [Kötetreplikációk vagy kötetek törlése](cross-region-replication-delete.md)
 * [Régiók közötti replikáció hibaelhárítása](troubleshoot-cross-region-replication.md)
 
 
