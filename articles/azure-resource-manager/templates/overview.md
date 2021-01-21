@@ -2,13 +2,13 @@
 title: Sablonok – Áttekintés
 description: A Azure Resource Manager-sablonok (ARM-sablonok) használatának előnyeit ismerteti az erőforrások üzembe helyezéséhez.
 ms.topic: conceptual
-ms.date: 12/17/2020
-ms.openlocfilehash: c4995791b784351219458c546442d082e2396315
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.date: 01/20/2021
+ms.openlocfilehash: dd9207ca1d0397b7dce63eb826567f07b1d0b892
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657311"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621839"
 ---
 # <a name="what-are-arm-templates"></a>Mik azok az ARM-sablonok?
 
@@ -125,6 +125,12 @@ Ha elképzeli, hogy a rétegek külön életciklusokkal rendelkeznek, akkor a h�
 ![rétegsablon](./media/overview/tier-templates.png)
 
 A beágyazott sablonokkal kapcsolatos további információkért lásd: [Kapcsolt sablonok használata az Azure Resource Manager eszközben](linked-templates.md).
+
+## <a name="share-templates"></a>Sablonok megosztása
+
+A sablon létrehozása után előfordulhat, hogy meg szeretné osztani a szervezet más felhasználóival. A [sablon specifikációi](template-specs.md) lehetővé teszik a sablon erőforrás-típusként való tárolását. Szerepköralapú hozzáférés-vezérlés használatával kezelheti a sablonhoz való hozzáférést. Azok a felhasználók, akik olvasási hozzáféréssel rendelkeznek a sablonhoz, a specifikációt telepíthetik, de nem változtathatják meg a sablont.
+
+Ez a módszer azt jelenti, hogy biztonságosan megoszthatja a szervezet szabványainak megfelelő sablonokat.
 
 ## <a name="next-steps"></a>Következő lépések
 

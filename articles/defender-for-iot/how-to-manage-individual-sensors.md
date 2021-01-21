@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 68fa3ea15199ec1d9cc99f92f497847fb029acd6
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 16031c3d67b075e962c73fbb38ada36c7efeddad
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539575"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621214"
 ---
 # <a name="manage-individual-sensors"></a>Különálló érzékelők kezelése
 
@@ -315,7 +315,7 @@ Ha a tanúsítványokat és a kulcsokat különböző formátumokra szeretné á
 
 ## <a name="connect-a-sensor-to-the-management-console"></a>Érzékelő összekötése a Felügyeleti konzollal
 
-Ez a szakasz az érzékelő és a helyszíni felügyeleti konzol közötti kapcsolat biztosítását ismerteti. Akkor tegye ezt, ha gapped hálózaton dolgozik, és az érzékelőből az eszköz-és riasztási adatokat szeretné elküldeni a felügyeleti konzolra. Ez a kapcsolódás azt is lehetővé teszi, hogy a felügyeleti konzol leküldje a rendszerbeállításokat az érzékelőre, és más felügyeleti feladatokat hajtson végre az érzékelőn.
+Ez a szakasz az érzékelő és a helyszíni felügyeleti konzol közötti kapcsolat biztosítását ismerteti. Ezt akkor kell megtennie, ha gapped hálózaton dolgozik, és az érzékelőtől az eszköz-és riasztási adatokat szeretné elküldeni a felügyeleti konzolra. Ez a kapcsolódás azt is lehetővé teszi, hogy a felügyeleti konzol leküldje a rendszerbeállításokat az érzékelőre, és más felügyeleti feladatokat hajtson végre az érzékelőn.
 
 A kapcsolódáshoz:
 
@@ -562,7 +562,7 @@ A Rendszertulajdonságok elérése:
 
 3. Válassza ki a **rendszer tulajdonságai** elemet az **általános** szakaszban.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 [Veszélyforrások elleni kutatás és csomagok](how-to-work-with-threat-intelligence-packages.md)
 

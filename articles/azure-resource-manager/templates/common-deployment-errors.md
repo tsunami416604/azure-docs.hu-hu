@@ -3,13 +3,13 @@ title: Gyakori üzembehelyezési hibák elhárítása
 description: Ismerteti, Hogyan oldhatók fel a gyakori hibák, amikor erőforrásokat helyez üzembe az Azure-ban Azure Resource Manager használatával.
 tags: top-support-issue
 ms.topic: troubleshooting
-ms.date: 09/09/2020
-ms.openlocfilehash: 785a74184cae8523b99da7f647ca87fda53c8648
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 01/20/2021
+ms.openlocfilehash: bb701baf164cfd6ba1dd5c670a406343e83c5c70
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185827"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622811"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Gyakori Azure-beli üzembe helyezési hibák elhárítása az Azure Resource Managerrel
 
@@ -34,7 +34,7 @@ Ha egy hibakódra vonatkozó információt keres, és ez a cikk nem tartalmaz in
 | DeploymentNameLengthLimitExceeded | A központi telepítési nevek legfeljebb 64 karakterből állhatnak.  | |
 | DeploymentFailed | A DeploymentFailed hiba általános hiba, amely nem adja meg a hiba megoldásához szükséges adatokat. Tekintse meg a hiba részletes adatait, amely további információkat tartalmaz. | [Hibakód keresése](#find-error-code) |
 | DeploymentQuotaExceeded | Ha eléri a 800-es üzemelő példányok számát egy erőforráscsoport esetében, törölje a már nem szükséges előzményekből származó központi telepítéseket. | [Hiba elhárítása, ha a központi telepítés száma meghaladja a 800](deployment-quota-exceeded.md) |
-| DeploymentSizeExceeded | Egyszerűsítse a sablont a méret csökkentése érdekében. | [Sablon méretével kapcsolatos hibák elhárítása](error-job-size-exceeded.md) |
+| DeploymentJobSizeExceeded | Egyszerűsítse a sablont a méret csökkentése érdekében. | [Sablon méretével kapcsolatos hibák elhárítása](error-job-size-exceeded.md) |
 | DnsRecordInUse | A DNS-rekord nevének egyedinek kell lennie. Adjon meg másik nevet. | |
 | ImageNotFound | A VM-rendszerkép beállításainak megtekintése. |  |
 | InUseSubnetCannotBeDeleted | Ez a hiba akkor fordulhat elő, ha egy erőforrást próbál frissíteni, és az erőforrás törlésével és létrehozásával dolgozza fel a kérést. Győződjön meg arról, hogy az összes változatlan értéket meg kell adni. | [Erőforrás frissítése](/azure/architecture/building-blocks/extending-templates/update-resource) |

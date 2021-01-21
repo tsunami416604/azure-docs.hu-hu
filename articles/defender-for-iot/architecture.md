@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/13/2021
 ms.author: shhazam
-ms.openlocfilehash: f3239434a7ba737bc9323bc4f383afd794800db1
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 66b960bf874cc46985230e488c749663eff0b835
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201475"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621097"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>Azure Defender a IoT architektúrához
 
@@ -81,7 +81,7 @@ Az Azure Defender a hibrid környezetekben való IoT két felügyeleti portálon
 - Azure Portal
 
 ### <a name="sensor-console"></a>Érzékelő konzol
-Az érzékelők észlelései az érzékelő konzolján jelennek meg, ahol megtekinthetők, megtekinthetők és elemezhetők egy hálózati Térkép, az eszközök leltára, valamint a jelentések széles köre, például a kockázatértékelési jelentések, az adatbányászati lekérdezések és a támadási vektorok. A-konzol segítségével megtekintheti és kezelheti az érzékelő-motorok által észlelt fenyegetéseket, továbbíthatja az információkat a partneri rendszereknek, kezelheti a felhasználókat és egyéb műveleteket is.
+Az érzékelők észlelései az érzékelő konzolján jelennek meg, ahol megtekinthetők, megtekinthetők és elemezhetők egy hálózati Térkép, az eszközök leltára és a jelentések széles köre, például a kockázatértékelési jelentések, az adatbányászati lekérdezések és a támadási vektorok. A-konzol segítségével megtekintheti és kezelheti az érzékelő-motorok által észlelt fenyegetéseket, továbbíthatja az információkat a partneri rendszereknek, kezelheti a felhasználókat és egyéb műveleteket is.
 
 :::image type="content" source="./media/architecture/sensor-console-v2.png" alt-text="Defender a IoT-érzékelő konzolján":::
 
@@ -96,7 +96,7 @@ A felügyeleti konzol a magas rendelkezésre állású konfigurációhoz helyezh
 
 A SOC-munkafolyamatokkal szorosan integrálva és a könyvek futtatásával egyszerűen rangsorolhatja a kockázatcsökkentő tevékenységeket és a fenyegetések közötti összefüggéseket.
 
-- Holisztikus – a bonyolultság csökkentése egyetlen egységesített platformmal az eszközkezelés, a kockázatkezelés és a sebezhetőségek kezelése terén, valamint a fenyegetések figyelése az incidensek megválaszolásával.
+- Holisztikus – a bonyolultság csökkentése egyetlen, egységes platformmal az eszközkezelés, a kockázatkezelés és a sebezhetőségek kezelése terén, valamint az incidensek figyelése az incidensek megválaszolásával.
 
 - Összesítés és korreláció – az összes helyről összegyűjtött adatok és riasztások megjelenítése, összesítése és elemzése.
 

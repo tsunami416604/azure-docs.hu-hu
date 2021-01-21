@@ -1,5 +1,5 @@
 ---
-title: Telemetria küldése az Azure IoT Hub rövid útmutatóba (Android) | Microsoft Docs
+title: Gyors útmutató – telemetria küldése az Azure IoT Hub gyors útmutatóba (Android) | Microsoft Docs
 description: Ebben a rövid útmutatóban egy minta Android-alkalmazást futtat, amely szimulált telemetria küld egy IoT hubhoz, és beolvassa a telemetria a IoT hub-ból a felhőben történő feldolgozásra.
 author: wesmc7777
 manager: philmea
@@ -14,12 +14,12 @@ ms.custom:
 - devx-track-azurecli
 ms.date: 03/15/2019
 ms.author: wesmc
-ms.openlocfilehash: d9598f7a0bc8e4a8b92ac53612023585eb19f4c4
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: dd622f0d55be000e2318c53f200bebf49c373724
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121515"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624320"
 ---
 # <a name="quickstart-send-iot-telemetry-from-an-android-device"></a>Gyors útmutató: IoT telemetria küldése Android-eszközről
 
@@ -100,7 +100,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Telemetriai adatok kiolvasása a központból
 
-Ebben a szakaszban a Azure Cloud Shell és a [IoT bővítmény](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) használatával figyelheti az Android-eszköz által küldött üzeneteket.
+Ebben a szakaszban a Azure Cloud Shell és a [IoT bővítmény](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest&preserve-view=true) használatával figyelheti az Android-eszköz által küldött üzeneteket.
 
 1. Az Azure Cloud Shell használatával futtassa a következő parancsot az IoT Hubhoz történő csatlakozáshoz és az üzenetek olvasásához:
 

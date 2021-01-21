@@ -17,19 +17,19 @@ ms.date: 1/19/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05a514debcf8036a296bbe66b2dd75c7dacacdc2
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 4c7d02b48d30fa558f8fd12f92705046dab74057
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600748"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624235"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Jelentések kiépítési jelentései a Azure Active Directory portálon (előzetes verzió)
 
 A Azure Active Directory (Azure AD) jelentéskészítési architektúrája a következő összetevőkből áll:
 
 - **Tevékenység** 
-    - **Bejelentkezések** – információk a felügyelt alkalmazások és a felhasználói bejelentkezési tevékenységek használatáról.
+    - **Bejelentkezések** – a felügyelt alkalmazások használatáról és a felhasználói bejelentkezési tevékenységekről szóló információk.
     - **Naplók**  -  A [naplók](concept-audit-logs.md) rendszertevékenységi információkat biztosítanak a felhasználókról és a csoport kezeléséről, a felügyelt alkalmazásokról és a címtárbeli tevékenységekről.
     - **Naplók** kiosztása – rendszertevékenység nyújtása az Azure ad-kiépítési szolgáltatás által kiépített felhasználókkal, csoportokkal és szerepkörökkel kapcsolatban. 
 
@@ -37,7 +37,11 @@ A Azure Active Directory (Azure AD) jelentéskészítési architektúrája a kö
     - **Kockázatos bejelentkezések** – a [kockázatos bejelentkezés](../identity-protection/overview-identity-protection.md) egy olyan bejelentkezési kísérletre utal, amelyet a felhasználói fiók jogos tulajdonosaként elvégeztek.
     - **Kockázatnak** kitett felhasználók – a [kockázatos felhasználók](../identity-protection/overview-identity-protection.md) egy olyan felhasználói fiókra vonatkozó jelző, amely esetleg sérült.
 
-Ez a témakör áttekintést nyújt a kiépítési jelentésről.
+Ez a témakör áttekintést nyújt a kiépítési naplókról. A következő kérdésekre adnak választ: 
+
+* Milyen csoportokat sikerült létrehozni a ServiceNow-ben?
+* Milyen felhasználókat sikerült eltávolítani az Adobe-ból?
+* A munkanapon belül sikeresen létrejöttek a felhasználók a Active Directory? 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -52,14 +56,16 @@ Ez a témakör áttekintést nyújt a kiépítési jelentésről.
 
 A bérlőnek prémium szintű Azure AD licenccel kell rendelkeznie ahhoz, hogy láthassa a teljes kiépítési tevékenység jelentését. A Azure Active Directory kiadásának frissítéséhez tekintse meg a [prémium szintű Azure Active Directory első lépéseivel foglalkozó](../fundamentals/active-directory-get-started-premium.md) témakört. 
 
-## <a name="provisioning-logs"></a>Üzembehelyezési naplók
 
-A kiépítési naplók a következő kérdésekre adnak választ:
+## <a name="ways-of-interacting-with-the-provisioning-logs"></a>A kiépítési naplókkal való interakció módjai 
+Az ügyfelek négyféle módon vehetik igénybe a kiépítési naplókat:
 
-* Milyen csoportokat sikerült létrehozni a ServiceNow-ben?
-* Milyen felhasználókat sikerült eltávolítani az Adobe-ból?
-* Mely felhasználók lettek sikeresen létrehozva a DropBoxban?
+1. A naplók elérése a Azure Portal az alább leírtak szerint.
+1. A kiépítési naplók továbbítása a [Azure monitorba](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics), amely lehetővé teszi a kiterjesztett adatmegőrzést, az egyéni irányítópultok, riasztások és lekérdezések létrehozását.
+1. A kiépítési naplók [Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) -ját kérdezi le.
+1. A kiépítési naplók letöltése CSV-fájlként vagy JSON-ként.
 
+## <a name="access-the-logs-from-the-azure-portal"></a>A naplók elérése a Azure Portal
 A kiépítési naplókat úgy érheti el, ha kijelöli a **kiépítési** naplókat a [Azure Portal](https://portal.azure.com) **Azure Active Directory** paneljének **figyelés** szakaszában. Akár két órát is igénybe vehet, hogy egyes kiépítési rekordok megjelenjenek a portálon.
 
 ![Üzembehelyezési naplók](./media/concept-provisioning-logs/access-provisioning-logs.png "Üzembehelyezési naplók")
@@ -205,10 +211,57 @@ A **hibakeresés és javaslatok** lap a hibakódot és az okot adja meg. A hiba 
 
 A **módosított tulajdonságok** a régi értéket és az új értéket jelenítik meg. Olyan esetekben, amikor nincs régi érték, a régi érték oszlop üres. 
 
-
 ### <a name="summary"></a>Összefoglalás
 
 Az **Összefoglalás** lapon áttekintheti, hogy mi történt, és milyen azonosítókat tartalmaz a forrás és a cél rendszer objektumához. 
+
+## <a name="download-logs-as-csv-or-json"></a>Naplók letöltése CSV-ként vagy JSON-ként
+
+A kiépítési naplókat később is letöltheti, ha a Azure Portal lévő naplókra navigál, és a letöltés gombra kattint. A rendszer a kiválasztott szűrési feltételek alapján szűri a fájlt. Előfordulhat, hogy a lehető legpontosabban szeretné megtenni a szűrőket, hogy csökkentse a letöltéshez szükséges időt és a letöltés méretét. A CSV-letöltés három fájlba van bontva:
+
+* ProvisioningLogs: az összes naplót letölti, a kiépítési lépések és a módosított tulajdonságok kivételével.
+* ProvisioningLogs_ProvisioningSteps: a kiépítési lépéseket és a módosítási azonosítót tartalmazza. A módosítási azonosító segítségével csatlakozhat az eseményhez a másik két fájllal.
+* ProvisioningLogs_ModifiedProperties: a módosított attribútumokat és a módosítási azonosítót tartalmazza. A módosítási azonosító segítségével csatlakozhat az eseményhez a másik két fájllal.
+
+#### <a name="opening-the-json-file"></a>A JSON-fájl megnyitása
+A JSON-fájl megnyitásához használjon egy szövegszerkesztőt, például a [Microsoft Visual Studio Code](https://aka.ms/vscode)-ot. A Visual Studio Code megkönnyíti az olvasást a szintaxis kiemelésének megadásával. A JSON-fájl nem szerkeszthető formátumban is megnyitható böngészőkkel, például a [Microsoft Edge](https://aka.ms/msedge) használatával. 
+
+#### <a name="prettifying-the-json-file"></a>A JSON-fájl prettifying
+A letöltött JSON-fájl a letöltés méretének csökkentése érdekében minified formátumban van letöltve. Ez a megoldás viszont nehezen olvasható lehet. Tekintse meg a következő két lehetőséget a fájl szépít:
+
+1. A JSON formázása a Visual Studio Code használatával
+
+Kövesse az [itt](https://code.visualstudio.com/docs/languages/json#_formatting) megadott utasításokat a JSON-fájl Visual Studio Code használatával történő formázásához.
+
+2. A JSON formázása a PowerShell használatával
+
+Ez a szkript a JSON-t egy prettified formátumban jeleníti meg, tabulátorokkal és szóközökkel. 
+
+` $JSONContent = Get-Content -Path "<PATH TO THE PROVISIONING LOGS FILE>" | ConvertFrom-JSON`
+
+`$JSONContent | ConvertTo-Json > <PATH TO OUTPUT THE JSON FILE>`
+
+#### <a name="parsing-the-json-file"></a>A JSON-fájl elemzése
+
+Íme néhány példa arra, hogy hogyan használható a JSON-fájl a PowerShell használatával. Bármilyen programozási nyelvet használhat, amellyel Ön is kényelmesen használható.  
+
+Először [olvassa el a JSON-fájlt a](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json?view=powershell-7.1) következő futtatásával:
+
+` $JSONContent = Get-Content -Path "<PATH TO THE PROVISIONING LOGS FILE>" | ConvertFrom-JSON`
+
+Most már elemezheti az adatait a forgatókönyv szerint. Íme néhány példa erre: 
+
+1. A JsonFile összes jobIDs kimenete
+
+`foreach ($provitem in $JSONContent) { $provitem.jobId }`
+
+2. Az összes changeIds kimenetének kihagyása, ha a művelet "létrehozás"
+
+`foreach ($provitem in $JSONContent) { `
+`   if ($provItem.action -eq 'Create') {`
+`       $provitem.changeId `
+`   }`
+`}`
 
 ## <a name="what-you-should-know"></a>Alapismeretek
 
@@ -234,21 +287,21 @@ Az alábbi táblázat segítségével jobban megismerheti, Hogyan oldhatók meg 
 |InsufficientRights, MethodNotAllowed, NotPermitted, jogosulatlan| Az Azure AD képes volt hitelesíteni a megcélzott alkalmazást, de nem jogosult a frissítés végrehajtására. Tekintse át a célalkalmazás által biztosított utasításokat, valamint az alkalmazásra vonatkozó [oktatóanyagot](../saas-apps/tutorial-list.md).|
 |UnprocessableEntity|A célalkalmazás váratlan választ adott vissza. Lehetséges, hogy a célalkalmazás konfigurációja nem megfelelő, vagy a célalkalmazás olyan szolgáltatási problémával jár, amely megakadályozza ennek működését.|
 |WebExceptionProtocolError |HTTP protokoll hiba történt a célalkalmazáshoz való csatlakozás során. Semmi teendő. Ez a kísérlet 40 percen belül automatikusan kimarad.|
-|InvalidAnchor|Már nem létezik olyan felhasználó, aki korábban létrehozta vagy egyeztette a kiépítési szolgáltatás. Győződjön meg arról, hogy a felhasználó létezik. Az összes felhasználó újraegyezésének kényszerítéséhez az MS Graph API használatával [indítsa újra a feladatot](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta). Vegye figyelembe, hogy a kiépítés újraindítása elindítja a kezdeti ciklust, amely időt vehet igénybe. Emellett törli a kiépítési szolgáltatás által a működéshez használt gyorsítótárat is, ami azt jelenti, hogy a bérlő minden felhasználóját és csoportját újra ki kell értékelni, és bizonyos kiépítési eseményeket el lehet dobni.|
-|Nincs implementálva | A célalkalmazás váratlan választ adott vissza. Lehetséges, hogy az alkalmazás konfigurációja nem megfelelő, vagy előfordulhat, hogy probléma van a célalkalmazás szolgáltatással, amely megakadályozza ennek működését. Tekintse át a célalkalmazás által biztosított utasításokat, valamint az alkalmazásra vonatkozó [oktatóanyagot](../saas-apps/tutorial-list.md). |
+|InvalidAnchor|Már nem létezik olyan felhasználó, aki korábban létrehozta vagy egyeztette a kiépítési szolgáltatás. Győződjön meg arról, hogy a felhasználó létezik. Az összes felhasználó újraegyezésének kényszerítéséhez az MS Graph API használatával [indítsa újra a feladatot](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta). A kiépítés újraindítása elindítja a kezdeti ciklust, amely időt vehet igénybe. Emellett törli a kiépítési szolgáltatás által a működéshez használt gyorsítótárat is, ami azt jelenti, hogy a bérlő minden felhasználóját és csoportját újra ki kell értékelni, és bizonyos kiépítési eseményeket el lehet dobni.|
+|Nincs implementálva | A célalkalmazás váratlan választ adott vissza. Lehetséges, hogy az alkalmazás konfigurációja nem megfelelő, vagy előfordulhat, hogy probléma van a célalkalmazás szolgáltatással, amely megakadályozza ennek működését. Tekintse át a célalkalmazás által biztosított utasításokat és a vonatkozó alkalmazási [oktatóanyagot](../saas-apps/tutorial-list.md). |
 |MandatoryFieldsMissing, MissingValues |A felhasználó nem hozható létre, mert hiányoznak a szükséges értékek. Javítsa ki a hiányzó attribútum-értékeket a forrás rekordban, vagy tekintse át a megfelelő attribútumok konfigurációját, hogy a kötelező mezők ne legyenek kihagyva. [További](../app-provisioning/customize-application-attributes.md) információ a megfeleltetési attribútumok konfigurálásáról.|
 |SchemaAttributeNotFound |A művelet nem hajtható végre, mert egy olyan attribútum lett megadva, amely nem létezik a célalkalmazás alkalmazásban. Tekintse meg az attribútumok testreszabásával kapcsolatos [dokumentációt](../app-provisioning/customize-application-attributes.md) , és győződjön meg arról, hogy a konfiguráció helyes.|
 |InternalError |Belső szolgáltatási hiba történt az Azure AD-létesítési szolgáltatásban. Semmi teendő. Ez a kísérlet 40 perc múlva automatikusan újra próbálkozik.|
 |InvalidDomain |A műveletet nem lehetett végrehajtani, mert egy attribútumérték érvénytelen tartománynevet tartalmaz. Frissítse a tartománynevet a felhasználón, vagy adja hozzá azt a célalkalmazás engedélyezett listájához. |
 |Időtúllépés |A műveletet nem lehetett befejezni, mert a célalkalmazás túl sokáig tartott a válaszadáshoz. Semmi teendő. Ez a kísérlet 40 perc múlva automatikusan újra próbálkozik.|
-|LicenseLimitExceeded|A felhasználó nem hozható létre a célalkalmazás alkalmazásban, mert nincsenek elérhető licencek ehhez a felhasználóhoz. További licenceket is megadhat a célalkalmazás számára, vagy áttekintheti a felhasználói hozzárendelések és attribútumok leképezésének konfigurációját, hogy a megfelelő felhasználók hozzá legyenek rendelve a megfelelő attribútumokhoz.|
+|LicenseLimitExceeded|A felhasználó nem hozható létre a célalkalmazás alkalmazásban, mert nincsenek elérhető licencek ehhez a felhasználóhoz. Több licenc beszerzése a célalkalmazás számára, vagy a felhasználói hozzárendelések és az attribútum-hozzárendelési konfiguráció áttekintése, hogy a megfelelő felhasználók hozzá legyenek rendelve a megfelelő attribútumokhoz.|
 |DuplicateTargetEntries  |A műveletet nem lehetett befejezni, mert a célalkalmazás több felhasználója található a konfigurált egyező attribútumokkal. Távolítsa el az ismétlődő felhasználót a célalkalmazás alkalmazásból, vagy konfigurálja újra az attribútum-hozzárendeléseket az [itt](../app-provisioning/customize-application-attributes.md)leírtak szerint.|
 |DuplicateSourceEntries | A műveletet nem lehetett befejezni, mert egynél több felhasználó található a konfigurált egyező attribútumokkal. Távolítsa el az ismétlődő felhasználót, vagy konfigurálja újra az attribútum-hozzárendeléseket az [itt](../app-provisioning/customize-application-attributes.md)leírtak szerint.|
 |ImportSkipped | Az egyes felhasználók kiértékelése után a rendszer megkísérli importálni a felhasználót a forrásrendszer használatával. Ez a hiba általában akkor fordul elő, ha az importálandó felhasználó hiányzik az attribútum-hozzárendelésekben definiált megfelelő tulajdonság. A megfelelő attribútumhoz tartozó felhasználói objektumon nincs megadva érték, nem értékelhető ki a hatókör, a megfeleltetés vagy az Exportálás módosítása. Vegye figyelembe, hogy a hiba jelenléte nem jelzi, hogy a felhasználó hatókörben van, mivel még nem értékelte ki a hatókört a felhasználó számára.|
 |EntrySynchronizationSkipped | A kiépítési szolgáltatás sikeresen lekérdezte a forrás rendszerét, és azonosította a felhasználót. A felhasználóra vonatkozóan nem történt további művelet, és a rendszer kihagyta őket. A kihagyás oka az lehet, hogy a felhasználó hatókörén kívül esik, vagy a felhasználó már meglévő a célszámítógépen, és nincs szükség további módosításokra.|
 |SystemForCrossDomainIdentityManagementMultipleEntriesInResponse| Amikor lekéréses kérelmet küld egy felhasználó vagy csoport beolvasására, a válaszban több felhasználót vagy csoportot kaptunk. A rendszer csak egy felhasználót vagy csoportot várt a válaszban. Ha [például](../app-provisioning/use-scim-to-provision-users-and-groups.md#get-group)lekéri egy csoport lekérését, és egy szűrőt biztosít a tagok kizárásához, és a scim-végpont visszaadja a tagokat, ezt a hibát fogjuk kidobni.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A felhasználó kiépítési állapotának megtekintése](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)
 * [Hiba történt a felhasználók Azure AD Gallery-alkalmazásba való konfigurálásának beállításakor](../app-provisioning/application-provisioning-config-problem.md)

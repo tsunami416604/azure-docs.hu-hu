@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub eszközkapcsolatának ellenőrzése
-description: Az IoT Hub-eszközökkel fejlesztés közben végezhet hibaelhárítást az IoT Hub eszközkapcsolati problémáin.
+title: Oktatóanyag – az eszköz kapcsolatának ellenőrzése az Azure IoT Hub
+description: Oktatóanyag – IoT Hub-eszközök használata a IoT-hubhoz való fejlesztés során felmerülő problémák elhárításához.
 services: iot-hub
 author: wesmc7777
 manager: philmea
@@ -16,12 +16,12 @@ ms.custom:
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 1eead9bb93fe8b753ace518cde18b240ab1a3cd4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 060ed8bfc424fcb9dab8fc12faf5e3822fa86a31
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572677"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621444"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Oktatóanyag: Szimulált eszköz használata az IoT Hub-kapcsolat ellenőrzéséhez
 
@@ -29,7 +29,7 @@ Ebben az oktatóanyagban az Azure IoT Hub portál eszközeivel és az Azure CLI 
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 > [!div class="checklist"]
 > * Az eszközhitelesítés ellenőrzése
 > * Az eszközről a felhőbe irányuló kapcsolat ellenőrzése
@@ -260,7 +260,7 @@ Amellett, hogy folyamatosan fogadja a kívánt tulajdonságok módosításait, a
 
 Ha már nincs szüksége az IoT Hubra, az erőforráscsoporttal együtt törölje a Portalon. Ehhez válassza ki az IoT Hubot tartalmazó **tutorials-iot-hub-rg** erőforráscsoportot, majd kattintson a **Törlés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtudhatta, hogyan ellenőrizhet eszközkulcsokat, az eszközről a felhőbe irányuló kapcsolatot, a felhőből az eszközre irányuló kapcsolatot, valamint az ikereszköz-szinkronizálást. Az IoT hub monitorozásával kapcsolatos további információkért tekintse meg az IoT Hub monitorozását ismertető útmutatót.
 

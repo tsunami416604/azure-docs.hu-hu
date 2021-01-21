@@ -1,6 +1,6 @@
 ---
-title: Eszközállapot szinkronizálása az Azure IoT Hub szolgáltatásból | Microsoft Docs
-description: Megtudhatja, hogyan konfigurálhatja az eszközöket a felhőből, és hogyan fogadhatja el az eszköz állapotát és megfelelőségi adatait az eszközökről.
+title: Oktatóanyag – eszköz állapotának szinkronizálása az Azure IoT Hubból | Microsoft Docs
+description: Oktatóanyag – megtudhatja, hogyan konfigurálhatja az eszközöket a felhőből, és hogyan fogadhatja el az eszközök állapotát és megfelelőségi adatait.
 services: iot-hub
 author: wesmc7777
 ms.author: wesmc
@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-js
 - devx-track-azurecli
-ms.openlocfilehash: 9ec2c51f01d6b13f33bc2d537a8f73a6721967d4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 912e59197970e60f57a13c049ffadbd2ad938a9b
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572524"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621412"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -259,7 +259,7 @@ Ha szeretné, a CLI-t is használhatja:
 az group delete --name tutorial-iot-hub-rg
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag azt ismertette, hogyan szinkronizálhatja az állapotinformációkat az eszközök és az IoT Hub között. Folytassa a következő oktatóanyaggal, ha azt szeretné megtudni, hogyan implementálható ikereszközökkel egy belső vezérlőprogram frissítési folyamata.
 

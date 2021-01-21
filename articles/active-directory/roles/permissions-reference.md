@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62fb239fd9cb8c1817dea5ab5c22684a65955ed5
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 3a66ad61afe1439a80d750097d3c90d010547539
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555729"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622408"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Rendszergazdai szerepkörök engedélyezése az Azure Active Directoryban
 
@@ -1971,6 +1971,7 @@ Alkalmazásfejlesztő | Alkalmazás-fejlesztő | CF1C38E5-3621-4004-A7CB-879624D
 Hitelesítés rendszergazdája | Hitelesítés rendszergazdája | c4e39bd9-1100-46d3-8c65-fb160da0071f
 Támadási hasznos adatok szerzője | Támadási hasznos adatok szerzője | 9c6df0f2-1e7c-4dc3-b195-66dfbd24aa8f
 Támadás szimulációjának rendszergazdája | Támadás szimulációjának rendszergazdája | c430b396-e693-46cc-96f3-db01bf8bb62a
+Azure AD-hez csatlakoztatott eszköz helyi rendszergazdája | Azure AD-hez csatlakoztatott eszköz helyi rendszergazdája | 9f06204d-73c1-4d4c-880a-6edb90606fd8
 Azure DevOps-rendszergazda | Azure DevOps-rendszergazda | e3973bdf-4987-49ae-837a-ba8e231c7286
 Azure Information Protection rendszergazda | Azure Information Protection rendszergazda | 7495fdc4-34c4-4d15-a289-98788ce399fd
 B2C IEF kulcskészlet rendszergazdája | B2C IEF kulcskészlet rendszergazdája | aaf43236-0c0d-4d5f-883a-6955382ac081
@@ -1978,24 +1979,23 @@ B2C IEF házirend rendszergazdája | B2C IEF házirend rendszergazdája | 3edaf6
 Számlázási adminisztrátor | Számlázási adminisztrátor | b0f54661-2d74-4c50-afa3-1ec803f12efe
 Felhőalkalmazás-rendszergazda | Cloud Application Administrator | 158c047a-c907-4556-b7ef-446551a6b5f7
 Felhőalapú eszköz rendszergazdája | Felhőalapú eszköz rendszergazdája | 7698a772-787b-4ac8-901f-60d6b08affd2
-Vállalati rendszergazda | Globális rendszergazda | 62e90394-69f5-4237-9190-012177145e10
 Megfelelőségi rendszergazda | Megfelelőségi rendszergazda | 17315797-102d-40b4-93e0-432062caca18
 Megfelelőségi adatkezelő | Megfelelőségi adatkezelő | e6d1a23a-da11-4be4-9570-befc86d067a7
 Feltételes hozzáférésű rendszergazda | Feltételes hozzáférésű rendszergazda | b1be1c3e-b65d-4f19-8427-f6fa0d97feb9
-CRM szolgáltatás rendszergazdája | Dynamics 365-rendszergazda | 44367163-eba1-44c3-98af-f5787879f96a
 Ügyfél-kulcstároló hozzáférési jóváhagyója | Ügyfélszéf hozzáférési jóváhagyó | 5c4f9dcd-47dc-4cf7-8c9a-9e4207cbfc91
 Asztali elemzési rendszergazda | Asztali elemzési rendszergazda | 38a96431-2bdf-4b4c-8b6e-5d3d8abac1a4
-Eszközrendszergazdák | Eszköz-rendszergazdák | 9f06204d-73c1-4d4c-880a-6edb90606fd8
 Eszköz csatlakoztatása | Elavult | 9c094953-4995-41c8-84c8-3ebb9b32c93f
 Eszközkezelők | Elavult | 2b499bcd-da44-4968-8aec-78e1674fa64d
 Eszköz felhasználói | Elavult | d405c6df-0af8-4e3b-95e4-4d06e542189e
 Directory-olvasók | Directory-olvasók | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
 Címtár-szinkronizálási fiókok | Nem látható, mert nem használható | d29b2b05-8046-44ba-8758-1e26182fcf32
 Címtár-írók | Címtár-írók | 9360feb5-f418-4baa-8175-e2a00bac4301
-Exchange szolgáltatás rendszergazdája | Exchange-rendszergazda | 29232cdf-9323-42fd-ade2-1d097af3e4de
+Dynamics 365-rendszergazda | Dynamics 365-rendszergazda | 44367163-eba1-44c3-98af-f5787879f96a
+Exchange-rendszergazda | Exchange-rendszergazda | 29232cdf-9323-42fd-ade2-1d097af3e4de
 Külső azonosító – felhasználói folyamat rendszergazdája | Külső azonosító – felhasználói folyamat rendszergazdája | 6e591065-9bad-43ed-90f3-e9424366d2f0
 Külső azonosító felhasználói flow-attribútumának rendszergazdája | Külső azonosító felhasználói flow-attribútumának rendszergazdája | 0f971eea-41eb-4569-a71e-57bb8a3eff1e
 Külső identitás-szolgáltató rendszergazdája | Külső identitás-szolgáltató rendszergazdája | be2f45a1-457d-42af-a067-6ec1fa63bc45
+Globális rendszergazda | Globális rendszergazda | 62e90394-69f5-4237-9190-012177145e10
 Globális olvasó | Globális olvasó | f2ef992c-3afb-46b9-b7cf-a126ee74c451
 Csoportok rendszergazdája | Csoportok rendszergazdája | fdd7a751-b60b-444a-984c-02652fe8fa1c 
 Vendég meghívója | Vendég meghívója | 95e79109-95c0-4d8e-aee3-d01accf2d47b
@@ -2003,10 +2003,9 @@ Segélyszolgálat rendszergazdája | Segélyszolgálat rendszergazdája | 729827
 Hibrid identitás-rendszergazda | Hibrid identitás-rendszergazda | 8ac3fc64-6eca-42ea-9e69-59f4c7b60eb2
 Az Áttekintés rendszergazdája | Az Áttekintés rendszergazdája | eb1f4a8d-243a-41f0-9fbd-c7cdf6c5ef7c
 Üzleti vezető | Üzleti vezető | 31e939ad-9672-4796-9c2e-873181342d2d
-Intune szolgáltatás rendszergazdája | Intune-rendszergazda | 3a2c62db-5318-420d-8d74-23affee5d9d5
+Intune-rendszergazda | Intune-rendszergazda | 3a2c62db-5318-420d-8d74-23affee5d9d5
 Kaizala-rendszergazda | Kaizala-rendszergazda | 74ef975b-6605-40af-a5d2-b9539d836353
 Licenc rendszergazdája | Licencek rendszergazdája | 4d6ac14f-3453-41d0-bef9-a3e0c569773a
-Lync szolgáltatás rendszergazdája | Skype Vállalati verzió-rendszergazda | 75941009-915a-4869-abe7-691bff18279e
 A Message Center adatvédelmi olvasója | A Message Center adatvédelmi olvasója | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
 Üzenetközpont-olvasó | Üzenetközpont-olvasó | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
 Modern kereskedelmi felhasználó | Modern kereskedelmi felhasználó | d24aef57-1500-4070-84db-2666f29cf966
@@ -2015,7 +2014,7 @@ Office-alkalmazások rendszergazdája | Office-alkalmazások rendszergazdája | 
 Partneri Tier1-támogatás | Nem látható, mert nem használható | 4ba39ca4-527c-499a-b93d-d9b492c50246
 Partneri szint-támogatás | Nem látható, mert nem használható | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
 Jelszó-rendszergazda | Jelszókezelő | 966707d0-3269-4727-9be2-8c3a10f19b9d
-Power BI-szolgáltatásadminisztrátor | Power BI rendszergazda | a9ea8996-122f-4c74-9520-8edcd192826c
+Power BI rendszergazda | Power BI rendszergazda | a9ea8996-122f-4c74-9520-8edcd192826c
 Energiagazdálkodási platform rendszergazdája | Power platform rendszergazda | 11648597-926c-4cf3-9c36-bcebb0ba8dcc
 Nyomtató rendszergazdája | Nyomtató rendszergazdája | 644ef478-e28f-4e28-b9dc-3fdde9aa0b1f
 Nyomtató technikusa | Nyomtató technikusa | e8cef6f1-e4bd-4ea8-bc07-4b8d950f4477
@@ -2028,15 +2027,16 @@ Biztonsági rendszergazda | Biztonsági rendszergazda | 194ae4cb-b126-40b2-bd5b-
 Biztonsági operátor | Biztonsági operátor | 5f2222b1-57c3-48ba-8ad5-d4759f1fde6f
 Biztonsági olvasó | Biztonsági olvasó | 5d6b6bb7-de71-4623-b4af-96380a352509
 Szolgáltatás-támogatási rendszergazda | Szolgáltatás-rendszergazda | f023fd81-a637-4b56-95fd-791ac0226033
-SharePoint szolgáltatás rendszergazdája | SharePoint-rendszergazda | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
+SharePoint-rendszergazda | SharePoint-rendszergazda | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
+Skype vállalati verzió-rendszergazda | Skype Vállalati verzió-rendszergazda | 75941009-915a-4869-abe7-691bff18279e
 Csapatok kommunikációs rendszergazdája | Csapatok kommunikációs rendszergazdája | baf37b3a-610e-45da-9e62-d9d1e5e8914b
 Csapat kommunikációs támogató mérnök | Csapat kommunikációs támogató mérnök | f70938a0-fc10-4177-9e90-2178f8765737
 A Teams Communications támogatási szakértője | A Teams Communications támogatási szakértője | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
 Csapatok eszközeinek rendszergazdája | Csapatok eszközeinek rendszergazdája | 3d762c5a-1b6c-493f-843e-55a3b42923d4
-Teams szolgáltatás rendszergazdája | Teams szolgáltatás rendszergazdája | 69091246-20e8-4a56-aa4d-066075b2a7a8
+Csapatok rendszergazdája | Csapatok rendszergazdája | 69091246-20e8-4a56-aa4d-066075b2a7a8
 Használati összesítő jelentések olvasója | Használati összesítő jelentések olvasója | 75934031-6c7e-415a-99d7-48dbd49e875e
 User | Nem látható, mert nem használható | a0b1b346-4d3e-4e8b-98f8-753987be4970
-Felhasználói fiók rendszergazdája | Felhasználói rendszergazda | fe930be7-5e62-47db-91af-98c3a49a38b1
+Felhasználói rendszergazda | Felhasználói rendszergazda | fe930be7-5e62-47db-91af-98c3a49a38b1
 Munkahelyi eszközök csatlakoztatása | Elavult | c34f683f-4d5a-4403-affd-6615e00e3a7f
 
 ## <a name="deprecated-roles"></a>Elavult szerepkörök
@@ -2057,15 +2057,11 @@ Nem minden, a PowerShell vagy az MS Graph API által visszaadott szerepkör jele
 
 API neve | Azure Portal neve | Jegyzetek
 -------- | ------------------- | -------------
-Vállalati rendszergazda | Globális rendszergazda | [A jobb érthetőség érdekében a név módosult](permissions-reference.md#role-template-ids)
-CRM szolgáltatás rendszergazdája | Dynamics 365-rendszergazda | [A termék aktuális arculatát tükrözi](permissions-reference.md#role-template-ids)
 Eszköz csatlakoztatása | Elavult | [Elavult szerepkörök dokumentációja](permissions-reference.md#deprecated-roles)
 Eszközkezelők | Elavult | [Elavult szerepkörök dokumentációja](permissions-reference.md#deprecated-roles)
 Eszköz felhasználói | Elavult | [Elavult szerepkörök dokumentációja](permissions-reference.md#deprecated-roles)
 Címtár-szinkronizálási fiókok | Nem látható, mert nem használható | [A címtár-szinkronizálási fiókok dokumentációja](permissions-reference.md#directory-synchronization-accounts)
-Címtár-írók | Nem látható, mert nem használható | [Könyvtár-írók dokumentációja](permissions-reference.md#directory-writers)
 Vendégfelhasználó | Nem látható, mert nem használható  | NA
-Lync szolgáltatás rendszergazdája | Skype Vállalati verzió-rendszergazda | [A termék aktuális arculatát tükrözi](permissions-reference.md#role-template-ids)
 1. partneri szintű támogatás | Nem látható, mert nem használható | [A partneri Tier1 támogatási dokumentációja](permissions-reference.md#partner-tier1-support)
 2. partneri szintű támogatás | Nem látható, mert nem használható | [A partneri szint támogatási dokumentációja](permissions-reference.md#partner-tier2-support)
 Korlátozott vendég felhasználó | Nem látható, mert nem használható | NA

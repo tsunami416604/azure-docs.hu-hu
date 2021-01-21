@@ -3,12 +3,12 @@ title: Azure Service Bus gyakori kérdések (GYIK) | Microsoft Docs
 description: Ez a cikk a Azure Service Bus kapcsolatos gyakori kérdések (GYIK) néhány válaszát tartalmazza.
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: acd741101928f5a2dfd72eab1598af6e4556a3d1
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 576df12a9d53ec3585f8691016cd250bf1ba4be3
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96022139"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623107"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus – gyakran ismételt kérdések (GYIK)
 
@@ -57,7 +57,7 @@ A hivatalos Azure SDK-k általában az AMQP protokollt használják a Service Bu
 
 [!INCLUDE [service-bus-websockets-options](../../includes/service-bus-websockets-options.md)]
 
-A .NET-keretrendszer régebbi WindowsAzure. ServiceBus csomagja lehetőséget biztosít az örökölt "Service Bus Messaging Protocol" (SBMP) használatára, más néven "NetMessaging". Ez a protokoll a 9350-9354-es TCP-portot használja. A csomag alapértelmezett módja annak automatikus észlelése, hogy a portok elérhetők-e a kommunikációhoz, és az 443-as porton keresztül a TLS-t használó WebSockets-re váltson, ha ez nem így van. Felülbírálhatja ezt a beállítást, és kényszerítheti ezt a módot úgy, hogy a `Https` beállítás [ConnectivityMode](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) állítja be [`ServiceBusEnvironment.SystemConnectivity`](/dotnet/api/microsoft.servicebus.servicebusenvironment.systemconnectivity?view=azure-dotnet) , amely globálisan vonatkozik az alkalmazásra.
+A .NET-keretrendszer régebbi WindowsAzure. ServiceBus csomagja lehetőséget biztosít az örökölt "Service Bus Messaging Protocol" (SBMP) használatára, más néven "NetMessaging". Ez a protokoll a 9350-9354-es TCP-portot használja. A csomag alapértelmezett módja annak automatikus észlelése, hogy a portok elérhetők-e a kommunikációhoz, és az 443-as porton keresztül a TLS-t használó WebSockets-re váltson, ha ez nem így van. Felülbírálhatja ezt a beállítást, és kényszerítheti ezt a módot úgy, hogy a `Https` beállítás [ConnectivityMode](/dotnet/api/microsoft.servicebus.connectivitymode) állítja be [`ServiceBusEnvironment.SystemConnectivity`](/dotnet/api/microsoft.servicebus.servicebusenvironment.systemconnectivity) , amely globálisan vonatkozik az alkalmazásra.
 
 ### <a name="what-ip-addresses-do-i-need-to-add-to-allow-list"></a>Milyen IP-címeket kell hozzáadni az engedélyezési listához?
 Az alábbi lépéseket követve megkeresheti a kapcsolatok listájához hozzáadandó megfelelő IP-címeket:
@@ -169,7 +169,7 @@ $res = Find-AzResource -ResourceNameContains mynamespace -ResourceType 'Microsof
 Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff' -ResourceId $res.ResourceId
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni a Service Busről, tekintse meg a következő cikkeket:
 
 * [Azure Service Bus Premium bemutatása (blogbejegyzés)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)

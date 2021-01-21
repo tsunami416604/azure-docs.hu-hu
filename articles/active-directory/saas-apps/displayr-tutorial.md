@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 13edc0280f1a6f7e962e8e4593d8a17990dd9e6f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3cb6ee3162c70d2d07c4868ae90ecc54bd489966
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454745"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622491"
 ---
 # <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>Oktatóanyag: a lejátszó integrálása Azure Active Directory
 
@@ -45,14 +45,14 @@ A lejátszó Azure AD-integrációjának konfigurálásához hozzá kell adnia a
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **lejátszó** kifejezést a keresőmezőbe.
 1. Válassza ki a **lejátszó** elemet az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Az Azure AD SSO konfigurálása és tesztelése a **Britta Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a lejátszó eszközben.
+Az Azure AD SSO konfigurálása és tesztelése a **Britta Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a lejátszó eszközben.
 
 Az Azure AD SSO és a Visszajátszási szolgáltatás konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
@@ -67,8 +67,8 @@ Az Azure AD SSO és a Visszajátszási szolgáltatás konfigurálásához és te
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)a **lejátszó** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **lejátszó** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
@@ -78,6 +78,10 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<YOURDOMAIN>.displayr.com`
 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`<YOURDOMAIN>.displayr.com`
+    
+    c. A **Válasz URL-cím** szövegmezőbe írja be a következőt: `https://app.displayr.com/Login/ProcessSamlResponse` .
+    
+    d. Kattintson a **Mentés** gombra.
 
     >[!NOTE]
     >Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek megszerzéséhez vegye fel a kapcsolatot a [lejátszó ügyfél-támogatási csapatával](mailto:support@displayr.com) . Az Azure Portal alapszintű SAML-konfiguráció szakaszában látható mintázatokat is megtekintheti.
@@ -88,25 +92,23 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A kijátszó alkalmazás az SAML-jogcímeket egy adott formátumban várja, amelyhez egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a felhasználói attribútumok párbeszédpanel megnyitásához.
 
-    ![A "szerkesztés" ikonnal jelölt "felhasználói attribútumok" szakaszt megjelenítő képernyőkép.](common/edit-attribute.png)
+   ![A "szerkesztés" ikonnal jelölt "felhasználói attribútumok" szakaszt megjelenítő képernyőkép.](common/edit-attribute.png)
 
 1. A fentieken kívül a kijátszó alkalmazás néhány további attribútumot vár az SAML-válaszban. A **csoport jogcímek (előzetes verzió)** párbeszédpanel **felhasználói attribútumok & jogcímek** szakaszában hajtsa végre a következő lépéseket:
 
-    a. Kattintson a **kérelemben visszaadott csoportok**melletti **tollra** .
+   a. Kattintson **a csoport hozzáadása** elemre.
 
-    ![Képernyőfelvétel: a "felhasználói attribútumok & jogcímek" szakasz "toll" ikonnal jelölt "a visszaadott csoportba tartozó csoportok" elem mellett.](./media/displayr-tutorial/config04.png)
+      ![Képernyőkép, amely megjeleníti a "csoport jogcímek (előzetes verzió)" ablakot a kiválasztott beállításokkal.](./media/displayr-tutorial/config05.png)
 
-    ![Képernyőkép, amely megjeleníti a "csoport jogcímek (előzetes verzió)" ablakot a kiválasztott beállításokkal.](./media/displayr-tutorial/config05.png)
+   b. Válassza az **összes csoport** lehetőséget a választógombok listájáról.
 
-    b. Válassza az **összes csoport** lehetőséget a választógombok listájáról.
+   c. Válassza ki a **csoport azonosítója** **forrás attribútumát** .
 
-    c. Válassza ki a **csoport azonosítója** **forrás attribútumát** .
+   d. Győződjön meg arról **, hogy testreszabja a csoportjogcím nevét**.
 
-    d. Győződjön meg arról **, hogy testreszabja a csoportjogcím nevét**.
+   e. **A csoportok szerepkör-jogcímként való kibocsátása**.
 
-    e. **A csoportok szerepkör-jogcímként való kibocsátása**.
-
-    f. Kattintson a **Mentés** gombra.
+   f. Kattintson a **Mentés** gombra.
 
 1. A **set-up deplayer** szakaszban másolja ki a megfelelő URL-címeket a követelmények alapján.
 
@@ -114,7 +116,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 ### <a name="configure-displayr"></a>A lejátszó konfigurálása
 
-1. Ha szeretné automatizálni a konfigurációt a lejátszó alkalmazásban, a **bővítmény telepítése**lehetőségre kattintva telepítenie kell **az alkalmazások biztonságos bejelentkezési böngésző bővítményét** .
+1. Ha szeretné automatizálni a konfigurációt a lejátszó alkalmazásban, a **bővítmény telepítése** lehetőségre kattintva telepítenie kell **az alkalmazások biztonságos bejelentkezési böngésző bővítményét** .
 
     ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
 
@@ -140,7 +142,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     b. Másolja a tényleges **azonosító** értéket az Azure ad **alapszintű SAML-konfiguráció** szakaszában, és illessze be a **kiállító** szövegmezőbe.
 
-    c. A **bejelentkezési URL** szövegmezőbe illessze be a **bejelentkezési URL-cím**értékét, amelyet a Azure Portalból másolt.
+    c. A **bejelentkezési URL** szövegmezőbe illessze be a **bejelentkezési URL-cím** értékét, amelyet a Azure Portalból másolt.
 
     d. Illessze be a **kijelentkezési** URL-cím szövegmezőbe a **KIJELENTKEZÉSI URL-címet**, amelyet a Azure Portalból másolt.
 
@@ -154,7 +156,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `Britta Simon`.  
@@ -166,13 +168,13 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Britta Simon nev�
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a lejátszó számára.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **lejátszó**elemet.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **lejátszó** elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
@@ -192,7 +194,7 @@ Az Azure AD-felhasználók engedélyezéséhez jelentkezzen be a lejátszó szol
 
     ![A "fiók" beállítással rendelkező "beállítások (fogaskerék)" ikont megjelenítő képernyőkép.](./media/displayr-tutorial/config01.png)
 
-3. A felső menüben váltson a **Beállítások** elemre, és görgessen le az oldalra, amíg a **felhasználók** szakaszra nem kattint, majd az **új felhasználó**elemre.
+3. A felső menüben váltson a **Beállítások** elemre, és görgessen le az oldalra, amíg a **felhasználók** szakaszra nem kattint, majd az **új felhasználó** elemre.
 
     ![Képernyőfelvétel: a "felhasználók" feliratú "Settings" (beállítások) lap, és az "új felhasználó" gomb van kiválasztva.](./media/displayr-tutorial/config07.png)
 

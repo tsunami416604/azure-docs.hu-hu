@@ -4,12 +4,12 @@ description: Ez a cikk azt ismerteti, hogyan írhat kódot az Azure Event Hubs a
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 46bd0c3c1488d6dd7afbae5e88e0b83f56654bb8
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: a299813620ee90591d8c9491991237f75f2e9382
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131236"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623048"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>.NET programozási útmutató az Azure Event Hubshoz (örökölt Microsoft. Azure. EventHubs csomag)
 Ez a cikk néhány gyakori forgatókönyvet ismertet a kód az Azure Event Hubs használatával történő írásához. A témakör feltételezi az Event Hubs szolgáltatással kapcsolatos előzetes ismeretek meglétét. Az Event Hubs fogalmi áttekintése: [Event Hubs – áttekintés](./event-hubs-about.md).
@@ -24,7 +24,7 @@ A HTTP POST használatával vagy egy AMQP 1,0-kapcsolaton keresztül küldhet es
 
 A .NET által felügyelt API-k használatakor az adatoknak az Event Hubs számára történő közzétételére szolgáló elsődleges szerkezetek az [EventHubClient][] és az [EventData][] osztály. A [EventHubClient][] biztosítja azt a AMQP kommunikációs csatornát, amelyen keresztül az Event hub az eseményeket elküldi. A [EventData][] osztály egy eseményt jelöl, és az üzenetek az Event hub-ba való közzétételére szolgál. Ebbe az osztályba beletartozik a törzs, az egyes metaadatok (Tulajdonságok) és a fejléc információi (SystemProperties) az eseményről. A [EventData][] objektumhoz más tulajdonságok is bekerülnek, ahogy az egy Event hub-n halad át.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 A Event Hubst támogató .NET-osztályok a [Microsoft. Azure. EventHubs](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) NuGet csomagban találhatók. A Visual Studio Solution Explorer vagy a [Package Manager konzol](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) használatával is telepíthető. Ehhez adja ki a következő parancsot a [Csomagkezelő konzol](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) ablakában:
 
 ```shell
@@ -97,7 +97,7 @@ Egyetlen köteg nem lépheti túl az esemény 1 MB-os korlátját. Továbbá a k
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>Aszinkron küldés és nagy léptékű küldés
 
-Az Event hub-nak aszinkron módon kell elküldeni az eseményeket. A Küldés aszinkron módon megnöveli azt a sebességet, amellyel az ügyfél képes eseményeket küldeni. A [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) egy [feladat](/dotnet/api/system.threading.tasks.task?view=netcore-3.1) objektumot ad vissza. Az ügyfél újrapróbálkozási beállításainak vezérléséhez használhatja a [RetryPolicy](/dotnet/api/microsoft.servicebus.retrypolicy) osztályt.
+Az Event hub-nak aszinkron módon kell elküldeni az eseményeket. A Küldés aszinkron módon megnöveli azt a sebességet, amellyel az ügyfél képes eseményeket küldeni. A [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) egy [feladat](/dotnet/api/system.threading.tasks.task) objektumot ad vissza. Az ügyfél újrapróbálkozási beállításainak vezérléséhez használhatja a [RetryPolicy](/dotnet/api/microsoft.servicebus.retrypolicy) osztályt.
 
 ## <a name="event-consumers"></a>Eseményfelhasználók
 Az [EventProcessorHost][] osztály az eseményközpontokból származó adatokat dolgozza fel. Akkor használja ezt a megvalósítást, ha a .NET platformon hoz létre eseményolvasókat. Az [EventProcessorHost][] egy szálbiztos, több folyamatot lehetővé tevő, biztonságos futtatókörnyezetet biztosít az eseményfeldolgozói megvalósításokhoz, ami lehetővé teszi az ellenőrzőpontok használatát és a partícióbérlés-kezelést is.

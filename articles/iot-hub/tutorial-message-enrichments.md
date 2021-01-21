@@ -4,16 +4,16 @@ description: 'Oktatóanyag: az üzenetek dúsításának használata az Azure Io
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 60bd416cf330676485f83720be4365b56c56baaf
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: ddc212e99c0e55156f56df6bf77e122408a727f9
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436708"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624055"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Oktatóanyag: az Azure IoT Hub üzenet-gazdagítás használata
 
@@ -77,7 +77,7 @@ Ha még nem tette meg, nyisson meg egy Azure [Cloud Shell ablakot](https://shell
 
 Itt láthatók a szkript által létrehozott erőforrások. A *dúsított* érték azt jelenti, hogy az erőforrás a dúsítással rendelkező üzenetekhez használható. Az *eredeti* érték azt jelenti, hogy az erőforrás a nem dúsított üzenetekhez használható.
 
-| Név | Érték |
+| Name | Érték |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | tároló neve | eredeti  |
@@ -279,7 +279,7 @@ Ezen a ponton az erőforrások mindegyike be van állítva, az üzenet-útválas
 ## <a name="create-and-configure-by-using-a-resource-manager-template"></a>Létrehozás és konfigurálás Resource Manager-sablon használatával
 A Resource Manager-sablonok segítségével létrehozhatja és konfigurálhatja az erőforrásokat, az üzenetek útválasztását és az üzenetek dúsítását.
 
-1. Jelentkezzen be az Azure Portalra. Válassza az **+ erőforrás létrehozása** lehetőséget a keresőmező létrehozásához. Adja meg a *sablon központi telepítését*, és keresse meg. Az eredmények ablaktábláján válassza a **template Deployment (üzembe helyezés egyéni sablon használatával)** lehetőséget.
+1. Jelentkezzen be az Azure portálra. Válassza az **+ erőforrás létrehozása** lehetőséget a keresőmező létrehozásához. Adja meg a *sablon központi telepítését*, és keresse meg. Az eredmények ablaktábláján válassza a **template Deployment (üzembe helyezés egyéni sablon használatával)** lehetőséget.
 
    ![Template deployment a Azure Portal](./media/tutorial-message-enrichments/template-select-deployment.png)
 
@@ -297,7 +297,7 @@ A Resource Manager-sablonok segítségével létrehozhatja és konfigurálhatja 
 
    Itt láthatók a sablon betöltésével létrehozott erőforrások. A **dúsított** érték azt jelenti, hogy az erőforrás a dúsítással rendelkező üzenetekhez használható. Az **eredeti** érték azt jelenti, hogy az erőforrás a nem dúsított üzenetekhez használható. Ezek az Azure CLI-szkriptben használt értékek.
 
-   | Név | Érték |
+   | Name | Érték |
    |-----|-----|
    | resourceGroup | ContosoResourcesMsgEn |
    | tároló neve | eredeti  |
@@ -310,7 +310,7 @@ A Resource Manager-sablonok segítségével létrehozhatja és konfigurálhatja 
    | útvonal neve 1 | ContosoStorageRouteOriginal |
    | útvonal neve 2 | ContosoStorageRouteEnriched |
 
-1. Kattintson a **Mentés** gombra. Megjelenik az **Egyéni telepítés** panel, és megjeleníti a sablon által használt összes paramétert. Az egyetlen mező, amelyet meg kell adni az **erőforráscsoport** számára. Hozzon létre egy újat, vagy válasszon ki egyet a legördülő listából.
+1. Válassza a **Mentés** lehetőséget. Megjelenik az **Egyéni telepítés** panel, és megjeleníti a sablon által használt összes paramétert. Az egyetlen mező, amelyet meg kell adni az **erőforráscsoport** számára. Hozzon létre egy újat, vagy válasszon ki egyet a legördülő listából.
 
    Itt látható az **Egyéni telepítés** panel felső fele. Láthatja, hogy hol tölti ki az erőforráscsoportot.
 
@@ -386,17 +386,18 @@ Az oktatóanyagban létrehozott összes erőforrás eltávolításához törölj
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>Erőforrások törlése az Azure CLI használatával
 
-Az erőforráscsoport az [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal távolítható el. Visszahívás, amely az `$resourceGroup` oktatóanyag elején **ContosoResourcesMsgEn** értékre lett állítva.
+Az erőforráscsoport az [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) paranccsal távolítható el. Visszahívás, amely az `$resourceGroup` oktatóanyag elején **ContosoResourcesMsgEn** értékre lett állítva.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következő lépések végrehajtásával konfigurálta és tesztelte az üzenet-gazdagítás hozzáadását IoT Hub üzenetekhez:
 
 **IoT Hub üzenet-gazdagítás használata**
+
 > [!div class="checklist"]
 > * Első módszer: erőforrások létrehozása és az üzenetek útválasztásának konfigurálása az Azure CLI használatával. Az üzenet-gazdagítás manuális konfigurálása a [Azure Portal](https://portal.azure.com)használatával.
 > * Második módszer: erőforrások létrehozása és az üzenetek útválasztásának és az üzenetek dúsításának konfigurálása Azure Resource Manager sablon használatával.
@@ -407,5 +408,8 @@ Az üzenetek bővítésével kapcsolatos további információkért lásd: [az �
 
 Az üzenetek útválasztásával kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-* [Eszközről a felhőbe irányuló üzenetek küldése különböző végpontokra IoT Hub üzenet-útválasztás használatával](iot-hub-devguide-messages-d2c.md)
-* [Oktatóanyag: IoT Hub Útválasztás](tutorial-routing.md)
+> [!div class="nextstepaction"]
+> [Eszközről a felhőbe irányuló üzenetek küldése különböző végpontokra IoT Hub üzenet-útválasztás használatával](iot-hub-devguide-messages-d2c.md)
+
+> [!div class="nextstepaction"]
+> [Oktatóanyag: IoT Hub Útválasztás](tutorial-routing.md)

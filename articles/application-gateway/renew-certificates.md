@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 8/15/2018
+ms.date: 01/20/2021
 ms.author: victorh
-ms.openlocfilehash: 413ae2ee19f0b8e427de9167b52971e413cdf573
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: f0c06a94498f4d2481a6e953b959d766c60415fb
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397212"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622180"
 ---
 # <a name="renew-application-gateway-certificates"></a>Application Gateway tanúsítványok megújítása
 
@@ -22,11 +22,11 @@ A figyelőhöz társított tanúsítvány megújítása a Azure Portal, a Azure 
 
 ## <a name="azure-portal"></a>Azure Portal
 
-A figyelő tanúsítványának a portálról való megújításához navigáljon az Application Gateway-figyelőkhöz. Kattintson arra a figyelőre, amelynek meg kell újítania a tanúsítványát, majd kattintson a **megújítás vagy a kijelölt tanúsítvány szerkesztése** elemre.
+A figyelő tanúsítványának a portálról való megújításához navigáljon az Application Gateway-figyelőkhöz. Válassza ki azt a figyelőt, amelynek meg kell újítania a tanúsítványt, majd válassza a **megújítása vagy a kijelölt tanúsítvány szerkesztése** lehetőséget.
 
-![Tanúsítvány megújítása](media/renew-certificate/ssl-cert.png)
+:::image type="content" source="media/renew-certificate/ssl-cert.png" alt-text="Tanúsítvány megújítása":::
 
-Töltse fel az új PFX-tanúsítványt, adjon meg egy nevet, írja be a jelszót, majd kattintson a **Save (Mentés** ) gombra.
+Töltse fel az új PFX-tanúsítványt, adjon meg egy nevet, írja be a jelszót, majd kattintson a **Mentés** gombra.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -60,6 +60,6 @@ az network application-gateway ssl-cert update \
   --cert-password "<password>"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretné megtudni, hogyan konfigurálhatja a TLS-kiszervezést az Azure Application Gateway használatával, tekintse meg a [TLS-kiszervezés](./create-ssl-portal.md)

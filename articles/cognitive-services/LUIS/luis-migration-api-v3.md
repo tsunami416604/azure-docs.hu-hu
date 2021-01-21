@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 59cf250a9db5a1f6759495c1b5a3c48cb07cde15
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 59dfa439f6428f2db972a8f848887e1a74bc2622
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018786"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624303"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>Előrejelzési végpont módosításai v3 esetén
 
@@ -66,9 +66,6 @@ Ez az API nem támogatott a v3 előrejelzési végpontban – továbbra is haszn
 
 Továbbra is használja a v2 API-előrejelzési végpontot, amíg megjelent a bot Framework V 4.7-es verziója.
 
-## <a name="v2-api-deprecation"></a>V2 API-elavult
-
-A v2 előrejelzési API-t a v3-es előzetes verziótól számítva legalább 9 hónapig nem lehet érvényteleníteni, 2020. június 8-án.
 
 ## <a name="endpoint-url-changes"></a>Végpont URL-címének módosítása
 
@@ -105,8 +102,8 @@ Ha verzió alapján szeretne lekérdezni, először közzé kell tennie az [API-
 
 |Tulajdonság|Típus|Verzió|Alapértelmezett|Cél|
 |--|--|--|--|--|
-|`dynamicLists`|array|Csak v3|Nem kötelező.|A [dinamikus listák](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time) segítségével kiterjesztheti a már meglévő betanított és közzétett lista entitást, amely már a Luis-alkalmazásban van.|
-|`externalEntities`|array|Csak v3|Nem kötelező.|A [külső entitások](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time) lehetővé teszi, hogy a Luis-alkalmazás képes legyen az entitások azonosítására és címkézésére a futtatókörnyezet során, amely funkciókként használható a meglévő entitásokhoz. |
+|`dynamicLists`|array|Csak v3|Nem szükségesek.|A [dinamikus listák](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time) segítségével kiterjesztheti a már meglévő betanított és közzétett lista entitást, amely már a Luis-alkalmazásban van.|
+|`externalEntities`|array|Csak v3|Nem szükségesek.|A [külső entitások](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time) lehetővé teszi, hogy a Luis-alkalmazás képes legyen az entitások azonosítására és címkézésére a futtatókörnyezet során, amely funkciókként használható a meglévő entitásokhoz. |
 |`options.datetimeReference`|sztring|Csak v3|Nincs alapértelmezett érték|A [datetimeV2 eltolásának](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)meghatározására szolgál. A datetimeReference formátuma [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).|
 |`options.preferExternalEntities`|boolean|Csak v3|hamis|Meghatározza, hogy a felhasználó [külső entitása (a meglévő entitás nevével megegyező névvel)](schema-change-prediction-runtime.md#override-existing-model-predictions) van-e használva, vagy a modellben lévő meglévő entitást használja-e a rendszer az előrejelzéshez. |
 |`query`|sztring|Csak v3|Kötelező.|A **v2-ben** az előre jelzett érték a `q` paraméterben szerepel. <br><br>A **v3**-as verzióban a funkció a `query` paraméterben lesz átadva.|
@@ -268,9 +265,6 @@ A v3-as verzióban Ugyanez az eredmény szerepel az `verbose` entitás metaadata
 
 [Megtudhatja](schema-change-prediction-runtime.md) , hogyan bővítheti az alkalmazást az előrejelzési futtatókörnyezetben.
 
-## <a name="deprecation"></a>Elavulás
-
-A v2 API-t a v3 előzetes verzió után legalább 9 hónapig nem lehet érvényteleníteni.
 
 ## <a name="next-steps"></a>Következő lépések
 

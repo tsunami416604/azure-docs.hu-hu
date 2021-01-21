@@ -14,19 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: aaedbfdd3b1bbbc653756d74ee86fc277b21caec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd0115fa34b10805570b6e9d8d09ae96fc169dfc
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77588501"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621131"
 ---
 # <a name="connect-barracuda-cloudgen-firewall"></a>A Barracuda CloudGen tűzfal csatlakoztatása
 
 A Barracuda CloudGen Firewall (CGFW) összekötővel könnyedén csatlakoztathatja a Barracuda CGFW-naplóit az Azure Sentinel használatával, megtekintheti az irányítópultokat, egyéni riasztásokat hozhat létre, és javíthatja a vizsgálatot. Ez nagyobb betekintést nyújt a szervezet hálózatára, és javítja a biztonsági műveletek képességeit.
-
-
-
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -43,7 +40,7 @@ A Barracuda CloudGen Firewall (CGFW) összekötővel könnyedén csatlakoztathat
 3. Kövesse a **Barracuda CloudGen Firewall** oldalon megjelenő utasításokat.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtanulta, hogyan csatlakoztatható a Barracuda CloudGen tűzfal az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

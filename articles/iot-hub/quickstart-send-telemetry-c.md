@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – Telemetria küldése az Azure IoT Hubra (C) | Microsoft Docs
+title: Gyors útmutató – telemetria küldése az Azure-IoT Hub rövid útmutató (C) | Microsoft Docs
 description: Ebben a rövid útmutatóban két C-alkalmazást fog futtatni szimulált telemetria egy IoT Hubra való küldéséhez és telemetria olvasásához az IoT Hubról a felhőben történő feldolgozás érdekében.
 author: wesmc7777
 manager: philmea
@@ -14,12 +14,12 @@ ms.custom:
 - devx-track-azurecli
 ms.date: 04/10/2019
 ms.author: wesmc
-ms.openlocfilehash: 175ec6766f7cad96c2cc386894f01e5e9fb393fc
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 89b872557275db8651f3b55502d340ff55b7e626
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121480"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624286"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>Gyors útmutató: telemetria küldése egy eszközről egy IoT-hubhoz, és olvasása háttérbeli alkalmazással (C)
 
@@ -114,7 +114,7 @@ Ebben a rövid útmutatóban azonban elő fog készíteni egy fejlesztési körn
 
 ## <a name="register-a-device"></a>Eszköz regisztrálása
 
-Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozzá. Ebben a szakaszban a Azure Cloud Shell és a [IoT bővítmény](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) használatával regisztrálhat egy szimulált eszközt.
+Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozzá. Ebben a szakaszban a Azure Cloud Shell és a [IoT bővítmény](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest&preserve-view=true) használatával regisztrálhat egy szimulált eszközt.
 
 1. Futtassa az alábbi parancsot a Azure Cloud Shell az eszköz identitásának létrehozásához.
 
@@ -183,7 +183,7 @@ A szimulálteszköz-alkalmazás egy az IoT Hubon található eszközspecifikus v
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Telemetriai adatok kiolvasása a központból
 
-Ebben a szakaszban a Azure Cloud Shell és a [IoT bővítmény](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) használatával figyeli a szimulált eszköz által küldött üzeneteket.
+Ebben a szakaszban a Azure Cloud Shell és a [IoT bővítmény](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest&preserve-view=true) használatával figyeli a szimulált eszköz által küldött üzeneteket.
 
 1. Az Azure Cloud Shell használatával futtassa a következő parancsot az IoT Hubhoz történő csatlakozáshoz és az üzenetek olvasásához:
 

@@ -8,17 +8,14 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 10/12/2020
 ms.author: matjazl
-ms.openlocfilehash: bfbdb98e691312db5665261743f8ce698541d4cc
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: cdb41f12e8f050e3c74fccddb392d7a816c15b2f
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93398215"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621878"
 ---
 # <a name="configure-private-link"></a>Privát hivatkozás konfigurálása
-
-> [!IMPORTANT]
-> Ez a képesség nyilvános előzetes verzióban érhető el, nem vonatkozik rá szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A privát hivatkozás lehetővé teszi az Azure API FHIR elérését egy privát végponton keresztül, egy olyan hálózati adaptert, amely privát és biztonságos módon csatlakoztatja a virtuális hálózatról a magánhálózati IP-címet. A privát hivatkozással biztonságosan érheti el szolgáltatásait a vnet az első féltől származó szolgáltatásként anélkül, hogy nyilvános DNS-t kellene átesnie. Ez a cikk bemutatja, hogyan hozhatja létre, tesztelheti és kezelheti az Azure API FHIR-hez készült privát végpontját.
 
@@ -90,6 +87,6 @@ A privát végpontok és a társított NIC Azure Portal láthatók a ben létreh
 
 ### <a name="delete"></a>Törlés
 
-A privát végpontok csak Azure Portalból törölhetők az Áttekintés panelről (az alábbi módon) vagy a DELETE lehetőség használatával a hálózatkezelés (előzetes verzió) "privát végponti kapcsolatok" lapján. A Törlés gombra kattintva törölheti a privát végpontot és a hozzá tartozó hálózati adaptert. Ha törli az összes privát végpontot a FHIR-erőforráshoz, és a nyilvános hálózati hozzáférés le van tiltva, a FHIR-kiszolgálónak nem kell kérést készítenie. A FHIR-erőforrás törlése vagy áthelyezése előtt az összes privát végpontot törölni kell a FHIR-erőforrásból.
+A privát végpontok csak Azure Portalból törölhetők az Áttekintés panelről (az alábbi módon) vagy a DELETE lehetőség használatával a hálózatkezelés (előzetes verzió) "privát végponti kapcsolatok" lapján. A Törlés gombra kattintva törölheti a privát végpontot és a hozzá tartozó hálózati adaptert. Ha törli az összes privát végpontot a FHIR-erőforráshoz, és a nyilvános hálózati hozzáférés le van tiltva, a FHIR-kiszolgálónak nem kell kérést készítenie.
 
 ![Privát végpont törlése](media/private-link/private-link-delete.png)

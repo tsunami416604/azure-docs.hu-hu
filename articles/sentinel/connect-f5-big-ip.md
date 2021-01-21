@@ -15,21 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: ae361c74b261bdd6a5673040f868392282b573ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e895640daeb3fbbba2f2708969ee4cf856bf1033
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77588280"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621181"
 ---
 # <a name="connect-your-f5-big-ip-appliance"></a>Az F5 BIG-IP berendezés összekötése 
 
-> [!IMPORTANT]
-> Az F5 BIG-IP adatösszekötő az Azure Sentinel szolgáltatásban jelenleg nyilvános előzetes verzióban érhető el.
-> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 Az F5 BIG-IP Connector segítségével könnyedén csatlakoztathatja az összes F5 BIG-IP-naplót az Azure Sentinel használatával, megtekintheti a munkafüzeteket, egyéni riasztásokat hozhat létre, és javíthatja a vizsgálatot. Ez nagyobb betekintést nyújt a szervezet hálózatára, és javítja a biztonsági műveletek képességeit. Az F5 BIG-IP és az Azure Sentinel közötti integráció a REST API használatát teszi lehetővé.
-
 
 > [!NOTE]
 > Az Azure Sentinel-t futtató munkaterület földrajzi helye tárolja az adatmennyiséget.
@@ -38,11 +33,11 @@ Az F5 BIG-IP Connector segítségével könnyedén csatlakoztathatja az összes 
 
 Az F5 BIG-IP képes integrálni és exportálni a naplókat közvetlenül az Azure Sentinelbe.
 
-1. Az Azure Sentinel-portálon kattintson az **adatösszekötők** elemre, majd válassza az **F5 Big-IP** , majd az **összekötő lap megnyitása**lehetőséget. 
+1. Az Azure Sentinel-portálon kattintson az **adatösszekötők** elemre, majd válassza az **F5 Big-IP** , majd az **összekötő lap megnyitása** lehetőséget. 
 1. Az F5 BIG-IP összekapcsolásához JSON-deklarációt kell közzétennie a rendszer API-végpontján. Ennek módjával kapcsolatos útmutatásért lásd: [az F5 Big-IP integrálása az Azure Sentinel](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel)használatával.
 8. Az F5 BIG-IP Connector lapon másolja a munkaterület-azonosítót és az elsődleges kulcsot, és illessze be őket az [adatok Azure log Analyticsba való továbbítása](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel#streaming-data-to-azure-log-analytics)alatt.
 1. Az F5 BIG-IP utasítások elvégzése után az Azure Sentinel Connector oldalán láthatja a csatlakoztatott adattípusokat.
-1. Ha az F5 BIG-IP-eseményhez Log Analytics vonatkozó sémát szeretné használni, keresse meg **F5Telemetry_LTM_CL**, **F5Telemetry_system_CL**és **F5Telemetry_ASM_CL**.
+1. Ha az F5 BIG-IP-eseményhez Log Analytics vonatkozó sémát szeretné használni, keresse meg **F5Telemetry_LTM_CL**, **F5Telemetry_system_CL** és **F5Telemetry_ASM_CL**.
 
 
 ## <a name="validate-connectivity"></a>Kapcsolat ellenőrzése
@@ -51,7 +46,7 @@ Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek a Log Anal
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtanulta, hogyan csatlakoztatható az F5 BIG-IP az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

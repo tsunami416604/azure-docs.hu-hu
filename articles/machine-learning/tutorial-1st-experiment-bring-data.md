@@ -11,18 +11,18 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: tracking-python
-ms.openlocfilehash: ab497dee35afdd60247d156d0f30bbf003ea1210
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: c08d9ee6704203d0634d7a1b90a57de9c6a99d31
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072156"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622795"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>Oktatóanyag: saját adatai használata (4. rész)
 
 Ebből az oktatóanyagból megtudhatja, hogyan tölthet fel és használhat saját adatait a gépi tanulási modellek Azure Machine Learningban való betanításához.
 
-Ez az oktatóanyag *egy négy részből álló oktatóanyag-Sorozat 4. része* , amelyben megismerheti a Azure Machine learning és az Azure-ban végzett feladatok-alapú gépi tanulási feladatok alapjait. Ez az oktatóanyag az [1. rész: beállítás](tutorial-1st-experiment-sdk-setup-local.md), [2. rész: futtassa a "„Helló világ!” alkalmazás!"](tutorial-1st-experiment-hello-world.md)és a [3. rész: a modell betanítása](tutorial-1st-experiment-sdk-train.md)című részben leírtakat.
+Ez az oktatóanyag *egy négy részből álló oktatóanyag-Sorozat 4. része* , amelyben megismerheti a Azure Machine learning és az Azure-ban végzett feladatok-alapú gépi tanulási feladatok alapjait. Ez az oktatóanyag az [1. rész: beállítás](tutorial-1st-experiment-sdk-setup-local.md), [2. rész: futtassa a "Hello World!"](tutorial-1st-experiment-hello-world.md)és a [3. rész: a modell betanítása](tutorial-1st-experiment-sdk-train.md)című részben leírtakat.
 
 A [3. részben: a modell betanítása](tutorial-1st-experiment-sdk-train.md)az `torchvision.datasets.CIFAR10` PyTorch API beépített metódusával lett letöltve. Sok esetben azonban a saját adatait is használni szeretné egy távoli betanítási futtatás során. Ez a cikk azt a munkafolyamatot mutatja be, amelynek használatával a saját adataival dolgozhat Azure Machine Learningban.
 
@@ -99,6 +99,20 @@ tutorial
 ```
 
 Ha `train.py` az előző oktatóanyagban nem futtatta helyileg a szolgáltatást, nem lesz a `data/` könyvtára. Ebben az esetben futtassa a `torchvision.datasets.CIFAR10` metódust helyileg a `download=True` `train.py` parancsfájlban.
+
+Továbbá a helyi futtatáshoz győződjön meg róla, hogy kilép az oktatóanyag-környezetből, és aktiválja az új Conda-környezetet:
+
+```bash
+conda deactivate                # If you are still using the tutorial environment, exit it
+```
+
+```bash
+conda env create -f .azureml/pytorch-env.yml    # create the new conda environment with updated dependencies
+```
+
+```bash
+conda activate pytorch-aml-env          # activate new conda environment
+```
 
 A módosított betanítási parancsfájl helyi futtatásához hívja a következőt:
 

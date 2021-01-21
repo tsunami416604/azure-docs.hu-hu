@@ -1,5 +1,5 @@
 ---
-title: Eszköz vezérlése Azure IoT Hubról – rövid útmutató (.NET) | Microsoft Docs
+title: Gyors útmutató – eszköz vezérlése az Azure IoT Hub rövid útmutatóból (.NET) | Microsoft Docs
 description: Ebben a rövid útmutatóban két C# mintaalkalmazást fog futtatni. Az egyik alkalmazás olyan szolgáltatásalkalmazás, amely távolról vezérelheti az Ön hubhoz csatlakoztatott eszközöket. A másik alkalmazás a hubhoz csatlakoztatott eszközt szimulál, amelyet távolról lehet irányítani.
 author: robinsh
 manager: philmea
@@ -14,12 +14,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 03/04/2020
-ms.openlocfilehash: 39cfa64b756ef6bf20f8cbf3d6e8f8a25e81c674
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 88b818a25a0888cc74783a210cc7a1c0acb455ac
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092873"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623264"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>Rövid útmutató: IoT Hubhoz csatlakozó eszköz vezérlése (.NET)
 
@@ -82,7 +82,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
    **YourIoTHubName**: az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string \
+    az iot hub device-identity connection-string show \
       --hub-name {YourIoTHubName} \
       --device-id MyDotnetDevice \
       --output table

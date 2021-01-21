@@ -1,6 +1,6 @@
 ---
-title: Telemetria küldése az Azure IoT Hub rövid útmutatóba (iOS)
-description: Futtasson egy minta iOS-alkalmazást, hogy szimulált telemetria küldjön egy IoT hubhoz, és beolvassa a telemetria az IoT hub-ból a felhőben történő feldolgozáshoz.
+title: Gyors útmutató – telemetria küldése az Azure-IoT Hub (iOS)
+description: Ebben a rövid útmutatóban egy iOS-mintaalkalmazást fog futtatni szimulált telemetria egy IoT Hubra való küldéséhez és telemetria olvasásához az IoT Hubról, a felhőben történő feldolgozás érdekében.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 ms.date: 04/03/2019
-ms.openlocfilehash: 6699015a3c8939f012eb837da3d8b0c3d49527d5
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 4af985d93c5b02ab20df97abd5fa0371edf889f5
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121478"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624252"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>Rövid útmutató: Telemetria küldése egy eszközről IoT Hubra (iOS)
 

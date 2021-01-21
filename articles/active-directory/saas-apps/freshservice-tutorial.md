@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/31/2020
+ms.date: 01/15/2021
 ms.author: jeedes
-ms.openlocfilehash: db922ff0d38e219435f6b58db205e6bb220c9fbd
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b39ec28e0b4a6774c970b591b73868e24e20e8cf
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92451104"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622229"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-freshservice"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Freshservice
 
@@ -25,8 +25,6 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Freshservice a A
 * A Freshservice-hez hozzáférő Azure AD-beli vezérlés.
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a Freshservice az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
-
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -43,22 +41,21 @@ Első lépésként a következő elemeket kell megadnia:
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
 * A Freshservice támogatja az **SP** által KEZDEMÉNYEZett SSO-t
-* A Freshservice konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-freshservice-from-the-gallery"></a>Freshservice hozzáadása a gyűjteményből
+## <a name="add-freshservice-from-the-gallery"></a>Freshservice hozzáadása a gyűjteményből
 
 A Freshservice Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Freshservice a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **Freshservice** kifejezést a keresőmezőbe.
 1. Válassza ki a **Freshservice** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-sso-for-freshservice"></a>Azure AD SSO konfigurálása és tesztelése a Freshservice-hez
 
-Konfigurálja és tesztelje az Azure AD SSO-t a Freshservice a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Freshservice-ben.
+Konfigurálja és tesztelje az Azure AD SSO-t a Freshservice a **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Freshservice-ben.
 
 Az Azure AD SSO és a Freshservice konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
@@ -73,9 +70,9 @@ Az Azure AD SSO és a Freshservice konfigurálásához és teszteléséhez hajts
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/) **Freshservice** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. A Azure Portal **Freshservice** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikonra a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -94,7 +91,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-1. A Azure Portal **Freshservice beállítása** szakaszban másolja ki a **Azure portal**megfelelő URL-címeket a követelmény alapján.
+1. A Azure Portal **Freshservice beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmény alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
@@ -102,7 +99,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
@@ -114,23 +111,17 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a Freshservice.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **Freshservice**lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
-
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
-
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
-
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **Freshservice** lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
 ## <a name="configure-freshservice-sso"></a>Freshservice SSO konfigurálása
 
-1. A Freshservice belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
+1. A Freshservice belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése** lehetőségre kattintva.
 
     ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
 
@@ -140,11 +131,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Ha manuálisan szeretné beállítani a Freshservice, jelentkezzen be a Freshservice vállalati webhelyre rendszergazdaként.
 
-1. A bal oldali menüben kattintson a **rendszergazda** elemre, és válassza az **ügyfélszolgálati biztonság** lehetőséget az **általános beállítások**területen.
+1. A bal oldali menüben kattintson a **rendszergazda** elemre, és válassza az **ügyfélszolgálati biztonság** lehetőséget az **általános beállítások** területen.
 
     ![Felügyelet](./media/freshservice-tutorial/configure-1.png "Rendszergazda")
 
-1. A **Biztonság**területen kattintson az **ugrás a Freshworks 360 biztonságra**elemre.
+1. A **Biztonság** területen kattintson az **ugrás a Freshservice 360 biztonságra** elemre.
 
     ![Biztonság](./media/freshservice-tutorial/configure-2.png "Biztonság")
 
@@ -152,15 +143,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     ![Egyszeri bejelentkezés](./media/freshservice-tutorial/configure-3.png "Egyszeri bejelentkezés")
   
-    a. Az **egyszeri bejelentkezéshez**válassza **a be**lehetőséget.
+    a. Az **egyszeri bejelentkezéshez** válassza **a be** lehetőséget.
 
-    b. A **login metódusban**válassza az **SAML egyszeri bejelentkezés**lehetőséget.
+    b. A **login metódusban** válassza az **SAML egyszeri bejelentkezés** lehetőséget.
 
     c. Az identitásszolgáltató szövegmezőben **megadott entitás-azonosítóban** illessze be az **entitás-azonosító** értékét, amelyet a Azure Portal másolt.
 
     d. Az **SAML SSO URL** szövegmezőbe illessze be a **bejelentkezési URL** értékét, amelyet a Azure Portal másolt.
 
-    e. Az **aláírási beállítások**területen jelölje be a **csak az aláírt érvényesítések** lehetőséget a legördülő listából.
+    e. Az **aláírási beállítások** területen jelölje be a **csak az aláírt érvényesítések** lehetőséget a legördülő listából.
 
     f. A **kijelentkezési URL** szövegmezőben illessze be a **kijelentkezési URL-** értéket, amelyet a Azure Portal másolt.
 
@@ -177,13 +168,13 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Fr
 
 1. Jelentkezzen be a **FreshService** vállalati webhelyre rendszergazdaként.
 
-2. A bal oldali menüben kattintson a **rendszergazda**elemre.
+2. A bal oldali menüben kattintson a **rendszergazda** elemre.
 
-3. A **felhasználói kezelés** szakaszban kattintson a **kérelmezők**elemre.
+3. A **felhasználói kezelés** szakaszban kattintson a **kérelmezők** elemre.
 
     ![Kérelmezők](./media/freshservice-tutorial/create-user-1.png "Kérelmezők")
 
-4. Kattintson az **új kérelmező**elemre.
+4. Kattintson az **új kérelmező** elemre.
 
     ![Új kérők](./media/freshservice-tutorial/create-user-2.png "Új kérők")
 
@@ -199,16 +190,14 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Fr
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
-Ha a hozzáférési panelen a Freshservice csempére kattint, automatikusan be kell jelentkeznie arra a Freshservice, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. A rendszer átirányítja a Freshservice bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot. 
 
-## <a name="additional-resources"></a>További források
+* Lépjen közvetlenül a Freshservice bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
 
-- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](./tutorial-list.md)
+* Használhatja a Microsoft saját alkalmazásait. Amikor a saját alkalmazások Freshservice csempére kattint, automatikusan be kell jelentkeznie arra a Freshservice, amelyhez be szeretné állítani az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Következő lépések
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
-
-- [A Freshservice kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
+ A Freshservice konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

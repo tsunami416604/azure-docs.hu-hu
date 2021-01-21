@@ -3,12 +3,12 @@ title: Azure Event Hubs – adatanomáliák megjelenítése valós idejű esemé
 description: 'Oktatóanyag: az adatrendellenességek megjelenítése a Microsoft Azureba eljuttatott valós idejű eseményekben Event Hubs'
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: b72b82f3959565e6bd0598fef8e21bb64fedb053
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: bd08d611761e125fdd03173ce6027c60e82baed6
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655679"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623459"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Oktatóanyag – Az Azure Event Hubsba küldött valós idejű események adatanomáliáinak vizualizációja
 
@@ -16,7 +16,7 @@ Az Azure Event Hubsban az Azure Stream Analytics használatával ellenőrizheti 
 
 Ebben az oktatóanyagban ezt a példát szimulálja. Futtatni fog egy alkalmazást, amely hitelkártya-tranzakciókat hoz létre, és elküldi őket egy eseményközpontba. Ezután olvassa el az adatstreamet valós időben a Azure Stream Analytics használatával, amely elválasztja az érvénytelen tranzakcióktól származó érvényes tranzakciókat, majd a Power BI segítségével vizuálisan azonosítja az érvénytelenként megjelölt tranzakciókat.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 > [!div class="checklist"]
 > * Event Hubs-névtér létrehozása
 > * Eseményközpont létrehozása
@@ -178,7 +178,7 @@ Most már adatokat streamelhet az eseményközpontba. Az adatok Power BI-vizuali
 
    ![Új Azure Stream Analytics-feladat létrehozását bemutató képernyőkép.](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-add-job.png)
 
-    A többi mezőnél fogadja el az alapértelmezett beállításokat. Kattintson a **Létrehozás** gombra. 
+    A többi mezőnél fogadja el az alapértelmezett beállításokat. Kattintson a **Létrehozás** lehetőségre. 
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Bemenet hozzáadása a Stream Analytics-feladathoz
 
@@ -349,7 +349,7 @@ Jelentkezzen be a Power BI-fiókjába. Lépjen a **Saját munkaterületre**. Az 
 
 ### <a name="clean-up-resources-using-azure-cli"></a>Az erőforrások eltávolítása az Azure CLI használatával
 
-Az erőforráscsoport az [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal távolítható el.
+Az erőforráscsoport az [az group delete](/cli/azure/group#az-group-delete) paranccsal távolítható el.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup

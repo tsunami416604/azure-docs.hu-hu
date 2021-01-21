@@ -11,12 +11,12 @@ ms.date: 09/22/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f1b1d792891b3ab8dabff42757d0e705e512879
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 80a035f30294449a024bbde76df2d42ddc23396e
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98613798"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622711"
 ---
 # <a name="azure-ad-connect-cloud-sync-attribute-mapping"></a>Azure AD Connect Cloud Sync-attribútum leképezése
 
@@ -57,9 +57,9 @@ Az új funkció használatához kövesse az alábbi lépéseket.
 
 1.  Az Azure Portalon válassza az **Azure Active Directory** lehetőséget.
 2.  Válassza a **Azure ad Connect** lehetőséget.
-3.  Válassza a **kiépítés kezelése** lehetőséget.
+3.  Válassza a **Felhőbeli szinkronizálás kezelése** lehetőséget.
 
-    ![Kiépítés kezelése](media/how-to-configure/manage-1.png)
+    ![Kiépítés kezelése](media/how-to-install/install-6.png)
 
 4. A **konfiguráció** területen válassza ki a konfigurációt.
 5. Válassza **a kattintson ide a leképezések szerkesztéséhez**.  Ekkor megnyílik az attribútum-leképezési képernyő.

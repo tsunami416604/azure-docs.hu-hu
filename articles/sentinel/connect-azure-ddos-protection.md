@@ -7,20 +7,16 @@ ms.assetid: bfa2eca4-abdc-49ce-b11a-0ee229770cdd
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: how-to
-ms.date: 09/01/2020
+ms.date: 01/20/2021
 ms.author: yelevin
-ms.openlocfilehash: c54b5b785f6da1bb651d8b1f508da42ab0fb802d
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 8089b1e74e88db81c1c15ad2cbf2072abcfff241
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538376"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621345"
 ---
 # <a name="connect-data-from-azure-ddos-protection"></a>Adatok összekapcsolásának Azure DDoS Protection
-
-> [!IMPORTANT]
-> Az Azure Sentinel Azure DDoS Protection adatösszekötője jelenleg nyilvános előzetes verzióban érhető el.
-> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Az elosztott szolgáltatásmegtagadási (DDoS) támadások megpróbálnak kimeríteni egy alkalmazás erőforrásait, így az alkalmazás nem érhető el a legitim felhasználók számára. A DDoS-támadások bármilyen, az interneten keresztül nyilvánosan elérhető végpontot megcélozhatnak. Az [Azure DDoS Protection](../ddos-protection/ddos-protection-overview.md)az alkalmazások kialakításával kapcsolatos ajánlott eljárásokkal kombinálva robusztus védelmet nyújt a DDOS-támadások ellen. Azure DDoS Protection naplókat összekapcsolhatja az Azure Sentinel szolgáltatással, így megtekintheti a munkafüzetek naplófájljait, felhasználhatja egyéni riasztások létrehozásához és a vizsgálatok javítására. 
 
@@ -59,7 +55,7 @@ Az elosztott szolgáltatásmegtagadási (DDoS) támadások megpróbálnak kimer�
 >
 > Ezzel az adatösszekötővel a kapcsolati állapot mutatói (az adatösszekötők katalógusában és az adattípusok neve melletti kapcsolati ikonokban lévő színcsíkok) csak akkor jelennek *meg, ha* az adatok betöltése az elmúlt két hétben egy bizonyos pontján történik. Ha két hét telt el az adatfeldolgozás nélkül, az összekötő leválasztva jelenik meg. Minél több információ érkezik, a *csatlakoztatott* állapot vissza fog térni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a dokumentumból megtudhatta, hogyan csatlakozhat Azure DDoS Protection naplókat az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).

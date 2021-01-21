@@ -1,6 +1,6 @@
 ---
-title: Az üzenetsor-útválasztás konfigurálása az Azure IoT Hubhoz Azure PowerShell
-description: Konfigurálja az üzenetsor-útválasztást az Azure IoT Hub Azure PowerShell használatával. Az üzenet tulajdonságaitól függően egy Storage-fiókra vagy egy Service Bus-várólistára kell irányítani.
+title: Oktatóanyag – az üzenetsor-útválasztás konfigurálása az Azure IoT Hubhoz Azure PowerShell
+description: Oktatóanyag – az üzenetsor-útválasztás konfigurálása az Azure IoT Hub Azure PowerShell használatával. Az üzenet tulajdonságaitól függően egy Storage-fiókra vagy egy Service Bus-várólistára kell irányítani.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 92c30287e836ccadda915dab70a4d40e9c4e851a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be1560bcc03ec7a26f4bc374392c746243cd731a
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89073403"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624072"
 ---
 # <a name="tutorial-use-azure-powershell-to-configure-iot-hub-message-routing"></a>Oktatóanyag: a Azure PowerShell használata IoT Hub üzenet-útválasztás konfigurálásához
 
@@ -36,7 +36,7 @@ Először hozza létre az erőforrásokat a PowerShell használatával.
 
 Másolja és illessze be az alábbi szkriptet Cloud Shellba, majd nyomja le az ENTER billentyűt. A parancsfájl egyszerre egy sort futtat. A szkript ezen első szakasza létrehozza az oktatóanyag alaperőforrásait, beleértve a Storage-fiókot, a IoT Hub, a Service Bus névteret és a Service Bus üzenetsor-t. Az oktatóanyag során másolja az egyes parancsfájlokat, és illessze be Cloud Shellba a futtatásához.
 
-Több olyan erőforrás neve van, amelynek globálisan egyedinek kell lennie, például a IoT Hub neve és a Storage-fiók neve. Ennek egyszerűbbé tétele érdekében az erőforrásnevek egy *randomValue*nevű véletlenszerű alfanumerikus értékkel vannak hozzáfűzve. A rendszer egyszer hozza létre a randomValue a parancsfájl tetején, és szükség szerint hozzáfűzi az erőforrások nevét a parancsfájlban. Ha nem szeretné, hogy véletlenszerű legyen, beállíthatja egy üres sztringre vagy egy adott értékre. 
+Több olyan erőforrás neve van, amelynek globálisan egyedinek kell lennie, például a IoT Hub neve és a Storage-fiók neve. Ennek egyszerűbbé tétele érdekében az erőforrásnevek egy *randomValue* nevű véletlenszerű alfanumerikus értékkel vannak hozzáfűzve. A rendszer egyszer hozza létre a randomValue a parancsfájl tetején, és szükség szerint hozzáfűzi az erőforrások nevét a parancsfájlban. Ha nem szeretné, hogy véletlenszerű legyen, beállíthatja egy üres sztringre vagy egy adott értékre. 
 
 > [!IMPORTANT]
 > A kezdeti parancsfájlban beállított változókat az útválasztási parancsfájl is használja, ezért futtassa az összes parancsfájlt ugyanabban a Cloud Shell-munkamenetben. Ha új munkamenetet nyit meg az Útválasztás beállítására szolgáló parancsfájl futtatásához, akkor a változók közül számos érték hiányzik. 
@@ -275,7 +275,7 @@ Add-AzIotHubRoute `
 
 [!INCLUDE [iot-hub-include-view-routing-in-portal](../../includes/iot-hub-include-view-routing-in-portal.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy beállította az erőforrásokat, és konfigurálta az üzenet útvonalait, folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan küldhet üzeneteket az IoT hubhoz, és hogyan irányíthatja őket át a különböző célhelyekre. 
 

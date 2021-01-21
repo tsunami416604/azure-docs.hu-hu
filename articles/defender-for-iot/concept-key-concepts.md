@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/13/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 1ac87f98af555aae155a201cc20692c950fc7924
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 419e32a127947cde1d3761507f0df7a889528ff2
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97839665"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621928"
 ---
 # <a name="basic-concepts"></a>Alapfogalmak 
 
@@ -22,7 +22,7 @@ Ez a cikk a IoT készült Azure Defender legfontosabb előnyeit ismerteti.
 
 A IoT érzékelőkhöz tartozó Defender egy SPAN porthoz vagy hálózati KOPPINTÁShoz csatlakozik, és azonnal megkezdi az INTERNETKAPCSOLATtal rendelkező hálózati forgalom összegyűjtését a passzív (ügynök nélküli) figyelés használatával. A részletes csomagok vizsgálata (DPI) a soros és az Ethernet-vezérlésű hálózati berendezések forgalmának felboncolára szolgál. A IoT Defender-nak nincs hatással az OT használó hálózatokra, mert nem az adatelérési útnak van helyezve, és nem ellenőrzi aktívan az eszközökön az OT. 
 
-Ahhoz, hogy azonnali pillanatképeket nyújtson a részletes adatokról, a Defender for IoT érzékelő a passzív figyelést egy opcionális aktív összetevővel egészíti ki. Ez az összetevő biztonságos, gyártó által jóváhagyott parancsokat használ a Windows és a vezérlő eszközeinek lekérdezéséhez az eszköz adataihoz, ahányszor vagy ritkán, ahogy szeretné.
+Ahhoz, hogy azonnali pillanatképeket nyújtson az eszköz részletes adatairól, a Defender for IoT érzékelő a passzív figyelést egy opcionális aktív összetevővel egészíti ki. Ez az összetevő biztonságos, gyártó által jóváhagyott parancsokat használ a Windows és a vezérlő eszközeinek lekérdezéséhez az eszköz adataihoz, ahányszor vagy ritkán, ahogy szeretné.
 
 ## <a name="embedded-knowledge-of-ics-protocols-devices-and-applications"></a>Az ICS protokollok, eszközök és alkalmazások beágyazott ismerete
 

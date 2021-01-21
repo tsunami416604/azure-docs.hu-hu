@@ -1,6 +1,6 @@
 ---
-title: Az eszköz belső vezérlőprogramjának frissítése az Azure IoT Hubon keresztül | Microsoft Docs
-description: Ismerje meg, hogyan valósítható meg az eszköz belső vezérlőprogram-frissítési folyamata, amely az IoT hub-hoz csatlakoztatott háttér-alkalmazásból indítható el.
+title: Oktatóanyag – eszköz belső vezérlőprogram frissítése az Azure IoT Hub használatával | Microsoft Docs
+description: Oktatóanyag – Ismerje meg, hogyan valósítható meg az eszköz belső vezérlőprogram-frissítési folyamata, amely az IoT hub-hoz csatlakoztatott háttér-alkalmazásból indítható el.
 services: iot-hub
 author: wesmc7777
 ms.author: wesmc
@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-js
 - devx-track-azurecli
-ms.openlocfilehash: b4de685accf665c7555a454ef247ddf589c6ba5f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 807de3c41ec8026edd2b2d8859eb70863ae5697b
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572337"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621396"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Oktatóanyag: Eszközök belsővezérlőprogram-frissítési folyamatának implementálása
 
@@ -206,7 +206,7 @@ Ha szeretné, a CLI-t is használhatja:
 az group delete --name tutorial-iot-hub-rg
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan implementálható a csatlakoztatott eszközök belsővezérlőprogram-frissítési folyamata. Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan használható az Azure IoT Hub Portal-eszközök és az Azure CLI-parancsok az eszközök kapcsolatának teszteléséhez.
 

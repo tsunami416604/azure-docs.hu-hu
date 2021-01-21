@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 12/04/2020
+ms.date: 01/19/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8dce284c0fffe10fe077fcb6c6713ba65c45751
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 9442489efd2a84ac8a31dfb2efb5718e1fd4f594
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743904"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621793"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Összevont biztonsági információk regisztrálása Azure Active Directory – áttekintés
 
@@ -30,18 +30,18 @@ Ez a cikk a kombinált biztonsági regisztrációt ismerteti. A kombinált bizto
 > [!div class="nextstepaction"]
 > [Kombinált biztonsági regisztráció engedélyezése](howto-registration-mfa-sspr-combined.md)
 
-![Saját profil, amely egy felhasználó regisztrált biztonsági adatait jeleníti meg](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
+![Saját fiók, amely egy felhasználó regisztrált biztonsági adatait tartalmazza](media/concept-registration-mfa-sspr-combined/combined-security-info-defaults-registered.png)
 
 Az új felület engedélyezése előtt tekintse át ezt a rendszergazda által irányított dokumentációt és a felhasználó által irányított dokumentációt, hogy megértse a funkció funkcióit és hatását. A [felhasználói dokumentáció](../user-help/security-info-setup-signin.md) alapján felkészítheti a felhasználókat az új élményre, és segítheti a sikeres bevezetést.
 
 Az Azure AD kombinált biztonsági információinak regisztrációja jelenleg nem érhető el olyan nemzeti felhők számára, mint az Azure Germany vagy az Azure China 21Vianet. Az Azure USA kormányzati szervei számára érhető el.
 
 > [!IMPORTANT]
-> Azok a felhasználók, akik számára engedélyezve van az eredeti előzetes verzió és a bővített kombinált regisztrációs élmény, az új viselkedést láthatják. Azok a felhasználók, akik mindkét élmény esetében engedélyezve vannak, csak az új saját profilt látják. Az új *saját profil* a közös regisztráció megjelenésével és működésével igazodik, és zökkenőmentes felhasználói élményt nyújt a felhasználóknak. A felhasználók a következő címen érhetik el a profilt: [https://myprofile.microsoft.com](https://myprofile.microsoft.com) .
+> Azok a felhasználók, akik számára engedélyezve van az eredeti előzetes verzió és a bővített kombinált regisztrációs élmény, az új viselkedést láthatják. Azok a felhasználók, akik mindkét élmény esetében engedélyezve vannak, csak a saját fiókkal kapcsolatos felhasználói élményt látják. A *fiókom a* közös regisztráció megjelenésével és működésével igazodik, és zökkenőmentes felhasználói élményt nyújt a felhasználóknak. A felhasználók a következő helyen tekinthetik meg a fiókomat: [https://myaccount.microsoft.com](https://myaccount.microsoft.com) .
 >
 > A biztonsági adatok elérésére tett kísérlet során hibaüzenet jelenhet meg, például: "sajnos nem lehet bejelentkezni". Győződjön meg arról, hogy nincs olyan konfigurációs vagy csoportházirend-objektuma, amely blokkolja a harmadik féltől származó cookie-kat a böngészőben.
 
-A *saját profil* oldalai honosítva vannak az oldalt elérő számítógép nyelvi beállításai alapján. A Microsoft a böngésző gyorsítótárában használt legújabb nyelvet tárolja, így a lapok elérésére irányuló próbálkozások továbbra is az utolsó használt nyelven jelennek meg. Ha törli a gyorsítótárat, az oldalak ismételt renderelése megtörténjen.
+A *saját fiók* oldalai honosítva vannak az oldalt elérő számítógép nyelvi beállításai alapján. A Microsoft a böngésző gyorsítótárában használt legújabb nyelvet tárolja, így a lapok elérésére irányuló próbálkozások továbbra is az utolsó használt nyelven jelennek meg. Ha törli a gyorsítótárat, az oldalak ismételt renderelése megtörténjen.
 
 Ha egy adott nyelvet szeretne kényszeríteni, hozzáadhat az `?lng=<language>` URL végéhez, ahol a a `<language>` megjeleníteni kívánt nyelv kódja.
 
@@ -51,7 +51,7 @@ Ha egy adott nyelvet szeretne kényszeríteni, hozzáadhat az `?lng=<language>` 
 
 A kombinált regisztráció a következő hitelesítési módszereket és műveleteket támogatja:
 
-| Módszer | Regisztráció | Módosítás | Törlés |
+| Metódus | Regisztráció | Módosítás | Törlés |
 | --- | --- | --- | --- |
 | Microsoft Authenticator | Igen (legfeljebb 5) | Nem | Igen |
 | Egyéb hitelesítő alkalmazás | Igen (legfeljebb 5) | Nem | Igen |
@@ -116,7 +116,7 @@ Ha a SSPR-szabályzat megköveteli, hogy a felhasználók rendszeres időközön
 
 ### <a name="manage-mode"></a>Kezelés módja
 
-A felhasználók a [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) saját profil **biztonsági adatainak** kiválasztásával érhetik el a kezelési módot. A felhasználók hozzáadhatnak metódusokat, törölhetik vagy módosíthatják a meglévő metódusokat, módosíthatják az alapértelmezett metódust és egyebeket.
+A felhasználók a [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) fiók **biztonsági adatainak** kiválasztásával érhetik el a kezelési módot. A felhasználók hozzáadhatnak metódusokat, törölhetik vagy módosíthatják a meglévő metódusokat, módosíthatják az alapértelmezett metódust és egyebeket.
 
 ## <a name="key-usage-scenarios"></a>Kulcshasználat forgatókönyvek
 
@@ -126,21 +126,21 @@ A rendszergazda kényszerített regisztrációt.
 
 Egy felhasználó nem állította be az összes szükséges biztonsági adatot, és a Azure Portalra kerül. A Felhasználónév és a jelszó megadása után a rendszer felszólítja a felhasználót a biztonsági adatok beállítására. A felhasználó ezután a varázslóban látható lépéseket követve beállíthatja a szükséges biztonsági adatokat. Ha a beállítások lehetővé teszik, a felhasználó dönthet úgy, hogy az alapértelmezés szerint nem látható módszereket is beállít. A varázsló befejezése után a felhasználók áttekintik az általuk beállított metódusokat és a Multi-Factor Authentication alapértelmezett módszerét. A telepítési folyamat befejezéséhez a felhasználó megerősíti az adatokat, és folytatja a Azure Portal.
 
-### <a name="set-up-security-info-from-my-profile"></a>Biztonsági információk beállítása a saját profilból
+### <a name="set-up-security-info-from-my-account"></a>Biztonsági adatok beállítása a fiókomból
 
 Egy rendszergazda nem kényszerített regisztrációt.
 
-Egy olyan felhasználó, aki még nem állította be az összes szükséges biztonsági adatot, a következőre lép: [https://myprofile.microsoft.com](https://myprofile.microsoft.com) . A felhasználó a bal oldali panelen kiválasztja a **biztonsági adatokat** . Onnan a felhasználó úgy dönt, hogy hozzáad egy metódust, kiválasztja az elérhető módszerek bármelyikét, és az adott metódus beállításának lépéseit követi. Ha elkészült, a felhasználó látja a biztonsági adatok lapon beállított metódust.
+Egy olyan felhasználó, aki még nem állította be az összes szükséges biztonsági adatot, a következőre lép: [https://myaccount.microsoft.com](https://myaccount.microsoft.com) . A felhasználó a bal oldali panelen kiválasztja a **biztonsági adatokat** . Onnan a felhasználó úgy dönt, hogy hozzáad egy metódust, kiválasztja az elérhető módszerek bármelyikét, és az adott metódus beállításának lépéseit követi. Ha elkészült, a felhasználó látja a biztonsági adatok lapon beállított metódust.
 
-### <a name="delete-security-info-from-my-profile"></a>Biztonsági adatok törlése a saját profilból
+### <a name="delete-security-info-from-my-account"></a>Biztonsági adatok törlése a fiókomból
 
 Az a felhasználó, aki korábban beállított legalább egy metódust, navigál a következőhöz: [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) . A felhasználó úgy dönt, hogy törli a korábban regisztrált módszerek egyikét. Ha elkészült, a felhasználó már nem látja ezt a metódust a biztonsági adatok lapon.
 
-### <a name="change-the-default-method-from-my-profile"></a>A saját profil alapértelmezett módszerének módosítása
+### <a name="change-the-default-method-from-my-account"></a>A fiókom alapértelmezett módszerének módosítása
 
 Az a felhasználó, aki korábban beállított legalább egy olyan metódust, amelyet Multi-Factor Authentication használhat a alkalmazásban [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) . A felhasználó az aktuális alapértelmezett metódust egy másik alapértelmezett metódusra módosítja. Ha elkészült, a felhasználó az új alapértelmezett metódust látja a biztonsági adatok lapon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Első lépésként tekintse meg az oktatóanyagokat az [önkiszolgáló jelszó-visszaállítás engedélyezéséhez](tutorial-enable-sspr.md) és az [Azure ad-multi-Factor Authentication engedélyezéséhez](tutorial-enable-azure-mfa.md).
 

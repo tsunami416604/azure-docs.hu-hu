@@ -9,26 +9,23 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/27/2018
+ms.date: 01/12/2021
 ms.author: jeedes
-ms.openlocfilehash: 5e0b1d8d2cb80886131a88c01a6c24102ad7c77c
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: aa5e3e88ceb957728799f27482de7477ba6b7b48
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673541"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621247"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bitbucket-by-resolution-gmbh"></a>Oktatóanyag: Azure Active Directory integráció az SAML SSO-nal a bitbucket by Solution GmbH által
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az SAML SSO-t a bitbucket for Solution GmbH Azure Active Directory (Azure AD) használatával.
-Az SAML SSO az Azure AD-vel való bitbucket általi integrációja a következő előnyöket biztosítja:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az SAML SSO-t a bitbucket for Solution GmbH Azure Active Directory (Azure AD) használatával. Ha az Azure AD-vel integrálja a bitbucket-hez készült SAML SSO-t, a következőket teheti:
 
-* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá az SAML SSO-hoz a bitbucket by Solution GmbH használatával.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek az SAML SSO-ba a bitbucket (egyszeri bejelentkezés) és az Azure AD-fiókjuk használatával.
-* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
+* Vezérlés az Azure AD-ben, aki hozzáfér a toSAML SSO-hoz a bitbucket by Solution GmbH használatával.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a toSAML SSO-ba a bitbucket által az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti: a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,72 +42,50 @@ Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Az
 * Az SAML SSO bitbucket általi feloldása a felhasználói üzembe helyezést **csak időben** támogatja
 
 
-## <a name="adding-saml-sso-for-bitbucket-by-resolution-gmbh-from-the-gallery"></a>SAML SSO hozzáadása a bitbucket by Solution GmbH által a katalógusból
+## <a name="add-saml-sso-for-bitbucket-by-resolution-gmbh-from-the-gallery"></a>SAML SSO hozzáadása a bitbucket by Solution GmbH által a katalógusból
 
 Ha az SAML SSO-t az Azure AD-be való bitbucket szeretné konfigurálni, az SAML SSO-t hozzá kell adnia az bitbucket-hez készült Solution GmbH által a felügyelt SaaS-alkalmazások listájához.
 
-**A következő lépésekkel adhatja hozzá az SAML SSO-t a bitbucket by Solution GmbH által a katalógusból:**
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. A bal oldali ablaktáblán válassza a **Azure Active Directory** lehetőséget.
+1. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a következőt: **SAML SSO a bitbucket by Solution GmbH** a keresőmezőbe.
+1. Válassza ki az **SAML SSO-t a bitbucket által** az eredmények közül, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
+## <a name="configure-and-test-azure-ad-sso-for-saml-sso-for-bitbucket-by-resolution-gmbh"></a>Az Azure AD SSO konfigurálása és tesztelése az SAML SSO-hoz a bitbucket by Solution GmbH használatával
 
-    ![A Azure Active Directory gomb](common/select-azuread.png)
+Konfigurálja és tesztelje az Azure AD SSO-t az SAML SSO-vel a bitbucket by Solution GmbH használatával, egy **B. Simon** nevű teszt felhasználó segítségével. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy összekapcsolt kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között az SAML SSO-ban a bitbucket by Solution GmbH használatával.
 
-2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+Az Azure AD SSO és az SAML SSO bitbucket általi konfigurálásához és teszteléséhez az alábbi lépéseket kell végrehajtania:
 
-    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
+    1. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
+2. **[Konfigurálja az SAML SSO-t a bitbucket by Solution GmbH SSO](#configure-saml-sso-for-bitbucket-by-resolution-gmbh-sso)** -vel – az alkalmazás oldalának Sign-On beállításainak konfigurálásához.
+    1. **[SAML SSO létrehozása a bitbucket által a megoldáshoz használt felhasználó](#create-saml-sso-for-bitbucket-by-resolution-gmbh-test-user)** számára – a felhasználó Azure ad-beli Britta kapcsolódó, az SAML SSO-ban található, a bitbucket-hez készült "
+6. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-4. A keresőmezőbe írja be a következőt: **SAML SSO a bitbucket by Solution GmbH** esetében, válassza az **SAML SSO lehetőséget a bitbucket by Solution GmbH** az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
-
-    ![SAML SSO az bitbucket az eredmények listájában a feloldási GmbH által](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
-
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az SAML SSO-nal konfigurálja és teszteli a bitbucket által a **Britta Simon** nevű tesztelési felhasználó alapján.
-Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó SAML SSO-kapcsolaton keresztüli bitbucket kell létrehozni.
-
-Az Azure AD egyszeri bejelentkezés SAML SSO-vel történő konfigurálásához és teszteléséhez a bitbucket by Solution GmbH esetében el kell végeznie a következő építőelemeket:
-
-1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Konfigurálja az SAML SSO-t a bitbucket által a Resolution GmbH egyszeri bejelentkezéssel](#configure-saml-sso-for-bitbucket-by-resolution-gmbh-single-sign-on)** , amely az alkalmazás oldalának egyetlen Sign-On beállításait konfigurálja.
-3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
-5. **[SAML SSO létrehozása a bitbucket által a megoldáshoz használt felhasználó](#create-saml-sso-for-bitbucket-by-resolution-gmbh-test-user)** számára – a felhasználó Azure ad-beli Britta kapcsolódó, az SAML SSO-ban található, a bitbucket-hez készült "
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
-
-Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
-
-Az Azure AD egyszeri bejelentkezés SAML SSO-vel való konfigurálásához a bitbucket by Solution GmbH esetében hajtsa végre a következő lépéseket:
-
-1. A [Azure Portal](https://portal.azure.com/)a **bitbucket SAML SSO esetén a megoldási GmbH** Application Integration lapon válassza az **egyszeri bejelentkezés** lehetőséget.
-
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
-
-2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
-
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
-
-3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+Ebben a szakaszban engedélyezheti az Azure AD SSO-t a Azure Portalban.
+ 
+1. A Azure Portal a **bitbucket SAML SSO esetén a megoldási GmbH** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyetlen Sign-On módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
+1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon válassza az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikont a beállítások szerkesztéséhez.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre az alábbi lépéseket, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni:
 
-    ![A képernyőfelvételen az alapszintű SAML-konfiguráció látható, ahol megadható az azonosító, a válasz U R L, majd a Mentés elemre.](common/idp-intiated.png)
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<server-base-url>/plugins/servlet/samlsso`
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<server-base-url>/plugins/servlet/samlsso`
 
     c. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
-
-    ![Képernyőfelvétel: további U R ls beállítása, ahol megadhatja a bejelentkezést az U R L-ben.](common/metadata-upload-additional-signon.png)
-
+    
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<server-base-url>/plugins/servlet/samlsso`
 
     > [!NOTE]
@@ -120,7 +95,31 @@ Az Azure AD egyszeri bejelentkezés SAML SSO-vel való konfigurálásához a bit
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-### <a name="configure-saml-sso-for-bitbucket-by-resolution-gmbh-single-sign-on"></a>Az SAML SSO konfigurálása a bitbucket által a Solution GmbH egyetlen Sign-On
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
+
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
+
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**  >  **felhasználók**  >  **minden felhasználó** lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszót.
+   1. Válassza a **Létrehozás** lehetőséget.
+
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
+
+Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a SAML SSO-hoz a bitbucket by Solution GmbH által.
+
+1. A Azure Portal válassza a **vállalati alkalmazások**  >  **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listáról válassza ki az **SAML SSO elemet a bitbucket by Solution GmbH által**.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **Felhasználó hozzáadása** elemet. Ezután a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza ki a felhasználók listájából a **B. Simon** elemet. Ezután válassza a **kijelölés** lehetőséget a képernyő alján.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés** lehetőséget.
+
+## <a name="configure-saml-sso-for-bitbucket-by-resolution-gmbh-sso"></a>SAML SSO konfigurálása a bitbucket által a Solution GmbH SSO-val
 
 1. Jelentkezzen be az SAML SSO-ra a bitbucket által a megoldási GmbH céges webhelyre rendszergazdaként.
 
@@ -160,71 +159,28 @@ Az Azure AD egyszeri bejelentkezés SAML SSO-vel való konfigurálásához a bit
 
     ![A Mentés](./media/bitbucket-tutorial/tutorial_bitbucket_save.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
-Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
-
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
-
-    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
-
-2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
-
-    ![Új felhasználó gomb](common/new-user.png)
-
-3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
-
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
-
-    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
-
-    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
-    Például: BrittaSimon@contoso.com
-
-    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
-
-    d. Kattintson a **Létrehozás** gombra.
-
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
-
-Ebben a szakaszban a Britta Simon az Azure egyszeri bejelentkezés használatára teszi lehetővé, hogy hozzáférést biztosítson az SAML SSO-hoz a bitbucket by Solution GmbH.
-
-1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza az **SAML SSO lehetőséget a bitbucket by Solution GmbH esetében**.
-
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
-
-2. Az alkalmazások listában írja be és válassza ki az **SAML SSO elemet a bitbucket by Solution GmbH számára**.
-
-    ![Az alkalmazások listájában a bitbucket által a megoldási GmbH-hez csatolt, SAML SSO](common/all-applications.png)
-
-3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
-
-    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
-
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
-
-5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
-
-6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-
-7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
-
-### <a name="create-saml-sso-for-bitbucket-by-resolution-gmbh-test-user"></a>SAML SSO létrehozása a bitbucket által a Resolution GmbH test User használatával
+## <a name="create-saml-sso-for-bitbucket-by-resolution-gmbh-test-user"></a>SAML SSO létrehozása a bitbucket által a Resolution GmbH test User használatával
 
 Ennek a szakasznak a célja, hogy létrehozzon egy Britta Simon nevű felhasználót az SAML SSO-ban a bitbucket by Solution GmbH használatával. A bitbucket által használt SAML SSO az igény szerinti üzembe helyezést támogatja, és a felhasználókat manuálisan is létrehozhatja. az [SAML SSO-t a bitbucket a Solution GmbH](https://marketplace.atlassian.com/plugins/com.resolution.atlasplugins.samlsso-bitbucket/server/support) ügyfélszolgálati csapata adja meg.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
-Ha a hozzáférési panelen a bitbucket által használt SAML SSO-ra kattint, automatikusan be kell jelentkeznie az SAML SSO-ba a bitbucket by Solution GmbH számára, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>Az SP inicializálva:
 
-## <a name="additional-resources"></a>További források
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. Ez a rendszer átirányítja az SAML SSO-ra a bitbucket által az alábbi URL-címen, ahol kezdeményezheti a bejelentkezési folyamatot.  
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
+* Nyissa meg az SAML SSO-t a bitbucket by Resolution GmbH közvetlen bejelentkezési URL-címével, és indítsa el onnan a bejelentkezési folyamatot.
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDENTITÁSSZOLGÁLTATÓ kezdeményezve:
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie az SAML SSO-ba a bitbucket által a megoldási GmbH számára, amelyhez be kell állítania az egyszeri bejelentkezést.
+
+A Microsoft My Apps használatával bármilyen módban tesztelheti az alkalmazást. Ha a saját alkalmazások bitbucket által használt SAML SSO-ra kattint, ha az SP módban van konfigurálva, akkor a bejelentkezési folyamat elindításához, illetve ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie az SAML SSO-ra a bitbucket by Solution GmbH számára, amelyhez be kell állítania az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](../user-help/my-apps-portal-end-user-access.md)használatába.
+
+
+## <a name="next-steps"></a>Következő lépések
+
+Miután konfigurálta az SAML SSO-t a bitbucket-hez a megoldási szolgáltatáshoz, megadhatja a munkamenet-vezérlőket, amelyek valós időben védik a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáféréstől. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

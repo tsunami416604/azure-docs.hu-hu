@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Hub üzenet-útválasztásának konfigurálása az Azure CLI használatával
-description: Az Azure IoT Hub üzenet-útválasztásának konfigurálása az Azure CLI használatával. Az üzenet tulajdonságaitól függően egy Storage-fiókra vagy egy Service Bus-várólistára kell irányítani.
+title: Oktatóanyag – az Azure IoT Hub üzenet-útválasztásának konfigurálása az Azure CLI használatával
+description: Oktatóanyag – az Azure-IoT Hub üzenet-útválasztásának konfigurálása az Azure CLI használatával. Az üzenet tulajdonságaitól függően egy Storage-fiókra vagy egy Service Bus-várólistára kell irányítani.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 239d8f2bcc1422a1098fb8f6cb3fba6706d671f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25c3ff7582ed408776c0ae6904e4bacddd89e40b
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500197"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624171"
 ---
 # <a name="tutorial-use-the-azure-cli-to-configure-iot-hub-message-routing"></a>Oktatóanyag: az Azure CLI használata IoT Hub üzenet-útválasztás konfigurálásához
 
@@ -36,7 +36,7 @@ Másolja és illessze be az alábbi szkriptet Cloud Shellba, majd nyomja le az E
 > Tipp a hibakereséshez: Ez a szkript a folytatási szimbólumot (a fordított perjelet `\` ) használja, hogy a szkript olvashatóbb legyen. Ha a parancsfájl futtatása során probléma merül fel, győződjön meg arról, hogy a Cloud Shell-munkamenet fut, `bash` és a fordított perjelek bármelyike után nincsenek szóközök.
 > 
 
-Több olyan erőforrás neve van, amelynek globálisan egyedinek kell lennie, például a IoT Hub neve és a Storage-fiók neve. Ennek egyszerűbbé tétele érdekében az erőforrásnevek egy *randomValue*nevű véletlenszerű alfanumerikus értékkel vannak hozzáfűzve. A rendszer egyszer hozza létre a randomValue a parancsfájl tetején, és szükség szerint hozzáfűzi az erőforrások nevét a parancsfájlban. Ha nem szeretné, hogy véletlenszerű legyen, beállíthatja egy üres sztringre vagy egy adott értékre. 
+Több olyan erőforrás neve van, amelynek globálisan egyedinek kell lennie, például a IoT Hub neve és a Storage-fiók neve. Ennek egyszerűbbé tétele érdekében az erőforrásnevek egy *randomValue* nevű véletlenszerű alfanumerikus értékkel vannak hozzáfűzve. A rendszer egyszer hozza létre a randomValue a parancsfájl tetején, és szükség szerint hozzáfűzi az erőforrások nevét a parancsfájlban. Ha nem szeretné, hogy véletlenszerű legyen, beállíthatja egy üres sztringre vagy egy adott értékre. 
 
 > [!IMPORTANT]
 > A kezdeti parancsfájlban beállított változókat az útválasztási parancsfájl is használja, ezért futtassa az összes parancsfájlt ugyanabban a Cloud Shell-munkamenetben. Ha új munkamenetet nyit meg az Útválasztás beállítására szolgáló parancsfájl futtatásához, akkor a változók közül számos érték hiányzik.
@@ -147,7 +147,7 @@ Most, hogy beállította az alaperőforrásokat, beállíthatja az üzenet-útv�
 
 [!INCLUDE [iot-hub-include-create-routing-description](../../includes/iot-hub-include-create-routing-description.md)]
 
-Útválasztási végpont létrehozásához használja [az az IOT hub Routing-Endpoint Create](/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest#az-iot-hub-routing-endpoint-create)lehetőséget. A végponthoz tartozó üzenet útvonalának létrehozásához használja az [az IOT hub Route Create](/cli/azure/iot/hub/route?view=azure-cli-latest#az-iot-hub-route-create)lehetőséget.
+Útválasztási végpont létrehozásához használja [az az IOT hub Routing-Endpoint Create](/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest#az-iot-hub-routing-endpoint-create&preserve-view=true)lehetőséget. A végponthoz tartozó üzenet útvonalának létrehozásához használja az [az IOT hub Route Create](/cli/azure/iot/hub/route?view=azure-cli-latest#az-iot-hub-route-create&preserve-view=true)lehetőséget.
 
 ### <a name="route-to-a-storage-account"></a>Útvonal egy Storage-fiókhoz
 
@@ -300,7 +300,7 @@ az iot hub route create --name $routeName \
 
 [!INCLUDE [iot-hub-include-view-routing-in-portal](../../includes/iot-hub-include-view-routing-in-portal.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy beállította az erőforrásokat, és konfigurálta az üzenet útvonalait, folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan küldhet üzeneteket az IoT hubhoz, és hogyan irányíthatja őket át a különböző célhelyekre. 
 

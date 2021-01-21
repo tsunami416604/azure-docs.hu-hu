@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 4ad1562bdd9853b6ff3c537790a54dbeab96b5b8
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 908460bd0a034e21524b6ea6d3042f362cc810d4
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538564"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623589"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>Az érzékelő aktiválása és beállítása
 
@@ -134,7 +134,7 @@ A bejelentkezés után megnyílik az Azure Defender for IoT-konzol.
 
 ## <a name="initial-setup-and-learning-for-administrators"></a>Kezdeti beállítás és tanulás (rendszergazdák számára)
 
-Az első bejelentkezés után az Azure Defender for IoT érzékelő automatikusan megkezdi a hálózat figyelését. A hálózati eszközök megjelennek az adategységek és az eszközök leltározási szakaszában. A IoT készült Azure Defender megkezdi a hálózatban előforduló biztonsági és működési incidensek észlelését és riasztását. Ezután jelentéseket és lekérdezéseket hozhat létre az észlelt információk alapján.
+Az első bejelentkezés után az Azure Defender for IoT érzékelő automatikusan megkezdi a hálózat figyelését. A hálózati eszközök megjelennek az eszközök leképezése és az eszközök leltározása szakaszban. A IoT készült Azure Defender megkezdi a hálózatban előforduló biztonsági és működési incidensek észlelését és riasztását. Ezután jelentéseket és lekérdezéseket hozhat létre az észlelt információk alapján.
 
 Kezdetben ez a tevékenység tanulási módban zajlik, amely arra utasítja az érzékelőt, hogy megismerje a hálózat szokásos tevékenységeit. Az érzékelő például megtanulja a hálózatban felderített eszközöket, a hálózatban észlelt protokollokat, valamint az adott eszközök közötti fájlátvitelt. Ez a tevékenység lesz a hálózat alapterv-tevékenysége.
 
@@ -214,7 +214,7 @@ A konzol eszközei az oldal menüjéből érhetők el.
 |----|---|---|
 | Támogatás | :::image type="icon" source="media/concept-sensor-console-overview/support-icon-azure.png" border="false"::: | Segítségért forduljon [Microsoft ügyfélszolgálatahoz](https://support.microsoft.com/) . |
 
-### <a name="see-also"></a>További információ
+### <a name="see-also"></a>Lásd még
 
 [Érzékelő előkészítése](getting-started.md#4-onboard-a-sensor)
 

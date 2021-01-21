@@ -15,19 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: f28243be6b4f998e8bdea0ce02da3ceedde23e02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1131c8e79d9df2883dcf7e975af9732c21318a49
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85559116"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621164"
 ---
-# <a name="connect-your-barracuda-appliance"></a>A Barracuda-berendezés összekötése 
-
-
+# <a name="connect-your-barracuda-waf-appliance"></a>A Barracuda WAF-berendezés összekötése 
 
 A Barracuda webalkalmazási tűzfal (WAF) összekötő segítségével könnyedén csatlakoztathatja a Barracuda-naplókat az Azure Sentinelhez, megtekintheti az irányítópultokat, egyéni riasztásokat hozhat létre, és javíthatja a vizsgálatot. Ez nagyobb betekintést nyújt a szervezet hálózatára, és javítja a biztonsági műveletek képességeit. Az Azure Sentinel kihasználja a **Barracuda** és a log Analytics-ügynök közötti natív integrációt, hogy zökkenőmentes integrációt biztosítson. 
-
 
 > [!NOTE]
 > Az Azure Sentinel-t futtató munkaterület földrajzi helye tárolja az adatmennyiséget.
@@ -46,7 +43,7 @@ Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek a Log Anal
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a dokumentumban megtanulta, hogyan csatlakoztathatók a Barracuda-készülékek az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

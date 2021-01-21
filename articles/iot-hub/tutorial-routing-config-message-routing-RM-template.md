@@ -1,6 +1,6 @@
 ---
-title: Az üzenetsor-útválasztás konfigurálása az Azure IoT Hub Azure Resource Manager sablon használatával
-description: Az üzenetsor-útválasztás konfigurálása az Azure IoT Hub Azure Resource Manager sablon használatával
+title: Oktatóanyag – az üzenetsor-útválasztás konfigurálása az Azure IoT Hub Azure Resource Manager sablon használatával
+description: Oktatóanyag – az üzenetsor-útválasztás konfigurálása az Azure IoT Hub Azure Resource Manager sablon használatával
 author: robinsh
 manager: philmeagit st
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: e5ae5948c8baf1573393c73026c84d0f62e8693e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 53217340b0d91f3de77e5e0d8c0a82e30599d6ed
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480105"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621428"
 ---
 # <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>Oktatóanyag: Azure Resource Manager-sablon használata IoT Hub üzenet-útválasztás konfigurálásához
 
@@ -58,7 +58,7 @@ Ezeknek a paramétereknek a többsége alapértelmezett értéket tartalmaz. A *
 
 **sku_name**: Ez a mező a IoT hub skálázása. Ez az érték csak S1 vagy újabb lehet. Ebben az oktatóanyagban az ingyenes szint nem működik, mert több végpontot nem engedélyez.
 
-**sku_units**: ebben a mezőben a **sku_name**látható, a szám pedig a felhasználható IoT hub egységek számát.
+**sku_units**: ebben a mezőben a **sku_name** látható, a szám pedig a felhasználható IoT hub egységek számát.
 
 **d2c_partitions**: Ez a mező az esemény-adatfolyamhoz használt partíciók száma.
 
@@ -360,11 +360,11 @@ A fájlok feltöltéséhez válassza a menüsávon a **fájlok feltöltése/let�
 
 ![A fájlok feltöltése/letöltése ikonra kiemelő képernyőkép.](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_files.png)
 
-A fájlkezelővel megkeresheti a helyi lemezen található fájlokat, majd kiválaszthatja azokat, majd a **Megnyitás**lehetőséget választva.
+A fájlkezelővel megkeresheti a helyi lemezen található fájlokat, majd kiválaszthatja azokat, majd a **Megnyitás** lehetőséget választva.
 
 A fájlok feltöltése után az eredmények párbeszédpanel az alábbi képhez hasonló módon jelenik meg.
 
-![Cloud Shell menüsáv a Kiemelt fájlok feltöltésével és letöltésével](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_results.png)
+![Kiemelt feltöltési/letöltési eredményekkel rendelkező menüsáv Cloud Shell](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_results.png)
 
 A rendszer feltölti a fájlokat a Cloud Shell-példány által használt megosztásra. 
 

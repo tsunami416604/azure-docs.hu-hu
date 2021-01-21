@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 444e7c9ad06c6f2ad584c0701fa652b901a4c3e7
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 3bb0aadf81ba501070ce0c734847bb16c0378896
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680774"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624038"
 ---
 # <a name="tutorial-migrate-web-service-from-google-maps"></a>Oktatóanyag: webszolgáltatás migrálása a Google Mapsből
 
@@ -22,6 +22,7 @@ Az Azure és a Google Maps egyaránt hozzáférést biztosít a térbeli API-kho
 
 Az oktatóanyag során a következőket fogja elsajátítani:
 
+> [!div class="checklist"]
 > * Helymeghatározáshoz továbbítása és sztornírozása
 > * Hasznos helyek keresése
 > * Útvonalak és irányok kiszámítása
@@ -115,7 +116,7 @@ Ez a táblázat a Google Maps API paramétereit a Azure Maps hasonló API-param�
 | `key`                       | `subscription-key` – Lásd még a [hitelesítés Azure Maps](azure-maps-authentication.md) a dokumentációt. |
 | `language`                  | `language` – Lásd a [támogatott nyelvek](supported-languages.md) dokumentációját.  |
 | `latlng`                    | `query`  |
-| `location_type`             | *N.A.*     |
+| `location_type`             | *N/A*     |
 | `result_type`               | `entityType`    |
 
 Tekintse át [az ajánlott eljárásokat a kereséshez](how-to-use-best-practices-for-search.md).
@@ -159,9 +160,9 @@ A táblázat a Google Maps API paramétereit a hasonló Azure Maps API-paraméte
 
 | Google Maps API-paraméter | Hasonló Azure Maps API-paraméter |
 |---------------------------|-------------------------------------|
-| `fields`                  | *N.A.*                               |
+| `fields`                  | *N/A*                               |
 | `input`                   | `query`                             |
-| `inputtype`               | *N.A.*                               |
+| `inputtype`               | *N/A*                               |
 | `key`                     | `subscription-key` – Lásd még a [hitelesítés Azure Maps](azure-maps-authentication.md) a dokumentációt. |
 | `language`                | `language` – Lásd a [támogatott nyelvek](supported-languages.md) dokumentációját.  |
 | `locationbias`            | `lat``lon`és`radius`<br/>`topLeft` és `btmRight`<br/>`countrySet`  |
@@ -178,13 +179,13 @@ A táblázat a Google Maps API paramétereit jeleníti meg az összehasonlíthat
 | `keyword`                   | `categorySet` és `brandSet`        |
 | `language`                  | `language` – Lásd a [támogatott nyelvek](supported-languages.md) dokumentációját.  |
 | `location`                  | `lat` és `lon`                     |
-| `maxprice`                  | *N.A.*                               |
-| `minprice`                  | *N.A.*                               |
+| `maxprice`                  | *N/A*                               |
+| `minprice`                  | *N/A*                               |
 | `name`                      | `categorySet` és `brandSet`        |
-| `opennow`                   | *N.A.*                               |
+| `opennow`                   | *N/A*                               |
 | `pagetoken`                 | `ofs` és `limit`                   |
 | `radius`                    | `radius`                            |
-| `rankby`                    | *N.A.*                               |
+| `rankby`                    | *N/A*                               |
 | `type`                      | `categorySet –` Lásd a [támogatott keresési kategóriák](supported-search-categories.md) dokumentációját.   |
 
 ## <a name="calculate-routes-and-directions"></a>Útvonalak és irányok kiszámítása
@@ -264,10 +265,10 @@ A táblázat a Google Maps API paramétereit a Azure Maps hasonló API-paraméte
 | `markers`                   | `pins`                             |
 | `path`                      | `path`                             |
 | `region`                    | *N/A* – ez egy helymeghatározáshoz-hez kapcsolódó szolgáltatás. Használja a `countrySet` paramétert, ha a Azure Maps HELYMEGHATÁROZÁSHOZ API-t használja.  |
-| `scale`                     | *N.A.*                              |
+| `scale`                     | *N/A*                              |
 | `size`                      | `width` és `height` – akár 8192x8192 is lehet. |
-| `style`                     | *N.A.*                              |
-| `visible`                   | *N.A.*                              |
+| `style`                     | *N/A*                              |
+| `visible`                   | *N/A*                              |
 | `zoom`                      | `zoom`                             |
 
 > [!NOTE]
@@ -335,7 +336,7 @@ A `iconType` létrehozandó PIN-kód típusát adja meg. A következő értékek
 * `custom` – Meghatározza, hogy egyéni ikont kell használni. Az ikon képére mutató URL-címet a rendszer a `pins` PIN-kód helye információinak lejárta után is hozzáadhatja a paraméter végéhez.
 * `{udid}` – Egyedi Adatazonosító (UDID) a Azure Maps adattárolási platformon tárolt ikonhoz.
 
-Adja hozzá a PIN-kód stílusát a `optionNameValue` formátumhoz. Több stílust is elkülönít a pipe ( \| ) karakterekkel. Például: `iconType|optionName1Value1|optionName2Value2`. A beállítások nevei és értékei nincsenek elválasztva. A következő stílus-beállítási neveket használja a Style jelölőknek:
+Adja hozzá a PIN-kód stílusát a `optionNameValue` formátumhoz. Több stílust is elkülönít a pipe ( \| ) karakterekkel. Példa: `iconType|optionName1Value1|optionName2Value2`. A beállítások nevei és értékei nincsenek elválasztva. A következő stílus-beállítási neveket használja a Style jelölőknek:
 
 * `al` – A jelölő opacitását (alfa) adja meg. 0 és 1 közötti számot adjon meg.
 * `an` – Megadja a PIN-kód horgonyát. X és y képpont értékeket az "x y" formátumban kell megadni.
@@ -485,7 +486,7 @@ Ezek a nyílt forráskódú ügyféloldali kódtárak más programozási nyelvek
 
 * .NET Standard 2,0 – [GitHub Project](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet csomag](https://www.nuget.org/packages/AzureMapsRestToolkit/)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Nincs kitakarítható erőforrás.
 

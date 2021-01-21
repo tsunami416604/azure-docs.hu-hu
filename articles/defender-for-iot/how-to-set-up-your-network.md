@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/03/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 2053632f24504f896d1045f99d581b9aa6050b55
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: a71ea75eb603b141c4b28cff5f2b4aa957583bcd
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573139"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621312"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>Tudnivalók az Azure Defender for IoT Network telepítőről
 
@@ -94,35 +94,36 @@ A következő böngészők támogatottak az érzékelők és a helyszíni felüg
 
 Győződjön meg arról, hogy a szervezet biztonsági házirendje lehetővé teszi a hozzáférést a következőhöz:
 
-| **Cél** | **Protokoll** | **Átvitel** | **Be vagy ki** | **Port** | **Kategória** |
-| ----------- | ----------- | ------------ | ---------- | -------- | ------------ |
-| **Hozzáférés a webkonzolhoz** | HTTPS | TCP | Be vagy ki | 443 | A Defender for IoT platform helyszíni felügyeleti konzolja |
-| **Hozzáférés a parancssori felülethez** | SSH | TCP | Be vagy ki | 22 | parancssori felület |
-| **Kapcsolat a Defender for IoT platform és a helyszíni felügyeleti konzol között** | SSL | TCP | Be vagy ki | 443 | Érzékelő és helyszíni felügyeleti konzol|
-| **Az érzékelőhöz NTP-ként használt helyszíni felügyeleti konzol** | NTP | UDP| – CM | 123 | Időszinkronizálás | 
-| **Külső NTP-kiszolgálóhoz csatlakoztatott érzékelő (ha van ilyen)** | NTP | UDP | Be vagy ki| 123 | Időszinkronizálás |
-| **Kapcsolat a Defender for IoT platform és a felügyeleti platform és a levelezési kiszolgáló között (ha szükséges)** | SMTP | TCP | Az érzékelő felügyelete | 25 | E-mail |
-| **A helyszíni felügyeleti konzolról a syslog-kiszolgálóra küldött naplók (ha szükséges)** | Rendszernapló | UDP | Az érzékelő felügyelete| 514 | LEEF |
-| **DNS-kiszolgáló portja (ha szükséges)** | DNS | N/A | Be vagy ki| 53 | DNS |
-| **Kapcsolat a Defender for IoT platform és a helyszíni felügyeleti konzol között Active Directory (ha szükséges)** | LDAPS | TCP | Be vagy ki | 636 <br />389 | Active Directory |
-| **Távoli SNMP-gyűjtők (ha vannak ilyenek)** | SNMP | UDP | Az érzékelő felügyelete| 161 | Figyelés |
-| **Windows-végpont figyelése (ha szükséges)** | WMI | UDP | Az érzékelő felügyelete| 135 | Figyelés |
-| **Windows-végpont figyelése (ha szükséges)** | WMI | TCP | Az érzékelő felügyelete| 1024 és újabb verziók | Figyelés |
-| **Bújtatás (ha van ilyen)** | Alagútkezelés | TCP | – CM | 9000<br />az 443-es porton kívül<br />A végfelhasználótól a helyszíni felügyeleti konzolig <br />22-es port az érzékelőről a helyszíni felügyeleti konzolra | Figyelés |
-| **Kimenő az IoT hub Defender részére** | HTTPS | TCP | Az érzékelő felügyelete| **URL-cím**<br />*. azure-devices.net:443<br />vagy ha a helyettesítő karakterek nem támogatottak<br />{az IoT hub neve}. Azure-devices.net:443 |
+| Protokoll | Átvitel | Be/ki | Port | Használt | Cél | Forrás | Cél |
+|--|--|--|--|--|--|--|--|
+| HTTPS | TCP | BE/KI | 443 | Az érzékelő és a helyszíni felügyeleti konzol webkonzolja | Hozzáférés a webkonzolhoz | Ügyfél | Érzékelő és helyszíni felügyeleti konzol |
+| SSH | TCP | BE/KI | 22 | parancssori felület | Hozzáférés a parancssori felülethez | Ügyfél | Érzékelő és helyszíni felügyeleti konzol |
+| SSL | TCP | BE/KI | 443 | Érzékelő és helyszíni felügyeleti konzol | A CyberX platform és a központi felügyeleti platform közötti kapcsolat | érzékelő | Helyszíni felügyeleti konzol |
+| NTP | UDP | IN | 123 | Idő szinkronizálása | A helyszíni felügyeleti konzol NTP-ként használja az érzékelőt | érzékelő | helyszíni felügyeleti konzol |
+| NTP | UDP | BE/KI | 123 | Idő szinkronizálása | Külső NTP-kiszolgálóhoz csatlakoztatott érzékelő, ha nincs telepítve helyszíni felügyeleti konzol | érzékelő | NTP |
+| SMTP | TCP | KI | 25 | E-mail | A CyberX platform és a felügyeleti platform és a levelezési kiszolgáló közötti kapcsolat | Érzékelő és helyszíni felügyeleti konzol | Levelezési kiszolgáló |
+| Rendszernapló | UDP | KI | 514 | LEEF | A helyszíni felügyeleti konzolról a syslog-kiszolgálóra küldött naplók | Helyszíni felügyeleti konzol és érzékelő | Syslog-kiszolgáló |
+| DNS |  | BE/KI | 53 | DNS | DNS-kiszolgáló portja | Helyszíni felügyeleti konzol és érzékelő | DNS-kiszolgáló |
+| LDAP | TCP | BE/KI | 389 | Active Directory | A CyberX platform és a felügyeleti platform közötti kapcsolat a Active Directory | Helyszíni felügyeleti konzol és érzékelő | LDAP-kiszolgáló |
+| LDAPS | TCP | BE/KI | 636 | Active Directory | A CyberX platform és a felügyeleti platform közötti kapcsolat a Active Directory | Helyszíni felügyeleti konzol és érzékelő | LDAPs-kiszolgáló |
+| SNMP | UDP | KI | 161 | Figyelés | Távoli SNMP-gyűjtők. | Helyszíni felügyeleti konzol és érzékelő | SNMP-kiszolgáló |
+| WMI | UDP | KI | 135 | figyelés | Windows-végpont figyelése | Érzékelő | Kapcsolódó hálózati elem |
+| Alagútkezelés | TCP | IN | 9000 <br /><br />– a 443-es porton felül <br /><br />A végfelhasználótól a helyszíni felügyeleti konzolig. <br /><br />– 22-es port az érzékelőről a helyszíni felügyeleti konzolra  | figyelés | Alagútkezelés | Érzékelő | Helyszíni felügyeleti konzol |
 
 ### <a name="planning-rack-installation"></a>A rack telepítésének tervezése
 
 A rack telepítésének megtervezése:
 
 1. Készítse elő a figyelőt és a billentyűzetet a berendezés hálózati beállításaihoz.
-2. A készülékhez tartozó állvány területének lefoglalása.
-3. Legyen elérhető AC Power a készülékhez.
-4. Készítse elő a LAN-kábelt a felügyelet hálózati kapcsolóhoz való csatlakoztatásához.
-5. Készítse elő a LAN-kábeleket a IoT-berendezéshez tartozó Defender-portok és-hálózati csapok csatlakoztatásához. 
-6. Az architektúra-felülvizsgálati munkamenetben leírtak szerint konfigurálhatja, összekapcsolhatja és érvényesítheti az elterjedési portokat a tükrözött kapcsolókon.
-7. Kapcsolja össze a konfigurált TARTOMÁNYhoz tartozó portot egy Wireshark-t futtató számítógéphez, és ellenőrizze, hogy a port megfelelően van-e konfigurálva.
-8. Nyissa meg az összes kapcsolódó tűzfal-portot.
+
+1. A készülékhez tartozó állvány területének lefoglalása.
+
+1. Legyen elérhető AC Power a készülékhez.
+1. Készítse elő a LAN-kábelt a felügyelet hálózati kapcsolóhoz való csatlakoztatásához.
+1. Készítse elő a LAN-kábeleket a IoT-berendezéshez tartozó Defender-portok és-hálózati csapok csatlakoztatásához. 
+1. Az architektúra-felülvizsgálati munkamenetben leírtak szerint konfigurálhatja, összekapcsolhatja és érvényesítheti az elterjedési portokat a tükrözött kapcsolókon.
+1. Kapcsolja össze a konfigurált TARTOMÁNYhoz tartozó portot egy Wireshark-t futtató számítógéphez, és ellenőrizze, hogy a port megfelelően van-e konfigurálva.
+1. Nyissa meg az összes kapcsolódó tűzfal-portot.
 
 ## <a name="about-passive-network-monitoring"></a>A passzív hálózat figyelése
 
@@ -141,6 +142,7 @@ A következő szakaszok ismertetik a Purdue-szinteket.
 A 0. szint az alapszintű gyártási folyamatban részt vevő érzékelők, működtetők és eszközök széles választékát tartalmazza. Ezek az eszközök az ipari automatizálás és vezérlés rendszer alapvető funkcióit hajtják végre, például:
 
 - Motor vezetése.
+
 - Változók mérése.
 - Kimenet beállítása.
 - Kulcsfontosságú függvények (például festés, hegesztés és hajlítás) végrehajtása.
@@ -227,7 +229,7 @@ Egy csillag hálózatban minden gazdagép egy központi hubhoz csatlakozik. Lege
 |--|--|--|--|
 | A kapcsolók közötti maximális távolság | 80 méter | Előkészített Ethernet-kábel | Több mint 1 |
 | Az OT-hálózatok száma | Több mint 1 | Nincs fizikai kapcsolat | Több mint 1 |
-| Kapcsolók száma | Használhatja a RSPAN-konfigurációt | Akár 8 kapcsoló helyi tartományhoz közel az érzékelőhöz a kábelezési távolság alapján | Több mint 1 |
+| Kapcsolók száma | Használhatja a RSPAN-konfigurációt | Legfeljebb nyolc, helyi kiterjedésű kapcsoló az érzékelőhöz a kábelezési távolság alapján | Több mint 1 |
 
 #### <a name="traffic-mirroring"></a>Forgalom tükrözése  
 
@@ -355,7 +357,7 @@ A terminál-hozzáférési pont (TAP) olyan hardvereszköz, amely lehetővé tes
 
 A csapok számos okból előnyösek. Hardver-alapúak, és nem veszélyeztethetik. Minden forgalmat továbbítanak, akár sérült üzeneteket is, amelyek gyakran eldobják a kapcsolókat. Nem érzékenyek a processzorra, ezért a csomagok időzítése pontos, ahol a kapcsolók kezelik a tükrözött függvényt alacsony prioritású tevékenységként, amely hatással lehet a tükrözött csomagok időzítésére. Törvényszéki célokra a legjobb eszköz a KOPPINTÁS.
 
-A portok figyeléséhez KOPPINTson az aggregators lehetőségre. Ezek az eszközök a processzoron alapulnak, és nem annyira biztonságosak, mint a hardveres csapok. Előfordulhat, hogy nem tükrözik a csomagok pontos időzítését.
+A portok figyeléséhez KOPPINTson az aggregators lehetőségre. Ezek az eszközök processzor-alapúak, és nem annyira biztonságosak, mint a hardveres csapok. Előfordulhat, hogy nem tükrözik a csomagok pontos időzítését.
 
 :::image type="content" source="media/how-to-set-up-your-network/active-passive-tap-v2.PNG" alt-text="Aktív és passzív csapok diagramja":::
 
@@ -364,10 +366,10 @@ A portok figyeléséhez KOPPINTson az aggregators lehetőségre. Ezek az eszköz
 Ezeket a modelleket tesztelték a kompatibilitás érdekében. Más gyártók és modellek is kompatibilisek lehetnek.
 
 | Kép | Modellezés |
-| -- | -- |
-| :::image type="content" source="media/how-to-set-up-your-network/garland-p1gccas-v2.png" alt-text="Képernyőfelvétel a Garland P1GCCAS.":::  | Garland P1GCCAS  |
-| :::image type="content" source="media/how-to-set-up-your-network/ixia-tpa2-cu3-v2.png" alt-text="Az IXIA TPA2-CU3 képernyőképe.":::  | IXIA TPA2 – CU3  |
-| :::image type="content" source="media/how-to-set-up-your-network/us-robotics-usr-4503-v2.png" alt-text="Képernyőkép a US Robotics USR 4503-ről.":::  | US Robotics USR 4503  |
+|--|--|
+| :::image type="content" source="media/how-to-set-up-your-network/garland-p1gccas-v2.png" alt-text="Képernyőfelvétel a Garland P1GCCAS."::: | Garland P1GCCAS |
+| :::image type="content" source="media/how-to-set-up-your-network/ixia-tpa2-cu3-v2.png" alt-text="Az IXIA TPA2-CU3 képernyőképe."::: | IXIA TPA2 – CU3 |
+| :::image type="content" source="media/how-to-set-up-your-network/us-robotics-usr-4503-v2.png" alt-text="Képernyőkép a US Robotics USR 4503-ről."::: | US Robotics USR 4503 |
 
 ##### <a name="special-tap-configuration"></a>Speciális KOPPINTó konfiguráció
 
@@ -425,7 +427,7 @@ Kapcsolódó információk:
 
 - Ha ehhez a kapcsolóhoz csatlakozni kell a IoT készülékhez, van-e fizikai rendelkezésre állási terület az adott szekrényben?
 
-#### <a name="additional-considerations"></a>Néhány fontos megjegyzés
+#### <a name="other-considerations"></a>További szempontok
 
 A Defender for IoT berendezés célja az 1. és 2. réteg forgalmának figyelése.
 
@@ -547,7 +549,7 @@ A hely üzembe helyezése előtt tekintse át ezt a listát:
 | 14 | A berendezések csatlakoztatása és a kábelek csatlakoztatása. | ☐ |  |
 | 15 | A központi telepítés támogatására szolgáló hely erőforrásainak lefoglalása. | ☐ |  |
 | 16 | Hozzon létre Active Directory csoportokat vagy helyi felhasználókat. | ☐ |  |
-| 17 | Betanítás beállítása (önképzés). | ☐ |  |
+| 17 | Set-up Training (saját tanulás). | ☐ |  |
 | 18 | Ugrás vagy nem ugrás. | ☐ |  |
 | 19 | A központi telepítés dátumának beolvasása. | ☐ |  |
 
@@ -671,7 +673,7 @@ Adja meg a vállalati hálózatban csatlakoztatni kívánt érzékelő hálózat
 | Titkos kulcs | |
 | SNMP v2 közösségi karakterlánc |
 
-### <a name="cm-ssl-certificate"></a>CM SSL-tanúsítvány
+### <a name="on-premises-management-console-ssl-certificate"></a>Helyszíni felügyeleti konzol SSL-tanúsítványa
 
 SSL-tanúsítvány használatát tervezi? Igen vagy nem
 

@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 005830575ba7f45d30fed71a73e7a419e4d98220
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 13bfd7c602389ff286a80f625829da5924a73bdf
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922593"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621895"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>Közzététel és előfizetés Azure IoT Edge
 
@@ -31,7 +31,7 @@ Az üzenetek közzétételéhez és előfizetéséhez Azure IoT Edge MQTT Broker
 - Egy, az F1, S1, S2 vagy S3 értékű SKU- **IoT hub** .
 - Az **1,2-es vagy újabb verzióval rendelkező IoT Edge-eszköz**. Mivel IoT Edge MQTT Broker jelenleg nyilvános előzetes verzióban érhető el, a MQTT-átvitelszervező engedélyezéséhez állítsa az alábbi környezeti változókat True értékre a edgeHub-tárolón:
 
-   | Name (Név) | Érték |
+   | Name | Érték |
    | - | - |
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__mqttBrokerEnabled` | `true` |
@@ -251,7 +251,7 @@ Hozzon létre két IoT-eszközt a IoT Hubban, és kérje meg a jelszavukat. Az A
 
 ### <a name="authorize-publisher-and-subscriber-clients"></a>Közzétevő és előfizetői ügyfelek engedélyezése
 
-A közzétevő és az előfizető engedélyezéséhez szerkessze a IoT Edge hub-t az Azure CLI-n, a Visual studión vagy a Visual Studio code-on keresztül, hogy tartalmazza a következő engedélyezési házirendet:
+A közzétevő és az előfizető engedélyezéséhez szerkessze a IoT Edge hub Twin-et egy IoT Edge központi telepítés létrehozásával az Azure CLI-vel, a Visual Studióval vagy a Visual Studio Code-nal, hogy tartalmazza a következő engedélyezési házirendet:
 
 ```json
 {
@@ -311,7 +311,7 @@ A közzétevő és az előfizető engedélyezéséhez szerkessze a IoT Edge hub-
 
 ### <a name="symmetric-keys-authentication-without-tls"></a>Szimmetrikus kulcsok hitelesítése TLS nélkül
 
-#### <a name="subscribe"></a>Előfizetés
+#### <a name="subscribe"></a>Feliratkozás
 
 Kapcsolódjon **sub_client** MQTT-ügyfeléhez a MQTT-közvetítőhöz, és fizessen elő a `test_topic` következő parancs futtatásával a IoT Edge eszközön:
 

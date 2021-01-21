@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: d344b3d9ea54243d61cc6a1f3f0982eb5ab1d238
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 94a1db30419e5d7e52f369392d94b817d0dc273a
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538587"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623754"
 ---
 # <a name="activate-and-set-up-your-on-premises-management-console"></a>A helyszíni felügyeleti konzol aktiválása és beállítása 
 
@@ -147,9 +147,9 @@ Bújtatás beállítása az érzékelőn:
 
 ## <a name="set-up-a-site"></a>Hely beállítása
 
-Az alapértelmezett vállalati Térkép a különböző földrajzi helyekhez igazodva átfogó képet nyújt az eszközökről.
+Az alapértelmezett vállalati Térkép általános áttekintést nyújt az eszközökről a földrajzi hely különböző szintjeinek megfelelően.
 
-Előfordulhat, hogy a szervezeti struktúra és a felhasználói engedélyek összetételéhez szükség van az eszközök nézetére. Ilyen esetekben előfordulhat, hogy a hely beállítását egy globális szervezeti struktúra határozza meg, a normál hely vagy a zóna szerkezete mellett.
+Előfordulhat, hogy az eszközök nézete szükséges, ahol a szervezeti struktúra és a felhasználói engedélyek összetettak. Ilyen esetekben előfordulhat, hogy a hely beállítását egy globális szervezeti struktúra határozza meg, a normál hely vagy a zóna szerkezete mellett.
 
 A környezet támogatásához létre kell hoznia egy globális üzleti topológiát, amely a szervezete üzleti egységei, régiói, helyei és zónái alapján érhető el. Hozzáférési csoportok használatával is meg kell határoznia a felhasználói hozzáférési engedélyeket ezen entitások köré.
 
@@ -215,7 +215,7 @@ Hely törlése:
 
 ## <a name="create-enterprise-zones"></a>Vállalati zónák létrehozása
 
-A zónák olyan logikai entitások, amelyek lehetővé teszik, hogy a különböző jellemzők szerint csoportosítsa az eszközöket egy adott helyen belül. Létrehozhat például csoportokat az üzemi vonalakhoz, alállomásokhoz, hely területekhez vagy típusú eszközökhöz. A zónák a szervezete számára megfelelő sajátosságok alapján adhatók meg.
+A zónák logikai entitások, amelyek lehetővé teszik, hogy a különböző jellemzők szerint csoportosítsa az eszközöket egy adott helyen belül. Létrehozhat például csoportokat az üzemi vonalakhoz, alállomásokhoz, hely területekhez vagy eszközök típusaihoz. A zónák a szervezete számára megfelelő sajátosságok alapján adhatók meg.
 
 A zónák a hely konfigurációs folyamatának részeként konfigurálhatók.
 
@@ -231,7 +231,7 @@ A következő táblázat a **hely kezelése** ablakban található paramétereke
 | Kapcsolatok | Az érzékelő kapcsolati állapota. Az állapot lehet **csatlakoztatni** vagy **leválasztani**. |
 | Legutóbbi frissítés | Az utolsó frissítés dátuma. |
 | Frissítési folyamat | A folyamatjelző sáv a frissítési folyamat állapotát mutatja a következőképpen:<br />– Csomag feltöltése<br />– Felkészülés a telepítésre<br />– Folyamatok leállítása<br />– Az adatbiztonsági mentés<br />-Pillanatkép készítése<br />– Konfiguráció frissítése<br />-Függőségek frissítése<br />-Kódtárak frissítése<br />– Adatbázisok javítása<br />-Folyamatok indítása<br />-A rendszerjózanság ellenőrzése<br />– Az érvényesítés sikerült<br />– Sikeres<br />– Hiba<br />– A frissítés elindult<br />-Telepítés indításaogress bar shows the status of the upgrade process, as follows:<br />- Uploading package<br />- Preparing to install<br />- Stopping processes<br />- Backing up data<br />- Taking snapshot<br />- Updating configuration<br />- Updating dependencies<br />- Updating libraries<br />- Patching databases<br />- Starting processes<br />- Validating system sanity<br />- Validation succeeded<br />- Success<br />- Failure<br />- Upgrade started<br />- Starting installation<br /></br >A frissítéssel kapcsolatos részletekért tekintse meg a [Microsoft ügyfélszolgálata](https://support.microsoft.com/) segítséget. |
-| Objektumok | Az érzékelő által figyelt eszközök száma. |
+| Eszközök | Az érzékelő által figyelt eszközök száma. |
 | Riasztások | A riasztások száma az érzékelőn. |
 | :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/assign-icon.png" border="false"::: | Az érzékelő zónákhoz való hozzárendelésének engedélyezése. |
 | :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/delete-icon.png" border="false":::| Lehetővé teszi a leválasztott érzékelő törlését a helyről. |
@@ -316,6 +316,6 @@ Minden zónához hozzá kell rendelnie a helyi forgalom elemzését és a riaszt
 
 3. Ha törölni szeretné a nem hozzárendelt érzékelőt a helyről, válassza ki az érzékelőt a hozzá nem rendelt érzékelők listájából, és válassza a lehetőséget :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/delete-icon.png" border="false"::: .
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 [Az érzékelő és a helyszíni felügyeleti konzol hibaelhárítása](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md)

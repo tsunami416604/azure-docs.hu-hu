@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 72b2ba0ea444fb14ef9fc1bc3ea6aea3654677df
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 0db4e0fe0472c75f1eae392980ae697f53007244
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655527"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623366"
 ---
 # <a name="connect-alerts-from-microsoft-defender-for-endpoint-formerly-microsoft-defender-atp"></a>Riasztások összekötése a Microsoft Defender for Endpoint (korábban Microsoft Defender ATP) szolgáltatással
 
@@ -28,10 +28,6 @@ ms.locfileid: "94655527"
 > - **A Microsoft Defender for Endpoint** korábban a **Microsoft Defender komplex veszélyforrások elleni védelmi** vagy **MDATP** néven ismert.
 >
 >     Előfordulhat, hogy a régi név még használatban van a termékben (beleértve az Azure Sentinel adatösszekötőjét) egy adott időszakban.
->
-> - A Microsoft Defender for Endpoint riasztások betöltése jelenleg nyilvános előzetes verzióban érhető el.
-> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott.
-> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A [Microsoft Defender for Endpoint](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) Connector lehetővé teszi, hogy riasztásokat továbbítson a Microsoft Defender for végpontnak az Azure Sentinel szolgáltatásba. Ezzel a művelettel átfogóbban elemezheti a szervezet biztonsági eseményeit, és a hatékony és azonnali reagálás érdekében forgatókönyveket hozhat létre.
 
