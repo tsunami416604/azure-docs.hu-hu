@@ -10,12 +10,12 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: f3af2b7839465f886d1edba01eb9988419761dac
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 71e38059aceb7da63f3545610b9acfe48c5d3150
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630979"
+ms.locfileid: "98663213"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-windows-device-preview"></a>Rövid útmutató: az első IoT Edge modul üzembe helyezése Windows-eszközön (előzetes verzió)
 
@@ -108,58 +108,69 @@ Telepítse a Linux rendszerhez készült IoT Edge a Windowson az eszközön, és
 ![Diagram – a IoT Edge futtatókörnyezet elindítása az eszközön](./media/quickstart/start-runtime.png)
 
 1. [Töltse le a Windows felügyeleti központot](https://aka.ms/WACDownloadEFLOW).
-2. Az eszközön a Windows felügyeleti központ beállításához kövesse a telepítővarázsló utasításait.
-3. Ha a Windows felügyeleti központban van, a képernyő jobb felső részén kattintson a **Beállítások fogaskerék ikonra** .  
-4. A beállítások menü átjáró területén válassza a **bővítmények** lehetőséget.
-5. Az **elérhető bővítmények** listájából válassza a **Azure IoT Edge**
-6. A bővítmény **telepítése**
 
-7. Miután telepítette a bővítményt, navigáljon a fő irányítópult lapra a képernyő bal felső sarkában a **Windows felügyeleti központ** lehetőség kiválasztásával.
+1. Az eszközön a Windows felügyeleti központ beállításához kövesse a telepítővarázsló utasításait.
 
-8. Ekkor megjelenik a helyi gazdagép-kapcsolatok, amely a Windows felügyeleti központot futtató számítógépet jelöli.
+1. Ha a Windows felügyeleti központban van, a képernyő jobb felső részén kattintson a **Beállítások fogaskerék ikonra** .
+
+1. A beállítások menü átjáró területén válassza a **bővítmények** lehetőséget.
+
+1. Válassza a **csatornák** fület, és válassza a **Hozzáadás** lehetőséget.
+
+1. Adja meg https://aka.ms/wac-insiders-feed a szövegmezőt, és válassza a **Hozzáadás** lehetőséget.
+
+1. A hírcsatorna hozzáadása után navigáljon az **elérhető bővítmények** lapra. A bővítmények listájának frissítése eltarthat egy kis ideig.
+
+1. Az **elérhető bővítmények** listájából válassza a **Azure IoT Edge**
+
+1. A bővítmény **telepítése**
+
+1. Miután telepítette a bővítményt, navigáljon a fő irányítópult lapra a képernyő bal felső sarkában a **Windows felügyeleti központ** lehetőség kiválasztásával.
+
+1. Ekkor megjelenik a helyi gazdagép-kapcsolatok, amely a Windows felügyeleti központot futtató számítógépet jelöli.
 
    :::image type="content" source="media/quickstart/windows-admin-center-start-page.png" alt-text="Képernyőfelvétel – Windows-rendszergazda kezdőlapja":::
 
-9. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** elemet.
 
    :::image type="content" source="media/quickstart/windows-admin-center-start-page-add.png" alt-text="Képernyőfelvétel – Windows-rendszergazda Kezdőlap hozzáadása gomb":::
 
-10. Keresse meg a Azure IoT Edge csempét, és válassza az **új létrehozása** lehetőséget. Ekkor elindul a telepítővarázsló.
+1. Keresse meg a Azure IoT Edge csempét, és válassza az **új létrehozása** lehetőséget. Ekkor elindul a telepítővarázsló.
 
     :::image type="content" source="media/quickstart/select-tile-screen.png" alt-text="Képernyőfelvétel – Azure IoT Edge Linux rendszeren a Windows csempén":::
 
-11. A végfelhasználói licencszerződés elfogadásához folytassa a telepítővarázsló lépéseit, és válassza a **Next (tovább** ) lehetőséget.
+1. A végfelhasználói licencszerződés elfogadásához folytassa a telepítővarázsló lépéseit, és válassza a **Next (tovább** ) lehetőséget.
 
     :::image type="content" source="media/quickstart/wizard-welcome-screen.png" alt-text="Képernyőfelvétel – varázsló – üdvözli":::
 
-12. Válassza ki a **választható diagnosztikai adatait** , hogy kibővített diagnosztikai adatait biztosítson, amelyek segítségével a Microsoft figyeli és karbantarthatja a szolgáltatás minőségét, és kattintson a **Tovább gombra: üzembe helyezés**
+1. Válassza ki a **választható diagnosztikai adatait** , hogy kibővített diagnosztikai adatait biztosítson, amelyek segítségével a Microsoft figyeli és karbantarthatja a szolgáltatás minőségét, és kattintson a **Tovább gombra: üzembe helyezés**
 
     :::image type="content" source="media/quickstart/diagnostic-data-screen.png" alt-text="Képernyőfelvétel – diagnosztikai adatszolgáltatások":::
 
-13. A **cél eszköz kiválasztása** képernyőn válassza ki a kívánt céleszköz annak ellenőrzéséhez, hogy az megfelel-e a minimális követelményeknek. Ebben a rövid útmutatóban IoT Edget telepítünk a helyi eszközön, ezért válassza a localhost-kapcsolatokat. Miután megerősítette **, válassza a Tovább gombot** a folytatáshoz.
+1. A **cél eszköz kiválasztása** képernyőn válassza ki a kívánt céleszköz annak ellenőrzéséhez, hogy az megfelel-e a minimális követelményeknek. Ebben a rövid útmutatóban IoT Edget telepítünk a helyi eszközön, ezért válassza a localhost-kapcsolatokat. Miután megerősítette **, válassza a Tovább gombot** a folytatáshoz.
 
     :::image type="content" source="media/quickstart/wizard-select-target-device-screen.png" alt-text="Képernyőfelvétel – céleszköz kiválasztása":::
 
-14. Fogadja el az alapértelmezett beállításokat a **Next (tovább**) lehetőség választásával.
+1. Fogadja el az alapértelmezett beállításokat a **Next (tovább**) lehetőség választásával.
 
-15. A telepítési képernyő a csomag letöltésének folyamatát, a csomag telepítését, a gazdagép konfigurálását és a Linux rendszerű virtuális gép végleges beállítását mutatja be.  A sikeres üzembe helyezés a következőképpen fog megjelenni:
+1. A telepítési képernyő a csomag letöltésének folyamatát, a csomag telepítését, a gazdagép konfigurálását és a Linux rendszerű virtuális gép végleges beállítását mutatja be.  A sikeres üzembe helyezés a következőképpen fog megjelenni:
 
     :::image type="content" source="media/quickstart/wizard-deploy-success-screen.png" alt-text="Képernyőfelvétel – a varázsló sikeres üzembe helyezése":::
 
-16. Kattintson a Next (tovább) gombra **: kapcsolódjon** a folytatáshoz, és folytassa az utolsó lépéssel, hogy kiépítse Azure IoT Edge eszközét az IoT hub-példány eszköz-azonosítójával.
+1. Kattintson a Next (tovább) gombra **: kapcsolódjon** a folytatáshoz, és folytassa az utolsó lépéssel, hogy kiépítse Azure IoT Edge eszközét az IoT hub-példány eszköz-azonosítójával.
 
-17. Másolja az eszközről az Azure-IoT Hub a kapcsolatok karakterláncát, és illessze be az eszköz-kapcsolatok karakterlánc mezőjébe. Ezután válassza **a kiépítés lehetőséget a kiválasztott módszerrel**.
+1. Másolja az eszközről az Azure-IoT Hub a kapcsolatok karakterláncát, és illessze be az eszköz-kapcsolatok karakterlánc mezőjébe. Ezután válassza **a kiépítés lehetőséget a kiválasztott módszerrel**.
 
     > [!NOTE]
     > A kapcsolódási karakterlánc lekéréséhez tekintse meg az előző szakasz 3. lépését, [regisztráljon IoT Edge eszközt](#register-an-iot-edge-device).
 
     :::image type="content" source="media/quickstart/wizard-provision.png" alt-text="Képernyőfelvétel – varázsló kiépítés":::
 
-18. A kiépítés befejezése után válassza a **Befejezés** lehetőséget, és térjen vissza a Windows felügyeleti központ kezdőképernyőn. Most már láthatja, hogy az eszköz IoT Edge eszközként jelenik meg.
+1. A kiépítés befejezése után válassza a **Befejezés** lehetőséget, és térjen vissza a Windows felügyeleti központ kezdőképernyőn. Most már láthatja, hogy az eszköz IoT Edge eszközként jelenik meg.
 
     :::image type="content" source="media/quickstart/windows-admin-center-device-screen.png" alt-text="Képernyőfelvétel – Windows felügyeleti központ Azure IoT Edge eszköz":::
 
-19. Válassza ki Azure IoT Edge eszközét az irányítópult megtekintéséhez. Látnia kell, hogy az eszközön lévő munkaterhelések üzembe helyezése az Azure IoT Hub. A **IoT Edge modulnak** egy, a-t, a **edgeAgent**-t és a **IoT Edge-állapotot** futtató modult **kell megjelenítenie.**
+1. Válassza ki Azure IoT Edge eszközét az irányítópult megtekintéséhez. Látnia kell, hogy az eszközön lévő munkaterhelések üzembe helyezése az Azure IoT Hub. A **IoT Edge modulnak** egy, a-t, a **edgeAgent**-t és a **IoT Edge-állapotot** futtató modult **kell megjelenítenie.**
 
 Ezzel konfigurálta az IoT Edge-eszközt. Az eszköz készen áll a felhőben üzembe helyezett modulok futtatására.
 

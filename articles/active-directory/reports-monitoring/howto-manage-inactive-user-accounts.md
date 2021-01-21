@@ -13,16 +13,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/07/2020
+ms.date: 01/21/2021
 ms.author: markvi
-ms.reviewer: dhanyahk
+ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b48a84bb69a356815cccd1e33c555eeb667699f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8fb517f8c50ad2c32f23542e60069a0e0a496a2d
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89244721"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660664"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>Útmutató: inaktív felhasználói fiókok kezelése az Azure AD-ben
 
@@ -34,7 +34,7 @@ Ez a cikk az elavult felhasználói fiókok Azure AD-ben való kezelésére szol
 
 Az inaktív fiókok olyan felhasználói fiókok, amelyek nem szükségesek többé a szervezet tagjai számára, hogy hozzáférjenek az erőforrásaihoz. Az inaktív fiókok egyik kulcsa, hogy *egy ideig* nem használták fel a bejelentkezést a környezetbe. Mivel az inaktív fiókok a bejelentkezési tevékenységhez vannak kötve, a legutóbbi bejelentkezés időbélyegét használhatja, amely sikeresen észlelte őket. 
 
-Ennek a módszernek a feladata annak meghatározása, hogy a környezet esetében milyen *egy ideig* . Előfordulhat például, hogy a felhasználók *egy ideig*nem jelentkezhetnek be egy környezetbe, mert a vakáción vannak. Az inaktív felhasználói fiókok különbözetének meghatározásakor a környezetbe való bejelentkezéshez szükséges összes jogos okot figyelembe kell vennie. Számos szervezetben az inaktív felhasználói fiókok különbözete 90 és 180 nap közé esik. 
+Ennek a módszernek a feladata annak meghatározása, hogy a környezet esetében milyen *egy ideig* . Előfordulhat például, hogy a felhasználók *egy ideig* nem jelentkezhetnek be egy környezetbe, mert a vakáción vannak. Az inaktív felhasználói fiókok különbözetének meghatározásakor a környezetbe való bejelentkezéshez szükséges összes jogos okot figyelembe kell vennie. Számos szervezetben az inaktív felhasználói fiókok különbözete 90 és 180 nap közé esik. 
 
 A legutóbbi sikeres bejelentkezés lehetővé teszi, hogy a felhasználók továbbra is hozzáférjenek az erőforrásokhoz.  Segítséget nyújt annak meghatározásában, hogy a csoporttagság vagy az alkalmazás-hozzáférés továbbra is szükséges-e, vagy el lehet-e távolítani. A külső felhasználók felügyeletéhez megtudhatja, hogy egy külső felhasználó még aktív-e a bérlőn belül, vagy törölni kell. 
 
@@ -85,7 +85,7 @@ Minden olyan interaktív bejelentkezés sikeres volt, amely a mögöttes adattá
 
 LastSignInDateTime timestamp létrehozásához sikeres bejelentkezés szükséges. Mivel a lastSignInDateTime tulajdonság egy új szolgáltatás, a lastSignInDateTime tulajdonság értéke üres is lehet, ha:
 
-- A felhasználó utolsó sikeres bejelentkezését a szolgáltatás kiadása előtt végezték el (2019. december 1-től).
+- A felhasználó utolsó sikeres bejelentkezését április 2020. előtt végezték el.
 - Az érintett felhasználói fiókot soha nem használták sikeres bejelentkezéshez.
 
 ## <a name="next-steps"></a>Következő lépések

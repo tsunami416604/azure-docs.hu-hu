@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: cbfdb9a73f53e194b43010c0b2d84357aa3e2e5b
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 8d501bcc745ef19d15564951b8c0f29f9e2678ab
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631985"
+ms.locfileid: "98661306"
 ---
 # <a name="windows-stop-error---0x00000074-bad-system-config-info"></a>Windows Stop Error-0x00000074 rossz rendszerkonfigurációs információ
 
@@ -34,7 +34,7 @@ Ha [rendszerindítási diagnosztikát](./boot-diagnostics.md) használ a virtuá
  *Ha egy támogatási személyt hív meg, adja meg nekik ezt az információt:* 
  *Kód leállítása: BAD_SYSTEM_CONFIG_INFO*
 
-  ![A Windows stop Code 0x00000074, amely "BAD_SYSTEM_CONFIG_INFO" néven is látható. A Windows értesíti a felhasználót, hogy a SZÁMÍTÓGÉPe problémát észlelt, és újra kell indítani.](./media/windows-stop-error-bad-system-config-info/1.png)
+  ![A Windows stop Code 0x00000074, amely "BAD_SYSTEM_CONFIG_INFO" néven is látható. A Windows értesíti a felhasználót, hogy a SZÁMÍTÓGÉPe problémát észlelt, és újra kell indítani.](./media/windows-stop-error-bad-system-config-info/stop-code-0x00000074.png)
 
 ## <a name="cause"></a>Ok
 
@@ -56,8 +56,8 @@ A **BAD_SYSTEM_CONFIG_INFO** leállítási kód akkor fordul elő, ha **a beáll
 1. A soros konzol és a memóriakép gyűjteményének engedélyezése.
 1. Hozza létre újra a virtuális gépet.
 
-> [!NOTE]
-> A hiba észlelésekor a vendég operációs rendszer (OS) nem működik. A probléma megoldásához offline módban kell elhárítani a problémát.
+   > [!NOTE]
+   > A hiba észlelésekor a vendég operációs rendszer (OS) nem működik. A probléma megoldásához offline módban kell elhárítani a problémát.
 
 ### <a name="create-and-access-a-repair-vm"></a>Javítási virtuális gép létrehozása és elérése
 
@@ -66,8 +66,8 @@ A **BAD_SYSTEM_CONFIG_INFO** leállítási kód akkor fordul elő, ha **a beáll
 1. A Távoli asztali kapcsolat használatával csatlakozhat a javítási virtuális géphez.
 1. Másolja a `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` mappát, és mentse azt az egészséges lemezpartíció vagy egy másik biztonságos helyen. A mappa biztonsági mentése óvintézkedésként, mivel a kritikus beállításjegyzék-fájlokat fogja szerkeszteni. 
 
-> [!NOTE]
-> Készítsen másolatot a `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` mappáról biztonsági másolatként abban az esetben, ha vissza kell állítania a beállításjegyzékben végzett módosításokat.
+   > [!NOTE]
+   > Készítsen másolatot a `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` mappáról biztonsági másolatként abban az esetben, ha vissza kell állítania a beállításjegyzékben végzett módosításokat.
 
 ### <a name="check-for-hive-corruption"></a>A kaptár sérülésének keresése
 
@@ -80,7 +80,7 @@ Az alábbi utasítások segítenek megállapítani, hogy az ok a kaptár sérül
 
    1. Ha a struktúra nem nyílik meg, vagy ha üres, akkor a struktúra sérült. Ha a struktúra sérült, [Nyisson meg egy támogatási jegyet](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-     ![Hiba történt, amely azt jelzi, hogy a Beállításszerkesztő nem tudja betölteni a struktúrát.](./media/windows-stop-error-bad-system-config-info/2.png)
+      ![Hiba történt, amely azt jelzi, hogy a Beállításszerkesztő nem tudja betölteni a struktúrát.](./media/windows-stop-error-bad-system-config-info/cannot-load-hive-error.png)
 
    1. Ha a struktúra általában megjelenik, akkor a struktúra nem zárult megfelelően. Folytassa az 5. lépéssel.
 
@@ -95,7 +95,7 @@ Az alábbi utasítások segítenek megállapítani, hogy az ok a kaptár sérül
 
    **A soros konzol engedélyezése**:
    
-   ```
+   ```ps
    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON 
    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
    ```
@@ -108,13 +108,13 @@ Az alábbi utasítások segítenek megállapítani, hogy az ok a kaptár sérül
 
    **Töltse be a beállításjegyzék-struktúrát a hibás operációsrendszer-lemezről:**
 
-   ```
+   ```ps
    REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM
    ```
 
    **Engedélyezés a ControlSet001:**
 
-   ```
+   ```ps
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f 
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f 
@@ -122,7 +122,7 @@ Az alábbi utasítások segítenek megállapítani, hogy az ok a kaptár sérül
 
    **Engedélyezés a ControlSet002:**
 
-   ```
+   ```ps
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f 
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f 
@@ -130,7 +130,7 @@ Az alábbi utasítások segítenek megállapítani, hogy az ok a kaptár sérül
 
    **Sérült operációsrendszer-lemez eltávolítása:**
 
-   ```
+   ```ps
    REG UNLOAD HKLM\BROKENSYSTEM
    ```
    

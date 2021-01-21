@@ -3,15 +3,15 @@ title: Lassú lekérdezési naplók elérése – Azure Portal-Azure Database fo
 description: Ez a cikk azt ismerteti, hogyan lehet konfigurálni és elérni a lassú lekérdezési naplókat Azure Database for MariaDB a Azure Portalból.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 4/13/2020
-ms.openlocfilehash: c5ee948daecafc061910f36d2ac95d15338bfb38
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: f3a01d3e80be35d10ef5c163c9ad8956f37283c1
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539940"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662508"
 ---
 # <a name="configure-and-access-azure-database-for-maria-db-slow-query-logs-from-the-azure-portal"></a>Az Azure Database for Maria DB lassú lekérdezési naplóinak konfigurálása és elérése a Azure Portal
 
@@ -38,7 +38,7 @@ Konfigurálja a lassú lekérdezési naplóhoz való hozzáférést.
 
 7. Módosítsa a többi szükséges paramétert. 
 
-8. Válassza a **Mentés** lehetőséget. 
+8. Kattintson a **Mentés** gombra. 
 
    :::image type="content" source="./media/howto-configure-server-logs-portal/3-save-discard.png" alt-text="Képernyőkép a lassú lekérdezési napló paramétereinek és mentéséhez.":::
 

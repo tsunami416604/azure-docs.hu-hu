@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 09/18/2020
 ms.author: duau
 ms.custom: references_regions
-ms.openlocfilehash: e3f9105037c049a53f1b7b99da96dd857070fcc7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50679e11697a4227af69b8568c5f3cd23fe26cbe
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987624"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662797"
 ---
 # <a name="expressroute-global-reach"></a>Az ExpressRoute Global Reach
 A ExpressRoute egy privát és rugalmas módszer a helyi hálózatok Microsoft Cloudhoz való összekapcsolására. Számos Microsoft Cloud Services-szolgáltatást, például az Azure-t és a Microsoft 365t a privát adatközpontból vagy a vállalati hálózatból érheti el. Előfordulhat például, hogy egy San Francisco-beli fiókirodában egy ExpressRoute áramkör található a Szilícium-völgyben és egy másik fiókirodában Londonban, és egy ExpressRoute-áramkör található ugyanabban a városban. Mindkét fiókirodában nagy sebességű kapcsolat áll fenn az USA nyugati és Egyesült Királyság déli régiója Azure-erőforrásaival. Azonban a fiókirodák nem tudnak közvetlenül kapcsolatba lépni egymással, és nem küldhetnek adatküldést. Más szóval a 10.0.1.0/24 képes az 10.0.3.0/24 és a 10.0.4.0/24 hálózatra irányuló adatküldésre, de nem a 10.0.2.0/24 hálózatra.
 
 ![Az Express Route Global Reachsal együtt nem csatolt áramköröket ábrázoló diagram.][1]
 
-A **ExpressRoute Global REACH**összekapcsolhatja a ExpressRoute-áramköröket, hogy a helyi hálózatok között privát hálózatot hozzon fel. A fenti példában a ExpressRoute-Global Reach hozzáadásával a San Francisco-iroda (10.0.1.0/24) közvetlenül az adatok cseréjét a londoni irodával (10.0.2.0/24) a meglévő ExpressRoute-áramkörökkel és a Microsoft globális hálózatán keresztül végezheti el. 
+A **ExpressRoute Global REACH** összekapcsolhatja a ExpressRoute-áramköröket, hogy a helyi hálózatok között privát hálózatot hozzon fel. A fenti példában a ExpressRoute-Global Reach hozzáadásával a San Francisco-iroda (10.0.1.0/24) közvetlenül az adatok cseréjét a londoni irodával (10.0.2.0/24) a meglévő ExpressRoute-áramkörökkel és a Microsoft globális hálózatán keresztül végezheti el. 
 
 ![Az Express Route Global Reachsal együtt összekapcsolt áramköröket ábrázoló diagram.][2]
 
@@ -47,6 +47,7 @@ A ExpressRoute Global Reach a következő helyeken támogatott.
 * Új-Zéland
 * Norvégia
 * Szingapúr
+* Dél-Afrika (csak Johannesburg)
 * Svédország
 * Svájc
 * Egyesült Királyság

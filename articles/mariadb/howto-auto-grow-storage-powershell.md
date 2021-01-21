@@ -3,16 +3,16 @@ title: Tárterület automatikus növekedése – Azure PowerShell – Azure Data
 description: Ez a cikk bemutatja, hogyan engedélyezheti az automatikus növekedés tárolását a PowerShell használatával Azure Database for MariaDBban.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 5/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 87438c406ea2b31942003d9211cf5e285628f15d
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: ef495fc884b1930f8510b6b2443bde40e269a8f1
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540994"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98665157"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mariadb-server-using-powershell"></a>Tároló automatikus növekedése Azure Database for MariaDB-kiszolgálón a PowerShell használatával
 

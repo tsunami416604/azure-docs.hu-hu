@@ -3,16 +3,16 @@ title: 'Rövid útmutató: Azure-adatbázis létrehozása MariaDB-ARM-sablonhoz'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure Database for MariaDB-kiszolgálót egy Azure Resource Manager sablon használatával.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/14/2020
-ms.openlocfilehash: de6df8349025c3e87e5b005196008053039fa49f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: b40aa30121bf98e756e26d70b44bc74a500de79f
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537142"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662073"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mariadb-server"></a>Gyors útmutató: Azure Database for MariaDB-kiszolgáló létrehozása ARM-sablonnal
 
@@ -74,26 +74,26 @@ A **Azure Database for MariaDB üzembe helyezése a VNet** oldalon:
 
 2. Ha létrehozott egy új erőforráscsoportot, válassza ki az erőforráscsoport és az új kiszolgáló **helyét** .
 
-3. Adja meg a **kiszolgáló nevét** , a **rendszergazdai bejelentkezési azonosítót** és a **rendszergazdai bejelentkezési jelszót**.
+3. Adja meg a **kiszolgáló nevét**, a **rendszergazdai bejelentkezési azonosítót** és a **rendszergazdai bejelentkezési jelszót**.
 
     ![Azure Database for MariaDB üzembe helyezése a VNet ablakban, Azure-beli Gyorsindítás sablon, Azure Portal](./media/quickstart-create-mariadb-server-database-arm-template/deploy-azure-database-mariadb-vnet.png)
 
 4. Ha szeretné, módosítsa a többi alapértelmezett beállítást:
 
-    * **Előfizetés** : a kiszolgálóhoz használni kívánt Azure-előfizetés.
-    * **SKU-kapacitás** : a virtuális mag kapacitása, amely lehet *2* (alapértelmezett), *4* , *8* , *16* , *32* vagy *64*.
-    * **SKU neve** : az SKU-rétegek előtagja, az SKU-család és az SKU-kapacitás, aláhúzások, például *B_Gen5_1* , *GP_Gen5_2* (alapértelmezett) vagy *MO_Gen5_32*.
-    * **SKU mérete MB** : a Azure Database for MariaDB kiszolgáló tárterületének mérete (MB) (alapértelmezett *51200* ).
-    * **SKU-szint** : az üzembe helyezési szint, például *alapszintű,* *GeneralPurpose* (alapértelmezett) vagy *MemoryOptimized*.
-    * **SKU-család** : *Gen4* vagy *Gen5* (alapértelmezett), amely a kiszolgáló telepítésének hardveres generálását jelzi.
-    * **MariaDB-verzió** : a telepítendő MariaDB-kiszolgáló verziója, például *10,2* vagy *10,3* (alapértelmezett).
-    * **Biztonsági másolatok megőrzési napjai** : a földrajzi redundáns biztonsági másolatok megőrzésének kívánt időtartama napokban (alapértelmezett *7* ).
-    * **Geo redundáns biztonsági mentés** : *engedélyezve* vagy *Letiltva* (az alapértelmezett) a Geo-vész-helyreállítási (Geo-Dr) követelményektől függően.
-    * **Virtual Network neve** : a virtuális hálózat neve (alapértelmezett *azure_mariadb_vnet* ).
-    * **Alhálózat neve** : az alhálózat neve (alapértelmezett *azure_mariadb_subnet* ).
-    * **Virtual Network szabály neve** : az alhálózatot engedélyező virtuális hálózati szabály neve (alapértelmezett *AllowSubnet* ).
-    * **Vnet-címek előtagja** : a virtuális hálózat címe (alapértelmezett *10.0.0.0/16* ).
-    * **Alhálózat-előtag** : az alhálózat 10.0.0.0 (alapértelmezett érték */16* ).
+    * **Előfizetés**: a kiszolgálóhoz használni kívánt Azure-előfizetés.
+    * **SKU-kapacitás**: a virtuális mag kapacitása, amely lehet *2* (alapértelmezett), *4*, *8*, *16*, *32* vagy *64*.
+    * **SKU neve**: az SKU-rétegek előtagja, az SKU-család és az SKU-kapacitás, aláhúzások, például *B_Gen5_1*, *GP_Gen5_2* (alapértelmezett) vagy *MO_Gen5_32*.
+    * **SKU mérete MB**: a Azure Database for MariaDB kiszolgáló tárterületének mérete (MB) (alapértelmezett *51200*).
+    * **SKU-szint**: az üzembe helyezési szint, például *alapszintű,* *GeneralPurpose* (alapértelmezett) vagy *MemoryOptimized*.
+    * **SKU-család**: *Gen4* vagy *Gen5* (alapértelmezett), amely a kiszolgáló telepítésének hardveres generálását jelzi.
+    * **MariaDB-verzió**: a telepítendő MariaDB-kiszolgáló verziója, például *10,2* vagy *10,3* (alapértelmezett).
+    * **Biztonsági másolatok megőrzési napjai**: a földrajzi redundáns biztonsági másolatok megőrzésének kívánt időtartama napokban (alapértelmezett *7*).
+    * **Geo redundáns biztonsági mentés**: *engedélyezve* vagy *Letiltva* (az alapértelmezett) a Geo-vész-helyreállítási (Geo-Dr) követelményektől függően.
+    * **Virtual Network neve**: a virtuális hálózat neve (alapértelmezett *azure_mariadb_vnet*).
+    * **Alhálózat neve**: az alhálózat neve (alapértelmezett *azure_mariadb_subnet*).
+    * **Virtual Network szabály neve**: az alhálózatot engedélyező virtuális hálózati szabály neve (alapértelmezett *AllowSubnet*).
+    * **Vnet-címek előtagja**: a virtuális hálózat címe (alapértelmezett *10.0.0.0/16*).
+    * **Alhálózat-előtag**: az alhálózat 10.0.0.0 (alapértelmezett érték */16*).
 
 5. Olvassa el a használati feltételeket, majd válassza az Elfogadom **a fenti feltételeket és** kikötéseket lehetőséget.
 
@@ -175,7 +175,7 @@ read -p "Press [ENTER] to continue: "
 
 ---
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, amely törli az erőforráscsoport erőforrásait.
 

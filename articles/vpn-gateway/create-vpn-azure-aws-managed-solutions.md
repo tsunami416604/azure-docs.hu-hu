@@ -3,17 +3,17 @@ title: VPN létrehozása az Azure és az AWS között felügyelt megoldások has
 description: VPN-kapcsolat létrehozása az Azure és az AWS között felügyelt megoldások használatával, virtuális gépek és berendezések helyett.
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
-author: cherylmc
+author: ricmmartins
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 01/15/2021
-ms.author: cherylmc
-ms.openlocfilehash: c1bc263ca67a7d05dbb0d40bb07ba1ae43c2db5c
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.author: ricmart
+ms.openlocfilehash: 3b9e60eb037182318e9d1ef7336565908a9c8f32
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98605509"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664783"
 ---
 # <a name="create-a-vpn-connection-between-azure-and-aws-using-managed-solutions"></a>VPN-kapcsolat létrehozása az Azure és az AWS között felügyelt megoldások használatával
 
@@ -217,6 +217,6 @@ A kapcsolatok már létrejöttek.
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/aws-ping.png" alt-text="Ping teszt az AWS-ből":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A IKEv2 AWS-támogatásáról az [AWS-cikkben](https://aws.amazon.com/about-aws/whats-new/2019/02/aws-site-to-site-vpn-now-supports-ikev2/)talál további információt.

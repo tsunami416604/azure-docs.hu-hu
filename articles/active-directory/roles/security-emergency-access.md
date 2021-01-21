@@ -1,5 +1,5 @@
 ---
-title: Vészhelyzeti hozzáférési rendszergazdai fiókok kezelése – Azure AD | Microsoft Docs
+title: A vészhelyzeti hozzáférési rendszergazdai fiókok kezelése – Azure AD
 description: Ez a cikk azt ismerteti, hogyan lehet vészhelyzeti hozzáférési fiókok használatával megakadályozni, hogy véletlenül kizárja a Azure Active Directory (Azure AD) szervezetét.
 services: active-directory
 author: markwahl-msft
@@ -13,18 +13,18 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10d93b92f3bb0adfe734ad439079afdfcaa6270e
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 6ef8e7ed662d8c0acfc7c43112d6d7edb1cb9a94
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94834438"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660647"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Vészhelyzeti hozzáférési fiókok kezelése az Azure AD-ben
 
 Fontos, hogy megakadályozza, hogy véletlenül kizárja a Azure Active Directory (Azure AD) szervezetét, mert nem tud bejelentkezni vagy aktiválni egy másik felhasználói fiókot rendszergazdaként. A szervezete két vagy több *vészhelyzeti hozzáférésű fiókjának* létrehozásával csökkentheti a rendszergazdai hozzáférés véletlen hiányának következményeit.
 
-A sürgősségi hozzáférési fiókok magas jogosultsággal rendelkeznek, és nem adott személyekhez vannak rendelve. A vészhelyzeti hozzáférési fiókok olyan vészhelyzeti vagy "break Glass" forgatókönyvekre korlátozódnak, amelyekben nem használhatók normál rendszergazdai fiókok. Javasoljuk, hogy a vészhelyzeti fiókokra vonatkozó korlátozásokat csak akkor használja, ha feltétlenül szükséges.
+A sürgősségi hozzáférési fiókok magas jogosultsággal rendelkeznek, és nem adott személyekhez vannak rendelve. A vészhelyzeti hozzáférési fiókok csak az olyan vészhelyzeti esetekre valók, amikor a normál rendszergazdai fiókok nem használhatók. Javasoljuk, hogy a vészhelyzeti fiókokra vonatkozó korlátozásokat csak akkor használja, ha feltétlenül szükséges.
 
 Ez a cikk a vészhelyzeti hozzáférési fiókok Azure AD-ben való kezeléséhez nyújt útmutatást.
 
@@ -60,7 +60,7 @@ Vészhelyzet esetén nem szeretné, hogy a házirend ne tiltsa le a probléma me
 
 ## <a name="federation-guidance"></a>Összevonási útmutató
 
-Az AD domain Servicest és az ADFS-t, vagy hasonló identitás-szolgáltatót használó szervezetek számára további lehetőség az Azure AD-hez való összevonása, ha olyan vészhelyzeti hozzáférési fiókot állít be, amelynek MFA-jogcímet az adott identitás szolgáltatója szolgáltathatja.  Például egy tanúsítvány és egy kulcspár, például egy intelligens kártya tárolja a segélyhívó fiók biztonsági mentését.  Ha a felhasználó hitelesítése az AD-ben történik, az ADFS megadhat egy jogcímet az Azure AD számára, amely azt jelzi, hogy a felhasználó teljesítette az MFA-követelményeket.  Még ha ez a módszer is fennáll, a szervezeteknek továbbra is felhőalapú vészhelyzeti hozzáférési fiókokkal kell rendelkezniük abban az esetben, ha az összevonás nem állítható be. 
+Egyes szervezetek az AD tartományi szolgáltatásokat és az ADFS-t, vagy hasonló identitás-szolgáltatót használnak az Azure AD-hez való összevonása. Nincsenek [rendszergazdai jogosultságokkal rendelkező helyszíni fiókok](../fundamentals/protect-m365-from-on-premises-attacks.md). Az Azure AD-n kívüli rendszergazdai jogosultsággal rendelkező fiókok felügyeletének vagy beszerzésének elsajátítása szükségtelen kockázatot jelent a rendszer (ek) meghibásodása vagy sérülése esetén.
 
 ## <a name="store-account-credentials-safely"></a>Fiók hitelesítő adatainak biztonságos tárolása
 
@@ -131,7 +131,7 @@ A szervezeteknek figyelniük kell a bejelentkezési és a naplózási tevékenys
 1. Válassza ki a **műveletet** **e-mail/SMS/leküldés/hangként**.
 1. Válassza a **részletek szerkesztése** lehetőséget a konfigurálni kívánt értesítési módszerek kiválasztásához, majd adja meg a szükséges kapcsolattartási adatokat, majd a részletek mentéséhez kattintson **az OK gombra** .
 1. Adja meg az aktiválni kívánt további műveleteket.
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 ## <a name="validate-accounts-regularly"></a>Fiókok rendszeres ellenőrzése
 

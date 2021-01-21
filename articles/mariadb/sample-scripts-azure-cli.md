@@ -3,17 +3,17 @@ title: Azure CLI-minták – Azure Database for MariaDB
 description: Ez a cikk a Azure Database for MariaDBekkel való interakcióhoz elérhető Azure CLI-mintakód-mintákat sorolja fel.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 3/18/2020
-ms.openlocfilehash: aa9efba1c49063d40b4df0444fb3bc63b124a0a0
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 5218d087a622c1f651785afd1ab7cb418732b093
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536772"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664599"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-mariadb"></a>Azure CLI-minták a Azure Database for MariaDBhoz 
 Az alábbi táblázat a Azure Database for MariaDB Azure CLI-parancsfájlokra mutató hivatkozásokat tartalmaz.

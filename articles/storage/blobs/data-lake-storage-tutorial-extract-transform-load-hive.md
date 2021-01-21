@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 7640b7a6053532360da4c908089aecfe163bd3de
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f8210c3bc0437180ace110f8decd9f83e18650ed
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95912654"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661933"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>Oktatóanyag: adatok kinyerése, átalakítása és betöltése az Azure HDInsight használatával
 
@@ -40,7 +40,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 * **Azure SQL Database**: a Azure SQL Databaset használja célként szolgáló adattárként. Ha nem rendelkezik SQL Database-adatbázissal, tekintse meg a következő témakört: [adatbázis létrehozása Azure SQL Database a Azure Portal](../../azure-sql/database/single-database-create-quickstart.md).
 
-* **Azure CLI**: Ha még nem telepítette az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](/cli/azure/install-azure-cli?view=azure-cli-latest)ismertető témakört.
+* **Azure CLI**: Ha még nem telepítette az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört.
 
 * **Egy Secure Shell-(SSH-) ügyfél**: további információért lásd: [Kapcsolódás a HDInsight (HADOOP) az SSH használatával](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -50,7 +50,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 2. Az oldalon válassza ki a következő értékeket:
 
-   | Név | Érték |
+   | Name | Érték |
    | --- | --- |
    | Filter Year (Szűrési év) |2013 |
    | Filter Period (Szűrési időszak) |January |
@@ -339,7 +339,7 @@ Az előző részekben a helyről másolta az átalakított adatterületet  `abfs
 
 Az oktatóanyagban használt összes erőforrás már létezik. Nincs szükség karbantartásra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a HDInsight található adatkezelési lehetőségekről, tekintse meg a következő cikket:
 
