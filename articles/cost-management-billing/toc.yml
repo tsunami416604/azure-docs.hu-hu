@@ -98,7 +98,7 @@
           href: reservations/reserved-instance-windows-software-costs.md?toc=/azure/cost-management-billing/toc.json
         - name: Használati adatok egyéni előfizetések esetén
           href: reservations/understand-reserved-instance-usage.md?toc=/azure/cost-management-billing/toc.json
-        - name: Használati adatok vállalati ügyfelek esetén
+        - name: A nagyvállalati és a Microsoft ügyfél-szerződés használati adatok
           href: reservations/understand-reserved-instance-usage-ea.md?toc=/azure/cost-management-billing/toc.json
     - name: Számlázás
       items:

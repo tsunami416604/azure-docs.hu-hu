@@ -11,12 +11,12 @@ metadata:
   ms.author: kgremban
   manager: philmea
   ms.date: 08/05/2019
-  ms.openlocfilehash: 63c36cf0f602c7c19e3ec1eb0b38b84a2e3a6e15
-  ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
-  ms.translationtype: HT
+  ms.openlocfilehash: d1b23b67413f7e270cb894fcf201204afa255b20
+  ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+  ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/14/2020
-  ms.locfileid: "92048338"
+  ms.lasthandoff: 01/21/2021
+  ms.locfileid: "98707485"
 landingContent:
 - title: Fejlesztés Linux-eszközökhöz
   linkLists:
@@ -50,12 +50,14 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Az IoT Edge-futtatókörnyezet telepítése
-      url: how-to-install-iot-edge.md
-    - text: Egyetlen eszköz regisztrálása és üzembe helyezése
-      url: how-to-manual-provision-symmetric-key.md
+    - text: Egyetlen eszköz regisztrálása
+      url: how-to-register-device.md
     - text: Eszközök regisztrálása és üzembe helyezése nagyobb mennyiségben
       url: how-to-auto-provision-symmetric-keys.md
+    - text: A IoT Edge Runtime telepítése Linux rendszerű eszközökön
+      url: how-to-install-iot-edge.md
+    - text: A IoT Edge Runtime telepítése Windows-eszközökön
+      url: how-to-install-iot-edge-on-windows.md
 - title: Kapcsolatfelvétel a nyílt forráskódú projektekkel foglalkozó fejlesztői közösséggel
   linkLists:
   - linkListType: get-started

@@ -59,8 +59,12 @@
   items:
     - name: Közvetlenmetódus-példák – C#
       href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp'
+    - name: C# SDK-minták
+      href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp-sdk'
     - name: Közvetlenmetódus-példák – Python
       href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-python'
+    - name: Python SDK-minták
+      href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-python-sdk'
 - name: Alapelvek
   items:
     - name: Médiagrafikon

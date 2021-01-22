@@ -154,9 +154,9 @@
           href: howto-password-ban-bad-on-premises-faq.md
         - name: Ügynök verzióelőzményei
           href: howto-password-ban-bad-on-premises-agent-versions.md
-    - name: SMS-alapú hitelesítés (előzetes verzió)
+    - name: SMS-alapú hitelesítés használata
       href: howto-authentication-sms-signin.md
-    - name: E-mail-címmel történő bejelentkezés használata (előzetes verzió)
+    - name: E-mail cím bejelentkezésének használata
       href: howto-authentication-use-email-signin.md
     - name: Azure AD intelligens zárolás
       href: howto-password-smart-lockout.md

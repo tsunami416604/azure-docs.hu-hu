@@ -14,9 +14,7 @@
           href: Quickstarts/create-publish-knowledge-base.md
         - name: Tudásbázis lekérdezése
           href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
-    - name: A REST használata
-      href: Quickstarts/quickstart-rest-curl.md
-    - name: Az SDK használata
+    - name: Ügyféloldali kódtárak vagy REST API használata
       href: Quickstarts/quickstart-sdk.md
 - name: Oktatóanyagok
   items:

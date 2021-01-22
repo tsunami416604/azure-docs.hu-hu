@@ -73,8 +73,6 @@
           href: concept-baseline.md
         - name: Eseményösszesítés
           href: event-aggregation.md
-        - name: Díjszabás és kapcsolódó költségek
-          href: concept-pricing.md
 - name: Útmutatók
   items:
     - name: Ügynök nélküli megoldás szervezetek számára
@@ -252,6 +250,6 @@
         - name: Régiónkénti rendelkezésre állás
           href: 'https://azure.microsoft.com/regions/services/'
         - name: Díjszabás
-          href: 'https://azure.microsoft.com/pricing/details/security-center/'
+          href: 'https://azure.microsoft.com/pricing/details/azure-defender/'
         - name: Videók
           href: 'https://azure.microsoft.com/resources/videos/index/?services=security-center&service=internet-of-things&page=1&sort=newest'

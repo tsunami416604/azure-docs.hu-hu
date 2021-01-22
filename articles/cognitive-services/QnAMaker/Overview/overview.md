@@ -4,15 +4,15 @@ description: A QnA Maker egy felhőalapú NLP-szolgáltatás, amely könnyen lé
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 05/26/2020
+ms.date: 01/22/2021
 ms.custom: cog-serv-seo-aug-2020
 keywords: QnA-készítő, alacsony kódú csevegési robotok, több fordulatos beszélgetések
-ms.openlocfilehash: 9655f64da455fb7a7124a97e6dc2d1d8437d05b7
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 16f30801d52aa46184c4eb394f3d1cfebecd4be6
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353136"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98700715"
 ---
 # <a name="what-is-qna-maker"></a>Mi a QnA Maker?
 
@@ -63,7 +63,7 @@ A Tudásbázis szerkesztése után tegye közzé a tudásbázist egy működő [
 
 A QnA Maker rendszer egy rétegzett rangsorolási megközelítés. Az adattárolás az Azure Search szolgáltatásban történik, amely az első rangsorolási rétegként is szolgál. Az Azure Search legfontosabb eredményeit a rendszer átadja a QnA Maker NLP-re rangsoroló modelljének a végső eredmények és a megbízhatósági pontszám létrehozásához.
 
-## <a name="multi-turn-conversations"></a>Több-turn beszélgetések
+## <a name="multi-turn-conversations"></a>Többkörös beszélgetések
 
 A QnA Maker többfunkciós és aktív tanulást tesz lehetővé az alapvető kérdések és válaszok párosításának javítása érdekében.
 
@@ -85,8 +85,6 @@ A legnépszerűbb programozási nyelveken olyan gyors útmutatókat találunk, a
 
 * [Ismerkedés az QnA Maker ügyféloldali kódtáraval](../quickstarts/quickstart-sdk.md)
 * [Ismerkedés a QnA Maker portálral](../quickstarts/create-publish-knowledge-base.md)
-* [Ismerkedés a QnA Maker REST API-kkal](../quickstarts/quickstart-rest-curl.md)
-
 
 ## <a name="next-steps"></a>További lépések
 QnA Maker az egyéni Tudásbázis létrehozásához, kezeléséhez és üzembe helyezéséhez szükséges összes információt tartalmazza.

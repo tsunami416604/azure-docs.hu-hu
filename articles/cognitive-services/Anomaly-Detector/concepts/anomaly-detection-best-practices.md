@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 01/22/2021
 ms.author: mbullwin
-ms.openlocfilehash: 9457c610b256dd4602ef0dc51a47eeffb3c63b49
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: b0869335c386712e6b759bb0ced459ebd1bf383c
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705149"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702726"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Ajánlott eljárások az anomália-detektor API használatához
 
@@ -25,7 +25,7 @@ Az anomália-detektor API állapot nélküli anomália-észlelési szolgáltatá
 * A használatban lévő anomália-detektor API-paraméterei.
 * Az API-kérelemben szereplő adatpontok száma. 
 
-Ebből a cikkből megtudhatja, hogyan használhatók az API-k a legjobb eredmények az adatkezeléshez. 
+Ebből a cikkből megtudhatja, hogyan használhatók az API-k a legjobb eredmények az adatai számára. 
 
 ## <a name="when-to-use-batch-entire-or-latest-last-point-anomaly-detection"></a>Mikor kell használni a Batch (teljes) vagy a legutóbbi (utolsó) pont anomália észlelését
 
@@ -87,7 +87,7 @@ A hiányzó adatpontok közösek a egyenletesen elosztott idősorozat-adatkészl
 
 ### <a name="aggregate-distributed-data"></a>Összesített elosztott adatforgalom
 
-Az anomália-detektor API a legjobban egy egyenletesen elosztott idősorozaton működik. Ha az adatokat véletlenszerűen terjesztik, összesíteni kell egy adott időegységgel, például percenként, óránként vagy naponta, például.
+Az anomália-detektor API a legjobban egy egyenletesen elosztott idősorozaton működik. Ha az adatokat véletlenszerűen terjesztik, összesíteni kell egy adott időegységgel, például percenként, óránként vagy naponta.
 
 ## <a name="anomaly-detection-on-data-with-seasonal-patterns"></a>Az adatanomáliák észlelése szezonális mintázattal
 
@@ -95,7 +95,7 @@ Ha tudja, hogy az idősorozat-adatok szezonális mintázattal rendelkeznek (amel
 
 A `period` JSON-kérés összeállításakor megadható, hogy a rendszer akár 50%-kal is csökkentheti a rendellenességek észlelésének késleltetését. A egy `period` egész szám, amely azt határozza meg, hogy az idősorozat hány adatpontja veszi át a mintát. A napi egy adatponttal rendelkező idősorozatok például a következők lehetnek: `period` , `7` és egy adott időponttal rendelkező idősorozat (ugyanazzal a heti mintával) `period`  `7*24` . Ha nem biztos benne, hogy az adatai mintáik, nem kell megadnia ezt a paramétert.
 
-A legjobb eredmények érdekében 4 `period` értékű adatpontot adjon meg, és egy másikat. Például a fentiekben leírtak szerint óránkénti adatbevitel esetén a kérelem törzsében () 673 adatpontot kell megadni `7 * 24 * 4 + 1` .
+A legjobb eredmények elérése érdekében négy `period` értékű adatpontot adjon meg, és egy másikat. Például a fentiekben leírtak szerint óránkénti adatbevitel esetén a kérelem törzsében () 673 adatpontot kell megadni `7 * 24 * 4 + 1` .
 
 ### <a name="sampling-data-for-real-time-monitoring"></a>Mintavételezési adatgyűjtés a valós idejű figyeléshez
 

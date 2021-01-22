@@ -109,8 +109,8 @@
               href: tutorial-data-flow.md
             - name: Adatfolyamok leképezését ismertető oktatóvideók
               href: data-flow-tutorials.md
-        - name: Adatok előkészítése szervezési adatfolyamokkal
-          href: wrangling-data-flow-tutorial.md
+        - name: Az adatelőkészítés a huzavona
+          href: wrangling-tutorial.md
         - name: Külső szolgáltatások használata
           items:
             - name: HDInsight Spark
@@ -197,12 +197,12 @@
               href: concepts-data-flow-expression-builder.md
             - name: Kifejezés nyelve
               href: data-flow-expression-functions.md
-        - name: Adatok előkészítése szervezési adatfolyamokkal
+        - name: Az adatelőkészítés Power Query adathuzavonatal
           items:
-            - name: Szervezési adatfolyam áttekintése
-              href: wrangling-data-flow-overview.md
+            - name: Az adathuzavona áttekintése
+              href: wrangling-overview.md
             - name: Támogatott függvények
-              href: wrangling-data-flow-functions.md
+              href: wrangling-functions.md
     - name: Szerepkörök és engedélyek
       href: concepts-roles-permissions.md
     - name: Elnevezési szabályok
@@ -464,6 +464,8 @@
       items:
         - name: Data Flow-tevékenység végrehajtása
           href: control-flow-execute-data-flow-activity.md
+        - name: Power Query tevékenység végrehajtása
+          href: control-flow-power-query-activity.md
         - name: Azure-függvények tevékenységei
           href: control-flow-azure-function-activity.md
         - name: Egyéni tevékenység

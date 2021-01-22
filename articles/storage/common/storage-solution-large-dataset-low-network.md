@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 8afedec224fed55f617340af512485726ff44326
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9b83ba106b35a0a3abd035e85f60c4c39bbadd3b
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792939"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704640"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>Nagy méretű adathalmazok átvitele alacsony hálózati sávszélességen vagy sávszélesség nélkül
  
@@ -34,16 +34,16 @@ A következő táblázat segítségével ellenőrizheti, hogy a fizikai eszköz 
 
 ![Hálózati átvitel vagy offline átvitel](media/storage-solution-large-dataset-low-network/storage-network-or-offline-transfer.png)
 
-## <a name="recommended-options"></a>Ajánlott beállítások
+## <a name="recommended-options"></a>Ajánlott lehetőségek
 
 Az ebben a forgatókönyvben elérhető lehetőségek a Azure Data Box offline átvitelhez vagy az Azure import/export szolgáltatáshoz használható eszközök.
 
-- **Azure Data Box család offline átvitelhez** – a Microsoft által biztosított Data Box eszközökről származó eszközök használatával nagy mennyiségű adatok helyezhetők át az Azure-ba, ha az idő, a hálózat rendelkezésre állása vagy a költségek korlátozottak. Helyi Adatmásolás a Robocopy eszközzel. Az átvitelre szánt adatok méretétől függően Data Box Disk, Data Box vagy Data Box Heavy közül választhat.
-- **Azure import/export** – az Azure import/export szolgáltatás használata a saját lemezmeghajtók szállításával, hogy biztonságosan importáljon nagy mennyiségű adatmennyiséget az Azure Blob Storage-ba és a Azure Filesba. Ezzel a szolgáltatással adatok vihetők át az Azure Blob Storage-ból a lemezmeghajtóra és a helyszíni helyekre.
+- **Azure Data Box család offline átvitelhez** – a Microsoft által biztosított Data Box eszközökről származó eszközök használatával nagy mennyiségű adatok helyezhetők át az Azure-ba, ha az idő, a hálózat rendelkezésre állása vagy a költségek korlátozottak. A helyszíni adatokat az olyan eszközökkel másolhatja át, mint például a Robocopy. Az áthelyezendő adatok méretétől függően a következő lehetőségek közül választhat: Data Box Disk, Data Box vagy Data Box Heavy.
+- **Azure import/export** – az Azure import/export szolgáltatás használata a saját lemezmeghajtók szállításával, hogy biztonságosan importáljon nagy mennyiségű adatmennyiséget az Azure Blob Storage-ba és a Azure Filesba. Ez a szolgáltatás az adatoknak az Azure Blob-tárolóból lemezmeghajtókra való átvitelére, majd saját helyszíni helyeire való eljuttatására is használható.
 
 ## <a name="comparison-of-key-capabilities"></a>A főbb képességek összehasonlítása
 
-A következő táblázat összefoglalja a főbb képességek különbségeit.
+Az alábbi táblázat a fő képességek közötti különbségeket összegzi.
 
 |                                     |    Data Box Disk      |    Data Box                                      |    Data Box Heavy              |    Import/Export                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
@@ -62,10 +62,10 @@ A következő táblázat összefoglalja a főbb képességek különbségeit.
 |    **Díjszabás**                      |    [Díjszabás](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [Díjszabás](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [Díjszabás](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [Díjszabás](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan
 
     - [Adatok átvitele Data Box Disksal](../../databox/data-box-disk-quickstart-portal.md).
     - [Adatok átvitele Data Boxsal](../../databox/data-box-quickstart-portal.md).
-    - [Adatok átvitele importálással/exportálással](./storage-import-export-data-to-blobs.md).
+    - [Adatok átvitele importálással/exportálással](../../import-export/storage-import-export-data-to-blobs.md).

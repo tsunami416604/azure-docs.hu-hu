@@ -258,14 +258,49 @@
               href: job-error-codes.md
         - name: Fiók hitelesítő adatainak visszaállítása
           href: cli-reset-account-credentials.md
-    - name: Migrálás a 2-esről a 3-as verzióra
+    - name: Migrálási útmutató
+      displayName: migration
       items:
-        - name: A 2-es és 3-as verzió összevetése
-          displayName: 'migrate, v2 to v3'
-          href: media-services-v2-vs-v3.md
-        - name: Útmutató a migráláshoz
-          href: migrate-from-v2-to-v3.md
-          displayName: naming
+        - name: Áttelepítési útmutató – bevezetés
+          href: migrate-v-2-v-3-migration-introduction.md
+          displayName: migration
+        - name: 1. lépés – előnyök
+          href: migrate-v-2-v-3-migration-benefits.md
+          displayName: 'migration, benefits'
+        - name: 2. lépés – különbségek
+          items:
+            - name: API-hozzáférés
+              href: migrate-v-2-v-3-differences-api-access.md
+              displayName: 'migration, api'
+            - name: Szolgáltatások hiányosságainak
+              href: migrate-v-2-v-3-differences-feature-gaps.md
+              displayName: 'migration, features'
+            - name: Terminológia és entitások módosításai
+              href: migrate-v-2-v-3-differences-terminology.md
+              displayName: 'migration, entity, api'
+        - name: 3. lépés – SDK-telepítés
+          href: migrate-v-2-v-3-migration-setup.md
+          displayName: 'migration, SDK`'
+        - name: 4. lépés – forgatókönyv-alapú áttelepítési útmutató
+          items:
+            - name: Encoding
+              href: migrate-v-2-v-3-migration-scenario-based-encoding.md
+              displayName: 'migration, encoding'
+            - name: Live streaming (Élő adatfolyam)
+              href: migrate-v-2-v-3-migration-scenario-based-live-streaming.md
+              displayName: 'migration, live streaming'
+            - name: Csomagolás és kézbesítés
+              href: migrate-v-2-v-3-migration-scenario-based-publishing.md
+              displayName: 'migration, packaging, delivery, publishing'
+            - name: Tartalomvédelem
+              href: migrate-v-2-v-3-migration-scenario-based-content-protection.md
+              displayName: 'migration, content protection, DRM, digital rights management'
+            - name: Media szolgáltatás számára fenntartott egységek (MRU)
+              href: migrate-v-2-v-3-migration-scenario-based-media-reserved-units.md
+              displayName: 'migration, media reserved units'
+        - name: Minták összehasonlítása
+          href: migrate-v-2-v-3-migration-samples.md
+          displayName: 'migration, samples'
 - name: Útmutatók
   items:
     - name: Adategységek létrehozása és adathordozók feltöltése
@@ -408,7 +443,7 @@
           href: /python/api/overview/azure/mediaservices/management
         - name: Node.js
           href: /javascript/api/overview/azure/mediaservices/management
-        - name: Go
+        - name: Indítás
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.media/allversions

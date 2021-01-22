@@ -1,0 +1,50 @@
+### YamlMime:Landing
+title: A Cloud Sync dokumentációjának Azure AD Connect
+summary: Azure AD Connect a Cloud Sync szolgáltatással egyszerűsítheti és automatizálhatja az Azure AD-felhasználók felügyeletét a felhő által felügyelt szabályok segítségével, hogy szinkronizálja a felhasználókat a meglévő AD-erdőkből.
+metadata:
+  author: billmath
+  description: A Felhőbeli szinkronizálás segítségével egyszerűsítheti és automatizálhatja az Azure AD-felhasználók felügyeletét a felhő által felügyelt szabályok segítségével, hogy szinkronizálja a felhasználókat a meglévő AD-erdőkből.
+  ms.author: billmath
+  ms.collection: na
+  ms.date: 09/05/2019
+  ms.service: active-directory
+  ms.subservice: na
+  ms.topic: landing-page
+  services: active-directory
+  ms.openlocfilehash: 52032c39e77fb4ebd6488f25d660428ba59dfbd3
+  ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+  ms.translationtype: MT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 01/20/2021
+  ms.locfileid: "98611753"
+landingContent:
+- title: A felhő szinkronizálása
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az Azure AD Connect Cloud Sync?
+      url: what-is-cloud-sync.md
+- title: Ismerje meg, hogyan implementálhatja a felhasználók és csoportok életciklusának felügyeletére szolgáló legjobb megoldást
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Egyetlen AD-erdő integrálása egyetlen Azure AD-Bérlővel
+      url: tutorial-single-forest.md
+    - text: Egy meglévő erdő és egy új erdő integrálása egyetlen Azure AD-bérlővel
+      url: tutorial-existing-forest.md
+    - text: Kísérleti felhő szinkronizálása meglévő szinkronizált AD-erdőhöz
+      url: tutorial-pilot-aadc-aadccp.md
+- title: Ismerkedés a Cloud Sync szolgáltatással
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: A Azure AD Connect Cloud Sync használatának előfeltételei
+      url: how-to-prerequisites.md
+    - text: Azure AD Connect Cloud Sync telepítése
+      url: how-to-install.md
+    - text: Azure AD Connect létesítési ügynök konfigurációja
+      url: how-to-configure.md
+  - linkListType: reference
+    links:
+    - text: Támogatott topológiák és forgatókönyvek
+      url: plan-cloud-sync-topologies.md

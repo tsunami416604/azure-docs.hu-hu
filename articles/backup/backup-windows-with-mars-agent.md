@@ -3,18 +3,18 @@ title: Windows rendszerű gépek biztonsági mentése a MARS-ügynök használat
 description: A Windows rendszerű gépek biztonsági mentéséhez használja a Microsoft Azure Recovery Services (MARS) ügynököt.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: d2cdd5d1fa98462a70d72fd9f8723685952b665a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54932192d61633da55657e2ba57adf4e30c4fbc7
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90052222"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702768"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>Windows Server-fájlok és-mappák biztonsági mentése az Azure-ba
 
 Ez a cikk azt ismerteti, hogyan lehet biztonsági másolatot készíteni a Windows rendszerű gépekről a [Azure Backup](backup-overview.md) szolgáltatás és a Microsoft Azure Recovery Services (MARS) ügynök használatával. A MARSot Azure Backup ügynöknek is nevezzük.
 
-Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
+Ebből a cikkből megtudhatja, hogyan:
 
 > [!div class="checklist"]
 >
@@ -40,11 +40,11 @@ Biztonsági mentési szabályzat létrehozása:
 
 1. A MARS-ügynök letöltése és regisztrálása után nyissa meg az ügynök konzolját. A megkereséséhez keressen rá a gépen a **Microsoft Azure Backup** kifejezésre.  
 
-1. A **műveletek**területen válassza a **biztonsági mentés időzítése**elemet.
+1. A **műveletek** területen válassza a **biztonsági mentés időzítése** elemet.
 
     ![Windows Server biztonsági mentés ütemezése](./media/backup-configure-vault/schedule-first-backup.png)
-1. Az ütemezett biztonsági mentés varázslóban válassza az **első lépések**lehetőséget  >  **Next**.
-1. Az **elemek kiválasztása a biztonsági mentéshez**területen válassza az **elemek hozzáadása**lehetőséget.
+1. Az ütemezett biztonsági mentés varázslóban válassza az **első lépések** lehetőséget  >  .
+1. Az **elemek kiválasztása a biztonsági mentéshez** területen válassza az **elemek hozzáadása** lehetőséget.
 
     ![Elemek hozzáadása a biztonsági mentéshez](./media/backup-azure-manage-mars/select-item-to-backup.png)
 
@@ -52,7 +52,7 @@ Biztonsági mentési szabályzat létrehozása:
 
     ![Válassza ki azokat az elemeket, amelyekről biztonsági másolatot szeretne készíteni](./media/backup-azure-manage-mars/selected-items-to-backup.png)
 
-1. Az **elemek kiválasztása a biztonsági mentéshez** lapon válassza a **tovább**lehetőséget.
+1. Az **elemek kiválasztása a biztonsági mentéshez** lapon válassza a **tovább** lehetőséget.
 1. A **biztonsági mentési ütemezés megadása** lapon határozza meg, hogy mikor kell napi vagy heti biztonsági mentést készítenie. Ezután kattintson a **Tovább** gombra.
 
     * A biztonsági másolat létrehozásakor létrejön egy helyreállítási pont.
@@ -79,7 +79,7 @@ Biztonsági mentési szabályzat létrehozása:
 
         ![Adatmegőrzési szabály – példa](./media/backup-configure-vault/retention-example.png)
 
-1. A **kezdeti biztonsági mentés típusának kiválasztása** lapon döntse el, hogy szeretné-e a kezdeti biztonsági mentést végezni a hálózaton keresztül, vagy az offline biztonsági mentést. Ha a kezdeti biztonsági mentést a hálózaton keresztül szeretné végrehajtani, válassza a **automatikusan a hálózaton keresztül lehetőséget a**  >  **tovább**gombra.
+1. A **kezdeti biztonsági mentés típusának kiválasztása** lapon döntse el, hogy szeretné-e a kezdeti biztonsági mentést végezni a hálózaton keresztül, vagy az offline biztonsági mentést. Ha a kezdeti biztonsági mentést a hálózaton keresztül szeretné végrehajtani, válassza a **automatikusan a hálózaton keresztül lehetőséget a**  >  **tovább** gombra.
 
     További információ az offline biztonsági mentésről: [a Azure Data Box használata az offline biztonsági mentéshez](offline-backup-azure-data-box.md).
 
@@ -89,7 +89,7 @@ Biztonsági mentési szabályzat létrehozása:
 
     ![A biztonsági mentés típusának megerősítése](./media/backup-azure-manage-mars/confirm-backup-type.png)
 
-1. Miután a varázsló befejezte a biztonsági mentési ütemterv létrehozását, válassza a **Bezárás**lehetőséget.
+1. Miután a varázsló befejezte a biztonsági mentési ütemterv létrehozását, válassza a **Bezárás** lehetőséget.
 
     ![A biztonsági mentési ütemterv előrehaladásának megtekintése](./media/backup-azure-manage-mars/confirm-modify-backup-process.png)
 
@@ -104,7 +104,7 @@ Kapcsolat nélküli átvitel:
 1. A biztonsági mentési állapotot egy átmeneti helyre írja.
 1. A AzureOfflineBackupDiskPrep eszközzel másolja az adatok az előkészítési helyről egy vagy több SATA-lemezre.
 
-    Az eszköz létrehoz egy Azure importálási feladatot. További információ: Mi az [Az Azure import/export szolgáltatás](../storage/common/storage-import-export-service.md).
+    Az eszköz létrehoz egy Azure importálási feladatot. További információ: Mi az [Az Azure import/export szolgáltatás](../import-export/storage-import-export-service.md).
 1. A SATA-lemezek küldése egy Azure-adatközpontba.
 
     Az adatközpontban a lemezre vonatkozó Adatmásolás egy Azure Storage-fiókba történik. Azure Backup átmásolja az adatokat a Storage-fiókból a tárolóba, és a növekményes biztonsági mentések ütemezve lesznek.
@@ -121,15 +121,15 @@ A biztonsági mentések hálózati szabályozása a Windows Server 2012-es és �
 
 A hálózati sávszélesség-szabályozás engedélyezése:
 
-1. A MARS-ügynökben válassza a **Tulajdonságok módosítása**lehetőséget.
-1. A **szabályozás** lapon válassza az **Internet sávszélesség-használat szabályozásának engedélyezése a biztonsági mentési műveletekhez**lehetőséget.
+1. A MARS-ügynökben válassza a **Tulajdonságok módosítása** lehetőséget.
+1. A **szabályozás** lapon válassza az **Internet sávszélesség-használat szabályozásának engedélyezése a biztonsági mentési műveletekhez** lehetőséget.
 
     ![Hálózati sávszélesség-szabályozás beállítása biztonsági mentési műveletekhez](./media/backup-configure-vault/throttling-dialog.png)
-1. A munkaidőben és a munkaidőn belül engedélyezett sávszélesség megadására használható. A sávszélesség értéke 512 kbps, és akár 1 023 Mbps is lehet. Ezután válassza az **OK** gombot.
+1. A munkaidőben és a munkaidőn belül engedélyezett sávszélesség megadására használható. A sávszélesség értéke 512 kbps, és akár 1 023 Mbps is lehet. Ez után válassza az **OK** gombot.
 
 ## <a name="run-an-on-demand-backup"></a>Igény szerinti biztonsági mentések futtatása
 
-1. A MARS-ügynökben válassza a **biztonsági mentés most**lehetőséget.
+1. A MARS-ügynökben válassza a **biztonsági mentés most** lehetőséget.
 
     ![Biztonsági mentés most a Windows Serverben](./media/backup-configure-vault/backup-now.png)
 
@@ -137,7 +137,7 @@ A hálózati sávszélesség-szabályozás engedélyezése:
 
    ![A naptár használata megőrzési dátum testreszabásához](./media/backup-configure-vault/mars-ondemand.png)
 
-1. A **jóváhagyás** lapon tekintse át a beállításokat, majd válassza a **biztonsági mentés**lehetőséget.
+1. A **jóváhagyás** lapon tekintse át a beállításokat, majd válassza a **biztonsági mentés** lehetőséget.
 1. A varázsló bezárásához kattintson a **Bezárás** gombra. Ha bezárta a varázslót a biztonsági mentés befejeződése előtt, a varázsló továbbra is fut a háttérben.
 
 A kezdeti biztonsági mentés befejeződése után a **feladatok befejezve** állapot jelenik meg a biztonsági mentési konzolon.
@@ -155,7 +155,7 @@ A kezdeti biztonsági mentés befejeződése után a **feladatok befejezve** ál
 
 További információt a [biztonsági mentési szabályzat létrehozása](#create-a-backup-policy)című témakörben talál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, hogyan [állíthatja vissza a fájlokat az Azure-ban](backup-azure-restore-windows-server.md).
 * [Gyakori kérdések a fájlok és mappák biztonsági mentéséről](backup-azure-file-folder-backup-faq.md)

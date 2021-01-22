@@ -9,12 +9,12 @@ metadata:
   author: dcurwin
   ms.author: dacurwin
   ms.date: 12/01/2019
-  ms.openlocfilehash: e2afc60f6fa67c1dc0582839e2d3f7480907facc
-  ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
-  ms.translationtype: HT
+  ms.openlocfilehash: ea54d6e4a08ff5baa2a46051a8ec342128175de3
+  ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+  ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 01/18/2021
-  ms.locfileid: "98556494"
+  ms.lasthandoff: 01/21/2021
+  ms.locfileid: "98707449"
 landingContent:
 - title: További tudnivalók az Azure Backup szolgáltatásról
   linkLists:
@@ -40,8 +40,6 @@ landingContent:
       url: quick-backup-vm-cli.md
     - text: Virtuális gépek biztonsági mentése Resource Manager-sablonok használatával
       url: quick-backup-vm-template.md
-- title: Próbálja ki részletes útmutatóinkat
-  linkLists:
   - linkListType: tutorial
     links:
     - text: Azure-beli virtuális gépek biztonsági mentése
@@ -84,6 +82,20 @@ landingContent:
       url: backup-azure-vm-backup-faq.md
     - text: Azure-beli virtuális gépek biztonsági mentésének kezelése
       url: backup-azure-manage-vms.md
+- title: Azure Managed Disks biztonsági mentése (előzetes verzió)
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Az Azure Disk Backup áttekintése
+      url: disk-backup-overview.md
+    - text: Az Azure lemezes biztonsági mentés támogatási mátrixa
+      url: disk-backup-support-matrix.md
+    - text: Azure-Managed Disks biztonsági mentése
+      url: backup-managed-disks.md
+    - text: GYIK – Azure Managed Disks
+      url: disk-backup-faq.md
+    - text: Az Azure Managed Disks biztonsági mentésének hibáinak megoldása
+      url: disk-backup-troubleshoot.md
 - title: Azure-beli virtuális gépeken futó SQL Server biztonsági mentése
   linkLists:
   - linkListType: concept

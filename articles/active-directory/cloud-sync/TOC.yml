@@ -1,0 +1,88 @@
+- name: Felhőbeli szinkronizálás
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi az az identitáslétesítés?
+      href: what-is-provisioning.md
+    - name: Mi az Azure AD Connect Cloud Sync?
+      href: what-is-cloud-sync.md
+      maintainContext: true
+- name: Oktatóanyagok
+  expanded: true
+  items:
+    - name: Egyetlen AD-erdő integrálása egyetlen Azure AD-bérlővel
+      href: tutorial-single-forest.md
+    - name: Egy meglévő erdő és egy új erdő integrálása egyetlen Azure AD-bérlővel
+      href: tutorial-existing-forest.md
+    - name: Kísérleti felhő szinkronizálása meglévő szinkronizált AD-erdőhöz
+      href: tutorial-pilot-aadc-aadccp.md
+- name: Alapelvek
+  items:
+    - name: Működés
+      href: concept-how-it-works.md
+    - name: Mi az a jelszókivonat szinkronizálása?
+      href: ../hybrid/whatis-phs.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcloud-provisioning-context
+    - name: 'Az Azure AD-séma, -attribútumok és -kifejezések ismertetése'
+      href: concept-attributes.md
+    - name: Kifejezések írása attribútumleképezéshez az Azure Active Directoryban
+      href: reference-expressions.md
+- name: Útmutatók
+  items:
+    - name: Telepítés és frissítés
+      items:
+        - name: Telepítési előfeltételek
+          href: how-to-prerequisites.md
+        - name: Az Azure AD Connect felhőalapú jogosultságkiosztási ügynök telepítése
+          href: how-to-install.md
+        - name: Felhőbeli szinkronizálás konfigurálása
+          href: how-to-configure.md
+        - name: Igény szerinti üzembe helyezés
+          href: how-to-on-demand-provision.md
+        - name: Attribútumleképezés
+          href: how-to-attribute-mapping.md
+        - name: Egyszeri bejelentkezés használata
+          href: how-to-sso.md
+    - name: Tervezés és kialakítás
+      items:
+        - name: A Azure AD Connect Cloud Sync topológiái és forgatókönyvei
+          href: plan-cloud-sync-topologies.md
+    - name: Kezelés
+      items:
+        - name: Ügynök automatikus frissítése
+          href: how-to-automatic-upgrade.md
+        - name: Véletlen törlések
+          href: how-to-accidental-deletes.md
+        - name: Ügynök beállításjegyzék-beállításai
+          href: how-to-manage-registry-options.md
+        - name: Ügynök gMSA PowerShell-parancsmagjai
+          href: how-to-gmsa-cmdlets.md
+        - name: A kiépítési ügynök telepítése a PowerShell használatával
+          href: how-to-install-pshell.md
+    - name: Fejlesztés
+      items:
+        - name: Átalakítások
+          href: how-to-transformation.md
+        - name: Bejövő szinkronizálás az MS Graph API-val
+          href: how-to-inbound-synch-ms-graph.md
+        - name: Azure AD szinkronizálási API
+          href: /graph/api/resources/synchronization-overview
+    - name: Hibaelhárítás
+      items:
+        - name: Felhőalapú szinkronizálás – problémamegoldás
+          href: how-to-troubleshoot.md
+        - name: Duplikált attribútumok
+          href: ../hybrid/how-to-connect-syncservice-duplicate-attribute-resiliency.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
+- name: Referencia
+  items:
+    - name: Az Azure AD Connect felhőalapú jogosultságkiosztási ügynök verzióelőzményei
+      href: reference-version-history.md
+    - name: Azure AD Connect Cloud Sync – gyakori kérdések
+      href: reference-cloud-sync-faq.md
+    - name: AADCloudSyncTools PowerShell-modul
+      href: reference-powershell.md
+    - name: Szinkronizált attribútumok
+      href: ../hybrid/reference-connect-sync-attributes-synchronized.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
+    - name: Hibakódok és leírások
+      href: reference-error-codes.md
+    - name: Alapszintű Active Directory és Azure AD-környezet
+      href: tutorial-basic-ad-azure.md

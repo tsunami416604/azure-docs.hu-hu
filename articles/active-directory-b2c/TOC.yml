@@ -238,8 +238,10 @@
           items:
             - name: Mailjet
               href: custom-email-mailjet.md
+              displayName: 'Custom email, Custom verification email, Verification email'
             - name: SendGrid
               href: custom-email-sendgrid.md
+              displayName: 'Custom email, Custom verification email, Verification email'
           displayName: verification
         - name: Saját üzleti logika hozzáadása
           items:
@@ -381,6 +383,8 @@
           href: partner-itsme.md
         - name: Jumio
           href: partner-jumio.md
+        - name: Kulcsnélküli
+          href: partner-keyless.md
         - name: LexisNexis
           href: partner-lexisnexis.md
         - name: N8 Identity
@@ -415,9 +419,9 @@
         - name: Azure Monitor
           href: azure-monitor.md
           displayName: 'log, logs, logging, usage, events'
-        - name: Felhasználók kezelése – Microsoft Graph
-          href: manage-user-accounts-graph-api.md
-          displayName: 'account, accounts'
+        - name: Microsoft Graph API
+          href: microsoft-graph-operations.md
+          displayName: 'account, accounts, msgraph, ms graph, graph'
         - name: Üzembe helyezés az Azure Pipelines használatával
           href: deploy-custom-policies-devops.md
           displayName: 'azure devops, ci/cd, cicd, custom policy, policies'
@@ -461,8 +465,6 @@
       href: extensions-app.md
     - name: Egyéni szabályzat (IEF) kibocsátási megjegyzései
       href: custom-policy-developer-notes.md
-    - name: Microsoft Graph API-műveletek
-      href: microsoft-graph-operations.md
     - name: Oldalelrendezési verziók
       href: page-layout.md
     - name: Régiónkénti elérhetőség és az adatok tárolási helye

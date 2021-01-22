@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: f1ded1ce87df1cb57960bbc99cd950ed7b3f97ee
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: cf0e423648db174433f0717f2e5971ac49697b42
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573935"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704623"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>Nagy méretű adathalmazok átvitele közepes vagy nagy hálózati sávszélességen
  
@@ -69,7 +69,7 @@ Ha kapcsolat nélküli adatátvitelt használ, a következő táblázat segíts�
 |    **Űrlap tényező**                  |    5 SSD/megrendelés             |    1 X 50 – lbs. asztali méretű eszköz/megrendelés    |    1 X ~ 500 – lbs. nagyméretű eszköz/megrendelés    |    Akár 10 HDD/SSD/megrendelés        |
 |    **Kezdeti telepítési idő**               |    Alacsony <br>(15 perc)            |    Alacsony – mérsékelt <br> (<30 perc)               |    Mérsékelt<br>(1-2 óra)               |    Mérsékelt – nehéz<br>változó |
 |    **Adatküldés az Azure-ba**           |    Igen                          |    Igen                                           |    Igen                                   |    Igen                                 |
-|    **Adatexportálás az Azure-ból**           |    Nem                           |    Nem                                            |    Nem                                    |    Igen                                 |
+|    **Adatok exportálása az Azure-ból**           |    Nem                           |    Nem                                            |    Nem                                    |    Igen                                 |
 |    **Titkosítás**                   |    AES 128 bites                  |    AES 256 bites                                   |    AES 256 bites                           |    AES 128 bites                         |
 |    **Hardver**                     |     Microsoft által megadott          |    Microsoft által megadott                            |    Microsoft által megadott                    |    Ügyfél által megadott                   |
 |    **Hálózati adapter**            |    USB 3.1/SATA                 |    RJ 45, SFP +                                   |    RJ45, QSFP +                           |    SATA II/SATA III                    |
@@ -95,7 +95,7 @@ Ha online adatátvitelt használ, használja a következő szakaszban találhat�
 
 ## <a name="next-steps"></a>További lépések
 
-- [Megtudhatja, hogyan vihet át adatátvitelt importálási/exportálási szolgáltatással](./storage-import-export-data-to-blobs.md).
+- [Megtudhatja, hogyan vihet át adatátvitelt importálási/exportálási szolgáltatással](../../import-export/storage-import-export-data-to-blobs.md).
 - Ismerje meg, hogyan
 
     - [Adatok átvitele Data Box Disksal](../../databox/data-box-disk-quickstart-portal.md).

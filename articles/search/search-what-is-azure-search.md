@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 12/17/2020
+ms.date: 01/22/2021
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 3f62ab20359273aec6743c27ab46b33027e82b55
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 893bf37a5a4c8a314e5182bf2ac4bc28502b98d9
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598403"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98699438"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Mi az az Azure Cognitive Search?
 
@@ -22,25 +22,29 @@ Az Azure Cognitive Search ([korábbi nevén "Azure Search"](whats-new.md#new-ser
 
 A keresési szolgáltatás a következő összetevőket tartalmazhatja:
 
-+ Keresőmotor indexelési és lekérdezés-végrehajtáshoz
-+ A felhasználó által birtokolt keresési indexek állandó tárolása
-+ Lekérdezési nyelv egyszerű és összetett lekérdezések létrehozásához
++ Keresőmotor a teljes szöveges kereséshez
++ A felhasználó tulajdonában lévő indexelt tartalom állandó tárolása
++ API-k indexeléshez és lekérdezéshez
 + Opcionális [AI-alapú dúsítások](cognitive-search-concept-intro.md), kereshető tartalmak létrehozása képekből, nyers szöveg, alkalmazásfájlok
 + Opcionális integráció más Azure-szolgáltatásokkal az adatkezeléshez, gépi tanuláshoz/AI-hoz és biztonsághoz
 
-A keresési szolgáltatás építészeti szempontból a nem indexelt adatokat tartalmazó külső adattárak között, valamint egy olyan ügyfélalkalmazás között ül, amely lekérdezési kérelmeket küld egy keresési indexnek, és kezeli a választ.
+A keresési szolgáltatás építészeti szempontból a nem indexelt adatokat tartalmazó külső adattárak között található, és az ügyfélalkalmazás, amely lekérdezési kérelmeket küld egy keresési indexnek, és kezeli a választ.
 
 ![Azure Cognitive Search-architektúra](media/search-what-is-azure-search/azure-search-diagram.svg "Azure Cognitive Search-architektúra")
 
-A keresés a többi Azure-szolgáltatással integrálható olyan *Indexelő* formájában, amely automatizálja az adatok betöltését/lekérését az Azure-adatforrásokból, valamint olyan *szakértelmével* , amelyek a Cognitive Services, például a képek és a szöveges elemzések, vagy a Azure Machine learning vagy a Azure FUNCTIONSban létrehozott egyéni AI-k számára.
+Külsőleg a keresés integrálható más Azure-szolgáltatásokkal olyan *Indexelő* formájában, amely automatizálja az adatok betöltését/lekérését az Azure-adatforrásokból, valamint olyan *szakértelmével* , amelyek a Cognitive Services, például a képek és a szöveges elemzések, vagy a Azure Machine learning vagy a Azure FUNCTIONSban létrehozott egyéni AI-k használatával.
+
+## <a name="inside-a-search-service"></a>Keresési szolgáltatáson belül
 
 A keresési szolgáltatásban a két elsődleges munkaterhelés az *indexelés* és a *lekérdezés*. 
 
-+ Az indexelés beolvassa a szöveget a keresési szolgáltatásba, és kereshetővé teszi. Belsőleg a bejövő szövegeket a rendszer tokenekre dolgozza fel, és a gyors vizsgálatok érdekében fordított indexekben tárolja őket. A JSON-dokumentumok formájában bármilyen tartalmat fel lehet tölteni.
++ Az [indexelés](search-what-is-an-index.md) olyan beviteli folyamat, amely betölti a tartalmat a keresési szolgáltatásba, és kereshetővé teszi. Belsőleg a bejövő szövegeket a rendszer tokenekre dolgozza fel, és a gyors vizsgálatok érdekében fordított indexekben tárolja őket. A JSON-dokumentumok formájában bármilyen szöveget fel lehet tölteni.
 
-  Az [indexelés során lehetősége](cognitive-search-working-with-skillsets.md)van a *mesterséges intelligencia-gazdagítás* hozzáadására a Microsofttól vagy az Ön által létrehozott egyéni készségektől függően. A későbbi elemzések és átalakítások olyan új információkat és struktúrákat eredményeznek, amelyek korábban nem léteztek, így nagy mennyiségű keresési és tudás-adatbányászati forgatókönyvet biztosítanak.
+  Továbbá, ha a tartalom vegyes fájlokat tartalmaz, lehetősége van a *mesterséges intelligenciát* is felvenni a [kognitív képességek](cognitive-search-working-with-skillsets.md)segítségével. Az AI-bővítés kinyerheti az alkalmazásfájlokba ágyazott szöveget, és a tartalom elemzésével a nem szöveges fájlokból is kikövetkeztetheti a szöveget és a struktúrát. 
 
-+ Ha egy indexet kereshető adatokkal tölt fel, az ügyfélalkalmazás lekérdezési kérelmeket küld egy keresési szolgáltatásnak, és kezeli a válaszokat. Az összes lekérdezés végrehajtása a szolgáltatásban létrehozott, saját és tárolt keresési index fölé esik. Az ügyfélalkalmazás esetében a keresési élmény az Azure Cognitive Search API-jai használatával van definiálva, és a következők lehetnek: relevancia finomhangolása, automatikus kiegészítés, szinonimák egyeztetése, zavaros megfeleltetés, minta egyeztetés, szűrés és rendezés.
+  Az elemzést biztosító készségek előre definiálva vannak a Microsofttól, illetve a létrehozott egyéni készségektől. A későbbi elemzések és átalakítások olyan új információkat és struktúrákat eredményeznek, amelyek korábban nem léteztek, így nagy mennyiségű keresési és tudás-adatbányászati forgatókönyvet biztosítanak.
+
++ A [lekérdezés](search-query-overview.md) akkor fordulhat elő, ha az index kereshető szöveggel van feltöltve, amikor az ügyfélalkalmazás lekérdezési kérelmeket küld egy keresési szolgáltatásnak, és kezeli a válaszokat. Az összes lekérdezés végrehajtása a szolgáltatásban létrehozott, saját és tárolt keresési index fölé esik. Az ügyfélalkalmazás esetében a keresési élmény az Azure Cognitive Search API-jai használatával van definiálva, és a következők lehetnek: relevancia finomhangolása, automatikus kiegészítés, szinonimák egyeztetése, zavaros megfeleltetés, minta egyeztetés, szűrés és rendezés.
 
 A funkciókat egy egyszerű [REST API-n](/rest/api/searchservice/) vagy [.NET SDK-n](search-howto-dotnet-sdk.md) keresztül tudja elérni, mely elfedi az információk kiolvasásának mögöttes komplexitását. A szolgáltatás felügyeletéhez és a tartalomkezeléshez használható Azure Portal is használhatja, az indexek és a szakértelmével prototípusának és lekérdezésének eszközeivel. Mivel a szolgáltatás a felhőben fut, az infrastruktúrát és a rendelkezésre állást a Microsoft felügyeli.
 
@@ -73,7 +77,7 @@ Az alapvető keresési funkciók teljes körű feltárása négy lépésben érh
 > [!TIP]
 > Minimálisra csökkentheti a lépéseket az [**adatimportálás varázsló**](search-get-started-portal.md) és egy Azure-adatforrás használatával, amely percek alatt létrehozhatja, betöltheti és lekérdezheti az indexeket.
 
-## <a name="how-it-compares"></a>Összehasonlítás más keresési megoldásokkal
+## <a name="compare-search-options"></a>Keresési beállítások összehasonlítása
 
 Az ügyfelek gyakran kérdezik le, hogyan hasonlítanak össze az Azure Cognitive Search más keresési megoldásokkal. Az alábbi táblázat összefoglalja a fő eltéréseket.
 

@@ -19,6 +19,8 @@
       href: virtual-machines-custom-preferences.md
     - name: Engedélyezés virtuális gépeken az Azure Policy segítségével
       href: virtual-machines-policy-enable.md
+    - name: Bevezetési hibák elhárítása
+      href: common-errors.md
     - name: Sérült Automanage-fiókok javítása
       href: repair-automanage-account.md
 - name: További források

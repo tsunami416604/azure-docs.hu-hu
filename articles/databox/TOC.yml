@@ -241,6 +241,9 @@
           href: /powershell/module/az.databox
         - name: .NET API-k
           href: /dotnet/api/overview/azure/databox/management
+        - name: Az Azure Policy beépített elemei
+          displayName: 'samples, policies, definitions'
+          href: ./policy-reference.md
     - name: További források
       items:
         - name: Data Box-termék

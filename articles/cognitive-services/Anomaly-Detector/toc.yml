@@ -38,7 +38,7 @@
           href: ../containers/index.yml
 - name: Alapelvek
   items:
-    - name: Ajánlott eljárások az Anomaly Detection API-hoz
+    - name: Anomália-detektor API – ajánlott eljárások
       href: concepts/anomaly-detection-best-practices.md
 - name: Referencia
   items:

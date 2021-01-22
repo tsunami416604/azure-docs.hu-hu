@@ -1,4 +1,4 @@
-- name: IoT Hub – dokumentáció
+- name: IoT Hub dokumentáció
   href: index.yml
 - name: Áttekintés
   items:
@@ -481,6 +481,8 @@
           href: iot-hub-migrate-to-diagnostics-settings.md
         - name: Megszűnik a TLS 1.0 és 1.1 támogatása
           href: iot-hub-tls-deprecating-1-0-and-1-1.md
+        - name: Klasszikus IP-szűrő
+          href: iot-hub-ip-filter-classic.md
 - name: További források
   items:
     - name: Támogatási és súgólehetőségek

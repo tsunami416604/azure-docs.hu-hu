@@ -6,16 +6,16 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: d04a5c0e53e9a5db8bba03a5a9e9d95b87a8b5a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 940b7ac90f85e0254d59459b70ccc15312cd69f4
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85855679"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98700839"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-storage-gen1"></a>Az Azure import/export szolgáltatás használata az adatkapcsolat nélküli másoláshoz az Data Lake Storage Gen1
 
-Ebből a cikkből megtudhatja, hogyan másolhat hatalmas adatkészleteket (>200 GB-ot) a Data Lake Storage Gen1ba offline másolási módszerek használatával, például az [Azure import/export szolgáltatással](../storage/common/storage-import-export-service.md). A cikkben példaként használt fájl 339 420 860 416 bájt, vagy körülbelül 319 GB a lemezen. Hívjuk ezt a 319GB. TSV fájlt.
+Ebből a cikkből megtudhatja, hogyan másolhat hatalmas adatkészleteket (>200 GB-ot) a Data Lake Storage Gen1ba offline másolási módszerek használatával, például az [Azure import/export szolgáltatással](../import-export/storage-import-export-service.md). A cikkben példaként használt fájl 339 420 860 416 bájt, vagy körülbelül 319 GB a lemezen. Hívjuk ezt a 319GB. TSV fájlt.
 
 Az Azure import/export szolgáltatás segítségével nagy mennyiségű adatok biztonságosan vihetők át az Azure Blob Storage-ba az Azure-adatközpontok számára a merevlemez-meghajtók használatával.
 
@@ -44,7 +44,7 @@ A felosztott művelet a következő neveket tartalmazó fájlokat hozza létre.
 
 ## <a name="get-disks-ready-with-data"></a>Lemezek beolvasása az adatfeldolgozással
 
-A merevlemezek előkészítéséhez kövesse az [Azure import/export szolgáltatás használata](../storage/common/storage-import-export-service.md) (a **meghajtók előkészítése** szakaszban) című témakör utasításait. A teljes sorozatot:
+A merevlemezek előkészítéséhez kövesse az [Azure import/export szolgáltatás használata](../import-export/storage-import-export-service.md) (a **meghajtók előkészítése** szakaszban) című témakör utasításait. A teljes sorozatot:
 
 1. Olyan merevlemez beszerzése, amely megfelel az Azure import/export szolgáltatáshoz használandó követelménynek.
 2. Azonosítson egy Azure Storage-fiókot, amelyet az Azure-adatközpontba való szállítás után másol a rendszer.
@@ -53,12 +53,12 @@ A merevlemezek előkészítéséhez kövesse az [Azure import/export szolgáltat
     ```
     WAImportExport PrepImport /sk:<StorageAccountKey> /t: <TargetDriveLetter> /format /encrypt /logdir:e:\myexportimportjob\logdir /j:e:\myexportimportjob\journal1.jrn /id:myexportimportjob /srcdir:F:\demo\ExImContainer /dstdir:importcontainer/vf1/
     ```
-    További Példákért lásd: [Az Azure import/export szolgáltatás használata](../storage/common/storage-import-export-service.md) .
+    További Példákért lásd: [Az Azure import/export szolgáltatás használata](../import-export/storage-import-export-service.md) .
 4. Az előző parancs egy naplófájlt hoz létre a megadott helyen. A naplófájl használatával importálási feladatot hozhat létre a [Azure Portalból](https://portal.azure.com).
 
 ## <a name="create-an-import-job"></a>Importálási feladatok létrehozása
 
-Most létrehozhat egy importálási feladatot az [Azure import/export szolgáltatás használata](../storage/common/storage-import-export-service.md) (az **importálási feladatok létrehozása** szakasz alatt) található utasítások használatával. Ehhez az importálási feladathoz, és egyéb részletek is megadják a lemezmeghajtók előkészítése során létrehozott naplófájlt.
+Most létrehozhat egy importálási feladatot az [Azure import/export szolgáltatás használata](../import-export/storage-import-export-service.md) (az **importálási feladatok létrehozása** szakasz alatt) található utasítások használatával. Ehhez az importálási feladathoz, és egyéb részletek is megadják a lemezmeghajtók előkészítése során létrehozott naplófájlt.
 
 ## <a name="physically-ship-the-disks"></a>A lemezek fizikai szállítása
 

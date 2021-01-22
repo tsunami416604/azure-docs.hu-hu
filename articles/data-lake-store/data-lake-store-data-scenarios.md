@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 702a59f768bfe978e1a7708d91c6b6b1bb9c92fe
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0bd895b0c19293a199b2a9b135915b7dc45b9e5e
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452240"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702497"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>A Azure Data Lake Storage Gen1 használata big data követelményekhez
 
@@ -88,7 +88,7 @@ Nagy mennyiségű adattal rendelkezhetnek a meglévő Hadoop-fürtökben, helyil
 A több terabájtos tartományba tartozó adatkészletek feltöltéséhez a fent ismertetett módszerek használatával időnként lassú és költséges lehet. Ilyen esetekben az alábbi beállításokat használhatja.
 
 * **Az Azure ExpressRoute használata**. Az Azure ExpressRoute lehetővé teszi privát kapcsolatok létrehozását az Azure-adatközpontok és a helyszíni infrastruktúra között. Ez megbízható lehetőséget biztosít a nagy mennyiségű adatátvitelhez. További információ: az [Azure ExpressRoute dokumentációja](../expressroute/expressroute-introduction.md).
-* **"Kapcsolat nélküli" adatok feltöltése**. Ha az Azure ExpressRoute használata bármilyen okból nem valósítható meg, az [Azure import/export szolgáltatás](../storage/common/storage-import-export-service.md) használatával a merevlemezeket az Azure-adatközpontba helyezheti el az adataival. Az adatait először feltölti az Azure Storage-Blobokra. Ezután az [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) vagy a [AdlCopy eszközzel](data-lake-store-copy-data-azure-storage-blob.md) másolhat adatokból az Azure Storage-blobokból a Data Lake Storage Gen1ba.
+* **"Kapcsolat nélküli" adatok feltöltése**. Ha az Azure ExpressRoute használata bármilyen okból nem valósítható meg, az [Azure import/export szolgáltatás](../import-export/storage-import-export-service.md) használatával a merevlemezeket az Azure-adatközpontba helyezheti el az adataival. Az adatait először feltölti az Azure Storage-Blobokra. Ezután az [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) vagy a [AdlCopy eszközzel](data-lake-store-copy-data-azure-storage-blob.md) másolhat adatokból az Azure Storage-blobokból a Data Lake Storage Gen1ba.
 
   > [!NOTE]
   > Az import/export szolgáltatás használatakor az Azure-adatközpontba szállított lemezek fájlmérete nem haladhatja meg a 195 GB-ot.

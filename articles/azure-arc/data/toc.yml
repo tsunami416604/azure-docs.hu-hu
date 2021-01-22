@@ -50,6 +50,8 @@
           href: create-data-controller-using-azdata.md
         - name: Kubernetes-eszközök
           href: create-data-controller-using-kubernetes-native-tools.md
+        - name: SCC alkalmazása (OpenShift)
+          href: how-to-apply-security-context-constraint.md
     - name: Az Azure Arc-kompatibilis adatszolgáltatások közös felületei
       items:
         - name: Monitorozás irányítópulttal (Azure Data Studio)

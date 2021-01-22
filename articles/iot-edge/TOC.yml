@@ -17,9 +17,9 @@
   items:
     - name: Fejlesztési környezet beállítása
       items:
-        - name: Fejlesztés Linux-eszközökhöz
+        - name: Fejlesztés Linux-tárolókkal
           href: tutorial-develop-for-linux.md
-        - name: Fejlesztés Windows-eszközökhöz
+        - name: Fejlesztés Windows-tárolókkal
           href: tutorial-develop-for-windows.md
     - name: Egyéni kódmodulok fejlesztése
       items:
@@ -77,6 +77,8 @@
   items:
     - name: IoT Edge-futtatókörnyezet
       href: iot-edge-runtime.md
+    - name: IoT Edge Linux rendszerre Windows rendszeren
+      href: iot-edge-for-linux-on-windows.md
     - name: IoT Edge-modulok
       items:
         - name: Az Azure IoT Edge-modulok ismertetése
@@ -119,23 +121,25 @@
   items:
     - name: IoT Edge-eszköz létrehozása
       items:
-        - name: Futtatókörnyezet telepítése
-          href: how-to-install-iot-edge.md
-        - name: Eszköz regisztrálása és hitelesítése
+        - name: Eszköz regisztrálása a IoT Hubban
+          href: how-to-register-device.md
+        - name: IoT Edge telepítése és kiépítése
           items:
-            - name: Tartalomkulcs-hitelesítés
-              href: how-to-manual-provision-symmetric-key.md
-            - name: X.509-es tanúsítványhitelesítés
-              href: how-to-manual-provision-x509.md
+            - name: A Linux IoT Edge telepítése
+              href: how-to-install-iot-edge.md
+            - name: Linux-IoT Edge futtatása Windows rendszeren
+              href: how-to-install-iot-edge-on-windows.md
         - name: Futtatókörnyezet frissítése
           href: how-to-update-iot-edge.md
         - name: Eszköztanúsítványok kezelése
           href: how-to-manage-device-certificates.md
-        - name: Teszttanúsítványok létrehozása
-          href: how-to-create-test-certificates.md
-        - name: IoT Edge a Kubernetesen
+    - name: Alternatív eszközök forgatókönyvei
+      items:
+        - name: IoT Edge futtatása Windows-tárolókkal
+          href: how-to-install-iot-edge-windows-on-windows.md
+        - name: IoT Edge futtatása a Kubernetes
           href: how-to-install-iot-edge-kubernetes.md
-        - name: IoT Edge virtuális gép ARM-sablonnal
+        - name: IoT Edge virtuális gép üzembe helyezése ARM-sablon használatával
           href: how-to-install-iot-edge-ubuntuvm.md
     - name: Automatikus regisztráció DPS-sel
       items:
@@ -243,6 +247,8 @@
           href: troubleshoot-common-errors.md
 - name: Referencia
   items:
+    - name: Teszttanúsítványok létrehozása
+      href: how-to-create-test-certificates.md
     - name: Windowsos eszközkezelési szkriptek
       href: reference-windows-scripts.md
     - name: Azure CLI

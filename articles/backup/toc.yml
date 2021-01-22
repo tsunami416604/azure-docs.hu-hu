@@ -210,6 +210,8 @@
           items:
             - name: Azure-beli fájlok helyreállítása Windows Serverre
               href: backup-azure-restore-windows-server.md
+            - name: Kötet összes fájljának visszaállítása
+              href: restore-all-files-volume-mars.md
             - name: A Windows Server rendszerállapotának visszaállítása
               href: backup-azure-restore-system-state.md
         - name: Kezelés

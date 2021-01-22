@@ -70,10 +70,6 @@
         - name: Képadatok címkézése
           displayName: 'tag, tagging, images'
           href: tutorial-labeling.md
-    - name: R SDK
-      items:
-        - name: Az első ML-kísérlet létrehozása (R)
-          href: tutorial-1st-r-experiment.md
     - name: parancssori felület
       items:
         - name: Betanítás és üzembe helyezés parancssori felülettel

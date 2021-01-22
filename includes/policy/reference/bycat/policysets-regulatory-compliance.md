@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 3b537ad0100e285fe02f557b92d67e09ae615def
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 89ab040c7b585a8b85cf1b7eba9f96fcd63d10b0
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98046410"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703981"
 ---
 |Név |Leírás |Házirendek |Verzió |
 |---|---|---|---|
@@ -18,7 +18,7 @@ ms.locfileid: "98046410"
 |[Azure Security teljesítményteszt v1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_audit.json) |Ez a kezdeményezés naplózási és virtuálisgép-bővítményekre vonatkozó telepítési szabályzatokat tartalmaz, amelyek az Azure Security benchmark v1 ajánlásainak egy részhalmazára mutatnak. További szabályzatok lesznek hozzáadva a közelgő kiadásokban. További információért látogasson el a következő oldalra: [https://aka.ms/azsecbm](https://aka.ms/azsecbm) . |136 |6.1.1 – előzetes verzió |
 |[Azure Security teljesítményteszt v2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_v2.json) |Ez a kezdeményezés olyan házirendeket tartalmaz, amelyek az Azure Security benchmark v2 ajánlásainak egy részhalmazát tartalmazzák. További szabályzatok is hozzáadhatók a közelgő kiadásokban. További információért látogasson el a következő oldalra: [https://aka.ms/azsecbm](https://aka.ms/azsecbm) . |181 |1.0.0 – előzetes verzió |
 |[Canada Federal PBMM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CanadaFederalPBMM_audit.json) |Ez a kezdeményezés naplózási és virtuálisgép-bővítményekre vonatkozó telepítési szabályzatokat tartalmaz, amelyek a kanadai szövetségi PBMM-vezérlők egy részhalmazára mutatnak. További szabályzatok lesznek hozzáadva a közelgő kiadásokban. További információért látogasson el a következő oldalra: [https://aka.ms/canadafederalpbmm-blueprint](https://aka.ms/canadafederalpbmm-blueprint) . |60 |3.0.0 |
-|[CIS Microsoft Azure Foundations Benchmark 1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0_audit.json) |Ez a kezdeményezés olyan naplózási szabályzatokat tartalmaz, amelyek a CIS Microsoft Azure alapjaira vonatkozó ajánlásokat tartalmaznak. További szabályzatok lesznek hozzáadva a közelgő kiadásokban. További információért látogasson el a következő oldalra: [https://aka.ms/cisazure-blueprint](https://aka.ms/cisazure-blueprint) . |87 |7.1.0 |
+|[CIS Microsoft Azure Foundations Benchmark 1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0.json) |Ez a kezdeményezés olyan házirendeket foglal magába, amelyek a CIS Microsoft Azure alapjaira vonatkozó javaslatokkal foglalkoznak. További szabályzatok lesznek hozzáadva a közelgő kiadásokban. További információért látogasson el a következő oldalra: [https://aka.ms/cisazure110-initiative](https://aka.ms/cisazure110-initiative) . |91 |8.0.0 |
 |[FedRAMP High](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_H_audit.json) |Ez a kezdeményezés naplózási és virtuálisgép-bővítményekre vonatkozó telepítési szabályzatokat tartalmaz, amelyek a FedRAMP H vezérlők egy részhalmazát kezelik. További szabályzatok lesznek hozzáadva a közelgő kiadásokban. További információért látogasson el a következő oldalra: [https://aka.ms/fedramph-blueprint](https://aka.ms/fedramph-blueprint) . |72 |3.0.1 |
 |[FedRAMP Moderate](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_M_audit.json) |Ez a kezdeményezés naplózási és virtuálisgép-bővítményekre vonatkozó telepítési szabályzatokat tartalmaz, amelyek az FedRAMP M vezérlők egy részhalmazát kezelik. További szabályzatok lesznek hozzáadva a közelgő kiadásokban. További információért látogasson el a következő oldalra: [https://aka.ms/fedrampm-blueprint](https://aka.ms/fedrampm-blueprint) . |62 |3.0.0 |
 |[HITRUST/HIPAA](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/HIPAA_HITRUST_audit.json) |Ez a kezdeményezés naplózási és virtuálisgép-bővítményekre vonatkozó telepítési szabályzatokat tartalmaz, amelyek az HITRUST/HIPAA vezérlők egy részhalmazát kezelik. További szabályzatok lesznek hozzáadva a közelgő kiadásokban. További információért látogasson el a következő oldalra: [https://aka.ms/hipaa-blueprint](https://aka.ms/hipaa-blueprint) . |121 |4.1.0 |
