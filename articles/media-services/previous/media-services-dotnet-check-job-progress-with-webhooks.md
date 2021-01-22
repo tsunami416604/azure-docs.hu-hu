@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 24e4bf9940de0f7b0e851bdfdbd2d788757034e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e99d2c2676d05772106296d8b960dd55fd30501c
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89267734"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696472"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Az Azure webhookok használata Media Services feladatok értesítéseinek figyeléséhez a .NET-tel
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 A feladatok futtatásakor gyakran szükség van a feladat előrehaladásának nyomon követésére. Az Azure webhookok vagy az [Azure üzenetsor-tároló](media-services-dotnet-check-job-progress-with-queues.md)használatával figyelheti Media Services feladatok értesítéseit. Ez a cikk bemutatja, hogyan dolgozhat webhookokkal.
 
@@ -64,7 +64,7 @@ Media Services függvények fejlesztésekor hasznos lehet olyan környezeti vál
 
 Az [Alkalmazásbeállítások](media-services-dotnet-how-to-use-azure-functions.md#configure-function-app-settings) szakasz azokat a paramétereket határozza meg, amelyek a jelen cikkben definiált webhookban használatosak. Adja hozzá a következő paramétereket az alkalmazás beállításaihoz is. 
 
-|Name (Név)|Definíció|Példa| 
+|Name|Definíció|Példa| 
 |---|---|---|
 |SigningKey |Egy aláíró kulcs.| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
 |WebHookEndpoint | Egy webhook végpontjának címe. Ha létrehozta a webhook-függvényt, az URL-címet a **Get függvény URL-címe** hivatkozás használatával másolhatja. | https: \/ /juliakofuncapp.azurewebsites.NET/API/Notification_Webhook_Function?Code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g = =.|
@@ -73,10 +73,10 @@ Az [Alkalmazásbeállítások](media-services-dotnet-how-to-use-azure-functions.
 
 Miután telepítette a Function alkalmazást, a **App Services** Azure functions között találhatja meg.
 
-1. Válassza ki a Function alkalmazást, és kattintson az **új függvény**elemre.
+1. Válassza ki a Function alkalmazást, és kattintson az **új függvény** elemre.
 2. Válassza a **C#** kód és **API & webhookok** forgatókönyvet. 
 3. Válassza az **általános webhook – C#** elemet.
-4. Nevezze el a webhookot, és kattintson a **Létrehozás**gombra.
+4. Nevezze el a webhookot, és kattintson a **Létrehozás** gombra.
 
 ### <a name="files"></a>Files
 
@@ -521,7 +521,7 @@ Ebben a szakaszban a webhook-értesítés feladathoz való hozzáadását ismert
             }
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

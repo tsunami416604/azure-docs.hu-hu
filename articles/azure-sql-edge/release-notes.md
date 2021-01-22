@@ -10,16 +10,31 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 11/24/2020
-ms.openlocfilehash: c18cb1cef9b46b4b3cd2f614945f98abf9de7c58
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: e078fb91b3279b6f4321cd51dfb094f82bbe5f14
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704350"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696379"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Az Azure SQL Edge kibocsátási megjegyzései 
 
 Ez a cikk az Azure SQL Edge minden új buildének újdonságait és változásait ismerteti.
+
+## <a name="azure-sql-edge-102"></a>Azure SQL Edge 1.0.2
+
+SQL Engine-Build 15.0.2000.1554
+
+### <a name="fixes"></a>Javítások
+
+- T-SQL streaming  
+   - Az adatfolyam-objektumok tulajdonjogának és engedélyeinek javítása
+   - Naplózási javítás a naplók elforgatásával és a napló előjavításával
+   - Azure Stream Analytics: a naplózás továbbfejlesztése, a hibakódok és hibaüzenetek javítása az adaptereken 
+
+- ONNX
+    - Hibajavítások a párhuzamos lekérdezési forgatókönyvek és a modell-karbantartási hibák esetén
+    - A ONNX futtatókörnyezet frissítése a 1.5.1-re
 
 ## <a name="azure-sql-edge-101"></a>Azure SQL Edge 1.0.1
 

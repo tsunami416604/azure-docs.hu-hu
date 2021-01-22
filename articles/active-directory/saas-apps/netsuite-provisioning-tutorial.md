@@ -10,21 +10,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: a5b995fd273fcfa231e101bc77b11d268be728fb
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 294870d3448886b9cea573a0e79b3ac436941f89
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359135"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696489"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó üzembe helyezéséhez szükséges a NetSuite konfigurálása
 
 Ennek az oktatóanyagnak a célja, hogy megmutassa a NetSuite OneWorld és az Azure AD-ben elvégzendő lépéseket, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat az Azure AD-ből a NetSuite-ba.
 
-> [!NOTE]
-> Ez az integráció jelenleg egyszerű hitelesítés (Felhasználónév és jelszó) használatával történik. A NetSuite egy többtényezős hitelesítési követelményt hozott létre, amely megakadályozza, hogy az ügyfelek ezt az integrációt használják, hacsak nem mentesülnek a követelmény alól. Dolgozunk a NetSuite-nal, hogy az integrációt egy újabb hitelesítési módszerre frissítse, hogy a felhasználók ne használják fel újra a kivételt. Ezt a dokumentumot egy egyszer már elérhető ETA-val frissítjük.
-
-Javasolt művelet: Várjon, amíg a rendszer frissítést szabadít fel az integráció hitelesítési viselkedésére, vagy lépjen kapcsolatba a NetSuite támogatási szolgálatával, és érdeklődjön a multi-Factor Authentication követelmény alóli kivételről.
+> [!WARNING]
+> Ez a kiépítési integráció a Microsoft által a NetSuite-ba való kiépítéséhez használt NetSuite API-k változása miatt nem fog működni a 2020 februárjában. Ennek eredményeképpen a rendszer hamarosan eltávolítja a NetSuite alkalmazás kiépítési funkcióit a Azure Active Directory Enterprise app Galleryben. Az alkalmazás egyszeri bejelentkezéses funkciója érintetlen marad. A Microsoft a NetSuite-nal együttműködve új, modernizált kiépítési integrációt hoz létre, de jelenleg nincs olyan ETA, amelyen ez a művelet befejeződik.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -94,7 +92,7 @@ Elindítja a felhasználók és csoportok szakaszban a NetSuitehoz rendelt felha
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

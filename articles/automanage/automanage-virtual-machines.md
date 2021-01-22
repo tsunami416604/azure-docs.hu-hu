@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: ab056e0685264b03d35ee6b95afad7c6362f9db6
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 0d8ce501b951f3543e1baf54c8a52648b13f6e66
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695792"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695670"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure-beli automata felügyelet virtuális gépeken
 
@@ -43,16 +43,16 @@ Több előfeltételt kell figyelembe vennie, mielőtt az Azure-beli automanage-t
 
 - Csak Windows Server-alapú virtuális gépek
 - A virtuális gépeknek futniuk kell
-- A virtuális gépeknek támogatott régióban kell lenniük
+- A virtuális gépeknek támogatott régión belül kell lenniük (lásd az alábbi bekezdést)
 - A felhasználónak megfelelő engedélyekkel kell rendelkeznie (lásd az alábbi bekezdést)
 - Az automanage nem támogatja a homokozó-előfizetéseket.
 
-A virtuális gépeket tartalmazó erőforráscsoporthoz **közreműködő** szerepkörrel kell rendelkeznie, amely lehetővé teszi, hogy a virtuális gépeken egy meglévő automanage fiók használatával engedélyezze az automanage szolgáltatást. Ha új automanage-fiókkal engedélyezi az autofelügyeletet, az előfizetéséhez a következő engedélyek szükségesek: **tulajdonosi** szerepkör vagy **közreműködő** a **felhasználói hozzáférés rendszergazdai** szerepköreivel együtt. 
+Azt is fontos megjegyezni, hogy az automatikus felügyelet csak a következő régiókban található Windows rendszerű virtuális gépeket támogatja: Nyugat-Európa, USA keleti régiója, USA 2. nyugati régiója, Közép-Kanada, USA nyugati középső régiója, Kelet-Japán.
+
+A virtuális gépeket tartalmazó erőforráscsoporthoz **közreműködő** szerepkörrel kell rendelkeznie, amely lehetővé teszi, hogy a virtuális gépeken egy meglévő automanage fiók használatával engedélyezze az automanage szolgáltatást. Ha új automanage-fiókkal engedélyezi az autofelügyeletet, az előfizetéséhez a következő engedélyek szükségesek: **tulajdonosi** szerepkör vagy **közreműködő** a **felhasználói hozzáférés rendszergazdai** szerepköreivel együtt.
 
 > [!NOTE]
 > Ha egy másik előfizetésben lévő munkaterülethez csatlakozó virtuális gépen szeretné használni az automanage-t, az egyes előfizetésekben a fent ismertetett engedélyekkel kell rendelkeznie.
-
-Azt is fontos megjegyezni, hogy az automatikus felügyelet csak a következő régiókban található Windows rendszerű virtuális gépeket támogatja: Nyugat-Európa, USA keleti régiója, USA 2. nyugati régiója, Közép-Kanada, USA nyugati középső régiója, Kelet-Japán.
 
 ## <a name="participating-services"></a>Résztvevő szolgáltatások
 
@@ -102,12 +102,20 @@ Az alapértelmezett konfigurációs profil beállításait a beállítások lehe
 
 ## <a name="automanage-account"></a>Fiók autokezelése
 
-Az automatikus felügyelet fiók a biztonsági környezet vagy az az identitás, amely alatt az automatizált műveletek történnek. Általában az automatikus felügyelet fiók lehetőség nem szükséges a kiválasztásához, de ha olyan delegálási forgatókönyv volt, amelyben el szeretné osztani az automatizált felügyeletet (például két rendszergazda között), ez a beállítás lehetővé teszi az Azure-identitás meghatározását az egyes rendszergazdák számára.
+Az automatikus felügyelet fiók a biztonsági környezet vagy az az identitás, amely alatt az automatizált műveletek történnek. Általában az automatikus felügyelet fiók lehetőség nem szükséges a kiválasztásához, de ha olyan delegálási forgatókönyv volt, amelyben az erőforrások automatizált felügyeletét szeretné osztani (például két rendszergazda között), ez a beállítás lehetővé teszi az Azure-identitás meghatározását az egyes rendszergazdák számára.
 
 Ha a virtuális gépeken engedélyezi az automanage funkciót, az Azure Portal-élményben az Azure-beli **virtuális gépre vonatkozó ajánlott eljárások** panel speciális legördülő menüje lehetővé teszi az automanage-fiók hozzárendelését vagy manuális létrehozását.
 
+Az automatikusan felügyelt fiók a **közreműködő** és az erőforrás- **házirend közreműködői** szerepkört is megkapja azon előfizetések (ek) számára, amelyek az automatikusan felügyelni kívánt gépet (ka) t tartalmazzák. Ugyanazokat az automatikusan felügyelt fiókokat használhatja a gépeken több előfizetésen keresztül is, ami lehetővé teszi, hogy a fiók **közreműködői** és az **erőforrás-házirend közreműködői** engedélyeit az összes előfizetésre vonatkozóan megadja.
+
+Ha a virtuális gép egy másik előfizetéshez tartozó Log Analytics munkaterülethez csatlakozik, az automatikusan felügyelt fiók a **közreműködő** és az **erőforrás-házirend közreműködőjét** is megadja a másik előfizetésben.
+
+Ha új automanage-fiókkal engedélyezi az autofelügyeletet, az előfizetéséhez a következő engedélyek szükségesek: **tulajdonosi** szerepkör vagy **közreműködő** a **felhasználói hozzáférés rendszergazdai** szerepköreivel együtt.
+
+Ha egy meglévő automanage-fiókkal engedélyezi az autofelügyeletet, rendelkeznie kell a **közreműködő** szerepkörrel a virtuális gépeket tartalmazó erőforráscsoporthoz.
+
 > [!NOTE]
-> Rendelkeznie kell a **közreműködő** szerepkörrel a virtuális gépeket tartalmazó erőforráscsoporthoz, amely lehetővé teszi a virtuális gépeken az automanage-t egy meglévő automanage-fiók használatával. Ha új automanage-fiókkal engedélyezi az autofelügyeletet, az előfizetéséhez a következő engedélyek szükségesek: **tulajdonosi** szerepkör vagy **közreműködő** a **felhasználói hozzáférés rendszergazdai** szerepköreivel együtt.
+> Ha letiltja az ajánlott eljárások autofelügyeletét, az automatikusan kezeli a fiók engedélyeit a társított előfizetésekben. Manuálisan távolítsa el az engedélyeket az előfizetés IAM oldalára kattintva, vagy törölje az automanage-fiókot. Az automanage fiók nem törölhető, ha továbbra is kezeli a gépeket.
 
 
 ## <a name="status-of-vms"></a>Virtuális gépek állapota
@@ -122,6 +130,7 @@ Az **állapot** oszlopban a következő állapotok jelenhetnek meg:
 - *Folyamatban* – a virtuális gép csak engedélyezve van, és konfigurálva van
 - *Konfigurálva* – a virtuális gép konfigurálva van, és nem észlelhető eltolódás
 - *Sikertelen* – a virtuális gép átsodródott, ezért nem sikerült elhárítani
+- *Függőben* – a virtuális gép jelenleg nem fut, és az automanage megkísérli a virtuális gép bevezetését vagy szervizelését, amikor a következő fut
 
 Ha az **állapotot** *nem sikerült* megtekinteni, a virtuális gép által használt erőforráscsoport használatával elháríthatja a telepítést. Lépjen az **erőforráscsoportok** elemre, válassza ki az erőforráscsoportot, kattintson a **központi telepítések** elemre, és tekintse meg a *hibás* állapotot a hiba részleteivel együtt.
 
@@ -145,7 +154,6 @@ A **Letiltás** előtt olvassa el figyelmesen az üzenetküldést az eredményü
 
 
 Az első és legfontosabb, hogy a virtuális gépet minden olyan szolgáltatásból kiállítjuk, amelyet a be-és kiállítottunk. Így a szolgáltatásokban felmerülő költségek továbbra is számlázva maradnak. Szükség esetén ki kell jelentkeznie a táblából. Az automanage viselkedés azonnal leáll. Például a rendszer nem figyeli a virtuális gépet a drifthez.
-
 
 ## <a name="next-steps"></a>További lépések
 

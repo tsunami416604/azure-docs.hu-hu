@@ -14,19 +14,19 @@ ms.topic: conceptual
 ms.date: 11/03/2020
 ms.author: inhenkel
 ms.custom: references_regions
-ms.openlocfilehash: cf84e45ff43643c7e9a983b867194a7920aa1b57
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 458927afc78c46ad365d437a574d0b40b32fc11e
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93351899"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695797"
 ---
 # <a name="media-services-regional-availability"></a>Regionális elérhetőség Media Services
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. Tekintse meg a legújabb, [Media Services v3](../latest/media-services-overview.md)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. Tekintse meg a legújabb, [Media Services v3](../latest/media-services-overview.md)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 A Microsoft Azure Media Services (AMS) lehetővé teszi különböző videó- és hangtartalmak biztonságos feltöltését, tárolását, kódolását és becsomagolását, majd igény szerinti és élő streamként történő továbbítását különböző ügyfelek részére (például tévékészülékekre, számítógépekre és mobileszközökre).
 
@@ -42,7 +42,7 @@ Az [Azure-termékek régiónként](https://azure.microsoft.com/global-infrastruc
 
 A Media Services ügyfelei **standard** szintű streamvégpontot vagy **prémium** szintű streamvégpontot választhatnak.
 
-|Név|status|Régió
+|Name|Állapot|Régió
 |---|---|---|
 |Standard|FE|Mind|
 |Prémium|FE|Mind|
@@ -55,7 +55,7 @@ Minden régióban elérhető, kivéve a következőket: Németország, Dél-Braz
 
 Az AMS két igény szerinti kódolót nyújt: a **Media Encoder Standard** kódolót és a **Media Encoder Premium-munkafolyamatot**. További információkért olvassa el [az Azure igény szerinti médiakódolók áttekintését és összehasonlítását](media-services-encode-asset.md).
 
-|Médiafeldolgozó neve|status|Régiók
+|Médiafeldolgozó neve|Állapot|Régiók
 |---|---|---|
 |Media Encoder Standard|FE|Mind|
 |Media Encoder Premium-munkafolyamat|FE|Kína kivételével|
@@ -67,7 +67,7 @@ A Médiaelemzés beszéd- és vizuális összetevők gyűjteménye, amely egysze
 > [!NOTE]
 > Egyes elemzési adathordozó-processzorok ki lesznek vonva. A nyugdíjazási dátumokért tekintse meg az [örökölt összetevőkkel](legacy-components.md) foglalkozó témakört.
 
-|Médiafeldolgozó neve|status|Régió
+|Médiafeldolgozó neve|Állapot|Régió
 |---|---|---|
 |Azure Media Face Detector|Előnézet|Mind|
 |Azure Media Indexer|FE|Mind|
@@ -80,7 +80,7 @@ A Médiaelemzés beszéd- és vizuális összetevők gyűjteménye, amely egysze
 
 A Microsoft Azure Media Services lehetővé teszi a médiatartalmak védelmét attól a ponttól kezdve, ahogy az elhagyja a számítógépét, egészen a tároláson, a feldolgozáson és a továbbításon át. További információért olvassa el az [AMS-tartalmak védelmét](media-services-content-protection-overview.md) ismertető cikket.
 
-|Titkosítás|status|Régiók|
+|Titkosítás|Állapot|Régiók|
 |---|---|---| 
 |Storage|FE|Mind|
 |AES-128-kulcsok|FE|Mind|
@@ -101,13 +101,13 @@ Minden régióban elérhető.
 
 A Media Services fiók egy fenntartott egységhez van társítva, amely meghatározza, hogy milyen sebességgel fejeződik be a média feldolgozási feladatai. A következő fenntartott egység típusok közül választhat: S1, S2 vagy S3.
 
-|RU típusának neve|status|Régiók
+|RU típusának neve|Állapot|Régiók
 |---|---|---|
 |S1|FE|Mind|
 |S2|FE|Mindenhol, kivéve Dél-Brazíliát és Nyugat-Indiát|
 |S3|FE|Mindenhol, kivéve Nyugat-Indiát|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Migrálás a Media Services v3-ba](../latest/media-services-overview.md)
 

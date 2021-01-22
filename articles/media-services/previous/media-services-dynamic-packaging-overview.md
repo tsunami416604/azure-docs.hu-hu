@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: juliako
-ms.openlocfilehash: 5b570efa54d99380f2beff5441dc40a3a10b902a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c4f099df071bccb8a74f29a98953fe1e0323b12
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269114"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695577"
 ---
 # <a name="dynamic-packaging"></a>Dinamikus csomagolás
 
@@ -29,7 +29,7 @@ ms.locfileid: "89269114"
 > * [2-es verzió](media-services-dynamic-packaging-overview.md)
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 A Microsoft Azure Media Services számos különböző ügyfél-technológiára (például iOS, XBOX, Silverlight, Windows 8) képes a médiafájl-formátumok, a média-adatfolyam-formátumok és a tartalomvédelem formátumának továbbítására. Ezek az ügyfelek különböző protokollokat ismernek, például az iOS megköveteli a HTTP Live Streaming (HLS) v4 formátumot, és a Silverlight és az Xbox megköveteli a Smooth Streaming. Ha egy adaptív sávszélességű (többszörös sávszélességű) MP4 (ISO Base Media 14496-12) fájl vagy egy adaptív sávszélességű Smooth Streaming fájl van beállítva, amelyet az MPEG DASH, a HLS vagy a Smooth Streaming megértéséhez szeretne használni, használja ki Media Services dinamikus csomagolás előnyeit.
 

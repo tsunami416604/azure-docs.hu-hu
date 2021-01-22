@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c6c1dcb0af500c47aabbd8e8193c066bb4a921c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 634b508ca15349152540aca90125575b17943929
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89267768"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696430"
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Media Services feladatok értesítéseinek figyelése az Azure üzenetsor-tárolóval a .NET használatával
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 A kódolási feladatok futtatásakor gyakran szükség van a feladat előrehaladásának nyomon követésére. A Media Services konfigurálható úgy, hogy értesítéseket továbbítson az [Azure üzenetsor-tárolóba](../../storage/queues/storage-dotnet-how-to-use-queues.md). A feladatok előrehaladását úgy figyelheti, hogy beolvassa az értesítéseket a várólista-tárolóból. 
 
@@ -67,7 +67,7 @@ Az ebben a szakaszban szereplő kódrészlet a következő műveleteket végzi e
 > [!NOTE]
 > A feladatok állapotának figyelésére ajánlott módszer az értesítési üzenetek figyelése, ahogy az az alábbi példában is látható:
 >
-> Azt is megteheti, hogy a **IJob. State** tulajdonság használatával a feladatok állapotát is megtekintheti.  A feladatok befejezésére vonatkozó értesítési üzenet a **IJob** állapotának **Befejezettre**állítása előtt is megérkezik. A **IJob. State**  tulajdonság a pontos állapotot mutatja kis késleltetéssel.
+> Azt is megteheti, hogy a **IJob. State** tulajdonság használatával a feladatok állapotát is megtekintheti.  A feladatok befejezésére vonatkozó értesítési üzenet a **IJob** állapotának **Befejezettre** állítása előtt is megérkezik. A **IJob. State**  tulajdonság a pontos állapotot mutatja kis késleltetéssel.
 >
 >
 

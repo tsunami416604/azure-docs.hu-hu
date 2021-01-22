@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: dc08e23b6ef040ba5833ffa97f71d8cd1da3bb8a
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 3f9fc9fd1bacce8733949969b496dc03d6c10901
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019800"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695822"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Élő közvetítés a Azure Media Services v3-val
 
@@ -62,7 +62,7 @@ Az élő [események](/rest/api/media/liveevents) az élő video-hírcsatornák 
 
 ![Azt bemutató ábra, hogy a rendszer beolvassa és dolgozza fel a továbbított élő esemény videóit és hangcsatornáit.](./media/live-streaming/pass-through.svg)
 
-A továbbítás **élő eseményének**használatakor a helyszíni élő kódoló több bitráta-videó stream létrehozásához és az élő eseményhez való hozzájáruláshoz (RTMP vagy darabolt MP4 bemeneti protokoll használatával) küldje el. Az élő esemény ezután a bejövő videó streameket a dinamikus csomagolóba (streaming Endpoint) továbbítja a további átkódolás nélkül. Egy ilyen átmenő élő esemény a hosszan futó élő eseményekre vagy 24x365 lineáris élő közvetítésre van optimalizálva. 
+A továbbítás **élő eseményének** használatakor a helyszíni élő kódoló több bitráta-videó stream létrehozásához és az élő eseményhez való hozzájáruláshoz (RTMP vagy darabolt MP4 bemeneti protokoll használatával) küldje el. Az élő esemény ezután a bejövő videó streameket a dinamikus csomagolóba (streaming Endpoint) továbbítja a további átkódolás nélkül. Egy ilyen átmenő élő esemény a hosszan futó élő eseményekre vagy 24x365 lineáris élő közvetítésre van optimalizálva. 
 
 ### <a name="live-encoding"></a>Live Encoding  
 
@@ -131,8 +131,8 @@ Tekintse meg a [Gyakori kérdések](frequently-asked-questions.md#live-streaming
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Élő közvetítés – gyors üzembe helyezés](live-events-wirecast-quickstart.md)
 * [Élő közvetítés – oktatóanyag](stream-live-tutorial-with-api.md)
-* [Áttelepítési útmutató Media Services v2-ről v3-re való áthelyezéshez](migrate-from-v2-to-v3.md)
+* [Áttelepítési útmutató Media Services v2-ről v3-re való áthelyezéshez](migrate-v-2-v-3-migration-introduction.md)

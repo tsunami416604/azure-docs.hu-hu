@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 99101f31ec955c822c784180dd8b04bfb8e5f73c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6f4cfcc07496179908c8349f4282a7633379cd3
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291602"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695821"
 ---
 # <a name="assets-in-azure-media-services-v3"></a>Eszközök a Azure Media Services v3-ban
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-A Azure Media Servicesban az [Asset](/rest/api/media/assets) adategység alapvető fogalom. Itt adhatja meg az adathordozót (például feltöltéssel vagy élő betöltéssel), kimeneti adathordozóval (a feladatok kimenetéről), és közzéteheti az adathordozót (adatfolyamként). 
+A Azure Media Servicesban az [](/rest/api/media/assets) adategység alapvető fogalom. Itt adhatja meg az adathordozót (például feltöltéssel vagy élő betöltéssel), kimeneti adathordozóval (a feladatok kimenetéről), és közzéteheti az adathordozót (adatfolyamként). 
 
 Az eszköz az [Azure Storage-fiókban](storage-account-concept.md) található blob-tárolóra van leképezve, és az adategységben található fájlok a tárolóban blokk blobként tárolódnak. Az eszközök tartalmazzák az Azure Storage-ban tárolt digitális fájlokra vonatkozó információkat (beleértve a videó, a hang, a képek, a miniatűr gyűjtemények, a szöveges számok és a lezárt feliratok fájljait).
 
@@ -42,10 +42,10 @@ Az eszköz nevének egyedinek kell lennie. A (z) Media Services v3-erőforrások
 
 Az eszközön belüli fájlok/Blobok nevének a [blob neve](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) és az [NTFS-név követelményeit](/windows/win32/fileio/naming-a-file)is követnie kell. Ennek a követelménynek az oka, hogy a fájlok a blob Storage-ból egy helyi NTFS-lemezre másolhatók feldolgozásra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Media Services áttekintése](media-services-overview.md)
 
 ## <a name="see-also"></a>Lásd még
 
-[Media Services v2 és v3 közötti különbségek](migrate-from-v2-to-v3.md)
+[Media Services v2 és v3 közötti különbségek](migrate-v-2-v-3-migration-introduction.md)

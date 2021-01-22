@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/09/2020
+ms.date: 01/21/2021
 ms.author: b-juche
-ms.openlocfilehash: 7c78d5fa89d6d4f3c73bdd1fe9b6d2fdae97c011
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: e51297e8fe5c3dccf43318a066ac5da4a7d24cb2
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937474"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696091"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Azure NetApp Files kötetek régiók közötti replikációja
 
@@ -37,6 +37,7 @@ A Azure NetApp Files kötet replikációja jelenleg a következő rögzített r�
 * USA déli középső régiója és USA középső régiója 
 * USA déli középső régiója és USA keleti régiója
 * USA déli középső régiója és USA 2. keleti régiója 
+* USA keleti régiója és USA 2. keleti régiója  
 * USA 2. keleti régiója és az USA középső régiója 
 * Kelet-Ausztrália és Délkelet-Ausztrália
 * Közép-Kanada és Kelet-Kanada
@@ -110,7 +111,7 @@ Ezért a 2. hónap végéig a teljes régiók közötti replikálási díj a kö
 
 A 2. hónapra vonatkozó normál Azure NetApp Files tárolási kapacitás díja a cél kötetre vonatkozik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A régiók közötti replikáció használatára vonatkozó követelmények és szempontok](cross-region-replication-requirements-considerations.md)
 * [Kötetreplikáció létrehozása](cross-region-replication-create-peering.md)
 * [Replikációs kapcsolat állapotának megjelenítése](cross-region-replication-display-health-status.md)

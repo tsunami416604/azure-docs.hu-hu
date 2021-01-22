@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: ddad462658465c07624f078e20c224750c5180c9
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: fe35cd39af9b2fe7d547b463b6432b0b54344794
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019477"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696244"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Ismerkedés a tartalom igény szerinti kézbesítésével a REST használatával
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 Ez a rövid útmutató végigvezeti egy igény szerinti video-továbbítási alkalmazás megvalósításának lépésein Azure Media Services (AMS) REST API-k használatával.
 
@@ -435,7 +435,7 @@ Az eszközök Media Servicesba való betöltését követően az adathordozók k
 
 Ahogy korábban is említettük, Azure Media Services az egyik leggyakoribb forgatókönyv esetén az adaptív sávszélességű adatfolyamot biztosít az ügyfeleknek. A Media Services az adaptív sávszélességű MP4-fájlok készletét az alábbi formátumokba tudja dinamikusan csomagolni: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH.
 
-A következő szakasz bemutatja, hogyan hozhat létre egy olyan feladatot, amely egy kódolási feladatot tartalmaz. A feladat azt adja meg, hogy a köztes fájlt átkódolja adaptív sávszélességű MP4 **Media Encoder standard**használatával. A szakasz azt is bemutatja, hogyan lehet figyelni a feladatok feldolgozási folyamatát. A feladatok elvégzése után létrehozhatók olyan lokátorok, amelyek szükségesek az eszközeihez való hozzáféréshez.
+A következő szakasz bemutatja, hogyan hozhat létre egy olyan feladatot, amely egy kódolási feladatot tartalmaz. A feladat azt adja meg, hogy a köztes fájlt átkódolja adaptív sávszélességű MP4 **Media Encoder standard** használatával. A szakasz azt is bemutatja, hogyan lehet figyelni a feladatok feldolgozási folyamatát. A feladatok elvégzése után létrehozhatók olyan lokátorok, amelyek szükségesek az eszközeihez való hozzáféréshez.
 
 ### <a name="get-a-media-processor"></a>Adathordozó-feldolgozó letöltése
 Media Services a Media Processor egy olyan összetevő, amely egy adott feldolgozási feladatot kezel, például a kódolást, a konvertálást, a titkosítást vagy a médiatartalom visszafejtését. Az oktatóanyagban látható kódolási feladathoz a Media Encoder Standard fogjuk használni.

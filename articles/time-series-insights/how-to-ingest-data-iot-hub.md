@@ -9,14 +9,14 @@ manager: diviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/02/2020
+ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: 09ee98bf8bbe0067f9c79ce4767f3cf68b83fb43
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: bb13df0f87cd10719f33afe4ec080c4c785df720
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016802"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695560"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-azure-time-series-insight-environment"></a>IoT hub-eseményforrás hozzáadása az Azure Time Series Insight-környezethez
 
@@ -101,11 +101,11 @@ Az alkalmazások fogyasztói csoportokat használnak az adatok Azure-IoT Hubból
 
 1. Adja hozzá az IoT hub-hoz hozzáadott dedikált Azure Time Series Insight fogyasztói csoport nevét.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 1. Az eseményforrás létrehozása után az Azure Time Series Insight automatikusan elindítja a streaming-adatátvitelt a környezetbe.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Adathozzáférési szabályzatok definiálása](./concepts-access-policies.md) az adatvédelme érdekében.
 

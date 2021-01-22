@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/05/2020
+ms.date: 01/21/2020
 ms.author: b-juche
-ms.openlocfilehash: 913d61c506505d18fff416291e7f3b718f1d92f3
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: f680b1ec76200cb4d3bfc90cd83a2c134f379245
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913498"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696125"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Gyakori kérdések a Azure NetApp Files
 
@@ -166,13 +166,13 @@ Az AD-kapcsolatok egy NetApp-fiókkal vannak konfigurálva; az AD-kapcsolatok cs
 
 ### <a name="does-azure-netapp-files-support-azure-active-directory"></a>Azure NetApp Files támogatja Azure Active Directory? 
 
-A [Azure Active Directory (ad) tartományi szolgáltatások](../active-directory-domain-services/overview.md) és a [Active Directory tartományi szolgáltatások (AD DS)](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) egyaránt támogatottak. A meglévő Active Directory tartományvezérlőket Azure NetApp Files használatával használhatja. A tartományvezérlők az Azure-ban virtuális gépekként, illetve ExpressRoute vagy S2S VPN-en keresztül is megtalálhatók a helyszínen. A Azure NetApp Files jelenleg nem támogatja az AD Joint [Azure Active Directory](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/) .
+A [Azure Active Directory (ad) tartományi szolgáltatások](../active-directory-domain-services/overview.md) és a [Active Directory Domain Services (AD DS)](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) egyaránt támogatottak. A meglévő Active Directory tartományvezérlőket Azure NetApp Files használatával használhatja. A tartományvezérlők az Azure-ban virtuális gépekként, illetve ExpressRoute vagy S2S VPN-en keresztül is megtalálhatók a helyszínen. A Azure NetApp Files jelenleg nem támogatja az AD Joint [Azure Active Directory](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/) .
 
 Ha a Azure NetApp Filest használja a Azure Active Directory Domain Services, a szervezeti egység elérési útja az `OU=AADDC Computers` Active Directory beállítása a NetApp-fiókhoz.
 
 ### <a name="what-versions-of-windows-server-active-directory-are-supported"></a>A Windows Server Active Directory mely verziói támogatottak?
 
-Azure NetApp Files támogatja a Active Directory tartományi szolgáltatások Windows Server 2008r2SP1-2019-es verzióját.
+Azure NetApp Files támogatja a Active Directory Domain Services Windows Server 2008r2SP1-2019-es verzióját.
 
 ### <a name="why-does-the-available-space-on-my-smb-client-not-show-the-provisioned-size"></a>Miért nem jelenik meg a kiépített méret az SMB-ügyfélen elérhető szabad terület?
 
@@ -259,7 +259,17 @@ Nem. A Azure Data Box jelenleg nem támogatja a Azure NetApp Files.
 
 Nem. Az Azure import/export szolgáltatás jelenleg nem támogatja a Azure NetApp Files.
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="product-faqs"></a>Termékkel kapcsolatos gyakori kérdések
+
+### <a name="can-i-use-azure-netapp-files-nfs-or-smb-volumes-with-azure-vmware-solution-avs"></a>Használhatok Azure NetApp Files NFS-vagy SMB-köteteket az Azure VMware-megoldással (AVS)?
+
+Az Azure NetApp Files NFS-kötetek csatlakoztathatók AVS Windows-alapú virtuális gépeken vagy Linux rendszerű virtuális gépeken. Azure NetApp Files SMB-megosztásokat az AVS Windows rendszerű virtuális gépeken is leképezheti. További részletekért lásd: [Azure NetApp Files Azure VMware-megoldással]( ../azure-vmware/net-app-files-with-azure-vmware-solution.md).  
+
+### <a name="what-regions-are-supported-for-using-azure-netapp-files-nfs-or-smb-volumes-with-azure-vmware-solution-avs"></a>Mely régiók támogatottak Azure NetApp Files NFS-vagy SMB-kötetek Azure VMware-megoldással (AVS) való használatához?
+
+Az Azure NetApp Files NFS-vagy SMB-kötetek használata az AVS használatával támogatott a következő régiókban – USA keleti régiója, USA nyugati régiója, Nyugat-Európa és Kelet-Ausztrália.
+
+## <a name="next-steps"></a>További lépések  
 
 - [Microsoft Azure ExpressRoute GYIK](../expressroute/expressroute-faqs.md)
 - [Microsoft Azure Virtual Network GYIK](../virtual-network/virtual-networks-faq.md)

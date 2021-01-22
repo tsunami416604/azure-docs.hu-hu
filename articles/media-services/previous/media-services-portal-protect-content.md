@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 061d66f08e79f935c778eb84dd47f71cab1a62d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ddd31f96ca88a02fa667f8809a00e2a4e3ecc50
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266629"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695424"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>A tartalomvédelem házirendjeinek konfigurálása a Azure Portal használatával
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).   > nem kerül be új funkciók vagy funkciók a Media Services v2-be. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).   > nem kerül be új funkciók vagy funkciók a Media Services v2-be. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-v-2-v-3-migration-introduction.md)
 >
 
  A Azure Media Services használatával biztonságossá teheti az adathordozót, amikor a számítógépét tárolás, feldolgozás és kézbesítés útján elhagyja. A Media Services használatával a tartalmakat a Advanced Encryption Standard (AES) használatával dinamikusan titkosíthatja a 128 bites titkosítási kulcsokkal. Ezt a közös titkosítással (CENC) is használhatja a PlayReady és/vagy a Widevine Digital Rights Management (DRM) és az Apple FairPlay használatával. 
@@ -40,7 +40,7 @@ Ha a portált a globális tartalomvédelem konfigurálására szeretné használ
 
 1. A [portálon](https://portal.azure.com/)válassza ki a Media Services fiókját.
 
-1. Válassza a **Beállítások**  >  **tartalomvédelem**lehetőséget.
+1. Válassza a **Beállítások**  >  **tartalomvédelem** lehetőséget.
 
     ![Tartalomvédelem](./media/media-services-portal-content-protection/media-services-content-protection001.png)
 
@@ -76,7 +76,7 @@ Ha állandóként konfigurálja a licencet, a rendszer az ügyfél állandó tá
 A Widevine-licenc sablonja beállítja a Widevine-licenceken engedélyezett funkciókat.
 
 ### <a name="basic"></a>Alapszintű
-Ha az **alapszintű**lehetőséget választja, a sablon minden alapértelmezett értékkel jön létre.
+Ha az **alapszintű** lehetőséget választja, a sablon minden alapértelmezett értékkel jön létre.
 
 ### <a name="advanced"></a>Felsőfokú
 A Widevine Rights sablonnal kapcsolatos további információkért tekintse meg a [Widevine-sablon áttekintése](media-services-widevine-license-template-overview.md)című témakört.
@@ -84,7 +84,7 @@ A Widevine Rights sablonnal kapcsolatos további információkért tekintse meg 
 ![Speciális tartalomvédelem](./media/media-services-portal-content-protection/media-services-content-protection005.png)
 
 ## <a name="fairplay-configuration"></a>FairPlay-konfiguráció
-A FairPlay titkosításának engedélyezéséhez válassza a **Fairplay konfiguráció**lehetőséget. Ezután válassza ki az alkalmazás **tanúsítványát** , és adja meg az **alkalmazás titkos kulcsát**. A FairPlay konfigurálásával és követelményeivel kapcsolatos további információkért lásd: [a HLS-tartalmak megvédése az Apple Fairplay vagy a Microsoft PlayReady](media-services-protect-hls-with-FairPlay.md).
+A FairPlay titkosításának engedélyezéséhez válassza a **Fairplay konfiguráció** lehetőséget. Ezután válassza ki az alkalmazás **tanúsítványát** , és adja meg az **alkalmazás titkos kulcsát**. A FairPlay konfigurálásával és követelményeivel kapcsolatos további információkért lásd: [a HLS-tartalmak megvédése az Apple Fairplay vagy a Microsoft PlayReady](media-services-protect-hls-with-FairPlay.md).
 
 ![FairPlay-konfiguráció](./media/media-services-portal-content-protection/media-services-content-protection006.png)
 
@@ -92,7 +92,7 @@ A FairPlay titkosításának engedélyezéséhez válassza a **Fairplay konfigur
 A dinamikus titkosítás kihasználásához kódolja a forrásfájlt egy adaptív sávszélességű MP4-fájlba.
 
 ### <a name="select-an-asset-that-you-want-to-encrypt"></a>Válasszon ki egy titkosítani kívánt eszközt
-Az összes eszköz megjelenítéséhez válassza a **Beállítások**  >  **eszközök**elemet.
+Az összes eszköz megjelenítéséhez válassza a **Beállítások**  >  **eszközök** elemet.
 
 ![Eszközök lehetőség](./media/media-services-portal-content-protection/media-services-content-protection007.png)
 
@@ -105,7 +105,7 @@ Az AES Clear Key encryption minden folyamatos átviteli protokollon engedélyezv
 ![Titkosítási konfiguráció](./media/media-services-portal-content-protection/media-services-content-protection008.png)
 
 #### <a name="drm"></a>DRM
-1. A **DRM**kiválasztása után különböző tartalomvédelem-házirendeket láthat (amelyeket ezen a ponton kell konfigurálni) és a folyamatos átviteli protokollok készletét:
+1. A **DRM** kiválasztása után különböző tartalomvédelem-házirendeket láthat (amelyeket ezen a ponton kell konfigurálni) és a folyamatos átviteli protokollok készletét:
 
     a. Az **PlayReady és WIDEVINE MPEG-Dash** dinamikusan titkosítja az MPEG-Dash streamet a PlayReady és a Widevine DRMs.
 
@@ -117,11 +117,11 @@ Az AES Clear Key encryption minden folyamatos átviteli protokollon engedélyezv
     
     e. A **Fairplay csak a HLS** dinamikusan titkosítja a HLS-streamet a Fairplay.
 
-1. A FairPlay titkosításának engedélyezéséhez a **Content Protection globális beállítások** panelen válassza a **Fairplay konfiguráció**elemet. Ezután válassza ki az alkalmazás **tanúsítványát**, és adja meg az **alkalmazás titkos kulcsát**.
+1. A FairPlay titkosításának engedélyezéséhez a **Content Protection globális beállítások** panelen válassza a **Fairplay konfiguráció** elemet. Ezután válassza ki az alkalmazás **tanúsítványát**, és adja meg az **alkalmazás titkos kulcsát**.
 
     ![Titkosítás típusa](./media/media-services-portal-content-protection/media-services-content-protection009.png)
 
-1. Miután elvégezte a titkosítás kijelölését, kattintson az **alkalmaz**gombra.
+1. Miután elvégezte a titkosítás kijelölését, kattintson az **alkalmaz** gombra.
 
 >[!NOTE] 
 >Ha AES-titkosítású HLS szeretne lejátszani a Safariban, tekintse meg a következő blogbejegyzést a [Safari titkosított HLS](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
@@ -130,7 +130,7 @@ Az AES Clear Key encryption minden folyamatos átviteli protokollon engedélyezv
 
 * A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése

@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 2a251ef426d41413cf81f46ca05b11640f01e87a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 180965942285e99300c8aa054e638f2f0a2c0580
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333783"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695958"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services fogalmak
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 Ez a témakör áttekintést nyújt a legfontosabb Media Services fogalmakról.
 
@@ -85,7 +85,7 @@ A Media Services kétféle lokátort támogat: a OnDemandOrigin-lokátorokat (p�
 >[!NOTE]
 >OnDemandOrigin-lokátor létrehozásakor a List engedély (AccessPermissions. list) nem használható. 
 
-### <a name="storage-account"></a>Tárfiók
+### <a name="storage-account"></a>A(z)
 Az Azure Storage-hoz való összes hozzáférés egy Storage-fiókon keresztül történik. A Media Service-fiókok egy vagy több Storage-fiókkal is társíthatók. Egy fiók korlátlan számú tárolót tartalmazhat, feltéve, hogy a teljes méretük 500TB alatt van.  A Media Services SDK-szintű eszközöket biztosít, amelyekkel több Storage-fiókot kezelhet, és terheléselosztást végez az adategységek elosztása során, a metrikák és a véletlenszerű eloszlás alapján. További információ: az [Azure Storage](/previous-versions/azure/dn767951(v=azure.100))használata. 
 
 ## <a name="jobs-and-tasks"></a>Feladatok és tevékenységek
@@ -155,7 +155,7 @@ A tartalmi kulcs engedélyezési házirendje rendelkezhet egy vagy több engedé
 
 A jogkivonat korlátozott házirendjének konfigurálásakor meg kell adnia az elsődleges ellenőrző kulcsot, a kiállítót és a célközönség paramétereit. Az elsődleges ellenőrző kulcs tartalmazza azt a kulcsot, amelyhez a jogkivonat be lett jelentkezve, a kibocsátó pedig a tokent kiállító biztonságos jogkivonat-szolgáltatás. A célközönség (más néven hatókör) leírja a jogkivonat célját vagy azt az erőforrást, amelyet a jogkivonat engedélyez a hozzáféréshez. A Media Services Key Delivery Service ellenőrzi, hogy a jogkivonat értékei egyeznek-e a sablon értékeivel.
 
-További információkért tekintse át a következő cikkeket:
+További információért tekintse át a következő cikkeket:
 - [Tartalom – áttekintés](media-services-content-protection-overview.md)
 - [Védelem AES-128](media-services-protect-with-aes128.md)
 - [Védelem a PlayReady/Widevine](media-services-protect-with-playready-widevine.md)
@@ -191,7 +191,7 @@ A progresszív letöltés lehetővé teszi, hogy a teljes fájl letöltése elő
 >[!NOTE]
 >A titkosított eszközöket vissza kell fejteni, ha szeretné, hogy azok elérhetők legyenek a progresszív letöltéshez.
 
-A progresszív letöltési URL-címekkel rendelkező felhasználók számára először létre kell hoznia egy OnDemandOrigin-lokátort. A lokátor létrehozásakor megadja az objektum alap elérési útját. Ezután hozzá kell fűzni az MP4-fájl nevét. Példa:
+A progresszív letöltési URL-címekkel rendelkező felhasználók számára először létre kell hoznia egy OnDemandOrigin-lokátort. A lokátor létrehozásakor megadja az objektum alap elérési útját. Ezután hozzá kell fűzni az MP4-fájl nevét. Például:
 
 `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4`
 

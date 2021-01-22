@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 84e94a431efdc84ff6896de416bd222120784899
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f48a01bb81829ff2bc10b4db1ed543382f992b58
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89264283"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696227"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Media Services Operations REST API áttekintése
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 A **Media Services Operations Rest** API-val feladatok, eszközök, élő csatornák és más erőforrások létrehozására van szükség egy Media Services-fiókban. További információ: [Media Services operations REST API Reference](/rest/api/media/operations/azure-media-services-rest-api-reference).
 
@@ -66,8 +66,8 @@ A Media Servicesban megjelenő minden egyes híváshoz meg kell adni a szükség
 | --- | --- | --- |
 | Engedélyezés |Tulajdonos |A tulajdonos az egyetlen elfogadott engedélyezési mechanizmus. Az értéknek tartalmaznia kell a Azure Active Directory által biztosított hozzáférési jogkivonatot is. |
 | x-MS-Version |Tizedesjegy |2,17 (vagy a legújabb verzió)|
-| DataServiceVersion |Tizedesjegy |3,0 |
-| MaxDataServiceVersion |Tizedesjegy |3,0 |
+| DataServiceVersion |Tizedesjegy |3.0 |
+| MaxDataServiceVersion |Tizedesjegy |3.0 |
 
 > [!NOTE]
 > Mivel Media Services a OData használatával teszi elérhetővé a REST API-kat, a DataServiceVersion és a MaxDataServiceVersion fejléceket minden kérelembe bele kell foglalni; Ha azonban nem, akkor a jelenleg Media Services feltételezi, hogy a használatban lévő DataServiceVersion értéke 3,0.
@@ -78,7 +78,7 @@ A következő a választható fejlécek halmaza:
 
 | Fejléc | Típus | Érték |
 | --- | --- | --- |
-| Dátum |RFC 1123 dátum |A kérés időbélyege |
+| Date |RFC 1123 dátum |A kérés időbélyege |
 | Elfogadás |Tartalomtípus |A kért tartalomtípus a válaszhoz, például a következő:<p> -Application/JSON; OData = részletes<p> -Application/Atom + XML<p> A válaszok eltérő tartalomtípussal rendelkezhetnek, például egy blob beolvasásával, ahol a sikeres válasz a blob streamet tartalmazza hasznos adattartalomként. |
 | Accept-Encoding |Gzip, deflate |A GZIP és a deflate kódolás, ha alkalmazható. Megjegyzés: a nagyméretű erőforrások esetében Media Services figyelmen kívül hagyhatja ezt a fejlécet, és nem tömörített adatmennyiséget adhat vissza. |
 | Accept-Language |"en", "es" stb. |Megadja a válasz előnyben részesített nyelvét. |
@@ -94,7 +94,7 @@ A következőkben egy olyan fejléc található, amely a kért erőforrástól �
 | --- | --- | --- |
 | kérelem azonosítója |Sztring |Az aktuális művelet egyedi azonosítója, a szolgáltatás létrehozva. |
 | ügyfél-kérelem azonosítója |Sztring |A hívó által az eredeti kérelemben megadott azonosító, ha van ilyen. |
-| Dátum |RFC 1123 dátum |A kérelem feldolgozásának dátuma és időpontja. |
+| Date |RFC 1123 dátum |A kérelem feldolgozásának dátuma és időpontja. |
 | Content-Type |Változó |A válasz törzsének tartalomtípusa |
 | Content-Encoding |Változó |A gzip vagy a deflate, ha szükséges. |
 
@@ -124,7 +124,7 @@ A Media Services fiókjának az Azure Portalról történő megszerzésével kap
 
 Az Azure AD-hitelesítéssel REST APIhoz kapcsolódó kódok írásához tekintse meg a következő cikket: az [Azure ad-hitelesítés használata a Azure Media Services API Rest-tel való eléréséhez](media-services-rest-connect-with-aad.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az Azure AD-hitelesítés Media Services REST API használatával történő használatáról további információt [Az Azure ad-hitelesítés használata a Azure Media Services API Rest-tel való eléréséhez](media-services-rest-connect-with-aad.md)című témakörben talál.
 
 ## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai

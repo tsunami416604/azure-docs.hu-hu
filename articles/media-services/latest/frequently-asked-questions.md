@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 50a0fe0fa5dece41ac9e343d5a8939e8d9dc634e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 9e48d14419e2cd24251f1b00a09fd0289c50c55f
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426891"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693807"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 – gyakori kérdések
 
@@ -24,13 +24,13 @@ ms.locfileid: "92426891"
 
 Ez a cikk a Azure Media Services v3-vel kapcsolatos gyakori kérdésekre ad választ.
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ### <a name="what-are-the-azure-portal-limitations-for-media-services-v3"></a>Melyek a Media Services v3 Azure Portal korlátozásai?
 
 A [Azure Portal](https://portal.azure.com/) a v3 élő események kezelésére, a v3-eszközök és-feladatok megtekintésére, az API-k elérésére és a tartalmak titkosítására vonatkozó információk beszerzésére használható. <br/>Minden egyéb felügyeleti feladathoz (például átalakítások és feladatok kezelése vagy v3 tartalom elemzése) használja a [REST API](/rest/api/media/accountfilters), a [CLI](/cli/azure/ams)vagy az egyik támogatott [SDK](media-services-apis-overview.md#sdks)-t.
 
-Ha a videó korábban fel lett töltve a Media Services-fiókba Media Services V3 API-val, vagy a tartalom egy élő kimenet alapján lett létrehozva, akkor nem jelenik meg a **kódolás**, az **elemzés**vagy a **titkosítás** gomb a Azure Portal. Ezeket a feladatokat a Media Services V3 API-k használatával hajthatja végre.  
+Ha a videó korábban fel lett töltve a Media Services-fiókba Media Services V3 API-val, vagy a tartalom egy élő kimenet alapján lett létrehozva, akkor nem jelenik meg a **kódolás**, az **elemzés** vagy a **titkosítás** gomb a Azure Portal. Ezeket a feladatokat a Media Services V3 API-k használatával hajthatja végre.  
 
 ### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Milyen Azure-szerepkörök végezhetnek műveleteket Azure Media Services erőforrásokon? 
 
@@ -60,7 +60,7 @@ Ha oldalszámozást használ, mindig a következő hivatkozásra kell használni
 
 ### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Milyen funkciók még nem érhetők el a Azure Media Services v3 verzióban?
 
-Részletekért lásd: a [szolgáltatás hiányosságainak a v2 API-k tekintetében](media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis).
+Részletekért tekintse meg [az áttelepítési útmutatót](migrate-v-2-v-3-migration-introduction.md).
 
 ### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>Milyen folyamattal kell áthelyezni Media Services fiókot az előfizetések között?  
 
@@ -169,7 +169,7 @@ Az összes többi felügyeleti feladathoz (például [átalakításokhoz, felada
 
 A `AssetFile` koncepció el lett távolítva a Media Services API-ból, hogy elkülönítse Media Services a Storage SDK-függőségtől. Az Azure Storage már nem Media Services, a Storage SDK-ban található információkat is megőrzi. 
 
-További információ: [migrálás Media Services v3](media-services-v2-vs-v3.md)-ra.
+További információ: [migrálás Media Services v3](migrate-v-2-v-3-migration-introduction.md)-ra.
 
 ### <a name="where-did-client-side-storage-encryption-go"></a>Hol található az ügyféloldali tároló-titkosítás?
 

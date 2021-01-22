@@ -7,24 +7,24 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/15/2020
+ms.date: 01/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: ffb5a78c13413a46565a9c57c87dc8273742fd24
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 49364681f0c5b4b6cc4d5f20778edb61e9f6f5b3
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563449"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695780"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Biztonság az Azure Cognitive Searchban – áttekintés
 
-Ez a cikk az Azure Cognitive Search legfontosabb biztonsági funkcióit ismerteti, amelyek a tartalom és a műveletek védelmére használhatók.
+Ez a cikk az Azure Cognitive Search biztonsági funkcióit ismerteti, amelyek védik a tartalmat és a műveleteket.
 
-+ A tárolási rétegben a titkosítást a rendszer a lemezre mentett összes szolgáltatás által felügyelt tartalomhoz tartalmazza, beleértve az indexeket, a szinonimákat, valamint az indexelő, az adatforrások és a szakértelmével definícióit. Az Azure Cognitive Search az indexelt tartalom kiegészítő titkosításához is támogatja az ügyfél által felügyelt kulcsok (CMK) hozzáadását. A 1 2020 augusztusában létrehozott szolgáltatások esetében a CMK titkosítás az ideiglenes lemezeken lévő adatokat az indexelt tartalom teljes dupla titkosítására terjeszti.
++ A tárolási rétegben az adattitkosítás a lemezre mentett összes szolgáltatás által felügyelt tartalomra épül, beleértve az indexeket, a szinonimákat, valamint az indexelő, az adatforrások és a szakértelmével definícióit. Az indexelt tartalom kiegészítő titkosításához ügyfelek által felügyelt kulcsokat (CMK) is hozzáadhat. A 1 2020 augusztusában létrehozott szolgáltatások esetében a CMK titkosítás az ideiglenes lemezeken lévő adatokat az indexelt tartalom teljes "kettős titkosítása" érdekében terjeszti ki.
 
-+ A bejövő biztonság a keresési szolgáltatási végpontot a biztonsági szintek növekvő szintjén védi: a kérés API-kulcsaitól, a tűzfal bejövő szabályaitól a szolgáltatás teljes körű védelmét biztosító privát végpontok számára a nyilvános internetről.
++ A bejövő biztonság a keresési szolgáltatás végpontjának védelmi szintjein a biztonsági szintek növelését jelenti: a kérés API-kulcsaitól, a tűzfal bejövő szabályaitól a szolgáltatás teljes körű védelmét biztosító privát végpontok számára a nyilvános internetről.
 
-+ A kimenő biztonság a külső forrásokból származó tartalmat lekérő indexelő eszközökre vonatkozik. A kimenő kérelmek esetében hozzon létre egy felügyelt identitást, hogy a megbízható szolgáltatásban keressen az Azure Storage, az Azure SQL, a Cosmos DB vagy más Azure-adatforrások adataihoz való hozzáférés során. A felügyelt identitás a hitelesítő adatok vagy a hozzáférési kulcsok helyettesítése a kapcsolaton. A kimenő biztonságot ebben a cikkben nem tárgyaljuk. További információ erről a képességről: [Csatlakozás adatforráshoz felügyelt identitás használatával](search-howto-managed-identities-data-sources.md).
++ A kimenő biztonság a külső forrásokból származó tartalmat lekérő indexelő adatokra vonatkozik. A kimenő kérelmek esetében hozzon létre egy felügyelt identitást, hogy a megbízható szolgáltatásban keressen az Azure Storage, az Azure SQL, a Cosmos DB vagy más Azure-adatforrások adataihoz való hozzáférés során. A felügyelt identitás a hitelesítő adatok vagy a hozzáférési kulcsok helyettesítése a kapcsolaton. A kimenő biztonságot ebben a cikkben nem tárgyaljuk. További információ erről a képességről: [Csatlakozás adatforráshoz felügyelt identitás használatával](search-howto-managed-identities-data-sources.md).
 
 Tekintse meg ezt a gyors iramú videót a biztonsági architektúra és az egyes szolgáltatások kategóriáinak áttekintéséhez.
 
@@ -40,7 +40,7 @@ Az Azure Cognitive Search a titkosítás a kapcsolatokkal és az átvitelekkel k
 
 A Search szolgáltatás által belsőleg kezelt [adattitkosítási modelleket](../security/fundamentals/encryption-models.md)az alábbi táblázat ismerteti. Bizonyos funkciók, például a Tudásbázis, a növekményes bővítés és az indexelő alapú indexelés, a más Azure-szolgáltatások adatstruktúráinak olvasására vagy írására. Ezek a szolgáltatások az Azure Cognitive Searchtól eltérő titkosítási támogatással rendelkeznek.
 
-| Modell | Kulcsok&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Követelmények&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Korlátozások | A következőre érvényes: |
+| Modellezés | Kulcsok&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Követelmények&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Korlátozások | A következőre érvényes: |
 |------------------|-------|-------------|--------------|------------|
 | kiszolgálóoldali titkosítás | Microsoft által felügyelt kulcsok | Nincs (beépített) | Nincs, az összes régióban elérhető minden szinten, a január 24 2018. után létrehozott tartalomhoz. | Tartalom (indexek és szinonima térképek) és definíciók (indexelő, adatforrások, szakértelmével) |
 | kiszolgálóoldali titkosítás | ügyfél által felügyelt kulcsok | Azure Key Vault | Minden régióban elérhető számlázandó szinten, a január 2019. után létrehozott tartalomhoz. | Az adatlemezeken található tartalom (indexek és szinonimák) |
