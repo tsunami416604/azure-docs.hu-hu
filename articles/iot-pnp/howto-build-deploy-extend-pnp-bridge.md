@@ -7,12 +7,12 @@ ms.date: 12/11/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: ece9f62e64eb64b1f34af46b42d57ec583f8f214
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 43c89b0fac08bf9f2c72f885fbf4788371876b17
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97675873"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678576"
 ---
 # <a name="build-deploy-and-extend-the-iot-plug-and-play-bridge"></a>A IoT-Plug and Play-híd létrehozása, üzembe helyezése és kiterjesztése
 
@@ -173,8 +173,8 @@ A [kamera-adapter információi](https://github.com/Azure/iot-plug-and-play-brid
 
 | Platform | Támogatott |
 | :-----------: | :-----------: |
-| Windows |  Yes |
-| Linux | Yes |
+| Windows |  Igen |
+| Linux | Igen |
 
 ### <a name="prerequisites"></a>Előfeltételek
 
@@ -188,7 +188,7 @@ A szakasz elvégzéséhez telepítenie kell a következő szoftvereket a helyi g
 
 A [IoT Plug and Play Bridge](https://github.com/Azure/iot-plug-and-play-bridge) -tárház klónozása a helyi gépre:
 
-```cmd/sh
+```console
 git clone https://github.com/Azure/iot-plug-and-play-bridge.git
 
 cd iot-plug-and-play-bridge
@@ -205,7 +205,7 @@ Várható, hogy az előző parancs futtatása több percet is igénybe vehet.
 
 Nyissa meg a **VS 2019 fejlesztői parancssort** , és navigáljon ahhoz a mappához, amely a klónozott tárházat tartalmazza, és futtassa a következő parancsokat:
 
-```cmd
+```console
 cd pnpbridge\scripts\windows
 
 build.cmd
@@ -279,7 +279,7 @@ Tekintse át a konfigurációs fájl többi részét, és ellenőrizze, hogy mel
 
 Indítsa el a hidat úgy, hogy a parancssorban futtatja:
 
-```cmd
+```console
 cd iot-plug-and-play-bridge\pnpbridge\cmake\pnpbridge_x86\src\pnpbridge\samples\console
 
 Debug\pnpbridge_bin.exe
@@ -295,8 +295,8 @@ Debug\pnpbridge_bin.exe
 
 | Platform | Támogatott |
 | :-----------: | :-----------: |
-| Windows |  No |
-| Linux | Yes |
+| Windows |  Nem |
+| Linux | Igen |
 
 ### <a name="prerequisites"></a>Előfeltételek
 
@@ -330,13 +330,13 @@ Az itt található parancsok egy Azure-beli virtuális gépen futó IoT Edge esz
 
 Ha IoT Edge eszköz regisztrációját szeretné létrehozni az IoT hub-ban, futtassa a következő parancsokat a WSL 2 környezetben. A `az login` parancs használatával jelentkezzen be az Azure-előfizetésbe:
 
-```bash
+```azurecli
 az iot hub device-identity create --device-id bridge-edge-device --edge-enabled true --hub-name {your IoT hub name}
 ```
 
 A következő parancsokkal hozhat létre egy Azure-beli virtuális gépet, amelyen telepítve van a IoT Edge futtatókörnyezet. Módosítsa a helyőrzőket megfelelő értékekkel:
 
-```bash
+```azurecli
 az group create --name bridge-edge-resources --location eastus
 az deployment group create \
 --resource-group bridge-edge-resources \
@@ -350,7 +350,7 @@ az deployment group create \
 
 Most már fut a IoT Edge futtatókörnyezet egy virtuális gépen. A következő paranccsal ellenőrizheti, hogy a **$edgeAgent** és a **$edgeHub** fut-e az eszközön:
 
-```bash
+```azurecli
 az iot hub module-identity list --device-id bridge-edge-device -o table --hub-name {your IoT hub name}
 ```
 
@@ -399,13 +399,13 @@ A VS Code-ban kattintson a jobb gombbal a *pnpbridge/module.js* fájlra az **Int
 
 A VS Code-ban a **Docker** nézetben böngészheti a tároló beállításjegyzékének tartalmát, amely mostantól tartalmazza a **iotpnpbridge: v1-amd64** modul rendszerképét.
 
-### <a name="create-a-container-registry"></a>Container Registry létrehozása
+### <a name="create-a-container-registry"></a>Tárolóregisztrációs adatbázis létrehozása
 
 Egy IoT Edge eszköz letölti a modul lemezképeit egy tároló-beállításjegyzékből. Ez a példa egy Azure Container registryt használ.
 
 Hozzon létre egy Azure Container registryt a **Bridge-Edge-Resources** erőforráscsoporthoz. Ezután engedélyezze a rendszergazdai hozzáférést a tároló-beállításjegyzékhez, és szerezze be azokat a hitelesítő adatokat, amelyeknek a IoT Edge eszköznek le kell töltenie a modul lemezképeit:
 
-```bash
+```azurecli
 az acr create -g bridge-edge-resources --sku Basic -n {your container registry name}
 az acr update --admin-enabled true -n {your container registry name}
 az acr credential show -n {your container registry name}
@@ -517,7 +517,7 @@ A VS Code-ban kattintson a jobb gombbal a *pnpbridge/config/deployment.amd64.js*
 
 Az eszközön található modulok állapotának megtekintéséhez futtassa a következő parancsot:
 
-```bash
+```azurecli
 az iot hub module-identity list --device-id bridge-edge-device -o table --hub-name {your IoT hub name}
 ```
 
@@ -527,7 +527,7 @@ A futó modulok listája mostantól tartalmazza azt a **ModulePnpBridge** -modul
 
 A virtuális gép és a tároló beállításjegyzékének az Azure-előfizetésből való eltávolításához futtassa a következő parancsot:
 
-```bash
+```azurecli
 az group delete -n bridge-edge-resources
 ```
 

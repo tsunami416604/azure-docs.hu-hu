@@ -8,12 +8,12 @@ ms.topic: reference
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 43f33093010aa6a70d02c58e9faa34f7f0e2dfee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ae477dd04237e285915157615dcb6a6b841ca99
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91307279"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678255"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Előzetes verzió: Azure rendszerkép-készítő sablon létrehozása 
 
@@ -154,7 +154,7 @@ Az API-nak szüksége van egy "forrás típusa" elemre, amely meghatározza a re
 > Meglévő egyéni Windows-rendszerképek használatakor a Sysprep-parancsot akár 8 alkalommal is futtathatja egyetlen Windows-lemezképen, további információt a [Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) dokumentációjában talál.
 
 ### <a name="platformimage-source"></a>PlatformImage forrása 
-Az Azure Image Builder a Windows Servert és az ügyfelet, valamint a Linux Azure Marketplace-rendszerképeket is támogatja, [itt](../windows/image-builder-overview.md#os-support) találja a teljes listát. 
+Az Azure Image Builder a Windows Servert és az ügyfelet, valamint a Linux Azure Marketplace-rendszerképeket is támogatja, [itt](../image-builder-overview.md#os-support) találja a teljes listát. 
 
 ```json
         "source": {

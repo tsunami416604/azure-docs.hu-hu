@@ -4,12 +4,12 @@ description: A használat és a problémák diagnosztizálásához helyezzen be 
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: d553c192d62baedb93c7f8270c56526fbf8edb62
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 8fecca4875ba291da093bf1eea596eef290f80c8
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233746"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678112"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API egyéni eseményekhez és metrikákhoz
 
@@ -534,7 +534,7 @@ Ha a [mintavételezés](./sampling.md) folyamatban van, a ItemCount tulajdonság
 A TrackDependency hívásával követheti a külső kódrészletre irányuló hívások válaszideje és sikerességi arányát. Az eredmények a portál függőségi diagramjaiban jelennek meg. Az alábbi kódrészletet fel kell venni, ahol függőségi hívás történik.
 
 > [!NOTE]
-> A .NET és a .NET Core esetében használhatja a `TelemetryClient.StartOperation` (kiterjesztés) metódust is, amely kitölti a `DependencyTelemetry` korrelációhoz és más tulajdonságokhoz szükséges tulajdonságokat, például a kezdési időt és az időtartamot, így nem kell egyéni időzítőt létrehoznia az alábbi példákkal. További információért olvassa el a jelen cikk [a kimenő függőségek nyomon követéséről szóló szakaszát](https://docs.microsoft.com/azure/azure-monitor/app/custom-operations-tracking#outgoing-dependencies-tracking).
+> A .NET és a .NET Core esetében használhatja a `TelemetryClient.StartOperation` (kiterjesztés) metódust is, amely kitölti a `DependencyTelemetry` korrelációhoz és más tulajdonságokhoz szükséges tulajdonságokat, például a kezdési időt és az időtartamot, így nem kell egyéni időzítőt létrehoznia az alábbi példákkal. További információért olvassa el a jelen cikk [a kimenő függőségek nyomon követéséről szóló szakaszát](./custom-operations-tracking.md#outgoing-dependencies-tracking).
 
 *C#*
 
@@ -1120,7 +1120,7 @@ Az adatok megőrzési időtartamának megállapításához tekintse meg az [adat
 
     Igen, az [adatelérési API](https://dev.applicationinsights.io/). Az adatok kinyerésének egyéb módjai közé tartozik az [elemzésből való exportálás Power bi](./export-power-bi.md) és a [folyamatos exportálás](./export-telemetry.md).
 
-## <a name="next-steps"></a><a name="next"></a>További lépések
+## <a name="next-steps"></a><a name="next"></a>Következő lépések
 
 * [Események és naplók keresése](./diagnostic-search.md)
 * [Hibaelhárítás](../faq.md)

@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 75f06ae11d308028431202c22338ff4a589acf28
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 8fee7eca780d81dcd5d9fa9359ab59994256db07
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97592296"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678774"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>A Key Vault és az Azure Private Link integrálása
 
@@ -69,7 +69,7 @@ Ekkor megtekintheti a konfigurált privát végpontot. Most már lehetősége va
 
 Ha már rendelkezik kulcstartóval, a következő lépések végrehajtásával hozhat létre privát kapcsolati kapcsolatot:
 
-1. Jelentkezzen be az Azure Portalra. 
+1. Jelentkezzen be az Azure portálra. 
 1. A keresősáv mezőbe írja be a "Key Vaults" kifejezést.
 1. Válassza ki a kulcstárolót a listából, amelyhez privát végpontot szeretne hozzáadni.
 1. Válassza a "hálózatkezelés" fület a beállítások alatt.
@@ -112,7 +112,7 @@ Négy kiépítési állapot létezik:
 
 ## <a name="establish-a-private-link-connection-to-key-vault-using-cli-initial-setup"></a>Magánhálózati kapcsolat létesítése Key Vault a CLI használatával (kezdeti beállítás)
 
-```console
+```azurecli
 az login                                                         # Login to Azure CLI
 az account set --subscription {SUBSCRIPTION ID}                  # Select your Azure Subscription
 az group create -n {RESOURCE GROUP} -l {REGION}                  # Create a new Resource Group
@@ -136,7 +136,7 @@ az network private-dns link vnet create --resource-group {RG} --virtual-network 
 ```
 
 ### <a name="add-private-dns-records"></a>saját DNS rekordok hozzáadása
-```console
+```azurecli
 # https://docs.microsoft.com/en-us/azure/dns/private-dns-getstarted-cli#create-an-additional-dns-record
 az network private-dns zone list -g $rg_name
 az network private-dns record-set a add-record -g $rg_name -z "privatelink.vaultcore.azure.net" -n $vault_name -a $kv_network_interface_private_ip
@@ -148,18 +148,18 @@ nslookup $vault_name.privatelink.vaultcore.azure.net
 ```
 
 ### <a name="create-a-private-endpoint-automatically-approve"></a>Privát végpont létrehozása (automatikus jóváhagyás) 
-```console
+```azurecli
 az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.KeyVault/vaults/ {KEY VAULT NAME}" --group-ids vault --connection-name {Private Link Connection Name} --location {AZURE REGION}
 ```
 
 ### <a name="create-a-private-endpoint-manually-request-approval"></a>Privát végpont létrehozása (manuális kérelem jóváhagyása) 
-```console
+```azurecli
 az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.KeyVault/vaults/ {KEY VAULT NAME}" --group-ids vault --connection-name {Private Link Connection Name} --location {AZURE REGION} --manual-request
 ```
 
 ### <a name="manage-private-link-connections"></a>Magánhálózati kapcsolat kapcsolatainak kezelése
 
-```console
+```azurecli
 # Show Connection Status
 az network private-endpoint show --resource-group {RG} --name {Private Endpoint Name}
 
@@ -264,7 +264,7 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 
 További információ [: Azure Private link Service: korlátozások](../../private-link/private-link-service-overview.md#limitations)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [Azure Private linkről](../../private-link/private-link-service-overview.md)
 - További információ a [Azure Key Vault](overview.md)

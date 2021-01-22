@@ -11,12 +11,12 @@ ms.date: 05/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 302249b7d8490e43b841116c52500e686626433d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5773691852ddc723ec84503edee37c678bbbcfd9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460621"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677504"
 ---
 # <a name="quickstart-configure-dedicated-sql-pool-workload-isolation-using-a-workload-group-in-the-azure-portal"></a>Rövid útmutató: a dedikált SQL Pool számítási feladatok elkülönítésének beállítása munkaterhelés-csoporttal a Azure Portal
 
@@ -91,9 +91,9 @@ Az erőforrások tisztításához kövesse az alábbi lépéseket.
 
 3. Ha el szeretné távolítani az adattárházat, hogy ne számítsa ki a számítási és a tárolási díjat, válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A `DataLoads` munkaterhelés csoport használatához létre [kell](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) hoznia egy számítási feladatot, amely a kérelmeknek a munkaterhelés-csoportba való továbbításához szükséges.  Folytassa a számítási [feladatok besorolása](quickstart-create-a-workload-classifier-portal.md) oktatóanyagot a számítási feladatok besorolásának létrehozásához `DataLoads` .
+A `DataLoads` munkaterhelés csoport használatához létre [kell](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) hoznia egy számítási feladatot, amely a kérelmeknek a munkaterhelés-csoportba való továbbításához szükséges.  Folytassa a számítási [feladatok besorolása](quickstart-create-a-workload-classifier-portal.md) oktatóanyagot a számítási feladatok besorolásának létrehozásához `DataLoads` .
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 A számítási feladatok kezelésével kapcsolatos további információkért tekintse meg a számítási feladatok kezelésével [és figyelésével](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md) kapcsolatos cikket.

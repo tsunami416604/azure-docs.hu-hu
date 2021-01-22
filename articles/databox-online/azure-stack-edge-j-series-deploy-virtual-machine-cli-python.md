@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: alkohli
-ms.openlocfilehash: 8ea0c27fdd64bae1e6fe9443df76c86e0eb89a75
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 54a4a938be18d39993652cecb87b3604e268fcef
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97762918"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678953"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Virtuális gépek üzembe helyezése Azure Stack Edge Pro GPU-eszközön az Azure CLI és a Python használatával
 
@@ -32,7 +32,7 @@ Az üzembe helyezési munkafolyamat a következő ábrán látható.
 Az üzembe helyezési munkafolyamat magas szintű összefoglalása a következő:
 
 1. Kapcsolódás Azure Resource Managerhoz
-2. Hozzon létre egy erőforráscsoportot
+2. Erőforráscsoport létrehozása
 3. Tárfiók létrehozása
 4. BLOB URI hozzáadása a Hosts fájlhoz
 5. Tanúsítványok telepítése
@@ -123,7 +123,7 @@ Mielőtt megkezdi a virtuális gép létrehozását és felügyeletét az Azure 
 
     Az alábbi példa a fenti parancs kimenetét jeleníti meg:
 
-    ```powershell
+    ```output
     PS C:\windows\system32> az --version
     azure-cli                         2.0.80
     
@@ -147,7 +147,7 @@ Mielőtt megkezdi a virtuális gép létrehozását és felügyeletét az Azure 
     PS C:\windows\system32>
     ```
 
-    Ha nem rendelkezik Azure CLI-vel, töltse le és [telepítse az Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest)-t Windows rendszeren. Az Azure CLI-t a Windows parancssorból vagy a Windows PowerShell használatával futtathatja.
+    Ha nem rendelkezik Azure CLI-vel, töltse le és [telepítse az Azure CLI](/cli/azure/install-azure-cli-windows)-t Windows rendszeren. Az Azure CLI-t a Windows parancssorból vagy a Windows PowerShell használatával futtathatja.
 
 2. Jegyezze fel a parancssori felület Python-helyét. Erre azért van szükség, hogy meghatározza a megbízható Főtanúsítvány-tároló helyét az Azure CLI-hez.
 
@@ -171,7 +171,7 @@ Mielőtt megkezdi a virtuális gép létrehozását és felügyeletét az Azure 
 
     A következő minta kimenet a Haikunator telepítését mutatja be:
 
-    ```powershell
+    ```output
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> .\python.exe -m pip install haikunator
 
     Collecting haikunator
@@ -187,7 +187,7 @@ Mielőtt megkezdi a virtuális gép létrehozását és felügyeletét az Azure 
 
     A következő minta kimenet a pip telepítését mutatja be `msrestazure` : 
     
-    ```powershell
+    ```output
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> .\python.exe -m pip install msrestazure==0.6.2
     Requirement already satisfied: msrestazure==0.6.2 in c:\program files (x86)\microsoft sdks\azure\cli2\lib\site-packages (0.6.2)
     Requirement already satisfied: msrest<2.0.0,>=0.6.0 in c:\program files (x86)\microsoft sdks\azure\cli2\lib\site-packages (from msrestazure==0.6.2) (0.6.10)
@@ -211,7 +211,7 @@ Mielőtt megkezdi a virtuális gép létrehozását és felügyeletét az Azure 
     
     A parancsmag a tanúsítvány helyét adja vissza, az alább látható módon:  
         
-    ```powershell
+    ```output
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> .\python -c "import certifi; print(certifi.where())"
     C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\certifi\cacert.pem
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
@@ -323,7 +323,7 @@ Mielőtt megkezdi a virtuális gép létrehozását és felügyeletét az Azure 
 
    Az alábbi példa a sikeres bejelentkezést mutatja be a jelszó megadása után:  
    
-   ```powershell
+   ```output
    PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> az login -u EdgeARMuser
    Password:
    [
@@ -427,6 +427,6 @@ A rendszer egy Python-szkriptet hoz létre a virtuális gép létrehozásához. 
     ``` 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Általános az CLI parancsok Linux rendszerű virtuális gépekhez](../virtual-machines/linux/cli-manage.md)

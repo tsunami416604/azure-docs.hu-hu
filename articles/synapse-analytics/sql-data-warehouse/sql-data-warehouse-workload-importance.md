@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 07c781672874bff306c9d25a464ec66414ebc9f1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 06d1957d182f2cabc336afcfc47a790442a3cb9a
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322123"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678406"
 ---
 # <a name="azure-synapse-analytics-workload-importance"></a>Az Azure szinapszis Analytics számítási feladatának fontossága
 
@@ -38,7 +38,7 @@ Az értékesítési és időjárási adatokkal kapcsolatos alapvető fontossági
 
 ### <a name="locking"></a>Zárolás
 
-Az olvasási és írási tevékenységek zárolásának elérése a természetes tartalom egyik területe. A [partíciók váltását](sql-data-warehouse-tables-partition.md) vagy [átnevezését](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) igénylő tevékenységek esetében emelt szintű zárolásra van szükség.  A számítási feladatok fontossága nélkül az Azure szinapszis dedikált SQL-készlete optimalizálja az átviteli sebességet. Az adatátviteli teljesítmény optimalizálása azt jelenti, hogy ha a futtatott és a várólistára helyezett kérelmek azonos zárolási igényekkel és erőforrásokkal rendelkeznek, az üzenetsor-kezelési kérelmek megkerülhetik a kérések várólistáján megjelenő, magasabb zárolási igényekkel rendelkező kérelmeket. Ha a számítási feladatok fontossága nagyobb a zárolási igényeket kielégítő kérelmek esetében. Az alacsonyabb fontosságú kérelem előtt a rendszer a nagyobb jelentőségű kérést fogja futtatni.
+Az olvasási és írási tevékenységek zárolásának elérése a természetes tartalom egyik területe. A [partíciók váltását](sql-data-warehouse-tables-partition.md) vagy [átnevezését](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) igénylő tevékenységek esetében emelt szintű zárolásra van szükség.  A számítási feladatok fontossága nélkül az Azure szinapszis dedikált SQL-készlete optimalizálja az átviteli sebességet. Az adatátviteli teljesítmény optimalizálása azt jelenti, hogy ha a futtatott és a várólistára helyezett kérelmek azonos zárolási igényekkel és erőforrásokkal rendelkeznek, az üzenetsor-kezelési kérelmek megkerülhetik a kérések várólistáján megjelenő, magasabb zárolási igényekkel rendelkező kérelmeket. Ha a számítási feladatok fontossága nagyobb a zárolási igényeket kielégítő kérelmek esetében. Az alacsonyabb fontosságú kérelem előtt a rendszer a nagyobb jelentőségű kérést fogja futtatni.
 
 Tekintse meg a következő példát:
 
@@ -62,8 +62,8 @@ Mivel a Q5 mediumrc, két párhuzamossági tárolóhelyre van szükség. A Q5-ne
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Az osztályozó létrehozásával kapcsolatos további információkért lásd a [munkaterhelés-osztályozó létrehozása (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)című témakört.  
+- Az osztályozó létrehozásával kapcsolatos további információkért lásd a [munkaterhelés-osztályozó létrehozása (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)című témakört.  
 - A számítási feladatok besorolásával kapcsolatos további információkért lásd: [munkaterhelés besorolása](sql-data-warehouse-workload-classification.md).  
 - A számítási feladatok besorolásának létrehozásához tekintse meg a gyors üzembe helyezési adatok [létrehozása](quickstart-create-a-workload-classifier-tsql.md) című témakört.
 - Tekintse meg az útmutatókat a számítási [feladatok fontosságának konfigurálásához](sql-data-warehouse-how-to-configure-workload-importance.md) , valamint a számítási [feladatok felügyeletének kezeléséhez és figyeléséhez](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
-- A lekérdezéseket és a hozzárendelt fontosságot a [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) oldalon tekintheti meg.
+- A lekérdezéseket és a hozzárendelt fontosságot a [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) oldalon tekintheti meg.

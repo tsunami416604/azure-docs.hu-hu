@@ -11,16 +11,16 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4f881dcc0d26589c4029246019119fa0555dcd5d
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 0974e880b75cce69f2b5ac82e3c4b39de53e03ce
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98117775"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677104"
 ---
 # <a name="load-data-from-azure-data-lake-storage-into-dedicated-sql-pools-in-azure-synapse-analytics"></a>Adatok betöltése a Azure Data Lake Storageból dedikált SQL-készletekbe az Azure szinapszis Analyticsben
 
-Ez az útmutató ismerteti, hogyan tölthetők be az adatok a Azure Data Lake Storageból a [copy utasítás](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) használatával. Ha gyors példákat kíván használni a MÁSOLÁSi utasítás használatával az összes hitelesítési módszer esetében, látogasson el a következő dokumentációba: [adatok biztonságos betöltése DEDIKÁLT SQL-készletek használatával](./quickstart-bulk-load-copy-tsql-examples.md).
+Ez az útmutató ismerteti, hogyan tölthetők be az adatok a Azure Data Lake Storageból a [copy utasítás](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) használatával. Ha gyors példákat kíván használni a MÁSOLÁSi utasítás használatával az összes hitelesítési módszer esetében, látogasson el a következő dokumentációba: [adatok biztonságos betöltése DEDIKÁLT SQL-készletek használatával](./quickstart-bulk-load-copy-tsql-examples.md).
 
 > [!NOTE]  
 > Ha visszajelzést vagy jelentést szeretne küldeni a COPY utasításban, küldjön egy e-mailt a következő terjesztési listára: sqldwcopypreview@service.microsoft.com .
@@ -34,7 +34,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az oktatóanyag megkezdése előtt töltse le és telepítse az [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) legújabb verzióját.
+Az oktatóanyag megkezdése előtt töltse le és telepítse az [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) legújabb verzióját.
 
 Az oktatóanyag futtatásához a következőkre lesz szüksége:
 
@@ -133,6 +133,6 @@ Az adatraktár-megoldás az Azure szinapszis Analytics használatával történ�
 > [Ismerje meg, hogyan fejleszthet táblázatokat az adattárházak számára](sql-data-warehouse-tables-overview.md)
 
 További példákat és referenciákat a következő dokumentációban talál:
-- [A COPY utasítás referenciájának dokumentációja](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
+- [A COPY utasítás referenciájának dokumentációja](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax)
 - [Példák másolása az egyes hitelesítési módszerekhez](./quickstart-bulk-load-copy-tsql-examples.md)
 - [Rövid útmutató másolása egyetlen táblához](./quickstart-bulk-load-copy-tsql.md)

@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick; azure-synapse
-ms.openlocfilehash: 902f0ac96349cf3e30ec12aeda02130afc2b800c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e137611809e2d2beefecfeaea11b4295bf6ba141
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460753"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678491"
 ---
 # <a name="performance-tune-with-materialized-views"></a>Teljesítmény-Finomhangolás az anyagbeli nézetekkel
 
@@ -29,7 +29,7 @@ A normál nézet minden alkalommal kiszámítja az adatmegjelenítést, amikor a
 
 Egy anyagilag megtekinthető nézet előre kiszámítja, tárolja és karbantartja az adataikat az SQL-készletben, ugyanúgy, mint egy tábla.  A rendszer minden alkalommal nem igényel újraszámítást, amikor egy anyagbeli nézetet használ.  Ezért az olyan lekérdezések, amelyek az összes vagy az adatok egy részhalmazát használják az anyagokban, gyorsabb teljesítményt érhet el.  Még jobb is, ha a lekérdezések egy anyagbeli nézetet is használhatnak közvetlen hivatkozás nélkül, ezért nincs szükség az alkalmazás kódjának módosítására.  
 
-A standard nézetekre vonatkozó követelmények többsége továbbra is érvényes egy anyagbeli nézetre. Az anyag nézet szintaxisának és egyéb követelményeinek részletes ismertetését a következő témakörben találja: [anyagelszámolású nézet létrehozása KIválasztva](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+A standard nézetekre vonatkozó követelmények többsége továbbra is érvényes egy anyagbeli nézetre. Az anyag nézet szintaxisának és egyéb követelményeinek részletes ismertetését a következő témakörben találja: [anyagelszámolású nézet létrehozása KIválasztva](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 
 | Összehasonlítás                     | Nézet                                         | Materialized View
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
@@ -38,7 +38,7 @@ A standard nézetekre vonatkozó követelmények többsége továbbra is érvén
 |Adatfrissítés                    | Mindig frissítve                               | Mindig frissítve
 |Az összetett lekérdezések adatainak megtekintési sebessége     | Lassú                                         | Gyors  
 |Extra tárterület                   | Nem                                           | Igen
-|Szintaxis                          | CREATE VIEW                                  | A KIVÁLASZTÁSNAK MEGFELELŐEN HOZZON LÉTRE EGY ANYAGBELI NÉZETET
+|Syntax                          | CREATE VIEW                                  | A KIVÁLASZTÁSNAK MEGFELELŐEN HOZZON LÉTRE EGY ANYAGBELI NÉZETET
 
 ## <a name="benefits-of-using-materialized-views"></a>A lényeges nézetek használatának előnyei
 
@@ -55,8 +55,8 @@ Az SQL-készletben megvalósított, anyagilag megtekinthető nézetek a követke
 Az egyéb adattárház-szolgáltatók összehasonlításával az Azure szinapszis Analytics szolgáltatásban megvalósított, lényeges nézetek is a következő előnyöket nyújtják:
 
 - Automatikus és szinkron Adatfrissítés az alaptáblákban tárolt adatváltozásokkal. Nincs szükség felhasználói beavatkozásra.
-- Széleskörű összesítő függvények támogatása. Lásd: [anyagelszámolású nézet létrehozása Select (Transact-SQL) néven](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
-- A lekérdezés-specifikus, jelentős megjelenítésre vonatkozó javaslat támogatása.  Lásd: [Magyarázat (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+- Széleskörű összesítő függvények támogatása. Lásd: [anyagelszámolású nézet létrehozása Select (Transact-SQL) néven](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
+- A lekérdezés-specifikus, jelentős megjelenítésre vonatkozó javaslat támogatása.  Lásd: [Magyarázat (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ## <a name="common-scenarios"></a>Gyakori forgatókönyvek  
 
@@ -364,6 +364,6 @@ Vizsgálja meg újra az eredeti lekérdezés végrehajtási tervét.  Most az ö
 
 A nagy mennyiségű nézetekkel ugyanaz a lekérdezés sokkal gyorsabban fut a kód módosítása nélkül.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További fejlesztési tippek: a [SZINAPSZIS SQL-készlet fejlesztése – áttekintés](sql-data-warehouse-overview-develop.md).

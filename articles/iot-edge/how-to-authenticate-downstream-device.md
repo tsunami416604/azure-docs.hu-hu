@@ -8,12 +8,12 @@ ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f2dd7cac8370c261f24f5587e801bd621fbdb0f0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3876b44bc6bb1ddbc5398126421fb9651003838f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016998"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678823"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Lefelé irányuló eszköz hitelesítése az Azure IoT Hubon
 
@@ -71,7 +71,7 @@ Az új eszköz identitásának létrehozásakor adja meg a következő informác
 
 Ugyanezen művelet végrehajtásához használhatja az [Azure CLI-hez készült IoT-bővítményt](https://github.com/Azure/azure-iot-cli-extension) is. Az alábbi példa az az [IOT hub Device-Identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) paranccsal hoz létre egy új IOT-eszközt szimmetrikus kulcsos hitelesítéssel, és hozzárendel egy fölérendelt eszközt:
 
-```cli
+```azurecli
 az iot hub device-identity create -n {iothub name} -d {new device ID} --pd {existing gateway device ID}
 ```
 
@@ -126,7 +126,7 @@ Az X. 509 önaláírt hitelesítéshez (más néven ujjlenyomatos hitelesítésh
 
 Az [Azure CLI-hez készült IoT-bővítményt](https://github.com/Azure/azure-iot-cli-extension) is használhatja ugyanazon eszköz-létrehozási művelet végrehajtásához. Az alábbi példa az az [IOT hub Device-Identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) paranccsal hoz létre egy új IOT-eszközt X. 509 önaláírt hitelesítéssel, és hozzárendel egy fölérendelt eszközt:
 
-```cli
+```azurecli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_thumbprint --ptp {primary thumbprint} --stp {secondary thumbprint}
 ```
 
@@ -170,7 +170,7 @@ Ez a szakasz az [X. 509 biztonság Azure IoT hub-ban való beállításának](..
 
 Az [Azure CLI-hez készült IoT-bővítményt](https://github.com/Azure/azure-iot-cli-extension) is használhatja ugyanazon eszköz-létrehozási művelet végrehajtásához. Az alábbi példa az az [IOT hub Device-Identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) paranccsal hoz létre egy új IOT-eszközt X. 509 hitelesítésszolgáltató által aláírt hitelesítéssel, és hozzárendel egy fölérendelt eszközt:
 
-```cli
+```azurecli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_ca
 ```
 
@@ -191,25 +191,25 @@ Az alsóbb rétegbeli eszközökhöz tartozó kapcsolatok karakterláncának a k
 
 Az összes együtt egy teljes körű kapcsolatok karakterlánca a következőképpen néz ki:
 
-```
+```console
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz;GatewayHostName=myGatewayDevice
 ```
 
 Vagy
 
-```
+```console
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;x509=true;GatewayHostName=myGatewayDevice
 ```
 
 A szülő-gyermek kapcsolatnak köszönhetően leegyszerűsítheti a kapcsolati karakterláncot úgy, hogy az átjárót közvetlenül a kapcsolati gazdagépként hívja meg. Például:
 
-```
+```console
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz
 ```
 
 Ezt a módosított összekapcsolási karakterláncot az átlátszó átjáró sorozat következő cikkében fogja használni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezen a ponton van egy IoT Edge eszköz regisztrálva az IoT hub-ban, és transzparens átjáróként van konfigurálva. Emellett egy alsóbb rétegbeli eszköz is regisztrálva van az IoT hub-ban, és az átjáró eszközére mutat.
 

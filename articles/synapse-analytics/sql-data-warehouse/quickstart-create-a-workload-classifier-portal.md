@@ -11,12 +11,12 @@ ms.date: 05/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 4c761404ab5a95bc0189407cc97ce779b66356fe
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 1f4d113f3bc6add67dd34a7ef5e3f8cdc08cecf0
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460678"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677521"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-workload-classifier-using-the-azure-portal"></a>Gyors útmutató: dedikált SQL Pool számítási feladatok besorolásának létrehozása a Azure Portal használatával
 
@@ -45,7 +45,7 @@ Egy munkaterhelés-csoport `DataLoads` létezik.  A munkaterhelési csoport lét
 
 ## <a name="create-a-login-for-eltlogin"></a>ELTLogin-bejelentkezés létrehozása
 
-Hozzon létre egy SQL Server hitelesítési bejelentkezést az `master` adatbázisban a [létrehozási bejelentkezés](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) használatával `ELTLogin` .
+Hozzon létre egy SQL Server hitelesítési bejelentkezést az `master` adatbázisban a [létrehozási bejelentkezés](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) használatával `ELTLogin` .
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.sql_logins WHERE name = 'ELTLogin')
@@ -57,7 +57,7 @@ END
 
 ## <a name="create-user-and-grant-permissions"></a>Felhasználói és engedélyezési engedélyek létrehozása
 
-A bejelentkezés után létre kell hozni egy felhasználót az adatbázisban.  A [felhasználó létrehozása](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) paranccsal hozza létre az SQL `ELTRole` -felhasználót a **mySampleDataWarehouse**.  Mivel az oktatóanyag során tesztelni fogjuk a besorolást, engedélyeket adhatunk a `ELTLogin` **mySampleDataWarehouse**. 
+A bejelentkezés után létre kell hozni egy felhasználót az adatbázisban.  A [felhasználó létrehozása](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) paranccsal hozza létre az SQL `ELTRole` -felhasználót a **mySampleDataWarehouse**.  Mivel az oktatóanyag során tesztelni fogjuk a besorolást, engedélyeket adhatunk a `ELTLogin` **mySampleDataWarehouse**. 
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'ELTLogin')
@@ -91,18 +91,18 @@ A besorolás lehetővé teszi, hogy a kérelmeket egy adott szabálykészlet ala
 9.  Válassza `High` a **kérés fontosságát**.  Nem *kötelező*, a normál fontosság alapértelmezett.
 10. Adja meg `fact_loads` a **címkét**.
 11. Válassza a **Hozzáadás** elemet.
-12. Válassza a **Mentés** lehetőséget.
+12. Kattintson a **Mentés** gombra.
 
     ![Kattintson a konfiguráció elemre.](./media/quickstart-create-a-workload-classifier-portal/config-wc.png)
 
 ## <a name="verify-and-test-classification"></a>Ellenőrzés és tesztelés besorolása
-Az osztályozó létezésének ellenőrzéséhez tekintse meg a [sys.workload_management_workload_classifiers](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql?view=azure-sqldw-latest) katalógus nézetét `ELTLoginDataLoads` .
+Az osztályozó létezésének ellenőrzéséhez tekintse meg a [sys.workload_management_workload_classifiers](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql?view=azure-sqldw-latest&preserve-view=true) katalógus nézetét `ELTLoginDataLoads` .
 
 ```sql
 SELECT * FROM sys.workload_management_workload_classifiers WHERE name = 'ELTLoginDataLoads'
 ```
 
-Az osztályozó részleteinek ellenőrzéséhez tekintse meg a [sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?view=azure-sqldw-latest) katalógus nézetét.
+Az osztályozó részleteinek ellenőrzéséhez tekintse meg a [sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?view=azure-sqldw-latest&preserve-view=true) katalógus nézetét.
 
 ```sql
 SELECT c.[name], c.group_name, c.importance, cd.classifier_type, cd.classifier_value
@@ -164,6 +164,6 @@ Az erőforrások tisztításához kövesse az alábbi lépéseket.
 
 3. Ha el szeretné távolítani a dedikált SQL-készletet, hogy ne számítsa ki a számítási vagy a tárolási díjat, válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A számítási feladatok monitorozása a Azure Portal figyelési metrikák használatával.  A részletekért lásd: a [munkaterhelés-kezelés kezelése és figyelése](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md) .

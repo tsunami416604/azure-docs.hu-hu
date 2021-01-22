@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: b8b7a03d5176f5dbd8500b5ff9044c2f22ecbfc0
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 343ddb109de41a0959533b16b11762841b5b1105
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127141"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676759"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Azure-beli Windows VM-bővítményekkel kapcsolatos hibák elhárítása
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
@@ -85,7 +85,7 @@ Ezt a tanúsítványt a rendszer automatikusan újra létrehozza a Windows vend�
 - Kattintson a jobb gombbal, és válassza a "feladat befejezése" lehetőséget. A rendszer automatikusan újraindítja a folyamatot
 
 
-Új GoalState is aktiválhat a virtuális gépen a "virtuális gép újratelepítése" végrehajtásával. A virtuális gép [újratelepítése](https://docs.microsoft.com/rest/api/compute/virtualmachines/reapply) a 2020-es verzióban bevezetett API a virtuális gép állapotának újraalkalmazásához. Azt javasoljuk, hogy ezt akkor hajtsa végre, amikor egy rövid virtuális gép leállását szeretné elviselni. Habár az újbóli alkalmazás nem okozza a virtuális gépek újraindítását, és az újraalkalmazás időpontjának túlnyomó többsége nem indítja újra a virtuális gépet, nagyon kicsi a kockázata, hogy a virtuálisgép-modellre való újraindításkor a rendszer végrehajtja a virtuális gép modelljének más függőben lévő frissítését, és a többi módosítás újraindítást igényelhet. 
+Új GoalState is aktiválhat a virtuális gépen a "virtuális gép újratelepítése" végrehajtásával. A virtuális gép [újratelepítése](/rest/api/compute/virtualmachines/reapply) a 2020-es verzióban bevezetett API a virtuális gép állapotának újraalkalmazásához. Azt javasoljuk, hogy ezt akkor hajtsa végre, amikor egy rövid virtuális gép leállását szeretné elviselni. Habár az újbóli alkalmazás nem okozza a virtuális gépek újraindítását, és az újraalkalmazás időpontjának túlnyomó többsége nem indítja újra a virtuális gépet, nagyon kicsi a kockázata, hogy a virtuálisgép-modellre való újraindításkor a rendszer végrehajtja a virtuális gép modelljének más függőben lévő frissítését, és a többi módosítás újraindítást igényelhet. 
 
 Azure Portal:
 

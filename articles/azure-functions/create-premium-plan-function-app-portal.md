@@ -3,12 +3,12 @@ title: Azure Functions Prémium csomag létrehozása a portálon
 description: Megtudhatja, hogyan hozhat létre a prémium csomaggal futó Function-alkalmazást a Azure Portal használatával.
 ms.topic: how-to
 ms.date: 10/30/2020
-ms.openlocfilehash: 20921423247dda3cbb39b58dcc805dac6d367390
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 9cab67f096665c9333fa40bcb790896fcbebd8d5
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937661"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676586"
 ---
 # <a name="create-a-premium-plan-function-app-in-the-azure-portal"></a>Prémium csomagú Function-alkalmazás létrehozása a Azure Portal
 
@@ -32,7 +32,7 @@ Ezen a ponton létrehozhat függvényeket az új Function alkalmazásban. Ezek a
 
 [!INCLUDE [Clean-up resources](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [HTTP által aktivált függvény hozzáadása](functions-create-first-azure-function.md#create-function)
+> [HTTP által aktivált függvény hozzáadása] (./functions-get-started.md

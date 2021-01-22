@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7519b6c7e1f3381be77b9a0734ddda250228e7d
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: fd14c7911676768a61d2b2c0e366d2c227455be8
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860303"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678204"
 ---
 # <a name="continuous-access-evaluation"></a>Folyamatos hozzáférés-kiértékelés
 
@@ -28,7 +28,7 @@ A Szabályzat megsértésével vagy biztonsági problémákkal kapcsolatos időb
 
 A folyamatos hozzáférés kiértékelésének kezdeti megvalósítása az Exchange, a Teams és a SharePoint Online rendszerre összpontosít.
 
-Az alkalmazások a CAE használatára való előkészítésével kapcsolatban lásd: a [folyamatos hozzáférés kiértékelése engedélyezett API-k használata az alkalmazásokban](/azure/active-directory/develop/app-resilience-continuous-access-evaluation).
+Az alkalmazások a CAE használatára való előkészítésével kapcsolatban lásd: a [folyamatos hozzáférés kiértékelése engedélyezett API-k használata az alkalmazásokban](../develop/app-resilience-continuous-access-evaluation.md).
 
 ### <a name="key-benefits"></a>Főbb előnyök
 

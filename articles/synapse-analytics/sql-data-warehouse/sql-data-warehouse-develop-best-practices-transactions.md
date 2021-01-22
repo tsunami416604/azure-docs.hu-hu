@@ -11,12 +11,12 @@ ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 46a165ea7fa21c02e859c16027086695f1f378c3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3f7d6f8ca285fdc024db9ba952af9f7d169e7188
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462789"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678474"
 ---
 # <a name="optimizing-transactions-in-dedicated-sql-pool-in-azure-synapse-analytics"></a>Tranzakciók optimalizálása dedikált SQL-készletben az Azure szinapszis Analyticsben
 
@@ -69,7 +69,7 @@ CTAS és Beszúrás... Válassza a tömeges betöltési műveletek lehetőséget
 
 | Elsődleges index | Betöltési forgatókönyv | Naplózási mód |
 | --- | --- | --- |
-| Halommemória |Bármelyik |**Minimális** |
+| Halommemória |Bármely |**Minimális** |
 | Fürtözött index |Üres céltábla |**Minimális** |
 | Fürtözött index |A betöltött sorok nem fedik át a cél meglévő lapjait |**Minimális** |
 | Fürtözött index |A betöltött sorok átfedésben vannak a cél meglévő lapjaival |Összes |
@@ -85,7 +85,7 @@ A fürtözött indexekkel rendelkező, nem üres táblába való betöltés ált
 
 ## <a name="optimizing-deletes"></a>A törlések optimalizálása
 
-A DELETE egy teljesen naplózott művelet.  Ha egy táblán vagy partíción nagy mennyiségű adattal kell törölnie, gyakran több értelme van `SELECT` a megőrizni kívánt információknak, ami minimálisan naplózott műveletként futtatható.  Az adatválasztáshoz hozzon létre egy új táblát a [CTAS](sql-data-warehouse-develop-ctas.md)használatával.  A létrehozást követően az [Átnevezés](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) használatával cserélje ki a régi táblát az újonnan létrehozott táblázatra.
+A DELETE egy teljesen naplózott művelet.  Ha egy táblán vagy partíción nagy mennyiségű adattal kell törölnie, gyakran több értelme van `SELECT` a megőrizni kívánt információknak, ami minimálisan naplózott műveletként futtatható.  Az adatválasztáshoz hozzon létre egy új táblát a [CTAS](sql-data-warehouse-develop-ctas.md)használatával.  A létrehozást követően az [Átnevezés](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) használatával cserélje ki a régi táblát az újonnan létrehozott táblázatra.
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -117,7 +117,7 @@ RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 
 ## <a name="optimizing-updates"></a>Frissítések optimalizálása
 
-A frissítés egy teljesen naplózott művelet.  Ha nagy számú sort kell frissítenie egy táblában vagy partícióban, gyakran sokkal hatékonyabb lehet a minimálisan naplózott műveletek, például a [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) használata.
+A frissítés egy teljesen naplózott művelet.  Ha nagy számú sort kell frissítenie egy táblában vagy partícióban, gyakran sokkal hatékonyabb lehet a minimálisan naplózott műveletek, például a [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) használata.
 
 Az alábbi példában egy teljes táblázatos frissítés lett konvertálva egy CTAS, így minimális naplózás lehetséges.
 
@@ -414,9 +414,9 @@ A dedikált SQL-készlet lehetővé teszi a dedikált SQL-készlet [szüneteltet
 
 A legjobb megoldás, ha egy dedikált SQL-készlet felfüggesztése vagy skálázása előtt a repülési adatmódosítási tranzakciók befejeződik. Előfordulhat azonban, hogy ez a forgatókönyv nem mindig praktikus. A hosszú visszaállítás kockázatának enyhítéséhez vegye figyelembe az alábbi lehetőségek egyikét:
 
-* A hosszú ideig futó műveletek újraírása a [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) használatával
+* A hosszú ideig futó műveletek újraírása a [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) használatával
 * A művelet felosztása darabokra; a sorok egy részhalmazán működik
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az elkülönítési szintekkel és a tranzakciós korlátokkal kapcsolatos további tudnivalókért tekintse meg a [DEDIKÁLT SQL-készlet tranzakciói](sql-data-warehouse-develop-transactions.md) című témakört.  Az egyéb ajánlott eljárások áttekintését lásd: [DEDIKÁLT SQL Pool](sql-data-warehouse-best-practices.md)– ajánlott eljárások.

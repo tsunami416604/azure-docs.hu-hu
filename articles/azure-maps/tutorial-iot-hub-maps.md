@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: a3481830a09b183213e84490b5300f2fb38f8d19
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: b5c65035f8b51b53f617d4562fe1982f53f0deec
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625065"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678272"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>Oktatóanyag: a IoT térbeli elemzés megvalósítása Azure Maps használatával
 
@@ -161,15 +161,15 @@ A IoT Hub biztonságos és megbízható kétirányú kommunikációt tesz lehet�
 > [!NOTE]
 > Az telemetria események Event Gridon való közzétételének lehetősége jelenleg előzetes verzióban érhető el. Ez a funkció az összes régióban elérhető, a következők kivételével: USA keleti régiója, USA nyugati régiója, Nyugat-Európa, Azure Government, Azure China 21Vianet és Azure Germany.
 
-Az IoT hub *ContosoRental* -erőforráscsoporthoz való létrehozásához kövesse az [IoT hub létrehozása](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet#create-an-iot-hub)című témakör lépéseit.
+Az IoT hub *ContosoRental* -erőforráscsoporthoz való létrehozásához kövesse az [IoT hub létrehozása](../iot-hub/quickstart-send-telemetry-dotnet.md#create-an-iot-hub)című témakör lépéseit.
 
 ## <a name="register-a-device-in-your-iot-hub"></a>Eszköz regisztrálása az IoT hub-ban
 
-Az eszközök nem tudnak csatlakozni az IoT hubhoz, kivéve, ha az IoT hub Identity registryben vannak regisztrálva. Itt létre kell hoznia egy *InVehicleDevice* nevű egyetlen eszközt. Az eszköz az IoT hub-ban való létrehozásához és regisztrálásához kövesse az [új eszköz regisztrálása az IoT hub-ban](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal#register-a-new-device-in-the-iot-hub)című témakör lépéseit. Ügyeljen arra, hogy az eszköz elsődleges kapcsolódási sztringjét másolja. Erre később még szüksége lesz.
+Az eszközök nem tudnak csatlakozni az IoT hubhoz, kivéve, ha az IoT hub Identity registryben vannak regisztrálva. Itt létre kell hoznia egy *InVehicleDevice* nevű egyetlen eszközt. Az eszköz az IoT hub-ban való létrehozásához és regisztrálásához kövesse az [új eszköz regisztrálása az IoT hub-ban](../iot-hub/iot-hub-create-through-portal.md#register-a-new-device-in-the-iot-hub)című témakör lépéseit. Ügyeljen arra, hogy az eszköz elsődleges kapcsolódási sztringjét másolja. Erre később még szüksége lesz.
 
 ## <a name="create-a-function-and-add-an-event-grid-subscription"></a>Függvény létrehozása és Event Grid-előfizetés hozzáadása
 
-A Azure Functions egy kiszolgáló nélküli számítási szolgáltatás, amely lehetővé teszi a kis kódrészletek (functions) futtatását anélkül, hogy explicit módon kellene kiépíteni vagy kezelni a számítási infrastruktúrát. További információ: [Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-overview).
+A Azure Functions egy kiszolgáló nélküli számítási szolgáltatás, amely lehetővé teszi a kis kódrészletek (functions) futtatását anélkül, hogy explicit módon kellene kiépíteni vagy kezelni a számítási infrastruktúrát. További információ: [Azure functions](../azure-functions/functions-overview.md).
 
 Egy függvényt egy adott esemény indít el. Itt létre fog hozni egy Event Grid trigger által aktivált függvényt. Hozzon létre kapcsolatot az eseményindító és a függvény között egy esemény-előfizetés létrehozásával IoT Hub eszköz telemetria eseményeihez. Ha egy eszköz telemetria esemény következik be, a rendszer végpontként hívja meg a függvényt, és a korábban a IoT Hub-ban regisztrált eszközre vonatkozó adatokat fogadja.
 
@@ -219,11 +219,11 @@ Most állítsa be az Azure-függvényt.
 
     :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription-confirm.png" alt-text="Képernyőkép az esemény-előfizetés létrehozásának megerősítéséről.":::
 
-1. Most visszatért az **trigger szerkesztése** panelre. Válassza a **Mentés** lehetőséget.
+1. Most visszatért az **trigger szerkesztése** panelre. Kattintson a **Mentés** gombra.
 
 ## <a name="filter-events-by-using-iot-hub-message-routing"></a>Események szűrése IoT Hub üzenet-útválasztás használatával
 
-Ha Event Grid-előfizetést ad hozzá az Azure-függvényhez, a rendszer automatikusan létrehoz egy üzenetküldési útvonalat a megadott IoT-központban. Az üzenet-útválasztás lehetővé teszi különböző adattípusok különböző végpontokhoz való továbbítását. Átirányíthatja például az eszköz telemetria-üzeneteit, az eszközök életciklusával kapcsolatos eseményeket és az eszközök kettős változási eseményeit. További információ: [IoT hub üzenet-útválasztás használata](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c).
+Ha Event Grid-előfizetést ad hozzá az Azure-függvényhez, a rendszer automatikusan létrehoz egy üzenetküldési útvonalat a megadott IoT-központban. Az üzenet-útválasztás lehetővé teszi különböző adattípusok különböző végpontokhoz való továbbítását. Átirányíthatja például az eszköz telemetria-üzeneteit, az eszközök életciklusával kapcsolatos eseményeket és az eszközök kettős változási eseményeit. További információ: [IoT hub üzenet-útválasztás használata](../iot-hub/iot-hub-devguide-messages-d2c.md).
 
 :::image type="content" source="./media/tutorial-iot-hub-maps/hub-route.png" alt-text="Képernyőkép az IoT hub üzenet-útválasztásáról.":::
 
@@ -232,7 +232,7 @@ A példában csak a bérelt autó áthelyezése után szeretne üzeneteket fogad
 :::image type="content" source="./media/tutorial-iot-hub-maps/hub-filter.png" alt-text="Képernyőkép az útválasztási üzenetek szűréséről.":::
 
 >[!TIP]
->Az eszközről a felhőbe irányuló üzenetek IoT többféleképpen is lekérdezhető. Az üzenet-útválasztási szintaxissal kapcsolatos további információkért lásd: [IoT hub üzenet-útválasztás](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax).
+>Az eszközről a felhőbe irányuló üzenetek IoT többféleképpen is lekérdezhető. Az üzenet-útválasztási szintaxissal kapcsolatos további információkért lásd: [IoT hub üzenet-útválasztás](../iot-hub/iot-hub-devguide-routing-query-syntax.md).
 
 ## <a name="send-telemetry-data-to-iot-hub"></a>Telemetria-IoT Hub küldése
 

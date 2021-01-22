@@ -16,12 +16,12 @@ ms.subservice: hybrid
 ms.reviewer: chmutali
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4cdda52271bc7b9e9d854e0af181e2c8f22ad9a
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 1f39ef611e2ea15ef3bc3dbfcf09e9624cbcf8b3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98613634"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678221"
 ---
 # <a name="manage-agent-registry-options"></a>Ügynök beállításjegyzék-beállításainak kezelése
 
@@ -34,7 +34,7 @@ Ha a konfigurált Active Directory tartományvezérlőkön végez LDAP-művelete
 System.DirectoryServices.Protocols.LdapException: The operation was aborted because the client side timeout limit was exceeded.
 `
 
-Az LDAP-keresési műveletek hosszabb időt vehetnek igénybe, ha a keresési attribútum nincs indexelve. Első lépésként, ha a fenti hiba jelenik meg, először ellenőrizze, hogy a keresési/keresési attribútum [indexelt](https://docs.microsoft.com/windows/win32/ad/indexed-attributes)-e. Ha a keresési attribútumok indexelve vannak, és a hiba továbbra is fennáll, az alábbi lépések végrehajtásával növelheti az LDAP-kapcsolat időtúllépését: 
+Az LDAP-keresési műveletek hosszabb időt vehetnek igénybe, ha a keresési attribútum nincs indexelve. Első lépésként, ha a fenti hiba jelenik meg, először ellenőrizze, hogy a keresési/keresési attribútum [indexelt](/windows/win32/ad/indexed-attributes)-e. Ha a keresési attribútumok indexelve vannak, és a hiba továbbra is fennáll, az alábbi lépések végrehajtásával növelheti az LDAP-kapcsolat időtúllépését: 
 
 1. Jelentkezzen be rendszergazdaként az Azure AD Connect üzembe helyezési ügynököt futtató Windows-kiszolgálón.
 1. A *Futtatás* menüpont használatával nyissa meg a beállításszerkesztőt (regedit.exe) 
@@ -48,7 +48,7 @@ Az LDAP-keresési műveletek hosszabb időt vehetnek igénybe, ha a keresési at
 1. Ha több kiépítési ügynököt telepített, alkalmazza a beállításjegyzék módosítását az összes ügynökre a konzisztencia érdekében. 
 
 ## <a name="configure-referral-chasing"></a>Hivatkozói átirányítás konfigurálása
-Alapértelmezés szerint az Azure AD Connect kiépítési ügynök nem üldözi az [átirányítást](https://docs.microsoft.com/windows/win32/ad/referrals). Előfordulhat, hogy engedélyezni szeretné az átirányítást, hogy támogassa bizonyos HR bejövő kiépítési forgatókönyveket, például a következőket: 
+Alapértelmezés szerint az Azure AD Connect kiépítési ügynök nem üldözi az [átirányítást](/windows/win32/ad/referrals). Előfordulhat, hogy engedélyezni szeretné az átirányítást, hogy támogassa bizonyos HR bejövő kiépítési forgatókönyveket, például a következőket: 
 * UPN egyediségének ellenőrzése több tartományon belül
 * A tartományok közötti kezelőre vonatkozó hivatkozások feloldása
 

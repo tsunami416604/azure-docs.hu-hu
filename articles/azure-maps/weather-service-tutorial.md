@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 32ce875600bb948e7c3e8479f712e99d25eb6367
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 276dd5b7eba33081c5131eba722df91d8685adff
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624951"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678163"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Oktatóanyag: az érzékelő adataihoz való csatlakozás időjárás-előrejelzési adataival Azure Notebooks (Python) használatával
 
@@ -27,7 +27,7 @@ A szélenergia egy alternatív energiaforrás a fosszilis tüzelőanyagok szám�
 Az oktatóanyagban a következőket végezheti el:
 
 > [!div class="checklist"]
-> * A felhőben [Azure Notebooks](../notebooks/index.yml) adatfájlokkal dolgozhat.
+> * A felhőben [Azure Notebooks](https://notebooks.azure.com) adatfájlokkal dolgozhat.
 > * Betöltheti a bemutató adatait a fájlból.
 > * Azure Maps REST API-k hívása a Pythonban.
 > * Helyadatok leképezése a térképen.
@@ -206,4 +206,4 @@ Nincsenek karbantartást igénylő erőforrások.
 További információ a Azure Notebooksről:
 
 > [!div class="nextstepaction"]
-> [Azure Notebooks](../notebooks/index.yml)
+> [Azure Notebooks](https://notebooks.azure.com)

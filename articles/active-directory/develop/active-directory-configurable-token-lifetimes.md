@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: ec925ce165c1de98fe920381e1b51e3388c1e4ad
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 33dffa40e0236483d641c2e2bbe318bb62a7724d
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232403"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678187"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurálható jogkivonat-élettartamok a Microsoft Identity platformban (előzetes verzió)
 
@@ -82,9 +82,11 @@ A jogkivonatok élettartamára vonatkozó szabályzatokat a frissítési tokenek
 > [!IMPORTANT]
 > A május 2020-től kezdve az új bérlők nem konfigurálhatják a frissítési és a munkamenet-jogkivonat élettartamát.  A meglévő konfigurációval rendelkező bérlők 2021 január 30-ig módosíthatják a frissítési és a munkamenet-jogkivonat-szabályzatokat.   A Azure Active Directory a házirendekben a meglévő frissítési és munkamenet-jogkivonat konfigurációját a 2021. január 30. után nem fogja megbecsülni. A kivonulás után továbbra is konfigurálhatja a hozzáférés, az SAML és az azonosító token élettartamát.
 >
-> Ha továbbra is meg kell határoznia azt az időtartamot, ameddig a felhasználónak újra be kell jelentkeznie, konfigurálnia kell a bejelentkezési gyakoriságot a feltételes hozzáférésben. Ha többet szeretne megtudni a feltételes hozzáférésről, olvassa el a [hitelesítési munkamenet-kezelés konfigurálása feltételes hozzáféréssel című szakaszt](/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime).
+> Ha továbbra is meg kell határoznia azt az időtartamot, ameddig a felhasználónak újra be kell jelentkeznie, konfigurálnia kell a bejelentkezési gyakoriságot a feltételes hozzáférésben. Ha többet szeretne megtudni a feltételes hozzáférésről, olvassa el a [hitelesítési munkamenet-kezelés konfigurálása feltételes hozzáféréssel című szakaszt](../conditional-access/howto-conditional-access-session-lifetime.md).
 >
 > Ha a lejárati dátum után nem kíván feltételes hozzáférést használni, a frissítési és a munkamenet-token az adott dátum [alapértelmezett konfigurációjához](#configurable-token-lifetime-properties-after-the-retirement) lesz beállítva, és többé nem fogja tudni módosítani az élettartamát.
+>
+> A meglévő jogkivonat élettartama nem változik. A lejárat után a rendszer egy új jogkivonatot ad ki az alapértelmezett érték alapján.
 
 :::image type="content" source="./media/active-directory-configurable-token-lifetimes/roadmap.svg" alt-text="Nyugdíjazási információk":::
 
@@ -272,6 +274,6 @@ A következő parancsmagokat használhatja az egyszerű szolgáltatásnév házi
 | [Get-AzureADServicePrincipalPolicy](/powershell/module/azuread/get-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | Lekéri a megadott egyszerű szolgáltatáshoz kapcsolódó házirendet.|
 | [Remove-AzureADServicePrincipalPolicy](/powershell/module/azuread/remove-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | Eltávolítja a szabályzatot a megadott egyszerű szolgáltatásból.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információért olvassa el [a jogkivonat-élettartamok konfigurálásának példáit](configure-token-lifetimes.md).

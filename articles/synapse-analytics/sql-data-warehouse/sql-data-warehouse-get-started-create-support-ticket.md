@@ -10,12 +10,12 @@ author: kevinvngo
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 6042b5be48144ce6730a9bf4f342d7735a262643
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: acc05d6367a0dc4334bc1d9e3cbb340bdb8d24c0
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118064"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677426"
 ---
 # <a name="request-quota-increases-and-get-support-for-azure-synapse-analytics"></a>A kérelmek kvótájának növekedése és az Azure szinapszis Analytics támogatásának beszerzése
 
@@ -117,7 +117,7 @@ Ha engedélyezni szeretné a régió hozzáférését egy előfizetéshez, a kö
 
 A kvóta típusa legördülő **menüben válassza ki** az egyéb kvóták kérése lehetőséget a következőhöz:
 
-![Egyéb kvóta részletei](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-whitelisting.png)
+![Egyéb kvóta részletei](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details.png)
 
 ## <a name="submit-your-request"></a>A kérés elküldése
 

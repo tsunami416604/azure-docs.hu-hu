@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: f59ed16f98a22f77b2e67ec2bf829f58dccef611
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 4212c76d052fe1f272963003e836425b50d6f105
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740504"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677614"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Mi az Azure Machine Learning Studio?
 
@@ -68,7 +68,7 @@ A gépi tanulási eszközöket közvetlenül a böngészőben kezelheti. Az eszk
 - Notebooks
 - Kísérletek
 - Naplók futtatása
-- Folyamatok 
+- Pipelines 
 - Folyamat végpontjai
 
 Még ha tapasztalt fejlesztő is, a Studio leegyszerűsítheti a munkaterület-erőforrások kezelését.
@@ -90,7 +90,7 @@ Az alábbi táblázat összefoglalja ML Studio (klasszikus) és Azure Machine Le
 | Szolgáltatás | ML Studio (klasszikus) | Azure Machine Learning |
 |---| --- | --- |
 | Húzási interfész | Klasszikus felhasználói élmény | Frissített tapasztalat – [Azure Machine learning Designer](concept-designer.md)| 
-| SDK-kód | Nem támogatott | Teljes mértékben integrált [Azure Machine learning Python](/python/api/overview/azure/ml/) és [R](tutorial-1st-r-experiment.md) SDK-k |
+| SDK-kód | Nem támogatott | Teljes mértékben integrált [Azure Machine learning Python](/python/api/overview/azure/ml/) és [R](https://github.com/Azure/azureml-sdk-for-r) SDK-k |
 | Experiment | Skálázható (10 GB-os betanítási adatkorlát) | Méretezés számítási céllal |
 | Számítási célok betanítása | Tulajdonosi számítási cél, csak CPU-támogatás | Testreszabható [képzési számítási célok](concept-compute-target.md#train)széles köre. GPU-val és CPU-támogatással rendelkezik | 
 | Üzembe helyezési számítási célok | Tulajdonosi webszolgáltatás formátuma, nem testreszabható | Testreszabható [üzembe helyezési számítási célok](concept-compute-target.md#deploy)széles köre. GPU-val és CPU-támogatással rendelkezik |
@@ -105,7 +105,7 @@ Az alábbi táblázat összefoglalja ML Studio (klasszikus) és Azure Machine Le
 
 * **Hiányzó felhasználói felületi elemek a Studióban** Az Azure szerepköralapú hozzáférés-vezérléssel korlátozható a Azure Machine Learningkal végrehajtható műveletek korlátozása. Ezek a korlátozások megakadályozhatják, hogy a felhasználói felület elemei megjelenjenek a Azure Machine Learning Studióban. Ha például olyan szerepkört rendelt hozzá, amely nem tud számítási példányt létrehozni, akkor a számítási példány létrehozásának lehetősége nem fog megjelenni a Studióban. További információ: [felhasználók és szerepkörök kezelése](how-to-assign-roles.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Látogasson el a [studióba](https://ml.azure.com), vagy Ismerje meg a különböző szerzői lehetőségeket a következő oktatóanyagokkal:  
 

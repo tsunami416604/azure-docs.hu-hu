@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: kaib
 ms.date: 03/11/2020
 ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 7f51aae39c2cb60d8b60d4fb496f74eadb91b33b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 42b1aed2f6c66dbfc0f04759b232855f3b7f0a2a
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487653"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676818"
 ---
 # <a name="verify-encryption-status-for-linux"></a>A Linux titkosítási állapotának ellenőrzése 
 
@@ -37,7 +37,7 @@ A Azure Portal a **bővítmények** szakaszban válassza ki a Azure Disk Encrypt
 
 A bővítmények listájában megjelenik a megfelelő Azure Disk Encryption-bővítmény verziója. A 0. x verzió a Azure Disk Encryption Dual pass értéknek felel meg, az 1. x verzió pedig Azure Disk Encryption Single pass értéknek felel meg.
 
-További részleteket a bővítmény kiválasztásával, majd a **részletes állapot megtekintése**lehetőség kiválasztásával érhet el. A titkosítási folyamat részletes állapota JSON formátumban jelenik meg.
+További részleteket a bővítmény kiválasztásával, majd a **részletes állapot megtekintése** lehetőség kiválasztásával érhet el. A titkosítási folyamat részletes állapota JSON formátumban jelenik meg.
 
 ![A portálon való keresés a "részletes állapot megtekintése" hivatkozás kiemelésével](./media/disk-encryption/verify-encryption-linux/portal-check-002.png)
 
@@ -70,7 +70,7 @@ Az egyes lemezek titkosítási beállításait a következő PowerShell-parancso
 ### <a name="single-pass"></a>Egyszeri továbbítás
 Egyetlen menet esetén a titkosítási beállítások az egyes lemezeken (operációs rendszer és az összes) vannak lepecsételve. Az operációs rendszer lemezének titkosítási beállításait a következőképpen rögzítheti egy adott fázisban:
 
-``` powershell
+```powershell
 $RGNAME = "RGNAME"
 $VMNAME = "VMNAME"
 
@@ -160,7 +160,7 @@ Write-Host "====================================================================
 
 A titkosított virtuális gépek *általános* titkosítási állapotát a következő Azure CLI-parancsok használatával ellenőrizheti:
 
-```bash
+```azurecli
 VMNAME="VMNAME"
 RGNAME="RGNAME"
 az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} --query "substatus"
@@ -170,14 +170,14 @@ az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} --query "subst
 ### <a name="single-pass"></a>Egyszeri továbbítás
 Az egyes lemezek titkosítási beállításait az alábbi Azure CLI-parancsokkal ellenőrizheti:
 
-```bash
+```azurecli
 az vm encryption show -g ${RGNAME} -n ${VMNAME} --query "disks[*].[name, statuses[*].displayStatus]"  -o table
 ```
 
 ![Adattitkosítási beállítások](./media/disk-encryption/verify-encryption-linux/data-encryption-settings-2.png)
 
 >[!IMPORTANT]
-> Ha a lemez nem rendelkezik lebélyegzett titkosítási beállításokkal, akkor a szöveges **lemez nem titkosítva**jelenik meg.
+> Ha a lemez nem rendelkezik lebélyegzett titkosítási beállításokkal, akkor a szöveges **lemez nem titkosítva** jelenik meg.
 
 Használja az alábbi parancsokat a részletes állapot-és titkosítási beállítások megszerzéséhez.
 
@@ -203,7 +203,7 @@ done
 
 Adatlemezek:
 
-```bash
+```azurecli
 RGNAME="RGNAME"
 VMNAME="VMNAME"
 az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} --query "substatus"
@@ -223,7 +223,7 @@ done
 
 ### <a name="dual-pass"></a>Kettős menet
 
-``` bash
+```azurecli
 az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} -o table
 ```
 
@@ -276,7 +276,7 @@ Egy adott lemez adatainak beszerzéséhez a következőket kell megadnia:
 
 Ez a parancs felsorolja az összes Storage-fiók azonosítóját:
 
-```bash
+```azurecli
 az storage account list --query [].[id] -o tsv
 ```
 A Storage-fiók azonosítói a következő formában vannak felsorolva:
@@ -295,7 +295,7 @@ ConnectionString=$(az storage account show-connection-string --ids $id --query c
 ```
 
 A következő parancs a Storage-fiókban lévő összes tárolót listázza:
-```bash
+```azurecli
 az storage container list --connection-string $ConnectionString --query [].[name] -o tsv
 ```
 A lemezekhez használt tároló általában VHD-k néven szerepel.
@@ -306,7 +306,7 @@ ContainerName="name of the container"
 ```
 
 Ezzel a paranccsal listázhatja egy adott tároló összes blobját:
-```bash 
+```azurecli 
 az storage blob list -c ${ContainerName} --connection-string $ConnectionString --query [].[name] -o tsv
 ```
 Válassza ki a lekérdezni kívánt lemezt, és tárolja a nevét egy változóban:
@@ -314,7 +314,7 @@ Válassza ki a lekérdezni kívánt lemezt, és tárolja a nevét egy változób
 DiskName="diskname.vhd"
 ```
 A lemez titkosítási beállításainak lekérdezése:
-```bash
+```azurecli
 az storage blob show -c ${ContainerName} --connection-string ${ConnectionString} -n ${DiskName} --query metadata.DiskEncryptionSettings
 ```
 
@@ -323,7 +323,7 @@ Ellenőrizze, hogy az adatlemez-partíciók titkosítva vannak-e (és az operác
 
 Partíció vagy lemez titkosítása esetén a rendszer a **titkosítási** típusként jeleníti meg. Ha nincs titkosítva, a **kijelző/lemez** típusúként jelenik meg.
 
-``` bash
+```bash
 lsblk
 ```
 
@@ -331,7 +331,7 @@ lsblk
 
 További részletek a következő **lsblk** -változat használatával szerezhetők be. 
 
-Ekkor megjelenik egy, a bővítmény által csatlakoztatott **Crypt** típusú réteg. Az alábbi példa bemutatja a logikai köteteket és a **titkosítási \_ LUKS FSTYPE**rendelkező normál lemezeket.
+Ekkor megjelenik egy, a bővítmény által csatlakoztatott **Crypt** típusú réteg. Az alábbi példa bemutatja a logikai köteteket és a **titkosítási \_ LUKS FSTYPE** rendelkező normál lemezeket.
 
 ```bash
 lsblk -o NAME,TYPE,FSTYPE,LABEL,SIZE,RO,MOUNTPOINT
@@ -340,11 +340,11 @@ lsblk -o NAME,TYPE,FSTYPE,LABEL,SIZE,RO,MOUNTPOINT
 
 További lépésként ellenőrizheti, hogy az adatlemez rendelkezik-e kulcsok betöltésével:
 
-``` bash
+```bash
 cryptsetup luksDump /dev/VGNAME/LVNAME
 ```
 
-``` bash
+```bash
 cryptsetup luksDump /dev/sdd1
 ```
 

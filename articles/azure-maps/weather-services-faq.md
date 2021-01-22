@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8b7726e4e8fee0044a7865c8c494ef6451425676
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 9c8e971b4fda313ffede58455dd6d057d6848ce4
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903870"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678129"
 ---
 # <a name="azure-maps-weather-services-preview-frequently-asked-questions-faq"></a>Azure Maps időjárási szolgáltatások (előzetes verzió) – gyakori kérdések (GYIK)
 
@@ -21,7 +21,7 @@ ms.locfileid: "96903870"
 > Azure Maps időjárási szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ez a cikk a Azure Maps [időjárási szolgáltatások](https://docs.microsoft.com/rest/api/maps/weather) adatait és funkcióit érintő gyakori kérdésekre ad választ. A következő témákat tárgyalja:
+Ez a cikk a Azure Maps [időjárási szolgáltatások](/rest/api/maps/weather) adatait és funkcióit érintő gyakori kérdésekre ad választ. A következő témákat tárgyalja:
 
 * Adatforrások és adatmodellek
 * Időjárási szolgáltatások lefedettsége és rendelkezésre állása
@@ -59,7 +59,7 @@ A globális előrejelzések megfogalmazásához számos időjárás-előrejelző
 
 **Milyen típusú lefedettség várható a különböző országokban/régiókban?**
 
-Az időjárási szolgáltatások lefedettsége ország/régió szerint változik. Minden szolgáltatás nem érhető el minden országban vagy régióban. További információkért lásd a [lefedettségi dokumentációt](https://docs.microsoft.com/azure/azure-maps/weather-coverage).
+Az időjárási szolgáltatások lefedettsége ország/régió szerint változik. Minden szolgáltatás nem érhető el minden országban vagy régióban. További információkért lásd a [lefedettségi dokumentációt](./weather-coverage.md).
 
 ## <a name="data-update-frequency"></a>Adatfrissítés gyakorisága
 
@@ -79,7 +79,7 @@ Azure Maps előrejelzési API-k akár 30 percig is gyorsítótárazva vannak. Ha
 
 **A Azure Maps web SDK natív módon támogatja az időjárási szolgáltatások (előzetes verzió) integrációját?**
 
-A Azure Maps web SDK egy Services modult biztosít. A Services modul egy segítő könyvtár, amely megkönnyíti a Azure Maps REST-szolgáltatások használatát a webes vagy Node.js alkalmazásokban. JavaScript vagy írógéppel használatával. Első lépésként tekintse meg a [dokumentációt](https://docs.microsoft.com/azure/azure-maps/how-to-use-services-module).
+A Azure Maps web SDK egy Services modult biztosít. A Services modul egy segítő könyvtár, amely megkönnyíti a Azure Maps REST-szolgáltatások használatát a webes vagy Node.js alkalmazásokban. JavaScript vagy írógéppel használatával. Első lépésként tekintse meg a [dokumentációt](./how-to-use-services-module.md).
 
 **A Azure Maps Android SDK natív módon támogatja az időjárási szolgáltatások (előzetes verzió) integrációját?**
 
@@ -91,26 +91,26 @@ Azt tervezzük, hogy a web SDK-modulhoz hasonló Java/Android Services-modult ho
 
 **Azure Maps Power BI vizuális támogatás Azure Maps Weather csempe?**
 
-Igen. Ha szeretné megtudni, hogyan telepítse át a radar és az infravörös műhold csempéit a Microsoft Power BI-vizualizációba, tekintse meg [a csempék hozzáadása Power bi a vizualizációhoz](https://docs.microsoft.com/azure/azure-maps/power-bi-visual-add-tile-layer)című témakört. 
+Igen. Ha szeretné megtudni, hogyan telepítse át a radar és az infravörös műhold csempéit a Microsoft Power BI-vizualizációba, tekintse meg [a csempék hozzáadása Power bi a vizualizációhoz](./power-bi-visual-add-tile-layer.md)című témakört. 
 
 **Hogyan a radar és a műholdas csempék színének értelmezését?**
 
-A Azure Maps [időjárási koncepciója című cikk](https://docs.microsoft.com/azure/azure-maps/weather-services-concepts#radar-and-satellite-imagery-color-scale) egy útmutatót tartalmaz a radar és a műholdas csempék színeinek értelmezéséhez. A cikk a színes mintákat és a HEXADECIMÁLIS színkódokat tartalmazza.
+A Azure Maps [időjárási koncepciója című cikk](./weather-services-concepts.md#radar-and-satellite-imagery-color-scale) egy útmutatót tartalmaz a radar és a műholdas csempék színeinek értelmezéséhez. A cikk a színes mintákat és a HEXADECIMÁLIS színkódokat tartalmazza.
  
 **Létrehozhatok radar-és műholdas csempéket is?**
 
-Igen. A valós idejű radar-és műholdas csempén kívül Azure Maps ügyfelek a térképes átfedésekkel rendelkező adatvizualizációk fejlesztéséhez a múltbeli és a jövőbeli csempéket is kérhetik. Ezt a [Get Map csempe v2 API](https://aka.ms/AzureMapsWeatherTiles ) közvetlen hívásával vagy a csempék Azure Maps web SDK-n keresztül történő igénylésével teheti meg. A radar csempéi a múltban akár 1,5 óráig, illetve a későbbiekben akár 2 óráig is elérhetők. A csempék 5 percenként érhetők el. Az infravörös csempék a múltban akár 3 óráig is rendelkezésre állnak, és 10 perces időközönként érhetők el. További információ: nyílt forráskódú időjárási csempe animációs [kód mintája](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Animated%20tile%20layer).  
+Igen. A valós idejű radar-és műholdas csempén kívül Azure Maps ügyfelek a térképes átfedésekkel rendelkező adatvizualizációk fejlesztéséhez a múltbeli és a jövőbeli csempéket is kérhetik. Ezt a [Get Map csempe v2 API](/rest/api/maps/renderv2/getmaptilepreview) közvetlen hívásával vagy a csempék Azure Maps web SDK-n keresztül történő igénylésével teheti meg. A radar csempéi a múltban akár 1,5 óráig, illetve a későbbiekben akár 2 óráig is elérhetők. A csempék 5 percenként érhetők el. Az infravörös csempék a múltban akár 3 óráig is rendelkezésre állnak, és 10 perces időközönként érhetők el. További információ: nyílt forráskódú időjárási csempe animációs [kód mintája](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Animated%20tile%20layer).  
 
 **Különböző időjárási feltételekhez tartozó ikonokat kínál?**
 
-Igen. [Itt](https://docs.microsoft.com/azure/azure-maps/weather-services-concepts#weather-icons)megtalálhatja a megfelelő ikonokat és a hozzájuk tartozó kódokat. Figyelje meg, hogy az időjárási szolgáltatás (előzetes verzió) API-jai (például az  [aktuális feltételek beolvasása API](https://aka.ms/azuremapsweathercurrentconditions)) csak néhányat adnak vissza a válasz *iconCode* . További információkért tekintse meg az aktuális WeatherConditions nyílt forráskódú [kódú mintát](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Get%20current%20weather%20at%20a%20location).
+Igen. [Itt](./weather-services-concepts.md#weather-icons)megtalálhatja a megfelelő ikonokat és a hozzájuk tartozó kódokat. Figyelje meg, hogy az időjárási szolgáltatás (előzetes verzió) API-jai (például az  [aktuális feltételek beolvasása API](/rest/api/maps/weather/getcurrentconditionspreview)) csak néhányat adnak vissza a válasz *iconCode* . További információkért tekintse meg az aktuális WeatherConditions nyílt forráskódú [kódú mintát](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Get%20current%20weather%20at%20a%20location).
 
 ## <a name="next-steps"></a>Következő lépések
 
 Ha ez a GYIK nem válaszol a kérdésére, az alábbi csatornákon keresztül léphet velünk kapcsolatba:
 
 * A cikk megjegyzések szakasza.
-* [MSFT Q&a Azure Maps oldalát](https://docs.microsoft.com/answers/topics/azure-maps.html).
+* [MSFT Q&a Azure Maps oldalát](/answers/topics/azure-maps.html).
 * Microsoft ügyfélszolgálata. Új támogatási kérelem létrehozásához a [Azure Portal](https://portal.azure.com/)Súgó lapján kattintson a **Súgó +** támogatás gombra, majd válassza az **új támogatási kérelem** lehetőséget.
 * [Azure Maps UserVoice](https://feedback.azure.com/forums/909172-azure-maps) küldéséhez.
 
@@ -125,4 +125,4 @@ Azure Maps időjárási szolgáltatások (előzetes verzió) – fogalmakat isme
 Fedezze fel a Azure Maps Weather Services (előzetes verzió) API dokumentációját:
 
 > [!div class="nextstepaction"]
-> [Azure Maps időjárási szolgáltatások](/rest/api/maps/weather)
+> [Azure Maps Weather-szolgáltatások](/rest/api/maps/weather)

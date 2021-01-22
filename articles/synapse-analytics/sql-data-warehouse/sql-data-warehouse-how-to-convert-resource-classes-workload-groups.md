@@ -11,12 +11,12 @@ ms.date: 08/13/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b82342ffb76f8bb58b8f6875751601094d6131ca
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b6dd2199452837d81c201cf4aef2bcd94b35cda3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461892"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677205"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>Erőforrás-osztályok átalakítása munkaterhelés-csoportokra
 
@@ -56,7 +56,7 @@ CREATE WORKLOAD GROUP wgDataLoads WITH
 
 ## <a name="create-the-classifier"></a>Az osztályozó létrehozása
 
-Korábban a lekérdezéseknek az erőforrás-osztályokra való leképezése [sp_addrolemembertel](resource-classes-for-workload-management.md#change-a-users-resource-class)történt.  Ha ugyanazokat a funkciókat és leképezési kérelmeket szeretné elérni a munkaterhelés-csoportokhoz, használja a [munkaterhelés-osztályozó létrehozása](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) szintaxist.  A sp_addrolemember használata csak akkor engedélyezett, ha egy bejelentkezési azonosító alapján leképezi az erőforrásokat egy kérelemre.  Az osztályozó a bejelentkezés mellett további lehetőségeket is biztosít, például a következőket:
+Korábban a lekérdezéseknek az erőforrás-osztályokra való leképezése [sp_addrolemembertel](resource-classes-for-workload-management.md#change-a-users-resource-class)történt.  Ha ugyanazokat a funkciókat és leképezési kérelmeket szeretné elérni a munkaterhelés-csoportokhoz, használja a [munkaterhelés-osztályozó létrehozása](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) szintaxist.  A sp_addrolemember használata csak akkor engedélyezett, ha egy bejelentkezési azonosító alapján leképezi az erőforrásokat egy kérelemre.  Az osztályozó a bejelentkezés mellett további lehetőségeket is biztosít, például a következőket:
     - címke
     - munkamenet
     - Az alábbi példa arra az esetre, ha a bejelentkezéshez olyan lekérdezéseket rendel, `AdfLogin` amelyeken a [beállítás felirata](sql-data-warehouse-develop-label.md)  is be van állítva `factloads` a fent létrehozott munkaterhelés-csoportra `wgDataLoads` .
@@ -86,9 +86,9 @@ SELECT request_id, [label], classifier_name, group_name, command
   ORDER BY submit_time DESC
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Munkaterhelés elkülönítése](sql-data-warehouse-workload-isolation.md)
 - [Útmutató: munkaterhelés-csoport létrehozása](quickstart-configure-workload-isolation-tsql.md)
 - [Számítási feladatok BESOROLÁSának létrehozása (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?&view=azure-sqldw-latest)
-- [MUNKATERHELÉS-csoport létrehozása (Transact-SQL)](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)
+- [MUNKATERHELÉS-csoport létrehozása (Transact-SQL)](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest&preserve-view=true)

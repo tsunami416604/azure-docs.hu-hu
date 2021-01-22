@@ -2,18 +2,21 @@
 title: Azure Service Bus üzenetkezelési entitások automatikus továbbítása
 description: Ez a cikk egy Azure Service Bus üzenetsor vagy előfizetés egy másik várólistára vagy témakörre való láncolását ismerteti.
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 01/20/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8f5f93f65871c0b9658a75264ab959dbae7fefe7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80bef52d568130fa800a1da661f4867abb3df02c
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819573"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678988"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>Service Bus entitások láncolása az autoforwarding révén
 
 Az Service Bus- *továbbítási* funkció lehetővé teszi egy üzenetsor vagy előfizetés láncolását egy másik üzenetsor vagy témakör számára, amely ugyanannak a névtérnek a részét képezi. Ha engedélyezve van az automatikus továbbítás, Service Bus automatikusan eltávolítja az első várólistába vagy előfizetésbe helyezett üzeneteket (forrás), és a második várólistába vagy témakörbe (cél) helyezi őket. A cél entitásnak közvetlenül is küldhet üzenetet.
+
+> [!NOTE]
+> Az Service Bus alapszintű csomagja nem támogatja az öntovábbítási funkciót. A standard és a prémium szintű csomag támogatja a szolgáltatást. A szintek közötti különbségekért tekintse meg a [Service Bus díjszabását](https://azure.microsoft.com/pricing/details/service-bus/).
 
 ## <a name="using-autoforwarding"></a>Az autoforwarding használata
 

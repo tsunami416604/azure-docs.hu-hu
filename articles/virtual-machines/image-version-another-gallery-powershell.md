@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 2f26716a4d04b574bf393f502758a725948419da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85bc6f4468e0365d247b0adc204bd53ce9fa3006
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89299949"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676716"
 ---
 # <a name="copy-an-image-from-another-gallery-using-powershell"></a>Rendszerkép másolása egy másik gyűjteményből a PowerShell használatával
 
@@ -103,7 +103,7 @@ A kimenet a következőhöz hasonlóan fog kinézni:
 Hozzon létre egy új rendszerkép-definíciót a célhelyen a [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) parancsmag és a fenti kimenetből származó információk használatával.
 
 
-Ebben a példában a képdefiníció neve *myDestinationImgDef* a *myDestinationGallery*nevű galériában.
+Ebben a példában a képdefiníció neve *myDestinationImgDef* a *myDestinationGallery* nevű galériában.
 
 
 ```azurepowershell-interactive
@@ -127,7 +127,7 @@ Hozzon létre egy rendszerkép [-verziót a New-AzGalleryImageVersion](/powershe
 
 A képverzió megengedett karaktereinek száma számok és időszakok. A számoknak egy 32 bites egész számon belüli tartományba kell esniük. Formátum: *MajorVersion*. *MinorVersion*. *Javítás*.
 
-Ebben a példában a *myDestinationGallery*neve a *myDestinationRG* erőforráscsoport, az *USA nyugati* régiója. A rendszerkép verziója a *1.0.0* , és 1 replikát fogunk létrehozni az *USA déli középső* régiójában és 2 replikát az *USA nyugati* régiójában. 
+Ebben a példában a *myDestinationGallery* neve a *myDestinationRG* erőforráscsoport, az *USA nyugati* régiója. A rendszerkép verziója a *1.0.0* , és 1 replikát fogunk létrehozni az *USA déli középső* régiójában és 2 replikát az *USA nyugati* régiójában. 
 
 
 ```azurepowershell-interactive
@@ -164,6 +164,6 @@ $job.State
 
 Hozzon létre egy virtuális gépet [általánosított](vm-generalized-image-version-powershell.md) vagy [speciális](vm-specialized-image-version-powershell.md) rendszerkép-verzióból.
 
-Az [Azure rendszerkép-szerkesztő (előzetes verzió)](./linux/image-builder-overview.md) segítségével automatizálhatja a rendszerkép-verziók létrehozását, és [egy meglévő rendszerkép-verzióból](./linux/image-builder-gallery-update-image-version.md)is frissítheti és létrehozhatja az új rendszerkép verzióját. 
+Az [Azure rendszerkép-szerkesztő (előzetes verzió)](./image-builder-overview.md) segítségével automatizálhatja a rendszerkép-verziók létrehozását, és [egy meglévő rendszerkép-verzióból](./linux/image-builder-gallery-update-image-version.md)is frissítheti és létrehozhatja az új rendszerkép verzióját. 
 
 A vásárlási tervre vonatkozó információk megadásával kapcsolatos információkért lásd: [Azure Marketplace vásárlási terv információinak megadása képek létrehozásakor](marketplace-images.md).

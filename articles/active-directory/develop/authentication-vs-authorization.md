@@ -13,12 +13,12 @@ ms.date: 05/22/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: d4abc9e1bba151f46adf71dd0185ddddad916a38
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 5087278e5c89514cd43b7ca871a58f18e0fa98f2
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216461"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678146"
 ---
 # <a name="authentication-vs-authorization"></a>Hitelesítés és engedélyezés
 
@@ -51,7 +51,7 @@ Ez a videó ismerteti a Microsoft Identity platformot és a modern hitelesítés
 A Microsoft Identity platform által használt protokollok összehasonlítása:
 
 * **OAuth és OpenID Connect**: a platform az OAuth-t használja az engedélyezéshez és az OpenID connecthez (OIDC) a hitelesítéshez. Az OpenID Connect a OAuth 2,0-re épül, így a terminológia és a folyamat a kettő között hasonló. Akár egyszerre is hitelesítheti a felhasználót (az OpenID Connect használatával), és engedélyt kaphat egy olyan védett erőforrás elérésére, amelyet a felhasználó birtokol (az OAuth 2,0-on keresztül) egy kérelemben. További információ: [OAuth 2,0 és OpenID Connect protokollok](active-directory-v2-protocols.md) és [OpenID Connect Protocol](v2-protocols-oidc.md).
-* **OAuth és SAML**: a platform a OAuth 2,0-et használja az engedélyezéshez és az SAML hitelesítéshez. Ha további információt szeretne arról, hogyan használhatja ezeket a protokollokat a felhasználók hitelesítéséhez és a védett erőforrások eléréséhez szükséges engedélyek beszerzéséhez, tekintse meg a [Microsoft Identity platform és a OAuth 2,0 SAML-tulajdonos állítási folyamatát](v2-saml-bearer-assertion.md).
+* **OAuth és SAML**: a platform a OAuth 2,0-et használja az engedélyezéshez és az SAML hitelesítéshez. Ha további információt szeretne arról, hogyan használhatja ezeket a protokollokat a felhasználók hitelesítéséhez és a védett erőforrások eléréséhez szükséges engedélyek beszerzéséhez, tekintse meg a [Microsoft Identity platform és a OAuth 2,0 SAML-tulajdonos állítási folyamatát](./scenario-token-exchange-saml-oauth.md).
 * **OpenID Connect és SAML**: a platform az OpenID Connect és az SAML használatával hitelesíti a felhasználót, és lehetővé teszi az egyszeri bejelentkezést. Az SAML-hitelesítés gyakran használatos az Azure AD-vel összevont identitás-szolgáltatók, például a Active Directory összevonási szolgáltatások (AD FS) (AD FS) számára, ezért a vállalati alkalmazásokban gyakran használatos. Az OpenID Connect általában kizárólag a felhőben, például a Mobile Appsben, a webhelyeken és a webes API-kon található alkalmazások esetében használatos.
 
 ## <a name="next-steps"></a>Következő lépések

@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 531c423e42338b72b41c54466d5bfe8a89cd3c45
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e69781bf6d33c176d27c16a7f3cf38539ec28f07
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969637"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678238"
 ---
 # <a name="azure-image-builder-service-networking-options"></a>Az Azure rendszerkép-készítő szolgáltatás hálózatkezelési beállításai
 
@@ -89,4 +89,4 @@ A Private link Service-nek az adott VNET és alhálózatból származó IP-címe
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ: az [Azure rendszerkép-készítő áttekintése](image-builder-overview.md).
+További információ: az [Azure rendszerkép-készítő áttekintése](../image-builder-overview.md).

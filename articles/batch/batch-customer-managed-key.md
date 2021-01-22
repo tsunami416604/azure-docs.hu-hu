@@ -5,12 +5,12 @@ author: pkshultz
 ms.topic: how-to
 ms.date: 07/17/2020
 ms.author: peshultz
-ms.openlocfilehash: 404103caf376b792d363996664a69f655d5bd202
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 2ed19846209d098d9eba8dba991e08d1fc57f185
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326012"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678009"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-batch-account-with-azure-key-vault-and-managed-identity"></a>Ügyfél által felügyelt kulcsok konfigurálása a Azure Batch-fiókhoz Azure Key Vault és felügyelt identitással
 
@@ -39,7 +39,7 @@ A fiók létrehozása után egy egyedi GUID-azonosítót talál a **tulajdonság
 
 Új batch-fiók létrehozásakor meg kell adni `SystemAssigned` a `--identity` paramétert.
 
-```powershell
+```azurecli
 resourceGroupName='myResourceGroup'
 accountName='mybatchaccount'
 
@@ -52,7 +52,7 @@ az batch account create \
 
 A fiók létrehozása után ellenőrizheti, hogy engedélyezve van-e a rendszerhez rendelt felügyelt identitás ezen a fiókon. Ügyeljen arra, hogy a `PrincipalId` , mivel ez az érték szükséges ahhoz, hogy a Batch-fiók hozzáférhessen a Key Vaulthoz.
 
-```powershell
+```azurecli
 az batch account show \
     -n $accountName \
     -g $resourceGroupName \
@@ -100,7 +100,7 @@ A [Azure Portal](https://portal.azure.com/)nyissa meg a Batch-fiók lapot. A **t
 
 Miután létrehozta a Batch-fiókot a rendszerhez rendelt felügyelt identitással, és megadta a hozzáférést a Key Vaulthoz, frissítse a Batch-fiókot a `{Key Identifier}` paraméter alatt található URL-címmel `keyVaultProperties` . A **encryption_key_source** is állítsa be `Microsoft.KeyVault` .
 
-```powershell
+```azurecli
 az batch account set \
     -n $accountName \
     -g $resourceGroupName \
@@ -118,7 +118,7 @@ A kulcs új verziójának létrehozásakor frissítse a Batch-fiókot az új ver
 
 A verzió frissítéséhez használhatja az Azure CLI-t is.
 
-```powershell
+```azurecli
 az batch account set \
     -n $accountName \
     -g $resourceGroupName \
@@ -134,7 +134,7 @@ A Batch-titkosításhoz használt kulcs módosításához kövesse az alábbi l�
 
 Az Azure CLI-t másik kulcs használatára is használhatja.
 
-```powershell
+```azurecli
 az batch account set \
     -n $accountName \
     -g $resourceGroupName \
