@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d9a6eb572b1ab870fdb848f8b0989f88e6dbc3c0
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: a4875c2c75b133f0ab4046266d6aac36d5478fe4
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045954"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664044"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>A digitális ikrek és a Twin Graph ismertetése
 
@@ -25,7 +25,9 @@ Egy Azure digitális Twins-megoldásban a környezetében lévő entitásokat az
 
 Ahhoz, hogy létre lehessen hozni egy Digital Twin-et az Azure Digital Twins-példányban, rendelkeznie kell egy, a szolgáltatásba feltöltött *modellel* . A modellek a tulajdonságok, a telemetria és az adott Twin kapcsolatok készletét írják le, egyebek között. A modellben definiált információk típusaiért lásd [*: fogalmak: egyéni modellek*](concepts-models.md).
 
-Egy modell létrehozása és feltöltése után az ügyfélalkalmazás létrehozhat egy típusú példányt; Ez egy digitális Twin. Például a *Floor* modell létrehozása után létrehozhat egy vagy több olyan digitális ikreket, amelyek ezt a típust használják (például a *Floor* típust, egy másikat *, a* *Floor2* stb.). 
+Egy modell létrehozása és feltöltése után az ügyfélalkalmazás létrehozhat egy típusú példányt; Ez egy digitális Twin. Például a *Floor* modell létrehozása után létrehozhat egy vagy több olyan digitális ikreket, amelyek ezt a típust használják (például a *Floor* típust, egy másikat *, a* *Floor2* stb.).
+
+[!INCLUDE [digital-twins-versus-device-twins](../../includes/digital-twins-versus-device-twins.md)]
 
 ## <a name="relationships-a-graph-of-digital-twins"></a>Kapcsolatok: digitális ikrek gráfja
 
@@ -41,7 +43,7 @@ Ennek a folyamatnak az eredménye egy gráfon (a kapcsolatokon) keresztül össz
 
 Ez a szakasz azt mutatja be, hogyan hozhat létre digitális ikreket és kapcsolatokat egy ügyfélalkalmazás használatával. Olyan .NET-kód példákat tartalmaz, amelyek a [DigitalTwins API-kat](/rest/api/digital-twins/dataplane/twins)használják, hogy további kontextust biztosítson az egyes fogalmakon belül.
 
-### <a name="create-digital-twins"></a>Digitális ikrek létrehozása
+### <a name="create-digital-twins"></a>Digitális ikerpéldányok létrehozása
 
 Az alábbi kódrészlet a [DigitalTwins API](/rest/api/digital-twins/dataplane/twins) -kat használja egy Twin típusú *szoba* létrehozásához.
 
@@ -157,7 +159,7 @@ Ha JSON-objektumként jelenik meg, a digitális iker kapcsolata a következő me
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lásd: gráf-elemek kezelése az Azure Digital Twin API-kkal:
 * [*Útmutató: digitális ikrek kezelése*](how-to-manage-twin.md)

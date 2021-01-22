@@ -3,15 +3,15 @@ title: Lekérdezési tároló – Azure Database for MariaDB
 description: További információ a Azure Database for MariaDB található lekérdezés-tárolási szolgáltatásról, amely segítséget nyújt a teljesítmény időbeli nyomon követéséhez.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 01/15/2021
-ms.openlocfilehash: 164285b1fea3dce18161066e643aa165e47cc496
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 0841a38ab6e4fe3b4d0faf755209d85cfea1ac17
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233986"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664197"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>A Azure Database for MariaDB teljesítményének figyelése a lekérdezési tárolóval
 
@@ -161,7 +161,7 @@ Ez a nézet visszaadja az események várakozási idejének értékét a lekérd
 | `count_star` | bigint (20) | NO| A lekérdezés intervallumában mintavétel alatt álló várakozási események száma |
 | `sum_timer_wait_ms` | double | NO| A lekérdezés teljes várakozási ideje (ezredmásodpercben) az intervallumban |
 
-### <a name="functions"></a>Függvények
+### <a name="functions"></a>Functions
 
 | **Név**| **Leírás** |
 |---|---|
@@ -176,6 +176,6 @@ Ez a nézet visszaadja az események várakozási idejének értékét a lekérd
 - A várakozási statisztikák megőrzési időtartama 24 óra.
 - A várakozási statisztikában a példa az események töredékét rögzíti. A gyakoriság módosítható a paraméter használatával `query_store_wait_sampling_frequency` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [lekérdezési teljesítményről](concepts-query-performance-insight.md)

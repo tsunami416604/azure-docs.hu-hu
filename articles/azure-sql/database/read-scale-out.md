@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
-ms.date: 09/03/2020
-ms.openlocfilehash: 9c09a54daa482d738ded9f7aca1c95c2b640617e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 01/20/2021
+ms.openlocfilehash: 5f9e7e1c96db2b60e41fe0ded69ea562cf8fcea6
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790270"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663985"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>Írásvédett replikák használata írásvédett lekérdezési feladatok kiszervezéséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -85,7 +85,7 @@ Ha írásvédett replikához csatlakozik, a dinamikus felügyeleti nézetek (DMV
 
 A gyakran használt nézetek a következők:
 
-| Name (Név) | Cél |
+| Name | Cél |
 |:---|:---|
 |[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Erőforrás-kihasználtsági metrikákat biztosít az elmúlt órában, beleértve a CPU-t, az adatio-t és a naplózási írási kihasználtságot a szolgáltatási célkitűzések korlátaihoz képest.|
 |[sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| Az adatbázismotor-példány összesített várakozási statisztikáját biztosítja. |
@@ -115,12 +115,12 @@ Ritka esetekben, ha egy pillanatkép-elkülönítési tranzakció hozzáfér egy
 
 ### <a name="long-running-queries-on-read-only-replicas"></a>Hosszú ideig futó lekérdezések csak olvasható replikák esetén
 
-A csak olvasási replikán futó lekérdezéseknek hozzá kell férniük a lekérdezésben hivatkozott objektumok metaadataihoz (táblák, indexek, statisztikák stb.). Ritka esetekben, ha egy metaadat-objektum módosul az elsődleges replikán, miközben egy lekérdezés zárolva van ugyanazon az objektumon az írásvédett replikán, a lekérdezés [blokkolhatja](/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK) azt a folyamatot, amely az elsődleges replikáról a írásvédett replikára alkalmazza a módosításokat. Ha egy ilyen lekérdezés hosszú ideig futott, a csak olvasási replikát jelentősen el lehet végezni az elsődleges replikával való szinkronizálás során. 
+A csak olvasási replikán futó lekérdezéseknek hozzá kell férniük a lekérdezésben hivatkozott objektumok metaadataihoz (táblák, indexek, statisztikák stb.). Ritka esetekben, ha egy metaadat-objektum módosul az elsődleges replikán, miközben egy lekérdezés zárolva van ugyanazon az objektumon az írásvédett replikán, a lekérdezés [blokkolhatja](/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK) azt a folyamatot, amely az elsődleges replikáról a írásvédett replikára alkalmazza a módosításokat. Ha egy ilyen lekérdezés hosszú ideig futott, a csak olvasási replikát jelentősen el lehet végezni az elsődleges replikával való szinkronizálás során.
 
-Ha egy csak olvasható replikán egy hosszan futó lekérdezés okozza ezt a blokkolást, a rendszer automatikusan leállítja, és a munkamenet 1219-as hibát kap, "a munkamenete le lett választva a magas prioritású DDL-művelet miatt".
+Ha egy csak olvasható replikán egy hosszan futó lekérdezés okozza ezt a blokkolást, a rendszer automatikusan leállítja azt. A munkamenet a 1219-as hibát fogja kapni: "a munkamenete le lett választva egy magas prioritású DDL-művelet miatt", vagy a 3947-es hiba: "a tranzakció meg lett szakítva, mert a másodlagos számítás nem tudta felfogni a műveletet. Próbálja megismételni a tranzakciót. "
 
 > [!NOTE]
-> Ha a 3961-as vagy a 1219-es hibát kapja egy írásvédett replika lekérdezésének futtatásakor, próbálja megismételni a lekérdezést.
+> Ha 3961, 1219 vagy 3947 hibát kap egy írásvédett replikára irányuló lekérdezések futtatásakor, próbálja megismételni a lekérdezést.
 
 > [!TIP]
 > A prémium és üzletileg kritikus szolgáltatási szinten, ha egy írásvédett replikához csatlakozik, a (z `redo_queue_size` `redo_rate` ) [sys.dm_database_replica_states](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) DMV-ban található és oszlopok az adatszinkronizálási folyamat figyelésére használhatók, amely a csak olvasható replikán lévő Adatkésési mutatókként szolgál.

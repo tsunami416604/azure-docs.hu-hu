@@ -3,15 +3,15 @@ title: A megfelelő központi telepítési típus kiválasztása – Azure Datab
 description: Ez a cikk azokat a tényezőket ismerteti, amelyeket figyelembe kell vennie, mielőtt üzembe helyezi a Azure Database for MariaDB infrastruktúra-szolgáltatásként (IaaS) vagy a szolgáltatásként szolgáló platformként (Pásti).
 author: mksuni
 ms.author: sumuth
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: d8885e374142b3d916803fc472ae18351ca6d470
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 921ad8d187f6c2478bdf92aab0ee0ec3c9e75bce
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240273"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664518"
 ---
 # <a name="choose-the-right-mariadb-server-option-in-azure"></a>Válassza ki a megfelelő MariaDB-kiszolgáló lehetőséget az Azure-ban
 
@@ -49,7 +49,7 @@ A fenti lehetőségek közötti fő különbségek a következő táblázatban l
 
 A MariaDB-adatbázisok üzemeltetéséhez számos tényező befolyásolhatja a saját döntését, hogy kiválassza a Péter vagy a IaaS lehetőséget.
 
-### <a name="cost"></a>Költség
+### <a name="cost"></a>Költségek
 
 A korlátozott finanszírozás gyakran az elsődleges szempont, amely meghatározza az adatbázisok üzemeltetésének legjobb megoldását. Ez akkor is igaz, ha kevés pénzzel vagy csapattal rendelkezik egy olyan vállalatnál, amely szűk költségvetési megkötések keretében működik. Ez a szakasz a számlázási és licencelési alapismereteket ismerteti az Azure-ban, mivel azok az Azure-beli virtuális gépek Azure Database for MariaDB és MariaDB vonatkoznak.
 

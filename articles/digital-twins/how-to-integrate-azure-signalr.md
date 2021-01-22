@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d84acc5501b3d40f6db85d0ee6ee369aec5a6aa4
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 71e74789654d2df91d9a087eaaf8d8f2a2664f7b
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051105"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664112"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Az Azure Digital Twins integrálása az Azure Signaler szolgáltatással
 
@@ -40,7 +40,11 @@ Az Azure Signaler szolgáltatást az alábbi elérési úton csatlakoztathatja a
 
 Először töltse le a szükséges minta alkalmazásokat. A következőkre lesz szüksége:
 * [**Azure digitális Twins végpontok közötti minták**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/): Ez a minta egy *AdtSampleApp* tartalmaz, amely két Azure-függvényt tárol az adatok Azure digitális Twins-példány körüli áthelyezéséhez (ez a forgatókönyv részletesebben is elérhető az [*oktatóanyagban: végpontok közötti megoldás összekötése*](tutorial-end-to-end.md)). Emellett egy *DeviceSimulator* -minta alkalmazást is tartalmaz, amely egy IoT-eszközt szimulál, és másodpercenként új hőmérséklet-értéket generál. 
-    - Navigáljon a minta hivatkozásra, és a *zip letöltése* gombra kattintva töltse le a minta egy példányát a gépre, _**Azure_Digital_Twins_end_to_end_samples.zip**_. Csomagolja ki a mappát.
+    - Ha még nem töltötte le a mintát az oktatóanyag [*előfeltételeinek*](#prerequisites)részeként, keresse meg a minta hivatkozást, és válassza a cím alatt található *tallózási kód* gombot. Ekkor megnyílik a minták GitHub-tárháza, amelyet a-ként tölthet le *. ZIP* -t a *Code (kód* ) gomb kiválasztásával és a *zip letöltésével*.
+
+    :::image type="content" source="media/includes/download-repo-zip.png" alt-text="A Digital-Twins-Samples tárház áttekintése a GitHubon. A kód gomb be van jelölve, és létrehoz egy kis párbeszédpanelt, ahol ki van emelve a ZIP-Letöltés gomb." lightbox="media/includes/download-repo-zip.png":::
+
+    Ezzel letölti a minta-tárház egy példányát a gépre, **digital-twins-samples-master.zip**. Csomagolja ki a mappát.
 * A [**signaler Integration Web App minta**](/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/): ez egy példa a webalkalmazásra, amely az Azure-beli digitális Twins telemetria adatait az Azure signaler szolgáltatásból fogja felhasználni.
     -  Navigáljon a minta hivatkozásra, és a *zip letöltése* gombra kattintva töltse le a minta egy példányát a gépre, _**Azure_Digital_Twins_SignalR_integration_web_app_sample.zip**_. Csomagolja ki a mappát.
 
@@ -63,7 +67,7 @@ Először nyissa meg a böngészőt, ahol a Azure Portal meg van nyitva, és vé
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/signalr-keys.png" alt-text="Képernyőkép a Azure Portalről, amely a Signaler-példány kulcsok lapját jeleníti meg. Az elsődleges KAPCSOLÓDÁSi karakterlánc melletti &quot;másolás a vágólapra&quot; ikon ki van emelve." lightbox="media/how-to-integrate-azure-signalr/signalr-keys.png":::
 
-Ezután indítsa el a Visual studiót (vagy egy tetszőleges szerkesztőprogramot), és nyissa meg a Code megoldást a *Azure_Digital_Twins_end_to_end_samples > ADTSampleApp* mappában. Ezután végezze el a következő lépéseket a függvények létrehozásához:
+Ezután indítsa el a Visual studiót (vagy egy másik szerkesztőprogramot), és nyissa meg a kód megoldást a *Digital-Twins-Samples-master > ADTSampleApp* mappában. Ezután végezze el a következő lépéseket a függvények létrehozásához:
 
 1. Hozzon létre egy új, **SignalRFunctions.cs** nevű C# Sharp osztályt a *SampleFunctionsApp* projektben.
 
@@ -71,7 +75,7 @@ Ezután indítsa el a Visual studiót (vagy egy tetszőleges szerkesztőprogramo
     
     :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/signalRFunction.cs":::
 
-1. A Visual Studio *csomagkezelő konzoljának* ablakában vagy a számítógépen lévő bármelyik parancssori ablakban a *Azure_Digital_Twins_end_to_end_samples \adtsampleapp\samplefunctionsapp* mappában futtassa a következő parancsot a `SignalRService` NuGet-csomag projekthez való telepítéséhez:
+1. A Visual Studio *csomagkezelő konzoljának* ablakában vagy a *Digital-Twins-Samples-master\AdtSampleApp\SampleFunctionsApp* mappában található bármelyik parancssorablakban futtassa a következő parancsot a `SignalRService` NuGet-csomag projektbe történő telepítéséhez:
     ```cmd
     dotnet add package Microsoft.Azure.WebJobs.Extensions.SignalRService --version 1.2.0
     ```
@@ -126,7 +130,7 @@ Ebben a szakaszban a művelet eredményét fogja látni. Először is indítsa e
 
 A végpontok közötti oktatóanyag előfeltétele, hogy az eszközt egy IoT Hub és az Azure Digital Twins-példányon keresztül küldje el [az eszközön](tutorial-end-to-end.md#configure-and-run-the-simulation) .
 
-Most mindössze annyit kell tennie, hogy elindítja a szimulátor projektet, amely a *Azure_Digital_Twins_end_to_end_samples > DeviceSimulator > DeviceSimulator. SLN* mappában található. Ha a Visual studiót használja, nyissa meg a projektet, majd futtassa ezt a gombot az eszköztáron:
+Most mindössze annyit kell tennie, hogy elindítja a szimulátor projektet, amely a *Digital-Twins-Samples-master > DeviceSimulator > DeviceSimulator. SLN* címen található. Ha a Visual studiót használja, nyissa meg a projektet, majd futtassa ezt a gombot az eszköztáron:
 
 :::image type="content" source="media/how-to-integrate-azure-signalr/start-button-simulator.png" alt-text="A Visual Studio Start gombja (DeviceSimulator projekt)":::
 
@@ -188,9 +192,9 @@ Az Azure Cloud Shell vagy a helyi Azure CLI használatával törölheti az erőf
 az group delete --name <your-resource-group>
 ```
 
-Végezetül törölje a helyi gépre letöltött Project Sample-mappákat (*Azure_Digital_Twins_end_to_end_samples.zip* és *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip*).
+Végezetül törölje a helyi gépre letöltött Project Sample-mappákat (*digital-twins-samples-master.zip* és *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip*).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben a Signaler Azure functions szolgáltatással állíthatja be az Azure Digital Twins telemetria-eseményeit egy minta ügyfélalkalmazás számára.
 

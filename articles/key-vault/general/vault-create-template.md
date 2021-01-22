@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/5/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e19277aa3639031371e0e8dd28f4dd849efd4597
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 24fef1680c5660a70a20ae727833b045f6c5aa88
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97933931"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664350"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>Azure Key Vault és a tároló hozzáférési házirendjének létrehozása Resource Manager-sablonnal
 
@@ -150,7 +150,7 @@ A teljes Key Vault-sablon újbóli üzembe helyezése nélkül is üzembe helyez
             "permissions": {
               "keys": "[parameters('keysPermissions')]",
               "secrets": "[parameters('secretsPermissions')]",
-              "certificates": [parameters('certificatesPermissions')]
+              "certificates": "[parameters('certificatesPermissions')]"
             }
           }
         ]
@@ -160,6 +160,7 @@ A teljes Key Vault-sablon újbóli üzembe helyezése nélkül is üzembe helyez
 }
 
 ```
+
 További információ az Key Vault sablon beállításairól: [Key Vault ARM-sablon referenciája](/azure/templates/microsoft.keyvault/vaults/accesspolicies).
 
 ## <a name="more-key-vault-resource-manager-templates"></a>További Key Vault Resource Manager-sablonok
@@ -215,8 +216,8 @@ Write-Host "Press [ENTER] to continue..."
 - További információ a [Azure Resource Managerról](../../azure-resource-manager/management/overview.md).
 - Tekintse át a [Azure Key Vault biztonsági áttekintést](security-overview.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Biztonságos hozzáférés a kulcstartóhoz](secure-your-key-vault.md)
+- [Biztonságos hozzáférés egy kulcstartóhoz](secure-your-key-vault.md)
 - [Hitelesítés a Key vaultban](authentication.md)
 - [Az Azure Key Vault fejlesztői útmutatója](developers-guide.md)

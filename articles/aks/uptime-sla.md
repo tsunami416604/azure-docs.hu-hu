@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 01/08/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 95728ca14b96adf7396ca13888107477d953b2a9
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 9f8f697da7499d370c96b77e7e543dec9fbafa3e
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033336"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664095"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes szolgáltatás (ak) üzemidő SLA
 
@@ -90,7 +90,7 @@ Hozzon létre egy új fürtöt, és ne használja a rendelkezésre állási SLA-
 az aks create --resource-group myResourceGroup --name myAKSCluster--node-count 1
 ```
 
-A [`az aks update`][az-aks-nodepool-update] parancs használatával frissítse a meglévő fürtöt:
+A [`az aks update`][az-aks-update] parancs használatával frissítse a meglévő fürtöt:
 
 ```azurecli-interactive
 # Update an existing cluster to use Uptime SLA
@@ -116,7 +116,7 @@ az group delete --name myResourceGroup --yes --no-wait
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [Availability Zones][availability-zones] használatával növelheti a magas rendelkezésre állást az AK-fürt számítási feladataival.
 
@@ -135,6 +135,6 @@ Konfigurálja a fürtöt a [kimenő forgalom korlátozása](limit-egress-traffic
 [limit-egress-traffic]: ./limit-egress-traffic.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-[az-aks-nodepool-update]: /cli/azure/aks/nodepool?#az-aks-nodepool-update
+[az-aks-update]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_update
 [az-group-delete]: /cli/azure/group#az-group-delete
 [private-clusters]: private-clusters.md

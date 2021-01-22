@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 49b7bae1a0cc224b92f292b891fae210f2cffa4e
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 91915f204a68d59a603b8bdea383b497a5b33d34
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400607"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664027"
 ---
 # <a name="what-is-azure-digital-twins"></a>Mi az az Azure Digital Twins?
 
@@ -33,6 +33,8 @@ Kihasználhatja az Azure digitális Ikrekre épülő tartományi szaktudását, 
 Az Azure Digital Twins szolgáltatásban definiálhatja azokat a digitális entitásokat, amelyek a fizikai környezetben lévő személyeket, helyeket és dolgokat képviselik egyéni, [**modellek**](concepts-models.md)nevű különálló típusok használatával. 
 
 Ezeket a modell-definíciókat speciális szókincsként tekintheti meg a vállalata leírásához. Egy épületfelügyeleti megoldáshoz például meghatározhat olyan modelleket, mint például az "épület", a "Floor" és a "lift". Ezután létrehozhat **digitális ikreket** ezen modellek alapján, hogy az adott környezetet képviselje.
+
+[!INCLUDE [digital-twins-versus-device-twins](../../includes/digital-twins-versus-device-twins.md)]
 
 A modellek a [digitális Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)nevű JSON-szerű nyelven vannak meghatározva, és leírják az ikreket az állapotuk tulajdonságai, a telemetria-események, a parancsok, az összetevők és a kapcsolatok tekintetében.
 * A modellek szemantikai **kapcsolatokat** határoznak meg az entitások között, így összekapcsolhatják az ikreket egy, az interakciókat tükröző Tudásbázisban. A modelleket a világ egy leírásában, illetve a kapcsolatok műveletként is megtekintheti a főkönyvek formájában.
@@ -67,11 +69,11 @@ Az Azure digitális Twins más adatforrásokból is átadható, REST API-kkal va
 Az Azure Digital Twins-modellben lévő információk további elemzésekhez vagy tároláshoz is átirányíthatók az alárendelt Azure-szolgáltatásokhoz. Ezt olyan esemény- **útvonalakon** keresztül biztosítjuk, amelyek az [Event Hub](../event-hubs/event-hubs-about.md), a [Event Grid](../event-grid/overview.md)vagy a [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) használatával irányítják a kívánt adatfolyamatokat.
 
 Az esemény-útvonalakkal többek között az alábbiakat teheti:
-* Azure digitális Twins-beli adattárolók tárolása [Azure Data Lake](../storage/blobs/data-lake-storage-introduction.md)
-* Azure digitális Twins-adatok elemzése az [Azure szinapszis Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)vagy más Microsoft adatelemzési eszközökkel
-* Nagyobb munkafolyamatok integrálása a Logic Apps
+* Az Azure Digital Twins-adatok egy [Azure Data Lake-ben](../storage/blobs/data-lake-storage-introduction.md) való tárolása
+* Azure Digital Twins-adatok elemzése az [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) vagy más Microsoftos adatelemzési eszközzel
+* Nagyobb munkafolyamatok integrálása a Logic Appsbe
 * Az Azure Digital Twins csatlakoztatása Time Series Insights az egyes Twins idősorozatok előzményeinek nyomon követése
-* Idősorozat-modell igazítása Time Series Insightsban az Azure Digital Twins forrásával
+* Time Series Insightsbeli idősoros modell igazítása egy Azure Digital Twins-forráshoz
 
 Ez egy másik módja annak, hogy az Azure Digital Twins egy nagyobb megoldáshoz kapcsolódjon, és támogatja az egyéni igényeket, hogy továbbra is működjenek ezekkel az ismeretekkel.
 

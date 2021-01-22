@@ -17,12 +17,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7ddc13306f4adb1730169c4811b9d2227dedca33
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 481a4ff21c361e4cf82a21d9e98357a4c8b7b1b4
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632766"
+ms.locfileid: "98663672"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>A felügyelet automatizálása a SQL Server IaaS-ügynök bővítménnyel
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,7 +34,7 @@ Ez a cikk áttekintést nyújt a bővítményről. A SQL Server IaaS bővítmén
 
 ## <a name="overview"></a>Áttekintés
 
-A SQL Server IaaS-ügynök bővítmény számos előnyt biztosít az Azure-beli virtuális gépeken futó SQL Server számára: 
+A SQL Server IaaS-ügynök bővítmény lehetővé teszi a Azure Portal való integrációt, és a felügyeleti módtól függően feloldja az Azure-beli virtuális gépeken SQL Server számos funkciójának előnyeit: 
 
 - A **szolgáltatás előnyei**: a bővítmény számos Automation-szolgáltatás előnyeit feloldja, például a portál felügyeletét, a licencek rugalmasságát, az automatikus biztonsági mentést, az automatizált javításokat és egyebeket. A részletekért lásd a jelen cikkben a [szolgáltatásokkal kapcsolatos előnyöket](#feature-benefits) . 
 
@@ -74,12 +74,13 @@ A következő táblázat részletezi ezeket az előnyöket:
 
 | Szolgáltatás | Leírás |
 | --- | --- |
-| **A portál kezelése** | Feloldja [a felügyeletet a portálon](manage-sql-vm-portal.md), így egyetlen helyen tekintheti meg az összes SQL Server virtuális gépet, és így közvetlenül a portálról engedélyezheti és letilthatja az SQL-specifikus szolgáltatásokat. 
-| **Automatikus biztonsági mentés** |Automatizálja a biztonsági mentések ütemezését az összes adatbázishoz az alapértelmezett példányhoz, vagy a virtuális gépen a SQL Server [megfelelően telepített](frequently-asked-questions-faq.md#administration) példányát. További információ: [SQL Server automatikus biztonsági mentése az Azure Virtual Machines szolgáltatásban (Resource Manager)](automated-backup-sql-2014.md). |
-| **Automatikus javítás** |Beállít egy karbantartási időszakot, amely alatt a virtuális gép fontos Windows-és SQL Server biztonsági frissítéseit elvégezheti, így elkerülhető a frissítések végrehajtása a számítási feladatok csúcsidőben. További információ: [SQL Server automatikus javítása az Azure Virtual Machines szolgáltatásban (Resource Manager)](automated-patching.md). |
-| **Azure Key Vault integráció** |Lehetővé teszi Azure Key Vault automatikus telepítését és konfigurálását a SQL Server VM. További információ: [Azure Key Vault integrációjának konfigurálása az Azure-beli SQL Serverhoz Virtual Machines (Resource Manager)](azure-key-vault-integration-configure.md). |
-| **Rugalmas licencelés** | Az utólagos elszámolású licencelési modellre való zökkenőmentes áttéréssel, a saját licencek (más néven a Azure Hybrid Benefit) és a back-as-you-go licencelési modelljének [zavartalan átváltásával](licensing-model-azure-hybrid-benefit-ahb-change.md) megtakaríthatja a költségeket. | 
-| **Rugalmas verzió/kiadás** | Ha úgy dönt, hogy módosítja a SQL Server [verzióját](change-sql-server-version.md) vagy [kiadását](change-sql-server-edition.md) , akkor a teljes SQL Server VM újbóli üzembe helyezése nélkül frissítheti a Azure Portalon belüli metaadatokat.  | 
+| **A portál kezelése** | Feloldja [a felügyeletet a portálon](manage-sql-vm-portal.md), így egyetlen helyen tekintheti meg az összes SQL Server virtuális gépet, és így közvetlenül a portálról engedélyezheti és letilthatja az SQL-specifikus szolgáltatásokat. <br/> Felügyeleti mód: könnyű & teljes|  
+| **Automatikus biztonsági mentés** |Automatizálja a biztonsági mentések ütemezését az összes adatbázishoz az alapértelmezett példányhoz, vagy a virtuális gépen a SQL Server [megfelelően telepített](frequently-asked-questions-faq.md#administration) példányát. További információ: [SQL Server automatikus biztonsági mentése az Azure Virtual Machines szolgáltatásban (Resource Manager)](automated-backup-sql-2014.md). <br/> Felügyeleti mód: teljes|
+| **Automatikus javítás** |Beállít egy karbantartási időszakot, amely alatt a virtuális gép fontos Windows-és SQL Server biztonsági frissítéseit elvégezheti, így elkerülhető a frissítések végrehajtása a számítási feladatok csúcsidőben. További információ: [SQL Server automatikus javítása az Azure Virtual Machines szolgáltatásban (Resource Manager)](automated-patching.md). <br/> Felügyeleti mód: teljes|
+| **Azure Key Vault integráció** |Lehetővé teszi Azure Key Vault automatikus telepítését és konfigurálását a SQL Server VM. További információ: [Azure Key Vault integrációjának konfigurálása az Azure-beli SQL Serverhoz Virtual Machines (Resource Manager)](azure-key-vault-integration-configure.md). <br/> Felügyeleti mód: teljes|
+| **Lemez kihasználtságának megtekintése a portálon** | Lehetővé teszi, hogy megtekintse a Azure Portalban található SQL-adatfájlok lemezhasználat-kihasználtságának grafikus ábrázolását.  <br/> Felügyeleti mód: teljes | 
+| **Rugalmas licencelés** | Az utólagos elszámolású licencelési modellre való zökkenőmentes áttéréssel, a saját licencek (más néven a Azure Hybrid Benefit) és a back-as-you-go licencelési modelljének [zavartalan átváltásával](licensing-model-azure-hybrid-benefit-ahb-change.md) megtakaríthatja a költségeket. <br/> Felügyeleti mód: könnyű & teljes| 
+| **Rugalmas verzió/kiadás** | Ha úgy dönt, hogy módosítja a SQL Server [verzióját](change-sql-server-version.md) vagy [kiadását](change-sql-server-edition.md) , akkor a teljes SQL Server VM újbóli üzembe helyezése nélkül frissítheti a Azure Portalon belüli metaadatokat.  <br/> Felügyeleti mód: könnyű & teljes| 
 
 
 ## <a name="management-modes"></a>Felügyeleti módok

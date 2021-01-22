@@ -3,15 +3,15 @@ title: Naplók – Azure Database for MariaDB
 description: Ismerteti a Azure Database for MariaDBban elérhető naplókat, valamint a naplózási szintek engedélyezéséhez elérhető paramétereket.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 6/24/2020
-ms.openlocfilehash: e66eaf62b54759222421b17ebc7e33b82e018338
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3032cb8f5ce399822de65c867d1f32da254c9948
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541759"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663757"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>Naplók naplózása Azure Database for MariaDB
 

@@ -3,15 +3,15 @@ title: Lekérdezési terheléselemző – Azure Database for MariaDB
 description: Ez a cikk a Azure Database for MariaDB Lekérdezési terheléselemző szolgáltatását ismerteti.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: b643ba3305736480e06d7c10d594b2271839038f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 9e8e4527ba1717b4d152f501a38c3c8f65faf70e
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536332"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664231"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mariadb"></a>Lekérdezési teljesítmény elemzése az Azure Database for MariaDB-ben
 
@@ -56,7 +56,7 @@ Kattintással és húzással egy adott időablakra szűkítheti a diagramot. Azt
 ### <a name="wait-statistics"></a>Várakozási statisztika 
 
 > [!NOTE]
-> A várakozási statisztikák a lekérdezések teljesítményével kapcsolatos problémák elhárításához szükségesek. Javasoljuk, hogy csak hibaelhárítási célokra legyen bekapcsolva. <br>Ha a következő hibaüzenet jelenik meg: " *a Microsoft. DBforMariaDB" hibába ütközött "a probléma" Azure Portal. a kérés nem teljesíthető. Ha a probléma továbbra is fennáll, vagy váratlan, forduljon az ügyfélszolgálathoz az információval.* " a várakozási statisztikák megtekintése közben használjon kisebb időtartamot.
+> A várakozási statisztikák a lekérdezések teljesítményével kapcsolatos problémák elhárításához szükségesek. Javasoljuk, hogy csak hibaelhárítási célokra legyen bekapcsolva. <br>Ha a következő hibaüzenet jelenik meg: "*a Microsoft. DBforMariaDB" hibába ütközött "a probléma" Azure Portal. a kérés nem teljesíthető. Ha a probléma továbbra is fennáll, vagy váratlan, forduljon az ügyfélszolgálathoz az információval.*" a várakozási statisztikák megtekintése közben használjon kisebb időtartamot.
 
 A várakozási statisztikák áttekintést nyújtanak az adott lekérdezés végrehajtása során bekövetkezett várakozási eseményekről. További információ a várakozási események típusairól a [MySQL-motor dokumentációjában](https://go.microsoft.com/fwlink/?linkid=2098206).
 

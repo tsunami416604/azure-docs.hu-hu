@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 33b4c59e14301e496d0eddafa7bdfdf201b7aa29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d6e738152e542617046834980d3e7c58e497093
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87005905"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664681"
 ---
 # <a name="windows-stop-error---status-no-memory"></a>Windows leállási hiba – „nincs memória” állapot
 
@@ -27,7 +27,7 @@ Ez a cikk olyan problémák megoldását ismerteti, amelyekben a Windows nem ind
 
 ## <a name="symptom"></a>Hibajelenség
 
-Ha [rendszerindítási diagnosztikát](./boot-diagnostics.md) használ a virtuális gép (VM) képernyőképének megtekintéséhez, látni fogja, hogy a képernyőkép a következő hibakódot jeleníti meg: `0xC0000017` . A futtatott Windows-verziótól függően előfordulhat, hogy ez a kód a **Windows rendszerindítási kezelőjében** vagy a **helyreállítási képernyőn**jelenik meg.
+Ha [rendszerindítási diagnosztikát](./boot-diagnostics.md) használ a virtuális gép (VM) képernyőképének megtekintéséhez, látni fogja, hogy a képernyőkép a következő hibakódot jeleníti meg: `0xC0000017` . A futtatott Windows-verziótól függően előfordulhat, hogy ez a kód a **Windows rendszerindítási kezelőjében** vagy a **helyreállítási képernyőn** jelenik meg.
 
    **Windows rendszerindítási kezelő**
 
@@ -44,6 +44,9 @@ Az operációs rendszer lemeze teljes, túl töredezett, vagy az operációs ren
 ## <a name="solution"></a>Megoldás
 
 ### <a name="process-overview"></a>Folyamat áttekintése:
+
+> [!TIP]
+> Ha a virtuális gép nemrég készült biztonsági másolattal rendelkezik, a rendszerindítási probléma megoldásához próbálja meg [visszaállítani a virtuális gépet a biztonsági mentésből](../../backup/backup-azure-arm-restore-vms.md) .
 
 1. Javítási virtuális gép létrehozása és elérése
 1. Szabadítson fel lemezterületet a lemezen
@@ -66,7 +69,7 @@ Ha 2. generációs virtuális gépet használ, előfordulhat, hogy a csatlakozta
 
 1. A Windows Search szolgáltatásban írja be `diskmgmt` és nyissa meg a **Lemezkezelés konzolt**.
 1. Azonosítsa a javítási virtuális géphez csatolt sérült lemezt. Általában ez a lemez szerepel a konzolon, és a legmagasabb numerikus értékkel rendelkezik.
-1. Vegye figyelembe, hogy abban a lemezen van egy olyan partíció, amely az **EFI rendszerpartíciót**tárolja, amelyhez nincs hozzárendelve Letter (például *F:* meghajtó). Ha az összes partíció hozzá van rendelve, akkor kihagyhatja, hogy szabadítson fel lemezterületet a lemezen. Ellenkező esetben továbbra is rendeljen egy betűt a lemezhez.
+1. Vegye figyelembe, hogy abban a lemezen van egy olyan partíció, amely az **EFI rendszerpartíciót** tárolja, amelyhez nincs hozzárendelve Letter (például *F:* meghajtó). Ha az összes partíció hozzá van rendelve, akkor kihagyhatja, hogy szabadítson fel lemezterületet a lemezen. Ellenkező esetben továbbra is rendeljen egy betűt a lemezhez.
 
    ![A Lemezkezelés konzol, a mellékelt lemez: "2. lemez", valamint a nem hozzárendelt partíció, amely 100 MB, és az "EFI rendszerpartíció".](./media/troubleshoot-windows-stop-error/3.png)
 
@@ -94,7 +97,7 @@ Ha 2. generációs virtuális gépet használ, előfordulhat, hogy a csatlakozta
 Most, hogy a hibás lemez csatlakoztatva van a javítási virtuális géphez, ellenőrizze, hogy az adott lemezen lévő operációs rendszer elegendő lemezterülettel rendelkezik-e a megfelelő működéshez. 
 
 1. Ellenőrizze, hogy a lemez megtelt-e, és kattintson a jobb gombbal a csatlakoztatott lemez meghajtóján, majd válassza a **Tulajdonságok parancsot**.
-1. Ha a lemez **300 MB-nál kevesebb szabad területtel**rendelkezik, [bontsa ki azt legfeljebb 1 TB](../windows/expand-os-disk.md)-ra a PowerShell használatával.
+1. Ha a lemez **300 MB-nál kevesebb szabad területtel** rendelkezik, [bontsa ki azt legfeljebb 1 TB](../windows/expand-os-disk.md)-ra a PowerShell használatával.
 1. Ha a lemez mérete **1 TB**, akkor el kell végeznie a lemez karbantartását. Lemezterület felszabadításához használhatja a Lemezkarbantartó [eszközt](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup) .
 1. Nyisson meg egy rendszergazda jogú parancssort (Futtatás rendszergazdaként), és végezze el a detöredezettséget a meghajtón:
 
@@ -137,7 +140,7 @@ A lépések elvégzése előtt hozzon létre egy másolatot a **\Windows\System3
    ![A Beállításszerkesztő Load kaptár menüjében.](./media/troubleshoot-windows-stop-error/4.png)
 
 1. A struktúra betöltése párbeszédpanelen válassza a **\windows\system32\config\SYSTEM** elemet, majd kattintson a Megnyitás gombra.
-   1. Meg kell adnia egy nevet, amelyet **BROKENSYSTEM**kell megadnia. Ez a név segít az érintett struktúrák megkülönböztetésében a hibaelhárítás során.
+   1. Meg kell adnia egy nevet, amelyet **BROKENSYSTEM** kell megadnia. Ez a név segít az érintett struktúrák megkülönböztetésében a hibaelhárítás során.
    1. A **HKEY_LOCAL_MACHINE** kibontásával megtekintheti a hozzáadott új BROKENSYSTEM kulcsot.
 1. A Beállításszerkesztő segítségével határozza meg, hogy a gép melyik ControlSet induljon el.
    1. Navigáljon **HKEY_LOCAL_MACHINE >> BROKENSYSTEM >> válassza a lehetőséget**.
@@ -174,7 +177,7 @@ A memóriakép-gyűjtés és a soros konzol engedélyezéséhez futtassa a köve
       ``
    
    - A parancsban cserélje le az `<LETTER OF THE EFI SYSTEM PARTITION>` EFI rendszerpartíció betűjét.
-   - Hasznos lehet a Lemezkezelés konzol elindítása az **EFI rendszerpartícióként**címkézett megfelelő rendszerpartíció azonosításához.
+   - Hasznos lehet a Lemezkezelés konzol elindítása az **EFI rendszerpartícióként** címkézett megfelelő rendszerpartíció azonosításához.
    - Az azonosító lehet egyedi GUID, vagy lehet az alapértelmezett **Csizmadia**.
 
 1. Futtassa a következő parancsokat a soros konzol engedélyezéséhez:

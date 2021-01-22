@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1667c21b9a35b8e93feffb8cf1b37d4409da73c3
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 1552401953a8cba9dda787a0f0e461adb7972920
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044305"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664452"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Azure digitális Twins-példány és-hitelesítés beállítása (parancsfájlba foglalt)
 
@@ -29,11 +29,13 @@ A jelen cikk ezen verziója a lépéseket egy [ **automatizált üzembehelyezés
 
 ## <a name="prerequisites-download-the-script"></a>Előfeltételek: töltse le a szkriptet
 
-A minta parancsfájl a PowerShellben van megírva. Része az [**Azure digitális Twins végpontok közötti mintáknak**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/), amelyeket letöltheti a gépre, ehhez navigáljon az adott példához, és válassza a cím alatt található *zip letöltése* gombot.
+A minta parancsfájl a PowerShellben van megírva. Része az [**Azure digitális Twins végpontok közötti mintáknak**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/), amelyeket letöltheti a gépre, ehhez lépjen a minta hivatkozásra, és válassza a cím alatt található *tallózási kód* gombot. Ekkor megnyílik a minták GitHub-tárháza, amelyet a-ként tölthet le *. ZIP* -t a *Code (kód* ) gomb kiválasztásával és a *zip letöltésével*.
 
-Ezzel letölti a minta projektet a gépre _**Azure_Digital_Twins_end_to_end_samples.zip**_. Navigáljon a számítógép mappájához, és csomagolja ki a fájlokat a fájlok kibontásához.
+:::image type="content" source="media/includes/download-repo-zip.png" alt-text="A Digital-Twins-Samples tárház áttekintése a GitHubon. A kód gomb be van jelölve, és létrehoz egy kis párbeszédpanelt, ahol ki van emelve a ZIP-Letöltés gomb." lightbox="media/includes/download-repo-zip.png":::
 
-A kibontott mappában a telepítési parancsfájl a _Azure_Digital_Twins_end_to_end_samples > parancsfájlok > **deploy.ps1**_ található.
+Ezzel letölti a-t *. A ZIP* -mappát **digital-twins-samples-master.zipként**. Navigáljon a számítógép mappájához, és csomagolja ki a fájlokat a fájlok kibontásához.
+
+A kibontott mappában az üzembe helyezési parancsfájl a következő helyen található: _Digital-Twins-Samples-master > scripts > **deploy.ps1**_.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -56,7 +58,7 @@ Az üzembe helyezési parancsfájl Cloud Shell-ben való futtatásának lépése
 
     :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Cloud Shell a feltöltés ikon kijelölését bemutató ablak":::
 
-    Navigáljon a számítógépen lévő _**deploy.ps1**_ fájlra ( _Azure_Digital_Twins_end_to_end_samples > szkriptek > **deploy.ps1**_), és nyomja meg a "Megnyitás" lehetőséget. Ezzel feltölti a fájlt a Cloud Shellba, hogy az Cloud Shell ablakban is futtatható legyen.
+    Navigáljon a számítógépen lévő _**deploy.ps1**_ fájlra (a _digitális Twins-Samples-Master > szkriptek > **deploy.ps1**_), és nyomja meg a "Megnyitás" lehetőséget. Ezzel feltölti a fájlt a Cloud Shellba, hogy az Cloud Shell ablakban is futtatható legyen.
 
 4. Futtassa a szkriptet a Cloud Shell ablakban a parancs elküldésével `./deploy.ps1` . Az alábbi parancsot másolhatja (emlékeztetheti rá, hogy beilleszti Cloud Shellba, a **CTRL + SHIFT + v billentyűkombinációt** használhatja Windows és Linux rendszeren, vagy a **cmd + SHIFT + v** MacOS rendszeren. Használhatja a helyi menüt is).
 
@@ -102,7 +104,7 @@ Ezen az oldalon az összes Azure-beli digitális Twins-példány szerepel. Keres
 
 Ha az ellenőrzés sikertelen volt, megpróbálkozhat egy példány létrehozásával a [portál](how-to-set-up-instance-portal.md#create-the-azure-digital-twins-instance) vagy a [parancssori](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance)felület használatával.
 
-### <a name="collect-instance-values"></a>Példányok értékének gyűjtése
+### <a name="collect-instance-values"></a>A példányhoz tartozó értékek összegyűjtése
 
 A példány *áttekintő* oldalának megnyitásához válassza ki a példány nevét az [Azure digitális Twins oldaláról](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances) . Jegyezze fel a *nevét*, az *erőforráscsoportot* és az *állomásnév nevét*. Erre később szükség lehet a példány azonosításához és a hozzá való kapcsolódáshoz.
 
@@ -117,7 +119,7 @@ A példány *áttekintő* oldalának megnyitásához válassza ki a példány ne
 
 Ha az ellenőrzés nem sikerült, a saját szerepkör-hozzárendelését is megismételheti a [portál](how-to-set-up-instance-portal.md#set-up-user-access-permissions) vagy a [parancssori](how-to-set-up-instance-cli.md#set-up-user-access-permissions)felület használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tesztelje az egyes REST API hívásokat a példányon az Azure Digital Twins CLI parancsaival: 
 * [az DT Reference](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)

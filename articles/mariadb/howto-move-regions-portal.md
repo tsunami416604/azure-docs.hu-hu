@@ -3,16 +3,16 @@ title: Azure-régiók áthelyezése – Azure Portal – Azure Database for Mari
 description: Egy Azure Database for MariaDB-kiszolgáló áthelyezése egyik Azure-régióból a másikba egy olvasási replika és a Azure Portal használatával.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
-ms.openlocfilehash: f4ce34bc1a1af7b2c0ee57a3297415bd9d033517
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: adb82b3ff371bdcdecbd964fef3c1d0c971df71a
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540824"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664936"
 ---
 # <a name="move-an-azure-database-for-mariadb-server-to-another-region-by-using-the-azure-portal"></a>Azure Database for MariaDB-kiszolgáló áthelyezése másik régióba a Azure Portal használatával
 
@@ -33,7 +33,7 @@ Egy Azure Database for MariaDB régiók [közötti olvasási replikát](concepts
 
 Ha a Azure Portal a régión belüli olvasási replika kiszolgálót kívánja létrehozni a célhelyen, kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/).
 1. Válassza ki azt a meglévő Azure Database for MariaDB kiszolgálót, amelyet forráskiszolgálóként kíván használni. Ez a művelet megnyitja az **Áttekintés** lapot.
 1. Válassza a **replikálás** lehetőséget a menü **Beállítások** területén.
 1. Válassza a **replika hozzáadása** lehetőséget.

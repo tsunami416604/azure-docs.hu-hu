@@ -3,17 +3,17 @@ title: Tűzfalszabályok kezelése – Azure CLI – Azure Database for MariaDB
 description: Ez a cikk azt ismerteti, hogyan hozhatók létre és kezelhetők Azure Database for MariaDB tűzfalszabályok az Azure CLI parancssori felületének használatával.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ef04e2b4c820c14ea7df6c35ecb0189ef31ef7dc
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: f4ae1f3b736f6d263b8d769e241d969d058a69f4
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540899"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98665038"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-cli"></a>Azure Database for MariaDB tűzfalszabályok létrehozása és kezelése az Azure CLI használatával
 A kiszolgálói szintű tűzfalszabályok használatával felügyelhető egy adott IP-címről vagy IP-címről érkező Azure Database for MariaDB kiszolgálóhoz való hozzáférés. A kényelmes Azure CLI-parancsok használatával létrehozhat, frissíthet, törölhet, listázhat és megjeleníthet tűzfalszabályok a kiszolgáló kezeléséhez. Azure Database for MariaDB tűzfalak áttekintését lásd: [Azure Database for MariaDB Server Firewall Rules](./concepts-firewall-rules.md).
@@ -28,11 +28,11 @@ A Virtual Network-(VNet-) szabályok a kiszolgálóhoz való hozzáférés bizto
 Az az **MariaDB Server Firewall-Rule** parancs az Azure CLI-ből a tűzfalszabályok létrehozásához, törléséhez, listázásához, megjelenítéséhez és frissítéséhez használható.
 
 Parancsok
-- **Létrehozás** : Azure MariaDB kiszolgálói tűzfalszabály létrehozása.
-- **delete** : az Azure MariaDB kiszolgálói tűzfalszabály törlése.
-- **lista** : az Azure MariaDB-kiszolgáló tűzfalszabályok listázása.
-- **Megjelenítés** : az Azure MariaDB Server tűzfalszabály részleteinek megjelenítése.
-- **frissítés** : az Azure MariaDB Server-tűzfalszabály frissítése.
+- **Létrehozás**: Azure MariaDB kiszolgálói tűzfalszabály létrehozása.
+- **delete**: az Azure MariaDB kiszolgálói tűzfalszabály törlése.
+- **lista**: az Azure MariaDB-kiszolgáló tűzfalszabályok listázása.
+- **Megjelenítés**: az Azure MariaDB Server tűzfalszabály részleteinek megjelenítése.
+- **frissítés**: az Azure MariaDB Server-tűzfalszabály frissítése.
 
 ## <a name="sign-in-to-azure-and-list-your-azure-database-for-mariadb-servers"></a>Jelentkezzen be az Azure-ba, és sorolja fel a Azure Database for MariaDB-kiszolgálókat
 Az az **login** paranccsal biztonságosan összekapcsolhatja az Azure CLI-t az Azure-fiókjával.

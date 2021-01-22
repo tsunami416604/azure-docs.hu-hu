@@ -3,15 +3,15 @@ title: Tervezett karbantartási értesítés – Azure Database for MariaDB
 description: Ez a cikk a Azure Database for MariaDB tervezett karbantartási értesítési funkcióját ismerteti.
 author: ambhatna
 ms.author: ambhatna
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: c290236dfe7e88999847f8cb0d66b2d3c868c1ab
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a206d108b0935836fbc1cd5b7a1987dcf4e4725b
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453300"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664265"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mariadb"></a>Tervezett karbantartási értesítés Azure Database for MariaDB
 
@@ -76,7 +76,7 @@ Nem, az összes Azure-régió javítás alatt áll a telepítési Wise-ablak id�
 Egy átmeneti hiba (más néven átmeneti hiba) egy olyan hiba, amely magát a megoldást fogja megoldani. [Átmeneti hibák](./concepts-connectivity.md#transient-errors) merülhetnek fel a karbantartás során. Az események többségét a rendszer automatikusan csökkenti a 60 másodpercnél kisebb mértékben. Az átmeneti hibákat az [újrapróbálkozási logikával](./concepts-connectivity.md#handling-transient-errors)kell kezelni.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha bármilyen kérdése vagy javaslata van a Azure Database for MariaDB használatáról, küldjön e-mailt a Azure Database for MariaDB csapatának AskAzureDBforMariaDB@service.microsoft.com
 - A riasztások metrikai létrehozásával kapcsolatos útmutatást a riasztások [beállítása](howto-alert-metric.md) című témakörben tekintheti meg.

@@ -3,17 +3,17 @@ title: CLI-szkript – kiszolgáló visszaállítása – Azure Database for Mar
 description: Ez a minta Azure CLI-szkript bemutatja, hogyan lehet visszaállítani egy Azure Database for MariaDB-kiszolgálót és annak adatbázisait egy korábbi időpontra.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 12/02/2019
-ms.openlocfilehash: a4fc645f43858e80eeffc6c1672f6bd4369e7290
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: eb861a18f25e1413c9ae8ad12f6ca7c9720abbe0
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536761"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664583"
 ---
 # <a name="restore-an-azure-database-for-mariadb-server-using-azure-cli"></a>Azure Database for MariaDB-kiszolgáló visszaállítása az Azure CLI használatával
 Ez a CLI-parancsfájl egyetlen Azure Database for MariaDB kiszolgálót állít vissza egy korábbi időpontra.
