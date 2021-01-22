@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: e51354b1c2905d0532ce4eb49236dda8550f98a4
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 83d7263d430ed9dc8f2f61711fc4c1339ba03810
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600089"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662930"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Beszédfelismerési szolgáltatás nyelvi és hangalapú támogatása
 
@@ -128,8 +128,6 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 ## <a name="text-to-speech"></a>Szövegfelolvasás
 
 A Microsoft Speech SDK és a REST API-k egyaránt támogatják ezeket a hangokat, amelyek mindegyike egy adott nyelvet és dialektust támogat, amelyet a területi beállítás azonosít. Az egyes régiókban vagy végpontokban támogatott nyelvek és hangok teljes listáját a [Voices/List API](rest-text-to-speech.md#get-a-list-of-voices)-n keresztül is elérheti. 
-
-Ha szeretné megtudni, hogyan konfigurálhatja és módosíthatja a beszélő stílusokat, beleértve a neurális hangokat, tekintse meg a [How-to](speech-synthesis-markup.md#adjust-speaking-styles) on Speech szintézis Markup Language című témakört.
 
 > [!IMPORTANT]
 > A díjszabás a standard, az egyéni és a neurális hangok esetében is változhat. További információkért tekintse meg a [díjszabási](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) oldalt.
@@ -289,6 +287,8 @@ Az alábbi neurális hangok nyilvános előzetes verzióban érhetők el.
 
 További információ a regionális elérhetőségről: [régiók](regions.md#standard-and-neural-voices).
 
+A következő témakörből megtudhatja, hogyan konfigurálhat és állíthat be neurális hangokat, például a beszéd stílusait: [beszéd szintézisének leíró nyelve](speech-synthesis-markup.md#adjust-speaking-styles).
+
 > [!IMPORTANT]
 > A hang a következőre `en-US-JessaNeural` változott: `en-US-AriaNeural` . Ha korábban a "Jessa" kifejezést használta, váltson át az "aria" kifejezésre.
 
@@ -392,30 +392,10 @@ Több mint 75 standard hang érhető el több mint 45 nyelven és területi beá
 
 ### <a name="customization"></a>Testreszabás
 
-Az egyéni hang a standard és az neurális szinten érhető el. A támogatott nyelvek a két réteg esetében eltérőek. 
-
-| Nyelv | Területi beállítás | Standard | Neurális |
-|--|--|--|--|
-| Kínai (mandarin, egyszerűsített) | `zh-CN` | Igen | Igen |
-| Kínai (mandarin, egyszerűsített), angol nyelven | `zh-CN` kétnyelvű | Igen | Igen |
-| Angol (Ausztrália) | `en-AU` | Nem | Igen |
-| Angol (India) | `en-IN` | Igen | Igen |
-| angol (Egyesült Királyság) | `en-GB` | Igen | Igen |
-| angol (Egyesült Államok) | `en-US` | Igen | Igen |
-| Francia (Kanada) | `fr-CA` | Nem | Igen |
-| Francia (Franciaország) | `fr-FR` | Igen | Igen |
-| Német (Németország) | `de-DE` | Igen | Igen |
-| Olasz (Olaszország) | `it-IT` | Igen | Igen |
-| Japán (Japán) | `ja-JP` | Nem | Igen |
-| Koreai (Dél-Korea) | `ko-KR` | Nem | Igen |
-| Portugál (Brazília) | `pt-BR` | Igen | Igen |
-| Spanyol (Mexikó) | `es-MX` | Igen | Igen |
-| Spanyol (Spanyolország) | `es-ES` | Nem | Igen |
-
-Válassza ki a megfelelő területi beállítást, amely megfelel az egyéni hangmodell betanításához szükséges betanítási adattípusoknak. Ha például a rögzítési adatként angol nyelven beszél angolul, válassza a lehetőséget `en-GB` .
+A,,,,,,, és a hangalapú Testreszabás elérhető `de-DE` `en-GB` `en-IN` `en-US` `es-MX` `fr-FR` `it-IT` `pt-BR` `zh-CN` . Válassza ki a megfelelő területi beállítást, amely megfelel az egyéni hangmodell betanításához szükséges betanítási adattípusoknak. Ha például a rögzítési adatként angol nyelven beszél angolul, válassza a lehetőséget `en-GB` .
 
 > [!NOTE]
-> Az egyéni hangon nem támogatjuk a BI-nyelvi Modelles képzést, kivéve a Chinese-English a kétnyelvű nyelveken. Válassza a "kínai angol nyelvű kétnyelvű" lehetőséget, ha olyan kínai hangvételt szeretne betanítani, amely angolul is tud beszélni. A standard módszer használatával Chinese-English kétnyelvű modell betanítása csak Észak-Európában és az USA északi középső régiójában érhető el. Az egyéni neurális hangképzések Egyesült Királyság déli régiója és az USA keleti régiójában is elérhetők. 
+> Az egyéni hangon nem támogatjuk a BI-nyelvi Modelles képzést, kivéve a Chinese-English a kétnyelvű nyelveken. Válassza a "kínai angol nyelvű kétnyelvű" lehetőséget, ha olyan kínai hangvételt szeretne betanítani, amely angolul is tud beszélni. A hangképzés az összes területi beállításban egy 2000 + hosszúságú kimondott szöveg adatkészlettel kezdődik, kivéve a `en-US` és az, `zh-CN` ahol bármilyen méretű betanítási adatmennyiséget használhat.
 
 ## <a name="speech-translation"></a>Beszédfordítás
 
@@ -497,7 +477,7 @@ A **Speech Translation** API különböző nyelveket támogat a beszédfelismer�
 | walesi                   | `cy`          |
 | Yucatec Maya            | `yua`         |
 
-## <a name="speaker-recognition"></a>Beszélőfelismerés
+## <a name="speaker-recognition"></a>Speaker Recognition
 
 A különböző Speaker Recognition API-khoz támogatott nyelveket a következő táblázat tartalmazza. További információ a Speaker Recognitionról: [Áttekintés](speaker-recognition-overview.md) .
 

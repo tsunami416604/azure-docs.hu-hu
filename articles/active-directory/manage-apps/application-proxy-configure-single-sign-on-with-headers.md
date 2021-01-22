@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: d39d72a79d4b273918986d0d350df4706592c77d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: c30d8a66cf9deffaa32e5ec0356a9067575b77e8
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95503182"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660702"
 ---
 # <a name="header-based-single-sign-on-for-on-premises-apps-with-azure-ad-app-proxy-preview"></a>Fejléc-alapú egyszeri bejelentkezés Azure AD alkalmazás proxyval rendelkező helyszíni alkalmazásokhoz (előzetes verzió)
 
@@ -64,7 +64,7 @@ A következő táblázat az alkalmazásproxy által támogatott, a fejléc-alap�
     - A belső URL-cím értéke határozza meg az alkalmazás hatókörét. Ha a belső URL-címet az alkalmazás gyökerének elérési útján konfigurálja, akkor a gyökér alatti összes Alútvonal ugyanazt a fejléc-konfigurációt és más alkalmazás-konfigurációt fogja kapni. 
     - Hozzon létre egy új alkalmazást, amely egy másik fejléc-konfigurációt vagy felhasználói hozzárendelést állít be a megadott alkalmazásnál részletesebb elérési útra. Az új alkalmazásban konfigurálja a belső URL-címet a szükséges elérési úttal, majd konfigurálja az URL-címhez szükséges speciális fejléceket. Az alkalmazásproxy mindig megfelel a konfigurációs beállításoknak az alkalmazáshoz beállított legrészletesebb elérési útnak. 
 
-2.  **Azure Active Directory**   Az **előhitelesítési módszerként** válassza a Azure Active Directory lehetőséget. 
+2.  ****   Az **előhitelesítési módszerként** válassza a Azure Active Directory lehetőséget. 
 3. Rendeljen hozzá egy tesztelési felhasználót a **felhasználók és csoportok** eléréséhez, és rendelje hozzá a megfelelő felhasználókat és csoportokat. 
 4. Nyisson meg egy böngészőt, és navigáljon a **külső URL-címhez**   az alkalmazásproxy beállításainál. 
 5. Ellenőrizze, hogy tud-e csatlakozni az alkalmazáshoz. Bár a kapcsolódás is lehetséges, az alkalmazás még nem érhető el, mivel a fejlécek nincsenek konfigurálva. 
@@ -88,9 +88,13 @@ Az összes lépés elvégzése után az alkalmazásnak futnia kell, és elérhet
 1. Nyisson meg egy új böngészőt vagy egy privát böngészőablakot, és győződjön meg róla, hogy a korábban gyorsítótárazott fejlécek törlődnek. Ezután keresse meg a **külső URL-címet**   az alkalmazásproxy beállításainál.
 2. Jelentkezzen be az alkalmazáshoz hozzárendelt tesztelési fiókkal. Ha az SSO használatával betölti és bejelentkezik az alkalmazásba, akkor Ön is jó! 
 
+## <a name="considerations"></a>Megfontolandó szempontok
+
+- Az alkalmazásproxy segítségével távoli hozzáférést biztosíthat a helyszíni vagy a privát felhőben lévő alkalmazásokhoz. Az alkalmazásproxy nem ajánlott a vállalati hálózatból származó belső forgalom kezelésére.
+- A fejléc-alapú hitelesítési alkalmazásokhoz csak az összekötő vagy más engedélyezett fejléc-alapú hitelesítési megoldás adatforgalmára kell korlátozni. Ez általában az alkalmazás hálózati hozzáférésének korlátozásával történik az alkalmazáskiszolgáló tűzfal vagy IP-korlátozása használatával.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Mi az az egyszeri bejelentkezés?](what-is-single-sign-on.md)
+- [Mi az egyszeri bejelentkezés?](what-is-single-sign-on.md)
 - [Mi az alkalmazásproxy?](what-is-application-proxy.md)
 - [Gyorsindítás sorozat az alkalmazás-kezelésben](view-applications-portal.md)

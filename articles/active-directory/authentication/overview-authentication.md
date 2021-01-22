@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: overview
-ms.date: 07/13/2020
+ms.date: 01/20/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f85b78480e7258780f8dd396431edeb968189e4c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: ae7ae239493c999d98100bf9dee4f4f0183addf2
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741252"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660813"
 ---
 # <a name="what-is-azure-active-directory-authentication"></a>Mi az Azure Active Directory hitelesítés?
 
@@ -27,6 +27,8 @@ Az Identity platform egyik fő funkciója a hitelesítő adatok ellenőrzése va
 * Hibrid integráció a jelszó-változtatások helyi környezetbe való visszaírásához
 * Hibrid integráció egy helyi környezet jelszavas védelmi házirendjeinek betartatásához
 * Jelszó nélküli hitelesítés
+
+Tekintse meg a rövid videót, amely további információkat nyújt ezekről a hitelesítési összetevőkről.
 
 ## <a name="improve-the-end-user-experience"></a>A végfelhasználói élmény javítása
 
@@ -80,11 +82,11 @@ Számos környezet esetében a cél a jelszavak használatának megszüntetése 
 
 ![Biztonság és kényelem a jelszóval nem rendelkező hitelesítési folyamattal](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
 
-Ha jelszó nélküli metódussal jelentkezik be, a hitelesítő adatok a biometria és a Windows Hello for Business használatával, vagy egy FIDO2 biztonsági kulccsal érhetők el. Ezeket a hitelesítési módszereket nem lehet könnyen duplikálni egy támadó.
+Ha jelszó nélküli metódussal jelentkezik be, a hitelesítő adatok olyan metódusok használatával érhetők el, mint a biometria és a vállalati Windows Hello, vagy egy FIDO2 biztonsági kulcs. Ezeket a hitelesítési módszereket nem lehet könnyen duplikálni egy támadó.
 
 Az Azure AD lehetővé teszi, hogy natív módon hitelesítse a jelszavak nélküli módszerekkel, így egyszerűbbé téve a felhasználók bejelentkezési élményét, és csökkentheti a támadások kockázatát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az első lépésekhez tekintse meg az [önkiszolgáló jelszó-visszaállítás (SSPR)][tutorial-sspr] és az [Azure ad multi-Factor Authentication][tutorial-azure-mfa]oktatóanyagát.
 

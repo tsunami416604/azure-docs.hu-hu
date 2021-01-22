@@ -3,17 +3,17 @@ title: Kiszolgálói paraméterek konfigurálása – Azure CLI – Azure Databa
 description: Ez a cikk azt ismerteti, hogyan lehet konfigurálni a szolgáltatás paramétereit Azure Database for MariaDB az Azure CLI parancssori segédprogram használatával.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 10/1/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4009d8047dae7bf8d9ba66566ff8797fa09a8878
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: c2c9d87c153563e2c33d15eda668469674f75494
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538138"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662304"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-cli"></a>Kiszolgálói paraméterek konfigurálása Azure Database for MariaDB az Azure CLI használatával
 Az Azure CLI, az Azure parancssori segédprogram használatával listázhatja, megjelenítheti és frissítheti az Azure Database for MariaDB-kiszolgáló konfigurációs paramétereit. A motor konfigurációjának egy részhalmaza a kiszolgáló szintjén érhető el, és módosítható.
@@ -57,7 +57,7 @@ Ha alaphelyzetbe kívánja állítani egy konfigurációs paraméter értékét,
 az mariadb server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver
 ```
 
-Ez a kód visszaállítja a **lassú \_ lekérdezési \_ napló** konfigurációját az **OFF** alapértelmezett értékre. 
+Ez a kód visszaállítja a **lassú \_ lekérdezési \_ napló** konfigurációját az alapértelmezett értékre. 
 
 ## <a name="setting-parameters-not-listed"></a>Nem felsorolt paraméterek beállítása
 Ha a frissíteni kívánt kiszolgálói paraméter nem szerepel a Azure Portalban, akkor opcionálisan a paramétert is megadhatja a kapcsolódási szinten a használatával `init_connect` . Ezzel beállítja a kiszolgálóhoz csatlakozó egyes ügyfelek kiszolgálói paramétereit. 

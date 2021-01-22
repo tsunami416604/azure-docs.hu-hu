@@ -1,5 +1,5 @@
 ---
-title: Erőforrások kezelése a Microsoft Graph
+title: Microsoft Graph-alkalmazás regisztrálása
 titleSuffix: Azure AD B2C
 description: A szükséges Graph API engedélyeket biztosító alkalmazás regisztrálásával előkészítheti a Microsoft Graph Azure AD B2C-erőforrások felügyeletét.
 services: B2C
@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/14/2020
+ms.date: 01/21/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 61e32f50e02e45487830c5ea7ff476a0571960f6
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1886a0308f32ed53a1c9f0974715f20823e8bdd5
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94954001"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660352"
 ---
-# <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Azure AD B2C kezelése Microsoft Graph
+# <a name="register-a-microsoft-graph-application"></a>Microsoft Graph-alkalmazás regisztrálása
 
 [Microsoft Graph][ms-graph] lehetővé teszi, hogy a Azure ad B2C bérlőn belül számos erőforrást kezelhesse, beleértve az ügyfél felhasználói fiókjait és az egyéni házirendeket is. A [Microsoft Graph API][ms-graph-api]-t meghívó parancsfájlok vagy alkalmazások írásával automatizálhatja a bérlői felügyeleti feladatokat, például a következőket:
 
@@ -83,12 +83,13 @@ Ha az alkalmazásnak vagy a parancsfájlnak törölnie kell a felhasználókat, 
 1. Válassza a **Hozzáadás** elemet. Az engedélyek teljes propagálása eltarthat néhány percig.
 
 ## <a name="next-steps"></a>Következő lépések
+
 Most, hogy regisztrálta a felügyeleti alkalmazást, és megadta a szükséges engedélyeket, az alkalmazásai és szolgáltatásai (például az Azure-folyamatok) használhatják a hitelesítő adatait és a Microsoft Graph API-val való interakcióra vonatkozó engedélyeket. 
 
 * [Hozzáférési token lekérése a Microsoft Azure Active Directory-ból](/graph/auth-v2-service#4-get-an-access-token)
 * [A hozzáférési jogkivonat használata a Microsoft Graph meghívásához](/graph/auth-v2-service#4-get-an-access-token)
 * [A Microsoft Graph által támogatott B2C-műveletek](microsoft-graph-operations.md)
-* [Azure AD B2C felhasználói fiókok kezelése Microsoft Graph](manage-user-accounts-graph-api.md)
+* [Azure AD B2C felhasználói fiókok kezelése Microsoft Graph](microsoft-graph-operations.md)
 * [Naplók beszerzése az Azure AD Reporting API-val](view-audit-logs.md#get-audit-logs-with-the-azure-ad-reporting-api)
 
 <!-- LINKS -->

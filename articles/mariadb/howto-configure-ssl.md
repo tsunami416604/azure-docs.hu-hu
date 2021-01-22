@@ -3,16 +3,16 @@ title: Az SSL konfigurálása – Azure Database for MariaDB
 description: Útmutatás a Azure Database for MariaDB és a társított alkalmazások megfelelő konfigurálásához az SSL-kapcsolatok megfelelő használatához
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8f541e2302bc1f1de132de76e0638f9843d7003f
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: bda9c54fa344d44da01fba75d3f814d8f311fd48
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592481"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662270"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>Az SSL-kapcsolat konfigurálása az alkalmazásban a Azure Database for MariaDBhoz való biztonságos csatlakozáshoz
 A Azure Database for MariaDB támogatja a Azure Database for MariaDB-kiszolgáló SSL (SSL) használatával történő ügyfélalkalmazások összekapcsolását. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti SSL-kapcsolatok kikényszerítése elősegíti a „köztes” támadások elleni védelmet, mert titkosítja a kiszolgáló és az alkalmazás közötti streameket.

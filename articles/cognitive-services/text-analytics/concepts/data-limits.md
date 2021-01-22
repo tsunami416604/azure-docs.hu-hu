@@ -11,17 +11,17 @@ ms.topic: overview
 ms.date: 11/19/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 2adca03a820d02731bca252dee99c76debc85e2e
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 9ba9fe7ca73e874fb55c228e22b884a86de736cf
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028131"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661459"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Az Text Analytics API vonatkozó adatforgalmi és díjszabási korlátok
 <a name="data-limits"></a>
 
-Ebből a cikkből megtudhatja, hogy mekkora a mérete, és milyen arányban küldhet adatText Analytics API. 
+Ebből a cikkből megtudhatja, hogy mekkora a mérete, és milyen arányban küldhet adatText Analytics API. Vegye figyelembe, hogy a díjszabást nem érinti az adatkorlátozások vagy a díjszabási korlátok. A díjszabásra a Text Analytics erőforrás [díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)vonatkozik.
 
 ## <a name="data-limits"></a>Adatkorlátok
 
@@ -50,7 +50,7 @@ Az egyetlen kérelemben elküldhető dokumentumok maximális száma a használt 
 Az aktuális V3 API-ra a következő korlátozások vonatkoznak. Az alábbi korlátok túllépése a HTTP 400 hibakódot eredményezi.
 
 
-| Funkció | Dokumentumok maximális száma kérelem szerint | 
+| Szolgáltatás | Dokumentumok maximális száma kérelem szerint | 
 |----------|-----------|
 | Nyelvfelismerés | 1000 |
 | Hangulatelemzés | 10 |
@@ -63,7 +63,7 @@ Az aktuális V3 API-ra a következő korlátozások vonatkoznak. Az alábbi korl
 
 #### <a name="version-2"></a>[2-es verzió](#tab/version-2)
 
-| Funkció | Dokumentumok maximális száma kérelem szerint | 
+| Szolgáltatás | Dokumentumok maximális száma kérelem szerint | 
 |----------|-----------|
 | Nyelvfelismerés | 1000 |
 | Hangulatelemzés | 1000 |
@@ -89,7 +89,7 @@ A díjszabási korlátja az Ön [díjszabási szintjétől](https://azure.micros
 A kérelmek díjait külön kell mérni az egyes Text Analytics szolgáltatások esetében. Az árképzési szintjére vonatkozó kérések maximális számát az egyes szolgáltatásokra vonatkozóan küldheti el egyszerre. Ha például a szinten van, és az `S` 1000-es kérelmeket egyszerre küldi el, akkor nem fog tudni másik kérelmet küldeni a 59 másodpercre.
 
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Mi a Text Analytics API](../overview.md)
 * [Díjszabás részletei](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)

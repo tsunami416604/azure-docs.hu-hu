@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 09ce611b5bca6c04d55da95a82a8fcd7ae348db3
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 4f68eba8106a20d357fe6d3fb2baac1d1661aa1e
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049216"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660538"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Oktatóanyag: végpontok közötti megoldás kiépítése
 
@@ -167,11 +167,13 @@ Ha engedélyezni szeretné a Function app számára az Azure Digital Twins elér
 
 [!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
-Azure Cloud Shell a következő parancs használatával állítson be egy olyan alkalmazás-beállítást, amelyet a Function alkalmazás az Azure Digital Twins-példányra való hivatkozáshoz fog használni.
+Azure Cloud Shell a következő parancs használatával állítson be egy olyan alkalmazás-beállítást, amelyet a Function alkalmazás az Azure Digital Twins-példányra való hivatkozáshoz fog használni. Töltse ki a helyőrzőket az erőforrásainak részleteivel (ne feledje, hogy az Azure digitális Twins-példányának URL-címe a *https://* előtt megjelenő állomásnév).
 
 ```azurecli-interactive
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
 ```
+
+A kimenet az Azure-függvény beállításainak listája, amely most már tartalmaz egy *ADT_SERVICE_URL* nevű bejegyzést.
 
 A rendszerfelügyelt identitás létrehozásához használja a következő parancsot. Jegyezze fel a kimenet *principalId* mezőjét.
 
@@ -257,7 +259,7 @@ A kimenet a létrehozott eszközzel kapcsolatos információ.
 
 ### <a name="configure-and-run-the-simulation"></a>A szimuláció konfigurálása és futtatása
 
-Ezután konfigurálja az eszköz-szimulátort, hogy az adatküldés a IoT Hub-példányba.
+Ezután konfigurálja az eszközszimulátort az IoT Hub-példányba való adatküldéshez.
 
 Először az *IoT hub-kapcsolatok karakterláncának* beszerzése ezzel a paranccsal:
 
@@ -265,7 +267,7 @@ Először az *IoT hub-kapcsolatok karakterláncának* beszerzése ezzel a paranc
 az iot hub connection-string show -n <your-IoT-hub-name>
 ```
 
-Ezután szerezze be az *eszköz-kapcsolatok karakterláncát* a következő paranccsal:
+Az alábbi paranccsal szerezze be az *eszközkapcsolati sztringet*:
 
 ```azurecli-interactive
 az iot hub device-identity connection-string show --device-id thermostat67 --hub-name <your-IoT-hub-name>
@@ -452,7 +454,7 @@ az group delete --name <your-resource-group>
 
 Végezetül törölje a helyi gépre letöltött Project Sample mappát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy teljes körű forgatókönyvet, amely bemutatja, hogy az Azure digitális ikrek az élő eszközön tárolt adatmennyiségen alapulnak.
 

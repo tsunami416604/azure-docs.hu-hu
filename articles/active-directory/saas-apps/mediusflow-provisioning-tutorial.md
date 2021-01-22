@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: 881309c040f6c1bdff758d17ab7f51e935437192
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: a49258208f7a5945ac71c8f17db56fccfdcd6515
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607881"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662000"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés MediusFlow konfigurálása
 
@@ -155,17 +155,25 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban lévő MediusFlow. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a MediusFlow felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Ha úgy dönt, hogy módosítja a [megfelelő cél attribútumot](../app-provisioning/customize-application-attributes.md), akkor biztosítania kell, hogy a MediusFlow API támogassa a felhasználók szűrését az adott attribútum alapján. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-   |Attribútum|Típus|
-   |---|---|
-   |userName (Felhasználónév)|Sztring|
+   |Attribútum|Típus|Szűréshez támogatott|
+   |---|---|---|
+   |userName (Felhasználónév)|Sztring|&check;|
    |emails[type eq "work"].value|Sztring|
    |név. displayName|Sztring|
    |active|Logikai|
    |name.givenName|Sztring|
    |name.familyName|Sztring|
    |név. formázott|Sztring|
-   |externalID|Sztring|
-   |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Manager|Hivatkozás|
+   |externalId|Sztring|
+   |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Manager|Referencia|
+   |urn: IETF: params: scim: sémák: bővítmény: medius: 2.0: felhasználó: configurationFilter|Sztring|
+   |urn: IETF: params: scim: sémák: bővítmény: medius: 2.0: felhasználó: identityProvider|Sztring|
+   |urn: IETF: params: scim: sémák: bővítmény: medius: 2.0: felhasználó: nameIdentifier|Sztring|
+   |urn: IETF: params: scim: sémák: bővítmény: medius: 2.0: felhasználó: customFieldText1|Sztring|
+   |urn: IETF: params: scim: sémák: bővítmény: medius: 2.0: felhasználó: customFieldText2|Sztring|
+   |urn: IETF: params: scim: sémák: bővítmény: medius: 2.0: felhasználó: customFieldText3|Sztring|
+   |urn: IETF: params: scim: sémák: bővítmény: medius: 2.0: felhasználó: customFieldText4|Sztring|
+   |urn: IETF: params: scim: sémák: bővítmény: medius: 2.0: felhasználó: customFieldText5|Sztring|
 
 
 10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a MediusFlow** lehetőséget.
@@ -200,6 +208,10 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 1. Az [átadási naplókkal](../reports-monitoring/concept-provisioning-logs.md) határozhatja meg, hogy mely felhasználók átadása sikeres, és melyeké sikertelen.
 2. A [folyamatjelzőn](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
 3. Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](../app-provisioning/application-provisioning-quarantine-status.md) találhat további információt.
+
+## <a name="change-log"></a>Változási napló
+
+* 01/21/2021 – az egyéni bővítmény attribútumai **configurationFilter**, **identityProvider**, **nameIdentifier**, **customFieldText1**, **customFieldText2**, **customFieldText3**, **customFieldText3** és **customFieldText5** lettek hozzáadva.
 
 ## <a name="additional-resources"></a>További források
 

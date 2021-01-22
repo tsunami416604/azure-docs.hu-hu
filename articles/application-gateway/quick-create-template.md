@@ -6,15 +6,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 08/27/2020
+ms.date: 01/20/2021
 ms.author: victorh
 ms.custom: mvc, subject-armqs
-ms.openlocfilehash: 3ea5c891a0e3709c1ce469be2e9101a0825acfcb
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 05e7cd8d7018759a3c8670a610b4c98ac0a86a7a
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093871"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660055"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---arm-template"></a>Gyors útmutató: webes forgalom közvetlen továbbítása az Azure Application Gateway-ARM sablonnal
 
@@ -61,7 +61,7 @@ Az ARM-sablon üzembe helyezése az Azure-ban:
    [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-qs%2Fazuredeploy.json)
 
 2. Válassza ki vagy hozza létre az erőforráscsoportot, írja be a virtuális gép rendszergazdájának felhasználónevét és jelszavát.
-3. Válassza a **felülvizsgálat + létrehozás** , majd a **Létrehozás**lehetőséget.
+3. Válassza a **felülvizsgálat + létrehozás** , majd a **Létrehozás** lehetőséget.
 
    Az üzembe helyezés akár 20 percet vagy hosszabb időt is igénybe vehet.
 
@@ -69,7 +69,7 @@ Az ARM-sablon üzembe helyezése az Azure-ban:
 
 Annak ellenére, hogy az IIS nem szükséges az Application Gateway létrehozásához, az telepítve van annak ellenőrzéséhez, hogy az Azure sikeresen létrehozta-e az Application Gatewayt. Az IIS használata az Application Gateway teszteléséhez:
 
-1. Keresse meg az Application Gateway nyilvános IP-címét az **Áttekintés** oldalon. ![ Az Application Gateway nyilvános IP-címének rögzítése ](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) vagy a **minden erőforrás**lehetőség kiválasztásával megadhatja a *myAGPublicIPAddress* kifejezést a keresőmezőbe, majd kiválaszthatja azt a keresési eredmények között. Az Azure megjeleníti a nyilvános IP-címet az **Áttekintés** oldalon.
+1. Keresse meg az Application Gateway nyilvános IP-címét az **Áttekintés** oldalon. ![ Az Application Gateway nyilvános IP-címének rögzítése ](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) vagy a **minden erőforrás** lehetőség kiválasztásával megadhatja a *myAGPublicIPAddress* kifejezést a keresőmezőbe, majd kiválaszthatja azt a keresési eredmények között. Az Azure megjeleníti a nyilvános IP-címet az **Áttekintés** oldalon.
 2. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába az IP-cím megkereséséhez.
 3. Keresse meg a választ. Egy érvényes válasz ellenőrzi, hogy az Application Gateway sikeresen létrejött-e, és sikeresen tud-e kapcsolatot létesíteni a háttérrel.
 

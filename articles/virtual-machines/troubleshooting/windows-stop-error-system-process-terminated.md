@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/21/2020
 ms.author: v-mibufo
-ms.openlocfilehash: b13b61aff819271ed1722572f251f9a6d14b17ab
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8af656e00c457dfa3d438f0cb104d85ccc687745
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976997"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661238"
 ---
 # <a name="windows-stop-error---0xc000021a-status-system-process-terminated"></a>Windows Stop Error – 0Xc000021a "jelű állapot rendszerfolyamata megszakítva
 
@@ -48,12 +48,16 @@ Ez a hiba akkor fordul elő, ha egy kritikus folyamat, például a WinLogon (win
 
 ### <a name="collect-the-memory-dump-file"></a>A memóriakép fájljának összegyűjtése
 
+> [!TIP]
+> Ha a virtuális gép nemrég készült biztonsági másolattal rendelkezik, a rendszerindítási probléma megoldásához próbálja meg [visszaállítani a virtuális gépet a biztonsági mentésből](../../backup/backup-azure-arm-restore-vms.md) .
+
+
 A probléma megoldásához elemezni kell az összeomlási memóriaképet. Gyűjtse össze a memóriakép fájlját az összeomláshoz, és forduljon az ügyfélszolgálathoz. A memóriakép-fájl összegyűjtéséhez kövesse az alábbi lépéseket:
 
 ### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>Az operációsrendszer-lemez csatlakoztatása egy új javítási virtuális géphez
 
 1.  A virtuálisgép- [javítási parancsok](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) 1-3-es lépéseit használva készítse elő a javítási virtuális gépet.
-2.  A **Távoli asztali kapcsolat**használatával kapcsolódjon a javítási virtuális géphez.
+2.  A **Távoli asztali kapcsolat** használatával kapcsolódjon a javítási virtuális géphez.
 
 ### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>A memóriaképfájl megkeresése és támogatási jegy beküldése
 

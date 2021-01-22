@@ -8,20 +8,22 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/10/2020
+ms.date: 01/20/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: contperf-fy21q2
-ms.openlocfilehash: bcb484d62b7c4add7e1ab5562c19417a90cfb7e1
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 6b46a5ea71bf8c9705ffc3bc51ea48f4b0c28502
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587553"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660764"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Oktatóanyag: helyi alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory
 
 Azure Active Directory (Azure AD) olyan alkalmazásproxy-szolgáltatással rendelkezik, amely lehetővé teszi a felhasználók számára, hogy az Azure AD-fiókjával való bejelentkezéssel hozzáférjenek a helyszíni alkalmazásokhoz. Ez az oktatóanyag előkészíti a környezetet az alkalmazásproxy használatához. Ha a környezet elkészült, a Azure Portal használatával hozzáadhat egy helyszíni alkalmazást az Azure AD-bérlőhöz.
+
+:::image type="content" source="./media/application-proxy-add-on-premises-application/app-proxy-diagram.png" alt-text="Alkalmazásproxy áttekintő diagramja" lightbox="./media/application-proxy-add-on-premises-application/app-proxy-diagram.png":::
 
 Az összekötők az alkalmazásproxy egyik kulcsfontosságú részét képezik. További információ az összekötők használatáról: az [Azure ad Application proxy-összekötők megismerése](application-proxy-connectors.md).
 
@@ -108,7 +110,7 @@ Először is engedélyezze az Azure-adatközpontok kommunikációját, hogy elő
 
 Nyissa meg a következő portokat a **kimenő** forgalom számára.
 
-   | Portszám | Használatuk módja |
+   | Portszám | Használat célja |
    | --- | --- |
    | 80 | A tanúsítvány-visszavonási listák (CRL-ek) letöltése a TLS/SSL-tanúsítvány ellenőrzése közben |
    | 443 | Minden kimenő kommunikáció az alkalmazásproxy szolgáltatással |
@@ -119,14 +121,18 @@ Ha a tűzfal a kezdeményező felhasználók alapján kényszeríti a forgalmat,
 
 A következő URL-címek elérésének engedélyezése:
 
-| URL-cím | Port | Használatuk módja |
+| URL-cím | Port | Használat célja |
 | --- | --- | --- |
 | &ast;. msappproxy.net<br>&ast;. servicebus.windows.net | 443/HTTPS | Kommunikáció az összekötő és az alkalmazásproxy Cloud Service között |
 | crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | 80/HTTP |Az összekötő ezeket az URL-címeket használja a tanúsítványok ellenőrzéséhez. |
 | login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>&ast;.microsoftonline.com<br>&ast;. microsoftonline-p.com<br>&ast;. msauth.net<br>&ast;. msauthimages.net<br>&ast;. msecnd.net<br>&ast;. msftauth.net<br>&ast;. msftauthimages.net<br>&ast;. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com<br>www.microsoft.com/pkiops | 443/HTTPS |Az összekötő ezeket az URL-címeket használja a regisztrációs folyamat során. |
 | ctldl.windowsupdate.com | 80/HTTP |Az összekötő ezt az URL-címet használja a regisztrációs folyamat során. |
 
-Engedélyezheti a &ast; . msappproxy.net, &ast; . servicebus.Windows.net és más URL-címek kapcsolatait, ha a tűzfal vagy a proxy lehetővé teszi a DNS-engedélyezési listák konfigurálását. Ha nem, engedélyeznie kell az [Azure IP-címtartományok és a szolgáltatás-címkék nyilvános felhőhöz](https://www.microsoft.com/download/details.aspx?id=56519)való hozzáférését. Az IP-címtartományok hetente frissülnek.
+A (z &ast; ). msappproxy.net, &ast; . servicebus.Windows.net és más URL-címekkel is engedélyezheti a kapcsolatokat, ha a tűzfal vagy a proxy lehetővé teszi a hozzáférési szabályok tartományi utótagok alapján történő konfigurálását. Ha nem, engedélyeznie kell az [Azure IP-címtartományok és a szolgáltatás-címkék nyilvános felhőhöz](https://www.microsoft.com/download/details.aspx?id=56519)való hozzáférését. Az IP-címtartományok hetente frissülnek.
+
+### <a name="dns-name-resolution-for-azure-ad-application-proxy-endpoints"></a>DNS-névfeloldás Azure AD Application Proxy-végpontokhoz
+
+Az Azure AD Application Proxy-végpontok nyilvános DNS-rekordjai egy rekordra mutató láncolt CNAME rekordok. Ez biztosítja a hibatűrést és a rugalmasságot. Garantáljuk, hogy az Azure AD Application Proxy-összekötő mindig a _*. msappproxy.net_ vagy _*. servicebus.Windows.net_ tartomány-utótaggal fér hozzá a gazdagépekhez. A névfeloldás során azonban előfordulhat, hogy a CNAME rekordok különböző állomásnévvel és utótaggal rendelkező DNS-rekordokat tartalmazhatnak.  Emiatt biztosítania kell, hogy az eszköz (a telepítő-összekötő kiszolgálótól, a tűzfaltól, a kimenő proxytól függően) képes legyen feloldani a láncban lévő összes rekordot, és lehetővé teszi a kapcsolódást a megoldott IP-címekhez. Mivel előfordulhat, hogy a láncban lévő DNS-rekordok időről időre módosulnak, és nem biztosítunk semmilyen List DNS-rekordot.
 
 ## <a name="install-and-register-a-connector"></a>Összekötő telepítése és regisztrálása
 
@@ -216,7 +222,7 @@ Most, hogy előkészítette a környezetet, és telepített egy összekötőt, k
     | **URL-címek lefordítása a fejlécekben** | Tartsa meg ezt az értéket **Igen** , kivéve, ha az alkalmazásnak a hitelesítési kérelemben az eredeti állomásfejléc-fejlécet kellett volna megadnia. |
     | **URL-címek fordítása az alkalmazás törzsében** | Ezt az értéket ne **csak akkor tartsa meg, ha** hardcoded HTML-hivatkozásokat más helyszíni alkalmazásokhoz, és ne használjon egyéni tartományokat. További információ: [a fordítás összekapcsolása az alkalmazásproxy szolgáltatással](application-proxy-configure-hard-coded-link-translation.md).<br><br>Ezt az értéket állítsa **Igen** értékre, ha azt tervezi, hogy Microsoft Cloud app Security (MCAS) használatával figyeli az alkalmazást. További információ: [valós idejű alkalmazás-hozzáférés figyelésének konfigurálása Microsoft Cloud app Security és Azure Active Directory](application-proxy-integrate-with-microsoft-cloud-application-security.md). |
 
-7. Válassza a **Hozzáadás** lehetőséget.
+7. Válassza a **Hozzáadás** elemet.
 
 ## <a name="test-the-application"></a>Az alkalmazás tesztelése
 

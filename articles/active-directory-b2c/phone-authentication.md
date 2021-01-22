@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8d41f8959d0a1ec0d6e48cf2fa4711a8ef8d8ae5
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 2600ea3488c643bcf215b058425de42cd439dcff
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178942"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660267"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>A telefonos regisztráció és a bejelentkezés beállítása egyéni szabályzatokkal Azure AD B2C
 
@@ -39,12 +39,12 @@ A telefonos regisztrációt és bejelentkezést követően a felhasználó az el
 >
 > *&lt;INSERT: az adatvédelmi nyilatkozatra mutató hivatkozás&gt;*<br/>*&lt;INSERT: a szolgáltatási feltételekre mutató hivatkozás&gt;*
 
-A saját belefoglalási információinak hozzáadásához szabja testre a következő mintát, és foglalja bele azt a LocalizedResources, amelyet az önérvényesített oldal a megjelenítési vezérlőelemmel (a [telefonos regisztráció és a bejelentkezési indító csomag][starter-pack-phone] *Phone_Email_Base.xml* fájljával) használ.
+Saját engedélyezési adatok hozzáadásához szabja testre a következő mintát. Vegye fel a (z)-t a `LocalizedResources` (z) által a ContentDefinition (a [telefonos regisztrációs és bejelentkezési indító csomag][starter-pack-phone] *Phone_Email_Base.xml* fájlja) által használt,
 
 ```xml
 <LocalizedResources Id="phoneSignUp.en">        
     <LocalizedStrings>
-    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_msg_intro">By providing your phone number, you consent to receiving a one-time passcode sent by text message to help you sign into {insert your application name}. Standard messsage and data rates may apply.</LocalizedString>          
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_msg_intro">By providing your phone number, you consent to receiving a one-time passcode sent by text message to help you sign into {insert your application name}. Standard message and data rates may apply.</LocalizedString>          
     <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_1_text">Privacy Statement</LocalizedString>                
     <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_1_url">{insert your privacy statement URL}</LocalizedString>          
     <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_2_text">Terms and Conditions</LocalizedString>             
@@ -64,7 +64,7 @@ A rendszer egy egyszeri ellenőrző kódot továbbít a felhasználó telefonsz�
 
 ![A felhasználó a telefonos regisztráció során ellenőrzi a kódot.](media/phone-authentication/phone-signup-verify-code.png)
 
- A felhasználó bármilyen más, a regisztrációs oldalon kért információt megad, például a **megjelenítendő nevet**, a **nevet** és a **vezetéknevet** (ország és telefonszám továbbra is feltöltve marad). Ha a felhasználó egy másik telefonszámot szeretne használni, akkor a regisztráció újraindításához válassza a **szám módosítása** lehetőséget. Ha elkészült, a felhasználó a **Folytatás** gombra kattint.
+A felhasználó más, a regisztrációs oldalon kért adatokat is megad. Például a **megjelenítendő név**, az **Utónév** és a **vezetéknév** (ország és telefonszám továbbra is kitöltve). Ha a felhasználó egy másik telefonszámot szeretne használni, akkor a regisztráció újraindításához válassza a **szám módosítása** lehetőséget. Ha elkészült, a felhasználó a **Folytatás** gombra kattint.
 
 ![A felhasználó további információkat is tartalmaz](media/phone-authentication/phone-signup-additional-info.png)
 
@@ -100,8 +100,6 @@ Az OTP beállítása előtt a következő erőforrásokra van szükség.
 
 Először frissítse a telefonos regisztrációt és a bejelentkezési egyéni házirend-fájlokat a Azure AD B2C Bérlővel való együttműködéshez.
 
-A következő lépések azt feltételezik, hogy végrehajtotta az [előfeltételeket](#prerequisites) , és már klónozotta az [egyéni házirend-indító csomag][starter-pack] tárházát a helyi gépre.
-
 1. Keresse meg a [telefonos regisztrációs és bejelentkezési egyéni házirend-fájlokat][starter-pack-phone] az alapszintű csomag tárházának helyi klónjában, vagy töltse le őket közvetlenül. Az XML-házirend fájljai a következő könyvtárban találhatók:
 
     `active-directory-b2c-custom-policy-starterpack/scenarios/`**`phone-number-passwordless`**
@@ -136,9 +134,9 @@ Az egyes fájlok feltöltésekor az Azure hozzáadja az előtagot `B2C_1A_` .
 
 ## <a name="get-user-account-by-phone-number"></a>Felhasználói fiók beolvasása telefonszám alapján
 
-Egy olyan felhasználó, amely regisztrál egy telefonszámot, de nem biztosít helyreállítási e-mail-címet, a rendszer a bejelentkezési nevüknek megfelelő telefonszámon rögzíti a Azure AD B2C könyvtárban. Ha a felhasználó ezután módosítani szeretné a telefonszámát, akkor az ügyfélszolgálatnak vagy a támogatási csapatnak először meg kell keresnie a fiókját, majd frissítenie kell a telefonszámát.
+Az a felhasználó, aki regisztrál egy telefonszámra, egy helyreállítási e-mail-cím nélkül rögzíti a Azure AD B2C könyvtárban a bejelentkezési nevükben megadott telefonszámot. A telefonszám módosításához az ügyfélszolgálatnak vagy a támogatási csapatnak először meg kell keresnie a fiókját, majd frissítenie kell a telefonszámát.
 
-A felhasználó telefonszáma alapján (bejelentkezési név) a [Microsoft Graph](manage-user-accounts-graph-api.md)használatával kereshet:
+A felhasználó telefonszáma alapján (bejelentkezési név) a [Microsoft Graph](microsoft-graph-operations.md)használatával kereshet:
 
 ```http
 GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+{phone number}' and c/issuer eq '{tenant name}.onmicrosoft.com')

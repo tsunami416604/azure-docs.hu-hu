@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: alkemper
-ms.openlocfilehash: 1a5e756e05543d9f19775f4e2d1abcee82794f9e
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 0ff80287971365b1477be319dc7a04760687f6a9
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932064"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663400"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Gyors útmutató: .NET Core-alkalmazás létrehozása az alkalmazás konfigurációjával
 
@@ -28,7 +28,7 @@ Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját egy .NET 
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-7. **Configuration Explorer**  >  **Create**  >  A következő kulcs-érték párok hozzáadásához válassza a Configuration Explorer Create **Key-Value** elemet:
+7.   >    >  A következő kulcs-érték párok hozzáadásához válassza a Configuration Explorer Create **Key-Value** elemet:
 
     | Kulcs | Érték |
     |---|---|
@@ -104,7 +104,7 @@ A [.net Core parancssori felület (CLI)](/dotnet/core/tools/) használatával ho
     export ConnectionString='connection-string-of-your-app-configuration-store'
     ```
 
-    A módosítás érvénybe léptetéséhez indítsa újra a parancssort. Nyomtassa ki a környezeti változó értékét annak ellenőrzéséhez, hogy megfelelően van-e beállítva.
+    A módosítás érvénybe léptetéséhez indítsa újra a parancssort. A környezeti változó értékének kinyomtatásával ellenőrizze, hogy megfelelően van-e beállítva.
 
 2. Futtassa a következő parancsot a konzol alkalmazás létrehozásához:
 

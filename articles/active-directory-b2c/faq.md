@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 30b7788419695db7ee5d4b81714bf55248a41b4a
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: e181b90219f340a29e818801ee2b53f1ccbd9c23
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108722"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660284"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: gyakori kérdések (GYIK)
 
@@ -96,7 +96,7 @@ A fiókok zárolásával és jelszavával kapcsolatos információkért lásd: a
 
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>Használhatom Azure AD Connect a helyszíni Active Directory tárolt fogyasztói identitások áttelepíthetők a Azure AD B2Cre?
 
-Nem, a Azure AD Connect nem a Azure AD B2C való működésre lett tervezve. Érdemes lehet a [Microsoft Graph API](manage-user-accounts-graph-api.md) -t használni a felhasználók áttelepítéséhez. A részletekért tekintse meg a [felhasználói áttelepítési útmutatót](user-migration.md) .
+Nem, a Azure AD Connect nem a Azure AD B2C való működésre lett tervezve. Érdemes lehet a [Microsoft Graph API](microsoft-graph-operations.md) -t használni a felhasználók áttelepítéséhez. A részletekért tekintse meg a [felhasználói áttelepítési útmutatót](user-migration.md) .
 
 ### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>Megnyithatom az alkalmazásom Azure AD B2C oldalakat egy iFrame-kereten belül?
 

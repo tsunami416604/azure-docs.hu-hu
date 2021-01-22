@@ -4,14 +4,14 @@ description: Azure Monitor metrikus riasztásokkal és lehetséges megoldásokka
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 01/11/2021
+ms.date: 01/21/2021
 ms.subservice: alerts
-ms.openlocfilehash: e4e876b58c82605df0c005b225dcf2cdbcda1b34
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 11dc71578b3d94ce41fe040557184ff32bcf3240
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070729"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661797"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Az Azure Monitor metrikaalapú riasztásaival kapcsolatos hibák elhárítása 
 
@@ -24,7 +24,8 @@ Azure Monitor riasztások proaktívan értesítik Önt, ha fontos feltételek ta
 Ha úgy gondolja, hogy egy metrikai riasztásnak kilőtte, de nem volt tűz, és nem található a Azure Portalban, próbálkozzon a következő lépésekkel:
 
 1. **Konfiguráció** – tekintse át a metrika riasztási szabályának konfigurációját, és győződjön meg arról, hogy megfelelően van-e konfigurálva:
-    - Győződjön meg arról, hogy az **összesítési típus**, az **összesítési részletesség (időszak)** és a **küszöbérték** vagy az **érzékenység** a várt módon van konfigurálva.
+    - Győződjön meg arról, hogy az **összesítési típus** és az **Összesítés részletessége (időszak)** a vártnak megfelelően van-e konfigurálva. Az **összesítési típus** határozza meg, hogy a metrikai értékek hogyan legyenek összesítve (további részletek [itt](./metrics-aggregation-explained.md#aggregation-types)), és az **Összesítés részletessége (időszak)** szabályozza, hogy a kiértékelés milyen mértékben összesíti a mérőszám értékeit a riasztási szabály futtatásakor.
+    -  Győződjön meg arról, hogy a **küszöbérték** vagy az **érzékenység** a vártnak megfelelően van-e konfigurálva.
     - A dinamikus küszöbértékeket használó riasztási szabályok esetében ellenőrizze, hogy a speciális beállítások konfigurálva vannak-e, mivel a **szabálysértések száma** kiszűrheti a riasztásokat, és **figyelmen kívül hagyhatja az adatvesztést, mielőtt** hatással lehet a küszöbértékek kiszámítására.
 
        > [!NOTE] 

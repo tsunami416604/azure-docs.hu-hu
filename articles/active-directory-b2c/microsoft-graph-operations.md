@@ -1,29 +1,31 @@
 ---
-title: Támogatott Microsoft Graph műveletek
+title: Erőforrások kezelése a Microsoft Graph
 titleSuffix: Azure AD B2C
-description: Az Azure AD B2C erőforrások, például a felhasználók, a felhasználói folyamatok, az identitás-szolgáltatók, az egyéni házirendek, a szabályzati kulcsok és egyéb házirendek kezeléséhez támogatott Microsoft Graph-műveletek indexe.
+description: Az Azure AD B2C-bérlő erőforrásainak kezelése a Microsoft Graph API meghívásával és az alkalmazás identitásának használatával a folyamat automatizálása érdekében.
 services: B2C
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: reference
-ms.date: 10/15/2020
+ms.topic: how-to
+ms.date: 01/21/2021
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.custom: fasttrack-edit
-ms.openlocfilehash: fed1e31380381b864530b3fa0b9e8c0886737d04
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 1dc5b8dc8930d75456f307324ef97bd60e78eca9
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033608"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660157"
 ---
-# <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>A Azure AD B2C számára elérhető Microsoft Graph műveletek
+# <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Azure AD B2C kezelése Microsoft Graph
 
-A következő Microsoft Graph API-műveletek támogatottak Azure AD B2C erőforrások, például felhasználók, identitás-szolgáltatók, felhasználói folyamatok, egyéni házirendek és házirend-kulcsok kezeléséhez.
+Microsoft Graph lehetővé teszi az erőforrások kezelését a Azure AD B2C címtárban. A következő Microsoft Graph API-műveletek támogatottak Azure AD B2C erőforrások, például felhasználók, identitás-szolgáltatók, felhasználói folyamatok, egyéni házirendek és házirend-kulcsok kezeléséhez. A következő részben található hivatkozások a Microsoft Graph API-referencián belüli megfelelő lapot célozzák meg az adott művelethez. 
 
-A következő részben található hivatkozások a Microsoft Graph API-referencián belüli megfelelő lapot célozzák meg az adott művelethez.
+## <a name="perquisites"></a>Perquisites
+
+Ha az MS Graph APIt szeretné használni, és a Azure AD B2C-bérlő erőforrásaival szeretne kommunikálni, szüksége lesz egy alkalmazás-regisztrációra, amely erre engedélyt ad. A felügyeleti alkalmazás által használható alkalmazás-regisztráció létrehozásához hajtsa végre a [Azure ad B2C kezelése a Microsoft Graphval](microsoft-graph-get-started.md) című cikkben ismertetett lépéseket. 
 
 ## <a name="user-management"></a>Felhasználókezelés
 
@@ -33,16 +35,14 @@ A következő részben található hivatkozások a Microsoft Graph API-referenci
 - [Felhasználó frissítése](/graph/api/user-update)
 - [Felhasználó törlése](/graph/api/user-delete)
 
-Azure AD B2C felhasználói fiókok Microsoft Graph API-val való kezelésével kapcsolatos további információkért lásd: [Azure ad B2C felhasználói fiókok kezelése Microsoft Graphokkal](manage-user-accounts-graph-api.md).
-
 ## <a name="user-phone-number-management"></a>Felhasználói telefonszámok kezelése
 
 - [Hozzáadás](/graph/api/authentication-post-phonemethods)
-- [Get](/graph/api/b2cauthenticationmethodspolicy-get)
+- [Lekérés](/graph/api/b2cauthenticationmethodspolicy-get)
 - [Frissítés](/graph/api/b2cauthenticationmethodspolicy-update)
 - [Törlés](/graph/api/phoneauthenticationmethod-delete)
 
-A felhasználó bejelentkezési telefonszámának Microsoft Graph API-val való kezelésével kapcsolatos további információkért lásd a [B2C hitelesítési módszereit](/graph/api/resources/b2cauthenticationmethodspolicy)ismertető témakört.
+A felhasználó bejelentkezési telefonszámának kezelésével kapcsolatos további információkért lásd: [B2C hitelesítési módszerek](/graph/api/resources/b2cauthenticationmethodspolicy).
 
 ## <a name="identity-providers-user-flow"></a>Identitás-szolgáltatók (felhasználói folyamat)
 
@@ -77,7 +77,7 @@ A következő műveletek lehetővé teszik a Azure AD B2C megbízhatósági kere
 
 Az Identity Experience Framework egy egyéni szabályzatban hivatkozott titkokat tárolja az összetevők közötti megbízhatósági kapcsolat létrehozásához. Ezek a titkok lehetnek szimmetrikus vagy aszimmetrikus kulcsok/értékek. A Azure Portalban ezek az entitások **házirend kulcsaként** jelennek meg.
 
-A Microsoft Graph API legfelső szintű erőforrása a [megbízható keretrendszer kulcskészlet](/graph/api/resources/trustframeworkkeyset). Mindegyik **kulcskészlet** legalább egy **kulcsot** tartalmaz. A kulcs létrehozásához először létre kell hoznia egy üres kulcskészlet-t, majd létre kell hoznia egy kulcsot a kulcskészlet alkalmazásban. Létrehozhat egy manuális titkot, feltölthet egy tanúsítványt vagy egy PKCS12/pfx-profil kulcsot is. A kulcs lehet egy generált titok, egy definiált karakterlánc (például a Facebook-alkalmazás titka) vagy egy feltöltött tanúsítvány. Ha egy kulcskészlet több kulccsal rendelkezik, akkor csak az egyik kulcs aktív.
+A Microsoft Graph API legfelső szintű erőforrása a [megbízható keretrendszer kulcskészlet](/graph/api/resources/trustframeworkkeyset). Mindegyik **kulcskészlet** legalább egy **kulcsot** tartalmaz. A kulcs létrehozásához először létre kell hoznia egy üres kulcskészlet-t, majd létre kell hoznia egy kulcsot a kulcskészlet alkalmazásban. Létrehozhat egy manuális titkot, feltölthet egy tanúsítványt vagy egy PKCS12/pfx-profil kulcsot is. A kulcs lehet egy generált titok, egy karakterlánc (például a Facebook-alkalmazás titka) vagy egy feltöltött tanúsítvány. Ha egy kulcskészlet több kulccsal rendelkezik, akkor csak az egyik kulcs aktív.
 
 ### <a name="trust-framework-policy-keyset"></a>Megbízhatósági keretrendszer szabályzata kulcskészlet
 
@@ -114,4 +114,93 @@ Azure AD B2C egy olyan könyvtárat biztosít, amely felhasználónként 100 egy
 
 - [Naplófájlok listázása](/graph/api/directoryaudit-list)
 
-A Microsoft Graph API-val Azure AD B2C naplók elérésével kapcsolatos további információkért lásd: [Azure ad B2C naplók elérése](view-audit-logs.md).
+További információ a Azure AD B2C naplók eléréséről: Azure AD B2C naplók [elérése](view-audit-logs.md).
+
+## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>Mintakód: felhasználói fiókok programozott felügyelete
+
+Ez a mintakód egy olyan .NET Core Console-alkalmazás, amely a [Microsoft Graph SDK](/graph/sdks/sdks-overview) -val együttműködik a Microsoft Graph API-val. A kód azt mutatja be, hogyan hívhatja meg az API-t, hogy programozott módon felügyelje a felhasználókat egy Azure AD B2C bérlőn.
+[Letöltheti a minta archívumot](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management/archive/master.zip) (*. zip), [böngészheti a tárházat](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management) a githubon, vagy megnyithatja az adattárat:
+
+```cmd
+git clone https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management.git
+```
+
+A mintakód beszerzése után konfigurálja a környezetet, majd hozza létre a projektet:
+
+1. Nyissa meg a projektet a [Visual Studióban](https://visualstudio.microsoft.com) vagy a [Visual Studio Code](https://code.visualstudio.com)-ban.
+1. Nyissa meg a következő fájlt: `src/appsettings.json`.
+1. A `appSettings` szakaszban cserélje le a `your-b2c-tenant` nevet a bérlő nevére, és `Application (client) ID` `Client secret` adja meg a felügyeleti alkalmazás regisztrálásának értékeit. További információ: [Microsoft Graph alkalmazás regisztrálása](microsoft-graph-get-started.md).
+1. Nyisson meg egy konzol ablakot a tárház helyi klónján belül, váltson át a `src` címtárra, majd hozza létre a projektet:
+
+    ```console
+    cd src
+    dotnet build
+    ```
+    
+1. Futtassa az alkalmazást a `dotnet` paranccsal:
+
+    ```console
+    dotnet bin/Debug/netcoreapp3.1/b2c-ms-graph.dll
+    ```
+
+Az alkalmazás megjeleníti a végrehajtható parancsok listáját. Például az összes felhasználó beszerzése, egyetlen felhasználó beszerzése, egy felhasználó törlése, a felhasználó jelszavának frissítése és a tömeges importálás.
+
+### <a name="code-discussion"></a>Kód-vitafórum
+
+A mintakód a [Microsoft Graph SDK](/graph/sdks/sdks-overview)-t használja, amelynek célja, hogy leegyszerűsítse a Microsoft Graphhoz hozzáférő, magas színvonalú, hatékony és rugalmas alkalmazások kialakítását.
+
+A Microsoft Graph API-nak benyújtott minden kérelemhez hozzáférési jogkivonat szükséges a hitelesítéshez. A megoldás a [Microsoft. Graph. auth](https://www.nuget.org/packages/Microsoft.Graph.Auth/) NuGet csomag használatát teszi lehetővé, amely a Microsoft Authentication Library (MSAL) hitelesítési forgatókönyv-alapú burkolóját biztosítja a Microsoft Graph SDK-val való használatra.
+
+A `RunAsync` metódus a _program.cs_ fájlban:
+
+1. Az Alkalmazásbeállítások beolvasása a _appsettings.js_ fájlból
+1. A [OAuth 2,0 ügyfél-hitelesítő adatok engedélyezési](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md) folyamatát használva inicializálja a hitelesítési szolgáltatót. Az ügyfél hitelesítő adatainak megadása esetén az alkalmazás hozzáférési jogkivonatot kap a Microsoft Graph API meghívásához.
+1. Beállítja a Microsoft Graph szolgáltatási ügyfelet az Auth szolgáltatóval:
+
+    ```csharp
+    // Read application settings from appsettings.json (tenant ID, app ID, client secret, etc.)
+    AppSettings config = AppSettingsFile.ReadFromJsonFile();
+
+    // Initialize the client credential auth provider
+    IConfidentialClientApplication confidentialClientApplication = ConfidentialClientApplicationBuilder
+        .Create(config.AppId)
+        .WithTenantId(config.TenantId)
+        .WithClientSecret(config.ClientSecret)
+        .Build();
+    ClientCredentialProvider authProvider = new ClientCredentialProvider(confidentialClientApplication);
+
+    // Set up the Microsoft Graph service client with client credentials
+    GraphServiceClient graphClient = new GraphServiceClient(authProvider);
+    ```
+
+A rendszer ezt követően a inicializált *GraphServiceClient* használja a _UserService.cs_ a felhasználói felügyeleti műveletek végrehajtásához. Például a bérlőben lévő felhasználói fiókok listájának beolvasása:
+
+```csharp
+public static async Task ListUsers(GraphServiceClient graphClient)
+{
+    Console.WriteLine("Getting list of users...");
+
+    // Get all users (one page)
+    var result = await graphClient.Users
+        .Request()
+        .Select(e => new
+        {
+            e.DisplayName,
+            e.Id,
+            e.Identities
+        })
+        .GetAsync();
+
+    foreach (var user in result.CurrentPage)
+    {
+        Console.WriteLine(JsonConvert.SerializeObject(user));
+    }
+}
+```
+
+[Az Microsoft Graph SDK-kat használó API-hívások a](/graph/sdks/create-requests) Microsoft Graph információk olvasására és írására, a `$select` visszaadott tulajdonságok szabályozására, az egyéni lekérdezési paraméterek megadására, valamint a `$filter` és a lekérdezés paramétereinek használatára vonatkozó információkat tartalmaznak `$orderBy` .
+
+<!-- LINK -->
+
+[graph-objectIdentity]: /graph/api/resources/objectidentity
+[graph-user]: (https://docs.microsoft.com/graph/api/resources/user)

@@ -12,12 +12,12 @@ ms.date: 01/12/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c4db7bf989a0062f87a5c3e6303ba64224996554
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 2956f0ffb562214477249da3198ebbe42ef9bb45
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98224461"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660369"
 ---
 # <a name="set-up-a-sign-in-flow-in-azure-active-directory-b2c"></a>Bejelentkezési folyamat beállítása Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ A bejelentkezési szabályzat lehetővé teszi a felhasználók számára a köv
 * A felhasználók Azure AD B2C helyi fiókkal jelentkezhetnek be
 * Közösségi fiókkal való regisztráció vagy bejelentkezés
 * Új jelszó létrehozása
-* A felhasználók nem regisztrálhatnak Azure AD B2C helyi fiókra – fiók létrehozásához a rendszergazda az [MS Graph APIt](manage-user-accounts-graph-api.md)használhatja.
+* A felhasználók nem regisztrálhatnak Azure AD B2C helyi fiókra – fiók létrehozásához a rendszergazda az [MS Graph APIt](microsoft-graph-operations.md)használhatja.
 
 ![Profil szerkesztési folyamata](./media/add-sign-in-policy/sign-in-user-flow.png)
 

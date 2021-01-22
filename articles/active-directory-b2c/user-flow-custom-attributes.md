@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 9759c1109c7be279520fa187bd3366bcac505d46
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 5552c93c1c65f08f70ed8929d81126035aa2a357
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503743"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661204"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Egyéni attribútumok definiálása a Azure Active Directory B2Cban
 
@@ -31,7 +31,7 @@ A Azure AD B2C könyvtára egy [beépített attribútumokkal](user-profile-attri
 * Az identitás-szolgáltató egyedi felhasználói azonosítóval rendelkezik, amelyet **uniqueUserGUID** kell megőrizni.
 * Az egyéni felhasználói utazásnak meg kell őriznie a felhasználó ( **migrationStatus**) állapotát, hogy más logika is működjön.
 
-Azure AD B2C segítségével kiterjesztheti az egyes felhasználói fiókokban tárolt attribútumok készletét. Ezeket az attribútumokat a [Microsoft Graph API](manage-user-accounts-graph-api.md)használatával is elolvashatja és elvégezheti.
+Azure AD B2C segítségével kiterjesztheti az egyes felhasználói fiókokban tárolt attribútumok készletét. Ezeket az attribútumokat a [Microsoft Graph API](microsoft-graph-operations.md)használatával is elolvashatja és elvégezheti.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -46,7 +46,7 @@ Azure AD B2C segítségével kiterjesztheti az egyes felhasználói fiókokban t
 1. Adja meg az egyéni attribútum **nevét** (például "ShoeSize").
 1. Válassza ki az **adattípust**. Csak a **String**, a **Boolean** és az **int** érték érhető el.
 1. Igény szerint megadhat egy **leírást** az információs célokra.
-1. Kattintson a **Létrehozás** gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 
 Az egyéni attribútum már elérhető a **felhasználói attribútumok** listájában és a felhasználói folyamatokban való használathoz. Egyéni attribútum csak akkor jön létre, amikor az első alkalommal használja a felhasználói folyamatokban, és nem, amikor hozzáadja a **felhasználói attribútumok** listájához.
 
@@ -60,7 +60,7 @@ Az egyéni attribútum már elérhető a **felhasználói attribútumok** listá
 1. Válassza ki az **alkalmazás jogcímeit** , majd válassza ki az egyéni attribútumot.
 1. Kattintson a **Mentés** gombra.
 
-Miután létrehozott egy új felhasználót egy olyan felhasználói folyamattal, amely az újonnan létrehozott egyéni attribútumot használja, az objektum [Microsoft Graph Explorerben](https://developer.microsoft.com/graph/graph-explorer)kérdezhető le. Azt is megteheti, hogy a felhasználói folyamat [Futtatás felhasználói folyamat futtatása](./tutorial-create-user-flows.md) funkciójával ellenőrzi az ügyfél élményét. Ekkor látnia kell a **ShoeSize** a regisztrációs útvonalon összegyűjtött attribútumok listájában, és az alkalmazásnak visszaadott tokenben tekintheti meg.
+Miután létrehozott egy új felhasználót egy felhasználói folyamattal, amely az újonnan létrehozott egyéni attribútumot használja, az objektum [Microsoft Graph Explorerben](https://developer.microsoft.com/graph/graph-explorer)kérdezhető le. Azt is megteheti, hogy a felhasználói folyamat [Futtatás felhasználói folyamat futtatása](./tutorial-create-user-flows.md) funkciójával ellenőrzi az ügyfél élményét. Ekkor látnia kell a **ShoeSize** a regisztrációs útvonalon összegyűjtött attribútumok listájában, és az alkalmazásnak visszaadott tokenben tekintheti meg.
 
 ::: zone-end
 
@@ -135,7 +135,7 @@ Ezeket az attribútumokat az egyéni szabályzatok használata előtt vagy után
 |Name     |Használatban |
 |---------|---------|
 |`extension_loyaltyId`  | Egyéni szabályzat|
-|`extension_<b2c-extensions-app-guid>_loyaltyId`  | [Microsoft Graph API](manage-user-accounts-graph-api.md)|
+|`extension_<b2c-extensions-app-guid>_loyaltyId`  | [Microsoft Graph API](microsoft-graph-operations.md)|
 
 Az alábbi példa az egyéni attribútumok használatát mutatja be egy Azure AD B2C egyéni házirend-jogcím definíciójában.
 

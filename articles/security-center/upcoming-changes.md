@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/18/2021
+ms.date: 01/21/2021
 ms.author: memildin
-ms.openlocfilehash: ba9a640c2231c7098e58ad6e29bbfa196436a7f9
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 6d656dbb3fb50091fc8721ba40431b37f77c4ad6
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562318"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662947"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>A Azure Security Center fontos jövőbeli módosításai
 
@@ -33,7 +33,6 @@ Ha a legújabb kibocsátási megjegyzéseket keresi, a [Azure Security Center ú
 
 - [A System Updates (rendszerfrissítések alkalmazása) biztonsági ellenőrzésének két javaslata elavult](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
 - [Az SQL-adatbesorolásra vonatkozó javaslat továbbfejlesztése](#enhancements-to-sql-data-classification-recommendation)
-- ["Nem alkalmazható" erőforrások, amelyeket "megfelelőként" kell jelenteni Azure Policy értékelésekben](#not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments)
 - [35 az Azure biztonsági teljesítményteszt lefedettségének növeléséhez hozzáadott előzetes javaslatok](#35-preview-recommendations-being-added-to-increase-coverage-of-azure-security-benchmark)
 
 
@@ -61,15 +60,6 @@ Az **SQL-adatbázisokban lévő bizalmas adatokra** vonatkozó ajánlás aktuál
 - A biztonsági vezérlő ("adatbesorolás alkalmazása") már nem lesz hatással a biztonságos pontszámra
 - Az ajánlás azonosítója is módosul (jelenleg b0df6f56-862d-4730-8597-38c0fd4ebd59)
 
-
-
-### <a name="not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments"></a>"Nem alkalmazható" erőforrások, amelyeket "megfelelőként" kell jelenteni Azure Policy értékelésekben
-
-**Változás becsült dátuma:** Január 2021
-
-Jelenleg a javaslathoz kiértékelt és a **nem** megfelelőnek talált erőforrások megjelennek a Azure Policy nem megfelelőként. Egyetlen felhasználói művelet sem változtathatja meg a "megfelelő" állapotot. Ebből a tervezett változásból a rendszer "megfelelőként" fogja jelenteni a jobb érthetőség érdekében.
-
-Az egyetlen hatása a Azure Policy, ahol a megfelelő erőforrások száma növekedni fog. Azure Security Center a biztonságos pontszáma nem lesz hatással.
 
 ### <a name="35-preview-recommendations-being-added-to-increase-coverage-of-azure-security-benchmark"></a>35 az Azure biztonsági teljesítményteszt lefedettségének növeléséhez hozzáadott előzetes javaslatok
 
@@ -101,6 +91,6 @@ Kapcsolódó hivatkozások:
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A termék legutóbbi módosításaival kapcsolatban tekintse [meg az Újdonságok a Azure Security Center?](release-notes.md)című témakört.

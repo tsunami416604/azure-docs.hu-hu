@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 8c0dd9713c673ad676058acc7dbbb3cb5a65362e
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 1794d5b15c724008d95cfc59b16960b7ae6a0783
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929191"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661569"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Oktatóanyag: funkció-jelzők használata egy ASP.NET Core alkalmazásban
 
@@ -37,7 +37,6 @@ Az oktatóanyag során a következőket fogja elsajátítani:
 ## <a name="set-up-feature-management"></a>A szolgáltatások kezelésének beállítása
 
 Vegyen fel egy hivatkozást a `Microsoft.FeatureManagement.AspNetCore` és a `Microsoft.FeatureManagement` NuGet-csomagokra a .net Core Feature Manager használatához.
-    
 A .NET Core Feature Manager `IFeatureManager` lekéri a keretrendszer natív konfigurációs rendszerének funkcióit. Ennek eredményeképpen meghatározhatja az alkalmazás funkciójának jelzőit a .NET Core által támogatott bármely konfigurációs forrás használatával, beleértve a fájl-vagy környezeti változók helyi *appsettings.jsét* is. `IFeatureManager` a .NET Core függőségi injekcióra támaszkodik. A szolgáltatás-felügyeleti szolgáltatásokat szabványos konvenciók használatával regisztrálhatja:
 
 ```csharp
@@ -109,7 +108,7 @@ A ASP.NET Core alkalmazásnak az alkalmazások konfigurációhoz való összekap
 2. Nyissa meg a *Startup.cs* , és frissítse a `Configure` metódust, és adja hozzá a nevű beépített middleware-t `UseAzureAppConfiguration` . Ez a middleware lehetővé teszi, hogy a szolgáltatás jelölő értékei ismétlődő időközönként frissüljenek, miközben a ASP.NET Core webalkalmazás továbbra is fogadja a kéréseket.
 
    ```csharp
-   public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+   public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
    {
        app.UseAzureAppConfiguration();
        app.UseMvc();
@@ -189,6 +188,8 @@ if (await featureManager.IsEnabledAsync(nameof(MyFeatureFlags.FeatureA)))
 A ASP.NET Core MVC-ben a függőségek befecskendezésével érheti el a Feature Managert `IFeatureManager` :
 
 ```csharp
+using Microsoft.FeatureManagement;
+
 public class HomeController : Controller
 {
     private readonly IFeatureManager _featureManager;

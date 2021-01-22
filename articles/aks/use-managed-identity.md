@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan használhatók a felügyelt identitások az Azu
 services: container-service
 ms.topic: article
 ms.date: 12/16/2020
-ms.openlocfilehash: fe11170b1cdf18aacf832f4c8171bfc082339395
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: e991f7313bae5aa67478043b4f9306dbc274e1e7
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599600"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98659988"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Felügyelt identitások használata az Azure Kubernetes szolgáltatásban
 
@@ -25,7 +25,6 @@ A következő erőforrást kell telepítenie:
 
 ## <a name="limitations"></a>Korlátozások
 
-* A fürt **frissítési** műveletei során a felügyelt identitás átmenetileg nem érhető el.
 * A felügyelt identitást engedélyező fürtök áthelyezési/áttelepíti a bérlők nem támogatottak.
 * Ha a fürt `aad-pod-identity` engedélyezve van, Node-Managed Identity (NMI) hüvely módosítja a csomópontok iptables-t az Azure-példány metaadatainak végpontjának hívására. Ez a konfiguráció azt jelenti, hogy a metaadat-végpontra irányuló kéréseket a NMI akkor is elfogja, ha a pod nem használja `aad-pod-identity` . A AzurePodIdentityException CRD konfigurálható úgy, hogy tájékoztassa `aad-pod-identity` , hogy a tőkekövetelmény-ből származó, a CRD-ban definiált címkével rendelkező, a NMI-ben való feldolgozás nélkül proxyra irányuló kérelmeket. A `kubernetes.azure.com/managedby: aks` _Kube-_ rendszernévtérben címkével ellátott rendszerhüvelyeket ki kell ZÁRNI a `aad-pod-identity` AzurePodIdentityException CRD konfigurálásával. További információ: [a HRE-Pod-Identity letiltása egy adott Pod vagy alkalmazáshoz](https://azure.github.io/aad-pod-identity/docs/configure/application_exception).
   Kivétel konfigurálásához telepítse a [MIC-Exception YAML](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml).
@@ -201,7 +200,7 @@ A saját felügyelt identitások használatával történő sikeres fürtök a u
  },
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Felügyelt identitást használó fürtök létrehozásához használjon [Azure Resource Manager (ARM) sablonokat ][aks-arm-template] .
 
 <!-- LINKS - external -->

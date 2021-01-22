@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/17/2021
+ms.date: 01/21/2021
 ms.author: memildin
-ms.openlocfilehash: 48e7093c30ffb135231f5843cb0767848f242d89
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.openlocfilehash: d171e3a7f1f0d63d0a5d130c6e19b246bf0cd795
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541383"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661814"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -35,27 +35,17 @@ Ha szeretne többet megtudni a Security Center hamarosan elérhető *tervezett* 
 
 A decemberi frissítések a következők:
 
+- [A helyszíni és a többfelhős gépek sebezhetőségi felmérése általánosan elérhető (GA)](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga)
+- [A Secure score API általánosan elérhető (GA)](#secure-score-api-is-released-for-general-availability-ga)
 - [Az ajánlatok szűrt listájának CSV-exportálása](#csv-export-of-filtered-list-of-recommendations)
-- [A helyszíni és a többfelhős gépek sebezhetőségi felmérése általánosan elérhető](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-generally-available)
+- [A "nem alkalmazható" erőforrások mostantól "megfelelőként" jelennek meg Azure Policy értékelésekben](#not-applicable-resources-now-reported-as-compliant-in-azure-policy-assessments)
 
 
-### <a name="csv-export-of-filtered-list-of-recommendations"></a>Az ajánlatok szűrt listájának CSV-exportálása 
-
-November 2020-én szűrők lettek hozzáadva a javaslatok oldalhoz (a[javaslatok listája mostantól tartalmazza a szűrőket is](#recommendations-list-now-includes-filters)). Decemberben kibővítettük ezeket a szűrőket (a[javaslatok oldalon új szűrők találhatók a környezethez, a súlyossághoz és a rendelkezésre álló válaszokhoz](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses)). 
-
-Ebben a közleményben a **Letöltés CSV-** re gombra változik, így a CSV-Exportálás csak a szűrt listában jelenleg megjelenő javaslatokat tartalmazza. 
-
-Az alábbi képen például láthatja, hogy a lista két javaslatra van szűrve. A létrehozott CSV-fájl tartalmazza a két javaslat által érintett összes erőforrás állapotának részleteit.   
-
-:::image type="content" source="media/security-center-managing-and-responding-alerts/export-to-csv-with-filters.png" alt-text="Szűrt javaslatok exportálása CSV-fájlba":::
-
-További tudnivalókat a [Azure Security Center biztonsági javaslataiban](security-center-recommendations.md)olvashat.
-
-### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-generally-available"></a>A helyszíni és a többfelhős gépek sebezhetőségi felmérése általánosan elérhető
+### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga"></a>A helyszíni és a többfelhős gépek sebezhetőségi felmérése általánosan elérhető (GA)
 
 Októberben bejelentettük az Azure arc-kompatibilis kiszolgálók vizsgálatának előzetes verzióját az [Azure Defender for Servers](defender-for-servers-introduction.md)integrált sebezhetőség-felmérési ellenőrzőeszköz (Qualys) használatával.
 
-Már általánosan elérhető. 
+Most már megjelent az általános elérhetősége (GA).
 
 Ha engedélyezte az Azure arc használatát a nem Azure-beli gépeken, Security Center az integrált biztonsági rések képolvasó üzembe helyezését teszi lehetővé manuálisan és méretezéssel.
 
@@ -71,6 +61,36 @@ Főbb képességek:
 [További információ az integrált sebezhetőségi képolvasó hibrid gépekre való üzembe helyezéséről](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines).
 
 [További információ az Azure arc használatára képes kiszolgálókról](../azure-arc/servers/index.yml).
+
+
+### <a name="secure-score-api-is-released-for-general-availability-ga"></a>A Secure score API általánosan elérhető (GA)
+
+Most már elérheti a pontszámát a [Secure score API](/rest/api/securitycenter/securescores/)-n keresztül. Az API-módszerek lehetővé teszik az adatlekérdezés rugalmasságát és a biztonságos pontszámok saját jelentési mechanizmusának elkészítését az idő múlásával. Használhatja például a **Secure scores** API-t egy adott előfizetés pontszámának lekéréséhez. Emellett a **Secure score Controls** API használatával is listázhatja az előfizetések biztonsági vezérlőit és aktuális pontszámát.
+
+A biztonságos pontszám API-val lehetséges külső eszközökre vonatkozó példákat a [GitHub-Közösség biztonságos pontszám területén](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)tekintheti meg.
+
+További információ a [Azure Security Center biztonságos pontszámáról és biztonsági vezérlőinek](secure-score-security-controls.md).
+
+
+### <a name="csv-export-of-filtered-list-of-recommendations"></a>Az ajánlatok szűrt listájának CSV-exportálása 
+
+November 2020-én szűrők lettek hozzáadva a javaslatok oldalhoz (a[javaslatok listája mostantól tartalmazza a szűrőket is](#recommendations-list-now-includes-filters)). Decemberben kibővítettük ezeket a szűrőket (a[javaslatok oldalon új szűrők találhatók a környezethez, a súlyossághoz és a rendelkezésre álló válaszokhoz](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses)). 
+
+Ebben a közleményben a **Letöltés CSV-** re gombra változik, így a CSV-Exportálás csak a szűrt listában jelenleg megjelenő javaslatokat tartalmazza. 
+
+Az alábbi képen például láthatja, hogy a lista két javaslatra van szűrve. A létrehozott CSV-fájl tartalmazza a két javaslat által érintett összes erőforrás állapotának részleteit.   
+
+:::image type="content" source="media/security-center-managing-and-responding-alerts/export-to-csv-with-filters.png" alt-text="Szűrt javaslatok exportálása CSV-fájlba":::
+
+További tudnivalókat a [Azure Security Center biztonsági javaslataiban](security-center-recommendations.md)olvashat.
+
+
+### <a name="not-applicable-resources-now-reported-as-compliant-in-azure-policy-assessments"></a>A "nem alkalmazható" erőforrások mostantól "megfelelőként" jelennek meg Azure Policy értékelésekben
+
+Korábban a javaslathoz kiértékelt és a **nem** megfelelőnek talált erőforrások Azure Policy "nem megfelelő" néven jelennek meg. Egyetlen felhasználói művelet sem változtathatja meg a "megfelelő" állapotot. Ennek a változásnak a jelentése "megfelelőként" jelent meg a jobb érthetőség érdekében.
+
+Az egyetlen hatása a Azure Policy, ahol a megfelelő erőforrások száma növekedni fog. Azure Security Center a biztonságos pontszáma nem lesz hatással.
+
 
 
 ## <a name="december-2020"></a>2020. december
@@ -134,12 +154,12 @@ Az Azure-környezethez két új, felhőben natív, széles körű veszélyforrá
 
 Ezek az új védelem nagy mértékben fokozza rugalmasságát a veszélyforrások elleni támadásokkal szemben, és jelentősen növeli az Azure Defender által védett Azure-erőforrások számát.
 
-- **Azure Defender for Resource Manager** – a szervezeten belül végrehajtott összes erőforrás-kezelési művelet automatikus figyelése. További információ:
+- **Azure Defender for Resource Manager** – a szervezeten belül végrehajtott összes erőforrás-kezelési művelet automatikus figyelése. További információkért lásd:
     - [A Resource Managerhez készült Azure Defender bemutatása](defender-for-resource-manager-introduction.md)
     - [Válaszadás a Resource Managerhez készült Azure Defender-riasztásokra](defender-for-resource-manager-usage.md)
     - [Az Azure Defender for Resource Manager által biztosított riasztások listája](alerts-reference.md#alerts-resourcemanager)
 
-- **Azure Defender DNS-ben** – folyamatosan figyeli az Azure-erőforrások összes DNS-lekérdezését. További információ:
+- **Azure Defender DNS-ben** – folyamatosan figyeli az Azure-erőforrások összes DNS-lekérdezését. További információkért lásd:
     - [A DNS-hez készült Azure Defender bemutatása](defender-for-dns-introduction.md)
     - [Válaszadás a DNS-hez készült Azure Defender-riasztásokra](defender-for-dns-usage.md)
     - [Az Azure Defender által a DNS-hez biztosított riasztások listája](alerts-reference.md#alerts-dns)

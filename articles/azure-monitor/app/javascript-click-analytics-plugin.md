@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: lagayhar
-ms.openlocfilehash: 7af26be91ff129e4c968bcb131cc98290cd8d7b9
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: b2e9c267b0a3723c9ac7b3edd49e23b95741962f
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610080"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660453"
 ---
 # <a name="click-analytics-auto-collection-plugin-for-application-insights-javascript-sdk"></a>Kattintson az Analytics Auto-Collection beépülő modul Application Insights JavaScript SDK-hoz
 
@@ -69,7 +69,7 @@ appInsights.loadAppInsights();
     2. A hatékonyság növelése érdekében a beépülő modul ezt a címkét jelölőként használja, amikor a rendszer leállítja a DOM (Document Object Model) további feldolgozását.
     
     > [!CAUTION]
-    > Egyszer `parentDataTag` használatban van, a teljes alkalmazásban állandó hatással van, nem csupán a használt HTML-elemre.
+    > `parentDataTag`A használat után az SDK megkezdi a szülő címkék keresését a teljes alkalmazásban, és nem csak az Ön által használt HTML-elemet.
 4. `customDataPrefix` a felhasználó által megadott értéknek mindig a `data-` következővel kell kezdődnie, például: `data-sample-` . A HTML-ben a `data-*` globális attribútumok egy egyéni adatattribútumok nevű osztályt alkotnak, amely lehetővé teszi a tulajdonosi adatok cseréjét a HTML és a DOM-képviseletek között a parancsfájlok alapján. A régebbi böngészők (Internet Explorer, Safari) a nem értelmezhető attribútumokat fogják eldobni, kivéve, ha ezekkel kezdődnek `data-` .
 
     Előfordulhat, hogy a `*` -ben az `data-*`  alábbi korlátozásokkal helyettesítheti az [XML-nevek termelési szabályát](https://www.w3.org/TR/REC-xml/#NT-Name) követő bármelyik nevet:
@@ -314,5 +314,5 @@ appInsights.loadAppInsights();
 
 - Tekintse meg a [GitHub-tárházat](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-clickanalytics-js) és a [NPM csomagot](https://www.npmjs.com/package/@microsoft/applicationinsights-clickanalytics-js) a Click Analytics automatikus gyűjtemény beépülő moduljában.
 - Használja az [események elemzését használati élményben](usage-segmentation.md) a leggyakoribb kattintások és a szeletek elérhető dimenziók alapján történő elemzéséhez.
-- Keresse meg az adatokat a CustomEvents tábla customDimensions attribútumában a Content (tartalom) mezőben a [log Analyticsban](../log-query/log-analytics-tutorial.md#write-a-query).
+- Keresse meg az adatokat a CustomEvents tábla customDimensions attribútumában a Content (tartalom) mezőben a [log Analyticsban](../log-query/log-analytics-tutorial.md#write-a-query). További útmutatásért lásd: [Sample app](https://go.microsoft.com/fwlink/?linkid=2152871) .
 - Hozzon létre egy [munkafüzetet](../platform/workbooks-overview.md) egyéni vizualizációk létrehozásához, kattintson az adatelemre.

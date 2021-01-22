@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/23/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 68a129f38e9a94a7e381d11ffa3c3d02791b025b
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: e48fead4d4364fd84f178388dbfb9158296e687b
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755769"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98659971"
 ---
 # <a name="how-to-use-batch-transcription"></a>A Batch-átírás használata
 
@@ -24,7 +24,7 @@ A Batch átírása REST API művelet, amely lehetővé teszi nagy mennyiségű h
 
 A Batch átírása REST API-kkal a következő módszereket hívhatja:
 
-|    Kötegelt átírási művelet                                             |    Módszer    |    REST API hívás                                   |
+|    Kötegelt átírási művelet                                             |    Metódus    |    REST API hívás                                   |
 |------------------------------------------------------------------------------|--------------|----------------------------------------------------|
 |    Új átírást hoz létre.                                              |    POST      |    speechtotext/v 3.0/átiratok            |
 |    Lekéri a hitelesített előfizetéshez tartozó átírások listáját.    |    GET       |    speechtotext/v 3.0/átiratok            |
@@ -208,7 +208,8 @@ Az átírási eredmények fájljának formátuma a következő:
   ],
   "recognizedPhrases": [                // results for each phrase and each channel individually
     {
-      "recognitionStatus": "Success",   // recognition state, e.g. "Success", "Failure"
+      "recognitionStatus": "Success",   // recognition state, e.g. "Success", "Failure"          
+      "speaker": 1,                     // if `diarizationEnabled` is `true`, this is the identified speaker (1 or 2), otherwise this property is not present
       "channel": 0,                     // channel number of the result
       "offset": "PT0.07S",              // offset in audio of this phrase, ISO 8601 encoded duration 
       "duration": "PT1.59S",            // audio duration of this phrase, ISO 8601 encoded duration
@@ -219,7 +220,6 @@ Az átírási eredmények fájljának formátuma a következő:
       "nBest": [
         {
           "confidence": 0.898652852,    // confidence value for the recognition of the whole phrase
-          "speaker": 1,                 // if `diarizationEnabled` is `true`, this is the identified speaker (1 or 2), otherwise this property is not present
           "lexical": "hello world",
           "itn": "hello world",
           "maskedITN": "hello world",
@@ -416,6 +416,6 @@ Ez a mintakód nem ad meg egyéni modellt. A szolgáltatás az alapmodellt haszn
 > [!NOTE]
 > Az alapértékek átírásakor nem kell deklarálnia az alapmodell AZONOSÍTÓját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Beszéd a Text V3 API-hoz – dokumentáció](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription)

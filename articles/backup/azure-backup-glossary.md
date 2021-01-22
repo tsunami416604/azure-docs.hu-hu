@@ -3,12 +3,12 @@ title: Szószedet Azure Backup
 description: Ez a cikk a Azure Backup használatának hasznos feltételeit határozza meg.
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: 1e28f0c2ad5d14ea2a8dc6ce8d5fa2b21c7e65ac
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 121258665ab275fdcffd618e7c0cf1b3e0537e70
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935070"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661476"
 ---
 # <a name="azure-backup-glossary"></a>Szószedet Azure Backup
 
@@ -282,7 +282,7 @@ A Soft delete egy olyan szolgáltatás, amely segít megvédeni a biztonsági me
 
 A pillanatkép egy virtuális merevlemez (VHD) vagy egy Azure-fájlmegosztás teljes, írásvédett másolata. További információ a [lemezes pillanatképekről](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk) és a [fájl-pillanatképekről](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files).
 
-## <a name="storage-account"></a>Tárfiók
+## <a name="storage-account"></a>A(z)
 
 Tekintse meg a [Storage-fiók dokumentációját](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
 
@@ -320,7 +320,7 @@ Tekintse meg a [VNET dokumentációját](https://docs.microsoft.com/azure/virtua
 
 Tekintse meg a [VSS dokumentációját](https://docs.microsoft.com/windows-server/storage/file-server/volume-shadow-copy-service).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Backup áttekintése](backup-overview.md)
 - [Architektúra és összetevők Azure Backup](backup-architecture.md)

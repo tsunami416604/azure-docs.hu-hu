@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: d9ae9cae1a0a8014f007cd7c4a3d1f97f27128bb
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 4ae69ddeb46d484a64edc4ccabfa6740b36c4264
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610964"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663264"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics munkaterület-adatexportálás Azure Monitorban (előzetes verzió)
 Log Analytics munkaterület-adatexportálás Azure Monitor lehetővé teszi, hogy folyamatosan exportálja a Log Analytics munkaterület kijelölt tábláiból származó adatokat egy Azure Storage-fiókba vagy az Azure-Event Hubsba az összegyűjtött adatok alapján. Ez a cikk részletesen ismerteti ezt a funkciót, valamint az adatexportálás konfigurálásának lépéseit a munkaterületeken.
@@ -33,7 +33,7 @@ Log Analytics munkaterület-adatok exportálásával folyamatosan exportálhatja
 - Egyszeri exportálás a helyi gépre PowerShell-parancsfájl használatával. Lásd: [meghívás-AzOperationalInsightsQueryExport](https://www.powershellgallery.com/packages/Invoke-AzOperationalInsightsQueryExport).
 
 
-## <a name="current-limitations"></a>Aktuális korlátozások
+## <a name="limitations"></a>Korlátozások
 
 - A konfiguráció a CLI-vagy REST-kérelmekkel jelenleg is elvégezhető. A Azure Portal vagy a PowerShell még nem támogatott.
 - A ```--export-all-tables``` CLI-ben és a REST-ben való beállítás nem támogatott, és el lesz távolítva. Explicit módon meg kell adnia a táblák listáját az exportálási szabályokban.

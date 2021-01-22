@@ -9,19 +9,19 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 01/20/2021
 ms.author: justinha
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4e65b47b2a1fd71c69ecb350f60df1fedff66b74
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 34692f5e563e4931a27ea59db84d9c88f27817da
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618909"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660898"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services-using-the-azure-portal"></a>Hatókörön belüli szinkronizálás konfigurálása az Azure AD-ből Azure Active Directory Domain Services a Azure Portal használatával
 
-A hitelesítési szolgáltatások biztosításához Azure Active Directory Domain Services (Azure AD DS) szinkronizálja a felhasználókat és a csoportokat az Azure AD-ből. Hibrid környezetben a helyszíni Active Directory tartományi szolgáltatások (AD DS) környezet felhasználóit és csoportjait először szinkronizálhatja az Azure AD-vel az Azure AD Connect használatával, majd szinkronizálhatja az Azure AD DS felügyelt tartományával.
+A hitelesítési szolgáltatások biztosításához Azure Active Directory Domain Services (Azure AD DS) szinkronizálja a felhasználókat és a csoportokat az Azure AD-ből. Hibrid környezetben a helyszíni Active Directory Domain Services (AD DS) környezet felhasználóit és csoportjait először szinkronizálhatja az Azure AD-vel az Azure AD Connect használatával, majd szinkronizálhatja az Azure AD DS felügyelt tartományával.
 
 Alapértelmezés szerint az Azure AD-címtárból származó összes felhasználó és csoport egy felügyelt tartományba van szinkronizálva. Ha konkrét igényei vannak, ehelyett csak a megadott felhasználók szinkronizálását lehet választani.
 
@@ -43,15 +43,14 @@ A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van sz
 
 Alapértelmezés szerint az Azure AD-címtárból származó összes felhasználó és csoport egy felügyelt tartományba van szinkronizálva. Ha csak néhány felhasználónak kell hozzáférnie a felügyelt tartományhoz, csak ezeket a felhasználói fiókokat lehet szinkronizálni. Ez a hatókörön belüli szinkronizálás csoport alapú. A csoport alapú hatókörű szinkronizálás konfigurálásakor a rendszer csak a megadott csoportokhoz tartozó felhasználói fiókokat szinkronizálja a felügyelt tartományba. Beágyazott csoportok nincsenek szinkronizálva, csak a kiválasztott csoportok.
 
-A szinkronizálási hatókört a felügyelt tartomány létrehozásakor, vagy az üzembe helyezése után is módosíthatja. Most már megváltoztathatja a szinkronizálás hatókörét egy meglévő felügyelt tartományon anélkül, hogy újra létre kellene hoznia.
+A szinkronizálási hatókört a felügyelt tartomány létrehozása előtt vagy után is módosíthatja. A szinkronizálás hatókörét egy egyszerű szolgáltatásnév definiálja az alkalmazás-azonosító 2565bd9d-DA50-47d4-8B85-4c97f669dc36. A hatókör elvesztésének megelőzése érdekében ne törölje vagy módosítsa a szolgáltatásnevet. Ha véletlenül törölve van, a szinkronizálási hatókör nem állítható helyre. 
+
+Tartsa szem előtt az alábbi figyelmeztetéseket, ha módosítja a szinkronizálási hatókört:
+
+- Teljes szinkronizálás történik.
+- A felügyelt tartományban már nem szükséges objektumok törlődnek. Az új objektumok a felügyelt tartományban jönnek létre.
 
 További információ a szinkronizálási folyamatról: a [Azure ad Domain Services szinkronizálásának megismerése][concepts-sync].
-
-> [!WARNING]
-> A szinkronizálás hatókörének módosítása azt eredményezi, hogy a felügyelt tartomány újraszinkronizálja az összes adatot. A következő szempontokat kell figyelembe venni:
->
->  * Egy felügyelt tartomány szinkronizálási hatókörének módosításakor teljes Újraszinkronizálás történik.
->  * A felügyelt tartományban már nem szükséges objektumok törlődnek. Az új objektumok a felügyelt tartományban jönnek létre.
 
 ## <a name="enable-scoped-synchronization"></a>Hatókörön belüli szinkronizálás engedélyezése
 
@@ -87,7 +86,7 @@ A csoport alapú hatókörű szinkronizálás egy felügyelt tartományon való 
 
 A szinkronizálás hatókörének módosítása azt eredményezi, hogy a felügyelt tartomány újraszinkronizálja az összes adatot. A felügyelt tartományban már nem szükséges objektumok törlődnek, és az újraszinkronizálás hosszabb ideig is eltarthat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a szinkronizálási folyamatról: a [Azure ad Domain Services szinkronizálásának megismerése][concepts-sync].
 

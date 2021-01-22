@@ -3,15 +3,15 @@ title: Kapcsolati architektúra – Azure Database for MariaDB
 description: A Azure Database for MariaDB-kiszolgáló kapcsolati architektúráját ismerteti.
 author: mksuni
 ms.author: sumuth
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 98a75cee88a7d30161fc3166bce0eaec855d347c
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 57e14fa4a026dafb085ea636611ab26b6bad7c01
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656716"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661704"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Kapcsolati architektúra a Azure Database for MariaDBban
 Ez a cikk ismerteti a Azure Database for MariaDB kapcsolati architektúrát, valamint azt, hogy a forgalom hogyan legyen átirányítva a Azure Database for MariaDB-példányra az Azure-on belüli és kívüli ügyfelektől.
@@ -50,7 +50,7 @@ A következő táblázat az összes adatterület Azure Database for MariaDB átj
 | Dél-Brazília |191.233.201.8, 191.233.200.16    |  | 104.41.11.5|
 | Közép-Kanada |40.85.224.249  | | |
 | Kelet-Kanada | 40.86.226.166    | | |
-| USA középső régiója | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38 | | |
+| Az USA középső régiója | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38 | | |
 | Kelet-Kína | 139.219.130.35    | | |
 | Kelet-Kína 2 | 40.73.82.1  | | |
 | Észak-Kína | 139.219.15.17    | | |

@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 24b4f56e5798acc4d9bd0962be7059a359958645
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 97f1f5d0f1f351164e05d18b9f80c7f26450f31b
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573241"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661593"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Az Azure Digital Twins integrálása Azure Time Series Insights
 
@@ -65,7 +65,7 @@ Az Azure Digital Twins [*oktatóanyaga: egy végpontok közötti megoldás össz
 4. Hozzon létre egy Azure digitális Twins- [végpontot](concepts-route-events.md#create-an-endpoint) , amely az Event hub-t az Azure Digital Twins-példánnyal csatolja.
 
     ```azurecli-interactive
-    az dt endpoint create eventhub --endpoint-name <name for your Event Hubs endpoint> --eventhub-resource-group <resource group name> --eventhub-namespace <Event Hubs namespace from above> --eventhub <Twins event hub name from above> --eventhub-policy <Twins auth rule from above> -n <your Azure Digital Twins instance name>
+    az dt endpoint create eventhub -n <your Azure Digital Twins instance name> --endpoint-name <name for your Event Hubs endpoint> --eventhub-resource-group <resource group name> --eventhub-namespace <Event Hubs namespace from above> --eventhub <Twins event hub name from above> --eventhub-policy <Twins auth rule from above>
     ```
 
 5. Hozzon létre egy [útvonalat](concepts-route-events.md#create-an-event-route) az Azure Digital Twinsben, amelyen elküldheti az ikerpéldányok frissítési eseményeit a végpontnak. Az ebben az útvonalban lévő szűrő csak a kettős frissítési üzeneteket továbbítja a végpontnak.
@@ -89,11 +89,16 @@ Ez a függvény átalakítja ezeket a kettős frissítési eseményeket az erede
 
 A Event Hubs és a Azure Functions használatával kapcsolatos további információkért lásd: [*Azure Event Hubs trigger Azure Functionshoz*](../azure-functions/functions-bindings-event-hubs-trigger.md).
 
-A közzétett Function alkalmazásban cserélje le a függvény kódját a következő kódra.
+A közzétett Function alkalmazásban vegyen fel egy **ProcessDTUpdatetoTSI** nevű új függvényt a következő kóddal.
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/updateTSI.cs":::
 
-Innen a függvény ezután elküldi az általa létrehozott JSON-objektumokat egy második esemény-hubhoz, amely Time Series Insightshoz fog csatlakozni.
+>[!NOTE]
+>Előfordulhat, hogy hozzá kell adnia a csomagokat a projekthez a `dotnet add package` parancs vagy a Visual Studio NuGet csomagkezelő használatával.
+
+Ezután **tegye közzé** az új Azure-függvényt. Ennek módjával kapcsolatos útmutatásért tekintse meg az [*Azure-függvény beállítása az adatfeldolgozáshoz*](how-to-create-azure-function.md#publish-the-function-app-to-azure)című témakört.
+
+Előretekintve a függvény elküldi az általa létrehozott JSON-objektumokat egy második esemény-hubhoz, amelyet Time Series Insightshoz fog csatlakozni. Az Event hub-t a következő szakaszban fogja létrehozni.
 
 Később olyan környezeti változók is megadhatók, amelyeket ez a függvény a saját Event hubokhoz való kapcsolódáshoz használ majd.
 
@@ -130,7 +135,7 @@ A következő lépésben környezeti változókat kell beállítania a Function 
     az eventhubs eventhub authorization-rule keys list --resource-group <resource group name> --namespace-name <Event Hubs namespace> --eventhub-name <Twins event hub name from earlier> --name <Twins auth rule from earlier>
     ```
 
-2. Az eredményül kapott kapcsolati sztringgel hozzon létre egy olyan alkalmazásbeállítást a függvényalkalmazásban, amely tartalmazza a kapcsolati sztringet:
+2. Az eredményből származó *primaryConnectionString* érték használatával hozzon létre egy alkalmazás-beállítást a Function alkalmazásban, amely tartalmazza a kapcsolódási karakterláncot:
 
     ```azurecli-interactive
     az functionapp config appsettings set --settings "EventHubAppSetting-Twins=<Twins event hub connection string>" -g <resource group> -n <your App Service (function app) name>
@@ -152,15 +157,15 @@ A következő lépésben környezeti változókat kell beállítania a Function 
 
 ## <a name="create-and-connect-a-time-series-insights-instance"></a>Time Series Insights-példány létrehozása és összekapcsolása
 
-Ezután állítson be egy Time Series Insights-példányt, amely a második Event hub adatait fogja fogadni. Kövesse az alábbi lépéseket, és a folyamattal kapcsolatos további információkért tekintse [*meg az oktatóanyag: Azure Time Series Insights GEN2 TB-környezet beállítása*](../time-series-insights/tutorials-set-up-tsi-environment.md)című témakört.
+Ezután állítson be egy Time Series Insights-példányt, amely a második (ÁME) Event hub adatait fogja fogadni. Kövesse az alábbi lépéseket, és a folyamattal kapcsolatos további információkért tekintse [*meg az oktatóanyag: Azure Time Series Insights GEN2 TB-környezet beállítása*](../time-series-insights/tutorials-set-up-tsi-environment.md)című témakört.
 
-1. A Azure Portal Time Series Insights erőforrás létrehozásának megkezdéséhez. 
+1. A Azure Portal a Time Series Insights-környezet létrehozásának megkezdéséhez. 
     1. Válassza ki a **Gen2 (L1)** árképzési szintet.
     2. Ehhez a környezethez ki kell választania egy **idősorozat-azonosítót** . Az idősorozat-azonosító legfeljebb három olyan érték lehet, amelyet a Time Series Insightsban lévő adatok kereséséhez fog használni. Ebben az oktatóanyagban használhatja a **$dtId**. További információ az azonosító érték kiválasztásáról az [*ajánlott eljárásokban az idősorozat-azonosító kiválasztásához*](../time-series-insights/how-to-select-tsid.md).
     
         :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="A létrehozási portál UX Time Series Insights-környezethez. A Gen2 (L1) árképzési szintje van kiválasztva, az idősorozat-azonosító tulajdonság neve pedig $dtId" lightbox="media/how-to-integrate-time-series-insights/create-twin-id.png":::
 
-2. Válassza a **Next (tovább): eseményforrás** lehetőséget, és válassza ki a Event Hubs adatokat a fenti listából. Emellett új Event Hubs fogyasztói csoportot is létre kell hoznia.
+2. Válassza a Next (tovább) gombot **: eseményforrás** , és válassza ki az ÁME Event hub-információkat a korábbi verziók közül. Emellett új Event Hubs fogyasztói csoportot is létre kell hoznia.
     
     :::image type="content" source="media/how-to-integrate-time-series-insights/event-source-twins.png" alt-text="A létrehozási portál UX Time Series Insights környezeti esemény forrásához. Az Event hub információi alapján hozza létre az eseményforrás adatait. Új fogyasztói csoportot is létrehoz." lightbox="media/how-to-integrate-time-series-insights/event-source-twins.png":::
 
@@ -174,7 +179,7 @@ Ha teljes körű oktatóanyagot használ ([*oktatóanyag: végpontok közötti m
 
 Az adatforgalom az Time Series Insights-példányba kerül, és készen áll az elemzésre. Kövesse az alábbi lépéseket a beérkező adatforgalom megismeréséhez.
 
-1. Nyissa meg Time Series Insights-példányát a [Azure Portalban](https://portal.azure.com) (a példány nevét megkeresheti a portál keresési sávján). Látogasson el a példány áttekintésében látható *Time Series Insights Explorer URL-címére* .
+1. Nyissa meg Time Series Insights-környezetét a [Azure Portalban](https://portal.azure.com) (a portálon keresse meg a környezet nevét). Látogasson el a példány áttekintésében látható *Time Series Insights Explorer URL-címére* .
     
     :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="A Time Series Insights-környezet áttekintés lapján válassza ki a Time Series Insights Explorer URL-címét":::
 
@@ -190,7 +195,7 @@ Az adatforgalom az Time Series Insights-példányba kerül, és készen áll az 
     
     :::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="Az egyes Twin-sorok hőmérsékleti értékeit három, különböző színű párhuzamos vonal ábrázolja.":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A digitális ikreket alapértelmezés szerint a rendszer a Time Series Insightsban lévő, lapos hierarchiában tárolja, de a modell adataival és a szervezet többszintű hierarchiájának használatával gazdagíthatja őket. A folyamattal kapcsolatos további információkért olvassa el a következőt: 
 
