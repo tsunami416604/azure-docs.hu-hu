@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 2a17825d062496e6600966dc7c90b14749507e4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0fea82c376a178de0be8ede6c0393e1de21de614
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86494513"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675804"
 ---
 # <a name="disable-or-remove-the-linux-agent-from-vms-and-images"></a>A Linux-ügynök letiltása vagy eltávolítása a virtuális gépekről és a lemezképekről
 
@@ -31,9 +31,9 @@ Az Azure platform számos olyan bővítményt üzemeltet, amely a virtuálisgép
 
 ## <a name="disabling-extension-processing"></a>Bővítmény feldolgozásának letiltása
 
-Több módon is letilthatja a bővítmények feldolgozását, az igényeinek megfelelően, de a folytatás előtt el **kell** távolítania a virtuális géphez központilag telepített összes bővítményt, például az az CLI használatával, [listázhatja](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-list) és [törölheti](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-delete)a következőket:
+Több módon is letilthatja a bővítmények feldolgozását, az igényeinek megfelelően, de a folytatás előtt el **kell** távolítania a virtuális gépre telepített összes bővítményt, például az Azure [CLI használatával:](/cli/azure/vm/extension#az-vm-extension-list) [](/cli/azure/vm/extension#az-vm-extension-delete)
 
-```bash
+```azurecli
 az vm extension delete -g MyResourceGroup --vm-name MyVm -n extension_name
 ```
 > [!Note]
@@ -43,7 +43,7 @@ az vm extension delete -g MyResourceGroup --vm-name MyVm -n extension_name
 ### <a name="disable-at-the-control-plane"></a>Letiltás a vezérlési síkon
 Ha nem biztos abban, hogy a jövőben szükség van-e a bővítményekre, a Linux-ügynököt a virtuális gépre is telepítheti, majd letilthatja a bővítmény feldolgozási képességeit a platformról. Ez a beállítás az API- `Microsoft.Compute` verzióban `2018-06-01` vagy magasabbban érhető el, és nem függ a Linux-ügynök telepített verziójától.
 
-```bash
+```azurecli
 az vm update -g <resourceGroup> -n <vmName> --set osProfile.allowExtensionOperations=false
 ```
 A bővítmény feldolgozását könnyedén újraengedélyezheti a platformról, a fenti paranccsal azonban "true" (igaz) értékre állíthatja.
@@ -132,7 +132,7 @@ A fentiek elvégzése után létrehozhatja az egyéni rendszerképet az Azure CL
 
 
 **Normál felügyelt rendszerkép létrehozása**
-```bash
+```azurecli
 az vm deallocate -g <resource_group> -n <vm_name>
 az vm generalize -g <resource_group> -n <vm_name>
 az image create -g <resource_group> -n <image_name> --source <vm_name>
@@ -140,7 +140,7 @@ az image create -g <resource_group> -n <image_name> --source <vm_name>
 
 **Rendszerkép-verzió létrehozása megosztott rendszerkép-gyűjteményben**
 
-```bash
+```azurecli
 az sig image-version create \
     -g $sigResourceGroup 
     --gallery-name $sigName 
@@ -157,7 +157,7 @@ Ha a virtuális gépet Linux-ügynök nélkül hozza létre a rendszerképből, 
 
 Ha a virtuális gépet a bővítmények letiltásával szeretné telepíteni, használhatja az Azure CLI-t az [--enable-Agent](/cli/azure/vm#az-vm-create)paranccsal.
 
-```bash
+```azurecli
 az vm create \
     --resource-group $resourceGroup \
     --name $prodVmName \
@@ -183,6 +183,6 @@ Azt is megteheti, hogy az Azure Resource Manager (ARM) sablonokat használja a b
                     "keyData": "[parameters('adminPublicKey')]"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: [Linux kiépítés](provisioning.md).

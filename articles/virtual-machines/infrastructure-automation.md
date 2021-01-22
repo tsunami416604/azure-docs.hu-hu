@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: 96c68850cfd8b03f7d1457eb0f1ca9ce5880c926
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: a20c19c3da89801570ca4d74a646e3cf0d8434b6
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197999"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675902"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Infrastruktúra-automatizálási eszközök használata az Azure-beli virtuális gépekkel
 
@@ -87,8 +87,8 @@ A parancsfájlok letölthetők az Azure Storage-ból vagy bármilyen nyilvános 
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
-- [Hozzon létre egy linuxos virtuális gépet az Azure CLI-vel, és használja az egyéni szkriptek bővítményét](./scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md?toc=%2fcli%2fazure%2ftoc.json).
-- [Hozzon létre egy Windows rendszerű virtuális gépet Azure PowerShell, és használja az egyéni szkriptek bővítményét](./scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md).
+- [Hozzon létre egy linuxos virtuális gépet az Azure CLI-vel, és használja az egyéni szkriptek bővítményét](/previous-versions/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-nginx?toc=%2fcli%2fazure%2ftoc.json).
+- [Hozzon létre egy Windows rendszerű virtuális gépet Azure PowerShell, és használja az egyéni szkriptek bővítményét](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-iis).
 
 
 ## <a name="packer"></a>Csomagoló
@@ -144,7 +144,7 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 
 - [Helyszíni virtuális gépek üzembe helyezése Resource Manager-sablonnal](./linux/spot-template.md).
 - [Hozzon létre egy Windows rendszerű virtuális gépet egy Resource Manager-sablonból](./windows/ps-template.md).
-- [Töltse le a virtuális gép sablonját](./windows/download-template.md).
+- [Töltse le a virtuális gép sablonját](/previous-versions/azure/virtual-machines/windows/download-template).
 - [Hozzon létre egy Azure rendszerkép-szerkesztői sablont](./linux/image-builder-json.md).
 
 ## <a name="next-steps"></a>Következő lépések

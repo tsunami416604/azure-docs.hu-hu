@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 09/28/2020
-ms.openlocfilehash: 0839d2c734418824952f37cb177490e56e1133c5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/21/2021
+ms.openlocfilehash: 9f768982e69f785c146f026040a91f7a63eef64c
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017967"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673451"
 ---
 # <a name="json-flattening-escaping-and-array-handling"></a>JSON-egybesimítás, escape-karaktersorozat és tömbkezelés
 
@@ -182,6 +182,6 @@ A fenti konfiguráció és hasznos adatok három oszlopot és egy eseményt ered
 | ---- | ---- | ---- |
 | `2020-11-01T10:00:00.000Z` | `800500054755`| ``[{"value": 120},{"value":124}]`` |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A környezet [adatátviteli korlátainak](./concepts-streaming-ingress-throughput-limits.md) megismerése

@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 0b32efe3738dedbe8178889b3e9008964d485b00
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 3e99b156d220b4c24a368886b1c0ca0813ffdc51
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034917"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674133"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript fejlesztői útmutató
 
@@ -18,7 +18,7 @@ Ez az útmutató részletes információkat tartalmaz, amelyek segítenek a Azur
 
 Express.js, Node.js vagy JavaScript-fejlesztőként, ha még nem ismeri a Azure Functionst, először olvassa el a következő cikkek egyikét:
 
-| Első lépések | Fogalmak| Interaktív tanulás |
+| Első lépések | Alapelvek| Interaktív tanulás |
 | -- | -- | -- | 
 | <ul><li>[Node.js függvény a Visual Studio Code használatával](./create-first-function-vs-code-node.md)</li><li>[Node.js függvény a Terminal/Command parancssorral](./create-first-function-cli-node.md)</li></ul> | <ul><li>[Fejlesztői útmutató](functions-reference.md)</li><li>[Üzemeltetési lehetőségek](functions-scale.md)</li><li>[Írógéppel függvények](#typescript)</li><li>[Teljesítménnyel &nbsp; kapcsolatos megfontolások](functions-best-practices.md)</li></ul> | <ul><li>[Kiszolgáló nélküli alkalmazás létrehozása](/learn/paths/create-serverless-applications/)</li><li>[Refrakció Node.js és expressz API-k kiszolgáló nélküli API-khoz](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
@@ -567,7 +567,7 @@ Saját környezeti változókat adhat hozzá egy Function-alkalmazáshoz mind a 
 
 ### <a name="in-local-development-environment"></a>Helyi fejlesztési környezetben
 
-Helyileg futtatva a functions projekt tartalmaz egy [ `local.settings.json` fájlt](/azure/azure-functions/functions-run-local), ahol a környezeti változókat az `Values` objektumban tárolja. 
+Helyileg futtatva a functions projekt tartalmaz egy [ `local.settings.json` fájlt](./functions-run-local.md), ahol a környezeti változókat az `Values` objektumban tárolja. 
 
 ```json
 {
@@ -805,7 +805,7 @@ module.exports = async function (context) {
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkat találhat az alábbi forrásokban:
 

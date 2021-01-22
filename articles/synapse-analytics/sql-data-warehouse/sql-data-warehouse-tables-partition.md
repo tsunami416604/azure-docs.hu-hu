@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: f65c1d6fda09d7762a59fb5a932a72ad706a767a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8a59c24100b433719ccfd3a9ea1b6a676695d381
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448028"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673434"
 ---
 # <a name="partitioning-tables-in-dedicated-sql-pool"></a>Táblák particionálása dedikált SQL-készletben
 
@@ -58,9 +58,9 @@ További információ: [indexelési](sql-data-warehouse-tables-index.md) cikk, a
 
 A dedikált SQL-készlet bevezeti a SQL Servernál egyszerűbb partíciók definiálásának módját. A particionálási függvények és sémák nem használhatók dedikált SQL-készletben, mivel azok SQL Server vannak. Ehelyett mindössze annyit kell tennie, hogy azonosítja a particionált oszlopot és a határ pontokat. 
 
-Míg a particionálás szintaxisa kis mértékben eltérhet a SQL Servertól, az alapvető fogalmak ugyanazok. A SQL Server és a dedikált SQL-készlet támogatja a tábla egy partíciós oszlopát, amely lehet tartományhoz tartozó partíció. További információ a particionálásról: [particionált táblák és indexek](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Míg a particionálás szintaxisa kis mértékben eltérhet a SQL Servertól, az alapvető fogalmak ugyanazok. A SQL Server és a dedikált SQL-készlet támogatja a tábla egy partíciós oszlopát, amely lehet tartományhoz tartozó partíció. További információ a particionálásról: [particionált táblák és indexek](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
-A következő példa a [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) utasítást használja a FactInternetSales tábla particionálásához a OrderDateKey oszlopon:
+A következő példa a [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) utasítást használja a FactInternetSales tábla particionálásához a OrderDateKey oszlopon:
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -90,8 +90,8 @@ WITH
 
 SQL Server partíciós definíciók migrálása dedikált SQL-készletbe egyszerűen:
 
-- Távolítsa el a SQL Server [partíciós sémát](/sql/t-sql/statements/create-partition-scheme-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
-- Adja hozzá a [partíciós függvény](/sql/t-sql/statements/create-partition-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) definícióját a Create TABLEhoz.
+- Távolítsa el a SQL Server [partíciós sémát](/sql/t-sql/statements/create-partition-scheme-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
+- Adja hozzá a [partíciós függvény](/sql/t-sql/statements/create-partition-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) definícióját a Create TABLEhoz.
 
 Ha SQL Server-példányról telepít át particionált táblát, a következő SQL segítségével megtalálhatja az egyes partíciókban található sorok számát. Ne feledje, hogy ha ugyanazt a particionálási részletességet használja a dedikált SQL-készletben, a partíciók száma a 60 tényezővel csökken.  
 
@@ -131,7 +131,7 @@ GROUP BY    s.[name]
 
 ## <a name="partition-switching"></a>Partíciós váltás
 
-A dedikált SQL-készlet támogatja a partíciók felosztását, az egyesítést és a váltást. Ezeket a függvényeket az [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) utasítás használatával hajtja végre.
+A dedikált SQL-készlet támogatja a partíciók felosztását, az egyesítést és a váltást. Ezeket a függvényeket az [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) utasítás használatával hajtja végre.
 
 Két táblázat közötti partíciók váltásához gondoskodnia kell arról, hogy a partíciók illeszkedjenek a megfelelő szegélyekhez, és hogy a tábla definíciói megegyezzenek. Mivel az ellenőrzési megkötések nem érhetők el egy tábla értékei tartományának betartatásához, a forrás táblának ugyanazokat a partíciós határokat kell tartalmaznia, mint a célként megadott tábla. Ha a partíció határai nem azonosak, akkor a partíciós kapcsoló meghiúsul, mert a partíciós metaadatok nem lesznek szinkronizálva.
 
@@ -357,6 +357,6 @@ Ha el szeretné kerülni a tábla definícióját a forrás-ellenőrzési rendsz
 
 Ezzel a módszerrel a verziókövetés kódja statikus marad, és a particionálási határértékek dinamikusak. az SQL-készlet fejlődése az idő múlásával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A táblázatok létrehozásával kapcsolatos további információkért tekintse meg a táblák [áttekintését](sql-data-warehouse-tables-overview.md)ismertető cikket.

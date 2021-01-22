@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 995d10b3c7064e462500e0bec4d5d8aa010afe64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ea0db1faf8c452958b8d95c193d45506057777c
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888773"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673332"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>Az Azure Spring Cloud hitelesítése Key Vaultekkel a GitHub-műveletekben
 
@@ -22,13 +22,14 @@ A Key Vault biztonságos hely a kulcsok tárolásához. A vállalati felhasznál
 
 ## <a name="generate-credential"></a>Hitelesítő adat előállítása
 A Key Vault eléréséhez szükséges kulcs létrehozásához hajtsa végre az alábbi parancsot a helyi gépen:
-```
+
+```azurecli
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.KeyVault/vaults/<KEY_VAULT> --sdk-auth
 ```
 A paraméter által megadott hatókör `--scopes` korlátozza az erőforráshoz való hozzáférést.  Csak az erős dobozhoz fér hozzá.
 
 Eredményekkel:
-```
+```output
 {
     "clientId": "<GUID>",
     "clientSecret": "<GUID>",
@@ -46,25 +47,25 @@ Ezután mentse a GitHub- **titkokat** a GitHub- [tárház beállítása és az A
 ## <a name="add-access-policies-for-the-credential"></a>Hozzáférési szabályzatok hozzáadása a hitelesítő adatokhoz
 A fent létrehozott hitelesítő adatok csak általános információkat kaphatnak a Key Vaultről, és nem az általa tárolt tartalmakról.  A Key Vaultban tárolt titkok beszerzéséhez hozzáférési szabályzatokat kell beállítania a hitelesítő adatokhoz.
 
-Lépjen a Azure Portal **Key Vault** irányítópultra, kattintson a **hozzáférés-vezérlés** menüre, majd nyissa meg a **szerepkör-hozzárendelések** lapot. Válassza **Apps** ki a **Type** és `This resource` a **hatókörhöz**tartozó alkalmazásokat.  Ekkor meg kell jelennie az előző lépésben létrehozott hitelesítő adatoknak:
+Lépjen a Azure Portal **Key Vault** irányítópultra, kattintson a **hozzáférés-vezérlés** menüre, majd nyissa meg a **szerepkör-hozzárendelések** lapot. Válassza  ki a **Type** és `This resource` a **hatókörhöz** tartozó alkalmazásokat.  Ekkor meg kell jelennie az előző lépésben létrehozott hitelesítő adatoknak:
 
  ![Hozzáférési szabályzat beállítása](./media/github-actions/key-vault1.png)
 
-Másolja a hitelesítő adat nevét, például: `azure-cli-2020-01-19-04-39-02` . Nyissa meg a **hozzáférési házirendek** menüt, kattintson a **+ hozzáférési házirend hozzáadása** hivatkozásra.  Válassza `Secret Management` a **sablon**lehetőséget, majd válassza a **rendszerbiztonsági tag**lehetőséget. Illessze be a hitelesítő adat nevét a **fő** / **Select** beviteli mezőbe:
+Másolja a hitelesítő adat nevét, például: `azure-cli-2020-01-19-04-39-02` . Nyissa meg a **hozzáférési házirendek** menüt, kattintson a **+ hozzáférési házirend hozzáadása** hivatkozásra.  Válassza `Secret Management` a **sablon** lehetőséget, majd válassza a **rendszerbiztonsági tag** lehetőséget. Illessze be a hitelesítő adat nevét a **fő** / **Select** beviteli mezőbe:
 
- ![Kiválasztás](./media/github-actions/key-vault2.png)
+ ![Válassza ezt:](./media/github-actions/key-vault2.png)
 
- Kattintson a **Hozzáadás** gombra a **hozzáférési házirend hozzáadása** párbeszédpanelen, majd kattintson a **Mentés**elemre.
+ Kattintson a **Hozzáadás** gombra a **hozzáférési házirend hozzáadása** párbeszédpanelen, majd kattintson a **Mentés** elemre.
 
 ## <a name="generate-full-scope-azure-credential"></a>Teljes hatókörű Azure-beli hitelesítő adatok előállítása
 Ez az a főkulcs, amely megnyitja az összes ajtót az épületben. Az eljárás hasonló az előző lépéshez, de itt a főkulcs létrehozásához a hatókört módosítjuk:
 
-```
+```azurecli
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID> --sdk-auth
 ```
 
 Újra, eredmények:
-```
+```output
 {
     "clientId": "<GUID>",
     "clientSecret": "<GUID>",
@@ -84,7 +85,7 @@ Másolja a teljes JSON-karakterláncot.  Vissza **Key Vault** irányítópultra.
 ## <a name="combine-credentials-in-github-actions"></a>Hitelesítő adatok egyesítése a GitHub-műveletekben
 Adja meg a vel-folyamat végrehajtásakor használt hitelesítő adatokat:
 
-```
+```console
 on: [push]
 
 jobs:

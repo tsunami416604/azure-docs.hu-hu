@@ -8,12 +8,12 @@ ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
 ms.custom: device-developer, devx-track-azurecli
-ms.openlocfilehash: 2bbf400840c968587de3a0a0951d28c7c35b210f
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: d1a7c94152b611ea0dbea249156add617178d7ca
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990890"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673234"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Az eszközön lévő adatok nem jelennek meg az Azure IoT Centralban hiba elhárítása
 
@@ -35,11 +35,11 @@ Ez a szakasz segít megállapítani, hogy az adatai eljussanak-e IoT Central.
 
 Ha még nem tette meg, telepítse az `az cli` eszközt és a `azure-iot` bővítményt.
 
-A telepítésének megismeréséhez `az cli` lásd: [Az Azure CLI telepítése](/cli/azure/install-azure-cli?view=azure-cli-latest).
+A telepítésének megismeréséhez `az cli` lásd: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
-A [install](/cli/azure/azure-cli-reference-for-IoT?view=azure-cli-latest#extension-reference-installation) bővítmény telepítéséhez `azure-iot` futtassa a következő parancsot:
+A [](/cli/azure/azure-cli-reference-for-IoT#extension-reference-installation) bővítmény telepítéséhez `azure-iot` futtassa a következő parancsot:
 
-```cmd/bash
+```azurecli
 az extension add --name azure-iot
 ```
 
@@ -50,20 +50,20 @@ Ha telepítette a `azure-iot` bővítményt, indítsa el az eszközt, és ellen�
 
 Az alábbi parancsokkal jelentkezzen be az előfizetésbe, ahol a IoT Central alkalmazást használja:
 
-```cmd/bash
+```azurecli
 az login
 az set account --subscription <your-subscription-id>
 ```
 
 Az eszköz által küldött telemetria figyeléséhez használja a következő parancsot:
 
-```cmd/bash
+```azurecli
 az iot central diagnostics monitor-events --app-id <app-id> --device-id <device-name>
 ```
 
 Ha az eszköz sikeresen csatlakozott a IoT Centralhoz, a következőhöz hasonló kimenet jelenik meg:
 
-```cmd/bash
+```output
 Monitoring telemetry.
 Filtering on device: device-001
 {
@@ -82,13 +82,13 @@ Filtering on device: device-001
 
 Ha figyelni szeretné a tulajdonság frissítését, az eszköz IoT Central a következő előnézeti paranccsal végez cserét:
 
-```cmd/bash
+```azurecli
 az iot central diagnostics monitor-properties --app-id <app-id> --device-id <device-name>
 ```
 
 Ha az eszköz sikeresen elküldte a tulajdonságokat, a következőhöz hasonló kimenet jelenik meg:
 
-```cmd/bash
+```output
 Changes in reported properties:
 version : 32
 {'state': 'true', 'name': {'value': {'value': 'Contoso'}, 'status': 'completed', 'desiredVersion': 7, 'ad': 'completed', 'av': 7, 'ac
@@ -106,7 +106,7 @@ Ha továbbra sem jelenik meg az adatok a terminálon, akkor valószínű, hogy a
 
 Ha az adatai nem jelennek meg a figyelőben, ellenőrizze az eszköz kiépítési állapotát a következő parancs futtatásával:
 
-```cmd/bash
+```azurecli
 az iot central device registration-info --app-id <app-id> --device-id <device-name>
 ```
 
@@ -130,9 +130,9 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 }
 ```
 
-| Eszköz kiépítési állapota | Description | Lehetséges enyhítés |
+| Eszköz kiépítési állapota | Leírás | Lehetséges enyhítés |
 | - | - | - |
-| Kiépítve | Nincs azonnal felismerhető probléma. | N.A. |
+| Kiépítve | Nincs azonnal felismerhető probléma. | N/A |
 | Regisztrálva | Az eszköz még nem csatlakozott IoT Centralhoz. | A kapcsolódási problémák ellenőrzése az eszköz naplófájljaiban. |
 | Blokkolva | Az eszköz nem csatlakozik IoT Centralhoz. | Az eszköz le van tiltva a IoT Central alkalmazáshoz való csatlakozáskor. Oldja fel az eszköz zárolását IoT Central, majd próbálkozzon újra. További információ: [eszközök letiltása](concepts-get-connected.md#device-status-values). |
 | Jóvá nem hagyott | Az eszköz nincs jóváhagyva. | Az eszköz nincs jóváhagyva a IoT Central alkalmazáshoz való kapcsolódáshoz. Hagyja jóvá IoT Central az eszközt, és próbálkozzon újra. További információ: [eszközök jóváhagyása](concepts-get-connected.md#device-registration) |
@@ -150,7 +150,7 @@ Az alábbi táblázatokban a gyakori hibakódok és a kockázatcsökkentő lehet
 
 Ha a hitelesítési folyamattal kapcsolatos problémákat látja:
 
-| Hibakód | Description | Lehetséges enyhítés |
+| Hibakód | Leírás | Lehetséges enyhítés |
 | - | - | - |
 | 400 | A kérelem törzse érvénytelen. Például nem lehet elemezni, vagy az objektumot nem lehet érvényesíteni. | Győződjön meg arról, hogy a megfelelő kérés törzsét küldi el az igazolási folyamat részeként, vagy használjon egy eszköz SDK-t. |
 | 401 | Az engedélyezési jogkivonat nem érvényesíthető. Például lejárt vagy nem vonatkozik a kérelem URI-ra. Ezt a hibakódot a rendszer a TPM-igazolási folyamat részeként is visszaadja az eszközöknek. | Győződjön meg arról, hogy az eszköz rendelkezik a megfelelő hitelesítő adatokkal. |
@@ -176,13 +176,13 @@ Ha szeretné megállapítani, hogy a probléma melyik kategóriába esik, futtas
 
 - A telemetria érvényesítéséhez használja az előnézet parancsot:
 
-    ```cmd/bash
+    ```azurecli
     az iot central diagnostics validate-messages --app-id <app-id> --device-id <device-name>
     ```
 
 - A tulajdonságok frissítéseinek ellenőrzéséhez használja az előnézet parancsot
 
-    ```cmd/bash
+    ```azurecli
     az iot central diagnostics validate-properties --app-id <app-id> --device-id <device-name>
     ```
 
@@ -190,7 +190,7 @@ Előfordulhat, hogy a rendszer először a `uamqp` parancs futtatásakor kéri a
 
 Az alábbi kimenet a validate parancs által jelzett hibát és figyelmeztető üzeneteket jeleníti meg:
 
-```cmd/bash
+```output
 Validating telemetry.
 Filtering on device: v22upeoqx6.
 Exiting after 300 second(s), or 10 message(s) have been parsed (whichever happens first).

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 9520196c8dce9ea511c2f3b799bd12b34c6f988f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ad3a2ae9fd9a99398b384ef4e4a44820faccf8c7
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499747"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675885"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Add a disk to a Linux VM (Lemez hozzáadása Linux rendszerű virtuális géphez)
 
@@ -179,7 +179,7 @@ A Linux rendszerű virtuális gépen kétféleképpen engedélyezhető a TRIM-t�
 
 [!INCLUDE [virtual-machines-linux-lunzero](../../../includes/virtual-machines-linux-lunzero.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* A linuxos virtuális gép megfelelő konfigurálásának biztosítása érdekében tekintse át a Linux rendszerű [gépek teljesítményével kapcsolatos javaslatok optimalizálását](optimization.md) ismertető oktatóanyagot.
+* A linuxos virtuális gép megfelelő konfigurálásának biztosítása érdekében tekintse át a Linux rendszerű [gépek teljesítményével kapcsolatos javaslatok optimalizálását](/previous-versions/azure/virtual-machines/linux/optimization) ismertető oktatóanyagot.
 * Bővítse a tárolókapacitást további lemezek hozzáadásával és a [RAID konfigurálásával](/previous-versions/azure/virtual-machines/linux/configure-raid) a további teljesítmény érdekében.

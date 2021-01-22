@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 3b61df954e913671eafff4b739e0f53a4d420c28
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 5aefe869041d9fff8112b6aa380961ca6568ae0b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98117299"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673569"
 ---
 # <a name="guidance-for-designing-distributed-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Útmutató elosztott táblák tervezéséhez dedikált SQL-készlet használatával az Azure szinapszis Analyticsben
 
@@ -96,7 +96,7 @@ A terjesztési oszlopban tárolt adatforgalom frissítve lehet. A terjesztési o
 
 A terjesztési oszlop kiválasztása fontos tervezési döntés, mivel az oszlopban szereplő értékek határozzák meg a sorok elosztásának módját. A legjobb választás több tényezőtől függ, és általában kompromisszumokat is magában foglal. A terjesztési oszlop kiválasztása után nem módosítható.  
 
-Ha az első alkalommal nem választotta ki a legjobb oszlopot, használhatja a [CREATE TABLE as Select (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) parancsot a tábla újbóli létrehozásához egy másik terjesztési oszloppal.
+Ha az első alkalommal nem választotta ki a legjobb oszlopot, használhatja a [CREATE TABLE as Select (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) parancsot a tábla újbóli létrehozásához egy másik terjesztési oszloppal.
 
 ### <a name="choose-a-distribution-column-with-data-that-distributes-evenly"></a>Válasszon ki egy olyan terjesztési oszlopot, amely egyenletesen osztja el az adatelosztást
 
@@ -133,7 +133,7 @@ Miután betöltötte az adatokat egy kivonat-elosztott táblába, ellenőrizze, 
 
 ### <a name="determine-if-the-table-has-data-skew"></a>Annak megállapítása, hogy a tábla tartalmaz-e adattorzítást
 
-Az elferdítés gyors módja az [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)használata. A következő SQL-kód a 60-eloszlásokban tárolt sorok számát adja vissza. A kiegyensúlyozott teljesítmény érdekében az elosztott tábla sorait egyenletesen kell elosztani az összes eloszlás között.
+Az elferdítés gyors módja az [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)használata. A következő SQL-kód a 60-eloszlásokban tárolt sorok számát adja vissza. A kiegyensúlyozott teljesítmény érdekében az elosztott tábla sorait egyenletesen kell elosztani az összes eloszlás között.
 
 ```sql
 -- Find data skew for a distributed table
@@ -183,7 +183,7 @@ Mivel a meglévő tábla eloszlás oszlopa nem módosítható, az adattorzítás
 
 ### <a name="re-create-the-table-with-a-new-distribution-column"></a>A tábla újbóli létrehozása új terjesztési oszloppal
 
-Ez a példa a [CREATE TABLE használja,](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ha egy másik kivonatoló terjesztési oszlopot tartalmazó táblát szeretne újból létrehozni.
+Ez a példa a [CREATE TABLE használja,](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ha egy másik kivonatoló terjesztési oszlopot tartalmazó táblát szeretne újból létrehozni.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_CustomerKey]
@@ -225,5 +225,5 @@ RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 
 Elosztott tábla létrehozásához használja az alábbi utasítások egyikét:
 
-- [CREATE TABLE (dedikált SQL-készlet)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [CREATE TABLE a SELECT (dedikált SQL Pool) ELEMnél](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE (dedikált SQL-készlet)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [CREATE TABLE a SELECT (dedikált SQL Pool) ELEMnél](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)

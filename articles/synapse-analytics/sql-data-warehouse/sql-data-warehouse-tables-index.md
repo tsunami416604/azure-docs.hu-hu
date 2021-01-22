@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: fea314d595fb39a1e35dec8ab24533ad4b893f98
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: fabbdf330d43737ffa85379f9cc4d5ac59c4a734
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448076"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673518"
 ---
 # <a name="indexing-dedicated-sql-pool-tables-in-azure-synapse-analytics"></a>Dedikált SQL Pool-táblázatok indexelése az Azure szinapszis Analyticsben
 
@@ -24,9 +24,9 @@ Javaslatok és példák a táblák indexeléséhez dedikált SQL-készletben.
 
 ## <a name="index-types"></a>Indextípusok
 
-A dedikált SQL-készlet több indexelési lehetőséget is kínál, többek között a [fürtözött oszlopcentrikus indexeket](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), a [fürtözött indexeket és a nem fürtözött indexeket](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) [, valamint a](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)nem indexelt lehetőséget is.  
+A dedikált SQL-készlet több indexelési lehetőséget is kínál, többek között a [fürtözött oszlopcentrikus indexeket](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), a [fürtözött indexeket és a nem fürtözött indexeket](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) [, valamint a](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)nem indexelt lehetőséget is.  
 
-Indextel rendelkező tábla létrehozásához tekintse meg a [create Table (DEDIKÁLT SQL-készlet)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) dokumentációját.
+Indextel rendelkező tábla létrehozásához tekintse meg a [create Table (DEDIKÁLT SQL-készlet)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) dokumentációját.
 
 ## <a name="clustered-columnstore-indexes"></a>Fürtözött oszlopcentrikus indexek
 
@@ -230,7 +230,7 @@ EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 
 Jelentkezzen be felhasználóként az 1. lépésből (pl. LoadUser), amely már magasabb erőforrás-osztályt használ, és végrehajtja az ALTER INDEX utasításait. Ügyeljen arra, hogy a felhasználó megváltoztassa a táblákat, amelyeken az index újraépítése zajlik. Ezek a példák azt mutatják be, hogyan lehet újraépíteni a teljes oszlopcentrikus-indexet, illetve hogyan lehet újraépíteni egy partíciót. A nagyméretű táblákon az indexek újraépítése sokkal hatékonyabb, ha egyszerre egy partíciót hoz létre.
 
-Az index újraépítése helyett átmásolhatja a táblát egy új táblába a [CTAS használatával](sql-data-warehouse-develop-ctas.md). Melyik a legjobb módszer? Nagy adatmennyiségek esetén a CTAS általában gyorsabb, mint az [Alter index](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). Kisebb adatmennyiségek esetén az ALTER INDEX könnyebben használható, és nem szükséges a tábla kicserélése.
+Az index újraépítése helyett átmásolhatja a táblát egy új táblába a [CTAS használatával](sql-data-warehouse-develop-ctas.md). Melyik a legjobb módszer? Nagy adatmennyiségek esetén a CTAS általában gyorsabb, mint az [Alter index](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true). Kisebb adatmennyiségek esetén az ALTER INDEX könnyebben használható, és nem szükséges a tábla kicserélése.
 
 ```sql
 -- Rebuild the entire clustered index
@@ -252,7 +252,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-Az indexek újraépítése a dedikált SQL-készletben offline művelet.  Az indexek újraépítésével kapcsolatos további információkért tekintse meg az indexek átállítása az [Oszlopcentrikus indexek töredezettségmentesítéséről](/sql/relational-databases/indexes/columnstore-indexes-defragmentation?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)című szakaszt, és [módosítsa az indexet](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Az indexek újraépítése a dedikált SQL-készletben offline művelet.  Az indexek újraépítésével kapcsolatos további információkért tekintse meg az indexek átállítása az [Oszlopcentrikus indexek töredezettségmentesítéséről](/sql/relational-databases/indexes/columnstore-indexes-defragmentation?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)című szakaszt, és [módosítsa az indexet](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>3. lépés: a fürtözött oszlopcentrikus szegmens minőségének ellenőrzése javult
 
@@ -260,7 +260,7 @@ Futtassa újra a lekérdezést, amely a gyenge szegmensek minőségével rendelk
 
 ## <a name="rebuilding-indexes-with-ctas-and-partition-switching"></a>Indexek újraépítése a CTAS és a partíciós váltással
 
-Ebben a példában a [CREATE TABLE as Select (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) utasítás és a partíciók váltása lehetőségre kattintva újraépíthető egy tábla-partíció.
+Ebben a példában a [CREATE TABLE as Select (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) utasítás és a partíciók váltása lehetőségre kattintva újraépíthető egy tábla-partíció.
 
 ```sql
 -- Step 1: Select the partition of data and write it out to a new table using CTAS
@@ -285,6 +285,6 @@ ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [
 
 További információ a partíciók újbóli létrehozásáról a CTAS használatával: [partíciók használata DEDIKÁLT SQL-készletben](sql-data-warehouse-tables-partition.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a táblázatok létrehozásáról: a [táblázatok fejlesztése](sql-data-warehouse-tables-overview.md).

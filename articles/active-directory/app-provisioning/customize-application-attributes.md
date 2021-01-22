@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/10/2020
 ms.author: kenwith
-ms.openlocfilehash: 012038399796a0f2dc87acfb350043542268379a
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: efdbec10c74a6b1892df13b8308538e61f42f679
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936981"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673501"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Oktatóanyag – a felhasználó-kiépítési attribútum testreszabása – SaaS-alkalmazások leképezése Azure Active Directory
 
@@ -115,7 +115,7 @@ Az attribútumok listájának testreszabását támogató alkalmazások és rend
 
 
 > [!NOTE]
-> A támogatott attribútumok listájának szerkesztése csak olyan rendszergazdák számára ajánlott, akik testre szabták az alkalmazásaikat és rendszereit, és az egyéni attribútumok definiálásának első kézből való ismerete. Ez esetenként az alkalmazás vagy a rendszer által biztosított API-k és fejlesztői eszközök ismeretét igényli. A támogatott attribútumok listájának szerkesztésének lehetősége alapértelmezés szerint le van tiltva, de az ügyfelek a következő URL-címhez való navigálással engedélyezhetik a képességet: https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true . Ezután navigáljon az alkalmazáshoz, és tekintse meg az attribútumok listáját a [fent](https://docs.microsoft.com/azure/active-directory/app-provisioning/customize-application-attributes#editing-the-list-of-supported-attributes)leírtak szerint. 
+> A támogatott attribútumok listájának szerkesztése csak olyan rendszergazdák számára ajánlott, akik testre szabták az alkalmazásaikat és rendszereit, és az egyéni attribútumok definiálásának első kézből való ismerete. Ez esetenként az alkalmazás vagy a rendszer által biztosított API-k és fejlesztői eszközök ismeretét igényli. A támogatott attribútumok listájának szerkesztésének lehetősége alapértelmezés szerint le van tiltva, de az ügyfelek a következő URL-címhez való navigálással engedélyezhetik a képességet: https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true . Ezután navigáljon az alkalmazáshoz, és tekintse meg az attribútumok listáját a [fent](#editing-the-list-of-supported-attributes)leírtak szerint. 
 
 A támogatott attribútumok listájának szerkesztésekor a következő tulajdonságokat kell megadnia:
 
@@ -128,7 +128,7 @@ A támogatott attribútumok listájának szerkesztésekor a következő tulajdon
   - A *Reference* -ATTRIBÚTUM olyan azonosítót tartalmaz, amely a célalkalmazás egy másik táblájában tárolt értékre hivatkozik.
   - *Karakterlánc*  – az attribútum szöveges karakterláncot tartalmaz.
 - **Elsődleges kulcs?** – Azt határozza meg, hogy az attribútum a célobjektum sémájában elsődleges kulcs mezőként van-e definiálva.
-- **Szükséges?** – Azt határozza meg, hogy az attribútumot kötelező-e kitölteni a célalkalmazás vagy a rendszer számára.
+- **Kötelező?** – Azt határozza meg, hogy az attribútumot kötelező-e kitölteni a célalkalmazás vagy a rendszer számára.
 - **Több érték?** – Azt határozza meg, hogy az attribútum több értéket is támogat-e.
 - **Pontos eset?** – Azt határozza meg, hogy az attribútumok értékei kis-és nagybetűk megkülönböztetésével legyenek kiértékelve.
 - **API-kifejezés** – ne használja, kivéve, ha erre a célra egy adott kiépítési összekötő (például a munkanap) dokumentációja kéri.

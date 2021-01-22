@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 2f383876963e3e1d310e7d93f7dc99bb58b189d3
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 78b0cbbdccc7d6853d4ce2821bf659e888680a5f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97681528"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674643"
 ---
 # <a name="create-a-data-source-android-sdk"></a>Adatforrás létrehozása (Android SDK)
 
@@ -355,10 +355,10 @@ A vektoros csempék forrása leírja, hogyan lehet hozzáférni a vektoros csemp
 
 Azure Maps betartja a [Mapbox Vector csempe specifikációját](https://github.com/mapbox/vector-tile-spec), amely egy nyílt szabvány. Azure Maps a következő vektoros szolgáltatásokat nyújtja a platform részeként:
 
-- A Road csempe [dokumentációjának](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)  |  [adatformátuma – részletek](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
-- Forgalmi incidensek [dokumentációjának](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidenttile)  |  [adatformátuma – részletek](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
-- A forgalmi folyamat [dokumentációjának](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficflowtile)  |  [adatformátumának részletei](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
-- A Azure Maps Creator Emellett lehetővé teszi az egyéni vektoros csempék létrehozását és elérését a [csempe renderelése v2](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) használatával.
+- A Road csempe [dokumentációjának](/rest/api/maps/renderv2/getmaptilepreview)  |  [adatformátuma – részletek](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
+- Forgalmi incidensek [dokumentációjának](/rest/api/maps/traffic/gettrafficincidenttile)  |  [adatformátuma – részletek](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
+- A forgalmi folyamat [dokumentációjának](/rest/api/maps/traffic/gettrafficflowtile)  |  [adatformátumának részletei](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
+- A Azure Maps Creator Emellett lehetővé teszi az egyéni vektoros csempék létrehozását és elérését a [csempe renderelése v2](/rest/api/maps/renderv2/getmaptilepreview) használatával.
 
 Ha a térképen a vektoros csempe forrásának adatait szeretné megjeleníteni, a forrást csatlakoztathatja az egyik adatmegjelenítési réteghez. A vektoros forrást használó összes rétegnek meg kell adnia egy `sourceLayer` értéket a beállításokban. A következő kód betölti a Azure Maps Traffic flow Vector csempe szolgáltatást vektoros csempe-forrásként, majd a térképen egy vonal réteget használva jeleníti meg. Ez a vektoros csempés forrás egyetlen adatkészlettel rendelkezik, amely a "forgalom flow" nevű rétegben található. Ebben az adatkészletben az adathalmazban található sorokra vonatkozó tulajdonság egy nevű tulajdonsággal rendelkezik, `traffic_level` amely a kód kiválasztásához és a sorok méretének méretezéséhez használatos.
 
@@ -500,7 +500,7 @@ map.layers.add(new Layer[] { polygonLayer, lineLayer, bubbleLayer });
 > - `"labels"` – Beszúrja az új réteget a Térkép feliratának rétegeibe.
 > - `"transit"` – Beszúrja az új réteget a térképi út és az átviteli rétegek alá.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi cikkekben további kódokat talál a Maps-hez való hozzáadáshoz:
 
@@ -523,4 +523,4 @@ Az alábbi cikkekben további kódokat talál a Maps-hez való hozzáadáshoz:
 > [Hő-Térkép hozzáadása](map-add-heat-map-layer-android.md)
 
 > [!div class="nextstepaction"]
-> [Web SDK-kód minták](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Web SDK-kód minták](/samples/browse/?products=azure-maps)

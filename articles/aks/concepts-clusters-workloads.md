@@ -4,18 +4,18 @@ description: Ismerje meg a Kubernetes alapszintű fürt-és munkaterhelés-össz
 services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 17203123ceb0c196bd8f9011e2962f5022e54698
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 54d6f4529c236c7ff9f6258122b5b49d6d3723e8
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92901291"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674926"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (ak) Kubernetes alapvető fogalmai
 
 Mivel az alkalmazásfejlesztés egy tároló alapú megközelítés irányába mozdul el, fontos a szükséges erőforrások összehangolása és kezelése. A Kubernetes a vezető platform, amely lehetővé teszi a hibatűrő alkalmazások számítási feladatainak megbízható ütemezését. Az Azure Kubernetes Service (ak) egy felügyelt Kubernetes-ajánlat, amely tovább egyszerűsíti a tároló-alapú alkalmazások üzembe helyezését és felügyeletét.
 
-Ez a cikk bemutatja a legfontosabb Kubernetes infrastruktúra-összetevőket, például a *vezérlési síkot* , a *csomópontokat* és a *csomópont-készleteket* . A munkaterhelések erőforrásai, például a *hüvelyek* , a *központi telepítések* és a *készletek* , valamint az erőforrások *névterek* szerinti csoportosítása is bevezethető.
+Ez a cikk bemutatja a legfontosabb Kubernetes infrastruktúra-összetevőket, például a *vezérlési síkot*, a *csomópontokat* és a *csomópont-készleteket*. A munkaterhelések erőforrásai, például a *hüvelyek*, a *központi telepítések* és a *készletek* , valamint az erőforrások *névterek* szerinti csoportosítása is bevezethető.
 
 ## <a name="what-is-kubernetes"></a>Mi az a Kubernetes?
 
@@ -57,7 +57,7 @@ A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások a fürt b
 
 ## <a name="nodes-and-node-pools"></a>Csomópontok és csomópont-készletek
 
-Az alkalmazások és a támogató szolgáltatások futtatásához szükség van egy Kubernetes- *csomópontra* . Egy AK-fürt legalább egy csomóponttal rendelkezik, amely egy Azure-beli virtuális gép (VM), amely a Kubernetes csomópont-összetevőket és a tároló-futtatókörnyezetet futtatja:
+Az alkalmazások és a támogató szolgáltatások futtatásához szükség van egy Kubernetes- *csomópontra*. Egy AK-fürt legalább egy csomóponttal rendelkezik, amely egy Azure-beli virtuális gép (VM), amely a Kubernetes csomópont-összetevőket és a tároló-futtatókörnyezetet futtatja:
 
 - A az a `kubelet` Kubernetes-ügynök, amely feldolgozza a hangvezérelt kérelmeket a vezérlési síkon, és ütemezi a kért tárolók futtatását.
 - A virtuális hálózatkezelést a *Kube-proxy* kezeli az egyes csomópontokon. A proxy átirányítja a hálózati forgalmat, és kezeli a szolgáltatások és a hüvelyek IP-címzését.
@@ -78,7 +78,6 @@ A csomópont-erőforrásokat az AK használja, hogy a Node függvényt a fürt r
 Csomópont lefoglalható erőforrásainak kereséséhez futtassa a következő parancsot:
 ```kubectl
 kubectl describe node [NODE_NAME]
-
 ```
 
 A csomópontok teljesítményének és funkcióinak fenntartásához az erőforrásokat az egyes csomópontok az AK szerint vannak lefoglalva. Mivel a csomópontok nagyobb mértékben növekednek az erőforrásokban, az erőforrás-foglalás a felhasználó által üzembe helyezett hüvelyek nagyobb mennyiségű felügyeletének köszönhetően nő.
@@ -86,22 +85,24 @@ A csomópontok teljesítményének és funkcióinak fenntartásához az erőforr
 >[!NOTE]
 > Az AK-bővítmények (például a OMS) használatával további csomópont-erőforrásokat fognak használni.
 
+Két típusú erőforrás van fenntartva:
+
 - A **CPU** által lefoglalt CPU függ a csomópont típusától és a fürt konfigurációjától, ami további funkciók futtatása miatt kevésbé lefoglalható processzort eredményezhet
 
-| CPU-magok a gazdagépen | 1    | 2    | 4    | 8    | 16 | 32|64|
-|---|---|---|---|---|---|---|---|
-|Kube – fenntartott (millicores)|60|100|140|180|260|420|740|
+   | CPU-magok a gazdagépen | 1    | 2    | 4    | 8    | 16 | 32|64|
+   |---|---|---|---|---|---|---|---|
+   |Kube – fenntartott (millicores)|60|100|140|180|260|420|740|
 
 - Az AK által használt **memória** -memória két érték összegét foglalja magában.
 
-1. A kubelet démon az összes Kubernetes-ügynök csomópontján telepítve van a tárolók létrehozásának és megszüntetésének kezeléséhez. Alapértelmezés szerint az AK-ban ez a démon a következő kiürítési szabállyal rendelkezik: *memória. rendelkezésre álló<750Mi* , ami azt jelenti, hogy egy csomópontnak mindig legalább 750, de mindenkor lefoglalható kell lennie.  Ha egy gazdagép a rendelkezésre álló memória küszöbértéke alá esik, a kubelet leállítja az egyik futó hüvelyt, hogy szabad memóriát szabadítson fel a gazdagépen, és megvédje azt. Ez a művelet akkor aktiválódik, ha a rendelkezésre álló memória a 750Mi küszöbértékén túl csökken.
+   1. A kubelet démon az összes Kubernetes-ügynök csomópontján telepítve van a tárolók létrehozásának és megszüntetésének kezeléséhez. Alapértelmezés szerint az AK-ban ez a démon a következő kiürítési szabállyal rendelkezik: *memória. rendelkezésre álló<750Mi*, ami azt jelenti, hogy egy csomópontnak mindig legalább 750, de mindenkor lefoglalható kell lennie.  Ha egy gazdagép a rendelkezésre álló memória küszöbértéke alá esik, a kubelet leállítja az egyik futó hüvelyt, hogy szabad memóriát szabadítson fel a gazdagépen, és megvédje azt. Ez a művelet akkor aktiválódik, ha a rendelkezésre álló memória a 750Mi küszöbértékén túl csökken.
 
-2. A második érték a kubelet démon által a megfelelő működéshez (Kube) tartozó lefoglalt memória-foglalások degresszív gyakorisága.
-    - az első 4 GB memória 25%-a
-    - a következő 4 GB memória 20%-a (legfeljebb 8 GB)
-    - a következő 8 GB memória 10%-a (legfeljebb 16 GB)
-    - a következő 112 GB memória 6%-a (legfeljebb 128 GB)
-    - a 128 GB-nál nagyobb memória 2%-a
+   2. A második érték a kubelet démon által a megfelelő működéshez (Kube) tartozó lefoglalt memória-foglalások degresszív gyakorisága.
+      - az első 4 GB memória 25%-a
+      - a következő 4 GB memória 20%-a (legfeljebb 8 GB)
+      - a következő 8 GB memória 10%-a (legfeljebb 16 GB)
+      - a következő 112 GB memória 6%-a (legfeljebb 128 GB)
+      - a 128 GB-nál nagyobb memória 2%-a
 
 A memóriára és a CPU-elosztásra vonatkozó fenti szabályok az ügynök csomópontjainak kifogástalan megőrzésére szolgálnak, beleértve a fürt állapotának kritikus fontosságú részét képező üzemeltetési rendszerhüvelyeket is. Ezek a kiosztási szabályok azt is okozzák, hogy a csomópont kevésbé lefoglalható memóriát és CPU-t jelent, mint általában, ha nem része egy Kubernetes-fürtnek. A fenti erőforrás-foglalások nem módosíthatók.
 
@@ -115,7 +116,7 @@ A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások az alapsz
 
 ### <a name="node-pools"></a>Csomópontkészletek
 
-Az azonos konfiguráció csomópontjai a *csomópont-készletekbe* vannak csoportosítva. A Kubernetes-fürt egy vagy több csomópontot tartalmaz. A csomópontok és a méretek kezdeti száma akkor van meghatározva, amikor egy AK-fürtöt hoz létre, amely létrehoz egy *alapértelmezett csomópont-készletet* . Ez az alapértelmezett Node-készlet az AK-ban tartalmazza az ügynök csomópontjait futtató mögöttes virtuális gépeket.
+Az azonos konfiguráció csomópontjai a *csomópont-készletekbe* vannak csoportosítva. A Kubernetes-fürt egy vagy több csomópontot tartalmaz. A csomópontok és a méretek kezdeti száma akkor van meghatározva, amikor egy AK-fürtöt hoz létre, amely létrehoz egy *alapértelmezett csomópont-készletet*. Ez az alapértelmezett Node-készlet az AK-ban tartalmazza az ügynök csomópontjait futtató mögöttes virtuális gépeket.
 
 > [!NOTE]
 > Annak biztosítása érdekében, hogy a fürt megbízhatóan működjön, legalább 2 (két) csomópontot kell futtatnia az alapértelmezett csomópont-készletben.
@@ -153,7 +154,7 @@ A pod létrehozásakor megadhatja az *erőforrás-kérelmeket* , hogy bizonyos m
 
 További információ: [Kubernetes hüvelyek][kubernetes-pods] és [Kubernetes Pod életciklusa][kubernetes-pod-lifecycle].
 
-A pod logikai erőforrás, de a tároló (k), ahol az alkalmazás munkaterhelései futnak. A hüvelyek általában elmúló, eldobható erőforrások, és egyénileg ütemezett hüvelyek hiányoznak az Kubernetes által biztosított magas rendelkezésre állási és redundancia-funkciók közül. Ehelyett a hüvelyeket Kubernetes- *vezérlők* , például a központi telepítési vezérlő helyezi üzembe és kezeli.
+A pod logikai erőforrás, de a tároló (k), ahol az alkalmazás munkaterhelései futnak. A hüvelyek általában elmúló, eldobható erőforrások, és egyénileg ütemezett hüvelyek hiányoznak az Kubernetes által biztosított magas rendelkezésre állási és redundancia-funkciók közül. Ehelyett a hüvelyeket Kubernetes- *vezérlők*, például a központi telepítési vezérlő helyezi üzembe és kezeli.
 
 ## <a name="deployments-and-yaml-manifests"></a>Központi telepítések és YAML-jegyzékek
 
@@ -240,7 +241,7 @@ További információ: [Kubernetes DaemonSets][kubernetes-daemonset].
 
 ## <a name="namespaces"></a>Névterek
 
-A Kubernetes-erőforrások, például a hüvelyek és a központi telepítések logikailag vannak csoportosítva egy *névtérbe* . Ezek a csoportok lehetővé teszik az AK-fürtök logikai elosztását, valamint az erőforrások létrehozásához, megtekintéséhez vagy kezeléséhez való hozzáférés korlátozását. Létrehozhat névtereket is az üzleti csoportok elkülönítéséhez, például:. A felhasználók csak a hozzájuk rendelt névterekben lévő erőforrásokkal tudnak kommunikálni.
+A Kubernetes-erőforrások, például a hüvelyek és a központi telepítések logikailag vannak csoportosítva egy *névtérbe*. Ezek a csoportok lehetővé teszik az AK-fürtök logikai elosztását, valamint az erőforrások létrehozásához, megtekintéséhez vagy kezeléséhez való hozzáférés korlátozását. Létrehozhat névtereket is az üzleti csoportok elkülönítéséhez, például:. A felhasználók csak a hozzájuk rendelt névterekben lévő erőforrásokkal tudnak kommunikálni.
 
 ![Kubernetes névterek az erőforrások és alkalmazások logikai elosztásához](media/concepts-clusters-workloads/namespaces.png)
 

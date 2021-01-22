@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/15/2021
+ms.date: 01/19/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e2c576c97d170726f5ec1b06e5a6d0d859a85e64
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: a378a95a28b1299502ef15cadca60f3807f99429
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538106"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674399"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Bejelentkezés és bejelentkezés beállítása LinkedIn-fiókkal Azure Active Directory B2C használatával
 
@@ -36,7 +36,7 @@ ms.locfileid: "98538106"
 
 ## <a name="create-a-linkedin-application"></a>LinkedIn-alkalmazás létrehozása
 
-Ha Azure Active Directory B2C (Azure AD B2C) LinkedIn-fiókkal rendelkező felhasználók számára szeretné engedélyezni a bejelentkezést, létre kell hoznia egy alkalmazást a [LinkedIn Developers webhelyén](https://www.developer.linkedin.com/). További információ: [engedélyezési kód folyamata](https://docs.microsoft.com/linkedin/shared/authentication/authorization-code-flow). Ha még nem rendelkezik LinkedIn-fiókkal, regisztrálhat a következő címen: [https://www.linkedin.com/](https://www.linkedin.com/) .
+Ha Azure Active Directory B2C (Azure AD B2C) LinkedIn-fiókkal rendelkező felhasználók számára szeretné engedélyezni a bejelentkezést, létre kell hoznia egy alkalmazást a [LinkedIn Developers webhelyén](https://www.developer.linkedin.com/). További információ: [engedélyezési kód folyamata](/linkedin/shared/authentication/authorization-code-flow). Ha még nem rendelkezik LinkedIn-fiókkal, regisztrálhat a következő címen: [https://www.linkedin.com/](https://www.linkedin.com/) .
 
 1. Jelentkezzen be a [LinkedIn Developers webhelyére](https://www.developer.linkedin.com/) a LinkedIn-fiókja hitelesítő adataival.
 1. Válassza **a saját alkalmazások** lehetőséget, majd kattintson az **alkalmazás létrehozása** elemre.
@@ -50,7 +50,7 @@ Ha Azure Active Directory B2C (Azure AD B2C) LinkedIn-fiókkal rendelkező felha
 
 ::: zone pivot="b2c-user-flow"
 
-## <a name="configure-a-linkedin-account-as-an-identity-provider"></a>LinkedIn-fiók konfigurálása identitás-szolgáltatóként
+## <a name="configure-linkedin-as-an-identity-provider"></a>A LinkedIn konfigurálása identitás-szolgáltatóként
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure AD B2C-bérlő globális rendszergazdájaként.
 1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
@@ -59,7 +59,17 @@ Ha Azure Active Directory B2C (Azure AD B2C) LinkedIn-fiókkal rendelkező felha
 1. Adjon meg egy **nevet**. Például: *LinkedIn*.
 1. Az **ügyfél-azonosító** mezőben adja meg a korábban létrehozott LinkedIn-alkalmazás ügyfél-azonosítóját.
 1. Az **ügyfél titka** mezőben adja meg a rögzített ügyfél-titkot.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
+
+## <a name="add-linkedin-identity-provider-to-a-user-flow"></a>LinkedIn Identity Provider hozzáadása felhasználói folyamathoz 
+
+1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok** lehetőséget.
+1. Kattintson arra a felhasználói folyamatra, amelyhez hozzá szeretné adni a LinkedIn Identity providert.
+1. A **közösségi identitás-szolgáltatók** területen válassza a **LinkedIn** lehetőséget.
+1. Kattintson a **Mentés** gombra.
+1. A szabályzat teszteléséhez válassza a **felhasználói folyamat futtatása** lehetőséget.
+1. Az **alkalmazás** lapon válassza ki a korábban regisztrált *testapp1* nevű webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
+1. Kattintson a **felhasználói folyamat futtatása** elemre.
 
 ::: zone-end
 
@@ -80,9 +90,9 @@ A Azure AD B2C bérlőben korábban rögzített ügyfél-titkos kulcsot kell tá
 9. A **kulcshasználat** beállításnál válassza a elemet `Signature` .
 10. Kattintson a **Létrehozás** lehetőségre.
 
-## <a name="add-a-claims-provider"></a>Jogcím-szolgáltató hozzáadása
+## <a name="configure-linkedin-as-an-identity-provider"></a>A LinkedIn konfigurálása identitás-szolgáltatóként
 
-Ha azt szeretné, hogy a felhasználók LinkedIn-fiókkal jelentkezzenek be, meg kell adnia a fiókot jogcím-szolgáltatóként, amely Azure AD B2C tud kommunikálni egy végponton keresztül. A végpont olyan jogcímeket biztosít, amelyeket a Azure AD B2C használ annak ellenőrzéséhez, hogy egy adott felhasználó hitelesítve van-e.
+Annak engedélyezéséhez, hogy a felhasználók egy LinkedIn-fiókkal jelentkezzenek be, meg kell adnia a fiókot jogcím-szolgáltatóként, amely Azure AD B2C tud kommunikálni egy végponton keresztül. A végpont olyan jogcímeket biztosít, amelyeket a Azure AD B2C használ annak ellenőrzéséhez, hogy egy adott felhasználó hitelesítve van-e.
 
 Definiáljon egy LinkedIn-fiókot jogcím-szolgáltatóként, ha hozzáadja azt a **ClaimsProviders** elemhez a szabályzat bővítmény fájljában.
 
@@ -95,7 +105,7 @@ Definiáljon egy LinkedIn-fiókot jogcím-szolgáltatóként, ha hozzáadja azt 
       <Domain>linkedin.com</Domain>
       <DisplayName>LinkedIn</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="LinkedIn-OAUTH">
+        <TechnicalProfile Id="LinkedIn-OAuth2">
           <DisplayName>LinkedIn</DisplayName>
           <Protocol Name="OAuth2" />
           <Metadata>
@@ -181,79 +191,27 @@ Adja hozzá a **BuildingBlocks** elemet a *TrustFrameworkExtensions.xml* fájl t
 </BuildingBlocks>
 ```
 
-### <a name="upload-the-extension-file-for-verification"></a>A bővítmény fájljának feltöltése ellenőrzéshez
+[!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]
 
-Most már van egy házirend konfigurálva, hogy Azure AD B2C tudja, hogyan kommunikálhat a LinkedIn-fiókjával. Próbálja meg feltölteni a szabályzat kiterjesztési fájlját annak ellenőrzéséhez, hogy az eddig nem rendelkezik problémákkal.
 
-1. A Azure AD B2C-bérlő **Egyéni házirendek** lapján válassza a **házirend feltöltése** lehetőséget.
-1. **Ha létezik, engedélyezze a házirend felülírását**, majd keresse meg és válassza ki a *TrustFrameworkExtensions.xml* fájlt.
-1. Kattintson a **Feltöltés** gombra.
-
-## <a name="register-the-claims-provider"></a>A jogcím-szolgáltató regisztrálása
-
-Ezen a ponton az identitás-szolgáltató beállítása megtörtént, de a regisztrációs vagy bejelentkezési képernyőkön nem érhető el. Az elérhetővé tételéhez hozzon létre egy másolatot egy meglévő sablon felhasználói utazásról, majd módosítsa úgy, hogy a LinkedIn Identity Provider is legyen.
-
-1. Nyissa meg az *TrustFrameworkBase.xml* fájlt az alapszintű csomagban.
-1. A **UserJourney** elem teljes tartalmának megkeresése és másolása `Id="SignUpOrSignIn"` .
-1. Nyissa meg a *TrustFrameworkExtensions.xmlt* , és keresse meg a **UserJourneys** elemet. Ha az elem nem létezik, vegyen fel egyet.
-1. Illessze be a **UserJourney** elem teljes tartalmát, amelyet a **UserJourneys** elem gyermekeiként másolt.
-1. Nevezze át a felhasználói út AZONOSÍTÓját. Például: `SignUpSignInLinkedIn`.
-
-### <a name="display-the-button"></a>A gomb megjelenítése
-
-A **ClaimsProviderSelection** elem hasonló a bejelentkezési vagy bejelentkezési képernyőn lévő Identity Provider gombhoz. Ha **ClaimsProviderSelection** elemet ad hozzá egy LinkedIn-fiókhoz, egy új gomb jelenik meg, amikor a felhasználó az oldalon landol.
-
-1. Keresse meg  az `Order="1"` Ön által létrehozott felhasználói útra kiterjedő OrchestrationStep elemet.
-2. A **ClaimsProviderSelections** területen adja hozzá a következő elemet. Állítsa a **TargetClaimsExchangeId** értékét egy megfelelő értékre, például `LinkedInExchange` :
-
-    ```xml
+```xml
+<OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
+  <ClaimsProviderSelections>
+    ...
     <ClaimsProviderSelection TargetClaimsExchangeId="LinkedInExchange" />
-    ```
+  </ClaimsProviderSelections>
+  ...
+</OrchestrationStep>
 
-### <a name="link-the-button-to-an-action"></a>Gomb csatolása egy művelethez
+<OrchestrationStep Order="2" Type="ClaimsExchange">
+  ...
+  <ClaimsExchanges>
+    <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAuth2" />
+  </ClaimsExchanges>
+</OrchestrationStep>
+```
 
-Most, hogy van egy gomb a helyén, össze kell kapcsolni egy művelettel. A művelet, ebben az esetben a Azure AD B2C, hogy kommunikáljon egy LinkedIn-fiókkal a jogkivonat fogadásához.
-
-1. Keresse meg a felhasználói útra kiterjedő **OrchestrationStep** `Order="2"` .
-1. Adja hozzá a következő **ClaimsExchange** elemet, és győződjön meg arról, hogy ugyanazt az értéket használja a **TargetClaimsExchangeId** használt azonosítóhoz:
-
-    ```xml
-    <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAUTH" />
-    ```
-
-    Frissítse a **TechnicalProfileReferenceId** értékét a korábban létrehozott műszaki profil azonosítójával. Például: `LinkedIn-OAUTH`.
-
-1. Mentse a *TrustFrameworkExtensions.xml* fájlt, és töltse fel újra az ellenőrzéshez.
-
-::: zone-end
-
-:: Zone pivot = "B2C – felhasználói folyamat"
-
-## <a name="add-linkedin-identity-provider-to-a-user-flow"></a>LinkedIn Identity Provider hozzáadása felhasználói folyamathoz 
-
-1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok** lehetőséget.
-1. Kattintson arra a felhasználói folyamatra, amelyhez hozzá szeretné adni a LinkedIn Identity providert.
-1. A **közösségi identitás-szolgáltatók** területen válassza a **LinkedIn** lehetőséget.
-1. Válassza a **Mentés** lehetőséget.
-1. A szabályzat teszteléséhez válassza a **felhasználói folyamat futtatása** lehetőséget.
-1. Az **alkalmazás** lapon válassza ki a korábban regisztrált *testapp1* nevű webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
-1. Kattintson a **felhasználói folyamat futtatása** elemre.
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-## <a name="update-and-test-the-relying-party-file"></a>A függő entitás fájljának frissítése és tesztelése
-
-Frissítse a függő entitás (RP) fájlját, amely kezdeményezi a létrehozott felhasználói utat.
-
-1. Készítsen másolatot *SignUpOrSignIn.xml* a munkakönyvtárában, és nevezze át. Nevezze át például *SignUpSignInLinkedIn.xmlra*.
-1. Nyissa meg az új fájlt, és frissítse a **PolicyId** attribútum értékét a **TrustFrameworkPolicy** egyedi értékkel. Például: `SignUpSignInLinkedIn`.
-1. Frissítse a **PublicPolicyUri** értékét a szabályzat URI azonosítójának értékével. Például:`http://contoso.com/B2C_1A_signup_signin_linkedin`
-1. Frissítse a **ReferenceId** attribútum értékét a **DefaultUserJourney** -ben, hogy az megfeleljen a létrehozott új felhasználói út azonosítójának (SignUpSignLinkedIn).
-1. Mentse a módosításokat, töltse fel a fájlt, majd válassza ki az új szabályzatot a listában.
-1. Győződjön meg arról, hogy a létrehozott Azure AD B2C alkalmazás ki van választva az **alkalmazás kiválasztása** mezőben, majd tesztelje a **Futtatás most** lehetőségre kattintva.
-
+[!INCLUDE [active-directory-b2c-create-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
 ## <a name="migration-from-v10-to-v20"></a>Migrálás v 1.0-ről v 2.0-ra
 

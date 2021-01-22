@@ -10,12 +10,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0e53bebf9cdb8c0fc084d04550c7444c1c01be50
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 56611794bc2f190eccef739679da8474c9b04eb4
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352864"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675960"
 ---
 # <a name="clone-a-managed-image-to-an-image-version-using-the-azure-cli"></a>Felügyelt rendszerkép klónozása rendszerkép-verzióra az Azure CLI használatával
 Ha van egy meglévő felügyelt rendszerképe, amelyet egy megosztott képkatalógusba szeretne klónozott, akkor közvetlenül a felügyelt rendszerképből hozhat létre megosztott rendszerkép-katalógust. Miután tesztelte az új rendszerképet, törölheti a forrás által felügyelt képet. A [PowerShell](image-version-managed-image-powershell.md)használatával is áttelepítheti a felügyelt rendszerképeket egy megosztott képkatalógusba.
@@ -41,11 +41,11 @@ Mivel a felügyelt lemezképek mindig általánosított lemezképek, egy által�
 
 A képdefiníciók nevei kis-és nagybetűket, számokat, pontokat, kötőjeleket és pontokat tartalmazhatnak. 
 
-További információ a képdefiníciók által megadható értékekről: [képdefiníciók](./linux/shared-image-galleries.md#image-definitions).
+További információ a képdefiníciók által megadható értékekről: [képdefiníciók](./shared-image-galleries.md#image-definitions).
 
 Hozzon létre egy rendszerkép-definíciót a galériában az [az SIG rendszerkép-definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create)paranccsal.
 
-Ebben a példában a képdefiníció neve *myImageDefinition*, és egy [általánosított](./linux/shared-image-galleries.md#generalized-and-specialized-images) Linux operációsrendszer-rendszerképhez van. Ha Windows operációs rendszert használó lemezképek definícióját szeretné létrehozni, használja a következőt: `--os-type Windows` . 
+Ebben a példában a képdefiníció neve *myImageDefinition*, és egy [általánosított](./shared-image-galleries.md#generalized-and-specialized-images) Linux operációsrendszer-rendszerképhez van. Ha Windows operációs rendszert használó lemezképek definícióját szeretné létrehozni, használja a következőt: `--os-type Windows` . 
 
 ```azurecli-interactive 
 resourceGroup=myGalleryRG
@@ -96,7 +96,7 @@ az sig image-version create \
 > Az összes rendszerkép-verzió replikáját a [zóna redundáns tárolójában](../storage/common/storage-redundancy.md) is tárolhatja `--storage-account-type standard_zrs` a rendszerkép verziójának létrehozásakor.
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Hozzon létre egy virtuális gépet egy [általánosított rendszerkép-verzióból](vm-generalized-image-version-cli.md).
 

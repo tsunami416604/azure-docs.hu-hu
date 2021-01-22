@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: storage
 author: roygara
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 6/2/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3af8ecb049717da789df96f7dcc4e46668938ff8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a42f963f5eb79ef5b430f6fc9d2a0144c370353a
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84465164"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673847"
 ---
 A Storage-fiók nyilvános végpontjának a szolgáltatási végpontokat használó meghatározott virtuális hálózatokra való hozzáférésének korlátozásához először össze kell gyűjtenie a Storage-fiók és a virtuális hálózat adatait. Töltse ki a,,,, `<storage-account-resource-group>` `<storage-account-name>` `<vnet-resource-group-name>` `<vnet-name>` és `<subnet-name>` az adatokat az adatok gyűjtéséhez.
 
@@ -84,7 +84,7 @@ fi
 
 A Storage-fiók felé irányuló forgalom korlátozásának utolsó lépése egy hálózati szabály létrehozása, és a Storage-fiók hálózati szabályának beállítása.
 
-```bash
+```azurecli
 az storage account network-rule add \
         --resource-group $storageAccountResourceGroupName \
         --account-name $storageAccountName \

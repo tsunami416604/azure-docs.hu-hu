@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 15b4b61fd250dfb7d68c563f9f42c7d288a0019c
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 9aca01bae7911d2b6234d48bedc14b116e911a79
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070864"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675377"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>ISV-partnerek Azure Active Directory B2C
 
@@ -40,6 +40,7 @@ A Microsoft partnerei a következő ISV-ket biztosítják a személyazonosság e
 |![Képernyőkép egy Experian-emblémáról.](./media/partner-gallery/experian-logo.png) | A [Experian](./partner-experian.md) egy személyazonosság-ellenőrző és ellenőrző szolgáltató, amely a felhasználói attribútumok alapján kockázatértékeléseket végez a csalások megelőzése érdekében. |
 |![Képernyőkép egy IDology-emblémáról.](./media/partner-gallery/idology-logo.png) | A [IDology](./partner-idology.md) egy azonosító-ellenőrzési megoldásokkal, csalás-megelőzési megoldásokkal, megfelelőségi megoldásokkal és egyebekkel rendelkező személyazonosság-ellenőrzési és-ellenőrző szolgáltató.|
 |![Képernyőkép egy Jumio-emblémáról.](./media/partner-gallery/jumio-logo.png) | A [Jumio](./partner-jumio.md) egy azonosító-ellenőrzési szolgáltatás, amely lehetővé teszi a valós idejű automatizált azonosítók ellenőrzését, így biztosítva az ügyféladatok védelmét. |
+|![Képernyőfelvétel egy kulcsnélküli emblémáról.](./media/partner-gallery/keyless-logo.png) | A [kulcsnélküli](./partner-keyless.md) azonosító olyan szolgáltatás, amely arc biometrikus vizsgálat formájában biztosítja a hitelesítést, és kiküszöböli a csalások, az adathalászat és a hitelesítő adatok újrafelhasználását.
 | ![Képernyőkép egy LexisNexis-emblémáról.](./media/partner-gallery/lexisnexis-logo.png) | A [LexisNexis](./partner-lexisnexis.md) egy profilkészítési és identitás-ellenőrzési szolgáltató, amely ellenőrzi a felhasználó azonosítását, és átfogó kockázatértékelést biztosít a felhasználó eszköze alapján. |
 | ![Képernyőkép egy Onfido-emblémáról](./media/partner-gallery/onfido-logo.png) | A [Onfido](./partner-onfido.md) egy dokumentum-azonosító és egy arc biometria-ellenőrzési megoldás, amely lehetővé teszi a vállalatok számára, hogy valós időben tudják kielégíteni *az ügyfél* és az identitás követelményeit.  |
 
@@ -78,9 +79,9 @@ Microsoft-partnerek a következő biztonsági ISV-val.
 
 ## <a name="additional-information"></a>További információ
 
-- [Egyéni szabályzatok az Azure AD B2C-ben](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Egyéni szabályzatok az Azure AD B2C-ben](./custom-policy-overview.md)
 
-- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](./custom-policy-get-started.md?tabs=applications)
 
 ## <a name="next-steps"></a>Következő lépések
 

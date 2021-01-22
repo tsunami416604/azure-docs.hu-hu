@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 12/09/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 254f8da74a187e88cfb973da7100fe5654c84bb6
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: fe427150b15c6bccb97172ae751235d388c95c7b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97732446"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675026"
 ---
 # <a name="tutorial-configure-zscaler-private-access-with-azure-active-directory-b2c"></a>Oktatóanyag: a Zscaler privát hozzáférésének konfigurálása Azure Active Directory B2C
 
@@ -27,7 +27,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálható Azure Active Direc
 A Kezdés előtt a következőkre lesz szüksége:
 
 - Azure-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.  
-- [Egy Azure ad B2C bérlő](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) , amely az Azure-előfizetéshez van csatolva.  
+- [Egy Azure ad B2C bérlő](./tutorial-create-tenant.md) , amely az Azure-előfizetéshez van csatolva.  
 - [Egy ZPA-előfizetés](https://azuremarketplace.microsoft.com/marketplace/apps/aad.zscalerprivateaccess?tab=Overview).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
@@ -96,15 +96,15 @@ A Azure AD B2C konfigurálása után a identitásszolgáltató többi konfigurá
 >[!Note]
 >Ez a lépés csak akkor szükséges, ha még nem konfigurált egyéni házirendeket. Ha már rendelkezik egy vagy több egyéni házirenddel, akkor kihagyhatja ezt a lépést.
 
-Ha egyéni házirendeket szeretne konfigurálni a Azure AD B2C bérlőn, tekintse meg az [Egyéni szabályzatok beszerzése a Azure Active Directory B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started)című témakört.
+Ha egyéni házirendeket szeretne konfigurálni a Azure AD B2C bérlőn, tekintse meg az [Egyéni szabályzatok beszerzése a Azure Active Directory B2C](./custom-policy-get-started.md)című témakört.
 
 ### <a name="step-3-register-zpa-as-a-saml-application-in-azure-ad-b2c"></a>3. lépés: a ZPA SAML-alkalmazásként való regisztrálása Azure AD B2C
 
-Az SAML-alkalmazások Azure AD B2C-ben való konfigurálásával kapcsolatban lásd: [SAML-alkalmazás regisztrálása Azure ad B2Cban](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers). 
+Az SAML-alkalmazások Azure AD B2C-ben való konfigurálásával kapcsolatban lásd: [SAML-alkalmazás regisztrálása Azure ad B2Cban](./connect-with-saml-service-providers.md). 
 
-A ["3,2 a szabályzat metaadatainak feltöltése és tesztelése"](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers#32-upload-and-test-your-policy-metadata)lépésben másolja vagy jegyezze fel a identitásszolgáltató SAML-metaadatok URL-címét, amelyet a Azure ad B2C használ. Erre később még szüksége lesz.
+A ["3,2 a szabályzat metaadatainak feltöltése és tesztelése"](./connect-with-saml-service-providers.md#32-upload-and-test-your-policy-metadata)lépésben másolja vagy jegyezze fel a identitásszolgáltató SAML-metaadatok URL-címét, amelyet a Azure ad B2C használ. Erre később még szüksége lesz.
 
-Kövesse az ["4,2 Update The app manifest"](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers#42-update-the-app-manifest)című lépés útmutatását. Az 4,2. lépésben frissítse az alkalmazás jegyzékfájljának tulajdonságait a következőképpen:
+Kövesse az ["4,2 Update The app manifest"](./connect-with-saml-service-providers.md#42-update-the-app-manifest)című lépés útmutatását. Az 4,2. lépésben frissítse az alkalmazás jegyzékfájljának tulajdonságait a következőképpen:
 
 - **IdentifierUris** esetében: használja az "1.6. b" lépésben korábban másolt vagy feljegyzett szolgáltatói entitás azonosítóját.  
 - A **samlMetadataUrl** esetében: hagyja ki ezt a tulajdonságot, mert a ZPA nem tartalmaz SAML-metaadatok URL-címét.  
@@ -145,11 +145,11 @@ Fejezze be a [identitásszolgáltató-konfigurációt a ZPA felügyeleti portál
 
 Nyissa meg a ZPA felhasználói portált vagy egy böngésző-hozzáférési alkalmazást, és tesztelje a regisztrálási vagy bejelentkezési folyamatot. A tesztnek sikeres SAML-hitelesítést kell eredményeznie.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért tekintse át a következő cikkeket:
 
-- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started)
-- [SAML-alkalmazás regisztrálása Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers)
+- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](./custom-policy-get-started.md)
+- [SAML-alkalmazás regisztrálása Azure AD B2C](./connect-with-saml-service-providers.md)
 - [Részletes konfigurációs útmutató a ZPA](https://help.zscaler.com/zpa/step-step-configuration-guide-zpa)
 - [Identitásszolgáltató konfigurálása egyszeri bejelentkezéshez](https://help.zscaler.com/zpa/configuring-idp-single-sign)

@@ -9,16 +9,16 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 25c692ea9a2dce4723472f6812ac46d82b2b318d
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 1551e85bd45d4d64861b43bf53dd0c155520861f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120988"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673637"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Adattárolás biztonságos betöltése a szinapszis SQL használatával
 
-Ez a cikk a [copy utasítás](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)biztonságos hitelesítési mechanizmusaival kapcsolatos példákat mutatja be és ismerteti. A MÁSOLÁSi utasítás az adatok tömeges betöltésének legrugalmasabb és biztonságos módja a szinapszis SQL-ben.
+Ez a cikk a [copy utasítás](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)biztonságos hitelesítési mechanizmusaival kapcsolatos példákat mutatja be és ismerteti. A MÁSOLÁSi utasítás az adatok tömeges betöltésének legrugalmasabb és biztonságos módja a szinapszis SQL-ben.
 ## <a name="supported-authentication-mechanisms"></a>Támogatott hitelesítési mechanizmusok
 
 A következő mátrix ismerteti az egyes fájltípusok és a Storage-fiókok támogatott hitelesítési módszereit. Ez a forrás tárolási helyére és a hiba fájljának helyére vonatkozik.
@@ -176,5 +176,5 @@ A felügyelt identitás hitelesítésére akkor van szükség, ha a Storage-fió
 
 ## <a name="next-steps"></a>Következő lépések
 
-- A részletes szintaxissal kapcsolatban olvassa el a [copy utasítással](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax) kapcsolatos cikket.
+- A részletes szintaxissal kapcsolatban olvassa el a [copy utasítással](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax) kapcsolatos cikket.
 - Az ajánlott eljárások betöltéséhez tekintse meg az [adatgyűjtés áttekintése című](./design-elt-data-loading.md#what-is-elt) cikket

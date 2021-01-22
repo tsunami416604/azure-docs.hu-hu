@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/13/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7b134c4e9e980104a54f6a96d45445ee114556a5
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: f76aecc80537e6db55c8c4f2e5a7a240be6b1415
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178721"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675746"
 ---
 # <a name="user-profile-attributes"></a>Felhasználói profilattribútumok
 
@@ -41,21 +41,21 @@ Az alábbi táblázat az Azure AD B2C Directory felhasználói profil által tá
 
 |Név     |Típus     |Leírás|Azure Portal|Felhasználói folyamatok|Egyéni szabályzat|
 |---------|---------|----------|------------|----------|-------------|
-|accountEnabled  |Logikai érték|Azt jelzi, hogy a felhasználói fiók engedélyezve van vagy le van tiltva: **igaz** , ha a fiók engedélyezve van, ellenkező esetben **hamis**.|Igen|Nem|Megőrzött, kimenet|
+|accountEnabled  |Logikai|Azt jelzi, hogy a felhasználói fiók engedélyezve van vagy le van tiltva: **igaz** , ha a fiók engedélyezve van, ellenkező esetben **hamis**.|Igen|Nem|Megőrzött, kimenet|
 |korcsoport        |Sztring|A felhasználó korcsoport. Lehetséges értékek: NULL, nem definiált, kisebb, felnőtt, NotAdult.|Igen|Nem|Megőrzött, kimenet|
 |alternativeSecurityId ([identitások](#identities-attribute))|Sztring|A külső identitás szolgáltatójának egyetlen felhasználói identitása.|Nem|Nem|Bemenet, megőrzött, kimenet|
 |alternativeSecurityIds ([identitások](#identities-attribute))|alternatív securityId-gyűjtemény|A külső identitás-szolgáltatók felhasználói identitásának gyűjteménye.|Nem|Nem|Megőrzött, kimenet|
-|city            |Sztring|A város, amelyben a felhasználó található. Maximális hosszúság 128.|Igen|Yes|Megőrzött, kimenet|
+|city            |Sztring|A város, amelyben a felhasználó található. Maximális hosszúság 128.|Igen|Igen|Megőrzött, kimenet|
 |consentProvidedForMinor|Sztring|Azt határozza meg, hogy a beleegyezik-e a kiskorú számára. Megengedett értékek: NULL, engedélyezett, megtagadva vagy notRequired.|Igen|Nem|Megőrzött, kimenet|
-|ország         |Sztring|Az ország/régió, amelyben a felhasználó található. Példa: "US" vagy "UK". Maximális hosszúság 128.|Igen|Yes|Megőrzött, kimenet|
+|ország         |Sztring|Az ország/régió, amelyben a felhasználó található. Példa: "US" vagy "UK". Maximális hosszúság 128.|Igen|Igen|Megőrzött, kimenet|
 |createdDateTime|DateTime|A felhasználói objektum létrehozásának dátuma. Csak olvasható.|Nem|Nem|Megőrzött, kimenet|
 |creationType    |Sztring|Ha a felhasználói fiók helyi fiókként lett létrehozva egy Azure Active Directory B2C bérlő számára, akkor az érték a LocalAccount vagy a nameCoexistence. Csak olvasható.|Nem|Nem|Megőrzött, kimenet|
-|dateOfBirth     |Dátum|születési dátum.|Nem|Nem|Megőrzött, kimenet|
+|dateOfBirth     |Date|születési dátum.|Nem|Nem|Megőrzött, kimenet|
 |Részleg      |Sztring|Annak a részlegnek a neve, amelyben a felhasználó működik. Maximális hosszúság 64.|Igen|Nem|Megőrzött, kimenet|
-|displayName     |Sztring|A felhasználó megjelenítendő neve. Maximális hosszúság 256.|Igen|Yes|Megőrzött, kimenet|
+|displayName     |Sztring|A felhasználó megjelenítendő neve. Maximális hosszúság 256.|Igen|Igen|Megőrzött, kimenet|
 |<sup>1</sup> . érték facsimiletelephonenumber|Sztring|A felhasználó üzleti faxhoz tartozó telefonszám.|Igen|Nem|Megőrzött, kimenet|
-|givenName       |Sztring|A felhasználó megadott neve (keresztnév). Maximális hosszúság 64.|Igen|Yes|Megőrzött, kimenet|
-|jobTitle        |Sztring|A felhasználó beosztása. Maximális hosszúság 128.|Igen|Yes|Megőrzött, kimenet|
+|givenName       |Sztring|A felhasználó megadott neve (keresztnév). Maximális hosszúság 64.|Igen|Igen|Megőrzött, kimenet|
+|jobTitle        |Sztring|A felhasználó beosztása. Maximális hosszúság 128.|Igen|Igen|Megőrzött, kimenet|
 |immutableId     |Sztring|Olyan azonosító, amely általában a helyszíni Active Directory áttelepített felhasználók számára használatos.|Nem|Nem|Megőrzött, kimenet|
 |legalAgeGroupClassification|Sztring|Jogi korcsoport besorolása. Írásvédett, és a Beszerzésimennyiség és a consentProvidedForMinor tulajdonságok alapján számítható ki. Megengedett értékek: NULL, minorWithOutParentalConsent, minorWithParentalConsent, minorNoParentalConsentRequired, notAdult és Adult.|Igen|Nem|Megőrzött, kimenet|
 |<sup>1</sup> . legalCountry  |Sztring|Ország/régió jogi célokra.|Nem|Nem|Megőrzött, kimenet|
@@ -63,8 +63,8 @@ Az alábbi táblázat az Azure AD B2C Directory felhasználói profil által tá
 |mailNickName    |Sztring|A felhasználó levelezési aliasa. Maximális hosszúság 64.|Nem|Nem|Megőrzött, kimenet|
 |mobil (mobiltelefon) |Sztring|A felhasználó elsődleges mobil telefonszáma. Maximális hosszúság 64.|Igen|Nem|Megőrzött, kimenet|
 |a netI           |Sztring|NET-azonosító.|Nem|Nem|Megőrzött, kimenet|
-|objectId        |Sztring|Globálisan egyedi azonosító (GUID), amely a felhasználó egyedi azonosítója. Példa: 12345678-9ABC-def0-1234-56789abcde. Csak olvasható, nem módosítható.|Csak olvasás|Yes|Bemenet, megőrzött, kimenet|
-|otherMails      |Karakterlánc-gyűjtemény|A felhasználóhoz tartozó egyéb e-mail-címek listája. Példa: [" bob@contoso.com ", " Robert@fabrikam.com "].|Igen (másodlagos e-mail)|No|Megőrzött, kimenet|
+|objectId        |Sztring|Globálisan egyedi azonosító (GUID), amely a felhasználó egyedi azonosítója. Példa: 12345678-9ABC-def0-1234-56789abcde. Csak olvasható, nem módosítható.|Csak olvasás|Igen|Bemenet, megőrzött, kimenet|
+|otherMails      |Karakterlánc-gyűjtemény|A felhasználóhoz tartozó egyéb e-mail-címek listája. Példa: [" bob@contoso.com ", " Robert@fabrikam.com "].|Igen (másodlagos e-mail)|Nem|Megőrzött, kimenet|
 |jelszó        |Sztring|A helyi fiók jelszava a felhasználó létrehozásakor.|Nem|Nem|Kitartott|
 |passwordPolicies     |Sztring|A jelszó szabályzata. Ez egy olyan karakterlánc, amely különböző nevű nevet tartalmaz vesszővel elválasztva. Például: "DisablePasswordExpiration, DisableStrongPassword".|Nem|Nem|Megőrzött, kimenet|
 |physicalDeliveryOfficeName (officeLocation)|Sztring|Az iroda helye a felhasználó üzleti helyén. Maximális hosszúság 128.|Igen|Nem|Megőrzött, kimenet|
@@ -75,16 +75,16 @@ Az alábbi táblázat az Azure AD B2C Directory felhasználói profil által tá
 |signInNames. userName ([identitások](#identities-attribute)) |Sztring|A helyi fiók felhasználójának egyedi felhasználóneve a címtárban. Ezzel az attribútummal lehet létrehozni vagy beolvasni egy adott bejelentkezési felhasználónévvel rendelkező felhasználót. Ha ezt a PersistedClaims a javítási művelet során egyedül adja meg, a más típusú signInNames is törlődik. Ha új típusú signInNames szeretne hozzáadni, akkor is meg kell őriznie a meglévő signInNames.|Nem|Nem|Bemenet, megőrzött, kimenet|
 |signInNames. telefonszám ([identitások](#identities-attribute)) |Sztring|A helyi fiók felhasználójának egyedi telefonszáma a címtárban. Ezzel az attribútummal lehet létrehozni vagy beolvasni egy adott bejelentkezési telefonszámmal rendelkező felhasználót. Ha ezt az attribútumot csak a PersistedClaims adja meg, a javítási művelet során a rendszer eltávolítja a más típusú signInNames. Ha új típusú signInNames szeretne hozzáadni, akkor is meg kell őriznie a meglévő signInNames.|Nem|Nem|Bemenet, megőrzött, kimenet|
 |signInNames. emailAddress ([identitások](#identities-attribute))|Sztring|A címtárban lévő helyi fiók felhasználójának egyedi e-mail-címe. Ezzel a paranccsal létrehozhat vagy beszerezhet egy adott bejelentkezési e-mail-címmel rendelkező felhasználót. Ha ezt az attribútumot csak a PersistedClaims adja meg, a javítási művelet során a rendszer eltávolítja a más típusú signInNames. Ha új típusú signInNames szeretne hozzáadni, akkor is meg kell őriznie a meglévő signInNames.|Nem|Nem|Bemenet, megőrzött, kimenet|
-|állapot           |Sztring|A felhasználó címe szerinti állam vagy tartomány. Maximális hosszúság 128.|Igen|Yes|Megőrzött, kimenet|
-|streetAddress   |Sztring|A felhasználó üzletviteli helyének címe. Maximális hosszúság 1024.|Igen|Yes|Megőrzött, kimenet|
+|állapot           |Sztring|A felhasználó címe szerinti állam vagy tartomány. Maximális hosszúság 128.|Igen|Igen|Megőrzött, kimenet|
+|streetAddress   |Sztring|A felhasználó üzletviteli helyének címe. Maximális hosszúság 1024.|Igen|Igen|Megőrzött, kimenet|
 |strongAuthentication AlternativePhoneNumber<sup>1</sup>|Sztring|A felhasználó másodlagos telefonszáma, amely a többtényezős hitelesítéshez használatos.|Igen|Nem|Megőrzött, kimenet|
 |<sup>1</sup> . strongAuthenticationEmailAddress|Sztring|A felhasználó SMTP-címe. Példa: " bob@contoso.com " Ez az attribútum a Felhasználónév-szabályzattal való bejelentkezéshez használatos a felhasználói e-mail-cím tárolásához. Az e-mail-cím, amelyet a rendszer a jelszó-visszaállítási folyamat során használ.|Igen|Nem|Megőrzött, kimenet|
 |<sup>2</sup> . strongAuthenticationPhoneNumber|Sztring|A felhasználó elsődleges telefonszáma, amely a többtényezős hitelesítéshez használatos.|Igen|Nem|Megőrzött, kimenet|
-|surname         |Sztring|A felhasználó vezetékneve (családi név vagy vezetéknév). Maximális hosszúság 64.|Igen|Yes|Megőrzött, kimenet|
+|surname         |Sztring|A felhasználó vezetékneve (családi név vagy vezetéknév). Maximális hosszúság 64.|Igen|Igen|Megőrzött, kimenet|
 |telephoneNumber (businessPhones első bejegyzése)|Sztring|A felhasználó üzleti helyének elsődleges telefonszáma.|Igen|Nem|Megőrzött, kimenet|
 |userPrincipalName    |Sztring|A felhasználó egyszerű felhasználóneve (UPN). Az UPN a felhasználó Internet-stílusú bejelentkezési neve, amely az Internet standard RFC 822. A tartománynak jelen kell lennie a bérlő ellenőrzött tartományok gyűjteményében. Ez a tulajdonság a fiók létrehozásakor szükséges. Nem módosítható.|Nem|Nem|Bemenet, megőrzött, kimenet|
 |usageLocation   |Sztring|Olyan felhasználók számára szükséges, akik licenceket kapnak, mert az országok/régiók szolgáltatásainak rendelkezésre állását jogi követelménynek tekintik. Nem üres. Két betűs ország/régió kódja (ISO standard 3166). Példák: "US", "JP" és "GB".|Igen|Nem|Megőrzött, kimenet|
-|userType        |Sztring|Karakterlánc-érték, amely a címtárban lévő felhasználói típusok besorolására használható. Az értéknek tagnak kell lennie. Csak olvasható.|Csak olvasás|No|Megőrzött, kimenet|
+|userType        |Sztring|Karakterlánc-érték, amely a címtárban lévő felhasználói típusok besorolására használható. Az értéknek tagnak kell lennie. Csak olvasható.|Csak olvasás|Nem|Megőrzött, kimenet|
 |userState (externalUserState)<sup>3</sup>|Sztring|Csak az Azure AD B2B-fiók esetében jelzi, hogy a meghívás PendingAcceptance vagy elfogadva van-e.|Nem|Nem|Megőrzött, kimenet|
 |userStateChangedOn (externalUserStateChangeDateTime)<sup>2</sup>|DateTime|Megjeleníti a UserState tulajdonság legutóbbi módosításának időbélyegét.|Nem|Nem|Megőrzött, kimenet|
 
@@ -160,7 +160,7 @@ A felhasználói áttelepítési forgatókönyvek esetében, ha az áttelepíten
 
 ## <a name="mfa-phone-number-attribute"></a>MFA telefonszám-attribútum
 
-A többtényezős hitelesítés (MFA) telefonjának használatakor a rendszer a mobiltelefont használja a felhasználói identitás ellenőrzéséhez. Új telefonszám programozott módon [hozzáadásához](https://docs.microsoft.com/graph/api/authentication-post-phonemethods) , a telefonszám [frissítéséhez](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-update), [lekéréséhez](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-get)vagy [törléséhez](https://docs.microsoft.com/graph/api/phoneauthenticationmethod-delete) használja az MS Graph API [telefonos hitelesítési módszert](https://docs.microsoft.com/graph/api/resources/phoneauthenticationmethod).
+A többtényezős hitelesítés (MFA) telefonjának használatakor a rendszer a mobiltelefont használja a felhasználói identitás ellenőrzéséhez. Új telefonszám programozott módon [hozzáadásához](/graph/api/authentication-post-phonemethods) , a telefonszám [frissítéséhez](/graph/api/b2cauthenticationmethodspolicy-update), [lekéréséhez](/graph/api/b2cauthenticationmethodspolicy-get)vagy [törléséhez](/graph/api/phoneauthenticationmethod-delete) használja az MS Graph API [telefonos hitelesítési módszert](/graph/api/resources/phoneauthenticationmethod).
 
 Azure AD B2C [Egyéni házirendekben](custom-policy-overview.md)a telefonszám a `strongAuthenticationPhoneNumber` jogcím típusán keresztül érhető el.
 
@@ -185,7 +185,7 @@ A következő adattípusok támogatottak a séma-bővítményben lévő attribú
 
 |Típus |Megjegyzések  |
 |--------------|---------|
-|Logikai érték    | Lehetséges értékek: **true** vagy **false**. |
+|Logikai    | Lehetséges értékek: **true** vagy **false**. |
 |DateTime   | ISO 8601 formátumban kell megadni. A rendszer UTC formátumban tárolja.   |
 |Egész szám    | 32 bites érték.               |
 |Sztring     | 256 karakter maximális száma.     |

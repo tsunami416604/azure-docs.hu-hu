@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: cffa6b1200b7236b3c0a3e48b50c58275cf4c57b
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 01ac42cce29f941a90631936ece025f02afedeaf
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95316620"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673620"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Az Azure File Sync proxy- és tűzfalbeállításai
 Azure File Sync összekapcsolja a helyszíni kiszolgálókat a Azure Fileshoz, és lehetővé teszi a többhelyes szinkronizálást és a felhőalapú rétegbeli funkciókat. Ennek megfelelően a helyszíni kiszolgálónak csatlakoznia kell az internethez. A rendszergazdának el kell döntenie, hogy melyik a legjobb elérési út ahhoz, hogy a kiszolgáló elérje az Azure Cloud Services szolgáltatást.
@@ -110,7 +110,7 @@ Ha &ast; a. AFS.Azure.net vagy &ast; a. One.microsoft.com túl széles, korláto
 
 Az üzletmenet folytonossága és a vész-helyreállítás (BCDR) miatt előfordulhat, hogy az Azure-fájlmegosztást globálisan redundáns (GRS) Storage-fiókban adta meg. Ha ez az eset áll fenn, akkor az Azure-fájlmegosztás egy tartós regionális kimaradás esetén átveszi a feladatokat a párosított régióba. Azure File Sync ugyanazokat a regionális párosításokat használja, mint a Storage. Így ha GRS-fiókokat használ, engedélyeznie kell a további URL-címeket, hogy a kiszolgáló a párosított régióval beszéljen a Azure File Sync. Az alábbi táblázat ezt a "párosított régiót" hívja meg. Ezen kívül egy Traffic Manager-profil URL-címét is engedélyezni kell. Ez biztosítja, hogy a hálózati forgalom zökkenőmentesen átirányítható legyen a párosított régióba feladatátvétel esetén, és az alábbi táblázatban "felderítési URL-cím" néven jelenik meg.
 
-| Felhőbeli  | Region | Elsődleges végpont URL-címe | Párosított régió | Felderítési URL-cím |
+| Felhőbeli  | Régió | Elsődleges végpont URL-címe | Párosított régió | Felderítési URL-cím |
 |--------|--------|----------------------|---------------|---------------|
 | Nyilvános |Kelet-Ausztrália | https: \/ /australiaeast01.AFS.Azure.net<br>https: \/ /Kailani-Aue.One.microsoft.com | Délkelet-Ausztrália | https: \/ /TM-australiaeast01.AFS.Azure.net<br>https: \/ /TM-Kailani-Aue.One.microsoft.com |
 | Nyilvános |Délkelet-Ausztrália | https: \/ /australiasoutheast01.AFS.Azure.net<br>https: \/ /Kailani-AUS.One.microsoft.com | Kelet-Ausztrália | https: \/ /TM-australiasoutheast01.AFS.Azure.net<br>https: \/ /TM-Kailani-AUS.One.microsoft.com |
@@ -133,6 +133,8 @@ Az üzletmenet folytonossága és a vész-helyreállítás (BCDR) miatt előford
 | Nyilvános | USA déli középső régiója | https: \/ /southcentralus01.AFS.Azure.net | USA északi középső régiója | https: \/ /TM-southcentralus01.AFS.Azure.net |
 | Nyilvános | Dél-India | https: \/ /southindia01.AFS.Azure.net<br>https: \/ /Kailani-Sin.One.microsoft.com | Közép-India | https: \/ /TM-southindia01.AFS.Azure.net<br>https: \/ /TM-Kailani-Sin.One.microsoft.com |
 | Nyilvános | Délkelet-Ázsia | https: \/ /southeastasia01.AFS.Azure.net<br>https: \/ /kailani10.One.microsoft.com | Kelet-Ázsia | https: \/ /TM-southeastasia01.AFS.Azure.net<br>https: \/ /TM-kailani10.One.microsoft.com |
+| Nyilvános | Észak-Svájc | https: \/ /switzerlandnorth01.AFS.Azure.net<br>https: \/ /TM-switzerlandnorth01.AFS.Azure.net | Nyugat-Svájc | https: \/ /switzerlandwest01.AFS.Azure.net<br>https: \/ /TM-switzerlandwest01.AFS.Azure.net |
+| Nyilvános | Nyugat-Svájc | https: \/ /switzerlandwest01.AFS.Azure.net<br>https: \/ /TM-switzerlandwest01.AFS.Azure.net | Észak-Svájc | https: \/ /switzerlandnorth01.AFS.Azure.net<br>https: \/ /TM-switzerlandnorth01.AFS.Azure.net |
 | Nyilvános | Az Egyesült Királyság déli régiója | https: \/ /uksouth01.AFS.Azure.net<br>https: \/ /Kailani-UKs.One.microsoft.com | Az Egyesült Királyság nyugati régiója | https: \/ /TM-uksouth01.AFS.Azure.net<br>https: \/ /TM-Kailani-UKs.One.microsoft.com |
 | Nyilvános | Az Egyesült Királyság nyugati régiója | https: \/ /ukwest01.AFS.Azure.net<br>https: \/ /Kailani-Ukw.One.microsoft.com | Az Egyesült Királyság déli régiója | https: \/ /TM-ukwest01.AFS.Azure.net<br>https: \/ /TM-Kailani-Ukw.One.microsoft.com |
 | Nyilvános | USA nyugati középső régiója | https: \/ /westcentralus01.AFS.Azure.net | USA 2. nyugati régiója | https: \/ /TM-westcentralus01.AFS.Azure.net |

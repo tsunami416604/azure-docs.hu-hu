@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ed477a931ed63c0db378ff84f85544072492ef96
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 644192de74a888daa0391b31dd42eb6028403fd8
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387037"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674474"
 ---
 # <a name="azure-ad-b2c-custom-policy-overview"></a>Egyéni szabályzatok Azure AD B2C áttekintése
 
@@ -53,7 +53,7 @@ A [jogcím-átalakítások](claimstransformations.md) előre definiált függvé
 
 ### <a name="customize-and-localize-your-ui"></a>Felhasználói felület testreszabása és honosítása
 
-Ha adatokat szeretne gyűjteni a felhasználóktól, ha egy oldalt mutat be a böngészőben, használja az [önjelölt technikai profilt](self-asserted-technical-profile.md). A saját maga által vezérelt technikai profilt szerkesztheti [jogcímek hozzáadásához és a felhasználói bevitel testreszabásához](custom-policy-configure-user-input.md).
+Ha adatokat szeretne gyűjteni a felhasználóktól, ha egy oldalt mutat be a böngészőben, használja az [önjelölt technikai profilt](self-asserted-technical-profile.md). A saját maga által vezérelt technikai profilt szerkesztheti [jogcímek hozzáadásához és a felhasználói bevitel testreszabásához](./configure-user-input.md).
 
 Az önérvényesített technikai profil [felhasználói felületének testreszabásához](customize-ui-with-html.md) megadhat egy URL-címet a tartalom- [definíciós](contentdefinitions.md) elemben testreszabott HTML-tartalommal. Az önérvényesített technikai profilban erre a tartalom-definíciós AZONOSÍTÓra mutat.
 
@@ -133,11 +133,11 @@ Egy Azure AD B2C egyéni szabályzaton belül integrálhatja saját üzleti logi
 
 - Hozza létre a logikát a **kiterjesztési szabályzaton** belül vagy a **továbbító fél házirendjében**. Hozzáadhat új elemeket is, amelyek felülírják az alapházirendet ugyanarra az AZONOSÍTÓra hivatkozva. Ez lehetővé teszi a projekt vertikális felskálázását, miközben a Microsoft új kezdő csomagokat bocsát ki.
 - Az **alapházirenden** belül kifejezetten javasoljuk, hogy elkerülje a módosítások elvégzését.  Ha szükséges, észrevételeket tesz a módosítások végrehajtásához.
-- Ha felülbírál egy elemet, például a technikai profil metaadatait, ne másolja a teljes technikai profilt az alapszabályzatból. Ehelyett csak az elem szükséges szakaszát másolja. A módosítás elvégzéséhez tekintse meg az [e-mailek ellenőrzésének letiltása](custom-policy-disable-email-verification.md) című témakört.
+- Ha felülbírál egy elemet, például a technikai profil metaadatait, ne másolja a teljes technikai profilt az alapszabályzatból. Ehelyett csak az elem szükséges szakaszát másolja. A módosítás elvégzéséhez tekintse meg az [e-mailek ellenőrzésének letiltása](./disable-email-verification.md) című témakört.
 - Ha csökkenteni szeretné a technikai profilok ismétlődését, ahol a központi funkciók megoszlik, használja a [technikai profilokat](technicalprofiles.md#include-technical-profile).
 - A bejelentkezés során Kerülje az Azure AD-címtárba való írást, ami a problémák szabályozásához vezethet.
 - Ha a házirend külső függőségekkel rendelkezik, például a REST API biztosítja, hogy a rendszer nagyon elérhető legyen.
-- A jobb felhasználói élmény érdekében győződjön meg arról, hogy az egyéni HTML-sablonok globálisan üzembe helyezhetők az [online tartalom-továbbítás](https://docs.microsoft.com/azure/cdn/)használatával. Az Azure Content Delivery Network (CDN) segítségével csökkentheti a betöltési időt, megtakaríthatja a sávszélességet és gyorsabbá teheti a rugalmasságot.
+- A jobb felhasználói élmény érdekében győződjön meg arról, hogy az egyéni HTML-sablonok globálisan üzembe helyezhetők az [online tartalom-továbbítás](../cdn/index.yml)használatával. Az Azure Content Delivery Network (CDN) segítségével csökkentheti a betöltési időt, megtakaríthatja a sávszélességet és gyorsabbá teheti a rugalmasságot.
 - Ha módosítást szeretne végezni a felhasználói úton. Másolja a teljes felhasználói utat az alapszabályzatból a kiterjesztési szabályzatba. Adjon meg egy egyedi felhasználói útvonal-azonosítót a másolt felhasználói útra. Ezután a [függő entitás házirendjében](relyingparty.md)módosítsa az [alapértelmezett felhasználói útvonal](relyingparty.md#defaultuserjourney) elemet úgy, hogy az új felhasználói útra mutasson.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
@@ -168,9 +168,9 @@ Első lépések Azure AD B2C egyéni szabályzattal:
 
 A Azure AD B2C szabályzat beállítása és tesztelése után megkezdheti a szabályzat testreszabását. A következő cikkekben megismerheti a következőket:
 
-- [Jogcímek hozzáadása és felhasználói bevitel testreszabása](custom-policy-configure-user-input.md) egyéni szabályzatok használatával. Megtudhatja, hogyan határozhat meg jogcímeket, és hogyan adhat hozzá jogcímeket a felhasználói felülethez az alapszintű csomagok egyes technikai profiljainak testreszabásával.
+- [Jogcímek hozzáadása és felhasználói bevitel testreszabása](./configure-user-input.md) egyéni szabályzatok használatával. Megtudhatja, hogyan határozhat meg jogcímeket, és hogyan adhat hozzá jogcímeket a felhasználói felülethez az alapszintű csomagok egyes technikai profiljainak testreszabásával.
 - Egyéni házirend használatával [testreszabhatja az alkalmazás felhasználói felületét](customize-ui-with-html.md) . Megtudhatja, hogyan hozhat létre saját HTML-tartalmakat, és hogyan szabhatja testre a tartalom definícióját.
-- Az alkalmazás [felhasználói felületének honosítása](custom-policy-localization.md) egyéni házirend használatával. Megtudhatja, hogyan állíthatja be a támogatott nyelvek listáját, és hogyan adhat meg nyelvspecifikus címkéket a honosított erőforrások elem hozzáadásával.
-- A szabályzat fejlesztése és tesztelése során [letilthatja az e-mailek ellenőrzését](custom-policy-disable-email-verification.md). Útmutató a technikai profil metaadatainak felülírásához.
-- Egyéni házirendeket használó [Google-fiókkal történő bejelentkezés beállítása](identity-provider-google-custom.md) . Megtudhatja, hogyan hozhat létre új jogcím-szolgáltatót a OAuth2 technikai profiljával. Ezután szabja testre a felhasználói utat, hogy belefoglalja a Google bejelentkezési lehetőséget.
+- Az alkalmazás [felhasználói felületének honosítása](./language-customization.md) egyéni házirend használatával. Megtudhatja, hogyan állíthatja be a támogatott nyelvek listáját, és hogyan adhat meg nyelvspecifikus címkéket a honosított erőforrások elem hozzáadásával.
+- A szabályzat fejlesztése és tesztelése során [letilthatja az e-mailek ellenőrzését](./disable-email-verification.md). Útmutató a technikai profil metaadatainak felülírásához.
+- Egyéni házirendeket használó [Google-fiókkal történő bejelentkezés beállítása](./identity-provider-google.md) . Megtudhatja, hogyan hozhat létre új jogcím-szolgáltatót a OAuth2 technikai profiljával. Ezután szabja testre a felhasználói utat, hogy belefoglalja a Google bejelentkezési lehetőséget.
 - Az egyéni szabályzatokkal kapcsolatos problémák diagnosztizálásához [összegyűjthet Azure Active Directory B2C naplókat Application Insights](troubleshoot-with-application-insights.md)használatával. Ismerje meg, hogyan adhat hozzá új technikai profilokat, és hogyan konfigurálhatja a továbbító fél házirendjét.

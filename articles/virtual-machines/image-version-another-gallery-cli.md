@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: e8aabcd1c68272a78b3c1fe88913c5a62496f681
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 753e7503612502cde12f821ea331625406daa7a8
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88225835"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675977"
 ---
 # <a name="copy-an-image-from-another-gallery-using-the-azure-cli"></a>Rendszerkép másolása egy másik gyűjteményből az Azure CLI használatával
 
@@ -161,6 +161,6 @@ az sig image-version create \
 
 Hozzon létre egy virtuális gépet [általánosított](vm-generalized-image-version-cli.md) vagy [speciális](vm-specialized-image-version-cli.md) rendszerkép-verzióból.
 
-Azt is megteheti, hogy az [Azure rendszerkép-szerkesztő (előzetes verzió)](./linux/image-builder-overview.md) segítségével automatizálhatja a rendszerkép-verziók létrehozását, és a meglévő rendszerkép-verzióról is frissítheti és [létrehozhatja az új rendszerkép verzióját](./linux/image-builder-gallery-update-image-version.md). 
+Azt is megteheti, hogy az [Azure rendszerkép-szerkesztő (előzetes verzió)](./image-builder-overview.md) segítségével automatizálhatja a rendszerkép-verziók létrehozását, és a meglévő rendszerkép-verzióról is frissítheti és [létrehozhatja az új rendszerkép verzióját](./linux/image-builder-gallery-update-image-version.md). 
 
 A vásárlási tervre vonatkozó információk megadásával kapcsolatos információkért lásd: [Azure Marketplace vásárlási terv információinak megadása képek létrehozásakor](marketplace-images.md).

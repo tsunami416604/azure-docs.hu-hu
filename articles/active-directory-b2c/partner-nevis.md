@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 19aa847ce7ce1a6ba727a4733aefcdfad845e8c6
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 282ec6a25dc381dc51f28534d272bae57d2e792e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629391"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674993"
 ---
 # <a name="tutorial-to-configure-nevis-with-azure-active-directory-b2c-for-passwordless-authentication"></a>Útmutató a Nevis konfigurálásához a Azure Active Directory B2C a jelszóval nem rendelkező hitelesítéshez
 
@@ -30,9 +30,9 @@ A kezdéshez a következőkre lesz szüksége:
 
 - Egy Azure AD-előfizetés. Ha még nem rendelkezik ilyennel, szerezzen be egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
-- Egy [Azure ad B2C bérlő](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) , amely az Azure-előfizetéshez van csatolva.
+- Egy [Azure ad B2C bérlő](./tutorial-create-tenant.md) , amely az Azure-előfizetéshez van csatolva.
 
-- Az [Egyéni házirendek](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started)használatára konfigurált Azure ad B2C környezet, ha a Nevis-t integrálni kívánja a regisztrációs házirend folyamatában.
+- Az [Egyéni házirendek](./custom-policy-get-started.md)használatára konfigurált Azure ad B2C környezet, ha a Nevis-t integrálni kívánja a regisztrációs házirend folyamatában.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -46,7 +46,7 @@ A diagram a megvalósítást mutatja be.
 
 ![Magas szintű jelszó-bejelentkezési folyamat Azure AD B2C és Nevis](./media/partner-nevis/nevis-architecture-diagram.png)
 
-|Lépés | Description |
+|Lépés | Leírás |
 |:-----| :-----------|
 | 1. | A felhasználók Azure AD B2C bejelentkezési és regisztrációs szabályzattal próbálnak bejelentkezni vagy regisztrálni egy alkalmazásba.
 | 2. | A regisztráció során a Nevis-hozzáférési alkalmazás egy QR-kóddal van regisztrálva a felhasználói eszközön. A rendszer a felhasználói eszközön létrehoz egy titkos kulcsot, amely a felhasználói kérések aláírására szolgál.
@@ -134,9 +134,9 @@ Két e-mailt fog kapni:
 
 4. **Mentse** a fájl módosításait.
 
-5. Kövesse az [utasításokat](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#2-create-an-azure-blob-storage-account) , és töltse fel az **nevis.html** -fájlt az Azure Blob Storage-ba.
+5. Kövesse az [utasításokat](./customize-ui-with-html.md#2-create-an-azure-blob-storage-account) , és töltse fel az **nevis.html** -fájlt az Azure Blob Storage-ba.
 
-6. Kövesse az [utasításokat](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#3-configure-cors) , és engedélyezze a fájlhoz a több eredetű erőforrás-megosztást (CORS).
+6. Kövesse az [utasításokat](./customize-ui-with-html.md#3-configure-cors) , és engedélyezze a fájlhoz a több eredetű erőforrás-megosztást (CORS).
 
 7. Miután a feltöltés befejeződött, és a CORS engedélyezve van, válassza ki a **nevis.html** fájlt a listában.
 
@@ -268,6 +268,6 @@ Két e-mailt fog kapni:
 
 További információkért tekintse át a következő cikkeket
 
-- [Egyéni szabályzatok az Azure AD B2C-ben](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Egyéni szabályzatok az Azure AD B2C-ben](./custom-policy-overview.md)
 
-- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](./custom-policy-get-started.md?tabs=applications)

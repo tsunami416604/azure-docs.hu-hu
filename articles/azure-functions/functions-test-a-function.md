@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp, devx-track-js
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 2488a476fe40c2bf1f3e290b462babceff30a9b0
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: f75f42f3879f551a945bdeb2d88450ae3b9d6106
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601390"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674150"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Kódtesztelési stratégiák az Azure Functions szolgáltatásban
 
@@ -36,8 +36,8 @@ Az alábbi példa azt ismerteti, hogyan hozhat létre C# Function alkalmazást a
 
 A környezet beállításához hozzon létre egy Function és test alkalmazást. A következő lépések segítséget nyújtanak a tesztek támogatásához szükséges alkalmazások és függvények létrehozásában:
 
-1. [Hozzon létre egy új functions-alkalmazást](./functions-create-first-azure-function.md) , és nevezze el a **függvényeket**
-2. [Hozzon létre egy http-függvényt a sablonból](./functions-create-first-azure-function.md) , és nevezze el **MyHttpTrigger**.
+1. [Hozzon létre egy új functions-alkalmazást](./functions-get-started.md) , és nevezze el a **függvényeket**
+2. [Hozzon létre egy http-függvényt a sablonból](./functions-get-started.md) , és nevezze el **MyHttpTrigger**.
 3. [Hozzon létre egy időzítő függvényt a sablonból](./functions-create-scheduled-function.md) , és nevezze el **MyTimerTrigger**.
 4. [Hozzon létre egy XUnit teszt alkalmazást](https://xunit.net/docs/getting-started/netcore/cmdline) a megoldásban, és nevezze el a **functions.** tests nevet.
 5. A NuGet használata a tesztelési alkalmazásból a [Microsoft. AspNetCore. MVC](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) -re mutató hivatkozás hozzáadásához
@@ -381,7 +381,7 @@ A tesztek hibakereséséhez adja hozzá a következő konfigurációt a *launch.
 
 Ezután állítson be egy töréspontot a tesztben, és nyomja le az **F5** billentyűt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan írhat automatizált teszteket a függvények számára, folytassa ezeket az erőforrásokat:
 

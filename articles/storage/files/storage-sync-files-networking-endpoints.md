@@ -8,12 +8,12 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 61ff5d05eb74804af69b90d839115a8468619275
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 64d66e1b9eab225b38ee21306fea6f9534a708f3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921719"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673848"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>Az Azure File Sync hálózati végpontjainak konfigurálása
 Azure Files és Azure File Sync két fő típusú végpontot biztosít az Azure-fájlmegosztás eléréséhez: 
@@ -52,13 +52,13 @@ Ha egy Azure-erőforráshoz hoz létre privát végpontot, a rendszer a követke
 
 Ha a virtuális hálózatán belül van egy virtuális gép, vagy ha konfigurálta a DNS-továbbítást a [Azure Files DNS](storage-files-networking-dns.md)-továbbítás beállítása című témakörben leírtak szerint, akkor tesztelheti, hogy a saját végpontja helyesen van-e beállítva. Ehhez futtassa a következő parancsokat a powershellből, a parancssorból vagy a terminálból (Windows, Linux vagy MacOS rendszeren működik). `<storage-account-name>`A nevet a megfelelő Storage-fiók nevével kell helyettesíteni:
 
-```
+```console
 nslookup <storage-account-name>.file.core.windows.net
 ```
 
 Ha minden sikeresen működött, a következő kimenetnek kell megjelennie, ahol a a `192.168.0.5` virtuális hálózat privát végpontjának magánhálózati IP-címe (a Windowshoz megjelenített kimenet):
 
-```Output
+```output
 Server:  UnKnown
 Address:  10.2.4.4
 
@@ -73,7 +73,7 @@ Aliases:  storageaccount.file.core.windows.net
 
 Ha a virtuális hálózatán belül van egy virtuális gép, vagy ha konfigurálta a DNS-továbbítást a [Azure Files DNS](storage-files-networking-dns.md)-továbbításának beállítása című témakörben leírtak szerint, ellenőrizheti, hogy a saját végpontja helyesen van-e beállítva a következő parancsokkal:
 
-```PowerShell
+```powershell
 $storageAccountHostName = [System.Uri]::new($storageAccount.PrimaryEndpoints.file) | `
     Select-Object -ExpandProperty Host
 
@@ -82,7 +82,7 @@ Resolve-DnsName -Name $storageAccountHostName
 
 Ha minden sikeresen működött, a következő kimenetnek kell megjelennie, ahol a a `192.168.0.5` virtuális hálózat privát végpontjának magánhálózati IP-címe:
 
-```Output
+```output
 Name                             Type   TTL   Section    NameHost
 ----                             ----   ---   -------    --------
 storageaccount.file.core.windows CNAME  60    Answer     storageaccount.privatelink.file.core.windows.net
@@ -113,7 +113,7 @@ nslookup $hostName
 
 Ha minden sikeresen működött, a következő kimenetnek kell megjelennie, ahol a a `192.168.0.5` virtuális hálózat privát végpontjának magánhálózati IP-címe:
 
-```Output
+```output
 Server:         127.0.0.53
 Address:        127.0.0.53#53
 
@@ -168,7 +168,7 @@ Get-AzPrivateEndpoint `
 
 Ha minden megfelelően működött, a következő kimenetnek kell megjelennie, ahol a, a, a `192.168.1.4` `192.168.1.5` és a `192.168.1.6` `192.168.1.7` privát végponthoz rendelt magánhálózati IP-címek:
 
-```Output
+```output
 Name     : mysssmanagement.westus2.afs.azure.net
 Type     : CNAME
 TTL      : 60
@@ -244,7 +244,7 @@ if ($null -eq $storageSyncService) {
 
 Privát végpont létrehozásához létre kell hoznia egy magánhálózati kapcsolati szolgáltatást a Storage Sync szolgáltatáshoz. A privát kapcsolat kapcsolata egy bemenet a privát végpont létrehozásához.
 
-```PowerShell 
+```powershell 
 # Disable private endpoint network policies
 $subnet.PrivateEndpointNetworkPolicies = "Disabled"
 $virtualNetwork = $virtualNetwork | `
@@ -325,7 +325,7 @@ if ($null -eq $dnsZone) {
 ```
 Most, hogy már rendelkezik a saját DNS-zónára mutató hivatkozással, létre kell hoznia egy rekordot a Storage Sync szolgáltatáshoz.
 
-```PowerShell 
+```powershell 
 $privateEndpointIpFqdnMappings = $privateEndpoint | `
     Select-Object -ExpandProperty NetworkInterfaces | `
     Select-Object -ExpandProperty Id | `
@@ -607,9 +607,10 @@ $storageSyncService = $storageSyncService | Set-AzResource -Confirm:$false -Forc
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-<a name="azure-cli-does-not-support-setting-the-incomingtrafficpolicy-property-on-the-storage-sync-service-please-select-the-azure-powershell-tab-to-get-instructions-on-how-to-disable-the-storage-sync-service-public-endpoint"></a>Az Azure CLI nem támogatja a tulajdonság beállítását `incomingTrafficPolicy` a Storage Sync szolgáltatásban. Az Azure PowerShell lapon megtudhatja, hogyan tilthatja le a Storage Sync szolgáltatás nyilvános végpontját.
+Az Azure CLI nem támogatja a tulajdonság beállítását `incomingTrafficPolicy` a Storage Sync szolgáltatásban. Az Azure PowerShell lapon megtudhatja, hogyan tilthatja le a Storage Sync szolgáltatás nyilvános végpontját.
+
 ---
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 - [Az Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md)
 - [Azure File Sync üzembe helyezése](storage-sync-files-deployment-guide.md)

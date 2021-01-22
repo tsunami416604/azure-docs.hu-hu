@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: dbb380dca231f75f6d6e77676c9059ef3762dac5
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 4b649942a52c51aef0d6edd17b913f75e1fb247b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050935"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674167"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>A Function alkalmazás erőforrás-telepítésének automatizálása Azure Functions
 
@@ -39,7 +39,7 @@ Az Azure Functions üzemelő példányok általában az alábbi erőforrásokbó
 > Habár nem kötelező, erősen ajánlott az alkalmazáshoz Application Insights konfigurálni.
 
 <a name="storage"></a>
-### <a name="storage-account"></a>Tárfiók
+### <a name="storage-account"></a>A(z)
 
 Egy Function alkalmazáshoz Azure Storage-fiók szükséges. Olyan általános célú fiókra van szüksége, amely támogatja a blobokat, a táblákat, a várólistákat és a fájlokat. További információ: [Azure functions Storage-fiókra vonatkozó követelmények](storage-considerations.md#storage-account-requirements).
 
@@ -112,7 +112,7 @@ Emellett a kialakítási kulcsot is meg kell adni a Function alkalmazásnak az `
 A üzemeltetési csomag definíciója változó, és a következők egyike lehet:
 * [Felhasználási terv](#consumption) (alapértelmezett)
 * [Prémium szintű csomag](#premium)
-* [App Service terv](#app-service-plan)
+* [App Service-csomag](#app-service-plan)
 
 ### <a name="function-app"></a>Függvényalkalmazás
 
@@ -686,13 +686,13 @@ New-AzResourceGroupDeployment -ResourceGroupName "MyResourceGroup" -TemplateFile
 
 A központi telepítés teszteléséhez használhat egy olyan [sablont](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-function-app-create-dynamic/azuredeploy.json) , amely a Windowsban egy használati alkalmazást hoz létre egy felhasználási tervben. Cserélje le a `<function-app-name>` függvényt egy egyedi névre a Function alkalmazáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Functions fejlesztéséről és konfigurálásáról.
 
 * [Az Azure Functions fejlesztői segédanyagai](functions-reference.md)
 * [Az Azure Function app beállításainak konfigurálása](functions-how-to-use-azure-function-app-settings.md)
-* [Az első Azure-függvény létrehozása](functions-create-first-azure-function.md)
+* [Az első Azure-függvény létrehozása](./functions-get-started.md)
 
 <!-- LINKS -->
 

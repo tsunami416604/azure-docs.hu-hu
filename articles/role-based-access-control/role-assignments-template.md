@@ -6,19 +6,16 @@ documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/13/2020
+ms.date: 01/21/2021
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.openlocfilehash: dc8a704fd864fbb0e11da6cd062e0c5325679d8b
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 023aa086cdafc3ab1459c2f748b2181575c14191
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964226"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675336"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Azure-beli szerepkör-hozzárendelések hozzáadása Azure Resource Manager-sablonok használatával
 
@@ -28,7 +25,7 @@ ms.locfileid: "97964226"
 
 Szerepkör hozzárendeléséhez meg kell adnia annak a felhasználónak, csoportnak vagy alkalmazásnak az AZONOSÍTÓját, amelyhez hozzá szeretné rendelni a szerepkört. Az azonosító formátuma: `11111111-1111-1111-1111-111111111111` . Az azonosítót a Azure Portal, Azure PowerShell vagy az Azure CLI használatával szerezheti be.
 
-### <a name="user"></a>Felhasználó
+### <a name="user"></a>User
 
 A felhasználók AZONOSÍTÓjának lekéréséhez használhatja a [Get-AzADUser](/powershell/module/az.resources/get-azaduser) vagy [az ad User show](/cli/azure/ad/user#az-ad-user-show) parancsokat.
 
@@ -40,7 +37,7 @@ $objectid = (Get-AzADUser -DisplayName "{name}").id
 objectid=$(az ad user show --id "{email}" --query objectId --output tsv)
 ```
 
-### <a name="group"></a>Csoport
+### <a name="group"></a>Group
 
 Egy csoport AZONOSÍTÓjának lekéréséhez használhatja a [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup) vagy [az ad Group show](/cli/azure/ad/group#az-ad-group-show) parancsokat.
 
@@ -352,7 +349,6 @@ A sablon használatához a következő bemeneteket kell megadnia:
             "properties": {
                 "roleDefinitionId": "[variables('contributorRoleDefinitionId')]",
                 "principalId": "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName')), '2018-11-30').principalId]",
-                "scope": "[resourceGroup().id]",
                 "principalType": "ServicePrincipal"
             }
         }
@@ -383,7 +379,7 @@ Az Azure-RBAC az Azure-erőforrásokhoz való hozzáférés eltávolításához 
 - [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
 - [REST API](role-assignments-rest.md#remove-a-role-assignment)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Rövid útmutató: ARM-sablonok létrehozása és üzembe helyezése a Azure Portal használatával](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
 - [Az ARM-sablonok struktúrájának és szintaxisának megismerése](../azure-resource-manager/templates/template-syntax.md)

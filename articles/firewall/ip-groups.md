@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 07/30/2020
+ms.date: 01/21/2021
 ms.author: victorh
-ms.openlocfilehash: c56298d68bddd326ed2b32215f30a9057fa51e85
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: dc1eb64b5cfb527c10967a1a46525a418fdc37e3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94653113"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673997"
 ---
 # <a name="ip-groups-in-azure-firewall"></a>IP-csoportok a Azure Firewall
 
@@ -26,6 +26,9 @@ Az IP-csoportok lehetővé teszik, hogy az alábbi módokon csoportosítsa és k
 Egy IP-csoport rendelkezhet egyetlen IP-címmel, több IP-címmel vagy egy vagy több IP-címtartományból.
 
 Az IP-csoportok újra felhasználhatók Azure Firewall DNAT, hálózati és alkalmazási szabályokban több tűzfalon az Azure-ban. A csoportok nevének egyedinek kell lennie. Az IP-csoportokat a Azure Portalban, az Azure CLI-ben vagy a REST API is konfigurálhatja. Az első lépésekhez egy minta sablont biztosítunk.
+
+> [!NOTE]
+> Az IP-csoportok jelenleg nem érhetők el az Azure-beli nemzeti Felhőbeli környezetekben.
 
 ## <a name="sample-format"></a>Minták formátuma
 
