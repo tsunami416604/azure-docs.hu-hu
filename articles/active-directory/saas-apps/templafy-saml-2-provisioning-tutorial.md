@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/19/2021
 ms.author: zhchia
-ms.openlocfilehash: 057b437c5d88c4f292e08828482e5dca0d2ca5b4
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 0e7275ee92431e791fec7bd2c9ec07dd623b0f9e
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98614569"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696008"
 ---
 # <a name="tutorial-configure-templafy-saml2-for-automatic-user-provisioning"></a>Oktatóanyag: a Templafy-egy SAML2 konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -133,7 +133,26 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az attribútum- **hozzárendelések** szakasz Templafy egy saml2. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Templafy egy saml2 felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![Templafy egy SAML2 felhasználói attribútumai](media/templafy-saml-2-provisioning-tutorial/user-attribute.png)
+   |Attribútum|Típus|Szűréshez támogatott|
+   |---|---|---|
+   |userName (Felhasználónév)|Sztring|&check;|
+   |active|Logikai|
+   |displayName|Sztring|
+   |cím|Sztring|
+   |preferredLanguage|Sztring|
+   |name.givenName|Sztring|
+   |name.familyName|Sztring|
+   |phoneNumbers[type eq "work"].value|Sztring|
+   |phoneNumbers[type eq "mobile"].value|Sztring|
+   |phoneNumbers [type EQ "fax"]. Value|Sztring|
+   |externalId|Sztring|
+   |címek [típus EQ "work"]. helység|Sztring|
+   |címek [type EQ "work"]. irányítószám|Sztring|
+   |címek [típus EQ "work"]. régió|Sztring|
+   |címek [type EQ "work"]. streetAddress|Sztring|
+   |címek [type EQ "work"]. Country|Sztring|
+   |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: részleg|Sztring|
+   |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: szervezet|Sztring|
 
 10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a Templafy** lehetőséget.
 
@@ -141,7 +160,12 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 11. Tekintse át az Azure AD-ből szinkronizált Templafy egy SAML2 az **attribútum-hozzárendelések** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Templafy egy saml2 tartozó csoportok egyeztetésére szolgálnak a frissítési műveletekhez. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![Templafy egy SAML2 csoport attribútumai](media/templafy-saml-2-provisioning-tutorial/group-attribute.png)
+      |Attribútum|Típus|Szűréshez támogatott|
+      |---|---|---|
+      |displayName|Sztring|&check;|
+      |tagok|Referencia|
+      |externalId|Sztring|      
+
 
 12. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
 

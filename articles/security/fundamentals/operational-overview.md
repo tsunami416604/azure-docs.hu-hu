@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: 9dcb1113bb37cb0f5f65c54ae9d6ca76a88330c1
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: c3674b6877438a0dd4fe53569cf6852e872334a7
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698665"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693612"
 ---
 # <a name="azure-operational-security-overview"></a>Azure Operational Security – áttekintés
 
@@ -171,23 +171,23 @@ A tervrajzok deklaratív módszert biztosítanak különböző erőforrás-sablo
 
 ## <a name="devops"></a>DevOps
 
-A [fejlesztői műveletek (DevOps-alkalmazások)](https://www.visualstudio.com/learn/what-is-devops/) fejlesztése előtt a csapatok feladata a szoftverek üzleti követelményeinek összegyűjtése és a kód írása. Ezután egy különálló QA-csapat tesztelte a programot egy elkülönített fejlesztői környezetben. Ha teljesülnek a követelmények, a QA csapat kiadta a programkódot a telepítendő műveletekhez. Az üzembe helyezési csapatokat további csoportokba osztottuk, például hálózatkezelésre és adatbázisra. Minden alkalommal, amikor egy szoftver egy különálló csapatnak lett kiváltva, a rendszer szűk keresztmetszeteket adott hozzá.
+A [fejlesztői műveletek (DevOps-alkalmazások)](https://azure.microsoft.com/overview/what-is-devops/) fejlesztése előtt a csapatok feladata a szoftverek üzleti követelményeinek összegyűjtése és a kód írása. Ezután egy különálló QA-csapat tesztelte a programot egy elkülönített fejlesztői környezetben. Ha teljesülnek a követelmények, a QA csapat kiadta a programkódot a telepítendő műveletekhez. Az üzembe helyezési csapatokat további csoportokba osztottuk, például hálózatkezelésre és adatbázisra. Minden alkalommal, amikor egy szoftver egy különálló csapatnak lett kiváltva, a rendszer szűk keresztmetszeteket adott hozzá.
 
 A DevOps lehetővé teszi, hogy a csapatok gyorsabban és olcsóbban nyújtsanak biztonságosabb, magasabb színvonalú megoldásokat. Az ügyfelek dinamikus és megbízható élményt várnak a szoftverek és szolgáltatások fogyasztása során. A csapatoknak gyorsan meg kell ismételni a szoftverfrissítéseket, és mérniük kell a frissítések hatását. A problémák megoldásához és a további értékek megadásához gyorsan reagálni kell az új fejlesztési iterációkkal.  
 
 A Felhőbeli platformok, például a Microsoft Azure a hagyományos szűk keresztmetszeteket távolították el, és segítették a commoditize-infrastruktúrát. A szoftver minden üzletágban meguralkodik, mint a kulcsfontosságú differenciálás és az üzleti eredményekben felmerülő tényező. Nincs szervezet, fejlesztő vagy informatikai dolgozó, vagy el kell kerülnie a DevOps mozgását.
 
-Az érett DevOps-szakemberek az alábbi eljárások közül többet is elfogadnak. Ezek a [gyakorlatok a stratégiákat az üzleti](https://www.visualstudio.com/learn/what-is-devops-culture/) forgatókönyvek alapján alkotják. Az eszközök megkönnyítik a különböző eljárások automatizálását.
+Az érett DevOps-szakemberek az alábbi eljárások közül többet is elfogadnak. Ezek a [gyakorlatok a stratégiákat az üzleti](/azure/devops/learn/what-is-devops-culture) forgatókönyvek alapján alkotják. Az eszközök megkönnyítik a különböző eljárások automatizálását.
 
 - Az [agilis tervezési és projektmenedzsment](https://www.visualstudio.com/learn/what-is-agile/) technikák használatával megtervezheti és elkülönítheti a munkafolyamatokat a Sprint szolgáltatásban, kezelheti a csapat kapacitását, és a csoportok gyorsan alkalmazkodnak a változó üzleti igényekhez.
-- A [verziókövetés általában a git](https://www.visualstudio.com/learn/what-is-git/)használatával lehetővé teszi a világ bármely pontján található csapatok számára, hogy megosszák a forrást, és integrálják a szoftverfejlesztői eszközöket a kiadási folyamat automatizálására.
-- A [folyamatos integráció](https://www.visualstudio.com/learn/what-is-continuous-integration/) vezérli a kód folyamatos egyesítését és tesztelését, amely a hibák korai megkeresését eredményezi.  Az egyéb előnyök kevesebb időt vesznek igénybe az egyesítéssel kapcsolatos problémák és a fejlesztési csapatok gyors visszajelzése miatt.
-- A szoftverek üzemi és tesztelési környezetekhez való [folyamatos továbbítása](https://www.visualstudio.com/learn/what-is-continuous-delivery/) segít a szervezeteknek a hibák javításában és a folyamatosan változó üzleti követelmények megválaszolásában.
-- Futó alkalmazások [figyelése](https://www.visualstudio.com/learn/what-is-monitoring/) – beleértve az alkalmazások állapotának éles környezetét, valamint az ügyfelek használatát – segít a szervezeteknek hipotézist alkotni, és gyorsan érvényesíteni vagy megcáfolni a stratégiákat.  A rendszer a különböző naplózási formátumokban rögzíti és tárolja a gazdag adattárolást.
-- Az [infrastruktúra mint kód (IaC)](https://www.visualstudio.com/learn/what-is-infrastructure-as-code/) olyan gyakorlat, amely lehetővé teszi a hálózatok és virtuális gépek létrehozásának és Teardown automatizálását és érvényesítését, így segítve a biztonságos, stabil alkalmazás-üzemeltetési platformok nyújtását.
-- A [szolgáltatás](https://www.visualstudio.com/learn/what-are-microservices/) architektúrája az üzleti használati esetek kis újrafelhasználható szolgáltatásokra való elkülönítésére szolgál.  Ez az architektúra lehetővé teszi a méretezhetőséget és a hatékonyságot.
+- A [verziókövetés általában a git](/azure/devops/learn/git/what-is-git)használatával lehetővé teszi a világ bármely pontján található csapatok számára, hogy megosszák a forrást, és integrálják a szoftverfejlesztői eszközöket a kiadási folyamat automatizálására.
+- A [folyamatos integráció](/azure/devops/learn/what-is-continuous-integration) vezérli a kód folyamatos egyesítését és tesztelését, amely a hibák korai megkeresését eredményezi.  Az egyéb előnyök kevesebb időt vesznek igénybe az egyesítéssel kapcsolatos problémák és a fejlesztési csapatok gyors visszajelzése miatt.
+- A szoftverek üzemi és tesztelési környezetekhez való [folyamatos továbbítása](/azure/devops/learn/what-is-continuous-delivery) segít a szervezeteknek a hibák javításában és a folyamatosan változó üzleti követelmények megválaszolásában.
+- Futó alkalmazások [figyelése](/azure/devops/learn/what-is-monitoring) – beleértve az alkalmazások állapotának éles környezetét, valamint az ügyfelek használatát – segít a szervezeteknek hipotézist alkotni, és gyorsan érvényesíteni vagy megcáfolni a stratégiákat.  A rendszer a különböző naplózási formátumokban rögzíti és tárolja a gazdag adattárolást.
+- Az [infrastruktúra mint kód (IaC)](/azure/devops/learn/what-is-infrastructure-as-code) olyan gyakorlat, amely lehetővé teszi a hálózatok és virtuális gépek létrehozásának és Teardown automatizálását és érvényesítését, így segítve a biztonságos, stabil alkalmazás-üzemeltetési platformok nyújtását.
+- A [szolgáltatás](/azure/devops/learn/what-are-microservices) architektúrája az üzleti használati esetek kis újrafelhasználható szolgáltatásokra való elkülönítésére szolgál.  Ez az architektúra lehetővé teszi a méretezhetőséget és a hatékonyságot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Security and Audit megoldással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

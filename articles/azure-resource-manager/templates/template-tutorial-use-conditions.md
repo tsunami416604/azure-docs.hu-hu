@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: bc6dc5b385a39ddb1c4f1663649ea21e5ed14767
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 4affc2add2822702c1d5395f81efe01eeedf448b
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97669312"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696024"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>Oktatóanyag: Feltétel használata ARM-sablonokban
 
@@ -28,10 +28,10 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * A sablon üzembe helyezése
 > * Az erőforrások eltávolítása
 
-Ez az oktatóanyag csak a feltételek használatának alapvető forgatókönyvét tárgyalja. További információ:
+Ez az oktatóanyag csak a feltételek használatának alapvető forgatókönyvét tárgyalja. További információkért lásd:
 
 * [Sablonfájl szerkezete: feltétel](conditional-resource-deployment.md).
-* [Erőforrás feltételes üzembe helyezése ARM-sablonban](/azure/architecture/building-blocks/extending-templates/conditional-deploy).
+* [Erőforrás feltételes üzembe helyezése ARM-sablonban](/azure/architecture/guide/azure-resource-manager/advanced-templates/conditional-deploy).
 * [Sablon függvény: if](./template-functions-logical.md#if).
 * [ARM-sablonok összehasonlító függvények](./template-functions-comparison.md)
 
@@ -191,7 +191,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 Write-Host "Press [ENTER] to continue ..."
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy olyan sablont állított össze, amellyel a felhasználók maguk dönthetik el, hogy új tárfiókot hoznak létre, vagy egy meglévőt használnak. Ha szeretné megtudni, hogyan kérheti le az Azure Key Vaultban tárolt titkos kódokat, és hogyan használhatja azokat jelszóként sablonok üzembe helyezésekor, tekintse meg a következőt:
 

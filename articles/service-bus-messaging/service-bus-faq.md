@@ -2,13 +2,13 @@
 title: Azure Service Bus gyakori kérdések (GYIK) | Microsoft Docs
 description: Ez a cikk a Azure Service Bus kapcsolatos gyakori kérdések (GYIK) néhány válaszát tartalmazza.
 ms.topic: article
-ms.date: 09/16/2020
-ms.openlocfilehash: e5bc9aae081868c92e0968c88c8cb6dcfb8ee57c
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.date: 01/20/2021
+ms.openlocfilehash: 3a96cf94ca4a7edd115f12b3e2eded11a5894e04
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676374"
+ms.locfileid: "98693400"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus – gyakran ismételt kérdések (GYIK)
 
@@ -35,8 +35,11 @@ Particionált entitások használata esetén a rendezés nem biztosítható. Abb
 
  A particionált entitások már nem támogatottak a [Premium SKU](service-bus-premium-messaging.md)-ban. 
 
-### <a name="where-does-azure-service-bus-store-customer-data"></a><a name="in-region-data-residency"></a>Hol tárolja Azure Service Bus az ügyféladatokat?
-Azure Service Bus az ügyféladatokat tárolja. Ezeket az adategységeket a Service Bus egyetlen régióban tárolja automatikusan, így ez a szolgáltatás automatikusan megfelel a régiókban tárolt adattárolási követelményeknek, beleértve a [megbízhatósági központban](https://azuredatacentermap.azurewebsites.net/)megadott követelményeket is.
+### <a name="where-does-azure-service-bus-store-data"></a><a name="in-region-data-residency"></a>Hol tárolja Azure Service Bus az adattárolást?
+A standard szintű Azure Service Bus Azure SQL Database a háttérbeli tárolási réteghez. A Dél-Brazília és Délkelet-Ázsia kivételével minden régió esetében az adatbázis biztonsági mentése egy másik régióban (általában az Azure párosított régióban) található. A Dél-Brazília és Délkelet-ázsiai régiók esetében az adatbázis biztonsági másolatait ugyanabban a régióban tárolják, hogy megfeleljenek az ezen régiókra vonatkozó adattárolási követelményeknek.
+
+A prémium szintű Azure Service Bus a kiválasztott régiókban tárolja a metaadatokat és az adatokat. Ha a Geo-vész-helyreállítás egy Azure Service Bus Premium-névtérre van beállítva, a metaadatok át lesznek másolva a kiválasztott másodlagos régióba.
+
 
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Milyen portokat kell megnyitni a tűzfalon? 
 Az üzenetek küldéséhez és fogadásához a következő protokollokat használhatja Azure Service Bus:
@@ -171,7 +174,7 @@ Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptio
 ## <a name="is-it-possible-to-disable-tls-10-or-11-on-service-bus-namespaces"></a>Le lehet tiltani a TLS 1,0 vagy a 1,1 Service Bus névtereken?
 Nem. Nem lehet letiltani a TLS 1,0 vagy a 1,1 Service Bus névterekben. A Service Bushoz kapcsolódó ügyfélalkalmazások esetében használja a TLS 1,2-es vagy újabb verzióját. További információ: [a TLS 1,2 használatának kényszerítése Azure Service Bus-Microsoft technikai Közösséggel](https://techcommunity.microsoft.com/t5/messaging-on-azure/enforcing-tls-1-2-use-with-azure-service-bus/ba-p/370912).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha többet szeretne megtudni a Service Busről, tekintse meg a következő cikkeket:
 
 * [Azure Service Bus Premium bemutatása (blogbejegyzés)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)

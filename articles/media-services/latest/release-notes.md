@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 895b4529a8b99ecc66e3566b4696a0e61c337153
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 37e90eeaef9cb8c8e0bd927dd4d733a737c0c47f
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881905"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693875"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>A Azure Media Services v3 kibocsátási megjegyzései
 
@@ -434,9 +434,9 @@ A .NET SDK-ban a következő funkciók találhatók:
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
-[Áttelepítési útmutató Media Services v2-ről v3-re való áttéréshez](migrate-from-v2-to-v3.md#known-issues).
+[Áttelepítési útmutató Media Services v2-ről v3-re való áttéréshez](migrate-v-2-v-3-migration-introduction.md).
 
 ## <a name="next-steps"></a>További lépések
 

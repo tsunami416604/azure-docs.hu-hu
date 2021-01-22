@@ -16,12 +16,12 @@ ms.date: 05/07/2020
 ms.author: willzhan
 ms.reviewer: dwgeo
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5e003e17490c2e35ef3f8adfdef6de0377cda7d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae1d4ef81d14d5adfb728cf7a59534cb376a0eb1
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89259710"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695086"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>Offline FairPlay-streamelés iOS-hez
 
@@ -32,7 +32,7 @@ ms.locfileid: "89259710"
 > * [2-es verzió](media-services-protect-hls-with-offline-fairplay.md)
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 A Azure Media Services jól megtervezett [tartalomvédelem-szolgáltatásokat](https://azure.microsoft.com/services/media-services/content-protection/) biztosít, amelyek a következőket fedik le:
 
@@ -214,7 +214,7 @@ A következő gyakran ismételt kérdések segítséget nyújtanak a hibaelhár�
 - **Mit jelent az utolsó paraméter a következő API-ban az FPS kapcsolat nélküli módban?**
 `Microsoft.WindowsAzure.MediaServices.Client.FairPlay.FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration(objX509Certificate2, pfxPassword, pfxPasswordId, askId, iv, RentalAndLeaseKeyType.PersistentUnlimited, 0x9999);`
 
-    Az API dokumentációja: [FairPlayConfiguration. CreateSerializedFairPlayOptionConfiguration metódus](/dotnet/api/microsoft.windowsazure.mediaservices.client.fairplay.fairplayconfiguration.createserializedfairplayoptionconfiguration?view=azure-dotnet). A paraméter az offline bérlet időtartamát jelöli, a második pedig az egységet.
+    Az API dokumentációja: [FairPlayConfiguration. CreateSerializedFairPlayOptionConfiguration metódus](/dotnet/api/microsoft.windowsazure.mediaservices.client.fairplay.fairplayconfiguration.createserializedfairplayoptionconfiguration). A paraméter az offline bérlet időtartamát jelöli, a második pedig az egységet.
 - **Mi a letöltött/offline fájl szerkezete iOS-eszközökön?** Az iOS-eszközön a letöltött fájl szerkezete a következő képernyőképre hasonlít. A `_keys` mappa a letöltött fps-licenceket egy áruházbeli fájllal tárolja az egyes licencelési szolgáltatások gazdagépei számára. A `.movpkg` mappa tárolja a hang-és video-tartalmakat. Az első mappa, amelynek a neve szaggatott vonallal végződik, majd egy numerikus tartalmat tartalmaz. A numerikus érték a PeakBandwidth. A második mappa, amelynek neve kötőjel, majd 0, hanganyagot tartalmaz. Az "adat" nevű harmadik mappa az FPS-tartalom fő lejátszási listáját tartalmazza. Végezetül boot.xml a mappa tartalmának teljes leírását tartalmazza `.movpkg` . 
 
 ![Offline FairPlay iOS minta alkalmazás fájljának szerkezete](media/media-services-protect-hls-with-offline-FairPlay/media-services-offline-FairPlay-file-structure.png)
@@ -252,7 +252,7 @@ Minta boot.xml fájl:
 
 * A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Ez a dokumentum az alábbi lépésekkel és információkkal rendelkezik, amelyekkel az FPS offline üzemmódot implementálhatja:
 
 * Media Services a tartalomvédelem konfigurálása a Media Services .NET API-val a dinamikus FairPlay-titkosítás és a FairPlay-licenc kézbesítése a Media Servicesban.
@@ -260,6 +260,6 @@ Ez a dokumentum az alábbi lépésekkel és információkkal rendelkezik, amelye
 * A minta FPS-videók az offline üzemmód és az online streaming tesztelésére szolgálnak.
 * A gyakori kérdések az FPS kapcsolat nélküli üzemmódra vonatkozó kérdésekre adnak választ.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

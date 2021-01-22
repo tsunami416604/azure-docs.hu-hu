@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: f04e2aa97cafe2345918e433bcef5e719cee7483
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: eaba099725530f24dcd6aa5da7eb59cb233efd46
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610165"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695645"
 ---
 # <a name="azure-functions-http-trigger"></a>HTTP-trigger Azure Functions
 
@@ -553,7 +553,7 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 | **irányba** | n.a.| Kötelező – a következőre kell beállítani: `in` . |
 | **név** | n.a.| Kötelező – a kérelem vagy a kérelem törzse függvény kódjában használt változó neve. |
 | <a name="http-auth"></a>**authLevel** |  **AuthLevel** |Meghatározza, hogy a függvény meghívásához szükség van-e a kulcsokra, ha vannak ilyenek. Az engedélyezési szint az alábbi értékek egyike lehet: <ul><li><code>anonymous</code>&mdash;Nincs szükség API-kulcsra.</li><li><code>function</code>&mdash;Function-specifikus API-kulcs szükséges. Ez az alapértelmezett érték, ha nincs megadva.</li><li><code>admin</code>&mdash;A főkulcs megadása kötelező.</li></ul> További információt az [engedélyezési kulcsok](#authorization-keys)című szakaszban talál. |
-| **módszerek** |**Metódusok** | A függvény által válaszoló HTTP-metódusok tömbje. Ha nincs megadva, a függvény az összes HTTP-metódusra válaszol. Lásd: [a http-végpont testreszabása](#customize-the-http-endpoint). |
+| **methods** |**Módszerek** | A függvény által válaszoló HTTP-metódusok tömbje. Ha nincs megadva, a függvény az összes HTTP-metódusra válaszol. Lásd: [a http-végpont testreszabása](#customize-the-http-endpoint). |
 | **route** | **Útvonal** | Meghatározza azt az útválasztási sablont, amely azt szabályozza, hogy a függvény milyen URL-címeket válaszol. Az alapértelmezett érték, ha nincs megadva `<functionname>` . További információ: [a http-végpont testreszabása](#customize-the-http-endpoint). |
 | **webHookType** | **WebHookType** | _Csak az 1. x verziójú futtatókörnyezet esetében támogatott._<br/><br/>Konfigurálja a HTTP-triggert, amely [webhook](https://en.wikipedia.org/wiki/Webhook) -fogadóként működik a megadott szolgáltatónál. `methods`Ha ezt a tulajdonságot beállítja, ne állítsa be a tulajdonságot. A webhook típusa a következő értékek egyike lehet:<ul><li><code>genericJson</code>&mdash;Egy általános célú webhook-végpont egy adott szolgáltató logikája nélkül. Ez a beállítás csak a HTTP POST és a tartalomtípus használatával korlátozza a kérelmeket `application/json` .</li><li><code>github</code>&mdash;A függvény válaszol a [GitHub-webhookokra](https://developer.github.com/webhooks/). Ne használja a  _authLevel_ tulajdonságot GitHub-webhookokkal. További információt a cikk későbbi, a GitHub-webhookok című szakaszában talál.</li><li><code>slack</code>&mdash;A függvény válaszol a [Slack webhookokra](https://api.slack.com/outgoing-webhooks). Ne használja a _authLevel_ tulajdonságot Slack webhookokkal. További információt a cikk későbbi, a Slack webhookok című szakaszában talál.</li></ul>|
 
@@ -749,6 +749,10 @@ A következő konfiguráció azt mutatja be, hogyan adja `{id}` át a paraméter
 }
 ```
 
+Ha útvonal-paramétereket használ, az `invoke_URL_template` automatikusan létrejön a függvényhez. Az ügyfelek az URL-címmel megtudhatják, hogy milyen paramétereket kell átadniuk az URL-címben, amikor a függvényt az URL-cím használatával hívja meg. Navigáljon a [Azure Portal](https://portal.azure.com) , majd válassza a **függvény URL-címének lekérése** lehetőséget a http által aktivált függvények egyikéhez.
+
+Az Azure Resource Manager API-k használatával programozott módon férhet hozzá a `invoke_URL_template` [List](https://docs.microsoft.com/rest/api/appservice/webapps/listfunctions) functions vagy a [Get függvényhez](https://docs.microsoft.com/rest/api/appservice/webapps/getfunction).
+
 ## <a name="working-with-client-identities"></a>Ügyfél-identitások használata
 
 Ha a Function alkalmazás [app Service hitelesítés/engedélyezés](../app-service/overview-authentication-authorization.md)funkciót használja, megtekintheti a kód alapján a hitelesített ügyfelek adatait. Ez [az információ a platform által befecskendezett kérelem fejlécként](../app-service/app-service-authentication-how-to.md#access-user-claims)érhető el.
@@ -846,11 +850,17 @@ A hitelesített felhasználó [http-fejléceken](../app-service/app-service-auth
 
 ## <a name="obtaining-keys"></a>Kulcsok beszerzése
 
-A kulcsok tárolása az Azure-beli Function-alkalmazás részeként történik, és a rendszer a nyugalmi állapotban van titkosítva. Ha meg szeretné tekinteni a kulcsokat, újakat kell létrehoznia, vagy új értékekre kell visszagörgetni a kulcsokat, navigáljon a [Azure Portal](https://portal.azure.com) valamelyik http-triggerrel elindított függvényéhez, és válassza a **kezelés** lehetőséget.
+A kulcsok tárolása az Azure-beli Function-alkalmazás részeként történik, és a rendszer a nyugalmi állapotban van titkosítva. Ha meg szeretné tekinteni a kulcsokat, újakat hoz létre, vagy új értékekre kell visszagörgetni a kulcsokat, navigáljon az egyik HTTP-triggert működtető függvényhez a [Azure Portal](https://portal.azure.com) , és válassza a **funkcióbillentyűk** elemet.
 
-![A funkcióbillentyűk kezelése a portálon.](./media/functions-bindings-http-webhook/manage-function-keys.png)
+A gazdagép kulcsai is kezelhetők. Navigáljon a [Azure Portalban](https://portal.azure.com) található Function alkalmazásra, és válassza az **app Keys** elemet.
 
-A [Kulcskezelő API](https://github.com/Azure/azure-functions-host/wiki/Key-management-API)-kkal programozott módon szerezheti be a függvények kulcsait.
+Az Azure Resource Manager API-k használatával programozott módon szerezheti be a függvényeket és a gazdagépek kulcsait. Vannak API-k a [funkcióbillentyűk](/rest/api/appservice/webapps/listfunctionkeys) listázásához és a [gazdagép kulcsainak](/rest/api/appservice/webapps/listhostkeys)listázásához, valamint az üzembe helyezési pontok használatakor az egyenértékű API-k a [kulcsok](/rest/api/appservice/webapps/listfunctionkeysslot) listázása és a [gazdagép kulcsainak](/rest/api/appservice/webapps/listhostkeysslot)listázása tárolóhely.
+
+Az új függvényeket és a gazdagép kulcsait programozott módon is létrehozhatja a [create vagy az Update Function Secret](/rest/api/appservice/webapps/createorupdatefunctionsecret), a [create vagy a Update Function Secret tárolóhely](/rest/api/appservice/webapps/createorupdatefunctionsecretslot)használatával, a [gazdagép titkos](/rest/api/appservice/webapps/createorupdatehostsecret) kódjának létrehozásával vagy frissítésével, illetve a [gazdagép titkos tárolóhelyének API-jai létrehozásával vagy frissítésével](/rest/api/appservice/webapps/createorupdatehostsecretslot)
+
+A függvény és a gazdagép kulcsa programozott módon törölhető a [delete Function Secret](/rest/api/appservice/webapps/deletefunctionsecret), a [Function Secret tárolóhely](/rest/api/appservice/webapps/deletefunctionsecretslot)törlése, az [állomás titkos](/rest/api/appservice/webapps/deletehostsecret)kódjának törlése és a [gazdagép titkos tárolóhelyének](/rest/api/appservice/webapps/deletehostsecretslot) API-k törlése használatával.
+
+Az [örökölt kulcskezelő API-kkal is használhatja a funkcióbillentyűk beszerzését](https://github.com/Azure/azure-functions-host/wiki/Key-management-API), de a Azure Resource Manager API-k használata ajánlott helyette.
 
 ## <a name="api-key-authorization"></a>API-kulcs engedélyezése
 
@@ -917,6 +927,6 @@ A HTTP-kérés hossza legfeljebb 100 MB (104 857 600 bájt), az URL-cím hossza 
 Ha a HTTP-triggert használó függvény 230 másodpercen belül nem fejeződik be, akkor a [Azure Load Balancer](../app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds) időtúllépést jelez, és http 502-hibát ad vissza. A függvény továbbra is futni fog, de nem tud HTTP-választ adni. A hosszú ideig futó függvények esetében javasoljuk, hogy kövesse az aszinkron mintákat, és olyan helyet küldjön vissza, amelyben pingelheti a kérés állapotát. További információ a függvények futtatásának időtartamáról: [skálázás és üzemeltetés – fogyasztási terv](functions-scale.md#timeout).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [HTTP-válasz visszaadása függvényből](./functions-bindings-http-webhook-output.md)

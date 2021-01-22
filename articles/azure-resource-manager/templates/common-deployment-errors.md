@@ -4,12 +4,12 @@ description: Ismerteti, Hogyan oldhatók fel a gyakori hibák, amikor erőforrá
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 01/20/2021
-ms.openlocfilehash: bb701baf164cfd6ba1dd5c670a406343e83c5c70
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 61a306cd36c55a005ee9ebd897fcfc9a6c88d7c9
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98622811"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696396"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Gyakori Azure-beli üzembe helyezési hibák elhárítása az Azure Resource Managerrel
 
@@ -37,7 +37,7 @@ Ha egy hibakódra vonatkozó információt keres, és ez a cikk nem tartalmaz in
 | DeploymentJobSizeExceeded | Egyszerűsítse a sablont a méret csökkentése érdekében. | [Sablon méretével kapcsolatos hibák elhárítása](error-job-size-exceeded.md) |
 | DnsRecordInUse | A DNS-rekord nevének egyedinek kell lennie. Adjon meg másik nevet. | |
 | ImageNotFound | A VM-rendszerkép beállításainak megtekintése. |  |
-| InUseSubnetCannotBeDeleted | Ez a hiba akkor fordulhat elő, ha egy erőforrást próbál frissíteni, és az erőforrás törlésével és létrehozásával dolgozza fel a kérést. Győződjön meg arról, hogy az összes változatlan értéket meg kell adni. | [Erőforrás frissítése](/azure/architecture/building-blocks/extending-templates/update-resource) |
+| InUseSubnetCannotBeDeleted | Ez a hiba akkor fordulhat elő, ha egy erőforrást próbál frissíteni, és az erőforrás törlésével és létrehozásával dolgozza fel a kérést. Győződjön meg arról, hogy az összes változatlan értéket meg kell adni. | [Erőforrás frissítése](/azure/architecture/guide/azure-resource-manager/advanced-templates/update-resource) |
 | InvalidAuthenticationTokenTenant | Szerezze be a megfelelő bérlő hozzáférési jogkivonatát. Csak azon bérlőtől kérheti le a jogkivonatot, amelyhez a fiók tartozik. | |
 | InvalidContentLink | Valószínűleg megpróbált olyan beágyazott sablonhoz kapcsolni, amely nem érhető el. Ellenőrizze a beágyazott sablonhoz megadott URI-t. Ha a sablon létezik egy Storage-fiókban, győződjön meg arról, hogy az URI elérhető. Lehetséges, hogy egy SAS-tokent kell átadnia. Jelenleg nem lehet olyan sablonhoz kapcsolódni, amely egy [Azure Storage-tűzfal](../../storage/common/storage-network-security.md)mögötti Storage-fiókban található. Vegye fontolóra a sablon áthelyezését egy másik adattárba, például a GitHubra. | [Hivatkozott sablonok](linked-templates.md) |
 | InvalidDeploymentLocation | Az előfizetés szintjén történő üzembe helyezéskor egy másik helyet adott meg a korábban használt központi telepítési névnek. | [Előfizetés szintű központi telepítések](deploy-to-subscription.md) |
@@ -64,7 +64,7 @@ Ha egy hibakódra vonatkozó információt keres, és ez a cikk nem tartalmaz in
 | PasswordTooLong | Előfordulhat, hogy túl sok karakterből álló jelszót jelölt ki, vagy a jelszó értékét egy biztonságos karakterláncra konvertálta, mielőtt paraméterként átadná. Ha a sablon tartalmaz egy **biztonságos karakterlánc** -paramétert, akkor nem szükséges az érték konvertálása biztonságos karakterlánccá. Adja meg a jelszó értékét szövegként. |  |
 | PrivateIPAddressInReservedRange | A megadott IP-cím tartalmazza az Azure által igényelt címtartományt. Módosítsa az IP-címet a fenntartott tartomány elkerüléséhez. | [IP-címek](../../virtual-network/public-ip-addresses.md) |
 | PrivateIPAddressNotInSubnet | A megadott IP-cím az alhálózat tartományán kívül esik. Módosítsa az IP-címet az alhálózati tartományba eső értékre. | [IP-címek](../../virtual-network/public-ip-addresses.md) |
-| PropertyChangeNotAllowed | Egyes tulajdonságok nem módosíthatók központilag telepített erőforrásokon. Egy erőforrás frissítésekor korlátozza az engedélyezett tulajdonságok módosításait. | [Erőforrás frissítése](/azure/architecture/building-blocks/extending-templates/update-resource) |
+| PropertyChangeNotAllowed | Egyes tulajdonságok nem módosíthatók központilag telepített erőforrásokon. Egy erőforrás frissítésekor korlátozza az engedélyezett tulajdonságok módosításait. | [Erőforrás frissítése](/azure/architecture/guide/azure-resource-manager/advanced-templates/update-resource) |
 | RequestDisallowedByPolicy | Az előfizetés tartalmaz egy erőforrás-szabályzatot, amely megakadályozza az üzembe helyezés során végrehajtani kívánt műveleteket. Keresse meg a műveletet blokkoló házirendet. Ha lehetséges, módosítsa az üzemelő példányt, hogy megfeleljen a szabályzat korlátainak. | [Szabályzatok feloldása](error-policy-requestdisallowedbypolicy.md) |
 | ReservedResourceName | Adja meg a fenntartott nevet nem tartalmazó erőforrás nevét. | [Fenntartott erőforrások nevei](error-reserved-resource-name.md) |
 | ResourceGroupBeingDeleted | Várjon, amíg a törlés befejeződik. | |
@@ -247,7 +247,7 @@ Bizonyos esetekben a sablon egy részének teszteléséhez a legegyszerűbb mód
 
 Vagy tegyük fel, hogy olyan központi telepítési hibákat észlel, amelyeket úgy gondol, hogy a nem megfelelően beállított függőségekhez kapcsolódik. A sablon teszteléséhez bontsa ki az egyszerűsített sablonokat. Először hozzon létre egy sablont, amely csak egyetlen erőforrást telepít (például egy SQL Server). Ha biztos benne, hogy megfelelően definiálta az erőforrást, adjon hozzá egy erőforrást, amely attól függ (például egy SQL Database). Ha a két erőforrás megfelelően van definiálva, vegyen fel más függő erőforrásokat (például naplózási házirendeket). Az egyes tesztelési környezetek között törölje az erőforráscsoportot, hogy ellenőrizze a függőségek megfelelő tesztelését.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A hibaelhárítással kapcsolatos oktatóanyagért lásd [: oktatóanyag: Resource Manager-sablonok központi telepítésének hibaelhárítása](template-tutorial-troubleshoot.md)
 * További információ a naplózási műveletekről: [műveletek naplózása a Resource Managerrel](../management/view-activity-logs.md).

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8166a77b4e3090619aa4c7fdc3fe4d94af6cddc
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: b83d798d00df674fd4b0502a24681c07875bc3b0
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196367"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98694325"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiválja a Azure Active Directory újdonságait?
 
@@ -1166,7 +1166,7 @@ Ha többet szeretne megtudni arról, hogyan javíthatja a szervezetét a felhasz
  
 Január 2020-én ezeket a 33 új alkalmazásokat az alkalmazás-katalógushoz való összevonási támogatással bővítettük: 
 
-[Josa](../saas-apps/josa-tutorial.md), [gyors Edge Cloud](../saas-apps/fastly-edge-cloud-tutorial.md), [Terraform Enterprise](../saas-apps/terraform-enterprise-tutorial.md), [Spintr SSO](../saas-apps/spintr-sso-tutorial.md), [Abibot Netlogistik](https://azuremarketplace.microsoft.com/marketplace/apps/aad.abibotnetlogistik), [SkyKick](https://login.skykick.com/login?state=g6Fo2SBTd3M5Q0xBT0JMd3luS2JUTGlYN3pYTE1remJQZnR1c6N0aWTZIDhCSkwzYVQxX2ZMZjNUaWxNUHhCSXg2OHJzbllTcmYto2NpZNkgM0h6czk3ZlF6aFNJV1VNVWQzMmpHeFFDbDRIMkx5VEc&client=3Hzs97fQzhSIWUMUd32jGxQCl4H2LyTG&protocol=oauth2&audience=https://papi.skykick.com&response_type=code&redirect_uri=https://portal.skykick.com/callback&scope=openid%20profile%20offline_access), [,](../saas-apps/upshotly-tutorial.md) [LEAVEBOT](https://appsource.microsoft.com/en-us/product/office/WA200001175), [DataCamp](../saas-apps/datacamp-tutorial.md) [, TripActions,](../saas-apps/tripactions-tutorial.md) [SmartWork,](https://www.intumit.com/teams-smartwork/) [dotcom-monitor](../saas-apps/dotcom-monitor-tutorial.md), [SSOGEN-Azure ad SSO Gateway for Oracle E-Business Suite-EBS, PeopleSoft és JDE](../saas-apps/ssogen-tutorial.md), [üzemeltetett MyCirqa SSO](../saas-apps/hosted-mycirqa-sso-tutorial.md), [Yuhu Property Management platform](../saas-apps/yuhu-property-management-platform-tutorial.md), [LumApps](https://sites.lumapps.com/login), munkavégző [vállalat](../saas-apps/upwork-enterprise-tutorial.md), [Talentsoft](../saas-apps/talentsoft-tutorial.md), [SmartDB a Microsoft Teams](http://teams.smartdb.jp/login/), [PressPage](../saas-apps/presspage-tutorial.md), [ContractSafe egy saml2 SSO](../saas-apps/contractsafe-saml2-sso-tutorial.md), Maxient- [kezelő szoftver](../saas-apps/maxient-conduct-manager-software-tutorial.md), [Helpshift](../saas-apps/helpshift-tutorial.md), [PortalTalk 365](https://www.portaltalk.com/), [Áttekintés](https://portal.coreview.com/), [leverni Cloud Office 365 Connector](https://laxmi.squelch.io/login), [PingFlow hitelesítés](https://app-staging.pingview.io/), PrinterLogic [SaaS](../saas-apps/printerlogic-saas-tutorial.md), Taskize [Csatlakozás](../saas-apps/taskize-connect-tutorial.md), Sandwai, EZRentOut [, AssetSonar](https://app.sandwai.com/) [,](../saas-apps/assetsonar-tutorial.md) [akari virtuális asszisztens](https://akari.io/akari-virtual-assistant/) [](../saas-apps/ezrentout-tutorial.md)
+[Josa](../saas-apps/josa-tutorial.md), [gyors Edge Cloud](../saas-apps/fastly-edge-cloud-tutorial.md), [Terraform Enterprise](../saas-apps/terraform-enterprise-tutorial.md), [Spintr SSO](../saas-apps/spintr-sso-tutorial.md), [Abibot Netlogistik](https://azuremarketplace.microsoft.com/marketplace/apps/aad.abibotnetlogistik), [SkyKick](https://login.skykick.com/login?state=g6Fo2SBTd3M5Q0xBT0JMd3luS2JUTGlYN3pYTE1remJQZnR1c6N0aWTZIDhCSkwzYVQxX2ZMZjNUaWxNUHhCSXg2OHJzbllTcmYto2NpZNkgM0h6czk3ZlF6aFNJV1VNVWQzMmpHeFFDbDRIMkx5VEc&client=3Hzs97fQzhSIWUMUd32jGxQCl4H2LyTG&protocol=oauth2&audience=https://papi.skykick.com&response_type=code&redirect_uri=https://portal.skykick.com/callback&scope=openid%20profile%20offline_access), [,](../saas-apps/upshotly-tutorial.md) [LEAVEBOT](https://appsource.microsoft.com/en-us/product/office/WA200001175), [DataCamp](../saas-apps/datacamp-tutorial.md) [, TripActions,](../saas-apps/tripactions-tutorial.md) [SmartWork,](https://www.intumit.com/teams-smartwork/) [dotcom-monitor](../saas-apps/dotcom-monitor-tutorial.md), [SSOGEN-Azure ad SSO Gateway for Oracle E-Business Suite-EBS, PeopleSoft és JDE](../saas-apps/ssogen-tutorial.md), [üzemeltetett MyCirqa SSO](../saas-apps/hosted-mycirqa-sso-tutorial.md), [Yuhu Property Management platform](../saas-apps/yuhu-property-management-platform-tutorial.md), [LumApps](https://sites.lumapps.com/login), munkavégző [vállalat](../saas-apps/upwork-enterprise-tutorial.md), [Talentsoft](../saas-apps/talentsoft-tutorial.md), [SmartDB a Microsoft Teams](http://teams.smartdb.jp/login/), [PressPage](../saas-apps/presspage-tutorial.md), [ContractSafe egy saml2 SSO](../saas-apps/contractsafe-saml2-sso-tutorial.md), Maxient- [kezelő szoftver](../saas-apps/maxient-conduct-manager-software-tutorial.md), [Helpshift](../saas-apps/helpshift-tutorial.md), [PortalTalk 365](https://www.portaltalk.com/), [Áttekintés](https://portal.coreview.com/), leverni Cloud Office 365 Connector, [PingFlow hitelesítés](https://app-staging.pingview.io/), PrinterLogic [SaaS](../saas-apps/printerlogic-saas-tutorial.md), Taskize [Csatlakozás](../saas-apps/taskize-connect-tutorial.md), Sandwai, EZRentOut [, AssetSonar](https://app.sandwai.com/) [,](../saas-apps/assetsonar-tutorial.md) [akari virtuális asszisztens](https://akari.io/akari-virtual-assistant/) [](../saas-apps/ezrentout-tutorial.md)
 
 Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../develop/v2-howto-app-gallery-listing.md)című témakört.
 
@@ -2821,7 +2821,7 @@ További információ: a [PIM-beli Azure-erőforrás szerepköreinek tevékenys�
 >[!Important]
 >A javítás miatt meghallottuk és megértettük a frusztrációt. Ezért ezt a módosítást csak addig a lépésig adtuk vissza, amíg a javítás könnyebben megvalósítható a szervezetében.
 
-Kijavítottunk egy hibát, amelyben a felhasználó DirSyncEnabled jelölője helytelenül lett **hamis** értékre állítva, ha a Active Directory tartományi szolgáltatások (AD DS) objektumot kizárták a szinkronizációs hatókörből, majd az Azure ad-ben a következő szinkronizálási ciklusban helyezték át a Lomtárba. A javítás eredményeképpen, ha a felhasználó ki van zárva a szinkronizálási hatókörből, és ezt követően az Azure AD Lomtárból lett visszaállítva, a felhasználói fiók a várt módon szinkronizálva marad a helyszíni AD-ből, és nem kezelhető a felhőben, mivel a forrás-és a SoA-kiszolgáló a helyszíni AD-ként marad.
+Kijavítottunk egy hibát, amelyben a felhasználó DirSyncEnabled jelölője helytelenül lett **hamis** értékre állítva, ha a Active Directory Domain Services (AD DS) objektumot kizárták a szinkronizációs hatókörből, majd az Azure ad-ben a következő szinkronizálási ciklusban helyezték át a Lomtárba. A javítás eredményeképpen, ha a felhasználó ki van zárva a szinkronizálási hatókörből, és ezt követően az Azure AD Lomtárból lett visszaállítva, a felhasználói fiók a várt módon szinkronizálva marad a helyszíni AD-ből, és nem kezelhető a felhőben, mivel a forrás-és a SoA-kiszolgáló a helyszíni AD-ként marad.
 
 A javítás előtt probléma merült fel, ha a DirSyncEnabled jelzőt hamis értékre váltották. Helytelen benyomást tett, hogy ezeket a fiókokat csak felhőalapú objektumokra konvertálták, és a fiókokat a felhőben lehet felügyelni. Azonban a fiókok továbbra is megtartották a SoA-t a helyszínen, és minden szinkronizált tulajdonságot (Shadow Attribute) a helyszíni AD-ből. Ez az állapot több problémát okozott az Azure AD-ben és más Felhőbeli számítási feladatokban (például az Exchange Online-ban), amely a fiókokat az Active Directory-ból szinkronizálva várta, de mostantól csak a csak felhőalapú fiókokkal működött.
 
@@ -2854,7 +2854,7 @@ A következő mezők változnak a naplózási sémában:
 |Mező neve|Mi változott|Régi értékek|Új értékek|
 |----------|------------|----------|----------|
 |Kategória|Ez volt a **szolgáltatás neve** mező. Most már a **naplózási kategóriák** mező. A **szolgáltatás neve** átnevezve lett a **loggedByService** mezőre.|<ul><li>Fiók kiépítése</li><li>Alapvető könyvtár</li><li>Önkiszolgáló jelszó-visszaállítás</li></ul>|<ul><li>Felhasználókezelés</li><li>Csoportkezelés</li><li>Alkalmazások kezelése</li></ul>|
-|targetResources|A legfelső szinten tartalmazza a **TargetResourceType** .|&nbsp;|<ul><li>Szabályzat</li><li>Alkalmazás</li><li>User</li><li>Csoport</li></ul>|
+|targetResources|A legfelső szinten tartalmazza a **TargetResourceType** .|&nbsp;|<ul><li>Szabályzat</li><li>Alkalmazás</li><li>User</li><li>Group</li></ul>|
 |loggedByService|Annak a szolgáltatásnak a nevét adja meg, amely a naplót generálta.|Null|<ul><li>Fiók kiépítése</li><li>Alapvető könyvtár</li><li>Új jelszó önkiszolgáló kérése</li></ul>|
 |Eredmény|A naplók eredményét adja meg. Korábban ez a számbavétel megtörtént, de most már megmutatjuk a tényleges értéket.|<ul><li>0</li><li>1</li></ul>|<ul><li>Siker</li><li>Hiba</li></ul>|
 
@@ -3127,7 +3127,7 @@ A következő alkalmazások szerepelnek a [jóváhagyott ügyfélalkalmazások](
 
 - Microsoft Stream
 
-További információ:
+További információkért lásd:
 
 - [Azure AD-alkalmazás-alapú feltételes hozzáférés](../conditional-access/app-based-conditional-access.md)
 
@@ -3791,7 +3791,7 @@ További információt a [Azure ad B2C: hozzáférési tokenek igénylése](../.
 
 Az SAML-alapú SSO-alkalmazások konfigurálásakor tesztelheti az integrációt a konfiguráció lapon. Ha a bejelentkezés során hibát észlel, megadhatja a hibát a tesztelési élményben, és az Azure AD megoldást nyújt az adott probléma megoldásához szükséges megoldási lépések elvégzésére.
 
-További információ:
+További információkért lásd:
 
 - [Egyszeri bejelentkezés konfigurálása az Azure Active Directory alkalmazáskatalógusában nem szereplő alkalmazásokhoz](../manage-apps/view-applications-portal.md)
 - [Az SAML-alapú egyszeri bejelentkezések hibakeresése Azure Active Directory-alkalmazásokban](../manage-apps/debug-saml-sso-issues.md)
@@ -3926,7 +3926,7 @@ Az Azure AD értesítést küld, ha egy katalógus vagy nem katalógusbeli alkal
 
 Néhány felhasználó nem kapott értesítéseket az SAML-alapú egyszeri bejelentkezéshez konfigurált nagyvállalati alkalmazásokhoz. A probléma megoldódott. Az Azure AD értesítést küld a 7, 30 és 60 nap alatt lejáró tanúsítványokról. Ezt az eseményt a naplókban láthatja.
 
-További információ:
+További információkért lásd:
 
 - [Az összevont egyszeri bejelentkezés tanúsítványainak kezelése Azure Active Directory](../manage-apps/manage-certificates-for-federated-single-sign-on.md)
 - [Naplózott tevékenységekre vonatkozó jelentések az Azure Active Directory portálon](../reports-monitoring/concept-audit-logs.md)
@@ -3955,7 +3955,7 @@ További információ: [Mi az az Azure ad B2B Collaboration?](../external-identi
 
 Erről a [blogbejegyzésben](https://cloudblogs.microsoft.com/enterprisemobility/2018/03/15/the-intune-managed-browser-now-supports-azure-ad-sso-and-conditional-access/)olvashat bővebben.
 
-További információ:
+További információkért lásd:
 
 - [Alkalmazás-alapú feltételes hozzáférés beállítása](../conditional-access/app-based-conditional-access.md)
 
@@ -4272,7 +4272,7 @@ Február végére a következő alkalmazások lesznek hozzáadva:
 
 - Microsoft-számlázás
 
-További információ:
+További információkért lásd:
 
 - [Jóváhagyott ügyfélalkalmazás-követelmény](../conditional-access/concept-conditional-access-conditions.md#client-apps)
 - [Azure AD-alkalmazás-alapú feltételes hozzáférés](../conditional-access/app-based-conditional-access.md)
@@ -4369,7 +4369,7 @@ Az új Azure Active Directory felügyeleti konzol és az új API-k általánosan
 
 Az új felügyeleti konzolra való áttérés részeként 2 új API-t tettünk elérhetővé az Azure AD-tevékenységek naplófájljainak beolvasásához. Az új API-k szélesebb körű szűrési és rendezési funkciókat biztosítanak, továbbá gazdagabb naplózási és bejelentkezési tevékenységeket is biztosítanak. A biztonsági jelentésekben korábban elérhető adatok mostantól az Identity Protection kockázati észlelések API-n keresztül érhetők el Microsoft Graphban.
 
-További információ:
+További információkért lásd:
 
 - [Ismerkedés a Azure Active Directory Reporting API-val](../reports-monitoring/concept-reporting-api.md)
 
@@ -4530,7 +4530,7 @@ A következő alkalmazások szerepelnek a [jóváhagyott ügyfélalkalmazások](
 - [Microsoft Kaizala](https://www.microsoft.com/garage/profiles/kaizala/)
 - Microsoft StaffHub
 
-További információ:
+További információkért lásd:
 
 - [Jóváhagyott ügyfélalkalmazás-követelmény](../conditional-access/concept-conditional-access-conditions.md#client-apps)
 - [Azure AD-alkalmazás-alapú feltételes hozzáférés](../conditional-access/app-based-conditional-access.md)
@@ -4612,7 +4612,7 @@ Mostantól belefoglalhatja (vagy kizárhatja) a macOS-t az Azure AD feltételes 
 - **Győződjön meg arról, hogy a macOS-eszközök megfelelnek a szervezetnek az Intune-ban definiált megfelelőségi szabályzatoknak.** A Azure Portal Intune-ban mostantól beállíthatja a macOS-eszközökre vonatkozó megfelelőségi szabályzatokat.
 - **Az Azure AD-alkalmazásokhoz való hozzáférés korlátozása csak a megfelelő macOS-eszközökre.** A feltételes hozzáférési szabályzat létrehozásához a macOS-t külön eszköz platformként kell megválasztani. Most már készíthet macOS-specifikus feltételes hozzáférési szabályzatokat az Azure-beli megcélzott alkalmazás számára.
 
-További információ:
+További információkért lásd:
 
 - [Megfelelőségi szabályzat létrehozása MacOS-eszközökhöz az Intune-nal](/mem/intune/protect/compliance-policy-create-mac-os)
 - [Feltételes hozzáférés az Azure AD-ben](../conditional-access/overview.md)
@@ -4659,7 +4659,7 @@ A következő alkalmazások lettek hozzáadva a [jóváhagyott ügyfélalkalmaz�
 - Microsoft Planner
 - Azure Information Protection
 
-További információ:
+További információkért lásd:
 
 - [Jóváhagyott ügyfélalkalmazás-követelmény](../conditional-access/concept-conditional-access-conditions.md#client-apps)
 - [Azure AD-alkalmazás-alapú feltételes hozzáférés](../conditional-access/app-based-conditional-access.md)

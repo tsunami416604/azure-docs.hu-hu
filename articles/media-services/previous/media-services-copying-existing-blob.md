@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4ac981fb3aa17cbc242b5cc51cd579f926bad034
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8eee17e5ed819365f30cf1b1e0eb2e9ab1557e9d
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89257976"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695907"
 ---
 # <a name="copying-existing-blobs-into-a-media-services-asset"></a>Meglévő Blobok másolása Media Services eszközre
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 Ez a cikk bemutatja, hogyan másolhat blobokat egy Storage-fiókból egy új Azure Media Services (AMS) eszközre [Azure Media Services .net SDK-bővítmények](https://github.com/Azure/azure-sdk-for-media-services-extensions/)használatával.
 
@@ -378,7 +378,7 @@ namespace CopyExistingBlobsIntoAsset
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most már kódolhatja a feltöltött adategységeket. További információ: [Encode Assets](media-services-portal-encode.md) (Adategységek kódolása).
 

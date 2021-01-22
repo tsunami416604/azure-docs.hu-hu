@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 9578793c88c069b885f03dd682c47ae9f1f1b0a1
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: bc2f802a902212633fdbc081d33a51407d374e36
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802626"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696363"
 ---
 # <a name="install-software-and-set-up-resources-for-the-tutorial"></a>Szoftver telepítése és erőforrások beállítása az oktatóanyaghoz
 
@@ -32,7 +32,6 @@ Ebben a háromrészes oktatóanyagban egy gépi tanulási modellt hoz létre, am
 5. Telepítse az [Azure CLI](https://github.com/Azure/azure-powershell/releases/tag/v3.5.0-February2020)legújabb verzióját. A következő szkriptek megkövetelik, hogy az AZ PowerShell legyen a legújabb verzió (3.5.0, Feb 2020).
 6. Állítsa be a környezetet az IoT Edge megoldás hibakereséséhez, futtatásához és teszteléséhez az [Azure IoT EdgeHub dev Tool](https://pypi.org/project/iotedgehubdev/)telepítésével.
 7. A Docker telepítése.
-8. Töltse le az oktatóanyagban használni kívánt DACPAC-fájlt. 
 
 ## <a name="deploy-azure-resources-using-powershell-script"></a>Azure-erőforrások üzembe helyezése PowerShell-parancsfájl használatával
 
@@ -262,6 +261,6 @@ Az Azure SQL Edge-oktatóanyaghoz szükséges Azure-erőforrások üzembe helyez
     ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [IoT Edge modulok és kapcsolatok beállítása](tutorial-set-up-iot-edge-modules.md)

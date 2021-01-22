@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 0701e9c6428283d45cf4b4a2e24c8de99d9a286b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bf9a96d7ffc3b939abe8cfb889c5bd49fee09cc
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89265898"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98694605"
 ---
 # <a name="azure-media-services-telemetry"></a>Azure Media Services telemetria  
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-v-2-v-3-migration-introduction.md)
 
-A Azure Media Services (AMS) lehetővé teszi a szolgáltatásaihoz tartozó telemetria/metrikai adatok elérését. Az AMS aktuális verziója lehetővé teszi az élő **csatorna**, a **streamvégpontok**és az élő **archív** entitások telemetria-adatainak gyűjtését. 
+A Azure Media Services (AMS) lehetővé teszi a szolgáltatásaihoz tartozó telemetria/metrikai adatok elérését. Az AMS aktuális verziója lehetővé teszi az élő **csatorna**, a **streamvégpontok** és az élő **archív** entitások telemetria-adatainak gyűjtését. 
 
 A telemetria egy Ön által megadott Azure Storage-fiókban lévő Storage-táblába íródik (általában az AMS-fiókhoz társított Storage-fiókot kell használnia). 
 
@@ -79,9 +79,9 @@ Tulajdonság|Érték|Példák/megjegyzések
 ---|---|---
 PartitionKey|{Account ID} _ {entitás azonosítója}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66<br/<br/>A fiók AZONOSÍTÓját a partíciós kulcs tartalmazza, hogy leegyszerűsítse azokat a munkafolyamatokat, amelyekben több Media Services fiók is ugyanarra a Storage-fiókra ír.
 RowKey|{másodperc – éjfél} _ {véletlenszerű érték}|01688_00199<br/><br/>A sor kulcsa másodperc és éjfél közötti időt vesz igénybe, hogy az első n stílusú lekérdezéseket engedélyezzen a partíción belül. További információkért tekintse meg [ezt](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern) a cikket. 
-Timestamp|Dátum/idő|Automatikus időbélyeg az Azure-táblázat 2016-09-09T22:43:42.241 Z
+Időbélyeg|Dátum/idő|Automatikus időbélyeg az Azure-táblázat 2016-09-09T22:43:42.241 Z
 Típus|A telemetria-adatmennyiséget biztosító entitás típusa|Channel/Streamvégpontok/Archive<br/><br/>Az esemény típusa csak egy karakterlánc-érték.
-Name (Név)|A telemetria esemény neve|ChannelHeartbeat/StreamingEndpointRequestLog
+Name|A telemetria esemény neve|ChannelHeartbeat/StreamingEndpointRequestLog
 ObservedTime|A telemetria esemény bekövetkezett időpontja (UTC)|2016-09-09T22:42:36.924 Z<br/><br/>A megfigyelt időt a telemetria küldő entitás (például egy csatorna) kapja meg. Az összetevők között időszinkronizálási problémák merülhetnek fel, így ez az érték körülbelül
 ServiceID|{szolgáltatás azonosítója}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 Entitás-specifikus tulajdonságok|Az esemény által meghatározottak szerint|StreamName: STREAM1, bitráta 10123,...<br/><br/>A hátralévő tulajdonságok az adott eseménytípus esetében vannak meghatározva. Az Azure Table tartalom kulcs érték párok.  (vagyis a tábla különböző sorai eltérő tulajdonságokkal rendelkeznek).
@@ -100,9 +100,9 @@ Tulajdonság|Érték|Példák
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
-Timestamp|Timestamp|Automatikus időbélyeg az Azure Table 2016-09-09T22:43:42.241 Z
+Időbélyeg|Időbélyeg|Automatikus időbélyeg az Azure Table 2016-09-09T22:43:42.241 Z
 Típus|Típus|Streamvégpontok
-Name (Név)|Name (Név)|StreamingEndpointRequestLog
+Név|Név|StreamingEndpointRequestLog
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z
 ServiceID|Szolgáltatás azonosítója|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 HostName|A végpont állomásneve|builddemoserver.origin.mediaservices.windows.net
@@ -119,9 +119,9 @@ Tulajdonság|Érték|Példák/megjegyzések
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
-Timestamp|Timestamp|Automatikus időbélyeg az Azure-táblázat 2016-09-09T22:43:42.241 Z
+Időbélyeg|Időbélyeg|Automatikus időbélyeg az Azure-táblázat 2016-09-09T22:43:42.241 Z
 Típus|Típus|Csatorna
-Name (Név)|Name (Név)|ChannelHeartbeat
+Név|Név|ChannelHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z
 ServiceID|Szolgáltatás azonosítója|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 TrackType|Videó/hang/szöveg követésének típusa|videó/hang
@@ -144,9 +144,9 @@ Tulajdonság|Érték|Példák/megjegyzések
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
-Timestamp|Timestamp|Automatikus időbélyeg az Azure-táblázat 2016-09-09T22:43:42.241 Z
+Időbélyeg|Időbélyeg|Automatikus időbélyeg az Azure-táblázat 2016-09-09T22:43:42.241 Z
 Típus|Típus|Archívum
-Name (Név)|Name (Név)|ArchiveHeartbeat
+Név|Név|ArchiveHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z
 ServiceID|Szolgáltatás azonosítója|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 ManifestName|Program URL-címe|Asset-eb149703-ed0a-483c-91c4-e4066e72cce3/a0a5cfbf-71ec-4BD2-8c01-a92a2b38c9ba. ISM
@@ -217,7 +217,7 @@ A metrikai adatok feldolgozhatók és megjeleníthetők a következő eszközök
 
 A telemetria rendszere nem biztosítja az adatmegőrzési felügyeletet, vagy a régi rekordok automatikus törlését. Így a régi rekordokat manuálisan kell kezelni és törölni a Storage-táblából. A Storage SDK-val megtekintheti a módját.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

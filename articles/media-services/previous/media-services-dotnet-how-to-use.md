@@ -15,23 +15,23 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8eb45397b1941b9a6955066c22d6d9d00eeef4c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dda7849b6a5e22eea4891eacb2678b4c500dc1e1
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89262090"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693663"
 ---
 # <a name="media-services-development-with-net"></a>Media Services fejlesztés .NET-tel
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 Ez a cikk azt ismerteti, hogyan kezdheti el Media Services alkalmazások fejlesztését a .NET használatával.
 
-A **Azure Media Services .net SDK** -kódtár lehetővé teszi a Media Services a .NET használatával való program használatát. Ahhoz, hogy még egyszerűbb legyen a .NET-fejlesztés, a **Azure Media Services .net SDK-bővítmények** könyvtára is elérhető. Ez a könyvtár a .NET-kód egyszerűsítését szolgáló kiterjesztési módszerek és segítő függvények készletét tartalmazza. Mindkét könyvtár elérhető a **NuGet** és a **githubon**keresztül.
+A **Azure Media Services .net SDK** -kódtár lehetővé teszi a Media Services a .NET használatával való program használatát. Ahhoz, hogy még egyszerűbb legyen a .NET-fejlesztés, a **Azure Media Services .net SDK-bővítmények** könyvtára is elérhető. Ez a könyvtár a .NET-kód egyszerűsítését szolgáló kiterjesztési módszerek és segítő függvények készletét tartalmazza. Mindkét könyvtár elérhető a **NuGet** és a **githubon** keresztül.
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Egy Media Services-fiók egy új vagy meglévő Azure-előfizetésben. Tekintse [meg a Media Services-fiók létrehozását](media-services-portal-create-account.md)ismertető cikket.
@@ -46,13 +46,13 @@ Ez a szakasz bemutatja, hogyan adhat hozzá Media Services .NET SDK-bővítmény
 
 Azt is megteheti, hogy letölti a legújabb Media Services .NET SDK-biteket a GitHubról ([GitHub.com/Azure/Azure-SDK-for-Media-Services](https://github.com/Azure/azure-sdk-for-media-services) vagy [GitHub.com/Azure/Azure-SDK-for-Media-Services-Extensions](https://github.com/Azure/azure-sdk-for-media-services-extensions)), felépíti a megoldást, és hozzáadja a hivatkozásokat az ügyfél-projekthez. Az összes szükséges függőség letöltése és kinyerése automatikusan megtörténik.
 
-1. A Visual Studióban hozzon létre egy új Visual C#-konzolalkalmazást. Adja meg a **nevet**, a **helyet**és a **megoldás nevét**, majd kattintson az OK gombra.
+1. A Visual Studióban hozzon létre egy új Visual C#-konzolalkalmazást. Adja meg a **nevet**, a **helyet** és a **megoldás nevét**, majd kattintson az OK gombra.
 2. Hozza létre a megoldást.
-3. A **NuGet** használatával telepítse és vegye fel **Azure Media Services .net SDK-bővítményeket** (**windowsazure. Mediaservices. Extensions**). Ennek a csomagnak a telepítése a **Media Services .NET SDK**csomagot és az összes további szükséges függőséget is feltelepíti
+3. A **NuGet** használatával telepítse és vegye fel **Azure Media Services .net SDK-bővítményeket** (**windowsazure. Mediaservices. Extensions**). Ennek a csomagnak a telepítése a **Media Services .NET SDK** csomagot és az összes további szükséges függőséget is feltelepíti
    
     Győződjön meg arról, hogy a NuGet legújabb verziója van telepítve. További információt és telepítési útmutatót a következő témakörben talál: [NuGet](https://nuget.codeplex.com/).
 
-    1. A Megoldáskezelőban kattintson a jobb gombbal a projekt nevére, és válassza a **NuGet-csomagok kezelése**lehetőséget.
+    1. A Megoldáskezelőban kattintson a jobb gombbal a projekt nevére, és válassza a **NuGet-csomagok kezelése** lehetőséget.
 
     2. Megjelenik a Manage NuGet Packages (NuGet-csomagok kezelése) párbeszédpanel.
 
@@ -136,7 +136,7 @@ class Program
     }
  ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most már [csatlakozhat az AMS API-hoz](media-services-use-aad-auth-to-access-ams-api.md) , és megkezdheti a [fejlesztést](media-services-dotnet-get-started.md).
 

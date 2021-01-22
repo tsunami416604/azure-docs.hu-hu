@@ -11,16 +11,16 @@ author: justinha
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43573b54be6884e01121e404370d2e1d85a3c4e8
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: d9430066ad92b4d0b69bd07c763e3f7b5d6e889a
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660881"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693536"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory"></a>Felhasználók konfigurálása és engedélyezése SMS-alapú hitelesítéshez Azure Active Directory használatával 
 
-Az alkalmazásokhoz és szolgáltatásokhoz való bejelentkezés egyszerűsítése és biztonságossá tétele érdekében Azure Active Directory (Azure AD) több hitelesítési lehetőséget is biztosít. Az SMS-alapú hitelesítés lehetővé teszi, hogy a felhasználók a Felhasználónév és a jelszó megadása nélkül jelentkezzenek be. Miután a fiókját egy identitás-rendszergazda létrehozta, megadhatják a telefonszámot a bejelentkezési kérésben. A bejelentkezés elvégzéséhez szöveges üzeneten keresztül kapják meg a hitelesítési kódot. Ez a hitelesítési módszer leegyszerűsíti az alkalmazásokhoz és szolgáltatásokhoz való hozzáférést, különösen az első sorban dolgozóknak.
+Az alkalmazásokhoz és szolgáltatásokhoz való bejelentkezés egyszerűsítése és biztonságossá tétele érdekében Azure Active Directory (Azure AD) több hitelesítési lehetőséget is biztosít. Az SMS-alapú hitelesítés lehetővé teszi, hogy a felhasználók a Felhasználónév és a jelszó megadása nélkül jelentkezzenek be. Miután a fiókját egy identitás-rendszergazda létrehozta, megadhatják a telefonszámot a bejelentkezési kérésben. A bejelentkezés elvégzéséhez szöveges üzeneten keresztül kapják meg a hitelesítési kódot. Ez a hitelesítési módszer leegyszerűsíti az alkalmazásokhoz és szolgáltatásokhoz való hozzáférést, különösen az élvonalbeli feldolgozók számára.
 
 Ez a cikk bemutatja, hogyan engedélyezhető az SMS-alapú hitelesítés az Azure AD-beli felhasználók vagy csoportok kiválasztásához.
 
@@ -145,7 +145,7 @@ Ha hibaüzenet jelenik meg, amikor a Azure Portal egy felhasználói fiókhoz pr
 1. Győződjön meg arról, hogy a telefonszám nem használatos a bérlő más részén.
 1. Győződjön meg arról, hogy a fiókhoz nincs beállítva hangszám. Ha a hangszám be van állítva, törölje a telefonszámot, és próbálkozzon újra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure AD-ba való bejelentkezés további módjai jelszó nélkül, például a Microsoft Authenticator alkalmazás-vagy FIDO2 biztonsági kulcsainak használata: az [Azure ad-hez készült jelszó nélküli hitelesítési beállítások][concepts-passwordless].
 

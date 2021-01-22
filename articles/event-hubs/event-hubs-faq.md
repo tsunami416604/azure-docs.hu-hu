@@ -2,17 +2,17 @@
 title: Gyakori kérdések – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk a gyakori kérdések (GYIK) listáját tartalmazza az Azure Event Hubs és azok válaszait illetően.
 ms.topic: article
-ms.date: 10/27/2020
-ms.openlocfilehash: e7a34fe0f2ef04fffeeddc5615d3ac1749467902
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.date: 01/20/2021
+ms.openlocfilehash: e6fd4814e771d03827e51f1cd5ee182c9e432cc5
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955416"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696108"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs gyakori kérdések
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ### <a name="what-is-an-event-hubs-namespace"></a>Mi az Event Hubs névtér?
 A névtér az Event hub/Kafka témakörök hatóköri tárolója. Egyedi [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)-t biztosít. A névtér olyan alkalmazás-tárolóként szolgál, amely több Event hub-vagy Kafka-témakört is képes elhelyezni. 
@@ -55,8 +55,8 @@ A rögzített adatok megőrzési időtartamát beállíthatja a Storage-fiókban
 ### <a name="how-do-i-monitor-my-event-hubs"></a>Hogyan figyeli a Event Hubs?
 Event Hubs teljes mérőszámokat bocsát ki, amelyek a [Azure monitor](../azure-monitor/overview.md)erőforrásainak állapotát biztosítják. Emellett lehetővé teszik a Event Hubs szolgáltatás általános állapotának felmérését, nem csak a névtér szintjén, hanem az entitás szintjén is. Ismerje meg, hogy az [Azure Event Hubs](event-hubs-metrics-azure-monitor.md)milyen monitorozási lehetőségeket kínál.
 
-### <a name="where-does-azure-event-hubs-store-customer-data"></a><a name="in-region-data-residency"></a>Hol tárolja az Azure Event Hubs az ügyféladatokat?
-Az Azure Event Hubs az ügyféladatokat tárolja. Ezeket az adategységeket a Event Hubs egyetlen régióban tárolja automatikusan, így ez a szolgáltatás automatikusan megfelel a régió adattárolási követelményeinek, beleértve a [megbízhatósági központban](https://azuredatacentermap.azurewebsites.net/)megadott követelményeket is.
+### <a name="where-does-azure-event-hubs-store-data"></a><a name="in-region-data-residency"></a>Hol tárolja az Azure Event Hubs az adattárolást?
+Az Azure Event Hubs standard és dedikált szintjei a kiválasztott régiókban tárolják a metaadatokat és az adatokat. Ha a Geo-vész-helyreállítás egy Azure Event Hubs-névtérre van beállítva, a metaadatokat a rendszer átmásolja a kiválasztott másodlagos régióba. Ezért ez a szolgáltatás automatikusan megfelel a régió adattárolási követelményeinek, beleértve a [megbízhatósági központban](https://azuredatacentermap.azurewebsites.net/)megadott követelményeket is.
 
 [!INCLUDE [event-hubs-connectivity](../../includes/event-hubs-connectivity.md)]
 

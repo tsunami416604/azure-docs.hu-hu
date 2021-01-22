@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: 50d1222f5c33b327c92799ccf27ed0650ba0226c
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 8fd7c820a25f098799f1c2fa69ba700a334e932d
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560865"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98698045"
 ---
 <a name="HOLTop"></a>
 
@@ -58,6 +58,12 @@ Telepítse a `ms-rest-azure` és a `@azure/cognitiveservices-computervision` NPM
 npm install @azure/cognitiveservices-computervision
 ```
 
+Telepítse az aszinkron modult is:
+
+```console
+npm install async
+```
+
 Az alkalmazás `package.json` fájlja a függőségekkel lesz frissítve.
 
 Hozzon létre egy új fájlt, *index.js*, majd nyissa meg egy szövegszerkesztőben. Adja hozzá a következő importálási utasításokat.
@@ -72,7 +78,7 @@ Hozzon létre változókat az erőforrás Azure-végpontjának és-kulcsának l�
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_vars)]
 
 > [!IMPORTANT]
-> Nyissa meg az Azure Portalt. Ha az **Előfeltételek** szakaszban létrehozott [Terméknév] erőforrás sikeresen telepítve van, kattintson az **Ugrás erőforrásra** gombra a **következő lépések** alatt. A kulcsot és a végpontot az erőforrás- **kezelés** területen, az erőforrás **kulcs és végpont** lapján találja. 
+> Nyissa meg az Azure Portalt. Ha az **Előfeltételek** szakaszban létrehozott Computer Vision erőforrás sikeresen telepítve van, kattintson az **Ugrás erőforrásra** gombra a **következő lépések** alatt. A kulcsot és a végpontot az erőforrás- **kezelés** területen, az erőforrás **kulcs és végpont** lapján találja. 
 >
 > Ne felejtse el eltávolítani a kulcsot a kódból, ha elkészült, és soha ne tegye közzé nyilvánosan. Éles környezetben érdemes lehet biztonságos módszert használni a hitelesítő adatok tárolásához és eléréséhez. További információt a Cognitive Services [biztonsági](../../../cognitive-services-security.md) cikkben talál.
 

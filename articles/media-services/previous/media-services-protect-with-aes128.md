@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a0e2f785bb3c097b7d2918198457a3f7baf6a39c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 91ed9482903d66ffcf1283c4024f89fc461bab1b
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96023448"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695069"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Az AES-128 dinamikus titkosítás és a kulcskézbesítési szolgáltatás használata
 
@@ -33,7 +33,7 @@ ms.locfileid: "96023448"
 >  
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 A Media Services használatával HTTP Live Streaming (HLS) és az AES-vel titkosított Smooth Streaming titkosíthatja az 128 bites titkosítási kulcsok használatával. A Media Services a kulcsfontosságú kézbesítési szolgáltatást is biztosítja, amely titkosítási kulcsokat biztosít a hitelesítő felhasználók számára. Ha azt szeretné, hogy a Media Services titkosítson egy adategységet, rendeljen hozzá egy titkosítási kulcsot az objektumhoz, és konfigurálja a kulcs engedélyezési házirendjeit is. Ha egy lejátszó egy adatfolyamot kér, Media Services a megadott kulccsal használja fel a tartalom dinamikus titkosítását az AES-titkosítás használatával. A stream visszafejtéséhez a lejátszó lekéri a kulcsot a kulcstovábbító szolgáltatástól. Annak megállapításához, hogy a felhasználó jogosult-e a kulcs lekérésére, a szolgáltatás kiértékeli a kulcshoz megadott engedélyezési házirendeket.
 
@@ -254,7 +254,7 @@ A következő kód bemutatja, hogyan küldhet egy kérést a Media Services Key 
     <add key="Audience" value="urn:test"/>
     ```
 
-### <a name="example"></a><a id="example"></a>Példa
+### <a name="example"></a><a id="example"></a>Példa 
 
 Írja felül a Program.cs fájlban található kódot az itt látható kóddal.
  

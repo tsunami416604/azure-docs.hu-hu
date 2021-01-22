@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4288e2e955f8205f3b6551c83a5c883eecf02501
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9713a2ad10d1edc9a79d475ed58a99b3b24b6483
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021146"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696040"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>Speciális kódolás végrehajtása a MES-beállításkészletek testreszabásával
 
@@ -33,7 +33,7 @@ Ez a témakör bemutatja, hogyan szabhatja testre a Media Encoder Standard beál
 Ha XML-készletet használ, ügyeljen arra, hogy megőrizze az elemek sorrendjét, ahogy az alábbi XML-példákban is látható (például a KeyFrameInterval előtt kell megelőznie a SceneChangeDetection).
 
 > [!NOTE] 
-> A Media Encoder Standard Advanced Media Services v2 számos funkciója jelenleg nem érhető el a v3-as verzióban. További információ: [szolgáltatások hiányosságainak](../latest/media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis).
+> A Media Encoder Standard Advanced Media Services v2 számos funkciója jelenleg nem érhető el a v3-as verzióban. További információt [az áttelepítési útmutatóban](../latest/migrate-v-2-v-3-migration-introduction.md)talál.
 
 ## <a name="support-for-relative-sizes"></a>Relatív méretek támogatása
 

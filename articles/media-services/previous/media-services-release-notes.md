@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bd4f50365ced61e35ae6d10a9763a0f9815098d7
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: e1700489b4f3ee37d95b87b1bf026d47c9f1de4d
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014103"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98694884"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services kibocsátási megjegyzések
 
@@ -28,14 +28,14 @@ ms.locfileid: "92014103"
 Ezek a kibocsátási megjegyzések Azure Media Services a korábbi kiadásokból és ismert problémákról származó változásokat összegzik.
 
 > [!NOTE]
-> A Media Services v2 nem fog újabb funkciókkal bővülni. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog újabb funkciókkal bővülni. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 Szeretnénk hallani ügyfeleinktől, hogy az Ön által érintett problémák megoldására összpontosítsanak. Ha problémát szeretne bejelenteni vagy kérdéseket feltenni, küldjön egy bejegyzést a [Azure Media Services MSDN-fórumon]. 
 
 ## <a name="known-issues"></a><a name="issues"></a>Ismert problémák
 ### <a name="media-services-general-issues"></a><a name="general_issues"></a>Általános problémák Media Services
 
-| Probléma | Description |
+| Probléma | Leírás |
 | --- | --- |
 | A REST APIban több gyakori HTTP-fejléc sincs megadva. |Ha a REST API használatával fejleszt Media Services alkalmazásokat, úgy találja, hogy a HTTP-fejléc néhány gyakori mezője (beleértve az ügyfél-kérelem-azonosító, a kérelem-azonosító és a RETURN-CLIENT-Request-ID) nem támogatott. A fejlécek egy jövőbeli frissítésben lesznek hozzáadva. |
 | Százalék – a kódolás nem engedélyezett. |A Media Services a IAssetFile.Name tulajdonság értékét használja a streaming tartalom URL-címeinek létrehozásakor (például: `http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters` ). Emiatt a százalékos kódolás nem engedélyezett. A Name (név) tulajdonság értéke nem lehet a következő [százalék-kódolásra fenntartott karakterek](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)egyike:! * ' ();: @ &= + $,/?% # [] ". Emellett a fájlnévkiterjesztés csak egy "." lehet. |
@@ -69,7 +69,7 @@ Egyes elemzési adathordozó-processzorok ki lesznek vonva. A nyugdíjazási dá
 
 ### <a name="deprecation-of-media-processors"></a>Adathordozó-processzorok elavulása
 
-Bejelentjük, hogy a *Azure Media Indexer* elavult, és *Azure Media Indexer 2 előzetes*verzió. A [Azure Media Services video Indexer](../video-indexer/index.yml) ezeket a régi adathordozó-processzorokat váltja fel.
+Bejelentjük, hogy a *Azure Media Indexer* elavult, és *Azure Media Indexer 2 előzetes* verzió. A [Azure Media Services video Indexer](../video-indexer/index.yml) ezeket a régi adathordozó-processzorokat váltja fel.
 
 A nyugdíjazási dátumokért tekintse meg ezt a [régi összetevőket](legacy-components.md) ismertető témakört.
 

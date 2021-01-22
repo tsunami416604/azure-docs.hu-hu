@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: a541e1b068ec3667120bbb31e65ca7bc35febadb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5e3d7e61b6c2a6ad3c121da9c0198c95ac24850
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89265915"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98694571"
 ---
 # <a name="streaming-endpoints-overview"></a>Folyamatos átviteli végpontok áttekintése  
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 Microsoft Azure Media Services (AMS) esetében a **folyamatos átviteli végpont** olyan adatfolyam-szolgáltatást jelöl, amely közvetlenül egy ügyfél-lejátszó alkalmazásnak, illetve egy Content DELIVERY Network (CDN) számára biztosít tartalmat a további terjesztéshez. A Media Services zökkenőmentes Azure CDN integrációt is biztosít. A Streamvégpontok szolgáltatás kimenő adatfolyama lehet élő stream, igény szerinti videó vagy a Media Services fiókjában lévő eszköz progresszív letöltése. Minden Azure Media Services fiók tartalmaz egy alapértelmezett Streamvégpontok. További StreamingEndpoints hozhatók létre a fiókban. A StreamingEndpoints két verziója létezik: 1,0 és 2,0. A 2017. januártól kezdődően minden újonnan létrehozott AMS-fiók tartalmazni fogja az 2,0-es verziójú **alapértelmezett** streamvégpontok. Az ehhez a fiókhoz hozzáadott további streaming-végpontok a 2,0-es verzióban is megjelennek. Ez a változás nem érinti a meglévő fiókokat; a meglévő StreamingEndpoints a 1,0-es verzió lesz, és frissíthető az 2,0-es verzióra. Ennek a változásnak a viselkedése, a számlázás és a szolgáltatások változásai (további információért lásd az alábbi, a **folyamatos átvitel típusai és verziói** című szakaszt).
 
@@ -54,7 +54,7 @@ Media Services január 2017-os kiadásával kezdődően két folyamatos átvitel
 
 |Típus|Leírás|
 |--------|--------|  
-|**Normál**|Az alapértelmezett folyamatos átviteli végpont egy **szabványos** típus, amely a folyamatos átviteli egységek beállításával módosítható a prémium típusra.|
+|**Standard**|Az alapértelmezett folyamatos átviteli végpont egy **szabványos** típus, amely a folyamatos átviteli egységek beállításával módosítható a prémium típusra.|
 |**Prémium** |Ez a lehetőség olyan professzionális forgatókönyvekhez alkalmas, amelyek nagyobb méretezést vagy irányítást igényelnek. A **prémium** típusra váltson a folyamatos átviteli egységek beállításával.<br/>A dedikált streaming-végpontok elszigetelt környezetben laknak, és nem versenyeznek az erőforrásokkal.|
 
 Azon ügyfelek számára, akik nagy internetes célközönségeknek szánt tartalmat szeretnének kézbesíteni, javasoljuk, hogy engedélyezze a CDN használatát a streaming végponton.
@@ -68,7 +68,7 @@ Azok a felhasználók, akik a januári 10 2017-es kiadás előtt hoztak létre A
 Ha a **"1,0"** adatfolyam-végpont >= 1 Premium streaming Units (su), akkor a prémium szintű streaming végpont lesz, és az összes AMS-funkciót (a **standard/prémium** típushoz hasonlóan) a további konfigurációs lépések nélkül fogja biztosítani.
 
 >[!NOTE]
->A **klasszikus** streaming-végpontok (a "1,0" és a 0 su) korlátozott funkciókat biztosítanak, és nem tartalmaznak SLA-t. Ajánlott áttérni a **standard** típusra, hogy jobb élményt kapjon, és olyan szolgáltatásokat használjon, mint például a dinamikus csomagolás vagy a titkosítás, valamint a **standard** típushoz tartozó egyéb funkciók. A **standard** típusra való átálláshoz lépjen a [Azure Portalra](https://portal.azure.com/) , és válassza a **standard**szintű beléptetés lehetőséget. További információ az áttelepítésről: [áttelepítés](#migration-between-types) szakasz.
+>A **klasszikus** streaming-végpontok (a "1,0" és a 0 su) korlátozott funkciókat biztosítanak, és nem tartalmaznak SLA-t. Ajánlott áttérni a **standard** típusra, hogy jobb élményt kapjon, és olyan szolgáltatásokat használjon, mint például a dinamikus csomagolás vagy a titkosítás, valamint a **standard** típushoz tartozó egyéb funkciók. A **standard** típusra való átálláshoz lépjen a [Azure Portalra](https://portal.azure.com/) , és válassza a **standard** szintű beléptetés lehetőséget. További információ az áttelepítésről: [áttelepítés](#migration-between-types) szakasz.
 >
 >Ügyeljen arra, hogy a művelet nem állítható vissza, és a díjszabás hatással van.
 >
@@ -80,11 +80,11 @@ Ha a **"1,0"** adatfolyam-végpont >= 1 Premium streaming Units (su), akkor a pr
 |Típus|StreamingEndpointVersion|ScaleUnits|Tartalomkézbesítési hálózat (CDN)|Számlázás|
 |--------------|----------|-----------------|-----------------|-----------------|
 |Klasszikus|1.0|0|NA|Ingyenes|
-|Standard streaming Endpoint (előzetes verzió)|2,0|0|Igen|Fizetős|
+|Standard streaming Endpoint (előzetes verzió)|2.0|0|Igen|Fizetős|
 |prémium streamelési egység|1.0|>0|Igen|Fizetős|
-|prémium streamelési egység|2,0|>0|Igen|Fizetős|
+|prémium streamelési egység|2.0|>0|Igen|Fizetős|
 
-### <a name="features"></a>Szolgáltatások
+### <a name="features"></a>Funkciók
 
 Szolgáltatás|Standard|Prémium
 ---|---|---
@@ -110,14 +110,14 @@ Klasszikus|Standard|Be kell jelentkeznie
 Klasszikus|Prémium| Skála (további folyamatos átviteli egységek)
 Standard/prémium|Klasszikus|Nem érhető el (ha a streaming Endpoint verziója 1,0. A klasszikusra való váltás a "0" scaleunits beállítással lehetséges.
 Standard (CDN-vel/anélkül)|Prémium ugyanazzal a konfigurációval|**Elindítva** állapotban engedélyezett. (Azure Portal használatával)
-Prémium (CDN-vel/anélkül)|Standard ugyanazzal a konfigurációval|Elindított állapotban **started** engedélyezett (Azure Portalon keresztül)
-Standard (CDN-vel/anélkül)|Prémium különböző konfigurációval|Leállított állapotban **stopped** engedélyezett (Azure Portalon keresztül). Futó állapotban nem engedélyezett.
-Prémium (CDN-vel/anélkül)|Standard különböző konfigurációval|Leállított állapotban **stopped** engedélyezett (Azure Portalon keresztül). Futó állapotban nem engedélyezett.
-1,0-es verzió, SU >= 1 és CDN|Standard/prémium szintű CDN nélkül|Leállított állapotban **stopped** engedélyezett. Az **elindított** állapotban nem engedélyezett.
-1,0-es verzió, SU >= 1 és CDN|Standard/CDN nélkül|Leállított állapotban **stopped** engedélyezett. Az **elindított** állapotban nem engedélyezett. A 1,0-es verziójú CDN törölve lesz, és a rendszer létrehoz és elindít egy újat.
-1,0-es verzió, SU >= 1 és CDN|Prémium/CDN nélkül|Leállított állapotban **stopped** engedélyezett. Az **elindított** állapotban nem engedélyezett. A klasszikus CDN törölve lesz, és a rendszer létrehoz és elindít egy újat.
+Prémium (CDN-vel/anélkül)|Standard ugyanazzal a konfigurációval|Elindított állapotban  engedélyezett (Azure Portalon keresztül)
+Standard (CDN-vel/anélkül)|Prémium különböző konfigurációval|Leállított állapotban  engedélyezett (Azure Portalon keresztül). Futó állapotban nem engedélyezett.
+Prémium (CDN-vel/anélkül)|Standard különböző konfigurációval|Leállított állapotban  engedélyezett (Azure Portalon keresztül). Futó állapotban nem engedélyezett.
+1,0-es verzió, SU >= 1 és CDN|Standard/prémium szintű CDN nélkül|Leállított állapotban  engedélyezett. Az **elindított** állapotban nem engedélyezett.
+1,0-es verzió, SU >= 1 és CDN|Standard/CDN nélkül|Leállított állapotban  engedélyezett. Az **elindított** állapotban nem engedélyezett. A 1,0-es verziójú CDN törölve lesz, és a rendszer létrehoz és elindít egy újat.
+1,0-es verzió, SU >= 1 és CDN|Prémium/CDN nélkül|Leállított állapotban  engedélyezett. Az **elindított** állapotban nem engedélyezett. A klasszikus CDN törölve lesz, és a rendszer létrehoz és elindít egy újat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse át a Media Services képzési terveket.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

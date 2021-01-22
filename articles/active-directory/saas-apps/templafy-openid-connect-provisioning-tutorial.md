@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/19/2021
 ms.author: zhchia
-ms.openlocfilehash: f9e462d66e438e42c40b16ba9b818ddd330e9e5a
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 7afcf6c5814917b3356d86e7288fd2920a04cad7
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98614651"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695992"
 ---
 # <a name="tutorial-configure-templafy-openid-connect-for-automatic-user-provisioning"></a>Oktatóanyag: az Templafy OpenID Connect konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -133,7 +133,26 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
 9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az Templafy OpenID Connect ( **attribútumok leképezése** ) szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Templafy OpenID connectben a frissítési műveletekhez használt felhasználói fiókokkal egyeznek meg. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![Templafy OpenID Connect felhasználói attribútumok](media/templafy-openid-connect-provisioning-tutorial/user-attribute.png)
+   |Attribútum|Típus|Szűréshez támogatott|
+   |---|---|---|
+   |userName (Felhasználónév)|Sztring|&check;|
+   |active|Logikai|
+   |displayName|Sztring|
+   |cím|Sztring|
+   |preferredLanguage|Sztring|
+   |name.givenName|Sztring|
+   |name.familyName|Sztring|
+   |phoneNumbers[type eq "work"].value|Sztring|
+   |phoneNumbers[type eq "mobile"].value|Sztring|
+   |phoneNumbers [type EQ "fax"]. Value|Sztring|
+   |externalId|Sztring|
+   |címek [típus EQ "work"]. helység|Sztring|
+   |címek [type EQ "work"]. irányítószám|Sztring|
+   |címek [típus EQ "work"]. régió|Sztring|
+   |címek [type EQ "work"]. streetAddress|Sztring|
+   |címek [type EQ "work"]. Country|Sztring|
+   |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: részleg|Sztring|
+   |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: szervezet|Sztring|
 
 10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a Templafy** lehetőséget.
 
@@ -141,7 +160,11 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
 11. Tekintse át az Azure AD-ből szinkronizált Templafy az OpenID Connectben az **attribútum-hozzárendelés** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Templafy OpenID Connect for Update műveletekhez tartozó csoportok egyeztetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![Templafy OpenID Connect csoport attribútumai](media/templafy-openid-connect-provisioning-tutorial/group-attribute.png)
+      |Attribútum|Típus|Szűréshez támogatott|
+      |---|---|---|
+      |displayName|Sztring|&check;|
+      |tagok|Referencia|
+      |externalId|Sztring|      
 
 12. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
 

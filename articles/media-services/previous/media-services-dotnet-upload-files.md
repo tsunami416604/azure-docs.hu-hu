@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 83e9b0278e99867cafa7e633bc382e490ec273c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e9f1dc0ce303b45ad2d43c0c9365edc197f7d8e
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250528"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695594"
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>Fájlok feltöltése Media Services-fiókba a .NET használatával
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 A Media Services szolgáltatásban a digitális fájlok feltöltése vagy kimenete egy adategységbe történik. Az **eszköz** entitás tartalmazhat videó-, hang-, kép-, miniatűr-gyűjtemények, szöveg-és zárt feliratú fájlokat (valamint a fájlokra vonatkozó metaadatokat is).  A fájlok feltöltése után a rendszer biztonságosan tárolja a tartalmat a felhőben a további feldolgozáshoz és folyamatos átvitelhez.
 
@@ -54,7 +54,7 @@ Az eszközök létrehozásakor megadhatja a következő titkosítási beállít�
   
     Ha az adategységen tárolótitkosítást alkalmaz, konfigurálnia kell az adategység továbbítási házirendjét. További információ: az [eszközök kézbesítési házirendjének konfigurálása](media-services-dotnet-configure-asset-delivery-policy.md).
 
-Ha azt adja meg, hogy az eszköz **CommonEncrypted** vagy **EnvelopeEncrypted** -beállítással legyen titkosítva, akkor az eszközt egy **ContentKey**kell rendelnie. További információt a [ContentKey létrehozása](media-services-dotnet-create-contentkey.md)című témakörben talál. 
+Ha azt adja meg, hogy az eszköz **CommonEncrypted** vagy **EnvelopeEncrypted** -beállítással legyen titkosítva, akkor az eszközt egy **ContentKey** kell rendelnie. További információt a [ContentKey létrehozása](media-services-dotnet-create-contentkey.md)című témakörben talál. 
 
 Ha azt adja meg, hogy az eszköz **StorageEncrypted** -beállítással legyen titkosítva, a .net-hez készült Media Services SDK létrehoz egy **StorageEncrypted** - **ContentKey** az eszközhöz.
 
@@ -167,7 +167,7 @@ A kód a következő műveleteket végzi el:
 Nagy mennyiségű eszköz feltöltésekor vegye figyelembe a következőket:
 
 * Hozzon létre egy új **csatlakozáshoz szükséges cloudmediacontext** objektumot egy szálon. A **csatlakozáshoz szükséges cloudmediacontext** osztály nem biztonságos.
-* Növelje az NumberOfConcurrentTransfers az alapértelmezett 2 értékről magasabb értékre (például 5). A tulajdonság beállítása hatással van a **csatlakozáshoz szükséges cloudmediacontext**összes példányára. 
+* Növelje az NumberOfConcurrentTransfers az alapértelmezett 2 értékről magasabb értékre (például 5). A tulajdonság beállítása hatással van a **csatlakozáshoz szükséges cloudmediacontext** összes példányára. 
 * Tartsa a ParallelTransferThreadCount az alapértelmezett 10 értéknél.
 
 ## <a name="ingesting-assets-in-bulk-using-media-services-net-sdk"></a><a id="ingest_in_bulk"></a>Eszközök tömeges betöltése Media Services .NET SDK használatával
@@ -237,9 +237,9 @@ Az adategység fájljainak az ebben a cikkben használt mintához való feltölt
     UploadBlobFile(manifest.BlobStorageUriForUpload, filename3);
 ```
 
-A **IngestManifest**statisztikai tulajdonságának lekérdezésével meghatározhatja, hogy a tömeges betöltés milyen hatással van a **IngestManifest** társított összes eszközre. Az előrehaladási információk frissítéséhez minden alkalommal új **csatlakozáshoz szükséges cloudmediacontext** kell használnia, amikor lekérdezi a statisztikai tulajdonságot.
+A **IngestManifest** statisztikai tulajdonságának lekérdezésével meghatározhatja, hogy a tömeges betöltés milyen hatással van a **IngestManifest** társított összes eszközre. Az előrehaladási információk frissítéséhez minden alkalommal új **csatlakozáshoz szükséges cloudmediacontext** kell használnia, amikor lekérdezi a statisztikai tulajdonságot.
 
-Az alábbi példa bemutatja, hogyan kérdezi le az IngestManifest az **azonosítója**alapján.
+Az alábbi példa bemutatja, hogyan kérdezi le az IngestManifest az **azonosítója** alapján.
 
 ```csharp
     static void MonitorBulkManifest(string manifestID)
@@ -302,7 +302,7 @@ A következő példa a UploadFile függvényt hívja meg, és a tárolási titko
     var asset = UploadFile(@"C:\VideoFiles\BigBuckBunny.mp4", AssetCreationOptions.StorageEncrypted);
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most már kódolhatja a feltöltött adategységeket. További információ: [Encode Assets](media-services-portal-encode.md) (Adategységek kódolása).
 

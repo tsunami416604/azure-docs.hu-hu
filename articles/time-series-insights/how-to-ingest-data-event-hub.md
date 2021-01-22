@@ -9,14 +9,14 @@ manager: diviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: 7d672da30a4d81ead9115fc6b829c35aeab3ee6a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: f4b5d4915cd6520edd7a45af85a836c3360eee32
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016819"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696329"
 ---
 # <a name="add-an-event-hub-event-source-to-your-azure-time-series-insights-environment"></a>Event hub-eseményforrás hozzáadása a Azure Time Series Insights-környezethez
 
@@ -50,7 +50,7 @@ Az alkalmazások fogyasztói csoportokat használnak az adatok Azure-Event Hubsb
 
 1. A **fogyasztói csoportok** lapon adjon meg egy új egyedi értéket a **név** mezőben.  Akkor használja ezt a nevet, amikor új eseményforrás hoz létre a Azure Time Series Insights környezetben.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="add-a-new-event-source"></a>Új eseményforrás hozzáadása
 
@@ -107,11 +107,11 @@ Az alkalmazások fogyasztói csoportokat használnak az adatok Azure-Event Hubsb
 
 1. Adja hozzá az Event hub-hoz hozzáadott dedikált Azure Time Series Insights fogyasztói csoport nevét.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
    Az eseményforrás létrehozása után Azure Time Series Insights automatikusan megkezdi az adatátvitelt a környezetbe.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Adathozzáférési szabályzatok definiálása](./concepts-access-policies.md) az adatvédelme érdekében.
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/19/2021
+ms.date: 01/21/2021
 ms.author: b-juche
-ms.openlocfilehash: f50cde2fa67351552d1f31500da09a5f800b2bcc
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 4320222e02f3447dcdff280f04ad26115323e798
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600112"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696149"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Megoldásarchitektúrák az Azure NetApp Filesszal
 Ez a cikk az ajánlott eljárásokra mutató hivatkozásokat tartalmaz, amelyek segítségével megismerheti a Azure NetApp Files használatának megoldási architektúráit.  
@@ -92,6 +92,10 @@ Ez a szakasz az SAP Azure-megoldásokra mutató hivatkozásokat tartalmaz.
 * [Azure NetApp Files – SAP HANA a biztonsági mentés kiszervezése a Cloud Sync szolgáltatással](https://blog.netapp.com/azure-netapp-files-sap-hana)
 * [A SAP HANA rendszermásolatok felgyorsítása Azure NetApp Files használatával](https://blog.netapp.com/sap-hana-faster-using-azure-netapp-files/)
 * [Felhőbeli kötetek ONTAP és Azure NetApp Files: SAP HANA rendszer áttelepítése egyszerűen](https://blog.netapp.com/cloud-volumes-ontap-and-azure-netapp-files-sap-hana-system-migration-made-easy/)
+
+## <a name="azure-vmware-solutions"></a>Azure VMware-megoldások
+
+* [Azure NetApp Files Azure VMware-megoldással – vendég operációs rendszer Csatlakoztatásai](../azure-vmware/net-app-files-with-azure-vmware-solution.md)
 
 ## <a name="virtual-desktop-infrastructure-solutions"></a>Virtuális asztali infrastruktúra-megoldások
 

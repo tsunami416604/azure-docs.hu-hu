@@ -3,12 +3,12 @@ title: Ajánlott eljárások a sablonokhoz
 description: A Azure Resource Manager sablonok (ARM-sablonok) létrehozásához ajánlott megközelítéseket ismerteti. Javaslatokat nyújt a gyakori problémák elkerülésére a sablonok használatakor.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 85d58098508d5ac7cad6c1cb3cb68ad6c7f179f9
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: c0b26c300a9474cc5db0b1a7b732c4416a9e6f5f
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724986"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696346"
 ---
 # <a name="arm-template-best-practices"></a>ARM-sablon – ajánlott eljárások
 
@@ -26,7 +26,7 @@ A következőket is korlátozhatja:
 * 64 kimeneti értékek
 * 24 576 karakter egy sablon kifejezésében
 
-Az egyes sablonokra vonatkozó korlátokat egy beágyazott sablon használatával lehet meghaladni. További információ: [csatolt és beágyazott sablonok használata Azure-erőforrások telepítésekor](linked-templates.md). A paraméterek, változók és kimenetek számának csökkentése érdekében több értéket is egyesítheti egy objektumban. További információ: [objektumok paraméterként](/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
+Az egyes sablonokra vonatkozó korlátokat egy beágyazott sablon használatával lehet meghaladni. További információ: [csatolt és beágyazott sablonok használata Azure-erőforrások telepítésekor](linked-templates.md). A paraméterek, változók és kimenetek számának csökkentése érdekében több értéket is egyesítheti egy objektumban. További információ: [objektumok paraméterként](/azure/architecture/guide/azure-resource-manager/advanced-templates/objects-as-parameters).
 
 ## <a name="resource-group"></a>Erőforráscsoport
 

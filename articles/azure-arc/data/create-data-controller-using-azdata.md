@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 19451fb09919238a04ac953c9c38fc70b4744d16
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 986019ec4de2fc25b6d8714a8c687cc9342f47b8
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955297"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696065"
 ---
 # <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>Azure arc-adatkezelő létrehozása a használatával [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
@@ -266,34 +266,11 @@ A parancs futtatása után folytassa a következővel: a [létrehozási állapot
 
 ### <a name="create-on-azure-red-hat-openshift-aro"></a>Létrehozás az Azure Red Hat OpenShift (ARO)
 
-#### <a name="apply-the-scc"></a>A SCC alkalmazása
+Az Azure Red Hat OpenShift biztonsági környezeti korlátozást igényel.
 
-Mielőtt létrehozza az adatvezérlőt az Azure Red Hat OpenShift, bizonyos biztonsági környezeti korlátozásokat (SCC) kell alkalmaznia. Az előzetes kiadás esetében ezek a biztonsági korlátozások ellazítására használhatók. A jövőbeli kiadások a frissített SCC-t nyújtják.
+#### <a name="apply-the-security-context"></a>A biztonsági környezet alkalmazása
 
-1. Töltse le az egyéni biztonsági környezet korlátozását (SCC). Használja a következők egyikét: 
-   - [GitHub](https://github.com/microsoft/azure_arc/tree/main/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
-   - ([Nyers](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml))
-   - `curl` A következő parancs letölti az ív-adathalmazt. YAML:
-
-      ```console
-      curl https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
-      ```
-
-1. SCC létrehozása
-
-   ```console
-   oc create -f arc-data-scc.yaml
-   ```
-
-1. Alkalmazza a SCC-t a szolgáltatási fiókra.
-
-   > [!NOTE]
-   > Használja ugyanazt a névteret itt és az `azdata arc dc create` alábbi parancsban. Példa: `arc` .
-
-   ```console
-   oc adm policy add-scc-to-user arc-data-scc --serviceaccount default --namespace arc
-   ```
-
+[!INCLUDE [apply-security-context-constraint](includes/apply-security-context-constraint.md)]
 
 #### <a name="create-custom-deployment-profile"></a>Egyéni telepítési profil létrehozása
 
@@ -324,33 +301,11 @@ A parancs futtatása után folytassa a következővel: a [létrehozási állapot
 > [!NOTE]
 > Ha a Red Hat OpenShift Container platformot használja az Azure-ban, a legújabb elérhető verziót ajánlott használni.
 
-#### <a name="apply-the-scc"></a>A SCC alkalmazása
+Mielőtt létrehozza az adatvezérlőt a Red Hat OCP, bizonyos biztonsági környezeti korlátozásokat kell alkalmaznia. 
 
-Mielőtt létrehozta az adatvezérlőt a Red Hat OCP, bizonyos biztonsági környezeti korlátozásokat (SCC) kell alkalmaznia. Az előzetes kiadás esetében ezek a biztonsági korlátozások ellazítására használhatók. A jövőbeli kiadások a frissített SCC-t nyújtják.
+#### <a name="apply-the-security-context-constraint"></a>A biztonsági környezet korlátozásának alkalmazása
 
-1. Töltse le az egyéni biztonsági környezet korlátozását (SCC). Használja a következők egyikét: 
-   - [GitHub](https://github.com/microsoft/azure_arc/tree/main/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
-   - ([Nyers](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml))
-   - `curl` A következő parancs letölti az ív-adathalmazt. YAML:
-
-      ```console
-      curl https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
-      ```
-
-1. SCC létrehozása
-
-   ```console
-   oc create -f arc-data-scc.yaml
-   ```
-
-1. Alkalmazza a SCC-t a szolgáltatási fiókra.
-
-   > [!NOTE]
-   > Használja ugyanazt a névteret itt és az `azdata arc dc create` alábbi parancsban. Példa: `arc` .
-
-   ```console
-   oc adm policy add-scc-to-user arc-data-scc --serviceaccount default --namespace arc
-   ```
+[!INCLUDE [apply-security-context-constraint](includes/apply-security-context-constraint.md)]
 
 #### <a name="determine-storage-class"></a>Tárolási osztály meghatározása
 

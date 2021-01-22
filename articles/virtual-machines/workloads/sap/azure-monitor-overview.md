@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: bcb912a24dfb2a5e78719cf9010fd23afe0df185
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 1c33011d947d6dc9dd9ee4dd6331c24c06d99b38
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484396"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693824"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>SAP-megoldások Azure monitorja (előzetes verzió)
 
@@ -24,7 +24,7 @@ Az SAP-megoldások Azure Monitor segítségével az ügyfelek egy központi hely
 
 Az SAP-megoldások Azure Monitor az Azure Marketplace-en keresztül érhető el. Egyszerű, intuitív telepítési élményt nyújt, és mindössze néhány kattintással üzembe helyezi az erőforrást Azure Monitor SAP-megoldások (más néven SAP- **figyelő erőforrás**) számára.
 
-Az ügyfelek az SAP-környezet különböző összetevőit figyelheti, például az Azure Virtual Machines, a magas rendelkezésre állású fürtöt, a SAP HANA adatbázist és így tovább, ha hozzáadja a megfelelő **szolgáltatót** az adott összetevőhöz.
+Az ügyfelek az SAP-környezet különböző összetevőit figyelheti, például az Azure Virtual Machines, a magas rendelkezésre állású fürtöt, a SAP HANA adatbázist stb.) az adott összetevő megfelelő **szolgáltatójának** hozzáadásával.
 
 Támogatott infrastruktúra:
 
@@ -35,7 +35,7 @@ Támogatott adatbázisok:
 - SAP HANA-adatbázis
 - Microsoft SQL Server
 
-Az SAP-megoldások Azure Monitor a meglévő [Azure monitor](../../../azure-monitor/overview.md) képességek, például a log Analytics és a [munkafüzetek](../../../azure-monitor/platform/workbooks-overview.md) hatékonyságát is lehetővé teszi a további figyelési képességek biztosításához. Az ügyfelek [Egyéni vizualizációkat](../../../azure-monitor/platform/workbooks-overview.md#getting-started) hozhatnak létre az SAP-megoldások Azure monitor által biztosított alapértelmezett munkafüzetek szerkesztésével, [Egyéni lekérdezések](../../../azure-monitor/log-query/log-analytics-tutorial.md) írásához és [egyéni riasztások](../../../azure-monitor/learn/tutorial-response.md) létrehozásához az Azure log Analytics-munkaterületen, kihasználva a [rugalmas megőrzési időt](../../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) , és összekapcsolhatók a megfigyelési adatokkal a jegyrendszer használatával.
+Az SAP-megoldások Azure Monitor a meglévő [Azure monitor](../../../azure-monitor/overview.md) képességek, például a log Analytics és a [munkafüzetek](../../../azure-monitor/platform/workbooks-overview.md) hatékonyságát használják több figyelési képesség biztosításához. Az ügyfelek [Egyéni vizualizációkat](../../../azure-monitor/platform/workbooks-overview.md#getting-started) hozhatnak létre az SAP-megoldások Azure monitor által biztosított alapértelmezett munkafüzetek szerkesztésével, [Egyéni lekérdezések](../../../azure-monitor/log-query/log-analytics-tutorial.md) írásához és [egyéni riasztások](../../../azure-monitor/learn/tutorial-response.md) létrehozásához az Azure log Analytics-munkaterületen, kihasználva a [rugalmas megőrzési időt](../../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) , és összekapcsolhatók a megfigyelési adatokkal a jegyrendszer használatával.
 
 ## <a name="what-data-does-azure-monitor-for-sap-solutions-collect"></a>Az SAP-megoldások Azure Monitor milyen adatokat gyűjtenek?
 
@@ -60,8 +60,17 @@ Microsoft SQL Server telemetria:
 - A Batch-kérelmek,-fordítások és az oldal várható élettartama az idő függvényében
 - Az első 10 legdrágább SQL-utasítás az idő múlásával
 - Az SAP-rendszeren az első 12 legnagyobb táblázat
-- A SQL Server a hibák naplójában rögzített problémák
+- A SQL Server-hibanapló által rögzített problémák
 - Folyamatok és az SQL WAIT statisztikáinak időbeli blokkolása
+
+Operációs rendszer telemetria (Linux) 
+- CPU-kihasználtság, elágazások száma, futó és letiltott folyamatok. 
+- Memória kihasználtsága és eloszlása a felhasznált, gyorsítótárazott, pufferelt elemek között. 
+- Kicseréli a kihasználtságot, a lapozást és a swap-arányt. 
+- Fájlrendszerek kihasználtsága, az olvasott és írt bájtok száma blokkos eszközökön. 
+- Írási/olvasási késés egy blokkos eszközön. 
+- Folyamatos I/O-darabszám, állandó memória olvasási/írási bájtjai. 
+- Hálózati csomagok be/ki, hálózati bájtok be/ki 
 
 ## <a name="data-sharing-with-microsoft"></a>Adatmegosztás a Microsofttal
 
@@ -96,9 +105,9 @@ Az architektúra legfontosabb összetevői a következők:
 
 Az architektúra legfontosabb főbb jellemzői a következők:
  - **Több példány** – az ügyfelek létrehozhatnak figyelőt egy adott összetevő típusának (például HANA db, ha fürt, Microsoft SQL Server) több, a VNET belüli SAP-SID-n belül, egyetlen erőforrás-Azure monitor SAP-megoldásokhoz.
- - **Több szolgáltató** – a fenti architektúra diagram a SAP HANA szolgáltatót mutatja be példaként. Hasonlóképpen, az ügyfelek további szolgáltatókat is beállíthat a megfelelő összetevőkhöz (például HANA DB, HA fürt, Microsoft SQL Server) az összetevőkből származó adatok gyűjtéséhez.
+ - **Több szolgáltató** – a fenti architektúra diagram a SAP HANA szolgáltatót mutatja be példaként. Hasonlóképpen, az ügyfelek további szolgáltatókat is konfigurálnak a megfelelő összetevőkhöz (például HANA DB, HA cluster, Microsoft SQL Server) az ezekből az összetevőkből származó adatok gyűjtéséhez.
  - **Nyílt forráskód** – az SAP-megoldások Azure monitor forráskódja elérhető a [githubon](https://github.com/Azure/AzureMonitorForSAPSolutions). Az ügyfelek hivatkozhatnak a szolgáltatói kódra, és további információt kaphatnak a termékről, illetve a visszajelzések megosztásáról vagy megosztásáról.
- - **Bővíthető lekérdezési keretrendszer** – a telemetria-adatok gyűjtésére szolgáló SQL-lekérdezések [JSON](https://github.com/Azure/AzureMonitorForSAPSolutions/blob/master/sapmon/content/SapHana.json)-ban íródnak. A további telemetria adatok gyűjtésére szolgáló további SQL-lekérdezések egyszerűen hozzáadhatók. Az ügyfelek a jelen dokumentum végén található hivatkozáson keresztül, illetve a felhasználói fiókkal való kapcsolatfelvétel során kérhetik az SAP-megoldások Azure Monitorához adott telemetria-adatmennyiséget.
+ - **Bővíthető lekérdezési keretrendszer** – a telemetria-adatok gyűjtésére szolgáló SQL-lekérdezések [JSON](https://github.com/Azure/AzureMonitorForSAPSolutions/blob/master/sapmon/content/SapHana.json)-ban íródnak. A további telemetria adatok gyűjtéséhez több SQL-lekérdezés is könnyen hozzáadható. Az ügyfelek a jelen dokumentum végén található hivatkozáson keresztül, illetve a felhasználói fiókkal való kapcsolatfelvétel során kérhetik az SAP-megoldások Azure Monitorához adott telemetria-adatmennyiséget.
 
 ## <a name="pricing"></a>Díjszabás
 Az SAP-megoldások Azure Monitor egy ingyenes termék (nincs licenc díj). Az ügyfelek feladata, hogy kifizessék a felügyelt erőforráscsoport mögöttes összetevőinek költségeit.

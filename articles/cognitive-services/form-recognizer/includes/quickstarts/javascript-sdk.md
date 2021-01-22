@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 6520c1e326dc95584030d3187fdaaaa7e06c498a
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 8ca42367db5607faedb4497f0a0fb0ca160464bc
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132302"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98698071"
 ---
 > [!IMPORTANT]
 > * Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja. Tekintse meg az alábbi dokumentációt. 
@@ -70,7 +70,7 @@ Hozzon létre változókat az erőforrás Azure-végpontjának és-kulcsának l�
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_creds)]
 
 > [!IMPORTANT]
-> Nyissa meg az Azure Portalt. Ha az **Előfeltételek** szakaszban létrehozott [Terméknév] erőforrás sikeresen telepítve van, kattintson az **Ugrás erőforrásra** gombra a **következő lépések** alatt. A kulcsot és a végpontot az erőforrás- **kezelés** területen, az erőforrás **kulcs és végpont** lapján találja. 
+> Nyissa meg az Azure Portalt. Ha az **Előfeltételek** szakaszban létrehozott űrlap-felismerő erőforrás sikeresen telepítve van, kattintson az **Ugrás erőforrásra** gombra a **következő lépések** alatt. A kulcsot és a végpontot az erőforrás- **kezelés** területen, az erőforrás **kulcs és végpont** lapján találja. 
 >
 > Ne felejtse el eltávolítani a kulcsot a kódból, ha elkészült, és soha ne tegye közzé nyilvánosan. Éles környezetben érdemes lehet biztonságos módszert használni a hitelesítő adatok tárolásához és eléréséhez. További információt a Cognitive Services [biztonsági](../../../cognitive-services-security.md) cikkben talál.
 
@@ -435,14 +435,14 @@ export DEBUG=azure*
 
 A naplók engedélyezésével kapcsolatos részletes információkért lásd a [ @azure/logger csomag dokumentációját](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/core/logger).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban az űrlap-felismerő JavaScript ügyféloldali függvénytárát használta a modellek tanításához és az űrlapok különböző módokon történő elemzéséhez. Következő lépésként Ismerkedjen meg a jobb betanítási adatkészlet létrehozásával és a pontosabb modellek előállításával.
 
 > [!div class="nextstepaction"]
 > [Betanítási adathalmaz létrehozása](../../build-training-data-set.md)
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Mi a Form Recognizer?](../../overview.md)
 * A jelen útmutatóban található mintakód a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/FormRecognizer/FormRecognizerQuickstart.js)érhető el.

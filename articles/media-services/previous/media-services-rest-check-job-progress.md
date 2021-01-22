@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 429e443ea0de665632cbacaee13a3ff3be443b9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 252495df8189f677ada66b67b8a845b320c81aca
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89263399"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98694916"
 ---
 # <a name="how-to-check-job-progress"></a>Útmutató: a feladatok előrehaladásának ellenőrzéséhez
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 A feladatok futtatásakor gyakran szükség van a feladat előrehaladásának nyomon követésére. A feladatok állapotát a feladatok állapot tulajdonságával derítheti fel. További információ az állapot tulajdonságról: a [feladatok entitásának tulajdonságai](/rest/api/media/operations/job#job_entity_properties).
 

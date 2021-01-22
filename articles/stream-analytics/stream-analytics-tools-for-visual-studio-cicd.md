@@ -6,12 +6,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/15/2019
-ms.openlocfilehash: 9fe1aaed58d6069cd583f8607f7bd6332f97674e
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 0b4356c74b2e0c1494456d5d1082efd7b8953a15
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019890"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693375"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>A Azure Stream Analytics CI/CD NuGet csomag használata az integrációhoz és a fejlesztéshez 
 Ez a cikk azt ismerteti, hogyan használható a Azure Stream Analytics CI/CD NuGet csomag a folyamatos integrációs és üzembe helyezési folyamat beállításához.
@@ -51,7 +51,7 @@ A fájl parameters.jsjában lévő alapértelmezett paraméterek a Visual Studio
       "value": null
     },
 ```
-További információ a [telepítéséről Resource Manager-sablonfájl és Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md). További információ arról, hogyan [használható egy objektum paraméterként egy Resource Manager-sablonban](/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
+További információ a [telepítéséről Resource Manager-sablonfájl és Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md). További információ arról, hogyan [használható egy objektum paraméterként egy Resource Manager-sablonban](/azure/architecture/guide/azure-resource-manager/advanced-templates/objects-as-parameters).
 
 Ha Azure Data Lake Store Gen1 felügyelt identitást szeretne használni kimeneti fogadóként, az Azure-ba való üzembe helyezés előtt meg kell adnia a szolgáltatásnevet a PowerShell használatával. További információ a [ADLS Gen1 felügyelt identitással való üzembe helyezéséhez Resource Manager-sablonnal](stream-analytics-managed-identities-adls.md#resource-manager-template-deployment).
 
@@ -89,7 +89,7 @@ Példa:
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Gyors útmutató: Azure Stream Analytics Cloud-feladatok létrehozása a Visual Studióban](stream-analytics-quick-create-vs.md)
 * [A Visual Studióval helyileg tesztelheti Stream Analytics lekérdezéseit](stream-analytics-vs-tools-local-run.md)

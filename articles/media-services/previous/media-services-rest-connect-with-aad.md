@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: 8bea4c049c3d7ea17e173f069a3e99cbcca1fe48
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 28719046c9a8ccc65d231244ef8b5b3f8e116282
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041994"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98694730"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>A Media Services API és a REST hozzáférése Azure AD-hitelesítéssel
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 Az Azure AD-hitelesítés Azure Media Services használatával történő használatakor kétféleképpen végezheti el a hitelesítést:
 
@@ -56,7 +56,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 - Tekintse át a [hozzáférés Azure Media Services API-t az Azure ad-hitelesítés áttekintésével foglalkozó](media-services-use-aad-auth-to-access-ams-api.md) cikkben.
 - Telepítse a [Poster](https://www.getpostman.com/) Rest-ügyfelet, hogy végrehajtsa a cikkben látható REST API-kat. 
 
-    Ebben az oktatóanyagban a **Poster** -t használjuk, de minden Rest-eszköz megfelelő lenne. Más alternatívák: **Visual Studio Code** a REST beépülő modullal vagy a **Telerik Hegedűs** . 
+    Ebben az oktatóanyagban a **Poster** -t használjuk, de minden Rest-eszköz megfelelő lenne. Más alternatívák: **Visual Studio Code** a REST beépülő modullal vagy a **Telerik Hegedűs**. 
 
 ## <a name="get-the-authentication-information-from-the-azure-portal"></a>Hitelesítő adatok beolvasása a Azure Portal
 
@@ -75,7 +75,7 @@ Media Services API eléréséhez a következő adatpontokat kell összegyűjteni
 
 Az információk beszerzéséhez kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com).
 2. Navigáljon az AMS-példányhoz.
 3. Válassza az **API-hozzáférés** lehetőséget.
 4. Kattintson a **kapcsolódás Azure Media Services API-hoz az egyszerű szolgáltatásnév** lehetőségre.
@@ -89,7 +89,7 @@ Az információk beszerzéséhez kövesse az alábbi lépéseket:
 
     Ha új AD-alkalmazást kell létrehoznia, kövesse az alábbi lépéseket:
     
-   1. Kattintson a **Create New (új létrehozása** ) gombra.
+   1. Kattintson a **Create New (új létrehozása**) gombra.
    2. Adjon meg egy nevet.
    3. Kattintson ismét az **új létrehozása** gombra.
    4. Kattintson a **Mentés** gombra.
@@ -111,7 +111,7 @@ Az információk beszerzéséhez kövesse az alábbi lépéseket:
    2. Nyomja meg a **kulcsok** gombot.
     
        ![Képernyőkép: az "alkalmazás kezelése" gomb kiválasztásakor az "Application I D" a középső ablaktáblán látható, a jobb oldali ablaktáblán pedig a "kulcsok" lehetőség van kiválasztva.](./media/connect-with-rest/manage-app.png)
-   3. Az alkalmazás kulcsának (az ügyfél titkos kulcsa) előállításához töltse ki a **leírást** , és nyomja **le** a **Mentés gombot** .
+   3. Az alkalmazás kulcsának (az ügyfél titkos kulcsa) előállításához töltse ki a **leírást** , és nyomja **le** a **Mentés gombot**.
     
        A **Mentés** gomb megnyomásakor megjelenik a kulcs értéke. Másolja a kulcs értékét a panel elhagyása előtt.
 
@@ -124,7 +124,7 @@ Az AD-kapcsolódási paraméterekhez értékeket adhat hozzá a web.config vagy 
 
 ## <a name="get-the-access-token-using-postman"></a>Hozzáférési jogkivonat beszerzése a Poster használatával
 
-Ez a szakasz bemutatja, hogyan használható a **Poster** egy olyan REST API végrehajtásához, amely egy JWT tulajdonosi tokent (hozzáférési tokent) ad vissza. Bármely Media Services REST API meghívásához hozzá kell adnia az "engedélyezés" fejlécet a hívásokhoz, és hozzá kell adnia a "tulajdonos *your_access_token* " értéket az egyes hívásokhoz (ahogy az oktatóanyag következő szakaszában is látható). 
+Ez a szakasz bemutatja, hogyan használható a **Poster** egy olyan REST API végrehajtásához, amely egy JWT tulajdonosi tokent (hozzáférési tokent) ad vissza. Bármely Media Services REST API meghívásához hozzá kell adnia az "engedélyezés" fejlécet a hívásokhoz, és hozzá kell adnia a "tulajdonos *your_access_token*" értéket az egyes hívásokhoz (ahogy az oktatóanyag következő szakaszában is látható). 
 
 1. A **Poster** megnyitása.
 2. Válassza a **POST** lehetőséget.
@@ -172,7 +172,7 @@ Ez a szakasz bemutatja, hogyan érheti el az **assets** API-t a **Poster** haszn
 2. Válassza a **GET** lehetőséget.
 3. Illessze be a REST API végpontot (például: https://amshelloworld.restv2.westus.media.azure.net/api/Assets)
 4. Válassza az **Engedélyezés** lapot. 
-5. Jelölje ki a **tulajdonosi jogkivonatot** .
+5. Jelölje ki a **tulajdonosi jogkivonatot**.
 6. Illessze be az előző szakaszban létrehozott jogkivonatot.
 
     ![jogkivonat beolvasása](./media/connect-with-rest/connect-with-rest05.png)
@@ -198,7 +198,7 @@ Ez a szakasz bemutatja, hogyan érheti el az **assets** API-t a **Poster** haszn
 
 A visszaadott válasz tartalmazza a fiókjában található eszközöket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Próbálja ki ezt a mintakód az [Azure ad-hitelesítésben Azure Media Services hozzáféréshez: mindkettőn keresztül REST API](https://github.com/willzhan/WAMSRESTSoln)
 * [Fájlok feltöltése a .NET-tel](media-services-dotnet-upload-files.md)

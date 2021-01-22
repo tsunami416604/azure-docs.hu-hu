@@ -9,24 +9,27 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1a1fc0ce634282ffd4fcf374138fe97a04f32062
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 320f02f6ece106b4d0e14293f95533aa5b4e0743
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539595"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693451"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Válasszon árképzési szintet az Azure Cognitive Search
 
-A [keresési szolgáltatás létrehozásakor](search-create-service-portal.md)ki kell választania a szolgáltatás élettartamára rögzített árképzési szintet (vagy SKU-t). A becsült havi költségek a portál **díjszabási csomag kiválasztása** lapján jelennek meg. Ha a PowerShell vagy az Azure CLI használatával hoz létre szolgáltatást, a szintet a paraméterrel határozhatja meg **`-Sku`** .
+A [keresési szolgáltatás létrehozásának](search-create-service-portal.md) része a szolgáltatás élettartamára rögzített díjszabási csomag (vagy SKU) kiválasztását jelenti. Az árak – vagy a szolgáltatás futtatásának becsült havi díja – a szolgáltatás létrehozásakor a portál **Select díjszabási réteg** lapján jelennek meg. Ha ehelyett a PowerShell vagy az Azure CLI használatával végzi a telepítést, a szintet a **`-Sku`** paraméterrel kell megadni, és a [szolgáltatás díjszabását](https://azure.microsoft.com/pricing/details/search/) kell megadnia a becsült költségek megismeréséhez.
 
 A kiválasztott rétegek a következőket határozzák meg:
 
-+ A szolgáltatáson létrehozható indexek és egyéb objektumok maximális száma
++ Az indexek és a szolgáltatásban engedélyezett egyéb objektumok maximális száma
 + Partíciók mérete és sebessége (fizikai tárterület)
 + A számlázható kamatláb rögzített havi költségként, de növekményes költség is, ha kapacitást ad hozzá
 
 Néhány esetben a kiválasztott szint határozza meg a [prémium szintű szolgáltatások](#premium-features)rendelkezésre állását.
+
+> [!NOTE]
+> Információt keres az Azure SKU-ról? Kezdje az [Azure díjszabásával](https://azure.microsoft.com/pricing/) , majd görgessen le a szolgáltatásokra vonatkozó díjszabási lapokra mutató hivatkozásokra.
 
 ## <a name="tier-descriptions"></a>Szintek leírása
 
@@ -50,7 +53,7 @@ További információt a [díjszabási oldalon](https://azure.microsoft.com/pric
 
 A legtöbb funkció minden szinten elérhető, beleértve az ingyenes szintet is. Néhány esetben a kiválasztott rétegek hatással lesznek a funkciók megvalósítására. A következő táblázat a szolgáltatási szintjéhez kapcsolódó szolgáltatásokra vonatkozó korlátozásokat ismerteti.
 
-| Funkció | Korlátozások |
+| Szolgáltatás | Korlátozások |
 |---------|-------------|
 | [indexelők](search-indexer-overview.md) | Az indexelő nem érhető el az S3 HD-ben.  |
 | [MI-bővítés](search-security-manage-encryption-keys.md) | Az ingyenes szinten fut, de nem ajánlott. |
@@ -67,7 +70,7 @@ A szintek határozzák meg magának a szolgáltatásnak a maximális tárolási 
 
 ## <a name="partition-size-and-speed"></a>Partíció mérete és sebessége
 
-A szint díjszabása tartalmazza a 2 GB-os alapszintű, a tárterületre optimalizált (L2) csomagok esetében 2 TB-ig terjedő partíciós tárolás részleteit. A hardver egyéb jellemzői, például a műveletek sebessége, a késés és az átviteli sebesség nem kerül közzétételre, de az adott megoldási architektúrák számára tervezett rétegek olyan hardverekre épülnek, amelyek az adott forgatókönyvek támogatásához szükséges szolgáltatásokat használják.
+A szint díjszabása tartalmazza a 2 GB-os alapszintű, a tárterületre optimalizált (L2) csomagok esetében 2 TB-ig terjedő partíciós tárolás részleteit. A hardver egyéb jellemzői, például a műveletek sebessége, a késés és az átviteli sebesség nem kerül közzétételre, de az adott megoldási architektúrák számára tervezett rétegek olyan hardverekre épülnek, amelyek az adott forgatókönyvek támogatásához szükséges szolgáltatásokat használják. További információ a partíciókkal kapcsolatban: a [kapacitás becslése és kezelése](search-capacity-planning.md) és [a teljesítmény skálázása](search-performance-optimization.md).
 
 ## <a name="billing-rates"></a>Számlázási díjak
 
