@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 92cae59978b172993c779e9a486ff67d82309800
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 6bf2054a1b9d42529c3917994e5f446b3c50ecf7
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349922"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682715"
 ---
 # <a name="clone-a-managed-image-to-a-shared-image-gallery-image"></a>Felügyelt rendszerkép klónozása megosztott képgyűjteményi rendszerképbe
 
@@ -54,7 +54,7 @@ A rendszerkép-definíciók logikai csoportosítást hoznak létre a képekhez. 
 
 A rendszerkép meghatározásakor győződjön meg arról, hogy a megfelelő információval rendelkezik. Mivel a felügyelt lemezképek mindig általánosítva vannak, be kell állítani `-OsState generalized` . 
 
-További információ a képdefiníciók által megadható értékekről: [képdefiníciók](./windows/shared-image-galleries.md#image-definitions).
+További információ a képdefiníciók által megadható értékekről: [képdefiníciók](./shared-image-galleries.md#image-definitions).
 
 Hozza létre a rendszerkép definícióját a [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion)használatával. Ebben a példában a rendszerkép definíciójának neve *myImageDefinition*, és egy általánosított Windows operációs rendszerre van. A rendszerképek definíciójának létrehozásához használja a következőt: `-OsType Linux` . 
 
@@ -130,7 +130,7 @@ Remove-AzImage `
    -ResourceGroupName $managedImage.ResourceGroupName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután meggyőződött arról, hogy a replikáció elkészült, létrehozhat egy virtuális gépet az [általánosított rendszerképből](vm-generalized-image-version-powershell.md).
 

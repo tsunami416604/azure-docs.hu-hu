@@ -16,12 +16,12 @@ ms.subservice: report-monitor
 ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2c7cc68c84cc9f137ba5b51206526ff96111fe9a
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 54bce5e839786862a6dac9aeb685dd364547a09a
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93122741"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685028"
 ---
 # <a name="usage-and-insights-report-in-the-azure-active-directory-portal"></a>Használati és bepillantást a Azure Active Directory portálon
 
@@ -50,15 +50,17 @@ A használati és elemzési jelentésből származó adatok eléréséhez a köv
 
 ## <a name="use-the-report"></a>A jelentés használata
 
-A használati és keresési jelentés az alkalmazások listáját jeleníti meg, amelyek egy vagy több bejelentkezési kísérlettel rendelkeznek, és lehetővé teszi a sikeres bejelentkezések, a sikertelen bejelentkezések és a sikerességi arány szerinti rendezést.
+A használati és keresési jelentés megjeleníti az alkalmazások listáját, amelyek egy vagy több bejelentkezési kísérlettel rendelkeznek, és lehetővé teszi a sikeres bejelentkezések, a sikertelen bejelentkezések és a sikerességi arány rendezését.
 
-Ha a lista alján a további Betöltés gombra kattint, a lapon további alkalmazások is megtekinthetők. A dátumtartomány kiválasztásával megtekintheti a tartományon belül használt összes alkalmazást.
+Ha a lista alján a **további betöltés** gombra kattint, a lapon további alkalmazások is megtekinthetők. A dátumtartomány kiválasztásával megtekintheti a tartományon belül használt összes alkalmazást.
 
-Beállíthatja a fókuszt egy adott alkalmazásra is. Válassza a **bejelentkezési tevékenység megtekintése** lehetőséget, hogy a bejelentkezési tevékenységet az alkalmazáshoz, valamint a leggyakoribb hibákhoz az idő múlásával láthassa.  
+![Képernyőfelvétel: a használati & az alkalmazási tevékenységekre vonatkozó információkat jelenít meg, ahol kiválaszthat egy tartományt, és megtekintheti a különböző alkalmazások bejelentkezési tevékenységeit.](./media/concept-usage-insights-report/usage-and-insights-report.png)
+
+Beállíthatja a fókuszt egy adott alkalmazásra is. Válassza a **bejelentkezési tevékenység megtekintése** lehetőséget, hogy a bejelentkezési tevékenység idővel megjelenjen az alkalmazáshoz, valamint a leggyakoribb hibákhoz.  
 
 Amikor kiválaszt egy napot az alkalmazás használati gráfjában, részletes listát kap az alkalmazás bejelentkezési tevékenységeiről.  
 
-![Képernyőfelvétel: a használati & az alkalmazási tevékenységekre vonatkozó információkat jelenít meg, ahol kiválaszthat egy tartományt, és megtekintheti a különböző alkalmazások bejelentkezési tevékenységeit.](./media/concept-usage-insights-report/usage-and-insights-report.png)
+:::image type="content" source="./media/concept-usage-insights-report/usage-and-insights-application-report.png" alt-text="A képernyőfelvétel egy adott alkalmazás használati &i információit jeleníti meg, ahol megtekintheti a bejelentkezési tevékenység diagramját.":::
 
 ## <a name="next-steps"></a>Következő lépések
 

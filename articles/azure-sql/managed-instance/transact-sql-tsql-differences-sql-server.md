@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: e6dc4656e33b55a2cc695874376baf1cd816a838
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 6fb17ead2546875c0f334aae322f8fb070e8f1ea
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796295"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684905"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL felügyelt példányának T-SQL-különbségei
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -100,7 +100,7 @@ Az `CREATE AUDIT` Azure Blob Storage-ba való naplózás szintaxisának főbb el
 - Új szintaxissal `TO URL` megadható az Azure Blob Storage-tároló URL-címe, ahol a `.xel` fájlok el vannak helyezve.
 - A szintaxis `TO FILE` nem támogatott, mert az SQL felügyelt példánya nem fér hozzá a Windows-fájlmegosztást.
 
-További információ: 
+További információkért lásd: 
 
 - [KISZOLGÁLÓ NAPLÓZÁSÁNAK LÉTREHOZÁSA](/sql/t-sql/statements/create-server-audit-transact-sql) 
 - [ALTER SERVER AUDIT](/sql/t-sql/statements/alter-server-audit-transact-sql)
@@ -276,6 +276,8 @@ A következő beállítások nem módosíthatók:
 - `RESTRICTED_USER`
 - `SINGLE_USER`
 - `WITNESS`
+
+Egyes `ALTER DATABASE` utasítások (pl. [set containers](https://docs.microsoft.com/sql/relational-databases/databases/migrate-to-a-partially-contained-database?#converting-a-database-to-partially-contained-using-transact-sql)) átmenetileg sikertelenek lehetnek, például az adatbázis automatikus biztonsági mentése során vagy közvetlenül az adatbázis létrehozása után. Ebben az esetben újra `ALTER DATABASE` kell próbálkozni a következő utasítással. További részletek és információk a kapcsolódó hibaüzenetekről: [Megjegyzések szakasz](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true&tabs=sqlpool#remarks-2).
 
 További információ: [Alter Database](/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options).
 
@@ -549,7 +551,7 @@ A felügyelt SQL-példányok következő MSDB-sémáinak a megfelelő előre def
 
 Az SQL felügyelt példánya részletes információkat helyez el a hibák naplóiban. A hibanapló számos belső rendszereseményt naplóz. Egyéni eljárással olvashatja el a nem releváns bejegyzéseket kiszűrő hibákat. További információ: [SQL felügyelt példány – sp_readmierrorlog](/archive/blogs/sqlcat/azure-sql-db-managed-instance-sp_readmierrorlog) vagy [SQL felügyelt példányok bővítménye (előzetes verzió)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) Azure Data studiohoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az SQL felügyelt példányáról: [Mi az SQL felügyelt példány?](sql-managed-instance-paas-overview.md)
 - A szolgáltatások és összehasonlítások listájáért lásd: az [Azure SQL felügyelt példány funkcióinak összehasonlítása](../database/features-comparison.md).

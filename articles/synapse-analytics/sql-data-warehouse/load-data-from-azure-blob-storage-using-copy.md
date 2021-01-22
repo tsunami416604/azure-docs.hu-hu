@@ -11,16 +11,16 @@ ms.date: 11/23/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: ec577e2a70e2b354b8d2013fe259aa9ea622c50e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: b305a07997ccd2cbab0d963ced2bd23ab7a97690
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120138"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683407"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Oktatóanyag: a New York taxik-adatkészlet betöltése
 
-Ez az oktatóanyag a [copy utasítás](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) használatával tölti be a New York taxik adatkészletet egy Azure Blob Storage-fiókból. Az oktatóanyag az [Azure Portalt](https://portal.azure.com) és az [SQL Server Management Studiót](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) használja a következőkhöz:
+Ez az oktatóanyag a [copy utasítás](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) használatával tölti be a New York taxik adatkészletet egy Azure Blob Storage-fiókból. Az oktatóanyag az [Azure Portalt](https://portal.azure.com) és az [SQL Server Management Studiót](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) használja a következőkhöz:
 
 > [!div class="checklist"]
 >
@@ -33,7 +33,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az oktatóanyag megkezdése előtt töltse le és telepítse az [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) legújabb verzióját.  
+Az oktatóanyag megkezdése előtt töltse le és telepítse az [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) legújabb verzióját.  
 
 Ez az oktatóanyag feltételezi, hogy már létrehozott egy SQL dedikált készletet az alábbi [oktatóanyagból](./create-data-warehouse-portal.md#connect-to-the-server-as-server-admin).
 
@@ -251,7 +251,7 @@ Futtassa a következő SQL-parancsfájlokat, és adja meg a betölteni kívánt 
 
 ## <a name="load-the-data-into-your-data-warehouse"></a>Az adatok betöltése az adattárházba
 
-Ez a szakasz a [másolási utasítás használatával tölti be](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) a mintaadatok Azure Storage Blobból való betöltéséhez.  
+Ez a szakasz a [másolási utasítás használatával tölti be](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) a mintaadatok Azure Storage Blobból való betöltéséhez.  
 
 > [!NOTE]
 > Ez az oktatóanyag az adatokat közvetlenül a végső táblázatba tölti be. Az éles számítási feladatokhoz általában betöltődik egy előkészítési táblába. Amíg az adatok az előkészítési táblában vannak, bármilyen szükséges átalakítás elvégezhető rajtuk. 
@@ -393,7 +393,7 @@ Kövesse az alábbi lépéseket a fölöslegessé vált erőforrások eltávolí
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ennek az oktatóanyagnak a segítségével megtanulta, hogyan hozhat létre egy adattárházat, illetve egy felhasználót az adatok betöltéséhez. Az egyszerű [másolási utasítást](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#examples) használta az adatok adattárházba való betöltéséhez.
+Ennek az oktatóanyagnak a segítségével megtanulta, hogyan hozhat létre egy adattárházat, illetve egy felhasználót az adatok betöltéséhez. Az egyszerű [másolási utasítást](/sql/t-sql/statements/copy-into-transact-sql&preserve-view=true?view=azure-sqldw-latest&preserve-view=true#examples) használta az adatok adattárházba való betöltéséhez.
 
 A következőket hajtotta végre:
 > [!div class="checklist"]
@@ -413,6 +413,6 @@ Folytassa a fejlesztési áttekintéssel, amelyből megtudhatja, hogyan telepít
 
 További példákat és referenciákat a következő dokumentációban talál:
 
-- [A COPY utasítás referenciájának dokumentációja](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
+- [A COPY utasítás referenciájának dokumentációja](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax)
 - [Példák másolása az egyes hitelesítési módszerekhez](./quickstart-bulk-load-copy-tsql-examples.md)
 - [Rövid útmutató másolása egyetlen táblához](./quickstart-bulk-load-copy-tsql.md)

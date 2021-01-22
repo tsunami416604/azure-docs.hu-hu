@@ -6,12 +6,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.custom: references_regions
-ms.openlocfilehash: 2dd91e5c506f229d653fdf98bc0549c173cec793
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 1e5a53c80aed90e44ba594dcff3c8ca23afc2c4f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93351887"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684774"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes"></a>Azure Kubernetes Services (ak) fürt létrehozása és konfigurálása virtuális csomópontok használatához
 
@@ -48,6 +48,7 @@ A virtuális csomópontok funkciói nagy mértékben függenek az ACI funkciój�
 * Privát fürtökkel rendelkező virtuális csomópontok.
 * API-kiszolgáló által jóváhagyott IP-címtartományok használata az AK-hoz.
 * A Volume Mount Azure Files-megosztás támogatja az [általános célú v1-](../storage/common/storage-account-overview.md#types-of-storage-accounts)et. A [kötetek Azure Files megosztással való](azure-files-volume.md) csatlakoztatásának utasításait követve
+* Az IPv6 használata nem támogatott.
 
 ## <a name="next-steps"></a>Következő lépések
 

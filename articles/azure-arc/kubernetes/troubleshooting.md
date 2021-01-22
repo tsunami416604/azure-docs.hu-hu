@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Az arc-kompatibilis Kubernetes-fürtökkel kapcsolatos gyakori problémák elhárítása.
 keywords: Kubernetes, arc, Azure, tárolók
-ms.openlocfilehash: 42c90708854af6973ed1ef399b9867101a736b07
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 0827386eb6ec089cf7951e8fa513a77fc78aef22
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586159"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684089"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting-preview"></a>Azure arc-kompatibilis Kubernetes-hibaelhárítás (előzetes verzió)
 
@@ -24,7 +24,7 @@ Ez a dokumentum a kapcsolatokkal, engedélyekkel és ügynökökkel kapcsolatos 
 ### <a name="azure-cli-set-up"></a>Azure CLI-beállítás
 Az az connectedk8s vagy az k8sconfiguration CLI parancsok használata előtt gondoskodjon arról, hogy az az a megfelelő Azure-előfizetésen működjön.
 
-```console
+```azurecli
 az account set --subscription 'subscriptionId'
 az account show
 ```
@@ -79,7 +79,7 @@ A fürtök Azure-hoz való csatlakoztatásához az Azure-előfizetéshez és `cl
 
 Ha a megadott kubeconfig-fájl nem rendelkezik megfelelő engedélyekkel az Azure arc-ügynökök telepítéséhez, az Azure CLI-parancs hibát ad vissza, amely a Kubernetes API meghívására tesz kísérletet.
 
-```console
+```azurecli
 $ az connectedk8s connect --resource-group AzureArc --name AzureArcCluster
 Command group 'connectedk8s' is in preview. It may be changed/removed in a future release.
 Ensure that you have the latest helm version installed before proceeding to avoid unexpected errors.
@@ -94,7 +94,7 @@ A fürt tulajdonosának olyan Kubernetes-felhasználót kell használnia, amely 
 
 Az Azure arc-ügynök telepítéséhez tárolók készletét kell futtatni a célként megadott fürtön. Ha a fürt lassú internetkapcsolaton keresztül fut, a tároló rendszerképének lekérése hosszabb időt vehet igénybe, mint az Azure CLI időtúllépése.
 
-```console
+```azurecli
 $ az connectedk8s connect --resource-group AzureArc --name AzureArcCluster
 Command group 'connectedk8s' is in preview. It may be changed/removed in a future release.
 Ensure that you have the latest helm version installed before proceeding to avoid unexpected errors.

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 3490e3004e5f5dd99795967f0deb8510200fa50b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b0b0c43039648737b229edc79dd4e0a3dc45f38e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311032"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683340"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Felügyelt identitások használata Azure Machine Learning (előzetes verzió)
 
@@ -38,7 +38,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a felügyelt identitásokat 
 - Egy Azure Machine Learning-munkaterület. További információ: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 - [Machine learning szolgáltatás Azure CLI-bővítménye](reference-azure-machine-learning-cli.md)
 - A [Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/intro?view=azure-ml-py)-t.
-- A szerepkörök hozzárendeléséhez az Azure-előfizetéshez tartozó bejelentkezési azonosítónak rendelkeznie kell a [felügyelt identitás-kezelő](../role-based-access-control/built-in-roles.md#managed-identity-operator) szerepkörrel, vagy más olyan szerepkörrel, amely a szükséges műveleteket (például a __tulajdonost__ ) biztosítja.
+- A szerepkörök hozzárendeléséhez az Azure-előfizetéshez tartozó bejelentkezési azonosítónak rendelkeznie kell a [felügyelt identitás-kezelő](../role-based-access-control/built-in-roles.md#managed-identity-operator) szerepkörrel, vagy más olyan szerepkörrel, amely a szükséges műveleteket (például a __tulajdonost__) biztosítja.
 - Ismernie kell a [felügyelt identitások](../active-directory/managed-identities-azure-resources/overview.md)létrehozását és a velük való munkát.
 
 ## <a name="configure-managed-identities"></a>Felügyelt identitások konfigurálása
@@ -59,7 +59,7 @@ Ha az ACR rendszergazdai felhasználót nem engedélyezi az előfizetés-szabál
 [Hozzon létre ACR-t az Azure CLI-ből az](../container-registry/container-registry-get-started-azure-cli.md) argumentum beállítása nélkül ```--admin-enabled``` , vagy Azure Portal a rendszergazda felhasználó engedélyezése nélkül. Ezután Azure Machine Learning munkaterület létrehozásakor adja meg az ACR Azure-erőforrás-AZONOSÍTÓját. Az alábbi példa bemutatja, hogyan hozhat létre egy meglévő ACR-t használó új Azure ML-munkaterületet:
 
 > [!TIP]
-> A paraméter értékének lekéréséhez `--container-registry` használja az az [ACR show](/cli/azure/acr?view=azure-cli-latest#az_acr_show) parancsot az ACR adatainak megjelenítéséhez. A `id` mező tartalmazza az ACR erőforrás-azonosítóját.
+> A paraméter értékének lekéréséhez `--container-registry` használja az az [ACR show](/cli/azure/acr#az_acr_show) parancsot az ACR adatainak megjelenítéséhez. A `id` mező tartalmazza az ACR erőforrás-azonosítóját.
 
 ```azurecli-interactive
 az ml workspace create -w <workspace name> \
@@ -90,7 +90,7 @@ Ha nem hoz létre saját ACR-t, Azure Machine Learning szolgáltatás létrehoz 
 
     Ez a parancs az alábbi szöveghez hasonló értéket ad vissza. Csak a szöveg utolsó részét szeretné használni, amely az ACR-példány neve:
 
-    ```text
+    ```output
     /subscriptions/<subscription id>/resourceGroups/<my resource group>/providers/MicrosoftContainerReggistry/registries/<ACR instance name>
     ```
 
@@ -173,7 +173,7 @@ env.python.user_managed_dependencies = True
 
 Ebben az esetben a Azure Machine Learning szolgáltatás a privát ACR-ből származó alaprendszerképre épülő képzést vagy következtetési környezetet épít. Mivel a rendszerkép-létrehozási feladat az ACR-feladatok használatával történik a munkaterület ACR-ben, további lépéseket kell végrehajtania a hozzáférés engedélyezéséhez.
 
-1. Hozzon létre __felhasználó által hozzárendelt felügyelt identitást__ , és adja meg az identitás ACRPull hozzáférését a __privát ACR__ -hez.  
+1. Hozzon létre __felhasználó által hozzárendelt felügyelt identitást__ , és adja meg az identitás ACRPull hozzáférését a __privát ACR__-hez.  
 1. Az előző lépésben a __felhasználó által hozzárendelt felügyelt identitásban__ adjon meg egy felügyelt identitás-kezelő szerepkört a munkaterület __rendszerhez rendelt felügyelt__ identitásnak. Ez a szerepkör lehetővé teszi, hogy a munkaterület hozzárendelje a felhasználóhoz rendelt felügyelt identitást az ACR-feladathoz a felügyelt környezet létrehozásához. 
 
     1. A munkaterület-rendszerhez rendelt felügyelt identitás rendszerbiztonsági AZONOSÍTÓjának beszerzése:

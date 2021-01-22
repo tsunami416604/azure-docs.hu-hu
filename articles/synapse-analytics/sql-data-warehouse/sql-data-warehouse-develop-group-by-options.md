@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: emtehran
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: cdac3b1e502a203c272db75eb4345446b0f7c0c8
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3f0879aa9b6f9e084d0c51f0bb371740d333c1b6
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462763"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683256"
 ---
 # <a name="group-by-options-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Csoportosítási lehetőségek a dedikált SQL-készletek számára az Azure szinapszis Analyticsben
 
@@ -24,7 +24,7 @@ Ebből a cikkből megtudhatja, hogyan hozhatja ki a csoportok beállításait a 
 
 ## <a name="what-does-group-by-do"></a>Mit tesz a GROUP BY do?
 
-A [Group By](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL záradék összesíti az adatokat egy sorok összesítési halmazával. A CSOPORTOSÍTÁSi lehetőségek a dedikált SQL-készlet által nem támogatott beállítások. Ezek a beállítások megkerülő megoldásokkal rendelkeznek, amelyek a következők:
+A [Group By](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL záradék összesíti az adatokat egy sorok összesítési halmazával. A CSOPORTOSÍTÁSi lehetőségek a dedikált SQL-készlet által nem támogatott beállítások. Ezek a beállítások megkerülő megoldásokkal rendelkeznek, amelyek a következők:
 
 * Csoportosítás ÖSSZESÍTÉSsel
 * CSOPORTOSÍTÁSI KÉSZLETEK
@@ -52,7 +52,7 @@ GROUP BY ROLLUP (
 A kumulatív használatával az előző példa a következő összesítéseket kéri:
 
 * Ország és régió
-* Ország
+* Country
 * Végösszeg
 
 Ha az ÖSSZESÍTÉSt cserélni szeretné, és ugyanazokat az eredményeket adja vissza, használhatja a UNION ALL utasítást, és explicit módon megadhatja a szükséges összesítéseket:
@@ -183,6 +183,6 @@ ORDER BY 1,2,3
 
 A kód szakaszokra bontásával és a hurkos szerkezet létrehozásával a kód hatékonyabban kezelhető és karbantartható lesz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További fejlesztési tippek: a [fejlesztés áttekintése](sql-data-warehouse-overview-develop.md).

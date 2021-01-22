@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1217cf74ab36a8fe865e47009616b1ccb240df67
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: ed9b67e9c3d21d11c6e413694190850c20d2c46c
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98119883"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682936"
 ---
 # <a name="sql-authentication"></a>SQL-hitelesítés
 
@@ -92,18 +92,18 @@ Ezen rendszergazdai szerepkörök egyike a **dbmanager** szerepkör. Ezen szerep
 Adatbázis létrehozásához a felhasználónak egy Azure Active Directory felhasználó alapján egy SQL Server-bejelentkezésen alapuló felhasználónak kell lennie az adatbázisban, vagy tartalmaznia kell az `master` adatbázis felhasználóját.
 
 1. Rendszergazdai fiók használatával kapcsolódjon az `master` adatbázishoz.
-2. Hozzon létre egy SQL Server hitelesítési bejelentkezési azonosítót a [create login](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) utasítás használatával. Mintautasítás:
+2. Hozzon létre egy SQL Server hitelesítési bejelentkezési azonosítót a [create login](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) utasítás használatával. Mintautasítás:
 
    ```sql
    CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';
    ```
 
    > [!NOTE]
-   > Használjon erős jelszót a bejelentkezési vagy tartalmazottadatbázis-felhasználó létrehozásakor. További információkért lásd az [erős jelszavak](/sql/relational-databases/security/strong-passwords?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) létrehozását ismertető cikket.
+   > Használjon erős jelszót a bejelentkezési vagy tartalmazottadatbázis-felhasználó létrehozásakor. További információkért lásd az [erős jelszavak](/sql/relational-databases/security/strong-passwords?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) létrehozását ismertető cikket.
 
-   A teljesítmény javítása érdekében a bejelentkezéseket (a kiszolgálószintű elsődleges fiókokat) átmenetileg adatbázisszinten is gyorsítótárazza a rendszer. A hitelesítési gyorsítótár frissítésével kapcsolatban lásd a [DBCC FLUSHAUTHCACHE](/sql/t-sql/database-console-commands/dbcc-flushauthcache-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) használatát ismertető cikket.
+   A teljesítmény javítása érdekében a bejelentkezéseket (a kiszolgálószintű elsődleges fiókokat) átmenetileg adatbázisszinten is gyorsítótárazza a rendszer. A hitelesítési gyorsítótár frissítésével kapcsolatban lásd a [DBCC FLUSHAUTHCACHE](/sql/t-sql/database-console-commands/dbcc-flushauthcache-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) használatát ismertető cikket.
 
-3. Hozzon létre egy adatbázis-felhasználót a [create User](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) utasítás használatával. A felhasználó lehet egy Azure Active Directory hitelesítéssel rendelkező adatbázis-felhasználó (ha konfigurálta az Azure AD-hitelesítéshez szükséges környezetet), vagy egy SQL Server-hitelesítés vagy egy adatbázis-felhasználó, vagy egy SQL Server hitelesítési felhasználó egy SQL Server hitelesítési bejelentkezésen alapuló (az előző lépésben létrehozott) Minta utasítások:
+3. Hozzon létre egy adatbázis-felhasználót a [create User](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) utasítás használatával. A felhasználó lehet egy Azure Active Directory hitelesítéssel rendelkező adatbázis-felhasználó (ha konfigurálta az Azure AD-hitelesítéshez szükséges környezetet), vagy egy SQL Server-hitelesítés vagy egy adatbázis-felhasználó, vagy egy SQL Server hitelesítési felhasználó egy SQL Server hitelesítési bejelentkezésen alapuló (az előző lépésben létrehozott) Minta utasítások:
 
    ```sql
    CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER; -- To create a user with Azure Active Directory
@@ -111,7 +111,7 @@ Adatbázis létrehozásához a felhasználónak egy Azure Active Directory felha
    CREATE USER Mary FROM LOGIN Mary;  -- To create a SQL Server user based on a SQL Server authentication login
    ```
 
-4. Adja hozzá az új felhasználót a **DBManager** adatbázis-szerepkörhöz a `master` [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=azure-sqldw-latest) eljárás használatával (vegye figyelembe, hogy az [Alter role](/sql/t-sql/statements/alter-role-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) utasítás nem támogatott az SQL kiépített verziójában). Mintautasítások:
+4. Adja hozzá az új felhasználót a **DBManager** adatbázis-szerepkörhöz a `master` [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=azure-sqldw-latest&preserve-view=true) eljárás használatával (vegye figyelembe, hogy az [Alter role](/sql/t-sql/statements/alter-role-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) utasítás nem támogatott az SQL kiépített verziójában). Mintautasítások:
 
    ```sql
    EXEC sp_addrolemember 'dbmanager', 'Mary'; 
@@ -127,7 +127,7 @@ Most a felhasználó tud csatlakozni az `master` adatbázishoz, és létrehozhat
 
 ### <a name="login-managers"></a>Bejelentkezéskezelők
 
-A másik rendszergazdai szerepkör a bejelentkezéskezelői szerepkör. Ezen szerepkör tagjai létrehozhatnak új bejelentkezéseket a master adatbázisban. Ha szeretné, elvégezheti ugyanezen lépéseket (bejelentkezést és felhasználót hozhat létre, és a felhasználót a **loginmanager** szerepkörhöz adhatja) annak érdekében, hogy egy felhasználó új bejelentkezéseket hozhasson létre a master adatbázisban. Általában a bejelentkezések nem szükségesek, mivel a Microsoft azt javasolja, hogy a felhasználók a tárolt adatbázis-felhasználókat használják, és így az adatbázis szintjén hitelesítsék a felhasználókat a bejelentkezések alapján. További információt a [tartalmazottadatbázis-felhasználókkal kapcsolatos, az adatbázis hordozhatóvá tételével foglalkozó](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) cikkben talál.
+A másik rendszergazdai szerepkör a bejelentkezéskezelői szerepkör. Ezen szerepkör tagjai létrehozhatnak új bejelentkezéseket a master adatbázisban. Ha szeretné, elvégezheti ugyanezen lépéseket (bejelentkezést és felhasználót hozhat létre, és a felhasználót a **loginmanager** szerepkörhöz adhatja) annak érdekében, hogy egy felhasználó új bejelentkezéseket hozhasson létre a master adatbázisban. Általában a bejelentkezések nem szükségesek, mivel a Microsoft azt javasolja, hogy a felhasználók a tárolt adatbázis-felhasználókat használják, és így az adatbázis szintjén hitelesítsék a felhasználókat a bejelentkezések alapján. További információt a [tartalmazottadatbázis-felhasználókkal kapcsolatos, az adatbázis hordozhatóvá tételével foglalkozó](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) cikkben talál.
 
 ---
 
@@ -158,7 +158,7 @@ Azure SQL Database vagy szinapszis kiszolgáló nélküli verziójában használ
 ALTER ROLE db_owner ADD MEMBER Mary;
 ```
 
-A dedikált SQL-készletben használja az [EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+A dedikált SQL-készletben használja az [EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ```sql
 EXEC sp_addrolemember 'db_owner', 'Mary';
@@ -171,7 +171,7 @@ A Geo-replikálási bejelentkezések konfigurálásával kapcsolatos további in
 
 ### <a name="configuring-the-database-level-firewall"></a>Adatbázisszintű tűzfal konfigurálása
 
-Ajánlott eljárásként a nem rendszergazdai felhasználóknak csak az általuk használt adatbázisokhoz kell hozzáféréssel rendelkezniük a tűzfalon keresztül. Ahelyett, hogy a kiszolgálószintű tűzfalon keresztül hitelesítené az IP-címüket, és hozzáférést adna nekik az összes adatbázishoz, az [sp_set_database_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) utasítással konfigurálja az adatbázisszintű tűzfalat. Az adatbázisszintű tűzfal nem konfigurálható a portálon keresztül.
+Ajánlott eljárásként a nem rendszergazdai felhasználóknak csak az általuk használt adatbázisokhoz kell hozzáféréssel rendelkezniük a tűzfalon keresztül. Ahelyett, hogy a kiszolgálószintű tűzfalon keresztül hitelesítené az IP-címüket, és hozzáférést adna nekik az összes adatbázishoz, az [sp_set_database_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) utasítással konfigurálja az adatbázisszintű tűzfalat. Az adatbázisszintű tűzfal nem konfigurálható a portálon keresztül.
 
 ### <a name="non-administrator-access-path"></a>Nem rendszergazdai hozzáférés elérési útja
 
@@ -183,9 +183,9 @@ Ha az adatbázisszintű tűzfal megfelelően van konfigurálva, az adatbázis fe
 
 A hatékony hozzáférés-kezelés egyéni bejelentkezési adatok helyett csoportokhoz és szerepkörökhöz rendelt engedélyeket használ.
 
-- Azure Active Directory-hitelesítés használatakor az Azure Active Directory-felhasználókat helyezze egy Azure Active Directory-csoportba. Hozzon létre a csoportban egy adatbázis-felhasználót. Helyezzen egy vagy több adatbázis-felhasználót egy [adatbázis-szerepkörbe](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), majd rendeljen [engedélyeket](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) az adatbázis-szerepkörhöz.
+- Azure Active Directory-hitelesítés használatakor az Azure Active Directory-felhasználókat helyezze egy Azure Active Directory-csoportba. Hozzon létre a csoportban egy adatbázis-felhasználót. Helyezzen egy vagy több adatbázis-felhasználót egy [adatbázis-szerepkörbe](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), majd rendeljen [engedélyeket](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) az adatbázis-szerepkörhöz.
 
-- SQL Server-hitelesítés használata esetén hozzon létre tartalmazottadatbázis-felhasználókat az adatbázisban. Helyezzen egy vagy több adatbázis-felhasználót egy [adatbázis-szerepkörbe](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), majd rendeljen [engedélyeket](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) az adatbázis-szerepkörhöz.
+- SQL Server-hitelesítés használata esetén hozzon létre tartalmazottadatbázis-felhasználókat az adatbázisban. Helyezzen egy vagy több adatbázis-felhasználót egy [adatbázis-szerepkörbe](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), majd rendeljen [engedélyeket](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) az adatbázis-szerepkörhöz.
 
 Az adatbázis-szerepkörök lehetnek beépített szerepkörök, mint például a **db_owner**, a **db_ddladmin**, a **db_datawriter**, a **db_datareader**, a **db_denydatawriter** vagy a **db_denydatareader**. A **db_owner** általában teljes körű engedélyek biztosítására szolgál néhány felhasználó számára. A többi rögzített adatbázis-szerepkör hasznos az egyszerű adatbázisok fejlesztésének gyors elkezdéséhez, de a legtöbb éles környezetbeli adatbázishoz nem ajánlott. 
 

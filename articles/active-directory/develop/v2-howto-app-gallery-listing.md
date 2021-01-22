@@ -12,12 +12,12 @@ ms.date: 12/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 37d9c24d58e0dd9fb10db607ef1b96de0a44eb78
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 1f1100c27bb3c02e3d1a5040942509c24bab0e65
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97399366"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683988"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Az alkalmazás közzététele az Azure AD App Galleryben
 
@@ -175,7 +175,7 @@ A [scim](https://aka.ms/scimoverview) -létesítés támogatása nem kötelező,
 Ha többet szeretne megtudni az ügyfelek SCIM szabványainak és előnyeiről, tekintse meg a [kiépítés a scim – első lépések](https://aka.ms/scimoverview)című témakört.
 
 ### <a name="understand-the-azure-ad-scim-implementation"></a>Az Azure AD SCIM implementációjának ismertetése
-Az Azure AD SCIM megvalósításával kapcsolatos további tudnivalókért lásd: [scim-végpont létrehozása és a felhasználók üzembe helyezésének beállítása az Azure ad-vel](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups).
+Az Azure AD SCIM megvalósításával kapcsolatos további tudnivalókért lásd: [scim-végpont létrehozása és a felhasználók üzembe helyezésének beállítása az Azure ad-vel](../app-provisioning/use-scim-to-provision-users-and-groups.md).
 
 ### <a name="implement-scim"></a>SCIM megvalósítása
 Az Azure AD olyan [hivatkozási kódot](https://aka.ms/scimoverview) biztosít, amely segítséget nyújt egy scim-végpont létrehozásához. A GitHubon számos harmadik féltől származó kódtár és hivatkozás is megtalálható.  
@@ -186,7 +186,7 @@ Az alkalmazás teszteléséhez szüksége lesz egy Azure AD-bérlőre. A fejlesz
 
 Alternatív megoldásként az Azure AD-bérlő minden Microsoft 365-előfizetéssel rendelkezik. Az ingyenes Microsoft 365 fejlesztési környezet létrehozásához tekintse meg [a Microsoft 365 fejlesztői program csatlakoztatása](/office/developer-program/microsoft-365-developer-program)című témakört.
 
-Ha bérlője van, tesztelni kell az egyszeri bejelentkezést és a [kiépítés](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client)folyamatát. 
+Ha bérlője van, tesztelni kell az egyszeri bejelentkezést és a [kiépítés](../app-provisioning/use-scim-to-provision-users-and-groups.md#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client)folyamatát. 
 
 **OIDC vagy esküt használó alkalmazások** esetén [regisztrálja alkalmazását](quickstart-register-app.md) több-bérlős alkalmazásként. A támogatott fióktípus területen válassza ki a szervezeti címtár és a személyes Microsoft-fiókok lehetőséget.
 
@@ -274,7 +274,7 @@ Ha hozzá szeretné adni az alkalmazást a katalógusban a jelszó SSO használa
 
 ![Jelszó-SSO-alkalmazás listázása a katalógusban](./media/howto-app-gallery-listing/passwordsso.png)
 
-Ha [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2,0-végpontot hoz létre a felhasználók üzembe helyezéséhez, válassza a látható lehetőséget. Ha a sémát a bevezetési kérelemben adja meg, kövesse az [itt](https://docs.microsoft.com/azure/active-directory/app-provisioning/export-import-provisioning-configuration) található utasításokat a séma letöltéséhez. Az Ön által konfigurált sémát fogjuk használni a katalógusbeli alkalmazás létrehozásához a nem Gallery-alkalmazás teszteléséhez. 
+Ha [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2,0-végpontot hoz létre a felhasználók üzembe helyezéséhez, válassza a látható lehetőséget. Ha a sémát a bevezetési kérelemben adja meg, kövesse az [itt](../app-provisioning/export-import-provisioning-configuration.md) található utasításokat a séma letöltéséhez. Az Ön által konfigurált sémát fogjuk használni a katalógusbeli alkalmazás létrehozásához a nem Gallery-alkalmazás teszteléséhez. 
 
    ![A felhasználó kiépítési kérelme](./media/howto-app-gallery-listing/user-provisioning.png)
 

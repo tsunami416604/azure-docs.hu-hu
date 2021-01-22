@@ -3,12 +3,12 @@ title: Azure Functions használati terv üzemeltetése
 description: Ismerje meg, hogyan futtathatja a kódot olyan környezetben, amely dinamikusan méretezhető, de csak a végrehajtás során használt erőforrásokért kell fizetnie.
 ms.date: 8/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: c0619def4687935cd9e403563966b35b84f13c7c
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: ffb556ce48f18702e06fcdb02dda84f41ae5f906
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937667"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684691"
 ---
 # <a name="azure-functions-consumption-plan-hosting"></a>Azure Functions használati terv üzemeltetése
 
@@ -33,16 +33,16 @@ Ha a Azure Portalban hoz létre egy Function alkalmazást, a használati terv az
 Az alábbi hivatkozásokat követve megtudhatja, hogyan hozhat létre kiszolgáló nélküli Function alkalmazást a használati tervben, vagy programozott módon, vagy a Azure Portal:
 
 + [Azure CLI](./scripts/functions-cli-create-serverless.md)
-+ [Azure Portal](functions-create-first-azure-function.md)
++ [Azure Portal](./functions-get-started.md)
 + [Azure Resource Manager-sablon](functions-create-first-function-resource-manager.md)
 
-A functions-alkalmazásokat a [Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure) vagy a [Visual Studio](functions-create-your-first-function-visual-studio.md#publish-the-project-to-azure)alkalmazásból származó functions-projektek közzétételekor is létrehozhatja egy felhasználási tervben.
+A functions-alkalmazásokat a [Visual Studio Code](./create-first-function-vs-code-csharp.md#publish-the-project-to-azure) vagy a [Visual Studio](functions-create-your-first-function-visual-studio.md#publish-the-project-to-azure)alkalmazásból származó functions-projektek közzétételekor is létrehozhatja egy felhasználási tervben.
 
 ## <a name="multiple-apps-in-the-same-plan"></a>Több alkalmazás ugyanabban a csomagban
 
 Az azonos régióban található Function apps ugyanahhoz a használati tervhez is hozzárendelhető. Nincs hátránya, hogy több alkalmazás is fut ugyanabban a használati csomagban. Ha több alkalmazást rendel ugyanahhoz a használati tervhez, az egyes alkalmazások rugalmasságát, méretezhetőségét és megbízhatóságát nem befolyásolja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 + [Üzemeltetési lehetőségek Azure Functions](functions-scale.md)
 + [Eseményvezérelt skálázás Azure Functions](event-driven-scaling.md)

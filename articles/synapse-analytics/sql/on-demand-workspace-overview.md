@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 34ce36f0ff348f896b7c2ea680c113b5e9e4ea09
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 87f592f0cff8504fbafba392d20f405640e2578a
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463163"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682970"
 ---
 # <a name="serverless-sql-pool-in-azure-synapse-analytics"></a>Kiszolgáló nélküli SQL-készlet az Azure szinapszis Analyticsben 
 
@@ -75,21 +75,21 @@ A biztonság a használatával kényszeríthető:
 
 Támogatott T-SQL:
 
-- A teljes [kijelölési](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) felület támogatott, beleértve az SQL-függvények többségét
+- A teljes [kijelölési](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) felület támogatott, beleértve az SQL-függvények többségét
 - CETAS – KÜLSŐ TÁBLA LÉTREHOZÁSA KIJELÖLÉSKÉNT
 - Csak nézetekkel és biztonsággal kapcsolatos DDL-utasítások
 
 A kiszolgáló nélküli SQL-készletnek nincs helyi tárterülete, csak a metaadat-objektumokat tárolja az adatbázisokban. Ezért a következő fogalmakhoz kapcsolódó T-SQL nem támogatott:
 
 - Táblák
-- Eseményindítók
+- Triggerek
 - Tényleges táblán alapuló nézetek
 - A nézetekhez és a biztonsághoz kapcsolódó DDL-utasítások
 - DML-utasítások
 
 ### <a name="extensions"></a>Bővítmények
 
-A következő képességek hozzáadásával lehetővé teszi a zökkenőmentes működést a fájlokban tárolt adatlekérdezések esetében, a kiszolgáló nélküli SQL-készlet pedig kibővíti a meglévő [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) funkciót:
+A következő képességek hozzáadásával lehetővé teszi a zökkenőmentes működést a fájlokban tárolt adatlekérdezések esetében, a kiszolgáló nélküli SQL-készlet pedig kibővíti a meglévő [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) funkciót:
 
 [Több fájl vagy mappa lekérdezése](query-data-storage.md#query-multiple-files-or-folders)
 
@@ -125,7 +125,7 @@ A kiszolgáló nélküli SQL-készlet hitelesítése arra utal, hogy a felhaszn�
 
 - **Azure Active Directory hitelesítés**:
 
-  Ez a hitelesítési módszer Azure Active Directory által felügyelt identitásokat használ. Az Azure AD-felhasználók esetében a többtényezős hitelesítés is engedélyezhető. [Amikor csak lehet](/sql/relational-databases/security/choose-an-authentication-mode?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), használja az Active Directory-hitelesítést (beépített biztonság).
+  Ez a hitelesítési módszer Azure Active Directory által felügyelt identitásokat használ. Az Azure AD-felhasználók esetében a többtényezős hitelesítés is engedélyezhető. [Amikor csak lehet](/sql/relational-databases/security/choose-an-authentication-mode?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), használja az Active Directory-hitelesítést (beépített biztonság).
 
 #### <a name="authorization"></a>Engedélyezés
 
@@ -143,7 +143,7 @@ A kiszolgáló nélküli SQL Pool szolgáltatásba bejelentkezett felhasználó 
 
 - A **felhasználói identitás** (más néven "átmenő") olyan engedélyezési típus, ahol a kiszolgáló nélküli SQL-készletbe bejelentkezett Azure ad-felhasználó identitása az adatokhoz való hozzáférés engedélyezésére szolgál. Az adatok elérése előtt az Azure Storage rendszergazdájának engedélyeket kell adnia az Azure AD-felhasználónak az adatokhoz való hozzáféréshez. Ez az engedélyezési típus a kiszolgáló nélküli SQL-készletbe bejelentkezett Azure AD-felhasználót használja, ezért az SQL-felhasználói típusok nem támogatottak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A végponti kapcsolatok és a lekérdezési fájlok további információi a következő cikkekben találhatók: 
 - [Kapcsolódás a végponthoz](connect-overview.md)
 - [Fájlok lekérdezése](develop-storage-files-overview.md)

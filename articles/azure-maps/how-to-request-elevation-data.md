@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: a303f5e6177d0dc4205eaec8c3b1911e8e004fe3
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: d14eda84144105bf2e04f1238284bc58a91c4c03
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602433"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684055"
 ---
 # <a name="request-elevation-data-using-the-azure-maps-elevation-service-preview"></a>Jogosultságszint-emelési kérések igénylése a Azure Maps jogosultságszint-emelési szolgáltatással (előzetes verzió)
 
@@ -22,7 +22,7 @@ ms.locfileid: "98602433"
 > A Azure Maps jogosultságszint-emelési szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-A Azure Maps [jogosultságszint-emelési szolgáltatás](https://docs.microsoft.com/rest/api/maps/elevation) API-kat biztosít a jogosultságszint-emelési adatlekérdezéshez bárhol a Föld felszínén. A mintavételes jogosultságszint-emelési adat az elérési utakon, egy meghatározott határolókereton vagy adott koordinátákon keresztül kérhető le. Azt is megteheti, hogy a [Render v2 – Get Map csempe API-](https://docs.microsoft.com/rest/api/maps/renderv2) val lekéri a jogosultságszint-emelési adatgyűjtési formátumot. A csempék GeoTIFF raszteres formátumban lesznek továbbítva. Ez a cikk bemutatja, hogyan használhatók a Azure Maps jogosultságszint-emelési szolgáltatás és a Map csempe API a jogosultságszint-emelési kérések igényléséhez. A jogosultságszint-emelési adatkérést GeoJSON és GeoTiff formátumban is kérheti.
+A Azure Maps [jogosultságszint-emelési szolgáltatás](/rest/api/maps/elevation) API-kat biztosít a jogosultságszint-emelési adatlekérdezéshez bárhol a Föld felszínén. A mintavételes jogosultságszint-emelési adat az elérési utakon, egy meghatározott határolókereton vagy adott koordinátákon keresztül kérhető le. Azt is megteheti, hogy a [Render v2 – Get Map csempe API-](/rest/api/maps/renderv2) val lekéri a jogosultságszint-emelési adatgyűjtési formátumot. A csempék GeoTIFF raszteres formátumban lesznek továbbítva. Ez a cikk bemutatja, hogyan használhatók a Azure Maps jogosultságszint-emelési szolgáltatás és a Map csempe API a jogosultságszint-emelési kérések igényléséhez. A jogosultságszint-emelési adatkérést GeoJSON és GeoTiff formátumban is kérheti.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -35,7 +35,7 @@ Ez a cikk a [Poster](https://www.postman.com/) alkalmazást használja, de más 
 
 ## <a name="request-elevation-data-in-raster-tiled-format"></a>Jogosultságszint-emelési adatkérések a raszter mozaik formátumban
 
-A jogosultságszint-emelési adattároló formátumában a [Render v2-Get Map csempe API-](https://docs.microsoft.com/rest/api/maps/renderv2)t használhatja. Ha a csempe megtalálható, az API GeoTIFF-ként adja vissza a csempét. Ellenkező esetben az API a 0 értéket adja vissza. Az összes raszteres DEM-csempe a GeoID (tengerszint feletti) föld üzemmódot használja. Ebben a példában az MT-re vonatkozó jogosultságszint-emelési adatkérést fogunk kérni. Everest.
+A jogosultságszint-emelési adattároló formátumában a [Render v2-Get Map csempe API-](/rest/api/maps/renderv2)t használhatja. Ha a csempe megtalálható, az API GeoTIFF-ként adja vissza a csempét. Ellenkező esetben az API a 0 értéket adja vissza. Az összes raszteres DEM-csempe a GeoID (tengerszint feletti) föld üzemmódot használja. Ebben a példában az MT-re vonatkozó jogosultságszint-emelési adatkérést fogunk kérni. Everest.
 
 >[!TIP]
 >Ha egy csempét szeretne beolvasni a globális Térkép egy adott területére, a megfelelő nagyítási szinten meg kell találnia a megfelelő csempét. Vegye figyelembe továbbá, hogy a WorldDEM a teljes globális jelentősen eltérővé váltak fedi le, de nem fedi le az óceánokat.  További információ: [nagyítási szintek és csempék rácsa](zoom-levels-and-tile-grid.md).
@@ -58,9 +58,9 @@ A jogosultságszint-emelési szolgáltatás (előzetes verzió) API-k segítség
 
 * [Pontok lekérdezése](/rest/api/maps/elevation/getdataforpoints)
 * [Pontok utáni adatposta](/rest/api/maps/elevation/postdataforpoints)
-* [Adatlekérdezés a vonallánchoz](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline)
-* [Adatposta a vonallánchoz](https://docs.microsoft.com/rest/api/maps/elevation/postdataforpolyline)
-* [A Határolókerethoz tartozó adat lekérése](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)
+* [Adatlekérdezés a vonallánchoz](/rest/api/maps/elevation/getdataforpolyline)
+* [Adatposta a vonallánchoz](/rest/api/maps/elevation/postdataforpolyline)
+* [A Határolókerethoz tartozó adat lekérése](/rest/api/maps/elevation/getdataforboundingbox)
 
 >[!IMPORTANT]
 > Ha nem lehet visszaadni egy adatvisszaadás értéket, az összes API-t visszaadja `0` .
@@ -126,11 +126,11 @@ Ebben a példában a [pontok beolvasása API](/rest/api/maps/elevation/getdatafo
 
 ### <a name="request-elevation-data-samples-along-a-polyline"></a>Jogosultságszint-emelési kérések lekérdezése egy vonallánc mentén
 
-Ebben a példában a [vonalláncra vonatkozó adatgyűjtést](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline) fogjuk használni, hogy öt, egymással egyenlően felhelyezett mintát igényeljen a jogosultságszint-emelési koordináták közötti egyenes vonal mentén. Az Everest és a Chamlang Mountains. Mindkét koordinátákat hosszú/lat formátumban kell megadni. Ha nem ad meg értéket a `samples` paraméterhez, a minták száma alapértelmezés szerint 10. A minták maximális száma 2 000.
+Ebben a példában a [vonalláncra vonatkozó adatgyűjtést](/rest/api/maps/elevation/getdataforpolyline) fogjuk használni, hogy öt, egymással egyenlően felhelyezett mintát igényeljen a jogosultságszint-emelési koordináták közötti egyenes vonal mentén. Az Everest és a Chamlang Mountains. Mindkét koordinátákat hosszú/lat formátumban kell megadni. Ha nem ad meg értéket a `samples` paraméterhez, a minták száma alapértelmezés szerint 10. A minták maximális száma 2 000.
 
 Ezután a vonallánchoz tartozó adatlekérdezés használatával három, egymással egyenlő helyen lévő, a jogosultságszint-emelési adatmennyiséget tartalmazó mintát kell kérni. A minták pontos helyét a három hosszú/lat koordináta-pár átadásával fogjuk meghatározni.
 
-Végezetül a [vonallánc API utáni Adatpostát](https://docs.microsoft.com/rest/api/maps/elevation/postdataforpolyline) fogjuk használni, hogy megegyezzenek a jogosultságszint-emelési és a három egyenlő helyen lévő minták.
+Végezetül a [vonallánc API utáni Adatpostát](/rest/api/maps/elevation/postdataforpolyline) fogjuk használni, hogy megegyezzenek a jogosultságszint-emelési és a három egyenlő helyen lévő minták.
 
 Az URL-címben szereplő földrajzi szélességeknek és hosszúságoknak a WGS84 (globális geodéziai rendszer) decimális mértékben kell szerepelniük.
 
@@ -229,7 +229,7 @@ Az URL-címben szereplő földrajzi szélességeknek és hosszúságoknak a WGS8
     }
     ```
 
-7. Most hívjuk a [vonallánc API utáni Adatpostát](https://docs.microsoft.com/rest/api/maps/elevation/postdataforpolyline) , hogy megszerezzük a jogosultságszint-emelési adatgyűjtést ugyanarra a három pontra. Válassza a http **post** metódust a Builder (szerkesztő) lapon, és adja meg a következő URL-címet. Ehhez a kérelemhez és a cikkben említett egyéb kérelmekhez cserélje le az `{Azure-Maps-Primary-Subscription-key}` elsődleges előfizetési kulcsát.
+7. Most hívjuk a [vonallánc API utáni Adatpostát](/rest/api/maps/elevation/postdataforpolyline) , hogy megszerezzük a jogosultságszint-emelési adatgyűjtést ugyanarra a három pontra. Válassza a http **post** metódust a Builder (szerkesztő) lapon, és adja meg a következő URL-címet. Ehhez a kérelemhez és a cikkben említett egyéb kérelmekhez cserélje le az `{Azure-Maps-Primary-Subscription-key}` elsődleges előfizetési kulcsát.
 
     ```http
     https://atlas.microsoft.com/elevation/line/json?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&samples=5
@@ -256,7 +256,7 @@ Az URL-címben szereplő földrajzi szélességeknek és hosszúságoknak a WGS8
 
 ### <a name="request-elevation-data-by-bounding-box"></a>Jogosultságszint-emelési adat kérése a határolókeret alapján
 
-Most használjuk a [beolvasás a határolókeret](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox) számára lehetőséget a jogosultságszint-emelési adat az MT közelében való igényléséhez. Rainier, WA. A jogosultságszint-emelési adat a határvonalon belül egyenlően elhelyezkedő helyeken lesz visszaadva. A (2) a lat/hosszú koordináták (déli szélesség, nyugati hosszúság | északi szélesség, keleti hosszúság) által meghatározott határoló terület sorokra és oszlopokra van osztva. A határoló Box-fiók szélei két (2) és az oszlopok két (2) oszlopa között. A rendszer a sorok és oszlopok metszéspontjában létrehozott rács csúcsokra vonatkozó jogosultságszint-emeléseket adja vissza. Egyetlen kérelemben legfeljebb 2000 emelés adható vissza.
+Most használjuk a [beolvasás a határolókeret](/rest/api/maps/elevation/getdataforboundingbox) számára lehetőséget a jogosultságszint-emelési adat az MT közelében való igényléséhez. Rainier, WA. A jogosultságszint-emelési adat a határvonalon belül egyenlően elhelyezkedő helyeken lesz visszaadva. A (2) a lat/hosszú koordináták (déli szélesség, nyugati hosszúság | északi szélesség, keleti hosszúság) által meghatározott határoló terület sorokra és oszlopokra van osztva. A határoló Box-fiók szélei két (2) és az oszlopok két (2) oszlopa között. A rendszer a sorok és oszlopok metszéspontjában létrehozott rács csúcsokra vonatkozó jogosultságszint-emeléseket adja vissza. Egyetlen kérelemben legfeljebb 2000 emelés adható vissza.
 
 Ebben a példában a következő sorokat adjuk meg: 3 és Columns = 6. a válasz a 18 jogosultságszint-emelési értéket adja vissza. A következő ábrán a jogosultságszint-emelési értékek a délnyugati saroktól kezdődnek, majd nyugatról keletre és délről északra tartanak.  A jogosultságszint-emelési pontok számozása a visszaadott sorrendben történik.
 
@@ -480,7 +480,7 @@ Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/7bee08e5cb13d05cb0
 </iframe>
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Maps jogosultságszint-emelési (előnézet) API-k további megismeréséhez lásd:
 
@@ -488,15 +488,15 @@ A Azure Maps jogosultságszint-emelési (előnézet) API-k további megismerés�
 > [Jogosultságszint-emelés (előzetes verzió) – az adatlekérdezés a lat hosszú koordinátáihoz](/rest/api/maps/elevation/getdataforpoints)
 
 > [!div class="nextstepaction"]
-> [Jogosultságszint-emelés (előzetes verzió) – a Határolókerethoz tartozó adat lekérése](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)
+> [Jogosultságszint-emelés (előzetes verzió) – a Határolókerethoz tartozó adat lekérése](/rest/api/maps/elevation/getdataforboundingbox)
 
 > [!div class="nextstepaction"]
-> [Jogosultságszint-emelés (előzetes verzió) – a vonalláncra vonatkozó adatlekérdezés](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline)
+> [Jogosultságszint-emelés (előzetes verzió) – a vonalláncra vonatkozó adatlekérdezés](/rest/api/maps/elevation/getdataforpolyline)
 
 > [!div class="nextstepaction"]
-> [Render v2 – Térkép lekérése csempe](https://docs.microsoft.com/rest/api/maps/renderv2)
+> [Render v2 – Térkép lekérése csempe](/rest/api/maps/renderv2)
 
 A Azure Maps REST API-k teljes listájáért lásd:
 
 > [!div class="nextstepaction"]
-> [Azure Maps REST API-k](https://docs.microsoft.com/rest/api/maps/)
+> [Azure Maps REST API-k](/rest/api/maps/)

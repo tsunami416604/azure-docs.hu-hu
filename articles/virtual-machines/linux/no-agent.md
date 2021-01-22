@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 09/01/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 9f0309f4e8273c2ef19ea86636de8e3aa6b6c4bc
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: edbcabfe4d0b633a784163562f52b303120916ca
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435100"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685062"
 ---
 # <a name="creating-generalized-images-without-a-provisioning-agent"></a>Általánosított rendszerképek létrehozása kiépítési ügynök nélkül
 
@@ -180,7 +180,7 @@ Ha a virtuális gépnek nincs telepítve vagy elérhető a Python, programozott 
 
 Ez a bemutató rendszerszintű, a modern Linux-disztribúciók leggyakoribb init rendszerét használja. Tehát a legegyszerűbb és legnatív módszer, amellyel biztosítható, hogy a jelentés kész mechanizmusa a megfelelő időben fusson egy rendszerszintű szolgáltatási egység létrehozásához. A következő egységnyi fájlt adhatja hozzá `/etc/systemd/system` (ez a példa az egység fájljának nevét `azure-provisioning.service` ):
 
-```
+```bash
 [Unit]
 Description=Azure Provisioning
 
@@ -204,7 +204,7 @@ Ez a rendszerű szolgáltatás az alapszintű kiépítés során három dolgot t
 
 A fájlrendszerben lévő egységhez futtassa a következő parancsot az engedélyezéséhez:
 
-```
+```bash
 $ sudo systemctl enable azure-provisioning.service
 ```
 
@@ -214,14 +214,14 @@ Most, hogy a virtuális gép készen áll általánosítani, és létrehoz egy r
 
 A fejlesztői gépen a következő lépésekkel készítheti elő a rendszerkép létrehozását az alapszintű virtuális gépről:
 
-```
+```bash
 $ az vm deallocate --resource-group demo1 --name demo1
 $ az vm generalize --resource-group demo1 --name demo1
 ```
 
 És hozza létre a rendszerképet ebből a virtuális gépről:
 
-```
+```bash
 $ az image create \
     --resource-group demo1 \
     --source demo1 \
@@ -231,7 +231,7 @@ $ az image create \
 
 Most már készen áll arra, hogy létrehozzon egy új virtuális gépet (vagy több virtuális gépet) a rendszerképből:
 
-```
+```bash
 $ IMAGE_ID=$(az image show -g demo1 -n demo1img --query id -o tsv)
 $ az vm create \
     --resource-group demo12 \
@@ -249,7 +249,7 @@ $ az vm create \
 
 A virtuális gép üzembe helyezése sikeresen megtörtént. Jelentkezzen be az újonnan kiépítő virtuális gépre, és tekintse meg a jelentés kész rendszerbe állítására szolgáló szolgáltatás kimenetét:
 
-```
+```bash
 $ sudo journalctl -u azure-provisioning.service
 -- Logs begin at Thu 2020-06-11 20:28:45 UTC, end at Thu 2020-06-11 20:31:24 UTC. --
 Jun 11 20:28:49 thstringnopa systemd[1]: Starting Azure Provisioning...
@@ -271,6 +271,6 @@ Jun 11 20:28:56 thstringnopa2 systemd[1]: Started Azure Provisioning.
 
 Ha saját üzembe helyezési kódot vagy ügynököt valósít meg, akkor a Microsoft támogatási szolgálata csak a nem elérhető kiépítési felületekkel kapcsolatos problémákat vizsgálja. Folyamatosan fejlesztünk javításokat és változásokat ezen a területen, ezért figyelnie kell a Cloud-init és az Azure Linux-ügynök változásait az API-változások kiépítési folyamatához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: Linux- [kiépítés](provisioning.md).

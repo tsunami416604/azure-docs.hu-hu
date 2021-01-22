@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6f74f973abc33d809624bd8abd5a514a52ccfe70
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 04ca8d515dbc5a28a7d3a30369d97877928c9dc1
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602694"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683864"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>Function Apps-alkalmazások összekapcsolhatók az Azure-ban az adatfeldolgozáshoz
 
@@ -36,7 +36,7 @@ Az itt látható lépések áttekintése:
 
 ## <a name="create-a-function-app-in-visual-studio"></a>Function-alkalmazás létrehozása a Visual Studióban
 
-A Visual Studio 2019-ben válassza a _fájl > új > projekt_ elemet, és keresse meg a _Azure functions_ sablont, majd kattintson a _Tovább gombra_.
+A Visual Studio 2019-es verziójában válassza a _fájl > új > projekt_ elemet, és keresse meg a _Azure functions_ sablont. Kattintson a _Tovább_ gombra.
 
 :::image type="content" source="media/how-to-create-azure-function/create-azure-function-project.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
 
@@ -44,11 +44,11 @@ Adja meg a Function alkalmazás nevét, majd válassza a _Létrehozás_ lehetős
 
 :::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="Visual Studio: új projekt konfigurálása":::
 
-Válassza ki a Function app *Event Grid trigger* típusát, és válassza a _Létrehozás_ lehetőséget.
+Válassza ki az *Event Grid trigger* függvény alkalmazási típusát, és válassza a _Létrehozás_ lehetőséget.
 
-:::image type="content" source="media/how-to-create-azure-function/eventgridtrigger-function.png" alt-text="Visual Studio: Azure Functions Project trigger párbeszédpanel":::
+:::image type="content" source="media/how-to-create-azure-function/event-grid-trigger-function.png" alt-text="Visual Studio: Azure Functions Project trigger párbeszédpanel":::
 
-Miután létrehozta a Function alkalmazást, a Visual Studio automatikusan feltölti a kódot a **function.cs** -fájlban a projekt mappájába. Ez a rövid függvény az események naplózására szolgál.
+A Function app létrehozása után a Visual Studio egy **Function1.cs** -fájlban hozza létre a projekt mappájában található kódot. Ez a rövid függvény az események naplózására szolgál.
 
 :::image type="content" source="media/how-to-create-azure-function/visual-studio-sample-code.png" alt-text="Visual Studio: Project-ablak mintakód-kóddal":::
 
@@ -56,11 +56,11 @@ Miután létrehozta a Function alkalmazást, a Visual Studio automatikusan felt�
 
 Az SDK-nak a Function alkalmazásba való felvételével írhat egy függvényt. A Function app a [.net-hez készült Azure Digital Twins SDK (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)használatával kommunikál az Azure Digital Twins szolgáltatással. 
 
-Az SDK használatához a következő csomagokat kell felvennie a projektbe. A csomagokat telepítheti a Visual Studio NuGet csomagkezelő használatával, vagy hozzáadhatja a csomagokat a `dotnet` parancssori eszköz használatával. Válassza ki az alábbi módszerek egyikét: 
+Az SDK használatához a következő csomagokat kell felvennie a projektbe. A csomagokat telepítheti a Visual Studio NuGet csomagkezelő használatával, vagy hozzáadhatja a csomagokat `dotnet` egy parancssori eszköz használatával. Kövesse az alábbi lépéseket az előnyben részesített módszerhez.
 
 **1. lehetőség. Csomagok hozzáadása a Visual Studio Package Managerrel:**
     
-Ehhez kattintson a jobb gombbal a projektre, és válassza a _NuGet-csomagok kezelése_ elemet a listából. Ezután a megnyíló ablakban válassza a _Tallózás_ fület, és keresse meg a következő csomagokat. Válassza a _telepítés_ lehetőséget, és _fogadja el_ a licencszerződést a csomagok telepítéséhez.
+Kattintson a jobb gombbal a projektre, és válassza a _NuGet-csomagok kezelése_ elemet a listából. Ezután a megnyíló ablakban válassza a _Tallózás_ lapot, és keresse meg a következő csomagokat. Válassza a _telepítés_ lehetőséget, és _fogadja el_ a licencszerződést a csomagok telepítéséhez.
 
 * `Azure.DigitalTwins.Core`
 * `Azure.Identity`
@@ -78,15 +78,15 @@ dotnet add package System.Net.Http
 dotnet add package Azure.Core
 ```
 
-Ezután a Visual Studio Megoldáskezelő nyissa meg a _function.cs_ fájlt, ahol a mintakód szerepel, és adja hozzá a következő _using_ utasításokat a függvényhez. 
+Ezután a Visual Studio Megoldáskezelő nyissa meg azt a _Function1.cs_ -fájlt, amelyben a mintakód szerepel, és adja hozzá a következő `using` utasításokat a függvényhez. 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="Function_dependencies":::
 
 ## <a name="add-authentication-code-to-the-function"></a>Hitelesítési kód hozzáadása a függvényhez
 
-Ekkor deklarálja az osztály szintjének változóit, és adja hozzá a hitelesítési kódot, amely lehetővé teszi, hogy a függvény hozzáférhessen az Azure digitális Twins szolgáltatáshoz. A következőt adja hozzá a függvényhez a (z) {a Function Name}. cs fájlban.
+Ekkor deklarálja az osztály szintjének változóit, és adja hozzá a hitelesítési kódot, amely lehetővé teszi, hogy a függvény hozzáférhessen az Azure digitális Twins szolgáltatáshoz. A következőt fogja hozzáadni a függvényhez a _Function1.cs_ fájlban:.
 
-* A ADT szolgáltatás URL-címének beolvasása környezeti változóként. Érdemes beolvasni a szolgáltatás URL-címét egy környezeti változóból, nem pedig a függvényben rögzített kódolással.
+* Kód az Azure Digital Twins szolgáltatás URL-címének beolvasásához környezeti változóként. Érdemes beolvasni a szolgáltatás URL-címét egy környezeti változóból, nem pedig a függvényben rögzített kódolással.
 
     :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="ADT_service_URL":::
 
@@ -97,43 +97,24 @@ Ekkor deklarálja az osztály szintjének változóit, és adja hozzá a hiteles
 * A felügyelt identitás hitelesítő adatait Azure Functions használhatja.
     :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="ManagedIdentityCredential":::
 
-* Vegyen fel egy helyi változót a _DigitalTwinsClient_ belül, hogy az Azure digitális Twins-ügyfél példányát a Function projekthez tartsa. Ez a változó *ne* legyen statikus az osztályban.
+* Vegyen fel egy helyi változót a _DigitalTwinsClient_ belül, hogy az Azure digitális Twins-ügyfél példánya tárolva legyen. Ez a változó *ne* legyen statikus az osztályban.
     :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="DigitalTwinsClient":::
 
-* Vegyen fel egy NULL értékű _adtInstanceUrl_ , és zárja be a függvény logikáját egy try catch blokkban a kivételek megfogásához.
+* Vegyen fel egy NULL értékű _adtInstanceUrl_ , és zárja be a függvény logikáját egy try/catch blokkban a kivételek megfogásához.
 
 A módosítások után a függvény kódja a következőhöz hasonló lesz:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs":::
 
+Most, hogy megtörtént az alkalmazása, közzéteheti az Azure-ban a következő szakaszban ismertetett lépések segítségével.
+
 ## <a name="publish-the-function-app-to-azure"></a>A függvényalkalmazás közzététele az Azure-ban
 
-Ha közzé szeretné tenni a projektet egy Azure-beli Function alkalmazásban, kattintson a jobb gombbal a függvény projektre (nem a megoldásra) Megoldáskezelő, és válassza a **Közzététel** lehetőséget.
-
-> [!IMPORTANT] 
-> Az Azure-beli Function-alkalmazásokban az előfizetése további díjakat is felszámít az Azure Digital ikrektől függetlenül.
-
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function.png" alt-text="Visual Studio: közzétételi funkció az Azure-ban":::
-
-Válassza ki az **Azure** -t közzétételi célként, és válassza a **tovább** lehetőséget.
-
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-1.png" alt-text="Visual Studio: Azure Functions közzététele párbeszédpanel, válassza az Azure lehetőséget. ":::
-
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-2.png" alt-text="Visual Studio: a függvény közzététele párbeszédpanel, válassza az Azure függvényalkalmazás (Windows) vagy (Linux) lehetőséget a gép alapján":::
-
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-3.png" alt-text="Visual Studio: a függvény közzététele párbeszédpanel, új Azure-függvény létrehozása":::
-
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-4.png" alt-text="Visual Studio: a függvény közzététele párbeszédpanel, töltse ki a mezőket, majd válassza a létrehozás lehetőséget.":::
-
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-5.png" alt-text="Visual Studio: közzétételi függvény párbeszédpanel, válassza ki a függvény alkalmazást a listából, és fejezze be":::
-
-A következő lapon adja meg az új függvény alkalmazás, egy erőforráscsoport és egyéb részletek kívánt nevét.
-Ahhoz, hogy a Function alkalmazás hozzáférhessen az Azure digitális Twins-hoz, rendelkeznie kell egy rendszer által felügyelt identitással, és engedéllyel kell rendelkeznie az Azure Digital Twins-példányhoz való hozzáféréshez.
-
-Következő lépésként beállíthatja a függvény biztonsági hozzáférését a parancssori felület vagy a Azure Portal használatával. Válassza ki az alábbi módszerek egyikét:
+[!INCLUDE [digital-twins-publish-azure-function.md](../../includes/digital-twins-publish-azure-function.md)]
 
 ## <a name="set-up-security-access-for-the-function-app"></a>Biztonsági hozzáférés beállítása a Function alkalmazáshoz
-A Function app biztonsági hozzáférését a következő lehetőségek egyikének használatával állíthatja be:
+
+Az Azure CLI vagy a Azure Portal használatával biztonsági hozzáférést állíthat be a Function alkalmazáshoz. Kövesse az alábbi lépéseket az előnyben részesített lehetőségnél.
 
 ### <a name="option-1-set-up-security-access-for-the-function-app-using-cli"></a>1. lehetőség: a Function alkalmazás biztonsági hozzáférésének beállítása a parancssori felület használatával
 
@@ -169,7 +150,7 @@ A rendszerhez rendelt felügyelt identitás lehetővé teszi, hogy az Azure-erő
 
 A [Azure Portal](https://portal.azure.com/)keressen rá a _Function app_ kifejezésre a keresési sávban a korábban létrehozott Function alkalmazás nevével. Válassza ki a *függvényalkalmazás* a listából. 
 
-:::image type="content" source="media/how-to-create-azure-function/portal-search-for-functionapp.png" alt-text="Azure Portal: Keresés a függvény alkalmazásban":::
+:::image type="content" source="media/how-to-create-azure-function/portal-search-for-function-app.png" alt-text="Azure Portal: Keresés a függvény alkalmazásban":::
 
 A felügyelt identitás engedélyezéséhez kattintson a bal oldali navigációs sávban az _Identity (identitás_ ) elemre a függvény alkalmazás ablakban.
 A _rendszer-hozzárendelés_ lapon állítsa be az _állapotot_ a be értékre, és _mentse_ azt. Egy előugró ablak jelenik meg, amely _lehetővé teszi a rendszerhez rendelt felügyelt identitás engedélyezését_.
@@ -206,31 +187,29 @@ Ezután mentse a részleteket a _Save (Mentés_ ) gomb megnyomásával.
 
 Az Azure Digital Twins-példány URL-címét elérhetővé teheti a függvény számára egy környezeti változó beállításával. Erről további információt a [*környezeti változók*](/sandbox/functions-recipes/environment-variables)című témakörben talál. Az Alkalmazásbeállítások környezeti változókként vannak kitéve a digitális Twins-példány eléréséhez. 
 
-Alkalmazás-beállítás létrehozásához ADT_INSTANCE_URL szükséges.
-
-ADT_INSTANCE_URL a **_https://_** a példány állomásneve való hozzáfűzésével kérheti le. A Azure Portalban megtalálhatja a digitális ikrek példányának állomásnevét úgy, hogy megkeresi a példányt a keresősávban. Ezután a bal oldali navigációs sávon az _Áttekintés_ elemre kattintva megtekintheti a _gazdagép nevét_. Másolja ezt az értéket egy Alkalmazásbeállítás létrehozásához.
+Ha környezeti változót szeretne beállítani a példány URL-címével, először töltse le az URL-címet úgy, hogy megkeresi az Azure digitális Twins-példányának állomásnevét. Keresse meg a példányt a [Azure Portal](https://portal.azure.com) keresési sávon. Ezután a bal oldali navigációs sávon az _Áttekintés_ elemre kattintva megtekintheti a _gazdagép nevét_. Másolja ezt az értéket.
 
 :::image type="content" source="media/how-to-create-azure-function/adt-hostname.png" alt-text="Azure Portal: Áttekintés – > a _Value_ mezőben használandó hostname (állomásnév).":::
 
 Mostantól az alábbi lépéseket követve létrehozhat egy alkalmazás-beállítást:
 
-* Keresse meg az alkalmazást a keresési sávban a Function alkalmazás nevével, és válassza ki a függvény alkalmazást a listából.
-* Válassza ki a bal oldali navigációs sávon a _konfiguráció_ elemet egy új Alkalmazásbeállítás létrehozásához
-* Az _Alkalmazásbeállítások_ lapon válassza az _+ új alkalmazás beállítása_ lehetőséget.
+1. Keresse meg az alkalmazást a keresési sávban a Function alkalmazás nevével, és válassza ki a függvény alkalmazást a listából.
+1. Válassza ki a bal oldali navigációs sávon a _konfiguráció_ elemet egy új Alkalmazásbeállítás létrehozásához
+1. Az _Alkalmazásbeállítások_ lapon válassza az _+ új alkalmazás beállítása_ lehetőséget.
 
-:::image type="content" source="media/how-to-create-azure-function/search-for-azure-function.png" alt-text="Azure Portal: meglévő Function-alkalmazás keresése":::
+:::image type="content" source="media/how-to-create-azure-function/search-for-azure-function.png" alt-text="Azure Portal: meglévő Function-alkalmazás keresése" lightbox="media/how-to-create-azure-function/search-for-azure-function.png":::
 
 :::image type="content" source="media/how-to-create-azure-function/application-setting.png" alt-text="Azure Portal: Alkalmazásbeállítások konfigurálása":::
 
-A megnyíló ablakban a fentiből másolt érték használatával hozzon létre egy Alkalmazásbeállítás-beállítást. \
-_Név_  : ADT_SERVICE_URL \
-_Érték_ : https://{saját Azure-digitális-Twins-hostname}
+A megnyíló ablakban a fent másolt állomásnév érték használatával hozzon létre egy alkalmazás-beállítást.
+* _Név_ : ADT_SERVICE_URL
+* _Érték_: https://{saját Azure-digitális-ikrek-Host-Name}
 
 Az alkalmazás beállításainak létrehozásához kattintson _az OK gombra_ .
 
 :::image type="content" source="media/how-to-create-azure-function/add-application-setting.png" alt-text="Azure Portal: Alkalmazásbeállítások hozzáadása.":::
 
-Az Alkalmazásbeállítások a _Name (név_ ) mezőben tekinthetők meg az alkalmazás nevével. Ezután mentse az alkalmazás beállításait a Save ( _Mentés_ ) gombra kattintva.
+Az Alkalmazásbeállítások a _Name (név_ ) mezőben tekinthetők meg az alkalmazás nevével. Ezután mentse az alkalmazás beállításait a _Save (Mentés_ ) gombra kattintva.
 
 :::image type="content" source="media/how-to-create-azure-function/application-setting-save-details.png" alt-text="Azure Portal: megtekintheti a létrehozott alkalmazást, és újraindíthatja az alkalmazást":::
 
@@ -242,12 +221,9 @@ Az Alkalmazásbeállítások az _értesítések_ ikon kiválasztásával tekinth
 
 :::image type="content" source="media/how-to-create-azure-function/notifications-update-web-app-settings.png" alt-text="Azure Portal: az Alkalmazásbeállítások frissítésére vonatkozó értesítések":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben követte, hogyan állíthat be egy Function alkalmazást az Azure-ban az Azure digitális Twins szolgáltatással való használatra. Ezután előfizethet a függvényt Event Gridre, hogy figyelje a végpontot. A végpont a következő lehet:
-* Az Azure digitális Twins-hoz csatlakoztatott Event Grid végpontok az Azure digitális ikrektől érkező üzenetek feldolgozására (például a telemetria üzenetek, a [digitális ikrek](concepts-twins-graph.md) által generált üzenetek a Twin Graph-ban vagy a életciklus-üzenetek esetében)
-* A IoT Hub által a telemetria és az egyéb IoT küldéséhez használt rendszertémakörök
-* Más szolgáltatásokból érkező üzeneteket fogadó Event Grid végpont
+Ebben a cikkben követte, hogyan állíthat be egy Function alkalmazást az Azure-ban az Azure digitális Twins szolgáltatással való használatra.
 
 Következő lépésként tekintse meg az alapszintű függvények felépítését IoT Hub adatok Azure digitális Ikrekbe való betöltéséhez:
 * [*Útmutató: telemetria beolvasása IoT Hubból*](how-to-ingest-iot-hub-data.md)

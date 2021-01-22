@@ -1,14 +1,14 @@
 ---
 title: Az Australian Government, az ISM által védett tervrajz minta bevezetése
 description: Üzembe helyezheti az ausztrál kormánynál a védett tervekhez tartozó, például a Blueprint-összetevők paraméterének részleteit.
-ms.date: 09/11/2020
+ms.date: 01/21/2021
 ms.topic: sample
-ms.openlocfilehash: 4d38a5ad6790b8b2ef09476f4779ef596be9734b
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 354d010442f896728ef9af1e3f372c2abbc58ef3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950516"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682279"
 ---
 # <a name="deploy-the-australian-government-ism-protected-blueprint-sample"></a>Az ausztrál kormány, az ISM-ben védett terv minta üzembe helyezése
 
@@ -29,7 +29,7 @@ Először a tervminta implementálásához hozzon létre egy új tervet a körny
 
 1. A bal oldalon válassza az **Első lépések** oldalt, és válassza a _Terv létrehozása_ területen a **Létrehozás** lehetőséget.
 
-1. Keresse meg az **ISM által védett** tervrajz mintát _más minták_ alatt, és válassza a **minta használata**lehetőséget.
+1. Keresse meg az **ISM által védett** tervrajz mintát _más minták_ alatt, és válassza a **minta használata** lehetőséget.
 
 1. Adja meg a tervminta _alapvető beállításait_:
 
@@ -52,7 +52,7 @@ A tervminta másolata létrejött a környezetében. **Piszkozat** módban jött
 
 ## <a name="assign-the-sample-copy"></a>Ugyanazon másolat hozzárendelése
 
-Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzárendelhető egy előfizetéshez, amely a felügyeleti csoporton belül lett mentve. Ebben a lépésben adja meg a paramétereket, hogy a tervminta másolatának minden üzemelő példánya egyedi legyen.
+Miután a tervezet mintájának **közzététele** sikeresen megtörtént, hozzárendelhető egy előfizetéshez, amely a felügyeleti csoporton belül lett mentve. Ebben a lépésben adja meg a paramétereket, hogy a tervminta másolatának minden üzemelő példánya egyedi legyen.
 
 1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **Tervek** elemet.
 
@@ -191,7 +191,7 @@ A következő táblázat a terv összetevő-paramétereinek listáját tartalmaz
 |\[Előzetes verzió \] : a naplózási követelmények támogatásához tekintse meg az ausztrál kormány ISM-védelemmel ellátott vezérléseit és telepítsen|Szabályzat-hozzárendelés|A legújabb TLS-verziót kell használni a függvényalkalmazás|A házirend hatásával kapcsolatos információk a [Azure Policy effektusok megismerése](../../../policy/concepts/effects.md)című témakörben találhatók. |
 |\[Előzetes verzió \] : a naplózási követelmények támogatásához tekintse meg az ausztrál kormány ISM-védelemmel ellátott vezérléseit és telepítsen|Szabályzat-hozzárendelés|Az SQL-adatbázisok biztonsági réseit szervizelni kell|A házirend hatásával kapcsolatos információk a [Azure Policy effektusok megismerése](../../../policy/concepts/effects.md)című témakörben találhatók. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette az Australian Government ISM-ben védett tervrajz mintájának üzembe helyezésének lépéseit, tekintse meg a következő cikkeket a terv és a vezérlés leképezésének megismeréséhez:
 

@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: b8738b46359287ce1d4e410292cdce213ab80999
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 9077ce35065b1bf45646496cc4c43d6def82d958
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98115820"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685225"
 ---
 # <a name="what-is-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Mi a dedikált SQL-készlet (korábban SQL DW) az Azure szinapszis Analyticsben?
 
@@ -29,7 +29,7 @@ Az Azure Synapse Analytics egy elemzőszolgáltatás, amely egyesíti a vállala
 
 A dedikált SQL-készlet (korábbi nevén SQL DW) a szinapszis SQL használatakor kiépített analitikai erőforrások gyűjteményét jelöli. A dedikált SQL-készlet (korábban SQL DW) méretét az adatraktározási egységek (DWU-EK) határozzák meg.
 
-Miután létrehozta a dedikált SQL-készletet, importálhatja a big datat egyszerű, [Base](/sql/relational-databases/polybase/polybase-guide?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL-lekérdezésekkel, majd az elosztott lekérdezési motor erejével futtathatja a nagy teljesítményű elemzéseket. Az adat integrálásával és elemzésével a dedikált SQL-készlet (korábban SQL DW) lesz az igazság egyetlen verziója, amelyet az üzleti vállalkozása a gyorsabb és robusztusabb elemzésekhez is felhasználhat.
+Miután létrehozta a dedikált SQL-készletet, importálhatja a big datat egyszerű, [Base](/sql/relational-databases/polybase/polybase-guide?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL-lekérdezésekkel, majd az elosztott lekérdezési motor erejével futtathatja a nagy teljesítményű elemzéseket. Az adat integrálásával és elemzésével a dedikált SQL-készlet (korábban SQL DW) lesz az igazság egyetlen verziója, amelyet az üzleti vállalkozása a gyorsabb és robusztusabb elemzésekhez is felhasználhat.
 
 > [!NOTE]
 >Ismerje meg az [Azure szinapszis Analytics dokumentációját](../overview-what-is.md).

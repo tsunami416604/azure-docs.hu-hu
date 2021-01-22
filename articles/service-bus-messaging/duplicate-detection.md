@@ -3,12 +3,12 @@ title: Ismétlődő üzenetek észlelésének Azure Service Busa | Microsoft Doc
 description: Ez a cikk azt ismerteti, hogyan észlelhetők az ismétlődő elemek Azure Service Bus üzenetekben. Az ismétlődő üzenet figyelmen kívül hagyható, és eldobása is lehetséges.
 ms.topic: article
 ms.date: 01/13/2021
-ms.openlocfilehash: 29972f756c66f524cc2e4684fcb7afd1ca628820
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 8ff98b3a052be6004a2dc070f10d6f8c9ca0617f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184679"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684808"
 ---
 # <a name="duplicate-detection"></a>Duplikálás észlelése
 
@@ -17,6 +17,9 @@ Ha egy alkalmazás az üzenet elküldése után azonnal végzetes hibát jelez, 
 Az ügyfél vagy a hálózati szint hibája is előfordulhat, hogy korábban egy pillanatra fordul elő, és egy küldött üzenet véglegesítve lesz a várólistában, és a nyugtát nem sikerült visszaadni az ügyfélnek. Ez a forgatókönyv kétségbe hagyja az ügyfelet a küldési művelet eredményével kapcsolatban.
 
 A duplikált észlelési funkció az ilyen helyzetekben nem teszi lehetővé, hogy a küldő újra elküldi ugyanazt az üzenetet, és a várólista vagy a témakör minden ismétlődő példányt elvet.
+
+> [!NOTE]
+> A Service Bus alapszintű csomagja nem támogatja a duplikált észlelést. A standard és a prémium szint támogatja a duplikált észlelést. A szintek közötti különbségekért tekintse meg a [Service Bus díjszabását](https://azure.microsoft.com/pricing/details/service-bus/).
 
 ## <a name="how-it-works"></a>Hogyan működik? 
 Az ismétlődő észlelés engedélyezése segít nyomon követni a várólistába vagy témakörbe küldött összes üzenet alkalmazás által vezérelt *MessageID* egy adott időszakra vonatkozóan. Ha a rendszer minden új üzenetet küld az időablakban naplózott *MessageID* , az üzenet elfogadva lesz (a küldési művelet sikeres lesz), de az újonnan elküldött üzenet azonnal figyelmen kívül lesz hagyva, és el lesz dobva. Az üzenet más részei nem tekintendők a *MessageID* .

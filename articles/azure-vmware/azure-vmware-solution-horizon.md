@@ -3,12 +3,12 @@ title: Horizont üzembe helyezése az Azure VMware-megoldáson
 description: Ismerje meg, hogyan helyezhet üzembe VMware horizontot az Azure VMware-megoldáson.
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: 6d5d8e12e358e2289128af9840660be18f5f217a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 2cf6fc5cb7662188650365cb019774d6c778d405
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95537441"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684875"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Horizont üzembe helyezése az Azure VMware-megoldáson 
 
@@ -130,15 +130,35 @@ A horizont méretezési módszertana az Azure VMware-megoldásban futó gazdagé
 
 ### <a name="sizing-tables"></a>Táblázatok méretezése
 
-A táblázatok a VSI és a munkavégző munkaterhelések esetében az általános munkaterheléseket mutatják be.
+A horizonton futó virtuális asztalok adott vCPU/vRAM-ra vonatkozó követelményei az ügyfél adott számítási feladatának profiljától függenek.   Az MSFT és a VMware Sales csapatának segítségével meghatározhatja a virtuális asztalok vCPU/vRAM-ra vonatkozó követelményeit. 
 
-#### <a name="knowledge-worker-workloads"></a>Knowledge Worker-munkaterhelések
+| vCPU virtuális gépenként | vRAM/virtuális gép (GB) | Példány | 100 virtuális gépek | 200 virtuális gépek | 300 virtuális gépek | 400 virtuális gépek | 500 virtuális gépek | 600 virtuális gépek | 700 virtuális gépek | 800 virtuális gépek | 900 virtuális gépek | 1000 virtuális gépek | 2000 virtuális gépek | 3000 virtuális gépek | 4000 virtuális gépek | 5000 virtuális gépek | 6000 virtuális gépek | 6400 virtuális gépek |
+|:-----------:|:----------------:|:--------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|
+|      2      |        3.5       |    AVS   |    3    |    3    |    4    |    4    |    5    |    6    |    6    |    7    |    8    |     9    |    17    |    25    |    33    |    41    |    49    |    53    |
+|      2      |         4        |    AVS   |    3    |    3    |    4    |    5    |    6    |    6    |    7    |    8    |    9    |     9    |    18    |    26    |    34    |    42    |    51    |    54    |
+|      2      |         6        |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    12   |    13    |    26    |    38    |    51    |    62    |    75    |    79    |
+|      2      |         8        |    AVS   |    3    |    5    |    6    |    8    |    9    |    11   |    12   |    14   |    16   |    18    |    34    |    51    |    67    |    84    |    100   |    106   |
+|      2      |        12        |    AVS   |    4    |    6    |    9    |    11   |    13   |    16   |    19   |    21   |    23   |    26    |    51    |    75    |    100   |    124   |    149   |    158   |
+|      2      |        16        |    AVS   |    5    |    8    |    11   |    14   |    18   |    21   |    24   |    27   |    30   |    34    |    67    |    100   |    133   |    165   |    198   |    211   |
+|      4      |        3.5       |    AVS   |    3    |    3    |    4    |    5    |    6    |    7    |    8    |    9    |    10   |    11    |    22    |    33    |    44    |    55    |    66    |    70    |
+|      4      |         4        |    AVS   |    3    |    3    |    4    |    5    |    6    |    7    |    8    |    9    |    10   |    11    |    22    |    33    |    44    |    55    |    66    |    70    |
+|      4      |         6        |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    12   |    13    |    26    |    38    |    51    |    62    |    75    |    79    |
+|      4      |         8        |    AVS   |    3    |    5    |    6    |    8    |    9    |    11   |    12   |    14   |    16   |    18    |    34    |    51    |    67    |    84    |    100   |    106   |
+|      4      |        12        |    AVS   |    4    |    6    |    9    |    11   |    13   |    16   |    19   |    21   |    23   |    26    |    51    |    75    |    100   |    124   |    149   |    158   |
+|      4      |        16        |    AVS   |    5    |    8    |    11   |    14   |    18   |    21   |    24   |    27   |    30   |    34    |    67    |    100   |    133   |    165   |    198   |    211   |
+|      6      |        3.5       |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    13   |    14    |    27    |    41    |    54    |    68    |    81    |    86    |
+|      6      |         4        |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    13   |    14    |    27    |    41    |    54    |    68    |    81    |    86    |
+|      6      |         6        |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    13   |    14    |    27    |    41    |    54    |    68    |    81    |    86    |
+|      6      |         8        |    AVS   |    3    |    5    |    6    |    8    |    9    |    11   |    12   |    14   |    16   |    18    |    34    |    51    |    67    |    84    |    100   |    106   |
+|      6      |        12        |    AVS   |    4    |    6    |    9    |    11   |    13   |    16   |    19   |    21   |    23   |    26    |    51    |    75    |    100   |    124   |    149   |    158   |
+|      6      |        16        |    AVS   |    5    |    8    |    11   |    14   |    18   |    21   |    24   |    27   |    30   |    34    |    67    |    100   |    133   |    165   |    198   |    211   |
+|      8      |        3.5       |    AVS   |    3    |    4    |    6    |    7    |    9    |    10   |    12   |    14   |    15   |    17    |    33    |    49    |    66    |    82    |    98    |    105   |
+|      8      |         4        |    AVS   |    3    |    4    |    6    |    7    |    9    |    10   |    12   |    14   |    15   |    17    |    33    |    49    |    66    |    82    |    98    |    105   |
+|      8      |         6        |    AVS   |    3    |    4    |    6    |    7    |    9    |    10   |    12   |    14   |    15   |    17    |    33    |    49    |    66    |    82    |    98    |    105   |
+|      8      |         8        |    AVS   |    3    |    5    |    6    |    8    |    9    |    11   |    12   |    14   |    16   |    18    |    34    |    51    |    67    |    84    |    100   |    106   |
+|      8      |        12        |    AVS   |    4    |    6    |    9    |    11   |    13   |    16   |    19   |    21   |    23   |    26    |    51    |    75    |    100   |    124   |    149   |    158   |
+|      8      |        16        |    AVS   |    5    |    8    |    11   |    14   |    18   |    21   |    24   |    27   |    30   |    34    |    67    |    100   |    133   |    165   |    198   |    211   |
 
-:::image type="content" source="media/horizon/common-vdi-profiles-vsi-workloads-knowledge.png" alt-text="Általános VDI-profilok táblázata a VMware horizont for login VSI Knowledge Worker-munkaterhelésekhez" lightbox="media/horizon/common-vdi-profiles-vsi-workloads-knowledge.png" border="false":::
-
-#### <a name="power-worker-workloads"></a>Munkavégző munkaterhelések
-
-:::image type="content" source="media/horizon/common-vdi-profiles-vsi-workloads-power.png" alt-text="Általános VDI-profilok táblázata a VMware Horizon-hez a bejelentkezési VSI-munkavégző munkaterhelések esetén" lightbox="media/horizon/common-vdi-profiles-vsi-workloads-power.png" border="false":::
 
 ### <a name="horizon-sizing-inputs"></a>Horizont méretezési bemenetei
 
@@ -189,24 +209,9 @@ Ha az Azure VMware megoldáson és a helyszínen is üzembe helyezhető, a vész
 
 Működjön együtt a VMware EUC értékesítési csapatával, és határozza meg a horizont licencelési költségeit az igényei alapján.
 
-### <a name="cost-of-the-horizon-infrastructure-vms-on-azure-virtual-network"></a>A Horizon infrastruktúra virtuális gépei díja az Azure-Virtual Network
+### <a name="azure-instance-types"></a>Azure-példányok típusai
 
-A standard telepítési architektúra alapján a horizont infrastruktúra virtuális gépei a kapcsolódási kiszolgálók, a UAGs, az alkalmazások kötet-kezelői. Ezek üzembe helyezése az ügyfél Azure-Virtual Network. További Azure-beli natív példányokra van szükség a magas rendelkezésre állás (HA), a Microsoft SQL vagy a Microsoft Active Directory (AD) szolgáltatások támogatásához az Azure-ban. A táblázat az Azure-példányokat az 2 000-Desktop telepítési példa alapján sorolja fel. 
-
->[!NOTE]
->Ahhoz, hogy kezelni tudja a hibát, helyezzen üzembe egy több kiszolgálót, mint amennyi szükséges a kapcsolatok számához (n + 1). A Csatlakozáskezelő, a UAG és az App Volumes Manager példányainak minimálisan ajánlott száma 2, a szükséges érték pedig a környezet által támogatott felhasználók mennyiségétől függően növekszik.  Egyetlen kapcsolódási kiszolgáló legfeljebb 4 000 munkamenetet támogat, bár a 2 000 ajánlott eljárás. Legfeljebb hét kapcsolati kiszolgáló támogatott a pod-on, 12 000 aktív munkamenetek esetén pedig összesen/Pod. A legfrissebb számokért tekintse meg a VMware [Horizon 7 méretezési korlátait és javaslatait a VMware Tudásbázisban](https://kb.vmware.com/s/article/2150348).
-
-| Horizont infrastruktúra-összetevő | Azure-példány | Szükséges példányok száma (2 000-asztali gépekhez)    | Megjegyzés  |
-|----------------------------------|----------------|----------------------------------------------------|----------|
-| Kapcsolatkezelő                | D4sv3          | 2       | *Lásd a fenti megjegyzést*                         |    
-| UAG                              | F2sv2          | 2       | *Lásd a fenti megjegyzést*                         |
-| Az alkalmazás köteteinek kezelője              | D4sv3          | 2       | *Lásd a fenti megjegyzést*                         |
-| Felhőalapú összekötő                  | D4sv3          | 1       |                                          |
-| AD-vezérlő                    | D4sv3          | 2       | *Az MSFT AD szolgáltatás használatának lehetősége az Azure-ban* |
-| MS-SQL Database                  | D4sv3          | 2       | *Az Azure-beli SQL-szolgáltatás használatának lehetősége*     |
-| Windows-fájlmegosztás               | D4sv3          |         | *Nem kötelező*                               |
-
-Az infrastruktúra virtuálisgép \$ -díja havonta 0,36, a fenti példában szereplő 2 000-Desktop üzembe helyezés esetén. Ez a példa az USA keleti Azure-példányának 2020-es díjszabását használja. A díjszabás a régiótól, a kiválasztott beállításoktól és az Időzítéstől függően változhat.
+A horizont infrastruktúra számára szükséges Azure-beli virtuálisgép-méretek megismeréséhez tekintse meg a VMware irányelveit, amelyek [itt](https://techzone.vmware.com/resource/horizon-on-azure-vmware-solution-configuration#horizon-installation-on-azure-vmware-solution)találhatók.
 
 ## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni az Azure VMware-megoldással kapcsolatos VMware Horizontról, olvassa el a [VMware Horizon – gyakori kérdések](https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/products/horizon/vmw-horizon-on-microsoft-azure-vmware-solution-faq.pdf)című témakört.

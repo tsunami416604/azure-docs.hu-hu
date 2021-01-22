@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: c39104912c99b199d38cf489bb61d64e83b89286
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 3b647a02731a4fa404aab4bb648853eea766d92e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895596"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684072"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>Egyoldalas alkalmazások biztonságossá tétele nem interaktív bejelentkezéssel
 
@@ -30,7 +30,7 @@ Az alábbi útmutató egy olyan alkalmazásra vonatkozik, amely a Azure Active D
 
 Hozzon létre egy biztonságos webszolgáltatási alkalmazást, amely felelős az Azure AD-vel való hitelesítéshez. 
 
-1. Hozzon létre egy függvényt a Azure Portalban. További információt az Azure- [függvény létrehozása](../azure-functions/functions-create-first-azure-function.md)című témakörben talál.
+1. Hozzon létre egy függvényt a Azure Portalban. További információt az Azure- [függvény létrehozása](../azure-functions/functions-get-started.md)című témakörben talál.
 
 2. Konfigurálja az Azure-függvény CORS szabályzatát, hogy az egyetlen oldal webalkalmazása is elérhető legyen. Ez biztosítja a böngésző ügyfelei számára a webalkalmazás engedélyezett eredetét. Lásd: [CORS funkció hozzáadása](../app-service/app-service-web-tutorial-rest-api.md#add-cors-functionality).
 
@@ -104,12 +104,12 @@ Hozzon létre egy biztonságos webszolgáltatási alkalmazást, amely felelős a
 
 Az Azure *szerepköralapú hozzáférés-vezérlés (Azure RBAC)* hozzáférését úgy biztosíthatja, hogy a rendszer által hozzárendelt identitást hozzárendeli egy vagy több Azure-beli szerepkör-definícióhoz. Az Azure Maps számára elérhető Azure-szerepkör-definíciók megtekintéséhez lépjen a **hozzáférés-vezérlés (iam)** elemre. Válassza ki a **szerepkörök** elemet, majd keressen rá a *Azure Maps* kezdetű szerepkörökre.
 
-1. Nyissa meg **Azure Maps-fiókját** . Válassza a **hozzáférés-vezérlés (iam)**  >  **szerepkör-hozzárendelés** elemet.
+1. Nyissa meg **Azure Maps-fiókját**. Válassza a **hozzáférés-vezérlés (iam)**  >  **szerepkör-hozzárendelés** elemet.
 
     > [!div class="mx-imgBorder"]
     > ![Hozzáférés biztosítása az Azure RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. A **szerepkör-hozzárendelések** lap **szerepkör** területén válassza ki a beépített Azure Maps szerepkör-definíciót, például **Azure Maps Adatolvasó** vagy **Azure Maps adatközreműködő** . **A hozzáférés társítása** területen válassza a **függvényalkalmazás** lehetőséget. Válassza ki a résztvevőt név alapján. Kattintson a **Mentés** gombra.
+2. A **szerepkör-hozzárendelések** lap **szerepkör** területén válassza ki a beépített Azure Maps szerepkör-definíciót, például **Azure Maps Adatolvasó** vagy **Azure Maps adatközreműködő**. **A hozzáférés társítása** területen válassza a **függvényalkalmazás** lehetőséget. Válassza ki a résztvevőt név alapján. Kattintson a **Mentés** gombra.
 
    * A [szerepkör-hozzárendelések hozzáadása vagy eltávolítása](../role-based-access-control/role-assignments-portal.md)című témakörben talál további információt.
 

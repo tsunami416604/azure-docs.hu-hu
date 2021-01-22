@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f1277972480f504d9d2df67930d9385cbe8c06b4
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 9ffb77db4f7bcd5a07e25085eed17e8972aa9a33
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063195"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683759"
 ---
 # <a name="protected-web-api-code-configuration"></a>Védett webes API: kód konfigurálása
 
@@ -175,7 +175,7 @@ services.AddControllers();
 > - `$"api://{ClientId}` minden más esetben (1.0-s [hozzáférési jogkivonatok](access-tokens.md)esetén).
 > Részletekért lásd: Microsoft. Identity. Web [forrás kódja](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/Resource/RegisterValidAudience.cs#L70-L83).
 
-Az előző kódrészletet a rendszer kinyeri a [ASP.net Core web API növekményes oktatóanyagból](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/63087e83326e6a332d05fee6e1586b66d840b08f/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Startup.cs#L23-L28). A **AddMicrosoftIdentityWebApiAuthentication** részletei a [Microsoft. Identity. Web webhelyen](microsoft-identity-web.md)érhetők el. Ez a metódus meghívja a [AddMicrosoftIdentityWebAPI](https://docs.microsoft.com/dotnet/api/microsoft.identity.web.microsoftidentitywebapiauthenticationbuilderextensions.addmicrosoftidentitywebapi?view=azure-dotnet-preview&preserve-view=true)-t, amely maga is arra utasítja a middleware-t, hogy hogyan érvényesítse a jogkivonatot.
+Az előző kódrészletet a rendszer kinyeri a [ASP.net Core web API növekményes oktatóanyagból](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/63087e83326e6a332d05fee6e1586b66d840b08f/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Startup.cs#L23-L28). A **AddMicrosoftIdentityWebApiAuthentication** részletei a [Microsoft. Identity. Web webhelyen](microsoft-identity-web.md)érhetők el. Ez a metódus meghívja a [AddMicrosoftIdentityWebAPI](/dotnet/api/microsoft.identity.web.microsoftidentitywebapiauthenticationbuilderextensions.addmicrosoftidentitywebapi?preserve-view=true&view=azure-dotnet-preview)-t, amely maga is arra utasítja a middleware-t, hogy hogyan érvényesítse a jogkivonatot.
 
 ## <a name="token-validation"></a>Jogkivonat ellenőrzése
 
@@ -195,7 +195,7 @@ Az érvényesítési lépések a [Microsoft IdentityModel Extensions for .net](h
 
 Ez a táblázat a validatorokat ismerteti:
 
-| Validator | Description |
+| Validator | Leírás |
 |---------|---------|
 | **ValidateAudience** | Gondoskodik arról, hogy a jogkivonat az alkalmazáshoz legyen hitelesítve, amely érvényesíti a jogkivonatot. |
 | **ValidateIssuer** | Gondoskodik arról, hogy a tokent egy megbízható STS bocsátotta ki, ami azt jelenti, hogy a jogkivonatot megbízhatónak minősíti. |

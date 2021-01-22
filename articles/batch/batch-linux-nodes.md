@@ -2,14 +2,14 @@
 title: Linux futtatása virtuális gépek számítási csomópontjain
 description: Ismerje meg, hogyan dolgozhat párhuzamos számítási feladatokkal a Linux rendszerű virtuális gépek készletei között Azure Batchban.
 ms.topic: how-to
-ms.date: 11/10/2020
+ms.date: 01/21/2021
 ms.custom: H1Hack27Feb2017, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 0a9c801a13af05f077b87f296992da7f50742e4b
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: c711ec0d035b9b59ec7628a51fe3cff26de358bc
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533497"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683700"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Linuxos számítási csomópontok kiépítése a Batch-készletekben
 
@@ -17,9 +17,7 @@ A Azure Batch használatával párhuzamos számítási feladatokat futtathat Lin
 
 ## <a name="virtual-machine-configuration"></a>Virtuális gép konfigurációja
 
-Amikor számítási csomópontok készletét hozza létre a Batchben, két lehetőség közül választhat, amelyekből kiválaszthatja a csomópont méretét és operációs rendszerét: Cloud Services konfigurációt és a virtuális gép konfigurációját. A Windows számítási csomópontjainak legtöbb készlete [Cloud Services konfigurációt](nodes-and-pools.md#cloud-services-configuration)használ, amely megadja, hogy a készlet az Azure Cloud Services-csomópontokból tevődik össze. Ezek a készletek csak Windows számítási csomópontokat biztosítanak.
-
-Ezzel szemben a [virtuális gép konfigurációja](nodes-and-pools.md#virtual-machine-configuration) meghatározza, hogy a készlet Azure-beli virtuális gépekből áll, amelyek Linux vagy Windows rendszerű lemezképből hozhatók létre. Amikor virtuálisgép-konfigurációval rendelkező készletet hoz létre, meg kell adnia egy [rendelkezésre álló számítási csomópont méretét](../virtual-machines/sizes.md), a virtuális gép képhivatkozását és a Batch-csomóponti ügynök SKU-t (az egyes csomópontokon futó programot, valamint a csomópont és a Batch szolgáltatás közötti felületet), valamint a virtuális gép rendszerképének hivatkozását, amely a csomópontokra lesz telepítve.
+Amikor számítási csomópontok készletét hozza létre a Batchben, két lehetőség közül választhat, amelyekből kiválaszthatja a csomópont méretét és operációs rendszerét: Cloud Services konfigurációt és a virtuális gép konfigurációját. A [virtuálisgép-konfigurációs](nodes-and-pools.md#virtual-machine-configuration) készletek olyan Azure-beli virtuális gépekből állnak, amelyek Linux-vagy Windows-lemezképből is létrehozhatók. Amikor virtuálisgép-konfigurációval rendelkező készletet hoz létre, meg kell adnia egy [rendelkezésre álló számítási csomópont méretét](../virtual-machines/sizes.md), a csomópontokra telepítendő virtuálisgép-rendszerképet, valamint a Batch-csomóponti ügynök SKU-t (az egyes csomópontokon futó programot, és a csomópont és a Batch szolgáltatás közötti felületet biztosít).
 
 ### <a name="virtual-machine-image-reference"></a>Virtuális gép képének referenciája
 
@@ -35,7 +33,11 @@ Amikor létrehoz egy virtuálisgép-rendszerkép-referenciát, meg kell adnia a 
 | Verzió |legújabb |
 
 > [!TIP]
-> További információt ezekről a tulajdonságokról és a Marketplace-lemezképek megadásáról az [Azure Marketplace-en, az Azure parancssori](../virtual-machines/linux/cli-ps-findimage.md)felületén található linuxos virtuálisgép-rendszerképeket ismertető témakörben találhat. Vegye figyelembe, hogy a Piactéri lemezképek jelenleg nem kompatibilisek a Batch szolgáltatással.
+> További információt ezekről a tulajdonságokról és a Marketplace-lemezképek megadásáról az [Azure Marketplace-en, az Azure parancssori](../virtual-machines/linux/cli-ps-findimage.md)felületén található linuxos virtuálisgép-rendszerképeket ismertető témakörben találhat. Vegye figyelembe, hogy egyes Piactéri lemezképek jelenleg nem kompatibilisek a Batch szolgáltatással.
+
+### <a name="list-of-virtual-machine-images"></a>Virtuálisgép-lemezképek listája
+
+Nem minden Piactéri rendszerkép kompatibilis a jelenleg elérhető batch Node-ügynökökkel. A Batch szolgáltatáshoz és a hozzájuk tartozó csomópont-ügynökhöz tartozó összes támogatott Piactéri virtuálisgép-rendszerkép listázásához használja a [list_supported_images](/python/api/azure-batch/azure.batch.operations.AccountOperations#list-supported-images-account-list-supported-images-options-none--custom-headers-none--raw-false----operation-config-) (Python), a [ListSupportedImages](/dotnet/api/microsoft.azure.batch.pooloperations.listsupportedimages) (Batch .net) vagy a megfelelő API-t egy másik nyelvi SDK-ban.
 
 ### <a name="node-agent-sku"></a>Csomópont-ügynök SKU
 
@@ -44,10 +46,6 @@ A [Batch-csomóponti ügynök](https://github.com/Azure/Batch/blob/master/change
 - Batch. Node. Ubuntu 18,04
 - Batch. Node. CentOS 7
 - Batch. Node. Windows amd64
-
-### <a name="list-of-virtual-machine-images"></a>Virtuálisgép-lemezképek listája
-
-Nem minden Piactéri rendszerkép kompatibilis a jelenleg elérhető batch Node-ügynökökkel. A Batch szolgáltatáshoz és a hozzájuk tartozó csomópont-ügynökhöz tartozó összes támogatott Piactéri virtuálisgép-rendszerkép listázásához használja a [list_supported_images](/python/api/azure-batch/azure.batch.operations.AccountOperations#list-supported-images-account-list-supported-images-options-none--custom-headers-none--raw-false----operation-config-) (Python), a [ListSupportedImages](/dotnet/api/microsoft.azure.batch.pooloperations.listsupportedimages) (Batch .net) vagy a megfelelő API-t egy másik nyelvi SDK-ban.
 
 ## <a name="create-a-linux-pool-batch-python"></a>Linux-készlet létrehozása: batch Python
 

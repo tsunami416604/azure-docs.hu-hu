@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/01/2020
-ms.openlocfilehash: aace24485939dcf22c8d40011b9dc445c68f31c9
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 01/19/2021
+ms.openlocfilehash: b0536a152797d17cba0930b3a142a7fb92eaf5ea
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020810"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685157"
 ---
 # <a name="supported-data-types"></a>Támogatott adattípusok
 
@@ -26,7 +26,7 @@ A következő táblázat felsorolja a Azure Time Series Insights Gen2 által tá
 | **dátum/idő** | Egy azonnali időpontot jelöl, amely általában dátum és napszak szerint van megadva. [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) formátumban kifejezve. A DateTime tulajdonságokat a rendszer mindig UTC formátumban tárolja. Az időzóna-eltolások, ha megfelelően vannak formázva, a rendszer alkalmazza, majd az UTC szerint tárolt értéket fogja alkalmazni. Tekintse meg [ezt](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) a szakaszt a környezet timestamp tulajdonságával és a DateTime típusú eltolásokkal kapcsolatban. | `"eventProcessedLocalTime": "2020-03-20T09:03:32.8301668Z"` |  Ha a "eventProcessedLocalTime" az eseményforrás időbélyegzője: `$event.$ts` . Ha ez egy másik JSON-tulajdonság: `$event.eventProcessedLocalTime.DateTime` vagy `$event['eventProcessedLocalTime'].DateTime` | `eventProcessedLocalTime_datetime`
 | **double** | Kétszeres pontosságú 64 bites szám  | `"value": 31.0482941` | `$event.value.Double` vagy `$event['value'].Double` |  `value_double`
 | **long** | Aláírt 64 bites egész szám  | `"value" : 31` | `$event.value.Long` vagy `$event['value'].Long` |  `value_long`
-| **karakterlánc** | A szöveges értékeknek érvényes UTF-8 típusúnak kell lenniük. A null értékű és az üres karakterláncok azonosak. |  `"site": "DIM_MLGGG"`| `$event.site.String` vagy `$event['site'].String`| `site_string`
+| **sztring** | A szöveges értékeknek érvényes UTF-8 típusúnak kell lenniük. A null értékű és az üres karakterláncok azonosak. |  `"site": "DIM_MLGGG"`| `$event.site.String` vagy `$event['site'].String`| `site_string`
 | **dinamikus** | Egy tömbből vagy egy tárolóból (szótárból) álló összetett (nem primitív) típus. Jelenleg csak a sztringesített vagy a TS ID-t, illetve az időbélyeg-tulajdonságot (IES) tartalmazó tömböket tartalmazó JSON-tömbök lesznek tárolva dinamikusként. Ebből a [cikkből](./concepts-json-flattening-escaping-rules.md) megtudhatja, hogyan lehet összeállítani az objektumokat, és lehet, hogy a tömbök nem állnak le. Az ebben a típusban tárolt hasznos adatok tulajdonságai csak a `Explore Events` Time Series Insights Explorerben láthatók a nyers események megtekintéséhez, vagy az [`GetEvents`](/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents) ügyféloldali elemzéshez használt LEKÉRDEZÉSi API-n keresztül. |  `"values": "[197, 194, 189, 188]"` | Egy idősorozat-kifejezésben lévő dinamikus típusok hivatkozása még nem támogatott | `values_dynamic`
 
 > [!NOTE]

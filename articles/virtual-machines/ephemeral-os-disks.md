@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 52071b964412071d820745b173e8835c6f9e7d0e
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 62f89106538ab7f57047e211fc8715878f889af1
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510991"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684559"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Ideiglenes operációsrendszer-lemezek Azure-beli virtuális gépekhez
 
@@ -26,7 +26,7 @@ Az ideiglenes lemezek legfontosabb funkciói a következők:
 - Kisebb késés, hasonlóan egy ideiglenes lemezhez. 
 - Az ideiglenes operációsrendszer-lemezek ingyenesek, az operációsrendszer-lemez tárolási díja nem jár.
 - Ezek az összes Azure-régióban elérhetők. 
-- A [megosztott rendszerkép](./linux/shared-image-galleries.md)-katalógus támogatja az ideiglenes operációsrendszer-lemezt. 
+- A [megosztott rendszerkép](./shared-image-galleries.md)-katalógus támogatja az ideiglenes operációsrendszer-lemezt. 
  
 
  
@@ -245,5 +245,5 @@ A: az ideiglenes lemezek nem támogatják A következőket:
 - Azure Site Recovery  
 - OPERÁCIÓSRENDSZER-lemez cseréje 
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az [Azure CLI](/cli/azure/vm#az-vm-create)használatával létrehozhat egy ideiglenes operációsrendszer-lemezzel ellátott virtuális gépet.

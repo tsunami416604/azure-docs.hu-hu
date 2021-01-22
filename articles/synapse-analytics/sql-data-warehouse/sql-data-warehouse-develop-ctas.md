@@ -11,12 +11,12 @@ ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019, azure-synapse
-ms.openlocfilehash: 95158193a978702392106c8aa3347de211fd1a3e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 6750f010e3992a2b76cc688449ad44efa7ec76d0
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98115446"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683273"
 ---
 # <a name="create-table-as-select-ctas"></a>CREATE TABLE A SELECT (CTAS)
 
@@ -24,11 +24,11 @@ Ez CREATE TABLE a cikk ismerteti a CTAS-T a szinapszis SQL-ben a megoldások fej
 
 ## <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
 
-A [CREATE TABLE as Select](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (CTAS) utasítás az elérhető legfontosabb T-SQL-funkciók egyike. A CTAS egy párhuzamos művelet, amely egy SELECT utasítás kimenete alapján létrehoz egy új táblázatot. A CTAS az a legegyszerűbb és leggyorsabb módszer, amellyel egyetlen paranccsal hozhatók létre és helyezhetők be az adattábla.
+A [CREATE TABLE as Select](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (CTAS) utasítás az elérhető legfontosabb T-SQL-funkciók egyike. A CTAS egy párhuzamos művelet, amely egy SELECT utasítás kimenete alapján létrehoz egy új táblázatot. A CTAS az a legegyszerűbb és leggyorsabb módszer, amellyel egyetlen paranccsal hozhatók létre és helyezhetők be az adattábla.
 
 ## <a name="selectinto-vs-ctas"></a>Válassza a... lehetőséget. A vs. CTAS
 
-A CTAS a [Select... testreszabható verziója. INTO](/sql/t-sql/queries/select-into-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) utasítás.
+A CTAS a [Select... testreszabható verziója. INTO](/sql/t-sql/queries/select-into-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) utasítás.
 
 A következő példa egy egyszerű KIJELÖLÉSt mutat be... A
 
@@ -379,7 +379,7 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 
 Láthatja, hogy a típus konzisztenciája és a CTAS tulajdonság fenntartása egy mérnöki ajánlott eljárás. Segít megőrizni az integritást a számításokban, és biztosítja a partíciók váltásának lehetőségét is.
 
-A CTAS a szinapszis SQL egyik legfontosabb utasítása. Győződjön meg róla, hogy alaposan megértette. Tekintse meg a [CTAS dokumentációját](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+A CTAS a szinapszis SQL egyik legfontosabb utasítása. Győződjön meg róla, hogy alaposan megértette. Tekintse meg a [CTAS dokumentációját](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ## <a name="next-steps"></a>Következő lépések
 

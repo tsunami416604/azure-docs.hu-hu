@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
 ms.custom: references_regions
-ms.openlocfilehash: 78ce082c6e90cfc9c67ddcfa00926d292b9ed7ea
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 902bcaa97658802b35fb523a1213e6bbd47f357f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740470"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684508"
 ---
 # <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>Azure Monitor for VMs vendég állapotának engedélyezése (előzetes verzió)
 Azure Monitor for VMs vendég állapota lehetővé teszi egy virtuális gép állapotának megtekintését, amelyet a rendszeres időközönként mintavételnek alávetett teljesítmény-mérések határoznak meg. Ez a cikk bemutatja, hogyan engedélyezheti ezt a funkciót az előfizetésében, és hogyan engedélyezheti a vendég figyelését az egyes virtuális gépeken.
@@ -37,7 +37,7 @@ A virtuális gépnek az alábbi régiók egyikében kell elhelyezkednie:
 - Kelet-Ausztrália
 - Délkelet-Ausztrália
 - Közép-India
-- USA középső régiója
+- Az USA középső régiója
 - Kelet-Ázsia
 - USA keleti régiója
 - USA 2. keleti régiója
@@ -127,9 +127,9 @@ A sablon üzembe helyezése a [Resource Manager-sablonok bármely üzembe helyez
 New-AzResourceGroupDeployment -Name GuestHealthDataCollectionRule -ResourceGroupName my-resource-group -TemplateFile Health.DataCollectionRule.template.json -TemplateParameterFile Health.DataCollectionRule.template.parameters.json
 ```
 
-# <a name="cli"></a>[Parancssori felület](#tab/cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-```cli
+```azurecli
 az deployment group create --name GuestHealthDataCollectionRule --resource-group my-resource-group --template-file Health.DataCollectionRule.template.json --parameters Health.DataCollectionRule.template.parameters.json
 ```
 
@@ -267,9 +267,9 @@ Például az alábbi parancsokkal telepítheti a sablont és a paramétereket ta
 New-AzResourceGroupDeployment -Name GuestHealthDeployment -ResourceGroupName my-resource-group -TemplateFile azure-monitor-deploy.json -TemplateParameterFile azure-monitor-deploy.parameters.json
 ```
 
-# <a name="cli"></a>[Parancssori felület](#tab/cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-```cli
+```azurecli
 az deployment group create --name GuestHealthDeployment --resource-group my-resource-group --template-file Health.VirtualMachine.template.json --parameters Health.VirtualMachine.template.parameters.json
 ```
 
@@ -412,6 +412,6 @@ az deployment group create --name GuestHealthDeployment --resource-group my-reso
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Monitor for VMs által engedélyezett figyelők testreszabása](vminsights-health-configure.md)

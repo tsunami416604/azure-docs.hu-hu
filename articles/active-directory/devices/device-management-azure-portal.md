@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a735817f59e43e1a9e5d2a513f1ad397f18aab8
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 92a0cc93b4d159a4ba87c1cadc2d0dedc0a28b2d
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232318"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683810"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Eszközidentitások kezelése az Azure Portal használatával
 
@@ -168,7 +168,7 @@ A Azure Portal eszköz beállításainak megtekintéséhez vagy kezeléséhez a 
 - **Az Azure ad-hez csatlakoztatott vagy az Azure ad-ben regisztrált eszközöknek multi-Factor Authentication** – megadhatja, hogy szükség van-e további hitelesítési tényezőre az eszköznek az Azure ad-hez való csatlakoztatásához vagy regisztrálásához. Az alapértelmezett érték a **nem**. A többtényezős hitelesítés megkövetelése az eszköz regisztrálása vagy csatlakoztatása során ajánlott. Mielőtt engedélyezi a többtényezős hitelesítést a szolgáltatáshoz, meg kell győződnie arról, hogy a többtényezős hitelesítés konfigurálva van az eszközeit regisztráló felhasználók számára. Az Azure AD Multi-Factor Authentication szolgáltatásaival kapcsolatos további információkért tekintse meg az [Azure ad multi-Factor Authentication első lépéseivel foglalkozó](../authentication/concept-mfa-howitworks.md)témakört. 
 
 > [!NOTE]
-> Az Azure ad- **hez csatlakoztatott vagy az Azure ad-ben regisztrált eszközökre multi-Factor Authentication** beállítás az Azure ad-hez csatlakoztatott (bizonyos kivételekkel rendelkező) vagy az Azure ad által regisztrált eszközökre vonatkozik. Ez a beállítás nem vonatkozik a hibrid Azure AD-hez csatlakoztatott eszközökre, az Azure [ad-hez csatlakoztatott virtuális gépekre az Azure-ban és az](/azure/active-directory/devices/howto-vm-sign-in-azure-ad-windows#enabling-azure-ad-login-in-for-windows-vm-in-azure) Azure ad-hez csatlakoztatott eszközökön a [Windows Autopilot öntelepítő üzemmód](/mem/autopilot/self-deploying)használatával.
+> Az Azure ad- **hez csatlakoztatott vagy az Azure ad-ben regisztrált eszközökre multi-Factor Authentication** beállítás az Azure ad-hez csatlakoztatott (bizonyos kivételekkel rendelkező) vagy az Azure ad által regisztrált eszközökre vonatkozik. Ez a beállítás nem vonatkozik a hibrid Azure AD-hez csatlakoztatott eszközökre, az Azure [ad-hez csatlakoztatott virtuális gépekre az Azure-ban és az](./howto-vm-sign-in-azure-ad-windows.md#enabling-azure-ad-login-in-for-windows-vm-in-azure) Azure ad-hez csatlakoztatott eszközökön a [Windows Autopilot öntelepítő üzemmód](/mem/autopilot/self-deploying)használatával.
 
 - **Eszközök maximális száma** – ez a beállítás lehetővé teszi, hogy kiválassza az Azure ad-hez csatlakoztatott vagy az Azure ad-ban regisztrált eszközök maximális számát, amelyet a felhasználók az Azure ad-ben használhatnak. Ha a felhasználó eléri ezt a kvótát, nem tud további eszközöket hozzáadni, amíg a meglévő eszközök közül egy vagy több el nem távolítva. Az alapértelmezett érték a **50**.
 
@@ -213,7 +213,7 @@ A szűrők mellett megkeresheti az adott bejegyzéseket is.
 
 :::image type="content" source="./media/device-management-azure-portal/65.png" alt-text="Képernyőkép a naplózási adatszűrő vezérlőelemekről, a kategória, a tevékenység erőforrástípus, a tevékenység, a dátumtartomány, a cél és a Actor mezők és a keresési mezők közül." border="false":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Elavult eszközök kezelése az Azure AD-ben](manage-stale-devices.md)
 

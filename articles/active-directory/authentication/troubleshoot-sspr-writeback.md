@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d6bf4df1499d919cead0a184054e5ba0db9c06e
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 0620304de1866d24719b137836419502cd25bee9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346600"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682237"
 ---
 # <a name="troubleshoot-self-service-password-reset-writeback-in-azure-active-directory"></a>Az önkiszolgáló jelszó-visszaállítási visszaírási hibáinak megoldása Azure Active Directory
 
@@ -43,7 +43,7 @@ A Azure AD Connect *1.1.443.0* és újabb verziók esetén a *kimenő HTTPS* -ho
 * *\*. passwordreset.microsoftonline.com*
 * *\*. servicebus.windows.net*
 
-Azure [gov-végpontok](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#guidance-for-developers):
+Azure [gov-végpontok](../../azure-government/compare-azure-government-global-azure.md#guidance-for-developers):
 
 * *\*. passwordreset.microsoftonline.us*
 * *\*. servicebus.usgovcloudapi.net*
@@ -73,7 +73,7 @@ A problémák elhárításához végezze el a következő lépéseket a jelszó 
 
 1. A Azure AD Connectt futtató kiszolgáló rendszergazdája nyissa meg a **Azure ad Connect konfigurációs varázslót**.
 1. A **Kapcsolódás az Azure ad-hoz** mezőbe írja be az Azure ad globális rendszergazdai hitelesítő adatait.
-1. A **kapcsolódás ad DShoz** mezőben adja meg a helyszíni Active Directory tartományi szolgáltatások rendszergazdai hitelesítő adatait.
+1. A **kapcsolódás ad DShoz** mezőben adja meg a helyszíni Active Directory Domain Services rendszergazdai hitelesítő adatait.
 1. A **felhasználók egyedi azonosításához** kattintson a **tovább** gombra.
 1. A **választható funkciók** területen törölje a **jelszó visszaírási** jelölőnégyzet jelölését.
 1. Kattintson a **tovább** gombra a fennmaradó párbeszédpaneleken, anélkül, hogy bármit módosítaná, amíg be nem fejeződik a **konfigurálásra kész** lapra.
@@ -88,7 +88,7 @@ Ha a visszaírási szolgáltatás letiltása és újbóli engedélyezése nem ol
 
 ### <a name="install-the-latest-azure-ad-connect-release"></a>A legújabb Azure AD Connect kiadásának telepítése
 
-Az Azure AD Connect újratelepítése az Azure AD és a helyi Active Directory tartományi szolgáltatások-környezet közötti konfigurációs és kapcsolódási problémák megoldására is képes. Azt javasoljuk, hogy ezt a lépést csak akkor hajtsa végre, ha az előző lépéseket a kapcsolat ellenőrzéséhez és hibaelhárításához próbálja meg végrehajtani.
+Az Azure AD Connect újratelepítése az Azure AD és a helyi Active Directory Domain Services-környezet közötti konfigurációs és kapcsolódási problémák megoldására is képes. Azt javasoljuk, hogy ezt a lépést csak akkor hajtsa végre, ha az előző lépéseket a kapcsolat ellenőrzéséhez és hibaelhárításához próbálja meg végrehajtani.
 
 > [!WARNING]
 > Ha testre szabta a beépített szinkronizálási szabályokat, *a frissítés folytatása előtt végezze el a biztonsági mentést, majd manuálisan végezze el újból a telepítést a befejezés után.*
@@ -107,7 +107,7 @@ Ha a Azure AD Connect-kiszolgáló legújabb verziójának telepítése nem oldj
 A Azure AD Connect megköveteli a jelszó- **visszaállítási** engedély AD DS visszaírási. Annak vizsgálatához, hogy Azure AD Connect rendelkezik-e a szükséges engedéllyel egy adott helyszíni AD DS felhasználói fiókhoz, használja a **Windows hatályos engedély** szolgáltatást:
 
 1. Jelentkezzen be a Azure ad Connect-kiszolgálóra, és indítsa el a **synchronization Service Manager** a   >  **szinkronizációs szolgáltatás** elindítása lehetőség kiválasztásával.
-1. Az **Összekötők** lapon válassza ki a helyszíni **Active Directory tartományi szolgáltatások** -összekötőt, majd válassza a **Tulajdonságok** lehetőséget.
+1. Az **Összekötők** lapon válassza ki a helyszíni **Active Directory Domain Services** -összekötőt, majd válassza a **Tulajdonságok** lehetőséget.
 
     :::image type="content" source="./media/troubleshoot-sspr-writeback/synchronization-service-manager.png" alt-text="A tulajdonságok szerkesztését bemutató Synchronization Service Manager" border="false":::
   
@@ -151,7 +151,7 @@ A jelszó visszaírási a következő konkrétabb problémák merülhetnek fel. 
 
 ## <a name="password-writeback-event-log-error-codes"></a>Jelszó visszaírási eseménynaplójának hibakódai
 
-Az ajánlott eljárás, ha a jelszó visszaírási kapcsolatos problémák elhárítása során a Azure AD Connect számítógépen ellenőrzi az alkalmazás eseménynaplóját. Ez az Eseménynapló két forrásból származó eseményeket tartalmaz a jelszó visszaírási. A *PasswordResetService* forrás a visszaírási jelszavának működésével kapcsolatos műveleteket és problémákat ismerteti. A *AdSync* forrás leírja a Active Directory tartományi szolgáltatások-környezet jelszavainak beállításával kapcsolatos műveleteket és problémákat.
+Az ajánlott eljárás, ha a jelszó visszaírási kapcsolatos problémák elhárítása során a Azure AD Connect számítógépen ellenőrzi az alkalmazás eseménynaplóját. Ez az Eseménynapló két forrásból származó eseményeket tartalmaz a jelszó visszaírási. A *PasswordResetService* forrás a visszaírási jelszavának működésével kapcsolatos műveleteket és problémákat ismerteti. A *AdSync* forrás leírja a Active Directory Domain Services-környezet jelszavainak beállításával kapcsolatos műveleteket és problémákat.
 
 ### <a name="if-the-source-of-the-event-is-adsync"></a>Ha az esemény forrása ADSync
 

@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fa4a649115f8e89c27f435888b682b7de36e9894
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8aa2623722b5e75480e68324d76e4a1493501df
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87533920"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685140"
 ---
 # <a name="create-an-image-version-from-a-vm-in-azure-using-the-azure-cli"></a>Rendszerkép-verzió létrehozása az Azure-beli virtuális gépről az Azure CLI használatával
 
@@ -57,11 +57,11 @@ A képdefiníciók nevei kis-és nagybetűket, számokat, pontokat, kötőjeleke
 
 Győződjön meg arról, hogy a megfelelő típus a rendszerkép definíciója. Ha általánosított a virtuális gépet (a Windows Sysprep használatával vagy a Linux-waagent), akkor létre kell hoznia egy általánosított rendszerkép-definíciót a használatával `--os-state generalized` . Ha a virtuális gépet a meglévő felhasználói fiókok eltávolítása nélkül szeretné használni, hozzon létre egy speciális rendszerkép-definíciót a használatával `--os-state specialized` .
 
-További információ a képdefiníciók által megadható értékekről: [képdefiníciók](./linux/shared-image-galleries.md#image-definitions).
+További információ a képdefiníciók által megadható értékekről: [képdefiníciók](./shared-image-galleries.md#image-definitions).
 
 Hozzon létre egy rendszerkép-definíciót a galériában az [az SIG rendszerkép-definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create)paranccsal.
 
-Ebben a példában a képdefiníció neve *myImageDefinition*, és egy [speciális](./linux/shared-image-galleries.md#generalized-and-specialized-images) Linux operációsrendszer-rendszerképhez van. Ha Windows operációs rendszert használó lemezképek definícióját szeretné létrehozni, használja a következőt: `--os-type Windows` . 
+Ebben a példában a képdefiníció neve *myImageDefinition*, és egy [speciális](./shared-image-galleries.md#generalized-and-specialized-images) Linux operációsrendszer-rendszerképhez van. Ha Windows operációs rendszert használó lemezképek definícióját szeretné létrehozni, használja a következőt: `--os-type Windows` . 
 
 ```azurecli-interactive 
 az sig image-definition create \

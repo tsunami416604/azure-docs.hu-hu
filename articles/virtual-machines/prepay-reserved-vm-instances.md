@@ -9,15 +9,14 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/30/2017
 ms.author: vikdesai
-ms.openlocfilehash: ffc9c8f3143824dd099aaad3e743398eea4e0f43
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: e6cf097e927c4606885dd3f885de6ab8235bf6be
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602539"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682588"
 ---
 # <a name="save-costs-with-azure-reserved-vm-instances"></a>Költségek megtakarítása Azure Reserved VM Instances
-
 
 
 Ha egy Azure-beli fenntartott VM-példányra véglegesít, pénzt takaríthat meg. A foglalási kedvezményt a rendszer automatikusan alkalmazza a foglalási hatókörnek és attribútumoknak megfelelő futó virtuális gépek számára. A kedvezmények beszerzéséhez nincs szükség foglalások hozzárendelésére egy virtuális géphez. A fenntartott példányok vásárlása csak a virtuális gépek használatának számítási részét fedi le. Windows rendszerű virtuális gépek esetén a használati mérőszám két külön méterre oszlik. Van egy számítási mérőszám, amely ugyanaz, mint a Linux-mérő, és egy Windows IP-mérő. A vásárláskor megjelenő díjak csak a számítási költségekre vonatkoznak. A díjak nem tartalmazzák a Windows-szoftverek költségeit. További információ a szoftverekkel kapcsolatos költségekről: [a Azure Reserved VM instances nem tartalmazott szoftveres költségek](../cost-management-billing/reservations/reserved-instance-windows-software-costs.md).
@@ -30,7 +29,7 @@ A foglalás megvásárlása előtt meg kell határoznia a szükséges virtuális
 
 A foglalási javaslatok segítségével megadhatja a megvásárolni kívánt foglalásokat.
 
-- A vásárlási javaslatok és a javasolt mennyiség akkor jelenik meg, ha egy virtuális gép számára fenntartott példányt vásárol a Azure Portal.
+- A vásárlási javaslatok és a javasolt mennyiségek akkor jelennek meg, ha a Azure Portalban vásárol egy virtuális gép számára fenntartott példányt.
 - Azure Advisor az egyes előfizetésekre vonatkozó vásárlási javaslatokat tartalmaz.  
 - Az API-k használatával vásárlási javaslatokat kaphat a megosztott hatókörhöz és az egyszeri előfizetések hatóköréhez is. További információ: [fenntartott példányok vásárlására vonatkozó ajánlás API-k nagyvállalati ügyfelek](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation)számára.
 - A Nagyvállalati Szerződés (EA) és a Microsoft Customer Agreement (MCA) ügyfelek esetében a megosztott és az egyszeri előfizetési hatókörökkel kapcsolatos vásárlási javaslatok a [Azure Consumption Insights Power bi a Content Pack csomaggal](/power-bi/service-connect-to-azure-consumption-insights)érhetők el.
@@ -107,7 +106,7 @@ Ha nagyvállalati szerződéssel rendelkezik, a további példányok gyors hozz�
 |------------|--------------|
 |Előfizetés|A foglalás kifizetéséhez használt előfizetés. Az előfizetésnél rögzített fizetési mód szerint lesznek számlázva a foglalás költségei. Az előfizetés típusának nagyvállalati szerződésnek kell lennie (ajánlati számok: MS-AZR-0017P vagy MS-AZR-0148P) vagy Microsoft ügyfél-szerződés vagy egyéni előfizetés utólagos elszámolású díjszabással (ajánlati számok: MS-AZR-0003P vagy MS-AZR-0023P). A díjak levonhatók az Azure-előfizetésből (korábban pénzügyi kötelezettségvállalásnak nevezett) egyenlegre, ha van ilyen, vagy felszámított díj. Az utólagos elszámolású előfizetések díjait a hitelkártyára vagy a számla fizetési módjára kell fizetni az előfizetésben.|    
 |Hatókör       |A foglalás hatóköre egyetlen előfizetésre vagy több előfizetésre (megosztott hatókörre) is vonatkozhat. Ha a következőket választja: <ul><li>**Egyetlen erőforráscsoport hatókör** – A foglalási kedvezményt csak a kiválasztott erőforráscsoportban található egyező erőforrásokra alkalmazza.</li><li>**Egy előfizetésre kiterjedő hatókör** – A foglalási kedvezményt a kiválasztott előfizetésben található, egyező erőforrásokra alkalmazza.</li><li>**Megosztott hatókör** – A foglalási kedvezményt a számlázási környezet jogosult előfizetéseiben található, egyező erőforrásokra alkalmazza. Az EA-ügyfelek esetében a számlázási környezet a beléptetés. A használatalapú díjas, egyéni előfizetések esetében a számlázási hatókör a fiókadminisztrátor által létrehozott, jogosult előfizetéseket foglalja magában.</li></ul>|
-|Region    |A foglalás által érintett Azure-régió.|    
+|Régió    |A foglalás által érintett Azure-régió.|    
 |Virtuális gép mérete     |A virtuálisgép-példányok mérete.|
 |Optimalizálás a következőhöz:     |A VM-példány méretének rugalmassága alapértelmezés szerint ki van választva. Kattintson a **Speciális beállítások** lehetőségre a példány méretének rugalmassági értékének módosításához, hogy a foglalási kedvezményt más virtuális gépekre alkalmazza ugyanabban a virtuálisgép- [méretezési csoportban](reserved-vm-instance-size-flexibility.md). A kapacitás prioritása kiemelt fontosságúként kezeli az adatközpont kapacitását az üzemelő példányok számára. További megbízhatóságot biztosít a virtuálisgép-példányok elindításához, amikor szüksége van rájuk. A kapacitás prioritása csak akkor érhető el, ha a foglalási hatókör egyetlen előfizetés. |
 |Kifejezés        |Egy vagy három év. A HBv2-alapú virtuális gépek esetében 5 éves időszak is rendelkezésre áll.|

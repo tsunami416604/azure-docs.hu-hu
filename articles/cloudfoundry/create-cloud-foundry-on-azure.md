@@ -14,12 +14,12 @@ ms.service: azure
 ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
-ms.openlocfilehash: 65d8ade438228d7af71de1fc66639e5b6de2edda
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 735c0955a25a3995c94c73bd6471643ce2783df3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040806"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682614"
 ---
 # <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>Pivotal Cloud Foundry-fürt létrehozása az Azure-ban
 
@@ -42,23 +42,29 @@ További információ: SSH- [kulcsok használata az Azure-ban Windowson](../virt
 
 > [!NOTE]
 >
-> Egyszerű szolgáltatásnév létrehozásához tulajdonosi fiókra van szükség. Emellett parancsfájlt is írhat az egyszerű szolgáltatás létrehozásának automatizálására. Használhatja például az Azure CLI az [ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest).
+> Egyszerű szolgáltatásnév létrehozásához tulajdonosi fiókra van szükség. Emellett parancsfájlt is írhat az egyszerű szolgáltatás létrehozásának automatizálására. Használhatja például az Azure CLI az [ad SP Create-for-RBAC](/cli/azure/ad/sp).
 
 1. Jelentkezzen be Azure-fiókjába.
 
-    `az login`
+    ```azurecli
+    az login
+    ```
 
     ![Azure CLI-bejelentkezés](media/deploy/az-login-output.png )
  
-    Másolja az "id" értéket előfizetés- **azonosítóként** , és másolja a "tenantId" értéket a későbbi használatra.
+    Másolja az "id" értéket előfizetés- **azonosítóként**, és másolja a "tenantId" értéket a későbbi használatra.
 
 2. Állítsa be az alapértelmezett előfizetést ehhez a konfigurációhoz.
 
-    `az account set -s {id}`
+    ```azurecli
+    az account set -s {id}
+    ```
 
 3. Hozzon létre egy Azure Active Directory alkalmazást a PCF. Egyedi alfanumerikus jelszót kell megadnia. Tárolja a jelszót, amelyet később **clientSecret** használni.
 
-    `az ad app create --display-name "Svc Principal for OpsManager" --password {enter-your-password} --homepage "{enter-your-homepage}" --identifier-uris {enter-your-homepage}`
+    ```azurecli
+    az ad app create --display-name "Svc Principal for OpsManager" --password {enter-your-password} --homepage "{enter-your-homepage}" --identifier-uris {enter-your-homepage}
+    ```
 
     Másolja az "appId" értéket a kimenetben, amelyet később a **clientID** használ.
 
@@ -68,23 +74,31 @@ További információ: SSH- [kulcsok használata az Azure-ban Windowson](../virt
 
 4. Hozzon létre egy egyszerű szolgáltatást az új alkalmazás-AZONOSÍTÓval.
 
-    `az ad sp create --id {appId}`
+    ```azurecli
+    az ad sp create --id {appId}
+    ```
 
 5. Állítsa be az egyszerű szolgáltatás jogosultságát közreműködői szerepkörre.
 
-    `az role assignment create --assignee "{enter-your-homepage}" --role "Contributor"`
+    ```azurecli
+    az role assignment create --assignee "{enter-your-homepage}" --role "Contributor"
+    ```
 
     Emellett használhatja a
 
-    `az role assignment create --assignee {service-principal-name} --role "Contributor"`
+    ```azurecli
+    az role assignment create --assignee {service-principal-name} --role "Contributor"
+    ```
 
     ![Egyszerű szolgáltatás szerepkör-hozzárendelése](media/deploy/svc-princ.png )
 
 6. Győződjön meg arról, hogy sikeresen bejelentkezhet a szolgáltatásba az alkalmazás-azonosító, a jelszó és a bérlő azonosítója használatával.
 
-    `az login --service-principal -u {appId} -p {your-password}  --tenant {tenantId}`
+    ```azurecli
+    az login --service-principal -u {appId} -p {your-password}  --tenant {tenantId}
+    ```
 
-7. Hozzon létre egy. JSON fájlt a következő formátumban. Használja a korábban átmásolt **előfizetés-azonosítót** , a **tenantID** , a **clientID** és a **clientSecret** értékeket. Mentse a fájlt.
+7. Hozzon létre egy. JSON fájlt a következő formátumban. Használja a korábban átmásolt **előfizetés-azonosítót**, a **tenantID**, a **clientID** és a **clientSecret** értékeket. Mentse a fájlt.
 
     ```json
     {

@@ -2,13 +2,13 @@
 title: Azure Service Bus Explorer használata adatműveletek végrehajtásához Service Bus (előzetes verzió)
 description: Ez a cikk azt ismerteti, hogyan használható a portálon alapuló Azure Service Bus Explorer a Azure Service Bus adatok eléréséhez.
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: e5e97c6860c2cc01048f4f7caf9f40f9e07592d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/20/2020
+ms.openlocfilehash: eb6610945ba4b09543308ab351d3a36ec7e587dd
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91295600"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684841"
 ---
 # <a name="use-service-bus-explorer-to-perform-data-operations-on-service-bus-preview"></a>Service Bus Explorer használata adatműveletek végrehajtásához Service Bus (előzetes verzió)
 
@@ -25,190 +25,163 @@ A Azure Service Bus Explorer a felügyeleti műveleteken túl kibővíti a port�
 > [!NOTE]
 > Ez a cikk a Azure Portal Azure Service Bus Explorer funkcióit mutatja be.
 >
-> A Azure Service Bus Explorer eszköz ***nem*** a közösségi TULAJDONú OSS-eszköz [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer).
+> A Azure Service Bus Explorer eszköz ***nem** a közösségi TULAJDONú OSS-eszköz [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer).
 >
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Service Bus Explorer eszköz használatához létre kell hoznia egy Azure Service Bus névteret. 
+A Service Bus Explorer eszköz használatához a következő feladatokat kell elvégeznie: 
 
-A Service Bus névtér kiépítés után létre kell hoznia egy várólistát, amely az üzenet küldéséhez és fogadásához szükséges, vagy egy előfizetéssel ellátott témakörben a funkciók kipróbálásához.
-
-Ha többet szeretne tudni a várólisták, témakörök és előfizetések létrehozásáról, tekintse meg az alábbi hivatkozásokat.
-   * [Rövid útmutató – várólisták létrehozása](service-bus-quickstart-portal.md)
-   * [Gyors útmutató – témakörök létrehozása](service-bus-quickstart-topics-subscriptions-portal.md)
+- Azure Service Bus névtér kiépítése.
+- Hozzon létre egy várólistát, amely elküldheti és fogadja az üzenetet, vagy egy előfizetést tartalmazó témakörből kipróbálhatja a funkciót. A várólisták, témakörök és előfizetések létrehozásával kapcsolatos további információkért tekintse meg a következő cikkeket: 
+    - [Rövid útmutató – várólisták létrehozása](service-bus-quickstart-portal.md)
+    - [Gyors útmutató – témakörök létrehozása](service-bus-quickstart-topics-subscriptions-portal.md)
+- Győződjön meg arról, hogy tagja a következő szerepkörök egyikének a névtéren: 
+    - [Service Bus adattulajdonos](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner) 
+    - [Közreműködő](../role-based-access-control/built-in-roles.md#contributor) 
+    - [Tulajdonos](/role-based-access-control/built-in-roles.md#owner)
 
 
 ## <a name="using-the-service-bus-explorer"></a>A Service Bus Explorer használata
 
 A Azure Service Bus Explorer használatához navigáljon ahhoz a Service Bus névtérhez, amelyen el szeretné végezni a küldési, betekintési és fogadási műveleteket.
 
-Ha egy várólistán műveleteket kíván végrehajtani, válassza a **"várólisták"** lehetőséget a navigációs menüből. Ha egy témakörhöz (és kapcsolódó előfizetésekhez) szeretne műveleteket végrehajtani, válassza a **témakörök**lehetőséget. 
+Ha egy várólistán műveleteket kíván végrehajtani, válassza a navigációs menü _ *"várólisták"* elemét. Ha egy témakörhöz (és kapcsolódó előfizetésekhez) szeretne műveleteket végrehajtani, válassza a **témakörök** lehetőséget. 
 
-:::image type="content" source="./media/service-bus-explorer/queue-topics-left-navigation.png"alt-text="Entitás kiválasztása&quot;:::
+:::image type="content" source="./media/service-bus-explorer/queue-topics-left-navigation.png"alt-text="Entitás kiválasztása":::
 
-A **&quot;Queues&quot;** vagy a **&quot;témakörök**" kiválasztása után válassza ki az adott várólistát vagy témakört.
+A **"Queues"** vagy a **"témakörök**" kiválasztása után válassza ki az adott várólistát vagy témakört.
 
 Válassza ki a **"Service Bus Explorer (előzetes verzió)"** lehetőséget a bal oldali navigációs menüből.
 
-:::image type="content" source="./media/service-bus-explorer/left-navigation-menu-selected.png" alt-text="Entitás kiválasztása&quot;:::
-
-A **&quot;Queues&quot;** vagy a **&quot;témakörök**":::
+:::image type="content" source="./media/service-bus-explorer/left-navigation-menu-selected.png" alt-text="SB Explorer – bal oldali navigációs menü":::
 
 ### <a name="sending-a-message-to-a-queue-or-topic"></a>Üzenet küldése üzenetsor vagy témakör számára
 
-Ha üzenetet szeretne küldeni egy **üzenetsor** vagy egy **témakör**számára, kattintson a ***Küldés*** lapra a Service Bus Explorerben.
+Ha üzenetet szeretne küldeni egy **üzenetsor** vagy egy **témakör** számára, kattintson a **_Küldés_* _ lapra a Service Bus Explorerben.
 
 Üzenet összeállítása itt: 
 
-1. Válassza ki a **tartalom típusát** "text/plain", "Application/XML" vagy "Application/JSON" értékűre.
+1. Válassza az _ *Content Type * értéket*"text/plain", "Application/XML" vagy "Application/JSON" értékűre.
 2. Adja hozzá az üzenet **tartalmát**. Győződjön meg arról, hogy az megegyezik a korábban beállított **tartalomtípussal** .
 3. A **Speciális tulajdonságok** beállítása (nem kötelező) – ilyenek például a korrelációs azonosító, az üzenet azonosítója, a címke, a ReplyTo, az élettartam (TTL) és az ütemezett sorba helyezni idő (ütemezett üzenetekhez).
 4. **Egyéni tulajdonságok** beállítása – bármely olyan felhasználói tulajdonság lehet, amely a szótár kulcsára van beállítva.
 
 Az üzenet létrejötte után kattintson a Send (küldés) elemre.
 
-:::image type="content" source="./media/service-bus-explorer/send-experience.png" alt-text="Entitás kiválasztása&quot;:::
-
-A **&quot;Queues&quot;** vagy a **&quot;témakörök**":::
+:::image type="content" source="./media/service-bus-explorer/send-experience.png" alt-text="Üzenet összeállítása":::
 
 Ha a küldési művelet sikeresen befejeződött, 
 
 * Ha a várólistára küldi az üzenetet, az **aktív üzenetek** metrikái számlálója megnő.
 
-    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="Entitás kiválasztása&quot;:::
-
-A **&quot;Queues&quot;** vagy a **&quot;témakörök**":::
+    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="QueueAfterSendMetrics":::
 
 * Ha a témakörbe küldi az üzenetet, az **aktív üzenetek** mérőszámai számláló azon előfizetés értékét fogja növelni, amelyben az üzenet át lett irányítva.
 
-    :::image type="content" source="./media/service-bus-explorer/topic-after-send-metrics.png" alt-text="Entitás kiválasztása&quot;:::
-
-A **&quot;Queues&quot;** vagy a **&quot;témakörök**":::
+    :::image type="content" source="./media/service-bus-explorer/topic-after-send-metrics.png" alt-text="TopicAfterSendMetrics":::
 
 ### <a name="receiving-a-message-from-a-queue"></a>Üzenet fogadása egy várólistából
 
 A Service Bus Explorer fogadási funkciója lehetővé teszi, hogy egyszerre egyetlen üzenetet kapjon. A fogadási művelet a **ReceiveAndDelete** mód használatával történik.
 
 > [!IMPORTANT]
-> Vegye figyelembe, hogy a Service Bus Explorer által végrehajtott fogadási művelet ***roncsolásos fogadás***, azaz az üzenet el lesz távolítva a várólistából, amikor megjelenik a Service Bus Explorer eszközön.
+> Vegye figyelembe, hogy a Service Bus Explorer által végrehajtott fogadási művelet **_roncsolásos fogadás_*, azaz az üzenet el lesz távolítva a várólistából, amikor megjelenik a Service Bus Explorer eszközön.
 >
-> Az üzenetek várólistából való eltávolítása nélküli tallózáshoz érdemes lehet a ***betekintés*** funkciót használni.
+> Az üzenetek várólistából való eltávolítása nélküli tallózáshoz érdemes lehet a _*_betekintés_*_ funkciót használni.
 >
 
 Üzenet fogadása egy várólistáról (vagy annak kézbesítetlen levelek-alsorából) 
 
-1. Kattintson a Service Bus Explorer ***fogadás*** fülére.
-2. Ellenőrizze a metrikákat, és győződjön meg arról, hogy vannak-e **aktív üzenetek** vagy **kézbesítetlen üzenetek** a fogadáshoz.
+1. Kattintson a Service Bus Explorer _*_fogadás_*_ fülére.
+2. Ellenőrizze a metrikákat, hogy megjelenjenek-e az *aktív üzenetek** vagy a **kézbesítetlen üzenetek** a fogadáshoz.
 
-    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="Entitás kiválasztása&quot;:::
+    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="QueueAfterSendMetrics":::
 
-A **&quot;Queues&quot;** vagy a **&quot;témakörök**":::
+3. Válassza a **_várólista_* _ vagy a _*_kézbesítetlen levelek_*_ alvárólistát.
 
-3. Válasszon a ***várólista*** vagy a ***kézbesítetlen levelek*** -alvárólista között.
+    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadletter":::
 
-    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="Entitás kiválasztása&quot;:::
-
-A **&quot;Queues&quot;** vagy a **&quot;témakörök**" művelet megerősítéséhez.
+4. Kattintson a _*_fogadás_*_ gombra, majd az _*_Igen_*_ gombra a "fogadás és törlés" művelet megerősítéséhez.
 
 
 Ha a fogadási művelet sikeres, az üzenet adatai a rácson az alábbiak szerint jelennek meg. A részletek megjelenítéséhez kiválaszthatja az üzenetet a rácsból.
 
-:::image type="content" source="./media/service-bus-explorer/receive-message-from-queue-2.png" alt-text="Entitás kiválasztása&quot;:::
-
-A **&quot;Queues&quot;** vagy a **&quot;témakörök**":::
+:::image type="content" source="./media/service-bus-explorer/receive-message-from-queue-2.png" alt-text="Képernyőkép a Azure Service Bus Explorerben a várólisták ablakról, amelyen megjelenik egy üzenet, amely a várólistában kiválasztott aktív üzenetre mutat.":::
 
 
 ### <a name="peeking-a-message-from-a-queue"></a>Üzenet bepillantása egy várólistából
 
 A betekintés funkcióval a Service Bus Explorer használatával megtekintheti az üzenetsor vagy a kézbesítetlen levelek-várólista legfontosabb 32-üzeneteit.
 
-1. Ha egy várólistán szeretné betekintést az üzenetbe, kattintson a ***betekintés*** lapra a Service Bus Explorerben.
+1. Ha egy várólistán szeretné betekintést az üzenetbe, kattintson a _*_betekintés_*_ lapra a Service Bus Explorerben.
 
-    :::image type="content" source="./media/service-bus-explorer/peek-tab-selected.png" alt-text="Entitás kiválasztása&quot;:::
+    :::image type="content" source="./media/service-bus-explorer/peek-tab-selected.png" alt-text="PeekTab":::
 
-A **&quot;Queues&quot;** vagy a **&quot;témakörök**":::
+2. Ellenőrizze a metrikákat, hogy megjelenjenek-e az *aktív üzenetek** vagy a **kézbesítetlen üzenetek** a betekintés előtt.
 
-2. Ellenőrizze a metrikákat, hogy vannak-e **aktív üzenetek** vagy **kézbesítetlen üzenetek** a betekintés előtt.
+    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="QueueAfterSendMetrics":::
 
-    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="Entitás kiválasztása&quot;:::
+3. Ezután válassza a **_várólista_* _ vagy a _*_kézbesítetlen levelek_*_ alvárólista között.
 
-A **&quot;Queues&quot;** vagy a **&quot;témakörök**":::
+    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadletter":::
 
-3. Ezután válasszon a ***várólista*** vagy a ***kézbesítetlen levelek*** alvárólista között.
-
-    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="Entitás kiválasztása&quot;:::
-
-A **&quot;Queues&quot;** vagy a **&quot;témakörök**":::
-
-4. Kattintson a ***betekintés*** gombra. 
+4. Kattintson a _*_betekintés_*_ gombra. 
 
 Miután a betekintés művelet befejeződik, legfeljebb 32 üzenet jelenik meg a rácson az alábbi módon. Egy adott üzenet részleteinek megtekintéséhez válassza ki azt a rácsból. 
 
-:::image type="content" source="./media/service-bus-explorer/peek-message-from-queue-2.png" alt-text="Entitás kiválasztása&quot;:::
-
-A **&quot;Queues&quot;** vagy a **&quot;témakörök**":::
+:::image type="content" source="./media/service-bus-explorer/peek-message-from-queue-2.png" alt-text="PeekMessageFromQueue":::
 
 > [!NOTE]
 >
-> Mivel a betekintés nem roncsolásos művelet, az üzenet **nem** lesz eltávolítva a várólistából.
+> Mivel a betekintés nem roncsolásos művelet, a *rendszer nem* távolítja el az üzenetet (_) a várólistából.
 >
 
 ### <a name="receiving-a-message-from-a-subscription"></a>Üzenet fogadása egy előfizetésből
 
-A várólistához hasonlóan a ***fogadási*** művelet is elvégezhető egy előfizetésen (vagy annak kézbesítetlen levelek-entitásán). Mivel azonban az előfizetés a témakör kontextusában él, a fogadási műveletet a Service Bus Explorer egy adott témakörhöz való navigálásával hajtja végre.
+A várólistához hasonlóan a **_Receive_* _ művelet is elvégezhető egy előfizetésen (vagy annak kézbesítetlen levelek-entitásán). Mivel azonban az előfizetés a témakör kontextusában él, a fogadási műveletet a Service Bus Explorer egy adott témakörhöz való navigálásával hajtja végre.
 
 > [!IMPORTANT]
-> Vegye figyelembe, hogy a Service Bus Explorer által végrehajtott fogadási művelet ***roncsolásos fogadás***, azaz az üzenet el lesz távolítva a várólistából, amikor megjelenik a Service Bus Explorer eszközön.
+> Vegye figyelembe, hogy a Service Bus Explorer által végrehajtott fogadási művelet _*_roncsolásos fogadás_*_, azaz az üzenet el lesz távolítva a várólistából, amikor megjelenik a Service Bus Explorer eszközön.
 >
-> Az üzenetek várólistából való eltávolítása nélküli tallózáshoz érdemes lehet a ***betekintés*** funkciót használni.
+> Az üzenetek várólistából való eltávolítása nélküli tallózáshoz érdemes lehet a _*_betekintés_*_ funkciót használni.
 >
 
-1. Kattintson a ***fogadás*** lapra, és válassza ki az adott ***előfizetést*** a legördülő listából.
+1. Kattintson a _*_fogadás_*_ lapra, és válassza ki az adott _*_előfizetést_*_ a legördülő listából.
 
-    :::image type="content" source="./media/service-bus-explorer/receive-subscription-tab-selected.png" alt-text="Entitás kiválasztása&quot;:::
+    :::image type="content" source="./media/service-bus-explorer/receive-subscription-tab-selected.png" alt-text="ReceiveTabSelected":::
 
-A **&quot;Queues&quot;** vagy a **&quot;témakörök**":::
+2. Válasszon az _*_előfizetés_*_ vagy a _*_kézbesítetlen levelek_*_ alentitás között.
 
-2. Válasszon az ***előfizetés*** vagy a ***kézbesítetlen levelek*** alentitás között.
+    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="SubscriptionOrDeadletter":::
 
-    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="Entitás kiválasztása&quot;:::
-
-A **&quot;Queues&quot;** vagy a **&quot;témakörök**" művelet megerősítéséhez.
+3. Kattintson a _*_fogadás_*_ gombra, majd az _*_Igen_*_ gombra a "fogadás és törlés" művelet megerősítéséhez.
 
 Ha a fogadási művelet sikeres, a fogadott üzenet az alábbi módon jelenik meg a rácson. Az üzenet részleteinek megtekintéséhez kattintson az üzenetre.
 
-:::image type="content" source="./media/service-bus-explorer/receive-message-from-subscription.png" alt-text="Entitás kiválasztása&quot;:::
-
-A **&quot;Queues&quot;** vagy a **&quot;témakörök**":::
+:::image type="content" source="./media/service-bus-explorer/receive-message-from-subscription.png" alt-text="Képernyőfelvétel a Azure Service Bus Explorer Receive (fogadás) lapjáról, amelyen a kapott aktív üzenet részletei jelennek meg.":::
 
 ### <a name="peeking-a-message-from-a-subscription"></a>Üzenet bepillantása egy előfizetésből
 
-Az előfizetésben vagy a kézbesítetlen levelek alentitásban lévő üzenetek tallózásához a ***betekintés*** funkció is használható az előfizetésben.
+Az előfizetésben vagy a kézbesítetlen levelek alentitásban lévő üzenetek tallózásához a _*_betekintés_*_ funkció is használható az előfizetésben.
 
-1. Kattintson a ***betekintés*** lapra, és válassza ki az adott ***előfizetést*** a legördülő listából.
+1. Kattintson a _*_betekintés_*_ lapra, és válassza ki az adott _*_előfizetést_*_ a legördülő listából.
 
-    :::image type="content" source="./media/service-bus-explorer/peek-subscription-tab-selected.png" alt-text="Entitás kiválasztása&quot;:::
+    :::image type="content" source="./media/service-bus-explorer/peek-subscription-tab-selected.png" alt-text="PeekTabSelected":::
 
-A **&quot;Queues&quot;** vagy a **&quot;témakörök**":::
+2. Válasszon az _*_előfizetés_*_ vagy a _*_kézbesítetlen levelek_*_ alentitás között.
 
-2. Válasszon az ***előfizetés*** vagy a ***kézbesítetlen levelek*** alentitás között.
+    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="SubscriptionOrDeadletter":::
 
-    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="Entitás kiválasztása&quot;:::
-
-A **&quot;Queues&quot;** vagy a **&quot;témakörök**":::
-
-3. Kattintson a ***betekintés*** gombra.
+3. Kattintson a _*_betekintés_*_ gombra.
 
 Miután a betekintés művelet befejeződik, legfeljebb 32 üzenet jelenik meg a rácson az alábbi módon. Egy adott üzenet részleteinek megtekintéséhez válassza ki azt a rácsból. 
 
-:::image type="content" source="./media/service-bus-explorer/peek-message-from-subscription.png" alt-text="Entitás kiválasztása&quot;:::
-
-A **&quot;Queues&quot;** vagy a **&quot;témakörök**":::
+:::image type="content" source="./media/service-bus-explorer/peek-message-from-subscription.png" alt-text="PeekMessageFromSubscription":::
 
 > [!NOTE]
 >
-> Mivel a betekintés nem roncsolásos művelet, az üzenet **nem** lesz eltávolítva a várólistából.
+> Mivel a betekintés nem roncsolásos művelet, a *rendszer nem* távolítja el az üzenetet (_) a várólistából.
 >
 
 ## <a name="next-steps"></a>Következő lépések

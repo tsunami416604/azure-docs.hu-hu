@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 249f124dc7d4d789ca4396a67fba63fbdd144ba6
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 6fbc4179bcfc36f094b36966c8e5dd0acac66075
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120053"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683023"
 ---
 # <a name="synapse-sql-resource-consumption"></a>Szinapszis SQL-erőforrások felhasználása
 
@@ -38,7 +38,7 @@ Az adatraktár-egységek teljesítménye a következő adatraktár-számítási 
 
 - A szabványos adattárház-lekérdezések gyors vizsgálata nagy mennyiségű sort vizsgál, majd összetett összesítést hajt végre. Ez a művelet I/O-és CPU-igényes.
 - Az adattárház az Azure Storage-Blobokból vagy Azure Data Lakeokból származó adatok betöltésének gyorsasága. A művelet a hálózati és a CPU-igényes.
-- A [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL-parancs által a tábla másolásának gyorsasága. A művelet magában foglalja az adatok tárolásból való beolvasását, a berendezés csomópontjain való terjesztését és a tárolóba való írást. Ez a művelet CPU-, IO-és hálózati igényű.
+- A [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL-parancs által a tábla másolásának gyorsasága. A művelet magában foglalja az adatok tárolásból való beolvasását, a berendezés csomópontjain való terjesztését és a tárolóba való írást. Ez a művelet CPU-, IO-és hálózati igényű.
 
 Növekvő DWU:
 
@@ -98,7 +98,7 @@ Az SQL Pool egy kibővíthető rendszer, amely nagy mennyiségű számítási é
 
 ### <a name="permissions"></a>Engedélyek
 
-Az adatraktár-egységek módosításához az [Alter Database](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)utasításban ismertetett engedélyek szükségesek.
+Az adatraktár-egységek módosításához az [Alter Database](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)utasításban ismertetett engedélyek szükségesek.
 
 Az Azure beépített szerepkörei, például az SQL-adatbázis közreműködői és SQL Server közreműködők módosíthatják a DWU beállításait.
 
@@ -129,7 +129,7 @@ DWU módosítása:
 
 2. A **skála** alatt mozgassa a csúszkát balra vagy jobbra a DWU beállítás módosításához.
 
-3. Válassza a **Mentés** lehetőséget. Ekkor megjelenik egy megerősítő üzenet. Válassza az **Igen** lehetőséget a megerősítéshez **, vagy a Mégse gombra.**
+3. Kattintson a **Mentés** gombra. Ekkor megjelenik egy megerősítő üzenet. Válassza az **Igen** lehetőséget a megerősítéshez **, vagy a Mégse gombra.**
 
 #### <a name="powershell"></a>PowerShell
 
@@ -150,7 +150,7 @@ A T-SQL használatával megtekintheti az aktuális DWUsettings, módosíthatja a
 A DWU módosítása:
 
 1. Kapcsolódjon a kiszolgálóhoz társított Master adatbázishoz.
-2. Használja az [Alter Database](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) TSQL utasítást. A következő példa a szolgáltatási szint célkitűzését állítja be a DW1000c adatbázis-MySQLDW.
+2. Használja az [Alter Database](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) TSQL utasítást. A következő példa a szolgáltatási szint célkitűzését állítja be a DW1000c adatbázis-MySQLDW.
 
 ```Sql
 ALTER DATABASE MySQLDW
@@ -160,7 +160,7 @@ MODIFY (SERVICE_OBJECTIVE = 'DW1000c')
 
 #### <a name="rest-apis"></a>REST API-k
 
-A DWU módosításához használja az [adatbázis létrehozása vagy frissítése](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) REST API. A következő példa a szolgáltatási szint célkitűzését állítja be a DW1000c adatbázis-MySQLDW, amely a kiszolgáló MyServer található. A kiszolgáló egy ResourceGroup1 nevű Azure-erőforráscsoport.
+A DWU módosításához használja az [adatbázis létrehozása vagy frissítése](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) REST API. A következő példa a szolgáltatási szint célkitűzését állítja be a DW1000c adatbázis-MySQLDW, amely a kiszolgáló MyServer található. A kiszolgáló egy ResourceGroup1 nevű Azure-erőforráscsoport.
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01-preview HTTP/1.1

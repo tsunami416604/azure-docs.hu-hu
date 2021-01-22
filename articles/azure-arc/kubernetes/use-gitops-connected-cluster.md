@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Azure arc-kompatibilis Kubernetes-fürt (előzetes verzió) konfigurálása a GitOps használatával
 keywords: GitOps, Kubernetes, K8s, Azure, arc, Azure Kubernetes szolgáltatás, AK, tárolók
-ms.openlocfilehash: 906021377cbfd6960769f98f9dbd15a5c430c71f
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 751b274a9cae68f6bc9b1adc45804f2dd2ef4c72
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955331"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684757"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Konfigurációk üzembe helyezése a GitOps használatával Arc-kompatibilis Kubernetes-fürtön (előzetes verzió)
 
@@ -48,7 +48,7 @@ Ha privát tárházat társít a `sourceControlConfiguration` alkalmazáshoz, gy
 
 Az Azure CLI bővítmény használatával `k8sconfiguration` csatlakoztathat egy csatlakoztatott fürtöt a [példa git-tárházhoz](https://github.com/Azure/arc-k8s-demo). Ennek a konfigurációnak a nevét kell megadnia `cluster-config` , arra utasítja az ügynököt, hogy telepítse az operátort a `cluster-config` névtérben, és adja meg az operátor `cluster-admin` engedélyeit.
 
-```console
+```azurecli
 az k8sconfiguration create --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name cluster-config --operator-namespace cluster-config --repository-url https://github.com/Azure/arc-k8s-demo --scope cluster --cluster-type connectedClusters
 ```
 
@@ -179,7 +179,7 @@ További információ: Flux- [dokumentáció](https://aka.ms/FluxcdReadme).
 
 Az Azure CLI használatával ellenőrizze, hogy a `sourceControlConfiguration` sikeresen létrejött-e.
 
-```console
+```azurecli
 az k8sconfiguration show --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
 ```
 
@@ -351,7 +351,7 @@ Törölje `sourceControlConfiguration` Az Azure CLI vagy Azure Portal használat
 > Miután létrehozta a sourceControlConfiguration a névtér hatókörével, lehetséges, hogy a `edit` névterek szerepkör-kötéssel rendelkező felhasználók üzembe helyezik a munkaterheléseket ezen a névtéren. Ha a `sourceControlConfiguration` névtér hatóköre törölve lesz, a névtér érintetlen marad, és a rendszer nem törli a többi számítási feladat megszakítása érdekében.  Ha szükséges, manuálisan törölheti a névteret a kubectl használatával.
 > A rendszer nem törli a fürt azon módosításait, amelyek a nyomon követett git-tárházból való üzembe helyezések eredményeként lettek törölve `sourceControlConfiguration` .
 
-```console
+```azurecli
 az k8sconfiguration delete --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
 ```
 
@@ -361,7 +361,7 @@ az k8sconfiguration delete --name cluster-config --cluster-name AzureArcTest1 --
 Command group 'k8sconfiguration' is in preview. It may be changed/removed in a future release.
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Helm használata a verziókövetés konfigurációjával](./use-gitops-with-helm.md)
 - [A fürt konfigurációjának szabályozása Azure Policy használatával](./use-azure-policy.md)

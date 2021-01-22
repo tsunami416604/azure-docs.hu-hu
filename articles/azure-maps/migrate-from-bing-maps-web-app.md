@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: ef2c69409ce3f479338ffc9d418b3469f197ad30
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: db53e4407674abc1e6c81090dc4a50afa784940d
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679394"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684825"
 ---
 # <a name="tutorial-migrate-a-web-app-from-bing-maps"></a>Oktatóanyag: webalkalmazás migrálása a Bing Mapsből
 
@@ -70,7 +70,7 @@ Az alábbi táblázat a Bing Maps V8 JavaScript SDK legfontosabb API-funkcióit 
 | Geocoder szolgáltatás         | ✓                                                                                      |
 | Directions szolgáltatás       | ✓                                                                                      |
 | Távolsági mátrix szolgáltatás  | ✓                                                                                      |
-| Térbeli adatszolgáltatás     | N.A.                                                                                    |
+| Térbeli adatszolgáltatás     | N/A                                                                                    |
 | Satellite/antenna-képek | ✓                                                                                      |
 | Madarak szemének képei         | Tervezve                                                                                |
 | Utcai-képek       | Tervezve                                                                                |
@@ -85,7 +85,7 @@ A Azure Maps számos további [nyílt forráskódú modult is tartalmaz a webes 
 
 A Bing Maps és a Azure Maps web SDK-k közötti főbb különbségek a következők:
 
-* Amellett, hogy a Azure Maps web SDK eléréséhez üzemeltetett végpontot biztosít, egy NPM-csomag is elérhető a web SDK alkalmazásba való beágyazásához, ha az előnyben részesített. További információkért tekintse meg ezt a [dokumentációt](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control) . Ez a csomag írógéppel kapcsolatos definíciókat is tartalmaz.
+* Amellett, hogy a Azure Maps web SDK eléréséhez üzemeltetett végpontot biztosít, egy NPM-csomag is elérhető a web SDK alkalmazásba való beágyazásához, ha az előnyben részesített. További információkért tekintse meg ezt a [dokumentációt](./how-to-use-map-control.md) . Ez a csomag írógéppel kapcsolatos definíciókat is tartalmaz.
 * A Bing Maps az SDK két üzemeltetett ágát biztosítja. Kiadás és kísérleti. A kísérleti ág naponta több frissítést is kaphat, amikor új fejlesztés zajlik. Azure Maps csak a kiadási ágakat üzemelteti, de a kísérleti funkciók egyéni modulokként jönnek létre a nyílt forráskódú Azure Maps-mintakód projektben. A Bing Maps-ben egy fagyasztott ág is volt, amely ritkábban frissült, így csökkentve a kiadás miatti változtatások kockázatát. Itt Azure Maps használhatja a NPM modult, és rámutathat bármely korábbi alverzióra.
 
 > [!TIP]
@@ -95,7 +95,7 @@ A Bing Maps és a Azure Maps web SDK-k közötti főbb különbségek a követke
 * Mindkét platform egy hasonló csemperendszer használatát használja az alaptérképekhez, azonban a Bing Maps csempéi a dimenzióban 256 képpont méretűek, míg a Azure Maps csempéi 512 képpont méretűek. Ennek megfelelően, ha ugyanazt a leképezési nézetet szeretné levonni a Bing Maps Azure Maps, a Bing Maps-ben használt nagyítási szintet egy Azure Maps kell kivonnia.
 * A Bing Maps-koordinátákat úgy nevezzük, ahogy `latitude, longitude` Azure Maps használja `longitude, latitude` . Ez a formátum a `[x, y]` legtöbb GIS-platform által követett szabványhoz igazodik.
 
-* A Azure Maps web SDK alakzatai a GeoJSON sémán alapulnak. A segítő osztályok az [Atlas. adatnévtéren](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data)keresztül érhetők el. Az Atlas is rendelkezésre áll [. ](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) Az GeoJSON objektumok becsomagolásához használható Shape osztály, amely lehetővé teszi, hogy a rendszer könnyen frissítse és karbantartsa azokat az adatkezelési módszerekkel.
+* A Azure Maps web SDK alakzatai a GeoJSON sémán alapulnak. A segítő osztályok az [Atlas. adatnévtéren](/javascript/api/azure-maps-control/atlas.data)keresztül érhetők el. Az Atlas is rendelkezésre áll [. ](/javascript/api/azure-maps-control/atlas.shape) Az GeoJSON objektumok becsomagolásához használható Shape osztály, amely lehetővé teszi, hogy a rendszer könnyen frissítse és karbantartsa azokat az adatkezelési módszerekkel.
 * A Azure Mapsban lévő koordináták olyan pozicionálási objektumok, amelyek egyszerű szám tömbként adhatók meg a formátumban `[longitude, latitude]` vagy `new atlas.data.Position(longitude, latitude)` .
 
 > [!TIP]
@@ -909,7 +909,7 @@ A Azure Mapsban az adatforrások felveszik és kezelik az adatforrásokat. A ré
 
 Ha a fürtözés engedélyezve van, akkor az adatforrás fürtözött és nem fürtözött adatpontokat küld a renderelési rétegeknek. Az adatforrás több száz ezer adatpont fürtözésére képes. A fürtözött adatpontok a következő tulajdonságokkal rendelkeznek:
 
-| Tulajdonság neve               | Típus    | Description (Leírás)                                    |
+| Tulajdonság neve               | Típus    | Leírás                                    |
 |-----------------------------|---------|------------------------------------------------|
 | `cluster`                   | boolean | Azt jelzi, hogy a szolgáltatás egy fürtöt jelöl-e.     |
 | `cluster_id`                | sztring  | A fürt egyedi azonosítója, amely az `DataSource` osztályokkal `getClusterExpansionZoom` , valamint a függvények használatával használható `getClusterChildren` `getClusterLeaves` . |
@@ -918,7 +918,7 @@ Ha a fürtözés engedélyezve van, akkor az adatforrás fürtözött és nem f�
 
 Az `DataSource` osztály a következő segítő függvényt használja a fürttel kapcsolatos további információk eléréséhez a használatával `cluster_id` .
 
-| Függvény       | Visszatérési típus        | Description (Leírás)     |
+| Függvény       | Visszatérési típus        | Leírás     |
 |----------------|--------------------|-----------------|
 | `getClusterChildren(clusterId: number)`                              | `Promise<Feature<Geometry, any> | Shape>` | A következő nagyítási szinten kéri le a megadott fürt gyermekeit. Ezek a gyermekek alakzatokat és alfürtöket is tartalmazhatnak. Az alfürtök a fürt tulajdonságaival egyező tulajdonságokkal rendelkező funkciók lesznek. |
 | `getClusterExpansionZoom(clusterId: number)`                         | `Promise<number>`                            | Kiszámítja azt a nagyítási szintet, amelyet a fürt elkezd kibővíteni vagy bontani.    |
@@ -1683,7 +1683,7 @@ További információ a Azure Maps web SDK-ról.
 > [!div class="nextstepaction"]
 > [Azure Maps web SDK szolgáltatás API-referenciájának dokumentációja](/javascript/api/azure-maps-control/)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Nincs kitakarítható erőforrás.
 

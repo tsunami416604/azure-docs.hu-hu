@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 65505103040a412e425a7ad1563734f8c96e8f15
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: e53d15e92a26ab96b39ade549ec474a4f0a543fb
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045593"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685369"
 ---
-## <a name="azure-security-benchmark"></a>Azure-biztonsági teljesítményteszt
+## <a name="azure-security-benchmark-v1"></a>Azure Security teljesítményteszt v1
 
 Az [Azure biztonsági teljesítményteszt](../../../../articles/security/benchmarks/overview.md) az Azure-beli felhőalapú megoldások biztonságossá tételével kapcsolatos ajánlásokat tartalmaz. Ha szeretné megtekinteni, hogy a szolgáltatás hogyan képezi le teljesen az Azure biztonsági Teljesítménytesztét, tekintse meg az [Azure biztonsági teljesítményteszt-leképezési fájljait](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
 
@@ -20,7 +20,7 @@ Ha szeretné áttekinteni, hogy az összes Azure-szolgáltatáshoz rendelkezésr
 
 |Tartomány |Vezérlő azonosítója |Vezérlő címe |Szabályzat<br /><sub>(Azure Portal)</sub> |Házirend verziója<br /><sub>GitHub</sub>  |
 |---|---|---|---|---|
-|Hálózati biztonság |1,1 |Az erőforrások védelme hálózati biztonsági csoportokkal vagy a Virtual Network Azure Firewall használatával |[A magánhálózati végpontot engedélyezni kell a MySQL-kiszolgálókon](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7595c971-233d-4bcf-bd18-596129188c49) |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/MySQL_EnablePrivateEndPoint_Audit.json) |
+|Hálózati biztonság |1.1 |Az erőforrások védelme hálózati biztonsági csoportokkal vagy a Virtual Network Azure Firewall használatával |[A magánhálózati végpontot engedélyezni kell a MySQL-kiszolgálókon](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7595c971-233d-4bcf-bd18-596129188c49) |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/MySQL_EnablePrivateEndPoint_Audit.json) |
 |Adatvédelem |4.4 |Az összes bizalmas adat titkosítása az átvitel során |[Az SSL-kapcsolat kényszerített engedélyezése a MySQL adatbázis-kiszolgálókon](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe802a67a-daf5-4436-9ea6-f6d821dd0c5d) |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/MySQL_EnableSSL_Audit.json) |
 |Adat-helyreállítás |9,1 |Rendszeres automatizált biztonsági másolatok biztosítása |[A Geo-redundáns biztonsági mentést engedélyezni kell a Azure Database for MySQL](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82339799-d096-41ae-8538-b108becf0970) |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/GeoRedundant_DBForMySQL_Audit.json) |
 |Adat-helyreállítás |9,2 |A teljes rendszerbiztonsági másolatok és az ügyfelek által felügyelt kulcsok biztonsági mentésének végrehajtása |[A Geo-redundáns biztonsági mentést engedélyezni kell a Azure Database for MySQL](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82339799-d096-41ae-8538-b108becf0970) |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/GeoRedundant_DBForMySQL_Audit.json) |

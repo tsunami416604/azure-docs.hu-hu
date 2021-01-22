@@ -9,12 +9,12 @@ ms.author: larryfr
 author: BlackMist
 ms.date: 11/04/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 618b7b9cef5ec78cd53247faea2797e9fc897833
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: a9d471e81c348bfaa92c5d15774517f0d9e0e43f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630217"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683357"
 ---
 # <a name="what-is-azure-machine-learning"></a>Mi az Azure Machine Learning?
 
@@ -128,7 +128,6 @@ Az Azure Storage-fiók, a számítási célok és az egyéb erőforrások bizton
 - Hozza létre első kísérletét a kívánt módszerrel:
 - + [Ismerkedés a saját fejlesztési környezetével](tutorial-1st-experiment-sdk-setup-local.md)
   + [Jupyter notebookok használata számítási példányokon & üzembe helyezése ML-modellek betanításához](tutorial-1st-experiment-sdk-setup.md)
-  + [Az R Markdown használata & ML-modellek üzembe helyezéséhez](tutorial-1st-r-experiment.md) 
   + [Az automatizált gépi tanulás használata & ML-modellek üzembe helyezéséhez](tutorial-first-experiment-automated-ml.md) 
   + [A tervező drag & drop funkciói a & üzembe helyezéséhez](tutorial-designer-automobile-price-train-score.md) 
   + [Modellek betanítása és üzembe helyezése a Machine learning parancssori felület használatával](tutorial-train-deploy-model-cli.md)

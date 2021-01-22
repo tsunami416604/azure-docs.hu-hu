@@ -9,18 +9,18 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 1a0bfb79b03b778696faef29597cabbcff47e6df
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: a7b8cb10f75d7a99198ddfdc1a1bbef3c34a03da
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601668"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685106"
 ---
 # <a name="create-an-image-from-a-vm"></a>Rendszerkép létrehozása virtuális gépről
 
 Ha rendelkezik egy meglévő virtuális géppel, amelyet több, azonos virtuális gép létrehozásához kíván használni, akkor a virtuális gép használatával létrehozhat egy rendszerképet egy megosztott rendszerkép-katalógusban Azure PowerShell segítségével. Az [Azure CLI](image-version-vm-cli.md)használatával is létrehozhat egy rendszerképet egy virtuális gépről.
 
-A rendszerképeket a Azure PowerShell használatával is rögzítheti a [speciális és az általánosított](./windows/shared-image-galleries.md#generalized-and-specialized-images) virtuális gépekről. 
+A rendszerképeket a Azure PowerShell használatával is rögzítheti a [speciális és az általánosított](./shared-image-galleries.md#generalized-and-specialized-images) virtuális gépekről. 
 
 A képkatalógusban található lemezképek két összetevővel rendelkeznek, amelyeket a következő példában hozunk létre:
 - A **rendszerkép definíciója** információt nyújt a rendszerképekről és az azok használatára vonatkozó követelményekről. Ez magában foglalja azt is, hogy a rendszerkép Windows vagy Linux, specializált vagy általánosított, kibocsátási megjegyzések, valamint minimális és maximális memória-követelmény. Ez egy adott típusú rendszerkép definíciója. 
@@ -77,7 +77,7 @@ A rendszerkép-definíciók logikai csoportosítást hoznak létre a képekhez. 
 
 A rendszerkép meghatározásakor győződjön meg arról, hogy a megfelelő információval rendelkezik. Ha általánosítja a virtuális gépet (a Windows Sysprep használatával vagy a Linux waagent), akkor létre kell hoznia egy rendszerkép-definíciót a használatával `-OsState generalized` . Ha nem általánosítta a virtuális gépet, hozzon létre egy rendszerkép-definíciót a használatával `-OsState specialized` .
 
-További információ a képdefiníciók által megadható értékekről: [képdefiníciók](./windows/shared-image-galleries.md#image-definitions).
+További információ a képdefiníciók által megadható értékekről: [képdefiníciók](./shared-image-galleries.md#image-definitions).
 
 Hozza létre a rendszerkép definícióját a [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion)használatával. 
 
@@ -136,7 +136,7 @@ $job.State
 > A rendszerképet a Premium Storage-ban is tárolhatja `-StorageAccountType Premium_LRS` , ha a rendszerkép verziójának létrehozásakor hozzáadja vagy zónába helyezi a [redundáns tárolást](../storage/common/storage-redundancy.md) `-StorageAccountType Standard_ZRS` .
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután meggyőződött róla, hogy az új rendszerkép verziója megfelelően működik, létrehozhat egy virtuális gépet. Hozzon létre egy virtuális gépet egy [speciális rendszerkép-verzióból](vm-specialized-image-version-powershell.md) vagy egy [általánosított rendszerkép-verzióból](vm-generalized-image-version-powershell.md).
 

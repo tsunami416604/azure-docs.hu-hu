@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: a557d4045b18b5c0ff71b3e47f0c189028702863
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7714ce748eb172565357723924ab2212e9559e1f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289531"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685327"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Számítási feladatok kezelése erőforrás-osztályokkal az Azure szinapszis Analyticsben
 
@@ -78,7 +78,7 @@ Az egyes erőforrás-osztályok memóriájának kiosztása a következő.
 
 ### <a name="default-resource-class"></a>Alapértelmezett erőforrás osztály
 
-Alapértelmezés szerint minden felhasználó a dinamikus erőforrás osztály **smallrc**tagja.
+Alapértelmezés szerint minden felhasználó a dinamikus erőforrás osztály **smallrc** tagja.
 
 A szolgáltatás-rendszergazda erőforrás-osztálya a smallrc helyen van kijavítva, és nem módosítható.  A szolgáltatás-rendszergazda a kiépítési folyamat során létrehozott felhasználó.  A szolgáltatás rendszergazdája ebben a környezetben a "kiszolgálói rendszergazdai bejelentkezéshez" megadott bejelentkezési azonosítót adja meg új szinapszis SQL-készlet új kiszolgálóval való létrehozásakor.
 
@@ -129,7 +129,7 @@ Az alábbi utasítások mentesülnek az erőforrás-osztályoktól, és mindig a
 - NÉZET létrehozása vagy eldobása
 - ÉRTÉKEK BESZÚRÁSA
 - Válasszon a rendszernézetek és a DMV közül
-- MEGMAGYARÁZNI
+- EXPLAIN
 - DBCC
 
 <!--
@@ -162,13 +162,13 @@ WHERE  name LIKE '%rc%' AND type_desc = 'DATABASE_ROLE';
 
 Az erőforrás-osztályok a felhasználók adatbázis-szerepkörökhöz való hozzárendelésével valósíthatók meg. Amikor egy felhasználó futtat egy lekérdezést, a lekérdezés a felhasználó erőforrás-osztályával fut. Ha például egy felhasználó a staticrc10 adatbázis-szerepkör tagja, a lekérdezések kis mennyiségű memóriával futnak. Ha egy adatbázis-felhasználó tagja a xlargerc vagy a staticrc80 adatbázis-szerepkörnek, a lekérdezések nagy mennyiségű memóriával futnak.
 
-A felhasználó erőforrás-osztályának növeléséhez a [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) használatával adja hozzá a felhasználót egy nagy erőforrás-osztály adatbázis-szerepköréhez.  Az alábbi kód hozzáadja a felhasználót a largerc adatbázis-szerepkörhöz.  Minden kérelem a rendszermemória 22%-át kapja meg.
+A felhasználó erőforrás-osztályának növeléséhez a [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) használatával adja hozzá a felhasználót egy nagy erőforrás-osztály adatbázis-szerepköréhez.  Az alábbi kód hozzáadja a felhasználót a largerc adatbázis-szerepkörhöz.  Minden kérelem a rendszermemória 22%-át kapja meg.
 
 ```sql
 EXEC sp_addrolemember 'largerc', 'loaduser';
 ```
 
-Az erőforrás osztályának csökkentéséhez használja a [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Ha a "loaduser" nem tag vagy más erőforrás-osztály, az alapértelmezett smallrc-erőforrás osztályba kerül, és 3% memóriát biztosít.  
+Az erőforrás osztályának csökkentéséhez használja a [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).  Ha a "loaduser" nem tag vagy más erőforrás-osztály, az alapértelmezett smallrc-erőforrás osztályba kerül, és 3% memóriát biztosít.  
 
 ```sql
 EXEC sp_droprolemember 'largerc', 'loaduser';

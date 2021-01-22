@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 1/5/2021
 ms.author: v-jawe
-ms.openlocfilehash: 07c9bd12664a94c64a0d0b37d638b5668cc7f61e
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: b4035e2039afb6fe66d2658ebfcd3206d46e1de5
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98605503"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682462"
 ---
 # <a name="how-to-mitigate-latency-when-using-the-face-service"></a>Útmutató: az arc szolgáltatás használatakor felhasználható késés csökkentése
 
@@ -42,7 +42,11 @@ var faces = await client.Face.DetectWithUrlAsync("https://www.biography.com/.ima
 
 A Face szolgáltatásnak ezután le kell töltenie a rendszerképet a távoli kiszolgálóról. Ha a Face szolgáltatás és a távoli kiszolgáló közötti kapcsolatok lassúak, ez hatással lesz az észlelési módszer válaszideje.
 
-Ennek enyhítése érdekében érdemes lehet [a rendszerképet az Azure Premium blob Storage tárolni](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet).
+Ennek enyhítése érdekében érdemes lehet [a rendszerképet az Azure Premium blob Storage tárolni](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet). Például:
+
+``` csharp
+var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows.net/resources/Face/Images/Family1-Daughter1.jpg");
+```
 
 ### <a name="large-upload-size"></a>Nagyméretű feltöltés mérete
 
@@ -58,7 +62,10 @@ Ha a feltölteni kívánt fájl nagy méretű, az a `DetectWithStreamAsync` köv
 - A fájl méretének arányában a szolgáltatás továbbra is feldolgozza a fájlt.
 
 Enyhítését
-- Érdemes lehet [a rendszerképet az Azure Premium blob Storage tárolni](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet).
+- Érdemes lehet [a rendszerképet az Azure Premium blob Storage tárolni](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet). Például:
+``` csharp
+var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows.net/resources/Face/Images/Family1-Daughter1.jpg");
+```
 - Érdemes lehet kisebb fájlt feltölteni.
     - Tekintse meg a [bemeneti adatokkal](https://docs.microsoft.com/azure/cognitive-services/face/concepts/face-detection#input-data) kapcsolatos útmutatást a arcfelismerés és a [bemeneti adatok](https://docs.microsoft.com/azure/cognitive-services/face/concepts/face-recognition#input-data)észleléséhez.
     - Az Arcfelismerés esetében az észlelési modell használatakor `DetectionModel.Detection01` a képfájl méretének csökkentése növeli a feldolgozási sebességet. Az észlelési modell használatakor `DetectionModel.Detection02` a képfájlok méretének csökkentése csak akkor növeli a feldolgozási sebességet, ha a képfájl mérete kisebb, mint 1920 × 1080.
@@ -80,7 +87,7 @@ Enyhítését
 - Az arc-előfizetés létrehozásakor ügyeljen arra, hogy a legközelebb eső régiót válassza ki, ahol az alkalmazás üzemeltetve van.
 - Ha több szolgáltatási módszert kell meghívnia, érdemes párhuzamosan meghívni őket, ha az alkalmazás kialakítása lehetővé teszi a számára. Példaként tekintse meg az előző szakaszt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az útmutatóban megtanulta, hogyan csökkentheti a késést a Face szolgáltatás használatakor. Következő lépésként megtudhatja, hogyan méretezheti fel a meglévő PersonGroup és FaceList objektumokat a LargePersonGroup és a LargeFaceList objektumokra.
 

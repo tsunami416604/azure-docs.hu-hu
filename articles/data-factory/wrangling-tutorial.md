@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/19/2021
-ms.openlocfilehash: f32739b06920f6b20dc87b8e1fbd2884c323a859
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 3d43a532f57feab361c6a3de79269991f46fc55d
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98634130"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684022"
 ---
 # <a name="prepare-data-with-data-wrangling"></a>Adatfeldolgozás az huzavona
 
@@ -33,9 +33,9 @@ A Azure Data Factory kétféleképpen hozhat létre Power Query. Az egyik módsz
 
 A másik módszer a folyamat vászonjának tevékenységek ablaktábláján található. Nyissa meg a **Power Query** harmonikát, és húzza a **Power Query** tevékenységet a vászonra.
 
-![Képernyőkép a huzavona-adatfolyam lehetőségről.](media/data-flow/power-query-activity.png)
+![Képernyőkép, amely kiemeli az adathuzavonai beállítást.](media/data-flow/power-query-activity.png)
 
-## <a name="author-a-wrangling-data-flow"></a>Huzavona-adatfolyam készítése
+## <a name="author-a-power-query-data-wrangling-activity"></a>Power Query adathuzavona-tevékenység szerzője
 
 Adja hozzá a Power Query mash-up **forrás-adatkészletét** . Válasszon egy meglévő adatkészletet, vagy hozzon létre egy újat. Kiválaszthat egy fogadó adatkészletet is. Kiválaszthat egy vagy több forrás adatkészletet, de egyszerre csak egy fogadót lehet engedélyezni. A fogadó adatkészlet kiválasztása nem kötelező, de legalább egy forrás adatkészletet kötelező megadni.
 
@@ -45,19 +45,19 @@ Kattintson a **Létrehozás** elemre a Power Query online adategyesítés-szerke
 
 ![Képernyőfelvétel: a Create (létrehozás) gombra kattintva megnyílik a Power Query online mashup-szerkesztő.](media/wrangling-data-flow/tutorial5.png)
 
-A huzavona-adatfolyamok létrehozása kód nélküli adatelőkészítéssel. Az elérhető függvények listáját lásd: [transzformációs függvények](wrangling-functions.md). Az ADF egy adatfolyam-parancsfájlba fordítja le a ```M``` szkriptet, így az ADF-adatfolyam Spark-környezettel méretezhető Power Query.
+A huzavona Power Query a kód nélküli adatelőkészítéssel. Az elérhető függvények listáját lásd: [transzformációs függvények](wrangling-functions.md). Az ADF lefordítja az M-szkriptet egy adatfolyam-parancsfájlba, hogy a Power Query a Azure Data Factory adatfolyam Spark-környezettel lehessen végrehajtani.
 
-![Képernyőkép, amely a huzavona-adatfolyam készítésének folyamatát mutatja be.](media/wrangling-data-flow/tutorial6.png)
+![Képernyőfelvétel: az adathuzavona Power Query készítésének folyamatát bemutató képernyőkép.](media/wrangling-data-flow/tutorial6.png)
 
-## <a name="running-and-monitoring-a-wrangling-data-flow"></a>Huzavona-adatfolyam futtatása és figyelése
+## <a name="running-and-monitoring-a-power-query-data-wrangling-activity"></a>Power Query huzavona-tevékenység futtatása és figyelése
 
-Egy huzavona-adatfolyam hibakeresési folyamatának végrehajtásához kattintson a folyamat vásznon a **hibakeresés** elemre. Miután közzétette az adatfolyamot, a **trigger most** végrehajtja az utolsó közzétett folyamat igény szerinti futtatását. Az huzavona-adatfolyamatok az összes meglévő Azure Data Factory eseményindítóval ütemezhetők.
+Egy Power Query tevékenységhez tartozó hibakeresési művelet végrehajtásához kattintson a folyamat vásznon a **hibakeresés** elemre. Miután közzétette a folyamatot, az **trigger most** végrehajtja az utolsó közzétett folyamat igény szerinti futtatását. Power Query folyamatok ütemezhetők az összes meglévő Azure Data Factory eseményindítóval.
 
-![Képernyőkép, amely bemutatja, hogyan adhat hozzá egy huzavona-adatfolyamot.](media/wrangling-data-flow/tutorial3.png)
+![Képernyőkép, amely bemutatja, hogyan adhat hozzá egy Power Query adathuzavona tevékenységet.](media/wrangling-data-flow/tutorial3.png)
 
-Lépjen a **figyelés** lapra, és jelenítse meg az aktivált huzavona adatfolyam-tevékenységek kimenetét.
+Az aktivált Power Query tevékenység kimenetének megjelenítéséhez nyissa meg a **figyelés** lapot.
 
-![Képernyőkép, amely egy aktivált huzavona adatfolyam-tevékenység kimenetét jeleníti meg.](media/wrangling-data-flow/tutorial2.png)
+![Képernyőkép, amely megjeleníti egy aktivált huzavona kimenetét Power Query tevékenység futtatásakor.](media/wrangling-data-flow/tutorial2.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

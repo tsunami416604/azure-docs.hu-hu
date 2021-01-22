@@ -7,18 +7,18 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 33b30f29146e446c5525b1bbcfd76af71c557702
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: fa699163fdf445624c918e714fda890a41a67f07
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045316"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682647"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Végpontok és útvonalak kezelése az Azure Digital Twinsban (API-k és parancssori felület)
 
 [!INCLUDE [digital-twins-route-selector.md](../../includes/digital-twins-route-selector.md)]
 
-Az Azure Digital Twins-ban átirányíthatja az [eseményekre vonatkozó értesítéseket](how-to-interpret-event-data.md) az alsóbb rétegbeli szolgáltatásokhoz vagy a csatlakoztatott számítási erőforrásokhoz. Ezt úgy teheti meg, hogy először beállítja az eseményeket fogadó **végpontokat** . Ezután létrehozhat olyan  [**esemény-útvonalakat**](concepts-route-events.md) , amelyekkel megadhatja, hogy az Azure Digital Twins mely eseményeit adja meg a végpontok.
+Az Azure Digital Twins-ban átirányíthatja az [eseményekre vonatkozó értesítéseket](how-to-interpret-event-data.md) az alsóbb rétegbeli szolgáltatásokhoz vagy a csatlakoztatott számítási erőforrásokhoz. Ehhez először be kell állítani az eseményeket fogadó **végpontokat**. Ezután létrehozhat olyan  [**esemény-útvonalakat**](concepts-route-events.md) , amelyekkel megadhatja, hogy az Azure Digital Twins mely eseményeit adja meg a végpontok.
 
 Ez a cikk végigvezeti a végpontok és útvonalak létrehozásának folyamatán az [Event Routes API](/rest/api/digital-twins/dataplane/eventroutes)-k, a [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)és az [Azure Digital Twins CLI](how-to-use-cli.md)használatával.
 
@@ -26,10 +26,12 @@ Azt is megteheti, hogy a végpontokat és útvonalakat is felügyeli a [Azure Po
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Szüksége lesz egy **Azure-fiókra** ( [itt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)akár ingyenesen is beállíthatja)
-* Azure-beli **digitális Twins-példányra** lesz szüksége az Azure-előfizetésében. Ha még nem rendelkezik példányokkal, létrehozhat egyet a következő útmutató lépéseit követve [*: példány és hitelesítés beállítása*](how-to-set-up-instance-cli.md). A telepítésből származó alábbi értékekkel a cikk későbbi részében használhatja a következő értékeket:
+- Szüksége lesz egy **Azure-fiókra** ( [itt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)akár ingyenesen is beállíthatja)
+- Azure-beli **digitális Twins-példányra** lesz szüksége az Azure-előfizetésében. Ha még nem rendelkezik példányokkal, létrehozhat egyet a következő útmutató lépéseit követve [*: példány és hitelesítés beállítása*](how-to-set-up-instance-cli.md). A telepítésből származó alábbi értékekkel a cikk későbbi részében használhatja a következő értékeket:
     - Példány neve
     - Erőforráscsoport
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
     
 ## <a name="create-an-endpoint-for-azure-digital-twins"></a>Végpont létrehozása az Azure Digital Twins számára
 
@@ -44,7 +46,7 @@ Ahhoz, hogy egy végpontot az Azure digitális Ikrekhöz lehessen kapcsolni, a v
 
 ### <a name="create-an-event-grid-endpoint"></a>Event Grid végpont létrehozása
 
-Az alábbi példa bemutatja, hogyan hozhat létre Event Grid típusú végpontot az Azure CLI használatával. [Azure Cloud Shell](https://shell.azure.com)használhat, vagy helyileg is [TELEPÍTheti a CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)-t.
+Az alábbi példa bemutatja, hogyan hozhat létre Event Grid típusú végpontot az Azure CLI használatával.
 
 Először hozzon létre egy Event Grid-témakört. Használhatja az alábbi parancsot, vagy további részletekben tekintse meg a lépéseket. Ehhez látogasson el a Event Grid *Egyéni események* rövid útmutatójának [ *Egyéni témakör létrehozása* szakaszára](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) .
 
@@ -185,7 +187,7 @@ Az események útvonala az [adatsík API](how-to-use-apis-sdks.md#overview-data-
 Az útvonalak definíciója a következő elemeket tartalmazza:
 * A használni kívánt útvonal neve
 * A használni kívánt végpont neve
-* Egy szűrő, amely meghatározza, hogy mely eseményeket küldi a rendszer a végpontnak. 
+* Egy szűrő, amely meghatározza, hogy mely események kerülnek a végponthoz 
 
 Ha nincs útvonal neve, az Azure digitális Ikreken kívül egyetlen üzenet sem lesz átirányítva. Ha van egy útvonal neve, és a szűrő `true` , az összes üzenet a végponthoz lesz irányítva. Ha van egy útvonal neve, és egy másik szűrő van hozzáadva, az üzenetek a szűrő alapján lesznek szűrve.
 
@@ -227,7 +229,7 @@ A végpontok és útvonalak az Azure Digital Twins CLI használatával is kezelh
 
 [!INCLUDE [digital-twins-route-metrics](../../includes/digital-twins-route-metrics.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a fogadott üzenetek különböző típusairól:
 * [*Útmutató: az események értelmezése*](how-to-interpret-event-data.md)

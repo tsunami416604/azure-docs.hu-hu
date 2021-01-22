@@ -11,12 +11,12 @@ ms.date: 06/26/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: bd32b9690f8a9aef92eb1f2fbcc4ec926a65584e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 6510a7143e78c054130a1f1dddba78342a6785fe
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121192"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685276"
 ---
 # <a name="azure-advisor-recommendations-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Javaslatok Azure Advisor dedikált SQL-készletre az Azure szinapszis Analyticsben
 
@@ -73,4 +73,4 @@ A lekérdezés teljesítménye csökkenhet, ha magas a tempdb-tartalom.  A tempd
 
 ## <a name="data-loading-misconfiguration"></a>Az adatbetöltések helytelen konfigurációja
 
-A késés csökkentése érdekében mindig töltsön be egy olyan Storage-fiók adatait, amely ugyanabban a régióban található, mint a dedikált SQL-készlet. Az átviteli sebesség maximalizálása érdekében használja a [másolási utasítást a nagy átviteli sebességű adatok](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) betöltéséhez és a tárolási fiókban található előkészített fájlok felosztásához. Ha nem tudja használni a COPY utasítást, a SqlBulkCopy API-t vagy a BCP-t is használhatja a jobb átviteli sebesség érdekében. További információ a következő [dokumentációban](./guidance-for-loading-data.md)található: további adattöltési útmutató.
+A késés csökkentése érdekében mindig töltsön be egy olyan Storage-fiók adatait, amely ugyanabban a régióban található, mint a dedikált SQL-készlet. Az átviteli sebesség maximalizálása érdekében használja a [másolási utasítást a nagy átviteli sebességű adatok](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) betöltéséhez és a tárolási fiókban található előkészített fájlok felosztásához. Ha nem tudja használni a COPY utasítást, a SqlBulkCopy API-t vagy a BCP-t is használhatja a jobb átviteli sebesség érdekében. További információ a következő [dokumentációban](./guidance-for-loading-data.md)található: további adattöltési útmutató.

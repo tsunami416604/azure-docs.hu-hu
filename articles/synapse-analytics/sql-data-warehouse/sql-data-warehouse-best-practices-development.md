@@ -11,12 +11,12 @@ ms.date: 09/04/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e8826dff6d347f78625272a5620a1f168b8804db
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: bc101e6bb743b9290593937a4d1bac656430b438
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120036"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685310"
 ---
 # <a name="development-best-practices-for-synapse-sql-pool"></a>Fejlesztési ajánlott eljárások a szinapszis SQL-készlethez
 
@@ -80,7 +80,7 @@ A visszaállítások kiküszöbölésének másik módja a csak metaadatokat has
 
 A nem particionált táblák esetében érdemes lehet egy CTAS használni a táblákat megőrizni kívánt, a TÖRLÉSt nem használó adatbevitelre.  Ha egy CTAS ugyanannyi időt vesz igénybe, az sokkal biztonságosabb művelet, mert minimális tranzakciós naplózással rendelkezik, és szükség esetén gyorsan megszakítható.
 
-Lásd még: [tranzakciók megismerése](sql-data-warehouse-develop-transactions.md), [tranzakciók optimalizálása](sql-data-warehouse-develop-best-practices-transactions.md), [táblák particionálása](sql-data-warehouse-tables-partition.md), [truncate Table](/sql/t-sql/statements/truncate-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)és [CREATE TABLE as Select (CTAS)](sql-data-warehouse-develop-ctas.md).
+Lásd még: [tranzakciók megismerése](sql-data-warehouse-develop-transactions.md), [tranzakciók optimalizálása](sql-data-warehouse-develop-best-practices-transactions.md), [táblák particionálása](sql-data-warehouse-tables-partition.md), [truncate Table](/sql/t-sql/statements/truncate-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)és [CREATE TABLE as Select (CTAS)](sql-data-warehouse-develop-ctas.md).
 
 ## <a name="use-the-smallest-possible-column-size"></a>A lehető legkisebb oszlopméret használata
 
@@ -114,7 +114,7 @@ Ha a tábla nem rendelkezik 6 milliárd sorral, akkor csökkentse a partíciók 
 > [!TIP]
 > Oszlopcentrikus tábla lekérdezésekor a lekérdezések gyorsabban futnak, ha csak a szükséges oszlopokat választja ki.  
 
-Lásd még: [Table indexek](sql-data-warehouse-tables-index.md), [oszlopcentrikus indexek útmutató](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)és [oszlopcentrikus indexek újjáépítése](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
+Lásd még: [Table indexek](sql-data-warehouse-tables-index.md), [oszlopcentrikus indexek útmutató](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)és [oszlopcentrikus indexek újjáépítése](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
 
 ## <a name="next-steps"></a>Következő lépések
 

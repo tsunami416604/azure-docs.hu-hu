@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
-ms.openlocfilehash: 27dba675f82c4d34ec793cf492c18b293a6c8c77
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 7983a80da8a5ca9d900e44515b5e078cc9d70d79
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544258"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684186"
 ---
 # <a name="what-is-azure-private-link-service"></a>Mi az az Azure Private link Service?
 
@@ -126,7 +126,7 @@ Egyéni TLV-részletek:
 A Private link Service használatának ismert korlátai a következők:
 - Csak standard Load Balancer támogatott 
 - Csak az IPv4-forgalmat támogatja
-- Csak a TCP-forgalmat támogatja
+- Csak a TCP-és UDP-forgalmat támogatja
 
 ## <a name="next-steps"></a>Következő lépések
 - [Privát kapcsolati szolgáltatás létrehozása Azure PowerShell használatával](create-private-link-service-powershell.md)

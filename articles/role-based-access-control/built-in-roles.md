@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 01/15/2021
 ms.custom: generated
-ms.openlocfilehash: 8f44de679c9b0280652b0020d1e454a70f7114a3
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 39385a3ea9dc06875806ac85c06c0df6d5db2698
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538525"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683793"
 ---
 # <a name="azure-built-in-roles"></a>Beépített Azure-szerepkörök
 
@@ -124,7 +124,7 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 > | [A hatáskörébe tartozó adatforrás rendszergazdája](#purview-data-source-administrator) | A Microsoft. hatáskörébe adatforrás-rendszergazdája az adatforrások és az adatvizsgálatok kezelésére képes. Ez a szerepkör előzetes verzióban érhető el, és változhat. | 200bba9e-f0c8-430f-892b-6f0794863803 |
 > | [Séma beállításjegyzékbeli közreműködői (előzetes verzió)](#schema-registry-contributor-preview) | Séma-beállításjegyzékbeli csoportok és sémák olvasása, írása és törlése. | 5dffeca3-4936-4216-b2bc-10343a5abb25 |
 > | [Séma beállításjegyzék-olvasója (előzetes verzió)](#schema-registry-reader-preview) | Séma-beállításjegyzékbeli csoportok és sémák olvasása és listázása. | 2c56ea50-c6b3-40a6-83c0-9d98858bc7d2 |
-> | **Blokklánc** |  |  |
+> | **Blockchain** |  |  |
 > | [Blockchain-hozzáférés (előzetes verzió)](#blockchain-member-node-access-preview) | Engedélyezi a hozzáférést a Blockchain-tagok csomópontjaihoz | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
 > | **AI és gépi tanulás** |  |  |
 > | [Cognitive Services közreműködő](#cognitive-services-contributor) | Lehetővé teszi Cognitive Services kulcsainak létrehozását, olvasását, frissítését, törlését és kezelését. | 25fbc0a9-bd7c-42a3-aa1a-3b75d497ee68 |
@@ -691,7 +691,7 @@ Tekintse meg Virtual Machines a portálon, és jelentkezzen be normál felhaszn�
 }
 ```
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 
 ### <a name="cdn-endpoint-contributor"></a>CDN-végpont közreműködői
@@ -2592,7 +2592,7 @@ Azure Storage-várólisták és üzenetsor-üzenetek olvasása és listázása. 
 }
 ```
 
-## <a name="web"></a>Web
+## <a name="web"></a>Webes
 
 
 ### <a name="azure-maps-data-reader"></a>Adatolvasó Azure Maps
@@ -5100,7 +5100,7 @@ Séma-beállításjegyzékbeli csoportok és sémák olvasása és listázása.
 }
 ```
 
-## <a name="blockchain"></a>Blokklánc
+## <a name="blockchain"></a>Blockchain
 
 
 ### <a name="blockchain-member-node-access-preview"></a>Blockchain-hozzáférés (előzetes verzió)
@@ -7413,7 +7413,7 @@ Security Center engedélyeinek megtekintése és frissítése. Ugyanazok az enge
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/READ | Szerepkörök és szerepkör-hozzárendelések olvasása |
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policyAssignments/* | Szabályzat-hozzárendelések létrehozása és kezelése |
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policyDefinitions/* | Szabályzat-definíciók létrehozása és kezelése |
-> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policyExemptions/* |  |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policyExemptions/* | Házirend-kivételek létrehozása és kezelése |
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policySetDefinitions/* | Szabályzat-készletek létrehozása és kezelése |
 > | [Microsoft.](resource-provider-operations.md#microsoftinsights)/alertRules/* | Klasszikus metrikai riasztás létrehozása és kezelése |
 > | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/READ | Felügyeleti csoportok listázása a hitelesített felhasználó számára. |
@@ -7776,7 +7776,7 @@ Lehetővé teszi, hogy új laborokat hozzon létre az Azure Lab-fiókjaiban. [To
 }
 ```
 
-## <a name="monitor"></a>Monitor
+## <a name="monitor"></a>Figyelés
 
 
 ### <a name="application-insights-component-contributor"></a>Application Insights összetevő közreműködője
@@ -9171,7 +9171,7 @@ Az erőforrás-házirend létrehozásához/módosításához, támogatási jegy 
 > | */read | Az összes típusú erőforrás beolvasása, kivéve a titkokat. |
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policyassignments/* | Szabályzat-hozzárendelések létrehozása és kezelése |
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policydefinitions/* | Szabályzat-definíciók létrehozása és kezelése |
-> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policyexemptions/* |  |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policyexemptions/* | Házirend-kivételek létrehozása és kezelése |
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policysetdefinitions/* | Szabályzat-készletek létrehozása és kezelése |
 > | [Microsoft. PolicyInsights](resource-provider-operations.md#microsoftpolicyinsights)/* |  |
 > | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Támogatási jegy létrehozása és frissítése |
@@ -9893,7 +9893,7 @@ Lehetővé teszi a Scheduler-feladatok összegyűjtését, de nem fér hozzájuk
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Erőforrás-szolgáltató egyeztetése a szolgáltatással](../azure-resource-manager/management/azure-services-resource-providers.md)
 - [Egyéni Azure-szerepkörök](custom-roles.md)

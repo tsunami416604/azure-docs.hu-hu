@@ -11,12 +11,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: ce09488e2323aada5f99494ef3920681b685ec0b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7e2d4b47f8f37a8e6d69a7846b8b0f92247121da
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453633"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685191"
 ---
 # <a name="secure-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Dedikált SQL-készlet (korábban SQL DW) védelme az Azure szinapszis Analytics szolgáltatásban
 
@@ -81,9 +81,9 @@ A kapcsolódáshoz használt kiszolgálói rendszergazdai fiók a db_owner szere
 
 Lehetőség van arra, hogy tovább korlátozza, hogy a felhasználók milyen műveleteket végezhetnek el az adatbázison belül:
 
-* A részletes [engedélyek](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) segítségével szabályozhatja, hogy mely műveleteket végezheti el az egyes oszlopokon, táblákon, nézeteken, sémán, eljárásokon és más objektumokon az adatbázisban. Használjon részletes engedélyeket a leghatékonyabb szabályozáshoz, és adja meg a szükséges minimális engedélyeket.
-* A db_datareader és db_datawritertól eltérő [adatbázis-szerepköröket](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) is felhasználhat nagyobb teljesítményű alkalmazás-felhasználói fiókok vagy kevésbé hatékony felügyeleti fiókok létrehozásához. A beépített rögzített adatbázis-szerepkörök egyszerű módot biztosítanak az engedélyek megadására, de a szükségesnél több engedélyt is biztosítanak.
-* A [tárolt eljárások](/sql/relational-databases/stored-procedures/stored-procedures-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) segítségével korlátozhatja az adatbázisban végezhető műveleteket.
+* A részletes [engedélyek](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) segítségével szabályozhatja, hogy mely műveleteket végezheti el az egyes oszlopokon, táblákon, nézeteken, sémán, eljárásokon és más objektumokon az adatbázisban. Használjon részletes engedélyeket a leghatékonyabb szabályozáshoz, és adja meg a szükséges minimális engedélyeket.
+* A db_datareader és db_datawritertól eltérő [adatbázis-szerepköröket](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) is felhasználhat nagyobb teljesítményű alkalmazás-felhasználói fiókok vagy kevésbé hatékony felügyeleti fiókok létrehozásához. A beépített rögzített adatbázis-szerepkörök egyszerű módot biztosítanak az engedélyek megadására, de a szükségesnél több engedélyt is biztosítanak.
+* A [tárolt eljárások](/sql/relational-databases/stored-procedures/stored-procedures-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) segítségével korlátozhatja az adatbázisban végezhető műveleteket.
 
 A következő példa olvasási hozzáférést biztosít egy felhasználó által definiált sémához.
 
@@ -98,10 +98,10 @@ Az adatbázisok és kiszolgálók Azure Portal vagy a Azure Resource Manager API
 
 A transzparens adattitkosítás (TDE) segít megvédeni a kártékony tevékenységek fenyegetését azáltal, hogy titkosítja és visszafejti az adatait a nyugalmi állapotban. Az adatbázis titkosításakor a társított biztonsági másolatok és a tranzakciós naplófájlok az alkalmazások módosítása nélkül titkosítva lesznek. A TDE egy teljes adatbázis tartalmát titkosítja egy szimmetrikus kulcs – az adatbázis-titkosítási kulcs – használatával.
 
-SQL Database az adatbázis-titkosítási kulcsot egy beépített kiszolgálótanúsítvány védi. A beépített kiszolgáló tanúsítványa minden kiszolgáló esetében egyedi. A Microsoft automatikusan elforgatja ezeket a tanúsítványokat legalább 90 naponta. A használt titkosítási algoritmus az AES-256. A TDE általános ismertetését lásd: [transzparens adattitkosítás](/sql/relational-databases/security/encryption/transparent-data-encryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+SQL Database az adatbázis-titkosítási kulcsot egy beépített kiszolgálótanúsítvány védi. A beépített kiszolgáló tanúsítványa minden kiszolgáló esetében egyedi. A Microsoft automatikusan elforgatja ezeket a tanúsítványokat legalább 90 naponta. A használt titkosítási algoritmus az AES-256. A TDE általános ismertetését lásd: [transzparens adattitkosítás](/sql/relational-databases/security/encryption/transparent-data-encryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 Az adatbázis titkosítása a [Azure Portal](sql-data-warehouse-encryption-tde.md) vagy a [T-SQL](sql-data-warehouse-encryption-tde-tsql.md)használatával végezhető el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További részletek és példák a Warehouse-hoz való csatlakozásra különböző protokollokkal: [Csatlakozás DEDIKÁLT SQL-készlethez (korábban SQL DW)](sql-data-warehouse-connect-overview.md).

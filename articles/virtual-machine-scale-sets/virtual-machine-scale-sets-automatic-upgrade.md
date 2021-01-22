@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 06/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 4ebb16186e613affdb886a8819240d47f944c42f
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: ff1a29577c0778d6ef88d3523c726f7a48739cdc
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763540"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684610"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure-beli virtuálisgép-méretezési csoport operációsrendszer-képének automatikus frissítései
 
@@ -49,7 +49,7 @@ A méretezési csoport operációs rendszerének frissítése Orchestrator az ö
 >Az operációs rendszer automatikus frissítése nem frissíti a méretezési csoport hivatkozási rendszerképének SKU-át. Az SKU (például Ubuntu 16,04-LTS – 18,04-LTS) módosításához a [méretezési csoport modelljét](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model) közvetlenül a kívánt rendszerkép SKU-jának megfelelően kell frissíteni. A rendszerkép közzétevője és az ajánlat nem módosítható egy meglévő méretezési csoport esetében.  
 
 ## <a name="supported-os-images"></a>Támogatott operációsrendszer-lemezképek
-Jelenleg csak bizonyos operációsrendszer-platform-lemezképek támogatottak. Az egyéni lemezképek akkor [támogatottak,](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images) ha a méretezési csoport egyéni lemezképeket használ a [megosztott](shared-image-galleries.md)képkatalóguson keresztül.
+Jelenleg csak bizonyos operációsrendszer-platform-lemezképek támogatottak. Az egyéni lemezképek akkor [támogatottak,](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images) ha a méretezési csoport egyéni lemezképeket használ a [megosztott](../virtual-machines/shared-image-galleries.md)képkatalóguson keresztül.
 
 A következő platformos SKU-EK jelenleg támogatottak (és a továbbiak rendszeres időközönként bővülnek):
 
@@ -89,11 +89,11 @@ Győződjön meg arról, hogy a tartóssági beállítások nem egyeznek meg a S
 
 ## <a name="automatic-os-image-upgrade-for-custom-images"></a>Operációs rendszer lemezképének automatikus frissítése egyéni lemezképekhez
 
-Az operációsrendszer-lemezképek automatikus frissítése a [megosztott](shared-image-galleries.md)képkatalóguson keresztül üzembe helyezett egyéni lemezképek esetében támogatott. Más egyéni lemezképek nem támogatottak az operációsrendszer-lemezképek automatikus frissítéséhez.
+Az operációsrendszer-lemezképek automatikus frissítése a [megosztott](../virtual-machines/shared-image-galleries.md)képkatalóguson keresztül üzembe helyezett egyéni lemezképek esetében támogatott. Más egyéni lemezképek nem támogatottak az operációsrendszer-lemezképek automatikus frissítéséhez.
 
 ### <a name="additional-requirements-for-custom-images"></a>Az egyéni lemezképekre vonatkozó további követelmények
 - Az operációs rendszer rendszerképének automatikus frissítésének beállítása és konfigurálása az ezen a lapon található [konfiguráció szakaszban](virtual-machine-scale-sets-automatic-upgrade.md#configure-automatic-os-image-upgrade) részletezett összes méretezési csoport esetében azonos.
-- Az automatikus operációsrendszer-lemezképek frissítésére konfigurált méretezési csoportok példányai a megosztott képkatalógus rendszerképének legújabb verziójára frissülnek, ha a rendszerkép új verziója közzé van téve, és a rendszer [replikálja](shared-image-galleries.md#replication) a méretezési csoport régiójában. Ha az új rendszerkép nem replikálódik arra a régióra, ahol a méretezést telepíti, a méretezési csoport példányai nem lesznek frissítve a legújabb verzióra. A regionális lemezképek replikálásával szabályozhatja a méretezési csoportok új rendszerképének bevezetését.
+- Az automatikus operációsrendszer-lemezképek frissítésére konfigurált méretezési csoportok példányai a megosztott képkatalógus rendszerképének legújabb verziójára frissülnek, ha a rendszerkép új verziója közzé van téve, és a rendszer [replikálja](../virtual-machines/shared-image-galleries.md#replication) a méretezési csoport régiójában. Ha az új rendszerkép nem replikálódik arra a régióra, ahol a méretezést telepíti, a méretezési csoport példányai nem lesznek frissítve a legújabb verzióra. A regionális lemezképek replikálásával szabályozhatja a méretezési csoportok új rendszerképének bevezetését.
 - Az új rendszerkép-verziót nem szabad kizárni az adott katalógus lemezképének legújabb verziójából. A katalógus rendszerképének legújabb verziójában kizárt lemezkép-verziók nem kerülnek a méretezési csoportba az automatikus operációsrendszer-lemezkép frissítése révén.
 
 > [!NOTE]
@@ -297,5 +297,5 @@ A sablonok használatával olyan méretezési csoport helyezhető üzembe, amely
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fvm-scale-sets%2Fmaster%2Fpreview%2Fupgrade%2Fautoupdate.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Azure." /></a>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha további példákat szeretne arról, hogyan használhatók az operációs rendszerek automatikus frissítése a méretezési csoportokkal, tekintse át a [GitHub](https://github.com/Azure/vm-scale-sets/tree/master/preview/upgrade)-tárházat.

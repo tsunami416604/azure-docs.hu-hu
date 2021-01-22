@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/01/2020
-ms.openlocfilehash: ee13b2fbe4abbaf9bddf4975f8e25d746dc78f5e
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.date: 01/19/2021
+ms.openlocfilehash: 31398a49de871ad44499a796adfef1be618ccab9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232182"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685174"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights Gen2-esemény forrásai
 
@@ -45,7 +45,7 @@ Egy eseményforrás összekapcsolásakor a Azure Time Series Insights Gen2-körn
 
 - Ne lépje túl a környezet [átviteli sebességének korlátját](./concepts-streaming-ingress-throughput-limits.md) vagy a partíciós korlátot.
 
-- A késési [riasztások](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts) beállításával értesítést kaphat, ha a környezete problémákat tapasztal az adatfeldolgozás során. A javasolt riasztási feltételekhez lásd az alábbi [éles számítási feladatokat](./concepts-streaming-ingestion-event-sources.md#production-workloads) . 
+- A késési [riasztások](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts) beállításával értesítést kaphat, ha a környezete problémákat tapasztal az adatfeldolgozás során. A javasolt riasztási feltételekhez lásd az alábbi [éles számítási feladatokat](./concepts-streaming-ingestion-event-sources.md#production-workloads) .
 
 - A streaming betöltést csak a közel valós idejű és a legutóbbi adatmennyiségek esetében használja, a folyamatos adatátvitelek nem támogatottak.
 
@@ -55,14 +55,14 @@ Egy eseményforrás összekapcsolásakor a Azure Time Series Insights Gen2-körn
 
 ## <a name="production-workloads"></a>Éles számítási feladatok
 
-A fenti ajánlott eljárások mellett azt javasoljuk, hogy az üzleti szempontból kritikus fontosságú számítási feladatokhoz a következőket alkalmazza. 
+A fenti ajánlott eljárások mellett azt javasoljuk, hogy az üzleti szempontból kritikus fontosságú számítási feladatokhoz a következőket alkalmazza.
 
 - Növelje a IoT Hub vagy az Event hub adatmegőrzési idejét legfeljebb 7 napig.
 
 - Hozzon létre környezeti riasztásokat a Azure Portal. A platform [metrikái](https://docs.microsoft.com/azure/time-series-insights/how-to-monitor-tsi-reference#metrics) alapján történő riasztások lehetővé teszik a végpontok közötti folyamat működésének ellenőrzését. A riasztások létrehozásával és kezelésével kapcsolatos utasítások [itt](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts)találhatók. Javasolt riasztási feltételek:
 
-     - A IngressReceivedMessagesTimeLag nagyobb, mint 5 perc
-     - A IngressReceivedBytes 0
+  - A IngressReceivedMessagesTimeLag nagyobb, mint 5 perc
+  - A IngressReceivedBytes 0
 - Tartsa a betöltési terhelést az IoT Hub vagy az Event hub-partíciók között.
 
 ### <a name="historical-data-ingestion"></a>Korábbi adatfeldolgozás
@@ -92,7 +92,7 @@ Az időzóna-eltolást a következők egyikének kell megformáznia:
 ± HH: PP</br>
 ± HH: MMZ</br>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Olvassa el a [JSON-összeolvasztási és-Escape-szabályokat](./concepts-json-flattening-escaping-rules.md) , hogy megtudja, hogyan lesznek tárolva az események.
 

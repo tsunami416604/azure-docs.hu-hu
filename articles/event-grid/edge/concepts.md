@@ -7,12 +7,12 @@ ms.author: vkukke
 ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
-ms.openlocfilehash: b3babfe93012fae15e79362ba34f3f48856bc833
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8314447e7d5d282eb428ec9316c4eef6844a7423
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86171737"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682379"
 ---
 # <a name="event-grid-concepts"></a>Az Event Griddel kapcsolatos fogalmak
 
@@ -48,7 +48,7 @@ A Event Grid előfizetések kezelésével kapcsolatban [REST API dokumentációb
 
 ## <a name="event-handlers"></a>Eseménykezelők
 
-Egy Event Grid perspektívából az eseménykezelő az a hely, ahol az eseményt elküldjék. A kezelő további műveletet hajt végre az esemény feldolgozásához. Event Grid számos kezelő típust támogat. Használhat egy támogatott Azure-szolgáltatást vagy a saját webhookot kezelőként. A kezelő típusától függően a Event Grid különböző mechanizmusokat követ az esemény kézbesítésének garantálása érdekében. Ha a cél eseménykezelő egy HTTP-webhook, akkor az eseményt a rendszer újrapróbálkozik, amikor a kezelő a következő állapotkódot adja vissza: `200 – OK` . Az Edge hub esetében, ha az esemény kivétel nélkül kerül kézbesítésre, akkor azt a rendszer sikeresnek tekinti.
+Egy Event Grid perspektívából az eseménykezelő az a hely, ahol az eseményt elküldjék. A kezelő további műveletet hajt végre az esemény feldolgozásához. Event Grid számos kezelő típust támogat. Használhat egy támogatott Azure-szolgáltatást vagy a saját webhookot kezelőként. A kezelő típusától függően a Event Grid különböző mechanizmusokat követ az esemény kézbesítésének garantálása érdekében. Ha a cél eseménykezelő egy HTTP-webhook, akkor a rendszer újrapróbálkozik az eseménysel, amíg a kezelő nem adja vissza a következő állapotkódot: `200 – OK` . Az Edge hub esetében, ha az esemény kivétel nélkül kerül kézbesítésre, akkor azt a rendszer sikeresnek tekinti.
 
 ## <a name="security"></a>Biztonság
 

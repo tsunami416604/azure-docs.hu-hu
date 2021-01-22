@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan csatlakoztatható a Function app Application In
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 24350eb07481db66907d199cd96f84a02cc98c9e
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 73ed679288d9d03b81a0b01670aa0f574a14839f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937280"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684708"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>A Azure Functions figyelésének konfigurálása
 
@@ -233,7 +233,7 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
 
 Ahhoz, hogy egy Function alkalmazás adatküldést Application Insights, ismernie kell egy Application Insights erőforrás rendszerállapot-kulcsát. A kulcsnak egy **APPINSIGHTS_INSTRUMENTATIONKEY** nevű alkalmazás-beállításban kell lennie.
 
-Ha a [Azure Portal](functions-create-first-azure-function.md)hozza létre a Function alkalmazást, a parancssorból [Azure functions Core Tools](./create-first-function-cli-csharp.md)vagy [Visual Studio Code](./create-first-function-vs-code-csharp.md)használatával, Application Insights az integráció alapértelmezés szerint engedélyezve van. A Application Insights erőforrás neve megegyezik a Function alkalmazás nevével, és az ugyanabban a régióban vagy a legközelebbi régióban jön létre.
+Ha a [Azure Portal](./functions-get-started.md)hozza létre a Function alkalmazást, a parancssorból [Azure functions Core Tools](./create-first-function-cli-csharp.md)vagy [Visual Studio Code](./create-first-function-vs-code-csharp.md)használatával, Application Insights az integráció alapértelmezés szerint engedélyezve van. A Application Insights erőforrás neve megegyezik a Function alkalmazás nevével, és az ugyanabban a régióban vagy a legközelebbi régióban jön létre.
 
 ### <a name="new-function-app-in-the-portal"></a>Új Function-alkalmazás a portálon
 
@@ -278,7 +278,7 @@ A Application Insights engedélyezésekor tiltsa le az Azure Storage-t használ�
 
 A beépített naplózás letiltásához törölje az `AzureWebJobsDashboard` alkalmazás beállítását. Az Alkalmazásbeállítások a Azure Portalban való törlésével kapcsolatos további információkért tekintse meg a [functions-alkalmazás kezelésével](functions-how-to-use-azure-function-app-settings.md#settings)foglalkozó témakör **Alkalmazásbeállítások** szakaszát. Az Alkalmazásbeállítások törlése előtt győződjön meg arról, hogy az azonos Function alkalmazásban lévő meglévő függvények nem használják az Azure Storage-eseményindítók és-kötések beállítását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A figyeléssel kapcsolatos további tudnivalókért tekintse meg a következő témakört:
 

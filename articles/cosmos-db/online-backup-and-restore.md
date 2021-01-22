@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 43625a80df76ff35b8bb1804df5f5fd1524326c5
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ba66013e37c196c58291a6bcd979be7fb5fa0130
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097532"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684576"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Online biztonsági mentési és igény szerinti adatvisszaállítás Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -52,15 +52,15 @@ A következő lépésekkel módosíthatja egy meglévő Azure Cosmos-fiók alap�
 
    * **Megőrzött Adatmásolatok** – alapértelmezés szerint a rendszer díjmentesen két biztonsági másolatot készít az adatairól. Ha kettőnél több példányra van szüksége, további díjat számítunk fel. A további másolatok pontos díjszabását az [árképzést ismertető oldal](https://azure.microsoft.com/pricing/details/cosmos-db/) Felhasznált tárterület szakaszában tekintheti meg.
 
-   :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="Az Azure Storage GRS összes Cosmos DB entitásának rendszeres teljes biztonsági mentése" border="true":::
+   :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="A biztonsági mentés intervallumának és megőrzésének konfigurálása egy meglévő Azure Cosmos-fiókhoz" border="true":::
 
-Ha a fiók létrehozása során konfigurálja a biztonsági mentési beállításokat, beállíthatja a **biztonsági mentési szabályzatot** , amely akár **rendszeres** , akár **folyamatos** . Az időszakos házirend lehetővé teszi a biztonsági mentés intervallumának és a biztonsági másolatok megőrzésének konfigurálását. A folyamatos házirend jelenleg csak a regisztráláskor érhető el. A Azure Cosmos DB csapat felméri a munkaterhelést, és jóváhagyja a kérést.
+Ha a fiók létrehozása során konfigurálja a biztonsági mentési beállításokat, beállíthatja a **biztonsági mentési szabályzatot**, amely akár **rendszeres** , akár **folyamatos**. Az időszakos házirend lehetővé teszi a biztonsági mentés intervallumának és a biztonsági másolatok megőrzésének konfigurálását. A folyamatos házirend jelenleg csak a regisztráláskor érhető el. A Azure Cosmos DB csapat felméri a munkaterhelést, és jóváhagyja a kérést.
 
-:::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="Az Azure Storage GRS összes Cosmos DB entitásának rendszeres teljes biztonsági mentése" border="true":::
+:::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="Rendszeres vagy folyamatos biztonsági mentési szabályzat konfigurálása az új Azure Cosmos-fiókokhoz" border="true":::
 
 ## <a name="request-data-restore-from-a-backup"></a>Adatok visszaállításának kérése biztonsági másolatból
 
-Ha véletlenül törli az adatbázist vagy egy tárolót, [egy támogatási jegyet](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) is betölthet, vagy [meghívhatja az Azure-támogatást](https://azure.microsoft.com/support/options/) , hogy visszaállítsa az adatokat az automatikus online biztonsági mentésből. Az Azure-támogatás csak olyan kiválasztott csomagokhoz érhető el, mint a **standard** , a **fejlesztői** és a magasabb szintű csomagok. Az Azure-támogatás nem érhető el **alapszintű** csomaggal. A különböző támogatási csomagokról az [Azure-támogatási csomagok](https://azure.microsoft.com/support/plans/) oldalon tájékozódhat.
+Ha véletlenül törli az adatbázist vagy egy tárolót, [egy támogatási jegyet](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) is betölthet, vagy [meghívhatja az Azure-támogatást](https://azure.microsoft.com/support/options/) , hogy visszaállítsa az adatokat az automatikus online biztonsági mentésből. Az Azure-támogatás csak olyan kiválasztott csomagokhoz érhető el, mint a **standard**, a **fejlesztői** és a magasabb szintű csomagok. Az Azure-támogatás nem érhető el **alapszintű** csomaggal. A különböző támogatási csomagokról az [Azure-támogatási csomagok](https://azure.microsoft.com/support/plans/) oldalon tájékozódhat.
 
 A biztonsági mentés egy adott pillanatképének visszaállításához a Azure Cosmos DB megköveteli, hogy az adatok elérhetők legyenek a pillanatkép biztonsági mentési ciklusának időtartamára.
 A visszaállítás kérelmezése előtt a következő adatokat kell megkapnia:
@@ -81,7 +81,7 @@ Az Azure Cosmos-fiók neve, az adatbázis neve és a tároló neve mellett adja 
 
 Az alábbi képernyőfelvétel azt szemlélteti, hogyan lehet támogatási kérést létrehozni egy tárolóhoz (gyűjtemény/gráf/tábla) az adatAzure Portal használatával történő visszaállításához. Adjon meg további részleteket, például az adatok típusát, a visszaállítás célját, az adatok törlésének időpontját, hogy segítsen a kérés rangsorolásában.
 
-:::image type="content" source="./media/online-backup-and-restore/backup-support-request-portal.png" alt-text="Az Azure Storage GRS összes Cosmos DB entitásának rendszeres teljes biztonsági mentése":::
+:::image type="content" source="./media/online-backup-and-restore/backup-support-request-portal.png" alt-text="Biztonsági mentési támogatási kérelem létrehozása Azure Portal használatával":::
 
 ## <a name="considerations-for-restoring-the-data-from-a-backup"></a>Az adatok biztonsági másolatból való visszaállításának szempontjai
 
@@ -115,6 +115,13 @@ Ha véletlenül törölte vagy megsérült az adatai, akkor 8 órán belül kapc
 
 Ha az átviteli sebességet az adatbázis szintjén adja meg, a biztonsági mentési és visszaállítási folyamat ebben az esetben a teljes adatbázis szintjén történik, és nem az egyes tárolók szintjén. Ilyen esetekben nem választhatja ki a visszaállítani kívánt tárolók részhalmazát.
 
+## <a name="required-permissions-to-change-retention-or-restore-from-the-portal"></a>A portálon való megőrzés vagy visszaállítás megváltoztatásához szükséges engedélyek
+A szerepkör [CosmosdbBackupOperator](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)részét képező rendszerbiztonsági tag, tulajdonos vagy közreműködő jogosult a visszaállításra vagy a megőrzési időtartam módosítására.
+
+## <a name="understanding-costs-of-extra-backups"></a>További biztonsági másolatok költségeinek megismerése
+2 a biztonsági másolatok ingyenesek, és a biztonsági mentések [díjszabása](https://azure.microsoft.com/en-us/pricing/details/cosmos-db/)alapján a régión alapuló díjszabás alapján kell fizetni. Például, ha a biztonsági másolatok megőrzésének beállítása 240 óra, azaz 10 nap, a biztonsági mentés időköze pedig 24 óra. Ez a biztonsági mentési adat 10 másolatát jelenti. Feltéve, hogy az USA 2. nyugati régiójában 1 TB adat található, a 1000 * 0,12 ~ $120 a biztonsági mentési tár számára az adott hónapban. 
+
+
 ## <a name="options-to-manage-your-own-backups"></a>A saját biztonsági mentések kezelésére szolgáló beállítások
 
 Azure Cosmos DB SQL API-fiókokkal a következő módszerek egyikével is megőrizheti saját biztonsági mentését:
@@ -147,4 +154,3 @@ A következő témakörből megtudhatja, hogyan állíthatja vissza az Azure Cos
 * A visszaállítási kérelem elvégzéséhez forduljon az Azure ügyfélszolgálatához, és kérjen [jegyet a Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
 * Az adatAzure Cosmos DBba való áthelyezéshez [használja a Cosmos db módosítási csatornát](change-feed.md) .
 * A [Azure Data Factory használatával](../data-factory/connector-azure-cosmos-db.md) viheti át az adatAzure Cosmos DBba.
-

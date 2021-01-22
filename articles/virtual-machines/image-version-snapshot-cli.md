@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: e694630d8bcd7879d9405152c4141fb6e5bad4e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9cfb1fe6d2050a63070e9c21e4b8c3ef59efcb15
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297093"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682681"
 ---
 # <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-the-azure-cli"></a>Rendszerkép létrehozása felügyelt lemezről vagy pillanatképből egy megosztott rendszerkép-katalógusban az Azure CLI használatával
 
@@ -69,13 +69,13 @@ A rendszerkép-definíciók logikai csoportosítást hoznak létre a képekhez. 
 
 A rendszerkép meghatározásakor győződjön meg arról, hogy a megfelelő információval rendelkezik. Ebben a példában feltételezzük, hogy a pillanatkép vagy a felügyelt lemez egy használatban lévő virtuális gépről származik, és nem lett általánosítva. Ha a felügyelt lemez vagy pillanatkép általánosított operációs rendszerből készült (a Sysprep futtatása után Windows vagy [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` vagy `-deprovision+user` Linux rendszeren), akkor módosítsa a alkalmazást `-OsState` `generalized` . 
 
-További információ a képdefiníciók által megadható értékekről: [képdefiníciók](./linux/shared-image-galleries.md#image-definitions).
+További információ a képdefiníciók által megadható értékekről: [képdefiníciók](./shared-image-galleries.md#image-definitions).
 
 Hozzon létre egy rendszerkép-definíciót a galériában az [az SIG rendszerkép-definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create)paranccsal.
 
-Ebben a példában a képdefiníció neve *myImageDefinition*, és egy [speciális](./linux/shared-image-galleries.md#generalized-and-specialized-images) Linux operációsrendszer-rendszerképhez van. Ha Windows operációs rendszert használó lemezképek definícióját szeretné létrehozni, használja a következőt: `--os-type Windows` . 
+Ebben a példában a képdefiníció neve *myImageDefinition*, és egy [speciális](./shared-image-galleries.md#generalized-and-specialized-images) Linux operációsrendszer-rendszerképhez van. Ha Windows operációs rendszert használó lemezképek definícióját szeretné létrehozni, használja a következőt: `--os-type Windows` . 
 
-Ebben a példában a katalógus neve *MyGallery*, ez a *myGalleryRG* erőforráscsoport, a rendszerkép definíciójának neve pedig *mImageDefinition*lesz.
+Ebben a példában a katalógus neve *MyGallery*, ez a *myGalleryRG* erőforráscsoport, a rendszerkép definíciójának neve pedig *mImageDefinition* lesz.
 
 ```azurecli-interactive 
 resourceGroup=myGalleryRG

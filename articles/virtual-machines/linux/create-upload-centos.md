@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: danis
-ms.openlocfilehash: b29b970061e94bca07b4a7b2ba6b3d3ad0a7a2e1
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 018df112c344fc08f2839752fcda3dfd9370af4e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203252"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682587"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>CentOS-alapú virtuális gép előkészítése az Azure-beli használatra
 
@@ -29,7 +29,7 @@ Ez a cikk azt feltételezi, hogy már telepítette a CentOS (vagy hasonló szár
 
 * A Linux for Azure előkészítésével kapcsolatos további tippeket a [Linux általános telepítési megjegyzései](create-upload-generic.md#general-linux-installation-notes) című témakörben talál.
 * A VHDX formátuma nem támogatott az Azure-ban, csak a **rögzített VHD**.  A lemezt VHD formátumba konvertálhatja a Hyper-V kezelőjével vagy a convert-VHD parancsmag használatával. Ha a VirtualBox-t használja, akkor a **rögzített méretet** a lemez létrehozásakor dinamikusan lefoglalt alapértelmezett értékre kell kijelölni.
-* A Linux rendszer telepítésekor azt *javasoljuk* , hogy az LVM helyett standard partíciót használjon (ez általában számos telepítés esetében). Ezzel elkerülhető, hogy az LVM neve ütközik a klónozott virtuális gépekkel, különösen abban az esetben, ha egy operációsrendszer-lemezt már csatlakoztatni kell egy másik, azonos virtuális géphez a hibaelhárításhoz. Az [LVM](configure-lvm.md) vagy a [RAID](configure-raid.md) adatlemezeken is használható.
+* A Linux rendszer telepítésekor azt *javasoljuk* , hogy az LVM helyett standard partíciót használjon (ez általában számos telepítés esetében). Ezzel elkerülhető, hogy az LVM neve ütközik a klónozott virtuális gépekkel, különösen abban az esetben, ha egy operációsrendszer-lemezt már csatlakoztatni kell egy másik, azonos virtuális géphez a hibaelhárításhoz. Az [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm) vagy a [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid) adatlemezeken is használható.
 * **Az UDF-fájlrendszerek csatlakoztatásához kernel-támogatás szükséges.** Az Azure első indításakor a létesítési konfigurációt a rendszer az UDF-formázott adathordozón keresztül továbbítja a linuxos virtuális géphez, amely a vendéghez van csatolva. Az Azure Linux-ügynöknek képesnek kell lennie az UDF fájlrendszer csatlakoztatására a konfiguráció olvasásához és a virtuális gép kiépítéséhez.
 * A Linux-kernelek 2.6.37 alatti verziói nem támogatják a NUMA használatát a Hyper-V-n nagyobb méretű virtuálisgép-méretekkel. Ez a probléma elsősorban a régebbi, Red Hat 2.6.32 kernelt használó disztribúciókat érinti, és a RHEL 6,6-ben (kernel-2.6.32-504) rögzítették. A 2.6.37-nál régebbi egyéni kerneleket futtató rendszerek vagy a 2.6.32-504 RHEL-alapú kernelek esetében a rendszerindítási paramétert a `numa=off` grub. conf fájlban található kernel parancssorban kell beállítani. További információ: Red Hat [KB 436883](https://access.redhat.com/solutions/436883).
 * Ne állítson be swap-partíciót az operációsrendszer-lemezen. Erről további információt az alábbi lépésekben találhat.

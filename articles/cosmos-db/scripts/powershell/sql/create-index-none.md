@@ -7,19 +7,22 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 05/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: bf3aa4844d990becc27ede222f2649ccbd3ab91b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b287bc851e560261d56ccda5d73d5319619146ab
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93089610"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684039"
 ---
 # <a name="create-a-container-with-indexing-turned-off-in-an-azure-cosmos-db-account-using-powershell"></a>Egy Azure Cosmos DB fiókban kikapcsolt indexeléssel rendelkező tároló létrehozása a PowerShell használatával
 [!INCLUDE[appliesto-sql-api](../../../includes/appliesto-sql-api.md)]
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
-[!INCLUDE [sample-powershell-install](../../../../../includes/sample-powershell-install-no-ssh.md)]
+Ehhez a mintához Azure PowerShell az 5.4.0 vagy újabb verzió szükséges. `Get-Module -ListAvailable Az`A Futtatás gombra kattintva megtekintheti, hogy mely verziók vannak telepítve.
+Ha telepítenie kell a-t, olvassa el a [Azure PowerShell modul telepítése](/powershell/azure/install-az-ps)című témakört.
+
+Futtassa a [AzAccount-](/powershell/module/az.accounts/connect-azaccount) t az Azure-ba való bejelentkezéshez.
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -37,7 +40,7 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 |**Azure Cosmos DB**| |
 | [Új – AzCosmosDBAccount](/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Létrehoz egy Cosmos DB fiókot. |

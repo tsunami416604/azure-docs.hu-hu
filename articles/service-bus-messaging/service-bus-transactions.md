@@ -4,16 +4,19 @@ description: Ez a cikk áttekintést nyújt a tranzakciók feldolgozásáról é
 ms.topic: article
 ms.date: 10/28/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9162b8578fe4f48cc3740b38d9d84ffaa2f260de
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9a95a200b57d348109884a319b5433f0ffd5dde1
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023601"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684791"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>A tranzakciók feldolgozásának Service Bus áttekintése
 
 Ez a cikk a Microsoft Azure Service Bus tranzakciós képességeit ismerteti. A vitafórumok nagy részét [Service Bus mintával rendelkező AMQP-tranzakciók](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia)szemléltetik. Ez a cikk a tranzakciók feldolgozásának és a Service Buson *keresztüli küldés* funkciójának áttekintésére korlátozódik, míg az Atomic Transactions minta szélesebb és összetettebb a hatókörben.
+
+> [!NOTE]
+> A Service Bus alapszintű csomagja nem támogatja a tranzakciókat. A standard és a prémium szintű tranzakciókat támogatja. A szintek közötti különbségekért tekintse meg a [Service Bus díjszabását](https://azure.microsoft.com/pricing/details/service-bus/).
 
 ## <a name="transactions-in-service-bus"></a>Service Bus tranzakciói
 
@@ -91,7 +94,7 @@ using (var ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
 ## <a name="timeout"></a>Időtúllépés
 Egy tranzakció időtúllépése 2 perc múlva megtörténik. A tranzakció-időzítő akkor indul el, amikor a tranzakció első művelete elindul. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Service Bus várólistákkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 

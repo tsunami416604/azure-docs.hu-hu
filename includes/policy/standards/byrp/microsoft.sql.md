@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 8b361df5dc8760c01fc0f452731f6e823ed22326
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: ff52cd5d603a4777ae0c0f5bc6be2a64826180f8
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051486"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684932"
 ---
-## <a name="azure-security-benchmark"></a>Azure-biztonsági teljesítményteszt
+## <a name="azure-security-benchmark-v1"></a>Azure Security teljesítményteszt v1
 
 Az [Azure biztonsági teljesítményteszt](../../../../articles/security/benchmarks/overview.md) az Azure-beli felhőalapú megoldások biztonságossá tételével kapcsolatos ajánlásokat tartalmaz. Ha szeretné megtekinteni, hogy a szolgáltatás hogyan képezi le teljesen az Azure biztonsági Teljesítménytesztét, tekintse meg az [Azure biztonsági teljesítményteszt-leképezési fájljait](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
 
@@ -20,7 +20,7 @@ Ha szeretné áttekinteni, hogy az összes Azure-szolgáltatáshoz rendelkezésr
 
 |Tartomány |Vezérlő azonosítója |Vezérlő címe |Szabályzat<br /><sub>(Azure Portal)</sub> |Házirend verziója<br /><sub>GitHub</sub>  |
 |---|---|---|---|---|
-|Hálózati biztonság |1,1 |Az erőforrások védelme hálózati biztonsági csoportokkal vagy a Virtual Network Azure Firewall használatával |[SQL Server virtuális hálózati szolgáltatás végpontját kell használnia](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fae5d2f14-d830-42b6-9899-df6cfe9c71a3) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_SQLServer_AuditIfNotExists.json) |
+|Hálózati biztonság |1.1 |Az erőforrások védelme hálózati biztonsági csoportokkal vagy a Virtual Network Azure Firewall használatával |[SQL Server virtuális hálózati szolgáltatás végpontját kell használnia](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fae5d2f14-d830-42b6-9899-df6cfe9c71a3) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_SQLServer_AuditIfNotExists.json) |
 |Naplózás és monitorozás |2.3 |Naplózás engedélyezése az Azure-erőforrásokhoz |[Az SQL Server naplózását engedélyezni kell](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa6fb4358-5bf4-4ad7-ba82-2cd2f41ce5e9) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAuditing_Audit.json) |
 |Naplózás és monitorozás |2.3 |Naplózás engedélyezése az Azure-erőforrásokhoz |[Az SQL naplózási beállításainak Action-Groups konfigurálva kell lennie a kritikus tevékenységek rögzítéséhez](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7ff426e2-515f-405a-91c8-4f2333442eb5) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAuditing_ActionsAndGroups_Audit.json) |
 |Naplózás és monitorozás |2.5 |A biztonsági napló tárolási adatmegőrzésének konfigurálása |[Az SQL-kiszolgálókat 90 napos naplózási vagy magasabb szintű naplózással kell konfigurálni.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F89099bee-89e0-4b26-a5f4-165451757743) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAuditingRetentionDays_Audit.json) |

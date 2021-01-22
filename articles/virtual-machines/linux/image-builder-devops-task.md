@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 43447454b82b74c10b1d53c41c7883b0b9bef242
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 634fc183cc27db1ae949959c3ae7fae8eda5b644
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196503"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684542"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Az Azure rendszerkép-készítő szolgáltatás DevOps feladata
 
@@ -71,10 +71,10 @@ Használja azt az erőforráscsoportot, amelyben az ideiglenes Képsablon-össze
  
 ### <a name="location"></a>Hely
 
-A hely az a régió, ahol a rendszerkép-szerkesztő futni fog. Csak egy meghatározott számú [régió](../windows/image-builder-overview.md#regions) támogatott. Ezen a helyen a forrás lemezképeknek jelen kell lenniük. Ha például megosztott képtárat használ, az adott régióban léteznie kell egy replikának.
+A hely az a régió, ahol a rendszerkép-szerkesztő futni fog. Csak egy meghatározott számú [régió](../image-builder-overview.md#regions) támogatott. Ezen a helyen a forrás lemezképeknek jelen kell lenniük. Ha például megosztott képtárat használ, az adott régióban léteznie kell egy replikának.
 
 ### <a name="managed-identity-required"></a>Felügyelt identitás (kötelező)
-A rendszerkép-készítőnek felügyelt identitásra van szüksége, amelyet a forrás egyéni lemezképek olvasásához, az Azure Storage-hoz való kapcsolódáshoz és Egyéni rendszerképek létrehozásához használ. További információt [itt](./image-builder-overview.md#permissions) talál.
+A rendszerkép-készítőnek felügyelt identitásra van szüksége, amelyet a forrás egyéni lemezképek olvasásához, az Azure Storage-hoz való kapcsolódáshoz és Egyéni rendszerképek létrehozásához használ. További információt [itt](../image-builder-overview.md#permissions) talál.
 
 ### <a name="vnet-support"></a>VNET-támogatás
 
@@ -154,7 +154,7 @@ A következő példa a működésének módját mutatja be:
     & 'c:\buildArtifacts\webapp\webconfig.ps1'
     ```
 
-* Linux – Linux rendszereken a Build összetevők a `/tmp` könyvtárba kerülnek. Sok Linux OSs esetében azonban a rendszer újraindításkor törli a/tmp könyvtár tartalmát. Ha azt szeretné, hogy az összetevők a képen is elérhetők legyenek, létre kell hoznia egy másik könyvtárat, és át kell másolnia őket.  Példa:
+* Linux – Linux rendszereken a Build összetevők a `/tmp` könyvtárba kerülnek. Sok Linux OSs esetében azonban a rendszer újraindításkor törli a/tmp könyvtár tartalmát. Ha azt szeretné, hogy az összetevők a képen is elérhetők legyenek, létre kell hoznia egy másik könyvtárat, és át kell másolnia őket.  Például:
 
     ```bash
     sudo mkdir /lib/buildArtifacts
@@ -176,7 +176,7 @@ A következő példa a működésének módját mutatja be:
 > A rendszerkép-szerkesztő nem távolítja el automatikusan a Build-összetevőket, erősen azt javasoljuk, hogy mindig legyen kód a Build-összetevők eltávolításához.
 > 
 
-* A Windows-rendszerkép-szerkesztő telepíti a fájlokat a `c:\buildArtifacts` könyvtárba. A könyvtár megmarad, el kell távolítania a könyvtárat. Eltávolíthatja azt a futtatott szkriptből. Példa:
+* A Windows-rendszerkép-szerkesztő telepíti a fájlokat a `c:\buildArtifacts` könyvtárba. A könyvtár megmarad, el kell távolítania a könyvtárat. Eltávolíthatja azt a futtatott szkriptből. Például:
 
     ```PowerShell
     # Clean up buildArtifacts directory
@@ -186,7 +186,7 @@ A következő példa a működésének módját mutatja be:
     Remove-Item -Path "C:\buildArtifacts" -Force 
     ```
     
-* Linux – a Build összetevők bekerülnek a `/tmp` könyvtárba. Számos Linux OSs esetében azonban az újraindításkor `/tmp` törlődik a könyvtár tartalma. Azt javasoljuk, hogy a tartalom eltávolításához legyen kód, és ne használja az operációs rendszert a tartalom eltávolításához. Példa:
+* Linux – a Build összetevők bekerülnek a `/tmp` könyvtárba. Számos Linux OSs esetében azonban az újraindításkor `/tmp` törlődik a könyvtár tartalma. Azt javasoljuk, hogy a tartalom eltávolításához legyen kód, és ne használja az operációs rendszert a tartalom eltávolításához. Például:
 
     ```bash
     sudo rm -R "/tmp/AppsAndImageBuilderLinux"
@@ -312,7 +312,7 @@ Nem. A rendszer a sablon egyedi nevét használja, majd törli.
 
 Ha felépítési hiba történik, a DevOps feladat nem törli az előkészítési erőforráscsoportot. Elérheti a Build testreszabási naplóját tartalmazó átmeneti erőforrás-csoportot.
 
-Hibaüzenet jelenik meg a virtuálisgép-rendszerkép-szerkesztő feladathoz tartozó DevOps-naplóban, és megtekintheti a testreszabási napló helyét. Példa:
+Hibaüzenet jelenik meg a virtuálisgép-rendszerkép-szerkesztő feladathoz tartozó DevOps-naplóban, és megtekintheti a testreszabási napló helyét. Például:
 
 :::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="Példa DevOps-feladatra, amely hibát jelez.":::
 
@@ -335,4 +335,4 @@ A rendszerkép sablonjának erőforrás-összetevője a tevékenységben kezdetb
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ: az [Azure rendszerkép-készítő áttekintése](image-builder-overview.md).
+További információ: az [Azure rendszerkép-készítő áttekintése](../image-builder-overview.md).

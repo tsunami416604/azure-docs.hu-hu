@@ -8,12 +8,12 @@ ms.service: signalr
 ms.topic: article
 ms.date: 05/06/2020
 ms.author: dayshen
-ms.openlocfilehash: 80369883b84ca30cae475235d41addcfba7e52e1
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 92e93c3746308d2d6c1a489efc6b5c866b0ad2d9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152336"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682630"
 ---
 # <a name="use-private-endpoints-for-azure-signalr-service"></a>Privát végpontok használata az Azure Signaler szolgáltatáshoz
 
@@ -31,11 +31,11 @@ Az Azure Signaler szolgáltatáshoz tartozó privát végpontok használata lehe
 
 A privát végpontok egy speciális hálózati adapterek egy Azure-szolgáltatáshoz a [Virtual Networkban](../virtual-network/virtual-networks-overview.md) (VNet). Amikor létrehoz egy privát végpontot az Azure Signaler szolgáltatáshoz, biztonságos kapcsolatot biztosít a VNet és a szolgáltatás ügyfelei között. A magánhálózati végpont IP-címet kap a VNet IP-címének tartományához. A magánhálózati végpont és az Azure Signaler szolgáltatás közötti kapcsolat biztonságos privát hivatkozást használ.
 
-A VNet lévő alkalmazások zökkenőmentesen csatlakozhatnak az Azure Signaler szolgáltatáshoz a magánhálózati végponton keresztül, **ugyanazokkal a kapcsolati karakterláncokkal és engedélyezési mechanizmusokkal, amelyeket egyébként használni**fognak. A magánhálózati végpontok az Azure Signaler szolgáltatás által támogatott összes protokollal használhatók, beleértve a REST APIt is.
+A VNet lévő alkalmazások zökkenőmentesen csatlakozhatnak az Azure Signaler szolgáltatáshoz a magánhálózati végponton keresztül, **ugyanazokkal a kapcsolati karakterláncokkal és engedélyezési mechanizmusokkal, amelyeket egyébként használni** fognak. A magánhálózati végpontok az Azure Signaler szolgáltatás által támogatott összes protokollal használhatók, beleértve a REST APIt is.
 
 Amikor saját VNet hoz létre egy Azure Signaler szolgáltatáshoz tartozó magánhálózati végpontot, az Azure Signaler szolgáltatás tulajdonosának jóváhagyására vonatkozó kérés érkezik. Ha a privát végpont létrehozását kérő felhasználó az Azure Signaler szolgáltatás tulajdonosa is, akkor a rendszer ezt a jóváhagyási kérelmet automatikusan jóváhagyja.
 
-Az Azure Signaler szolgáltatás tulajdonosai a [Azure Portal](https://portal.azure.com)Azure Signaler szolgáltatásához tartozó*privát végpontok*lapján kezelhetik a részvételi kérelmeket és a privát végpontokat.
+Az Azure Signaler szolgáltatás tulajdonosai a [Azure Portal](https://portal.azure.com)Azure Signaler szolgáltatásához tartozó *privát végpontok* lapján kezelhetik a részvételi kérelmeket és a privát végpontokat.
 
 > [!TIP]
 > Ha csak a privát végponton keresztül szeretné korlátozni az Azure Signaler szolgáltatás elérését, [konfigurálja a hálózati Access Control](howto-network-access-control.md#managing-network-access-control) a nyilvános végponton keresztüli hozzáférés megtagadásához vagy vezérléséhez.
@@ -103,7 +103,7 @@ A saját DNS-kiszolgáló magánhálózati végpontok támogatására való konf
 
 1. Nyissa meg az Azure Signaler szolgáltatást.
 
-1. Kattintson a **privát végponti kapcsolatok**nevű beállítások menüre.
+1. Kattintson a **privát végponti kapcsolatok** nevű beállítások menüre.
 
 1. Kattintson a felső gombra **+ privát végpontra** .
 
@@ -126,55 +126,55 @@ A saját DNS-kiszolgáló magánhálózati végpontok támogatására való konf
 ### <a name="create-a-private-endpoint-using-azure-cli"></a>Privát végpont létrehozása az Azure CLI-vel
 
 1. Bejelentkezés az Azure CLI-be
-    ```console
+    ```azurecli
     az login
     ```
 1. Válassza ki az Azure-előfizetését
-    ```console
+    ```azurecli
     az account set --subscription {AZURE SUBSCRIPTION ID}
     ```
 1. Új erőforráscsoport létrehozása
-    ```console
+    ```azurecli
     az group create -n {RG} -l {AZURE REGION}
     ```
 1. A Microsoft. SignalRService regisztrálása szolgáltatóként
-    ```console
+    ```azurecli
     az provider register -n Microsoft.SignalRService
     ```
 1. Új Azure-jelző szolgáltatás létrehozása
-    ```console
+    ```azurecli
     az signalr create --name {NAME} --resource-group {RG} --location {AZURE REGION} --sku Standard_S1
     ```
 1. Virtuális hálózat létrehozása
-    ```console
+    ```azurecli
     az network vnet create --resource-group {RG} --name {vNet NAME} --location {AZURE REGION}
     ```
 1. Alhálózat hozzáadása
-    ```console
+    ```azurecli
     az network vnet subnet create --resource-group {RG} --vnet-name {vNet NAME} --name {subnet NAME} --address-prefixes {addressPrefix}
     ```
 1. Virtual Network házirendek letiltása
-    ```console
+    ```azurecli
     az network vnet subnet update --name {subnet NAME} --resource-group {RG} --vnet-name {vNet NAME} --disable-private-endpoint-network-policies true
     ```
 1. saját DNS zóna hozzáadása
-    ```console
+    ```azurecli
     az network private-dns zone create --resource-group {RG} --name privatelink.service.signalr.net
     ```
 1. saját DNS zóna összekapcsolása Virtual Network
-    ```console
+    ```azurecli
     az network private-dns link vnet create --resource-group {RG} --virtual-network {vNet NAME} --zone-name privatelink.service.signalr.net --name {dnsZoneLinkName} --registration-enabled true
     ```
 1. Privát végpont létrehozása (automatikus jóváhagyás)
-    ```console
+    ```azurecli
     az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.SignalRService/SignalR/{NAME}" --group-ids signalr --connection-name {Private Link Connection Name} --location {AZURE REGION}
     ```
 1. Privát végpont létrehozása (manuális kérelem jóváhagyása)
-    ```console
+    ```azurecli
     az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.SignalRService/SignalR/{NAME}" --group-ids signalr --connection-name {Private Link Connection Name} --location {AZURE REGION} --manual-request
     ```
 1. Kapcsolat állapotának megjelenítése
-    ```console
+    ```azurecli
     az network private-endpoint show --resource-group {RG} --name {Private Endpoint Name}
     ```
 
