@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 243f6f26be592e2db82d8f46df3de9aafcd2078b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b0760b86012504ea86e4a0cde36ae878e8ff3b26
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996984"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685737"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>A Azure Cosmos DB metrikáinak monitorozása és hibakeresése
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -77,7 +77,7 @@ Miután meghatározta, hogy melyik partíciós kulcs okozza az elferdítés elos
 
 ## <a name="compare-data-size-against-index-size"></a>Az adatméret összehasonlítása az index méretével
 
-Azure Cosmos DB a teljes felhasznált tárterület az adatméret és az index méretének kombinációja. Az index mérete általában az adatméret töredéke. A [Azure Portal](https://portal.azure.com)metrika paneljén a Storage (tárolás) lapon az adatok és az index alapján megjelenő tárterület-felhasználás bontása látható.
+Azure Cosmos DB a teljes felhasznált tárterület az adatméret és az index méretének kombinációja. Az index mérete általában az adatméret töredéke. További információt az [index mérete](index-policy.md#index-size) című cikkben talál. A [Azure Portal](https://portal.azure.com)metrika paneljén a Storage (tárolás) lapon az adatok és az index alapján megjelenő tárterület-felhasználás bontása látható.
 
 ```csharp
 // Measure the document size usage (which includes the index size)  
@@ -110,7 +110,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 A *QueryMetrics* részletesen ismerteti, hogy mennyi ideig tartott a lekérdezés egyes összetevőinek végrehajtása. A hosszú ideig futó lekérdezések esetében a leggyakoribb kiváltó ok a vizsgálatok, ami azt jelenti, hogy a lekérdezés nem tudta kihasználni az indexeket. Ez a probléma jobb szűrőfeltétel használatával oldható meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most megtanulta, hogyan figyelheti és hibakeresési hibákat a Azure Portalban megadott mérőszámok használatával. Ha többet szeretne megtudni az adatbázis teljesítményének növeléséről, olvassa el a következő cikkeket:
 

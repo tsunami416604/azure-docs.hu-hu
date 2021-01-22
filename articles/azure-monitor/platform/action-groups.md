@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 72caeb60fc058b88158979d211a0bc38985975c7
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 444b514dfb1798ff810e84fc4e9d50001dbaee1c
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968857"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685788"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Műveletcsoportok létrehozása és felügyelete az Azure Portalon
 A műveleti csoport az Azure-előfizetés tulajdonosa által meghatározott értesítési beállítások gyűjteménye. Azure Monitor és Service Health riasztások használata műveleti csoportok segítségével értesíti a felhasználókat arról, hogy riasztást váltott ki. A különböző riasztások ugyanazt a műveleti csoportot vagy különböző műveleti csoportokat használhatják a felhasználó igényeitől függően. 
@@ -164,6 +164,7 @@ A műveleti csoportban korlátozott számú Logic app-művelet lehet.
 
 > [!NOTE]
 > A webhook művelet végrehajtásához a cél webhook-végpontnak nem kell megadnia a riasztás részleteit a sikeres működéshez, vagy képesnek kell lennie a POST művelet részeként megadott riasztási környezeti információk elemzésére. Ha a webhook-végpont nem tudja önállóan kezelni a riasztási környezet információit, használhat egy olyan megoldást is, mint a [Logic app-művelet](./action-groups-logic-app.md) a riasztási környezet adatainak egyéni manipulációja érdekében, hogy megfeleljen a webhook várt adatformátumának.
+> A felhasználónak a webhook szolgáltatásnév **tulajdonosának** kell lennie annak érdekében, hogy a biztonság ne legyen megsértve. Mivel bármely Azure-ügyfél hozzáférhet a portálon keresztül az összes objektum-azonosítóhoz, a tulajdonos ellenőrzése nélkül bárki felveheti a biztonságos webhookot a saját műveleti csoportjához az Azure Monitor riasztási értesítéseire, amely megsérti a biztonságot.
 
 A műveleti csoportok webhook művelettel kihasználhatja a Azure Active Directory előnyeit a műveleti csoport és a védett webes API (webhook-végpont) közötti kapcsolat biztonságossá tételéhez. A funkció kihasználásának általános munkafolyamata alább olvasható. Az Azure AD-alkalmazások és-szolgáltatások áttekintését lásd: [Microsoft Identity platform (v 2.0) – áttekintés](../../active-directory/develop/v2-overview.md).
 
@@ -318,11 +319,7 @@ A támogatott országok/régiók díjszabását a [Azure monitor díjszabási ol
 ### <a name="webhook"></a>Webhook
 
 > [!NOTE]
-> A webhook művelet végrehajtásához a cél webhook-végpontnak nem kell megadnia a riasztás részleteit a sikeres működéshez, vagy képesnek kell lennie a POST művelet részeként megadott riasztási környezeti információk elemzésére. 
-
-> A felhasználónak a webhook szolgáltatásnév **tulajdonosának** kell lennie annak érdekében, hogy a biztonság ne legyen megsértve. Mivel bármely Azure-ügyfél hozzáférhet a portálon keresztül az összes objektum-azonosítóhoz, a tulajdonos ellenőrzése nélkül bárki felveheti a biztonságos webhookot a saját műveleti csoportjához az Azure Monitor riasztási értesítéseire, amely megsérti a biztonságot.
-
-> Ha a webhook-végpont nem tudja önállóan kezelni a riasztási környezet információit, használhat egy olyan megoldást is, mint a [Logic app-művelet](./action-groups-logic-app.md) a riasztási környezet adatainak egyéni manipulációja érdekében, hogy megfeleljen a webhook várt adatformátumának.
+> A webhook művelet végrehajtásához a cél webhook-végpontnak nem kell megadnia a riasztás részleteit a sikeres működéshez, vagy képesnek kell lennie a POST művelet részeként megadott riasztási környezeti információk elemzésére. Ha a webhook-végpont nem tudja önállóan kezelni a riasztási környezet információit, használhat egy olyan megoldást is, mint a [Logic app-művelet](./action-groups-logic-app.md) a riasztási környezet adatainak egyéni manipulációja érdekében, hogy megfeleljen a webhook várt adatformátumának.
 
 A webhookok feldolgozása a következő szabályok alapján történik
 - A webhook hívása legfeljebb 3 alkalommal próbálkozik.

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 23a5ea2d3ffc1511bea66bb8bc3c4282b6d16cc2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c97975d6920cd0f04a7d2d4e73c00104a2b13235
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489122"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685612"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>SAP HANA kibővíthető rendszer magas rendelkezésre állása Red Hat Enterprise Linux 
 
@@ -153,7 +153,7 @@ A jelen dokumentumban bemutatott konfiguráció esetében hét virtuális gépet
 
     d. Válassza a **hálózatkezelés** lehetőséget, majd csatlakoztassa a hálózati adaptert. A **hálózati adapter csatolása** legördülő listában válassza ki a már létrehozott hálózati adaptereket és az `inter` `hsr` alhálózatokat.  
     
-    e. Válassza a **Mentés** lehetőséget. 
+    e. Kattintson a **Mentés** gombra. 
  
     f. Ismételje meg a b – e lépéseket a fennmaradó virtuális gépek esetében (példánkban a  **Hana-S1-DB2**, **Hana-S1-db3**, **Hana-S2-db1**, **Hana-S2-DB2** és **Hana-S2-db3**).
  
@@ -165,7 +165,7 @@ A jelen dokumentumban bemutatott konfiguráció esetében hét virtuális gépet
 
     b. Hajtsa végre a következő parancsokat a gyorsított hálózatkezelés engedélyezéséhez a további hálózati adapterekhez, amelyek a `inter` és az `hsr` alhálózatokhoz vannak csatolva.  
 
-    ```
+    ```azurecli
     az network nic update --id /subscriptions/your subscription/resourceGroups/your resource group/providers/Microsoft.Network/networkInterfaces/hana-s1-db1-inter --accelerated-networking true
     az network nic update --id /subscriptions/your subscription/resourceGroups/your resource group/providers/Microsoft.Network/networkInterfaces/hana-s1-db2-inter --accelerated-networking true
     az network nic update --id /subscriptions/your subscription/resourceGroups/your resource group/providers/Microsoft.Network/networkInterfaces/hana-s1-db3-inter --accelerated-networking true
@@ -256,7 +256,7 @@ Konfigurálja és készítse elő az operációs rendszert a következő lépés
 
 1. **[A]** a gazdagép fájljainak karbantartása a virtuális gépeken. Bejegyzések belefoglalása az összes alhálózathoz. Ehhez a példához a következő bejegyzések lettek hozzáadva `/etc/hosts` .  
 
-    ```
+    ```bash
      # Client subnet
      10.23.0.11 hana-s1-db1
      10.23.0.12 hana-s1-db1
@@ -303,7 +303,7 @@ Ebben a példában a közös HANA-fájlrendszerek üzembe helyezése Azure NetAp
 
 1. **[Ah]** Hozzon létre csatlakoztatási pontokat a HANA-adatbázis kötetei számára.  
 
-    ```
+    ```bash
     mkdir -p /hana/shared
     ```
 
@@ -313,7 +313,7 @@ Ebben a példában a közös HANA-fájlrendszerek üzembe helyezése Azure NetAp
     > [!IMPORTANT]
     > Ügyeljen arra, hogy az NFS-tartományt a virtuális gépen állítsa be, `/etc/idmapd.conf` hogy az megfeleljen az alapértelmezett tartományi konfigurációnak Azure NetApp Files: **`defaultv4iddomain.com`** . Ha az NFS-ügyfél (azaz a virtuális gép) és az NFS-kiszolgáló (például az Azure NetApp-konfiguráció) közötti eltérés nem egyezik, akkor a virtuális gépekre csatlakoztatott Azure NetApp-köteteken található fájlok engedélyei a következőképpen jelennek meg `nobody` .  
 
-    ```
+    ```bash
     sudo cat /etc/idmapd.conf
     # Example
     [General]
@@ -326,7 +326,7 @@ Ebben a példában a közös HANA-fájlrendszerek üzembe helyezése Azure NetAp
 3. **[Ah]** Ellenőrizze `nfs4_disable_idmapping` . Értékeként az **Y** értéknek kell lennie. A-t tartalmazó könyvtár-struktúra létrehozásához `nfs4_disable_idmapping` hajtsa végre a csatlakoztatási parancsot. Nem lehet manuálisan létrehozni a könyvtárat a/sys/modules alatt, mivel a hozzáférés a kernel/illesztőprogramok számára van fenntartva.  
    Erre a lépésre csak akkor van szükség, ha az Azure NetAppFiles NFSv 4.1-et használja.  
 
-    ```
+    ```bash
     # Check nfs4_disable_idmapping 
     cat /sys/module/nfs/parameters/nfs4_disable_idmapping
     # If you need to set nfs4_disable_idmapping to Y
@@ -342,20 +342,20 @@ Ebben a példában a közös HANA-fájlrendszerek üzembe helyezése Azure NetAp
 
 4. **[AH1]** Csatlakoztassa a megosztott Azure NetApp Files köteteket a HELY1 HANA DB virtuális gépekhez.  
 
-    ```
+    ```bash
     sudo mount -o rw,vers=4,minorversion=1,hard,timeo=600,rsize=262144,wsize=262144,intr,noatime,lock,_netdev,sec=sys 10.23.1.7:/HN1-shared-s1 /hana/shared
     ```
 
 5. **[AH2]** Csatlakoztassa a megosztott Azure NetApp Files köteteket a SITE2 HANA DB virtuális gépekhez.  
 
-    ```
+    ```bash
     sudo mount -o rw,vers=4,minorversion=1,hard,timeo=600,rsize=262144,wsize=262144,intr,noatime,lock,_netdev,sec=sys 10.23.1.7:/HN1-shared-s2 /hana/shared
     ```
 
 
 10. **[Ah]** Ellenőrizze, hogy a megfelelő `/hana/shared/` fájlrendszerek csatlakoztatva vannak-e az NFS protokoll-verzió **NFSV4 NÉVLEKÉPEZŐJE** rendelkező HANA db-alapú virtuális gépekhez.  
 
-    ```
+    ```bash
     sudo nfsstat -m
     # Verify that flag vers is set to 4.1 
     # Example from SITE 1, hana-s1-db1
@@ -372,25 +372,25 @@ A bemutatott konfigurációban a fájlrendszerek `/hana/data` és a `/hana/log` 
 Állítsa be a lemez elrendezését a  **logikai kötet-kezelővel (LVM)**. Az alábbi példa azt feltételezi, hogy minden HANA virtuális géphez három adatlemez van csatlakoztatva, amelyek két kötet létrehozásához használatosak.
 
 1. **[Ah]** Az összes rendelkezésre álló lemez felsorolása:
-    ```
+    ```bash
     ls /dev/disk/azure/scsi1/lun*
     ```
 
    Példa a kimenetre:
 
-    ```
+    ```bash
     /dev/disk/azure/scsi1/lun0  /dev/disk/azure/scsi1/lun1  /dev/disk/azure/scsi1/lun2 
     ```
 
 2. **[Ah]** Fizikai kötetek létrehozása a használni kívánt összes lemezhez:
-    ```
+    ```bash
     sudo pvcreate /dev/disk/azure/scsi1/lun0
     sudo pvcreate /dev/disk/azure/scsi1/lun1
     sudo pvcreate /dev/disk/azure/scsi1/lun2
     ```
 
 3. **[Ah]** Hozzon létre egy kötet-csoportot az adatfájlokhoz. Használjon egy kötetet a naplófájlok számára, és egyet a SAP HANA megosztott könyvtárához:
-    ```
+    ```bash
     sudo vgcreate vg_hana_data_HN1 /dev/disk/azure/scsi1/lun0 /dev/disk/azure/scsi1/lun1
     sudo vgcreate vg_hana_log_HN1 /dev/disk/azure/scsi1/lun2
     ```
@@ -402,7 +402,7 @@ A bemutatott konfigurációban a fájlrendszerek `/hana/data` és a `/hana/log` 
    > Használja a `-i` kapcsolót, és állítsa be a mögöttes fizikai kötet számára, ha több fizikai kötetet használ minden egyes adathoz vagy naplózási kötethez. `-I`Csíkozott kötet létrehozásakor használja a kapcsolót a sáv méretének megadásához.  
    > Lásd: SAP HANA virtuálisgép- [tárolási konfigurációk](./hana-vm-operations-storage.md) az ajánlott tárolási konfigurációkhoz, beleértve a sávok méretét és a lemezek számát.  
 
-    ```
+    ```bash
     sudo lvcreate -i 2 -I 256 -l 100%FREE -n hana_data vg_hana_data_HN1
     sudo lvcreate -l 100%FREE -n hana_log vg_hana_log_HN1
     sudo mkfs.xfs /dev/vg_hana_data_HN1/hana_data
@@ -410,7 +410,7 @@ A bemutatott konfigurációban a fájlrendszerek `/hana/data` és a `/hana/log` 
     ```
 
 5. **[Ah]** Hozza létre a csatlakoztatási könyvtárakat, és másolja a logikai kötetek UUID azonosítóját:
-    ```
+    ```bash
     sudo mkdir -p /hana/data/HN1
     sudo mkdir -p /hana/log/HN1
     # Write down the ID of /dev/vg_hana_data_HN1/hana_data and /dev/vg_hana_log_HN1/hana_log
@@ -418,20 +418,20 @@ A bemutatott konfigurációban a fájlrendszerek `/hana/data` és a `/hana/log` 
     ```
 
 6. **[Ah]** Hozzon létre `fstab` bejegyzéseket a logikai kötetekhez és a csatlakoztatáshoz:
-    ```
+    ```bash
     sudo vi /etc/fstab
     ```
 
    Szúrja be a következő sort a `/etc/fstab` fájlba:
 
-    ```
+    ```bash
     /dev/disk/by-uuid/UUID of /dev/mapper/vg_hana_data_HN1-hana_data /hana/data/HN1 xfs  defaults,nofail  0  2
     /dev/disk/by-uuid/UUID of /dev/mapper/vg_hana_log_HN1-hana_log /hana/log/HN1 xfs  defaults,nofail  0  2
     ```
 
    Az új kötetek csatlakoztatása:
 
-    ```
+    ```bash
     sudo mount -a
     ```
 
@@ -444,27 +444,27 @@ Ebben a példában az Azure-beli virtuális gépeken található HSR-alapú kib�
 1. **[Ah]** A HANA telepítésének megkezdése előtt állítsa be a legfelső szintű jelszót. A legfelső szintű jelszót a telepítés befejezése után tilthatja le. Végrehajtás `root` parancsként `passwd` .  
 
 2. **[1, 2]** az engedélyek módosítása bekapcsolva `/hana/shared` 
-    ```
+    ```bash
     chmod 775 /hana/shared
     ```
 
 3. **[1]** ellenőrizze, hogy SSH-n keresztül tud-e bejelentkezni a Hana db virtuális gépekre a következő helyen: **Hana-S1-DB2** és **HANA-S1-db3**, anélkül, hogy jelszót kellene megadnia.  
    Ha ez nem igaz, az Exchange ssh-kulcsok a [kulcs alapú hitelesítés használatával](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/s2-ssh-configuration-keypairs)dokumentálva vannak.  
-    ```
+    ```bash
     ssh root@hana-s1-db2
     ssh root@hana-s1-db3
     ```
 
 4. **[2]** ellenőrizze, hogy SSH-n keresztül tud-e bejelentkezni a Hana db virtuális gépekre a következő helyen: **Hana-S2-DB2** és **HANA-S2-db3**, anélkül, hogy jelszót kellene megadnia.  
    Ha ez nem igaz, az Exchange ssh-kulcsok a [kulcs alapú hitelesítés használatával](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/s2-ssh-configuration-keypairs)dokumentálva vannak.  
-    ```
+    ```bash
     ssh root@hana-s2-db2
     ssh root@hana-s2-db3
     ```
 
 5. **[Ah]** Telepítsen további csomagokat, amelyek szükségesek a HANA 2,0 SP4-hez. További információ: SAP Note [2593824](https://launchpad.support.sap.com/#/notes/2593824) a RHEL 7 rendszerhez. 
 
-    ```
+    ```bash
     # If using RHEL 7
     yum install libgcc_s1 libstdc++6 compat-sap-c++-7 libatomic1
     # If using RHEL 8
@@ -473,7 +473,7 @@ Ebben a példában az Azure-beli virtuális gépeken található HSR-alapú kib�
 
 
 6. **[A]** ideiglenesen tiltsa le a tűzfalat, hogy az ne zavarja a HANA telepítését. A HANA telepítésének befejezése után újra engedélyezheti. 
-    ```
+    ```bash
     # Execute as root
     systemctl stop firewalld
     systemctl disable firewalld
@@ -485,7 +485,7 @@ Ebben a példában az Azure-beli virtuális gépeken található HSR-alapú kib�
 
    a. Indítsa el a **hdblcm** programot `root` a HANA telepítési szoftver könyvtára alapján. Használja a `internal_network` paramétert, és adja át a címtartomány az alhálózat számára, amely a belső HANA-csomópontok közötti kommunikációhoz használatos.  
 
-    ```
+    ```bash
     ./hdblcm --internal_network=10.23.1.128/26
     ```
 
@@ -522,7 +522,7 @@ Ebben a példában az Azure-beli virtuális gépeken található HSR-alapú kib�
 
    Jelenítse meg global.ini, és győződjön meg arról, hogy a belső SAP HANA csomópontok közötti kommunikáció konfigurációja van érvényben. Ellenőrizze a **kommunikáció** szakaszát. Meg kell adni a címtartományt az `inter` alhálózathoz, és a következőre kell `listeninterface` állítani: `.internal` . Ellenőrizze a **internal_hostname_resolution** szakaszt. Az alhálózathoz tartozó HANA virtuális gépek IP-címeinek kell lenniük `inter` .  
 
-   ```
+   ```bash
      sudo cat /usr/sap/HN1/SYS/global/hdb/custom/config/global.ini
      # Example from SITE1 
      [communication]
@@ -536,7 +536,7 @@ Ebben a példában az Azure-beli virtuális gépeken található HSR-alapú kib�
 
 4. **[1, 2]** felkészülés `global.ini` a nem megosztott környezetekben történő telepítésre az SAP Note [2080991](https://launchpad.support.sap.com/#/notes/0002080991)-ben leírtak szerint.  
 
-   ```
+   ```bash
     sudo vi /usr/sap/HN1/SYS/global/hdb/custom/config/global.ini
     [persistence]
     basepath_shared = no
@@ -544,14 +544,14 @@ Ebben a példában az Azure-beli virtuális gépeken található HSR-alapú kib�
 
 4. **[1, 2]** indítsa újra SAP HANA a módosítások aktiválásához.  
 
-   ```
+   ```bash
     sudo -u hn1adm /usr/sap/hostctrl/exe/sapcontrol -nr 03 -function StopSystem
     sudo -u hn1adm /usr/sap/hostctrl/exe/sapcontrol -nr 03 -function StartSystem
    ```
 
 6. **[1, 2]** ellenőrizze, hogy az ügyfél felülete az alhálózat IP-címeit fogja-e használni a `client` kommunikációhoz.  
 
-    ```
+    ```bash
     # Execute as hn1adm
     /usr/sap/HN1/HDB03/exe/hdbsql -u SYSTEM -p "password" -i 03 -d SYSTEMDB 'select * from SYS.M_HOST_INFORMATION'|grep net_publicname
     # Expected result - example from SITE 2
@@ -562,13 +562,13 @@ Ebben a példában az Azure-beli virtuális gépeken található HSR-alapú kib�
 
 7. **[Ah]** A HANA telepítési hibájának elkerülése érdekében módosítsa az adatkezelési és a naplózási könyvtárak engedélyeit.  
 
-   ```
+   ```bash
     sudo chmod o+w -R /hana/data /hana/log
    ```
 
 8. **[1]** telepítse a másodlagos HANA-csomópontokat. Az ebben a lépésben szereplő példa az 1. helyen található.  
    a. Indítsa el a rezidens **hdblcm** programot `root` .    
-    ```
+    ```bash
      cd /hana/shared/HN1/hdblcm
      ./hdblcm 
     ```
@@ -602,21 +602,21 @@ Ebben a példában az Azure-beli virtuális gépeken található HSR-alapú kib�
 
    Az adatbázisok biztonsági mentése **hn1** adm-ként:
 
-    ```
+    ```bash
     hdbsql -d SYSTEMDB -u SYSTEM -p "passwd" -i 03 "BACKUP DATA USING FILE ('initialbackupSYS')"
     hdbsql -d HN1 -u SYSTEM -p "passwd" -i 03 "BACKUP DATA USING FILE ('initialbackupHN1')"
     ```
 
    Másolja a System PKI-fájlokat a másodlagos helyre:
 
-    ```
+    ```bash
     scp /usr/sap/HN1/SYS/global/security/rsecssfs/data/SSFS_HN1.DAT hana-s2-db1:/usr/sap/HN1/SYS/global/security/rsecssfs/data/
     scp /usr/sap/HN1/SYS/global/security/rsecssfs/key/SSFS_HN1.KEY  hana-s2-db1:/usr/sap/HN1/SYS/global/security/rsecssfs/key/
     ```
 
    Hozza létre az elsődleges helyet:
 
-    ```
+    ```bash
     hdbnsutil -sr_enable --name=HANA_S1
     ```
 
@@ -624,7 +624,7 @@ Ebben a példában az Azure-beli virtuális gépeken található HSR-alapú kib�
     
    Regisztrálja a második helyet a rendszerreplikáció elindításához. Futtassa a következő parancsot <hanasid adm-ként \> :
 
-    ```
+    ```bash
     sapcontrol -nr 03 -function StopWait 600 10
     hdbnsutil -sr_register --remoteHost=hana-s1-db1 --remoteInstance=03 --replicationMode=sync --name=HANA_S2
     sapcontrol -nr 03 -function StartSystem
@@ -634,7 +634,7 @@ Ebben a példában az Azure-beli virtuális gépeken található HSR-alapú kib�
 
    Vizsgálja meg a replikálás állapotát, és várjon, amíg az összes adatbázis szinkronban van.
 
-    ```
+    ```bash
     sudo su - hn1adm -c "python /usr/sap/HN1/HDB03/exe/python_support/systemReplicationStatus.py"
     # | Database | Host          | Port  | Service Name | Volume ID | Site ID | Site Name | Secondary     | Secondary | Secondary | Secondary | Secondary     | Replication | Replication | Replication    |
     # |          |               |       |              |           |         |           | Host          | Port      | Site ID   | Site Name | Active Status | Mode        | Status      | Status Details |
@@ -657,12 +657,12 @@ Ebben a példában az Azure-beli virtuális gépeken található HSR-alapú kib�
 
 4. **[1, 2]** módosítsa a Hana-konfigurációt úgy, hogy a Hana rendszer replikálásával kapcsolatos kommunikációt, ha a Hana rendszerreplikálási virtuális hálózati adaptereket irányította.   
    - A HANA leállítása mindkét helyen
-    ```
+    ```bash
     sudo -u hn1adm /usr/sap/hostctrl/exe/sapcontrol -nr 03 -function StopSystem HDB
     ```
 
    - global.ini szerkesztése a HANA rendszerreplikációhoz tartozó gazdagép-hozzárendelés hozzáadásához: használja az alhálózat IP-címeit `hsr` .  
-    ```
+    ```bash
     sudo vi /usr/sap/HN1/SYS/global/hdb/custom/config/global.ini
     #Add the section
     [system_replication_hostname_resolution]
@@ -675,7 +675,7 @@ Ebben a példában az Azure-beli virtuális gépeken található HSR-alapú kib�
     ```
 
    - A HANA elindítása mindkét helyen
-   ```
+   ```bash
     sudo -u hn1adm /usr/sap/hostctrl/exe/sapcontrol -nr 03 -function StartSystem HDB
    ```
 
@@ -683,7 +683,7 @@ Ebben a példában az Azure-beli virtuális gépeken található HSR-alapú kib�
 
 5. **[Ah]** Engedélyezze újra a tűzfalat.  
    - A tűzfal újbóli engedélyezése
-       ```
+       ```bash
        # Execute as root
        systemctl start firewalld
        systemctl enable firewalld
@@ -694,7 +694,7 @@ Ebben a példában az Azure-beli virtuális gépeken található HSR-alapú kib�
        > [!IMPORTANT]
        > Tűzfalszabályok létrehozása a HANA-csomópontok közötti kommunikáció és az ügyfelek forgalmának engedélyezéséhez. A szükséges portok az [összes SAP-termék TCP/IP-portjain](https://help.sap.com/viewer/ports)vannak felsorolva. A következő parancsok csak példaként szolgálnak. Ebben az esetben a használatban lévő rendszer 03-as számú.
 
-       ```
+       ```bash
         # Execute as root
         sudo firewall-cmd --zone=public --add-port=30301/tcp --permanent
         sudo firewall-cmd --zone=public --add-port=30301/tcp
@@ -753,19 +753,19 @@ Az összes virtuális gép belefoglalása, beleértve a fürt többségi gyárt�
 
 1. **[1, 2]** SAP HANA leállítása mindkét replikációs helyen. Végrehajtás <SID adm-ként \> .  
 
-    ```
+    ```bash
     sapcontrol -nr 03 -function StopSystem
     ```
 
 2. **[Ah]** Nem `/hana/shared` csatlakoztatott fájlrendszer, amelyet a rendszer ideiglenesen csatlakoztatt az összes HANA db-alapú virtuális gépen történő telepítéshez. Le kell állítania minden olyan folyamatot és munkamenetet, amely a fájlrendszert használja, mielőtt a csatlakoztatást el tudja végezni. 
  
-    ```
+    ```bash
     umount /hana/shared 
     ```
 
 3. **[1]** a fájlrendszerbeli fürt erőforrásainak létrehozása `/hana/shared` letiltott állapotban. Az erőforrások a lehetőséggel jönnek létre `--disabled` , mert a csatlakoztatások engedélyezése előtt meg kell határoznia a hely megkötéseit.  
 
-    ```
+    ```bash
     # /hana/shared file system for site 1
     pcs resource create fs_hana_shared_s1 --disabled ocf:heartbeat:Filesystem device=10.23.1.7:/HN1-shared-s1  directory=/hana/shared \
     fstype=nfs options='defaults,rw,hard,timeo=600,rsize=262144,wsize=262144,proto=tcp,intr,noatime,sec=sys,vers=4.1,lock,_netdev' op monitor interval=20s on-fail=fence timeout=40s OCF_CHECK_LEVEL=20 \
@@ -787,7 +787,7 @@ Az összes virtuális gép belefoglalása, beleértve a fürt többségi gyárt�
 
 4. **[1]** konfigurálja és ellenőrizze a csomópont attribútumait. A (z) 1. replikációs helyen található összes SAP HANA adatbázis-csomópont hozzárendelt attribútum `S1` , a 2. replikációs helyen található összes SAP HANA db-csomópont pedig hozzárendelt attribútum `S2` .  
 
-    ```
+    ```bash
     # HANA replication site 1
     pcs node attribute hana-s1-db1 NFS_SID_SITE=S1
     pcs node attribute hana-s1-db2 NFS_SID_SITE=S1
@@ -801,7 +801,7 @@ Az összes virtuális gép belefoglalása, beleértve a fürt többségi gyárt�
     ```
 
 5. **[1]** konfigurálja a korlátozásokat, amelyek meghatározzák, hogy hol lesznek csatlakoztatva az NFS-fájlrendszerek, és hogyan engedélyezze a fájlrendszer erőforrásait.  
-    ```
+    ```bash
     # Configure the constraints
     pcs constraint location fs_hana_shared_s1-clone rule resource-discovery=never score=-INFINITY NFS_SID_SITE ne S1
     pcs constraint location fs_hana_shared_s2-clone rule resource-discovery=never score=-INFINITY NFS_SID_SITE ne S2
@@ -814,7 +814,7 @@ Az összes virtuális gép belefoglalása, beleértve a fürt többségi gyárt�
  
 6. **[Ah]** Győződjön meg arról, hogy a ANF-kötetek az `/hana/shared` összes HANA db virtuális gépen vannak csatlakoztatva mindkét helyen.
 
-    ```
+    ```bash
     sudo nfsstat -m
     # Verify that flag vers is set to 4.1 
     # Example from SITE 1, hana-s1-db1
@@ -827,7 +827,7 @@ Az összes virtuális gép belefoglalása, beleértve a fürt többségi gyárt�
 
 7. **[1]** konfigurálja az attribútumok erőforrásait. Konfigurálja a korlátozásokat, amelyek beállítja az attribútumokat `true` , ha az NFS-csatolók `hana/shared` csatlakoztatva vannak.  
 
-    ```
+    ```bash
     # Configure the attribure resources
     pcs resource create hana_nfs_s1_active ocf:pacemaker:attribute active_value=true inactive_value=false name=hana_nfs_s1_active
     pcs resource create hana_nfs_s2_active ocf:pacemaker:attribute active_value=true inactive_value=false name=hana_nfs_s2_active
@@ -843,7 +843,7 @@ Az összes virtuális gép belefoglalása, beleértve a fürt többségi gyárt�
    > Ha a konfiguráció más fájlrendszereket is tartalmaz, a/-t is beleértve, amelyek az NFS-hez `hana/shared` vannak csatlakoztatva, akkor belefoglalják a `sequential=false` lehetőséget, hogy a fájlrendszerek között ne legyenek rendezési függőségek. Az összes NFS-hez csatlakoztatott fájlrendszernek a megfelelő attribútum-erőforrás előtt el kell indulnia, de nem kell egymáshoz viszonyítva megadnia azokat. További információ: [Hogyan SAP HANA Scale-Out HSR beállítása pacemaker-fürtben, ha a HANA-fájlrendszer NFS-megosztás](https://access.redhat.com/solutions/5423971).  
 
 8. **[1]** a pacemaker karbantartási módba helyezése a HANA-fürt erőforrásainak létrehozásához.  
-    ```
+    ```bash
     pcs property set maintenance-mode=true
     ```
 
@@ -851,7 +851,7 @@ Az összes virtuális gép belefoglalása, beleértve a fürt többségi gyárt�
 
 1. **[A]** telepítse a HANA kibővíthető erőforrás-ügynököt az összes fürtcsomóponton, beleértve a többségi gyártót is.    
 
-    ```
+    ```bash
     yum install -y resource-agents-sap-hana-scaleout 
     ```
 
@@ -862,14 +862,14 @@ Az összes virtuális gép belefoglalása, beleértve a fürt többségi gyárt�
 2. **[1, 2]** a HANA "rendszerreplikálási Hook" telepítése. A hookot egy HANA DB-csomópontra kell telepíteni az egyes rendszer-replikációs helyeken. A SAP HANAnak továbbra is le kell állnia.        
 
    1. A Hook előkészítése `root` 
-    ```
+    ```bash
      mkdir -p /hana/shared/myHooks
      cp /usr/share/SAPHanaSR-ScaleOut/SAPHanaSR.py /hana/shared/myHooks
      chown -R hn1adm:sapsys /hana/shared/myHooks
     ```
 
    2. Módosíthatja `global.ini`
-    ```
+    ```bash
     # add to global.ini
     [ha_dr_provider_SAPHanaSR]
     provider = SAPHanaSR
@@ -881,7 +881,7 @@ Az összes virtuális gép belefoglalása, beleértve a fürt többségi gyárt�
     ```
 
 3. **[Ah]** A fürtön a <SID adm-hez tartozó fürtcsomópontok esetében a sudoers konfigurálása szükséges \> . Ebben a példában egy új fájl létrehozásával érhető el. Hajtsa végre a parancsokat a következőképpen: `root` .    
-    ``` 
+    ```bash
     cat << EOF > /etc/sudoers.d/20-saphana
     # SAPHanaSR-ScaleOut needs for srHook
      Cmnd_Alias SOK = /usr/sbin/crm_attribute -n hana_hn1_glob_srHook -v SOK -t crm_config -s SAPHanaSR
@@ -892,13 +892,13 @@ Az összes virtuális gép belefoglalása, beleértve a fürt többségi gyárt�
 
 4. **[1, 2]** a Start SAP HANA mindkét replikációs helyen. Végrehajtás <SID adm-ként \> .  
 
-    ```
+    ```bash
     sapcontrol -nr 03 -function StartSystem 
     ```
 
 5. **[1]** ellenőrizze a Hook telepítését. Végrehajtás <SID adm-ként \> az aktív HANA rendszer-replikációs helyen.   
 
-    ```
+    ```bash
     cdtrace
      awk '/ha_dr_SAPHanaSR.*crm_attribute/ \
      { printf "%s %s %s %s\n",$2,$3,$5,$16 }' nameserver_*
@@ -917,7 +917,7 @@ Az összes virtuális gép belefoglalása, beleértve a fürt többségi gyárt�
     
    2. Ezután hozza létre a HANA-topológia erőforrását.  
       Ha RHEL **7. x** fürtöt épít ki, használja a következő parancsokat:  
-      ```
+      ```bash
       pcs resource create SAPHanaTopology_HN1_HDB03 SAPHanaTopologyScaleOut \
        SID=HN1 InstanceNumber=03 \
        op start timeout=600 op stop timeout=300 op monitor interval=10 timeout=600
@@ -926,7 +926,7 @@ Az összes virtuális gép belefoglalása, beleértve a fürt többségi gyárt�
       ```
 
       Ha RHEL **8. x** fürtöt épít ki, használja a következő parancsokat:  
-      ```
+      ```bash
       pcs resource create SAPHanaTopology_HN1_HDB03 SAPHanaTopology \
        SID=HN1 InstanceNumber=03 meta clone-node-max=1 interleave=true \
        op methods interval=0s timeout=5 \
@@ -940,7 +940,7 @@ Az összes virtuális gép belefoglalása, beleértve a fürt többségi gyárt�
       > Ez a cikk a *Slave* kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.  
  
       Ha RHEL **7. x** fürtöt épít ki, használja a következő parancsokat:    
-      ```
+      ```bash
       pcs resource create SAPHana_HN1_HDB03 SAPHanaController \
        SID=HN1 InstanceNumber=03 PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200 AUTOMATED_REGISTER=false \
        op start interval=0 timeout=3600 op stop interval=0 timeout=3600 op promote interval=0 timeout=3600 \
@@ -951,7 +951,7 @@ Az összes virtuális gép belefoglalása, beleértve a fürt többségi gyárt�
       ```
 
       Ha RHEL **8. x** fürtöt épít ki, használja a következő parancsokat:  
-      ```
+      ```bash
       pcs resource create SAPHana_HN1_HDB03 SAPHanaController \
        SID=HN1 InstanceNumber=03 PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200 AUTOMATED_REGISTER=false \
        op demote interval=0s timeout=320 op methods interval=0s timeout=5 \
@@ -965,7 +965,7 @@ Az összes virtuális gép belefoglalása, beleértve a fürt többségi gyárt�
       > Ajánlott eljárásként Azt javasoljuk, hogy csak a **nem** értékre állítsa a AUTOMATED_REGISTERt, miközben alapos feladatátvételi teszteket végez, hogy megakadályozza a sikertelen elsődleges példányok másodlagosként való automatikus regisztrálását. Miután a feladatátvételi tesztek sikeresen befejeződtek, állítsa AUTOMATED_REGISTER **Igen** értékre, hogy az áttelepítési rendszer replikációja automatikusan folytatódjon. 
 
    4. Hozzon létre virtuális IP-címet és kapcsolódó erőforrásokat.  
-      ```
+      ```bash
       pcs resource create vip_HN1_03 ocf:heartbeat:IPaddr2 ip=10.23.0.18 op monitor interval="10s" timeout="20s"
       sudo pcs resource create nc_HN1_03 azure-lb port=62503
       sudo pcs resource group add g_ip_HN1_03 nc_HN1_03 vip_HN1_03
@@ -973,7 +973,7 @@ Az összes virtuális gép belefoglalása, beleértve a fürt többségi gyárt�
 
    5. A fürt korlátozásainak létrehozása  
       Ha RHEL **7. x** fürtöt épít ki, használja a következő parancsokat:  
-      ```
+      ```bash
       #Start HANA topology, before the HANA instance
       pcs constraint order SAPHanaTopology_HN1_HDB03-clone then msl_SAPHana_HN1_HDB03
 
@@ -983,7 +983,7 @@ Az összes virtuális gép belefoglalása, beleértve a fürt többségi gyárt�
       ```
  
       Ha RHEL **8. x** fürtöt épít ki, használja a következő parancsokat:  
-      ```
+      ```bash
       #Start HANA topology, before the HANA instance
       pcs constraint order SAPHanaTopology_HN1_HDB03-clone then SAPHana_HN1_HDB03-clone
 
@@ -993,7 +993,7 @@ Az összes virtuális gép belefoglalása, beleértve a fürt többségi gyárt�
       ```
 
 7. **[1]** helyezze el a fürtöt karbantartási módból. Győződjön meg arról, hogy a fürt állapota ok, és hogy az összes erőforrás el van indítva.  
-    ```
+    ```bash
     sudo pcs property set maintenance-mode=false
     #If there are failed cluster resources, you may need to run the next command
     pcs resource cleanup
@@ -1007,7 +1007,7 @@ Az összes virtuális gép belefoglalása, beleértve a fürt többségi gyárt�
 1. Mielőtt elkezdené a tesztet, ellenőrizze a fürtöt, és SAP HANA a rendszer replikálási állapotát.  
 
    a. Ellenőrizze, hogy nincsenek-e sikertelen műveletek a fürtben  
-     ```
+     ```bash
      #Verify that there are no failed cluster actions
      pcs status
      # Example
@@ -1044,7 +1044,7 @@ Az összes virtuális gép belefoglalása, beleértve a fürt többségi gyárt�
 
    b. Annak ellenőrzése, hogy SAP HANA rendszer-replikáció szinkronban van-e
 
-      ```
+      ```bash
       # Verify HANA HSR is in sync
       sudo su - hn1adm -c "python /usr/sap/HN1/HDB03/exe/python_support/systemReplicationStatus.py"
       #| Database | Host        | Port  | Service Name | Volume ID | Site ID | Site Name | Secondary     | Secondary| Secondary | Secondary | Secondary     | Replication | Replication | Replication    |
@@ -1074,7 +1074,7 @@ Az összes virtuális gép belefoglalása, beleértve a fürt többségi gyárt�
    **Várt eredmény**: Ha újracsatlakoztatja `/hana/shared` a *csak olvasási* művelettel, a fájlrendszerre vonatkozó olvasási/írási műveletet végző figyelési művelet sikertelen lesz, mivel nem tud írni a fájlrendszerbe, és a HANA-erőforrás feladatátvételét fogja elindítani. Ugyanez az eredmény várható, ha a HANA-csomópont elveszti az NFS-megosztás elérését.  
      
    A fürt erőforrásainak állapotát a vagy a futtatásával is megtekintheti `crm_mon` `pcs status` . Erőforrás állapota a teszt elindítása előtt:
-      ```
+      ```bash
       # Output of crm_mon
       #7 nodes configured
       #45 resources configured
@@ -1103,7 +1103,7 @@ Az összes virtuális gép belefoglalása, beleértve a fürt többségi gyárt�
       ```
 
    Ha szimulálni szeretné az `/hana/shared` egyik elsődleges replikációs hely virtuális gépe hibáját, hajtsa végre a következő parancsot:
-      ```
+      ```bash
       # Execute as root 
       mount -o ro /hana/shared
       # Or if the above command returns an error
@@ -1114,7 +1114,7 @@ Az összes virtuális gép belefoglalása, beleértve a fürt többségi gyárt�
          
    Ha a fürt nem indult el a virtuális gépen, az újraindult, indítsa el a fürtöt a következő végrehajtásával: 
 
-      ```
+      ```bash
       # Start the cluster 
       pcs cluster start
       ```
@@ -1122,7 +1122,7 @@ Az összes virtuális gép belefoglalása, beleértve a fürt többségi gyárt�
    A fürt indításakor a fájlrendszer `/hana/shared` automatikusan csatlakoztatva lesz.     
    Ha a AUTOMATED_REGISTER = "false" értéket állítja be, akkor konfigurálnia kell SAP HANA rendszer-replikálást a másodlagos helyen. Ebben az esetben végrehajthatja ezeket a parancsokat a SAP HANA másodlagosként való újrakonfigurálásához.   
 
-      ```
+      ```bash
       # Execute on the secondary 
       su - hn1adm
       # Make sure HANA is not running on the secondary site. If it is started, stop HANA
@@ -1135,7 +1135,7 @@ Az összes virtuális gép belefoglalása, beleértve a fürt többségi gyárt�
 
    Az erőforrások állapota a teszt után: 
 
-      ```
+      ```bash
       # Output of crm_mon
       #7 nodes configured
       #45 resources configured
@@ -1167,7 +1167,7 @@ Az összes virtuális gép belefoglalása, beleértve a fürt többségi gyárt�
 Javasoljuk, hogy alaposan tesztelje a SAP HANA-fürtöt úgy, hogy a teszteket is végrehajtja, ha az Azure-beli [virtuális gépeken a RHEL](./sap-hana-high-availability-rhel.md#test-the-cluster-setup)-on SAP HANA.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]

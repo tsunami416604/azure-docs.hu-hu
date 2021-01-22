@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5aab11b31756ee8430e8ae4d54a2b3de5ea2e136
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 8cd6f6a32071dc7bbd4aaccb92168cda009933a6
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97612704"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98689992"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Az Azure Virtual WAN a GA-ban található?
 
@@ -198,6 +198,9 @@ Amikor a VPN-helyek egy központhoz csatlakoznak, a kapcsolatokkal. A Virtual WA
 ### <a name="what-is-the-total-vpn-throughput-of-a-vpn-tunnel-and-a-connection"></a>Mi a VPN-alagút és a kapcsolat teljes VPN-átviteli sebessége?
 
 A hub teljes VPN-átviteli sebessége a VPN-átjáró kiválasztott méretezési egysége alapján akár 20 GB-ig is elsajátítható. Az átviteli sebességet az összes meglévő kapcsolat megosztja. A kapcsolatok mindegyik alagútja akár 1 GB/s-t is képes támogatni.
+
+### <a name="can-i-use-nat-t-on-my-vpn-connections"></a>Használhatom a NAT-T-T a VPN-kapcsolatokon?
+Igen, a NAT-bejárás (NAT-T) támogatott. A virtuális WAN-VPN Gateway a belső csomagokon nem hajtanak végre NAT-szerű funkciókat az IPsec-alagutak között. Ebben a konfigurációban ellenőrizze, hogy a helyszíni eszköz kezdeményezi-e az IPSec-alagutat.
 
 ### <a name="i-dont-see-the-20-gbps-setting-for-the-virtual-hub-in-portal-how-do-i-configure-that"></a>Nem látom a 20 GB/s beállítást a virtuális hubhoz a portálon. Hogyan konfigurálja?
 

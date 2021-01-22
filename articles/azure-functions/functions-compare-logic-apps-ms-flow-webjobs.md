@@ -4,12 +4,12 @@ description: 'Összehasonlíthatja az integrációs feladatokhoz optimalizált M
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 81b143219fd0b53d4cd00761af6b767c173ed88d
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 95167791efe13526b0a70c28fa89771542a9d220
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934866"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685561"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>A megfelelő integrációs és automatizálási szolgáltatások kiválasztása az Azure-ban
 
@@ -76,10 +76,10 @@ A WebJobs és a WebJobs SDK együtt működnek a leghatékonyabban, de használh
 
 Az Azure Functions a WebJobs SDK-ra épül, így sok, más Azure-szolgáltatásokkal közös eseményindítóval és kapcsolattal rendelkezik. Az alábbiakban néhány szempontot figyelembe kell venni, amikor a webjobs SDK-val Azure Functions és webjobs-feladatok közül választ:
 
-|  | Függvények | WebJobs WebJobs SDK-val |
+|  | Functions | WebJobs WebJobs SDK-val |
 | --- | --- | --- |
 |**[Kiszolgáló nélküli alkalmazás](https://azure.microsoft.com/solutions/serverless/) -modell [automatikus skálázással](event-driven-scaling.md)**|✔||
-|**[Fejlesztés és tesztelés böngészőben](functions-create-first-azure-function.md)** |✔||
+|**[Fejlesztés és tesztelés böngészőben](./functions-get-started.md)** |✔||
 |**[Használatalapú fizetés](consumption-plan.md)**|✔||
 |**[Integráció a Logic Apps szolgáltatással](functions-twitter-email.md)**|✔||
 | **Kiváltó események** |[Időzítő](functions-bindings-timer.md)<br>[Azure Storage üzenetsorok és blobok](functions-bindings-storage-blob.md)<br>[Azure Service Bus – üzenetsorok és témakörök](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub, Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Időzítő](functions-bindings-timer.md)<br>[Azure Storage üzenetsorok és blobok](functions-bindings-storage-blob.md)<br>[Azure Service Bus – üzenetsorok és témakörök](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[Fájlrendszer](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
@@ -118,10 +118,10 @@ Az integrációs szolgáltatásokkal kapcsolatos további információk az aláb
 * [Élő webes közvetítés Logic Apps](https://aka.ms/logicappslive)
 * [A gyakori kérdések a Power automatizálva](/power-automate/frequently-asked-questions)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Első lépésként hozza létre az első folyamatát, logikai alkalmazását vagy függvényalkalmazását. Válassza ki a következő hivatkozások bármelyikét:
 
 * [Első lépések a Power Automate-ben](/power-automate/getting-started)
 * [Logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
-* [Az első Azure-függvény létrehozása](functions-create-first-azure-function.md)
+* [Az első Azure-függvény létrehozása](./functions-get-started.md)

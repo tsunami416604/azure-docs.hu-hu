@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/12/2020
 ms.author: aahi
-ms.openlocfilehash: b19fb3f86be46a5db60fb87f9c7f5c3e28ac6428
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 82c33c038a1f8eaba540c9906efcffa0a9214762
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965146"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98690062"
 ---
 ## <a name="install-the-container"></a>A tároló telepítése
 
@@ -38,7 +38,7 @@ Hajtsa végre a következő `docker run` parancsot. Cserélje le az alábbi hely
 | **{API_KEY}** | A Text Analytics erőforrás kulcsa. A Azure Portal az erőforrás **kulcs és végpont** lapján található. |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
 | **{ENDPOINT_URI}** | A Text Analytics API elérésére szolgáló végpont. A Azure Portal az erőforrás **kulcs és végpont** lapján található. | `https://<your-custom-subdomain>.cognitiveservices.azure.com` |
 | **{IMAGE_ID}** | A tároló rendszerkép-azonosítója. | `1.1.011300001-amd64-preview` |
-| **{INPUT_DIR}** | A tároló bemeneti könyvtára. | Windows `C:\healthcareMount` <br> Linux/MacOS: `/home/username/input` |
+| **{INPUT_DIR}** | A tároló bemeneti könyvtára. | Windows: `C:\healthcareMount` <br> Linux/MacOS: `/home/username/input` |
 
 ```bash
 docker run --rm -it -p 5000:5000 --cpus 6 --memory 12g \
@@ -84,7 +84,7 @@ Az Azure [Web App for containers](https://azure.microsoft.com/services/app-servi
 
 Futtassa ezt a PowerShell-szkriptet az Azure CLI használatával egy Web App for Containers létrehozásához, az előfizetése és a tároló-rendszerkép használatával a HTTPS protokollon keresztül. Várjon, amíg a szkript befejeződik (körülbelül 25-30 perc) az első kérés elküldése előtt.
 
-```bash
+```azurecli
 $subscription_name = ""                    # THe name of the subscription you want you resource to be created on.
 $resource_group_name = ""                  # The name of the resource group you want the AppServicePlan
                                            #    and AppSerivce to be attached to.
@@ -118,7 +118,7 @@ A rendelkezésre állással kapcsolatos információkért tekintse meg az [ACI r
 > [!NOTE] 
 > Azure Container Instances nem tartalmaz HTTPS-támogatást a beépített tartományokhoz. Ha HTTPS-re van szüksége, manuálisan kell konfigurálnia, beleértve a tanúsítvány létrehozását és a tartomány regisztrálását. Ezt az alábbi, NGINX-mel kapcsolatos utasításokat követve teheti meg.
 
-```bash
+```azurecli
 $subscription_name = ""                    # The name of the subscription you want you resource to be created on.
 $resource_group_name = ""                  # The name of the resource group you want the AppServicePlan
                                            # and AppService to be attached to.

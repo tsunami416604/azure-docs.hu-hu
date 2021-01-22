@@ -2,13 +2,13 @@
 title: Azure Event Grid fogalmak
 description: Az Azure Event Gridet és a vele kapcsolatos fogalmakat ismerteti. A Event Grid számos kulcsfontosságú összetevőjét határozza meg.
 ms.topic: conceptual
-ms.date: 10/29/2020
-ms.openlocfilehash: 6cfb8b3aaf16a0080b9864ce5198b8a7232e8bc8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 01/21/2021
+ms.openlocfilehash: 6edc8a3980bfea15f28cfb7114bb9f8350a47a3f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075109"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685703"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Fogalmak a Azure Event Grid
 
@@ -18,10 +18,7 @@ Ez a cikk a Azure Event Grid főbb fogalmait ismerteti.
 
 Az esemény az a legkisebb mennyiségű információ, amely teljes mértékben leírja a rendszeren történteket. Minden eseményhez olyan általános információk tartoznak, mint például: az esemény forrása, az esemény időpontja és egyedi azonosító. Minden eseményhez konkrét információ is tartozik, amely csak az adott típusú eseményre vonatkozik. Például az Azure Storage-ban létrehozott új fájlról szóló esemény a fájlról tartalmaz információkat, például a `lastTimeModified` értéket. Egy Event Hubs esemény pedig a Capture fájl URL-jét tartalmazza. 
 
-A 64 KB-ig terjedő méretű események általánosan elérhetők (GA) szolgáltatói szerződés (SLA). A legfeljebb 1 MB méretű esemény támogatása jelenleg előzetes verzióban érhető el. Az 64 KB-nál nagyobb számú esemény díja 64 KB. 
-
-
-Az eseményekben eljuttatott tulajdonságokért lásd: [Azure Event Grid Event Schema](event-schema.md).
+Egy esemény maximálisan megengedett mérete 1 MB. Az 64 KB-nál nagyobb számú esemény díja 64 KB. Az eseményekben eljuttatott tulajdonságokért lásd: [Azure Event Grid Event Schema](event-schema.md).
 
 ## <a name="publishers"></a>Kiadók
 
@@ -41,7 +38,7 @@ A **rendszertémakörök** az Azure-szolgáltatások, például az Azure Storage
 
 Az **Egyéni témakörök** az alkalmazások és a harmadik féltől származó témakörök. Amikor létrehoz vagy hozzáférést kap egy egyéni témakörhöz, akkor az megjelenik a saját előfizetésében. További információ: [Egyéni témakörök](custom-topics.md). Az alkalmazás tervezésekor rugalmasságot biztosít, amikor eldönti, hány témakört kell létrehoznia. Nagyméretű megoldások esetében hozzon létre egy egyéni témakört a kapcsolódó események egyes kategóriáira. Tekintsünk például egy olyan alkalmazást, amelyik a felhasználói fiókok módosításához és a megrendelések feldolgozásához kapcsolódóan küld eseményeket. Nem valószínű, hogy valamely eseménykezelőnek mind a két esemény kategória kellene. Hozzon létre két külön témakört, és az eseménykezelők hadd iratkozzanak fel arra, amelyik érdekli őket. Kis megoldások esetében érdemes lehet az összes eseményt egyetlen témakörbe elküldeni. Az esemény-előfizetők szűrhetik a kívánt típusú eseményeket.
 
-Van egy másik típusú témakör: **partner témakör** . A [partner Events](partner-events-overview.md) szolgáltatás lehetővé teszi, hogy egy harmadik féltől származó SaaS-szolgáltató eseményeket tegyen közzé a szolgáltatásaiból, hogy azok elérhetők legyenek az adott eseményekre előfizethető felhasználók számára. Az SaaS-szolgáltató egy témakör típusát, egy **partneri témakört** tesz elérhetővé, amelyet az előfizetők az események felhasználására használnak. Emellett egy tiszta pub-sub modellt is kínál, amely elválasztja az esemény-közzétevők és az előfizetők által használt erőforrások tulajdonjogát.
+Van egy másik típusú témakör: **partner témakör**. A [partner Events](partner-events-overview.md) szolgáltatás lehetővé teszi, hogy egy harmadik féltől származó SaaS-szolgáltató eseményeket tegyen közzé a szolgáltatásaiból, hogy azok elérhetők legyenek az adott eseményekre előfizethető felhasználók számára. Az SaaS-szolgáltató egy témakör típusát, egy **partneri témakört** tesz elérhetővé, amelyet az előfizetők az események felhasználására használnak. Emellett egy tiszta pub-sub modellt is kínál, amely elválasztja az esemény-közzétevők és az előfizetők által használt erőforrások tulajdonjogát.
 
 ## <a name="event-subscriptions"></a>Esemény-előfizetések
 
@@ -66,7 +63,7 @@ Egy Event Grid perspektívából az eseménykezelő az a hely, ahol az eseményt
 
 A támogatott Event Grid kezelők megvalósításával kapcsolatos további információkért lásd: [eseménykezelők a Azure Event Gridban](event-handlers.md).
 
-## <a name="security"></a>Biztonsági őr
+## <a name="security"></a>Biztonság
 
 Event Grid biztosít biztonságot a témakörökre való feliratkozáshoz és a témakörök közzétételéhez. Feliratkozáskor megfelelő engedélyekkel kell rendelkeznie az erőforrás vagy az Event Grid témakörben. Közzétételkor SAS-jogkivonattal vagy kulcs-hitelesítéssel kell rendelkeznie a témakörhöz. További információ: [Event Grid biztonság és hitelesítés](security-authentication.md).
 
@@ -76,10 +73,7 @@ Ha Event Grid nem tudja megerősíteni, hogy az előfizető végpontja megkapta-
 
 ## <a name="batching"></a>Kötegelés
 
-Egyéni témakör használatakor az eseményeket mindig közzé kell tenni egy tömbben. Ez lehet egy köteg az alacsony átviteli sebességű forgatókönyvek esetében, azonban a nagy mennyiségű használati esetek esetében ajánlott egyszerre több eseményt felvenni egy közzétételsel, hogy nagyobb hatékonyságot érjenek el. A kötegek legfeljebb 1 MB méretűek lehetnek. Minden eseménynek még nem szabad nagyobbnak lennie, mint 64 KB (általánosan elérhető) vagy 1 MB (előzetes verzió).
-
-> [!NOTE]
-> A 64 KB-ig terjedő méretű események általánosan elérhetők (GA) szolgáltatói szerződés (SLA). A legfeljebb 1 MB méretű esemény támogatása jelenleg előzetes verzióban érhető el. Az 64 KB-nál nagyobb események díját 64 KB-os növekményekben számoljuk el. 
+Egyéni témakör használatakor az eseményeket mindig közzé kell tenni egy tömbben. Ez lehet egy köteg az alacsony átviteli sebességű forgatókönyvek esetében, azonban a nagy mennyiségű használati esetek esetében ajánlott egyszerre több eseményt felvenni egy közzétételsel, hogy nagyobb hatékonyságot érjenek el. A kötegek legfeljebb 1 MB méretűek lehetnek, az események maximális mérete pedig 1 MB. 
 
 ## <a name="next-steps"></a>Következő lépések
 

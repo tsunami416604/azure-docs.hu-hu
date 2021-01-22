@@ -1,0 +1,68 @@
+---
+title: Csomagolási és kézbesítési forgatókönyv-alapú áttelepítési útmutató | Microsoft Docs
+description: Ez a cikk a csomagolással és a szállítással kapcsolatos forgatókönyv-alapú útmutatót nyújt, amely segítséget nyújt a Azure Media Services v2-ről a v3-re való Migrálás során.
+services: media-services
+author: IngridAtMicrosoft
+manager: femila
+ms.service: media-services
+ms.topic: conceptual
+ms.workload: media
+ms.date: 1/14/2020
+ms.author: inhenkel
+ms.openlocfilehash: 74437a4adee9e2853f7b932316d57e406b7d00be
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98690358"
+---
+# <a name="packaging-and-delivery-scenario-based-migration-guidance"></a>Csomagolási és kézbesítési forgatókönyv-alapú áttelepítési útmutató
+
+![Áttelepítési útmutató emblémája](./media/migration-guide/azure-media-services-logo-migration-guide.svg)
+
+<hr color="#5ea0ef" size="10">
+
+![2. áttelepítési lépések](./media/migration-guide/steps-4.svg)
+
+Ez a cikk a csomagolással és a szállítással kapcsolatos forgatókönyv-alapú útmutatást nyújt, amely segítséget nyújt a Azure Media Services v2-ről a v3-re való Migrálás során.
+
+A tartalom a V3 API-ban való közzétételének jelentős változásai. Az új közzétételi modell egyszerűsített, és kevesebb entitást használ a folyamatos átviteli lokátor létrehozásához. Az API-t csak két entitásra, a korábban szükséges négy entitásra csökkentették. A tartalmi kulcs házirendjei és a streaming-lokátorok most már lecserélik a,, és rendszerre vonatkozó igényeket `ContentKeyAuthoriationPolicy` `AssetDeliveyPolicy` `ContentKey` `AccessPolicy` .
+
+## <a name="packaging-and-delivery-in-v3"></a>Csomagolás és kézbesítés v3-ban
+
+1. Hozzon létre [tartalmi kulcsokra vonatkozó házirendeket](content-key-policy-concept.md).
+1. [Adatfolyam-lokátorok](streaming-locators-concept.md)létrehozása.
+1. A [folyamatos átviteli útvonalak](create-streaming-locator-build-url.md) beszerzése 
+    1. Konfigurálja a [kötőjel](dynamic-packaging-overview.md#mpeg-dash-protocol) -vagy [HLS](dynamic-packaging-overview.md#hls-protocol) -lejátszót.
+
+Az egyes lépésekkel kapcsolatos fogalmakat, oktatóanyagokat és útmutatókat itt találja.
+
+## <a name="publishing-concepts-tutorials-and-how-to-guides"></a>Fogalmak, oktatóanyagok és útmutatók közzététele
+
+### <a name="concepts"></a>Alapelvek
+
+- [Dinamikus csomagolás a Media Services v3-ban](dynamic-packaging-overview.md)
+- [Szűrők](filters-concept.md)
+- [A jegyzékfájlok szűrése dinamikus csomagoló használatával](filters-dynamic-manifest-overview.md)
+- [Streaming-végpontok (forrás) Azure Media Services](streaming-endpoint-concept.md)
+- [Tartalom továbbítása CDN-integrációval](scale-streaming-cdn.md)
+- [Folyamatos átviteli lokátorok](streaming-locators-concept.md)
+
+### <a name="how-to-guides"></a>Útmutatók
+
+- [Adatfolyam-végpontok kezelése Media Services v3-val](manage-streaming-endpoints-howto.md)
+- [CLI-példa: Objektum közzététele](cli-publish-asset.md)
+- [Streamelési lokátor létrehozása és URL-címek összeállítása](create-streaming-locator-build-url.md)
+- [Feladatok eredményének letöltése](download-results-howto.md)
+- [Jel leíró hangsávok](signal-descriptive-audio-howto.md)
+- [Az Azure Media Player teljes telepítése](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-full-setup)
+- [Az Video.js-lejátszó használata a Azure Media Services](how-to-video-js-player.md)
+- [A Azure Media Services használatával](how-to-shaka-player.md)
+
+## <a name="samples"></a>Példák
+
+A [v2 és v3 kód is összehasonlítható a kódban szereplő mintákkal](migrate-v-2-v-3-migration-samples.md).
+
+## <a name="next-steps"></a>Következő lépések
+
+[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

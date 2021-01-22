@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 0a73651b11c9ca6f7cb34deb755543c3b5a6d710
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: f8e4925f721b307abd85a8b881caff3e5fc04fde
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042983"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685662"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>IoT Edge-modulok üzembe helyezése és figyelése az Azure CLI használatával
 
@@ -191,7 +191,7 @@ A eszközöket üzembe helyezheti a céleszköz olyan központi telepítés lét
 
 Központi telepítés létrehozásához használja az az [IOT Edge Deployment Create](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-create) parancsot:
 
-```cli
+```azurecli
 az iot edge deployment create --deployment-id [deployment id] --hub-name [hub name] --content [file path] --labels "[labels]" --target-condition "[target query]" --priority [int]
 ```
 
@@ -204,7 +204,7 @@ A központi telepítési Create parancs a következő paramétereket veszi figye
 * **--Content** -filepath az üzembe helyezési jegyzékhez tartozó JSON-ra. Szükséges paraméter.
 * **--hub-Name** -annak az IoT hub-nek a neve, amelyben a központi telepítés létrejön. A hubhoz a jelenlegi előfizetésben kell lennie. Módosítsa a jelenlegi előfizetését a `az account set -s [subscription name]` paranccsal.
 * **--labels** – Címkék hozzáadása az üzemelő példányok nyomon követéséhez. A címkék név, érték párok, amelyek leírják az üzemelő példányt. A címkék a nevek és az értékek JSON-formázását végzik. Például: `{"HostPlatform":"Linux", "Version:"3.0.1"}`
-* **– cél – feltétel** – adja meg a cél feltételt annak meghatározásához, hogy mely eszközök lesznek megcélozva a központi telepítéssel.A feltétel a Device Twin-címkék vagy az eszközök Twin jelentett tulajdonságain alapul, és meg kell egyeznie a kifejezés formátumával.Például: `tags.environment='test' and properties.reported.devicemodel='4000x'`.
+* **– cél – feltétel** – adja meg a cél feltételt annak meghatározásához, hogy mely eszközök lesznek megcélozva a központi telepítéssel. A feltétel a Device Twin-címkék vagy az eszközök Twin jelentett tulajdonságain alapul, és meg kell egyeznie a kifejezés formátumával. Például: `tags.environment='test' and properties.reported.devicemodel='4000x'`.
 * **--priority** – pozitív egész szám. Abban az esetben, ha két vagy több üzemelő példány ugyanarra az eszközre irányul, a prioritáshoz tartozó legmagasabb numerikus értékkel rendelkező üzemelő példány érvényes lesz.
 * **--mérőszámok** – mérőszámok létrehozása, amelyek lekérdezik a edgeHub jelentett tulajdonságokat a központi telepítés állapotának nyomon követéséhez. A metrikák JSON-bemenetet vagy filepath tesznek. Például: `'{"queries": {"mymetric": "SELECT deviceId FROM devices WHERE properties.reported.lastDesiredStatus.code = 200"}}'`.
 
@@ -224,7 +224,7 @@ A központi telepítés tartalma nem frissíthető, beleértve az üzembe helyez
 
 A központi telepítés frissítéséhez használja az az [IOT Edge Deployment Update](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-update) parancsot:
 
-```cli
+```azurecli
 az iot edge deployment update --deployment-id [deployment id] --hub-name [hub name] --set [property1.property2='value']
 ```
 
@@ -245,7 +245,7 @@ Ha töröl egy központi telepítést, minden eszköz a következő legmagasabb 
 
 A központi telepítés törléséhez használja az az [IOT Edge Deployment delete](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-delete) parancsot:
 
-```cli
+```azurecli
 az iot edge deployment delete --deployment-id [deployment id] --hub-name [hub name]
 ```
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: cdd8783daf9e1e1458f47e773eb3b6ccedfbae83
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: d6832238b0c76059079e2a1330d31eed3212b242
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624557"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685578"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Jupyter-jegyzetfüzetek futtatása a munkaterületen
 
@@ -230,6 +230,7 @@ A jegyzetfüzet automatikusan megkeresi a csatlakoztatott számítási példány
     conda install -y ipykernel
     python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
     ```
+1. A kernel telepítése után frissítse a lapot, és nyisson meg egy jegyzetfüzetet. Ekkor megjelenik az új kernel a kernel listában.
 
 > [!NOTE]
 > Jegyzetfüzeten belüli csomagkezelő esetén a **% pip** vagy **% Conda** Magic functions használatával automatikusan telepíthet csomagokat a **jelenleg futó kernelre**, nem pedig **! pip** vagy **! Conda** , amely az összes csomagra vonatkozik (beleértve a jelenleg futó kernelen kívüli csomagokat is)
@@ -281,7 +282,7 @@ A cella parancs módban van, ha nincs beírni kívánt szöveg. Ha egy cella par
 | Control/Command + Shift + A   | A fenti Markdown cella beszúrása    |      
 | Control/Command + Shift + B   | Az alábbi Markdown-cella beszúrása   |       
 | X                             | Kijelölt cella kivágása    |               
-| C#                             | Kijelölt cella másolása   |               
+| C                             | Kijelölt cella másolása   |               
 | Shift + V                     | A fent kiválasztott cella beillesztése           |
 | V                             | Lenti kijelölt cella beillesztése    |       
 | D D                           | Kijelölt cella törlése|                

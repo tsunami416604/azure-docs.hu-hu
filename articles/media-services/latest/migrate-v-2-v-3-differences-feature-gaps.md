@@ -1,0 +1,53 @@
+---
+title: A szolgáltatások közötti hézagok Azure Media Services v2 és v3 között | Microsoft Docs
+description: Ez a cikk a Azure Media Services v2 és v3 közötti különbségeket ismerteti.
+services: media-services
+author: IngridAtMicrosoft
+manager: femila
+ms.service: media-services
+ms.devlang: multiple
+ms.topic: conceptual
+ms.tgt_pltfrm: multiple
+ms.workload: media
+ms.date: 1/14/2020
+ms.author: inhenkel
+ms.openlocfilehash: 0f15c2bcd921c431dba1d1cce0454a6b2e752141
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98690430"
+---
+# <a name="feature-gaps-between-azure-media-services-v2-and-v3"></a>A szolgáltatások Azure Media Services v2 és v3 közötti hézagok
+
+![Áttelepítési útmutató emblémája](./media/migration-guide/azure-media-services-logo-migration-guide.svg)
+
+<hr color="#5ea0ef" size="10">
+
+![2. áttelepítési lépések](./media/migration-guide/steps-2.svg)
+
+Az áttelepítési útmutató ezen része részletes információkat nyújt a v2 és V3 API-k közötti különbségekről.
+
+## <a name="feature-gaps-between-v2-and-v3-apis"></a>Szolgáltatások közötti hézagok v2 és V3 API-k között
+
+A V3 API a következő funkciókkal rendelkezik a v2 API-val. A v2 API-k Media Encoder Standard néhány speciális funkciója jelenleg nem érhető el a v3-as verzióban:
+
+- Ha a bemenet nem rendelkezik hangtal, akkor egy csendes hangsávot szúr be, mert már nincs rá szükség a Azure Media Player.
+
+- Video Track beszúrása, ha a bemenet nem tartalmaz videót.
+
+- Az átkódolást használó élő események jelenleg nem támogatják az adatfolyam-beszúrási közép-és az ad-jelölő beszúrását az API-híváson keresztül.
+
+- Az Azure Media Premium Encoder nem lesz támogatott a v2-ben. Ha 8 bites HEVC-kódolást használ, használja az új HEVC-támogatást a standard kódolóban. 
+    - A hangcsatorna-hozzárendelés támogatását a standard kódolóhoz egészítették ki.  [A Media Services kódolással kapcsolatos dokumentációban](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json)lásd: hang.
+    - Ha a külső gyártótól származó licencelt termék (például a MXF vagy a ProRes) speciális funkcióit vagy kimeneti formátumait használta, használja az Azure partneri megoldást a webstreamből, amely a v2 nyugdíjazás időpontjában tranzakciós lesz. Használhat Imagine-kommunikációt vagy [Bitmovin](http://bitmovin.com)is.
+
+- A v2-es streaming végpont "rendelkezésre állási csoport" tulajdonsága már nem támogatott. A [magas rendelkezésre állású VOD](https://docs.microsoft.com/azure/media-services/latest/media-services-high-availability-encoding) -szállításról a V3 API-ban tekintse meg a minta projektet és útmutatást.
+
+- Media Services v3-as verzióban nem adható meg a FairPlay IV. Habár nem befolyásolja az ügyfelek számára a csomagolási és a licences kézbesítés Media Servicesét, ez akkor lehet probléma, ha egy külső gyártótól származó DRM-rendszer használatával továbbítja a FairPlay-licenceket (hibrid mód).
+
+- A rendszer eltávolította a (z) "rest" adategységek védelmére szolgáló ügyféloldali tároló-titkosítást a V3 API-ban, és a tárolási szolgáltatás titkosítása váltotta fel a nyugalmi állapotra. A V3 API-k továbbra is együttműködnek a meglévő tárolók titkosított eszközeivel, de nem teszik lehetővé újak létrehozását.
+
+## <a name="next-steps"></a>Következő lépések
+
+[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 165fb2937db5edfa4f51f62033afaf87cfff83ef
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9eb2b916bfe6c73a1535afb077b04fbb081dd5f1
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353102"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685720"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Egyedi kulcsokra vonatkozó korlátozások a Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,7 +22,7 @@ Az egyedi kulcsok adatintegritási réteget vesznek fel egy Azure Cosmos-tárol�
 
 Miután létrehozta az egyedi kulcs-házirenddel rendelkező tárolót, a rendszer az egyedi kulcs megkötése által megadott módon megakadályozza a meglévő elemek új vagy frissítésének létrehozását egy logikai partíción belül. Az egyedi kulccsal összevont partíciós kulcs garantálja a tároló hatókörén belüli elem egyediségét.
 
-Vegyünk például egy Azure Cosmos-tárolót e-mail-címmel, amely az egyedi kulcs megkötése, és `CompanyID` a partíciós kulcs. Ha a felhasználó e-mail-címét egyedi kulccsal konfigurálja, minden elemnek egyedi e-mail-címe van az adott területen belül `CompanyID` . Két elem nem hozható létre duplikált e-mail-címmel, és ugyanazzal a partíciós kulcs értékkel. Azure Cosmos DB SQL (Core) API-ban az elemek JSON-értékként vannak tárolva. Ezeket a JSON-értékeket megkülönbözteti a kis-és nagybetűk Ha egy tulajdonságot egyedi kulcsként választ, a tulajdonsághoz beillesztheti a kis-és nagybetűket megkülönböztető értékeket is. Ha például egy egyedi kulcs van definiálva a Name (név) tulajdonságban, a "Gaby" kifejezés eltér a "Gaby" típustól, és a tárolóba is beilleszthető.
+Vegyünk például egy Azure Cosmos-tárolót `Email address` az egyedi kulcs megkötésével és `CompanyID` a partíciós kulccsal. Ha a felhasználó e-mail-címét egyedi kulccsal konfigurálja, minden elemnek egyedi e-mail-címe van az adott területen belül `CompanyID` . Két elem nem hozható létre duplikált e-mail-címmel, és ugyanazzal a partíciós kulcs értékkel. Azure Cosmos DB SQL (Core) API-ban az elemek JSON-értékként vannak tárolva. Ezeket a JSON-értékeket megkülönbözteti a kis-és nagybetűk Ha egy tulajdonságot egyedi kulcsként választ, a tulajdonsághoz beillesztheti a kis-és nagybetűket megkülönböztető értékeket is. Ha például egy egyedi kulcs van definiálva a Name (név) tulajdonságban, a "Gaby" kifejezés eltér a "Gaby" típustól, és a tárolóba is beilleszthető.
 
 Ha ugyanazzal az e-mail-címmel szeretne elemeket létrehozni, de nem ugyanaz az utónév, a vezetéknév és az e-mail-cím, adjon hozzá további elérési utakat az egyedi kulcs házirendjéhez. Ahelyett, hogy csak az e-mail-cím alapján hozzon létre egyedi kulcsot, létrehozhat egy egyedi kulcsot is az utónév, a vezetéknév és az e-mail cím kombinációjával. Ezt a kulcsot összetett egyedi kulcsnak nevezzük. Ebben az esetben a három érték egy adott egyedi kombinációja `CompanyID` engedélyezett. 
 
@@ -55,7 +55,7 @@ Egyedi kulcsokat csak akkor adhat meg, ha létrehoz egy Azure Cosmos-tárolót. 
 
 * Az egyedi kulcsnév megkülönbözteti a kis-és nagybetűket. Vegyünk például egy olyan tárolót, amelyben az egyedi kulcs megszorítása van beállítva `/address/zipcode` . Ha az adatai egy nevű mezővel rendelkeznek `ZipCode` , Azure Cosmos db a "NULL" értéket szúrja be egyedi kulcsként, mert `zipcode` nem ugyanaz, mint `ZipCode` . Ennek az esetnek az eltérése miatt az irányítószámmal nem szúrható be minden más rekord, mert az ismétlődő "NULL" megsérti az egyedi kulcs megkötését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [logikai partíciókhoz](partitioning-overview.md)
 * Ismerje [meg, hogyan határozhat meg egyedi kulcsokat](how-to-define-unique-keys.md) tároló létrehozásakor
