@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: overview
 ms.date: 12/15/2020
 ms.author: banders
-ms.openlocfilehash: b79bde204d82b069b3314855a45a680b863c3f69
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 0e45e9741e92bb9e1fe23af79695cae06e64e871
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560491"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602051"
 ---
 # <a name="what-are-azure-reservations"></a>Mi az az Azure Reservations?
 
@@ -56,7 +56,7 @@ További információért lásd:  [Foglalás vásárlása](prepare-buy-reserva
 
 ## <a name="how-is-a-reservation-billed"></a>Hogy történik a foglalás számlázása? 
 
-A foglalás számlázása az előfizetésnél rögzített fizetési móddal történik. Ha elérhető, a foglalás költsége a pénzügyi keret egyenlegéből lesz levonva. Ha a pénzügyi keret egyenlege nem fedezi a foglalás költségét, akkor a többletköltségek ki lesznek Önnek számlázva. Ha használatalapú díjas, egyéni csomagban rendelkezik előfizetéssel, akkor a rendszer az előre fizetendő vásárlással azonnal megterheli a fiókjához tartozó hitelkártyát. A havi kifizetések a számlán jelennek még, és a rendszer havonta terheli meg a hitelkártyáját. Számlás fizetés esetén a díjak a következő számlán jelennek meg. 
+A foglalás számlázása az előfizetésnél rögzített fizetési móddal történik. Ha elérhető, a foglalás költsége az Azure-előrefizetés (korábbi nevén pénzügyi keret) egyenlegéből lesz levonva. Ha az Azure-előrefizetés egyenlege nem fedezi a foglalás költségét, akkor a többletköltségek ki lesznek Önnek számlázva. Ha használatalapú díjas, egyéni csomagban rendelkezik előfizetéssel, akkor a rendszer az előre fizetendő vásárlással azonnal megterheli a fiókjához tartozó hitelkártyát. A havi kifizetések a számlán jelennek még, és a rendszer havonta terheli meg a hitelkártyáját. Számlás fizetés esetén a díjak a következő számlán jelennek meg. 
 
 ## <a name="who-can-manage-a-reservation-by-default"></a>Alapértelmezés szerint kik kezelhetik a foglalásokat?
 

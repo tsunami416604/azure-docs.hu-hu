@@ -3,17 +3,17 @@ title: Azure nagyvállalati szerződések és a módosításaik
 description: Ez a cikk azt ismerteti, hogy milyen hatással vannak az Azure nagyvállalati szerződések és a módosításaik az Azure EA Portal használatára.
 author: bandersmsft
 ms.author: banders
-ms.date: 09/03/2020
+ms.date: 01/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 9e6750bd8404b4f9b910dda93859a0ca3fd268d4
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: c2c3636e98d67616826b03cca9657b806c5bd653
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442530"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598013"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure nagyvállalati szerződések és a módosításaik
 
@@ -21,7 +21,7 @@ Ez a cikk bemutatja, hogyan milyen hatással lehetnek az Azure nagyvállalati sz
 
 ## <a name="enrollment-provisioning-status"></a>Regisztráció kiépítési állapota
 
-Az új Azure-előrefizetés kezdő dátumát a regionális műveleti központ általi feldolgozás dátuma határozza meg. Mivel az Azure EA Portalon keresztül leadott Azure-előrefizetési megrendelések feldolgozása az UTC időzónában történik, némi késést tapasztalhat, ha az Azure-előrefizetés megrendelését egy másik régióban dolgozzák fel. A megrendelésen az érvényesség kezdő dátuma az Azure-előrefizetés kezdetét mutatja. Az érvényesség kezdő dátuma az az időpont, amikor az Azure-előrefizetés megjelenik az Azure EA Portalon.
+Az új Azure-előrefizetés (korábbi nevén pénzügyi keret) kezdő dátumát a regionális műveleti központ általi feldolgozás dátuma határozza meg. Mivel az Azure EA Portalon keresztül leadott Azure-előrefizetési megrendelések feldolgozása az UTC időzónában történik, némi késést tapasztalhat, ha az Azure-előrefizetés megrendelését egy másik régióban dolgozzák fel. A megrendelésen az érvényesség kezdő dátuma az Azure-előrefizetés kezdetét mutatja. Az érvényesség kezdő dátuma az az időpont, amikor az Azure-előrefizetés megjelenik az Azure EA Portalon.
 
 ## <a name="support-for-enterprise-customers"></a>Vállalati ügyfelek támogatása
 
@@ -60,7 +60,7 @@ A Microsoft semmilyen célból sem férhet hozzá a megadott árréshez és a ka
 
 ### <a name="how-the-calculation-works"></a>A számítás működése
 
-Az LSP megad egy százalékos arányt az EA Portalon.  A portálon található összes kereskedelmi információ az LSP által megadott százalékos arányban lesz megemelve. Példa:
+Az LSP megad egy százalékos arányt az EA Portalon.    A portálon található összes kereskedelmi információ az LSP által megadott százalékos arányban lesz megemelve. Példa:
 
 - Az ügyfél aláír egy 100 000 dollár értékű Azure-előrefizetési kerettel rendelkező EA-szerződést.
 - Az A szolgáltatás fogyasztási díja 10 dollár/óra.
@@ -101,13 +101,14 @@ Kérjük, tekintse át a kereskedelmi információkat – pénzügyi egyenleggel
 Ellenőrizze az árrést tartalmazó árat a _Használati adatok összegzése_ lapon az ügyfélnézetben szereplő előrefizetési időszakra vonatkozóan. A Microsoft díjszabása továbbra is elérhető lesz a partnernézetben. A nézetek között a jobb felső sarokban található „személyek” váltókapcsolóval válthat.
 
 1. Tekintse át az árakat az árlistán.
-1. A közzététel előtt elvégezheti a módosításokat, ha kiválasztja a **Szerkesztés** lehetőséget a _Használati adatok összegzése > Ügyfélnézet_ lapján.  
-  A szolgáltatási árak és az előrefizetési egyenlegek azonos százalékkal lesznek megemelve. Ha eltérő százalékos arány van megadva a pénzügyi egyenlegnél és a fogyasztási árnál, vagy eltérő százalékos arányok vonatkoznak a különböző szolgáltatásokra, ne használja ezt a funkciót.
+1. A közzététel előtt elvégezheti a módosításokat, ha kiválasztja a **Szerkesztés** lehetőséget a _Használati adatok összegzése > Ügyfélnézet_ lapján. 
+   
+A szolgáltatási árak és az előrefizetési egyenlegek azonos százalékkal lesznek megemelve. Ha eltérő százalékos arány van megadva a pénzügyi egyenlegnél és a fogyasztási árnál, vagy eltérő százalékos arányok vonatkoznak a különböző szolgáltatásokra, ne használja ezt a funkciót.
 
 **Harmadik lépés: Közzététel**
 
 A díjszabás áttekintése és ellenőrzése után kattintson **Közzététel** elemre.
-  
+  
 Az árréssel ellátott díjszabás a Közzététel lehetőség kiválasztása után azonnal elérhető lesz a vállalati rendszergazdák számára. Az árrést nem lehet szerkeszteni. Ha módosítani kívánja, le kell tiltania az árrést, és az első lépéstől kell kezdenie a folyamatot.
 
 ### <a name="which-enrollments-have-a-markup-enabled"></a>Mely regisztrációk esetén engedélyezett az árrés használata?

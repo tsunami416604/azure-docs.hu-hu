@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: b7d7380114046fbeaaf4b6eb2660997d64168715
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 390a8b421a7b34391bde689e4b968fa98cdbaf76
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91368566"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599171"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>Azure Databricks-költségek optimalizálása előzetes vásárlással
 
@@ -48,7 +48,7 @@ Databricks-csomagokat az [Azure Portalon](https://portal.azure.com/#blade/Micros
 **A vásárláshoz:**
 
 1. Nyissa meg az [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D).
-1. Válasszon egy előfizetést. Az **Előfizetés** lista használatával válassza ki a lefoglalt kapacitás kifizetéséhez használt előfizetést. Az előfizetés fizetési módjának használatával megtörténik a lefoglalt kapacitás után fizetett előzetes költségek levonása. A díjak a regisztrációhoz tartozó pénzügyi keretek egyenlegeiből lesznek levonva, illetve kerettúllépésként lesznek számlázva.
+1. Válasszon egy előfizetést. Az **Előfizetés** lista használatával válassza ki a lefoglalt kapacitás kifizetéséhez használt előfizetést. Az előfizetés fizetési módjának használatával megtörténik a lefoglalt kapacitás után fizetett előzetes költségek levonása. A díjak a regisztrációhoz tartozó Azure-előrefizetés (korábbi nevén pénzügyi keret) egyenlegéből lesznek levonva, illetve túlhasználatként lesznek számlázva.
 1. Válassza ki a hatókört. A **Hatókör** lista használatával válassza ki az előfizetés hatókörét.
     - **Egyetlen erőforráscsoport hatókör** – A foglalási kedvezményt csak a kiválasztott erőforráscsoportban található egyező erőforrásokra alkalmazza.
     - **Egy előfizetésre kiterjedő hatókör** – A foglalási kedvezményt a kiválasztott előfizetésben található, egyező erőforrásokra alkalmazza.

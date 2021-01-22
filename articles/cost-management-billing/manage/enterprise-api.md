@@ -8,19 +8,19 @@ ms.subservice: enterprise
 ms.topic: reference
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: b78b046e2991fa4ebfb575e4f6a1cc900df0d298
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a1c420eed89b7b45ea6c50345737b8615f39ad8c
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686904"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602078"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>A nagyvállalati ügyfeleknek elérhető jelentéskészítési API-k áttekintése
 
 > [!Note]
 > A Microsoft már nem frissíti az Azure Billing – Nagyvállalati jelentéskészítő API-kat. Az [Azure használati API-kat](/rest/api/consumption) használja helyettük.
 
-A jelentéskészítési API-kkal a nagyvállalati Azure-ügyfelek programozott módon kérhetnek le használati és számlázási adatokat az előnyben részesített adatelemző eszközökbe. A nagyvállalati ügyfelek aláírtak egy [Nagyvállalati Szerződést (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) az Azure-ral, amelyben egyeztetett pénzügyi kötelezettségeket állapítanak meg annak érdekében, hogy az Azure-erőforrások egyéni díjszabására legyenek jogosultak.
+A jelentéskészítési API-kkal a nagyvállalati Azure-ügyfelek programozott módon kérhetnek le használati és számlázási adatokat az előnyben részesített adatelemző eszközökbe. A nagyvállalati ügyfelek aláírtak egy [Nagyvállalati Szerződést (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) az Azure-ral, amelyben egyeztetett Azure-előrefizetést (korábbi nevén pénzügyi keret) állapítanak meg annak érdekében, hogy az Azure-erőforrások egyéni díjszabására legyenek jogosultak.
 
 Az API-khoz szükséges minden dátum- és időparamétert az Egyezményes világidő (UTC) szerinti kombinált értékként kell megjeleníteni. Az API-k által visszaadott értékek UTC-formátumban jelennek meg.
 

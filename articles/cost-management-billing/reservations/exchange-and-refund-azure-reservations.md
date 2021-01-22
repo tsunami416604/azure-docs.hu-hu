@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 12/15/2020
 ms.author: banders
-ms.openlocfilehash: b0f17149eb646b6108dc6a81922e6e5b00f143d6
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 045ab35a35aa4caefb1e1bcbbf7bf78b726c09f7
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560542"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601459"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai
 
@@ -47,7 +47,7 @@ Először a Microsoft megszakítja a meglévő foglalást, és visszatéríti az
 
 ### <a name="enterprise-agreement-customers"></a>Nagyvállalati Szerződéssel rendelkező ügyfelek
 
-A pénz hozzáadódik a csereprogramok és visszatérítések pénzügyi keretéhez, ha az eredeti vásárlás is ilyen módon történt. Ha a foglalást használó pénzügyi keret időtartama már nem aktív, akkor a kredit hozzáadódik a jelenlegi Nagyvállalati Szerződéshez tartozó pénzügyi keret időtartamához. A jóváírás a visszatérítés napjától kezdve 90 napig érvényes. A fel nem használt jóváírás 90 nap után lejár.
+A pénz hozzáadódik a csereprogramok és visszatérítések Azure-előrefizetéséhez (korábbi nevén pénzügyi keret), ha az eredeti vásárlás is ilyen módon történt. Ha a foglalást használó Azure-előrefizetés időtartama már nem aktív, akkor a kredit hozzáadódik a jelenlegi Nagyvállalati Szerződéshez tartozó Azure-előrefizetés időtartamához. A jóváírás a visszatérítés napjától kezdve 90 napig érvényes. A fel nem használt jóváírás 90 nap után lejár.
 
 Ha az eredeti vásárlás túlhasználatként történt, a Microsoft ismét megnyitja és módosítja az eredeti, a foglalás vásárlásáról készült számlát és az összes későbbi számlát. A Microsoft kiállít egy jóváírási emlékeztetőt a visszatérítésekről.
 

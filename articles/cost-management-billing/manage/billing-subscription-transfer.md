@@ -8,15 +8,15 @@ tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/11/2020
+ms.date: 01/06/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: d37225f988cc906bdd92467afcf3f286220eebda
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: ae588708a41c1259628b726a3a471034dba7d131
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027866"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601534"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure-előfizetés számlázási tulajdonjogának átadása másik fióknak
 
@@ -72,6 +72,18 @@ Ha elfogadta egy Azure-előfizetés számlázási tulajdonjogát, javasoljuk, ho
    1. A Storage-hoz hasonló szolgáltatások hozzáférési kulcsai. További információkat az [Azure Storage-fiókokkal kapcsolatos tudnivalókat](../../storage/common/storage-account-create.md) ismertető témakörben olvashat.
    1. Az olyan szolgáltatások távelérési hitelesítő adatai, mint az Azure-beli virtuális gépek.
 1. Ha egy partnerrel közösen dolgozik, fontolja meg a partnerazonosító frissítését az előfizetésen. A partnerazonosítót az [Azure Portalon](https://portal.azure.com) frissítheti. További információért lásd a [partnerazonosítók az Azure-fiókokhoz csatolását](link-partner-id.md) ismertető cikket.
+
+## <a name="cancel-a-transfer-request"></a>Átadási kérelem megszakítása
+
+Egyszerre csak egy átadási kérelem aktív. Az átadási kérelem 15 napig érvényes. 15 nap után az átadási kérelem lejár.
+
+Átadási kérelem törlése:
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Navigáljon az **Előfizetések** lapra, > válassza ki az előfizetést, amelyhez az átadási kérelmet küldte, > majd válassza a **Számlázási tulajdonjog átadása** lehetőséget.
+1. Az oldal alján válassza az **Átadási kérelem törlése** elemet.
+
+:::image type="content" source="./media/billing-subscription-transfer/transfer-billing-owership-cancel-request.png" alt-text="A Számlázási tulajdonjog átadása ablakot bemutató példa az Átadási kérelem törlése lehetőséggel" lightbox="./media/billing-subscription-transfer/transfer-billing-owership-cancel-request.png" :::
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

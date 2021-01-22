@@ -3,18 +3,18 @@ title: Azure nagyvállalati regisztrációs számlák
 description: Ez a cikk az Azure Nagyvállalati számlák kezelését ismerteti.
 author: bandersmsft
 ms.author: banders
-ms.date: 12/09/2020
+ms.date: 01/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: c64127f7ebbb416d9dfebb5e417cd27d51697665
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 90ae9bdcee5f5f4c4281f2c3f931389b2ebf9486
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030722"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598066"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure nagyvállalati regisztrációs számlák
 
@@ -238,7 +238,7 @@ Az egyes szolgáltatások alapvető nyilvános díjszabási információit, mér
 
 ### <a name="enterprise-agreement-units-of-measure"></a>Nagyvállalati szerződések mértékegységei
 
-A nagyvállalati szerződések mértékegységei gyakran eltérnek a többi programban, például a Microsoft Online Services szerződés programban (MOSA) látottaktól. Ez az eltérés azt jelenti, hogy néhány szolgáltatás esetében a rendszer összesíti a mértékegységeket egy normalizált díjszabás biztosítása érdekében. Az Azure Enterprise Portal Használati adatok összegzése nézetében látható mértékegység mindig a nagyvállalati mértékegység. Az egyes szolgáltatásokhoz tartozó aktuális mértékegységek és átváltások teljes listáját a [Felhasználóbarát szolgáltatásneveket](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) tartalmazó Excel-fájlban találja.
+A nagyvállalati szerződések mértékegységei gyakran eltérnek a többi programban, például a Microsoft Online Services szerződés programban (MOSA) látottaktól. Ez az eltérés azt jelenti, hogy néhány szolgáltatás esetében a rendszer összesíti a mértékegységeket egy normalizált díjszabás biztosítása érdekében. Az Azure Enterprise Portal Használati adatok összegzése nézetében látható mértékegység mindig a nagyvállalati mértékegység. Az egyes szolgáltatásokhoz tartozó aktuális mértékegységek és átváltások teljes listájáért küldjön [támogatási kérést](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ### <a name="conversion-between-usage-detail-report-and-the-usage-summary-page"></a>Konverzió a használati adatokról szóló jelentés és a használati adatokat összegző oldal között
 
@@ -324,13 +324,6 @@ Ha az értékesítési partner váltása (COCP) a hónap közepén történik, a
 A számlák kiküldése a számlázási időszak vége utáni hónapban történik. Ha a számlázás havonta történik, a szeptemberi használathoz kapcsolódó számlát októberben küldjük el mindkét partnerre vonatkozóan. Ha a számlázási ciklus negyedéves vagy éves, az ügyfél kap egy számlát a korábbi partnerhez kapcsolódó használati időszakról, valamint egyet az új partnerhez kapcsolódó fennmaradó időszakról a számlázási gyakoriságtól függően.
 
 ## <a name="next-steps"></a>További lépések
-
-- Az alábbi Excel-fájlok információkat szolgáltatnak az Azure-szolgáltatásokról, és havonta kétszer frissülnek, minden hónap 6. és 20. napján.
-
-   | Cím | Leírás | Fájlnév |
-   | --- | --- | --- |
-   | [Felhasználóbarát szolgáltatásnevek](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) | Felsorolja az összes aktív szolgáltatást, és tartalmazza az alábbiakat: <br>  <ul><li>szolgáltatáskategória</li>   <li>felhasználóbarát szolgáltatásnév</li>   <li>Előrefizetési név és cikkszám</li> <li>felhasználási név és cikkszám</li>   <li>mértékegységek</li>   <li>jelentett használat és a megjelenített Enterprise Portal-használat közötti átváltási tényezők</li></ul> | Friendly\_Service\_Names.xlsx |
-   | [Szolgáltatásletöltési mezők](https://azurepricing.blob.core.windows.net/supplemental/Service_Download_Fields.xlsx) | Ez a táblázat felsorolja a használati adatokat tartalmazó letöltött jelentésben szereplő, szolgáltatással kapcsolatos mezők összes lehetséges kombinációját. | Service\_Download\_Fields.xlsx |
 
 - A számla és a díjak értelmezésével kapcsolatos további információkért lásd: [Az Azure Nagyvállalati Szerződés számlájának ismertetése](../understand/review-enterprise-agreement-bill.md).
 - Az Azure Enterprise Portal használatának kezdő lépéseit az [Ismerkedés az Azure EA Portallal](ea-portal-get-started.md) című rész írja le.

@@ -9,18 +9,18 @@ ms.subservice: enterprise
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: d707051e20b4ce9d1289557aec6f8256c2e6bfba
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 643aac7927cc7b14693387fbb5765bdcd0214dc2
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150081"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598244"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Az Azure Nagyvállalati Szerződés számlájának ismertetése
 
 A Nagyvállalati Szerződéssel rendelkező Azure-ügyfelek akkor kapnak számlát, amikor túllépik a vállalat kreditkeretét, vagy olyan szolgáltatást használnak, amelyet nem fedez a kredit.
 
-A szervezet kreditjébe beleszámít a pénzügyi kötelezettségvállalás is. A pénzügyi Kötelezettségvállalás az az összeg, amelyet a szervezet előre befizet az Azure-szolgáltatások használatára. Amennyiben pénzügyi kötelezettségvállalási befizetéseket kíván hozzáadni a Nagyvállalati Szerződéséhez, lépjen kapcsolatba a Microsoft ügyfélkapcsolati munkatársával vagy viszonteladójával.
+A szervezet kreditjébe beleszámít az Azure-előrefizetés (korábbi nevén pénzügyi keret) is. Az Azure-előrefizetés az az összeg, amelyet a szervezet előre befizet az Azure-szolgáltatások használatára. Amennyiben Azure-előrefizetési befizetéseket kíván hozzáadni a Nagyvállalati Szerződéséhez, lépjen kapcsolatba a Microsoft ügyfélkapcsolati munkatársával vagy viszonteladójával.
 
 Ez az oktatóanyag csak azokra az Azure-ügyfelekre vonatkozik, akik Azure Nagyvállalati Szerződéssel rendelkeznek.
 
@@ -121,7 +121,7 @@ Az alábbi szakasz kizárólag az Ausztráliában, Japánban vagy Szingapúrban 
 
 Hasonlítsa össze az Azure Marketplace-re vonatkozó teljes összeget a piactéri számlájával az Enterprise Portal **Jelentések** > **Használat összefoglalása** lapján. A piactéri számlán csak az Azure Marketplace-beli vásárlások és használat szerepel. A **Használati összefoglalásának** összegei már tartalmazzák az adót, amelyet a közzétevő határoz meg.
 
-Jelentkezzen be az [Enterprise Portalra](https://ea.azure.com), majd válassza a **Jelentések**lehetőséget. A képernyő jobb felső sarkában módosítsa a nézetet **M**-ről **C**-re, majd válassza ki a számlán szereplő időszakot.  
+Jelentkezzen be az [Enterprise Portalra](https://ea.azure.com), majd válassza a **Jelentések** lehetőséget. A képernyő jobb felső sarkában módosítsa a nézetet **M**-ről **C**-re, majd válassza ki a számlán szereplő időszakot.  
 
 ![Képernyőkép az M + C lehetőségről a Használat összefoglalása lapon.](./media/review-enterprise-agreement-bill/ea-portal-usage-sumary-cm-option.png)  
 
@@ -155,7 +155,7 @@ Az árképzés eltéréseinek lehetséges okai:
 
 ## <a name="request-detailed-usage-information"></a>Részletes használati adatok kérése
 
-A vállalati rendszergazdák az Azure Enterprise Portalon megtekinthetik a használati adataik összegzését, a felhasznált pénzügyi keretet, valamint a többlethasználattal kapcsolatos díjakat. A díjak minden fióknál és előfizetésnél az összegzés szintjén jelennek meg.
+A vállalati rendszergazdák az Azure Enterprise portálon megtekinthetik a használati adataik összegzését, a felhasznált Azure-előrefizetési keretet, valamint a többlethasználattal kapcsolatos díjakat. A díjak minden fióknál és előfizetésnél az összegzés szintjén jelennek meg.
 
 Az adott fiókok részletes használatának megtekintéséhez lépjen a **Jelentések** > **Használati adatok letöltése** elemre, és töltse le a Használati adatok jelentést.
 
@@ -166,7 +166,7 @@ Közvetett regisztrációk esetén a partnerének engedélyeznie kell az árrés
 
 ## <a name="reports"></a>Jelentések
 
-A vállalati rendszergazdák az Azure Enterprise Portalon megtekinthetik a használati adataik összegzését, a felhasznált pénzügyi keretet, valamint a többlethasználattal kapcsolatos díjakat. A díjak minden fióknál és előfizetésnél az összegzés szintjén jelennek meg.
+A vállalati rendszergazdák az Azure Enterprise portálon megtekinthetik a használati adataik összegzését, a felhasznált Azure-előrefizetési keretet, valamint a többlethasználattal kapcsolatos díjakat. A díjak minden fióknál és előfizetésnél az összegzés szintjén jelennek meg.
 
 ### <a name="azure-enterprise-reports"></a>Azure Enterprise-jelentések
 

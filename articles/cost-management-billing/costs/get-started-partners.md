@@ -3,18 +3,18 @@ title: Ismerkedés a partnerek számára készült Azure Cost Management szolgá
 description: Ez a cikk bemutatja, hogyan használják a partnerek az Azure Cost Management funkcióit, és hogyan teszik lehetővé a Cost Managementhez való hozzáférést az ügyfeleik számára.
 author: bandersmsft
 ms.author: banders
-ms.date: 11/16/2020
+ms.date: 01/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: cd3ca4d3ddf73469cd1f1fc065eccb369cf765af
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 8a04cb2c590bc4f0104a93ac7c7c2cf7b71a4662
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905676"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602179"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Ismerkedés a partnerek számára készült Azure Cost Management szolgáltatással
 
@@ -71,9 +71,9 @@ Miután előkészítette az ügyfeleit a Microsoft Ügyfélszerződésre, a köv
 
 A számlázási fiók hatókörével megtekintheti az összes ügyfél és számlázási profil adók levonása előtti költségeit. A számlaköltségek csak az ügyfél használatalapú termékeire vonatkozóan jelennek meg a Microsoft Ügyfélszerződés esetében. A vásárlásalapú termékekre vonatkozó számlaköltségek azonban a Microsoft Ügyfélszerződés és a CSP-ajánlat esetében is megjelennek az ügyfelek számára. A költségek a hatókörön belüli megtekintésének alapértelmezett pénzneme jelenleg az amerikai dollár. A hatókörhöz beállított költségvetések szintén amerikai dollárban jelennek meg.
 
-A különböző ügyfelek által számlázott pénznemektől függetlenül a partnerek a Számlázási fiók hatókört használatakor amerikai dollárban adják meg a költségvetéseket, illetve kezelik a költségeket az ügyfelek, előfizetések, erőforrások és erőforráscsoportok tekintetében.
+A különböző számlázott pénznemektől függetlenül a partnerek a Számlázási fiók hatókör használatakor amerikai dollárban adják meg a költségvetéseket, illetve kezelik a költségeket az ügyfelek, előfizetések, erőforrások és erőforráscsoportok tekintetében.
 
-A partnerek emellett a költségelemzés nézetben egy adott számlázási pénznemben is szűrhetik a költségeket az ügyfeleikre vonatkozóan. Válassza ki a **Tényleges költségek** listáját a költségek a támogatott ügyfélszámlázási pénznemekben való megtekintéséhez.
+A partnerek emellett a költségelemzés nézetben egy adott számlázási pénznemben is szűrhetik a költségeket az ügyfeleikre vonatkozóan. Válassza ki a **Tényleges költségek** listáját a költségek támogatott számlázási pénznemekben való megtekintéséhez.
 
 ![A Tényleges költségekhez választható pénznemeket szemléltető példa](./media/get-started-partners/actual-cost-selector.png)
 
@@ -83,7 +83,7 @@ Az [amortizált költségek nézetének](quick-acm-cost-analysis.md#customize-co
 
 A számlázási profil hatókörével megtekintheti az összes ügyfél számláin szereplő összes termékére és előfizetésére vonatkozó, adók levonása előtti költségeket a számlázási pénznemben. Egy adott számla számlázási profiljában lévő költségeket az **InvoiceID** szűrő használatával szűrheti. A szűrő egy adott számla felhasználási és termékvásárlási költségeit jeleníti meg. Emellett egy adott ügyfél számlán szereplő költségeit is szűrheti az adók levonása előtti költségek megtekintéséhez.
 
-Miután előkészítette az ügyfeleket egy Microsoft Ügyfélszerződésre, egy olyan számlát kap, amely tartalmazza az ügyfelek a Microsoft Ügyfélszerződés szerinti összes termékének (felhasználás, vásárlások és jogosultságok) díját. Ha a számlázás ugyanabban a pénznemben történik, akkor ezek a számlák tartalmazzák a jogosultságok és a megvásárolt termékek, például az SaaS vagy az Azure Marketplace díjait, illetve az olyan ügyfelek foglalásait is, akik még mindig szerepelnek a CSP-ajánlatban.
+Miután előkészítette az ügyfeleket egy Microsoft Ügyfélszerződésre, egy olyan számlát kap, amely tartalmazza az ügyfelek a Microsoft Ügyfélszerződés szerinti összes termékének (felhasználás, vásárlások és jogosultságok) díját. Ha a számlázás ugyanabban a pénznemben történik, akkor ezek a számlák tartalmazzák a jogosultságok és a megvásárolt termékek, például az SaaS vagy az Azure Marketplace díjait, illetve az olyan ügyfelek foglalásait is, akik még mindig a klasszikus CSP-ajánlatot használják, nem pedig az Azure-csomagot.
 
 Annak érdekében, hogy megkönnyítse a díjaknak az ügyfélszámlával való összevetését, a számlázási profil hatókör lehetővé teszi az ügyfelei számára kiszámlázott összes felhalmozott költség megtekintését. A számlához hasonlóan a hatókör megjeleníti az új Microsoft Ügyfélszerződéshez tartozó minden ügyfél költségeit. A hatókörben megtekinthető továbbá azon ügyféljogosultsági termékek minden díja, amelyek továbbra is az aktuális CSP-ajánlat részei.
 
@@ -91,7 +91,7 @@ A számlázási profil és a számlázási fiók hatóköre az egyetlen olyan al
 
 A számlázási profilok határozzák meg azokat az előfizetéseket, amelyek szerepelnek a számlán. A számlázási profilok funkcionálisan egyenértékűek a nagyvállalati szerződéses regisztrációval. A számlázási profil az a hatókör, ahol a számlák létrejönnek.
 
-Az ügyfél számlázási pénzneme a költségek a számlázási profil hatókörében való megtekintésekor jelenleg az alapértelmezett pénznem. A számlázási profil hatókörében beállított költségvetések a számlázási pénznemben vannak megadva.
+A számlázási pénznem jelenleg az alapértelmezett pénznem a költségeknek a számlázási profil hatókörében való megtekintésekor. A számlázási profil hatókörében beállított költségvetések a számlázási pénznemben vannak megadva.
 
 A partnerek felhasználhatják a hatókört a számlák egyeztetéséhez. Továbbá a hatókör segítségével határozhatják meg a költségvetéseket a számlázási pénznemben a következőkhöz:
 
@@ -220,7 +220,7 @@ A következő adatmezők találhatók a használatrészletező fájlokban és a 
 | Mennyiség | Megvásárolt vagy felhasznált mért mennyiség. A fogyasztásmérő számlázási időszak során felhasznált mennyisége. | Egységek száma. Az egyeztetés során ellenőrizze, hogy megfelel-e a számlázási rendszerében található információknak. |
 | unitOfMeasure | A szolgáltatás számlázási egységét jelöli. Például GB és óra. | A szolgáltatás számlázási egységét jelöli. Például GB, óra, és 10 000 s. |
 | pricingCurrency | Az egységárat meghatározó pénznem. | Az árlistán szereplő pénznem.|
-| billingCurrency | A számlázott költséget meghatározó pénznem. | Az ügyfél földrajzi régiójához tartozó pénznem. |
+| billingCurrency | A számlázott költséget meghatározó pénznem. | A számlán számlázott pénznemként meghatározott pénznem. |
 | chargeType | Meghatározza a díj típusát, amelyet a költség az Azure Cost Managementben képvisel (például vásárlás vagy visszatérítés). | A díj vagy módosítás típusa. Az aktuális tevékenységhez nem érhető el. |
 | costinBillingCurrency | ExtendedCost vagy adók levonása előtti kevert költség a számlázott pénznemben. | N/A |
 | costinPricingCurrency | ExtendedCost vagy adók levonása előtti kevert költség az árképzési pénznemben, az árakkal való egyeztetéshez. | N/A |

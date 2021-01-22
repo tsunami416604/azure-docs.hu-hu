@@ -5,16 +5,16 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 01/13/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 0cdd25b2937dd1fb2cc70ef7b1c5a9e9ddaef375
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: bd155ea3c98231cf20fa7c62325e3c2ecfb89920
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780603"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185920"
 ---
 # <a name="programmatically-create-azure-enterprise-agreement-subscriptions-with-the-latest-apis"></a>Azure Nagyvállalati Szerződéshez tartozó előfizetések létrehozása programozott módon a legújabb API-kkal
 
@@ -31,7 +31,9 @@ Ha programozott módon hoz létre Azure-előfizetést, azt az a megállapodás s
 Előfizetés létrehozásához tulajdonosi szerepkörrel kell rendelkeznie egy regisztrációs fiókban. A szerepkört kétféleképpen kaphatja meg:
 
 * A regisztráció vállalati rendszergazdája [megteszi Önt fióktulajdonosnak](https://ea.azure.com/helpdocs/addNewAccount) (ehhez bejelentkezés szükséges), amely eredményeként Ön a regisztrációs fiók tulajdonosává válik.
-* A regisztrációs fiók meglévő tulajdonosa [hozzáférést biztosít Önnek](grant-access-to-create-subscription.md). Hasonlóképpen, ha szolgáltatásnevet szeretne használni egy EA-előfizetés létrehozásához, [lehetővé kell tennie a szolgáltatásnév számára, hogy előfizetéseket hozzon létre](grant-access-to-create-subscription.md).
+* A regisztrációs fiók meglévő tulajdonosa [hozzáférést biztosít Önnek](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). Hasonlóképpen, ha szolgáltatásnevet szeretne használni egy EA-előfizetés létrehozásához, [lehetővé kell tennie a szolgáltatásnév számára, hogy előfizetéseket hozzon létre](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). 
+  > [!NOTE]
+  > Győződjön meg róla, hogy a megfelelő API-verziót használja, amikor tulajdonosi engedélyeket ad a regisztrációs fióknak. A jelen cikk és a benne dokumentált API-k esetében használja a [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) verziójú API-t. Ha az újabb API-k használatára kíván átállni, akkor a [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) verzió használatával újra meg kell adnia a tulajdonosi engedélyt. A [2015-07-01-es verzióval](grant-access-to-create-subscription.md) végzett korábbi konfiguráció nem lesz automatikusan konvertálva az újabb API-kkal való használatra.
 
 ## <a name="find-accounts-you-have-access-to"></a>Azon fiókok megkeresése, amelyekhez hozzáféréssel rendelkezik
 

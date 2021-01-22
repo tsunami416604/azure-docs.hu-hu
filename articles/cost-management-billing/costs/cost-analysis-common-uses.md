@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: c03bf5e52ae7f6b259c7b744e6033d760af23dd0
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 72b371fd1184c9c9e69593c5ad7e57310abf1de2
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683674"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600038"
 ---
 # <a name="common-cost-analysis-uses"></a>Gyakran használt költségelemzési megoldások
 
@@ -198,7 +198,7 @@ Csak az aktív regisztrációhoz tartozó költségek láthatók. Ha egy (inakt�
 
 
 1. Az Azure Portalon lépjen a **Költségkezelés + Számlázás** > **Áttekintése** területre.
-1. Kattintson az aktuális hónaphoz tartozó **Lebontás** elemre, és tekintse meg a pénzügyi kerete részleteit.  
+1. Kattintson az aktuális hónaphoz tartozó **Lebontás** elemre, és tekintse meg az Azure-előrefizetés (korábbi nevén pénzügyi keret) részleteit.  
     [![EA-költségek áttekintése – a költséglebontás összefoglalása](./media/cost-analysis-common-uses/breakdown1.png)](./media/cost-analysis-common-uses/breakdown1.png#lightbox)
 1.  Kattintson a **Használat és díjak** lapra, és tekintse meg az előző hónap költséglebontását a kiválasztott időtartományra vonatkozóan.  
     [![Használat és díjak lap](./media/cost-analysis-common-uses/breakdown2.png)](./media/cost-analysis-common-uses/breakdown2.png#lightbox)

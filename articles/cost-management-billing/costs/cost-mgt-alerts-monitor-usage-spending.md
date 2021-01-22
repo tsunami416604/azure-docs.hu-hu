@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: c59bd7f9bc8c5049572afdf93343222b30c0007b
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: d1546ef92d923b9d72c4aca0ddf61d2b93646656
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131904"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602337"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>Költségriasztások használata a használat és a kiadások monitorozásához
 
@@ -29,7 +29,7 @@ A Budget API használatával más nyelven küldheti el az e-mailes riasztásokat
 
 ## <a name="credit-alerts"></a>Kreditriasztások
 
-A kreditriasztások értesítik, ha felhasználta az Azure-kredit pénzügyi keretét. A pénzügyi keretek Nagyvállalati Szerződéssel rendelkező szervezetek számára elérhetők. A jóváírási riasztások automatikusan létrejönnek az Azure-kreditek egyenlegének 90%-os és 100%-os felhasználásakor. Amint létrejön egy riasztás, megjelenik a költségriasztásokban és az e-mailekben, amelyeket a fiók tulajdonosai kapnak.
+A kreditriasztások értesítik, ha felhasználta az Azure-előrefizetését (korábbi nevén pénzügyi keret). Az Azure-előrefizetés Nagyvállalati Szerződéssel rendelkező szervezetek számára érhető el. A jóváírási riasztások automatikusan létrejönnek az Azure-előrefizetés kreditegyenlegének 90%-os és 100%-os felhasználásakor. Amint létrejön egy riasztás, megjelenik a költségriasztásokban és az e-mailekben, amelyeket a fiók tulajdonosai kapnak.
 
 ## <a name="department-spending-quota-alerts"></a>Részleg költségkvótáinak riasztásai
 

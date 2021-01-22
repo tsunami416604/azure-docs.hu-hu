@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: reference
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 8cef36cf26231758eb839379d0c020484cbe09fb
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: e0a7553269e1223a5e744db967d65814877878ab
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132601"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598275"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>Automatizálási forgatókönyvek a számlázáshoz és költségkezeléshez
 
@@ -103,7 +103,7 @@ A következő API-k csak nagyvállalatok számára érhetők el:
 ### <a name="whats-the-difference-between-the-enterprise-reporting-apis-and-the-consumption-apis-when-should-i-use-each"></a>Mi a különbség a nagyvállalati jelentéskészítő API-k és a használati API-k között? Mikor érdemes ezeket használni?
 Ezek az API-k hasonló funkciókkal rendelkeznek, és ugyanazokat a széles körű kérdéseket válaszolhatják meg a számlázással és a költségkezeléssel kapcsolatban. De különböző közönségeket céloznak meg:
 
-- A nagyvállalati jelentéskészítő API-k olyan ügyfelek számára érhetők el, akik aláírtak egy Nagyvállalati Szerződést a Microsofttal, amely hozzáférést biztosít számukra az egyeztetett pénzügyi kötelezettségvállalásokhoz és az egyéni díjszabáshoz. Az API-khoz szükség van egy kulcsra, amelyet az [Enterprise Portalról](https://ea.azure.com) érhet el. Ezen API-k leírásáért lásd [a nagyvállalati ügyfeleknek készült jelentéskészítő API-k áttekintését](enterprise-api.md).
+- A nagyvállalati jelentéskészítő API-k olyan ügyfelek számára érhetők el, akik aláírtak egy Nagyvállalati Szerződést a Microsofttal, amely hozzáférést biztosít számukra az egyeztetett Azure-előrefizetéshez (korábbi nevén pénzügyi keret) és az egyéni díjszabáshoz. Az API-khoz szükség van egy kulcsra, amelyet az [Enterprise Portalról](https://ea.azure.com) érhet el. Ezen API-k leírásáért lásd [a nagyvállalati ügyfeleknek készült jelentéskészítő API-k áttekintését](enterprise-api.md).
 
 - A használati API-k minden ügyfél számára elérhetők, néhány kivétellel. További információt az [Azure-használati API-k áttekintésében](consumption-api-overview.md) és az [Azure-használati API-k referenciái](/rest/api/consumption/) között talál. A megadott API-kat a legújabb fejlesztési forgatókönyvekhez ajánljuk.
 
@@ -112,7 +112,7 @@ Ezek az API-k alapvetően eltérő adatokat biztosítanak:
 
 - A [Usage Details API](/rest/api/consumption/usagedetails) Azure-használati és -költségadatokat nyújt mérőpéldányonként. A megadott adatok már áthaladtak az Azure-beli költségmérő rendszeren, és más lehetséges módosításokkal együtt lettek alkalmazva rájuk a költségek:
 
-   - Az előre kifizetett pénzügyi kötelezettségek használata miatt szükséges módosítások
+   - Az előre kifizetett Azure-előrefizetés használata miatt szükséges módosítások
    - Az Azure által felfedezett használati eltérések miatt szükséges módosítások
 
 - A [Usage API](/previous-versions/azure/reference/mt219003(v=azure.100)) nyers Azure-használati adatokat nyújt, mielőtt azok áthaladnának az Azure-beli költségmérési rendszeren. Előfordulhat, hogy ezek az adatok nem feleltethetők meg az Azure költségmérő rendszerén áthaladt használati adatokkal vagy költségmennyiségekkel.

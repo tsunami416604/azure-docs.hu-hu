@@ -4,20 +4,23 @@ description: Megismerheti, hogyan biztosíthatja az Azure Enterprise-előfizeté
 author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
-ms.reviewer: amberb
+ms.reviewer: andalmia
 ms.topic: conceptual
-ms.date: 08/26/2020
+ms.date: 01/13/2021
 ms.author: banders
-ms.openlocfilehash: c13670df26e5d0f7774b5a2aac81f656de94c960
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 039e728f6518d21ddfb9c7c359a6cf2ec743f232
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844710"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185104"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Hozzáférés biztosítása Azure Enterprise-előfizetés létrehozáshoz (előzetes verzió)
 
 [Nagyvállalati Szerződéssel (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) rendelkező Azure-ügyfeleként engedélyt adhat egy másik felhasználónak vagy szolgáltatásnévnek olyan előfizetések létrehozására, amelyek az Ön fiókjához lesznek kiszámlázva. Ez a cikk bemutatja, hogyan oszthatja meg az előfizetések létrehozásának képességét az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) segítségével, illetve hogyan naplózhatja az előfizetések létrehozását. Fiók megosztásához tulajdonosi szerepkörrel kell rendelkeznie az adott fiókra vonatkozóan.
+
+> [!NOTE]
+> Ez az API csak az [előzetes verziójú API-kkal működik előfizetés létrehozásához](programmatically-create-subscription-preview.md). Ha az [általánosan elérhető (GA) verziót](programmatically-create-subscription-enterprise-agreement.md) szeretné használni, használja a [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) néven elérhető legfrissebb API-verziót. Ha az újabb API-k használatára kíván átállni, akkor a [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) verzió használatával újra meg kell adnia a tulajdonosi engedélyeket. A következő API-kat használó korábbi konfiguráció nem lesz automatikusan konvertálva az újabb API-kkal való használatra.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
