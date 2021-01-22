@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 4d6a7150c854ba89c3cd8eacd6b553c4b8e97343
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 883a06bdffcd0afcbc1be6f2c761d6a1c2c2ea2a
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963349"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681875"
 ---
 # <a name="configure-token-lifetime-policies-preview"></a>Jogkivonat élettartamára vonatkozó szabályzatok konfigurálása (előzetes verzió)
 Megadhatja a Microsoft Identity platform által kiadott hozzáférés, SAML vagy azonosító jogkivonatok élettartamát. Beállíthatja a cégen belüli összes alkalmazás jogkivonatának élettartamát több-bérlős alkalmazások (több cég) vagy munkahelyen belüli adott szolgáltatásnév esetén. További információért olvassa el a [konfigurálható jogkivonat élettartamait](active-directory-configurable-token-lifetimes.md).
@@ -87,7 +87,7 @@ Ebben a példában olyan házirendet hoz létre, amely megköveteli, hogy a felh
 > [!IMPORTANT]
 > A május 2020-től kezdve az új bérlők nem konfigurálhatják a frissítési és a munkamenet-jogkivonat élettartamát.  A meglévő konfigurációval rendelkező bérlők 2021 január 30-ig módosíthatják a frissítési és a munkamenet-jogkivonat-szabályzatokat.  A Azure Active Directory a házirendekben a meglévő frissítési és munkamenet-jogkivonat konfigurációját a 2021. január 30. után nem fogja megbecsülni. A kivonulás után továbbra is konfigurálhatja a hozzáférés, az SAML és az azonosító token élettartamát.
 >
-> Ha továbbra is meg kell határoznia azt az időtartamot, ameddig a felhasználónak újra be kell jelentkeznie, konfigurálnia kell a bejelentkezési gyakoriságot a feltételes hozzáférésben. Ha többet szeretne megtudni a feltételes hozzáférésről, olvassa el a [hitelesítési munkamenet-kezelés konfigurálása feltételes hozzáféréssel című szakaszt](/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime).
+> Ha továbbra is meg kell határoznia azt az időtartamot, ameddig a felhasználónak újra be kell jelentkeznie, konfigurálnia kell a bejelentkezési gyakoriságot a feltételes hozzáférésben. Ha többet szeretne megtudni a feltételes hozzáférésről, olvassa el a [hitelesítési munkamenet-kezelés konfigurálása feltételes hozzáféréssel című szakaszt](../conditional-access/howto-conditional-access-session-lifetime.md).
 >
 > Ha a lejárati dátum után nem kíván feltételes hozzáférést használni, a frissítési és a munkamenet-token az adott dátum [alapértelmezett konfigurációjához](active-directory-configurable-token-lifetimes.md#configurable-token-lifetime-properties-after-the-retirement) lesz beállítva, és többé nem fogja tudni módosítani az élettartamát.
 
@@ -210,5 +210,5 @@ Ebben a példában néhány szabályzatot hoz létre a prioritási rendszer műk
 
     Most már rendelkezik a szolgáltatáshoz tartozó eredeti házirenddel, és az új szabályzat beállítása a szervezet alapértelmezett házirendje. Fontos megjegyezni, hogy az egyszerű szolgáltatásokra alkalmazott szabályzatok elsőbbséget élveznek a szervezet alapértelmezett házirendjeivel szemben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ismerje meg az Azure AD feltételes hozzáférésének [hitelesítési munkamenet-kezelési képességeit](../conditional-access/howto-conditional-access-session-lifetime.md) .

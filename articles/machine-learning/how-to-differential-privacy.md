@@ -1,7 +1,7 @@
 ---
-title: Adatvédelem megőrzése a SmartNoise-csomagokkal (előzetes verzió)
+title: Differenciális adatvédelem – SmartNoise (előzetes verzió)
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan alkalmazhatja az SmartNoise-csomagok használatával Azure Machine Learning modellekre vonatkozó differenciált adatvédelmi eljárásokat.
+description: Ismerje meg, hogyan alkalmazhat differenciált adatvédelmi gyakorlatot Azure Machine Learning modellekhez a SmartNoise nyílt forráskódú kódtárak használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ ms.custom: how-to, responsible-ml
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
-ms.date: 12/21/2020
-ms.openlocfilehash: ebc14d6c9d0ebaa6e0258578f94771c9f286bdb4
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.date: 01/21/2020
+ms.openlocfilehash: 62a002569696da4ef18e7bd967f027eb8247ef65
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221935"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681404"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>Különbözeti adatvédelem használata Azure Machine Learningban (előzetes verzió)
 
-Ismerje meg, hogyan alkalmazhatja a modelleket a SmartNoise Python-csomagok használatával, hogy a különböző adatvédelmi eljárásokat Azure Machine Learning modellekre alkalmazza.
+Ismerje meg, hogyan alkalmazhat differenciált adatvédelmi gyakorlatot Azure Machine Learning modellekhez a SmartNoise Python nyílt forráskódú kódtárak használatával.
 
 A különbözeti adatvédelem az adatvédelem arany szabvány szerinti definíciója. Az adatvédelem ezen definícióját betartó rendszerek erős garanciát biztosítanak az adatújjáépítési és-azonosítási támadások széles körére, beleértve a kiegészítő információkat tartalmazó ellenfelek támadásait is. További információ a [differenciált adatvédelem működéséről](./concept-differential-privacy.md).
 
@@ -30,7 +30,7 @@ A különbözeti adatvédelem az adatvédelem arany szabvány szerinti definíci
 - Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy ingyenes fiókot a virtuális gép létrehozásának megkezdése előtt. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 - [Python 3](https://www.python.org/downloads/)
 
-## <a name="install-smartnoise-packages"></a>SmartNoise-csomagok telepítése
+## <a name="install-smartnoise-python-libraries"></a>SmartNoise Python-kódtárak telepítése
 
 ### <a name="standalone-installation"></a>Önálló telepítés
 
@@ -51,7 +51,7 @@ import opendp.smartnoise.sql
 
 Ha az importálás sikeres, a rendszer telepíti a kódtárakat, és készen áll a használatra.
 
-### <a name="docker-image"></a>Docker-rendszerkép
+### <a name="docker-image-installation"></a>Docker-rendszerkép telepítése
 
 SmartNoise-csomagokat is használhat a Docker segítségével.
 

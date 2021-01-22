@@ -10,14 +10,14 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: da6c9f6df0e9e74de297cf6c8f655b62e3446bad
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: bd911868028825164cdd9627bf6b5c6d56de7164
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462715"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679618"
 ---
-# <a name="azure-synapse-sql-architecture"></a>Azure szinapszis SQL-architektúra 
+# <a name="azure-synapse-sql-architecture"></a>Az Azure Synapse SQL architektúrája 
 
 Ez a cikk a szinapszis SQL architektúrájának összetevőit ismerteti.
 
@@ -49,7 +49,7 @@ A leválasztott tárolással és számítással a szinapszis SQL egyik használa
 
 A szinapszis SQL kihasználja az Azure Storage-t a felhasználói adatai biztonságának megőrzése érdekében. Mivel az Azure Storage tárolja és kezeli az adatait, külön díjat számítunk fel a tárterület-felhasználásért. 
 
-A kiszolgáló nélküli SQL-készlet lehetővé teszi, hogy a fájlok lekérdezését csak olvasható módon lehessen lekérdezni, az SQL-készlet pedig az adatbevitelt is lehetővé teszi. Ha az adat betöltése dedikált SQL-készletbe történik, az adat **elosztásra** kerül a rendszer teljesítményének optimalizálása érdekében. Kiválaszthatja, hogy melyik horizontális Felskálázási mintát kell használnia az adatterjesztéshez a tábla meghatározásakor. Ezek a horizontális skálázási minták támogatottak:
+A kiszolgáló nélküli SQL-készlet lehetővé teszi, hogy a fájlok lekérdezését csak olvasható módon lehessen lekérdezni, az SQL-készlet pedig az adatbevitelt is lehetővé teszi. Ha az adat betöltése dedikált SQL-készletbe történik, az adat **elosztásra** kerül a rendszer teljesítményének optimalizálása érdekében. Hogy melyik horizontális skálázási mintát szeretné használni az adatok elosztásához, azt a tábla definiálásakor döntheti el. Ezek a horizontális skálázási minták támogatottak:
 
 * Kivonat
 * Ciklikus időszeletelés
@@ -67,7 +67,7 @@ A kiszolgáló nélküli SQL-készletben a DQP motor a vezérlési csomóponton 
 
 A számítási csomópontok biztosítják a számítási teljesítményt. 
 
-A dedikált SQL-készletben a disztribúciók leképezik a számítási csomópontokat a feldolgozáshoz. A további számítási erőforrásokért a készlet újraképezi a disztribúciókat a rendelkezésre álló számítási csomópontokra. A számítási csomópontok száma 1 és 60 közötti tartományba esik, és a dedikált SQL-készlet szolgáltatási szintje határozza meg. Minden számítási csomóponthoz tartozik egy csomópont-azonosító, amely a rendszernézetekben látható. A számítási csomópont AZONOSÍTÓját úgy tekintheti meg, hogy megkeresi a node_id oszlopot a rendszernézetekben, amelyek nevei a sys.pdw_nodeskal kezdődnek. A rendszernézetek listáját a következő témakörben tekintheti meg: [SZINAPSZIS SQL rendszer nézetei](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest).
+A dedikált SQL-készletben a disztribúciók leképezik a számítási csomópontokat a feldolgozáshoz. A további számítási erőforrásokért a készlet újraképezi a disztribúciókat a rendelkezésre álló számítási csomópontokra. A számítási csomópontok száma 1 és 60 közötti tartományba esik, és a dedikált SQL-készlet szolgáltatási szintje határozza meg. Minden számítási csomóponthoz tartozik egy csomópont-azonosító, amely a rendszernézetekben látható. A számítási csomópont AZONOSÍTÓját úgy tekintheti meg, hogy megkeresi a node_id oszlopot a rendszernézetekben, amelyek nevei a sys.pdw_nodeskal kezdődnek. A rendszernézetek listáját a következő témakörben tekintheti meg: [SZINAPSZIS SQL rendszer nézetei](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest&preserve-view=true).
 
 A kiszolgáló nélküli SQL-készletben minden számítási csomóponthoz hozzá kell rendelni egy feladatot, valamint a feladat végrehajtásához szükséges fájlokat. A feladat elosztott lekérdezés-végrehajtási egység, amely ténylegesen a lekérdezés felhasználója számára van elküldve. Az automatikus skálázás érvényes annak biztosítására, hogy elegendő számítási csomópont legyen kihasználva a felhasználói lekérdezés végrehajtásához.
 
@@ -113,6 +113,6 @@ Az alábbi ábrán egy olyan replikált tábla látható, amely az első eloszl�
 
 ![Replikált tábla](media/overview-architecture/replicated-table.png "Replikált tábla") 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már ismeri a szinapszis SQL-t, ismerkedjen meg [a DEDIKÁLT SQL-készlet gyors létrehozásával](../quickstart-create-sql-pool-portal.md) és a [mintaadatok betöltésével](../sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) (./SQL-Data-Warehouse-Load-Sample-Databases.MD). Vagy elkezdheti [használni a kiszolgáló nélküli SQL-készletet](../quickstart-sql-on-demand.md). Ha az Azure új felhasználója, hasznosnak találhatja az [Azure szószedetét](../../azure-glossary-cloud-terminology.md), amikor az új fogalmakkal ismerkedik. 

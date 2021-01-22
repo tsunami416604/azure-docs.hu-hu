@@ -9,12 +9,12 @@ ms.custom: mvc, contperf-fy21q1
 ms.date: 12/03/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 04ba20bd5607bc309735e509ac37b15c33445c52
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 5f12eae9345cbb1daa4097305bb85b8ceaf0b439
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672733"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681462"
 ---
 # <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
@@ -45,7 +45,7 @@ Az Azure Firewall újdonságait az [Azure Updates](https://azure.microsoft.com/u
 
 Az Azure Firewall az alábbi ismert hibákkal rendelkezik:
 
-|Probléma  |Description  |Kockázatcsökkentés  |
+|Probléma  |Leírás  |Kockázatcsökkentés  |
 |---------|---------|---------|
 A nem TCP/UDP-protokollokra (például ICMP) vonatkozó hálózati szűrési szabályok nem működnek az internetre irányuló forgalom esetében|A nem TCP/UDP protokollok hálózati szűrési szabályai nem működnek a SNAT a nyilvános IP-címével. A nem TCP/UDP-protokollok a küllők alhálózatai és a virtuális hálózatok között támogatottak.|Az Azure Firewall a Standard Load Balancert használja, [amely jelenleg nem támogatja a forráshálózati címfordítást az IP-protokollokon](../load-balancer/load-balancer-overview.md). A forgatókönyv egy későbbi kiadásban való támogatásának lehetőségeit vizsgálja.|
 |A PowerShell és a CLI nem támogatja az ICMP-t|A Azure PowerShell és a CLI nem támogatja az ICMP-t érvényes protokollként a hálózati szabályokban.|Az ICMP protokollt a Portálon és a REST API is használhatja protokollként. Hamarosan felvesszük az ICMP-t a PowerShellben és a CLI-ben.|
@@ -58,7 +58,6 @@ A nem TCP/UDP-protokollokra (például ICMP) vonatkozó hálózati szűrési sza
 |SNAT a bejövő kapcsolatokon|A DNAT kívül a tűzfal nyilvános IP-címén (bejövő) keresztül létesített kapcsolatok a címfordítást egyikéhez tartoznak. Ez a követelmény ma (aktív/aktív NVA esetén is) biztosítja a szimmetrikus útválasztást.|A HTTP/S eredeti forrásának megőrzése érdekében érdemes lehet [XFF](https://en.wikipedia.org/wiki/X-Forwarded-For) -fejléceket használni. Például olyan szolgáltatást használhat, mint például az [Azure bejárati ajtó](../frontdoor/front-door-http-headers-protocol.md#front-door-to-backend) vagy az [Azure Application Gateway](../application-gateway/rewrite-http-headers.md) a tűzfal előtt. A WAF az Azure bejárati ajtajának részeként is hozzáadhatja a tűzfalhoz.
 |Az SQL FQDN szűrése csak proxy módban támogatott (1433-es port)|Azure SQL Database, az Azure szinapszis Analytics és az Azure SQL felügyelt példánya:<br><br>Az SQL FQDN-szűrés csak proxy módban támogatott (1433-es port).<br><br>Azure SQL-IaaS esetén:<br><br>Ha nem szabványos portokat használ, megadhatja ezeket a portokat az alkalmazási szabályokban.|SQL-ben átirányítási módban (az alapértelmezett, ha az Azure-on keresztül csatlakozik), ehelyett a Azure Firewall hálózati szabályok részeként szűrheti a hozzáférést az SQL-szolgáltatás címkével.
 |A 25-ös TCP-porton nem engedélyezett a kimenő forgalom| A 25-ös TCP-portot használó kimenő SMTP-kapcsolatok le vannak tiltva. A 25-ös port elsődlegesen a nem hitelesített e-mailek kézbesítéséhez használatos. Ez a virtuális gépek alapértelmezett platform-viselkedése. További információ: [a kimenő SMTP-kapcsolatokkal kapcsolatos problémák elhárítása az Azure-ban](../virtual-network/troubleshoot-outbound-smtp-connectivity.md). A virtuális gépektől eltérően azonban jelenleg nem lehet engedélyezni ezt a funkciót Azure Firewallon. Megjegyzés: Ha a hitelesített SMTP-portot (587-as port) vagy az SMTP-t nem a 25-ös porton keresztül szeretné engedélyezni, győződjön meg arról, hogy a hálózati szabály konfigurálása nem egy alkalmazási szabály, mivel az SMTP-vizsgálat jelenleg nem támogatott.|Kövesse az e-mailek küldésére vonatkozó ajánlott módszert az SMTP hibaelhárítási cikkében leírtak szerint. Vagy zárja ki azt a virtuális gépet, amelynek a kimenő SMTP-hozzáférésre van szüksége az alapértelmezett útvonalról a tűzfalra. Ehelyett konfigurálja a kimenő hozzáférést közvetlenül az internethez.
-|Az aktív FTP nem támogatott|Az aktív FTP szolgáltatás le van tiltva Azure Firewall az FTP-PORT parancs használatával történő FTP-visszafordulási támadásokkal szembeni védelem érdekében.|Ehelyett használhatja a passzív FTP-t. A tűzfalon továbbra is explicit módon meg kell nyitnia a 20. és a 21. TCP-portot.
 |Az SNAT-portok kihasználtsága metrika 0%-ot mutat|A Azure Firewall SNAT-kihasználtsági mérőszáma 0%-os használatot is megjeleníthet, még akkor is, ha SNAT-portok vannak használatban. Ebben az esetben a metrika a tűzfal állapota metrika részeként való használata helytelen eredményt ad.|Ezt a problémát megjavítottuk, és az éles környezetbe való bevezetésük a 2020-es májusira irányul. Bizonyos esetekben a tűzfal újratelepítése megoldja a problémát, de nem konzisztens. Közbenső megkerülő megoldásként csak a tűzfal állapota alapján keresse meg a *status = lecsökkentett állapotot*, nem a *status = sérült* állapotot. A port kimerülése *csökkentett teljesítményű* fog megjelenni. A *nem kifogástalan* állapot a jövőbeli használatra van fenntartva, ha a további mérőszámok hatással vannak a tűzfal állapotára.
 |A DNAT nem támogatott a kényszerített bújtatás használata esetén|A kényszerített bújtatással telepített tűzfalak esetében az aszimmetrikus útválasztás miatt nem támogatott a bejövő hozzáférés az internetről.|Ezt az aszimmetrikus útválasztás miatt tervezték meg. A bejövő kapcsolatok visszatérési útvonala a helyszíni tűzfalon megy keresztül, amely még nem látta el a kapcsolatot.
 |Előfordulhat, hogy a kimenő passzív FTP nem működik a több nyilvános IP-címmel rendelkező tűzfalak esetében az FTP-kiszolgáló konfigurációjától függően.|A passzív FTP különböző kapcsolatokat hoz létre a vezérlési és az adatcsatornákhoz. Ha egy több nyilvános IP-címmel rendelkező tűzfal kimenő adatokat küld, véletlenszerűen kiválasztja az egyik nyilvános IP-címét a forrás IP-címéhez. Ha az adat-és vezérlési csatornák eltérő forrás IP-címeket használnak az FTP-kiszolgáló konfigurációjától függően, az FTP meghiúsulhat.|A rendszer explicit SNAT-konfigurációt tervez. Addig is beállíthatja az FTP-kiszolgálót, hogy fogadja az adatait, és különböző forrás IP-címekről vezérelje a csatornákat (lásd: [IIS-példa](/iis/configuration/system.applicationhost/sites/sitedefaults/ftpserver/security/datachannelsecurity)). Másik megoldásként érdemes egyetlen IP-címet használni ebben a helyzetben.|

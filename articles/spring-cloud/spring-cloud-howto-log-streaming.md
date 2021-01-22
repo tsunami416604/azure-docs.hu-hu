@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: fcfddce568be6c641a5bf5be70c2cd0ad368095f
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 1eeb291c7a058efd8905e95ebf1ea14fed046691
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843604"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680518"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Azure Spring Cloud-alkalmazásnaplók streamelése valós időben
 
@@ -31,7 +31,7 @@ Az Azure Spring Cloud lehetővé teszi a log streaming használatát az Azure CL
 ## <a name="use-cli-to-tail-logs"></a>A CLI használata a farok naplóihoz
 
 Az erőforráscsoport és a szolgáltatási példány nevének ismételt megadásának elkerüléséhez állítsa be az erőforráscsoport és a fürt alapértelmezett nevét.
-```
+```azurecli
 az configure --defaults group=<service group name>
 az configure --defaults spring-cloud=<service instance name>
 ```
@@ -39,11 +39,11 @@ A következő példákban az erőforráscsoport és a szolgáltatás neve kimara
 
 ### <a name="tail-log-for-app-with-single-instance"></a>A farok naplója az alkalmazáshoz egyetlen példánnyal
 Ha egy Auth-Service nevű alkalmazásnak csak egy példánya van, megtekintheti az alkalmazás példányának naplóját a következő paranccsal:
-```
+```azurecli
 az spring-cloud app logs -n auth-service
 ```
 Ez a naplókat fogja visszaadni:
-```
+```output
 ...
 2020-01-15 01:54:40.481  INFO [auth-service,,,] 1 --- [main] o.apache.catalina.core.StandardService  : Starting service [Tomcat]
 2020-01-15 01:54:40.482  INFO [auth-service,,,] 1 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.22]
@@ -58,12 +58,12 @@ Ha a nevű alkalmazáshoz több példány is létezik, a (z `auth-service` ) kap
 
 Először az alábbi paranccsal kérheti le az alkalmazás-példányok nevét.
 
-```
+```azurecli
 az spring-cloud app show -n auth-service --query properties.activeDeployment.properties.instances -o table
 ```
 Eredményekkel:
 
-```
+```output
 Name                                         Status    DiscoveryStatus
 -------------------------------------------  --------  -----------------
 auth-service-default-12-75cc4577fc-pw7hb  Running   UP
@@ -72,7 +72,7 @@ auth-service-default-12-75cc4577fc-n25mh  Running   UP
 ``` 
 Ezt követően a lehetőséggel az alkalmazás egy példányát is továbbíthatja a naplókba `-i/--instance` :
 
-```
+```azurecli
 az spring-cloud app logs -n auth-service -i auth-service-default-12-75cc4577fc-pw7hb
 ```
 
@@ -81,11 +81,11 @@ Az Azure Portalból is kérheti az alkalmazás-példányok részleteit.  Miután
 ### <a name="continuously-stream-new-logs"></a>Új naplók folyamatos továbbítása
 Alapértelmezés szerint `az spring-cloud ap log tail` a csak az alkalmazás-konzolra áramló meglévő naplókat nyomtatja ki, majd kilép. Ha új naplókat szeretne továbbítani, adja hozzá a-f (----követés):  
 
-```
+```azurecli
 az spring-cloud app logs -n auth-service -f
 ``` 
 A támogatott naplózási beállítások megtekintéséhez:
-``` 
+```azurecli
 az spring-cloud app logs -h 
 ```
 

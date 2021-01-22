@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: c91310d9d1e67dd77098ee13a87190ee6d411607
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 10e43332728ea70d27c08cf4d3dfe116c83b3f1f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120104"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679804"
 ---
 # <a name="best-practices-for-loading-data-using-dedicated-sql-pools-in-azure-synapse-analytics"></a>Ajánlott eljárások az betöltéshez dedikált SQL-készletek használatával az Azure szinapszis Analyticsben
 
@@ -47,7 +47,7 @@ Ez a példa egy adott munkaterhelés-csoportba sorolt betöltési felhasználót
    CREATE LOGIN loader WITH PASSWORD = 'a123STRONGpassword!';
 ```
 
-Kapcsolódjon a dedikált SQL-készlethez, és hozzon létre egy felhasználót. A következő kód azt feltételezi, hogy csatlakozik a mySampleDataWarehouse nevű adatbázishoz. Bemutatja, hogyan hozhat létre egy betöltő felhasználót, és a [másolási utasítás](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)használatával lehetővé teszi a felhasználók számára táblák és betöltés létrehozását. Ezután osztályozza a felhasználót a DataLoads munkaterhelés csoportba a maximális erőforrásokkal. 
+Kapcsolódjon a dedikált SQL-készlethez, és hozzon létre egy felhasználót. A következő kód azt feltételezi, hogy csatlakozik a mySampleDataWarehouse nevű adatbázishoz. Bemutatja, hogyan hozhat létre egy betöltő felhasználót, és a [másolási utasítás](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)használatával lehetővé teszi a felhasználók számára táblák és betöltés létrehozását. Ezután osztályozza a felhasználót a DataLoads munkaterhelés csoportba a maximális erőforrásokkal. 
 
 ```sql
    -- Connect to the dedicated SQL pool
@@ -79,7 +79,7 @@ Ha terhelést szeretne futtatni a terhelés betöltéséhez szükséges erőforr
 
 ## <a name="allowing-multiple-users-to-load-polybase"></a>Több felhasználó betöltésének engedélyezése (alapszintű)
 
-Gyakran van szükség több felhasználó betöltésére egy dedikált SQL-készletbe. A ( [Transact-SQL) CREATE TABLE](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) betöltéséhez az ADATBÁZISnak vezérlési engedélyekkel kell rendelkeznie.  A CONTROL engedély az összes séma vezérlését biztosítja.
+Gyakran van szükség több felhasználó betöltésére egy dedikált SQL-készletbe. A ( [Transact-SQL) CREATE TABLE](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) betöltéséhez az ADATBÁZISnak vezérlési engedélyekkel kell rendelkeznie.  A CONTROL engedély az összes séma vezérlését biztosítja.
 
 Előfordulhat, hogy nem szeretné, hogy minden betöltést végző felhasználó vezérelési jogot kapjon az összes sémához. Az engedélyek korlátozására használja a DENY CONTROL utasítást.
 
@@ -114,7 +114,7 @@ Ha korlátozott a rendelkezésre álló memória mennyisége, előfordulhat, hog
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>A Batch méretének növeléséhez a SqLBulkCopy API vagy a BCP használata esetén
 
-A COPY utasítással való betöltés a legmagasabb átviteli sebességet biztosítja dedikált SQL-készletekkel. Ha nem tudja használni a MÁSOLÁSt a betöltéshez, és a [SQLBULKCOPY API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) -t vagy [BCP](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)-t kell használnia, érdemes növelni a Batch méretét a jobb átviteli sebesség érdekében.
+A COPY utasítással való betöltés a legmagasabb átviteli sebességet biztosítja dedikált SQL-készletekkel. Ha nem tudja használni a MÁSOLÁSt a betöltéshez, és a [SQLBULKCOPY API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) -t vagy [BCP](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)-t kell használnia, érdemes növelni a Batch méretét a jobb átviteli sebesség érdekében.
 
 > [!TIP]
 > Az optimális batch-kapacitás meghatározásához az ajánlott alapkonfiguráció a 100 K és 1 millió közötti szám közötti méretű köteg.
@@ -130,11 +130,11 @@ Az adatrekordok akkor tekinthetők inkonzisztensnek, ha megfelelnek az alábbi f
 
 A szabálytalan rekordok kijavításához győződjön meg arról, hogy a külső tábla- és fájlformátum-definíciók helyesek, és hogy a külső adatok megfelelnek ezeknek a definícióknak.
 
-Ha a külső adatrekordok egy részhalmaza inkonzisztens, dönthet úgy, hogy elutasítja ezeket a rekordokat a lekérdezésekhez a [külső tábla létrehozása (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)elutasítási beállításainak használatával.
+Ha a külső adatrekordok egy részhalmaza inkonzisztens, dönthet úgy, hogy elutasítja ezeket a rekordokat a lekérdezésekhez a [külső tábla létrehozása (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)elutasítási beállításainak használatával.
 
 ## <a name="inserting-data-into-a-production-table"></a>Adatok beszúrása az éles táblába
 
-A kis táblák [INSERT utasítással](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) végzett egyszeri feltöltése vagy akár egy keresés rendszeres újratöltése is megfelelő lehet, ha egy, a következőhöz hasonló utasítást használ: `INSERT INTO MyLookup VALUES (1, 'Type 1')`.  Az egyszeres beszúrásoknál azonban hatékonyabb egy kötegelt betöltés végrehajtása.
+A kis táblák [INSERT utasítással](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) végzett egyszeri feltöltése vagy akár egy keresés rendszeres újratöltése is megfelelő lehet, ha egy, a következőhöz hasonló utasítást használ: `INSERT INTO MyLookup VALUES (1, 'Type 1')`.  Az egyszeres beszúrásoknál azonban hatékonyabb egy kötegelt betöltés végrehajtása.
 
 Ha több ezer egyszeres beszúrást hajt végre egy nap, kötegelje a beszúrásokat, hogy kötegelve tölthesse be őket.  Fejlesszen folyamatokat, amelyek az egyszeres beszúrásokat egy fájlhoz fűzik, majd hozzon létre egy másik folyamatot, amely időszakosan betölti a fájlt.
 
@@ -158,7 +158,7 @@ Biztonsági szempontból érdemes rendszeresen módosítani a Blob Storage hozz�
 
 Az Azure Storage-fiók kulcsainak rotálása:
 
-Adja ki az [ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) parancsot minden olyan tárfiókhoz, amelynek módosult a kulcsa.
+Adja ki az [ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) parancsot minden olyan tárfiókhoz, amelynek módosult a kulcsa.
 
 Példa:
 

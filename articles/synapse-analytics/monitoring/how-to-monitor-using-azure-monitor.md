@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 9032fcaf35265c791913f5b69fb0972bada6885f
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: eb74137e515bff7a432367e75b4208490b1243c0
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602461"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681387"
 ---
 # <a name="use-azure-monitor-with-your-azure-synapse-analytics-workspace"></a>Azure Monitor használata az Azure szinapszis Analytics-munkaterülettel
 
@@ -34,7 +34,7 @@ A metrikák eléréséhez hajtsa végre az [Azure monitor adatplatformon](../../
 
 Íme néhány a munkaterületek által kibocsátott mérőszámok közül:
 
-| **Metrika**                           | **Metrika kategóriája, megjelenítendő név**                  | **Egység** | **Összesítési típusok** | **Leírás**                |
+| **Metrika**                           | **Metrika kategóriája, megjelenítendő név**                  | **Unit (Egység)** | **Összesítési típusok** | **Leírás**                |
 |--------------------------------------|------------------------------------------|----------|----------------------|--------------------------------|
 | IntegrationActivityRunsEnded         | Integráció, tevékenység-futtatási metrika                     | Darabszám    | Sum (alapértelmezett), darabszám                | Az 1 perces időszakon belül bekövetkezett vagy befejezett tevékenység-futtatások teljes száma. </br></br> A metrika eredmény-dimenziójának használatával szűrheti a sikeres, sikertelen vagy megszakított végleges állapotot.|
 | IntegrationPipelineRunsEnded         | Integráció, folyamat-futtatási metrika                     | Darabszám    | Sum (alapértelmezett), darabszám                | Az 1 perces időszakon belül bekövetkezett vagy befejezett folyamat-futtatások teljes száma. </br></br> A metrika eredmény-dimenziójának használatával szűrheti a sikeres, sikertelen vagy megszakított végleges állapotot. |
@@ -47,7 +47,7 @@ A metrikák eléréséhez hajtsa végre az [Azure monitor adatplatformon](../../
 
 Íme néhány a dedikált SQL-készletek által kibocsátott mérőszámok közül:
 
-| **Metrika**                           | **Megjelenített név**                  | **Egység** | **Összesítési típusok** | **Leírás**                |
+| **Metrika**                           | **Megjelenített név**                  | **Unit (Egység)** | **Összesítési típusok** | **Leírás**                |
 |--------------------------------------|------------------------------------------|----------|----------------------|--------------------------------|
 | DWULimit                            | DWU korlátja                       | Darabszám   | Max (alapértelmezett), min, átlag | Az SQL-készlet beállított mérete |
 | DWUUsed                             | Használt DWU                        | Darabszám   | Max (alapértelmezett), min, átlag | Az SQL-készleten belüli használat magas szintű ábrázolását jelöli. DWU-korláttal mérve * DWU százalék |
@@ -73,7 +73,7 @@ A metrikák eléréséhez hajtsa végre az [Azure monitor adatplatformon](../../
 
 Íme néhány a Apache Spark készletek által kibocsátott mérőszámok közül:
 
-| **Metrika**                           | **Metrika kategóriája, megjelenítendő név**                  | **Egység** | **Összesítési típusok** | **Leírás**                |
+| **Metrika**                           | **Metrika kategóriája, megjelenítendő név**                  | **Unit (Egység)** | **Összesítési típusok** | **Leírás**                |
 |--------------------------------------|------------------------------------------|----------|----------------------|--------------------------------|
 | BigDataPoolApplicationsEnded  | Lejárt Apache Spark alkalmazások  | Darabszám | Sum (alapértelmezett) | Befejezett Apache Spark készlet-alkalmazások száma |
 | BigDataPoolAllocatedCores     | A Apache Spark készlethez lefoglalt virtuális mag száma                 | Darabszám | Max (alapértelmezett), min, átlag | Apache Spark készlethez lefoglalt virtuális mag |
@@ -82,7 +82,7 @@ A metrikák eléréséhez hajtsa végre az [Azure monitor adatplatformon](../../
 
 ## <a name="alerts"></a>Riasztások
 
-Jelentkezzen be a Azure Portalba, és válassza a riasztások **figyelése** lehetőséget a  >  **Alerts** riasztások létrehozásához.
+Jelentkezzen be a Azure Portalba, és válassza a riasztások **figyelése** lehetőséget a  >   riasztások létrehozásához.
 
 ### <a name="create-alerts"></a>Riasztások létrehozása
 
@@ -121,11 +121,11 @@ A dedikált SQL-készletek által kibocsátott naplók a következők:
 | SynapseSqlPoolWaits         | Megvárja        | A várakozási állapotokról az Azure szinapszis dedikált SQL-készletében található SQL-kérelem vagy-lekérdezés végrehajtása során felmerülő információk, beleértve a zárolásokat, és megvárja az átviteli várólistákat.
 
 A naplókról további információt a következő információkban talál:
-- [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 
 ### <a name="apache-spark-pool-log"></a>Apache Spark készlet naplója
 
@@ -173,11 +173,11 @@ Hozzon létre vagy adjon hozzá diagnosztikai beállításokat a munkaterülethe
     > [!NOTE]
     > Mivel az Azure-tábla nem rendelkezhet több mint 500 oszloppal **, javasoljuk, hogy az** _erőforrás-specifikus módot_ válassza. További információ: [log Analytics ismert korlátozások](../../azure-monitor/platform/resource-logs.md#column-limit-in-azurediagnostics).
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 Néhány pillanat elteltével megjelenik az új beállítás a munkaterület, a dedikált SQL-készlet vagy a Apache Spark készlet beállításainak listájában. A rendszer a diagnosztikai naplókat az adott munkaterületre továbbítja, amint új esemény-adatforrások jönnek létre. Akár 15 percig is eltarthat egy esemény kibocsátása, és amikor megjelenik a Log Analyticsban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A folyamatok figyelésével kapcsolatos további információkért tekintse meg a [folyamatok figyelése a szinapszis Studióban](how-to-monitor-pipeline-runs.md) című cikket. 
 

@@ -3,12 +3,12 @@ title: Esemény közzététele egyéni Azure Event Grid témakörben
 description: Ez a cikk azt ismerteti, hogyan lehet elküldeni egy eseményt egy egyéni témakörbe. Megjeleníti a bejegyzés és az esemény formátumát.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 197d8eb1963300bc6576e664c7c3fd470cf70bb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed126487938e524264c94544903460854ffc4d41
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86108243"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681616"
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>Közzététel a Azure Event Grid egyéni témakörében
 
@@ -71,10 +71,7 @@ Egyéni témakörök esetén a legfelső szintű adat ugyanazokat a mezőket tar
 ]
 ```
 
-A tulajdonságok leírását itt tekintheti meg: [Azure Event Grid Event Schema](event-schema.md). Amikor eseményeket küld egy Event Grid-témakörbe, a tömb legfeljebb 1 MB méretű lehet. A tömbben lévő összes esemény 64 KB-ra (általános rendelkezésre állás) vagy 1 MB-ra (előzetes verzió) korlátozódik.
-
-> [!NOTE]
-> A 64 KB-ig terjedő méretű események általánosan elérhetők (GA) szolgáltatói szerződés (SLA). A legfeljebb 1 MB méretű esemény támogatása jelenleg előzetes verzióban érhető el. Az 64 KB-nál nagyobb számú esemény díja 64 KB. 
+A tulajdonságok leírását itt tekintheti meg: [Azure Event Grid Event Schema](event-schema.md). Amikor eseményeket küld egy Event Grid-témakörbe, a tömb legfeljebb 1 MB méretű lehet. Egy esemény maximálisan megengedett mérete 1 MB is. Az 64 KB-nál nagyobb számú esemény díja 64 KB. 
 
 Egy érvényes esemény-Adatséma például a következő:
 
@@ -98,7 +95,7 @@ A témakör-végpontra való közzététel után választ kap. A válasz egy sza
 
 |Eredmény  |Reagálás  |
 |---------|---------|
-|Success  | 200 OK  |
+|Siker  | 200 OK  |
 |Az esemény adatformátuma helytelen formátumú | 400 Hibás kérés |
 |Érvénytelen hozzáférési kulcs | 401 Nem engedélyezett |
 |Helytelen végpont | 404 Nem található |
@@ -119,7 +116,7 @@ Hibák esetén az üzenet törzsének formátuma a következő:
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az események kézbesítésének figyeléséről: [Event Grid üzenet kézbesítésének figyelése](monitor-event-delivery.md).
 * További információ a hitelesítési kulcsról: [Event Grid biztonság és hitelesítés](security-authentication.md).

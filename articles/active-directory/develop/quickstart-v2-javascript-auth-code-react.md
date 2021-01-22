@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 4e1addc9a5b07f9ae6f119b89b0e7d6f8186f29a
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 58e8fd5006e72465e35912a5b15cade1201d680f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98634456"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680315"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-a-react-spa-using-the-auth-code-flow"></a>Gyors útmutató: bejelentkezés és hozzáférési jogkivonat beszerzése egy reagáló SPA-ban az Auth Code flow használatával
 
@@ -66,6 +66,15 @@ Ez a rövid útmutató a MSAL reagál az engedélyezési kód folyamatára. Az i
 > 1. A módosítások alkalmazásához kattintson a **configure (Konfigurálás** ) gombra.
 > 1. A **platform konfigurációi** területen bontsa ki az **egyoldalas alkalmazások** elemet.
 > 1. Győződjön meg róla, hogy a megadott engedélyezési **típusoknál** ![ már konfigurálva ](media/quickstart-v2-javascript/green-check.png) van az átirányítási URI a PKCE.
+
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1. lépés: az alkalmazás konfigurálása a Azure Portalban
+> Ahhoz, hogy a kód mintája ebben a rövid útmutatóban működjön, hozzá kell adnia a `redirectUri` as-t `http://localhost:3000/` .
+> > [!div renderon="portal" id="makechanges" class="nextstepaction"]
+> > [A módosítások elvégzése]()
+>
+> > [!div id="appconfigured" class="alert alert-info"]
+> > ![Már konfigurált](media/quickstart-v2-javascript/green-check.png) Az alkalmazása már konfigurálva van ezekkel az attribútumokkal.
 
 #### <a name="step-2-download-the-project"></a>2. lépés: A projekt letöltése
 

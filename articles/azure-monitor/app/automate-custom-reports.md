@@ -4,12 +4,12 @@ description: Egyéni napi/heti/havi jelentések automatizálása Azure Applicati
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: d465666ce5d631a234644d1adc85afcf6e3c1e27
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: da465fbc899cb52fc48dbde830d3db4f3b58c68b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010605"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680450"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Egyéni jelentések automatizálása Azure Application Insights-beli adatkezeléssel
 
@@ -33,7 +33,7 @@ Programozott módon [lekérdezheti Application Insightsi](https://dev.applicatio
 
 * [Jelentések automatizálása a Power automatizálva](../platform/logicapp-flow-connector.md)
 * [Jelentések automatizálása Logic Apps](automate-with-logic-apps.md)
-* A figyelési forgatókönyvben használja a "Application Insights ütemezett kivonatoló" [Azure-függvény](../../azure-functions/functions-create-first-azure-function.md) sablonját. Ez a függvény a SendGrid használatával továbbítja az e-mailt. 
+* A figyelési forgatókönyvben használja a "Application Insights ütemezett kivonatoló" [Azure-függvény](../../azure-functions/functions-get-started.md) sablonját. Ez a függvény a SendGrid használatával továbbítja az e-mailt. 
 
     ![Azure-függvény sablonja](./media/automate-custom-reports/azure-function-template.png)
 
@@ -72,7 +72,7 @@ availabilityResults
 
 1. Hozzon létre egy Azure-függvényalkalmazás. ( _a_ Application Insights csak akkor szükséges, ha az új függvényalkalmazás Application Insights) szeretné figyelni.
 
-   Az Azure Functions dokumentációjában megtudhatja, hogyan [hozhat létre egy Function-alkalmazást](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app)
+   Az Azure Functions dokumentációjában megtudhatja, hogyan [hozhat létre egy Function-alkalmazást](../../azure-functions/functions-get-started.md)
 
 2. Miután az új függvényalkalmazás befejezte az üzembe helyezést, válassza az **Ugrás az erőforráshoz** lehetőséget.
 
@@ -148,10 +148,9 @@ Ezek a lépések csak akkor érvényesek, ha még nem rendelkezik konfigurált S
 
    ![Az API-kulcs másolása képernyőfelvétel](./media/automate-custom-reports/function-app-17.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az [elemzési lekérdezések](../log-query/get-started-queries.md)létrehozásáról.
 * További információ az [Application Insights adatainak programozott lekérdezéséről](https://dev.applicationinsights.io/)
 * További tudnivalók a [Logic Apps](../../logic-apps/logic-apps-overview.md) szolgáltatásról
 * További információ a [Microsoft Power automatizáló](https://ms.flow.microsoft.com)szolgáltatásról.
-

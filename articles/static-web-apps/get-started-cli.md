@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 00892b61cd23ee38ff3d63f8b61391ff1bffdc90
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: eec893321dd39511e1cfc20cb5a6713377ff5167
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616405"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680620"
 ---
 # <a name="quickstart-building-your-first-static-site-using-the-azure-cli"></a>Rövid útmutató: az első statikus hely felépítése az Azure CLI használatával
 
@@ -25,7 +25,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes próbaverz
 - [GitHub](https://github.com)-fiók
 - [GitHubos személyes hozzáférési jogkivonat](https://docs.github.com/github/authenticating-to-github/creating-a-personal-access-token)
 - [Azure](https://portal.azure.com) -fiók
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) telepítve (2.8.0 és újabb verzió)
+- [Azure CLI](/cli/azure/install-azure-cli) telepítve (2.8.0 és újabb verzió)
 
 [!INCLUDE [create repository from template](../../includes/static-web-apps-get-started-create-repo.md)]
 
@@ -46,7 +46,7 @@ Most, hogy létrejött a tárház, létrehozhat egy statikus webalkalmazást az 
 
 1. Jelentkezzen be az Azure CLI-be az alábbi parancs használatával.
 
-    ```bash
+    ```azurecli
     az login
     ```
 
@@ -54,7 +54,7 @@ Most, hogy létrejött a tárház, létrehozhat egy statikus webalkalmazást az 
 
     # <a name="no-framework"></a>[Nincs keretrendszer](#tab/vanilla-javascript)
 
-    ```bash
+    ```azurecli
     az staticwebapp create \
         -n my-first-static-web-app \
         -g <RESOURCE_GROUP_NAME> \
@@ -66,7 +66,7 @@ Most, hogy létrejött a tárház, létrehozhat egy statikus webalkalmazást az 
 
     # <a name="angular"></a>[Angular](#tab/angular)
 
-    ```bash
+    ```azurecli
     az staticwebapp create \
         -n my-first-static-web-app \
         -g <RESOURCE_GROUP_NAME> \
@@ -79,7 +79,7 @@ Most, hogy létrejött a tárház, létrehozhat egy statikus webalkalmazást az 
 
     # <a name="react"></a>[React](#tab/react)
 
-    ```bash
+    ```azurecli
     az staticwebapp create \
         -n my-first-static-web-app \
         -g <RESOURCE_GROUP_NAME> \
@@ -92,7 +92,7 @@ Most, hogy létrejött a tárház, létrehozhat egy statikus webalkalmazást az 
 
     # <a name="vue"></a>[Vue](#tab/vue)
 
-    ```bash
+    ```azurecli
     az staticwebapp create \
         -n my-first-static-web-app \
         -g <RESOURCE_GROUP_NAME> \
@@ -127,13 +127,13 @@ Most, hogy létrejött a tárház, létrehozhat egy statikus webalkalmazást az 
 
 Ha nem folytatja az alkalmazás használatát, az alábbi parancs futtatásával törölheti az Azure statikus Web Apps példányát:
 
-```bash
+```azurecli
 az staticwebapp delete \
     --name my-first-static-web-app \
     --resource-group my-first-static-web-app
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [API hozzáadása](add-api.md)

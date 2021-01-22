@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: srrengar
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: eda0b62729343b0a138d027548d8750b1e0fc74f
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 63c79169646f05cddc7c605c764398bdef7492d4
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844403"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682071"
 ---
 # <a name="monitoring-and-diagnostics"></a>Monitorozás és diagnosztika
 Az Azure Service Fabric Mesh egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a fejlesztők számára a mikroszolgáltatás-alkalmazások üzembe helyezését a virtuális gépek, a tárolók és a hálózat kezelése nélkül. A Service Fabric Mesh figyelése és diagnosztikája a diagnosztikai adattípusok három fő típusa szerint vannak kategorizálva:
@@ -26,7 +26,7 @@ Ez a cikk a legújabb előzetes verzióhoz elérhető monitorozási és diagnosz
 
 A Docker-naplókat tároló alapján megtekintheti az üzembe helyezett tárolókban. A Service Fabric Mesh-alkalmazás modelljében minden tároló egy kód-csomag az alkalmazásban. A következő parancs futtatásával tekintheti meg a kapcsolódó naplókat a kód csomag használatával:
 
-```cli
+```azurecli
 az mesh code-package-log get --resource-group <nameOfRG> --app-name <nameOfApp> --service-name <nameOfService> --replica-name <nameOfReplica> --code-package-name <nameOfCodePackage>
 ```
 
@@ -35,7 +35,7 @@ az mesh code-package-log get --resource-group <nameOfRG> --app-name <nameOfApp> 
 
 Így néz ki a naplók a VotingWeb. code tárolóból a szavazási alkalmazásból:
 
-```cli
+```azurecli
 az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzVoting --service-name VotingWeb --replica-name 0 --code-package-name VotingWeb.Code
 ```
 
@@ -43,7 +43,7 @@ az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzV
 
 A rácsvonal-környezet a tárolók működésének módját jelző néhány mérőszámot tesz elérhetővé. A következő mérőszámok érhetők el a Azure Portal és az Azure monitor CLI használatával:
 
-| Metrika | Leírás | Egység|
+| Metric | Leírás | Egység|
 |----|----|----|
 | CpuUtilization | ActualCpu/AllocatedCpu százalékként | % |
 | MemoryUtilization | ActualMem/AllocatedMem százalékként | % |
@@ -74,7 +74,7 @@ Az egyes dimenziók a [Service Fabric alkalmazás modelljének](service-fabric-m
 
 ### <a name="azure-monitor-cli"></a>Azure Monitor parancssori felület
 
-A parancsok teljes listája elérhető a [Azure monitor CLI docs](/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list) -ban, de néhány hasznos példát is tartalmaz. 
+A parancsok teljes listája elérhető a [Azure monitor CLI docs](/cli/azure/monitor/metrics#az-monitor-metrics-list) -ban, de néhány hasznos példát is tartalmaz. 
 
 Az erőforrás-azonosító például a következő mintát követi
 
@@ -83,21 +83,21 @@ Az erőforrás-azonosító például a következő mintát követi
 
 * Egy alkalmazásban lévő tárolók CPU-kihasználtsága
 
-```cli
+```azurecli
     az monitor metrics list --resource <resourceId> --metric "CpuUtilization"
 ```
 * Memória kihasználtsága minden egyes szolgáltatás replikája esetében
-```cli
+```azurecli
     az monitor metrics list --resource <resourceId> --metric "MemoryUtilization" --dimension "ServiceReplicaName"
 ``` 
 
 * Az egyes tárolók újraindítása 1 órás időszakban 
-```cli
+```azurecli
     az monitor metrics list --resource <resourceId> --metric "RestartCount" --start-time 2019-02-01T00:00:00Z --end-time 2019-02-01T01:00:00Z
 ``` 
 
 * A "VotingWeb" nevű szolgáltatások átlagos CPU-kihasználtsága 1 órás időszakban
-```cli
+```azurecli
     az monitor metrics list --resource <resourceId> --metric "CpuUtilization" --start-time 2019-02-01T00:00:00Z --end-time 2019-02-01T01:00:00Z --aggregation "Average" --filter "ServiceName eq 'VotingWeb'"
 ``` 
 
@@ -118,4 +118,4 @@ In addition to the metrics explorer, we also have a dashboard available out of t
 
 ## <a name="next-steps"></a>Következő lépések
 * A Service Fabric Meshsel kapcsolatos további információkért olvassa el a [Service Fabric Mesh áttekintésével](service-fabric-mesh-overview.md) foglalkozó cikket.
-* Ha többet szeretne megtudni a Azure Monitor metrikák parancsairól, tekintse meg a [Azure monitor CLI-docs](/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)című témakört.
+* Ha többet szeretne megtudni a Azure Monitor metrikák parancsairól, tekintse meg a [Azure monitor CLI-docs](/cli/azure/monitor/metrics#az-monitor-metrics-list)című témakört.

@@ -11,12 +11,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e65569cadd8f778a94f93aa22dd3924c52ff12f8
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 3796b3d86f647e38cf2ff018e8c0c903d9a64e41
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98613770"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682038"
 ---
 # <a name="inbound-synchronization-for-cloud-sync-using-ms-graph-api"></a>A Felhőbeli szinkronizálás bejövő szinkronizálása MS Graph API használatával
 
@@ -31,7 +31,7 @@ Ennek a folyamatnak a szerkezete a következő lépésekből áll.  Ezek a köve
 - [Szinkronizálási feladatok indítása](#start-sync-job)
 - [Felülvizsgálat állapota](#review-status)
 
-Ezekkel a [Microsoft Azure Active Directory modullal Windows PowerShell](https://docs.microsoft.com/powershell/module/msonline/) -parancsokkal engedélyezheti a szinkronizálást egy éles bérlő számára, amely az adott bérlő adminisztrációs webszolgáltatásának meghívásához szükséges előfeltételek egyike.
+Ezekkel a [Microsoft Azure Active Directory modullal Windows PowerShell](/powershell/module/msonline/) -parancsokkal engedélyezheti a szinkronizálást egy éles bérlő számára, amely az adott bérlő adminisztrációs webszolgáltatásának meghívásához szükséges előfeltételek egyike.
 
 ## <a name="basic-setup"></a>Alapszintű beállítás
 
@@ -60,7 +60,7 @@ Ezt az azonosítót kell használnia a 1a4721b3-e57f-4451-ae87-ef078703ec94. A d
 ## <a name="create-sync-job"></a>Szinkronizálási feladatok létrehozása
 A fenti parancs kimenete a létrehozott egyszerű szolgáltatásnév objectId adja vissza. Ebben a példában a objectId a 614ac0e9-a59b-481f-bd8f-79a73d167e1c.  A Microsoft Graph használatával adjon hozzá egy synchronizationJob az adott egyszerű szolgáltatáshoz.  
 
-A szinkronizálási feladatok létrehozásával kapcsolatos dokumentáció [itt](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-post?view=graph-rest-beta&tabs=http)található.
+A szinkronizálási feladatok létrehozásával kapcsolatos dokumentáció [itt](/graph/api/synchronization-synchronizationjob-post?tabs=http&view=graph-rest-beta)található.
 
 Ha a fenti azonosítót nem rögzíti, az egyszerű szolgáltatásnév a következő MS Graph-hívás futtatásával található. Szüksége lesz a könyvtár. Read. All engedélyekre, hogy a hívást tegye:
  
@@ -216,11 +216,11 @@ A feladatot újra lekérheti a következő parancs használatával:
 
  `GET https://graph.microsoft.com/beta/servicePrincipals/[SERVICE_PRINCIPAL_ID]/synchronization/jobs/ ` 
 
-A feladatok beolvasására vonatkozó dokumentáció [itt](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-list?view=graph-rest-beta&tabs=http)található. 
+A feladatok beolvasására vonatkozó dokumentáció [itt](/graph/api/synchronization-synchronizationjob-list?tabs=http&view=graph-rest-beta)található. 
  
 A művelet elindításához adja ki ezt a kérelmet az első lépésben létrehozott egyszerű szolgáltatásnév objectId, és a feladatot létrehozó kérelemből visszaadott feladathoz tartozó azonosító.
 
-A feladatok elindításához szükséges dokumentáció [itt](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-start?view=graph-rest-beta&tabs=http)található. 
+A feladatok elindításához szükséges dokumentáció [itt](/graph/api/synchronization-synchronizationjob-start?tabs=http&view=graph-rest-beta)található. 
 
  ```
  POST  https://graph.microsoft.com/beta/servicePrincipals/8895955e-2e6c-4d79-8943-4d72ca36878f/synchronization/jobs/AD2AADProvisioning.fc96887f36da47508c935c28a0c0b6da/start
@@ -228,7 +228,7 @@ A feladatok elindításához szükséges dokumentáció [itt](https://docs.micro
 
 A várt válasz:... HTTP 204/nincs tartalom.
 
-A feladatok szabályozására szolgáló többi parancsot [itt](https://docs.microsoft.com/graph/api/resources/synchronization-synchronizationjob?view=graph-rest-beta)dokumentáljuk.
+A feladatok szabályozására szolgáló többi parancsot [itt](/graph/api/resources/synchronization-synchronizationjob?view=graph-rest-beta)dokumentáljuk.
  
 A feladatok újraindításához az egyik a következő lesz:...
 
@@ -254,4 +254,4 @@ A megfelelő részletekért tekintse meg a Return objektum "status" szakaszát.
 
 - [Mi az Azure AD Connect Cloud Sync?](what-is-cloud-sync.md)
 - [Átalakítások](how-to-transformation.md)
-- [Azure AD szinkronizációs API](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
+- [Azure AD szinkronizációs API](/graph/api/resources/synchronization-overview?view=graph-rest-beta)

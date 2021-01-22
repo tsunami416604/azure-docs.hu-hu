@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: ce854c8f2d1d317c3660aaab9c0a6569aae0bb36
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 4d6401c53071235784a5371a4a6315e4e25a438f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895971"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680265"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>Oktatóanyag: bejelentkezés a felhasználókba és a védett API meghívása egy Blazer webszerelvény-alkalmazásból
 
@@ -26,7 +26,7 @@ Ebben az oktatóanyagban:
 > * Hozzon létre egy új, az Azure Active Directory (Azure AD) használatára konfigurált, a Microsoft Identity platformot használó, [hitelesítésre és engedélyezésre](authentication-vs-authorization.md) konfigurált Blazer webszerelvény-alkalmazást
 > * Adatok beolvasása egy védett webes API-ból, ebben az esetben [Microsoft Graph](/graph/overview)
 
-Ez az oktatóanyag a .NET Core 3,1-et használja. A .NET docs a ASP.NET Core 5,0 [-et használó Blazer webszerelvény-alkalmazás biztonságossá tételére](https://docs.microsoft.com/aspnet/core/blazor/security/webassembly/graph-api) vonatkozó utasításokat tartalmaz. 
+Ez az oktatóanyag a .NET Core 3,1-et használja. A .NET docs a ASP.NET Core 5,0 [-et használó Blazer webszerelvény-alkalmazás biztonságossá tételére](/aspnet/core/blazor/security/webassembly/graph-api) vonatkozó utasításokat tartalmaz. 
 
 A [Blazer-kiszolgáló oktatóanyaga](tutorial-blazor-server.md)is rendelkezésre áll. 
 
@@ -80,7 +80,7 @@ A sablon azon összetevői, amelyek engedélyezik az Azure AD-be való bejelentk
 
 A [Microsoft Graph](/graph/overview) olyan API-kat tartalmaz, amelyek hozzáférést biztosítanak a felhasználók Microsoft 365 adataihoz, és támogatja a Microsoft Identity platform által kiállított jogkivonatokat, ami a megfelelő védett API-t használja példaként. Ebben a szakaszban kódot adhat hozzá a Microsoft Graph hívásához, és megjeleníti a felhasználó e-mail-címeit az alkalmazás "beolvasása" lapján.
 
-Ez a szakasz a védett API-k névvel ellátott ügyfél használatával történő meghívására szolgáló közös megközelítéssel íródott. Ugyanezt a módszert használhatja más védett API-k meghívásához is. Ha azonban az alkalmazásból Microsoft Graph meghívását tervezi, a Graph SDK használatával csökkentheti a kihelyezhető elemet. A .NET docs útmutatást tartalmaz a [Graph SDK használatáról](https://docs.microsoft.com/aspnet/core/blazor/security/webassembly/graph-api?view=aspnetcore-5.0).
+Ez a szakasz a védett API-k névvel ellátott ügyfél használatával történő meghívására szolgáló közös megközelítéssel íródott. Ugyanezt a módszert használhatja más védett API-k meghívásához is. Ha azonban az alkalmazásból Microsoft Graph meghívását tervezi, a Graph SDK használatával csökkentheti a kihelyezhető elemet. A .NET docs útmutatást tartalmaz a [Graph SDK használatáról](/aspnet/core/blazor/security/webassembly/graph-api?view=aspnetcore-5.0).
 
 Mielőtt elkezdené, jelentkezzen ki az alkalmazásból, mert a szükséges engedélyeket módosítja, és az aktuális jogkivonat nem fog működni. Ha még nem tette meg, futtassa újra az alkalmazást, és válassza a **kijelentkezés** lehetőséget az alábbi kód frissítése előtt.
 

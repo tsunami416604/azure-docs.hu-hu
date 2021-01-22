@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 2ebff0d86c27bcdbc11d23e18116b33b4ea838a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4ca28efce28933eed9be5cca7bd412f2d9505aa
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89300255"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679534"
 ---
 # <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-powershell"></a>Rendszerkép létrehozása felügyelt lemezről vagy pillanatképből egy megosztott rendszerkép-katalógusban a PowerShell használatával
 
@@ -42,7 +42,7 @@ A [Get-AzSnapshot](/powershell/module/az.compute/get-azsnapshot)használatával 
 get-azsnapshot | Format-Table -Property Name,ResourceGroupName
 ```
 
-Ha ismeri a pillanatkép nevét és a benne található erőforráscsoportot, akkor `Get-AzSnapshot` ismét használhatja a pillanatkép-objektum beolvasását és egy változóban történő tárolását. Ebben a példában egy *mySnapshot* nevű pillanatképet kap a "myResourceGroup" erőforráscsoporthoz, és hozzárendeli azt a *$Source*változóhoz. 
+Ha ismeri a pillanatkép nevét és a benne található erőforráscsoportot, akkor `Get-AzSnapshot` ismét használhatja a pillanatkép-objektum beolvasását és egy változóban történő tárolását. Ebben a példában egy *mySnapshot* nevű pillanatképet kap a "myResourceGroup" erőforráscsoporthoz, és hozzárendeli azt a *$Source* változóhoz. 
 
 ```azurepowershell-interactive
 $source = Get-AzSnapshot `
@@ -90,7 +90,7 @@ A rendszerkép-definíciók logikai csoportosítást hoznak létre a képekhez. 
 
 A rendszerkép meghatározásakor győződjön meg arról, hogy a megfelelő információval rendelkezik. Ebben a példában feltételezzük, hogy a pillanatkép vagy a felügyelt lemez egy használatban lévő virtuális gépről származik, és nem lett általánosítva. Ha a felügyelt lemez vagy pillanatkép általánosított operációs rendszerből készült (a Sysprep futtatása után Windows vagy [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` vagy `-deprovision+user` Linux rendszeren), akkor módosítsa a alkalmazást `-OsState` `generalized` . 
 
-További információ a képdefiníciók által megadható értékekről: [képdefiníciók](./windows/shared-image-galleries.md#image-definitions).
+További információ a képdefiníciók által megadható értékekről: [képdefiníciók](./shared-image-galleries.md#image-definitions).
 
 Hozza létre a rendszerkép definícióját a [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion)használatával. Ebben a példában a képdefiníció neve *myImageDefinition*, és egy speciális Windows operációs rendszerhez készült. A rendszerképek definíciójának létrehozásához használja a következőt: `-OsType Linux` . 
 
@@ -107,7 +107,7 @@ $imageDefinition = New-AzGalleryImageDefinition `
    -Sku 'mySKU'
 ```
 
-### <a name="purchase-plan-information"></a>Tervezett konstrukció információi
+### <a name="purchase-plan-information"></a>Vásárlási terv információi
 
 Bizonyos esetekben a vásárlási terv adatait kell átadnia, amikor virtuális gépet hoz létre egy Azure Marketplace-rendszerképen alapuló rendszerképből. Ezekben az esetekben azt javasoljuk, hogy a vásárlási terv adatait a rendszerkép definíciójában adja meg. Ebben az esetben a [lemezképek létrehozásakor az Azure Marketplace vásárlási terv információinak beszerzése](marketplace-images.md)című témakörben talál információt.
 

@@ -4,17 +4,17 @@ titleSuffix: Azure Cognitive Services
 description: Teljes körűen szabályozhatja az adatmegjelenítését, exportálását és törlését. Az adatvédelem és a megfelelőség biztosítása érdekében törölje a vásárlói adatokat.
 services: cognitive-services
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, references_regions
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 12/08/2020
-ms.openlocfilehash: cd9b353300b88c69efb0c458245a86963c579064
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.date: 12/10/2020
+ms.openlocfilehash: 0a2d0ce683261ca3460c7aeaa0d7a42152b81a1e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007738"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680184"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Ügyféladatok exportálása és törlése Language Understanding (LUIS) Cognitive Services
 
@@ -58,31 +58,38 @@ Az [aktív tanulás](luis-how-to-review-endpoint-utterances.md#log-user-queries-
 
 Az aktív tanulási adatmennyiség (alább részletezve) kivételével a LUIS a [regionális szolgáltatások adattárolási gyakorlatát](https://azuredatacentermap.azurewebsites.net/)követi.
 
+[!INCLUDE [portal consolidation](includes/portal-consolidation.md)]
+
+
 ### <a name="europe"></a>Európa
 
-Az [EU.Luis.ai](https://eu.luis.ai) -portál és Európa authoring (más néven programozási API-k) az Azure Európa-földrajzában található. A eu.luis.ai portál és Európa authoring (más néven programozási API-k) támogatják a végpontok következő Azure földrajzi területekre történő telepítését:
+A Europe authoring (más néven programozási API-k) erőforrásai az Azure Europe földrajzában futnak, és támogatják a végpontok a következő Azure-régiókban való üzembe helyezését:
 
 * Európa
 * Franciaország
 * Egyesült Királyság
 
-Ezen Azure földrajzi területek telepítésekor a végpont által az alkalmazás végfelhasználói által fogadott hosszúságú kimondott szöveg az Azure Európa-földrajzában az aktív tanuláshoz lesz tárolva. Az aktív tanulás letiltásával kapcsolatban lásd: az [aktív tanulás letiltása](luis-how-to-review-endpoint-utterances.md#disable-active-learning). A tárolt hosszúságú kimondott szöveg kezeléséhez lásd: a [teljes törlés](luis-how-to-review-endpoint-utterances.md#delete-utterance).
+Ezen Azure földrajzi területek telepítésekor a végpont által az alkalmazás végfelhasználói által fogadott hosszúságú kimondott szöveg az Azure Európa-földrajzában az aktív tanuláshoz lesz tárolva.
 
 ### <a name="australia"></a>Ausztrália
 
-Az [au.Luis.ai](https://au.luis.ai) -portál és az ausztráliai szerzői műveletek (más néven programozási API-k) az Azure Ausztráliában földrajzán futnak. A au.luis.ai-portál és az ausztráliai szerzői műveletek (más néven programozási API-k) támogatják a végpontok következő Azure földrajzi területekre történő telepítését:
+Az ausztrál authoring (más néven programozási API-k) erőforrásai az Azure Ausztráliában földrajzában futnak, és támogatják a végpontok a következő Azure-régiókban való üzembe helyezését:
 
 * Ausztrália
 
-Ezen Azure földrajzi területek telepítésekor a végpont által az alkalmazás végfelhasználói által kapott hosszúságú kimondott szöveg az Azure ausztráliai földrajza az aktív tanuláshoz. Az aktív tanulás letiltásával kapcsolatban lásd: az [aktív tanulás letiltása](luis-how-to-review-endpoint-utterances.md#disable-active-learning). A tárolt hosszúságú kimondott szöveg kezeléséhez lásd: a [teljes törlés](luis-how-to-review-endpoint-utterances.md#delete-utterance).
+Ezen Azure földrajzi területek telepítésekor a végpont által az alkalmazás végfelhasználói által kapott hosszúságú kimondott szöveg az Azure ausztráliai földrajza az aktív tanuláshoz.
 
 ### <a name="united-states"></a>Egyesült Államok
 
-A [Luis.ai](https://www.luis.ai) portál és a Egyesült Államok authoring (más néven programozott API-k) az Azure Egyesült Államok-földrajzában találhatók. A luis.ai-portál és a Egyesült Államok authoring (más néven programozási API-k) támogatják a végpontok következő Azure földrajzi területekre történő telepítését:
+Egyesült Államok authoring (más néven programozott API-k) erőforrásait az Azure Egyesült Államok földrajza üzemelteti, és támogatja a végpontok a következő Azure-régiókba való telepítését:
 
 * Az Európai vagy ausztráliai szerzői régiók nem támogatják az Azure földrajzi területeit
 
-Ezen Azure földrajzi területek telepítésekor a végpont által az alkalmazás végfelhasználói által fogadott hosszúságú kimondott szöveg az Azure Egyesült Államok-földrajzában az aktív tanuláshoz lesz tárolva. Az aktív tanulás letiltásával kapcsolatban lásd: az [aktív tanulás letiltása](luis-how-to-review-endpoint-utterances.md#disable-active-learning). A tárolt hosszúságú kimondott szöveg kezeléséhez lásd: a [teljes törlés](luis-how-to-review-endpoint-utterances.md#delete-utterance).
+Ezen Azure földrajzi területek telepítésekor a végpont által az alkalmazás végfelhasználói által fogadott hosszúságú kimondott szöveg az Azure Egyesült Államok-földrajzában az aktív tanuláshoz lesz tárolva. 
+
+## <a name="disable-active-learning"></a>Aktív tanulás letiltása
+
+Az aktív tanulás letiltásához tekintse meg az [aktív tanulás letiltása](luis-how-to-review-endpoint-utterances.md#disable-active-learning)című témakört. A tárolt hosszúságú kimondott szöveg kezeléséhez lásd: a [teljes törlés](luis-how-to-review-endpoint-utterances.md#delete-utterance).
 
 
 ## <a name="next-steps"></a>Következő lépések

@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 01/21/2021
 ms.author: tisande
-ms.openlocfilehash: 00c80fa311837918a78f26e941f00cb17f1dc279
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 4d2ad9cf6b47d8307d9652419b82de8ffcbcb099
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019176"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681650"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Az Azure Cosmos DB indexelési szabályzatai
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -35,6 +35,17 @@ A Azure Cosmos DB két indexelési módot támogat:
 > A Azure Cosmos DB a lusta indexelési módot is támogatja. A szakaszolt indexelés sokkal alacsonyabb prioritási szinttel végzi el az index frissítését, tehát akkor, amikor a motor nem végez semmilyen más munkát. Ez **inkonzisztens vagy hiányos** lekérdezési eredményekhez vezethet. Ha egy Cosmos-tároló lekérdezését tervezi, ne válassza a szakaszolt indexelést. Az új tárolók nem választhatnak lusta indexelést. A kivételt az [Azure támogatási szolgálatával](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) kérheti le (kivéve, ha olyan [kiszolgáló](serverless.md) nélküli módban használ Azure Cosmos-fiókot, amely nem támogatja a lusta indexelést).
 
 Alapértelmezés szerint az indexelési házirend a következőre van beállítva: `automatic` . Ez úgy érhető el, `automatic` Ha a tulajdonságot az indexelési házirendben a értékre állítja `true` . Ennek a tulajdonságnak a beállításával `true` engedélyezheti, hogy az Azure CosmosDB automatikusan indexelje a dokumentumokat írásuk szerint.
+
+## <a name="index-size"></a><a id="index-size"></a>Index mérete
+
+Azure Cosmos DB a teljes felhasznált tárterület az adatméret és az index méretének kombinációja. Az index egyes funkciói a következők:
+
+* Az index mérete az indexelési házirendtől függ. Ha az összes tulajdonság indexelve van, akkor az index mérete nagyobb lehet az adatméretnél.
+* Az Adattörléskor az indexek közel folyamatos tömörítéssel állnak. Kis Adattörlés esetén azonban előfordulhat, hogy az index méretének csökkenését nem észleli azonnal.
+* Az index mérete a következő esetekben növekedhet:
+
+  * Partíció felosztásának időtartama – a partíció felosztásának befejezése után a rendszer felszabadítja az index területét.
+  * Partíciók felosztásakor az index terület átmenetileg megnő a partíció felosztása során. 
 
 ## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a>Tulajdonságok elérési útjának belefoglalása és kizárása
 
@@ -103,7 +114,7 @@ Tekintse meg [ezt a szakaszt](how-to-manage-indexing-policy.md#indexing-policy-e
 
 Ha a belefoglalt elérési utak és a kizárt elérési utak ütköznek, a pontosabb elérési út elsőbbséget élvez.
 
-Íme egy példa:
+Bemutatunk egy példát:
 
 **Belefoglalt elérési út**: `/food/ingredients/nutrition/*`
 
@@ -294,7 +305,7 @@ Az élettartam [(TTL) szolgáltatás](time-to-live.md) használatához indexelé
 
 Olyan esetekben, ahol nem szükséges a tulajdonság elérési útjának indexelése, de az élettartam megadása kötelező, az indexelési módot használhat egy indexelési móddal `consistent` , amely nem tartalmaz belefoglalt elérési utat és `/*` az egyetlen kizárt elérési utat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az indexeléssel kapcsolatban az alábbi cikkekben olvashat bővebben:
 

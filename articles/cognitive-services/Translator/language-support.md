@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 6163f059581c2699d0b2780545c3ad5ec80f2907
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 60da61d094316b29c8fbc5454472bb898d693937
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882415"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681583"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Nyelvi és területi támogatás szöveg-és beszédfelismerési fordításhoz
 
@@ -195,24 +195,38 @@ A Átbetűzés metódus a következő nyelveket támogatja. A "to/from", "<->" k
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | Arab | `ar` | arab `Arab` | <--> | Latin betűs `Latn` |
 | Bangla  | `bn` | bengáli `Beng` | <--> | Latin betűs `Latn` |
+|belorusz| `be` | Cirill betűs `Cyrl`  | <--> | Latin betűs `Latn` |
+|Bolgár| `bg` | Cirill betűs `Cyrl`  | <--> | Latin betűs `Latn` |
 | Kínai (egyszerűsített) | `zh-Hans` | kínai (egyszerűsített) `Hans`| <--> | Latin betűs `Latn` |
 | Kínai (egyszerűsített) | `zh-Hans` | kínai (egyszerűsített) `Hans`| <--> | kínai (hagyományos) `Hant`|
 | Kínai (hagyományos) | `zh-Hant` | kínai (hagyományos) `Hant`| <--> | Latin betűs `Latn` |
 | Kínai (hagyományos) | `zh-Hant` | kínai (hagyományos) `Hant`| <--> | kínai (egyszerűsített) `Hans` |
+|Görög| `el` | görög `Grek`  | <--> | Latin betűs `Latn` |
 | gudzsaráti | `gu`  | gudzsaráti `Gujr` | <--> | Latin betűs `Latn` |
 | héber | `he` | héber `Hebr` | <--> | Latin betűs `Latn` |
 | Hindi | `hi` | Devanagari `Deva` | <--> | Latin betűs `Latn` |
 | Japán | `ja` | japán `Jpan` | <--> | Latin betűs `Latn` |
 | kannada | `kn` | kannada `Knda` | <--> | Latin betűs `Latn` |
+|Kazak| `kk` | Cirill betűs `Cyrl`  | <--> | Latin betűs `Latn` |
+|kirgiz| `ky` | Cirill betűs `Cyrl`  | <--> | Latin betűs `Latn` |
+|Macedón| `mk` | Cirill betűs `Cyrl`  | <--> | Latin betűs `Latn` |
 | malajálam | `ml` | malajálam `Mlym` | <--> | Latin betűs `Latn` |
 | marathi | `mr` | Devanagari `Deva` | <--> | Latin betűs `Latn` |
+|mongol| `mn` | Cirill betűs `Cyrl`  | <--> | Latin betűs `Latn` |
 | Odia | `or` | Oriya `Orya` | <--> | Latin betűs `Latn` |
+|perzsa| `fa` | arab `Arab`  | <--> | Latin betűs `Latn` |
 | pandzsábi | `pa` | Gurmukhi `Guru`  | <--> | Latin betűs `Latn`  |
+|Orosz| `ru` | Cirill betűs `Cyrl`  | <--> | Latin betűs `Latn` |
 | Szerb (cirill betűs) | `sr-Cyrl` | Cirill betűs `Cyrl`  | --> | Latin betűs `Latn` |
 | Szerb (latin betűs) | `sr-Latn` | Latin betűs `Latn` | --> | Cirill betűs `Cyrl`|
+|Szindhi| `sd` | arab `Arab`  | <--> | Latin betűs `Latn` |
+|Tádzsik| `tg` | Cirill betűs `Cyrl`  | <--> | Latin betűs `Latn` |
 | tamil | `ta` | tamil `Taml` | <--> | Latin betűs `Latn` |
+|tatár| `tt` | Cirill betűs `Cyrl`  | <--> | Latin betűs `Latn` |
 | telugu | `te` | telugu `Telu` | <--> | Latin betűs `Latn` |
 | Thai | `th` | thai `Thai` | --> | Latin betűs `Latn` |
+|Ukrán| `uk` | Cirill betűs `Cyrl`  | <--> | Latin betűs `Latn` |
+|urdu| `ur` | arab `Arab`  | <--> | Latin betűs `Latn` |
 
 ### <a name="dictionary"></a>Szótár
 

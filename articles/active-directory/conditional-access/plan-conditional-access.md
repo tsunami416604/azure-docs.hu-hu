@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13756be041f88883d84f9558308c7fe5c9be2d0e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: da21359b56b9e5b9d6e971032d06f8bae94efce0
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116007"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682138"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>A feltételes hozzáférés üzembe helyezésének megtervezése
 
@@ -368,7 +368,7 @@ Egyes szervezetek erre a célra rendelkeznek tesztelési Bérlővel. Azonban neh
 
 A tesztelési terv fontos, hogy összehasonlítsa a várt eredmények és a tényleges eredmények összehasonlítását. A tesztelés előtt mindig legyen várakozás. A következő táblázat példákat mutat be a tesztelési esetekre. A feltételes hozzáférési szabályzatok konfigurálása alapján állítsa be a forgatókönyveket és a várt eredményeket.
 
-| Szabályzat| Használati eset| Várt eredmény |
+| Szabályzat| Eset| Várt eredmény |
 | - | - | - |
 | [MFA megkövetelése, ha nem működik](untrusted-networks.md)| A meghatalmazott felhasználó bejelentkezik az alkalmazásba egy megbízható helyen/munkahelyen| A felhasználónak nem kell megadnia az MFA-t |
 | [MFA megkövetelése, ha nem működik](untrusted-networks.md)| Az engedélyezve lévő felhasználó bejelentkezik az alkalmazásba, és nem megbízható helyen/munkahelyen| A rendszer felszólítja a felhasználót az MFA használatára, és sikeresen bejelentkezhet |
@@ -485,4 +485,4 @@ Miután összegyűjtötte az adatokat, tekintse meg a következő forrásokat:
 
 [További információ az Identity Protectionről](../identity-protection/overview-identity-protection.md)
 
-[Feltételes hozzáférési szabályzatok kezelése Microsoft Graph API-val](https://docs.microsoft.com/graph/api/resources/conditionalaccesspolicy)
+[Feltételes hozzáférési szabályzatok kezelése Microsoft Graph API-val](/graph/api/resources/conditionalaccesspolicy)

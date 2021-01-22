@@ -11,14 +11,14 @@ ms.date: 07/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da80af9fe598186fa25d59601c9fa4faccb4286a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d67460c654c854c5a855560dde1d67732fa818c7
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87447041"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681955"
 ---
-# <a name="import-and-export-azure-ad-connect-configuration-settings-public-preview"></a>Azure AD Connect konfigurációs beállítások importálása és exportálása (nyilvános előzetes verzió)
+# <a name="import-and-export-azure-ad-connect-configuration-settings"></a>Azure AD Connect konfigurációs beállításainak importálása és exportálása 
 
 Az Azure Active Directory (Azure AD) összekapcsolási központi telepítések az egyetlen erdős Expressz módú telepítéstől a több erdőre kiterjedő, egyéni szinkronizálási szabályok használatával végzett összetett központi telepítésekre változnak. A számos konfigurációs beállítás és mechanizmus miatt elengedhetetlen, hogy megtudja, milyen beállítások vannak érvényben, és hogyan lehet gyorsan üzembe helyezni egy kiszolgálót azonos konfigurációval. Ez a funkció bevezeti az adott szinkronizációs kiszolgáló konfigurációjának katalogizálása és a beállítások új központi telepítésbe való importálásának lehetőségét. A szinkronizálási beállítások különböző pillanatképeit összehasonlítva egyszerűen megjelenítheti a két kiszolgáló közötti különbségeket, illetve az idő múlásával megegyező kiszolgálót.
 
@@ -39,7 +39,7 @@ Előzőleg exportált beállítások importálása:
  
 1. Telepítse a **Azure ad Connectt** egy új kiszolgálóra.
 1. Válassza a **Testreszabás** lehetőséget az **üdvözlő** oldal után.
-1. Válassza a **szinkronizálási beállítások importálása**lehetőséget. Tallózással keresse meg a korábban exportált JSON-beállításokat tartalmazó fájlt.
+1. Válassza a **szinkronizálási beállítások importálása** lehetőséget. Tallózással keresse meg a korábban exportált JSON-beállításokat tartalmazó fájlt.
 1. Válassza a **Telepítés** gombot.
 
    ![A szükséges összetevők telepítése képernyőt megjelenítő képernyőkép](media/how-to-connect-import-export-config/import1.png)
@@ -77,12 +77,12 @@ A beállítások áttelepíthetők:
 
    ![Azure AD Connect-címtárakat bemutató képernyőkép.](media/how-to-connect-import-export-config/migrate1.png)
 
-1. Futtassa a parancsfájlt az itt látható módon, és mentse a teljes alsó szintű kiszolgáló konfigurációs könyvtárat. Másolja ezt a könyvtárat az új átmeneti kiszolgálóra. A teljes **exportált-ServerConfiguration-*** mappát át kell másolnia az új kiszolgálóra.
+1. Futtassa a parancsfájlt az itt látható módon, és mentse a teljes alsó szintű kiszolgáló konfigurációs könyvtárat. Másolja ezt a könyvtárat az új átmeneti kiszolgálóra. A teljes **exportált-ServerConfiguration-** _ mappát át kell másolnia az új kiszolgálóra.
 
    ![Képernyőkép, amely a Windows PowerShellben lévő parancsfájlt jeleníti meg. ](media/how-to-connect-import-export-config/migrate2.png)
-    ![ Az exportált-ServerConfiguration-* mappa másolását bemutató képernyőkép.](media/how-to-connect-import-export-config/migrate3.png)
+    ![ Az exportált-ServerConfiguration-_ mappa másolását bemutató képernyőkép.](media/how-to-connect-import-export-config/migrate3.png)
 
-1. **Azure ad Connect** indításához kattintson duplán a ikonra az asztalon. Fogadja el a Microsoft szoftverlicenc-szerződését, és a következő lapon válassza a **Testreszabás**lehetőséget.
+1. **Azure ad Connect** indításához kattintson duplán a ikonra az asztalon. Fogadja el a Microsoft szoftverlicenc-szerződését, és a következő lapon válassza a **Testreszabás** lehetőséget.
 1. Jelölje be a **szinkronizálási beállítások importálása** jelölőnégyzetet. Válassza a **Tallózás** lehetőséget a másolt exportált ServerConfiguration-* mappa tallózásához. Az áttelepített beállítások importálásához válassza ki a MigratedPolicy.js.
 
    ![A szinkronizálási beállítások importálása lehetőséget megjelenítő képernyőkép.](media/how-to-connect-import-export-config/migrate4.png)
@@ -91,7 +91,7 @@ A beállítások áttelepíthetők:
 
 Az eredetileg importált beállítások fájljának az újonnan telepített kiszolgáló exportált beállítási fájljával való összehasonlítása elengedhetetlen lépés a tervezett és a létrejövő üzemelő példány közötti különbségek megismeréséhez. A kedvenc párhuzamos szöveges összehasonlító alkalmazása egy azonnali vizualizációt eredményez, amely gyorsan kiemeli a kívánt vagy véletlen változásokat.
 
-A korábban manuálisan beállított manuális konfigurációs lépések azonban már nem szükségesek, ezért a szervezet minősítési folyamatát továbbra is biztosítani kell, hogy ne legyen szükség további konfigurálásra. Ez a konfiguráció akkor fordulhat elő, ha speciális beállításokat használ, amelyek jelenleg nem rögzítettek a beállítások kezelésének nyilvános előzetes kiadásában.
+A korábban manuálisan beállított manuális konfigurációs lépések azonban már nem szükségesek, ezért a szervezet minősítési folyamatát továbbra is biztosítani kell, hogy ne legyen szükség további konfigurálásra. Ez a konfiguráció akkor fordulhat elő, ha speciális beállításokat használ, amelyek jelenleg nem rögzítettek a beállítások kezelésének ezen kiadásában.
 
 Ismert korlátozások:
 - **Szinkronizálási szabályok**: az egyéni szabályok elsőbbségének a 0 és 99 közötti fenntartott tartományba kell esnie, hogy elkerülje a Microsoft szokásos szabályainak ütközését. Ha az egyéni szabályt a fenntartott tartományon kívülre helyezi, az egyéni szabályt a rendszer úgy is elmozdulhat, hogy az általános szabályok bekerülnek a konfigurációba. Hasonló probléma lép fel, ha a konfiguráció módosított szabványos szabályokat tartalmaz. A standard szabályok módosítása nem ajánlott, és a szabály elhelyezése valószínűleg helytelen.
@@ -102,7 +102,7 @@ Ismert korlátozások:
 - **Active Directory összevonási szolgáltatások (AD FS) (AD FS) és PingFederate hitelesítés**: a hitelesítési funkciókhoz társított bejelentkezési metódusok automatikusan előre ki vannak választva. Az összes többi szükséges konfigurációs paramétert interaktív módon kell megadnia.
 - **A letiltott egyéni szinkronizálási szabályok engedélyezve lesznek importálva**: a rendszer a letiltott egyéni szinkronizálási szabályt engedélyezve állapotba importálja. Győződjön meg arról, hogy az új kiszolgálón is le van tiltva.
 
- ## <a name="next-steps"></a>További lépések
+ ## <a name="next-steps"></a>Következő lépések
 
 - [Hardver és előfeltételek](how-to-connect-install-prerequisites.md) 
 - [Gyorsbeállítások](how-to-connect-install-express.md)

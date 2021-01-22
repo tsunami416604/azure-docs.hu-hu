@@ -1,18 +1,18 @@
 ---
 title: Azure Policy szabályozási megfelelőségi szabályozása Azure Database for PostgreSQL
 description: Felsorolja Azure Policy Azure Database for PostgreSQL számára elérhető szabályozási megfelelőségi szabályozásokat. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.topic: sample
 author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 920b8185b82f83feb3940072d3c34a6120af8041
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: d1893b14a896af1f2f565e17b00937c6cb457105
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051691"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682213"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-database-for-postgresql"></a>Azure Policy szabályozási megfelelőségi szabályozása Azure Database for PostgreSQL
 
@@ -23,7 +23,7 @@ A **biztonsági vezérlők** beépített moduljait egyenként is hozzárendelhet
 
 [!INCLUDE [azure-policy-compliancecontrols-postgresql](../../includes/policy/standards/byrp/microsoft.dbforpostgresql.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure Policy szabályozási megfelelőségről](../governance/policy/concepts/regulatory-compliance.md).
 - A beépített elemek megtekintése az [Azure Policy GitHub-adattárában](https://github.com/Azure/azure-policy).

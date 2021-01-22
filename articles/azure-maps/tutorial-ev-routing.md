@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 7a33cf4e66ce31f8fb8534de25d7564a5784ca3a
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 7341d1f07e8814edcad7b84f6b3b46c7bece3159
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625049"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680332"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Oktatóanyag: elektromos járművek átirányítása Azure Notebooks használatával (Python)
 
@@ -27,7 +27,7 @@ Ebben az oktatóanyagban egy olyan illesztőprogramot fog segíteni, amelynek az
 Az oktatóanyagban a következőket végezheti el:
 
 > [!div class="checklist"]
-> * Hozzon létre és futtasson egy Jupyter Notebook fájlt [Azure Notebooks](../notebooks/index.yml) a felhőben.
+> * Hozzon létre és futtasson egy Jupyter Notebook fájlt [Azure Notebooks](https://notebooks.azure.com) a felhőben.
 > * Azure Maps REST API-k hívása a Pythonban.
 > * Keressen egy elérhető tartományt az elektromos jármű használati modellje alapján.
 > * Keressen az elektromos járművek díjszabási állomásait a rendelkezésre álló tartományon belül, vagy isochrone.
@@ -49,7 +49,7 @@ A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [A
 
 Ennek az oktatóanyagnak a követéséhez létre kell hoznia egy Azure Notebooks projektet, és le kell töltenie és futtatnia kell a Jupyter Notebook fájlt. A Jupyter Notebook fájl Python-kódot tartalmaz, amely megvalósítja a forgatókönyvet ebben az oktatóanyagban. Azure Notebooks projekt létrehozásához és a Jupyter Notebook dokumentum feltöltéséhez tegye a következő lépéseket:
 
-1. Lépjen [Azure Notebooks](https://notebooks.azure.com) , és jelentkezzen be. További információ: gyors útmutató [: bejelentkezés és felhasználói azonosító beállítása](../notebooks/quickstart-sign-in-azure-notebooks.md).
+1. Lépjen [Azure Notebooks](https://notebooks.azure.com) , és jelentkezzen be. További információ: gyors útmutató [: bejelentkezés és felhasználói azonosító beállítása](https://notebooks.azure.com).
 1. A nyilvános profil lap tetején válassza a **saját projektek** lehetőséget.
 
     ![A saját projektek gomb](./media/tutorial-ev-routing/myproject.png)
@@ -89,7 +89,7 @@ A kód Jupyter Notebook-ben való futtatásához a következő lépések végreh
     a. Az első legördülő listában válassza a **Requirements.txt** lehetőséget.  
     b. A második legördülő listában válassza ki a *requirements.txt* fájlt.  
     c. A harmadik legördülő listában válassza ki a **Python 3,6** -es verzióját.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
     ![Csomagok telepítése](./media/tutorial-ev-routing/install-packages.png)
 
@@ -408,4 +408,4 @@ Nincsenek karbantartást igénylő erőforrások.
 További információ a Azure Notebooksről:
 
 > [!div class="nextstepaction"]
-> [Azure Notebooks](../notebooks/index.yml)
+> [Azure Notebooks](https://notebooks.azure.com)

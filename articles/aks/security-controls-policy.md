@@ -1,16 +1,16 @@
 ---
 title: Az Azure Kubernetes Service (ak) megfelelőségi szabályozásának Azure Policy
 description: Felsorolja Azure Policy az Azure Kubernetes Service (ak) szolgáltatáshoz elérhető szabályozási megfelelőségi szabályozásokat. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.topic: sample
 ms.service: container-service
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 398702d0110b9430d55a0c90f751e8cf14eb33f7
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 5d9f7797923cf47811f6726a2e3cd7957950b080
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049464"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681906"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (ak) megfelelőségi szabályozásának Azure Policy
 
@@ -21,7 +21,7 @@ A **biztonsági vezérlők** beépített moduljait egyenként is hozzárendelhet
 
 [!INCLUDE [azure-policy-compliancecontrols-aks](../../includes/policy/standards/byrp/microsoft.containerservice.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure Policy szabályozási megfelelőségről](../governance/policy/concepts/regulatory-compliance.md).
 - A beépített elemek megtekintése az [Azure Policy GitHub-adattárában](https://github.com/Azure/azure-policy).
