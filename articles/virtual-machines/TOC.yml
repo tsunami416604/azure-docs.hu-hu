@@ -1,34 +1,1874 @@
 - name: Virtual Machines-dokumentáció
   href: index.yml
-- name: Linux rendszerű virtuális gépek az Azure-ban
-  href: ./linux/index.yml
-- name: Windows rendszerű virtuális gépek az Azure-ban
-  href: ./windows/index.yml
-- name: Virtuálisgép-bővítmények dokumentációja
-  href: ./extensions/overview.md
+- name: Áttekintés
+  items:
+    - name: Tudnivalók Linux Virtual Machines
+      href: ./linux/overview.md
+    - name: Tudnivalók Windows Virtual Machines
+      href: ./windows/overview.md
+- name: Rövid útmutatók
+  items:
+    - name: Linux rendszerű virtuális gép létrehozása
+      items:
+        - name: parancssori felület
+          href: ./linux/quick-create-cli.md
+        - name: Portál
+          href: ./linux/quick-create-portal.md
+        - name: PowerShell
+          href: ./linux/quick-create-powershell.md
+        - name: ARM-sablon
+          displayName: 'Resource Manager, template, json'
+          href: ./linux/quick-create-template.md
+    - name: Windows rendszerű virtuális gép létrehozása
+      items:
+        - name: parancssori felület
+          href: ./windows/quick-create-cli.md
+        - name: Portál
+          href: ./windows/quick-create-portal.md
+        - name: PowerShell
+          href: ./windows/quick-create-powershell.md
+        - name: ARM-sablon
+          displayName: 'Resource Manager, template, json'
+          href: ./windows/quick-create-template.md
+  expanded: true
+- name: Oktatóanyagok
+  items:
+    - name: Linux
+      items:
+        - name: 1 – Virtuális gépek létrehozása/kezelése
+          href: ./linux/tutorial-manage-vm.md
+        - name: 2 – Lemezek létrehozása/kezelése
+          href: ./linux/tutorial-manage-disks.md
+        - name: 3 – Konfigurálás automatizálása
+          href: ./linux/tutorial-automate-vm-deployment.md
+        - name: 4 – Virtuálisgép-lemezképek létrehozása
+          href: ./linux/tutorial-custom-images.md
+        - name: 5 – Magas rendelkezésre állású virtuális gépek
+          href: ./linux/tutorial-availability-sets.md
+        - name: 6 – Méretezési csoport létrehozása
+          href: ./linux/tutorial-create-vmss.md
+        - name: 7 – Virtuális gépek terheléselosztása
+          href: ./linux/tutorial-load-balancer.md
+        - name: 8 – Hálózatkezelés
+          href: ./linux/tutorial-virtual-network.md
+    - name: Windows
+      items:
+        - name: 1 – Virtuális gép létrehozása/kezelése
+          href: ./windows/tutorial-manage-vm.md
+        - name: 2 – Lemezek létrehozása/kezelése
+          href: ./windows/tutorial-manage-data-disk.md
+        - name: 3 – Konfigurálás automatizálása
+          href: ./windows/tutorial-automate-vm-deployment.md
+        - name: 4 – Virtuálisgép-lemezképek létrehozása
+          href: ./windows/tutorial-custom-images.md
+        - name: 5 – Magas rendelkezésre állású virtuális gépek
+          href: ./windows/tutorial-availability-sets.md
+        - name: 6 – Méretezési csoport létrehozása
+          href: ./windows/tutorial-create-vmss.md
+        - name: 7 – Virtuális gépek terheléselosztása
+          href: ./windows/tutorial-load-balancer.md
+        - name: 8 – Hálózatkezelés
+          href: ./windows/tutorial-virtual-network.md
 - name: Számítási feladatok
   items:
     - name: Red Hat
       href: ./workloads/redhat/overview.md
-    - name: Nagy teljesítményű feldolgozás
-      href: ./workloads/hpc/overview.md
-    - name: SAP
-      href: ./workloads/sap/get-started.md
+    - name: Cloud Foundry
+      href: ../cloudfoundry/index.yml
+    - name: Cassandra
+      href: /azure/architecture/reference-architectures/n-tier/n-tier-cassandra
+    - name: OpenShift
+      items:
+        - name: OpenShift áttekintése
+          href: ./linux/openshift-get-started.md
+        - name: Az OpenShift-tárolóplatform 4.x-es verziója
+          href: ./linux/openshift-container-platform-4x.md
+        - name: Az OpenShift-tárolóplatform 3.11-es verziójának előfeltételei
+          href: ./linux/openshift-container-platform-3x-prerequisites.md
+        - name: Az OpenShift-tárolóplatform 3.11-es verziója
+          href: ./linux/openshift-container-platform-3x.md
+        - name: Az OpenShift-tárolóplatform 3.11-es verziójának önállóan felügyelt Marketplace-e
+          href: ./linux/openshift-container-platform-3x-marketplace-self-managed.md
+        - name: Azure Stack
+          href: ./linux/openshift-azure-stack.md
+        - name: Az OpenShift-tárolóplatform 3.11-es verziójának üzembe helyezés utáni feladatai
+          href: ./linux/openshift-container-platform-3x-post-deployment.md
+        - name: Az OpenShift-tárolóplatform 3.11-es verzióján alapuló környezetek hibáinak elhárítása
+          href: ./linux/openshift-container-platform-3x-troubleshooting.md
+        - name: OKD üzembe helyezése
+          href: ./linux/openshift-okd.md
+    - name: Az SAP az Azure-on
+      items:
+        - name: Bevezetés
+          href: ./workloads/sap/get-started.md
+        - name: Tanúsítványok
+          href: ./workloads/sap/sap-certifications.md
+        - name: SAP HANA az Azure-ban (nagyméretű példányok)
+          items:
+            - name: Áttekintés
+              items:
+                - name: Mi az SAP HANA az Azure-ban (nagy méretű példányok)?
+                  href: ./workloads/sap/hana-overview-architecture.md
+                - name: A feltételek megismerése
+                  href: ./workloads/sap/hana-know-terms.md
+                - name: Tanúsítvány
+                  href: ./workloads/sap/hana-certification.md
+                - name: HLI-hez elérhető termékváltozatok
+                  href: ./workloads/sap/hana-available-skus.md
+                - name: Méretezés
+                  href: ./workloads/sap/hana-sizing.md
+                - name: Előkészítési követelmények
+                  href: ./workloads/sap/hana-onboarding-requirements.md
+                - name: SAP HANA adatszintezés és bővítménycsomópontok
+                  href: ./workloads/sap/hana-data-tiering-extension-nodes.md
+                - name: Működési modell és feladatok
+                  href: ./workloads/sap/hana-operations-model.md
+                - name: Kompatibilis operációs rendszerek
+                  href: ./workloads/sap/os-compatibility-matrix-hana-large-instance.md
+        - name: Architektúra
+          items:
+            - name: Általános architektúra
+              href: ./workloads/sap/hana-architecture.md
+            - name: Hálózati architektúra
+              href: ./workloads/sap/hana-network-architecture.md
+            - name: Tároló-architektúra
+              href: ./workloads/sap/hana-storage-architecture.md
+            - name: HLI – támogatott esetek
+              href: ./workloads/sap/hana-supported-scenario.md
+        - name: Infrastruktúra és csatlakozási lehetőségek
+          items:
+            - name: HLI – üzembe helyezés
+              href: ./workloads/sap/hana-overview-infrastructure-connectivity.md
+            - name: Azure-beli virtuális gépek csatlakozása nagy méretű HANA-példányokhoz
+              href: ./workloads/sap/hana-connect-azure-vm-large-instances.md
+            - name: Virtuális hálózat csatlakoztatása nagy méretű HANA-példányokhoz – ExpressRoute
+              href: ./workloads/sap/hana-connect-vnet-express-route.md
+            - name: További hálózati követelmények
+              href: ./workloads/sap/hana-additional-network-requirements.md
+        - name: Az SAP HANA telepítése
+          items:
+            - name: A konfiguráció ellenőrzése
+              href: ./workloads/sap/hana-installation.md
+            - name: Minta HANA-telepítés
+              href: ./workloads/sap/hana-example-installation.md
+        - name: Magas rendelkezésre állás és vészhelyreállítás
+          items:
+            - name: Lehetőségek és megfontolandó szempontok
+              href: ./workloads/sap/hana-overview-high-availability-disaster-recovery.md
+            - name: Biztonsági mentés és visszaállítás
+              href: ./workloads/sap/hana-backup-restore.md
+            - name: Alapelvek és előkészítés
+              href: ./workloads/sap/hana-concept-preparation.md
+            - name: Vészhelyreállítási feladatátvételi eljárás
+              href: ./workloads/sap/hana-failover-procedure.md
+        - name: Hibaelhárítás és monitorozás
+          items:
+            - name: A HLI monitorozása
+              href: ./workloads/sap/troubleshooting-monitoring.md
+            - name: HANA-oldali monitorozás és hibaelhárítás
+              href: ./workloads/sap/hana-monitor-troubleshoot.md
+        - name: Útmutató
+          items:
+            - name: Az Azure HANA nagyméretű példányok vezérlése az Azure Portalon keresztül
+              href: ./workloads/sap/hana-li-portal.md
+            - name: Magas rendelkezésre állás beállítása a STONITH használatával
+              href: ./workloads/sap/ha-setup-with-stonith.md
+            - name: Az operációs rendszer biztonsági mentése II. típusú termékváltozatokhoz
+              href: ./workloads/sap/os-backup-type-ii-skus.md
+            - name: Kdump engedélyezése a HANA nagyméretű példányaihoz
+              href: ./workloads/sap/hana-large-instance-enable-kdump.md
+            - name: HANA nagyméretű példányainak operációsrendszer-frissítése
+              href: ./workloads/sap/os-upgrade-hana-large-instance.md
+            - name: SMT-kiszolgáló beállítása SUSE Linuxhoz
+              href: ./workloads/sap/hana-setup-smt.md
+            - name: HLI-ből Azure-beli virtuális gépre irányuló migrálás
+              href: ./workloads/sap/hana-large-instance-virtual-machine-migration.md
+            - name: SAP HANA nagy méretű példányaira vonatkozó foglalás vásárlása
+              href: ../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md?context=/azure/virtual-machines/context/context
+    - name: SAP HANA az Azure-beli virtuális gépeken
+      items:
+        - name: SAP HANA telepítése Azure-beli virtuális gépeken
+          href: ./workloads/sap/hana-get-started.md
+        - name: S/4 HANA vagy BW/4 HANA SAP CAL üzembehelyezési útmutatója
+          href: ./workloads/sap/cal-s4h.md
+        - name: SAP HANA infrastruktúrakonfigurációk és -műveletek az Azure-ban
+          href: ./workloads/sap/hana-vm-operations.md
+        - name: SAP HANA Azure-beli virtuális gépek tárkonfigurációi
+          href: ./workloads/sap/hana-vm-operations-storage.md
+        - name: NFS 4.1-es verziójú kötetek az SAP HANA-hoz készült Azure NetApp Filesban
+          href: ./workloads/sap/hana-vm-operations-netapp.md
+        - name: Az SAP HANA rendelkezésre állása az Azure-beli virtuális gépeken
+          items:
+            - name: Azure rendelkezésre állási csoportokon futó SAP HANA – Áttekintés
+              href: ./workloads/sap/sap-hana-availability-overview.md
+            - name: Egy Azure-régión belüli Azure rendelkezésre állási csoportokon futó SAP HANA
+              href: ./workloads/sap/sap-hana-availability-one-region.md
+            - name: Több Azure-régión belüli Azure rendelkezésre állási csoportokon futó SAP HANA
+              href: ./workloads/sap/sap-hana-availability-across-regions.md
+            - name: Az SAP HANA SLES-en végzett rendszerreplikálásának beállítása
+              href: ./workloads/sap/sap-hana-high-availability.md
+            - name: Az SAP HANA RHEL-en végzett rendszerreplikálásának beállítása
+              href: ./workloads/sap/sap-hana-high-availability-rhel.md
+            - name: Az SAP HANA RHEL-en ANF-fel végzett rendszerreplikálásának beállítása
+              href: ./workloads/sap/sap-hana-high-availability-netapp-files-red-hat.md
+            - name: Az SAP HANA-felskálázás és a Pacemaker on SLES hibaelhárítása
+              href: ./workloads/sap/hana-vm-troubleshoot-scale-out-ha-on-sles.md
+            - name: SAP HANA-felskálázási HSR a Pacemaker on RHEL-lel
+              href: ./workloads/sap/sap-hana-high-availability-scale-out-hsr-rhel.md
+            - name: 'SAP HANA-felskálázás készenlétben lévő csomóponttal, az Azure NetApp Files on SLES használatával'
+              href: ./workloads/sap/sap-hana-scale-out-standby-netapp-files-suse.md
+            - name: 'SAP HANA-felskálázás készenlétben lévő csomóponttal, az Azure NetApp Files on RHEL használatával'
+              href: ./workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel.md
+        - name: SAP HANA biztonsági mentés áttekintése
+          href: ./workloads/sap/sap-hana-backup-guide.md
+        - name: SAP HANA fájlszintű biztonsági mentés
+          href: ./workloads/sap/sap-hana-backup-file-level.md
+    - name: SAP NetWeaver és Business One az Azure Virtual Machinesban
+      items:
+        - name: SAP számítási feladatok tervezési és üzembehelyezési ellenőrzőlistája
+          href: ./workloads/sap/sap-deployment-checklist.md
+        - name: SAP NetWeaver tervezése és megvalósítása Azure-ban
+          href: ./workloads/sap/planning-guide.md
+          items:
+            - name: Azure Storage-tárolótípusok SAP számítási feladathoz
+              href: ./workloads/sap/planning-guide-storage.md
+            - name: SAP-tevékenységprofil az Azure-beli virtuális gépek támogatott forgatókönyveiben
+              href: ./workloads/sap/sap-planning-supported-configurations.md
+            - name: Milyen SAP-szoftvert támogatnak az Azure-beli üzemelő példányok?
+              href: ./workloads/sap/sap-supported-product-on-azure.md
+        - name: SAP NetWeaver üzembehelyezési útmutató
+          href: ./workloads/sap/deployment-guide.md
+        - name: DBMS üzembehelyezési útmutatók SAP számítási feladatokhoz
+          items:
+            - name: Általános Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
+              href: ./workloads/sap/dbms_guide_general.md
+            - name: SQL Server rendszerű Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
+              href: ./workloads/sap/dbms_guide_sqlserver.md
+            - name: Oracle Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
+              href: ./workloads/sap/dbms_guide_oracle.md
+            - name: IBM Db2 Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
+              href: ./workloads/sap/dbms_guide_ibm.md
+            - name: Az IBM Db2 LUW magas rendelkezésre állása Azure-beli virtuális gépeken SUSE Linux Enterprise Serveren
+              href: ./workloads/sap/dbms-guide-ha-ibm.md
+            - name: Az IBM Db2 LUW magas rendelkezésre állása Azure-beli virtuális gépeken Red Hat Enterprise Linux Serveren
+              href: ./workloads/sap/high-availability-guide-rhel-ibm-db2-luw.md
+            - name: SAP ASE Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
+              href: ./workloads/sap/dbms_guide_sapase.md
+            - name: 'SAP MaxDB, liveCache és tartalomkiszolgáló üzembe helyezése az Azure-ban'
+              href: ./workloads/sap/dbms_guide_maxdb.md
+            - name: Az SAP HANA rendelkezésre állása az Azure-beli virtuális gépeken
+              items:
+                - name: Azure rendelkezésre állási csoportokon futó SAP HANA – Áttekintés
+                  href: ./workloads/sap/sap-hana-availability-overview.md
+                - name: Egy Azure-régión belüli Azure rendelkezésre állási csoportokon futó SAP HANA
+                  href: ./workloads/sap/sap-hana-availability-one-region.md
+                - name: Több Azure-régión belüli Azure rendelkezésre állási csoportokon futó SAP HANA
+                  href: ./workloads/sap/sap-hana-availability-across-regions.md
+        - name: SAP Business One az Azure Virtual Machinesban
+          href: ./workloads/sap/business-one-azure.md
+        - name: SAP IDES Windows rendszeren/SQL Server SAP CAL üzembehelyezési útmutatója
+          href: ./workloads/sap/cal-ides-erp6-erp7-sp3-sql.md
+        - name: Az Azure SAP LaMa összekötője
+          href: ./workloads/sap/lama-installation.md
+        - name: Magas rendelkezésre állás (HA) Windowson és Linuxon
+          items:
+            - name: Áttekintés
+              href: ./workloads/sap/sap-high-availability-guide-start.md
+            - name: Magas rendelkezésre állású architektúra
+              items:
+                - name: Magas rendelkezésre állású architektúra és forgatókönyvek
+                  href: ./workloads/sap/sap-high-availability-architecture-scenarios.md
+                - name: Magasabb rendelkezésre állású architektúra és forgatókönyvek
+                  href: ./workloads/sap/sap-higher-availability-architecture-scenarios.md
+                - name: SAP számításifeladat-konfigurációk az Azure Availability Zones szolgáltatással
+                  href: ./workloads/sap/sap-ha-availability-zones.md
+                - name: Magas rendelkezésre állás Windows rendszeren közös lemezzel (A)SCS példányhoz
+                  href: ./workloads/sap/sap-high-availability-guide-wsfc-shared-disk.md
+                - name: Magas rendelkezésre állás Windows rendszeren SOFS-fájlmegosztással (A)SCS példányhoz
+                  href: ./workloads/sap/sap-high-availability-guide-wsfc-file-share.md
+                - name: Magas rendelkezésre állás a SAP NetWeaver esetében Windows rendszeren az Azure NetApp Files (SMB) használatával
+                  href: ./workloads/sap/high-availability-guide-windows-netapp-files-smb.md
+                - name: Magas rendelkezésre állás SUSE Linux rendszeren (A)SCS példányhoz
+                  href: ./workloads/sap/high-availability-guide-suse.md
+                - name: Magas rendelkezésre állás SUSE Linux rendszeren (A)SCS példányhoz Azure NetApp Files szolgáltatással
+                  href: ./workloads/sap/high-availability-guide-suse-netapp-files.md
+                - name: Magas rendelkezésre állás Red Hat Enterprise Linux rendszeren (A)SCS példányhoz
+                  href: ./workloads/sap/high-availability-guide-rhel.md
+                - name: Magas rendelkezésre állás Red Hat Enterprise Linux rendszeren (A)SCS példányhoz az Azure NetApp Filesszal
+                  href: ./workloads/sap/high-availability-guide-rhel-netapp-files.md
+            - name: Az Azure infrastruktúra előkészítése
+              items:
+                - name: Windows közös lemezzel (A)SCS példányhoz
+                  href: ./workloads/sap/sap-high-availability-infrastructure-wsfc-shared-disk.md
+                - name: Windows SOFS-fájlmegosztással (A)SCS példányhoz
+                  href: ./workloads/sap/sap-high-availability-infrastructure-wsfc-file-share.md
+                - name: Magas rendelkezésre állás NFS-hez Azure-beli virtuális gépeken SLES rendszeren
+                  href: ./workloads/sap/high-availability-guide-suse-nfs.md
+                - name: Red Hat Enterprise Linuxon futó Azure-beli virtuális gépeken üzemelő GlusterFS SAP NetWeaverhez
+                  href: ./workloads/sap/high-availability-guide-rhel-glusterfs.md
+                - name: Pacemaker on SLES
+                  href: ./workloads/sap/high-availability-guide-suse-pacemaker.md
+                - name: Pacemaker on RHEL
+                  href: ./workloads/sap/high-availability-guide-rhel-pacemaker.md
+                - name: Az Azure Standard Load Balancert használó virtuális gépek nyilvános végpontkapcsolatai a magas rendelkezésre állási SAP-forgatókönyvekben
+                  href: ./workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections.md
+            - name: SAP-telepítés
+              items:
+                - name: Windows közös lemezzel (A)SCS példányhoz
+                  href: ./workloads/sap/sap-high-availability-installation-wsfc-shared-disk.md
+                - name: Windows SOFS-fájlmegosztással (A)SCS példányhoz
+                  href: ./workloads/sap/sap-high-availability-installation-wsfc-file-share.md
+                - name: Magas rendelkezésre állás a SAP NetWeaver esetében Windows rendszeren az Azure NetApp Files (SMB) használatával
+                  href: ./workloads/sap/high-availability-guide-windows-netapp-files-smb.md
+                - name: SUSE Linux NFS-sel (A)SCS példányhoz
+                  href: ./workloads/sap/high-availability-guide-suse.md
+                - name: SUSE Linux NFS-sel (A)SCS példányhoz Azure NetApp Files szolgáltatással
+                  href: ./workloads/sap/high-availability-guide-suse-netapp-files.md
+                - name: Magas rendelkezésre állás SAP NetWeaverhez Red Hat Enterprise Linuxon
+                  href: ./workloads/sap/high-availability-guide-rhel.md
+                - name: Red Hat Enterprise Linux NFS-sel (A)SCS példányhoz Azure NetApp Filesszal
+                  href: ./workloads/sap/high-availability-guide-rhel-netapp-files.md
+            - name: SAP több biztonsági azonosítóval
+              items:
+                - name: Windows Azure közös lemezzel (A)SCS példányhoz
+                  href: ./workloads/sap/sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md
+                - name: Windows közös lemezzel (A)SCS példányhoz
+                  href: ./workloads/sap/sap-ascs-ha-multi-sid-wsfc-shared-disk.md
+                - name: Windows SOFS-fájlmegosztással (A)SCS példányhoz
+                  href: ./workloads/sap/sap-ascs-ha-multi-sid-wsfc-file-share.md
+                - name: SLES és Pacemaker több biztonsági azonosítóval A(SCS) példányhoz
+                  href: ./workloads/sap/high-availability-guide-suse-multi-sid.md
+                - name: RHEL és Pacemaker több biztonsági azonosítóval A(SCS) példányhoz
+                  href: ./workloads/sap/high-availability-guide-rhel-multi-sid.md
+        - name: Azure Site Recovery az SAP-vészhelyreállításhoz
+          href: ../site-recovery/site-recovery-workload.md#protect-sap
+        - name: Azure-beli közelségi elhelyezési csoportok az optimális hálózati késés érdekében SAP-alkalmazások használatával
+          href: ./workloads/sap/sap-proximity-placement-scenarios.md
+        - name: SAP BusinessObjects Business Intelligence platform az Azure-on
+          items:
+            - name: SAP BusinessObjects BI platformtervezési és -megvalósítási útmutató az Azure-on
+              href: ./workloads/sap/businessobjects-deployment-guide.md
+            - name: SAP BusinessObjects BI platformtelepítési útmutató Linuxhoz az Azure-on
+              href: ./workloads/sap/businessobjects-deployment-guide-linux.md
+        - name: Az Azure AD integrálása SAP-alkalmazásokkal
+          items:
+            - name: Felhasználók átadása az SAP SuccessFactorsból az Active Directoryba
+              href: ../active-directory/saas-apps/sap-successfactors-inbound-provisioning-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Felhasználók átadása az SAP SuccessFactorsból az Azure AD-be
+              href: ../active-directory/saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Felhasználók visszaírása az Azure AD-ből az SAP SuccessFactorsba
+              href: ../active-directory/saas-apps/sap-successfactors-writeback-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Felhasználók átadása az SAP Cloud Platform Identity Authentication szolgáltatásnak
+              href: ../active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: SSO konfigurálása az SAP Cloud Platform Identity Authentication szolgáltatással
+              href: ../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: SSO konfigurálása az SAP SuccessFactorsszal
+              href: ../active-directory/saas-apps/successfactors-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: SSO konfigurálása az SAP Analytics Clouddal
+              href: ../active-directory/saas-apps/sapboc-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: SSO konfigurálása az SAP Fiorival
+              href: ../active-directory/saas-apps/sap-fiori-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: SSO konfigurálása az SAP Qualtricsszal
+              href: ../active-directory/saas-apps/qualtrics-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: SSO konfigurálása az SAP Aribával
+              href: ../active-directory/saas-apps/ariba-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: SSO konfigurálása az SAP Concur Travel and Expense-szel
+              href: ../active-directory/saas-apps/concur-travel-and-expense-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: SSO konfigurálása az SAP Cloud Platformmal
+              href: ../active-directory/saas-apps/sap-hana-cloud-platform-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: SSO konfigurálása az SAP NetWeaverrel
+              href: ../active-directory/saas-apps/sap-netweaver-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: SSO konfigurálása az SAP Business ByDesignnal
+              href: ../active-directory/saas-apps/sapbusinessbydesign-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: SSO konfigurálása az SAP Hanával
+              href: ../active-directory/saas-apps/saphana-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: SSO konfigurálása az SAP Cloud for Customerrel
+              href: ../active-directory/saas-apps/sap-customer-cloud-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: SSO konfigurálása az SAP Fiori kezdőpaneljével
+              href: 'https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad'
+        - name: Azure-szolgáltatások integrálása az SAP-be
+          items:
+            - name: Az SAP HANA használata a Power BI Desktopban
+              href: /power-bi/desktop-sap-hana
+            - name: A DirectQuery és az SAP HANA
+              href: /power-bi/desktop-directquery-sap-hana
+            - name: Az SAP BW Connector használata a Power BI Desktopban
+              href: /power-bi/desktop-sap-bw-connector
+            - name: Az Azure Data Factory SAP HANA- és Business Warehouse-adatok integrációját nyújtja
+              href: 'https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration'
+        - name: Azure Monitor a SAP-megoldásokhoz
+          items:
+            - name: Azure Monitor a SAP-megoldásokhoz – áttekintés
+              href: ./workloads/sap/azure-monitor-overview.md
+            - name: Azure Monitor a SAP-megoldásokhoz – szolgáltatók
+              href: ./workloads/sap/azure-monitor-providers.md
+            - name: Azure Monitor konfigurálása SAP-megoldásokhoz – Portal
+              href: ./workloads/sap/azure-monitor-sap-quickstart.md
+            - name: Azure Monitor konfigurálása SAP-megoldásokhoz – Azure PowerShell
+              href: ./workloads/sap/azure-monitor-sap-quickstart-powershell.md
+            - name: Azure Monitor a SAP-megoldásokhoz – gyakran ismételt kérdések
+              href: ./workloads/sap/azure-monitor-faq.md
+        - name: Referencia
+          items:
+            - name: Azure CLI
+              href: /cli/azure/ext/sap-hana/hanainstance
+            - name: Azure PowerShell
+              href: /powershell/module/az.hanaonazure/#sap-hana-on-azure
     - name: Oracle
-      href: ./workloads/oracle/oracle-overview.md
-    - name: Nagyszámítógépes áthelyezés
-      href: ./workloads/mainframe-rehosting/overview.md
-- name: Klasszikus üzembe helyezések
+      href: ./workloads/oracle/oracle-database-quick-create.md
+    - name: Elasticsearch
+      href: ./linux/tutorial-elasticsearch.md
+    - name: FreeBSD csomagszűrő
+      href: ./linux/freebsd-pf-nat.md
+    - name: Adatbázisok
+      items:
+        - name: MySQL a SUSE rendszeren
+          href: ./linux/mysql-on-opensuse.md
+        - name: MongoDB
+          items:
+            - name: Linux
+              href: ./linux/install-mongodb.md
+            - name: Windows
+              href: ./windows/install-mongodb.md
+        - name: PostgreSQL
+          href: ./linux/postgresql-install.md
+        - name: MS SQL Linux rendszeren
+          href: /sql/linux/sql-server-linux-azure-virtual-machine
+    - name: Nagy teljesítményű számítástechnika (HPC)
+      href: /azure/architecture/topics/high-performance-computing/
+    - name: IBM Db2 pureScale
+      items:
+        - name: Architektúra
+          href: ./linux/ibm-db2-purescale-azure.md
+        - name: Üzembe helyezés
+          href: ./linux/deploy-ibm-db2-purescale-azure.md
+    - name: Tárolók
+      items:
+        - name: Docker-gazdagép létrehozása
+          href: 'https://github.com/Azure/azure-docker-extension/blob/master/README.md'
+        - name: A Docker Machine használata
+          href: ./linux/docker-machine.md
+        - name: A Docker Compose használata
+          href: ./linux/docker-compose-quickstart.md
+    - name: Visual Studio
+      href: ./windows/using-visual-studio-vm.md
+- name: példányszám
   items:
-    - name: Linux rendszerű virtuális gépek klasszikus üzembe helyezéssel
-      href: /previous-versions/azure/virtual-machines/linux/classic/
-    - name: Windows rendszerű virtuális gépek klasszikus üzembe helyezéssel
-      href: /previous-versions/azure/virtual-machines/windows/classic/
+    - name: Méretek
+      items:
+        - name: Áttekintés
+          href: sizes.md
+        - name: A virtuális gép méretének módosítása
+          items:
+            - name: parancssori felület
+              href: ./linux/change-vm-size.md
+            - name: Portál vagy PowerShell
+              href: ./windows/resize-vm.md
+        - name: 2. generációs virtuális gépek
+          href: generation-2.md
+        - name: Általános célú
+          items:
+            - name: Áttekintés
+              href: sizes-general.md
+            - name: Av2-sorozat
+              href: av2-series.md
+            - name: B sorozat – adatlöket-kezelés
+              href: sizes-b-series-burstable.md
+            - name: DCv2 sorozat
+              href: dcv2-series.md
+            - name: Dv2 és DSv2 sorozat
+              href: dv2-dsv2-series.md
+            - name: Dv3 és DSv3 sorozat
+              href: dv3-dsv3-series.md
+            - name: Dav4 és Dasv4 sorozat
+              href: dav4-dasv4-series.md
+            - name: Ddv4 és Ddsv4 sorozat
+              href: ddv4-ddsv4-series.md
+            - name: Dv4 és Dsv4 sorozat
+              href: dv4-dsv4-series.md
+        - name: Számításra optimalizált
+          items:
+            - name: Áttekintés
+              href: sizes-compute.md
+            - name: Fsv2 sorozat
+              href: fsv2-series.md
+        - name: Memóriaoptimalizált
+          displayName: Esv3 Ev3 Easv4 Eav4 M-series GS G-series DSv2 Dv2
+          items:
+            - name: Áttekintés
+              href: sizes-memory.md
+            - name: Dv2 és DSv2 sorozat – 11–15
+              href: dv2-dsv2-series-memory.md
+            - name: Ev3 és Esv3 sorozat
+              href: ev3-esv3-series.md
+            - name: Eav4 és Easv4 sorozat
+              href: eav4-easv4-series.md
+            - name: Edv4 és Edsv4 sorozat
+              href: edv4-edsv4-series.md
+            - name: Ev4 és Esv4 sorozat
+              href: ev4-esv4-series.md
+            - name: M sorozat
+              href: m-series.md
+            - name: Mv2 sorozat
+              href: mv2-series.md
+            - name: Korlátozott vCPU-k
+              href: constrained-vcpu.md
+        - name: Tárolásra optimalizált
+          items:
+            - name: Áttekintés
+              href: sizes-storage.md
+            - name: Lsv2 sorozat
+              href: lsv2-series.md
+            - name: Teljesítmény optimalizálása
+              items:
+                - name: Linux
+                  href: ./linux/storage-performance.md
+                - name: Windows
+                  href: ./windows/storage-performance.md
+        - name: GPU – Gyorsított számítás
+          items:
+            - name: Áttekintés
+              href: sizes-gpu.md?context=/azure/virtual-machines/context/context
+            - name: NC sorozat
+              href: nc-series.md
+            - name: NCv2 sorozat
+              href: ncv2-series.md
+            - name: NCv3 sorozat
+              href: ncv3-series.md
+            - name: NCasT4_v3 sorozat
+              href: nct4-v3-series.md
+            - name: ND sorozat
+              href: nd-series.md
+            - name: NDv2 sorozat
+              href: ndv2-series.md
+            - name: NV sorozat
+              href: nv-series.md
+            - name: NVv3 sorozat
+              href: nvv3-series.md
+            - name: NVv4 sorozat
+              href: nvv4-series.md
+            - name: NVIDIA GPU-illesztők beállítása
+              items:
+                - name: Linux
+                  href: ./linux/n-series-driver-setup.md
+                - name: Windows
+                  href: ./windows/n-series-driver-setup.md
+            - name: AMD GPU-illesztők beállítása
+              href: ./windows/n-series-amd-driver-setup.md
+        - name: Nagy teljesítményű számítás
+          displayName: H-series
+          items:
+            - name: Áttekintés
+              href: sizes-hpc.md
+            - name: H-sorozat
+              href: h-series.md
+            - name: HB-sorozat
+              href: hb-series.md
+            - name: HBv2 sorozat
+              href: hbv2-series.md
+            - name: HC-sorozat
+              href: hc-series.md
+        - name: vCPU-kvóták
+          items:
+            - name: parancssori felület
+              href: ./linux/quotas.md
+            - name: PowerShell
+              href: ./windows/quotas.md
+        - name: Azure-beli virtuális gépek ideiglenes lemez nélkül
+          href: azure-vms-no-temp-disk.md
+        - name: Azure-beli virtuálisgép-méretek elnevezési konvenciói
+          href: vm-naming-conventions.md
+        - name: Előző generációk
+          displayName: D-series Ds-series A-series Basic
+          href: sizes-previous-gen.md
+        - name: Izolált méretek
+          href: isolation.md
+        - name: 'Azure számítási egységek (Azure Compute Units, ACU-k)'
+          href: acu.md
+        - name: Teljesítményteszt pontszámai
+          items:
+            - name: Linux
+              href: ./linux/compute-benchmark-scores.md
+            - name: Windows
+              href: ./windows/compute-benchmark-scores.md
+    - name: Dedikált gazdagépek
+      items:
+        - name: Áttekintés
+          href: ./linux/dedicated-hosts.md
+        - name: parancssori felület
+          href: ./linux/dedicated-hosts-cli.md
+        - name: Portál
+          href: dedicated-hosts-portal.md
+        - name: PowerShell
+          href: ./windows/dedicated-hosts-powershell.md
+    - name: Vásárlási lehetőségek
+      items:
+        - name: Spot virtuális gépek
+          displayName: 'pre-empt, preempt, spot'
+          items:
+            - name: Áttekintés
+              href: spot-vms.md
+            - name: parancssori felület
+              href: ./linux/spot-cli.md
+            - name: Portál
+              href: spot-portal.md
+            - name: PowerShell
+              href: ./windows/spot-powershell.md
+            - name: ARM-sablon
+              displayName: template ARM
+              href: ./linux/spot-template.md
+            - name: Hibakódok
+              href: error-codes-spot.md
+        - name: Azure Hybrid Benefit
+          items:
+            - name: Linux
+              href: ./linux/azure-hybrid-benefit-linux.md
+            - name: Windows
+              items:
+                - name: Azure Hybrid Benefit-licenc használata
+                  href: ./windows/hybrid-use-benefit-licensing.md
+                - name: "Többvállalatos üzemeltetési jogosultságok használata Windows\_10-hez"
+                  href: ./windows/windows-desktop-multitenant-hosting-deployment.md
+        - name: Fenntartott példányok
+          items:
+            - name: Előre fizetés virtuális gépekért
+              href: ./linux/prepay-reserved-vm-instances.md
+            - name: Előre fizetés dedikált gazdagépekért
+              href: prepay-dedicated-hosts-reserved-instances.md
+            - name: Mi az az Azure Reservations?
+              href: ../cost-management-billing/reservations/save-compute-costs-reservations.md?context=/azure/virtual-machines/context/context
+            - name: Virtuálisgép-példányok méretrugalmassága
+              href: reserved-vm-instance-size-flexibility.md
+    - name: Linux rendszerű virtuális gépek létrehozása
+      items:
+        - name: Támogatott disztribúciók
+          href: ./linux/endorsed-distros.md
+        - name: A parancssori felület (CLI) használata
+          href: ./linux/create-cli-complete.md
+        - name: ARM-sablon használata
+          displayName: Azure Resource Manager
+          href: ./linux/create-ssh-secured-vm-from-template.md
+        - name: A REST API használata
+          href: ./linux/create-vm-rest-api.md
+        - name: Virtuális gép másolása a CLI használatával
+          href: ./linux/copy-vm.md
+        - name: Létrehozás a Jenkins-szel
+          href: /azure/developer/jenkins/pipeline-with-github-and-docker
+        - name: A Jenkins integrálása az Azure DevOps
+          href: /azure/developer/jenkins/deploy-to-linux-vm-using-azure-devops-services
+        - name: A működés közbeni üzembe helyezési stratégia konfigurálása
+          href: ./linux/tutorial-devops-azure-pipelines-classic.md
+        - name: A Kanári üzembe helyezési stratégia konfigurálása
+          href: ./linux/tutorial-azure-devops-canary-strategy.md
+        - name: Blue-Green telepítési stratégia konfigurálása
+          href: ./linux/tutorial-azure-devops-blue-green-strategy.md
+        - name: CI/CD Azure-folyamatokkal (YAML)
+          href: ./linux/tutorial-build-deploy-azure-pipelines.md
+        - name: LAMP-verem létrehozása
+          href: ./linux/tutorial-lamp-stack.md
+        - name: Webkiszolgáló biztonságossá tétele SSL használatával
+          items:
+            - name: Linux
+              href: ./linux/tutorial-secure-web-server.md
+            - name: Windows
+              href: ./windows/tutorial-secure-web-server.md
+    - name: Kapcsolódás Linux rendszerű virtuális gépekhez
+      items:
+        - name: SSH Linux rendszerű virtuális gépekhez
+          items:
+            - name: Linux vagy macOS rendszeren
+              href: ./linux/mac-create-ssh-keys.md
+            - name: Windows rendszeren
+              href: ./linux/ssh-from-windows.md
+            - name: A portálon
+              href: ssh-keys-portal.md
+            - name: Részletes lépések
+              href: ./linux/create-ssh-keys-detailed.md
+        - name: Linux-Távoli asztal
+          href: ./linux/use-remote-desktop.md
+    - name: Windows rendszerű virtuális gépek létrehozása
+      items:
+        - name: A C# használata
+          href: ../azure-resource-manager/templates/deploy-rest.md?context=/azure/virtual-machines/context/context
+        - name: Speciális lemez használata
+          items:
+            - name: Portál
+              href: ./windows/create-vm-specialized-portal.md
+            - name: PowerShell
+              href: ./windows/create-vm-specialized.md
+        - name: Virtuális gép létrehozása Chef használatával
+          href: /azure/developer/chef/windows-vm-configure
+        - name: Java használata
+          href: ./windows/java.md
+        - name: A Python használata
+          href: ./windows/python.md
+        - name: ARM-sablon használata
+          displayName: Azure Resource Manager template
+          href: ./windows/ps-template.md
+    - name: Kapcsolódás Windows rendszerű virtuális gépekhez
+      href: ./windows/connect-logon.md
+      items:
+        - name: WinRM
+          href: ./windows/winrm.md
+    - name: Bővítmények
+      items:
+        - name: Áttekintés
+          href: ./extensions/overview.md
+        - name: Linux
+          items:
+            - name: Linux-funkciók
+              href: ./extensions/features-linux.md
+            - name: Linux rendszerű virtuálisgép-ügynök
+              href: ./extensions/agent-linux.md
+        - name: Windows
+          items:
+            - name: Windows-szolgáltatások
+              href: ./extensions/features-windows.md
+            - name: Windows rendszerű virtuálisgép-ügynök
+              href: ./extensions/agent-windows.md
+        - name: Azure Disk Encryption
+          items:
+            - name: Linux
+              href: ./extensions/azure-disk-enc-linux.md
+            - name: Windows
+              href: ./extensions/azure-disk-enc-windows.md
+        - name: Azure Key Vault
+          items:
+            - name: Linux
+              href: ./extensions/key-vault-linux.md
+            - name: Windows
+              href: ./extensions/key-vault-windows.md
+        - name: Azure Backup for SQL Server
+          items:
+            - name: Azure Backup for SQL Server
+              href: ./extensions/backup-azure-sql-server-running-azure-vm.md
+        - name: Egyéni szkript
+          items:
+            - name: Linux – 2-es verzió
+              href: ./extensions/custom-script-linux.md
+            - name: Windows
+              href: ./extensions/custom-script-windows.md
+        - name: IaaS kártevőirtó Windowshoz
+          href: ./extensions/iaas-antimalware-windows.md
+        - name: Virtuális gép pillanatképe
+          items:
+            - name: Linux
+              href: ./extensions/vmsnapshot-linux.md
+            - name: Windows
+              href: ./extensions/vmsnapshot-windows.md
+        - name: Network Watcher-bővítmény
+          items:
+            - name: Linux
+              href: ./extensions/network-watcher-linux.md
+            - name: Windows
+              href: ./extensions/network-watcher-windows.md
+            - name: Frissítés a legújabb verzióra
+              href: ./extensions/network-watcher-update.md
+        - name: InfiniBand-illesztőprogramok
+          items:
+            - name: Linux
+              href: ./extensions/hpc-compute-infiniband-linux.md
+            - name: Windows
+              href: ./extensions/hpc-compute-infiniband-windows.md
+        - name: NVIDIA GPU-illesztők
+          items:
+            - name: Linux
+              href: ./extensions/hpccompute-gpu-linux.md
+            - name: Windows
+              href: ./extensions/hpccompute-gpu-windows.md
+        - name: AMD GPU-illesztőprogramok
+          items:
+            - name: Windows
+              href: ./extensions/hpccompute-amd-gpu-windows.md
+        - name: Azure Monitor
+          items:
+            - name: Azure Monitor-ügynök
+              href: ../azure-monitor/platform/azure-monitor-agent-install.md?context=/azure/virtual-machines/context/context
+            - name: Diagnosztikai bővítmény
+              href: ../azure-monitor/platform/diagnostics-extension-overview.md?context=/azure/virtual-machines/context/context
+            - name: Log Analytics
+              items:
+                - name: Linux
+                  href: ./extensions/oms-linux.md
+                - name: Windows
+                  href: ./extensions/oms-windows.md
+            - name: Azure Monitor virtuális gépekhez
+              items:
+                - name: Linux függőségi ügynök
+                  href: ./extensions/agent-dependency-linux.md
+                - name: Windows függőségi ügynök
+                  href: ./extensions/agent-dependency-windows.md
+        - name: PowerShell DSC
+          href: ./extensions/dsc-overview.md
+          items:
+            - name: DSC és Linux
+              href: ./extensions/dsc-linux.md
+            - name: DSC és Windows
+              href: ./extensions/dsc-windows.md
+            - name: Hitelesítő adatok kezelése
+              href: ./extensions/dsc-credentials.md
+            - name: Sablonok használata
+              href: ./extensions/dsc-template.md
+        - name: Virtuális gépekhez való hozzáférés
+          href: ./extensions/vmaccess.md
+        - name: Külső felektől származó bővítmények
+          items:
+            - name: Chef
+              href: ./extensions/chef.md
+            - name: Stackify Retrace
+              href: ./extensions/stackify-retrace-linux.md
+            - name: Symantec
+              href: ./extensions/symantec.md
+        - name: Bővítménytelepítés korlátozása
+          items:
+            - name: Linux
+              href: ./extensions/extensions-rmpolicy-howto-cli.md
+            - name: Windows
+              href: ./extensions/extensions-rmpolicy-howto-ps.md
+        - name: Linux-ügynök frissítése
+          href: ./extensions/update-linux-agent.md
+        - name: Bővítmények exportálása
+          href: ./extensions/export-templates.md
+        - name: Hibaelhárítás
+          href: ./extensions/troubleshoot.md
+        - name: A Python 3-kompatibilis Linux rendszerekkel kapcsolatos problémák
+          href: ./extensions/issues-using-vm-extensions-python-3.md
+    - name: Migrálás a klasszikusból Azure Resource Manager-alapú környezetbe
+      items:
+        - name: 2023. március 1-től kezdődő kivezetések
+          href: classic-vm-deprecation.md
+        - name: Migrálás áttekintése
+          href: migration-classic-resource-manager-overview.md
+        - name: Az áttelepítés részletes bemutatása
+          href: migration-classic-resource-manager-deep-dive.md
+        - name: Az áttelepítés megtervezése
+          href: migration-classic-resource-manager-plan.md
+        - name: Áttelepítés a parancssori felületről
+          href: migration-classic-resource-manager-cli.md
+        - name: Áttelepítés a PowerShell-lel
+          href: migration-classic-resource-manager-ps.md
+        - name: Gyakori áttelepítési hibák
+          href: migration-classic-resource-manager-errors.md
+        - name: Közösségi eszközök áttelepítéshez
+          href: migration-classic-resource-manager-community-tools.md
+        - name: GYIK
+          href: migration-classic-resource-manager-faq.md
+    - name: Felügyeleti alapismeretek
+      items:
+        - name: Erőforrások kezelése
+          items:
+            - name: Linux
+              href: ./linux/tutorial-govern-resources.md
+            - name: Windows
+              href: ./windows/tutorial-govern-resources.md
+        - name: Időszinkronizálás
+          items:
+            - name: Linux
+              href: ./linux/time-sync.md
+            - name: Windows
+              href: ./windows/time-sync.md
+        - name: Szkriptek futtatása virtuális gépeken
+          items:
+            - name: Egyéni szkriptbővítmény
+              items:
+                - name: Linux
+                  href: ./extensions/custom-script-linux.md
+                - name: Windows
+                  href: ./extensions/custom-script-windows.md
+            - name: Parancs futtatása
+              items:
+                - name: Linux
+                  href: ./linux/run-command.md
+                - name: Windows
+                  href: ./windows/run-command.md
+            - name: hibrid runbook-feldolgozó
+              href: ../automation/automation-hybrid-runbook-worker.md
+            - name: Soros konzol
+              items:
+                - name: Linux
+                  href: ./troubleshooting/serial-console-linux.md
+                - name: Windows
+                  href: ./troubleshooting/serial-console-windows.md
+        - name: Beágyazott virtualizálás engedélyezése
+          href: ./windows/nested-virtualization.md
+        - name: File Storage
+          items:
+            - name: Linux-csatlakoztatás SMB használatával
+              href: ./linux/mount-azure-file-storage-on-linux-using-smb.md
+            - name: Fájlok másolása Linux rendszerű virtuális gépre
+              href: ./linux/copy-files-to-linux-vm-using-scp.md
+        - name: Frissítések és javítások
+          items:
+            - name: A Red Hat frissítési infrastruktúrája
+              href: ./workloads/redhat/redhat-rhui.md
+- name: Képek
+  items:
+    - name: Marketplace-rendszerképek
+      items:
+        - name: Azure Marketplace-rendszerképek keresése
+          items:
+            - name: parancssori felület
+              href: ./linux/cli-ps-findimage.md
+            - name: PowerShell
+              href: ./windows/cli-ps-findimage.md
+            - name: Windows-ügyfél lemezképei
+              href: ./windows/client-images.md
+    - name: Egyéni Linux-rendszerképek
+      items:
+        - name: Áttekintés
+          href: ./linux/imaging.md
+        - name: Linux-kiépítés
+          href: ./linux/provisioning.md
+        - name: A Linux-disztribúcióra vonatkozó követelmények
+          items:
+            - name: Általános lépések
+              href: ./linux/create-upload-generic.md
+            - name: CentOS
+              href: ./linux/create-upload-centos.md
+            - name: Debian
+              href: ./linux/debian-create-upload-vhd.md
+            - name: Flatcar Container Linux
+              href: ./linux/flatcar-create-upload-vhd.md
+            - name: FreeBSD
+              href: ./linux/freebsd-intro-on-azure.md
+            - name: Oracle Linux
+              href: ./linux/oracle-create-upload-vhd.md
+            - name: OpenBSD
+              href: ./linux/create-upload-openbsd.md
+            - name: Red Hat
+              href: ./linux/redhat-create-upload-vhd.md
+            - name: SUSE
+              href: ./linux/suse-create-upload-vhd.md
+            - name: Ubuntu
+              href: ./linux/create-upload-ubuntu.md
+        - name: A cloud-init használata
+          items:
+            - name: A cloud-init áttekintése
+              href: ./linux/using-cloud-init.md
+            - name: Részletes bemutatás
+              href: ./linux/cloud-init-deep-dive.md
+            - name: Hibaelhárítás
+              href: ./linux/cloud-init-troubleshooting.md
+            - name: Virtuális gépek állomásnevének konfigurálása
+              href: ./linux/cloudinit-update-vm-hostname.md
+            - name: Csomagok frissítése virtuális gépeken
+              href: ./linux/cloudinit-update-vm.md
+            - name: Felhasználó hozzáadása virtuális gépeken
+              href: ./linux/cloudinit-add-user.md
+            - name: Lapozófájl konfigurálása
+              href: ./linux/cloudinit-configure-swapfile.md
+            - name: Meglévő bash-szkript futtatása
+              href: ./linux/cloudinit-bash-script.md
+            - name: Meglévő virtuális gépek előkészítése a cloud-initre
+              href: ./linux/cloudinit-prepare-custom-image.md
+        - name: Linux-rendszerképek létrehozása kiépítési ügynök nélkül
+          href: ./linux/no-agent.md
+        - name: A Linux-ügynök üzembe helyezésének letiltása
+          href: ./linux/disable-provisioning.md
+        - name: Virtuális gép rögzítése felügyelt rendszerképben
+          href: ./linux/capture-image.md
+    - name: Egyéni Windows-rendszerképek
+      items:
+        - name: Virtuális merevlemez előkészítése feltöltéshez
+          href: ./windows/prepare-for-upload-vhd-image.md
+        - name: Virtuális merevlemez feltöltése és felügyelt rendszerkép létrehozása
+          href: ./windows/upload-generalized-managed.md
+        - name: Felügyelt lemezkép rögzítése
+          href: ./windows/capture-image-resource.md
+        - name: Virtuális gép létrehozása felügyelt rendszerképből
+          href: ./windows/create-vm-generalized-managed.md
+    - name: Megosztott rendszerkép-katalógusok
+      items:
+        - name: Áttekintés
+          href: ./linux/shared-image-galleries.md
+        - name: parancssori felület
+          items:
+            - name: Katalógus létrehozása
+              href: shared-images-cli.md
+            - name: Rendszerkép létrehozása
+              items:
+                - name: Virtuális gépről
+                  href: image-version-vm-cli.md
+                - name: Felügyelt lemezről vagy pillanatképből
+                  href: image-version-snapshot-cli.md
+                - name: Felügyelt rendszerkép klónozása
+                  href: image-version-managed-image-cli.md
+                - name: Másolás másik katalógusból
+                  href: image-version-another-gallery-cli.md
+            - name: Virtuális gép létrehozása
+              items:
+                - name: Általánosított
+                  href: vm-generalized-image-version-cli.md
+                - name: Specializált
+                  href: vm-specialized-image-version-cli.md
+            - name: Rendszerkép-erőforrások frissítése
+              href: update-image-resources-cli.md
+            - name: Alkalmazásregisztráció megosztás céljából
+              items:
+                - name: Linux
+                  href: ./linux/share-images-across-tenants.md
+                - name: Windows
+                  href: ./windows/share-images-across-tenants.md
+        - name: PowerShell
+          items:
+            - name: Katalógus létrehozása
+              href: shared-images-powershell.md
+            - name: Rendszerképverzió létrehozása
+              items:
+                - name: Virtuális gépről
+                  href: image-version-vm-powershell.md
+                - name: Felügyelt lemezről vagy pillanatképből
+                  href: image-version-snapshot-powershell.md
+                - name: Felügyelt rendszerkép klónozása
+                  href: image-version-managed-image-powershell.md
+                - name: Másolás másik katalógusból
+                  href: image-version-another-gallery-powershell.md
+            - name: Virtuális gép létrehozása
+              items:
+                - name: Általánosított
+                  href: vm-generalized-image-version-powershell.md
+                - name: Specializált
+                  href: vm-specialized-image-version-powershell.md
+                - name: Rendszerkép-erőforrások frissítése
+                  href: update-image-resources-powershell.md
+                - name: Alkalmazásregisztráció megosztás céljából
+                  href: windows/share-images-across-tenants.md
+        - name: Portál
+          items:
+            - name: 'Katalógus, rendszerkép és virtuális gép létrehozása'
+              items:
+                - name: Linux
+                  href: ./linux/shared-images-portal.md
+                - name: Windows
+                  href: ./windows/shared-images-portal.md
+        - name: Resource Manager-sablonok
+          items:
+            - name: Shared Image Gallery létrehozása
+              href: 'https://azure.microsoft.com/resources/templates/101-sig-create/'
+            - name: Rendszerkép-definíció létrehozása Shared Image Galleryben
+              href: 'https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/'
+            - name: Rendszerképverzió létrehozása Shared Image Galleryben
+              href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
+            - name: Virtuális gép létrehozása rendszerképverzióból
+              href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
+        - name: Megosztott rendszerképek hibaelhárítása
+          href: troubleshooting-shared-images.md
+        - name: Ügyfelek által felügyelt kulcsok használata
+          displayName: 'SSE, CMK, encrypt'
+          href: image-version-encryption.md
+        - name: Rendszerképverzióból származó felügyelt lemezek
+          href: managed-disk-from-image-version.md
+    - name: Rendszerképkészítő (előzetes verzió)
+      items:
+        - name: Áttekintés
+          href: image-builder-overview.md
+        - name: parancssori felület
+          items:
+            - name: Linux
+              href: ./linux/image-builder.md
+            - name: Windows
+              href: ./windows/image-builder.md
+        - name: PowerShell
+          href: ./windows/image-builder-powershell.md
+        - name: VNET használata
+          items:
+            - name: parancssori felület
+              href: ./linux/image-builder-vnet.md
+            - name: PowerShell
+              href: ./windows/image-builder-vnet.md
+        - name: Hálózatkezelési lehetőségek
+          href: ./linux/image-builder-networking.md
+        - name: Engedélyek konfigurálása
+          items:
+            - name: parancssori felület
+              href: ./linux/image-builder-permissions-cli.md
+            - name: PowerShell
+              href: ./linux/image-builder-permissions-powershell.md
+        - name: DevOps-feladat
+          href: ./linux/image-builder-devops-task.md
+        - name: Image Builder-sablonreferencia
+          displayName: json
+          href: ./linux/image-builder-json.md
+        - name: Buildelés rendszerkép-katalógusokhoz
+          items:
+            - name: Linux
+              href: ./linux/image-builder-gallery.md
+            - name: Windows
+              href: ./windows/image-builder-gallery.md
+        - name: Meglévő rendszerkép frissítése
+          items:
+            - name: Linux
+              href: ./linux/image-builder-gallery-update-image-version.md
+            - name: Windows
+              href: ./windows/image-builder-gallery-update-image-version.md
+        - name: Szkriptek tárolása
+          href: ./linux/image-builder-user-assigned-identity.md
+        - name: Hibaelhárítás
+          href: ./linux/image-builder-troubleshoot.md
+    - name: Vásárlási terv információi
+      href: marketplace-images.md
+    - name: Rendszerkép összeállítása a Packerrel
+      items:
+        - name: Linux
+          href: ./linux/build-image-with-packer.md
+        - name: Windows
+          href: ./windows/build-image-with-packer.md
+- name: Rendelkezésre állás és méretezés
+  items:
+    - name: Méretezési csoportok
+      href: ../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context
+    - name: Rendelkezésre állás
+      href: availability.md
+    - name: Közös elhelyezés
+      href: ./linux/co-location.md
+    - name: Hálózati teljesítmény
+      href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?context=/azure/virtual-machines/context/context
+    - name: Állapotok és életciklus
+      href: states-lifecycle.md
+    - name: Automatikus méretezés
+      href: ../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context
+    - name: Magas rendelkezésre állás
+      href: manage-availability.md
+    - name: Rendelkezésre állási csoportok
+      items:
+        - name: Linux
+          href: ./linux/tutorial-availability-sets.md
+        - name: Windows
+          items:
+            - name: Rendelkezésre állási csoport létrehozása
+              href: ./windows/tutorial-availability-sets.md
+            - name: Rendelkezésre állási csoport módosítása
+              href: ./windows/change-availability-set.md
+    - name: Közelségi elhelyezési csoport létrehozása
+      displayName: PPG aligned colocation co-location
+      items:
+        - name: parancssori felület
+          href: ./linux/proximity-placement-groups.md
+        - name: Portál
+          href: ./windows/proximity-placement-groups-portal.md
+        - name: PowerShell
+          href: ./windows/proximity-placement-groups.md
+    - name: Virtuális gép létrehozása rendelkezésre állási zónában
+      href: ./linux/create-cli-availability-zone.md
+- name: Lemezek
+  items:
+    - name: A felügyelt lemezek bemutatása
+      href: managed-disks-overview.md
+    - name: IaaS-alapú virtuális gépek lemeztípusának kiválasztása
+      href: disks-types.md
+    - name: Megosztott lemezek
+      href: disks-shared.md
+    - name: Megosztott lemezek engedélyezése
+      href: disks-shared-enable.md
+    - name: Titkosítás
+      items:
+        - name: Kiszolgálóoldali titkosítás
+          items:
+            - name: Kiszolgálóoldali titkosítás – áttekintés
+              href: disk-encryption.md
+            - name: Ügyfél által felügyelt kulcsok engedélyezése
+              items:
+                - name: Portál
+                  href: disks-enable-customer-managed-keys-portal.md
+                - name: PowerShell
+                  href: windows/disks-enable-customer-managed-keys-powershell.md
+                - name: parancssori felület
+                  href: linux/disks-enable-customer-managed-keys-cli.md
+            - name: Titkosítás engedélyezése a gazdagépen
+              items:
+                - name: Portál
+                  href: disks-enable-host-based-encryption-portal.md
+                - name: PowerShell
+                  href: windows/disks-enable-host-based-encryption-powershell.md
+                - name: parancssori felület
+                  href: linux/disks-enable-host-based-encryption-cli.md
+            - name: Az inaktív állapotban történő kettős adattitkosítás engedélyezése
+              items:
+                - name: Portál
+                  href: disks-enable-double-encryption-at-rest-portal.md
+                - name: PowerShell
+                  href: windows/disks-enable-double-encryption-at-rest-powershell.md
+                - name: parancssori felület
+                  href: linux/disks-enable-double-encryption-at-rest-cli.md
+        - name: Azure Disk Encryption forgatókönyvek
+          items:
+            - name: Azure Disk Encryption áttekintések
+              items:
+                - name: Windows
+                - name: Linux
+            - name: Linux
+              href: ./linux/disk-encryption-linux.md
+            - name: Windows
+              href: ./windows/disk-encryption-windows.md
+            - name: parancssori felület
+              items:
+                - name: Linux
+                  href: ./linux/disk-encryption-cli-quickstart.md
+                - name: Windows
+                  href: ./windows/disk-encryption-cli-quickstart.md
+            - name: PowerShell
+              items:
+                - name: Linux
+                  href: ./linux/disk-encryption-powershell-quickstart.md
+                - name: Windows
+                  href: ./windows/disk-encryption-powershell-quickstart.md
+            - name: Portál
+              items:
+                - name: Linux
+                  href: ./linux/disk-encryption-portal-quickstart.md
+                - name: Windows
+                  href: ./windows/disk-encryption-portal-quickstart.md
+            - name: Key Vault az Azure Disk Encryptionhöz
+              items:
+                - name: Linux
+                  href: ./linux/disk-encryption-key-vault.md
+                - name: Windows
+                  href: ./windows/disk-encryption-key-vault.md
+            - name: Mintaparancsfájlok
+              items:
+                - name: Linux
+                  href: ./linux/disk-encryption-sample-scripts.md
+                - name: Windows
+                  href: ./windows/disk-encryption-sample-scripts.md
+            - name: Az Azure Disk Encryption egy elszigetelt hálózaton
+              href: ./linux/disk-encryption-isolated-network.md
+            - name: A titkosítási állapot ellenőrzése
+              href: ./linux/how-to-verify-encryption-status.md
+            - name: Az LVM RAID konfigurálása titkosítással
+              href: ./linux/how-to-configure-lvm-raid-on-crypt.md
+            - name: Titkosított LVM kötetek átméretezése
+              href: ./linux/how-to-resize-encrypted-lvm.md
+            - name: Linux GPT operációsrendszer-partíciók átméretezése
+              href: linux/resize-os-disk-gpt-partition.md
+            - name: hibaelhárítás
+              items:
+                - name: Linux
+                  href: ./linux/disk-encryption-troubleshooting.md
+                - name: Windows
+                  href: ./windows/disk-encryption-troubleshooting.md
+            - name: GYIK
+              items:
+                - name: Linux
+                  href: ./linux/disk-encryption-faq.md
+                - name: Windows
+                  href: ./windows/disk-encryption-faq.md
+            - name: Azure Disk Encryption – előző verzió
+              items:
+                - name: Áttekintés
+                  items:
+                    - name: Linux
+                      href: ./linux/disk-encryption-overview-aad.md
+                    - name: Windows
+                      href: ./windows/disk-encryption-overview-aad.md
+                - name: Key Vault az Azure Disk Encryptionhöz
+                  items:
+                    - name: Linux
+                      href: ./linux/disk-encryption-key-vault-aad.md
+                    - name: Windows
+                      href: ./windows/disk-encryption-key-vault-aad.md
+                - name: Lemezes titkosítási forgatókönyvek
+                  items:
+                    - name: Linux
+                      href: ./linux/disk-encryption-linux-aad.md
+                    - name: Windows
+                      href: ./windows/disk-encryption-windows-aad.md
+    - name: Teljesítmény és ár optimalizálása
+      items:
+        - name: Ultralemezek
+          href: disks-enable-ultra-ssd.md
+        - name: Virtuálisgép- és lemezteljesítmény
+          href: disks-performance.md
+        - name: Lemezes tároláshoz kapcsolódó lefoglalások
+          href: ../cost-management-billing/reservations/understand-disk-reservations.md?context=/azure/virtual-machines/context/context
+        - name: Lemezes tárolás lefoglalása
+          href: disks-reserved-capacity.md
+        - name: Nagy teljesítményű rendszer tervezése
+          href: premium-storage-performance.md
+        - name: Lemezek adatlöket-kezelése
+          href: disk-bursting.md
+        - name: Lemezteljesítmény-szintek
+          href: disks-change-performance.md
+        - name: Lemez teljesítményi szintjeinek módosítása
+          items:
+            - name: CLI és PowerShell
+              href: disks-performance-tiers.md
+            - name: Portál
+              href: disks-performance-tiers-portal.md
+        - name: Írásgyorsító engedélyezése
+          href: how-to-enable-write-accelerator.md
+        - name: Lemez teljesítménytesztelése
+          href: disks-benchmarks.md
+    - name: Lemezek skálázási célértékei
+      href: disks-scalability-targets.md
+    - name: Biztonsági mentés és adatvédelem
+      items:
+        - name: Lemezek biztonsági mentése és vészhelyreállítása
+          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+        - name: Növekményes Pillanatképek engedélyezése
+          href: disks-incremental-snapshots.md
+        - name: Lemez pillanatképe – parancssori felület
+          href: ./linux/snapshot-copy-managed-disk.md
+        - name: Lemez pillanatképe – PowerShell
+          href: ./windows/snapshot-copy-managed-disk.md
+        - name: Nem felügyelt lemezek biztonsági mentése
+          href: ./linux/incremental-snapshots.md
+    - name: Rövid élettartamú operációsrendszer-lemezek
+      href: ephemeral-os-disks.md
+    - name: Migrálás és átalakítás
+      items:
+        - name: Lemez konvertálása a standard és a prémium szint között
+          items:
+            - name: parancssori felület
+              href: ./linux/convert-disk-storage.md
+            - name: PowerShell
+              href: ./windows/convert-disk-storage.md
+        - name: Migrálás prémium SSD-re Azure Site Recovery
+          items:
+            - name: Linux
+              href: ./linux/migrate-to-premium-storage-using-azure-site-recovery.md
+            - name: Windows
+              href: ./windows/migrate-to-premium-storage-using-azure-site-recovery.md
+        - name: Migrálás felügyelt lemezekre
+          href: ./windows/migrate-to-managed-disks.md
+        - name: Felügyeletlen virtuális gépek felügyelt lemezekre
+          items:
+            - name: parancssori felület
+              href: ./linux/convert-unmanaged-to-managed-disks.md
+            - name: PowerShell
+              href: ./windows/convert-unmanaged-to-managed-disks.md
+    - name: Adatlemez hozzáadása
+      items:
+        - name: Linux
+          items:
+            - name: Azure CLI
+              href: ./linux/add-disk.md
+            - name: Azure Portal
+              href: ./linux/attach-disk-portal.md
+        - name: Windows
+          items:
+            - name: Azure PowerShell
+              href: ./windows/attach-disk-ps.md
+            - name: Azure Portal
+              href: ./windows/attach-managed-disk-portal.md
+            - name: Temp lemezmeghajtó betűjelének módosítása
+              href: ./windows/change-drive-letter.md
+    - name: Lemez leválasztása
+      items:
+        - name: Linux
+          href: ./linux/detach-disk.md
+        - name: Windows
+          href: ./windows/detach-disk.md
+    - name: Operációsrendszer-lemez kibontása
+      items:
+        - name: Linux
+          href: ./linux/expand-disks.md
+        - name: Windows
+          href: ./windows/expand-os-disk.md
+    - name: Tárhely kezelése
+      items:
+        - name: Lemezek üzembe helyezése ARM-sablonnal
+          displayName: Azure Resource Manager
+          href: using-managed-disks-template-deployments.md
+        - name: Lemez biztonságos importálása/exportálása
+          items:
+            - name: Privát hivatkozások konfigurálása lemezekhez – parancssori felület
+              href: ./linux/disks-export-import-private-links-cli.md
+            - name: Privát hivatkozások konfigurálása a lemezekhez – portál
+              href: disks-enable-private-links-for-import-export-portal.md
+            - name: VHD feltöltése lemezre – PowerShell
+              href: ./windows/disks-upload-vhd-to-managed-disk-powershell.md
+            - name: VHD feltöltése lemezre – CLI
+              href: ./linux/disks-upload-vhd-to-managed-disk-cli.md
+            - name: VHD letöltése
+              items:
+                - name: Linux
+                  href: ./linux/download-vhd.md
+                - name: Windows
+                  href: ./windows/download-vhd.md
+        - name: A Storage Explorer használata lemezek kezelésére
+          href: disks-use-storage-explorer-managed-disks.md
+        - name: Az operációsrendszer-lemez cseréje – parancssori felület
+          href: ./linux/os-disk-swap.md
+        - name: Az operációsrendszer-lemez cseréje – PowerShell
+          href: ./windows/os-disk-swap.md
+        - name: Felügyelt lemez leképezése a vendég lemezre – Linux
+          href: ./linux/azure-to-guest-disk-mapping.md
+        - name: Felügyelt lemez leképezése a vendég lemezre – Windows
+          href: ./windows/azure-to-guest-disk-mapping.md
+        - name: Nem csatlakozó lemezek megkeresése
+          items:
+            - name: parancssori felület
+              href: ./linux/find-unattached-disks.md
+            - name: PowerShell
+              href: ./windows/find-unattached-disks.md
+            - name: Portál
+              href: disks-find-unattached-portal.md
+        - name: Lemezek – Gyakori kérdések
+          href: faq-for-disks.md
+    - name: Kódminták
+      items:
+        - name: parancssori felület
+          items:
+            - name: Felügyelt lemez létrehozása VHD-ből
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-managed-disk-from-vhd.md'
+            - name: Felügyelt lemez létrehozása pillanatképből
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-managed-disk-from-snapshot.md'
+            - name: Felügyelt lemez másolása ugyanabba vagy más előfizetésbe
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md'
+            - name: Pillanatkép másolása ugyanarra vagy másik előfizetésre
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-snapshot-to-same-or-different-subscription.md'
+            - name: Pillanatkép exportálása VHD-ként egy tárfiókba
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-snapshot-to-storage-account.md'
+            - name: Felügyelt lemez exportálása virtuális merevlemezként egy Storage-fiókba
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-vhd.md'
+        - name: PowerShell
+          items:
+            - name: Felügyelt lemez létrehozása VHD-ből
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-create-managed-disk-from-vhd.md'
+            - name: Felügyelt lemez létrehozása pillanatképből
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-create-managed-disk-from-snapshot.md'
+            - name: Pillanatkép másolása ugyanarra vagy másik előfizetésre
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-same-or-different-subscription.md'
+            - name: Pillanatkép exportálása VHD-ként egy tárfiókba
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-storage-account.md'
+            - name: Felügyelt lemez exportálása virtuális merevlemezként egy Storage-fiókba
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-vhd.md'
+            - name: Pillanatkép létrehozása VHD-ből
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-create-snapshot-from-vhd.md'
+- name: Hálózatkezelés
+  items:
+    - name: Áttekintés
+      href: network-overview.md
+    - name: Virtuális hálózat létrehozása
+      href: ../virtual-network/quick-create-cli.md?context=/azure/virtual-machines/context/context
+    - name: Portok megnyitása virtuális géphez
+      items:
+        - name: parancssori felület
+          href: ./linux/nsg-quickstart.md
+        - name: PowerShell
+          href: ./windows/nsg-quickstart-powershell.md
+        - name: Portál
+          href: ./windows/nsg-quickstart-portal.md
+    - name: Nyilvános IP-cím hozzárendelése
+      href: ../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?context=/azure/virtual-machines/context/context
+    - name: Több hálózati adapter használata
+      items:
+        - name: Linux a CLI-vel
+          href: ./linux/multiple-nics.md
+        - name: Windows PowerShell használatával
+          href: ./windows/multiple-nics.md
+    - name: Gyorsított hálózatkezelés használata
+      href: ../virtual-network/create-vm-accelerated-networking-cli.md?context=/azure/virtual-machines/context/context
+    - name: Nyilvános DNS-név hozzárendelése
+      href: create-fqdn.md
+    - name: Nem csatolt hálózati adapterek keresése és törlése
+      href: ./linux/find-unattached-nics.md
+    - name: DNS feloldása
+      href: ./linux/azure-dns.md
+    - name: Belső DNS használata
+      href: ./linux/static-dns-name-resolution-for-linux-on-azure.md
+- name: Biztonság
+  items:
+    - name: Azure Security Center
+      href: ../security-center/security-center-introduction.md
+    - name: Biztonsági alapkonfigurációk
+      items:
+        - name: Linux
+          href: ./linux/security-baseline.md
+        - name: Windows
+          href: ./windows/security-baseline.md
+    - name: Javaslatok
+      href: security-recommendations.md
+    - name: Igény szerinti hozzáférés
+      href: ../security-center/security-center-just-in-time.md
+    - name: Szabályzat
+      items:
+        - name: Áttekintés
+          href: security-policy.md
+        - name: Vezérlők házirend szerint
+          displayName: 'regulatory, compliance, standards, domains'
+          href: security-controls-policy.md
+        - name: Házirend-referencia
+          href: policy-reference.md
+        - name: Szabályzatok használata
+          items:
+            - name: Linux
+              href: ./linux/policy.md
+            - name: Windows
+              href: ./windows/policy.md
+    - name: Bastion
+      items:
+        - name: Áttekintés
+          href: ../bastion/bastion-overview.md
+        - name: Bastion-gazdagép létrehozása
+          items:
+            - name: Portál
+              href: ../bastion/bastion-create-host-portal.md
+            - name: PowerShell
+              href: ../bastion/bastion-create-host-powershell.md
+            - name: parancssori felület
+              href: ../bastion/create-host-cli.md
+            - name: Bastion SSH-kapcsolat
+              href: ../bastion/bastion-connect-vm-ssh.md
+              items: null
+            - name: Bastion RDP-kapcsolat
+              href: ../bastion/bastion-connect-vm-rdp.md
+        - name: Hozzáférés-vezérlők használata
+          href: ../role-based-access-control/overview.md
+        - name: Kulcstartó létrehozása
+          items:
+            - name: parancssori felület
+              href: ./linux/key-vault-setup.md
+            - name: PowerShell
+              href: ./windows/key-vault-setup.md
+    - name: Spekulatív végrehajtás kockázatának csökkentése
+      href: mitigate-se.md
+    - name: Linux rendszerű virtuális gép csatlakoztatása Azure Active Directory
+      displayName: Azure AD
+      items:
+        - name: Red Hat Enterprise Linux
+          href: ../active-directory-domain-services/join-rhel-linux-vm.md
+        - name: CentOS
+          href: ../active-directory-domain-services/join-centos-linux-vm.md
+        - name: Ubuntu
+          href: ../active-directory-domain-services/join-ubuntu-linux-vm.md
+    - name: Felügyelt identitások konfigurálása
+      items:
+        - name: Portál
+          href: ../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md?context=/azure/virtual-machines/context/context
+        - name: parancssori felület
+          href: ../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md?context=/azure/virtual-machines/context/context
+        - name: PowerShell
+          href: ../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md?context=/azure/virtual-machines/context/context
+        - name: Azure Resource Manager-sablon
+          displayName: ARM
+          href: ../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md?context=/azure/virtual-machines/context/context
+        - name: REST
+          href: ../active-directory/managed-identities-azure-resources/qs-configure-rest-vm.md?context=/azure/virtual-machines/context/context
+        - name: Azure SDK-k
+          href: ../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md?context=/azure/virtual-machines/context/context
+    - name: Linux Active Directory bejelentkezés
+      href: ./linux/login-using-aad.md
+- name: Karbantartás és frissítések
+  items:
+    - name: Áttekintés
+      href: maintenance-and-updates.md
+    - name: Automatikus virtuálisgép-vendég-javítás (előzetes verzió)
+      href: ./windows/automatic-vm-guest-patching.md
+    - name: Karbantartásszabályozás
+      items:
+        - name: Karbantartási értesítések
+          items:
+            - name: Áttekintés
+              href: maintenance-notifications.md
+            - name: parancssori felület
+              href: maintenance-notifications-cli.md
+            - name: Portál
+              href: maintenance-notifications-portal.md
+            - name: PowerShell
+              href: maintenance-notifications-powershell.md
+        - name: Platformkarbantartás
+          items:
+            - name: Áttekintés
+              href: maintenance-control.md
+            - name: parancssori felület
+              href: maintenance-control-cli.md
+            - name: PowerShell
+              href: maintenance-control-powershell.md
+            - name: Portál
+              href: maintenance-control-portal.md
+        - name: Ütemezett események
+          items:
+            - name: Linux
+              href: ./linux/scheduled-events.md
+            - name: Windows
+              href: ./windows/scheduled-events.md
+        - name: Virtuális gépek nyomon követése és frissítése
+          items:
+            - name: Linux
+              href: ./linux/tutorial-config-management.md
+            - name: Windows
+              href: ./windows/tutorial-config-management.md
+        - name: Virtuálisgép-méretezési csoport operációsrendszer-rendszerképének frissítései
+          items:
+            - name: Operációs rendszer automatikus frissítései
+              href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md?context=/azure/virtual-machines/context/context
+            - name: Karbantartásszabályozás
+              items:
+                - name: Áttekintés (Előzetes verzió)
+                  href: virtual-machine-scale-sets-maintenance-control.md
+                - name: PowerShell (előzetes verzió)
+                  href: virtual-machine-scale-sets-maintenance-control-powershell.md
+- name: Figyelés
+  items:
+    - name: Áttekintés
+      href: ../azure-monitor/insights/monitor-vm-azure.md?context=/azure/virtual-machines/context/context
+    - name: Virtuális gépek figyelése
+      items:
+        - name: Linux
+          href: ./linux/tutorial-monitor.md
+        - name: Windows
+          href: ./windows/tutorial-monitor.md
+    - name: Ügynökök
+      items:
+        - name: Ügynökök áttekintése
+          href: ../azure-monitor/platform/agents-overview.md?context=/azure/virtual-machines/context/context
+        - name: GYIK
+          href: ../azure-monitor/faq.md?context=/azure/virtual-machines/context/context#agents
+        - name: Azure Diagnostics bővítmény
+          items:
+            - name: Áttekintés
+              href: ../azure-monitor/platform/diagnostics-extension-overview.md?context=/azure/virtual-machines/context/context
+            - name: Linux diagnosztikai bővítmény
+              items:
+                - name: Áttekintés
+                  href: ../virtual-machines/extensions/diagnostics-linux.md?context=/azure/virtual-machines/context/context
+                - name: Metrikák gyűjtése a Telegraf használatával
+                  href: ../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md?context=/azure/virtual-machines/context/context
+                  displayname: diagnostics extension
+        - name: Log Analytics-ügynök
+          items:
+            - name: Áttekintés
+              href: ../azure-monitor/platform/log-analytics-agent.md?context=/azure/virtual-machines/context/context
+            - name: Linux-ügynökök
+              href: ../azure-monitor/platform/agent-linux.md?context=/azure/virtual-machines/context/context
+            - name: Log Analytics-átjáró
+              href: ../azure-monitor/platform/gateway.md?context=/azure/virtual-machines/context/context
+            - name: Ügynökkezelés
+              href: ../azure-monitor/platform/agent-manage.md?context=/azure/virtual-machines/context/context
+            - name: Az ügynök állapota
+              href: ../azure-monitor/insights/solution-agenthealth.md?context=/azure/virtual-machines/context/context
+            - name: Adatforrások
+              items:
+                - name: Áttekintés
+                  href: ../azure-monitor/platform/agent-data-sources.md?context=/azure/virtual-machines/context/context
+                - name: Egyéni JSON-adatok
+                  href: ../azure-monitor/platform/data-sources-json.md?context=/azure/virtual-machines/context/context
+                - name: A collectd teljesítményadatai
+                  href: ../azure-monitor/platform/data-sources-collectd.md?context=/azure/virtual-machines/context/context
+                - name: Rendszernapló
+                  href: ../azure-monitor/platform/data-sources-syslog.md?context=/azure/virtual-machines/context/context
+                - name: Teljesítményszámlálók
+                  href: ../azure-monitor/platform/data-sources-performance-counters.md?context=/azure/virtual-machines/context/context
+                - name: Linux-alkalmazások teljesítménye
+                  href: ../azure-monitor/platform/data-sources-linux-applications.md?context=/azure/virtual-machines/context/context
+                - name: Egyéni naplók
+                  href: ../azure-monitor/platform/data-sources-custom-logs.md?context=/azure/virtual-machines/context/context
+                - name: Egyéni mezők
+                  href: ../azure-monitor/platform/custom-fields.md?context=/azure/virtual-machines/context/context
+        - name: Hibaelhárítás
+          items:
+            - name: A Log Analytics virtuálisgép-bővítménye
+              href: ../azure-monitor/platform/vmext-troubleshoot.md?context=/azure/virtual-machines/context/context
+              displayname: 'troubleshoot, troubleshooting'
+            - name: A Log Analytics Linux-ügynöke
+              href: ../azure-monitor/platform/agent-linux-troubleshoot.md?context=/azure/virtual-machines/context/context
+              displayname: 'troubleshoot, troubleshooting'
+        - name: Azure Monitor virtuális gépekhez
+          items:
+            - name: Áttekintés
+              href: ../azure-monitor/insights/vminsights-overview.md?context=/azure/virtual-machines/context/context
+            - name: Általános rendelkezésre állás – gyakori kérdések
+              href: ../azure-monitor/insights/vminsights-ga-release-faq.md?context=/azure/virtual-machines/context/context
+            - name: GYIK
+              href: ../azure-monitor/faq.md?context=/azure/virtual-machines/context/context#azure-monitor-for-vms
+            - name: Monitorozás engedélyezése
+              items:
+                - name: Monitorozás engedélyezésének áttekintése
+                  href: ../azure-monitor/insights/vminsights-enable-overview.md?context=/azure/virtual-machines/context/context
+                - name: Engedélyezés egyetlen Azure-beli virtuális gépen
+                  href: ../azure-monitor/insights/vminsights-enable-portal.md?context=/azure/virtual-machines/context/context
+                - name: Engedélyezés az Azure Policyval
+                  href: ../azure-monitor/insights/vminsights-enable-policy.md?context=/azure/virtual-machines/context/context
+                - name: Engedélyezés az Azure PowerShell-lel
+                  href: ../azure-monitor/insights/vminsights-enable-powershell.md?context=/azure/virtual-machines/context/context
+                - name: Engedélyezés hibrid környezetben
+                  href: ../azure-monitor/insights/vminsights-enable-hybrid.md?context=/azure/virtual-machines/context/context
+            - name: Függőségek feltérképezése
+              href: ../azure-monitor/insights/vminsights-maps.md?context=/azure/virtual-machines/context/context
+            - name: Teljesítmény figyelése
+              href: ../azure-monitor/insights/vminsights-performance.md?context=/azure/virtual-machines/context/context
+            - name: Adatelemzés naplólekérdezésekkel
+              href: ../azure-monitor/insights/vminsights-log-search.md?context=/azure/virtual-machines/context/context
+            - name: Adatok megjelenítése munkafüzetekben
+              href: ../azure-monitor/insights/vminsights-workbooks.md?context=/azure/virtual-machines/context/context
+            - name: Riasztási szabályok létrehozása
+              href: ../azure-monitor/insights/vminsights-alerts.md?context=/azure/virtual-machines/context/context
+            - name: Dependency Agent frissítése
+              href: ../azure-monitor/insights/vminsights-dependency-agent-maintenance.md?context=/azure/virtual-machines/context/context
+            - name: Monitorozás letiltása
+              href: ../azure-monitor/insights/vminsights-optout.md?context=/azure/virtual-machines/context/context
+    - name: Virtuálisgép-használat
+      href: vm-usage.md
+    - name: Virtuális gép címkézése
+      items:
+        - name: parancssori felület
+          href: tag-cli.md
+        - name: Portál
+          href: tag-portal.md
+        - name: PowerShell
+          href: tag-powershell.md
+        - name: Sablon
+          href: tag-template.md
+    - name: Metaadatok monitorozása
+      items:
+        - name: parancssori felület
+          href: ./linux/instance-metadata-service.md
+        - name: PowerShell
+          href: ./windows/instance-metadata-service.md
+    - name: Használati metrikák lekérése a REST használatával
+      href: ./linux/metrics-vm-usage-rest.md
+    - name: Rendszerindítási diagnosztika
+      href: boot-diagnostics.md
+- name: Biztonsági másolat és helyreállítás
+  items:
+    - name: Áttekintés
+      href: backup-recovery.md
+    - name: Szolgáltatás-megszakítások
+      href: virtual-machines-disaster-recovery-guidance.md
+    - name: Virtuális gépek biztonsági mentése
+      items:
+        - name: Áttekintés
+          href: ../backup/backup-azure-vms-introduction.md
+        - name: Rövid útmutatók
+          items:
+            - name: parancssori felület
+              href: ../backup/quick-backup-vm-cli.md
+            - name: PowerShell
+              href: ../backup/quick-backup-vm-powershell.md
+            - name: Portál
+              href: ../backup/quick-backup-vm-portal.md
+            - name: Sablon
+              href: ../backup/quick-backup-vm-template.md
+        - name: Biztonsági másolat készítése több virtuális gépről
+          href: ../backup/tutorial-backup-vm-at-scale.md
+        - name: Visszaállítási lehetőségek
+          href: /backup/backup-azure-arm-restore-vms.md
+        - name: Támogatási mátrix
+          href: ../backup/backup-support-matrix-iaas.md
+        - name: Díjszabás
+          href: ../backup/azure-backup-pricing.md
+        - name: GYIK
+          href: ../backup/backup-azure-vm-backup-faq.md
+    - name: Vészhelyreállítás
+      items:
+        - name: Áttekintés
+          href: ../site-recovery/site-recovery-overview.md
+        - name: Vész-helyreállítás engedélyezése
+          items:
+            - name: Linux
+              href: ./linux/tutorial-disaster-recovery.md
+            - name: Windows
+              href: ./windows/tutorial-disaster-recovery.md
+        - name: Virtuális gép vészhelyreállításának engedélyezése
+          href: ../site-recovery/azure-to-azure-tutorial-enable-replication.md
+        - name: Virtuális gép vészhelyreállítási próbájának végrehajtása
+          href: ../site-recovery/azure-to-azure-tutorial-dr-drill.md
+        - name: Virtuális gép feladatainak átadása egy másik régióba
+          href: ../site-recovery/azure-to-azure-tutorial-failover-failback.md
+    - name: Virtuális gépek áthelyezése és migrálása
+      items:
+        - name: Előfizetés vagy erőforráscsoport módosítása
+          items:
+            - name: parancssori felület
+              href: ./linux/move-vm.md
+            - name: PowerShell
+              href: ./windows/move-vm.md
+        - name: Virtuális gépek áthelyezése egy másik régióba
+          href: ../site-recovery/azure-to-azure-tutorial-migrate.md
+        - name: Áthelyezés rendelkezésreállási zónába
+          href: ../site-recovery/move-azure-vms-avset-azone.md
+        - name: Karbantartásszabályozási konfigurációk áthelyezése egy másik régióba
+          href: move-region-maintenance-configuration.md
+        - name: Karbantartásszabályozási konfiguráció erőforrásainak áthelyezése egy másik régióba
+          href: move-region-maintenance-configuration-resources.md
+        - name: AWS és helyszíni virtuális gépek migrálása
+          href: ./windows/on-prem-to-azure.md
+          items:
+            - name: Áttelepítés Amazon Web Servicesből (AWS) Azure-ba
+              href: ./windows/aws-to-azure.md
+            - name: Helyszíni virtuális gép feltöltése
+              href: ./linux/upload-vhd.md
+            - name: Az Azure Site Recovery használata
+              href: ../site-recovery/migrate-overview.md?context=/azure/virtual-machines/context/context
+- name: Infrastruktúra automatizálása
+  items:
+    - name: Áttekintés
+      href: infrastructure-automation.md
+    - name: Egyéni adatok
+      href: custom-data.md
+    - name: Ansible
+      items:
+        - name: Telepítés és konfigurálás
+          href: /azure/developer/ansible/install-on-linux-vm
+        - name: Linux rendszerű virtuális gép létrehozása
+          href: /azure/developer/ansible/vm-configure
+        - name: Linux rendszerű virtuális gép kezelése
+          href: /azure/developer/ansible/vm-manage
+    - name: Terraform
+      items:
+        - name: Telepítés és konfigurálás
+          href: /azure/developer/terraform/install-configure
+        - name: Teljes virtuális gép létrehozása
+          href: /azure/developer/terraform/create-linux-virtual-machine-with-infrastructure
+    - name: Jenkins
+      href: /azure/developer/jenkins/overview
+      items:
+        - name: Jenkins-kiszolgáló létrehozása
+          href: /azure/developer/jenkins/configure-on-linux-vm
+        - name: Skálázás virtuálisgép-ügynökökkel
+          href: /azure/developer/jenkins/scale-deployments-using-vm-agents
+        - name: Összetevők közzététele a Storage szolgáltatásban
+          href: /azure/developer/jenkins/azure-storage-blobs-as-build-artifact-repository
+        - name: Biztonságos Jenkins
+          href: 'https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/'
+    - name: Azure DevOps
+      href: ./linux/tutorial-azure-devops-blue-green-strategy.md
+- name: Hibaelhárítás
+  href: ./troubleshooting/index.yml
 - name: További források
   items:
+    - name: A felhő bevezetésének keretrendszere
+      href: /azure/cloud-adoption-framework/get-started/
+    - name: Architektúra-központ
+      href: /azure/architecture/
+    - name: Microsoft Q&A
+      href: /answers/topics/azure-virtual-machines.html
+    - name: Azure-gyorssablonok
+      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/#Linux'
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/regions/services/'
     - name: Fejlessze a készségeit a Microsoft Learnnel
       href: /learn/browse/?products=azure-virtual-machines
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
     - name: Díjkalkulátor
       href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Példák
+      items:
+        - name: Azure CLI-minták tárháza
+          href: 'https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine'
+        - name: PowerShell-minták tárháza
+          href: 'https://github.com/Azure/azure-docs-powershell-samples/tree/master/virtual-machine'
+    - name: Általános CLI-parancsok
+      href: ./linux/cli-manage.md
+    - name: Általános PowerShell-parancsok
+      href: ./windows/ps-common-ref.md
+    - name: Általános hálózatkezelési PowerShell-parancsok
+      href: ./windows/ps-common-network-ref.md
+    - name: Virtuálisgép-sablon leírása
+      href: ./windows/template-description.md
+    - name: Klasszikus üzembe helyezések
+      items:
+        - name: Linux rendszerű virtuális gépek klasszikus üzembe helyezéssel
+          href: /previous-versions/azure/virtual-machines/linux/classic/
+        - name: Windows rendszerű virtuális gépek klasszikus üzembe helyezéssel
+          href: /previous-versions/azure/virtual-machines/windows/classic/
+    - name: GYIK
+      items:
+        - name: Linux
+          href: ./linux/faq.md
+        - name: Windows
+          href: ./windows/faq.md

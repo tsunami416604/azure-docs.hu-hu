@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: d6c3dbc28da7bee0bc24a6dc24608c78e480c20e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e7a8a72d0669f39cc27c997d83af1e6272d045a6
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462160"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704152"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Kinyerés, átalakítás és betöltés (ETL) skálán
 
@@ -82,7 +82,7 @@ Az adatkészletek terabájt tartományban való feltöltéséhez a hálózati k�
 
 - **Azure-ExpressRoute:** Hozzon létre privát kapcsolatokat az Azure-adatközpontok és a helyszíni infrastruktúra között. Ezek a kapcsolatok megbízható lehetőséget biztosítanak nagy mennyiségű adatátvitelre. További információ: az [Azure ExpressRoute dokumentációja](../../expressroute/expressroute-introduction.md).
 
-- **Adatok feltöltése a merevlemez-meghajtókról:** Az [Azure import/export szolgáltatást](../../storage/common/storage-import-export-service.md) használhatja az Azure-adatközpontok adataihoz tartozó merevlemez-meghajtók szállítására. Az adatait először feltölti az Azure Blob Storage-ba. Ezután a Azure Data Factory vagy a AdlCopy eszközzel másolhat adatokat az Azure Blob Storage-ból a Data Lake Storageba.
+- **Adatok feltöltése a merevlemez-meghajtókról:** Az [Azure import/export szolgáltatást](../../import-export/storage-import-export-service.md) használhatja az Azure-adatközpontok adataihoz tartozó merevlemez-meghajtók szállítására. Az adatait először feltölti az Azure Blob Storage-ba. Ezután a Azure Data Factory vagy a AdlCopy eszközzel másolhat adatokat az Azure Blob Storage-ból a Data Lake Storageba.
 
 ### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 

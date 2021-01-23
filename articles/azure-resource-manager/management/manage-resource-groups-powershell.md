@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: jgao
-ms.openlocfilehash: e5449dc26197a0aa2e2b0da49ad9e5ca4fb19e82
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: fb8cd45842e2f9b64048aa939f7b6adc9b0e6e0a
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185759"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703682"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>Azure Resource Manager erőforráscsoportok kezelése Azure PowerShell használatával
 
@@ -69,7 +69,7 @@ További információ arról, hogy a Azure Resource Manager hogyan rendeli az er
 
 Lásd: [erőforrások központi telepítése meglévő erőforráscsoporthoz](manage-resources-powershell.md#deploy-resources-to-an-existing-resource-group).
 
-Az erőforráscsoport-telepítés ellenőrzéséhez tekintse meg a [test-AzResourceGroupDeployment](/powershell/module/Az.Resources/Test-AzResourceGroupDeployment?view=azps-1.3.0)című témakört.
+Az erőforráscsoport-telepítés ellenőrzéséhez tekintse meg a [test-AzResourceGroupDeployment](/powershell/module/Az.Resources/Test-AzResourceGroupDeployment)című témakört.
 
 ## <a name="deploy-a-resource-group-and-resources"></a>Erőforráscsoport és erőforrások üzembe helyezése
 
@@ -214,7 +214,7 @@ További információkért lásd: [egy-és többerőforrásos exportálás a Azu
 
 Az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md) segítségével kezelheti az Azure-beli erőforrásokhoz való hozzáférést. További információ: [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása Azure PowerShell használatával](../../role-based-access-control/role-assignments-powershell.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Azure Resource Manager megismeréséhez tekintse meg a [Azure Resource Manager áttekintése](overview.md)című témakört.
 - A Resource Manager-sablon szintaxisának megismeréséhez tekintse meg [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](../templates/template-syntax.md)című témakört.

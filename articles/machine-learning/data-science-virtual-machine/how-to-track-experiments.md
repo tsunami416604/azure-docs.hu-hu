@@ -9,12 +9,12 @@ author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 17418b0255182934045acc9174b34cff2aefff99
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 7726fce7ac69ebfaabf44049abc49c53f8175718
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307444"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704540"
 ---
 # <a name="track-experiments-and-deploy-models-in-azure-machine-learning"></a>Kísérletek követése és modellek üzembe helyezése Azure Machine Learning
 
@@ -30,7 +30,7 @@ Az alábbi ábra azt szemlélteti, hogy a MLflow nyomon követésével nyomon k�
 
 ## <a name="create-a-new-notebook"></a>Új jegyzetfüzet létrehozása
 
-A Azure Machine Learning és a MLFlow SDK előre telepítve van a Data Science VM, és a * *azureml_py36_ \** _ Conda környezetben érhető el. A Jupyterlab-ben kattintson az indítóra, és válassza ki a következő kernelt:
+A Azure Machine Learning és a MLFlow SDK előre telepítve van a Data Science VM, és a **azureml_py36_ \** _ Conda környezetben érhető el. A JupyterLab-ben kattintson az indítóra, és válassza ki a következő kernelt:
 
 ![kernel kiválasztása](./media/how-to-track-experiments/experiment-tracking-1.png)
 

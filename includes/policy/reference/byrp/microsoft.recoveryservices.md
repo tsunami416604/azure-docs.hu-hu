@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 9e6d9cee5cd9e302f30681772bf1e06243efd72a
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 99ccd7cd0953f8dee5874bc77528586c1fed6b18
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051401"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704109"
 ---
-|Név<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[A Azure Backup engedélyezni kell a Virtual Machines](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F013e242c-8828-4970-87b3-ab247555486d) |Az Azure Backup engedélyezésével gondoskodjon az Azure-Virtual Machines védelméről. A Azure Backup biztonságos és költséghatékony adatvédelmi megoldás az Azure-hoz. |AuditIfNotExists, letiltva |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Backup/VirtualMachines_EnableAzureBackup_Audit.json) |
 |[Egy adott címkével rendelkező virtuális gépek biztonsági mentésének konfigurálása egy új Recovery Services-tárolóra alapértelmezett házirenddel](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F83644c87-93dd-49fe-bf9f-6aff8fd0834e) |Az összes virtuális gép biztonsági mentésének betartatása egy Recovery Services-tárolónak a virtuális géppel azonos helyen és erőforráscsoporthoz történő üzembe helyezésével. Ez akkor hasznos, ha a szervezet különböző alkalmazásai különálló erőforráscsoportokat foglalnak le, és a saját biztonsági mentését és visszaállítását kell kezelni. Megadhatja a megadott címkét tartalmazó virtuális gépeket is a hozzárendelés hatókörének szabályozásához. Lásd [https://aka.ms/AzureVMAppCentricBackupIncludeTag](https://aka.ms/AzureVMAppCentricBackupIncludeTag) |deployIfNotExists |[1.0.0 – előzetes verzió](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Backup/VirtualMachineApplicationCentricBackup_Backup_Deploy_WithTag.json) |

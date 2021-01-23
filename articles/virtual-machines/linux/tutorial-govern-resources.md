@@ -1,6 +1,6 @@
 ---
 title: Oktatóanyag – virtuális gépek kezelése a parancssori felülettel
-description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure CLI-t Azure-beli virtuális gépek kezelésére az Azure RBAC, a házirendek, a zárolások és a címkék alkalmazásával.
+description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure CLI-t az Azure-beli virtuális gépek Azure-RBAC,-szabályzatok,-zárolások és-címkék alkalmazásával történő kezeléséhez.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: tfitzmac
@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/30/2019
 ms.author: tomfitz
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 565315ad78a2994f44973c4fdcd4519ab9e03ea8
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d1fb9347e33c56c647e15b9e90df4afe5dd55b65
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94831786"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704742"
 ---
 # <a name="tutorial-learn-about-linux-virtual-machine-management-with-azure-cli"></a>Oktatóanyag: a linuxos virtuális gépek felügyeletének megismerése az Azure CLI-vel
 
@@ -55,7 +55,7 @@ A virtuálisgép-megoldások kezeléséhez három erőforrás-specifikus szerepk
 
 Ahelyett, hogy szerepköröket rendelne az egyéni felhasználókhoz, gyakran célszerűbb egy azokat a felhasználókat tartalmazó Azure Active Directory-csoportot használni, akiknek hasonló műveleteket kell elvégezniük. Ezután rendelje hozzá a csoportot a megfelelő szerepkörhöz. Ehhez a cikkhez használhat egy meglévő csoportot a virtuális gép kezeléséhez, vagy a portálon [létrehozhat egy Azure Active Directory-csoportot](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-Egy új csoport létrehozása vagy egy meglévő csoport megkeresése után az [az role assignment create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) paranccsal rendelje hozzá az új Azure Active Directory-csoportot az erőforráscsoport Virtuális gépek közreműködője szerepköréhez.
+Egy új csoport létrehozása vagy egy meglévő csoport megkeresése után az [az role assignment create](/cli/azure/policy/assignment#az-policy-assignment-create) paranccsal rendelje hozzá az új Azure Active Directory-csoportot az erőforráscsoport Virtuális gépek közreműködője szerepköréhez.
 
 ```azurecli-interactive
 adgroupId=$(az ad group show --group <your-group-name> --query objectId --output tsv)
@@ -69,7 +69,7 @@ A folyamatot általában a *Hálózati közreműködő* és a *Tárfiók-közrem
 
 ## <a name="azure-policy"></a>Azure Policy
 
-Az [Azure Policy](../../governance/policy/overview.md) segítségével ellenőrizheti, hogy az előfizetés összes erőforrása megfelel-e a vállalati szabványoknak. Az előfizetése már számos szabályzatdefinícióval rendelkezik. Az elérhető szabályzatdefiníciók megtekintéséhez használja az [az policy definition list](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-list) parancsot:
+Az [Azure Policy](../../governance/policy/overview.md) segítségével ellenőrizheti, hogy az előfizetés összes erőforrása megfelel-e a vállalati szabványoknak. Az előfizetése már számos szabályzatdefinícióval rendelkezik. Az elérhető szabályzatdefiníciók megtekintéséhez használja az [az policy definition list](/cli/azure/policy/definition#az-policy-definition-list) parancsot:
 
 ```azurecli-interactive
 az policy definition list --query "[].[displayName, policyType, name]" --output table
@@ -81,7 +81,7 @@ Itt láthatja a meglévő szabályzatdefiníciókat. A szabályzat típusa lehet
 * Korlátozzák a virtuális gépek termékváltozatait.
 * Naplózzák a felügyelt lemezeket nem használó virtuális gépeket.
 
-A következő példában három olyan szabályzatdefiníciót fog lekérni, amely a megjelenítendő néven alapul. Az [az policy assignment create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) paranccsal rendelje hozzá ezeket a definíciókat az erőforráscsoporthoz. Egyes szabályzatoknál paraméterértékekkel határozhatja meg az engedélyezett értékeket.
+A következő példában három olyan szabályzatdefiníciót fog lekérni, amely a megjelenítendő néven alapul. Az [az policy assignment create](/cli/azure/policy/assignment#az-policy-assignment-create) paranccsal rendelje hozzá ezeket a definíciókat az erőforráscsoporthoz. Egyes szabályzatoknál paraméterértékekkel határozhatja meg az engedélyezett értékeket.
 
 ```azurecli-interactive
 # Get policy definitions for allowed locations, allowed SKUs, and auditing VMs that don't use managed disks
@@ -143,7 +143,7 @@ Az [Erőforrás-zárolások](../../azure-resource-manager/management/lock-resour
 
 A felügyeleti zárolások létrehozásához vagy törléséhez hozzáféréssel kell rendelkeznie a `Microsoft.Authorization/locks/*` műveletekhez. A beépített szerepkörök esetén ezek a műveletek csak a **Tulajdonosi** és a **Felhasználói hozzáférés rendszergazdájának** vannak engedélyezve.
 
-A virtuális gép és a hálózati biztonsági csoport zárolásához használja az [az lock create](/cli/azure/resource/lock?view=azure-cli-latest#az-resource-lock-create) parancsot:
+A virtuális gép és a hálózati biztonsági csoport zárolásához használja az [az lock create](/cli/azure/resource/lock#az-resource-lock-create) parancsot:
 
 ```azurecli-interactive
 # Add CanNotDelete lock to the VM
@@ -175,7 +175,7 @@ Megjelenik egy hibaüzenet, amely szerint a törlési művelet nem hajtható vé
 
 [!INCLUDE [Resource Manager governance tags CLI](../../../includes/resource-manager-governance-tags-cli.md)]
 
-Egy virtuális gép címkézéséhez használja az [az resource tag](/cli/azure/resource?view=azure-cli-latest#az-resource-list) parancsot. Az erőforrás meglévő címkéit nem őrzi meg a rendszer.
+Egy virtuális gép címkézéséhez használja az [az resource tag](/cli/azure/resource#az-resource-list) parancsot. Az erőforrás meglévő címkéit nem őrzi meg a rendszer.
 
 ```azurecli-interactive
 az resource tag -n myVM \
@@ -186,7 +186,7 @@ az resource tag -n myVM \
 
 ### <a name="find-resources-by-tag"></a>Erőforrások keresése címke szerint
 
-Az adott címkenévvel és -értékkel rendelkező erőforrások kereséséhez használja az [az resource list](/cli/azure/resource?view=azure-cli-latest#az-resource-list) parancsot:
+Az adott címkenévvel és -értékkel rendelkező erőforrások kereséséhez használja az [az resource list](/cli/azure/resource#az-resource-list) parancsot:
 
 ```azurecli-interactive
 az resource list --tag Environment=Test --query [].name
@@ -204,7 +204,7 @@ az vm stop --ids $(az resource list --tag Environment=Test --query "[?type=='Mic
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A zárolt hálózati biztonsági csoport nem törölhető a zárolás eltávolításáig. A zárolás eltávolításához kérje le a zárolások azonosítóit, és adja meg őket az [az lock delete](/cli/azure/resource/lock?view=azure-cli-latest#az-resource-lock-delete) parancsban:
+A zárolt hálózati biztonsági csoport nem törölhető a zárolás eltávolításáig. A zárolás eltávolításához kérje le a zárolások azonosítóit, és adja meg őket az [az lock delete](/cli/azure/resource/lock#az-resource-lock-delete) parancsban:
 
 ```azurecli-interactive
 vmlock=$(az lock show --name LockVM \
@@ -218,14 +218,14 @@ nsglock=$(az lock show --name LockNSG \
 az lock delete --ids $vmlock $nsglock
 ```
 
-Ha már nincs rá szükség, az az [Group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás. Lépjen ki az SSH-munkamenetből a virtuális gépre, majd törölje az erőforrásokat a következő módon:
+Ha már nincs rá szükség, az az [Group delete](/cli/azure/group#az-group-delete) paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás. Lépjen ki az SSH-munkamenetből a virtuális gépre, majd törölje az erőforrásokat a következő módon:
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozott egy egyéni virtuálisgép-rendszerképet. Megtanulta végrehajtani az alábbi műveleteket:
 

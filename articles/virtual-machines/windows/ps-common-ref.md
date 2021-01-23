@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 074a088e0fb342b5d1064d385d819c48ee089c5e
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: ecc3f5934e4dd37cc27a1715ea39f86619d581ff
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201807"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730206"
 ---
 # <a name="common-powershell-commands-for-creating-and-managing-azure-virtual-machines"></a>Gyakran használt PowerShell-parancsok az Azure-beli virtuális gépek létrehozásához és kezeléséhez
 
@@ -40,7 +40,7 @@ Ezek a változók akkor lehetnek hasznosak, ha a cikkben szereplő parancsok kö
 | Feladat | Parancs |
 | ---- | ------- |
 | Virtuális gép konfigurációjának létrehozása |$vm = [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) -VMName $MyVM-VMSize "Standard_D1_v1"<BR></BR><BR></BR>A virtuálisgép-konfiguráció a virtuális gép beállításainak definiálására vagy frissítésére szolgál. A konfiguráció inicializálva van a virtuális gép nevével és [méretével](../sizes.md). |
-| Konfigurációs beállítások hozzáadása |$vm = [set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem) -VM $VM-Windows-számítógépnév $MyVM-hitelesítőadat $cred-ProvisionVMAgent-EnableAutoUpdate<BR></BR><BR></BR>Az operációs rendszer beállításai, beleértve a [hitelesítő adatokat](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true) , hozzá lettek adva a New-AzVMConfig használatával korábban létrehozott konfigurációs objektumhoz. |
+| Konfigurációs beállítások hozzáadása |$vm = [set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem) -VM $VM-Windows-számítógépnév $MyVM-hitelesítőadat $cred-ProvisionVMAgent-EnableAutoUpdate<BR></BR><BR></BR>Az operációs rendszer beállításai, beleértve a [hitelesítő adatokat](/powershell/module/microsoft.powershell.security/get-credential) , hozzá lettek adva a New-AzVMConfig használatával korábban létrehozott konfigurációs objektumhoz. |
 | Hálózati adapter hozzáadása |$vm = [Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface) -VM $VM-ID $nic. ID<BR></BR><BR></BR>A virtuális gépnek [hálózati adapterrel](./quick-create-powershell.md?toc=/azure/virtual-machines/windows/toc.json) kell rendelkeznie a virtuális hálózatban való kommunikációhoz. A [Get-AzNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface) használatával lekérheti a meglévő hálózati adapterek objektumait is. |
 | Platform rendszerképének meghatározása |$vm = [set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage) -VM $VM-közzétevő neve "publisher_name"-ajánlat "publisher_offer"-sku "product_sku"-version "Latest"<BR></BR><BR></BR>A rendszer a korábban a New-AzVMConfig használatával létrehozott konfigurációs objektumhoz adja hozzá a [rendszerképekkel kapcsolatos adatokat](cli-ps-findimage.md) . A parancs által visszaadott objektum csak akkor használatos, ha az operációsrendszer-lemezt platform-lemezkép használatára állítja be. |
 | Virtuális gép létrehozása |[New-AzVM](/powershell/module/az.compute/new-azvm) -ResourceGroupName $MyResourceGroup-Location $Location-VM $VM<BR></BR><BR></BR>Az összes erőforrás egy [erőforráscsoporthoz](../../azure-resource-manager/management/manage-resource-groups-powershell.md)lett létrehozva. A parancs futtatása előtt futtassa a New-AzVMConfig, a set-AzVMOperatingSystem, a set-AzVMSourceImage, a Add-AzVMNetworkInterface és a set-AzVMOSDisk parancsot. |
@@ -63,5 +63,5 @@ Ezek a változók akkor lehetnek hasznosak, ha a cikkben szereplő parancsok kö
 | Virtuális gép törlése |[Remove-AzVM](/powershell/module/az.compute/remove-azvm) -ResourceGroupName $MyResourceGroup-Name $myVM |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A virtuális gépek létrehozásának alapvető lépései a [Windows virtuális gép létrehozása a Resource Manager és a PowerShell használatával](./quick-create-powershell.md?toc=/azure/virtual-machines/windows/toc.json)című témakörben találhatók.

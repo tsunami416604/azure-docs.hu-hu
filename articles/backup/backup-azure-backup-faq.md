@@ -3,12 +3,12 @@ title: Gyakori kérdésekre adott válaszok
 description: 'Gyakori kérdésekre adott válaszok a következő témakörökben: az Azure Backup szolgáltatásai, mint például a Recovery Services-tárolók, a biztonsági mentés lehetséges elemei, működése, titkosítás és korlátozások. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: bd84ff553b486d200ec4501b89b42335335b223f
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: dbe6ce95427b559c037e38525f9f48195a2a76a4
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572527"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703419"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Gyakori kérdések
 
@@ -60,7 +60,7 @@ Ha már konfigurálta a biztonsági mentést, és a GRS-ről LRS-re kell váltan
 
 ### <a name="how-can-i-move-data-from-the-recovery-services-vault-to-on-premises"></a>Hogyan helyezhetők át adatok a Recovery Services-tárolóból a helyszíni rendszerbe?
 
-Az adatok közvetlenül a Recovery Services-tárolóból a helyszíni rendszerbe való exportálása a Data Box használatával nem támogatott. Az adatkészletet vissza kell állítani egy Storage-fiókba, majd [Data Box](../databox/data-box-overview.md) vagy [Importálás/exportálás](../storage/common/storage-import-export-service.md)használatával áthelyezhető a helyszíni környezetbe.
+Az adatok közvetlenül a Recovery Services-tárolóból a helyszíni rendszerbe való exportálása a Data Box használatával nem támogatott. Az adatkészletet vissza kell állítani egy Storage-fiókba, majd [Data Box](../databox/data-box-overview.md) vagy [Importálás/exportálás](../import-export/storage-import-export-service.md)használatával áthelyezhető a helyszíni környezetbe.
 
 ### <a name="what-is-the-difference-between-a-geo-redundant-storage-grs-vault-with-and-without-the-cross-region-restore-crr-capability-enabled"></a>Mi a különbség a Geo-redundáns tárolási (GRS) tárolók között, és nem engedélyezett a régiók közötti visszaállítási (CRR) képesség?
 

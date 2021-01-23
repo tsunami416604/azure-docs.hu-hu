@@ -1,0 +1,71 @@
+### YamlMime:Landing
+title: Azure import/export dokumentáció – online átvitel
+summary: Az Azure importálási/exportálási szolgáltatásával nagy mennyiségű adatmennyiséget importálhat az Azure Blob Storage-ba, és Azure Files a lemezmeghajtók Azure-adatközpontba való szállításával.
+metadata:
+  title: Azure import/export – dokumentáció
+  description: Az Azure import/export dokumentációja nagy mennyiségű adatok biztonságos importálására/exportálására az Azure-adatközpontok számára a fizikai lemezek szállításával.
+  services: storage
+  ms.service: storage
+  ms.subservice: storage
+  ms.topic: landing-page
+  ms.collection: collection
+  author: v-dalc
+  ms.author: alkohli
+  ms.date: 01/08/201
+  ms.openlocfilehash: 5bccc4c64da4493e2f6d5e969949eb13df8bc1e7
+  ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+  ms.translationtype: MT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 01/22/2021
+  ms.locfileid: "98707639"
+landingContent:
+- title: Az Azure import/export névjegye
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az Importálás/exportálás?
+      url: storage-import-export-service.md
+  - linkListType: architecture
+    links:
+    - text: Adatátviteli lehetőségek kiválasztása
+      url: /azure/storage/common/storage-choose-data-transfer-solution
+    - text: Hálózati vagy offline átvitel használata
+      url: /azure/storage/common/storage-solution-large-dataset-low-network#offline-transfer-or-network-transfer
+- title: Követelmények
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Követelmények
+      url: storage-import-export-requirements.md
+    - text: GYIK
+      url: storage-import-export-service-faq.md
+- title: Üzembe helyezés
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Adatok importálása blobokba
+      url: storage-import-export-data-to-blobs.md
+    - text: Adatok importálása fájlokba
+      url: storage-import-export-data-to-files.md
+    - text: Adatok exportálása blobokból
+      url: storage-import-export-data-from-blobs.md
+  - linkListType: learn
+    links:
+    - text: Az adatexportálás kapcsolat nélküli üzemmódban importálással/exportálással
+      url: /learn/modules/export-data-with-azure-import-export/
+- title: Figyelés
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: A meghajtók állapotának megtekintése
+      url: storage-import-export-view-drive-status.md
+    - text: Feladat állapotának áttekintése
+      url: storage-import-export-tool-reviewing-job-status-v1.md
+- title: Hibaelhárítás
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Hibaelhárítás
+      url: storage-import-export-contact-microsoft-support.md
+    - text: Kapcsolatfelvétel a támogatási szolgáltatással
+      url: storage-import-export-contact-microsoft-support.md

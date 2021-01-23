@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: ac86dfba02b54730773a1d243981e85d563517e7
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: aac1fb8e2da7a3c84b3abff47c8f476b9fb9049c
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183830"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704338"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box"></a>Oktatóanyag: az Azure Data Box exportálási sorrendjének létrehozása
 
@@ -100,7 +100,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket az Azure Po
     |---------|---------|
     |Tárfiók     | Az Azure Storage-fiók, ahonnan exportálni kívánja az adatait. |
     |Exportálás típusa     | Meghatározza az **összes objektumból** exportálandó adatok típusát és az **XML-fájl használatát**.<ul><li> **Minden objektum** – azt adja meg, hogy a feladatsor az **átvitel beállításaitól** függően az összes értéket exportálja.</li><li> **XML-fájl használata** – olyan XML-fájlt ad meg, amely a Storage-fiókból exportálandó blobok és/vagy fájlok elérési útját és előtagokat tartalmazza. Az XML-fájlnak a kiválasztott Storage-fiók tárolójában kell lennie, és a fájlmegosztás lehetőség választása jelenleg nem támogatott. A fájlnak nem üres. XML formátumú fájlnak kell lennie.</li></ul>        |
-    |Átvitel beállításai     |  Meghatározza az adatátviteli beállításokat az **összes kijelölése**, **az összes blob** és az **összes fájl** közül. <ul><li> **Az összes kijelölése** – megadja, hogy az összes blob és Azure Files exportálva van-e. Ha olyan Storage-fiókot használ, amely csak a blobokat támogatja (Blob Storage fiók), a **minden fájl** lehetőség nem lesz kiválasztható.</li><li> **Minden blob** – azt adja meg, hogy csak a blokk-és a Blobok legyenek exportálva.</li><li> **Minden fájl** – azt adja meg, hogy minden fájl exportálva legyen, kivéve a blobokat. Az Ön által létrehozott Storage-fiók típusa (GPv1 és GPv2, Premium Storage vagy blob Storage) meghatározza az exportálható adattípusokat. További információ: [támogatott Storage-fiókok exportáláshoz](../storage/common/storage-import-export-requirements.md#supported-storage-types).</li></ul>         |
+    |Átvitel beállításai     |  Meghatározza az adatátviteli beállításokat az **összes kijelölése**, **az összes blob** és az **összes fájl** közül. <ul><li> **Az összes kijelölése** – megadja, hogy az összes blob és Azure Files exportálva van-e. Ha olyan Storage-fiókot használ, amely csak a blobokat támogatja (Blob Storage fiók), a **minden fájl** lehetőség nem lesz kiválasztható.</li><li> **Minden blob** – azt adja meg, hogy csak a blokk-és a Blobok legyenek exportálva.</li><li> **Minden fájl** – azt adja meg, hogy minden fájl exportálva legyen, kivéve a blobokat. Az Ön által létrehozott Storage-fiók típusa (GPv1 és GPv2, Premium Storage vagy blob Storage) meghatározza az exportálható adattípusokat. További információ: [támogatott Storage-fiókok exportáláshoz](../import-export/storage-import-export-requirements.md#supported-storage-types).</li></ul>         |
     |Részletes napló belefoglalása     | Azt jelzi, hogy szeretne-e részletes naplófájlt használni, amely tartalmazza az összes sikeresen exportált fájl listáját.        |
 
     > [!NOTE]
@@ -419,7 +419,7 @@ The following xml shows an example of the copy log when the export has errors:
 </CopyLog>
 ``` -->
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban az Azure Data Box témaköréből ismerhette meg a következőket:
 

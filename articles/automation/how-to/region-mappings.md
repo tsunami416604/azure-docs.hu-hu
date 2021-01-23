@@ -1,16 +1,16 @@
 ---
 title: A társított Log Analytics-munkaterület esetében támogatott régiók
 description: Ez a cikk az Automation-fiók és a Log Analytics munkaterület közötti támogatott régió-hozzárendeléseket ismerteti, mivel azok a Azure Automation egyes szolgáltatásaihoz kapcsolódnak.
-ms.date: 12/15/2020
+ms.date: 01/21/2021
 services: automation
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 95537bd54ecb476055608c89ac68a46d410288b6
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 3b744127b51b0e0db63c158feaf463af4cd0bdcf
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590885"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704321"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>A társított Log Analytics-munkaterület esetében támogatott régiók
 
@@ -32,13 +32,17 @@ A következő táblázat a támogatott leképezéseket tartalmazza:
 |**USA**||
 |<sup>1</sup> . EastUS|EastUS2|
 |<sup>2</sup> . EastUS2|EastUS|
+|WestUS|WestUS|
 |WestUS2|WestUS2|
+|CentralUS|CentralUS|
 |SouthCentralUS|SouthCentralUS|
 |WestCentralUS|WestCentralUS|
 |**Kanada**||
 |CanadaCentral|CanadaCentral|
 |**Ázsia és a Csendes-óceáni térség**||
+|AustraliaEast|AustraliaEast|
 |AustraliaSoutheast|AustraliaSoutheast|
+|EastAsia|EastAsia|
 |SoutheastAsia|SoutheastAsia|
 |CentralIndia|CentralIndia|
 |<sup>3</sup> . ChinaEast2|ChinaEast2|
@@ -92,7 +96,7 @@ Azt is megteheti, hogy leválasztja a munkaterületet az Automation-fiókjából
 1. A munkaterületen válassza az **Automation-fiók** lehetőséget a **kapcsolódó erőforrások** területen.
 2. Az Automation-fiók lapon válassza a **fiók megszüntetése** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerkedjen meg Update Management [Update Management áttekintésében](../update-management/overview.md).
 * Ismerkedjen meg a Change Tracking és a leltárral [change Tracking és leltár áttekintésében](../change-tracking/overview.md).

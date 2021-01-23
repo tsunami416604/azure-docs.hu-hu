@@ -3,12 +3,12 @@ title: Az Azure VMware-megoldás üzembe helyezésének megtervezése
 description: Ez a cikk egy Azure VMware-megoldás üzembe helyezési munkafolyamatát ismerteti.  A végeredmény egy olyan környezet, amely készen áll a virtuális gép (VM) létrehozására és áttelepítésére.
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 2cc4d40fd8088a632e0c24e3c4b770ebdc9de2e8
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: cdf4ddd6166920fa7461bfd85e01ef0efd6dfbb9
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912733"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704564"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Az Azure VMware-megoldás üzembe helyezésének megtervezése
 
@@ -31,7 +31,7 @@ Azonosítsa az Azure VMware-megoldás üzembe helyezéséhez használni kívánt
 
 Azonosítsa az Azure VMware-megoldáshoz használni kívánt erőforráscsoportot.  Általában egy erőforráscsoport jön létre kifejezetten az Azure VMware megoldáshoz, de használhat egy meglévő erőforráscsoportot is.
 
-## <a name="region"></a>Region
+## <a name="region"></a>Régió
 
 Azonosítsa az Azure VMware-megoldás üzembe helyezéséhez használni kívánt régiót.  További információkért tekintse meg az [Azure-termékek régiónként elérhető útmutatót](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=azure-vmware).
 
@@ -95,26 +95,32 @@ Ne feledje, hogy:
 
 ## <a name="azure-virtual-network-to-attach-azure-vmware-solution"></a>Azure-Virtual Network az Azure VMware-megoldás csatlakoztatásához
 
-Az Azure VMware-megoldás saját felhőhöz való hozzáféréséhez az Azure VMware-megoldáshoz tartozó ExpressRoute-áramkörnek egy Azure Virtual Networkhoz kell csatlakoznia.  Az üzembe helyezés során megadhat egy új virtuális hálózatot, vagy kiválaszthat egy meglévőt.
+Ebben a lépésben egy ExpressRoute virtuális hálózati átjárót fog azonosítani, és támogatja az Azure VMware Solution ExpressRoute áramkör csatlakoztatásához használt Azure-beli virtuális hálózatot.  A ExpressRoute áramkör lehetővé teszi, hogy az Azure VMware-megoldás saját felhőjét más Azure-szolgáltatásokhoz, Azure-erőforrásokhoz és helyszíni környezetekhez lehessen csatlakoztatni.
 
-Az Azure VMware-megoldásból származó ExpressRoute áramkör csatlakozik egy ExpressRoute-átjáróhoz az ebben a lépésben meghatározott Azure-Virtual Network.  
-
->[!IMPORTANT]
->Egy meglévő ExpressRoute-átjáróval csatlakozhat az Azure VMware-megoldáshoz, ha nem lépi túl a virtuális hálózatban lévő négy ExpressRoute áramköri korlátot.  Ahhoz azonban, hogy a helyszíni Azure VMware-megoldás elérhető legyen a ExpressRoute-on keresztül, rendelkeznie kell ExpressRoute Global Reach, mivel a ExpressRoute-átjáró nem biztosít tranzitív útválasztást a csatlakoztatott áramkörök között.  
-
-Ha a ExpressRoute áramkört az Azure VMware megoldásból egy meglévő ExpressRoute-átjáróhoz szeretné kapcsolni, az üzembe helyezés után megteheti.  
-
-Tehát Összefoglalva, szeretné összekötni az Azure VMware-megoldást egy meglévő Express Route Gateway-átjáróval?  
-
-* **Igen** = azonosítsa az üzembe helyezés során nem használt virtuális hálózatot.
-* **Nem** = meglévő virtuális hálózat azonosítása vagy új létrehozása az üzembe helyezés során.
-
-Mindkét esetben dokumentálja, hogy mit szeretne tenni ebben a lépésben.
-
->[!NOTE]
->Ezt a virtuális hálózatot a helyszíni környezet és az Azure VMware-megoldás látja, ezért ügyeljen arra, hogy a virtuális hálózatban használt IP-szegmensek és alhálózatok ne fedjék át egymást.
+*Meglévő* vagy *új* ExpressRoute virtuális hálózati átjárót is használhat.
 
 :::image type="content" source="media/pre-deployment/azure-vmware-solution-expressroute-diagram.png" alt-text="Identitás – Azure Virtual Network az Azure VMware-megoldás csatlakoztatásához" border="false":::
+
+### <a name="use-an-existing-expressroute-virtual-network-gateway"></a>Meglévő ExpressRoute virtuális hálózati átjáró használata
+
+Ha *meglévő* ExpressRoute virtuális hálózati átjárót használ, az Azure VMware megoldás ExpressRoute áramkörét a rendszer a privát felhő üzembe helyezése után hozza meg.  Így nincs szükség a **Virtual Network** mező feltöltésére.  
+
+Jegyezze fel, hogy melyik ExpressRoute virtuális hálózati átjárót fogja használni, és folytassa a következő lépéssel.
+
+### <a name="create-a-new-expressroute-virtual-network-gateway"></a>Új ExpressRoute virtuális hálózati átjáró létrehozása
+
+*Új* ExpressRoute virtuális hálózati átjáró létrehozásakor egy meglévő azure-Virtual Network is használható, vagy létrehozhatók új azure-Virtual Networkek.  
+
+Ha a választás egy meglévő Azure-Virtual Network használata, ellenőrizze, hogy nincsenek-e meglévő ExpressRoute virtuális hálózati átjárók a virtuális hálózatban, és jelölje ki a saját Felhőbeli üzembe helyezés létrehozása képernyő Virtual Network legördülő menüben.
+
+Ha úgy dönt, hogy új Azure-Virtual Network hoz létre, azt előre vagy az üzembe helyezés során lehet létrehozni, a saját Felhőbeli központi telepítés létrehozása képernyő Virtual Network szakaszának új lehetőségére kattintva.
+
+Az alábbi ábrán a **saját Felhőbeli** üzembe helyezési képernyő létrehozása és a Red-ban leírt Azure **Virtual Network** mező látható.
+
+:::image type="content" source="media/pre-deployment/azure-vmware-solution-deployment-screen-vnet-circle.png" alt-text="Képernyőfelvétel az Azure VMware megoldás üzembe helyezéséről a virtuális hálózati átjáróval.":::
+
+>[!NOTE]
+>A helyszíni környezet és az Azure VMware-megoldás a használni vagy létrehozni kívánt virtuális hálózatokat is láthatja, ezért ügyeljen arra, hogy az ebben a virtuális hálózatban használt IP-szegmensek és alhálózatok ne legyenek átfedésben.
 
 ## <a name="vmware-hcx-network-segments"></a>VMware HCX hálózati szegmensek
 
@@ -122,7 +128,7 @@ A VMware HCX egy olyan technológia, amely az Azure VMware megoldással együtt 
 
 [!INCLUDE [hcx-network-segments](includes/hcx-network-segments.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy összegyűjtötte és dokumentálta a szükséges információkat, folytassa a következő szakasszal, hogy létrehozza az Azure VMware-megoldás saját felhőjét.
 
 > [!div class="nextstepaction"]

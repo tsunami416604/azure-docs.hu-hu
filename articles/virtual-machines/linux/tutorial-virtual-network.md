@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 72c7f1dd6652a51a960c80829a697b97fd74f8de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c806e5d1d9c9242b6ba57496327c672d7fed0654
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500027"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704490"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>Oktatóanyag: Azure-alapú virtuális hálózatok létrehozása és kezelése Linux rendszerű virtuális gépeken az Azure CLI-vel
 
@@ -300,7 +300,4 @@ Ebben az oktatóanyagban virtuális gépekhez csatolva hozta létre és biztosí
 > * Biztonságos hálózati adatforgalom
 > * Háttérbeli virtuális gép létrehozása
 
-Folytassa a következő oktatóanyaggal, amely a virtuális gépeken lévő adatok Azure biztonsági mentéssel való biztosítását ismerteti. 
-
-> [!div class="nextstepaction"]
-> [Linux rendszerű virtuális gépek biztonsági mentése az Azure-ban](./tutorial-backup-vms.md)
+A virtuális gépek lemezeinek védelméről további információért lásd: [biztonsági mentés és vész-helyreállítás lemezek esetén](backup-and-disaster-recovery-for-azure-iaas-disks.md).

@@ -1,119 +1,85 @@
-### YamlMime:Hub
-title: Virtual Machines-dokumentáció
-summary: Ismerje meg, hogyan hozhat létre, helyezhet üzembe és kezelhet Windows és Linux rendszerű virtuális gépeket az Azure-ban.
-brand: azure
+### YamlMime:Landing
+title: Virtuális gépek az Azure-ban
+summary: Dokumentáció az Azure-beli virtuális gépek létrehozásához és kezeléséhez.
 metadata:
-  title: Azure-alapú virtuális gépek
-  description: Ismerje meg, hogyan hozhat létre, helyezhet üzembe és kezelhet Windows és Linux rendszerű virtuális gépeket az Azure-ban.
+  title: Virtuális gépek az Azure-ban
+  description: Linux rendszerű virtuális gépek Azure-ban való létrehozásának és kezelésének dokumentációja.
   services: virtual-machines
   ms.service: virtual-machines
-  ms.topic: hub-page
+  ms.topic: landing-page
   author: cynthn
   ms.author: cynthn
-  ms.date: 02/14/2020
-  ms.openlocfilehash: 075704312bc29cf195a98c343f707ece91dd3387
-  ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
-  ms.translationtype: HT
+  ms.date: 11/05/2020
+  ms.openlocfilehash: 2672ad70ad76e12870a2a176331e58579443b952
+  ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+  ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 11/20/2020
-  ms.locfileid: "94986045"
-highlightedContent:
-  items:
-  - title: Linux rendszerű virtuális gépek létrehozása az Azure CLI-vel
-    itemType: quickstart
-    url: ./linux/quick-create-cli.md
-  - title: Windows rendszerű virtuális gépek létrehozása a PowerShell-lel
-    itemType: quickstart
-    url: ./windows/quick-create-powershell.md
-  - title: Virtuálisgép-méretezési csoport létrehozása a portálon
-    itemType: quickstart
-    url: ../virtual-machine-scale-sets/quick-create-portal.md
-  - title: Spot virtuális gépek – nem használt kapacitásainkkal jelentős költségmegtakarítást érhet el.
-    itemType: concept
-    url: ./spot-vms.md
-  - title: Dedikált gazdagépek – egy vagy több virtuális gépek üzemeltető fizikai kiszolgálók.
-    itemType: concept
-    url: ./dedicated-hosts.md
-  - title: Közelségi elhelyezési csoportok – virtuális gépek a lehető legközelebb az alacsony késleltetés érdekében.
-    itemType: how-to-guide
-    url: ./linux/proximity-placement-groups.md
-conceptualContent:
-  items:
-  - title: Linux rendszerű virtuális gépek
+  ms.lasthandoff: 01/22/2021
+  ms.locfileid: "98707651"
+landingContent:
+- title: A legújabb funkciók
+  linkLists:
+  - linkListType: whats-new
     links:
-    - url: ./linux/endorsed-distros.md
-      itemType: concept
-      text: Támogatott disztribúciók
-    - url: ./linux/tutorial-manage-disks.md
-      itemType: tutorial
-      text: Lemezek létrehozása és kezelése
-    - url: ./linux/image-builder.md
-      itemType: how-to-guide
-      text: Azure Image Builder
-    - url: ./troubleshooting/linux-index.yml
-      itemType: how-to-guide
-      text: Linux rendszerű virtuális gépek hibaelhárítása
-    footerLink:
-      url: ./linux/index.yml
-      text: Részletek
-  - title: Windows rendszerű virtuális gépek
+    - text: Spot virtuális gépek
+      url: spot-vms.md
+    - text: Dedikált gazdagépek
+      url: dedicated-hosts.md
+    - text: Közelségi elhelyezési csoportok
+      url: co-location.md
+- title: Linuxos gyors útmutatók
+  linkLists:
+  - linkListType: quickstart
     links:
-    - url: ./windows/quick-create-powershell.md
-      itemType: how-to-guide
-      text: Virtuális gépek létrehozása a PowerShell-lel
-    - url: ./windows/tutorial-manage-data-disk.md
-      itemType: tutorial
-      text: Lemezek létrehozása és kezelése
-    - url: ../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md?context=%2fazure/virtual-machines/windows/context/windows-vm-context
-      itemType: how-to-guide
-      text: Felügyelt identitások konfigurálása
-    - url: ./troubleshooting/index.yml
-      itemType: how-to-guide
-      text: Windows rendszerű virtuális gépek hibaelhárítása
-    footerLink:
-      url: ./windows/index.yml
-      text: Részletek
-  - title: Virtuálisgép-méretezési csoportok
+    - text: Azure CLI
+      url: ./linux/quick-create-cli.md
+    - text: Azure Portal
+      url: ./linux/quick-create-portal.md
+    - text: Azure PowerShell
+      url: ./linux/quick-create-powershell.md
+- title: Windows-útmutató
+  linkLists:
+  - linkListType: quickstart
     links:
-    - url: ../virtual-machine-scale-sets/quick-create-powershell.md
-      itemType: how-to-guide
-      text: Méretezési csoport létrehozása a PowerShell-lel
-    - url: ../virtual-machine-scale-sets/orchestration-modes.md
-      itemType: concept
-      text: Vezénylési módok
-    - url: ../virtual-machine-scale-sets/use-spot.md
-      itemType: how-to-guide
-      text: Spot-példányok használata
-    footerLink:
-      url: ../virtual-machine-scale-sets/index.yml
-      text: Részletek
-tools:
-  title: Eszközök
-  summary: Az Azure-beli virtuális gépek használatához szükséges eszközök.
-  items:
-  - title: Azure CLI
-    imageSrc: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/cli.svg
-    url: /cli/azure/vm?view=azure-cli-latest
-  - title: Azure PowerShell
-    imageSrc: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/logo_powershell.svg
-    url: /powershell/module/az.compute#virtual_machines
-  - title: REST API
-    imageSrc: https://docs.microsoft.com/azure/media/index/azure_dev-6.svg
-    url: /rest/api/compute/virtualmachines
-additionalContent:
-  sections:
-  - title: Egyéb erőforrások
-    summary: Az Azure-beli virtuális gépek használatához szükséges további erőforrások.
-    items:
-    - title: Tanulás
-      links:
-      - text: Tallózás a képzési modulok között
-        url: /learn/browse/?products=azure-virtual-machines
-    - title: Sablontár
-      links:
-      - text: Tallózás a gyorssablonok katalógusában
-        url: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular
-    - title: Hibaelhárítás
-      links:
-      - text: A hibaelhárítással kapcsolatos információk
-        url: ./troubleshooting/index.yml
+    - text: Azure Portal
+      url: ./windows/quick-create-portal.md
+    - text: Azure PowerShell
+      url: ./windows/quick-create-powershell.md
+    - text: Azure CLI
+      url: ./windows/quick-create-cli.md
+- title: Egyéni ütemben végezhető képzés
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: " Linux rendszerű virtuális gép létrehozása az Azure-ban"
+      url: /learn/modules/create-linux-virtual-machine-in-azure/
+    - text: " Windows rendszerű virtuális gép létrehozása az Azure-ban"
+      url: /learn/modules/create-windows-virtual-machine-in-azure/
+- title: Hibaelhárítás
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: SSH-problémák elhárítása
+      url: ./troubleshooting/troubleshoot-ssh-connection.md
+    - text: RDP-problémák elhárítása
+      url: ./troubleshooting/rdp.md
+    - text: A Linux rendszerű virtuális gép nem indul el
+      url: ./troubleshooting/boot-error-troubleshoot-linux.md
+    - text: A Windows rendszerű virtuális gép nem indul el
+      url: /troubleshooting/boot-error-troubleshoot.md
+    - text: Microsoft Q&A
+      url: /answers/topics/azure-virtual-machines.html
+- title: További források
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: A felhő bevezetésének keretrendszere
+      url: /azure/cloud-adoption-framework/get-started/
+    - text: Azure Architecture-központ
+      url: /azure/architecture/
+    - text: Azure-gyorssablonok
+      url: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular
+    - text: Díjszabás
+      url: https://azure.microsoft.com/pricing/details/#Linux
+    - text: Régiónkénti rendelkezésre állás
+      url: https://azure.microsoft.com/regions/services/

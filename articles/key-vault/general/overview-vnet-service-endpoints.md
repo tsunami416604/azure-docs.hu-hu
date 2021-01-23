@@ -1,5 +1,5 @@
 ---
-title: Virtuális hálózati szolgáltatás végpontjai Azure Key Vault
+title: Virtuális hálózati szolgáltatásvégpontok az Azure Key Vaulthoz
 description: Megtudhatja, hogyan korlátozhatja a virtuális hálózati szolgáltatás végpontját Azure Key Vault lehetővé teszi a hozzáférést egy adott virtuális hálózathoz, beleértve a használati forgatókönyveket is.
 services: key-vault
 author: amitbapat
@@ -9,14 +9,14 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 9dcabe10822fd09c8f7a0da6259d81a089c1a042
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 4a817f386d68c144968540dd05f3fa6859bb0acc
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936294"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704169"
 ---
-# <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Virtuális hálózati szolgáltatás végpontjai Azure Key Vault
+# <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Virtuális hálózati szolgáltatásvégpontok az Azure Key Vaulthoz
 
 A Azure Key Vault Virtual Network szolgáltatásbeli végpontok lehetővé teszik, hogy korlátozza a hozzáférést egy adott virtuális hálózathoz. A végpontok azt is lehetővé teszik, hogy korlátozza a hozzáférést az IPv4 (Internet Protocol Version 4)-címtartományok listájához. A Key vaulthoz a forrásokon kívülről csatlakozó felhasználók hozzáférése megtagadva.
 
@@ -43,7 +43,7 @@ Itt látható azoknak a megbízható szolgáltatásoknak a listája, amelyek hoz
 | --- | --- |
 |Azure Virtual Machines üzembe helyezési szolgáltatás|[Tanúsítványokat telepíthet az ügyfél által felügyelt Key Vault virtuális gépekre](/archive/blogs/kv/updated-deploy-certificates-to-vms-from-customer-managed-key-vault).|
 |Azure Resource Manager sablon központi telepítési szolgáltatása|[Biztonságos értékek továbbítása az üzembe helyezés során](../../azure-resource-manager/templates/key-vault-parameter.md).|
-|Azure Application Gateway v2 SKU|[TLS-lezárás Key Vault tanúsítványokkal](../../application-gateway/key-vault-certs.md)|
+|Azure Application Gateway v2 SKU|[TLS-visszafejtés Key Vault-tanúsítványokkal](../../application-gateway/key-vault-certs.md)|
 |Azure Disk Encryption mennyiségi titkosítási szolgáltatás|Hozzáférés engedélyezése a BitLocker-kulcshoz (Windows VM) vagy DM-jelszóhoz (Linux virtuális gép) és a kulcs titkosítási kulcsához a virtuális gépek telepítése során. Ez lehetővé teszi a [Azure Disk Encryption](../../security/fundamentals/encryption-overview.md).|
 |Azure Backup|A megfelelő kulcsok és titkok biztonsági mentésének és helyreállításának engedélyezése az Azure Virtual Machines Backup szolgáltatásban [Azure Backup](../../backup/backup-overview.md)használatával.|
 |Exchange Online & SharePoint Online-ban|Hozzáférés engedélyezése az Azure Storage Service Encryptionhoz az [ügyfél kulcsával](/microsoft-365/compliance/customer-key-overview).|
@@ -57,7 +57,7 @@ Itt látható azoknak a megbízható szolgáltatásoknak a listája, amelyek hoz
 |Azure Data Factory|[Adattároló hitelesítő adatainak beolvasása a Key Vault Data Factory](https://go.microsoft.com/fwlink/?linkid=2109491)|
 |Azure Event Hubs|[Key Vault hozzáférésének engedélyezése az ügyfél által felügyelt kulcsok esetén](../../event-hubs/configure-customer-managed-key.md)|
 |Azure Service Bus|[Key Vault hozzáférésének engedélyezése az ügyfél által felügyelt kulcsok esetén](../../service-bus-messaging/configure-customer-managed-key.md)|
-|Azure Import/Export| [Az ügyfél által felügyelt kulcsok használata Azure Key Vault importálási/exportálási szolgáltatáshoz](../../storage/common/storage-import-export-encryption-key-portal.md)
+|Azure Import/Export| [Az ügyfél által felügyelt kulcsok használata Azure Key Vault importálási/exportálási szolgáltatáshoz](../../import-export/storage-import-export-encryption-key-portal.md)
 |Azure Container Registry|[Beállításjegyzék-titkosítás az ügyfél által felügyelt kulcsokkal](../../container-registry/container-registry-customer-managed-keys.md)
 
 > [!NOTE]

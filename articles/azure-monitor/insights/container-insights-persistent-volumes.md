@@ -3,16 +3,16 @@ title: PV-figyelés konfigurálása a Azure Monitor for containers szolgáltatá
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a Kubernetes-fürtöket állandó kötetekkel a Azure Monitor for containers használatával.
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.openlocfilehash: e7c547c137fc84e6e6dfb2807b871ef0329a3c13
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d7da6bc88e7c8526e3940714502d3c92d2f37dd8
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186847"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704473"
 ---
 # <a name="configure-pv-monitoring-with-azure-monitor-for-containers"></a>PV-figyelés konfigurálása a Azure Monitor for containers szolgáltatáshoz
 
-Az ügynök verziójának *ciprod10052020* kezdődően az Azure monitor for containers Integrated Agent mostantól támogatja a (tartós kötetek) figyelését.
+Az ügynök verziójának *ciprod10052020* kezdődően az Azure monitor for containers Integrated Agent mostantól támogatja a monitor PV (állandó kötet) használatát.
 
 ## <a name="pv-metrics"></a>PV mérőszámok
 
@@ -28,6 +28,6 @@ A tárolók Azure Monitor tartalmaz előre konfigurált diagramokat ehhez a metr
 
 ![Példa Azure Monitor PV munkaterhelés-munkafüzetre](./media/container-insights-persistent-volumes/pv-workload-example.PNG)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az összegyűjtött PV-mérőszámokról [.](./container-insights-agent-config.md)

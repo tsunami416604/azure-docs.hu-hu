@@ -1,18 +1,18 @@
 ---
 title: A Azure Stream Analytics beépített szabályzat-definíciói
 description: A Azure Stream Analytics Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.topic: reference
 author: sidramadoss
 ms.author: sidram
 ms.service: stream-analytics
 ms.custom: subject-policy-reference
-ms.openlocfilehash: e5db57eba7d8d3778fa4f0202b9b2d9918c96e36
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 2fc8438f362ab0cae02d14c34e7140b0ce2743cc
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050670"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704278"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-stream-analytics"></a>A Azure Stream Analytics beépített definíciói Azure Policy
 

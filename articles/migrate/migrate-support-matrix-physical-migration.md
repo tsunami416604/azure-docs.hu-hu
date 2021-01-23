@@ -6,12 +6,12 @@ ms.author: rahugup
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: a3e8b19810a58031b4d11cc6e361215afbc85de2
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 4ebc363f29ed8956d10e91f41be1d257cbcc492f
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562640"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703886"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>A fizikai kiszolgáló áttelepítésének támogatási mátrixa
 
@@ -81,7 +81,7 @@ Vendég operációs rendszer architektúrája | 64 bites. | Az ellenőrzés sike
 Operációsrendszer-lemez mérete | Akár 2 048 GB-ig. | Az ellenőrzés sikertelen, ha nem támogatott.
 Operációsrendszer-lemezek száma | 1 | Az ellenőrzés sikertelen, ha nem támogatott.
 Adatlemezek száma | 64 vagy kevesebb. | Az ellenőrzés sikertelen, ha nem támogatott.
-Adatlemez mérete | Legfeljebb 4 095 GB | Az ellenőrzés sikertelen, ha nem támogatott.
+Adatlemez mérete | Akár 32 TB | Az ellenőrzés sikertelen, ha nem támogatott.
 Hálózati adapterek | Több adapter is támogatott. |
 Megosztott VHD | Nem támogatott. | Az ellenőrzés sikertelen, ha nem támogatott.
 FC-lemez | Nem támogatott. | Az ellenőrzés sikertelen, ha nem támogatott.

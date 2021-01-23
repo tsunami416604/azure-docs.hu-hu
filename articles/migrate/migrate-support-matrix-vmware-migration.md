@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: b263d3e62ae97914fc8e06580486bddd0cb9b3b7
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 0b671fbdfe16848012ac94671ce68e8a33a8b3e8
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968449"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703869"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>A VMware-migrálás támogatási mátrixa
 
@@ -166,7 +166,7 @@ Vendég operációs rendszer architektúrája | 64 bites.
 Operációsrendszer-lemez mérete | Akár 2 048 GB-ig. 
 Operációsrendszer-lemezek száma | 1 
 Adatlemezek száma | 64 vagy kevesebb. 
-Adatlemez mérete | Legfeljebb 8 095 GB
+Adatlemez mérete | Akár 32 TB
 Hálózati adapterek | Több adapter is támogatott.
 Megosztott VHD | Nem támogatott. 
 FC-lemez | Nem támogatott. 
@@ -176,6 +176,6 @@ Kapcsolat az áttelepítés után – Windows | Kapcsolódás a Windows rendszer
 Kapcsolat Migrálás után – Linux | Kapcsolódás az Azure-beli virtuális gépekhez az SSH használatával történő áttelepítés után:<br/><br/> Az áttelepítés előtt a helyszíni gépen győződjön meg arról, hogy a Secure Shell szolgáltatás indításra van beállítva, és hogy a tűzfalszabályok engedélyezik az SSH-kapcsolatokat.<br/><br/> A feladatátvételt követően az Azure-beli virtuális gépen engedélyezze az SSH-porthoz való bejövő kapcsolatokat a hálózati biztonsági csoportra vonatkozó szabályokra vonatkozóan a feladatátvételen átesett virtuális gépen, valamint azt az Azure-alhálózatot, amelyhez csatlakoztatva van.<br/><br/> Továbbá adjon hozzá egy nyilvános IP-címet a virtuális géphez.  
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Válassza ki](server-migrate-overview.md) a VMware áttelepítési lehetőséget.

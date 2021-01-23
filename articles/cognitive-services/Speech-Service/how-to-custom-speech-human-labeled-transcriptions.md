@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: cc373a67ee0f4ed2e900e7b41cbcb96d31d67b34
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: eafdebc795d5bede7fa52a3562d33c806035697f
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98126886"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704431"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Emberi címkével ellátott átiratok létrehozása
 
@@ -47,6 +47,8 @@ A szöveg normalizálása a szavak átalakítása a modell betanításakor haszn
 - A nem alfabetikus karaktereket vagy a kevert alfanumerikus karaktereket az "ejtsd" értékre kell írni.
 - A szavakként kimutatott rövidítések nem szerkeszthetők (például "radar", "Laser", "RAM" vagy "NATO").
 - A kiugró rövidítések, amelyeket szóközzel elválasztva külön betűnek kell kiírni.
+- Ha hangot használ, a számokat olyan szavakként írja át, amelyek megfelelnek a hanganyagnak (például "101", "1 0 1" vagy "101").
+- Ne ismételje meg az ismétlődő karaktereket, szavakat vagy szavakat három alkalommal, például: "igen igen igen, igen". Előfordulhat, hogy a beszédfelismerési szolgáltatás eldobta az ilyen ismétlődésekkel rendelkező sorokat.
 
 Íme néhány példa arra, hogy milyen normalizálás után kell elvégezni az átírást:
 

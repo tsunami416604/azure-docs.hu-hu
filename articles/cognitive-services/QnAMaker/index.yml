@@ -11,12 +11,12 @@ metadata:
   services: cognitive-services
   title: A QnA Maker dokumentációja
   description: A QnA Maker egy olyan felhőalapú API-szolgáltatás, amely egy beszélgetés típusú, kérdésekből és válaszokból álló réteget hoz létre az adatok alapján. A QnA Maker lehetővé teszi egy kérdés-válasz szolgáltatás működtetését olyan félig strukturált tartalomból, mint a GYIK-dokumentumok, URL-címek és termékútmutatók. A QnA Maker szolgáltatás egyezteti a felhasználók természetes nyelvi kérdéseit a Tudásbázisban szereplő kérdésekkel és válaszokkal, majd a lehető legjobban megfelelő választ adja vissza.
-  ms.openlocfilehash: d1236b8a40d43ac5203cd4cac8aa607c925a04d7
-  ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
-  ms.translationtype: HT
+  ms.openlocfilehash: 6bc5587612a953f2e0bb43765f579adb56fab336
+  ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+  ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 12/09/2020
-  ms.locfileid: "96932727"
+  ms.lasthandoff: 01/22/2021
+  ms.locfileid: "98707663"
 landingContent:
 - title: A QnA Maker bemutatása
   linkLists:
@@ -60,9 +60,7 @@ landingContent:
     links:
     - text: 'Gyorsútmutató: Postman vagy cURL használatával'
       url: quickstarts/get-answer-from-knowledge-base-using-url-tool.md
-    - text: 'Gyorsútmutató: A REST és a cURL használata'
-      url: quickstarts/quickstart-rest-curl.md
-    - text: 'Gyorsútmutató: Az SDK használata'
+    - text: 'Gyors útmutató: az SDK és a REST API használata'
       url: quickstarts/quickstart-sdk.md
   - linkListType: how-to-guide
     links:

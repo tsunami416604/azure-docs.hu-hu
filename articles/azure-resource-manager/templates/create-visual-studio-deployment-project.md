@@ -3,24 +3,24 @@ title: Visual Studio Resource Group-projektek létrehozása & üzembe helyezése
 description: A Visual Studióval hozzon létre egy Azure erőforráscsoport-projektet, és telepítse az erőforrásokat az Azure-ba.
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 479dbed1f288148c24fc8464f7895cd3e2b182f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1a06a3e89c5fd2ea8906ff9a438c170f135d6ec
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372646"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704414"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Azure erőforráscsoport-sablonok létrehozása és telepítése a Visual Studio alkalmazással
 
 A Visual Studio alkalmazással olyan projekteket hozhat létre, amelyekkel telepíthető az infrastruktúra és kód az Azure rendszerébe. Telepítheti például a webhelyhez tartozó webállomást, webhelyet és kódot. A Visual Studio számos különböző kezdősablont kínál a gyakori forgatókönyvek telepítéséhez. Ebben a cikkben egy webalkalmazást telepítünk.
 
-Ez a cikk bemutatja, hogyan használható [a Visual Studio 2019-es vagy újabb verziója a telepített Azure-beli fejlesztési és ASP.net számítási feladatokkal](/visualstudio/install/install-visual-studio?view=vs-2019). Ha a Visual Studio 2017-et használja, a felhasználói élmény nagyjából azonos.
+Ez a cikk bemutatja, hogyan használható [a Visual Studio 2019-es vagy újabb verziója a telepített Azure-beli fejlesztési és ASP.net számítási feladatokkal](/visualstudio/install/install-visual-studio). Ha a Visual Studio 2017-et használja, a felhasználói élmény nagyjából azonos.
 
 ## <a name="create-azure-resource-group-project"></a>Azure erőforráscsoport-projekt létrehozása
 
 Ebben a szakaszban egy Azure erőforráscsoport-projektet hoz létre egy **webalkalmazás** -sablonnal.
 
-1. A Visual Studióban válassza a **fájl** > **új** > **projekt**lehetőséget.
+1. A Visual Studióban válassza a **fájl** > **új** > **projekt** lehetőséget.
 1. Válassza ki az **Azure erőforráscsoport** -projekt sablonját, és kattintson a **Tovább gombra**.
 
     ![Képernyőfelvétel: az új projekt létrehozása ablak az Azure-erőforráscsoport és a következő gomb kiemelése.](./media/create-visual-studio-deployment-project/create-project.png)
@@ -53,7 +53,7 @@ Ebben a szakaszban egy Azure erőforráscsoport-projektet hoz létre egy **webal
 
 A központi telepítési projektet testreszabhatja úgy, hogy módosítja a telepíteni kívánt erőforrásokat leíró Resource Manager-sablont. A Resource Manager-sablon elemeivel kapcsolatos információkért lásd: [Azure Resource Manager-sablonok készítése](template-syntax.md).
 
-1. A sablonon való működéshez nyissa meg ** aWebSite.jst a**következőn:.
+1. A sablonon való működéshez nyissa meg **aWebSite.jst a** következőn:.
 
 1. A Visual Studio szerkesztő eszközöket biztosít a Resource Manager-sablon szerkesztéséhez. A **JSON-vázlat** ablak segítségével könnyen áttekinthetőek a sablonban meghatározott elemek.
 
@@ -139,7 +139,7 @@ Az az Module script esetében nyisson meg egy PowerShell-konzolt, és futtassa a
 
 A AzureRM modul parancsfájlhoz használja a Visual studiót:
 
-1. A központi telepítési projekt csomópontjának helyi menüjében válassza az **Deploy**  >  **új**telepítése lehetőséget.
+1. A központi telepítési projekt csomópontjának helyi menüjében válassza az   >  **új** telepítése lehetőséget.
 
     ![Új központi telepítési menüelem](./media/create-visual-studio-deployment-project/deploy.png)
 
@@ -167,15 +167,15 @@ Vizsgáljuk meg az eredményeket.
 
 Ezen a ponton az alkalmazás infrastruktúrája már telepítve van, tényleges kód azonban még nincs telepítve a projekttel.
 
-1. Adjon hozzá egy projektet a Visual Studio megoldásához. Kattintson a jobb gombbal a megoldásra, **Add**majd válassza az  >  **új projekt**hozzáadása lehetőséget.
+1. Adjon hozzá egy projektet a Visual Studio megoldásához. Kattintson a jobb gombbal a megoldásra, majd válassza az  >  **új projekt** hozzáadása lehetőséget.
 
     ![Projekt hozzáadása](./media/create-visual-studio-deployment-project/add-project.png)
 
-1. **ASP.net Core webalkalmazás**hozzáadása.
+1. **ASP.net Core webalkalmazás** hozzáadása.
 
     ![Webalkalmazás hozzáadása](./media/create-visual-studio-deployment-project/add-app.png)
 
-1. Adjon nevet a webalkalmazásnak, és válassza a **Létrehozás**lehetőséget.
+1. Adjon nevet a webalkalmazásnak, és válassza a **Létrehozás** lehetőséget.
 
     ![Webhely neve webalkalmazás](./media/create-visual-studio-deployment-project/name-web-app.png)
 
@@ -209,9 +209,9 @@ Ezen a ponton az alkalmazás infrastruktúrája már telepítve van, tényleges 
 
    Mentse a sablont.
 
-1. A sablonban néhány új paraméter szerepel. Ezek az előző lépésben lettek hozzáadva. Nem kell megadnia **_artifactsLocation** vagy **_artifactsLocationSasToken** értékét, mivel ezek az értékek automatikusan létrejönnek. A mappát és a fájlnevet azonban a központi telepítési csomagot tartalmazó elérési útra kell beállítania. Ezeknek a paramétereknek a nevei a **PackageFolder** és a **PackageFileName**végződéssel rendelkeznek. A név első része a hozzáadott webes üzembe helyezési erőforrás neve. Ebben a cikkben a **ExampleAppPackageFolder** és a **ExampleAppPackageFileName**nevet kapta.
+1. A sablonban néhány új paraméter szerepel. Ezek az előző lépésben lettek hozzáadva. Nem kell megadnia **_artifactsLocation** vagy **_artifactsLocationSasToken** értékét, mivel ezek az értékek automatikusan létrejönnek. A mappát és a fájlnevet azonban a központi telepítési csomagot tartalmazó elérési útra kell beállítania. Ezeknek a paramétereknek a nevei a **PackageFolder** és a **PackageFileName** végződéssel rendelkeznek. A név első része a hozzáadott webes üzembe helyezési erőforrás neve. Ebben a cikkben a **ExampleAppPackageFolder** és a **ExampleAppPackageFileName** nevet kapta.
 
-   Nyissa megWebsite.parameters.jsbe, majd állítsa be ezeket a paramétereket a hivatkozás tulajdonságai között ** megjelenő** értékekre. Állítsa a **ExampleAppPackageFolder** a mappa nevére. Állítsa a **ExampleAppPackageFileName** nevet a zip-fájl nevére.
+   Nyissa megWebsite.parameters.jsbe, majd állítsa be ezeket a paramétereket a hivatkozás tulajdonságai között **megjelenő** értékekre. Állítsa a **ExampleAppPackageFolder** a mappa nevére. Állítsa a **ExampleAppPackageFileName** nevet a zip-fájl nevére.
 
    ```json
    {
@@ -237,7 +237,7 @@ Mivel programkódot adott hozzá a projekthez, az üzemelő példány egy kicsit
 
 ### <a name="az-module-script"></a>Az Module script
 
-Ha az az Module parancsfájlt használja, egy kis módosítást kell végeznie a sablonban. Ez a szkript egy perjelet szúr be az összetevők helyére, de a sablon nem vár erre a perjelre. Nyissa meg a WebSite.jst, és keresse meg a MSDeploy-bővítmény tulajdonságait. Rendelkezik egy **packageUri**nevű tulajdonsággal. Távolítsa el az összetevők helye és a csomag mappája közötti perjelet.
+Ha az az Module parancsfájlt használja, egy kis módosítást kell végeznie a sablonban. Ez a szkript egy perjelet szúr be az összetevők helyére, de a sablon nem vár erre a perjelre. Nyissa meg a WebSite.jst, és keresse meg a MSDeploy-bővítmény tulajdonságait. Rendelkezik egy **packageUri** nevű tulajdonsággal. Távolítsa el az összetevők helye és a csomag mappája közötti perjelet.
 
 Ennek így kell kinéznie:
 
@@ -259,7 +259,7 @@ Most nyisson meg egy PowerShell-konzolt, és futtassa a következőket:
 
 A AzureRM modul parancsfájlhoz használja a Visual studiót:
 
-1. Az újbóli üzembe helyezéshez válassza a **telepítés**lehetőséget, majd a korábban üzembe helyezett erőforráscsoportot.
+1. Az újbóli üzembe helyezéshez válassza a **telepítés** lehetőséget, majd a korábban üzembe helyezett erőforráscsoportot.
 
     ![Projekt újbóli üzembe helyezése](./media/create-visual-studio-deployment-project/redeploy.png)
 
@@ -382,7 +382,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 
 1. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan hozhat létre és helyezhet üzembe sablonokat a Visual Studióval. A sablonok fejlesztésével kapcsolatos további tudnivalókért tekintse meg az új kezdő oktatóanyag-sorozatot:
 

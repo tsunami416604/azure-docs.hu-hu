@@ -4,18 +4,18 @@ description: Ebből a témakörből megtudhatja, hogy az Azure import/export szo
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: f3cf44a34babab79d135923db040630a1c8e3dfe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ea470c2e732b7e0ef46e9e5fa78c744aa30c955
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88892014"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704363"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Offline biztonsági mentési munkafolyamat a Azure Backup
 
 A Azure Backup számos beépített hatékonyságot biztosít, amelyek a hálózati és tárolási költségeket az Azure-ba irányuló összes adat kezdeti teljes biztonsági mentése során megtakarítják. A kezdeti teljes biztonsági mentések általában nagy mennyiségű adat átvitelét igénylik, és nagyobb hálózati sávszélességet igényelnek, ha az azokat követő biztonsági mentések során csak a különbözeteket/növekményeket továbbítják. Az offline előkészítési folyamat során a Azure Backup lemezek használatával töltheti fel az offline biztonsági mentési adatok az Azure-ba.
 
-Az Azure Backup offline-előkészítési folyamat szorosan integrálva van az [Azure import/export szolgáltatással](../storage/common/storage-import-export-service.md). Ezzel a szolgáltatással a kezdeti biztonsági mentési adatok átvitele az Azure-ba lemezek használatával végezhető el. Ha terabájtos (TBs) típusú kezdeti biztonsági mentési adatról van szükség, amelyet nagy késésű és alacsony sávszélességű hálózaton kell átvinni, az offline előkészítési munkafolyamattal elküldheti a kezdeti biztonsági másolatot az Azure-adatközpontba egy vagy több merevlemezen. A következő ábra áttekintést nyújt a munkafolyamat lépéseiről.
+Az Azure Backup offline-előkészítési folyamat szorosan integrálva van az [Azure import/export szolgáltatással](../import-export/storage-import-export-service.md). Ezzel a szolgáltatással a kezdeti biztonsági mentési adatok átvitele az Azure-ba lemezek használatával végezhető el. Ha terabájtos (TBs) típusú kezdeti biztonsági mentési adatról van szükség, amelyet nagy késésű és alacsony sávszélességű hálózaton kell átvinni, az offline előkészítési munkafolyamattal elküldheti a kezdeti biztonsági másolatot az Azure-adatközpontba egy vagy több merevlemezen. A következő ábra áttekintést nyújt a munkafolyamat lépéseiről.
 
   ![Az offline importálás munkafolyamat-folyamatának áttekintése](./media/backup-azure-backup-import-export/offlinebackupworkflowoverview.png)
 
@@ -56,20 +56,20 @@ Az offline biztonsági mentési munkafolyamat elindítása előtt végezze el a 
 * Hozzon létre egy Azure Storage-fiókot a Recovery Services-tárolóval megegyező előfizetésben.
 * Győződjön meg arról, hogy rendelkezik a [szükséges engedélyekkel](../active-directory/develop/howto-create-service-principal-portal.md) a Azure Active Directory alkalmazás létrehozásához. Az offline biztonsági mentési munkafolyamat létrehoz egy Azure Active Directory alkalmazást az Azure Storage-fiókhoz társított előfizetésben. Az alkalmazás célja, hogy biztonságos és hatókörrel rendelkező Azure Backup biztosítson az Azure import/export szolgáltatáshoz, amely az offline biztonsági mentési munkafolyamathoz szükséges.
 * Regisztrálja a *Microsoft. ImportExport* erőforrás-szolgáltatót az Azure Storage-fiókot tartalmazó előfizetéssel. Az erőforrás-szolgáltató regisztrálása:
-    1. A főmenüben válassza az **előfizetések**lehetőséget.
+    1. A főmenüben válassza az **előfizetések** lehetőséget.
     1. Ha több előfizetésre is feliratkozott, válassza ki az offline biztonsági mentéshez használni kívánt előfizetést. Ha csak egy előfizetést használ, megjelenik az előfizetése.
     1. Az előfizetés menüben válassza az **erőforrás-szolgáltatók** lehetőséget a szolgáltatók listájának megtekintéséhez.
-    1. A szolgáltatók listájában görgessen le a *Microsoft. ImportExport*elemre. Ha az **állapot** **NotRegistered**, válassza a **regisztráció**lehetőséget.
+    1. A szolgáltatók listájában görgessen le a *Microsoft. ImportExport* elemre. Ha az **állapot** **NotRegistered**, válassza a **regisztráció** lehetőséget.
 
         ![Az erőforrás-szolgáltató regisztrálása](./media/backup-azure-backup-import-export/registerimportexport.png)
 
 * A rendszer létrehoz egy átmeneti helyet, amely lehet hálózati megosztás vagy a számítógép belső vagy külső meghajtója, amely elegendő lemezterülettel rendelkezik a kezdeti másolat tárolásához. Ha például egy 500 GB-os fájlkiszolgáló biztonsági mentését kívánja végezni, győződjön meg arról, hogy az átmeneti területen legalább 500 GB. (A tömörítés miatt kisebb mennyiség van használatban.)
-* Ha lemezeket küld az Azure-ba, csak a 2,5 hüvelykes SSD-vagy 2,5-es vagy 3,5 hüvelykes SATA II/III-merevlemezeket használja. A merevlemezeket akár 10 TB-ig is használhatja. Az [Azure import/export szolgáltatás dokumentációjában](../storage/common/storage-import-export-requirements.md#supported-hardware) keresse meg a szolgáltatás által támogatott meghajtók legújabb készletét.
+* Ha lemezeket küld az Azure-ba, csak a 2,5 hüvelykes SSD-vagy 2,5-es vagy 3,5 hüvelykes SATA II/III-merevlemezeket használja. A merevlemezeket akár 10 TB-ig is használhatja. Az [Azure import/export szolgáltatás dokumentációjában](../import-export/storage-import-export-requirements.md#supported-hardware) keresse meg a szolgáltatás által támogatott meghajtók legújabb készletét.
 * A SATA-meghajtóknak csatlakoztatva kell lennie egy számítógéphez (ez a *másolási számítógép*), ahonnan a biztonsági mentési adatok másolata az átmeneti helyről a SATA-meghajtókra történik. Győződjön meg arról, hogy a BitLocker engedélyezve van a másolási számítógépen.
 
 ## <a name="workflow"></a>Munkafolyamat
 
-Ez a szakasz az offline biztonsági mentési munkafolyamatot ismerteti, hogy az adatai továbbíthatók legyenek egy Azure-adatközpontba, és fel legyenek töltve az Azure Storage szolgáltatásba. Ha kérdése van az importálási szolgáltatással vagy a folyamat bármely aspektusával kapcsolatban, tekintse meg az [Azure import/export szolgáltatás áttekintés dokumentációját](../storage/common/storage-import-export-service.md).
+Ez a szakasz az offline biztonsági mentési munkafolyamatot ismerteti, hogy az adatai továbbíthatók legyenek egy Azure-adatközpontba, és fel legyenek töltve az Azure Storage szolgáltatásba. Ha kérdése van az importálási szolgáltatással vagy a folyamat bármely aspektusával kapcsolatban, tekintse meg az [Azure import/export szolgáltatás áttekintés dokumentációját](../import-export/storage-import-export-service.md).
 
 ## <a name="initiate-offline-backup"></a>Offline biztonsági mentés indítása
 
@@ -94,17 +94,17 @@ Ez a szakasz az offline biztonsági mentési munkafolyamatot ismerteti, hogy az 
     * **Azure-előfizetés azonosítója**: annak az Azure-előfizetésnek az azonosítója, amelyhez az Azure Storage-fiókot létrehozták.
     * **Azure importálási feladatok neve**: az az egyedi név, amellyel az Azure import/export szolgáltatás és Azure Backup nyomon követheti a lemezeken az Azure-ba továbbított adatok átvitelét.
   
-   A mezők kitöltése után válassza a **tovább**lehetőséget. Mentse az **előkészítési helyet** és az **Azure-beli importálási feladatok nevét** . A lemezek előkészítéséhez szükséges.
+   A mezők kitöltése után válassza a **tovább** lehetőséget. Mentse az **előkészítési helyet** és az **Azure-beli importálási feladatok nevét** . A lemezek előkészítéséhez szükséges.
 
 1. Ha a rendszer kéri, jelentkezzen be az Azure-előfizetésbe. Be kell jelentkeznie, hogy Azure Backup létre tudja hozni a Azure Active Directory alkalmazást. Adja meg az Azure import/export szolgáltatás eléréséhez szükséges engedélyeket.
 
     ![Azure-előfizetés bejelentkezési lapja](./media/backup-azure-backup-import-export/azure-login.png)
 
-1. Fejezze be a munkafolyamatot. A Azure Backup-ügynök konzolján válassza a **biztonsági mentés most**lehetőséget.
+1. Fejezze be a munkafolyamatot. A Azure Backup-ügynök konzolján válassza a **biztonsági mentés most** lehetőséget.
 
     ![Biztonsági mentés most](./media/backup-azure-backup-import-export/backupnow.png)
 
-1. A varázsló **megerősítés** lapján válassza a **biztonsági mentés**lehetőséget. A kezdeti biztonsági mentés a telepítés részeként íródik az átmeneti területre.
+1. A varázsló **megerősítés** lapján válassza a **biztonsági mentés** lehetőséget. A kezdeti biztonsági mentés a telepítés részeként íródik az átmeneti területre.
 
    ![Erősítse meg, hogy most már készen áll a biztonsági mentésre](./media/backup-azure-backup-import-export/backupnow-confirmation.png)
 
@@ -173,7 +173,7 @@ Az alábbi eljárás az Azure importálási feladat szállítási adatait friss�
 * A lemezek visszaküldési adatainak visszaadása.
 
 1. Jelentkezzen be az Azure-előfizetésbe.
-1. A főmenüben válassza a **minden szolgáltatás**lehetőséget. A **minden szolgáltatás** párbeszédpanelen írja be az **Importálás**értéket. Amikor megjelenik az **importálási/exportálási feladatok**, válassza ki azt.
+1. A főmenüben válassza a **minden szolgáltatás** lehetőséget. A **minden szolgáltatás** párbeszédpanelen írja be az **Importálás** értéket. Amikor megjelenik az **importálási/exportálási feladatok**, válassza ki azt.
 
     ![Adja meg a szállítási adatokat](./media/backup-azure-backup-import-export/search-import-job.png)<br/>
 
@@ -183,7 +183,7 @@ Az alábbi eljárás az Azure importálási feladat szállítási adatait friss�
 
     ![Szállítási információk áttekintése](./media/backup-azure-backup-import-export/import-job-found.png)<br/>
 
-1. Az importálási feladathoz tartozó **Beállítások** menüben válassza a **szállítási adatok kezelése**lehetőséget. Adja meg a visszáru szállítás részleteit.
+1. Az importálási feladathoz tartozó **Beállítások** menüben válassza a **szállítási adatok kezelése** lehetőséget. Adja meg a visszáru szállítás részleteit.
 
     ![Szállítási információk tárolása](./media/backup-azure-backup-import-export/shipping-info.png)<br/>
 
@@ -202,7 +202,7 @@ Az Azure-beli importálási feladatok feldolgozásához szükséges idő mennyis
 
 ### <a name="monitor-azure-import-job-status"></a>Azure-beli importálási feladatok állapotának figyelése
 
-Az importálási feladatok állapotát a Azure Portal követheti nyomon. Nyissa meg az **importálási/exportálási feladatok** lapot, és válassza ki a feladatot. Az importálási feladatok állapotával kapcsolatos további információkért lásd: [Mi az az Azure import/export szolgáltatás?](../storage/common/storage-import-export-service.md).
+Az importálási feladatok állapotát a Azure Portal követheti nyomon. Nyissa meg az **importálási/exportálási feladatok** lapot, és válassza ki a feladatot. Az importálási feladatok állapotával kapcsolatos további információkért lásd: [Mi az az Azure import/export szolgáltatás?](../import-export/storage-import-export-service.md).
 
 ### <a name="finish-the-workflow"></a>A munkafolyamat befejezése
 
@@ -216,6 +216,6 @@ A következő ütemezett biztonsági mentés időpontjában a Azure Backup növe
 
 A kezdeti biztonsági mentés befejezését követően biztonságosan törölheti az Azure Storage-tárolóba importált és az átmeneti helyen található biztonsági mentési adataikat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Az Azure import/export szolgáltatás munkafolyamatával kapcsolatos kérdésekért lásd: [a Microsoft Azure import/export szolgáltatás használata az adatok blob Storage-tárolóba történő átviteléhez](../storage/common/storage-import-export-service.md).
+* Az Azure import/export szolgáltatás munkafolyamatával kapcsolatos kérdésekért lásd: [a Microsoft Azure import/export szolgáltatás használata az adatok blob Storage-tárolóba történő átviteléhez](../import-export/storage-import-export-service.md).

@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e991fb0c60e8f08eb43cb7799027d4200263c9b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bac3f53def6db1038a6dd7e45d7933daa22df9f0
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89659549"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703852"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Adatvédelmi stratégia definiálása a hibrid személyazonossági megoldáshoz
 Ebben a feladatban megadhatja a hibrid identitási megoldás adatvédelmi stratégiáját, hogy megfeleljen az Ön által meghatározott üzleti követelményeknek:
@@ -33,11 +33,11 @@ Ebben a feladatban megadhatja a hibrid identitási megoldás adatvédelmi strat�
 * [Az incidensmegoldáshoz kapcsolódó követelmények meghatározása](plan-hybrid-identity-design-considerations-incident-response-requirements.md)
 
 ## <a name="define-data-protection-options"></a>Adatvédelmi beállítások megadása
-Ahogy azt a [címtár-szinkronizálási követelmények meghatározása](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)című részben leírtak szerint, Microsoft Azure ad szinkronizálhatók a helyszíni Active Directory tartományi szolgáltatások (AD DS) használatával. Ez az integráció lehetővé teszi, hogy a szervezetek az Azure AD használatával ellenőrizzék a felhasználók hitelesítő adatait, amikor a vállalati erőforrásokhoz próbálnak hozzáférni. Ezt mindkét esetben használhatja: a helyszíni és a felhőben tárolt adatok. Az Azure AD-beli adathozzáféréshez felhasználói hitelesítésre van szükség a biztonsági jogkivonat-szolgáltatás (STS) használatával.
+Ahogy azt a [címtár-szinkronizálási követelmények meghatározása](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)című részben leírtak szerint, Microsoft Azure ad szinkronizálhatók a helyszíni Active Directory Domain Services (AD DS) használatával. Ez az integráció lehetővé teszi, hogy a szervezetek az Azure AD használatával ellenőrizzék a felhasználók hitelesítő adatait, amikor a vállalati erőforrásokhoz próbálnak hozzáférni. Ezt mindkét esetben használhatja: a helyszíni és a felhőben tárolt adatok. Az Azure AD-beli adathozzáféréshez felhasználói hitelesítésre van szükség a biztonsági jogkivonat-szolgáltatás (STS) használatával.
 
 A hitelesítés után az egyszerű felhasználónevet (UPN) a rendszer beolvassa a hitelesítési jogkivonatból. Ezt követően az engedélyezési rendszer meghatározza a felhasználó tartományának megfelelő replikált partíciót és tárolót. A felhasználó létezésére, engedélyezett állapotára és szerepkörére vonatkozó információk alapján az engedélyezési rendszer eldönti, hogy jogosult-e a cél bérlőhöz való hozzáférés a felhasználó számára az adott munkamenetben. Bizonyos felhatalmazott műveletek (konkrétan a felhasználói és a jelszó-visszaállítás létrehozása) létrehozhatnak egy olyan naplózási nyomvonalat, amelyet a bérlői rendszergazda a megfelelőségi erőfeszítések vagy nyomozások kezeléséhez használ.
 
-Az adatok a helyszíni adatközpontból az Azure Storage-ba való áthelyezése az adatmennyiség, a sávszélesség rendelkezésre állása vagy egyéb megfontolások miatt nem mindig valósítható meg. Az [Azure Storage import/export szolgáltatás](../../storage/common/storage-import-export-service.md) hardveres lehetőséget kínál a nagy mennyiségű adatok blob Storage-tárolóban történő elhelyezésére és lekérésére. Lehetővé teszi a [BitLocker által titkosított merevlemez-](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn306081(v=ws.11)#BKMK_BL2012R2) meghajtók közvetlen küldését egy Azure-adatközpontba, ahol a Felhőbeli kezelők feltöltik a tartalmat a Storage-fiókjába, vagy letölthetik az Azure-adatait a meghajtóra, hogy visszatérjenek Önnek. Ehhez a folyamathoz csak titkosított lemezek lesznek elfogadva (a feladatok telepítése során a szolgáltatás által létrehozott BitLocker-kulcs használatával). A BitLocker-kulcsot külön nyújtják az Azure-hoz, így biztosítva a sávon kívüli kulcsok megosztását.
+Az adatok a helyszíni adatközpontból az Azure Storage-ba való áthelyezése az adatmennyiség, a sávszélesség rendelkezésre állása vagy egyéb megfontolások miatt nem mindig valósítható meg. Az [Azure Storage import/export szolgáltatás](../../import-export/storage-import-export-service.md) hardveres lehetőséget kínál a nagy mennyiségű adatok blob Storage-tárolóban történő elhelyezésére és lekérésére. Lehetővé teszi a [BitLocker által titkosított merevlemez-](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn306081(v=ws.11)#BKMK_BL2012R2) meghajtók közvetlen küldését egy Azure-adatközpontba, ahol a Felhőbeli kezelők feltöltik a tartalmat a Storage-fiókjába, vagy letölthetik az Azure-adatait a meghajtóra, hogy visszatérjenek Önnek. Ehhez a folyamathoz csak titkosított lemezek lesznek elfogadva (a feladatok telepítése során a szolgáltatás által létrehozott BitLocker-kulcs használatával). A BitLocker-kulcsot külön nyújtják az Azure-hoz, így biztosítva a sávon kívüli kulcsok megosztását.
 
 Mivel a tranzitban lévő adatok különböző forgatókönyvekben is megkerülhetnek, fontos tudni, hogy Microsoft Azure [virtuális hálózatkezelést](https://azure.microsoft.com/documentation/services/virtual-network/) használ a bérlők forgalmának elkülönítésére, olyan mértékeket alkalmazva, mint a gazdagép-és a vendég szintű tűzfalak, az IP-csomagszűrés, a portok blokkolása és a https-végpontok. Azonban a legtöbb Azure belső kommunikációja, beleértve az infrastruktúra-infrastruktúra és az infrastruktúra-ügyfél (helyszíni) is, titkosítva van. Egy másik fontos forgatókönyv az Azure-adatközpontokon belüli kommunikáció; A Microsoft felügyeli a hálózatokat annak biztosítására, hogy egyetlen virtuális gép sem megszemélyesítheti vagy hallgatózik egy másik IP-címen. A TLS/SSL használata az Azure Storage-hoz vagy SQL-adatbázisokhoz való hozzáféréskor, illetve Cloud Serviceshoz való csatlakozáskor használatos. Ebben az esetben az ügyfél rendszergazdája a TLS/SSL-tanúsítvány beszerzéséhez és a bérlői infrastruktúrához való üzembe helyezéséhez felelős. A Virtual Machines közötti adatforgalom ugyanabban az üzemelő példányban, illetve a bérlők között, az Microsoft Azure Virtual Network használatával a titkosított kommunikációs protokollok, például a HTTPS, az SSL/TLS vagy más rendszerek is védhetők.
 
@@ -168,7 +168,7 @@ A prémium szintű Azure AD alapvető jelentési képességein kívül az incide
 
 Mivel az incidensek válasza többrétegű megközelítést használ, a beállítások összehasonlítása nem alkalmazható erre a feladatra. Győződjön meg arról, hogy az egyes forgatókönyvekhez rendelkezésre álló összes lehetőséget kihasználva az Azure AD jelentéskészítési funkciójának használatát igényli a vállalat incidens-válaszának részeként.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Hibrid Identitáskezelés kezelési feladatainak meghatározása](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)
 
 ## <a name="see-also"></a>Lásd még:

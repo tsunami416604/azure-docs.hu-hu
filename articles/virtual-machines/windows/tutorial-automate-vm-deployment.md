@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e9a5cb463646762c262cc3c8e27123a768ef11d8
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 6c5a89b6a376a5938a42b8ba945cdd5269ca54e4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914739"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730123"
 ---
 # <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>Oktatóanyag – Alkalmazások telepítése Windows virtuális gépekre az Azure-ban az egyéni szkriptbővítménnyel
 
@@ -39,7 +39,7 @@ Az egyéni szkriptek bővítménye Windows és Linux rendszerű virtuális gépe
 
 
 ## <a name="create-virtual-machine"></a>Virtuális gép létrehozása
-Állítsa be a virtuális gép rendszergazdai felhasználónevét és jelszavát a [Get-hitelesítőadat használatával](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true):
+Állítsa be a virtuális gép rendszergazdai felhasználónevét és jelszavát a [Get-hitelesítőadat használatával](/powershell/module/microsoft.powershell.security/get-credential):
 
 ```azurepowershell-interactive
 $cred = Get-Credential
@@ -92,7 +92,7 @@ A nyilvános IP-címet beírhatja egy böngészőbe. Ekkor megjelenik a webhely,
 ![IIS-webhely futtatása](./media/tutorial-automate-vm-deployment/running-iis-website.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban az IIS telepítését automatizálta egy virtuális gépen. Megtanulta végrehajtani az alábbi műveleteket:
 
