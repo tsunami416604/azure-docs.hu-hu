@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: ed79d9fb3be192d300587eda5198d9b153109241
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 605bae706bbc1db2e008b8d050cbba9eacd16933
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209780"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702202"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Adatok előkészítése a Custom Speech szolgáltatáshoz
 
@@ -46,7 +46,7 @@ Ez a táblázat felsorolja az elfogadott adattípusokat, valamint az egyes adatt
 
 | Adattípus | Teszteléshez használatos | Ajánlott mennyiség | Képzéshez használatos | Ajánlott mennyiség |
 |-----------|-----------------|----------|-------------------|----------|
-| [Audió](#audio-data-for-testing) | Igen<br>Vizuális vizsgálathoz használatos | 5 + hangfájl | Nem | N.A. |
+| [Audió](#audio-data-for-testing) | Igen<br>Vizuális vizsgálathoz használatos | 5 + hangfájl | Nem | N/A |
 | [Hang + emberi – címkézett átiratok](#audio--human-labeled-transcript-data-for-testingtraining) | Igen<br>A pontosság kiértékeléséhez használatos | 0,5-5 órányi hang | Igen | 1-20 órányi hang |
 | [Kapcsolódó szöveg](#related-text-data-for-training) | Nem | N/a | Igen | 1-200 MB kapcsolódó szöveg |
 
@@ -174,7 +174,7 @@ Ezzel a táblázattal ellenőrizheti, hogy a hosszúságú kimondott szöveg kap
 
 Emellett a következő korlátozásokat is érdemes figyelembe vennie:
 
-* Ne ismételje meg a karaktereket négyszer. Például: "AAAA" vagy "uuuu".
+* Ne ismételje meg az ismétlődő karaktereket, szavakat vagy szavakat három alkalommal. Tegyük fel például, hogy az "AAAA", az "igen igen igen igen", vagy "Ez az, ami ennyire igaz". A beszédfelismerési szolgáltatás túl sok ismétlődési vonalat tartalmazhat.
 * Ne használjon a fentiekben speciális karaktereket vagy UTF-8 karaktereket `U+00A1` .
 * Az URI-k el lesznek utasítva.
 
@@ -210,7 +210,7 @@ A következő táblázat segítségével biztosíthatja, hogy a kiejtésekhez ka
 | kiejtések száma soronként | 1 |
 | Maximális fájlméret | 1 MB (1 KB ingyenes szinten) |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az adatai ellenőrzése](how-to-custom-speech-inspect-data.md)
 * [Az adatai kiértékelése](how-to-custom-speech-evaluate-data.md)

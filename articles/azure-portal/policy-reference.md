@@ -1,15 +1,15 @@
 ---
 title: A Azure Portal beépített szabályzat-definíciói
 description: A Azure Portal Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 34cfeadb301b520e0884333e32a30ec49f663106
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 1baef4965dce2935f68d24c86585a9cfd12fb1a9
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98043905"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98701060"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-portal"></a>A Azure Portal beépített definíciói Azure Policy
 

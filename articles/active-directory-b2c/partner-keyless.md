@@ -11,14 +11,14 @@ ms.topic: how-to
 ms.date: 1/17/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 7e6f19e03eee6fb6ddf946ea79d197a231f5f113
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2ab1b5ae87cee6265c965c45b706c7fbf10dfe3f
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690423"
+ms.locfileid: "98702954"
 ---
-# <a name="tutorial-for-configuring-keyless-with-azure-active-directory-b2c"></a>Útmutató a Kulcsnélkül konfigurálásához a Azure Active Directory B2C
+# <a name="tutorial-configure-keyless-with-azure-active-directory-b2c"></a>Oktatóanyag: a kulcsnélküli konfiguráció konfigurálása Azure Active Directory B2C
 
 Ebben a példában útmutatást adunk a Azure Active Directory (AD) B2C és a [kulcsnélküli](https://keyless.io/)beállítások konfigurálásához. Ha a Azure AD B2C identitás-szolgáltatóként, a felhasználók számára valódi jelszó nélküli hitelesítést biztosíthat az ügyfelek alkalmazásaival.
 
@@ -153,7 +153,7 @@ A B2C-azonosítók listáján szereplő új OIDC-azonosítónak kell megjelennie
 
 5. A kulcsnélküli hívás a folyamat során, a felhasználói attribútum létrehozása után lesz meghívva. Ha a folyamat hiányos, ellenőrizze, hogy a felhasználó nincs-e mentve a címtárban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkért tekintse át a következő cikkeket:
 

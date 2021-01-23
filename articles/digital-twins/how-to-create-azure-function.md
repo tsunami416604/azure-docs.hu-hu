@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 04ca8d515dbc5a28a7d3a30369d97877928c9dc1
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 1178b0ab5af3642026fe78c7de788f354691b13a
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683864"
+ms.locfileid: "98701160"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>Function Apps-alkalmazások összekapcsolhatók az Azure-ban az adatfeldolgozáshoz
 
@@ -38,19 +38,19 @@ Az itt látható lépések áttekintése:
 
 A Visual Studio 2019-es verziójában válassza a _fájl > új > projekt_ elemet, és keresse meg a _Azure functions_ sablont. Kattintson a _Tovább_ gombra.
 
-:::image type="content" source="media/how-to-create-azure-function/create-azure-function-project.png" alt-text="Visual Studio: új projekt párbeszédpanel":::
+:::image type="content" source="media/how-to-create-azure-function/create-azure-function-project.png" alt-text="Képernyőkép a Visual studióról, amely az új projekt párbeszédpanelt mutatja. A Azure Functions-projekt sablonja ki van emelve.":::
 
 Adja meg a Function alkalmazás nevét, majd válassza a _Létrehozás_ lehetőséget.
 
-:::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="Visual Studio: új projekt konfigurálása":::
+:::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="A Visual Studio képernyőképe, amely egy új projekt konfigurálását mutatja be, beleértve a projekt nevét, a hely mentését, az új megoldás létrehozásának lehetőségét, valamint a megoldás nevét.":::
 
 Válassza ki az *Event Grid trigger* függvény alkalmazási típusát, és válassza a _Létrehozás_ lehetőséget.
 
-:::image type="content" source="media/how-to-create-azure-function/event-grid-trigger-function.png" alt-text="Visual Studio: Azure Functions Project trigger párbeszédpanel":::
+:::image type="content" source="media/how-to-create-azure-function/event-grid-trigger-function.png" alt-text="A Visual Studio képernyőképe, amely az új Azure Functions alkalmazás létrehozásához szükséges párbeszédpanelt jeleníti meg. A Event Grid trigger beállítás ki van emelve.":::
 
 A Function app létrehozása után a Visual Studio egy **Function1.cs** -fájlban hozza létre a projekt mappájában található kódot. Ez a rövid függvény az események naplózására szolgál.
 
-:::image type="content" source="media/how-to-create-azure-function/visual-studio-sample-code.png" alt-text="Visual Studio: Project-ablak mintakód-kóddal":::
+:::image type="content" source="media/how-to-create-azure-function/visual-studio-sample-code.png" alt-text="Képernyőfelvétel a Visual studióról a létrehozott új projekt projekt ablakában. A Function1 nevű minta függvényhez kód található." lightbox="media/how-to-create-azure-function/visual-studio-sample-code.png":::
 
 ## <a name="write-a-function-with-an-event-grid-trigger"></a>Függvény írása Event Grid triggerrel
 
@@ -150,27 +150,27 @@ A rendszerhez rendelt felügyelt identitás lehetővé teszi, hogy az Azure-erő
 
 A [Azure Portal](https://portal.azure.com/)keressen rá a _Function app_ kifejezésre a keresési sávban a korábban létrehozott Function alkalmazás nevével. Válassza ki a *függvényalkalmazás* a listából. 
 
-:::image type="content" source="media/how-to-create-azure-function/portal-search-for-function-app.png" alt-text="Azure Portal: Keresés a függvény alkalmazásban":::
+:::image type="content" source="media/how-to-create-azure-function/portal-search-for-function-app.png" alt-text="Képernyőkép a Azure Portalról: a függvény alkalmazás neve a portálon, a keresési eredmény pedig ki van jelölve.":::
 
 A felügyelt identitás engedélyezéséhez kattintson a bal oldali navigációs sávban az _Identity (identitás_ ) elemre a függvény alkalmazás ablakban.
 A _rendszer-hozzárendelés_ lapon állítsa be az _állapotot_ a be értékre, és _mentse_ azt. Egy előugró ablak jelenik meg, amely _lehetővé teszi a rendszerhez rendelt felügyelt identitás engedélyezését_.
 Válassza az _Igen_ gomb lehetőséget. 
 
-:::image type="content" source="media/how-to-create-azure-function/enable-system-managed-identity.png" alt-text="Azure Portal: a rendszerfelügyelt identitás engedélyezése":::
+:::image type="content" source="media/how-to-create-azure-function/enable-system-managed-identity.png" alt-text="Képernyőkép a Azure Portalról: a Function alkalmazás Identity (identitás) lapján a rendszerhez rendelt felügyelt identitás engedélyezése beállítás Igen értékre van állítva. Az állapot beállítás be értékre van állítva.":::
 
 Az értesítésekben ellenőrizheti, hogy a függvény sikeresen regisztrálva van-e Azure Active Directory.
 
-:::image type="content" source="media/how-to-create-azure-function/notifications-enable-managed-identity.png" alt-text="Azure Portal: értesítések":::
+:::image type="content" source="media/how-to-create-azure-function/notifications-enable-managed-identity.png" alt-text="Képernyőkép a Azure Portalról: az értesítések listája a portál felső sávján található harang alakú ikon kiválasztásával. Értesítést kap arról, hogy a felhasználó engedélyezte a rendszerhez rendelt felügyelt identitást.":::
 
 Jegyezze fel az _Identity (identitás_ ) lapon megjelenő **objektumazonosítót** is, ahogy azt a következő szakaszban fogja használni.
 
-:::image type="content" source="media/how-to-create-azure-function/object-id.png" alt-text="A jövőben használandó objektumazonosító másolása":::
+:::image type="content" source="media/how-to-create-azure-function/object-id.png" alt-text="Képernyőkép a Azure Portalről: az Azure Function identitás oldalának objektum-azonosító mezője körüli kiemelés.":::
 
 ### <a name="assign-access-roles-using-azure-portal"></a>Hozzáférési szerepkörök kiosztása Azure Portal használatával
 
 Válassza ki az Azure szerepkör- _hozzárendelések_ gombot, amely megnyitja az *Azure szerepkör-hozzárendelések* lapot. Ezután válassza a _+ szerepkör-hozzárendelés hozzáadása (előzetes verzió)_ lehetőséget.
 
-:::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Azure Portal: szerepkör-hozzárendelés hozzáadása":::
+:::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Képernyőkép a Azure Portalról: az Azure-függvény identitási lapjának engedélyek területén található, az Azure szerepkör-hozzárendelések gombjának kiemelése.":::
 
 A megnyíló _szerepkör-hozzárendelés hozzáadása (előzetes verzió)_ lapon válassza a következőket:
 
@@ -181,7 +181,7 @@ A megnyíló _szerepkör-hozzárendelés hozzáadása (előzetes verzió)_ lapon
 
 Ezután mentse a részleteket a _Save (Mentés_ ) gomb megnyomásával.
 
-:::image type="content" source="media/how-to-create-azure-function/add-role-assignment.png" alt-text="Azure Portal: szerepkör-hozzárendelés hozzáadása (előzetes verzió) ":::
+:::image type="content" source="media/how-to-create-azure-function/add-role-assignment.png" alt-text="Képernyőkép a Azure Portal: Dialog új szerepkör-hozzárendelés (előzetes verzió) hozzáadásához. A hatókör, az előfizetés, az erőforráscsoport és a szerepkör mezői vannak.":::
 
 ### <a name="configure-application-settings-using-azure-portal"></a>Alkalmazásbeállítások konfigurálása Azure Portal használatával
 
@@ -189,39 +189,39 @@ Az Azure Digital Twins-példány URL-címét elérhetővé teheti a függvény s
 
 Ha környezeti változót szeretne beállítani a példány URL-címével, először töltse le az URL-címet úgy, hogy megkeresi az Azure digitális Twins-példányának állomásnevét. Keresse meg a példányt a [Azure Portal](https://portal.azure.com) keresési sávon. Ezután a bal oldali navigációs sávon az _Áttekintés_ elemre kattintva megtekintheti a _gazdagép nevét_. Másolja ezt az értéket.
 
-:::image type="content" source="media/how-to-create-azure-function/adt-hostname.png" alt-text="Azure Portal: Áttekintés – > a _Value_ mezőben használandó hostname (állomásnév).":::
+:::image type="content" source="media/how-to-create-azure-function/adt-hostname.png" alt-text="Képernyőkép a Azure Portalról: az Azure Digital Twins-példány áttekintés lapján az állomásnév értéke kiemelve jelenik meg.":::
 
 Mostantól az alábbi lépéseket követve létrehozhat egy alkalmazás-beállítást:
 
-1. Keresse meg az alkalmazást a keresési sávban a Function alkalmazás nevével, és válassza ki a függvény alkalmazást a listából.
+1. Keresse meg a Function alkalmazást a portál keresési sávján, és válassza ki az eredmények közül.
 1. Válassza ki a bal oldali navigációs sávon a _konfiguráció_ elemet egy új Alkalmazásbeállítás létrehozásához
 1. Az _Alkalmazásbeállítások_ lapon válassza az _+ új alkalmazás beállítása_ lehetőséget.
 
-:::image type="content" source="media/how-to-create-azure-function/search-for-azure-function.png" alt-text="Azure Portal: meglévő Function-alkalmazás keresése" lightbox="media/how-to-create-azure-function/search-for-azure-function.png":::
+:::image type="content" source="media/how-to-create-azure-function/portal-search-for-function-app.png" alt-text="Képernyőkép a Azure Portalról: a függvény alkalmazás neve a portálon, a keresési eredmény pedig ki van jelölve.":::
 
-:::image type="content" source="media/how-to-create-azure-function/application-setting.png" alt-text="Azure Portal: Alkalmazásbeállítások konfigurálása":::
+:::image type="content" source="media/how-to-create-azure-function/application-setting.png" alt-text="Képernyőkép a Azure Portalról: a Function alkalmazás konfiguráció lapján az új Alkalmazásbeállítás létrehozásához szükséges gomb kiemelve jelenik meg.":::
 
 A megnyíló ablakban a fent másolt állomásnév érték használatával hozzon létre egy alkalmazás-beállítást.
-* _Név_ : ADT_SERVICE_URL
-* _Érték_: https://{saját Azure-digitális-ikrek-Host-Name}
+* **Név**: ADT_SERVICE_URL
+* **Érték**: https://{saját Azure-digitális-ikrek-Host-Name}
 
 Az alkalmazás beállításainak létrehozásához kattintson _az OK gombra_ .
 
-:::image type="content" source="media/how-to-create-azure-function/add-application-setting.png" alt-text="Azure Portal: Alkalmazásbeállítások hozzáadása.":::
+:::image type="content" source="media/how-to-create-azure-function/add-application-setting.png" alt-text="Képernyőkép a Azure Portalról: az OK gomb ki van emelve a név és érték mezők kitöltése után az alkalmazás hozzáadása/szerkesztése lapon.":::
 
 Az Alkalmazásbeállítások a _Name (név_ ) mezőben tekinthetők meg az alkalmazás nevével. Ezután mentse az alkalmazás beállításait a _Save (Mentés_ ) gombra kattintva.
 
-:::image type="content" source="media/how-to-create-azure-function/application-setting-save-details.png" alt-text="Azure Portal: megtekintheti a létrehozott alkalmazást, és újraindíthatja az alkalmazást":::
+:::image type="content" source="media/how-to-create-azure-function/application-setting-save-details.png" alt-text="Képernyőfelvétel a Azure Portalról: az Alkalmazásbeállítások lapon, az új ADT_SERVICE_URL beállítás kiemelve. A Mentés gomb szintén ki van emelve.":::
 
-Az Alkalmazásbeállítások módosítására az alkalmazás újraindítása szükséges. Válassza a _Folytatás_ lehetőséget az alkalmazás újraindításához.
+Az Alkalmazásbeállítások változásainak érvénybe léptetéséhez az alkalmazás újraindítása szükséges. Válassza a _Folytatás_ lehetőséget az alkalmazás újraindításához.
 
-:::image type="content" source="media/how-to-create-azure-function/save-application-setting.png" alt-text="Azure Portal: Alkalmazásbeállítások mentése":::
+:::image type="content" source="media/how-to-create-azure-function/save-application-setting.png" alt-text="Képernyőkép a Azure Portalról: az alkalmazás újraindítását és az alkalmazás újraindítását érintő módosítások megfigyelhető. A Folytatás gomb ki van emelve.":::
 
 Az Alkalmazásbeállítások az _értesítések_ ikon kiválasztásával tekinthetők meg. Ha az alkalmazás beállítása nincs létrehozva, akkor a fenti folyamat követésével újra megpróbálkozhat az alkalmazás hozzáadásával.
 
-:::image type="content" source="media/how-to-create-azure-function/notifications-update-web-app-settings.png" alt-text="Azure Portal: az Alkalmazásbeállítások frissítésére vonatkozó értesítések":::
+:::image type="content" source="media/how-to-create-azure-function/notifications-update-web-app-settings.png" alt-text="Képernyőkép a Azure Portalról: az értesítések listája a portál felső sávján található harang alakú ikon kiválasztásával. Megjelenik egy értesítés arról, hogy a webalkalmazás beállításai sikeresen frissítve lettek.":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben követte, hogyan állíthat be egy Function alkalmazást az Azure-ban az Azure digitális Twins szolgáltatással való használatra.
 

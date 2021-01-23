@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: a0751e7e4c90f04cd5e28610e2c62dbec6a7adcf
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 722c02dc47dfea1376f216e7f5335051aea85af6
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051197"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98701320"
 ---
-|Név<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Az Azure szinapszis-munkaterületek az ügyfél által felügyelt kulcsokat használják a REST-adatok titkosításához](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff7d52b2d-e161-4dfa-a82b-55e564167385) |Az Azure szinapszis-munkaterületeken tárolt adatok titkosításának szabályozásához használja az ügyfél által felügyelt kulcsokat. Az ügyfél által felügyelt kulcsok dupla titkosítást biztosítanak egy második titkosítási réteg hozzáadásával az alapértelmezett titkosításhoz a szolgáltatás által felügyelt kulcsokkal. |Naplózás, megtagadás, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceCMK_Audit.json) |
 |[Az Azure szinapszis-munkaterületeken található IP-tűzfalszabályok eltávolítását el kell távolítani](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F56fd377d-098c-4f02-8406-81eb055902b8) |Az összes IP-tűzfalszabály eltávolítása növeli a biztonságot azáltal, hogy az Azure szinapszis-munkaterület csak privát végpontról érhető el. Ez a konfiguráció naplózza a nyilvános hálózati hozzáférést engedélyező tűzfalszabályok létrehozását a munkaterületen. |Naplózás, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceFirewallRules_Audit.json) |

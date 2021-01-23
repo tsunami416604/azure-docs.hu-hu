@@ -11,16 +11,27 @@ ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: 4813a71a0bdd14e747aa4cfe51ab5a4191df62a4
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 1ab79c32bfc28f6b4582d5a7d7177d5a9c04d682
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563041"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702675"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft Identity platform docs: Újdonságok
 
 Üdvözli a Microsoft Identity platform dokumentációjának újdonságai. Ez a cikk felsorolja a hozzáadott új dokumentumokat, valamint azokat, amelyek az elmúlt három hónapban jelentős frissítésekkel rendelkeztek.
+
+## <a name="january-2021"></a>2021. január
+
+### <a name="updated-articles"></a>Frissített cikkek
+
+- [Hitelesítés és engedélyezés](authentication-vs-authorization.md)
+- [Útmutató: az Azure AD-alkalmazás korlátozása egy Azure AD-bérlőben lévő felhasználók köré](howto-restrict-your-app-to-a-set-of-users.md)
+- [Engedélyek és hozzájárulás a Microsoft-identitásplatform végpontján](v2-permissions-and-consent.md)
+- [Konfigurálható jogkivonat-élettartamok a Microsoft Identity platformban (előzetes verzió)](active-directory-configurable-token-lifetimes.md)
+- [Jogkivonat élettartamára vonatkozó szabályzatok konfigurálása (előzetes verzió)](configure-token-lifetimes.md)
+- [Microsoft Identity platform és OAuth 2,0 engedélyezési kód folyamatábrája](v2-oauth2-auth-code-flow.md)
 
 ## <a name="december-2020"></a>2020. december
 
@@ -36,6 +47,7 @@ ms.locfileid: "97563041"
 
 ### <a name="updated-articles"></a>Frissített cikkek
 
+- [Gyors útmutató: bejelentkezés felvétele a Microsofttal egy Java-webalkalmazásba](quickstart-v2-java-webapp.md)
 - [Oktatóanyag: a Microsoft Identity platformot használó több-bérlős démon létrehozása](tutorial-v2-aspnet-daemon-web-app.md)
 - [Felhasználók számára bejelentkező webalkalmazás: alkalmazás regisztrálása](scenario-web-app-sign-user-app-registration.md)
 - [Microsoft Identity platform és implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md)
@@ -56,49 +68,3 @@ ms.locfileid: "97563041"
 - [Útmutató: opcionális jogcímek megadása az alkalmazás számára](active-directory-optional-claims.md)
 - [Az alkalmazás közzététele az Azure AD App Galleryben](v2-howto-app-gallery-listing.md)
 - [Útmutató: alkalmazás-Szerepkörök hozzáadása az alkalmazáshoz és fogadása a jogkivonatban](howto-add-app-roles-in-azure-ad-apps.md)
-
-## <a name="october-2020"></a>2020. október
-
-### <a name="new-articles"></a>Új cikkek
-
-- [Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési jogkivonat beszerzése egy Node-webalkalmazásban az Auth Code flow használatával](quickstart-v2-nodejs-webapp-msal.md)
-- [Útmutató: alkalmazások közötti egyszeri bejelentkezés engedélyezése Androidon a MSAL használatával](msal-android-single-sign-on.md)
-- [Az egyszeri bejelentkezés és az alkalmazás-védelmi szabályzatok támogatása a fejleszthető mobil alkalmazásokban](mobile-sso-support-overview.md)
-- Microsoft Identity platform docs: Újdonságok (ez a cikk)
-- [Oktatóanyag: bejelentkezés a felhasználókba és a védett API meghívása egy Blazer webszerelvény-alkalmazásból](tutorial-blazor-webassembly.md)
-- [Microsoft Identity web Authentication Library](microsoft-identity-web.md)
-
-### <a name="updated-articles"></a>Frissített cikkek
-
-- [Konfigurálható jogkivonat-élettartamok a Microsoft Identity platformban (előzetes verzió)](active-directory-configurable-token-lifetimes.md)
-- [Útmutató: Azure Active Directory-felhasználók bejelentkeztetése több-bérlős alkalmazásminta használatával](howto-convert-app-to-be-multi-tenant.md)
-- [Gyors útmutató: alkalmazás által támogatott fiókok módosítása](quickstart-modify-supported-accounts.md)
-- [A Microsoft Identitásplatformot bemutató videók](identity-videos.md)
-- [ADAL a MSAL áttelepítési útmutató Android rendszerhez](migrate-android-adal-msal.md)
-- [Rövid útmutató: a Microsoft Identity platform által védett ASP.NET webes API meghívása](quickstart-v2-dotnet-native-aspnet.md)
-- [Microsoft Identity platform-alkalmazás hitelesítési tanúsítványának hitelesítő adatai](active-directory-certificate-credentials.md)
-- [Oktatóanyag: bejelentkezés a felhasználókba és Microsoft Graph meghívása iOS-vagy macOS-alkalmazásból](tutorial-v2-ios.md)
-- [Bejelentkezés a felhasználókba és a Microsoft Graph API meghívása egy JavaScript egyoldalas alkalmazásból (SPA)](tutorial-v2-javascript-spa.md)
-- [Oktatóanyag: megosztott eszköz üzemmód használata Android-alkalmazásokban](tutorial-v2-shared-device-mode.md)
-
-## <a name="september-2020"></a>2020. szeptember
-
-### <a name="new-articles"></a>Új cikkek
-
-- [Gyors útmutató: ASP.NET Core webes API-k védetté helyezése a Microsoft Identity platformmal](quickstart-v2-aspnet-core-web-api.md)
-- [Oktatóanyag: a Microsoft Identity platformot használó blézer-kiszolgálói alkalmazás létrehozása a hitelesítéshez](tutorial-blazor-server.md)
-
-### <a name="updated-articles"></a>Frissített cikkek
-
-- [Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása Android-alkalmazásból](tutorial-v2-android.md)
-- [Webes API-kat meghívó webalkalmazás: kód konfigurálása](scenario-web-app-call-api-app-configuration.md)
-- [Webes API-kat meghívó webalkalmazás: webes API meghívása](scenario-web-app-call-api-call-api.md)
-- [Webes API-kat meghívó webes API: kód konfigurálása](scenario-web-api-call-api-app-configuration.md)
-- [Webes API-kat meghívó webes API: az API meghívása](scenario-web-api-call-api-call-api.md)
-- [Bejelentkezés a felhasználókba és Microsoft Graph meghívása iOS-vagy macOS-alkalmazásból](tutorial-v2-ios.md)
-- [Rövid útmutató: a Microsoft Identity platform által védett ASP.NET webes API meghívása](quickstart-v2-dotnet-native-aspnet.md)
-- [Gyors útmutató: bejelentkezés felvétele a Microsofttal ASP.NET Core webalkalmazásba](quickstart-v2-aspnet-core-webapp.md)
-- [A Xamarin iOS és a MSAL.NET használatának szempontjai](msal-net-xamarin-ios-considerations.md)
-- [Gyors útmutató: ügyfélalkalmazás konfigurálása webes API-k eléréséhez](quickstart-configure-app-access-web-apis.md)
-- [Gyors útmutató: alkalmazás konfigurálása webes API-k megjelenítéséhez](quickstart-configure-app-expose-web-apis.md)
-- [Gyors útmutató: alkalmazás regisztrálása a Microsoft Identity platformmal](quickstart-register-app.md)

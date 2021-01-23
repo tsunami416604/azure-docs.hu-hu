@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre és helyezhet üzembe Azure Resou
 ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8e9f047497f493752947d8115084dcfe86f5e040
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: e7e2cda0524e4d754fbf879c046fee2d43c44cb3
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588131"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98701712"
 ---
 # <a name="tutorial-continuous-integration-of-arm-templates-with-azure-pipelines"></a>Oktatóanyag: ARM-sablonok folyamatos integrálása az Azure-folyamatokkal
 
@@ -39,12 +39,12 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
 * **Egy GitHub-fiók**, amelyben felhasználhatja a sablonok tárházának létrehozását. Ha még nem rendelkezik fiókkal, [ingyen létrehozhat egyet](https://github.com). További információ a GitHub-adattárak használatáról: [GitHub-adattárak létrehozása](/azure/devops/pipelines/repos/github).
 * **Telepítse a git**-t. Ez az oktatóanyag-utasítás a *git bash* vagy a *git Shell* használatát ismerteti. Útmutatásért lásd: a [git telepítése](https://www.atlassian.com/git/tutorials/install-git).
-* **Egy Azure DevOps-szervezet**. Ha még nem rendelkezik fiókkal, ingyen létrehozhat egyet. Lásd: [szervezet vagy projekt gyűjtemény létrehozása](/azure/devops/organizations/accounts/create-organization?view=azure-devops).
+* **Egy Azure DevOps-szervezet**. Ha még nem rendelkezik fiókkal, ingyen létrehozhat egyet. Lásd: [szervezet vagy projekt gyűjtemény létrehozása](/azure/devops/organizations/accounts/create-organization).
 * választható **Visual Studio Code a Resource Manager-eszközök bővítménnyel**. Lásd [a gyors útmutató: ARM-sablonok létrehozása a Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md)-ban című témakört.
 
 ## <a name="prepare-a-github-repository"></a>GitHub-adattár előkészítése
 
-A GitHub a projekt forráskódjának tárolására szolgál, beleértve a Resource Manager-sablonokat is. Más támogatott adattárak esetében lásd: az [Azure DevOps által támogatott adattárak](/azure/devops/pipelines/repos/?view=azure-devops).
+A GitHub a projekt forráskódjának tárolására szolgál, beleértve a Resource Manager-sablonokat is. Más támogatott adattárak esetében lásd: az [Azure DevOps által támogatott adattárak](/azure/devops/pipelines/repos/).
 
 ### <a name="create-a-github-repository"></a>GitHub-adattár létrehozása
 
@@ -143,7 +143,7 @@ Hozzon létre egy olyan szolgáltatási kapcsolódást, amely a projektek Azure-
     * **Erőforráscsoport**: hagyja üresen.
     * **Kapcsolatok neve**: adjon meg egy nevet. Például: **AzureRmPipeline-Conn**. Jegyezze fel ezt a nevet, a folyamat létrehozásakor szüksége lesz a névre.
     * **Hozzáférési engedély biztosítása minden folyamathoz**. kiválasztott
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="create-a-pipeline"></a>Folyamat létrehozása
 
@@ -183,7 +183,7 @@ Folyamat létrehozása lépéssel a sablon üzembe helyezéséhez:
 
     ![Képernyőfelvétel: az ARM-sablon üzembe helyezési lapja, ahol a szükséges értékek szerepelnek.](./media/deployment-tutorial-pipeline/resource-manager-template-pipeline-configure.png)
 
-1. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza a **Hozzáadás** elemet.
 
     További információ a feladatról: az [Azure-erőforráscsoport üzembe helyezési feladata](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)és [Azure Resource Manager sablon központi telepítési feladata](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md)
 
@@ -240,7 +240,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 
 Előfordulhat, hogy törölni szeretné a GitHub-tárházat és az Azure DevOps-projektet is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Gratulálunk, befejezte ezt a Resource Manager-sablon üzembe helyezését ismertető oktatóanyagot. Tudassa velünk, ha megjegyzésekkel és javaslatokkal rendelkezik a visszajelzések szakaszban. Köszönjük!
 Készen áll a sablonokkal kapcsolatos speciális fogalmak beugrására. A következő oktatóanyag részletesen ismerteti a sablon-referenciák dokumentációjának használatát, amely segítséget nyújt a telepítendő erőforrások definiálásához.

@@ -1,24 +1,24 @@
 ---
-title: Az Azure-foglalások használatának megértése Nagyvállalati Szerződések esetén
-description: Megtanulhatja értelmezni a használati adatokat annak megismeréséhez, hogyan lesz alkalmazva az Azure-foglalás a nagyvállalati regisztrációra.
+title: Az Azure foglalások használatának ismertetése Nagyvállalati Szerződés és a Microsoft ügyfél-szerződéssel kapcsolatban
+description: Megtudhatja, hogyan olvashatja el a használati adatait, hogy megtudja, hogyan vonatkozik az Azure-foglalás a Nagyvállalati Szerződés és a Microsoft ügyfél-szerződés használatára.
 author: bandersmsft
 ms.reviewer: yashar
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 01/19/2020
 ms.author: banders
-ms.openlocfilehash: 874d5cb022a38b172bb37009bd86b5e6988f3204
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
-ms.translationtype: HT
+ms.openlocfilehash: 0c69e9533130d6ca70c57422c7cdd5fc75adff72
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96545604"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683717"
 ---
-# <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>A Nagyvállalati Szerződés foglalási költségeinek és használati adatainak lekérése
+# <a name="get-enterprise-agreement-and-microsoft-customer-agreement-reservation-costs-and-usage"></a>A Nagyvállalati Szerződés és a Microsoft ügyfél-szerződés foglalási költségeinek és használatának beszerzése
 
-A Nagyvállalati Szerződéssel rendelkező ügyfelek megtekinthetik a foglalási költség- és használati adatokat az Azure Portalon és a REST API-kban. Ez a cikk a következőkben nyújt segítséget:
+A foglalási költségekkel és a használattal kapcsolatos továbbfejlesztett adatok Nagyvállalati Szerződés (EA) és a Microsoft Customer Agreement (MCA) használata esetén érhetők el a Cost Management szolgáltatásban. Ez a cikk a következőkben nyújt segítséget:
 
 - Lekérheti a foglalás megvásárlására vonatkozó adatokat
 - Megtudhatja, melyik előfizetés, erőforráscsoport vagy erőforrás használta a foglalást
@@ -61,9 +61,7 @@ Az Azure használati adataiban elérhető egyéb információk módosultak:
 
 Az adatokat lekérheti az API használatával, vagy letöltheti azokat az Azure Portalról.
 
-Az új adatok lekéréséhez hívja meg a [Usage Details API-t](/rest/api/consumption/usagedetails/list). A terminológiával kapcsolatos részletek megismeréséhez tekintse meg a [használattal kapcsolatos kifejezéseket](../understand/understand-usage.md) ismertető cikket. A hívónak az [EA Portalt](https://ea.azure.com) kell használnia, és a Nagyvállalati Szerződés egy vállalati rendszergazdájának kell lennie. A csak olvasásra jogosult vállalati rendszergazdák is megkaphatják az adatokat.
-
-Vegye figyelembe, hogy az adatok nem érhetők el az [Enterprise-ügyfelek számára elérhető jelentéskészítő API-k – Használati adatok ](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) alatt.
+Az új adatok lekéréséhez hívja meg a [Usage Details API-t](/rest/api/consumption/usagedetails/list). A terminológiával kapcsolatos részletek megismeréséhez tekintse meg a [használattal kapcsolatos kifejezéseket](../understand/understand-usage.md) ismertető cikket.
 
 Itt látható egy példahívás a Usage Details API-hoz:
 
@@ -87,7 +85,7 @@ A mérőket és szűrőket tartalmazó következő táblázat segítséget nyúj
 
 ## <a name="download-the-usage-csv-file-with-new-data"></a>Az új használati adatokat tartalmazó CSV-fájl letöltése
 
-Ha Ön a nagyvállalati szerződések rendszergazdája, letöltheti az új használati adatokat tartalmazó CSV-fájlt az Azure Portalról. Ezek az adatok nem érhetők el az EA Portalról (ea.azure.com). Az új adatok megtekintéséhez le kell töltenie a felhasználási adatokat tartalmazó fájlt az Azure Portalról (portal.azure.com).
+Ha Ön egy nagyvállalati rendszergazda, akkor letöltheti az új használati adatokat tartalmazó CSV-fájlt Azure Portalról. Ezek az adatok nem érhetők el az EA Portalról (ea.azure.com). Az új adatok megtekintéséhez le kell töltenie a felhasználási adatokat tartalmazó fájlt az Azure Portalról (portal.azure.com).
 
 Lépjen a [Költségkezelés + számlázás](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/BillingAccounts) menüponthoz az Azure Portalon.
 
@@ -150,7 +148,7 @@ A foglalási költségek elérhetők a [költségelemzésben](https://aka.ms/cos
 
 Csoportosítás díjtípus szerint a használat, a vásárlások és a visszatérítések, illetve foglalás szerint a foglalás és az igény szerinti díjak lebontásának megtekintéséhez. Ne feledje, hogy a tényleges költségeknél csak a vásárlások vannak feltüntetve foglalási költségként, az amortizált költségeknél azonban a költségek azokhoz az erőforrásokhoz vannak elosztva, amelyek kedvezményben részesültek. Az amortizált költségeknél egy új díjtípus is megjelenik **UnusedReservation** (Fel nem használt foglalás) néven.
 
-## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Kapcsolat
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 

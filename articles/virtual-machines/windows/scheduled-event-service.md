@@ -1,20 +1,20 @@
 ---
-title: Windows rendszerű virtuális gépek ütemezett eseményeinek figyelése az Azure-ban
+title: Az Azure-beli virtuális gépek ütemezett eseményeinek monitorozása
 description: Ismerje meg, hogyan figyelheti meg az Azure-beli virtuális gépeket az ütemezett eseményekhez.
 author: mysarn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: monitoring
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
-ms.openlocfilehash: 0d1edde5ac1b83feab458eb5d12d524163d3ffb1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e3e44019d09927ff700e74b713a1b02136fedbc1
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483300"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702270"
 ---
-# <a name="monitoring-scheduled-events"></a>Figyelés Scheduled Events
+# <a name="monitor-scheduled-events-for-your-azure-vms"></a>Azure-beli virtuális gépek ütemezett eseményeinek monitorozása
 
 A frissítések minden nap különböző Azure-részekre érvényesek, így a szolgáltatások biztonságban és naprakészen tarthatók. A tervezett frissítések mellett a nem tervezett események is előfordulhatnak. Ha például valamilyen hardveres romlást vagy hibát észlel, előfordulhat, hogy az Azure-szolgáltatásoknak nem tervezett karbantartást kell végezniük. Az élő áttelepítés, a memóriában lévő frissítések és a frissítések hatására általában szigorú sáv tart fenn, a legtöbb esetben ezek az események szinte transzparensek az ügyfeleknek, és a virtuális gépek lefagyása nem befolyásolja a legtöbb esetet. Egyes alkalmazások esetében azonban a virtuális gépek befagyasztásának néhány másodperce is hatással lehet. Fontos tudni, hogy a közelgő Azure-karbantartási feladatok a lehető legjobb élményt biztosítják az alkalmazások számára. A [Scheduled Events szolgáltatás](scheduled-events.md) egy programozott felületet biztosít a közelgő karbantartásról, és lehetővé teszi a karbantartás zökkenőmentes kezelését. 
 
@@ -39,7 +39,7 @@ Ne törölje a csoport erőforráscsoportot az oktatóanyag végén.
 
 ## <a name="set-up-the-environment"></a>A környezet beállítása
 
-A rendelkezésre állási csoportnak két kezdeti virtuális géppel kell rendelkeznie. Most létre kell hozni egy myCollectorVM nevű harmadik virtuális gépet ugyanabban a rendelkezésre állási csoportba. 
+A rendelkezésre állási csoportnak két kezdeti virtuális géppel kell rendelkeznie. Most létre kell hozni egy harmadik virtuális gépet `myCollectorVM` ugyanabban a rendelkezésre állási csoportba. 
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -150,7 +150,7 @@ Az események Log Analyticsba való leküldése után a következő [lekérdezé
     | project-away RenderedDescription,ReqJson
     ```
 
-1. Válassza a **Mentés** lehetőséget, majd írja be a *logQuery* nevet, hagyja beírni a **lekérdezést** , írja be a *VMLogs* **kategóriába**, majd válassza a **Mentés** lehetőséget. 
+1. Válassza a **Mentés** lehetőséget, majd írja be a nevet, hagyja beírni a lekérdezést, írja be a `ogQuery`  `VMLogs` **kategóriát**, majd válassza a **Mentés** lehetőséget. 
 
     ![A lekérdezés mentése](./media/notifications/save-query.png)
 
@@ -160,7 +160,7 @@ Az események Log Analyticsba való leküldése után a következő [lekérdezé
 1. A **küszöbérték** mezőben adja meg a *0* értéket, majd válassza a **kész** lehetőséget.
 1. A **műveletek** területen válassza a **műveleti csoport létrehozása** lehetőséget. Ekkor megnyílik a **műveleti csoport hozzáadása** lap.
 1. A **műveleti csoport neve** mezőbe írja be a következőt: *myActionGroup*.
-1. A **rövid név** mezőbe írja be a következőt: **myActionGroup**.
+1. A **rövid név** mezőbe írja be a következőt: *myActionGroup*.
 1. Az **erőforráscsoport** területen válassza a **myResourceGroupAvailability** lehetőséget.
 1. A műveletek területen a **művelet neve** mezőbe írja be az **e-mail** nevet, majd válassza az **E-mail/SMS/leküldés/hang** lehetőséget. Ekkor megnyílik az **e-mail/SMS/push/Voice** oldal.
 1. Válassza az **e-mail** lehetőséget, írja be az e-mail címét, majd kattintson **az OK gombra**.

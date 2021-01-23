@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
-ms.openlocfilehash: 4a9a6b61e392ed2efd68cdcb1cf7e53d6bde5ccd
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 8d984a303234a24423ceae100bd139cb484d6495
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249729"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702785"
 ---
 # <a name="estimate-and-manage-capacity-of-an-azure-cognitive-search-service"></a>Azure Cognitive Search-szolgáltatás kapacitásának becslése és kezelése
 
 A [keresési szolgáltatás üzembe helyezése](search-create-service-portal.md) és egy adott díjszabási szinten való zárolása előtt szánjon néhány percet, hogy megértse, hogyan működik a kapacitás, és hogyan módosíthatja a replikákat és a partíciókat a munkaterhelés ingadozásának kielégítése érdekében.
 
-A kapacitás a [szolgáltatási szintek](search-sku-tier.md)egyik funkciója. A rétegek a maximális tárterület, a partíciós tárolás és a létrehozható objektumok maximális száma szerint vannak megkülönböztetve. Az alapszintű csomag olyan alkalmazások számára készült, amelyek szerény tárolási követelményekkel rendelkeznek (csak egy partíció), de a magas rendelkezésre állású konfigurációban (3 replika) futtathatók. A többi szintet meghatározott számítási feladatokhoz vagy mintákhoz (például bérlős) tervezték. Belsőleg az ezeken a platformokon létrehozott szolgáltatások kihasználják azokat a hardvereket, amelyek segítik ezeket a forgatókönyveket.
+A kapacitás a [szolgáltatási szintek](search-sku-tier.md)egyik funkciója, a szolgáltatások maximális tárterületének létrehozása, a partíciók száma, valamint a létrehozható objektumok maximális korlátja. Az alapszintű csomag olyan alkalmazások számára készült, amelyek szerény tárolási követelményekkel rendelkeznek (csak egy partíció), de a magas rendelkezésre állású konfigurációban (3 replika) futtathatók. A többi szintet meghatározott számítási feladatokhoz vagy mintákhoz (például bérlős) tervezték. Belsőleg az ezeken a platformokon létrehozott szolgáltatások kihasználják azokat a hardvereket, amelyek segítik ezeket a forgatókönyveket.
 
 Az Azure Cognitive Search skálázhatósági architektúrája a replikák és partíciók rugalmas kombinációján alapul, így a kapacitás attól függően változhat, hogy több lekérdezésre vagy az indexelési teljesítményre van szüksége. A szolgáltatás létrehozása után a replikák és a partíciók száma egymástól függetlenül növelhető vagy csökkenthető. A költségek felmerülnek minden további fizikai erőforrással, de ha a nagyméretű munkaterhelések befejeződtek, csökkentheti a méretezést a számla csökkentése érdekében. A szintjétől és a beállítás méretétől függően a kapacitás hozzáadása vagy csökkentése akár 15 perctől akár több óráig is eltarthat.
 
@@ -109,7 +109,7 @@ Ha kezdettől fogva magas fenntartható lekérdezési köteteket vár, érdemes 
 
 A tárolásra optimalizált csomagok nagy mennyiségű adatszámítási feladatokhoz hasznosak, és a lekérdezési késésre vonatkozó követelmények kevésbé fontosak lesznek. Továbbra is használjon további replikákat a terheléselosztáshoz és a párhuzamos feldolgozáshoz szükséges további partíciókhoz. Ezt követően a szolgáltatás üzembe helyezése után beállíthatja a teljesítményt.
 
-**Szolgáltatásiszint-szerződések**
+**Szolgáltatási szintű szerződések**
 
 Az ingyenes szint és az előzetes verzió funkciói nem biztosítanak [szolgáltatói szerződést (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/). Minden számlázható szinten a SLA-kat akkor kell végrehajtani, ha elegendő redundancia van kiépítve a szolgáltatáshoz. Legalább két replikát kell megadnia a Query (olvasási) SLA-hoz. Három vagy több replikával kell rendelkeznie a lekérdezéshez és az indexeléshez (írható-olvasható) SLA-hoz. A partíciók száma nem befolyásolja a SLA-kat.
 
@@ -146,7 +146,7 @@ A nagyobb indexek lekérése hosszabb időt vesz igénybe. Ezért előfordulhat,
 
    :::image type="content" source="media/search-capacity-planning/1-initial-values.png" alt-text="Az aktuális értékeket mutató méretezési oldal" border="true":::
 
-1. A csúszka használatával növelheti vagy csökkentheti a partíciók számát. A lenti képlet azt jelzi, hogy hány keresési egységet használ a rendszer. Válassza a **Mentés** lehetőséget.
+1. A csúszka használatával növelheti vagy csökkentheti a partíciók számát. A lenti képlet azt jelzi, hogy hány keresési egységet használ a rendszer. Kattintson a **Mentés** gombra.
 
    Ez a példa egy második replikát és partíciót helyez el. Figyelje meg a keresési egységek darabszámát; most négy, mert a számlázási képlet a replikák szorozza a partíciókkal (2 x 2). A kapacitás megkettőzése több, mint megduplázza a szolgáltatás futtatásának költségeit. Ha a keresési egység díja $100 volt, az új havi számla mostantól $400 lesz.
 
@@ -181,9 +181,9 @@ A standard és a Storage-alapú optimalizált keresési szolgáltatások a köve
 | **1 replika** |1 SU |2 SU |3 SU |4 SU |6 SU |12 SU |
 | **2 replika** |2 SU |4 SU |6 SU |8 SU |12 SU |24 SU |
 | **3 replika** |3 SU |6 SU |9 SU |12 SU |18 SU |36 SU |
-| **4 replika** |4 SU |8 SU |12 SU |16 SU |24 SU |N.A. |
-| **5 replika** |5 SU |10 SU |15 SU |20 SU |30 SU |N.A. |
-| **6 replika** |6 SU |12 SU |18 SU |24 SU |36 SU |N.A. |
+| **4 replika** |4 SU |8 SU |12 SU |16 SU |24 SU |N/A |
+| **5 replika** |5 SU |10 SU |15 SU |20 SU |30 SU |N/A |
+| **6 replika** |6 SU |12 SU |18 SU |24 SU |36 SU |N/A |
 | **12 replika** |12 SU |24 SU |36 SU |N.A. |N.A. |N.A. |
 
 Az SUs, a díjszabás és a kapacitás részletes ismertetését az Azure webhelyén találja. További információkért tekintse meg a [díjszabás részleteit](https://azure.microsoft.com/pricing/details/search/).

@@ -3,12 +3,12 @@ title: A DPM és az Azure Backup Server kapcsolat nélküli biztonsági mentése
 description: A Azure Backup segítségével az Azure import/export szolgáltatással küldhet adathálózatot a hálózatról. Ez a cikk a DPM és a Azure Backup Server offline biztonsági mentési munkafolyamatát ismerteti.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 368ae846a24ec04ee4b7da9b5971c00180be611d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 006c0fa4d67c9a85426d7a007912df65876313da
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378457"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98701813"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>A DPM és a Azure Backup Server offline biztonsági mentési munkafolyamata (MABS)
 
@@ -17,7 +17,7 @@ ms.locfileid: "89378457"
 
 A System Center Data Protection Manager és Azure Backup Server (MABS) integrálása a Azure Backup használatával történik, és számos beépített hatékonyságot biztosít, amelyek hálózati és tárolási költségeket takarítanak meg az Azure-ba irányuló összes adat kezdeti teljes biztonsági mentése során. A kezdeti teljes biztonsági mentések általában nagy mennyiségű adat átvitelét igénylik, és nagyobb hálózati sávszélességet igényelnek, ha az azokat követő biztonsági mentések során csak a különbözeteket/növekményeket továbbítják. Azure Backup tömöríti a kezdeti biztonsági mentéseket. Az offline kivetés folyamatán keresztül a Azure Backup lemezek használatával feltölthetik a tömörített kezdeti biztonsági mentési adatok az Azure-ba.
 
-Azure Backup kapcsolat nélküli előkészítési folyamata szorosan integrálva van az [Azure import/export szolgáltatással](../storage/common/storage-import-export-service.md). Ezzel a szolgáltatással lemezeket vihet át az Azure-ba. Ha terabájt (TBs) típusú kezdeti biztonsági mentési adat szükséges, amelyet nagy késésű és alacsony sávszélességű hálózaton kell átvinni, az offline előkészítési munkafolyamattal egy vagy több merevlemezen is elküldheti az Azure-adatközpontba a kezdeti biztonsági másolatot. Ez a cikk áttekintést nyújt, és további lépéseket tesz a munkafolyamat a System Center Data Protection Manager (DPM) és a Microsoft Azure Backup Server (MABS) rendszerhez való befejezéséhez.
+Azure Backup kapcsolat nélküli előkészítési folyamata szorosan integrálva van az [Azure import/export szolgáltatással](../import-export/storage-import-export-service.md). Ezzel a szolgáltatással lemezeket vihet át az Azure-ba. Ha terabájt (TBs) típusú kezdeti biztonsági mentési adat szükséges, amelyet nagy késésű és alacsony sávszélességű hálózaton kell átvinni, az offline előkészítési munkafolyamattal egy vagy több merevlemezen is elküldheti az Azure-adatközpontba a kezdeti biztonsági másolatot. Ez a cikk áttekintést nyújt, és további lépéseket tesz a munkafolyamat a System Center Data Protection Manager (DPM) és a Microsoft Azure Backup Server (MABS) rendszerhez való befejezéséhez.
 
 > [!NOTE]
 > A Microsoft Azure Recovery Services-(MARS-) ügynök offline biztonsági mentésének folyamata különbözik a DPM és a MABS. Az offline biztonsági mentés a MARS-ügynökkel való használatával kapcsolatban lásd: [Offline biztonsági mentési munkafolyamat a Azure Backup](backup-azure-backup-import-export.md). Az offline biztonsági mentés nem támogatott a rendszerállapot-biztonsági másolatok számára a Azure Backup ügynök használatával.
@@ -51,24 +51,24 @@ Az offline biztonsági mentési munkafolyamat elindítása előtt győződjön m
 * Hozzon létre egy Azure Storage-fiókot a Recovery Services-tárolóval megegyező előfizetésben.
 * Győződjön meg arról, hogy rendelkezik a [szükséges engedélyekkel](../active-directory/develop/howto-create-service-principal-portal.md) a Azure Active Directory alkalmazás létrehozásához. Az offline biztonsági mentési munkafolyamat létrehoz egy Azure Active Directory alkalmazást az Azure Storage-fiókhoz társított előfizetésben. Az alkalmazás célja, hogy az offline biztonsági mentési munkafolyamathoz szükséges biztonságos és hatókörrel rendelkező Azure Backup biztosítson az Azure importálási szolgáltatáshoz.
 * Regisztrálja a Microsoft. ImportExport erőforrás-szolgáltatót az Azure Storage-fiókot tartalmazó előfizetéssel. Az erőforrás-szolgáltató regisztrálása:
-    1. A főmenüben válassza az **előfizetések**lehetőséget.
+    1. A főmenüben válassza az **előfizetések** lehetőséget.
     2. Ha több előfizetésre is feliratkozott, válassza ki azt az előfizetést, amelyet az offline biztonsági mentéshez használ. Ha csak egy előfizetést használ, megjelenik az előfizetése.
     3. Az előfizetés menüben válassza az **erőforrás-szolgáltatók** lehetőséget a szolgáltatók listájának megtekintéséhez.
-    4. A szolgáltatók listájában görgessen le a Microsoft. ImportExport. Ha az állapot NotRegistered, válassza a **regisztráció**lehetőséget.
+    4. A szolgáltatók listájában görgessen le a Microsoft. ImportExport. Ha az állapot NotRegistered, válassza a **regisztráció** lehetőséget.
 
        ![Az erőforrás-szolgáltató regisztrálása](./media/backup-azure-backup-server-import-export/register-import-export.png)
 
 * A rendszer létrehoz egy átmeneti helyet, amely lehet hálózati megosztás vagy a számítógép belső vagy külső meghajtója, amely elegendő lemezterülettel rendelkezik a kezdeti másolat tárolásához. Ha például egy 500 GB-os fájlkiszolgáló biztonsági mentését kívánja végezni, győződjön meg arról, hogy az átmeneti területen legalább 500 GB. (A tömörítés miatt kisebb mennyiség van használatban.)
-* Az Azure-ba küldendő lemezek esetében ügyeljen arra, hogy csak a 2,5 hüvelykes SSD-vagy 2,5-es vagy 3,5 hüvelykes SATA II/III-alapú merevlemezek legyenek használatban. A merevlemezeket akár 10 TB-ig is használhatja. Az [Azure import/export szolgáltatás dokumentációjában](../storage/common/storage-import-export-requirements.md#supported-hardware) keresse meg a szolgáltatás által támogatott meghajtók legújabb készletét.
+* Az Azure-ba küldendő lemezek esetében ügyeljen arra, hogy csak a 2,5 hüvelykes SSD-vagy 2,5-es vagy 3,5 hüvelykes SATA II/III-alapú merevlemezek legyenek használatban. A merevlemezeket akár 10 TB-ig is használhatja. Az [Azure import/export szolgáltatás dokumentációjában](../import-export/storage-import-export-requirements.md#supported-hardware) keresse meg a szolgáltatás által támogatott meghajtók legújabb készletét.
 * A SATA-meghajtóknak csatlakoztatva kell lennie egy számítógéphez (ez a *másolási számítógép*), ahonnan a biztonsági mentési adatok másolata az átmeneti helyről a SATA-meghajtókra történik. Győződjön meg arról, hogy a BitLocker engedélyezve van a másolási számítógépen.
 
 ## <a name="workflow"></a>Munkafolyamat
 
-Az ebben a szakaszban található információk segítségével elvégezheti az offline biztonsági mentés munkafolyamatát, így az adatok továbbíthatók egy Azure-adatközpontba, és feltölthetők az Azure Storage-ba. Ha kérdése van az importálási szolgáltatással vagy a folyamat bármely aspektusával kapcsolatban, tekintse meg a korábban hivatkozott [importálási szolgáltatás áttekintése](../storage/common/storage-import-export-service.md) dokumentációt.
+Az ebben a szakaszban található információk segítségével elvégezheti az offline biztonsági mentés munkafolyamatát, így az adatok továbbíthatók egy Azure-adatközpontba, és feltölthetők az Azure Storage-ba. Ha kérdése van az importálási szolgáltatással vagy a folyamat bármely aspektusával kapcsolatban, tekintse meg a korábban hivatkozott [importálási szolgáltatás áttekintése](../import-export/storage-import-export-service.md) dokumentációt.
 
 ## <a name="initiate-offline-backup"></a>Offline biztonsági mentés indítása
 
-1. Ha új védelmi csoportot hoz létre az online védelemmel, vagy online védelmet szeretne hozzáadni a meglévő védelmi csoportokhoz, az alábbi képernyő jelenik meg. A kezdeti online replikációs módszer kiválasztásához válassza **az átvitel saját lemez használatával** lehetőséget, majd kattintson a **tovább**gombra.
+1. Ha új védelmi csoportot hoz létre az online védelemmel, vagy online védelmet szeretne hozzáadni a meglévő védelmi csoportokhoz, az alábbi képernyő jelenik meg. A kezdeti online replikációs módszer kiválasztásához válassza **az átvitel saját lemez használatával** lehetőséget, majd kattintson a **tovább** gombra.
 
     ![Importálási képernyő](./media/backup-azure-backup-server-import-export/create-new-protection-group.png)
 
@@ -94,7 +94,7 @@ Az ebben a szakaszban található információk segítségével elvégezheti az 
 
    ![Helyreállítási pont létrehozása](./media/backup-azure-backup-server-import-export/create-recovery-point.png)
 
-5. Figyelje meg az online replika-létrehozási feladatot a figyelés ablaktáblán. A feladatsornak sikeresen végre kell hajtania az *Azure-beli importálási feladatok befejezésére vonatkozó*figyelmeztetést.
+5. Figyelje meg az online replika-létrehozási feladatot a figyelés ablaktáblán. A feladatsornak sikeresen végre kell hajtania az *Azure-beli importálási feladatok befejezésére vonatkozó* figyelmeztetést.
 
    ![Helyreállítási pont befejezése](./media/backup-azure-backup-server-import-export/complete-recovery-point.png)
 
@@ -188,7 +188,7 @@ Az Azure-beli importálási feladatok feldolgozásához szükséges idő mennyis
 
 ### <a name="monitor-azure-import-job-status"></a>Azure-beli importálási feladatok állapotának figyelése
 
-Az importálási feladat állapotát a Azure Portal figyelheti az **importálási/exportálási feladatok** lapra, és kiválaszthatja a feladatát. Az importálási feladatok állapotával kapcsolatos további információkért tekintse meg a [tároló importálása exportálási szolgáltatásról](../storage/common/storage-import-export-service.md) szóló cikket.
+Az importálási feladat állapotát a Azure Portal figyelheti az **importálási/exportálási feladatok** lapra, és kiválaszthatja a feladatát. Az importálási feladatok állapotával kapcsolatos további információkért tekintse meg a [tároló importálása exportálási szolgáltatásról](../import-export/storage-import-export-service.md) szóló cikket.
 
 ### <a name="complete-the-workflow"></a>A munkafolyamat befejezése
 
@@ -196,6 +196,6 @@ Az importálási feladatok befejeződése után a kezdeti biztonsági mentési a
 
 A következő ütemezett online replika-létrehozási feladat időpontjában Data Protection Manager a kezdeti biztonsági másolaton végzi a növekményes biztonsági mentést.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Az Azure import/export szolgáltatás munkafolyamatával kapcsolatos kérdésekért lásd: [a Microsoft Azure import/export szolgáltatás használata az adatok blob Storage-tárolóba történő átviteléhez](../storage/common/storage-import-export-service.md).
+* Az Azure import/export szolgáltatás munkafolyamatával kapcsolatos kérdésekért lásd: [a Microsoft Azure import/export szolgáltatás használata az adatok blob Storage-tárolóba történő átviteléhez](../import-export/storage-import-export-service.md).

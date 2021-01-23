@@ -3,12 +3,12 @@ title: Erőforrás-szolgáltatók az Azure-szolgáltatások által
 description: Felsorolja a Azure Resource Manager összes erőforrás-szolgáltatói névterét, és megjeleníti az adott névtérhez tartozó Azure-szolgáltatást.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 5e89b2b7cf7c27a501d93f63c74d81d8fb40883c
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: c319a6d06cbbcf5d36178c37207cc13f295a5897
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033544"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702853"
 ---
 # <a name="resource-providers-for-azure-services"></a>Erőforrás-szolgáltatók az Azure-szolgáltatásokhoz
 
@@ -80,7 +80,7 @@ Az előfizetéshez tartozó, **regisztráltként** megjelölt erőforrás-szolg�
 | Microsoft. DBforMariaDB | [Azure Database for MariaDB](../../mariadb/index.yml) |
 | Microsoft. DBforMySQL | [Azure Database for MySQL](../../mysql/index.yml) |
 | Microsoft. DBforPostgreSQL | [Azure Database for PostgreSQL](../../postgresql/index.yml) |
-| Microsoft. DeploymentManager | [Azure-telepítéskezelő](../templates/deployment-manager-overview.md) |
+| Microsoft. DeploymentManager | [Azure-Deployment Manager](../templates/deployment-manager-overview.md) |
 | Microsoft. DesktopVirtualization | [Windows Virtual Desktop](../../virtual-desktop/index.yml) |
 | Microsoft.Devices | [Azure IoT Hub](../../iot-hub/index.yml)<br />[Azure IoT Hub Device Provisioning Service](../../iot-dps/index.yml) |
 | Microsoft. DevOps | [Azure DevOps](/azure/devops/) |
@@ -102,7 +102,7 @@ Az előfizetéshez tartozó, **regisztráltként** megjelölt erőforrás-szolg�
 | Microsoft. HybridCompute | [Azure Arc](../../azure-arc/index.yml) |
 | Microsoft. HybridData | [StorSimple](../../storsimple/index.yml) |
 | Microsoft. HybridNetwork  | [Saját peremhálózati zónák](../../networking/edge-zones-overview.md) |
-| Microsoft. ImportExport | [Azure Import/Export](../../storage/common/storage-import-export-service.md) |
+| Microsoft. ImportExport | [Azure Import/Export](../../import-export/storage-import-export-service.md) |
 | Microsoft. bepillantások | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft. IoTCentral | [Azure IoT Central](../../iot-central/index.yml) |
 | Microsoft. IoTSpaces | [Azure Digital Twins](../../digital-twins/index.yml) |
@@ -119,7 +119,7 @@ Az előfizetéshez tartozó, **regisztráltként** megjelölt erőforrás-szolg�
 | Microsoft. ManagedIdentity | [Azure-erőforrások felügyelt identitásai](../../active-directory/managed-identities-azure-resources/index.yml) |
 | Microsoft. ManagedNetwork | A Pásti Services által felügyelt virtuális hálózatok |
 | Microsoft. ManagedServices | [Azure Lighthouse](../../lighthouse/index.yml) |
-| Microsoft. Management | [Felügyeleti csoportok](../../governance/management-groups/index.yml) |
+| Microsoft. Management | [Management Groups](../../governance/management-groups/index.yml) |
 | Microsoft. Maps | [Azure Maps](../../azure-maps/index.yml) |
 | Microsoft. Marketplace | Core |
 | Microsoft. MarketplaceApps | Core |
@@ -164,7 +164,7 @@ Az előfizetéshez tartozó, **regisztráltként** megjelölt erőforrás-szolg�
 | Microsoft. SoftwarePlan | Licenc |
 | Microsoft. Solutions | [Azure Managed Applications](../managed-applications/index.yml) |
 | Microsoft.Sql | [Azure SQL Database](../../azure-sql/database/index.yml)<br /> [Felügyelt Azure SQL-példány](../../azure-sql/managed-instance/index.yml) <br />[Azure Synapse Analytics](/azure/sql-data-warehouse/) |
-| Microsoft. SqlVirtualMachine | [SQL Server az Azure Virtual Machines](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) |
+| Microsoft. SqlVirtualMachine | [SQL Server az Azure Virtual Machines szolgáltatásban](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) |
 | Microsoft.Storage | [Storage](../../storage/index.yml) |
 | Microsoft. StorageCache | [Azure HPC Cache](../../hpc-cache/index.yml) |
 | Microsoft. StorageSync | [Storage](../../storage/index.yml) |
@@ -193,6 +193,6 @@ Az előfizetéséhez tartozó, **regisztráltként** megjelölt erőforrások sz
 > [!IMPORTANT]
 > Csak akkor regisztrálja az erőforrás-szolgáltatót, amikor készen áll a használatra. A regisztrációs lépés lehetővé teszi a legalacsonyabb jogosultságok fenntartását az előfizetésen belül. Egy rosszindulatú felhasználó nem használhat olyan erőforrás-szolgáltatót, amely nincs regisztrálva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az erőforrás-szolgáltatókkal kapcsolatos további információkért, beleértve az erőforrás-szolgáltatók regisztrálásának módját, tekintse meg az [Azure erőforrás-szolgáltatók és típusok](resource-providers-and-types.md)című témakört.

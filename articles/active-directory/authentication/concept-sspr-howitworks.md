@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5bcc6503af5f5f685ee589ed7671b4715834fef
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 496a8dba9b9ea7fb82ad9016479154d6a61cb767
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779362"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703275"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Működés: Azure AD önkiszolgáló jelszóátállítás
 
@@ -132,12 +132,12 @@ Ha mobil alkalmazást használ a jelszó-visszaállítási módszerként, péld�
 
 | Az alaphelyzetbe állításhoz szükséges módszerek száma | Eggyel | Kettővel |
 | :---: | :---: | :---: |
-| Elérhető a Mobile App szolgáltatásai | Kód | Kód vagy értesítés |
+| Elérhető a Mobile App szolgáltatásai | Code | Kód vagy értesítés |
 
 A felhasználók nem regisztrálhatják a mobileszköz regisztrációját az önkiszolgáló jelszó-visszaállításhoz való regisztráció során [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) . A felhasználók a következő címen regisztrálhatják a mobil alkalmazást: [https://aka.ms/mfasetup](https://aka.ms/mfasetup) vagy a kombinált biztonsági adatok regisztrációjában [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) .
 
 > [!IMPORTANT]
-> A hitelesítő alkalmazás nem választható ki az egyetlen hitelesítési módszerként, ha csak metódusra van szükség. Hasonlóképpen, a hitelesítő alkalmazás és csak egy további metódus nem választható ki két módszer megkövetelése esetén.
+> A hitelesítő alkalmazás nem választható ki az egyetlen hitelesítési módszerként, ha csak egy metódusra van szükség. Hasonlóképpen, a hitelesítő alkalmazás és csak egy további metódus nem választható ki két módszer megkövetelése esetén.
 >
 > A hitelesítő alkalmazást metódusként tartalmazó SSPR házirendek konfigurálásakor legalább egy további metódust ki kell választani, ha egy metódusra van szükség, és a két módszer konfigurálásakor legalább két további módszert kell kiválasztani.
 >
@@ -149,11 +149,11 @@ A felhasználók nem regisztrálhatják a mobileszköz regisztrációját az ön
 
 Ha olyan házirenddel indul, amely csak egy szükséges hitelesítési módszert tartalmaz a regisztrációhoz vagy a zárolás feloldásához, és ezt két módszerre módosítja, mi történik?
 
-| Regisztrált metódusok száma | Szükséges metódusok száma | Result |
+| Regisztrált metódusok száma | Szükséges metódusok száma | Eredmény |
 | :---: | :---: | :---: |
-| 1 vagy több | 1 | **Able** Alaphelyzetbe állítás vagy zárolás feloldása |
+| 1 vagy több | 1 |  Alaphelyzetbe állítás vagy zárolás feloldása |
 | 1 | 2 | **Nem lehet** alaphelyzetbe állítani vagy feloldani |
-| 2 vagy több | 2 | **Able** Alaphelyzetbe állítás vagy zárolás feloldása |
+| 2 vagy több | 2 |  Alaphelyzetbe állítás vagy zárolás feloldása |
 
 A rendelkezésre álló hitelesítési módszerek módosítása a felhasználók számára is problémákat okozhat. Ha megváltoztatja a felhasználó által használható hitelesítési módszerek típusait, a felhasználók véletlenül sem használhatják a SSPR, ha nem rendelkeznek a rendelkezésre álló minimális mennyiségű adattal.
 
@@ -217,7 +217,7 @@ Alapértelmezés szerint az Azure AD feloldja a fiókokat, amikor a jelszó-viss
 
 ### <a name="on-premises-active-directory-password-filters"></a>Helyszíni Active Directory jelszavak szűrői
 
-A SSPR elvégzi a rendszergazda által kezdeményezett jelszó-visszaállítás megfelelőjét Active Directoryban. Ha harmadik féltől származó jelszavas szűrőt használ az egyéni jelszavak érvényesítéséhez, és az Azure AD önkiszolgáló jelszó-visszaállítás során meg kell adni ezt a jelszót, akkor győződjön meg arról, hogy a harmadik féltől származó jelszó-szűrési megoldás a rendszergazdai jelszó alaphelyzetbe állítására van konfigurálva. Alapértelmezés szerint a [Active Directory tartományi szolgáltatások Azure ad jelszavas védelme](concept-password-ban-bad-on-premises.md) is támogatott.
+A SSPR elvégzi a rendszergazda által kezdeményezett jelszó-visszaállítás megfelelőjét Active Directoryban. Ha harmadik féltől származó jelszavas szűrőt használ az egyéni jelszavak érvényesítéséhez, és az Azure AD önkiszolgáló jelszó-visszaállítás során meg kell adni ezt a jelszót, akkor győződjön meg arról, hogy a harmadik féltől származó jelszó-szűrési megoldás a rendszergazdai jelszó alaphelyzetbe állítására van konfigurálva. Alapértelmezés szerint a [Active Directory Domain Services Azure ad jelszavas védelme](concept-password-ban-bad-on-premises.md) is támogatott.
 
 ## <a name="password-reset-for-b2b-users"></a>Jelszó alaphelyzetbe állítása B2B-felhasználók számára
 

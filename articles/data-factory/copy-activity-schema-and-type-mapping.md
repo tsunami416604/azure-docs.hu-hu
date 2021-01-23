@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
-ms.openlocfilehash: ce7c0cba4a231fbdb33679f8cdac7d57c79845f5
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: afcc7ad34807b74fa0b1ddaaa29223d8a6e25584
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968874"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702219"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>Séma-és adattípus-leképezés a másolási tevékenységben
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -185,6 +185,9 @@ Megadhatja a leképezést Data Factory szerzői felhasználói felületen:
 2. Válassza ki azt a tömböt, amelyről meg szeretné ismételni az adatok kinyerését. A rendszer automatikusan kitölti a **gyűjteményi referenciát**. Vegye figyelembe, hogy ilyen művelet esetén csak egyetlen tömb támogatott.
 
 3. Rendelje hozzá a szükséges mezőket a fogadóhoz. A Data Factory automatikusan meghatározza a hierarchikus oldalhoz tartozó JSON-útvonalakat.
+
+> [!NOTE]
+> Azon rekordok esetében, amelyeknél a gyűjteményi hivatkozásként megjelölt tömb üres, és a jelölőnégyzet be van jelölve, a rendszer kihagyja a teljes rekordot.
 
 ![Hierarchia leképezése táblázatos KEZELŐFELÜLET használatával](media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-ui.png)
 
@@ -523,7 +526,7 @@ Konfigurálja a séma-leképezési szabályt a következő másolási tevékenys
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Lásd a másolási tevékenység egyéb cikkeit:
 
 - [Másolási tevékenység – áttekintés](copy-activity-overview.md)

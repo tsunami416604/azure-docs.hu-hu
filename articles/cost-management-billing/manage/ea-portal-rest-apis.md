@@ -3,17 +3,17 @@ title: Azure Enterprise REST API-k
 description: Ez a cikk az Azure nagyvállalati regisztrációhoz használható REST API-kat ismerteti.
 author: bandersmsft
 ms.author: banders
-ms.date: 09/03/2020
+ms.date: 01/21/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: c4c99142c64278514066efa8925ed8e3f6617235
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
-ms.translationtype: HT
+ms.openlocfilehash: 1fdf64053a55eb33d80ed461c231e8c6dd84d63b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132584"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677731"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Azure Enterprise REST API-k
 
@@ -93,17 +93,9 @@ API használatakor megjelennek a válasz állapotkódjai. Az alábbi táblázat 
 
 A használati és számlázási adatfájlok 24 óránként frissülnek az aktuális számlázási hónapban. Adatkésés azonban akár három napig is előfordulhat. Ha például a használat hétfőn történt, akkor előfordulhat, hogy az adatok csütörtökig nem jelennek meg az adatfájlban.
 
-### <a name="test-enrollment-for-development"></a>Tesztregisztráció a fejlesztéshez
-
-Ha Ön olyan partner vagy fejlesztő, aki nem rendelkezik nagyvállalati Azure-regisztrációval, de hozzá szeretne férni az API-hoz, használhatja a tesztregisztrációt. A regisztráció neve _EnrollmentNumber 100_, és 2018 júniusáig találhat használati adatokat, amelyeket tesztelhet is. Ezután a következő kulccsal meghívhatja az API-t, és megtekintheti a mintaadatokat.
-
-```
-eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImpoeXA2UU9DWlZmY1pmdmhDVGR1OFdxeTJ5byJ9.eyJFbnJvbGxtZW50TnVtYmVyIjoiMTAwIiwiSWQiOiI1ZTc2ZmNiMy0xN2I4LTQ5ZDItYjdkOC0zMDU0YjUwOWY0MWYiLCJSZXBvcnRWaWV3IjoiU3lzdGVtIiwiUGFydG5lcklkIjoiIiwiRGVwYXJ0bWVudElkIjoiIiwiQWNjb3VudElkIjoiIiwiaXNzIjoiZWEubWljcm9zb2Z0YXp1cmUuY29tIiwiYXVkIjoiY2xpZW50LmVhLm1pY3Jvc29mdGF6dXJlLmNvbSIsImV4cCI6MTU4NjM5MDA2OSwibmJmIjoxNTcwNTc4ODY5fQ.lENR5pCBph6iZCVexUlN1b-j7StaILCyBewVHoILD-_fn8S2o2bHY1qUseGOkBwNlaFQfk2OZIo-jQYvnf3eP3UNrNVTCINT0APbc1RqgwSjZSxugVVHH9jnSzEjONkJaSKmi4tlidk6zkF1-uY-TPJkKxYN_9ar7BgLshF9JGXk7t8OZhxSCxDZc-smntu6ORFDl4gRZZVBKXhqOGjOAdYX5tPiGDF2Bxb68RSzh9Xyr5PXxKLx5yivZzUdo0-GFHo13V9w6a5VQM4R1w4_ro8jF8WAo3mpGZ_ovx_U5IY6zMNmi_AoA1mUyvTGotgcu94RragutoJRxAGHbNJZ0Q
-```
-
 ### <a name="azure-service-catalog"></a>Azure szolgáltatáskatalógus
 
-Az Azure-szolgáltatások listája megtalálható CSV formátumban az Azure Storage-blogon elérhető katalógusokban. A katalógus akkor hasznos, ha létre kell hoznia egy, a rendszere összes Azure-szolgáltatását tartalmazó válogatott katalógust. Az aktuális katalógus a következő címen érhető el: [https://azurecatalog.blob.core.windows.net/catalog/AzureCatalog.csv](https://azurecatalog.blob.core.windows.net/catalog/AzureCatalog.csv).
+Az Azure-szolgáltatások listája megtalálható CSV formátumban az Azure Storage-blogon elérhető katalógusokban. A katalógus akkor hasznos, ha létre kell hoznia egy, a rendszere összes Azure-szolgáltatását tartalmazó válogatott katalógust. Az aktuális katalógus a következő címen érhető el: [https://azurecatalog.blob.core.windows.net/catalog/AzureCatalog.csv](https://azurecatalog.blob.core.windows.net/catalog/AzureCatalog.csv) .
 
 ### <a name="csv-data-file-details"></a>CSV-adatfájl részletei
 
@@ -122,21 +114,21 @@ A JSON formátum a CSV-jelentésből jön létre. Ennek következtében a formá
 | SubscriptionGuid | MOCPSubscriptionGuid | SubscriptionGuid |   |
 | Subscription Name | SubscriptionName | SubscriptionName |   |
 | Dátum | Dátum | Dátum | Azt a dátumot jeleníti meg, amikor a szolgáltatáskatalógus jelentése futott. A formátum egy időbélyeg nélküli dátumsztring. |
-| Month | Month | Month |   |
-| Day | Day | Day |   |
-| Year | Year | Year |   |
+| Hónap | Hónap | Hónap |   |
+| Nap | Nap | Nap |   |
+| Év | Év | Év |   |
 | Product | BillableItemName | Product |   |
-| Meter ID (Mérési azonosító) | ResourceGUID | MeterId |   |
-| Meter Category (Mérési kategória) | Szolgáltatás | MeterCategory | A szolgáltatások keresésében segít. Olyan szolgáltatásokhoz használható, amelyeknek több szolgáltatástípusa van. Például Virtual Machines. |
-| Meter Sub-Category (Mérési alkategória) | ServiceType | MeterSubCategory | Második szintű információkat nyújt a szolgáltatásokról. Például A1 méretű VM (nem Windows).  |
-| Meter Region (Mérési régió) | ServiceRegion | MeterRegion | Harmadik szintű információ a szolgáltatásokhoz. Segít megtalálni a ResourceGUID régiókörnyezetét. |
-| Meter Name (Mérés neve) | ServiceResource | MeterName | A szolgáltatás neve. |
-| Consumed Quantity (Felhasznált mennyiség) | ResourceQtyConsumed | ConsumedQuantity |   |
+| Meter ID | ResourceGUID | MeterId |   |
+| Meter Category | Szolgáltatás | MeterCategory | A szolgáltatások keresésében segít. Olyan szolgáltatásokhoz használható, amelyeknek több szolgáltatástípusa van. Például Virtual Machines. |
+| Meter Sub-Category | ServiceType | MeterSubCategory | Második szintű információkat nyújt a szolgáltatásokról. Például A1 méretű VM (nem Windows).  |
+| Meter Region | ServiceRegion | MeterRegion | Harmadik szintű információ a szolgáltatásokhoz. Segít megtalálni a ResourceGUID régiókörnyezetét. |
+| Meter Name | ServiceResource | MeterName | A szolgáltatás neve. |
+| Consumed Quantity | ResourceQtyConsumed | ConsumedQuantity |   |
 | ResourceRate | ResourceRate | ResourceRate |   |
 | ExtendedCost | ExtendedCost | ExtendedCost |   |
-| Resource Location (Erőforrás helye) | ServiceSubRegion | ResourceLocation |   |
-| Consumed Service (Használt szolgáltatás) | ServiceInfo | ConsumedService |   |
-| Instance ID (Példányazonosító) | Összetevő | InstanceId |   |
+| Resource Location | ServiceSubRegion | ResourceLocation |   |
+| Consumed Service | ServiceInfo | ConsumedService |   |
+| Instance ID | Összetevő | InstanceId |   |
 | ServiceInfo1 | ServiceInfo1 | ServiceInfo1 |   |
 | ServiceInfo2 | ServiceInfo2 | ServiceInfo2 |   |
 | AdditionalInfo | AdditionalInfo | AdditionalInfo |   |
@@ -144,7 +136,7 @@ A JSON formátum a CSV-jelentésből jön létre. Ennek következtében a formá
 | Store Service Identifier   | OrderNumber | StoreServiceIdentifier   |   |
 | Department Name | DepartmentName | DepartmentName |   |
 | Cost Center | CostCenter | CostCenter |   |
-| Mértékegység | UnitOfMeasure | UnitOfMeasure | Példaértékek: Óra, GB, Események, Leküldések, Egység, Egységórák, MB, Napi egységek |
+| Mértékegység | UnitOfMeasure | UnitOfMeasure | Értékek: óra, GB, események, leküldések, egység, Egységórák, MB, napi egység |
 | ResourceGroup | ResourceGroup | ResourceGroup |   |
 
 #### <a name="azure-marketplace-report"></a>Azure Marketplace-jelentés
@@ -156,19 +148,19 @@ A JSON formátum a CSV-jelentésből jön létre. Ennek következtében a formá
 | SubscriptionId | SubscriptionId | SubscriptionId |
 | SubscriptionGuid | SubscriptionGuid | SubscriptionGuid |
 | Subscription Name | SubscriptionName |  SubscriptionName |
-| Dátum | BillingCycle |  Dátum (Csak dátumsztring. Nincs időbélyeg)
-| Month | Month |  Month |
-| Day | Day |  Day |
-| Year | Year |  Year |
-| Meter ID (Mérési azonosító) | MeterResourceId |  MeterId |
+| Date | BillingCycle |  Dátum (Csak dátumsztring. Nincs időbélyeg)
+| Hónap | Hónap |  Hónap |
+| Nap | Nap |  Nap |
+| Év | Év |  Év |
+| Meter ID | MeterResourceId |  MeterId |
 | Publisher Name | PublisherFriendlyName |  Közzétevő neve |
 | Offer Name | OfferFriendlyName |  OfferName |
 | Plan Name | PlanFriendlyName |  PlanName |
-| Consumed Quantity (Felhasznált mennyiség) | BilledQty |  ConsumedQuantity |
+| Consumed Quantity | BilledQty |  ConsumedQuantity |
 | ResourceRate | ResourceRate | ResourceRate |
 | ExtendedCost | ExtendedCost | ExtendedCost |
 | Mértékegység | UnitOfMeasure | UnitOfMeasure |
-| Instance ID (Példányazonosító) | InstanceId | InstanceId |
+| Instance ID | InstanceId | InstanceId |
 | Additional Info (További információ) | AdditionalInfo | AdditionalInfo |
 | Címkék | Címkék | Címkék |
 | Order Number | OrderNumber | OrderNumber |

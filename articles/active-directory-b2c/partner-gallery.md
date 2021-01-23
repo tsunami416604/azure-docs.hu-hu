@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9aca01bae7911d2b6234d48bedc14b116e911a79
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 6af68f51e76f60c807be2008ae61e27879ebbb11
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675377"
+ms.locfileid: "98703207"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>ISV-partnerek Azure Active Directory B2C
 
@@ -40,7 +40,6 @@ A Microsoft partnerei a következő ISV-ket biztosítják a személyazonosság e
 |![Képernyőkép egy Experian-emblémáról.](./media/partner-gallery/experian-logo.png) | A [Experian](./partner-experian.md) egy személyazonosság-ellenőrző és ellenőrző szolgáltató, amely a felhasználói attribútumok alapján kockázatértékeléseket végez a csalások megelőzése érdekében. |
 |![Képernyőkép egy IDology-emblémáról.](./media/partner-gallery/idology-logo.png) | A [IDology](./partner-idology.md) egy azonosító-ellenőrzési megoldásokkal, csalás-megelőzési megoldásokkal, megfelelőségi megoldásokkal és egyebekkel rendelkező személyazonosság-ellenőrzési és-ellenőrző szolgáltató.|
 |![Képernyőkép egy Jumio-emblémáról.](./media/partner-gallery/jumio-logo.png) | A [Jumio](./partner-jumio.md) egy azonosító-ellenőrzési szolgáltatás, amely lehetővé teszi a valós idejű automatizált azonosítók ellenőrzését, így biztosítva az ügyféladatok védelmét. |
-|![Képernyőfelvétel egy kulcsnélküli emblémáról.](./media/partner-gallery/keyless-logo.png) | A [kulcsnélküli](./partner-keyless.md) azonosító olyan szolgáltatás, amely arc biometrikus vizsgálat formájában biztosítja a hitelesítést, és kiküszöböli a csalások, az adathalászat és a hitelesítő adatok újrafelhasználását.
 | ![Képernyőkép egy LexisNexis-emblémáról.](./media/partner-gallery/lexisnexis-logo.png) | A [LexisNexis](./partner-lexisnexis.md) egy profilkészítési és identitás-ellenőrzési szolgáltató, amely ellenőrzi a felhasználó azonosítását, és átfogó kockázatértékelést biztosít a felhasználó eszköze alapján. |
 | ![Képernyőkép egy Onfido-emblémáról](./media/partner-gallery/onfido-logo.png) | A [Onfido](./partner-onfido.md) egy dokumentum-azonosító és egy arc biometria-ellenőrzési megoldás, amely lehetővé teszi a vállalatok számára, hogy valós időben tudják kielégíteni *az ügyfél* és az identitás követelményeit.  |
 
@@ -52,6 +51,7 @@ Microsoft-partnerek a következő ISV-val az MFA-és jelszó-alapú hitelesíté
 |:-------------------------|:--------------|
 | ![Képernyőkép egy hypr-emblémáról](./media/partner-gallery/hypr-logo.png) | A [Hypr](./partner-hypr.md) egy jelszóval nem kompatibilis hitelesítésszolgáltató, amely a nyilvános kulcsú titkosítással rendelkező jelszavakat a csalások, az adathalászat és a hitelesítő adatok újrafelhasználásának megszüntetésével váltja fel. |
 | ![Képernyőkép egy itsme-emblémáról](./media/partner-gallery/itsme-logo.png) | a [itsme](./partner-itsme.md) egy elektronikus azonosítási, hitelesítési és megbízhatósági szolgáltatás (eiDAS) által kompatibilis digitális azonosító megoldás, amely lehetővé teszi a felhasználók számára, hogy a kártyák olvasói, jelszavas, kétfaktoros hitelesítés és több PIN-kód nélkül is biztonságosan bejelentkezzenek. |
+|![Képernyőfelvétel egy kulcsnélküli emblémáról.](./media/partner-gallery/keyless-logo.png) | A [kulcsnélküli](./partner-keyless.md) szolgáltatás olyan jelszó nélküli hitelesítési szolgáltató, amely egy arc biometrikus vizsgálat formájában biztosítja a hitelesítést, kiküszöbölve a csalások, az adathalászat és a hitelesítő adatok újbóli használatát.
 | ![A Nevis emblémájának képernyőképe](./media/partner-gallery/nevis-logo.png) | A [Nevis](./partner-nevis.md) lehetővé teszi a jelszó-alapú hitelesítést, és mobil-első, teljesen márkás végfelhasználói élményt nyújt a Nevis hozzáférési alkalmazással az erős ügyfél-hitelesítéshez és a PSD2 tranzakciós követelményeinek teljesítéséhez. |
 | ![Képernyőkép egy trusona-emblémáról](./media/partner-gallery/trusona-logo.png) | A [Trusona](./partner-trusona.md) -integráció segítségével biztonságosan bejelentkezhet, és engedélyezheti a jelszó nélküli hitelesítést, az MFA-t és a digitális licencek vizsgálatát. |
 | ![Képernyőkép egy twilio-emblémáról.](./media/partner-gallery/twilio-logo.png) | A [Twilio ellenőrzi](./partner-twilio.md) , hogy az alkalmazás több megoldással teszi lehetővé az MFA SMS egyszeri jelszavas (OTP), az időalapú egyszeri jelszó (TOTP) és a leküldéses értesítések használatát, valamint a PSD2 vonatkozó SCA-követelmények betartását. |
@@ -83,6 +83,6 @@ Microsoft-partnerek a következő biztonsági ISV-val.
 
 - [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](./custom-policy-get-started.md?tabs=applications)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Válasszon ki egy partnert az említett táblázatokban, és Ismerje meg, hogyan integrálhatja megoldását Azure AD B2C használatával.

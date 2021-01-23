@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/17/2018
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: 5aa64671cddf2542972ac753c0132a5abebaebfb
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8ed57cd39580474925e781f3ec8fb05a2299a937
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "67179333"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98701644"
 ---
 A lemezek szállítása után térjen vissza az **Importálás/exportálás** lapra a Azure Portal. 
 
@@ -23,7 +23,7 @@ A lemezek szállítása után térjen vissza az **Importálás/exportálás** la
 A nyomkövetési szám frissítéséhez hajtsa végre a következő lépéseket.
  
 1. Jelölje ki, majd kattintson a feladatokra.
-2. **A meghajtók szállítása után kattintson a feladatok állapotának frissítése és a nyomkövetési adatok**lehetőségre. 
-3. Jelölje be a **megjelölés leszállítottként**jelölőnégyzetet.
+2. **A meghajtók szállítása után kattintson a feladatok állapotának frissítése és a nyomkövetési adatok** lehetőségre. 
+3. Jelölje be a **megjelölés leszállítottként** jelölőnégyzetet.
 4. Adja meg a **Szállítói** és a **követési számot**.
-5. Kövesse nyomon a feladatok előrehaladását a portál irányítópultján. Az egyes feladatok állapotának leírásához lépjen a [feladatok állapotának megtekintése](../articles/storage/common/storage-import-export-view-drive-status.md)elemre.
+5. Kövesse nyomon a feladatok előrehaladását a portál irányítópultján. Az egyes feladatok állapotának leírásához lépjen a [feladatok állapotának megtekintése](../articles/import-export/storage-import-export-view-drive-status.md)elemre.

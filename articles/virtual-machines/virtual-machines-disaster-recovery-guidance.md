@@ -1,19 +1,21 @@
 ---
-title: Vész-helyreállítási forgatókönyvek
+title: Azure-szolgáltatásbeli fennakadások
 description: Ismerje meg, mi a teendő abban az esetben, ha egy Azure-szolgáltatás megszakad az Azure-beli virtuális gépeken.
 author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 05/31/2017
 ms.author: cynthn
-ms.openlocfilehash: 0d659f0bc65d3dbe7cbb656d505275a52a9742eb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.reviewer: ''
+ms.openlocfilehash: 5c6036a65fa449986f5c085202fefa752e3a414a
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976623"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98701033"
 ---
 # <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>Mi a teendő, ha az Azure-szolgáltatás megszakadásának hatására az Azure virtuális gépek
+
 A Microsoftnál keményen dolgozunk, hogy a szolgáltatások mindig elérhetők legyenek, amikor szüksége van rájuk. A szabályozáson kívüli erők időnként a nem tervezett szolgáltatások megszakadását okozó módokat érintik.
 
 A Microsoft szolgáltatói szerződés (SLA) szolgáltatást biztosít a szolgáltatásai számára az üzemidő és a kapcsolat iránti elkötelezettségként. Az egyes Azure-szolgáltatásokra vonatkozó SLA-t az [Azure-szolgáltatói szerződésekben](https://azure.microsoft.com/support/legal/sla/)találhatja meg.
@@ -39,7 +41,7 @@ Ez a legjobb megoldás, ha nem állított be Azure Site Recovery, a megszakadás
 >
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure-beli virtuális gépeken futó alkalmazások védelmének](../site-recovery/azure-to-azure-quickstart.md) megkezdése Azure site Recovery használatával
 
