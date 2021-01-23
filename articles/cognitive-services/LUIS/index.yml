@@ -12,12 +12,12 @@ metadata:
   title: A Language Understanding (LUIS) dokumentációja
   titleSuffix: Azure Cognitive Services
   description: A Language Understanding (LUIS) szolgáltatás lehetővé teszi az alkalmazás számára, hogy megértse egy személy saját szavakkal megfogalmazott utasításait. A LUIS gépi tanulást használ, lehetővé téve a fejlesztők számára, hogy olyan alkalmazásokat hozzanak létre, amelyek képesek a felhasználók természetes nyelvi bevitelét fogadni és megérteni.
-  ms.openlocfilehash: ff928f1879f8cfd356fa020ff6afaa68b72f63c5
-  ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
-  ms.translationtype: HT
+  ms.openlocfilehash: ca9209295d8265eeac5545091e4d4c5c9678e994
+  ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+  ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 11/21/2020
-  ms.locfileid: "95019381"
+  ms.lasthandoff: 01/23/2021
+  ms.locfileid: "98738067"
 landingContent:
 - title: A Language Understanding (LUIS) bemutatása
   linkLists:
@@ -60,9 +60,9 @@ landingContent:
     - text: 'Portál: Új LUIS-alkalmazás létrehozása'
       url: get-started-portal-build-app.md
     - text: A C# SDK használata
-      url: azure-sdk-quickstart.md?pivots=programming-language-csharp
+      url: ./client-libraries-rest-api.md?pivots=rest-api
     - text: A Python SDK használata
-      url: azure-sdk-quickstart.md?pivots=programming-language-python
+      url: ./client-libraries-rest-api.md?pivots=rest-api
   - linkListType: how-to-guide
     links:
     - text: Új LUIS-alkalmazás létrehozása
@@ -82,13 +82,13 @@ landingContent:
     - text: Interaktív tesztelés
       url: luis-concept-test.md
     - text: Kötegelt tesztelés
-      url: luis-concept-batch-test.md
+      url: ./luis-how-to-batch-test.md
   - linkListType: quickstart
     links:
     - text: 'Portál: Alkalmazás üzembe helyezése előrejelzési végponton'
       url: get-started-portal-deploy-app.md
     - text: Az SDK használata
-      url: azure-sdk-quickstart.md
+      url: ./client-libraries-rest-api.md?pivots=rest-api
   - linkListType: how-to-guide
     links:
     - text: Az alkalmazás verziója
@@ -106,7 +106,7 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: Az SDK használata
-      url: azure-sdk-quickstart.md
+      url: ./client-libraries-rest-api.md?pivots=rest-api
   - linkListType: quickstart
     links:
     - text: A C# és a REST használatával

@@ -2,23 +2,23 @@
 title: Egyéni szerepkörök létrehozása az Azure AD szerepköralapú hozzáférés-vezérlésében | Microsoft Docs
 description: Egyéni Azure AD-szerepköröket hozhat létre és rendelhet hozzá erőforrás-hatókörrel Azure Active Directory erőforrásokhoz.
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
 ms.date: 01/05/2021
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0adb88cd49dd3de8649703ed45821c68a31776e
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: ba8ecf5442ea3da6db02335520eef3856ea48c62
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914467"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740159"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Egyéni szerepkör létrehozása és társítása Azure Active Directory
 
@@ -188,7 +188,7 @@ A beépített szerepkörökhöz hasonlóan az egyéni szerepkörök alapértelme
 1. Válassza ki a szerepkört a **hozzárendelések** lap megnyitásához.
 1. Felhasználó hozzáadásához válassza a **hozzárendelés hozzáadása** lehetőséget. A felhasználó csak a kiválasztott alkalmazás regisztrációja után kap engedélyeket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Nyugodtan ossza meg velünk az [Azure ad rendszergazdai szerepkörökkel foglalkozó fórumát](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
 - A szerepkörökkel és a rendszergazdai szerepkör-hozzárendeléssel kapcsolatos további információkért lásd: [rendszergazdai szerepkörök hozzárendelése](permissions-reference.md).

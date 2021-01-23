@@ -3,12 +3,12 @@ title: Csomópontok és készletek a Azure Batchban
 description: Ismerje meg a számítási csomópontokat és készleteket, valamint azt, hogyan használják őket egy Azure Batch munkafolyamatban fejlesztési szempontból.
 ms.topic: conceptual
 ms.date: 11/20/2020
-ms.openlocfilehash: c229381ba1019a5a40a4ca6b7db88f534f57de29
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: e55be57968eae2a371a21b214dbd15921641e31f
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934645"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741774"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Csomópontok és készletek a Azure Batchban
 
@@ -114,7 +114,7 @@ Az alacsony prioritású és a dedikált csomópontok díjszabásáról a [Batch
 
 ## <a name="node-size"></a>Csomópont mérete
 
-Azure Batch-készlet létrehozásakor az Azure-ban elérhető szinte összes virtuálisgép-család és -méret közül választhat. Az Azure számos különböző virtuálisgép-méretet nyújt a különböző számítási feladatokhoz, beleértve a speciális [HPC-](../virtual-machines/sizes-hpc.md) vagy [GPU-kompatibilis](../virtual-machines/sizes-gpu.md) virtuálisgép-méreteket. 
+Azure Batch-készlet létrehozásakor az Azure-ban elérhető szinte összes virtuálisgép-család és -méret közül választhat. Az Azure számos különböző virtuálisgép-méretet nyújt a különböző számítási feladatokhoz, beleértve a speciális [HPC-](../virtual-machines/sizes-hpc.md) vagy [GPU-kompatibilis](../virtual-machines/sizes-gpu.md) virtuálisgép-méreteket. Vegye figyelembe, hogy a csomópontok méretei csak a készlet létrehozásakor választhatók ki. Más szóval a készlet létrehozása után a csomópont mérete nem módosítható.
 
 További információ: [Számítási csomópontok virtuálisgép-méretének kiválasztása Azure Batch-készletben](batch-pool-vm-sizes.md).
 

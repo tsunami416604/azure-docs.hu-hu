@@ -4,16 +4,16 @@ description: Ismerje meg, hogyan hozhat létre a OpenShift-t futtató Azure Red 
 ms.service: container-service
 ms.topic: article
 ms.date: 03/12/2020
-author: georgewallace
-ms.author: gwallace
+author: sakthi-vetrivel
+ms.author: suvetriv
 keywords: ARO, openshift, az ARO, Red Hat, CLI
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3864d48399f00d5cfbdfa0a94939be0d88a73322
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 6daeb617e7d1922427fe1889b41512a61c5067cf
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92928059"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740924"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>Azure Red Hat OpenShift 4 privát fürt létrehozása
 
@@ -23,7 +23,7 @@ Ebben a cikkben előkészíti a környezetet a OpenShift 4 rendszerű Azure Red 
 > * Az előfeltételek beállítása és a szükséges virtuális hálózatok és alhálózatok létrehozása
 > * Fürt üzembe helyezése privát API-kiszolgálói végponttal és privát bejövő adatkezelővel
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.6.0 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli?view=azure-cli-latest).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.6.0 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -192,7 +192,7 @@ az aro create \
 A parancs végrehajtása után az `az aro create` általában körülbelül 35 percet vesz igénybe a fürt létrehozásakor.
 
 >[!IMPORTANT]
-> Ha úgy dönt, hogy egyéni tartományt ad meg, például **foo.example.com** , a OpenShift-konzol a beépített tartomány helyett egy URL-címen lesz elérhető `https://console-openshift-console.apps.foo.example.com` `https://console-openshift-console.apps.<random>.<location>.aroapp.io` .
+> Ha úgy dönt, hogy egyéni tartományt ad meg, például **foo.example.com**, a OpenShift-konzol a beépített tartomány helyett egy URL-címen lesz elérhető `https://console-openshift-console.apps.foo.example.com` `https://console-openshift-console.apps.<random>.<location>.aroapp.io` .
 >
 > Alapértelmezés szerint a OpenShift önaláírt tanúsítványokat használ a által létrehozott összes útvonalhoz `*.apps.<random>.<location>.aroapp.io` .  Ha az egyéni DNS lehetőséget választja, akkor a fürthöz való csatlakozás után a OpenShift dokumentációjában [be kell állítania egy egyéni hitelesítésszolgáltatót](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html) az API-kiszolgáló bejövő vezérlője és [Egyéni hitelesítésszolgáltatója](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html)számára.
 
@@ -233,9 +233,9 @@ Indítsa el a konzol URL-címét egy böngészőben, és jelentkezzen be a `kube
 
 ## <a name="install-the-openshift-cli"></a>A OpenShift parancssori felületének telepítése
 
-Ha bejelentkezett a OpenShift webkonzolba, kattintson a következőre **?** a jobb felső sarokban, majd a **parancssori eszközök menüpontban** . Töltse le a számítógépének megfelelő kiadást.
+Ha bejelentkezett a OpenShift webkonzolba, kattintson a következőre **?** a jobb felső sarokban, majd a **parancssori eszközök menüpontban**. Töltse le a számítógépének megfelelő kiadást.
 
-![Azure Red Hat OpenShift bejelentkezési képernyő](media/aro4-download-cli.png)
+![A kép az Azure Red Hat OpenShift bejelentkezési képernyőjét mutatja](media/aro4-download-cli.png)
 
 A parancssori felület legújabb kiadását is letöltheti a gépre <https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/> .
 
@@ -256,7 +256,7 @@ Jelentkezzen be a OpenShift-fürt API-kiszolgálójára a következő parancs ha
 oc login $apiServer -u kubeadmin -p <kubeadmin password>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben egy, a OpenShift 4-es verzióját futtató Azure Red Hat OpenShift-fürtöt telepítettünk. Megtanulta végrehajtani az alábbi műveleteket:
 

@@ -1,27 +1,25 @@
 ---
-title: A Cloud Service-szerepkörök újrahasznosításának gyakori okai | Microsoft Docs
+title: A Cloud Service (klasszikus) szerepkörök újrahasznosításának gyakori okai | Microsoft Docs
 description: A hirtelen újrahasznosítható felhőalapú szolgáltatási szerepkör jelentős állásidőt eredményezhet. Íme néhány gyakori probléma, amely a szerepkörök újrahasznosítását okozza, ami segíthet az állásidő csökkentésében.
-services: cloud-services
-documentationcenter: ''
-author: simonxjx
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 533930d1-8035-4402-b16a-cf887b2c4f85
+ms.topic: article
 ms.service: cloud-services
-ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: tbd
-ms.date: 06/15/2018
-ms.author: v-six
-ms.openlocfilehash: 0484eb919a9de11b64dcc3334c5a9a942d875ca6
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 9610b32207f8367b9415c0881e49b54e24c49ad7
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075127"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741162"
 ---
-# <a name="common-issues-that-cause-roles-to-recycle"></a>Gyakori hibák, melyek a szerepkörök újrahasznosítását okozzák
+# <a name="common-issues-that-cause-azure-cloud-service-classic-roles-to-recycle"></a>Az Azure Cloud Service (klasszikus) szerepkör újrahasznosítását okozó gyakori problémák
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
+
 Ez a cikk a telepítési problémák gyakori okait ismerteti, és hibaelhárítási tippeket nyújt a problémák megoldásához. Annak jelzése, hogy az alkalmazással kapcsolatban probléma merült fel, ha a szerepkör-példány nem indul el, vagy az inicializálás, a foglalt és a leállítási állapotok között ciklust jelez.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
@@ -62,7 +60,7 @@ DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
 ## <a name="exported-certificate-does-not-include-private-key"></a>Az exportált tanúsítvány nem tartalmaz titkos kulcsot.
 Ha webes szerepkört szeretne futtatni a TLS alatt, győződjön meg arról, hogy az exportált felügyeleti tanúsítvány tartalmazza a titkos kulcsot. Ha a *Windows Tanúsítványkezelőt* használja a tanúsítvány exportálásához, akkor ügyeljen arra, hogy a **titkos kulcs exportálása** lehetőségnél válassza az **Igen** lehetőséget. A tanúsítványt PFX formátumban kell exportálni, amely az egyetlen jelenleg támogatott formátum.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További [hibaelhárítási cikkek](../index.yml?product=cloud-services&tag=top-support-issue) a Cloud Services szolgáltatáshoz.
 
 További szerepkör-újrahasznosítási forgatókönyvek megtekintése a [Kevin Williamson blog-sorozatában](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data).
@@ -70,4 +68,4 @@ További szerepkör-újrahasznosítási forgatókönyvek megtekintése a [Kevin 
 [RoleEntryPoint]: /previous-versions/azure/reference/ee758619(v=azure.100)
 [OnStart]: /previous-versions/azure/reference/ee772851(v=azure.100)
 [OnStop]: /previous-versions/azure/reference/ee772844(v=azure.100)
-[Futtassa]: /previous-versions/azure/reference/ee772746(v=azure.100)
+[Futtatás]: /previous-versions/azure/reference/ee772746(v=azure.100)

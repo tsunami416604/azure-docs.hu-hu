@@ -5,16 +5,16 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/11/2021
+ms.date: 01/22/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 4abf8e3411860abbff91b0b7cf2774d2692b0f80
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 626e626cbd8fa86bd0366516cbaf5a54789f3988
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108432"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741043"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlési listák (ACL-ek) rekurzív beállítása Azure Data Lake Storage Gen2
 
@@ -286,20 +286,7 @@ Ez a példa egy **DataLakeServiceClient** -példányt hoz létre egy ügyfél-az
 |[Storage-blobadatok tulajdonosa](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)|A fiókban lévő összes könyvtár és fájl.|
 |[Storage-blobadatok közreműködője](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)|Csak a rendszerbiztonsági tag tulajdonában lévő könyvtárak és fájlok.|
 
-```python
-def initialize_storage_account_ad(storage_account_name, client_id, client_secret, tenant_id):
-    
-    try:  
-        global service_client
-
-        credential = ClientSecretCredential(tenant_id, client_id, client_secret)
-
-        service_client = DataLakeServiceClient(account_url="{}://{}.dfs.core.windows.net".format(
-            "https", storage_account_name), credential=credential)
-    
-    except Exception as e:
-        print(e)
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_AuthorizeWithAAD":::
 
 > [!NOTE]
 > További példákért tekintse meg az [Azure Identity ügyféloldali kódtárat a Python](https://pypi.org/project/azure-identity/) dokumentációjában.
@@ -310,16 +297,7 @@ Ez a legegyszerűbb módszer a fiókhoz való kapcsolódásra.
 
 Ez a példa egy **DataLakeServiceClient** -példányt hoz létre a fiók kulcsa alapján.
 
-```python
-try:  
-    global service_client
-        
-    service_client = DataLakeServiceClient(account_url="{}://{}.dfs.core.windows.net".format(
-        "https", storage_account_name), credential=storage_account_key)
-    
-except Exception as e:
-    print(e)
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_AuthorizeWithKey":::
  
 - Cserélje le a `storage_account_name` helyőrző értékét a Storage-fiók nevére.
 
@@ -407,24 +385,7 @@ Ez a metódus egy nevű logikai paramétert fogad `is_default_scope` el, amely m
 
 Az ACL bejegyzései az olvasási, írási és végrehajtási engedélyeket biztosítanak a tulajdonosnak a tulajdonos csoport számára, és csak olvasási és végrehajtási engedélyeket biztosítanak, és minden más felhasználónak nincs hozzáférése. Ebben a példában az utolsó ACL-bejegyzés egy adott felhasználót ad a (z) "" XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX "objektumhoz olvasási és végrehajtási engedélyekkel. Ezek a bejegyzések az olvasási, írási és végrehajtási engedélyeket adják meg a tulajdonos számára, és csak olvasási és végrehajtási engedélyeket biztosítanak a tulajdonos csoportnak, és minden más felhasználónak nincs hozzáférése. Ebben a példában az utolsó ACL-bejegyzés egy adott felhasználót ad a (z) "" XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX "objektumhoz olvasási és végrehajtási engedélyekkel.
 
-```python
-def set_permission_recursively(is_default_scope):
-    
-    try:
-        file_system_client = service_client.get_file_system_client(file_system="my-container")
-
-        directory_client = file_system_client.get_directory_client("my-parent-directory")
-              
-        acl = 'user::rwx,group::rwx,other::rwx,user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:r--'   
-
-        if is_default_scope:
-           acl = 'default:user::rwx,default:group::rwx,default:other::rwx,default:user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:r--'
-
-        directory_client.set_access_control_recursive(acl=acl)
-        
-    except Exception as e:
-     print(e)
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/ACL_datalake.py" id="Snippet_SetACLRecursively":::
 
 Ha egy köteg méretének megadásával szeretné megtekinteni, hogy a rendszer rekurzív módon dolgozza fel az ACL-eket a kötegekben, tekintse meg a Python- [mintát](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control_recursive.py).
 
@@ -503,28 +464,7 @@ Ez a példa egy írási engedéllyel rendelkező ACL-bejegyzést frissít.
 
 Ez a példa egy nevű könyvtár ACL-listáját állítja be `my-parent-directory` . Ez a metódus egy nevű logikai paramétert fogad `is_default_scope` el, amely megadja, hogy frissíteni kell-e az alapértelmezett ACL-t. Ha ez a paraméter `True` , a frissített ACL-bejegyzés a karakterlánc előtt szerepel `default:` .  
 
-```python
-def update_permission_recursively(is_default_scope):
-    
-    try:
-        file_system_client = service_client.get_file_system_client(file_system="my-container")
-
-        directory_client = file_system_client.get_directory_client("my-parent-directory")
-
-        acl = 'user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:rwx'   
-
-        if is_default_scope:
-           acl = 'default:user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:rwx'
-
-        directory_client.update_access_control_recursive(acl=acl)
-
-        acl_props = directory_client.get_access_control()
-        
-        print(acl_props['permissions'])
-
-    except Exception as e:
-     print(e)
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/ACL_datalake.py" id="Snippet_UpdateACLsRecursively":::
 
 Ha egy köteg méretének megadásával szeretné megtekinteni, hogy a rendszer rekurzív módon dolgozza fel az ACL-eket a kötegekben, tekintse meg a Python- [mintát](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control_recursive.py).
 
@@ -670,26 +610,7 @@ Ez a példa egy folytatási tokent ad vissza egy hiba esetén. Az alkalmazás a 
 
 Ez a példa egy folytatási tokent ad vissza egy hiba esetén. Az alkalmazás a hiba megoldását követően újra meghívhatja ezt a metódust, és a folytatási tokent adja át. Ha ezt a példát a rendszer első alkalommal hívja meg, akkor az alkalmazás a ``None`` folytatási jogkivonat paraméter értékét átadja. 
 
-```python
-def resume_set_acl_recursive(continuation_token):
-    
-    try:
-        file_system_client = service_client.get_file_system_client(file_system="my-container")
-
-        directory_client = file_system_client.get_directory_client("my-parent-directory")
-              
-        acl = 'user::rwx,group::rwx,other::rwx,user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:r-x'
-
-        acl_change_result = directory_client.set_access_control_recursive(acl=acl, continuation=continuation_token)
-
-        continuation_token = acl_change_result.continuation
-
-        return continuation_token
-        
-    except Exception as e:
-     print(e) 
-     return continuation_token
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/ACL_datalake.py" id="Snippet_ResumeContinuationToken":::
 
 Ha egy köteg méretének megadásával szeretné megtekinteni, hogy a rendszer rekurzív módon dolgozza fel az ACL-eket a kötegekben, tekintse meg a Python- [mintát](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control_recursive.py).
 
@@ -745,31 +666,13 @@ Annak érdekében, hogy a folyamat befejeződjön, ne adjon meg folytatási jogk
 
 Ez a példa az ACL-bejegyzéseket rekurzív módon állítja be. Ha ez a kód egy engedélyezési hibát észlel, akkor a hibát rögzíti, és folytatja a végrehajtást. Ez a példa a hibák számát jeleníti meg a konzolon. 
 
-```python
-def continue_on_failure():
-    
-    try:
-        file_system_client = service_client.get_file_system_client(file_system="my-container")
-
-        directory_client = file_system_client.get_directory_client("my-parent-directory")
-              
-        acl = 'user::rwx,group::rwx,other::rwx,user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:r--'
-
-        acl_change_result = directory_client.set_access_control_recursive(acl=acl)
-
-        print("Summary: {} directories and {} files were updated successfully, {} failures were counted."
-          .format(acl_change_result.counters.directories_successful, acl_change_result.counters.files_successful,
-                  acl_change_result.counters.failure_count))
-        
-    except Exception as e:
-     print(e)
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/ACL_datalake.py" id="Snippet_ContinueOnFailure":::
 
 Ha egy köteg méretének megadásával szeretné megtekinteni, hogy a rendszer rekurzív módon dolgozza fel az ACL-eket a kötegekben, tekintse meg a Python- [mintát](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control_recursive.py).
 
 ---
 
-## <a name="resources"></a>Források
+## <a name="resources"></a>További források
 
 Ez a szakasz a kódtárak és a kód mintáinak hivatkozásait tartalmazza.
 

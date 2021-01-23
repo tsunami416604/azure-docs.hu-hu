@@ -1,8 +1,8 @@
-- name: Cloud Services – dokumentáció
+- name: Cloud Services (klasszikus) dokumentáció
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Mi az a Cloud Services?
+    - name: Mi az Cloud Services (klasszikus)?
       href: cloud-services-choose-me.md
     - name: Felhőszolgáltatás konfigurációs fájljai és csomagja
       href: cloud-services-model-and-package.md

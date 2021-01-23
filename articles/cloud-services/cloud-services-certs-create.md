@@ -1,21 +1,25 @@
 ---
-title: Cloud Services és felügyeleti tanúsítványok | Microsoft Docs
+title: Cloud Services (klasszikus) és felügyeleti tanúsítványok | Microsoft Docs
 description: Tudnivalók a Cloud Services-tanúsítványok létrehozásáról és üzembe helyezéséről, valamint az Azure-beli felügyeleti API-k hitelesítéséről.
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 04/19/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 8650b8670c61cab15b26163dd5108145b8509434
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: c73f9812f344eecf4e51f43405b48693ddfa191b
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072424"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98739734"
 ---
-# <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services – tanúsítványok áttekintése
+# <a name="certificates-overview-for-azure-cloud-services-classic"></a>Tanúsítványok áttekintése az Azure Cloud Services (klasszikus)
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
+
 A tanúsítványok az Azure for Cloud Services ([szolgáltatás-tanúsítványok](#what-are-service-certificates)) és a felügyeleti API ([felügyeleti tanúsítványok](#what-are-management-certificates)) használatával történő hitelesítéshez használatosak. Ez a témakör általános áttekintést nyújt mindkét tanúsítvány típusáról, valamint arról, hogyan [hozhatja létre](#create) és helyezheti üzembe őket az Azure-ban.
 
 Az Azure-ban használt tanúsítványok x. 509 v3 tanúsítványok, és egy másik megbízható tanúsítvány alá is vonhatók, vagy önaláírtak. Az önaláírt tanúsítványt a saját létrehozója írja alá, ezért alapértelmezés szerint nem megbízható. A legtöbb böngésző figyelmen kívül tudja hagyni ezt a problémát. A felhőalapú szolgáltatások fejlesztése és tesztelése során csak önaláírt tanúsítványokat használhat. 
@@ -88,7 +92,7 @@ Az interneten sok oldal található, amely az IIS használatával foglalkozik. [
 ### <a name="linux"></a>Linux
 [Ez a](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) cikk bemutatja, hogyan hozhat létre a tanúsítványokat SSH-val.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Töltse fel a szolgáltatási tanúsítványt a Azure Portalba](cloud-services-configure-ssl-certificate-portal.md).
 
 Töltsön fel egy [felügyeleti API-tanúsítványt](/previous-versions/azure/azure-api-management-certs) a Azure Portalba.

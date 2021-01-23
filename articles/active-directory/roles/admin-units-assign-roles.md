@@ -3,23 +3,23 @@ title: Szerepkörök kiosztása és listázása a felügyeleti egység hatókör
 description: A felügyeleti egységekkel korlátozhatja a szerepkör-hozzárendelések hatókörét Azure Active Directoryban.
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73ed2741c7dd754127a57642703b650a70637c63
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: ecfa9186ef42d4822c9b3053d76b7c0160841621
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393438"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740397"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>Hatókörrel rendelkező szerepkörök társítása egy felügyeleti egységhez
 
@@ -52,7 +52,7 @@ Hatókörrel rendelkező szerepkört a Azure Portal, a PowerShell vagy a Microso
 
 ### <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
-1. A Azure Portal nyissa meg az **Azure ad** -t.
+1. A Azure Portal nyissa meg az **Azure ad**-t.
 
 1. Válassza a **felügyeleti egységek** lehetőséget, majd válassza ki azt a felügyeleti egységet, amelyhez felhasználói szerepkör hatókörét hozzá szeretné rendelni. 
 
@@ -105,7 +105,7 @@ A hatókörrel rendelkező rendszergazdák listáját a Azure Portal, a PowerShe
 
 A felügyeleti egység hatókörével létrehozott összes szerepkör-hozzárendelést megtekintheti az [Azure ad felügyeleti egységek szakaszában](https://ms.portal.azure.com/?microsoft_aad_iam_adminunitprivatepreview=true&microsoft_aad_iam_rbacv2=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/AdminUnit). 
 
-1. A Azure Portal nyissa meg az **Azure ad** -t.
+1. A Azure Portal nyissa meg az **Azure ad**-t.
 
 1. A bal oldali panelen válassza a **felügyeleti egységek** lehetőséget, majd válassza ki a megtekinteni kívánt szerepkör-hozzárendelések listáját a felügyeleti egységben. 
 

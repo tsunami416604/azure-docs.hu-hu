@@ -2,23 +2,23 @@
 title: Azure AD-rendszergazdai szerepkörök kiosztása Microsoft Graph API-val | Microsoft Docs
 description: Azure AD-rendszergazdai szerepkörök kiosztása és eltávolítása Graph APIekkel Azure Active Directory
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a3f6fab4d3e1a4c2b73c2fe4ab0df3447b75480
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 0bec789d8ef79e221007b172550100b80b76197a
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378343"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740278"
 ---
 # <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>Egyéni rendszergazdai szerepkörök kiosztása a Microsoft Graph API használatával Azure Active Directory 
 
@@ -302,7 +302,7 @@ HTTP/1.1 400 Bad Request
 
 Megakadályozhatja, hogy a felhasználók töröljék a saját globális rendszergazdai szerepkörét, hogy elkerülje azt a helyzetet, amelyben a bérlőnek nulla globális rendszergazdája van. Az önmagukhoz rendelt egyéb szerepkörök eltávolítása engedélyezett.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Nyugodtan ossza meg velünk az [Azure ad rendszergazdai szerepkörökkel foglalkozó fórumát](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)
 * A szerepkörökkel és a rendszergazdai szerepkör-hozzárendeléssel kapcsolatos további tudnivalókért lásd: [rendszergazdai szerepkörök hozzárendelése](permissions-reference.md)

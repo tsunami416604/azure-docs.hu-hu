@@ -8,14 +8,18 @@ ms.topic: conceptual
 ms.date: 08/01/2016
 ms.author: bwren
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 9e16d77c36f382e72d5e9902b07afbbec50b6876
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4962d5f048cf41eca50a77a0dedad3cef48ac1f0
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88723254"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740074"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
+
 A diagnosztikai adatok nem tárolódnak véglegesen, hacsak nem továbbítja azt a Microsoft Azure Storage Emulatorba vagy az Azure Storage-ba. A tárolás után a több elérhető eszköz egyikével is megtekinthető.
 
 ## <a name="specify-a-storage-account"></a>Válasszon Storage-fiókot
@@ -33,12 +37,12 @@ A gyűjtött diagnosztikai adatok típusától függően Azure Diagnostics a Blo
 
 | Adatforrás | Tárolási formátum |
 | --- | --- |
-| Azure-naplók |Táblázat |
+| Azure-naplók |Tábla |
 | IIS 7,0-naplók |Blob |
-| Azure Diagnostics-infrastruktúranaplók |Táblázat |
+| Azure Diagnostics-infrastruktúranaplók |Tábla |
 | Sikertelen kérelmek nyomkövetési naplói |Blob |
-| Windows-eseménynaplók |Táblázat |
-| Teljesítményszámlálók |Táblázat |
+| Windows-eseménynaplók |Tábla |
+| Teljesítményszámlálók |Tábla |
 | Összeomlási memóriaképek |Blob |
 | Egyéni hibanaplók |Blob |
 

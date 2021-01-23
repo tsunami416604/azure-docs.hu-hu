@@ -1,22 +1,25 @@
 ---
-title: Azure Cloud Services def. LoadBalancerProbe séma | Microsoft Docs
+title: Azure Cloud Services (klasszikus) def. LoadBalancerProbe séma | Microsoft Docs
 description: Az ügyfél által definiált LoadBalancerProbe egy végpontok állapotának mintavétele a szerepkör példányaiban. A szolgáltatás definíciós fájljában a webes vagy feldolgozói szerepköröket kombinálja.
-ms.custom: ''
-ms.date: 04/14/2015
-services: cloud-services
+ms.topic: article
 ms.service: cloud-services
-ms.topic: reference
-caps.latest.revision: 14
-author: georgewallace
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 6d0e84b6724d9df4162d4be3e06a9952087a53a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 3dca519f7fb4523ce9d9267f7629c1177cc5e3b6
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79537346"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98739786"
 ---
-# <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Azure Cloud Services Definition LoadBalancerProbe séma
+# <a name="azure-cloud-services-classic-definition-loadbalancerprobe-schema"></a>Azure Cloud Services (klasszikus) definíciós LoadBalancerProbe séma
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
+
 A terheléselosztó mintavétele az UDP-végpontok és-végpontok ügyfél által meghatározott állapotának mintavétele a szerepkör példányaiban. A `LoadBalancerProbe` nem önálló elem; a szolgáltatás definíciós fájljában a webes szerepkörrel vagy feldolgozói szerepkörrel együtt. A- `LoadBalancerProbe` t több szerepkör is használhatja.
 
 A szolgáltatás definíciós fájljának alapértelmezett kiterjesztése. csdef.

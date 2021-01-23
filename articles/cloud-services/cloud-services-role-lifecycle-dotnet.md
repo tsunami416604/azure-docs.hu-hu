@@ -1,32 +1,35 @@
 ---
-title: A Cloud Service életciklusával kapcsolatos események kezelése | Microsoft Docs
+title: A Cloud Service (klasszikus) életciklus eseményeinek kezelése | Microsoft Docs
 description: Megtudhatja, hogyan használhatók a Cloud Service-szerepkörök életciklus-módszerei a .NET-ben, beleértve a RoleEntryPoint is, amely az életciklus eseményeire való reagálás módját biztosítja.
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
-ms.custom: devx-track-csharp
 ms.topic: article
-ms.date: 07/18/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: d64414abfbc62e52b172a2c42796ec8d89d1719f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: b5aa4bd061647f63ebcc70109f0ba21b39e814cc
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88930060"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741332"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>Webes vagy feldolgozói szerepkör életciklusának testreszabása a .NET-ben
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
+
 Feldolgozói szerepkör létrehozásakor ki kell bővíteni a [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) osztályt, amely lehetővé teszi a felülbírálását, amely lehetővé teszi, hogy válaszoljon az életciklus eseményeire. A webes szerepkörök esetében ez az osztály nem kötelező, ezért azt kell használnia, hogy válaszoljon az életciklus eseményeire.
 
 ## <a name="extend-the-roleentrypoint-class"></a>A RoleEntryPoint osztály kiterjesztése
-A [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) osztály az Azure által a webes vagy feldolgozói szerepkör **indításakor**, **futtatásakor**vagy **leállításakor** meghívott metódusokat tartalmazza. Ezeket a metódusokat felülbírálhatja a szerepkör inicializálásának, a szerepkör leállítási sorrendjének vagy a szerepkör végrehajtási szálának kezeléséhez. 
+A [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) osztály az Azure által a webes vagy feldolgozói szerepkör **indításakor**, **futtatásakor** vagy **leállításakor** meghívott metódusokat tartalmazza. Ezeket a metódusokat felülbírálhatja a szerepkör inicializálásának, a szerepkör leállítási sorrendjének vagy a szerepkör végrehajtási szálának kezeléséhez. 
 
-A **RoleEntryPoint**kiterjesztésekor vegye figyelembe a módszerek következő viselkedését:
+A **RoleEntryPoint** kiterjesztésekor vegye figyelembe a módszerek következő viselkedését:
 
 * A [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) metódus logikai értéket ad vissza, így a metódus **hamis** értéket adhat vissza.
   
-   Ha a kód **hamis**értéket ad vissza, a szerepkör-folyamat hirtelen leáll, és nem futtatja a leállítási sorozatot. Általánosságban érdemes elkerülni a **Hamis értéket** a **OnStart** metódusból.
+   Ha a kód **hamis** értéket ad vissza, a szerepkör-folyamat hirtelen leáll, és nem futtatja a leállítási sorozatot. Általánosságban érdemes elkerülni a **Hamis értéket** a **OnStart** metódusból.
 * A **RoleEntryPoint** metódus túlterhelésén belüli, nem kezelt kivételeket kezeletlen kivételként kezeli a rendszer.
   
    Ha az életciklus egyik módszerén belül kivétel fordul elő, az Azure fel fogja emelni a [UnhandledException](/dotnet/api/system.appdomain.unhandledexception) eseményt, majd a folyamat leáll. Miután a szerepköre offline állapotba került, a rendszer újraindítja az Azure-ban. Kezeletlen kivétel esetén a [leállítási](/previous-versions/azure/reference/ee758136(v=azure.100)) esemény nem jön létre, és a **OnStop** metódus nem lett meghívva.
@@ -41,7 +44,7 @@ Ha a szerepkör nem indul el, vagy az inicializálás, a foglalt és a leállít
 ## <a name="onstart-method"></a>OnStart metódus
 A **OnStart** metódus hívása akkor történik meg, ha a szerepkör-példányt az Azure online állapotba hozza. A OnStart-kód végrehajtása közben a szerepkör-példány **elfoglaltként** van megjelölve, és a terheléselosztó nem irányítja át a külső forgalmat. Felülbírálhatja ezt a metódust az inicializálási műveletek elvégzéséhez, például az eseménykezelők megvalósításához és a [Azure Diagnostics](cloud-services-how-to-monitor.md)elindításához.
 
-Ha **OnStart** a OnStart **igaz**értéket ad vissza, a példány inicializálása sikeresen megtörtént, és az Azure meghívja a **RoleEntryPoint. Run** metódust. Ha **OnStart** a OnStart **hamis**értéket ad vissza, a szerepkör azonnal leáll, és nem hajt végre semmilyen tervezett leállítási sorozatot.
+Ha  a OnStart **igaz** értéket ad vissza, a példány inicializálása sikeresen megtörtént, és az Azure meghívja a **RoleEntryPoint. Run** metódust. Ha  a OnStart **hamis** értéket ad vissza, a szerepkör azonnal leáll, és nem hajt végre semmilyen tervezett leállítási sorozatot.
 
 A következő mintakód bemutatja, hogyan bírálhatja felül a **OnStart** metódust. Ezzel a módszerrel konfigurálhatja és elindíthatja a diagnosztikai figyelőt, amikor a szerepkör-példány elindul, és beállítja a naplózási adatok átvitelét egy Storage-fiókba:
 
@@ -75,7 +78,7 @@ A **futtatási** metódus felülbírálása nem kötelező; az alapértelmezett 
 ### <a name="implementing-the-aspnet-lifecycle-methods-for-a-web-role"></a>A ASP.NET életciklus-módszereinek megvalósítása webes szerepkörhöz
 A **RoleEntryPoint** osztály által biztosított ASP.net-életciklusi módszerek mellett a webes szerepkörök inicializálási és leállítási folyamatait is kezelheti. Ez a kompatibilitási célokra hasznos lehet, ha meglévő ASP.NET-alkalmazást PORTOL az Azure-ba. A ASP.NET életciklusának metódusait a rendszer a **RoleEntryPoint** metódusok alapján hívja meg. Az **alkalmazás \_ indítási** módszerét a **RoleEntryPoint. OnStart** metódus befejeződése után hívja meg a rendszer. Az **alkalmazás \_ befejezési** metódusát a rendszer a **RoleEntryPoint. OnStop** metódus meghívása előtt hívja meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Megtudhatja, hogyan [hozhat létre Cloud Service-csomagot](cloud-services-model-and-package.md).
 
 

@@ -3,23 +3,23 @@ title: Felügyeleti egységek a Azure Active Directoryban | Microsoft Docs
 description: A Azure Active Directoryban lévő engedélyek részletesebb delegálásához használjon felügyeleti egységeket.
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.topic: overview
 ms.subservice: roles
 ms.workload: identity
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 792e8cd1e70f901385ed3b225a753024e06f2df0
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: e82be52cff824c69dd2fe4ea5e7e1c0d7489be1d
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394594"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740329"
 ---
 # <a name="administrative-units-in-azure-active-directory"></a>Felügyeleti egységek a Azure Active Directory
 
@@ -44,7 +44,7 @@ A felügyeleti egységek használatához prémium szintű Azure Active Directory
 
 ## <a name="manage-administrative-units"></a>Felügyeleti egységek kezelése
 
-A felügyeleti egységeket a Azure Portal, a PowerShell-parancsmagok és a parancsfájlok használatával, vagy Microsoft Graph kezelheti. További információ:
+A felügyeleti egységeket a Azure Portal, a PowerShell-parancsmagok és a parancsfájlok használatával, vagy Microsoft Graph kezelheti. További információkért lásd:
 
 - [Szerepkörök létrehozása, eltávolítása, feltöltése és hozzáadása a felügyeleti egységekhez](admin-units-manage.md): teljes körű útmutató eljárásokat tartalmaz.
 - [Munka a felügyeleti egységekkel](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true): azt ismerteti, hogyan használhatók a felügyeleti egységek a PowerShell használatával.
@@ -58,9 +58,9 @@ A felügyeleti egységek létrehozási feltételeit a szervezet egyedi követelm
 
 A szervezeten belüli felügyeleti egységek létrehozását várhatóan a következő szakaszokon keresztül érheti el:
 
-1. **Kezdeti elfogadás** : a szervezet kezdeti feltételek alapján kezdi meg a felügyeleti egységek létrehozását, és a feltételek finomításakor a felügyeleti egységek száma növekedni fog.
-1. **Metszés** : a feltételek meghatározása után a rendszer törli a már nem szükséges felügyeleti egységeket.
-1. **Stabilizáció** : a szervezeti struktúra definiálva van, és a felügyeleti egységek száma nem változik jelentősen a rövid távon.
+1. **Kezdeti elfogadás**: a szervezet kezdeti feltételek alapján kezdi meg a felügyeleti egységek létrehozását, és a feltételek finomításakor a felügyeleti egységek száma növekedni fog.
+1. **Metszés**: a feltételek meghatározása után a rendszer törli a már nem szükséges felügyeleti egységeket.
+1. **Stabilizáció**: a szervezeti struktúra definiálva van, és a felügyeleti egységek száma nem változik jelentősen a rövid távon.
 
 ## <a name="currently-supported-scenarios"></a>Jelenleg támogatott forgatókönyvek
 
@@ -79,7 +79,7 @@ A következő szakaszok ismertetik a felügyeleti egységek jelenlegi támogatá
 
 ### <a name="administrative-unit-management"></a>Felügyeleti egység kezelése
 
-| Engedélyek |   Gráf/PowerShell   | Azure AD-portál | Microsoft 365 felügyeleti központ |
+| Engedélyek |   Gráf/PowerShell   | Azure AD-portál | Microsoft 365 Felügyeleti központ |
 | --- | --- | --- | --- |
 | Felügyeleti egységek létrehozása és törlése   |    Támogatott    |   Támogatott   |    Nem támogatott |
 | Felügyeleti egység tagjainak egyenkénti hozzáadása és eltávolítása    |   Támogatott    |   Támogatott   |    Nem támogatott |
@@ -89,7 +89,7 @@ A következő szakaszok ismertetik a felügyeleti egységek jelenlegi támogatá
 
 ### <a name="user-management"></a>Felhasználókezelés
 
-| Engedélyek |   Gráf/PowerShell   | Azure AD-portál | Microsoft 365 felügyeleti központ |
+| Engedélyek |   Gráf/PowerShell   | Azure AD-portál | Microsoft 365 Felügyeleti központ |
 | --- | --- | --- | --- |
 | Felügyeleti egység – a felhasználói tulajdonságok, jelszavak és licencek hatókörön belüli kezelése   |    Támogatott     |  Támogatott   |   Támogatott |
 | Felügyeleti egység – a felhasználói bejelentkezések hatókörének blokkolása és feloldása    |   Támogatott   |    Támogatott   |    Támogatott |
@@ -97,7 +97,7 @@ A következő szakaszok ismertetik a felügyeleti egységek jelenlegi támogatá
 
 ### <a name="group-management"></a>Csoportkezelés
 
-| Engedélyek |   Gráf/PowerShell   | Azure AD-portál | Microsoft 365 felügyeleti központ |
+| Engedélyek |   Gráf/PowerShell   | Azure AD-portál | Microsoft 365 Felügyeleti központ |
 | --- | --- | --- | --- |
 | Felügyeleti egység – a csoport tulajdonságainak és tagjainak hatókörön belüli kezelése     |  Támogatott   |    Támogatott    |  Nem támogatott |
 | Felügyeleti egység – a csoportos licencelés hatókörön belüli kezelése   |    Támogatott  |    Támogatott   |   Nem támogatott |

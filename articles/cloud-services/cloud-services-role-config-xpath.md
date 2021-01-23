@@ -1,20 +1,25 @@
 ---
-title: Cloud Services szerepkör-konfiguráció XPath-lapja | Microsoft Docs
+title: Cloud Services (klasszikus) szerepkör-konfiguráció XPath-lapja | Microsoft Docs
 description: A Cloud Service szerepkör-konfigurációban használható különböző XPath-beállítások a beállítások környezeti változóként való megjelenítéséhez.
-services: cloud-services
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 04/19/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 380b0be4e4e4b19d16cb611b0b472294339f2199
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 397bc6845dc8d2d8bc44c00c27f6c12037651337
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75386085"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741383"
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>Szerepkör-konfigurációs beállítások közzététele környezeti változóként XPath-ként
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
+
 A Cloud Service Worker vagy a web role szolgáltatás definíciós fájljában a futásidejű konfigurációs értékeket környezeti változókként teheti elérhetővé. A következő XPath-értékek támogatottak (amelyek az API-értékeknek felelnek meg).
 
 Ezek az XPath-értékek a [Microsoft. WindowsAzure. ServiceRuntime](/previous-versions/azure/reference/ee773173(v=azure.100)) könyvtáron keresztül is elérhetők. 

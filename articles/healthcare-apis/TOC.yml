@@ -21,8 +21,13 @@
         - name: ARM-sablon használata
           displayName: Resource Manager
           href: fhir-paas-arm-template-quickstart.md
-    - name: Az FHIR-hez készült Azure IoT-összekötő üzembe helyezése (előzetes verzió) – portál
-      href: iot-fhir-portal-quickstart.md
+    - name: Az FHIR-hez készült Azure IoT-összekötő üzembe helyezése (előzetes verzió)
+      expanded: false
+      items:
+        - name: A portál használata
+          href: iot-fhir-portal-quickstart.md
+        - name: ARM-sablon használata
+          href: iot-fhir-arm-template-quickstart.md
 - name: Oktatóanyagok
   expanded: false
   items:

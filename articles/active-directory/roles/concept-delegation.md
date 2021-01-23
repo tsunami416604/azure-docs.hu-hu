@@ -3,7 +3,7 @@ title: A rendszergazdai szerepkör delegálásának megismerése – Azure Activ
 description: Delegálási modellek, példák és szerepkör-biztonság a Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,16 +11,16 @@ ms.workload: identity
 ms.subservice: roles
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f4512bea533b6394fcef025ddc19bb7989292a4
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 77ba93b9017fa75f7247bda639880415eda1d280
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378363"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740312"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>Felügyelet delegálása Azure Active Directory
 
@@ -112,6 +112,6 @@ A rendszerjogosultságú fiókok felügyeletét befogadó támadók óriási ká
 
 A mindennapos tevékenységek esetében nem minden felhasználónak globális rendszergazdai jogosultságra van szüksége, és nem mindegyiknek véglegesen hozzá kell rendelnie a globális rendszergazdai szerepkörhöz. Ha a felhasználóknak a globális rendszergazda engedélyeire van szükségük, aktiválniuk kell a szerepkör-hozzárendelést az Azure AD-ban [Privileged Identity Management](../privileged-identity-management/pim-configure.md) a saját fiókjában vagy egy másik rendszergazdai fiókban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure AD-szerepkörök leírásával kapcsolatos információkért lásd: [rendszergazdai szerepkörök társítása az Azure ad-ben](permissions-reference.md)

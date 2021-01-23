@@ -2,23 +2,23 @@
 title: Szerepkör-hozzárendelések eltávolítása egy csoportból a Azure Active Directoryban | Microsoft Docs
 description: Az Identitáskezelés delegálásához egyéni Azure AD-szerepköröket tekinthet meg. Az Azure-szerepkörök kezelése a Azure Portal, a PowerShell vagy a Graph API használatával.
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d58465c56be310d3f9d500ab551c7d2b19ffaa83
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 89fa3bb94f72ab04c2ea68641b8d1dff7695aa53
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378380"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741026"
 ---
 # <a name="remove-role-assignments-from-a-group-in-azure-active-directory"></a>Szerepkör-hozzárendelések eltávolítása egy csoportból Azure Active Directory
 
@@ -28,7 +28,7 @@ Ez a cikk azt ismerteti, hogy a rendszergazda hogyan távolíthatja el a csoport
 
 1. Jelentkezzen be az [Azure ad felügyeleti központba](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) a Kiemelt szerepkörű rendszergazda vagy a globális rendszergazdai engedélyekkel az Azure ad-szervezetben.
 
-1. Válassza **a szerepkörök és rendszergazdák** > * *_szerepkör neve_* _ lehetőséget.
+1. Válassza **a szerepkörök és rendszergazdák** > **_szerepkör neve_* _ lehetőséget.
 
 1. Válassza ki azt a csoportot, amelyből el szeretné távolítani a szerepkör-hozzárendelést, és válassza a _ * hozzárendelés eltávolítása * * elemet.
 
@@ -105,7 +105,7 @@ POST https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 DELETE https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/<Id of role assignment>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Felhőbeli csoportok használata a szerepkör-hozzárendelések kezeléséhez](groups-concept.md)
 - [A felhőbeli csoportokhoz hozzárendelt szerepkörökkel kapcsolatos hibák elhárítása](groups-faq-troubleshooting.md)

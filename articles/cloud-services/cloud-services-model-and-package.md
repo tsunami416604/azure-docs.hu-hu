@@ -1,20 +1,25 @@
 ---
-title: Mi a Cloud Service-modell és-csomag | Microsoft Docs
+title: Mi a Cloud Service (klasszikus) modell és csomag | Microsoft Docs
 description: Ismerteti a Cloud Service-modellt (. csdef,. cscfg) és a csomagot (. cspkg) az Azure-ban
-services: cloud-services
-author: tanmaygore
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/05/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 180295599082a762fc525c4740079ceefc0954a1
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 1cf8e966b80e005a0cb2cf7ea46f355e38cb0011
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077184"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741536"
 ---
-# <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Mi a Cloud Service-modell, és hogyan lehet becsomagolni?
+# <a name="what-is-the-cloud-service-classic-model-and-how-do-i-package-it"></a>Mi a Cloud Service (klasszikus) modell, és hogyan lehet becsomagolni?
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
+
 A felhőalapú szolgáltatás három összetevőből, a szolgáltatás-definícióból ( *. csdef)*, a szolgáltatás-konfigurációból *(. cscfg)* és egy szolgáltatáscsomag *(. cspkg)* jön létre. A **ServiceDefinition. csdef** és a **ServiceConfig. CSCFG** fájl is XML-alapú, és leírja a Cloud Service szerkezetét és konfigurálását. együttesen nevezik a modellt. A **szervizcsomag. cspkg** egy zip-fájl, amely a **ServiceDefinition. csdef** és egyebek között jön létre, és tartalmazza az összes szükséges bináris-alapú függőséget. Az Azure létrehoz egy felhőalapú szolgáltatást mind a **szervizcsomaggal. cspkg** , mind a **ServiceConfig. cscfg**.
 
 Miután a Cloud Service fut az Azure-ban, újrakonfigurálhatja azt a **ServiceConfig. cscfg** fájlon keresztül, de a definíció nem módosítható.
@@ -221,7 +226,7 @@ Az [Azure runtime library](/previous-versions/azure/reference/mt419365(v=azure.1
 
 Egy alkalmazás Azure-beli felhőalapú szolgáltatásként történő üzembe helyezéséhez először a megfelelő formátumban kell becsomagolni az alkalmazást. A **CSPack** parancssori eszközt (az [Azure SDK](https://azure.microsoft.com/downloads/)-val együtt) a Visual Studio alternatívájaként a csomagfájl létrehozásához használhatja.
 
-A **CSPack** a Service definition fájl és a szolgáltatás konfigurációs fájljának tartalmát használja a csomag tartalmának meghatározásához. A **CSPack** létrehoz egy alkalmazáscsomag-fájlt (. cspkg), amelyet feltölt az Azure-ba a [Azure Portal](cloud-services-how-to-create-deploy-portal.md#create-and-deploy)használatával. Alapértelmezés szerint a csomag neve `[ServiceDefinitionFileName].cspkg` , de más nevet is megadhat a `/out` **CSPack**lehetőség használatával.
+A **CSPack** a Service definition fájl és a szolgáltatás konfigurációs fájljának tartalmát használja a csomag tartalmának meghatározásához. A **CSPack** létrehoz egy alkalmazáscsomag-fájlt (. cspkg), amelyet feltölt az Azure-ba a [Azure Portal](cloud-services-how-to-create-deploy-portal.md#create-and-deploy)használatával. Alapértelmezés szerint a csomag neve `[ServiceDefinitionFileName].cspkg` , de más nevet is megadhat a `/out` **CSPack** lehetőség használatával.
 
 A **CSPack** a következő helyen található:  
 `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\[sdk-version]\bin\`
@@ -273,7 +278,7 @@ Ahol a változók a következőképpen vannak meghatározva:
 | \[PhysicalPath\] |A szolgáltatás definíciójának hely csomópontjában meghatározott virtuális elérési utak tartalmának fizikai könyvtára. |
 | \[RoleAssemblyName\] |A szerepkör bináris fájljának neve. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Létrehozok egy Cloud Service-csomagot, és szeretnék...
 
 * [Távoli asztal beállítása Cloud Service-példányhoz][remotedesktop]

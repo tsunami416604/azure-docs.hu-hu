@@ -2,22 +2,22 @@
 title: Alkalmazás-engedélyek a Azure Active Directory egyéni szerepköreihez | Microsoft Docs
 description: Az egyéni Azure AD-szerepkörökre vonatkozó vállalati alkalmazás-engedélyek előzetes verziója a Azure Portal, a PowerShellben vagy a Graph API.
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: overview
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 39d9cf9ed87c8a8f45cb2a6239292562035d31e3
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 110da0a12336415d9d9c781e24684d7e2af8bc9d
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379638"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741655"
 ---
 # <a name="enterprise-application-permissions-for-custom-roles-in-azure-active-directory"></a>Vállalati alkalmazások engedélyei a Azure Active Directory egyéni szerepköreihez
 
@@ -119,7 +119,7 @@ Az alkalmazás-hozzáférés engedélyezésének engedélyezése az üzembe hely
 
 ## <a name="full-list-of-permissions"></a>Engedélyek teljes listája
 
-Engedély | Description
+Engedély | Leírás
 ---------- | -----------
 Microsoft. Directory/applicationPolicies/allProperties/READ | Az alkalmazás-házirendek összes tulajdonságának olvasása.
 Microsoft. Directory/applicationPolicies/allProperties/Update | Az alkalmazás-házirendek összes tulajdonságának frissítése.
@@ -166,7 +166,7 @@ Microsoft. Directory/servicePrincipals/szinkronizálás/standard/olvasás | Az e
 Microsoft. Directory/servicePrincipals/synchronizationSchema/Manage | A séma-szinkronizálás összes aspektusának kezelése a szolgáltatás egyszerű erőforrásaihoz
 Microsoft. Directory/provisioningLogs/allProperties/READ | A kiépítési naplók összes tulajdonságának olvasása
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Egyéni szerepkörök létrehozása a Azure Portal, az Azure AD PowerShell és a Graph API használatával](custom-create.md)
 - [Egyéni szerepkör hozzárendeléseinek megtekintése](custom-view-assignments.md)

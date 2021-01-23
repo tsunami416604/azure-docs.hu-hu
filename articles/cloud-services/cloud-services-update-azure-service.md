@@ -1,20 +1,24 @@
 ---
-title: Felhőalapú szolgáltatás frissítése | Microsoft Docs
+title: Cloud Service (klasszikus) frissítése | Microsoft Docs
 description: Ismerje meg, hogyan frissítheti a Cloud Servicest az Azure-ban. Megtudhatja, hogyan folytathatja a frissítését a felhőalapú szolgáltatásokban a rendelkezésre állás biztosítása érdekében.
-services: cloud-services
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 04/19/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: f12e5b6b0b2902d69936b9cf2695b7ee21db88e2
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 5d85003ca7b4307c308914484502ae03269f66ac
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075042"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741111"
 ---
-# <a name="how-to-update-a-cloud-service"></a>Felhőalapú szolgáltatás frissítése
+# <a name="how-to-update-an-azure-cloud-service-classic"></a>Azure Cloud Service (klasszikus) frissítése
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
 
 A felhőalapú szolgáltatás frissítése, beleértve a szerepköröket és a vendég operációs rendszert is, egy három lépésből álló folyamat. Először is fel kell tölteni az új felhőalapú szolgáltatás vagy operációs rendszer verziójának bináris fájljait és konfigurációs fájlját. Ezután az Azure a Cloud Service számítási és hálózati erőforrásait az új Cloud Service-verzió követelményei alapján fenntartja. Végül az Azure működés közbeni frissítésével fokozatosan frissíti a bérlőt az új verzióra vagy a vendég operációs rendszerre, miközben megőrizheti a rendelkezésre állását. Ez a cikk az utolsó lépés részleteit tárgyalja – a működés közbeni frissítést.
 
@@ -99,7 +103,7 @@ A háló vezérlő 30 percet vár az egyes szerepkör-példányok elindítási �
 
 Ha a szolgáltatást egyetlen példányról több példányra frissíti, akkor a szolgáltatás a frissítés végrehajtása során leáll, miközben az Azure frissíti a szolgáltatásokat. A szolgáltatói szerződés garantálja a szolgáltatás rendelkezésre állását csak az egynél több példánnyal üzembe helyezett szolgáltatásokra vonatkozik. Az alábbi lista azt ismerteti, hogyan érinti az egyes meghajtókon tárolt információkat az egyes Azure-szolgáltatások frissítési forgatókönyvei:
 
-|Forgatókönyv|C meghajtó|D meghajtó|E meghajtó|
+|Eset|C meghajtó|D meghajtó|E meghajtó|
 |--------|-------|-------|-------|
 |Virtuális gép újraindítása|Megőrzi|Megőrzi|Megőrzi|
 |Portál újraindítása|Megőrzi|Megőrzi|Megsemmisül|
@@ -149,7 +153,7 @@ A frissítés bevezetése során a [frissítés üzembe helyezését](/previous-
 <a name="multiplemutatingoperations"></a>
 
 ## <a name="initiating-multiple-mutating-operations-on-an-ongoing-deployment"></a>Több mutációs művelet kezdeményezése folyamatban lévő központi telepítésre
-Bizonyos esetekben előfordulhat, hogy több egyidejű mutációs műveletet szeretne kezdeményezni egy folyamatban lévő telepítésben. Előfordulhat például, hogy egy szolgáltatás frissítését hajtja végre, és a frissítés folyamatban van a szolgáltatásban, ezért módosítani kívánja a frissítést, például a frissítés visszadobásához, egy másik frissítés alkalmazásához, vagy akár az üzemelő példány törléséhez. Ha a szolgáltatás frissítése olyan hibás kódot tartalmaz, amely akkor fordulhat elő, amikor a frissítés egy frissített szerepkör-példányt használ, a rendszer ismételten összeomlást okoz. Ebben az esetben az Azure Fabric-vezérlő nem fog tudni előrehaladást végezni a frissítés alkalmazása során, mert a frissített tartományban a nem megfelelő számú példány kifogástalan állapotú. Ezt az állapotot *beragadt központi telepítésnek*nevezzük. A telepítés visszavonásához visszaállíthatja a frissítést, vagy alkalmazhat egy friss frissítést az egyik sikertelen művelet felett.
+Bizonyos esetekben előfordulhat, hogy több egyidejű mutációs műveletet szeretne kezdeményezni egy folyamatban lévő telepítésben. Előfordulhat például, hogy egy szolgáltatás frissítését hajtja végre, és a frissítés folyamatban van a szolgáltatásban, ezért módosítani kívánja a frissítést, például a frissítés visszadobásához, egy másik frissítés alkalmazásához, vagy akár az üzemelő példány törléséhez. Ha a szolgáltatás frissítése olyan hibás kódot tartalmaz, amely akkor fordulhat elő, amikor a frissítés egy frissített szerepkör-példányt használ, a rendszer ismételten összeomlást okoz. Ebben az esetben az Azure Fabric-vezérlő nem fog tudni előrehaladást végezni a frissítés alkalmazása során, mert a frissített tartományban a nem megfelelő számú példány kifogástalan állapotú. Ezt az állapotot *beragadt központi telepítésnek* nevezzük. A telepítés visszavonásához visszaállíthatja a frissítést, vagy alkalmazhat egy friss frissítést az egyik sikertelen művelet felett.
 
 Miután az Azure Fabric-vezérlő megkapta a szolgáltatás frissítésére vagy frissítésére vonatkozó kezdeti kérelmet, megkezdheti a további mutációs műveleteket. Ekkor nem kell megvárnia a kezdeti művelet befejeződését, mielőtt elkezdené egy másik mutációs műveletet.
 
@@ -179,7 +183,7 @@ Az alábbi ábra azt szemlélteti, hogy a két szerepkört tartalmazó szolgált
 >
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [A Cloud Services felügyelete](cloud-services-how-to-manage-portal.md)  
 [A Cloud Services figyelése](cloud-services-how-to-monitor.md)  
 [A Cloud Services Konfigurálása](cloud-services-how-to-configure-portal.md)

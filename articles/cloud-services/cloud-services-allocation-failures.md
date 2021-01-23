@@ -1,27 +1,25 @@
 ---
-title: Felhőalapú szolgáltatás foglalási hibáinak elhárítása | Microsoft Docs
+title: A Cloud Service (klasszikus) lefoglalási hibáinak elhárítása | Microsoft Docs
 description: Lefoglalási hiba hibaelhárítása Az Azure Cloud Services telepítésekor. Megtudhatja, hogyan működik a foglalás, és miért sikertelen a kiosztás.
-services: azure-service-management, cloud-services
-documentationcenter: ''
-author: simonxjx
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 529157eb-e4a1-4388-aa2b-09e8b923af74
+ms.topic: article
 ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: ibiza
-ms.topic: troubleshooting
-ms.date: 06/15/2018
-ms.author: v-six
-ms.openlocfilehash: 1d82b7223c2b392e6b9aebffdc545dc38b38ca2f
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 0c172add9aa49b2ca64d2fb2281d326256e3aec7
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074226"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741587"
 ---
-# <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>Hozzárendelési hibák elhárítása a Cloud Services telepítése során az Azure szolgáltatásban
+# <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-classic-in-azure"></a>Foglalási hibák elhárítása az Azure-beli Cloud Services (klasszikus) telepítésekor
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
+
 ## <a name="summary"></a>Összefoglalás
 Ha példányokat helyez üzembe egy felhőalapú szolgáltatásban, vagy új webes vagy feldolgozói szerepkört ad hozzá, a Microsoft Azure kiosztja a számítási erőforrásokat. Időnként előfordulhat, hogy az Azure-előfizetések korlátainak megkezdése előtt ezeket a műveleteket is elvégezheti. Ez a cikk ismerteti a gyakori lefoglalási hibák okait, és javaslatot tesz a lehetséges szervizelésre. Az információk akkor is hasznosak lehetnek, ha a szolgáltatások üzembe helyezését tervezi.
 

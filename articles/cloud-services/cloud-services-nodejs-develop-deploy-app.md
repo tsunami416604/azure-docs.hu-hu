@@ -1,23 +1,24 @@
 ---
 title: Node.js – Első lépések útmutató
 description: Megtudhatja, hogyan lehet létrehozni egy egyszerű Node.js webalkalmazást, és hogyan telepítheti azt egy Azure-felhőszolgáltatásban.
-services: cloud-services
-documentationcenter: nodejs
-author: tgore03
+ms.topic: article
 ms.service: cloud-services
-ms.devlang: nodejs
-ms.topic: conceptual
-ms.date: 08/17/2017
+ms.date: 10/14/2020
 ms.author: tagore
-ms.custom: devx-track-js
-ms.openlocfilehash: 86bc968c922bcfb90da9ae2babd456ce4db81cb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 9889e0e95db84b4dbc5856ba6425f0f303161068
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327476"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741621"
 ---
-# <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Node.js-alkalmazás létrehozása és telepítése egy Azure-felhőszolgáltatásban
+# <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service-classic"></a>Node.js-alkalmazás létrehozása és üzembe helyezése Azure Cloud Service-ben (klasszikus)
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
 
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy egyszerű, Azure-felhőszolgáltatásban futó Node.js alkalmazást. A Cloud Services a méretezhető felhőalapú alkalmazások építőeleme az Azure-ban. Lehetővé teszik az alkalmazás előtér- és háttér-összetevőinek elkülönítését, valamint egymástól független kezelését és kibővítését.  A Cloud Services egy robusztus, dedikált virtuális gépet biztosít az egyes szerepkörök megbízható üzemeltetéséhez.
 
@@ -172,7 +173,7 @@ A **Publish-AzureServiceProject**-parancsmag az alábbi lépéseket végzi el:
    > [!NOTE]
    > A szolgáltatás törlésével nem törlődik a szolgáltatás első közzétételekor létrehozott tárfiók, ezért továbbra is fizetnie kell a felhasznált tárterület után. Ha a tárterületet semmi más nem használja, megfontolhatja a törlését.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információk: [Node.js fejlesztői központ].
 
 <!-- URL List -->

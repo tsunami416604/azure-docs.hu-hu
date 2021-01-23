@@ -1,21 +1,24 @@
 ---
-title: Teljesítményszámlálók gyűjtése az Azure Cloud Servicesban | Microsoft Docs
+title: Teljesítményszámlálók gyűjtése az Azure Cloud Services (klasszikus) szolgáltatásban | Microsoft Docs
 description: Ismerje meg, hogyan derítheti fel, használhatja és hogyan hozhatja létre a teljesítményszámlálók Cloud Servicesban Azure Diagnostics és Application Insights használatával.
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 02/02/2018
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 39843ad83830a72b5d6b01cc00ecd65269c02e12
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 16b54e8a59eb42c6e2351d37ec0a29d775161493
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078595"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98739836"
 ---
-# <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Teljesítményszámlálók gyűjtése az Azure Cloud Service-hez
+# <a name="collect-performance-counters-for-your-azure-cloud-service-classic"></a>Teljesítményszámlálók gyűjtése az Azure Cloud Service-hez (klasszikus)
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
 
 A teljesítményszámlálók lehetővé teszik az alkalmazás és a gazdagép teljesítményének nyomon követését. A Windows Server számos különböző teljesítményszámlálókat biztosít a hardverrel, az alkalmazásokkal, az operációs rendszerrel és egyebekkel kapcsolatban. A teljesítményszámlálók Azure-ba való gyűjtésével és küldésével a jobb döntések érdekében elemezheti ezeket az adatokat. 
 
@@ -236,7 +239,7 @@ Most, hogy az alkalmazás használja az egyéni számlálót, konfigurálnia kel
 
 ### <a name="application-insights"></a>Application Insights
 
-Ahogy azt korábban említettük, a Application Insights teljesítményszámlálók a **ApplicationInsights.config** fájlban vannak meghatározva. Nyissa meg **ApplicationInsights.config** és keresse meg a **ApplicationInsights**  >  **TelemetryModules**  >  **hozzáadása**  >  **Counters** elemet. Hozzon létre egy `<Add>` alárendelt elemet, és állítsa be az `PerformanceCounter` attribútumot a kódban létrehozott teljesítményszámláló kategóriájára és nevére. Állítsa az `ReportAs` attribútumot egy rövid névre, amelyet látni szeretne a portálon.
+Ahogy azt korábban említettük, a Application Insights teljesítményszámlálók a **ApplicationInsights.config** fájlban vannak meghatározva. Nyissa meg **ApplicationInsights.config** és keresse meg a **ApplicationInsights**  >  **TelemetryModules**  >  **hozzáadása**  >   elemet. Hozzon létre egy `<Add>` alárendelt elemet, és állítsa be az `PerformanceCounter` attribútumot a kódban létrehozott teljesítményszámláló kategóriájára és nevére. Állítsa az `ReportAs` attribútumot egy rövid névre, amelyet látni szeretne a portálon.
 
 ```xml
 <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings">

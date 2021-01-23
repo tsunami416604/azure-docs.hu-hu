@@ -2,23 +2,23 @@
 title: Egyéni szerepkör engedélyei az alkalmazás regisztrálásához – Azure AD | Microsoft Docs
 description: Az egyéni rendszergazdai szerepkör engedélyeinek delegálása az alkalmazások regisztrálásának kezeléséhez.
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0e2f520f55b9664d2d0b039867ef7670b190fed
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 6eb854c8b9ac3b4ee527c9a117edde13479bfeb4
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377071"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740193"
 ---
 # <a name="application-registration-permissions-for-custom-roles-in-azure-active-directory"></a>Alkalmazás-regisztrációs engedélyek a Azure Active Directory egyéni szerepköreihez
 
@@ -167,7 +167,7 @@ Ugyanazokat az engedélyeket biztosítja, mint a Microsoft. Directory/Applicatio
 
 [!INCLUDE [License requirement for using custom roles in Azure AD](../../../includes/active-directory-p1-license.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Egyéni szerepkörök létrehozása [a Azure Portal, az Azure ad PowerShell és a Graph API](custom-create.md) használatával
 - [Egyéni szerepkör hozzárendeléseinek megtekintése](custom-view-assignments.md)

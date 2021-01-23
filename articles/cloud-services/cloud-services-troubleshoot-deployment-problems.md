@@ -1,32 +1,30 @@
 ---
-title: A Cloud Service üzembe helyezésével kapcsolatos problémák elhárítása | Microsoft Docs
+title: A Cloud Service (klasszikus) üzembe helyezési problémáinak elhárítása | Microsoft Docs
 description: A felhőalapú szolgáltatások Azure-ba történő telepítésekor néhány gyakori probléma merülhet fel. Ez a cikk néhány megoldáshoz nyújt megoldást.
-services: cloud-services
-documentationcenter: ''
-author: simonxjx
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: a18ae415-0d1c-4bc4-ab6c-c1ddea02c870
+ms.topic: article
 ms.service: cloud-services
-ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: tbd
-ms.date: 06/15/2018
-ms.author: v-six
-ms.openlocfilehash: 0e7cd496f031f76320df5127d7e1aa3f2f7b06c7
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 7b3d7a9a674aab3976da9399f71ff4d8df08eb62
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075076"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741077"
 ---
-# <a name="troubleshoot-cloud-service-deployment-problems"></a>A Cloud Service üzembe helyezésével kapcsolatos problémák elhárítása
+# <a name="troubleshoot-azure-cloud-services-classic-deployment-problems"></a>Az Azure Cloud Services (klasszikus) üzembe helyezési problémáinak elhárítása
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
+
 Ha felhőalapú szolgáltatásalkalmazás-csomagot telepít az Azure-ba, a Azure Portal **Tulajdonságok** paneljén szerezheti be az üzembe helyezésre vonatkozó információkat. Az ezen a panelen található részletek segítségével elháríthatja a felhőalapú szolgáltatással kapcsolatos problémákat, és az új támogatási kérelem megnyitásakor megadhatja ezeket az információkat az Azure-támogatáshoz.
 
 A **Tulajdonságok** panel a következőképpen jelenik meg:
 
-* A Azure Portal kattintson a felhőalapú szolgáltatás központi telepítésére, kattintson a **minden beállítás**elemre, majd a **Tulajdonságok**elemre.
+* A Azure Portal kattintson a felhőalapú szolgáltatás központi telepítésére, kattintson a **minden beállítás** elemre, majd a **Tulajdonságok** elemre.
 
 > [!NOTE]
 > A **Tulajdonságok** ablaktábla tartalmát a panel jobb felső sarkában látható ikonra kattintva másolhatja a vágólapra.
@@ -39,7 +37,7 @@ A **Tulajdonságok** panel a következőképpen jelenik meg:
 A portálon látható URL-hivatkozás nem tartalmazza a portot. A webhelyek alapértelmezett portja a 80. Ha az alkalmazás úgy van konfigurálva, hogy egy másik porton fusson, a webhelyhez való hozzáféréskor hozzá kell adnia a megfelelő portszámot az URL-címhez.
 
 1. A Azure Portal kattintson a Cloud Service üzembe helyezésére.
-2. A Azure Portal **Tulajdonságok** ablaktáblájában tekintse meg a szerepkör-példányok portját (a **bemeneti végpontok**alatt).
+2. A Azure Portal **Tulajdonságok** ablaktáblájában tekintse meg a szerepkör-példányok portját (a **bemeneti végpontok** alatt).
 3. Ha a port nem 80, adja hozzá a megfelelő portszámot az URL-címhez az alkalmazáshoz való hozzáféréskor. Nem alapértelmezett port megadásához írja be az URL-címet, majd egy kettőspontot (:), majd a portszámot, és ne legyen szóköz.
 
 ## <a name="problem-my-role-instances-recycled-without-me-doing-anything"></a>Probléma: a saját szerepkörű példányok nem csinálok semmit
@@ -60,12 +58,12 @@ A virtuális IP-címek cseréje nem engedélyezett, ha a központi telepítés f
 Annak megállapítása, hogy az automatikus frissítés megakadályozza-e a VIP-swap-cserét:
 
 1. A Azure Portal kattintson a Cloud Service üzembe helyezésére.
-2. A Azure Portal **Tulajdonságok** ablaktábláján tekintse meg az **állapot**értéket. Ha **elkészült**, tekintse meg az **utolsó művelet** lehetőséget, és ellenőrizze, hogy az egyik nemrég történt-e, ami megakadályozhatja a VIP-csere megváltoztatását.
+2. A Azure Portal **Tulajdonságok** ablaktábláján tekintse meg az **állapot** értéket. Ha **elkészült**, tekintse meg az **utolsó művelet** lehetőséget, és ellenőrizze, hogy az egyik nemrég történt-e, ami megakadályozhatja a VIP-csere megváltoztatását.
 3. Ismételje meg az 1. és a 2. lépést az éles üzembe helyezéshez.
 4. Ha folyamatban van egy automatikus frissítés, várja meg, amíg befejeződik a VIP-swap-művelet végrehajtása előtt.
 
 ## <a name="problem-a-role-instance-is-looping-between-started-initializing-busy-and-stopped"></a>Probléma: A szerepkör-példány a megkezdett, az inicializálás, a foglalt és a leállított művelet között hurkos
-Ez az állapot problémára mutathat vissza az alkalmazás kódjában, csomagjában, vagy konfigurációs fájljában. Ebben az esetben a néhány percenként változó állapotot kell látnia, és a Azure Portal az **újrahasznosítást**, a **foglalt**vagy az **inicializálást**is elmondhatja. Ez azt jelzi, hogy hiba történt azzal az alkalmazással, amely a szerepkör-példány futtatását tartja.
+Ez az állapot problémára mutathat vissza az alkalmazás kódjában, csomagjában, vagy konfigurációs fájljában. Ebben az esetben a néhány percenként változó állapotot kell látnia, és a Azure Portal az **újrahasznosítást**, a **foglalt** vagy az **inicializálást** is elmondhatja. Ez azt jelzi, hogy hiba történt azzal az alkalmazással, amely a szerepkör-példány futtatását tartja.
 
 A probléma elhárításával kapcsolatos további információkért tekintse meg az [Azure Pásti számítási diagnosztikai adatokkal](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data) és a [szerepkörök újrahasznosítását okozó gyakori problémákkal](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md)foglalkozó blogbejegyzést.
 
@@ -81,7 +79,7 @@ A probléma elhárításával kapcsolatos további információkért tekintse me
 >
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További [hibaelhárítási cikkek](./cloud-services-allocation-failures.md) a Cloud Services szolgáltatáshoz.
 
 Ha szeretné megtudni, hogyan lehet elhárítani a Cloud Service szerepkörrel kapcsolatos problémákat az Azure Pásti számítógép-diagnosztikai adataival, tekintse [meg a Kevin Williamson blog-sorozatot](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data).

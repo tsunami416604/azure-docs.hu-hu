@@ -3,23 +3,23 @@ title: Csoportok hozzáadása, eltávolítása és listázása egy felügyeleti 
 description: A csoportok és a szerepkörük engedélyei a Azure Active Directory felügyeleti egységében kezelhetők.
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 092604429cf5a527d7ee62b412e879ad9991eace
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: d628903f98f96fc205c9a6c9196a90b251e52af2
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394747"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740550"
 ---
 # <a name="add-and-manage-groups-in-an-administrative-unit-in-azure-active-directory"></a>Csoportok hozzáadása és kezelése egy felügyeleti egységben Azure Active Directory
 
@@ -37,7 +37,7 @@ Csak az egyes csoportokat lehet hozzárendelni egy felügyeleti egységhez. Ninc
 
 * A **csoportok** ablaktáblán:
 
-  1. A Azure Portal nyissa meg az **Azure ad** -t.
+  1. A Azure Portal nyissa meg az **Azure ad**-t.
   1. Válassza a **csoportok** lehetőséget, majd válassza ki azt a csoportot, amelyet hozzá szeretne rendelni a felügyeleti egységhez. 
   1. A bal oldali ablaktáblán válassza a **felügyeleti egységek** lehetőséget azon felügyeleti egységek listájának megjelenítéséhez, amelyekhez a csoport hozzá van rendelve. 
 
@@ -48,9 +48,9 @@ Csak az egyes csoportokat lehet hozzárendelni egy felügyeleti egységhez. Ninc
 
 * A **felügyeleti egységek**  >  **minden csoport** paneljén:
 
-  1. A Azure Portal nyissa meg az **Azure ad** -t.
+  1. A Azure Portal nyissa meg az **Azure ad**-t.
   
-  1. A bal oldali ablaktáblán válassza a **felügyeleti egységek** , majd az **összes csoport** lehetőséget. 
+  1. A bal oldali ablaktáblán válassza a **felügyeleti egységek**, majd az **összes csoport** lehetőséget. 
      A felügyeleti egységhez már hozzárendelt csoportok a jobb oldali ablaktáblán jelennek meg. 
 
   1. A **csoportok** ablaktáblán válassza a **Hozzáadás** lehetőséget.
@@ -97,7 +97,7 @@ Példa:
 
 ### <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
-1. A Azure Portal nyissa meg az **Azure ad** -t.
+1. A Azure Portal nyissa meg az **Azure ad**-t.
 
 1. A bal oldali ablaktáblán válassza a **felügyeleti egységek** lehetőséget, majd válassza ki azt a felügyeleti egységet, amelynek a csoportjait meg szeretné tekinteni. Alapértelmezés szerint az **összes felhasználó** ki van választva a bal oldali ablaktáblán. 
 
@@ -141,7 +141,7 @@ Request body
 
 ### <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
-1. A Azure Portal nyissa meg az **Azure ad** -t.
+1. A Azure Portal nyissa meg az **Azure ad**-t.
 
 1. A bal oldali ablaktáblán válassza a **csoportok** lehetőséget a csoportok listájának megjelenítéséhez.
 
@@ -175,7 +175,7 @@ A Azure Portal kétféleképpen távolíthatja el egy felügyeleti egységből:
 
 - Eltávolítás egy csoportból – Áttekintés:
 
-  1. A Azure Portal nyissa meg az **Azure ad** -t.
+  1. A Azure Portal nyissa meg az **Azure ad**-t.
   1. A bal oldali ablaktáblán válassza a **csoportok** lehetőséget, majd nyissa meg annak a csoportnak a profilját, amelyet el szeretne távolítani egy felügyeleti egységből.
   1. A bal oldali ablaktáblán válassza a **felügyeleti egységek** lehetőséget az összes olyan felügyeleti egység listázásához, amelyhez a csoport hozzá van rendelve. 
   1. Válassza ki azt a felügyeleti egységet, amelyből el szeretné távolítani a csoportot, majd válassza az **Eltávolítás a felügyeleti egységből** lehetőséget.
@@ -184,7 +184,7 @@ A Azure Portal kétféleképpen távolíthatja el egy felügyeleti egységből:
 
 - Távolítsa el a felügyeleti egységből:
 
-  1. A Azure Portal nyissa meg az **Azure ad** -t.
+  1. A Azure Portal nyissa meg az **Azure ad**-t.
   1. A bal oldali ablaktáblán válassza a **felügyeleti egységek** lehetőséget, majd válassza ki azt a felügyeleti egységet, amelyhez a csoport hozzá van rendelve.
   1. A bal oldali ablaktáblán válassza a **csoportok** lehetőséget a felügyeleti egységhez rendelt összes csoport listázásához.
   1. Válassza ki az eltávolítani kívánt csoportot, majd válassza a **csoportok eltávolítása** lehetőséget.

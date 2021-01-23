@@ -2,23 +2,23 @@
 title: Egyéni szerepkör-engedélyek vállalati alkalmazás-hozzáférési hozzárendelésekhez – Azure Active Directory | Microsoft Docs
 description: Egyéni Azure AD-szerepkörök létrehozása és társítása a vállalati alkalmazások eléréséhez Azure Active Directory
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0932e4b6163264b0b514958e1e898b297e249870
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: d3cb65503ffab610f9545acb313f7284ffb11ed1
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378550"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741145"
 ---
 # <a name="assign-custom-roles-to-manage-enterprise-apps-in-azure-active-directory"></a>Egyéni szerepkörök hozzárendelésével felügyelheti a vállalati alkalmazásokat Azure Active Directory
 
@@ -195,6 +195,6 @@ POST https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A vállalati alkalmazások számára elérhető egyéni szerepkör-engedélyek megismerése](custom-enterprise-app-permissions.md)

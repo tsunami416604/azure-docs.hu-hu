@@ -2,23 +2,23 @@
 title: Felhőalapú csoportok használata a szerepkör-hozzárendelések kezeléséhez Azure Active Directoryban | Microsoft Docs
 description: Az Identitáskezelés delegálásához egyéni Azure AD-szerepköröket tekinthet meg. Az Azure szerepkör-hozzárendelések kezelése a Azure Portal, a PowerShell vagy a Graph API használatával.
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54988c8bbc4a9c3d448ac35f31e97e2d20228209
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: a4a35bafd2c5dc78f0d9d1debbf21babb6279545
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007568"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740091"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Felhőalapú csoportok használata a szerepkör-hozzárendelések kezeléséhez Azure Active Directory (előzetes verzió)
 
@@ -70,7 +70,7 @@ Ezeket a problémákat kijavítja.
 
 A szolgáltatás használatához elérhető prémium szintű Azure AD P1-licenccel kell rendelkeznie az Azure AD-szervezetben. Ahhoz, hogy az igény szerinti szerepkör-aktiváláshoz Privileged Identity Management is használhassa, elérhetőnek kell lennie prémium szintű Azure AD P2-licenccel. A követelmények megfelelő licencének megkereséséhez tekintse meg [az ingyenes és prémium csomagok általánosan elérhető funkcióinak összehasonlítását](../fundamentals/active-directory-whatis.md#what-are-the-azure-ad-licenses)ismertető témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Szerepkörhöz hozzárendelhető csoport létrehozása](groups-create-eligible.md)
 - [Szerepkör társítása szerepkörhöz hozzárendelhető csoporthoz](groups-assign-role.md)

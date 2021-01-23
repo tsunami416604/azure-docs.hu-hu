@@ -1,22 +1,25 @@
 ---
-title: Azure Cloud Services definíciós séma (. csdef fájl) | Microsoft Docs
+title: Azure Cloud Services (klasszikus) definíciós séma (. csdef fájl) | Microsoft Docs
 description: A szolgáltatás-definíciós (. csdef) fájl egy alkalmazás szolgáltatási modelljét határozza meg, amely tartalmazza az elérhető szerepköröket, végpontokat és konfigurációs értékeket a szolgáltatáshoz.
-ms.custom: ''
-ms.date: 04/14/2015
-services: cloud-services
+ms.topic: article
 ms.service: cloud-services
-ms.topic: reference
-caps.latest.revision: 42
-author: tgore03
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 1896ee8385d1e41feffe7a9f542550ea7f34a8a3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: de81b6ffb5b4dc944f3d538a116383d06145661b
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072560"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98739800"
 ---
-# <a name="azure-cloud-services-definition-schema-csdef-file"></a>Azure Cloud Services definíciós séma (. csdef fájl)
+# <a name="azure-cloud-services-classic-definition-schema-csdef-file"></a>Azure Cloud Services (klasszikus) definíciós séma (. csdef fájl)
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
+
 A szolgáltatás definíciós fájlja határozza meg az alkalmazás szolgáltatási modelljét. A fájl tartalmazza a felhőalapú szolgáltatás számára elérhető szerepkörök definícióit, meghatározza a szolgáltatási végpontokat, és létrehozza a szolgáltatás konfigurációs beállításait. A konfigurációs beállítás értékei a szolgáltatás konfigurációs fájljában vannak beállítva, a [Cloud Service (klasszikus) konfigurációs séma](/previous-versions/azure/reference/ee758710(v=azure.100))szerint.
 
 Alapértelmezés szerint a rendszer a Azure Diagnostics konfigurációs sémafájl fájlját telepíti a `C:\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\<version>\schemas` könyvtárba. Cserélje le az helyére az `<version>` [Azure SDK](https://www.windowsazure.com/develop/downloads/)telepített verzióját.

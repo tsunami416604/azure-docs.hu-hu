@@ -3,18 +3,18 @@ title: Azure Data Lake Storage Gen2 Python SDK a fájlokhoz & ACL-ek
 description: A Python segítségével kezelheti a könyvtárakat és a fájl-és címtár-hozzáférés-vezérlési listákat (ACL) olyan Storage-fiókokban, amelyeken engedélyezve van a hierarchikus névtér.
 author: normesta
 ms.service: storage
-ms.date: 09/10/2020
+ms.date: 01/22/2021
 ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-python
-ms.openlocfilehash: 7bbdf7961a934245b71829b7b50fc62c5b069d6b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5036930c7bb49578582fbc1b347b11518579b53e
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913283"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740618"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>A Python használatával kezelheti a címtárakat, a fájlokat és a hozzáférés-vezérlési listákat Azure Data Lake Storage Gen2
 
@@ -55,16 +55,7 @@ Ez a legegyszerűbb módszer a fiókhoz való kapcsolódásra.
 
 Ez a példa egy **DataLakeServiceClient** -példányt hoz létre a fiók kulcsa alapján.
 
-```python
-try:  
-    global service_client
-        
-    service_client = DataLakeServiceClient(account_url="{}://{}.dfs.core.windows.net".format(
-        "https", storage_account_name), credential=storage_account_key)
-    
-except Exception as e:
-    print(e)
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_AuthorizeWithKey":::
  
 - Cserélje le a `storage_account_name` helyőrző értékét a Storage-fiók nevére.
 
@@ -76,20 +67,7 @@ A [Pythonhoz készült Azure Identity ügyféloldali kódtár](https://pypi.org/
 
 Ez a példa egy **DataLakeServiceClient** -példányt hoz létre egy ügyfél-azonosítóval, egy ügyfél-titkos kulccsal és egy BÉRLŐi azonosítóval.  Az értékek [lekéréséhez lásd: token beszerzése az Azure ad-ből az ügyfélalkalmazások kéréseinek engedélyezéséhez](../common/storage-auth-aad-app.md).
 
-```python
-def initialize_storage_account_ad(storage_account_name, client_id, client_secret, tenant_id):
-    
-    try:  
-        global service_client
-
-        credential = ClientSecretCredential(tenant_id, client_id, client_secret)
-
-        service_client = DataLakeServiceClient(account_url="{}://{}.dfs.core.windows.net".format(
-            "https", storage_account_name), credential=credential)
-    
-    except Exception as e:
-        print(e)
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_AuthorizeWithAAD":::
 
 > [!NOTE]
 > További példákért tekintse meg az [Azure Identity ügyféloldali kódtárat a Python](https://pypi.org/project/azure-identity/) dokumentációjában.
@@ -100,17 +78,7 @@ A tároló fájlrendszerként működik a fájlok számára. A **FileSystemDataL
 
 Ez a példa egy nevű tárolót hoz létre `my-file-system` .
 
-```python
-def create_file_system():
-    try:
-        global file_system_client
-
-        file_system_client = service_client.create_file_system(file_system="my-file-system")
-    
-    except Exception as e:
-        print(e) 
-```
-
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_CreateContainer":::
 
 ## <a name="create-a-directory"></a>Könyvtár létrehozása
 
@@ -118,14 +86,7 @@ Hozzon létre egy címtár-hivatkozást a **FileSystemClient.create_directory** 
 
 Ez a példa egy nevű könyvtárat helyez `my-directory` el egy tárolóhoz. 
 
-```python
-def create_directory():
-    try:
-        file_system_client.create_directory("my-directory")
-    
-    except Exception as e:
-     print(e) 
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_CreateDirectory":::
 
 ## <a name="rename-or-move-a-directory"></a>Címtár átnevezése vagy áthelyezése
 
@@ -133,19 +94,7 @@ Nevezze át vagy helyezze át a könyvtárat a **DataLakeDirectoryClient.rename_
 
 Ez a példa átnevez egy alkönyvtárat a névre `my-subdirectory-renamed` .
 
-```python
-def rename_directory():
-    try:
-       
-       file_system_client = service_client.get_file_system_client(file_system="my-file-system")
-       directory_client = file_system_client.get_directory_client("my-directory")
-       
-       new_dir_name = "my-directory-renamed"
-       directory_client.rename_directory(rename_destination=directory_client.file_system_name + '/' + new_dir_name)
-
-    except Exception as e:
-     print(e) 
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_RenameDirectory":::
 
 ## <a name="delete-a-directory"></a>Könyvtár törlése
 
@@ -153,17 +102,7 @@ A **DataLakeDirectoryClient.delete_directory** metódus meghívásával törölh
 
 Ez a példa törli a nevű könyvtárat `my-directory` .  
 
-```python
-def delete_directory():
-    try:
-        file_system_client = service_client.get_file_system_client(file_system="my-file-system")
-        directory_client = file_system_client.get_directory_client("my-directory")
-
-        directory_client.delete_directory()
-    except Exception as e:
-     print(e) 
-```
-
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_DeleteDirectory":::
 
 ## <a name="upload-a-file-to-a-directory"></a>Fájl feltöltése könyvtárba 
 
@@ -171,26 +110,7 @@ Először hozzon létre egy fájlt a célhelyen a **DataLakeFileClient** osztál
 
 Ez a példa egy szövegfájlt tölt fel egy nevű könyvtárba `my-directory` .   
 
-```python
-def upload_file_to_directory():
-    try:
-
-        file_system_client = service_client.get_file_system_client(file_system="my-file-system")
-
-        directory_client = file_system_client.get_directory_client("my-directory")
-        
-        file_client = directory_client.create_file("uploaded-file.txt")
-        local_file = open("C:\\file-to-upload.txt",'rb')
-
-        file_contents = local_file.read()
-
-        file_client.append_data(data=file_contents, offset=0, length=len(file_contents))
-
-        file_client.flush_data(len(file_contents))
-
-    except Exception as e:
-      print(e) 
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_UploadFile":::
 
 > [!TIP]
 > Ha a fájl mérete nagy, akkor a kódnak több hívást kell tennie a **DataLakeFileClient.append_data** metódushoz. Ehelyett érdemes inkább a **DataLakeFileClient.upload_data** metódust használni. Így feltöltheti a teljes fájlt egyetlen hívással. 
@@ -199,72 +119,21 @@ def upload_file_to_directory():
 
 A **DataLakeFileClient.upload_data** metódus használatával nagyméretű fájlokat tölthet fel anélkül, hogy több hívást kellene tennie a **DataLakeFileClient.append_data** metódusnak.
 
-```python
-def upload_file_to_directory_bulk():
-    try:
-
-        file_system_client = service_client.get_file_system_client(file_system="my-file-system")
-
-        directory_client = file_system_client.get_directory_client("my-directory")
-        
-        file_client = directory_client.get_file_client("uploaded-file.txt")
-
-        local_file = open("C:\\file-to-upload.txt",'rb')
-
-        file_contents = local_file.read()
-
-        file_client.upload_data(file_contents, overwrite=True)
-
-    except Exception as e:
-      print(e) 
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_UploadFileBulk":::
 
 ## <a name="download-from-a-directory"></a>Letöltés egy címtárból 
 
 Nyisson meg egy helyi fájlt írásra. Ezután hozzon létre egy **DataLakeFileClient** -példányt, amely a letölteni kívánt fájlt jelöli. Hívja meg a **DataLakeFileClient.read_filet** a fájl bájtjainak olvasásához, majd írja be a bájtokat a helyi fájlba. 
 
-```python
-def download_file_from_directory():
-    try:
-        file_system_client = service_client.get_file_system_client(file_system="my-file-system")
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_DownloadFromDirectory":::
 
-        directory_client = file_system_client.get_directory_client("my-directory")
-        
-        local_file = open("C:\\file-to-download.txt",'wb')
-
-        file_client = directory_client.get_file_client("uploaded-file.txt")
-
-        download = file_client.download_file()
-
-        downloaded_bytes = download.readall()
-
-        local_file.write(downloaded_bytes)
-
-        local_file.close()
-
-    except Exception as e:
-     print(e)
-```
 ## <a name="list-directory-contents"></a>Könyvtár tartalmának listázása
 
 A könyvtár tartalmának listázásához hívja meg a **FileSystemClient.get_paths** metódust, majd az eredmények alapján sorolja fel azokat.
 
 Ez a példa kinyomtatja az egyes alkönyvtárak és fájlok elérési útját, amely egy nevű könyvtárban található `my-directory` .
 
-```python
-def list_directory_contents():
-    try:
-        
-        file_system_client = service_client.get_file_system_client(file_system="my-file-system")
-
-        paths = file_system_client.get_paths(path="my-directory")
-
-        for path in paths:
-            print(path.name + '\n')
-
-    except Exception as e:
-     print(e) 
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_ListFilesInDirectory":::
 
 ## <a name="manage-access-control-lists-acls"></a>Hozzáférés-vezérlési listák (ACL-ek) kezelése
 
@@ -282,28 +151,7 @@ A címtár hozzáférés-vezérlési listájának (ACL) beszerzéséhez hívja m
 
 Ez a példa lekérdezi és beállítja a nevű könyvtár ACL-listáját `my-directory` . A karakterlánc `rwxr-xrw-` Megadja az olvasási, írási és végrehajtási engedélyeket a tulajdonos felhasználó számára, csak olvasási és végrehajtási engedélyeket ad a tulajdonos csoportnak, és minden más olvasási és írási engedélyt ad.
 
-```python
-def manage_directory_permissions():
-    try:
-        file_system_client = service_client.get_file_system_client(file_system="my-file-system")
-
-        directory_client = file_system_client.get_directory_client("my-directory")
-        
-        acl_props = directory_client.get_access_control()
-        
-        print(acl_props['permissions'])
-        
-        new_dir_permissions = "rwxr-xrw-"
-        
-        directory_client.set_access_control(permissions=new_dir_permissions)
-        
-        acl_props = directory_client.get_access_control()
-        
-        print(acl_props['permissions'])
-    
-    except Exception as e:
-     print(e) 
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/ACL_datalake.py" id="Snippet_ACLDirectory":::
 
 Lekérheti és beállíthatja egy tároló gyökérkönyvtárának ACL-listáját is. A gyökérkönyvtár beszerzéséhez hívja meg a **FileSystemClient._get_root_directory_client** metódust.
 
@@ -316,30 +164,7 @@ Egy fájl hozzáférés-vezérlési listájának (ACL) beszerzéséhez hívja me
 
 Ez a példa lekérdezi és beállítja a nevű fájl hozzáférés-vezérlési listáját `my-file.txt` . A karakterlánc `rwxr-xrw-` Megadja az olvasási, írási és végrehajtási engedélyeket a tulajdonos felhasználó számára, csak olvasási és végrehajtási engedélyeket ad a tulajdonos csoportnak, és minden más olvasási és írási engedélyt ad.
 
-```python
-def manage_file_permissions():
-    try:
-        file_system_client = service_client.get_file_system_client(file_system="my-file-system")
-
-        directory_client = file_system_client.get_directory_client("my-directory")
-        
-        file_client = directory_client.get_file_client("uploaded-file.txt")
-
-        acl_props = file_client.get_access_control()
-        
-        print(acl_props['permissions'])
-        
-        new_file_permissions = "rwxr-xrw-"
-        
-        file_client.set_access_control(permissions=new_file_permissions)
-        
-        acl_props = file_client.get_access_control()
-        
-        print(acl_props['permissions'])
-
-    except Exception as e:
-     print(e) 
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/ACL_datalake.py" id="Snippet_FileACL":::
 
 ### <a name="set-an-acl-recursively"></a>ACL beállítása rekurzív módon
 

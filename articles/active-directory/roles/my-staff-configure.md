@@ -3,22 +3,22 @@ title: A saját munkatársak használata a felhasználói felügyelet delegálá
 description: Felhasználói felügyelet delegálása a saját munkatársak és a felügyeleti egységek használatával
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.date: 05/08/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 927d1f6dff9a24fb8427bb9c353e6cc61ac6a1f0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 304d88dfcf0c72769f27911186df04c66224419e
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375278"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740142"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>Felhasználók kezelése a munkatársaival (előzetes verzió)
 
@@ -45,7 +45,7 @@ A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van sz
 * Az SMS-alapú hitelesítés engedélyezéséhez *globális rendszergazdai* jogosultságok szükségesek az Azure ad-bérlőben.
 * Az SMS-hitelesítési módszer házirendjében engedélyezett összes felhasználónak licenccel kell rendelkeznie, még akkor is, ha nem használják azt. Minden engedélyezett felhasználónak rendelkeznie kell a következő Azure AD-vagy Microsoft 365-licencek valamelyikével:
 
-  * [prémium szintű Azure AD P1 vagy P2](https://azure.microsoft.com/pricing/details/active-directory/)
+  * [Prémium szintű Azure AD P1 vagy P2](https://azure.microsoft.com/pricing/details/active-directory/)
   * [Microsoft 365 (M365) F1 vagy F3](https://www.microsoft.com/licensing/news/m365-firstline-workers)
   * [Enterprise Mobility + Security (EMS) E3 vagy E5](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/compare-plans-and-pricing) vagy [Microsoft 365 (M365) E3 vagy E5](https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans)
 
@@ -54,8 +54,8 @@ A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van sz
 Miután konfigurálta az AUs-t, alkalmazza ezt a hatókört a munkatársaihoz hozzáférő felhasználókra. Csak a rendszergazdai szerepkörhöz rendelt felhasználók férhetnek hozzá a munkatársaihoz. A munkatársak engedélyezéséhez hajtsa végre a következő lépéseket:
 
 1. Jelentkezzen be a Azure Portal felhasználói rendszergazdaként.
-2. Tallózással keresse meg **Azure Active Directory**felhasználói  >  **Beállítások**  >  **felhasználói szolgáltatás**  >  **előzetesek kezelése felhasználói szolgáltatás előnézetének beállításait**.
-3. A **rendszergazdák hozzáférhetnek a munkatársaihoz**lehetőséggel engedélyezheti az összes felhasználó, a kiválasztott felhasználó vagy a felhasználói hozzáférés beállítást.
+2. Tallózással keresse meg **Azure Active Directory** felhasználói  >  **Beállítások**  >  **felhasználói szolgáltatás**  >  **előzetesek kezelése felhasználói szolgáltatás előnézetének beállításait**.
+3. A **rendszergazdák hozzáférhetnek a munkatársaihoz** lehetőséggel engedélyezheti az összes felhasználó, a kiválasztott felhasználó vagy a felhasználói hozzáférés beállítást.
 
 > [!Note]
 > Csak a rendszergazdai szerepkörhöz rendelt felhasználók férhetnek hozzá a munkatársaihoz. Ha olyan felhasználó számára engedélyezi a munkatársakat, aki nem rendelkezik rendszergazdai szerepkörrel, akkor nem fog tudni hozzáférni a munkatársaihoz.
@@ -94,7 +94,7 @@ A következő szerepkörök jogosultak a felhasználó jelszavának alaphelyzetb
 - [Felhasználói rendszergazda](permissions-reference.md#user-administrator)
 - [Jelszókezelő](permissions-reference.md#password-administrator)
 
-A **saját munkatársak**területen nyisson meg egy felhasználói profilt. Válassza a **jelszó alaphelyzetbe állítása**lehetőséget.
+A **saját munkatársak** területen nyisson meg egy felhasználói profilt. Válassza a **jelszó alaphelyzetbe állítása** lehetőséget.
 
 - Ha a felhasználó csak felhőalapú, megtekintheti a felhasználónak megadható ideiglenes jelszót.
 - Ha a felhasználó helyi Active Directoryról van szinkronizálva, megadhat egy jelszót, amely megfelel a helyszíni AD-házirendeknek. Ezután megadhatja ezt a jelszót a felhasználónak.
@@ -105,7 +105,7 @@ A felhasználónak a következő bejelentkezéskor meg kell változtatnia a jels
 
 ## <a name="manage-a-phone-number"></a>Telefonszám kezelése
 
-A **saját munkatársak**területen nyisson meg egy felhasználói profilt.
+A **saját munkatársak** területen nyisson meg egy felhasználói profilt.
 
 - Válassza a **telefonszám hozzáadása** szakaszt a felhasználó telefonszámának hozzáadásához
 - Válassza a telefonszám **szerkesztése** lehetőséget a telefonszám módosításához.
@@ -129,7 +129,7 @@ Egy AU-n belül is kereshet egy felhasználót. Ehhez használja a felhasználó
 
 A naplókat megtekintheti a munkatársaim által a Azure Active Directory portálon végrehajtott műveletekhez. Ha a naplót egy, a munkatársain végrehajtott művelet hozta létre, akkor ez a naplózási esemény további részletei között jelenik meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Munkatársak felhasználói dokumentációja](../user-help/my-staff-team-manager.md) 
  [Felügyeleti egységek dokumentációja](administrative-units.md)

@@ -2,22 +2,22 @@
 title: Alkalmazás-engedélyezési engedélyek a Azure Active Directory egyéni szerepköreihez | Microsoft Docs
 description: A Azure Portal, a PowerShell vagy a Graph API egyéni Azure AD-szerepkörökhöz tartozó alkalmazás-engedélyezési engedélyek előnézete.
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: overview
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: psignoret
 ms.custom: it-pro
-ms.openlocfilehash: 358a458698ec1fd8443e15f71a84e057f33af527
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: f9c2c15bbfcf9a9271e629ef26c11ecc4cbaaa6f
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93376731"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740108"
 ---
 # <a name="app-consent-permissions-for-custom-roles-in-azure-active-directory"></a>Alkalmazás-engedélyezési engedélyek a Azure Active Directory egyéni szerepköreihez
 
@@ -65,7 +65,7 @@ Az [alkalmazás-engedélyezési szabályzatok](../manage-apps/manage-app-consent
 
 ## <a name="full-list-of-permissions"></a>Engedélyek teljes listája
 
-Engedély | Description
+Engedély | Leírás
 ---------- | -----------
 Microsoft. Directory/servicePrincipals/managePermissionGrantsForSelf. ID | Lehetővé teszi, hogy az alkalmazásokhoz való hozzájárulást önmaga (felhasználói hozzájárulás) nevében adja meg, az alkalmazás-engedélyezési szabályzat hatálya alá tartozik `{id}` .
 Microsoft. Directory/servicePrincipals/managePermissionGrantsForAll. ID | Engedélyt ad az alkalmazásoknak az összes (bérlői szintű rendszergazdai hozzájárulás) nevében való hozzájárulásra az alkalmazásra vonatkozó engedélyezési szabályzat hatálya alá `{id}` .
@@ -74,7 +74,7 @@ Microsoft. Directory/permissionGrantPolicies/Basic/Update | A meglévő alkalmaz
 Microsoft. Directory/permissionGrantPolicies/Create | Lehetővé teszi az alkalmazás-engedélyezési házirendek létrehozását.
 Microsoft. Directory/permissionGrantPolicies/delete | Lehetővé teszi az alkalmazás-engedélyezési házirendek törlését.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Egyéni szerepkörök létrehozása a Azure Portal, az Azure AD PowerShell és a Graph API használatával](custom-create.md)
 - [Egyéni szerepkör hozzárendeléseinek megtekintése](../roles/view-assignments.md)

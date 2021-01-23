@@ -3,23 +3,23 @@ title: Felügyeleti egységek hozzáadása és eltávolítása – Azure Active 
 description: A felügyeleti egységekkel korlátozhatja a szerepkör-engedélyek hatókörét Azure Active Directoryban.
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbe76d21d948525421790f574830da7b3a163216
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 537847d84b417814bddb16cf5b961bdb221af488
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395393"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740448"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>Felügyeleti egységek kezelése Azure Active Directory
 
@@ -85,7 +85,7 @@ Az Azure ad-ben eltávolíthatja azt a felügyeleti egységet, amelyre már ninc
 
 ### <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
-1. A Azure Portal nyissa meg az **Azure ad** -t, majd válassza a **felügyeleti egységek** elemet. 
+1. A Azure Portal nyissa meg az **Azure ad**-t, majd válassza a **felügyeleti egységek** elemet. 
 1. Válassza ki a törölni kívánt felügyeleti egységet, majd válassza a **Törlés** lehetőséget. 
 1. Annak megerősítéséhez, hogy törölni kívánja a felügyeleti egységet, válassza az **Igen** lehetőséget. A felügyeleti egység törölve lett.
 

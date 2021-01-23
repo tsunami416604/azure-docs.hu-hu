@@ -3,23 +3,23 @@ title: Felhasználók hozzáadása, eltávolítása és listázása egy felügye
 description: A felhasználók és a szerepkörük engedélyeinek kezelése egy felügyeleti egységben Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b490e03ea7ac0a3bc780fa731629217126b6828a
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: d3dc7b37c96d2d82ae42d9bce32a97beab2d91e9
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395529"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740516"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Felhasználók hozzáadása és kezelése egy felügyeleti egységben Azure Active Directory
 
@@ -103,7 +103,7 @@ Példa:
 
 A Azure Portal a következő módon nyithatja meg a felhasználó profilját:
 
-1. Nyissa meg az **Azure ad** -t, majd válassza a **felhasználók** lehetőséget.
+1. Nyissa meg az **Azure ad**-t, majd válassza a **felhasználók** lehetőséget.
 
 1. Válassza ki azt a felhasználót, akinek a profilját meg szeretné tekinteni.
 
@@ -135,13 +135,13 @@ https://graph.microsoft.com/v1.0/users/{id}/memberOf/$/Microsoft.Graph.Administr
 
 A felhasználókat kétféleképpen távolíthatja el egy felügyeleti egységből: 
 
-* A Azure Portal nyissa meg az **Azure ad** -t, majd válassza a **felhasználók** lehetőséget. 
+* A Azure Portal nyissa meg az **Azure ad**-t, majd válassza a **felhasználók** lehetőséget. 
   1. Válassza ki a felhasználót a felhasználó profiljának megnyitásához. 
   1. Válassza ki azt a felügyeleti egységet, amelyből el szeretné távolítani a felhasználót, majd válassza az **Eltávolítás a felügyeleti egységből** lehetőséget.
 
      ![Képernyőfelvétel: a felhasználó eltávolítása egy felügyeleti egységből a felhasználó profil paneljéről.](./media/admin-units-add-manage-users/user-remove-admin-units.png)
 
-* A Azure Portal nyissa meg az **Azure ad** -t, majd válassza a **felügyeleti egységek** elemet.
+* A Azure Portal nyissa meg az **Azure ad**-t, majd válassza a **felügyeleti egységek** elemet.
   1. Válassza ki azt a felügyeleti egységet, amelyből el szeretné távolítani a felhasználót. 
   1. Válassza ki a felhasználót, majd válassza a **tag eltávolítása** lehetőséget.
   
@@ -165,7 +165,7 @@ Cserélje le a helyőrzőket a tesztelési adatokkal, és futtassa a következő
 
 Ha több felhasználót szeretne eltávolítani egy felügyeleti egységből, tegye a következőket:
 
-1. A Azure Portal nyissa meg az **Azure ad** -t.
+1. A Azure Portal nyissa meg az **Azure ad**-t.
 
 1. Válassza a **felügyeleti egységek** lehetőséget, majd válassza ki azt a felügyeleti egységet, amelyből el szeretné távolítani a felhasználókat. 
 
@@ -177,7 +177,7 @@ Ha több felhasználót szeretne eltávolítani egy felügyeleti egységből, te
 
    ![Képernyőkép egy szerkesztett CSV-fájlról, amely tömegesen távolítja el a felhasználókat egy felügyeleti egységből.](./media/admin-units-add-manage-users/bulk-user-entries.png)
 
-1. Mentse a módosításokat, töltse fel a fájlt, majd válassza a **Submit (Küldés** ) lehetőséget.
+1. Mentse a módosításokat, töltse fel a fájlt, majd válassza a **Submit (Küldés**) lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 

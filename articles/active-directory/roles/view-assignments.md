@@ -2,23 +2,23 @@
 title: Egyéni szerepkör-hozzárendelések megtekintése a Azure Active Directory portálon | Microsoft Docs
 description: Most már megtekintheti és felügyelheti Azure Active Directory rendszergazdai szerepkör tagjait a Azure Active Directory felügyeleti központban.
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8546c2b50c78c7a24d07c75d2d730fd2566e8ba0
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: c13167706c2794253108b04eaa2dcc46e0e6c09a
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862088"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740686"
 ---
 # <a name="view-custom-role-assignments-using-azure-active-directory"></a>Egyéni szerepkör-hozzárendelések megtekintése Azure Active Directory használatával
 
@@ -117,7 +117,7 @@ Ez a szakasz azt ismerteti, hogyan tekintheti meg egy szerepkör hozzárendelés
 
     ![Alkalmazás-regisztrációs szerepkör-hozzárendelések megtekintése az alkalmazások regisztrációjának tulajdonságaiból](./media/view-assignments/app-reg-assignments-2.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Nyugodtan ossza meg velünk az [Azure ad rendszergazdai szerepkörökkel foglalkozó fórumát](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
 * A szerepkörökkel és a rendszergazdai szerepkör-hozzárendeléssel kapcsolatos további információkért lásd: [rendszergazdai szerepkörök hozzárendelése](permissions-reference.md).
