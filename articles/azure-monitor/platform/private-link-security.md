@@ -6,12 +6,12 @@ ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: e8d0dcae81944d5799841c22093585b942934b79
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: 5008da99b63cabba41dade9a745fbd5853345737
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97732104"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734966"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Hálózatok biztonságos csatlakoztatása az Azure Monitorhoz az Azure Private Linkkel
 
@@ -149,7 +149,7 @@ Most, hogy rendelkezik a AMPLS kapcsolódó erőforrásokkal, hozzon létre egy 
  
    b.    Válassza az **Igen** lehetőséget a **saját DNS-zónába való integráláshoz**, és hagyja, hogy automatikusan létrehozzon egy új saját DNS zónát. Előfordulhat, hogy a tényleges DNS-zónák eltérnek az alábbi képernyőképen láthatótól. 
    > [!NOTE]
-   > Ha a **nem** lehetőséget választja, és manuálisan szeretné kezelni a DNS-rekordokat, először fejezze be a privát kapcsolat beállítását – beleértve ezt a privát végpontot és a AMPLS-konfigurációt. Ezután konfigurálja a DNS-t az [Azure Private Endpoint DNS-konfiguráció](../../private-link/private-endpoint-dns.md)utasításai szerint. Ügyeljen arra, hogy ne hozzon létre üres rekordokat előkészítésként a privát kapcsolat beállításához. Az Ön által létrehozott DNS-rekordok felülbírálják a meglévő beállításokat, és hatással vannak a Azure Monitorával létesített kapcsolatra.
+   > Ha a **nem** lehetőséget választja, és manuálisan szeretné kezelni a DNS-rekordokat, először fejezze be a privát kapcsolat beállítását – beleértve ezt a privát végpontot és a AMPLS-konfigurációt. Ezután konfigurálja a DNS-t az [Azure-beli privát végpont DNS-konfigurálása](../../private-link/private-endpoint-dns.md) című dokumentumban leírt utasítások szerint. Ügyeljen arra, hogy ne hozzon létre üres rekordokat a privát kapcsolat beállításának előkészítése közben. Az Ön által létrehozott DNS-rekordok felülírják a meglévő beállításokat, és hatással vannak az Azure Monitorral létesített kapcsolatra.
  
    c.    Kattintson a **Felülvizsgálat + létrehozás** elemre.
  
@@ -192,7 +192,7 @@ Ha engedélyezni szeretné, hogy a Log Analytics ügynök letöltse a megoldási
 |Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Kimenő
 |Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Kimenő
 
-## <a name="configure-application-insights"></a>Application Insights konfigurálása
+## <a name="configure-application-insights"></a>Az Application Insights konfigurálása
 
 Nyissa meg az Azure Portalt. A Azure Monitor Application Insights összetevő-erőforrás a bal oldali menüpont **hálózati elkülönítése** . Ebben a menüben két különböző állapotot is megadhat.
 
@@ -217,7 +217,7 @@ A hozzáférés ezen a módon való korlátozása csak a Application Insights er
 
 A korábban ismertetett folyamatot Azure Resource Manager sablonok, REST és parancssori felületek használatával automatizálhatja.
 
-A privát hivatkozások hatókörének létrehozásához és kezeléséhez használja a [REST API](https://docs.microsoft.com/rest/api/monitor/private%20link%20scopes%20(preview)) vagy az [Azure CLI-t (az monitor Private-link-scope)](/cli/azure/monitor/private-link-scope?view=azure-cli-latest).
+A privát hivatkozások hatókörének létrehozásához és kezeléséhez használja a [REST API](/rest/api/monitor/private%20link%20scopes%20(preview)) vagy az [Azure CLI-t (az monitor Private-link-scope)](/cli/azure/monitor/private-link-scope?view=azure-cli-latest).
 
 A hálózati hozzáférés kezeléséhez használja a jelzőket `[--ingestion-access {Disabled, Enabled}]` és `[--query-access {Disabled, Enabled}]` [log Analytics munkaterületeket](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest) , vagy [Application Insights összetevőket](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest).
 
@@ -227,7 +227,7 @@ A Storage-fiókok az egyéni naplók betöltési folyamatában használatosak. A
 
 A saját Storage-fiók létrehozásával kapcsolatos további információkért lásd: [felhasználói tulajdonú Storage-fiókok a naplók](private-storage.md) betöltéséhez
 
-## <a name="restrictions-and-limitations"></a>Korlátozások és korlátozások
+## <a name="restrictions-and-limitations"></a>Korlátozások
 
 ### <a name="agents"></a>Ügynökök
 

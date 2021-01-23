@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2830d8b82f5b53300d0af3f48e55b573d78ad295
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 268f1c4bff84a2c9ef67c3f6b5749bc8d0b90e85
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287389"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735181"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Oktatóanyag: állomáslista létrehozása a Azure Portal
 
@@ -36,7 +36,7 @@ Emellett a következő dolgokat is ismernie kell:
 - A használni kívánt rendszerkép forrása. Ez az Azure-katalógusból vagy egy egyéni rendszerkép?
 - A tartományhoz való csatlakozáshoz szükséges hitelesítő adatok.
 
-Győződjön meg arról is, hogy regisztrálta a Microsoft. DesktopVirtualization erőforrás-szolgáltatót. Ha még nem tette meg, nyissa meg az **előfizetések**elemet, válassza ki az előfizetés nevét, majd válassza az **erőforrás-szolgáltatók**lehetőséget. Keresse meg a DesktopVirtualization, válassza a Microsoft. DesktopVirtualization, majd a regisztráció lehetőséget.
+Győződjön meg arról is, hogy regisztrálta a Microsoft. DesktopVirtualization erőforrás-szolgáltatót. Ha még nem tette meg, nyissa meg az **előfizetések** elemet, válassza ki az előfizetés nevét, majd válassza az **erőforrás-szolgáltatók** lehetőséget. Keresse meg a DesktopVirtualization, válassza a Microsoft. DesktopVirtualization, majd a regisztráció lehetőséget.
 
 Amikor létrehoz egy Windows rendszerű virtuális asztali címkészletet a Azure Resource Manager sablonnal, létrehozhat egy virtuális gépet az Azure-katalógusból, egy felügyelt képből vagy egy nem felügyelt rendszerképből. A virtuálisgép-lemezképek létrehozásával kapcsolatos további információkért lásd: [Windows VHD vagy VHDX előkészítése az Azure-ba való feltöltéshez](../virtual-machines/windows/prepare-for-upload-vhd-image.md) , valamint [egy általánosított virtuális gép felügyelt rendszerképének létrehozása az Azure-ban](../virtual-machines/windows/capture-image-resource.md).
 
@@ -53,7 +53,7 @@ Az új címkészlet létrehozásának megkezdéséhez:
 
 2. Adja meg a **Windows rendszerű virtuális asztalt** a keresőmezőbe, majd keresse meg és válassza ki a **Windows rendszerű virtuális asztali** szolgáltatások elemet.
 
-3. A **Windows rendszerű virtuális asztal** áttekintése lapon válassza **a gazdagép létrehozása**lehetőséget.
+3. A **Windows rendszerű virtuális asztal** áttekintése lapon válassza **a gazdagép létrehozása** lehetőséget.
 
 4. Az **alapvető beállítások** lapon válassza ki a megfelelő előfizetést a Project Details (projekt részletei) területen.
 
@@ -68,24 +68,24 @@ Az új címkészlet létrehozásának megkezdéséhez:
      > [!div class="mx-imgBorder"]
      > ![A Azure Portal az USA keleti régiójában kiválasztott Location (hely) mezőt bemutató képernyőkép. A mező mellett a "metaadatok az USA keleti régiójában lesznek tárolva."](media/portal-location-field.png)
 
-8. Az alkalmazáskészlet típusa területen válassza ki, hogy a gazdagép **személyes** vagy **készletezési**készlettel rendelkezik-e.
+8. Az alkalmazáskészlet típusa területen válassza ki, hogy a gazdagép **személyes** vagy **készletezési** készlettel rendelkezik-e.
 
-    - Ha a **személyes**lehetőséget választja, válassza az **automatikus** vagy a **közvetlen** lehetőséget a hozzárendelés típusa mezőben.
+    - Ha a **személyes** lehetőséget választja, válassza az **automatikus** vagy a **közvetlen** lehetőséget a hozzárendelés típusa mezőben.
 
       > [!div class="mx-imgBorder"]
       > ![A hozzárendelés típusa mező legördülő menüjének képernyőképe. A felhasználó automatikus beállítást adott meg.](media/assignment-type-field.png)
 
-9.  Ha a **készletezett**lehetőséget választja, adja meg a következő adatokat:
+9.  Ha a **készletezett** lehetőséget választja, adja meg a következő adatokat:
 
-     - A **munkamenetek**maximális száma lehetőségnél adja meg, hogy legfeljebb hány felhasználót szeretne terheléselosztással elválasztani egyetlen munkamenet-gazdagépre.
-     - **Terheléselosztási algoritmus**esetén a használati minta alapján válassza a szélesség – első vagy a mélység – első lehetőséget.
+     - A **munkamenetek** maximális száma lehetőségnél adja meg, hogy legfeljebb hány felhasználót szeretne terheléselosztással elválasztani egyetlen munkamenet-gazdagépre.
+     - **Terheléselosztási algoritmus** esetén a használati minta alapján válassza a szélesség – első vagy a mélység – első lehetőséget.
 
        > [!div class="mx-imgBorder"]
        > ![A hozzárendelés típus mezőjének képernyőképe a "készletezett" beállítással. A felhasználó fölé viszi a kurzort a szélesség – először a terheléselosztás legördülő menüben.](media/pooled-assignment-type.png)
 
 10. Válassza a Next (tovább) lehetőséget **: Virtual Machines >**.
 
-11. Ha már létrehozott egy virtuális gépet, és az új gazdagépet szeretné használni, válassza a **nem**lehetőséget, válassza a **tovább: munkaterület >** lehetőséget, és ugorjon a [munkaterület-információk](#workspace-information) szakaszra. Ha új virtuális gépeket szeretne létrehozni, és regisztrálja őket az új gazdagép-készletben, válassza az **Igen**lehetőséget.
+11. Ha már létrehozott egy virtuális gépet, és az új gazdagépet szeretné használni, válassza a **nem** lehetőséget, válassza a **tovább: munkaterület >** lehetőséget, és ugorjon a [munkaterület-információk](#workspace-information) szakaszra. Ha új virtuális gépeket szeretne létrehozni, és regisztrálja őket az új gazdagép-készletben, válassza az **Igen** lehetőséget.
 
 Most, hogy elvégezte az első részt, térjünk át a telepítési folyamat következő részére, ahol létrehozjuk a virtuális gépet.
 
@@ -95,22 +95,22 @@ Most, hogy az első részen vagyunk, be kell állítania a virtuális gépet.
 
 A virtuális gép beállítása a gazdagép-készlet telepítési folyamatán belül:
 
-1. Az **erőforráscsoport**területen válassza ki azt az erőforráscsoportot, amelyben létre szeretné hozni a virtuális gépeket. Ez lehet egy másik erőforráscsoport, mint a gazdagéphez használt készlet.
+1. Az **erőforráscsoport** területen válassza ki azt az erőforráscsoportot, amelyben létre szeretné hozni a virtuális gépeket. Ez lehet egy másik erőforráscsoport, mint a gazdagéphez használt készlet.
 
 2. Válassza ki azt a **virtuális gépet** , amelyben létre szeretné hozni a virtuális gépeket. Megegyeznek a gazdagéphez kiválasztott régióval, vagy eltérőek lehetnek.
 
-3. Ezután válassza ki a használni kívánt **virtuálisgép-méretet** . Megtarthatja az alapértelmezett méretet is, vagy a méret **módosításához válassza a méret módosítása** lehetőséget. Ha a **méret módosítása**lehetőséget választja, a megjelenő ablakban válassza ki a munkaterheléshez megfelelő virtuális gép méretét.
+3. Ezután válassza ki a használni kívánt **virtuálisgép-méretet** . Megtarthatja az alapértelmezett méretet is, vagy a méret **módosításához válassza a méret módosítása** lehetőséget. Ha a **méret módosítása** lehetőséget választja, a megjelenő ablakban válassza ki a munkaterheléshez megfelelő virtuális gép méretét.
 
-4. A **virtuális gépek száma**területen adja meg a gazdagéphez létrehozni kívánt virtuális gépek számát.
+4. A **virtuális gépek száma** területen adja meg a gazdagéphez létrehozni kívánt virtuális gépek számát.
 
     >[!NOTE]
     >A telepítési folyamat akár 400 virtuális GÉPET is létrehozhat a gazdagép beállítása közben, és minden egyes virtuálisgép-beállítási folyamat négy objektumot hoz létre az erőforráscsoporthoz. Mivel a létrehozási folyamat nem ellenőrzi az előfizetési kvótát, győződjön meg arról, hogy a megadott virtuális gépek száma az Azure-beli virtuális gépen, valamint az erőforráscsoport és az előfizetés API-korlátain belül van. A gazdagép-készlet létrehozása után további virtuális gépeket adhat hozzá.
 
 5. Ezt követően adjon meg egy **előtagot** a virtuális gépek számára a telepítési folyamat által létrehozott névvel. Az utótag a 0 értéktől `-` kezdődő számmal lesz ellátva.
 
-6. Ezután válassza ki a virtuális gép létrehozásához használni kívánt rendszerképet. Kiválaszthatja a **Katalógus vagy a** **tárolási blob**lehetőséget.
+6. Ezután válassza ki a virtuális gép létrehozásához használni kívánt rendszerképet. Kiválaszthatja a **Katalógus vagy a** **tárolási blob** lehetőséget.
 
-    - Ha a katalógus lehetőséget **választja, válassza ki a**javasolt rendszerképek egyikét a legördülő menüből:
+    - Ha a katalógus lehetőséget **választja, válassza ki a** javasolt rendszerképek egyikét a legördülő menüből:
 
       - Windows 10 Enterprise multi-session, 1909-es verzió
       - Windows 10 Enterprise multi-session, Version 1909 + Microsoft 365 alkalmazások
@@ -118,7 +118,7 @@ A virtuális gép beállítása a gazdagép-készlet telepítési folyamatán be
       - Windows 10 Enterprise multi-session, 2004-es verzió
       - Windows 10 Enterprise multi-session, Version 2004 + Microsoft 365 alkalmazások
 
-     Ha nem látja a kívánt rendszerképet, válassza az **összes rendszerkép és lemez tallózása**lehetőséget, amely lehetővé teszi, hogy a katalógusban vagy a Microsoft által biztosított lemezképet vagy más közzétevőket is válasszon egy másik rendszerképben.
+     Ha nem látja a kívánt rendszerképet, válassza az **összes rendszerkép és lemez tallózása** lehetőséget, amely lehetővé teszi, hogy a katalógusban vagy a Microsoft által biztosított lemezképet vagy más közzétevőket is válasszon egy másik rendszerképben. Győződjön meg arról, hogy a kiválasztott rendszerkép a [támogatott operációsrendszer-lemezképek](overview.md#supported-virtual-machine-os-images)egyike.
 
      > [!div class="mx-imgBorder"]
      > ![A piactér képernyőképe a Microsoft által megjelenített rendszerképek listájáról.](media/marketplace-images.png)
@@ -128,7 +128,7 @@ A virtuális gép beállítása a gazdagép-készlet telepítési folyamatán be
      > [!div class="mx-imgBorder"]
      > ![Képernyőkép a saját elemek lapról.](media/my-items.png)
 
-    - Ha a **Storage blob**lehetőséget választja, a saját rendszerképét a Hyper-V használatával vagy egy Azure-beli virtuális gépen is kihasználhatja. Mindössze annyit kell tennie, hogy megadja a rendszerkép helyét a Storage-blobban URI-ként.
+    - Ha a **Storage blob** lehetőséget választja, a saját rendszerképét a Hyper-V használatával vagy egy Azure-beli virtuális gépen is kihasználhatja. Mindössze annyit kell tennie, hogy megadja a rendszerkép helyét a Storage-blobban URI-ként.
 
 7. Válassza ki, hogy a virtuális gépek milyen operációsrendszer-lemezeket szeretnének használni: standard SSD, prémium SSD vagy standard HDD.
 
@@ -136,9 +136,9 @@ A virtuális gép beállítása a gazdagép-készlet telepítési folyamatán be
 
 9. Ezután adja meg, hogy szeretne-e nyilvános IP-címet használni a virtuális gépekhez. Azt javasoljuk, hogy válassza a **nem** lehetőséget, mert a magánhálózati IP-cím biztonságosabb.
 
-10. Válassza ki a kívánt biztonsági csoport típusát: **Alapszintű**, **speciális**vagy **nincs**.
+10. Válassza ki a kívánt biztonsági csoport típusát: **Alapszintű**, **speciális** vagy **nincs**.
 
-    Ha az **alapszintű**lehetőséget választja, ki kell választania, hogy meg kívánja-e nyitni a bejövő portokat. Ha az **Igen**lehetőséget választja, akkor a bejövő kapcsolatok engedélyezéséhez válasszon a szabványos portok listájából.
+    Ha az **alapszintű** lehetőséget választja, ki kell választania, hogy meg kívánja-e nyitni a bejövő portokat. Ha az **Igen** lehetőséget választja, akkor a bejövő kapcsolatok engedélyezéséhez válasszon a szabványos portok listájából.
 
     >[!NOTE]
     >A nagyobb biztonság érdekében javasoljuk, hogy ne nyissa meg a nyilvános bejövő portokat.
@@ -146,9 +146,9 @@ A virtuális gép beállítása a gazdagép-készlet telepítési folyamatán be
     > [!div class="mx-imgBorder"]
     > ![A biztonsági csoport oldalának képernyőképe, amely megjeleníti az elérhető portok listáját a legördülő menüben.](media/available-ports.png)
 
-    Ha a **speciális**lehetőséget választja, válasszon ki egy már konfigurált, meglévő hálózati biztonsági csoportot.
+    Ha a **speciális** lehetőséget választja, válasszon ki egy már konfigurált, meglévő hálózati biztonsági csoportot.
 
-11. Ezután válassza ki, hogy szeretné-e a virtuális gépeket egy adott tartományhoz és szervezeti egységhez csatlakoztatni. Ha az **Igen**lehetőséget választja, adja meg azt a tartományt, amelyhez csatlakozni szeretne. Opcionálisan hozzáadhat egy adott szervezeti egységet, amelyben a virtuális gépeket be szeretné állítani. Ha a **nem**lehetőséget választja, a virtuális gépek az **ad-tartományhoz való csatlakozás UPN**-utótagjának megfelelő tartományhoz fognak csatlakozni.
+11. Ezután válassza ki, hogy szeretné-e a virtuális gépeket egy adott tartományhoz és szervezeti egységhez csatlakoztatni. Ha az **Igen** lehetőséget választja, adja meg azt a tartományt, amelyhez csatlakozni szeretne. Opcionálisan hozzáadhat egy adott szervezeti egységet, amelyben a virtuális gépeket be szeretné állítani. Ha a **nem** lehetőséget választja, a virtuális gépek az **ad-tartományhoz való csatlakozás UPN**-utótagjának megfelelő tartományhoz fognak csatlakozni.
 
   - Szervezeti egység megadásakor ügyeljen arra, hogy a teljes elérési utat (megkülönböztető név) és idézőjelek nélkül használja.
 
@@ -166,7 +166,7 @@ Az asztali alkalmazás csoportjának regisztrálása munkaterületre:
 
 1. Válassza az **Igen** lehetőséget.
 
-   Ha a **nem**lehetőséget választja, akkor később regisztrálhatja az alkalmazást, de azt javasoljuk, hogy a munkaterület regisztrációját a lehető leghamarabb végezze el, amint a gazdagép-készlet megfelelően működik.
+   Ha a **nem** lehetőséget választja, akkor később regisztrálhatja az alkalmazást, de azt javasoljuk, hogy a munkaterület regisztrációját a lehető leghamarabb végezze el, amint a gazdagép-készlet megfelelően működik.
 
 2. Ezután adja meg, hogy szeretne-e új munkaterületet létrehozni, vagy válasszon a meglévő munkaterületekről. Csak abban a helyen létrehozott munkaterületek lesznek regisztrálva az alkalmazásban, ahol a gazdagép-készletet is létrehozták.
 
@@ -174,7 +174,7 @@ Az asztali alkalmazás csoportjának regisztrálása munkaterületre:
 
     Itt hozzáadhat címkéket, így a metaadatokkal csoportosíthatja az objektumokat, hogy könnyebb legyen a rendszergazdák számára.
 
-4. Ha elkészült, válassza a **felülvizsgálat + létrehozás**elemet.
+4. Ha elkészült, válassza a **felülvizsgálat + létrehozás** elemet.
 
      >[!NOTE]
      >A felülvizsgálat + ellenőrzési folyamat nem ellenőrzi, hogy a Jelszó megfelel-e a biztonsági szabványoknak, vagy ha az architektúra helyes, ezért az ilyen dolgok bármelyikével kapcsolatos problémákat meg kell vizsgálnia.

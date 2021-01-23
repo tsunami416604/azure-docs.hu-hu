@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 0db05c8caae8483de3b55448bfbe6b2bcfc23187
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: fdfb2470e83cefaeb6df35115f7bb46149d8ffe6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625282"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734002"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Oktatóanyag: 2. rész – az átirányított üzenetek megtekintése
 
@@ -48,7 +48,7 @@ A Service Bus-üzenetsor a kritikusként megjelölt üzenetek fogadására haszn
 
    **Hely**: Használja a saját helyzetét. Ez az oktatóanyag az **USA nyugati régióját** használja.
 
-   **Log Analytics**: Ezt a kapcsolót ki kell kapcsolni.
+   **Log Analytics engedélyezése**: ezt a kapcsolót ki kell kapcsolni.
 
    ![A logikai alkalmazás létrehozása képernyő](./media/tutorial-routing-view-message-routing-results/create-logic-app.png)
 
@@ -88,7 +88,7 @@ A Service Bus-üzenetsor a kritikusként megjelölt üzenetek fogadására haszn
 
    ![A logikai alkalmazás e-mail-beállításai](./media/tutorial-routing-view-message-routing-results/logic-app-send-email.png)
 
-9. Válassza a **Mentés** lehetőséget. Ezután zárja be a Logic App Designert.
+9. Kattintson a **Mentés** gombra. Ezután zárja be a Logic App Designert.
 
 ## <a name="set-up-azure-stream-analytics"></a>Az Azure Stream Analytics beállítása
 
@@ -138,7 +138,7 @@ A Power BI-vizualizáció adatainak megtekintéséhez először állítson be eg
 
    ![A stream Analytics-feladathoz tartozó bemenetek beállítása](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-inputs.png)
 
-3. Válassza a **Mentés** lehetőséget.
+3. Kattintson a **Mentés** gombra.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Kimenet hozzáadása a Stream Analytics-feladathoz
 
@@ -152,13 +152,15 @@ A Power BI-vizualizáció adatainak megtekintéséhez először állítson be eg
 
    **Tábla neve**: A Power BI-ban használni kívánt táblanév. Ez az oktatóanyag a **contosotable** nevet használja.
 
+  **Hitelesítési mód**: válassza ki a használni kívánt módot.
+
    A többi mezőnél fogadja el az alapértelmezett beállításokat.
 
 3. Válassza az **Engedélyezés** lehetőséget, majd jelentkezzen be Power bi-fiókjába. (Ez több próbálkozást is igénybe vehet).
 
    ![A stream Analytics-feladatokhoz tartozó kimenetek beállítása](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-outputs.png)
 
-4. Válassza a **Mentés** lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>A Stream Analytics-feladat lekérdezésének konfigurálása
 
@@ -170,7 +172,7 @@ A Power BI-vizualizáció adatainak megtekintéséhez először állítson be eg
 
    ![A stream Analytics-feladatokhoz tartozó lekérdezés beállítása](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-query.png)
 
-4. Válassza a **Mentés** lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
 5. Zárja be a Lekérdezés panelt. Visszatérhet az erőforráscsoport erőforrásainak nézetéhez. Válassza ki a Stream Analytics feladatot. Ebben az oktatóanyagban a neve: **contosoJob**.
 
@@ -298,7 +300,7 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 Előfordulhat, hogy törölni szeretné a Beérkezett üzenetek mappában lévő azon e-mailek mennyiségét is, amelyek a logikai alkalmazáson keresztül jöttek létre, miközben az eszköz fut.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a kétrészes oktatóanyagban megtanulta, hogyan lehet az üzenet-útválasztás használatával átirányítani IoT Hub üzeneteket a különböző célhelyekre az alábbi feladatok végrehajtásával.  
 

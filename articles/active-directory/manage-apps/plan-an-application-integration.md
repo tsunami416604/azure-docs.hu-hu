@@ -1,26 +1,22 @@
 ---
-title: Ismerkedés az Azure AD és az alkalmazások integrálásával | Microsoft Docs
+title: Ismerkedés az Azure AD és az alkalmazások integrálásával
 description: Ez a cikk egy első lépéseket ismertető útmutató a Azure Active Directory (AD) helyszíni alkalmazásokkal és felhőalapú alkalmazásokkal való integrálásához.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
-ms.subservice: app-mgmt
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2018
 ms.author: kenwith
 ms.reviewer: asteen
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 913b7975de4598bba7240647c1d9e8c81cd1cec9
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: db3d3623e175d582a2fe271d73aa452ca07b8e8d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659097"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735066"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Azure Active Directory integrálása az első lépések útmutató alkalmazásokkal
 
@@ -45,7 +41,7 @@ Az alkalmazások az Azure AD-vel való integrálása előtt fontos tudni, hogy h
   * Azure AD
   * Egy külön saját alkalmazás-adatbázison belül
   * A nem engedélyezett alkalmazásokban
-  * A fentiek közül az összes
+  * A fentiek mindegyike
 * Milyen engedélyek és szerepkör-hozzárendelések vannak jelenleg az egyes felhasználók számára? Ellenőriznie kell a hozzáférését, vagy biztos lehet benne, hogy a felhasználói hozzáférés és a szerepkör-hozzárendelések megfelelőek?
 * A csoportok már a helyszíni Active Directoryban vannak kialakítva?
   * Hogyan vannak rendszerezve a csoportok?
@@ -77,9 +73,7 @@ Egyes alkalmazásai eltérő hitelesítési követelményekkel rendelkezhetnek. 
 A Microsoft Azure AD alkalmazásproxy segítségével biztonságosan, bárhonnan és bármilyen eszközről biztosíthat hozzáférést a magánhálózaton belül található alkalmazásokhoz. Miután telepítette az alkalmazásproxy-összekötőt a környezetén belül, könnyen konfigurálható az Azure AD-vel.
 
 ### <a name="integrating-custom-applications"></a>Egyéni alkalmazások integrálása
-Ha új alkalmazást ír, és szeretné segíteni a fejlesztőket az Azure AD hatékonyságának kihasználásában, tekintse meg a következő témakört: a [fejlesztők Guiding](./developer-guidance-for-integrating-applications.md).
-
-Ha egyéni alkalmazását szeretné felvenni az Azure-alkalmazás-katalógusba, tekintse meg a ["saját alkalmazás használata" kifejezést az Azure AD Self-Service SAML-konfigurációval](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/).
+Ha az egyéni alkalmazást az Azure-alkalmazás-katalógusban szeretné felvenni, tekintse [meg az alkalmazás közzététele az Azure ad alkalmazás-galériában](../develop/v2-howto-app-gallery-listing.md)című témakört.
 
 ## <a name="managing-access-to-applications"></a>Az alkalmazásokhoz való hozzáférés kezelése
 A következő cikkek az Azure AD-összekötők és az Azure ad-vel való integráció során az alkalmazásokhoz való hozzáférés kezelését ismertetik.
@@ -90,7 +84,7 @@ A következő cikkek az Azure AD-összekötők és az Azure ad-vel való integr�
 * [Csoportok hozzárendelése egy alkalmazáshoz](./assign-user-or-group-access-portal.md)
 * [Fiókok megosztása](../enterprise-users/users-sharing-accounts.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Részletes információk a [githubról](../fundamentals/active-directory-deployment-plans.md)tölthetők le Azure Active Directory telepítési tervek. A Gallery-alkalmazások esetében az egyszeri bejelentkezéshez, a feltételes hozzáféréshez és a [Azure Portalon](https://portal.azure.com)keresztül történő felhasználói kiépítéshez is letölthetők a telepítési csomagok. 
 
 Telepítési terv letöltése a Azure Portalról:

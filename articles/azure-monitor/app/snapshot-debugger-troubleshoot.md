@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 3e45b5a48f9a7fb66d7539e83f385203ae371ad7
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 6e926211a0d86fef55608ede574dca53487f267c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673552"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732727"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> A Application Insights Snapshot Debugger engedélyezésével vagy a pillanatképek megtekintésével kapcsolatos problémák elhárítása
 Ha engedélyezte Application Insights Snapshot Debugger az alkalmazáshoz, de nem tekinti meg a kivételekhez tartozó pillanatképeket, a következő utasításokat követve elháríthatja a hibát.
@@ -272,4 +272,4 @@ Ha még mindig nem látja a pillanatkép-AZONOSÍTÓval kapcsolatos kivételt, a
 
 Ha az alkalmazás proxyn vagy tűzfalon keresztül csatlakozik az internethez, előfordulhat, hogy frissítenie kell a szabályokat a Snapshot Debugger szolgáltatással való kommunikációhoz.
 
-A Application Insights Snapshot Debugger által használt IP-címeket a Azure Monitor szolgáltatás címkéje tartalmazza. További információ: szolgáltatás- [címkék dokumentációja](https://docs.microsoft.com/azure/virtual-network/service-tags-overview).
+A Application Insights Snapshot Debugger által használt IP-címeket a Azure Monitor szolgáltatás címkéje tartalmazza. További információ: szolgáltatás- [címkék dokumentációja](../../virtual-network/service-tags-overview.md).

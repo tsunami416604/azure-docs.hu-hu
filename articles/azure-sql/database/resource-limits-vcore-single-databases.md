@@ -10,13 +10,13 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 01/15/2021
-ms.openlocfilehash: db3b168826223e4eb958f7700e65623a115e5779
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/22/2021
+ms.openlocfilehash: a4be96d35116ed40ca61f00ed8f2ddd786760242
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251471"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735240"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Önálló adatbázisok erőforráskorlátai a virtuálismag-alapú vásárlási modell használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -411,7 +411,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |TempDB maximális adatméret (GB)|83,25|92,5|111|148|166,5|333|
 |Tárolási típus|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|
 |IO-késés (hozzávetőleges)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|
-|Maximális adatmennyiség IOPS *|5760|6400|7680|10240|11520|23040|
+|Maximális adatmennyiség IOPS *|5760|6400|7680|10240|11520|12800|
 |Maximális naplózási arány (MBps)|36|36|36|36|36|36|
 |Egyidejű feldolgozók maximális száma (kérelem)|900|1000|1200|1600|1800|3600|
 |Egyidejű bejelentkezések maximális száma|1800|2000|2400|3200|3600|7200|
@@ -628,7 +628,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |Virtuális mag|2|4|6|8|
 |Memória (GB)|9|18|27|36|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|1,7|3.7|5.9|8.2|
+|Memóriában tárolt OLTP-tároló (GB)|1.7|3.7|5.9|8.2|
 |Maximális adatméret (GB)|768|768|768|768|
 |Napló maximális mérete (GB)|230|230|230|230|
 |TempDB maximális adatméret (GB)|64|128|192|256|

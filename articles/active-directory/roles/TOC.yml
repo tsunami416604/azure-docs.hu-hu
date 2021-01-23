@@ -11,9 +11,10 @@
     - name: Korlátlan számú alkalmazásregisztráció létrehozása
       href: quickstart-app-registration-limits.md
 - name: Oktatóanyagok
+  expanded: true
   items:
-    - name: Dinamikus csoport létrehozása
-      href: ../enterprise-users/users-revoke-access.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
+    - name: Felhasználók hozzárendelése rendszergazdai szerepkörökhöz
+      href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
 - name: Alapelvek
   expanded: true
   items:
@@ -28,18 +29,6 @@
 - name: Útmutatók
   expanded: true
   items:
-    - name: Felhasználók és szerepkörök
-      items:
-        - name: Felhasználók hozzárendelése rendszergazdai szerepkörökhöz
-          href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-        - name: Felhasználó jogosultságának visszavonása
-          href: ../enterprise-users/users-revoke-access.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-        - name: Szerepkörök hozzárendelése vendégfelhasználókhoz
-          href: ../external-identities/add-guest-to-role.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-        - name: Vendégfelhasználók hozzáférésének korlátozása
-          href: ../enterprise-users/users-restrict-guest-permissions.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-        - name: Dinamikus csoportok és vendégek
-          href: ../external-identities/use-dynamic-groups.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
     - name: Szerepkörök és engedélyek
       expanded: true
       items:
@@ -119,7 +108,7 @@
     - name: A Microsoft 365-szerepkörök dokumentációja
       href: m365-workload-docs.md
     - name: Graph API
-      href: /graph/api/resources/azure-ad-overview?view=graph-rest-1.0
+      href: /graph/api/resources/directoryrole?view=graph-rest-1.0
     - name: Azure AD CLI
       href: /cli/azure/ad
     - name: Azure AD PowerShell for Graph

@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: dd5c6527cd6a0beea291dce94ff0e5949ba00671
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 965e765e22a4da8f2ac3b7151337cf62b65be4fe
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791256"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732611"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Alkalmazás csatlakoztatása felügyelt Azure SQL-példányhoz
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -56,7 +56,7 @@ A helyszíni alkalmazást a felügyelt SQL-példányhoz is összekapcsolhatja. A
 
 Két lehetőség áll rendelkezésre a helyszíni és az Azure-beli virtuális hálózatok összekapcsolására:
 
-- Helyek közötti VPN-kapcsolat ([Azure Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md), [POWERSHELL](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), [Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md))
+- Helyek közötti VPN-kapcsolat ([Azure Portal](../../vpn-gateway/tutorial-site-to-site-portal.md), [POWERSHELL](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), [Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md))
 - [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) -kapcsolatok  
 
 Ha sikeresen létrehozott egy helyszíni Azure-kapcsolatot, és nem tud kapcsolatot létesíteni az SQL felügyelt példányával, ellenőrizze, hogy a tűzfal rendelkezik-e nyitott kimenő kapcsolattal a 1433-es SQL-porton, valamint az átirányításhoz használt portok 11000-11999-tartományán.
@@ -69,7 +69,7 @@ A fejlesztői Box is csatlakoztatható SQL felügyelt példányhoz. A felügyelt
 
 Az ügyfelek által megvalósított egy másik forgatókönyv, ahol a VPN-átjáró egy különálló virtuális hálózatban van telepítve, és az SQL felügyelt példányának egyik üzemeltetése az előfizetés. Ezt követően a két virtuális hálózat összevonásra kerül. A következő minta architektúra-diagram bemutatja, hogyan valósítható meg ez a megoldás.
 
-![Virtuális hálózati társviszony](./media/connect-application-instance/vnet-peering.png)
+![Társviszony létesítése virtuális hálózatok között](./media/connect-application-instance/vnet-peering.png)
 
 Miután beállította az alapszintű infrastruktúrát, módosítania kell néhány beállítást, hogy a VPN-átjáró láthassa az SQL felügyelt példányát futtató virtuális hálózat IP-címeit. Ehhez végezze el a következő nagyon specifikus módosításokat a társítási **Beállítások** alatt.
 
@@ -154,7 +154,7 @@ Az eszközök és illesztőprogramok következő minimális verziói ajánlottak
 |SSMS| 18,0 vagy [újabb](/sql/ssms/download-sql-server-management-studio-ssms) |
 |[SMO](/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) vagy újabb |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az SQL felügyelt példányáról: [Mi az SQL felügyelt példánya?](sql-managed-instance-paas-overview.md).
 - Az új felügyelt példányok létrehozásával kapcsolatos oktatóanyagért lásd: [felügyelt példány létrehozása](instance-create-quickstart.md).

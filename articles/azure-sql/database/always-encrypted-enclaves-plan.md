@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: c41856c394166f2e3b8fd3bde794f0f294ef6af9
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 4448ce051b0c9e73865e8057cc4f224c9cbeb571
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253455"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732744"
 ---
 # <a name="plan-for-intel-sgx-enclaves-and-attestation-in-azure-sql-database"></a>Az Intel SGX ENKLÁVÉHOZ enklávék és igazolások megtervezése Azure SQL Database
 
@@ -25,7 +25,7 @@ ms.locfileid: "98253455"
 > [!NOTE]
 > Always Encrypted a biztonságos enklávékkal a Azure SQL Database jelenleg **nyilvános előzetes** verzióban érhető el.
 
-[Always encrypted biztonságos enklávékkal](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves) Azure SQL Database [Intel Software Guard Extensions (Intel SGX enklávéhoz)](https://itpeernetwork.intel.com/microsoft-azure-confidential-computing/) enklávékat használ, és [Microsoft Azure igazolást](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves#secure-enclave-attestation)igényel.
+[Always encrypted biztonságos enklávékkal](/sql/relational-databases/security/encryption/always-encrypted-enclaves) Azure SQL Database [Intel Software Guard Extensions (Intel SGX enklávéhoz)](https://itpeernetwork.intel.com/microsoft-azure-confidential-computing/) enklávékat használ, és [Microsoft Azure igazolást](/sql/relational-databases/security/encryption/always-encrypted-enclaves#secure-enclave-attestation)igényel.
 
 ## <a name="plan-for-intel-sgx-in-azure-sql-database"></a>A Azure SQL Database Intel SGX ENKLÁVÉHOZ megtervezése
 
@@ -61,6 +61,6 @@ Ha úgy konfigurálja a környezetet, hogy támogassa az Intel SGX ENKLÁVÉHOZ 
 
 - [Az Intel SGX ENKLÁVÉHOZ engedélyezése az Azure SQL Database-adatbázishoz](always-encrypted-enclaves-enable-sgx.md)
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [Oktatóanyag: a Always Encrypted első lépései a biztonságos enklávékkal Azure SQL Database](always-encrypted-enclaves-getting-started.md)

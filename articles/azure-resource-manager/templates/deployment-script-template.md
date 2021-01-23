@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/28/2020
 ms.author: jgao
-ms.openlocfilehash: 4d2a55355318a1bf916017fa77026a87a95b7f57
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.openlocfilehash: 574dcf50111c14f4924f009a74ed6f2ac2bb31e9
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97809717"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733840"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>Üzembe helyezési parancsfájlok használata ARM-sablonokban
 
@@ -542,7 +542,7 @@ Ezeknek az erőforrásoknak a életciklusát a sablon következő tulajdonságai
 > [!NOTE]
 > A Storage-fiók és a parancsfájl-szolgáltatás által más célra létrehozott tároló-példány használata nem ajánlott. Előfordulhat, hogy a parancsfájl életciklusa alapján a két erőforrás el lesz távolítva.
 
-A tároló-példány és a Storage-fiók a következő szerint törlődik: `cleanupPreference` . Ha azonban a parancsfájl meghibásodik, és a `cleanupPreference` nem **mindig** értékre van állítva, a telepítési folyamat automatikusan egy órára tartja a tárolót. Ezt az órát használhatja a parancsfájl hibakereséséhez. Ha meg szeretné tartani a tárolót a sikeres telepítések után, vegyen fel egy alvó lépést a parancsfájlba. Például adja hozzá a [Start-Sleep](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep) parancsot a szkript végéhez. Ha nem adja hozzá az alvó lépést, a tároló egy terminál állapotra van beállítva, és még akkor sem érhető el, ha még nincs törölve.
+A tároló-példány és a Storage-fiók a következő szerint törlődik: `cleanupPreference` . Ha azonban a parancsfájl meghibásodik, és a `cleanupPreference` nem **mindig** értékre van állítva, a telepítési folyamat automatikusan egy órára tartja a tárolót. Ezt az órát használhatja a parancsfájl hibakereséséhez. Ha meg szeretné tartani a tárolót a sikeres telepítések után, vegyen fel egy alvó lépést a parancsfájlba. Például adja hozzá a [Start-Sleep](/powershell/module/microsoft.powershell.utility/start-sleep) parancsot a szkript végéhez. Ha nem adja hozzá az alvó lépést, a tároló egy terminál állapotra van beállítva, és még akkor sem érhető el, ha még nincs törölve.
 
 ## <a name="run-script-more-than-once"></a>Parancsfájl többszöri futtatása
 

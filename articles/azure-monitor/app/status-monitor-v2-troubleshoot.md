@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 472a7f128ea19cdcc9df5a03d171f345c7d601de
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 7a6fc27321fa924b7ef8f9bd39b5824bb6fe3c72
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616830"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732578"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Application Insights ügynök hibaelhárítása (korábbi nevén Állapotmonitor v2)
 
@@ -55,7 +55,7 @@ A hibakeresési eszközök segítségével megtekintheti a tüneti viselkedést:
 ### <a name="powershell-versions"></a>PowerShell-verziók
 Ezt a terméket a PowerShell v 5.1 használatával írták és tesztelték.
 Ez a modul nem kompatibilis a PowerShell 6-os vagy 7-es verziójával.
-Javasoljuk, hogy az újabb verziókkal együtt a PowerShell v 5.1-es verzióját használja. További információ: a [PowerShell 7 párhuzamos használata a powershell 5,1](https://docs.microsoft.com/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7.1#using-powershell-7-side-by-side-with-windows-powershell-51)-mel.
+Javasoljuk, hogy az újabb verziókkal együtt a PowerShell v 5.1-es verzióját használja. További információ: a [PowerShell 7 párhuzamos használata a powershell 5,1](/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7.1#using-powershell-7-side-by-side-with-windows-powershell-51)-mel.
 
 ### <a name="conflict-with-iis-shared-configuration"></a>Ütközés az IIS megosztott konfigurációjával
 

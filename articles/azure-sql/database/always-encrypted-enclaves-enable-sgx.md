@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: 4c77103dbb043ef9d6af9a4078b3e574ab5f953f
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: ded1406c47bb3f00c366da7a5b28319f3712f8a7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253464"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733756"
 ---
 # <a name="enable-intel-sgx-for-your-azure-sql-database"></a>Az Intel SGX ENKLÁVÉHOZ engedélyezése a Azure SQL Database számára 
 
@@ -25,7 +25,7 @@ ms.locfileid: "98253464"
 > [!NOTE]
 > Always Encrypted a biztonságos enklávékkal a Azure SQL Database jelenleg **nyilvános előzetes** verzióban érhető el.
 
-A [Always encrypted a Azure SQL Database Secure enklávés szolgáltatásával](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves) [Intel Software Guard Extensions (Intel SGX enklávéhoz)](https://itpeernetwork.intel.com/microsoft-azure-confidential-computing/) enklávékat használ. Ahhoz, hogy az Intel SGX ENKLÁVÉHOZ elérhető legyen, az adatbázisnak a [virtuális mag modellt](service-tiers-vcore.md) és a [DC sorozatú](service-tiers-vcore.md#dc-series) hardveres generációt kell használnia.
+A [Always encrypted a Azure SQL Database Secure enklávés szolgáltatásával](/sql/relational-databases/security/encryption/always-encrypted-enclaves) [Intel Software Guard Extensions (Intel SGX enklávéhoz)](https://itpeernetwork.intel.com/microsoft-azure-confidential-computing/) enklávékat használ. Ahhoz, hogy az Intel SGX ENKLÁVÉHOZ elérhető legyen, az adatbázisnak a [virtuális mag modellt](service-tiers-vcore.md) és a [DC sorozatú](service-tiers-vcore.md#dc-series) hardveres generációt kell használnia.
 
 A DC sorozatú hardverek létrehozásának beállítása az Intel SGX ENKLÁVÉHOZ enklávék engedélyezéséhez az Azure SQL Database rendszergazdája feladata. Tekintse meg a [szerepköröket és a felelősségi köröket a SGX enklávéhoz enklávék és igazolások konfigurálásakor](always-encrypted-enclaves-plan.md#roles-and-responsibilities-when-configuring-sgx-enclaves-and-attestation).
 
@@ -41,6 +41,6 @@ Ha részletes útmutatást szeretne arról, hogyan konfigurálhat új vagy megl�
 
 - [Azure-tanúsítvány konfigurálása az Azure SQL Database-kiszolgálóhoz](always-encrypted-enclaves-configure-attestation.md)
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [Oktatóanyag: a Always Encrypted első lépései a biztonságos enklávékkal Azure SQL Database](always-encrypted-enclaves-getting-started.md)

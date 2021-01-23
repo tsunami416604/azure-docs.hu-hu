@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: b530fc320f6c29dd7a86a39c5a7019265bb6b724
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: d19190723ebc415e9cf3053b929788dff68aeb0e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624422"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734539"
 ---
 # <a name="spatial-analysis-operations"></a>Térbeli elemzési műveletek
 
@@ -61,7 +61,7 @@ Ezek a térbeli elemzési műveletek által igényelt paraméterek.
 |---------|---------|
 | Művelet azonosítója | A fenti tábla műveleti azonosítója.|
 | engedélyezve | Boolean: true vagy FALSE|
-| VIDEO_URL| A kamera eszközhöz tartozó RTSP URL-cím (példa: `rtsp://username:password@url` ). A térbeli elemzés támogatja a H. 264 kódolású adatfolyamot RTSP, http vagy MP4 használatával. A Video_URL AES-titkosítást használó, titkosított Base64-karakterlánc-értékként is megadható, és ha a videó URL-címe el van titkosítva, `KEY_ENV` és `IV_ENV` környezeti változókként kell megadni. A kulcsok és a titkosítás létrehozásához használható minta-segédprogram [itt](https://docs.microsoft.com/dotnet/api/system.security.cryptography.aesmanaged?view=net-5.0&preserve-view=true)található. |
+| VIDEO_URL| A kamera eszközhöz tartozó RTSP URL-cím (példa: `rtsp://username:password@url` ). A térbeli elemzés támogatja a H. 264 kódolású adatfolyamot RTSP, http vagy MP4 használatával. A Video_URL AES-titkosítást használó, titkosított Base64-karakterlánc-értékként is megadható, és ha a videó URL-címe el van titkosítva, `KEY_ENV` és `IV_ENV` környezeti változókként kell megadni. A kulcsok és a titkosítás létrehozásához használható minta-segédprogram [itt](/dotnet/api/system.security.cryptography.aesmanaged?preserve-view=true&view=net-5.0)található. |
 | VIDEO_SOURCE_ID | A kamera-eszköz vagy a videó stream rövid neve. Ezt a rendszer az esemény JSON-kimenetével adja vissza.|
 | VIDEO_IS_LIVE| A kamera eszközei esetében igaz; hamis a rögzített videókhoz.|
 | VIDEO_DECODE_GPU_INDEX| A videó keretének dekódolására szolgáló GPU. Alapértelmezés szerint 0. Azonosnak kell lennie a `gpu_index` többi csomópont-konfigurációval `VICA_NODE_CONFIG` , például: `DETECTOR_NODE_CONFIG` .|
@@ -968,7 +968,7 @@ A GPU-k legjobb teljesítményének és kihasználtságának kihasználása érd
 |---------|---------|---------|
 | `batch_size` | int | A műveletben használt fényképezőgépek számát jelzi. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Felhasználók üzembe helyezése webes alkalmazásokban](spatial-analysis-web-app.md)
 * [Naplózás és hibaelhárítás](spatial-analysis-logging.md)

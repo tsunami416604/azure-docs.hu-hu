@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: cavoeg
-ms.openlocfilehash: 9a4c331d82695aecb53990fd604ade82f3361959
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ad663b345d3d150b55e0e018afd1430775d77162
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452913"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733469"
 ---
 # <a name="features"></a>Funkciók
 
@@ -35,7 +35,7 @@ A korábbi verziók jelenleg is támogatottak: `3.0.2`
 | frissítés optimista zárolással | Igen       | Igen       | Igen       |                                                     |
 | frissítés (feltételes)           | Igen       | Igen       | Igen       |                                                     |
 | javítás                          | Nem        | Nem        | Nem        |                                                     |
-| delete                         | Igen       | Igen       | Igen       |                                                     |
+| törlés                         | Igen       | Igen       | Igen       |                                                     |
 | Törlés (feltételes)           | Nem        | Nem        | Nem        |                                                     |
 | előzmények                        | Igen       | Igen       | Igen       |                                                     |
 | létrehozás                         | Igen       | Igen       | Igen       | Mind a POST, mind a PUT támogatása                               |
@@ -59,7 +59,7 @@ Az összes keresési paraméter típusa támogatott.
 | Dátum/dátum/idő         | Igen       | Igen       | Igen       |         |
 | Sztring                | Igen       | Igen       | Igen       |         |
 | Jogkivonat                 | Igen       | Igen       | Igen       |         |
-| Hivatkozás             | Igen       | Igen       | Igen       |         |
+| Referencia             | Igen       | Igen       | Igen       |         |
 | Kompozit             | Igen       | Igen       | Igen       |         |
 | Mennyiség              | Igen       | Igen       | Igen       |         |
 | URI                   | Igen       | Igen       | Igen       |         |
@@ -86,7 +86,7 @@ Az összes keresési paraméter típusa támogatott.
 | `_id`                   | Igen       | Igen       | Igen       |         |
 | `_lastUpdated`          | Igen       | Igen       | Igen       |         |
 | `_tag`                  | Igen       | Igen       | Igen       |         |
-| `_profile`              | Igen       | Igen       | Igen       |         |
+| `_profile`              | Részleges   | Részleges   | Részleges   | Csak a STU3 esetében támogatott, az R4-ben nem támogatott |
 | `_security`             | Igen       | Igen       | Igen       |         |
 | `_text`                 | Nem        | Nem        | Nem        |         |
 | `_content`              | Nem        | Nem        | Nem        |         |
@@ -127,7 +127,7 @@ Jelenleg a FHIR-kiszolgáló nyílt forráskódú programkódja [Azure Cosmos db
 
 A Cosmos DB egy globálisan elosztott, többmodelles (SQL API-, MongoDB API-stb.-) adatbázis. Különböző konzisztencia- [szinteket](../cosmos-db/consistency-levels.md)támogat. Az alapértelmezett központi telepítési sablon konzisztens FHIR-kiszolgálót konfigurál `Strong` , de a konzisztencia-házirend a kérelem fejlécének használatával a kérelem alapján módosítható (általában nyugodt) `x-ms-consistency-level` .
 
-## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
+## <a name="role-based-access-control"></a>Szerepkör alapú hozzáférés-vezérlés
 
 A FHIR-kiszolgáló [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) használ a hozzáférés-vezérléshez. A szerepköralapú hozzáférés-vezérlés (RBAC) kényszerítve van, ha a `FhirServer:Security:Enabled` konfigurációs paraméter értéke `true` , és a FHIR-kiszolgálónak küldött összes kérelemnek (kivéve `/metadata` ) a `Authorization` kérelem fejlécét kell beállítani `Bearer <TOKEN>` . A tokennek tartalmaznia kell egy vagy több, a jogcímben definiált szerepkört `roles` . A rendszer akkor fogadja a kérést, ha a jogkivonat olyan szerepkört tartalmaz, amely engedélyezi a megadott műveletet a megadott erőforráson.
 
@@ -137,7 +137,7 @@ Jelenleg az adott szerepkörre vonatkozó engedélyezett műveletek *globálisan
 
 * [**Kérelmek egységei (RUS)**](../cosmos-db/concepts-limits.md) – a FHIR-hez készült Azure API-portálon akár 10 000 RUs is konfigurálható. Legalább 400 RUs vagy 10 RUs/GB szükséges, attól függően, hogy melyik a nagyobb. Ha 10 000 RUs-nál többre van szüksége, a megnövelt támogatási jegybe helyezhető. Az elérhető maximális érték 1 000 000.
 
-* **Egyidejű kapcsolatok** és **példányok** – a dafault öt párhuzamos kapcsolatot biztosít a fürt két példányán (összesen 10 egyidejű kérelem esetén). Ha úgy gondolja, hogy több egyidejű kérésre van szüksége, nyisson meg egy támogatási jegyet az igényeinek megfelelő részletekkel.
+* **Egyidejű kapcsolatok** és **példányok** – alapértelmezés szerint öt egyidejű kapcsolat van a fürt két példányán (összesen 10 egyidejű kérelem esetén). Ha úgy gondolja, hogy több egyidejű kérésre van szüksége, nyisson meg egy támogatási jegyet az igényeinek megfelelő részletekkel.
 
 * **Köteg mérete** – minden köteg 500 elemre van korlátozva.
 

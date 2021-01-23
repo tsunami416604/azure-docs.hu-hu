@@ -12,12 +12,12 @@ ms.date: 09/14/2020
 ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: Translator, Translator Service, szöveg lefordítása, átbetűzés-szöveg, nyelvfelismerés
-ms.openlocfilehash: 68bbb31ae87ebbb84cda752c2f4a7c1bd1116dda
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 38bd4d28a8ae4c737155cd74bcb39d1acfaf699c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369528"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733494"
 ---
 # <a name="quickstart-get-started-with-translator"></a>Gyors útmutató: a fordító használatának első lépései
 
@@ -58,7 +58,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Translator sz
 
 # <a name="java"></a>[Java](#tab/java)
 
-* Hozzon létre egy munkakönyvtárat a projekthez. Például: `mkdir sample-project`.
+* Hozzon létre egy munkakönyvtárat a projekthez. Példa: `mkdir sample-project`.
 * A projekt inicializálása a Gradle: `gradle init --type basic` . Amikor a rendszer rákérdez a **DSL** kiválasztására, válassza a **Kotlin** lehetőséget.
 * Frissítés `build.gradle.kts` . Ne feledje, hogy a mintától függően frissítenie kell a-t `mainClassName` .
   ```java
@@ -85,14 +85,14 @@ Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Translator sz
 * Hozzon létre egy új projektet a kedvenc IDE vagy szerkesztőben.
 * Másolja a kódot az egyik mintából a projektbe.
 * Állítsa be az előfizetési kulcsot.
-* Futtassa a programot. Például: `node Translate.js`.
+* Futtassa a programot. Példa: `node Translate.js`.
 
 # <a name="python"></a>[Python](#tab/python)
 
 * Hozzon létre egy új projektet a kedvenc IDE vagy szerkesztőben.
 * Másolja a kódot az egyik mintából a projektbe.
 * Állítsa be az előfizetési kulcsot.
-* Futtassa a programot. Például: `python translate.py`.
+* Futtassa a programot. Példa: `python translate.py`.
 
 ---
 
@@ -123,7 +123,7 @@ Ha a Translator szolgáltatást a REST használatával hívja meg, meg kell győ
 
 ## <a name="keys-and-endpoints"></a>Keys and endpoints (Kulcsok és végpontok)
 
-Az ezen a lapon található minták az egyszerűség kedvéért nehezen kódolt kulcsokat és végpontokat használnak. Ne felejtse el **eltávolítani a kulcsot a kódból, ha elkészült** , és **Soha ne tegye közzé nyilvánosan**. Éles környezetben érdemes lehet biztonságos módszert használni a hitelesítő adatok tárolásához és eléréséhez. További információt a Cognitive Services [biztonsági](../cognitive-services-security.md) cikkben talál.
+Az ezen a lapon található minták az egyszerűség kedvéért nehezen kódolt kulcsokat és végpontokat használnak. Ne felejtse el **eltávolítani a kulcsot a kódból, ha elkészült**, és **Soha ne tegye közzé nyilvánosan**. Éles környezetben érdemes lehet biztonságos módszert használni a hitelesítő adatok tárolásához és eléréséhez. További információt a Cognitive Services [biztonsági](../cognitive-services-security.md) cikkben talál.
 
 ## <a name="translate-text"></a>Szöveg lefordítása 
 
@@ -968,7 +968,8 @@ Ha olyan nyelvre végez fordítást, amely a forrástól eltérő ábécét (vag
 
 Ha a végpontról szeretne beolvasni egy írást `translate` , használja a (z `toScript` ) paramétert.
 
-> ! Megjegyzés Az elérhető nyelvek és az íráson áttekinthető lehetőségek teljes listáját lásd: [nyelvi támogatás](language-support.md).
+> [!NOTE]
+> Az elérhető nyelvek és az íráson áttekinthető lehetőségek teljes listáját lásd: [nyelvi támogatás](language-support.md).
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -1247,7 +1248,8 @@ Sikeres hívás után a következő választ kell látnia. Ne feledje, hogy a v�
 
 A végpont használatával is `transliterate` beszerezhet egy írásos segítséget. Az átírási végpont használatakor meg kell adnia a forrás nyelvét ( `language` ), a forrás parancsfájlt/ábécét ( `fromScript` ), valamint a kimeneti parancsfájlt/ábécé ( `toScript` ) paraméterként. Ebben a példában a สวัสดี-re vonatkozó írást fogjuk kapni. 
 
-> ! Megjegyzés Az elérhető nyelvek és az íráson áttekinthető lehetőségek teljes listáját lásd: [nyelvi támogatás](language-support.md).
+> [!NOTE]
+> Az elérhető nyelvek és az íráson áttekinthető lehetőségek teljes listáját lásd: [nyelvi támogatás](language-support.md).
 
 # <a name="c"></a>[C#](#tab/csharp)
 

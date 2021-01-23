@@ -11,12 +11,12 @@ ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019, azure-synapse
-ms.openlocfilehash: 6750f010e3992a2b76cc688449ad44efa7ec76d0
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 68bab754142538fc6067cf2593ae6244a03a48d1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683273"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734814"
 ---
 # <a name="create-table-as-select-ctas"></a>CREATE TABLE A SELECT (CTAS)
 
@@ -208,7 +208,7 @@ DROP TABLE CTAS_acs;
 
 ## <a name="ansi-join-replacement-for-merge"></a>ANSI illesztés cseréje EGYESÍTÉShez 
 
-Az Azure szinapszis Analyticsben az [Egyesítés](/sql/t-sql/statements/merge-transact-sql?view=sql-server-ver15) (előzetes verzió) és a TARGET nem egyezik meg a cél, hogy kivonatos elosztott tábla legyen.  A felhasználók az ANSI-CSATLAKOZÁSt [frissítéssel](/sql/t-sql/queries/update-transact-sql?view=sql-server-ver15) vagy [törléssel](/sql/t-sql/statements/delete-transact-sql?view=sql-server-ver15) megkerülő megoldásként használhatják a céltábla adatainak módosítására egy másik táblához való csatlakozás eredménye alapján.  Íme egy példa.
+Az Azure szinapszis Analyticsben az [Egyesítés](/sql/t-sql/statements/merge-transact-sql?view=azure-sqldw-latest&preserve-view=true) (előzetes verzió) és a TARGET nem egyezik meg a cél, hogy kivonatos elosztott tábla legyen.  A felhasználók az ANSI-CSATLAKOZÁSt [frissítéssel](/sql/t-sql/queries/update-transact-sql?view=azure-sqldw-latest&preserve-view=true) vagy [törléssel](/sql/t-sql/statements/delete-transact-sql?view=azure-sqldw-latest&preserve-view=true) megkerülő megoldásként használhatják a céltábla adatainak módosítására egy másik táblához való csatlakozás eredménye alapján.  Íme egy példa.
 
 ```sql
 CREATE TABLE dbo.Table1   
@@ -381,6 +381,6 @@ Láthatja, hogy a típus konzisztenciája és a CTAS tulajdonság fenntartása e
 
 A CTAS a szinapszis SQL egyik legfontosabb utasítása. Győződjön meg róla, hogy alaposan megértette. Tekintse meg a [CTAS dokumentációját](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További fejlesztési tippekért tekintse meg a [fejlesztés áttekintése](sql-data-warehouse-overview-develop.md)című témakört.

@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: 94923b13181290a290f13339da5b05f6fdddff38
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: d9c2bec575f2c7a948f3eb6e65be6a735a3c03e8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253739"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733811"
 ---
 # <a name="tutorial-getting-started-with-always-encrypted-with-secure-enclaves-in-azure-sql-database"></a>Oktatóanyag: a Always Encrypted első lépései a biztonságos enklávékkal Azure SQL Database
 
@@ -25,7 +25,7 @@ ms.locfileid: "98253739"
 > [!NOTE]
 > Always Encrypted a biztonságos enklávékkal a Azure SQL Database jelenleg **nyilvános előzetes** verzióban érhető el.
 
-Ez az oktatóanyag bemutatja, hogyan kezdheti meg a [Always Encryptedt a biztonságos enklávékkal](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves) Azure SQL Databaseban. A következőket fogja látni:
+Ez az oktatóanyag bemutatja, hogyan kezdheti meg a [Always Encryptedt a biztonságos enklávékkal](/sql/relational-databases/security/encryption/always-encrypted-enclaves) Azure SQL Databaseban. A következőket fogja látni:
 
 > [!div class="checklist"]
 > - Környezet létrehozása a biztonságos enklávékkal való Always Encrypted teszteléséhez és kiértékeléséhez.
@@ -33,11 +33,11 @@ Ez az oktatóanyag bemutatja, hogyan kezdheti meg a [Always Encryptedt a biztons
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ehhez az oktatóanyaghoz Azure PowerShell és [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)szükséges.
+Ehhez az oktatóanyaghoz Azure PowerShell és [SSMS](/sql/ssms/download-sql-server-management-studio-ssms)szükséges.
 
 ### <a name="powershell-requirements"></a>PowerShell-követelmények
 
-A Azure PowerShell telepítésével és futtatásával kapcsolatos információkért tekintse meg a [Azure PowerShell áttekintése](https://docs.microsoft.com/powershell/azure) című témakört. 
+A Azure PowerShell telepítésével és futtatásával kapcsolatos információkért tekintse meg a [Azure PowerShell áttekintése](/powershell/azure) című témakört. 
 
 Az igazolási műveletek támogatásához szükséges az modulok minimális verziója:
 
@@ -66,7 +66,7 @@ A PowerShell-galéria folytatásához futtassa a következő parancsot a Install
 
 ### <a name="ssms-requirements"></a>SSMS-követelmények
 
-A SSMS letöltésével kapcsolatos információkért tekintse meg a [letöltés SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) című témakört.
+A SSMS letöltésével kapcsolatos információkért tekintse meg a [letöltés SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) című témakört.
 
 A SSMS kötelező minimális verziója 18,8.
 
@@ -75,7 +75,7 @@ A SSMS kötelező minimális verziója 18,8.
 
  Ebben a lépésben egy új Azure SQL Database logikai kiszolgálót és egy új adatbázist fog létrehozni a DC sorozatú hardverkonfiguráció használatával. A Azure SQL Database Secure enklávés Always Encrypted az Intel SGX ENKLÁVÉHOZ enklávés szolgáltatást használja, amelyet a DC sorozatú hardverkonfiguráció támogat. További információ: [DC-Series](service-tiers-vcore.md#dc-series).
 
-1. Nyisson meg egy PowerShell-konzolt, és jelentkezzen be az Azure-ba. Ha szükséges, [váltson az oktatóanyaghoz használt előfizetésre](https://docs.microsoft.com/powershell/azure/manage-subscriptions-azureps) .
+1. Nyisson meg egy PowerShell-konzolt, és jelentkezzen be az Azure-ba. Ha szükséges, [váltson az oktatóanyaghoz használt előfizetésre](/powershell/azure/manage-subscriptions-azureps) .
 
   ```PowerShell
   Connect-AzAccount
@@ -356,10 +356,10 @@ A titkosított oszlopokon is futtathat részletes lekérdezéseket. Néhány lek
 ## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag elvégzése után az alábbi oktatóanyagok közül választhat:
-- [Oktatóanyag: .NET-alkalmazások fejlesztése a Always Encrypted használatával biztonságos enklávékkal](https://docs.microsoft.com/sql/connect/ado-net/sql/tutorial-always-encrypted-enclaves-develop-net-apps)
-- [Oktatóanyag: .NET-keretrendszerbeli alkalmazás fejlesztése a Always Encrypted használatával biztonságos enklávékkal](https://docs.microsoft.com/sql/relational-databases/security/tutorial-always-encrypted-enclaves-develop-net-framework-apps)
-- [Oktatóanyag: az enklávé-kompatibilis oszlopokban lévő indexek létrehozása és használata véletlenszerű titkosítással](https://docs.microsoft.com/sql/relational-databases/security/tutorial-creating-using-indexes-on-enclave-enabled-columns-using-randomized-encryption)
+- [Oktatóanyag: .NET-alkalmazások fejlesztése a Always Encrypted használatával biztonságos enklávékkal](/sql/connect/ado-net/sql/tutorial-always-encrypted-enclaves-develop-net-apps)
+- [Oktatóanyag: .NET-keretrendszerbeli alkalmazás fejlesztése a Always Encrypted használatával biztonságos enklávékkal](/sql/relational-databases/security/tutorial-always-encrypted-enclaves-develop-net-framework-apps)
+- [Oktatóanyag: az enklávé-kompatibilis oszlopokban lévő indexek létrehozása és használata véletlenszerű titkosítással](/sql/relational-databases/security/tutorial-creating-using-indexes-on-enclave-enabled-columns-using-randomized-encryption)
 
 ## <a name="see-also"></a>Lásd még:
 
-- [Always Encrypted konfigurálása és használata biztonságos enklávékkal](https://docs.microsoft.com/sql/relational-databases/security/encryption/configure-always-encrypted-enclaves)
+- [Always Encrypted konfigurálása és használata biztonságos enklávékkal](/sql/relational-databases/security/encryption/configure-always-encrypted-enclaves)

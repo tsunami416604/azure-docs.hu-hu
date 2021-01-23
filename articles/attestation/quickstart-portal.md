@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 52c0dd6825c8576d97e10d3f0568ca5fb81e789e
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 3ab1e6011a1c127c9ac5a2c7652a4bf458372e1e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210817"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733937"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-portal"></a>Gyors útmutató: Azure-igazolás beállítása Azure Portal
 
@@ -58,7 +58,7 @@ Az alábbi lépések végrehajtásával felügyelheti az igazolási szolgáltat�
 
     d. **Hely**: válasszon egy helyet 
     
-    e. **Házirend-aláíró tanúsítvány fájlja**: az igazolási szolgáltató házirend-aláírási tanúsítványokkal való konfigurálásához, a tanúsítványok fájljának feltöltéséhez. Tekintse meg [a példákat](/azure/attestation/policy-signer-examples) 
+    e. **Házirend-aláíró tanúsítvány fájlja**: az igazolási szolgáltató házirend-aláírási tanúsítványokkal való konfigurálásához, a tanúsítványok fájljának feltöltéséhez. Tekintse meg [a példákat](./policy-signer-examples.md) 
 6.  A szükséges bemenetek megadása után kattintson a **felülvizsgálat + létrehozás** gombra.
 7.  Javítsa ki az érvényesítési problémákat, és kattintson a **Létrehozás** gombra.
 
@@ -98,7 +98,7 @@ a.  Ellenőrizze a letöltött tanúsítványok darabszámát és tanúsítvány
 3.  Válassza ki az igazolási szolgáltatót, és navigáljon az Áttekintés lapra
 4.  Kattintson a **házirend-aláíró tanúsítványok** elemre a bal oldali erőforrás menüben vagy az alsó ablaktáblán
 5.  A felső menüben kattintson a **Hozzáadás** elemre (a gomb le lesz tiltva a házirend-aláírási követelmény nélkül létrehozott igazolási szolgáltatóknál)
-6.  Töltse fel a házirend-aláíró tanúsítvány fájlját, és kattintson a **Hozzáadás** gombra. Tekintse meg [a példákat](/azure/attestation/policy-signer-examples)
+6.  Töltse fel a házirend-aláíró tanúsítvány fájlját, és kattintson a **Hozzáadás** gombra. Tekintse meg [a példákat](./policy-signer-examples.md)
 
 ### <a name="delete-policy-signer-certificate"></a>Házirend-aláíró tanúsítvány törlése
 
@@ -107,7 +107,7 @@ a.  Ellenőrizze a letöltött tanúsítványok darabszámát és tanúsítvány
 3.  Válassza ki az igazolási szolgáltatót, és navigáljon az Áttekintés lapra
 4.  Kattintson a **házirend-aláíró tanúsítványok** elemre a bal oldali erőforrás menüben vagy az alsó ablaktáblán
 5.  A felső menüben kattintson a **Törlés** elemre (a gomb le lesz tiltva a házirend-aláírási követelmény nélkül létrehozott igazolási szolgáltatók esetében)
-6.  Töltse fel a házirend-aláíró tanúsítvány fájlját, és kattintson a **Törlés** gombra. Tekintse meg [a példákat](/azure/attestation/policy-signer-examples) 
+6.  Töltse fel a házirend-aláíró tanúsítvány fájlját, és kattintson a **Törlés** gombra. Tekintse meg [a példákat](./policy-signer-examples.md) 
 
 ## <a name="attestation-policy"></a>Igazolási szabályzat
 
@@ -132,7 +132,7 @@ a.  Ellenőrizze a letöltött tanúsítványok darabszámát és tanúsítvány
 5.  A felső menüben kattintson a **Konfigurálás** elemre.
 6.  Ha a tanúsító szolgáltató házirend-aláírási követelmény nélkül jön létre, a felhasználó feltöltheti a szabályzatot **JWT** vagy **szöveges** formátumban
 7.  **Házirend formátumának** kiválasztása **JWT**
-8.  Az **aláíratlan/aláírt JWT** formátumban töltse fel a házirend tartalmát tartalmazó fájlt, majd kattintson a **Save (Mentés**) gombra. Tekintse meg [a példákat](/azure/attestation/policy-examples)
+8.  Az **aláíratlan/aláírt JWT** formátumban töltse fel a házirend tartalmát tartalmazó fájlt, majd kattintson a **Save (Mentés**) gombra. Tekintse meg [a példákat](./policy-examples.md)
     
     A fájlfeltöltés beállításnál a házirend-előnézet szöveges formátumban jelenik meg, és a házirend-előnézet nem szerkeszthető.
 
@@ -147,7 +147,7 @@ a.  Ellenőrizze a letöltött tanúsítványok darabszámát és tanúsítvány
 5.  A felső menüben kattintson a **Konfigurálás** elemre.
 6.  Ha a tanúsító szolgáltató házirend-aláírási követelmény nélkül jön létre, a felhasználó feltöltheti a szabályzatot **JWT** vagy **szöveges** formátumban
 7.  **Házirend formátumának** kiválasztása **szövegként**
-8.  **Szöveges** formátumban töltse fel a fájl tartalmát, vagy írja be a házirend tartalmát a szövegmezőbe, majd kattintson a **Mentés** gombra. Tekintse meg [a példákat](/azure/attestation/policy-examples)
+8.  **Szöveges** formátumban töltse fel a fájl tartalmát, vagy írja be a házirend tartalmát a szövegmezőbe, majd kattintson a **Mentés** gombra. Tekintse meg [a példákat](./policy-examples.md)
 
     A fájlfeltöltés beállításnál a házirend-előnézet szöveges formátumban jelenik meg, és a házirend-előnézet nem szerkeszthető.
 
@@ -163,20 +163,9 @@ a.  Ellenőrizze a letöltött tanúsítványok darabszámát és tanúsítvány
 4.  Kattintson a **házirend** elemre a bal oldali erőforrás menüben vagy az alsó ablaktáblán
 5.  A felső menüben kattintson a **Konfigurálás** elemre.
 6.  Ha az igazolási szolgáltató házirend-aláírási követelménysel jön létre, a felhasználó csak **aláírt JWT formátumban** tölthet fel szabályzatot
-7.  A feltöltési házirend fájljának **aláírása JWT** , majd kattintson a **Save (Mentés**) gombra. Tekintse meg [a példákat](/azure/attestation/policy-examples)
+7.  A feltöltési házirend fájljának **aláírása JWT** , majd kattintson a **Save (Mentés**) gombra. Tekintse meg [a példákat](./policy-examples.md)
 
     A fájlfeltöltés beállításnál a házirend-előnézet szöveges formátumban jelenik meg, és a házirend-előnézet nem szerkeszthető.
     
 8.  Kattintson a **frissítés** gombra a beállított szabályzat megtekintéséhez.
-
- 
-
-
-
-
-
-
-
-
-
 

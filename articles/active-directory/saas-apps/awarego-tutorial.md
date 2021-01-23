@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 6599abd6282d0d1eb7cb81002c34ddd5158dab6b
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 4682396f68d6ff1af0b2fb6a5b1a8419d6963529
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511059"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735337"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-awarego"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses integráció a AwareGo
 
@@ -139,11 +139,9 @@ Ebben a szakaszban az alábbi módokon tesztelheti az Azure AD egyszeri bejelent
 
 * Lépjen közvetlenül a AwareGo bejelentkezési oldalára, és indítsa el innen a bejelentkezési folyamatot.
 
-* Nyissa meg a Microsoft My Apps szolgáltatást. Amikor kiválasztja a **AwareGo** csempét az alkalmazásokban, a rendszer átirányítja a AwareGo bejelentkezési oldalára. További információ: [Bejelentkezés és alkalmazások indítása a saját alkalmazások portálján](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Nyissa meg a Microsoft My Apps szolgáltatást. Amikor kiválasztja a **AwareGo** csempét az alkalmazásokban, a rendszer átirányítja a AwareGo bejelentkezési oldalára. További információ: [Bejelentkezés és alkalmazások indítása a saját alkalmazások portálján](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>További lépések
 
-A AwareGo konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő kiterjeszthető feltételes hozzáférést biztosító alkalmazás-vezérlőról. További információ: a [munkamenet-vezérlés kényszerített érvényesítése Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+A AwareGo konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő kiterjeszthető feltételes hozzáférést biztosító alkalmazás-vezérlőról. További információ: a [munkamenet-vezérlés kényszerített érvényesítése Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

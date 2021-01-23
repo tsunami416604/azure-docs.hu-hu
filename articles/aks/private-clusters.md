@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre egy privát Azure Kubernetes Serv
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 2b0cc8a2fe9a45120bf0b74dbad5e107fd860845
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 66072032b3fd1ac33bef60922c62f73a8cfb11bd
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664367"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734664"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Privát Azure Kubernetes Service-fürt létrehozása
 
@@ -121,18 +121,18 @@ A központilag [és küllős architektúrákat](/azure/architecture/reference-ar
 3. Olyan esetekben, amikor a fürtöt tartalmazó VNet egyéni DNS-beállításokkal rendelkezik (4), a fürt üzembe helyezése meghiúsul, ha a magánhálózati DNS-zóna az egyéni DNS-feloldókat (5) tartalmazó VNet van társítva. Ez a hivatkozás manuálisan hozható létre, miután a privát zóna létrejött a fürt kiépítése során vagy az automatizáláson keresztül, amikor az eseményvezérelt központi telepítési mechanizmusok használatával észleli a zóna létrehozását (például Azure Event Grid és Azure Functions).
 
 > [!NOTE]
-> Ha a saját [útválasztási táblázatot használja a kubenet](https://docs.microsoft.com/azure/aks/configure-kubenet#bring-your-own-subnet-and-route-table-with-kubenet) , és saját DNS-t használ privát fürttel, a fürt létrehozása sikertelen lesz. Ahhoz, hogy a létrehozás sikeres legyen, a csomópont-erőforráscsoport [útvonaltábla](https://docs.microsoft.com/azure/aks/configure-kubenet#bring-your-own-subnet-and-route-table-with-kubenet) hozzá kell rendelnie az alhálózathoz.
+> Ha a saját [útválasztási táblázatot használja a kubenet](./configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet) , és saját DNS-t használ privát fürttel, a fürt létrehozása sikertelen lesz. Ahhoz, hogy a létrehozás sikeres legyen, a csomópont-erőforráscsoport [útvonaltábla](./configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet) hozzá kell rendelnie az alhálózathoz.
 
 ## <a name="limitations"></a>Korlátozások 
 * A jogosult IP-címtartományok nem alkalmazhatók a privát API-kiszolgálói végpontra, csak a nyilvános API-kiszolgálóra érvényesek.
 * Az [Azure Private link Service korlátozásai][private-link-service] a privát fürtökre vonatkoznak.
-* Az Azure DevOps nem támogatja a Microsoft által üzemeltetett ügynököket privát fürtökkel. Érdemes lehet saját üzemeltetésű [ügynököket](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops&tabs=browser&preserve-view=true)használni. 
+* Az Azure DevOps nem támogatja a Microsoft által üzemeltetett ügynököket privát fürtökkel. Érdemes lehet saját üzemeltetésű [ügynököket](/azure/devops/pipelines/agents/agents?preserve-view=true&tabs=browser&view=azure-devops)használni. 
 * Azon ügyfelek számára, akik számára engedélyezni kell a Azure Container Registryt a privát AK-val való munkavégzéshez, az Container Registry virtuális hálózatot az ügynök-fürt virtuális hálózatának kell megadnia.
 * Meglévő AK-fürtök privát fürtökre való konvertálása nem támogatott
 * Ha törli vagy módosítja a magánhálózati végpontot az ügyfél alhálózatán, a fürt működése leáll. 
 * A tárolók élő adatAzure Monitor jelenleg nem támogatottak.
 * Miután az ügyfelek frissítették a rekordot a saját DNS-kiszolgálóin, ezek a hüvelyek továbbra is feloldják a apiserver teljes tartománynevét a régebbi IP-címekre a Migrálás után, amíg újra nem indulnak. Az ügyfeleknek újra kell indítaniuk a hostNetwork-hüvelyeket és az alapértelmezett-DNSPolicy hüvelyeket a vezérlési sík áttelepítése után.
-* Ha karbantartást végez a vezérlési síkon, az [AK IP-címe](https://docs.microsoft.com/azure/aks/limit-egress-traffic#:~:text=By%20default%2C%20AKS%20clusters%20have%20unrestricted%20outbound%20%28egress%29,be%20accessible%20to%20maintain%20healthy%20cluster%20maintenance%20tasks.) változhat. Ebben az esetben frissítenie kell az a rekordot, amely az API-kiszolgáló magánhálózati IP-címére mutat az egyéni DNS-kiszolgálón, és minden egyéni hüvelyt vagy üzemelő példányt újraindít a hostNetwork használatával.
+* Ha karbantartást végez a vezérlési síkon, az [AK IP-címe](./limit-egress-traffic.md) változhat. Ebben az esetben frissítenie kell az a rekordot, amely az API-kiszolgáló magánhálózati IP-címére mutat az egyéni DNS-kiszolgálón, és minden egyéni hüvelyt vagy üzemelő példányt újraindít a hostNetwork használatával.
 
 <!-- LINKS - internal -->
 [az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register

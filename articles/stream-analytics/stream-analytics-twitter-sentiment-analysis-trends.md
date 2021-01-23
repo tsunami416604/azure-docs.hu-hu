@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 02/10/2020
-ms.openlocfilehash: 3b321e318621c5687a2e3e5f0649985210a2d16c
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 6a461ad906f7611c8a13e2ee495f4d2f62fedd53
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019873"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734838"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Valós idejű Twitter-hangulatelemzés az Azure Stream Analytics szolgáltatásban
 
@@ -41,6 +41,10 @@ Ebben a útmutatóban egy, a Twitterhez csatlakozó ügyfélalkalmazás és olya
 
 * Telepítse a [a .net Core parancssori felülete](/dotnet/core/tools/?tabs=netcore2x) 2.1.0 verzióját.
 
+Az alábbiakban a megoldás architektúráját fogjuk megvalósítani.
+
+   ![A megoldás felépítéséhez használt különböző szolgáltatásokat és alkalmazásokat bemutató diagram.](./media/stream-analytics-twitter-sentiment-analysis-trends/solution-diagram.png "Megoldási diagram")
+
 ## <a name="create-an-event-hub-for-streaming-input"></a>Event hub létrehozása adatfolyam-bevitelhez
 
 A minta alkalmazás eseményeket hoz létre, és leküldi őket egy Azure Event hub-ba. Az Azure Event Hubs a Stream Analytics esetében az események betöltésének előnyben részesített módszere. További információkért tekintse meg az [Azure Event Hubs dokumentációját](../event-hubs/event-hubs-about.md).
@@ -60,7 +64,7 @@ Ebben a szakaszban létrehoz egy Event hub-névteret, és hozzáad egy Event hub
 
 6. Nevezze el az új Event hub *socialtwitter-eh* nevet. Más nevet is használhat. Ha így tesz, jegyezze fel, mert később szüksége lesz erre a névre. Az Event hub egyéb beállításait nem kell beállítania.
  
-7. Kattintson a **Létrehozás** gombra.
+7. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="grant-access-to-the-event-hub"></a>Hozzáférés biztosítása az Event hub számára
 
@@ -75,7 +79,7 @@ Ahhoz, hogy egy folyamat adatküldést küldjön egy Event hubhoz, az Event hub-
 
 3.  A hozzáférési házirend lapon válassza a **+ Hozzáadás** lehetőséget. Ezután írja be a *socialtwitter-hozzáférés* **nevet a szabályzat neveként** , és jelölje be a **kezelés** jelölőnégyzetet.
  
-4.  Kattintson a **Létrehozás** gombra.
+4.  Válassza a **Létrehozás** lehetőséget.
 
 5.  Miután telepítette a házirendet, válassza ki a szabályzatot a megosztott hozzáférési házirendek listájából.
 
@@ -148,7 +152,7 @@ Most, hogy a tweet-események valós időben áramlanak a Twitterről, beállít
 
     Érdemes a feladatot és az Event hub-t ugyanabban a régióban elhelyezni a legjobb teljesítmény érdekében, és így nem kell fizetnie a régiók közötti adatátvitel során.
 
-3. Kattintson a **Létrehozás** gombra. Ezután navigáljon a feladatokhoz, amikor a telepítés befejeződött.
+3. Válassza a **Létrehozás** lehetőséget. Ezután navigáljon a feladatokhoz, amikor a telepítés befejeződött.
 
 ## <a name="specify-the-job-input"></a>Adja meg a feladatok bemenetét
 
@@ -212,7 +216,7 @@ Ebben a útmutatóban az összesített Tweet-eseményeket a feladatsorból az Az
    * **Storage-fiók**. Válassza ki a tárfiókot.
    * **Tároló**. Válassza az **új létrehozása** elemet, és adja meg az értéket `socialtwitter` .
    
-4. Válassza a **Mentés** lehetőséget.   
+4. Kattintson a **Mentés** gombra.   
 
 ## <a name="start-the-job"></a>A feladat indítása
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 680b1f3b6af186eba27a4dd926016a04cd863760
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 0a1221a8de10fd18768a1a0f0ac08277dc2901d6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013488"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735033"
 ---
 # <a name="app-service-environment-networking"></a>App Service Environment hálózatkezelés
 
@@ -52,7 +52,7 @@ A ASEv2 eltérően a ASEv3 segítségével megadhatja a hálózati biztonsági c
 
 ## <a name="dns"></a>DNS
 
-A szolgáltatón belüli alkalmazások azt a DNS-t fogják használni, amelyhez a VNet konfigurálva van. Kövesse a következő témakör utasításait: [app Service Environment használatával](https://docs.microsoft.com/azure/app-service/environment/using#dns-configuration) konfigurálja a DNS-kiszolgálót úgy, hogy az a szolgáltatásra mutasson. Ha azt szeretné, hogy egyes alkalmazások egy másik DNS-kiszolgálót használjanak, mint amit a VNet konfigurál, akkor az Alkalmazásbeállítások WEBSITE_DNS_SERVER és WEBSITE_DNS_ALT_SERVER használatával manuálisan is beállíthatja az alkalmazáson alapuló beállítást. Az Alkalmazásbeállítás WEBSITE_DNS_ALT_SERVER konfigurálja a másodlagos DNS-kiszolgálót. A másodlagos DNS-kiszolgálót csak akkor használja a rendszer, ha az elsődleges DNS-kiszolgálótól nem érkezik válasz. 
+A szolgáltatón belüli alkalmazások azt a DNS-t fogják használni, amelyhez a VNet konfigurálva van. Kövesse a következő témakör utasításait: [app Service Environment használatával](./using.md#dns-configuration) konfigurálja a DNS-kiszolgálót úgy, hogy az a szolgáltatásra mutasson. Ha azt szeretné, hogy egyes alkalmazások egy másik DNS-kiszolgálót használjanak, mint amit a VNet konfigurál, akkor az Alkalmazásbeállítások WEBSITE_DNS_SERVER és WEBSITE_DNS_ALT_SERVER használatával manuálisan is beállíthatja az alkalmazáson alapuló beállítást. Az Alkalmazásbeállítás WEBSITE_DNS_ALT_SERVER konfigurálja a másodlagos DNS-kiszolgálót. A másodlagos DNS-kiszolgálót csak akkor használja a rendszer, ha az elsődleges DNS-kiszolgálótól nem érkezik válasz. 
 
 ## <a name="preview-limitation"></a>Előzetes verzió korlátozása
 
@@ -61,4 +61,3 @@ Vannak néhány olyan hálózatkezelési funkció, amely nem érhető el a ASEv3
 • FTP • távoli hibakeresés • külső terheléselosztó üzembe helyezése – a tárolók központi telepítésére való hozzáférés lehetősége, amely lehetővé teszi, hogy a globálisan felhasználható virtuális hálózatok – a szolgáltatás-végponttal vagy a privát végponttal védett tárolóval való biztonsági mentés/visszaállítás lehetősége fiók • a szolgáltatás-végpont vagy a privát végpontok által védett kulcstartó-fiókokra vonatkozó beállítások, amelyek lehetővé teszik, hogy a BYOS egy szolgáltatási végpont vagy egy privát végpont által védett Storage-fiókkal rendelkezzenek, a kimenő forgalom Network Watcher vagy NSG folyamatának használatával.
     
     
-

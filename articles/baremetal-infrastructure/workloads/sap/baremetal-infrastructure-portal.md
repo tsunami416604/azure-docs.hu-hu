@@ -3,12 +3,12 @@ title: BareMetal-példányok egységei az Azure-ban
 description: Ismerje meg, hogyan azonosíthatja és kezelheti a BareMetal-példányok egységeit a Azure Portalon keresztül.
 ms.topic: how-to
 ms.date: 1/4/2021
-ms.openlocfilehash: 30e1661e82546dbaf6d8dc4288ad896df89f401e
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: b089b45c35ff05f10ae59f8ce793645361be1e9b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861041"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733263"
 ---
 # <a name="manage-baremetal-instances-through-the-azure-portal"></a>Operációs rendszer nélküli példányok kezelése az Azure Portalon
  
@@ -97,7 +97,7 @@ A lehetséges hardver-változatok a következők:
 >[!NOTE]
 >A Rev 4,2 a legújabb, a meglévő Rev 4 architektúrát használó BareMetal-infrastruktúra. A Rev 4 Az Azure-beli virtuális gépek (VM) gazdagépei számára biztosít szorosabb közelséget. Az Azure-beli virtuális gépek és a BareMetal-példányok közötti hálózati késés jelentős javulása a Rev 4-bélyegekben vagy-sorokban van üzembe helyezve. A BareMetal-példányok a Azure Portalon keresztül érhetők el és kezelhetők. További információ: BareMetal- [infrastruktúra az Azure](baremetal-overview-architecture.md)-ban.
  
-Emellett a jobb oldalon megtalálja az [Azure Proximity-elhelyezési csoport](../../../virtual-machines/linux/co-location.md) nevét, amely automatikusan létrejön az egyes üzembe helyezett BareMetal-példányok egysége számára. Az alkalmazás réteget futtató Azure-beli virtuális gépek üzembe helyezése esetén hivatkozzon a közelségi csoportra. Ha az BareMetal-példány egységéhez tartozó közelségi elhelyezési csoportot használja, győződjön meg arról, hogy az Azure-beli virtuális gépek üzembe helyezése a BareMetal-példány egységéhez közel van.
+Emellett a jobb oldalon megtalálja az [Azure Proximity-elhelyezési csoport](../../../virtual-machines/co-location.md) nevét, amely automatikusan létrejön az egyes üzembe helyezett BareMetal-példányok egysége számára. Az alkalmazás réteget futtató Azure-beli virtuális gépek üzembe helyezése esetén hivatkozzon a közelségi csoportra. Ha az BareMetal-példány egységéhez tartozó közelségi elhelyezési csoportot használja, győződjön meg arról, hogy az Azure-beli virtuális gépek üzembe helyezése a BareMetal-példány egységéhez közel van.
  
 >[!TIP]
 >Ha az alkalmazás rétegét ugyanabban az Azure-adatközpontban szeretné megkeresni, mint a 4. x változatot, tekintse meg az [Azure Proximity elhelyezési csoportok az optimális hálózati késés](../../../virtual-machines/workloads/sap/sap-proximity-placement-scenarios.md)érdekében

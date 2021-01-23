@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: cc88712dd686983baed858de47e11dfa44e85350
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 9190585face277d92ef86c9bfa045d6d8c05b01c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955518"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734868"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>Oktatóanyag: a hópehely konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -164,7 +164,7 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 
 * **IP-címtartományok** 
 
-   Az Azure AD-kiépítési szolgáltatás jelenleg egy adott IP-tartományon belül működik. Ha szükséges, korlátozhatja az egyéb IP-tartományokat, és hozzáadhatja ezeket az IP-tartományokat az alkalmazás engedélyezési, hogy az Azure AD kiépítési szolgáltatásból érkező adatforgalom az alkalmazásba kerüljön. Tekintse át a dokumentációt az [IP-címtartományok](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#ip-ranges)között.
+   Az Azure AD-kiépítési szolgáltatás jelenleg egy adott IP-tartományon belül működik. Ha szükséges, korlátozhatja az egyéb IP-tartományokat, és hozzáadhatja ezeket az IP-tartományokat az alkalmazás engedélyezési, hogy az Azure AD kiépítési szolgáltatásból érkező adatforgalom az alkalmazásba kerüljön. Tekintse át a dokumentációt az [IP-címtartományok](../app-provisioning/use-scim-to-provision-users-and-groups.md#ip-ranges)között.
 
 ## <a name="change-log"></a>Módosítási napló
 

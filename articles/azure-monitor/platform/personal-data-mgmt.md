@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 2bb1e667758a1430e34d222b9a5c537381c07624
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 40ea367c1298a916df541d362b85e8d485d193f1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505273"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734932"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>A Log Analyticsben és az Application Insightsban tárolt személyes adatokkal kapcsolatos útmutató
 
@@ -91,7 +91,7 @@ Az adatkérések megtekintésére és exportálására a [log Analytics lekérde
 Elérhetővé tettük a *kiürítési* API elérési útját az adatvédelem részeként. Ezt az elérési utat takarékosan kell használni a művelethez kapcsolódó kockázat miatt, a lehetséges teljesítményre gyakorolt hatás, valamint a teljes összesítések, a mérések és a Log Analytics-adat egyéb szempontjainak eldöntése. Tekintse meg a [személyes adatkezeléssel](#strategy-for-personal-data-handling) foglalkozó témakört, amely a magánjellegű információk kezelésére szolgáló alternatív módszereket ismerteti.
 
 > [!NOTE]
-> A kiürítési művelet elvégzése után az nem érhető el, amíg a [kiürítési művelet állapota](https://docs.microsoft.com/rest/api/loganalytics/workspacepurge/getpurgestatus) *függőben* van. 
+> A kiürítési művelet elvégzése után az nem érhető el, amíg a [kiürítési művelet állapota](/rest/api/loganalytics/workspacepurge/getpurgestatus) *függőben* van. 
 
 A kiürítés egy magas jogosultsági szintű művelet, amelyet az Azure-ban egyetlen alkalmazás vagy felhasználó sem tartalmaz (beleértve az erőforrás tulajdonosát is), anélkül, hogy külön szerepkört kellene kiadni a Azure Resource Managerban. Ez a szerepkör _Adattisztító_ , és az adatvesztés lehetősége miatt körültekintően kell delegálni. 
 
@@ -126,7 +126,6 @@ A Azure Resource Manager szerepkör hozzárendelése után két új API-elérés
 > [!IMPORTANT]
 >  Habár a kitisztítási műveletek túlnyomó többsége sokkal gyorsabban teljesíthető, mint az SLA, mivel jelentős hatással vannak az Application Insights által használt adatplatformra, **a törlési műveletek befejezésére vonatkozó formális SLA 30 napon belül be van állítva**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Ha többet szeretne megtudni a Log Analytics adatok gyűjtéséről, feldolgozásáról és védelméről, tekintse meg a [log Analytics az adatbiztonságot](./data-security.md)ismertető témakört.
 - Ha többet szeretne megtudni a Application Insights adatok gyűjtéséről, feldolgozásáról és védelméről, tekintse meg a [Application Insights az adatbiztonságot](../app/data-retention-privacy.md)ismertető témakört.
-

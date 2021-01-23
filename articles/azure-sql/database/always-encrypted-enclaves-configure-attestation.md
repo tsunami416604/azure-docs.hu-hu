@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: e8cb423d4d700c4b6b6caa30a02eac3e7ef10cb6
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 51431bf0da9145e1b61da708942b675e4c3eea78
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253475"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733818"
 ---
 # <a name="configure-azure-attestation-for-your-azure-sql-logical-server"></a>Az Azure-igazolás konfigurálása az Azure SQL logikai kiszolgálóhoz
 
@@ -27,7 +27,7 @@ ms.locfileid: "98253475"
 
 [Microsoft Azure igazolás](../../attestation/overview.md) a megbízható végrehajtási környezetek (pólók) igazolására szolgáló megoldás, beleértve az Intel Software Guard Extensions (Intel SGX enklávéhoz) enklávékat. 
 
-Ha az Azure-igazolást szeretné használni a Azure SQL Database [biztonságos enklávékkal Always encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves) használt Intel SGX enklávéhoz enklávék igazolásához, a következőket kell tennie:
+Ha az Azure-igazolást szeretné használni a Azure SQL Database [biztonságos enklávékkal Always encrypted](/sql/relational-databases/security/encryption/always-encrypted-enclaves) használt Intel SGX enklávéhoz enklávék igazolásához, a következőket kell tennie:
 
 1. Hozzon létre egy [igazolási szolgáltatót](../../attestation/basic-concepts.md#attestation-provider) , és konfigurálja az ajánlott igazolási szabályzattal.
 
@@ -114,7 +114,7 @@ Az igazolási munkafolyamat során az adatbázist tartalmazó Azure SQL logikai 
 
 ### <a name="use-azure-portal-to-assign-permission"></a>Engedélyek kiosztása Azure Portal használatával
 
-Ha egy Azure SQL-kiszolgáló identitását az igazolási szolgáltatóhoz tartozó igazoló olvasó szerepkörhöz szeretné rendelni, kövesse az [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure Portal használatával](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)című részben található általános útmutatást. A **szerepkör-hozzárendelés hozzáadása** panelen:
+Ha egy Azure SQL-kiszolgáló identitását az igazolási szolgáltatóhoz tartozó igazoló olvasó szerepkörhöz szeretné rendelni, kövesse az [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md)című részben található általános útmutatást. A **szerepkör-hozzárendelés hozzáadása** panelen:
 
 1. A **szerepkör** legördülő menüben válassza ki az **igazolási olvasó** szerepkört.
 1. A **kiválasztás** mezőben adja meg annak az Azure SQL Servernek a nevét, amelyet meg szeretne keresni.
@@ -143,12 +143,12 @@ $attestationResourceGroupName = "<attestation provider resource group name>"
 New-AzRoleAssignment -ObjectId $server.Identity.PrincipalId -RoleDefinitionName "Attestation Reader" -ResourceGroupName $attestationResourceGroupName
 ```
 
-További információ: [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása Azure PowerShell használatával](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell#add-a-role-assignment).
+További információ: [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása Azure PowerShell használatával](../../role-based-access-control/role-assignments-powershell.md#add-role-assignment-examples).
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [A biztonságok enklávékkal ellátott Always Encrypted kulcsainak kezelése](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves-manage-keys)
+- [A biztonságok enklávékkal ellátott Always Encrypted kulcsainak kezelése](/sql/relational-databases/security/encryption/always-encrypted-enclaves-manage-keys)
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [Oktatóanyag: a Always Encrypted első lépései a biztonságos enklávékkal Azure SQL Database](always-encrypted-enclaves-getting-started.md)

@@ -235,4 +235,4 @@
 - name: További források
   items:
     - name: Azure Arc – gyorsútmutató
-      href: 'https://github.com/microsoft/azure_arc'
+      href: 'https://azurearcjumpstart.io'
