@@ -13,16 +13,16 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba7b8ff2555fd7014cf16f66745721c6425ff868
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: b40918db03c260f899c36d306c892b787cc6371c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029523"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724891"
 ---
 # <a name="build-resilience-in-your-customer-identity-and-access-management-with-azure-active-directory-b2c"></a>Hozzon létre rugalmasságot az ügyfelek identitásában és a hozzáférés-kezelésben Azure Active Directory B2C
 
-A [Azure Active Directory (ad) B2C](https://docs.microsoft.com/azure/active-directory-b2c/overview) egy ügyfél-identitás-és hozzáférés-kezelési (CIAM) platform, amelynek célja, hogy segítsen a kritikus fontosságú ügyfeleket érintő alkalmazások sikeres elindításában. Számos beépített funkció áll rendelkezésre a [rugalmasság](https://azure.microsoft.com/blog/advancing-azure-active-directory-availability/) érdekében, amelyek célja, hogy segítse a szolgáltatás méretezését az igényeinek megfelelően, és javítsa a rugalmasságot a lehetséges kimaradási helyzetek szem előtt tartásával. Továbbá a kritikus fontosságú alkalmazások indításakor fontos figyelembe venni az alkalmazás különböző kialakítási és konfigurációs elemeit, valamint azt, hogy az alkalmazás hogyan legyen konfigurálva Azure AD B2Con belül, hogy a kiesési vagy meghibásodási helyzetekben rugalmas viselkedést kapjon. Ebben a cikkben a rugalmasság növelését segítő ajánlott eljárásokat ismertetjük.
+A [Azure Active Directory (ad) B2C](../../active-directory-b2c/overview.md) egy ügyfél-identitás-és hozzáférés-kezelési (CIAM) platform, amelynek célja, hogy segítsen a kritikus fontosságú ügyfeleket érintő alkalmazások sikeres elindításában. Számos beépített funkció áll rendelkezésre a [rugalmasság](https://azure.microsoft.com/blog/advancing-azure-active-directory-availability/) érdekében, amelyek célja, hogy segítse a szolgáltatás méretezését az igényeinek megfelelően, és javítsa a rugalmasságot a lehetséges kimaradási helyzetek szem előtt tartásával. Továbbá a kritikus fontosságú alkalmazások indításakor fontos figyelembe venni az alkalmazás különböző kialakítási és konfigurációs elemeit, valamint azt, hogy az alkalmazás hogyan legyen konfigurálva Azure AD B2Con belül, hogy a kiesési vagy meghibásodási helyzetekben rugalmas viselkedést kapjon. Ebben a cikkben a rugalmasság növelését segítő ajánlott eljárásokat ismertetjük.
 
 A rugalmas szolgáltatás az egyik, amely továbbra is működik a fennakadások ellenére. A szolgáltatás rugalmasságának javítása érdekében a következőket teheti:
 
@@ -49,3 +49,6 @@ Az alkalmazás fejlesztése során azt javasoljuk, hogy a megoldás identitás-�
 - [Rugalmasság kialakítása a hitelesítési infrastruktúrában](resilience-in-infrastructure.md)
 
 - [A hitelesítés és az engedélyezés rugalmasságának fokozása az alkalmazásokban](resilience-app-development-overview.md)
+
+Tekintse meg ezt a videót, amelyből megtudhatja, hogyan hozhat létre rugalmas és méretezhető folyamatokat Azure AD B2C használatával.
+>[!Video https://www.youtube.com/embed/8f_Ozpw9yTs]

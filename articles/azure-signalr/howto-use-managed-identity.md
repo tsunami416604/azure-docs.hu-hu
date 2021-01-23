@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: article
 ms.date: 06/8/2020
 ms.author: chenyl
-ms.openlocfilehash: 4f70cbacf686210c1188cb0a87e6116af8ed4b01
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: dee15977318eda7bcd0b1950286bb33f621221dd
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763156"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731584"
 ---
 # <a name="managed-identities-for-azure-signalr-service"></a>Felügyelt identitások az Azure Signaler szolgáltatáshoz
 
@@ -28,7 +28,7 @@ A Azure Portal felügyelt identitásának beállításához először létre kel
 
 2. Válassza az **identitás** lehetőséget.
 
-4. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva **értékre**. Válassza a **Mentés** lehetőséget.
+4. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva **értékre**. Kattintson a **Mentés** gombra.
 
     :::image type="content" source="media/signalr-howto-use-managed-identity/system-identity-portal.png" alt-text="Rendszerhez rendelt identitás hozzáadása a portálon":::
 
@@ -104,7 +104,7 @@ A signaler szolgáltatás a felügyelt identitás használatával tud hozzáfér
 
 1. Rendszerhez rendelt identitás vagy felhasználó által hozzárendelt identitás hozzáadása az Azure Signaler szolgáltatáshoz.
 
-2. Adja meg a titkos olvasási engedélyt a felügyelt identitáshoz a Key Vault hozzáférési házirendjeiben. Lásd: [Key Vault hozzáférési szabályzat kiosztása a Azure Portal használatával](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
+2. Adja meg a titkos olvasási engedélyt a felügyelt identitáshoz a Key Vault hozzáférési házirendjeiben. Lásd: [Key Vault hozzáférési szabályzat kiosztása a Azure Portal használatával](../key-vault/general/assign-access-policy-portal.md)
 
 Ez a funkció jelenleg a következő helyzetekben használható:
 

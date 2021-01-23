@@ -7,15 +7,15 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: 1a35b80ceec12b378a01555f42b7a0500b8f6229
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 5671ec68901be289a87c23b6883160f9cda2b651
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060452"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733183"
 ---
 # <a name="cross-resource-query-azure-data-explorer-by-using-azure-monitor"></a>Több erőforrás lekérdezése az Azure Adatkezelő Azure Monitor használatával
-Azure Monitor támogatja az Azure Adatkezelő, a [Application Insights](/azure/azure-monitor/app/app-insights-overview)és a [log Analytics](/azure/azure-monitor/platform/data-platform-logs)közötti szolgáltatások közötti lekérdezéseket. Ezután lekérdezheti az Azure Adatkezelő-fürtöt Log Analytics-vagy Application Insights-eszközök használatával, és megtekintheti azt egy több szolgáltatásból álló lekérdezésben. A cikk bemutatja, hogyan végezheti el a szolgáltatások közötti lekérdezést.
+Azure Monitor támogatja az Azure Adatkezelő, a [Application Insights](../app/app-insights-overview.md)és a [log Analytics](./data-platform-logs.md)közötti szolgáltatások közötti lekérdezéseket. Ezután lekérdezheti az Azure Adatkezelő-fürtöt Log Analytics-vagy Application Insights-eszközök használatával, és megtekintheti azt egy több szolgáltatásból álló lekérdezésben. A cikk bemutatja, hogyan végezheti el a szolgáltatások közötti lekérdezést.
 
 Az alábbi ábrán a Azure Monitor szolgáltatások közötti folyamat látható:
 
@@ -62,8 +62,8 @@ A szolgáltatások közötti több-bérlős lekérdezések nem támogatottak. Be
 
 Ha az Azure Adatkezelő erőforrás az A bérlőn található, és a Log Analytics munkaterület a B bérlőn található, használja az alábbi módszerek egyikét:
 
-*  Az Azure Adatkezelő lehetővé teszi szerepkörök hozzáadását a különböző bérlők résztvevői számára. Adja hozzá a saját felhasználói AZONOSÍTÓját a B bérlőhöz egy meghatalmazott felhasználóként az Azure Adatkezelő-fürtön. Ellenőrizze, hogy az Azure Adatkezelő-fürt [TrustedExternalTenant](https://docs.microsoft.com/powershell/module/az.kusto/update-azkustocluster) tulajdonsága tartalmazza-e a B bérlőt. a teljes lekérdezést futtassa a b bérlőn.
-*  A [világítótorony](https://docs.microsoft.com/azure/lighthouse/) használatával a Azure monitor-erőforrást az a bérlőhöz tervezheti.
+*  Az Azure Adatkezelő lehetővé teszi szerepkörök hozzáadását a különböző bérlők résztvevői számára. Adja hozzá a saját felhasználói AZONOSÍTÓját a B bérlőhöz egy meghatalmazott felhasználóként az Azure Adatkezelő-fürtön. Ellenőrizze, hogy az Azure Adatkezelő-fürt [TrustedExternalTenant](/powershell/module/az.kusto/update-azkustocluster) tulajdonsága tartalmazza-e a B bérlőt. a teljes lekérdezést futtassa a b bérlőn.
+*  A [világítótorony](../../lighthouse/index.yml) használatával a Azure monitor-erőforrást az a bérlőhöz tervezheti.
 
 ## <a name="connect-to-azure-data-explorer-clusters-from-different-tenants"></a>Kapcsolódás Azure Adatkezelő-fürtökhöz különböző bérlők között
 
@@ -72,6 +72,6 @@ A Kusto Explorer automatikusan bejelentkezik arra a bérlőre, amelyhez a felhas
 `Data Source=https://ade.applicationinsights.io/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=TenantId`
 
 ## <a name="next-steps"></a>További lépések
-* [Lekérdezések írása](https://docs.microsoft.com/azure/data-explorer/write-queries)
-* [Azure Monitor lekérdezése az Azure Adatkezelő használatával](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)
-* [Erőforrás-naplózási lekérdezések végrehajtása Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query)
+* [Lekérdezések írása](/azure/data-explorer/write-queries)
+* [Azure Monitor lekérdezése az Azure Adatkezelő használatával](/azure/data-explorer/query-monitor-data)
+* [Erőforrás-naplózási lekérdezések végrehajtása Azure Monitor](../log-query/cross-workspace-query.md)

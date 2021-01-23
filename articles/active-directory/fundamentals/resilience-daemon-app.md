@@ -11,12 +11,12 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: 74bfc9eeeb8375fca2c88a3fd3c31f17e130fc99
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a7b8f893026bb96c8d768d2e6d07d0240ecb81fa
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919626"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724841"
 ---
 # <a name="increase-the-resilience-of-authentication-and-authorization-in-daemon-applications-you-develop"></a>Növelje a hitelesítés és engedélyezés rugalmasságát a fejlesztés alatt álló Daemon-alkalmazásokban
 
@@ -26,7 +26,7 @@ Ez a cikk útmutatást nyújt arról, hogy a fejlesztők hogyan használhatják 
 
 ## <a name="use-managed-identities-for-azure-resources"></a>Felügyelt identitások használata az Azure-erőforrásokhoz
 
-A Microsoft Azureon futó Daemon-alkalmazásokat használó fejlesztők [felügyelt identitásokat használhatnak az Azure-erőforrásokhoz](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). A felügyelt identitások nem szükségesek a fejlesztők számára a titkok és a hitelesítő adatok kezeléséhez. A szolgáltatás javítja a rugalmasságot azáltal, hogy elkerüli a tanúsítvány lejárati hibáit, a rotációs hibákat vagy a megbízhatóságot. Emellett számos beépített funkcióval rendelkezik, amelyek kifejezetten a rugalmasság növelését szolgálják.
+A Microsoft Azureon futó Daemon-alkalmazásokat használó fejlesztők [felügyelt identitásokat használhatnak az Azure-erőforrásokhoz](../managed-identities-azure-resources/overview.md). A felügyelt identitások nem szükségesek a fejlesztők számára a titkok és a hitelesítő adatok kezeléséhez. A szolgáltatás javítja a rugalmasságot azáltal, hogy elkerüli a tanúsítvány lejárati hibáit, a rotációs hibákat vagy a megbízhatóságot. Emellett számos beépített funkcióval rendelkezik, amelyek kifejezetten a rugalmasság növelését szolgálják.
 
 A felügyelt identitások hosszú élettartamú hozzáférési jogkivonatokat és információkat használnak a Microsoft Identity szolgáltatástól, hogy proaktív módon szerezzenek be új jogkivonatokat egy nagy időkereten belül, mielőtt a meglévő token lejár. Az alkalmazás továbbra is futtatható egy új jogkivonat beszerzésére tett kísérlet során.
 
@@ -34,11 +34,11 @@ A felügyelt identitások regionális végpontokkal is javítják a teljesítmé
 
 ## <a name="use-the-microsoft-authentication-library"></a>A Microsoft hitelesítési függvénytárának használata
 
-A felügyelt identitásokat nem használó Daemon-alkalmazások fejlesztői használhatják a [Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)szolgáltatást, amely egyszerűvé teszi a hitelesítés és az engedélyezés megvalósítását, és automatikusan alkalmazza a rugalmasságra vonatkozó ajánlott eljárásokat. A MSAL egyszerűbbé teszi a szükséges ügyfél-hitelesítő adatok megadását. Előfordulhat például, hogy az alkalmazásnak nem kell megvalósítania JSON Web Token-érvényesítéseket tanúsítvány alapú hitelesítő adatok használatakor.
+A felügyelt identitásokat nem használó Daemon-alkalmazások fejlesztői használhatják a [Microsoft Authentication Library (MSAL)](../develop/msal-overview.md)szolgáltatást, amely egyszerűvé teszi a hitelesítés és az engedélyezés megvalósítását, és automatikusan alkalmazza a rugalmasságra vonatkozó ajánlott eljárásokat. A MSAL egyszerűbbé teszi a szükséges ügyfél-hitelesítő adatok megadását. Előfordulhat például, hogy az alkalmazásnak nem kell megvalósítania JSON Web Token-érvényesítéseket tanúsítvány alapú hitelesítő adatok használatakor.
 
 ### <a name="use-microsoftidentityweb-for-net-developers"></a>A Microsoft. Identity. Web használata .NET-fejlesztőknek
 
-A ASP.NET Core-alapú Daemon-alkalmazásokat fejlesztő fejlesztők használhatják a [Microsoft. Identity. Web](https://docs.microsoft.com/azure/active-directory/develop/microsoft-identity-web) könyvtárat. Ez a könyvtár a MSAL-re épül, hogy a ASP.NET Core alkalmazások számára még egyszerűbb legyen az engedélyezés. Több [elosztott jogkivonat-gyorsítótárazási](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization#distributed-token-cache) stratégiát is tartalmaz a több régióban futtatható elosztott alkalmazások esetében.
+A ASP.NET Core-alapú Daemon-alkalmazásokat fejlesztő fejlesztők használhatják a [Microsoft. Identity. Web](../develop/microsoft-identity-web.md) könyvtárat. Ez a könyvtár a MSAL-re épül, hogy a ASP.NET Core alkalmazások számára még egyszerűbb legyen az engedélyezés. Több [elosztott jogkivonat-gyorsítótárazási](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization#distributed-token-cache) stratégiát is tartalmaz a több régióban futtatható elosztott alkalmazások esetében.
 
 ## <a name="cache-and-store-tokens"></a>Gyorsítótár-és tárolási tokenek
 

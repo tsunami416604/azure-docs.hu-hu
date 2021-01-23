@@ -8,20 +8,20 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: 5baa6d57bd3895640f1654cf7a5ebca52f101cbe
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: dae77dfb72fb6b11721500686991f2b199606b99
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970571"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737863"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>Rendszerhéj-parancsfájlok futtatása Linux rendszerű virtuális gépen a Futtatás parancs használatával
 
-A futtatási parancs funkció a virtuális gép (VM) ügynököt használja a rendszerhéj-parancsfájlok Azure-beli linuxos virtuális gépen való futtatásához. Ezeket a parancsfájlokat használhatja az általános gépekhez vagy az alkalmazások kezeléséhez. Segítségükkel gyorsan diagnosztizálhatja és elháríthatja a virtuális gépek hozzáférési és hálózati problémáit, és visszaállíthatja a virtuális gépet jó állapotba.
+A Parancs futtatása funkció a virtuálisgép-ügynök segítségével futtatja a héjszkripteket az Azure-beli linuxos virtuális gépeken. Ezeket a szkripteket a gépek vagy alkalmazások általános kezelésére használhatja. Segítségükkel gyorsan diagnosztizálhatja és elháríthatja a virtuális gépek hozzáférési és hálózati problémáit, és visszaállíthatja a virtuális gépet jó állapotba.
 
 ## <a name="benefits"></a>Előnyök
 
-Több módon is elérheti a virtuális gépeket. A Run parancs a virtuálisgép-ügynök használatával távolról is futtathat parancsfájlokat a virtuális gépeken. A Futtatás parancsot a Linux rendszerű virtuális gépekhez készült Azure Portalon, [Rest APIon](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)vagy [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) -n keresztül használhatja.
+Több módon is elérheti a virtuális gépeket. A Run parancs a virtuálisgép-ügynök használatával távolról is futtathat parancsfájlokat a virtuális gépeken. A Futtatás parancsot a Linux rendszerű virtuális gépekhez készült Azure Portalon, [Rest APIon](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)vagy [Azure CLI](/cli/azure/vm/run-command#az_vm_run_command_invoke) -n keresztül használhatja.
 
 Ez a képesség minden olyan helyzetben hasznos, ahol parancsfájlt szeretne futtatni egy virtuális gépen belül. Ez az egyik lehetőség az olyan virtuális gépek hibáinak elhárítására és szervizelésére, amelyek nem rendelkeznek az RDP-vagy SSH-porttal, mert nem megfelelő hálózati vagy rendszergazdai konfigurációval rendelkeznek.
 
@@ -56,7 +56,7 @@ The entity was not found in this Azure location
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Az alábbi példa az az [VM Run-Command](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) paranccsal futtat egy rendszerhéj-parancsfájlt egy Azure Linux rendszerű virtuális gépen.
+Az alábbi példa az az [VM Run-Command](/cli/azure/vm/run-command#az_vm_run_command_invoke) paranccsal futtat egy rendszerhéj-parancsfájlt egy Azure Linux rendszerű virtuális gépen.
 
 ```azurecli-interactive
 az vm run-command invoke -g myResourceGroup -n myVm --command-id RunShellScript --scripts "apt-get update && apt-get install -y nginx"
@@ -67,11 +67,11 @@ az vm run-command invoke -g myResourceGroup -n myVm --command-id RunShellScript 
 
 ## <a name="azure-portal"></a>Azure Portal
 
-Lépjen a [Azure Portal](https://portal.azure.com) egy virtuális gépre, és válassza a **Futtatás parancsot** a **műveletek**területen. Ekkor megjelenik a virtuális gépen futtatandó elérhető parancsok listája.
+Lépjen a [Azure Portal](https://portal.azure.com) egy virtuális gépre, és válassza a **Futtatás parancsot** a **műveletek** területen. Ekkor megjelenik a virtuális gépen futtatandó elérhető parancsok listája.
 
 ![Parancsok listája](./media/run-command/run-command-list.png)
 
-Válassza ki a futtatandó parancsot. Egyes parancsok opcionális vagy kötelező bemeneti paramétereket tartalmazhatnak. Ezen parancsok esetében a paraméterek szövegmezőként jelennek meg a bemeneti értékek megadásához. Minden parancsnál megtekintheti a Futtatás alatt álló parancsfájlt a **megtekintési parancsfájl**kibontásával. A **RunShellScript** eltér a többi parancstól, mert lehetővé teszi a saját egyéni parancsfájl megadását.
+Válassza ki a futtatandó parancsot. Egyes parancsok opcionális vagy kötelező bemeneti paramétereket tartalmazhatnak. Ezen parancsok esetében a paraméterek szövegmezőként jelennek meg a bemeneti értékek megadásához. Minden parancsnál megtekintheti a Futtatás alatt álló parancsfájlt a **megtekintési parancsfájl** kibontásával. A **RunShellScript** eltér a többi parancstól, mert lehetővé teszi a saját egyéni parancsfájl megadását.
 
 > [!NOTE]
 > A beépített parancsok nem szerkeszthetők.
@@ -88,7 +88,7 @@ Az alábbi példa a [meghívó-AzVMRunCommand](/powershell/module/az.compute/inv
 Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
 ```
 
-## <a name="limiting-access-to-run-command"></a>A futtatási parancshoz való hozzáférés korlátozása
+## <a name="limiting-access-to-run-command"></a>A Parancs futtatása funkcióhoz való hozzáférés korlátozása
 
 A futtatási parancsok listázása vagy a parancs részleteinek megjelenítéséhez `Microsoft.Compute/locations/runCommands/read` engedély szükséges. Ez az engedély a beépített [olvasói](../../role-based-access-control/built-in-roles.md#reader) szerepkörhöz és a magasabb szintekhez tartozik.
 
@@ -96,6 +96,6 @@ A parancs futtatásához `Microsoft.Compute/virtualMachines/runCommand/action` e
 
 Használhatja a [beépített szerepkörök](../../role-based-access-control/built-in-roles.md) egyikét, vagy létrehozhat egy [Egyéni szerepkört](../../role-based-access-control/custom-roles.md) a futtatási parancs használatához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni a parancsfájlok és parancsok távoli virtuális gépen való futtatásának egyéb módjairól, olvassa el a [parancsfájlok futtatása a linuxos virtuális gépen](run-scripts-in-vm.md)című témakört.

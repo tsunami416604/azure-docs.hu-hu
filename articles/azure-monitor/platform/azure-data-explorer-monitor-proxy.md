@@ -7,16 +7,16 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 8942735ed65f8aa0cf6d315568e00412adcb353a
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: a31ef69d84f64e4bcaa46adac26a29d2cc367351
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060537"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731700"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Azure Monitor lekérdezése az Azure Adatkezelő használatával (előzetes verzió)
 
-Az Azure Adatkezelő támogatja az Azure Adatkezelő, a [Application Insights (AI)](/azure/azure-monitor/app/app-insights-overview)és a [log Analytics (La)](/azure/azure-monitor/platform/data-platform-logs)közötti több szolgáltatás lekérdezését. Ezután lekérdezheti az Log Analytics/Application Insights munkaterületet az Azure Adatkezelő eszközeivel, és egy több szolgáltatás lekérdezésében is hivatkozhat rá. A cikk bemutatja, hogyan hozhat létre több szolgáltatásból álló lekérdezést, és hogyan adhatja hozzá a Log Analytics/Application Insights munkaterületet az Azure Adatkezelő webes felhasználói felületéhez.
+Az Azure Adatkezelő támogatja az Azure Adatkezelő, a [Application Insights (AI)](../app/app-insights-overview.md)és a [log Analytics (La)](./data-platform-logs.md)közötti több szolgáltatás lekérdezését. Ezután lekérdezheti az Log Analytics/Application Insights munkaterületet az Azure Adatkezelő eszközeivel, és egy több szolgáltatás lekérdezésében is hivatkozhat rá. A cikk bemutatja, hogyan hozhat létre több szolgáltatásból álló lekérdezést, és hogyan adhatja hozzá a Log Analytics/Application Insights munkaterületet az Azure Adatkezelő webes felhasználói felületéhez.
 
 Az Azure Adatkezelő Cross Service lekérdezési folyamata: az :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-data-explorer-monitor-flow.png" alt-text="Azure adatkezelő proxy folyamata.":::
 
@@ -62,7 +62,7 @@ A lekérdezéseket a Kusto-lekérdezéseket támogató ügyféleszközök haszn�
 > * Az adatbázis nevének meg kell egyeznie a Cross Service lekérdezésben megadott erőforrás nevével. A rendszer a nevekben megkülönbözteti a kis- és nagybetűket.
 > * A fürtök közötti lekérdezésekben ellenőrizze, hogy helyesek-e a Application Insights alkalmazások és Log Analytics munkaterületek elnevezése.
 > * Ha a nevek speciális karaktereket tartalmaznak, azokat az URL-kódolás váltja fel a Cross Service lekérdezésben.
-> * Ha a nevek olyan karaktereket tartalmaznak, amelyek nem felelnek meg a [KQL-azonosítók nevének](https://docs.microsoft.com/azure/data-explorer/kusto/query/schema-entities/entity-names), a kötőjel karakter váltja fel őket **-** .
+> * Ha a nevek olyan karaktereket tartalmaznak, amelyek nem felelnek meg a [KQL-azonosítók nevének](/azure/data-explorer/kusto/query/schema-entities/entity-names), a kötőjel karakter váltja fel őket **-** .
 
 ### <a name="direct-query-on-your-log-analytics-or-application-insights-workspaces-from-azure-data-explorer-client-tools"></a>Közvetlen lekérdezés Log Analytics vagy Application Insights munkaterületről az Azure Adatkezelő ügyféleszközök
 
@@ -90,7 +90,7 @@ union <Azure Data Explorer table>, cluster(CL1).database(<workspace-name>).<tabl
 
 :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-data-explorer-cross-query-proxy.png" alt-text="Több szolgáltatás lekérdezése az Azure Adatkezelőból.":::
 
-Ha az [ `join` operátort](https://docs.microsoft.com/azure/data-explorer/kusto/query/joinoperator)használja, az Unió helyett az [`hint`](https://docs.microsoft.com/azure/data-explorer/kusto/query/joinoperator#join-hints) Azure adatkezelő natív fürtön kell futtatnia.
+Ha az [ `join` operátort](/azure/data-explorer/kusto/query/joinoperator)használja, az Unió helyett az [`hint`](/azure/data-explorer/kusto/query/joinoperator#join-hints) Azure adatkezelő natív fürtön kell futtatnia.
 
 ### <a name="join-data-from-an-azure-data-explorer-cluster-in-one-tenant-with-an-azure-monitor-resource-in-another"></a>Adatok csatlakoztatása Azure Adatkezelő-fürtből egyik bérlőn egy másik Azure Monitor erőforrással
 
@@ -98,9 +98,9 @@ A szolgáltatások közötti több-bérlős lekérdezések nem támogatottak. Eg
 
 Ha az Azure Adatkezelő erőforrás az "A" Bérlőben található, és Log Analytics munkaterület a "B" Bérlőben található, használja a következő két módszer egyikét:
 
-1. Az Azure Adatkezelő lehetővé teszi szerepkörök hozzáadását a különböző bérlők résztvevői számára. Adja hozzá felhasználói AZONOSÍTÓját a (z) B Bérlőben az Azure Adatkezelő-fürtön lévő meghatalmazott felhasználóként. Ellenőrizze, hogy az Azure Adatkezelő-fürt *["TrustedExternalTenant"](https://docs.microsoft.com/powershell/module/az.kusto/update-azkustocluster)* tulajdonsága tartalmazza-e a "B" bérlőt. Futtassa a teljes kereszt-lekérdezést a (z) "B" Bérlőben.
+1. Az Azure Adatkezelő lehetővé teszi szerepkörök hozzáadását a különböző bérlők résztvevői számára. Adja hozzá felhasználói AZONOSÍTÓját a (z) B Bérlőben az Azure Adatkezelő-fürtön lévő meghatalmazott felhasználóként. Ellenőrizze, hogy az Azure Adatkezelő-fürt *["TrustedExternalTenant"](/powershell/module/az.kusto/update-azkustocluster)* tulajdonsága tartalmazza-e a "B" bérlőt. Futtassa a teljes kereszt-lekérdezést a (z) "B" Bérlőben.
 
-2. A [világítótorony](https://docs.microsoft.com/azure/lighthouse/) használatával a Azure monitor-erőforrást az "a" bérlőhöz tervezheti.
+2. A [világítótorony](../../lighthouse/index.yml) használatával a Azure monitor-erőforrást az "a" bérlőhöz tervezheti.
 ### <a name="connect-to-azure-data-explorer-clusters-from-different-tenants"></a>Kapcsolódás Azure Adatkezelő-fürtökhöz különböző bérlők között
 
 A Kusto Explorer automatikusan aláírja azt a bérlőt, amelyhez a felhasználói fiók eredetileg tartozik. Ha a többi bérlő erőforrásait ugyanazzal a felhasználói fiókkal szeretné elérni, `tenantId` explicit módon meg kell adni azt a kapcsolati karakterláncban: `Data Source=https://ade.applicationinsights.io/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=` **TenantId**
@@ -134,4 +134,4 @@ A Log Analytics vagy Application Insights fürtök meghívásakor a következő 
 ## <a name="next-steps"></a>További lépések
 
 - További információ a [log Analytics munkaterületek és Application Insights adatszerkezetéről](data-platform-logs.md).
-- Megtudhatja, hogyan [írhat lekérdezéseket az Azure Adatkezelőban](https://docs.microsoft.com/azure/data-explorer/write-queries).
+- Megtudhatja, hogyan [írhat lekérdezéseket az Azure Adatkezelőban](/azure/data-explorer/write-queries).
