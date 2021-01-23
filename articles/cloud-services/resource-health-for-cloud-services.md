@@ -1,20 +1,25 @@
 ---
 title: Cloud Services Resource Health (klasszikus)
 description: Ez a cikk a Microsoft Azure Cloud Services (klasszikus) Resource Health-ellenőrzési (RHC-) támogatásáról beszél.
-services: cloud-services
-author: tanmaygore
-ms.service: cloud-services
 ms.topic: article
-ms.date: 9/1/2020
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: f99dd8131df9f8bc5d3e4013d4438faa8c25e53b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 37294e681066eb27ace69bcacee3a813b750b8eb
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072713"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743508"
 ---
 # <a name="resource-health-check-rhc-support-for-azure-cloud-services-classic"></a>Az Azure Cloud Services (klasszikus) Resource Health-ellenőrzési (RHC) támogatása
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
+
 Ez a cikk a [Microsoft Azure Cloud Services (klasszikus)](https://azure.microsoft.com/services/cloud-services) Resource Health-ellenőrzési (RHC-) támogatásáról beszél.
 
 A Cloud Services [Azure Resource Health](../service-health/resource-health-overview.md) segítséget nyújt a cloud Service &-telepítést befolyásoló szolgáltatási problémák diagnosztizálásában és támogatásában. A felhőalapú szolgáltatások jelenlegi és múltbeli állapotáról szóló jelentést a telepítés, a szerepkör & a szerepkör-példány szintjén.

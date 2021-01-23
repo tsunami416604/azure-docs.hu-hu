@@ -1,0 +1,97 @@
+- name: Cloud Services (bővített támogatás) – dokumentáció
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Tudnivalók a Cloud Servicesról (bővített támogatás)
+      href: overview.md
+    - name: Az üzembe helyezés előfeltételei
+      href: deploy-prerequisite.md
+    - name: Konfigurációs fájlok és csomagolás
+      href: cloud-services-model-and-package.md
+- name: Oktatóanyagok
+  items:
+    - name: Cloud Service üzembe helyezése – portál
+      href: deploy-portal.md
+    - name: Cloud Service üzembe helyezése – PowerShell
+      href: deploy-powershell.md
+    - name: Felhőalapú szolgáltatás üzembe helyezése – sablon
+      href: deploy-template.md
+    - name: Cloud Service üzembe helyezése – Visual Studio
+      href: deploy-visual-studio.md
+  expanded: true
+- name: Alapelvek
+  items:
+    - name: Elérhető virtuálisgép-méretek
+      href: available-sizes.md
+    - name: Gyakori kérdések
+      href: faq.md
+    - name: Vendég operációs rendszer javításai
+      href: ../cloud-services/cloud-services-guestos-msrc-releases.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
+    - name: Vendég operációs rendszer kivezetése
+      href: ../cloud-services/cloud-services-guestos-retirement-policy.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
+    - name: A vendég operációs rendszer kiadási hírei
+      href: ../cloud-services/cloud-services-guestos-update-matrix.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
+    - name: XML-séma
+      items:
+        - name: Csdef XML-séma
+          href: schema-csdef-file.md
+        - name: LoadBalancerProbe séma
+          href: schema-csdef-loadbalancerprobe.md
+        - name: Webszerepkör-séma
+          href: schema-csdef-webrole.md
+        - name: WorkerRole séma
+          href: schema-csdef-workerrole.md
+        - name: NetworkTrafficRules séma
+          href: schema-csdef-networktrafficrules.md
+        - name: Cscfg XML-séma
+          href: schema-cscfg-file.md
+        - name: Szerepkör-séma
+          href: schema-cscfg-role.md
+        - name: NetworkConfiguration séma
+          href: schema-cscfg-networkconfiguration.md
+- name: Útmutató
+  items:
+    - name: Bővítmények – áttekintés
+      href: extensions.md
+    - name: Távoli asztal-bővítmény alkalmazása
+      href: enable-rdp.md
+    - name: WAD-bővítmény alkalmazása
+      href: enable-wad.md
+    - name: Riasztások engedélyezése
+      href: enable-alerts.md
+    - name: Skálázás konfigurálása
+      href: configure-scaling.md
+    - name: Tanúsítványok
+      href: certificates-and-key-vault.md
+- name: Példák
+  items:
+    - name: Új felhőalapú szolgáltatás létrehozása
+      href: sample-create-cloud-service.md
+    - name: A Cloud Service részleteinek beolvasása
+      href: sample-get-cloud-service.md
+    - name: Felhőalapú szolgáltatás alaphelyzetbe állítása
+      href: sample-reset-cloud-service.md
+- name: Referencia
+  items:
+    - name: Az az. felhőszolgáltatás modul
+      href: 'https://www.powershellgallery.com/packages/Az.CloudService/0.1.0'
+    - name: PowerShell-parancsmagok
+      href: 'https://docs.microsoft.com/powershell/module/az.cloudservice/?view=azps-5.4.0#cloudservice'
+    - name: ARM-sablon referenciája
+      href: 'https://docs.microsoft.com/azure/templates/microsoft.compute/cloudservices'
+    - name: REST
+      href: 'https://docs.microsoft.com/rest/api/compute/cloudservices'
+- name: További források
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: Képzési terv
+      href: /learn/paths/azure-fundamentals/
+    - name: Microsoft Q&A
+      href: 'https://docs.microsoft.com/answers/topics/azure-cloud-services.html'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Szolgáltatási hírek
+      href: 'https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform='
