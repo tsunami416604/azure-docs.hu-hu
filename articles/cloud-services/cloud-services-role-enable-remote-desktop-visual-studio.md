@@ -1,25 +1,24 @@
 ---
-title: A Visual Studio használata, Távoli asztal engedélyezése szerepkörhöz (Azure Cloud Services)
+title: A Visual Studio használata, Távoli asztal engedélyezése egy szerepkörhöz (Azure Cloud Services klasszikus)
 description: Azure Cloud Service-alkalmazás konfigurálása távoli asztali kapcsolatok engedélyezéséhez
-services: cloud-services
-author: ghogen
-manager: jillfra
-ms.assetid: f5727ebe-9f57-4d7d-aff1-58761e8de8c1
-ms.prod: visual-studio-dev15
-ms.technology: vs-azure
-ms.custom: vs-azure
-ms.topic: conceptual
-ms.workload: azure-vs
-ms.date: 03/06/2018
-ms.author: ghogen
-ms.openlocfilehash: f4622e44c795182ee68c617f335c9e1651d3adcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.topic: article
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: ad95cefbdf839c28b0979b051e217a1dfec76eea
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80294389"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743236"
 ---
-# <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>Távoli asztali kapcsolat engedélyezése az Azure Cloud Services szerepkörhöz a Visual Studio használatával
+# <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-classic-using-visual-studio"></a>Az Azure Cloud Services (klasszikus) szerepkör Távoli asztali kapcsolatának engedélyezése a Visual Studio használatával
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
@@ -36,18 +35,18 @@ A Visual Studio 2017 15,5-es és újabb verzióiban azonban javasoljuk, hogy ne 
 
 A Visual Studio 2017 15,4-es vagy korábbi verziójának használatakor a Közzétételi varázslóban az **összes szerepkör engedélyezése távoli asztal** lehetőséget használhatja. Továbbra is használhatja a varázslót a Visual Studio 2017 15,5-es vagy újabb verziójával, de ne használja a Távoli asztal kapcsolót.
 
-1. A Visual Studióban indítsa el a közzétételi varázslót. ehhez kattintson a jobb gombbal a Cloud Service-projektre Megoldáskezelő és válassza a **Közzététel**lehetőséget.
+1. A Visual Studióban indítsa el a közzétételi varázslót. ehhez kattintson a jobb gombbal a Cloud Service-projektre Megoldáskezelő és válassza a **Közzététel** lehetőséget.
 
-2. Ha szükséges, jelentkezzen be az Azure-előfizetésbe, és válassza a **tovább**lehetőséget.
+2. Ha szükséges, jelentkezzen be az Azure-előfizetésbe, és válassza a **tovább** lehetőséget.
 
-3. A **Beállítások** lapon válassza az **összes szerepkör távoli asztal engedélyezése**lehetőséget, majd a **beállítások...** hivatkozásra kattintva nyissa meg a **Távoli asztal konfiguráció** párbeszédpanelt.
+3. A **Beállítások** lapon válassza az **összes szerepkör távoli asztal engedélyezése** lehetőséget, majd a **beállítások...** hivatkozásra kattintva nyissa meg a **Távoli asztal konfiguráció** párbeszédpanelt.
 
 4. A párbeszédpanel alján válassza a **További beállítások lehetőséget**. Ez a parancs egy legördülő listát jelenít meg, amelyben létrehoz vagy kiválaszt egy tanúsítványt, hogy Titkosítsa a hitelesítő adatokat a Távoli asztalról való csatlakozáskor.
 
    > [!Note]
    > A távoli asztali kapcsolathoz szükséges tanúsítványok eltérnek a többi Azure-művelethez használt tanúsítványtól. A távelérési tanúsítványnak rendelkeznie kell titkos kulccsal.
 
-5. Válasszon ki egy tanúsítványt a listából, vagy válassza a ** &lt; Létrehozás. &gt; ..** lehetőséget. Ha új tanúsítványt hoz létre, adjon meg egy rövid nevet az új tanúsítványnak, amikor a rendszer kéri, és válassza **az OK**gombot. Az új tanúsítvány megjelenik a legördülő listában.
+5. Válasszon ki egy tanúsítványt a listából, vagy válassza a **&lt; Létrehozás. &gt; ..** lehetőséget. Ha új tanúsítványt hoz létre, adjon meg egy rövid nevet az új tanúsítványnak, amikor a rendszer kéri, és válassza **az OK** gombot. Az új tanúsítvány megjelenik a legördülő listában.
 
 6. Adja meg a felhasználónevet és a jelszót. Meglévő fiókot nem használhat. Ne használja a "rendszergazda" nevet az új fiókhoz tartozó felhasználónévként.
 
@@ -142,7 +141,7 @@ Miután közzétette a Cloud Service-t az Azure-ban, és engedélyezte a Távoli
 
 1. A Server Explorerben bontsa ki az **Azure** csomópontot, majd bontsa ki a felhőalapú szolgáltatás és az egyik szerepkör csomópontját a példányok listájának megjelenítéséhez.
 
-2. Kattintson a jobb gombbal egy példány-csomópontra, és válassza a **kapcsolat távoli asztal használatával**lehetőséget.
+2. Kattintson a jobb gombbal egy példány-csomópontra, és válassza a **kapcsolat távoli asztal használatával** lehetőséget.
 
 3. Adja meg a korábban létrehozott felhasználónevet és jelszót. Most bejelentkezett a távoli munkamenetbe.
 

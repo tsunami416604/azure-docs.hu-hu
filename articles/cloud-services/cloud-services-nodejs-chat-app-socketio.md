@@ -1,23 +1,24 @@
 ---
 title: Alkalmazás Node.js Socket.io használatával – Azure
 description: Ebből az oktatóanyagból megtudhatja, hogyan üzemeltetheti a szoftvercsatornát. IO-alapú csevegési alkalmazás az Azure-ban. A Socket.IO valós idejű kommunikációt biztosít egy node.js-kiszolgáló és-ügyfél számára.
-services: cloud-services
-documentationcenter: nodejs
-author: tgore03
-ms.service: cloud-services
-ms.devlang: nodejs
 ms.topic: article
-ms.date: 08/17/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.custom: devx-track-js
-ms.openlocfilehash: ef7325b53f7d6450acdff4664f3e338c31be9612
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: abc02769d7d978e14975d90ae0f98547bdc4faf7
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077218"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743321"
 ---
-# <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Node.js csevegési alkalmazás létrehozása Azure Cloud Service-Socket.IO
+# <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service-classic"></a>Node.js csevegési alkalmazás létrehozása az Azure Cloud Service Socket.IO (klasszikus)
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
 
 A Socket.IO valós idejű kommunikációt biztosít a node.js-kiszolgáló és az ügyfelek között. Ez az oktatóanyag végigvezeti a szoftvercsatorna üzemeltetésének lépésein. IO-alapú csevegési alkalmazás az Azure-ban. További információ a Socket.IO: [socket.IO](https://socket.io).
 
@@ -35,10 +36,10 @@ A jelen cikkben szereplő példa sikeres végrehajtásához győződjön meg arr
 ## <a name="create-a-cloud-service-project"></a>Cloud Service-projekt létrehozása
 A következő lépésekkel hozza létre a Cloud Service-projektet, amely a Socket.IO alkalmazást fogja tárolni.
 
-1. A **Start menüből** vagy a **kezdőképernyőn**keressen rá a **Windows PowerShell**kifejezésre. Végül kattintson a jobb gombbal a **Windows PowerShell** elemre, és válassza **a Futtatás rendszergazdaként**lehetőséget.
+1. A **Start menüből** vagy a **kezdőképernyőn** keressen rá a **Windows PowerShell** kifejezésre. Végül kattintson a jobb gombbal a **Windows PowerShell** elemre, és válassza **a Futtatás rendszergazdaként** lehetőséget.
 
     ![Azure PowerShell ikon][powershell-menu]
-2. Hozzon létre egy **c: \\ Node**nevű könyvtárat.
+2. Hozzon létre egy **c: \\ Node** nevű könyvtárat.
 
     ```powershell
     PS C:\> md node
@@ -50,7 +51,7 @@ A következő lépésekkel hozza létre a Cloud Service-projektet, amely a Socke
     PS C:\> cd node
     ```
 
-4. Adja meg a következő parancsokat egy **chatapp** nevű új megoldás létrehozásához, valamint egy **WorkerRole1**nevű feldolgozói szerepkört:
+4. A következő parancsok megadásával hozzon létre egy nevű új megoldást `chatapp` és egy nevű feldolgozói szerepkört `WorkerRole1` :
 
     ```powershell
     PS C:\node> New-AzureServiceProject chatapp
@@ -72,7 +73,7 @@ Ebben a projektben a csevegés példáját fogjuk használni a [socket.IO GitHub
    ![Explorer – az \\ archívumból kinyert példákat tartalmazó csevegő könyvtár tartalmának megjelenítése][chat-contents]
 
    A fenti képernyőképen szereplő Kiemelt elemek a **példákat tartalmazó \\ csevegési** könyvtárból másolt fájlok.
-3. A **C: \\ Node \\ chatapp \\ WorkerRole1** könyvtárban törölje a **server.js** fájlt, majd nevezze át a **app.js** fájlt **server.jsre **. Ezzel eltávolítja az **Add-AzureNodeWorkerRole** parancsmag által korábban létrehozott alapértelmezett **server.js** fájlt, és lecseréli azt a csevegési példa alkalmazás fájljába.
+3. A **C: \\ Node \\ chatapp \\ WorkerRole1** könyvtárban törölje a **server.js** fájlt, majd nevezze át a **app.js** fájlt **server.jsre**. Ezzel eltávolítja az **Add-AzureNodeWorkerRole** parancsmag által korábban létrehozott alapértelmezett **server.js** fájlt, és lecseréli azt a csevegési példa alkalmazás fájljába.
 
 ### <a name="modify-serverjs-and-install-modules"></a>Server.js módosítása és modulok telepítése
 Mielőtt tesztelni szeretné az alkalmazást az Azure emulatorban, kisebb módosításokat kell végeznie. Hajtsa végre a következő lépéseket a server.js fájlba:
@@ -92,16 +93,16 @@ Mielőtt tesztelni szeretné az alkalmazást az Azure emulatorban, kisebb módos
 3. Annak biztosítása érdekében, hogy az alkalmazás figyelje a megfelelő portot, nyissa meg server.js a Jegyzettömbben vagy a kedvenc szerkesztőjében, majd módosítsa a következő sort úgy, hogy a **3000** -et a **Process. env. portra** cseréli, ahogy az alábbi ábrán látható:
 
     ```js
-    //app.listen(3000, function () {            //Original
+    //app.listen(3000, function () {            //Original
     app.listen(process.env.port, function () {  //Updated
       var addr = app.address();
       console.log('   app listening on http://' + addr.address + ':' + addr.port);
     });
     ```
 
-A **server.js**módosításainak mentése után a következő lépésekkel telepítheti a szükséges modulokat, majd tesztelheti az alkalmazást az Azure emulatorban:
+A **server.js** módosításainak mentése után a következő lépésekkel telepítheti a szükséges modulokat, majd tesztelheti az alkalmazást az Azure emulatorban:
 
-1. A **Azure PowerShell**használatával módosítsa a könyvtárakat a **C: \\ Node \\ chatapp \\ WorkerRole1** könyvtárba, és az alábbi parancs használatával telepítse az alkalmazás által igényelt modulokat:
+1. A **Azure PowerShell** használatával módosítsa a könyvtárakat a **C: \\ Node \\ chatapp \\ WorkerRole1** könyvtárba, és az alábbi parancs használatával telepítse az alkalmazás által igényelt modulokat:
 
     ```powershell
     PS C:\node\chatapp\WorkerRole1> npm install
@@ -166,7 +167,7 @@ Az alkalmazás mostantól fut az Azure-ban, és a csevegési üzeneteket tovább
 >
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egy Azure Cloud Service-ben üzemeltetett alapszintű csevegési alkalmazást. Az alkalmazás Azure-webhelyen való üzemeltetésével kapcsolatos további információkért lásd: [Node.js csevegési alkalmazás létrehozása az socket.IO-mel egy Azure][chatwebsite]-webhelyen.
 
 További információ: a [Node.js fejlesztői központ](/azure/developer/javascript/)is.

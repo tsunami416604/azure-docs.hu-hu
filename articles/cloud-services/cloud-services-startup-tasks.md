@@ -1,20 +1,25 @@
 ---
-title: Indítási feladatok futtatása az Azure Cloud Servicesban | Microsoft Docs
+title: Indítási feladatok futtatása az Azure Cloud Services (klasszikus) | Microsoft Docs
 description: Az indítási feladatok segítséget nyújtanak a felhőalapú szolgáltatási környezet előkészítésében az alkalmazáshoz. Ez a cikk bemutatja, hogyan működnek az indítási feladatok, és hogyan lehet őket
-services: cloud-services
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/05/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: f2417389de98f9998c189e7cbbbcdae77fbb8840
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 25190075bdd13bd4b75dd82c97ee06ee60f4c26c
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020704"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743185"
 ---
-# <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Felhőalapú szolgáltatás indítási feladatainak konfigurálása és futtatása
+# <a name="how-to-configure-and-run-startup-tasks-for-an-azure-cloud-service-classic"></a>Azure Cloud Service indítási feladatainak konfigurálása és futtatása (klasszikus)
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
+
 Az indítási feladatokkal műveleteket hajthat végre a szerepkörök elkezdése előtt. A végrehajtani kívánt műveletek közé tartozik például az összetevők telepítése, a COM-összetevők regisztrálása, a beállításkulcsok beállítása vagy a hosszú ideig futó folyamat elindítása.
 
 > [!NOTE]
@@ -112,7 +117,7 @@ Az alábbiakban a [ServiceDefinition. csdef] fájlban található **Task** elem 
   > 
   > 
   
-    Annak biztosításához, hogy a batch-fájl **errorlevel** nullával végződik, futtassa a parancsot `EXIT /B 0` a batch-fájl folyamat végén.
+    Annak biztosításához, hogy a batch-fájl  nullával végződik, futtassa a parancsot `EXIT /B 0` a batch-fájl folyamat végén.
 * **háttér**  
   A feladatok aszinkron módon, a szerepkör indításakor párhuzamosan hajthatók végre.
 * **előtér**  

@@ -1,21 +1,24 @@
 ---
 title: A TLS beállítása a Cloud Service szolgáltatáshoz | Microsoft Docs
 description: Megtudhatja, hogyan határozhat meg egy HTTPS-végpontot webes szerepkörhöz, és hogyan tölthet fel TLS/SSL-tanúsítványt az alkalmazás biztonságossá tételéhez. Ezek a példák a Azure Portal használják.
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 05/26/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: c69b74cf91d8e097f8ad8a9ba2a16f3375f483ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 33aa088efd7768153d4a17472d82e0826f4ffa6b
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82024846"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742641"
 ---
 # <a name="configuring-tls-for-an-application-in-azure"></a>TLS konfigurálása alkalmazáshoz az Azure-ban
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
 
 A korábban Secure Socket Layer (SSL) titkosításnak nevezett Transport Layer Security (TLS) a leggyakrabban használt módszer az interneten keresztül továbbított adatmennyiség biztosítására. Ez a gyakori feladat azt ismerteti, hogyan lehet HTTPS-végpontot megadni egy webes szerepkörhöz, és hogyan tölthet fel TLS/SSL-tanúsítványt az alkalmazás biztonságossá tételéhez.
 
@@ -34,7 +37,7 @@ A tanúsítványnak meg kell felelnie az Azure-beli TLS/SSL-tanúsítványok kö
 
 * A tanúsítványnak tartalmaznia kell egy nyilvános kulcsot.
 * A tanúsítványt létre kell hozni a személyes információcsere (. pfx) fájlba exportálható kulcscsere-fájlhoz.
-* A tanúsítvány tulajdonosának nevének meg kell egyeznie a felhőalapú szolgáltatás eléréséhez használt tartománnyal. Nem szerezhet be TLS/SSL-tanúsítványt a cloudapp.net tartományhoz tartozó hitelesítésszolgáltatótól (CA). A szolgáltatáshoz való hozzáféréskor egyéni tartománynevet kell megadnia. Amikor tanúsítványt kér egy HITELESÍTÉSSZOLGÁLTATÓTÓL, a tanúsítvány tulajdonosának nevének meg kell egyeznie az alkalmazás eléréséhez használt egyéni tartománynévvel. Ha például az Egyéni tartománynév a **contoso.com** , akkor a (z **) *. contoso.com** vagy a **www \. contoso.com**tanúsítványt kér a hitelesítésszolgáltatótól.
+* A tanúsítvány tulajdonosának nevének meg kell egyeznie a felhőalapú szolgáltatás eléréséhez használt tartománnyal. Nem szerezhet be TLS/SSL-tanúsítványt a cloudapp.net tartományhoz tartozó hitelesítésszolgáltatótól (CA). A szolgáltatáshoz való hozzáféréskor egyéni tartománynevet kell megadnia. Amikor tanúsítványt kér egy HITELESÍTÉSSZOLGÁLTATÓTÓL, a tanúsítvány tulajdonosának nevének meg kell egyeznie az alkalmazás eléréséhez használt egyéni tartománynévvel. Ha például az Egyéni tartománynév a **contoso.com** , akkor a (z *_) *. contoso.com_* vagy a **www \. contoso.com** tanúsítványt kér a hitelesítésszolgáltatótól.
 * A tanúsítványnak legalább 2048 bites titkosítást kell használnia.
 
 Tesztelési célból [létrehozhat](cloud-services-certs-create.md) és használhat önaláírt tanúsítványokat. Az önaláírt tanúsítványokat a rendszer nem hitelesíti a HITELESÍTÉSSZOLGÁLTATÓn keresztül, és a cloudapp.net tartományt használhatja a webhely URL-címéhez. A következő feladat például egy önaláírt tanúsítványt használ, amelyben a tanúsítványban használt köznapi név (CN) **sslexample.cloudapp.net**.
@@ -156,7 +159,7 @@ Most, hogy üzembe helyezése az Azure-ban működik, HTTPS használatával csat
 
    ![Kattintson a webhely URL-címére](media/cloud-services-configure-ssl-certificate-portal/navigate.png)
 
-2. A webböngészőben módosítsa a **http**helyett **https** használatára mutató hivatkozást, majd látogasson el az oldalra.
+2. A webböngészőben módosítsa a **http** helyett **https** használatára mutató hivatkozást, majd látogasson el az oldalra.
 
    > [!NOTE]
    > Ha önaláírt tanúsítványt használ, az önaláírt tanúsítványhoz tartozó HTTPS-végpontra való tallózáskor a böngészőben a tanúsítvány hibája is megjelenik. Egy megbízható hitelesítésszolgáltató által aláírt tanúsítvány használata kiküszöböli ezt a problémát; addig is figyelmen kívül hagyhatja a hibát. (Egy másik lehetőség, hogy hozzáadja az önaláírt tanúsítványt a felhasználó megbízható hitelesítésszolgáltatójának tanúsítványtárolóhoz.)

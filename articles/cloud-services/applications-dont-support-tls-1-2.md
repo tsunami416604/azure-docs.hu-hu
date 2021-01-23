@@ -12,14 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 03/16/2020
 ms.author: tagore
-ms.openlocfilehash: ae284a6afa1f2e396aef8177229c344b569be6ec
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 70bcf5bce1c8c07633baf070149a9bb80c331d9c
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075671"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742573"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>A TLS 1,2-et nem támogató alkalmazások hibaelhárítása
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
+
 Ez a cikk bemutatja, hogyan engedélyezheti a régebbi TLS protokollokat (TLS 1,0 és 1,1), valamint az örökölt titkosítási csomagok alkalmazását a Windows Server 2019 Cloud Service webes és feldolgozói szerepköreinek további protokolljainak támogatásához. 
 
 Tisztában vagyunk vele, hogy a TLS 1,0 és a TLS 1,1 elavult lépéseinek elvégzése közben ügyfeleinknek a régebbi protokollokat és a titkosítási csomagokat is támogatniuk kell, amíg meg nem tervezik az elavult műveleteket.  Habár nem javasoljuk a régi értékek újbóli engedélyezését, útmutatást nyújtunk az ügyfeleknek. Javasoljuk, hogy a jelen cikkben ismertetett módosítások végrehajtása előtt értékelje a regresszió kockázatát. 
@@ -342,7 +346,7 @@ Adja hozzá a következő kódrészletet a meglévő szolgáltatási definíció
 ## <a name="step-4-add-the-scripts-to-your-cloud-service"></a>4. lépés: a szkriptek hozzáadása a felhőalapú szolgáltatáshoz 
 
 1) A Visual Studióban kattintson a jobb gombbal a webszerepkörre vagy a WorkerRole
-2) **Hozzáadás** kiválasztása
+2) Válassza a **Hozzáadás** lehetőséget
 3) **Meglévő elem** kijelölése
 4) A Fájlkezelőben navigáljon az asztalra, ahol a **TLSsettings.ps1** és a **RunTLSSettings. cmd** fájlt tárolta 
 5) Válassza ki a két fájlt a Cloud Services projekthez való hozzáadáshoz

@@ -1,28 +1,24 @@
 ---
 title: Az alkalmazások és szolgáltatások rendelkezésre állásával kapcsolatos problémák – GYIK
-titleSuffix: Azure Cloud Services
 description: Ez a cikk az alkalmazással és a szolgáltatás rendelkezésre állásával kapcsolatos gyakori kérdéseket ismerteti Microsoft Azure Cloud Services.
-services: cloud-services
-documentationcenter: ''
-author: genlin
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
-ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/31/2018
-ms.author: genli
-ms.openlocfilehash: 2707c5a6cb110d30b85b765f6c8b144e8cca7abe
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: c1a5b63a33f951857bd4837380c1465af5b7583e
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074719"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742896"
 ---
-# <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az Azure Cloud Services alkalmazások és szolgáltatások rendelkezésre állásával kapcsolatos problémák: gyakori kérdések (GYIK)
+# <a name="application-and-service-availability-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Alkalmazások és szolgáltatások rendelkezésre állásával kapcsolatos problémák az Azure Cloud Services (klasszikus): gyakori kérdések (GYIK)
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
 
 Ez a cikk a [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services)alkalmazásokkal és szolgáltatásokkal kapcsolatos rendelkezésre állási problémákról tartalmaz gyakori kérdéseket. A mérettel kapcsolatos információkért tekintse meg a [Cloud Services virtuális gép mérete lapot](cloud-services-sizes-specs.md) .
 

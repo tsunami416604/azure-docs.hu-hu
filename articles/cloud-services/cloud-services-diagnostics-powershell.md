@@ -1,26 +1,29 @@
 ---
-title: Diagnosztika engedélyezése az Azure-ban Cloud Services a PowerShell használatával | Microsoft Docs
+title: Diagnosztika engedélyezése az Azure Cloud Services (klasszikus) szolgáltatásban a PowerShell használatával | Microsoft Docs
 description: Megtudhatja, hogyan használhatja a PowerShellt a diagnosztikai adatok Azure Cloud Service-ből való gyűjtésének engedélyezéséhez a Azure Diagnostics bővítménnyel.
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
-ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/06/2016
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: f0bf7fa56ca511981820f63cd7178493a7d048e3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 8dcc6dd355e0c89aa4120a6cc7f331159d56c1bc
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077507"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742182"
 ---
-# <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>Diagnosztika engedélyezése az Azure Cloud Services a PowerShell használatával
+# <a name="enable-diagnostics-in-azure-cloud-services-classic-using-powershell"></a>Diagnosztika engedélyezése az Azure Cloud Services (klasszikus) PowerShell használatával
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
+
 A Azure Diagnostics-bővítmény használatával diagnosztikai adatokat gyűjthet, például az alkalmazás naplóit, a teljesítményszámlálókat stb. a felhőalapú szolgáltatásokból. Ez a cikk azt ismerteti, hogyan engedélyezhető a Azure Diagnostics bővítmény a Cloud Service-hez a PowerShell használatával.  Tekintse meg, [hogyan telepítheti és konfigurálhatja a Azure PowerShell](/powershell/azure/) a cikkhez szükséges előfeltételekhez.
 
 ## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a>A diagnosztikai bővítmény engedélyezése egy felhőszolgáltatás telepítésének részeként
-Ez a megközelítés a forgatókönyvek folyamatos integrációs típusára vonatkozik, ahol a diagnosztikai bővítmény engedélyezhető a felhőalapú szolgáltatás üzembe helyezésének részeként. Új felhőalapú szolgáltatás központi telepítésének létrehozásakor engedélyezheti a diagnosztikai bővítményt, ha a *ExtensionConfiguration* paramétert a [New-AzureDeployment](/powershell/module/servicemanagement/azure.service/new-azuredeployment?view=azuresmps-3.7.0) parancsmagra továbbítja. A *ExtensionConfiguration* paraméter a [New-AzureServiceDiagnosticsExtensionConfig](/powershell/module/servicemanagement/azure.service/new-azureservicediagnosticsextensionconfig?view=azuresmps-3.7.0) parancsmaggal létrehozható diagnosztikai konfigurációk tömbjét veszi fel.
+Ez a megközelítés a forgatókönyvek folyamatos integrációs típusára vonatkozik, ahol a diagnosztikai bővítmény engedélyezhető a felhőalapú szolgáltatás üzembe helyezésének részeként. Új felhőalapú szolgáltatás központi telepítésének létrehozásakor engedélyezheti a diagnosztikai bővítményt, ha a *ExtensionConfiguration* paramétert a [New-AzureDeployment](/powershell/module/servicemanagement/azure.service/new-azuredeployment?view=azuresmps-3.7.0&preserve-view=true&preserve-view=true) parancsmagra továbbítja. A *ExtensionConfiguration* paraméter a [New-AzureServiceDiagnosticsExtensionConfig](/powershell/module/servicemanagement/azure.service/new-azureservicediagnosticsextensionconfig?view=azuresmps-3.7.0&preserve-view=true) parancsmaggal létrehozható diagnosztikai konfigurációk tömbjét veszi fel.
 
 Az alábbi példa bemutatja, hogyan engedélyezheti a diagnosztika szolgáltatást egy olyan WorkerRole, amely egy másik diagnosztika-konfigurációval rendelkezik.
 
@@ -92,7 +95,7 @@ $workerrole_diagconfig = New-AzureServiceDiagnosticsExtensionConfig -Role "Worke
 ```
 
 ## <a name="enable-diagnostics-extension-on-an-existing-cloud-service"></a>A diagnosztikai bővítmény engedélyezése egy meglévő felhőszolgáltatáson
-A [set-AzureServiceDiagnosticsExtension](/powershell/module/servicemanagement/azure.service/set-azureservicediagnosticsextension?view=azuresmps-3.7.0) parancsmag használatával engedélyezheti vagy frissítheti a diagnosztikai konfigurációt egy már futó felhőalapú szolgáltatásban.
+A [set-AzureServiceDiagnosticsExtension](/powershell/module/servicemanagement/azure.service/set-azureservicediagnosticsextension?view=azuresmps-3.7.0&preserve-view=true) parancsmag használatával engedélyezheti vagy frissítheti a diagnosztikai konfigurációt egy már futó felhőalapú szolgáltatásban.
 
 [!INCLUDE [cloud-services-wad-warning](../../includes/cloud-services-wad-warning.md)]
 
@@ -108,14 +111,14 @@ Set-AzureServiceDiagnosticsExtension -DiagnosticsConfiguration @($webrole_diagco
 ```
 
 ## <a name="get-current-diagnostics-extension-configuration"></a>Az aktuális diagnosztikai bővítmény konfigurációjának lekérése
-Használja a [Get-AzureServiceDiagnosticsExtension](/powershell/module/servicemanagement/azure.service/get-azureservicediagnosticsextension?view=azuresmps-3.7.0) parancsmagot a felhőalapú szolgáltatás aktuális diagnosztikai konfigurációjának lekéréséhez.
+Használja a [Get-AzureServiceDiagnosticsExtension](/powershell/module/servicemanagement/azure.service/get-azureservicediagnosticsextension?view=azuresmps-3.7.0&preserve-view=true) parancsmagot a felhőalapú szolgáltatás aktuális diagnosztikai konfigurációjának lekéréséhez.
 
 ```powershell
 Get-AzureServiceDiagnosticsExtension -ServiceName "MyService"
 ```
 
 ## <a name="remove-diagnostics-extension"></a>A diagnosztikai bővítmény eltávolítása
-A diagnosztika a Cloud Service-ben való kikapcsolásához használhatja a [Remove-AzureServiceDiagnosticsExtension](/powershell/module/servicemanagement/azure.service/remove-azureservicediagnosticsextension?view=azuresmps-3.7.0) parancsmagot.
+A diagnosztika a Cloud Service-ben való kikapcsolásához használhatja a [Remove-AzureServiceDiagnosticsExtension](/powershell/module/servicemanagement/azure.service/remove-azureservicediagnosticsextension?view=azuresmps-3.7.0&preserve-view=true) parancsmagot.
 
 ```powershell
 Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService"

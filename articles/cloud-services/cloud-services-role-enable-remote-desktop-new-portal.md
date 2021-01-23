@@ -1,22 +1,24 @@
 ---
 title: A portál használata a szerepkörök Távoli asztalának engedélyezéséhez
-titleSuffix: Azure Cloud Services
 description: Azure Cloud Service-alkalmazás konfigurálása távoli asztali kapcsolatok engedélyezéséhez
-services: cloud-services
-documentationcenter: ''
-author: mmccrory
-ms.service: cloud-services
 ms.topic: article
-ms.date: 11/28/2016
-ms.author: memccror
-ms.openlocfilehash: 507af87c3126be00a802bcbc5170f8ad364c06fc
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 8fa0d3c0e29c53e6fe9cb32ddf02168686be1efe
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099317"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743253"
 ---
-# <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services"></a>Távoli asztali kapcsolat engedélyezése az Azure-beli szerepkörökhöz Cloud Services
+# <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-classic"></a>Távoli asztali kapcsolat engedélyezése az Azure Cloud Services (klasszikus) szerepkörhöz
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
@@ -33,7 +35,7 @@ A Azure Portal a Távoli asztal bővítmény megközelítését használja, így
 
 1. Kattintson a **Cloud Services** elemre, válassza ki a Cloud Service nevét, majd válassza a **Távoli asztal** lehetőséget.
 
-    ![Képernyőfelvétel a Távoli asztal lehetőségre.](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop.png)
+    ![a rendszerkép a Cloud Services távoli asztalát mutatja](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop.png)
 
 2. Válassza ki, hogy szeretné-e engedélyezni a Távoli asztal egy adott szerepkörhöz vagy az összes szerepkörhöz, majd módosítsa az kapcsoló értékét az **engedélyezve** értékre.
 
@@ -56,12 +58,12 @@ Ha Távoli asztal engedélyezve van a szerepkörökön, közvetlenül a Azure Po
 2. Válasszon Távoli asztal konfigurált szerepkör-példányt.
 3. Kattintson a **Kapcsolódás** gombra a szerepkör-példányhoz tartozó RDP-fájl letöltéséhez.
 
-    ![Képernyőfelvétel: a csatlakozási gomb kiemelése.](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop_Connect.png)
+    ![Cloud Services – Távoli asztal képe](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop_Connect.png)
 
 4. Kattintson a **Megnyitás** , majd a **Kapcsolódás** elemre a távoli asztal kapcsolat indításához.
 
 >[!NOTE]
-> Ha a felhőalapú szolgáltatás egy NSG mögött található, előfordulhat, hogy olyan szabályokat kell létrehoznia, amelyek engedélyezik a forgalmat a **3389** -es és a **20000** -es porton.  Távoli asztal a **3389** -es portot használja.  A Cloud Service-példányok terheléselosztás alatt állnak, így nem lehet közvetlenül szabályozni, hogy melyik példányt kívánja csatlakozni.  A *RemoteForwarder* és a *REMOTEACCESS* ügynök az RDP-forgalmat kezeli, és lehetővé teszi az ügyfél számára, hogy RDP-cookie-t küldjön, és megadhat egy egyedi példányt a kapcsolódáshoz.  A *RemoteForwarder* és a *remoteaccess* -ügynökök megkövetelik, hogy a **20000** -es port nyitva legyen, ami blokkolható, ha van NSG.
+> Ha a felhőalapú szolgáltatás egy NSG mögött található, előfordulhat, hogy olyan szabályokat kell létrehoznia, amelyek engedélyezik a forgalmat a **3389** -es és a **20000**-es porton.  Távoli asztal a **3389**-es portot használja.  A Cloud Service-példányok terheléselosztás alatt állnak, így nem lehet közvetlenül szabályozni, hogy melyik példányt kívánja csatlakozni.  A *RemoteForwarder* és a *REMOTEACCESS* ügynök az RDP-forgalmat kezeli, és lehetővé teszi az ügyfél számára, hogy RDP-cookie-t küldjön, és megadhat egy egyedi példányt a kapcsolódáshoz.  A *RemoteForwarder* és a *remoteaccess* -ügynökök megkövetelik, hogy a **20000**-es port nyitva legyen, ami blokkolható, ha van NSG.
 
 ## <a name="additional-resources"></a>További források
 

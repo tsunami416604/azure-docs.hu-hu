@@ -1,21 +1,25 @@
 ---
 title: Gyakori Cloud Service-kezelési feladatok | Microsoft Docs
 description: Megtudhatja, hogyan kezelheti Cloud Services a Azure Portalban. Ezek a példák a Azure Portal használják.
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/05/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 84e450a55f9482c3a713943adfcc4d7940ab873f
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 306da8dae31c2bbdb487e7128e3a2e24424c239d
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076708"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743389"
 ---
-# <a name="manage-cloud-services-in-the-azure-portal"></a>Cloud Services kezelése a Azure Portal
+# <a name="manage-cloud-services-classic-in-the-azure-portal"></a>A Azure Portal Cloud Services (klasszikus) kezelése
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
+
 A Azure Portal **Cloud Services** területén a következőket teheti:
 
 * Egy szolgáltatás szerepkörének vagy központi telepítésének frissítése.
@@ -30,7 +34,7 @@ Ha frissítenie kell az alkalmazás kódját a Cloud Service-hez, használja a *
 
 1. A [Azure Portal][Azure portal]válassza ki a frissíteni kívánt felhőalapú szolgáltatást. Ez a lépés megnyitja a Cloud Service-példány panelt.
 
-2. A panelen válassza a **frissítés**lehetőséget.
+2. A panelen válassza a **frissítés** lehetőséget.
 
     ![Frissítés gomb](./media/cloud-services-how-to-manage-portal/update-button.png)
 
@@ -55,7 +59,7 @@ A központi telepítéseket a **Cloud Services** vagy az irányítópulton cser�
 
 1. A [Azure Portal][Azure portal]válassza ki a frissíteni kívánt felhőalapú szolgáltatást. Ez a lépés megnyitja a Cloud Service-példány panelt.
 
-2. A panelen válassza a **Csere**lehetőséget.
+2. A panelen válassza a **Csere** lehetőséget.
 
     ![Cloud Services csere gomb](./media/cloud-services-how-to-manage-portal/swap-button.png)
 
@@ -77,7 +81,7 @@ A sikeres üzembe helyezési felcserélés két fő előfeltétele:
 
 - Ha statikus IP-címet szeretne használni az üzemi tárolóhelyhez, le kell foglalni egyet az előkészítési tárolóhelyhez is. Ellenkező esetben a swap sikertelen lesz.
 
-- A felcserélés végrehajtása előtt a szerepkörök összes példányának futnia kell. A példányok állapotát a Azure Portal **Áttekintés** paneljén tekintheti meg. Azt is megteheti, hogy a [Get-AzureRole](/powershell/module/servicemanagement/azure.service/get-azurerole?view=azuresmps-3.7.0) parancsot használja a Windows PowerShellben.
+- A felcserélés végrehajtása előtt a szerepkörök összes példányának futnia kell. A példányok állapotát a Azure Portal **Áttekintés** paneljén tekintheti meg. Azt is megteheti, hogy a [Get-AzureRole](/powershell/module/servicemanagement/azure.service/get-azurerole?view=azuresmps-3.7.0&preserve-view=true) parancsot használja a Windows PowerShellben.
 
 Vegye figyelembe, hogy a vendég operációs rendszer frissítései és a szolgáltatás-javító műveletek miatt a telepítési swap-feladatok sikertelenek lehetnek. További információ: a [Cloud Service üzembe helyezési problémáinak elhárítása](cloud-services-troubleshoot-deployment-problems.md).
 
@@ -94,7 +98,7 @@ A központi telepítés vagy a felhőalapú szolgáltatás törléséhez kövess
 
 1. A [Azure Portal][Azure portal]válassza ki a törölni kívánt felhőalapú szolgáltatást. Ez a lépés megnyitja a Cloud Service-példány panelt.
 
-2. A panelen válassza a **Törlés**lehetőséget.
+2. A panelen válassza a **Törlés** lehetőséget.
 
     ![Cloud Services törlés gomb](./media/cloud-services-how-to-manage-portal/delete-button.png)
 
@@ -104,7 +108,7 @@ A központi telepítés vagy a felhőalapú szolgáltatás törléséhez kövess
 
 4. Válassza a **Törlés** elemet a lap alján.
 
-5. A Cloud Service törléséhez válassza a **Cloud Service törlése**lehetőséget. Ezután a megerősítő üzenetben válassza az **Igen**lehetőséget.
+5. A Cloud Service törléséhez válassza a **Cloud Service törlése** lehetőséget. Ezután a megerősítő üzenetben válassza az **Igen** lehetőséget.
 
 > [!NOTE]
 > Ha a felhőalapú szolgáltatás törlődik, és a részletes figyelés konfigurálva van, akkor manuálisan kell törölnie az adatait a Storage-fiókból. További információ a metrikák táblázatának helyéről: Bevezetés a [Cloud Service monitorozásba](cloud-services-how-to-monitor.md).
@@ -119,7 +123,7 @@ Az **Áttekintés** panel tetején egy állapotsor található. Amikor kiválasz
 
 [Azure portal]: https://portal.azure.com
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A felhőalapú szolgáltatás általános konfigurációja](cloud-services-how-to-configure-portal.md).
 * Ismerje meg, hogyan [helyezhet üzembe egy felhőalapú szolgáltatást](cloud-services-how-to-create-deploy-portal.md).
 * Konfigurálja az [Egyéni tartománynevet](cloud-services-custom-domain-name-portal.md).

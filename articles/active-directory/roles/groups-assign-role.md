@@ -2,23 +2,23 @@
 title: Szerepkör kiosztása egy felhőalapú csoporthoz Azure Active Directoryban | Microsoft Docs
 description: Rendeljen hozzá egy Azure AD-szerepkört egy szerepkörhöz hozzárendelhető csoporthoz a Azure Portal, a PowerShellben vagy a Graph API.
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb81b5dc98bf75a17e55abafdebfbeca68774a99
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 816009abb688525cd7663311c79300a6d12cf146
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379145"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742947"
 ---
 # <a name="assign-a-role-to-a-cloud-group-in-azure-active-directory"></a>Szerepkör kiosztása egy felhőalapú csoporthoz Azure Active Directory
 
@@ -40,7 +40,7 @@ A csoportok Azure AD-szerepkörökhöz való hozzárendeléséhez hasonló a fel
 
     [![Az új szerepkör-hozzárendeléshez csak a hozzárendelhető csoportok jelennek meg.](./media/groups-assign-role/eligible-groups.png "Az új szerepkör-hozzárendeléshez csak a hozzárendelhető csoportok jelennek meg.")](./media/groups-assign-role/eligible-groups.png#lightbox)
 
-1. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza a **Hozzáadás** elemet.
 
 A szerepkör-engedélyek hozzárendelésével kapcsolatos további információkért lásd: [rendszergazdai és nem rendszergazdai szerepkörök kiosztása a felhasználók számára](../fundamentals/active-directory-users-assign-role-azure-portal.md).
 
@@ -99,7 +99,7 @@ POST https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 "directoryScopeId":"/"
 }
 ```
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Felhőbeli csoportok használata a szerepkör-hozzárendelések kezeléséhez](groups-concept.md)
 - [A felhőbeli csoportokhoz hozzárendelt szerepkörökkel kapcsolatos hibák elhárítása](groups-faq-troubleshooting.md)

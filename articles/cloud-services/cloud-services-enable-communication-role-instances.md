@@ -1,23 +1,26 @@
 ---
-title: Kommunikáció a Cloud Services szerepköreiben | Microsoft Docs
+title: Kommunikáció a Cloud Services (klasszikus) szerepkörökhöz | Microsoft Docs
 description: A Cloud Servicesban lévő szerepkör-példányok rendelkezhetnek olyan végpontokkal (http, HTTPS, TCP, UDP), amelyek a külső vagy más szerepkör-példányok közötti kommunikációhoz vannak meghatározva.
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-manager: carmonm
-ms.service: cloud-services
 ms.topic: article
-ms.date: 12/14/2016
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 094e08becf4f3a60c98d89bfae7e7c3a69b677f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 82aa1579a1f7feb36732153341e1eacf266a7218
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75386340"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743032"
 ---
-# <a name="enable-communication-for-role-instances-in-azure"></a>Azure-beli szerepkör-példányok kommunikációjának engedélyezése
-A felhőalapú szolgáltatás szerepkörei belső és külső kapcsolatokon keresztül kommunikálnak. A külső kapcsolatokat **bemeneti végpontoknak** nevezzük, a belső kapcsolatokat pedig **belső végpontoknak**nevezzük. Ez a témakör azt ismerteti, hogyan módosíthatja a [szolgáltatás definícióját](cloud-services-model-and-package.md#csdef) végpontok létrehozásához.
+# <a name="enable-communication-for-role-instances-in-azure-cloud-services-classic"></a>Szerepkör-példányok kommunikációjának engedélyezése az Azure Cloud Services (klasszikus)
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
+
+A felhőalapú szolgáltatás szerepkörei belső és külső kapcsolatokon keresztül kommunikálnak. A külső kapcsolatokat **bemeneti végpontoknak** nevezzük, a belső kapcsolatokat pedig **belső végpontoknak** nevezzük. Ez a témakör azt ismerteti, hogyan módosíthatja a [szolgáltatás definícióját](cloud-services-model-and-package.md#csdef) végpontok létrehozásához.
 
 ## <a name="input-endpoint"></a>Bemeneti végpont
 A bemeneti végpontot akkor kell használni, ha a portot kívülre kívánja tenni. Adja meg a protokoll típusát és a végponthoz tartozó portot, amely ezután a végpont külső és belső portjaira is érvényes. Ha szeretné, megadhat egy másik belső portot a végponthoz a [localPort](/previous-versions/azure/reference/gg557552(v=azure.100)#inputendpoint) attribútummal.
@@ -106,7 +109,7 @@ A **instances** tulajdonság **RoleInstance** objektumok gyűjteményét adja vi
 > 
 > 
 
-Egy szerepkör-példány belső végpontjának portszámát a [InstanceEndpoints](/previous-versions/azure/reference/ee741917(v=azure.100)) tulajdonsággal adhatja vissza, amely a végpontok nevét, valamint a hozzájuk tartozó IP-címeket és portokat tartalmazza. A [IPEndpoint](/previous-versions/azure/reference/ee741919(v=azure.100)) tulajdonság egy megadott végpont IP-címét és portját adja vissza. A **PublicIPEndpoint** tulajdonság egy elosztott terhelésű végpont portját adja vissza. A **PublicIPEndpoint** tulajdonság IP-cím része nincs használatban.
+Egy szerepkör-példány belső végpontjának portszámának meghatározásához a [`InstanceEndpoints`](/previous-versions/azure/reference/ee741917(v=azure.100)) tulajdonságot használhatja a végpontok nevét, valamint a hozzájuk tartozó IP-címeket és portokat tartalmazó szótár objektum visszaküldéséhez. A [`IPEndpoint`](/previous-versions/azure/reference/ee741919(v=azure.100)) tulajdonság egy megadott végpont IP-címét és portját adja vissza. A `PublicIPEndpoint` tulajdonság egy elosztott terhelésű végpont portját adja vissza. A tulajdonság IP-címének része `PublicIPEndpoint` nincs használatban.
 
 Íme egy példa, amely megismétli a szerepkör-példányokat.
 
@@ -256,7 +259,7 @@ A következő kódrészlet az előző ábrán látható szerepkörökhöz tartoz
 Alapértelmezés szerint a belső végpontok meghatározása után a kommunikáció bármely szerepkörről a szerepkör belső végpontja számára korlátozás nélkül elvégezhető. A kommunikáció korlátozásához hozzá kell adnia egy **NetworkTrafficRules** elemet a **ServiceDefinition** elemhez a szolgáltatás definíciós fájljában.
 
 ### <a name="scenario-1"></a>1\. példa
-Csak a **webrole1 webes** és a **WorkerRole1**közötti hálózati forgalom engedélyezése.
+Csak a **webrole1 webes** és a **WorkerRole1** közötti hálózati forgalom engedélyezése.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -275,7 +278,7 @@ Csak a **webrole1 webes** és a **WorkerRole1**közötti hálózati forgalom eng
 ```
 
 ### <a name="scenario-2"></a>2\. példa
-Csak a **webrole1 webes** és a **WorkerRole1** , illetve a **WorkerRole2**közötti hálózati forgalmat engedélyezi.
+Csak a **webrole1 webes** és a **WorkerRole1** , illetve a **WorkerRole2** közötti hálózati forgalmat engedélyezi.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -294,7 +297,7 @@ Csak a **webrole1 webes** és a **WorkerRole1** , illetve a **WorkerRole2**köz�
 ```
 
 ### <a name="scenario-3"></a>3\. példa
-A csak a **webrole1 webes** és a **WorkerRole1**közötti hálózati forgalmat engedélyezi, és **WorkerRole1** a **WorkerRole2**.
+A csak a **webrole1 webes** és a **WorkerRole1** közötti hálózati forgalmat engedélyezi, és **WorkerRole1** a **WorkerRole2**.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">

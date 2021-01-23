@@ -3,23 +3,23 @@ title: Rendszergazdai szerepkör docs Microsoft 365 szolgáltatások között �
 description: Tartalom és API-referenciák keresése a Microsoft 365-szolgáltatások felügyeleti szerepköreihez Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42b1798646281ef4e78c9950e9931332cde373ed
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 5579e0d2094c3dc596e8e50992ae6bc31818ff87
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499169"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743066"
 ---
 # <a name="roles-for-microsoft-365-services-in-azure-active-directory"></a>A Azure Active Directory Microsoft 365 szolgáltatásainak szerepkörei
 

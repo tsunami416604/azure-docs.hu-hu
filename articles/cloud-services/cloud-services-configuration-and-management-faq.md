@@ -1,28 +1,24 @@
 ---
 title: Konfigurációs és felügyeleti problémák – gyakori kérdések
-titleSuffix: Azure Cloud Services
 description: Ez a cikk a Microsoft Azure Cloud Services konfigurálásával és kezelésével kapcsolatos gyakori kérdéseket sorolja fel.
-services: cloud-services
-documentationcenter: ''
-author: genlin
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
-ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/23/2018
-ms.author: genli
-ms.openlocfilehash: c4497805e64ef303c9d7340c48a49027b3a26bef
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: c5dd09292897d69f90606e8661b4e6cb28090612
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011021"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742590"
 ---
-# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az Azure Cloud Services konfigurálásával és kezelésével kapcsolatos problémák: gyakori kérdések (GYIK)
+# <a name="configuration-and-management-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Konfigurációs és felügyeleti problémák az Azure Cloud Services (klasszikus) szolgáltatáshoz: gyakori kérdések (GYIK)
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
 
 Ez a cikk a [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services)konfigurálásával és kezelésével kapcsolatos gyakori kérdéseket tartalmazza. A mérettel kapcsolatos információkért tekintse meg a [Cloud Services virtuális gép mérete lapot](cloud-services-sizes-specs.md) .
 
@@ -62,7 +58,7 @@ Ez a cikk a [Microsoft Azure Cloud Services](https://azure.microsoft.com/service
 
 **Általános**
 
-- [Hogyan adja hozzá a "nem szippantás" kifejezést a saját webhelyéhez?](#how-do-i-add-nosniff-to-my-website)
+- [Hogyan Hozzáadás `nosniff` a saját webhelyhez?](#how-do-i-add-nosniff-to-my-website)
 - [Az IIS webes szerepkörhöz való Hogyan testreszabása](#how-do-i-customize-iis-for-a-web-role)
 - [Mi a felhőalapú szolgáltatás kvótájának korlátja?](#what-is-the-quota-limit-for-my-cloud-service)
 - [Miért jelenik meg a Cloud Service-beli virtuális gép meghajtója nagyon kevés szabad lemezterülettel?](#why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space)
@@ -128,7 +124,7 @@ $cert = New-SelfSignedCertificate -DnsName yourdomain.cloudapp.net -CertStoreLoc
 $password = ConvertTo-SecureString -String "your-password" -Force -AsPlainText
 Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $password
 ```
-Kiválaszthatja a blob vagy a helyi lehetőséget a csdef, és a cscfg feltöltési helye hamarosan elérhető lesz. A [New-AzureDeployment](/powershell/module/servicemanagement/azure.service/new-azuredeployment?view=azuresmps-4.0.0)használatával megadhatja az egyes helyek értékét.
+Kiválaszthatja a blob vagy a helyi lehetőséget a csdef, és a cscfg feltöltési helye hamarosan elérhető lesz. A [New-AzureDeployment](/powershell/module/servicemanagement/azure.service/new-azuredeployment?view=azuresmps-4.0.0&preserve-view=true)használatával megadhatja az egyes helyek értékét.
 
 A metrikák figyelésének lehetősége a példány szintjén. További figyelési képességek érhetők el a [Cloud Services figyelése című témakörben](cloud-services-how-to-monitor.md).
 
@@ -148,7 +144,7 @@ A Windows Azure Diagnostics (WAD) naplózását a következő beállításokkal 
 2. [Engedélyezés .NET-kóddal](./cloud-services-dotnet-diagnostics.md)
 3. [Engedélyezés a PowerShell-lel](./cloud-services-diagnostics-powershell.md)
 
-A Cloud Service jelenlegi WAD-beállításainak beszerzéséhez használja a [Get-AzureServiceDiagnosticsExtensions](./cloud-services-diagnostics-powershell.md#get-current-diagnostics-extension-configuration) PS cmd parancsot, vagy megtekintheti a portálon a "Cloud Services--> Extensions" panelen.
+A Cloud Service jelenlegi WAD-beállításainak beszerzéséhez használja a [Get-AzureServiceDiagnosticsExtensions](./cloud-services-diagnostics-powershell.md#get-current-diagnostics-extension-configuration) PowerShell cmd parancsot, vagy megtekintheti a portálon a "Cloud Services--> Extensions" panelen.
 
 
 ## <a name="network-configuration"></a>Hálózati konfiguráció
@@ -254,7 +250,7 @@ További információ a Cloud Services Azure Diagnostics naplózásának engedé
 
 ## <a name="generic"></a>Általános
 
-### <a name="how-do-i-add-nosniff-to-my-website"></a>Hogyan adja hozzá a "nem szippantás" kifejezést a saját webhelyéhez?
+### <a name="how-do-i-add-nosniff-to-my-website"></a>Hogyan Hozzáadás `nosniff` a saját webhelyhez?
 Ha meg szeretné akadályozni, hogy az ügyfelek a MIME-típusokat felszippantsák, adjon hozzá egy beállítást a *web.config* fájlban.
 
 ```xml
@@ -284,11 +280,11 @@ Lásd a [szolgáltatásra vonatkozó korlátozásokat](../azure-resource-manager
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>Miért jelenik meg a Cloud Service-beli virtuális gép meghajtója nagyon kevés szabad lemezterülettel?
 Ez a várt viselkedés, és nem okoz problémát az alkalmazásában. A naplózás be van kapcsolva a (z)% AppRoot% meghajtóhoz az Azure Pásti virtuális gépeken, ami lényegében a fájlok szokásosan felhasználható területének kétszeres mennyiségét használja fel. Azonban több dolgot is figyelembe kell vennie, amelyek lényegében ezt nem jelentik be.
 
-A (z)% AppRoot%-os meghajtó méretének kiszámítása a következőképpen történik: \<size of .cspkg + max journal size + a margin of free space> vagy 1,5 GB, attól függően, hogy melyik a nagyobb. A virtuális gép mérete nem befolyásolja ezt a számítást. (A virtuális gép mérete csak az ideiglenes C: meghajtó méretére vonatkozik.) 
+A (z)% AppRoot% meghajtó méretének kiszámításához <méretet kell kiszámítani. a cspkg + maximális napló mérete + a szabad terület> vagy 1,5 GB, amelyik nagyobb. A virtuális gép mérete nem befolyásolja ezt a számítást. (A virtuális gép mérete csak az ideiglenes C: meghajtó méretére vonatkozik.) 
 
 A (z)% AppRoot% meghajtóra való írás nem támogatott. Ha az Azure-beli virtuális gépre ír, ezt egy ideiglenes LocalStorage-erőforrásban (vagy más megoldásban, például blob Storage, Azure Files stb.) kell végrehajtania. Így a (z)% AppRoot% mappában lévő szabad terület mennyisége nem értelmezhető. Ha nem biztos abban, hogy az alkalmazás a (z)% AppRoot% meghajtóra ír, bármikor lefuttathatja a szolgáltatást néhány napig, majd összehasonlíthatja a "Before" és a "After" méretet. 
 
-Az Azure nem fog semmit írni a (z)% AppRoot% meghajtóra. Miután létrehozta a virtuális merevlemezt a. cspkg-ből, és az Azure-beli virtuális gépre van csatlakoztatva, az egyetlen dolog, ami a meghajtóra írni az alkalmazást. 
+Az Azure nem fog semmit írni a (z)% AppRoot% meghajtóra. Miután létrehozta a virtuális merevlemezt `.cspkg` , és az Azure-beli virtuális gépre csatlakoztatta, az egyetlen dolog, ami a meghajtóra írható az alkalmazás. 
 
 A napló beállításai nem konfigurálhatók, így nem kapcsolhatja ki.
 
@@ -297,7 +293,7 @@ A napló beállításai nem konfigurálhatók, így nem kapcsolhatja ki.
 Az indítási feladatban a PowerShell-parancsfájl használatával engedélyezheti az antimalware-bővítményt. Az alábbi cikkekben ismertetett lépéseket követve implementálhatja azt: 
  
 - [PowerShell indítási feladat létrehozása](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)
-- [Set-AzureServiceAntimalwareExtension](/powershell/module/servicemanagement/azure.service/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
+- [Set-AzureServiceAntimalwareExtension](/powershell/module/servicemanagement/azure.service/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0&preserve-view=true)
 
 A kártevő szoftverek üzembe helyezésével kapcsolatos forgatókönyvekről és a portálról történő engedélyezéséről a [kártevők elleni telepítési forgatókönyvek](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios)című témakörben olvashat bővebben.
 

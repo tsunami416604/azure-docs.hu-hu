@@ -1,14 +1,14 @@
 ---
 title: Azure Service Bus előfizetési szabály SQL-műveletének szintaxisa | Microsoft Docs
-description: Ez a cikk az SQL-szabály műveleti szintaxisára mutató hivatkozást tartalmaz. A műveletek olyan SQL-Language-alapú szintaxisban íródnak, amely egy üzeneten történik.
+description: Ez a cikk az SQL-szabály műveleti szintaxisára mutató hivatkozást tartalmaz. A műveletek olyan SQL-nyelv-alapú szintaxisban íródnak, amely egy üzeneten történik.
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: 606281d42d5598d7f73312990d3a19775a202c08
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: f7b8cdfcccc22508b98a42391d2a0ef9955232d0
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632811"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742682"
 ---
 # <a name="subscription-rule-sql-action-syntax"></a>Előfizetési szabály SQL-műveletének szintaxisa
 
@@ -53,7 +53,7 @@ A rendszer egy *SQL-műveletet* használ az üzenetek metaadatainak kezeléséhe
   
 ## <a name="arguments"></a>Argumentumok  
   
--   `<scope>` egy opcionális karakterlánc, amely a hatókörét jelzi `<property_name>` . Az érvényes értékek a következők: `sys` vagy `user` . Az `sys` érték azt a rendszerhatókört jelöli, ahol a a `<property_name>` [BrokeredMessage osztály](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)egy nyilvános tulajdonságának neve. `user` Megadja a felhasználói hatókört, ahol a a `<property_name>` [BrokeredMessage osztály](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) szótárának kulcsa. `user` a hatókör az alapértelmezett hatókör, ha nincs `<scope>` megadva.  
+-   `<scope>` egy opcionális karakterlánc, amely a hatókörét jelzi `<property_name>` . Az érvényes értékek a következők: `sys` vagy `user` . Az `sys` érték azt a rendszerhatókört jelöli, ahol a a `<property_name>` [BrokeredMessage osztály](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)egy nyilvános tulajdonságának neve. `user` Megadja a felhasználói hatókört, ahol a a `<property_name>` [BrokeredMessage osztály](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) szótárának kulcsa. `user` a hatókör az alapértelmezett hatókör, ha `<scope>` nincs megadva.  
   
 ### <a name="remarks"></a>Megjegyzések  
 
@@ -137,7 +137,7 @@ Egy nem létező rendszertulajdonság elérésére tett kísérlet hibát jelez,
   
 ### <a name="arguments"></a>Argumentumok  
   
--   `<integer_constant>` egy olyan számsorozat, amely nem idézőjelek közé esik, és nem tartalmaz decimális pontokat. Az értékeket belsőleg tárolja a rendszer `System.Int64` , és ugyanazt a tartományt követi.  
+-   `<integer_constant>` egy olyan számsorozat, amely nem idézőjelek közé esik, és nem tartalmaz tizedes pontokat. Az értékeket belsőleg tárolja a rendszer `System.Int64` , és ugyanazt a tartományt követi.  
   
      A következő példák hosszú állandókat mutatnak be:  
   
@@ -148,7 +148,7 @@ Egy nem létező rendszertulajdonság elérésére tett kísérlet hibát jelez,
   
 -   `<decimal_constant>` egy olyan számokból álló karakterlánc, amely nem idézőjelek közé esik, és tizedes pontot tartalmaz. Az értékeket belsőleg tárolja a rendszer `System.Double` , és kövesse ugyanazt a tartományt/pontosságot.  
   
-     Egy későbbi verzióban ezt a számot egy másik adattípusban tárolhatja a pontos számú szemantika támogatásához, ezért nem szabad az alapul szolgáló adattípusra támaszkodni `System.Double` `<decimal_constant>` .  
+     Egy későbbi verzióban ezt a számot egy másik adattípusban tárolhatja a pontos számú szemantika támogatásához, ezért nem szabad arra támaszkodnia, hogy az alapul szolgáló adattípus a `System.Double` következő: `<decimal_constant>` .  
   
      A következő példák decimális konstansokra mutatnak:  
   
@@ -195,9 +195,11 @@ A karakterlánc-konstansok szimpla idézőjelek közé vannak lefoglalva, és ta
   
 ### <a name="remarks"></a>Megjegyzések  
 
-A `newid()` függvény a metódus által generált **System. GUID azonosítót** adja vissza `System.Guid.NewGuid()` .  
+A `newid()` függvény a `System.Guid` metódus által generált értéket adja vissza `System.Guid.NewGuid()` .  
   
 A `property(name)` függvény a által hivatkozott tulajdonság értékét adja vissza `name` . Az `name` érték bármely érvényes kifejezés lehet, amely egy karakterlánc-értéket ad vissza.  
+
+[!INCLUDE [service-bus-filter-examples](../../includes/service-bus-filter-examples.md)]
   
 ## <a name="considerations"></a>Megfontolandó szempontok
 
@@ -208,11 +210,11 @@ A `property(name)` függvény a által hivatkozott tulajdonság értékét adja 
 - A művelet nem sikerül, ha a nem létező felhasználói tulajdonságok hivatkoztak.
 - A nem létező felhasználói tulajdonságokat belsőleg "ismeretlen" értékként értékeli ki a rendszer, és a [SQLFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) a kezelők kiértékelése során megjelenő szemantikat követve.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [SQLRuleAction osztály (.NET-keretrendszer)](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
 - [SQLRuleAction osztály (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlruleaction)
 - [SqlRuleAction osztály (Java)](/java/api/com.microsoft.azure.servicebus.rules.sqlruleaction)
 - [SqlRuleAction (JavaScript)](/javascript/api/@azure/service-bus/sqlruleaction)
-- [az servicebus topic előfizetés szabálya](/cli/azure/servicebus/topic/subscription/rule)
+- [`az servicebus topic subscription rule`](/cli/azure/servicebus/topic/subscription/rule)
 - [Új – AzServiceBusRule](/powershell/module/az.servicebus/new-azservicebusrule)

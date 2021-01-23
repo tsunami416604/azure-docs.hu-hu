@@ -2,23 +2,23 @@
 title: A felhőalapú csoportokhoz hozzárendelt szerepkörök hibaelhárítása – Azure Active Directory | Microsoft Docs
 description: Ismerkedjen meg néhány gyakori kérdéssel és hibaelhárítási tippekkel a szerepkörök csoporthoz való hozzárendeléséhez Azure Active Directoryban.
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8735a0d34b9fcf5b86b6592980ffc5c7c3e3073c
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 0ff906654dc91c7b1980292efd2a737503e684e9
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861935"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742913"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>A felhőbeli csoportokhoz hozzárendelt szerepkörökkel kapcsolatos hibák elhárítása
 
@@ -53,15 +53,15 @@ ms.locfileid: "96861935"
 
 Azure AD-címtárbeli szerepkör | Jogosultsági felügyeleti szerepkör | Hozzáadhat biztonsági csoportot\* | Hozzáadhat Microsoft 365 csoportot\* | Hozzáadhat alkalmazást | Hozzáadhat SharePoint Online-webhelyet
 ----------------------- | --------------------------- | ----------------------- | ------------------------- | ----------- |  -----------------------------
-Globális rendszergazda | n/a | ✔️ | ✔️ | ✔️  | ✔️
-Felhasználói rendszergazda  | n/a  | ✔️  | ✔️  | ✔️
+Globális rendszergazda | n.a. | ✔️ | ✔️ | ✔️  | ✔️
+Felhasználói rendszergazda  | n.a.  | ✔️  | ✔️  | ✔️
 Intune-rendszergazda | Katalógus tulajdonosa | ✔️  | ✔️  | &nbsp;  | &nbsp;
 Exchange-rendszergazda  | Katalógus tulajdonosa  | &nbsp; | ✔️  | &nbsp;  | &nbsp;
 Teams szolgáltatás rendszergazdája | Katalógus tulajdonosa  | &nbsp; | ✔️  | &nbsp;  | &nbsp;
 SharePoint-rendszergazda | Katalógus tulajdonosa | &nbsp; | ✔️  | &nbsp;  | ✔️ 
 Alkalmazás-rendszergazda | Katalógus tulajdonosa  | &nbsp;  | &nbsp; | ✔️  | &nbsp;
 Cloud Application Administrator | Katalógus tulajdonosa  | &nbsp;  | &nbsp; | ✔️  | &nbsp;
-Felhasználó | Katalógus tulajdonosa | Csak akkor, ha a csoport tulajdonosa | Csak akkor, ha a csoport tulajdonosa | Csak akkor, ha az alkalmazás tulajdonosa  | &nbsp;
+User | Katalógus tulajdonosa | Csak akkor, ha a csoport tulajdonosa | Csak akkor, ha a csoport tulajdonosa | Csak akkor, ha az alkalmazás tulajdonosa  | &nbsp;
 
 \*A csoport nem hozzárendelhető szerepkör; Ez a isAssignableToRole = false. Ha egy csoport szerepkörhöz rendelhető, akkor a hozzáférési csomagot létrehozó személynek a szerepkörhöz hozzárendelhető csoport tulajdonosának is kell lennie.
 
@@ -79,7 +79,7 @@ Felhasználó | Katalógus tulajdonosa | Csak akkor, ha a csoport tulajdonosa | 
 **A:** Kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és nyissa meg **Azure Active Directory**.
-1. Válassza **Groups**  >  **a csoportok minden csoport** elemet.
+1. Válassza   >  **a csoportok minden csoport** elemet.
 1. Válassza a **szűrők hozzáadása** lehetőséget.
 1. Szűrés a **szerepkörhöz rendelhető**.
 
@@ -98,7 +98,7 @@ Felhasználó | Katalógus tulajdonosa | Csak akkor, ha a csoport tulajdonosa | 
 
 **A:** Ha egy meglévő csoportot rendel hozzá egy szerepkörhöz, a meglévő csoport tulajdonosa további tagokat adhat hozzá ehhez a csoporthoz anélkül, hogy az új tagok betartják a szerepkört. Mivel a szerepkörhöz hozzárendelhető csoportok hatékonyak, számos korlátozást teszünk elérhetővé a védelemhez. Nem kell módosítania a csoportot, amely a csoportot kezelő személy számára meglepő lenne.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Felhőbeli csoportok használata a szerepkör-hozzárendelések kezeléséhez](groups-concept.md)
 - [Szerepkörhöz hozzárendelhető csoport létrehozása](groups-create-eligible.md)

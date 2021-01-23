@@ -903,16 +903,14 @@
               href: ./workloads/redhat/redhat-rhui.md
 - name: Képek
   items:
-    - name: Marketplace-rendszerképek
+    - name: Azure Marketplace-rendszerképek keresése
       items:
-        - name: Azure Marketplace-rendszerképek keresése
-          items:
-            - name: parancssori felület
-              href: ./linux/cli-ps-findimage.md
-            - name: PowerShell
-              href: ./windows/cli-ps-findimage.md
-            - name: Windows-ügyfél lemezképei
-              href: ./windows/client-images.md
+        - name: parancssori felület
+          href: ./linux/cli-ps-findimage.md
+        - name: PowerShell
+          href: ./windows/cli-ps-findimage.md
+        - name: Windows-ügyfél lemezképei
+          href: ./windows/client-images.md
     - name: Egyéni Linux-rendszerképek
       items:
         - name: Áttekintés
@@ -1058,6 +1056,8 @@
           href: image-version-encryption.md
         - name: Rendszerképverzióból származó felügyelt lemezek
           href: managed-disk-from-image-version.md
+        - name: Vásárlási terv információi
+          href: marketplace-images.md
     - name: Rendszerképkészítő (előzetes verzió)
       items:
         - name: Áttekintés
@@ -1105,8 +1105,6 @@
           href: ./linux/image-builder-user-assigned-identity.md
         - name: Hibaelhárítás
           href: ./linux/image-builder-troubleshoot.md
-    - name: Vásárlási terv információi
-      href: marketplace-images.md
     - name: Rendszerkép összeállítása a Packerrel
       items:
         - name: Linux

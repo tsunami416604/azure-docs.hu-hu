@@ -1,26 +1,27 @@
 ---
-title: Ismerkedés az Azure Cloud Services szolgáltatással és az ASP.NET keretrendszerrel | Microsoft Docs
+title: Ismerkedés az Azure Cloud Services (klasszikus) és a ASP.NET szolgáltatással | Microsoft Docs
 description: Ismerje meg, hogyan hozhat létre többrétegű alkalmazást az ASP.NET MVC és az Azure használatával. Az alkalmazás felhőszolgáltatásban fut webes és feldolgozói szerepkörben. Entity Framework, SQL Database és Azure Storage üzenetsorokat és blobokat használ.
-services: cloud-services, storage
-documentationcenter: .net
-author: tgore03
-manager: carmonm
+ms.topic: article
 ms.service: cloud-services
-ms.devlang: dotnet
-ms.custom: devx-track-csharp
-ms.topic: conceptual
-ms.date: 05/15/2017
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: a875c036c79419357f1134c32f62fdb060fec7c6
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: ae7fd5a7c9bc858cb18473374e7bd5589717eac6
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562293"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742080"
 ---
-# <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Ismerkedés az Azure Cloud Services szolgáltatással és az ASP.NET keretrendszerrel
+# <a name="get-started-with-azure-cloud-services-classic-and-aspnet"></a>Ismerkedés az Azure Cloud Services (klasszikus) és a ASP.NET használatába
 
 ## <a name="overview"></a>Áttekintés
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
+
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre többrétegű .NET-alkalmazást ASP.NET MVC kezelőfelülettel, illetve hogyan telepítheti azt egy [Azure-felhőszolgáltatásban](cloud-services-choose-me.md). Az alkalmazás az [Azure SQL Database](/previous-versions/azure/ee336279(v=azure.100)) szolgáltatást, az [Azure Blob szolgáltatást](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) és az [Azure Queue szolgáltatást](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) használja. A [Visual Studio projekt letölthető](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) az MSDN kódgalériából.
 
 Ebből az oktatóanyagból megtudhatja, hogyan állíthatja össze és futtathatja az alkalmazást helyileg, hogyan telepítheti az Azure-ban, hogyan futtathatja a felhőben, valamint hogyan építheti fel az alapoktól kezdve. Ha szeretné, kezdheti az alapoktól a felépítést, majd később elvégezheti a tesztelés és a telepítés lépéseit.
@@ -28,7 +29,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan állíthatja össze és futtathat
 ## <a name="contoso-ads-application"></a>Contoso Ads alkalmazás
 Ez az alkalmazás egy hirdetőtábla. A felhasználók szöveg megadásával és egy kép feltöltésével hoznak létre hirdetéseket. Láthatják a hirdetések miniatűr képekkel ellátott listáját, majd teljes méretben is megtekinthetik a képet, amikor kiválasztanak egy hirdetést a részletek megtekintése céljából.
 
-![Hirdetéslista](./media/cloud-services-dotnet-get-started/list.png)
+![A rendszerkép megjeleníti az ad-listát](./media/cloud-services-dotnet-get-started/list.png)
 
 Az alkalmazás [üzenetsor-központú munkasémát](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) használ, hogy áthelyezze a miniatűrök létrehozásának processzorigényes feladatát egy háttérfolyamatra.
 
@@ -60,7 +61,7 @@ Ha egyikkel sem rendelkezik, lehet, hogy az Azure SDK telepítésekor a Visual S
 ## <a name="application-architecture"></a>Alkalmazásarchitektúra
 Az alkalmazás SQL-adatbázisban tárolja a hirdetéseket, amihez az Entity Framework Code First megoldást használja a táblák létrehozásához és az adatok eléréséhez. Az egyes hirdetések esetében az adatbázis két URL-címet tárol, egyet a teljes méretű képhez, egyet pedig a miniatűrhöz.
 
-![Hirdetés tábla](./media/cloud-services-dotnet-get-started/adtable.png)
+![Ez egy ad-tábla képe](./media/cloud-services-dotnet-get-started/adtable.png)
 
 Amikor egy felhasználó feltölt egy képet, a webes szerepkörrel rendelkező előtér-alkalmazás egy [Azure-blobban](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) tárolja azt, a hirdetés információit pedig az adatbázisban a blobra mutató URL-címmel együtt. Ezzel egy időben üzenetet ír egy Azure-üzenetsorba. A feldolgozói szerepkörrel futó háttérfolyamat rendszeres időközönként lekérdezi az új üzeneteket az üzenetsorról. Amikor egy új üzenet jelenik meg, a feldolgozói szerepkör létrehozza a kép miniatűrjét, és frissíti a miniatűr URL-címét a hirdetés adatbázismezőjében. Az alábbi ábra bemutatja, hogyan működnek együtt az alkalmazás részei.
 
@@ -83,11 +84,11 @@ Amikor egy felhasználó feltölt egy képet, a webes szerepkörrel rendelkező 
 
     Egy felhőszolgáltatás-projekt első futtatásakor nagyjából egy percet vesz igénybe az emulátorok elindítása. Az emulátorok elindulását követően az alapértelmezett böngésző megnyitja az alkalmazás kezdőlapját.
 
-    ![Contoso Ads architektúra](./media/cloud-services-dotnet-get-started/home.png)
+    ![Contoso ADS architektúra 1](./media/cloud-services-dotnet-get-started/home.png)
 8. Kattintson a **Create an Ad** (Hirdetés létrehozása) gombra.
 9. Adjon meg néhány tesztadatot, és válasszon ki egy feltölteni kívánt *.jpg* formátumú képet, majd kattintson a **Create** (Létrehozás) elemre.
 
-    ![Lap létrehozása](./media/cloud-services-dotnet-get-started/create.png)
+    ![Ábrán a Létrehozás lap látható](./media/cloud-services-dotnet-get-started/create.png)
 
     Az alkalmazás az Index lapra ugrik, de az új hirdetés miniatűrje nem jelenik meg, mert a feldolgozása még nem történt meg.
 10. Várjon egy kicsit, majd frissítse az Index lapot a miniatűr megjelenítéséhez.
@@ -125,11 +126,11 @@ Az Azure-felhőszolgáltatás az a környezet, amelyben az alkalmazás futni fog
 5. Válassza ki a régiót, ahol telepíteni szeretné az alkalmazást.
 
     Ez a mező határozza meg, hogy a felhőszolgáltatása melyik adatközpontban fog üzemelni. Termelési alkalmazások esetében az ügyfeleihez legközelebb eső régiót kellene kiválasztania. A jelen oktatóanyag esetében válassza az Önhöz legközelebbi régiót.
-5. Kattintson a **Létrehozás** gombra.
+5. Kattintson a **Létrehozás** lehetőségre.
 
     Az alábbi képen egy CSvccontosoads.cloudapp.net URL-címmel ellátott felhőszolgáltatás létrehozása történik.
 
-    ![Új felhőszolgáltatás](./media/cloud-services-dotnet-get-started/newcs.png)
+    ![A rendszerkép új felhőalapú szolgáltatást jelenít meg](./media/cloud-services-dotnet-get-started/newcs.png)
 
 ### <a name="create-a-database-in-azure-sql-database"></a>Adatbázis létrehozása Azure SQL Database
 Amikor az alkalmazás a felhőben fut, felhőalapú adatbázist fog használni.
@@ -154,7 +155,7 @@ Amikor az alkalmazás a felhőben fut, felhőalapú adatbázist fog használni.
 9. Kattintson a **Kiválasztás** elemre az új kiszolgáló kijelöléséhez.
 
     ![Új kiszolgáló](./media/cloud-services-dotnet-get-started/newdbserver.png)
-10. Kattintson a **Létrehozás** gombra.
+10. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="create-an-azure-storage-account"></a>Azure-tárfiók létrehozása
 Az Azure-tárfiók erőforrásokat biztosít az üzenetsor és a blob adatainak felhőbeli tárolásához.
@@ -177,7 +178,7 @@ Egy valós alkalmazás esetében általában külön fiókot hozna létre az alk
     Ha a felhőszolgáltatás és a tárfiók különböző adatközpontokban van (különböző régiókban), a késés mértéke megnő, és az adatközponton kívül használt sávszélességért fizetnie kell. Az adatközponton belül használt sávszélesség ingyenes.
 
     Az Azure-affinitáscsoportok egy olyan mechanizmust biztosítanak, amely minimálisra csökkenti az erőforrások között lévő távolságot az adatközpontban, csökkentve ezáltal a késés mértékét is. A jelen oktatóanyag nem használ affinitáscsoportokat. További információ: [Affinitáscsoportok létrehozása az Azure-ban](/previous-versions/azure/reference/gg715317(v=azure.100)).
-7. Kattintson a **Létrehozás** gombra.
+7. Kattintson a **Létrehozás** lehetőségre.
 
     ![Új tárfiók](./media/cloud-services-dotnet-get-started/newstorage.png)
 
@@ -230,7 +231,7 @@ Az Azure-tárfiók kapcsolati sztringjeinek tárolása a webes- és a feldolgoz�
 
 1. A **Megoldáskezelőben** a **ContosoAdsCloudService** projekt **Szerepkörök** területén kattintson a jobb gombbal a **ContosoAdsWeb** elemre, majd kattintson a **Tulajdonságok** lehetőségre.
 
-    ![Szerepkör tulajdonságai](./media/cloud-services-dotnet-get-started/roleproperties.png)
+    ![A rendszerkép megjeleníti a szerepkör tulajdonságait](./media/cloud-services-dotnet-get-started/roleproperties.png)
 2. Kattintson a **Beállítások** fülre. A **szolgáltatás konfigurációja** legördülő listában válassza a **felhő** lehetőséget.
 
     ![Felhő konfigurálása](./media/cloud-services-dotnet-get-started/sccloud.png)
@@ -378,7 +379,8 @@ Ebben a szakaszban Azure Storage- és SQL-kapcsolati sztringeket fog konfigurál
 2. Mentse a módosításokat.
 3. A ContosoAdsCloudService projektben a **Szerepkörök** területen kattintson a jobb gombbal a ContosoAdsWeb elemre, majd kattintson a **Tulajdonságok** elemre.
 
-    ![Képernyőfelvétel a Tulajdonságok menüpontra a szerepkörök területen.](./media/cloud-services-dotnet-get-started/roleproperties.png)
+    ![Szerepkör tulajdonságai – rendszerkép](./media/cloud-services-dotnet-get-started/roleproperties.png)
+
 4. A **ContosoAdsWeb [szerepkör]** tulajdonságok ablakában kattintson a **Beállítások** fülre, majd a **beállítás hozzáadása** elemre.
 
     A **Service Configuration** (Szolgáltatáskonfiguráció) **All Configurations** (Minden konfiguráció) értékét ne módosítsa.

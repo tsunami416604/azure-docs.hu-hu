@@ -2,23 +2,23 @@
 title: Csoport létrehozása szerepkörök hozzárendeléséhez a Azure Active Directoryban | Microsoft Docs
 description: Megtudhatja, hogyan hozhat létre szerepkörhöz hozzárendelhető csoportot az Azure AD-ben. Az Azure-szerepkörök kezelése a Azure Portal, a PowerShell vagy a Graph API használatával.
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc2c42f407ee31a792a6634a813358d428120b46
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 3f06a1e9ea83fc7ad758ad17245ffa5d7ca973f6
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378618"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742098"
 ---
 # <a name="create-a-role-assignable-group-in-azure-active-directory"></a>Szerepkörhöz rendelt csoport létrehozása Azure Active Directory
 
@@ -27,7 +27,7 @@ Csak az "isAssignableToRole" tulajdonsággal létrehozott, igaz értékre állí
 ## <a name="using-azure-ad-admin-center"></a>Az Azure AD felügyeleti központ használata
 
 1. Jelentkezzen be az [Azure ad felügyeleti központba](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) a Kiemelt szerepkörű rendszergazda vagy a globális rendszergazdai engedélyekkel az Azure ad-szervezetben.
-1. Válassza **Groups**  >  **a csoportok minden** csoport  >  **új csoport** lehetőséget.
+1. Válassza   >  **a csoportok minden** csoport  >  **új csoport** lehetőséget.
 
     [![Nyisson meg Azure Active Directory, és hozzon létre egy új csoportot.](./media/groups-create-eligible/new-group.png "Nyisson meg Azure Active Directory, és hozzon létre egy új csoportot.")](./media/groups-create-eligible/new-group.png#<lightbox>)
 
@@ -124,7 +124,7 @@ POST https://graph.microsoft.com/beta/groups
 
 Az ilyen típusú csoportok esetében `isPublic` mindig hamis lesz, és `isSecurityEnabled` mindig igaz lesz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Szerepkör hozzárendelése felhőbeli csoporthoz](groups-assign-role.md)
 - [Felhőbeli csoportok használata a szerepkör-hozzárendelések kezeléséhez](groups-concept.md)

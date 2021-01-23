@@ -1,20 +1,25 @@
 ---
-title: Felhőalapú szolgáltatás összekötése egyéni tartományvezérlővel | Microsoft Docs
+title: Felhőalapú szolgáltatás (klasszikus) összekötése egyéni tartományvezérlővel | Microsoft Docs
 description: Ismerje meg, hogyan csatlakoztathatók a webes/feldolgozói szerepkörök egy egyéni AD-tartományhoz a PowerShell és az AD tartományi bővítmény használatával
-services: cloud-services
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/18/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: fa918a3a6894205ed36c4b576608e7a71e523a92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 8c2c8377944caa7ad28f6b379531e6d5bf44c9e7
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87092711"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742505"
 ---
-# <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Azure Cloud Services-szerepkörök csatlakoztatása az Azure-ban üzemeltetett egyéni AD-tartományvezérlőhöz
+# <a name="connecting-azure-cloud-services-classic-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Azure Cloud Services (klasszikus) szerepkörök csatlakoztatása az Azure-ban üzemeltetett egyéni AD-tartományvezérlőhöz
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
+
 Először be kell állítania egy Virtual Network (VNet) az Azure-ban. Ezután hozzáadunk egy Active Directory-tartomány vezérlőt (amelyet egy Azure-beli virtuális gépen futtat) a VNet. Ezután hozzáadjuk a meglévő Cloud Service-szerepköröket az előre létrehozott VNet, majd összekapcsolhatjuk azokat a tartományvezérlőhöz.
 
 A Kezdés előtt néhány dolgot figyelembe kell venni:
@@ -24,10 +29,10 @@ A Kezdés előtt néhány dolgot figyelembe kell venni:
 
 Kövesse ezt a lépésenkénti útmutatót, és ha bármilyen problémába ütközik, a cikk végén küldje el nekünk a megjegyzést. Valaki vissza fog térni Önnel (igen, az olvasási megjegyzéseket olvasjuk).
 
-A felhőalapú szolgáltatás által hivatkozott hálózatnak **klasszikus virtuális hálózatnak**kell lennie.
+A felhőalapú szolgáltatás által hivatkozott hálózatnak **klasszikus virtuális hálózatnak** kell lennie.
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
-Az Azure Portal vagy a PowerShell használatával létrehozhat egy Virtual Network az Azure-ban. Ebben az oktatóanyagban a PowerShell használatos. Ha a Azure Portal használatával szeretne virtuális hálózatot létrehozni, tekintse meg [a virtuális hálózat létrehozása](../virtual-network/quick-create-portal.md)című témakört. A cikk a virtuális hálózatok (Resource Manager) létrehozásával foglalkozik, de létre kell hoznia egy virtuális hálózatot (klasszikus) a Cloud Serviceshez. Ehhez a portálon válassza az **erőforrás létrehozása**elemet, írja be a *virtuális hálózat* **kifejezést a keresőmezőbe** , majd nyomja le az **ENTER**billentyűt. A keresési eredmények területen a **minden**elemnél válassza a **virtuális hálózat**lehetőséget. **A telepítési modell kiválasztása**területen válassza a **klasszikus**lehetőséget, majd kattintson a **Létrehozás**elemre. Ezután követheti a cikkben ismertetett lépéseket.
+Az Azure Portal vagy a PowerShell használatával létrehozhat egy Virtual Network az Azure-ban. Ebben az oktatóanyagban a PowerShell használatos. Ha a Azure Portal használatával szeretne virtuális hálózatot létrehozni, tekintse meg [a virtuális hálózat létrehozása](../virtual-network/quick-create-portal.md)című témakört. A cikk a virtuális hálózatok (Resource Manager) létrehozásával foglalkozik, de létre kell hoznia egy virtuális hálózatot (klasszikus) a Cloud Serviceshez. Ehhez a portálon válassza az **erőforrás létrehozása** elemet, írja be a *virtuális hálózat* **kifejezést a keresőmezőbe** , majd nyomja le az **ENTER** billentyűt. A keresési eredmények területen a **minden** elemnél válassza a **virtuális hálózat** lehetőséget. **A telepítési modell kiválasztása** területen válassza a **klasszikus** lehetőséget, majd kattintson a **Létrehozás** elemre. Ezután követheti a cikkben ismertetett lépéseket.
 
 ```powershell
 #Create Virtual Network

@@ -1,27 +1,25 @@
 ---
-title: Felhőalapú szolgáltatás profilkészítése helyileg a számítási emulátorban | Microsoft Docs
-services: cloud-services
+title: Felhőalapú szolgáltatás (klasszikus) profilkészítése helyileg a számítási emulátorban | Microsoft Docs
 description: A Cloud Services teljesítménnyel kapcsolatos problémáinak vizsgálata a Visual Studio Profilerrel
-documentationcenter: ''
-author: mikejo
-manager: jillfra
-editor: ''
-tags: ''
-ms.assetid: 25e40bf3-eea0-4b0b-9f4a-91ffe797f6c3
-ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/18/2016
-ms.author: mikejo
-ms.openlocfilehash: 6b5707405879c462a1d919e04730d368332ba68c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 2f924d84967c1a1928a47b59fd3a8c28da091130
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077155"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743559"
 ---
-# <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Felhőalapú szolgáltatás teljesítményének tesztelése helyileg az Azure számítási emulátorban a Visual Studio Profiler használatával
+# <a name="testing-the-performance-of-a-cloud-service-classic-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Felhőalapú szolgáltatás (klasszikus) teljesítményének tesztelése a Visual Studio Profiler használatával helyileg az Azure számítási emulátorban
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
+
 A Cloud Services teljesítményének teszteléséhez különféle eszközök és technikák állnak rendelkezésre.
 Ha felhőalapú szolgáltatást tesz közzé az Azure-ban, akkor a Visual Studio begyűjtheti a profilkészítési adatokat, majd helyileg elemezheti azt az [Azure-alkalmazás profilkészítése][1]című részben leírtak szerint.
 A diagnosztika használatával számos teljesítményszámláló nyomon követhető a [teljesítményszámlálók az Azure][2]-ban című témakörben leírtak szerint.
@@ -30,11 +28,11 @@ A felhőbe való üzembe helyezés előtt érdemes lehet az alkalmazás helyi pr
 Ez a cikk a profilkészítés CPU-mintavételezési módszerét ismerteti, amely helyileg is elvégezhető az emulátorban. A CPU-mintavételezés olyan profilkészítési módszer, amely nem zavaró. Egy kijelölt mintavételi időszakban a Profiler pillanatképet készít a hívási veremről. Az adatok gyűjtése egy adott időszakon belül történik, és egy jelentésben jelenik meg. Ez a profilkészítési módszer általában azt jelzi, hogy hol történik a CPU-munka nagy részét képező számítási igényű alkalmazás.  Ez lehetőséget nyújt arra, hogy a "gyors elérésű útvonalra" koncentráljon, ahol az alkalmazás a legtöbb időt tölti.
 
 ## <a name="1-configure-visual-studio-for-profiling"></a>1: a Visual Studio konfigurálása profilkészítéshez
-Először is van néhány Visual Studio konfigurációs lehetőség, amely a profilkészítés során hasznos lehet. A profilkészítési jelentések értelmezéséhez szüksége lesz az alkalmazáshoz tartozó szimbólumokra (. pdb fájlokra), valamint a rendszerkönyvtárakhoz tartozó szimbólumokra is. Érdemes meggyőződnie arról, hogy az elérhető szimbólum-kiszolgálókra hivatkozik. Ehhez a Visual Studióban a **Tools (eszközök** ) menüben válassza a **Beállítások**, majd a **hibakeresés**, majd a **szimbólumok**elemet. Győződjön meg arról, hogy a Microsoft Symbol kiszolgálók szerepelnek a **Symbol file (. PDB) helyein**.  Hivatkozhat arra is https://referencesource.microsoft.com/symbols , hogy további szimbólumokat tartalmazó fájlok is szerepelhetnek.
+Először is van néhány Visual Studio konfigurációs lehetőség, amely a profilkészítés során hasznos lehet. A profilkészítési jelentések értelmezéséhez szüksége lesz az alkalmazáshoz tartozó szimbólumokra (. pdb fájlokra), valamint a rendszerkönyvtárakhoz tartozó szimbólumokra is. Érdemes meggyőződnie arról, hogy az elérhető szimbólum-kiszolgálókra hivatkozik. Ehhez a Visual Studióban a **Tools (eszközök** ) menüben válassza a **Beállítások**, majd a **hibakeresés**, majd a **szimbólumok** elemet. Győződjön meg arról, hogy a Microsoft Symbol kiszolgálók szerepelnek a **Symbol file (. PDB) helyein**.  Hivatkozhat arra is https://referencesource.microsoft.com/symbols , hogy további szimbólumokat tartalmazó fájlok is szerepelhetnek.
 
 ![Szimbólum beállításai][4]
 
-Ha kívánja, egyszerűbbé teheti a Profiler által generált jelentéseket a Saját kód beállításával. Ha a Saját kód engedélyezve van, a függvény hívási veremei egyszerűsítettek, így a teljes mértékben belső hívások a tárakban, a .NET-keretrendszer pedig rejtve marad a jelentésekben. Az **eszközök** menüben válassza a **Beállítások lehetőséget**. Ezután bontsa ki a **Teljesítményfigyelő eszközök** csomópontot, és válassza az **általános**lehetőséget. Jelölje be a **saját kód engedélyezése a Profiler-jelentésekhez**jelölőnégyzetet.
+Ha kívánja, egyszerűbbé teheti a Profiler által generált jelentéseket a Saját kód beállításával. Ha a Saját kód engedélyezve van, a függvény hívási veremei egyszerűsítettek, így a teljes mértékben belső hívások a tárakban, a .NET-keretrendszer pedig rejtve marad a jelentésekben. Az **eszközök** menüben válassza a **Beállítások lehetőséget**. Ezután bontsa ki a **Teljesítményfigyelő eszközök** csomópontot, és válassza az **általános** lehetőséget. Jelölje be a **saját kód engedélyezése a Profiler-jelentésekhez** jelölőnégyzetet.
 
 ![Saját kód beállítások][17]
 
@@ -79,7 +77,7 @@ A Cloud Service-t hibakeresés nélkül (CTRL + F5) is kiépítheti és futtatha
 ## <a name="2-attach-to-a-process"></a>2: csatolás egy folyamathoz
 Az alkalmazásnak a Visual Studio 2010 IDE-ből való elindításával való profilkészítése helyett a Profilert egy futó folyamathoz kell csatlakoztatnia. 
 
-Ha a Profilert egy folyamathoz szeretné csatolni, az **elemzés** menüben válassza a **Profiler** és a **csatolás/leválasztás**lehetőséget.
+Ha a Profilert egy folyamathoz szeretné csatolni, az **elemzés** menüben válassza a **Profiler** és a **csatolás/leválasztás** lehetőséget.
 
 ![Profil csatolása lehetőség][6]
 
@@ -145,7 +143,7 @@ public static string Concatenate(int number)
 }
 ```
 
-Végezzen el egy másik teljesítményt, majd hasonlítsa össze a teljesítményt. Ha a teljesítmény-kezelőben a futtatások ugyanabban a munkamenetben találhatók, egyszerűen kiválaszthatja mindkét jelentést, megnyithatja a helyi menüt, és választhatja a **teljesítmény-jelentések összehasonlítása**lehetőséget is. Ha egy másik teljesítmény-munkamenetben lévő futtatással szeretne összehasonlítani, nyissa meg az **elemzés** menüt, és válassza a **teljesítmény-jelentések összehasonlítása**lehetőséget. A megjelenő párbeszédpanelen mindkét fájlt meg kell adni.
+Végezzen el egy másik teljesítményt, majd hasonlítsa össze a teljesítményt. Ha a teljesítmény-kezelőben a futtatások ugyanabban a munkamenetben találhatók, egyszerűen kiválaszthatja mindkét jelentést, megnyithatja a helyi menüt, és választhatja a **teljesítmény-jelentések összehasonlítása** lehetőséget is. Ha egy másik teljesítmény-munkamenetben lévő futtatással szeretne összehasonlítani, nyissa meg az **elemzés** menüt, és válassza a **teljesítmény-jelentések összehasonlítása** lehetőséget. A megjelenő párbeszédpanelen mindkét fájlt meg kell adni.
 
 ![Teljesítmény-jelentések összehasonlítása lehetőség][15]
 

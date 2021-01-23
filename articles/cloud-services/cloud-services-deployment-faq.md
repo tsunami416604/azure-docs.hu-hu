@@ -1,28 +1,24 @@
 ---
 title: Üzembe helyezési problémák Microsoft Azure Cloud Services GYIK-ban | Microsoft Docs
 description: Ez a cikk a Microsoft Azure Cloud Services üzembe helyezésével kapcsolatos gyakori kérdéseket sorolja fel.
-services: cloud-services
-documentationcenter: ''
-author: genlin
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
-ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/31/2018
-ms.author: genli
-ms.openlocfilehash: 63a219078927e9001a8eb4085c722e7ec8d2fac9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 67c20823d1f80360b2ab23dc3f208673d36a7374
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75980624"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742216"
 ---
-# <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Üzembe helyezési problémák az Azure Cloud Services esetén: gyakori kérdések (GYIK)
+# <a name="deployment-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Üzembe helyezési problémák az Azure Cloud Services (klasszikus) szolgáltatásban: gyakori kérdések (GYIK)
 
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
 Ez a cikk a [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services)üzembe helyezésével kapcsolatos gyakori kérdéseket tartalmazza. A mérettel kapcsolatos információkért tekintse meg a [Cloud Services virtuális gép mérete lapot](cloud-services-sizes-specs.md) .
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
@@ -63,9 +59,9 @@ Az üzembe helyezett felhőalapú szolgáltatások virtuálisgép-mérete nem m�
 
 További információ: [a Cloud Service frissítése](cloud-services-update-azure-service.md).
 
-## <a name="why-am-i-not-able-to-deploy-cloud-services-through-service-management-apis-or-powershell-when-using-azure-resource-manager-storage-account"></a>Miért nem tudom telepíteni Cloud Services a Service Management API-kon vagy a PowerShellen keresztül Azure Resource Manager Storage-fiók használatakor? 
+## <a name="why-am-i-not-able-to-deploy-cloud-services-through-service-management-apis-or-powershell-when-using-azure-resource-manager-storage-account"></a>Miért nem tudom telepíteni Cloud Services a Service Management API-kon vagy a PowerShellen keresztül Azure Resource Manager Storage-fiók használatakor? 
 
-Mivel a Cloud Service egy klasszikus erőforrás, amely nem kompatibilis a Azure Resource Manager modellel, nem társíthatja azt a Azure Resource Manager Storage-fiókokhoz. Íme néhány lehetőség: 
+Mivel a Cloud Service egy klasszikus erőforrás, amely nem kompatibilis a Azure Resource Manager modellel, nem társíthatja azt a Azure Resource Manager Storage-fiókokhoz. Íme néhány lehetőség: 
 
 - Üzembe helyezés REST APIon keresztül.
 
@@ -73,7 +69,7 @@ Mivel a Cloud Service egy klasszikus erőforrás, amely nem kompatibilis a Azure
 
 - Üzembe helyezés [Azure Portalon](https://portal.azure.com)keresztül.
 
-    Ez a művelet a [Azure Portal](https://portal.azure.com) fog működni, mivel a hívás olyan proxyn/alátéten halad át, amely lehetővé teszi a Azure Resource Manager és a klasszikus erőforrások közötti kommunikációt. 
+    Ez a művelet a [Azure Portal](https://portal.azure.com) fog működni, mivel a hívás olyan proxyn/alátéten halad át, amely lehetővé teszi a Azure Resource Manager és a klasszikus erőforrások közötti kommunikációt. 
 
 ## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>Miért Azure Portal megkövetelni a Storage-fiókot az üzembe helyezéshez?
 

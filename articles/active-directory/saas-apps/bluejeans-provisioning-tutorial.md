@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 204cdc689d5a117df428bb314a81a35081f7b13c
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 8e155a253910cc5ee3f4fc71cf9ea66ced5cb46f
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357640"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742114"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés BlueJeans konfigurálása
 
@@ -91,49 +91,51 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 3. Válassza a **Kiépítés** lapot.
 
-    ![Képernyőkép a BlueJeans Enterprise Application Sidebarról a Kiemelt kiépítési lehetőséggel és a kihívással.](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningTab.png)
+    ![Kiépítés lap](common/provisioning.png)
 
 4. Állítsa a **Kiépítési mód** mezőt **Automatikus** értékre.
 
-    ![A kiépítési mód és a rendszergazdai hitelesítő adatok című rész képernyőképe.](./media/bluejeans-provisioning-tutorial/Bluejeans1.png)
+    ![Kiépítés lap automatikus](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a BlueJeans-fiókjának **rendszergazdai felhasználónevét** és **rendszergazdai jelszavát** . Ilyen értékek például a következők:
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a BlueJeans bérlői URL-címét és a titkos jogkivonatot. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a BlueJeans. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a BlueJeans-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
-   * A **rendszergazdai Felhasználónév** mezőben töltse ki a rendszergazdai fiók felhasználónevét a BlueJeans-bérlőn. Példa: admin@contoso.com.
+    ![Jogkivonat](common/provisioning-testconnection-tenanturltoken.png)
 
-   * A **rendszergazdai jelszó** mezőben töltse ki a rendszergazdai felhasználónévhez tartozó jelszót.
 
-6. Az 5. lépésben megjelenő mezők kitöltése után kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad képes legyen csatlakozni a BlueJeans. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a BlueJeans-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
 
-    ![Képernyőkép a rendszergazdai hitelesítő adatokról című szakaszban, az elnevezett kapcsolatok tesztelése lehetőséggel.](./media/bluejeans-provisioning-tutorial/BluejeansTestConnection.png)
+    ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
-7. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
+7. Kattintson a **Mentés** gombra.
 
-    ![Képernyőkép az értesítő e-mailek szövegmezőről.](./media/bluejeans-provisioning-tutorial/BluejeansNotificationEmail.png)
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a BlueJeans** lehetőséget.
 
-8. Kattintson a **Mentés** gombra.
+9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban található BlueJeans. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a BlueJeans felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-9. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a BlueJeans** lehetőséget.
+|Attribútum|Típus|Szűréshez támogatott|
+|---|---|---|
+|userName (Felhasználónév)|Sztring|&check;|
+|active|Logikai|
+|cím|Sztring|
+|emails[type eq "work"].value|Sztring|
+|name.givenName|Sztring|
+|name.familyName|Sztring|
+|phoneNumbers[type eq "work"].value|Sztring|
+|urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Manager|Sztring|
 
-    ![A leképezések szakasz képernyőképe a Azure Active Directory felhasználók szinkronizálása a BlueJeans lehetőségre kiemelve.](./media/bluejeans-provisioning-tutorial/BluejeansMapping.png)
+10. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
 
-10. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban található BlueJeans. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a BlueJeans felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+11. Az Azure AD-kiépítési szolgáltatás BlueJeans való engedélyezéséhez módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
 
-    ![Képernyőfelvétel: az attribútum-hozzárendelések szakasz, amelyen hét leképezés látható.](./media/bluejeans-provisioning-tutorial/BluejeansUserMappingAtrributes.png)
+    ![Kiépítési állapot bekapcsolva](common/provisioning-toggle-on.png)
 
-11. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
+12. Adja meg a BlueJeans kiépíteni kívánt felhasználókat és/vagy csoportokat a **Settings (beállítások** ) szakasz **hatókörében** a kívánt értékek kiválasztásával.
 
-12. Az Azure AD-kiépítési szolgáltatás BlueJeans való engedélyezéséhez módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
+    ![Átadási hatókör](common/provisioning-scope.png)
 
-    ![Képernyőfelvétel a beállítások szakaszról a létesítési állapot beállítás értéke: on.](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningStatus.png)
+13. Amikor készen áll az átadásra, kattintson a **Mentés** gombra.
 
-13. Adja meg a BlueJeans kiépíteni kívánt felhasználókat és/vagy csoportokat a **Settings (beállítások** ) szakasz **hatókörében** a kívánt értékek kiválasztásával.
-
-    ![Képernyőfelvétel a hatókör beállításról a kijelölt felhasználók és csoportok szinkronizálása lehetőség kiemelve.](./media/bluejeans-provisioning-tutorial/UserGroupSelection.png)
-
-14. Amikor készen áll az átadásra, kattintson a **Mentés** gombra.
-
-    ![Képernyőkép a BlueJeans Enterprise Application Sidebarról a Save nevű mentés lehetőséggel.](./media/bluejeans-provisioning-tutorial/SaveProvisioning.png)
+    ![Átadási konfiguráció mentése](common/provisioning-configuration-save.png)
 
 Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a BlueJeans-on végrehajtott összes műveletet ismertetik.
 
@@ -143,7 +145,7 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 
 * A Bluejeans nem engedélyezi a 30 karakternél hosszabb felhasználóneveket.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

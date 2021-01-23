@@ -1,26 +1,25 @@
 ---
-title: Azure Cloud Services def. WorkerRole séma | Microsoft Docs
+title: Azure Cloud Services (klasszikus) def. WorkerRole séma | Microsoft Docs
 description: Az Azure feldolgozói szerepkör az általánosított fejlesztéshez használatos, és a webes szerepkörök esetében a háttérben történő feldolgozást is elvégezheti. Az Azure feldolgozói szerepkör sémájának ismertetése.
-services: cloud-services
-ms.custom: ''
-ms.date: 04/14/2015
-ms.reviewer: ''
+ms.topic: article
 ms.service: cloud-services
-ms.suite: ''
-ms.tgt_pltfrm: ''
-ms.topic: reference
-ms.assetid: 41cd46bc-c479-43fa-96e5-d6c83e4e6d89
-caps.latest.revision: 55
-author: tgore03
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 26225442c72fb209bb1ac4cd2bf4777fb39542fb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 0871527187a3d678cb2b94bd8dc342cf2abde1ba
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005163"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743134"
 ---
-# <a name="azure-cloud-services-definition-workerrole-schema"></a>Azure Cloud Services Definition WorkerRole séma
+# <a name="azure-cloud-services-classic-definition-workerrole-schema"></a>Azure Cloud Services (klasszikus) definíciós WorkerRole séma
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
+
 Az Azure feldolgozói szerepkör olyan szerepkör, amely általánosított fejlesztéshez hasznos, és egy webes szerepkörhöz tartozó háttérbeli feldolgozást is végezhet.
 
 A szolgáltatás definíciós fájljának alapértelmezett kiterjesztése. csdef.
@@ -323,7 +322,7 @@ A következő táblázat a elem attribútumait ismerteti `Variable` :
 | Attribútum | Típus | Leírás |
 | --------- | ---- | ----------- |
 |name|sztring|Kötelező. A beállítani kívánt környezeti változó neve.|
-|value|sztring|Választható. A környezeti változóhoz beállított érték Tartalmaznia kell egy Value attribútumot vagy egy `RoleInstanceValue` elemet.|
+|érték|sztring|Választható. A környezeti változóhoz beállított érték Tartalmaznia kell egy Value attribútumot vagy egy `RoleInstanceValue` elemet.|
 
 ##  <a name="roleinstancevalue"></a><a name="RoleInstanceValue"></a> RoleInstanceValue
 Az `RoleInstanceValue` elem azt az xPath-értéket adja meg, amelyből be kell olvasni a változó értékét.

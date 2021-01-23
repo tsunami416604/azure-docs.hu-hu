@@ -3,12 +3,12 @@ title: A Azure Batch nagyméretű párhuzamos feladatokat futtat a felhőben
 description: Megismerheti, hogyan használhatja az Azure Batch szolgáltatást nagyméretű párhuzamos és HPC számítási feladatokhoz.
 ms.topic: overview
 ms.date: 07/30/2020
-ms.openlocfilehash: 93dcf19b3b6af0f369fe19b7823bf43d597a9c21
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: dbd27dc1a00966a2d71952335cfb47c7ca55bc24
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106648"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743100"
 ---
 # <a name="what-is-azure-batch"></a>Mi az Azure Batch?
 
@@ -75,7 +75,10 @@ Ne feledje, hogy a fent ismertetett munkafolyamat csak egy módszer a Batch hasz
 
 Lásd: a [Batch szolgáltatás munkafolyamata és erőforrásai](batch-service-workflow-features.md) a készletek, csomópontok, feladatok és feladatok áttekintéséhez. Lásd továbbá a [Batch szolgáltatás legújabb frissítéseit](https://azure.microsoft.com/updates/?product=batch).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="in-region-data-residency"></a>Régión belüli adattárolás
+Azure Batch nem helyezi át és nem tárolja az ügyféladatokat azon a régión kívül, amelyben üzembe van helyezve. 
+
+## <a name="next-steps"></a>További lépések
 
 Ismerkedjen az Azure Batch használatának első lépéseivel az alábbi rövid útmutatókkal:
 - [Az első Batch-feladat futtatása az Azure CLI használatával](quick-create-cli.md)

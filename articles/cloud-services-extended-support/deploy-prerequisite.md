@@ -1,0 +1,128 @@
+---
+title: Az Azure Cloud Services üzembe helyezésének előfeltételei (bővített támogatás)
+description: Az Azure Cloud Services üzembe helyezésének előfeltételei (bővített támogatás)
+ms.topic: article
+ms.service: cloud-services-extended-support
+author: gachandw
+ms.author: gachandw
+ms.reviewer: mimckitt
+ms.date: 10/13/2020
+ms.custom: ''
+ms.openlocfilehash: 45f2b75be9a0090b883c5cc62a0886366e81a302
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98744414"
+---
+# <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>Az Azure Cloud Services üzembe helyezésének előfeltételei (bővített támogatás)
+
+> [!IMPORTANT]
+> A Cloud Services (bővített támogatás) jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+A sikeres Cloud Services (kiterjesztett támogatás) központi telepítésének ellenőrzéséhez tekintse át az alábbi lépéseket, és végezze el az egyes elemek telepítését az üzembe helyezések megkísérlése előtt. 
+
+## <a name="register-the-cloudservices-feature"></a>A CloudServices funkció regisztrálása
+Regisztrálja az előfizetéshez tartozó funkciót. A regisztráció elvégzése több percet is igénybe vehet. 
+
+```powershell
+Register-AzProviderFeature -FeatureName CloudServices -ProviderNamespace Microsoft.Compute
+```
+
+A regisztráció állapotát a következő paranccsal ellenőrizhető:  
+```powershell
+Get-AzProviderFeature 
+
+#Sample output
+FeatureName               ProviderName      RegistrationState
+CloudServices           Microsoft.Compute    Registered
+```
+
+## <a name="required-service-configuration-cscfg-file-updates"></a>Szükséges szolgáltatási konfigurációs (. cscfg) fájlok frissítései
+
+### <a name="1-virtual-network"></a>1) Virtual Network
+A Cloud Service (bővített támogatás) központi telepítéseknek virtuális hálózatban kell lenniük. A virtuális hálózat a [Azure Portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal), a [PowerShell](https://docs.microsoft.com/azure/virtual-network/quick-create-powershell), az [Azure CLI](https://docs.microsoft.com/azure/virtual-network/quick-create-cli) vagy az [ARM sablon](https://docs.microsoft.com/azure/virtual-network/quick-create-template)segítségével hozható létre. A virtuális hálózatot és az alhálózatokat is hivatkozni kell a szolgáltatás konfigurációjában (. cscfg) a `NetworkConfiguration` szakasz alatt. 
+
+A felhőalapú szolgáltatással azonos erőforráscsoporthoz tartozó virtuális hálózatok esetében a szolgáltatás konfigurációs (. cscfg) fájljában csak a virtuális hálózat nevére lehet hivatkozni. Ha a virtuális hálózat és a felhőalapú szolgáltatás két különböző erőforráscsoporthoz van, akkor a virtuális hálózat teljes Azure Resource Manager AZONOSÍTÓját meg kell adni a szolgáltatás konfigurációs (. cscfg) fájljában.
+ 
+#### <a name="virtual-network-located-in-same-resource-group"></a>Azonos erőforráscsoporthoz tartozó Virtual Network
+```json
+<VirtualNetworkSite name="<vnet-name>"/> 
+<AddressAssignments> 
+<InstanceAddress roleName="<role-name>"> 
+<Subnets> 
+<Subnet name="<subnet-name>"/> 
+</Subnets> 
+</InstanceAddress> 
+```
+
+#### <a name="virtual-network-located-in-different-resource-group"></a>Más erőforráscsoporthoz tartozó virtuális hálózat
+```json
+“/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>/> 
+<AddressAssignments> 
+<InstanceAddress roleName="<role-name>"> 
+<Subnets> 
+<Subnet name="<subnet-name>"/> 
+</Subnets> 
+</InstanceAddress> 
+```
+### <a name="2-remove-the-old-plugins"></a>2.) távolítsa el a régi beépülő modulokat
+
+Távolítsa el a távoli asztal régi beállításait a szolgáltatás konfigurációs (. cscfg) fájljából.  
+
+```xml
+<Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.Enabled" value="true" /> 
+<Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountUsername" value="gachandw" /> 
+<Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountEncryptedPassword" value="XXXX" /> 
+<Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" value="2021-12-17T23:59:59.0000000+05:30" /> 
+<Setting name="Microsoft.WindowsAzure.Plugins.RemoteForwarder.Enabled" value="true" /> 
+```
+
+## <a name="required-service-definition-file-csdef-updates"></a>Szükséges szolgáltatási definíciós fájl (. csdef) frissítései
+
+### <a name="1-virtual-machine-sizes"></a>1) a virtuális gépek méretei
+A következő méretek elavultak a Azure Resource Managerban. Ha azonban továbbra is szeretné használni őket, frissítse a `vmsize` nevet a társított Azure Resource Manager elnevezési konvencióval.  
+
+| Előző méret neve | Frissített méret neve | 
+|---|---|
+| ExtraSmall | Standard_A0 | 
+| Kicsi | Standard_A1 |
+| Közepes | Standard_A2 | 
+| Nagy | Standard_A3 | 
+| ExtraLarge | Standard_A4 | 
+| A5 | Standard_A5 | 
+| A6 | Standard_A6 | 
+| A7 | Standard_A7 |  
+| A8 | Standard_A8 | 
+| A9 | Standard_A9 |
+| A10 | Standard_A10 | 
+| A11 | Standard_A11 | 
+| MSODSG5 | Standard_MSODSG5 | 
+
+ Ilyen lehet például a következő: `<WorkerRole name="WorkerRole1" vmsize="Medium"` `<WorkerRole name="WorkerRole1" vmsize="Standard_A2"` .
+ 
+> [!NOTE]
+> Az elérhető méretek listájának lekéréséhez tekintse meg az [erőforrás-SKU-lista](https://docs.microsoft.com/rest/api/compute/resourceskus/list) lehetőséget, és alkalmazza a következő szűrőket: <br>
+`ResourceType = virtualMachines ` <br>
+`VMDeploymentTypes = PaaS `
+
+
+### <a name="2-remove-old-remote-desktop-plugins"></a>2) a régi távoli asztali bővítmények eltávolítása
+A régi távoli asztali bővítményeket használó központi telepítéseknek el kell távolítaniuk a modulokat a szolgáltatás-definíciós (. csdef) fájlból és a kapcsolódó tanúsítványokból. 
+
+```xml
+<Imports> 
+<Import moduleName="RemoteAccess" /> 
+<Import moduleName="RemoteForwarder" /> 
+</Imports> 
+```
+
+## <a name="key-vault-creation"></a>Key Vault létrehozása 
+
+A Key Vault a Cloud Serviceshoz társított tanúsítványok (kiterjesztett támogatás) tárolására szolgál. Adja hozzá a tanúsítványokat a Key Vaulthoz, majd hivatkozzon a tanúsítvány ujjlenyomatai megfelelnek a szolgáltatás konfigurációs fájljában. Emellett engedélyeznie kell Key Vault a megfelelő engedélyekhez, hogy a Cloud Services (bővített támogatás) erőforrás beolvassa a titkos kulcsként tárolt tanúsítványt Key Vault. A Key Vault a [Azure Portal](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal)és a  [PowerShell](https://docs.microsoft.com/azure/key-vault/general/quick-create-powershell)használatával hozható létre. A Key Vault ugyanabban a régióban és előfizetésben kell létrehozni, mint a Cloud Service. További információ: [tanúsítványok használata az Azure Cloud Services (bővített támogatás)](certificates-and-key-vault.md).
+
+## <a name="next-steps"></a>További lépések 
+- Tekintse át a Cloud Services [üzembe helyezésének előfeltételeit](deploy-prerequisite.md) (kiterjesztett támogatás).
+- A [Azure Portal](deploy-portal.md), a [PowerShell](deploy-powershell.md), a [sablon](deploy-template.md) vagy a [Visual Studio](deploy-visual-studio.md)használatával üzembe helyezhet egy felhőalapú szolgáltatást (kiterjesztett támogatás).
+- Tekintse át a Cloud Servicesra vonatkozó [gyakori kérdéseket](faq.md) (kiterjesztett támogatás).

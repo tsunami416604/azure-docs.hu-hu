@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 11/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 85026092e513ecc9ec3c23e292a416297774a2e4
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 052d11fe0125de7970fb7d02931edfc7f3c2e4d9
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217838"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743117"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>A Microsoft Teams használata a Windows rendszerű virtuális asztalon
 
@@ -146,6 +146,7 @@ A virtualizált környezetekben lévő csapatok használata eltér a nem virtual
 - A Windows rendszerű virtuális asztali csapatok csak egy bejövő videó bemenetet támogatnak egyszerre. Ez azt jelenti, hogy ha valaki megpróbálja megosztani a képernyőjét, a képernyője az értekezlet vezetője képernyőjén fog megjelenni.
 - A WebRTC korlátozások miatt a bejövő és a kimenő videó stream-feloldása 720p-ra van korlátozva.
 - A Teams alkalmazás nem támogatja a HID-gombokat vagy a vezérelt vezérlőket más eszközökkel.
+- Az új Meeting Experience (NME) jelenleg nem támogatott a VDI-környezetekben.
 
 A virtualizált környezetekkel nem kapcsolatos ismert problémák esetén lásd: [támogatási csapatok a szervezetben](/microsoftteams/known-issues)
 

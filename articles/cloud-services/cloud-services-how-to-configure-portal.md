@@ -1,21 +1,24 @@
 ---
-title: Felhőalapú szolgáltatás konfigurálása (portál) | Microsoft Docs
+title: Felhőalapú szolgáltatás konfigurálása (klasszikus) – portál | Microsoft Docs
 description: Ismerje meg, hogyan konfigurálhatja a Cloud Servicest az Azure-ban. Ismerje meg, hogyan frissítheti a Cloud Service-konfigurációt, és hogyan konfigurálhat távoli hozzáférést a szerepkör-példányokhoz. Ezek a példák a Azure Portal használják.
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 12/07/2016
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 4f2b5716e253f2810ff953a10c879574c6a6c342
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: f16fcfe227663958279281659b09929a4cd2d386
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576659"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743423"
 ---
-# <a name="how-to-configure-cloud-services"></a>A Cloud Services Konfigurálása
+# <a name="how-to-configure-and-azure-cloud-service-classic"></a>A configure és az Azure Cloud Service (klasszikus)
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
 
 A felhőalapú szolgáltatás leggyakrabban használt beállításait a Azure Portal is konfigurálhatja. Ha közvetlenül szeretné frissíteni a konfigurációs fájlokat, töltse le a frissíteni kívánt szolgáltatás-konfigurációs fájlt, majd töltse fel a frissített fájlt, és frissítse a Cloud Service-t a konfiguráció módosításaival. Mindkét esetben a konfiguráció frissítéseit az összes szerepkör-példányra leküldi a rendszer.
 
@@ -46,7 +49,7 @@ Ha egy adott operációsrendszer-verziót kell megcéloznia, beállíthatja a **
 
 ## <a name="monitoring"></a>Figyelés
 
-Riasztásokat adhat hozzá a felhőalapú szolgáltatáshoz. Kattintson a **Beállítások**  >  **riasztási szabályok**riasztás  >  **hozzáadása**elemre.
+Riasztásokat adhat hozzá a felhőalapú szolgáltatáshoz. Kattintson a **Beállítások**  >  **riasztási szabályok** riasztás  >  **hozzáadása** elemre.
 
 ![Képernyőfelvétel a beállításokról a riasztási szabályok beállítás kiválasztásával, valamint a piros színnel és a riasztás hozzáadása lehetőséggel lefelé.](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
 
@@ -62,7 +65,7 @@ Itt beállíthatja a riasztást. A **metrika** legördülő lista használatáva
 
 ### <a name="configure-monitoring-from-a-metric-tile"></a>Figyelés beállítása metrikai csempéről
 
-A **Beállítások**  >  **riasztási szabályainak**használata helyett a Cloud Service **figyelés** szakaszának egyik mérőszám-csempére kattinthat.
+A **Beállítások**  >  **riasztási szabályainak** használata helyett a Cloud Service **figyelés** szakaszának egyik mérőszám-csempére kattinthat.
 
 ![Cloud Service-figyelés](./media/cloud-services-how-to-configure-portal/cs-monitoring.png)
 
@@ -84,7 +87,7 @@ Ezután kezdeményezheti a távoli asztali kapcsolatokat, távolról újraindít
 
 Előfordulhat, hogy újra kell konfigurálnia a felhőalapú szolgáltatást a [Service config (cscfg)](cloud-services-model-and-package.md#cscfg) fájlon keresztül. Először le kell töltenie a. cscfg fájlt, módosítania kell, majd fel kell töltenie.
 
-1. Kattintson a **Beállítások** ikonra, vagy a **minden beállítás** hivatkozásra a **Beállítások**megnyitásához.
+1. Kattintson a **Beállítások** ikonra, vagy a **minden beállítás** hivatkozásra a **Beállítások** megnyitásához.
 
     ![Beállítások lap](./media/cloud-services-how-to-configure-portal/cloud-service.png)
 2. Kattintson a **konfigurációs** elemre.
@@ -96,9 +99,9 @@ Előfordulhat, hogy újra kell konfigurálnia a felhőalapú szolgáltatást a [
 4. A szolgáltatás konfigurációs fájljának frissítése után töltse fel és alkalmazza a konfigurációs frissítéseket:
 
     ![Feltöltés](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)
-5. Válassza ki a. cscfg fájlt, majd kattintson **az OK**gombra.
+5. Válassza ki a. cscfg fájlt, majd kattintson **az OK** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, hogyan [helyezhet üzembe egy felhőalapú szolgáltatást](cloud-services-how-to-create-deploy-portal.md).
 * Konfigurálja az [Egyéni tartománynevet](cloud-services-custom-domain-name-portal.md).

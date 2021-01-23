@@ -1,24 +1,25 @@
 ---
-title: A .NET telepítése Azure Cloud Services-szerepkörökön | Microsoft Docs
+title: A .NET telepítése Azure Cloud Services (klasszikus) szerepkörökre | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan telepítheti manuálisan a .NET-keretrendszert a Cloud Service webes és feldolgozói szerepkörein
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-manager: carmonm
-ms.service: cloud-services
-ms.devlang: dotnet
-ms.custom: devx-track-dotnet
 ms.topic: article
-ms.date: 06/22/2018
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 6de4b79560557fc86edb9e1a25e32a6a1983ceb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 18665fabad079a8759f26be8834b2fe029ab5f49
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88932236"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742777"
 ---
-# <a name="install-net-on-azure-cloud-services-roles"></a>A .NET telepítése Azure Cloud Services-szerepkörökre
+# <a name="install-net-on-azure-cloud-services-classic-roles"></a>A .NET telepítése Azure Cloud Services (klasszikus) szerepkörökre
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
+
 Ez a cikk azt ismerteti, hogyan telepíthet olyan .NET-keretrendszer-verziókat, amelyek nem az Azure vendég operációs rendszerhez tartoznak. A .NET-kiszolgáló és a feldolgozói szerepkörök konfigurálásához használhatja a .NET-et a vendég operációs rendszeren.
 
 A .NET-keretrendszer 4.6.2 telepíthető például a vendég operációs rendszer 4-es verziójára, amely a .NET-keretrendszer 4,6-es verziójának semmilyen kiadására nem alkalmas. (A vendég operációs rendszer 5. termékcsaládja a .NET-keretrendszer 4,6-es verziójával érhető el.) Az Azure vendég operációs rendszer kiadásaival kapcsolatos legfrissebb információkért tekintse meg az [Azure vendég operációs rendszer kiadási hírei](cloud-services-guestos-update-matrix.md)című témakört. 
@@ -36,11 +37,11 @@ A .NET-keretrendszerhez készült web Installer letöltéséhez válassza ki a t
 * [.NET-keretrendszer 4.6.2 web Installer](https://www.microsoft.com/download/details.aspx?id=53345)
 
 A telepítő hozzáadása *webes* szerepkörhöz:
-  1. **Megoldáskezelő**a Cloud Service-projekt **szerepkörei** alatt kattintson a jobb gombbal a *webes* szerepkörre, és válassza **Add**az  >  **új mappa**hozzáadása lehetőséget. Hozzon létre egy **bin**nevű mappát.
-  2. Kattintson a jobb gombbal a Bin mappára, **Add**és válassza a  >  **meglévő elem hozzáadása elemet**. Válassza ki a .NET-telepítőt, és adja hozzá a bin mappához.
+  1. **Megoldáskezelő** a Cloud Service-projekt **szerepkörei** alatt kattintson a jobb gombbal a *webes* szerepkörre, és válassza az  >  **új mappa** hozzáadása lehetőséget. Hozzon létre egy **bin** nevű mappát.
+  2. Kattintson a jobb gombbal a Bin mappára, és válassza a  >  **meglévő elem hozzáadása elemet**. Válassza ki a .NET-telepítőt, és adja hozzá a bin mappához.
   
 A telepítő hozzáadása *feldolgozói* szerepkörhöz:
-* Kattintson a jobb gombbal a *feldolgozói* szerepkörre, és válassza a **Add**  >  **meglévő elem**hozzáadása lehetőséget. Válassza ki a .NET-telepítőt, és adja hozzá a szerepkörhöz. 
+* Kattintson a jobb gombbal a *feldolgozói* szerepkörre, és válassza a   >  **meglévő elem** hozzáadása lehetőséget. Válassza ki a .NET-telepítőt, és adja hozzá a szerepkörhöz. 
 
 Ha a fájlokat így hozzáadja a szerepkör-tartalom mappájához, azok automatikusan hozzáadódnak a Cloud Service-csomaghoz. Ezután a rendszer a virtuális gép egy konzisztens helyére telepíti a fájlokat. Ismételje meg ezt a folyamatot a felhőalapú szolgáltatás minden webes és feldolgozói szerepköre esetében, hogy minden szerepkör rendelkezik a telepítő másolatával.
 
@@ -74,7 +75,7 @@ Az indítási feladatokkal műveleteket hajthat végre a szerepkörök elkezdés
     </Startup>
     ```
    
-    Az előző konfiguráció a konzol parancsát `install.cmd` rendszergazdai jogosultságokkal futtatja a .NET-keretrendszer telepítéséhez. A konfiguráció emellett létrehoz egy **NETFXInstall**nevű **LocalStorage** elemet is. Az indítási parancsfájl beállítja a Temp mappát a helyi tárolási erőforrás használatára. 
+    Az előző konfiguráció a konzol parancsát `install.cmd` rendszergazdai jogosultságokkal futtatja a .NET-keretrendszer telepítéséhez. A konfiguráció emellett létrehoz egy **NETFXInstall** nevű **LocalStorage** elemet is. Az indítási parancsfájl beállítja a Temp mappát a helyi tárolási erőforrás használatára. 
     
     > [!IMPORTANT]
     > A keretrendszer helyes telepítésének biztosításához állítsa az erőforrás méretét legalább 1 024 MB-ra.
@@ -198,7 +199,7 @@ Az indítási feladatokkal műveleteket hajthat végre a szerepkörök elkezdés
    EXIT /B 0
    ```
 
-3. Adja hozzá az install. cmd fájlt az egyes szerepkörökhöz **Add**  >  **meglévő elem** hozzáadása **megoldáskezelő** a témakör korábbi részében leírtak szerint. 
+3. Adja hozzá az install. cmd fájlt az egyes szerepkörökhöz   >  **meglévő elem** hozzáadása **megoldáskezelő** a témakör korábbi részében leírtak szerint. 
 
     A lépés befejezése után az összes szerepkörnek rendelkeznie kell a .NET Installer-fájllal és a install. cmd fájllal.
 

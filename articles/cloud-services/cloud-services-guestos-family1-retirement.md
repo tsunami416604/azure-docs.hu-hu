@@ -9,14 +9,15 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 5/21/2017
 ms.author: raiye
-ms.openlocfilehash: 6de03969a22c5b699fdfd2be17a6ba65905d23e6
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 7f6d3feee95d4cce654b2cc1547b8bd7f4eb45d2
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073393"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743015"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>1. vendég operációsrendszer-család használatból való kivonásáról szóló értesítés
+
 Az 1. operációsrendszer-család kivonulása először 2013. június 1-jén jelent meg.
 
 **Szeptember 2., 2014** A rendszer hivatalosan kivonta a Windows Server 2008 operációs rendszeren alapuló Azure vendég operációs rendszer (vendég operációs rendszer) 1. x családját. Az új szolgáltatások üzembe helyezésére vagy a meglévő szolgáltatások az 1. családdal való frissítésére tett kísérletek sikertelenek lesznek, és hibaüzenet jelenik meg, amely tájékoztatja, hogy a vendég operációs rendszer 1. családja kimaradt.
@@ -67,5 +68,5 @@ Javasoljuk, hogy a Cloud Service-szerepköröket az egyik támogatott vendég op
 ## <a name="extended-support-for-guest-os-family-1-ended-nov-3-2014"></a>Kiterjesztett támogatás a vendég operációs rendszer családja 1. november 3., 2014
 A vendég operációsrendszer-családon futó Cloud Services már nem támogatott. A szolgáltatás megszakadásának elkerülése érdekében a lehető leghamarabb telepítse át az 1. családot.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse át a [vendég operációs rendszer legújabb kiadásait](cloud-services-guestos-update-matrix.md).

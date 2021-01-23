@@ -1,0 +1,83 @@
+### YamlMime:Landing
+title: Azure Cloud Services (bővített támogatás) – dokumentáció
+summary: Megismerheti, hogy a felhőszolgáltatások hogyan használható nagy rendelkezésre állású és skálázható felhőalkalmazások és API-k futtatására. Bemutatja, hogyan kezelheti a virtuális gépek gazdagépét, és hogyan konfigurálhatja, javíthatja és telepítheti a szoftvereket.
+metadata:
+  title: Azure Cloud Services (bővített támogatás) – dokumentáció
+  description: Ismerteti, hogy a Cloud Services hogyan használható nagy rendelkezésre állású és skálázható felhőalkalmazások és API-k futtatására.
+  ms.service: cloud-services-extended-support
+  service: cloud-services-extended-support
+  ms.topic: landing-page
+  author: mimckitt
+  ms.author: mimckitt
+  ms.date: 03/06/2020
+  ms.openlocfilehash: 8f999851c1566b2a488daa4bdc5da73761f7ce0b
+  ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+  ms.translationtype: MT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 01/23/2021
+  ms.locfileid: "98745251"
+landingContent:
+- title: Tudnivalók a Cloud Servicesról (bővített támogatás)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az Cloud Services (bővített támogatás)?
+      url: overview.md
+    - text: Az üzembe helyezés előfeltételei
+      url: deploy-prerequisite.md
+    - text: Konfigurációs fájlok és csomagolás
+      url: cloud-services-model-and-package.md
+- title: Oktatóanyagok
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Üzembe helyezés a PowerShell használatával
+      url: deploy-powershell.md
+    - text: Üzembe helyezés az Azure Portalon
+      url: deploy-portal.md
+    - text: Üzembe helyezés ARM-sablonok használatával
+      url: deploy-template.md
+    - text: Üzembe helyezés Visual Studióval
+      url: deploy-visual-studio.md
+- title: Alapelvek
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Elérhető méretek
+      url: available-sizes.md
+    - text: Gyakori kérdések
+      url: faq.md
+- title: Útmutatók
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Bővítmények
+      url: extensions.md
+    - text: Riasztások engedélyezése
+      url: enable-alerts.md
+    - text: Skálázás konfigurálása
+      url: configure-scaling.md
+    - text: Tanúsítványok
+      url: certificates-and-key-vault.md
+- title: Példák
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: Felhőalapú szolgáltatás központi telepítésének létrehozása
+      url: sample-create-cloud-service.md
+    - text: Felhőalapú szolgáltatás központi telepítésére vonatkozó információk beolvasása
+      url: sample-get-cloud-service.md
+    - text: Cloud Service-telepítés frissítése
+      url: sample-update-cloud-service.md
+    - text: Felhőalapú szolgáltatás központi telepítésének alaphelyzetbe állítása
+      url: sample-reset-cloud-service.md
+- title: Séma adatai
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Konfigurációs séma
+      url: schema-cscfg-file.md
+    - text: Definíciós séma
+      url: schema-csdef-file.md
+    - text: Konfigurációs szerepkör sémája
+      url: schema-cscfg-role.md

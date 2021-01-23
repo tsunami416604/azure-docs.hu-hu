@@ -1,26 +1,25 @@
 ---
-title: Azure Cloud Services def. webrole-séma | Microsoft Docs
+title: Azure Cloud Services (klasszikus) def. webrole-séma | Microsoft Docs
 description: Az Azure web role testre szabott a ASP.NET, a PHP, a WCF és a FastCGI-t támogató webalkalmazás-programozáshoz. Tudnivalók a webes szerepkörök szolgáltatás-definíciós elemeiről.
-ms.custom: ''
-ms.date: 04/14/2015
-services: cloud-services
-ms.reviewer: ''
+ms.topic: article
 ms.service: cloud-services
-ms.suite: ''
-ms.tgt_pltfrm: ''
-ms.topic: reference
-ms.assetid: 85368e4e-a0db-4c02-8dbc-8e2928fa6091
-caps.latest.revision: 60
-author: tgore03
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 4368bb38a280461fdd77348de60a0e5793ee9582
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 3c5811649d7d6c0aa1e90ed34c61be6a7f9339f8
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011319"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743151"
 ---
-# <a name="azure-cloud-services-definition-webrole-schema"></a>Az Azure Cloud Services Definition webszerepkör-sémája
+# <a name="azure-cloud-services-classic-definition-webrole-schema"></a>Azure Cloud Services (klasszikus) definíciós webszerepkör-séma
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
+
 Az Azure webes szerepkör olyan szerepkör, amely az IIS 7 által támogatott webalkalmazás-programozáshoz van testreszabva, például ASP.NET, PHP, Windows Communication Foundation és FastCGI.
 
 A szolgáltatás definíciós fájljának alapértelmezett kiterjesztése. csdef.
@@ -337,7 +336,7 @@ A következő táblázat a elem attribútumait ismerteti `Variable` :
 | Attribútum | Típus | Leírás |  
 | --------- | ---- | ----------- |  
 |name|sztring|Kötelező. A beállítani kívánt környezeti változó neve.|  
-|value|sztring|Választható. A környezeti változóhoz beállított érték Tartalmaznia kell egy Value attribútumot vagy egy `RoleInstanceValue` elemet.|  
+|érték|sztring|Választható. A környezeti változóhoz beállított érték Tartalmaznia kell egy Value attribútumot vagy egy `RoleInstanceValue` elemet.|  
 
 ##  <a name="roleinstancevalue"></a><a name="RoleInstanceValue"></a> RoleInstanceValue  
 Az `RoleInstanceValue` elem azt az xPath-értéket adja meg, amelyből be kell olvasni a változó értékét.
@@ -405,7 +404,7 @@ Az alábbi táblázat az elem attribútumait ismerteti `VirtualDirectory` .
 | Attribútum | Típus | Leírás |  
 | --------- | ---- | ----------- |  
 |name|sztring|Kötelező. A virtuális könyvtár azonosítására szolgáló nevet adja meg.|  
-|value|physicalDirectory|Kötelező. Megadja a webhelyet vagy a virtuális könyvtár tartalmát tartalmazó fejlesztői számítógép elérési útját. A Compute Emulator az IIS úgy van konfigurálva, hogy tartalmat kérjen le erről a helyről. Az Azure-ban való üzembe helyezéskor a fizikai könyvtár tartalma a szolgáltatás többi részével együtt van csomagolva. A szervizcsomag Azure-beli üzembe helyezése után az IIS a kicsomagolt tartalom helyével van konfigurálva.|  
+|érték|physicalDirectory|Kötelező. Megadja a webhelyet vagy a virtuális könyvtár tartalmát tartalmazó fejlesztői számítógép elérési útját. A Compute Emulator az IIS úgy van konfigurálva, hogy tartalmat kérjen le erről a helyről. Az Azure-ban való üzembe helyezéskor a fizikai könyvtár tartalma a szolgáltatás többi részével együtt van csomagolva. A szervizcsomag Azure-beli üzembe helyezése után az IIS a kicsomagolt tartalom helyével van konfigurálva.|  
 
 ##  <a name="bindings"></a><a name="Bindings"></a> Kötések  
 Az `Bindings` elem egy webhely kötéseinek gyűjteményét írja le. Ez a elem szülő eleme `Binding` . Az elemnek minden elemhez kötelezőnek kell lennie `Site` . A végpontok konfigurálásával kapcsolatos további információkért lásd: [a szerepkör-példányok kommunikációjának engedélyezése](cloud-services-enable-communication-role-instances.md).

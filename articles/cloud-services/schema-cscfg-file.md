@@ -1,22 +1,25 @@
 ---
-title: Azure Cloud Services definíciós séma (. cscfg fájl) | Microsoft Docs
+title: Azure Cloud Services (klasszikus) definíciós séma (. cscfg fájl) | Microsoft Docs
 description: A szolgáltatás-konfigurációs (. cscfg) fájl azt adja meg, hogy a szerepkörök, a konfigurációs értékek és a tanúsítványok ujjlenyomatai megfelelnek hány szerepkör-példány legyen üzembe helyezhető.
-services: cloud-services
-ms.custom: ''
-ms.date: 12/07/2016
+ms.topic: article
 ms.service: cloud-services
-ms.topic: reference
-caps.latest.revision: 35
-author: tgore03
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: cb77181e00c97b7f426429793f17af3cb5e84ebe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: ba933d4981fb7ed209a7fb5d5c41113750f312de
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79534745"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743474"
 ---
-# <a name="azure-cloud-services-config-schema-cscfg-file"></a>Azure Cloud Services konfigurációs séma (. cscfg fájl)
+# <a name="azure-cloud-services-classic-config-schema-cscfg-file"></a>Azure Cloud Services (klasszikus) konfigurációs séma (. cscfg fájl)
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
+
 A szolgáltatás konfigurációs fájlja meghatározza a szolgáltatás egyes szerepköreihez telepítendő szerepkör-példányok számát, a konfigurációs beállítások értékeit, valamint a szerepkörhöz társított tanúsítványok ujjlenyomatai megfelelnek. Ha a szolgáltatás egy Virtual Network része, a hálózat konfigurációs adatait meg kell adni a szolgáltatás konfigurációs fájljában, valamint a virtuális hálózat konfigurációs fájljában. A szolgáltatás konfigurációs fájljának alapértelmezett kiterjesztése a. cscfg.
 
 A szolgáltatási modellt a [Cloud Service (klasszikus) definíciós sémája](schema-csdef-file.md)írja le.

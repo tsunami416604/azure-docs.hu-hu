@@ -1,20 +1,24 @@
 ---
-title: Felhőalapú szolgáltatás automatikus méretezése a portálon | Microsoft Docs
+title: Cloud Service (klasszikus) automatikus méretezése a portálon | Microsoft Docs
 description: Ebből a témakörből megtudhatja, hogyan konfigurálhat automatikus méretezési szabályokat a Cloud Service webes szerepkör vagy feldolgozói szerepkör számára az Azure-ban a portál használatával.
-services: cloud-services
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 05/18/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 06a0209c2bbd0982054d33c199685d016f405b0c
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: a3e7f72dbe16c51280b922da2b5fc6550dee1d34
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165485"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743355"
 ---
-# <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Felhőalapú szolgáltatás automatikus skálázásának konfigurálása a portálon
+# <a name="how-to-configure-auto-scaling-for-a-cloud-service-classic-in-the-portal"></a>Felhőalapú szolgáltatás (klasszikus) automatikus skálázásának konfigurálása a portálon
+
+> [!IMPORTANT]
+> Az [azure Cloud Services (bővített támogatás)](../cloud-services-extended-support/overview.md) az Azure Cloud Services termék új, Azure Resource Manager alapú üzembe helyezési modellje.Ezzel a módosítással az Azure Service Manager-alapú üzemi modellben futó Azure Cloud Services Cloud Services (klasszikus) néven lett átnevezve, és az összes új központi telepítésnek [Cloud Services (kiterjesztett támogatás)](../cloud-services-extended-support/overview.md)kell használnia.
 
 A Felhőbeli szolgáltatások feldolgozói szerepkörhöz olyan feltételek állíthatók be, amelyek egy méretezési vagy kimenő műveletet indítanak el. A szerepkör feltételei a szerepkör PROCESSZORán, lemezén vagy hálózati terhelésén alapulnak. Beállíthat egy olyan feltételt is, amely egy üzenetsor vagy egy másik, az előfizetéshez társított Azure-erőforrás metrikája alapján is megadható.
 
@@ -34,7 +38,7 @@ Az alkalmazás skálázásának konfigurálása előtt vegye figyelembe a követ
 
 * Az alkalmazás magas rendelkezésre állásának engedélyezéséhez győződjön meg arról, hogy az üzembe helyezése két vagy több szerepkör-példánnyal történik. További információ: [szolgáltatói szerződések](https://azure.microsoft.com/support/legal/sla/).
 
-* Az automatikus méretezés csak akkor történik meg, ha minden szerepkör **kész** állapotban van.  
+* Az automatikus méretezés csak akkor történik meg, ha minden szerepkör **kész** állapotban van.  
 
 
 ## <a name="where-scale-is-located"></a>Hol található a skála
@@ -49,17 +53,17 @@ A felhőalapú szolgáltatás kiválasztása után a Cloud Service panel láthat
     ![Képernyőkép az Operations oldalról, amelyen a Sales csempe piros színnel van megjelölve.](./media/cloud-services-how-to-scale-portal/scale-tile.png)
 
 ## <a name="automatic-scale"></a>Automatikus méretezés
-A két mód **manuális** vagy **automatikus**beállításával konfigurálhatja a szerepkörök méretezési beállításait. A manuális a vártnál, a példányok abszolút száma állítható be. Az automatikus beállítás lehetővé teszi, hogy olyan szabályokat állítson be, amelyek meghatározzák, hogy mennyit és milyen mértékben kell méreteznie.
+A két mód **manuális** vagy **automatikus** beállításával konfigurálhatja a szerepkörök méretezési beállításait. A manuális a vártnál, a példányok abszolút száma állítható be. Az automatikus beállítás lehetővé teszi, hogy olyan szabályokat állítson be, amelyek meghatározzák, hogy mennyit és milyen mértékben kell méreteznie.
 
 Állítsa be a **skálázási** lehetőséget az **ütemezett és a teljesítményi szabályokra**.
 
-![Képernyőkép, amely az ütemterv és a teljesítmény szabályok beállítást mutatja.](./media/cloud-services-how-to-scale-portal/schedule-basics.png)
+![a rendszerkép Cloud Services skálázási beállításai a profil és a szabály szerint](./media/cloud-services-how-to-scale-portal/schedule-basics.png)
 
 1. Egy meglévő profil.
 2. Adjon hozzá egy szabályt a szülő profilhoz.
 3. Adjon hozzá egy másik profilt.
 
-Válassza a **Profil hozzáadása**lehetőséget. A profil határozza meg, hogy melyik módot szeretné használni a skálához: **mindig**, **Ismétlődés**, **rögzített dátum**.
+Válassza a **Profil hozzáadása** lehetőséget. A profil határozza meg, hogy melyik módot szeretné használni a skálához: **mindig**, **Ismétlődés**, **rögzített dátum**.
 
 Miután konfigurálta a profilt és a szabályokat, válassza a felső **Mentés** ikont.
 
