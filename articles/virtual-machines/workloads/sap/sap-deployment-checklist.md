@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 601f268f81c222ada5a4f99b05ae8ffcdfc13a23
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: ca2a844364d11dbb5ac2a244945e07d8ca725c1c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916286"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728440"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-munkaterhelések az Azure-ban: tervezési és üzembe helyezési ellenőrzőlista
 
@@ -66,7 +66,7 @@ Ebben a fázisban az SAP-munkaterhelések áttelepítését tervezzük az Azure 
     - Magas rendelkezésre állású és vész-helyreállítási architektúra.
         - A RTO és a RPO alapján határozza meg, hogy a magas rendelkezésre állást és a vész-helyreállítási architektúrát hogyan kell kinéznie.
         - Egy zónán belüli magas rendelkezésre álláshoz tekintse meg a kívánt adatbázis-kezelőt az Azure-ban. A legtöbb adatbázis-kezelő csomag szinkron módszert kínál a szinkron gyors készenléti állapothoz, amelyet az üzemi rendszerek esetében ajánlott. Tekintse meg az SAP-hez kapcsolódó dokumentációt a különböző adatbázisokhoz, az [Azure Virtual Machines adatbázis-kezelő üzembe helyezésével kapcsolatos megfontolások alapján az SAP-munkaterhelésekhez és a](./dbms_guide_general.md) kapcsolódó dokumentumokhoz.
-           A Windows Server feladatátvételi fürtszolgáltatás az adatbázis-kezelő réteg megosztott lemezes konfigurációjának használatával, mint például a [SQL Server](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017&preserve-view=true), nem támogatott. Ehelyett használjon például a következő megoldásokat:
+           A Windows Server feladatátvételi fürtszolgáltatás az adatbázis-kezelő réteg megosztott lemezes konfigurációjának használatával, mint például a [SQL Server](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server), nem támogatott. Ehelyett használjon például a következő megoldásokat:
            - [SQL Server Always On](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups)
            - [Oracle Data Guard](../oracle/configure-oracle-dataguard.md)
            - [HANA rendszerreplikáció](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
@@ -299,7 +299,7 @@ Ez a fázis a rendszer figyelésére, üzemeltetésére és felügyeletére szol
 3. Optimalizálja a rendszerek leállításának időpontját.  
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Olvassa el a következő cikkeket:
 
 - [Azure Virtual Machines az SAP NetWeaver tervezése és megvalósítása](./planning-guide.md)

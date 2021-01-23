@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 01/12/2020
+ms.date: 01/22/2020
 ms.author: b-juche
-ms.openlocfilehash: c914ab007f482e4d2b560b1cb461e27d4f4442ec
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 47aefecce846f58128335768018ba59d3520bd87
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133157"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726680"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Hozzon létre egy Dual-Protocol (NFSv3 és SMB) kötetet Azure NetApp Files
 
@@ -51,6 +51,7 @@ Azure NetApp Files támogatja a kötetek NFS-t (NFSv3 és NFSv 4.1), SMB3 vagy k
     | `Unix`    | NFS   | NFSv3 mód BITS   | UNIX  | NFS és Windows   |
     | `Ntfs`    | Windows   | NTFS ACL-ek     | NTFS  |NFS és Windows|
 * Az NTFS biztonsági stílusú kötetet az NFS használatával csatlakoztató UNIX-felhasználók Windows-felhasználóként lesznek hitelesítve a `root` UNIX `root` és `pcuser` az összes többi felhasználó számára. Győződjön meg arról, hogy ezek a felhasználói fiókok léteznek a Active Directory a kötet csatlakoztatása előtt, amikor az NFS-t használja. 
+* A kettős protokollú kötetek létrehozásához nincs szükség kiszolgálói legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványra. Csak akkor szükséges, ha engedélyezve van a TLS protokollon keresztüli LDAP.
 
 
 ## <a name="create-a-dual-protocol-volume"></a>Kettős protokollú kötet létrehozása
@@ -135,7 +136,7 @@ A következő attribútumokat kell beállítania az LDAP-felhasználók és az L
 
 Az NFS-ügyfél konfigurálásához kövesse az [NFS-ügyfél konfigurálása Azure NetApp Fileshoz](configure-nfs-clients.md) című témakör útmutatását.  
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 * [NFS-ügyfél konfigurálása az Azure NetApp Fileshoz](configure-nfs-clients.md)
 * [Kettős protokollú kötetek hibaelhárítása](troubleshoot-dual-protocol-volumes.md)

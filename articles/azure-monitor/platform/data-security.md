@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: 87cdecd29d684c712853970c8246002132d274ac
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: a618a5d94513f7d648d118ae3bebdb34e4f5b1c4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094335"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728859"
 ---
 # <a name="log-analytics-data-security"></a>Adatbiztonság Log Analytics
 Ennek a dokumentumnak az a célja, hogy Log Analyticsra vonatkozó információt szolgáltasson, amely a Azure Monitor egyik funkciója, hogy kiegészítse a [Azure biztonsági és adatkezelési központ](https://www.microsoft.com/en-us/trust-center?rtc=1)információit.  
@@ -183,11 +183,10 @@ Ezeket a további biztonsági funkciókat a Azure Monitor/Log Analytics-környez
 - [Ügyfél által felügyelt (biztonsági) kulcsok](customer-managed-keys.md) – az ügyfél által felügyelt kulcsokkal titkosíthatja az log Analytics-munkaterületek számára továbbított adatfájlokat. Azure Key Vault használatát igényli. 
 - [Magánjellegű/ügyfél által felügyelt tár](private-storage.md) – felügyelje a személyes titkosított Storage-fiókját, és mondja el, log Analytics, hogy használja a figyelési adatai tárolásához 
 - [Privát kapcsolat hálózatkezelése](private-link-security.md) – az Azure Private link lehetővé teszi, hogy privát végpontok használatával biztonságosan összekapcsolja az Azure Pásti-szolgáltatásokat (beleértve a Azure monitor) a virtuális hálózattal. 
-- Az [Azure Customer kulcstároló](/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-preview) -Ügyfélszéf for Microsoft Azure egy felületet biztosít az ügyfelek számára az ügyfél-hozzáférési kérelmek áttekintéséhez és jóváhagyásához vagy elutasításához. Olyan esetekben használatos, amikor egy Microsoft-mérnöknek egy támogatási kérelem kezelése során hozzá kell férnie az ügyfél adataihoz.
+- Az [Azure Customer kulcstároló](../../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-preview) -Ügyfélszéf for Microsoft Azure egy felületet biztosít az ügyfelek számára az ügyfél-hozzáférési kérelmek áttekintéséhez és jóváhagyásához vagy elutasításához. Olyan esetekben használatos, amikor egy Microsoft-mérnöknek egy támogatási kérelem kezelése során hozzá kell férnie az ügyfél adataihoz.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Ismerje meg, hogyan gyűjthet adatokat az Azure-beli virtuális gépek Log Analyticsával az [Azure VM](../learn/quick-collect-azurevm.md)gyors üzembe helyezését követően.  
 
 *  Ha a környezetben található fizikai vagy virtuális Windows-vagy Linux-számítógépekről szeretne adatokat gyűjteni, tekintse meg a Linux rendszerű [számítógépek](../learn/quick-collect-linux-computer.md) és a [Windows rendszerű számítógépek](../learn/quick-collect-windows-computer.md) gyors útmutatója című témakört.
-

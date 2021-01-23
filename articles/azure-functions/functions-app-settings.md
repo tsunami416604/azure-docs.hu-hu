@@ -3,12 +3,12 @@ title: Azure Functions – alkalmazásbeállítási referencia
 description: A Azure Functions Alkalmazásbeállítások vagy környezeti változók dokumentációja.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 72b42e392f350a8693ca8a052bdec1d5fd337234
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 80b2daebbd64f08dd4f5d728b2a9a4ee04b8952f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937110"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728992"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions – alkalmazásbeállítási referencia
 
@@ -229,11 +229,13 @@ A kulcs értéke a következő formátumban van megadva `<DESTINATION>:<VERBOSIT
 
 ## <a name="website_contentazurefileconnectionstring"></a>WEBHELY \_ CONTENTAZUREFILECONNECTIONSTRING
 
-Csak a prémium csomagok fogyasztása &. A Storage-fiókhoz tartozó, a Function app-kód és a konfiguráció tárolására szolgáló hálózati karakterlánc. Lásd: [Function-alkalmazás létrehozása](functions-infrastructure-as-code.md#create-a-function-app).
+A Storage-fiókhoz tartozó kapcsolati karakterlánc, amelyben a Function app-kód és a konfiguráció a Windows rendszeren futó, eseményvezérelt skálázási tervekben tárolódik. További információkért lásd: [Function-alkalmazás létrehozása](functions-infrastructure-as-code.md#windows).
 
 |Kulcs|Mintaérték|
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol = https; AccountName = [név]; AccountKey = [kulcs]|
+
+Csak Windows rendszeren futó fogyasztási vagy prémium csomagok telepítésekor használatos. Linux esetében nem támogatott. A beállítás módosítása vagy eltávolítása miatt előfordulhat, hogy a Function alkalmazás nem indul el. További információt [ebben a hibaelhárítási cikkben](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)talál. 
 
 ## <a name="website_contentovervnet"></a>WEBHELY \_ CONTENTOVERVNET
 
@@ -245,11 +247,15 @@ Csak a prémium csomagokhoz. Az érték `1` lehetővé teszi a Function alkalmaz
 
 ## <a name="website_contentshare"></a>WEBHELY \_ CONTENTSHARE
 
-Csak a prémium csomagok fogyasztása &. A függvény alkalmazás kódjának és konfigurációjának elérési útja. WEBSITE_CONTENTAZUREFILECONNECTIONSTRING használatával használható. Az alapértelmezett érték egy egyedi karakterlánc, amely a Function alkalmazás nevével kezdődik. Lásd: [Function-alkalmazás létrehozása](functions-infrastructure-as-code.md#create-a-function-app).
+A függvény alkalmazás kódjának és konfigurációjának elérési útja egy Windows rendszerű eseményvezérelt skálázási tervben. WEBSITE_CONTENTAZUREFILECONNECTIONSTRING használatával használható. Az alapértelmezett érték egy egyedi karakterlánc, amely a Function alkalmazás nevével kezdődik. Lásd: [Function-alkalmazás létrehozása](functions-infrastructure-as-code.md#windows).
 
 |Kulcs|Mintaérték|
 |---|------------|
 |WEBSITE_CONTENTSHARE|functionapp091999e2|
+
+Csak a Windows rendszeren futó fogyasztási vagy prémium szintű alkalmazásokban használja. Linux esetében nem támogatott. A beállítás módosítása vagy eltávolítása miatt előfordulhat, hogy a Function alkalmazás nem indul el. További információt [ebben a hibaelhárítási cikkben](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)talál.
+
+Amikor az üzembe helyezés során egy Azure Resource Manager használatával hoz létre egy Function-alkalmazást, a sablonban ne szerepeljenek WEBSITE_CONTENTSHARE. Ez az Alkalmazásbeállítás a telepítés során jön létre. További információ: az [erőforrás-telepítés automatizálása a Function alkalmazáshoz](functions-infrastructure-as-code.md#windows).   
 
 ## <a name="website_max_dynamic_application_scale_out"></a>a webhely \_ maximális \_ dinamikus alkalmazás- \_ \_ felskálázása \_
 

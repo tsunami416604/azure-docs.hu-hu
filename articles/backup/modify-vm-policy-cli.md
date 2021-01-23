@@ -3,12 +3,12 @@ title: A meglévő virtuális gép biztonsági mentési szabályzatának frissí
 description: Megtudhatja, hogyan frissítheti a meglévő virtuális gépek biztonsági mentési szabályzatát az Azure CLI használatával.
 ms.topic: conceptual
 ms.date: 12/31/2020
-ms.openlocfilehash: ba4ded4c82a1eaea7c20ea94da580a8702467b85
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 33083d6585d2b9296cd184ba258b8d2143d685b4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858833"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728578"
 ---
 # <a name="update-the-existing-vm-backup-policy-using-cli"></a>A meglévő virtuális gép biztonsági mentési szabályzatának frissítése a parancssori felület használatával
 
@@ -18,7 +18,7 @@ Az Azure CLI használatával frissítheti a meglévő virtuális gépek biztons�
 
 Meglévő virtuális gép biztonsági mentési szabályzatának módosításához kövesse az alábbi lépéseket:
 
-1. Hajtsa végre az az [biztonsági mentési házirend megjelenítése](https://docs.microsoft.com/cli/azure/backup/policy#az_backup_policy_show) parancsot a frissíteni kívánt szabályzat részleteinek lekéréséhez.
+1. Hajtsa végre az az [biztonsági mentési házirend megjelenítése](/cli/azure/backup/policy#az_backup_policy_show) parancsot a frissíteni kívánt szabályzat részleteinek lekéréséhez.
 
     Példa:
 
@@ -101,14 +101,14 @@ Meglévő virtuális gép biztonsági mentési szabályzatának módosításáho
     ```
 
 1. Mentse a módosításokat.
-1. Hajtsa végre az az [Backup Policy set](https://docs.microsoft.com/cli/azure/backup/policy#az_backup_policy_set) parancsot, és adja át a frissített JSON-fájl teljes elérési útját a **--Policy** paraméter értékeként.
+1. Hajtsa végre az az [Backup Policy set](/cli/azure/backup/policy#az_backup_policy_set) parancsot, és adja át a frissített JSON-fájl teljes elérési útját a **--Policy** paraméter értékeként.
 
     ```azurecli
     az backup policy set --resource-group rg1234 --vault-name testvault --policy C:\temp2\Policy.json --name testing123
     ```
 
 >[!NOTE]
->A JSON-szabályzatot a [Get-default-for-VM](https://docs.microsoft.com/cli/azure/backup/policy#az_backup_policy_get_default_for_vm) parancs végrehajtásával is lekérheti.
+>A JSON-szabályzatot a [Get-default-for-VM](/cli/azure/backup/policy#az_backup_policy_get_default_for_vm) parancs végrehajtásával is lekérheti.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 808357b95f4de904ead0741d848480d548a2e26a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: b6ecea10c884bffb10c936ca7c619d70d2449467
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030076"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728491"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Meglévő helyszíni proxykiszolgálók használata
 
@@ -111,7 +111,7 @@ A kimenő proxyn négy szempontot kell figyelembe venni:
 
 A következő URL-címek elérésének engedélyezése:
 
-| URL-cím | Port |  Használatuk módja |
+| URL-cím | Port |  Használat célja |
 | --- | --- | --- |
 | &ast;. msappproxy.net<br>&ast;. servicebus.windows.net | 443/HTTPS | Kommunikáció az összekötő és az alkalmazásproxy Cloud Service között |
 | crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | 80/HTTP | Az összekötő ezeket az URL-címeket használja a tanúsítványok ellenőrzéséhez. |
@@ -169,7 +169,7 @@ Az összekötők kapcsolódási problémáinak azonosítására és elhárítás
 Az Ön által választott figyelési eszközt használhatja. A cikk értelmében a Microsoft Message Analyzert használtuk.
 
 > [!NOTE]
-> A [Microsoft Message Analyzer (MMA) szolgáltatást a rendszer kivonta](https://docs.microsoft.com/openspecs/blog/ms-winintbloglp/dd98b93c-0a75-4eb0-b92e-e760c502394f) , és a letöltési csomagjait a Microsoft.com-webhelyekről eltávolította a 25 2019. novemberre.  Jelenleg nem érhető el a Microsoft Message Analyzer Microsoft-beli cseréje a fejlesztés során.  Hasonló funkciók esetén vegye fontolóra a külső hálózati protokollok elemző eszközét, például a Wireshark.
+> A [Microsoft Message Analyzer (MMA) szolgáltatást a rendszer kivonta](/openspecs/blog/ms-winintbloglp/dd98b93c-0a75-4eb0-b92e-e760c502394f) , és a letöltési csomagjait a Microsoft.com-webhelyekről eltávolította a 25 2019. novemberre.  Jelenleg nem érhető el a Microsoft Message Analyzer Microsoft-beli cseréje a fejlesztés során.  Hasonló funkciók esetén vegye fontolóra a külső hálózati protokollok elemző eszközét, például a Wireshark.
 
 Az alábbi példák az üzenetsor-kezelőre vonatkoznak, de az alapelvek bármely Analysis Tool eszközre alkalmazhatók.
 
@@ -208,7 +208,7 @@ Az előző szűrő csak a HTTPs-kérelmeket és a proxy portra küldött válasz
 
 Ha más válasz kódokat (például 407 vagy 502) lát, ez azt jelenti, hogy a proxy hitelesítést igényel, vagy más okból nem engedélyezi a forgalmat. Ezen a ponton a proxykiszolgálót támogató csapatot kell felvennie.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure AD Application Proxy-összekötők ismertetése](application-proxy-connectors.md)
 * Ha problémája van az összekötők kapcsolódási problémáinak megoldásával, kérdezze meg a [Microsoft Q&a kérdéses oldalt Azure Active Directory](/answers/topics/azure-active-directory.html) vagy hozzon létre egy jegyet a támogatási csapatával.

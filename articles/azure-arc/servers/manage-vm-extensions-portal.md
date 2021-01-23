@@ -1,14 +1,14 @@
 ---
 title: VM-bővítmény engedélyezése Azure Portal
 description: Ez a cikk bemutatja, hogyan telepíthet virtuálisgép-bővítményeket a Azure Portal hibrid felhőalapú környezetekben futó Azure arc-kompatibilis kiszolgálókra.
-ms.date: 11/06/2020
+ms.date: 01/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 48d7d4085dce893d94436fe0c6be32cfeea9cda3
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 43bbcef28b77e7c7112880fdac1bbd4809791cef
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359085"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728949"
 ---
 # <a name="enable-azure-vm-extensions-from-the-azure-portal"></a>Azure VM-bővítmények engedélyezése a Azure Portal
 
@@ -25,7 +25,7 @@ A virtuálisgép-bővítmények alkalmazhatók a kiszolgáló által felügyelt 
 
 2. A portálon keresse meg a **kiszolgálók – Azure arc** elemet, és válassza ki a hibrid gépet a listából.
 
-3. Válassza a **bővítmények** , majd a **Hozzáadás** lehetőséget. Válassza ki a kívánt bővítményt az elérhető bővítmények listájából, és kövesse a varázsló utasításait. Ebben a példában a Log Analytics virtuálisgép-bővítményt fogjuk telepíteni.
+3. Válassza a **bővítmények**, majd a **Hozzáadás** lehetőséget. Válassza ki a kívánt bővítményt az elérhető bővítmények listájából, és kövesse a varázsló utasításait. Ebben a példában a Log Analytics virtuálisgép-bővítményt fogjuk telepíteni.
 
     ![Virtuálisgép-bővítmény kiválasztása a kiválasztott géphez](./media/manage-vm-extensions/add-vm-extensions.png)
 
@@ -39,6 +39,18 @@ A virtuálisgép-bővítmények alkalmazhatók a kiszolgáló által felügyelt 
 
 >[!NOTE]
 >Habár több bővítmény kötegelt feldolgozását és feldolgozását is elvégezheti, a rendszer sorosan telepíti őket. Az első bővítmény telepítésének befejezése után a rendszer a következő bővítmény telepítését kísérli meg.
+
+## <a name="list-extensions-installed"></a>Telepített bővítmények listája
+
+Az arc-kompatibilis kiszolgálón található virtuálisgép-bővítmények listáját a Azure Portalból szerezheti be. A következő lépések végrehajtásával tekintheti meg őket.
+
+1. A böngészőben nyissa meg a [Azure Portal](https://portal.azure.com).
+
+2. A portálon keresse meg a **kiszolgálók – Azure arc** elemet, és válassza ki a hibrid gépet a listából.
+
+3. Válassza a **bővítmények** lehetőséget, és a rendszer visszaadja a telepített bővítmények listáját.
+
+    ![A kiválasztott gépre telepített virtuálisgép-bővítmény listázása](./media/manage-vm-extensions/list-vm-extensions.png)
 
 ## <a name="uninstall-extension"></a>Bővítmény eltávolítása
 

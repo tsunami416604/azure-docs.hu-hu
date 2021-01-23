@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 0e16cb3d24f9dd33b156bca72ce1c99e7aae957a
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 1b9c9182b8ffc6e9ea2e05fd4863783f111f81dd
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963604"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98727149"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>Oktatóanyag: Azure Active Directory-integráció a Palo Alto Networks-szel kötött portálon
 
@@ -99,7 +99,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -135,7 +135,7 @@ Következő lépésként állítsa be az egyszeri bejelentkezést a Palo Alto-h�
     
     2. Az **Identitáskezelő metaadatainak** mellett válassza a **Tallózás** lehetőséget. Válassza ki a Azure Portalban letöltött metadata.xml fájlt.
     
-    3. Kattintson az **OK** gombra.
+    3. Válassza az **OK** lehetőséget.
 
 ### <a name="create-a-palo-alto-networks-captive-portal-test-user"></a>Palo Alto Networks – kötött portál tesztelési felhasználó létrehozása
 
@@ -150,7 +150,7 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 * Kattintson az alkalmazás tesztelése Azure Portal lehetőségre, és automatikusan be kell jelentkeznie a Palo Alto Networks-portálra, amelyhez be kell állítania az egyszeri bejelentkezést
 
-* Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások területén található Palo Alto Networks Portal csempére kattint, automatikusan be kell jelentkeznie a Palo Alto Networks-portálra, amelyhez be kell állítania az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
+* Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások területén található Palo Alto Networks Portal csempére kattint, automatikusan be kell jelentkeznie a Palo Alto Networks-portálra, amelyhez be kell állítania az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](../user-help/my-apps-portal-end-user-access.md)használatába.
 
 
 ## <a name="next-steps"></a>További lépések

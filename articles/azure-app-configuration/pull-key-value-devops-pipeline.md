@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: drewbat
-ms.openlocfilehash: fbe517c766b3835bf4265a1309b8737a25925b7c
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 4d80c034ab03fed6b9ae2ed0c4c0420afe6f7e32
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914960"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728091"
 ---
 # <a name="pull-settings-to-app-configuration-with-azure-pipelines"></a>Beállítások lekérése az alkalmazás konfigurálásához az Azure-folyamatokkal
 
@@ -47,7 +47,7 @@ Most, hogy létrejött a szolgáltatás-Kapcsolódás, keresse meg a hozzá rend
 
 Rendelje hozzá a megfelelő alkalmazás-konfigurációs szerepkört a feladaton belül használt szolgáltatási kapcsolathoz, hogy a feladat hozzáférhessen az alkalmazás konfigurációs tárolójához.
 
-1. Navigáljon a cél alkalmazás konfigurációs tárolójához. Az alkalmazás konfigurációs tárolójának beállításával kapcsolatban lásd: alkalmazás- [konfigurációs tároló létrehozása](/azure/azure-app-configuration/quickstart-dotnet-core-app#create-an-app-configuration-store) az Azure app Configuration gyors üzembe helyezési útmutatójában.
+1. Navigáljon a cél alkalmazás konfigurációs tárolójához. Az alkalmazás konfigurációs tárolójának beállításával kapcsolatban lásd: alkalmazás- [konfigurációs tároló létrehozása](./quickstart-dotnet-core-app.md#create-an-app-configuration-store) az Azure app Configuration gyors üzembe helyezési útmutatójában.
 1. A bal oldalon válassza a **hozzáférés-vezérlés (iam)** lehetőséget.
 1. A felső részen válassza a **+ Hozzáadás** és kivét **szerepkör-hozzárendelés hozzáadása** elemet.
 1. A **szerepkör** területen válassza **az alkalmazás-konfigurációs Adatolvasó** lehetőséget. Ez a szerepkör lehetővé teszi a feladat számára az alkalmazás-konfigurációs tárolóból való olvasást. 
