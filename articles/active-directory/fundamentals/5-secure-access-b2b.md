@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c0d63df3e5525b200723db209d05e5eb5013e23
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 654e1c163a16f427958320ea081c38338e0ab4e1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222360"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725392"
 ---
 # <a name="transition-to-governed-collaboration-with-azure-active-directory-b2b-collaboration"></a>Áttérés a szabályozott együttműködésre Azure Active Directory B2B együttműködéssel 
 
@@ -100,7 +100,7 @@ Határozza meg, hogy kik hívhatják meg a vendég felhasználókat az erőforr�
 
 Ha az Azure AD-jogosultságok felügyeletét használja, a külső felhasználókra vonatkozó kérdéseket is megadhat. A kérdések ezután megjelennek a jóváhagyók számára, hogy döntéseket hozzanak. Az egyes [hozzáférési csomagokra vonatkozó szabályzatok](../governance/entitlement-management-access-package-approval-policy.md) különböző csoportjait konfigurálhatja, hogy a jóváhagyók rendelkezzenek a jóváhagyáshoz szükséges adatokkal. Ha például az egyik hozzáférési csomag a szállítói hozzáférésre van szánva, akkor a kérelmező kérheti a szállítói szerződésük számát. Egy másik, szállítók számára szánt hozzáférési csomag kérheti a származási országát.
 
-Ha önkiszolgáló portált használ, az [API-összekötők](../external-identities/api-connectors-overview.md) segítségével további attribútumokat gyűjthet a felhasználókról a regisztráció során. Ezeket az attribútumokat később is használhatja a hozzáférés hozzárendeléséhez. Ha például a regisztrációs folyamat során begyűjti a szállítói AZONOSÍTÓját, akkor az adott attribútum használatával dinamikusan rendelheti hozzá őket egy csoporthoz vagy hozzáférési csomaghoz az adott szolgáltatóhoz. Létrehozhat egyéni attribútumokat a Azure Portalban, és használhatja azokat az önkiszolgáló bejelentkezési felhasználói folyamatokban. Ezeket az attribútumokat a [Microsoft Graph API](https://docs.microsoft.com/azure/active-directory-b2c/manage-user-accounts-graph-api)használatával is elolvashatja és elvégezheti. 
+Ha önkiszolgáló portált használ, az [API-összekötők](../external-identities/api-connectors-overview.md) segítségével további attribútumokat gyűjthet a felhasználókról a regisztráció során. Ezeket az attribútumokat később is használhatja a hozzáférés hozzárendeléséhez. Ha például a regisztrációs folyamat során begyűjti a szállítói AZONOSÍTÓját, akkor az adott attribútum használatával dinamikusan rendelheti hozzá őket egy csoporthoz vagy hozzáférési csomaghoz az adott szolgáltatóhoz. Létrehozhat egyéni attribútumokat a Azure Portalban, és használhatja azokat az önkiszolgáló bejelentkezési felhasználói folyamatokban. Ezeket az attribútumokat a [Microsoft Graph API](../../active-directory-b2c/manage-user-accounts-graph-api.md)használatával is elolvashatja és elvégezheti. 
 
 ### <a name="troubleshoot-invitation-redemption-to-azure-ad-users"></a>Az Azure AD-felhasználókra való meghívás visszaváltásának hibája
 
@@ -132,7 +132,7 @@ A vendég felhasználói számára a következő korlátozásokat javasoljuk.
 
 * **A Azure Portal elérésének letiltása. Ritkán szükséges kivételeket hozhat**. 
 
-   * Hozzon létre egy feltételes hozzáférési szabályzatot, amely tartalmazza az összes vendég és a külső felhasználót, majd [a hozzáférés letiltásához alkalmazza a szabályzatot](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management).
+   * Hozzon létre egy feltételes hozzáférési szabályzatot, amely tartalmazza az összes vendég és a külső felhasználót, majd [a hozzáférés letiltásához alkalmazza a szabályzatot](../../role-based-access-control/conditional-access-azure-management.md).
 
  
 
@@ -185,7 +185,7 @@ Alapértelmezés szerint a csapatok lehetővé teszik a külső hozzáférést, 
 
 ### <a name="direct-sharing-through-sharepoint-and-onedrive"></a>Közvetlen megosztás a SharePoint és a OneDrive használatával
 
-A SharePointon keresztüli közvetlen megosztás és a OneDrive a jogosultsági felügyeleti folyamaton kívül is hozzáadhat felhasználókat. A konfigurációk részletes ismertetését lásd: a [Microsoft Teams, a SharePoint és a OneDrive hozzáférésének kezelése a vállalat számára](9-secure-access-teams-sharepoint.md) , ha szükséges, le is [tilthatja a felhasználó személyes OneDrive használatát](https://docs.microsoft.com/office365/troubleshoot/group-policy/block-onedrive-use-from-office) .
+A SharePointon keresztüli közvetlen megosztás és a OneDrive a jogosultsági felügyeleti folyamaton kívül is hozzáadhat felhasználókat. A konfigurációk részletes ismertetését lásd: a [Microsoft Teams, a SharePoint és a OneDrive hozzáférésének kezelése a vállalat számára](9-secure-access-teams-sharepoint.md) , ha szükséges, le is [tilthatja a felhasználó személyes OneDrive használatát](/office365/troubleshoot/group-policy/block-onedrive-use-from-office) .
 
 ### <a name="sending-documents-through-email"></a>Dokumentumok küldése e-mailben
 
@@ -197,12 +197,12 @@ Az együttműködési eszközök tájképe óriási. A felhasználók valószín
 
 A nem engedélyezett alkalmazások kezelésével kapcsolatos további információkért lásd:
 
-* [Csatlakoztatott alkalmazások szabályozása](https://docs.microsoft.com/cloud-app-security/governance-actions)
+* [Csatlakoztatott alkalmazások szabályozása](/cloud-app-security/governance-actions)
 
-* [Az alkalmazások szankcionálása és visszavonása.](https://docs.microsoft.com/cloud-app-security/governance-discovery)
+* [Az alkalmazások szankcionálása és visszavonása.](/cloud-app-security/governance-discovery)
 
  
-### <a name="next-steps"></a>Következő lépések
+### <a name="next-steps"></a>További lépések
 
 Tekintse meg a következő cikkeket az erőforrásokhoz való külső hozzáférés biztonságossá tételéhez. Javasoljuk, hogy a felsorolt sorrendben végezze el a műveleteket.
 

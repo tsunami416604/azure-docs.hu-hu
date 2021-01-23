@@ -12,12 +12,12 @@ manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1aebfaa176992b7e20824518bc214a6688ae493
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: a9a0668b3ea651d129dc076e5f2247e38f5ab7d0
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97703585"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725495"
 ---
 # <a name="email-one-time-passcode-authentication"></a>Egyszeri jelszavas hitelesítés e-mailben
 
@@ -94,7 +94,7 @@ Március 2021-én az e-mailes egyszeri jelszó funkció bekapcsolva lesz az öss
    >
    >![E-mailek egyszeri jelszavas beállításának engedélyezése](media/delegate-invitations/enable-email-otp-opted-in.png)
 
-5. Válassza a **Mentés** lehetőséget.
+5. Kattintson a **Mentés** gombra.
 
 ## <a name="note-for-public-preview-customers"></a>Megjegyzés a nyilvános előzetes verzió ügyfelei számára
 
@@ -102,7 +102,7 @@ Ha korábban már engedélyezte az egyszer használatos e-mail-jelszó nyilváno
 
 ![E-mailek egyszeri jelszavas beállításának engedélyezése](media/delegate-invitations/enable-email-otp-opted-in.png)
 
-Ha azonban szeretné letiltani a szolgáltatást, és az automatikusan engedélyezve lesz a 2021 márciusában, a Microsoft Graph API [e-mail hitelesítési módszer konfigurációs erőforrástípus](https://aka.ms/exid-graphemailauth)használatával visszaállíthatja az alapértelmezett beállításokat. Miután visszaállította az alapértelmezett beállításokat, a következő beállítások lesznek elérhetők a **levelezés egyszeri jelszava a vendégek** számára:
+Ha azonban szeretné letiltani a szolgáltatást, és az automatikusan engedélyezve lesz a 2021 márciusában, a Microsoft Graph API [e-mail hitelesítési módszer konfigurációs erőforrástípus](/graph/api/resources/emailauthenticationmethodconfiguration)használatával visszaállíthatja az alapértelmezett beállításokat. Miután visszaállította az alapértelmezett beállításokat, a következő beállítások lesznek elérhetők a **levelezés egyszeri jelszava a vendégek** számára:
 
 - **E-mail egyszeri PIN-kód automatikus engedélyezése a vendégek számára a 2021 márciusában**. Alapértelmezett Ha az egyszer használatos e-mail-jelszó funkció még nincs engedélyezve a bérlőnél, a rendszer automatikusan bekapcsolja az 2021-es időpontban. Ha azt szeretné, hogy a szolgáltatás egyszerre legyen engedélyezve, nincs szükség további műveletekre. Ha már engedélyezte vagy letiltotta a szolgáltatást, ez a beállítás nem lesz elérhető.
 

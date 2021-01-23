@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: chenyl
-ms.openlocfilehash: 33df4410b9dd82fd0b1c732eb03ab5e0e77e9869
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 6752a9564dc0d9351d1c21f5be14eb626186ac0d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763115"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724056"
 ---
 # <a name="upstream-settings"></a>Felsőbb rétegbeli beállítások
 
@@ -59,7 +59,7 @@ A felsőbb rétegbeli URL-cím nem titkosítható a nyugalmi állapotban. Ha biz
 
 1. Rendszerhez rendelt identitás vagy felhasználó által hozzárendelt identitás hozzáadása. Lásd: [felügyelt identitás hozzáadása az Azure Portalon](./howto-use-managed-identity.md#add-a-system-assigned-identity)
 
-2. Adja meg a titkos olvasási engedélyt a felügyelt identitáshoz a Key Vault hozzáférési házirendjeiben. Lásd: [Key Vault hozzáférési szabályzat kiosztása a Azure Portal használatával](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
+2. Adja meg a titkos olvasási engedélyt a felügyelt identitáshoz a Key Vault hozzáférési házirendjeiben. Lásd: [Key Vault hozzáférési szabályzat kiosztása a Azure Portal használatával](../key-vault/general/assign-access-policy-portal.md)
 
 3. Cserélje le a bizalmas szöveget a `{@Microsoft.KeyVault(SecretUri=<secret-identity>)}` felsőbb rétegbeli URL-minta szintaxisára.
 

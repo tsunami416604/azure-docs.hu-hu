@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 6b217e77310224779ea3ea840e613e28da6c86a3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 5d15947254d80d97b6a241a717fb7d33a3d5ccb5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779866"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724016"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Felügyelt Azure SQL-példányra vonatkozó gyakori kérdések (GYIK)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -118,7 +118,7 @@ A felügyelt példány nevének módosítása nem támogatott.
 
 Igen, felügyelt példány alapértelmezett DNS-zónája *. a Database.Windows.net* módosítható. 
 
-Ha egy másik DNS-zónát szeretne használni az alapértelmezett helyett, például: *. contoso.com* : 
+Ha egy másik DNS-zónát szeretne használni az alapértelmezett helyett, például: *. contoso.com*: 
 - Alias definiálása CliConfig használatával. Az eszköz csak a beállításjegyzék-beállítások burkolója, így a csoportházirend vagy egy parancsfájl használatával is elvégezhető.
 - Használjon *CNAME* -t a *TrustServerCertificate = True* kapcsolóval.
 
@@ -339,7 +339,7 @@ Az Express Route Circuit-társítás az előnyben részesített módszer. A glob
 > [!IMPORTANT]
 > [9/22/2020-ben bejelentettük a globális virtuális hálózati társítást az újonnan létrehozott virtuális fürtökhöz](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Ez azt jelenti, hogy a globális virtuális hálózati társítás támogatott a bejelentési dátum után üres alhálózatokban létrehozott SQL felügyelt példányok esetében, valamint az ezen alhálózatokban létrehozott összes további felügyelt példány esetében is. A többi SQL felügyelt példányok társításának támogatása az azonos régióban található hálózatokra korlátozódik a [globális virtuális hálózati társítás korlátai](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)miatt. További részletekért tekintse meg az [Azure Virtual Networks – gyakori kérdések](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) című cikket is. 
 
-Ha az expressz útvonal-összekapcsolási és a globális virtuális hálózati társítás nem lehetséges, akkor az egyetlen lehetőség, ha helyek közötti VPN-kapcsolatot ([Azure Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md), [POWERSHELL](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), [Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)) hoz létre.
+Ha az expressz útvonal-összekapcsolási és a globális virtuális hálózati társítás nem lehetséges, akkor az egyetlen lehetőség, ha helyek közötti VPN-kapcsolatot ([Azure Portal](../../vpn-gateway/tutorial-site-to-site-portal.md), [POWERSHELL](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), [Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)) hoz létre.
 
 ## <a name="mitigate-data-exfiltration-risks"></a>Az adatkiszűrése kockázatok enyhítése  
 
@@ -409,8 +409,8 @@ Azure Cloud Shell használatával elforgathatja a felügyelt példányhoz tartoz
 
 Igen, nem kell visszafejtenie az adatbázist az SQL felügyelt példányra való visszaállításhoz. Meg kell adnia egy tanúsítványt/kulcsot, amelyet titkosítási kulcsként kell használni a forrásrendszer SQL felügyelt példánya számára, hogy el tudja olvasni az adatait a titkosított biztonságimásolat-fájlból. Két lehetséges módszer:
 
-- *Tanúsítvány feltöltése – a felügyelt SQL-példányra* . Ezt csak a PowerShell használatával lehet elvégezni. A [minta parancsfájl](./tde-certificate-migrate.md) a teljes folyamatot ismerteti.
-- *Töltse fel az aszimmetrikus kulcs-védőt, hogy Azure Key Vault, és irányítsa az SQL felügyelt példányát* . Ez a megközelítés hasonlít a saját kulcsú (BYOK) TDE használatára, amely a titkosítási kulcs tárolásához a Key Vault-integrációt is használja. Ha nem szeretné a kulcsot titkosítási kulcsként használni, és csak azt szeretné, hogy elérhető legyen az SQL felügyelt példánya a titkosított adatbázis (ok) visszaállításához, kövesse az BYOK- [TDE beállításához](../database/transparent-data-encryption-tde-overview.md#manage-transparent-data-encryption)szükséges utasításokat, és ne jelölje be a jelölőnégyzetet, **hogy a kijelölt kulcs legyen az alapértelmezett TDE-védő** .
+- *Tanúsítvány feltöltése – a felügyelt SQL-példányra*. Ezt csak a PowerShell használatával lehet elvégezni. A [minta parancsfájl](./tde-certificate-migrate.md) a teljes folyamatot ismerteti.
+- *Töltse fel az aszimmetrikus kulcs-védőt, hogy Azure Key Vault, és irányítsa az SQL felügyelt példányát*. Ez a megközelítés hasonlít a saját kulcsú (BYOK) TDE használatára, amely a titkosítási kulcs tárolásához a Key Vault-integrációt is használja. Ha nem szeretné a kulcsot titkosítási kulcsként használni, és csak azt szeretné, hogy elérhető legyen az SQL felügyelt példánya a titkosított adatbázis (ok) visszaállításához, kövesse az BYOK- [TDE beállításához](../database/transparent-data-encryption-tde-overview.md#manage-transparent-data-encryption)szükséges utasításokat, és ne jelölje be a jelölőnégyzetet, **hogy a kijelölt kulcs legyen az alapértelmezett TDE-védő**.
 
 Miután a titkosítási védő elérhetővé vált az SQL felügyelt példánya számára, folytathatja a szabványos adatbázis-visszaállítási eljárást.
 

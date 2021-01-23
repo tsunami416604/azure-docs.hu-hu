@@ -13,22 +13,22 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71031c7f5db299fbb1b7c99014c30590fec89f03
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 0dcb6d24eacbe594a907f084874e76fea963c561
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222292"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725128"
 ---
 # <a name="control-access-with-sensitivity-labels"></a>Hozzáférés szabályozása érzékenységi címkékkel 
 
-Az [érzékenységi címkék](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels?view=o365-worldwide) segítségével szabályozhatja a tartalomhoz való hozzáférést az Office 365-alkalmazásokban, valamint a Microsoft Teams, Microsoft 365 csoportok és SharePoint-webhelyek tárolókban. A felhasználók együttműködésének és üzemi képességeinek akadályozása nélkül védik a tartalmakat. Az érzékenységi címkék lehetővé teszik a szervezet tartalmának elküldését az eszközök, alkalmazások és szolgáltatások között, az adatok védelme és a megfelelőségi és biztonsági szabályzatok teljesítése mellett. 
+Az [érzékenységi címkék](/microsoft-365/compliance/sensitivity-labels?view=o365-worldwide) segítségével szabályozhatja a tartalomhoz való hozzáférést az Office 365-alkalmazásokban, valamint a Microsoft Teams, Microsoft 365 csoportok és SharePoint-webhelyek tárolókban. A felhasználók együttműködésének és üzemi képességeinek akadályozása nélkül védik a tartalmakat. Az érzékenységi címkék lehetővé teszik a szervezet tartalmának elküldését az eszközök, alkalmazások és szolgáltatások között, az adatok védelme és a megfelelőségi és biztonsági szabályzatok teljesítése mellett. 
 
 Az érzékenységi címkékkel a következőket teheti:
 
 * **A tartalom besorolása védelmi beállítások hozzáadása nélkül**. Besorolást rendelhet a tartalomhoz (például egy matricához), amely továbbra is fennmarad és barangol a tartalommal a használat és a megosztás során. Ezen besorolás használatával jelentéseket generálhat és megtekintheti a bizalmas tartalom tevékenységadatait.
 
-* **A védelmi beállítások, például a titkosítás, a vízjelek és a hozzáférési korlátozások betartatása**. Például a felhasználók bizalmas címkét alkalmazhatnak egy dokumentumra vagy e-mailre, és a címke [titkosíthatja a tartalmat](https://docs.microsoft.com/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide) , és hozzáadhat egy "bizalmas" vízjelet. Emellett [alkalmazhat egy érzékenységi címkét egy tárolóra](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide) , például egy SharePoint-webhelyre, és megszabhatja, hogy a külső felhasználók hozzáférhessenek-e a benne található tartalomhoz.
+* **A védelmi beállítások, például a titkosítás, a vízjelek és a hozzáférési korlátozások betartatása**. Például a felhasználók bizalmas címkét alkalmazhatnak egy dokumentumra vagy e-mailre, és a címke [titkosíthatja a tartalmat](/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide) , és hozzáadhat egy "bizalmas" vízjelet. Emellett [alkalmazhat egy érzékenységi címkét egy tárolóra](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide) , például egy SharePoint-webhelyre, és megszabhatja, hogy a külső felhasználók hozzáférhessenek-e a benne található tartalomhoz.
 
 Az e-mailek és más tartalmak érzékenységi címkéi a tartalommal utaznak. A tárolók érzékenységi címkéi korlátozhatják a tárolóhoz való hozzáférést, de a tárolóban lévő tartalom nem örökli a címkét. Egy felhasználó például megteheti a tartalmat egy védett helyről, letöltheti, majd korlátozás nélkül megoszthatja, kivéve, ha a tartalomnak is van érzékenységi címkéje.
 
@@ -52,7 +52,7 @@ Ha úgy gondolja, hogy a külső hozzáférés szabályozható a tartalomhoz, a 
 
 * Hogyan határozható meg a magas, közepes vagy alacsony üzleti hatás (HBI, MBI, LBI)? Vegye figyelembe a szervezetre gyakorolt hatást, ha bizonyos tartalomtípusok nem megfelelőek.
 
-   * A tartalom, amely a [bizalmasan megkülönböztetett tartalmak](https://docs.microsoft.com/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide), például a hitelkártyák vagy a Passport-számok meghatározott típusaival rendelkezik
+   * A tartalom, amely a [bizalmasan megkülönböztetett tartalmak](/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide), például a hitelkártyák vagy a Passport-számok meghatározott típusaival rendelkezik
 
    * Meghatározott csoportok vagy személyek által létrehozott tartalom (például megfelelőségi tisztviselők, pénzügyi tisztviselők vagy vezetők)
 
@@ -66,21 +66,21 @@ Ha úgy gondolja, hogy a külső hozzáférés szabályozható a tartalomhoz, a 
 
 * Milyen alapértelmezett értékekkel kell rendelkeznie a HBI-, a-vagy Microsoft 365-csoportoknak?
 
-* Hol fogja használni az érzékenységi címkéket a [címkézéshez és a figyeléshez](https://docs.microsoft.com/microsoft-365/compliance/label-analytics?view=o365-worldwide), a [titkosítás kikényszerített](https://docs.microsoft.com/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide) vagy a [tárolók hozzáférési korlátozásának betartatásához](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)?
+* Hol fogja használni az érzékenységi címkéket a [címkézéshez és a figyeléshez](/microsoft-365/compliance/label-analytics?view=o365-worldwide), a [titkosítás kikényszerített](/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide) vagy a [tárolók hozzáférési korlátozásának betartatásához](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)?
 
 **E-mailek és tartalmak esetén**
 
-* Szeretné [automatikusan alkalmazni az érzékenységi címkéket](https://docs.microsoft.com/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide) a tartalomra, vagy manuálisan?
+* Szeretné [automatikusan alkalmazni az érzékenységi címkéket](/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide) a tartalomra, vagy manuálisan?
 
-   * Ha úgy dönt, hogy manuálisan szeretné elvégezni, [javasolja, hogy a felhasználók címkét alkalmazzanak](https://docs.microsoft.com/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide)?
+   * Ha úgy dönt, hogy manuálisan szeretné elvégezni, [javasolja, hogy a felhasználók címkét alkalmazzanak](/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide)?
 
 **Tárolók esetén**
 
 * Milyen feltételekkel határozható meg, hogy a M365-csoportok, a csapatok vagy a SharePoint-webhelyek milyen mértékben korlátozzák a hozzáférést az érzékenységi címkék használatával?
 
-* Csak a tárolókban lévő tartalmat szeretné felcímkézni, vagy a meglévő fájlokat szeretné [automatikusan címkézni](https://docs.microsoft.com/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide) a SharePointban és a OneDrive?
+* Csak a tárolókban lévő tartalmat szeretné felcímkézni, vagy a meglévő fájlokat szeretné [automatikusan címkézni](/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide) a SharePointban és a OneDrive?
 
-Tekintse meg ezeket a [gyakori forgatókönyveket az](https://docs.microsoft.com/microsoft-365/compliance/get-started-with-sensitivity-labels?view=o365-worldwide) érzékeny címkék használatára vonatkozó egyéb ötletekhez.
+Tekintse meg ezeket a [gyakori forgatókönyveket az](/microsoft-365/compliance/get-started-with-sensitivity-labels?view=o365-worldwide) érzékeny címkék használatára vonatkozó egyéb ötletekhez.
 
 ### <a name="sensitivity-labels-on-email-and-content"></a>E-mailek és tartalmak érzékenységi címkéi
 
@@ -100,7 +100,7 @@ Ha egy dokumentumhoz vagy e-mailhez társít egy érzékenységi címkét, akkor
 
 ### <a name="sensitivity-labels-on-containers"></a>A tárolók érzékenységi címkéi
 
-Érzékeny címkéket alkalmazhat a tárolók, például a [Microsoft 365 csoportok](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-assign-sensitivity-labels), a [Microsoft-csapatok](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)és a SharePoint- [webhelyek](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)számára. Ha ezt az érzékenységi címkét egy támogatott tárolóra alkalmazza, a címke automatikusan alkalmazza a besorolási és védelmi beállításokat a csatlakoztatott helyre vagy csoportra. A tárolók érzékenységi címkéi a tárolók következő aspektusait szabályozhatják:
+Érzékeny címkéket alkalmazhat a tárolók, például a [Microsoft 365 csoportok](../enterprise-users/groups-assign-sensitivity-labels.md), a [Microsoft-csapatok](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)és a SharePoint- [webhelyek](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)számára. Ha ezt az érzékenységi címkét egy támogatott tárolóra alkalmazza, a címke automatikusan alkalmazza a besorolási és védelmi beállításokat a csatlakoztatott helyre vagy csoportra. A tárolók érzékenységi címkéi a tárolók következő aspektusait szabályozhatják:
 
 * **Adatvédelem**. Kiválaszthatja, hogy ki láthatja a webhelyet: adott felhasználók, minden belső felhasználó vagy bárki.
 
@@ -116,27 +116,27 @@ Ha egy dokumentumhoz vagy e-mailhez társít egy érzékenységi címkét, akkor
 
 Ha egy adott tárolóra, például egy SharePoint-webhelyre alkalmazza az érzékenységi címkét, a rendszer nem alkalmazza az ott található tartalomra: a tárolók érzékenységi címkéi a tárolóban lévő tartalomhoz való hozzáférést szabályozzák. 
 
-* Ha szeretné automatikusan alkalmazni a címkét a tárolón belüli tartalomra, olvassa el az [érzékenység tartalomra történő automatikus alkalmazása](https://docs.microsoft.com/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide)című témakört.
+* Ha szeretné automatikusan alkalmazni a címkét a tárolón belüli tartalomra, olvassa el az [érzékenység tartalomra történő automatikus alkalmazása](/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide)című témakört.
 
-* Ha azt szeretné, hogy a felhasználók manuálisan tudják alkalmazni a címkéket a tartalomra, ügyeljen arra, hogy az [Office-fájlokra vonatkozó érzékenységi címkéket engedélyezte a SharePointban és a OneDrive](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-sharepoint-onedrive-files?view=o365-worldwide).
+* Ha azt szeretné, hogy a felhasználók manuálisan tudják alkalmazni a címkéket a tartalomra, ügyeljen arra, hogy az [Office-fájlokra vonatkozó érzékenységi címkéket engedélyezte a SharePointban és a OneDrive](/microsoft-365/compliance/sensitivity-labels-sharepoint-onedrive-files?view=o365-worldwide).
 
 ### <a name="plan-to-implement-sensitivity-labels"></a>Az érzékenységi címkék megvalósításának megtervezése
 
 Miután meghatározta, hogyan szeretné használni az érzékenységi címkéket, és hogy milyen tartalmat és webhelyeket kíván alkalmazni, tekintse meg az alábbi dokumentációt, amely segít a megvalósításában.
 
-1. [Az érzékenységi címkék első lépései](https://docs.microsoft.com/microsoft-365/compliance/get-started-with-sensitivity-labels?view=o365-worldwide)
+1. [Az érzékenységi címkék első lépései](/microsoft-365/compliance/get-started-with-sensitivity-labels?view=o365-worldwide)
 
-2. [Központi telepítési stratégia létrehozása](https://docs.microsoft.com/microsoft-365/compliance/get-started-with-sensitivity-labels?view=o365-worldwide)
+2. [Központi telepítési stratégia létrehozása](/microsoft-365/compliance/get-started-with-sensitivity-labels?view=o365-worldwide)
 
-3. [Érzékenységi Címkék létrehozása és közzététele](https://docs.microsoft.com/microsoft-365/compliance/create-sensitivity-labels?view=o365-worldwide)
+3. [Érzékenységi Címkék létrehozása és közzététele](/microsoft-365/compliance/create-sensitivity-labels?view=o365-worldwide)
 
-4. [Tartalomhoz való hozzáférés korlátozása érzékenységi címkék használatával a titkosítás alkalmazásához](https://docs.microsoft.com/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide)
+4. [Tartalomhoz való hozzáférés korlátozása érzékenységi címkék használatával a titkosítás alkalmazásához](/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide)
 
-5. [Érzékenységi címkék használata csapatokkal, csoportokkal és webhelyekkel](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)
+5. [Érzékenységi címkék használata csapatokkal, csoportokkal és webhelyekkel](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)
 
-6. [Az Office-fájlok érzékenységi feliratainak engedélyezése a SharePointban és a OneDrive](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-sharepoint-onedrive-files?view=o365-worldwide)
+6. [Az Office-fájlok érzékenységi feliratainak engedélyezése a SharePointban és a OneDrive](/microsoft-365/compliance/sensitivity-labels-sharepoint-onedrive-files?view=o365-worldwide)
 
-### <a name="next-steps"></a>Következő lépések
+### <a name="next-steps"></a>További lépések
 
 Tekintse meg a következő cikkeket az erőforrásokhoz való külső hozzáférés biztonságossá tételéhez. Javasoljuk, hogy a felsorolt sorrendben végezze el a műveleteket.
 

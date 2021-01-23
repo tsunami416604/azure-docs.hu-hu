@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 8/26/2020
 ms.author: alkemper
-ms.openlocfilehash: 6996fdd9dce4314e9365177815d7d310ac80c7cb
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 96efc0ea6300e482ddeeda8fa177847f02b7e126
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98046073"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724251"
 ---
 # <a name="quickstart-add-feature-flags-to-an-azure-functions-app"></a>Gyors útmutató: szolgáltatás-jelzők hozzáadása Azure Functions-alkalmazáshoz
 
@@ -46,7 +46,7 @@ A .NET-szolgáltatások felügyeleti könyvtárai kiterjesztik a keretrendszert 
 
 ## <a name="connect-to-an-app-configuration-store"></a>Kapcsolódás alkalmazás-konfigurációs tárolóhoz
 
-Ez a projekt a [függőségi befecskendezést fogja használni a .net Azure Functionsban](/azure/azure-functions/functions-dotnet-dependency-injection). Az Azure-alkalmazások konfigurációját kiegészítő konfigurációs forrásként adja hozzá, ahol a szolgáltatások jelzői vannak tárolva.
+Ez a projekt a [függőségi befecskendezést fogja használni a .net Azure Functionsban](../azure-functions/functions-dotnet-dependency-injection.md). Az Azure-alkalmazások konfigurációját kiegészítő konfigurációs forrásként adja hozzá, ahol a szolgáltatások jelzői vannak tárolva.
 
 1. Kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése** lehetőséget. A **Tallózás** lapon keresse meg és adja hozzá a következő NuGet-csomagokat a projekthez.
    - [Microsoft.Extensions.Configszülő. AzureAppConfiguration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureAppConfiguration/) -4.1.0 vagy újabb verzió
@@ -201,6 +201,6 @@ Ebben a rövid útmutatóban létrehozta a szolgáltatás jelölőjét, és egy 
 
 - További információ a [szolgáltatások kezeléséről](./concept-feature-management.md)
 - [Funkciójelölők kezelése](./manage-feature-flags.md)
-- [Feltételes funkciók jelzőjének használata](./howto-feature-filters-aspnet-core.md)
+- [Feltételes funkciójelölők használata](./howto-feature-filters-aspnet-core.md)
 - [A funkciók lépcsőzetes bevezetésének engedélyezése a megcélzott célközönségek számára](./howto-targetingfilter-aspnet-core.md)
 - [Dinamikus konfiguráció használata egy Azure Functions alkalmazásban](./enable-dynamic-configuration-azure-functions-csharp.md)

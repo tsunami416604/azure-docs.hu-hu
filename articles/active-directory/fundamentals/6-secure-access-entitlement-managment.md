@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9de0ce5e83b33cd793953e2b863f26dffafe58ee
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: f06a54f59405d9833194b2e7d4488bc93d2437ae
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222394"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725178"
 ---
 # <a name="manage-external-access-with-entitlement-management"></a>A külső hozzáférés kezelése a jogosultságok kezelésével 
 
@@ -94,15 +94,15 @@ A hozzáférési felülvizsgálatokkal kapcsolatos további információkért te
 
 ## <a name="using-automation-in-entitlement-management"></a>Automatizálás használata a jogosultságok kezelésében
 
-A [jogosultsági felügyeleti funkciókat Microsoft Graph használatával](https://docs.microsoft.com/graph/tutorial-access-package-api)is végrehajthatja, beleértve a következőket:
+A [jogosultsági felügyeleti funkciókat Microsoft Graph használatával](/graph/tutorial-access-package-api)is végrehajthatja, beleértve a következőket:
 
-* [Hozzáférési csomagok kezelése](https://docs.microsoft.com/graph/api/resources/accesspackage?view=graph-rest-beta)
+* [Hozzáférési csomagok kezelése](/graph/api/resources/accesspackage?view=graph-rest-beta)
 
-* [Hozzáférési felülvizsgálatok kezelése](https://docs.microsoft.com/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta)
+* [Hozzáférési felülvizsgálatok kezelése](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta)
 
-* [Csatlakoztatott szervezetek kezelése](https://docs.microsoft.com/graph/api/resources/connectedorganization?view=graph-rest-beta)
+* [Csatlakoztatott szervezetek kezelése](/graph/api/resources/connectedorganization?view=graph-rest-beta)
 
-* [Jogosultság-kezelési beállítások kezelése](https://docs.microsoft.com/graph/api/resources/entitlementmanagementsettings?view=graph-rest-beta)
+* [Jogosultság-kezelési beállítások kezelése](/graph/api/resources/entitlementmanagementsettings?view=graph-rest-beta)
 
 ## <a name="recommendations"></a>Javaslatok 
 
@@ -112,7 +112,7 @@ Javasoljuk, hogy a külső hozzáférés a jogosultság-kezeléssel való szabá
 
 * Ha a címtárban már van B2B-felhasználó, akkor közvetlenül is hozzárendelheti azokat a megfelelő hozzáférési csomagokhoz.
 
-* A hozzáférést a [Azure Portal](../governance/entitlement-management-access-package-assignments.md)vagy a [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/accesspackageassignmentrequest?view=graph-rest-beta)használatával rendelheti hozzá.
+* A hozzáférést a [Azure Portal](../governance/entitlement-management-access-package-assignments.md)vagy a [Microsoft Graph](/graph/api/resources/accesspackageassignmentrequest?view=graph-rest-beta)használatával rendelheti hozzá.
 
 **Az identitás-irányítási beállítások használatával távolíthatja el a felhasználókat a címtárból, ha a hozzáférési csomagok lejárnak**.
 
@@ -149,7 +149,7 @@ A **[katalógusok és hozzáférési csomagok felügyeletének delegálása](../
 
 További információ: [hozzáférés szabályozása külső felhasználók számára az Azure ad-jogosultságok kezelésében](../governance/entitlement-management-external-users.md) 
 
-### <a name="next-steps"></a>Következő lépések
+### <a name="next-steps"></a>További lépések
 
 Tekintse meg a következő cikkeket az erőforrásokhoz való külső hozzáférés biztonságossá tételéhez. Javasoljuk, hogy a felsorolt sorrendben végezze el a műveleteket.
 
@@ -173,4 +173,3 @@ Tekintse meg a következő cikkeket az erőforrásokhoz való külső hozzáfér
 
  
 
- 

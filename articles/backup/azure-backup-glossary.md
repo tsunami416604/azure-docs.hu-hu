@@ -3,12 +3,12 @@ title: Szószedet Azure Backup
 description: Ez a cikk a Azure Backup használatának hasznos feltételeit határozza meg.
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: 121258665ab275fdcffd618e7c0cf1b3e0537e70
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 5b575e0f56c9cf39987e9e77850ab1d9b2e80d93
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661476"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98723914"
 ---
 # <a name="azure-backup-glossary"></a>Szószedet Azure Backup
 
@@ -21,7 +21,7 @@ A jelen Szószedet a Azure Backup használatakor hasznos lehet.
 
 ## <a name="afs-azure-file-shares"></a>AFS (Azure-fájlmegosztás)
 
-Tekintse meg [Azure Files dokumentációját](https://docs.microsoft.com/azure/storage/files/storage-files-introduction).
+Tekintse meg [Azure Files dokumentációját](../storage/files/storage-files-introduction.md).
 
 ## <a name="alternate-location-recovery"></a>Másodlagos hely helyreállítása
 
@@ -35,7 +35,7 @@ Az alkalmazással konzisztens biztonsági másolatok rögzítik a memória tarta
 
 ## <a name="azure-resource-manager-arm-templates"></a>Azure Resource Manager- (ARM-) sablonok
 
-Tekintse meg az [ARM-sablonok dokumentációját](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview).
+Tekintse meg az [ARM-sablonok dokumentációját](../azure-resource-manager/templates/overview.md).
 
 ## <a name="autoprotection-for-databases"></a>Autoprotection (adatbázisokhoz)
 
@@ -49,38 +49,38 @@ A Azure Backup háromféle replikációt biztosít a tárterület és az adatmen
 
 ### <a name="lrs"></a>LRS
 
-A [helyileg redundáns tárolás (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy#locally-redundant-storage) háromszor replikálja a biztonsági mentési adatait (a biztonsági másolatok három másolatát hozza létre) egy adatközpont tárolási méretezési egységében. A biztonsági mentési adatmennyiség összes másolata ugyanabban a régióban található. A LRS egy alacsony díjszabású lehetőség a biztonsági mentési adatok helyi hardveres meghibásodások elleni védelméhez.
+A [helyileg redundáns tárolás (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) háromszor replikálja a biztonsági mentési adatait (a biztonsági másolatok három másolatát hozza létre) egy adatközpont tárolási méretezési egységében. A biztonsági mentési adatmennyiség összes másolata ugyanabban a régióban található. A LRS egy alacsony díjszabású lehetőség a biztonsági mentési adatok helyi hardveres meghibásodások elleni védelméhez.
 
 ### <a name="grs"></a>GRS
 
-A [geo-redundáns tárolás (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy#geo-redundant-storage) az alapértelmezett és ajánlott replikációs lehetőség. A GRS egy másodlagos régióba replikálja a biztonsági mentési adatait, több száz mérfölddel arrébb a forrásadatok elsődleges helyétől. A GRS több mint LRS, de a GRS magasabb fokú tartósságot biztosít a biztonsági mentési adataihoz, még akkor is, ha van regionális leállás.
+A [geo-redundáns tárolás (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) az alapértelmezett és ajánlott replikációs lehetőség. A GRS egy másodlagos régióba replikálja a biztonsági mentési adatait, több száz mérfölddel arrébb a forrásadatok elsődleges helyétől. A GRS több mint LRS, de a GRS magasabb fokú tartósságot biztosít a biztonsági mentési adataihoz, még akkor is, ha van regionális leállás.
 
 >[!NOTE]
 >Azon GRS-tárolók esetében, amelyeken engedélyezve van a régiók közötti visszaállítási funkció, a biztonsági mentési tár a GRS-ből az RA-GRS (olvasási hozzáférés Geo-Redundant Storage) verzióra frissül.
 
 ### <a name="zrs"></a>ZRS
 
-A [Zone-redundáns tárolás (ZRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy#zone-redundant-storage) a [rendelkezésre állási zónákban](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)replikálja a biztonsági mentési adatait, garantálva a biztonsági mentési adattárolást és a rugalmasságot ugyanabban a régióban. Az [adattárolást](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/) igénylő kritikus fontosságú számítási feladatok biztonsági mentése a ZRS-ben végezhető el.
+A [Zone-redundáns tárolás (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) a [rendelkezésre állási zónákban](../availability-zones/az-overview.md#availability-zones)replikálja a biztonsági mentési adatait, garantálva a biztonsági mentési adattárolást és a rugalmasságot ugyanabban a régióban. Az [adattárolást](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/) igénylő kritikus fontosságú számítási feladatok biztonsági mentése a ZRS-ben végezhető el.
 
 ## <a name="azure-command-line-interface-cli"></a>Azure parancssori felület (CLI)
 
-Tekintse meg az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure/what-is-azure-cli).
+Tekintse meg az [Azure CLI dokumentációját](/cli/azure/what-is-azure-cli).
 
 ## <a name="azure-policy"></a>Azure Policy
 
-Tekintse meg [Azure Policy dokumentációját](https://docs.microsoft.com/azure/governance/policy/overview).
+Tekintse meg [Azure Policy dokumentációját](../governance/policy/overview.md).
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-Tekintse meg [Azure PowerShell dokumentációját](https://docs.microsoft.com/powershell/azure/).
+Tekintse meg [Azure PowerShell dokumentációját](/powershell/azure/).
 
 ## <a name="azure-resource-manager-arm"></a>Azure Resource Manager (ARM)
 
-Tekintse meg [Azure Resource Manager dokumentációját](https://docs.microsoft.com/azure/azure-resource-manager/management/overview).
+Tekintse meg [Azure Resource Manager dokumentációját](../azure-resource-manager/management/overview.md).
 
 ## <a name="azure-disk-encryption-ade"></a>Azure Disk Encryption (ADE)
 
-Tekintse meg [Azure Disk Encryption dokumentációját](https://docs.microsoft.com/azure/security/fundamentals/azure-disk-encryption-vms-vmss).
+Tekintse meg [Azure Disk Encryption dokumentációját](../security/fundamentals/azure-disk-encryption-vms-vmss.md).
 
 ## <a name="backend-storage--cloud-storage--backup-storage"></a>Háttérbeli tárolás/Felhőbeli tárolás/biztonsági mentési tár
 
@@ -124,11 +124,11 @@ Az összeomlás-konzisztens Pillanatképek általában akkor fordulnak elő, ha 
 
 ## <a name="cross-region-restore-crr"></a>Régiók közötti visszaállítás (CRR)
 
-A [visszaállítási lehetőségek](backup-azure-arm-restore-vms.md#restore-options)egyike a tartományok közötti visszaállítás (CRR) lehetővé teszi, hogy a másodlagos régióban lévő biztonsági másolati elemeket visszaállítsa, amely egy [Azure párosított régió](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#what-are-paired-regions).
+A [visszaállítási lehetőségek](backup-azure-arm-restore-vms.md#restore-options)egyike a tartományok közötti visszaállítás (CRR) lehetővé teszi, hogy a másodlagos régióban lévő biztonsági másolati elemeket visszaállítsa, amely egy [Azure párosított régió](../best-practices-availability-paired-regions.md#what-are-paired-regions).
 
 ## <a name="data-box"></a>Adatmező
 
-Tekintse meg a következőt: [adatbox-dokumentáció](https://docs.microsoft.com/azure/databox/data-box-overview).
+Tekintse meg a következőt: [adatbox-dokumentáció](../databox/data-box-overview.md).
 
 ## <a name="datasource"></a>Adatforrás
 
@@ -138,11 +138,11 @@ Egy erőforrás (Azure-erőforrás, proxy-erőforrás vagy helyszíni erőforrá
 
 (Munkaterhelés-specifikus kifejezés)
 
-Tekintse meg a [DPM dokumentációját](https://docs.microsoft.com/system-center/dpm/dpm-overview).
+Tekintse meg a [DPM dokumentációját](/system-center/dpm/dpm-overview).
 
 ## <a name="expressroute"></a>ExpressRoute
 
-Tekintse meg a [ExpressRoute dokumentációját](https://docs.microsoft.com/azure/expressroute/expressroute-introduction).
+Tekintse meg a [ExpressRoute dokumentációját](../expressroute/expressroute-introduction.md).
 
 ## <a name="file-system-consistent-backup"></a>Fájlrendszer-konzisztens biztonsági mentés
 
@@ -164,7 +164,7 @@ A GFS (nagyapa-apa-Son) biztonsági mentési szabályzata lehetővé teszi, hogy
 
 ## <a name="iaas-vms--azure-vms"></a>IaaS virtuális gépek/Azure-beli virtuális gépek
 
-Tekintse meg az [Azure virtuális gép dokumentációját](https://docs.microsoft.com/azure/virtual-machines/).
+Tekintse meg az [Azure virtuális gép dokumentációját](../virtual-machines/index.yml).
 
 ## <a name="incremental-backup"></a>Növekményes biztonsági mentés
 
@@ -196,7 +196,7 @@ A Azure Backup Server segítségével az alkalmazások számítási feladatait, 
 
 ## <a name="managed-disks"></a>Felügyelt lemezek
 
-Tekintse át a [Managed Disks dokumentációját](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+Tekintse át a [Managed Disks dokumentációját](../virtual-machines/managed-disks-overview.md).
 
 ## <a name="mars-agent"></a>MARS-ügynök
 
@@ -206,7 +206,7 @@ Más néven **Azure Backup ügynök** vagy **Recovery Services ügynök**, a Mar
 
 ## <a name="nsg-network-security-group"></a>NSG (hálózati biztonsági csoport)
 
-Tekintse meg a [NSG dokumentációját](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview).
+Tekintse meg a [NSG dokumentációját](../virtual-network/network-security-groups-overview.md).
 
 ## <a name="offline-seeding"></a>Offline előkészítés
 
@@ -228,7 +228,7 @@ A hitelesítő adatok titkosítására és visszafejtésére szolgálnak a helys
 
 ## <a name="private-endpoint"></a>Privát végpont
 
-Tekintse meg a [Private Endpoint dokumentációját](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
+Tekintse meg a [Private Endpoint dokumentációját](../private-link/private-endpoint-overview.md).
 
 ## <a name="protected-instance"></a>Védett példány
 
@@ -236,7 +236,7 @@ A védett példány arra a számítógépre, fizikai vagy virtuális kiszolgál�
 
 ## <a name="rbac-role-based-access-control"></a>RBAC (szerepköralapú hozzáférés-vezérlés)
 
-Tekintse meg a [RBAC dokumentációját](https://docs.microsoft.com/azure/role-based-access-control/overview).
+Tekintse meg a [RBAC dokumentációját](../role-based-access-control/overview.md).
 
 ## <a name="recovery-point-restore-point-retention-point--point-in-time-pit"></a>Helyreállítási pont/visszaállítási pont/adatmegőrzési pont/pont-idő (PIT)
 
@@ -248,11 +248,11 @@ Az eredeti, biztonsági mentés alatt álló adatmennyiség másolata. Egy adatm
 
 ## <a name="resource-group"></a>Erőforráscsoport
 
-Tekintse át a [Azure Resource Manager dokumentációját](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal#what-is-a-resource-group).
+Tekintse át a [Azure Resource Manager dokumentációját](../azure-resource-manager/management/manage-resource-groups-portal.md#what-is-a-resource-group).
 
 ## <a name="rest-api"></a>REST API
 
-Tekintse meg az [Azure REST API dokumentációját](https://docs.microsoft.com/rest/api/azure/).
+Tekintse meg az [Azure REST API dokumentációját](/rest/api/azure/).
 
 ## <a name="retention-rule"></a>Adatmegőrzési szabály
 
@@ -272,7 +272,7 @@ Az adott elemhez konfigurált biztonsági mentési szabályzat által automatiku
 
 ## <a name="secondary-region--paired-region"></a>Másodlagos régió/párosított régió
 
-A regionális párok két régióból állnak, ugyanazon a földrajzon belül. Az egyik az elsődleges régió, a másik pedig a másodlagos régió. A párosított régiókat néhány Azure-szolgáltatás (beleértve a GRS-beállításokkal Azure Backup) használja az üzletmenet folytonosságának biztosításához és az adatvesztés elleni védelemhez. [További információ](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+A regionális párok két régióból állnak, ugyanazon a földrajzon belül. Az egyik az elsődleges régió, a másik pedig a másodlagos régió. A párosított régiókat néhány Azure-szolgáltatás (beleértve a GRS-beállításokkal Azure Backup) használja az üzletmenet folytonosságának biztosításához és az adatvesztés elleni védelemhez. [További információ](../best-practices-availability-paired-regions.md).
 
 ## <a name="soft-delete"></a>Helyreállítható törlés
 
@@ -280,11 +280,11 @@ A Soft delete egy olyan szolgáltatás, amely segít megvédeni a biztonsági me
 
 ## <a name="snapshot"></a>Pillanatkép
 
-A pillanatkép egy virtuális merevlemez (VHD) vagy egy Azure-fájlmegosztás teljes, írásvédett másolata. További információ a [lemezes pillanatképekről](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk) és a [fájl-pillanatképekről](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files).
+A pillanatkép egy virtuális merevlemez (VHD) vagy egy Azure-fájlmegosztás teljes, írásvédett másolata. További információ a [lemezes pillanatképekről](../virtual-machines/windows/snapshot-copy-managed-disk.md) és a [fájl-pillanatképekről](../storage/files/storage-snapshots-files.md).
 
 ## <a name="storage-account"></a>A(z)
 
-Tekintse meg a [Storage-fiók dokumentációját](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
+Tekintse meg a [Storage-fiók dokumentációját](../storage/common/storage-account-overview.md).
 
 ## <a name="subscription"></a>Előfizetés
 
@@ -302,7 +302,7 @@ A bérlő egy szervezetet képvisel. Az Azure AD egy dedikált példánya, amely
 
 ## <a name="unmanaged-disk"></a>Nem felügyelt lemez
 
-Tekintse át a nem [felügyelt lemezek dokumentációját](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance#azure-unmanaged-disks).
+Tekintse át a nem [felügyelt lemezek dokumentációját](../storage/common/storage-disaster-recovery-guidance.md#azure-unmanaged-disks).
 
 ## <a name="vault"></a>Tároló
 
@@ -314,13 +314,13 @@ A tároló hitelesítőadat-fájlja a portál által az egyes tárakhoz létreho
 
 ## <a name="vnet-virtual-network"></a>VNET (Virtual Network)
 
-Tekintse meg a [VNET dokumentációját](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
+Tekintse meg a [VNET dokumentációját](../virtual-network/virtual-networks-overview.md).
 
 ## <a name="vss-windows-volume-shadow-copy-service"></a>VSS (Windows Kötet árnyékmásolata szolgáltatás)
 
-Tekintse meg a [VSS dokumentációját](https://docs.microsoft.com/windows-server/storage/file-server/volume-shadow-copy-service).
+Tekintse meg a [VSS dokumentációját](/windows-server/storage/file-server/volume-shadow-copy-service).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Backup áttekintése](backup-overview.md)
 - [Architektúra és összetevők Azure Backup](backup-architecture.md)

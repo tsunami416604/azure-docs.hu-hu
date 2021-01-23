@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f65ab02e06319519548eaa2c02120691a0ceef02
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 64fe4b8c217ec46cbb6dd046339c3ac65eebb121
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498557"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724677"
 ---
 # <a name="build-resilience-in-your-identity-and-access-management-infrastructure"></a>Hozzon létre rugalmasságot az identitás-és hozzáférés-kezelési infrastruktúrában
 
@@ -32,7 +32,7 @@ A dokumentumkészlet a következőhöz lett tervezve:
 
 * Identity Operations-csapatok
 
-Tekintse meg az alkalmazás- [fejlesztőknek](https://aka.ms/azureadresilience/developer) és [Azure ad B2C rendszereknek](resilience-b2c.md)szóló dokumentációt is.
+Tekintse meg az alkalmazás- [fejlesztőknek](./resilience-app-development-overview.md) és [Azure ad B2C rendszereknek](resilience-b2c.md)szóló dokumentációt is.
 
 ## <a name="what-is-resilience"></a>Mi az a rugalmasság?
 
@@ -44,7 +44,7 @@ A hitelesítési rendszer minden hívása megszakad, ha a hívás bármely össz
 
 A jogkivonat-alapú hitelesítési rendszerekben, például az Azure AD-ben a felhasználó alkalmazásának (ügyfelének) biztonsági jogkivonatot kell bekérnie az Identity rendszerből ahhoz, hogy hozzáférhessen egy alkalmazáshoz vagy más erőforráshoz. Az érvényességi időszak alatt az ügyfél többször is használhatja ugyanazt a tokent az alkalmazás eléréséhez.
 
-Amikor az alkalmazásnak bemutatott jogkivonat lejár, az alkalmazás elutasítja a jogkivonatot, és az ügyfélnek új jogkivonatot kell bekérnie az Azure AD-ből. Az új token beszerzése szükségessé teszi a felhasználói beavatkozást, például a hitelesítő adatok megadását vagy a hitelesítési rendszer egyéb követelményeinek teljesítését. A hosszú élettartamú tokenekkel rendelkező hitelesítési hívások gyakoriságának csökkentése csökkenti a szükségtelen interakciókat. Azonban a jogkivonat élettartamát a kevesebb házirend-értékelés által létrehozott kockázattal kell kiegyenlíteni. A jogkivonat-élettartamok kezelésével kapcsolatos további információkért tekintse meg ezt a cikket az [újrahitelesítéssel kapcsolatos kérések optimalizálásához](https://docs.microsoft.com/azure/active-directory/authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime).
+Amikor az alkalmazásnak bemutatott jogkivonat lejár, az alkalmazás elutasítja a jogkivonatot, és az ügyfélnek új jogkivonatot kell bekérnie az Azure AD-ből. Az új token beszerzése szükségessé teszi a felhasználói beavatkozást, például a hitelesítő adatok megadását vagy a hitelesítési rendszer egyéb követelményeinek teljesítését. A hosszú élettartamú tokenekkel rendelkező hitelesítési hívások gyakoriságának csökkentése csökkenti a szükségtelen interakciókat. Azonban a jogkivonat élettartamát a kevesebb házirend-értékelés által létrehozott kockázattal kell kiegyenlíteni. A jogkivonat-élettartamok kezelésével kapcsolatos további információkért tekintse meg ezt a cikket az [újrahitelesítéssel kapcsolatos kérések optimalizálásához](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md).
 
 ## <a name="ways-to-increase-resilience"></a>A rugalmasság növelésének módjai
 A következő ábra a rugalmasság növelését hat konkrét módon mutatja be. Az egyes módszereket részletesen ismertetjük a cikk következő lépések részében csatolt cikkekben.

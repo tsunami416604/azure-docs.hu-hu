@@ -14,12 +14,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 1/14/2020
-ms.openlocfilehash: d3bd63566daaf6e1d3e3343b5956d8a8d5fc8ea5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: b73e72969a851428034499d447ecb162a61aa9ab
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98224480"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725786"
 ---
 # <a name="understand-and-resolve-azure-sql-database-blocking-problems"></a>Azure SQL Database blokkolási problémák ismertetése és megoldása
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -282,7 +282,7 @@ Az alábbi táblázat a leggyakoribb tüneteket mutatja be a lehetséges okok mi
 
 A `wait_type` , a `open_transaction_count` és az oszlopok a `status` [sys.dm_exec_request](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql)által visszaadott adatokra hivatkoznak, és [sys.dm_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql)más oszlopokat is visszaadhatnak. A "feloldja?" az oszlop azt jelzi, hogy a blokkolás saját maga oldja-e fel a zárolást, vagy azt, hogy a munkamenetet le kell-e ölni a `KILL` parancs használatával. További információ: [kill (Transact-SQL)](/sql/t-sql/language-elements/kill-transact-sql).
 
-| Használati eset | Waittype | Open_Tran | Állapot | Oldja fel? | Egyéb tünetek |  
+| Eset | Waittype | Open_Tran | Állapot | Oldja fel? | Egyéb tünetek |  
 |:-|:-|:-|:-|:-|:-|--|
 | 1 | NEM NULL | >= 0 | futtatható | Igen, a lekérdezés befejeződése után. | Sys.dm_exec_sessions az **olvasások**, **cpu_time** és/vagy **memory_usage** oszlopok idővel növekednek. A lekérdezés időtartama magas, ha a művelet befejeződött. |
 | 2 | NULL | \>0 | alvó | Nem, de az SPID lehet leállítani. | A kiterjesztett esemény-munkamenetben láthatja az SPID-t, jelezve a lekérdezés időtúllépését vagy megszakítását. |
@@ -345,7 +345,7 @@ Ezeket a forgatókönyveket a következő forgatókönyvek fogják kibővíteni.
     Miután lekérdezést küldött a kiszolgálónak, minden alkalmazásnak azonnal le kell kérnie az összes eredményhalmaz befejezését. Ha egy alkalmazás nem kérdezi le az összes eredményt, a zárolások megmaradhatnak a táblákon, és blokkolhatja a többi felhasználót. Ha olyan alkalmazást használ, amely transzparens módon küldi el az SQL-utasításokat a kiszolgálónak, az alkalmazásnak be kell olvasnia az összes eredmény sort. Ha nem, akkor előfordulhat, hogy nem tudja feloldani a blokkolási problémát. A probléma elkerülése érdekében a rosszul viselkedő alkalmazások jelentéskészítésre vagy döntés-támogatási adatbázisra korlátozhatók.
     
     > [!NOTE]
-    > A Azure SQL Databasehoz csatlakozó alkalmazások esetében lásd: [útmutatás az újrapróbálkozási logikához](/azure/azure-sql/database/troubleshoot-common-connectivity-issues#retry-logic-for-transient-errors) . 
+    > A Azure SQL Databasehoz csatlakozó alkalmazások esetében lásd: [útmutatás az újrapróbálkozási logikához](./troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors) . 
     
     **Megoldás**: az alkalmazásnak újra kell írnia, hogy beolvassa az eredmény összes sorát a befejezéshez. Ez nem zárja ki az eltolás és a FETCH használatát egy lekérdezés [Order by záradékában](/sql/t-sql/queries/select-order-by-clause-transact-sql#using-offset-and-fetch-to-limit-the-rows-returned) a kiszolgálóoldali lapozás végrehajtásához.
 
@@ -369,7 +369,7 @@ Ezeket a forgatókönyveket a következő forgatókönyvek fogják kibővíteni.
     KILL 99
     ```
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Monitorozás és a teljesítmény finomhangolása az Azure SQL Database-ben és a felügyelt Azure SQL-példányban](/monitor-tune-overview.md)
 * [Teljesítmény figyelése a lekérdezési tároló használatával](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)
@@ -378,7 +378,7 @@ Ezeket a forgatókönyveket a következő forgatókönyvek fogják kibővíteni.
 * [Gyorsútmutató: Bővített események az SQL Serveren](/sql/relational-databases/extended-events/quick-start-extended-events-in-sql-server)
 * [Intelligent Insights AI használata az adatbázis teljesítményének figyeléséhez és hibakereséséhez](intelligent-insights-overview.md)
 
-## <a name="learn-more"></a>Tudjon meg többet
+## <a name="learn-more"></a>Részletek
 
 * [Azure SQL Database: a teljesítmény finomhangolásának javítása automatikus hangolással](https://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Improving-Performance-Tuning-with-Automatic-Tuning)
 * [Azure SQL Database teljesítmény javítása automatikus hangolással](https://channel9.msdn.com/Shows/Azure-Friday/Improve-Azure-SQL-Database-Performance-with-Automatic-Tuning)

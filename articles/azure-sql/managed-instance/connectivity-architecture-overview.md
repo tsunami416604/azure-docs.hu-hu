@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 10/22/2020
-ms.openlocfilehash: 9a35c0dc8a3b994b015d7a8d64f76f7e10d95a00
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 58563629b30e7be764732a9810162e1a0b1931e6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722402"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725836"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Felügyelt Azure SQL-példány kapcsolati architektúrája
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -107,11 +107,11 @@ Telepítse az SQL felügyelt példányt egy dedikált alhálózatban a virtuáli
 - **Elegendő IP-cím:** Az SQL felügyelt példány alhálózatának legalább 32 IP-címmel kell rendelkeznie. További információ: az [alhálózat méretének meghatározása az SQL felügyelt példányhoz](vnet-subnet-determine-size.md). Miután konfigurálta a felügyelt példányokat [a meglévő hálózatban](vnet-existing-add-subnet.md) , a konfigurálása után meg kell felelnie [az SQL felügyelt példányának hálózati követelményeinek](#network-requirements). Egyéb esetben hozzon létre egy [új virtuális hálózatot és alhálózatot](virtual-network-subnet-create-arm-template.md).
 
 > [!IMPORTANT]
-> Felügyelt példány létrehozásakor a rendszer egy hálózati leképezési házirendet alkalmaz az alhálózaton, hogy megakadályozza a nem megfelelő módosításokat a hálózatkezelés beállításában. Miután az utolsó példányt eltávolította az alhálózatból, a rendszer eltávolítja a hálózati leképezési házirendet is. Az alábbi szabályok csak tájékoztatási célokat szolgálnak, és az ARM template/PowerShell/CLI használatával nem telepíthetik őket. Ha a legújabb hivatalos sablont szeretné használni, bármikor [lekérheti azt a portálról](https://docs.microsoft.com/azure/azure-resource-manager/templates/quickstart-create-templates-use-the-portal).
+> Felügyelt példány létrehozásakor a rendszer egy hálózati leképezési házirendet alkalmaz az alhálózaton, hogy megakadályozza a nem megfelelő módosításokat a hálózatkezelés beállításában. Miután az utolsó példányt eltávolította az alhálózatból, a rendszer eltávolítja a hálózati leképezési házirendet is. Az alábbi szabályok csak tájékoztatási célokat szolgálnak, és az ARM template/PowerShell/CLI használatával nem telepíthetik őket. Ha a legújabb hivatalos sablont szeretné használni, bármikor [lekérheti azt a portálról](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Kötelező bejövő biztonsági szabályok a szolgáltatással segített alhálózat konfigurációjával
 
-| Név       |Port                        |Protokoll|Forrás           |Cél|Művelet|
+| Name       |Port                        |Protokoll|Forrás           |Cél|Művelet|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |felügyelet  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |MI ALHÁLÓZAT  |Engedélyezés |
 |            |9000, 9003                  |TCP     |CorpnetSaw       |MI ALHÁLÓZAT  |Engedélyezés |
@@ -121,14 +121,14 @@ Telepítse az SQL felügyelt példányt egy dedikált alhálózatban a virtuáli
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Kötelező kimenő biztonsági szabályok a szolgáltatással segített alhálózat konfigurációjával
 
-| Név       |Port          |Protokoll|Forrás           |Cél|Művelet|
+| Name       |Port          |Protokoll|Forrás           |Cél|Művelet|
 |------------|--------------|--------|-----------------|-----------|------|
 |felügyelet  |443, 12000    |TCP     |MI ALHÁLÓZAT        |AzureCloud |Engedélyezés |
 |mi_subnet   |Bármelyik           |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>A felhasználó által megadott útvonalak a szolgáltatással segített alhálózat konfigurációjával
 
-|Név|Címelőtag|Következő ugrás|
+|Name|Címelőtag|Következő ugrás|
 |----|--------------|-------|
 |alhálózat – vnetlocal|MI ALHÁLÓZAT|Virtuális hálózat|
 |Mi-13-64-11-nexthop-Internet|13.64.0.0/11|Internet|

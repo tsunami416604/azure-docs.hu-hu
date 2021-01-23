@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: overview
-ms.date: 01/20/2021
+ms.date: 01/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae7ae239493c999d98100bf9dee4f4f0183addf2
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: c6f4659b9ee809cc1f1caeb1cb9c0d626b1b3a3b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660813"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725654"
 ---
 # <a name="what-is-azure-active-directory-authentication"></a>Mi az Azure Active Directory hitelesítés?
 
@@ -29,6 +29,8 @@ Az Identity platform egyik fő funkciója a hitelesítő adatok ellenőrzése va
 * Jelszó nélküli hitelesítés
 
 Tekintse meg a rövid videót, amely további információkat nyújt ezekről a hitelesítési összetevőkről.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4KVJA]
 
 ## <a name="improve-the-end-user-experience"></a>A végfelhasználói élmény javítása
 
@@ -86,7 +88,7 @@ Ha jelszó nélküli metódussal jelentkezik be, a hitelesítő adatok olyan met
 
 Az Azure AD lehetővé teszi, hogy natív módon hitelesítse a jelszavak nélküli módszerekkel, így egyszerűbbé téve a felhasználók bejelentkezési élményét, és csökkentheti a támadások kockázatát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az első lépésekhez tekintse meg az [önkiszolgáló jelszó-visszaállítás (SSPR)][tutorial-sspr] és az [Azure ad multi-Factor Authentication][tutorial-azure-mfa]oktatóanyagát.
 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18036644dc4df51bfacc5019f70ae7694757f753
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 218208891cccb4f606a574a9c1c09f30c4ac0b11
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222241"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725078"
 ---
 # <a name="secure-external-access-to-microsoft-teams-sharepoint-and-onedrive-for-business"></a>Biztonságos külső hozzáférés a Microsoft Teams, a SharePoint és a OneDrive for Business szolgáltatáshoz 
 
@@ -77,7 +77,7 @@ Az együttműködési korlátozások között három lehetőség közül válasz
 
 ## <a name="govern-access-in-teams"></a>Hozzáférés szabályozása a Teams szolgáltatásban
 
-[A csapatok különbséget tesznek a külső felhasználók (a szervezeten kívüli személyek) és a vendég felhasználók (a vendég fiókok) között](https://docs.microsoft.com/microsoftteams/communicate-with-users-from-other-organizations?WT.mc_id=TeamsAdminCenterCSH). Az együttműködési beállításokat a [csapatok felügyeleti portálján](https://admin.teams.microsoft.com/company-wide-settings/external-communications) , a szervezeti szintű beállítások területen kezelheti. 
+[A csapatok különbséget tesznek a külső felhasználók (a szervezeten kívüli személyek) és a vendég felhasználók (a vendég fiókok) között](/microsoftteams/communicate-with-users-from-other-organizations?WT.mc_id=TeamsAdminCenterCSH%e2%80%8b). Az együttműködési beállításokat a [csapatok felügyeleti portálján](https://admin.teams.microsoft.com/company-wide-settings/external-communications) , a szervezeti szintű beállítások területen kezelheti. 
 
 > [!NOTE]
 > A Azure Active Directory külső identitások együttműködési beállításai szabályozzák a hatályos engedélyeket. Növelheti a csapatok korlátozásait, de nem csökkentheti őket az Azure AD-ben beállított értékekkel.
@@ -88,13 +88,13 @@ Az együttműködési korlátozások között három lehetőség közül válasz
 
 A külső hozzáférés csapatokban való kezelésével kapcsolatos további tudnivalókért tekintse meg a következő forrásokat.
 
-* [Külső hozzáférés kezelése a Microsoft Teams szolgáltatásban](https://docs.microsoft.com/microsoftteams/manage-external-access)
+* [Külső hozzáférés kezelése a Microsoft Teams szolgáltatásban](/microsoftteams/manage-external-access)
 
-* [Microsoft 365 Identity models és Azure Active Directory](https://docs.microsoft.com/microsoft-365/enterprise/about-microsoft-365-identity?view=o365-worldwide)
+* [Microsoft 365 Identity models és Azure Active Directory](/microsoft-365/enterprise/about-microsoft-365-identity?view=o365-worldwide)
 
-* [Identitási modellek és hitelesítés a Microsoft Teams szolgáltatásban](https://docs.microsoft.com/MicrosoftTeams/identify-models-authentication)
+* [Identitási modellek és hitelesítés a Microsoft Teams szolgáltatásban](/MicrosoftTeams/identify-models-authentication)
 
-* [A Microsoft Teams érzékenységi címkéi](https://docs.microsoft.com/MicrosoftTeams/sensitivity-labels)
+* [A Microsoft Teams érzékenységi címkéi](/MicrosoftTeams/sensitivity-labels)
 
 ## <a name="govern-access-in-sharepoint-and-onedrive"></a>Hozzáférés szabályozása a SharePointban és a OneDrive
 
@@ -102,9 +102,9 @@ A SharePoint-rendszergazdák számos beállítással érhetők el az együttműk
 
 ### <a name="integrating-sharepoint-and-one-drive-with-azure-ad-b2b"></a>A SharePoint és az egyik meghajtó integrálása az Azure AD B2B-vel
 
-A külső együttműködés szabályozásának általános stratégiájának részeként javasoljuk, hogy [engedélyezze a SharePoint-és OneDrive-integráció előzetes verzióját az Azure ad B2B-szel](https://docs.microsoft.com/sharepoint/sharepoint-azureb2b-integration-preview) .
+A külső együttműködés szabályozásának általános stratégiájának részeként javasoljuk, hogy [engedélyezze a SharePoint-és OneDrive-integráció előzetes verzióját az Azure ad B2B-szel](/sharepoint/sharepoint-azureb2b-integration-preview) .
 
-Az Azure AD B2B biztosítja a vendég felhasználók hitelesítését és felügyeletét. A SharePoint és a OneDrive integrációja esetén az [Azure ad B2B egyszeri PIN-kód](https://docs.microsoft.com/azure/active-directory/external-identities/one-time-passcode) a fájlok, mappák, listaelemek, dokumentumtárak és webhelyek külső megosztására használatos. Ez a szolgáltatás frissített élményt nyújt a meglévő [biztonságos külső megosztási felhasználói felületről](https://docs.microsoft.com/sharepoint/what-s-new-in-sharing-in-targeted-release).
+Az Azure AD B2B biztosítja a vendég felhasználók hitelesítését és felügyeletét. A SharePoint és a OneDrive integrációja esetén az [Azure ad B2B egyszeri PIN-kód](../external-identities/one-time-passcode.md) a fájlok, mappák, listaelemek, dokumentumtárak és webhelyek külső megosztására használatos. Ez a szolgáltatás frissített élményt nyújt a meglévő [biztonságos külső megosztási felhasználói felületről](/sharepoint/what-s-new-in-sharing-in-targeted-release).
 
 > [!NOTE]
 > Ha engedélyezi az Azure AD B2B-integráció előzetes verzióját, akkor a SharePoint és a OneDrive megosztását az Azure AD szervezeti kapcsolatok beállításai szabályozzák, például a **tagok meghívhatják** és **meghívhatják a vendégeket is**.
@@ -171,11 +171,11 @@ Nem javasoljuk, hogy engedélyezzen bárkire mutató hivatkozásokat. Ha ezt tes
 
 Ha többet szeretne megtudni a SharePoint külső elérésének szabályozásáról, tekintse meg a következőket:
 
-* [A SharePoint külső megosztásának áttekintése](https://docs.microsoft.com/sharepoint/external-sharing-overview)
+* [A SharePoint külső megosztásának áttekintése](/sharepoint/external-sharing-overview)
 
-* [SharePoint-és OneDrive-integráció az Azure AD B2B-vel](https://docs.microsoft.com/sharepoint/sharepoint-azureb2b-integration-preview)
+* [SharePoint-és OneDrive-integráció az Azure AD B2B-vel](/sharepoint/sharepoint-azureb2b-integration-preview)
 
-#### <a name="next-steps"></a>Következő lépések
+#### <a name="next-steps"></a>További lépések
 
 Tekintse meg a következő cikkeket az erőforrásokhoz való külső hozzáférés biztonságossá tételéhez. Javasoljuk, hogy a felsorolt sorrendben végezze el a műveleteket.
 

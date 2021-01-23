@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40738f8fcb14c48ccfe3bc7869e5176c4ab63165
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 202f2190e68b89d790c628248ae89f0cb274ff76
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222330"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725211"
 ---
 # <a name="3-create-a-security-plan-for-external-access"></a>3. biztonsági terv létrehozása külső hozzáféréshez 
 
@@ -93,7 +93,7 @@ A bejelentkezési feltételek az [Azure ad feltételes hozzáférésben](../cond
 | Magas kockázat| Többtényezős hitelesítés megkövetelése külső felhasználók számára |
 
 
-[A többtényezős hitelesítés jelenleg a bérlőben lévő B2B-felhasználókra is kényszeríthető](https://docs.microsoft.com/azure/active-directory/external-identities/b2b-tutorial-require-mfa). 
+[A többtényezős hitelesítés jelenleg a bérlőben lévő B2B-felhasználókra is kényszeríthető](../external-identities/b2b-tutorial-require-mfa.md). 
 
 **Felhasználó-és eszköz-alapú bejelentkezési feltételek**.
 
@@ -106,11 +106,11 @@ A bejelentkezési feltételek az [Azure ad feltételes hozzáférésben](../cond
 
 Ma az eszköz állapotának a Szabályzathoz való bemenetként való használatához az eszközt regisztrálni kell, vagy csatlakoztatni kell a bérlőhöz. 
 
-Az [Identity Protection kockázati alapú házirendjei](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-risk) használhatók. A problémákat azonban enyhíteni kell a felhasználó otthoni bérlője számára.
+Az [Identity Protection kockázati alapú házirendjei](../conditional-access/howto-conditional-access-policy-risk.md) használhatók. A problémákat azonban enyhíteni kell a felhasználó otthoni bérlője számára.
 
-A [hálózati telephelyek](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-location)esetében korlátozhatja az Ön tulajdonában lévő bármely IP-címtartomány elérését. Ezt akkor érdemes használni, ha csak külső partnereknek szeretne hozzáférni egy alkalmazáshoz, amíg a szervezeten belül vannak.
+A [hálózati telephelyek](../conditional-access/howto-conditional-access-policy-location.md)esetében korlátozhatja az Ön tulajdonában lévő bármely IP-címtartomány elérését. Ezt akkor érdemes használni, ha csak külső partnereknek szeretne hozzáférni egy alkalmazáshoz, amíg a szervezeten belül vannak.
 
-[További információ a feltételes hozzáférési szabályzatokról](https://docs.microsoft.com/azure/active-directory/conditional-access/overview).
+[További információ a feltételes hozzáférési szabályzatokról](../conditional-access/overview.md).
 
 ## <a name="document-access-review-policies"></a>Dokumentum-hozzáférési felülvizsgálati szabályzatok
 
@@ -126,13 +126,13 @@ Noha a szabályzatok az Ön igényeinek megfelelően testre szabhatók, vegye fi
 
 * **Jogosultságok kezelése – hozzáférési felülvizsgálatok**. A jogosultságok kezelése funkciójának használata a következőhöz:
 
-   * A [hozzáférési csomagok automatikusan lejárnak](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-access-package-lifecycle-policy), így a külső felhasználók hozzáférhetnek a mellékelt erőforrásokhoz.
+   * A [hozzáférési csomagok automatikusan lejárnak](../governance/entitlement-management-access-package-lifecycle-policy.md), így a külső felhasználók hozzáférhetnek a mellékelt erőforrásokhoz.
 
-   * Adja meg a hozzáférési felülvizsgálatok [szükséges felülvizsgálati gyakoriságát](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-access-reviews-create) .
+   * Adja meg a hozzáférési felülvizsgálatok [szükséges felülvizsgálati gyakoriságát](../governance/entitlement-management-access-reviews-create.md) .
 
-   * Ha [csatlakoztatott szervezeteket](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-organization) használ az összes felhasználó egyetlen partnertől való csoportosításához, akkor rendszeres felülvizsgálatokat ütemezhet a vállalat tulajdonosával és a partner képviselőjével.
+   * Ha [csatlakoztatott szervezeteket](../governance/entitlement-management-organization.md) használ az összes felhasználó egyetlen partnertől való csoportosításához, akkor rendszeres felülvizsgálatokat ütemezhet a vállalat tulajdonosával és a partner képviselőjével.
 
-* **Microsoft 365 csoportok**. Adja meg a [csoport lejárati szabályzatát](https://docs.microsoft.com/microsoft-365/solutions/microsoft-365-groups-expiration-policy?view=o365-worldwide) azon Microsoft 365 csoportok esetében, amelyekhez a külső felhasználókat meghívja. 
+* **Microsoft 365 csoportok**. Adja meg a [csoport lejárati szabályzatát](/microsoft-365/solutions/microsoft-365-groups-expiration-policy?view=o365-worldwide) azon Microsoft 365 csoportok esetében, amelyekhez a külső felhasználókat meghívja. 
 
 * **Egyéb beállítások**. Ha a külső felhasználók jogosultság-kezelési hozzáférési csomagokon vagy Microsoft 365-csoportokon kívül férnek hozzá, az üzleti folyamat beállításával tekintse át a fiókok inaktív vagy törölt állapotának ellenőrzését. Például:
 
@@ -146,9 +146,9 @@ Noha a szabályzatok az Ön igényeinek megfelelően testre szabhatók, vegye fi
 
 Most, hogy tudja, mit szeretne vezérelni, hogyan szeretné szabályozni az eszközöket a közös hozzáféréshez, valamint a szükséges bejelentkezési és hozzáférési felülvizsgálati szabályzatokat, eldöntheti, hogyan hajthatja végre a tervet. 
 
-Bizonyos funkciók, például a [jogosultságok kezelése](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview), csak prémium szintű Azure ad 2 (P2) licenccel érhetők el. Microsoft 365 E5 és az Office 365 E5 licencek tartalmazzák az Azure AD P2 licenceket. 
+Bizonyos funkciók, például a [jogosultságok kezelése](../governance/entitlement-management-overview.md), csak prémium szintű Azure ad 2 (P2) licenccel érhetők el. Microsoft 365 E5 és az Office 365 E5 licencek tartalmazzák az Azure AD P2 licenceket. 
 
-A Microsoft 365, az Office 365 és az Azure AD egyéb kombinációi is lehetővé teszik a külső felhasználók felügyeletét. További információ: [Information Protection](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-365-security-compliance-licensing-guidance) .
+A Microsoft 365, az Office 365 és az Azure AD egyéb kombinációi is lehetővé teszik a külső felhasználók felügyeletét. További információ: [Information Protection](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-365-security-compliance-licensing-guidance) .
 
 > [!NOTE]
 > A licencek felhasználónként vannak leképezve. Ezért az Azure AD P2 vagy Microsoft 365 E5 szintjén meghatározott felhasználók, például rendszergazdák és üzlettulajdonosok delegált hozzáférés-vezérlést használhatnak, anélkül, hogy a licenceket az összes felhasználó számára engedélyezné. Az első 50 000 külső felhasználó ingyenes. Ha nem engedélyezi a P2-licenceket a többi belső felhasználó számára, nem fogja tudni használni a jogosultság-kezelési funkciókat, például a hozzáférési csomagokat. 
@@ -159,7 +159,7 @@ Az Azure AD P2 és a Microsoft 365 E5 teljes körű biztonsági és irányítás
 
 ### <a name="provisioning-signing-in-reviewing-access-and-deprovisioning-bolded-entries-are-preferred-methods"></a>A kiépítés, a bejelentkezés, a hozzáférés áttekintése és a megszüntetés. A félkövérrel szedett bejegyzések előnyben részesített módszerek
 
-| Funkció| Külső felhasználók kiépítése| A bejelentkezési reqs betartatása.| Hozzáférés áttekintése| Hozzáférés megszüntetése |
+| Szolgáltatás| Külső felhasználók kiépítése| A bejelentkezési reqs betartatása.| Hozzáférés áttekintése| Hozzáférés megszüntetése |
 | - | - | - | - | - |
 | Azure AD B2B-együttműködés| Meghívás e-mailben, OTP, önkiszolgáló| | **Rendszeres felülvizsgálat partnerként**| Fiók eltávolítása<br>Bejelentkezés korlátozása |
 | Jogosultságok kezelése| **Felhasználó hozzáadása hozzárendelés vagy önkiszolgáló hozzáférés használatával**| | Hozzáférési felülvizsgálatok|**Hozzáférési csomag lejárta vagy eltávolítása**|
@@ -170,7 +170,7 @@ Az Azure AD P2 és a Microsoft 365 E5 teljes körű biztonsági és irányítás
 
  ### <a name="access-to-resources-bolded-entries-are-preferred-methods"></a>Hozzáférés az erőforrásokhoz. A félkövérrel szedett bejegyzések előnyben részesített módszerek
 
-|Funkció | ALKALMAZÁS-& erőforrás-hozzáférés| SharePoint & OneDrive-hozzáférés| Csapatok hozzáférése| E-mail & dokumentumok biztonsága |
+|Szolgáltatás | ALKALMAZÁS-& erőforrás-hozzáférés| SharePoint & OneDrive-hozzáférés| Csapatok hozzáférése| E-mail & dokumentumok biztonsága |
 | - |-|-|-|-|
 | Jogosultságok kezelése| **Felhasználó hozzáadása hozzárendelés vagy önkiszolgáló hozzáférés használatával**| **Hozzáférési csomagok**| **Hozzáférési csomagok**|  |
 | Office 365-csoport| | Hozzáférés a csoporthoz tartozó hely (ek) hez (és kapcsolódó tartalomhoz)| Hozzáférés a csoportokhoz tartozó csapatokhoz (és kapcsolódó tartalmakhoz)|  |
@@ -180,7 +180,7 @@ Az Azure AD P2 és a Microsoft 365 E5 teljes körű biztonsági és irányítás
 
 ### <a name="entitlement-management"></a>Jogosultságok kezelése 
 
-A [jogosultsági felügyeleti hozzáférési csomagok](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-access-package-create) lehetővé teszik a csoportokhoz, csoportokhoz, alkalmazásokhoz és SharePoint-webhelyekhez való hozzáférés kiépítését és megszüntetését. Meghatározhatja, hogy mely csatlakoztatott szervezetek számára engedélyezett a hozzáférés, hogy az önkiszolgáló kérelmek engedélyezettek-e, és hogy milyen jóváhagyási munkafolyamatokra van szükség (ha van ilyen) a hozzáférés biztosításához. Annak biztosítása érdekében, hogy a hozzáférés ne maradjon a szükségesnél hosszabb ideig, meghatározhatja a lejárati házirendeket és az egyes hozzáférési csomagok hozzáférési felülvizsgálatait. 
+A [jogosultsági felügyeleti hozzáférési csomagok](../governance/entitlement-management-access-package-create.md) lehetővé teszik a csoportokhoz, csoportokhoz, alkalmazásokhoz és SharePoint-webhelyekhez való hozzáférés kiépítését és megszüntetését. Meghatározhatja, hogy mely csatlakoztatott szervezetek számára engedélyezett a hozzáférés, hogy az önkiszolgáló kérelmek engedélyezettek-e, és hogy milyen jóváhagyási munkafolyamatokra van szükség (ha van ilyen) a hozzáférés biztosításához. Annak biztosítása érdekében, hogy a hozzáférés ne maradjon a szükségesnél hosszabb ideig, meghatározhatja a lejárati házirendeket és az egyes hozzáférési csomagok hozzáférési felülvizsgálatait. 
 
  
 
@@ -190,7 +190,7 @@ Az Azure AD P1-sel és a Microsoft 365 E3-mel is robusztus irányítás érhető
 ### <a name="provisioning-signing-in-reviewing-access-and-deprovisioning"></a>Kiépítés, bejelentkezés, hozzáférés áttekintése és megszüntetés
 
 
-|Funkció | Külső felhasználók kiépítése| Bejelentkezési követelmények betartatása| Hozzáférés áttekintése| Hozzáférés megszüntetése |
+|Szolgáltatás | Külső felhasználók kiépítése| Bejelentkezési követelmények betartatása| Hozzáférés áttekintése| Hozzáférés megszüntetése |
 | - |-|-|-|-|
 | Azure AD B2B-együttműködés| **Meghívás e-mailben, OTP, önkiszolgáló**| Közvetlen B2B-összevonás| **Rendszeres felülvizsgálat partnerként**| Fiók eltávolítása<br>Bejelentkezés korlátozása |
 | Microsoft-vagy Office 365-csoportok| | | | A csoport lejárata vagy törlése.<br>Eltávolítás a csoportból. |
@@ -200,7 +200,7 @@ Az Azure AD P1-sel és a Microsoft 365 E3-mel is robusztus irányítás érhető
 
  ### <a name="access-to-resources"></a>Hozzáférés az erőforrásokhoz.
 
-|Funkció | ALKALMAZÁS-& erőforrás-hozzáférés| SharePoint & OneDrive-hozzáférés| Csapatok hozzáférése| E-mail & dokumentumok biztonsága |
+|Szolgáltatás | ALKALMAZÁS-& erőforrás-hozzáférés| SharePoint & OneDrive-hozzáférés| Csapatok hozzáférése| E-mail & dokumentumok biztonsága |
 | - |-|-|-|-|
 | Microsoft-vagy Office 365-csoportok| | **Hozzáférés a (z) csoporthoz (és a kapcsolódó tartalomhoz) tartozó helyekhez**|**Hozzáférés a Microsoft 365 csoporthoz (és a kapcsolódó tartalomhoz) tartozó csapatokhoz**|  |
 | Bizalmassági címkék| | A hozzáférés manuális osztályozása és korlátozása| A hozzáférés manuális besorolása és korlátozása.| Manuális besorolás a korlátozáshoz és a titkosításhoz |
@@ -208,7 +208,7 @@ Az Azure AD P1-sel és a Microsoft 365 E3-mel is robusztus irányítás érhető
 | További módszerek| | A SharePoint-webhely hozzáférését a biztonsági csoportokkal való részletességgel korlátozhatja.<br>Közvetlen megosztás letiltása.| **Külső meghívók korlátozása a csapatokból**|  |
 
 
-### <a name="next-steps"></a>Következő lépések
+### <a name="next-steps"></a>További lépések
 
 Tekintse meg a következő cikkeket az erőforrásokhoz való külső hozzáférés biztonságossá tételéhez. Javasoljuk, hogy a felsorolt sorrendben végezze el a műveleteket.
 

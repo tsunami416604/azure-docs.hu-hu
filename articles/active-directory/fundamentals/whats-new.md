@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6da9f27e25fa5543f949716824f54af2b9f1ad1
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 12b5c95b67f8fada29914d3a8de559280e6145f8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132545"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724220"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>A Azure Active Directory újdonságai
 
@@ -100,7 +100,7 @@ Mostantól automatizálhatja az újonnan integrált alkalmazások felhasználói
 - [Bizagi Studio a digitális folyamatautomatizáláshoz](../saas-apps/bizagi-studio-for-digital-process-automation-provisioning-tutorial.md)
 - [CybSafe](../saas-apps/cybsafe-provisioning-tutorial.md)
 - [GroupTalk](../saas-apps/grouptalk-provisioning-tutorial.md)
-- [PaperCut Cloud Print Management](/azure/active-directory/saas-apps/papercut-cloud-print-management-provisioning-tutorial)
+- [PaperCut Cloud Print Management](../saas-apps/papercut-cloud-print-management-provisioning-tutorial.md)
 - [Parsable](../saas-apps/parsable-provisioning-tutorial.md)
 - [Shopify Plus](../saas-apps/shopify-plus-provisioning-tutorial.md)
 
@@ -191,7 +191,7 @@ Az alkalmazás az Azure AD-katalógusban való listázásához olvassa el a rés
 **Szolgáltatás kategóriája:** RBAC  
 A **termék képességei:** Access Control
  
- A [delegált vállalati alkalmazások felügyeletének egyéni RBAC szerepkörei](../users-groups-roles/roles-custom-available-permissions.md) már nyilvános előzetes verzióban érhetők el. Ezek az új engedélyek az alkalmazás regisztrációjának egyéni szerepköreire épülnek, ami lehetővé teszi a rendszergazdák számára elérhető hozzáférés részletes szabályozását. Az idő múlásával az Azure AD felügyeletének delegálására további engedélyek lesznek közzétéve.
+ A [delegált vállalati alkalmazások felügyeletének egyéni RBAC szerepkörei](../roles/custom-available-permissions.md) már nyilvános előzetes verzióban érhetők el. Ezek az új engedélyek az alkalmazás regisztrációjának egyéni szerepköreire épülnek, ami lehetővé teszi a rendszergazdák számára elérhető hozzáférés részletes szabályozását. Az idő múlásával az Azure AD felügyeletének delegálására további engedélyek lesznek közzétéve.
 
 Néhány gyakori delegálási forgatókönyv:
 - az SAML-alapú egyszeri bejelentkezés alkalmazásaihoz hozzáférő felhasználók és csoportok hozzárendelése
@@ -247,7 +247,7 @@ Mostantól automatizálhatja az újonnan integrált alkalmazások felhasználói
 - [Tic-tac Mobile](../saas-apps/tic-tac-mobile-provisioning-tutorial.md)
 - [Visibly](../saas-apps/visibly-provisioning-tutorial.md)
 
-További információ: a [felhasználók üzembe helyezésének automatizálása SaaS-alkalmazásokhoz az Azure ad-vel](../manage-apps/user-provisioning.md).
+További információ: a [felhasználók üzembe helyezésének automatizálása SaaS-alkalmazásokhoz az Azure ad-vel](../app-provisioning/user-provisioning.md).
  
 ---
 
@@ -301,7 +301,7 @@ A **termék képességei:** Eszközök életciklusának kezelése
  
 Korábban a/BitLocker-végponton keresztül helyreállíthatja a BitLocker-kulcsokat. Végül a végpont elavulttá válik, és az ügyfeleknek meg kell kezdeniük az API-t, amely most már a/informationProtection. alá esik 
 
-A módosítások megjelenítéséhez tekintse meg a [BitLocker helyreállítási API](https://docs.microsoft.com/graph/api/resources/bitlockerrecoverykey?view=graph-rest-beta) -t a dokumentáció frissítéseihez.
+A módosítások megjelenítéséhez tekintse meg a [BitLocker helyreállítási API](/graph/api/resources/bitlockerrecoverykey?view=graph-rest-beta) -t a dokumentáció frissítéseihez.
 
 ---
 
@@ -603,7 +603,7 @@ Az optimális felhasználói élmény érdekében javasoljuk, hogy a feltételes
  
 Mostantól automatizálhatja az újonnan integrált alkalmazások felhasználói fiókjainak létrehozását, frissítését és törlését:
 
-- [Coda](../saas-apps/coda-provisioning-tutorial.md)
+- [CODA](../saas-apps/coda-provisioning-tutorial.md)
 - [Cofense Recipient Sync](../saas-apps/cofense-provision-tutorial.md)
 - [InVision](../saas-apps/invision-provisioning-tutorial.md)
 - [myday](../saas-apps/myday-provision-tutorial.md)
@@ -1126,4 +1126,3 @@ Ha a szervezete az Azure MFA SDK-t használja, a 2020 szeptember 30-ig kell átt
 
 ---
 
- 

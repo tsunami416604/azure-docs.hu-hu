@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c45b362bc37df71346fc3b635c8ae4a51f62cdc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: de01788c01d4d6dedd9563faaaac07bff30bbd97
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919584"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724759"
 ---
 # <a name="build-resilience-in-your-hybrid-architecture"></a>Hozzon létre rugalmasságot a hibrid architektúrában
 
@@ -82,7 +82,7 @@ Az átmenő hitelesítés megvalósításához tekintse meg a következő forrá
 
 Az összevonás magában foglalja az Azure AD és az összevonási szolgáltatás közötti megbízhatósági kapcsolat létrehozását, amely magában foglalja a végpontok, a jogkivonat-aláíró tanúsítványok és más metaadatok cseréjét. Amikor egy kérelem érkezik az Azure AD szolgáltatásba, beolvassa a konfigurációt, és átirányítja a felhasználót a konfigurált végpontokra. Ezen a ponton a felhasználó kommunikál az összevonási szolgáltatással, ami az Azure AD által érvényesített SAML-jogcímet bocsát ki. 
 
-A következő ábra egy vállalati Active Directory összevonási szolgáltatások (AD FS) (AD FS) topológiáját mutatja be, amely a redundáns összevonási és webalkalmazás-proxykiszolgálók több helyszíni adatközpontban való üzembe helyezését is tartalmazza. Ez a konfiguráció a vállalati hálózati infrastruktúra összetevőire támaszkodik, például a DNS-t, a hálózati terheléselosztást a Geo-affinitási képességekkel, tűzfalakkal stb. Az összes helyszíni összetevő és kapcsolat nem alkalmas a meghibásodásra. További információért látogasson el a [AD FS Capacity tervezési dokumentációba](https://docs.microsoft.com/windows-server/identity/ad-fs/design/planning-for-ad-fs-server-capacity) .
+A következő ábra egy vállalati Active Directory összevonási szolgáltatások (AD FS) (AD FS) topológiáját mutatja be, amely a redundáns összevonási és webalkalmazás-proxykiszolgálók több helyszíni adatközpontban való üzembe helyezését is tartalmazza. Ez a konfiguráció a vállalati hálózati infrastruktúra összetevőire támaszkodik, például a DNS-t, a hálózati terheléselosztást a Geo-affinitási képességekkel, tűzfalakkal stb. Az összes helyszíni összetevő és kapcsolat nem alkalmas a meghibásodásra. További információért látogasson el a [AD FS Capacity tervezési dokumentációba](/windows-server/identity/ad-fs/design/planning-for-ad-fs-server-capacity) .
 
 > [!NOTE]
 >  Az összevonás a legnagyobb számú helyszíni függőséggel rendelkezik, ezért a legtöbb lehetséges meghibásodási pont. Az ábrán látható AD FS a többi helyszíni Identitáskezelő hasonló tervezési szempontokat mutat be a magas rendelkezésre állás, a méretezhetőség és a feladatátvétel érdekében.
@@ -99,9 +99,9 @@ Ha összevont hitelesítési stratégiát hajt végre, vagy rugalmasabban szeret
 
 * [Az Azure AD összevonás kompatibilitási listája](../hybrid/how-to-connect-fed-compatibility.md)
 
-* Kövesse a [AD FS Capacity tervezési dokumentációját](https://docs.microsoft.com/windows-server/identity/ad-fs/design/planning-for-ad-fs-server-capacity)
+* Kövesse a [AD FS Capacity tervezési dokumentációját](/windows-server/identity/ad-fs/design/planning-for-ad-fs-server-capacity)
 
-* [AD FS üzembe helyezése az Azure IaaS](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs)
+* [AD FS üzembe helyezése az Azure IaaS](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs)
 
 * [PHS engedélyezése](../hybrid/tutorial-phs-backup.md) az összevonással együtt
 

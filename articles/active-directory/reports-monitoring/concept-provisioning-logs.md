@@ -17,12 +17,12 @@ ms.date: 1/19/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c7d02b48d30fa558f8fd12f92705046dab74057
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: deab3460baf9c46e2a3073eb41b738b0e7ad586f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624235"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726301"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Jelentések kiépítési jelentései a Azure Active Directory portálon (előzetes verzió)
 
@@ -48,7 +48,7 @@ Ez a témakör áttekintést nyújt a kiépítési naplókról. A következő k�
 ### <a name="who-can-access-the-data"></a>Ki férhet hozzá az adatokhoz?
 * Az alkalmazás tulajdonosai megtekinthetik a saját alkalmazások naplóit
 * Felhasználók a biztonsági rendszergazda, a biztonsági olvasó, a jelentéskészítő, az alkalmazás rendszergazdája és a Felhőbeli alkalmazás rendszergazdai szerepkörei
-* Egyéni szerepkörbe tartozó felhasználók a [provisioningLogs engedéllyel](https://docs.microsoft.com/azure/active-directory/roles/custom-enterprise-app-permissions#full-list-of-permissions)
+* Egyéni szerepkörbe tartozó felhasználók a [provisioningLogs engedéllyel](../roles/custom-enterprise-app-permissions.md#full-list-of-permissions)
 * Globális rendszergazdák
 
 
@@ -93,7 +93,7 @@ További mezőket jeleníthet meg, vagy eltávolíthatja a már megjelenített m
 
 Részletesebb információkhoz jelöljön ki egy elemet a listanézet nézetben.
 
-![Részletes információk](./media/concept-provisioning-logs/steps.png "Szűrés")
+![Részletes információk](./media/concept-provisioning-logs/steps.png "Szűrő")
 
 
 ## <a name="filter-provisioning-activities"></a>Kiépítési tevékenységek szűrése
@@ -102,12 +102,12 @@ A kiépítési adatait szűrheti. Egyes szűrési értékek dinamikusan vannak f
 Az alapértelmezett nézetben a következő szűrőket választhatja ki:
 
 - Identitás
-- Dátum
+- Date
 - Állapot
 - Művelet
 
 
-![Szűrők hozzáadása](./media/concept-provisioning-logs/default-filter.png "Szűrés")
+![Szűrők hozzáadása](./media/concept-provisioning-logs/default-filter.png "Szűrő")
 
 Az **Identity** szűrő segítségével megadhatja a nevet vagy az Ön számára fontos identitást. Ez az identitás lehet felhasználó, csoport, szerepkör vagy más objektum. Az objektum neve vagy azonosítója alapján kereshet. Az azonosító forgatókönyv szerint változik. Ha például egy objektumot kiépít az Azure AD-ből a SalesForce-be, a forrás azonosítója az Azure AD-beli felhasználó objektumazonosítóa, míg a TargetID a Salesforce felhasználójának azonosítója. Ha a munkahelyről a Active Directoryre való kiépítés után a forrás azonosítója a munkanap munkavégző alkalmazottjának azonosítója. Vegye figyelembe, hogy a felhasználó neve nem mindig szerepel az Identity oszlopban. Mindig egy azonosító lesz. 
 
@@ -198,7 +198,7 @@ A **lépések** lapon az objektum kiépítéséhez szükséges lépések szerepe
 
 
 
-![Képernyőfelvétel: a lépések lap, amely a kiépítési lépéseket mutatja be.](./media/concept-provisioning-logs/steps.png "Szűrés")
+![Képernyőfelvétel: a lépések lap, amely a kiépítési lépéseket mutatja be.](./media/concept-provisioning-logs/steps.png "Szűrő")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>Hibák és javaslatok
@@ -301,7 +301,7 @@ Az alábbi táblázat segítségével jobban megismerheti, Hogyan oldhatók meg 
 |EntrySynchronizationSkipped | A kiépítési szolgáltatás sikeresen lekérdezte a forrás rendszerét, és azonosította a felhasználót. A felhasználóra vonatkozóan nem történt további művelet, és a rendszer kihagyta őket. A kihagyás oka az lehet, hogy a felhasználó hatókörén kívül esik, vagy a felhasználó már meglévő a célszámítógépen, és nincs szükség további módosításokra.|
 |SystemForCrossDomainIdentityManagementMultipleEntriesInResponse| Amikor lekéréses kérelmet küld egy felhasználó vagy csoport beolvasására, a válaszban több felhasználót vagy csoportot kaptunk. A rendszer csak egy felhasználót vagy csoportot várt a válaszban. Ha [például](../app-provisioning/use-scim-to-provision-users-and-groups.md#get-group)lekéri egy csoport lekérését, és egy szűrőt biztosít a tagok kizárásához, és a scim-végpont visszaadja a tagokat, ezt a hibát fogjuk kidobni.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A felhasználó kiépítési állapotának megtekintése](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)
 * [Hiba történt a felhasználók Azure AD Gallery-alkalmazásba való konfigurálásának beállításakor](../app-provisioning/application-provisioning-config-problem.md)

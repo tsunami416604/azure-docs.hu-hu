@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f83e5584f8f9c6823e1259cb5e6034d8b13ae3a6
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 7eb168610f10ac336084ac04c19679d26fc913e0
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222377"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725244"
 ---
 # <a name="securing-external-access-with-groups"></a>A külső hozzáférés biztonságossá tétele a csoportokkal 
 
@@ -48,13 +48,13 @@ Ahogy fejleszti a csoport stratégiáját az erőforrásaihoz való külső hozz
 
    * *Alapértelmezés szerint minden bérlői tag létrehozhat Azure ad biztonsági csoportokat*. 
 
-      * [A portálon nem rendszergazdák számára is korlátozhatja a hozzáférést](../develop/howto-restrict-your-app-to-a-set-of-users.md) , és letilthatja a csoport létrehozásának képességét a [PowerShellben.](../users-groups-roles/groups-troubleshooting.md) 
+      * [A portálon nem rendszergazdák számára is korlátozhatja a hozzáférést](../develop/howto-restrict-your-app-to-a-set-of-users.md) , és letilthatja a csoport létrehozásának képességét a [PowerShellben.](../enterprise-users/groups-troubleshooting.md) 
 
-      * [Az önkiszolgáló csoportok felügyeletét Azure Active Directory is beállíthatja](../users-groups-roles/groups-self-service-management.md). 
+      * [Az önkiszolgáló csoportok felügyeletét Azure Active Directory is beállíthatja](../enterprise-users/groups-self-service-management.md). 
 
    * *Alapértelmezés szerint minden felhasználó létrehozhat M365-csoportokat és-csoportokat a bérlőben lévő összes (belső és külső) felhasználóhoz való csatlakozáshoz*. 
 
-      * Egy adott biztonsági csoport tagjaira [korlátozhatja Microsoft 365 csoportok létrehozását](https://docs.microsoft.com/microsoft-365/solutions/manage-creation-of-groups?view=o365-worldwide) . A beállítás konfigurálásához használja a Windows PowerShellt. 
+      * Egy adott biztonsági csoport tagjaira [korlátozhatja Microsoft 365 csoportok létrehozását](/microsoft-365/solutions/manage-creation-of-groups?view=o365-worldwide) . A beállítás konfigurálásához használja a Windows PowerShellt. 
 
 * **Ki kell tudnia hívni a személyeket a csoportokra?** Lehet, hogy az összes csoporttagok hozzáadhatnak más tagokat, vagy csak a tulajdonosok tagokat adhatnak hozzá?
 
@@ -80,7 +80,7 @@ A dinamikus csoportok akár felhasználókat, akár eszközöket is tartalmazhat
 
 ![Képernyőkép a dinamikus tagsági szabályok konfigurálásáról.](media/secure-external-access/4-dynamic-membership-rules.png)
 
-További információ a dinamikus csoportokról: [dinamikus csoport létrehozása vagy frissítése Azure Active Directoryban.](../users-groups-roles/groups-create-rule.md)
+További információ a dinamikus csoportokról: [dinamikus csoport létrehozása vagy frissítése Azure Active Directoryban.](../enterprise-users/groups-create-rule.md)
 
 ### <a name="do-not-use-groups-for-multiple-purposes"></a>Csoportok ne legyenek több célra felhasználva
 
@@ -117,7 +117,7 @@ Microsoft 365 csoportok használatával Microsoft 365 erőforrások, például e
 
 ## <a name="azure-ad-security-groups"></a>Azure AD biztonsági csoportok 
 
-Az [Azure ad biztonsági csoportjai](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups) felhasználókat vagy eszközöket tartalmazhatnak, és használhatók a következőhöz való hozzáférés kezelésére 
+Az [Azure ad biztonsági csoportjai](./active-directory-manage-groups.md) felhasználókat vagy eszközöket tartalmazhatnak, és használhatók a következőhöz való hozzáférés kezelésére 
 
 * Azure-erőforrások, például Microsoft 365 alkalmazások, egyéni alkalmazások és szolgáltatott szoftverek (SaaS), például a Dropbox ServiceNow.
 
@@ -127,11 +127,11 @@ Az [Azure ad biztonsági csoportjai](https://docs.microsoft.com/azure/active-dir
 
 Az Azure AD biztonsági csoportjai a következőket is felhasználhatják:
 
-* rendeljen licenceket olyan szolgáltatásokhoz, mint például a M365, a Dynamics 365, valamint a nagyvállalati mobilitás és biztonság. További információ: [csoport alapú licencelés](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal).
+* rendeljen licenceket olyan szolgáltatásokhoz, mint például a M365, a Dynamics 365, valamint a nagyvállalati mobilitás és biztonság. További információ: [csoport alapú licencelés](./active-directory-licensing-whatis-azure-portal.md).
 
-* emelt szintű engedélyek kiosztása. További információ: [felhőalapú csoportok használata a szerepkör-hozzárendelések kezeléséhez (előzetes](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-groups-concept)verzió). 
+* emelt szintű engedélyek kiosztása. További információ: [felhőalapú csoportok használata a szerepkör-hozzárendelések kezeléséhez (előzetes](../roles/groups-concept.md)verzió). 
 
-Egy csoport létrehozásához [a Azure Portal](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal) navigáljon a Azure Active Directory, majd a csoportok elemre. A [PowerShell-parancsmagok](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-settings-v2-cmdlets)használatával Azure ad-beli biztonsági csoportokat is létrehozhat. 
+Egy csoport létrehozásához [a Azure Portal](./active-directory-groups-create-azure-portal.md) navigáljon a Azure Active Directory, majd a csoportok elemre. A [PowerShell-parancsmagok](../enterprise-users/groups-settings-v2-cmdlets.md)használatával Azure ad-beli biztonsági csoportokat is létrehozhat. 
 
 > [!NOTE]
 > Egy biztonsági csoport akár 1500 alkalmazás hozzárendelésére is használható, de még nem. 
@@ -146,17 +146,17 @@ Egy csoport létrehozásához [a Azure Portal](https://docs.microsoft.com/azure/
 
 A hibrid szervezetek helyszíni infrastruktúrával és Azure AD-alapú felhőalapú infrastruktúrával is rendelkeznek. Számos, Active Directoryt használó hibrid szervezet hozza létre a helyszíni biztonsági csoportokat, és szinkronizálja őket a felhőbe. Ennek a módszernek a használatával csak a helyszíni környezetben lévő felhasználók adhatók hozzá a biztonsági csoportokhoz.
 
-A helyszíni **infrastruktúrát a biztonsági rések elleni védelem érdekében felhasználhatja a Microsoft 365 bérlőhöz való hozzáféréshez**. Útmutatásért tekintse [meg a helyszíni támadások elleni Microsoft 365 védelmét](https://aka.ms/protectm365) ismertető témakört.
+A helyszíni **infrastruktúrát a biztonsági rések elleni védelem érdekében felhasználhatja a Microsoft 365 bérlőhöz való hozzáféréshez**. Útmutatásért tekintse [meg a helyszíni támadások elleni Microsoft 365 védelmét](./protect-m365-from-on-premises-attacks.md) ismertető témakört.
 
 ## <a name="microsoft-365-groups"></a>Microsoft 365 csoportok
 
-[Microsoft 365 csoportok](https://docs.microsoft.com/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide) a M365 összes hozzáférését biztosító alapszintű tagsági szolgáltatás. Ezek a [Azure Portal](https://portal.azure.com/)vagy a [M365-portálról](https://admin.microsoft.com/)hozhatók létre. Egy M365-csoport létrehozásakor hozzáférést biztosít az együttműködéshez használt erőforrások csoportjához. Az erőforrások teljes listájáért tekintse [meg a rendszergazdák Microsoft 365 csoportok áttekintése](https://docs.microsoft.com/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide) című témakört.
+[Microsoft 365 csoportok](/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide) a M365 összes hozzáférését biztosító alapszintű tagsági szolgáltatás. Ezek a [Azure Portal](https://portal.azure.com/)vagy a [M365-portálról](https://admin.microsoft.com/)hozhatók létre. Egy M365-csoport létrehozásakor hozzáférést biztosít az együttműködéshez használt erőforrások csoportjához. Az erőforrások teljes listájáért tekintse [meg a rendszergazdák Microsoft 365 csoportok áttekintése](/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide) című témakört.
 
 A M365-csoportok a következő árnyalatokkal rendelkeznek a szerepköreik számára
 
 * **Tulajdonosok** – a tulajdonosok tulajdonosai hozzáadhatnak vagy eltávolíthatnak tagokat, és egyedi engedélyekkel rendelkezhetnek, mint például a beszélgetések törlésének lehetősége a megosztott Beérkezett fájlok mappából vagy a csoport beállításainak módosítása. A csoport tulajdonosai átnevezhetik a csoportot, frissíthetik a leírást vagy a képet.
 
-* **Tagok** – a tagok hozzáférhetnek a csoport összes tagjához, de nem módosíthatják a csoportok beállításait. Alapértelmezés szerint a csoporttagok meghívhatják a vendégeket a csoportba való csatlakozásra, de [ezt a beállítást is szabályozhatja](https://docs.microsoft.com/microsoft-365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide).
+* **Tagok** – a tagok hozzáférhetnek a csoport összes tagjához, de nem módosíthatják a csoportok beállításait. Alapértelmezés szerint a csoporttagok meghívhatják a vendégeket a csoportba való csatlakozásra, de [ezt a beállítást is szabályozhatja](/microsoft-365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide).
 
 * **Vendég** -csoportos vendégek a szervezeten kívüli tagok. A vendégek alapértelmezés szerint bizonyos korlátokkal rendelkeznek a Teams szolgáltatásban.
 
@@ -170,7 +170,7 @@ Kiválaszthatja az e-mail aliast, az adatvédelmet, valamint azt, hogy engedély
 
 A telepítés után hozzáadhat tagokat, és konfigurálhatja az e-mailek használatának beállításait stb.
 
-### <a name="next-steps"></a>Következő lépések
+### <a name="next-steps"></a>További lépések
 
 Tekintse meg a következő cikkeket az erőforrásokhoz való külső hozzáférés biztonságossá tételéhez. Javasoljuk, hogy a felsorolt sorrendben végezze el a műveleteket.
 

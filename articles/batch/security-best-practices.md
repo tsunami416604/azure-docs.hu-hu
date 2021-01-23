@@ -3,12 +3,12 @@ title: A Batch biztonsági és megfelelőségi ajánlott eljárásai
 description: Ismerje meg az ajánlott eljárásokat és hasznos tippeket a Azure Batch-megoldásokkal való biztonság fokozásához.
 ms.date: 12/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: b9732ffb810a1038a6f402a46fa8b809f180f0a8
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 6ec4a1d89ebaa9318986fc0d51e832652ba51683
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802286"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98723812"
 ---
 # <a name="batch-security-and-compliance-best-practices"></a>A Batch biztonsági és megfelelőségi ajánlott eljárásai
 
@@ -137,8 +137,8 @@ A Batch számítási csomópontjainak alapértelmezés szerint két lemeze van: 
 
 A további biztonság érdekében titkosítsa ezeket a lemezeket az Azure Disk Encryption képességeinek egyikével:
 
-- [Felügyelt lemezes titkosítás a platform által felügyelt kulcsokkal](../virtual-machines/windows/disk-encryption.md#platform-managed-keys)
-- [Titkosítás a gazdagépen a platform által felügyelt kulcs használatával](../virtual-machines/windows/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)
+- [Felügyelt lemezes titkosítás a platform által felügyelt kulcsokkal](../virtual-machines/disk-encryption.md#platform-managed-keys)
+- [Titkosítás a gazdagépen a platform által felügyelt kulcs használatával](../virtual-machines/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)
 - [Azure Disk Encryption](disk-encryption.md)
 
 ## <a name="securely-access-services-from-compute-nodes"></a>Biztonságos hozzáférés szolgáltatások a számítási csomópontokból

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: faa334c21e23ecddad287846d34aaf0d72af66cc
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 6d476be7a417cfc31cca76d3409074aaaa281a56
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602184"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724610"
 ---
 # <a name="build-resilience-with-device-states"></a>Rugalmasság kiépítése az eszközök állapotával
 
@@ -40,11 +40,11 @@ Ha egy PRT-t használ az alkalmazáshoz való hozzáférés kérelmezéséhez, a
 
   Ha a szervezetben a Windows régebbi verziói vannak, frissítse ezeket az eszközöket a Windows 10 használatára.
 
-* A felhasználói böngésző hozzáférésének szabványosítása a [Microsoft Edge](https://docs.microsoft.com/deployedge/microsoft-edge-security-identity) vagy a Google Chrome olyan [támogatott](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji) [bővítményekkel](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb) való használatához, amelyek zökkenőmentes egyszeri bejelentkezést engedélyeztek a webes alkalmazásoknak a PRT használatával.
+* A felhasználói böngésző hozzáférésének szabványosítása a [Microsoft Edge](/deployedge/microsoft-edge-security-identity) vagy a Google Chrome olyan [támogatott](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji) [bővítményekkel](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb) való használatához, amelyek zökkenőmentes egyszeri bejelentkezést engedélyeztek a webes alkalmazásoknak a PRT használatával.
 
-* A személyes vagy vállalati tulajdonú iOS-és Android-eszközök esetében telepítse a [Microsoft Authenticator alkalmazást](../user-help/user-help-auth-app-overview.md). A többtényezős hitelesítés és a jelszó nélküli bejelentkezési képességek mellett a Microsoft Authenticator alkalmazás lehetővé teszi az egyszeri bejelentkezést a natív alkalmazáson keresztül, felügyelt [hitelesítéssel](../develop/brokered-auth.md) , kevesebb hitelesítési kéréssel a végfelhasználók számára.
+* A személyes vagy vállalati tulajdonú iOS-és Android-eszközök esetében telepítse a [Microsoft Authenticator alkalmazást](../user-help/user-help-auth-app-overview.md). A többtényezős hitelesítés és a jelszó nélküli bejelentkezési képességek mellett a Microsoft Authenticator alkalmazás lehetővé teszi az egyszeri bejelentkezést a natív alkalmazáson keresztül, felügyelt [hitelesítéssel](../develop/msal-android-single-sign-on.md) , kevesebb hitelesítési kéréssel a végfelhasználók számára.
 
-* A személyes vagy vállalati tulajdonú iOS-és Android-eszközökön a [mobileszközök kezelése](https://docs.microsoft.com/mem/intune/apps/app-management) szolgáltatással kevesebb hitelesítési kérelemmel férhet hozzá a vállalati erőforrásokhoz. 
+* A személyes vagy vállalati tulajdonú iOS-és Android-eszközökön a [mobileszközök kezelése](/mem/intune/apps/app-management) szolgáltatással kevesebb hitelesítési kérelemmel férhet hozzá a vállalati erőforrásokhoz. 
 
 * [Használja az Apple-eszközökhöz készült Microsoft Enterprise SSO beépülő modult (előzetes verzió)](../develop/apple-sso-plugin.md). Ez regisztrálja az eszközt, és egyszeri bejelentkezést biztosít a böngészőben és a natív Azure AD-alkalmazásokban. 
 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6814cafcf6dafa6f007bdd9d3623d30ef079084
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 37c27e84f15a01a2d8832baae137518685de59a8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222445"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725441"
 ---
 # <a name="determine-your-security-posture-for-external-access"></a>A külső hozzáférés biztonsági helyzetének meghatározása 
 
@@ -69,11 +69,11 @@ A szervezete és a forgatókönyvei közül a következőket kell elvégeznie:
 
 * **Az alkalmazásokhoz, az adattartalomhoz és a tartalmakhoz való hozzáférés szabályozása**. Ez számos különböző módszerrel valósítható meg az [Azure ad](https://azure.microsoft.com/pricing/details/active-directory/) és a [Microsoft 365](https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans)verziójától függően. 
 
-* **Csökkentse a támadási felületet**. A [Kiemelt identitások kezelése](../privileged-identity-management/pim-configure.md), az [adatvesztés-megelőzés (DLP)](https://docs.microsoft.com/exchange/security-and-compliance/data-loss-prevention/data-loss-prevention) és a [titkosítási képességek](https://docs.microsoft.com/exchange/security-and-compliance/data-loss-prevention/data-loss-prevention) csökkentik a támadási felületet.
+* **Csökkentse a támadási felületet**. A [Kiemelt identitások kezelése](../privileged-identity-management/pim-configure.md), az [adatvesztés-megelőzés (DLP)](/exchange/security-and-compliance/data-loss-prevention/data-loss-prevention) és a [titkosítási képességek](/exchange/security-and-compliance/data-loss-prevention/data-loss-prevention) csökkentik a támadási felületet.
 
 * **A megfelelőség megerősítéséhez rendszeresen tekintse át a tevékenységeket és a** naplót. A jogosultsági felügyeleten keresztül delegálhatja a hozzáférési döntéseket az üzleti tulajdonosoknak, míg a hozzáférési felülvizsgálatok lehetővé teszik a folyamatos hozzáférés rendszeres időközönkénti megerősítését. Az adatelemzési címkékkel rendelkező automatizált adatok besorolásával automatizálható a bizalmas tartalmak titkosítása, így az alkalmazottak a felhasználók számára könnyen betartják a felhasználókat.
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 Tekintse meg a következő cikkeket az erőforrásokhoz való külső hozzáférés biztonságossá tételéhez. Javasoljuk, hogy a felsorolt sorrendben végezze el a műveleteket.
 
@@ -96,4 +96,3 @@ Tekintse meg a következő cikkeket az erőforrásokhoz való külső hozzáfér
 9. [Biztonságos hozzáférés a Microsoft Teams, a OneDrive és a SharePoint rendszerhez](9-secure-access-teams-sharepoint.md)
  
 
- 

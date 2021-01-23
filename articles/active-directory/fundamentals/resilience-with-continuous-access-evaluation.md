@@ -13,16 +13,16 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ad36c2a7f47948d9362b85e78355e6046cda703
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1a12cc3299fbb5916afba48d2608024f28999634
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919560"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724627"
 ---
 # <a name="build-resilience-by-using-continuous-access-evaluation"></a>Rugalmasság kiépítése a folyamatos hozzáférés kiértékelésének használatával
 
-A [folyamatos hozzáférés kiértékelése](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-continuous-access-evaluation) (CAE) lehetővé teszi az Azure ad-alkalmazások számára az olyan kritikus eseményekre való előfizetést, amelyeket később kiértékel és érvényesíteni lehet. Ide tartozik a következő események kiértékelése:
+A [folyamatos hozzáférés kiértékelése](../conditional-access/concept-continuous-access-evaluation.md) (CAE) lehetővé teszi az Azure ad-alkalmazások számára az olyan kritikus eseményekre való előfizetést, amelyeket később kiértékel és érvényesíteni lehet. Ide tartozik a következő események kiértékelése:
 
 * A törölt vagy letiltott felhasználói fiók
 
@@ -48,11 +48,11 @@ A Microsoft együttműködik az iparággal olyan [szabványok kidolgozásában](
 
 ## <a name="how-do-i-implement-cae"></a>Hogyan a CAE implementálása?
 
-* [Engedélyezze a CAE](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-continuous-access-evaluation) -t az Azure ad biztonsági konfigurációjában.
+* [Engedélyezze a CAE](../conditional-access/concept-continuous-access-evaluation.md) -t az Azure ad biztonsági konfigurációjában.
 
-* Győződjön meg arról, hogy a szervezete Microsoft Office natív alkalmazások [kompatibilis verzióit](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-continuous-access-evaluation) használja.
+* Győződjön meg arról, hogy a szervezete Microsoft Office natív alkalmazások [kompatibilis verzióit](../conditional-access/concept-continuous-access-evaluation.md) használja.
 
-* [Optimalizálja az újrahitelesítésre vonatkozó utasításokat](https://docs.microsoft.com/azure/active-directory/authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime).
+* [Optimalizálja az újrahitelesítésre vonatkozó utasításokat](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md).
 
  
 ## <a name="next-steps"></a>További lépések

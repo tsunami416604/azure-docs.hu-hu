@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/22/2020
-ms.openlocfilehash: 01af7b251c9ce3bfebb87016c85ea3efd9c0e8ac
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: dbd7937667a3c4d5af9f13e15cdd4ff2081241f0
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928766"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98723880"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>A Azure Data Factory és az Azure hatáskörébe való kapcsolódás
 
@@ -99,9 +99,9 @@ A Data Factory és a hatáskörébe való integráció a következő szakaszokba
 
 | Adattárolási rendszerek | Forrásként támogatott | Fogadóként támogatott |
 | ------------------- | ------------------- | ----------------- |
-| ADLS Gen1 (JSON-támogatás nélkül) | Igen | Igen (csak nem bináris másolat) |
-| ADLS Gen2 (JSON-támogatás nélkül) | Igen | Igen |
-| Azure-Blob (JSON-támogatás nélkül) | Igen | Igen |
+| ADLS Gen1 | Igen | Igen (csak nem bináris másolat) |
+| ADLS Gen2 | Igen | Igen |
+| Azure-blob | Igen | Igen |
 | Azure Cosmos DB (SQL API) | Igen | Igen |
 | Azure Cosmos DB (Mongo API) | Igen | Igen |
 | Azure Cognitive Search | Igen | Igen |
@@ -212,7 +212,7 @@ A következő példában egy Azure Data Lake Gen2-erőforrást állítunk elő e
 
 :::image type="content" source="./media/how-to-link-azure-data-factory/adf-resource-set-lineage.png" alt-text="Az erőforrás-készlet kifejlődését ábrázoló képernyőkép." lightbox="./media/how-to-link-azure-data-factory/adf-resource-set-lineage.png":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A katalógus Lineage felhasználói útmutatója](catalog-lineage-user-guide.md)
 - [Hivatkozás az Azure-beli adatmegosztásra a Lineage számára](how-to-link-azure-data-share.md)

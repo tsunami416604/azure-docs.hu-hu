@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c556940ace02f2e7bf0354e67d32df7c5c6714e
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: eb01a3e0fc5bc11a4d3de62b16aafb7dd308e34a
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032762"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724271"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Melyek a Azure Active Directory alapértelmezett felhasználói engedélyei?
 Az Azure Active Directoryban (Azure AD-ban) minden felhasználóhoz alapértelmezett engedélyek készlete tartozik. A felhasználók hozzáférése a felhasználó típusától, a [szerepkörük hozzárendeléseitől](active-directory-users-assign-role-azure-portal.md), valamint az egyes objektumok tulajdonosainak. Ez a cikk az alapértelmezett engedélyeket ismerteti, valamint összehasonlítja a tag- és vendégfelhasználók alapértelmezett beállításait. Az alapértelmezett felhasználói engedélyeket csak az Azure AD felhasználói beállításaiban lehet módosítani.
@@ -63,7 +63,7 @@ A vendég felhasználók alapértelmezett engedélyei a következő módokon kor
 
 Engedély | Magyarázat beállítása
 ---------- | ------------
-Vendég felhasználói hozzáférési korlátozások (előzetes verzió) | Ha ezt a beállítást szeretné beállítani a **vendég felhasználók számára, a tagoknak alapértelmezés szerint ugyanaz a hozzáférése, mint a tag** felhasználói engedélyeket.<p>Ha ezt a beállítást szeretné beállítani a **vendég felhasználói hozzáféréshez, a saját címtárobjektumok tulajdonságaira és tagságára korlátozódik** , alapértelmezés szerint csak a saját felhasználói profiljára korlátozza a vendég hozzáférését. A többi felhasználóhoz való hozzáférés már nem engedélyezett, még akkor is, ha az egyszerű felhasználónév, a ObjectId vagy a megjelenítendő név alapján keres. A csoportokhoz való hozzáféréshez, beleértve a csoportok tagságát is, már nem engedélyezett.<p>**Megjegyzés**: Ez a beállítás nem akadályozza meg, hogy egyes Microsoft 365 szolgáltatások, például a Microsoft Teams összevont csoportjaihoz hozzáférjenek. További információért tekintse meg a [Microsoft Teams vendég hozzáférését](https://docs.microsoft.com/MicrosoftTeams/guest-access) ismertető témakört.<p>A vendég felhasználók továbbra is hozzáadhatók a rendszergazdai szerepkörökhöz az engedély beállításaitól függetlenül.
+Vendég felhasználói hozzáférési korlátozások (előzetes verzió) | Ha ezt a beállítást szeretné beállítani a **vendég felhasználók számára, a tagoknak alapértelmezés szerint ugyanaz a hozzáférése, mint a tag** felhasználói engedélyeket.<p>Ha ezt a beállítást szeretné beállítani a **vendég felhasználói hozzáféréshez, a saját címtárobjektumok tulajdonságaira és tagságára korlátozódik** , alapértelmezés szerint csak a saját felhasználói profiljára korlátozza a vendég hozzáférését. A többi felhasználóhoz való hozzáférés már nem engedélyezett, még akkor is, ha az egyszerű felhasználónév, a ObjectId vagy a megjelenítendő név alapján keres. A csoportokhoz való hozzáféréshez, beleértve a csoportok tagságát is, már nem engedélyezett.<p>**Megjegyzés**: Ez a beállítás nem akadályozza meg, hogy egyes Microsoft 365 szolgáltatások, például a Microsoft Teams összevont csoportjaihoz hozzáférjenek. További információért tekintse meg a [Microsoft Teams vendég hozzáférését](/MicrosoftTeams/guest-access) ismertető témakört.<p>A vendég felhasználók továbbra is hozzáadhatók a rendszergazdai szerepkörökhöz az engedély beállításaitól függetlenül.
 Vendégek küldhetnek meghívót | Ha ezt a beállítást választja, az Igen lehetőséget választva a vendégek más vendégeket is meghívhatnak. További információért lásd: [meghívások delegálása B2B-együttműködéshez](../external-identities/delegate-invitations.md#configure-b2b-external-collaboration-settings) .
 Tagok küldhetnek meghívót | Ha ezt a beállítást Igen értékre állítja, a címtár nem rendszergazdai tagjai meghívhatják a vendégeket. További információért lásd: [meghívások delegálása B2B-együttműködéshez](../external-identities/delegate-invitations.md#configure-b2b-external-collaboration-settings) .
 A vendégmeghívó szerepkörű rendszergazdák és felhasználók küldhetnek meghívót | Ha ezt a beállítást az Igen értékre állítja, a "vendég meghívó" szerepkörben a rendszergazdák és a felhasználók meghívhatják a vendégeket. Ha az Igen értékre van állítva, akkor a vendég meghívó szerepkörben lévő felhasználók továbbra is meghívhatják a vendégeket, függetlenül attól, hogy a tagok meghívhatják a beállításokat. További információért lásd: [meghívások delegálása B2B-együttműködéshez](../external-identities/delegate-invitations.md#assign-the-guest-inviter-role-to-a-user) .
@@ -140,7 +140,7 @@ A felhasználók a következő műveleteket hajthatják végre a tulajdonos csop
 | Microsoft. Directory/csoportok/visszaállítás | Csoportok visszaállítása a Azure Active Directoryban. |
 | Microsoft. Directory/csoportok/beállítások/frissítés | A groups. Settings tulajdonság frissítése Azure Active Directoryban. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha többet szeretne megtudni a vendég felhasználói hozzáférési korlátozásokról, tekintse meg a következő témakört: a [vendég hozzáférési engedélyeinek korlátozása (előzetes verzió) Azure Active Directory](../enterprise-users/users-restrict-guest-permissions.md).
 * További információ az Azure AD-rendszergazdai szerepkörök hozzárendeléséről: [felhasználó társítása rendszergazdai szerepkörökhöz Azure Active Directory](active-directory-users-assign-role-azure-portal.md)

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97893dece068dfdde85159f734095401288231d2
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: ecddb950c06c9f8e61f31e104051f5e3b3640ae5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201348"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725010"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>Microsoft 365 védelme a helyszíni támadásoktól
 
@@ -60,7 +60,7 @@ A fentiekben ismertetett veszélyforrás-vektorok kezeléséhez javasoljuk, hogy
 
      *  Csak az Azure által felügyelt munkaállomások használatával érhető el.
 
-Ezek korlátozott használati fiókok. **A Microsoft 365 rendszergazdai jogosultságokkal nem rendelkező helyszíni fiókoknak kell lenniük.** További információ: [Microsoft 365 rendszergazdai szerepkörök áttekintése](https://docs.microsoft.com/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide).
+Ezek korlátozott használati fiókok. **A Microsoft 365 rendszergazdai jogosultságokkal nem rendelkező helyszíni fiókoknak kell lenniük.** További információ: [Microsoft 365 rendszergazdai szerepkörök áttekintése](/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide).
 Tekintse meg a [Azure Active Directory Microsoft 365 szerepkörei](../roles/m365-workload-docs.md)című témakört is.
 
 *  **Eszközök kezelése Microsoft 365ról.** Az Azure AD JOIN és a felhőalapú mobileszköz-kezelés (MDM) használatával megkerülheti a helyszíni eszközkezelés infrastruktúrájának függőségeit, amelyek veszélyeztethetik az eszköz-és biztonsági vezérlőket.
@@ -82,7 +82,7 @@ Az Azure AD-ben az olyan Kiemelt szerepkörökkel rendelkező felhasználók, mi
 
 * Csak felhőalapú fiókokat használjon az Azure AD-hez és Microsoft 365 Kiemelt szerepkörökhöz. d
 
-* Az Microsoft 365 és az Azure AD felügyeletéhez emelt szintű jogosultságú hozzáférési [eszközök](https://docs.microsoft.com/security/compass/privileged-access-devices#device-roles-and-profiles) helyezhetők üzembe.
+* Az Microsoft 365 és az Azure AD felügyeletéhez emelt szintű jogosultságú hozzáférési [eszközök](/security/compass/privileged-access-devices#device-roles-and-profiles) helyezhetők üzembe.
 
 *  [Azure ad Privileged Identity Management](../privileged-identity-management/pim-configure.md) (PIM) üzembe helyezése az összes Kiemelt szerepkörrel rendelkező emberi fiókhoz (JIT), és erős hitelesítés szükséges a szerepkörök aktiválásához.
 
@@ -92,7 +92,7 @@ Az Azure AD-ben az olyan Kiemelt szerepkörökkel rendelkező felhasználók, mi
 
 * Helyezzen üzembe [vészhelyzeti hozzáférési fiókokat](../roles/security-emergency-access.md) , és ne használjon helyszíni jelszavas tárolókat a hitelesítő adatok tárolásához.
 
-További információ: a [privilegizált hozzáférés biztonságossá tétele](https://aka.ms/SPA), amely részletes útmutatást tartalmaz ebben a témakörben. Lásd még: [biztonságos hozzáférési eljárások a rendszergazdák számára az Azure ad-ben](../roles/security-planning.md).
+További információ: a [privilegizált hozzáférés biztonságossá tétele](/security/compass/overview), amely részletes útmutatást tartalmaz ebben a témakörben. Lásd még: [biztonságos hozzáférési eljárások a rendszergazdák számára az Azure ad-ben](../roles/security-planning.md).
 
 ### <a name="use-cloud-authentication"></a>Felhőalapú hitelesítés használata 
 
@@ -100,15 +100,15 @@ A hitelesítő adatok elsődleges támadási vektorok. A hitelesítő adatok biz
 
 * [Jelszóval nem rendelkező hitelesítés üzembe helyezése](../authentication/howto-authentication-passwordless-deployment.md): a lehető legnagyobb mértékben csökkentse a jelszavak használatát a jelszóval nem rendelkező hitelesítő adatok telepítésével. Ezek a hitelesítő adatok a felhőben natív módon kezelhetők és ellenőrizhetők. A következő lehetőségek közül választhat:
 
-   * [Vállalati Windows Hello](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/passwordless-strategy)
+   * [Vállalati Windows Hello](/windows/security/identity-protection/hello-for-business/passwordless-strategy)
 
    * [Authenticator alkalmazás](../authentication/howto-authentication-passwordless-phone.md)
 
    * [FIDO2 biztonsági kulcsok](../authentication/howto-authentication-passwordless-security-key-windows.md)
 
-* [Multi-Factor Authentication üzembe helyezése](https://aka.ms/deploymentplans/mfa): [több erős hitelesítő adat kiépítése az Azure ad MFA használatával](../fundamentals/resilience-in-credentials.md). Így a felhőalapú erőforrásokhoz való hozzáféréshez az Azure AD-ben felügyelt hitelesítő adatokra is szükség van, valamint egy helyi jelszó, amelyet kezelhet.
+* [Multi-Factor Authentication üzembe helyezése](../authentication/howto-mfa-getstarted.md): [több erős hitelesítő adat kiépítése az Azure ad MFA használatával](../fundamentals/resilience-in-credentials.md). Így a felhőalapú erőforrásokhoz való hozzáféréshez az Azure AD-ben felügyelt hitelesítő adatokra is szükség van, valamint egy helyi jelszó, amelyet kezelhet.
 
-   * További információ: [rugalmas hozzáférés-vezérlési kezelési stratégia létrehozása az Azure Active Directoryval](https://aka.ms/resilientaad).
+   * További információ: [rugalmas hozzáférés-vezérlési kezelési stratégia létrehozása az Azure Active Directoryval](./resilience-overview.md).
 
 **Korlátozások és kompromisszumok**
 
@@ -131,7 +131,7 @@ A kiépítés a felhasználói fiókok és csoportok alkalmazásokban vagy ident
 
    *  A címtárban lévő tallózási csoportok és egyéb tulajdonságok elérésének korlátozása. A külső együttműködési beállítások használatával korlátozhatja a vendég azon csoportok olvasását, amelyek nem tagjai a csoportnak. 
 
-    *   A Azure Portal elérésének letiltása. Ritkán szükséges kivételeket hozhat.  Hozzon létre egy feltételes hozzáférési szabályzatot, amely tartalmazza az összes vendéget és a külső felhasználókat, majd [a hozzáférés letiltásához alkalmazza a szabályzatot](/azure/role-based-access-control/conditional-access-azure-management). 
+    *   A Azure Portal elérésének letiltása. Ritkán szükséges kivételeket hozhat.  Hozzon létre egy feltételes hozzáférési szabályzatot, amely tartalmazza az összes vendéget és a külső felhasználókat, majd [a hozzáférés letiltásához alkalmazza a szabályzatot](../../role-based-access-control/conditional-access-azure-management.md). 
 
 * **Leválasztott erdők:** Az [Azure ad Cloud kiépítés](../cloud-provisioning/what-is-cloud-provisioning.md)használata. Ez lehetővé teszi a leválasztott erdőkhöz való csatlakozást, így nincs szükség erdők közötti kapcsolat vagy megbízhatósági kapcsolatok létrehozására, ami kibővítheti a helyszíni szabálysértés hatását. * 
  
@@ -143,7 +143,7 @@ A kiépítés a felhasználói fiókok és csoportok alkalmazásokban vagy ident
 
 A felhőalapú csoportok lehetővé teszik az együttműködés és a helyszíni infrastruktúrák elérését.
 
-* **Együttműködés:** A modern együttműködéshez Microsoft 365 csoportokat és Microsoft Teams-t használhat. Kiszerelheti a helyszíni terjesztési listát, és [frissítheti a terjesztési listát az outlookban Microsoft 365 csoportokba](https://docs.microsoft.com/office365/admin/manage/upgrade-distribution-lists?view=o365-worldwide).
+* **Együttműködés:** A modern együttműködéshez Microsoft 365 csoportokat és Microsoft Teams-t használhat. Kiszerelheti a helyszíni terjesztési listát, és [frissítheti a terjesztési listát az outlookban Microsoft 365 csoportokba](/office365/admin/manage/upgrade-distribution-lists?view=o365-worldwide).
 
 * **Hozzáférés:** Azure AD-beli biztonsági csoportokat vagy Microsoft 365 csoportokat használhat az Azure AD-beli alkalmazásokhoz való hozzáférés engedélyezéséhez.
 * **Office 365 licencelés:** A csoport alapú licencelés használatával kiépítheti az Office 365-et csak felhőalapú csoportok használatával. Ez leválasztja a csoporttagság felügyeletét a helyszíni infrastruktúrából.
@@ -156,7 +156,7 @@ Az átvétel magában foglalja a csoporttagság közvetlen kezelését a helysz�
 
 Az Azure AD-funkciókkal biztonságosan felügyelheti az eszközöket.
 
--   **Windows 10 rendszerű munkaállomások használata:** az [Azure ad-hez csatlakoztatott eszközök üzembe helyezése](../devices/azureadjoin-plan.md) Mdm-házirendekkel. A [Windows Autopilot](https://docs.microsoft.com/mem/autopilot/windows-autopilot) engedélyezése teljesen automatizált üzembe helyezési élményhez.
+-   **Windows 10 rendszerű munkaállomások használata:** az [Azure ad-hez csatlakoztatott eszközök üzembe helyezése](../devices/azureadjoin-plan.md) Mdm-házirendekkel. A [Windows Autopilot](/mem/autopilot/windows-autopilot) engedélyezése teljesen automatizált üzembe helyezési élményhez.
 
     -   A Windows 8,1 és a korábbi gépek elavultak.
 
@@ -164,7 +164,7 @@ Az Azure AD-funkciókkal biztonságosan felügyelheti az eszközöket.
 
     -   Használja a [Microsoft Intunet](https://www.microsoft.com/en/microsoft-365/enterprise-mobility-security/microsoft-intune) az összes Eszközkezelő számítási feladat forrásaként.
 
--   Az Microsoft 365 és az Azure AD felügyeletéhez emelt szintű jogosultságú hozzáférési [**eszközök helyezhetők üzembe**](https://docs.microsoft.com/security/compass/privileged-access-devices#device-roles-and-profiles) .
+-   Az Microsoft 365 és az Azure AD felügyeletéhez emelt szintű jogosultságú hozzáférési [**eszközök helyezhetők üzembe**](/security/compass/privileged-access-devices#device-roles-and-profiles) .
 
  ## <a name="workloads-applications-and-resources"></a>Munkaterhelések, alkalmazások és erőforrások 
 
@@ -181,19 +181,19 @@ Az Azure AD-funkciókkal biztonságosan felügyelheti az eszközöket.
 
 *  **Alkalmazás-és munkaterhelés-kiszolgálók**
 
-   * Azok az alkalmazások vagy erőforrások, amelyeket a szükséges kiszolgálók áttelepíthetnek az Azure IaaS, és a [Azure ad Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/overview) (Azure AD DS) használatával elválaszthatja a megbízhatóságot és a helyszíni ad-függőséget. A leválasztás eléréséhez az Azure AD DS használt virtuális hálózatok nem rendelkezhetnek a vállalati hálózatokhoz való csatlakozással.
+   * Azok az alkalmazások vagy erőforrások, amelyeket a szükséges kiszolgálók áttelepíthetnek az Azure IaaS, és a [Azure ad Domain Services](../../active-directory-domain-services/overview.md) (Azure AD DS) használatával elválaszthatja a megbízhatóságot és a helyszíni ad-függőséget. A leválasztás eléréséhez az Azure AD DS használt virtuális hálózatok nem rendelkezhetnek a vállalati hálózatokhoz való csatlakozással.
 
-   * Kövesse a [hitelesítő adatokra vonatkozó rétegek](https://aka.ms/TierModel)útmutatását. Az alkalmazás-kiszolgálók általában 1. szintű eszközöknek tekintendők.
+   * Kövesse a [hitelesítő adatokra vonatkozó rétegek](/security/compass/privileged-access-access-model#ADATM_BM)útmutatását. Az alkalmazás-kiszolgálók általában 1. szintű eszközöknek tekintendők.
 
  ## <a name="conditional-access-policies"></a>Feltételes hozzáférési szabályzatok
 
-Az Azure AD feltételes hozzáférés használatával a jeleket értelmezheti, és rajtuk alapuló hitelesítési döntéseket hozhat. További információkért lásd a [feltételes hozzáférés telepítési tervét.](https://aka.ms/deploymentplans/ca)
+Az Azure AD feltételes hozzáférés használatával a jeleket értelmezheti, és rajtuk alapuló hitelesítési döntéseket hozhat. További információkért lásd a [feltételes hozzáférés telepítési tervét.](../conditional-access/plan-conditional-access.md)
 
 * [Örökölt hitelesítési protokollok](../fundamentals/auth-sync-overview.md): ha lehetséges, a feltételes hozzáférés használatával [blokkolhatja az örökölt hitelesítési](../conditional-access/howto-conditional-access-policy-block-legacy.md) protokollokat. Emellett az alkalmazás szintjén tiltsa le az örökölt hitelesítési protokollokat az alkalmazásspecifikus konfigurációk használatával.
 
-   * Tekintse meg az [Exchange Online](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online#how-basic-authentication-works-in-exchange-online) és a [SharePoint Online](https://docs.microsoft.com/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps)adott részleteit.
+   * Tekintse meg az [Exchange Online](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online#how-basic-authentication-works-in-exchange-online) és a [SharePoint Online](/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps)adott részleteit.
 
-* A javasolt [identitás-és eszköz-hozzáférési konfigurációk](https://docs.microsoft.com/microsoft-365/security/office-365-security/identity-access-policies?view=o365-worldwide) implementálása.
+* A javasolt [identitás-és eszköz-hozzáférési konfigurációk](/microsoft-365/security/office-365-security/identity-access-policies?view=o365-worldwide) implementálása.
 
 * Ha olyan Azure AD-verziót használ, amely nem tartalmaz feltételes hozzáférést, győződjön meg arról, hogy az [Azure ad biztonsági alapértékeit](../fundamentals/concept-fundamentals-security-defaults.md)használja.
 
@@ -206,13 +206,13 @@ Ha úgy konfigurálta a környezetet, hogy az Microsoft 365t a helyszíni támad
 
 Figyelje meg a következő, a szervezetre vonatkozó forgatókönyvek melletti forgatókönyveket. Például proaktívan figyelnie kell az üzleti szempontból kritikus fontosságú alkalmazásaihoz és erőforrásaihoz való hozzáférést.
 
-* **Gyanús tevékenység**: az összes [Azure ad kockázati eseményt](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection#risk-detection-and-remediation) figyelni kell a gyanús tevékenységekre. A [Azure ad Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection) natív módon van integrálva a Azure Security Centerval.
+* **Gyanús tevékenység**: az összes [Azure ad kockázati eseményt](../identity-protection/overview-identity-protection.md#risk-detection-and-remediation) figyelni kell a gyanús tevékenységekre. A [Azure ad Identity Protection](../identity-protection/overview-identity-protection.md) natív módon van integrálva a Azure Security Centerval.
 
    * A hely alapú jelek zajos észlelésének elkerülése érdekében adja meg a [helyek nevű](../reports-monitoring/quickstart-configure-named-locations.md) hálózatot. 
 *  **Felhasználói entitás viselkedés-elemzési (UEBA) riasztásai** A UEBA használatával bepillantást nyerhet a anomáliák észlelésére.
-   * Microsoft Cloud app Discovery (MCAS) [a felhőben biztosít UEBA](https://docs.microsoft.com/cloud-app-security/tutorial-ueba).
+   * Microsoft Cloud app Discovery (MCAS) [a felhőben biztosít UEBA](/cloud-app-security/tutorial-ueba).
 
-   * A helyszíni [UEBA az Azure ATP-ből is integrálhatja](https://docs.microsoft.com/defender-for-identity/install-step2). A MCAS beolvassa a jeleket a Azure AD Identity Protectionból. 
+   * A helyszíni [UEBA az Azure ATP-ből is integrálhatja](/defender-for-identity/install-step2). A MCAS beolvassa a jeleket a Azure AD Identity Protectionból. 
 
 * **Vészhelyzeti hozzáférési fiókok tevékenység**: a [vészhelyzeti hozzáférési fiókokat](../roles/security-emergency-access.md) használó hozzáféréseket figyelni kell, és riasztásokat kell létrehozni a vizsgálatokhoz. A figyelésnek a következőket kell tartalmaznia: 
 
@@ -223,7 +223,7 @@ Figyelje meg a következő, a szervezetre vonatkozó forgatókönyvek melletti f
    * A csoporttagságok frissítései. 
 
    *    Alkalmazás-hozzárendelések. 
-* **Kiemelt szerepköri tevékenység**: [Az Azure ad PIM által létrehozott biztonsági riasztások](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-configure-security-alerts?tabs=new#security-alerts)konfigurálása és áttekintése.
+* **Kiemelt szerepköri tevékenység**: [Az Azure ad PIM által létrehozott biztonsági riasztások](../privileged-identity-management/pim-how-to-configure-security-alerts.md?tabs=new#security-alerts)konfigurálása és áttekintése.
     A rendszerjogosultságú szerepkörök a PIM-n kívüli közvetlen hozzárendelésének figyelése riasztások létrehozásával, amikor egy felhasználó közvetlenül van hozzárendelve.
 * **Azure ad-bérlőre kiterjedő konfigurációk**: a bérlői szintű konfigurációk bármilyen módosítása esetén riasztásokat kell készíteni a rendszeren. Ilyenek például a következők:
   *  Egyéni tartományok frissítése  
@@ -254,11 +254,11 @@ Meghatározhatja a naplózási tárolási és adatmegőrzési stratégiát, a te
 
    * Kockázati események 
 
-Az Azure AD [Azure monitor integrációt](../reports-monitoring/concept-activity-logs-azure-monitor.md) biztosít a bejelentkezési tevékenység naplójának és a naplóinak. A kockázati események [Microsoft Graph API](https://aka.ms/AzureADSecuredAzure/32b)-n keresztül tölthetők be. [Az Azure ad-naplókat az Azure monitor naplóiba is továbbíthatja](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md).
+Az Azure AD [Azure monitor integrációt](../reports-monitoring/concept-activity-logs-azure-monitor.md) biztosít a bejelentkezési tevékenység naplójának és a naplóinak. A kockázati események [Microsoft Graph API](/graph/api/resources/identityriskevent)-n keresztül tölthetők be. [Az Azure ad-naplókat az Azure monitor naplóiba is továbbíthatja](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md).
 
 * **A hibrid infrastruktúra operációs rendszerének biztonsági naplói.** Az összes hibrid identitás-infrastruktúra operációsrendszer-naplóját archiválni kell, és alaposan figyelni kell <br>A 0. rétegű rendszerek a felszín területtel kapcsolatos következményeiket tekintve. Ide tartoznak az alábbiak: 
 
-   *  Azure AD Connect. Az identitás-szinkronizálás figyeléséhez [Azure ad Connect Health](https://aka.ms/AzureADSecuredAzure/32e) kell telepíteni.
+   *  Azure AD Connect. Az identitás-szinkronizálás figyeléséhez [Azure ad Connect Health](../hybrid/whatis-azure-ad-connect.md) kell telepíteni.
 
    *  Alkalmazásproxy-ügynökök 
 

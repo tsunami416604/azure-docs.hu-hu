@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
-ms.openlocfilehash: be966a651df0c896ac7e1973d7783bb7fb686be3
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 3a02876234d43df2e98a3a4e60453fc3f1f74ef6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676501"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724169"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Azure SQL Database importálása vagy exportálása az Azure-szolgáltatások a kiszolgálóhoz való hozzáférésének engedélyezése nélkül
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ Ebből a cikkből megtudhatja, hogyan importálhat vagy exportálhat egy Azure S
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="create-the-azure-virtual-machine"></a>Az Azure-beli virtuális gép létrehozása
 
@@ -61,7 +61,7 @@ A következő lépések bemutatják, hogyan csatlakozhat a virtuális géphez t�
 5. Nyissa meg az RDP-fájlt a virtuális géphez való csatlakozáshoz.
 6. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget. Mac rendszerben szüksége van egy RDP-kliensre, mint például a Mac App Store áruházban elérhető [távoli asztali ügyfélre](https://apps.apple.com/app/microsoft-remote-desktop-10/id1295203466?mt=12).
 
-7. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót, majd kattintson **az OK gombra** .
+7. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót, majd kattintson **az OK gombra**.
 
 8. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Válassza az **Igen** vagy a **Folytatás** lehetőséget a kapcsolódás folytatásához.
 
@@ -77,7 +77,7 @@ Adja hozzá a virtuális gép nyilvános IP-címét a kiszolgáló tűzfalához.
 
 Az alábbi lépéseket követve hozzon létre egy kiszolgálói szintű IP-tűzfalszabály a virtuális gép nyilvános IP-címéhez, és lehetővé teszi a kapcsolódást a virtuális gépről.
 
-1. Válassza ki az **SQL-adatbázisok** elemet a bal oldali menüben, majd válassza ki az adatbázist az **SQL-adatbázisok** lapon. Megnyílik az adatbázis áttekintő lapja, amely megjeleníti a teljes kiszolgálónevet (például **servername.database.Windows.net** ), és további konfigurálási lehetőségeket biztosít.
+1. Válassza ki az **SQL-adatbázisok** elemet a bal oldali menüben, majd válassza ki az adatbázist az **SQL-adatbázisok** lapon. Megnyílik az adatbázis áttekintő lapja, amely megjeleníti a teljes kiszolgálónevet (például **servername.database.Windows.net**), és további konfigurálási lehetőségeket biztosít.
 
 2. Másolja ezt a teljes kiszolgálónevet, amelyet a kiszolgálóhoz és az adatbázisaihoz való csatlakozáskor használ.
 
@@ -89,7 +89,7 @@ Az alábbi lépéseket követve hozzon létre egy kiszolgálói szintű IP-tűzf
 
 4. Válassza az **ügyfél IP-** címének hozzáadása lehetőséget az eszköztáron, és adja hozzá a virtuális gép nyilvános IP-címét egy új kiszolgálói szintű IP-tűzfalszabály eléréséhez. A kiszolgálói szintű IP-tűzfalszabály egyetlen IP-cím vagy egy IP-címtartomány 1433-as portját nyithatja meg.
 
-5. Válassza a **Mentés** lehetőséget. A virtuális gép nyilvános IP-címéhez egy kiszolgálói szintű IP-tűzfalszabály jön létre, amely a kiszolgálón a 1433-es portot nyitja meg.
+5. Kattintson a **Mentés** gombra. A virtuális gép nyilvános IP-címéhez egy kiszolgálói szintű IP-tűzfalszabály jön létre, amely a kiszolgálón a 1433-es portot nyitja meg.
 
 6. A **tűzfalbeállítások** oldalának lezárása.
 
@@ -147,11 +147,11 @@ A legjobb teljesítmény eléréséhez használja a Azure Files. A SqlPackage a 
 
 A Cost csökkentése érdekében használja az Azure-blobokat, amelyek kisebbek, mint a prémium szintű Azure-fájlmegosztás. Azonban szükség van a másolására is [. BACPAC fájlt](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) a blob és a helyi fájlrendszer között az importálási vagy exportálási művelet előtt. Ennek eredményeképpen a folyamat hosszabb időt vesz igénybe.
 
-A feltöltéshez vagy a letöltéshez. BACPAC-fájlok: az [adatok átvitele a AzCopy és a blob Storage](../../storage/common/storage-use-azcopy-blobs.md)szolgáltatással, valamint az [adatok átvitele a AzCopy és a file Storage](../../storage/common/storage-use-azcopy-files.md)szolgáltatással.
+A feltöltéshez vagy a letöltéshez. BACPAC-fájlok: az [adatok átvitele a AzCopy és a blob Storage](../../storage/common/storage-use-azcopy-v10.md#transfer-data)szolgáltatással, valamint az [adatok átvitele a AzCopy és a file Storage](../../storage/common/storage-use-azcopy-files.md)szolgáltatással.
 
 A környezettől függően előfordulhat, hogy [konfigurálnia kell az Azure Storage-tűzfalakat és a virtuális hálózatokat](../../storage/common/storage-network-security.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az importált SQL Databasehoz való kapcsolódással és lekérdezéssel kapcsolatos információkért lásd: gyors útmutató [: Azure SQL Database: a SQL Server Management Studio használata a kapcsolódáshoz és az adatlekérdezéshez](connect-query-ssms.md).
 - További információ a BACPAC-fájlokkal végzett migrálásról az SQL Server ügyféltanácsadói csapat blogján: [Migrálás SQL Serverről az Azure SQL Database-re BACPAC-fájlokkal](https://techcommunity.microsoft.com/t5/DataCAT/Migrating-from-SQL-Server-to-Azure-SQL-Database-using-Bacpac/ba-p/305407).

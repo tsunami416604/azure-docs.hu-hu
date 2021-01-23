@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c96856c988cae891e64ddf460d61851102e4666c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 58ef522f5b048db0ef120625d9e894c8e14c070e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919533"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724407"
 ---
 # <a name="resilient-interfaces-with-external-processes"></a>Rugalmas felületek külső folyamatokkal
 
@@ -28,7 +28,7 @@ Ebből a cikkből megtudhatja, hogyan tervezze meg és implementálja a REST API
 
 ## <a name="ensure-correct-placement-of-the-apis"></a>Az API-k helyes elhelyezésének biztosítása
 
-A IEF-szabályzatok lehetővé teszik külső rendszer meghívását egy [REST API technikai profil](https://docs.microsoft.com/azure/active-directory-b2c/restful-technical-profile)használatával. A külső rendszereket nem a IEF futásidejű környezete vezérli, és egy lehetséges meghibásodási pont.
+A IEF-szabályzatok lehetővé teszik külső rendszer meghívását egy [REST API technikai profil](../../active-directory-b2c/restful-technical-profile.md)használatával. A külső rendszereket nem a IEF futásidejű környezete vezérli, és egy lehetséges meghibásodási pont.
 
 ### <a name="how-to-manage-external-systems-using-apis"></a>Külső rendszerek kezelése API-k használatával
 
@@ -38,11 +38,11 @@ A IEF-szabályzatok lehetővé teszik külső rendszer meghívását egy [REST A
 
 - Ha lehetséges, távolítsa el az API-hívásokat az előre hitelesített elérési útról. Ha nem tudja, szigorú védelmet kell biztosítania a szolgáltatásmegtagadási (DoS) és az elosztott szolgáltatásmegtagadási (DDoS) támadások ellen az API-k előtt. A támadók betölthetik a bejelentkezési oldalt, és megpróbálják elárasztani az API-t DoS-támadásokkal, és megbénult az alkalmazás. Ha például a bejelentkezéshez a CAPTCHA-t használja, a regisztráció folyamata segíthet.
 
-- A [beépített regisztrációs felhasználói folyamat API-összekötőit](https://docs.microsoft.com/azure/active-directory-b2c/api-connectors-overview) használhatja, ahol lehetséges a webes API-k integrálása, vagy az identitás-szolgáltatóval való bejelentkezés, vagy a felhasználó létrehozása előtt. Mivel a felhasználói folyamatokat már alaposan tesztelik, valószínű, hogy nem kell végrehajtania a felhasználói folyamatok működési szintjének, teljesítményének vagy méretezésének tesztelését. Továbbra is tesztelni kell az alkalmazásokat a funkciók, a teljesítmény és a skálázás érdekében.
+- A [beépített regisztrációs felhasználói folyamat API-összekötőit](../../active-directory-b2c/api-connectors-overview.md) használhatja, ahol lehetséges a webes API-k integrálása, vagy az identitás-szolgáltatóval való bejelentkezés, vagy a felhasználó létrehozása előtt. Mivel a felhasználói folyamatokat már alaposan tesztelik, valószínű, hogy nem kell végrehajtania a felhasználói folyamatok működési szintjének, teljesítményének vagy méretezésének tesztelését. Továbbra is tesztelni kell az alkalmazásokat a funkciók, a teljesítmény és a skálázás érdekében.
 
-- Az Azure AD REST API [technikai profiljai](https://docs.microsoft.com/azure/active-directory-b2c/restful-technical-profile) nem biztosítanak gyorsítótárazási viselkedést. Ehelyett a REST API-profil megvalósítja az újrapróbálkozási logikát és a szabályzatba beépített időtúllépést.
+- Az Azure AD REST API [technikai profiljai](../../active-directory-b2c/restful-technical-profile.md) nem biztosítanak gyorsítótárazási viselkedést. Ehelyett a REST API-profil megvalósítja az újrapróbálkozási logikát és a szabályzatba beépített időtúllépést.
 
-- Az adatírást igénylő API-k esetében a feladatokat egy adott háttérben dolgozó feldolgozó hajtja végre. A szolgáltatások, például az [Azure Queues](https://docs.microsoft.com/azure/storage/queues/storage-queues-introduction) használhatók. Ennek hatására a rendszer hatékonyan visszaállíthatja az API-t a házirend-végrehajtás teljesítményének növelése érdekében.  
+- Az adatírást igénylő API-k esetében a feladatokat egy adott háttérben dolgozó feldolgozó hajtja végre. A szolgáltatások, például az [Azure Queues](../../storage/queues/storage-queues-introduction.md) használhatók. Ennek hatására a rendszer hatékonyan visszaállíthatja az API-t a házirend-végrehajtás teljesítményének növelése érdekében.  
 
 ## <a name="api-error-handling"></a>API-hibakezelés
 
@@ -50,11 +50,11 @@ Mivel az API-k a Azure AD B2C rendszeren kívül vannak, a technikai profilban m
 
 ### <a name="how-to-gracefully-handle-api-errors"></a>API-hibák szabályosan történő kezelése
 
-- Az API-k különböző okok miatt sikertelenek lehetnek, így rugalmasan teheti az alkalmazást az ilyen hibákra. [Http-4XX hibaüzenet küldése](https://docs.microsoft.com/azure/active-directory-b2c/restful-technical-profile#returning-validation-error-message) , ha az API nem tudja befejezni a kérelmet. A Azure AD B2C szabályzatban próbálja meg szabályosan kezelni az API-k nem rendelkezésre állását, és lehet, hogy kisebb felhasználói élményt nyújt.
+- Az API-k különböző okok miatt sikertelenek lehetnek, így rugalmasan teheti az alkalmazást az ilyen hibákra. [Http-4XX hibaüzenet küldése](../../active-directory-b2c/restful-technical-profile.md#returning-validation-error-message) , ha az API nem tudja befejezni a kérelmet. A Azure AD B2C szabályzatban próbálja meg szabályosan kezelni az API-k nem rendelkezésre állását, és lehet, hogy kisebb felhasználói élményt nyújt.
 
-- Az [átmeneti hibák kezelése szabályosan](https://docs.microsoft.com/azure/active-directory-b2c/restful-technical-profile#error-handling). A REST API-profil lehetővé teszi a különböző [áramkör-megszakítók](https://docs.microsoft.com/azure/architecture/patterns/circuit-breaker)számára vonatkozó hibaüzenetek konfigurálását.
+- Az [átmeneti hibák kezelése szabályosan](../../active-directory-b2c/restful-technical-profile.md#error-handling). A REST API-profil lehetővé teszi a különböző [áramkör-megszakítók](/azure/architecture/patterns/circuit-breaker)számára vonatkozó hibaüzenetek konfigurálását.
 
-- Proaktívan figyelheti és használhatja a folyamatos integrációt/folyamatos kézbesítést (vel), elforgathatja az API-hozzáférési hitelesítő adatokat, például a [technikai profil motorja](https://docs.microsoft.com/azure/active-directory-b2c/restful-technical-profile)által használt jelszavakat és tanúsítványokat.
+- Proaktívan figyelheti és használhatja a folyamatos integrációt/folyamatos kézbesítést (vel), elforgathatja az API-hozzáférési hitelesítő adatokat, például a [technikai profil motorja](../../active-directory-b2c/restful-technical-profile.md)által használt jelszavakat és tanúsítványokat.
 
 ## <a name="api-management---best-practices"></a>API Management – ajánlott eljárások
 
@@ -64,7 +64,7 @@ A REST API-k üzembe helyezése és a REST-es technikai profil konfigurálása s
 
 - API Management (APIM) az API-k közzétételét, kezelését és elemzését végzi. A APIM a hitelesítést is kezeli, hogy biztonságos hozzáférést biztosítson a háttérbeli szolgáltatásokhoz és a szolgáltatásokhoz. API-átjáró használatával bővítheti az API-telepítéseket, a gyorsítótárazást és a terheléselosztást.
 
-- Javasoljuk, hogy az egyes API-k többszöri meghívása és az [Azure APIM API biztonságossá tétele](https://docs.microsoft.com/azure/active-directory-b2c/secure-api-management?tabs=app-reg-ga)helyett a megfelelő tokent kapja meg a felhasználói út elején.
+- Javasoljuk, hogy az egyes API-k többszöri meghívása és az [Azure APIM API biztonságossá tétele](../../active-directory-b2c/secure-api-management.md?tabs=app-reg-ga)helyett a megfelelő tokent kapja meg a felhasználói út elején.
 
 ## <a name="next-steps"></a>További lépések
 

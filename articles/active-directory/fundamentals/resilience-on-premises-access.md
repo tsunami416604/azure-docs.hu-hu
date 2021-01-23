@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8bfc3fb239f30911eddf0aa27496a465e36c486
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8fed78d7d2250d749ced7fe343689df76329b60d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919566"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724660"
 ---
 # <a name="build-resilience-in-application-access-with-application-proxy"></a>Rugalmasság kialakítása az alkalmazás-hozzáférés alkalmazás-proxyval való használatához
 
@@ -27,7 +27,7 @@ Az alkalmazásproxy az Azure AD egyik funkciója, amely lehetővé teszi a felha
 A felhasználók az Application proxyn keresztül közzétett URL-címen keresztül férhetnek hozzá a helyszíni erőforrásokhoz. A rendszer átirányítja őket az Azure AD bejelentkezési oldalára. Az Azure AD alkalmazásproxy szolgáltatása ezt követően egy jogkivonatot küld a vállalati hálózatban lévő alkalmazásproxy-összekötőnek, amely átadja a jogkivonatot a helyszíni Active Directory a hitelesített felhasználó ezután hozzáférhet a helyszíni erőforráshoz. Az alábbi ábrán az [Összekötők](../manage-apps/application-proxy-connectors.md) egy [összekötő csoportban](../manage-apps/application-proxy-connector-groups.md)jelennek meg.
 
 > [!IMPORTANT]
-> Ha az Application proxyn keresztül tesz közzé alkalmazásokat, meg kell valósítania [a kapacitás megtervezését és a megfelelő redundanciát az alkalmazásproxy-összekötők számára](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#capacity-planning).
+> Ha az Application proxyn keresztül tesz közzé alkalmazásokat, meg kell valósítania [a kapacitás megtervezését és a megfelelő redundanciát az alkalmazásproxy-összekötők számára](../manage-apps/application-proxy-connectors.md#capacity-planning).
 
 ![Az y alkalmazás architektúrájának ábrája](./media/resilience-on-prem-access/admin-resilience-app-proxy.png))
 

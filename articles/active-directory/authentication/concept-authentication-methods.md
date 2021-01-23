@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 12/14/2020
+ms.date: 01/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 24b29cfb1f58a61193f67ba924e583d4264dfc51
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 1459dd41fcdc30a29a5f9f93ec9704083767a342
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562123"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725671"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Milyen hitelesítési és ellenőrzési módszerek érhetők el az Azure Active Directoryban?
 
@@ -63,14 +63,14 @@ Egyes hitelesítési módszerek elsődleges tényezőként használhatók egy al
 
 A következő táblázat azt ismerteti, hogy mikor lehet hitelesítési módszert használni a bejelentkezési esemény során:
 
-| Módszer                         | Elsődleges hitelesítés | Másodlagos hitelesítés  |
+| Metódus                         | Elsődleges hitelesítés | Másodlagos hitelesítés  |
 |--------------------------------|:----------------------:|:-------------------------:|
 | Vállalati Windows Hello     | Igen                    | MFA                       |
 | A Microsoft Authenticator alkalmazás    | Igen (előzetes verzió)          | MFA és SSPR              |
 | FIDO2 biztonsági kulcs (előzetes verzió)   | Igen                    | MFA                       |
 | A hardver-tokenek ESKÜje (előzetes verzió) | Nem                     | MFA                       |
 | Az eskü szoftver jogkivonatai           | Nem                     | MFA                       |
-| SMS                            | Igen (előzetes verzió)          | MFA és SSPR              |
+| SMS                            | Igen                    | MFA és SSPR              |
 | Hanghívás                     | Nem                     | MFA és SSPR              |
 | Jelszó                       | Igen                    |                           |
 
@@ -83,7 +83,7 @@ Ha többet szeretne megtudni az egyes hitelesítési módszerek működéséről
 * [FIDO2 biztonsági kulcs (előzetes verzió)](concept-authentication-passwordless.md#fido2-security-keys)
 * [A hardver-tokenek ESKÜje (előzetes verzió)](concept-authentication-oath-tokens.md#oath-hardware-tokens-preview)
 * [Az eskü szoftver jogkivonatai](concept-authentication-oath-tokens.md#oath-software-tokens)
-* SMS- [Bejelentkezés (előzetes verzió)](howto-authentication-sms-signin.md) és [ellenőrzés](concept-authentication-phone-options.md#mobile-phone-verification)
+* [SMS-bejelentkezés](howto-authentication-sms-signin.md) és- [ellenőrzés](concept-authentication-phone-options.md#mobile-phone-verification)
 * [Telefonhívás ellenőrzése](concept-authentication-phone-options.md)
 * Jelszó
 

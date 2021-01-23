@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c695466fbd50435a85c63842ceb50ce80765760
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: f6896a812ec173994a1299a28ff2e99a0f351391
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630292"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724441"
 ---
 # <a name="resilient-end-user-experience"></a>Rugalmas végfelhasználói élmény
 
@@ -34,19 +34,19 @@ A regisztrációs és bejelentkezési végfelhasználói élmény a következő 
 
 ## <a name="choose-between-user-flow-and-custom-policy"></a>Választás a felhasználói folyamat és az egyéni házirend között  
 
-A leggyakoribb identitás-feladatok beállításának elősegítése érdekében Azure AD B2C beépített konfigurálható [felhasználói folyamatokat](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-overview)biztosít. Saját [Egyéni szabályzatokat](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)is létrehozhat, amelyek maximális rugalmasságot biztosítanak. Azonban ajánlott egyéni házirendeket használni az összetett forgatókönyvek kezeléséhez.
+A leggyakoribb identitás-feladatok beállításának elősegítése érdekében Azure AD B2C beépített konfigurálható [felhasználói folyamatokat](../../active-directory-b2c/user-flow-overview.md)biztosít. Saját [Egyéni szabályzatokat](../../active-directory-b2c/custom-policy-overview.md)is létrehozhat, amelyek maximális rugalmasságot biztosítanak. Azonban ajánlott egyéni házirendeket használni az összetett forgatókönyvek kezeléséhez.
 
 ### <a name="how-to-decide-between-user-flow-and-custom-policy"></a>Döntés a felhasználói folyamat és az egyéni házirend között
 
 Ha az üzleti követelményei teljesülnek, válassza a beépített felhasználói folyamatok lehetőséget. Mivel a Microsoft széles körben teszteli, az identitás felhasználói folyamatainak megfelelő házirend-szintű működés, teljesítmény vagy skálázás ellenőrzéséhez szükséges tesztelést csökkentheti. Továbbra is tesztelni kell az alkalmazásokat a funkciók, a teljesítmény és a skálázás érdekében.
 
-Ha az üzleti követelmények miatt [Egyéni szabályzatokat választ](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started) , ügyeljen arra, hogy az alkalmazás szintű tesztelésen kívül a működési, a teljesítményre vagy a skálázásra vonatkozó házirend szintű tesztelést végezzen.
+Ha az üzleti követelmények miatt [Egyéni szabályzatokat választ](../../active-directory-b2c/custom-policy-get-started.md) , ügyeljen arra, hogy az alkalmazás szintű tesztelésen kívül a működési, a teljesítményre vagy a skálázásra vonatkozó házirend szintű tesztelést végezzen.
 
-Tekintse meg a [felhasználói folyamatokat és az egyéni házirendeket összehasonlító](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview#comparing-user-flows-and-custom-policies) cikket, amely segítséget nyújt a döntéshez.
+Tekintse meg a [felhasználói folyamatokat és az egyéni házirendeket összehasonlító](../../active-directory-b2c/custom-policy-overview.md#comparing-user-flows-and-custom-policies) cikket, amely segítséget nyújt a döntéshez.
 
 ## <a name="choose-multiple-idps"></a>Több IDP kiválasztása
 
-[Külső identitás-szolgáltató](https://docs.microsoft.com/azure/active-directory-b2c/technical-overview#external-identity-providers) , például a Facebook használata esetén mindenképpen legyen tartalék terv arra az esetre, ha a külső szolgáltató elérhetetlenné válik.
+[Külső identitás-szolgáltató](../../active-directory-b2c/technical-overview.md#external-identity-providers) , például a Facebook használata esetén mindenképpen legyen tartalék terv arra az esetre, ha a külső szolgáltató elérhetetlenné válik.
 
 ### <a name="how-to-set-up-multiple-idps"></a>Több IDP beállítása
 
@@ -58,11 +58,11 @@ A külső identitás-szolgáltató regisztrációs folyamatának részeként tar
 
  2. Konfiguráljon egy profilt, amely lehetővé teszi a felhasználók számára, hogy a bejelentkezés után [összekapcsolják a másik identitást a fiókjával](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/account-linking) .
 
- 3. Értesítés küldése és engedélyezése a felhasználóknak egy [másik identitásszolgáltató való váltásra](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#configure-dynamic-custom-page-content-uri) leállás közben.
+ 3. Értesítés küldése és engedélyezése a felhasználóknak egy [másik identitásszolgáltató való váltásra](../../active-directory-b2c/customize-ui-with-html.md#configure-dynamic-custom-page-content-uri) leállás közben.
 
 ## <a name="availability-of-multi-factor-authentication"></a>A többtényezős hitelesítés rendelkezésre állása
 
-Ha [telefonos szolgáltatást használ a többtényezős hitelesítéshez (MFA)](https://docs.microsoft.com/azure/active-directory-b2c/phone-authentication), ügyeljen arra, hogy alternatív szolgáltatót használjon. A helyi távközlési vagy telefonos szolgáltató fennakadást okozhat a szolgáltatásban.
+Ha [telefonos szolgáltatást használ a többtényezős hitelesítéshez (MFA)](../../active-directory-b2c/phone-authentication.md), ügyeljen arra, hogy alternatív szolgáltatót használjon. A helyi távközlési vagy telefonos szolgáltató fennakadást okozhat a szolgáltatásban.
 
 ### <a name="how-to-choose-an-alternate-mfa"></a>Alternatív MFA kiválasztása  
 
@@ -95,7 +95,7 @@ A Content Delivery Networks (CDNs) jobb teljesítményű és olcsóbb, mint a bl
 
 Rendszeresen tesztelje a CDN rendelkezésre állását és a tartalom terjesztésének teljesítményét a végpontok közötti forgatókönyv és a terheléses tesztelés segítségével. Ha az előléptetés vagy az üdülési forgalom miatt várhatóan nagy lendületet szeretne, módosítsa a becsléseket a terheléses teszteléshez.
   
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Rugalmassági erőforrások Azure AD B2C-fejlesztőknek](resilience-b2c.md)
   
