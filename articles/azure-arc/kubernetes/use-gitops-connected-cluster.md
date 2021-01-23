@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Azure arc-kompatibilis Kubernetes-fürt (előzetes verzió) konfigurálása a GitOps használatával
 keywords: GitOps, Kubernetes, K8s, Azure, arc, Azure Kubernetes szolgáltatás, AK, tárolók
-ms.openlocfilehash: 751b274a9cae68f6bc9b1adc45804f2dd2ef4c72
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: a068ed90ea53b3b25a1f41cebd9a5b8e607afa54
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684757"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737184"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Konfigurációk üzembe helyezése a GitOps használatával Arc-kompatibilis Kubernetes-fürtön (előzetes verzió)
 
@@ -138,7 +138,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 > [!NOTE]
 > A HTTPS Helm kiadás privát hitelesítése csak a Helm operátor diagramjának verziójával támogatott: >= 1.2.0.  Alapértelmezés szerint a 1.2.0 verziója van használatban.
 > A HTTPS Helm kiadás privát hitelesítése jelenleg nem támogatott az Azure Kubernetes Services által felügyelt fürtök esetében.
-> Ha szüksége van a flow-ra a git-tárháznak a proxyn keresztüli eléréséhez, akkor frissítenie kell az Azure arc-ügynököket a proxy beállításaival. [További információ](https://docs.microsoft.com/azure/azure-arc/kubernetes/connect-cluster#connect-using-an-outbound-proxy-server)
+> Ha szüksége van a flow-ra a git-tárháznak a proxyn keresztüli eléréséhez, akkor frissítenie kell az Azure arc-ügynököket a proxy beállításaival. [További információ](./connect-cluster.md#connect-using-an-outbound-proxy-server)
 
 #### <a name="additional-parameters"></a>További paraméterek
 
@@ -361,7 +361,7 @@ az k8sconfiguration delete --name cluster-config --cluster-name AzureArcTest1 --
 Command group 'k8sconfiguration' is in preview. It may be changed/removed in a future release.
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A Helm használata a verziókövetés konfigurációjával](./use-gitops-with-helm.md)
 - [A fürt konfigurációjának szabályozása Azure Policy használatával](./use-azure-policy.md)

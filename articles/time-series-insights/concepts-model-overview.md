@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/01/2020
+ms.date: 01/22/2021
 ms.custom: seodec18
-ms.openlocfilehash: 0c201ce984a216a5cc62e221c0433f83a7eeabae
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 7b37934ff3b867b83c2c958d52bea2dd4db01354
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021762"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736801"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Idősorozat-modell Azure Time Series Insights Gen2
 
@@ -26,7 +26,7 @@ Ez a cikk az idősorozat-modellt, a képességeket, valamint a saját modellek A
 > * Nyissa meg a [contoso szélerőműpark bemutató](https://insights.timeseries.azure.com/preview/samples) környezetét egy élő idősorozat-modellre példaként.
 > * Ismerje meg, [Hogyan dolgozhat a Time Series modellel](./how-to-edit-your-model.md) a Azure Time Series Insights Explorerrel.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Hagyományosan a IoT-eszközökről összegyűjtött adatok nem rendelkeznek környezetfüggő információkkal, ami megnehezíti az érzékelők gyors megtalálását és elemzését. Az idősorozat-modell fő motivációja a IoT és az idősoros adatok megkeresésének és elemzésének egyszerűbbé tétele. Ezt a célt úgy éri el, hogy lehetővé teszi a Time Series-adatokat a kurátorok, a karbantartás és az idősorozat-adathalmazok gazdagítása érdekében, hogy előkészítse a felhasználók számára kész adatkészleteket
 
@@ -75,7 +75,7 @@ Ezek az összetevők össze vannak egyesítve egy idősorozat-modell megadásáh
 
 [![Idősorozat-modell áttekintő diagramja](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-Az idősorozat-modell a [Azure Time Series Insights Explorerben]()hozható létre és kezelhető. Az idősorozat-modell beállításai a [Model Settings API](/rest/api/time-series-insights/reference-model-apis)használatával kezelhetők.
+Az idősorozat-modell a [Azure Time Series Insights Explorerben](https://docs.microsoft.com/azure/time-series-insights/concepts-ux-panels)hozható létre és kezelhető. Az idősorozat-modell beállításai a [Model Settings API](/rest/api/time-series-insights/reference-model-apis)használatával kezelhetők.
 
 ## <a name="time-series-model-instances"></a>Idősorozat-modell példányai
 
@@ -286,7 +286,7 @@ A típusok megfelelnek a következő JSON-példának:
 
 Az idősorozat-modell típusai számos változót tartalmazhatnak, amelyek a képleteket és számítási szabályokat határozzák meg az eseményeken. További információ az [idősorozat-modell változók definiálásáról](./concepts-variables.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A modell API-kon keresztüli szerkesztésével kapcsolatos további információkért olvassa el a [Time Series Model](/rest/api/time-series-insights/reference-model-apis) Reference dokumentációját.
 

@@ -3,12 +3,12 @@ title: Azure-Managed Disks biztonsági mentése
 description: Ismerje meg, hogyan készíthet biztonsági mentést az Azure Managed Disksról a Azure Portalról.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 2169e2f44e3ffb2c05c674d633efabed2c531878
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: ca86550c4dec4b51c60d9ecdef124e38783a3764
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573122"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98738152"
 ---
 # <a name="back-up-azure-managed-disks-in-preview"></a>Azure Managed Disks biztonsági mentése (előzetes verzió)
 
@@ -17,7 +17,7 @@ ms.locfileid: "98573122"
 >
 >[Töltse ki ezt a kérdőívet](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) az előzetes verzióra való feliratkozáshoz.
 
-Ez a cikk azt ismerteti, hogyan lehet biztonsági másolatot készíteni az [Azure felügyelt lemezről](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview) a Azure Portalról.
+Ez a cikk azt ismerteti, hogyan lehet biztonsági másolatot készíteni az [Azure felügyelt lemezről](../virtual-machines/managed-disks-overview.md) a Azure Portalról.
 
 Ebből a cikkből megtudhatja, hogyan:
 
@@ -46,7 +46,7 @@ A Backup-tároló egy Azure-beli tárolási entitás, amely a Azure Backup álta
 
    ![Kezdeményezés: tároló létrehozása](./media/backup-managed-disks/initiate-create-vault.png)
 
-1. Az **alapvető beállítások** lapon adja meg az előfizetést, az erőforráscsoportot, a biztonságimásolat-tároló nevét, a régiót és a biztonságimásolat-tárolási redundanciát. Folytassa a **felülvizsgálat + létrehozás** lehetőség kiválasztásával. További információ a [Backup-tároló létrehozásáról](https://docs.microsoft.com/azure/backup/backup-vault-overview#create-a-backup-vault).
+1. Az **alapvető beállítások** lapon adja meg az előfizetést, az erőforráscsoportot, a biztonságimásolat-tároló nevét, a régiót és a biztonságimásolat-tárolási redundanciát. Folytassa a **felülvizsgálat + létrehozás** lehetőség kiválasztásával. További információ a [Backup-tároló létrehozásáról](./backup-vault-overview.md#create-a-backup-vault).
 
    ![Tár áttekintése és létrehozása](./media/backup-managed-disks/review-and-create.png)
 
@@ -67,7 +67,7 @@ A Backup-tároló egy Azure-beli tárolási entitás, amely a Azure Backup álta
 
    ![Biztonsági mentési ütemterv gyakoriságának kiválasztása](./media/backup-managed-disks/backup-schedule-frequency.png)
 
-   Az Azure Disk Backup naponta több biztonsági mentést is kínál. Ha több gyakori biztonsági mentésre van szüksége, válassza az **óránkénti** biztonsági mentés gyakoriságát, hogy a biztonsági másolatokat 4, 6, 8 vagy 12 óra intervallummal végezze. A biztonsági mentéseket a kiválasztott **időintervallum alapján ütemezi a rendszer** . Ha például **4 óránként** választja ki, akkor a biztonsági másolatok körülbelül 4 óránként lesznek elérhetők, így a biztonsági másolatok egyenlően oszlanak meg a nap folyamán. Ha a napi biztonsági mentés elegendő, válassza ki a **napi** biztonsági mentés gyakoriságát. A napi biztonsági mentési gyakoriságban megadhatja a biztonsági másolatok készítésének napját. Fontos megjegyezni, hogy a nap időpontja a biztonsági mentés kezdési idejét jelzi, nem pedig a biztonsági mentés befejeződésének időpontját. A biztonsági mentési művelet befejezéséhez szükséges idő számos tényezőtől függ, többek között a lemez méretétől és az egymást követő biztonsági mentések közötti adatforgalomtól. Az Azure Disk Backup azonban olyan ügynök nélküli biztonsági másolat, amely [növekményes pillanatképeket](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal)használ, ami nem befolyásolja az éles alkalmazások teljesítményét.
+   Az Azure Disk Backup naponta több biztonsági mentést is kínál. Ha több gyakori biztonsági mentésre van szüksége, válassza az **óránkénti** biztonsági mentés gyakoriságát, hogy a biztonsági másolatokat 4, 6, 8 vagy 12 óra intervallummal végezze. A biztonsági mentéseket a kiválasztott **időintervallum alapján ütemezi a rendszer** . Ha például **4 óránként** választja ki, akkor a biztonsági másolatok körülbelül 4 óránként lesznek elérhetők, így a biztonsági másolatok egyenlően oszlanak meg a nap folyamán. Ha a napi biztonsági mentés elegendő, válassza ki a **napi** biztonsági mentés gyakoriságát. A napi biztonsági mentési gyakoriságban megadhatja a biztonsági másolatok készítésének napját. Fontos megjegyezni, hogy a nap időpontja a biztonsági mentés kezdési idejét jelzi, nem pedig a biztonsági mentés befejeződésének időpontját. A biztonsági mentési művelet befejezéséhez szükséges idő számos tényezőtől függ, többek között a lemez méretétől és az egymást követő biztonsági mentések közötti adatforgalomtól. Az Azure Disk Backup azonban olyan ügynök nélküli biztonsági másolat, amely [növekményes pillanatképeket](../virtual-machines/disks-incremental-snapshots.md)használ, ami nem befolyásolja az éles alkalmazások teljesítményét.
 
 1. A **biztonsági mentési szabályzat** lapon válassza ki a helyreállítási pont célkitűzésének (RPO) követelményének megfelelő adatmegőrzési beállításokat.
 
@@ -80,7 +80,7 @@ A Backup-tároló egy Azure-beli tárolási entitás, amely a Azure Backup álta
    ![Adatmegőrzési beállítások](./media/backup-managed-disks/retention-settings.png)
 
    >[!NOTE]
-   >A Managed Disks Azure Backup növekményes pillanatképeket használ, amelyek lemezenként 200 pillanatképre korlátozódnak. Ahhoz, hogy az igény szerinti biztonsági mentést az ütemezett biztonsági másolatokból is el lehessen végezni, a biztonsági mentési szabályzat a 180-re korlátozza a teljes biztonsági mentést. További információ a felügyelt lemez [növekményes pillanatképekről](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) .
+   >A Managed Disks Azure Backup növekményes pillanatképeket használ, amelyek lemezenként 200 pillanatképre korlátozódnak. Ahhoz, hogy az igény szerinti biztonsági mentést az ütemezett biztonsági másolatokból is el lehessen végezni, a biztonsági mentési szabályzat a 180-re korlátozza a teljes biztonsági mentést. További információ a felügyelt lemez [növekményes pillanatképekről](../virtual-machines/disks-incremental-snapshots.md#restrictions) .
 
 1. A biztonsági mentési szabályzat létrehozásához kattintson a **felülvizsgálat + létrehozás** lehetőségre.
 
@@ -88,7 +88,7 @@ A Backup-tároló egy Azure-beli tárolási entitás, amely a Azure Backup álta
 
 A Backup-tároló felügyelt identitás használatával fér hozzá más Azure-erőforrásokhoz. A felügyelt lemezek biztonsági mentésének konfigurálásához a Backup-tár felügyelt identitásához engedélyeket kell beállítani a forrás-és az erőforráscsoportok számára, ahol a pillanatképek létrehozása és kezelése történik.
 
-Egy rendszerhez rendelt felügyelt identitás csak egy erőforrásra korlátozódik, és az erőforrás életciklusához van kötve. Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával engedélyeket adhat a felügyelt identitásnak. A felügyelt identitás olyan speciális típusú szolgáltatásnév, amelyet csak az Azure-erőforrásokkal lehet használni. További információ a [felügyelt identitásokról](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+Egy rendszerhez rendelt felügyelt identitás csak egy erőforrásra korlátozódik, és az erőforrás életciklusához van kötve. Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával engedélyeket adhat a felügyelt identitásnak. A felügyelt identitás olyan speciális típusú szolgáltatásnév, amelyet csak az Azure-erőforrásokkal lehet használni. További információ a [felügyelt identitásokról](../active-directory/managed-identities-azure-resources/overview.md).
 
 A felügyelt lemezek biztonsági mentésének konfigurálásához a következő előfeltételek szükségesek:
 
@@ -115,7 +115,7 @@ A felügyelt lemezek biztonsági mentésének konfigurálásához a következő 
 
    - Ezt az erőforráscsoportot használhatja a pillanatképek több lemezre történő tárolásához (vagy a tervek szerint) biztonsági mentést készíteni.  
 
-   - Nem hozható létre növekményes pillanatkép a lemez előfizetésén kívüli adott lemezhez. Ezért válassza ki azt az erőforráscsoportot az előfizetésen belül, amelyről biztonsági másolatot szeretne készíteni. További információ a felügyelt lemezek [növekményes pillanatképéről](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) .
+   - Nem hozható létre növekményes pillanatkép a lemez előfizetésén kívüli adott lemezhez. Ezért válassza ki azt az erőforráscsoportot az előfizetésen belül, amelyről biztonsági másolatot szeretne készíteni. További információ a felügyelt lemezek [növekményes pillanatképéről](../virtual-machines/disks-incremental-snapshots.md#restrictions) .
 
    A szerepkör hozzárendeléséhez kövesse az alábbi lépéseket:
 
@@ -129,8 +129,6 @@ A felügyelt lemezek biztonsági mentésének konfigurálásához a következő 
    >A tár felügyelt identitásának kiválasztásához írja be a mentési tároló nevét.
 
    ![Lemez pillanatkép-közreműködői szerepkör hozzáadása](./media/backup-managed-disks/disk-snapshot-contributor-role.png)
-
-1. Ha a biztonsági mentésre szolgáló lemez titkosítása az [ügyfél által felügyelt kulcsokkal (CMK)](https://docs.microsoft.com/azure/virtual-machines/disks-enable-customer-managed-keys-portal) történik, vagy ha a [platform által felügyelt kulcsokkal és az ügyfél által felügyelt kulcsokkal kettős titkosítást](https://docs.microsoft.com/azure/virtual-machines/disks-enable-double-encryption-at-rest-portal)használ, akkor rendelje hozzá az **olvasó** szerepkört a biztonságimásolat-tár felügyelt identitásához a **lemez titkosítási készletének** erőforrásán.
 
 1. Ellenőrizze, hogy a biztonságimásolat-tároló felügyelt identitása rendelkezik-e a megfelelő szerepkör-hozzárendelésekkel a forrás lemezen és az erőforráscsoporthoz, amely pillanatfelvétel-adattárként szolgál.
 
@@ -154,7 +152,7 @@ A felügyelt lemezek biztonsági mentésének konfigurálásához a következő 
    ![Azure-lemez kiválasztása](./media/backup-managed-disks/select-azure-disk.png)
 
    >[!NOTE]
-   >A Azure Backup a felügyelt lemezek [növekményes pillanatképeit](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) használja, amelyek csak a lemez változásait tárolják a lemezen a standard HDD tároló utolsó pillanatképe óta, a szülő lemez tárolási típusától függetlenül. A további megbízhatóság érdekében a növekményes Pillanatképek tárolása a zóna redundáns tárterületén (ZRS) történik, alapértelmezés szerint a ZRS támogató régiókban. Az Azure Disk Backup jelenleg támogatja a felügyelt lemezek működési biztonsági mentését, amely nem másolja át a biztonsági másolatokat a Backup-tárolóba. Így a biztonságimásolat-tároló redundancia-beállítása nem vonatkozik a helyreállítási pontokra.
+   >A Azure Backup a felügyelt lemezek [növekményes pillanatképeit](../virtual-machines/disks-incremental-snapshots.md#restrictions) használja, amelyek csak a lemez változásait tárolják a lemezen a standard HDD tároló utolsó pillanatképe óta, a szülő lemez tárolási típusától függetlenül. A további megbízhatóság érdekében a növekményes Pillanatképek tárolása a zóna redundáns tárterületén (ZRS) történik, alapértelmezés szerint a ZRS támogató régiókban. Az Azure Disk Backup jelenleg támogatja a felügyelt lemezek működési biztonsági mentését, amely nem másolja át a biztonsági másolatokat a Backup-tárolóba. Így a biztonságimásolat-tároló redundancia-beállítása nem vonatkozik a helyreállítási pontokra.
 
 1. A **biztonsági mentési szabályzat** lapon válassza ki a biztonsági mentési szabályzatot.
 

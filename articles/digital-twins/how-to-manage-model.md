@@ -7,13 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.custom: contperf-fy21q3
-ms.openlocfilehash: 00e6802f37ec60467edbea98038dd23fcba1239a
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: c193565035435b29f77177086c535fae0903ccd4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185495"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737778"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure digitális Twins-modellek kezelése
 
@@ -196,7 +195,7 @@ A modell törlését követően később dönthet úgy, hogy új modellt tölt f
 
 Az Azure digitális Twins nem akadályozza ezt az állapotot, ezért ügyeljen arra, hogy az ikrek megfelelő javításával győződjön meg arról, hogy azok érvényesek maradnak a modell definíciós kapcsolóján keresztül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan hozhat létre és kezelhet digitális ikreket a modelljei alapján:
 * [*Útmutató: digitális ikrek kezelése*](how-to-manage-twin.md)

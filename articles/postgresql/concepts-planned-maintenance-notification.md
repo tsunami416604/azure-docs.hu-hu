@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 0691411f57944f8203120ec2a6ed19013135458c
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 8db556709f68a1184046989a15fad147542a05a7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920253"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735741"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-postgresql---single-server"></a>Tervezett karbantartásról szóló értesítés az Azure Database for PostgreSQL-ben – Önálló kiszolgáló
 
@@ -25,7 +25,7 @@ A tervezett karbantartás karbantartási időszak, ha ezek a szolgáltatások eg
 
 ## <a name="planned-maintenance---duration-and-customer-impact"></a>Tervezett karbantartás – időtartam és az ügyfelek hatása
 
-Egy adott Azure-régió tervezett karbantartása általában 15 órával várható. Ha szükséges, az ablak a visszagörgetési terv végrehajtásához is tartalmaz pufferelési időt. A tervezett karbantartás során az adatbázis-kiszolgáló újraindítása vagy feladatátvétele is lehetséges, ami a végfelhasználók adatbázis-kiszolgálóinak rövid elérhetőségét eredményezheti. Azure Database for PostgreSQL-kiszolgálók tárolókban futnak, így az adatbázis-kiszolgáló újraindítása általában gyors, és általában 60-120 másodpercen belül várható. A mérnöki csapat gondosan figyeli a teljes tervezett karbantartási eseményt, beleértve az egyes kiszolgálók újraindítását is. A kiszolgáló feladatátvételi ideje függ az adatbázis helyreállításának időpontjától, ami azt eredményezheti, hogy az adatbázis továbbra is online állapotba kerül, ha a feladatátvétel időpontjában nagy tranzakciós tevékenységet végez a kiszolgálón. Ha el szeretné kerülni a hosszabb újraindítási időt, ajánlott elkerülni a hosszú ideig futó tranzakciókat (tömeges terheléseket) a tervezett karbantartási események során.
+Egy adott Azure-régió tervezett karbantartását általában 15 órán belül el kell végezni. Ebben az időintervallumban a visszagörgetési terv végrehajtásához szükséges puffer idő is szerepel. Azure Database for PostgreSQL-kiszolgálók tárolókban futnak, így az adatbázis-kiszolgáló újraindítása általában 60-120 másodpercet vesz igénybe, de nincs determinisztikus mód arra, hogy ez a 15 órán belül milyen hatással lesz a kiszolgálóra. A mérnöki csapat gondosan figyeli a teljes tervezett karbantartási eseményt, beleértve az egyes kiszolgálók újraindítását is. A kiszolgáló feladatátvételi ideje az adatbázis-helyreállítástól függ, ami azt eredményezheti, hogy az adatbázis továbbra is online állapotba kerül, ha a feladatátvétel időpontjában nagy tranzakciós tevékenységet végez a kiszolgálón. Ha el szeretné kerülni a hosszabb újraindítási időt, ajánlott elkerülni a hosszú ideig futó tranzakciókat (tömeges terheléseket) a tervezett karbantartási események során.
 
 Összefoglalva, míg a tervezett karbantartási esemény 15 óráig fut, az egyes kiszolgálók esetében a kiszolgáló tranzakciós tevékenységeitől függően általában 60 másodpercre van hatással. Az értesítés elküldése 72 naptári óra előtt történik a tervezett karbantartás elindítása előtt, és egy másikat, miközben egy adott régió karbantartását folyamatban van.
 
@@ -76,7 +76,7 @@ Nem, az összes Azure-régió javítás alatt áll a telepítési Wise-ablak id�
 Egy átmeneti hiba (más néven átmeneti hiba) egy olyan hiba, amely magát a megoldást fogja megoldani. [Átmeneti hibák](./concepts-connectivity.md#transient-errors) merülhetnek fel a karbantartás során. Az események többségét a rendszer automatikusan csökkenti a 60 másodpercnél kisebb mértékben. Az átmeneti hibákat az [újrapróbálkozási logikával](./concepts-connectivity.md#handling-transient-errors)kell kezelni.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha bármilyen kérdése vagy javaslata van a Azure Database for PostgreSQL használatáról, küldjön e-mailt a Azure Database for PostgreSQL csapatának AskAzureDBforPostgreSQL@service.microsoft.com
 - A riasztások metrikai létrehozásával kapcsolatos útmutatást a riasztások [beállítása](howto-alert-on-metric.md) című témakörben tekintheti meg.

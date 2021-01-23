@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1626ee074d51048dbf45c629f261a550822d746c
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: ea984e527eb526e49c87ce5385ba5715803cc72d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200838"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737252"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Azure biztonsági alapkonfiguráció automatizáláshoz
 
@@ -556,7 +556,7 @@ Kövesse Azure Security Center a inaktív adatok titkosítására és az átvite
 
 * [A titkosítás ismertetése az Azure-ban](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
-* [Azure Automation TLS 1,2 kényszerítés](/azure/active-directory/hybrid/reference-connect-tls-enforcement)
+* [Azure Automation TLS 1,2 kényszerítés](../active-directory/hybrid/reference-connect-tls-enforcement.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -938,7 +938,7 @@ A hibrid Runbook-feldolgozói szolgáltatás használatakor több lehetőség á
 
 A legtöbb esetben a Azure Automation állapot-konfigurációval kombinált Microsoft Base VM-sablonok segíthetnek a biztonsági követelmények teljesítésében és fenntartásában.
 
-* [A virtuálisgép-sablon letöltésével kapcsolatos információk](../virtual-machines/windows/download-template.md)
+* [A virtuálisgép-sablon letöltésével kapcsolatos információk](/previous-versions/azure/virtual-machines/windows/download-template)
 
 * [Az ARM-sablonok létrehozásával kapcsolatos információk](../virtual-machines/windows/ps-template.md)
 
@@ -1290,7 +1290,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Felelősség**: Megosztott
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
 - További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

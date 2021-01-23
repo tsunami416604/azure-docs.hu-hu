@@ -5,19 +5,19 @@ ms.custom: subject-cost-optimization
 ms.service: app-service
 ms.topic: how-to
 ms.date: 01/01/2021
-ms.openlocfilehash: 85035ff894127df4e9eb8334702fd9546d7a63c3
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 9d742606435f62d48446bb8ad56ece7a31b76e47
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598710"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736221"
 ---
 # <a name="plan-and-manage-costs-for-azure-app-service"></a>A Azure App Service költségeinek megtervezése és kezelése
 
 <!-- Check out the following published examples:
-- [https://docs.microsoft.com/azure/cosmos-db/plan-manage-costs](https://docs.microsoft.com/azure/cosmos-db/plan-manage-costs)
-- [https://docs.microsoft.com/azure/storage/common/storage-plan-manage-costs](https://docs.microsoft.com/azure/storage/common/storage-plan-manage-costs)
-- [https://docs.microsoft.com/azure/machine-learning/concept-plan-manage-cost](https://docs.microsoft.com/azure/machine-learning/concept-plan-manage-cost)
+- [https://docs.microsoft.com/azure/cosmos-db/plan-manage-costs](../cosmos-db/plan-manage-costs.md)
+- [https://docs.microsoft.com/azure/storage/common/storage-plan-manage-costs](../storage/common/storage-plan-manage-costs.md)
+- [https://docs.microsoft.com/azure/machine-learning/concept-plan-manage-cost](../machine-learning/concept-plan-manage-cost.md)
 -->
 
 <!-- Note for Azure service writer: Links to Cost Management articles are full URLS with the ?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn campaign suffix. Leave those URLs intact. They're used to measure traffic to Cost Management articles.
@@ -25,7 +25,7 @@ ms.locfileid: "98598710"
 
 <!-- Note for Azure service writer: Modify the following for your service. -->
 
-Ez a cikk a Azure App Service költségeinek tervezését és kezelését ismerteti. Először is az Azure díjszabási kalkulátor segítségével tervezze meg a App Service költségeket, mielőtt felveszi a költségek kiszámításához szükséges erőforrásokat a szolgáltatáshoz. Ezután az Azure-erőforrások hozzáadásakor tekintse át a becsült költségeket. App Service erőforrások használatának elkezdése után a [Cost Management](https://docs.microsoft.com/azure/cost-management-billing/?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) funkciókkal állíthatja be a költségvetéseket, és figyelheti a költségeket. Áttekintheti az előre jelzett költségeket, és azonosíthatja a kiadási trendeket, és azonosíthatja azokat a területeket, ahol érdemes lehet eljárni. A Azure App Service költségei csak a havi költségek egy részét jelentik az Azure-számlán. Bár ez a cikk bemutatja, hogyan tervezheti meg és kezelheti a App Service költségeit, az Azure-előfizetésében használt összes Azure-szolgáltatás és-erőforrás után, beleértve a külső szolgáltatásokat is.
+Ez a cikk a Azure App Service költségeinek tervezését és kezelését ismerteti. Először is az Azure díjszabási kalkulátor segítségével tervezze meg a App Service költségeket, mielőtt felveszi a költségek kiszámításához szükséges erőforrásokat a szolgáltatáshoz. Ezután az Azure-erőforrások hozzáadásakor tekintse át a becsült költségeket. App Service erőforrások használatának elkezdése után a [Cost Management](../cost-management-billing/index.yml?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) funkciókkal állíthatja be a költségvetéseket, és figyelheti a költségeket. Áttekintheti az előre jelzett költségeket, és azonosíthatja a kiadási trendeket, és azonosíthatja azokat a területeket, ahol érdemes lehet eljárni. A Azure App Service költségei csak a havi költségek egy részét jelentik az Azure-számlán. Bár ez a cikk bemutatja, hogyan tervezheti meg és kezelheti a App Service költségeit, az Azure-előfizetésében használt összes Azure-szolgáltatás és-erőforrás után, beleértve a külső szolgáltatásokat is.
 
 ## <a name="relevant-costs-for-app-service"></a>A App Service vonatkozó költségek
 
@@ -36,10 +36,10 @@ App Service az Azure-infrastruktúrán fut, amely a költségeket felhalmozza. F
 Attól függően, hogy milyen szolgáltatást használ a App Serviceban, a következő felmerülő költségeket lehet létrehozni:
 
 - **App Service terv**  App Service alkalmazás üzemeltetéséhez szükséges.
-- **Elkülönített rétegek**  Egy App Service-környezethez [Virtual Network](/azure/virtual-network/) szükséges.
-- **Biztonsági mentés**  A biztonsági másolatok készítéséhez szükség van egy [Storage-fiókra](/azure/storage/) .
-- **Diagnosztikai naplók**  Naplózási lehetőségként kiválaszthatja a [Storage-fiókot](/azure/storage/) , vagy integrálhatja az [Azure log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)-t.
-- **Tanúsítványok app Service**  Az Azure-ban vásárolt tanúsítványokat [Azure Key Vault](/azure/key-vault/)kell fenntartani.
+- **Elkülönített rétegek**  Egy App Service-környezethez [Virtual Network](../virtual-network/index.yml) szükséges.
+- **Biztonsági mentés**  A biztonsági másolatok készítéséhez szükség van egy [Storage-fiókra](../storage/index.yml) .
+- **Diagnosztikai naplók**  Naplózási lehetőségként kiválaszthatja a [Storage-fiókot](../storage/index.yml) , vagy integrálhatja az [Azure log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)-t.
+- **Tanúsítványok app Service**  Az Azure-ban vásárolt tanúsítványokat [Azure Key Vault](../key-vault/index.yml)kell fenntartani.
 
 A App Service egyéb Cost-erőforrásai (a részletekért lásd a [app Service díjszabását](https://azure.microsoft.com/pricing/details/app-service/) ):
 
@@ -155,7 +155,7 @@ Az előző példában a szolgáltatás aktuális díja látható. Az Azure-régi
 
 <!-- Note to Azure service writer: Modify the following as needed for your service. -->
 
-A költségek kezeléséhez [költségvetéseket](../cost-management/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) és [riasztásokat](../cost-management/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) hozhat létre, amelyek automatikusan figyelmeztetik az érdekelt feleket a rendellenes kiadásokról és a túlköltekezési kockázatokról. A riasztások a költségvetés és a költségek küszöbértékei alapján működnek. Az Azure-előfizetésekhez és-erőforráscsoportokhöz költségvetést és riasztásokat hoznak létre, így azok a teljes költségű figyelési stratégia részeként hasznosak. 
+A költségek kezeléséhez [költségvetéseket](../cost-management-billing/costs/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) és [riasztásokat](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) hozhat létre, amelyek automatikusan figyelmeztetik az érdekelt feleket a rendellenes kiadásokról és a túlköltekezési kockázatokról. A riasztások a költségvetés és a költségek küszöbértékei alapján működnek. Az Azure-előfizetésekhez és-erőforráscsoportokhöz költségvetést és riasztásokat hoznak létre, így azok a teljes költségű figyelési stratégia részeként hasznosak. 
 
 A költségvetések az Azure-ban meghatározott erőforrásokhoz vagy szolgáltatásokhoz szűrőkkel hozhatók létre, ha a figyelésben részletesebb részletességre van szükség. A szűrők segítségével biztosíthatja, hogy ne hozzon létre véletlenül új erőforrásokat, ami extra pénzbe kerül. A költségvetés létrehozásakor elérhető szűrési lehetőségekkel kapcsolatos további információkért lásd: [csoportosítási és szűrési beállítások](../cost-management-billing/costs/group-filter.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 
@@ -168,8 +168,8 @@ A költségadatok a Storage-fiókba is [exportálhatók](../cost-management-bill
 - További információ arról, hogyan működik az árképzés az Azure Storage-ban. Lásd: [app Service díjszabása](https://azure.microsoft.com/pricing/details/app-service/).
 - Megtudhatja [, hogyan optimalizálhatja a felhőalapú befektetéseit Azure Cost Managementokkal](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 - További információ a költségek a [Cost Analysis](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)szolgáltatással történő kezeléséről.
-- További információ a [váratlan költségek megelőzéséről](../cost-management-billing/manage/getting-started.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
-- Vegye figyelembe a [Cost Management](https://docs.microsoft.com/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) interaktív tanulás tanfolyamát.
+- További információ a [váratlan költségek megelőzéséről](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+- Vegye figyelembe a [Cost Management](/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) interaktív tanulás tanfolyamát.
 
 <!-- Insert links to other articles that might help users save and manage costs for you service here.
 

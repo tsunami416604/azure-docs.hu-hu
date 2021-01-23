@@ -3,12 +3,12 @@ title: Azure-Managed Disks visszaállítása
 description: Ismerje meg, hogyan állíthatja vissza az Azure Managed Diskst a Azure Portalból.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 848a7476b1c5095d4e4d3156d4c7ce33da777090
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: b9c9a22f25a8003151217bec15b618e3c380e67e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611134"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737376"
 ---
 # <a name="restore-azure-managed-disks-in-preview"></a>Az Azure Managed Disks visszaállítása (előzetes verzió)
 
@@ -17,7 +17,7 @@ ms.locfileid: "98611134"
 >
 >[Töltse ki ezt a kérdőívet](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) az előzetes verzióra való feliratkozáshoz.
 
-Ez a cikk azt ismerteti, hogyan állíthatja vissza az [Azure Managed Diskst](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview) egy Azure Backup által létrehozott visszaállítási pontról.
+Ez a cikk azt ismerteti, hogyan állíthatja vissza az [Azure Managed Diskst](../virtual-machines/managed-disks-overview.md) egy Azure Backup által létrehozott visszaállítási pontról.
 
 Jelenleg a visszaállítási Original-Location helyreállítási (OLR) lehetőség a meglévő forrás lemezének lecserélésekor, ahonnan a biztonsági másolatok készültek, nem támogatottak. A helyreállítási pontról visszaállíthatók úgy, hogy egy új lemezt hozzanak létre ugyanabba az erőforráscsoporthoz, amelyből a biztonsági mentéseket vagy más erőforráscsoportot is létrehozták. Ez a Alternate-Location Recovery (ALR) néven ismert, amely segít megőrizni a forrás-és a visszaállított (új) lemezt is.
 
@@ -31,7 +31,7 @@ Ebből a cikkből megtudhatja, hogyan:
 
 A Backup-tároló felügyelt identitás használatával fér hozzá más Azure-erőforrásokhoz. A biztonsági másolatból történő visszaállításhoz a Backup-tár felügyelt identitásához meg kell adni azon erőforráscsoport engedélyeit, amelyben a lemezt vissza kell állítani.
 
-A Backup-tároló egy rendszerhez rendelt felügyelt identitást használ, amely egy erőforrásra korlátozódik, és az erőforrás életciklusához van kötve. Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával engedélyeket adhat a felügyelt identitásnak. A felügyelt identitás olyan speciális típusú szolgáltatásnév, amelyet csak az Azure-erőforrásokkal lehet használni. További információ a [felügyelt identitásokról](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+A Backup-tároló egy rendszerhez rendelt felügyelt identitást használ, amely egy erőforrásra korlátozódik, és az erőforrás életciklusához van kötve. Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával engedélyeket adhat a felügyelt identitásnak. A felügyelt identitás olyan speciális típusú szolgáltatásnév, amelyet csak az Azure-erőforrásokkal lehet használni. További információ a [felügyelt identitásokról](../active-directory/managed-identities-azure-resources/overview.md).
 
 A visszaállítási művelet végrehajtásához a következő előfeltételek szükségesek:
 
@@ -89,7 +89,7 @@ Ha az előfeltételek teljesülnek, kövesse az alábbi lépéseket a visszaáll
     ![Visszaállítási paraméterek](./media/restore-managed-disks/restore-parameters.png)
 
     >[!TIP]
-    >A lemezes biztonsági mentési megoldással biztonsági mentést Azure Backup lemezeket a Azure Backup az Azure virtuális gép biztonsági mentési megoldásával is biztonsági mentést készíthet a Recovery Services-tárolóval. Ha úgy konfigurálta az Azure-beli virtuális gép védelmét, amelyhez ez a lemez csatlakoztatva van, akkor az Azure virtuális gép visszaállítási műveletét is használhatja. Dönthet úgy, hogy visszaállítja a virtuális gépet, a lemezeket és a fájlokat vagy mappákat a megfelelő Azure-beli virtuális gép biztonsági mentési példányának helyreállítási pontjából. További információ: Azure-beli [virtuális gépek biztonsági mentése](https://docs.microsoft.com/azure/backup/about-azure-vm-restore).
+    >A lemezes biztonsági mentési megoldással biztonsági mentést Azure Backup lemezeket a Azure Backup az Azure virtuális gép biztonsági mentési megoldásával is biztonsági mentést készíthet a Recovery Services-tárolóval. Ha úgy konfigurálta az Azure-beli virtuális gép védelmét, amelyhez ez a lemez csatlakoztatva van, akkor az Azure virtuális gép visszaállítási műveletét is használhatja. Dönthet úgy, hogy visszaállítja a virtuális gépet, a lemezeket és a fájlokat vagy mappákat a megfelelő Azure-beli virtuális gép biztonsági mentési példányának helyreállítási pontjából. További információ: Azure-beli [virtuális gépek biztonsági mentése](./about-azure-vm-restore.md).
 
 1. Ha az ellenőrzés sikeres, válassza a **visszaállítás** lehetőséget a visszaállítási művelet elindításához.
 
@@ -109,9 +109,9 @@ A Restore parancs egy új lemezt hoz létre a kijelölt helyreállítási pontb�
 
     ![OPERÁCIÓSRENDSZER-lemezek cseréje](./media/restore-managed-disks/swap-os-disks.png)
 
-- Windows rendszerű virtuális gépek esetén, ha a visszaállított lemez adatlemez, kövesse az utasításokat az [eredeti adatlemez leválasztásához](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-the-portal) a virtuális gépről. Ezután [csatlakoztassa a visszaállított lemezt](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal) a virtuális géphez. Az utasításokat követve cserélje le a virtuális gép [operációsrendszer-lemezét](https://docs.microsoft.com/azure/virtual-machines/windows/os-disk-swap) a visszaállított lemezre.
+- Windows rendszerű virtuális gépek esetén, ha a visszaállított lemez adatlemez, kövesse az utasításokat az [eredeti adatlemez leválasztásához](../virtual-machines/windows/detach-disk.md#detach-a-data-disk-using-the-portal) a virtuális gépről. Ezután [csatlakoztassa a visszaállított lemezt](../virtual-machines/windows/attach-managed-disk-portal.md) a virtuális géphez. Az utasításokat követve cserélje le a virtuális gép [operációsrendszer-lemezét](../virtual-machines/windows/os-disk-swap.md) a visszaállított lemezre.
 
-- Linux rendszerű virtuális gépek esetén, ha a visszaállított lemez adatlemez, kövesse az utasításokat az [eredeti adatlemez leválasztásához](https://docs.microsoft.com/azure/virtual-machines/linux/detach-disk#detach-a-data-disk-using-the-portal) a virtuális gépről. Ezután [csatlakoztassa a visszaállított lemezt](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal#attach-an-existing-disk) a virtuális géphez. Az utasításokat követve cserélje le a virtuális gép [operációsrendszer-lemezét](https://docs.microsoft.com/azure/virtual-machines/linux/os-disk-swap) a visszaállított lemezre.
+- Linux rendszerű virtuális gépek esetén, ha a visszaállított lemez adatlemez, kövesse az utasításokat az [eredeti adatlemez leválasztásához](../virtual-machines/linux/detach-disk.md#detach-a-data-disk-using-the-portal) a virtuális gépről. Ezután [csatlakoztassa a visszaállított lemezt](../virtual-machines/linux/attach-disk-portal.md#attach-an-existing-disk) a virtuális géphez. Az utasításokat követve cserélje le a virtuális gép [operációsrendszer-lemezét](../virtual-machines/linux/os-disk-swap.md) a visszaállított lemezre.
 
 Javasoljuk, hogy a visszaállítási művelet sikeres befejezése után visszavonja a **lemez-visszaállítási operátor** szerepkör-hozzárendelést a biztonságimásolat-tároló felügyelt identitásáról a **cél erőforráscsoporthoz** .
 
@@ -131,6 +131,6 @@ A visszaállítási művelet elindítását követően a Backup szolgáltatás l
 
     ![Feladatok listája](./media/restore-managed-disks/list-of-jobs.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Disk Backup – gyakori kérdések](disk-backup-faq.md)

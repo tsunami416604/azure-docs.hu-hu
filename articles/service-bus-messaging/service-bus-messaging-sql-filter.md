@@ -3,12 +3,12 @@ title: Azure Service Bus előfizetési szabály SQL-szűrő szintaxisa | Microso
 description: Ez a cikk az SQL-szűrési nyelvtan részleteit ismerteti. Az SQL-szűrők az SQL-92 szabvány egy részhalmazát támogatják.
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: 60f3cb6e85cef7a166c353f78cfb50405b962bdd
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 93739b0d64fb029f4d2af1d8dbbf91947085337d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633171"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737659"
 ---
 # <a name="subscription-rule-sql-filter-syntax"></a>Előfizetési szabály SQL-szűrési szintaxisa
 
@@ -272,6 +272,65 @@ Vegye figyelembe a következő [SqlFilter](/dotnet/api/microsoft.servicebus.mess
 
 ## <a name="examples"></a>Példák
 
+### <a name="filter-on-system-properties"></a>Szűrés a rendszer tulajdonságainál
+Ha egy szűrő rendszertulajdonságára szeretne hivatkozni, használja a következő formátumot: `sys.<system-property-name>` . 
+
+```csharp
+sys.Label LIKE '%bus%'`
+sys.messageid = 'xxxx'
+sys.correlationid like 'abc-%'
+```
+
+## <a name="filter-on-message-properties"></a>Szűrés az üzenet tulajdonságainál
+Íme néhány példa az üzenet tulajdonságainak egy szűrőben való használatára. Az üzenet tulajdonságai a vagy a használatával érhetők el `user.property-name` `property-name` .
+
+```csharp
+MessageProperty = 'A'
+SuperHero like 'SuperMan%'
+```
+
+### <a name="filter-on-message-properties-with-special-characters"></a>Az üzenet tulajdonságainak szűrése speciális karakterekkel
+Ha az üzenet tulajdonságának neve speciális karaktereket tartalmaz, használjon idézőjeleket ( `"` ) a tulajdonság nevének a megadásához. Ha például a tulajdonság neve `"http://schemas.microsoft.com/xrm/2011/Claims/EntityLogicalName"` , használja a következő szintaxist a szűrőben. 
+
+```csharp
+"http://schemas.microsoft.com/xrm/2011/Claims/EntityLogicalName" = 'account'
+```
+
+### <a name="filter-on-message-properties-with-numeric-values"></a>Az üzenet tulajdonságainak szűrése numerikus értékekkel
+Az alábbi példák bemutatják, hogyan használhatók a tulajdonságok numerikus értékekkel a szűrőkben. 
+
+```csharp
+MessageProperty = 1
+MessageProperty > 1
+MessageProperty > 2.08
+MessageProperty = 1 AND MessageProperty2 = 3
+MessageProperty = 1 OR MessageProperty2 = 3
+```
+
+### <a name="parameter-based-filters"></a>Paramétereken alapuló szűrők
+Íme néhány példa a paramétereken alapuló szűrők használatára. Ezekben a példákban `DataTimeMp` egy típusú üzenet tulajdonság, amely `DateTime` egy `@dtParam` objektumként a szűrőnek átadott paraméter `DateTime` .
+
+```csharp
+DateTimeMp < @dtParam
+DateTimeMp > @dtParam
+
+(DateTimeMp2-DateTimeMp1) <= @timespan //@timespan is a parameter of type TimeSpan
+DateTimeMp2-DateTimeMp1 <= @timespan
+```
+
+### <a name="using-in-and-not-in"></a>Használata a-ben és nem
+
+```csharp
+StoreId IN('Store1', 'Store2', 'Store3')"
+
+sys.To IN ('Store5','Store6','Store7') OR StoreId = 'Store8'
+
+sys.To NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8') OR StoreId NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8')
+```
+
+C#-minta esetén tekintse [meg a githubon a témakör szűrők minta](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Azure.Messaging.ServiceBus/BasicSendReceiveTutorialwithFilters)című szakaszát.
+
+
 ### <a name="set-rule-action-for-a-sql-filter"></a>Szabály műveletének beállítása SQL-szűrőhöz
 
 ```csharp
@@ -296,36 +355,12 @@ var filterActionRule = new RuleDescription
 await this.mgmtClient.CreateRuleAsync(topicName, subscriptionName, filterActionRule);
 ```
 
-### <a name="sql-filter-on-a-system-property"></a>SQL-szűrő a System tulajdonságon
 
-```csharp
-sys.Label LIKE '%bus%'`
-```
-
-### <a name="using-or"></a>A vagy a használata 
-
-```csharp
- sys.Label LIKE '%bus%'` OR `user.tag IN ('queue', 'topic', 'subscription')
-```
-
-### <a name="using-in-and-not-in"></a>Használata a-ben és nem
-
-```csharp
-StoreId IN('Store1', 'Store2', 'Store3')"
-
-sys.To IN ('Store5','Store6','Store7') OR StoreId = 'Store8'
-
-sys.To NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8') OR StoreId NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8')
-```
-
-C#-minta esetén tekintse [meg a githubon a témakör szűrők minta](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Azure.Messaging.ServiceBus/BasicSendReceiveTutorialwithFilters)című szakaszát.
-
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [SQLFilter osztály (.NET-keretrendszer)](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
 - [SQLFilter osztály (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlfilter)
 - [SqlFilter osztály (Java)](/java/api/com.microsoft.azure.servicebus.rules.SqlFilter)
 - [SqlRuleFilter (JavaScript)](/javascript/api/@azure/service-bus/sqlrulefilter)
-- [az servicebus topic előfizetés szabálya](/cli/azure/servicebus/topic/subscription/rule)
+- [`az servicebus topic subscription rule`](/cli/azure/servicebus/topic/subscription/rule)
 - [Új – AzServiceBusRule](/powershell/module/az.servicebus/new-azservicebusrule)

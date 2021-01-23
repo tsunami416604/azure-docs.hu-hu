@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 8343c06992c896986ba26a90171e25f9c8c4f2f8
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 9b8dafa4a69358b3f6f09551ac426b908750e2f4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600106"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735472"
 ---
 # <a name="prepay-for-azure-database-for-postgresql---single-server-compute-resources-with-reserved-capacity"></a>Előre fizetés Azure Database for PostgreSQL – egykiszolgálós számítási erőforrások számára fenntartott kapacitással
 
@@ -35,7 +35,7 @@ Az ügyfelek és az utólagos elszámolású ügyfelek díjszabása a foglaláso
 
 A foglalás méretének a meglévő vagy hamarosan üzembe helyezett, adott régión belüli kiszolgálók által használt számítási mennyiségnek kell alapulnia, és ugyanazt a teljesítményszint és a hardver generációját kell használnia.</br>
 
-Tegyük fel például, hogy egy általános célú Gen5 – 32 virtuális mag PostgreSQL-adatbázist futtat, és két memória-optimalizált Gen5 – 16 virtuális mag PostgreSQL-adatbázist használ. Továbbá Tételezzük fel, hogy a következő hónapban szeretne üzembe helyezni egy további általános célú Gen5 – 32 virtuális mag adatbázis-kiszolgálót és egy memória-optimalizált Gen5 – 16 virtuális mag adatbázis-kiszolgálót. Tegyük fel, hogy tudnia kell, hogy legalább egy évig szüksége lesz ezekre az erőforrásokra. Ebben az esetben meg kell vásárolnia egy 64 (2x32) virtuális mag, egy éves foglalást az önálló adatbázisok általános célú Gen5 és 48 (2x16 + 16) virtuális mag egyéves foglalása esetén egyetlen adatbázisra optimalizált memória-Gen5
+Tegyük fel például, hogy egy általános célú Gen5 – 32 virtuális mag PostgreSQL-adatbázist futtat, és két memória-optimalizált Gen5 – 16 virtuális mag PostgreSQL-adatbázist használ. Továbbá Tételezzük fel, hogy a következő hónapban szeretne üzembe helyezni egy további általános célú Gen5 – 8 virtuális mag adatbázis-kiszolgálót és egy memória-optimalizált Gen5 – 32 virtuális mag adatbázis-kiszolgálót. Tegyük fel, hogy tudnia kell, hogy legalább egy évig szüksége lesz ezekre az erőforrásokra. Ebben az esetben meg kell vásárolnia egy 40 (32 + 8) virtuális mag, egyéves foglalást az önálló adatbázisok általános célú Gen5 és a 64 (2x16 + 32) virtuális mag egyéves foglalással a különálló adatbázis-memóriára optimalizált-Gen5
 
 
 ## <a name="buy-azure-database-for-postgresql-reserved-capacity"></a>Azure Database for PostgreSQL fenntartott kapacitás vásárlása
@@ -53,12 +53,12 @@ A következő táblázat a kötelező mezőket ismerteti.
 
 | Mező | Leírás |
 | :------------ | :------- |
-| Előfizetés   | A Azure Database for PostgreSQL fenntartott kapacitás foglalásának megfizetéséhez használt előfizetés. Az előfizetéshez tartozó fizetési módot a Azure Database for PostgreSQL fenntartott kapacitás foglalásának előzetes költségei alapján számítjuk fel. Az előfizetés típusának nagyvállalati szerződésnek kell lennie (ajánlati számok: MS-AZR-0017P vagy MS-AZR-0148P), vagy az utólagos elszámolású díjszabással rendelkező egyéni szerződés (ajánlati számok: MS-AZR-0003P vagy MS-AZR-0023P). A nagyvállalati előfizetések esetében a díjakat a beléptetési Azure-előfizetésből (korábban pénzügyi kötelezettségvállalásnak nevezett) egyenlegből és a túlterhelésnek megfelelően kell levonni. Az utólagos elszámolású előfizetések esetében az előfizetés díjait a bankkártya vagy a számla fizetési módja alapján számítjuk fel.
+| Előfizetés   | A Azure Database for PostgreSQL fenntartott kapacitás foglalásának megfizetéséhez használt előfizetés. Az előfizetéshez tartozó fizetési módot a Azure Database for PostgreSQL fenntartott kapacitás foglalásának előzetes költségei alapján számítjuk fel. Az előfizetés típusának nagyvállalati szerződésnek kell lennie (ajánlati számok: MS-AZR-0017P vagy MS-AZR-0148P), vagy az utólagos elszámolású díjszabással rendelkező egyéni szerződés (ajánlati számok: MS-AZR-0003P vagy MS-AZR-0023P). Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó Azure-előrefizetés (korábbi nevén pénzügyi keret) egyenlegéből lesznek levonva, illetve túlhasználatként lesznek számlázva. Az utólagos elszámolású előfizetések esetében az előfizetés díjait a bankkártya vagy a számla fizetési módja alapján számítjuk fel.
 | Hatókör | A virtuális mag foglalási hatóköre egyetlen előfizetésre vagy több előfizetésre (megosztott hatókörre) is vonatkozhat. Ha a következőket választja: </br></br> **Megosztva** a virtuális mag foglalási kedvezményt a számlázási környezetben lévő előfizetésekben futó Azure Database for PostgreSQL-kiszolgálókra alkalmazza a rendszer. A vállalati ügyfelek esetében a közös hatókör a regisztráció, és a regisztráción belüli összes előfizetés szerepel. A használatalapú fizetéses ügyfelek esetében a megosztott hatókör a fiókadminisztrátor által létrehozott, használatalapú fizetéses előfizetéseket foglalja magában.</br></br> **Egyszeri előfizetés** esetén a virtuális mag foglalási kedvezményt az előfizetésben lévő Azure Database for PostgreSQL-kiszolgálókra alkalmazza a rendszer. </br></br> **Egy erőforráscsoport**, a foglalási kedvezményt a rendszer a kijelölt előfizetésben található Azure Database for PostgreSQL-kiszolgálókra és az adott előfizetéshez tartozó kiválasztott erőforráscsoporthoz alkalmazza.
-| Region | Az Azure Database for PostgreSQL fenntartott kapacitás foglalása által érintett Azure-régió.
+| Régió | Az Azure Database for PostgreSQL fenntartott kapacitás foglalása által érintett Azure-régió.
 | Központi telepítés típusa | Az a Azure Database for PostgreSQL erőforrástípus, amelyre a foglalást megvásárolni szeretné.
 | Teljesítményszint | A Azure Database for PostgreSQL-kiszolgálók szolgáltatási szintje.
-| Kifejezés | Egy év
+| Időszak | Egy év
 | Mennyiség | A Azure Database for PostgreSQL fenntartott kapacitás foglalása keretében megvásárolt számítási erőforrások mennyisége. A mennyiség a kiválasztott Azure-régióban és a lefoglalt teljesítményszint virtuális mag, és a számlázási kedvezményt kapja. Ha például olyan Azure Database for PostgreSQL-kiszolgálókat futtat, amelyeken az USA keleti régiójában az Gen5 16 virtuális mag teljes számítási kapacitása fut, akkor az összes kiszolgáló előnyének maximalizálása érdekében a 16-as mennyiséget kell megadnia.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Foglalások lemondása, cseréje vagy visszatérítése
@@ -67,7 +67,8 @@ Bizonyos korlátozásokkal lehetősége van a foglalások lemondására, cseréj
 
 ## <a name="vcore-size-flexibility"></a>Virtuális mag méretének rugalmassága
 
-a virtuális mag méretének rugalmassága segít a teljesítmény-és a régión belüli vertikális felskálázásban, a fenntartott kapacitási juttatás elvesztése nélkül. 
+a virtuális mag méretének rugalmassága segít a teljesítmény-és a régión belüli vertikális felskálázásban, a fenntartott kapacitási juttatás elvesztése nélkül. Ha a fenntartott kapacitásnál magasabb virtuális mag méretezhető, akkor a felesleges virtuális mag az utólagos elszámolású díjszabás alapján számítjuk fel.
+
 
 ## <a name="need-help-contact-us"></a>Segítségre van szüksége? Kapcsolat
 

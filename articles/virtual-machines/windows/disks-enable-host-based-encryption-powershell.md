@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 4dd6736afe835eefe02b8095ec08cd65ac0d63b4
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 46c26b6070a874947dfe5d7acd5a615961576b49
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915827"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736684"
 ---
 # <a name="use-the-azure-powershell-module-to-enable-end-to-end-encryption-using-encryption-at-host"></a>A Azure PowerShell modullal engedélyezheti a végpontok közötti titkosítást a gazdagépen lévő titkosítás használatával
 
@@ -293,7 +293,7 @@ Az [erőforrás-SKU API](/rest/api/compute/resourceskus/list) meghívása és an
     }
 ```
 
-Vagy hívja meg a [Get-AzComputeResourceSku PowerShell-](/powershell/module/az.compute/get-azcomputeresourcesku?view=azps-3.8.0&preserve-view=true) parancsmagot.
+Vagy hívja meg a [Get-AzComputeResourceSku PowerShell-](/powershell/module/az.compute/get-azcomputeresourcesku) parancsmagot.
 
 ```powershell
 $vmSizes=Get-AzComputeResourceSku | where{$_.ResourceType -eq 'virtualMachines' -and $_.Locations.Contains('CentralUSEUAP')} 
@@ -312,7 +312,7 @@ foreach($vmSize in $vmSizes)
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy létrehozta és konfigurálta ezeket az erőforrásokat, a segítségével biztonságossá teheti a felügyelt lemezeket. A következő hivatkozás olyan parancsfájlokat tartalmaz, amelyek mindegyike megfelelő forgatókönyvekkel rendelkezik, amelyek segítségével biztonságossá teheti a felügyelt lemezeket.
 

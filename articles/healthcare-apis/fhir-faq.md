@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 31ae5b780bf451e29a97f04202f804db27fc387a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: bd6f32213a511987c0508dcc954252b2fd4e48f6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452942"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737591"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>A FHIR készült Azure API-val kapcsolatos gyakori kérdések
 
@@ -105,6 +105,12 @@ Néhány példa erre:
 ### <a name="what-is-the-default-sort-when-searching-for-resources-in-azure-api-for-fhir"></a>Mi az alapértelmezett rendezés, ha erőforrásokat keres az Azure API FHIR?
 
 A rendezést a legutóbb frissített dátum szerint támogatjuk: _sort = _lastUpdated. A támogatott keresési paraméterekkel kapcsolatos további információkért tekintse meg a [támogatott funkciók lapot](./fhir-features-supported.md#search).
+
+### <a name="does-the-azure-api-for-fhir-support-everything"></a>Támogatja a FHIR az Azure API-t a $everything? 
+
+Nem. Jelenleg nem támogatjuk a $everything. Azonban két API-hívással is megvalósítható. Például a beteg $ minden adatának beszerzéséhez először a/Patient/[ID] használatával fogja megragadni a beteg rekordját, majd egy második hívást, amely a/Patient/[ID]/* használatával kéri le az összes pácienst.
+
+További részletekért tekintse meg ezt a [közösségi bejegyzést](https://chat.fhir.org/#narrow/stream/179166-implementers/topic/.24everything.20with.20_type). 
 
 ### <a name="how-does-export-work"></a>Hogyan működik $export?
 

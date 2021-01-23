@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2020
 ms.author: jeedes
-ms.openlocfilehash: cbadf2e072cdd9bfdf64cb2b799355aada8ec4b0
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 762bd1c536df0ca307149ba7c201f08f5bdfded5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621179"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735608"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>Oktatóanyag: Azure Active Directory integráció a xMatters OnDemand
 
@@ -165,7 +165,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 1. Jelentkezzen be a **XMatters OnDemand** -bérlőbe.
 
-2. Lépjen a felhasználók **ikonra**  >  **Users** , majd kattintson a **felhasználók hozzáadása** elemre.
+2. Lépjen a felhasználók **ikonra**  >   , majd kattintson a **felhasználók hozzáadása** elemre.
 
     ![Felhasználók](./media/xmatters-ondemand-tutorial/add-user.png "Felhasználók")
 
@@ -181,8 +181,8 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 * Kattintson az alkalmazás tesztelése Azure Portal lehetőségre, és automatikusan be kell jelentkeznie arra a xMatters-OnDemand, amelyhez be szeretné állítani az egyszeri bejelentkezést
 
-* Használhatja a Microsoft saját alkalmazásait. Amikor a saját alkalmazások xMatters OnDemand csempére kattint, automatikusan be kell jelentkeznie arra a xMatters-OnDemand, amelyhez be szeretné állítani az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
+* Használhatja a Microsoft saját alkalmazásait. Amikor a saját alkalmazások xMatters OnDemand csempére kattint, automatikusan be kell jelentkeznie arra a xMatters-OnDemand, amelyhez be szeretné állítani az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](../user-help/my-apps-portal-end-user-access.md)használatába.
 
 ## <a name="next-steps"></a>További lépések
 
-A xMatters-OnDemand konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+A xMatters-OnDemand konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

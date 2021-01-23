@@ -1,18 +1,18 @@
 ---
 title: Az Exportálás végrehajtása $export parancs meghívásával a FHIR készült Azure API-ban
 description: Ez a cikk bemutatja, hogyan exportálhatja a FHIR-információkat a $export használatával
-author: matjazl
+author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 8/26/2020
-ms.author: matjazl
-ms.openlocfilehash: 74fe09895f49cc9f7c3cdf6b6c97c1624c3e9c0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 1/21/2021
+ms.author: cavoeg
+ms.openlocfilehash: 48dbd0892c9ec02f203edba55d1104f1ab0118a8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839826"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737608"
 ---
 # <a name="how-to-export-fhir-data"></a>FHIR-adatexportálás
 
@@ -23,24 +23,41 @@ $Export használata előtt meg kell győződnie arról, hogy a FHIR készült Az
 
 ## <a name="using-export-command"></a>$export parancs használata
 
-Miután konfigurálta az Azure API-t a FHIR-hoz az exportáláshoz, a $export paranccsal exportálhatja a szolgáltatásból az adatkészletet. Az adattárolási szolgáltatás az Exportálás konfigurálásakor megadott Storage-fiókba kerül. Ha meg szeretné tudni, hogyan hívhat meg $export parancsot a FHIR-kiszolgálón, olvassa el a [$export specifikáció](https://hl7.org/Fhir/uv/bulkdata/export/index.html)dokumentációját. 
+Miután konfigurálta az Azure API-t a FHIR-hoz az exportáláshoz, a $export paranccsal exportálhatja a szolgáltatásból az adatkészletet. Az adattárolási szolgáltatás az Exportálás konfigurálásakor megadott Storage-fiókba kerül. Ha meg szeretné tudni, hogyan hívhat meg $export parancsot a FHIR-kiszolgálón, olvassa el a dokumentációt a [HL7 FHIR $export specifikációjában](https://hl7.org/Fhir/uv/bulkdata/export/index.html). 
 
-A FHIR készült Azure API-ban található $export parancs egy opcionális _ \_ tároló_ paramétert használ, amely meghatározza azt a tárolót, amely a konfigurált Storage-fiókban található, ahol az adatexportálást el kell helyezni. Ha meg van adva tároló, a rendszer az adott tárolóba exportálja a nevet egy új mappába. Ha a tároló nincs megadva, a rendszer a véletlenszerűen létrehozott névvel egy új tárolóba exportálja. 
+A FHIR készült Azure API a következő szinteken támogatja a $export:
+* [System](https://hl7.org/Fhir/uv/bulkdata/export/index.html#endpoint---system-level-export): `GET https://<<FHIR service base URL>>/$export>>`
+* [Beteg](https://hl7.org/Fhir/uv/bulkdata/export/index.html#endpoint---all-patients): `GET https://<<FHIR service base URL>>/Patient/$export>>`
+* [Betegek csoportja *](https://hl7.org/Fhir/uv/bulkdata/export/index.html#endpoint---group-of-patients) – az Azure API for FHIR exportálja az összes kapcsolódó erőforrást, de nem exportálja a csoport jellemzőit: `GET https://<<FHIR service base URL>>/Group/[ID]/$export>>`
 
-`https://<<FHIR service base URL>>/$export?_container=<<container_name>>`
 
-## <a name="supported-scenarios"></a>Támogatott esetek
-
-A FHIR készült Azure API a rendszer, a beteg és a csoport szintjén támogatja a $export. A csoportos exportálás esetében az összes kapcsolódó erőforrást exportáljuk, de a csoport jellemzőit nem exportáljuk.
 
 > [!Note] 
-> $export akkor exportálja az ismétlődő erőforrásokat, ha az erőforrás egynél több erőforrás rekeszében van, vagy több csoportban van.
+> `Patient/$export` és `Group/[ID]/$export` Előfordulhat, hogy duplikált erőforrásokat exportál, ha az erőforrás több erőforráshoz tartozó rekeszben található, vagy több csoportban van.
 
-Emellett az Exportálás állapotát a hely fejléce által visszaadott URL-cím alapján is ellenőrizheti, és a tényleges exportálási feladat megszakításával is támogatott.
+Emellett az exportálási állapot ellenőrzése a hely fejléce által visszaadott URL-címen, a tényleges exportálási feladat megszakítása mellett.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="settings-and-parameters"></a>Beállítások és paraméterek
 
-Ebben a cikkben megtanulta, hogyan exportálhatja a FHIR-erőforrásokat $export parancs használatával. Következő lépésként tekintse át a támogatott funkciókat:
+### <a name="headers"></a>Fejlécek
+Két kötelező fejléc-paraméternek kell megadnia $export feladatokhoz. Az értékeket az aktuális [$export-specifikáció](https://hl7.org/Fhir/uv/bulkdata/export/index.html#headers)határozza meg.
+* **Accept** -Application/fhir + JSON
+* **Előnyben részesített** válasz-aszinkron
+
+### <a name="query-parameters"></a>Lekérdezési paraméterek
+A FHIR készült Azure API a következő lekérdezési paramétereket támogatja. A paraméterek mindegyike opcionális:
+|Lekérdezési paraméter        | A FHIR-specifikáció határozza meg?    |  Leírás|
+|------------------------|---|------------|
+| \_outputFormat | Igen | A jelenleg három értéket támogat a FHIR spec: Application/FHIR + ndjson, Application/ndjson vagy Just ndjsonhoz való igazításhoz. Minden exportálási feladat vissza fog térni `ndjson` , és az átadott érték nem befolyásolja a kód viselkedését. |
+| \_mivel | Igen | Lehetővé teszi a csak a megadott idő óta módosított erőforrások exportálását |
+| \_típusa | Igen | Lehetővé teszi annak megadását, hogy milyen típusú erőforrásokat fog tartalmazni. Írja be például, hogy \_ = beteg csak a beteg erőforrásait adja vissza|
+| \_typefilter | Igen | Ha finomabb szűrést szeretne kérni, \_ a Type paraméterrel együtt használhatja a typefilter-t is \_ . A _typeFilter paraméter értéke az olyan FHIR lekérdezések vesszővel tagolt listája, amelyek tovább korlátozzák az eredményeket |
+| \_tároló | Nem |  Meghatározza azt a tárolót a konfigurált Storage-fiókon belül, ahol az adatexportálást el kell helyezni. Ha meg van adva tároló, a rendszer az adott tárolóba exportálja a nevet egy új mappába. Ha a tároló nincs megadva, a rendszer egy új tárolóba exportálja az időbélyeg és a Job ID használatával. |
+
+
+## <a name="next-steps"></a>További lépések
+
+Ebben a cikkben megtanulta, hogyan exportálhatja a FHIR-erőforrásokat $export parancs használatával. Következő lépésként megtudhatja, hogyan exportálhatja a de azonosított információkat:
  
 >[!div class="nextstepaction"]
->[Támogatott funkciók](fhir-features-supported.md)
+>[Azonosított adatértékek exportálása](de-identified-export.md)

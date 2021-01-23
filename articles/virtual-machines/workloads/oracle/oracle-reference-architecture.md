@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 83da8cbf3a87570cfb967e0a6c8da3f0f2ed1766
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: bbaf34c977546891c6ac05fbd4b5feb15f333e04
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486742"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737812"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Az Azure-beli Oracle Database Enterprise Edition hivatkozási architektúrái
 
@@ -207,12 +207,12 @@ A kezdeti kérelem során az alkalmazáskiszolgáló csatlakozik a saját régi�
 
 Az Oracle számítási feladatainak az Azure-ba történő üzembe helyezése során a Microsoft gondoskodik a gazdagép operációsrendszer-szintű javításáról. A tervezett karbantartást az ügyfélnek előre kell tájékoztatni az ügyfelek számára. Két különböző Availability Zones kiszolgáló egyidejű kijavítása nem történik meg egyszerre. A virtuális gépek karbantartásával és javításával kapcsolatos további információkért lásd: [virtuális gépek rendelkezésre állásának kezelése](../../manage-availability.md) . 
 
-A virtuális gépi operációs rendszer javítása [Azure Automation Update Management](../../../automation/update-management/overview.md)használatával automatizálható. Az Oracle-adatbázis javítása és karbantartása automatizálható és ütemezhető az [Azure-folyamatok](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) vagy a [Azure Automation Update Management](../../../automation/update-management/overview.md) használatával az állásidő csökkentése érdekében. Tekintse meg a [folyamatos szállítást és a kék/zöld üzembe helyezést](/azure/devops/learn/what-is-continuous-delivery) , hogy megtudja, hogyan használható az Oracle-adatbázisok kontextusában.
+A virtuális gépi operációs rendszer javítása [Azure Automation Update Management](../../../automation/update-management/overview.md)használatával automatizálható. Az Oracle-adatbázis javítása és karbantartása automatizálható és ütemezhető az [Azure-folyamatok](/azure/devops/pipelines/get-started/what-is-azure-pipelines) vagy a [Azure Automation Update Management](../../../automation/update-management/overview.md) használatával az állásidő csökkentése érdekében. Tekintse meg a [folyamatos szállítást és a kék/zöld üzembe helyezést](/azure/devops/learn/what-is-continuous-delivery) , hogy megtudja, hogyan használható az Oracle-adatbázisok kontextusában.
 
 ## <a name="architecture-and-design-considerations"></a>Architektúra és kialakítási szempontok
 
 - Vegye fontolóra a hiperszálas [memória-optimalizált virtuális gép](../../sizes-memory.md) [korlátozott alapszintű Oracle Database vCPU](../../../virtual-machines/constrained-vcpu.md) való használatát a licencelési költségek megtakarítása és a teljesítmény maximalizálása érdekében. A teljesítmény és a rendelkezésre állás érdekében több prémium vagy Ultra lemez (Managed Disks) használatát használhatja.
-- A felügyelt lemezek használatakor a lemez/eszköz neve változhat az újraindítások során. Javasoljuk, hogy a név helyett az eszköz UUID-t használja, hogy a csatlakoztatások megmaradjanak az újraindítások között. További információt [itt](/previous-versions/azure/virtual-machines/linux/configure-raid#add-the-new-file-system-to-etcfstab)találhat.
+- A felügyelt lemezek használatakor a lemez/eszköz neve változhat az újraindítások során. Javasoljuk, hogy a név helyett az eszköz UUID-t használja, hogy a csatlakoztatások megmaradjanak az újraindítások között. További információt [itt](/previous-versions/azure/virtual-machines/linux/configure-raid#add-the-new-file-system-to-etcfstab) találhat.
 - A rendelkezésre állási zónák használatával magas rendelkezésre állást érhet el a régióban.
 - Érdemes lehet Ultra Disks (ha elérhető) vagy prémium szintű lemezeket használni az Oracle-adatbázishoz.
 - Érdemes lehet készenléti Oracle-adatbázist beállítani egy másik Azure-régióban az Oracle-adatgárda használatával.

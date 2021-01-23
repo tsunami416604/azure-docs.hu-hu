@@ -4,12 +4,12 @@ description: Válaszok az Azure-beli virtuális gépeken található SQL Server 
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 7518fc49f7d6d728bd8faa0de4cf0edc1c6d5831
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 56dcf29a5c703a72fd137a5f1bf129f568a03b4b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734113"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735809"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Gyakori kérdések az Azure-beli virtuális gépek biztonsági mentését futtató SQL Server-adatbázisokról
 
@@ -108,7 +108,7 @@ Igen, Azure Backup támogatja SQL Server adatbázisok vagy kiszolgálók biztons
 
 ## <a name="does-azure-backup-perform-a-checksum-operation-on-the-data-stream"></a>Végrehajt Azure Backup ellenőrzőösszeg-műveletet az adatfolyamon?
 
-Az adatfolyamon ellenőrzőösszeg-műveletet végzünk. Ez azonban nem tévesztendő össze az [SQL ellenőrzőösszeggel](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server).
+Az adatfolyamon ellenőrzőösszeg-műveletet végzünk. Ez azonban nem tévesztendő össze az [SQL ellenőrzőösszeggel](/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server).
 Az Azure munkaterhelés biztonsági mentése kiszámítja az adatstream ellenőrzőösszegét, és a biztonsági mentési művelet során explicit módon tárolja azokat. Ezt követően az ellenőrzőösszeg-adatfolyamot a rendszer referenciának tekinti, és az adatfolyam ellenőrzőösszegével együtt ellenőrzi a visszaállítási művelet során, hogy megbizonyosodjon róla, hogy az adatmennyiség konzisztens.
 
 ## <a name="next-steps"></a>További lépések

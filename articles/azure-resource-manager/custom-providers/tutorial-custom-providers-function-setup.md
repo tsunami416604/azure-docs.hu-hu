@@ -5,12 +5,12 @@ author: jjbfour
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: 6e11e08d861538ddf395f522495798546e04ca7c
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 55554678047faeedd16b78dea61a42d50fd59491
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948952"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737320"
 ---
 # <a name="set-up-azure-functions-for-azure-custom-providers"></a>Azure Functions beállítása egyéni Azure-szolgáltatók számára
 
@@ -21,18 +21,18 @@ Az egyéni szolgáltató az Azure és a végpont közötti szerződés. Az egyé
 > [!NOTE]
 > Ebben az oktatóanyagban egy egyszerű szolgáltatási végpontot hoz létre, amely egy Azure Function alkalmazást használ. Az egyéni szolgáltatók azonban bármilyen nyilvánosan elérhető végpontot használhatnak. Az alternatívák közé tartozik az Azure Logic Apps, az Azure API Management és a Azure App Service Web Apps funkciója.
 
-Az oktatóanyag elindításához először kövesse az [első Azure Function-alkalmazás létrehozása a Azure Portalon](../../azure-functions/functions-create-first-azure-function.md)című oktatóanyagot. Ez az oktatóanyag létrehoz egy .NET Core webhook-függvényt, amely módosítható a Azure Portal. Emellett az aktuális oktatóanyag alapja is.
+Az oktatóanyag elindításához először kövesse az [első Azure Function-alkalmazás létrehozása a Azure Portalon](../../azure-functions/functions-get-started.md)című oktatóanyagot. Ez az oktatóanyag létrehoz egy .NET Core webhook-függvényt, amely módosítható a Azure Portal. Emellett az aktuális oktatóanyag alapja is.
 
 ## <a name="install-azure-table-storage-bindings"></a>Azure Table Storage-kötések telepítése
 
 Az Azure Table Storage-kötések telepítése:
 
 1. Nyissa meg a HttpTrigger **integráció** lapját.
-1. Válassza az **+ új bevitel**lehetőséget.
-1. Válassza az **Azure Table Storage**lehetőséget.
+1. Válassza az **+ új bevitel** lehetőséget.
+1. Válassza az **Azure Table Storage** lehetőséget.
 1. Telepítse a Microsoft. Azure. webjobs. Extensions. Storage bővítményt, ha még nincs telepítve.
-1. A **Table paraméter neve** mezőbe írja be a **tableStorage**nevet.
-1. A **tábla neve** mezőbe írja be a **myCustomResources**nevet.
+1. A **Table paraméter neve** mezőbe írja be a **tableStorage** nevet.
+1. A **tábla neve** mezőbe írja be a **myCustomResources** nevet.
 1. A frissített bemeneti paraméter mentéséhez válassza a **Mentés** lehetőséget.
 
 ![Az egyéni szolgáltatók áttekintése táblázatos kötéseket mutat](./media/create-custom-provider/azure-functions-table-bindings.png)
@@ -42,7 +42,7 @@ Az Azure Table Storage-kötések telepítése:
 Az Azure-függvény beállításával adja meg az egyéni szolgáltató REST-kérelmi módszereit:
 
 1. Nyissa meg a HttpTrigger **integráció** lapját.
-1. A **kiválasztott http-metódusok**területen válassza a **beolvasás**, **Közzététel**, **Törlés**és **put**lehetőséget.
+1. A **kiválasztott http-metódusok** területen válassza a **beolvasás**, **Közzététel**, **Törlés** és **put** lehetőséget.
 
 ![Az egyéni szolgáltató áttekintése HTTP-metódusok megjelenítésével](./media/create-custom-provider/azure-functions-http-methods.png)
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: efe24b3d1f6e22cc7f054691cb75a4ccede7aa4b
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: eb7db3c95fb56ebbd62d6cf882a75ce03baeb75d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912444"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736054"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-forgatókönyvek Linux rendszerű virtuális gépeken
 
@@ -42,11 +42,11 @@ Azure Disk Encryption engedélyezhető és felügyelhető az [Azure CLI](/cli/az
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Az [Azure CLI 2,0](/cli/azure) egy parancssori eszköz az Azure-erőforrások kezeléséhez. A CLI rugalmas lekérdezési adatokra lett tervezve, támogatja a hosszan futó műveleteket a nem blokkoló folyamatokban, és megkönnyíti a parancsfájlok futtatását. Az [Azure CLI telepítése](/cli/azure/install-azure-cli?view=azure-cli-latest)című témakör lépéseit követve helyileg is telepítheti.
+Az [Azure CLI 2,0](/cli/azure) egy parancssori eszköz az Azure-erőforrások kezeléséhez. A CLI rugalmas lekérdezési adatokra lett tervezve, támogatja a hosszan futó műveleteket a nem blokkoló folyamatokban, és megkönnyíti a parancsfájlok futtatását. Az [Azure CLI telepítése](/cli/azure/install-azure-cli)című témakör lépéseit követve helyileg is telepítheti.
 
  
 
-Ha be [szeretné jelentkezni az Azure-fiókjába az Azure CLI-vel](/cli/azure/authenticate-azure-cli), használja az az [login](/cli/azure/reference-index?view=azure-cli-latest#az-login) parancsot.
+Ha be [szeretné jelentkezni az Azure-fiókjába az Azure CLI-vel](/cli/azure/authenticate-azure-cli), használja az az [login](/cli/azure/reference-index#az_login) parancsot.
 
 ```azurecli
 az login
@@ -72,13 +72,13 @@ Az [Azure PowerShell az modul](/powershell/azure/new-azureps-module-az) olyan pa
 
 Ha már helyileg telepítette, győződjön meg arról, hogy a Azure Disk Encryption konfigurálásához a Azure PowerShell SDK legújabb verzióját használja. Töltse le [Azure PowerShell kiadás](https://github.com/Azure/azure-powershell/releases)legújabb verzióját.
 
-Ha [Azure PowerShell használatával szeretne bejelentkezni az Azure-fiókjába](/powershell/azure/authenticate-azureps?view=azps-2.5.0), használja a [AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) parancsmagot.
+Ha [Azure PowerShell használatával szeretne bejelentkezni az Azure-fiókjába](/powershell/azure/authenticate-azureps), használja a [AzAccount](/powershell/module/az.accounts/connect-azaccount) parancsmagot.
 
 ```powershell
 Connect-AzAccount
 ```
 
-Ha több előfizetéssel rendelkezik, és meg szeretne adni egyet, a [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) parancsmaggal listázhatja őket, majd a [set-AzContext](/powershell/module/az.accounts/set-azcontext?view=azps-2.5.0) parancsmagot:
+Ha több előfizetéssel rendelkezik, és meg szeretne adni egyet, a [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) parancsmaggal listázhatja őket, majd a [set-AzContext](/powershell/module/az.accounts/set-azcontext) parancsmagot:
 
 ```powershell
 Set-AzContext -Subscription -Subscription <SubscriptionId>
@@ -86,7 +86,7 @@ Set-AzContext -Subscription -Subscription <SubscriptionId>
 
 A [Get-AzContext](/powershell/module/Az.Accounts/Get-AzContext) parancsmag futtatásával ellenőrizheti, hogy a megfelelő előfizetés van-e kiválasztva.
 
-A Azure Disk Encryption-parancsmagok telepítésének megerősítéséhez használja a [Get-Command](/powershell/module/microsoft.powershell.core/get-command?view=powershell-6) parancsmagot:
+A Azure Disk Encryption-parancsmagok telepítésének megerősítéséhez használja a [Get-Command](/powershell/module/microsoft.powershell.core/get-command) parancsmagot:
      
 ```powershell
 Get-command *diskencryption*
@@ -104,9 +104,9 @@ Ebben az esetben a titkosítást a Resource Manager-sablon, a PowerShell-parancs
 
 ### <a name="enable-encryption-on-an-existing-or-running-linux-vm-using-azure-cli"></a>Titkosítás engedélyezése meglévő vagy futó Linux rendszerű virtuális gépen az Azure CLI használatával 
 
-Az [Azure CLI](/cli/azure/?view=azure-cli-latest) parancssori eszköz telepítésével és használatával engedélyezheti a lemez titkosítását a titkosított virtuális merevlemezen. Használhatja a böngészőjében az [Azure Cloud Shell-lel](../../cloud-shell/overview.md), vagy telepítheti a helyi gépen, és használhatja bármely PowerShell-munkamenetben. Az Azure-ban meglévő vagy futó Linux rendszerű virtuális gépek titkosításának engedélyezéséhez használja a következő CLI-parancsokat:
+Az [Azure CLI](/cli/azure/) parancssori eszköz telepítésével és használatával engedélyezheti a lemez titkosítását a titkosított virtuális merevlemezen. Használhatja a böngészőjében az [Azure Cloud Shell-lel](../../cloud-shell/overview.md), vagy telepítheti a helyi gépen, és használhatja bármely PowerShell-munkamenetben. Az Azure-ban meglévő vagy futó Linux rendszerű virtuális gépek titkosításának engedélyezéséhez használja a következő CLI-parancsokat:
 
-Az az [VM encryption Enable](/cli/azure/vm/encryption?view=azure-cli-latest#az-vm-encryption-show) parancs használatával engedélyezheti a titkosítást egy futó virtuális gépen az Azure-ban.
+Az az [VM encryption Enable](/cli/azure/vm/encryption#az_vm_encryption_show) parancs használatával engedélyezheti a titkosítást egy futó virtuális gépen az Azure-ban.
 
 - **Futó virtuális gép titkosítása:**
 
@@ -283,7 +283,7 @@ Javasoljuk, hogy legyen egy LVM-on-Crypt beállítás. Az alábbi példákban cs
     echo "/dev/disk/azure/scsi1/lun0-part1 /mnt/mountpoint ext4 defaults,nofail 0 2" >> /etc/fstab
     ```
     
-1. Futtassa a Azure PowerShell [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension?view=azps-3.8.0&preserve-view=true) parancsmagot a-EncryptFormatAll használatával a lemezek titkosításához.
+1. Futtassa a Azure PowerShell [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) parancsmagot a-EncryptFormatAll használatával a lemezek titkosításához.
 
     ```azurepowershell-interactive
     $KeyVault = Get-AzKeyVault -VaultName "MySecureVault" -ResourceGroupName "MySecureGroup"
@@ -418,7 +418,7 @@ A Azure Disk Encryption a következő Linux-forgatókönyvek, funkciók és tech
 - Azure-beli virtuálisgép- [méretek helyi ideiglenes lemez nélkül](../azure-vms-no-temp-disk.md); pontosabban a DV4, a Dsv4, a Ev4 és a Esv4.
 - Virtuális gépek titkosítása feladatátvevő fürtökben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Disk Encryption áttekintése](disk-encryption-overview.md)
 - [Azure Disk Encryption – mintaszkriptek](disk-encryption-sample-scripts.md)

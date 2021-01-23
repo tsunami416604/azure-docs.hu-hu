@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: e75eef86a4a0c679a44a61267f94d337538daaa8
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: ab27de9274043439f790a8fecd443223e5f26b08
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007619"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736204"
 ---
 # <a name="access-azure-storage-preview-as-a-network-share-from-a-container-in-app-service"></a>Hozzáférés az Azure Storage-hoz (előzetes verzió) hálózati megosztásként App Service-tárolóból
 
@@ -39,7 +39,7 @@ Ez az útmutató bemutatja, hogyan csatlakoztathatja az Azure Storage-t egy Linu
 
 - [Egy meglévő Windows-tároló alkalmazás a Azure App Service](quickstart-custom-container.md)
 - [Azure-fájlmegosztás létrehozása](../storage/files/storage-how-to-use-files-cli.md)
-- [Fájlok feltöltése az Azure-fájlmegosztásba](../storage/files/storage-files-deployment-guide.md)
+- [Fájlok feltöltése az Azure-fájlmegosztásba](../storage/files/storage-how-to-create-file-share.md)
 
 ::: zone-end
 
@@ -117,7 +117,7 @@ Ha a megosztás az alkalmazáshoz van társítva, akkor a következő parancs fu
 az webapp config storage-account list --resource-group <resource-group> --name <app-name>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 ::: zone pivot="container-windows"
 

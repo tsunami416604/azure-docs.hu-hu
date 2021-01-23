@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: f941c394c3dab0e5e6997898a48a248f6a0cfe42
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 5666a489cfd0f0d92120c9ec7e3c8d3c2d083b5e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352439"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737269"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az Azure WebJobs SDK használata eseményalapú háttérfeldolgozáshoz
 
@@ -146,7 +146,7 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="triggers"></a>Eseményindítók
+## <a name="triggers"></a>Triggerek
 
 A függvényeknek nyilvános metódusoknak kell lenniük, és rendelkezniük kell egy trigger attribútummal vagy az [`NoAutomaticTrigger`](#manual-triggers) attribútummal.
 
@@ -277,7 +277,7 @@ Az alapszolgáltatások részét képező időzítő vagy fájlok kötésének h
 
 #### <a name="version-2x"></a>2. verzió. *x*
 
-Ezek az triggerek és kötési típusok a 2. verzióban szerepelnek. *x* a csomag x `Microsoft.Azure.WebJobs` :
+Ezek az triggerek és kötési típusok a 2. verzióban szerepelnek.  a csomag x `Microsoft.Azure.WebJobs` :
 
 * Blob Storage
 * Queue Storage
@@ -794,7 +794,7 @@ public static void RemoveItem([QueueTrigger("remove-item")] string message)
 
 ### <a name="viewing-lease-blobs"></a>Címbérleti Blobok megtekintése
 
-A webjobs SDK az [Azure Blob bérleteit](../storage/common/storage-concurrency.md#pessimistic-concurrency-for-blobs) használja a borítók alatt az elosztott zárolás megvalósításához. Az Egypéldányos bérletet használó Blobok a `azure-webjobs-host` Storage-fiókban található tárolóban találhatók a `AzureWebJobsStorage` "zárolások" elérési úton. Előfordulhat például, hogy a korábban bemutatott első példa címbérleti blobjának elérési útja a következő `ProcessImage` lehet: `locks/061851c758f04938a4426aa9ab3869c0/WebJobs.Functions.ProcessImage` . Az összes elérési út tartalmazza a JobHost AZONOSÍTÓját, ebben az esetben a 061851c758f04938a4426aa9ab3869c0.
+A webjobs SDK az [Azure Blob bérleteit](../storage/blobs/concurrency-manage.md#pessimistic-concurrency-for-blobs) használja a borítók alatt az elosztott zárolás megvalósításához. Az Egypéldányos bérletet használó Blobok a `azure-webjobs-host` Storage-fiókban található tárolóban találhatók a `AzureWebJobsStorage` "zárolások" elérési úton. Előfordulhat például, hogy a korábban bemutatott első példa címbérleti blobjának elérési útja a következő `ProcessImage` lehet: `locks/061851c758f04938a4426aa9ab3869c0/WebJobs.Functions.ProcessImage` . Az összes elérési út tartalmazza a JobHost AZONOSÍTÓját, ebben az esetben a 061851c758f04938a4426aa9ab3869c0.
 
 ## <a name="async-functions"></a>Aszinkron függvények
 
@@ -826,11 +826,11 @@ Javasoljuk a ASP.NET fejlesztett naplózási keretrendszert. Az [első lépések
 
 A példányok által létrehozott összes naplóhoz `ILogger` társítva `Category` és `Level` . [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) egy enumerálás, és az egész szám kód relatív fontosságot jelez:
 
-|Naplózási szint    |Kód|
+|Naplózási szint    |Code|
 |------------|---|
 |Nyomkövetés       | 0 |
 |Hibakeresés       | 1 |
-|Információ | 2 |
+|Tájékoztatás | 2 |
 |Figyelmeztetés     | 3 |
 |Hiba       | 4 |
 |Kritikus    | 5 |

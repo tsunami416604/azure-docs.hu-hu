@@ -3,12 +3,12 @@ title: Biztonsági mentési hibák elhárítása az Azure Disk Backup szolgálta
 description: Ismerje meg, hogy miként lehet elhárítani a biztonsági mentési hibákat az Azure Disk Backup szolgáltatásban
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 3e7c81d70fc898528532a841a484bf6fff8b83a7
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 855c6c5b19b10bdb699a25f89ebc29001b7941ac
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611236"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737727"
 ---
 # <a name="troubleshooting-backup-failures-in-azure-disk-backup-in-preview"></a>Biztonsági mentési hibák elhárítása az Azure Disk Backup szolgáltatásban (előzetes verzió)
 
@@ -115,7 +115,7 @@ Javasolt művelet: a biztonsági mentési tár felügyelt identitásának megad�
 
 Hibaüzenet: a művelet meghiúsult, mert elérte a lemezkvóta maximális korlátját az előfizetésben.
 
-Javasolt művelet: Tekintse meg az [Azure-előfizetések és-szolgáltatások korlátozásait és a kvóta dokumentációját](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) , vagy forduljon Microsoft ügyfélszolgálata további útmutatásért.
+Javasolt művelet: Tekintse meg az [Azure-előfizetések és-szolgáltatások korlátozásait és a kvóta dokumentációját](../azure-resource-manager/management/azure-subscription-service-limits.md) , vagy forduljon Microsoft ügyfélszolgálata további útmutatásért.
 
 ### <a name="error-code-usererrordiskbackuprestorergormsipermissionsnotpresent"></a>Hibakód: UserErrorDiskBackupRestoreRGOrMSIPermissionsNotPresent
 
@@ -177,6 +177,6 @@ Hibaüzenet: nem indítható el a művelet, mert elérte az egyidejű biztonság
 
 Javasolt művelet: Várjon, amíg az előző futó biztonsági mentés be nem fejeződik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Disk Backup támogatási mátrixa](disk-backup-support-matrix.md)

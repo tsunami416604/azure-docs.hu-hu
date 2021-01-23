@@ -5,14 +5,14 @@ keywords: Azure app Service, webalkalmazás, mobil alkalmazás, API-alkalmazás,
 ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 55ffb2d03a42809a41583e6be25066b0b8e104b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61bffcfa8b98ed666e450c344023258b752e4880
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961499"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736105"
 ---
-# <a name="security-in-azure-app-service"></a>Biztonság a Azure App Service
+# <a name="security-in-azure-app-service"></a>Biztonság az Azure App Service-ben
 
 Ez a cikk bemutatja, hogyan segíti a [Azure app Service](overview.md) a webalkalmazások, a Mobile App back end, az API-alkalmazás és a [Function-alkalmazás](../azure-functions/index.yml)biztonságossá tételét. Azt is bemutatja, hogyan lehet tovább biztonságossá tenni az alkalmazást a beépített App Service funkciókkal.
 
@@ -43,7 +43,7 @@ A App Service az FTP-t és a FTPS is támogatja a fájlok telepítéséhez. A FT
 
 Alapértelmezés szerint a App Service alkalmazás az internetről érkező összes IP-címről fogad kérelmeket, de az IP-címek kis részhalmazára korlátozhatja a hozzáférést. A Windows App Service lehetővé teszi az alkalmazás elérésére jogosult IP-címek listájának megadását. Az engedélyezett lista tartalmazhat egyedi IP-címeket vagy egy alhálózati maszk által meghatározott IP-címtartományt. További információ: [Azure app Service statikus IP-korlátozások](app-service-ip-restrictions.md).
 
-A Windows App Service esetén a _web.config_konfigurálásával dinamikusan is korlátozhatja az IP-címeket. További információ: [dinamikus IP-biztonság \<dynamicIpSecurity> ](/iis/configuration/system.webServer/security/dynamicIpSecurity/).
+A Windows App Service esetén a _web.config_ konfigurálásával dinamikusan is korlátozhatja az IP-címeket. További információ: [dinamikus IP-biztonság \<dynamicIpSecurity>](/iis/configuration/system.webServer/security/dynamicIpSecurity/).
 
 ## <a name="client-authentication-and-authorization"></a>Ügyfél-hitelesítés és engedélyezés
 
@@ -85,8 +85,8 @@ Ha az erőforrás-kapcsolatot teljesen el szeretné különíteni az Azure-beli 
 A helyszíni erőforrásokhoz (például adatbázisokhoz) való biztonságos hozzáférés háromféleképpen lehetséges: 
 
 - [Hibrid kapcsolatok](app-service-hybrid-connections.md) – pont-pont típusú kapcsolatot létesít a távoli erőforrással egy TCP-alagúton keresztül. A TCP-alagút a TLS 1,2 közös hozzáférés-aláírási (SAS-) kulcsokkal van létrehozva.
-- Virtual Network a helyek közötti VPN-sel való [integrációt](web-sites-integrate-with-vnet.md) – az [Azure-Virtual Network belüli erőforrásokban](#resources-inside-an-azure-virtual-network)leírtak szerint, de a Virtual Network a [helyek közötti VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)-kapcsolaton keresztül csatlakozhat a helyszíni hálózathoz. Ebben a hálózati topológiában az alkalmazás olyan helyszíni erőforrásokhoz is csatlakozhat, mint például a Virtual Network egyéb erőforrásai.
-- [App Service környezet](environment/intro.md) helyek közötti VPN-vel – az [Azure-Virtual Network belüli erőforrásokban](#resources-inside-an-azure-virtual-network)leírtak szerint, de a Virtual Network a [helyek közötti VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)-kapcsolaton keresztül csatlakozhat a helyszíni hálózathoz. Ebben a hálózati topológiában az alkalmazás olyan helyszíni erőforrásokhoz is csatlakozhat, mint például a Virtual Network egyéb erőforrásai.
+- Virtual Network a helyek közötti VPN-sel való [integrációt](web-sites-integrate-with-vnet.md) – az [Azure-Virtual Network belüli erőforrásokban](#resources-inside-an-azure-virtual-network)leírtak szerint, de a Virtual Network a [helyek közötti VPN](../vpn-gateway/tutorial-site-to-site-portal.md)-kapcsolaton keresztül csatlakozhat a helyszíni hálózathoz. Ebben a hálózati topológiában az alkalmazás olyan helyszíni erőforrásokhoz is csatlakozhat, mint például a Virtual Network egyéb erőforrásai.
+- [App Service környezet](environment/intro.md) helyek közötti VPN-vel – az [Azure-Virtual Network belüli erőforrásokban](#resources-inside-an-azure-virtual-network)leírtak szerint, de a Virtual Network a [helyek közötti VPN](../vpn-gateway/tutorial-site-to-site-portal.md)-kapcsolaton keresztül csatlakozhat a helyszíni hálózathoz. Ebben a hálózati topológiában az alkalmazás olyan helyszíni erőforrásokhoz is csatlakozhat, mint például a Virtual Network egyéb erőforrásai.
 
 ## <a name="application-secrets"></a>Alkalmazás-titkok
 

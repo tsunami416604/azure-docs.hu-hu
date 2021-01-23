@@ -7,12 +7,12 @@ ms.date: 10/02/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 7c937353c645ee5d977a52ec0f8e935eba19a940
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 73984694d764234e9e1ec11e6b189a9ad85d97a8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969976"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737404"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>Az Azure rendszerkép-készítő szolgáltatás hibáinak megoldása
 
@@ -156,7 +156,7 @@ A Storage-fiók neve a következő mintát használja **: \<ImageResourceGroupNa
 
 Például *IT_aibmdi_helloImageTemplateLinux01*.
 
-A Storage-fiókban található Storage-fiókban a **Storage-fiók**  >  **Blobok**lehetőség kiválasztásával megtekintheti a  >  Testreszabás. `packerlogs`  Ezután válassza a **könyvtár > customization. log**elemet.
+A Storage-fiókban található Storage-fiókban a **Storage-fiók**  >  **Blobok** lehetőség kiválasztásával megtekintheti a  >  Testreszabás. `packerlogs`  Ezután válassza a **könyvtár > customization. log** elemet.
 
 
 ### <a name="understanding-the-customization-log"></a>A testreszabási napló ismertetése
@@ -320,7 +320,7 @@ Deployment failed. Correlation ID: XXXXXX-XXXX-XXXXXX-XXXX-XXXXXX. Failed in dis
 
 #### <a name="cause"></a>Ok
 
-A rendszerkép-szerkesztő időtúllépést várt a rendszerkép felvételének és replikálásának a megosztott képkatalógusba (SIG) való várakozásakor. Ha a képet befecskendezi a SIG-ba, feltételezhető, hogy a rendszerkép létrehozása sikeres volt. Az általános folyamat azonban nem sikerült, mert a rendszerkép-készítő a megosztott rendszerkép-katalógusra várakozik a replikálás befejezéséhez. Annak ellenére, hogy a Build nem sikerült, a replikálás folytatódik. A rendszerkép verziójának tulajdonságait a terjesztési *runOutput*ellenőrizheti.
+A rendszerkép-szerkesztő időtúllépést várt a rendszerkép felvételének és replikálásának a megosztott képkatalógusba (SIG) való várakozásakor. Ha a képet befecskendezi a SIG-ba, feltételezhető, hogy a rendszerkép létrehozása sikeres volt. Az általános folyamat azonban nem sikerült, mert a rendszerkép-készítő a megosztott rendszerkép-katalógusra várakozik a replikálás befejezéséhez. Annak ellenére, hogy a Build nem sikerült, a replikálás folytatódik. A rendszerkép verziójának tulajdonságait a terjesztési *runOutput* ellenőrizheti.
 
 ```bash
 $runOutputName=<distributionRunOutput>
@@ -586,7 +586,7 @@ Bizonyos esetekben előfordulhat, hogy a sikeres buildek vizsgálatára van szü
 
 Ha a buildet nem egy felhasználó törölte, azt az Azure DevOps felhasználói ügynöke törölte. Az Azure DevOps képességei miatt a legnagyobb valószínűséggel az 1 órás időtúllépés történt. Ha privát projektet és ügynököt használ, 60 perces felépítési időt vehet igénybe. Ha a Build túllépi az időkorlátot, a DevOps megszakítja a futó feladatot.
 
-További információ az Azure DevOps képességeiről és korlátairól: [Microsoft által üzemeltetett ügynökök](/azure/devops/pipelines/agents/hosted?view=azure-devops#capabilities-and-limitations)
+További információ az Azure DevOps képességeiről és korlátairól: [Microsoft által üzemeltetett ügynökök](/azure/devops/pipelines/agents/hosted#capabilities-and-limitations)
  
 #### <a name="solution"></a>Megoldás
 
@@ -606,7 +606,7 @@ Első lépésként a rendszerkép-összeállításban győződjön meg arról, h
  
 ## <a name="vms-created-from-aib-images-do-not-create-successfully"></a>A AIB-lemezképből létrehozott virtuális gépek nem jönnek létre sikeresen
 
-Alapértelmezés szerint az Azure-rendszerkép-szerkesztő az egyes rendszerkép-testreszabási fázis végén található, *de-kiépítés* kódot futtatja a rendszerkép *általánosítása* érdekében. Az általánosítás olyan folyamat, amelyben a rendszerkép úgy van beállítva, hogy több virtuális gép létrehozásához újra felhasználható legyen, és átadható a virtuálisgép-beállítások, például az állomásnév, a Felhasználónév stb. Windows rendszeren az Azure rendszerkép-szerkesztő végrehajtja a *Sysprep*alkalmazást, valamint a Linux Azure rendszerkép-szerkesztő futtatását `waagent -deprovision` . 
+Alapértelmezés szerint az Azure-rendszerkép-szerkesztő az egyes rendszerkép-testreszabási fázis végén található, *de-kiépítés* kódot futtatja a rendszerkép *általánosítása* érdekében. Az általánosítás olyan folyamat, amelyben a rendszerkép úgy van beállítva, hogy több virtuális gép létrehozásához újra felhasználható legyen, és átadható a virtuálisgép-beállítások, például az állomásnév, a Felhasználónév stb. Windows rendszeren az Azure rendszerkép-szerkesztő végrehajtja a *Sysprep* alkalmazást, valamint a Linux Azure rendszerkép-szerkesztő futtatását `waagent -deprovision` . 
 
 A Windows esetében az Azure rendszerkép-készítő egy általános Sysprep parancsot használ. Előfordulhat azonban, hogy ez nem alkalmas minden sikeres Windows-általánosításhoz. Az Azure rendszerkép-szerkesztővel testreszabhatja a Sysprep parancsot. Megjegyzés: az Azure rendszerkép-készítő egy rendszerkép-automatizálási eszköz. A Sysprep parancs sikeres futtatásának felelőse. Előfordulhat azonban, hogy más Sysprep-parancsokra van szüksége, hogy a rendszerkép újrafelhasználható legyen. Linux rendszeren az Azure rendszerkép-készítő általános `waagent -deprovision+user` parancsot használ. További információ: [Microsoft Azure Linux-ügynök dokumentációja](https://github.com/Azure/WALinuxAgent#command-line-options).
 
@@ -659,7 +659,7 @@ Write-Output '>>> Sysprep complete ...'
 
 ### <a name="overriding-the-commands"></a>A parancsok felülbírálása
 
-A parancsok felülbírálásához a PowerShell vagy a rendszerhéj parancsfájl-kiépítő használatával hozza létre a megfelelő fájlnevet tartalmazó parancsfájlokat, és helyezze azokat a korábban felsorolt címtárakba. Az Azure-rendszerkép-szerkesztő beolvassa ezeket a parancsokat, és a kimenet a *customization. log*fájlba íródik.
+A parancsok felülbírálásához a PowerShell vagy a rendszerhéj parancsfájl-kiépítő használatával hozza létre a megfelelő fájlnevet tartalmazó parancsfájlokat, és helyezze azokat a korábban felsorolt címtárakba. Az Azure-rendszerkép-szerkesztő beolvassa ezeket a parancsokat, és a kimenet a *customization. log* fájlba íródik.
 
 ## <a name="getting-support"></a>Támogatás kérése
 Ha erre az útmutatóra hivatkozik, és továbbra sem tudja elhárítani a problémát, nyisson meg egy támogatási esetet. Ha így tesz, válassza ki a megfelelő termék-és támogatási témakört, ezzel bekerül az Azure VM rendszerkép-készítő támogatási csapatával.
@@ -672,6 +672,6 @@ Support Topic: Azure Features
 Support Subtopic: Azure Image Builder
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ: az [Azure rendszerkép-készítő áttekintése](image-builder-overview.md).

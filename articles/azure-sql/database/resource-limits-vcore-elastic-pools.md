@@ -10,13 +10,13 @@ ms.topic: reference
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 01/15/2021
-ms.openlocfilehash: 2daa07315be85e1fcd543480cd30a57c118d8547
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/22/2021
+ms.openlocfilehash: 619f4deee81c97f2d7a0b4359e2b999c476b1ae2
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251488"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737557"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Rugalmas készletek erőforrás-korlátai a virtuális mag beszerzési modell használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -218,7 +218,7 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 |TempDB maximális adatméret (GB)|83,25|92,5|111|148|166,5|333|
 |Tárolási típus|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|
 |IO-késés (hozzávetőleges)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|
-|Maximális adatmennyiség IOPS/készletben <sup>2</sup>|5760|6400|7680|10240|11520|23040|
+|Maximális adatmennyiség IOPS/készletben <sup>2</sup>|5760|6400|7680|10240|11520|12800|
 |Maximális naplózási arány (MB/s)|48|48|48|48|48|48|
 |Egyidejű feldolgozók maximális száma (kérelem) <sup>3</sup>|900|1000|1200|1600|1800|3600|
 |Egyidejű bejelentkezések maximális száma (kérelem) <sup>3</sup>|1800|2000|2400|3200|3600|7200|
@@ -481,7 +481,7 @@ Ha a rugalmas készlet összes virtuális mag foglalt, akkor a készletben lév�
 |Memória (GB)|9|18|27|36|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|50|100|100|100|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|1,7|3.7|5.9|8.2|
+|Memóriában tárolt OLTP-tároló (GB)|1.7|3.7|5.9|8.2|
 |Maximális adatméret (GB)|768|768|768|768|
 |Napló maximális mérete (GB)|230|230|230|230|
 |TempDB maximális adatméret (GB)|64|128|192|256|

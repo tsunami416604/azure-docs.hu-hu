@@ -298,8 +298,6 @@
       href: template-best-practices.md
     - name: Gyakori kérdések
       href: frequently-asked-questions.md
-    - name: Sablonspecifikációk
-      href: template-specs.md
     - name: Felhőkonzisztencia-sablonok
       href: templates-cloud-consistency.md
     - name: Üzembehelyezési módok
@@ -423,6 +421,12 @@
           href: test-toolkit.md
         - name: Tesztelési esetek
           href: test-cases.md
+    - name: Sablonspecifikációk
+      items:
+        - name: Sablonspecifikációk létrehozása és üzembe helyezése
+          href: template-specs.md
+        - name: A portál sablonjának átalakítása
+          href: convert-to-template-spec.md
     - name: CI/CD
       items:
         - name: ARM-sablonok folyamatokkal

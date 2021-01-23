@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 2/1/2019
 ms.author: tamram
 ms.reviewer: twooley
-ms.openlocfilehash: 8de395e34b43a4edad2affa591adb8ab34ff9e66
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 002e8650a5555b70caf09179e03ce1bad1acdef5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921696"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737540"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>BLOB Storage csatlakoztatása fájlrendszerként a blobfuse-mel
 
@@ -28,9 +28,9 @@ Ebből az útmutatóból megtudhatja, hogyan használhatja a blobfuse, és hogya
 > 
 
 ## <a name="install-blobfuse-on-linux"></a>A blobfuse telepítése Linux rendszeren
-A Blobfuse bináris fájljai a Linux for Ubuntu és a RHEL disztribúciók [Microsoft-szoftverek tárházában](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software) érhetők el. A blobfuse az adott disztribúcióra való telepítéséhez konfigurálja az egyik tárházat a listából. A forráskód bináris fájljait az [Azure Storage telepítési lépéseit](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source) követve is létrehozhatja, ha nincs elérhető bináris fájl a terjesztéshez.
+A Blobfuse bináris fájljai a Linux for Ubuntu, a Debian, a SUSE, a CentoOS, a Oracle Linux és a RHEL disztribúciók [Microsoft-szoftveres tárházában](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software) érhetők el. A blobfuse az adott disztribúcióra való telepítéséhez konfigurálja az egyik tárházat a listából. A forráskód bináris fájljait az [Azure Storage telepítési lépéseit](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source) követve is létrehozhatja, ha nincs elérhető bináris fájl a terjesztéshez.
 
-A Blobfuse az Ubuntu 14,04, 16,04, 18,04 és 20,04 rendszeren támogatja a telepítést. Futtassa ezt a parancsot, és győződjön meg arról, hogy telepítve van-e a telepített verziók egyike:
+A Blobfuse támogatja az Ubuntu-verziók telepítését: 16,04, 18,04 és 20,04, RHELversions: 7,5, 7,8, 8,0, 8,1, 8,2, CentOS Versions: 7,0, 8,0, Debian Versions: 9,0, 10,0, SUSE Version: 15, OracleLinux 8,1. Futtassa ezt a parancsot, és győződjön meg arról, hogy telepítve van-e a telepített verziók egyike:
 ```
 lsb_release -a
 ```
@@ -38,16 +38,16 @@ lsb_release -a
 ### <a name="configure-the-microsoft-package-repository"></a>A Microsoft Package adattár konfigurálása
 A [Linux-csomagok tárházának konfigurálása a Microsoft-termékekhez](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software).
 
-Példa egy vállalati Linux 6 disztribúcióra:
+Például egy vállalati Linux 8 disztribúción:
 ```bash
-sudo rpm -Uvh https://packages.microsoft.com/config/rhel/6/packages-microsoft-prod.rpm
+sudo rpm -Uvh https://packages.microsoft.com/config/rhel/8/packages-microsoft-prod.rpm
 ```
 
 Hasonlóképpen módosítsa az URL-címet úgy, hogy az a `.../rhel/7/...` nagyvállalati Linux 7 disztribúcióra mutasson.
 
-Egy másik példa Ubuntu 14,04-disztribúcióra:
+Egy másik példa Ubuntu 20,04-disztribúcióra:
 ```bash
-wget https://packages.microsoft.com/config/ubuntu/14.04/packages-microsoft-prod.deb
+wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update
 ```
@@ -141,7 +141,7 @@ mkdir test
 echo "hello world" > test/blob.txt
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Blobfuse kezdőlapja](https://github.com/Azure/azure-storage-fuse#blobfuse)
 * [Blobfuse-problémák jelentése](https://github.com/Azure/azure-storage-fuse/issues)

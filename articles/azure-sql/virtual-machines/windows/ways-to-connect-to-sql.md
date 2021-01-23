@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 28b68178b98e53b7a7d4192ad20c05a667344969
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 37cb8f5a2ff0916f53ae50f5750664204ab1ba75
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356721"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737489"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Kapcsolódás SQL Server Azure-beli virtuális géphez
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -82,7 +82,7 @@ Ha a portálon az **SQL-kapcsolati** típushoz **privát** lehetőséget válasz
 > [!IMPORTANT]
 > A SQL Server Developer és az expressz kiadások virtuálisgép-rendszerképei nem engedélyezik automatikusan a TCP/IP protokollt. Fejlesztői és expressz kiadások esetén a virtuális gép létrehozása után a [TCP/IP protokoll manuális engedélyezéséhez](#manualtcp) SQL Server konfigurációkezelőt kell használnia.
 
-A magánhálózati kapcsolatot gyakran használják egy [virtuális hálózattal](../../../virtual-network/virtual-networks-overview.md)együtt, amely számos forgatókönyvet tesz lehetővé. Ugyanazon a virtuális hálózaton is csatlakoztathatók a virtuális gépek, még akkor is, ha ezek a virtuális gépek különböző erőforráscsoportok alatt találhatók. A helyek közötti [VPN](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)használatával olyan hibrid architektúrát is létrehozhat, amely a helyszíni hálózatokkal és számítógépekkel összekapcsolja a virtuális gépeket.
+A magánhálózati kapcsolatot gyakran használják egy [virtuális hálózattal](../../../virtual-network/virtual-networks-overview.md)együtt, amely számos forgatókönyvet tesz lehetővé. Ugyanazon a virtuális hálózaton is csatlakoztathatók a virtuális gépek, még akkor is, ha ezek a virtuális gépek különböző erőforráscsoportok alatt találhatók. A helyek közötti [VPN](../../../vpn-gateway/tutorial-site-to-site-portal.md)használatával olyan hibrid architektúrát is létrehozhat, amely a helyszíni hálózatokkal és számítógépekkel összekapcsolja a virtuális gépeket.
 
 A virtuális hálózatok lehetővé teszik az Azure-beli virtuális gépek tartományhoz való csatlakoztatását is. Ez az egyetlen módszer a Windows-hitelesítés használatára a SQL Server. A többi csatlakoztatási forgatókönyvhöz felhasználónevek és jelszavak szükségesek az SQL-hitelesítéshez.
 
@@ -147,7 +147,7 @@ A következő táblázat az Azure-beli virtuális gépen SQL Serverhoz való kap
 > [!TIP]
 > Az előző táblázatban szereplő lépések a Kapcsolódás a portálon való konfigurálásakor lesznek végrehajtva. Ezekkel a lépésekkel megerősítheti a konfigurációt, vagy manuálisan állíthatja be a kapcsolatot SQL Server számára.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha meg szeretné tekinteni a telepítési utasításokat ezen csatlakozási lépések mellett, tekintse [meg a SQL Server virtuális gép üzembe helyezése az Azure](create-sql-vm-portal.md)-ban című témakört.
 

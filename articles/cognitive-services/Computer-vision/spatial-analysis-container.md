@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: bb40586a93a40c2aaa3f0f884a0e747f168c324b
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: db21f1170dacbfa1e4367e7f22143ec3d0b0f6e4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186091"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737336"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>A térbeli elemzési tároló telepítése és futtatása (előzetes verzió)
 
@@ -62,7 +62,7 @@ Ebben a cikkben a következő szoftvercsomagok letöltésére és telepítésér
 * [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) futtatókörnyezet.
 
 #### <a name="azure-vm-with-gpu"></a>[Azure-beli virtuális gép GPU-val](#tab/virtual-machine)
-A példánkban egy K80 GPU-val rendelkező [NC sorozatú virtuális gépet](https://docs.microsoft.com/azure/virtual-machines/nc-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) fogunk használni.
+A példánkban egy K80 GPU-val rendelkező [NC sorozatú virtuális gépet](../../virtual-machines/nc-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) fogunk használni.
 
 ---
 
@@ -309,13 +309,13 @@ Nyissa meg a gazdagépet a  `/etc/iotedge/config.yaml` szerkesztéshez. Cserélj
 sudo systemctl restart iotedge
 ```
 
-Telepítse a térbeli elemzési tárolót IoT-modulként a gazdagépen a [Azure Portal](../../iot-edge/how-to-deploy-modules-portal.md) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows)használatával. Ha a portált használja, állítsa a rendszerkép URI-JÁT a Azure Container Registry helyére. 
+Telepítse a térbeli elemzési tárolót IoT-modulként a gazdagépen a [Azure Portal](../../iot-edge/how-to-deploy-modules-portal.md) vagy az [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows)használatával. Ha a portált használja, állítsa a rendszerkép URI-JÁT a Azure Container Registry helyére. 
 
 Az alábbi lépések segítségével helyezheti üzembe a tárolót az Azure CLI használatával.
 
 #### <a name="azure-vm-with-gpu"></a>[Azure-beli virtuális gép GPU-val](#tab/virtual-machine)
 
-Egy GPU-val rendelkező Azure-beli virtuális gép a térbeli elemzések futtatására is használható. Az alábbi példa egy K80 GPU-val rendelkező [NC sorozatú](https://docs.microsoft.com/azure/virtual-machines/nc-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) virtuális gépet fog használni.
+Egy GPU-val rendelkező Azure-beli virtuális gép a térbeli elemzések futtatására is használható. Az alábbi példa egy K80 GPU-val rendelkező [NC sorozatú](../../virtual-machines/nc-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) virtuális gépet fog használni.
 
 #### <a name="create-the-vm"></a>A virtuális gép létrehozása
 
@@ -335,7 +335,7 @@ Ezután válassza a **NC6** vagy a **NC6_Promo** lehetőséget.
 
 Ezután hozza létre a virtuális gépet. A létrehozást követően navigáljon a virtuálisgép-erőforráshoz a Azure Portalban, és válassza ki `Extensions` a bal oldali ablaktáblán. Ekkor megjelenik a bővítmények ablak az összes elérhető bővítménnyel. Válassza `NVIDIA GPU Driver Extension` a létrehozás lehetőséget, majd fejezze be a varázslót.
 
-A bővítmény sikeres alkalmazása után navigáljon a Azure Portal virtuális gép főoldalára, és kattintson a elemre `Connect` . A virtuális gép SSH-n vagy RDP-n keresztül érhető el. Az RDP hasznos lesz, mivel lehetővé teszi a láthatóvá tevő ablak megtekintését (később a magyarázattal). Az RDP-hozzáférés konfigurálásához kövesse [ezeket a lépéseket](https://docs.microsoft.com/azure/virtual-machines/linux/use-remote-desktop) , és nyisson meg egy távoli asztali kapcsolatot a virtuális géppel.
+A bővítmény sikeres alkalmazása után navigáljon a Azure Portal virtuális gép főoldalára, és kattintson a elemre `Connect` . A virtuális gép SSH-n vagy RDP-n keresztül érhető el. Az RDP hasznos lesz, mivel lehetővé teszi a láthatóvá tevő ablak megtekintését (később a magyarázattal). Az RDP-hozzáférés konfigurálásához kövesse [ezeket a lépéseket](../../virtual-machines/linux/use-remote-desktop.md) , és nyisson meg egy távoli asztali kapcsolatot a virtuális géppel.
 
 ### <a name="verify-graphics-drivers-are-installed"></a>A grafikus illesztőprogramok telepítésének ellenőrzése
 
@@ -426,7 +426,7 @@ A következő táblázat a IoT Edge modul által használt különféle környez
 > [!IMPORTANT]
 > A `Eula` , a `Billing` és a `ApiKey` beállításokat meg kell adni a tároló futtatásához; egyéb esetben a tároló nem indul el.  További információ: [számlázás](#billing).
 
-Miután frissítette az [Azure stack Edge-eszközök](https://go.microsoft.com/fwlink/?linkid=2142179), az [asztali gépek](https://go.microsoft.com/fwlink/?linkid=2152270) vagy az Azure-beli virtuális gép ( [GPU](https://go.microsoft.com/fwlink/?linkid=2152189) -val) üzembe helyezési jegyzékét a saját beállításaival és a műveletek kiválasztásával, az alábbi [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows) -paranccsal telepítheti a tárolót a gazdagépen IoT Edge modulként.
+Miután frissítette az [Azure stack Edge-eszközök](https://go.microsoft.com/fwlink/?linkid=2142179), az [asztali gépek](https://go.microsoft.com/fwlink/?linkid=2152270) vagy az Azure-beli virtuális gép ( [GPU](https://go.microsoft.com/fwlink/?linkid=2152189) -val) üzembe helyezési jegyzékét a saját beállításaival és a műveletek kiválasztásával, az alábbi [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows) -paranccsal telepítheti a tárolót a gazdagépen IoT Edge modulként.
 
 ```azurecli
 sudo az login
@@ -457,7 +457,7 @@ Miután a telepítés befejeződött, és a tároló fut, a **gazdaszámítógé
 
 ## <a name="redeploy-or-delete-the-deployment"></a>Az üzemelő példány újbóli üzembe helyezése vagy törlése
 
-Ha frissítenie kell az üzemelő példányt, meg kell győződnie arról, hogy a korábbi központi telepítések sikeresen telepítve vannak, vagy törölnie kell IoT Edge eszköz központi telepítését, amely nem fejeződött be. Ellenkező esetben ezek a központi telepítések továbbra is folytatódnak, így a rendszer rossz állapotban marad. Használhatja a Azure Portal vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows)-t.
+Ha frissítenie kell az üzemelő példányt, meg kell győződnie arról, hogy a korábbi központi telepítések sikeresen telepítve vannak, vagy törölnie kell IoT Edge eszköz központi telepítését, amely nem fejeződött be. Ellenkező esetben ezek a központi telepítések továbbra is folytatódnak, így a rendszer rossz állapotban marad. Használhatja a Azure Portal vagy az [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows)-t.
 
 ## <a name="use-the-output-generated-by-the-container"></a>A tároló által generált kimenet használata
 
@@ -518,7 +518,7 @@ Ebben a cikkben megtanulta a térbeli elemzési tároló letöltésére, telepí
 * A Container images szolgáltatás IoT-modulként fut Azure IoT Edgeban.
 * A tároló konfigurálása és üzembe helyezése a gazdagépen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Felhasználók üzembe helyezése webes alkalmazásokban](spatial-analysis-web-app.md)
 * [Térbeli elemzési műveletek konfigurálása](spatial-analysis-operations.md)

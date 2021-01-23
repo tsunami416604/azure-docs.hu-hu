@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 04/16/2019
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 5e83c599ceed76927f2a313f78c83638d708f1bb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 81005a3032355f566aef2a6794cf2ec5038b0dd8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90985127"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737116"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Virtuális gép biztonsági mentése az Azure-ban a PowerShell használatával
 
@@ -18,7 +18,7 @@ A [Azure PowerShell](/powershell/azure/new-azureps-module-az) az modul az Azure-
 
 [Azure Backup](backup-overview.md) biztonsági mentést készít a helyszíni gépekről és alkalmazásokról, valamint az Azure-beli virtuális gépekről. Ez a cikk bemutatja, hogyan készíthet biztonsági mentést egy Azure-beli virtuális gépről az az modullal. Azt is megteheti, hogy biztonsági másolatot készít egy virtuális gépről az [Azure CLI](quick-backup-vm-cli.md)használatával vagy a [Azure Portal](quick-backup-vm-portal.md).
 
-Ez a rövid útmutató a meglévő Azure-beli virtuális gépek biztonsági mentését mutatja be. Ha létre kell hoznia egy virtuális gépet, [létrehozhatja azt az Azure PowerShell használatával](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json).
+Ez a rövid útmutató a meglévő Azure-beli virtuális gépek biztonsági mentését mutatja be. Ha létre kell hoznia egy virtuális gépet, [létrehozhatja azt az Azure PowerShell használatával](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm?toc=%2fpowershell%2fmodule%2ftoc.json).
 
 Ehhez a rövid útmutatóhoz a Azure PowerShell az modul Version 1.0.0 vagy újabb verziójára van szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket.
 
@@ -45,7 +45,7 @@ A [Recovery Services](backup-azure-recovery-services-vault-overview.md) -tár eg
 A tároló létrehozásakor:
 
 - Az erőforráscsoport és a hely mezőben válassza ki azt az erőforráscsoportot és helyet, amelyről biztonsági másolatot szeretne készíteni.
-- Ha ezt a [parancsfájlt](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json) használta a virtuális gép létrehozásához, az erőforráscsoport **myResourceGroup**, a virtuális gép ***myVM**, és az erőforrások a **WestEurope** régióban találhatók.
+- Ha ezt a [parancsfájlt](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm?toc=%2fpowershell%2fmodule%2ftoc.json) használta a virtuális gép létrehozásához, az erőforráscsoport **myResourceGroup**, a virtuális gép **_myVM_*, és az erőforrások a **WestEurope** régióban találhatók.
 - A Azure Backup automatikusan kezeli a tárterületet a biztonsági másolatok tárolására. Alapértelmezés szerint a [tár geo-redundáns tárolást (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage)használ. A Geo-redundancia biztosítja, hogy a biztonsági másolatba mentett adatok egy másodlagos Azure-régióba replikálódnak, amely több száz kilométerre van az elsődleges régiótól.
 
 Most hozzon létre egy tárolót:
@@ -148,7 +148,7 @@ Futtasson egy igény szerinti biztonsági mentési feladatot a következőképpe
     myvm           ConfigureBackup   Completed    9/18/2017 9:33:18 PM   9/18/2017 9:33:51 PM   fe79c739
     ```
 
-2. A feladatok állapotának **befejeződése után**a virtuális gép védett, és teljes helyreállítási pontja van tárolva.
+2. A feladatok állapotának **befejeződése után** a virtuális gép védett, és teljes helyreállítási pontja van tárolva.
 
 ## <a name="clean-up-the-deployment"></a>Az üzemelő példány tisztítása
 

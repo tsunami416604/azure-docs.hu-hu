@@ -8,16 +8,16 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/01/2020
+ms.date: 01/22/2021
 ms.custom: seodec18
-ms.openlocfilehash: 5682cf9856ad8969d930d72f53e888b03ff6ae75
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: bf743bf1997a339664a6da2e5c02f1bcc1deea26
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020861"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736751"
 ---
-# <a name="querying-data-from-azure-time-series-insights-gen2"></a>Adatok lekérdezése Azure Time Series Insights Gen2
+# <a name="querying-data-from-azure-time-series-insights-gen2"></a>Adatok lekérése az Azure Time Series Insights Gen2-ből
 
 Azure Time Series Insights Gen2 lehetővé teszi az adatok lekérdezését a környezetben tárolt eseményeken és metaadatokon a nyilvános felületi API-kon keresztül. Ezeket az API-kat a [Azure Time Series INSIGHTS ÁME Explorer](./concepts-ux-panels.md)is használja.
 
@@ -70,7 +70,7 @@ Ezek az API-k a többrétegű tárolási megoldásban mindkét áruházban (mele
 
   A válaszban visszaadott időbélyegek a bal oldali intervallumok, nem pedig az intervallumban szereplő események.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ az [idősorozat-modellben](./concepts-model-overview.md)definiálható különböző változókról.
 * További információ az adatok lekérdezéséről a [Azure Time Series Insights Explorerben](./concepts-ux-panels.md).

@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: d6e5195f43991f4d40af57c1ab4b87aaca475b64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3eeaf5f343b6026e02d17e4d3bd90dba4b991c4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87373402"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737045"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>SSH-hitelesítést használó linuxos virtuális gép létrehozása a REST API
 
@@ -26,7 +26,7 @@ Ez REST API a cikk bemutatja, hogyan hozhat létre az Ubuntu 18,04-LTS rendszert
 A kérelem létrehozása és elküldése előtt a következőkre lesz szüksége:
 
 * Az `{subscription-id}` előfizetéséhez tartozó
-  * Ha több előfizetéssel rendelkezik, tekintse meg [a több előfizetés használata](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest) című témakört.
+  * Ha több előfizetéssel rendelkezik, tekintse meg [a több előfizetés használata](/cli/azure/manage-azure-subscriptions-azure-cli) című témakört.
 * Az `{resourceGroupName}` Ön által létrehozott idő előtt
 * Azonos erőforráscsoporthoz tartozó [virtuális hálózati adapter](../../virtual-network/virtual-network-network-interface.md)
 * SSH-kulcspár (ha még nem rendelkezik ilyennel, létrehozhat [egy újat](mac-create-ssh-keys.md) )
@@ -54,7 +54,7 @@ REST API kérelmekkel kapcsolatos általános információkért tekintse meg [a 
 
 A kérelem törzsének létrehozásához a következő általános definíciók használhatók:
 
-| Name (Név)                       | Kötelező | Típus                                                                                | Leírás  |
+| Name                       | Kötelező | Típus                                                                                | Leírás  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True (Igaz)     | sztring                                                                              | Erőforrás helye. |
 | name                       |          | sztring                                                                              | A virtuális gép neve. |
@@ -133,7 +133,7 @@ A műveletnek két sikeres válasza van a virtuális gép létrehozásához vagy
 | 200 OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
 | 201 létrehozva | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Létrehozva     |
 
-Az előző példában szereplő, egy virtuális gépet létrehozó ProvisioningState által létrehozott, tömörített *201* -as válasz egy *vmId* -hozzárendelést tartalmaz, és *létrehozta*a *provisioningState* :
+Az előző példában szereplő, egy virtuális gépet létrehozó ProvisioningState által létrehozott, tömörített *201* -as válasz egy *vmId* -hozzárendelést tartalmaz, és *létrehozta* a  :
 
 ```json
 {

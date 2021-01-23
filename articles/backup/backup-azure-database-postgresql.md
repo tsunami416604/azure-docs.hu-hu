@@ -4,12 +4,12 @@ description: Ismerkedjen meg Azure Database for PostgreSQL biztonsági mentésse
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: 628f43788c11558185a7b8a735373f0a663fdad1
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 1e2d83d4a5e21ed747ec9d4dcf2fa03d1e3935cc
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569487"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737572"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Azure Database for PostgreSQL biztonsági mentés hosszú távú adatmegőrzéssel (előzetes verzió)
 
@@ -31,7 +31,7 @@ Ezt a megoldást önállóan vagy az Azure PostgreSQL által kínált natív biz
 
 |Támogatás  |Részletek  |
 |---------|---------|
-|Támogatott központi telepítések   |  [Azure Database for PostgreSQL – Önálló kiszolgáló](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server)     |
+|Támogatott központi telepítések   |  [Azure Database for PostgreSQL – Önálló kiszolgáló](../postgresql/overview.md#azure-database-for-postgresql---single-server)     |
 |Támogatott Azure-régiók |  USA keleti régiója, USA 2. keleti régiója, USA középső régiója, USA déli középső régiója, USA nyugati régiója, USA 2. nyugati régiója, Dél-Brazília, Közép-Kanada, Észak-Európa, Nyugat-Európa, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Középnyugat-Németország, Észak-Svájc, Nyugat-Svájc, Kelet-Ázsia, Dél-Ausztrália, Kelet-Japán, Nyugat-Japán, Dél-Korea  |
 |Támogatott Azure PostgreSQL-verziók    |   9,5, 9,6, 10, 11      |
 

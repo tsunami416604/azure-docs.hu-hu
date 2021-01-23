@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: d8c680ec30dcecc56c064f08e4690cbbde9c2377
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 842f2f92133664f58ca60d6d30181d48d63271eb
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98679913"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736305"
 ---
 # <a name="backup-and-restore-in-azure-synapse-dedicated-sql-pool"></a>Biztonsági mentés és visszaállítás az Azure szinapszis dedikált SQL-készletében
 
@@ -71,8 +71,16 @@ Egy dedikált SQL-készlet eldobásakor a rendszer a végleges pillanatképet ho
 
 A rendszer naponta egyszer hozza létre a Geo-biztonsági mentést egy [párosított adatközpontba](../../best-practices-availability-paired-regions.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). A Geo-visszaállítás RPO 24 óra. Visszaállíthatja a Geo-biztonsági mentést bármely más régióban lévő kiszolgálóra, ahol a dedikált SQL-készlet támogatott. A földrajzi biztonsági mentés lehetővé teszi az adatraktár visszaállítását abban az esetben, ha az elsődleges régióban nem fér hozzá a visszaállítási pontokhoz.
 
+Ha nem igényel geo-biztonsági mentést a dedikált SQL-készlethez, letilthatja őket, és mentheti a vész-helyreállítási tárolási költségeket. Ehhez tekintse meg a [útmutató: Geo-biztonsági mentések letiltása DEDIKÁLT SQL-készlethez (korábban SQL DW) című témakört](disable-geo-backup.md). Vegye figyelembe, hogy ha letiltja a Geo-biztonsági mentést, nem fogja tudni helyreállítani a dedikált SQL-készletet a párosított Azure-régióba, ha az elsődleges Azure-adatközpont nem érhető el. 
+
 > [!NOTE]
 > Ha rövidebb RPO van szüksége a földrajzi biztonsági mentéshez, akkor [itt](https://feedback.azure.com/forums/307516-sql-data-warehouse)is szavazzon erre a képességre. A felhasználó által definiált visszaállítási pontot és a visszaállítást az újonnan létrehozott visszaállítási pontról egy másik régióban lévő új adattárházra is létrehozhatja. Miután visszaállította az adattárházat, a szolgáltatás online állapotba kerül, és határozatlan ideig szüneteltetheti a számítási költségek megtakarítását. A szüneteltetett adatbázis az Azure-Premium Storage díjszabása szerint terheli az adattárolási díjat. Ha az adatraktár aktív példányára van szüksége, folytathatja a folytatást, amely mindössze néhány percet vesz igénybe.
+
+## <a name="data-residency"></a>Adattárolási hely 
+
+Ha a párosított adatközpont a földrajzi határán kívül található, gondoskodhat arról, hogy az adatai a földrajzi határán belül maradnak, ha a Geo-redundáns tárolást választja. Ezt akkor teheti meg, ha dedikált SQL-készletet (korábban SQL DW) épít ki a Geo-redundáns tárolási lehetőséggel egy dedikált SQL-készlet (korábban SQL DW) létrehozásakor vagy visszaállításakor. 
+
+Annak ellenőrzéséhez, hogy a párosított adatközpont egy másik országban található-e, tekintse meg az [Azure párosított régiókat](../../best-practices-availability-paired-regions.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ## <a name="backup-and-restore-costs"></a>Biztonsági mentési és visszaállítási költségek
 
@@ -105,6 +113,6 @@ A [DEDIKÁLT SQL-készletet](sql-data-warehouse-restore-from-geo-backup.md#resto
 > [!NOTE]
 > A Geo-redundáns visszaállítás végrehajtásához nem kell kijelölnie ezt a funkciót.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A visszaállítási pontokkal kapcsolatos további információkért lásd: [felhasználó által definiált visszaállítási pontok](sql-data-warehouse-restore-points.md)

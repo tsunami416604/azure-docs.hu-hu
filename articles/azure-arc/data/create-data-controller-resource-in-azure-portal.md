@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 297efa83fb1563e3a360f652a6ac1bc2b1679998
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd8c079e91a6765dff8ad347085c44d0aa2f8d82
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90939981"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737303"
 ---
 # <a name="create-an-azure-arc-data-controller-in-the-azure-portal"></a>Azure-beli ív-adatkezelő létrehozása a Azure Portalban
 
@@ -40,12 +40,16 @@ Az alábbi lépéseket követve hozzon létre egy Azure arc-adatkezelőt a Azure
 6. Kattintson az **adatkezelő adatai** gombra.
 7. Válassza ki az előfizetést, az erőforráscsoportot és az Azure-beli helyet ugyanúgy, mint bármely más, a Azure Portalban létrehozott erőforrást. Ebben az esetben a kiválasztott Azure-beli hely lesz az erőforrás metaadatainak tárolása.  Maga az erőforrás minden Ön által választott infrastruktúrán létrejön. Nem kell az Azure-infrastruktúrán lennie.
 8. Adja meg az adatvezérlő nevét.
-9. Jelenleg csak a közvetett módon csatlakoztatott mód támogatott az előzetes verzióban.
-10. Válasszon egy központi telepítési konfigurációs profilt.
-11. Kattintson a **Megnyitás az Azure Studióban** gombra.
-12. A következő képernyőn megjelenik a kiválasztott elemek és a létrehozott jegyzetfüzetek összegzése.  A jegyzetfüzet letöltéséhez kattintson a **kiépítési jegyzetfüzet letöltése** gombra.
-13. Nyissa meg Azure Data Studio a jegyzetfüzetet, és kattintson a felül található **összes futtatása** gombra.
-14. Az adatvezérlő létrehozásának befejezéséhez kövesse a jegyzetfüzetben megjelenő utasításokat és útmutatást.
+9. Válassza ki a kapcsolati módot az adatkezelőhöz. További információ a [kapcsolódási módokról és a követelményekről](./connectivity.md). 
+
+   > [!NOTE] 
+   > Ha a **közvetlen** csatlakozási mód lehetőséget választja, ügyeljen arra, hogy az egyszerű szolgáltatás hitelesítő adatai a szolgáltatásnév [létrehozása](upload-metrics-and-logs-to-azure-monitor.md#create-service-principal)című témakörben leírt környezeti változókon keresztül legyenek beállítva. 
+
+1. Válasszon egy központi telepítési konfigurációs profilt.
+1. Kattintson a **Megnyitás az Azure Studióban** gombra.
+1. A következő képernyőn megjelenik a kiválasztott elemek és a létrehozott jegyzetfüzetek összegzése.  A jegyzetfüzet letöltéséhez kattintson a **kiépítési jegyzetfüzet letöltése** gombra.
+1. Nyissa meg Azure Data Studio a jegyzetfüzetet, és kattintson a felül található **összes futtatása** gombra.
+1. Az adatvezérlő létrehozásának befejezéséhez kövesse a jegyzetfüzetben megjelenő utasításokat és útmutatást.
 
 ## <a name="monitoring-the-creation-status"></a>A létrehozási állapot figyelése
 

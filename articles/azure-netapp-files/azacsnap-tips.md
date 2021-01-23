@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 86d7b1a6d361ebbc0d8419d184f9a11d390a37f1
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 08edd86fd19e7698a791e411f42a2a89084a91f7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803187"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737133"
 ---
 # <a name="tips-and-tricks-for-using-azure-application-consistent-snapshot-tool-preview"></a>Tippek és trükkök az Azure Application konzisztens pillanatkép-eszköz (előzetes verzió) használatához
 
@@ -27,7 +27,7 @@ Ez a cikk olyan tippeket és trükköket tartalmaz, amelyek hasznosak lehetnek a
 
 ## <a name="limit-service-principal-permissions"></a>Egyszerű szolgáltatásnév engedélyeinek korlátozása
 
-Előfordulhat, hogy korlátozni kell a AzAcSnap egyszerű szolgáltatásának hatókörét.  Az Azure-erőforrások részletes hozzáférés-kezelésével kapcsolatos további információkért tekintse át az [Azure RBAC dokumentációját](https://docs.microsoft.com/azure/role-based-access-control/) .  
+Előfordulhat, hogy korlátozni kell a AzAcSnap egyszerű szolgáltatásának hatókörét.  Az Azure-erőforrások részletes hozzáférés-kezelésével kapcsolatos további információkért tekintse át az [Azure RBAC dokumentációját](../role-based-access-control/index.yml) .  
 
 A következő példa egy szerepkör-definíciót mutat be a AzAcSnap működéséhez szükséges minimálisan szükséges műveletekkel.
 

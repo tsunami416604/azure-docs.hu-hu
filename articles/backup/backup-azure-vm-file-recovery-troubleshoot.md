@@ -3,12 +3,12 @@ title: Azure-beli virtuális gép fájljának helyreállítása – problémameg
 description: A fájlok és mappák Azure-beli virtuális gépekről történő helyreállításakor felmerülő problémák elhárítása.
 ms.topic: troubleshooting
 ms.date: 07/12/2020
-ms.openlocfilehash: aec69b91ad1dae5864e5e8fba61c53e6d15887f4
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: c4d0d233237cb477d72efea0b91d4e5288e2a302
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624506"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735877"
 ---
 # <a name="troubleshoot-issues-in-file-recovery-of-an-azure-vm-backup"></a>Az Azure-beli virtuális gépek biztonsági mentésének fájl-helyreállításával kapcsolatos problémák elhárítása
 
@@ -46,7 +46,7 @@ Ez a szakasz a fájlok helyreállítására szolgáló parancsfájl letöltése 
 
 ### <a name="you-cant-download-the-script"></a>A parancsfájl nem tölthető le
 
-1. Győződjön meg arról, [hogy rendelkezik a parancsfájl letöltéséhez szükséges engedélyekkel](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#select-recovery-point-who-can-generate-script).
+1. Győződjön meg arról, [hogy rendelkezik a parancsfájl letöltéséhez szükséges engedélyekkel](./backup-azure-restore-files-from-vm.md#select-recovery-point-who-can-generate-script).
 1. Ellenőrizze az Azure cél IP-címeihez való kapcsolódást. Futtassa a következő parancsok egyikét egy emelt szintű parancssorból:
 
    `nslookup download.microsoft.com`
@@ -67,7 +67,7 @@ Ha az elemszintű helyreállítás (ILR) Python-szkriptjét SUSE Linux Enterpris
 
 Előfordulhat, hogy egy "kivétel történt a célhoz való csatlakozáskor" hibaüzenet jelenik meg.
 
-1. Ellenőrizze, hogy a parancsfájlt futtató gép megfelel-e a [hozzáférési követelményeknek](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-4-access-requirements-to-successfully-run-the-script).
+1. Ellenőrizze, hogy a parancsfájlt futtató gép megfelel-e a [hozzáférési követelményeknek](./backup-azure-restore-files-from-vm.md#step-4-access-requirements-to-successfully-run-the-script).
 1. Ellenőrizze az Azure cél IP-címeihez való kapcsolódást. Futtassa a következő parancsok egyikét egy emelt szintű parancssorból:
 
    `nslookup download.microsoft.com`
@@ -169,6 +169,6 @@ A másolás meghiúsulhat a következő hibával: "0x80070780: a fájl nem érhe
 
 Ellenőrizze, hogy a forráskiszolgálón van-e engedélyezve a lemez deduplikálása. Ha igen, győződjön meg arról, hogy a visszaállítási kiszolgáló a meghajtókon is engedélyezte a deduplikálás szolgáltatást. A deduplikálás nem állítható be úgy, hogy ne legyenek deduplikálni a meghajtókat a visszaállítási kiszolgálón.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Fájlok és mappák helyreállítása az Azure-beli virtuális gépek biztonsági másolatából](backup-azure-restore-files-from-vm.md)

@@ -1,15 +1,15 @@
 ---
 title: Erőforrások rendszerezése felügyeleti csoportokkal – Azure-irányítás
 description: Megismerheti a felügyeleti csoportokat és azok használatának módját, valamint a hozzájuk tartozó engedélyek működését.
-ms.date: 11/17/2020
+ms.date: 01/22/2021
 ms.topic: overview
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 9f23a279733169f17f0f82cb80aa08bfafcd45d0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e86501527ff68319fc8d2e942e7ffa977dcecbe6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030671"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736322"
 ---
 # <a name="what-are-azure-management-groups"></a>Mik az Azure-beli felügyeleti csoportok?
 
@@ -162,16 +162,16 @@ A forgatókönyv kijavításához néhány különböző lehetőség áll rendel
 - Távolítsa el a szerepkör-hozzárendelést az előfizetésből, mielőtt áthelyezi az előfizetést egy új szülő MG-ra.
 - Adja hozzá az előfizetést a szerepkör-definícióhoz hozzárendelhető hatókörhöz.
 - Módosítsa a hozzárendelhető hatókört a szerepkör-definíción belül. A fenti példában frissítheti a hozzárendelhető hatóköröket a marketingből a gyökérszintű felügyeleti csoportba, hogy a definíciót a hierarchia mindkét ága elérheti.  
-- Hozzon létre egy további egyéni szerepkört, amely a másik ágban lesz meghatározva. Ehhez az új szerepkörhöz szükség lesz a szerepkör-hozzárendelés módosítására az előfizetésben is.  
+- Hozzon létre egy másik, a másik ágban definiált egyéni szerepkört. Ehhez az új szerepkörhöz szükség van a szerepkör-hozzárendelés módosítására az előfizetésben is.  
 
 ### <a name="limitations"></a>Korlátozások  
 
 A felügyeleti csoportok egyéni szerepköreinek használatakor korlátozások vannak érvényben. 
 
  - Egy új szerepkör hozzárendelhető hatókörében csak egy felügyeleti csoportot lehet definiálni. Ez a korlátozás azért van érvényben, hogy csökkentse a helyzetek számát, amikor a szerepkör-definíciók és a szerepkör-hozzárendelések le vannak választva. Ez a helyzet akkor fordul elő, ha egy szerepkör-hozzárendeléssel rendelkező előfizetés vagy felügyeleti csoport egy másik szülőhöz kerül, amely nem rendelkezik szerepkör-definícióval.  
- - Az erőforrás-szolgáltatói adatsík műveletei nem definiálhatók a felügyeleti csoport egyéni szerepköreiben. Ez a korlátozás azért van érvényben, mert késési probléma történt az adatközpont erőforrás-szolgáltatóinak frissítésével.
-   Ez a késési probléma jelenleg használatban van, és ezek a műveletek le lesznek tiltva a szerepkör-definícióból a kockázatok csökkentése érdekében.
- - A Azure Resource Manager nem ellenőrzi a felügyeleti csoport létezését a szerepkör-definíció hozzárendelhető hatókörében. Ha a rendszer elküld egy elírást vagy helytelen felügyeleti csoport AZONOSÍTÓját, akkor a szerepkör-definíció továbbra is létrejön.
+ - Az erőforrás-szolgáltatói adatsík műveletei nem definiálhatók a felügyeleti csoport egyéni szerepköreiben. Ez a korlátozás azért van érvényben, mert késési probléma történt az adatközpont erőforrás-szolgáltatóinak frissítésével. Ez a késési probléma jelenleg használatban van, és ezek a műveletek le lesznek tiltva a szerepkör-definícióból a kockázatok csökkentése érdekében.
+ - A Azure Resource Manager nem ellenőrzi a felügyeleti csoport létezését a szerepkör-definíció hozzárendelhető hatókörében. Ha a rendszer elírást vagy helytelen felügyeleti csoport AZONOSÍTÓját sorolja fel, a szerepkör-definíció még mindig létrejön.
+ - A _dataActions_ szerepkörhöz tartozó szerepkör-hozzárendelés nem támogatott. Ehelyett hozza létre a szerepkör-hozzárendelést az előfizetés hatókörében.
 
 > [!IMPORTANT]
 > A felügyeleti csoport hozzáadása a `AssignableScopes` jelenleg előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén.
@@ -202,7 +202,7 @@ A felügyeleti csoportok támogatottak az [Azure-tevékenységnaplóban](../../a
 
 Az Azure Portalon kívüli felügyeleti csoportok lekérdezésekor a felügyeleti csoportok célhatóköre a következőhöz hasonlóan néz ki: **"/ providers/Microsoft.Management/managementGroups/{yourMgID}"**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A felügyeleti csoportokkal kapcsolatos további tudnivalókért lásd:
 

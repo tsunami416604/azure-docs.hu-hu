@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
-ms.openlocfilehash: f043f7ed63353dcb9cf9fd26690da97b902f32a6
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 2c19ee2b8e7ec3c695b2c76c46402c118c559b40
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108619"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736238"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Oktatóanyag: Az Azure SQL Database-kapcsolat biztonságossá tétele az App Service-ből felügyelt identitás segítségével
 
@@ -130,7 +130,7 @@ A *Web.config* a fájl elejéről dolgozik, és hajtsa végre a következő mód
 - Keresse meg a nevű kapcsolati karakterláncot, `MyDbConnection` és cserélje le az `connectionString` értékét a értékre `"server=tcp:<server-name>.database.windows.net;database=<db-name>;UID=AnyString;Authentication=Active Directory Interactive"` . Cserélje _\<server-name>_ le _\<db-name>_ a és a nevet a kiszolgáló nevére és az adatbázis nevére.
 
 > [!NOTE]
-> Az imént regisztrált SqlAuthenticationProvider a korábban telepített AppAuthentication-könyvtár tetején alapul. Alapértelmezés szerint a rendszer hozzárendelt identitást használ. A felhasználó által hozzárendelt identitás kihasználása érdekében további konfigurációt kell megadnia. Tekintse meg a AppAuthentication könyvtárának a [kapcsolatok karakterláncának támogatását](../key-vault/general/service-to-service-authentication.md#connection-string-support) .
+> Az imént regisztrált SqlAuthenticationProvider a korábban telepített AppAuthentication-könyvtár tetején alapul. Alapértelmezés szerint a rendszer hozzárendelt identitást használ. A felhasználó által hozzárendelt identitás kihasználása érdekében további konfigurációt kell megadnia. Tekintse meg a AppAuthentication könyvtárának a [kapcsolatok karakterláncának támogatását](/dotnet/api/overview/azure/service-to-service-authentication#connection-string-support) .
 
 Ez minden dolog, amire szüksége van a SQL Databasehoz való kapcsolódáshoz. A Visual Studióban végzett hibakeresés során a kód a [Visual Studióban](#set-up-visual-studio)beállított Azure ad-felhasználót használja. A SQL Database később beállíthatja, hogy lehetővé tegye a App Service alkalmazás felügyelt identitásával való kapcsolódást.
 
@@ -265,7 +265,7 @@ Most már ugyanúgy szerkesztheti a feladatlistát, mint korábban.
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbiak elvégzését ismerte meg:
 

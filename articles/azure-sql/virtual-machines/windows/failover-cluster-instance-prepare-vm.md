@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 1b8d88167dac6b2d0b1ba2afc90c443fd80b9e46
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 10f01fd5943928eda1f1e4518f30c8e3ccf56b46
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223159"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737795"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>Virtuális gépek előkészítése a (z) rendszerhez (SQL Server Azure-beli virtuális gépeken)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -44,7 +44,7 @@ A virtuális gép konfigurációs beállításai attól függően változnak, ho
 
 ## <a name="configure-vm-availability"></a>VIRTUÁLIS gépek rendelkezésre állásának konfigurálása 
 
-A feladatátvételi fürtszolgáltatás megköveteli, hogy a virtuális gépek egy [rendelkezésre állási csoportba](../../../virtual-machines/linux/tutorial-availability-sets.md) vagy egy [rendelkezésre állási zónába](../../../availability-zones/az-overview.md#availability-zones)kerüljenek. Ha a rendelkezésre állási csoportok lehetőséget választja, a virtuális gépek szorosabb megkereséséhez használhatja a [közelségi csoportokat](../../../virtual-machines/windows/co-location.md#proximity-placement-groups) . Valójában a közelségi elhelyezési csoportok az Azure-beli megosztott lemezek használatának előfeltételei. 
+A feladatátvételi fürtszolgáltatás megköveteli, hogy a virtuális gépek egy [rendelkezésre állási csoportba](../../../virtual-machines/linux/tutorial-availability-sets.md) vagy egy [rendelkezésre állási zónába](../../../availability-zones/az-overview.md#availability-zones)kerüljenek. Ha a rendelkezésre állási csoportok lehetőséget választja, a virtuális gépek szorosabb megkereséséhez használhatja a [közelségi csoportokat](../../../virtual-machines/co-location.md#proximity-placement-groups) . Valójában a közelségi elhelyezési csoportok az Azure-beli megosztott lemezek használatának előfeltételei. 
 
 Körültekintően válassza ki a virtuális gép rendelkezésre állási beállítását, amely megfelel a kívánt fürtkonfiguráció: 
 
@@ -126,7 +126,7 @@ A virtuális gépeket is csatlakoztatnia kell a tartományhoz. Ezt megteheti egy
 Az Azure piactéren létrehozott virtuális gépekhez csatlakoztatott tároló tartozik. Ha a prémium szintű fájlmegosztás vagy az Azure Shared Disks használatával tervezi beállítani a (z)%-os tárhelyet, eltávolíthatja a csatlakoztatott tárolót a költségek mentéséhez, mivel a rendszer a feladatátvevő fürt példányához nem használja a helyi tárterületet. Azonban lehetséges, hogy a csatlakoztatott tárolót Közvetlen tárolóhelyek-es verziós megoldásokhoz is használhatja, ezért előfordulhat, hogy a rendszer nem segít eltávolítani őket ebben az esetben. Tekintse át a következőt:-es tárolási megoldás annak megállapításához, hogy a csatlakoztatott tároló eltávolítása optimális-e a költségek megtakarításához 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy előkészítette a virtuális gép környezetét, készen áll a feladatátvevő fürt példányának konfigurálására. 
 

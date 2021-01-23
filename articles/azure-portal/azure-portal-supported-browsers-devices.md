@@ -3,18 +3,18 @@ title: Azure Portal támogatott böngészők és eszközök
 description: A Azure Portal az összes modern eszközön és a legújabb böngésző-verziókkal is használhatja. Ebből a cikkből megtudhatja, hogy a böngészője támogatott-e.
 ms.assetid: 35fa18ec-21d8-41bf-af2b-e5e92703401d
 ms.topic: conceptual
-ms.date: 11/18/2020
+ms.date: 01/22/2021
 ms.custom: accessibility
-ms.openlocfilehash: 81c4ccef688622ec20d111383359053b82045996
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 2637dd6112d1cf1f9a3131cb9043a8b6aac2884f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938086"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735826"
 ---
 # <a name="supported-devices"></a>Támogatott eszközök
 
-A [Azure Portal](https://portal.azure.com) egy webalapú konzol, amely az összes modern asztali számítógép és Tablet-eszköz böngészőjében fut. A portál használatához engedélyezni kell a JavaScriptet a böngészőben.
+A [Azure Portal](https://portal.azure.com) egy webalapú konzol, amely az összes modern asztali számítógép és Tablet-eszköz böngészőjében fut. A portál használatához engedélyezni kell a JavaScriptet a böngészőben. Azt javasoljuk, hogy az ad-blokkolók ne használjanak a böngészőben, mert problémákat okozhatnak a portál egyes szolgáltatásaiban.
 
 Ha egy mobileszközön szeretné felügyelni az Azure-erőforrásokat, próbálja ki a  [Azure Mobile App](https://azure.microsoft.com/features/azure-portal/mobile-app/). IOS és Android rendszereken érhető el.
 

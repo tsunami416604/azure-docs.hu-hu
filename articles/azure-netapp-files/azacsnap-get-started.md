@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: c8532637e695b506e372817e6f4531f9a323936b
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 25f555038c1ce0d960266eacc673a62a1ffd5ac0
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632696"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736362"
 ---
 # <a name="get-started-with-azure-application-consistent-snapshot-tool-preview"></a>Ismerkedés az Azure Application konzisztens pillanatkép-eszközzel (előzetes verzió)
 
@@ -126,7 +126,7 @@ A pillanatkép-eszközök a következő esetekben használhatók.
 - SKU-TÍPUS
 - SKU TYPE II
 
-Lásd: [a HANA nagyméretű példányainak támogatott forgatókönyvei](/azure/virtual-machines/workloads/sap/hana-supported-scenario)
+Lásd: [a HANA nagyméretű példányainak támogatott forgatókönyvei](../virtual-machines/workloads/sap/hana-supported-scenario.md)
 
 ## <a name="snapshot-support-matrix-from-sap"></a>Pillanatkép-támogatás mátrixa az SAP-ból
 
@@ -182,6 +182,6 @@ A pillanatkép-eszközök használatának szemléltetésére a következő útmu
 - [Az adatok replikációjának figyelése az elsődlegesről a DR webhelyre](azacsnap-disaster-recovery.md#monitor-data-replication-from-primary-to-dr-site)
 - [Hogyan hajtható végre feladatátvétel a DR webhelyre?](azacsnap-disaster-recovery.md#perform-a-failover-to-dr-site)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Application konzisztens pillanatkép-eszköz telepítése](azacsnap-installation.md)

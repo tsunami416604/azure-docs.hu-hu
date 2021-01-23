@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 5c2182fc80c3745e0238c378c1cade0530393181
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 00aaa5bdc0d48adb735679fc4a71b3431970ef09
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632691"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737167"
 ---
 # <a name="install-azure-application-consistent-snapshot-tool-preview"></a>Az Azure Application konzisztens pillanatkép-eszköz (előzetes verzió) telepítése
 
@@ -34,9 +34,9 @@ Az öntelepítő megkísérli meghatározni az összes fájl helyes beállítás
 
 Kövesse az irányelveket a pillanatképek és a vész-helyreállítási parancsok beállításához és végrehajtásához. A pillanatkép-eszközök telepítése és használata előtt ajánlott a következő lépések legfelső szintűként való végrehajtása.
 
-1. **Az operációs rendszer javította**: az Azure-ban [SAP HANA (nagyméretű példányok) telepítésével és konfigurálásával](/azure/virtual-machines/workloads/sap/hana-installation#setting-up-smt-server-for-suse-linux)kapcsolatban lásd a javítás és az SMT telepítőjét.
+1. **Az operációs rendszer javította**: az Azure-ban [SAP HANA (nagyméretű példányok) telepítésével és konfigurálásával](../virtual-machines/workloads/sap/hana-installation.md#operating-system)kapcsolatban lásd a javítás és az SMT telepítőjét.
 1. **Az idő szinkronizálása be van állítva**. Az ügyfélnek meg kell adnia egy NTP-kompatibilis időkiszolgálót, és ennek megfelelően kell konfigurálnia az operációs rendszert.
-1. A **Hana telepítve van** : Hana telepítési utasítások a Hana- [adatbázison az SAP NetWeaver telepítésével](https://blogs.msdn.microsoft.com/saponsqlserver/2017/11/21/sap-netweaver-installation-on-hana-database/)kapcsolatban.
+1. A **Hana telepítve van** : Hana telepítési utasítások a Hana- [adatbázison az SAP NetWeaver telepítésével](/archive/blogs/saponsqlserver/sap-netweaver-installation-on-hana-database)kapcsolatban.
 1. A Storage szolgáltatással való **[kommunikáció engedélyezése](#enable-communication-with-storage)** (további részletekért tekintse meg a különálló szakaszt): az ügyfélnek be kell ÁLLÍTANIA az SSH-t egy privát/nyilvános kulcspár használatával, és meg kell adnia a nyilvános kulcsot minden olyan csomópont számára, ahol a pillanatkép-eszközöket a rendszer a tároló háttérbe állításához szükséges Microsoft-műveletekhez hajtja végre.
    1. **Azure NetApp Files esetén (a részletekért tekintse meg a külön szakaszt)**: az ügyfélnek az egyszerű szolgáltatásnév hitelesítési fájlját kell előkészítenie.
    1. **Azure-beli nagyméretű példány esetén (a részletekért tekintse meg a külön szakaszt)**: az ügyfélnek be kell ÁLLÍTANIA az SSH-t egy magán-és nyilvános kulcspár használatával, és meg kell adnia a nyilvános kulcsot minden olyan csomóponthoz, ahol a pillanatkép-eszközöket a rendszer a tároló háttérbe állításához szükséges Microsoft-műveletekhez hajtja végre.
@@ -714,6 +714,6 @@ global.ini,DEFAULT,,,persistence,log_backup_timeout_s,900
 global.ini,SYSTEM,,,persistence,log_backup_timeout_s,300
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Application konzisztens pillanatkép-eszköz konfigurálása](azacsnap-cmd-ref-configure.md)

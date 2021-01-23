@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c27ef1af3e439b22f00f9247b5270118bbe9ca89
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 3678ead9f3e1ba2556fde3c2fbe30df4e7dc2225
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197710"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737235"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Azure biztonsági alapkonfiguráció a Batch szolgáltatáshoz
 
@@ -62,9 +62,9 @@ Ha lehetséges, tiltsa le a nyilvános hálózati hozzáférést az Azure Privat
 
 **Útmutató**: az Azure DDoS (Distributed szolgáltatásmegtagadás) standard szintű védelem engedélyezése a virtuális hálózaton, amely megvédi Azure batch-készletét a DDOS-támadások elleni védelemhez. A Azure Security Center integrált fenyegetési intelligencia használatával megtagadhatja a kommunikációt az ismert kártékony vagy nem használt internetes IP-címekkel.
 
-- [A DDoS Protection konfigurálása](/azure/virtual-network/manage-ddos-protection)
+- [A DDoS Protection konfigurálása](../ddos-protection/manage-ddos-protection.md)
 
-- [Az Azure Security Center integrált veszélyforrások felderítésének megismerése](/azure/security-center/security-center-alerts-service-layer)
+- [Az Azure Security Center integrált veszélyforrások felderítésének megismerése](../security-center/azure-defender.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -126,7 +126,7 @@ A címkézéshez kapcsolódó beépített Azure Policy definíciók bármelyiké
 
 A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshet vagy végezhet műveleteket az erőforrásokon.
 
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 - [Virtuális hálózat létrehozása](../virtual-network/quick-create-portal.md)
 
@@ -140,7 +140,7 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 **Útmutató**: az Azure-tevékenység naplójának használata a hálózati erőforrás-konfigurációk figyelésére és a Azure batch-készletekhez kapcsolódó hálózati erőforrások változásainak észlelésére. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrásokra vonatkozó módosításokat végrehajtják
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](/azure/azure-monitor/platform/activity-log-view) 
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log) 
 
 - [Riasztások létrehozása a Azure Monitorban](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -188,7 +188,7 @@ Ha szükséges, az egyes készlet-csomópontokhoz biztonságos rendszerhéj (SSH
 
 - [Diagnosztikai naplók összegyűjtése a Azure Batch-fiókból](batch-diagnostics.md#batch-diagnostics)
 
-- [Távoli kapcsolódás a Azure Batch Pool-csomópontokhoz](/azure/batch/batch-api-basics#error-handling)
+- [Távoli kapcsolódás a Azure Batch Pool-csomópontokhoz](./batch-service-workflow-features.md#basic-workflow)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -260,9 +260,9 @@ Ha szükséges, az egyes készlet-csomópontokhoz biztonságos rendszerhéj (SSH
 
 Emellett Azure Security Center identitás-és hozzáférés-kezelési javaslatokat is használhat.
 
-- [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 - [Identitás és hozzáférés figyelése Azure Security Center](../security-center/security-center-identity-access.md)
 
@@ -324,7 +324,7 @@ Emellett Azure Security Center identitás-és hozzáférés-kezelési javaslatok
 
 **Útmutató**: ha a Azure batch-alkalmazások integrált hitelesítése Azure Active Directory, a naplók és a riasztások generálásához Azure Active Directory biztonsági jelentéseket kell használni, ha a környezetben gyanús vagy nem biztonságos tevékenység történik. A Azure Security Center használatával figyelheti az identitás-és hozzáférési tevékenységeket.
 
-- [A kockázatos tevékenységek miatt megjelölt Azure AD-felhasználók azonosítása](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [A kockázatos tevékenységek miatt megjelölt Azure AD-felhasználók azonosítása](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [A felhasználók identitás-és hozzáférési tevékenységének figyelése Azure Security Center](../security-center/security-center-identity-access.md)
 
@@ -378,7 +378,7 @@ Emellett Azure Security Center identitás-és hozzáférés-kezelési javaslatok
 
 **Útmutató**: a Azure Active Directory kockázati észlelésekkel és az Identity Protection szolgáltatással konfigurálhatja a felhasználói identitásokkal kapcsolatos gyanús műveletekre vonatkozó automatizált válaszokat. Emellett további vizsgálatot is betöltheti az Azure Sentinelbe.
 
-- [Az Azure AD kockázatos bejelentkezéseinek megtekintése](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Az Azure AD kockázatos bejelentkezéseinek megtekintése](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -406,7 +406,7 @@ Emellett Azure Security Center identitás-és hozzáférés-kezelési javaslatok
 
 **Útmutató**: a címkék használatával segítheti a bizalmas adatokat tároló vagy feldolgozó Azure-erőforrások nyomon követését.
 
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -418,7 +418,7 @@ Emellett Azure Security Center identitás-és hozzáférés-kezelési javaslatok
 
 - [Azure Batch-készlet létrehozása egy Virtual Networkon belül](batch-virtual-network.md)
 
-- [Azure Storage-fiókok biztonságossá tétele](/azure/storage/common/storage-security-guide)
+- [Azure Storage-fiókok biztonságossá tétele](../storage/blobs/security-recommendations.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -434,7 +434,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 - [Az ügyféladatok Azure-beli védelmének ismertetése](../security/fundamentals/protection-customer-data.md)
 
-- [Azure Storage-fiókok biztonságossá tétele](/azure/storage/common/storage-security-guide)
+- [Azure Storage-fiókok biztonságossá tétele](../storage/blobs/security-recommendations.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -462,7 +462,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 - [Az ügyféladatok Azure-beli védelmének ismertetése](../security/fundamentals/protection-customer-data.md)
 
-- [Azure Storage-fiókok biztonságossá tétele](/azure/storage/common/storage-security-guide)
+- [Azure Storage-fiókok biztonságossá tétele](../storage/blobs/security-recommendations.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -498,9 +498,9 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 Az Azure Disk Encryption használatával a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítése érdekében biztosíthatja az adatai védelmét és védelmét. Az összes felügyelt lemez, pillanatkép, kép és a meglévő lemezekre írt adatok automatikusan titkosítva vannak a platform által felügyelt kulcsokkal.
 
-- [Az Azure Storage-fiókok titkosítási kulcsainak kezelése](/azure/storage/common/storage-encryption-keys-portal)
+- [Az Azure Storage-fiókok titkosítási kulcsainak kezelése](../storage/common/customer-managed-keys-configure-key-vault.md)
 
-- [Az ügyfél által felügyelt titkosítási kulcsok konfigurálása](/azure/storage/common/storage-encryption-keys-portal)
+- [Az ügyfél által felügyelt titkosítási kulcsok konfigurálása](../storage/common/customer-managed-keys-configure-key-vault.md)
 
 - [Lemezes titkosítást használó készlet létrehozása](disk-encryption.md)
 
@@ -580,7 +580,7 @@ Bár a klasszikus Azure-erőforrások az Azure Resource Graph Explorerben is fel
 
 - [Lekérdezések létrehozása az Azure Resource Graph Explorerrel](../governance/resource-graph/first-query-portal.md)
 
-- [Azure-előfizetések megtekintése](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
 
@@ -592,7 +592,7 @@ Bár a klasszikus Azure-erőforrások az Azure Resource Graph Explorerben is fel
 
 **Útmutató**: címkéket alkalmazhat az Azure-erőforrásokra, így a metaadatok logikailag rendszerezve lesznek a besorolásban.
 
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -602,11 +602,11 @@ Bár a klasszikus Azure-erőforrások az Azure Resource Graph Explorerben is fel
 
 **Útmutató**: a címkézés, a felügyeleti csoportok és az elkülönített előfizetések használata, ha szükséges, az eszközök rendszerezéséhez és nyomon követéséhez. Rendszeres időközönként egyeztetheti a leltárt, és gondoskodhat arról, hogy a jogosulatlan erőforrások törlése az előfizetésből időben történjen.
 
-- [További Azure-előfizetések létrehozása](/azure/billing/billing-create-subscription)
+- [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-- [Management Groups létrehozása](/azure/governance/management-groups/create)
+- [Management Groups létrehozása](../governance/management-groups/create-management-group-portal.md)
 
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -701,7 +701,7 @@ Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: Azure Policy aliasok használata a "Microsoft.BatCH" névtérben egyéni szabályzatok létrehozásához a Azure batch-fiókok és-készletek konfigurációjának naplózásához vagy érvényesítéséhez.
 
-- [Az elérhető Azure Policy aliasok megtekintése](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
@@ -747,9 +747,9 @@ Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: ha a Azure batch-fiókokhoz,-készletekhez vagy kapcsolódó erőforrásokhoz egyéni Azure Policy definíciókat használ, az Azure Repos segítségével biztonságosan tárolhatja és kezelheti a kódot.
 
-- [Kód tárolása az Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Az Azure Repos dokumentációja](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Az Azure Repos dokumentációja](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -791,7 +791,7 @@ Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az elő
 - Az alhálózatokat hálózati biztonsági csoporttal kell társítani – a Storage-fiókoknak virtuális hálózati szolgáltatási végpontot kell használniuk
 - A Batch-fiókokban lévő diagnosztikai naplókat engedélyezni kell
 
-- [Az elérhető Azure Policy aliasok megtekintése](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
@@ -884,7 +884,7 @@ A nem számítási Azure-erőforrásokra feltöltött fájlok előzetes vizsgál
 
 - [Tárolási redundancia konfigurálása Azure Storage-fiókokhoz](../storage/common/storage-redundancy.md)
 
-- [Key Vault-kulcsok biztonsági mentése az Azure-ban](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Key Vault-kulcsok biztonsági mentése az Azure-ban](/powershell/module/az.keyvault/backup-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -894,9 +894,9 @@ A nem számítási Azure-erőforrásokra feltöltött fájlok előzetes vizsgál
 
 **Útmutató**: Ha saját kulcsokat felügyel az Azure Storage-fiókokhoz vagy az Azure batch-implementációhoz kapcsolódó bármely más erőforráshoz, a biztonsági másolatban szereplő kulcsok visszaállítását rendszeresen tesztelje.
 
-- [Key Vault-kulcsok biztonsági mentése az Azure-ban](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Key Vault-kulcsok biztonsági mentése az Azure-ban](/powershell/module/az.keyvault/backup-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
-- [Ügyfél által felügyelt kulcs visszaállítása a PowerShell-lel](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Ügyfél által felügyelt kulcs visszaállítása a PowerShell-lel](/powershell/module/az.keyvault/restore-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -906,7 +906,7 @@ A nem számítási Azure-erőforrásokra feltöltött fájlok előzetes vizsgál
 
 **Útmutató**: Ha Azure Key Vaultt használ a Azure batch Pool Storage-fiókokhoz kapcsolódó kulcsok tárolására, a kulcsok véletlen vagy rosszindulatú Törlés elleni megvédéséhez engedélyezze a Azure Key Vault Soft-Delete.
 
-- [A Soft delete engedélyezése Azure Key Vault](/azure/key-vault/key-vault-soft-delete-powershell)
+- [A Soft delete engedélyezése Azure Key Vault](../key-vault/general/key-vault-recovery.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -992,7 +992,7 @@ A Microsoft által felügyelt felhő-infrastruktúrával,-szolgáltatásokkal é
 
 **Felelősség**: Megosztott
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Az Azure Security Benchmark v2 áttekintésének](/azure/security/benchmarks/overview) megtekintése
-- További tudnivalók az [Azure biztonsági alapterveiről](/azure/security/benchmarks/security-baselines-overview)
+- [Az Azure Security Benchmark v2 áttekintésének](../security/benchmarks/overview.md) megtekintése
+- További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

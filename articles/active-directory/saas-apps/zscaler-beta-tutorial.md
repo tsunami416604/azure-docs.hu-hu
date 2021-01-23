@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 6914fb50cdb157cf8ef7b5433ebbde47eff8fc32
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 4e8dce970c9e7cfb2aa7887cf1fb3ed6ef9030a1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539800"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735584"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>Oktatóanyag: Azure Active Directory integráció a Zscaler Betatal
 
@@ -105,10 +105,10 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     f. Válassza az **OK** lehetőséget.
 
-    : Válassza a **Mentés** lehetőséget.
+    : Kattintson a **Mentés** gombra.
 
     > [!NOTE]
-    > [Ide kattintva](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui) megtudhatja, hogyan konfigurálhatja a szerepkört az Azure ad-ben.
+    > [Ide kattintva](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview) megtudhatja, hogyan konfigurálhatja a szerepkört az Azure ad-ben.
 
 7. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **Letöltés** elemet a tanúsítvány letöltéséhez **(Base64)**. Mentse a számítógépére.
 
@@ -180,7 +180,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     : A részleg **neve attribútum** mezőben adja meg a **részleg** értéket, ha engedélyezni szeretné a részleg attribútumainak SAML-kiépítését.
 
-    h. Válassza a **Mentés** lehetőséget.
+    h. Kattintson a **Mentés** gombra.
 
 6. A **felhasználói hitelesítés konfigurálása** párbeszédpanelen kövesse az alábbi lépéseket:
 
@@ -236,7 +236,7 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 * Lépjen közvetlenül a Zscaler Beta bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
 
-* Használhatja a Microsoft saját alkalmazásait. Amikor a saját alkalmazások Zscaler Beta csempére kattint, a rendszer átirányítja a Zscaler Beta bejelentkezési URL-címére. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
+* Használhatja a Microsoft saját alkalmazásait. Amikor a saját alkalmazások Zscaler Beta csempére kattint, a rendszer átirányítja a Zscaler Beta bejelentkezési URL-címére. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](../user-help/my-apps-portal-end-user-access.md)használatába.
 
 
 ## <a name="next-steps"></a>További lépések

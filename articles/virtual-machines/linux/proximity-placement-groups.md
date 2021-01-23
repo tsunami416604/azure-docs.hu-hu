@@ -1,5 +1,5 @@
 ---
-title: Proximity elhelyezési csoportok használata
+title: Közelségi elhelyezési csoportok használata
 description: Ismerje meg az Azure-beli virtuális gépek közelségi elhelyezési csoportjainak létrehozását és használatát.
 author: cynthn
 ms.service: virtual-machines
@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 10/30/2019
 ms.author: cynthn
-ms.openlocfilehash: ee172203d6aa54b4b539356835f8a6bf2d21bad3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea50d0fdc5a772cae449951901af36eed4e93771
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87288412"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737625"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>Virtuális gépek telepítése közelségi elhelyezési csoportokba az Azure CLI használatával
 
@@ -67,7 +67,7 @@ A közelségi elhelyezési csoportban is létrehozhat egy rendelkezésre állás
 
 ## <a name="scale-sets"></a>Méretezési csoportok
 
-Létrehozhat egy méretezési csoportot is a közelségi elhelyezési csoportban. Használja ugyanazt a `--ppg` paramétert az az [vmss Create](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create) paranccsal egy méretezési csoport létrehozásához, és az összes példány ugyanabban a közelségi elhelyezési csoportban lesz létrehozva.
+Létrehozhat egy méretezési csoportot is a közelségi elhelyezési csoportban. Használja ugyanazt a `--ppg` paramétert az az [vmss Create](/cli/azure/vmss#az_vmss_create) paranccsal egy méretezési csoport létrehozásához, és az összes példány ugyanabban a közelségi elhelyezési csoportban lesz létrehozva.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -366,6 +366,8 @@
           href: sql-data-warehouse-restore-deleted-dw.md
         - name: Visszaállítás georedundáns biztonsági mentésből
           href: sql-data-warehouse-restore-from-geo-backup.md
+        - name: Geo-biztonsági mentések letiltása
+          href: disable-geo-backup.md
     - name: Integrálás
       items:
         - name: Gépi tanulás használata

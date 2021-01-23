@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 8afbf80fb6fa57db9de57122d7a4bfdb64e456bc
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 7b85cc064babf44b14e80abc02669573b4730da2
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185512"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736887"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>Oktatóanyag: Azure Active Directory integráció a JIRA SAML SSO-val a Microsofttal (V 5.2)
 
@@ -229,9 +229,9 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 * Nyissa meg a JIRA SAML SSO-t a Microsoft (V 5.2) bejelentkezési URL-címével, és indítsa el innen a bejelentkezési folyamatot.
 
-* Használhatja a Microsoft saját alkalmazásait. Ha a JIRA SAML SSO-t a Microsoft (V 5.2) csempén a saját alkalmazások területen kattint, a rendszer átirányítja a JIRA SAML SSO-t a Microsoft (V 5.2) bejelentkezési URL-címére. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
+* Használhatja a Microsoft saját alkalmazásait. Ha a JIRA SAML SSO-t a Microsoft (V 5.2) csempén a saját alkalmazások területen kattint, a rendszer átirányítja a JIRA SAML SSO-t a Microsoft (V 5.2) bejelentkezési URL-címére. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](../user-help/my-apps-portal-end-user-access.md)használatába.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután konfigurálta a JIRA SAML SSO-t a Microsoft (5.2-es verzió) használatával, kikényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-aad).

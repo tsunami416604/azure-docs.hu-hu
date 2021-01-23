@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/21/2020
 ms.author: jeedes
-ms.openlocfilehash: ee38a00367bd5fc3239ca53824d75397fb35e88d
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 56eab06bd1afd18bfd4e23b9acb0b44d7bd1f80b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97725102"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737032"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur-travel-and-expense"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a egyetértett utazással és költségekkel
 
@@ -167,7 +167,7 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 * Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie arra a egyetértő utazásra és költségekre, amelyhez be kell állítania az egyszeri bejelentkezést
 
-A Microsoft My Apps használatával bármilyen módban tesztelheti az alkalmazást. Ha a My apps szolgáltatásban az egyezményes utazás és ráfordítás csempére kattint, akkor az SP-módban való konfigurálásakor a rendszer átirányítja az alkalmazás bejelentkezési lapjára a bejelentkezési folyamat elindításához, és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, akkor automatikusan be kell jelentkeznie az egyezményben foglalt utazási és költségekre, amelyekhez beállíthatja az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
+A Microsoft My Apps használatával bármilyen módban tesztelheti az alkalmazást. Ha a My apps szolgáltatásban az egyezményes utazás és ráfordítás csempére kattint, akkor az SP-módban való konfigurálásakor a rendszer átirányítja az alkalmazás bejelentkezési lapjára a bejelentkezési folyamat elindításához, és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, akkor automatikusan be kell jelentkeznie az egyezményben foglalt utazási és költségekre, amelyekhez beállíthatja az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](../user-help/my-apps-portal-end-user-access.md)használatába.
 
 ## <a name="next-steps"></a>További lépések
 

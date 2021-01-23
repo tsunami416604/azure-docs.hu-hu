@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 6634ab3521fee3062ecee465eaf6dcda80ee6ff8
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 0a462c7d713ea9285096db48b4a3bb5c5b0d9874
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98699514"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737387"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL felügyelt példányának T-SQL-különbségei
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -508,15 +508,14 @@ A következő változók, függvények és nézetek eltérő eredményeket adnak
 
 ### <a name="subnet"></a>Alhálózat
 -  Nem helyezhet el más erőforrásokat (például virtuális gépeket) abban az alhálózatban, amelyben az SQL felügyelt példányát telepítette. Ezeket az erőforrásokat egy másik alhálózattal telepítse.
-- Az alhálózatnak elegendő számú elérhető [IP-címmel](connectivity-architecture-overview.md#network-requirements)kell rendelkeznie. A minimum 16, míg a javaslat szerint legalább 32 IP-címmel kell rendelkeznie az alhálózatban.
-- [A szolgáltatási végpontok nem társíthatók az SQL felügyelt példány alhálózatához](connectivity-architecture-overview.md#network-requirements). Győződjön meg arról, hogy a szolgáltatás-végpontok beállítás le van tiltva a virtuális hálózat létrehozásakor.
+- Az alhálózatnak elegendő számú elérhető [IP-címmel](connectivity-architecture-overview.md#network-requirements)kell rendelkeznie. Legalább 32 IP-címmel kell rendelkeznie az alhálózatban.
 - A régiókban üzembe helyezhető virtuális mag és típusok száma bizonyos [korlátozásokkal és korlátozásokkal](resource-limits.md#regional-resource-limitations)rendelkezik.
-- Vannak olyan [biztonsági szabályok, amelyeket az alhálózaton kell alkalmazni](connectivity-architecture-overview.md#network-requirements).
+- Van olyan [hálózati konfiguráció](connectivity-architecture-overview.md#network-requirements) , amelyet alkalmazni kell az alhálózaton.
 
 ### <a name="vnet"></a>Virtuális hálózat
 - A VNet az Resource Model használatával telepíthető – a VNet klasszikus modellje nem támogatott.
 - A felügyelt SQL-példányok létrehozása után az SQL felügyelt példányának vagy VNet másik erőforráscsoporthoz vagy előfizetésbe való áthelyezése nem támogatott.
-- Egyes szolgáltatások, mint például a App Service környezetek, a Logic apps és az SQL felügyelt példányai (földrajzi replikálás, tranzakciós replikálás vagy csatolt kiszolgálókon keresztül) nem férnek hozzá a felügyelt SQL-példányokhoz különböző régiókban, ha a virtuális hálózatok [globális](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)társítással kapcsolódnak egymáshoz. Ezekhez az erőforrásokhoz a ExpressRoute vagy a VNet – VNet használatával csatlakozhat a VNet-átjárók segítségével.
+- Az olyan virtuális fürtökben üzemeltetett SQL felügyelt példányok esetében, amelyeket a 9/22/2020 [globális](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) társítás előtt hozott létre, nem támogatott. Ezekhez az erőforrásokhoz a ExpressRoute vagy a VNet – VNet használatával csatlakozhat a VNet-átjárók segítségével.
 
 ### <a name="failover-groups"></a>Feladatátvételi csoportok
 A rendszeradatbázisokat a rendszer nem replikálja a feladatátvételi csoport másodlagos példányára. Ezért előfordulhat, hogy a rendszeradatbázisok objektumaitól függő forgatókönyvek a másodlagos példányon nem lesznek lehetségesek, kivéve, ha az objektumokat manuálisan hozták létre a másodlagos kiszolgálón.

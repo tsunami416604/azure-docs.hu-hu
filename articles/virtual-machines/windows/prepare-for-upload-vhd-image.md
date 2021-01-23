@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 390cda604b71404735b7c14382d30067e154ef70
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e409211c167f7b29128faf9fdfc02aa5c0a7d0e3
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976183"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736254"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Windows rendszerű VHD vagy VHDX előkészítése az Azure-ba való feltöltéshez
 
@@ -356,7 +356,7 @@ Ideális esetben a gépet frissíteni kell a *javítási szintre*, ha ez nem leh
 
 |        Összetevő        |     Bináris     | Windows 7 SP1, Windows Server 2008 R2 SP1 |       Windows 8, Windows Server 2012        | Windows 8,1, Windows Server 2012 R2 | Windows 10 v1607, Windows Server 2016 v1607 |      Windows 10 v1703      | Windows 10 v1709, Windows Server 2016 v1709 | Windows 10 v1803, Windows Server 2016 v1803 |
 | ----------------------- | -------------- | ----------------------------------------- | ------------------------------------------- | ----------------------------------- | ------------------------------------------- | -------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Tárolás                 | disk.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061          | -                                           | -                          | -                                           | -                                           |
+| Storage                 | disk.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061          | -                                           | -                          | -                                           | -                                           |
 |                         | storport.sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726          | 10.0.14393.1358 - KB4022715                 | 10.0.15063.332             | -                                           | -                                           |
 |                         | ntfs.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17623 / 6.2.9200.21743 - KB3121255 | 6.3.9600.18654 - KB4022726          | 10.0.14393.1198 - KB4022715                 | 10.0.15063.447             | -                                           | -                                           |
 |                         | Iologmsg.dll   | 6.1.7601.23403 - KB3125574                | 6.2.9200.16384 - KB2995387                  | -                                   | -                                           | -                          | -                                           | -                                           |
@@ -400,9 +400,9 @@ Ideális esetben a gépet frissíteni kell a *javítási szintre*, ha ez nem leh
 A rendszer-előkészítő eszköz ( `sysprep.exe` ) egy olyan folyamat, amelyet futtathat egy Windows-telepítés alaphelyzetbe állításához.
 A Sysprep az összes személyes információ eltávolításával és számos összetevő alaphelyzetbe állításával "kifogyott" élményt biztosít.
 
-Általában a futtatásával `sysprep.exe` létrehozhat egy sablont, amelyből számos más, adott konfigurációval rendelkező virtuális gép üzembe helyezhető. A sablont *általánosított rendszerképnek*nevezzük.
+Általában a futtatásával `sysprep.exe` létrehozhat egy sablont, amelyből számos más, adott konfigurációval rendelkező virtuális gép üzembe helyezhető. A sablont *általánosított rendszerképnek* nevezzük.
 
-Ha csak egy virtuális gépet szeretne létrehozni egy lemezről, nem kell a Sysprept használnia. Ehelyett a virtuális gépet egy *speciális rendszerképből*is létrehozhatja. A virtuális gépek speciális lemezről történő létrehozásával kapcsolatos információkért lásd:
+Ha csak egy virtuális gépet szeretne létrehozni egy lemezről, nem kell a Sysprept használnia. Ehelyett a virtuális gépet egy *speciális rendszerképből* is létrehozhatja. A virtuális gépek speciális lemezről történő létrehozásával kapcsolatos információkért lásd:
 
 - [Virtuális gép létrehozása specializált lemezből](create-vm-specialized.md)
 - [Virtuális gép létrehozása speciális VHD-lemezről](./create-vm-specialized-portal.md)
@@ -423,17 +423,17 @@ Különösen a Sysprep megköveteli, hogy a meghajtók teljes mértékben vissza
 1. Futtasson egy PowerShell-munkamenetet rendszergazdaként.
 1. Törölje a Panther könyvtárat (C:\Windows\Panther).
 1. Módosítsa a könyvtárat a következőre: `%windir%\system32\sysprep` . Ez után futtassa a `sysprep.exe` parancsot.
-1. A **rendszer-előkészítő eszköz** párbeszédpanelen jelölje be a **rendszerszintű felhasználói élmény (OOBE) megadása**jelölőnégyzetet, és győződjön meg arról, hogy az **általánosítás** jelölőnégyzet be van jelölve.
+1. A **rendszer-előkészítő eszköz** párbeszédpanelen jelölje be a **rendszerszintű felhasználói élmény (OOBE) megadása** jelölőnégyzetet, és győződjön meg arról, hogy az **általánosítás** jelölőnégyzet be van jelölve.
 
     ![Rendszerelőkészítő eszköz](media/prepare-for-upload-vhd-image/syspre.png)
-1. A **leállítási beállítások**területen válassza a **Leállítás**lehetőséget.
+1. A **leállítási beállítások** területen válassza a **Leállítás** lehetőséget.
 1. Válassza az **OK** lehetőséget.
 1. A Sysprep befejeződése után állítsa le a virtuális gépet. Ne használja az **Újraindítás** lehetőséget a virtuális gép leállításához.
 
 Most már készen áll a virtuális merevlemez feltöltésére. A virtuális gépek általánosított lemezről történő létrehozásával kapcsolatos további információkért lásd: [általánosított virtuális merevlemez feltöltése és használata új virtuális gép létrehozásához az Azure-ban](/previous-versions/azure/virtual-machines/windows/sa-upload-generalized).
 
 >[!NOTE]
-> Az egyéni *unattend.xml* -fájlok nem támogatottak. Bár támogatjuk a **additionalUnattendContent** tulajdonságot, amely csak korlátozott támogatást biztosít a [Microsoft-Windows-rendszerhéj-telepítési](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) beállításoknak az Azure-beli kiépítési ügynök által használt *unattend.xml* -fájlhoz való hozzáadásához. Használhatja például a [additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet&preserve-view=true) -t a FirstLogonCommands és a LogonCommands hozzáadásához. További információ: [AdditionalUnattendContent FirstLogonCommands example](https://github.com/Azure/azure-quickstart-templates/issues/1407).
+> Az egyéni *unattend.xml* -fájlok nem támogatottak. Bár támogatjuk a **additionalUnattendContent** tulajdonságot, amely csak korlátozott támogatást biztosít a [Microsoft-Windows-rendszerhéj-telepítési](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) beállításoknak az Azure-beli kiépítési ügynök által használt *unattend.xml* -fájlhoz való hozzáadásához. Használhatja például a [additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent) -t a FirstLogonCommands és a LogonCommands hozzáadásához. További információ: [AdditionalUnattendContent FirstLogonCommands example](https://github.com/Azure/azure-quickstart-templates/issues/1407).
 
 ## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>A virtuális lemez átalakítása rögzített méretű VHD-re
 
@@ -458,13 +458,13 @@ Az ebben a szakaszban található módszerek egyikének használatával átalak�
 
 ### <a name="use-hyper-v-manager-to-convert-the-disk"></a>A lemez átalakítása a Hyper-V kezelőjével
 
-1. Nyissa meg a Hyper-V kezelőjét, és a bal oldalon válassza ki a helyi számítógépet. A számítógép lista fölötti menüben válassza a **művelet**  >  **lemez szerkesztése**lehetőséget.
+1. Nyissa meg a Hyper-V kezelőjét, és a bal oldalon válassza ki a helyi számítógépet. A számítógép lista fölötti menüben válassza a **művelet**  >  **lemez szerkesztése** lehetőséget.
 1. A **virtuális merevlemez keresése** lapon válassza ki a virtuális lemezt.
-1. A **művelet kiválasztása** lapon válassza a **Konvertálás**  >  **tovább**lehetőséget.
-1. A VHDX konvertálásához válassza a **VHD**  >  **tovább**lehetőséget.
-1. Dinamikusan bővülő lemezről történő konvertáláshoz válassza a **rögzített méret**  >  **tovább**lehetőséget.
+1. A **művelet kiválasztása** lapon válassza a **Konvertálás**  >  **tovább** lehetőséget.
+1. A VHDX konvertálásához válassza a **VHD**  >  **tovább** lehetőséget.
+1. Dinamikusan bővülő lemezről történő konvertáláshoz válassza a **rögzített méret**  >  **tovább** lehetőséget.
 1. Keresse meg és válassza ki az új VHD-fájl mentésének elérési útját.
-1. Válassza a **Befejezés** lehetőséget.
+1. Válassza a **Befejezés** gombot.
 
 ### <a name="use-powershell-to-convert-the-disk"></a>A lemez konvertálása a PowerShell használatával
 
@@ -480,11 +480,11 @@ Ebben a példában a **görbe** értékét cserélje le a konvertálni kívánt 
 
 ### <a name="use-hyper-v-manager-to-resize-the-disk"></a>A lemez átméretezése a Hyper-V kezelőjével
 
-1. Nyissa meg a Hyper-V kezelőjét, és a bal oldalon válassza ki a helyi számítógépet. A számítógép lista fölötti menüben válassza a **művelet**  >  **lemez szerkesztése**lehetőséget.
+1. Nyissa meg a Hyper-V kezelőjét, és a bal oldalon válassza ki a helyi számítógépet. A számítógép lista fölötti menüben válassza a **művelet**  >  **lemez szerkesztése** lehetőséget.
 1. A **virtuális merevlemez keresése** lapon válassza ki a virtuális lemezt.
-1. A **művelet kiválasztása** lapon válassza a következő **kibontása**lehetőséget  >  **Next**.
+1. A **művelet kiválasztása** lapon válassza a következő **kibontása** lehetőséget  >  .
 1. A **virtuális merevlemez keresése** lapon adja meg az új méretet a GIB > **következőben**.
-1. Válassza a **Befejezés** lehetőséget.
+1. Válassza a **Befejezés** gombot.
 
 ### <a name="use-powershell-to-resize-the-disk"></a>A lemez átméretezése a PowerShell használatával
 
@@ -517,7 +517,7 @@ A következő beállítások nem érintik a VHD feltöltését. Javasoljuk azonb
 
   - Javasoljuk, hogy tiltsa le a víruskereső szoftver által biztosított parancsfájl-blokkolók letiltását. Előfordulhat, hogy az új virtuális gép lemezképből való üzembe helyezése során a Windows kiépítési ügynök parancsfájljait nem zavarja és blokkolja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Windowsos virtuálisgép-rendszerkép feltöltése az Azure-ba Resource Manager-alapú üzembe helyezésekhez](upload-generalized-managed.md)
 - [Az Azure Windows VM aktiválási problémáinak elhárítása](../troubleshooting/troubleshoot-activation-problems.md)

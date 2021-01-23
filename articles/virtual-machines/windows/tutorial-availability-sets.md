@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2617308d342be19f74e1f3145a1137fadb04d073
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: e1c9cf0a60446fba6fae5c850231b0805e7ea135
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914688"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736652"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>Oktatóanyag: Magas rendelkezésre állású virtuális gépek létrehozása és üzembe helyezése az Azure PowerShell-lel
 
 Ebből az oktatóanyagból megtudhatja, hogyan növelheti a Virtual Machines (VM-EK) rendelkezésre állását és megbízhatóságát a rendelkezésre állási csoportok használatával. A rendelkezésre állási csoportok gondoskodnak arról, hogy az Azure-ban üzembe helyezett virtuális gépek több, elkülönített hardverkonfiguráció között legyenek elosztva a fürtben. 
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Rendelkezésre állási csoport létrehozása
@@ -75,7 +75,7 @@ A virtuális gépeket a rendelkezésre állási csoporton belül kell létrehozn
 
 Amikor [új AzVM](/powershell/module/az.compute/new-azvm)hoz létre egy virtuális gépet, a `-AvailabilitySetName` paraméter használatával megadhatja a rendelkezésre állási csoport nevét.
 
-Először a [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true) paranccsal állítsa be a virtuális gép rendszergazdai felhasználónevét és jelszavát:
+Először a [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) paranccsal állítsa be a virtuális gép rendszergazdai felhasználónevét és jelszavát:
 
 ```azurepowershell-interactive
 $cred = Get-Credential

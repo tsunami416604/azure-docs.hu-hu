@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
-ms.openlocfilehash: 0681346252f840173d5cd7d4cfe5ef40076f0068
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: ac785d43a71039ce52f0c8cd4315149a11e91cfc
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912597"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737353"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Távoli eszközök használata az Azure-beli virtuális gépekkel kapcsolatos problémák elhárításához
 
@@ -249,9 +249,9 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 5. Végezze el a szükséges módosításokat a szolgáltatásokban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További információ a Enter-PSSession parancsmagról: [ENTER-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession?view=powershell-5.1&preserve-view=true).
+- További információ a Enter-PSSession parancsmagról: [ENTER-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession).
 - További információ a Windowshoz készült egyéni parancsfájl-bővítményről a klasszikus üzemi modell használatával: [egyéni parancsfájl-bővítmény a Windowshoz](../extensions/custom-script-windows.md).
 - A PsExec a [PsTools csomag](https://download.sysinternals.com/files/PSTools.zip)része.
 - A PSTools csomaggal kapcsolatos további információkért lásd: [PsTools](/sysinternals/downloads/pstools).

@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: ricmmartins
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 01/15/2021
+ms.date: 01/22/2021
 ms.author: ricmart
-ms.openlocfilehash: 3b9e60eb037182318e9d1ef7336565908a9c8f32
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: a0655ce1d2e9939981bb4fd3280af80e359ea1e1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664783"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737744"
 ---
 # <a name="create-a-vpn-connection-between-azure-and-aws-using-managed-solutions"></a>VPN-kapcsolat létrehozása az Azure és az AWS között felügyelt megoldások használatával
 
@@ -42,6 +42,8 @@ Hozzon létre egy VPN-átjárót a virtuális hálózat számára. Útmutatásé
 
 Ebben a cikkben a következő példában szereplő értékeket és beállításokat használjuk:
 
+* **Átjáró neve:** VPN-Azure-AWS
+* **Régió:** USA keleti régiója
 * **Átjáró típusa:** VPN
 * **VPN típusa:** útvonalalapú
 * **SKU:** VpnGw1
@@ -173,15 +175,13 @@ Ebben a szakaszban egy második kapcsolódást hoz létre a magas rendelkezésre
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/azure-tunnels.png" alt-text="Azure-beli kapcsolatok állapota":::
 
-1. Az AWS-kapcsolatok megtekintése.
+1. Az AWS-kapcsolatok megtekintése. Ebben a példában láthatja, hogy a kapcsolatok már létrejöttek.
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/aws-tunnels.png" alt-text="AWS-kapcsolatok állapota":::
 
-A kapcsolatok már létrejöttek.
+## <a name="to-test-connections"></a>Kapcsolatok tesztelése
 
-## <a name="test-connections"></a>Kapcsolatok tesztelése
-
-1. Adjon hozzá egy Internet Gatewayt a VPC-hoz az AWS-ben. Az Internet Gateway logikai kapcsolat az Amazon VPN és az internet között. Ez az erőforrás lehetővé teszi a teszt virtuális gépen keresztüli kapcsolódást az AWS nyilvános IP-címről az interneten keresztül. Ez az erőforrás nem szükséges a VPN-kapcsolathoz. Csak tesztelésre használjuk.
+1. Adjon hozzá egy **Internet Gatewayt** a VPC-hoz az AWS-ben. Az Internet Gateway logikai kapcsolat az Amazon VPN és az internet között. Ez az erőforrás lehetővé teszi a teszt virtuális gépen keresztüli kapcsolódást az AWS nyilvános IP-címről az interneten keresztül. Ez az erőforrás nem szükséges a VPN-kapcsolathoz. Csak tesztelésre használjuk.
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/create-igw.png" alt-text="Az Internet-átjáró létrehozása":::
 
@@ -189,7 +189,7 @@ A kapcsolatok már létrejöttek.
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/attach-igw.png" alt-text="Az Internet Gateway csatlakoztatása a VPC-hoz":::
 
-1. Válasszon ki egy VPC-t, és **csatolja az Internet-átjárót**.
+1. Válasszon egy VPC-t, és **csatolja az Internet-átjárót**.
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/attach-igw-2.png" alt-text="Az átjáró csatolása":::
 
@@ -201,11 +201,11 @@ A kapcsolatok már létrejöttek.
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/azure-effective-routes.png" alt-text="A hatályos útvonalak keresése":::
 
-1. Az Azure-beli linuxos virtuális gépről a környezet az alábbi példához hasonló.
+1. Ezt egy Linux rendszerű virtuális gépről tesztelheti az Azure-ban. Az eredmény az alábbi példához hasonlóan fog megjelenni.
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/azure-overview.png" alt-text="Az Azure áttekintése Linux rendszerű virtuális gépről":::
 
-1. Egy AWS-es linuxos virtuális gépről a környezet az alábbi példához hasonló.
+1. Ezt a Linux rendszerű virtuális gépen is tesztelheti AWS-ben. Az eredmény az alábbi példához hasonlóan fog megjelenni.
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/aws-overview.png" alt-text="AWS – áttekintés Linux rendszerű virtuális gépről":::
 
@@ -217,6 +217,6 @@ A kapcsolatok már létrejöttek.
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/aws-ping.png" alt-text="Ping teszt az AWS-ből":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A IKEv2 AWS-támogatásáról az [AWS-cikkben](https://aws.amazon.com/about-aws/whats-new/2019/02/aws-site-to-site-vpn-now-supports-ikev2/)talál további információt.

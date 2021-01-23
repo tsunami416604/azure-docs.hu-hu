@@ -3,12 +3,12 @@ title: Az Azure-alkalmazások teljesítményének javítása az Advisor szolgál
 description: Az üzleti szempontból kritikus fontosságú alkalmazások sebességének és reagálásának javítása érdekében Azure Advisor teljesítményre vonatkozó javaslatokat használhat.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: d7d4e87670ca529f38465e928c4067daec802b8f
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: f546527011402b9ea33321d56356d8aabe2412c1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98248428"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735528"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Az Azure-alkalmazások teljesítményének növelése Azure Advisor használatával
 
@@ -179,7 +179,7 @@ További információ a [magával ejtő olvasói SDK](../cognitive-services/imme
 
 Az Advisor azt észleli, hogy rendelkezik egy, a terheléselosztási algoritmust elsőként tartalmazó gazdagép-készlettel, és az alkalmazáskészlet maximális munkamenet-korlátja nagyobb vagy egyenlő, mint 999999. A mélységi terheléselosztás a maximális munkamenetkorlát alapján határozza meg, hogy legfeljebb hány felhasználó futtathat egyidejű munkameneteket egy adott munkamenet-gazdagépen. Ha a maximális munkamenet-korlát túl magas, a rendszer az összes felhasználói munkamenetet ugyanarra a munkamenet-gazdagépre irányítja, és ez a teljesítménnyel és a megbízhatósággal kapcsolatos problémákat okoz. Ezért, amikor a gazdagépet úgy állítja be, hogy az első terheléselosztással rendelkezzen, a telepítés és a virtuális gépek kapacitása alapján kell beállítania a megfelelő maximális munkamenet-korlátot. 
 
-A Windows rendszerű virtuális asztali terheléselosztással kapcsolatos további tudnivalókért tekintse meg [a Windows rendszerű virtuális asztali terheléselosztási módszer konfigurálása](/azure/virtual-desktop/troubleshoot-set-up-overview)című témakört.
+A Windows rendszerű virtuális asztali terheléselosztással kapcsolatos további tudnivalókért tekintse meg [a Windows rendszerű virtuális asztali terheléselosztási módszer konfigurálása](../virtual-desktop/troubleshoot-set-up-overview.md)című témakört.
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Teljesítménnyel kapcsolatos javaslatok elérése az Advisorban
 

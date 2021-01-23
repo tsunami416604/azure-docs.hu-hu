@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: 94e3b95e5e1d3c65550046c5db56e0f783fd60c3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8ae41167b642be75c7bb99042bca829fd8c1728e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976283"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736350"
 ---
 # <a name="use-azure-image-builder-for-windows-vms-allowing-access-to-an-existing-azure-vnet"></a>Az Azure rendszerkép-készítő használata a Windows rendszerű virtuális gépekhez, amelyek lehetővé teszik egy meglévő Azure-VNET való hozzáférést
 
@@ -21,7 +21,7 @@ Ez a cikk bemutatja, hogyan hozhat létre olyan alapszintű testreszabott Window
 
 > [!IMPORTANT]
 > Az Azure rendszerkép-szerkesztő jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -90,7 +90,7 @@ Hozza létre az erőforráscsoportot.
 New-AzResourceGroup -Name $imageResourceGroup -Location $location
 ```
 
-## <a name="configure-networking"></a>Hálózatkezelés konfigurálása
+## <a name="configure-networking"></a>Hálózatkezelés beállítása
 
 Ha nem rendelkezik meglévő VNET\Subnet\NSG, a következő parancsfájl használatával hozzon létre egyet.
 
@@ -258,7 +258,7 @@ $runOutJsonStatus
 ```
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 
-Most a Build elkészült, létrehozhat egy virtuális gépet a rendszerképből. Használja a [PowerShell New-AzVM dokumentációjában](/powershell/module/az.compute/new-azvm?view=azps-2.5.0#description)található példákat.
+Most a Build elkészült, létrehozhat egy virtuális gépet a rendszerképből. Használja a [PowerShell New-AzVM dokumentációjában](/powershell/module/az.compute/new-azvm#description)található példákat.
 
 ## <a name="clean-up"></a>Takarítás
 
@@ -294,6 +294,6 @@ Remove-AzResourceGroup $imageResourceGroup -Force
 # BEWARE!!!!! In this example, you have either used an existing VNET or created one for this example. Do not delete your existing VNET. If you want to delete the VNET Resource group used in this example '$vnetRgName', modify the above code.
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az [Azure megosztott Képgalériákkal](shared-image-galleries.md)kapcsolatban.

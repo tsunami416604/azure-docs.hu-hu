@@ -3,12 +3,12 @@ title: Azure-fájlmegosztás Azure Batch készletekhez
 description: Azure Files-megosztás csatlakoztatása a számítási csomópontokból egy Linux-vagy Windows-készletben a Azure Batchban.
 ms.topic: how-to
 ms.date: 05/24/2018
-ms.openlocfilehash: 6bbaba20512a17de563e74ba095057c5c3f71f6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5682e7ba853973592c3a650a06ce72615cec7b6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87986423"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735494"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Azure-fájlmegosztás használata batch-készlettel
 
@@ -20,7 +20,7 @@ A [Azure Files](../storage/files/storage-files-introduction.md) teljes körűen 
 
 * Az Azure-fájlmegosztás [költséghatékony](https://azure.microsoft.com/pricing/details/storage/files/) , és egy másik régióba történő adatreplikálással is konfigurálható, így globálisan redundánsak. 
 
-* Egy Azure-fájlmegosztást egyszerre csatlakoztathat egy helyszíni számítógépről. Azonban ügyeljen arra, hogy tisztában legyen a [párhuzamosságok következményeivel](../storage/common/storage-concurrency.md) , különösen a REST API-k használata esetén.
+* Egy Azure-fájlmegosztást egyszerre csatlakoztathat egy helyszíni számítógépről. Azonban ügyeljen arra, hogy tisztában legyen a [párhuzamosságok következményeivel](../storage/blobs/concurrency-manage.md) , különösen a REST API-k használata esetén.
 
 * Tekintse meg az Azure-fájlmegosztás általános [tervezési szempontjait](../storage/files/storage-files-planning.md) is.
 
@@ -33,7 +33,7 @@ A [Azure Files](../storage/files/storage-files-introduction.md) teljes körűen 
 
 Tekintse meg a [virtuális fájlrendszer batch-készleten való csatlakoztatásának](virtual-file-mount.md)dokumentációját.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Batch-adatok olvasására és írására vonatkozó egyéb beállításokért lásd: a [feladat és a feladat kimenetének](batch-task-output.md)megőrzése.
 * Lásd még a [Batch-hajógyár](https://github.com/Azure/batch-shipyard) eszközkészletét, amely tartalmazza a [hajógyári recepteket](https://github.com/Azure/batch-shipyard/tree/master/recipes) a Batch-tároló munkaterhelések fájlrendszerének üzembe helyezéséhez.

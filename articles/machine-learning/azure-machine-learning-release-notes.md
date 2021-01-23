@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 117bc71ba304445e3186b4e633f5888647be9223
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 38f37ff2fe150a9e1998fbe5e963b8737a6e1533
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685629"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737965"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
@@ -36,6 +36,7 @@ Ebben a cikkben megismerheti Azure Machine Learning kiadásait.  A teljes SDK-hi
     + Kijavítva a Service. reload () szolgáltatásban a score.py változásainak a helyi telepítésben való kiválasztásához.
     + `run.get_details()` a "Beküldő" nevű további mező jelenik meg, amely a szerző nevét jeleníti meg ehhez a futtatáshoz.
     + Szerkesztett modell. regisztrálja a metódus dokumentációját, amely azt mutatja be, hogyan lehet regisztrálni a modellt közvetlenül a futtatásból
+    + Kijavítva IOT-Server a kapcsolatok állapotának változás-kezelési hibája.
    
 
 ## <a name="2020-12-31"></a>2020-12-31
@@ -2278,6 +2279,6 @@ A [`PipelineEndpoint`](/python/api/azureml-pipeline-core/azureml.pipeline.core.p
   + Új naplófájlok megjelenítője
   + A műveletek lapon található kísérletekre, számításokra, modellekre, lemezképekre és központi telepítésekre mutató hivatkozások
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Olvassa el az [Azure Machine Learning](overview-what-is-azure-ml.md) áttekintését.

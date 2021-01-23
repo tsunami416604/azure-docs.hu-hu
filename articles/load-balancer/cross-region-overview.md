@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 4a9663e1356f616ed5f428c993f3367ce67cdbb5
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: fb03d0f8c2dc1f3812d417bc5a5d49857f3c1051
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610912"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737676"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Régiók közötti Load Balancer (előzetes verzió)
 
@@ -35,7 +35,7 @@ Az Azure standard Load Balancer támogatja a régiók közötti terheléseloszt�
 * [Meglévő terheléselosztó megoldás létrehozása](#build-cross-region-solution-on-existing-azure-load-balancer) tanulási görbe nélkül
 
 > [!IMPORTANT]
-> A régiók közötti terheléselosztó jelenleg előzetes verzióban érhető el, és a portálon helyezhető üzembe. **https://portal.azure.com** A szolgáltatás megtekintéséhez és telepítéséhez jelentkezzen be. </br> </br>
+> A régiók közötti terheléselosztó jelenleg előzetes verzióban érhető el, és a portálon helyezhető üzembe. **https://preview.portal.azure.com** A szolgáltatás megtekintéséhez és telepítéséhez jelentkezzen be. </br> </br>
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A régiók közötti terheléselosztás a regionális standard Load Balancer esetében is ugyanazokat az előnyöket kínálja, mint a nagy teljesítmény és a kis késleltetés. 
@@ -147,7 +147,7 @@ A régiók közötti terheléselosztó a megfelelő regionális terheléseloszt�
 A régión kívüli terheléselosztó a standard Load Balancer [SLA](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/ ) -át osztja meg.
 
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A régiók közötti terheléselosztó létrehozásához tekintse meg [az oktatóanyag: régiók közötti terheléselosztó létrehozása a Azure Portal használatával című oktatóanyagot](tutorial-cross-region-portal.md) .
 - Lásd: [nyilvános standard Load Balancer létrehozása](quickstart-load-balancer-standard-public-portal.md) standard regionális terheléselosztó létrehozásához.

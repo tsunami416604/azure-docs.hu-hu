@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan fejlesztheti a függvényeket a Python használ
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: cf1d8f89de61a548f6c542d6d8a73fde93675e95
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: a13b4463d2a9c32a3487f839c0bf53b4c5bd2963
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895410"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735843"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python fejlesztői útmutató
 
@@ -17,7 +17,7 @@ Ez a cikk bemutatja, hogyan fejlesztheti Azure Functions a Python használatáva
 
 Python-fejlesztőként a következő cikkek egyike is érdekli:
 
-| Első lépések | Fogalmak| Forgatókönyvek/minták |
+| Első lépések | Alapelvek| Forgatókönyvek/minták |
 | -- | -- | -- | 
 | <ul><li>[Python-függvény a Visual Studio Code használatával](./create-first-function-vs-code-csharp.md?pivots=programming-language-python)</li><li>[Python-függvény a Terminal/Command parancssorral](./create-first-function-cli-csharp.md?pivots=programming-language-python)</li></ul> | <ul><li>[Fejlesztői útmutató](functions-reference.md)</li><li>[Üzemeltetési lehetőségek](functions-scale.md)</li><li>[Teljesítménnyel &nbsp; kapcsolatos megfontolások](functions-best-practices.md)</li></ul> | <ul><li>[Képek besorolása a PyTorch használatával](machine-learning-pytorch.md)</li><li>[Azure Automation-minta](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[Gépi tanulás a TensorFlow-val](functions-machine-learning-tensorflow.md)</li><li>[Python-minták tallózása](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
 
@@ -366,7 +366,7 @@ A Azure Functions a következő Python-verziókat támogatja:
 
 | Függvények verziója | Python- <sup>*</sup> verziók |
 | ----- | ----- |
-| 3. x | 3,8<br/>3.7<br/>3,6 |
+| 3. x | 3,9 (előzetes verzió) <br/> 3,8<br/>3.7<br/>3,6 |
 | 2. x | 3.7<br/>3,6 |
 
 <sup>*</sup>Hivatalos CPython-disztribúciók
@@ -588,6 +588,7 @@ A könyvtárak listájának részletes ismertetését az alábbi hivatkozásokon
 * [Python 3,6 standard könyvtár](https://docs.python.org/3.6/library/)
 * [Python 3,7 standard könyvtár](https://docs.python.org/3.7/library/)
 * [Python 3,8 standard könyvtár](https://docs.python.org/3.8/library/)
+* [Python 3,9 Standard könyvtár](https://docs.python.org/3.9/library/)
 
 ### <a name="azure-functions-python-worker-dependencies"></a>Azure Functions Python Worker függőségei
 
@@ -615,7 +616,7 @@ Az előre telepített rendszerkönyvtárak listáját a Python Worker Docker-lem
 |  Függvények futtatókörnyezete  | Debian-verzió | Python-verziók |
 |------------|------------|------------|
 | 2-es verzió. x | Stretch  | [Python 3,6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
-| 3. x verzió | Buster | [Python 3,6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
+| 3. x verzió | Buster | [Python 3,6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile)<br/> [Python 3,9](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python39/python39.Dockerfile)|
 
 ## <a name="cross-origin-resource-sharing"></a>Eltérő eredetű erőforrások megosztása
 
@@ -632,7 +633,7 @@ A következő lista a gyakori problémákkal kapcsolatos hibaelhárítási útmu
 
 Az összes ismert probléma és szolgáltatás kérését a [GitHub-problémák](https://github.com/Azure/azure-functions-python-worker/issues) listája követheti nyomon. Ha probléma lép fel, és a GitHubon nem találja a problémát, nyisson meg egy új problémát, és adja meg a probléma részletes leírását.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkat találhat az alábbi forrásokban:
 

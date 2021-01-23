@@ -16,12 +16,12 @@ ms.date: 11/13/2019
 ms.subservice: app-mgmt
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f5aaf4bbff4c093872228d647d3850667fb9777
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: d7a570fb322d24bf0d32efcb6f1a2ee515862755
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656407"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736969"
 ---
 # <a name="application-management-best-practices"></a>Alkalmazások kezelése – ajánlott eljárások
 
@@ -33,9 +33,9 @@ Ez a cikk ajánlásokat és ajánlott eljárásokat tartalmaz az alkalmazások A
 | Az Azure AD Application Gallery for Apps szolgáltatás megtekintése  | Az Azure AD olyan katalógussal rendelkezik, amely több ezer előre integrált alkalmazást tartalmaz, amelyek engedélyezve vannak a vállalati egyszeri bejelentkezéssel (SSO). Az alkalmazásspecifikus beállítási útmutatóért tekintse meg az [SaaS-alkalmazás oktatóanyagok listáját](../saas-apps/tutorial-list.md).  | 
 | Összevont SAML-alapú egyszeri bejelentkezés használata  | Ha egy alkalmazás támogatja azt, akkor használjon összevont, SAML-alapú egyszeri bejelentkezést az Azure AD-vel a jelszó-alapú egyszeri bejelentkezés és az ADFS helyett.  | 
 | Az SHA-256 használata tanúsítvány-aláíráshoz  | Az Azure AD alapértelmezés szerint az SHA-256 algoritmust használja az SAML-válasz aláírásához. Az SHA-256 használata, ha az alkalmazáshoz SHA-1 szükséges (lásd: [tanúsítvány-aláírási beállítások](certificate-signing-options.md) és [alkalmazás-bejelentkezési probléma](application-sign-in-problem-application-error.md).)  | 
-| Felhasználói hozzárendelés megkövetelése  | Alapértelmezés szerint a felhasználók nem férhetnek hozzá a vállalati alkalmazásokhoz. Ha azonban az alkalmazás szerepköröket tesz elérhetővé, vagy ha azt szeretné, hogy az alkalmazás megjelenjen a felhasználó saját alkalmazásaiban, felhasználói hozzárendelés szükséges. (Lásd: [fejlesztői útmutató az alkalmazások integrálásához](developer-guidance-for-integrating-applications.md).)  | 
+| Felhasználói hozzárendelés megkövetelése  | Alapértelmezés szerint a felhasználók nem férhetnek hozzá a vállalati alkalmazásokhoz. Ha azonban az alkalmazás szerepköröket tesz elérhetővé, vagy ha azt szeretné, hogy az alkalmazás megjelenjen a felhasználó saját alkalmazásaiban, felhasználói hozzárendelés szükséges.  | 
 | Alkalmazások üzembe helyezése a felhasználók számára | Az [alkalmazásom](end-user-experiences.md) `https://myapps.microsoft.com` egy webalapú portál, amely egyetlen belépési ponttal biztosítja a felhasználókat a hozzárendelt felhőalapú alkalmazásokhoz. Mivel a további funkciók, például a csoportok kezelése és az önkiszolgáló jelszó-visszaállítás hozzá lettek adva, a felhasználók megkereshetik azokat az alkalmazásokban. Lásd: [az alkalmazások telepítésének megtervezése](access-panel-deployment-plan.md).
-| Csoport-hozzárendelés használata  | Ha belefoglalja az előfizetésbe, csoportokat rendel hozzá egy alkalmazáshoz, hogy a folyamatos hozzáférés-kezelést delegálja a csoport tulajdonosának. (Lásd: [fejlesztői útmutató az alkalmazások integrálásához](developer-guidance-for-integrating-applications.md).)   | 
+| Csoport-hozzárendelés használata  | Ha belefoglalja az előfizetésbe, csoportokat rendel hozzá egy alkalmazáshoz, hogy a folyamatos hozzáférés-kezelést delegálja a csoport tulajdonosának.  | 
 | A tanúsítványok kezelésére szolgáló folyamat létrehozása | Az aláíró tanúsítvány maximális élettartama három év. A tanúsítvány lejárata miatti leállások megelőzése vagy csökkentése érdekében a szerepkörök és e-mailek terjesztési listáit használva ellenőrizze, hogy a tanúsítványokkal kapcsolatos módosítási értesítések szorosan megfigyelhetők-e. |
 
 ## <a name="provisioning-recommendations"></a>Kiépítési javaslatok

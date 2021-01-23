@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 26874c33c496b57bf6317a7b837b3afddc2f5e37
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 41457f26c22e3b8ed529ce77cfaf452618b03655
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955650"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737642"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>A bővítmények Linux rendszerű virtuális gépeken való telepítésének korlátozása a Azure Policy használatával
 
@@ -98,7 +98,7 @@ Ha elkészült, nyomja le az **ESC** billentyűt, majd írja be a következőt *
 
 ## <a name="create-the-policy"></a>A szabályzat létrehozása
 
-A házirend-definíció a használni kívánt konfiguráció tárolására szolgáló objektum. A házirend-definíció a szabályok és paraméterek fájlok használatával határozza meg a szabályzatot. Hozza létre a házirend-definíciót az [az Policy definition Create](/cli/azure/role/assignment?view=azure-cli-latest)paranccsal.
+A házirend-definíció a használni kívánt konfiguráció tárolására szolgáló objektum. A házirend-definíció a szabályok és paraméterek fájlok használatával határozza meg a szabályzatot. Hozza létre a házirend-definíciót az [az Policy definition Create](/cli/azure/role/assignment)paranccsal.
 
 Ebben a példában a szabályok és paraméterek a létrehozott és. JSON-fájlként tárolt fájlok a Cloud shellben.
 
@@ -117,7 +117,7 @@ az policy definition create \
 
 Ez a példa hozzárendeli a szabályzatot egy erőforráscsoporthoz az [az Policy hozzárendelés létrehozása](/cli/azure/policy/assignment)paranccsal. A **myResourceGroup** ERŐFORRÁSCSOPORTHOZ létrehozott virtuális gépek nem telepíthetik a linuxos virtuális gép elérését vagy a Linuxhoz készült egyéni parancsfájl-bővítményeket. Ahhoz, hogy hozzá lehessen rendelni a szabályzatot, az erőforráscsoport léteznie kell.
 
-Az az [Account List](/cli/azure/account?view=azure-cli-latest) paranccsal kérheti le az előfizetés azonosítóját, hogy az a példában szereplő helyett használja.
+Az az [Account List](/cli/azure/account) paranccsal kérheti le az előfizetés azonosítóját, hogy az a példában szereplő helyett használja.
 
 
 ```azurecli-interactive
@@ -171,6 +171,6 @@ az policy assignment delete --name 'not-allowed-vmextension-linux' --resource-gr
 az policy definition delete --name 'not-allowed-vmextension-linux'
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ: [Azure Policy](../../governance/policy/overview.md).

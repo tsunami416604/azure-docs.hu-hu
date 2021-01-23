@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: banders
-ms.openlocfilehash: 662e1bf721c93ee1d59946d2fd603551f3f88ad3
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
-ms.translationtype: HT
+ms.openlocfilehash: 0d0dd5342cfc57da776e38ddef3df3b9c2199ac2
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503794"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735775"
 ---
 # <a name="cancel-your-azure-subscription"></a>Az Azure-előfizetés lemondása
 
@@ -79,7 +79,7 @@ Ha ingyenes próbaverziós előfizetéssel rendelkezik, nem kell 30 napot várni
 
 ## <a name="reactivate-a-subscription"></a>Előfizetés újraaktiválása
 
-Ha véletlenül lemondja a használatalapú fizetéses előfizetését, [a Fiókközpontban újraaktiválhatja azt](subscription-disabled.md).
+Ha véletlenül megszakítja az előfizetését az utólagos elszámolású díjszabással, akkor [újraaktiválhatja azt a Azure Portal](subscription-disabled.md).
 
 Ha előfizetése nem használatalapú fizetéses előfizetés, akkor a lemondás utáni 90 napon belül újraaktiválhatja előfizetését, ha felveszi a kapcsolatot az ügyfélszolgálattal.
 
@@ -101,4 +101,4 @@ Tekintse meg a [megújításról és lemondásról](/visualstudio/subscriptions/
 
 ## <a name="next-steps"></a>További lépések
 
-- Szükség esetén újraaktiválhatja a használatalapú fizetéses előfizetést a [Fiókközpontban](subscription-disabled.md).
+- Ha szükséges, újraaktiválhatja az utólagos elszámolású előfizetést a [Azure Portal](subscription-disabled.md).

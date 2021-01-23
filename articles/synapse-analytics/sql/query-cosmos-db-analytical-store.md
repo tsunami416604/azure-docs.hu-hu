@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 12/04/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4681039f60154b95eeb7e40196ca33055a192c74
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 2059608faa8ce148e5823e48eff6abf9e71c9b01
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222105"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735433"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>Az Azure szinapszis link Preview-ban található kiszolgáló nélküli SQL-készlettel rendelkező lekérdezés Azure Cosmos DB
 
@@ -24,7 +24,7 @@ ms.locfileid: "98222105"
 
 A kiszolgáló nélküli SQL-készletek lehetővé teszik az [Azure szinapszis-hivatkozással](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) rendelkező Azure Cosmos db tárolókban lévő adatok elemzését, a tranzakciós feladatok teljesítményének befolyásolása nélkül. Jól ismert T-SQL-szintaxist biztosít az [analitikus áruházból](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) származó adatok lekérdezéséhez és az üzleti intelligenciával (BI) és az alkalmi lekérdezési eszközökhöz való integrált kapcsolódáshoz a t-SQL felületen keresztül.
 
-Azure Cosmos DB lekérdezéséhez a [OpenRowset](develop-openrowset.md) függvény a teljes [kijelölés](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) felületét támogatja, amely az [SQL-függvények és operátorok](overview-features.md)többségét tartalmazza. A lekérdezés eredményeit olyan módon is tárolhatja, amely Azure Cosmos DB adatokat olvas be az Azure Blob Storage vagy Azure Data Lake Storage használatával, [külső tábla létrehozása Select](develop-tables-cetas.md#cetas-in-serverless-sql-pool) (CETAS) néven. A kiszolgáló nélküli SQL-készlet lekérdezési eredményei jelenleg nem tárolhatók a CETAS használatával Azure Cosmos DB.
+Azure Cosmos DB lekérdezéséhez a [OpenRowset](develop-openrowset.md) függvény a teljes [kijelölés](/sql/t-sql/queries/select-transact-sql?view=azure-sqldw-latest&preserve-view=true) felületét támogatja, amely az [SQL-függvények és operátorok](overview-features.md)többségét tartalmazza. A lekérdezés eredményeit olyan módon is tárolhatja, amely Azure Cosmos DB adatokat olvas be az Azure Blob Storage vagy Azure Data Lake Storage használatával, [külső tábla létrehozása Select](develop-tables-cetas.md#cetas-in-serverless-sql-pool) (CETAS) néven. A kiszolgáló nélküli SQL-készlet lekérdezési eredményei jelenleg nem tárolhatók a CETAS használatával Azure Cosmos DB.
 
 Ebből a cikkből megtudhatja, hogyan írhat lekérdezést olyan kiszolgáló nélküli SQL-készlettel, amely az Azure szinapszis-hivatkozással engedélyezett Azure Cosmos DB tárolóból származó adatok lekérdezésére szolgál. Ezután további információt olvashat a kiszolgáló nélküli SQL-készlet nézeteinek létrehozásáról Azure Cosmos DB tárolók között, és összekapcsolhatja őket az [oktatóanyag](./tutorial-data-analyst.md)Power bi modelljeivel.
 
@@ -337,7 +337,7 @@ Azure Cosmos DB SQL (Core) API-fiókok esetében a JSON-tulajdonságok száma, k
 
 | Azure Cosmos DB tulajdonság típusa | SQL-oszlop típusa |
 | --- | --- |
-| Logikai érték | bit |
+| Logikai | bit |
 | Egész szám | bigint |
 | Tizedesjegy | float |
 | Sztring | varchar (UTF-8 adatbázis-rendezés) |
@@ -435,7 +435,7 @@ A lehetséges hibák és hibaelhárítási műveletek az alábbi táblázatban l
 
 A javaslatok és a problémák jelentését az [Azure szinapszis Analytics visszajelzési oldalán](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=387862)teheti meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információért tekintse át a következő cikkeket:
 

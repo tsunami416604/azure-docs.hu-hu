@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2021
-ms.openlocfilehash: 877251ba7e0c1f3c33cab37e20d609479b69520c
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: c213a38286de05df5c3be8e3498bcca4ab6e1fbf
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251828"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736144"
 ---
 # <a name="azure-monitor-for-existing-operations-manager-customers"></a>Azure Monitor meglévő Operations Manager ügyfelek számára
-Ez a cikk útmutatást nyújt azokhoz az ügyfelekhez, akik jelenleg használják a [System Center Operations Managert](https://docs.microsoft.com/system-center/scom/welcome) , és az üzleti alkalmazások és egyéb erőforrások az Azure-ba való áttelepítésének megtervezése [Azure Monitorre](overview.md) Azt feltételezi, hogy a végső cél a felhőbe való teljes átállás, amely a lehető legtöbb Operations Manager funkciót helyettesíti a Azure Monitor, az üzleti és informatikai működési követelmények veszélyeztetése nélkül. 
+Ez a cikk útmutatást nyújt azokhoz az ügyfelekhez, akik jelenleg használják a [System Center Operations Managert](/system-center/scom/welcome) , és az üzleti alkalmazások és egyéb erőforrások az Azure-ba való áttelepítésének megtervezése [Azure Monitorre](overview.md) Azt feltételezi, hogy a végső cél a felhőbe való teljes átállás, amely a lehető legtöbb Operations Manager funkciót helyettesíti a Azure Monitor, az üzleti és informatikai működési követelmények veszélyeztetése nélkül. 
 
 Az ebben a cikkben ismertetett javaslatok Azure Monitor és Operations Manager szolgáltatások hozzáadása lehetőséggel változnak. Az alapvető stratégia azonban továbbra is konzisztens marad.
 
@@ -22,13 +22,13 @@ Az ebben a cikkben ismertetett javaslatok Azure Monitor és Operations Manager s
 > Az itt ismertetett Azure Monitor szolgáltatások megvalósítása többek között azért van, hogy a teljes környezetbe való üzembe helyezés előtt értékelje az értékét.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez a cikk azt feltételezi, hogy már használja a [Operations Managert](https://docs.microsoft.com/system-center/scom) , és legalább [Azure monitor](overview.md)alapvető ismeretekkel rendelkezik. A kettő közötti teljes összehasonlítást lásd: a [felhőalapú figyelési útmutató: figyelési platformok áttekintése](/azure/cloud-adoption-framework/manage/monitor/platform-overview). Ez a cikk az egyes szolgáltatásokra vonatkozó, a kettő közötti különbségeket ismerteti, amelyek segítenek az itt ismertetett javaslatok megismerésében. 
+Ez a cikk azt feltételezi, hogy már használja a [Operations Managert](/system-center/scom) , és legalább [Azure monitor](overview.md)alapvető ismeretekkel rendelkezik. A kettő közötti teljes összehasonlítást lásd: a [felhőalapú figyelési útmutató: figyelési platformok áttekintése](/azure/cloud-adoption-framework/manage/monitor/platform-overview). Ez a cikk az egyes szolgáltatásokra vonatkozó, a kettő közötti különbségeket ismerteti, amelyek segítenek az itt ismertetett javaslatok megismerésében. 
 
 
 ## <a name="general-strategy"></a>Általános stratégia
 Nincs áttelepítési eszköz az eszközök Operations Managerról Azure Monitorra való átalakításához, mivel a platformok alapvetően eltérőek. A Migrálás Ehelyett [standard Azure monitor megvalósítást](deploy.md) eredményez, miközben továbbra is használja a Operations Manager. Ahogy testreszabja Azure Monitor, hogy megfeleljen a különböző alkalmazásokra és összetevőkre vonatkozó követelményeinek, és mivel további funkciókat is kínál, megkezdheti a különböző felügyeleti csomagok és ügynökök kivonását Operations Managerokban.
 
-A cikkben javasolt általános stratégia ugyanaz, mint a [felhő-figyelési útmutatóban](https://docs.microsoft.com/azure/cloud-adoption-framework/manage/monitor/), amely a [hibrid felhőalapú figyelési](/azure/cloud-adoption-framework/manage/monitor/cloud-models-monitor-overview#hybrid-cloud-monitoring) stratégiát javasolja, amely lehetővé teszi a felhőbe való fokozatos áttérést. Bár egyes funkciók átfedésben lehetnek, ez a stratégia lehetővé teszi, hogy megőrizze meglévő üzleti folyamatait, ahogy az új platformmal jobban megismerik. Csak Operations Manager-funkciókból való elmozdulás, mert a Azure Monitorre lecserélheti. A több figyelési eszköz használata bonyolultságot jelent, de lehetővé teszi, hogy kihasználhassa a Azure Monitor a Felhőbeli számítási feladatok figyelésére való képességet, miközben megtartja a Operations Manager képességét a helyszíni vagy más felhőkben található kiszolgálói szoftverek és infrastruktúra-összetevők figyelésére. 
+A cikkben javasolt általános stratégia ugyanaz, mint a [felhő-figyelési útmutatóban](/azure/cloud-adoption-framework/manage/monitor/), amely a [hibrid felhőalapú figyelési](/azure/cloud-adoption-framework/manage/monitor/cloud-models-monitor-overview#hybrid-cloud-monitoring) stratégiát javasolja, amely lehetővé teszi a felhőbe való fokozatos áttérést. Bár egyes funkciók átfedésben lehetnek, ez a stratégia lehetővé teszi, hogy megőrizze meglévő üzleti folyamatait, ahogy az új platformmal jobban megismerik. Csak Operations Manager-funkciókból való elmozdulás, mert a Azure Monitorre lecserélheti. A több figyelési eszköz használata bonyolultságot jelent, de lehetővé teszi, hogy kihasználhassa a Azure Monitor a Felhőbeli számítási feladatok figyelésére való képességet, miközben megtartja a Operations Manager képességét a helyszíni vagy más felhőkben található kiszolgálói szoftverek és infrastruktúra-összetevők figyelésére. 
 
 
 ## <a name="components-to-monitor"></a>Figyelni kívánt összetevők
@@ -37,7 +37,7 @@ Segít kategorizálni azokat a különböző típusú munkaterheléseket, amelye
 A felhő előtt a Operations Manager az összes réteg figyelésére használta. Az infrastruktúra-szolgáltatásként (IaaS) való áttérés megkezdése után továbbra is Operations Managert használ a virtuális gépekhez, de elkezdi használni Azure Monitor a Felhőbeli erőforrásaihoz. Ahogy a szolgáltatásként nyújtott platform ("Pásti") használatával továbbra is átvált a modern alkalmazásokra, jobban összpontosíthat Azure Monitorra, és megkezdheti Operations Manager funkcióinak kivonását.
 
 
-![Felhőbeli modellek](https://docs.microsoft.com/azure/cloud-adoption-framework/strategy/media/monitoring-strategy/cloud-models.png)
+![Felhőbeli modellek](/azure/cloud-adoption-framework/strategy/media/monitoring-strategy/cloud-models.png)
 
 Ezek a rétegek a következő kategóriákba foglalhatók, amelyeket a cikk további részében ismertetünk. Habár előfordulhat, hogy a környezet minden figyelési munkaterhelése nem fér bele tökéletesen az egyik kategóriába, ezért mindegyiknek elég egy adott kategóriához tartoznia az általános javaslatok alkalmazásához.
 

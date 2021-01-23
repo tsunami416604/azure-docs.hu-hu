@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: c231aab47f154b6150368b504872d87317c790cc
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 9f0642d3421e775d1c6930b672b37643a961178f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359952"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736288"
 ---
 # <a name="use-the-azure-powershell-module-to-enable-double-encryption-at-rest-for-managed-disks"></a>A Azure PowerShell modul használata a felügyelt lemezeken a kettős titkosítás engedélyezéséhez
 
@@ -21,7 +21,7 @@ Azure Disk Storage támogatja a kettős titkosítást a felügyelt lemezeken. A 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Telepítse a legújabb [Azure PowerShell verziót](/powershell/azure/install-az-ps), és jelentkezzen be egy Azure-fiókba a [AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-4.3.0)használatával.
+Telepítse a legújabb [Azure PowerShell verziót](/powershell/azure/install-az-ps), és jelentkezzen be egy Azure-fiókba a [AzAccount](/powershell/module/az.accounts/connect-azaccount)használatával.
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -64,7 +64,7 @@ Telepítse a legújabb [Azure PowerShell verziót](/powershell/azure/install-az-
     Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ObjectId $des.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy létrehozta és konfigurálta ezeket az erőforrásokat, a segítségével biztonságossá teheti a felügyelt lemezeket. Az alábbi hivatkozások olyan parancsfájlokat tartalmaznak, amelyek mindegyike megfelelő forgatókönyvekkel rendelkezik, amelyek segítségével biztonságossá teheti a felügyelt lemezeket.
 

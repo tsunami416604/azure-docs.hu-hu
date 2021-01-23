@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 3ae300ca2746ab9e3478d3fe14fd6fc49c95a93d
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: dc9f7dfdf33411f11d51734b48105be200874d02
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071731"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98738118"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure rendszerindítási diagnosztika
 
@@ -45,7 +45,7 @@ Amikor virtuális gépet hoz létre a Azure Portalban, az alapértelmezett beál
 :::image type="content" source="./media/boot-diagnostics/boot-diagnostics-enable-portal.png" alt-text="Képernyőfelvétel a felügyelt rendszerindítási diagnosztika engedélyezéséről a virtuális gépek létrehozása során.":::
 
 ### <a name="enable-managed-boot-diagnostics-using-cli"></a>Felügyelt rendszerindítási diagnosztika engedélyezése a parancssori felület használatával
-A felügyelt Storage-fiókkal rendelkező rendszerindítási diagnosztika az Azure CLI 2.12.0 és újabb verzióiban támogatott. Ha nem adja meg a Storage-fiók nevét vagy URI azonosítóját, a rendszer felügyelt fiókot fog használni. További információkat és kódokat a [rendszerindítási diagnosztika parancssori felületének dokumentációjában](/cli/azure/vm/boot-diagnostics?preserve-view=true&view=azure-cli-latest)talál.
+A felügyelt Storage-fiókkal rendelkező rendszerindítási diagnosztika az Azure CLI 2.12.0 és újabb verzióiban támogatott. Ha nem adja meg a Storage-fiók nevét vagy URI azonosítóját, a rendszer felügyelt fiókot fog használni. További információkat és kódokat a [rendszerindítási diagnosztika parancssori felületének dokumentációjában](/cli/azure/vm/boot-diagnostics)talál.
 
 ### <a name="enable-managed-boot-diagnostics-using-azure-resource-manager-arm-templates"></a>Felügyelt rendszerindítási diagnosztika engedélyezése Azure Resource Manager (ARM) sablonok használatával
 Minden, a 2020-06-01-es API-verzió támogatja a felügyelt rendszerindítási diagnosztikát. További információ: [rendszerindítási diagnosztikai példány nézet](/rest/api/compute/virtualmachines/createorupdate#bootdiagnostics).
@@ -109,6 +109,6 @@ Minden, a 2020-06-01-es API-verzió támogatja a felügyelt rendszerindítási d
 - Az Azure soros konzol jelenleg nem kompatibilis a rendszerindítási diagnosztika felügyelt tárolási fiókjával. További információ az [Azure soros konzolról](./troubleshooting/serial-console-overview.md).
 - A portál csak az Egypéldányos virtuális gépekhez tartozó felügyelt Storage-fiókkal támogatja a rendszerindítási diagnosztika használatát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az [Azure soros konzolról](./troubleshooting/serial-console-overview.md) , valamint a [virtuális gépek Azure-ban való hibakeresésének](./troubleshooting/boot-diagnostics.md)rendszerindítási diagnosztika használatával történő használatáról.

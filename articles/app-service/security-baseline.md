@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1ea8f3bccd97e1aaa15a21ae605a163b11c8ae39
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 758f7de46c524406f31a40072250eb7d59745d42
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197931"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736088"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>App Service Azure biztonsági alapterve
 
@@ -71,7 +71,7 @@ A Azure Firewall használatával elküldheti a forgalmat, és központilag hozha
 
 - [A Azure Security Center által biztosított hálózati biztonság ismertetése](../security-center/security-center-network-recommendations.md)
 
-- [A App Service monitorozásának és védelmének engedélyezése](/azure/security-center/defender-for-app-service-introduction)
+- [A App Service monitorozásának és védelmének engedélyezése](../security-center/defender-for-app-service-introduction.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -168,7 +168,7 @@ További információkért tekintse át a hivatkozott hivatkozásokat.
 
 - [Végpontok közötti TLS konfigurálása Application Gateway használatával a portálon](../application-gateway/end-to-end-ssl-portal.md)
 
-- [A következő témakörben leírtak szerint biztosítsa a beApp Serviceának zárolását:](/azure/app-service/environment/firewall-integration)
+- [A következő témakörben leírtak szerint biztosítsa a beApp Serviceának zárolását:](./environment/firewall-integration.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -205,7 +205,7 @@ További információkért tekintse át a hivatkozott hivatkozásokat.
 
 - [Végpontok közötti TLS konfigurálása Application Gateway használatával a portálon](../application-gateway/end-to-end-ssl-portal.md)
 
-- [A következő témakörben leírtak szerint biztosítsa a beApp Serviceának zárolását:](/azure/app-service/environment/firewall-integration)
+- [A következő témakörben leírtak szerint biztosítsa a beApp Serviceának zárolását:](./environment/firewall-integration.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -221,7 +221,7 @@ Alkalmazza a címkézési hatásokkal kapcsolatos beépített Azure Policy defin
 
 - [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
-- [Hozzáférési korlátozások Azure App Service](/azure/app-service/app-service-ip-restrictions)
+- [Hozzáférési korlátozások Azure App Service](./app-service-ip-restrictions.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -1147,7 +1147,7 @@ A Microsoft által felügyelt felhő-infrastruktúrával,-szolgáltatásokkal é
 
 **Felelősség**: Megosztott
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
 - További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

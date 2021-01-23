@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 6538243cf8fc12131e1480c8578bfa8739c4f561
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e3ebd83646353e34c239e7d1812e380b9e9d2e26
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676289"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737523"
 ---
 # <a name="dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-release-notes"></a>Dedikált SQL-készlet (korábban SQL DW) az Azure szinapszis Analytics kibocsátási megjegyzésekben
 
@@ -52,7 +52,7 @@ Az eszközök tökéletesítéséhez győződjön meg arról, hogy a kiadási me
 | Szolgáltatások fejlesztése | Részletek |
 | --- | --- |
 |**T-SQL beágyazott Table-Valued függvények (előzetes verzió)**|Ebben a kiadásban létrehozhat beágyazott tábla értékű függvényeket a Transact-SQL használatával, és lekérdezéseket végezhet eredményként, ahogy azt egy tábla tenné. Ez a funkció jelenleg előzetes verzióban érhető el, és a rendszer a GA eszközön támogatja. További információ: [create Function (Azure szinapszis Analytics)](/sql/t-sql/statements/create-function-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true).|
-|**MERGE parancs (előzetes verzió)**|Most már futtathat beszúrási, frissítési vagy törlési műveletet egy céltábla egyik táblájában lévő illesztés eredményeiből. A két táblázatot szinkronizálhatja például úgy, hogy beszúrja, frissíti vagy törli az egyik tábla sorait a másik táblában található különbségek alapján.  Részletekért olvassa el az [egyesítést](/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current) .|
+|**MERGE parancs (előzetes verzió)**|Most már futtathat beszúrási, frissítési vagy törlési műveletet egy céltábla egyik táblájában lévő illesztés eredményeiből. A két táblázatot szinkronizálhatja például úgy, hogy beszúrja, frissíti vagy törli az egyik tábla sorait a másik táblában található különbségek alapján.  Részletekért olvassa el az [egyesítést](/sql/t-sql/statements/merge-transact-sql??view=azure-sqldw-latest&preserve-view=true) .|
 
 ## <a name="aug-2020"></a>Augusztus 2020
 
@@ -68,7 +68,7 @@ Az eszközök tökéletesítéséhez győződjön meg arról, hogy a kiadási me
 |**Oszlop szintű titkosítás (nyilvános előzetes verzió)**|A bizalmas adatok védelme az Azure szinapszis-elemzésekben a Transact-SQL használatával szimmetrikus titkosítást alkalmazhat az adatoszlopokra. Az oszlop szintű titkosítás beépített függvényekkel titkosíthatja az adatok titkosítását a tanúsítványokkal, jelszóval, szimmetrikus kulccsal vagy aszimmetrikus kulccsal védett szimmetrikus kulcsokkal. További információkért tekintse meg az [adatoszlopok titkosítása](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest&preserve-view=true)című témakört.|
 |**Kompatibilitási szint támogatása (GA)**|Ezzel a kiadással a felhasználók mostantól megadhatják az adatbázis kompatibilitási szintjét, hogy lekérjek a Transact-SQL nyelvét és a lekérdezés-feldolgozási viselkedést a szinapszis SQL-motor egy adott verziójára vonatkozóan. További információ: az [adatbázis hatókörű konfigurációjának](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) [sys.database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) és módosítása.|
 |**Sor szintű biztonság**|Ez a kiadás az RLS által kényszerített sorokon végzett frissítési és törlési műveletek fejlesztését is tartalmazza. Ezzel a kiadással az olyan belső funkciókat tartalmazó frissítési és törlési műveletek, mint a "is_rolemember", sikeresek lesznek, ha a belső nem hivatkozik a DML-céltábla egyik oszlopára sem. A fejlesztés előtt ezek a műveletek a mögöttes DML-műveletek korlátozása miatt nem sikerültek.|
-|**DBCC SHRINKDATABASE (GA)**|Most már csökkentheti az adatfájlok és a naplófájlok méretét a megadott adatbázisban. További információ: [dokumentáció](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql?view=sql-server-ver15).|
+|**DBCC SHRINKDATABASE (GA)**|Most már csökkentheti az adatfájlok és a naplófájlok méretét a megadott adatbázisban. További információ: [dokumentáció](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql?view=azure-sqldw-latest&preserve-view=true).|
 
 ## <a name="may-2020"></a>2020. május
 
@@ -219,7 +219,7 @@ Az eszközök tökéletesítéséhez győződjön meg arról, hogy a kiadási me
 |**Jelentős hibák**|CETAS a DW2000 adattárházában található kisméretű erőforrás-osztályokba – ez a javítás helyesen azonosítja a null hivatkozást a külső tábla létrehozása a Parquet-kód elérési útjára.<br/><br/>Az azonosító oszlop értéke elvész bizonyos CTAS műveletekben – előfordulhat, hogy egy azonosító oszlop értéke nem marad meg, ha CTASed egy másik táblára. [Blogban](https://blog.westmonroepartners.com/azure-sql-dw-identity-column-bugs/)jelentett jelentés.<br/><br/>Belső hiba bizonyos esetekben, amikor egy munkamenet leáll, miközben egy lekérdezés még fut – ez a javítás elindítja a InvalidOperationException, ha a lekérdezés még fut.<br/><br/>(2018 novemberében üzembe helyezett) Az ügyfelek a ADLS (Gen1) használatával több kisebb fájl betöltésére tett kísérlet során az optimálisnál rosszabb teljesítményt tapasztalnak. – A HRE biztonsági jogkivonat ellenőrzése során a rendszerteljesítmény szűk keresztmetszetű volt. A biztonsági tokenek gyorsítótárazásának engedélyezésével a teljesítménnyel kapcsolatos problémák csökkenthetők. |
 | | |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [dedikált SQL-készlet létrehozása (korábban SQL DW)](create-data-warehouse-portal.md)
 

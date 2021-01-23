@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 01/15/2021
-ms.openlocfilehash: 6589f451d4db8f2ed77ce70a2bdfa9d76927c1e2
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 35cdfdbdc04d0c88bc49c024ea7465537583e0d7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251216"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735511"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Virtuális mag-modell áttekintése – Azure SQL Database és az Azure SQL felügyelt példánya 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -106,7 +106,7 @@ To enable M-series hardware for a subscription and region, a support request mus
 > A DC-Series szolgáltatás jelenleg **nyilvános előzetes** verzióban érhető el.
 
 - A DC sorozat hardvere Intel processzorokat használ a Software Guard Extensions (Intel SGX ENKLÁVÉHOZ) technológiával.
-- [Biztonságos enklávékkal rendelkező Always encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves)esetén a DC sorozat szükséges, amely más hardverkonfiguráció esetén nem támogatott.
+- [Biztonságos enklávékkal rendelkező Always encrypted](/sql/relational-databases/security/encryption/always-encrypted-enclaves)esetén a DC sorozat szükséges, amely más hardverkonfiguráció esetén nem támogatott.
 - A DC sorozat olyan számítási feladatokhoz lett tervezve, amelyek érzékeny adatokat dolgoznak fel, és a Always Encrypted biztonságos enklávék által biztosított bizalmas lekérdezés-feldolgozási képességeket igényelnek.
 - A DC-Series hardver kiegyensúlyozott számítási és memória-erőforrásokat biztosít.
 

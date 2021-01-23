@@ -3,12 +3,12 @@ title: Támogatott fürtözött verziók az Azure Service Fabric
 description: Ismerje meg az Azure Service Fabric-beli fürtök verzióit, beleértve a Service Fabric csapat blogján elérhető legújabb kiadásokra mutató hivatkozást is.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: c2ea2b53649cf148a19df46835c8936345aa20e5
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 82b90d6b0acf5d83f9509abd9ee4b34cb74d1b48
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234341"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736784"
 ---
 # <a name="supported-service-fabric-versions"></a>Támogatott Service Fabric verziók
 
@@ -56,10 +56,13 @@ A biztonság és a rendelkezésre állás javítása érdekében az Azure-infras
  #### <a name="impact-if-not-upgraded-to-supported-versions"></a>Hatás, ha a rendszer nem frissített a támogatott verzióra
   Az Azure Service Fabric-fürtök, amelyek a tárolók **számára [nyitott hálózatkezelési funkciót](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) használnak a tárolók számára, és a 6,3-nál nagyobb verziókon futnak** , amelyek nem tartalmazzák a módosításokat, a funkcionalitás vagy a szolgáltatás zavarainak elvesztését tapasztalják, ha a **2021 január 19-** én nem frissítjük a támogatott verziók egyikére.
  
-  - A **6,3-nál nagyobb Service Fabric-t futtató fürtök esetében a nyitott hálózatkezelési funkció használata** esetén a fürt továbbra is fennáll, azonban a tárolók fürtjének nyitott hálózati funkciója megszűnik a működésük, ami miatt a munkaterhelések szolgáltatás megszakadhat.
+  - A **6,3-nál nagyobb Service Fabric-verziót futtató fürtök esetében** a fürt továbbra is nyitva marad.
 
  - A **6,3-nál nagyobb Service Fabric-t futtató fürtök esetében, és a [tárolók nyitott hálózati funkciójának](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) használata** esetén a fürt elérhetetlenné válhat, és megszűnik a működés, ami a munkaterhelések szolgáltatás általi megszakítását okozhatja.
-  
+ 
+ -   Az **[7,0-es és a 7.0.466 közötti Windows-verziókat futtató fürtök esetében (mindkét verzióban megtalálható)](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-version-names) és a Windows rendszerű tárolók funkció engedélyezve van. Megjegyzés: a Linux-verziók 7.0.457, a 7.0.464 és a 7.0.465 nincs hatással**.
+    - **Hatás**: a fürt működése megszűnik, ami a munkaterhelések szolgáltatás általi megszakítását okozhatja.
+       
 #### <a name="required-action"></a>Szükséges művelet
 Frissítsen az alább felsorolt Service Fabric támogatott verziókra, hogy elkerülje az állásidőt vagy a változáshoz kapcsolódó funkciók elvesztését. Győződjön meg arról, hogy a fürtök legalább ezeket a verziókat futtatják a környezettel kapcsolatos problémák megelőzése érdekében. 
  

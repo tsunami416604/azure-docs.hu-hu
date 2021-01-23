@@ -3,12 +3,12 @@ title: Biztonsági mentési adatai titkosítása az ügyfél által felügyelt k
 description: Megtudhatja, hogyan titkosíthatja a biztonsági mentési adatait az ügyfél által felügyelt kulcsokkal (CMK) a Azure Backup segítségével.
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 30bcf907e1a2759c8a9977e50cb4880c2e254ca2
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: d5daa88475e3becde6e513391c555471f80396c5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562760"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735860"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Biztonsági mentési adatai titkosítása az ügyfél által felügyelt kulcsokkal
 
@@ -77,7 +77,7 @@ Azure Backup a rendszerhez rendelt felügyelt identitás használatával hiteles
 
 **PowerShell-lel:**
 
-Az [Update-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesvault) parancs használatával engedélyezheti a rendszerhez rendelt felügyelt identitást a Recovery Services-tárolóhoz.
+Az [Update-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/update-azrecoveryservicesvault) parancs használatával engedélyezheti a rendszerhez rendelt felügyelt identitást a Recovery Services-tárolóhoz.
 
 Példa:
 
@@ -121,7 +121,7 @@ Most engedélyeznie kell a Recovery Services-tárolónak a titkosítási kulcsot
 
 **PowerShell**-lel:
 
-A [set-AzRecoveryServicesVaultProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty) parancs használatával engedélyezheti a titkosítást az ügyfél által felügyelt kulcsokkal, valamint a használni kívánt titkosítási kulcs hozzárendelését vagy frissítését.
+A [set-AzRecoveryServicesVaultProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty) parancs használatával engedélyezheti a titkosítást az ügyfél által felügyelt kulcsokkal, valamint a használni kívánt titkosítási kulcs hozzárendelését vagy frissítését.
 
 Példa:
 
@@ -221,7 +221,7 @@ A kulcs hozzárendeléséhez:
 
         ![Kulcs kiválasztása a Key vaultból](./media/encryption-at-rest-with-cmk/key-vault.png)
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 1. A **titkosítási kulcs frissítésének előrehaladása és állapota**: a titkosítási kulcs hozzárendelésének előrehaladását és állapotát a bal oldali navigációs sávon a **biztonsági mentési feladatok** nézet használatával követheti nyomon. Az állapotnak hamarosan **Befejezettre** kell váltania. A tár mostantól a megadott kulccsal titkosítja az összes adathalmazt.
 
@@ -290,7 +290,7 @@ A lemez titkosítási készletét a visszaállítás ablaktábla titkosítási b
 
 **PowerShell**-lel:
 
-Használja a [Get-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) parancsot a (z) [] paraméterrel a `-DiskEncryptionSetId <string>` visszaállított lemez TITKOSÍTÁSához használandó [des megadásához](https://docs.microsoft.com/powershell/module/az.compute/get-azdiskencryptionset) . További információ a virtuális gépek biztonsági mentéséről a lemezek visszaállításáról: [ebben a cikkben](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#restore-an-azure-vm).
+Használja a [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) parancsot a (z) [] paraméterrel a `-DiskEncryptionSetId <string>` visszaállított lemez TITKOSÍTÁSához használandó [des megadásához](/powershell/module/az.compute/get-azdiskencryptionset) . További információ a virtuális gépek biztonsági mentéséről a lemezek visszaállításáról: [ebben a cikkben](./backup-azure-vms-automation.md#restore-an-azure-vm).
 
 Példa:
 
