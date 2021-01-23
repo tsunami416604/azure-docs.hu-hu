@@ -3,12 +3,12 @@ title: Az Azure Backup újdonságai
 description: Ismerkedjen meg a Azure Backup új szolgáltatásaival.
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: 62a6146990863c339917777b2624fee76ebe60d8
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 935c2a806ed3b08f19e680bf1522d98a9ad67666
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569419"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730289"
 ---
 # <a name="whats-new-in-azure-backup"></a>Az Azure Backup újdonságai
 
@@ -37,7 +37,7 @@ Az új kiadásokról további információt az oldal könyvjelzővel vagy a [fri
 
 ## <a name="azure-disk-backup-in-preview"></a>Azure Disk Backup (előzetes verzió)
 
-Az Azure Disk Backup olyan kulcsrakész megoldást kínál, amely a pillanatképek életciklusának kezelését teszi lehetővé az [azure Managed Disks](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview) számára a pillanatképek rendszeres létrehozásával, és a biztonsági mentési házirend használatával megőrzi a beállított időtartamot. A lemez-pillanatképeket az infrastrukturális költségek nélkül kezelheti, és nincs szükség egyéni parancsfájlok vagy felügyeleti terhelésre. Ez egy összeomlás-konzisztens biztonsági mentési megoldás, amely egy felügyelt lemez adott időpontban történő biztonsági mentését teszi lehetővé [növekményes Pillanatképek](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots) használatával, és naponta több biztonsági mentést támogat. Ez egy ügynök nélküli megoldás is, amely nem befolyásolja az üzemi alkalmazások teljesítményét. Támogatja az operációs rendszer és az adatlemezek (beleértve a megosztott lemezeket is) biztonsági mentését és visszaállítását, függetlenül attól, hogy jelenleg egy futó Azure-beli virtuális géphez vannak-e csatolva.
+Az Azure Disk Backup olyan kulcsrakész megoldást kínál, amely a pillanatképek életciklusának kezelését teszi lehetővé az [azure Managed Disks](../virtual-machines/managed-disks-overview.md) számára a pillanatképek rendszeres létrehozásával, és a biztonsági mentési házirend használatával megőrzi a beállított időtartamot. A lemez-pillanatképeket az infrastrukturális költségek nélkül kezelheti, és nincs szükség egyéni parancsfájlok vagy felügyeleti terhelésre. Ez egy összeomlás-konzisztens biztonsági mentési megoldás, amely egy felügyelt lemez adott időpontban történő biztonsági mentését teszi lehetővé [növekményes Pillanatképek](../virtual-machines/disks-incremental-snapshots.md) használatával, és naponta több biztonsági mentést támogat. Ez egy ügynök nélküli megoldás is, amely nem befolyásolja az üzemi alkalmazások teljesítményét. Támogatja az operációs rendszer és az adatlemezek (beleértve a megosztott lemezeket is) biztonsági mentését és visszaállítását, függetlenül attól, hogy jelenleg egy futó Azure-beli virtuális géphez vannak-e csatolva.
 
 További információ: [Azure Disk Backup (előzetes verzió)](disk-backup-overview.md).
 

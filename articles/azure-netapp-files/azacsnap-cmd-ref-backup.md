@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 1051859d514c77bad1aa5f14becc2218a923df44
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 17c29fdf88495f6ecc40963eda08858887173fd1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632768"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730938"
 ---
 # <a name="back-up-using-azure-application-consistent-snapshot-tool-preview"></a>Biztonsági mentés az Azure Application konzisztens Snapshot Tool eszközzel (előzetes verzió)
 
@@ -143,9 +143,9 @@ Ebben a példában a *naplófájl* neve `azacsnap-backup-bootVol.log` .
 > A naplófájl neve a "(parancs neve – (a `-c` beállítás) – (a konfigurációs fájlnév).  Ha például a `-c backup` paraméterrel a naplófájl nevét használja `h80.json` , a rendszer a naplófájlt fogja meghívni `azacsnap-backup-h80.log` .  Ha a `-c test` beállítást ugyanazzal a konfigurációs fájllal használja, akkor a rendszer meghívja a naplófájlt `azacsnap-test-h80.log` .
 
 - HANA nagyméretű példány típusa: két érvényes érték van a `TYPEI` `TYPEII` Hana nagyméretű példány-egységgel, vagy attól függ.
-- Tekintse meg az elérhető SKU-ket [a HANA nagy példányok](/azure/virtual-machines/workloads/sap/hana-available-skus) számára az elérhető SKU-azonosítók ellenőrzéséhez.
+- Tekintse meg az elérhető SKU-ket [a HANA nagy példányok](../virtual-machines/workloads/sap/hana-available-skus.md) számára az elérhető SKU-azonosítók ellenőrzéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Pillanatkép részleteinek beolvasása](azacsnap-cmd-ref-details.md)
 - [Pillanatképek törlése](azacsnap-cmd-ref-delete.md)

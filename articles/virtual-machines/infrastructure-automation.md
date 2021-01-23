@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: a20c19c3da89801570ca4d74a646e3cf0d8434b6
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 7a702fbf405011a9df3e7e77936a9a37f0fdfad7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675902"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730638"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Infrastruktúra-automatizálási eszközök használata az Azure-beli virtuális gépekkel
 
@@ -126,7 +126,7 @@ Az [Azure DevOps Services](https://www.visualstudio.com/team-services/) olyan es
 
 További információk:
 
-- [Azure DevOps-szolgáltatások](/azure/devops/user-guide/index?view=vsts).
+- [Azure DevOps-szolgáltatások](/azure/devops/user-guide/index).
 
 
 ## <a name="jenkins"></a>Jenkins
@@ -147,5 +147,5 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 - [Töltse le a virtuális gép sablonját](/previous-versions/azure/virtual-machines/windows/download-template).
 - [Hozzon létre egy Azure rendszerkép-szerkesztői sablont](./linux/image-builder-json.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Számos különböző lehetőség áll rendelkezésre az infrastruktúra-automatizálási eszközök használatára az Azure-ban. Ön szabadon használhatja az igényeinek és környezetének legmegfelelőbb megoldást. A kezdéshez és az Azure-ba beépített eszközök kipróbálásához lásd: [Linux](./linux/tutorial-automate-vm-deployment.md) vagy [Windows rendszerű](./windows/tutorial-automate-vm-deployment.md) virtuális gép testreszabásának automatizálása.

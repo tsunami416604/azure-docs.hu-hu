@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops, devx-track-js
-ms.openlocfilehash: 3d26da693d83fd680c644849d581ea35ca7b49af
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 4ca431290fe168f8fc073908bb3735ecb5992562
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739705"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731251"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Oktatóanyag: alkalmazás üzembe helyezése az Azure-beli linuxos virtuális gépeken az Azure DevOps Services és az Azure-folyamatok használatával
 
@@ -24,7 +24,7 @@ A folyamatos integráció (CI) és a folyamatos üzembe helyezés (CD) egy olyan
 
 Az Azure-folyamatok teljes körűen Kiemelt CI/CD Automation-eszközöket biztosítanak a virtuális gépekhez, helyszíni vagy bármilyen Felhőbeli üzembe helyezéshez.
 
-Ebben az oktatóanyagban egy YAML-alapú CI/CD-folyamatot állít be az alkalmazás Azure-beli, Linux rendszerű virtuális gépekkel [való üzembe](/azure/devops/pipelines/process/environments?view=azure-devops) helyezéséhez erőforrásként, amelyek mindegyike webkiszolgálóként szolgál az alkalmazás futtatásához.
+Ebben az oktatóanyagban egy YAML-alapú CI/CD-folyamatot állít be az alkalmazás Azure-beli, Linux rendszerű virtuális gépekkel [való üzembe](/azure/devops/pipelines/process/environments) helyezéséhez erőforrásként, amelyek mindegyike webkiszolgálóként szolgál az alkalmazás futtatásához.
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -41,7 +41,7 @@ Az alábbiak végrehajtásának módját ismerheti meg:
   Beszerezhet egy [ingyenes Azure DevOps Services-szervezetet](https://go.microsoft.com/fwlink/?LinkId=307137&clcid=0x409&wt.mc_id=o~msft~vscom~home-vsts-hero~27308&campaign=o~msft~vscom~home-vsts-hero~27308).
 
   > [!NOTE]
-  > További információ: [Csatlakozás az Azure DevOps Services-hez](/azure/devops/organizations/projects/connect-to-projects?view=vsts).
+  > További információ: [Csatlakozás az Azure DevOps Services-hez](/azure/devops/organizations/projects/connect-to-projects).
 
 *  Telepítési célként egy Linux rendszerű virtuális gépre van szükség.  További információért lásd: [Linux rendszerű virtuális gépek létrehozása és kezelése az Azure CLI-vel](./tutorial-manage-vm.md).
 
@@ -222,7 +222,7 @@ További útmutatásért kövesse a [Node.js alkalmazás felépítése a Nyelő]
        tags: web
    ```
 2. A környezetből kiválaszthatja a virtuális gépek meghatározott készleteit, hogy a központi telepítést a környezetben minden egyes virtuális géphez definiált **címkék** megadásával kapja meg.
-[Itt](/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job) látható az üzembe helyezési feladatokhoz tartozó teljes YAML séma.
+[Itt](/azure/devops/pipelines/yaml-schema?tabs=schema#deployment-job) látható az üzembe helyezési feladatokhoz tartozó teljes YAML séma.
 
 3. Megadhatja `runOnce` a vagy `rolling` a as telepítési stratégiát is. 
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c03009b08dcf33bf4b84bc91232af96e7ba2c71
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: f962bf131b87f17712186145b8c8b8e6090f7002
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095185"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730657"
 ---
 # <a name="tutorial-to-deploy-f5-big-ip-virtual-edition-vm-in-azure-iaas-for-secure-hybrid-access"></a>Oktatóanyag az F5 BIG-IP Virtual Edition virtuális gép üzembe helyezéséhez az Azure IaaS a biztonságos hibrid hozzáférés érdekében
 
@@ -85,7 +85,7 @@ A BIG-IP VE [Azure piactéren](https://azuremarketplace.microsoft.com/marketplac
  |Virtuális gép neve| Példa BIG-IP-VM |
  |Régió | Cél Azure geo a BIG-IP-VM számára |
  |Rendelkezésre állási beállítások| Csak a virtuális gép éles környezetben való használatának engedélyezése|
- |Rendszerkép| F5 BIG-IP VE-ALL (BYOL, 2 rendszerindítási helyszín)|
+ |Kép| F5 BIG-IP VE-ALL (BYOL, 2 rendszerindítási helyszín)|
  |Azure Spot-példány| Nem, de szükség esetén szabadon engedélyezheti |
  |Méret| A minimális specifikációnak 2 vCPU és 8 GB memóriának kell lennie|
  |**Rendszergazdai fiók**|  |
@@ -216,7 +216,7 @@ Az alábbi lépések feltételezik, hogy az SHA-szolgáltatásokhoz használt ny
  |:-------|:-----------|
  |Előfizetés| Ugyanaz az előfizetés, mint a BIG-IP-VM|
  |DNS-zóna| A közzétett webhelyek által használt ellenőrzött tartomány utótagjának mérvadó DNS-zónája, például www.contoso.com |
- |Name (Név) | Az Ön által megadott állomásnév a kiválasztott másodlagos IP-címhez társított nyilvános IP-címhez lesz feloldva. Ügyeljen arra, hogy a megfelelő DNS-t adja meg az IP-megfeleltetésekhez. Lásd: az utolsó rendszerkép a hálózatkezelési konfigurációk szakaszban, például intranet.contoso.com > 13.77.148.215|
+ |Name | Az Ön által megadott állomásnév a kiválasztott másodlagos IP-címhez társított nyilvános IP-címhez lesz feloldva. Ügyeljen arra, hogy a megfelelő DNS-t adja meg az IP-megfeleltetésekhez. Lásd: az utolsó rendszerkép a hálózatkezelési konfigurációk szakaszban, például intranet.contoso.com > 13.77.148.215|
  | TTL | 1 |
  |TTL-egységek | Óra |
 
@@ -250,7 +250,7 @@ Alapértelmezés szerint az Azure virtuális hálózatok és a társított alhá
  |Protokoll| TCP |
  |Művelet| Engedélyezés|
  |Prioritás|A legalacsonyabb elérhető érték 100 – 4096|
- |Name (Név) | Leíró név, például: `BIG-IP-VM_Web_Services_80_443`|
+ |Name | Leíró név, például: `BIG-IP-VM_Web_Services_80_443`|
 
 3. Válassza a **Hozzáadás** lehetőséget a módosítások elvégzéséhez, majd a **hálózat** menü bezárásához.
 
@@ -264,7 +264,7 @@ A BIG-IP rendszer a webes konfigurációs felhasználói felületén keresztül 
 
 - A BIG-IP-VM belső hálózatához csatlakozó VPN-ügyfélről
 
-- Közzététel az [Azure ad Application Proxyon](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application) keresztül
+- Közzététel az [Azure ad Application Proxyon](./application-proxy-add-on-premises-application.md) keresztül
 
 A többi konfiguráció folytatásához el kell döntenie a legmegfelelőbb módszert. Ha szükséges, közvetlenül kapcsolódhat a webes konfigurációhoz az internetről, ha a BIG-IP elsődleges IP-címét egy nyilvános IP-címmel konfigurálja. Ezután adjon hozzá egy NSG-szabályt, amely engedélyezi az 8443 forgalmat az adott elsődleges IP-címhez. Ügyeljen arra, hogy a forrást a saját megbízható IP-címére korlátozza, ellenkező esetben bárki csatlakozhat.
 
@@ -276,7 +276,7 @@ Ha elkészült, ellenőrizze, hogy tud-e csatlakozni a BIG-IP virtuális gép we
 
 A BIG-IP rendszer a mögöttes SSH-környezettel is kezelhető, amely jellemzően parancssori (CLI) feladatokhoz és a gyökér szintű hozzáféréshez használatos. Több lehetőség is létezik a parancssori felülethez való csatlakozáshoz, beleértve a következőket:
 
-- [Azure Bastion szolgáltatás](https://docs.microsoft.com/azure/bastion/bastion-overview): gyors és biztonságos csatlakozást tesz lehetővé a vNET belüli bármely virtuális géphez bármely helyről
+- [Azure Bastion szolgáltatás](../../bastion/bastion-overview.md): gyors és biztonságos csatlakozást tesz lehetővé a vNET belüli bármely virtuális géphez bármely helyről
 
 - Közvetlen kapcsolat egy SSH-ügyféllel, például a JIT-módszer használatával
 
@@ -423,7 +423,7 @@ Ha a BIG-IP rendszer már teljesen kiépítve van, javasoljuk, hogy készítsen 
 
 6. Mentse helyileg a felhasználói konfigurációs készlet (FKR) archívumát a biztonsági mentés hivatkozásának kiválasztásával, és válassza a **Letöltés** lehetőséget.
 
-Választható lépésként a teljes rendszerlemez biztonsági mentését is elvégezheti az Azure- [Pillanatképek](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk)használatával, amely a webkonfiguráció biztonsági mentésével ELLENTÉTBEN a TMOS-verziók közötti tesztelésre, vagy egy friss rendszerre való visszagörgetésre is lehetőséget nyújt.
+Választható lépésként a teljes rendszerlemez biztonsági mentését is elvégezheti az Azure- [Pillanatképek](../../virtual-machines/windows/snapshot-copy-managed-disk.md)használatával, amely a webkonfiguráció biztonsági mentésével ELLENTÉTBEN a TMOS-verziók közötti tesztelésre, vagy egy friss rendszerre való visszagörgetésre is lehetőséget nyújt.
 
 ```PowerShell
 # Install modules
@@ -482,6 +482,6 @@ Get-AzVmSnapshot -ResourceGroupName '<E.g.contoso-RG>' -VmName '<E.g.BIG-IP-VM>'
 
 -   [Microsoft Azure: Waagent](https://clouddocs.f5.com/cloud/public/v1/azure/Azure_waagent.html)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Válasszon egy [üzembe helyezési forgatókönyvet](f5-aad-integration.md) , és indítsa el a megvalósítást.

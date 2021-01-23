@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: c34ca08ae2ede9430804f6b8bb33f2bfcb0b39ab
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 70e1823b30814d7dc29fef69215fcb53a2a2ab96
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632690"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730870"
 ---
 # <a name="disaster-recovery-using-azure-application-consistent-snapshot-tool-preview"></a>Vész-helyreállítás az Azure Application konzisztens Snapshot Tool eszközzel (előzetes verzió)
 
@@ -40,7 +40,7 @@ A vész-helyreállítási feladatátvétel megtervezése előtt a következő el
 - A tárolási replikáció működik. A Microsoft Operations csapat a DR kiépítés során automatikusan végrehajtja a tárolási replikáció beállítását. A tárolási replikációt a DR helyen található parancs használatával figyelheti `azacsnap -c details --details replication` .
 - Beállította és konfigurálta a tárolási pillanatképeket az elsődleges helyen.
 - Van egy HANA-példánya a DR-helyen, az elsődlegesnél ugyanazzal az SID-vel, mint az elsődleges példánnyal.
-- Elolvasta és megértette az Azure-ban [SAP HANA Large instances magas rendelkezésre állású és](/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) vész-helyreállítási folyamat során leírt Dr feladatátvételi eljárást
+- Elolvasta és megértette az Azure-ban [SAP HANA Large instances magas rendelkezésre állású és](../virtual-machines/workloads/sap/hana-failover-procedure.md) vész-helyreállítási folyamat során leírt Dr feladatátvételi eljárást
 - Beállította és konfigurálta a tárolási pillanatképeket a DR helyen.
 - A rendszer létrehoz egy konfigurációs fájlt (például `DR.json` :) a Dr-tárolási kötetekkel és a Dr-kiszolgálón található kapcsolódó információkkal.
 - A DR helyen a következő lépéseket végezte el:
@@ -282,7 +282,7 @@ Ha a DR helyen pillanatkép-alapú biztonsági mentéseket futtat, akkor a `azac
 > [!IMPORTANT]
 > A a `azacsnap -c backup` képes tároló-Pillanatképek létrehozásához a Dr helyen, ezeket a rendszer nem replikálja automatikusan egy másik helyre.  A Microsoft műveleteivel jobban megismerheti a fájlok és adatok visszaadását az eredeti üzemi helyre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Pillanatkép részleteinek beolvasása](azacsnap-cmd-ref-details.md)
 - [Biztonsági mentés készítése](azacsnap-cmd-ref-backup.md)

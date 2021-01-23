@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2961f3f01f6ea4398fab6144b34fcb4409cdd96f
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: 84e177f1ce55d803f54bb2553078441557e5c191
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96318171"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730887"
 ---
 # <a name="tutorial-for-azure-active-directory-single-sign-on-integration-with-f5-big-ip-for-password-less-vpn"></a>Oktatóanyag Azure Active Directory egyszeri bejelentkezéses integrációhoz az F5 BIG-IP jelszó nélküli VPN-hez
 
@@ -24,13 +24,13 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a F5's BIG-IP-alap
 
 A BIG IP SSL-VPN és az Azure AD integrálása [számos kulcsfontosságú előnyt](f5-aad-integration.md)biztosít, többek között:
 
-- Javított zéró megbízhatósági szabályozás az [Azure ad előhitelesítése és engedélyezése](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) révén
+- Javított zéró megbízhatósági szabályozás az [Azure ad előhitelesítése és engedélyezése](../../app-service/overview-authentication-authorization.md) révén
 
 - [Jelszó nélküli hitelesítés a VPN-szolgáltatáshoz](https://www.microsoft.com/security/business/identity/passwordless)
 
 - Identitások és hozzáférések kezelése egyetlen vezérlési síkon – a [Azure Portal](https://portal.azure.com/#home)
 
-A nagyszerű értékek ellenére a klasszikus VPN azonban továbbra is a hálózati peremhálózat fogalmát veszi alapul, ahol a megbízható a belső és a nem megbízható kívül van. Ez a modell már nem hatékony a valódi zéró megbízhatósági állapot elérésében, mivel a vállalati eszközök már nem korlátozódnak a vállalati adatközpontok falaira, hanem több Felhőbeli környezetek esetében, rögzített határok nélkül. Ezért azt javasoljuk ügyfeleinknek, hogy az [alkalmazáson alapuló hozzáférés](https://docs.microsoft.com/azure/active-directory/fundamentals/five-steps-to-full-application-integration-with-azure-ad)kezeléséhez több személyazonossági vezérelt megközelítést alkalmazzanak.
+A nagyszerű értékek ellenére a klasszikus VPN azonban továbbra is a hálózati peremhálózat fogalmát veszi alapul, ahol a megbízható a belső és a nem megbízható kívül van. Ez a modell már nem hatékony a valódi zéró megbízhatósági állapot elérésében, mivel a vállalati eszközök már nem korlátozódnak a vállalati adatközpontok falaira, hanem több Felhőbeli környezetek esetében, rögzített határok nélkül. Ezért azt javasoljuk ügyfeleinknek, hogy az [alkalmazáson alapuló hozzáférés](../fundamentals/five-steps-to-full-application-integration-with-azure-ad.md)kezeléséhez több személyazonossági vezérelt megközelítést alkalmazzanak.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -47,9 +47,9 @@ A korábbi tapasztalatok vagy az F5 BIG-IP ismerete nem szükséges, azonban a k
 
 - Azure AD [ingyenes előfizetés](https://azure.microsoft.com/trial/get-started-active-directory/) vagy újabb verzió
 
-- A felhasználói identitásokat [a helyszíni címtárból](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis) az Azure ad-be kell szinkronizálni.
+- A felhasználói identitásokat [a helyszíni címtárból](../hybrid/how-to-connect-sync-whatis.md) az Azure ad-be kell szinkronizálni.
 
-- Egy fiók az Azure AD-alkalmazás rendszergazdai [engedélyeivel](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#application-administrator)
+- Egy fiók az Azure AD-alkalmazás rendszergazdai [engedélyeivel](../roles/permissions-reference.md#application-administrator)
 
 - Meglévő BIG-IP-infrastruktúra, amely a BIG-IP-re irányuló és onnan érkező ügyfelek forgalmát irányítja át, vagy [egy Big-IP virtuális kiadást helyez üzembe az Azure](f5-bigip-deployment-guide.md)-ban.
 
@@ -64,7 +64,7 @@ Az [F5 Big-IP-terminológia](https://www.f5.com/services/resources/glossary) meg
 
 ## <a name="add-f5-big-ip-from-the-azure-ad-gallery"></a>Az F5 BIG-IP hozzáadása az Azure AD-katalógusból
 
-Az SAML-összevonási megbízhatóság beállítása a BIG-IP protokoll lehetővé teszi, hogy az Azure AD BIG-IP az előhitelesítést és a [feltételes hozzáférést](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) az Azure ad-hez adja, mielőtt hozzáférést adna a közzétett VPN-szolgáltatáshoz.
+Az SAML-összevonási megbízhatóság beállítása a BIG-IP protokoll lehetővé teszi, hogy az Azure AD BIG-IP az előhitelesítést és a [feltételes hozzáférést](../conditional-access/overview.md) az Azure ad-hez adja, mielőtt hozzáférést adna a közzétett VPN-szolgáltatáshoz.
 
 1. Jelentkezzen be az Azure AD-portálra az alkalmazás-rendszergazdai jogosultságokkal rendelkező fiók használatával
 
@@ -78,7 +78,7 @@ Az SAML-összevonási megbízhatóság beállítása a BIG-IP protokoll lehetőv
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-1. Az új F5-alkalmazás tulajdonságai nézetben válassza az **Manage**  >  **egyszeri bejelentkezés** kezelése lehetőséget.
+1. Az új F5-alkalmazás tulajdonságai nézetben válassza az   >  **egyszeri bejelentkezés** kezelése lehetőséget.
 
 2. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget. A nem gombra kattintva ugorja át a kérést az egyszeri bejelentkezési beállítások mentéséhez **, majd később mentse azt**.
 
@@ -105,7 +105,7 @@ Figyelje meg a **felhasználói attribútumok & a jogcímek** szakasz tulajdons�
 
 ![A rendszerkép a felhasználói attribútumok jogcímeit jeleníti meg](media/f5-sso-vpn/user-attributes-claims.png)
 
-Nyugodtan hozzáadhat bármilyen más, a BIG-IP-címmel közzétett szolgáltatáshoz kapcsolódó jogcímet, ugyanakkor megállapíthatja, hogy az alapértelmezett készleten kívül definiált jogcímek csak akkor lesznek kiadva, ha az Azure AD-ben szerepelnek a feltöltött attribútumok. Ugyanígy a címtárbeli [szerepköröknek vagy](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-group-claims) a csoporttagságok is meg kell határozni az Azure ad felhasználói objektumait, mielőtt jogcímeket kellene kiadniuk.
+Nyugodtan hozzáadhat bármilyen más, a BIG-IP-címmel közzétett szolgáltatáshoz kapcsolódó jogcímet, ugyanakkor megállapíthatja, hogy az alapértelmezett készleten kívül definiált jogcímek csak akkor lesznek kiadva, ha az Azure AD-ben szerepelnek a feltöltött attribútumok. Ugyanígy a címtárbeli [szerepköröknek vagy](../hybrid/how-to-connect-fed-group-claims.md) a csoporttagságok is meg kell határozni az Azure ad felhasználói objektumait, mielőtt jogcímeket kellene kiadniuk.
 
 ![Ábrán az összevonási metaadatok letöltési hivatkozása látható](media/f5-sso-vpn/saml-signing-certificate.png)
 
@@ -237,7 +237,7 @@ Ha a VPN-objektumok konfigurálva vannak, a szolgáltatás SAML-hitelesítéshez
 
 ![A képen egy munkamenet-szabályzat látható](media/f5-sso-vpn/per-session-policy.png)
 
-5. Válassza ki a **+** jelet, és az előugró ablakban válassza a hitelesítési SAML- **hitelesítés**  >  **SAML Auth**  >  **Hozzáadás elemet**.
+5. Válassza ki a **+** jelet, és az előugró ablakban válassza a hitelesítési SAML- **hitelesítés**  >    >  **Hozzáadás elemet**.
 
 6. Az SAML-hitelesítés SP konfigurációjában válassza ki a korábban létrehozott VPN SAML SP-objektumot, majd a **Mentés** lehetőséget.
 
@@ -299,11 +299,11 @@ Az összes beállítással az APM mostantól megköveteli, hogy egy előtér-vir
 
 - [A jelszavak vége, jelszóval elmentve](https://www.microsoft.com/security/business/identity/passwordless)
 
-- [Mit jelent a feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mit jelent a feltételes hozzáférés?](../conditional-access/overview.md)
 
 - [A Microsoft Zero megbízhatósági keretrendszere a távoli munka engedélyezéséhez](https://www.microsoft.com/security/blog/2020/04/02/announcing-microsoft-zero-trust-assessment-tool/)
 
-- [Öt lépés az Azure AD-vel való teljes alkalmazás-integrációhoz](https://docs.microsoft.com/azure/active-directory/fundamentals/five-steps-to-full-application-integration-with-azure-ad)
+- [Öt lépés az Azure AD-vel való teljes alkalmazás-integrációhoz](../fundamentals/five-steps-to-full-application-integration-with-azure-ad.md)
 
 ## <a name="next-steps"></a>További lépések
 
@@ -312,4 +312,4 @@ Nyisson meg egy böngészőt egy távoli Windows-ügyfélen, és keresse meg a *
 ![A képen a VPN-indító látható](media/f5-sso-vpn/vpn-launcher.png)
 
 A VPN-csempe kiválasztásával telepíti a BIG-IP Edge-ügyfelet, és létre kell hoznia az SHA használatára konfigurált VPN-kapcsolatot.
-Az F5 VPN-alkalmazásnak is láthatónak kell lennie az Azure AD feltételes hozzáférésben célként megadott erőforrásként. Tekintse meg a feltételes hozzáférési szabályzatok létrehozásával és a felhasználók Azure AD [jelszó nélküli hitelesítéssel](https://www.microsoft.com/security/business/identity/passwordless)történő engedélyezésével kapcsolatos [útmutatást](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policies) .
+Az F5 VPN-alkalmazásnak is láthatónak kell lennie az Azure AD feltételes hozzáférésben célként megadott erőforrásként. Tekintse meg a feltételes hozzáférési szabályzatok létrehozásával és a felhasználók Azure AD [jelszó nélküli hitelesítéssel](https://www.microsoft.com/security/business/identity/passwordless)történő engedélyezésével kapcsolatos [útmutatást](../conditional-access/concept-conditional-access-policies.md) .

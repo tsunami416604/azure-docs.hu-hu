@@ -16,18 +16,18 @@ ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65fc0e84582c005c5796ceac86ee28fc46b2e1d8
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 36b7fce2e2ccb6f331e42e8052ef4fb75d35e831
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094216"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729990"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: frissítés egy előző verzióról a legújabbra
 Ez a témakör azokat a különböző módszereket ismerteti, amelyekkel a Azure Active Directory (Azure AD) a legújabb verzióra történő frissítését végezheti el.  Ha jelentős konfigurációt végez, a [swing Migrálás](#swing-migration) szakasz lépéseit is használhatja.
 
 >[!NOTE]
-> Fontos, hogy a kiszolgálók naprakészek legyenek a Azure AD Connect legújabb kiadásaival. Folyamatosan frissítünk a AADConnect, és ezek a frissítések a biztonsági problémákra és a hibákra, valamint a szolgáltatásokra, teljesítményre és méretezhetőségre vonatkozó javításokat is tartalmaznak. Ha szeretné megtekinteni a legújabb verziót, és hogy megtudja, milyen módosításokat hajtottak végre a verziók között, tekintse meg a [kiadási verziók előzményeit](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-version-history)
+> Fontos, hogy a kiszolgálók naprakészek legyenek a Azure AD Connect legújabb kiadásaival. Folyamatosan frissítünk a AADConnect, és ezek a frissítések a biztonsági problémákra és a hibákra, valamint a szolgáltatásokra, teljesítményre és méretezhetőségre vonatkozó javításokat is tartalmaznak. Ha szeretné megtekinteni a legújabb verziót, és hogy megtudja, milyen módosításokat hajtottak végre a verziók között, tekintse meg a [kiadási verziók előzményeit](./reference-connect-version-history.md)
 
 >[!NOTE]
 > Jelenleg támogatott a Azure AD Connect bármely verziójáról a jelenlegi verzióra való frissítés. A nem támogatott, illetve a ADSync-alapú frissítések nem támogatottak, és szükség van a swing áttelepítésre.  Ha az rSync-ről szeretne frissíteni, tekintse meg az [Azure ad Sync Tool (az rsync)](how-to-dirsync-upgrade-get-started.md) vagy a [swing Migration](#swing-migration) című szakasz frissítését ismertető szakaszt.  </br>A gyakorlatban a rendkívül régi verziókban lévő ügyfelek olyan problémákba ütközhetnek, amelyek közvetlenül nem kapcsolódnak Azure AD Connecthoz. Azok a kiszolgálók, amelyeknek több éve van éles környezetben, általában több javítást is alkalmaztak, és nem mindegyike lehet a következő:.  Általában a 12-18 hónapokban nem frissített ügyfeleknél érdemes megfontolni a swing verziófrissítést, mivel ez a legkonzervatív és legkevesebb kockázatos megoldás.
@@ -170,5 +170,5 @@ Ha a Azure AD Connect újabb verzióját szeretné telepíteni: a Azure AD Conne
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a helyszíni [identitások és a Azure Active Directory integrálásáról](whatis-hybrid-identity.md).

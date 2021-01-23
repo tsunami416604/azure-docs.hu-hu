@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/26/2020
 ms.author: jeedes
-ms.openlocfilehash: b9a22025f124e7639aa1b9a157dbbd020e2ff966
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 9852752799fd010ebb069637f55008d9c4f68bf8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020264"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732110"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortigate-ssl-vpn"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a FortiGate SSL VPN-lel
 
@@ -93,7 +93,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a Azure Portal
 
 1. A FortiGate SSL VPN által igényelt két további jogcím az alábbi táblázatban látható. A jogcímek nevének meg kell egyeznie az oktatóanyag **végrehajtás FortiGate parancssori konfiguráció** szakaszában használt nevekkel. 
 
-   | Name (Név) |  Forrás attribútum|
+   | Name |  Forrás attribútum|
    | ------------ | --------- |
    | username | User. userPrincipalName |
    | csoport | User. groups |
@@ -108,7 +108,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a Azure Portal
 
    d. A **forrás attribútumnál** válassza a **User. userPrincipalName** elemet.
 
-   e. Válassza a **Mentés** lehetőséget.
+   e. Kattintson a **Mentés** gombra.
 
    f. Válassza **a csoport hozzáadása** lehetőséget.
 
@@ -118,7 +118,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a Azure Portal
 
    i. A **név** mezőbe írja be a következőt: **Group**.
    
-   j. Válassza a **Mentés** lehetőséget.   
+   j. Kattintson a **Mentés** gombra.   
 
 1. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **tanúsítvány (Base64)** melletti **Letöltés** hivatkozást a tanúsítvány letöltéséhez és a számítógépen való mentéséhez:
 
@@ -138,7 +138,7 @@ Ebben a szakaszban egy B. Simon nevű teszt felhasználót hoz létre a Azure Po
    1. A név mezőbe írja be a **B. Simon** **nevet** .  
    1. A **Felhasználónév** mezőbe írja be a nevet \<username> @ \<companydomain> . \<extension> Például: `B.Simon@contoso.com`.
    1. Válassza a **jelszó megjelenítése** lehetőséget, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** gombra.
+   1. Válassza a **Létrehozás** lehetőséget.
 
 #### <a name="grant-access-to-the-test-user"></a>Hozzáférés biztosítása a tesztelési felhasználónak
 
@@ -166,7 +166,7 @@ Ebben a szakaszban egy biztonsági csoportot hoz létre Azure Active Directory a
    1. A **tagság típusa** mezőben válassza a **hozzárendelt** elemet.
    1. A **tagok** területen válassza a **nincs kiválasztott tag** elemet.
    1. A **felhasználók és csoportok** párbeszédpanelen válassza a **felhasználók** listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-   1. Kattintson a **Létrehozás** gombra.
+   1. Válassza a **Létrehozás** lehetőséget.
 1. Miután visszatért a Azure Active Directory **csoportok** szakaszára, keresse meg a FortiGate- **hozzáférési** csoportot, és jegyezze fel az **objektumazonosítót**. Később szüksége lesz rá.
 
 ### <a name="configure-fortigate-ssl-vpn-sso"></a>FortiGate SSL VPN SSO konfigurálása
@@ -260,7 +260,7 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 * Lépjen a FortiGate VPN bejelentkezési URL-címére közvetlenül, és indítsa el onnan a bejelentkezési folyamatot.
 
-* Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások FortiGate VPN-csempére kattint, a rendszer átirányítja a FortiGate VPN bejelentkezési URL-címére. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
+* Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások FortiGate VPN-csempére kattint, a rendszer átirányítja a FortiGate VPN bejelentkezési URL-címére. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](../user-help/my-apps-portal-end-user-access.md)használatába.
 
 
 ## <a name="next-steps"></a>További lépések

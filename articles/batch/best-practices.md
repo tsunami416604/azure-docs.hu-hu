@@ -3,12 +3,12 @@ title: Ajánlott eljárások
 description: Ismerje meg az ajánlott eljárásokat és hasznos tippeket a Azure Batch-megoldások fejlesztéséhez.
 ms.date: 12/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7e2a49c8307af89fb3898f5f2513fb493d0f5d90
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 95dca907f9380de29bd3c9b0e52b120c9114b5ee
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934288"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732411"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch ajánlott eljárások
 
@@ -149,7 +149,7 @@ Csakúgy, mint más feladatokhoz, a csomópont [indítási tevékenységének](j
 
 ### <a name="isolated-nodes"></a>Elkülönített csomópontok
 
-Használjon elkülönített virtuálisgép-méreteket a megfelelőségi és szabályozási követelményekkel rendelkező munkaterhelésekhez. A virtuális gép konfigurációs módjában támogatott elkülönített méretek a következők:,,, `Standard_E80ids_v4` `Standard_M128ms` `Standard_F72s_v2` `Standard_G5` `Standard_GS5` és `Standard_E64i_v3` . Az elkülönített virtuálisgép-méretekről további információt a [virtuális gépek elkülönítése az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/isolation)című témakörben talál.
+Használjon elkülönített virtuálisgép-méreteket a megfelelőségi és szabályozási követelményekkel rendelkező munkaterhelésekhez. A virtuális gép konfigurációs módjában támogatott elkülönített méretek a következők:,,, `Standard_E80ids_v4` `Standard_M128ms` `Standard_F72s_v2` `Standard_G5` `Standard_GS5` és `Standard_E64i_v3` . Az elkülönített virtuálisgép-méretekről további információt a [virtuális gépek elkülönítése az Azure-ban](../virtual-machines/isolation.md)című témakörben talál.
 
 ### <a name="manage-long-running-services-via-the-operating-system-services-interface"></a>A hosszan futó szolgáltatások kezelése az operációs rendszer szolgáltatásainak felületén keresztül
 

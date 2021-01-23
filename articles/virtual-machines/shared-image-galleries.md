@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/14/2020
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 2731a7f263db223c258ddfc434bc84f59632d1f5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 3022e9c694d70359a90e71ecd1232e9274f92f10
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223363"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730322"
 ---
 # <a name="shared-image-galleries-overview"></a>Megosztott képgyűjtemények – áttekintés
 
@@ -188,10 +188,10 @@ Rendszerkép verziója:
 
 A következő SDK-k támogatják a megosztott képtárak létrehozását:
 
-- [.NET](/dotnet/api/overview/azure/virtualmachines/management?view=azure-dotnet)
-- [Java](/java/azure/?view=azure-java-stable)
+- [.NET](/dotnet/api/overview/azure/virtualmachines/management)
+- [Java](/java/azure/)
 - [Node.js](/javascript/api/@azure/arm-compute)
-- [Python](/python/api/overview/azure/virtualmachines?view=azure-python)
+- [Python](/python/api/overview/azure/virtualmachines)
 - [Ugrás](/azure/go/)
 
 ## <a name="templates"></a>Sablonok
@@ -322,7 +322,7 @@ Ha a megosztott képkatalógus erőforrásaiban bármilyen művelet végrehajtá
 
 Emellett a kérdését a következő címen teheti közzé és címkézheti `azure-virtual-machines-images` : [Q&a](/answers/topics/azure-virtual-machines-images.html).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan helyezhet üzembe megosztott rendszerképeket az [Azure CLI](shared-images-cli.md) vagy a [PowerShell](shared-images-powershell.md)használatával.
 

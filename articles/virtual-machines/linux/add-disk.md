@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: ad3a2ae9fd9a99398b384ef4e4a44820faccf8c7
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 1155b4274b97f540fd97bf39e51fd41c37bc9627
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675885"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730621"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Add a disk to a Linux VM (Lemez hozzáadása Linux rendszerű virtuális géphez)
 
@@ -21,7 +21,7 @@ Ez a cikk bemutatja, hogyan csatolhat állandó lemezt a virtuális géphez, íg
 
 ## <a name="attach-a-new-disk-to-a-vm"></a>Új lemez csatolása egy virtuális géphez
 
-Ha új, üres adatlemezt szeretne hozzáadni a virtuális géphez, használja az az [VM Disk Attach](/cli/azure/vm/disk?view=azure-cli-latest) parancsot a `--new` paraméterrel. Ha a virtuális gép rendelkezésre állási zónában van, a rendszer automatikusan létrehozza a lemezt a virtuális géppel megegyező zónában. További információ: [Availability Zones áttekintése](../../availability-zones/az-overview.md). A következő példa egy *myDataDisk* nevű lemezt hoz létre, amely 50 GB méretű:
+Ha új, üres adatlemezt szeretne hozzáadni a virtuális géphez, használja az az [VM Disk Attach](/cli/azure/vm/disk) parancsot a `--new` paraméterrel. Ha a virtuális gép rendelkezésre állási zónában van, a rendszer automatikusan létrehozza a lemezt a virtuális géppel megegyező zónában. További információ: [Availability Zones áttekintése](../../availability-zones/az-overview.md). A következő példa egy *myDataDisk* nevű lemezt hoz létre, amely 50 GB méretű:
 
 ```azurecli
 az vm disk attach \
@@ -34,7 +34,7 @@ az vm disk attach \
 
 ## <a name="attach-an-existing-disk"></a>Meglévő lemez csatlakoztatása
 
-Meglévő lemez csatolásához keresse meg a lemez AZONOSÍTÓját, és adja át az azonosítót az [az VM Disk Attach](/cli/azure/vm/disk?view=azure-cli-latest) parancsnak. A következő példa egy *myDataDisk* nevű lemezt kérdez le a *myResourceGroup*-ben, majd csatolja a *myVM* nevű virtuális géphez:
+Meglévő lemez csatolásához keresse meg a lemez AZONOSÍTÓját, és adja át az azonosítót az [az VM Disk Attach](/cli/azure/vm/disk) parancsnak. A következő példa egy *myDataDisk* nevű lemezt kérdez le a *myResourceGroup*-ben, majd csatolja a *myVM* nevű virtuális géphez:
 
 ```azurecli
 diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
@@ -179,7 +179,7 @@ A Linux rendszerű virtuális gépen kétféleképpen engedélyezhető a TRIM-t�
 
 [!INCLUDE [virtual-machines-linux-lunzero](../../../includes/virtual-machines-linux-lunzero.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A linuxos virtuális gép megfelelő konfigurálásának biztosítása érdekében tekintse át a Linux rendszerű [gépek teljesítményével kapcsolatos javaslatok optimalizálását](/previous-versions/azure/virtual-machines/linux/optimization) ismertető oktatóanyagot.
 * Bővítse a tárolókapacitást további lemezek hozzáadásával és a [RAID konfigurálásával](/previous-versions/azure/virtual-machines/linux/configure-raid) a további teljesítmény érdekében.

@@ -4,16 +4,16 @@ description: Az egyéni képkészletek hatékony módszer a számítási csomóp
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: eb21a9e0d355274142e34fbb5c90a4d293c88ef1
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 98dbb965d77da43d937dccbc0f99abf12c195929
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327304"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731361"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Egyéni rendszerkép-készlet létrehozása a megosztott rendszerkép-katalógus használatával
 
-Ha Azure Batch-készletet hoz létre a virtuális gép konfigurációjával, meg kell adnia egy virtuálisgép-rendszerképet, amely a készlet minden számítási csomópontja számára biztosítja az operációs rendszert. Létrehozhat egy virtuális gépek készletét vagy egy támogatott Azure Marketplace-lemezképpel, vagy létrehozhat egy egyéni rendszerképet egy [megosztott képtárat](../virtual-machines/windows/shared-image-galleries.md)tartalmazó képpel.
+Ha Azure Batch-készletet hoz létre a virtuális gép konfigurációjával, meg kell adnia egy virtuálisgép-rendszerképet, amely a készlet minden számítási csomópontja számára biztosítja az operációs rendszert. Létrehozhat egy virtuális gépek készletét vagy egy támogatott Azure Marketplace-lemezképpel, vagy létrehozhat egy egyéni rendszerképet egy [megosztott képtárat](../virtual-machines/shared-image-galleries.md)tartalmazó képpel.
 
 ## <a name="benefits-of-the-shared-image-gallery"></a>A megosztott képgyűjtemény előnyei
 
@@ -31,7 +31,7 @@ A forgatókönyvhöz konfigurált megosztott rendszerkép használata több elő
 - **Nagyméretű adatmennyiségek másolása egyszer.** A felügyelt megosztott rendszerkép statikus adatokból álló részét a felügyelt rendszerkép adatlemezére másolja. Ezt csak egyszer kell elvégezni, és a készlet minden csomópontja számára elérhetővé kell tenni az adatmennyiséget.
 - **Növelje a készleteket nagyobb méretekre.** A megosztott képkatalógussal nagyobb készleteket hozhat létre a testreszabott rendszerképekkel együtt, és több megosztott lemezkép-replikát is használhat.
 - **Jobb teljesítmény, mint a csak a felügyelt rendszerképek egyéni rendszerképként való használata.** Egy megosztott rendszerkép egyéni rendszerkép-készlete esetében az állandó állapot eléréséhez szükséges idő akár 25%-kal gyorsabb, a virtuális gép üresjárati késése pedig akár 30%-kal rövidebb.
-- **A képek verziószámozása és csoportosítása az egyszerűbb felügyelet érdekében.** A képcsoportosítási definíció információt tartalmaz arról, hogy miért jött létre a rendszerkép, milyen operációs rendszerre és a rendszerképek használatára vonatkozó információkkal rendelkezik. A képek csoportosítása megkönnyíti a képek kezelését. További információ: [képdefiníciók](../virtual-machines/windows/shared-image-galleries.md#image-definitions).
+- **A képek verziószámozása és csoportosítása az egyszerűbb felügyelet érdekében.** A képcsoportosítási definíció információt tartalmaz arról, hogy miért jött létre a rendszerkép, milyen operációs rendszerre és a rendszerképek használatára vonatkozó információkkal rendelkezik. A képek csoportosítása megkönnyíti a képek kezelését. További információ: [képdefiníciók](../virtual-machines/shared-image-galleries.md#image-definitions).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -211,7 +211,7 @@ A következő lépésekkel hozhat létre készletet egy megosztott rendszerképb
 1. Válassza a **készletek** lehetőséget, majd a **Hozzáadás** gombra kattintva hozzon létre egy új készletet.
 1. A **rendszerkép típusa** szakaszban válassza a **megosztott képgyűjtemény** lehetőséget.
 1. Hajtsa végre a többi szakaszt a felügyelt lemezképpel kapcsolatos információkkal.
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 ![Hozzon létre egy készletet egy megosztott rendszerképből a portálon.](media/batch-sig-images/create-custom-pool.png)
 
@@ -226,4 +226,4 @@ Ha egy megosztott rendszerkép használatával több száz vagy több ezer virtu
 ## <a name="next-steps"></a>További lépések
 
 - A Batch részletes áttekintését lásd: [Batch szolgáltatás munkafolyamata és erőforrásai](batch-service-workflow-features.md).
-- Ismerje meg a [megosztott képtárat](../virtual-machines/windows/shared-image-galleries.md).
+- Ismerje meg a [megosztott képtárat](../virtual-machines/shared-image-galleries.md).

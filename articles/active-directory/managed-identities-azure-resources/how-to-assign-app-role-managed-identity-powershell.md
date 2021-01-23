@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: jodowns
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 409ba7a954830bb2370ce83989b9e8b08b742fe7
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: f2d844054e3744aafa01f43ded354a5b5d9f8b4b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631176"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732085"
 ---
 # <a name="assign-a-managed-identity-access-to-an-application-role-using-powershell"></a>Felügyelt identitás-hozzáférés kiosztása egy alkalmazás-szerepkörhöz a PowerShell használatával
 
@@ -36,7 +36,7 @@ Ebből a cikkből megtudhatja, hogyan rendelhet hozzá felügyelt identitást eg
 - Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
 - A példaként szolgáló szkriptek futtatásához két lehetőség közül választhat:
     - Használja a [Azure Cloud shellt](../../cloud-shell/overview.md), amelyet a kódrészletek jobb felső sarkában található **TRY IT (kipróbálás** ) gombra kattintva nyithat meg.
-    - Futtassa helyileg a parancsfájlokat az [Azure ad PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2)legújabb verziójának telepítésével.
+    - Futtassa helyileg a parancsfájlokat az [Azure ad PowerShell](/powershell/azure/active-directory/install-adv2)legújabb verziójának telepítésével.
 
 ## <a name="assign-a-managed-identity-access-to-another-applications-app-role"></a>Felügyelt identitás hozzáférésének kiosztása egy másik alkalmazás-szerepkörhöz
 
@@ -134,7 +134,7 @@ New-AzureADServiceAppRoleAssignment `
     -ResourceId $serverServicePrincipalObjectId
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Felügyelt identitás az Azure-erőforrásokhoz – áttekintés](overview.md)
 - A felügyelt identitás Azure-beli virtuális gépen való engedélyezésével kapcsolatban lásd: [felügyelt identitások konfigurálása](qs-configure-powershell-windows-vm.md)Azure-beli virtuális gépeken a PowerShell használatával.

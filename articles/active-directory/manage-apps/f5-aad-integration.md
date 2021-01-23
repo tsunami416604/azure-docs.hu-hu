@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5c960c7fbcc29d0aaea7511ba2187c916e84ab3
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: f8210e00824d7680f4eecde2f0b299dfcdc93b90
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935240"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730571"
 ---
 # <a name="f5-big-ip-access-policy-manager-and-azure-active-directory-integration-for-secure-hybrid-access"></a>F5 BIG-IP Access Policy Manager és Azure Active Directory integráció a biztonságos hibrid hozzáféréshez
 
@@ -29,19 +29,20 @@ Az SHA ezt a vak helyet úgy kezeli, hogy lehetővé teszi, hogy a szervezetek t
 
 A BIG-IP közzétett szolgáltatásokhoz való hozzáférés előzetes hitelesítését biztosító Azure AD számos előnnyel jár:
 
-- Jelszó nélküli hitelesítés a [Windows Hello](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-overview), az [MS hitelesítő](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install), a [gyors identitású online (() kulcsok](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-security-key)és a [tanúsítványalapú hitelesítés](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-certificate-based-authentication-get-started) ) használatával
+- Jelszó nélküli hitelesítés a [Windows Hello](/windows/security/identity-protection/hello-for-business/hello-overview), az [MS hitelesítő](../user-help/user-help-auth-app-download-install.md), a [gyors identitású online (() kulcsok](../authentication/howto-authentication-passwordless-security-key.md)és a [tanúsítványalapú hitelesítés](../authentication/active-directory-certificate-based-authentication-get-started.md) ) használatával
 
-- Preemptív karbantartással [feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) és [többtényezős hitelesítés (MFA)](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)
+- Preemptív karbantartással [feltételes hozzáférés](../conditional-access/overview.md) és [többtényezős hitelesítés (MFA)](../authentication/concept-mfa-howitworks.md)
 
-- [Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection#:~:text=Identity%20Protection%20is%20a%20tool%20that%20allows%20organizations,detection%20data%20to%20third-party%20utilities%20for%20further%20analysis) – adaptív vezérlés felhasználói és munkamenet-kockázati profilkészítéssel
+- [Identity Protection](../identity-protection/overview-identity-protection.md) – adaptív vezérlés felhasználói és munkamenet-kockázati profilkészítéssel
 
-- [Kiszivárgott hitelesítő adatok észlelése](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks)
 
-- [Önkiszolgáló jelszó-visszaállítás (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-sspr)
+- [Kiszivárgott hitelesítő adatok észlelése](../identity-protection/concept-identity-protection-risks.md)
 
-- [Partneri együttműködés](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users) – jogosultságok kezelése szabályozott vendég hozzáféréshez
+- [Önkiszolgáló jelszó-visszaállítás (SSPR)](../authentication/tutorial-enable-sspr.md)
 
-- [Cloud app Security (CASB)](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) – az alkalmazások felderítésének és ellenőrzésének befejezéséhez
+- [Partneri együttműködés](../governance/entitlement-management-external-users.md) – jogosultságok kezelése szabályozott vendég hozzáféréshez
+
+- [Cloud app Security (CASB)](/cloud-app-security/what-is-cloud-app-security) – az alkalmazások felderítésének és ellenőrzésének befejezéséhez
 
 - Fenyegetések figyelése – az [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) for Advanced Threat Analytics
 
@@ -61,7 +62,7 @@ A helyi Traffic Manager (LTM) lehetővé teszi a szolgáltatások biztonságos k
 
 Az integráció az APM és az Azure AD közötti szabványos összevonási megbízhatósági kapcsolaton alapul, amely az [SSL-VPN-forgatókönyvet](f5-aad-password-less-vpn.md)magában foglaló legtöbb SHA-használati esettel közös. A Security Assertion Markup Language (SAML), a OAuth és a Open ID csatlakozási (OIDC) erőforrások nem kivételek, mert azok is biztonságossá válnak a távelérés számára. Olyan forgatókönyvek is lehetnek, amelyekben a BIG-IP megfulladási pontja az összes szolgáltatáshoz, köztük az SaaS-alkalmazásokhoz való hozzáférés zéró megbízhatóságú elérését eredményezi.
 
-A BIG-IP azon képessége, hogy integrálható legyen az Azure AD-vel, ami lehetővé teszi, hogy a protokoll átváltásához a régi vagy nem Azure AD-integrációs szolgáltatásokat a modern vezérlőkkel, például a [jelszó nélküli hitelesítéssel](https://www.microsoft.com/security/business/identity/passwordless) és a [feltételes hozzáféréssel](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)kell védeni. Ebben a forgatókönyvben a BIG-IP továbbra is fordított proxyként teljesíti a szerepkörét, és az előhitelesítést és az engedélyezést az Azure AD-be, szolgáltatási alapon.
+A BIG-IP azon képessége, hogy integrálható legyen az Azure AD-vel, ami lehetővé teszi, hogy a protokoll átváltásához a régi vagy nem Azure AD-integrációs szolgáltatásokat a modern vezérlőkkel, például a [jelszó nélküli hitelesítéssel](https://www.microsoft.com/security/business/identity/passwordless) és a [feltételes hozzáféréssel](../conditional-access/overview.md)kell védeni. Ebben a forgatókönyvben a BIG-IP továbbra is fordított proxyként teljesíti a szerepkörét, és az előhitelesítést és az engedélyezést az Azure AD-be, szolgáltatási alapon.
 
 Az ábrán az 1-4-es lépések bemutatják a felhasználó, a BIG IP és az Azure AD közötti előtér-előhitelesítést a szolgáltató által kezdeményezett folyamat során. Az 5-6-as lépések azt mutatják be, hogy az APM munkamenet-bővítése és az egyszeri bejelentkezés az egyes háttér-szolgáltatásokhoz
 
@@ -71,16 +72,16 @@ Az ábrán az 1-4-es lépések bemutatják a felhasználó, a BIG IP és az Azur
 |:------|:-----------|
 | 1. | A felhasználó kiválasztja az alkalmazás ikonját a portálon, feloldja az SAML SP URL-címét (BIG-IP) |
 | 2. | A BIG-IP átirányítja a felhasználót az SAML-IDENTITÁSSZOLGÁLTATÓ (Azure AD) az előzetes hitelesítéshez|
-| 3. | Az Azure AD a feltételes hozzáférési házirendeket és a [munkamenet-vezérlőket](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-session) dolgozza fel az engedélyezéshez|
+| 3. | Az Azure AD a feltételes hozzáférési házirendeket és a [munkamenet-vezérlőket](../conditional-access/concept-conditional-access-session.md) dolgozza fel az engedélyezéshez|
 | 4. | A felhasználó visszairányítja az Azure AD által kiadott SAML-jogcímeket bemutató BIG-IP-re |
-| 5. | A BIG-IP minden további munkamenet-információt kér, amely tartalmazza az [SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) -t és a [szerepköralapú hozzáférés-vezérlést (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) a közzétett szolgáltatáshoz |
+| 5. | A BIG-IP minden további munkamenet-információt kér, amely tartalmazza az [SSO](../hybrid/how-to-connect-sso.md) -t és a [szerepköralapú hozzáférés-vezérlést (RBAC)](../../role-based-access-control/overview.md) a közzétett szolgáltatáshoz |
 | 6. | A BIG-IP továbbítja az ügyfél kérését a háttér-szolgáltatásnak
 
 ## <a name="user-experience"></a>Felhasználó felület
 
 Függetlenül attól, hogy a közvetlen alkalmazott, az affiliate vagy a fogyasztó, a legtöbb felhasználó már ismeri az Office 365 bejelentkezési felületet, így a BIG-IP szolgáltatásokhoz való hozzáférés az SHA-n keresztül nagyban ismerős marad.
 
-A felhasználók mostantól a  [MyApps](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access) -vagy [O365-Kezdőpanel](https://o365pp.blob.core.windows.net/media/Resources/Microsoft%20365%20Business/Launchpad%20Overview_for%20Partners_10292019.pdf) keretében KONSZOLIDÁLt Big-IP-alapú szolgáltatásokat is megtalálják, és az önkiszolgáló képességeket a szolgáltatások szélesebb körére, függetlenül attól, hogy milyen típusú eszközről vagy helyről van szó. A felhasználók továbbra is hozzáférhetnek a közzétett szolgáltatásokhoz közvetlenül a BIG-IPs tulajdonosi WebTop-portálon keresztül, ha az előnyben részesített. A kijelentkezéskor az SHA biztosítja, hogy a felhasználók munkamenete mindkét végén megszakadjon, a BIG-IP és az Azure AD-t, így biztosítva, hogy a szolgáltatások teljes mértékben védve legyenek a jogosulatlan hozzáféréstől.  
+A felhasználók mostantól a  [MyApps](../user-help/my-apps-portal-end-user-access.md) -vagy [O365-Kezdőpanel](https://o365pp.blob.core.windows.net/media/Resources/Microsoft%20365%20Business/Launchpad%20Overview_for%20Partners_10292019.pdf) keretében KONSZOLIDÁLt Big-IP-alapú szolgáltatásokat is megtalálják, és az önkiszolgáló képességeket a szolgáltatások szélesebb körére, függetlenül attól, hogy milyen típusú eszközről vagy helyről van szó. A felhasználók továbbra is hozzáférhetnek a közzétett szolgáltatásokhoz közvetlenül a BIG-IPs tulajdonosi WebTop-portálon keresztül, ha az előnyben részesített. A kijelentkezéskor az SHA biztosítja, hogy a felhasználók munkamenete mindkét végén megszakadjon, a BIG-IP és az Azure AD-t, így biztosítva, hogy a szolgáltatások teljes mértékben védve legyenek a jogosulatlan hozzáféréstől.  
 
 A képernyőképek az Azure AD alkalmazás-portálon találhatók, amelyekkel a felhasználók biztonságosan érhetik el a BIG-IP-alapú közzétett szolgáltatásaikat, és kezelhetik a fiókjuk tulajdonságait.  
 
@@ -92,7 +93,7 @@ A képernyőképek az Azure AD alkalmazás-portálon találhatók, amelyekkel a 
 
 A BIG-IP szerepe kritikus fontosságú minden vállalkozás számára, ezért a nagy IP-alapú példányok felügyeletét kell figyelni a közzétett szolgáltatások magas rendelkezésre állásának biztosítása érdekében, az SHA szintjén és a működés közben is.
 
-Több lehetőség is létezik az események naplózására helyileg, vagy távolról egy biztonsági információ-és eseménykezelő (SIEM) megoldáson keresztül, amely lehetővé teszi a kikapcsolt tárolást és a telemetria feldolgozását. Az Azure AD és az SHA-specifikus tevékenységek monitorozására szolgáló hatékony megoldás a [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) és az [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/overview)együttes használata, amely a következőket kínálja:
+Több lehetőség is létezik az események naplózására helyileg, vagy távolról egy biztonsági információ-és eseménykezelő (SIEM) megoldáson keresztül, amely lehetővé teszi a kikapcsolt tárolást és a telemetria feldolgozását. Az Azure AD és az SHA-specifikus tevékenységek monitorozására szolgáló hatékony megoldás a [Azure monitor](../../azure-monitor/overview.md) és az [Azure Sentinel](../../sentinel/overview.md)együttes használata, amely a következőket kínálja:
 
 - A szervezet részletes áttekintése több felhőben és helyszíni helyeken, beleértve a BIG-IP-infrastruktúrát is
 
@@ -126,9 +127,9 @@ Az F5 BIG-IP és az SHA-hez készült Azure AD integrálásának előfeltételei
 
 - Az Azure AD licencelése az alábbi lehetőségek egyikével:
 
-   - Az Azure AD [ingyenes előfizetése](https://docs.microsoft.com/windows/client-management/mdm/register-your-free-azure-active-directory-subscription#:~:text=%20Register%20your%20free%20Azure%20Active%20Directory%20subscription,will%20take%20you%20to%20the%20Azure...%20More%20) az SHA-nek a jelszó nélküli hitelesítéssel való megvalósításának minimális alapvető követelményeit biztosítja
+   - Az Azure AD [ingyenes előfizetése](/windows/client-management/mdm/register-your-free-azure-active-directory-subscription#:~:text=%20Register%20your%20free%20Azure%20Active%20Directory%20subscription,will%20take%20you%20to%20the%20Azure...%20More%20) az SHA-nek a jelszó nélküli hitelesítéssel való megvalósításának minimális alapvető követelményeit biztosítja
 
-   - A [prémium szintű előfizetés](https://azure.microsoft.com/pricing/details/active-directory/) minden további hozzáadott értéket tartalmaz, amelyek az előlapot ismertetik, beleértve a [feltételes hozzáférést](https://docs.microsoft.com/azure/active-directory/conditional-access/overview), az [MFA](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)-t és az [Identity Protectiont](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection)
+   - A [prémium szintű előfizetés](https://azure.microsoft.com/pricing/details/active-directory/) minden további hozzáadott értéket tartalmaz, amelyek az előlapot ismertetik, beleértve a [feltételes hozzáférést](../conditional-access/overview.md), az [MFA](../authentication/concept-mfa-howitworks.md)-t és az [Identity Protectiont](../identity-protection/overview-identity-protection.md)
 
 Az SHA megvalósításához nincs szükség korábbi élményre vagy F5 BIG-IP ismeretre, de javasoljuk, hogy ismerkedjen meg az F5 BIG-IP terminológiával. A F5's gazdag [tudásbázisa](https://www.f5.com/services/resources/glossary) is jó kiindulópont a Big-IP-ismeretek létrehozásának megkezdéséhez.
 
@@ -138,9 +139,9 @@ A következő oktatóanyagok részletes útmutatást nyújtanak a BIG-IP és az 
 
 - [F5 BIG-IP az Azure üzembe helyezése – útmutató](f5-bigip-deployment-guide.md)
 
-- [F5 BIG-IP APM és Azure AD egyszeri bejelentkezés Kerberos-alkalmazásokhoz](https://docs.microsoft.com/azure/active-directory/saas-apps/kerbf5-tutorial#configure-f5-single-sign-on-for-kerberos-application)
+- [F5 BIG-IP APM és Azure AD egyszeri bejelentkezés Kerberos-alkalmazásokhoz](../saas-apps/kerbf5-tutorial.md#configure-f5-single-sign-on-for-kerberos-application)
 
-- [F5 BIG-IP APM és Azure AD SSO a fejléc-alapú alkalmazásokhoz](https://docs.microsoft.com/azure/active-directory/saas-apps/headerf5-tutorial#configure-f5-single-sign-on-for-header-based-application)
+- [F5 BIG-IP APM és Azure AD SSO a fejléc-alapú alkalmazásokhoz](../saas-apps/headerf5-tutorial.md#configure-f5-single-sign-on-for-header-based-application)
 
 - [Az F5 BIG-IP SSL-VPN védelme az Azure AD SHA-vel](f5-aad-password-less-vpn.md)
 

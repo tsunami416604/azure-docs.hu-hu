@@ -3,16 +3,16 @@ title: Batch-készlet konfigurációjának migrálása Cloud Servicesról Virtua
 description: Ismerje meg, hogyan frissítheti a készlet konfigurációját a legújabb és ajánlott konfigurációra
 ms.topic: how-to
 ms.date: 1/6/2021
-ms.openlocfilehash: d987a185efb6593fd541dd14fa74b6c4d3ca41be
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 417738be2c69101129079b8ff3a3d80634f9f99c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234307"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731499"
 ---
 # <a name="migrate-batch-pool-configuration-from-cloud-services-to-virtual-machines"></a>Batch-készlet konfigurációjának migrálása Cloud Servicesról Virtual Machinesra
 
-A Batch-készleteket [cloudServiceConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) vagy [virtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)használatával lehet létrehozni. a "virtualMachineConfiguration" az ajánlott konfiguráció, mivel az támogatja az összes batch-funkciót. a "cloudServiceConfiguration" készletek nem támogatják az összes funkciót, és nem terveznek új szolgáltatásokat.
+A Batch-készleteket [cloudServiceConfiguration](/rest/api/batchservice/pool/add#cloudserviceconfiguration) vagy [virtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration)használatával lehet létrehozni. a "virtualMachineConfiguration" az ajánlott konfiguráció, mivel az támogatja az összes batch-funkciót. a "cloudServiceConfiguration" készletek nem támogatják az összes funkciót, és nem terveznek új szolgáltatásokat.
 
 Ha a "cloudServiceConfiguration" készleteket használja, erősen ajánlott, hogy a "virtualMachineConfiguration" készleteket használja. Ez lehetővé teszi az összes batch-képesség előnyeit, például a virtuálisgép- [sorozatok](batch-pool-vm-sizes.md), a linuxos virtuális gépek, a [tárolók](batch-docker-container-workloads.md), [Azure Resource Manager a virtuális hálózatok](batch-virtual-network.md)és a [csomópontos lemezek titkosításának](disk-encryption.md)kibővítését.
 
@@ -41,4 +41,4 @@ A készlet konfigurációjának frissítésekor a következőket kell figyelembe
 
 - További információ a [készlet-konfigurációkról](nodes-and-pools.md#configurations).
 - További információ a [Pool ajánlott eljárásairól](best-practices.md#pools).
-- REST API a [készlet hozzáadására](https://docs.microsoft.com/rest/api/batchservice/pool/add) és [virtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)vonatkozó referenciát.
+- REST API a [készlet hozzáadására](/rest/api/batchservice/pool/add) és [virtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration)vonatkozó referenciát.
