@@ -8,19 +8,16 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 890e2b972818cf9805623d94709ce5631b50aaf5
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: e2c88091072921f1ca674868e401c34d354418de
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608605"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746509"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Webalkalmazási tűzfal CRS-szabályok csoportjai és szabályai
 
 Application Gateway webalkalmazási tűzfal (WAF) megvédi a webalkalmazásokat a gyakori biztonsági rések és kiaknázások ellen. Ez az 3,1, 3,0 vagy 2.2.9 OWASP alapszabály-készletek alapján meghatározott szabályokon keresztül történik. Ezek a szabályok szabály-szabály alapján letilthatók. Ez a cikk a jelenleg elérhető szabályokat és szabálykészlet-készleteket tartalmazza.
-
-> [!NOTE]
-> Ez a cikk a *feketelista* kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
 
 ## <a name="core-rule-sets"></a>Alapvető szabálykészletek
 
@@ -262,7 +259,7 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 |941150|XSS-szűrő – 5. kategória = nem engedélyezett HTML-attribútumok|
 |941160|NoScript XSS InjectionChecker: HTML-befecskendezés|
 |941170|NoScript XSS-InjectionChecker: attribútum-injektálás|
-|941180|Node-Validator feketelista kulcsszavai|
+|941180|Node-Validator Blocklist kulcsszavai|
 |941190|XSS stíluslapok használatával|
 |941200|XSS VML-keretek használatával|
 |941210|XSS – eltorzított JavaScript használata|
@@ -490,7 +487,7 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 |941130|XSS-szűrő – 3. kategória = attribútum vektor|
 |941140|XSS-szűrő – 4. kategória = JavaScript URI-vektor|
 |941150|XSS-szűrő – 5. kategória = nem engedélyezett HTML-attribútumok|
-|941180|Node-Validator feketelista kulcsszavai|
+|941180|Node-Validator Blocklist kulcsszavai|
 |941190|XSS stíluslapok használatával|
 |941200|XSS VML-keretek használatával|
 |941210|XSS – eltorzított JavaScript használata|

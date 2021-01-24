@@ -7,19 +7,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 7336078d1f04b9dcb6c2f229654f1c36d9b3114b
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: bc229974cf14ba364e5e7111dc1d2704e03c3635
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96919962"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746798"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor gyakori kérdések
 
 A Microsoft gyakori kérdései a Azure Monitorkal kapcsolatos gyakori kérdések listája. Ha további kérdése van, látogasson el a [vitafórumra](/answers/questions/topics/single/24223.html) , és tegye fel kérdéseit. Ha egy kérdést gyakran megkérdeznek, azt a cikkhez adja hozzá, hogy gyorsan és könnyen elérhető legyen.
 
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ### <a name="what-is-azure-monitor"></a>Mi az Azure Monitor?
 [Azure monitor](overview.md) egy Azure-szolgáltatás, amely teljesítmény-és rendelkezésre állási monitorozást biztosít az Azure-ban, más felhőalapú környezetekben vagy helyszíni környezetben futó alkalmazások és szolgáltatások számára. Azure Monitor a különböző forrásokból származó adatokat egy közös adatplatformba gyűjti, ahol elemezni lehet a trendeket és a rendellenességeket. A Azure Monitor gazdag funkciói segítenek gyorsan azonosítani és reagálni azokra a kritikus helyzetekre, amelyek hatással lehetnek az alkalmazásra.
@@ -177,7 +177,7 @@ A következő témakörben ismertetett lépéseket követve értesülhet arról,
 - **Riasztási feltételek** 
    - **Jel neve**: *egyéni naplók keresése*
    - **Keresési lekérdezés**: `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
-   - **Riasztási logika**: az *eredmények száma*, a **Condition** **küszöbértéknél** *nagyobb* érték **alapján** *0*
+   - **Riasztási logika**: az *eredmények száma*, a  **küszöbértéknél** *nagyobb* érték **alapján** *0*
    - **Értékelés alapja**: **időtartam (percben)** *30*, **gyakoriság (perc)** *10*
 - **Riasztás részleteinek megadása** 
    - **Név**: *az adatgyűjtés leállt*
@@ -306,7 +306,7 @@ Más forrásokból, ha konfigurálja őket:
 
 * [Azure-diagnosztika](platform/diagnostics-extension-to-application-insights.md)
 * [Importálás az Analytics szolgáltatásba](platform/data-collector-api.md)
-* [Log Analytics](platform/data-collector-api.md)
+* [Naplóelemzés](platform/data-collector-api.md)
 * [LogStash](platform/data-collector-api.md)
 
 ### <a name="can-i-filter-out-or-modify-some-telemetry"></a>Kiszűrhetők vagy módosíthatok néhány telemetria?
@@ -345,7 +345,9 @@ Ez akkor lehetséges, ha a kód ilyen adatokat küld. Akkor is előfordulhat, ha
 
 Az ügyfél-webcímek **minden** oktettje mindig 0-ra van állítva a földrajzi hely attribútumainak megvizsgálása után.
 
-### <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>A saját kialakítási kulcs látható a saját weblap forrásában. 
+A [Application Insights JavaScript SDK](app/javascript.md) alapértelmezés szerint nem tartalmazza az összes személyes adatforrást. Az alkalmazásban használt egyes személyes adatok azonban az SDK-ban is felvehetők (például teljes nevek `window.title` vagy fiókazonosító az x/óra URL-lekérdezési paraméterekben). Egyéni személyes adatmaszkolás esetén adjon hozzá egy [telemetria-inicializálást](app/api-filtering-sampling.md#javascript-web-applications).
+
+### <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>A saját kialakítási kulcs látható a saját weblap forrásában.
 
 * Ez a figyelési megoldások általános gyakorlata.
 * Nem használható az adatai ellopására.
@@ -813,10 +815,10 @@ Ha az *ingyenes* díjszabási csomaggal konfigurálta a Azure monitort egy log A
 Ebben az esetben a virtuális gép megnyitásakor a **kipróbálás most** lehetőséggel fog megjelenni, és a bal oldali ablaktáblában kiválaszthatja a **bepillantást** , még azután is, hogy már telepítve van a virtuális gépen.  Azonban nem kell megadnia a beállításokat, mivel ez általában akkor fordul elő, ha a virtuális gép nem lett előkészítve a Azure Monitor for VMs. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha a kérdés itt nem válaszol, további kérdéseit és válaszait a következő fórumokon tekintheti meg.
 
-- [Log Analytics](/answers/topics/azure-monitor.html)
+- [Naplóelemzés](/answers/topics/azure-monitor.html)
 - [Application Insights](/answers/topics/azure-monitor.html)
 
 Ha Azure Monitor általános visszajelzést szeretne kapni, látogasson el a [visszajelzési fórumra](https://feedback.azure.com/forums/34192--general-feedback).

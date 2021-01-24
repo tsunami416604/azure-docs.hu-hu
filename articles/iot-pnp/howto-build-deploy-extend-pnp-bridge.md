@@ -1,27 +1,26 @@
 ---
-title: IoT-Plug and Play-híd létrehozása, üzembe helyezése és kiterjesztése | Microsoft Docs
-description: Azonosítsa a IoT Plug and Play híd összetevőit. Megtudhatja, hogyan bővítheti a hidat, és hogyan futtathatja IoT-eszközökön, átjárón és IoT Edge modulként.
+title: A IoT Plug and Play Bridge felépítése és üzembe helyezése | Microsoft Docs
+description: Azonosítsa a IoT Plug and Play híd összetevőit. Megtudhatja, hogyan futtathatja azt IoT-eszközökön, átjárón és IoT Edge modulként.
 author: usivagna
 ms.author: ugans
-ms.date: 12/11/2020
+ms.date: 1/20/2021
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 43c89b0fac08bf9f2c72f885fbf4788371876b17
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: b7947eab93ebc8e523e163af601893522132e06a
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678576"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745667"
 ---
-# <a name="build-deploy-and-extend-the-iot-plug-and-play-bridge"></a>A IoT-Plug and Play-híd létrehozása, üzembe helyezése és kiterjesztése
+# <a name="build-and-deploy-the-iot-plug-and-play-bridge"></a>A IoT Plug and Play-híd létrehozása és üzembe helyezése
 
-A IoT Plug and Play-híd lehetővé teszi az átjáróhoz csatlakoztatott meglévő eszközök csatlakoztatását az IoT hubhoz. A Bridge használatával képezhető le a csatlakoztatott eszközökre a IoT Plug and Play-adapterek. A IoT Plug and Play felület határozza meg az eszköz által küldött telemetria, az eszköz és a felhő között szinkronizált tulajdonságokat, valamint azokat a parancsokat, amelyekre az eszköz válaszol. A nyílt forráskódú híd alkalmazást Windows-vagy Linux-átjárón is telepítheti és konfigurálhatja.
+A [IoT Plug and Play-híd](concepts-iot-pnp-bridge.md#iot-plug-and-play-bridge-architecture) lehetővé teszi az átjáróhoz csatlakoztatott meglévő eszközök csatlakoztatását az IoT hubhoz. A Bridge használatával képezhető le a csatlakoztatott eszközökre a IoT Plug and Play-adapterek. A IoT Plug and Play felület határozza meg az eszköz által küldött telemetria, az eszköz és a felhő között szinkronizált tulajdonságokat, valamint azokat a parancsokat, amelyekre az eszköz válaszol. A nyílt forráskódú híd alkalmazást Windows-vagy Linux-átjárón is telepítheti és konfigurálhatja. Emellett a híd Azure IoT Edge futtatókörnyezeti modulként is futtatható.
 
 Ez a cikk részletesen ismerteti a következőket:
 
 - Egy híd konfigurálása.
-- A hidakat új adapterek létrehozásával bővítheti.
 - A híd létrehozása és futtatása különböző környezetekben.
 
 A híd használatát bemutató egyszerű példát a következő témakörben talál: [Hogyan csatlakoztatható a IoT Plug and Play Bridge-minta, amely Linux vagy Windows rendszeren fut a IoT hub](howto-use-iot-pnp-bridge.md).
@@ -77,97 +76,6 @@ A [konfigurációs fájl sémája](https://github.com/Azure/iot-plug-and-play-br
 ### <a name="iot-edge-module-configuration"></a>IoT Edge modul konfigurálása
 
 Ha a híd IoT Edge modulként fut egy IoT Edge futtatókörnyezetben, a konfigurációs fájl a felhőből lesz frissítve a `PnpBridgeConfig` kívánt tulajdonságra. A híd megvárja a tulajdonság frissítését, mielőtt konfigurálja az adaptereket és összetevőket.
-
-## <a name="extend-the-bridge"></a>A híd kiterjesztése
-
-A híd képességeinek kibővítéséhez saját híd-adaptereket hozhat létre.
-
-A híd adaptereket használ a következőhöz:
-
-- Kapcsolat létesítése egy eszköz és a felhő között.
-- Az adatáramlás engedélyezése egy eszköz és a felhő között.
-- Eszközkezelés engedélyezése a felhőből.
-
-Minden híd-adapternek a következőket kell tennie:
-
-- Hozzon létre egy digitális Twins-felületet.
-- A felület használatával a felhőalapú funkciókhoz, például a telemetria, a tulajdonságokhoz és a parancsokhoz köthető az eszközökön.
-- Vezérlő-és adatkommunikációt hozhat létre az eszköz hardverével vagy belső vezérlőprogram szolgáltatásával.
-
-Az egyes hidak-adapterek egy adott típusú eszközzel működnek, attól függően, hogy az adapter hogyan kapcsolódik az eszközhöz, és hogyan kommunikál az eszközzel. Akkor is, ha az eszközzel folytatott kommunikáció kézfogási protokollt használ, a Bridge-adapterek több módon is rendelkezhetnek az eszközről származó adatok értelmezéséhez. Ebben az esetben a Bridge-adapter a konfigurációs fájlban található adapter információit használja az *interfész konfigurációjának* meghatározásához, amelyet az adapternek használnia kell az adatok elemzéséhez.
-
-Az eszközzel folytatott kommunikációhoz a Bridge-adapter egy kommunikációs protokollt használ, amelyet a mögöttes operációs rendszer vagy az eszköz gyártója biztosít az eszköz és az API-k.
-
-A felhővel való interakcióhoz a Bridge-adapter az Azure IoT Device C SDK által biztosított API-kat használja a telemetria küldéséhez, a digitális dupla felületek létrehozásához, a tulajdonságok küldéséhez, valamint a tulajdonságok frissítéseihez és parancsaihoz tartozó visszahívási függvények létrehozásához.
-
-### <a name="create-a-bridge-adapter"></a>Híd-adapter létrehozása
-
-A híd a [_PNP_ADAPTER](https://github.com/Azure/iot-plug-and-play-bridge/blob/9964f7f9f77ecbf4db3b60960b69af57fd83a871/pnpbridge/src/pnpbridge/inc/pnpadapter_api.h#L296) felületen definiált API-k megvalósításához egy híd adaptert vár:
-
-```c
-typedef struct _PNP_ADAPTER {
-  // Identity of the IoT Plug and Play adapter that is retrieved from the config
-  const char* identity;
-
-  PNPBRIDGE_ADAPTER_CREATE createAdapter;
-  PNPBRIDGE_COMPONENT_CREATE createPnpComponent;
-  PNPBRIDGE_COMPONENT_START startPnpComponent;
-  PNPBRIDGE_COMPONENT_STOP stopPnpComponent;
-  PNPBRIDGE_COMPONENT_DESTROY destroyPnpComponent;
-  PNPBRIDGE_ADAPTER_DESTOY destroyAdapter;
-} PNP_ADAPTER, * PPNP_ADAPTER;
-```
-
-Ebben az illesztőfelületben:
-
-- `PNPBRIDGE_ADAPTER_CREATE` létrehozza az adaptert, és beállítja az illesztőfelület-felügyeleti erőforrásokat. Az adapterek globális adapter-paraméterekkel is hivatkozhatnak az adapterek létrehozásához. Ezt a függvényt egyszer kell meghívni egyetlen adapterhez.
-- `PNPBRIDGE_COMPONENT_CREATE` létrehozza a digitális Twin-ügyfél felületeit, és összekapcsolja a visszahívási funkciókat. Az adapter kezdeményezi a kommunikációs csatornát az eszközre. Az adapter beállíthatja az erőforrásokat, hogy engedélyezze a telemetria folyamatot, de a telemetria csak a `PNPBRIDGE_COMPONENT_START` hívása után induljon el. Ezt a függvényt egyszer kell meghívni a konfigurációs fájl minden egyes illesztőfelület-összetevőjénél.
-- `PNPBRIDGE_COMPONENT_START` a rendszer úgy hívja, hogy a Bridge-adapter megkezdje a telemetria továbbítását az eszközről a digitális kettős ügyfél felé. Ezt a függvényt egyszer kell meghívni a konfigurációs fájl minden egyes illesztőfelület-összetevőjénél.
-- `PNPBRIDGE_COMPONENT_STOP` leállítja a telemetria folyamatot.
-- `PNPBRIDGE_COMPONENT_DESTROY` megsemmisíti a digitális kettős ügyfelet és a hozzá tartozó felületi erőforrásokat. Ezt a függvényt egyszer kell meghívni a konfigurációs fájl minden egyes illesztőfelület-összetevőjénél, ha a híd le van szakítva, vagy végzetes hiba történik.
-- `PNPBRIDGE_ADAPTER_DESTROY` a Bridge-adapter erőforrásainak tisztítása.
-
-### <a name="bridge-core-interaction-with-bridge-adapters"></a>Bridge Core interakció a Bridge-adapterekkel
-
-A következő lista ismerteti, hogy mi történik a híd indításakor:
-
-1. A híd indításakor a Bridge adapter-kezelő a konfigurációs fájlban definiált összes illesztőfelület-összetevőn áttekinti a megfelelő adaptert, és meghívja azokat `PNPBRIDGE_ADAPTER_CREATE` . Az adapter a globális adapterek konfigurációs paramétereit használva állíthatja be az erőforrásokat a különböző *illesztőfelület-konfigurációk* támogatásához.
-1. A Bridge Manager a megfelelő Bridge-adapter hívásával kezdeményezi a kezelőfelület létrehozását a konfigurációs fájlban lévő minden eszközön `PNPBRIDGE_COMPONENT_CREATE` .
-1. Az adapter megkapja a csatoló összetevőhöz tartozó opcionális adapterek konfigurációs beállításait, és ezeket az információkat használja az eszközhöz való csatlakozás beállításához.
-1. Az adapter létrehozza a digitális Twin-ügyfél felületeit, és összekapcsolja a visszahívási függvényeket a tulajdonságok frissítéseihez és parancsaihoz. Az eszközök kapcsolatainak létrehozása nem blokkolja a visszahívások visszaküldését, miután a digitális Twin Interface létrehozása sikeresen megtörtént. Az aktív eszköz kapcsolata független a híd által létrehozott aktív felületi ügyféllel. Ha egy kapcsolat meghiúsul, az adapter feltételezi, hogy az eszköz inaktív. A híd adapter dönthet úgy, hogy újrapróbálkozik ezzel a kapcsolattal.
-1. Miután a Bridge adapter-kezelő a konfigurációs fájlban megadott összes illesztőfelület-összetevőt létrehozta, regisztrálja az összes felületet az Azure IoT Hub. A regisztráció blokkoló, aszinkron hívás. A hívás befejezésekor elindítja a visszahívást a Bridge-adapteren, amely elkezdheti a felhőből a tulajdonságok és a parancsok visszahívásának kezelését.
-1. A Bridge adapter-kezelő ezután meghívja az `PNPBRIDGE_INTERFACE_START` egyes összetevőket, és a Bridge-adapter elindítja a digitális Twin-ügyfélnek a telemetria jelentését.
-
-### <a name="design-guidelines"></a>Tervezési irányelvek
-
-Új Bridge-adapter fejlesztésekor kövesse az alábbi irányelveket:
-
-- Határozza meg, hogy mely eszközök támogatottak, és hogy az adaptert használó összetevők felületének definíciója hogyan néz ki.
-- Határozza meg, hogy az adapternek milyen illesztőfelület-és globális paramétereket kell meghatároznia a konfigurációs fájlban.
-- Azonosítsa az összetevő tulajdonságainak és parancsainak támogatásához szükséges alacsony szintű eszköz-kommunikációt.
-- Határozza meg, hogy az adapternek hogyan kell elemezni a nyers adatait az eszközről, és át kell alakítania azokat a telemetria, amelyeket a IoT Plug and Play Interface definition határoz meg.
-- Implementálja a korábban ismertetett híd-adapter felületet.
-- Adja hozzá az új adaptert az adapter jegyzékfájlhoz, és hozza létre a hidat.
-
-### <a name="enable-a-new-bridge-adapter"></a>Új híd adapter engedélyezése
-
-Az adapterek a hídon való engedélyezéséhez adjon hozzá egy hivatkozást a [adapter_manifest. c](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/src/adapters/src/shared/adapter_manifest.c):
-
-```c
-  extern PNP_ADAPTER MyPnpAdapter;
-  PPNP_ADAPTER PNP_ADAPTER_MANIFEST[] = {
-    .
-    .
-    &MyPnpAdapter
-  }
-```
-
-> [!IMPORTANT]
-> A Bridge-adapter visszahívásait egymás után hívja meg a rendszer. Az adapternek nem szabad letiltani a visszahívást, mert ez megakadályozza, hogy a híd magja előrehaladást érjen el.
-
-### <a name="sample-camera-adapter"></a>Minta kamera adapter
-
-A [kamera-adapter információi](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/src/adapters/src/Camera/readme.md) az Ön által engedélyezhető minta kamera-adaptert ismertetik.
 
 ## <a name="build-and-run-the-bridge-on-an-iot-device-or-gateway"></a>A híd létrehozása és futtatása IoT-eszközön vagy átjárón
 
@@ -378,7 +286,6 @@ Indítsa el a VS Code-ot, nyissa meg a parancssort, írja be a *távoli WSL: Nyi
 Nyissa meg a *pnpbridge\Dockerfile.amd64* fájlt. Szerkessze a környezeti változók definícióit az alábbiak szerint:
 
 ```dockerfile
-ENV IOTHUB_DEVICE_CONNECTION_STRING="{Add your device connection string here}"
 ENV PNP_BRIDGE_ROOT_MODEL_ID="dtmi:com:example:RootPnpBridgeSampleDevice;1"
 ENV PNP_BRIDGE_HUB_TRACING_ENABLED="false"
 ENV IOTEDGE_WORKLOADURI="something"
@@ -541,6 +448,6 @@ az group delete -n bridge-edge-resources
 
 *pnpbridge\src\adapters*: forráskód különböző IoT Plug and Play Bridge-adapterekhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni a IoT Plug and Play-hídra, látogasson el a [IoT Plug and Play Bridge](https://github.com/Azure/iot-plug-and-play-bridge) GitHub-tárházra.

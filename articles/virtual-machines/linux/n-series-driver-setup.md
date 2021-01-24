@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: 7af13147804fd1e50a033635985c08b9c62f76ba
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 22c7a70379649876de4af88080543438e58998a6
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200991"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746645"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>NVIDIA GPU-illesztőprogramok telepítése a Linuxon futó N sorozatú virtuális gépeken
 
@@ -22,9 +22,6 @@ Az NVIDIA GPU-k által támogatott Azure N-sorozatú virtuális gépek GPU-képe
 Ha manuálisan telepíti az NVIDIA GPU-illesztőprogramokat, ez a cikk a támogatott disztribúciókat, illesztőprogramokat és telepítési és ellenőrzési lépéseket tartalmazza. A manuális illesztőprogram-telepítési információk a Windows rendszerű [virtuális gépek](../windows/n-series-driver-setup.md)esetében is elérhetők.
 
 Az N sorozatú virtuális gépekhez tartozó specifikációk, a tárolókapacitások és a lemezek részleteiért lásd: [GPU LINUXOS VM-méretek](../sizes-gpu.md?toc=/azure/virtual-machines/linux/toc.json). 
-
-> [!NOTE]
-> Ez a cikk a *feketelista* kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
 
 [!INCLUDE [virtual-machines-n-series-linux-support](../../../includes/virtual-machines-n-series-linux-support.md)]
 
@@ -386,6 +383,6 @@ Ezután hozzon létre egy bejegyzést a frissítési parancsfájlhoz, `/etc/rc.d
 * Ha a legújabb verzióra frissítette az NVIDIA CUDA-illesztőprogramokat, és megkeresi az RDMA-kapcsolatot, akkor [a kapcsolat újbóli létrehozásához telepítse újra a RDMA-illesztőprogramokat](#rdma-network-connectivity) . 
 * Ha egy bizonyos CentOS/RHEL operációsrendszer-verzió (vagy kernel) nem támogatott a LIS esetében, a rendszer a "nem támogatott kernel-verzió" hibát dobta. Jelentse ezt a hibát az operációs rendszer és a kernel verzióival együtt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Linux rendszerű virtuálisgép-lemezképnek a telepített NVIDIA-illesztőprogramokkal való rögzítéséről lásd: [Linux rendszerű virtuális gép általánosítása és rögzítése](capture-image.md).

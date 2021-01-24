@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/18/2021
+ms.date: 01/23/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2c7ea804e9e85578076969f0ec6bdf90b571bb75
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 906879c44a2d7a3248f3d3ac0c9fec7ced7f2a4f
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570082"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746543"
 ---
 # <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>NFS 4.1-es verziójú kötetek az SAP HANA-hoz készült Azure NetApp Filesban
 
@@ -62,7 +62,13 @@ Fontos, hogy tisztában legyen azzal, hogy mekkora a teljesítmény, és hogy va
 
 Az alábbi táblázat azt mutatja be, hogy érdemes lehet egy nagyméretű "standard" kötetet létrehozni a biztonsági másolatok tárolásához, és nem érdemes olyan "Ultra" kötetet létrehozni, amely nagyobb, mint 12 TB, mert az egyetlen LIF fizikai sávszélesség-kapacitása túllépve. 
 
-A LIF és az egyetlen Linux-munkamenet maximális átviteli sebessége 1,2 és 1,4 GB/s közé esik. 
+A LIF és az egyetlen Linux-munkamenet maximális átviteli sebessége 1,2 és 1,4 GB/s közé esik. Ha több átviteli sebességre van szüksége a/Hana/Data-hez, SAP HANA adatmennyiség-particionálással szalagos az I/O-tevékenységet az adatok újratöltése során, vagy HANA-visszaállítási pontok több, több NFS-megosztáson található HANA-adatfájl között. A HANA adatkötetek csíkozásáról a következő cikkekben olvashat bővebben:
+
+- [A HANA rendszergazdai útmutatója](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.05/en-US/40b2b2a880ec4df7bac16eae3daef756.html?q=hana%20data%20volume%20partitioning)
+- [Blog about SAP HANA – az adatkötetek particionálása](https://blogs.sap.com/2020/10/07/sap-hana-partitioning-data-volumes/)
+- [SAP-Megjegyzés #2400005](https://launchpad.support.sap.com/#/notes/2400005)
+- [SAP-Megjegyzés #2700123](https://launchpad.support.sap.com/#/notes/2700123)
+
 
 | Méret  | Átviteli sebesség standard | Átviteli sebesség (prémium) | Átviteli sebesség (Ultra) |
 | --- | --- | --- | --- |

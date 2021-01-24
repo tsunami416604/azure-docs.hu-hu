@@ -12,12 +12,12 @@ ms.date: 10/16/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1628d78c9d1e4db1f59982d696dcc886646fe604
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 33504487b6175023e18893812c533950305cb1d3
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132057"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746002"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Azure Active Directory B2C naplók gyűjtése Application Insights
 
@@ -26,7 +26,7 @@ Ez a cikk a naplók Active Directory B2Cból (Azure AD B2C) való összegyűjté
 Az itt leírt részletes tevékenység-naplókat **csak** az egyéni szabályzatok fejlesztése során lehet engedélyezni.
 
 > [!WARNING]
-> Ne állítsa be `DeploymentMode` `Developer` éles környezetekben. A naplók begyűjtik az identitás-szolgáltatóktól érkező és az azoktól érkező összes jogcímet Ön, mint a fejlesztő vállalja a felelősséget a Application Insights naplókban gyűjtött személyes adatokért. A részletes naplók gyűjtése csak akkor történik meg, ha a házirend **fejlesztői módba**kerül.
+> Ne állítsa be `DeploymentMode` `Development` éles környezetekben. A naplók begyűjtik az identitás-szolgáltatóktól érkező és az azoktól érkező összes jogcímet Ön, mint a fejlesztő vállalja a felelősséget a Application Insights naplókban gyűjtött személyes adatokért. A részletes naplók gyűjtése csak akkor történik meg, ha a házirend **fejlesztői módba** kerül.
 
 ## <a name="set-up-application-insights"></a>Application Insights beállítása
 
@@ -35,10 +35,10 @@ Ha még nem rendelkezik ilyennel, hozzon létre egy Application Insights példá
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely tartalmazza az Azure-előfizetését (nem a Azure ad B2C könyvtárat).
 1. Válassza az **erőforrás létrehozása** lehetőséget a bal oldali navigációs menüben.
-1. Keresse meg és válassza ki **Application Insights**, majd válassza a **Létrehozás**lehetőséget.
-1. Fejezze be az űrlapot, válassza a **felülvizsgálat + létrehozás**lehetőséget, majd kattintson a **Létrehozás**gombra.
-1. Az üzembe helyezés befejezése után válassza az **Ugrás erőforráshoz**lehetőséget.
-1. A **konfigurálás** Application Insights menüben válassza a **Tulajdonságok**lehetőséget.
+1. Keresse meg és válassza ki **Application Insights**, majd válassza a **Létrehozás** lehetőséget.
+1. Fejezze be az űrlapot, válassza a **felülvizsgálat + létrehozás** lehetőséget, majd kattintson a **Létrehozás** gombra.
+1. Az üzembe helyezés befejezése után válassza az **Ugrás erőforráshoz** lehetőséget.
+1. A **konfigurálás** Application Insights menüben válassza a **Tulajdonságok** lehetőséget.
 1. Jegyezze fel a kialakítási **kulcsot** egy későbbi lépésben való használatra.
 
 ## <a name="configure-the-custom-policy"></a>Egyéni házirend konfigurálása
@@ -62,7 +62,7 @@ Ha még nem rendelkezik ilyennel, hozzon létre egy Application Insights példá
     * `ClientEnabled="true"` a ApplicationInsights ügyféloldali parancsfájlt küld a követési oldal nézetre és az ügyféloldali hibákra. Ezeket a **browserTimings** táblában tekintheti meg a Application Insights-portálon. A beállítással `ClientEnabled= "true"` Application Insightsokat adhat hozzá az oldal parancsfájljaihoz, és megtekintheti az oldal betöltésének és az Ajax-hívások, a számok, a böngészőbeli kivételek és az Ajax-hibák részleteit, valamint a felhasználók és a munkamenetek számát. Ez a mező nem **kötelező**, és alapértelmezés szerint be van állítva `false` .
     * `ServerEnabled="true"` a meglévő UserJourneyRecorder JSON-t egy egyéni eseményként küldi a Application Insights.
 
-    Példa:
+    Például:
 
     ```xml
     <TrustFrameworkPolicy
@@ -89,12 +89,12 @@ Ha még nem rendelkezik ilyennel, hozzon létre egy Application Insights példá
 Az új naplók a Application Insightsban való megtekintése előtt rövid késleltetéssel, jellemzően kevesebb mint öt perc alatt elérhető.
 
 1. Nyissa meg a [Azure Portalban](https://portal.azure.com)létrehozott Application Insights erőforrást.
-1. Az **Áttekintés** lapon válassza a **naplók**lehetőséget.
+1. Az **Áttekintés** lapon válassza a **naplók** lehetőséget.
 1. Nyisson meg egy új fület Application Insights.
 
 Az alábbi lista felsorolja a naplók megtekintésére használható lekérdezéseket:
 
-| Lekérdezés | Description |
+| Lekérdezés | Leírás |
 |---------------------|--------------------|
 `traces` | A Azure AD B2C által generált naplók megtekintése |
 `traces | where timestamp > ago(1d)` | Az elmúlt nap Azure AD B2C által generált naplók megtekintése
@@ -118,7 +118,7 @@ Az éles környezet teljesítményének és jobb felhasználói élményének ja
    UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights">
    ```
 
-1. Állítsa be a JourneyInsights a következőre: `DeveloperMode` [JourneyInsights](relyingparty.md#journeyinsights) `false` .
+1. Állítsa be a JourneyInsights a következőre: `DeveloperMode` [](relyingparty.md#journeyinsights) `false` .
 
    ```xml
    <UserJourneyBehaviors>
@@ -128,7 +128,7 @@ Az éles környezet teljesítményének és jobb felhasználói élményének ja
    
 1. Töltse fel és tesztelje a szabályzatot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Közösség kidolgozta a felhasználói útvonalak megjelenítőjét, hogy segítse az identitás-fejlesztőket. Beolvassa a Application Insights példányát, és jól strukturált áttekintést nyújt a felhasználói útvonalak eseményeiről. Szerezze be a forráskódot, és telepítse azt a saját megoldásában.
 

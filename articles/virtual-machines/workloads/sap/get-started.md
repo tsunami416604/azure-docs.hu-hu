@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/18/2021
+ms.date: 01/23/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0b323268c625ed25236cf4a9f9faa17606bd967c
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 0a0f17df13b5b101aebf585b7f1f3fb2a5b48006
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570065"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746053"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -84,6 +84,7 @@ Ebben a szakaszban olyan dokumentumokat talál, amelyek a Microsoft Power BI az 
 
 ## <a name="change-log"></a>Módosítási napló
 
+- 01/23/2021: a HANA adatmennyiség-particionálás funkciójának bevezetésével a HANA-adatfájlok különböző Azure-lemezeken vagy NFS-megosztásokon keresztüli, az Azure-beli [virtuális gépek tárolási konfigurációi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) és az [NFS-v 4.1-es Azure NetApp Files köteteken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp) található cikkek SAP HANAához SAP HANA tartozó I/O-műveletekhez használhatók.
 - 01/18/2021: az Azure net apps Files-alapú NFS az Azure-ban való támogatása az Oracle-ben [Virtual Machines Oracle adatbázis-kezelő üzembe helyezése SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_oracle) - [munkaSAP HANA Azure NetApp Files](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp) terheléshez
 - 01/11/2021: kisebb változások a [Ha for SAP NW Azure-beli virtuális gépeken a RHEL for SAP Applications](./high-availability-guide-rhel.md)esetében, [Ha az SAP NW Azure-beli virtuális gépeken](./high-availability-guide-rhel-netapp-files.md) , a ANF-on és a RHEL-on futó Azure [-](./high-availability-guide-rhel-multi-sid.md) beli virtuális gépeken, valamint a RHEL8 és a RHEL7, valamint a ENSA1 és a ENSA2 való működéshez szükséges parancsok módosításához
 - 01/05/2021: az Azure-beli [virtuális gépek készenléti csomópontján SAP HANA ANF a SLES](./sap-hana-scale-out-standby-netapp-files-suse.md) -on keresztül, és az [Azure-beli virtuális gépek készenléti csomópontjának használatával kibővítheti az ANF-t a RHEL-on, SAP HANA és áttekintheti](./sap-hana-scale-out-standby-netapp-files-rhel.md)az ajánlott konfigurációt, hogy az SAP-gazdagép ügynöke felügyelje a helyi porttartomány  

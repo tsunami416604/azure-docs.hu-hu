@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: 05df2144b892aed764f9606fb19bd6a3242b97f3
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 5e5be79371b640431603409a34b1a7812ed5c2a3
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934900"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746104"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>A Application Gateway háttérbeli állapotával kapcsolatos problémák elhárítása
 ==================================================
@@ -21,9 +21,6 @@ ms.locfileid: "97934900"
 --------
 
 Alapértelmezés szerint az Azure Application Gateway mintavételek háttér-kiszolgálókon ellenőrzi az állapotukat, és ellenőrzi, hogy készen állnak-e a kérelmek kiszolgálására. A felhasználók létrehozhatnak egyéni mintavételeket is, amelyek megemlítik az állomásnév nevét, a mintavételhez szükséges elérési utat, valamint az állapot kódokat, amelyeket Kifogástalanként kell elfogadni. Minden esetben, ha a háttérrendszer-kiszolgáló nem válaszol sikeresen, Application Gateway megjelöli a kiszolgálót nem megfelelő állapotba, és leállítja a kérelmek továbbítását a kiszolgálónak. A kiszolgáló sikeres megválaszolása után Application Gateway folytatja a kérések továbbítását.
-
-> [!NOTE]
-> Ez a cikk az *engedélyezési* feltételekre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
 
 ### <a name="how-to-check-backend-health"></a>A háttér állapotának ellenõrzése
 
@@ -245,7 +242,7 @@ További információ a megbízható főtanúsítványok kibontásáról és fel
 
 #### <a name="trusted-root-certificate-mismatch"></a>Nem megfelelő a megbízható főtanúsítvány
 
-**Üzenet:** A háttérrendszer által használt kiszolgálói tanúsítvány főtanúsítványa nem felel meg az Application Gateway számára hozzáadott megbízható főtanúsítványnak. Győződjön meg arról, hogy a megfelelő főtanúsítványt adja hozzá a háttér-engedélyezési listához
+**Üzenet:** A háttérrendszer által használt kiszolgálói tanúsítvány főtanúsítványa nem felel meg az Application Gateway számára hozzáadott megbízható főtanúsítványnak. Győződjön meg arról, hogy a megfelelő főtanúsítványt adja hozzá a háttér engedélyezési.
 
 **OK:** Application Gateway v2 végpontok közötti SSL használatához a háttér-kiszolgáló tanúsítványát ellenőrizni kell annak érdekében, hogy a kiszolgáló kifogástalan legyen.
 A TLS/SSL-tanúsítvány megbízhatósága érdekében a háttér-kiszolgáló tanúsítványát olyan HITELESÍTÉSSZOLGÁLTATÓnak kell kiállítania, amely a Application Gateway megbízható tárolójában szerepel. Ha a tanúsítványt nem megbízható HITELESÍTÉSSZOLGÁLTATÓ állította ki (például önaláírt tanúsítványt használt), a felhasználóknak fel kell tölteniük a kiállító tanúsítványát Application Gateway.
@@ -357,8 +354,8 @@ Ez a viselkedés a következő okok közül egyet vagy többet okozhat:
 1.  Az Application Gateway alhálózat NSG blokkolja a 65503-65534 (v1 SKU) vagy 65200-65535 (v2 SKU) portok bejövő hozzáférését az "internetről".
 1.  Az Application Gateway alhálózat UDR az alapértelmezett útvonalra (0.0.0.0/0) van beállítva, és a következő ugrás nincs "Internet" értékre megadva.
 1.  Az alapértelmezett útvonalat a ExpressRoute/VPN-kapcsolat a BGP-en keresztül egy virtuális hálózattal meghirdeti.
-1.  Az egyéni DNS-kiszolgáló olyan virtuális hálózaton van konfigurálva, amely nem tud nyilvános tartományneveket feloldani.
-1.  Application Gateway állapota nem kifogástalan.
+1.  Az egyéni DNS-kiszolgáló olyan virtuális hálózaton van konfigurálva, amely nem tudja feloldani a nyilvános tartományneveket.
+1.  Az Application Gateway állapota Nem megfelelő.
 
 **Megoldás:**
 

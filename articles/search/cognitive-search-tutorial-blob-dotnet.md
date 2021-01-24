@@ -7,14 +7,14 @@ author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 10/05/2020
+ms.date: 01/23/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: da7a80842bec68fde8cc44401bb04c2dd061741f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 4bda56f3037469477ddfe059dd20c14cd34586d8
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787958"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745717"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>Oktatóanyag: AI által generált kereshető tartalom az Azure-blobokból a .NET SDK használatával
 
@@ -23,8 +23,8 @@ Ha strukturálatlan szöveget vagy rendszerképeket használ az Azure Blob Stora
 Az oktatóanyag során a következőket fogja elsajátítani:
 
 > [!div class="checklist"]
-> * Hozzon létre egy fejlesztési környezetet.
-> * Az OCR, a nyelvfelismerés, az entitás és a Key kifejezés felismerése használatával olyan folyamatot definiálhat, amely a blobokon keresztül történik.
+> * Fejlesztési környezet beállítása
+> * Az OCR, a nyelvfelismerés, valamint az entitás és a Key kifejezés felismerését használó folyamat definiálása.
 > * Hajtsa végre a folyamatot az átalakítások meghívásához, valamint egy keresési index létrehozásához és betöltéséhez.
 > * A teljes szöveges kereséssel és a részletes lekérdezési szintaxissal megismerheti az eredményeket.
 
@@ -32,9 +32,11 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt nyisson meg egy [ingy
 
 ## <a name="overview"></a>Áttekintés
 
-Ez az oktatóanyag a C# nyelvet és a **Azure.Search.Documents** -ügyféloldali függvénytárat használja az adatforrás, index, indexelő és készségkészlet létrehozásához.
+Ez az oktatóanyag a C# nyelvet és a [ **Azure.Search.Documents** -ügyféloldali függvénytárat](/dotnet/api/overview/azure/search.documents-readme) használja az adatforrás, index, indexelő és készségkészlet létrehozásához.
 
-A készségkészlet Cognitive Services API-k alapján beépített képességeket használ. A folyamat lépései közé tartozik az optikai karakterfelismerés (OCR) a képeken, a nyelvfelismerés a szövegben, a fő kifejezés kibontása és az entitások felismerése (szervezetek). A rendszer új adatokat tárol a lekérdezésekben, aspektusokban és szűrőkben használható új mezőkben.
+Az indexelő egy, az adatforrás-objektumban megadott blob-tárolóhoz csatlakozik, és az összes indexelt tartalmat egy meglévő keresési indexbe küldi.
+
+A készségkészlet csatolva van az indexelő számára. A Microsoft beépített képességeit használja az információk megkereséséhez és kinyeréséhez. A folyamat lépései közé tartozik az optikai karakterfelismerés (OCR) a képeken, a nyelvfelismerés a szövegben, a fő kifejezés kibontása és az entitások felismerése (szervezetek). A folyamat által létrehozott új információk az index új mezőiben tárolódnak. Az index kitöltése után használhatja a lekérdezésekben, a dimenziókban és a szűrőben található mezőket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -72,13 +74,13 @@ Ha lehetséges, hozzon létre mindkettőt ugyanabban a régióban és erőforrá
 
 1. Az alapok lapon a következő elemek szükségesek. Minden más esetében fogadja el az alapértelmezett értékeket.
 
-   * **Erőforráscsoport** . Válasszon ki egy meglévőt, vagy hozzon létre egy újat, de ugyanazt a csoportot használja az összes szolgáltatáshoz, hogy együtt lehessen kezelni őket.
+   * **Erőforráscsoport**. Válasszon ki egy meglévőt, vagy hozzon létre egy újat, de ugyanazt a csoportot használja az összes szolgáltatáshoz, hogy együtt lehessen kezelni őket.
 
-   * **Tárfiók neve** . Ha úgy gondolja, hogy több erőforrása is van ugyanazzal a típussal, használja a nevet típus és régió szerint egyértelműsítse, például *blobstoragewestus* . 
+   * **Tárfiók neve**. Ha úgy gondolja, hogy több erőforrása is van ugyanazzal a típussal, használja a nevet típus és régió szerint egyértelműsítse, például *blobstoragewestus*. 
 
-   * **Hely** . Ha lehetséges, válassza ki ugyanazt a helyet, amelyet az Azure Cognitive Search és Cognitive Services használ. Egyetlen hely érvényteleníti A sávszélességgel kapcsolatos díjakat.
+   * **Hely**. Ha lehetséges, válassza ki ugyanazt a helyet, amelyet az Azure Cognitive Search és Cognitive Services használ. Egyetlen hely érvényteleníti A sávszélességgel kapcsolatos díjakat.
 
-   * **Fiók típusa** . Válassza ki az alapértelmezett *StorageV2 (általános célú v2)* .
+   * **Fiók típusa**. Válassza ki az alapértelmezett *StorageV2 (általános célú v2)*.
 
 1. A szolgáltatás létrehozásához kattintson a **felülvizsgálat + létrehozás** lehetőségre.
 
@@ -86,7 +88,7 @@ Ha lehetséges, hozzon létre mindkettőt ugyanabban a régióban és erőforrá
 
 1. Kattintson a **Blobok** szolgáltatás elemre.
 
-1. Kattintson a **+ tároló** elemre egy tároló létrehozásához, és nevezze el a *fogaskerék-Search-demo kifejezést* .
+1. Kattintson a **+ tároló** elemre egy tároló létrehozásához, és nevezze el a *fogaskerék-Search-demo kifejezést*.
 
 1. Válassza a *fogaskerék-keresés-bemutató* lehetőséget, majd kattintson a **feltöltés** gombra, és nyissa meg azt a mappát, ahová a letöltött fájlokat mentette. Válassza az összes tizennégy fájl lehetőséget, majd kattintson **az OK** gombra a feltöltéshez.
 
@@ -152,13 +154,13 @@ Ebben a projektben telepítse a `Azure.Search.Documents` és a legújabb verzió
 
 ### <a name="add-service-connection-information"></a>Szolgáltatás-összekapcsolási adatok hozzáadása
 
-1. Kattintson a jobb gombbal a projektre a megoldáskezelő, majd **Add** válassza az  >  **új elem hozzáadása..** . lehetőséget. 
+1. Kattintson a jobb gombbal a projektre a megoldáskezelő, majd válassza az  >  **új elem hozzáadása..** . lehetőséget. 
 
 1. Nevezze el a fájlt `appsettings.json` , majd válassza a **Hozzáadás** lehetőséget. 
 
 1. A fájl belefoglalása a kimeneti könyvtárba.
     1. Kattintson a jobb gombbal a elemre `appsettings.json` , és válassza a **Tulajdonságok** lehetőséget. 
-    1. Módosítsa a másolás értékét a **kimeneti könyvtárba** a **másoláshoz, ha újabb** .
+    1. Módosítsa a másolás értékét a **kimeneti könyvtárba** a **másoláshoz, ha újabb**.
 
 1. Másolja az alábbi JSON-t az új JSON-fájlba.
 
@@ -285,7 +287,7 @@ Fordítsa le és futtassa a megoldást. Mivel ez az első kérés, a Azure Porta
 
 ### <a name="step-2-create-a-skillset"></a>2. lépés: készségkészlet létrehozása
 
-Ebben a szakaszban megadhatja az adataira alkalmazni kívánt gazdagító lépések készletét. Az egyes alkoholtartalom-növelési lépések a *szaktudás* és a dúsítási lépések egy *készségkészlet* . Ez az oktatóanyag [beépített kognitív képességeket](cognitive-search-predefined-skills.md) használ a készségkészlet:
+Ebben a szakaszban megadhatja az adataira alkalmazni kívánt gazdagító lépések készletét. Az egyes alkoholtartalom-növelési lépések a *szaktudás* és a dúsítási lépések egy *készségkészlet*. Ez az oktatóanyag [beépített kognitív képességeket](cognitive-search-predefined-skills.md) használ a készségkészlet:
 
 * [Optikai karakterfelismerés](cognitive-search-skill-ocr.md) a nyomtatott és a kézírásos szöveg felismeréséhez a képfájlokban.
 
@@ -580,7 +582,7 @@ A gyakorlat során az alábbi mezőket és mezőtípusokat használjuk:
 
 Az index mezői a Model osztály használatával vannak meghatározva. A modellosztály minden tulajdonsága olyan attribútumokkal rendelkezik, amelyek meghatározzák a vonatkozó indexmező kereséssel kapcsolatos viselkedéseit. 
 
-Hozzáadjuk a modell osztályt egy új C#-fájlhoz. Kattintson a jobb gombbal a projektre **Add** , és válassza  >  az **új elem hozzáadása...** lehetőséget, válassza a "class" elemet, és nevezze el a fájlt `DemoIndex.cs` , majd válassza a **Hozzáadás** lehetőséget.
+Hozzáadjuk a modell osztályt egy új C#-fájlhoz. Kattintson a jobb gombbal a projektre , és válassza  >  az **új elem hozzáadása...** lehetőséget, válassza a "class" elemet, és nevezze el a fájlt `DemoIndex.cs` , majd válassza a **Hozzáadás** lehetőséget.
 
 Ügyeljen arra, hogy a és a névterek típusait is használni kívánja `Azure.Search.Documents.Indexes` `System.Text.Json.Serialization` .
 
@@ -852,13 +854,13 @@ A [beépített készségek](cognitive-search-predefined-skills.md) a készségk�
 
 Végül megismerte, hogyan tesztelheti az eredményeket, és hogyan állíthatja alaphelyzetbe a rendszert a későbbi futtatásokhoz. Megtanulta, hogy ha lekérdezéseket futtat az indexen, az a bővített indexelési folyamat által létrehozott kimenetet adja vissza. Emellett azt is megtanulta, hogyan ellenőrizheti az indexelő állapotát, illetve hogy melyik objektumokat kell törölnie a folyamat újrafuttatása előtt.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrásokat törölheti egyesével, vagy az erőforráscsoport törlésével eltávolíthatja a benne lévő összes erőforrást is.
 
 A bal oldali navigációs panelen a minden erőforrás vagy erőforráscsoport hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy már ismeri a mesterséges intelligencia-bővítési folyamat összes objektumát, ismerkedjen meg közelebbről a készségkészlet-definíciókkal és az egyéni ismeretekkel.
 

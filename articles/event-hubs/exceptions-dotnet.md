@@ -3,8 +3,7 @@ title: Azure Event Hubs – .NET-kivételek
 description: Ez a cikk az Azure Event Hubs .NET-üzenetkezelési kivételek és a javasolt műveletek listáját tartalmazza.
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
+author: spelluru
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
@@ -12,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
 ms.date: 09/23/2020
-ms.author: shvija
-ms.openlocfilehash: 6a1d7c969d31033ae9d00d212cc8f1a45abbeda1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: spelluru
+ms.openlocfilehash: af2d820fd255d041ade21a00d7d7a9ac6b12fcba
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91344571"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745902"
 ---
 # <a name="eventhubsexception---net"></a>EventHubsException – .NET
 Egy **EventHubsException** akkor aktiválódik, ha egy Event Hubs-specifikus művelet hibát okozott, beleértve a szolgáltatáson belüli és az ügyfélre vonatkozó hibákat is. 
@@ -50,5 +49,5 @@ catch (EventHubsException ex) where
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Más kivételek vannak dokumentálva az [örökölt cikkben](event-hubs-messaging-exceptions.md). Némelyikük csak az örökölt Event Hubs .NET-ügyfél könyvtárára vonatkozik.

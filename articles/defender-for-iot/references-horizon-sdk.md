@@ -8,12 +8,12 @@ ms.author: shhazam
 ms.date: 1/13/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: d6105f65508eff59164246020d9a3f286b68c5a1
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 53aafc4146680c89dd01174ec5fde765f1cc0c01
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210650"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746019"
 ---
 # <a name="horizon-proprietary-protocol-dissector"></a>Horizont-tulajdonosi protokollok
 
@@ -320,7 +320,7 @@ Ez a szakasz az alapszintű paramétereket ismerteti.
 | **sanity_failure_codes** | Ezek az elemző által visszaadott kódok, ha a kód identitásával kapcsolatos józanság ütközik. Lásd a Magic Number Validation című szakaszt a C++ szakaszban. | Sztring |
 | **malformed_codes** | Ezek a kódok megfelelően vannak azonosítva, de a rendszer hibát észlelt. Ha például a mező hossza túl rövid vagy hosszú, vagy érvénytelen az érték. | Sztring |
 | **dissect_as** | Egy tömb, amely meghatározza, hogy az adott protokoll forgalmát Mikor kell megérkezni. | TCP/UDP, Port stb. |
-| **mezők** | A forgalomból kinyert mezők deklarációja. Minden mező saját AZONOSÍTÓval (névvel) és típussal (numerikus, karakterlánc, nyers, tömb, összetett) rendelkezik. Például a kinyert mező [függvény](https://docs.google.com/document/d/14nm8cyoGiaE0ODOYQd_xjULxVz9U_bjfPKkcDhOFr5Q/edit#bookmark=id.6s1zcxa9184k) a megvalósítási elemző fájlban. A konfigurációs fájlban írt mezők az egyetlenek, amelyek hozzáadhatók a réteghez. |  |
+| **fields** | A forgalomból kinyert mezők deklarációja. Minden mező saját AZONOSÍTÓval (névvel) és típussal (numerikus, karakterlánc, nyers, tömb, összetett) rendelkezik. Például a kinyert mező [függvény](https://docs.google.com/document/d/14nm8cyoGiaE0ODOYQd_xjULxVz9U_bjfPKkcDhOFr5Q/edit#bookmark=id.6s1zcxa9184k) a megvalósítási elemző fájlban. A konfigurációs fájlban írt mezők az egyetlenek, amelyek hozzáadhatók a réteghez. |  |
 
 ### <a name="other-advanced-fields"></a>Egyéb speciális mezők 
 
@@ -885,7 +885,7 @@ A korábban elemzett protokollok értékeit is használhatja további informáci
 
 Például a TCP protokollon alapuló érték esetén az IPv4-rétegből származó értékeket használhatja. Ebből a rétegből kinyerheti az értékeket, például a csomag forrását és a célhelyet.
 
-Ennek eléréséhez a JSON konfigurációs fájlt a tulajdonság használatával kell frissíteni `whitelist` .
+Ennek eléréséhez a JSON konfigurációs fájlt a tulajdonság használatával kell frissíteni `whitelists` .
 
 ## <a name="allow-list-data-mining-fields"></a>Engedélyezési lista (adatbányászat) mezői
 

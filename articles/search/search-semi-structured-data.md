@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 09/25/2020
-ms.openlocfilehash: 7c88aea6aff942cdcf5cbc022df8f07cfe0d4cce
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.date: 01/25/2021
+ms.openlocfilehash: a7a010e3c60d6b96947597878fcd870e9845b2b3
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701279"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746137"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>Oktatóanyag: JSON-Blobok indexelése az Azure Storage-ból REST használatával
 
@@ -98,13 +98,13 @@ A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-c
 
 1. A **Beállítások**  >  **kulcsaiban** kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
-:::image type="content" source="media/search-get-started-rest/get-url-key.png" alt-text="HTTP-végpont és elérési kulcs beszerzése" border="false":::
+   :::image type="content" source="media/search-get-started-rest/get-url-key.png" alt-text="HTTP-végpont és elérési kulcs beszerzése" border="false":::
 
 Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes kéréshez. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
 ## <a name="2---set-up-postman"></a>2 – Poster beállítása
 
-Indítsa el a Postmant, és hozzon létre egy HTTP-kérelmet. Ha nem ismeri ezt az eszközt, tekintse meg az [Azure Cognitive Search REST API-k megismerése](search-get-started-rest.md)című témakört.
+Indítsa el a Postmant, és hozzon létre egy HTTP-kérelmet. Ha nem ismeri ezt az eszközt, tekintse meg [a keresési index létrehozása REST API](search-get-started-rest.md)-k használatával című témakört.
 
 Az oktatóanyag minden hívására vonatkozó kérési metódusok **post** és **Get**. A keresési szolgáltatás három API-hívást hajt végre egy adatforrás, egy index és egy indexelő létrehozásához. Az adatforrás tartalmaz egy, a tárfiókjára irányuló mutatót és a JSON-adatait. A keresési szolgáltatás az adatok betöltésekor hozza létre a kapcsolatot.
 
@@ -158,7 +158,7 @@ Az [adatforrás létrehozása API](/rest/api/searchservice/create-data-source) l
     ```
 
 ## <a name="4---create-an-index"></a>4 – index létrehozása
-    
+
 A második hívás [index API-t hoz létre](/rest/api/searchservice/create-index), amely egy Azure Cognitive Search indexet hoz létre, amely az összes kereshető adattal tárolja. Az index határozza meg az összes paramétert és ezek attribútumait.
 
 1. A hívás végpontjának beállítása a következőre: `https://[service name].search.windows.net/indexes?api-version=2020-06-30` . Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére.
@@ -344,7 +344,7 @@ Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávo
 
 A bal oldali navigációs panelen a minden erőforrás vagy erőforráscsoport hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy már ismeri az Azure Blob-indexelés alapjait, ismerkedjen meg részletesebben a JSON-Blobok indexelési konfigurációjával az Azure Storage-ban.
 

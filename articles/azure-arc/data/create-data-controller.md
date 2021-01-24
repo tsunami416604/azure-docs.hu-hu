@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: b9a41f4d4bb10599d50e58ad6f08d61aaba7ecfc
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: cd41f740d3cdb8130199a5dda6e73209637d5142
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608782"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745934"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Az Azure arc-adatkezelő létrehozása
 
@@ -54,7 +54,7 @@ A létrehozási folyamat során a választott lehetőségtől függetlenül a k�
 - **Adatkezelő felhasználóneve** – az adatkezelő rendszergazda felhasználójának felhasználóneve.
 - **Adatvezérlő jelszava** – az adatkezelő rendszergazda felhasználójának jelszava.
 - A **Kubernetes-névtér neve** – annak a Kubernetes-névtérnek a neve, amelyben az adatvezérlőt létre kívánja hozni.
-- **Kapcsolati mód** – a fürt [kapcsolódási módja](./connectivity.md) . Jelenleg csak a "közvetett" támogatott.
+- **Kapcsolati mód** – a kapcsolati mód határozza meg az Azure arc-kompatibilis adatszolgáltatási környezet és az Azure közötti kapcsolat mértékét. Az előzetes verzió jelenleg csak a közvetve csatlakoztatott és a közvetlenül csatlakoztatott üzemmódokat támogatja.  További információ: [kapcsolati mód](./connectivity.md). 
 - **Azure-előfizetés azonosítója** – az Azure-előfizetés GUID azonosítója, ahol az Azure-beli adatkezelő erőforrást létre kívánja hozni.
 - **Azure-erőforráscsoport neve** – annak az erőforráscsoportnak a neve, amelyhez az Azure-beli adatkezelő erőforrást létre kívánja hozni.
 - **Azure Location** – az Azure-beli hely, ahol az adatkezelő erőforrás-metaadatai az Azure-ban lesznek tárolva. Az elérhető régiók listájáért lásd: [Azure globális infrastruktúra/termékek régiónként](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc).

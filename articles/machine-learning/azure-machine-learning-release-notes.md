@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 38f37ff2fe150a9e1998fbe5e963b8737a6e1533
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 11aa739beeb07c3de056d8a2430b556fcc40b178
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737965"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746730"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
@@ -493,8 +493,8 @@ További információ a [rendszerkép-példányok szegmentálásának címkézé
     + A felhasználók mostantól meghatározhatnak egy idősorozat-gyakoriságot az előrejelzési feladatokhoz a `freq` paraméter használatával.
   + **azureml-train-automl-runtime**
     + Továbbfejlesztett konzol kimenete, ha a legjobb modell magyarázata meghiúsul.
-    + A "backlist_models" bemeneti paraméter átnevezve a következőre: "blocked_models".
-      + A "whitelist_models" bemeneti paraméter átnevezve a következőre: "allowed_models".
+    + Egy bizalmas kifejezés eltávolításához átnevezte a bemeneti paramétert a "blocked_models" értékre.
+      + Egy bizalmas kifejezés eltávolításához átnevezte a bemeneti paramétert a "allowed_models" értékre.
     + A felhasználók mostantól meghatározhatnak egy idősorozat-gyakoriságot az előrejelzési feladatokhoz a `freq` paraméter használatával.
 
   

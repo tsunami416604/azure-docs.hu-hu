@@ -1,23 +1,23 @@
 ---
-title: 'Oktatóanyag: egyéni képességek létrehozása és üzembe helyezése Azure Machine Learning'
+title: 'Példa: egyéni képesség létrehozása és üzembe helyezése Azure Machine Learning'
 titleSuffix: Azure Cognitive Search
-description: Ez az oktatóanyag bemutatja, hogyan hozhat létre és helyezhet üzembe egyéni képességeket az Azure Cognitive Search AI-bővítési folyamatának Azure Machine Learning használatával.
+description: Ez a példa azt mutatja be, hogyan használható a Azure Machine Learning az Azure Cognitive Search AI-bővítési folyamatának egyéni képességeinek kiépítéséhez és üzembe helyezéséhez.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: fa961a5a6d3a3b827a082fbac2acc3431ac40949
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 98d8395236bf955eed88f36c03c96981fa0e4b6b
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057603"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745634"
 ---
-# <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Oktatóanyag: egyéni szakértelem létrehozása és üzembe helyezése Azure Machine Learning 
+# <a name="example-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Példa: egyéni képesség létrehozása és üzembe helyezése Azure Machine Learning 
 
-Ebben az oktatóanyagban a [Hotel Reviews adatkészletet](https://www.kaggle.com/datafiniti/hotel-reviews) fogja használni (amelyet a Creative Commons Licence [CC-NC-SA 4,0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt)) használ, hogy [Egyéni képességeket](./cognitive-search-aml-skill.md) hozzon létre a Azure Machine learning használatával, hogy kinyerje a véleményekből származó Aspect-alapú véleményét. Ez lehetővé teszi a pozitív és negatív érzelmek hozzárendelését ugyanabban a felülvizsgálatban, hogy helyesen legyenek megjelölve az azonosított entitásokhoz, például a személyzethez, a helyiséghez, a lobbyhoz vagy a készlethez.
+Ebben a példában a [Hotel Reviews adatkészletet](https://www.kaggle.com/datafiniti/hotel-reviews) fogja használni (amelyet a Creative Commons Licence [CC-NC-SA 4,0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt)) használ, hogy [Egyéni képességeket](./cognitive-search-aml-skill.md) hozzon létre a Azure Machine learning használatával, hogy kinyerje a véleményekből származó Aspect-alapú véleményét. Ez lehetővé teszi a pozitív és negatív érzelmek hozzárendelését ugyanabban a felülvizsgálatban, hogy helyesen legyenek megjelölve az azonosított entitásokhoz, például a személyzethez, a helyiséghez, a lobbyhoz vagy a készlethez.
 
 A Azure Machine Learning aspektus-alapú hangulati modell betanításához az [NLP receptek tárházat](https://github.com/microsoft/nlp-recipes/tree/master/examples/sentiment_analysis/absa)fogja használni. Ezután a modell egy Azure Kubernetes-fürtön végpontként lesz üzembe helyezve. Az üzembe helyezést követően a végpontot a Cognitive Search szolgáltatás általi használatra vonatkozó pénzmosás-képességként adja hozzá a dúsítási folyamathoz.
 
@@ -31,7 +31,7 @@ Két adatkészlet van megadva. Ha saját maga szeretné betanítani a modellt, a
 > * Az üzembe helyezett modell kimenetének beolvasása egyéni képességként
 
 > [!IMPORTANT] 
-> Ez a képesség jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Jelenleg nincs .NET SDK-támogatás.
+> Ez a képesség jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Jelenleg nincs .NET SDK-támogatás.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -82,15 +82,15 @@ A jegyzetfüzet 4. szakasza négy olyan cellával rendelkezik, amelyek frissíti
 
 A portálon lépjen a Készségkészlet elemre, és válassza ki a Készségkészlet-definíció (JSON) hivatkozást. A portál megjeleníti a készségkészlet tartozó JSON-t, amely a jegyzetfüzet első cellájában lett létrehozva. A megjelenítéstől jobbra legördülő menü látható, ahol kiválaszthatja a szakértelem-definíciós sablont. Válassza ki a Azure Machine Learning (pénzmosás) sablont. adja meg az Azure ML-munkaterület nevét és a végpontot, amelyet a rendszer a következtetési fürtön üzembe helyezett modellhez használt. A sablon a végpont URI-ja és kulcsa alapján lesz frissítve.
 
-> :::image type="content" source="media/cognitive-search-aml-skill/portal-aml-skillset-definition.png" alt-text="Készségkészlet-definíciós sablon&quot;:::
+> :::image type="content" source="media/cognitive-search-aml-skill/portal-aml-skillset-definition.png" alt-text="Készségkészlet-definíciós sablon":::
 
 Másolja a készségkészlet sablont az ablakból, és illessze be a készségkészlet-definícióba a bal oldalon. Szerkessze a sablont, hogy a hiányzó értékeket adja meg a következőhöz:
 
 * Név
 * Leírás
 * Környezet
-* &quot;bemenetek&quot; neve és forrása
-* &quot;outputs" neve és targetName
+* "bemenetek" neve és forrása
+* "outputs" neve és targetName
 
 Mentse a készségkészlet.
 
@@ -104,7 +104,7 @@ A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscso
 
 Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Az egyéni ügyességi webes API áttekintése](./cognitive-search-custom-skill-web-api.md) 

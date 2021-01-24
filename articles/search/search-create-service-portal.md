@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 10/14/2020
-ms.openlocfilehash: 3f55e2a7d62d2f32173d382dc9be0d6eb4f83fae
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/23/2021
+ms.openlocfilehash: 57867cc4fb539b07fc1e4117f6e956078c41e2c6
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249754"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746696"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rövid útmutató: Azure Cognitive Search-szolgáltatások létrehozása a portálon
 
-Az Azure Cognitive Search egy önálló erőforrás, amely a keresési élmény egyéni alkalmazásokba való csatlakoztatására szolgál. A Cognitive Search könnyedén integrálható más Azure-szolgáltatásokkal, a hálózati kiszolgálókon futó alkalmazásokkal vagy más felhőalapú platformokon futó szoftverekkel.
+Az [azure Cognitive Search](search-what-is-azure-search.md) egy Azure-erőforrás, amellyel teljes szöveges keresési élményt adhat hozzá az egyéni alkalmazásokhoz. Egyszerűen integrálható más Azure-szolgáltatásokkal, amelyek adatkezelést vagy további feldolgozást tesznek lehetővé, a hálózati kiszolgálókon lévő alkalmazásokkal vagy más felhőalapú platformokon futó szoftverekkel.
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre erőforrásokat a [Azure Portalban](https://portal.azure.com/).
+Ebből a cikkből megtudhatja, hogyan hozhat létre keresési szolgáltatást a [Azure Portalban](https://portal.azure.com/).
 
 [![Animált GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
@@ -31,7 +31,7 @@ A szolgáltatás élettartamára a következő szolgáltatási tulajdonságok va
 
 * A szolgáltatás neve az URL-végpont részévé válik (a hasznos szolgáltatások neveire vonatkozó[tippek áttekintése](#name-the-service) ).
 * A [szolgáltatási](search-sku-tier.md) szinten befolyásolja a számlázást, és beállítja a kapacitás felső határát. Néhány funkció nem érhető el az ingyenes szinten.
-* A szolgáltatási régió képes meghatározni bizonyos forgatókönyvek rendelkezésre állását. Ha [magas szintű biztonsági funkciókra](search-security-overview.md) vagy [AI](cognitive-search-concept-intro.md)-bővítésre van szüksége, az Azure Cognitive Search-t a többi szolgáltatással azonos régióba kell helyeznie, vagy a szóban forgó szolgáltatást biztosító régiókban. 
+* A szolgáltatási régió képes meghatározni bizonyos forgatókönyvek rendelkezésre állását. Ha [magas szintű biztonsági funkciókra](search-security-overview.md) vagy [AI](cognitive-search-concept-intro.md)-bővítésre van szüksége, létre kell hoznia Azure-Cognitive Search a többi szolgáltatással azonos régióban, vagy a szóban forgó szolgáltatást biztosító régiókban. 
 
 ## <a name="subscribe-free-or-paid"></a>Feliratkozás (ingyenes vagy fizetős)
 
@@ -43,7 +43,7 @@ Választhatja az [MSDN-előfizetői értékelemek aktiválását](https://azure.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-1. Kattintson a plusz jelre ("+ Create Resource") a bal felső sarokban.
+1. Kattintson a plusz jelre (**"+ Create Resource"**) a bal felső sarokban.
 
 1. A keresősáv segítségével keresse meg az "Azure Cognitive Search", vagy navigáljon az erőforráshoz a **web**  >  **Azure Cognitive Search** használatával.
 

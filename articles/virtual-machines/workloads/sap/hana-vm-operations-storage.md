@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/26/2020
+ms.date: 01/23/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8c4aa608e892867daaf954284a9dfce997a9ae1f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 01c6a2eb53e82965dd96deaa1a09afb1e70dda24
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484277"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746747"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure-beli virtuális gépek tárkonfigurációi
 
@@ -63,10 +63,22 @@ A HANA tárolási konfigurációjának kiválasztásakor a következő néhány 
 - Döntse el a tároló típusát az [Azure Storage-típusok](./planning-guide-storage.md) alapján az SAP számítási feladatokhoz, és [válassza ki a lemez típusát](../../disks-types.md)
 - A teljes VM I/O-átviteli sebesség és a IOPS a virtuális gép méretezése vagy meghatározása során figyelembe kell venni. A virtuálisgép-tárolók teljes átviteli sebességét a cikk a [memória-optimalizált virtuális gépek méreteit](../../sizes-memory.md) ismertető cikkben dokumentálja.
 - A tárolási konfiguráció eldöntése során próbálja meg a virtuális gép teljes átviteli sebességét a **/Hana/Data** -kötet konfigurációjával. A visszaállítási pontok írása SAP HANA lehet agresszív kiállító I/o-kiadás. A mentésipont írásakor könnyen lehet leküldeni a **/Hana/Data** -kötet átviteli korlátait. Ha a **/Hana/Data** -kötetet felépítő lemez (ek) nagyobb átviteli sebességgel rendelkezik, mint amennyit a virtuális gép engedélyez, akkor olyan helyzetekben futhat, ahol a mentésipont-írás által használt átviteli sebesség ütközik az Ismétlési naplók írási követelményeivel. Olyan helyzet, amely hatással lehet az alkalmazás átviteli sebességére
-- Ha az Azure Premium Storage-t használja, a legdrágább konfiguráció a logikai kötetek kezelőjének használata a **/Hana/Data** és a **/Hana/log** kötetek létrehozásához.
+
 
 > [!IMPORTANT]
 > A tárolási konfigurációkra vonatkozó javaslatok a kezdéshez szükségesek. A számítási feladatok futtatása és a tárolási kihasználtsági minták elemzése során előfordulhat, hogy nem használja az összes megadott tárolási sávszélességet vagy IOPS. Érdemes megfontolni a tárterület leépítését. Ellenkező esetben előfordulhat, hogy a számítási feladathoz több tárterület-átviteli sebességre van szükség, mint amit ezekkel a konfigurációkkal javasolt. Ennek eredményeképpen előfordulhat, hogy a kapacitást, a IOPS vagy az átviteli sebességet kell telepítenie. A tárolókapacitás megkövetelt tárolási kapacitása, a tárolási késleltetés, a tárolási teljesítmény és a IOPS szükséges és a legkevésbé költséges konfiguráció terén az Azure elegendő különböző tárolási típust kínál különböző képességekkel és különböző díjszabási pontokkal, hogy megkeresse és módosítsa az Ön és a HANA számítási feladatának megfelelő kompromisszumot.
+
+
+## <a name="stripe-sets-versus-sap-hana-data-volume-partitioning"></a>A Stripe-készletek és az adatmennyiség-particionálás SAP HANA
+Az Azure Premium Storage használata esetén a legjobb ár/teljesítmény arányt követheti, ha a **/Hana/Data** és/vagy a **/Hana/log** -kötetet több Azure-lemez között is kiszűri. Ahelyett, hogy nagyobb méretű lemezeket helyezzen üzembe, amelyek további IOPS vagy átviteli sebességet igényelnek. Eddig a Linux részét képező LVM-és MDADM-kötet-kezelők lettek megvalósítva. A lemezek csíkozásának módszere évtizedes és jól ismert. Mivel ezek a csíkozott kötetek hasznosak, a IOPS vagy az átviteli sebességre lehet szükség, a csíkozott kötetek kezelésének bonyolultságát is felveszi. Különösen azokban az esetekben, amikor a köteteknek bővíteni kell a kapacitást. Legalább a **/Hana/Data** esetében az SAP egy alternatív módszert vezetett be, amely ugyanazt a célt éri el, mint a több Azure-lemezre kiterjedő csíkozás. Mivel SAP HANA 2,0 SPS03, a HANA IndexServer képes a különböző Azure-lemezeken található több HANA-adatfájlhoz tartozó I/O-tevékenységre. Ennek előnye, hogy nem kell gondoskodnia a csíkozott kötetek különböző Azure-lemezeken való létrehozásáról és kezeléséről. Az adatmennyiség-particionálás SAP HANA funkcióit részletesen ismerteti a következő témakörben:
+
+- [A HANA rendszergazdai útmutatója](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.05/en-US/40b2b2a880ec4df7bac16eae3daef756.html?q=hana%20data%20volume%20partitioning)
+- [Blog about SAP HANA – az adatkötetek particionálása](https://blogs.sap.com/2020/10/07/sap-hana-partitioning-data-volumes/)
+- [SAP-Megjegyzés #2400005](https://launchpad.support.sap.com/#/notes/2400005)
+- [SAP-Megjegyzés #2700123](https://launchpad.support.sap.com/#/notes/2700123)
+
+A részletek beolvasása nyilvánvalóvá válik, hogy a funkció kihasználása a Volume Manager-alapú csíkkészletek összetettségét veszi igénybe. Azt is tapasztalja, hogy a HANA-adatmennyiség particionálása nem csak az Azure Block Storage esetében működik, például az Azure Premium Storage szolgáltatásban. Ezt a funkciót is használhatja az NFS-megosztások közötti szalagok elérésére arra az esetre, ha ezek a megosztások IOPS vagy átviteli sebességre vonatkozó korlátozásokkal rendelkeznek.  
+
 
 ## <a name="linux-io-scheduler-mode"></a>Linux I/O-ütemező mód
 A Linux számos különböző I/O-ütemezési módot tartalmaz. A Linux-szállítók és az SAP gyakori javaslata, hogy újrakonfigurálja az I/O-ütemező módot a lemezes kötetekhez az **MQ-alapú** vagy a **Kyber** módból a **NOOP** (nem többhelyes) vagy a **none** (többsoros) módra. A részletekre az [SAP-megjegyzés #1984787](https://launchpad.support.sap.com/#/notes/1984787)hivatkozik. 
@@ -311,6 +323,6 @@ Vannak felsorolva olyan virtuálisgép-típusok, amelyek nem rendelkeznek SAP-ta
 
 
 ## <a name="next-steps"></a>További lépések
-További információ:
+További információkért lásd:
 
 - [SAP HANA magas rendelkezésre állású útmutató Azure-beli virtuális gépekhez](./sap-hana-availability-overview.md).

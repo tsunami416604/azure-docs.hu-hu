@@ -3,17 +3,17 @@ title: IoT Plug and Play híd | Microsoft Docs
 description: Ismerje meg a IoT Plug and Play hidat, és hogyan használható a Windows-vagy Linux-átjáróhoz csatlakoztatott meglévő eszközök csatlakoztatására IoT Plug and Play-eszközökként.
 author: usivagna
 ms.author: ugans
-ms.date: 09/22/2020
+ms.date: 1/20/2021
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 34af380d057ad47811e394da1e7a29198e102920
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 05b9df2c5083d24ae6a78212bdd29cd1c740e1d1
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672780"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746492"
 ---
 # <a name="iot-plug-and-play-bridge"></a>IoT Plug and Play-híd
 
@@ -31,12 +31,12 @@ A IoT Plug and Play Bridge alapértelmezés szerint a következő típusú perif
 |---------|---------|---------|
 |[Bluetooth-érzékelő adaptere](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/bluetooth_sensor_adapter.md) összekapcsolja az észlelt Bluetooth alacsony energiafogyasztású érzékelőket.       |Igen|Nem|
 |A [kamera adapter](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/camera_adapter.md) csatlakoztatja a kamerákat egy Windows 10-es eszközön.               |Igen|Nem|
-|Az [Modbus adapter](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/modbus_adapters.md) Modbus-eszközön csatlakoztatja az érzékelőket.              |Igen|Yes|
-|A [MQTT-adapter](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/mqtt_adapter.md) MQTT-közvetítőt használó eszközöket csatlakoztat.                  |Igen|Yes|
-|A [SerialPnP adapter](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/serialpnp/Readme.md) a soros kapcsolaton keresztül kommunikáló eszközöket csatlakoztat.               |Igen|Yes|
-|A [Windows USB-perifériák](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/coredevicehealth_adapter.md) az adapter által támogatott eszköz-illesztőfelület osztályok listáját használják az adott hardver-azonosítóval rendelkező eszközök csatlakoztatásához.  |Yes|Nem alkalmazható|
+|Az [Modbus adapter](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/modbus_adapters.md) Modbus-eszközön csatlakoztatja az érzékelőket.              |Igen|Igen|
+|A [MQTT-adapter](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/mqtt_adapter.md) MQTT-közvetítőt használó eszközöket csatlakoztat.                  |Igen|Igen|
+|A [SerialPnP adapter](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/serialpnp/Readme.md) a soros kapcsolaton keresztül kommunikáló eszközöket csatlakoztat.               |Igen|Igen|
+|A [Windows USB-perifériák](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/coredevicehealth_adapter.md) az adapter által támogatott eszköz-illesztőfelület osztályok listáját használják az adott hardver-azonosítóval rendelkező eszközök csatlakoztatásához.  |Igen|Nem alkalmazható|
 
-Ha szeretné megtudni, hogyan terjeszthető ki a IoT Plug and Play híd a további eszközök protokolljának támogatásához, tekintse meg [a IoT Plug and Play-híd felépítése, telepítése és kiterjesztése](howto-build-deploy-extend-pnp-bridge.md)című témakört.
+Ha szeretné megtudni, hogyan terjeszthető ki a IoT Plug and Play híd a további eszközök protokolljának támogatásához, tekintse meg [a IoT Plug and Play-híd kiterjesztését](howto-author-pnp-bridge-adapter.md)ismertető témakört. A IoT Plug and Play-híd létrehozásával és üzembe helyezésével kapcsolatos információkért lásd: [a IoT Plug and Play-híd felépítése és üzembe helyezése](howto-build-deploy-extend-pnp-bridge.md).
 
 ## <a name="iot-plug-and-play-bridge-architecture"></a>IoT Plug and Play híd architektúrája
 
@@ -144,10 +144,11 @@ Letöltheti a híd előre összeállított verzióját a támogatott adapterekke
 
 Letöltheti és megtekintheti a [githubon Plug and Play Bridge IoT](https://github.com/Azure/iot-plug-and-play-bridge)forráskódját is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy áttekintette a IoT Plug and Play Bridge architektúráját, a következő lépésekkel többet is megtudhat a következőkről:
 
-- [A IoT Plug and Play-híd használata](./howto-use-iot-pnp-bridge.md)
-- [IoT-Plug and Play-híd létrehozása, üzembe helyezése és kiterjesztése](howto-build-deploy-extend-pnp-bridge.md)
+- [Linux vagy Windows rendszeren futó IoT Plug and Play híd-minta összekapcsolása IoT Hub](./howto-use-iot-pnp-bridge.md)
+- [IoT Plug and Play-híd létrehozása és üzembe helyezése](howto-build-deploy-extend-pnp-bridge.md)
+- [A IoT Plug and Play-híd kiterjesztése](howto-build-deploy-extend-pnp-bridge.md)
 - [IoT Plug and Play híd a GitHubon](https://github.com/Azure/iot-plug-and-play-bridge)

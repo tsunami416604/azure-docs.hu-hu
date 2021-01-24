@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 09/25/2020
+ms.date: 01/23/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 960657d27be4b9dab9f242428592bbb404a49d86
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: e2ca5f42120661b887d07e697596f41cb7a7fce4
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697169"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745767"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>Oktatóanyag: az Azure SQL-adatainak indexelése a .NET SDK használatával
 
@@ -107,14 +107,14 @@ Az API-hívásokhoz a szolgáltatás URL-címe és egy hozzáférési kulcs szü
 
 1. Megoldáskezelő a kapcsolódási adatok megadásához nyissa meg a **appsettings.js** .
 
-1. `searchServiceName`Ha a teljes URL-cím " https://my-demo-service.search.windows.net ", a szolgáltatás neve a következő: "My-demo-Service".
+1. A (z) esetében `SearchServiceEndPoint` , ha a szolgáltatás áttekintő oldalán található teljes URL-cím " https://my-demo-service.search.windows.net ", akkor a megadni kívánt érték az URL-cím.
 
 1. A esetében `AzureSqlConnectionString` a karakterlánc formátuma a következőhöz hasonló: `"Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"`
 
     ```json
     {
-      "SearchServiceName": "<placeholder-Azure-Search-service-name>",
-      "SearchServiceAdminApiKey": "<placeholder-admin-key-for-Azure-Search>",
+      "SearchServiceEndPoint": "<placeholder-search-url>",
+      "SearchServiceAdminApiKey": "<placeholder-admin-key-for-search-service>",
       "AzureSqlConnectionString": "<placeholder-ADO.NET-connection-string",
     }
     ```
@@ -130,11 +130,12 @@ Az indexelő adatforrást és indexet igényel. A kapcsolódó kód két fájlba
 
 ### <a name="in-hotelcs"></a>A hotel.cs fájlban
 
-Az indexséma határozza meg a mezők gyűjteményét, beleértve az attribútumokat, amelyek megadják az engedélyezett műveleteket, például azt, hogy az adott mező alkalmas-e teljes szöveges keresésre, szűrésre vagy rendezésre, ahogy a HotelName alábbi mezőmeghatározása esetében is látható. 
+Az indexséma határozza meg a mezők gyűjteményét, beleértve az attribútumokat, amelyek megadják az engedélyezett műveleteket, például azt, hogy az adott mező alkalmas-e teljes szöveges keresésre, szűrésre vagy rendezésre, ahogy a HotelName alábbi mezőmeghatározása esetében is látható. A [SearchableField](/dotnet/api/azure.search.documents.indexes.models.searchablefield) teljes szöveges kereshetőség a definíció alapján. A többi attribútum explicit módon van hozzárendelve.
 
 ```csharp
 . . . 
-[IsSearchable, IsFilterable, IsSortable]
+[SearchableField(IsFilterable = true, IsSortable = true)]
+[JsonPropertyName("hotelName")]
 public string HotelName { get; set; }
 . . .
 ```
@@ -143,59 +144,73 @@ A sémák tartalmazhatnak egyéb elemeket is, például keresési pontszámok n�
 
 ### <a name="in-programcs"></a>A Program.cs fájlban
 
-A fő program logikát tartalmaz az ügyfelek, az indexek, az adatforrások és az indexelő létrehozásához. A kód észleli és törli az azonos nevű meglévő erőforrásokat, azt feltételezve, hogy többször is futtatja ezt a programot.
+A fő program [egy indexelő ügyfél](/dotnet/api/azure.search.documents.indexes.models.searchindexer), egy index, egy adatforrás és egy indexelő létrehozására szolgáló logikát tartalmaz. A kód észleli és törli az azonos nevű meglévő erőforrásokat, azt feltételezve, hogy többször is futtatja ezt a programot.
 
-Az adatforrás-objektum a Azure SQL Database erőforrásokra vonatkozó beállításokkal van konfigurálva, beleértve a [részleges vagy növekményes indexelést](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) is az Azure SQL beépített [változás-észlelési funkcióinak](/sql/relational-databases/track-changes/about-change-tracking-sql-server) kihasználásához. Az Azure SQL-ben a demo Hotels-adatbázis **IsDeleted** nevű "Soft Delete" oszlopot tartalmaz. Ha ez az oszlop igaz értékre van állítva az adatbázisban, az indexelő eltávolítja a megfelelő dokumentumot az Azure Cognitive Search indexből.
+Az adatforrás-objektum a Azure SQL Database erőforrásokra vonatkozó beállításokkal van konfigurálva, beleértve a [részleges vagy növekményes indexelést](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) is az Azure SQL beépített [változás-észlelési funkcióinak](/sql/relational-databases/track-changes/about-change-tracking-sql-server) kihasználásához. Az Azure SQL-ben a forrásként szolgáló demo Hotels-adatbázis a **IsDeleted** nevű "Soft Delete" oszlopot tartalmaz. Ha ez az oszlop igaz értékre van állítva az adatbázisban, az indexelő eltávolítja a megfelelő dokumentumot az Azure Cognitive Search indexből.
 
-  ```csharp
-  Console.WriteLine("Creating data source...");
+```csharp
+Console.WriteLine("Creating data source...");
 
-  DataSource dataSource = DataSource.AzureSql(
-      name: "azure-sql",
-      sqlConnectionString: configuration["AzureSQLConnectionString"],
-      tableOrViewName: "hotels",
-      deletionDetectionPolicy: new SoftDeleteColumnDeletionDetectionPolicy(
-          softDeleteColumnName: "IsDeleted",
-          softDeleteMarkerValue: "true"));
-  dataSource.DataChangeDetectionPolicy = new SqlIntegratedChangeTrackingPolicy();
+var dataSource =
+      new SearchIndexerDataSourceConnection(
+         "hotels-sql-ds",
+         SearchIndexerDataSourceType.AzureSql,
+         configuration["AzureSQLConnectionString"],
+         new SearchIndexerDataContainer("hotels"));
 
-  searchService.DataSources.CreateOrUpdateAsync(dataSource).Wait();
-  ```
+indexerClient.CreateOrUpdateDataSourceConnection(dataSource);
+```
 
-Az indexelő objektum a platform-agnosztikus, ahol a konfiguráció, az ütemezés és a hívás azonos a forrástól függetlenül. Ez a példa indexelő tartalmaz egy ütemtervet, egy alaphelyzetbe állítási lehetőséget, amely törli az indexelő előzményeit, és azonnal meghívja a metódust az indexelő létrehozásához és futtatásához.
+Az indexelő objektum a platform-agnosztikus, ahol a konfiguráció, az ütemezés és a hívás azonos a forrástól függetlenül. Ez a példa indexelő tartalmaz egy ütemtervet, egy alaphelyzetbe állítási lehetőséget, amely törli az indexelő előzményeit, és azonnal meghívja a metódust az indexelő létrehozásához és futtatásához. Indexelő létrehozásához vagy frissítéséhez használja a [CreateOrUpdateIndexerAsync](/dotnet/api/azure.search.documents.indexes.searchindexerclient.createorupdateindexerasync).
 
-  ```csharp
-  Console.WriteLine("Creating Azure SQL indexer...");
-  Indexer indexer = new Indexer(
-      name: "azure-sql-indexer",
-      dataSourceName: dataSource.Name,
-      targetIndexName: index.Name,
-      schedule: new IndexingSchedule(TimeSpan.FromDays(1)));
-  // Indexers contain metadata about how much they have already indexed
-  // If we already ran the sample, the indexer will remember that it already
-  // indexed the sample data and not run again
-  // To avoid this, reset the indexer if it exists
-  exists = await searchService.Indexers.ExistsAsync(indexer.Name);
-  if (exists)
-  {
-      await searchService.Indexers.ResetAsync(indexer.Name);
-  }
+```csharp
+Console.WriteLine("Creating Azure SQL indexer...");
 
-  await searchService.Indexers.CreateOrUpdateAsync(indexer);
+var schedule = new IndexingSchedule(TimeSpan.FromDays(1))
+{
+      StartTime = DateTimeOffset.Now
+};
 
-  // We created the indexer with a schedule, but we also
-  // want to run it immediately
-  Console.WriteLine("Running Azure SQL indexer...");
+var parameters = new IndexingParameters()
+{
+      BatchSize = 100,
+      MaxFailedItems = 0,
+      MaxFailedItemsPerBatch = 0
+};
 
-  try
-  {
-      await searchService.Indexers.RunAsync(indexer.Name);
-  }
-  catch (CloudException e) when (e.Response.StatusCode == (HttpStatusCode)429)
-  {
+// Indexer declarations require a data source and search index.
+// Common optional properties include a schedule, parameters, and field mappings
+// The field mappings below are redundant due to how the Hotel class is defined, but 
+// we included them anyway to show the syntax 
+var indexer = new SearchIndexer("hotels-sql-idxr", dataSource.Name, searchIndex.Name)
+{
+      Description = "Data indexer",
+      Schedule = schedule,
+      Parameters = parameters,
+      FieldMappings =
+      {
+         new FieldMapping("_id") {TargetFieldName = "HotelId"},
+         new FieldMapping("Amenities") {TargetFieldName = "Tags"}
+      }
+};
+
+await indexerClient.CreateOrUpdateIndexerAsync(indexer);
+```
+
+Az indexelő futtatások általában ütemezettek, de a fejlesztés során előfordulhat, hogy azonnal futtatni szeretné az indexelő a [RunIndexerAsync](/dotnet/api/azure.search.documents.indexes.searchindexerclient.runindexerasync)használatával.
+
+```csharp
+Console.WriteLine("Running Azure SQL indexer...");
+
+try
+{
+      await indexerClient.RunIndexerAsync(indexer.Name);
+}
+catch (CloudException e) when (e.Response.StatusCode == (HttpStatusCode)429)
+{
       Console.WriteLine("Failed to run indexer: {0}", e.Response.Content);
-  }
-  ```
+}
+```
 
 ## <a name="4---build-the-solution"></a>4 – a megoldás összeállítása
 
@@ -205,9 +220,9 @@ A megoldás létrehozásához és futtatásához nyomja le az F5 billentyűt. A 
 
 A kód helyileg fut a Visual Studióban, és csatlakozik a keresési szolgáltatáshoz az Azure-ban, amely összekapcsolja a Azure SQL Database és beolvassa az adatkészletet. Ezzel a sok művelettel több lehetséges meghibásodási pont is van. Ha hibaüzenetet kap, először ellenőrizze az alábbi feltételeket:
 
-+ Az Ön által megadott keresési szolgáltatás kapcsolati adatai ebben az oktatóanyagban a szolgáltatás nevére korlátozódnak. A teljes URL-cím megadásakor a műveletek az index létrehozásakor leállnak, kapcsolódási hibát jelezve.
++ Az Ön által megadott keresési szolgáltatás elérhetőségi adatai a teljes URL-cím. Ha csak a szolgáltatás nevét adta meg, akkor a művelet nem a kapcsolódási hiba miatt leáll az index létrehozásakor.
 
-+ Az adatbázis kapcsolati adatai az **appsettings.json** fájlban. Ennek a portálról beszerzett ADO.NET kapcsolati sztringnek kell lennie, amelyet úgy módosítottunk, hogy tartalmazza az adatbázishoz tartozó felhasználónevet és jelszót. A felhasználói fióknak megfelelő engedéllyel kell rendelkeznie az adatok lekérdezéséhez. A helyi ügyfél IP-címének hozzáférést kell biztosítani.
++ Az adatbázis kapcsolati adatai az **appsettings.json** fájlban. Ennek a portálról beszerzett ADO.NET kapcsolati sztringnek kell lennie, amelyet úgy módosítottunk, hogy tartalmazza az adatbázishoz tartozó felhasználónevet és jelszót. A felhasználói fióknak megfelelő engedéllyel kell rendelkeznie az adatok lekérdezéséhez. A helyi ügyfél IP-címének engedélyezve kell lennie a tűzfalon keresztüli bejövő hozzáférésnek.
 
 + Erőforráskorlátok. Ne felejtse el, hogy az ingyenes szinten 3 index, indexelő és adatforrásra vonatkozó korlát szerepel. A felső korlátot elért szolgáltatások nem képesek új objektumok létrehozására.
 
@@ -249,7 +264,7 @@ Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávo
 
 A bal oldali navigációs panelen a minden erőforrás vagy erőforráscsoport hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy már ismeri a SQL Database indexelés alapjait, ismerkedjen meg közelebbről az indexelő konfigurációjában.
 

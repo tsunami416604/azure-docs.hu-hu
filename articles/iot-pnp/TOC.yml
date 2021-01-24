@@ -65,10 +65,12 @@
       href: howto-manage-digital-twin.md
     - name: Eszköz minősítése
       href: howto-certify-device.md
-    - name: Az IoT Plug and Play-híd telepítése és használata
+    - name: IoT Plug and Play Bridge-minta összekötése
       href: howto-use-iot-pnp-bridge.md
-    - name: 'IoT Plug and Play-híd létrehozása, üzembe helyezése és bővítése'
+    - name: IoT Plug and Play-híd létrehozása és üzembe helyezése
       href: howto-build-deploy-extend-pnp-bridge.md
+    - name: A IoT Plug and Play-híd kiterjesztése
+      href: howto-author-pnp-bridge-adapter.md
 - name: Referencia
   items:
     - name: Kódtárak és SDK-k

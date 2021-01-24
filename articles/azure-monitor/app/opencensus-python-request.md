@@ -6,21 +6,18 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 4b88550ad489607bb66eb737067190d45a466a43
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 4abb795335bfcb2c9b335d4fb09ddc9fdb2476b4
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607075"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746577"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>A beérkező kérelmek nyomon követése a OpenCensus Pythonban
 
 A beérkező kérések adatai a OpenCensus Python és annak különböző integrációi használatával gyűjthetők össze. Nyomon követheti a beérkező kérések adatait, amelyeket a népszerű webes keretrendszerekre épülő webalkalmazásoknak küldenek `django` `flask` `pyramid` . Ezután a rendszer elküldi az adat Application Insights Azure Monitor alatt `requests` telemetria.
 
 Először is a Python-alkalmazást a legújabb [OpenCensus PYTHON SDK](./opencensus-python.md)-val alakíthatja ki.
-
-> [!NOTE]
-> Ez a cikk a *feketelista* kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
 
 ## <a name="tracking-django-applications"></a>Django-alkalmazások nyomon követése
 
@@ -36,7 +33,7 @@ Először is a Python-alkalmazást a legújabb [OpenCensus PYTHON SDK](./opencen
     )
     ```
 
-3. Győződjön meg arról, hogy a AzureExporter megfelelően van konfigurálva a `settings.py` alatt `OPENCENSUS` . A nem nyomon követni kívánt URL-címekről érkező kérések hozzáadásához vegye fel a következőt: `BLACKLIST_PATHS` .
+3. Győződjön meg arról, hogy a AzureExporter megfelelően van konfigurálva a `settings.py` alatt `OPENCENSUS` . A nem nyomon követni kívánt URL-címekről érkező kérések hozzáadásához vegye fel a következőt: `EXCLUDELIST_PATHS` .
 
     ```python
     OPENCENSUS = {
@@ -45,7 +42,7 @@ Először is a Python-alkalmazást a legújabb [OpenCensus PYTHON SDK](./opencen
             'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
                 connection_string="InstrumentationKey=<your-ikey-here>"
             )''',
-            'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
+            'EXCLUDELIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
         }
     }
     ```
@@ -77,7 +74,7 @@ Először is a Python-alkalmazást a legújabb [OpenCensus PYTHON SDK](./opencen
     
     ```
 
-2. Az alkalmazást a használatával is konfigurálhatja `flask` `app.config` . A nem nyomon követni kívánt URL-címekről érkező kérések hozzáadásához vegye fel a következőt: `BLACKLIST_PATHS` .
+2. Az alkalmazást a használatával is konfigurálhatja `flask` `app.config` . A nem nyomon követni kívánt URL-címekről érkező kérések hozzáadásához vegye fel a következőt: `EXCLUDELIST_PATHS` .
 
     ```python
     app.config['OPENCENSUS'] = {
@@ -86,7 +83,7 @@ Először is a Python-alkalmazást a legújabb [OpenCensus PYTHON SDK](./opencen
             'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
                 connection_string="InstrumentationKey=<your-ikey-here>",
             )''',
-            'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
+            'EXCLUDELIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
         }
     }
     ```
@@ -103,7 +100,7 @@ Először is a Python-alkalmazást a legújabb [OpenCensus PYTHON SDK](./opencen
                          '.pyramid_middleware.OpenCensusTweenFactory')
     ```
 
-2. Az `pyramid` Tween-t közvetlenül a kódban is konfigurálhatja. A nem nyomon követni kívánt URL-címekről érkező kérések hozzáadásához vegye fel a következőt: `BLACKLIST_PATHS` .
+2. Az `pyramid` Tween-t közvetlenül a kódban is konfigurálhatja. A nem nyomon követni kívánt URL-címekről érkező kérések hozzáadásához vegye fel a következőt: `EXCLUDELIST_PATHS` .
 
     ```python
     settings = {
@@ -113,7 +110,7 @@ Először is a Python-alkalmazást a legújabb [OpenCensus PYTHON SDK](./opencen
                 'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
                     connection_string="InstrumentationKey=<your-ikey-here>",
                 )''',
-                'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
+                'EXCLUDELIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
             }
         }
     }

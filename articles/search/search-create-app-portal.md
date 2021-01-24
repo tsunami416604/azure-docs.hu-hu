@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/25/2020
-ms.openlocfilehash: b69feec7249c80fc63d803a14f360614bcf880fa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 01/23/2021
+ms.openlocfilehash: 590afe4c396942c5179826cd831908e37f48c3e4
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91399822"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745750"
 ---
 # <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>Rövid útmutató: bemutató alkalmazás létrehozása a portálon (Azure Cognitive Search)
 
@@ -43,7 +43,7 @@ Ha az index használatra kész, lépjen tovább a következő lépésre.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure-fiókjával.
 
-1. [Keresse meg a keresési szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) , és az Áttekintés oldalon, az oldal közepén található hivatkozások közül válassza az **indexek**lehetőséget. 
+1. [Keresse meg a keresési szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) , és az Áttekintés oldalon, az oldal közepén található hivatkozások közül válassza az **indexek** lehetőséget. 
 
 1. Válassza a *Realestate-US-Sample-index* elemet a meglévő indexek listájából.
 
@@ -55,13 +55,13 @@ Ha az index használatra kész, lépjen tovább a következő lépésre.
 
 A varázsló alapvető elrendezést biztosít a megjelenített keresési eredmények számára, amely tartalmazza a miniatűr képek, a cím és a Leírás területét. Az egyes elemek biztonsági mentése az index egyik mezője, amely az adatokat biztosítja. 
 
-1. A miniatűr mezőben válassza ki a *miniatűr* mezőt a *Realestate-US-Sample* indexben. Ez a minta egy *miniatűr*nevű mezőben tárolt, URL-címekkel elválasztott lemezképek formájában tartalmaz képminiatűröket. Ha az index nem rendelkezik rendszerképekkel, hagyja üresen ezt a mezőt.
+1. A miniatűr mezőben válassza ki a *miniatűr* mezőt a *Realestate-US-Sample* indexben. Ez a minta egy *miniatűr* nevű mezőben tárolt, URL-címekkel elválasztott lemezképek formájában tartalmaz képminiatűröket. Ha az index nem rendelkezik rendszerképekkel, hagyja üresen ezt a mezőt.
 
 1. A title (cím) mezőben válasszon ki egy mezőt, amely az egyes dokumentumok egyediségét közvetíti. Ebben a példában a tőzsdei azonosító egy ésszerű kijelölés.
 
 1. A Description (Leírás) mezőben válasszon ki egy olyan mezőt, amely segítséget nyújthat valakinek annak eldöntésében, hogy az adott dokumentumra kattint-e.
 
-   :::image type="content" source="media/search-create-app-portal/configure-results.png" alt-text="adatforrások lapja mintaadatok esetén" border="false":::
+   :::image type="content" source="media/search-create-app-portal/configure-results.png" alt-text="Mintaadatok eredményeinek konfigurálása" border="false":::
 
 ## <a name="add-a-sidebar"></a>Oldalsáv hozzáadása
 
@@ -72,8 +72,9 @@ Az Azure Cognitive Searchban a csiszolatlan navigáció egy halmozott szűrési 
 > [!TIP]
 > A teljes index séma a portálon tekinthető meg. Keresse meg az **index Definition (JSON)** hivatkozást az egyes indexek áttekintő oldalán. A csiszolatlan navigálásra jogosult mezők "szűrhetők: true" és "sokrétű: true" attribútumokkal rendelkeznek.
 
-A dimenziók aktuális kijelölésének elfogadása, és a következő lapra való továbblépés.
+1. A varázslóban válassza az **oldalsáv** fület az oldal tetején. Ekkor megjelenik az összes olyan mező, amely szűrhetőként és kategorizálható van megjelölve az indexben.
 
+1. Fogadja el a sokoldalú mezők aktuális kijelölését, és folytassa a következő oldalra.
 
 ## <a name="add-typeahead"></a>Typeahead hozzáadása
 
@@ -83,20 +84,44 @@ A javaslatok meghatározott mező-definíciókban engedélyezettek. A varázsló
 
 Az alábbi képernyőfelvételen a varázsló azon beállításai láthatók, amelyek az alkalmazás megjelenített oldalával vannak összefoglalva. Megtekintheti a mezők kiválasztásának módját, valamint azt, hogy a rendszer hogyan használja a "mezőnév megjelenítése" kifejezést a javaslaton belüli címkézés befoglalására vagy kizárására.
 
-:::image type="content" source="media/search-create-app-portal/suggestions.png" alt-text="adatforrások lapja mintaadatok esetén":::
+:::image type="content" source="media/search-create-app-portal/suggestions.png" alt-text="Lekérdezési javaslat konfigurálása":::
+
+## <a name="add-suggestions"></a>Javaslatok hozzáadása
+
+A javaslatok a keresési mezőhöz csatolt automatizált lekérdezési kérésekre vonatkoznak. Cognitive Search támogatja a kettőt: egy részben megadott keresési kifejezés *automata befejezése* , valamint *javaslatok* a lehetséges egyezési dokumentumok legördülő listájára.
+
+A varázsló támogatja a javaslatokat, és a javasolt eredmények megadására szolgáló mezők az [`Suggesters`](index-add-suggesters.md) indexben található szerkezetből származnak:
+
+```JSON
+  "suggesters": [
+    {
+      "name": "sg",
+      "searchMode": "analyzingInfixMatching",
+      "sourceFields": [
+        "number",
+        "street",
+        "city",
+        "region",
+        "postCode",
+        "tags"
+      ]
+```
+
+1. A varázslóban válassza az oldal tetején található **javaslatok** fület. Ekkor megjelenik az összes olyan mező, amely az index sémában az Ajánlói szolgáltatóként van kijelölve.
+
+1. Fogadja el az aktuális kijelölést, és folytassa a következő oldallal.
 
 ## <a name="create-download-and-execute"></a>Létrehozás, letöltés és végrehajtás
 
-1. A HTML-fájl létrehozásához válassza a **bemutató alkalmazás létrehozása** lehetőséget.
+1. A HTML-fájl létrehozásához kattintson az oldal alján található **bemutató létrehozása** gombra.
 
 1. Ha a rendszer kéri, válassza az **alkalmazás letöltése** lehetőséget a fájl letöltéséhez.
 
-1. Nyissa meg a fájlt. Az alábbi képernyőképhez hasonló oldalnak kell megjelennie. Adjon meg egy kifejezést, és használjon szűrőket a szűkített eredményekhez. 
+1. Nyissa meg a fájlt, és kattintson a Keresés gombra. Ez a művelet végrehajt egy lekérdezést, amely lehet egy üres lekérdezés (), amely egy `*` tetszőleges eredményhalmazt ad vissza. Az oldalnak az alábbi képernyőképhez hasonlóan kell kinéznie. Adjon meg egy kifejezést, és használjon szűrőket a szűkített eredményekhez. 
 
 Az alapul szolgáló index olyan fiktív, generált adatokból áll, amelyek a dokumentumok között duplikálva vannak, és a leírások időnként nem egyeznek meg a képpel. Az alkalmazások saját indexek alapján történő létrehozásakor több összetartó élményre számíthat.
 
-:::image type="content" source="media/search-create-app-portal/run-app.png" alt-text="adatforrások lapja mintaadatok esetén":::
-
+:::image type="content" source="media/search-create-app-portal/run-app.png" alt-text="Az alkalmazás futtatása":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -108,7 +133,7 @@ Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három ind
 
 ## <a name="next-steps"></a>További lépések
 
-Habár az alapértelmezett alkalmazás a kezdeti feltárás és a kis feladatok esetében hasznos, az API-k korán történő áttekintése segít megérteni a fogalmakat és a munkafolyamatot mélyebb szinten:
+A bemutató alkalmazás a prototípusok esetében hasznos, mivel a végfelhasználói élményt szimulálhatja anélkül, hogy JavaScriptet vagy előtér-kódot kellene írnia. További információ az előtér-funkciókról:
 
 > [!div class="nextstepaction"]
-> [Index létrehozása a .NET SDK használatával](./search-get-started-dotnet.md)
+> [Dimenziós szűrő létrehozása](search-filters-facets.md)

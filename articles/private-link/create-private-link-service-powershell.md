@@ -5,14 +5,14 @@ services: private-link
 author: asudbring
 ms.service: private-link
 ms.topic: how-to
-ms.date: 01/20/2021
+ms.date: 01/24/2021
 ms.author: allensu
-ms.openlocfilehash: 66ad5aae9f8175d154bb07a8b112dada175a205a
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: e8d76e12dea27338e965d8e77871427e9dfabf23
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610063"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746679"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>Privát kapcsolati szolgáltatás létrehozása Azure PowerShell használatával
 
@@ -156,7 +156,11 @@ $ipsettings = @{
 $ipconfig = New-AzPrivateLinkServiceIpConfig @ipsettings
 
 ## Place the load balancer frontend configuration into a variable. ##
-$fe = Get-AzLoadBalancer -Name 'myLoadBalancer' | Get-AzLoadBalancerFrontendIpConfig
+$par = @{
+    Name = 'myLoadBalancer'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+}
+$fe = Get-AzLoadBalancer @par | Get-AzLoadBalancerFrontendIpConfig
 
 ## Create the private link service for the load balancer. ##
 $privlinksettings = @{
@@ -167,6 +171,129 @@ $privlinksettings = @{
     IpConfiguration = $ipconfig
 }
 New-AzPrivateLinkService @privlinksettings
+
+```
+
+A magánhálózati kapcsolati szolgáltatás létrejött, és képes fogadni a forgalmat. Ha szeretné megtekinteni a forgalmi folyamatokat, konfigurálja az alkalmazást a standard Load Balancer mögött.
+
+## <a name="create-private-endpoint"></a>Privát végpont létrehozása
+
+Ebben a szakaszban a Private link Service-t egy privát végpontra képezi le. A virtuális hálózatok tartalmazzák a magánhálózati kapcsolat szolgáltatás privát végpontját. Ez a virtuális hálózat tartalmazza azokat az erőforrásokat, amelyek hozzáférnek a privát kapcsolati szolgáltatáshoz.
+
+### <a name="create-private-endpoint-virtual-network"></a>Magánhálózati végpont virtuális hálózat létrehozása
+
+* Hozzon létre egy új virtuális hálózatot a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork).
+
+```azurepowershell-interactive
+## Create backend subnet config ##
+$subnet = @{
+    Name = 'mySubnetPE'
+    AddressPrefix = '11.1.0.0/24'
+    PrivateEndpointNetworkPolicies = 'Disabled'
+}
+$subnetConfig = New-AzVirtualNetworkSubnetConfig @subnet 
+
+## Create the virtual network ##
+$net = @{
+    Name = 'myVNetPE'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+    Location = 'eastus2'
+    AddressPrefix = '11.1.0.0/16'
+    Subnet = $subnetConfig
+}
+$vnetpe = New-AzVirtualNetwork @net
+
+```
+
+### <a name="create-endpoint-and-connection"></a>Végpont és a kapcsolatok létrehozása
+
+* A [Get-AzPrivateLinkService](/powershell/module/az.network/get-azprivatelinkservice) használatával helyezze el a korábban létrehozott privát kapcsolati szolgáltatás konfigurációját későbbi használatra.
+
+* A [New-AzPrivateLinkServiceConnection](/powershell/module/az.network/new-azprivatelinkserviceconnection) használatával hozza létre a kapcsolódási konfigurációt.
+
+* A [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint) használatával hozza létre a végpontot.
+
+
+
+```azurepowershell-interactive
+## Place the private link service configuration into variable. ##
+$par1 = @{
+    Name = 'myPrivateLinkService'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+}
+$pls = Get-AzPrivateLinkService @par1
+
+## Create the private link configuration and place in variable. ##
+$par2 = @{
+    Name = 'myPrivateLinkConnection'
+    PrivateLinkServiceId = $pls.Id
+}
+$plsConnection = New-AzPrivateLinkServiceConnection @par2
+
+## Place the virtual network into a variable. ##
+$par3 = @{
+    Name = 'myVNetPE'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+}
+$vnetpe = Get-AzVirtualNetwork @par3
+
+## Create private endpoint ##
+$par4 = @{
+    Name = 'MyPrivateEndpoint'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+    Location = 'eastus2'
+    Subnet = $vnetpe.subnets[0]
+    PrivateLinkServiceConnection = $plsConnection
+}
+New-AzPrivateEndpoint @par4 -ByManualRequest
+```
+
+### <a name="approve-the-private-endpoint-connection"></a>A magánhálózati végponti kapcsolatok jóváhagyása
+
+Ebben a szakaszban az előző lépésekben létrehozott kapcsolatokat fogja jóváhagyni.
+
+* A [jóváhagyáshoz](/powershell/module/az.network/approve-azprivateendpointconnnection) használja a AzPrivateEndpointConnection a kapcsolódás jóváhagyásához.
+
+```azurepowershell-interactive
+## Place the private link service configuration into variable. ##
+$par1 = @{
+    Name = 'myPrivateLinkService'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+}
+$pls = Get-AzPrivateLinkService @par1
+
+$par2 = @{
+    Name = $pls.PrivateEndpointConnections[0].Name
+    ServiceName = 'myPrivateLinkService'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+    Description = 'Approved'
+}
+Approve-AzPrivateEndpointConnection @par2
+
+```
+
+### <a name="ip-address-of-private-endpoint"></a>Magánhálózati végpont IP-címe
+
+Ebben a szakaszban megtalálhatja a terheléselosztó és a magánhálózati kapcsolat szolgáltatásnak megfelelő privát végpont IP-címét.
+
+* Az IP-cím lekéréséhez használja a [Get-AzPrivateEndpoint](/powershell/module/az.network/get-azprivateendpoint) .
+
+```azurepowershell-interactive
+## Get private endpoint and the IP address and place in a variable for display. ##
+$par1 = @{
+    Name = 'myPrivateEndpoint'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+    ExpandResource = 'networkinterfaces'
+}
+$pe = Get-AzPrivateEndpoint @par1
+
+## Display the IP address by expanding the variable. ##
+$pe.NetworkInterfaces[0].IpConfigurations[0].PrivateIpAddress
+```
+
+```bash
+❯ $pe.NetworkInterfaces[0].IpConfigurations[0].PrivateIpAddress
+11.1.0.4
 ```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
@@ -177,7 +304,7 @@ Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.re
 Remove-AzResourceGroup -Name 'CreatePrivLinkService-rg'
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban a következőket hajtja végre:
 

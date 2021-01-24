@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 6584b2ecc54efd257bb30c479fd0f22150e8d9e1
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 2b7ddf6423db4c471ee2065635f4e3e89f7eb7b2
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608588"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745733"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Az MPIO konfigurálása a CentOS-t futtató StorSimple-gazdagépen
 Ez a cikk ismerteti a többutas i/o (MPIO) szolgáltatásnak a CentOS 6,6-es gazdagép-kiszolgálón való konfigurálásához szükséges lépéseket. Az iSCSI-kezdeményezők használatával a gazdagép-kiszolgáló a magas rendelkezésre állás érdekében csatlakozik a Microsoft Azure StorSimple eszközhöz. Részletesen ismerteti a Többutas eszközök automatikus észlelését és a StorSimple-kötetek adott beállítását.
@@ -21,10 +21,6 @@ Ez az eljárás az StorSimple 8000 Series-eszközök összes modelljére érvén
 
 > [!NOTE]
 > Ez az eljárás nem használható StorSimple Cloud Appliancehoz. További információ: a gazdagép-kiszolgálók konfigurálása a felhőalapú berendezéshez.
-
-> [!NOTE]
-> Ez a cikk a *feketelista* kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
-
 
 ## <a name="about-multipathing"></a>Tudnivalók a többutas használatról
 A többutas szolgáltatás lehetővé teszi több I/O-útvonal konfigurálását egy gazdagép és egy tárolóeszköz között. Ezek az I/O-útvonalak olyan fizikai SAN-kapcsolatok, amelyek különálló kábeleket, kapcsolókat, hálózati adaptereket és vezérlőket tartalmazhatnak. A többútvonalas összesítések az I/O-útvonalakat összesítik az összes összesített útvonalhoz társított új eszköz konfigurálásához.
@@ -54,7 +50,7 @@ A többutas. conf fájl öt szakaszt tartalmaz:
 
 - **Rendszerszintű alapértékek** *(alapértékek)*: felülbírálhatja a rendszerszintű alapértékeket.
 - **Feketelistán lévő eszközök** *(feketelista)*: megadhatja azoknak az eszközöknek a listáját, amelyeket az eszköz-Mapper nem szabályozhat.
-- **Kivételek feketelistája** *(blacklist_exceptions)*: azonosíthatja a többutas eszközként kezelendő egyes eszközöket, még akkor is, ha azok szerepelnek a feketelistán.
+- **Kivételek feketelistája** *(blacklist_exceptions)*: azonosíthatja a többutas eszközként kezelendő egyes eszközöket, még akkor is, ha azok szerepelnek a Blocklist.
 - **Tároló-vezérlőre vonatkozó beállítások** *(eszközök)*: megadhatja azokat a konfigurációs beállításokat, amelyeket a rendszer a szállítóval és a termékkel kapcsolatos adatokkal rendelkező eszközökre alkalmaz.
 - **Eszközre vonatkozó beállítások** *(több útvonal)*: ebben a szakaszban az egyes logikai egységek konfigurációs beállításainak finomhangolásához használható.
 
@@ -215,12 +211,12 @@ A többutas által támogatott eszközök automatikusan felderíthető és konfi
     ```
 
 ### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>2. lépés: a StorSimple-kötetek többutas elérésének konfigurálása
-Alapértelmezés szerint a rendszer az összes eszközt a többutas. conf fájlban sorolja fel, és a rendszer figyelmen kívül hagyja. A StorSimple-eszközökről származó kötetek többutas elérésének engedélyezéséhez létre kell hoznia egy feketelistán lévő kivételeket is.
+Alapértelmezés szerint minden eszköz a többutas. conf fájlban blocklisted, és a rendszer figyelmen kívül hagyja. Blocklist-kivételeket kell létrehoznia a StorSimple-eszközökön lévő kötetek többutas elérésének engedélyezéséhez.
 
 1. Szerkessze a `/etc/mulitpath.conf` fájlt. Típus:
    
     `vi /etc/multipath.conf`
-1. Keresse meg a blacklist_exceptions szakaszt a többutas. conf fájlban. Ebben a szakaszban a StorSimple-eszköznek feketelistán lévő kivételként kell szerepelnie. A fájl megfelelő sorait a lent látható módon törölheti (csak a használt eszköz adott modelljét használja):
+1. Keresse meg a blacklist_exceptions szakaszt a többutas. conf fájlban. Ebben a szakaszban a StorSimple-eszközt Blocklist-kivételként kell megjelenni. A fájl megfelelő sorait a lent látható módon törölheti (csak a használt eszköz adott modelljét használja):
    
     ```config
     blacklist_exceptions {

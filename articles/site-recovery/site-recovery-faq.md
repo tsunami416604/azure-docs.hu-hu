@@ -4,12 +4,12 @@ description: Ez a cikk a Azure Site Recoveryekkel kapcsolatos népszerű által�
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: add5874dc828f05c7c51f0f378988c94cbd42486
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: ca30f9ba190dfa3c7e224e47b90be4d3bc5d47ae
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109555"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746475"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Általános kérdések az Azure Site Recovery szolgáltatásról
 
@@ -345,6 +345,14 @@ Igen, a másik helyre történő helyreállítást használhatja a feladat-vissz
 * [VMware virtuális gépekhez](concepts-types-of-failback.md#alternate-location-recovery-alr)
 * [Hyper-V rendszerű virtuális gépek esetén](hyper-v-azure-failback.md#fail-back-to-an-alternate-location)
 
+### <a name="what-is-the-difference-between-complete-migration-commit-and-disable-replication"></a>Mi a különbség a teljes áttelepítés, a véglegesítés és a replikáció letiltása között?
+
+Miután a forrás helyéről a gép átvette a feladatátvételt a célhelyre, három lehetőség közül választhat. Mindhárom szolgál különböző célokra –
+
+1.  A **teljes áttelepítés** azt jelenti, hogy a forrás helyére többé nem kerül vissza. Áttelepítette a célhelyre, és most már elkészült. Kattintson a teljes áttelepítési eseményindítók elvégzése elemre, majd tiltsa le a replikációt belsőleg. 
+2.  A **commit** érték azt jelenti, hogy ez nem a replikálási folyamat vége. A replikálási elem és az összes konfiguráció továbbra is fennáll, és egy későbbi időpontban is megtalálhatja az **újbóli védekezést** , hogy lehetővé váljon a számítógépek replikálása a forrás régiójába. 
+3.  A **replikáció letiltása** letiltja a replikálást, és eltávolítja az összes kapcsolódó konfigurációt. Ez nem befolyásolja a megcélzott régió már meglévő számítógépét.
+
 ## <a name="automation"></a>Automation
 
 ### <a name="can-i-automate-site-recovery-scenarios-with-an-sdk"></a>Automatizálható Site Recovery forgatókönyvek SDK-val?
@@ -360,5 +368,5 @@ Igen. A Site Recovery munkafolyamatainak automatizálásához a Rest API-t, a Po
 
 [Ismerje meg](site-recovery-whats-new.md) az új frissítéseket, és szerezze be a [kumulatív információkat](service-updates-how-to.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Olvassa el a [Site Recovery áttekintését](site-recovery-overview.md)

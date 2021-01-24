@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: aac0139e09866ce44d25989119b2eafb31e76961
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 07bf22cfc683d8c6f2c765364334ed1594e2fdaa
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610454"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745884"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Diagnosztikai naplók elérése Azure Data Lake Storage Gen1hoz
 Megtudhatja, hogyan engedélyezheti a diagnosztikai naplózást a Azure Data Lake Storage Gen1-fiókjához, és hogyan tekintheti meg a fiókjához gyűjtött naplókat.
@@ -106,7 +106,7 @@ A naplózási és a kérési naplók JSON formátumúak. Ebben a szakaszban a JS
         "callerIpAddress": "::ffff:1.1.1.1",
         "correlationId": "4a11c709-05f5-417c-a98d-6e81b3e29c58",
         "identity": "1808bd5f-62af-45f4-89d8-03c5e81bac30",
-        "properties": {"HttpMethod":"GET","Path":"/webhdfs/v1/Samples/Outputs/Drivers.csv","RequestContentLength":0,"ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8","StartTime":"2016-07-07T21:02:52.472Z","EndTime":"2016-07-07T21:02:53.456Z"}
+        "properties": {"HttpMethod":"GET","Path":"/webhdfs/v1/Samples/Outputs/Drivers.csv","RequestContentLength":0,"StoreIngressSize":0 ,"StoreEgressSize":4096,"ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8","StartTime":"2016-07-07T21:02:52.472Z","EndTime":"2016-07-07T21:02:53.456Z","QueryParameters":"api-version=<version>&op=<operationName>"}
     }
     ,
     . . . .
@@ -138,6 +138,7 @@ A naplózási és a kérési naplók JSON formátumúak. Ebben a szakaszban a JS
 | EndTime |Sztring |Az az idő, amikor a kiszolgáló választ küldött |
 | StoreIngressSize |Hosszú |Ingressed bájtban kifejezett méret Data Lake Store |
 | StoreEgressSize |Hosszú |Data Lake Store egressed bájtban kifejezett mérete |
+| QueryParameters |Sztring |Leírás: ezek a http-lekérdezési paraméterek. 1. példa: API-Version = 2014-01-01&op = getfilestatus 2. példa: op = HOZZÁFŰZÉS&Hozzáfűzés = True&syncFlag = az&filesessionid = bee3355a-4925-4435-bb4d-ceea52811aeb&leaseid = bee3355a-4925-4435-bb4d-ceea52811aeb&eltolás = 28313319&API-Version = 2017-08-01 |
 
 ### <a name="audit-logs"></a>Naplók
 Íme egy minta bejegyzés a JSON-formátumú naplóban. Mindegyik blob egyetlen **, a log** objektumokat tartalmazó tömböt tartalmazó root objektummal rendelkezik
