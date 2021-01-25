@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 45f2b75be9a0090b883c5cc62a0886366e81a302
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 28c7f2c0a61150b2014f669f37ac84ee3a94aebf
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744414"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752153"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>Az Azure Cloud Services üzembe helyezésének előfeltételei (bővített támogatás)
 
@@ -42,12 +42,12 @@ CloudServices           Microsoft.Compute    Registered
 ## <a name="required-service-configuration-cscfg-file-updates"></a>Szükséges szolgáltatási konfigurációs (. cscfg) fájlok frissítései
 
 ### <a name="1-virtual-network"></a>1) Virtual Network
-A Cloud Service (bővített támogatás) központi telepítéseknek virtuális hálózatban kell lenniük. A virtuális hálózat a [Azure Portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal), a [PowerShell](https://docs.microsoft.com/azure/virtual-network/quick-create-powershell), az [Azure CLI](https://docs.microsoft.com/azure/virtual-network/quick-create-cli) vagy az [ARM sablon](https://docs.microsoft.com/azure/virtual-network/quick-create-template)segítségével hozható létre. A virtuális hálózatot és az alhálózatokat is hivatkozni kell a szolgáltatás konfigurációjában (. cscfg) a `NetworkConfiguration` szakasz alatt. 
+A Cloud Service (bővített támogatás) központi telepítéseknek virtuális hálózatban kell lenniük. A virtuális hálózat a [Azure Portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal), a [PowerShell](https://docs.microsoft.com/azure/virtual-network/quick-create-powershell), az [Azure CLI](https://docs.microsoft.com/azure/virtual-network/quick-create-cli) vagy az [ARM sablon](https://docs.microsoft.com/azure/virtual-network/quick-create-template)segítségével hozható létre. A virtuális hálózatot és az alhálózatokat is hivatkozni kell a szolgáltatás konfigurációjában (. cscfg) a [NetworkConfiguration](schema-cscfg-networkconfiguration.md) szakaszban. 
 
 A felhőalapú szolgáltatással azonos erőforráscsoporthoz tartozó virtuális hálózatok esetében a szolgáltatás konfigurációs (. cscfg) fájljában csak a virtuális hálózat nevére lehet hivatkozni. Ha a virtuális hálózat és a felhőalapú szolgáltatás két különböző erőforráscsoporthoz van, akkor a virtuális hálózat teljes Azure Resource Manager AZONOSÍTÓját meg kell adni a szolgáltatás konfigurációs (. cscfg) fájljában.
  
 #### <a name="virtual-network-located-in-same-resource-group"></a>Azonos erőforráscsoporthoz tartozó Virtual Network
-```json
+```xml
 <VirtualNetworkSite name="<vnet-name>"/> 
 <AddressAssignments> 
 <InstanceAddress roleName="<role-name>"> 
@@ -58,8 +58,8 @@ A felhőalapú szolgáltatással azonos erőforráscsoporthoz tartozó virtuáli
 ```
 
 #### <a name="virtual-network-located-in-different-resource-group"></a>Más erőforráscsoporthoz tartozó virtuális hálózat
-```json
-“/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>/> 
+```xml
+<VirtualNetworkSite name="/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>"/> 
 <AddressAssignments> 
 <InstanceAddress roleName="<role-name>"> 
 <Subnets> 

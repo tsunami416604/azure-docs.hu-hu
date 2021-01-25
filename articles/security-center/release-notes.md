@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.author: memildin
-ms.openlocfilehash: d171e3a7f1f0d63d0a5d130c6e19b246bf0cd795
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 349f0b72ad7f3cb98e8f4ae9105efa9718f0b11b
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661814"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752262"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -33,13 +33,40 @@ Ha szeretne többet megtudni a Security Center hamarosan elérhető *tervezett* 
 
 ## <a name="january-2021"></a>2021. január
 
-A decemberi frissítések a következők:
+A januári frissítések a következők:
 
+- [Az Azure biztonsági teljesítményteszt mostantól az alapértelmezett házirend-kezdeményezés a Azure Security Center](#azure-security-benchmark-is-now-the-default-policy-initiative-for-azure-security-center)
 - [A helyszíni és a többfelhős gépek sebezhetőségi felmérése általánosan elérhető (GA)](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga)
+- [A felügyeleti csoportok biztonságos pontszáma mostantól előzetes verzióban érhető el](#secure-score-for-management-groups-is-now-available-in-preview)
 - [A Secure score API általánosan elérhető (GA)](#secure-score-api-is-released-for-general-availability-ga)
+- [A többfelhős összekötők elérhetők az általánosan elérhető verzióban (GA)](#multi-cloud-connectors-are-released-for-general-availability-ga)
+- [Az előfizetések és a felügyeleti csoportok biztonságos pontszámának teljes körű javaslatainak kizárása](#exempt-entire-recommendations-from-your-secure-score-for-subscriptions-and-management-groups)
+- [A felhasználók mostantól a globális rendszergazdától igényelhetik a bérlői szintű láthatóságot](#users-can-now-request-tenant-wide-visibility-from-their-global-administrator)
+- [35 az Azure biztonsági teljesítményteszt lefedettségének növeléséhez hozzáadott előzetes javaslatok](#35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
 - [Az ajánlatok szűrt listájának CSV-exportálása](#csv-export-of-filtered-list-of-recommendations)
 - [A "nem alkalmazható" erőforrások mostantól "megfelelőként" jelennek meg Azure Policy értékelésekben](#not-applicable-resources-now-reported-as-compliant-in-azure-policy-assessments)
 
+
+### <a name="azure-security-benchmark-is-now-the-default-policy-initiative-for-azure-security-center"></a>Az Azure biztonsági teljesítményteszt mostantól az alapértelmezett házirend-kezdeményezés a Azure Security Center
+
+Az Azure biztonsági teljesítményteszt a Microsoft által létrehozott, Azure-specifikus irányelvek a biztonsági és megfelelőségi szabályzatok közös megfelelőségi keretrendszereken alapuló bevált eljárásaihoz. Ez a széles körben tiszteletben lévő teljesítményteszt a [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) és a [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) által vezérelt vezérlőkre épül, és a felhő-központú biztonságra összpontosít.
+
+Az elmúlt hónapokban Security Center a beépített biztonsági javaslatok listája jelentősen bővült a teljesítményteszt lefedettségének kibővítéséhez.
+
+Ebből a kiadásból a benchmark a Security Center javaslatainak alapja, és az alapértelmezett házirend-kezdeményezésnek megfelelően teljes mértékben integrálva van. 
+
+Az összes Azure-szolgáltatáshoz tartozik egy biztonsági alapkonfiguráció lap a dokumentációjában. [Ez például Security Center](security-baseline.md)alapkonfigurációja. Ezek az alapkonfigurációk az Azure biztonsági Teljesítménytesztre épülnek.
+
+Ha Security Center szabályozási megfelelőségi irányítópultját használja, a teljesítményteszt két példányát fogja látni egy átmeneti időszak alatt:
+
+:::image type="content" source="media/release-notes/regulatory-compliance-with-azure-security-benchmark.png" alt-text="Azure Security Center megfelelőségi irányítópultja, amely az Azure biztonsági Teljesítménytesztét mutatja be":::
+
+A meglévő javaslatok nem érintettek, és a teljesítményteszt növekedésével a módosítások automatikusan megjelennek Security Centeron belül. 
+
+További információt a következő lapokon talál:
+
+- [További információ az Azure biztonsági teljesítménytesztről](../security/benchmarks/introduction.md)
+- [A szabályzatok megfelelőségi irányítópultján lévő szabványok testreszabása](update-regulatory-compliance-packages.md)
 
 ### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga"></a>A helyszíni és a többfelhős gépek sebezhetőségi felmérése általánosan elérhető (GA)
 
@@ -63,6 +90,14 @@ Főbb képességek:
 [További információ az Azure arc használatára képes kiszolgálókról](../azure-arc/servers/index.yml).
 
 
+### <a name="secure-score-for-management-groups-is-now-available-in-preview"></a>A felügyeleti csoportok biztonságos pontszáma mostantól előzetes verzióban érhető el
+
+A biztonságos pontszám lapon az előfizetés szintjén kívül a felügyeleti csoportok összesített biztonsági pontszáma is látható. Így most már megtekintheti a szervezet felügyeleti csoportjainak listáját, valamint az egyes felügyeleti csoportok pontszámát.
+
+:::image type="content" source="media/secure-score-security-controls/secure-score-management-groups.png" alt-text="Megtekintheti a felügyeleti csoportok biztonsági pontszámait.":::
+
+További információ a [Azure Security Center biztonságos pontszámáról és biztonsági vezérlőinek](secure-score-security-controls.md).
+
 ### <a name="secure-score-api-is-released-for-general-availability-ga"></a>A Secure score API általánosan elérhető (GA)
 
 Most már elérheti a pontszámát a [Secure score API](/rest/api/securitycenter/securescores/)-n keresztül. Az API-módszerek lehetővé teszik az adatlekérdezés rugalmasságát és a biztonságos pontszámok saját jelentési mechanizmusának elkészítését az idő múlásával. Használhatja például a **Secure scores** API-t egy adott előfizetés pontszámának lekéréséhez. Emellett a **Secure score Controls** API használatával is listázhatja az előfizetések biztonsági vezérlőit és aktuális pontszámát.
@@ -70,6 +105,87 @@ Most már elérheti a pontszámát a [Secure score API](/rest/api/securitycenter
 A biztonságos pontszám API-val lehetséges külső eszközökre vonatkozó példákat a [GitHub-Közösség biztonságos pontszám területén](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)tekintheti meg.
 
 További információ a [Azure Security Center biztonságos pontszámáról és biztonsági vezérlőinek](secure-score-security-controls.md).
+
+
+### <a name="multi-cloud-connectors-are-released-for-general-availability-ga"></a>A többfelhős összekötők elérhetők az általánosan elérhető verzióban (GA)
+
+A Felhőbeli számítási feladatok gyakran több felhőalapú platformra is kiterjednek, a Cloud Security servicesnek ugyanezt kell tennie.
+
+Azure Security Center védi a munkaterheléseket az Azure-ban, a Amazon Web Services (AWS) és a Google Cloud Platformban (GCP).
+
+Az AWS-vagy GCP-fiókok csatlakoztatásával a natív biztonsági eszközöket, például az AWS biztonsági hubot és a GCP biztonsági parancssori központot integrálhatja Azure Security Centerba.
+
+Ez a funkció azt jelenti, hogy a Security Center az összes jelentős felhőalapú környezet láthatóságát és védelmét biztosítja. Az integráció néhány előnye:
+
+- Az ügynök automatikus kiépítése – Security Center az Azure arc használatával helyezi üzembe a Log Analytics-ügynököt az AWS-példányokon
+- Szabályzatkezelés
+- Biztonságirés-kezelés
+- Beágyazott végpontok észlelése és válasza (EDR)
+- Biztonsági konfigurációs beállítások észlelése
+- Egyetlen nézet, amely az összes felhőalapú szolgáltató biztonsági javaslatait tartalmazza
+- Az összes erőforrás beépítése Security Center biztonságos pontszámának számításaiba
+- Az AWS-és GCP-erőforrások szabályozási megfelelőségi értékelése
+
+A Security Center menüjében válassza a **többfelhős összekötők** lehetőséget, és megtekintheti az új összekötők létrehozásának lehetőségeit:
+
+:::image type="content" source="./media/quickstart-onboard-aws/add-aws-account.png" alt-text="AWS-fiók hozzáadása gomb a Security Center multi Cloud Connectors oldalán":::
+
+További információ:
+- [AWS-fiókok összekötése Azure Security Center](quickstart-onboard-aws.md)
+- [A GCP-fiókok összekapcsolásának Azure Security Center](quickstart-onboard-gcp.md)
+
+
+### <a name="exempt-entire-recommendations-from-your-secure-score-for-subscriptions-and-management-groups"></a>Az előfizetések és a felügyeleti csoportok biztonságos pontszámának teljes körű javaslatainak kizárása
+
+Kiterjesztjük a mentesítési képességet a teljes javaslatok befoglalására. További lehetőségeket biztosít az előfizetések, a felügyeleti csoportok és az erőforrások Security Center által nyújtott biztonsági javaslatok finomhangolásához.
+
+Időnként előfordulhat, hogy az erőforrás nem kifogástalan állapotú, ha ismeri a problémát egy olyan külső eszköz, amelyet Security Center még nem észlelt. Vagy egy javaslat olyan hatókörben fog megjelenni, amelyben úgy érzi, hogy nem tartozik hozzá. Előfordulhat, hogy a javaslat nem megfelelő egy adott előfizetéshez. Vagy talán a szervezete egyszerűen úgy döntött, hogy elfogadja az adott erőforrással vagy javaslattal kapcsolatos kockázatokat.
+
+Ezzel az előzetes verziójú szolgáltatással mostantól kivételt hozhat létre a következőhöz:
+
+- **Kivételt** képeznek az erőforrások, hogy a jövőben ne jelenjen meg a nem megfelelő állapotú erőforrások, és nem befolyásolja a biztonságos pontszámot. Az erőforrás nem alkalmazhatóként jelenik meg, és az OK "kivételként" jelenik meg a kiválasztott indoklással.
+
+- **Kivételt képez az előfizetés vagy a felügyeleti csoport alól** , hogy a javaslat ne befolyásolja a biztonságos pontszámot, és a jövőben ne jelenjen meg az előfizetés vagy a felügyeleti csoport számára. Ez a meglévő erőforrásokhoz és a jövőben létrehozott mindenhez kapcsolódik. A javaslat a kiválasztott hatókörhöz megadott indoklással lesz megjelölve.
+
+További információk: az [erőforrások és a javaslatok védelme a biztonságos pontszám alól](exempt-resource.md).
+
+
+
+### <a name="users-can-now-request-tenant-wide-visibility-from-their-global-administrator"></a>A felhasználók mostantól a globális rendszergazdától igényelhetik a bérlői szintű láthatóságot
+
+Ha a felhasználó nem rendelkezik jogosultsággal Security Center adatok megjelenítéséhez, akkor a szervezet globális rendszergazdájától egy hivatkozás-kérelemre vonatkozó engedély jelenik meg. A kérelem tartalmazza a kívánt szerepkört, valamint annak indoklását, hogy miért szükséges.
+
+:::image type="content" source="media/security-center-management-groups/request-tenant-permissions.png" alt-text="A felhasználó bérlői szintű engedélyeket kérhet a felhasználónak, hogy tájékoztassa a felhasználót.":::
+
+További információ a [bérlői szintű engedélyek kérése, ha a tiéd nem elegendő](security-center-management-groups.md#request-tenant-wide-permissions-when-yours-are-insufficient) .
+
+
+### <a name="35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>35 az Azure biztonsági teljesítményteszt lefedettségének növeléséhez hozzáadott előzetes javaslatok
+
+Az Azure Security benchmark a Azure Security Center alapértelmezett házirend-kezdeményezése. 
+
+A teljesítményteszt lefedettségének növeléséhez a következő 35 előzetes javaslatok lettek hozzáadva a Security Centerhoz.
+
+> [!TIP]
+> Az előzetes verzióra vonatkozó javaslatok nem jelenítik meg az erőforrás állapotát, és nem tartoznak bele a biztonságos pontszám számításaiba. Ha lehetséges, javítsa őket, hogy ha az előzetes verzió időtartama lejár, a pontszáma is hozzájárul. További információ a javaslatokról a [Azure Security Centerban található javaslatok szervizelése](security-center-remediate-recommendations.md)című témakörben található.
+
+| Biztonsági ellenőrzés                     | Új javaslatok                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+|--------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Titkosítás engedélyezése nyugalmi állapotban            | – Azure Cosmos DB fiókoknak az ügyfelek által felügyelt kulcsokat kell használniuk a REST-adatok titkosításához<br>-Azure Machine Learning munkaterületeket ügyfél által felügyelt kulccsal kell titkosítani (CMK)<br>-A saját kulcsú adatvédelem engedélyezése a MySQL-kiszolgálókon<br>-A saját kulcsú adatvédelem engedélyezése a PostgreSQL-kiszolgálókon<br>-Cognitive Services fiókoknak engedélyeznie kell az adattitkosítást az ügyfél által felügyelt kulccsal (CMK)<br>– A tároló-beállításjegyzékek titkosítása ügyfél által felügyelt kulccsal (CMK) történik<br>– Az SQL felügyelt példányainak az ügyfelek által felügyelt kulcsokat kell használniuk a REST-adatok titkosításához<br>– Az SQL-kiszolgálóknak az ügyfél által felügyelt kulcsokat kell használniuk a REST-adatok titkosításához<br>– A Storage-fiókoknak ügyfél által felügyelt kulcsot (CMK) kell használniuk a titkosításhoz                                                                                                                                                              |
+| Ajánlott biztonsági eljárások megvalósítása    | – A biztonsági problémákhoz az előfizetésekhez kapcsolattartó e-mail-címmel kell rendelkeznie<br> – Az Log Analytics ügynök automatikus kiépítés engedélyezése az előfizetésen<br> – Engedélyezni kell a nagy súlyosságú riasztások e-mailes értesítését<br> – Engedélyezni kell a nagy súlyosságú riasztások előfizetésének tulajdonosának szóló e-mailes értesítést.<br> – A Key vaultoknak engedélyezve kell lennie a kiürítési védelemmel<br> – A Key vaultok esetében engedélyezve van a helyreállítható törlés |
+| Hozzáférés és engedélyek kezelése        | – A Function alkalmazásoknak engedélyezve kell lennie az "Ügyféltanúsítványok (bejövő Ügyféltanúsítványok)" |
+| Alkalmazások elleni védelem a DDoS-támadások ellen | – A webalkalmazási tűzfalat (WAF) engedélyezni kell Application Gateway<br> – Engedélyezni kell a webalkalmazási tűzfalat (WAF) az Azure bejárati szolgáltatásának szolgáltatásához |
+| Jogosulatlan hálózati hozzáférés korlátozása | – Engedélyezni kell a tűzfalat Key Vault<br> -A magánhálózati végpontot be kell állítani Key Vault<br> – Az alkalmazás konfigurációjának privát hivatkozást kell használnia<br> – Az Azure cache for Redis-nek egy virtuális hálózaton belül kell lennie<br> – Azure Event Grid tartományoknak privát hivatkozást kell használniuk<br> – Azure Event Grid témaköröknek privát hivatkozást kell használniuk<br> – Azure Machine Learning munkaterületeknek privát hivatkozást kell használniuk<br> – Az Azure Signaler szolgáltatásnak privát hivatkozást kell használnia<br> – Az Azure Spring Cloud-nak hálózati befecskendezést kell használnia<br> – A tároló-beállításjegyzékek nem engedélyezhetik a nem korlátozott hálózati hozzáférést<br> – A tároló-beállításjegyzékeknek privát hivatkozást kell használniuk<br> – A MariaDB-kiszolgálók esetében le kell tiltani a nyilvános hálózati hozzáférést<br> – A nyilvános hálózati hozzáférést le kell tiltani a MySQL-kiszolgálók esetében<br> – A nyilvános hálózati hozzáférést le kell tiltani a PostgreSQL-kiszolgálókon<br> – A Storage-fióknak magánhálózati kapcsolatot kell használnia<br> – A Storage-fiókoknak a virtuális hálózati szabályok használatával kell korlátoznia a hálózati hozzáférést<br> – A virtuálisgép-rendszerkép-készítő sablonoknak privát hivatkozást kell használniuk|
+|                                      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+
+Kapcsolódó hivatkozások:
+
+- [További információ az Azure biztonsági teljesítménytesztről](../security/benchmarks/introduction.md)
+- [További információ a Azure Database for MariaDB](../mariadb/overview.md)
+- [További információ a Azure Database for MySQL](../mysql/overview.md)
+- [További információ a Azure Database for PostgreSQL](../postgresql/overview.md)
+
+
 
 
 ### <a name="csv-export-of-filtered-list-of-recommendations"></a>Az ajánlatok szűrt listájának CSV-exportálása 

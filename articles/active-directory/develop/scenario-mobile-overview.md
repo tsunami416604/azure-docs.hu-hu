@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f60e21f98092df65ef01e68fe9c2e64833a24855
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: a678e8545f761e98abbdf026886afa624f9d2b4e
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063212"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753648"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>Forgatókönyv: webes API-kat meghívó mobil alkalmazás
 
@@ -34,7 +34,7 @@ Ha még nem tette meg, hozza létre első alkalmazását egy rövid útmutató e
 
 ## <a name="overview"></a>Áttekintés
 
-A mobil alkalmazások esetében elengedhetetlen a személyre szabott, zökkenőmentes felhasználói élmény.  A Microsoft Identity platform lehetővé teszi a mobil fejlesztők számára, hogy az iOS-és Android-felhasználók számára is létrehozzák az élményt. Az alkalmazás bejelentkezhet Azure Active Directory (Azure AD) felhasználókba, személyes Microsoft-fiók felhasználókba és Azure AD B2C felhasználókba. Emellett jogkivonatokat is beszerezzen a webes API-k nevében történő meghívásához. Ezeknek a folyamatoknak a megvalósításához a Microsoft hitelesítési függvénytárát (MSAL) fogjuk használni. A MSAL az iparági szabványnak megfelelő [OAuth 2.0 engedélyezési kódját](v2-oauth2-auth-code-flow.md)valósítja meg.
+A mobil alkalmazások esetében elengedhetetlen a személyre szabott, zökkenőmentes felhasználói élmény. A Microsoft Identity platform lehetővé teszi a mobil fejlesztők számára, hogy az iOS-és Android-felhasználók számára is létrehozzák az élményt. Az alkalmazás bejelentkezhet Azure Active Directory (Azure AD) felhasználókba, személyes Microsoft-fiók felhasználókba és Azure AD B2C felhasználókba. Emellett jogkivonatokat is beszerezzen a webes API-k nevében történő meghívásához. Ezeknek a folyamatoknak a megvalósításához a Microsoft hitelesítési függvénytárát (MSAL) fogjuk használni. A MSAL az iparági szabványnak megfelelő [OAuth 2.0 engedélyezési kódját](v2-oauth2-auth-code-flow.md)valósítja meg.
 
 ![Démonalkalmazások](./media/scenarios/mobile-app.svg)
 
@@ -57,6 +57,6 @@ Vegye figyelembe a következő szempontokat, amikor a Microsoft Identity platfor
 
 [!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Lépjen tovább a forgatókönyv következő cikkére, amely az [alkalmazás regisztrálását](scenario-mobile-app-registration.md)ismerteti.

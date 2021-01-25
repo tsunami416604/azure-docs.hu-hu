@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 016a2917c02deaecf35c526426cb2a6dbc89e338
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: b294a56a523adaa2629a5d1e72a7ccef532956e0
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173190"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753280"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Webes API-kat meghívó webalkalmazás: webes API meghívása
 
@@ -37,7 +37,7 @@ A *Microsoft. Identity. Web* használatakor három felhasználási lehetőség �
 
 #### <a name="option-1-call-microsoft-graph-with-the-sdk"></a>1. lehetőség: a Microsoft Graph meghívása az SDK-val
 
-Meg szeretné hívni Microsoft Graph. Ebben a forgatókönyvben a Startup.cs- `AddMicrosoftGraph` ben *Startup.cs* megadott módon adta hozzá a [kódot](scenario-web-app-call-api-app-configuration.md#option-1-call-microsoft-graph), és közvetlenül a vezérlőben vagy az oldal konstruktorában is befecskendezheti a `GraphServiceClient` műveleteket a műveletekben való használatra. A következő példában a borotva oldal a bejelentkezett felhasználó fényképét jeleníti meg.
+Meg szeretné hívni Microsoft Graph. Ebben a forgatókönyvben a Startup.cs- `AddMicrosoftGraph` ben  megadott módon adta hozzá a [kódot](scenario-web-app-call-api-app-configuration.md#option-1-call-microsoft-graph), és közvetlenül a vezérlőben vagy az oldal konstruktorában is befecskendezheti a `GraphServiceClient` műveleteket a műveletekben való használatra. A következő példában a borotva oldal a bejelentkezett felhasználó fényképét jeleníti meg.
 
 ```CSharp
 [Authorize]
@@ -197,6 +197,6 @@ def graphcall():
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az ebben a forgatókönyvben lévő következő cikkre való áttéréssel váltson [éles környezetbe](scenario-web-app-call-api-production.md).

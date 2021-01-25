@@ -13,12 +13,12 @@ ms.date: 05/19/2020
 ms.author: hirsin
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 064c9a00e1cd7c139f3f42a053dcf8a5db13f161
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: eed4e919684575bb2c63170d91517b661fac4acf
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104580"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753967"
 ---
 # <a name="handle-itp-in-safari-and-other-browsers-where-third-party-cookies-are-blocked"></a>Az ITP kezelése a Safariban és más böngészőkben, ahol a harmadik féltől származó cookie-k blokkolva vannak
 
@@ -77,7 +77,7 @@ A webalkalmazások közös mintája, hogy iframe-t használjon egy alkalmazás b
 
 A frissítési jogkivonatok böngészőbe való kiállítása biztonsági problémanak minősül. A helyek közötti parancsfájlkezelés (XSS) vagy a feltört JS-csomagok ellopják a frissítési jogkivonatot, és távolról, a lejárat vagy a visszavonás után használhatják azt. Az ellopott frissítési tokenek kockázatának csökkentése érdekében a gyógyfürdők csak 24 órán át érvényes jogkivonatokat kapnak. 24 óra elteltével az alkalmazásnak meg kell adnia egy új engedélyezési kódot a bejelentkezési oldal legfelső szintű keretén keresztül.
 
-Ez a korlátozott élettartamú frissítési jogkivonat-minta a biztonság és a csökkentett teljesítményű UX rendszer közötti egyensúlyként lett kiválasztva. A frissítési tokenek vagy a harmadik féltől származó cookie-k nélkül az engedélyezési kód folyamata (ahogy azt a [OAuth Security aktuális gyakorlatainak tervezete](https://tools.ietf.org/html/draft-ietf-oauth-security-topics-14)javasolja) megterheli, ha új vagy további tokenekre van szükség. Minden egyes jogkivonat esetében teljes oldal-átirányítás vagy előugró ablak szükséges, minden token lejáratakor (óránként általában a Microsoft Identity platform jogkivonatai esetében).
+Ez a korlátozott élettartamú frissítési jogkivonat-minta a biztonság és a csökkentett teljesítményű UX rendszer közötti egyensúlyként lett kiválasztva. A frissítési tokenek vagy a harmadik féltől származó cookie-k nélkül az engedélyezési kód folyamata (ahogy azt a [OAuth Security aktuális gyakorlatainak tervezete](https://tools.ietf.org/html/draft-ietf-oauth-security-topics-14)javasolja) megterheli, ha új vagy további tokenekre van szükség. Minden egyes tokenhez teljes oldal-átirányítás vagy előugró elem szükséges, minden alkalommal, amikor egy jogkivonat lejár (óránként általában a Microsoft Identity platform tokenek esetében).
 
 ## <a name="next-steps"></a>További lépések
 

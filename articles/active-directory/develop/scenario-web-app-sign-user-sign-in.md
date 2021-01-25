@@ -1,5 +1,6 @@
 ---
-title: Felhasználói bejelentkezést bejelentkező webalkalmazás írása – Microsoft Identity platform | Azure
+title: Felhasználói bejelentkezést bejelentkező webalkalmazás írása | Azure
+titleSuffix: Microsoft identity platform
 description: Megtudhatja, hogyan hozhat létre vagy ki felhasználókat használó webalkalmazásokat
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: e7397f6d02d71a6344953b8210b0349b9ee26360
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5b0b86321f7f2b320c3fea8e7c5bfa45bd936b77
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443551"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753003"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Felhasználók számára bejelentkező webes alkalmazás: bejelentkezés és kijelentkezés
 
@@ -213,7 +214,7 @@ Miután a felhasználó bejelentkezett az alkalmazásba, engedélyeznie kell a k
 A webalkalmazásból való kijelentkezés több, mint a webalkalmazás állapotában lévő bejelentkezett fiók adatainak eltávolítása.
 A webalkalmazásnak is át kell irányítani a felhasználót a Microsoft Identity platform `logout` -végpontra a kijelentkezéshez.
 
-Ha a webalkalmazás átirányítja a felhasználót a `logout` végpontra, ez a végpont törli a felhasználó munkamenetét a böngészőből. Ha az alkalmazás nem a `logout` végpontra mutat, a felhasználó újra hitelesíteni fogja magát az alkalmazásban anélkül, hogy újra be kellene írnia a hitelesítő adatait. Ennek az az oka, hogy egy érvényes egyszeri bejelentkezési munkamenettel rendelkeznek a Microsoft Identity platform-végponttal.
+Ha a webalkalmazás átirányítja a felhasználót a `logout` végpontra, ez a végpont törli a felhasználó munkamenetét a böngészőből. Ha az alkalmazás nem a `logout` végpontra mutat, a felhasználó újra hitelesíteni fogja magát az alkalmazásban anélkül, hogy újra be kellene írnia a hitelesítő adatait. Ennek az az oka, hogy egy érvényes egyszeri bejelentkezési munkamenettel rendelkeznek a Microsoft Identity platformmal.
 
 További információért lásd a [kijelentkezési kérelem küldése](v2-protocols-oidc.md#send-a-sign-out-request) szakaszt a [Microsoft Identity platform és az OpenID Connect Protocol](v2-protocols-oidc.md) dokumentációjában.
 

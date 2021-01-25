@@ -1,5 +1,6 @@
 ---
-title: Egyoldalas alkalmazás áthelyezése az éles környezetbe – Microsoft Identity platform | Azure
+title: Egyoldalas alkalmazás áthelyezése éles környezetbe
+titleSuffix: Microsoft identity platform
 description: Ismerje meg, hogyan hozhat létre egy egyoldalas alkalmazást (áttérés éles környezetbe)
 services: active-directory
 author: navyasric
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 0a51442870fb72e2b3cd93d9f03736d2c679ed06
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 0c1e9e6da02478f5e4703676b74fc8247a4f619b
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442820"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753525"
 ---
 # <a name="single-page-application-move-to-production"></a>Egyoldalas alkalmazás: áthelyezés éles környezetbe
 
@@ -36,11 +37,11 @@ Tekintse meg az [üzembe helyezési mintát](https://github.com/Azure-Samples/ms
 
 ## <a name="next-steps"></a>További lépések
 
-- A gyors üzembe helyezési minta részletes bemutatása, amely leírja, hogyan lehet bejelentkezni a felhasználókba, és hogyan kérhet hozzáférési jogkivonatot a **Microsoft Graph API** meghívásához **MSAL.js** : [JavaScript Spa oktatóanyag](./tutorial-v2-javascript-spa.md)használatával.
+- A gyors üzembe helyezési minta részletes bemutatása, amely leírja, hogyan lehet bejelentkezni a felhasználókba, és hogyan kérhet hozzáférési jogkivonatot a **Microsoft Graph API** meghívásához **MSAL.js**: [JavaScript Spa oktatóanyag](./tutorial-v2-javascript-spa.md)használatával.
 
-- Ez a minta azt mutatja be, hogyan lehet jogkivonatokat beolvasni a saját háttérbeli webes API-hoz (ASP.NET Core) a **MSAL.js** : [SPA és egy ASP.net-háttér](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi)használatával.
+- Ez a minta azt mutatja be, hogyan lehet jogkivonatokat beolvasni a saját háttérbeli webes API-hoz (ASP.NET Core) a **MSAL.js**: [SPA és egy ASP.net-háttér](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi)használatával.
 
-- Minta, amely bemutatja, hogyan lehet érvényesíteni a háttérbeli webes API-hoz (Node.js) tartozó hozzáférési jogkivonatokat a **Passport-Azure-ad** : [Node.js web API (Azure ad](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2)) használatával.
+- Minta, amely bemutatja, hogyan lehet érvényesíteni a háttérbeli webes API-hoz (Node.js) tartozó hozzáférési jogkivonatokat a **Passport-Azure-ad**: [Node.js web API (Azure ad](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2)) használatával.
 
 - Ez a minta azt mutatja be, hogyan használhatók a **MSAL.js** a **Azure Active Directory B2C** (Azure ad B2C) szolgáltatásban regisztrált alkalmazásokban lévő felhasználók bejelentkezéséhez: [Azure ad B2C](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp).
 

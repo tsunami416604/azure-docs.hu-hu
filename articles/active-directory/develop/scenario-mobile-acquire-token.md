@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 946908bf28a50bc8b523c4efd853e8720b115c7b
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: c071cb9a8a27964a93e039e4d1536e078730bfc9
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063076"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753629"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>A webes API-kat meghívó mobil alkalmazások jogkivonatának beolvasása
 
@@ -28,7 +28,7 @@ Ahhoz, hogy az alkalmazás meghívja a védett webes API-kat, hozzáférési jog
 
 Ha jogkivonatot kér, meg kell határoznia egy hatókört. A hatókör határozza meg, hogy az alkalmazás milyen adataihoz férhet hozzá.
 
-A hatókör definiálásának legegyszerűbb módja a kívánt webes API `App ID URI` és a hatókör összevonása `.default` . Ez a definíció közli a Microsoft Identity platformmal, hogy az alkalmazás a portálon beállított összes hatókört igényli.
+A hatókör definiálásának legegyszerűbb módja a kívánt webes API `App ID URI` és a hatókör összevonása `.default` . Ez a definíció közli a Microsoft Identity platformmal, hogy az alkalmazás a portálon beállított összes hatókört megköveteli.
 
 ### <a name="android"></a>Android
 ```Java
@@ -243,7 +243,7 @@ Az osztály a következő konstansokat határozza meg:
 
 ##### <a name="withextrascopetoconsent"></a>WithExtraScopeToConsent
 
-`WithExtraScopeToConsent`Egy speciális forgatókönyvben használja a módosítót, ahol azt szeretné, hogy a felhasználó előzetes beleegyezést nyújtson több erőforráshoz. Ezt a módosítót akkor használhatja, ha nem szeretne növekményes beleegyezést használni, amelyet általában a MSAL.NET vagy a Microsoft Identity platform 2,0-mel használ. További információ: [a felhasználó beleegyezett több erőforrásra](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources).
+`WithExtraScopeToConsent`Egy speciális forgatókönyvben használja a módosítót, ahol azt szeretné, hogy a felhasználó előzetes beleegyezést nyújtson több erőforráshoz. Ezt a módosítót akkor használhatja, ha nem szeretne növekményes beleegyezést használni, amelyet általában a MSAL.NET vagy a Microsoft Identity platformmal használ. További információ: [a felhasználó beleegyezett több erőforrásra](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources).
 
 Példa a következő kódra:
 
@@ -292,6 +292,6 @@ client_id=<CLIENT_ID>
 &grant_type=authorization_code
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A forgatókönyvben a következő cikkre léphet, amely [egy webes API](scenario-mobile-call-api.md)-t hív meg.

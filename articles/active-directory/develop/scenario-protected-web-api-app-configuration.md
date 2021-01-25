@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 9ffb77db4f7bcd5a07e25085eed17e8972aa9a33
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 3a26157949ff6ef69c9c009dfdd40781b47bc761
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683759"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753573"
 ---
 # <a name="protected-web-api-code-configuration"></a>Védett webes API: kód konfigurálása
 
@@ -55,7 +55,7 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 ```
 
 > [!IMPORTANT]
-> Az ügyfélalkalmazás a tulajdonosi jogkivonatot a *webes API*-hoz készült Microsoft Identity platform-végpontra kéri. A webes API az egyetlen alkalmazás, amelynek ellenőriznie kell a jogkivonatot, és meg kell tekintenie a benne található jogcímeket. Az ügyfélalkalmazások soha nem próbálják meg megvizsgálni a jogkivonatokban lévő jogcímeket.
+> Egy ügyfélalkalmazás a *webes API*-hoz tartozó Microsoft Identity platformra kéri a tulajdonosi jogkivonatot. A webes API az egyetlen alkalmazás, amelynek ellenőriznie kell a jogkivonatot, és meg kell tekintenie a benne található jogcímeket. Az ügyfélalkalmazások soha nem próbálják meg megvizsgálni a jogkivonatokban lévő jogcímeket.
 >
 > A jövőben a webes API-nak szüksége lehet a jogkivonat titkosítására. Ez a követelmény megakadályozza a hozzáférési jogkivonatokat megtekintő ügyfélalkalmazások hozzáférését.
 
@@ -140,7 +140,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
- A ASP.NET Core-sablonok jelenleg olyan Azure Active Directory (Azure AD) webes API-kat hoznak létre, amelyek a szervezeten vagy szervezeten belül jelentkeznek be a felhasználókba. Személyes fiókkal nem jelentkezhetnek be a felhasználókba. A sablonokat azonban a Microsoft Identity platform végpontjának használatára módosíthatja a [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) helyett a *Startup.cs*:
+ A ASP.NET Core-sablonok jelenleg olyan Azure Active Directory (Azure AD) webes API-kat hoznak létre, amelyek a szervezeten vagy szervezeten belül jelentkeznek be a felhasználókba. Személyes fiókkal nem jelentkezhetnek be a felhasználókba. Azonban a Microsoft [. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) használatával módosíthatja a sablonokat a Microsoft Identity platform használatára a *Startup.cs*:
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -240,6 +240,6 @@ A bejövő hozzáférési jogkivonatokat is ellenőrizheti Azure Functionsban. I
 - Node.js: [Azure-Samples/MS-Identity-NodeJS-webapi-azurefunctions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions)
 - Python: [Azure-Samples/MS-Identity-Python-webapi-azurefunctions)](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az ebben a forgatókönyvben lévő következő cikkre való áttéréskor [ellenőrizze a kódban a hatóköröket és az alkalmazás-szerepköröket](scenario-protected-web-api-verification-scope-app-roles.md).

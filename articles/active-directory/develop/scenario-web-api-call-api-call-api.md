@@ -1,5 +1,6 @@
 ---
-title: Webes API-k meghívása webes API-k – Microsoft Identity platform | Azure
+title: Webes API-kat meghívó webes API | Azure
+titleSuffix: Microsoft identity platform
 description: Megtudhatja, hogyan hozhat létre webes API-kat meghívó webes API-t.
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b8eb737752741dc55da24ad6b605b081053b8a11
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 2c69cea7055476bcc4c4a28cea0a0cf8c8f66f88
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443701"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753461"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Webes API-kat meghívó webes API: az API meghívása
 
@@ -34,7 +35,7 @@ A *Microsoft. Identity. Web* használatakor három felhasználási forgatóköny
 
 #### <a name="option-1-call-microsoft-graph-with-the-sdk"></a>1. lehetőség: a Microsoft Graph meghívása az SDK-val
 
-Ebben a forgatókönyvben a Startup.cs- `.AddMicrosoftGraph()` ben *Startup.cs* megadott módon adta hozzá a [kódot](scenario-web-api-call-api-app-configuration.md#option-1-call-microsoft-graph), és közvetlenül a vezérlőben vagy az oldal konstruktorában is befecskendezheti a `GraphServiceClient` műveleteket a műveletekben való használatra. A következő példában a borotva oldal a bejelentkezett felhasználó fényképét jeleníti meg.
+Ebben a forgatókönyvben a Startup.cs- `.AddMicrosoftGraph()` ben  megadott módon adta hozzá a [kódot](scenario-web-api-call-api-app-configuration.md#option-1-call-microsoft-graph), és közvetlenül a vezérlőben vagy az oldal konstruktorában is befecskendezheti a `GraphServiceClient` műveleteket a műveletekben való használatra. A következő példában a borotva oldal a bejelentkezett felhasználó fényképét jeleníti meg.
 
 ```CSharp
  [Authorize]
@@ -70,7 +71,7 @@ Ebben a forgatókönyvben a Startup.cs- `.AddMicrosoftGraph()` ben *Startup.cs* 
 
 #### <a name="option-2-call-a-downstream-web-api-with-the-helper-class"></a>2. lehetőség: alárendelt webes API meghívása a segítő osztállyal
 
-Ebben a forgatókönyvben a Startup.cs- `.AddDownstreamWebApi()` ben *Startup.cs* megadott módon adta hozzá a [kódot](scenario-web-api-call-api-app-configuration.md#option-2-call-a-downstream-web-api-other-than-microsoft-graph), és közvetlenül is befecskendezheti a `IDownstreamWebApi` szolgáltatást a vezérlőbe vagy az oldal konstruktorba, és használhatja azokat a műveletekben:
+Ebben a forgatókönyvben a Startup.cs- `.AddDownstreamWebApi()` ben  megadott módon adta hozzá a [kódot](scenario-web-api-call-api-app-configuration.md#option-2-call-a-downstream-web-api-other-than-microsoft-graph), és közvetlenül is befecskendezheti a `IDownstreamWebApi` szolgáltatást a vezérlőbe vagy az oldal konstruktorba, és használhatja azokat a műveletekben:
 
 ```CSharp
  [Authorize]

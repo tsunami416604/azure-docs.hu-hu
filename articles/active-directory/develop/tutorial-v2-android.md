@@ -13,16 +13,16 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 7bdb36566d7c501dc5ca5604f8c6963258aa951c
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: f3dee72180d0850ce6d920c7e3180cebcbe2f4b4
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98208539"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753029"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása Android-alkalmazásból
 
-Ebben az oktatóanyagban egy Android-alkalmazást hoz létre, amely integrálható a Microsoft Identity platformmal a felhasználók bejelentkezéséhez, és hozzáférési jogkivonatot kap a Microsoft Graph API meghívásához.
+Ebben az oktatóanyagban egy Android-alkalmazást hoz létre, amely integrálható a Microsoft Identity platformmal, hogy bejelentkezzen a felhasználókba, és szerezzen be egy hozzáférési jogkivonatot a Microsoft Graph API meghívásához.
 
 Az oktatóanyag elvégzése után az alkalmazás elfogadja a személyes Microsoft-fiókok (például a outlook.com, a live.com és mások) bejelentkezési adatait, valamint a munkahelyi vagy iskolai fiókokat bármely olyan vállalattól vagy szervezettől, amely Azure Active Directoryt használ.
 
@@ -589,7 +589,7 @@ Ha már nincs rá szükség, törölje az [alkalmazás regisztrálása](#registe
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a védett webes API-kat meghívó mobil alkalmazások létrehozásáról a többrészes forgatókönyvek sorozatában.
 

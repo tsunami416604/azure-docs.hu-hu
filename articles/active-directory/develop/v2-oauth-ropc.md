@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 39cd25c2c84e92a0b06bc2ee6c6229ecb2d296d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0282e4f52db8557364cdabe197fa0da63204e42
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91812539"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752641"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft Identity platform és OAuth 2,0 erőforrás-tulajdonosi jelszó hitelesítő adatai
 
@@ -29,7 +29,7 @@ A Microsoft Identity platform támogatja a [OAuth 2,0 erőforrás-tulajdonosi je
 
 > [!IMPORTANT]
 >
-> * A Microsoft Identity platform végpontja csak az Azure AD-bérlők ROPC támogatja, a személyes fiókokat nem. Ez azt jelenti, hogy a bérlő-specifikus végpontot ( `https://login.microsoftonline.com/{TenantId_or_Name}` ) vagy a `organizations` végpontot kell használnia.
+> * A Microsoft Identity platform csak az Azure AD-bérlők ROPC támogatja, a személyes fiókokat nem. Ez azt jelenti, hogy a bérlő-specifikus végpontot ( `https://login.microsoftonline.com/{TenantId_or_Name}` ) vagy a `organizations` végpontot kell használnia.
 > * Az Azure AD-bérlők számára meghívott személyes fiókok nem használhatják a ROPC.
 > * Azok a fiókok, amelyeknek nincsenek jelszavai, nem jelentkezhetnek be a ROPC-on keresztül. Ennél a forgatókönyvnél azt javasoljuk, hogy ehelyett használjon egy másik folyamatot az alkalmazáshoz.
 > * Ha a felhasználóknak [többtényezős hitelesítést (MFA)](../authentication/concept-mfa-howitworks.md) kell használniuk az alkalmazásba való bejelentkezéshez, a rendszer letiltja a helyet.
@@ -64,7 +64,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &grant_type=password
 ```
 
-| Paraméter | Condition (Állapot) | Leírás |
+| Paraméter | Feltétel | Leírás |
 | --- | --- | --- |
 | `tenant` | Kötelező | Az a címtár-bérlő, amelybe be szeretné jelentkezni a felhasználót. Ez lehet a GUID vagy a felhasználóbarát név formátuma. Ez a paraméter nem állítható be `common` vagy értékre `consumers` , de beállítható a következőre: `organizations` . |
 | `client_id` | Kötelező | Az alkalmazáshoz hozzárendelt [Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) oldal alkalmazás-(ügyfél-) azonosítója. |
@@ -110,6 +110,6 @@ Ha a felhasználó nem adta meg a helyes felhasználónevet vagy jelszót, vagy 
 | `invalid_grant` | A hitelesítés sikertelen | A hitelesítő adatok helytelenek voltak, vagy az ügyfél nem rendelkezik beleegyezik a kért hatókörökkel. Ha a hatókörök nem lettek megadva, a rendszer `consent_required` hibaüzenetet küld. Ha ez történik, az ügyfélnek egy interaktív üzenetbe kell küldenie a felhasználót egy webnézet vagy egy böngésző használatával. |
 | `invalid_request` | A kérés nem megfelelően lett kiépítve | A támogatás típusa nem támogatott a `/common` vagy a `/consumers` hitelesítési környezetekben.  `/organizations`Ehelyett használjon vagy egy bérlői azonosítót. |
 
-## <a name="learn-more"></a>Tudjon meg többet
+## <a name="learn-more"></a>Részletek
 
 A ROPC használatára vonatkozó példát a következő témakörben talál: a [.net Core Console alkalmazás](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2) kódjának mintája a githubon.

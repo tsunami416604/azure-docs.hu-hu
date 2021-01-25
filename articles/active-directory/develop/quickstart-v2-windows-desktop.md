@@ -1,6 +1,6 @@
 ---
 title: 'Gyors útmutató: felhasználói bejelentkezés és Microsoft Graph hívása egy Univerzális Windows-platform asztali alkalmazásban | Azure'
-description: Ebből a rövid útmutatóból megtudhatja, hogyan szerezhet be egy Windows Desktop .NET-(XAML-) alkalmazás hozzáférési jogkivonatot, és hogyan hívhat meg egy Microsoft Identity platform-végpont által védett API-t
+description: Ebből a rövid útmutatóból megtudhatja, hogyan szerezhet be egy Windows Desktop .NET-(XAML-) alkalmazás hozzáférési jogkivonatot, és hogyan hívhat meg a Microsoft Identity platform által védett API-t.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1cac8ab4ccf23047bd5eb2d15c174a2009f2864a
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: b54438441b0e34cccda7fbec37dc1d1740101e9e
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178296"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754006"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Rövid útmutató: Jogkivonat lekérése és a Microsoft Graph API meghívása egy Windows asztali alkalmazásból
 
@@ -145,7 +145,7 @@ Az MSAL a következő két metódust használja a jogkivonatok beszerzéséhez: 
 
 #### <a name="get-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
 
-Bizonyos helyzetekben a felhasználók kényszerítéséhez a Microsoft Identity platform-végpontot egy előugró ablakon keresztül kell megkövetelni a hitelesítő adatok érvényesítéséhez vagy a jóváhagyáshoz. Néhány példa:
+Bizonyos helyzetekben a felhasználók kényszerített felugró ablakon keresztüli interakcióját igénylik a Microsoft Identity platformmal a hitelesítő adatok érvényesítéséhez vagy a jóváhagyáshoz. Néhány példa:
 
 - Az első alkalommal, amikor felhasználók bejelentkeznek az alkalmazásba
 - Ha a felhasználóknak újból meg kell adniuk a hitelesítési adataikat, mert lejárt a jelszó
@@ -179,7 +179,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Próbálja ki az asztali Windowshoz készült oktatóanyagot, amelyben teljes körű, részletes útmutatót talál az alkalmazások és új szolgáltatások létrehozásához, valamint megtalálja ennek a rövid útmutatónak a teljes magyarázatát is.
 

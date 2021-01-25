@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0d759b3af097067ba0c9215b65b212d50474d571
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 5bfdf90ddbd500fd9d1c504bd37ed4ac35d8bf70
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178347"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752770"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Oktatóanyag: a Microsoft Graph API meghívása egy Windowsos asztali alkalmazásból
 
@@ -47,7 +47,7 @@ Az ezzel az útmutatóval létrehozott minta alkalmazás lehetővé teszi egy Wi
 
 ## <a name="handling-token-acquisition-for-accessing-protected-web-apis"></a>A jogkivonatok beszerzése a védett webes API-k eléréséhez
 
-A felhasználó hitelesítése után a minta alkalmazás tokent kap, amellyel lekérdezheti Microsoft Graph API-t vagy a Microsoft Identity platform által védett webes API-t a fejlesztők számára.
+A felhasználó hitelesítése után a minta alkalmazás olyan jogkivonatot kap, amely a Microsoft Identity platform által védett Microsoft Graph API vagy webes API lekérdezésére használható.
 
 Az API-k, például a Microsoft Graph jogkivonatot igényelnek az adott erőforrásokhoz való hozzáférés engedélyezéséhez. Például egy jogkivonat szükséges a felhasználói profil olvasásához, a felhasználó naptárának eléréséhez vagy e-mailek küldéséhez. Az alkalmazás az API-hatókörök megadásával kérhet hozzáférési jogkivonatot a MSAL használatával az erőforrások eléréséhez. A rendszer ezt a hozzáférési jogkivonatot adja hozzá a HTTP-engedélyezési fejléchez a védett erőforráson végrehajtott összes híváshoz.
 
@@ -377,7 +377,7 @@ A Microsoft Graph API meghívásához használt hozzáférési tokenen kívül a
 
 [!INCLUDE [5. Test and Validate](../../../includes/active-directory-develop-guidedsetup-windesktop-test.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a védett webes API-kat meghívó asztali alkalmazások létrehozásáról a több részből álló forgatókönyvek sorozatában:
 

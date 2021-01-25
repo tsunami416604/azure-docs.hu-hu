@@ -1,5 +1,6 @@
 ---
-title: Webes API-kat meghívó Daemon-alkalmazás létrehozása – Microsoft Identity platform | Azure
+title: Webes API-kat meghívó Daemon-alkalmazás létrehozása | Azure
+titleSuffix: Microsoft identity platform
 description: Megtudhatja, hogyan hozhat létre webes API-kat meghívó Daemon-alkalmazást
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 01/31/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e63a948260863c93a92e4241044be5e0baf8afca
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 45af940382a261f1793583e471871b9cceed0a57
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443262"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753838"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>Forgatókönyv: a webes API-kat meghívó alkalmazás
 
@@ -45,7 +46,7 @@ Olyan alkalmazások, amelyek jogkivonatot szerzik be a saját identitásuk szám
 
 > [!IMPORTANT]
 >
-> - A felhasználók nem tudnak kommunikálni egy démon alkalmazással. Egy démon-alkalmazáshoz saját identitás szükséges. Az ilyen típusú alkalmazás hozzáférési jogkivonatot kér az alkalmazás identitásával, és megjeleníti az alkalmazás AZONOSÍTÓját, hitelesítő adatait (jelszavát vagy tanúsítványát), valamint az alkalmazás AZONOSÍTÓjának URI-JÁT az Azure AD-hez. A sikeres hitelesítés után a démon egy hozzáférési jogkivonatot (és egy frissítési jogkivonatot) kap a Microsoft Identity platform végpontból. Ezt a tokent a rendszer a webes API meghívására használja (és szükség szerint frissíti).
+> - A felhasználók nem tudnak kommunikálni egy démon alkalmazással. Egy démon-alkalmazáshoz saját identitás szükséges. Az ilyen típusú alkalmazás hozzáférési jogkivonatot kér az alkalmazás identitásával, és megjeleníti az alkalmazás AZONOSÍTÓját, hitelesítő adatait (jelszavát vagy tanúsítványát), valamint az alkalmazás AZONOSÍTÓjának URI-JÁT az Azure AD-hez. A sikeres hitelesítés után a démon egy hozzáférési jogkivonatot (és egy frissítési jogkivonatot) kap a Microsoft Identity platformból. Ezt a tokent a rendszer a webes API meghívására használja (és szükség szerint frissíti).
 > - Mivel a felhasználók nem tudnak kommunikálni a Daemon-alkalmazásokkal, a növekményes beleegyező engedély nem lehetséges. Az összes szükséges API-engedélyt be kell állítani az alkalmazás regisztrálásakor. Az alkalmazás kódja csak statikusan meghatározott engedélyeket kér. Ez azt is jelenti, hogy a Daemon-alkalmazások nem támogatják a növekményes hozzájárulásukat.
 
 A fejlesztők számára a forgatókönyv teljes körű tapasztalata a következő szempontokat öleli fel:

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 58e8fd5006e72465e35912a5b15cade1201d680f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 323c9e207e5a16ba3e5907862e7a1eba84cc02e6
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98680315"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754191"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-a-react-spa-using-the-auth-code-flow"></a>Gyors útmutató: bejelentkezés és hozzáférési jogkivonat beszerzése egy reagáló SPA-ban az Auth Code flow használatával
 
@@ -40,9 +40,7 @@ Ez a rövid útmutató a MSAL reagál az engedélyezési kód folyamatára. Az i
 >
 > ### <a name="option-1-express-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1. lehetőség (expressz): regisztrálja és állítsa be automatikusan az alkalmazást, majd töltse le a kód mintáját
 >
-> 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-> 1. Ha a fiókja több bérlőhöz biztosít hozzáférést, válassza ki a fiókját a jobb felső sarokban, majd állítsa be a portál munkamenetét a használni kívánt Azure AD-bérlőre.
-> 1. Válassza az [Alkalmazásregisztrációk](https://aka.ms/AAatrux) lehetőséget.
+> 1. Lépjen a <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs" target="_blank">Azure Portal-Alkalmazásregisztrációk <span class="docon docon-navigate-external x-hidden-focus"></span> </a> gyors üzembe helyezési élményhez.
 > 1. Adja meg az alkalmazás nevét.
 > 1. A **támogatott fiókok típusai** területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
 > 1. Válassza a **Regisztráció** lehetőséget.
@@ -52,18 +50,17 @@ Ez a rövid útmutató a MSAL reagál az engedélyezési kód folyamatára. Az i
 >
 > #### <a name="step-1-register-your-application"></a>1. lépés: Alkalmazás regisztrálása
 >
-> 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-> 1. Ha a fiókja több bérlőhöz biztosít hozzáférést, válassza ki a fiókját a jobb felső sarokban, majd állítsa be a portál munkamenetét a használni kívánt Azure AD-bérlőre.
-> 1. Válassza az [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lehetőséget.
-> 1. Válassza az **új regisztráció** lehetőséget.
+> 1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+> 1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
+> 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
+> 1. A **kezelés** területen válassza a **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.
 > 1. Ha megjelenik az **Alkalmazás regisztrálása** oldal, adjon nevet az alkalmazásnak.
 > 1. A **támogatott fiókok típusai** területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
 > 1. Válassza a **Regisztráció** lehetőséget. Az alkalmazás **áttekintése** lapon jegyezze fel az **alkalmazás (ügyfél) azonosítójának** értékét későbbi használatra.
-> 1. A regisztrált alkalmazás bal oldali ablaktábláján válassza a **hitelesítés** lehetőséget.
-> 1. A **platform-konfigurációk** területen válassza a elemet `Add a platform` .
-> 1. Az eredményül kapott ablakban válassza az **egylapos alkalmazás** lehetőséget.
+> 1. A **kezelés** területen válassza a **hitelesítés** lehetőséget.
+> 1. A **platform-konfigurációk** területen válassza **a platform hozzáadása** lehetőséget. A megnyíló panelen válassza az **egylapos alkalmazás** lehetőséget.
 > 1. Állítsa be az **átirányítási URI** -k értékét `http://localhost:3000/` . Ez a NodeJS alapértelmezett portja a helyi gépen fog figyelni. A felhasználó sikeres hitelesítése után visszaküldjük a hitelesítési választ erre az URI-ra. 
-> 1. A módosítások alkalmazásához kattintson a **configure (Konfigurálás** ) gombra.
+> 1. A módosítások alkalmazásához válassza a **Konfigurálás** lehetőséget.
 > 1. A **platform konfigurációi** területen bontsa ki az **egyoldalas alkalmazások** elemet.
 > 1. Győződjön meg róla, hogy a megadott engedélyezési **típusoknál** ![ már konfigurálva ](media/quickstart-v2-javascript/green-check.png) van az átirányítási URI a PKCE.
 
@@ -187,7 +184,7 @@ Ha Node.js van telepítve, a legújabb verziót a Node.js Package Manager (NPM) 
 npm install @azure/msal-browser @azure/msal-react
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Auth Code flow alkalmazás Vanilla JavaScript használatával történő létrehozásával kapcsolatos részletes útmutatóért tekintse meg a következő oktatóanyagot:
 

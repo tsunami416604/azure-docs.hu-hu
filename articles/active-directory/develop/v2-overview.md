@@ -13,12 +13,12 @@ ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: identityplatformtop40, contperf-fy21q2
-ms.openlocfilehash: e5a9292097933ff35eb8b77445f07f10def6e5c3
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 662523b1544fe3ca9e8bda993efa7b578b9f69cc
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029617"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752569"
 ---
 # <a name="what-is-the-microsoft-identity-platform"></a>Mi az a Microsoft Identitásplatform?
 
@@ -76,9 +76,9 @@ Ismerje meg, hogyan vonatkoznak az alapszintű hitelesítés és az Azure AD-fog
 
 [Azure Active Directory fejlesztők számára (v 1.0)](../azuread-dev/v1-overview.md) – itt láthatók a régebbi 1.0-s verziókat használó meglévő alkalmazásokkal rendelkező fejlesztők számára. **Ne használja az** 1.0-s verziókat új projektekhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha van olyan Azure-fiókja, amelyhez már van hozzáférése egy Azure Active Directory bérlőhöz, de a Microsoft Identity platform fejlesztőinek saját Azure AD-bérlőre van szüksége az alkalmazások fejlesztéséhez, a "dev-bérlő".
+Ha van olyan Azure-fiókja, amelyhez már van hozzáférése egy Azure Active Directory bérlőhöz, a Microsoft Identity platform fejlesztőinek azonban a saját Azure AD-bérlőre van szükségük az alkalmazások fejlesztéséhez, a "dev bérlő".
 
 Megtudhatja, hogyan hozhat létre saját bérlőt az alkalmazások összeállítása során való használatra:
 

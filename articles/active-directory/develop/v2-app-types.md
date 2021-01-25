@@ -1,6 +1,6 @@
 ---
-title: Az alkalmazások típusai a Microsoft Identity platformhoz | Azure
-description: A Microsoft Identity platform végpontja által támogatott alkalmazások és forgatókönyvek típusai.
+title: A Microsoft Identity platform alkalmazási típusai | Azure
+description: A Microsoft Identity platform által támogatott alkalmazások és forgatókönyvek típusai.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,20 +12,20 @@ ms.date: 11/13/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q2
-ms.openlocfilehash: fd1fc59fd1ade6036c57f15415afccfc693f7bff
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 7ec309f016e73642262399bd75e7b5146bc5e497
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029753"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752784"
 ---
-# <a name="application-types-for-microsoft-identity-platform"></a>A Microsoft Identity platform alkalmazás-típusai
+# <a name="application-types-for-the-microsoft-identity-platform"></a>A Microsoft Identity platform alkalmazási típusai
 
-A Microsoft Identity platform végpontja támogatja a különböző modern alkalmazás-architektúrák hitelesítését, amelyek mindegyike az iparági szabványoknak megfelelő protokollok, az [2,0-es vagy az OpenID Connect-OAuth](active-directory-v2-protocols.md)alapul. Ez a cikk a Microsoft Identity platform használatával felépíthető alkalmazások típusait ismerteti, az Ön által választott nyelvtől és platformtól függetlenül. Az információ úgy van kialakítva, hogy segítsen megérteni a magas szintű forgatókönyveket, mielőtt elkezdi a kód használatát az [alkalmazási forgatókönyvekben](authentication-flows-app-scenarios.md#application-scenarios).
+A Microsoft Identity platform számos modern alkalmazás-architektúra hitelesítését támogatja, amelyek mindegyike az iparági szabványoknak megfelelő protokollok, az [2,0-es vagy az OpenID Connect OAuth](active-directory-v2-protocols.md)alapul. Ez a cikk a Microsoft Identity platform használatával felépíthető alkalmazások típusait ismerteti, az Ön által választott nyelvtől és platformtól függetlenül. Az információ úgy van kialakítva, hogy segítsen megérteni a magas szintű forgatókönyveket, mielőtt elkezdi a kód használatát az [alkalmazási forgatókönyvekben](authentication-flows-app-scenarios.md#application-scenarios).
 
 ## <a name="the-basics"></a>Az alapok
 
-Regisztrálnia kell minden olyan alkalmazást, amely a Microsoft Identity platform-végpontot használja a Azure Portal [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908). Az alkalmazás regisztrációs folyamata összegyűjti és hozzárendeli ezeket az értékeket az alkalmazáshoz:
+Regisztrálnia kell minden olyan alkalmazást, amely a Microsoft Identity platformot használja a Azure Portal [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908). Az alkalmazás regisztrációs folyamata összegyűjti és hozzárendeli ezeket az értékeket az alkalmazáshoz:
 
 * Egy **alkalmazás-(ügyfél-) azonosító** , amely egyedileg azonosítja az alkalmazást
 * Egy **átirányítási URI** , amely a válaszok visszairányítására használható az alkalmazásba
@@ -42,7 +42,7 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 ## <a name="single-page-apps-javascript"></a>Egyoldalas alkalmazások (JavaScript)
 
-Számos modern alkalmazás rendelkezik egy egyoldalas alkalmazás-előtérrel, amely elsősorban a JavaScriptben íródott, gyakran olyan keretrendszerrel, mint a szögletes, a reakciós vagy a Vue. A Microsoft Identity platform végpontja támogatja ezeket az alkalmazásokat az [OpenID Connect](v2-protocols-oidc.md) protokoll használatával történő hitelesítéshez, illetve az [OAuth 2,0 implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) vagy az újabb [OAUTH 2,0 engedélyezési kód + PKCE folyamat](v2-oauth2-auth-code-flow.md) engedélyezéséhez (lásd alább).
+Számos modern alkalmazás rendelkezik egy egyoldalas alkalmazás-előtérrel, amely elsősorban a JavaScriptben íródott, gyakran olyan keretrendszerrel, mint a szögletes, a reakciós vagy a Vue. A Microsoft Identity platform támogatja ezeket az alkalmazásokat az [OpenID Connect](v2-protocols-oidc.md) protokoll használatával történő hitelesítéshez, illetve az [OAuth 2,0 implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) vagy a legújabb [OAUTH 2,0 engedélyezési kód + PKCE folyamat](v2-oauth2-auth-code-flow.md) engedélyezéséhez (lásd alább).
 
 Az alábbi folyamatábra a OAuth 2,0 engedélyezési kód engedélyezését mutatja be (a PKCE kihagyott részletekkel), ahol az alkalmazás kódot kap a Microsoft Identity platform `authorize` végponttól, és visszaváltja a tokenekhez, és frissíti a tokeneket a helyek közötti webes kérelmek használatával. A frissítési jogkivonat 24 óránként lejár, és az alkalmazásnak egy másik kódot kell igényelnie. A hozzáférési tokenen kívül a `id_token` bejelentkezett felhasználót az ügyfélalkalmazás számára általában ugyanarra a folyamatra és/vagy egy külön OpenID Connect-kérelemre is kéri (itt nem látható).
 
@@ -73,13 +73,13 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 }
 ```
 
-A Microsoft Identity platform végpontjában használt különböző típusú jogkivonatok további részletei a [hozzáférési jogkivonat](access-tokens.md) referenciájában és [id_token dokumentációjában](id-tokens.md) olvashatók.
+A Microsoft Identity platformon használt különböző típusú tokenek további részletei a [hozzáférési jogkivonat](access-tokens.md) referenciájában és a [id_token dokumentációjában](id-tokens.md) találhatók.
 
 A webkiszolgáló alkalmazásokban a bejelentkezési hitelesítési folyamat a következő magas szintű lépéseket hajtja végre:
 
 ![A webalkalmazás-hitelesítési folyamat megjelenítése](./media/v2-app-types/convergence-scenarios-webapp.svg)
 
-A felhasználó identitását úgy ellenőrizheti, hogy az azonosító tokent a Microsoft Identity platform végpontján fogadott nyilvános aláíró kulccsal ellenőrzi. Be van állítva egy munkamenet-cookie, amely a felhasználó azonosítására szolgál a következő lapokra vonatkozó kérelmeknél.
+A felhasználó identitását úgy ellenőrizheti, hogy az azonosító tokent a Microsoft Identity platformtól kapott nyilvános aláírási kulccsal ellenőrzi. Be van állítva egy munkamenet-cookie, amely a felhasználó azonosítására szolgál a következő lapokra vonatkozó kérelmeknél.
 
 Ha szeretné megtekinteni ezt a forgatókönyvet működés közben, próbálja ki a [webalkalmazásban a felhasználók forgatókönyvében](scenario-web-app-sign-user-overview.md)megjelenő kód mintáit.
 
@@ -87,7 +87,7 @@ Az egyszerű bejelentkezés mellett előfordulhat, hogy egy webkiszolgáló alka
 
 ## <a name="web-apis"></a>Webes API-k
 
-A Microsoft Identity platform végpontján keresztül biztonságossá teheti a webszolgáltatásokat, például az alkalmazás REST-alapú webes API-ját. A webes API-kat számos platformon és nyelven lehet megvalósítani. A Azure Functions HTTP-eseményindítók használatával is megvalósítható. Az azonosító tokenek és a munkamenet-cookie-k helyett a webes API egy OAuth 2,0 hozzáférési tokent használ az adatai védelméhez és a bejövő kérések hitelesítéséhez. A webes API hívója hozzáfűz egy hozzáférési jogkivonatot egy HTTP-kérelem engedélyezési fejlécében, például a következőhöz:
+A Microsoft Identity platform használatával biztonságossá teheti a webszolgáltatásokat, például az alkalmazás REST-alapú webes API-ját. A webes API-kat számos platformon és nyelven lehet megvalósítani. A Azure Functions HTTP-eseményindítók használatával is megvalósítható. Az azonosító tokenek és a munkamenet-cookie-k helyett a webes API egy OAuth 2,0 hozzáférési tokent használ az adatai védelméhez és a bejövő kérések hitelesítéséhez. A webes API hívója hozzáfűz egy hozzáférési jogkivonatot egy HTTP-kérelem engedélyezési fejlécében, például a következőhöz:
 
 ```HTTP
 GET /api/items HTTP/1.1
@@ -97,9 +97,9 @@ Accept: application/json
 ...
 ```
 
-A webes API a hozzáférési jogkivonattal ellenőrzi az API-hívó identitását, és Kinyeri a hívó információit a hozzáférési jogkivonatban kódolt jogcímekről. A Microsoft Identity platform végpontjában használt különböző típusú jogkivonatok további részletei a [hozzáférési jogkivonat](access-tokens.md) referenciájában és [id_token](id-tokens.md) referenciában találhatók.
+A webes API a hozzáférési jogkivonattal ellenőrzi az API-hívó identitását, és Kinyeri a hívó információit a hozzáférési jogkivonatban kódolt jogcímekről. A Microsoft Identity platformon használt különböző típusú tokenek további részletei a [hozzáférési jogkivonat](access-tokens.md) referenciájában és a [id_token](id-tokens.md) -referenciában érhetők el.
 
-A webes API-k lehetővé teszik a felhasználók számára, hogy a jogosultságok, más néven [hatókörök](v2-permissions-and-consent.md)megadásával vagy letiltásával eldönthetik, hogy bizonyos funkciókat vagy adatokból választhatnak. Ahhoz, hogy egy hívó alkalmazás egy hatókörhöz engedélyt szerezzen, a felhasználónak a folyamat során hozzá kell járulnia a hatókörhöz. A Microsoft Identity platform végpontja kéri a felhasználótól az engedélyt, majd rögzíti az engedélyeket a webes API által fogadott összes hozzáférési jogkivonatban. A webes API ellenőrzi az egyes hívásokhoz kapott hozzáférési jogkivonatokat, és végrehajtja az engedélyezési ellenőrzéseket.
+A webes API-k lehetővé teszik a felhasználók számára, hogy a jogosultságok, más néven [hatókörök](v2-permissions-and-consent.md)megadásával vagy letiltásával eldönthetik, hogy bizonyos funkciókat vagy adatokból választhatnak. Ahhoz, hogy egy hívó alkalmazás egy hatókörhöz engedélyt szerezzen, a felhasználónak a folyamat során hozzá kell járulnia a hatókörhöz. A Microsoft Identity platform megkéri a felhasználótól az engedélyt, majd rögzíti az engedélyeket a webes API által fogadott összes hozzáférési jogkivonatban. A webes API ellenőrzi az egyes hívásokhoz kapott hozzáférési jogkivonatokat, és végrehajtja az engedélyezési ellenőrzéseket.
 
 A webes API-k bármilyen típusú alkalmazásból fogadhatnak hozzáférési jogkivonatokat, beleértve a webkiszolgáló alkalmazásokat, az asztali és a mobil alkalmazásokat, az egyoldalas alkalmazásokat, a kiszolgálóoldali démonokat és akár más webes API-kat is. A webes API-k magas szintű folyamata így néz ki:
 
@@ -113,7 +113,7 @@ Sok esetben a webes API-knak a Microsoft Identity platform által védett más, 
 
 Az eszközre telepített alkalmazások, például a mobil-és asztali alkalmazások, gyakran olyan háttér-szolgáltatásokhoz vagy webes API-khoz szükségesek, amelyek az adatok tárolását és a függvények a felhasználók nevében való elvégzését végzik. Ezek az alkalmazások a [OAuth 2,0 engedélyezési kód folyamatával](v2-oauth2-auth-code-flow.md)adhatnak hozzá bejelentkezést és engedélyezést a háttér-szolgáltatásokhoz.
 
-Ebben a folyamatban az alkalmazás egy engedélyezési kódot kap a Microsoft Identity platform végponttól, amikor a felhasználó bejelentkezik. Az engedélyezési kód az alkalmazásnak a bejelentkezett felhasználó nevében történő meghívására vonatkozó engedélyét jelöli. Az alkalmazás a háttérben egy OAuth 2,0 hozzáférési jogkivonat és egy frissítési jogkivonat számára is kicserélheti az engedélyezési kódot. Az alkalmazás a hozzáférési token használatával hitelesíti a webes API-kat a HTTP-kérelmekben, és a frissítési token használatával új hozzáférési jogkivonatokat kérhet le, ha a régebbi hozzáférési tokenek lejárnak.
+Ebben a folyamatban az alkalmazás megkapja a Microsoft Identity platform engedélyezési kódját, amikor a felhasználó bejelentkezik. Az engedélyezési kód az alkalmazásnak a bejelentkezett felhasználó nevében történő meghívására vonatkozó engedélyét jelöli. Az alkalmazás a háttérben egy OAuth 2,0 hozzáférési jogkivonat és egy frissítési jogkivonat számára is kicserélheti az engedélyezési kódot. Az alkalmazás a hozzáférési token használatával hitelesíti a webes API-kat a HTTP-kérelmekben, és a frissítési token használatával új hozzáférési jogkivonatokat kérhet le, ha a régebbi hozzáférési tokenek lejárnak.
 
 ![Megjeleníti a natív alkalmazás hitelesítési folyamatát.](./media/v2-app-types/convergence-scenarios-native.svg)
 
@@ -130,6 +130,6 @@ Ebben a folyamatban az alkalmazás közvetlenül a `/token` végpontot használj
 
 Daemon-alkalmazás létrehozásához tekintse meg az [ügyfél hitelesítő adatait tartalmazó dokumentációt](v2-oauth2-client-creds-grant-flow.md), vagy próbálkozzon egy [.net-minta alkalmazással](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy már ismeri a Microsoft Identity platform által támogatott típusú alkalmazásokat, ismerkedjen meg a [OAuth 2,0 és az OpenID Connecttel](active-directory-v2-protocols.md) , hogy megértse a különböző forgatókönyvekben használt protokoll-összetevőket.
