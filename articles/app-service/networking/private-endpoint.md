@@ -9,14 +9,14 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: bebc7dcbc18a25b0d6d0761a8ca3ac476e83e581
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4534a315429a120af45dfd495df4a8c29b233de7
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183039"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98763034"
 ---
-# <a name="using-private-endpoints-for-azure-web-app"></a>Privát végpontok használata az Azure Web App-hoz
+# <a name="using-private-endpoints-for-azure-web-app"></a>Az Azure-webalkalmazás privát végpontjainak használata
 
 > [!IMPORTANT]
 > A privát végpontok elérhetők a Windows-és Linux-webalkalmazásokhoz, amelyek tárolóban vannak, és nem az alábbi App Service-csomagokon futnak: **elkülönített**, **PremiumV2**, **PremiumV3**, **functions Premium** (más néven rugalmas Prémium csomag). 
@@ -116,7 +116,7 @@ A díjszabással kapcsolatos információkért lásd: az [Azure Private link dí
 
 Ha az Azure-függvényt privát végponttal rendelkező rugalmas prémium szintű csomagban használja, a függvény futtatásához vagy végrehajtásához az Azure web Portalon közvetlen hálózati hozzáférésre van szükség, vagy HTTP 403-hibaüzenetet fog kapni. Más szóval a böngészőnek képesnek kell lennie arra, hogy elérje a privát végpontot, hogy végrehajtsa a függvényt az Azure web Portalon. 
 
-Egy adott webalkalmazáshoz akár 100 magánhálózati végpontot is csatlakozhat.
+Egy adott webalkalmazáshoz akár 100 privát végpontot is csatlakozhat.
 
 A bővítőhelyek nem használhatják a privát végpontot.
 
@@ -124,7 +124,7 @@ A Távoli hibakeresési funkció nem érhető el, ha a magánhálózati végpont
 
 Rendszeresen fejlesztjük a privát kapcsolat funkciót és a privát végpontot, és a korlátozásokról a [jelen cikkben][pllimitations] tájékozódhat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha privát végpontot szeretne telepíteni a webalkalmazáshoz a portálon keresztül, tekintse meg a [webalkalmazásokhoz való privát kapcsolódás a portálon][howtoguide1] című témakört.
 - Ha privát végpontot szeretne üzembe helyezni a webalkalmazáshoz az Azure CLI használatával, tekintse meg a [webalkalmazásokhoz való privát kapcsolódás az Azure CLI-vel][howtoguide2] című témakört.

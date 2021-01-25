@@ -3,12 +3,12 @@ title: Az Azure Backup újdonságai
 description: Ismerkedjen meg a Azure Backup új szolgáltatásaival.
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: 935c2a806ed3b08f19e680bf1522d98a9ad67666
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 5343ec2ae04853492abbaace2432cf94c9fb5a07
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98730289"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762363"
 ---
 # <a name="whats-new-in-azure-backup"></a>Az Azure Backup újdonságai
 
@@ -19,20 +19,20 @@ Az új kiadásokról további információt az oldal könyvjelzővel vagy a [fri
 ## <a name="updates-summary"></a>Frissítések összegzése
 
 - 2021. január
-  - [Azure Disk Backup (előzetes verzió)](disk-backup-overview.md)
-  - [Az ügyfél által felügyelt kulcsok mostantól általánosan elérhetők a REST-alapú titkosításhoz](encryption-at-rest-with-cmk.md)
+  - [Azure Disk Backup (előzetes verzió)](#azure-disk-backup-in-preview)
+  - [Inaktív adatok titkosítása az ügyfél által felügyelt kulcsokkal (általánosan elérhető)](#encryption-at-rest-using-customer-managed-keys)
 - 2020. november
   - [Az Azure file share (AFS) biztonsági mentésének Azure Resource Manager sablonja](#azure-resource-manager-template-for-afs-backup)
-  - [Az Azure-beli virtuális gépeken SAP HANA adatbázisok növekményes biztonsági mentései](#incremental-backups-for-sap-hana-databases)
+  - [Az Azure-beli virtuális gépeken futó SAP HANA adatbázisok növekményes biztonsági mentései (előzetes verzió)](#incremental-backups-for-sap-hana-databases-in-preview)
 - 2020. szeptember
-  - [Biztonsági mentési központ](#backup-center)
-  - [Az Azure Database for PostgreSQL biztonsági mentése](#backup-azure-database-for-postgresql)
+  - [Backup Center (előzetes verzió)](#backup-center-in-preview)
+  - [Backup Azure Database for PostgreSQL (előzetes verzió)](#backup-azure-database-for-postgresql-in-preview)
   - [Szelektív lemez biztonsági mentése és visszaállítása](#selective-disk-backup-and-restore)
-  - [Régiók közötti visszaállítás SQL Server és SAP HANA Azure-beli virtuális gépeken található adatbázisok esetében](#cross-region-restore-for-sql-server-and-sap-hana)
-  - [A legfeljebb 32 lemezzel rendelkező virtuális gépek biztonsági mentésének támogatása](#support-for-backup-of-vms-with-up-to-32-disks)
+  - [Régiók közötti visszaállítás az Azure-beli virtuális gépeken lévő SQL Server és SAP HANA adatbázisokhoz (előzetes verzió)](#cross-region-restore-for-sql-server-and-sap-hana-in-preview)
+  - [A legfeljebb 32 lemezzel rendelkező virtuális gépek biztonsági mentésének támogatása (általánosan elérhető)](#support-for-backup-of-vms-with-up-to-32-disks)
   - [Az SQL Azure-beli virtuális gépeken való egyszerűsített biztonsági mentési konfigurációs felülete](#simpler-backup-configuration-for-sql-in-azure-vms)
-  - [Backup SAP HANA a RHEL Azure-ban Virtual Machines](#backup-sap-hana-in-rhel-azure-virtual-machines)
-  - [A zóna redundáns tárolója (ZRS) a biztonsági másolati adatként](#zone-redundant-storage-zrs-for-backup-data)
+  - [Backup SAP HANA a RHEL Azure Virtual Machines (előzetes verzió)](#backup-sap-hana-in-rhel-azure-virtual-machines-in-preview)
+  - [A zóna redundáns tárolója (ZRS) a biztonsági mentési adatként (előzetes verzió)](#zone-redundant-storage-zrs-for-backup-data-in-preview)
   - [Az Azure-beli virtuális gépek SQL Server és SAP HANA számítási feladatainak törlése](#soft-delete-for-sql-server-and-sap-hana-workloads)
 
 ## <a name="azure-disk-backup-in-preview"></a>Azure Disk Backup (előzetes verzió)
@@ -53,13 +53,13 @@ Azure Backup mostantól támogatja a meglévő Azure-fájlmegosztás biztonsági
 
 További információ: Azure Resource Manager- [sablonok Azure Backuphoz](backup-rm-template-samples.md).
 
-## <a name="incremental-backups-for-sap-hana-databases"></a>SAP HANA adatbázisok növekményes biztonsági mentései
+## <a name="incremental-backups-for-sap-hana-databases-in-preview"></a>SAP HANA adatbázisok növekményes biztonsági mentései (előzetes verzió)
 
 A Azure Backup mostantól támogatja az Azure-beli virtuális gépeken üzemeltetett SAP HANA-adatbázisok növekményes biztonsági mentését. Ez lehetővé teszi, hogy a SAP HANA-adatai gyorsabb és költséghatékonyabb biztonsági mentést készítsenek.
 
 További információkért tekintse meg [a biztonsági mentési szabályzat létrehozása során elérhető különböző lehetőségeket](sap-hana-faq-backup-azure-vm.md#policy) , valamint [a SAP HANA adatbázisok biztonsági mentési szabályzatának létrehozását](tutorial-backup-sap-hana-db.md#creating-a-backup-policy)ismertető témakört.
 
-## <a name="backup-center"></a>Biztonsági mentési központ
+## <a name="backup-center-in-preview"></a>Backup Center (előzetes verzió)
 
 A Azure Backup lehetővé tette, hogy egy új natív felügyeleti képességgel kezelhesse a teljes biztonsági mentési hagyatékot egy központi konzolról. A Backup Center lehetővé teszi, hogy az Azure natív felügyeleti tapasztalataival összhangban egységes módon figyelje, működtesse, szabályozza és optimalizálja az adatvédelem méretezését.
 
@@ -67,7 +67,7 @@ A Backup Center segítségével összesített képet kaphat a leltárról az el�
 
 További információ: [a Backup Center áttekintése](backup-center-overview.md).
 
-## <a name="backup-azure-database-for-postgresql"></a>Az Azure Database for PostgreSQL biztonsági mentése
+## <a name="backup-azure-database-for-postgresql-in-preview"></a>Backup Azure Database for PostgreSQL (előzetes verzió)
 
 A Azure Backup és az Azure Database Services együttesen létrehoz egy nagyvállalati szintű biztonsági mentési megoldást az Azure PostgreSQL-hez (mostantól előzetes verzióban érhető el). Az adatvédelmi és megfelelőségi igényeknek megfelelően egy ügyfél által vezérelt biztonsági mentési szabályzattal is találkozhat, amely lehetővé teszi a biztonsági másolatok megőrzését akár 10 évig. Ezzel a részletes szabályozással felügyelheti a biztonsági mentési és visszaállítási műveleteket az egyes adatbázis szintjén. Hasonlóképpen, a PostgreSQL-verziókon vagy a blob Storage-ban is könnyedén visszaállíthatók.
 
@@ -79,7 +79,7 @@ Azure Backup támogatja a virtuális gép összes lemezének (operációs rendsz
 
 További információ: [szelektív lemezek biztonsági mentése és visszaállítása az Azure Virtual Machines szolgáltatásban](selective-disk-backup-restore.md).
 
-## <a name="cross-region-restore-for-sql-server-and-sap-hana"></a>Régiók közötti visszaállítás SQL Server és SAP HANA
+## <a name="cross-region-restore-for-sql-server-and-sap-hana-in-preview"></a>Régiók közötti visszaállítás SQL Server és SAP HANA (előzetes verzióban)
 
 A régiók közötti visszaállítás bevezetésével mostantól egy másodlagos régióban visszaállíthatja a visszatárolást, amely csökkenti a valós állásidőt a környezete elsődleges régiójában. Így a másodlagos régió teljesen visszaállítja az ügyfél által vezérelt vezérlést. A Azure Backup a másodlagos régióba replikált biztonsági másolatokat használja az ilyen visszaállításokhoz.
 
@@ -99,13 +99,13 @@ Az Azure-beli virtuális gépeken lévő SQL Server biztonsági másolatainak ko
 
 További információ: [SQL Server biztonsági mentése a virtuális gép paneljéről](backup-sql-server-vm-from-vm-pane.md).
 
-## <a name="backup-sap-hana-in-rhel-azure-virtual-machines"></a>Biztonsági mentési SAP HANA a RHEL Azure-beli virtuális gépeken
+## <a name="backup-sap-hana-in-rhel-azure-virtual-machines-in-preview"></a>Backup SAP HANA a RHEL Azure Virtual Machines szolgáltatásban (előzetes verzió)
 
 A Azure Backup az Azure natív biztonsági mentési megoldása, amelyet az SAP BackInt tanúsított. Azure Backup már hozzáadta a Red Hat Enterprise Linux (RHEL) támogatását, amely az egyik legszélesebb körben használt Linux operációs rendszer, SAP HANA fut.
 
 További információ: [SAP HANA adatbázis biztonsági mentési forgatókönyvének támogatási mátrixa](sap-hana-backup-support-matrix.md#scenario-support).
 
-## <a name="zone-redundant-storage-zrs-for-backup-data"></a>A zóna redundáns tárolója (ZRS) a biztonsági másolati adatként
+## <a name="zone-redundant-storage-zrs-for-backup-data-in-preview"></a>A zóna redundáns tárolója (ZRS) a biztonsági mentési adatként (előzetes verzió)
 
 Az Azure Storage nagyszerű egyensúlyt biztosít a nagy teljesítményű, magas rendelkezésre állású és magas adatrugalmassággal és a különböző redundancia-lehetőségekkel. Azure Backup lehetővé teszi, hogy kiterjessze ezeket az előnyöket a biztonsági másolatok adataira is, a biztonsági másolatok tárolásához a helyileg redundáns tárolás (LRS) és a Geo-redundáns tárolás (GRS) segítségével. Most további tartóssági lehetőségek állnak rendelkezésre a zóna redundáns tárolásának (ZRS) támogatásával.
 

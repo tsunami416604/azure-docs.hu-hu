@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: a4a7b7a4008d5cc4636e2d533c225a618f35af05
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: e43c5fb36c5395e12fd0b9c2c67b787a1137f5d0
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611185"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761986"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>Hibaelhárítás az ITSM-összekötőben
 
@@ -43,24 +43,23 @@ Ha Service Map használ, megtekintheti a ITSM-megoldásokban létrehozott ügyf�
 
 ![Képernyőkép, amely a Log Analytics képernyőt jeleníti meg.](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
 
-## <a name="troubleshoot-itsm-connections"></a>ITSM-kapcsolatok hibáinak megoldása
-
-- Ha egy kapcsolat nem tud csatlakozni a ITSM rendszerhez, és hibaüzenet jelenik meg a **kapcsolati üzenet mentésekor** , hajtsa végre a következő lépéseket:
-   - ServiceNow, Cherwell és elővance kapcsolatok esetén:  
-     - Győződjön meg arról, hogy minden kapcsolathoz helyesen adta meg a felhasználónevet, a jelszót, az ügyfél-azonosítót és az ügyfél-titkot.  
-     - Győződjön meg arról, hogy megfelelő jogosultságokkal rendelkezik a megfelelő ITSM-termékben a kapcsolódáshoz.  
-   - Service Manager kapcsolatok esetén:  
-     - Győződjön meg arról, hogy a webalkalmazás üzembe helyezése sikeres volt, és hogy a hibrid kapcsolat létrejött. Annak ellenőrzéséhez, hogy a kapcsolat sikeresen létrejött-e a helyszíni Service Manager számítógéppel, lépjen a webalkalmazás URL-címére a [hibrid kapcsolat](./itsmc-connections-scsm.md#configure-the-hybrid-connection)létrehozásához szükséges dokumentációban leírtak szerint.  
-
-- Ha Log Analytics riasztások tüzet, de a munkaelemek nem jönnek létre a ITSM termékben, ha a konfigurációs elemek nem jönnek létre/nem kapcsolódnak munkaelemekhez vagy egyéb információkhoz, tekintse meg ezeket az erőforrásokat:
-   -  ITSMC: a megoldás a kapcsolatok, a munkaelemek, a számítógépek és egyebek [összegzését](itsmc-dashboard.md)jeleníti meg. Válassza ki az **összekötő állapota** címkével ellátott csempét. Ekkor a **Keresés** a megfelelő lekérdezéssel történik. További információért tekintse meg a rekordokat `LogType_S` `ERROR` .
-   A táblázatban található üzenetekre vonatkozó részleteket [itt](itsmc-dashboard-errors.md)tekintheti meg.
-   - **Naplók keresése** oldalon: a hibákat és a kapcsolódó információkat közvetlenül a lekérdezés használatával tekintheti meg `*ServiceDeskLog_CL*` .
-
 ## <a name="common-symptoms---how-should-it-be-resolved"></a>Gyakori tünetek – Hogyan oldható fel?
 
 Az alábbi lista általános tüneteket tartalmaz, és hogyan oldható meg a megoldás:
 
+* **Tünet**: Ha egy kapcsolat nem tud csatlakozni a ITSM rendszerhez, és hibaüzenet jelenik meg a **kapcsolati üzenet mentésekor** .
+
+    **OK**: az ok a lehetőségek egyike lehet:
+    * Helytelen hitelesítő adatok
+     * Nem megfelelő jogosultságok
+     * A webalkalmazást helyesen kell telepíteni
+
+    **Megoldás**:
+    * ServiceNow, Cherwell és elővance kapcsolatok esetén:
+        * Győződjön meg arról, hogy minden kapcsolathoz helyesen adta meg a felhasználónevet, a jelszót, az ügyfél-azonosítót és az ügyfél-titkot.  
+        * ServiceNow esetén: Győződjön meg arról, hogy megfelelő jogosultságokkal rendelkezik a megfelelő ITSM-termékben a [](itsmc-connections-servicenow.md#install-the-user-app-and-create-the-user-role)kapcsolódás megadásához.
+  * Service Manager kapcsolatok esetén:  
+      * Győződjön meg arról, hogy a webalkalmazás üzembe helyezése sikeres volt, és hogy a hibrid kapcsolat létrejött. Annak ellenőrzéséhez, hogy a kapcsolat sikeresen létrejött-e a helyszíni Service Manager számítógéppel, lépjen a webalkalmazás URL-címére a [hibrid kapcsolat](./itsmc-connections-scsm.md#configure-the-hybrid-connection)létrehozásához szükséges dokumentációban leírtak szerint.  
 * **Tünet**: ismétlődő munkaelemek jönnek létre
 
     **OK**: az ok a két lehetőség egyike lehet:

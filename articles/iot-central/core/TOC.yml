@@ -157,6 +157,8 @@
               href: howto-use-app-templates.md
             - name: Alkalmazásállapot monitorozása
               href: howto-monitor-application-health.md
+            - name: A v2 migrálása v3 alkalmazásba
+              href: howto-migrate.md
             - name: Az alkalmazásról
               href: howto-get-app-info.md
             - name: X.509-tanúsítványok összegzése

@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/10/2020
+ms.date: 1/25/2021
 ms.author: kenwith
-ms.openlocfilehash: efdbec10c74a6b1892df13b8308538e61f42f679
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2a27124ea76d6e5aaa7ec4b8ca36c388718ffb94
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98673501"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761302"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Oktatóanyag – a felhasználó-kiépítési attribútum testreszabása – SaaS-alkalmazások leképezése Azure Active Directory
 
@@ -75,7 +75,7 @@ A tulajdonsággal együtt az attribútum-hozzárendelések a következő attrib�
   - **Csak a létrehozás során** – alkalmazza ezt a leképezést csak a felhasználói létrehozási műveletekre.
 
 ## <a name="matching-users-in-the-source-and-target--systems"></a>A forrás-és a megcélzott rendszerek felhasználóinak egyeztetése
-Az Azure AD-kiépítési szolgáltatás a "zöldmezős" forgatókönyvekben is üzembe helyezhető (ahol a felhasználók nem tudnak kilépni a célként megadott rendszerből) és a "rozsdaövezetek rehabilitálása" forgatókönyvek (ahol a felhasználók már léteznek a célszámítógépen). Mindkét forgatókönyv támogatásához a kiépítési szolgáltatás a megfelelő attribútumok koncepcióját használja. Az egyeztetési attribútumok lehetővé teszik annak meghatározását, hogy a rendszer egyedi módon azonosítsa a felhasználókat a forrásban, és megegyezzen a célként megadott felhasználóval. Az üzembe helyezés megtervezésének részeként azonosítsa azt az attribútumot, amellyel egyedileg azonosíthatók a felhasználók a forrás-és a célként szolgáló rendszerekben. Tudnivaló:
+Az Azure AD-kiépítési szolgáltatás a "zöld mező" forgatókönyvekben is üzembe helyezhető (ahol a felhasználók nem lépnek ki a célként megadott rendszerből) és a "rozsdaövezetek rehabilitálása" forgatókönyvek (ahol a felhasználók már léteznek a célszámítógépen). Mindkét forgatókönyv támogatásához a kiépítési szolgáltatás a megfelelő attribútumok koncepcióját használja. Az egyeztetési attribútumok lehetővé teszik annak meghatározását, hogy a rendszer egyedi módon azonosítsa a felhasználókat a forrásban, és megegyezzen a célként megadott felhasználóval. Az üzembe helyezés megtervezésének részeként azonosítsa azt az attribútumot, amellyel egyedileg azonosíthatók a felhasználók a forrás-és a célként szolgáló rendszerekben. Tudnivaló:
 
 - **Az egyező attribútumok egyedinek kell lenniük:** Az ügyfelek gyakran használják az attribútumokat, például a userPrincipalName, az e-maileket vagy az objektumazonosítók használatát a megfelelő attribútumként.
 - **Több attribútum is használható egyező attribútumként:** Több attribútumot is megadhat a kiértékeléshez, ha a felhasználók és a kiértékelésük sorrendje (a felhasználói felületen egyező prioritásként van meghatározva). Ha például három attribútumot határoz meg egyező attribútumokként, és a felhasználó egyedi módon illeszkedik az első két attribútum kiértékelése után, akkor a szolgáltatás nem értékeli ki a harmadik attribútumot. A szolgáltatás a megadott sorrendben értékeli ki a megfelelő attribútumokat, és leállítja az értékelést, ha egyezés található.  
@@ -156,6 +156,7 @@ Az egyéni attribútumok nem lehetnek hivatkozási attribútumok, többértékű
       "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
       "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User"],
      "userName":"bjensen",
+     "id": "48af03ac28ad4fb88478",
      "externalId":"bjensen",
      "name":{
        "formatted":"Ms. Barbara J Jensen III",
@@ -333,7 +334,7 @@ Ha ezt a beállítást választja, a kiépítési szolgáltatás futása közben
 - A szerepkör attribútumot általában egy kifejezéssel kell leképezni, nem közvetlen hozzárendelést. A szerepkör-hozzárendeléssel kapcsolatos további részletekért lásd a fenti szakaszt. 
 - Noha letilthatja a csoportokat a leképezésekről, a felhasználók letiltása nem támogatott. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A felhasználók üzembe helyezésének és megszüntetésének automatizálása az SaaS-alkalmazásokban](user-provisioning.md)
 - [Kifejezések írása attribútum-leképezésekhez](functions-for-customizing-application-data.md)

@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 11/06/2020
 ms.author: atulmal
 ms.custom: github-actions-azure
-ms.openlocfilehash: d03acab340e593a925f042ca41f9e8967b468858
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 94134360de49a066f825cbb0c85712995d90b37f
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605445"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761452"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>A Kubernetes szolgáltatás üzembe helyezéséhez szükséges GitHub-műveletek
 
-A [GitHub-műveletek](https://docs.github.com/en/free-pro-team@latest/actions) révén rugalmasan hozhat létre automatizált szoftverfejlesztési életciklus-munkafolyamatot. Több Kubernetes műveletet is használhat a Azure Container Registry tárolók számára az Azure Kubernetes Service-be a GitHub-műveletekkel való üzembe helyezéshez. 
+A [GitHub-műveletek](https://docs.github.com/en/actions) révén rugalmasan hozhat létre automatizált szoftverfejlesztési életciklus-munkafolyamatot. Több Kubernetes műveletet is használhat a Azure Container Registry tárolók számára az Azure Kubernetes Service-be a GitHub-műveletekkel való üzembe helyezéshez. 
 
 ## <a name="prerequisites"></a>Előfeltételek 
 

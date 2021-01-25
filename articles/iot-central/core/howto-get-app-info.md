@@ -7,12 +7,12 @@ ms.author: dobett
 ms.date: 06/26/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 12ba8526be68d2cb15e37510e66f959ab65c6e99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5118fa22a198ee6871a4cfb455e88d345d6a44e0
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85802112"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760845"
 ---
 # <a name="about-your-application"></a>Az alkalmazásról
 
@@ -40,3 +40,5 @@ A IoT Central alkalmazással kapcsolatos információk lekérése:
 ## <a name="next-steps"></a>További lépések
 
 Most, hogy már tudja, hogyan találhatja meg IoT Central alkalmazásának verzióját, javasolt következő lépésként folytassa a rendszergazdáknak szóló útmutató cikkeinek megismerését: [IoT Central alkalmazás beállításainak módosítása](howto-administer.md).
+
+Ha v2-alkalmazással rendelkezik, tekintse [meg a v2 IoT Central alkalmazás áttelepítését v3 verzióra](howto-migrate.md)című témakört.

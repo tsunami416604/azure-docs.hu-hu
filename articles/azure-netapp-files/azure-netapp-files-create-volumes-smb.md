@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: b-juche
-ms.openlocfilehash: cd2a293ebcc35d4884211f50783738a502dcc7de
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 48ee05eebd91c60fa2cfecc80898d3be54367269
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854825"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762679"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>SMB-kötet létrehozása az Azure NetApp Files számára
 
@@ -45,7 +45,7 @@ Az alhálózatot delegálni kell Azure NetApp Files.
     |    AD Web Services    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    ICMPv4             |    N.A.       |    Visszhangos válasz    |
+    |    ICMPv4             |    N/A       |    Visszhangos válasz    |
     |    Kerberos           |    464       |    TCP           |
     |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |
@@ -58,7 +58,7 @@ Az alhálózatot delegálni kell Azure NetApp Files.
     |    SAM/LSA            |    445       |    UDP           |
     |    W32Time            |    123       |    UDP           |
 
-* A célként megadott Active Directory tartományi szolgáltatások helyének topológiájának meg kell felelnie az irányelveknek, különösen az Azure-VNet, ahol a Azure NetApp Files telepítve van.  
+* A célként megadott Active Directory Domain Services helyének topológiájának meg kell felelnie az irányelveknek, különösen az Azure-VNet, ahol a Azure NetApp Files telepítve van.  
 
     Egy új vagy meglévő Active Directory-helyhez hozzá kell adni a Azure NetApp Files központilag telepített virtuális hálózat címterület (ahol a tartományvezérlő elérhető a Azure NetApp Files) használatával. 
 
@@ -68,13 +68,13 @@ Az alhálózatot delegálni kell Azure NetApp Files.
 
     A hálózati biztonsági csoportoknak (NSG) és a tűzfalaknak megfelelően konfigurált szabályokkal kell rendelkezniük a Active Directory és a DNS forgalmi kéréseinek engedélyezéséhez. 
 
-* A Azure NetApp Files delegált alhálózatnak képesnek kell lennie arra, hogy elérje a tartomány összes Active Directory tartományi szolgáltatások (Hozzáadás) tartományvezérlőjét, beleértve az összes helyi és távoli tartományvezérlőt is. Ellenkező esetben a szolgáltatás megszakítása is bekövetkezhet.  
+* A Azure NetApp Files delegált alhálózatnak képesnek kell lennie arra, hogy elérje a tartomány összes Active Directory Domain Services (Hozzáadás) tartományvezérlőjét, beleértve az összes helyi és távoli tartományvezérlőt is. Ellenkező esetben a szolgáltatás megszakítása is bekövetkezhet.  
 
     Ha olyan tartományvezérlővel rendelkezik, amely nem érhető el a Azure NetApp Files delegált alhálózat számára, megadhat egy Active Directory helyet az Active Directory-kapcsolat létrehozása során.  Azure NetApp Files csak azokkal a tartományvezérlőkkel kell kommunikálni, amelyeken a Azure NetApp Files delegált alhálózati címtartomány található.
 
     Lásd: [a hely topológiájának megtervezése az](/windows-server/identity/ad-ds/plan/designing-the-site-topology) ad-helyekre és-szolgáltatásokra vonatkozóan. 
     
-* Az AES-titkosítás engedélyezéséhez jelölje be **az AES-titkosítás jelölőnégyzetet** az [illesztési Active Directory](#create-an-active-directory-connection) ablakban. Azure NetApp Files támogatja a DES, a Kerberos AES 128 és a Kerberos AES 256 titkosítási típusokat (a legkevésbé biztonságostól a legbiztonságosabbig). Ha engedélyezi az AES-titkosítást, akkor a Active Directoryhoz való csatlakozáshoz használt felhasználói hitelesítő adatoknak engedélyezve kell lennie a legfelső szintű fiók beállításnak, amely megfelel a Active Directory számára engedélyezett képességeknek.    
+* Az AD-hitelesítéshez tartozó AES-titkosítás engedélyezéséhez ellenőrizze az **AES-titkosítást** az [illesztési Active Directory](#create-an-active-directory-connection) ablakban. Azure NetApp Files támogatja a DES, a Kerberos AES 128 és a Kerberos AES 256 titkosítási típusokat (a legkevésbé biztonságostól a legbiztonságosabbig). Ha engedélyezi az AES-titkosítást, akkor a Active Directoryhoz való csatlakozáshoz használt felhasználói hitelesítő adatoknak engedélyezve kell lennie a legfelső szintű fiók beállításnak, amely megfelel a Active Directory számára engedélyezett képességeknek.    
 
     Ha például a Active Directory csak az AES-128 képességgel rendelkezik, engedélyeznie kell a felhasználói hitelesítő adatokhoz tartozó AES-128 fiók lehetőséget. Ha a Active Directory AES-256 képességgel rendelkezik, engedélyeznie kell az AES-256 fiók lehetőséget (amely szintén támogatja az AES-128-t). Ha a Active Directory nem rendelkezik Kerberos-titkosítási képességgel, akkor a Azure NetApp Files alapértelmezés szerint DES-t használ.  
 
@@ -90,15 +90,15 @@ További információ a további AD-információkról: Azure NetApp Files [SMB-g
 
 ## <a name="decide-which-domain-services-to-use"></a>A használni kívánt tartományi szolgáltatások kiválasztása 
 
-Azure NetApp Files támogatja az AD-kapcsolatok [Active Directory tartományi szolgáltatások](/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology) (Hozzáadás) és Azure Active Directory Domain Services (AADDS) használatát.  Az AD-kapcsolatok létrehozása előtt el kell döntenie, hogy használja-e a Add vagy a AADDS.  
+Azure NetApp Files támogatja az AD-kapcsolatok [Active Directory Domain Services](/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology) (Hozzáadás) és Azure Active Directory Domain Services (AADDS) használatát.  Az AD-kapcsolatok létrehozása előtt el kell döntenie, hogy használja-e a Add vagy a AADDS.  
 
-További információ: az [önálló felügyelt Active Directory tartományi szolgáltatások, Azure Active Directory és felügyelt Azure Active Directory Domain Services összehasonlítása](../active-directory-domain-services/compare-identity-solutions.md). 
+További információ: az [önálló felügyelt Active Directory Domain Services, Azure Active Directory és felügyelt Azure Active Directory Domain Services összehasonlítása](../active-directory-domain-services/compare-identity-solutions.md). 
 
 ### <a name="active-directory-domain-services"></a>Active Directory Domain Services
 
-A Azure NetApp Fileshez használhatja az előnyben részesített [Active Directory helyek és szolgáltatások](/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology) hatókörét. Ez a beállítás lehetővé teszi az olvasási és írási műveleteket a [Azure NetApp Files által elérhető](azure-netapp-files-network-topologies.md)tartományvezérlők Active Directory tartományi szolgáltatások (hozzáadásával). Azt is megakadályozza, hogy a szolgáltatás olyan tartományvezérlőkkel kommunikáljon, amelyek nem szerepelnek a megadott Active Directory helyek és szolgáltatások helyen. 
+A Azure NetApp Fileshez használhatja az előnyben részesített [Active Directory helyek és szolgáltatások](/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology) hatókörét. Ez a beállítás lehetővé teszi az olvasási és írási műveleteket a [Azure NetApp Files által elérhető](azure-netapp-files-network-topologies.md)tartományvezérlők Active Directory Domain Services (hozzáadásával). Azt is megakadályozza, hogy a szolgáltatás olyan tartományvezérlőkkel kommunikáljon, amelyek nem szerepelnek a megadott Active Directory helyek és szolgáltatások helyen. 
 
-Ha a HOZZÁADÁSAkor a hely nevét szeretné megkeresni, vegye fel a kapcsolatot a szervezetében a Active Directory tartományi szolgáltatások felelős felügyeleti csoporttal. Az alábbi példa a Active Directory helyek és szolgáltatások beépülő modult mutatja, ahol a hely neve jelenik meg: 
+Ha a HOZZÁADÁSAkor a hely nevét szeretné megkeresni, vegye fel a kapcsolatot a szervezetében a Active Directory Domain Services felelős felügyeleti csoporttal. Az alábbi példa a Active Directory helyek és szolgáltatások beépülő modult mutatja, ahol a hely neve jelenik meg: 
 
 ![Active Directory - helyek és szolgáltatások](../media/azure-netapp-files/azure-netapp-files-active-directory-sites-services.png)
 
@@ -144,7 +144,7 @@ Ez a beállítás a **NetApp-fiókhoz** tartozó **Active Directory-kapcsolatokb
     * **Másodlagos DNS**   
         Ez a másodlagos DNS-kiszolgáló a redundáns Name Services biztosításához. 
     * **AD DNS-tartománynév**  
-        Ez annak a Active Directory tartományi szolgáltatások a tartományneve, amelyhez csatlakozni szeretne.
+        Ez annak a Active Directory Domain Services a tartományneve, amelyhez csatlakozni szeretne.
     * **AD-hely neve**  
         Ennek a helynek a neve, amelyet a tartományvezérlő felderítése korlátozni fog. Ennek meg kell egyeznie a hely nevével Active Directory helyeken és szolgáltatásokban.
     * **SMB-kiszolgáló (számítógépfiók) előtagja**  
@@ -187,7 +187,7 @@ Ez a beállítás a **NetApp-fiókhoz** tartozó **Active Directory-kapcsolatokb
         Használhatja az [Azure CLI-parancsokat](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) is, `az feature register` és `az feature show` regisztrálhatja a funkciót, és megjelenítheti a regisztrációs állapotot. 
 
     * **LDAP-aláírás**   
-        Jelölje be ezt a jelölőnégyzetet az LDAP-aláírás engedélyezéséhez. Ez a funkció lehetővé teszi a biztonságos LDAP-kereséseket a Azure NetApp Files szolgáltatás és a felhasználó által megadott [Active Directory tartományi szolgáltatások-tartományvezérlők](/windows/win32/ad/active-directory-domain-services)között. További információ: [ADV190023 | Microsoft-útmutató az LDAP-csatornák kötésének és az LDAP-aláírás engedélyezéséhez](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).  
+        Jelölje be ezt a jelölőnégyzetet az LDAP-aláírás engedélyezéséhez. Ez a funkció lehetővé teszi a biztonságos LDAP-kereséseket a Azure NetApp Files szolgáltatás és a felhasználó által megadott [Active Directory Domain Services-tartományvezérlők](/windows/win32/ad/active-directory-domain-services)között. További információ: [ADV190023 | Microsoft-útmutató az LDAP-csatornák kötésének és az LDAP-aláírás engedélyezéséhez](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).  
 
         ![LDAP-aláírás Active Directory](../media/azure-netapp-files/active-directory-ldap-signing.png) 
 
@@ -321,7 +321,7 @@ A fájlokra vagy mappákra vonatkozó engedélyeket a Windows SMB-ügyfélben ta
  
 ![Fájl-és mappa engedélyeinek beállítása](../media/azure-netapp-files/set-file-folder-permissions.png) 
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 * [Kötet Windows vagy Linux rendszerű virtuális gépekhez való csatlakoztatása és leválasztása](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Az Azure NetApp Files erőforráskorlátai](azure-netapp-files-resource-limits.md)

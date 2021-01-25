@@ -8,12 +8,12 @@ ms.date: 11/05/2020
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: 3079b8384a24642322d6f6eb86e2ca7f0927db15
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 74de0481bf6786d245fb96f5d102ab72a00031c8
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065388"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760893"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>IoT-adatexportálás a Felhőbeli célhelyekre az adatexportálás használatával
 
@@ -35,6 +35,8 @@ Megteheti például a következőt:
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az adatexportálási funkciók használatához [v3 alkalmazás](howto-get-app-info.md)szükséges, és rendelkeznie kell az [adatexportálási](howto-manage-users-roles.md) engedéllyel.
+
+Ha v2-alkalmazással rendelkezik, tekintse [meg a v2 IoT Central alkalmazás áttelepítését v3 verzióra](howto-migrate.md)című témakört.
 
 ## <a name="set-up-export-destination"></a>Exportálás célhelyének beállítása
 
@@ -282,6 +284,6 @@ Az alábbi táblázat az [örökölt adatexportálás](howto-export-data-legacy.
 | Támogatott alkalmazások verziói | V2, V3 | Csak v3 |
 | Jelentős korlátok | 5 export/alkalmazás, 1 cél/exportálás | 10 exportálás – cél kapcsolatok száma alkalmazás szerint |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy már tudja, hogyan használhatja az új adatexportálást, egy javasolt következő lépés az [elemzések használatának](./howto-create-analytics.md) megismerése IoT Central

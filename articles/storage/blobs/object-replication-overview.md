@@ -10,12 +10,12 @@ ms.date: 01/13/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ff2408e35d76a6ea0d5221e04c7a41ed6cde7ac9
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: e7fa6b1ee7c92f82c3e15335991f5a240c7acc52
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178976"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762887"
 ---
 # <a name="object-replication-for-block-blobs"></a>Objektum-replikálás blokk-blobokhoz
 
@@ -88,7 +88,9 @@ A replikációs szabályok létrehozásakor alapértelmezés szerint csak a forr
 
 Egy vagy több szűrőt is megadhat egy replikációs szabály részeként a blokk Blobok előtag alapján történő szűréséhez. Egy előtag megadásakor a rendszer csak a forrás tárolóban lévő előtaggal egyező blobokat másolja a célhelyre.
 
-A forrás-és a cél tárolóknak is léteznie kell, mielőtt megadhatja őket egy szabályban. A replikációs szabályzat létrehozása után a céltároló csak olvashatóvá válik. A céltárolóba történő írásra tett kísérlet sikertelen lesz a következő hibakóddal: 409 (ütközés). Meghívhatja azonban a [blob szint beállítása](/rest/api/storageservices/set-blob-tier) műveletet a cél tárolóban lévő blobon az archív szintre való áthelyezéshez. Az archiválási szinttel kapcsolatos további információkért lásd [: Azure Blob Storage: gyors, ritka elérésű és archív hozzáférési szintek](storage-blob-storage-tiers.md#archive-access-tier).
+A forrás-és a cél tárolóknak is léteznie kell, mielőtt megadhatja őket egy szabályban. A replikációs házirend létrehozása után a cél tárolóba való írási műveletek nem engedélyezettek. A céltárolóba történő írásra tett kísérlet sikertelen lesz a következő hibakóddal: 409 (ütközés). Ha olyan célhelyre szeretne írni, amelyhez replikációs szabály van konfigurálva, törölnie kell az adott tárolóhoz konfigurált szabályt, vagy el kell távolítania a replikációs házirendet. A cél tárolóba való olvasási és törlési műveletek akkor engedélyezettek, ha a replikációs házirend aktív.
+
+A [blob szint beállítása](/rest/api/storageservices/set-blob-tier) műveletet a cél tárolóban lévő blobon hívhatja át az archiválási szintre. Az archiválási szinttel kapcsolatos további információkért lásd [: Azure Blob Storage: gyors, ritka elérésű és archív hozzáférési szintek](storage-blob-storage-tiers.md#archive-access-tier).
 
 ## <a name="replication-status"></a>A replikálás állapota
 
@@ -104,7 +106,7 @@ Ha a forrás fiókban található blob replikációs állapota hibát jelez, akk
 
 Az objektum-replikálás további költségekkel jár a forrás-és a célhelyek olvasási és írási műveleteinél, valamint a kimenő adatforgalomért a forrás-fiókból a cél fiókba történő adatreplikálási költségekkel, valamint a változási adatcsatorna feldolgozásával kapcsolatos költségek beolvasásával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Objektumreplikáció konfigurálása](object-replication-configure.md)
 - [A hírcsatornák támogatásának módosítása az Azure-ban Blob Storage](storage-blob-change-feed.md)

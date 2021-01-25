@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/05/2021
+ms.date: 01/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Mini R device so I can use it to transfer data to Azure.
-ms.openlocfilehash: 4535368b7d8d044469a4b0effee914176aca78e4
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: b6745ed879f02a341027417b54eb459b5bfed705
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935407"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762941"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-mini-r"></a>Oktatóanyag: Felkészülés a Azure Stack Edge mini R üzembe helyezésére
 
@@ -89,7 +89,7 @@ Azure Stack peremhálózati erőforrás létrehozásához hajtsa végre a követ
 1. A Microsoft Azure hitelesítő adataival jelentkezzen be a Azure Portalba ezen az URL-címen: [https://portal.azure.com](https://portal.azure.com) .
 
 
-2. A bal oldali panelen válassza az **+ Erőforrás létrehozása** elemet. Keresse meg és válassza ki **Azure stack Edge/Data Box Gateway**. Kattintson a **Létrehozás** gombra. 
+2. A bal oldali panelen válassza az **+ Erőforrás létrehozása** elemet. Keresse meg és válassza ki **Azure stack Edge/Data Box Gateway**. Válassza a **Létrehozás** lehetőséget. 
 
 3. Válassza ki az Azure Stack Edge Pro-eszközhöz használni kívánt előfizetést. Válassza ki azt az országot, ahová a fizikai eszközt el szeretné szállítani. Válassza az **eszközök megjelenítése** lehetőséget.
 
@@ -114,18 +114,18 @@ Azure Stack peremhálózati erőforrás létrehozásához hajtsa végre a követ
     |Beállítás  |Érték  |
     |---------|---------|
     |Név   | Az erőforrást azonosító valódi név.<br>A név 2 – 50 karakterből állhat, beleértve a betűket, számokat és kötőjeleket.<br> A névnek betűvel vagy számmal kell kezdődnie és végződnie.        |
-    |Region     |Az Azure Stack Edge-erőforrást tartalmazó régiók listáját itt tekintheti meg: [régiónként elérhető Azure-termékek](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Government használata esetén az összes kormányzati régió elérhető az [Azure-régiókban](https://azure.microsoft.com/global-infrastructure/regions/)látható módon.<br> Az eszköz üzembe helyezésének földrajzi régiójához legközelebb eső helyet válasszon.|
+    |Régió     |Az Azure Stack Edge-erőforrást tartalmazó régiók listáját itt tekintheti meg: [régiónként elérhető Azure-termékek](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Government használata esetén az összes kormányzati régió elérhető az [Azure-régiókban](https://azure.microsoft.com/global-infrastructure/regions/)látható módon.<br> Az eszköz üzembe helyezésének földrajzi régiójához legközelebb eső helyet válasszon.|
 
     ![4. erőforrás létrehozása](media/azure-stack-edge-mini-r-deploy-prep/create-resource-4.png)
 
 
 7. Válassza a **Next (tovább): szállítási címet**.
 
-    - Ha már rendelkezik egy eszközzel, válassza a kombinált listát, amelyhez **már van eszköz**.
+   - Ha már rendelkezik egy eszközzel, válassza a kombinált listát, amelyhez **már van eszköz**.
 
      ![5. erőforrás létrehozása](media/azure-stack-edge-mini-r-deploy-prep/create-resource-5.png)
 
-    - Ha ez az új eszköz, amelyet Ön megrendelt, adja meg a kapcsolattartó nevét, a vállalatot, az eszköznek a szolgáltatásba való szállítását és a kapcsolattartási adatokat.
+   - Ha ez az új eszköz, amelyet Ön megrendelt, adja meg a kapcsolattartó nevét, a vállalatot, az eszköznek a szolgáltatásba való szállítását és a kapcsolattartási adatokat.
 
      ![6. erőforrás létrehozása](media/azure-stack-edge-mini-r-deploy-prep/create-resource-6.png)
 
@@ -137,7 +137,7 @@ Azure Stack peremhálózati erőforrás létrehozásához hajtsa végre a követ
 
     Arról is értesítést kap, hogy az erőforrás létrehozásakor egy Managed Service Identity (MSI) van engedélyezve, amely lehetővé teszi a felhőalapú szolgáltatásokban történő hitelesítést. Ez az identitás mindaddig létezik, amíg az erőforrás létezik.
 
-10. Kattintson a **Létrehozás** gombra.
+10. Válassza a **Létrehozás** lehetőséget.
 
     Az erőforrás létrehozása néhány percet vesz igénybe. A rendszer létrehoz egy MSI-t is, amely lehetővé teszi, hogy az Azure Stack Edge-eszköz kommunikáljon az Azure-beli erőforrás-szolgáltatóval.
     
@@ -145,9 +145,12 @@ Azure Stack peremhálózati erőforrás létrehozásához hajtsa végre a követ
     
     ![Ugrás az Azure Stack Edge Pro-erőforrásra](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-1.png)
     
-    A megrendelés elhelyezése után a Microsoft áttekinti a rendelést, és elküldi Önt (e-mailben) a szállítási adatokkal.
+A megrendelés elhelyezése után a Microsoft áttekinti a rendelést, és elküldi Önt (e-mailben) a szállítási adatokkal.
 
-   Ha a rendelési folyamat során problémákba ütközik, tekintse meg a [rendelési problémák elhárítása](azure-stack-edge-troubleshoot-ordering.md)című témakört.
+> [!NOTE]
+> Ha egyszerre több rendelést kíván létrehozni vagy egy meglévő rendelés klónozását, használhatja a [szkripteket az Azure-mintákban](https://github.com/Azure-Samples/azure-stack-edge-order). További információkért tekintse meg a README fájlt.
+
+Ha a rendelési folyamat során problémákba ütközik, tekintse meg a [rendelési problémák elhárítása](azure-stack-edge-troubleshoot-ordering.md)című témakört.
 
 ## <a name="get-the-activation-key"></a>Az aktiválási kulcs lekérése
 

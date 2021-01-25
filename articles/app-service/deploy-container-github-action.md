@@ -7,16 +7,16 @@ ms.date: 12/04/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: fec4ba8cba33a1d52d8f330308645fb616921ba4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 1fe09970bcb9b9432b9b6f22de04bb24f1e84fa8
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98726804"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761756"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Egyéni tároló üzembe helyezése a GitHub-műveletek használatával App Service
 
-A [GitHub-műveletek](https://docs.github.com/en/free-pro-team@latest/actions) révén rugalmasan hozhat létre automatizált szoftverfejlesztői munkafolyamatokat. Az [Azure web Deploy művelettel](https://github.com/Azure/webapps-deploy)automatizálhatja a munkafolyamatot, hogy egyéni tárolókat helyezzen üzembe [app Service](overview.md) a GitHub-műveletek használatával.
+A [GitHub-műveletek](https://docs.github.com/en/actions) révén rugalmasan hozhat létre automatizált szoftverfejlesztői munkafolyamatokat. Az [Azure web Deploy művelettel](https://github.com/Azure/webapps-deploy)automatizálhatja a munkafolyamatot, hogy egyéni tárolókat helyezzen üzembe [app Service](overview.md) a GitHub-műveletek használatával.
 
 A munkafolyamatot egy YAML-(. YML) fájl határozza meg a `/.github/workflows/` tárház elérési útjában. Ez a definíció a munkafolyamat különböző lépéseit és paramétereit tartalmazza.
 
@@ -39,7 +39,7 @@ Azure App Service tároló munkafolyamathoz a fájl három szakaszt tartalmaz:
 
 Az Azure App Services a GitHub-műveletekhez való hitelesítésének ajánlott módja a közzétételi profil. A hitelesítést egy egyszerű szolgáltatással is elvégezheti, de a folyamat további lépéseket igényel. 
 
-Mentse a közzétételi profil hitelesítő adatait vagy egyszerű szolgáltatásnevet [GitHub-titokként](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets) az Azure-beli hitelesítéshez. A titkos kulcsot a munkafolyamaton belül érheti el. 
+Mentse a közzétételi profil hitelesítő adatait vagy egyszerű szolgáltatásnevet [GitHub-titokként](https://docs.github.com/en/actions/reference/encrypted-secrets) az Azure-beli hitelesítéshez. A titkos kulcsot a munkafolyamaton belül érheti el. 
 
 # <a name="publish-profile"></a>[Profil közzététele](#tab/publish-profile)
 
@@ -273,7 +273,7 @@ Megtalálhatja a GitHubon különböző adattárakba csoportosított műveleteit
 
 - [Docker-bejelentkezés/kijelentkezés](https://github.com/Azure/docker-login)
 
-- [Munkafolyamatokat kiváltó események](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
+- [Munkafolyamatokat kiváltó események](https://docs.github.com/en/actions/reference/events-that-trigger-workflows)
 
 - [K8s üzembe helyezése](https://github.com/Azure/k8s-deploy)
 

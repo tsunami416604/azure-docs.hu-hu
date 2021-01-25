@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22a4bdc92ea2a91425c1070a5837c672307de665
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 3e22e5fc4bc7211d905dbe8775b0ef6e893bd2cc
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683776"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761000"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Bejelentkezés az Azure-beli Windows rendszerű virtuális gépre Azure Active Directory hitelesítéssel (előzetes verzió)
 
@@ -350,7 +350,9 @@ Győződjön meg arról, hogy a távoli asztali kapcsolat kezdeményezéséhez h
 > [!NOTE]
 > A Windows 10 Build 20H1 támogatja az Azure AD-ban regisztrált SZÁMÍTÓGÉPeket, hogy RDP-kapcsolatokat kezdeményezzenek a virtuális géppel. Ha egy regisztrált Azure AD-t (nem az Azure AD-hez csatlakoztatott vagy hibrid Azure AD-csatlakoztatott) futtató számítógépet használ a virtuális géphez való kapcsolatok kezdeményezéséhez, meg kell adnia a hitelesítő adatokat a következő formátumban: AzureAD\UPn (például AzureAD\john@contoso.com ).
 
-Azt is ellenőrizze, hogy az Azure AD JOIN befejeződése után nem lett-e eltávolítva az AADLoginForWindows bővítmény.
+Győződjön meg arról, hogy a AADLoginForWindows bővítmény nem lett eltávolítva az Azure AD-csatlakozás befejeződése után.
+
+Győződjön meg arról is, hogy a "hálózati biztonság: a PKU2U hitelesítési kérések engedélyezése a számítógépen az online identitások használatára" biztonsági házirend engedélyezve van a kiszolgálón *és* az ügyfélen is.
  
 #### <a name="mfa-sign-in-method-required"></a>MFA bejelentkezési módszer szükséges
 
@@ -371,6 +373,6 @@ Ha még nem telepítette a vállalati Windows Hello szolgáltatást, és ha ez n
 
 Ossza meg visszajelzését erről az előzetes verziójú szolgáltatásról, vagy jelentse a problémát az [Azure ad visszajelzési fórumának](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Azure Active Directoryről: [Mi az Azure Active Directory](../fundamentals/active-directory-whatis.md)

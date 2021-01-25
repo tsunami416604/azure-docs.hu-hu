@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 09d793f3d8ed544a386a362677f24be6d18673d7
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 27a97ceb2ca9a7b58df7200930e4e47d89c9ae89
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96748729"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762166"
 ---
 # <a name="workflow"></a>Munkafolyamat
 
@@ -38,6 +38,18 @@ Az alábbi általános lépések egy tipikus SGX ENKLÁVÉHOZ enklávé-igazolá
 
 > [!Note]
 > Amikor igazolási kérelmeket küld az [2018-09-01 – előzetes](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/attestation/data-plane/Microsoft.Attestation/stable/2018-09-01-preview) verziójú API-verzióban, az ügyfélnek bizonyítania kell az Azure-igazolást az Azure ad hozzáférési jogkivonatával együtt.
+
+## <a name="trusted-platform-module-tpm-enclave-validation-work-flow"></a>A platformmegbízhatósági modul (TPM) enklávé ellenőrzési munkafolyamata
+
+Az alábbi általános lépések egy tipikus TPM enklávé-igazolási munkafolyamatban (az Azure igazolás használatával):
+
+1.  Az eszköz/platform rendszerindításkor a különböző rendszerindító és rendszerindítási szolgáltatások mérik a TPM által támogatott és biztonságosan tárolt eseményeket (TCG-napló).
+2.  Az ügyfél a TCG-naplókat az eszközről és a TPM-idézetből gyűjti, amely igazolja az igazolást.
+3.  Az ügyfél rendelkezik egy URI-val, amely az Azure-igazolás egy példányára hivatkozik. Az ügyfél bizonyítékokat küld az Azure-igazolásra. A szolgáltatónak küldött pontos információk a platformtól függenek.
+4.  Az Azure-igazolás ellenőrzi a beküldött adatokat, és kiértékeli azt egy konfigurált házirend alapján. Ha az ellenőrzés sikeres, az Azure igazolása hibát jelez, és visszaadja az ügyfélnek. Ha ez a lépés meghiúsul, az Azure-igazolás hibát jelez az ügyfélnek. Az ügyfél és az igazolási szolgáltatás közötti kommunikációt az Azure igazolási TPM protokollja határozza meg.
+5.  Az ügyfél ezután elküldi az igazolási jogkivonatot a függő entitásnak. A függő entitás meghívja az Azure-tanúsítvány nyilvános kulcsú metaadat-végpontját az aláíró tanúsítványok lekéréséhez. A függő entitás ezután ellenőrzi az igazolási jogkivonat aláírását, és biztosítja a platformok megbízhatóságát.
+
+![TPM-ellenőrzési folyamat](./media/tpm-validation-flow.png)
 
 ## <a name="next-steps"></a>További lépések
 - [Igazolási szabályzat létrehozása és aláírása](author-sign-policy.md)

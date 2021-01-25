@@ -3,12 +3,12 @@ title: Erőforrás-elnevezési korlátozások
 description: Az Azure-erőforrások elnevezési szabályait és korlátozásait mutatja be.
 ms.topic: conceptual
 ms.date: 12/29/2020
-ms.openlocfilehash: 59babd9298fdca96b450b2dc67832c86c043c49c
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: bd8ba72d43b7e3e5a9145d756741436f0a49e18b
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132749"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762486"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Az Azure-erőforrásokra vonatkozó elnevezési szabályok és korlátozások
 
@@ -107,7 +107,7 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | batchAccounts | Region | 3–24 | Kisbetűk és számok. |
+> | batchAccounts | Régió | 3–24 | Kisbetűk és számok. |
 > | batchAccounts/alkalmazások | batch-fiók | 1-64 | Alfanumerikus karakterek, aláhúzások és kötőjelek. |
 > | batchAccounts/tanúsítványok | batch-fiók | 5-45 | Alfanumerikus karakterek, aláhúzások és kötőjelek. |
 > | batchAccounts/készletek | batch-fiók | 1-64 | Alfanumerikus karakterek, aláhúzások és kötőjelek. |
@@ -544,7 +544,7 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | megoldások | munkaterület | N.A. | A Microsoft által létrehozott megoldások esetében a névnek a következő mintában kell szerepelnie:<br>`SolutionType(WorkspaceName)`<br><br>Harmadik felek által létrehozott megoldások esetében a névnek a következő mintában kell lennie:<br>`SolutionType[WorkspaceName]`<br><br>Egy érvényes név például a következő:<br>`AntiMalware(contoso-IT)`<br><br>A megoldás típusa megkülönbözteti a kis-és nagybetűket. |
+> | megoldások | munkaterület | N/A | A Microsoft által létrehozott megoldások esetében a névnek a következő mintában kell szerepelnie:<br>`SolutionType(WorkspaceName)`<br><br>Harmadik felek által létrehozott megoldások esetében a névnek a következő mintában kell lennie:<br>`SolutionType[WorkspaceName]`<br><br>Egy érvényes név például a következő:<br>`AntiMalware(contoso-IT)`<br><br>A megoldás típusa megkülönbözteti a kis-és nagybetűket. |
 
 ## <a name="microsoftportal"></a>Microsoft. Portal
 
@@ -633,9 +633,9 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | managedInstances | globális | 1–63 | Kisbetűk, számok és kötőjelek.<br><br>A kötőjel nem kezdődhet vagy végződhet. |
+> | managedInstances | globális | 1–63 | Kisbetűk, számok és kötőjelek.<br><br>A kötőjel nem kezdődhet vagy végződhet. <br><br> Nem lehet speciális karakter, például: `@` . |
 > | kiszolgálók | globális | 1–63 | Kisbetűk, számok és kötőjelek.<br><br>A kötőjel nem kezdődhet vagy végződhet. |
-> | kiszolgálók/rendszergazdák | kiszolgáló |  | Kell lennie `ActiveDirectory` . |
+> | kiszolgálók/rendszergazdák | kiszolgáló |  | Kell lennie `ActiveDirectory` . <br><br> Nem lehet speciális karakter, például: `@` .|
 > | kiszolgálók/adatbázisok | kiszolgáló | 1-128 | Nem használható:<br>`<>*%&:\/?`<br><br>Nem végződhet ponttal vagy szóközzel. |
 > | kiszolgálók/adatbázisok/syncGroups | adatbázis | 1-150 | Alfanumerikus karakterek, kötőjelek és aláhúzások. |
 > | kiszolgálók/elasticPools | kiszolgáló | 1-128 | Nem használható:<br>`<>*%&:\/?`<br><br>Nem végződhet ponttal vagy szóközzel. |
@@ -706,6 +706,6 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > [!NOTE]
 > A Azure Functions azonos elnevezési szabályokkal és korlátozásokkal rendelkezik, mint a Microsoft. Web/Sites.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az erőforrások elnevezésével kapcsolatos ajánlásokat a [Ready: ajánlott elnevezési és címkézési konvenciók](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)című témakörben talál.

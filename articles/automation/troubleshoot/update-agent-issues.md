@@ -4,17 +4,17 @@ description: Ez a cikk azt ismerteti, hogyan lehet a Windows Update agenttel kap
 services: automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 01/16/2020
+ms.date: 01/25/2020
 ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 92020313fccf1b8be0add58a7bafab62b5daa4d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5c2cc014c87a345507e9c0f99c507d151d59b86
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187132"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762127"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>A Windows Update Agent hibáinak elhárítása
 
@@ -27,10 +27,10 @@ Számos oka lehet annak, hogy a gép a Update Management üzembe helyezése sor�
 > [!NOTE]
 > A Azure Portal megjelenítése és a gép aktuális állapota között enyhe késés adható meg.
 
-Ez a cikk azt ismerteti, hogyan futtathatja az Azure-gépek hibakeresőjét a Azure Portal és nem Azure-beli gépekről az [Offline forgatókönyvben](#troubleshoot-offline). 
+Ez a cikk azt ismerteti, hogyan futtathatja az Azure-gépek hibakeresőjét a Azure Portal és nem Azure-beli gépekről az [Offline forgatókönyvben](#troubleshoot-offline).
 
 > [!NOTE]
-> A hibakereső parancsfájl mostantól tartalmazza a Windows Server Update Services (WSUS) és az automatikus letöltés és a telepítési kulcsok ellenőrzését. 
+> A hibakereső parancsfájl mostantól tartalmazza a Windows Server Update Services (WSUS) és az automatikus letöltés és a telepítési kulcsok ellenőrzését.
 
 ## <a name="start-the-troubleshooter"></a>A hibakereső elindítása
 
@@ -59,7 +59,7 @@ Az operációs rendszer ellenőrzése ellenőrzi, hogy a hibrid Runbook-feldolgo
 |---------|---------|
 |Windows Server 2012 és újabb verziók |A .NET-keretrendszer 4,6-es vagy újabb verziójára van szükség. ([A .NET-keretrendszer letöltése](/dotnet/framework/install/guide-for-developers).)<br/> A Windows PowerShell 5,1 megadása kötelező.  (A[Windows Management Framework 5,1 letöltése](https://www.microsoft.com/download/details.aspx?id=54616).)        |
 
-### <a name="net-462"></a>.NET-4.6.2
+### <a name="net-462"></a>.NET 4.6.2
 
 A .NET-keretrendszer ellenőrzése ellenőrzi, hogy a rendszeren telepítve van-e a [.NET-keretrendszer 4.6.2](https://www.microsoft.com/en-us/download/details.aspx?id=53345) vagy újabb verziója.
 
@@ -110,7 +110,7 @@ A kriptográfiai mappa hozzáférés-ellenőrzését határozza meg, hogy a hely
 
 ## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>Offline hibák
 
-A hibakeresést a hibrid Runbook-feldolgozón offline módon, a parancsfájl helyi futtatásával használhatja. Szerezze be a következő szkriptet a PowerShell-galéria: [hibakeresés – WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration). A parancsfájl futtatásához a WMF 4,0-es vagy újabb verziójára van szükség. A PowerShell legújabb verziójának letöltéséhez lásd: a [PowerShell különböző verzióinak telepítése](/powershell/scripting/install/installing-powershell).
+A hibakeresést a hibrid Runbook-feldolgozón offline módon, a parancsfájl helyi futtatásával használhatja. Szerezze be a következő szkriptet a GitHubról: [UM_Windows_Troubleshooter_Offline.ps1](https://github.com/Azure/updatemanagement/blob/main/UM_Windows_Troubleshooter_Offline.ps1). A parancsfájl futtatásához a WMF 4,0-es vagy újabb verziójára van szükség. A PowerShell legújabb verziójának letöltéséhez lásd: a [PowerShell különböző verzióinak telepítése](/powershell/scripting/install/installing-powershell).
 
 A szkript kimenete a következő példához hasonlóan néz ki:
 

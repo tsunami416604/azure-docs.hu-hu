@@ -6,20 +6,20 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: 9521c13b21317bb0a782b0bea0b08312ff24b113
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: c3e6408a6a3473380edbe2966eba41970bd73562
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610352"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762760"
 ---
-# <a name="errors-in-the-connector-status"></a>Az összekötő állapotával kapcsolatos hibák
+# <a name="errors-in-the-connector-status-section"></a>Hibák az összekötő állapota szakaszban
 
-Az összekötő állapota listán olyan hibák találhatók, amelyek segíthetnek a ITSM-összekötő hibáinak kijavításában.
+Az irányítópult összekötő állapota lista szakaszában olyan hibákat talál, amelyek segíthetnek a ITSM-összekötő hibáinak kijavításában.
 
 ## <a name="status-common-errors"></a>Gyakori hibák állapota
 
-Ebben a szakaszban megtalálhatja az összekötő állapota szakaszban bemutatott gyakori hibákat és a megoldás módját:
+Ebben a szakaszban megtalálhatja az összekötő állapota szakaszban bemutatott gyakori hibákat, valamint azt, hogyan oldja fel őket:
 
 * **Hiba**: "váratlan válasz érkezett a ServiceNow, valamint a sikeres állapotkód. Válasz: {"import_set": "{import_set_id}", "staging_table": "x_mioms_microsoft_oms_incident", "result": [{"transform_map": "OMS incidens", "Table": "incidens", "status": "hiba", "error_message": "{a cél rekord nem található | Érvénytelen tábla | Érvénytelen előkészítési tábla: "}"
 
@@ -27,7 +27,7 @@ Ebben a szakaszban megtalálhatja az összekötő állapota szakaszban bemutatot
   * A ServiceNow-példányban üzembe helyezett egyéni parancsfájlok figyelmen kívül hagyják az incidenseket.
   * A "OMS integrátori alkalmazás" kódját maga a ServiceNow oldalon módosították, például a onBefore-szkriptet.
 
-  **Megoldás**: tiltsa le az Adatimportálási útvonal összes egyéni parancsfájlját vagy programkódjának módosításait.
+  **Megoldás**: tiltsa le az összes egyéni parancsfájlt vagy programkód-módosítást.
 
 * **Hiba**: a (z) "{" hiba ": {" üzenet ":" sikertelen művelet "," Részletek ":" ACL-kivétel frissítése sikertelen volt a biztonsági korlátozások miatt "}
 
@@ -58,7 +58,7 @@ Ebben a szakaszban megtalálhatja az összekötő állapota szakaszban bemutatot
     **OK**: ITSM-csatoló törölve.
 
     **Megoldás**: a ITSM-csatoló törölve lett, de még ITSM-műveleti csoportok vannak társítva. A probléma megoldásához 2 lehetőség közül választhat:
-  * A művelet megkeresése és letiltása vagy törlése
+  * Ilyen műveleti csoportok keresése és letiltása vagy törlése
   * [Konfigurálja újra a műveleti csoportot](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts) meglévő ITSM-csatoló használatára.
   * [Hozzon létre egy új ITSM-összekötőt](./itsmc-definition.md#create-an-itsm-connection) , és [konfigurálja újra a műveleti csoportot a használatára](itsmc-definition.md#create-itsm-work-items-from-azure-alerts).
 

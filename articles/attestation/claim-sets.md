@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: afe2cf288cd4a15091e8278309b3ecf74a2d35a4
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: eb08bb262806cb662822a75898196546a5c1058e
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572748"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762538"
 ---
 # <a name="claim-sets"></a>Jogcímkészletek
 
@@ -55,6 +55,12 @@ Az alábbi, az [IETF JWT](https://tools.ietf.org/html/rfc7519) által definiált
 Az [IETF által megevett](https://tools.ietf.org/html/draft-ietf-rats-eat-03#page-9) és az Azure-igazolás által a Response objektumban használt jogcímek:
 - **"Alkalmi jogcím" (alkalom)**
 
+Az alábbi jogcímek alapértelmezés szerint a bejövő jogcímek alapján jönnek létre
+- **x-MS-ver**: JWT séma verziója (várhatóan "1,0")
+- **x-MS-igazolás-típus**: az igazolás típusát jelképező karakterlánc-érték 
+- **x-MS-Policy-hash**: karakterlánc-érték, amely tartalmazza a BASE64URL által kiszámított sha256-kivonatot (sha256 (UTF8 (BASE64URL)))
+- **x-MS-Policy-aláíró**: egy JWK tartalmaz, amely tartalmazza a nyilvános kulcsot, vagy az aláírt szabályzat fejlécében lévő tanúsítványlánc. x-MS-Policy-aláíró csak akkor lesz hozzáadva, ha a házirend aláírása megtörténik
+
 ## <a name="claims-specific-to-sgx-enclaves"></a>A SGX ENKLÁVÉHOZ enklávés-re vonatkozó jogcímek
 
 ### <a name="incoming-claims-specific-to-sgx-attestation"></a>SGX ENKLÁVÉHOZ-igazolásra vonatkozó bejövő jogcímek
@@ -71,7 +77,6 @@ Az alábbi jogcímeket a szolgáltatás hozza létre a SGX ENKLÁVÉHOZ igazolá
 Az alábbi jogcímeket a szolgáltatás hozza létre, és a SGX ENKLÁVÉHOZ-igazoláshoz tartozó Response objektum tartalmazza:
 - **x-MS-SGX enklávéhoz-** a-hibakereső: logikai érték, amely azt jelzi, hogy az enklávéban engedélyezve van-e a hibakeresés
 - **x-MS-SGX enklávéhoz-Product-ID**
-- **x-MS-ver**
 - **x-MS-SGX enklávéhoz-mrsigner**: az idézőjel "mrsigner" mezőjének hexadecimális kódolású értéke
 - **x-MS-SGX enklávéhoz-mrenclave**: az idézőjel "mrenclave" mezőjének hexadecimális kódolású értéke
 - **x-MS-SGX enklávéhoz-svn**: az idézőjelbe kódolt biztonsági verziószám 
@@ -99,36 +104,39 @@ Maa – EHD | x-MS-SGX enklávéhoz-EHD
 AAS – EHD | x-MS-SGX enklávéhoz-EHD
 Maa – attestationcollateral | x-MS-SGX enklávéhoz-biztosíték
 
-## <a name="claims-issued-specific-to-trusted-platform-module-tpm-attestation"></a>A platformmegbízhatósági modul-(TPM-) igazoláshoz megadott jogcímek
+## <a name="claims-specific-to-trusted-platform-module-tpm-vbs-attestation"></a>Platformmegbízhatósági modul (TPM)/VBS igazolásra vonatkozó jogcímek
 
-### <a name="incoming-claims-can-also-be-used-as-outgoing-claims"></a>Bejövő jogcímek (kimenő jogcímekként is használhatók)
+### <a name="incoming-claims-for-tpm-attestation"></a>TPM-igazolás bejövő jogcímei
 
-- **aikValidated**: logikai érték, amely információt tartalmaz, ha az igazolási azonosító kulcs (AIK) tanúsítványa ellenőrizve lett vagy nem.
-- **aikPubHash**: a Base64-t tartalmazó karakterlánc (sha256 (AIK public key in der Format)).
-- **tpmVersion**: Integer érték, amely tartalmazza a PLATFORMMEGBÍZHATÓSÁGI modul (TPM) főverzióját.
-- **secureBootEnabled**: logikai érték, amely jelzi, hogy a biztonságos rendszerindítás engedélyezve van-e.
-- **iommuEnabled**: logikai érték, amely azt jelzi, hogy engedélyezve van-e a bemeneti-kimeneti memória kezelési egysége (Iommu).
-- **bootDebuggingDisabled**: logikai érték, amely azt jelzi, hogy le van-e tiltva a rendszerindítási hibakeresés.
-- **notSafeMode**: logikai érték, amely azt jelzi, hogy a Windows nem csökkentett módban fut-e.
-- **notWinPE**: logikai érték, amely azt jelzi, hogy a Windows nem a WinPE módban fut-e.
-- **vbsEnabled**: logikai érték, amely azt jelzi, hogy a vbs engedélyezve van-e.
-- **vbsReportPresent**: logikai érték, amely azt jelzi, hogy elérhető-e a vbs enklávé-jelentés.
-- **enclaveAuthorId**: karakterlánc-érték, amely az enklávé szerző azonosítójának Base64Url kódolt értékét tartalmazza – az enklávé elsődleges moduljának szerzői azonosítóját.
-- **enclaveImageId**: az enklávé rendszerkép-azonosítójának Base64Url kódolt értékét tartalmazó karakterlánc-érték – az enklávé elsődleges moduljának képazonosítója.
-- **enclaveOwnerId**: az enklávé tulajdonos-azonosítójának Base64Url kódolt értékét tartalmazó karakterlánc-érték – az enklávé tulajdonosának azonosítója.
-- **enclaveFamilyId**: az ENKLÁVÉ család azonosítójának Base64Url kódolt értékét tartalmazó karakterlánc-érték. Az enklávé elsődleges moduljának családjának azonosítója.
-- **enclaveSvn**: Integer érték, amely az enklávé elsődleges moduljának biztonsági verziószámát tartalmazza.
-- **enclavePlatformSvn**: Integer érték, amely az enklávét működtető platform biztonsági verziószámát tartalmazza.
+A TPM-igazoláshoz az Azure-igazolás által kiállított jogcímek. A jogcímek rendelkezésre állása az igazoláshoz megadott bizonyítékoktól függ.
+
+- **aikValidated**: logikai érték, amely információt tartalmaz, ha az igazolási azonosító kulcs (AIK) tanúsítványa ellenőrizve lett vagy nem
+- **aikPubHash**: a Base64-t tartalmazó karakterlánc (sha256 (AIK public key in der Format))
+- **tpmVersion**: Integer érték, amely a PLATFORMMEGBÍZHATÓSÁGI modul (TPM) főverzióját tartalmazza
+- **secureBootEnabled**: logikai érték, amely azt jelzi, hogy engedélyezve van-e a biztonságos rendszerindítás
+- **iommuEnabled**: logikai érték, amely azt jelzi, hogy engedélyezve van-e a bemeneti kimeneti memória kezelési egysége (Iommu)
+- **bootDebuggingDisabled**: logikai érték, amely azt jelzi, hogy le van-e tiltva a rendszerindítási hibakeresés
+- **notSafeMode**: logikai érték, amely azt jelzi, hogy a Windows nem biztonságos módban fut-e
+- **notWinPE**: logikai érték, amely azt jelzi, hogy a Windows nem a WinPE módban fut-e
+- **vbsEnabled**: logikai érték, amely azt jelzi, hogy a vbs engedélyezve van-e
+- **vbsReportPresent**: logikai érték, amely azt jelzi, hogy elérhető-e a vbs enklávé-jelentés
+
+### <a name="incoming-claims-for-vbs-attestation"></a>A VBS-igazolás bejövő jogcímei
+
+Az Azure-igazolás által a VBS igazoláshoz kiadott jogcímek a TPM-igazoláshoz elérhető jogcímek mellett is szerepelnek. A jogcímek rendelkezésre állása az igazoláshoz megadott bizonyítékoktól függ.
+
+- **enclaveAuthorId**: az enklávé szerző azonosítójának Base64Url kódolt értékét tartalmazó karakterlánc-érték – az enklávé elsődleges moduljának szerzői azonosítója
+- **enclaveImageId**: az enklávé rendszerkép-azonosítójának Base64Url kódolt értékét tartalmazó karakterlánc-érték – az enklávé elsődleges moduljának képazonosítója
+- **enclaveOwnerId**: az enklávé tulajdonosi azonosítójának Base64Url kódolt értékét tartalmazó karakterlánc-érték – az enklávé tulajdonosának azonosítója
+- **enclaveFamilyId**: az ENKLÁVÉ család azonosítójának Base64Url kódolt értékét tartalmazó karakterlánc-érték. Az enklávé elsődleges moduljának családjának azonosítója
+- **enclaveSvn**: Integer érték, amely az enklávé elsődleges moduljának biztonsági verziószámát tartalmazza
+- **enclavePlatformSvn**: egész szám, amely tartalmazza az enklávét működtető platform biztonsági verziószámát
 - **enclaveFlags**: a enclaveFlags jogcím egy egész érték, amely az enklávé futtatókörnyezeti szabályzatát leíró jelzőket tartalmaz.
-  
-### <a name="outgoing-claims-specific-to-tpm-attestation"></a>TPM-igazolásra vonatkozó kimenő jogcímek
 
-- **policy_hash**: a BASE64URL által kiszámított sha256-kivonatot tartalmazó karakterlánc-érték (sha256 (BASE64URL) (UTF8 (házirend szövege))).
-- **policy_signer**: egy JWK tartalmaz, amely tartalmazza a nyilvános kulcsot, vagy az aláírt szabályzat fejlécében lévő tanúsítványlánc.
-- **ver (verzió)**: string érték, amely tartalmazza a jelentés verzióját. Jelenleg 1,0.
-- **cnf (megerősítő) jogcím**: a "cnf" jogcím azonosítja a rendelkezésére álló kulcs azonosítására szolgáló kulcsot. A megerősítő jogcímek a 7800-as számú RFC-fájlban szerepelnek, az igazolt enklávé kulcsának nyilvános részét, amely JSON-webkulcs (JWK) objektumként (RFC 7517) van megadva.
-- **rp_data (függő entitások)**: a kérelemben megadott, függő entitások által használt, a kérésben szereplő, a függő entitás által a jelentés frissességének garantálása céljából felhasználva.
-- **"kezdeményezési" (JWT ID) jogcím**: a "kezdeményezés" (JWT ID) jogcím egyedi azonosítót biztosít a JWT számára. Az azonosító értékét olyan módon rendeli hozzá a rendszer, amely biztosítja, hogy a rendszer az azonos értéket véletlenül egy másik adatobjektumhoz rendelje.
+### <a name="outgoing-claims-specific-to-tpm-and-vbs-attestation"></a>TPM-és VBS-tanúsítványra vonatkozó kimenő jogcímek
+
+- **cnf (megerősítés)**: a "cnf" jogcím azonosítja a rendelkezésére álló kulcs azonosítására szolgáló kulcsot. A megerősítő jogcím a 7800-as számú RFC-ben meghatározva, az igazolt enklávé kulcsának nyilvános része, amely JSON-webkulcs (JWK) objektumként szerepel (RFC 7517)
+- **rp_data (függő entitások)**: a kérelemben megadott, függő entitások által használt, a kérésben szereplő, a függő entitás által a jelentés frissességének garantálása céljából felhasználva. rp_data csak akkor lesz hozzáadva, ha van rp_data
 
 ### <a name="property-claims"></a>Tulajdonság jogcímei
 

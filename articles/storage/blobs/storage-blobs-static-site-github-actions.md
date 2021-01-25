@@ -9,16 +9,16 @@ ms.reviewer: dineshm
 ms.date: 01/11/2021
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: d8727bd747ef6d035cabbccf2ad42b80937a06a8
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: d3aa0ca83b28708fde81cba12993ac6e79e79a88
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180200"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760604"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>GitHub-műveletek munkafolyamatának beállítása a statikus webhely üzembe helyezéséhez az Azure Storage-ban
 
-Ismerkedjen meg a [GitHub-műveletekkel](https://docs.github.com/en/free-pro-team@latest/actions) egy olyan munkafolyamat használatával, amely statikus helyet telepít egy Azure Storage-fiókba. A GitHub-műveletek munkafolyamatának beállítása után automatikusan üzembe helyezheti a helyet az Azure-ban a GitHubról, ha módosítja a webhely kódját.
+Ismerkedjen meg a [GitHub-műveletekkel](https://docs.github.com/en/actions) egy olyan munkafolyamat használatával, amely statikus helyet telepít egy Azure Storage-fiókba. A GitHub-műveletek munkafolyamatának beállítása után automatikusan üzembe helyezheti a helyet az Azure-ban a GitHubról, ha módosítja a webhely kódját.
 
 > [!NOTE]
 > Ha [Azure statikus Web Apps](../../static-web-apps/index.yml)használ, nem kell manuálisan beállítania egy GitHub-művelet munkafolyamatot.
@@ -185,7 +185,7 @@ A fenti példában cserélje le a helyőrzőket az előfizetés-AZONOSÍTÓra é
 
 Ha a statikus webhelyre és a GitHub-tárházra már nincs szükség, távolítsa el az üzembe helyezett erőforrásokat az erőforráscsoport és a GitHub-tárház törlésével. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [További tudnivalók az Azure statikus Web Apps](../../static-web-apps/index.yml)

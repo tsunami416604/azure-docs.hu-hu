@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 49388ee75fa3e5570a906998fdeaa579208fd636
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: f1a1d43f9bfc960628447a3c20e7dab2ac701dc5
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588590"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762573"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory-(Azure AD-) alkalmazásproxy – gyakori kérdések
 
@@ -101,6 +101,10 @@ Az SSL-tanúsítvány feltöltése után a portálon "érvénytelen tanúsítvá
 ### <a name="what-is-the-length-of-the-default-and-long-back-end-timeout-can-the-timeout-be-extended"></a>Milyen hosszúságú az alapértelmezett és a "hosszú" háttérbeli időtúllépés? Ki lehet terjeszteni az időtúllépést?
 
 Az alapértelmezett hossz 85 másodperc. A "Long" beállítás 180 másodperc. Nem lehet kiterjeszteni az időtúllépési korlátot.
+
+### <a name="can-a-service-principal-manage-application-proxy-using-powershell-or-microsoft-graph-apis"></a>Az egyszerű szolgáltatásnév a PowerShell vagy a Microsoft Graph API-k használatával kezelhető az alkalmazásproxy?
+
+Nem, ez jelenleg nem támogatott.
 
 ### <a name="how-do-i-change-the-landing-page-my-application-loads"></a>Hogyan módosítja az alkalmazás betöltését a kezdőlapon?
 

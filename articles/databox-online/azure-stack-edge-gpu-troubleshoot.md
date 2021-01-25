@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 10/07/2020
+ms.date: 01/21/2021
 ms.author: alkohli
-ms.openlocfilehash: d07d9dccb0aa273f79b251f2ffb4a920f3cac2e7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0976dd9f3c4d0228ec0f170a755ec13800da435b
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447623"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761548"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>Az Azure Stack Edge Pro GPU-eszköz problémáinak elhárítása 
 
@@ -26,7 +26,7 @@ Ez a cikk az Azure Stack Edge Pro GPU-eszközön felmerülő problémák elhár�
 
 Az eszközök diagnosztizálásához és a hibák elhárításához futtassa le a diagnosztikai teszteket. Eszközének helyi webes felhasználói felületen kövesse az alábbi lépéseket a diagnosztikai tesztek futtatásához.
 
-1. A helyi webes felhasználói felületen válassza a **Hibaelhárítás > Diagnosztikai tesztek** lehetőséget. Válassza ki a futtatni kívánt tesztet, és válassza a **teszt futtatása** lehetőséget. Megtörténik a hálózat, az eszköz, a webalkalmazás-proxy, az idő és a felhő beállításaival kapcsolatos lehetséges problémák diagnosztizálása. Értesítést kap, hogy az eszköz teszteket futtat.
+1. A helyi webes felhasználói felületen válassza a **Hibaelhárítás > Diagnosztikai tesztek** lehetőséget. Válassza ki a futtatni kívánt tesztet, és válassza a **teszt futtatása** lehetőséget. A teszt a hálózat, az eszköz, a webproxy, az idő vagy a felhő beállításainak esetleges problémáit diagnosztizálja. Értesítést kap, hogy az eszköz teszteket futtat.
 
     ![Tesztek kiválasztása ](media/azure-stack-edge-gpu-troubleshoot/run-diag-1.png)
  
@@ -97,7 +97,7 @@ Az eszközre irányuló hardveres behatolás észlelése érdekében a rendszer 
 
 - Az eszközről származó rendszer eseménynaplója a parancsmag használatával olvasható `racadm` . Ezeket az eseményeket a rendszer a váz vonatkozású eseményekre szűri egy `HWIntrusion.txt` fájlba.
 
-- Ha csak a hardveres behatolási naplót szeretné beolvasni a támogatási csomagban, használja `-Include HWSelLog` a támogatási csomag létrehozásakor lehetőséget. 
+- Ha csak a hardveres behatolási naplót szeretné beolvasni a támogatási csomagban, a `-Include HWSelLog` támogatási csomag létrehozásakor használja a lehetőséget. 
 
 - Ha nincs megadva konkrét belefoglalási lehetőség, a rendszer a hardveres behatolási naplót alapértelmezettként tartalmazza a támogatási csomagban.
 
@@ -187,7 +187,7 @@ Itt láthatók a blob Storage szolgáltatással kapcsolatos hibák Azure Stack E
 | **Probléma/hibák** |  **Resolution** (Osztás) | 
 |--------------------|-----------------|
 |Nem sikerült beolvasni a gyermek erőforrásokat. A HTTP-fejlécek egyikének értéke nem megfelelő formátumú.| A **Szerkesztés** menüben válassza a **cél Azure stack API**-k elemet. Ezután indítsa újra Azure Storage Explorer.|
-|getaddrinfo ENOTFOUND <accountname> . blob. <serialnumber> . microsoftdatabox.com|Győződjön meg arról, hogy a végpont neve `<accountname>.blob.<serialnumber>.microsoftdatabox.com` hozzá van adva a Hosts-fájlhoz ezen az elérési úton: `C:\Windows\System32\drivers\etc\hosts` Windows vagy `/etc/hosts` Linux rendszeren.|
+|`getaddrinfo ENOTFOUND <accountname>.blob.<serialnumber>.microsoftdatabox.com`|Győződjön meg arról, hogy a végpont neve `<accountname>.blob.<serialnumber>.microsoftdatabox.com` hozzá van adva a Hosts-fájlhoz ezen az elérési úton: `C:\Windows\System32\drivers\etc\hosts` Windows vagy `/etc/hosts` Linux rendszeren.|
 |Nem sikerült beolvasni a gyermek erőforrásokat.<br> Részletek: önaláírt tanúsítvány |Importálja az eszközéhez tartozó SSL-tanúsítványt Azure Storage Explorerba: <ol><li>Töltse le a tanúsítványt a Azure Portal. További információ: [a tanúsítvány letöltése](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate).</li><li>A **Szerkesztés** menüben válassza az SSL-tanúsítványok lehetőséget, majd válassza a **tanúsítványok importálása** lehetőséget.</li></ol>|
 |A AzCopy parancs úgy tűnik, hogy a hiba megjelenítése előtt nem válaszol egy percre:<br>`Failed to enumerate directory https://… The remote name could not be resolved <accountname>.blob.<serialnumber>.microsoftdatabox.com`|Győződjön meg arról, hogy a végpont neve `<accountname>.blob.<serialnumber>.microsoftdatabox.com` hozzá van adva a Hosts fájlhoz a következő helyen: `C:\Windows\System32\drivers\etc\hosts` .|
 |A AzCopy parancs úgy tűnik, hogy a hiba megjelenítése előtt nem válaszol egy percre:<br>`Error parsing source location. The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel`. |Importálja az eszköz SSL-tanúsítványát a rendszer tanúsítványtárolóba. További információ: [a tanúsítvány letöltése](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate).|
@@ -197,8 +197,11 @@ Itt láthatók a blob Storage szolgáltatással kapcsolatos hibák Azure Stack E
 |A AzCopy parancs úgy tűnik, hogy 20 percen belül leállítja a válaszadást a hiba megjelenítése előtt: `Error parsing source location… The SSL connection could not be established` .|Importálja az eszköz SSL-tanúsítványát a rendszer tanúsítványtárolóba. További információ: [a tanúsítvány letöltése](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate).|
 |A HTTP-fejlécek egyikének értéke nem megfelelő formátumú.|A Data Box nem támogatja a Python Microsoft Azure Storage könyvtárának telepített verzióját. Lásd: Azure Data Box blob Storage-követelmények a támogatott verziókhoz.|
 |… [SSL: CERTIFICATE_VERIFY_FAILED]...| A Python futtatása előtt állítsa a REQUESTS_CA_BUNDLE környezeti változót a Base64 kódolású SSL-tanúsítványfájl elérési útjára (lásd: [a tanúsítvány letöltése](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate). Például:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer`<br>`python`<br>Másik lehetőségként adja hozzá a tanúsítványt a rendszer tanúsítványtárolóhoz, majd állítsa be ezt a környezeti változót a tároló elérési útjára. Például az Ubuntu rendszeren:<br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`<br>`python`.|
-|A kapcsolatok időtúllépést mutatnak.|Jelentkezzen be az Azure Stack Edge Pro-ba, majd győződjön meg róla, hogy a zárolása fel van oldva. Az eszköz minden újraindításakor zárolva marad, amíg valaki bejelentkezik.|
+|A kapcsolatok időtúllépést mutatnak.|Jelentkezzen be az Azure Stack Edge Pro-ba, majd győződjön meg róla, hogy a zárolása fel van oldva. Amikor az eszköz újraindul, zárolva marad, amíg valaki bejelentkezik.|
 
+## <a name="troubleshoot-iot-edge-errors"></a>IoT Edge hibák elhárítása
+
+[!INCLUDE [Troubleshoot IoT Edge runtime](../../includes/azure-stack-edge-iot-troubleshoot-compute.md)]
 
 
 ## <a name="next-steps"></a>További lépések

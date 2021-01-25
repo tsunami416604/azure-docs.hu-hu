@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.openlocfilehash: a53857061110d5a77ac3d166277e7076f4f7f9c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47b006932aace3149dd94e136e334c1b6e5bfcef
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541373"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762717"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>A LUIS-alkalmazás aktív verziójának betanítása
 
@@ -40,9 +40,15 @@ A betanítás dátuma és időpontja GMT + 2.
 
 ## <a name="train-with-all-data"></a>Tanítás az összes adattal
 
-A képzések a negatív mintavételezés kis hányadát használják. Ha a kis negatív mintavételezés helyett az összes adatát szeretné használni, használja az [API](#version-settings-api-use-of-usealltrainingdata)-t.
+A képzések a negatív mintavételezés kis hányadát használják. A portálon vagy az API-ban használhatja az összes elérhető adattípust. 
 
-### <a name="version-settings-api-use-of-usealltrainingdata"></a>UseAllTrainingData API-k használata
+### <a name="using-the-luis-portal"></a>A LUIS-portál használata
+
+Jelentkezzen be a [Luis-portálra](https://www.luis.ai/) , és kattintson az alkalmazásra. Válassza a **kezelés** lehetőséget a képernyő tetején, majd válassza a **Beállítások** lehetőséget, és engedélyezze vagy tiltsa le a **use-determinisztikus betanítása** beállítást. Ha a szolgáltatás le van tiltva, a képzés az összes rendelkezésre álló adattal fogja használni.
+
+![A nem determinisztikus-képzés engedélyezésére vagy letiltására szolgáló gomb](./media/non-determinstic-training.png)
+
+### <a name="using-the-version-settings-api"></a>A Version Settings API használata
 
 A szolgáltatás kikapcsolásához használja a [Version Settings API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) -t az `UseAllTrainingData` igaz értékre.
 
@@ -56,7 +62,7 @@ A LUIS-portálon betanítás egyetlen lépés a **vonat** gomb megnyomására. A
 
 Ha tudni szeretné, hogy a betanítás sikeres-e, le kell kérdezni az állapotot, amíg az összes modellt nem sikerült betanítani.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Interaktív tesztelés](luis-interactive-test.md)
 * [Kötegelt tesztelés](luis-how-to-batch-test.md)

@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: cf7c4b881697b664403d8c817c3b9e48fb48944d
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 969f60cd92e8c1cbe93f1646cccd08c942ad9923
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746764"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762823"
 ---
 # <a name="about-azure-cloud-services-extended-support"></a>Tudnivalók az Azure Cloud Servicesról (bővített támogatás)
 
@@ -27,9 +27,11 @@ Ezzel a módosítással a Cloud Services Azure Service Manager-alapú üzemi mod
 
 ## <a name="what-does-not-change"></a>Mi nem változik 
 - Létrehozhatja a kódot, definiálhatja a konfigurációkat, és üzembe helyezheti azt az Azure-ban. Az Azure beállítja a számítási környezetet, futtatja a kódot, majd figyeli és karbantartja azt.
-- A Cloud Services (bővített támogatás) a szerepkörök, a [webes és a feldolgozók](../cloud-services/cloud-services-choose-me.md)két típusát is támogatja. 
-- A rendszer a három összetevőt, a szolgáltatás definícióját (. csdef), a szolgáltatás konfigurációját (. cscfg) és a Cloud Service-csomagot (. cspkg) továbbítja, és a saját [formátuma](cloud-services-model-and-package.md)nem változik. 
-- Nem szükséges módosítani a futásidejű programkódot, mert az adatsík ugyanaz, és a vezérlő síkja csak változik.  
+- A Cloud Services (bővített támogatás) a szerepkörök, a [webes és a feldolgozók](../cloud-services/cloud-services-choose-me.md)két típusát is támogatja. A webes és a feldolgozói szerepkörök kialakítását, architektúráját vagy összetevőit nem változtatja meg. 
+- A felhőalapú szolgáltatás három összetevője, a szolgáltatás definíciója (. csdef), a szolgáltatás konfigurációja (. cscfg) és a szolgáltatáscsomag (. cspkg) továbbítása megtörténik, és a [formátumuk](cloud-services-model-and-package.md)nem változik. 
+- Nem szükséges módosítani a futásidejű programkódot, mert az adatsík ugyanaz, és a vezérlő síkja csak változik. 
+- Az Azure GuestOS kiadásai és a hozzájuk tartozó frissítések Cloud Services (klasszikus) összhangban vannak.
+- Az alapul szolgáló frissítési folyamat a frissítési tartományok tekintetében, a frissítés menetének, visszaállításának és az engedélyezett szolgáltatások változásainak a frissítés során nem változik
 
 ## <a name="changes-in-deployment-model"></a>Változások a telepítési modellben
 

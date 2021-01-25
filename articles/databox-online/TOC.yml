@@ -291,8 +291,8 @@
               href: azure-stack-edge-contact-microsoft-support.md
     - name: Megosztott kibocsátási megjegyzések
       items:
-        - name: 2012 – aktuális
-          href: azure-stack-edge-gpu-2012-release-notes.md
+        - name: 2101 – jelenlegi
+          href: azure-stack-edge-gpu-2101-release-notes.md
         - name: 2010
           href: azure-stack-edge-gpu-2009-release-notes.md
         - name: 2008

@@ -82,7 +82,7 @@
           href: about-upgrade-circuit-bandwidth.md
         - name: Kapcsolatcsoportok módosítása klasszikusról Resource Manager-alapúra
           href: expressroute-move.md
-    - name: Tudnivalók az ExpressRoute-átjárókról
+    - name: Tudnivalók a ExpressRoute-átjárók
       href: expressroute-about-virtual-network-gateways.md
     - name: Az ExpressRoute FastPath ismertetése
       href: about-fastpath.md

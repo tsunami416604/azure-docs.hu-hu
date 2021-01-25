@@ -2,14 +2,14 @@
 title: Rendelkezésre állás és konzisztencia – Azure Event Hubs | Microsoft Docs
 description: Hogyan biztosítható a maximális rendelkezésre állás és konzisztencia az Azure Event Hubs partíciók használatával.
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 01/25/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7b97d76f29ee8b7e44373c865baa09ba5ea4dd23
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 5ffa2df992eb0c22aafbbb7436250405998d8073
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631919"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762813"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Rendelkezésre állás és konzisztencia az Event Hubsban
 
@@ -22,6 +22,11 @@ A Brewer-tétel a következőképpen határozza meg a következetességet és a 
 * Partíciós tolerancia: az adatfeldolgozó rendszer azon képessége, hogy továbbra is dolgozza fel az adatfeldolgozást, még akkor is, ha a partíció meghibásodik.
 * Rendelkezésre állás: egy nem meghibásodott csomópont ésszerű választ ad vissza ésszerű időn belül (hiba vagy időtúllépés nélkül).
 * Konzisztencia: az olvasás garantált, hogy egy adott ügyfél legutóbbi írását adja vissza.
+
+> [!NOTE]
+> A **partíció** kifejezése a Event Hubs és a Cap-tétel különböző kontextusában van használatban. 
+> - **Event Hubs** az eseményeket egy vagy több partícióba rendezi. A partíciók függetlenek, és saját adatsorozatot tartalmaznak, gyakran eltérő díjszabással növekednek. További információ: [Partitions (partíciók](event-hubs-features.md#partitions)).
+> - A **Cap-tételben** a partíció egy elosztott rendszer csomópontjai közötti kommunikációs szünet.
 
 ## <a name="partition-tolerance"></a>Partíciós tolerancia
 A Event Hubs particionált adatmodellre épül. A telepítés során beállíthatja a partíciók számát az Event hub-ban, de később nem módosíthatja ezt az értéket. Mivel a partíciókat Event Hubs használatával kell használnia, döntéseket kell hoznia az alkalmazás rendelkezésre állásával és konzisztenciájával kapcsolatban.
@@ -141,7 +146,7 @@ await producer.SendAsync(data);
 
 Ez a példa az eseményt az Event hub egyik elérhető partíciójában küldi el, és beállítja az alkalmazáshoz tartozó sorozatszámot. Ehhez a megoldáshoz a feldolgozó alkalmazásnak meg kell őriznie az állapotot, de a küldők számára nagyobb valószínűséggel elérhetőnek kell lennie.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
 * [Event Hubs szolgáltatás áttekintése](./event-hubs-about.md)

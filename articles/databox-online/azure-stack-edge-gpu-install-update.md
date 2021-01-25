@@ -6,29 +6,29 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 01/19/2021
 ms.author: alkohli
-ms.openlocfilehash: 004c84387c51233542b1bbbf11d33cdff42259af
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 7db2d2721359d9796b19b3fd6abe32ff16beaec2
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359149"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761797"
 ---
 # <a name="update-your-azure-stack-edge-pro-gpu"></a>A Azure Stack Edge Pro GPU frissítése 
 
-Ez a cikk azokat a lépéseket ismerteti, amelyek szükségesek a frissítés telepítéséhez a Azure Stack Edge Pro-val a GPU-n keresztül a helyi webes felületen és a Azure Portal keresztül. A szoftverfrissítések vagy gyorsjavítások alkalmazásával megőrizheti Azure Stack Edge Pro-eszközét és a hozzá tartozó Kubernetes-fürtöt az eszközön naprakészen. 
+Ez a cikk azokat a lépéseket ismerteti, amelyek szükségesek a frissítés telepítéséhez a Azure Stack Edge Pro-val a GPU-n keresztül a helyi webes felületen és a Azure Portal keresztül. A szoftverfrissítések vagy gyorsjavítások alkalmazásával megőrizheti Azure Stack Edge Pro-eszközét és a hozzá tartozó Kubernetes-fürtöt az eszközön naprakészen.
 
 A cikkben ismertetett eljárás a szoftver egy másik verziójával lett elvégezve, de a folyamat a jelenlegi szoftververzió esetében is változatlan marad.
 
 > [!IMPORTANT]
-> - Az **2012** -es frissítés az aktuális frissítés, és a következőnek felel meg:
->   - Eszköz szoftverének verziója – **2.2.1438.2470**
+> - Az **2101** -es frissítés az aktuális frissítés, és a következőnek felel meg:
+>   - Eszköz szoftverének verziója – **2.2.1473.2521**
 >   - Kubernetes Server Version- **v 1.17.3**
 >   - IoT Edge verziója: **0.1.0-beta10**
 >    
->    A frissítés újdonságait a [kibocsátási megjegyzésekben](azure-stack-edge-gpu-2012-release-notes.md)találhatja meg.
-> - Az 2012-es frissítés alkalmazásához az eszköznek 2010-at kell futnia.
+>    A frissítés újdonságait a [kibocsátási megjegyzésekben](azure-stack-edge-gpu-2101-release-notes.md)találhatja meg.
+> - Az 2101-es frissítés alkalmazásához az eszköznek 2010-at kell futnia.
 > - Ne feledje, hogy egy frissítés vagy gyorsjavítás telepítése újraindítja az eszközt. Ez a frissítés tartalmazza az eszközhöz tartozó szoftverfrissítéseket és a Kubernetes frissítéseit. Mivel az Azure Stack Edge Pro egyetlen csomópontos eszköz, a folyamatban lévő I/O-műveletek megszakadnak, és az eszköz akár 1,5 órányi állásidőt is megtapasztalhat a frissítéshez.
 
 Az eszközön a frissítések telepítéséhez először konfigurálnia kell a frissítési kiszolgáló helyét. A frissítési kiszolgáló konfigurálása után a frissítéseket a Azure Portal felhasználói felületén vagy a helyi webes felületen keresztül is alkalmazhatja.
@@ -37,7 +37,7 @@ Ezeket a lépéseket az alábbi szakaszokban ismertetjük.
 
 ## <a name="configure-update-server"></a>Frissítési kiszolgáló konfigurálása
 
-1. A helyi webes kezelőfelületen lépjen a **konfigurációs**  >  **frissítési kiszolgáló** elemre. 
+1. A helyi webes kezelőfelületen lépjen a **konfigurációs**  >  **frissítési kiszolgáló** elemre.
    
     ![Frissítések konfigurálása 1](./media/azure-stack-edge-gpu-install-update/configure-update-server-1.png)
 
@@ -53,7 +53,7 @@ Ezeket a lépéseket az alábbi szakaszokban ismertetjük.
 
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
-Javasoljuk, hogy telepítse a frissítéseket a Azure Portalon keresztül. Az eszköz naponta egyszer automatikusan frissítéseket keres. Ha a frissítések elérhetők, megjelenik egy értesítés a portálon. Ezt követően letöltheti és telepítheti a frissítéseket. 
+Javasoljuk, hogy telepítse a frissítéseket a Azure Portalon keresztül. Az eszköz naponta egyszer automatikusan frissítéseket keres. Ha a frissítések elérhetők, megjelenik egy értesítés a portálon. Ezt követően letöltheti és telepítheti a frissítéseket.
 
 > [!NOTE]
 > Győződjön meg arról, hogy az eszköz kifogástalan állapotban van, és az állapota **online** állapotba kerül, mielőtt folytatná a frissítések telepítését.
@@ -66,34 +66,34 @@ Javasoljuk, hogy telepítse a frissítéseket a Azure Portalon keresztül. Az es
 
     Választhat, hogy **letölti és telepíti** a frissítéseket, vagy csak **letölti** a frissítéseket. A letöltött frissítések telepítését későbbre halaszthatja.
 
-    ![A szoftver verziója a 2. frissítés után](./media/azure-stack-edge-gpu-install-update/portal-update-2a.png)    
+    ![A szoftver verziója a 2. frissítés után](./media/azure-stack-edge-gpu-install-update/portal-update-2-a.png)    
 
     Ha le szeretné tölteni és telepíteni kívánja a frissítéseket, ellenőrizze, hogy a frissítések telepítése automatikusan megtörtént-e a letöltés befejeződése után.
 
-    ![A szoftver verziója a 3. frissítés után](./media/azure-stack-edge-gpu-install-update/portal-update-2b.png)
+    ![A szoftver verziója a 3. frissítés után](./media/azure-stack-edge-gpu-install-update/portal-update-2-b.png)
 
 3. A frissítések letöltése megkezdődik. Ekkor megjelenik egy értesítés arról, hogy a letöltés folyamatban van.
 
     ![A szoftver verziója a 4-es frissítés után](./media/azure-stack-edge-gpu-install-update/portal-update-3.png)
 
-    Egy értesítési szalagcím is megjelenik a Azure Portalban. Ez a letöltési folyamatra utal. 
+    Egy értesítési szalagcím is megjelenik a Azure Portalban. Ez a letöltési folyamatra utal.
 
     ![A szoftver verziója az 5. frissítés után](./media/azure-stack-edge-gpu-install-update/portal-update-4.png)
 
     Kiválaszthatja ezt az értesítést, vagy az **eszköz frissítése** lehetőség kiválasztásával megtekintheti a frissítés részletes állapotát.
 
-    ![Szoftver verziója a 6. frissítés után](./media/azure-stack-edge-gpu-install-update/portal-update-5.png)   
+    ![Szoftver verziója a 6. frissítés után](./media/azure-stack-edge-gpu-install-update/portal-update-5.png)
 
 
 4. A letöltés befejezését követően az értesítési szalagcím frissíti a befejezést. Ha úgy dönt, hogy letölti és telepíti a frissítéseket, a telepítés automatikusan elindul.
 
     ![Szoftververzió a 7. frissítés után](./media/azure-stack-edge-gpu-install-update/portal-update-6.png)
 
-    Ha úgy döntött, hogy csak a frissítések letöltését választotta, válassza ki az értesítést az **eszköz frissítései** panel megnyitásához. Válassza a **Telepítés** lehetőséget.
+    Ha úgy döntött, hogy csak a frissítések letöltését választotta, válassza ki az értesítést az **eszköz frissítései** panel megnyitásához. Válassza a **Telepítés** gombot.
   
     ![Szoftververzió a 8. frissítés után](./media/azure-stack-edge-gpu-install-update/portal-update-7.png)
 
-5. Ekkor megjelenik egy értesítés arról, hogy a telepítés folyamatban van. 
+5. Ekkor megjelenik egy értesítés arról, hogy a telepítés folyamatban van.
 
     ![Szoftververzió a 9-es frissítés után](./media/azure-stack-edge-gpu-install-update/portal-update-8.png)
  
@@ -166,9 +166,9 @@ Az alábbi lépések végrehajtásával töltse le a frissítést a Microsoft Up
 
 2. A Microsoft Update-katalógus keresőmező mezőjébe írja be a letölteni kívánt frissítés gyorsjavításának vagy használati feltételeinek a tudásbázisát (KB). Adja meg például a **Azure stack Edge Pro** kifejezést, majd kattintson a **Keresés** gombra.
    
-    A frissítési lista **Azure stack Edge 2012-es frissítésként** jelenik meg.
+    A frissítési lista **Azure stack Edge 2101-es frissítésként** jelenik meg.
    
-    <!--![Search catalog 2](./media/azure-stack-edge-gpu-install-update/download-update-2b.png)-->
+    <!--![Search catalog 2](./media/azure-stack-edge-gpu-install-update/download-update-2-b.png)-->
 
 4. Válassza a **Letöltés** lehetőséget. Két fájl tölthető le *SoftwareUpdatePackage.exe* és *Kubernetes_Package.exe* utótagokkal, amelyek megfelelnek az eszköz szoftverfrissítések és a Kubernetes frissítéseinek. Töltse le a fájlokat a helyi rendszer egyik mappájába. A mappát átmásolhatja egy olyan hálózati megosztásra is, amely elérhető az eszközről.
 
@@ -179,7 +179,7 @@ A frissítés vagy a gyorsjavítás telepítése előtt győződjön meg az alá
  - A frissítés vagy a gyorsjavítás helyileg, a gazdagépen vagy egy hálózati megosztáson keresztül érhető el.
  - Az eszköz állapota Kifogástalan, ahogy a helyi webes felhasználói felület **Áttekintés** lapján látható.
 
-   ![eszköz frissítése](./media/azure-stack-edge-gpu-install-update/local-ui-update-1.png) 
+   ![eszköz frissítése](./media/azure-stack-edge-gpu-install-update/local-ui-update-1.png)
 
 Az eljárás végrehajtása körülbelül 20 percet vesz igénybe. A frissítés vagy a gyorsjavítás telepítéséhez hajtsa végre a következő lépéseket.
 
@@ -189,9 +189,9 @@ Az eljárás végrehajtása körülbelül 20 percet vesz igénybe. A frissítés
 
 2. Adja meg a frissítési fájl elérési útját. Ha hálózati megosztásra helyezi, tallózással is megkeresheti a frissítési telepítési fájlt. Válassza ki *SoftwareUpdatePackage.exe* utótaggal rendelkező szoftverfrissítési fájlt.
 
-   ![3. eszköz frissítése](./media/azure-stack-edge-gpu-install-update/local-ui-update-3a.png)
+   ![3. eszköz frissítése](./media/azure-stack-edge-gpu-install-update/local-ui-update-3-a.png)
 
-3. Kattintson az **Alkalmaz** gombra. 
+3. Kattintson az **Alkalmaz** gombra.
 
    ![4. eszköz frissítése](./media/azure-stack-edge-gpu-install-update/local-ui-update-4.png)
 
@@ -201,23 +201,23 @@ Az eljárás végrehajtása körülbelül 20 percet vesz igénybe. A frissítés
 
 5. A frissítés elindul. Az eszköz sikeres frissítése után újraindul. A helyi felhasználói felület ebben az időtartamban nem érhető el.
    
-6. Az újraindítás után a rendszer a **bejelentkezési** oldalra kerül. Annak ellenőrzéséhez, hogy az eszköz szoftvere frissítve lett-e, a helyi webes felületen lépjen a **karbantartási**  >  **szoftverfrissítés** lapra. A jelenlegi kiadásban a megjelenő szoftververzió **Azure stack Edge 2012**.
+6. Az újraindítás után a rendszer a **bejelentkezési** oldalra kerül. Annak ellenőrzéséhez, hogy az eszköz szoftvere frissítve lett-e, a helyi webes felületen lépjen a **karbantartási**  >  **szoftverfrissítés** lapra. A jelenlegi kiadásban a megjelenő szoftververzió **Azure stack Edge 2101**. 
 
-   <!--![update device 6](./media/azure-stack-edge-gpu-install-update/local-ui-update-6.png)--> 
+   <!--![update device 6](./media/azure-stack-edge-gpu-install-update/local-ui-update-6.png)-->
 
 7. Most frissíti a Kubernetes szoftver verzióját. Ismételje meg a fenti lépéseket. Adja meg a Kubernetes frissítési fájljának elérési útját az *Kubernetes_Package.exe* utótaggal.  
 
-   <!--![update device](./media/azure-stack-edge-gpu-install-update/local-ui-update-7.png)--> 
+   <!--![update device](./media/azure-stack-edge-gpu-install-update/local-ui-update-7.png)-->
 
-8. Kattintson az **Alkalmaz** gombra. 
+8. Válassza a **frissítés alkalmazása** lehetőséget.
 
    ![7. eszköz frissítése](./media/azure-stack-edge-gpu-install-update/local-ui-update-8.png)
 
-9. Ha a rendszer megerősítést kér, kattintson az **Igen** gombra a folytatáshoz. 
+9. Ha a rendszer megerősítést kér, kattintson az **Igen** gombra a folytatáshoz.
 
-10. A Kubernetes frissítésének sikeres telepítése után a rendszer nem módosítja a megjelenő szoftvereket a **karbantartási**  >  **szoftverfrissítés** során. 
+10. A Kubernetes frissítésének sikeres telepítése után a rendszer nem módosítja a megjelenő szoftvereket a **karbantartási**  >  **szoftverfrissítés** során.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ [az Azure stack Edge Pro felügyeletéről](azure-stack-edge-manage-access-power-connectivity-mode.md).

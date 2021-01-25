@@ -1,17 +1,17 @@
 ---
 title: VMware Assessment-támogatás a Azure Migrate
 description: Ismerkedjen meg a VMware virtuális gépek felmérésének támogatásával Azure Migrate kiszolgáló értékelésével.
-author: rashi-ms
-ms.author: rajosh
+author: vineetvikram
+ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: 02757477ca4a07f4526df0339291122eda57c9b5
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: ce8a1d77ae74a3946174ef58abf9add2e81eb90b
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567417"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762992"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>A VMware Assessment támogatási mátrixa 
 
@@ -37,7 +37,7 @@ Ha VMware virtuális gépeket szeretne áttelepíteni az Azure-ba, tekintse át 
 **VMware** | **Részletek**
 --- | ---
 **vCenter Server** | A felderíteni és értékelni kívánt gépeket a 5,5, 6,0, 6,5, 6,7 vagy 7,0 vCenter Server-es verzióval kell felügyelni.<br/><br/> A VMware virtuális gépek felderítése az ESXi-gazdagép adatainak a berendezésben való megadásával jelenleg nem támogatott.
-**Engedélyek** | A kiszolgáló értékeléséhez vCenter Server írásvédett fiókra van szükség a felderítéshez és értékeléshez.<br/><br/> Ha meg szeretné tenni az alkalmazások felderítését vagy a függőségi vizualizációt, a fióknak jogosultsággal kell rendelkeznie **Virtual Machines**  >  **vendég műveleteihez**.
+**Engedélyek** | A kiszolgáló értékeléséhez vCenter Server írásvédett fiókra van szükség a felderítéshez és értékeléshez.<br/><br/> Ha meg szeretné tenni az alkalmazások felderítését vagy a függőségi vizualizációt, a fióknak **Virtual Machines**  >  **vendég műveleteihez** engedélyezett jogosultságokkal kell rendelkeznie.
 
 ## <a name="vm-requirements"></a>VIRTUÁLIS gépekre vonatkozó követelmények
 **VMware** | **Részletek**

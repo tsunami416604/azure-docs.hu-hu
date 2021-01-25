@@ -10,16 +10,16 @@ ms.author: jukullam
 ms.date: 10/19/2020
 ms.topic: conceptual
 ms.custom: github-actions-azure
-ms.openlocfilehash: e7f6066cb7ed5c166d3e2bdc3f895073b05b92b9
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 8bce95b65d9b944505d7f9153159b342e49427cd
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605025"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762909"
 ---
 # <a name="use-github-actions-with-azure-machine-learning"></a>GitHub-műveletek használata Azure Machine Learning
 
-Ismerkedjen meg a [GitHub-műveletekkel](https://docs.github.com/en/free-pro-team@latest/actions) Azure Machine learning-modell betanításához. 
+Ismerkedjen meg a [GitHub-műveletekkel](https://docs.github.com/en/actions) Azure Machine learning-modell betanításához. 
 
 > [!NOTE]
 > A Azure Machine Learning GitHub-műveletei a következőként vannak megadva, és a Microsoft nem támogatja teljesen. Ha egy adott művelettel kapcsolatos problémákat tapasztal, nyisson meg egy problémát a tárházban a művelethez. Ha például problémát tapasztal a pénzmosás-telepítés művelettel kapcsolatban, jelentse a problémát a tárházban [https://github.com/Azure/aml-deploy]( https://github.com/Azure/aml-deploy) .

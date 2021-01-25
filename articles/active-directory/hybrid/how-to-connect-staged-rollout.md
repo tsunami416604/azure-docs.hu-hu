@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d348b8c2325c7bc2cdaa28356151647a9430684f
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 10fe3b895ea5084247822f1c35275e68d80b73fa
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247046"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762982"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrálás felhőalapú hitelesítésre előkészített bevezetéssel (előzetes verzió)
 
@@ -61,7 +61,10 @@ A szakaszos bevezetéshez a következő forgatókönyvek támogatottak. A szolg�
 - Azok a felhasználók, akik az Azure AD-hez Azure AD Connect használatával lettek kiépítve. Ez nem vonatkozik a csak felhőalapú felhasználókra.
 
 - Felhasználói bejelentkezési forgalom a böngészőkben és a *modern hitelesítési* ügyfeleken. Az örökölt hitelesítést használó alkalmazások vagy felhőalapú szolgáltatások visszaesik az összevont hitelesítési folyamatokra. Előfordulhat például, hogy a modern hitelesítéssel rendelkező Exchange Online vagy az Outlook 2010, amely nem támogatja a modern hitelesítést.
+
 - A csoport mérete jelenleg 50 000 felhasználóra korlátozódik.  Ha a csoportok mérete nagyobb, mint 50 000 felhasználó, akkor azt javasoljuk, hogy ezt a csoportot több csoportra ossza fel a szakaszos bevezetéshez.
+
+- A Windows 10 Hybrid JOIN vagy az Azure AD JOIN Primary refresh token beszerzése anélkül, hogy a Windows 10 1903-es vagy újabb verziójához készült összevonási kiszolgáló számára elérhető legyen, ha a felhasználó UPN-je irányítható, és a tartomány utótagját ellenőrzi az Azure AD-ben.
 
 ## <a name="unsupported-scenarios"></a>Nem támogatott forgatókönyvek
 
@@ -87,6 +90,10 @@ A következő forgatókönyvek nem támogatottak a szakaszos bevezetésnél:
 - Amikor először ad hozzá egy biztonsági csoportot az előkészített bevezetéshez, a rendszer 200-re korlátozza a felhasználóktól, hogy elkerülje az UX időtúllépését. A csoport hozzáadása után további felhasználókat is hozzáadhat közvetlenül hozzá, ha szükséges.
 
 - Míg a felhasználók szakaszos bevezetéssel rendelkeznek, ha a EnforceCloudPasswordPolicyForPasswordSyncedUsers engedélyezve van, a jelszó lejárati szabályzata 90 napra van beállítva, és nincs lehetőség testreszabásra. 
+
+- Windows 10 Hybrid JOIN vagy Azure AD JOIN Primary refresh token beszerzése a Windows 10-es verziónál régebbi, mint 1903. Ez a forgatókönyv vissza fog térni az összevonási kiszolgáló WS-Trust-végpontára, még akkor is, ha a bejelentkezett felhasználó a szakaszos bevezetéshez tartozik.
+
+- A Windows 10 Hybrid JOIN vagy az Azure AD JOIN elsődleges frissítési jogkivonat beszerzése az összes verzióhoz, ha a felhasználó helyszíni UPN-azonosítója nem irányítható át. Ez a forgatókönyv a WS-Trust végpontra kerül vissza szakaszos bevezetési módban, de nem fog működni, ha a szakaszos áttelepítés befejeződött, és a felhasználói bejelentkezés már nem az összevonási kiszolgálón található.
 
 
 ## <a name="get-started-with-staged-rollout"></a>Ismerkedés a lépcsőzetes bevezetéssel

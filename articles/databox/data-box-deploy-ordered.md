@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/13/2021
 ms.author: alkohli
-ms.openlocfilehash: fd165795be85c26cdfcaee3c4fd01427274a7316
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 91b3e2e86394c889f6fa40f527dd0dd212e1cb57
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210341"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98763102"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Oktatóanyag: Az Azure Data Box megrendelése
 
@@ -231,7 +231,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
     |Forrásország/-régió    |    Válassza ki azt az országot vagy régiót, ahol az adatok jelenleg találhatók.         |
     |Azure-beli célrégió     |     Válassza ki azt az Azure-régiót, ahova át szeretné vinni az adatokat. <br> További információt a [regionális elérhetőséget](data-box-overview.md#region-availability) tárgyaló témakörben talál.            |
 
-    [![Azure Data Box importálási sorrend elindítása](media/data-box-deploy-ordered/select-data-box-import-04-b.png#lightbox)
+    ![Azure Data Box importálási sorrend elindítása](media/data-box-deploy-ordered/select-data-box-import-04-b.png#lightbox)
 
 5. Válassza a **Data Box** lehetőséget. Egy megrendelés maximális felhasználható kapacitása 80 TB. Nagyobb mennyiségű adat esetén több rendelést is létrehozhat.
 
@@ -907,7 +907,7 @@ PS C:\Windows>
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megismerte a Azure Data Box cikkeket, például a következőket:
 

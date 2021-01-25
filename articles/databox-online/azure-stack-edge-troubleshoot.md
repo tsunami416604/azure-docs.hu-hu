@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 08/11/2020
+ms.date: 01/21/2021
 ms.author: alkohli
-ms.openlocfilehash: f668136713024ba57d72bf5a457cd249742a3b11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09325289dd5cb83bfc26dd26b266d50b622fe098
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742026"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98763090"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-pro-issues"></a>Az Azure Stack Edge Pro-problémák elhárítása
 
@@ -26,12 +26,13 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * Diagnosztika futtatása
 > * Támogatási csomag összeállítása
 > * Hibaelhárítás naplók használatával
+> * IoT Edge hibák elhárítása
 
 ## <a name="run-diagnostics"></a>Diagnosztika futtatása
 
 Az eszközök diagnosztizálásához és a hibák elhárításához futtassa le a diagnosztikai teszteket. Eszközének helyi webes felhasználói felületen kövesse az alábbi lépéseket a diagnosztikai tesztek futtatásához.
 
-1. A helyi webes felhasználói felületen válassza a **Hibaelhárítás > Diagnosztikai tesztek** lehetőséget. Válassza ki a futtatni kívánt tesztet, és válassza a **teszt futtatása**lehetőséget. Megtörténik a hálózat, az eszköz, a webalkalmazás-proxy, az idő és a felhő beállításaival kapcsolatos lehetséges problémák diagnosztizálása. Értesítést kap arról, hogy az eszköz teszteket futtat.
+1. A helyi webes felhasználói felületen válassza a **Hibaelhárítás > Diagnosztikai tesztek** lehetőséget. Válassza ki a futtatni kívánt tesztet, és válassza a **teszt futtatása** lehetőséget. Megtörténik a hálózat, az eszköz, a webalkalmazás-proxy, az idő és a felhő beállításaival kapcsolatos lehetséges problémák diagnosztizálása. Értesítést kap arról, hogy az eszköz teszteket futtat.
 
     ![Tesztek kiválasztása](media/azure-stack-edge-troubleshoot/run-diag-1.png)
 
@@ -49,11 +50,11 @@ A naplócsomag tartalmazza az összes naplót, amely segít a Microsoft ügyfél
 
 Kövesse az alábbi lépéseket a támogatási csomag összeállításához.
 
-1. A helyi webes felhasználói felületen válassza a **Hibaelhárítás > Támogatás** lehetőséget. Válassza a **támogatási csomag létrehozása**lehetőséget. A rendszer megkezdi a támogatási csomag összeállítását. A csomagok gyűjteményének létrehozása eltarthat néhány percig.
+1. A helyi webes felhasználói felületen válassza a **Hibaelhárítás > Támogatás** lehetőséget. Válassza a **támogatási csomag létrehozása** lehetőséget. A rendszer megkezdi a támogatási csomag összeállítását. A csomagok gyűjteményének létrehozása eltarthat néhány percig.
 
     ![Kattintson a Felhasználó hozzáadása gombra](media/azure-stack-edge-troubleshoot/collect-logs-1.png)
 
-2. A támogatási csomag létrehozása után válassza a **támogatási csomag letöltése**lehetőséget. A rendszer a tömörített csomagot letölti a megadott helyre. Csomagolja ki a csomagot, és tekintse meg a rendszernapló fájljait.
+2. A támogatási csomag létrehozása után válassza a **támogatási csomag letöltése** lehetőséget. A rendszer a tömörített csomagot letölti a megadott helyre. Csomagolja ki a csomagot, és tekintse meg a rendszernapló fájljait.
 
     ![Kattintson a felhasználó hozzáadása 2](media/azure-stack-edge-troubleshoot/collect-logs-2.png)
 
@@ -82,6 +83,10 @@ A feltöltési és frissítési folyamat során észlelt hibákat a megfelelő h
 
     [!INCLUDE [data-box-edge-edge-upload-error-reference](../../includes/data-box-edge-gateway-upload-error-reference.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="troubleshoot-iot-edge-errors"></a>IoT Edge hibák elhárítása
+
+[!INCLUDE [Troubleshoot IoT Edge runtime](../../includes/azure-stack-edge-iot-troubleshoot-compute.md)]
+
+## <a name="next-steps"></a>További lépések
 
 * További információk a [jelen kiadás ismert problémáiról](data-box-gateway-release-notes.md).

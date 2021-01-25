@@ -13,12 +13,12 @@ ms.date: 11/20/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 9ec8a5fe5de751e40ebaa17629ff72c5f6b2adca
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 46626c3ebe9d70600be1cc5f73c43677f67bcd09
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979987"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761372"
 ---
 # <a name="application-configuration-options"></a>Alkalmazás konfigurációs beállításai
 
@@ -147,9 +147,21 @@ A Daemon-alkalmazások esetében nem kell megadnia az átirányítási URI-t.
 Ez a beállítás határozza meg a bizalmas ügyfélalkalmazás ügyfél-titkos kulcsát. Ezt a titkot (az alkalmazás jelszava) a regisztrációs portál vagy az Azure AD számára az alkalmazások regisztrálásakor a PowerShell AzureAD, a PowerShell AzureRM vagy az Azure CLI használatával biztosítjuk.
 
 ## <a name="logging"></a>Naplózás
+A hibakeresési és hitelesítési hibák elhárítása érdekében a Microsoft hitelesítési függvénytár beépített naplózási támogatást biztosít. A naplózás az alábbi cikkekben található:
 
-A további konfigurációs beállítások lehetővé teszik a naplózást és a hibaelhárítást. A használatáról a [naplózási](msal-logging.md) cikkben talál további információt.
+:::row:::
+    :::column:::
+        - [Naplózás az MSAL.NET-ben](msal-logging-dotnet.md)
+        - [Naplózás az Androidhoz készült MSAL-ben](msal-logging-android.md)
+        - [Naplózás az MSAL.js-ben](msal-logging-js.md)
+    :::column-end:::
+    :::column:::
+        - [Naplózás az iOS-hez/macOS-hez készült MSAL-ben](msal-logging-ios.md)
+        - [Naplózás a Javához készült MSAL-ben](msal-logging-java.md)
+        - [Naplózás a Pythonhoz készült MSAL-ben](msal-logging-python.md)
+    :::column-end:::
+:::row-end:::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan [hozhatók létre ügyfélalkalmazások az MSAL.NET használatával](msal-net-initializing-client-applications.md) , és hogyan [hozhatók létre ügyfélalkalmazások a MSAL.jshasználatával ](msal-js-initializing-client-applications.md).

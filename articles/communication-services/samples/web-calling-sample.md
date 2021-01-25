@@ -9,12 +9,12 @@ ms.author: mariusu
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 8faa6533ba4dc7fad61c045278c5504c5f78d900
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: a00f319c55665695879aac3c8ba711ce13fd5d4e
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888963"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98763053"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Ismerkedés a webes hívási mintával
 
@@ -86,7 +86,7 @@ Ez a minta kódrészleteket is biztosít a következő képességekhez:
   - Ha egy adott résztvevőt szeretne eltávolítani a hívásból, kattintson a résztvevő eltávolítása elemre a résztvevő névsorában
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 >[!div class="nextstepaction"] 
 >[A minta letöltése a GitHubról](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)
@@ -96,6 +96,7 @@ További információért tekintse át a következő cikkeket:
 - Ismerkedjen meg [a hívó ügyféloldali kódtár használatával](../quickstarts/voice-video-calling/calling-client-samples.md)
 - További információ a [hívás működéséről](../concepts/voice-video-calling/about-call-types.md)
 - Az [API-referenciák dokumentációjának](/javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js) áttekintése
+- A [contoso Med-alkalmazás](https://github.com/Azure-Samples/communication-services-contoso-med-app) mintájának áttekintése
 
 ## <a name="additional-reading"></a>További információ
 

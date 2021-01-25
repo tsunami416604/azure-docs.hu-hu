@@ -4,17 +4,17 @@ description: Ez a cikk azt ismerteti, hogyan lehet elhárítani a Linux Windows 
 services: automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 12/03/2019
+ms.date: 01/25/2021
 ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: f1351b29a0102a374b75d832687d66c3b5572c75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7ac5e8324d9979b17ee93d16b3e007fe7916a8a
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83680871"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762622"
 ---
 # <a name="troubleshoot-linux-update-agent-issues"></a>A Linux Update Agent hibáinak elhárítása
 
@@ -27,7 +27,7 @@ Számos oka lehet annak, hogy a gép miért nem jelenik meg készenléti (kifog�
 > [!NOTE]
 > A Azure Portal megjelenítése és a gép aktuális állapota között enyhe késés adható meg.
 
-Ez a cikk azt ismerteti, hogyan futtathatja az Azure-gépekhez tartozó hibakeresőt a Azure Portal és a nem Azure-beli gépekről az [Offline forgatókönyvben](#troubleshoot-offline). 
+Ez a cikk azt ismerteti, hogyan futtathatja az Azure-gépekhez tartozó hibakeresőt a Azure Portal és a nem Azure-beli gépekről az [Offline forgatókönyvben](#troubleshoot-offline).
 
 > [!NOTE]
 > A hibakereső parancsfájl jelenleg nem irányítja át a forgalmat egy proxykiszolgálón keresztül, ha van ilyen konfigurálva.
@@ -90,7 +90,6 @@ Update Management letölti a hibrid Runbook Worker csomagokat az operatív végp
 
 Ez az ellenőrzés ellenőrzi, hogy a hibrid Runbook Worker fut-e a gépen. Az alábbi példában szereplő folyamatoknak jelen kell lenniük, ha a hibrid Runbook-feldolgozó megfelelően fut.
 
-
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
 nxautom+   8593      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/hybridworker.py /var/opt/microsoft/omsagent/state/automationworker/worker.conf managed rworkspace:<workspaceId> rversion:<Linux hybrid worker version>
@@ -129,7 +128,7 @@ Ez az ellenőrzés ellenőrzi, hogy a számítógép rendelkezik-e hozzáférés
 
 ## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>Offline hibák
 
-A hibakeresőt offline módon használhatja hibrid Runbook-feldolgozón a parancsfájl helyi futtatásával. A [update_mgmt_health_check.](https://gallery.technet.microsoft.com/scriptcenter/Troubleshooting-utility-3bcbefe6)a Python-szkript a script Centerben található. A szkript kimenetének példája az alábbi példában látható:
+A hibakeresőt offline módon használhatja hibrid Runbook-feldolgozón a parancsfájl helyi futtatásával. A [UM_Linux_Troubleshooter_Offline.](https://github.com/Azure/updatemanagement/blob/main/UM_Linux_Troubleshooter_Offline.py)a Python-szkript a githubban található. A szkript kimenetének példája az alábbi példában látható:
 
 ```output
 Debug: Machine Information:   Static hostname: LinuxVM2

@@ -329,7 +329,7 @@
               href: msal-error-handling-dotnet.md
               displayName: 'handling, catch'
             - name: Naplózás az MSAL.NET-ben
-              href: msal-logging.md?tabs=dotnet
+              href: msal-logging-dotnet.md
             - name: Jogkivonat beszerzése a gyorsítótárból
               href: msal-net-acquire-token-silently.md
             - name: Jogkivonat-gyorsítótár szerializálása
@@ -371,7 +371,7 @@
               href: msal-error-handling-js.md
               displayName: 'handling, catch'
             - name: Naplózás az MSAL.js-ben
-              href: msal-logging.md?tabs=javascript
+              href: msal-logging-js.md
         - name: MSAL iOS és macOS rendszerekre
           items:
             - name: Az MSAL iOS- és macOS-verziója közötti különbségek
@@ -401,7 +401,7 @@
               href: msal-error-handling-ios.md
               displayName: 'handling, catch'
             - name: Naplózás az iOS-hez/macOS-hez készült MSAL-ben
-              href: msal-logging.md?tabs=swift
+              href: msal-logging-ios.md
         - name: Pythonhoz készült MSAL
           items:
             - name: Egyéni jogkivonat-gyorsítótár szerializálása
@@ -414,7 +414,7 @@
               href: msal-error-handling-python.md
               displayName: 'handling, catch'
             - name: Naplózás a Pythonhoz készült MSAL-ben
-              href: msal-logging.md?tabs=python
+              href: msal-logging-python.md
         - name: Javához készült MSAL
           items:
             - name: Egyéni jogkivonat-gyorsítótár szerializálása
@@ -429,7 +429,7 @@
               href: msal-error-handling-java.md
               displayName: 'handling, catch'
             - name: Naplózás a Javához készült MSAL-ben
-              href: msal-logging.md?tabs=java
+              href: msal-logging-java.md
         - name: MSAL Android rendszerhez
           items:
             - name: Fiókok és bérlői profilok
@@ -449,7 +449,7 @@
               href: msal-android-handling-exceptions.md
               displayName: 'android, mobile, handling, catch'
             - name: Naplózás az Androidhoz készült MSAL-ben
-              href: msal-logging.md?tabs=android
+              href: msal-logging-android.md
     - name: Jogkivonatok és jogcímek testreszabása
       items:
         - name: Szerepkörjogcím konfigurálása

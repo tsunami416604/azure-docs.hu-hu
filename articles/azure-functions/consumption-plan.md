@@ -3,12 +3,12 @@ title: Azure Functions használati terv üzemeltetése
 description: Ismerje meg, hogyan futtathatja a kódot olyan környezetben, amely dinamikusan méretezhető, de csak a végrehajtás során használt erőforrásokért kell fizetnie.
 ms.date: 8/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: ffb556ce48f18702e06fcdb02dda84f41ae5f906
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: d292a70a8dfaa4cebdb99f2bcb5420c8b8ab9cd8
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684691"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760540"
 ---
 # <a name="azure-functions-consumption-plan-hosting"></a>Azure Functions használati terv üzemeltetése
 
@@ -16,7 +16,7 @@ A használati terv használatakor a rendszer a Azure Functions gazdagép példá
 
 ## <a name="benefits"></a>Előnyök
 
-A fogyasztási terv automatikusan, még akkor is, ha nagy terheléssel jár. A függvények használati tervben való futtatásakor a számítási erőforrásokért csak akkor kell fizetnie, ha a függvények futnak. Használatalapú csomag esetében egy függvény végrehajtása túllépi a konfigurált időkorlátot.
+A fogyasztási terv automatikusan, akár nagy terhelésű időszakok esetén is méretezhető. A függvények használati tervben való futtatásakor a számítási erőforrásokért csak akkor kell fizetnie, ha a függvények futnak. Használatalapú csomag esetében egy függvény végrehajtása túllépi a konfigurált időkorlátot.
 
 A használati terv és az üzemeltetési típusok összehasonlításával kapcsolatban lásd: a [függvények méretezési és üzemeltetési lehetőségei](functions-scale.md).
 
@@ -42,7 +42,7 @@ A functions-alkalmazásokat a [Visual Studio Code](./create-first-function-vs-co
 
 Az azonos régióban található Function apps ugyanahhoz a használati tervhez is hozzárendelhető. Nincs hátránya, hogy több alkalmazás is fut ugyanabban a használati csomagban. Ha több alkalmazást rendel ugyanahhoz a használati tervhez, az egyes alkalmazások rugalmasságát, méretezhetőségét és megbízhatóságát nem befolyásolja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 + [Üzemeltetési lehetőségek Azure Functions](functions-scale.md)
 + [Eseményvezérelt skálázás Azure Functions](event-driven-scaling.md)

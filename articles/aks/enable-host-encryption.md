@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan konfigurálhat gazdagép-alapú titkosítást e
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 14ec39272bf2f434aaa57217a90667a62e82901a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 6b23bf285d89a5f3285825feef849b3d168ed62f
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183294"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762030"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Gazdagép-alapú titkosítás az Azure Kubernetes szolgáltatásban (ak) (előzetes verzió)
 
@@ -26,34 +26,32 @@ Ez a funkció csak a fürt létrehozásakor vagy a csomópont-készlet létrehoz
 ### <a name="prerequisites"></a>Előfeltételek
 
 - Győződjön meg arról, hogy a `aks-preview` CLI-bővítmény v 0.4.55 vagy újabb verziója van telepítve
-- Győződjön meg arról, hogy engedélyezve van a `EncryptionAtHost` funkció jelzője `Microsoft.Compute` .
 - Győződjön meg arról, hogy engedélyezve van a `EnableEncryptionAtHostPreview` funkció jelzője `Microsoft.ContainerService` .
 
+Ahhoz, hogy a virtuális gépekhez vagy virtuálisgép-méretezési csoportokhoz titkosítást lehessen használni a gazdagépen, be kell szereznie a funkciót az előfizetésében. Küldjön egy e-mailt az encryptionAtHost@microsoft.com előfizetési azonosítókkal, hogy a szolgáltatás engedélyezve legyen az előfizetésekhez.
+
 ### <a name="register-encryptionathost--preview-features"></a>Előzetes verziójú funkciók regisztrálása `EncryptionAtHost`
+
+> [!IMPORTANT]
+> encryptionAtHost@microsoftAhhoz, hogy a szolgáltatás engedélyezve legyen a számítási erőforrások számára, e-mail-címre kell elolvasnia az előfizetési azonosítókat. Ezekhez az erőforrásokhoz nem engedélyezheti saját magát. Saját maga is engedélyezheti a Container Service-ben.
 
 Ha gazdagép-alapú titkosítást használó AK-fürtöt szeretne létrehozni, engedélyeznie kell a `EnableEncryptionAtHostPreview` és a `EncryptionAtHost` szolgáltatás jelzőit az előfizetésében.
 
 Regisztrálja a `EncryptionAtHost` szolgáltatás jelölőjét az az [Feature Register][az-feature-register] paranccsal az alábbi példában látható módon:
 
 ```azurecli-interactive
-az feature register --namespace "Microsoft.Compute" --name "EncryptionAtHost"
-
 az feature register --namespace "Microsoft.ContainerService"  --name "EnableEncryptionAtHostPreview"
 ```
 
 Néhány percet vesz igénybe, amíg az állapot *regisztrálva* jelenik meg. A regisztrációs állapotot az az [Feature List][az-feature-list] parancs használatával tekintheti meg:
 
 ```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.Compute/EncryptionAtHost')].{Name:name,State:properties.state}"
-
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEncryptionAtHostPreview')].{Name:name,State:properties.state}"
 ```
 
 Ha elkészült, frissítse a `Microsoft.ContainerService` és az erőforrás- `Microsoft.Compute` szolgáltató regisztrációját az az [Provider Register][az-provider-register] paranccsal:
 
 ```azurecli-interactive
-az provider register --namespace Microsoft.Compute
-
 az provider register --namespace Microsoft.ContainerService
 ```
 
@@ -97,7 +95,7 @@ az aks nodepool add --name hostencrypt --cluster-name myAKSCluster --resource-gr
 
 Ha a gazdagép-alapú titkosítási funkció nélkül szeretne új csomópont-készleteket létrehozni, ezt az egyéni paraméter kihagyása mellett teheti meg `--aks-custom-headers` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse át a [gazdagép-alapú titkosításról](../virtual-machines/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)szóló [ajánlott eljárásokat az AK-fürtök biztonsága][best-practices-security] című cikkből.
 

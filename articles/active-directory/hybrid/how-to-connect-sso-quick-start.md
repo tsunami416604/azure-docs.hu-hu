@@ -16,21 +16,18 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eadb20bc570545356508d82c05e1746424a14b71
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 59cc50274b291c23aeec4620ec7a09312cc0c1fb
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504389"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762247"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyors üzembe helyezés
 
 ## <a name="deploy-seamless-single-sign-on"></a>Zökkenőmentes egyszeri Sign-On üzembe helyezése
 
 Azure Active Directory (Azure AD) zökkenőmentes, egyetlen Sign-On (zökkenőmentes SSO) automatikusan bejelentkezik a felhasználók számára, amikor a vállalati hálózathoz csatlakozó vállalati asztali számítógépeken vannak. A zökkenőmentes SSO lehetővé teszi, hogy a felhasználók könnyen hozzáférjenek a felhőalapú alkalmazásokhoz anélkül, hogy további helyszíni összetevőket kellene megadniuk.
-
-> [!NOTE]
-> Ez a cikk az *engedélyezési* feltételekre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
 
 A zökkenőmentes egyszeri bejelentkezés telepítéséhez kövesse az alábbi lépéseket.
 
@@ -40,7 +37,7 @@ Győződjön meg arról, hogy a következő előfeltételek vannak érvényben:
 
 * **A Azure ad Connect-kiszolgáló beállítása**: Ha a bejelentkezési módszere [átmenő hitelesítést](how-to-connect-pta.md) használ, nincs szükség további előfeltételek ellenőrzésére. Ha a bejelentkezési módszerként [jelszó-kivonatolási szinkronizálást](how-to-connect-password-hash-synchronization.md) használ, és ha tűzfal van Azure ad Connect és az Azure ad között, ügyeljen a következőkre:
    - A Azure AD Connect 1.1.644.0 vagy újabb verzióját használja. 
-   - Ha a tűzfal vagy a proxy lehetővé teszi, vegye fel a kapcsolatot az engedélyezett listához a **\* . Msappproxy.net** URL-címeken a 443-es porton keresztül. Ha nem, engedélyezze a hozzáférést az [Azure Datacenter IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653), amelyek hetente frissülnek. Ez az előfeltétel csak akkor alkalmazható, ha engedélyezi a szolgáltatást. A tényleges felhasználói bejelentkezésekhez nem szükséges.
+   - Ha a tűzfal vagy a proxy lehetővé teszi, vegye fel a kapcsolatot az engedélyezett listához a **\* . Msappproxy.net** URL-címeken a 443-es porton keresztül. Ha egy adott URL-címet igényel, nem pedig helyettesítő karaktert a proxy konfigurálásához, konfigurálhatja a **tenantid.Registration.msappproxy.net**, ahol a tenantid a szolgáltatást konfiguráló bérlő GUID azonosítója. Ha a szervezetben nem lehetséges az URL-alapú proxy-kivételek használata, ehelyett engedélyezheti a hozzáférést az [Azure DATACENTER IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653), amelyek hetente frissülnek. Ez az előfeltétel csak akkor alkalmazható, ha engedélyezi a szolgáltatást. A tényleges felhasználói bejelentkezésekhez nem szükséges.
 
     >[!NOTE]
     >A 1.1.557.0, a 1.1.558.0, a 1.1.561.0 és a 1.1.614.0 verziók a jelszó-kivonat szinkronizálásával kapcsolatos problémával rendelkeznek. Azure AD Connect Ha _nem_ kívánja használni a jelszó-kivonatolási szinkronizálást az átmenő hitelesítéssel együtt, olvassa el a [Azure ad Connect kibocsátási megjegyzéseit](./reference-connect-version-history.md) további információért.
@@ -237,7 +234,7 @@ A kulcsok átadására vonatkozó utasításokért lásd [: Azure Active Directo
 >[!IMPORTANT]
 >Ezt a lépést nem kell _azonnal_ végrehajtania, miután engedélyezte a szolgáltatást. A Kerberos-visszafejtési kulcsok legalább 30 naponkénti átadása.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Részletes [technikai](how-to-connect-sso-how-it-works.md)tudnivalók: az egyszerű Sign-On funkció működésének megismerése.
 - [Gyakori kérdések](how-to-connect-sso-faq.md): válaszokat kaphat a zökkenőmentes egyszeri bejelentkezéssel kapcsolatos gyakori kérdésekre.

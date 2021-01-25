@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 12/07/2020
-ms.openlocfilehash: 7c15b3a854b533d93bc05f7e5302671711da75c2
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 01/22/2021
+ms.openlocfilehash: a4d1543c5c4ce7a44825a879b838e7829b8c84fd
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936124"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760635"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Áttekintés: Azure Logic Apps előzetes verzió
 
@@ -139,6 +139,8 @@ A Azure Logic Apps Preview számos aktuális és további funkciót tartalmaz, p
 
 * Engedélyezze a diagnosztikai naplózási és nyomkövetési funkciókat a logikai alkalmazáshoz, ha az Azure-előfizetése és a logikai alkalmazás beállításai támogatják a [Application Insights](../azure-monitor/app/app-insights-overview.md) .
 
+* Az egyes munkafolyamatok által használt felügyelt kapcsolatok elérési kulcsainak újragenerálása egy **logikai alkalmazás (előzetes verzió)** erőforrásban. Ehhez a feladathoz [kövesse ugyanezen lépéseket a **Logic apps** erőforráshoz, de az egyes munkafolyamatok szintjén](logic-apps-securing-a-logic-app.md#regenerate-access-keys), ne a logikai alkalmazás erőforrás szintjén.
+
 > [!NOTE]
 > Az aktuális ismert problémákkal kapcsolatos információkért tekintse át a [Logic apps nyilvános előzetes verzió ismert problémáit ismertető oldalt a githubon](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md).
 
@@ -165,7 +167,7 @@ Az új erőforrástípus esetében alkalmazandó díjszabási modellekkel kapcso
 
 ## <a name="changed-limited-unavailable-or-unsupported-capabilities"></a>Módosított, korlátozott, nem elérhető vagy nem támogatott képességek
 
-Azure Logic Apps előzetes verzióban ezek a képességek módosítva vannak, vagy jelenleg korlátozottak, nem érhetők el vagy nem támogatottak:
+Azure Logic Apps előzetes verzióban ezek a funkciók megváltoztak, vagy jelenleg korlátozottak, nem érhetők el vagy nem támogatottak:
 
 * **Eseményindítók és műveletek**: egyes beépített eseményindítók nem érhetők el, például a csúszó ablak és a köteg. A munkafolyamat elindításához használja a [beépített ismétlődés, kérelem, http, http webhook, Event Hubs vagy Service Bus eseményindítót](../connectors/apis-list.md). A beépített eseményindítók és műveletek natív módon futnak a Azure Logic Apps előnézet futtatókörnyezetben, míg a felügyelt összekötők üzembe helyezése az Azure-ban történik. A tervezőben a beépített eseményindítók és műveletek a **beépített** lapon jelennek meg, míg a felügyelt összekötő-eseményindítók és műveletek az **Azure** lapon jelennek meg.
 

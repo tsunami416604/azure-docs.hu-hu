@@ -3,12 +3,12 @@ title: Az Azure VMware-megoldás üzembe helyezésének megtervezése
 description: Ez a cikk egy Azure VMware-megoldás üzembe helyezési munkafolyamatát ismerteti.  A végeredmény egy olyan környezet, amely készen áll a virtuális gép (VM) létrehozására és áttelepítésére.
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: cdf4ddd6166920fa7461bfd85e01ef0efd6dfbb9
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 8b1d69f3f953b43177a3b1d0611b51ca2cfb1a75
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704564"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762865"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Az Azure VMware-megoldás üzembe helyezésének megtervezése
 
@@ -93,9 +93,9 @@ Ne feledje, hogy:
 - Ha a helyi hálózatok kibővítését tervezi, ezeknek a hálózatoknak csatlakozniuk kell egy [vSphere elosztott kapcsolóhoz (vDS)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-B15C6A13-797E-4BCB-B9D9-5CBC5A60C3A6.html) a helyszíni VMware-környezetben.  
 - Ha a hálózat (ok) [vSphere standard kapcsolón](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-350344DE-483A-42ED-B0E2-C811EE927D59.html)szeretné kiterjeszteni az élő hálózatot, akkor nem bővíthetők.
 
-## <a name="azure-virtual-network-to-attach-azure-vmware-solution"></a>Azure-Virtual Network az Azure VMware-megoldás csatlakoztatásához
+## <a name="attach-virtual-network-to-azure-vmware-solution"></a>Virtuális hálózat csatlakoztatása az Azure VMware-megoldáshoz
 
-Ebben a lépésben egy ExpressRoute virtuális hálózati átjárót fog azonosítani, és támogatja az Azure VMware Solution ExpressRoute áramkör csatlakoztatásához használt Azure-beli virtuális hálózatot.  A ExpressRoute áramkör lehetővé teszi, hogy az Azure VMware-megoldás saját felhőjét más Azure-szolgáltatásokhoz, Azure-erőforrásokhoz és helyszíni környezetekhez lehessen csatlakoztatni.
+Ebben a lépésben egy ExpressRoute virtuális hálózati átjárót fog azonosítani, és támogatja az Azure VMware Solution ExpressRoute áramkör csatlakoztatásához használt Azure-Virtual Network.  A ExpressRoute áramkör lehetővé teszi, hogy az Azure VMware-megoldás saját felhőjét más Azure-szolgáltatásokhoz, Azure-erőforrásokhoz és helyszíni környezetekhez lehessen csatlakoztatni.
 
 *Meglévő* vagy *új* ExpressRoute virtuális hálózati átjárót is használhat.
 
@@ -103,21 +103,23 @@ Ebben a lépésben egy ExpressRoute virtuális hálózati átjárót fog azonos�
 
 ### <a name="use-an-existing-expressroute-virtual-network-gateway"></a>Meglévő ExpressRoute virtuális hálózati átjáró használata
 
-Ha *meglévő* ExpressRoute virtuális hálózati átjárót használ, az Azure VMware megoldás ExpressRoute áramkörét a rendszer a privát felhő üzembe helyezése után hozza meg.  Így nincs szükség a **Virtual Network** mező feltöltésére.  
+Ha *meglévő* ExpressRoute virtuális hálózati átjárót használ, az Azure VMware megoldás ExpressRoute áramkörét a rendszer a privát felhő üzembe helyezése után hozza meg. Ebben az esetben hagyja üresen a **Virtual Network** mezőt.  
 
 Jegyezze fel, hogy melyik ExpressRoute virtuális hálózati átjárót fogja használni, és folytassa a következő lépéssel.
 
 ### <a name="create-a-new-expressroute-virtual-network-gateway"></a>Új ExpressRoute virtuális hálózati átjáró létrehozása
 
-*Új* ExpressRoute virtuális hálózati átjáró létrehozásakor egy meglévő azure-Virtual Network is használható, vagy létrehozhatók új azure-Virtual Networkek.  
+*Új* ExpressRoute virtuális hálózati átjáró létrehozásakor használhat meglévő Azure-Virtual Network, vagy létrehozhat egy újat.  
 
-Ha a választás egy meglévő Azure-Virtual Network használata, ellenőrizze, hogy nincsenek-e meglévő ExpressRoute virtuális hálózati átjárók a virtuális hálózatban, és jelölje ki a saját Felhőbeli üzembe helyezés létrehozása képernyő Virtual Network legördülő menüben.
+- Meglévő Azure-beli virtuális hálózat esetén:
+   1. Győződjön meg arról, hogy a virtuális hálózatban nincsenek előre meglévő ExpressRoute virtuális hálózati átjárók. 
+   1. Válassza ki a meglévő Azure-Virtual Network a **Virtual Network** listából.
 
-Ha úgy dönt, hogy új Azure-Virtual Network hoz létre, azt előre vagy az üzembe helyezés során lehet létrehozni, a saját Felhőbeli központi telepítés létrehozása képernyő Virtual Network szakaszának új lehetőségére kattintva.
+- Új Azure-Virtual Network esetén előre vagy üzembe helyezés közben is létrehozhatja. Válassza az **új létrehozása** hivatkozást a **Virtual Network** listában.
 
-Az alábbi ábrán a **saját Felhőbeli** üzembe helyezési képernyő létrehozása és a Red-ban leírt Azure **Virtual Network** mező látható.
+Az alábbi képen látható a **saját Felhőbeli** üzembe helyezési képernyő létrehozása a kiemelt **Virtual Network** mezővel.
 
-:::image type="content" source="media/pre-deployment/azure-vmware-solution-deployment-screen-vnet-circle.png" alt-text="Képernyőfelvétel az Azure VMware megoldás üzembe helyezéséről a virtuális hálózati átjáróval.":::
+:::image type="content" source="media/pre-deployment/azure-vmware-solution-deployment-screen-vnet-circle.png" alt-text="Képernyőkép az Azure VMware megoldás üzembe helyezési képernyőjéről Virtual Network mező kiemelésével.":::
 
 >[!NOTE]
 >A helyszíni környezet és az Azure VMware-megoldás a használni vagy létrehozni kívánt virtuális hálózatokat is láthatja, ezért ügyeljen arra, hogy az ebben a virtuális hálózatban használt IP-szegmensek és alhálózatok ne legyenek átfedésben.

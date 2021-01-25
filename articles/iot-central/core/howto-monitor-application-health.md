@@ -7,12 +7,12 @@ ms.date: 05/14/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 1fb17d56c546511fee291f30b103a5310c8015cc
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 12485e07bc3cad9d420141ecc6ee66763ac010b7
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122273"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760768"
 ---
 # <a name="monitor-the-overall-health-of-the-devices-connected-to-an-iot-central-application"></a>IoT Central alkalmazáshoz csatlakoztatott eszközök általános állapotának figyelése
 
@@ -58,6 +58,6 @@ A metrikák eltérhetnek az Azure IoT Central-számlán látható számtól. Ez 
 
 - Míg a metrikák az eszközről a felhőbe irányuló kommunikáció egy részhalmazát láthatják, az eszköz és a felhő közötti összes kommunikáció a [Számlázási üzenetnek számít](https://azure.microsoft.com/pricing/details/iot-central/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte az alkalmazás sablonjainak használatát, a javasolt következő lépés a [IoT Central kezelésének megismerése a Azure Portal](howto-manage-iot-central-from-portal.md)
+Most, hogy megismerte az alkalmazás-sablonok használatát, a javasolt következő lépés a [IoT Central kezelésének megismerése a Azure Portal](howto-manage-iot-central-from-portal.md).

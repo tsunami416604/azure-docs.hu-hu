@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/28/2020
+ms.date: 01/15/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 7bd85c60025475e8208847a12ccc2729743a975a
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: f550f96a8bd2e402556089061604654b11d47844
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803918"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762890"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>Időponthoz tartozó visszaállítás végrehajtása a blob-adatok blokkolása közben
 
@@ -23,7 +23,7 @@ Az időponthoz tartozó visszaállítással visszaállíthat egy vagy több blok
 Ha többet szeretne megtudni az időponthoz tartozó visszaállításról, tekintse meg [az időponthoz való visszaállítást a blokkos Blobok esetében](point-in-time-restore-overview.md).
 
 > [!CAUTION]
-> Az időponthoz való visszaállítás támogatja a csak blokkos Blobok műveleteinek visszaállítását. A tárolók műveletei nem állíthatók vissza. Ha töröl egy tárolót a Storage-fiókból a [tároló törlése](/rest/api/storageservices/delete-container) művelet meghívásával, a tároló nem állítható vissza visszaállítási művelettel. A teljes tároló törlése helyett törölje az egyes blobokat, ha később szeretné visszaállítani őket.
+> Az időponthoz való visszaállítás támogatja a csak blokkos Blobok műveleteinek visszaállítását. A tárolók műveletei nem állíthatók vissza. Ha töröl egy tárolót a Storage-fiókból a [tároló törlése](/rest/api/storageservices/delete-container) művelet meghívásával, a tároló nem állítható vissza visszaállítási művelettel. A teljes tároló törlése helyett törölje az egyes blobokat, ha később szeretné visszaállítani őket. A Microsoft emellett azt is javasolja, hogy a tárolók és Blobok törlését a véletlen törlés elleni védelem érdekében engedélyezze. További információ: a [tárolók helyreállítható törlése (előzetes verzió)](soft-delete-container-overview.md) és [a Blobok Soft delete](soft-delete-blob-overview.md).
 
 ## <a name="enable-and-configure-point-in-time-restore"></a>Időponthoz tartozó visszaállítás engedélyezése és konfigurálása
 
@@ -52,19 +52,16 @@ Az alábbi képen egy olyan Storage-fiók látható, amely az időponthoz tartoz
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Az időponthoz való visszaállítás PowerShell használatával történő konfigurálásához először telepítse az az [. Storage](https://www.powershellgallery.com/packages/Az.Storage) modul 2.6.0 vagy újabb verzióját. Ezután hívja meg a Enable-AzStorageBlobRestorePolicy parancsot, hogy engedélyezze a tárolási fiók időponthoz való visszaállítását.
+Az időponthoz való visszaállítás PowerShell használatával történő konfigurálásához először telepítse az az [. Storage](https://www.powershellgallery.com/packages/Az.Storage) modul 2.6.0 vagy újabb verzióját. Ezután hívja meg az [enable-AzStorageBlobRestorePolicy](/powershell/module/az.storage/enable-azstorageblobrestorepolicy) parancsot, hogy engedélyezze a tárolási fiók időponthoz való visszaállítását.
 
-A következő példa engedélyezi a helyreállítható törlést, és beállítja a helyreállítható törlés megőrzési időtartamát, lehetővé teszi a hírcsatornák és verziószámozások módosítását, majd engedélyezi az időponthoz való visszaállítást.    A példa futtatásakor ne felejtse el lecserélni a szögletes zárójelben lévő értékeket a saját értékeire:
+A következő példa engedélyezi a helyreállítható törlést, és beállítja a helyreállítható törlés megőrzési időtartamát, lehetővé teszi a hírcsatornák és verziószámozások módosítását, majd engedélyezi az időponthoz való visszaállítást. A példa futtatásakor ne felejtse el lecserélni a szögletes zárójelben lévő értékeket a saját értékeire:
 
 ```powershell
-# Sign in to your Azure account.
-Connect-AzAccount
-
 # Set resource group and account variables.
 $rgName = "<resource-group>"
 $accountName = "<storage-account>"
 
-# Enable soft delete with a retention of 14 days.
+# Enable blob soft delete with a retention of 14 days.
 Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
     -RetentionDays 14
@@ -87,11 +84,33 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
     -StorageAccountName $accountName
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Az Azure CLI-vel történő időpontra történő visszaállításhoz először telepítse az Azure CLI-es vagy újabb verzióját. Ezután hívja meg az az [Storage Account blob-Service-Properties Update](/cli/azure/ext/storage-blob-preview/storage/account/blob-service-properties#ext_storage_blob_preview_az_storage_account_blob_service_properties_update) parancsot az időponthoz tartozó visszaállítás és a Storage-fiók egyéb szükséges adatvédelmi beállításainak engedélyezéséhez.
+
+A következő példa lehetővé teszi a helyreállítható törlést, és beállítja a helyreállítható törlés megőrzési időtartamát 14 napig, lehetővé teszi a hírcsatornák és verziószámozások módosítását, valamint lehetővé teszi az időponthoz való visszaállítást 7 napos visszaállítási időszakra. A példa futtatásakor ne felejtse el lecserélni a szögletes zárójelben lévő értékeket a saját értékeire:
+
+```azurecli
+az storage account blob-service-properties update \
+    --resource-group <resource_group> \
+    --account-name <storage-account> \
+    --enable-delete-retention true \
+    --delete-retention-days 14 \
+    --enable-versioning true \
+    --enable-change-feed true \
+    --enable-restore-policy true \
+    --restore-days 7
+```
+
 ---
 
-## <a name="perform-a-restore-operation"></a>Visszaállítási művelet végrehajtása
+## <a name="choose-a-restore-point"></a>Visszaállítási pont kiválasztása
 
-Ha visszaállítási műveletet hajt végre, a visszaállítási pontot UTC **datetime** értékként kell megadnia. A tárolók és a Blobok ezen a napon és időpontban lesznek visszaállítva az állapotukra. A visszaállítási művelet végrehajtása több percet is igénybe vehet.
+A visszaállítási pont az a dátum és időpont, ameddig az adatok visszaállíthatók. Az Azure Storage mindig UTC dátum/idő értéket használ a visszaállítási pontként. A Azure Portal azonban lehetővé teszi a visszaállítási pont helyi idő szerinti megadását, majd ezt a dátum/idő értéket egy UTC dátum/idő értékre alakítja a visszaállítási művelet elvégzéséhez.
+
+Ha a PowerShell vagy az Azure CLI használatával hajt végre visszaállítási műveletet, a visszaállítási pontot UTC dátum/idő értékként kell megadnia. Ha a visszaállítási pont az UTC-időérték helyett egy helyi időértékkel van megadva, akkor a visszaállítási művelet bizonyos esetekben a várt módon működhet. Ha például a helyi idő UTC mínusz öt óra, akkor a helyi idő értékének megadásával egy visszaállítási pont fog megjelenni, amely a megadott értéktől számított öt órával korábbi. Ha a tartományba tartozó, az öt órás időszak során visszaállított értékekre nem történt változás, akkor a visszaállítási művelet ugyanazt az eredményt fogja eredményezni, függetlenül attól, hogy melyik időértéket adta meg. A nem várt eredmények elkerülése érdekében ajánlott UTC-időt megadni a visszaállítási ponthoz.
+
+## <a name="perform-a-restore-operation"></a>Visszaállítási művelet végrehajtása
 
 A Storage-fiókban lévő összes tárolót visszaállíthatja, vagy egy vagy több tárolóban is visszaállíthatja a Blobok egy tartományát. A Blobok köre lexicographically van definiálva, vagyis a szótári sorrendben. Egy visszaállítási műveletben legfeljebb tíz lexicographical-tartomány támogatott. A tartomány kezdete magában foglalja a tartományt, a tartomány végét pedig kizárólagos.
 
@@ -128,7 +147,7 @@ Ha a Storage-fiókban lévő összes tárolót és blobot vissza szeretné áll�
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Ha a Storage-fiókban lévő összes tárolót és blobot a PowerShell-lel szeretné visszaállítani, hívja meg a **Restore-AzStorageBlobRange** parancsot. Alapértelmezés szerint a **Restore-AzStorageBlobRange** parancs aszinkron módon fut, és egy **PSBlobRestoreStatus** típusú objektumot ad vissza, amely a visszaállítási művelet állapotának ellenőrzéséhez használható.
+Ha a Storage-fiókban lévő összes tárolót és blobot a PowerShell-lel szeretné visszaállítani, hívja meg a **Restore-AzStorageBlobRange** parancsot, és adja meg a visszaállítási pontot UTC dátum/idő értékként. Alapértelmezés szerint a **Restore-AzStorageBlobRange** parancs aszinkron módon fut, és egy **PSBlobRestoreStatus** típusú objektumot ad vissza, amely a visszaállítási művelet állapotának ellenőrzéséhez használható.
 
 A következő példa aszinkron módon visszaállítja a Storage-fiókban lévő tárolókat az állapotukra 12 órával a jelen pillanat előtt, és ellenőrzi a visszaállítási művelet egyes tulajdonságait:
 
@@ -136,7 +155,7 @@ A következő példa aszinkron módon visszaállítja a Storage-fiókban lévő 
 # Specify -TimeToRestore as a UTC value
 $restoreOperation = Restore-AzStorageBlobRange -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
-    -TimeToRestore (Get-Date).AddHours(-12)
+    -TimeToRestore (Get-Date).ToUniversalTime().AddHours(-12)
 
 # Get the status of the restore operation.
 $restoreOperation.Status
@@ -153,6 +172,22 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
     -TimeToRestore (Get-Date).AddHours(-12) -WaitForComplete
 ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Ha a Storage-fiókban lévő összes tárolót és blobot vissza szeretné állítani az Azure CLI-vel, hívja meg az az [Storage blob Restore](/cli/azure/storage/blob#az_storage_blob_restore) parancsot, és adja meg a visszaállítási pontot UTC dátum/idő értékként.
+
+A következő példa aszinkron módon visszaállítja a Storage-fiókban lévő összes tárolót az állapotukra 12 órával a megadott dátum és idő előtt. A visszaállítási művelet állapotának megtekintéséhez hívja az az [Storage Account show](/cli/azure/storage/account#az_storage_account_show):
+
+```azurecli
+az storage blob restore \
+    --resource-group <resource_group> \
+    --account-name <storage-account> \
+    --time-to-restore 2021-01-14T06:31:22Z \
+    --no-wait
+```
+
+Az az **Storage blob Restore** parancs szinkron módon történő futtatásához és a végrehajtás letiltásához, amíg a visszaállítási művelet be nem fejeződik, hagyja ki a `--no-wait` paramétert.
 
 ---
 
@@ -244,6 +279,25 @@ $restoreOperation.Parameters.BlobRanges
 ```
 
 A visszaállítási művelet szinkron módon történő futtatásához és a végrehajtás befejezéséhez a parancsban adja meg a **-WaitForComplete** paramétert.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Blobok egy tartományának visszaállításához hívja meg az az [Storage blob Restore](/cli/azure/storage/blob#az_storage_blob_restore) parancsot, és adja meg a paraméterhez tartozó tároló-és blob-nevek lexicographical-tartományát `--blob-range` . Több tartomány megadásához adja meg a `--blob-range` paramétert az egyes különböző tartományokhoz.
+
+Ha például egy *container1* nevű tárolóban szeretné visszaállítani a blobokat, megadhat egy tartományt, amely a *container1* kezdetű, és a *container2*-val végződik. A kezdő és a záró tartományokban megnevezett tárolók nem kötelezőek. Mivel a tartomány vége kizárólagos, még akkor is, ha a Storage-fiók tartalmaz egy *container2* nevű tárolót, a rendszer csak a *container1* nevű tárolót állítja vissza.
+
+Ha egy tárolóban lévő Blobok részhalmazát kívánja visszaállítani, egy perjel (/) használatával válassza el a tároló nevét a blob előtag-mintából. Az alább látható példa aszinkron módon visszaállítja a Blobok egy tartományát egy olyan tárolóban, amelynek neve a betűvel kezdődik `d` `f` .
+
+```azurecli
+az storage blob restore \
+    --account-name <storage-account> \
+    --time-to-restore 2021-01-14T06:31:22Z \
+    --blob-range container1 container2
+    --blob-range container3/d container3/g
+    --no-wait
+```
+
+Az az **Storage blob Restore** parancs szinkron módon történő futtatásához és a végrehajtás letiltásához, amíg a visszaállítási művelet be nem fejeződik, hagyja ki a `--no-wait` paramétert.
 
 ---
 

@@ -6,12 +6,12 @@ ms.author: alkemper
 ms.date: 05/28/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 588efd692119c9e2831e16c1ce26c2759898a1e5
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 1c290032f7a33079b560d3c4cc1fcb9526e70331
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607364"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762157"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>A GitHub-tárház szinkronizálása az alkalmazás konfigurációjával
 
@@ -20,9 +20,9 @@ Azok a csapatok, amelyek továbbra is a meglévő verziókövetés gyakorlatát 
 &nbsp;&nbsp;&nbsp;&nbsp;• Konfiguráció frissítése a teljes alkalmazás újbóli üzembe helyezése nélkül <br>
 &nbsp;&nbsp;&nbsp;&nbsp;• Integráció olyan szolgáltatásokkal, mint a Azure App Service és a functions. 
 
-A GitHub-műveletek [munkafolyamat](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions) a GitHub-tárházban automatikus folyamatot határoz meg. Az *Azure app Configuration Sync* művelet elindít egy alkalmazás-konfigurációs példány frissítéseit, amikor módosítja a forrás adattárát. Egy YAML (. YML) fájlt használ a `/.github/workflows/` tárház elérési útjában, hogy meghatározza a lépéseket és a paramétereket. A konfigurációs frissítéseket aktiválhatja az alkalmazás konfigurációs fájljainak leküldésekor, áttekintésekor vagy elágazásakor ugyanúgy, mint az alkalmazás kódjával.
+A GitHub-műveletek [munkafolyamat](https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions) a GitHub-tárházban automatikus folyamatot határoz meg. Az *Azure app Configuration Sync* művelet elindít egy alkalmazás-konfigurációs példány frissítéseit, amikor módosítja a forrás adattárát. Egy YAML (. YML) fájlt használ a `/.github/workflows/` tárház elérési útjában, hogy meghatározza a lépéseket és a paramétereket. A konfigurációs frissítéseket aktiválhatja az alkalmazás konfigurációs fájljainak leküldésekor, áttekintésekor vagy elágazásakor ugyanúgy, mint az alkalmazás kódjával.
 
-A GitHub [dokumentációja](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions) részletes áttekintést nyújt a GitHub-munkafolyamatokról és-műveletekről. 
+A GitHub [dokumentációja](https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions) részletes áttekintést nyújt a GitHub-munkafolyamatokról és-műveletekről. 
 
 ## <a name="enable-github-actions-in-your-repository"></a>GitHub-műveletek engedélyezése a tárházban
 A GitHub-művelet elindításához nyissa meg a tárházat, és válassza a **műveletek** lapot. Válassza az **Új munkafolyamat** lehetőséget, majd **állítson be egy munkafolyamatot**. Végül keresse meg a piactéren az "Azure app Configuration Sync" kifejezést.
@@ -35,7 +35,7 @@ A GitHub-művelet elindításához nyissa meg a tárházat, és válassza a **m�
 ## <a name="sync-configuration-files-after-a-push"></a>Konfigurációs fájlok szinkronizálása leküldéses üzenet után
 Ez a művelet szinkronizálja az Azure-alkalmazás konfigurációs fájljait, amikor egy módosítást küld a rendszer `appsettings.json` . Amikor egy fejlesztő leküldi a módosítást `appsettings.json` , az alkalmazás konfigurációs szinkronizálási művelete frissíti az alkalmazás konfigurációs példányát az új értékekkel.
 
-A munkafolyamat első szakasza azt *határozza meg,* hogy a művelet a fő ágat tartalmazó *leküldéses* műveletet indít `appsettings.json` el.  A második szakasz azokat a feladatokat sorolja fel, amelyek a művelet elindítása után futnak. A művelet megkeresi a kapcsolódó fájlokat, és frissíti az alkalmazás konfigurációs példányát az adattárban titkosként tárolt kapcsolati sztring használatával.  A GitHubon található titkok használatával kapcsolatos további információkért lásd a [githubról szóló cikket](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets) a titkosított titkok létrehozásával és használatával kapcsolatban.
+A munkafolyamat első szakasza azt *határozza meg,* hogy a művelet a fő ágat tartalmazó *leküldéses* műveletet indít `appsettings.json` el.  A második szakasz azokat a feladatokat sorolja fel, amelyek a művelet elindítása után futnak. A művelet megkeresi a kapcsolódó fájlokat, és frissíti az alkalmazás konfigurációs példányát az adattárban titkosként tárolt kapcsolati sztring használatával.  A GitHubon található titkok használatával kapcsolatos további információkért lásd a [githubról szóló cikket](https://docs.github.com/en/actions/reference/encrypted-secrets) a titkosított titkok létrehozásával és használatával kapcsolatban.
 
 ```json
 on: 
@@ -300,7 +300,7 @@ A 2. mélysége miatt a fenti példa a következő kulcs-érték párokat adja v
 | Objektum: belső | {"InnerKey":"InnerValue"} |
 
 ## <a name="understand-action-inputs"></a>A műveleti bemenetek ismertetése
-A bemeneti paraméterek a művelet által a Futtatás során használt adatokat határozzák meg.  Az alábbi táblázat az alkalmazás konfigurációs szinkronizálása által elfogadott bemeneti paramétereket és az egyes értékek várt értékeit tartalmazza.  A GitHub-műveletekkel kapcsolatos művelet-bemenetekkel kapcsolatos további információkért lásd a GitHub [dokumentációját](https://docs.github.com/en/free-pro-team@latest/actions/creating-actions/metadata-syntax-for-github-actions#inputs).
+A bemeneti paraméterek a művelet által a Futtatás során használt adatokat határozzák meg.  Az alábbi táblázat az alkalmazás konfigurációs szinkronizálása által elfogadott bemeneti paramétereket és az egyes értékek várt értékeit tartalmazza.  A GitHub-műveletekkel kapcsolatos művelet-bemenetekkel kapcsolatos további információkért lásd a GitHub [dokumentációját](https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#inputs).
 
 > [!Note]
 > A bemeneti azonosítók a kis-és nagybetűk megkülönböztetése.

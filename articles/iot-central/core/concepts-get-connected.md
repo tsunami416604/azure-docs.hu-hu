@@ -1,9 +1,9 @@
 ---
 title: Eszköz csatlakoztatása az Azure IoT Centralban | Microsoft Docs
 description: Ez a cikk bemutatja az Azure-beli eszközök csatlakoztatásával kapcsolatos főbb fogalmakat IoT Central
-author: dominicbetts
-ms.author: dobett
-ms.date: 10/22/2020
+author: TheJasonAndrew
+ms.author: v-anjaso@microsoft.com
+ms.date: 1/15/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 90246459663980de25e301817f651e7719e8f380
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: a0ba695adb25adb6d339535bb9496630eaec70bb
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033178"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762801"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Csatlakozás az Azure IoT Centralhoz
 
@@ -234,13 +234,18 @@ Az Azure-eszközök SDK-k az eszköz kódjának megvalósítására szolgáló l
 A IoT Hub az összes eszköz kommunikációja a következő IoT Hub kapcsolódási lehetőségeket használja:
 
 - [Eszközről a felhőbe irányuló üzenetkezelés](../../iot-hub/iot-hub-devguide-messages-d2c.md)
+- [A felhőből az eszközre irányuló üzenetküldés](../../iot-hub/iot-hub-csharp-csharp-c2d.md)
 - [Eszköz ikrek](../../iot-hub/iot-hub-devguide-device-twins.md)
+
+> [!NOTE]
+> Az Azure mostantól támogatja
 
 Az alábbi táblázat összefoglalja, hogy az Azure IoT Central-eszköz funkciói hogyan képezhetők le IoT Hub funkciókra:
 
 | Azure IoT Central | Azure IoT Hub |
 | ----------- | ------- |
 | Telemetria | Eszközről a felhőbe irányuló üzenetkezelés |
+| Offline parancsok | A felhőből az eszközre irányuló üzenetküldés |
 | Tulajdonság | Eszköz kettős jelentett tulajdonságai |
 | Tulajdonság (írható) | Az eszköz Twin kívánt és jelentett tulajdonságai |
 | Parancs | Közvetlen metódusok |
@@ -261,7 +266,7 @@ Ha az eszköz nem tudja használni a támogatott protokollokat, használja a Azu
 
 Az eszközök és az Azure-IoT Central között kicserélt összes adatforgalom titkosítva van. IoT Hub minden olyan eszközről hitelesíti a kérelmet, amely az eszközre irányuló IoT Hub végpontokhoz csatlakozik. A hitelesítő adatok vezetéken keresztüli cseréjének elkerüléséhez az eszköz aláírt jogkivonatokat használ a hitelesítéshez. További információ: [IoT hub hozzáférésének szabályozása](../../iot-hub/iot-hub-devguide-security.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha Ön egy eszköz fejlesztője, néhány javasolt lépés a következő:
 

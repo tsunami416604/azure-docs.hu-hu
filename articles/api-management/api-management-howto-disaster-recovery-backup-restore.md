@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 25356e7101293fc27d4107b3a618cfc481aee969
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 223d119786d99eac611ece597fc0e8de4fcaf6bd
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779583"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762403"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Vészhelyreállítás a biztonsági mentés és visszaállítás használatával az Azure API Managementben
 
@@ -56,7 +56,7 @@ A Azure Resource Manager használó erőforrásokon végrehajtott összes felada
 ### <a name="create-an-azure-active-directory-application"></a>Azure Active Directory-alkalmazás létrehozása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Az API Management Service-példányát tartalmazó előfizetés használatával navigáljon a Azure Active Directory **Alkalmazásregisztrációk** (Azure Active Directory **Azure Active Directory** > felügyelet/Alkalmazásregisztrációk) lapjára.
+2. Az API Management Service-példányát tartalmazó előfizetés használatával navigáljon a Azure Active Directory **Alkalmazásregisztrációk** (Azure Active Directory  > felügyelet/Alkalmazásregisztrációk) lapjára.
 
     > [!NOTE]
     > Ha az Azure Active Directory alapértelmezett könyvtára nem látható a fiókjában, forduljon az Azure-előfizetés rendszergazdájához, és adja meg a szükséges engedélyeket a fiókjához.
@@ -221,8 +221,8 @@ A visszaállítás egy hosszú ideig futó művelet, amely akár 30 vagy több p
 
 ## <a name="what-is-not-backed-up"></a>Mi nem biztonsági mentés
 -   Az elemzési jelentések létrehozásához használt **használati adatok** **nem szerepelnek** a biztonsági mentésben. Az [Azure API Management REST API][azure api management rest api] használatával rendszeres időközönként beolvashatja az elemzési jelentéseket a megőrzéshez.
--   [Egyéni tartomány TLS/SSL-](configure-custom-domain.md) tanúsítványok
--   [Egyéni hitelesítésszolgáltatói tanúsítvány](api-management-howto-ca-certificates.md), amely tartalmazza az ügyfél által feltöltött köztes vagy főtanúsítványokat
+-   [Egyéni tartomány TLS/SSL-](configure-custom-domain.md) tanúsítványok.
+-   [Egyéni hitelesítésszolgáltatói tanúsítvány](api-management-howto-ca-certificates.md), amely tartalmazza az ügyfél által feltöltött köztes vagy főtanúsítványokat.
 -   [Virtuális hálózat](api-management-using-with-vnet.md) integrációs beállításai.
 -   [Felügyelt identitás](api-management-howto-use-managed-service-identity.md) konfigurálása.
 -   [Azure monitor diagnosztika](api-management-howto-use-azure-monitor.md) Configuration.

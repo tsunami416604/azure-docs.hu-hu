@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 9f2b0dccde0532646457a0841fc2798e103d8cc7
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 226601eadf922a9d834ab84520fd1edf964348fa
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347948"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762924"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>Objektumok replikálásának konfigurálása a blokkos blobokhoz
 
@@ -158,11 +158,7 @@ az login
 az storage account blob-service-properties update \
     --resource-group <resource-group> \
     --account-name <source-storage-account> \
-    --enable-versioning
-
-az storage account blob-service-properties update \
-    --resource-group <resource-group> \
-    --account-name <source-storage-account> \
+    --enable-versioning \
     --enable-change-feed
 
 az storage account blob-service-properties update \
@@ -445,7 +441,7 @@ az storage account or-policy delete \
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Objektum-replikáció áttekintése](object-replication-overview.md)
 - [BLOB-verziószámozás engedélyezése és kezelése](versioning-enable.md)

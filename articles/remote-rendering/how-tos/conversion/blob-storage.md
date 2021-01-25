@@ -5,16 +5,16 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 96a2fde3e510c6eb7146da9c92d93f69111e8c80
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: cfc10658463888e43ea1a24dfefd3f8939ec8ef7
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206543"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762784"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>Modellek átalakítása az Azure Blob Storage használatával
 
-A [modell-átalakítási](model-conversion.md) szolgáltatáshoz hozzáféréssel kell rendelkeznie az Azure Blob Storage-hoz, hogy beolvassa a bemeneti adatokat, és tárolja a kimeneti adatokat. Ez a cikk a leggyakoribb lépéseket ismerteti.
+A [modell-átalakítási](model-conversion.md) szolgáltatáshoz hozzáféréssel kell rendelkeznie az Azure Blob Storagehoz, hogy beolvassa a bemeneti adatokat, és tárolja a kimeneti adatokat. Ez a cikk a leggyakoribb lépéseket ismerteti.
 
 ## <a name="prepare-azure-storage-accounts"></a>Azure Storage-fiókok előkészítése
 
@@ -80,7 +80,7 @@ Ha például SAS URI-t szeretne beolvasni a [Azure Storage Exploreron](https://a
 
 Ha nem csatlakoztatta a Storage-fiókot az Azure távoli megjelenítési fiókjához, a modell betöltéséhez közös hozzáférésű aláírás (SAS) szükséges. Megtudhatja, hogyan csatlakozhat a fiókhoz a fiók [létrehozása](../create-an-account.md#link-storage-accounts)című témakörben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A modell átalakításának konfigurálása](configure-model-conversion.md)
 - [A modell átalakítási REST API](conversion-rest-api.md)

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/06/2021
+ms.date: 01/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: aabc141666fe5c9fb52a3eac5ee1866f390e4551
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 07b526d443b5f1b41bc6f811b7cccc0fbc6165ee
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968497"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761706"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro"></a>Oktatóanyag: Felkészülés a Azure Stack Edge Pro üzembe helyezésére  
 
@@ -29,7 +29,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Új erőforrás létrehozása
 > * Az aktiválási kulcs lekérése
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="get-started"></a>Bevezetés
 
@@ -98,7 +98,7 @@ Azure Stack peremhálózati erőforrás létrehozásához hajtsa végre a követ
     - A Azure Portal ezen az URL-címen: [https://portal.azure.com](https://portal.azure.com) .
     - Vagy a Azure Government portál ezen az URL-címen: [https://portal.azure.us](https://portal.azure.us) . További részletekért lépjen a [kapcsolódás Azure Government a portál használatával](../azure-government/documentation-government-get-started-connect-with-portal.md).
 
-2. A bal oldali panelen válassza az **+ erőforrás létrehozása** lehetőséget. Keresse meg és válassza ki **Azure stack Edge/Data Box Gateway**. Kattintson a **Létrehozás** gombra.
+2. A bal oldali panelen válassza az **+ erőforrás létrehozása** lehetőséget. Keresse meg és válassza ki **Azure stack Edge/Data Box Gateway**. Válassza a **Létrehozás** lehetőséget.
 3. Válassza ki az Azure Stack Edge Pro-eszközhöz használni kívánt előfizetést. Válassza ki azt a régiót, ahol az Azure Stack Edge-erőforrást telepíteni kívánja. Az Azure Stack Edge-erőforrást tartalmazó régiók listáját itt tekintheti meg: [régiónként elérhető Azure-termékek](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all).
 
     Az eszköz üzembe helyezésének földrajzi régiójához legközelebb eső helyet válasszon. A régió csak az eszközkezelés metaadatait tárolja. A tényleges adatok bármilyen Storage-fiókban tárolhatók.
@@ -118,14 +118,14 @@ Azure Stack peremhálózati erőforrás létrehozásához hajtsa végre a követ
 
     |Beállítás  |Érték  |
     |---------|---------|
-    |Név   | Az erőforrást azonosító valódi név.<br>A névnek 2–50 karakter hosszúságúnak kell lennie, és csak betűket, számokat, illetve kötőjelet tartalmazhat.<br> A névnek betűvel vagy számmal kell kezdődnie és végződnie.        |
+    |Név   | Az erőforrást azonosító valódi név.<br>A név 2 és 50 karakterből áll, beleértve a betűket, számokat és kötőjeleket.<br> A névnek betűvel vagy számmal kell kezdődnie és végződnie.        |
     |Régió     |Az Azure Stack Edge-erőforrást tartalmazó régiók listáját itt tekintheti meg: [régiónként elérhető Azure-termékek](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Government használata esetén az összes kormányzati régió elérhető az [Azure-régiókban](https://azure.microsoft.com/global-infrastructure/regions/)látható módon.<br> Az eszköz üzembe helyezésének földrajzi régiójához legközelebb eső helyet válasszon.|
 
     ![Projekt és példány részletei](media/azure-stack-edge-deploy-prep/data-box-edge-resource.png)
 
 5. Válassza a **Next (tovább): szállítási címet**.
 
-    - Ha már van eszköz, válassza az **Azure stack Edge Pro-eszközhöz** tartozó kombinált listát.
+    - Ha már rendelkezik egy eszközzel, válassza az **Azure stack Edge-eszközhöz** tartozó kombinált listát.
     - Ha ez az új eszköz, amelyet Ön megrendelt, adja meg a kapcsolattartó nevét, a vállalatot, az eszköz szállítását és a kapcsolattartási adatokat.
 
     ![Az új eszköz szállítási címe](media/azure-stack-edge-deploy-prep/data-box-edge-resource1.png)
@@ -136,15 +136,19 @@ Azure Stack peremhálózati erőforrás létrehozásához hajtsa végre a követ
 
     ![Tekintse át Azure Stack Edge-erőforrás részleteit és adatvédelmi feltételeit](media/azure-stack-edge-deploy-prep/data-box-edge-resource2.png)
 
-8. Kattintson a **Létrehozás** gombra.
+8. Válassza a **Létrehozás** lehetőséget.
 
-Az erőforrás létrehozása néhány percet vesz igénybe. Az erőforrás sikeres létrehozása és üzembe helyezése után értesítést kap. Válassza az **Erőforrás megnyitása** lehetőséget.
+   Az erőforrás létrehozása néhány percet vesz igénybe. Az erőforrás sikeres létrehozása és üzembe helyezése után értesítést kap. Válassza az **Erőforrás megnyitása** lehetőséget.
 
-![Ugrás az Azure Stack Edge-erőforrásra](media/azure-stack-edge-deploy-prep/data-box-edge-resource3.png)
+   ![Ugrás az Azure Stack Edge-erőforrásra](media/azure-stack-edge-deploy-prep/data-box-edge-resource3.png)
 
 A megrendelés elhelyezése után a Microsoft áttekinti a rendelést, és elküldi Önt (e-mailben) a szállítási adatokkal.
 
 ![Értesítés az Azure Stack Edge Pro-sorrend áttekintéséhez](media/azure-stack-edge-deploy-prep/data-box-edge-resource4.png)
+
+
+> [!NOTE]
+> Ha egyszerre több rendelést kíván létrehozni vagy egy meglévő rendelés klónozását, használhatja a [szkripteket az Azure-mintákban](https://github.com/Azure-Samples/azure-stack-edge-order). További információkért tekintse meg a README fájlt.
 
 ## <a name="get-the-activation-key"></a>Az aktiválási kulcs lekérése
 
@@ -163,7 +167,7 @@ Az Azure Stack Edge-erőforrás működésének megkezdése után le kell kérni
 > * Az aktiválási kulcs három nappal a létrehozása után lejár.
 > * Ha a kulcs lejárt, állítson be egy új kulcsot. A régebbi kulcs nem lesz érvényes.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megismerte Azure Stack Edge Pro-témaköröket, például a következőket:
 
