@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/21/2021
 ms.author: cavoeg
-ms.openlocfilehash: 43372eb0a9f7c08f6957627950769c1941580bd8
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 28c01e99c0e8708750341b445b4a31f6eaeab3ce
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98745867"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747525"
 ---
 # <a name="features"></a>Funkciók
 
@@ -147,12 +147,14 @@ Jelenleg az adott szerepkörre vonatkozó engedélyezett műveletek *globálisan
 
 A rendszer teljesítménye az RUs, az egyidejű kapcsolatok és a végrehajtott műveletek (Put, post stb.) számától függ. Az alábbiakban a konfigurált RUs alapján várhatóan megjelenő általános tartományok láthatók. Általánosságban elmondható, hogy a teljesítmény lineárisan növekszik az RUs növekedésével:
 
-| RUs száma | Erőforrások/mp |
-|----------|---------------|
-| 400      | 5-10          |
-| 1,000    | 100-150       |
-| 10,000   | 225-400       |
-| 100.000  | 2500 – 4000   |
+| RUs száma | Erőforrások/mp |    Maximális tárterület (GB) *    |
+|----------|---------------|--------|                 
+| 400      | 5-10          |     40   |
+| 1,000    | 100-150       |      100  |
+| 10,000   | 225-400       |      1,000  |
+| 100.000  | 2500 – 4000   |      10,000  |
+
+Megjegyzés: Cosmos DB követelmény szerint GB-nál kevesebb tárterületre van szükség a legalább 10 RU/s teljesítményre. További információkért tekintse meg [Cosmos db szolgáltatási kvótákat](../cosmos-db/concepts-limits.md).
 
 ## <a name="next-steps"></a>További lépések
 

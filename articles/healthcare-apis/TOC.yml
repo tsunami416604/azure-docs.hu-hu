@@ -93,6 +93,11 @@
           href: export-data.md
         - name: Azonosításra nem alkalmas exportálás
           href: de-identified-export.md
+    - name: Adatátalakítás
+      expanded: false
+      items:
+        - name: adat$convert-és FHIR Converter Extension-sablonok
+          href: convert-data.md
     - name: Identitásobjektum-azonosítók keresése
       href: find-identity-object-ids.md
     - name: Diagnosztikai naplózás és mérőszámok

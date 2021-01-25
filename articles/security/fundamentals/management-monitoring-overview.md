@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2019
+ms.date: 01/24/2021
 ms.author: terrylan
-ms.openlocfilehash: 038f30ee186a5b3a9d87d64054726324051c37b4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d85b1fdd433c372bb41adec6e3d33013f19363f0
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842753"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747173"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Az Azure biztonsági felügyeletének és figyelésének áttekintése
 Ez a cikk áttekintést nyújt az Azure által biztosított biztonsági szolgáltatásokról és szolgáltatásokról az Azure Cloud Services és a Virtual Machines felügyeletének és figyelésének támogatásához.
@@ -61,8 +61,8 @@ Multi-Factor Authentication segít megőrizni az adathozzáférést és az alkal
 További információ:
 
 * [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
-* [Mi az Azure AD Multi-Factor Authentication?](../../active-directory/authentication/concept-mfa-howitworks.md)
-* [Az Azure AD Multi-Factor Authentication működése](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Mi az az Azure AD Multi-Factor Authentication?](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Az Azure AD többtényezős hitelesítés működése](../../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="expressroute"></a>ExpressRoute
 
@@ -85,7 +85,7 @@ A VPN-átjárók, más néven Azure-beli virtuális hálózati átjárók a virt
 További információ:
 
 * [Tudnivalók a VPN-átjárók használatáról](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
-* [Az Azure hálózati biztonság áttekintése](network-overview.md)
+* [A nagyvállalati hálózati biztonság áttekintése](network-overview.md)
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
 
@@ -117,15 +117,18 @@ További információ:
 
 ## <a name="security-center"></a>Security Center
 
-Az Azure Security Center lehetővé teszi a fenyegetések megelőzését, észlelését és kezelését. Security Center az Azure-erőforrások jobb láthatóságát és felügyeletét teszi lehetővé. Integrált biztonsági monitorozást és házirend-kezelést biztosít az Azure-előfizetések között. Segít felderíteni a fenyegetéseket, amelyek egyébként észrevétlenek lehetnek, és a biztonsági megoldások széles körű ökoszisztémával működnek.
+Az Azure Security Center lehetővé teszi a fenyegetések megelőzését, észlelését és kezelését. A Security Center az Azure-erőforrások, valamint a hibrid felhőalapú környezetek biztonságának növelését és felügyeletét teszi lehetővé. 
+
+A Security Center a csatlakoztatott erőforrások folyamatos biztonsági értékelését végzi, és összehasonlítja a konfigurációt és az üzembe helyezést az [Azure biztonsági teljesítményteszttel](../benchmarks/introduction.md) , hogy részletes biztonsági ajánlásokat nyújtson a környezetéhez.
 
 A Security Center segítségével optimalizálhatja és figyelheti az Azure-erőforrások biztonságát:
 
-* Az Azure-előfizetések erőforrásaihoz tartozó házirendek definiálásának lehetővé tétele a következőknek megfelelően:
-  * A vállalat biztonsági igényeit.
-  * Az egyes előfizetésekben szereplő alkalmazások típusa vagy az adatérzékenység.
-* Azure-beli virtuális gépek, Hálózatkezelés és alkalmazások állapotának monitorozása.
-* A rangsorolt biztonsági riasztások listája, beleértve az integrált partneri megoldások riasztásait is. Emellett biztosítja a támadás gyors kivizsgálásához és a megoldási javaslatokhoz szükséges információkat.
+- Az Azure-előfizetések erőforrásaihoz tartozó házirendek definiálásának lehetővé tétele a következőknek megfelelően:
+    - A szervezete biztonsági igényeinek.
+    - Az egyes előfizetésekben szereplő alkalmazások típusa vagy az adatérzékenység.
+    - Az előfizetésekre érvényes bármely iparági vagy szabályozási szabvány vagy viszonyítási pont. 
+- Azure-beli virtuális gépek, Hálózatkezelés és alkalmazások állapotának monitorozása.
+- A rangsorolt biztonsági riasztások listája, beleértve az integrált partneri megoldások riasztásait is. Emellett biztosítja a támadás gyors kivizsgálásához és a megoldási javaslatokhoz szükséges információkat.
 
 További információ:
 

@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
 ms.date: 02/07/2019
-ms.openlocfilehash: 37086a925d65a80f219c8e0a3358c834a2691701
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: b0acfbf9636c2ad1df7df3197a0a1a83ec91b5c3
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145650"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747340"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Az Azure API elérése a Poster FHIR
 
@@ -32,7 +32,7 @@ A Poster használatához a következő adatokra van szükség:
 
 - A FHIR-kiszolgáló URL-címe, például: `https://MYACCOUNT.azurehealthcareapis.com`
 - A `Authority` FHIR-kiszolgáló identitás-szolgáltatója, például: `https://login.microsoftonline.com/{TENANT-ID}`
-- A konfigurálva `audience` . Ez általában a FHIR-kiszolgáló URL-címe, például `https://MYACCOUNT.azurehealthcareapis.com` vagy csak `https://azurehealthcareapis.com` .
+- A konfigurálva `audience` . Ez általában a FHIR-kiszolgáló URL-címe, például `https://<FHIR-SERVER-NAME>.azurehealthcareapis.com` vagy csak `https://azurehealthcareapis.com` .
 - A `client_id` FHIR szolgáltatás eléréséhez használni kívánt [ügyfélalkalmazás](register-confidential-azure-ad-client-app.md) (vagy alkalmazás-azonosító).
 - Az `client_secret` ügyfélalkalmazás (vagy alkalmazás titka).
 
@@ -127,7 +127,7 @@ Ha megismétli a beteges keresést, a következőt kell látnia:
 
 ![Beteg létrehozva](media/tutorial-postman/postman-patient-found.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy FHIR API-t adott hozzá a Poster használatával. Olvassa el a támogatott funkciók szakasz támogatott API-funkcióit ismertető szakaszt.
  

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 553151aebeadf4ad4764e747b1bf6dcd8c552721
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 9fde0ecd8b6670e43aa3970b2df27a402b9c1a5c
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98126852"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747240"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>A végpontok Security Center integrált EDR megoldással való ellátása: a Microsoft Defender for Endpoint
 
@@ -45,7 +45,7 @@ A Microsoft Defender for Endpoint egy holisztikus, felhőalapú végponti bizton
 | Támogatott platformok:            | Windows rendszerű Azure-gépek<br>Windows rendszerű Azure arc-gépek|
 | A Windows támogatott verziói:  |  • A Security Center támogatja az észlelést a Windows Server 2016, 2012 R2 és 2008 R2 SP1 rendszerben<br> • A kiszolgálói végpont monitorozása ezzel az integrációval le lett tiltva az Office 365 GCC-ügyfelek számára<br> • Nincs támogatás a Windows Server 2019, a Windows 10 1703 (és újabb) vagy a Linux rendszerhez|
 | Szükséges szerepkörök és engedélyek: | Az integráció engedélyezése/letiltása: **biztonsági rendszergazda** vagy **tulajdonos**<br>MDATP-riasztások megtekintése a Security Center-ben: **biztonsági olvasó**, **olvasó**, **erőforráscsoport-közreműködő**, **erőforráscsoport-tulajdonos**, **biztonsági rendszergazda**, **előfizetés tulajdonosa** vagy **előfizetéshez tartozó közreműködő**|
-| Felhők                         | ![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Kínai gov, egyéb gov<br>![No](./media/icons/no-icon.png) A munkaterheléseket futtató GCC-ügyfelek a globális Azure-felhőkben                                                        |
+| Felhők                         | ![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Nem](./media/icons/no-icon.png) Kínai gov, egyéb gov<br>![Nem](./media/icons/no-icon.png) A munkaterheléseket futtató GCC-ügyfelek a globális Azure-felhőkben                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
 
 
@@ -118,6 +118,8 @@ Jóindulatú Microsoft Defender létrehozása a végponti tesztelési riasztásh
 1. A Security Center riasztásának áttekintéséhez lépjen a **biztonsági riasztások**  >  **gyanús PowerShell parancssori** elemre.
 1. A vizsgálat ablakban válassza ki a Microsoft Defender for Endpoint portálra mutató hivatkozást.
 
+    > [!TIP]
+    > A riasztás **tájékoztatási** súlyossággal van elindítva.
 
 ## <a name="faq-for-security-centers-integrated-microsoft-defender-for-endpoint"></a>Gyakori kérdések a Security Center integrált Microsoft Defender for Endpoint
 
@@ -138,7 +140,7 @@ A nem a Microsofttól származó végponti megoldásról történő váltásra v
   
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Security Center által támogatott platformok és szolgáltatások](security-center-os-coverage.md)
 - [Azure Security Center biztonsági javaslatainak kezelése](security-center-recommendations.md): Ismerje meg, hogyan segítheti az ajánlásokat az Azure-erőforrások védelmében.

@@ -9,16 +9,16 @@ ms.workload: azure-vs
 ms.topic: tutorial
 ms.date: 10/5/2020
 ms.author: ghogen
-ms.openlocfilehash: 1c2264cb76e062f5f22c0460572ec01750086a04
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: b12f8beeee054e547a6b58750d8482d32ee14453
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98745009"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747257"
 ---
 # <a name="create-and-deploy-a-azure-cloud-service-extended-support-using-visual-studio"></a>Azure Cloud Service (bővített támogatás) létrehozása és üzembe helyezése a Visual Studióval
 
-A Visual Studio 2019 16,9-os verziójának első verziójával kezdődően a Cloud Services (bővített támogatással) Azure Resource Manager használatával dolgozhat, ami nagy mértékben leegyszerűsíti és modernizálja az Azure-erőforrások karbantartását és kezelését. Egy meglévő felhőalapú szolgáltatási projektet is átalakíthat egy kiterjesztett támogatási Felhőbeli szolgáltatási projektbe.
+A [Visual Studio 2019 16,9](https://visualstudio.microsoft.com/vs/preview/) -es verziója (jelenleg előzetes verzióban érhető el) a Cloud services segítségével Azure Resource Manager (ARM) használatával dolgozhat, ami nagy mértékben leegyszerűsíti és modernizálja az Azure-erőforrások karbantartását és kezelését. Ezt olyan új Azure-szolgáltatás engedélyezi, amely Cloud Services (kiterjesztett támogatás) néven is ismert. Egy meglévő felhőalapú szolgáltatást Cloud Services (kiterjesztett támogatás) tehet közzé. További információ erről az Azure-szolgáltatásról: [Cloud Services (bővített támogatás) dokumentáció](overview.md).
 
 > [!IMPORTANT]
 > A Cloud Services (bővített támogatás) jelenleg nyilvános előzetes verzióban érhető el.

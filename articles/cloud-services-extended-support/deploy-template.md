@@ -8,20 +8,21 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: aeb53e722eae588b7d5e2963afe67f299c2c3565
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: dfbae5144ec19b795463bd44f1e84fcf2516c267
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98745058"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747207"
 ---
 # <a name="create-a-cloud-service-extended-support-using-arm-templates"></a>Cloud Service (bővített támogatás) létrehozása ARM-sablonok használatával
+
+Ez az oktatóanyag bemutatja, hogyan hozhat létre felhőalapú szolgáltatást (kiterjesztett támogatás) az [ARM-sablonok](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)használatával. 
 
 > [!IMPORTANT]
 > A Cloud Services (bővített támogatás) jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ez az oktatóanyag bemutatja, hogyan hozhat létre felhőalapú szolgáltatást (kiterjesztett támogatás) az [ARM-sablonok](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)használatával. 
 
 ## <a name="before-you-begin"></a>Előkészületek
 1. Tekintse át a Cloud Services [telepítésének előfeltételeit](deploy-prerequisite.md) (kiterjesztett támogatás), és hozza létre a kapcsolódó erőforrásokat. 

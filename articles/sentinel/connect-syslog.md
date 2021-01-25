@@ -1,6 +1,6 @@
 ---
 title: Syslog-adatbázis összekötése az Azure Sentinel szolgáltatással | Microsoft Docs
-description: Csatlakoztasson minden olyan gépet vagy készüléket, amely támogatja a syslog-t az Azure Sentinelhez a készülék és a Sentinel közötti linuxos gépen lévő ügynök használatával. 
+description: Csatlakoztasson minden olyan gépet vagy készüléket, amely támogatja a syslog-t az Azure Sentinelhez a készülék és a Sentinel közötti linuxos gépen lévő ügynök használatával.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 7670d00a2dd25961a51d18c50c102e0f92b30975
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c3cf4c3c135b3f275542af4f531d1071e180ebe
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88566148"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747190"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>Adatok gyűjtése Linux-alapú forrásokból a syslog használatával
 
@@ -32,7 +32,7 @@ A Linux-alapú, syslog-supported Machines vagy készülékekről származó esem
 
 ## <a name="how-it-works"></a>Működés
 
-A **syslog** egy olyan eseménynaplózási protokoll, amely közös a Linux rendszerben. Ha a **Linux** rendszerhez készült log Analytics-ügynök telepítve van a virtuális gépre vagy készülékre, a telepítési rutin konfigurálja a helyi syslog démont, hogy továbbítsa az üzeneteket az ügynöknek az 25224-as TCP-porton. Az ügynök ezután a HTTPS-kapcsolaton keresztül elküldi az üzenetet a Log Analytics munkaterületnek, ahol a rendszer az **Azure Sentinel > naplóiban naplózza**a syslog táblában az Eseménynapló-bejegyzésbe.
+A **syslog** egy olyan eseménynaplózási protokoll, amely közös a Linux rendszerben. Ha a **Linux** rendszerhez készült log Analytics-ügynök telepítve van a virtuális gépre vagy készülékre, a telepítési rutin konfigurálja a helyi syslog démont, hogy továbbítsa az üzeneteket az ügynöknek az 25224-as TCP-porton. Az ügynök ezután a HTTPS-kapcsolaton keresztül elküldi az üzenetet a Log Analytics munkaterületnek, ahol a rendszer az **Azure Sentinel > naplóiban naplózza** a syslog táblában az Eseménynapló-bejegyzésbe.
 
 További információ: [syslog-adatforrások Azure monitorban](../azure-monitor/platform/data-sources-syslog.md).
 
@@ -42,17 +42,17 @@ További információ: [syslog-adatforrások Azure monitorban](../azure-monitor/
 
 1. Az Azure Sentinelben válassza az **adatösszekötők** lehetőséget, majd válassza ki a **syslog** -összekötőt.
 
-1. A **syslog** panelen válassza az **összekötő lap megnyitása**lehetőséget.
+1. A **syslog** panelen válassza az **összekötő lap megnyitása** lehetőséget.
 
 1. Telepítse a Linux-ügynököt. **Az ügynök telepítési helyének kiválasztása:**
     
     **Azure Linux rendszerű virtuális gépek esetén:**
       
-    1. Válassza **az ügynök telepítése az Azure Linux rendszerű virtuális gépen**lehetőséget.
+    1. Válassza **az ügynök telepítése az Azure Linux rendszerű virtuális gépen** lehetőséget.
     
     1. Kattintson a **letöltés & az Azure-beli linuxos virtuális gépekhez készült telepítési ügynök >** hivatkozásra. 
     
-    1. A **virtuális gépek** panelen kattintson arra a virtuális gépre, amelyre telepíteni szeretné az ügynököt, majd kattintson a **Kapcsolódás**elemre. Ismételje meg ezt a lépést minden olyan virtuális gép esetében, amelyhez csatlakozni szeretne.
+    1. A **virtuális gépek** panelen kattintson arra a virtuális gépre, amelyre telepíteni szeretné az ügynököt, majd kattintson a **Kapcsolódás** elemre. Ismételje meg ezt a lépést minden olyan virtuális gép esetében, amelyhez csatlakozni szeretne.
     
     **Bármely más linuxos gépen:**
 
@@ -69,19 +69,19 @@ További információ: [syslog-adatforrások Azure monitorban](../azure-monitor/
 
 1. A syslog-összekötő panel alján kattintson a **munkaterület megnyitása speciális beállítások konfigurációs >** hivatkozásra.
 
-1. A **Speciális beállítások** **panelen válassza ki az**  >  **adatsyslog**elemet. Ezután adja hozzá az összekötőhöz tartozó létesítményeket a gyűjtéshez.
+1. A **Speciális beállítások** **panelen válassza ki az**  >  **adatsyslog** elemet. Ezután adja hozzá az összekötőhöz tartozó létesítményeket a gyűjtéshez.
     
     - Adja hozzá azokat a létesítményeket, amelyeket a syslog-berendezés tartalmaz a naplójának fejlécében. 
     
     - Ha rendellenes SSH bejelentkezési észlelést szeretne használni a gyűjtött adatokkal, adja hozzá az **Auth** és a **authpriv**. További részletekért tekintse meg a [következő szakaszt](#configure-the-syslog-connector-for-anomalous-ssh-login-detection) .
 
-1. Ha hozzáadta az összes figyelni kívánt létesítményt, és kiigazította az egyes súlyossági beállításokat, jelölje be az **alábbi konfiguráció alkalmazása a saját gépekre**jelölőnégyzetet.
+1. Ha hozzáadta az összes figyelni kívánt létesítményt, és kiigazította az egyes súlyossági beállításokat, jelölje be az **alábbi konfiguráció alkalmazása a saját gépekre** jelölőnégyzetet.
 
 1. Kattintson a **Mentés** gombra. 
 
 1. Győződjön meg arról, hogy a virtuális gépen vagy berendezésen a megadott létesítményeket küldi el.
 
-1. A syslog-naplófájlok **naplófájljainak**lekérdezéséhez írja be a `Syslog` következőt: a lekérdezési ablak.
+1. A syslog-naplófájlok **naplófájljainak** lekérdezéséhez írja be a `Syslog` következőt: a lekérdezési ablak.
 
 1. A következő témakörben ismertetett lekérdezési paramétereket használhatja a [függvények használatával Azure monitor napló lekérdezésekben](../azure-monitor/log-query/functions.md) a syslog-üzenetek elemzéséhez. Ezután mentheti a lekérdezést új Log Analytics függvényként, és új adattípusként használhatja azt.
 
@@ -104,7 +104,7 @@ További információ: [syslog-adatforrások Azure monitorban](../azure-monitor/
 > [!IMPORTANT]
 > A rendellenes SSH bejelentkezési észlelés jelenleg nyilvános előzetes verzióban érhető el.
 > Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott.
-> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Az Azure Sentinel gépi tanulást (ML) alkalmazhat a syslog-adatokra a rendellenes Secure Shell-(SSH-) bejelentkezési tevékenységek azonosításához. A forgatókönyvek a következők:
 
@@ -113,24 +113,28 @@ Az Azure Sentinel gépi tanulást (ML) alkalmazhat a syslog-adatokra a rendellen
  
 Az észleléshez a syslog-adatösszekötő adott konfigurációja szükséges: 
 
-1. Az előző eljárás 5. lépésében ellenőrizze, hogy az **Auth** és a **authpriv** is ki van-e választva a figyeléshez. Tartsa meg a súlyossági beállítások alapértelmezett beállításait, hogy azok mind ki legyenek választva. Példa:
+1. Az előző eljárás 5. lépésében ellenőrizze, hogy az **Auth** és a **authpriv** is ki van-e választva a figyeléshez. Tartsa meg a súlyossági beállítások alapértelmezett beállításait, hogy azok mind ki legyenek választva. Például:
     
     > [!div class="mx-imgBorder"]
     > ![A rendellenes SSH bejelentkezési észleléshez szükséges szolgáltatások](./media/connect-syslog/facilities-ssh-detection.png)
 
-2. A syslog-adatok gyűjtéséhez elegendő idő szükséges. Ezután navigáljon az **Azure Sentinel-logs**elemhez, és másolja és illessze be a következő lekérdezést:
+2. A syslog-adatok gyűjtéséhez elegendő idő szükséges. Ezután navigáljon az **Azure Sentinel-logs** elemhez, és másolja és illessze be a következő lekérdezést:
     
-    ```console
-    Syslog |  where Facility in ("authpriv","auth")| extend c = extract( "Accepted\\s(publickey|password|keyboard-interactive/pam)\\sfor ([^\\s]+)",1,SyslogMessage)| where isnotempty(c) | count 
+    ```kusto
+    Syslog
+    | where Facility in ("authpriv","auth")
+    | extend c = extract( "Accepted\\s(publickey|password|keyboard-interactive/pam)\\sfor ([^\\s]+)",1,SyslogMessage)
+    | where isnotempty(c)
+    | count 
     ```
     
-    Szükség esetén módosítsa az **időtartományt** , majd válassza a **Futtatás**lehetőséget.
+    Szükség esetén módosítsa az **időtartományt** , majd válassza a **Futtatás** lehetőséget.
     
     Ha az eredményül kapott darabszám nulla, erősítse meg az összekötő konfigurációját, és hogy a figyelt számítógépek sikeres bejelentkezési tevékenységet hajtanak végre a lekérdezéshez megadott időszakra vonatkozóan.
     
-    Ha az eredményül kapott darabszám nagyobb nullánál, a syslog-adatok alkalmasak a rendellenes SSH-bejelentkezések észlelésére. Ezt az észlelést az **Analytics**-  >   **szabály sablonjai**  >  **(előzetes verzió) rendellenes SSH-bejelentkezések észlelésével**engedélyezheti.
+    Ha az eredményül kapott darabszám nagyobb nullánál, a syslog-adatok alkalmasak a rendellenes SSH-bejelentkezések észlelésére. Ezt az észlelést az **Analytics**-  >   **szabály sablonjai**  >  **(előzetes verzió) rendellenes SSH-bejelentkezések észlelésével** engedélyezheti.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebből a dokumentumból megtudhatta, hogyan kapcsolódhat a syslog helyszíni készülékekhez az Azure Sentinel szolgáltatáshoz. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

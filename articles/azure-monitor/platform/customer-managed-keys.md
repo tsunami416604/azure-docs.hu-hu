@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 6061980ec556fccde3de882a291bc390b88c5a24
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: f2807501b1e18d4cbffaa34d70bccf8d70565266
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611083"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747223"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor – ügyfél által kezelt kulcs 
 
@@ -125,11 +125,53 @@ Ezek a beállítások a CLI-n és a PowerShellen keresztül Key Vault frissíthe
 
 ## <a name="create-cluster"></a>Fürt létrehozása
 
-> [!NOTE]
-> A fürtök két [felügyelt identitás típust](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)támogatnak: a rendszer által hozzárendelt és felhasználó által hozzárendelt, és mindegyik a forgatókönyvtől függően változhat. A rendszer által hozzárendelt felügyelt identitás egyszerűbb, és automatikusan létrejön a fürt létrehozásával, ha az identitás `type` "*SystemAssigned*" értékre van beállítva – ez az identitás később is használható a fürt Key Vaulthoz való hozzáférésének biztosításához. Ha olyan fürtöt szeretne létrehozni, amíg az ügyfél által felügyelt kulcs a fürt létrehozási idején van definiálva, akkor a Key Vaultban megadott kulcs definiált és felhasználó által hozzárendelt identitással kell rendelkeznie, majd létre kell hoznia a fürtöt a következő beállításokkal: Identity `type` as "*UserAssigned*", `UserAssignedIdentities` az identitás erőforrás-azonosítójával és a `keyVaultProperties` kulcs részleteivel.
+A fürtök két [felügyelt identitási típust](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)támogatnak: a rendszer által hozzárendelt és felhasználó által hozzárendelt, míg a forgatókönyvtől függően egyetlen identitást lehet definiálni a fürtben. 
+- A rendszer által hozzárendelt felügyelt identitás egyszerűbb, és automatikusan jön létre a fürt létrehozásával, ha az identitás `type` "*SystemAssigned*" értékre van állítva. Ez az identitás később is felhasználható a fürt Key Vaulthoz való hozzáférésének biztosításához. 
+  
+  Identitás beállításai a fürtben a rendszer által hozzárendelt felügyelt identitáshoz
+  ```json
+  {
+    "identity": {
+      "type": "SystemAssigned"
+      }
+  }
+  ```
+
+- Ha az ügyfél által felügyelt kulcsot a fürt létrehozásakor kívánja konfigurálni, rendelkeznie kell egy kulcs-és felhasználó által hozzárendelt identitással, amelyet előzőleg a Key Vault kell megadni, majd létre kell hoznia a fürtöt a következő beállításokkal: Identity `type` as "*UserAssigned*", az `UserAssignedIdentities` identitás erőforrás-azonosítójával.
+
+  Identitás beállításai a fürtben felhasználó által hozzárendelt felügyelt identitáshoz
+  ```json
+  {
+  "identity": {
+  "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft. ManagedIdentity/UserAssignedIdentities/<cluster-assigned-managed-identity>"
+      }
+  }
+  ```
 
 > [!IMPORTANT]
-> Az ügyfél által felügyelt kulcs jelenleg nem definiálható felhasználó által hozzárendelt felügyelt identitással, ha a Key Vault Private-Link (vNet) helyen található, és ebben az esetben a rendszerhez rendelt felügyelt identitást is használhatja.
+> Ha a Key Vault Private-Link (vNet), nem használhatja az ügyfél által felügyelt kulcsot a felhasználóhoz rendelt felügyelt identitással. Ebben a forgatókönyvben a rendszerhez rendelt felügyelt identitást is használhatja.
+
+```json
+{
+  "identity": {
+    "type": "SystemAssigned"
+}
+```
+ 
+a következővel:
+
+```json
+{
+  "identity": {
+  "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft. ManagedIdentity/UserAssignedIdentities/<user-assigned-managed-identity-name>"
+      }
+}
+```
+
 
 Kövesse a [dedikált fürtök című cikkben](../log-query/logs-dedicated-clusters.md#creating-a-cluster)bemutatott eljárást. 
 
@@ -243,15 +285,13 @@ Kövesse a [dedikált fürtök című cikkben](../log-query/logs-dedicated-clust
 
 ## <a name="key-revocation"></a>Kulcs visszavonása
 
-Az adataihoz való hozzáférés visszavonásához tiltsa le a kulcsot, vagy törölje a fürt hozzáférési házirendjét a Key Vault. 
-
 > [!IMPORTANT]
-> - Ha a fürt felhasználó által hozzárendelt felügyelt identitással van beállítva, akkor a beállítás `UserAssignedIdentities` `None` felfüggeszti a fürtöt, és meggátolja az adatokhoz való hozzáférést, de nem tudja visszaállítani a visszavonást, és nem aktiválja a fürtöt a támogatási kérelem megnyitása nélkül. Ez a korlátozás nem vonatkozik a rendszer által hozzárendelt felügyelt identitásra.
-> - Az ajánlott kulcs-visszavonási művelettel letilthatja a kulcsot a Key Vaultban.
+> - Az adataihoz való hozzáférés visszavonásának ajánlott módja a kulcs letiltásával vagy a hozzáférési szabályzat törlésével a Key Vault.
+> - Ha a fürt értéke "None" értékre van állítva `identity` `type` , az adataihoz való hozzáférés is visszavonásra kerül, de ez a módszer nem ajánlott, mert nem állíthatja vissza a visszavonást, ha a támogatási kérelem megnyitása nélkül nem tudja visszaállítani a-t a `identity` fürtben.
 
 A fürt tárterülete mindig egy órán belül betartja a kulcsfontosságú engedélyek változásait, a tárterület pedig elérhetetlenné válik. A fürthöz kapcsolódó munkaterületekre betöltött új adatmennyiség eldobásra kerül, és nem állítható vissza, az adat elérhetetlenné válik, és sikertelen lesz a munkaterületek lekérdezése. A korábban betöltött adatmennyiség mindaddig a tárolóban marad, amíg a fürt és a munkaterületek nem törlődnek. A nem elérhető adatokra az adatmegőrzési szabályzat vonatkozik, és a rendszer törli az adatmegőrzési időtartamot. Az elmúlt 14 napban betöltött adatok gyors gyorsítótárban (SSD-vel) is megmaradnak a hatékony lekérdezési motor működéséhez. Ez törölve lesz a kulcs-visszavonási művelet során, és elérhetetlenné válik.
 
-A fürt tárolója rendszeres időközönként lekérdezi a Key Vault a titkosítási kulcs kicsomagolásának és a hozzájuk való hozzáférés, valamint az adatfeldolgozás és a lekérdezés 30 percen belüli folytatásának megkísérlése érdekében.
+A fürt tárolója rendszeresen ellenőrzi a Key Vault a titkosítási kulcs kicsomagolásának, valamint a hozzáférés után, az adatfeldolgozás és a lekérdezés 30 percen belül folytatódik.
 
 ## <a name="key-rotation"></a>Kulcsrotálás
 
@@ -259,7 +299,7 @@ Az ügyfél által felügyelt kulcs elforgatásához explicit frissítés szüks
 
 Az összes adatai elérhetők maradnak a kulcs elforgatási művelete után, mivel az adatai mindig titkosítva vannak a fiók titkosítási kulcsával (AEK), míg a AEK mostantól titkosítva van az új kulcs titkosítási kulcs (KEK) verziójával Key Vaultban.
 
-## <a name="customer-managed-key-for-queries"></a>Ügyfél által felügyelt kulcs lekérdezésekhez
+## <a name="customer-managed-key-for-saved-queries"></a>Ügyfél által felügyelt kulcs mentett lekérdezésekhez
 
 A Log Analyticsben használt lekérdezési nyelv kifejező, és bizalmas információkat tartalmazhat a lekérdezésekben vagy a lekérdezési szintaxisban hozzáadott megjegyzésekben. Egyes szervezetek megkövetelik, hogy az ilyen információk védelme az ügyfél által felügyelt kulcs házirendje alapján történjen, és a kulcsával titkosított lekérdezéseket kell mentenie. A Azure Monitor lehetővé teszi, hogy a munkaterülethez való csatlakozáskor a saját kulcsával titkosított *mentett kereséseket* és *napló-riasztásokat* tartalmazó lekérdezéseket tárolja. 
 
@@ -410,7 +450,7 @@ A Customer-Managed kulcs dedikált fürtön van megadva, és ezek a műveletek [
 
   - Ha a fürt felhasználó által hozzárendelt felügyelt identitással van beállítva, akkor a beállítás `UserAssignedIdentities` `None` felfüggeszti a fürtöt, és meggátolja az adatokhoz való hozzáférést, de nem tudja visszaállítani a visszavonást, és nem aktiválja a fürtöt a támogatási kérelem megnyitása nélkül. Ez a korlátozás nem vonatkozik a rendszerhez rendelt felügyelt identitásra.
 
-  - Az ügyfél által felügyelt kulcs jelenleg nem definiálható felhasználó által hozzárendelt felügyelt identitással, ha a Key Vault Private-Link (vNet) helyen található, és ebben az esetben a rendszerhez rendelt felügyelt identitást is használhatja.
+  - Ha a Key Vault Private-Link (vNet), nem használhatja az ügyfél által felügyelt kulcsot a felhasználóhoz rendelt felügyelt identitással. Ebben a forgatókönyvben a rendszerhez rendelt felügyelt identitást is használhatja.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -478,7 +518,7 @@ A Customer-Managed kulcs dedikált fürtön van megadva, és ezek a műveletek [
   **Munkaterület leválasztása**
   -  404 – a munkaterület nem található. A megadott munkaterület nem létezik vagy törölték.
   -  409 – a munkaterület hivatkozása vagy a művelet leválasztása folyamatban.
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [log Analytics dedikált fürt számlázásáról](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)
 - A [log Analytics-munkaterületek megfelelő kialakításának](../platform/design-logs-deployment.md) megismerése

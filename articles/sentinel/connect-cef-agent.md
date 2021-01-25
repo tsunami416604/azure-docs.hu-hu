@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2021
 ms.author: yelevin
-ms.openlocfilehash: 617599e3eb6dcca74324a7bdfd51e604904a2fa1
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 8261856598a155e97f90ea350cedcd4c10e6893c
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897501"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747306"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>1. lépés: a naplózási továbbító üzembe helyezése
 
@@ -42,6 +42,11 @@ Ebben a lépésben a Linux-gépet fogja kijelölni és konfigurálni, amely tov�
 
 - A Linux rendszerű számítógép nem csatlakoztatható Azure-munkaterületekhez az Log Analytics-ügynök telepítése előtt.
 
+- A linuxos gépnek legalább **4 CPU-maggal és 8 GB RAM-mal** kell rendelkeznie.
+
+    > [!NOTE]
+    > - A **rsyslog** démont használó egyetlen naplózási továbbító számítógép másodpercenként **legfeljebb 8500 eseményt (EPS)** gyűjtött.
+
 - A folyamat egy pontján szükség lehet a munkaterület-AZONOSÍTÓra és a munkaterület elsődleges kulcsára. Ezeket a munkaterület-erőforrásban találja, az **ügynökök kezelése** területen.
 
 ## <a name="run-the-deployment-script"></a>Az üzembe helyezési szkript futtatása
@@ -51,7 +56,7 @@ Ebben a lépésben a Linux-gépet fogja kijelölni és konfigurálni, amely tov�
 1. A **1,2 alatt telepítse a CEF-gyűjtőt a Linux** rendszerű gépre, másolja a **következő szkript futtatásához tartozó hivatkozást a CEF-gyűjtő telepítéséhez és alkalmazásához**, vagy az alábbi szövegből (a munkaterület-azonosító és az elsődleges kulcs alkalmazása a helyőrzők helyett):
 
     ```bash
-    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]
+    sudo wget -O cef_installer.py https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]
     ```
 
 1. A szkript futtatása közben ellenőrizze, hogy nem kap-e hibaüzenetet vagy figyelmeztető üzenetet.
@@ -73,7 +78,7 @@ Ebben a lépésben a Linux-gépet fogja kijelölni és konfigurálni, amely tov�
 > [!NOTE]
 > **A TimeGenerated mező forrásának módosítása**
 >
-> - Alapértelmezés szerint a Log Analytics ügynök tölti fel a séma *TimeGenerated* mezőjét abban az időpontig, amikor az ügynök az eseményt a syslog démontól kapta. Ennek eredményeképpen az eseménynek a forrásoldali rendszeren való generálásának ideje nincs rögzítve az Azure Sentinelben.
+> - Alapértelmezés szerint a Log Analytics ügynök tölti fel a séma *TimeGenerated* mezőjét abban az időpontig, amikor az ügynök az eseményt a syslog démontól kapta. Ennek eredményeképpen az időpont, amikor az esemény létrejött a forrásrendszeren, nem lesz rögzítve az Azure Sentinelben.
 >
 > - A következő parancs futtatásával azonban letöltheti és futtathatja a `TimeGenerated.py` szkriptet. Ez a szkript úgy konfigurálja a Log Analytics ügynököt, hogy az ügynöktől kapott idő helyett feltöltse a *TimeGenerated* mezőt az esemény eredeti időpontjával.
 >
@@ -94,8 +99,8 @@ A megfelelő leírás megtekintéséhez válassza ki a syslog démont.
     - Letölti a Log Analytics (OMS) Linux-ügynök telepítési parancsfájlját.
 
         ```bash
-        wget -O https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
-            onboard_agent.sh
+        wget -O onboard_agent.sh https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/
+            master/installer/scripts/onboard_agent.sh
         ```
 
     - Telepíti a Log Analytics ügynököt.
@@ -160,8 +165,8 @@ A megfelelő leírás megtekintéséhez válassza ki a syslog démont.
     - Letölti a Log Analytics (OMS) Linux-ügynök telepítési parancsfájlját.
 
         ```bash
-        wget -O https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
-            onboard_agent.sh
+        wget -O onboard_agent.sh https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/
+            master/installer/scripts/onboard_agent.sh
         ```
 
     - Telepíti a Log Analytics ügynököt.
@@ -221,7 +226,7 @@ A megfelelő leírás megtekintéséhez válassza ki a syslog démont.
         ```
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a dokumentumból megtudhatta, hogyan helyezheti üzembe a Log Analytics-ügynököt a CEF-berendezések Azure Sentinelhez való összekapcsolásához. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).

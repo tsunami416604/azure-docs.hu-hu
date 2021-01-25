@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 4b34477a40530a0e6f26b59dd9707c019418b2a4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 6010242e7fbd14aa117c481dee0d05e92928ef1b
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655850"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747491"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>A külső megoldás összekötése a közös esemény formátumával
 
@@ -78,13 +78,19 @@ Győződjön meg arról, hogy a naplózási továbbítóként használt Linux-g�
  
 Győződjön meg arról, hogy a gép a következő követelményeknek is megfelel: 
 
+- Kapacitás
+  - A gépnek legalább **4 CPU-maggal és 8 GB RAM-mal** kell rendelkeznie.
+
+    > [!NOTE]
+    > - A **rsyslog** démont használó egyetlen naplózási továbbító számítógép másodpercenként **legfeljebb 8500 eseményt (EPS)** gyűjtött.
+
 - Engedélyek
   - Emelt szintű engedélyekkel (sudo) kell rendelkeznie a gépen. 
 
 - Szoftverkövetelmények
   - Győződjön meg arról, hogy a Python 2,7 vagy a 3 fut a gépen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a dokumentumból megtudhatta, hogy az Azure Sentinel hogyan gyűjt CEF-naplókat a biztonsági megoldásokból és készülékekről. Ha szeretné megtudni, hogyan csatlakoztatható a megoldás az Azure Sentinel szolgáltatáshoz, tekintse meg a következő cikkeket:
 

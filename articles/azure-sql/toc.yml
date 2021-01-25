@@ -973,6 +973,8 @@
           href: managed-instance/virtual-cluster-delete.md
         - name: Egyéni DNS konfigurálása
           href: managed-instance/custom-dns-configure.md
+        - name: DNS-konfiguráció szinkronizálása
+          href: managed-instance/synchronize-vnet-dns-servers-setting-on-virtual-cluster.md
         - name: Hálózati konfigurációja szinkronizálása
           href: managed-instance/azure-app-sync-network-configuration.md
         - name: Felügyeleti végpont IP-címének megkeresése
