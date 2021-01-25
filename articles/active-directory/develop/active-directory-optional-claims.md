@@ -12,12 +12,12 @@ ms.date: 1/06/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 6b5c328503a28c6eb92c2c20ca54d4d3d80c9a15
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 6855e8f550c14574795ec00f4fed36762944dca1
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232471"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756043"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Útmutató: opcionális jogcímek megadása az alkalmazás számára
 
@@ -31,13 +31,13 @@ A következő választható jogcímeket használhatja:
 
 A standard jogcímek listájáért tekintse meg a [hozzáférési jogkivonat](access-tokens.md) és a [id_token](id-tokens.md) jogcím dokumentációját.
 
-Míg a választható jogcímek a v 1.0 és a v 2.0 formátumú jogkivonatokban, valamint az SAML-jogkivonatokban is támogatottak, az értékük nagy részét az 1.0 és a v 2.0 közötti váltáskor adja meg. A 2.0-s [Microsoft Identity platform végpontjának](./v2-overview.md) egyik célja kisebb token-méret az ügyfelek optimális teljesítményének biztosítása érdekében. Ennek eredményeképpen számos, korábban a hozzáférési és azonosító jogkivonatban szereplő jogcím már nem található meg a v 2.0-s jogkivonatokban, és a kérést külön alkalmazási alapon kell megadnia.
+Míg a választható jogcímek a v 1.0 és a v 2.0 formátumú jogkivonatokban, valamint az SAML-jogkivonatokban is támogatottak, az értékük nagy részét az 1.0 és a v 2.0 közötti váltáskor adja meg. A [Microsoft Identity platform](./v2-overview.md) egyik célja kisebb méretű tokenek az ügyfelek optimális teljesítményének biztosítása érdekében. Ennek eredményeképpen számos, korábban a hozzáférési és azonosító jogkivonatban szereplő jogcím már nem található meg a v 2.0-s jogkivonatokban, és a kérést külön alkalmazási alapon kell megadnia.
 
 **1. táblázat: alkalmazhatóság**
 
 | Fiók típusa               | 1.0-s verziós tokenek | v 2.0-tokenek |
 |----------------------------|-------------|-------------|
-| Személyes Microsoft-fiók | N.A.         | Támogatott   |
+| Személyes Microsoft-fiók | N/A         | Támogatott   |
 | Azure AD-fiók           | Támogatott   | Támogatott   |
 
 ## <a name="v10-and-v20-optional-claims-set"></a>v 1.0 és v 2.0 választható jogcímek készlete
@@ -255,7 +255,7 @@ Ez a szakasz azokat a konfigurációs beállításokat ismerteti, amelyek a vál
 1. Válassza a **Csoport hozzáadása jogcímet**.
 1. Válassza ki a visszaadni kívánt csoportok típusát (**biztonsági csoportok**, **címtárbeli szerepkörök**, **az alkalmazáshoz rendelt** **összes csoport** és/vagy csoport). Az **alkalmazás-beállításhoz rendelt csoportok** csak az alkalmazáshoz rendelt csoportokat tartalmazzák. A **minden csoport** beállítás magában foglalja az **SecurityGroup**, a **DirectoryRole** és a **DistributionList**, de **az alkalmazáshoz nem rendelt csoportokat**. 
 1. Nem kötelező: válassza ki az adott jogkivonat-típus tulajdonságait, hogy módosítsa a csoportok jogcím értékét, amely a helyszíni csoport attribútumait tartalmazza, vagy ha módosítani szeretné a jogcím típusát a szerepkörre.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 **Csoportok konfigurálása választható jogcímek az alkalmazás jegyzékfájlján keresztül:**
 

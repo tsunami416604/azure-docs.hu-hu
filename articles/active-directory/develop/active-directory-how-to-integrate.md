@@ -14,14 +14,14 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: deb923a52e5d6cd5384dbf94d2249572b25b1a61
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: b7ee283ff61753a060e49a3340cd0a795b04faf9
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063841"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755934"
 ---
-# <a name="integrating-with-microsoft-identity-platform"></a>Integráció a Microsoft Identity platformmal
+# <a name="integrating-with-the-microsoft-identity-platform"></a>Integráció a Microsoft Identity platformmal
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
@@ -31,11 +31,11 @@ Ebből a cikkből megtudhatja, milyen előnyökkel jár az alkalmazás integrál
 
 Az alkalmazás számos módon integrálható a Microsoft Identity platformmal. Használja ki az alkalmazásának megfelelő számos vagy több ilyen forgatókönyvet.
 
-### <a name="support-microsoft-identity-platform-as-a-way-to-sign-in-to-your-application"></a>A Microsoft Identity platform támogatása az alkalmazásba való bejelentkezéshez
+### <a name="support-the-microsoft-identity-platform-as-a-way-to-sign-in-to-your-application"></a>A Microsoft Identity platform támogatása az alkalmazásba való bejelentkezéshez
 
-**Csökkentse a bejelentkezés súrlódását, és csökkentse a támogatási költségeket.** Ha a Microsoft Identity platformot használja az alkalmazásba való bejelentkezéshez, a felhasználóknak még egy nevet és jelszót sem kell megemlékezniük. Fejlesztőként egy kevesebb jelszót fog tárolni és védelemmel ellátni. Az elfelejtett jelszó-visszaállítások kezelésének mellőzése önmagában jelentős megtakarítás lehet. A Microsoft Identity platform a világ egyik legnépszerűbb felhőalapú alkalmazásához jelentkezik be, beleértve a Microsoft 365 és a Microsoft Azure. A felhasználók milliói több száz millió felhasználót érintenek, így a felhasználó már be van jelentkezve a Microsoft Identity platformba. További információ a [Microsoft Identity platform-bejelentkezés támogatásának hozzáadásáról](./authentication-vs-authorization.md).
+**Csökkentse a bejelentkezés súrlódását, és csökkentse a támogatási költségeket.** Ha a Microsoft Identity platformot használja az alkalmazásba való bejelentkezéshez, a felhasználóknak még egy nevet és jelszót sem kell megemlékezniük. Fejlesztőként egy kevesebb jelszót fog tárolni és védelemmel ellátni. Az elfelejtett jelszó-visszaállítások kezelésének mellőzése önmagában jelentős megtakarítás lehet. A Microsoft Identity platform a világ egyik legnépszerűbb felhőalapú alkalmazásához jelentkezik be, beleértve a Microsoft 365 és a Microsoft Azure. A felhasználók milliói több száz millió felhasználót érintenek, így a felhasználó már be van jelentkezve a Microsoft Identity platformba. További információ [a Microsoft Identity platform-bejelentkezés támogatásának hozzáadásáról](./authentication-vs-authorization.md).
 
-**Egyszerűsítse az alkalmazás regisztrálását.**  Az alkalmazásra való regisztráció során a Microsoft Identity platform alapvető információkat küldhet a felhasználóról, így előre kitöltheti a regisztrációs űrlapot, vagy teljesen megszüntetheti a regisztrációt. A felhasználók az Azure AD-fiókjával regisztrálhatnak az alkalmazásra, mint a közösségi médiában és a mobil alkalmazásokban található, ismerős hozzájárulással. Bármely felhasználó regisztrálhat, és bejelentkezhet egy olyan alkalmazásba, amely integrálva van a Microsoft Identity platformmal, anélkül, hogy ez bevonása lenne. További információ az [alkalmazás Azure ad-fiókba való bejelentkezésének regisztrálásáról](../../app-service/configure-authentication-provider-aad.md).
+**Egyszerűsítse az alkalmazás regisztrálását.**  Az alkalmazásra való regisztráció során a Microsoft Identity platform alapvető információkat küldhet a felhasználóról, így előre kitöltheti a regisztrációs űrlapot, vagy teljesen megszüntetheti a regisztrációt. A felhasználók az Azure AD-fiókjával regisztrálhatnak az alkalmazásra, mint a közösségi médiában és a mobil alkalmazásokban található, ismerős hozzájárulással. Bármely felhasználó regisztrálhat, és bejelentkezhet egy olyan alkalmazásba, amely integrálva van a Microsoft Identity platformmal anélkül, hogy ez bevonása lenne. További információ az [alkalmazás Azure ad-fiókba való bejelentkezésének regisztrálásáról](../../app-service/configure-authentication-provider-aad.md).
 
 ### <a name="browse-for-users-manage-user-provisioning-and-control-access-to-your-application"></a>Felhasználók tallózása, felhasználók üzembe helyezésének kezelése és az alkalmazáshoz való hozzáférés szabályozása
 
@@ -45,7 +45,7 @@ Az alkalmazás számos módon integrálható a Microsoft Identity platformmal. H
 
 **A Microsoft Identity platform segítségével szabályozhatja, hogy ki férhet hozzá az alkalmazáshoz.**  Az Azure AD-rendszergazdák és az alkalmazások tulajdonosai az adott felhasználókhoz és csoportokhoz is hozzárendelhet hozzáférést az alkalmazásokhoz. A Microsoft Graph API használatával elolvashatja ezt a listát, és használhatja az erőforrások kiépítés, valamint az alkalmazáson belüli hozzáférés kiépítés szabályozására.
 
-**Használja a Microsoft Identity platformot a szerepköralapú Access Controlhoz.**  A rendszergazdák és az alkalmazások tulajdonosai felhasználókat és csoportokat rendelhetnek hozzá az alkalmazás Microsoft Identity platformon való regisztrálása során meghatározott szerepkörökhöz. A szerepkör-információkat a rendszer a bejelentkezési jogkivonatokban elküldi az alkalmazásnak, és a Microsoft Graph API használatával is olvasható. További információ a [Microsoft Identity platform használatáról az engedélyezéshez](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/).
+**Használja a Microsoft Identity platformot a szerepkörökön alapuló Access Control.**  A rendszergazdák és az alkalmazások tulajdonosai felhasználókat és csoportokat rendelhetnek hozzá az alkalmazás Microsoft Identity platformon való regisztrálása során meghatározott szerepkörökhöz. A szerepkör-információkat a rendszer a bejelentkezési jogkivonatokban elküldi az alkalmazásnak, és a Microsoft Graph API használatával is olvasható. További információ [a Microsoft Identity platform használatáról az engedélyezéshez](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/).
 
 ### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>Hozzáférés a felhasználók profiljához, a naptárhoz, az e-mailekhez, a névjegyekhez és a fájlokhoz
 
@@ -89,7 +89,7 @@ A Microsoft Identity platformmal való integráció olyan előnyökkel jár, ame
 
 **Az Azure AD a világ különböző pontjain üzemelő adatközpontokban van üzembe helyezve, és az óra körül felügyelhető és figyelhető.**  Az Azure AD a Microsoft Azure és a Microsoft 365 Identity Management rendszer, amely a világ 28 adatközpontjában üzemel. A címtáradatok legalább három adatközpontba való replikálásra vannak garantálva. A globális Load Balancer biztosítja, hogy a felhasználók hozzáférjenek az Azure AD legközelebbi példányához, amely tartalmazza az adatmennyiséget, és ha problémát észlel, automatikusan átirányítja a kéréseket más adatközpontokhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A [kód írásának megkezdése](v2-overview.md#getting-started).
 

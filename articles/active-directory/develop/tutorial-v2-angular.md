@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: c4c7d021c7c3a5a32d537a50fa45449fdee7e817
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 105353598a2af60c407bacf02b4527b2de84e450
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979929"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756160"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása egy szögletes egyoldalas alkalmazásból
 
@@ -271,7 +271,7 @@ Például:
 
 #### <a name="get-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
 
-Előfordulhat, hogy a felhasználónak a Microsoft Identity platform-végponttal kell kommunikálnia. Például:
+Előfordulhat, hogy a felhasználónak a Microsoft Identity platformmal kell kommunikálnia. Például:
 
 * Előfordulhat, hogy a felhasználóknak újra meg kell adniuk a hitelesítő adataikat, mert a jelszavuk lejárt.
 * Az alkalmazása olyan további erőforrás-hatókörökhöz kér hozzáférést, amelyeknek a felhasználónak hozzá kell járulnia.
@@ -279,7 +279,7 @@ Előfordulhat, hogy a felhasználónak a Microsoft Identity platform-végponttal
 
 A legtöbb alkalmazás javasolt mintája először hívja meg `acquireTokenSilent` a-t, majd a kivételt, majd a hívást `acquireTokenPopup` (vagy `acquireTokenRedirect` ) egy interaktív kérelem elindításához.
 
-Az eredmények meghívása `acquireTokenPopup` egy előugró bejelentkezési ablakban. Azt is megteheti, `acquireTokenRedirect` hogy átirányítja a felhasználókat a Microsoft Identity platform-végpontra. Ebben az ablakban a felhasználóknak meg kell erősíteniük a hitelesítő adataikat, meg kell adniuk a szükséges erőforrást, vagy el kell végezniük a kétfaktoros hitelesítést.
+Az eredmények meghívása `acquireTokenPopup` egy előugró bejelentkezési ablakban. Azt is megteheti, `acquireTokenRedirect` hogy átirányítja a felhasználókat a Microsoft Identity platformra. Ebben az ablakban a felhasználóknak meg kell erősíteniük a hitelesítő adataikat, meg kell adniuk a szükséges erőforrást, vagy el kell végezniük a kétfaktoros hitelesítést.
 
 ```javascript
   const requestObj = {
@@ -340,7 +340,7 @@ Ha egy háttérbeli API-nak nincs szüksége hatókörre (nem ajánlott), a *cli
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az egyoldalas alkalmazások (SPA) fejlesztése a Microsoft Identity platformon, a több részből álló cikkek sorozatában.
 

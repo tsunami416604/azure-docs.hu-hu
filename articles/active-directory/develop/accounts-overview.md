@@ -13,12 +13,12 @@ ms.date: 09/14/2019
 ms.author: shoatman
 ms.custom: aaddev, devx-track-java
 ms.reviewer: shoatman
-ms.openlocfilehash: 404ffbc09a69b623a421bd0c01550d72e5c03158
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fac66e8f82ea4c04e866b28fed5f8d0860ab81ef
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88115985"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755974"
 ---
 # <a name="accounts--tenant-profiles-android"></a>Fiókok és bérlői profilok (Android)
 
@@ -105,7 +105,7 @@ Ahogy azt korábban említettük, az egyes bérlők, ahol egy fiók létezik, k�
 
 Habár egy fiók lehet tag vagy vendég több szervezeten belül, a MSAL nem kérdez le egy szolgáltatást, hogy lekérje azon bérlők listáját, amelyeknek a fiók tagja. Ehelyett a MSAL létrehoz egy listát azokról a bérlők listájáról, amelyeken a fiók szerepel, a jogkivonat-kérelmek eredményeképpen.
 
-A fiók objektumon közzétett jogcímek mindig a fiók "Kezdőlap bérlője"/{Authority} származó jogcímek. Ha ez a fiók nem használ jogkivonatot a saját bérlője számára, a MSAL nem tud jogcímeket biztosítani a fiók objektumon keresztül.  Példa:
+A fiók objektumon közzétett jogcímek mindig a fiók "Kezdőlap bérlője"/{Authority} származó jogcímek. Ha ez a fiók nem használ jogkivonatot a saját bérlője számára, a MSAL nem tud jogcímeket biztosítani a fiók objektumon keresztül.  Például:
 
 ```java
 // Psuedo Code
@@ -125,7 +125,7 @@ String issuer = account.getClaims().get("iss"); // The tenant specific authority
 
 ### <a name="access-tenant-profile-claims"></a>Bérlői profil jogcímeinek elérése
 
-Ha más bérlők által megjelenő fiókhoz szeretne jogcímeket elérni, először be kell állítania a fiók objektumát `IMultiTenantAccount` . Az összes fiók több-bérlő lehet, de a MSAL-n keresztül elérhető bérlői profilok száma attól függ, hogy mely bérlők igényeltek jogkivonatot az aktuális fiók használatával.  Példa:
+Ha más bérlők által megjelenő fiókhoz szeretne jogcímeket elérni, először be kell állítania a fiók objektumát `IMultiTenantAccount` . Az összes fiók több-bérlő lehet, de a MSAL-n keresztül elérhető bérlői profilok száma attól függ, hogy mely bérlők igényeltek jogkivonatot az aktuális fiók használatával.  Például:
 
 ```java
 // Psuedo Code

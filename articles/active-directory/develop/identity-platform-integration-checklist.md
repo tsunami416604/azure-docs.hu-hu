@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 011acdf98c8430bfb7ba1b02ec24a170f829e48f
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: cefcf6b1bcd7ac5f81fa4e872b30660183a46a82
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063790"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755264"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft Identity platform – ajánlott eljárások és javaslatok
 
@@ -72,7 +72,7 @@ Az alábbi ellenőrzőlista használatával biztosíthatja, hogy az alkalmazás 
 
 ![Jelölje ](./media/active-directory-integration-checklist/checkbox-two.svg) be a meglévő alkalmazások migrálása [Azure Active Directory Authentication Library (ADAL)](../azuread-dev/active-directory-authentication-libraries.md) szolgáltatásból a [Microsoft hitelesítési könyvtárra](msal-overview.md)jelölőnégyzetet. A MSAL a Microsoft legújabb Identity platform-megoldása, és a ADAL előnyben részesített. A szolgáltatás .NET, JavaScript, Android, iOS, macOS rendszeren érhető el, és a Python és a Java nyilvános előzetes verziójában is elérhető. További információ a [ADAL.net](msal-net-migration.md), a [ADAL.js](msal-compare-msal-js-and-adal-js.md)és a [ADAL.net és az iOS Broker-](msal-net-migration-ios-broker.md) alkalmazások áttelepítéséről.
 
-![jelölőnégyzet](./media/active-directory-integration-checklist/checkbox-two.svg) A Mobile apps esetében minden platformot az alkalmazás regisztrációs felületének használatával konfigurálhat. Ahhoz, hogy az alkalmazás kihasználja az egyszeri bejelentkezés Microsoft Authenticator vagy a Microsoft Céges portál előnyeit, az alkalmazásnak "közvetítő átirányítási URI-t" kell beállítania. Ez lehetővé teszi a Microsoft számára, hogy a hitelesítés után visszaadja a vezérlést az alkalmazásnak. Az egyes platformok konfigurálásakor az alkalmazás regisztrációs felülete végigvezeti Önt a folyamaton. Egy működő példa letöltéséhez használja a rövid útmutatót. IOS rendszeren használja a Brokers és a System Webview lehetőséget, amikor csak lehetséges.
+![jelölőnégyzet](./media/active-directory-integration-checklist/checkbox-two.svg) A Mobile apps esetében minden platformot az alkalmazás regisztrációs felületének használatával konfigurálhat. Ahhoz, hogy az alkalmazás kihasználja az egyszeri bejelentkezés Microsoft Authenticator vagy a Microsoft céges portál előnyeit, az alkalmazásnak "közvetítő átirányítási URI-t" kell beállítania. Ez lehetővé teszi a Microsoft számára, hogy a hitelesítés után visszaadja a vezérlést az alkalmazásnak. Az egyes platformok konfigurálásakor az alkalmazás regisztrációs felülete végigvezeti Önt a folyamaton. Egy működő példa letöltéséhez használja a rövid útmutatót. IOS rendszeren használja a Brokers és a System Webview lehetőséget, amikor csak lehetséges.
 
 ![jelölőnégyzet ](./media/active-directory-integration-checklist/checkbox-two.svg) a Web Apps vagy a webes API-k esetében a fiókon belül egy jogkivonat-gyorsítótárat kell megőrizni.  A webalkalmazások esetében a jogkivonat-gyorsítótárat a fiók AZONOSÍTÓjának kell megadnia.  Webes API-k esetében a fióknak az API meghívásához használt jogkivonat kivonatával kell megjelennie. A MSAL.NET egyéni jogkivonat-gyorsítótárazási szerializálást biztosít a .NET-keretrendszer és a .NET Core alplatformok számára. A biztonság és a teljesítmény érdekében javasoljuk, hogy felhasználónként egy gyorsítótárat szerializáljon. További információ: a jogkivonat- [gyorsítótár szerializálásának](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application)áttekintése.
 
@@ -104,7 +104,7 @@ Az alábbi ellenőrzőlista használatával biztosíthatja, hogy az alkalmazás 
 
 Részletes információk a 2.0-s verzióról:
 
-* [Microsoft Identity platform (v 2.0 – áttekintés)](v2-overview.md)
+* [Microsoft Identity platform (áttekintés)](v2-overview.md)
 * [Microsoft Identity platform-protokollok – dokumentáció](active-directory-v2-protocols.md)
 * [Hozzáférési jogkivonatok referenciája](access-tokens.md)
 * [Azonosító jogkivonatok referenciája](id-tokens.md)

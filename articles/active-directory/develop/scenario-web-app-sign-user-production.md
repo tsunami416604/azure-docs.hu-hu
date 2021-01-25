@@ -1,5 +1,6 @@
 ---
-title: A felhasználók által az éles környezetbe bejelentkező webalkalmazás áthelyezése – Microsoft Identity platform | Azure
+title: A felhasználók által az éles környezetbe bejelentkező webes alkalmazás áthelyezése | Azure
+titleSuffix: Microsoft identity platform
 description: Megtudhatja, hogyan hozhat létre egy webalkalmazást, amely aláírja a felhasználókat (éles környezetbe helyezi)
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: fd9890cb94bf6bb4b82ebbb585ab8bbb9d5ba46a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c7abad31c9936729b8d9c19ed2efcb841ac103ca
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169290"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756243"
 ---
 # <a name="web-app-that-signs-in-users-move-to-production"></a>Felhasználók számára bejelentkező webalkalmazás: áthelyezés éles környezetbe
 

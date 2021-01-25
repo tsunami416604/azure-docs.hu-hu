@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 018b5396563ac3a4b92b371d396c38afa3d2962f
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 601eefa7957972daa2d538e6ba0d9b7a5311c79d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064266"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756480"
 ---
 # <a name="call-a-web-api-from-a-mobile-app"></a>Webes API meghívása Mobile-alkalmazásból
 
@@ -157,6 +157,6 @@ catch(MsalUiRequiredException ex)
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az ebben a forgatókönyvben lévő következő cikkre való áttéréssel váltson [éles környezetbe](scenario-mobile-production.md).

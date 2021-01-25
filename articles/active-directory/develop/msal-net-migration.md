@@ -13,18 +13,18 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: c6049bf55e379a2629e8cd4ef1427f91fc31d2cd
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: b437efcfa2b0bb2a725929ae0253f48d97d11552
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063603"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754811"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Alkalmazások migrálása a MSAL.NET-be
 
 A .net-hez készült Microsoft Authentication Library (MSAL.NET) és az Azure AD Authentication Library for .NET (ADAL.NET) egyaránt az Azure AD-entitások hitelesítésére és az Azure AD-jogkivonatok igénylésére szolgál. Eddig a legtöbb fejlesztő dolgozott együtt az Azure ad for Developers platformmal (v 1.0) az Azure AD-identitások (munkahelyi és iskolai fiókok) hitelesítéséhez az Azure AD Authentication Library (ADAL) használatával. A MSAL használata:
 
-- a Microsoft Identity platform végpontjának használatával a Microsoft-identitások (Azure AD-identitások és Microsoft-fiókok, valamint közösségi és helyi Azure AD B2C fiókok) szélesebb körét hitelesítheti.
+- a Microsoft Identity platformot használva hitelesítheti a Microsoft-identitások (Azure AD-identitások és Microsoft-fiókok, valamint közösségi és helyi Azure AD B2C fiókok) szélesebb körét.
 - a felhasználók a legjobb egyszeri bejelentkezési élményt kapják meg.
 - az alkalmazás lehetővé teszi a növekményes hozzáférés engedélyezését, és egyszerűbben támogatja a feltételes hozzáférést.
 - élvezheti az innováció előnyeit.
@@ -35,9 +35,9 @@ Ez a cikk a .NET-hez készült Microsoft Authentication Library (MSAL.NET) és a
 
 ## <a name="differences-between-adal-and-msal-apps"></a>A ADAL és a MSAL alkalmazások közötti különbségek
 
-A legtöbb esetben a MSAL.NET és a Microsoft Identity platform végpontját kívánja használni, amely a Microsoft hitelesítési kódtárainak legújabb generációja. Az MSAL.NET használatával az Azure AD-vel (munkahelyi és iskolai fiókokkal), a Microsoft-fiókokkal (MSA) és a Azure AD B2Cekkel bejelentkezett felhasználók jogkivonatait is beszerezheti az alkalmazásba.
+A legtöbb esetben a MSAL.NET és a Microsoft Identity platformot kívánja használni, amely a Microsoft hitelesítési kódtárainak legújabb generációja. Az MSAL.NET használatával az Azure AD-vel (munkahelyi és iskolai fiókokkal), a Microsoft-fiókokkal (MSA) és a Azure AD B2Cekkel bejelentkezett felhasználók jogkivonatait is beszerezheti az alkalmazásba.
 
-Ha már ismeri az Azure AD for Developers (v 1.0) végpontot (és a ADAL.NET), érdemes elolvasnia, hogy [Mi a különbség a Microsoft Identity platform (v 2.0) végpontján?](../azuread-dev/azure-ad-endpoint-comparison.md).
+Ha már ismeri az Azure AD for Developers (v 1.0) végpontot (és a ADAL.NET), érdemes elolvasnia, hogy [Mi a különbség a Microsoft Identity platformmal kapcsolatban?](../azuread-dev/azure-ad-endpoint-comparison.md).
 
 Azonban továbbra is szükség van a ADAL.NET használatára, ha az alkalmazásnak a [Active Directory összevonási szolgáltatások (AD FS) (ADFS)](/windows-server/identity/active-directory-federation-services)korábbi verzióival kell bejelentkeznie a felhasználókba. További információ: ADFS- [támogatás](https://aka.ms/msal-net-adfs-support).
 
@@ -264,6 +264,6 @@ Ekkor megjelenik egy hozzáférési jogkivonat és egy azonosító jogkivonat, a
 
 Ezt a módszert olyan különböző integrációs forgatókönyvek esetében is használhatja, amelyeken elérhető frissítési jogkivonat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A hatókörökkel [, engedélyekkel és a Microsoft Identity platform végpontjában](v2-permissions-and-consent.md) található hatókörökkel kapcsolatos további információk
+A hatókörökkel [, engedélyekkel és a Microsoft Identity platformban](v2-permissions-and-consent.md) található hatókörökkel kapcsolatos további információk

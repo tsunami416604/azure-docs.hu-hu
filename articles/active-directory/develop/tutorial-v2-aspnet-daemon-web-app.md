@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 5f2560cdc062edb41ecda935eb9b8efe630949dc
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 7d34039a5d56feb42473b1a2b24def5244ec3e04
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015946"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756139"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Oktatóanyag: a Microsoft Identity platformot használó több-bérlős démon létrehozása
 
@@ -39,7 +39,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 - Egy Azure AD-bérlő. További információ: [Azure ad-bérlő beszerzése](quickstart-create-new-tenant.md).
 - Egy vagy több felhasználói fiók az Azure AD-bérlőben. Ez a minta nem fog működni Microsoft-fiók. Ha bejelentkezett a [Azure Portalba](https://portal.azure.com) egy Microsoft-fiók, és még soha nem hozott létre felhasználói fiókot a címtárban, tegye meg most.
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Eset
 
 Az alkalmazás ASP.NET MVC-alkalmazásként van felépítve. A OWIN OpenID Connect middleware használatával jelentkezik be a felhasználókba.
 
@@ -49,7 +49,7 @@ Mivel az alkalmazás egy több-bérlős alkalmazás a Microsoft üzleti ügyfele
 
 ![A diagram az Azure-hoz csatlakozó három helyi elemmel rendelkező UserSync-alkalmazást mutatja be, a Start dot Auth pedig interaktív módon beolvassa a tokent az Azure A D-hez való csatlakozáshoz, így a rendszergazda beleegyezik az Azure-ba való csatlakozáshoz, és a SyncController Microsoft Graphhoz való csatlakozáshoz.](./media/tutorial-v2-aspnet-daemon-webapp/topology.png)
 
-Az ebben a mintában használt fogalmakkal kapcsolatos további információkért olvassa el az [Identity platform végpontjának ügyfél-hitelesítő adatok protokolljának dokumentációját](v2-oauth2-client-creds-grant-flow.md).
+Az ebben a mintában használt fogalmakkal kapcsolatos további információkért olvassa el az [ügyfél hitelesítő adatai protokoll dokumentációját az Identity platformhoz](v2-oauth2-client-creds-grant-flow.md).
 
 ## <a name="clone-or-download-this-repository"></a>A tárház klónozása vagy letöltése
 
@@ -111,7 +111,7 @@ Ha nem kívánja használni az automatizálást, kövesse az alábbi részben is
 1. A **kezelés** területen válassza a **hitelesítés** lehetőséget.
 1. A **kijelentkezési URL** beállítása a következőre: `https://localhost:44316/Account/EndSession` .
 1. Az **implicit támogatás** szakaszban válassza a **hozzáférési jogkivonatok** és **azonosító tokenek** elemet. Ez a minta megköveteli, hogy az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) engedélyezze a bejelentkezést a felhasználó felé, és hívjon fel egy API-t.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 1. A **Kezelés** területen válassza a **Tanúsítványok és titkos kódok** lehetőséget.
 1. Az **ügyfél titkai** szakaszban válassza az **új ügyfél titka** elemet. 
 1. Adja meg a kulcs leírását (például az **alkalmazás titkát**).
@@ -218,7 +218,7 @@ A projekt webalkalmazás-és webes API-projektekkel rendelkezik. Az Azure-webhel
 1. Válassza a **Konfigurálás** lehetőséget.
 1. A **kapcsolat** lapon frissítse a cél URL-címet úgy, hogy a "https"-t használja. Használja például a következőt: `https://dotnet-web-daemon-v2-contoso.azurewebsites.net` . Kattintson a **Tovább** gombra.
 1. A **Beállítások** lapon győződjön meg arról, hogy a **szervezeti hitelesítés engedélyezése** jelölőnégyzet nincs bejelölve.
-1. Válassza a **Mentés** lehetőséget. Válassza a fő képernyő **Közzététel** elemét.
+1. Kattintson a **Mentés** gombra. Válassza a fő képernyő **Közzététel** elemét.
 
 A Visual Studio közzéteszi a projektet, és automatikusan megnyit egy böngészőt a projekt URL-címére. Ha megjelenik a projekt alapértelmezett weboldala, a kiadvány sikeres volt.
 

@@ -1,7 +1,7 @@
 ---
 title: Biztonsági jogkivonatok | Azure
 titleSuffix: Microsoft identity platform
-description: Tudnivalók a biztonsági jogkivonatok alapjairól a Microsoft Identity platformon (v 2.0).
+description: Tudnivalók a biztonsági jogkivonatok alapjairól a Microsoft Identity platformon.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 05/11/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 88dc4bb86459cd0390c4c01deb871aa93e39c6d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9668d3b0b57e36fb95421f8b502b9b743be8eb31
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84266746"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756215"
 ---
 # <a name="security-tokens"></a>Biztonsági jogkivonatok
 
@@ -26,7 +26,7 @@ A központosított identitás-szolgáltató különösen olyan alkalmazások ese
 
 A **hozzáférési jogkivonat** olyan biztonsági jogkivonat, amelyet egy [engedélyezési kiszolgáló](developer-glossary.md#authorization-server) állít ki egy [OAuth 2,0](active-directory-v2-protocols.md) folyamat részeként. A felhasználóval és az alkalmazással kapcsolatos információkat tartalmaz, amelyekhez a jogkivonat készült. a webes API-k és más védett erőforrások elérésére használható. Ha többet szeretne megtudni arról, hogy a Microsoft Identity platform hogyan bocsát ki hozzáférési jogkivonatokat, tekintse meg a [hozzáférési jogkivonatokat](access-tokens.md).
 
-A hozzáférési jogkivonatok csak rövid ideig érvényesek, ezért az engedélyezési kiszolgálók időnként kiállítanak egy **frissítési jogkivonatot** a hozzáférési jogkivonat kikiadásakor. Az ügyfélalkalmazás ezután szükség esetén átadhatja ezt a frissítési tokent egy új hozzáférési jogkivonathoz. Ha többet szeretne megtudni arról, hogy a Microsoft Identity platform hogyan használja a frissítési jogkivonatokat az engedélyek visszavonására, lásd: [jogkivonat-visszavonás](access-tokens.md#token-revocation)
+A hozzáférési jogkivonatok csak rövid ideig érvényesek, ezért az engedélyezési kiszolgálók időnként kiállítanak egy **frissítési jogkivonatot** a hozzáférési jogkivonat kikiadásakor. Az ügyfélalkalmazás ezután szükség esetén átadhatja ezt a frissítési tokent egy új hozzáférési jogkivonathoz. Ha többet szeretne megtudni arról, hogy a Microsoft Identity platform hogyan használja a frissítési tokeneket az engedélyek visszavonására, tekintse meg a [jogkivonat-visszavonás](access-tokens.md#token-revocation)című témakört.
 
 Az **azonosító jogkivonatokat** az ügyfélalkalmazás az [OpenID Connect](v2-protocols-oidc.md) folyamat részeként elküldi az alkalmazásnak. A felhasználók az oldalon vagy a hozzáférési jogkivonat helyett is elküldhetők, és az ügyfél a felhasználó hitelesítésére használja. Ha többet szeretne megtudni arról, hogy a Microsoft Identity platform hogyan okoz problémát azonosító jogkivonatokat, tekintse meg az [azonosító jogkivonatokat](id-tokens.md).
 
@@ -46,7 +46,7 @@ Hozzáférési jogkivonatok átadása egy webes API-nak a fejlécben szereplő t
 
 ## <a name="json-web-tokens-jwts-and-claims"></a>JSON webes tokenek (JWTs) és jogcímek
 
-A Microsoft Identity platform a **jogcímeket**tartalmazó **JSON webes tokenként (JWTs)** implementálja a biztonsági jogkivonatokat. Mivel a JWTs biztonsági jogkivonatként használják, ezt a hitelesítési űrlapot néha JWT- **hitelesítésnek**is nevezik.
+A Microsoft Identity platform a **jogcímeket** tartalmazó **JSON webes tokenként (JWTs)** implementálja a biztonsági jogkivonatokat. Mivel a JWTs biztonsági jogkivonatként használják, ezt a hitelesítési űrlapot néha JWT- **hitelesítésnek** is nevezik.
 
 A [jogcím](developer-glossary.md#claim) egy entitásra, például egy ügyfélalkalmazás vagy [erőforrás-tulajdonosra](developer-glossary.md#resource-owner)vonatkozó kijelentéseket biztosít egy másik entitáshoz, például egy erőforrás-kiszolgálóhoz. A jogcímek JWT jogcímként vagy JSON Web Token jogcímként is szerepelhetnek.
 
@@ -67,7 +67,7 @@ A jogcím kulcs-érték párokból áll, amelyek olyan információkat biztosít
 * A célközönség, amely az az alkalmazás, amelyhez a jogkivonat létrejött
 * Az alkalmazás (a-ügyfél), amely a tokent kéri. A webalkalmazások esetében ez lehet ugyanaz, mint a célközönség
 
-Ha többet szeretne megtudni arról, hogy a Microsoft Identity platform hogyan valósítja meg a jogkivonatokat és a jogcímeket, tekintse meg a [hozzáférési jogkivonatok](access-tokens.md) és [azonosító jogkivonatok](id-tokens.md)
+Ha többet szeretne megtudni arról, hogy a Microsoft Identity platform hogyan valósítja meg a jogkivonatokat és a jogcímeket, tekintse meg a [hozzáférési tokenek](access-tokens.md) és [azonosító tokenek](id-tokens.md)című témakört
 
 ## <a name="how-each-flow-emits-tokens-and-codes"></a>Az egyes folyamatok tokeneket és kódokat bocsátanak ki
 

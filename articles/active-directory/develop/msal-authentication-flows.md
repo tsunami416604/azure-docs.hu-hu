@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/08/2020
+ms.date: 01/25/2021
 ms.author: marsma
 ms.reviewer: saeeda
-ms.openlocfilehash: 4a902ed53e92cd073d81626e80bdb3c8629ad072
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78932e5852453fe996e26a278f8a1859a8ecf546
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89437870"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755011"
 ---
 # <a name="authentication-flows"></a>Hitelesítési folyamatok
 
@@ -53,9 +53,9 @@ Attól függően, hogy az ügyfélalkalmazás hogyan épül fel, a Microsoft Ide
 Ezen folyamatok közül több is támogatja az interaktív és a nem interaktív jogkivonat-beszerzést.
 
   - Az **interaktív** beállítás azt jelenti, hogy a felhasználónak meg kell adnia a bevitelt. Tegyük fel például, hogy a felhasználónak be kell jelentkeznie, többtényezős hitelesítést (MFA) kell végrehajtania, vagy további hozzájárulást kell adnia az erőforrásokhoz.
-  - **Nem interaktív**vagy *csendes*hitelesítés esetén a hitelesítési kísérlet olyan token beszerzésére, amelyben a bejelentkezési kiszolgáló *nem tud* további információkat kérni a felhasználótól.
+  - **Nem interaktív** vagy *csendes* hitelesítés esetén a hitelesítési kísérlet olyan token beszerzésére, amelyben a bejelentkezési kiszolgáló *nem tud* további információkat kérni a felhasználótól.
 
-A MSAL-alapú alkalmazásnak először is kísérletet kell tennie egy jogkivonat *csendes*beszerzésére, majd interaktív módon, ha a nem interaktív metódus meghiúsul. További információ erről a mintáról: [tokenek beszerzése és gyorsítótárazása a Microsoft Authentication Library (MSAL) használatával](msal-acquire-cache-tokens.md).
+A MSAL-alapú alkalmazásnak először is kísérletet kell tennie egy jogkivonat *csendes* beszerzésére, majd interaktív módon, ha a nem interaktív metódus meghiúsul. További információ erről a mintáról: [tokenek beszerzése és gyorsítótárazása a Microsoft Authentication Library (MSAL) használatával](msal-acquire-cache-tokens.md).
 
 ## <a name="authorization-code"></a>Engedélyezési kód
 
@@ -78,7 +78,7 @@ Az előző ábrán az alkalmazás:
 
 ## <a name="client-credentials"></a>Ügyfél-hitelesítő adatok
 
-A [2. OAuth ügyfél-hitelesítő adatok folyamata](v2-oauth2-client-creds-grant-flow.md) lehetővé teszi, hogy egy alkalmazás identitásával hozzáférhessen a webkiszolgálók erőforrásaihoz. Ezt a típust általában olyan kiszolgálók közötti interakciók esetén használják, amelyeknek a háttérben kell futniuk, anélkül, hogy a felhasználóval való azonnali interakcióra lenne szükség. Ezeket az alkalmazásokat gyakran démonoknak vagy szolgáltatásfiókoknek nevezzük.
+A [2. OAuth ügyfél-hitelesítő adatok folyamata](v2-oauth2-client-creds-grant-flow.md) lehetővé teszi, hogy egy alkalmazás identitásával hozzáférhessen a webkiszolgálók erőforrásaihoz. Ez az engedélytípus általában olyan kiszolgálóközi interakciók esetén használatos, amelyeknek a felhasználóval való azonnali interakció nélkül, a háttérben kell futniuk. Ezeket az alkalmazástípusokat gyakran démonoknak vagy szolgáltatásfiókoknak nevezik.
 
 Az ügyfél hitelesítő adatainak megadása lehetővé teszi a webszolgáltatások (bizalmas ügyfél) számára a saját hitelesítő adatainak használatát a felhasználó megszemélyesítése helyett a hitelesítéshez egy másik webszolgáltatás hívásakor. Ebben az esetben az ügyfél általában egy közepes szintű webszolgáltatás, egy démon-szolgáltatás vagy egy webhely. A Microsoft Identity platform lehetővé teszi, hogy a hívó szolgáltatás hitelesítő adatként használjon tanúsítványokat (közös titok helyett).
 
@@ -223,11 +223,11 @@ Ez azt jelenti, hogy az alábbiak egyike igaz:
 - Megadta a felhasználók számára az alkalmazáshoz való hozzájárulásukat. Lásd: [egyéni felhasználói engedély kérése](v2-permissions-and-consent.md#requesting-individual-user-consent).
 - Megadta a lehetőséget, hogy a bérlői rendszergazda beleegyezett az alkalmazásba; Lásd: [rendszergazdai engedély](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
 
-A IWA folyamat engedélyezve van a .NET Desktop, a .NET Core és a Windows Universal platform alkalmazásaihoz. A .NET Core-ban meg kell adnia a felhasználónevet a IWA számára, mivel a .NET Core nem tud felhasználóneveket beolvasni az operációs rendszerből.
+A IWA folyamat engedélyezve van a .NET Desktop, a .NET Core és a Windows Universal platform alkalmazásaihoz.
 
 További információ a beleegyező adatokról: [v 2.0 engedélyek és beleegyezik](v2-permissions-and-consent.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy áttekintette a Microsoft Authentication Library (MSAL) által támogatott hitelesítési folyamatokat, megismerheti az ezekben a folyamatokban használt jogkivonatok beszerzését és gyorsítótárazását:
 

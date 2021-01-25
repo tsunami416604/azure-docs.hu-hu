@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: b7d14ee321a1160420d106151276ae6aef513c5b
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 1ec046ca6b42a5ca8f33b0347c562c85abd42684
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064402"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756167"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása egy JavaScript-alapú egyoldalas alkalmazásból (SPA) az Auth Code flow használatával
 
@@ -28,7 +28,7 @@ Ebben az oktatóanyagban:
 > * A OAuth 2,0 engedélyezési kód folyamatának végrehajtása a PKCE
 > * Személyes Microsoft-fiókok, valamint munkahelyi és iskolai fiókok aláírása
 > * Hozzáférési jogkivonat beszerzése
-> * Hívja meg Microsoft Graph vagy saját API-ját, amelyhez a Microsoft Identity platform végponttól kapott hozzáférési jogkivonatok szükségesek
+> * Hívja meg Microsoft Graph vagy saját API-ját, amelyhez a Microsoft Identity platformból beszerzett hozzáférési jogkivonatok szükségesek
 
 A MSAL.js 2,0 a MSAL.js 1,0-es verziójában javítja az engedélyezési kód folyamatát a böngészőben az implicit engedélyezési folyamat helyett. A MSAL.js 2,0 **nem támogatja az** implicit folyamatot.
 
@@ -41,7 +41,7 @@ A MSAL.js 2,0 a MSAL.js 1,0-es verziójában javítja az engedélyezési kód fo
 
 :::image type="content" source="media/tutorial-v2-javascript-auth-code/diagram-01-auth-code-flow.png" alt-text="Egy egyoldalas alkalmazásban az engedélyezési kód folyamatát ábrázoló diagram":::
 
-Az oktatóanyagban létrehozott alkalmazás lehetővé teszi a JavaScript SPA számára, hogy lekérdezze a Microsoft Graph API-t a biztonsági jogkivonatok beszerzésével a Microsoft Identity platform végpontból. Ebben az esetben a felhasználó bejelentkezése után hozzáférési jogkivonatot kér, és hozzáadja a HTTP-kérelmekhez az engedélyezési fejlécben. A token beszerzését és megújítását a JavaScripthez készült Microsoft Authentication Library (MSAL.js) kezeli.
+Az oktatóanyagban létrehozott alkalmazás lehetővé teszi a JavaScript SPA számára, hogy lekérdezze a Microsoft Graph API-t a biztonsági jogkivonatok beszerzésével a Microsoft Identity platformból. Ebben az esetben a felhasználó bejelentkezése után hozzáférési jogkivonatot kér, és hozzáadja a HTTP-kérelmekhez az engedélyezési fejlécben. A token beszerzését és megújítását a JavaScripthez készült Microsoft Authentication Library (MSAL.js) kezeli.
 
 Ez az oktatóanyag a következő könyvtárat használja:
 
@@ -558,13 +558,13 @@ Az oktatóanyagban létrehozott `acquireTokenSilent` és/vagy a `acquireTokenPop
 
 #### <a name="get-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
 
-A kezdeti bejelentkezés után az alkalmazásnak nem kell megkérnie a felhasználókat, hogy minden alkalommal újra hitelesíteniük kell magukat a védett erőforrásokhoz való hozzáféréshez (azaz jogkivonat igényléséhez). Az ilyen újrahitelesítési kérelmek megtiltásához hívja a következőt: `acquireTokenSilent` . Bizonyos esetekben azonban előfordulhat, hogy a felhasználóknak a Microsoft Identity platform végponttal való interakcióra kell kényszeríteni a felhasználókat. Például:
+A kezdeti bejelentkezés után az alkalmazásnak nem kell megkérnie a felhasználókat, hogy minden alkalommal újra hitelesíteniük kell magukat a védett erőforrásokhoz való hozzáféréshez (azaz jogkivonat igényléséhez). Az ilyen újrahitelesítési kérelmek megtiltásához hívja a következőt: `acquireTokenSilent` . Bizonyos esetekben azonban előfordulhat, hogy a felhasználókat a Microsoft Identity platformmal való interakcióra kényszeríteni kell. Például:
 
 - A felhasználóknak újra meg kell adniuk a hitelesítő adataikat, mert a jelszó lejárt.
 - Az alkalmazás hozzáférést kér egy erőforráshoz, és szüksége van a felhasználó belefoglalására.
 - Kétfaktoros hitelesítés szükséges.
 
-A hívás `acquireTokenPopup` megnyit egy előugró ablakot (vagy `acquireTokenRedirect` átirányítja a felhasználókat a Microsoft Identity platform-végpontra). Ebben az ablakban a felhasználóknak kapcsolatba kell lépniük a hitelesítő adataik megerősítésével, a szükséges erőforrás jóváhagyásával, vagy a kétfaktoros hitelesítés végrehajtásával.
+A hívás `acquireTokenPopup` megnyit egy előugró ablakot (vagy `acquireTokenRedirect` átirányítja a felhasználókat a Microsoft Identity platformra). Ebben az ablakban a felhasználóknak kapcsolatba kell lépniük a hitelesítő adataik megerősítésével, a szükséges erőforrás jóváhagyásával, vagy a kétfaktoros hitelesítés végrehajtásával.
 
 #### <a name="get-a-user-token-silently"></a>Felhasználói jogkivonat csendes beszerzése
 
@@ -618,7 +618,7 @@ Elkészült az alkalmazás létrehozásával, és most már készen áll a Node.
 
 ### <a name="sign-in-to-the-application"></a>Bejelentkezés az alkalmazásba
 
-Miután a böngésző betölti a *index.html* fájlt, válassza a **Bejelentkezés** lehetőséget. A rendszer felszólítja, hogy jelentkezzen be a Microsoft Identity platform-végponttal:
+Miután a böngésző betölti a *index.html* fájlt, válassza a **Bejelentkezés** lehetőséget. A rendszer felszólítja, hogy jelentkezzen be a Microsoft Identity platformmal:
 
 :::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="Webböngésző – bejelentkezési párbeszédpanel megjelenítése":::
 
@@ -648,7 +648,7 @@ Ha egy háttérrendszer API-nak nincs szüksége hatókörre, ami nem ajánlott,
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha szeretné mélyebben megismerni a JavaScript egyoldalas alkalmazás-fejlesztést a Microsoft Identity platformon, tekintse meg a több részből álló forgatókönyvek sorozatát:
 

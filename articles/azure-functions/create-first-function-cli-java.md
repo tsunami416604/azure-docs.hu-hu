@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-java
 - devx-track-azurecli
-ms.openlocfilehash: 504d3a834760605149c93c0beea84bbe1b59e263
-ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
+ms.openlocfilehash: 5ebb30101d191bb254017db7b0de2f9b8bce145d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97707554"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755177"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>Gyors útmutató: Java-függvény létrehozása az Azure-ban a parancssorból
 
@@ -73,7 +73,7 @@ Azure Functions egy függvény-projekt egy vagy több olyan egyedi függvény t�
     ---
 
     > [!IMPORTANT]
-    > + Akkor használja `-DjavaVersion=11` , ha azt szeretné, hogy a függvények Java 11 rendszeren fussanak. További információ: Java- [verziók](functions-reference-java.md#java-versions). 
+    > + Használja a `-DjavaVersion=11` kapcsolót, ha a függvényeket Java 11-en szeretné futtatni. További információ: Java- [verziók](functions-reference-java.md#java-versions). 
     > + A `JAVA_HOME` környezeti változót a JDK megfelelő verziójának telepítési helyére kell beállítani a cikk elvégzéséhez.
 
 1. A Maven megkéri, hogy a projektnek a telepítéskor való létrehozásának befejezéséhez szükséges értékeket is megkeresse.   
@@ -113,7 +113,7 @@ A válaszüzenetet a [HttpResponseMessage. Builder](/java/api/com.microsoft.azur
 
 Az alkalmazás üzemeltetéséhez létrehozott Azure-erőforrások beállításai a beépülő modul **konfigurációs** elemében vannak meghatározva a  `com.microsoft.azure` generált pom.xml fájl GroupID. Az alábbi konfigurációs elem például arra utasítja a Maven-alapú telepítést, hogy hozzon létre egy Function alkalmazást a `java-functions-group` régióban található erőforráscsoporthoz `westus` . A Function alkalmazás maga fut a csomagban lévő Windows rendszeren `java-functions-app-service-plan` , amely alapértelmezés szerint kiszolgáló nélküli fogyasztási csomag.
 
-:::code language="java" source="~/azure-functions-samples-java/pom.xml" range="62-102":::
+:::code language="java" source="~/azure-functions-samples-java/pom.xml" range="62-107":::
 
 Ezen beállítások módosításával szabályozhatja, hogy az erőforrások hogyan jöjjenek létre az Azure-ban, például a verzióról a verzióra való váltással a `runtime.os` `windows` `linux` kezdeti üzembe helyezés előtt. A Maven beépülő modul által támogatott beállítások teljes listájáért tekintse meg a [konfiguráció részleteit](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details).
 

@@ -13,16 +13,16 @@ ms.date: 04/10/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 6894d84f489d3719f1106ba4de79cb85fa45c5ed
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: a1ec8c31681ab6c0ac40ba33e94f33057ee948e7
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064950"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754799"
 ---
 # <a name="differences-between-msaljs-and-adaljs"></a>MSAL.js és ADAL.js közötti különbségek
 
-Az Azure AD-entitások hitelesítéséhez és a jogkivonatok Azure AD-ból való igényléséhez mind a JavaScript (MSAL.js), mind a JavaScripthez készült Azure AD Authentication Library (ADAL.js) esetében egyaránt a Microsoft Authentication Library használható. Eddig a legtöbb fejlesztő dolgozott együtt az Azure ad for Developers (v 1.0) használatával az Azure AD-identitások (munkahelyi és iskolai fiókok) hitelesítéséhez a ADAL-t használó jogkivonatok igénylésével. Mostantól MSAL.js használatával a Microsoft Identity platform (v 2.0) segítségével a Microsoft identitások (Azure AD-identitások és Microsoft-fiókok, valamint közösségi és helyi Azure AD B2C fiókok) szélesebb körét is hitelesítheti.
+Az Azure AD-entitások hitelesítéséhez és a jogkivonatok Azure AD-ból való igényléséhez mind a JavaScript (MSAL.js), mind a JavaScripthez készült Azure AD Authentication Library (ADAL.js) esetében egyaránt a Microsoft Authentication Library használható. Eddig a legtöbb fejlesztő dolgozott együtt az Azure ad for Developers (v 1.0) használatával az Azure AD-identitások (munkahelyi és iskolai fiókok) hitelesítéséhez a ADAL-t használó jogkivonatok igénylésével. Mostantól a MSAL.js használatával a Microsoft Identity platformon keresztül hitelesítheti a Microsoft identitások (Azure AD-identitások és Microsoft-fiókok, valamint közösségi és helyi Azure AD B2C fiókok) szélesebb körét.
 
 Ez a cikk a javascripthez készült Microsoft Authentication Library (MSAL.js) és az Azure AD Authentication Library for JavaScript (ADAL.js) közötti választást ismerteti, és összehasonlítja a két kódtárat.
 
@@ -95,5 +95,5 @@ A 2.0-s verziójában a `https://login.microsoftonline.com/common` szolgáltató
     acquireTokenPopup(request);
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információkért tekintse meg a [1.0-s és a 2.0-s verzió összehasonlítását](../azuread-dev/azure-ad-endpoint-comparison.md)ismertető témakört.

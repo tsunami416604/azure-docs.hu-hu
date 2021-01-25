@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 2c03e6940d392e3e2c03bf6508de41a7a19aef3b
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: e6bbebafab45080a2076f33d66dd96296a761e4f
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063773"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754957"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>JavaScript-alapú egyoldalas alkalmazás migrálása implicit engedélyről az Auth Code flow-ba
 
@@ -88,9 +88,9 @@ Ha törli az implicit engedélyezési beállításokat az alkalmazás regisztrá
 
 Az összes alkalmazás MSAL.js 2. x és a [PublicClientApplication][msal-js-publicclientapplication]való frissítése előtt **ne tiltsa le** az implicit engedélyezési folyamatot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni az engedélyezési kód folyamatáról, beleértve az implicit és az Auth kód közötti különbségeket, tekintse meg a [Microsoft Identity platform és a OAuth 2,0 engedélyezési kód](v2-oauth2-auth-code-flow.md)folyamatát.
+Ha többet szeretne megtudni az engedélyezési kód folyamatáról, beleértve az implicit és az Auth kód közötti különbségeket, tekintse meg a [Microsoft Identity platform és a OAuth 2,0 engedélyezési kód folyamatát](v2-oauth2-auth-code-flow.md).
 
 Ha szeretné mélyebben bemutatni a JavaScript egyoldalas alkalmazás-fejlesztést a Microsoft Identity platformon, a többrészes [forgatókönyv: a cikkek egyoldalas alkalmazási](scenario-spa-overview.md) sorozata segítséget nyújt az első lépésekhez.
 

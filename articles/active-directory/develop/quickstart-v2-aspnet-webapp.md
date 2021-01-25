@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
-ms.openlocfilehash: dbddf35b0aa1494ef719803fa84cafae04f3ec50
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: e2a71313294457e09e2bb152dea98c84b7730236
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178585"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754416"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Gyors útmutató: Microsoft Identity platform-bejelentkezés hozzáadása egy ASP.NET-webalkalmazáshoz
 
@@ -55,7 +55,7 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 > 1. Adja hozzá `https://localhost:44368/` az **ÁTirányítási URI**-t, majd válassza a **regisztráció** lehetőséget.
 > 1. A **kezelés** területen válassza a **hitelesítés** lehetőséget.
 > 1. Az **implicit támogatás** alszakasza alatt válassza az **azonosító tokenek** lehetőséget.
-> 1. Válassza a **Mentés** lehetőséget.
+> 1. Kattintson a **Mentés** gombra.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>1. lépés: Az alkalmazás konfigurálása az Azure Portalon
@@ -169,7 +169,7 @@ public void Configuration(IAppBuilder app)
 > |---------|---------|
 > | `ClientId`     | Az Azure Portalon regisztrált alkalmazás azonosítója |
 > | `Authority`    | A felhasználó által hitelesítendő STS-végpont. Általában `https://login.microsoftonline.com/{tenant}/v2.0` a nyilvános felhőknél, ahol a {tenant} a bérlő neve, a bérlő azonosítója, vagy *common* a közös végpontra való hivatkozáskor (több-bérlős alkalmazások esetében) |
-> | `RedirectUri`  | URL-cím, amelyben a felhasználók a Microsoft Identity platform végpontjának hitelesítése után továbbítódnak |
+> | `RedirectUri`  | URL-cím, amelyben a felhasználók a Microsoft Identity platformon történő hitelesítés után továbbítódnak |
 > | `PostLogoutRedirectUri`     | Az URL-cím, ahová a rendszer átirányítja a felhasználókat kijelentkezés után |
 > | `Scope`     | A kért hatókörök felsorolása, szóközökkel elválasztva |
 > | `ResponseType`     | Arra vonatkozó kérés, hogy a hitelesítés válasza tartalmazzon egy azonosító jogkivonatot |
@@ -206,7 +206,7 @@ A vezérlők vagy a vezérlők műveletei az `[Authorize]` attribútummal védhe
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Próbálja ki az ASP.NET-hez készült oktatóanyagot, amelyben teljes körű, részletes útmutatót talál az alkalmazások és új szolgáltatások létrehozásához, valamint megtalálja ennek a rövid útmutatónak a teljes magyarázatát is.
 

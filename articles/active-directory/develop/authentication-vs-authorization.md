@@ -1,7 +1,7 @@
 ---
 title: Hitelesítés és engedélyezés | Azure
 titleSuffix: Microsoft identity platform
-description: Tudnivalók a hitelesítés és engedélyezés alapjairól a Microsoft Identity platformon (v 2.0).
+description: Ismerje meg a Microsoft Identity platform hitelesítésének és engedélyezésének alapjait.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 05/22/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 5087278e5c89514cd43b7ca871a58f18e0fa98f2
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: b81b34010736bce33085cb1ebf0faa3da6a41bd6
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678146"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755390"
 ---
 # <a name="authentication-vs-authorization"></a>Hitelesítés és engedélyezés
 
@@ -54,7 +54,7 @@ A Microsoft Identity platform által használt protokollok összehasonlítása:
 * **OAuth és SAML**: a platform a OAuth 2,0-et használja az engedélyezéshez és az SAML hitelesítéshez. Ha további információt szeretne arról, hogyan használhatja ezeket a protokollokat a felhasználók hitelesítéséhez és a védett erőforrások eléréséhez szükséges engedélyek beszerzéséhez, tekintse meg a [Microsoft Identity platform és a OAuth 2,0 SAML-tulajdonos állítási folyamatát](./scenario-token-exchange-saml-oauth.md).
 * **OpenID Connect és SAML**: a platform az OpenID Connect és az SAML használatával hitelesíti a felhasználót, és lehetővé teszi az egyszeri bejelentkezést. Az SAML-hitelesítés gyakran használatos az Azure AD-vel összevont identitás-szolgáltatók, például a Active Directory összevonási szolgáltatások (AD FS) (AD FS) számára, ezért a vállalati alkalmazásokban gyakran használatos. Az OpenID Connect általában kizárólag a felhőben, például a Mobile Appsben, a webhelyeken és a webes API-kon található alkalmazások esetében használatos.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A hitelesítési és engedélyezési alapismereteket magában foglalja a következő témakörökben:
 

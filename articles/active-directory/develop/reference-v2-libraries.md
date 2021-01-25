@@ -1,6 +1,6 @@
 ---
 title: Microsoft Identity platform hitelesítési kódtárak
-description: Kompatibilis ügyféloldali kódtárak és kiszolgáló köztes kódtárak, valamint a kapcsolódó függvénytár-, forrás-és mintavételi hivatkozások a Microsoft Identity platform végpontja számára.
+description: Kompatibilis ügyféloldali kódtárak és kiszolgáló köztes kódtárak, valamint a Microsoft Identity platformhoz kapcsolódó függvénytár-, forrás-és mintavételi hivatkozások.
 services: active-directory
 author: negoe
 manager: CelesteDG
@@ -12,16 +12,16 @@ ms.date: 07/25/2019
 ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: a7792e989444c87ba80088f8a850cacb4aa0dc3c
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 51b60d7b81d7402f69415b79cd575f51915dc38f
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064553"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756668"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Microsoft Identity platform hitelesítési kódtárak
 
-A [Microsoft Identity platform végpontja](../azuread-dev/azure-ad-endpoint-comparison.md) támogatja az iparági szabványnak megfelelő OAuth 2,0 és az OpenID Connect 1,0 protokollokat. A Microsoft Authentication Library (MSAL) úgy van kialakítva, hogy működjön a Microsoft Identity platform-végponttal. Használhat olyan nyílt forráskódú kódtárakat is, amelyek támogatják a OAuth 2,0 és az OpenID Connect 1,0-et.
+A [Microsoft Identity platform ](../azuread-dev/azure-ad-endpoint-comparison.md) támogatja az iparági szabványnak megfelelő OAuth 2,0 és az OpenID Connect 1,0 protokollokat. A Microsoft Authentication Library (MSAL) úgy van kialakítva, hogy működjön a Microsoft Identity platformmal. Használhat olyan nyílt forráskódú kódtárakat is, amelyek támogatják a OAuth 2,0 és az OpenID Connect 1,0-et.
 
 Azt javasoljuk, hogy a biztonsági fejlesztési életciklus (SDL) módszereit követő protokoll-tartományi szakértők által írt könyvtárakat használjon. Ilyen módszerek közé tartozik [az, amelyet a Microsoft követ][Microsoft-SDL]. Ha kódot használ a protokollok számára, kövesse az olyan módszereket, mint a Microsoft SDL. Ügyeljen arra, hogy az egyes protokollokra vonatkozó szabványok részletes leírásában a biztonsági szempontokat kell figyelembe venni.
 
@@ -30,7 +30,7 @@ Azt javasoljuk, hogy a biztonsági fejlesztési életciklus (SDL) módszereit k�
 
 ## <a name="types-of-libraries"></a>Könyvtárak típusai
 
-A Microsoft Identity platform végpontja két típusú kódtáraval működik:
+A Microsoft Identity platform két típusú kódtáraval működik:
 
 * **Ügyféloldali kódtárak**: a natív ügyfelek és kiszolgálók ügyféloldali kódtárakat használnak a hozzáférési jogkivonatok beszerzéséhez, hogy olyan erőforrást hívjanak, mint például a Microsoft Graph.
 * **Kiszolgáló middleware-kódtárai**: a webalkalmazások a kiszolgálói middleware-kódtárakat használják a felhasználói bejelentkezéshez. A webes API-k kiszolgálói middleware-kódtárak segítségével érvényesítik a natív ügyfelek vagy más kiszolgálók által eljuttatott jogkivonatokat.
@@ -40,9 +40,9 @@ A Microsoft Identity platform végpontja két típusú kódtáraval működik:
 A kódtárak két támogatási kategóriába tartoznak:
 
 * **Microsoft által támogatott**: a Microsoft javításokat biztosít ezekhez a könyvtárakhoz, és az SDL-átvilágítás megtörtént a könyvtárakon.
-* **Kompatibilis**: a Microsoft az alapvető forgatókönyvekben tesztelte ezeket a kódtárakat, és megerősítette, hogy együttműködik a Microsoft Identity platform-végponttal. A Microsoft nem biztosít javításokat ezekhez a könyvtárakhoz, és nem végzett felülvizsgálatot ezen könyvtárakról. A problémákat és a szolgáltatási kérelmeket a könyvtár nyílt forráskódú projektjeire kell irányítani.
+* **Kompatibilis**: a Microsoft tesztelte ezeket a kódtárakat az alapvető forgatókönyvekben, és megerősítette, hogy a Microsoft Identity platformmal működnek. A Microsoft nem biztosít javításokat ezekhez a könyvtárakhoz, és nem végzett felülvizsgálatot ezen könyvtárakról. A problémákat és a szolgáltatási kérelmeket a könyvtár nyílt forráskódú projektjeire kell irányítani.
 
-A Microsoft Identity platform-végponttal működő könyvtárak listáját a következő részekben találja.
+A Microsoft Identity platformmal működő könyvtárak listáját a következő részekben találja.
 
 ## <a name="microsoft-supported-client-libraries"></a>Microsoft által támogatott ügyféloldali kódtárak
 
@@ -98,16 +98,16 @@ Lásd még: [forgatókönyvek a támogatott platformok és nyelvek alapján](aut
 | ![Ruby](media/sample-v2-code/logo_ruby.png) |[OmniAuth](https://github.com/omniauth/omniauth/wiki) |omniauth: 1.3.1<br />omniauth-oauth2:1.4.0 |[OmniAuth](https://github.com/omniauth/omniauth)<br />[OmniAuth OAuth2](https://github.com/intridea/omniauth-oauth2) |  |
 | iOS, macOS, & Android  | [Natív alkalmazás hitelesítésének megválaszolása](https://github.com/FormidableLabs/react-native-app-auth) | [4.2.0 verziója](https://github.com/FormidableLabs/react-native-app-auth/releases/tag/v4.2.0) | [Natív alkalmazás hitelesítésének megválaszolása](https://github.com/FormidableLabs/react-native-app-auth) | |
 
-Bármely szabványnak megfelelő kódtár esetében használhatja a Microsoft Identity platform végpontját. Fontos tudni, hogy hová kell menni a támogatáshoz:
+Bármely szabványnak megfelelő kódtár esetében használhatja a Microsoft Identity platformot. Fontos tudni, hogy hová kell menni a támogatáshoz:
 
 * A problémákkal és az új szolgáltatási kérelmekkel kapcsolatban a könyvtár kódjában forduljon a könyvtár tulajdonosához.
 * A szolgáltatási oldali protokollok megvalósításával kapcsolatos problémákról és új szolgáltatásokra vonatkozó kérésekhez forduljon a Microsofthoz.
 * A protokollban megjelenő további funkciókra vonatkozó [szolgáltatás kérése](https://feedback.azure.com/forums/169401-azure-active-directory) .
-* [Hozzon létre egy támogatási kérést](../../azure-portal/supportability/how-to-create-azure-support-request.md) , ha olyan problémát talál, amelyben a Microsoft Identity platform végpontja nem felel meg a OAuth 2,0 vagy az OpenID Connect 1,0-nek.
+* [Hozzon létre egy támogatási kérést](../../azure-portal/supportability/how-to-create-azure-support-request.md) , ha olyan problémát talál, amelyben a Microsoft Identity platform nem felel meg a OAuth 2,0 vagy az OpenID Connect 1,0-nek.
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
 
-További információ a Microsoft Identity platform végpontról: a [Microsoft Identity platform áttekintése][AAD-App-Model-V2-Overview].
+További információ a Microsoft Identity platformról: a [Microsoft Identity platform áttekintése][AAD-App-Model-V2-Overview].
 
 <!--Image references-->
 

@@ -3,16 +3,16 @@ title: Az AWS-fiók összekötése Azure Security Center
 description: Az AWS-erőforrások figyelése Azure Security Center
 author: memildin
 ms.author: memildin
-ms.date: 12/29/2020
+ms.date: 01/24/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 4c919115efb39a8e8c008eab69dc087792f7b105
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 2ad3ab8c39d9f9a29e74bd139fb5ddd1e5faeff9
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814312"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755149"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>AWS-fiókok összekötése Azure Security Center
 
@@ -33,13 +33,13 @@ Az AWS-fiók Security Centerba való bevezetésével integrálható az AWS Secur
 
 Az alábbi képernyőképen megtekintheti az AWS-fiókokat Security Center áttekintő irányítópultján.
 
-:::image type="content" source="./media/quickstart-onboard-aws/aws-account-in-overview.png" alt-text="3 GCP-projekt szerepel a Security Center áttekintési irányítópultján" lightbox="./media/quickstart-onboard-gcp/gcp-account-in-overview.png":::
+:::image type="content" source="./media/quickstart-onboard-aws/aws-account-in-overview.png" alt-text="Három GCP-projekt szerepel a Security Center áttekintési irányítópultján" lightbox="./media/quickstart-onboard-gcp/gcp-account-in-overview.png":::
 
 ## <a name="availability"></a>Rendelkezésre állás
 
 |Szempont|Részletek|
 |----|:----|
-|Kiadás állapota:|Előnézet<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|[Az Azure Defender for Servers](defender-for-servers-introduction.md) használatát igényli|
 |Szükséges szerepkörök és engedélyek:|A kapcsolódó Azure-előfizetéshez tartozó **tulajdonos**<br>A **közreműködő** az AWS-fiók összekapcsolását is lehetővé teszi, ha egy tulajdonos megadja az egyszerű szolgáltatásnév adatait|
 |Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Nem](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
@@ -136,9 +136,9 @@ Az AWS Systems Manager szükséges a feladatok AWS-erőforrásokon keresztüli a
 1. Adja meg a beállításokat az **AWS-hitelesítés** lapon:
     1. Adja meg az összekötő **megjelenítendő nevét** .
     1. Győződjön meg arról, hogy az előfizetés helyes. Ez az előfizetés tartalmazza az összekötő és az AWS Security hub javaslatait.
-    1. A 2. lépésben kiválasztott hitelesítési lehetőségtől függően [. Security Center hitelesítésének beállítása AWS-ben](#step-2-set-up-authentication-for-security-center-in-aws):
+    1. A hitelesítési lehetőségtől függően a [2. lépésben választott. Security Center hitelesítésének beállítása AWS-ben](#step-2-set-up-authentication-for-security-center-in-aws):
         - Válassza a  **szerepkör** bejelölése és az ARN beillesztése a [következőre: iam szerepkör létrehozása a Security Centerhoz](#create-an-iam-role-for-security-center)lehetőséget.
-            :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="Az ARN-fájl beillesztése az AWS-kapcsolatok varázsló megfelelő mezőjébe az Azure Portalon":::
+            :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="Az ARN-fájl beillesztése a Azure Portal AWS-kapcsolatok varázslójának megfelelő mezőjébe":::
 
             OR
 
@@ -154,7 +154,7 @@ Az AWS Systems Manager szükséges a feladatok AWS-erőforrásokon keresztüli a
     1. Válassza ki azt az **erőforráscsoportot** és **Azure-régiót** , amelyet a felderített AWS-EC2s a kijelölt előfizetésbe fog bevezetni.
     1. Adja meg az Azure-ív egyszerű szolgáltatás- **azonosítóját** és az **egyszerű szolgáltatás ügyfél-titkos kulcsát** , az itt leírtak szerint [: egyszerű szolgáltatás létrehozása a méretezéshez](../azure-arc/servers/onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)
     1. Ha a gép egy proxykiszolgálón keresztül csatlakozik az internethez, adja meg a proxykiszolgáló IP-címét, vagy azt a nevet és portszámot, amelyet a gép használ a proxykiszolgálóhoz való kommunikációhoz. Adja meg az értéket a formátumban ```http://<proxyURL>:<proxyport>```
-    1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
+    1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
         Az összegző információk áttekintése
 
@@ -164,7 +164,7 @@ Az AWS Systems Manager szükséges a feladatok AWS-erőforrásokon keresztüli a
 
 ### <a name="step-6-confirmation"></a>6. lépés Visszaigazolás
 
-Ha az összekötő létrehozása sikeres volt, és az AWS biztonsági központ megfelelően van konfigurálva:
+Az összekötő sikeres létrehozása után az AWS biztonsági központ megfelelően van konfigurálva:
 
 - Security Center megvizsgálja az AWS EC2-példányok környezetét, beépítve azokat az Azure-ívet, lehetővé téve a Log Analytics-ügynök telepítését és a veszélyforrások elleni védelem és biztonsági javaslatok biztosítását. 
 - Az ASC szolgáltatás 6 óránként megvizsgálja az új AWS EC2-példányokat, és a konfigurációnak megfelelően bekészíti őket.

@@ -1,7 +1,7 @@
 ---
 title: OAuth 2,0 és OpenID Connect protokollok a Microsoft Identity platformon | Azure
 titleSuffix: Microsoft identity platform
-description: Útmutató a OAuth 2,0 és az OpenID Connect protokollokhoz, amelyeket a Microsoft Identity platform végpontja támogat.
+description: Útmutató a Microsoft Identity platform által támogatott OAuth 2,0 és OpenID Connect protokollokhoz.
 services: active-directory
 author: hpsin
 manager: CelesteDG
@@ -13,14 +13,14 @@ ms.date: 07/21/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 12edbcda7354d9d6d4b03ebe32304d988b2eb579
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 765c363542b07deac44d47b94731e1109fcba045
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88751460"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755755"
 ---
-# <a name="oauth-20-and-openid-connect-protocols-on-microsoft-identity-platform"></a>OAuth 2,0 és OpenID Connect protokollok a Microsoft Identity platformon
+# <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>OAuth 2,0 és OpenID Connect protokollok a Microsoft Identity platformon
 
 Az identitás-szolgáltatás Microsoft Identity platform végpontja a hitelesítést és az engedélyezést valósítja meg az iparági szabványoknak az OpenID Connect (OIDC) és a OAuth 2,0, illetve a. Míg a szolgáltatás szabványoknak megfelelő, a protokollok két implementációja között finom különbségek lehetnek. Az itt olvasható információk akkor hasznosak, ha úgy dönt, hogy a kódot közvetlenül a HTTP-kérések küldésével és felügyeletével vagy harmadik féltől származó nyílt forráskódú kódtár használatával írja le, és nem használja a [nyílt forráskódú kódtárakat](reference-v2-libraries.md).
 
@@ -30,7 +30,7 @@ Csaknem minden OAuth 2,0 és OpenID Connect-folyamaton belül négy fél vesz r�
 
 ![A OAuth 2,0 szerepköröket bemutató diagram](./media/active-directory-v2-flows/protocols-roles.svg)
 
-* Az **engedélyezési kiszolgáló** a Microsoft Identity platform végpontja, amely a felhasználó személyazonosságának biztosítására, az erőforrásokhoz való hozzáférés megadására és visszavonására, valamint a jogkivonatok kiadására szolgál. Az engedélyezési kiszolgálót más néven identitás-szolgáltatónak is nevezzük – biztonságos módon kezeli a felhasználó adatait, hozzáférését, valamint a folyamat résztvevői közötti megbízhatósági kapcsolatait.
+* Az **engedélyezési kiszolgáló** a Microsoft Identity platform, amelynek feladata a felhasználó személyazonosságának biztosítása, az erőforrásokhoz való hozzáférés engedélyezése és visszavonása, valamint a jogkivonatok kiállítása. Az engedélyezési kiszolgálót más néven identitás-szolgáltatónak is nevezzük – biztonságos módon kezeli a felhasználó adatait, hozzáférését, valamint a folyamat résztvevői közötti megbízhatósági kapcsolatait.
 * Az **erőforrás tulajdonosa** általában a végfelhasználó. Ez az a fél, amely az adattulajdonost birtokolja, és lehetővé teszi, hogy az ügyfelek hozzáférjenek ehhez az adatforráshoz vagy erőforráshoz.
 * Az **OAuth-ügyfél** az alkalmazás azonosítója alapján azonosított alkalmazás. A OAuth-ügyfél általában az a fél, akit a végfelhasználó kommunikál, és az engedélyezési kiszolgálótól kér jogkivonatokat. Az ügyfélnek engedélyt kell adni az erőforrás tulajdonos általi eléréséhez.
 * Az **erőforrás-kiszolgáló** , ahol az erőforrás vagy az adat található. Megbízik az engedélyezési kiszolgálón, hogy biztonságosan hitelesítse és engedélyezze az OAuth-ügyfelet, és a tulajdonos hozzáférési jogkivonatait használja annak biztosítására, hogy az erőforrásokhoz való hozzáférés megadható legyen.
@@ -47,7 +47,7 @@ További részletekért ismerkedjen meg az [alkalmazások regisztrálásának fo
 
 ## <a name="endpoints"></a>Végpontok
 
-A regisztrációt követően az alkalmazás a Microsoft Identity platformmal kommunikál, ha kéréseket küld a végpontnak:
+A regisztrációt követően az alkalmazás a Microsoft Identity platformmal kommunikál, ha kérelmeket küld a végpontnak:
 
 ```
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize
@@ -66,7 +66,7 @@ Ahol a a `{tenant}` négy különböző érték egyikét hajthatja végre:
 Ha többet szeretne megtudni ezekről a végpontokról, válasszon egy adott alkalmazást a [protokollok](#protocols) szakaszban, és kövesse a hivatkozásokat további információért.
 
 > [!TIP]
-> Minden, az Azure AD-ban regisztrált alkalmazás használhatja a Microsoft Identity platform-végpontot, még akkor is, ha nem jelentkezik be a személyes fiókokba.  Ily módon áttelepítheti a meglévő alkalmazásokat a Microsoft Identity platformra és [MSAL](reference-v2-libraries.md) az alkalmazás újbóli létrehozása nélkül.
+> Az Azure AD-ben regisztrált alkalmazások a Microsoft Identity platformot is használhatják, még akkor is, ha nem jelentkeznek be a személyes fiókokba.  Ily módon áttelepítheti a meglévő alkalmazásokat a Microsoft Identity platformra és [MSAL](reference-v2-libraries.md) az alkalmazás újbóli létrehozása nélkül.
 
 ## <a name="tokens"></a>Tokenek
 

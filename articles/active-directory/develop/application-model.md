@@ -1,7 +1,7 @@
 ---
 title: Alkalmazás modellje | Azure
 titleSuffix: Microsoft identity platform
-description: Ismerje meg az alkalmazás regisztrálásának folyamatát, hogy integrálható legyen a Microsoft Identity platformmal (v 2.0).
+description: Ismerje meg az alkalmazás regisztrálásának folyamatát, hogy integrálható legyen a Microsoft Identity platformmal.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 04/28/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 5aca96a9c3bc4e8f1061f677e316565b10014ac9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ba41e36d12b58da2e572cf870195716eacaddef
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88117481"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755675"
 ---
 # <a name="application-model"></a>Alkalmazásmodell
 
@@ -41,7 +41,7 @@ A Microsoft Identity platform a két fő funkciót teljesítő modellt használ�
 * Azonosítsa az alkalmazást az általa támogatott hitelesítési protokollok alapján
 * Adja meg a hitelesítéshez szükséges összes azonosítót, URL-címet, titkot és kapcsolódó információt.
 
-Microsoft Identity platform:
+A Microsoft Identity platform:
 
 * A hitelesítés futtatásának támogatásához szükséges összes adattal rendelkezik
 * Az összes adat megtartásával döntheti el, hogy az alkalmazás milyen erőforrásokhoz férhet hozzá, és milyen esetekben kell teljesítenie egy adott kérést
@@ -55,7 +55,7 @@ A **jóváhagyás** az a folyamat, amelynek során az erőforrás-tulajdonos eng
 
 ## <a name="multi-tenant-apps"></a>Több-bérlős alkalmazások
 
-A Microsoft Identity platformban az [Application Object](developer-glossary.md#application-object) egy alkalmazást ír le. A központi telepítés ideje alatt a Microsoft Identity platform az Application objektumot használja tervrajzként egy [egyszerű szolgáltatásnév](developer-glossary.md#service-principal-object)létrehozásához, amely egy adott alkalmazás konkrét példányát jelöli a címtárban vagy a bérlőn belül. Az egyszerű szolgáltatásnév azt határozza meg, hogy az alkalmazás mit tud valójában egy adott címtárban, ki használhatja azt, milyen erőforrásokhoz férhet hozzá, és így tovább. A Microsoft Identity platform egy egyszerű szolgáltatásnevet hoz létre egy alkalmazás-objektumból a [beleegyező](developer-glossary.md#consent)módon.
+A Microsoft Identity platformon az [Application Object](developer-glossary.md#application-object) egy alkalmazást ír le. A központi telepítés ideje alatt a Microsoft Identity platform az Application objektumot használja tervrajzként egy [egyszerű szolgáltatásnév](developer-glossary.md#service-principal-object)létrehozásához, amely egy adott alkalmazás konkrét példányát jelöli a címtárban vagy a bérlőn belül. Az egyszerű szolgáltatásnév azt határozza meg, hogy az alkalmazás mit tud valójában egy adott címtárban, ki használhatja azt, milyen erőforrásokhoz férhet hozzá, és így tovább. A Microsoft Identity platform egy egyszerű szolgáltatásnevet hoz létre egy alkalmazás-objektumból a [beleegyező](developer-glossary.md#consent)módon.
 
 Az alábbi ábrán egy egyszerűsített Microsoft Identity platform kiépítési folyamata látható. Két bérlőt mutat be: *A* és *B*.
 
@@ -74,7 +74,7 @@ A kiépítési folyamat:
 
 Ezt a folyamatot további bérlők esetében is megismételheti. Az A bérlő megőrzi az alkalmazás tervét (Application Object). Az összes többi bérlő felhasználói és rendszergazdái, akikkel az alkalmazás beleegyezik, folyamatosan szabályozhatja, hogy az alkalmazás milyen műveleteket végezhet el az egyes bérlők megfelelő egyszerű szolgáltatásán keresztül. További információ: [alkalmazás-és szolgáltatásnév-objektumok a Microsoft Identity platformon](app-objects-and-service-principals.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A hitelesítési és engedélyezési alapismeretekkel kapcsolatos egyéb témakörökhöz:
 

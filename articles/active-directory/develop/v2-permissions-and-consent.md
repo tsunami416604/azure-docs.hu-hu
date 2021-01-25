@@ -12,16 +12,16 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: 35499810ae13a8ddc5b7bb6306deafef0ef24e0f
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: aa8c00d1ee2a0dc3d019cc75b4e411ede984e74a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246791"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756059"
 ---
-# <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Engedélyek és hozzájárulás a Microsoft-identitásplatform végpontján
+# <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Engedélyek és beleegyezett a Microsoft Identity platform
 
-A Microsoft Identity platformmal integrált alkalmazások olyan engedélyezési modellt követnek, amely lehetővé teszi a felhasználók és a rendszergazdák számára az adatok elérésének szabályozását. Az engedélyezési modell megvalósítása frissítve lett a Microsoft Identity platform végpontján. Megváltoztatja, hogy az alkalmazásnak hogyan kell kommunikálnia a Microsoft Identity platformmal. Ez a cikk az engedélyezési modell alapvető fogalmait ismerteti, beleértve a hatóköröket, az engedélyeket és a hozzájárulást is.
+A Microsoft Identity platformmal integrált alkalmazások olyan engedélyezési modellt követnek, amely lehetővé teszi a felhasználók és a rendszergazdák számára az adatok elérésének szabályozását. Az engedélyezési modell megvalósítása frissítve lett a Microsoft Identity platformon. Megváltoztatja, hogy az alkalmazásnak hogyan kell kommunikálnia a Microsoft Identity platformmal. Ez a cikk az engedélyezési modell alapvető fogalmait ismerteti, beleértve a hatóköröket, az engedélyeket és a hozzájárulást is.
 
 ## <a name="scopes-and-permissions"></a>Hatókörök és engedélyek
 
@@ -128,7 +128,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 
 A `scope` paraméter az alkalmazás által kért delegált engedélyek szóközzel tagolt listája. Az engedélyek az erőforrás azonosítójának (az alkalmazás-azonosító URI-ja) hozzáfűzésével vannak jelezve. A kérelem példájában az alkalmazásnak engedéllyel kell rendelkeznie a felhasználó naptárának olvasásához és a levelezés felhasználóként való elküldéséhez.
 
-Miután a felhasználó beírja a hitelesítő adatait, a Microsoft Identity platform-végpont ellenőrzi a *felhasználói beleegyezési* rekordokat. Ha a felhasználó nem járult hozzá a korábban kért engedélyekhez, és ha a rendszergazda nem járult hozzá ezen engedélyekhez a teljes szervezet nevében, a Microsoft Identity platform végpontja kéri a felhasználót, hogy adja meg a kért engedélyeket.
+Miután a felhasználó beírja a hitelesítő adatait, a Microsoft Identity platform ellenőrzi a *felhasználói beleegyezési* rekordokat. Ha a felhasználó nem járult hozzá a korábban kért engedélyekhez, és ha a rendszergazda nem járult hozzá ezekhez az engedélyekhez a teljes szervezet nevében, a Microsoft Identity platform arra kéri a felhasználót, hogy adja meg a kért engedélyeket.
 
 Ebben az esetben a ("az Ön számára hozzáférést biztosít az `offline_access` Ön számára biztosított adathozzáféréshez") engedélyt és a `user.read` ("bejelentkezés és olvasás a profilban") engedélyt automatikusan belefoglalja az alkalmazás kezdeti beleegyezéséhez.  Ezek az engedélyek általában az alkalmazások megfelelő működéséhez szükségesek. Az `offline_access` engedély lehetővé teszi az alkalmazás számára a natív alkalmazások és webalkalmazások szempontjából kritikus fontosságú frissítési tokenek frissítését. Az `user.read` engedély hozzáférést biztosít a `sub` jogcímek számára. Lehetővé teszi, hogy az ügyfél vagy az alkalmazás helyesen azonosítsa a felhasználót az idő múlásával, és a felhasználói adatokhoz hozzáférjen.
 
@@ -335,7 +335,7 @@ response_type=token            //Code or a hybrid flow is also possible here
 
 Ez a kódrészlet egy beleegyező oldalt hoz létre az összes regisztrált engedélyhez, ha az előzőekben ismertetett beleegyezikés és `/.default` a forgatókönyvre vonatkozik. Ezt követően a kód egy `id_token` hozzáférési jogkivonat helyett egy értéket ad vissza.  
 
-Ez a viselkedés az Azure AD Authentication Library (ADAL) és a Microsoft Authentication Library (MSAL) között áthelyezett örökölt ügyfeleket is tartalmazza. Ezt a *beállítást nem szabad olyan* új ügyfelek használni, amelyek a Microsoft Identity platform-végpontot célozzák meg.
+Ez a viselkedés az Azure AD Authentication Library (ADAL) és a Microsoft Authentication Library (MSAL) között áthelyezett örökölt ügyfeleket is tartalmazza. Ezt a *beállítást nem szabad olyan* új ügyfelek használni, amelyek a Microsoft Identity platformot célozzák meg.
 
 ### <a name="client-credentials-grant-flow-and-default"></a>Az ügyfél hitelesítő adatai biztosítják a folyamatot és a/.default  
 

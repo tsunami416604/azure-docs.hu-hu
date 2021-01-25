@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 45280ec41a9fd9423e4184b2e1ce593720ab6488
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 6052e2243f8b31aa57d4abf27c24a4b045c9eae2
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232352"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754636"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Gyors útmutató: alkalmazás regisztrálása a Microsoft Identity platformmal
 
@@ -84,8 +84,8 @@ Alkalmazásbeállítások konfigurálása a célzott platform vagy eszköz alapj
 
     | Platform | Konfigurációs beállítások |
     | -------- | ---------------------- |
-    | **Web** | Adjon meg egy **átirányítási URI** -t az alkalmazáshoz, ahol a Microsoft Identity platform átirányítja a felhasználó ügyfelét, és biztonsági jogkivonatokat küld a hitelesítés után.<br/><br/>Válassza ezt a platformot a kiszolgálón futó szabványos webalkalmazásokhoz. |
-    | **Egyoldalas alkalmazás** | Adjon meg egy **átirányítási URI** -t az alkalmazáshoz, ahol a Microsoft Identity platform átirányítja a felhasználó ügyfelét, és biztonsági jogkivonatokat küld a hitelesítés után.<br/><br/>Válassza ezt a platformot, ha ügyféloldali webalkalmazást hoz létre a JavaScriptben, vagy olyan keretrendszert, mint például a szögletes, Vue.js, React.js vagy a Blazer webassembly. |
+    | **Web** | Adja meg az alkalmazás **átirányítási URI-ját** , a Microsoft Identity platform helyét, amely átirányítja a felhasználó ügyfelét, és a hitelesítés után biztonsági jogkivonatokat küld.<br/><br/>Válassza ezt a platformot a kiszolgálón futó szabványos webalkalmazásokhoz. |
+    | **Egyoldalas alkalmazás** | Adja meg az alkalmazás **átirányítási URI-ját** , a Microsoft Identity platform helyét, amely átirányítja a felhasználó ügyfelét, és a hitelesítés után biztonsági jogkivonatokat küld.<br/><br/>Válassza ezt a platformot, ha ügyféloldali webalkalmazást hoz létre a JavaScriptben, vagy olyan keretrendszert, mint például a szögletes, Vue.js, React.js vagy a Blazer webassembly. |
     | **iOS/macOS** | Adja meg az XCode az *info. plist* fájlban vagy a Build-beállításokban található ALKALMAZÁSCSOMAG- **azonosítót**.<br/><br/>A rendszer létrehoz egy átirányítási URI-t a köteg-azonosító megadásakor. |
     | **Android** | Adja meg az **alkalmazáscsomag nevét**, amelyet megtalálhat a *AndroidManifest.xml* fájlban, majd létrehozhatja és megadhatja az **aláírási kivonatot**.<br/><br/>A rendszer létrehoz egy átirányítási URI-t, amikor megadja ezeket a beállításokat. |
     | **Mobil-és asztali alkalmazások** | Válasszon egy **javasolt átirányítási URI** -t, vagy adjon meg egy **Egyéni átirányítási URI**-t.<br/>Asztali alkalmazások esetén a következőket javasoljuk:<br/>`https://login.microsoftonline.com/common/oauth2/nativeclient`<br/><br/>Válassza ezt a platformot olyan mobileszközök esetében, amelyek nem a legújabb Microsoft Authentication Library (MSAL) szolgáltatást használják, vagy nem használ közvetítőt. A platformot asztali alkalmazásokhoz is kiválaszthatja. |

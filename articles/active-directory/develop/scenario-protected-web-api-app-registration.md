@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7a38e2384c5f24bc3a72e1ef8e8f7119b2db0f2f
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: c3d9cd5e710eb263707e87c4afe0f08809b8d50c
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443942"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756451"
 ---
 # <a name="protected-web-api-app-registration"></a>Védett webes API: alkalmazás regisztrálása
 
@@ -27,24 +27,24 @@ Az alkalmazások regisztrálásának általános lépéseiért tekintse meg a r�
 
 ## <a name="accepted-token-version"></a>Elfogadott jogkivonat-verzió
 
-A Microsoft Identity platform végpontja 1.0 tokeneket és v 2.0 tokeneket tud kiadni. További információ ezekről a jogkivonatokról: [hozzáférési tokenek](access-tokens.md).
+A Microsoft Identity platform 1.0-s és v 2.0-tokeneket tud kibocsátani. További információ ezekről a jogkivonatokról: [hozzáférési tokenek](access-tokens.md).
 
 Az API által elfogadott jogkivonat-verzió a **támogatott fióktípus** beállításától függ, amikor létrehozza a webes API-alkalmazás regisztrációját a Azure Portal.
 
-- Ha a **támogatott fióktípus** a **szervezeti címtárban és a személyes Microsoft-fiókokban (például Skype, Xbox, Outlook.com) lévő fiókok** , az elfogadott jogkivonat-verziónak v 2.0-nak kell lennie.
+- Ha a **támogatott fióktípus** a **szervezeti címtárban és a személyes Microsoft-fiókokban (például Skype, Xbox, Outlook.com) lévő fiókok**, az elfogadott jogkivonat-verziónak v 2.0-nak kell lennie.
 - Ellenkező esetben az elfogadott jogkivonat-verzió v 1.0 lehet.
 
 Az alkalmazás létrehozása után az alábbi lépéseket követve meghatározhatja vagy módosíthatja az elfogadott jogkivonat verzióját:
 
-1. A Azure Portal válassza ki az alkalmazást, majd válassza a **manifest (jegyzékfájl** ) lehetőséget.
+1. A Azure Portal válassza ki az alkalmazást, majd válassza a **manifest (jegyzékfájl**) lehetőséget.
 1. Keresse meg a jegyzékfájlban a **accessTokenAcceptedVersion** tulajdonságot.
 1. Az érték határozza meg, hogy Azure Active Directory (Azure AD) melyik jogkivonat-verziót fogadja a webes API.
     - Ha az érték 2, a webes API a 2.0-s verzióban található jogkivonatokat fogadja el.
-    - Ha az érték **Null** , a webes API elfogadja a v 1.0 jogkivonatokat.
+    - Ha az érték **Null**, a webes API elfogadja a v 1.0 jogkivonatokat.
 1. Ha módosította a jogkivonat verzióját, válassza a **Mentés** lehetőséget.
 
 > [!NOTE]
-> A webes API meghatározza, hogy melyik jogkivonat-verziót fogadja el. Amikor egy ügyfél jogkivonatot kér a webes API-nak a Microsoft Identity platform (v 2.0) végponttól, az ügyfél kap egy jogkivonatot, amely jelzi, hogy a webes API melyik jogkivonat-verziót fogadja el.
+> A webes API meghatározza, hogy melyik jogkivonat-verziót fogadja el. Amikor egy ügyfél jogkivonatot kér a webes API-hoz a Microsoft Identity platformon, az ügyfél kap egy jogkivonatot, amely jelzi, hogy a webes API melyik token-verziót fogadja el.
 
 ## <a name="no-redirect-uri"></a>Nincs átirányítási URI
 
@@ -143,7 +143,7 @@ A fokozott biztonság hozzáadása:
 
    > [!IMPORTANT]
    >
-   > Ha a **felhasználó-hozzárendelést kötelező megadni?** **Igen** , az Azure ad ellenőrzi az ügyfél alkalmazás-szerepkör-hozzárendeléseit, amikor webes API-hozzáférési jogkivonatot kér. Ha az ügyfél nincs hozzárendelve egyetlen alkalmazás-szerepkörhöz sem, az Azure AD visszaküldi a következő hibaüzenetet: "invalid_client: AADSTS501051: az alkalmazás \<application name\> nincs hozzárendelve a (z \<web API\> )" szerepkörhöz.
+   > Ha a **felhasználó-hozzárendelést kötelező megadni?** **Igen**, az Azure ad ellenőrzi az ügyfél alkalmazás-szerepkör-hozzárendeléseit, amikor webes API-hozzáférési jogkivonatot kér. Ha az ügyfél nincs hozzárendelve egyetlen alkalmazás-szerepkörhöz sem, az Azure AD visszaküldi a következő hibaüzenetet: "invalid_client: AADSTS501051: az alkalmazás \<application name\> nincs hozzárendelve a (z \<web API\> )" szerepkörhöz.
    >
    > Ha megtartja a **felhasználó-hozzárendelést?** a **nem** értékre van ÁLLÍTVA, az Azure ad nem fogja megtekinteni az alkalmazás szerepkör-hozzárendelését, ha az ügyfél hozzáférési jogkivonatot kér a webes API- Minden olyan démon-ügyfél, amely az ügyfél hitelesítő adatait használó összes ügyfelet használja, csak a célközönség megadásával kaphat hozzáférési jogkivonatot az API-hoz. Bármely alkalmazás hozzáférhet az API-hoz anélkül, hogy engedélyt kellene kérnie rá.
    >

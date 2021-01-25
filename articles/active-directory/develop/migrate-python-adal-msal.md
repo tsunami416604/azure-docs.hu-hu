@@ -14,12 +14,12 @@ ms.date: 11/11/2019
 ms.author: rayluo
 ms.reviewer: marsma, rayluo, nacanuma
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 213184409c9f5ee21ac9f61be1ad138fbbaa3590
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 42ffc7ffba20868b23675fd8613fd3ef11b0924a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107855"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755055"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>ADAL a MSAL áttelepítési útmutatója a Pythonhoz
 
@@ -38,13 +38,13 @@ Támogatja
   - OAuth 2.0-s verzió
   - OpenID Connect (OIDC)
 
-További részletekért lásd: [Mi a különbség a Microsoft Identity platform (v 2.0) végpontján?](../azuread-dev/azure-ad-endpoint-comparison.md) .
+További részletekért lásd: [Mi a különbség a Microsoft Identity platformmal kapcsolatban?](../azuread-dev/azure-ad-endpoint-comparison.md) .
 
 ### <a name="scopes-not-resources"></a>Hatókörök nem erőforrásai
 
 A ADAL Python jogkivonatokat vásárol az erőforrásokhoz, de a MSAL Python jogkivonatokat vásárol a hatókörökhöz. A MSAL Python API-felülete már nem rendelkezik erőforrás-paraméterrel. A hatóköröket olyan karakterláncok listájában kell megadnia, amelyek deklarálják a kívánt engedélyeket és a kért erőforrásokat. A hatókörökkel kapcsolatos néhány példa: [Microsoft Graph hatókörei](/graph/permissions-reference).
 
-A `/.default` hatókör utótagját hozzáadhatja az erőforráshoz, hogy az alkalmazásokat a 1.0-s verziójú végpontról (ADAL) a Microsoft Identity platform-végpontra (MSAL) telepítse. A (z) erőforrás értékének `https://graph.microsoft.com` megfelelő hatókör értéke például a következő: `https://graph.microsoft.com/.default` .  Ha az erőforrás nem szerepel az URL-címben, de az űrlap erőforrás-azonosítója `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` , továbbra is használhatja a hatókör értékét `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` .
+A `/.default` hatókör utótagját hozzáadhatja az erőforráshoz, hogy az alkalmazásokat a 1.0-s verziójú végpontról (ADAL) a Microsoft Identity platformra (MSAL) telepítse. A (z) erőforrás értékének `https://graph.microsoft.com` megfelelő hatókör értéke például a következő: `https://graph.microsoft.com/.default` .  Ha az erőforrás nem szerepel az URL-címben, de az űrlap erőforrás-azonosítója `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` , továbbra is használhatja a hatókör értékét `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` .
 
 A különböző típusú hatókörökkel kapcsolatos további részletekért tekintse [meg a Microsoft Identity platform engedélyeit és](./v2-permissions-and-consent.md) a hozzájuk tartozó jogosultságokat, valamint a webes API-k 1.0-s verzióinak [elfogadására vonatkozó](./msal-v1-app-scopes.md) cikkeket.
 
@@ -59,17 +59,17 @@ A következő táblázat a Pythonhoz készült ADAL API-t, a MSAL for Python ese
 | ADAL Python API-hoz  | MSAL Python API-hoz |
 | ------------------- | ---------------------------------- |
 | [AuthenticationContext](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext)  | [PublicClientApplication vagy ConfidentialClientApplication](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.__init__)  |
-| N.A.  | [get_authorization_request_url ()](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.get_authorization_request_url)  |
+| N/A  | [get_authorization_request_url ()](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.get_authorization_request_url)  |
 | [acquire_token_with_authorization_code ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_authorization_code) | [acquire_token_by_authorization_code ()](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.acquire_token_by_authorization_code) |
 | [acquire_token ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token) | [acquire_token_silent ()](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.acquire_token_silent) |
-| [acquire_token_with_refresh_token ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_refresh_token) | N.A. |
+| [acquire_token_with_refresh_token ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_refresh_token) | N/A |
 | [acquire_user_code ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_user_code) | [initiate_device_flow ()](https://msal-python.readthedocs.io/en/latest/#msal.PublicClientApplication.initiate_device_flow) |
 | [acquire_token_with_device_code ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_device_code) és [cancel_request_to_get_token_with_device_code ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.cancel_request_to_get_token_with_device_code) | [acquire_token_by_device_flow ()](https://msal-python.readthedocs.io/en/latest/#msal.PublicClientApplication.acquire_token_by_device_flow) |
 | [acquire_token_with_username_password ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_username_password) | [acquire_token_by_username_password ()](https://msal-python.readthedocs.io/en/latest/#msal.PublicClientApplication.acquire_token_by_username_password) |
 | [acquire_token_with_client_credentials ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_client_credentials) és [acquire_token_with_client_certificate ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_client_certificate) | [acquire_token_for_client ()](https://msal-python.readthedocs.io/en/latest/#msal.ConfidentialClientApplication.acquire_token_for_client) |
-| N.A. | [acquire_token_on_behalf_of ()](https://msal-python.readthedocs.io/en/latest/#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) |
+| N/A | [acquire_token_on_behalf_of ()](https://msal-python.readthedocs.io/en/latest/#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) |
 | [TokenCache ()](https://adal-python.readthedocs.io/en/latest/#adal.TokenCache) | [SerializableTokenCache()](https://msal-python.readthedocs.io/en/latest/#msal.SerializableTokenCache) |
-| N.A. | Gyorsítótár az adatmegőrzéssel, elérhető a [MSAL-bővítmények](https://github.com/marstr/original-microsoft-authentication-extensions-for-python) közül |
+| N/A | Gyorsítótár az adatmegőrzéssel, elérhető a [MSAL-bővítmények](https://github.com/marstr/original-microsoft-authentication-extensions-for-python) közül |
 
 ## <a name="migrate-existing-refresh-tokens-for-msal-python"></a>Meglévő frissítési tokenek migrálása a MSAL Pythonhoz
 
@@ -92,7 +92,7 @@ def get_preexisting_rt_and_their_scopes_from_elsewhere():
     # You may be able to append "/.default" to your v1 resource to form a scope
     # See https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#the-default-scope
 
-    # Or maybe you have an app already talking to Microsoft identity platform v2,
+    # Or maybe you have an app already talking to the Microsoft identity platform,
     # powered by some 3rd-party auth library, and persist its tokens somehow.
 
     # Either way, you need to extract RTs from there, and return them like this.
@@ -120,6 +120,6 @@ print("Migration completed")
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkért tekintse meg a [1.0-s és a 2.0-s verzió összehasonlítását](../azuread-dev/azure-ad-endpoint-comparison.md)ismertető témakört.

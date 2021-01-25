@@ -1,5 +1,6 @@
 ---
-title: A webes API-k az éles környezetben való hívása a Microsoft Identity platformba | Azure
+title: A webes API-k az éles környezetben való meghívása az asztali alkalmazásba | Azure
+titleSuffix: Microsoft identity platform
 description: Ismerje meg, hogyan helyezhet át egy olyan asztali alkalmazást, amely webes API-kat hív meg éles környezetben
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 325f95f2830ef021a4ac79de48695dda570f7817
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 05b93848bff66adc49d2855ee98fff6c9b7a2d3d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629782"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756517"
 ---
 # <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Webes API-kat meghívó asztali alkalmazás: áthelyezés éles környezetbe
 
@@ -29,9 +30,9 @@ A különböző folyamatokban megtanulta, hogyan kezelheti a csendes folyamatok 
 ## <a name="have-the-user-consent-upfront-for-several-resources"></a>A felhasználó beleegyezett több erőforrásra
 
 > [!NOTE]
-> A Microsoft Identity platform számos erőforrásának beszerzése, de Azure Active Directory (Azure AD) B2C esetében nem. A Azure AD B2C csak a rendszergazdai jogosultságokat támogatja, a felhasználói beleegyezett nem.
+> A Microsoft Identity platformon több erőforráshoz is hozzájárul, de nem Azure Active Directory (Azure AD) B2C-hez. A Azure AD B2C csak a rendszergazdai jogosultságokat támogatja, a felhasználói beleegyezett nem.
 
-A Microsoft Identity platform (v 2.0) végpontján egyszerre több erőforráshoz nem kaphat tokent. A `scopes` paraméter csak egyetlen erőforráshoz tartalmazhat hatóköröket. A paraméter használatával biztosíthatja, hogy a felhasználó előre beleegyezett több erőforrásba `extraScopesToConsent` .
+A Microsoft Identity platformmal egyszerre több erőforráshoz nem kaphat jogkivonatot. A `scopes` paraméter csak egyetlen erőforráshoz tartalmazhat hatóköröket. A paraméter használatával biztosíthatja, hogy a felhasználó előre beleegyezett több erőforrásba `extraScopesToConsent` .
 
 Előfordulhat például, hogy két erőforrással rendelkezik, amelyek mindegyike két hatókörrel rendelkezik:
 
@@ -105,6 +106,6 @@ AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync()
 
 A személyes Microsoft-fiókok felhasználói számára a kívánt viselkedés az összes natív ügyfél (asztali vagy mobil alkalmazás) hívása, amely engedélyezi a jóváhagyást. A natív ügyfél-identitás eredendően nem biztonságos, ami ellentétben áll a bizalmas ügyfélalkalmazás identitásával. A bizalmas ügyfélalkalmazások a Microsoft Identity platformmal titokban cserélik identitását. A Microsoft Identity platform úgy döntött, hogy csökkenti a fogyasztói szolgáltatások biztonságának kockázatát azáltal, hogy minden alkalommal, amikor az alkalmazás engedélyt kap, a felhasználó hozzájárulását kéri.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]

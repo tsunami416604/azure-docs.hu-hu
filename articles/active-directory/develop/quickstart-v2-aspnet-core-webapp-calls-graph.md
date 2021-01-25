@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: ae80ddd9efe8274a29a4b8dd91b7a3c391eefc3a
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 8e54f71ef58b3ea76a5fe55347a1caa173046320
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178687"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754490"
 ---
 # <a name="quickstart-aspnet-core-web-app-that-signs-in-users-and-calls-microsoft-graph-on-their-behalf"></a>Gyors útmutató: ASP.NET Core webalkalmazás, amely a felhasználók nevében jelentkezik be, és Microsoft Graph
 
@@ -56,7 +56,7 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 > 1. Válassza a **Regisztráció** lehetőséget.
 > 1. A **kezelés** területen válassza a **hitelesítés** lehetőséget.
 > 1. Adja meg a **kijelentkezési URL-címét** `https://localhost:44321/signout-oidc` .
-> 1. Válassza a **Mentés** lehetőséget.
+> 1. Kattintson a **Mentés** gombra.
 > 1. A **kezelés** területen válassza a **tanúsítványok & titkos kulcsok**  >  **új ügyfél titka** lehetőséget.
 > 1. Adjon meg egy **leírást**, például: `clientsecret1` .
 > 1. A titkos kulcs lejáratához válasszon **1 évet** .
@@ -166,7 +166,7 @@ A *Microsoft. AspNetCore. Authentication* middleware olyan `Startup` osztályt h
 
 A `AddAuthentication()` metódus úgy konfigurálja a szolgáltatást, hogy cookie-alapú hitelesítést adjon hozzá, amely a böngészőbeli forgatókönyvekben használatos, és az OpenID connectre vonatkozó kihívás beállítására szolgál.
 
-Az `.AddMicrosoftIdentityWebApp` alkalmazáshoz a Microsoft Identity platform hitelesítésének hozzáadását tartalmazó sor. Ezt a [Microsoft. Identity. Web](microsoft-identity-web.md)biztosíthatja. Ezt követően a rendszer úgy konfigurálja, hogy a Microsoft Identity platform végpontjának használatával jelentkezzen be a `AzureAD` konfigurációs fájl *appsettings.js* szakaszában található információk alapján:
+A sort tartalmazó vonal `.AddMicrosoftIdentityWebApp` hozzáadja a Microsoft Identity platform hitelesítését az alkalmazáshoz. Ezt a [Microsoft. Identity. Web](microsoft-identity-web.md)biztosíthatja. Ezután be van állítva a Microsoft Identity platform használatával történő bejelentkezésre a `AzureAD` konfigurációs fájl *appsettings.js* szakaszában található információk alapján:
 
 | *appsettings.jsa* kulcson | Leírás                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -211,7 +211,7 @@ public async Task<IActionResult> Index()
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az ebben a rövid útmutatóban hivatkozott ASP.NET Core kódot tartalmazó GitHub-tárház útmutatást és további kódrészleteket tartalmaz, amelyek a következőket mutatják be:
 

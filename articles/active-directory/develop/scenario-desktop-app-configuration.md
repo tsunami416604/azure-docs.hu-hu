@@ -1,5 +1,6 @@
 ---
-title: Webes API-kat meghívó asztali alkalmazások konfigurálása – Microsoft Identity platform | Azure
+title: Webes API-kat meghívó asztali alkalmazások konfigurálása | Azure
+titleSuffix: Microsoft identity platform
 description: Útmutató a webes API-kat meghívó asztali alkalmazások kódjának konfigurálásához
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 27c9f2ab8b02c96d016fea66acd2b3840d79d09d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5b74c817a974378a7fefc71e4eed67e6564765be
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444123"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756559"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Webes API-kat meghívó asztali alkalmazás: kód konfigurálása
 
@@ -26,7 +27,7 @@ Most, hogy létrehozta az alkalmazást, megtudhatja, hogyan konfigurálhatja a k
 
 A következő Microsoft Authentication librarys (MSALs) támogatja az asztali alkalmazásokat.
 
-  Microsoft Authentication Library | Description
+  Microsoft Authentication Library | Leírás
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Támogatja az asztali alkalmazások több platformon, például a Linux, a Windows és a macOS rendszerben történő létrehozását.
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | A támogatja az asztali alkalmazások több platformon történő összeállítását.
@@ -103,7 +104,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-### <a name="learn-more"></a>Tudjon meg többet
+### <a name="learn-more"></a>Részletek
 
 További információ a MSAL.NET asztali alkalmazások konfigurálásáról:
 

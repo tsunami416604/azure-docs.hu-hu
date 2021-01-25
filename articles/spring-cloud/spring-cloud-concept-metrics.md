@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 0c4299bc41a656fd678c14d63ae1d4987dba327b
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: a4838dd6e8f9f4959fc1e4d0dc8dbc2218a30f30
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060639"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755478"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Az Azure Spring Cloud metrikáinak ismertetése
 
@@ -89,16 +89,17 @@ Az alábbi táblázatokban az elérhető metrikák és részletek láthatók.
 
 ### <a name="error"></a>Hiba
 >[!div class="mx-tdCol2BreakAll"]
->| Név | Rugós indítószerkezet metrikájának neve | Unit (Egység) | Részletek |
+>| Name | Rugós indítószerkezet metrikájának neve | Unit (Egység) | Részletek |
 >|----|----|----|------------|
 >| tomcat. Global. error | tomcat. Global. error | Darabszám | A feldolgozott kérelmekben előforduló hibák száma |
 
 ### <a name="performance"></a>Teljesítmény
 >[!div class="mx-tdCol2BreakAll"]
->| Név | Rugós indítószerkezet metrikájának neve | Unit (Egység) | Részletek |
+>| Name | Rugós indítószerkezet metrikájának neve | Unit (Egység) | Részletek |
 >|----|----|----|------------|
->| System. CPU. használat | System. CPU. használat | Százalék | A legújabb CPU-használat a teljes rendszer számára. Ez az érték a [0.0, 1.0] intervallumban megjelenő Double. A 0,0 érték azt jelenti, hogy az összes CPU tétlen volt a legutóbbi megfigyelt időszakban, míg a 1,0 érték azt jelenti, hogy minden CPU aktívan futtatta az idő 100%-át az elmúlt időszak során.|
->| Process. CPU. használat | Alkalmazás CPU-kihasználtságának százalékos aránya | Százalék | A Java virtuális gép folyamat legutóbbi CPU-használata. Ez az érték a [0.0, 1.0] intervallumban megjelenő Double. A 0,0 érték azt jelenti, hogy egyik processzor sem futtatott szálakat a JVM folyamat során a legutóbbi megfigyelt időszakban, míg a 1,0 érték azt jelenti, hogy minden CPU aktívan futtatta a szálakat a JVM 100%-ában az elmúlt időszak során. A JVM található szálak közé tartoznak az alkalmazási szálak, valamint a JVM belső szálak.|
+>| System. CPU. használat | System. CPU. használat | Százalék | A legújabb CPU-használat a teljes rendszer számára (elavult, és nem javasolt használni). Ez az érték a [0.0, 1.0] intervallumban megjelenő Double. A 0,0 érték azt jelenti, hogy az összes CPU tétlen volt a legutóbbi megfigyelt időszakban, míg a 1,0 érték azt jelenti, hogy minden CPU aktívan futtatta az idő 100%-át az elmúlt időszak során.|
+>| Process. CPU. használat | Alkalmazás CPU-kihasználtságának százalékos aránya | Százalék | A Java virtuális gép folyamat legutóbbi CPU-használata (elavult, és nem javasolt használni). Ez az érték a [0.0, 1.0] intervallumban megjelenő Double. A 0,0 érték azt jelenti, hogy egyik processzor sem futtatott szálakat a JVM folyamat során a legutóbbi megfigyelt időszakban, míg a 1,0 érték azt jelenti, hogy minden CPU aktívan futtatta a szálakat a JVM 100%-ában az elmúlt időszak során. A JVM található szálak közé tartoznak az alkalmazási szálak, valamint a JVM belső szálak.|
+>| AppCpuUsage | Alkalmazás CPU-használata (előzetes verzió) | Százalék | A JVM folyamat legutóbbi CPU-használata az alkalmazáshoz lefoglalt PROCESSZORon, dupla típusú érték [0.0, 1.0] között. A 0,0 érték azt jelenti, hogy egyik processzor sem futtatott szálakat a JVM folyamat során a legutóbbi megfigyelt időszakban, míg a 1,0 érték azt jelenti, hogy minden CPU aktívan futtatta a szálakat a JVM 100%-ában az elmúlt időszak során. A JVM található szálak közé tartoznak az alkalmazási szálak, valamint a JVM belső szálak.|
 >| JVM. Memory. véglegesített | JVM. Memory. véglegesített | Bájt | A JVM számára elérhetővé tett memória mennyiségét jelöli. Előfordulhat, hogy a JVM memóriát szabadít fel a rendszeren, és a véglegesítése kisebb lehet, mint az init. a véglegesítés mindig nagyobb vagy egyenlő, mint a használat. |
 >| JVM. Memory. felhasználva | JVM. Memory. felhasználva | Bájt | A bájtban jelenleg használt memória mennyiségét jelöli. |
 >| JVM. Memory. max | JVM. Memory. max | Bájt | A memória-kezeléshez használható maximális memóriát jelöli. A felhasznált és az előjegyzett memória mennyisége mindig kisebb vagy egyenlő, ha a maximális érték meg van adva. Előfordulhat, hogy a memória kiosztása meghiúsul, ha a használt memóriát úgy próbálja megjavítani, hogy az <= Max használata esetén is igaz legyen (például ha a rendszer kevés a virtuális memóriában), ha a használni próbált >. |
@@ -112,7 +113,7 @@ Az alábbi táblázatokban az elérhető metrikák és részletek láthatók.
 ### <a name="performance-net"></a>Teljesítmény (.NET)
 
 >[!div class="mx-tdCol2BreakAll"]
->| Név | Rugós indítószerkezet metrikájának neve | Unit (Egység) | Részletek |
+>| Name | Rugós indítószerkezet metrikájának neve | Unit (Egység) | Részletek |
 >|------|-----------------------------|------|---------|
 >| Processzorhasználat       | CPU – használat      | Százalék      | A folyamat CPU-használatának százaléka az összes rendszerprocesszor-erőforráshoz viszonyítva [0-100]. |
 >| Munkakészlet     | munkakészlet    | Megabájtban    | A folyamat által használt munkakészlet mennyisége. |
@@ -137,7 +138,7 @@ További információ: DotNet- [számlálók](/dotnet/core/diagnostics/dotnet-co
 
 ### <a name="request"></a>Kérés
 >[!div class="mx-tdCol2BreakAll"]
->| Név | Rugós indítószerkezet metrikájának neve | Unit (Egység) | Részletek |
+>| Name | Rugós indítószerkezet metrikájának neve | Unit (Egység) | Részletek |
 >|----|----|----|------------|
 >| tomcat. Global. elküldve | tomcat. Global. elküldve | Bájt | Elküldve a Tomcat-webkiszolgálók mennyisége |
 >| tomcat. Global. Received | tomcat. Global. Received | Bájt | A lekéréses tomcat-webkiszolgáló mennyisége |
@@ -147,7 +148,7 @@ További információ: DotNet- [számlálók](/dotnet/core/diagnostics/dotnet-co
 ### <a name="request-net"></a>Kérelem (.NET)
 
 >[!div class="mx-tdCol2BreakAll"]
->| Név | Rugós indítószerkezet metrikájának neve | Unit (Egység) | Részletek |
+>| Name | Rugós indítószerkezet metrikájának neve | Unit (Egység) | Részletek |
 >|------|-----------------------------|------|---------|
 >| Kérések száma másodpercenként | kérelmek/másodperc | Darabszám | Kérelmek gyakorisága. |
 >| Összes kérelem | kérelmek összesen | Darabszám | Kérelmek száma összesen |
@@ -158,7 +159,7 @@ További információ: DotNet- [számlálók](/dotnet/core/diagnostics/dotnet-co
 
 ### <a name="session"></a>Munkamenet
 >[!div class="mx-tdCol2BreakAll"]
->| Név | Rugós indítószerkezet metrikájának neve | Unit (Egység) | Részletek |
+>| Name | Rugós indítószerkezet metrikájának neve | Unit (Egység) | Részletek |
 >|----|----|----|------------|
 >| tomcat. Sessions. Active. max | tomcat. Sessions. Active. max | Darabszám | Egy időben aktív munkamenetek maximális száma |
 >| tomcat. Sessions. Alive. max | tomcat. Sessions. Alive. max | Ezredmásodpercben | A lejárt munkamenet élettartamának leghosszabb ideje (másodpercben) |

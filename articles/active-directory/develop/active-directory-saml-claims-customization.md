@@ -13,12 +13,12 @@ ms.date: 12/09/2020
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 9fb5e229882532fed076f2e0d800f32acfcdbf4c
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 0ded249a55e5a59bdcad7407694cbd5ed4cf2352
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013787"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756071"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: az SAML-jogkivonatban kiadott jogcímek testreszabása nagyvállalati alkalmazásokhoz
 
@@ -170,7 +170,7 @@ Fontos, hogy milyen sorrendben adja hozzá a feltételeket. Az Azure AD kiérté
 
 A Britta Simon például egy vendég felhasználó a contoso-bérlőben. Egy másik szervezethez tartozik, amely az Azure AD-t is használja. A fabrikam alkalmazás alábbi konfigurációjának megfelelően, amikor a Britta megpróbál bejelentkezni a fabrikam szolgáltatásba, a Microsoft Identity platform az alábbi feltételek szerint értékeli ki a feltételeket.
 
-Először is a Microsoft Identity platform ellenőrzi, hogy a Britta felhasználói típusa a-e `All guests` . Mivel ez igaz, a Microsoft Identity platform hozzárendeli a jogcímek forrását a következőhöz: `user.extensionattribute1` . Másodszor, a Microsoft Identity platform ellenőrzi, hogy a Britta felhasználói típusa van `AAD guests` -e, mivel ez is igaz, a Microsoft Identity platform hozzárendeli a jogcímek forrását `user.mail` . Végezetül a jogcím a Britta értékével van kibocsátva `user.mail` .
+Először is a Microsoft Identity platform ellenőrzi, hogy a Britta felhasználói típusa a-e `All guests` . Mivel ez igaz, a Microsoft Identity platform hozzárendeli a jogcímek forrását a következőhöz: `user.extensionattribute1` . Másodszor, a Microsoft Identity platform ellenőrzi, hogy a Britta felhasználói típusa van `AAD guests` -e, mivel ez is igaz, a Microsoft Identity platform a jogcím forrását rendeli hozzá `user.mail` . Végezetül a jogcím a Britta értékével van kibocsátva `user.mail` .
 
 ![Feltételes konfiguráció igénylése](./media/active-directory-saml-claims-customization/sso-saml-user-conditional-claims.png)
 

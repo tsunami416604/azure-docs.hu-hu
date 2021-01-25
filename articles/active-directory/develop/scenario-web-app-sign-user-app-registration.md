@@ -1,5 +1,6 @@
 ---
-title: Felhasználói bejelentkezést biztosító webalkalmazás regisztrálása – Microsoft Identity platform | Azure
+title: Felhasználók számára bejelentkező webalkalmazás regisztrálása | Azure
+titleSuffix: Microsoft identity platform
 description: Megtudhatja, hogyan regisztrálhat egy olyan webalkalmazást, amely aláírja a felhasználókat
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7ca294d3d7764737d4e2be55aae25bc8ff08a8d1
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: b6240f88d309cbf4f26375c5f961d716b472755d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011526"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756278"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Felhasználók számára bejelentkező webalkalmazás: alkalmazás regisztrálása
 
@@ -68,7 +69,7 @@ Ezeket a hivatkozásokat használhatja a webalkalmazás létrehozásához:
    1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
 1. A **kezelés** területen válassza a **hitelesítés** lehetőséget.
 1. Az **implicit támogatás** szakaszban válassza az **azonosító tokenek** elemet. Ehhez a mintához engedélyezni kell, hogy az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) engedélyezze a bejelentkezést a felhasználó számára.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -85,7 +86,7 @@ Alapértelmezés szerint a minta a következőket használja:
    - **http://localhost:8080/msal4jsample/secure/aad**
    - **http://localhost:8080/msal4jsample/graph/me**
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 1. A **Kezelés** területen válassza a **Tanúsítványok és titkos kódok** lehetőséget.
 1. Az **ügyfél titkai** szakaszban válassza az **új ügyfél titka** elemet, majd a következőket:
 

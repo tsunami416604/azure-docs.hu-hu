@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 293a8d8b8add37f78e5a900b093ec89e95851aec
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: c20685c0c392ece68dc80b57afc6680f2efd9e35
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178636"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754505"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal ASP.NET Core webalkalmazásba
 
@@ -148,7 +148,7 @@ A *Microsoft. AspNetCore. Authentication* middleware olyan `Startup` osztályt h
 
 A `AddAuthentication()` metódus úgy konfigurálja a szolgáltatást, hogy cookie-alapú hitelesítést adjon hozzá, amely a böngészőbeli forgatókönyvekben használatos, és az OpenID connectre vonatkozó kihívás beállítására szolgál.
 
-Az `.AddMicrosoftIdentityWebApp` alkalmazáshoz a Microsoft Identity platform hitelesítésének hozzáadását tartalmazó sor. Ezt követően a rendszer úgy konfigurálja, hogy a Microsoft Identity platform végpontjának használatával jelentkezzen be a `AzureAD` konfigurációs fájl *appsettings.js* szakaszában található információk alapján:
+A sort tartalmazó vonal `.AddMicrosoftIdentityWebApp` hozzáadja a Microsoft Identity platform hitelesítését az alkalmazáshoz. Ezután be van állítva a Microsoft Identity platform használatával történő bejelentkezésre a `AzureAD` konfigurációs fájl *appsettings.js* szakaszában található információk alapján:
 
 | *appsettings.jsa* kulcson | Leírás                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -180,7 +180,7 @@ A vezérlő vagy vezérlő metódusait az attribútum használatával lehet véd
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A ASP.NET Core oktatóanyagot tartalmazó GitHub-tárház útmutatást és további kódrészleteket tartalmaz, amelyek az alábbiakat mutatják be:
 

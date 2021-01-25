@@ -14,12 +14,12 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: eec24ca19af8c41a842b1db3db4b9e16f748f029
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 6a1f4a02ebf42c0f181b595aae0a5fa0bcc9b41d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653248"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755904"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity platform azonosító tokenek
 
@@ -89,7 +89,7 @@ Ez a lista azokat a JWT jogcímeket jeleníti meg, amelyek alapértelmezés szer
 |`groups:src1`|JSON-objektum | A nem hosszúságú jogkivonat-kérelmek esetében (lásd a `hasgroups` fentieket), de még mindig túl nagy a tokenhez, a rendszer a felhasználó teljes csoportok listájára mutató hivatkozást tartalmaz. Elosztott jogcímek esetén az SAML-t a jogcím helyett új jogcímként JWTs `groups` . <br><br>**Példa JWT értékre**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }`<br><br> További információ: [groups overing jogcím](#groups-overage-claim).|
 
 > [!NOTE]
-> A 1.0-s és a 2.0-s verzió id_token a fenti példákban látható információk mennyiségétől függ. A verzió a kért végponton alapul. Habár a meglévő alkalmazások valószínűleg az Azure AD-végpontot használják, az új alkalmazásoknak a v 2.0 "Microsoft Identity platform" végpontot kell használniuk.
+> A 1.0-s és a 2.0-s verzió id_token a fenti példákban látható információk mennyiségétől függ. A verzió a kért végponton alapul. Habár a meglévő alkalmazások valószínűleg az Azure AD-végpontot használják, az új alkalmazásoknak a Microsoft Identity platformot kell használniuk.
 >
 > - 1.0-s verzió: Azure AD-végpontok: `https://login.microsoftonline.com/common/oauth2/authorize`
 > - v 2.0: Microsoft Identity platform-végpontok: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
@@ -135,7 +135,7 @@ A jogkivonat manuális érvényesítéséhez tekintse meg a [hozzáférési toke
 * Célközönség: a `aud` jogcímnek meg kell egyeznie az alkalmazáshoz tartozó alkalmazás-azonosítóval.
 * Alkalom: az `nonce` adattartalomban szereplő jogcímnek meg kell egyeznie a/Authorize-végpontnak a kezdeti kérelem során átadott egyszeres paraméterrel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tudnivalók a [hozzáférési tokenekről](access-tokens.md)
 * A JWT jogcímek testreszabása a id_token [választható jogcímek](active-directory-optional-claims.md)használatával.

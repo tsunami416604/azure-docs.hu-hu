@@ -13,12 +13,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 34cdaa42f3a41ae04c73c570bb4fede01a786af2
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 98ae81626db637f5b0bd6bfe9e294c32293d09e5
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107838"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755062"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Tokenek beszerzése és gyorsítótárazása a Microsoft Authentication Library (MSAL) használatával
 
@@ -30,7 +30,7 @@ Törölheti a jogkivonat-gyorsítótárat is, amely a fiókoknak a gyorsítótá
 
 ## <a name="scopes-when-acquiring-tokens"></a>Hatókörök a jogkivonatok beszerzése során
 
-A [hatókörök](v2-permissions-and-consent.md) azok az engedélyek, amelyeket a webes API tesz elérhetővé, amelyekkel az ügyfélalkalmazások hozzáférést igényelhetnek. Az ügyfélalkalmazások kérik a felhasználó belefoglalását ezekhez a hatókörökhöz, amikor hitelesítési kéréseket kap a tokenek eléréséhez a webes API-khoz. A MSAL lehetővé teszi, hogy jogkivonatokat kapjon az Azure AD for Developers (v 1.0) és a Microsoft Identity platform (v 2.0) API-k eléréséhez. a v 2.0 protokoll hatóköröket használ a kérelmekben lévő erőforrások helyett. További információért olvassa el a következőt: [v 1.0 és v 2.0 összehasonlítás](../azuread-dev/azure-ad-endpoint-comparison.md). Az által elfogadott jogkivonat-verzió webes API-konfigurációja alapján a v 2.0-végpont visszaadja a hozzáférési jogkivonatot a MSAL.
+A [hatókörök](v2-permissions-and-consent.md) azok az engedélyek, amelyeket a webes API tesz elérhetővé, amelyekkel az ügyfélalkalmazások hozzáférést igényelhetnek. Az ügyfélalkalmazások kérik a felhasználó belefoglalását ezekhez a hatókörökhöz, amikor hitelesítési kéréseket kap a tokenek eléréséhez a webes API-khoz. A MSAL lehetővé teszi, hogy jogkivonatokat kapjon az Azure AD for Developers (v 1.0) és a Microsoft Identity platform API-k eléréséhez. a v 2.0 protokoll hatóköröket használ a kérelmekben lévő erőforrások helyett. További információért olvassa el a következőt: [v 1.0 és v 2.0 összehasonlítás](../azuread-dev/azure-ad-endpoint-comparison.md). Az által elfogadott jogkivonat-verzió webes API-konfigurációja alapján a v 2.0-végpont visszaadja a hozzáférési jogkivonatot a MSAL.
 
 A MSAL jogkivonat-beszerzési módszerei közül több is `scopes` paramétert igényel. A `scopes` paraméter azon karakterláncok listája, amelyek deklarálják a kívánt engedélyeket és a kért erőforrásokat. A jól ismert hatókörök a [Microsoft Graph engedélyek](/graph/permissions-reference).
 
@@ -120,7 +120,7 @@ Amikor az ügyfél hozzáférési jogkivonatot kér, az Azure AD egy hitelesít�
 
 [!INCLUDE [advanced-token-caching](../../../includes/advanced-token-cache.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A MSAL által támogatott platformok közül több további jogkivonat-gyorsítótárral kapcsolatos információkkal rendelkezik a platform könyvtárának dokumentációjában. Például:
 - [Jogkivonat beszerzése a jogkivonat-gyorsítótárból a MSAL.NET használatával](msal-net-acquire-token-silently.md)

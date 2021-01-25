@@ -1,6 +1,7 @@
 ---
-title: A Publisher-ellenőrzés hibáinak megoldása – Microsoft Identity platform | Azure
-description: Útmutatás a Microsoft Identity platform közzétevői ellenőrzésének hibaelhárításához Microsoft Graph API-k meghívásával.
+title: A közzétevő ellenőrzésének hibakeresése | Azure
+titleSuffix: Microsoft identity platform
+description: Ismerteti, hogyan lehet elhárítani a Microsoft Identity platform közzétevői ellenőrzését Microsoft Graph API-k meghívásával.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,12 +13,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 857659cdd97666dba585c1ec22c750e29bf28879
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 10609f2706d257dbe5d8f43b85da5f06cb986cae
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169171"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756185"
 ---
 # <a name="troubleshoot-publisher-verification"></a>Közzétevő ellenőrzésének hibaelhárítása
 Ha nem tudja befejezni a folyamatot, vagy nem várt viselkedést tapasztal a [közzétevő ellenőrzésekor](publisher-verification-overview.md), akkor a következő lépésekkel kell kezdenie, ha hibákat kap, vagy nem várt viselkedés jelenik meg: 
@@ -230,11 +231,11 @@ Akkor következik be, amikor a többtényezős hitelesítés nem lett elvégezve
 
 A megjelenített hibaüzenet a következő: "a rendszergazda által végzett konfiguráció módosítása miatt, vagy ha új helyre költözött át, a folytatáshoz a multi-Factor Authentication használata szükséges."
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha áttekintette az összes korábbi információt, és továbbra is a Microsoft Graph hibaüzenetet kap, gyűjtsön annyit az alábbi információk közül, amennyire csak lehetséges, és [forduljon a Microsoft ügyfélszolgálatához](developer-support-help-options.md#open-a-support-request).
 
-- Timestamp 
+- Időbélyeg 
 - CorrelationId 
 - A bejelentkezett felhasználó ObjectID vagy UserPrincipalName 
 - Célalkalmazás ObjectId

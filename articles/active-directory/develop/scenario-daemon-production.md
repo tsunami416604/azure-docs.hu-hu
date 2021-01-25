@@ -1,5 +1,6 @@
 ---
-title: Webes API-kat meghívó Daemon-alkalmazás áthelyezése az éles környezetbe – Microsoft Identity platform | Azure
+title: Webes API-kat meghívó Daemon-alkalmazás áthelyezése az éles környezetbe | Azure
+titleSuffix: Microsoft identity platform
 description: Megtudhatja, hogyan helyezhet át egy olyan Daemon-alkalmazást, amely webes API-kat hív meg éles környezetben
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 72e6d0a8677f7a8175223b80541c99026a9eb16f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99fd79fb6c51f577d9b62d15ac006b068a685bcf
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88119164"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756544"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Webes API-kat meghívó Daemon-alkalmazás – áttérés éles környezetbe
 
@@ -33,7 +34,7 @@ Meg kell magyaráznia ügyfeleinek, hogy miként hajtják végre ezeket a művel
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Íme néhány hivatkozás, amely segítséget nyújt a további információk megismeréséhez:
 

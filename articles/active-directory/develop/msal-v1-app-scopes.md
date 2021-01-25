@@ -12,12 +12,12 @@ ms.date: 11/25/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 61d07c1ba912a0e24b2f4e5fa67243b4525db367
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b35b39d7072b22d9cc3f7b4f4ef8886431b06f69
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81536182"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754657"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>A webes API-k 1.0-s verziójának elfogadására szolgáló hatókörök
 
@@ -64,7 +64,7 @@ var result = await app.AcquireTokenInteractive(scopes).ExecuteAsync();
 Az Azure AD által használt logika a következő:
 
 - A ADAL (Azure AD v 1.0) végpontja v 1.0 hozzáférési jogkivonattal (az egyetlen lehetséges), az AUD = erőforrás
-- A MSAL (Microsoft Identity platform (v 2.0)) végpontja a v 2.0-tokeneket elfogadó erőforráshoz kér hozzáférési jogkivonatot. `aud=resource.AppId`
+- A MSAL (Microsoft Identity platform) a v 2.0 jogkivonatokat elfogadó erőforrás hozzáférési jogkivonatát kérdezi le. `aud=resource.AppId`
 - A MSAL (v 2.0-végpont) esetében egy olyan erőforrás hozzáférési jogkivonatának megkérdezése, amely egy v 1.0 hozzáférési jogkivonatot fogad el (ez a fenti eset), az Azure AD a kért hatókörből elemezi a kívánt célközönséget, és az utolsó perjel előtt mindent megtesz az erőforrás-azonosítóként. Ezért ha a https: \/ /Database.Windows.net "https: \/ /Database.Windows.net/" célközönséget vár, a "https:/Database.Windows.net//.default" hatókört kell kérnie \/ . Lásd még: GitHub [-probléma #747: az erőforrás URL-címének záró perjele ki van hagyva, ami SQL-hitelesítési hibát okozott](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
 
 ## <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>Hatókörök egy v 1.0 alkalmazás összes engedélyéhez való hozzáférés kérelmezéséhez

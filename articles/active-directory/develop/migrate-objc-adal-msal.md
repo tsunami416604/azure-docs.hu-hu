@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: fb66d8a4bf97a6f8a10534c9c4459123ad6a2654
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 7dc3241198fbc6eeddba059251f28c6dc35c8a29
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107920"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754930"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>Alkalmazások migrálása MSAL iOS és macOS rendszerű eszközökre
 
@@ -38,14 +38,14 @@ A Microsoft Identity platform néhány fő különbséggel rendelkezik a Azure A
 
 ### <a name="standards-compliance"></a>Szabványok megfelelősége
 
-* A Microsoft Identity platform végpontja a OAuth 2,0 és az OpenId Connect szabványokat követi.
+* A Microsoft Identity platform a OAuth 2,0 és az OpenId Connect szabványokat követi.
 
 ### <a name="incremental-and-dynamic-consent"></a>Növekményes és dinamikus beleegyezett
 
 * A Azure Active Directory v 1.0 végpont megköveteli, hogy az alkalmazás regisztrációja során minden engedélyt előre be kell jelenteni. Ez azt jelenti, hogy ezek az engedélyek statikusak.
 * A Microsoft Identity platform lehetővé teszi, hogy dinamikusan kérjen engedélyeket. Az alkalmazások csak szükség szerint igényelhetnek engedélyeket, és az alkalmazás igényeinek megfelelően több kérést is kérhetnek.
 
-A Azure Active Directory v 1.0 és a Microsoft Identity platform közötti különbségekről további információt a [Microsoft Identity platform (v 2.0) frissítése](../azuread-dev/azure-ad-endpoint-comparison.md)című témakörben talál.
+A Azure Active Directory v 1.0 és a Microsoft Identity platform közötti különbségekről további információt a [Microsoft Identity platform frissítését](../azuread-dev/azure-ad-endpoint-comparison.md)ismertető témakörben talál.
 
 ## <a name="adal-and-msal-library-differences"></a>ADAL és MSAL könyvtárbeli különbségek
 
@@ -75,7 +75,7 @@ A MSAL kétféleképpen biztosítható hatókörök:
 
 Ez az összes alkalmazás beépített hatóköre. Az alkalmazás regisztrálásakor konfigurált engedélyek statikus listájára vonatkozik. A viselkedése hasonló a következőhöz: `resource` . Ez akkor lehet hasznos, ha az áttelepítés során a rendszer megőrzi a hatókörök és a felhasználói élmény hasonló készletét.
 
-A hatókör használatához `/.default` fűzze hozzá `/.default` az erőforrás-azonosítót. Például: `https://graph.microsoft.com/.default`. Ha az erőforrás perjel () karakterrel végződik `/` , akkor továbbra is hozzá kell fűzni `/.default` , beleértve a kezdő perjelet is, ami egy olyan hatókört eredményez, amely egy dupla továbbítási perjelgel ( `//` ) rendelkezik.
+A hatókör használatához `/.default` fűzze hozzá `/.default` az erőforrás-azonosítót. Példa: `https://graph.microsoft.com/.default`. Ha az erőforrás perjel () karakterrel végződik `/` , akkor továbbra is hozzá kell fűzni `/.default` , beleértve a kezdő perjelet is, ami egy olyan hatókört eredményez, amely egy dupla továbbítási perjelgel ( `//` ) rendelkezik.
 
 További információt a "/.default" hatókör használatáról [itt](./v2-permissions-and-consent.md#the-default-scope) talál
 
@@ -463,6 +463,6 @@ application.acquireTokenSilent(with: silentParameters) {
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a [hitelesítési folyamatokról és az alkalmazási forgatókönyvekről](authentication-flows-app-scenarios.md)

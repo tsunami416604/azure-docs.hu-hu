@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/22/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: ca22d4f1ff48222b33030eb44d7feb62b1d154cd
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 7d38ee1782987afce703fbd8b4203186bbcbb505
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011884"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754481"
 ---
 # <a name="quickstart-protect-an-aspnet-core-web-api-with-microsoft-identity-platform"></a>Gyors útmutató: ASP.NET Core webes API-k védetté helyezése a Microsoft Identity platformmal
 
@@ -96,7 +96,7 @@ A *Microsoft. AspNetCore. Authentication* middleware olyan `Startup` osztályt h
 
 A `AddAuthentication()` metódus konfigurálja a szolgáltatást JwtBearer-alapú hitelesítés hozzáadására.
 
-A `.AddMicrosoftIdentityWebApi` Microsoft Identity platform engedélyezését tartalmazó vonal a webes API-hoz. Ezután úgy van konfigurálva, hogy érvényesítse a Microsoft Identity platform végpontja által kiadott hozzáférési jogkivonatokat a `AzureAD` konfigurációs fájl *appsettings.js* szakaszában található információk alapján:
+A sort tartalmazó vonal `.AddMicrosoftIdentityWebApi` hozzáadja a Microsoft Identity platform engedélyezését a webes API-hoz. Ezután úgy van konfigurálva, hogy érvényesítse a Microsoft Identity platform által kiadott hozzáférési jogkivonatokat a `AzureAD` konfigurációs fájl *appsettings.js* szakaszában található információk alapján:
 
 | *appsettings.jsa* kulcson | Leírás                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|

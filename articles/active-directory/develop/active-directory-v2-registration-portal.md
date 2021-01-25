@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: lenalepa
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: b165cd4abd55026e10aa43eb20faa85b887de194
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 6a33da602eaa9bee20f155eaa550e558e5dcbeca
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065043"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755557"
 ---
 # <a name="app-registration-reference"></a>Alkalmazásregisztráció-referencia
 
@@ -27,7 +27,7 @@ Ez a dokumentum a Azure Portal [Alkalmazásregisztrációk](https://aka.ms/appre
 
 ## <a name="my-applications-or-converged-applications"></a>Saját alkalmazások vagy konvergens alkalmazások
 
-Ez a lista tartalmazza az összes, a Microsoft Identity platform (v 2.0) végponttal való használatra regisztrált alkalmazást. Ezek az alkalmazások személyes Microsoft-fiókokkal és munkahelyi/iskolai fiókokkal is bejelentkezhetnek a felhasználóktól Azure Active Directory. További információ az Identity platform végpontról: [v 2.0 – Áttekintés](./v2-overview.md). Ezek az alkalmazások a Microsoft-fiók hitelesítési végponttal való integrálásra is használhatók `https://login.live.com` .
+Ez a lista tartalmazza a Microsoft Identity platformmal való használatra regisztrált összes alkalmazást. Ezek az alkalmazások személyes Microsoft-fiókokkal és munkahelyi/iskolai fiókokkal is bejelentkezhetnek a felhasználóktól Azure Active Directory. Ha többet szeretne megtudni a Microsoft Identity platformról, tekintse meg a [v 2.0 áttekintését](./v2-overview.md). Ezek az alkalmazások a Microsoft-fiók hitelesítési végponttal való integrálásra is használhatók `https://login.live.com` .
 
 ## <a name="azure-ad-only-applications"></a>Csak Azure AD-alkalmazások
 
@@ -39,7 +39,7 @@ Ez a lista tartalmazza az összes olyan alkalmazást, amely kizárólag a Micros
 
 ## <a name="application-secrets"></a>Alkalmazás-titkok
 
-Az alkalmazás titkos kulcsai olyan hitelesítő adatok, amelyek lehetővé teszik, hogy az alkalmazás megbízható [ügyfél-hitelesítést](https://tools.ietf.org/html/rfc6749#section-2.3) végezzen a Microsoft Identity platformmal. A OAuth & OpenID Connect esetében az alkalmazás titkos kulcsát általában a-nek nevezzük `client_secret` . A v 2.0 protokollban minden olyan alkalmazás, amely a biztonsági jogkivonatot egy webes címezhető helyen fogadja (egy `https` sémával), az alkalmazás titkos kulcsát kell használnia, hogy a biztonsági jogkivonat beváltásakor azonosítsa magát a Microsoft Identity platformon. Továbbá minden olyan natív ügyfél, amely az eszközön jogkivonatokat fogad, nem fogja tudni használni az alkalmazás titkos kulcsát az ügyfél-hitelesítés végrehajtásához. Ez nem akadályozza meg a titkok tárolását a nem biztonságos környezetekben.
+Az alkalmazás titkos kulcsai olyan hitelesítő adatok, amelyek lehetővé teszik, hogy az alkalmazás megbízható [ügyfél-hitelesítést](https://tools.ietf.org/html/rfc6749#section-2.3) végezzen a Microsoft Identity platformmal. A OAuth & OpenID Connect esetében az alkalmazás titkos kulcsát általában a-nek nevezzük `client_secret` . A 2.0-s verzióban minden olyan alkalmazás, amely a biztonsági jogkivonatot egy webes címezhető helyen fogadja (egy `https` sémát használva), az alkalmazás titkos kulcsát kell használnia, hogy az adott biztonsági jogkivonat megváltása után azonosítsa magát a Microsoft Identity platformon. Továbbá minden olyan natív ügyfél, amely az eszközön jogkivonatokat fogad, nem fogja tudni használni az alkalmazás titkos kulcsát az ügyfél-hitelesítés végrehajtásához. Ez nem akadályozza meg a titkok tárolását a nem biztonságos környezetekben.
 
 Minden alkalmazás tartalmazhat két érvényes alkalmazás-titkot egy adott időpontban. Két titok fenntartásával lehetősége van arra, hogy az alkalmazás teljes környezetében rendszeres időközönként átváltást végezzen. Miután áttelepítette az alkalmazást egy új titokba, törölheti a régi titkot, és kiépítheti az újat.
 

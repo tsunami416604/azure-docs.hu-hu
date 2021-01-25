@@ -13,12 +13,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 2fbff2abeb454fe02aa4bd50615033b9a0b7f27b
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: ef2ab6511d80f7f1f836805055e7cc7f48a488e7
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178602"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754302"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Gyors útmutató: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása iOS-vagy macOS-alkalmazásból
 
@@ -181,7 +181,7 @@ self.applicationContext = try MSALPublicClientApplication(configuration: msalCon
 > |Ahol: | Leírás |
 > |---------|---------|
 > | `clientId` | A _portal. Azure. com *-ban regisztrált alkalmazás alkalmazás-azonosítója |
-> | `authority` | A Microsoft Identity platform végpontja. A legtöbb esetben ez a következő lesz: `https://login.microsoftonline.com/common` |
+> | `authority` | A Microsoft Identity platform. A legtöbb esetben ez a következő lesz: `https://login.microsoftonline.com/common` |
 > | `redirectUri` | Az alkalmazás átirányítási URI-ja. Az alapértelmezett értéket vagy az egyéni átirányítási URI-t a "Nil" értékre lehet átadni. |
 
 ### <a name="for-ios-only-additional-app-requirements"></a>Csak iOS esetén, további alkalmazásokra vonatkozó követelmények
@@ -269,7 +269,7 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Lépjen be a lépésenkénti oktatóanyagba, amelyben létrehoz egy iOS-vagy macOS-alkalmazást, amely a Microsoft Identity platform hozzáférési jogkivonatát kéri le, és a Microsoft Graph API meghívására használja.
 

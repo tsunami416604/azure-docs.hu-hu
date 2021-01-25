@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 8861e641f5ee6a10576425a7702ba02da297a0bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0127c8d796126d1e99b1fa38a9506df477c7eb49
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631273"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755727"
 ---
 # <a name="using-directory-schema-extension-attributes-in-claims"></a>A Directory sémakezelő bővítmény attribútumainak használata a jogcímek között
 
@@ -38,10 +38,10 @@ A címtár-séma bővítményeinek attribútumai kétféleképpen regisztrálhat
 - A Microsoft Graph használatával regisztrálhat, beállíthatja és beolvashatja a séma- [bővítmények](/graph/extensibility-overview)értékét. A [PowerShell-parancsmagok](/powershell/azure/active-directory/using-extension-attributes-sample) is elérhetők.
 
 ### <a name="emitting-claims-with-data-from-directory-schema-extension-attributes-created-with-ad-connect"></a>Jogcímek kibocsátása az AD-kapcsolattal létrehozott címtár-séma bővítmény attribútumaiból származó adatokkal
-Az AD-kapcsolat használatával létrehozott és szinkronizált címtár-séma-bővítményi attribútumok mindig az AD-kapcsolat által használt alkalmazás-AZONOSÍTÓhoz vannak társítva. A jogcímek forrásaként is használhatók, ha a **vállalati** alkalmazások konfigurációjában jogcímként konfigurálja azokat az SAML-alkalmazások számára, amelyeket a katalógus vagy a katalóguson kívüli alkalmazás konfigurálásával, a **vállalati alkalmazások**esetében regisztrálnak  Miután az AD-kapcsolaton keresztül létrehozott egy címtár-kiterjesztési attribútum szerepel a címtárban, az SAML SSO-jogcímek konfigurációs felhasználói felületén fog megjelenni.
+Az AD-kapcsolat használatával létrehozott és szinkronizált címtár-séma-bővítményi attribútumok mindig az AD-kapcsolat által használt alkalmazás-AZONOSÍTÓhoz vannak társítva. A jogcímek forrásaként is használhatók, ha a **vállalati** alkalmazások konfigurációjában jogcímként konfigurálja azokat az SAML-alkalmazások számára, amelyeket a katalógus vagy a katalóguson kívüli alkalmazás konfigurálásával, a **vállalati alkalmazások** esetében regisztrálnak  Miután az AD-kapcsolaton keresztül létrehozott egy címtár-kiterjesztési attribútum szerepel a címtárban, az SAML SSO-jogcímek konfigurációs felhasználói felületén fog megjelenni.
 
 ### <a name="emitting-claims-with-data-from-directory-schema-extension-attributes-created-for-an-application-using-graph-or-powershell"></a>Olyan jogcímek kibocsátása, amelyek a Graph vagy a PowerShell használatával egy alkalmazáshoz létrehozott címtár-séma bővítmény attribútumaiból származó adatokkal rendelkeznek.
-Ha a Directory sémakezelő bővítmény attribútuma Microsoft Graph vagy PowerShell használatával van regisztrálva (az alkalmazások kezdeti beállítása vagy üzembe helyezési lépése alapján), akkor ugyanaz az alkalmazás konfigurálható a Azure Active Directoryban, hogy az adott attribútumban lévő adatok a felhasználó bejelentkezésekor a jogcímben lévő felhasználói objektumból fogadhasson.  Az alkalmazás úgy konfigurálható, hogy olyan címtár-séma-bővítményekben fogadja az adatfogadást, amelyek nem [kötelező jogcímeket](active-directory-optional-claims.md#configuring-directory-extension-optional-claims)használnak ugyanazon az alkalmazáson.  Ezek megadhatók az alkalmazás jegyzékfájljában.  Ez lehetővé teszi, hogy a több-bérlős alkalmazások saját használatra regisztrálják a címtár-séma bővítmény attribútumait. Ha az alkalmazás egy bérlőhöz lett kiépítve, a társított címtár-séma bővítményei elérhetővé válnak a bérlő felhasználói számára, és felhasználhatók.  Miután konfigurálta a bérlőt és a hozzájárulást, felhasználhatja az adatok gráfon keresztüli tárolására és lekérésére, valamint a tokenekben a Microsoft Identity platform által az alkalmazásokhoz kiadott jogcímek leképezésére.
+Ha a Directory sémakezelő bővítmény attribútuma Microsoft Graph vagy PowerShell használatával van regisztrálva (az alkalmazások kezdeti beállítása vagy üzembe helyezési lépése alapján), akkor ugyanaz az alkalmazás konfigurálható a Azure Active Directoryban, hogy az adott attribútumban lévő adatok a felhasználó bejelentkezésekor a jogcímben lévő felhasználói objektumból fogadhasson.  Az alkalmazás úgy konfigurálható, hogy olyan címtár-séma-bővítményekben fogadja az adatfogadást, amelyek nem [kötelező jogcímeket](active-directory-optional-claims.md#configuring-directory-extension-optional-claims)használnak ugyanazon az alkalmazáson.  Ezek megadhatók az alkalmazás jegyzékfájljában.  Ez lehetővé teszi, hogy a több-bérlős alkalmazások saját használatra regisztrálják a címtár-séma bővítmény attribútumait. Ha az alkalmazás egy bérlőhöz lett kiépítve, a társított címtár-séma bővítményei elérhetővé válnak a bérlő felhasználói számára, és felhasználhatók.  Miután konfigurálta a bérlőt és a hozzájárulást, felhasználhatja az adatok gráfon keresztüli tárolására és lekérésére, valamint a jogkivonatokban lévő jogcímekre való leképezésre, amelyeket a Microsoft Identity platform bocsát ki az alkalmazásokba.
 
 A címtár-séma bővítmény attribútumai regisztrálhatók és kitölthetők bármely alkalmazáshoz.
 
@@ -71,6 +71,6 @@ Ahol a *xxxxxxx* annak az alkalmazásnak az azonosítója, amelyben a bővítmé
 >
 > A beépített címtár attribútumaihoz használt "id" paraméter a "ExtensionID" a címtár-bővítmény attribútumaihoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Ismerje meg, hogyan [adhat hozzá egyéni vagy további jogcímeket a SAML 2,0 és a JSON web tokens (JWT) jogkivonatokhoz](active-directory-optional-claims.md).
 - Megtudhatja, hogyan [szabhatja testre a jogkivonatokban kibocsátott jogcímeket egy adott alkalmazáshoz](active-directory-claims-mapping.md).

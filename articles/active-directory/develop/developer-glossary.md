@@ -12,12 +12,12 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: b02329d624eda440230fb99e02e08c841c5580f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77a4e7389952b81df13dae929dc1aec664fcc0b7
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90705996"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755644"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>A Microsoft Identity platform fejlesztői szószedete
 
@@ -83,13 +83,13 @@ További részletekért tekintse meg a OAuth2 specifikációjának [engedélyez�
 
 ## <a name="authorization-grant"></a>engedélyezés engedélyezése
 
-Az [ügyfél-alkalmazás](#client-application)számára biztosított védett erőforrások eléréséhez szükséges erőforrás- [tulajdonosi](#resource-owner) [authorization](#authorization) jogosultságot képviselő hitelesítő adat. Az ügyfélalkalmazások a [OAuth2 engedélyezési keretrendszere által meghatározott négy engedélyezési típus][OAuth2-AuthZ-Grant-Types] egyikét használhatják az ügyfél típusától/követelményeitől függően: "engedélyezési kód engedélyezése", "ügyfél hitelesítő adatai", "implicit támogatás" és "erőforrás-tulajdonosi jelszó hitelesítő adatai". Az ügyfélnek visszaadott hitelesítő adat vagy egy hozzáférési [jogkivonat](#access-token), vagy egy, a hozzáférési tokenhez később kicserélt hitelesítési [kód](#authorization-code) , a használt engedélyezési típustól függően.
+Az [ügyfél-alkalmazás](#client-application)számára biztosított védett erőforrások eléréséhez szükséges erőforrás- [tulajdonosi](#resource-owner) [](#authorization) jogosultságot képviselő hitelesítő adat. Az ügyfélalkalmazások a [OAuth2 engedélyezési keretrendszere által meghatározott négy engedélyezési típus][OAuth2-AuthZ-Grant-Types] egyikét használhatják az ügyfél típusától/követelményeitől függően: "engedélyezési kód engedélyezése", "ügyfél hitelesítő adatai", "implicit támogatás" és "erőforrás-tulajdonosi jelszó hitelesítő adatai". Az ügyfélnek visszaadott hitelesítő adat vagy egy hozzáférési [jogkivonat](#access-token), vagy egy, a hozzáférési tokenhez később kicserélt hitelesítési [kód](#authorization-code) , a használt engedélyezési típustól függően.
 
 ## <a name="authorization-server"></a>engedélyezési kiszolgáló
 
 A [OAuth2-engedélyezési keretrendszer][OAuth2-Role-Def]által meghatározottak szerint a hozzáférési jogkivonatok az [ügyfélnek](#client-application) való kiküldéséhez felelős kiszolgáló az [erőforrás-tulajdonos](#resource-owner) sikeres hitelesítése és az engedély beszerzése után. Az [ügyfélalkalmazás](#client-application) az engedélyezési és [jogkivonat](#token-endpoint) -végpontokon keresztül kommunikál [az engedélyezési](#authorization-endpoint) kiszolgálóval, a OAuth2 által meghatározott [engedélyezési támogatásoknak](#authorization-grant)megfelelően.
 
-A Microsoft Identity platform Application Integration esetében a Microsoft Identity platform implementálja az Azure AD-alkalmazások és a Microsoft-szolgáltatások API-k engedélyezési kiszolgálói szerepkörét, például [Microsoft Graph API][Microsoft-Graph]-kat.
+A Microsoft Identity platform Application Integration esetében a Microsoft Identity platform implementálja az Azure AD-alkalmazások és a Microsoft-szolgáltatások API-k engedélyezési kiszolgálói szerepkörét, például [Microsoft Graph API-kat][Microsoft-Graph].
 
 ## <a name="claim"></a>követelés
 
@@ -117,11 +117,11 @@ További részletekért tekintse meg a [Microsoft Identity platform jogkivonat-r
 
 ## <a name="microsoft-identity-platform"></a>Microsoft-identitásplatform
 
-A Microsoft identitásplatformja az Azure Active Directory (Azure AD) identitásszolgáltatás és fejlesztői platform fejlődésének eredménye. Lehetővé teszi a fejlesztők számára, hogy olyan alkalmazásokat építsenek, amelyek az összes Microsoft-identitás használatával biztonságosan jelentkeznek be, és jogkivonattal hívják meg a Microsoft Graphot, más Microsoft API-kat vagy olyan API-kat, amelyeket fejlesztők készítettek. Ez egy teljes körű funkcionalitást biztosító platform, amely egy hitelesítési szolgáltatásból, a könyvtárakból, az alkalmazás-regisztrációból és-konfigurációból, a teljes fejlesztői dokumentációból, a kódokból és más fejlesztői tartalmakból áll. A Microsoft identitásplatformja támogatja a nyílt szabványokat, többek között az OAuth 2.0-t és az OpenID Connectet.
+A Microsoft Identity platform a Azure Active Directory (Azure AD) Identity Service és a fejlesztői platform fejlődése. Lehetővé teszi a fejlesztők számára, hogy olyan alkalmazásokat építsenek, amelyek az összes Microsoft-identitás használatával biztonságosan jelentkeznek be, és jogkivonattal hívják meg a Microsoft Graphot, más Microsoft API-kat vagy olyan API-kat, amelyeket fejlesztők készítettek. Ez egy teljes körű funkcionalitást biztosító platform, amely egy hitelesítési szolgáltatásból, a könyvtárakból, az alkalmazás-regisztrációból és-konfigurációból, a teljes fejlesztői dokumentációból, a kódokból és más fejlesztői tartalmakból áll. A Microsoft identitásplatformja támogatja a nyílt szabványokat, többek között az OAuth 2.0-t és az OpenID Connectet.
 
 ## <a name="multi-tenant-application"></a>több-bérlős alkalmazás
 
-Olyan alkalmazási osztály, amely lehetővé teszi az [consent](#consent) Azure ad- [bérlőben](#tenant)kiépített felhasználók bejelentkezését és belefoglalását, beleértve az ügyfél regisztrálásának helyétől eltérő bérlőket is. A [natív ügyfélalkalmazások](#native-client) a több-bérlős alapértelmezés szerint, míg a [webes ügyfél](#web-client) -és [weberőforrás/API-](#resource-server) Alkalmazások kiválaszthatnak egy vagy több-bérlőt. Ezzel szemben egy egybérlős szolgáltatásként regisztrált webalkalmazás csak olyan felhasználói fiókokból engedélyezheti a bejelentkezéseket, amelyek ugyanabban a bérlőben lettek kiépítve, mint ahol az alkalmazás regisztrálva van.
+Olyan alkalmazási osztály, amely lehetővé teszi az [](#consent) Azure ad- [bérlőben](#tenant)kiépített felhasználók bejelentkezését és belefoglalását, beleértve az ügyfél regisztrálásának helyétől eltérő bérlőket is. A [natív ügyfélalkalmazások](#native-client) a több-bérlős alapértelmezés szerint, míg a [webes ügyfél](#web-client) -és [weberőforrás/API-](#resource-server) Alkalmazások kiválaszthatnak egy vagy több-bérlőt. Ezzel szemben egy egybérlős szolgáltatásként regisztrált webalkalmazás csak olyan felhasználói fiókokból engedélyezheti a bejelentkezéseket, amelyek ugyanabban a bérlőben lettek kiépítve, mint ahol az alkalmazás regisztrálva van.
 
 További részletekért lásd: [bármely Azure ad-felhasználó bejelentkezni a több-bérlős alkalmazás mintájának használatával][AAD-Multi-Tenant-Overview] .
 
@@ -220,9 +220,9 @@ Hasonlóan ahhoz, ahogyan egy egyszerű szolgáltatásnév-objektumot használ e
 
 Egy olyan [ügyfélalkalmazás](#client-application) , amely a webkiszolgálón lévő összes kódot végrehajtja, és a hitelesítő adatai biztonságos tárolásával a kiszolgálón a "bizalmas" ügyfélként működhet. További információ: [OAuth2-ügyfelek típusai és profiljai][OAuth2-Client-Types].
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A Microsoft Identity [platform fejlesztői útmutatója][AAD-Dev-Guide] az összes Microsoft Identity platform-fejlesztéssel kapcsolatos témakör, beleértve az [alkalmazások integrálásának][AAD-How-To-Integrate] áttekintését és a [Microsoft Identity platform hitelesítésének alapjait, valamint a támogatott hitelesítési forgatókönyveket][AAD-Auth-Scenarios]. A [githubon](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=)megtalálhatja a kód mintáit & oktatóanyagokat is.
+A Microsoft Identity [platform fejlesztői útmutatója][AAD-Dev-Guide] az összes Microsoft Identity platform-fejlesztéssel kapcsolatos témában elérhető Kezdőlap, beleértve az [alkalmazások integrálásának][AAD-How-To-Integrate] áttekintését, valamint a [Microsoft Identity platform hitelesítésének és a támogatott hitelesítési forgatókönyveknek][AAD-Auth-Scenarios]az alapjait. A [githubon](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=)megtalálhatja a kód mintáit & oktatóanyagokat is.
 
 A következő Megjegyzések szakaszban visszajelzést és segítséget nyújthat a tartalom pontosításához és formálásához, beleértve az új definíciók kéréseit vagy a meglévők frissítését is.
 
@@ -235,7 +235,7 @@ A következő Megjegyzések szakaszban visszajelzést és segítséget nyújthat
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
 [Graph-Perm-Scopes]: /graph/permissions-reference
 [Graph-App-Resource]: /graph/api/resources/application
-[Graph-Sp-Resource]: /graph/api/resources/serviceprincipal?view=graph-rest-beta
+[Graph-Sp-Resource]: /graph/api/resources/serviceprincipal?view=graph-rest-beta&preserve-view=true
 [Graph-User-Resource]: /graph/api/resources/user
 [AAD-How-Subscriptions-Assoc]:../fundamentals/active-directory-how-subscriptions-associated-directory.md
 [AAD-How-To-Integrate]: ./active-directory-how-to-integrate.md

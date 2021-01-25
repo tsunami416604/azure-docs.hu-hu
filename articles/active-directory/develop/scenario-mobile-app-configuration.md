@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: e2c632de3d602fe2d3e5bfa74f78e90f48412067
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: ebc22e3cf300b664aae5842f7cf924769d4d907e
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98208913"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756496"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>Webes API-kat meghívó mobil alkalmazás konfigurálása
 
@@ -363,6 +363,6 @@ A Hozzáadás `LSApplicationQueriesSchemes` gombra kattintva engedélyezheti a M
 
 A Broker Android rendszeren való engedélyezésével kapcsolatos információkért lásd: [Xamarin. Android](msal-net-use-brokers-with-xamarin-apps.md#brokered-authentication-for-android), felügyelt hitelesítés.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a forgatókönyvben a [token beszerzésével](scenario-mobile-acquire-token.md)léphet be a következő cikkbe.

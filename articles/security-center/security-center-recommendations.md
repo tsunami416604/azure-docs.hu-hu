@@ -11,30 +11,39 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/25/2020
+ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 115d89783a849a9c4c7adb2fceceaf8d1575c785
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: dbda0aecdadd81da0f7681a5fc9b140157d5e8f3
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795986"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756808"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Biztonsági javaslatok az Azure Security Centerben 
+
 Ez a témakör azt ismerteti, hogyan lehet megtekinteni és értelmezni a Azure Security Centerban található javaslatokat az Azure-erőforrások védelmének elősegítése érdekében.
 
 
 ## <a name="what-are-security-recommendations"></a>Mik azok a biztonsági javaslatok?
 
-A javaslatok olyan műveletek, amelyekkel biztonságossá teheti az erőforrásokat.
-
 Security Center rendszeresen elemzi az Azure-erőforrások biztonsági állapotát az esetleges biztonsági rések azonosítása érdekében. Ezután javaslatokat tesz a biztonsági rések megoldására.
+
+A javaslatok olyan műveletek, amelyekkel biztonságossá teheti és megerősítheti az erőforrásait. 
 
 Az egyes javaslatok a következőket biztosítják:
 
 - A probléma rövid leírása
 - A javaslat megvalósításának végrehajtásához szükséges szervizelési lépések
 - Az érintett erőforrások
+
+## <a name="how-does-microsoft-decide-what-needs-securing-and-hardening"></a>Hogyan dönti el a Microsoft a biztonság és a megerősítés szükségletét?
+
+Security Center javaslatai az Azure biztonsági Teljesítményteszten alapulnak. 
+
+Az Azure biztonsági teljesítményteszt a Microsoft által létrehozott, Azure-specifikus irányelvek a biztonsági és megfelelőségi szabályzatok közös megfelelőségi keretrendszereken alapuló bevált eljárásaihoz. Ez a széles körben tiszteletben lévő teljesítményteszt a [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) és a [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) által vezérelt vezérlőkre épül, és a felhő-központú biztonságra összpontosít.
+
+További tudnivalók az [Azure-biztonsági teljesítménytesztről](../security/benchmarks/introduction.md).
 
 ## <a name="monitor-recommendations"></a>Javaslatok figyelése <a name="monitor-recommendations"></a>
 

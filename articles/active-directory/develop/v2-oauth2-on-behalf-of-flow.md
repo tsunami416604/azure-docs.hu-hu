@@ -13,12 +13,12 @@ ms.date: 08/7/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 8c8167142876dfac0ae0aeff51e85b66c65c607b
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: ff8e03b813e2cb890192667e3466d920eaabc72c
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98208848"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756085"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity platform és OAuth 2,0-alapú folyamat
 
@@ -151,7 +151,7 @@ Az alábbi példa egy, a webes API hozzáférési jogkivonatára vonatkozó kér
 }
 ```
 
-A fenti hozzáférési jogkivonat a Microsoft Graph 1.0-s verziójának formátuma. Ennek az az oka, hogy a jogkivonat formátuma az elérni kívánt **erőforráson** alapul, és nem kapcsolódik a kérelemhez használt végpontokhoz. A Microsoft Graph a 1.0-s verziójú tokenek elfogadására van beállítva, így a Microsoft Identity platform 1.0-s verziójú hozzáférési jogkivonatokat hoz létre, amikor az ügyfél a Microsoft Graph jogkivonatait kéri le. Más alkalmazások azt jelezhetik, hogy a 2.0 formátumú jogkivonatok, a 1.0 formátumú tokenek, vagy akár a tulajdonosi, akár a titkosított jogkivonat-formátumok is megadhatók.  A 1.0-s és a v 2.0-s végpontok egyaránt rendelkezhetnek tokenek formátumával – így az erőforrás mindig a token megfelelő formátumát tudja lekérdezni, függetlenül attól, hogy az ügyfél milyen módon vagy hol kérte a jogkivonatot. 
+A fenti hozzáférési jogkivonat a Microsoft Graph 1.0-s verziójának formátuma. Ennek az az oka, hogy a jogkivonat formátuma az elérni kívánt **erőforráson** alapul, és nem kapcsolódik a kérelemhez használt végpontokhoz. A Microsoft Graph a telepítője a v 1.0 tokenek elfogadására, így a Microsoft Identity platform 1.0-s verziójú hozzáférési jogkivonatokat hoz létre, amikor az ügyfél a Microsoft Graph jogkivonatait kéri le. Más alkalmazások azt jelezhetik, hogy a 2.0 formátumú jogkivonatok, a 1.0 formátumú tokenek, vagy akár a tulajdonosi, akár a titkosított jogkivonat-formátumok is megadhatók.  A 1.0-s és a v 2.0-s végpontok egyaránt rendelkezhetnek tokenek formátumával – így az erőforrás mindig a token megfelelő formátumát tudja lekérdezni, függetlenül attól, hogy az ügyfél milyen módon vagy hol kérte a jogkivonatot. 
 
 Csak az alkalmazásoknak kell megkeresniük a hozzáférési jogkivonatokat. Az ügyfeleknek **nem kell** megvizsgálniuk azokat. A kód más alkalmazásaihoz tartozó hozzáférési jogkivonatok vizsgálatakor az alkalmazás váratlanul leáll, amikor az alkalmazás megváltoztatja a tokenek formátumát, vagy megkezdi a titkosítást. 
 
@@ -201,7 +201,7 @@ Az alkalmazás architektúrájának vagy használati módjától függően kül�
 
 ### <a name="default-and-combined-consent"></a>/.default és kombinált engedély
 
-A középső rétegbeli alkalmazás hozzáadja az ügyfelet az ismert ügyfélalkalmazások listájához a jegyzékfájljában, majd az ügyfél egyszerre több és a középső rétegbeli alkalmazáshoz is elindíthat egy kombinált engedélyezési folyamatot. A Microsoft Identity platform végpontján ez a [ `/.default` hatókör](v2-permissions-and-consent.md#the-default-scope)használatával végezhető el. Ha ismert ügyfélalkalmazások használatával aktivál egy beleegyezési képernyőt `/.default` , a beleegyezési képernyő a középső  rétegbeli API számára is megjeleníti az ügyfélre vonatkozó engedélyeket, valamint a középső rétegbeli API számára szükséges engedélyeket is. A felhasználó mindkét alkalmazáshoz hozzájárul, majd az OBO-folyamat működik.
+A középső rétegbeli alkalmazás hozzáadja az ügyfelet az ismert ügyfélalkalmazások listájához a jegyzékfájljában, majd az ügyfél egyszerre több és a középső rétegbeli alkalmazáshoz is elindíthat egy kombinált engedélyezési folyamatot. A Microsoft Identity platformon ez a [ `/.default` hatókör](v2-permissions-and-consent.md#the-default-scope)használatával végezhető el. Ha ismert ügyfélalkalmazások használatával aktivál egy beleegyezési képernyőt `/.default` , a beleegyezési képernyő a középső  rétegbeli API számára is megjeleníti az ügyfélre vonatkozó engedélyeket, valamint a középső rétegbeli API számára szükséges engedélyeket is. A felhasználó mindkét alkalmazáshoz hozzájárul, majd az OBO-folyamat működik.
 
 ### <a name="pre-authorized-applications"></a>Előzetesen jóváhagyott alkalmazások
 
@@ -219,7 +219,7 @@ Bizonyos helyzetekben csak a középső rétegbeli és az előtér-ügyfél egye
 
 Ha az ügyfél az implicit folyamattal id_token kap, és az ügyfél a válasz URL-címében helyettesítő karaktereket is tartalmaz, akkor a id_token nem használható OBO-folyamathoz.  Az implicit engedélyezési folyamaton keresztül beszerzett hozzáférési tokenek azonban továbbra is beválthatók egy bizalmas ügyfél számára, még akkor is, ha a kezdeményező ügyfélhez a helyettesítő karakteres válasz URL-címe van regisztrálva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a OAuth 2,0 protokollról, valamint a szolgáltatás és a szolgáltatás hitelesítésének másik módja ügyfél-hitelesítő adatok használatával.
 

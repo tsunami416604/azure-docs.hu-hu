@@ -1,6 +1,6 @@
 ---
 title: Kód minták a Microsoft Identity platformhoz
-description: A rendelkezésre álló Microsoft Identity platform (v 2.0 végpont) kód mintáinak indexét kínálja forgatókönyv szerint rendezve.
+description: Az elérhető Microsoft Identity platform-mintakód-minták indexét kínálja forgatókönyv szerint rendezve.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -12,23 +12,23 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 3baeb87bf3fe1cdcd5e9f27aed2587eed060c5a8
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 368a1acdfda66c3714979d27037737a75bbada5a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064521"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756649"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity platform Code Samples (v 2.0 végpont)
 
-A Microsoft Identity platformot a következő célra használhatja:
+A Microsoft Identity platform használatával a következőket végezheti el:
 
 - Adja hozzá a hitelesítést és az engedélyezést a webalkalmazásokhoz és a webes API-khoz.
 - Hozzáférési jogkivonat megkövetelése egy védett webes API eléréséhez.
 
-Ez a cikk röviden leírja a Microsoft Identity platform végpontjának mintáit, és hivatkozásokat tartalmaz. Ezek a minták bemutatják, hogyan végezheti el, és az alkalmazásaiban használható kódrészleteket is megadhat. A kód mintája lapon a követelményekkel, a telepítéssel és a telepítéssel kapcsolatos részletes információkkal foglalkozó témaköröket talál. A kódban található megjegyzések segítenek megérteni a kritikus szakaszt.
+Ez a cikk röviden leírja, és a Microsoft Identity platformra mutató hivatkozásokat tartalmaz. Ezek a minták bemutatják, hogyan végezheti el, és az alkalmazásaiban használható kódrészleteket is megadhat. A kód mintája lapon a követelményekkel, a telepítéssel és a telepítéssel kapcsolatos részletes információkkal foglalkozó témaköröket talál. A kódban található megjegyzések segítenek megérteni a kritikus szakaszt.
 
-Az egyes típusok alapvető forgatókönyvének megismeréséhez tekintse meg [a Microsoft Identity platform végpontjának alkalmazás-típusai](v2-app-types.md)című témakört.
+Az egyes típusok alapvető forgatókönyvének megismeréséhez tekintse meg [a Microsoft Identity platform alkalmazás-típusai](v2-app-types.md)című témakört.
 
 Emellett a GitHubon is hozzájárulhat a mintákhoz. További információ: [Microsoft Azure Active Directory minták és dokumentáció](https://github.com/Azure-Samples?page=3&query=active-directory).
 
@@ -36,7 +36,7 @@ Emellett a GitHubon is hozzájárulhat a mintákhoz. További információ: [Mic
 
 Ezek a minták azt mutatják be, hogyan lehet egy egyoldalas alkalmazást biztonságossá tennie a Microsoft Identity platformmal. Ezek a minták a MSAL.js egyikét használják.
 
-| Platform | Description | Hivatkozás |
+| Platform | Leírás | Hivatkozás |
 | -------- | --------------------- | -------- |
 | ![Ez a képen a JavaScript ](media/sample-v2-code/logo_js.png) [-embléma javascript (MSAL.js) látható.](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | SPA-hívások Microsoft Graph |[JavaScript-graphapi-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) |
 | ![Ez a képen a JavaScript ](media/sample-v2-code/logo_js.png) [-embléma javascript (MSAL.js) látható.](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) | SPA-hívások Microsoft Graph az Auth Code flow PKCE |[JavaScript – v2](https://github.com/Azure-Samples/ms-identity-javascript-v2) |
@@ -112,7 +112,7 @@ Az alábbi példa egy, a webböngészőt nem használó eszközön futó nyilvá
 
 Az alábbi példák bemutatják, hogyan konfigurálhatja az alkalmazást úgy, hogy fogadja a bejelentkezéseket bármely Azure Active Directory (Azure AD) bérlőről. Ha úgy konfigurálja az alkalmazást, hogy *több-bérlős* legyen, azt jelenti, hogy egy **szolgáltatott szoftver** (SaaS) alkalmazás számos szervezet számára elérhetővé válik, lehetővé téve, hogy a felhasználók bejelentkezzenek az alkalmazásba, miután beleegyezett a fiók használatára.
 
-| Platform | Description | Hivatkozás |
+| Platform | Leírás | Hivatkozás |
 | -------- | --------------------- | -------- |
 | ![Ez a képen a JavaScript ](media/sample-v2-code/logo_js.png) [-embléma javascript (MSAL.js) látható.](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) | Több-bérlős SPA-hívások Graph API |[MS-Identity-JavaScript-szögletes-Spa-ASPNET-webapi-több-bérlős](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnet-webapi-multitenant/tree/master/Chapter1) |
 | ![Ez a képen a szögletes embléma szögletes ábrázolása ](media/sample-v2-code/logo_angular.png) [(MSAL)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) látható | Több-bérlős SPA több-bérlős egyéni webes API-t hív meg |[MS-Identity-JavaScript-szögletes-Spa-ASPNET-webapi-több-bérlős](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnet-webapi-multitenant/tree/master/Chapter2) |
@@ -121,7 +121,7 @@ Az alábbi példák bemutatják, hogyan konfigurálhatja az alkalmazást úgy, h
 
 ## <a name="web-apis"></a>Webes API-k
 
-Az alábbi példák bemutatják, hogyan lehet védelemmel ellátni egy webes API-t a Microsoft Identity platform-végponttal, és hogyan hívhat meg egy alsóbb rétegbeli API-t a webes API-ból.
+Az alábbi példák bemutatják, hogyan lehet védelemmel ellátni egy webes API-t a Microsoft Identity platformmal, és hogyan hívhat meg egy alsóbb rétegbeli API-t a webes API-ból.
 
 | Platform | Sample |
 | -------- | ------------------- |
@@ -133,7 +133,7 @@ Az alábbi példák bemutatják, hogyan lehet védelemmel ellátni egy webes API
 
 ## <a name="azure-functions-as-web-apis"></a>Azure Functions webes API-kként
 
-Az alábbi példák azt mutatják be, hogyan lehet védelemmel ellátni egy Azure-függvényt a HttpTrigger használatával, és hogyan tehetők elérhetővé a webes API-k a Microsoft Identity platform-végponttal, valamint hogyan hívható le egy alsóbb rétegbeli API
+Az alábbi példák azt mutatják be, hogyan lehet védelemmel ellátni egy Azure-függvényt a HttpTrigger használatával, és hogyan tehetők elérhetővé a webes API-k a Microsoft Identity platformmal, valamint hogyan hívható le egy alsóbb rétegbeli API a
 
 | Platform | Sample |
 | -------- | ------------------- |

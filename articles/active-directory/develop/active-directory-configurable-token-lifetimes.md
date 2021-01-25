@@ -1,7 +1,7 @@
 ---
 title: Konfigurálható jogkivonat élettartama
 titleSuffix: Microsoft identity platform
-description: Megtudhatja, hogyan állíthat be élettartamot a Microsoft Identity platform által kiadott hozzáférés, SAML és azonosító jogkivonatok számára.
+description: Ismerje meg, hogyan állíthat be élettartamot a Microsoft Identity platform által kiadott hozzáférés, SAML és azonosító jogkivonatok számára.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,14 +13,14 @@ ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 33dffa40e0236483d641c2e2bbe318bb62a7724d
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f4ae26a489b823e2347841cf72690d6cd8462611
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678187"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755312"
 ---
-# <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurálható jogkivonat-élettartamok a Microsoft Identity platformban (előzetes verzió)
+# <a name="configurable-token-lifetimes-in-the-microsoft-identity-platform-preview"></a>Konfigurálható jogkivonat-élettartamok a Microsoft Identity platformban (előzetes verzió)
 
 Megadhatja a Microsoft Identity platform által kiadott hozzáférés, azonosító vagy SAML-jogkivonat élettartamát. Beállíthatja a cégen belüli összes alkalmazás jogkivonatának élettartamát több-bérlős alkalmazások (több cég) vagy munkahelyen belüli adott szolgáltatásnév esetén. Jelenleg azonban a [felügyelt identitás-szolgáltatási rendszerbiztonsági tag](../managed-identities-azure-resources/overview.md)esetében nem támogatott a jogkivonat élettartamának konfigurálása.
 
@@ -50,7 +50,7 @@ Az ügyfelek hozzáférési jogkivonatokkal férnek hozzá egy védett erőforr�
 
 ### <a name="saml-tokens"></a>SAML-jogkivonatok
 
-Az SAML-jogkivonatokat számos webalapú SAAS-alkalmazás használja, és a Azure Active Directory egy SAML2 protokoll-végpontján keresztül szerezhetők be. Ezeket a WS-Federationt használó alkalmazások is használják. A token alapértelmezett élettartama 1 óra. Egy alkalmazás szemszögéből a jogkivonat érvényességi idejét a `<conditions …>` jogkivonat elemének NotOnOrAfter értéke adja meg. A jogkivonat érvényességi időtartamának lejárta után az ügyfélnek új hitelesítési kérelmet kell kezdeményeznie, amely az egyszeri bejelentkezés (SSO) munkamenet-jogkivonatának eredményeképpen gyakran elégedett lesz az interaktív bejelentkezés nélkül.
+Az SAML-jogkivonatokat számos webalapú SaaS-alkalmazás használja, és a Azure Active Directory egy SAML2 protokoll-végpontján keresztül szerezhetők be. Ezeket a WS-Federationt használó alkalmazások is használják. A token alapértelmezett élettartama 1 óra. Egy alkalmazás szemszögéből a jogkivonat érvényességi idejét a `<conditions …>` jogkivonat elemének NotOnOrAfter értéke adja meg. A jogkivonat érvényességi időtartamának lejárta után az ügyfélnek új hitelesítési kérelmet kell kezdeményeznie, amely az egyszeri bejelentkezés (SSO) munkamenet-jogkivonatának eredményeképpen gyakran elégedett lesz az interaktív bejelentkezés nélkül.
 
 A NotOnOrAfter értéke az a paraméter használatával módosítható `AccessTokenLifetime` `TokenLifetimePolicy` . A házirendben megadott élettartamra lesz beállítva, ha van ilyen, valamint egy óra, amely öt percet vesz igénybe.
 
@@ -58,7 +58,7 @@ Az elemben megadott tulajdonos megerősítő NotOnOrAfter `<SubjectConfirmationD
 
 ### <a name="id-tokens"></a>Azonosító jogkivonatok
 
-Az azonosító jogkivonatok átadása a webhelyeknek és a natív ügyfeleknek. Az azonosító jogkivonatok egy felhasználó profiljára vonatkozó adatokat tartalmaznak. Az azonosító jogkivonat a felhasználó és az ügyfél adott kombinációjára van kötve. Az azonosító jogkivonatok érvényessége csak a lejárat után tekinthető érvényesnek. A webalkalmazások általában a felhasználó munkamenetének élettartamát tükrözik az alkalmazásban a felhasználó számára kiállított azonosító jogkivonat élettartama alapján. Az azonosító token élettartama beállítható annak szabályozására, hogy a webalkalmazás milyen gyakran járjon le az alkalmazás-munkamenetben, és hogy milyen gyakran szükséges a felhasználó újbóli hitelesítése a Microsoft Identity platformmal (csendes vagy interaktív módon).
+Az azonosító jogkivonatok átadása a webhelyeknek és a natív ügyfeleknek. Az azonosító jogkivonatok egy felhasználó profiljára vonatkozó adatokat tartalmaznak. Az azonosító jogkivonat a felhasználó és az ügyfél adott kombinációjára van kötve. Az azonosító jogkivonatok érvényessége csak a lejárat után tekinthető érvényesnek. A webalkalmazások általában a felhasználó munkamenetének élettartamát tükrözik az alkalmazásban a felhasználó számára kiállított azonosító jogkivonat élettartama alapján. Az azonosító token élettartama beállítható annak szabályozására, hogy a webalkalmazás milyen gyakran járjon le az alkalmazás-munkamenetben, és hogy milyen gyakran szükséges, hogy a felhasználó újra legyen hitelesítve a Microsoft Identity platformmal (csendes vagy interaktív módon).
 
 ### <a name="token-lifetime-policy-properties"></a>Jogkivonat élettartama házirend tulajdonságai
 
@@ -106,7 +106,7 @@ A nyilvános ügyfelek nem tudják biztonságosan tárolni az ügyfél jelszavá
 A Max Age tulajdonság azt az időtartamot használja, ameddig egyetlen jogkivonat használható. 
 
 ### <a name="single-sign-on-session-tokens"></a>Egyszeri bejelentkezés munkamenet-jogkivonatai
-Amikor egy felhasználó a Microsoft Identity platformmal végzi a hitelesítést, az egyszeri bejelentkezési munkamenet (SSO) a felhasználó böngészőjével és a Microsoft Identity platformmal lesz létrehozva. A cookie-t tartalmazó SSO-jogkivonat ezt a munkamenetet jelöli. Az SSO-munkamenet tokenje nem kötődik egy adott erőforráshoz/ügyfélalkalmazás-alkalmazáshoz. Az egyszeri bejelentkezéses munkamenet-tokenek visszavonhatók, és az érvényességük minden használatkor be van jelölve.
+Amikor egy felhasználó hitelesíti magát a Microsoft Identity platformmal, a felhasználó böngészőjével és a Microsoft Identity platformmal létrehoz egy egyszeri bejelentkezéses munkamenetet (SSO). A cookie-t tartalmazó SSO-jogkivonat ezt a munkamenetet jelöli. Az SSO-munkamenet tokenje nem kötődik egy adott erőforráshoz/ügyfélalkalmazás-alkalmazáshoz. Az egyszeri bejelentkezéses munkamenet-tokenek visszavonhatók, és az érvényességük minden használatkor be van jelölve.
 
 A Microsoft Identity platform kétféle egyszeri bejelentkezéses munkamenet-jogkivonatot használ: állandó és nem állandó. Az állandó munkamenet-tokeneket a böngésző állandó cookie-ként tárolja. A nem állandó munkamenet-tokenek munkamenet-cookie-ként vannak tárolva. (A munkamenet-cookie-k megsemmisülnek a böngésző bezárásakor.) Általában nem állandó munkamenet-token van tárolva. Ha azonban a **felhasználó a bejelentkezéskor jelölőnégyzet** bejelölését választja, a rendszer állandó munkamenet-tokent tárol.
 
@@ -274,6 +274,6 @@ A következő parancsmagokat használhatja az egyszerű szolgáltatásnév házi
 | [Get-AzureADServicePrincipalPolicy](/powershell/module/azuread/get-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | Lekéri a megadott egyszerű szolgáltatáshoz kapcsolódó házirendet.|
 | [Remove-AzureADServicePrincipalPolicy](/powershell/module/azuread/remove-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | Eltávolítja a szabályzatot a megadott egyszerű szolgáltatásból.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információért olvassa el [a jogkivonat-élettartamok konfigurálásának példáit](configure-token-lifetimes.md).

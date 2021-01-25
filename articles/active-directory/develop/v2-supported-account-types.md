@@ -1,5 +1,6 @@
 ---
-title: Támogatott fióktípus – Microsoft Identity platform | Azure
+title: Támogatott fióktípus | Azure
+titleSuffix: Microsoft identity platform
 description: A célközönségek és az alkalmazások által támogatott fióktípus fogalmi dokumentációja
 services: active-directory
 author: jmprieur
@@ -12,12 +13,12 @@ ms.date: 07/14/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f0895cfc14b0237db8f2f762602fee949354e6cb
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: d6c184e2983a072dec4b3021a1b58a61cd206dba
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347455"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755980"
 ---
 # <a name="supported-account-types"></a>Támogatott fióktípusok
 
@@ -50,7 +51,7 @@ Bizonyos típusú fiókok nem használhatók bizonyos hitelesítési folyamatokk
 
 Az alkalmazások az [országos felhőkben](authentication-national-cloud.md)is bejelentkezhetnek a felhasználókba. A Microsoft személyes fiókjai azonban ezekben a felhőkben nem támogatottak. Ezért csökkenthető a támogatott fióktípus, ezek a felhők, a szervezet (egyetlen bérlő) vagy bármely szervezet (több-bérlős alkalmazások).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [Azure Active Directory-beli bérletről](./single-and-multi-tenant-apps.md).
 - További információ az [országos felhőkről](./authentication-national-cloud.md).

@@ -14,12 +14,12 @@ ms.date: 11/04/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev, devx-track-java
-ms.openlocfilehash: 0183471db274bb7fca59ed8f24aa87b2bf997fb6
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 1d1512447b5d0474f8fabe92dbc7a36259f4618c
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063739"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754986"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>ADAL a MSAL áttelepítési útmutató Javához
 
@@ -29,7 +29,7 @@ A Javához készült Microsoft Authentication Library (MSAL4J) és az Azure AD A
 
 A MSAL a következő előnyöket kínálja:
 
-- Mivel az újabb Microsoft Identity platform-végpontot használja, a Microsoft-identitások szélesebb körét hitelesítheti, például az Azure ad-identitásokat, a Microsoft-fiókokat, valamint a közösségi és helyi fiókokat az Azure AD Business to Consumer (B2C) szolgáltatáson keresztül.
+- Mivel az újabb Microsoft Identity platformot használja, a Microsoft-identitások, például az Azure AD-identitások, a Microsoft-fiókok és a közösségi és helyi fiókok szélesebb körét hitelesítheti az Azure AD Business a Consumer (B2C) szolgáltatáson keresztül.
 - A felhasználók a legjobb egyszeri bejelentkezési élményt kapják meg.
 - Az alkalmazás lehetővé teszi a növekményes hozzáférést, és megkönnyíti a feltételes hozzáférés támogatását.
 
@@ -37,13 +37,13 @@ A Javához készült MSAL a Microsoft Identity platform használatával javasolt
 
 ## <a name="differences"></a>Eltérések
 
-Ha az Azure AD for Developers (1.0) végpont (és a ADAL4J) használatával dolgozik, érdemes elolvasnia, hogy [Mi a különbség a Microsoft Identity platform (v 2.0) végpontján?](../azuread-dev/azure-ad-endpoint-comparison.md).
+Ha az Azure AD for Developers (1.0) végpont (és a ADAL4J) használatával dolgozik, érdemes elolvasnia, hogy [Mi a különbség a Microsoft Identity platformmal kapcsolatban?](../azuread-dev/azure-ad-endpoint-comparison.md).
 
 ## <a name="scopes-not-resources"></a>Hatókörök nem erőforrásai
 
 A ADAL4J az erőforrások jogkivonatait szerzi be, míg a Java-MSAL a hatókörökhöz tartozó jogkivonatokat vásárol. A Java-osztályokhoz számos MSAL szükséges. Ez a paraméter a szükséges engedélyeket és erőforrásokat deklaráló karakterláncok listája. Tekintse [meg a Microsoft Graph hatókörét](/graph/permissions-reference) a példa hatókörök megjelenítéséhez.
 
-A `/.default` hatókör utótagját hozzáadhatja az erőforráshoz, hogy az alkalmazásokat a 1.0-s verziójú végpontról (ADAL) a Microsoft Identity platform-végpontra (MSAL) telepítse. A (z) erőforrás értékének `https://graph.microsoft.com` megfelelő hatókör értéke például a következő: `https://graph.microsoft.com/.default` .  Ha az erőforrás nem szerepel az URL-címben, de az űrlap erőforrás-azonosítója `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` , továbbra is használhatja a hatókör értékét `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` .
+A `/.default` hatókör utótagját hozzáadhatja az erőforráshoz, hogy az alkalmazások áttelepíthetők legyenek a ADAL a MSAL. A (z) erőforrás értékének `https://graph.microsoft.com` megfelelő hatókör értéke például a következő: `https://graph.microsoft.com/.default` .  Ha az erőforrás nem szerepel az URL-címben, de az űrlap erőforrás-azonosítója `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` , továbbra is használhatja a hatókör értékét `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` .
 
 A különböző típusú hatókörökkel kapcsolatos további részletekért tekintse [meg a Microsoft Identity platform engedélyeit és](./v2-permissions-and-consent.md) a hozzájuk tartozó jogosultságokat, valamint a webes API-k 1.0-s verzióinak [elfogadására vonatkozó](./msal-v1-app-scopes.md) cikkeket.
 

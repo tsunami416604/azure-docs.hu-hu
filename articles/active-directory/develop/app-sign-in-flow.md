@@ -1,7 +1,7 @@
 ---
 title: Alkalmazás-bejelentkezési folyamat a Microsoft Identity platformmal | Azure
 titleSuffix: Microsoft identity platform
-description: Ismerje meg a web-, asztali és mobil alkalmazások bejelentkezési folyamatát a Microsoft Identity platformon (v 2.0).
+description: Ismerje meg a webes, asztali és mobil alkalmazások bejelentkezési folyamatát a Microsoft Identity platformon.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,14 +13,14 @@ ms.date: 05/18/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: af5b27dc85a276c731a61135ab59ab81f5aaf3c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f9f330ab140fa66b5a66a112c47ca2a68ba56bf
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83772199"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755703"
 ---
-# <a name="app-sign-in-flow-with-microsoft-identity-platform"></a>Alkalmazás-bejelentkezési folyamat a Microsoft Identity platformmal
+# <a name="app-sign-in-flow-with-the-microsoft-identity-platform"></a>Alkalmazás-bejelentkezési folyamat a Microsoft Identity platformmal
 
 Ez a témakör a Microsoft Identity platformot használó webes, asztali és mobil alkalmazások alapszintű bejelentkezési folyamatát ismerteti. A Microsoft Identity platform által támogatott bejelentkezési forgatókönyvek megismeréséhez tekintse meg a [hitelesítési folyamatokat és az alkalmazás forgatókönyveit](authentication-flows-app-scenarios.md) .
 
@@ -35,7 +35,7 @@ Amikor egy felhasználó egy webalkalmazáshoz navigál a böngészőben, a köv
 A felhasználó sikeres hitelesítése után:
 
 * A Microsoft Identity platform egy jogkivonatot küld a webalkalmazásnak.
-* A rendszer menti a cookie-t az Azure AD tartományához társítva, amely a felhasználó identitását tartalmazza a böngésző cookie jar-ban. Amikor az alkalmazás legközelebb megnyitja a Microsoft Identity platform engedélyezési végpontját, a böngésző megjeleníti a cookie-t, így a felhasználónak nem kell újra bejelentkeznie. Ez azt is lehetővé teszi, hogy az egyszeri bejelentkezés elérhető legyen. A cookie-t az Azure AD állítja elő, és csak az Azure AD értelmezhető.
+* A rendszer menti a cookie-t az Azure AD tartományához társítva, amely a felhasználó identitását tartalmazza a böngésző cookie jar-ban. Amikor az alkalmazás legközelebb megnyitja a Microsoft Identity platform engedélyezési végpontját, a böngésző megadja a cookie-t, így a felhasználónak nem kell újra bejelentkeznie. Ez azt is lehetővé teszi, hogy az egyszeri bejelentkezés elérhető legyen. A cookie-t az Azure AD állítja elő, és csak az Azure AD értelmezhető.
 * A webalkalmazás ezután érvényesíti a jogkivonatot. Ha az ellenőrzés sikeres, a webalkalmazás megjeleníti a védett lapot, és menti a munkamenet-cookie-t a böngésző cookie jar-fájljában. Ha a felhasználó egy másik oldalra navigál, a webalkalmazás tudja, hogy a felhasználó a munkamenet-cookie alapján van hitelesítve.
 
 A következő adatsor összefoglalja ezt az interakciót:
@@ -48,7 +48,7 @@ A webalkalmazás-fejlesztők jelezhetik, hogy az összes vagy csak bizonyos lapo
 
 Ez az attribútum azt eredményezi, hogy a ASP.NET a felhasználó identitását tartalmazó munkamenet-cookie jelenlétét vizsgálja. Ha a cookie nincs jelen, a ASP.NET átirányítja a hitelesítést a megadott identitás-szolgáltatóhoz. Ha az identitás szolgáltatója Azure AD, a webalkalmazás átirányítja a hitelesítést a szolgáltatásba `https://login.microsoftonline.com` , amely megjeleníti a bejelentkezési párbeszédpanelt.
 
-### <a name="how-a-web-app-delegates-sign-in-to-microsoft-identity-platform-and-obtains-a-token"></a>A webalkalmazások bejelentkeznek a Microsoft Identity platformba, és jogkivonatot szereznek be
+### <a name="how-a-web-app-delegates-sign-in-to-the-microsoft-identity-platform-and-obtains-a-token"></a>A webalkalmazások bejelentkeznek a Microsoft Identity platformba, és jogkivonatot szereznek be
 
 A felhasználó hitelesítése a böngészőn keresztül történik. Az OpenID protokoll szabványos HTTP protokoll-üzeneteket használ.
 
