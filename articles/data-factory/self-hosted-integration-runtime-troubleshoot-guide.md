@@ -5,14 +5,14 @@ services: data-factory
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 11/17/2020
+ms.date: 01/25/2021
 ms.author: lle
-ms.openlocfilehash: ccebdbf428180f8ff4ab10dc6007c3ec35a66362
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: e81a12f4c5d817670fe1f7968184bcc97e78a53c
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503573"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757678"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Saját üzemeltetésű integrációs modul hibáinak megoldása
 
@@ -67,31 +67,6 @@ Egy új tevékenység egy bácsi-hibát okozhat, ha az IR-gép a pillanatnyi nag
 #### <a name="resolution"></a>Feloldás
 
 Keresse meg az erőforrás-használatot és az egyidejű tevékenységek végrehajtását az IR-csomóponton. Állítsa be a tevékenységek belső és kiváltó időpontját, hogy elkerülje a túl sok végrehajtást egy adott IR-csomóponton.
-
-
-### <a name="ssltls-certificate-issue"></a>SSL/TLS-tanúsítvány probléma
-
-#### <a name="symptoms"></a>Hibajelenségek
-
-Ha a **Configuration Manager** tanúsítvány kiválasztásával próbálkozik a (z) SSL (SSL)/Transport Layer Security (TLS) tanúsítvánnyal (Advanced)  >  , a következő hibaüzenet jelenik meg:
-
-"A távelérés beállításai érvénytelenek. A kimenő üzenet identitás-ellenőrzését nem sikerült végrehajtani. A távoli végpont várt DNS-identitása "abc.microsoft.com" volt, de a távoli végpont a (z) "microsoft.com" DNS-jogcímet adta meg. Ha ez egy megbízható távoli végpont, akkor a probléma megoldásához explicit módon meg kell adnia a "microsoft.com" DNS-identitást a EndpointAddress azonosító tulajdonságának a Channel proxy létrehozásakor. "
-
-Az előző példában a kiválasztott tanúsítványhoz hozzá van fűzve a "microsoft.com".
-
-#### <a name="cause"></a>Ok
-
-Ez egy ismert probléma a Windows Communication Foundation (WCF) szolgáltatásban. A WCF SSL/TLS-ellenőrzése csak a **tulajdonos alternatív neve** (San) mező utolsó DNSName érvényes. 
-
-#### <a name="resolution"></a>Feloldás
-
-A helyettesítő tanúsítvány a Azure Data Factory v2 saját üzemeltetésű IR-ben támogatott. Ez a probléma általában azért fordul elő, mert az SSL-tanúsítvány helytelen. A SAN-beli utolsó DNSName érvényesnek kell lennie. 
-
-A DNSName ellenőrzéséhez és kijavítására tegye a következőket: 
-
-1. Nyissa meg a felügyeleti konzolt.
-1. A **tanúsítvány részletei** területen ellenőrizze az értéket a **tulajdonos** és a **tulajdonos alternatív neve** mezőben is. Például a "DNS-név = microsoft.com.com" nem érvényes név.
-1. Forduljon a tanúsítvány kiállító vállalatához, hogy a helytelen DNSName el legyen távolítva.
 
 ### <a name="concurrent-jobs-limit-issue"></a>Egyidejű feladatok korlátjával kapcsolatos probléma
 
@@ -376,7 +351,7 @@ A hiba vizsgálatához lépjen az Integration Runtime eseménynaplóba.
     
         ![Képernyőkép a szolgáltatásfiók "Bejelentkezés" paneljéről.](media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png)
 
-    1. Ellenőrizze, hogy a bejelentkezési szolgáltatás fiókja rendelkezik-e a Windows-szolgáltatás elindításához szükséges **szolgáltatás** -engedélyekkel:
+    1. Ellenőrizze, hogy a bejelentkezési szolgáltatás fiókja rendelkezik-e **szolgáltatás** engedéllyel a Windows-szolgáltatás indításához:
 
         ![Képernyőkép a "Bejelentkezés szolgáltatásként" tulajdonságok panelről.](media/self-hosted-integration-runtime-troubleshoot-guide/logon-as-service.png)
 
@@ -817,7 +792,7 @@ Előfordulhat, hogy más adatgyárakat (különböző bérlőket) is figyelembe 
 
 A saját üzemeltetésű IR nem osztható meg a bérlők között.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A hibaelhárítással kapcsolatos további segítségért próbálkozzon a következő erőforrásokkal:
 

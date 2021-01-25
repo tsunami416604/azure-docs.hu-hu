@@ -3,12 +3,12 @@ title: GYIK – Azure-beli virtuális gépek biztonsági mentése
 description: Ebből a cikkből megismerheti az Azure-beli virtuális gépek Azure Backup szolgáltatással történő biztonsági mentésével kapcsolatos gyakori kérdésekre adott válaszokat.
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: ba2779305302e91f68cb2664c90f53fdf9a9ca55
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: edc48aaf0a05867de81bd7d5f64f8be4e54ddb8a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008350"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757508"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Gyakori kérdések – Azure-beli virtuális gépek biztonsági mentése
 
@@ -114,6 +114,10 @@ A Azure Backup mostantól támogatja a szelektív lemezek biztonsági mentését
 
 Ha a [bérlő megváltozik](/azure/devops/organizations/accounts/change-azure-ad-connection) , le kell tiltania és újra engedélyeznie kell a [felügyelt identitásokat](../active-directory/managed-identities-azure-resources/overview.md) , hogy a biztonsági mentések újra működjenek.
 
+### <a name="does-azure-backup-support-backing-up-nfs-files-mounted-from-storage"></a>Támogatja a Azure Backup a tárterülethez csatlakoztatott NFS-fájlok biztonsági mentését?
+
+A Azure Backup nem támogatja a Storage-ból vagy más NFS-kiszolgálókról a Linux vagy Windows rendszerű gépekre csatlakoztatott NFS-fájlok biztonsági mentését. Csak azokat a lemezeket támogatja, amelyek helyileg vannak csatlakoztatva a virtuális géphez.
+
 ## <a name="restore"></a>Visszaállítás
 
 ### <a name="how-do-i-decide-whether-to-restore-disks-only-or-a-full-vm"></a>Hogyan eldönteni, hogy csak lemezeket vagy teljes virtuális gépet szeretne-e visszaállítani?
@@ -156,13 +160,13 @@ Az [azonnali visszaállítási](backup-instant-restore-capability.md) funkció s
 
 ### <a name="what-happens-when-we-change-the-key-vault-settings-for-the-encrypted-vm"></a>Mi történik, ha módosítjuk a titkosított virtuális gép Key Vault-beállításait?
 
-Miután módosította a kulcstároló beállításait a titkosított virtuális gép számára, a biztonsági mentések továbbra is az új készlettel fognak működni. A helyreállítási pont visszaállítása után azonban a módosítás előtt vissza kell állítania a kulcstartóban lévő titkos kulcsokat, mielőtt a virtuális gépet létre tudja hozni belőle. További információkért tekintse meg [ezt a cikket](./backup-azure-restore-key-secret.md).
+Miután módosította a kulcstároló beállításait a titkosított virtuális gép számára, a biztonsági mentések továbbra is az új készlettel fognak működni. A helyreállítási pont visszaállítása után azonban a módosítás előtt vissza kell állítania a kulcstartóban lévő titkos kulcsokat, mielőtt a virtuális gépet létre tudja hozni belőle. További információkért tekintse meg ezt a [cikket](./backup-azure-restore-key-secret.md).
 
 Az olyan műveletek, mint a titkos kulcs/kulcsok átadása nem igénylik ezt a lépést, és ugyanezt a kulcstartót is használhatja a visszaállítás után.
 
 ### <a name="can-i-access-the-vm-once-restored-due-to-a-vm-having-broken-relationship-with-domain-controller"></a>A virtuális gép a tartományvezérlővel megszakadt kapcsolattal rendelkező virtuális gépek miatt is elérhető a helyreállításhoz?
 
-Igen, a virtuális gépet a rendszer visszaállította a tartományvezérlővel megszakadt kapcsolatot biztosító virtuális gép miatt. További információkért tekintse meg [ezt a cikket](./backup-azure-arm-restore-vms.md#post-restore-steps).
+Igen, a virtuális gépet a rendszer visszaállította a tartományvezérlővel megszakadt kapcsolatot biztosító virtuális gép miatt. További információkért tekintse meg ezt a [cikket](./backup-azure-arm-restore-vms.md#post-restore-steps).
 
 ### <a name="can-i-cancel-an-in-progress-restore-job"></a>Törölhetek egy folyamatban lévő visszaállítási feladatot?
 Nem, a folyamatban lévő visszaállítási feladat nem szakítható meg.

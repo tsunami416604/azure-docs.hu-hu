@@ -1,25 +1,25 @@
 ---
 title: A Azure Security Center beépített szabályzat-definíciói
 description: A Azure Security Center Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 01/21/2021
+ms.date: 01/24/2021
 ms.topic: reference
 author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 3f667ed48a5188ce63665025786e990c47a9690b
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 1192e765dc3cc001f8d1a1c6a28fe1a5cf4c9ecc
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98700792"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757271"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-security-center"></a>Beépített Azure Policy-definíciók az Azure Security Centerben
 
-Ez az oldal a Azure Security Centerhoz kapcsolódó [Azure Policy](../governance/policy/overview.md) beépített szabályzat-definíciók indexe. A következő csoportházirend-definíciók állnak rendelkezésre:
+Ez az oldal [Azure Policy](../governance/policy/overview.md) Azure Security Centerhoz kapcsolódó beépített szabályzat-definíciók indexe. A következő csoportházirend-definíciók állnak rendelkezésre:
 
 - A [kezdeményezések](#azure-security-center-initiatives) csoport felsorolja a "Security Center" kategóriában Azure Policy kezdeményezési definíciókat.
-- Az [alapértelmezett kezdeményezési](#azure-security-center-initiatives) csoport felsorolja a [Azure Security Center](./index.yml) alapértelmezett kezdeményezés részét képező összes Azure Policy-definíciót.
+- Az [alapértelmezett kezdeményezési](#azure-security-center-initiatives) csoport felsorolja a Security Center alapértelmezett kezdeményezésének részét képező összes Azure Policy-definíciót, az [Azure biztonsági teljesítménytesztét](../security/benchmarks/introduction.md). Ez a Microsoft által készített, széles körben elismert teljesítményteszt a [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) és a [National Institute of Standards and Technology (NIST) technológiára](https://www.nist.gov/) épül, amelynek középpontjában a felhő-központú biztonság.
 - A [Kategória](#azure-security-center-category) csoport felsorolja az összes Azure Policy definíciót a "Security Center" kategóriában.
 
 További információ a biztonsági házirendekről: [a biztonsági házirendek használata](./tutorial-security-policy.md). További Azure Policy a más szolgáltatásokhoz készült beépített [definíciók: Azure Policy beépített definíciók](../governance/policy/samples/built-in-policies.md).

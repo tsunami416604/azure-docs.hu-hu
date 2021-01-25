@@ -4,12 +4,12 @@ description: Összefoglalja az Azure-beli virtuális gépek Azure Backup szolgá
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: ade92e445897e36139e74353fa703ddf50d3f9b3
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: d3329d9cac9547fbe9ec971bb8944f50971732b5
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562726"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757406"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure-beli virtuális gépek biztonsági mentésének támogatási mátrixa
 
@@ -81,6 +81,7 @@ Az Azure-beli virtuális gépek linuxos biztonsági mentését Azure Backup tám
 - Az Azure Backup nem támogatja a 32 bites operációs rendszereket.
 - Más, saját linuxos disztribúciók is működhetnek, ha a Linux rendszerhez készült [Azure VM-ügynök](../virtual-machines/extensions/agent-linux.md) elérhető a virtuális gépen, és a Python is támogatott.
 - A Azure Backup nem támogatja a proxyval konfigurált linuxos virtuális gépeket, ha nincs telepítve a Python 2,7-es verziója.
+- A Azure Backup nem támogatja a Storage-ból vagy más NFS-kiszolgálókról a Linux vagy Windows rendszerű gépekre csatlakoztatott NFS-fájlok biztonsági mentését. Csak azokat a lemezeket támogatja, amelyek helyileg vannak csatlakoztatva a virtuális géphez.
 
 ## <a name="backup-frequency-and-retention"></a>Biztonsági mentés gyakorisága és megőrzése
 
@@ -144,10 +145,11 @@ Egyéni rendszerképből (külső féltől) üzembe helyezett virtuális gépek 
 Az Azure-ba migrált virtuális gépek biztonsági mentése| Támogatott.<br/><br/> A virtuális gép biztonsági mentéséhez telepíteni kell a virtuálisgép-ügynököt az áttelepített gépre.
 Több virtuális gépre kiterjedő konzisztencia biztonsági mentése | Azure Backup nem biztosít több virtuális gép között az adatés az alkalmazások konzisztenciáját.
 Biztonsági mentés [diagnosztikai beállításokkal](../azure-monitor/platform/platform-logs-overview.md)  | Támogatott. <br/><br/> Ha a diagnosztikai beállításokkal rendelkező Azure-beli virtuális gép visszaállítása [új](backup-azure-arm-restore-vms.md#create-a-vm) lehetőség használatával aktiválódik, a visszaállítás sikertelen lesz.
-A zóna által rögzített virtuális gépek visszaállítása | Támogatott (egy olyan virtuális gép esetében, amelyről január 2019 után biztonsági másolat készül, és ahol rendelkezésre áll a [rendelkezésre állási zónák](https://azure.microsoft.com/global-infrastructure/availability-zones/) ).<br/><br/>Jelenleg a virtuális gépeken rögzített zónára történő visszaállítást támogatjuk. Ha azonban a zóna nem érhető el, a visszaállítás sikertelen lesz.
+A zóna által rögzített virtuális gépek visszaállítása | Támogatott (egy olyan virtuális gép esetében, amelyről január 2019 után biztonsági másolat készül, és ahol rendelkezésre áll a [rendelkezésre állási zónák](https://azure.microsoft.com/global-infrastructure/availability-zones/) ).<br/><br/>Jelenleg a virtuális gépeken rögzített zónára történő visszaállítást támogatjuk. Ha azonban a zóna áramkimaradás miatt nem érhető el, a visszaállítás sikertelen lesz.
 Gen2 virtuális gépek | Támogatott <br> Azure Backup támogatja a [Gen2 virtuális gépek](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/)biztonsági mentését és helyreállítását. Ha ezeket a virtuális gépeket helyreállítási pontról állítják vissza, a rendszer [Gen2 virtuális gépekként](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/)állítja vissza őket.
 Azure-beli virtuális gépek biztonsági mentése zárolásokkal | Nem felügyelt virtuális gépek esetén nem támogatott. <br><br> Felügyelt virtuális gépek esetén támogatott.
 [Spot virtuális gépek](../virtual-machines/spot-vms.md) | Támogatott. Azure Backup a helyszíni virtuális gépeket normál Azure-beli virtuális gépekként visszaállítja.
+[Dedikált Azure-gazdagép](https://docs.microsoft.com/azure/virtual-machines/dedicated-hosts) | Támogatott
 
 ## <a name="vm-storage-support"></a>VM-tároló támogatása
 
@@ -165,6 +167,7 @@ Lemez átméretezése védett virtuális gépen | Támogatott.
 Megosztott tároló| A virtuális gépek Fürt megosztott kötete (CSV) vagy Scale-Out fájlkiszolgáló használatával történő biztonsági mentése nem támogatott. A CSV-írók valószínűleg sikertelenek lesznek a biztonsági mentés során. A Restore utasításban előfordulhat, hogy a CSV-köteteket tartalmazó lemezek nem jönnek létre.
 [Megosztott lemezek](../virtual-machines/disks-shared-enable.md) | Nem támogatott.
 ultra SSD lemezek | Nem támogatott. További részletekért tekintse meg ezeket a [korlátozásokat](selective-disk-backup-restore.md#limitations).
+[Ideiglenes lemezek](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview#temporary-disk) | Azure Backup nem készít biztonsági másolatot az ideiglenes lemezekről.
 
 ## <a name="vm-network-support"></a>VM-hálózat támogatása
 

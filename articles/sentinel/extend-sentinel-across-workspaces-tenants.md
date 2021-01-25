@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 60e86c7c849bf09b3a5577453a6935466ab447f6
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 4312a819f8fd41805dca095556efdc6189f23af9
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95483913"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757119"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Az Azure Sentinel kiterjesztése munkaterületek és bérlők között
 
@@ -94,18 +94,18 @@ Egy függvény is egyszerűsítheti a gyakran használt Uniót. Például menthe
 
 Ezután megírhat egy lekérdezést mindkét munkaterületre a-től kezdődően `unionSecurityEvent | where ...` .
 
-#### <a name="scheduled-alerts"></a>Ütemezett riasztások
+#### <a name="cross-workspace-analytics-rules"></a>Több-munkaterület elemzési szabályai<a name="scheduled-alerts"></a>
+<!-- Bookmark added for backward compatibility with old heading -->
+Az ütemezett elemzési szabályokban mostantól több munkaterület-lekérdezés is szerepelhet, a következő korlátozásokkal:
 
-Az ütemezett riasztások az elemzési szabályokban mostantól több munkaterület-lekérdezést is befoglalhatnak, a következő korlátozásokkal:
-
-- Akár 10 munkaterület is szerepelhet egyetlen lekérdezésben.
+- Akár 15 munkaterület is szerepelhet egyetlen lekérdezésben.
 - Az Azure Sentinel szolgáltatást a lekérdezésben hivatkozott összes munkaterületre telepíteni kell.
 
 > [!NOTE] 
 > Ha több munkaterületet kérdez le ugyanabban a lekérdezésben, az hatással lehet a teljesítményre, ezért csak akkor javasolt, ha a logikához szükség van erre a funkcióra.
 
-### <a name="using-cross-workspace-workbooks"></a>Több munkaterületet tartalmazó munkafüzetek használata
-
+#### <a name="cross-workspace-workbooks"></a>Több munkaterületet tartalmazó munkafüzetek<a name="using-cross-workspace-workbooks"></a>
+<!-- Bookmark added for backward compatibility with old heading -->
 A [munkafüzetek](./overview.md#workbooks) irányítópultokat és alkalmazásokat biztosítanak az Azure Sentinel számára. Több munkaterülettel végzett munka esetén a munkaterületeken figyelést és műveleteket biztosítanak.
 
 A munkafüzetek a három módszer egyikében biztosíthatnak több munkaterületet érintő lekérdezéseket, amelyek mindegyike különböző szintű végfelhasználói szakértelmet tartalmaz:
@@ -117,7 +117,7 @@ A munkafüzetek a három módszer egyikében biztosíthatnak több munkaterület
 | A munkafüzet interaktív szerkesztése | Egy meglévő munkafüzetet módosító speciális felhasználó szerkesztheti a lekérdezéseket, és kiválasztja a kívánt munkaterületeket a szerkesztő munkaterület-választójának használatával. | Ez a beállítás lehetővé teszi, hogy a Kiemelt felhasználók könnyedén módosíthassák a meglévő munkafüzeteket több munkaterülettel való együttműködéshez. |
 |
 
-### <a name="cross-workspace-hunting"></a>Munkaterületek közötti vadászat
+#### <a name="cross-workspace-hunting"></a>Munkaterületek közötti vadászat
 
 Az Azure Sentinel előre feltöltött lekérdezési mintákat biztosít a kezdéshez, és megismerheti a táblákat és a lekérdezési nyelvet. Ezeket a beépített vadászati lekérdezéseket folyamatosan fejlesztjük a Microsoft biztonsági kutatói, az új lekérdezések hozzáadásával és a meglévő lekérdezések finomhangolásával, így lehetővé teszi az új észlelések keresését és az esetlegesen a biztonsági eszközök által észrevétlenül felderített behatolási jelek azonosítását.  
 
@@ -135,7 +135,7 @@ A fentiekben említettek szerint a különböző Azure Sentinel-munkaterületek 
 
 Az Azure Lighthouse használata esetén ajánlott minden egyes Azure Sentinel-szerepkörhöz csoportot létrehozni, és az egyes bérlők engedélyeit delegálni ezekre a csoportokra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebből a dokumentumból megtudta, hogyan bővíthető az Azure Sentinel képességei több munkaterületre és bérlőre. Az Azure Sentinel több-munkaterület architektúrájának megvalósításával kapcsolatos gyakorlati útmutatásért tekintse meg a következő cikkeket:
 
 - Ismerje meg, hogyan [dolgozhat több Bérlővel](./multiple-tenants-service-providers.md) az Azure sentinelben az Azure Lighthouse használatával.

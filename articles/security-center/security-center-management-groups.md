@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2020
 ms.author: memildin
-ms.openlocfilehash: d03177e3224bbd3f53320871efc6a0d6b3ea479d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 5b257e45a86a7b22e9064fcfc6092b3c946ae99b
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922755"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757641"
 ---
 # <a name="organize-management-groups-subscriptions-and-tenant-wide-visibility"></a>Felügyeleti csoportok, előfizetések és bérlői szintű láthatóság rendszerezése
 
@@ -107,6 +107,36 @@ Bérlői szintű engedélyek kiosztása:
 
 1. Ha emelt szintű hozzáférést, nyissa meg vagy frissítse Azure Security Center annak ellenőrzéséhez, hogy látható-e az Azure AD-bérlő összes előfizetése. 
 
+
+## <a name="request-tenant-wide-permissions-when-yours-are-insufficient"></a>Bérlői szintű engedélyek kérése, ha a tiéd nem elegendő
+
+Ha bejelentkezik Security Centerba, és megjelenik egy szalagcím, amely arról tájékoztat, hogy a nézet korlátozott, a through gombra kattintva küldhet egy kérést a szervezet globális rendszergazdájának. A kérelemben megadhatja a hozzárendelni kívánt szerepkört, és a globális rendszergazda döntést fog hozni arról, hogy melyik szerepkört kell megadnia. 
+
+Ez a globális rendszergazda döntése, hogy elfogadják vagy elutasítja ezeket a kéréseket. 
+
+> [!IMPORTANT]
+> Hét naponta csak egy kérést lehet elküldeni.
+
+Emelt szintű engedélyek kérése a globális rendszergazdától:
+
+1. A Azure Portal nyissa meg Azure Security Center.
+
+1. Ha megjelenik a "korlátozott információ" felirat. Válassza ki.
+
+    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions.png" alt-text="A felhasználó bérlői szintű engedélyeket kérhet a felhasználónak, hogy tájékoztassa a felhasználót.":::
+
+1. A részletes kérelem űrlapján válassza ki a kívánt szerepkört és annak indoklását, hogy miért van szüksége ezekre az engedélyekre.
+
+    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions-details.png" alt-text="A részleteket tartalmazó lap, amely a bérlői szintű engedélyeket kéri az Azure globális rendszergazdájától":::
+
+1. Válassza a **hozzáférés kérése** lehetőséget.
+
+    A rendszer e-mailt küld a globális rendszergazdának. Az e-mail tartalmaz egy hivatkozást Security Center, ahol jóváhagyhatja vagy elutasíthatja a kérést.
+
+    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions-email.png" alt-text="E-mail küldése a globális rendszergazdának új engedélyek megadásához":::
+
+    Miután a globális rendszergazda kiválasztja **a kérelem áttekintését** , és befejezi a folyamatot, a döntés e-mailben szerepel a kérelmező felhasználó számára. 
+
 ## <a name="assign-azure-roles-to-other-users"></a>Azure-szerepkörök kiosztása más felhasználóknak
 
 ### <a name="assign-azure-roles-to-users-through-the-azure-portal"></a>Azure-szerepköröket rendelhet a felhasználókhoz a Azure Portalon keresztül: 
@@ -149,6 +179,7 @@ Bérlői szintű engedélyek kiosztása:
     ```
 
 ## <a name="remove-elevated-access"></a>Emelt szintű hozzáférés eltávolítása 
+
 Miután hozzárendelte az Azure-szerepköröket a felhasználókhoz, a bérlői rendszergazdának el kell távolítania magát a felhasználói hozzáférés rendszergazdai szerepkörből.
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) vagy a [Azure Active Directory felügyeleti központba](https://aad.portal.azure.com).
@@ -161,7 +192,7 @@ Miután hozzárendelte az Azure-szerepköröket a felhasználókhoz, a bérlői 
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebből a cikkből megtudhatta, hogyan szerezhet Azure Security Center bérlői szintű láthatóságot. A kapcsolódó információk a következő témakörben találhatók:
 
 - [Engedélyek az Azure Security Centerben](security-center-permissions.md)

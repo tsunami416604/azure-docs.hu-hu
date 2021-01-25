@@ -4,12 +4,12 @@ description: Összefoglalja a Azure Backup szolgáltatás támogatási beállít
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: be0c576da6e38233423a79f562f767de806d7640
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 833837c317d22bf031aee4608ff4c93775736a34
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008367"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757440"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup támogatási mátrixa
 
@@ -56,7 +56,7 @@ A következő mi támogatott, ha biztonsági mentést szeretne készíteni a hel
 
 ### <a name="azure-vm-limits"></a>Azure-beli virtuális gépek korlátai
 
-**Korlát** | **Részletek**
+**Korlátot** | **Részletek**
 --- | ---
 **Azure-beli VM-adatlemezek** | Tekintse [meg az Azure virtuális gépek biztonsági mentésének támogatási mátrixát](./backup-support-matrix-iaas.md#vm-storage-support).
 **Azure-beli virtuális gép adatlemezének mérete** | Az egyes lemezek mérete legfeljebb 32 TB lehet, és a virtuális gép összes lemezének maximális 256 TB-os kombinációja.
@@ -150,12 +150,12 @@ Azure Backup hozzáadta a régiók közötti visszaállítási szolgáltatást a
 
 | Biztonságimásolat-kezelés típusa | Támogatott                                                    | Támogatott régiók |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | Igen.   Támogatott a 4 TB-nál kisebb lemezzel rendelkező titkosított virtuális gépek és virtuális gépek esetében | Minden Azure-beli nyilvános régió.  |
+| Azure VM               | Az Azure-beli virtuális gépek felügyelt és nem felügyelt lemezekkel egyaránt támogatottak. Klasszikus virtuális gépek esetén nem támogatott. | Minden Azure-beli nyilvános régió.  |
 | SQL/SAP HANA | Igen                                                          | Az összes nyilvános régió Franciaország kivételével |
-| MARS-ügynök/helyszíni  | Nem                                                           | N.A.               |
-| AFS (Azure-fájlmegosztás)                 | Nem                                                           | N.A.               |
+| MARS-ügynök/helyszíni  | Nem                                                           | N/A               |
+| AFS (Azure-fájlmegosztás)                 | Nem                                                           | N/A               |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Tekintse át](backup-support-matrix-iaas.md) az Azure virtuális gépek biztonsági mentésének támogatási mátrixát.
 

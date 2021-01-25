@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 12943d5d22a9e81c7e99522fa4728f4798549682
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 01a88be9c54a2701130daace26c44159ee364e4c
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499951"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757243"
 ---
 # <a name="configure-ip-firewall-rules-to-allow-indexer-connections-azure-cognitive-search"></a>IP-tűzfalszabályok konfigurálása az indexelő kapcsolatainak engedélyezéséhez (Azure Cognitive Search)
 
@@ -30,7 +30,7 @@ Szerezze be a keresési szolgáltatás teljes tartománynevét (FQDN). Ez a köv
 
    ![Szolgáltatás teljes tartománynevének beszerzése](media\search-indexer-howto-secure-access\search-service-portal.png "Szolgáltatás teljes tartománynevének beszerzése")
 
-A keresési szolgáltatás IP-címe `nslookup` a teljes tartománynév (vagy a) használatával szerezhető be `ping` . Az alábbi példában a "10.50.10.50" kifejezést adja hozzá egy bejövő szabályhoz az Azure Storage-tűzfalon.
+A keresési szolgáltatás IP-címe `nslookup` a teljes tartománynév (vagy a) használatával szerezhető be `ping` . Az alábbi példában a "150.0.0.1" kifejezést adja hozzá egy bejövő szabályhoz az Azure Storage-tűzfalon. A tűzfalbeállítások frissítése után akár 15 percet is igénybe vehet, hogy a keresési szolgáltatás indexelő hozzáférhessen az Azure Storage-fiókhoz.
 
 ```azurepowershell
 

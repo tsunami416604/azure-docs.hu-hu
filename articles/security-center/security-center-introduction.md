@@ -12,18 +12,16 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: b52fbd820c4b4603481f585ea0b0983720cabb22
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: 3ed290cc35195dfb02db9fbb72f092f6f4688291
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709085"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757305"
 ---
 # <a name="what-is-azure-security-center"></a>Mi az az Azure Security Center?
-
-[!INCLUDE [Solorigate banner](../../includes/security-center-solorigate.md)]
 
 A Azure Security Center egy egységes infrastruktúra-alapú biztonsági felügyeleti rendszer, amely erősíti az adatközpontok biztonsági állapotát, és komplex veszélyforrások elleni védelmet biztosít a felhőben lévő hibrid számítási feladatokhoz, akár az Azure-ban, akár nem, akár a helyszínen is.
 
@@ -74,7 +72,7 @@ Security Center segít **AZONOSÍTANI az árnyék-előfizetéseket**. Ha az irá
 
 ### <a name="continuous-assessments"></a>Folyamatos értékelések
 
-Security Center folyamatosan felfedi a számítási feladatok során üzembe helyezett új erőforrásokat, és megállapítja, hogy az ajánlott biztonsági eljárásoknak megfelelően vannak-e konfigurálva, és ha nem, akkor a rendszer megjelöli őket, és megtekinti azokat a javaslatokat, amelyeket a gépek védelme érdekében javítania kell.
+Security Center folyamatosan felfedi a számítási feladatok során üzembe helyezett új erőforrásokat, és megállapítja, hogy az ajánlott biztonsági eljárásoknak megfelelően vannak-e konfigurálva, és ha nem, akkor a rendszer megjelöli őket, és megtekinti azokat a javaslatokat, amelyeket a gépek védelme érdekében javítania kell. A javaslatok ezen listáját az [Azure biztonsági teljesítményteszt](../security/benchmarks/introduction.md), a Microsoft által létrehozott, az Azure-specifikus irányelvek a biztonsági és megfelelőségi ajánlott eljárásokra vonatkozóan a közös megfelelőségi keretrendszerek alapján engedélyezheti és támogatja. Ez a széles körben tiszteletben lévő teljesítményteszt a [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) és a [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) által vezérelt vezérlőkre épül, és a felhő-központú biztonságra összpontosít.
 
 Annak megértéséhez, hogy az egyes javaslatok milyen fontosak az általános biztonsági helyzethez, Security Center csoportosítsa a javaslatokat a biztonsági ellenőrzésekben, és hozzáadja a **biztonságos pontszám** értéket az egyes vezérlőkhöz. Ez kulcsfontosságú a **biztonsági feladatok rangsorolásának** lehetővé tételéhez.
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: f2807501b1e18d4cbffaa34d70bccf8d70565266
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: b6836eee7e0e6ccbfa2628e0e371152f31ddf9d2
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747223"
+ms.locfileid: "98757542"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor – ügyfél által kezelt kulcs 
 
@@ -126,7 +126,7 @@ Ezek a beállítások a CLI-n és a PowerShellen keresztül Key Vault frissíthe
 ## <a name="create-cluster"></a>Fürt létrehozása
 
 A fürtök két [felügyelt identitási típust](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)támogatnak: a rendszer által hozzárendelt és felhasználó által hozzárendelt, míg a forgatókönyvtől függően egyetlen identitást lehet definiálni a fürtben. 
-- A rendszer által hozzárendelt felügyelt identitás egyszerűbb, és automatikusan jön létre a fürt létrehozásával, ha az identitás `type` "*SystemAssigned*" értékre van állítva. Ez az identitás később is felhasználható a fürt Key Vaulthoz való hozzáférésének biztosításához. 
+- A rendszer által hozzárendelt felügyelt identitás egyszerűbb, és automatikusan jön létre a fürt létrehozásával, ha az identitás `type` "*SystemAssigned*" értékre van állítva. Ezt az identitást később is felhasználhatja a tárhelyhez való hozzáférés biztosításához a Key Vault a becsomagolási és a kicsomagolási műveletekhez. 
   
   Identitás beállításai a fürtben a rendszer által hozzárendelt felügyelt identitáshoz
   ```json
@@ -137,7 +137,7 @@ A fürtök két [felügyelt identitási típust](../../active-directory/managed-
   }
   ```
 
-- Ha az ügyfél által felügyelt kulcsot a fürt létrehozásakor kívánja konfigurálni, rendelkeznie kell egy kulcs-és felhasználó által hozzárendelt identitással, amelyet előzőleg a Key Vault kell megadni, majd létre kell hoznia a fürtöt a következő beállításokkal: Identity `type` as "*UserAssigned*", az `UserAssignedIdentities` identitás erőforrás-azonosítójával.
+- Ha az ügyfél által felügyelt kulcsot a fürt létrehozásakor kívánja konfigurálni, rendelkeznie kell egy kulcs-és felhasználó által hozzárendelt identitással, amelyet előzőleg a Key Vault kell megadni, majd létre kell hoznia a fürtöt a következő beállításokkal: Identity `type` as "*UserAssigned*", `UserAssignedIdentities` az identitás *erőforrás-azonosítójával* .
 
   Identitás beállításai a fürtben felhasználó által hozzárendelt felügyelt identitáshoz
   ```json
@@ -151,27 +151,7 @@ A fürtök két [felügyelt identitási típust](../../active-directory/managed-
   ```
 
 > [!IMPORTANT]
-> Ha a Key Vault Private-Link (vNet), nem használhatja az ügyfél által felügyelt kulcsot a felhasználóhoz rendelt felügyelt identitással. Ebben a forgatókönyvben a rendszerhez rendelt felügyelt identitást is használhatja.
-
-```json
-{
-  "identity": {
-    "type": "SystemAssigned"
-}
-```
- 
-a következővel:
-
-```json
-{
-  "identity": {
-  "type": "UserAssigned",
-    "userAssignedIdentities": {
-      "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft. ManagedIdentity/UserAssignedIdentities/<user-assigned-managed-identity-name>"
-      }
-}
-```
-
+> A felhasználó által hozzárendelt felügyelt identitások nem használhatók, ha a Key Vault Private-Link (vNet). Ebben a forgatókönyvben a rendszerhez rendelt felügyelt identitást is használhatja.
 
 Kövesse a [dedikált fürtök című cikkben](../log-query/logs-dedicated-clusters.md#creating-a-cluster)bemutatott eljárást. 
 

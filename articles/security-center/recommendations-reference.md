@@ -4,22 +4,21 @@ description: Ez a cikk Azure Security Center biztonsági javaslatait sorolja fel
 author: memildin
 ms.service: security-center
 ms.topic: reference
-ms.date: 01/12/2021
+ms.date: 01/24/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 11d4830908b4e86da12cd5e40cc26b1c1b1aecbd
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: cd72e904f659b7bd9c7e2df86b46fe20bd26ec33
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133047"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757097"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Biztonsági javaslatok – gyorsútmutató
 
 Ez a cikk a Azure Security Centerban esetlegesen megjelenő javaslatokat sorolja fel. A környezetben megjelenő javaslatok a védeni kívánt erőforrásoktól és a testreszabott konfigurációtól függenek.
 
-A Security Center javaslatai ajánlott eljárásokon alapulnak. Néhány az **Azure-biztonsági teljesítményteszthez** igazodik, amely a Microsoft által készített, általános megfelelőségi keretrendszereken alapuló, Azure-ra vonatkozó biztonsági és megfelelőségi ajánlott eljárások gyűjteménye.
-[További tudnivalók az Azure-biztonsági teljesítménytesztről](../security/benchmarks/introduction.md).
+Security Center javaslatai az [Azure biztonsági teljesítményteszten](../security/benchmarks/introduction.md)alapulnak. Az Azure biztonsági teljesítményteszt a Microsoft által létrehozott, Azure-specifikus irányelvek a biztonsági és megfelelőségi szabályzatok közös megfelelőségi keretrendszereken alapuló bevált eljárásaihoz. Ez a széles körben tiszteletben lévő teljesítményteszt a [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) és a [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) által vezérelt vezérlőkre épül, és a felhő-központú biztonságra összpontosít.
 
 Ha többet szeretne megtudni ezekről a javaslatokról, tekintse meg a [Azure Security Center javaslatainak szervizelésével](security-center-remediate-recommendations.md)foglalkozó témakört.
 
@@ -54,7 +53,7 @@ A biztonságos pontszám a befejezett Security Center javaslatok számán alapul
 |**A pod biztonsági házirendeket úgy kell meghatározni, hogy csökkentse a támadási vektort a szükségtelen alkalmazási jogosultságok eltávolításával (előzetes verzió)**|Határozza meg a pod biztonsági szabályzatokat a szükségtelen alkalmazás-jogosultságok eltávolításával a támadási vektor csökkentése érdekében. Ajánlott a pod biztonsági szabályzatok konfigurálása, hogy a hüvelyek csak azokhoz az erőforrásokhoz férhessenek hozzá, amelyekhez hozzáférésük engedélyezett.<br>(Kapcsolódó szabályzat: [előzetes verzió]: a pod biztonsági szabályzatokat meg kell határozni a Kubernetes-szolgáltatásokon)|Közepes|N|Számítási erőforrások (tárolók)|
 |**A IoT biztonsági modul Azure Security Center telepítése a IoT-eszközök láthatóságának megismeréséhez**|Telepítse Azure Security Center a IoT biztonsági modulhoz, és ismerkedjen meg a IoT-eszközökkel.|Alacsony|N|IoT-eszköz|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A javaslatokkal kapcsolatos további tudnivalókért tekintse meg a következőket:
 

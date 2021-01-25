@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: c2eddf75f99b751773220ae677d66fe8c09abb0e
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: f9029a36dc3b778e139b4553524e8e2ca6b4bbad
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744581"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757169"
 ---
 # <a name="extensions-for-cloud-services-extended-support"></a>Bővítmények Cloud Serviceshoz (bővített támogatás)
 
@@ -35,7 +35,7 @@ Alapszintű figyeléssel a szerepkör példányaiból származó teljesítménys
 
 A speciális monitorozással a további mérőszámok mintavételezése és gyűjtése 5 perc, 1 óra és 12 óra időközönként történik. Az összesített adatokat egy Storage-fiókban tárolja a rendszer, és 10 nap után törlődik. A használt Storage-fiókot a szerepkör konfigurálja; a különböző szerepkörökhöz különböző tárolási fiókokat használhat. 
 
-A Windows Azure Diagnostics bővítmény engedélyezhető Cloud Services (kiterjesztett támogatás) számára a [PowerShell](deploy-powershell.md) vagy [ARM sablon](deploy-template.md) használatával
+További információ: [a Windows Azure Diagnostics bővítmény alkalmazása Cloud Servicesban (kiterjesztett támogatás)](enable-wad.md)
 
 
 ## <a name="next-steps"></a>További lépések 

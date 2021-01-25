@@ -21,10 +21,10 @@
   expanded: true
 - name: Alapelvek
   items:
+    - name: Bővítmények
+      href: extensions.md
     - name: Elérhető virtuálisgép-méretek
       href: available-sizes.md
-    - name: Gyakori kérdések
-      href: faq.md
     - name: Vendég operációs rendszer javításai
       href: ../cloud-services/cloud-services-guestos-msrc-releases.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
     - name: Vendég operációs rendszer kivezetése
@@ -49,10 +49,10 @@
           href: schema-cscfg-role.md
         - name: NetworkConfiguration séma
           href: schema-cscfg-networkconfiguration.md
+    - name: Gyakori kérdések
+      href: faq.md
 - name: Útmutató
   items:
-    - name: Bővítmények – áttekintés
-      href: extensions.md
     - name: Távoli asztal-bővítmény alkalmazása
       href: enable-rdp.md
     - name: WAD-bővítmény alkalmazása
@@ -83,6 +83,8 @@
       href: 'https://docs.microsoft.com/azure/templates/microsoft.compute/cloudservices'
     - name: REST
       href: 'https://docs.microsoft.com/rest/api/compute/cloudservices'
+    - name: SDK
+      href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Compute/43.0.0-preview'
 - name: További források
   items:
     - name: Azure-ütemterv

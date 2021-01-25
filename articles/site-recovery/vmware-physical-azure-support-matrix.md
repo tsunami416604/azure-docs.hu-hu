@@ -3,12 +3,12 @@ title: Támogatási mátrix a VMware/fizikai vész-helyreállításhoz Azure Sit
 description: Összefoglalja a VMware virtuális gépek és a fizikai kiszolgálók vész-helyreállításának támogatását az Azure-ban Azure Site Recovery használatával.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 4bf0227cf11b21d7cde2807d465385bfc2b998b5
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: a3c339213d0fa9a39995b1109fa72f49b466d277
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573054"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757745"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>A VMware virtuális gépek és fizikai kiszolgálók Azure-ba való vész-helyreállítási mátrixának támogatása
 
@@ -51,7 +51,7 @@ Lemez szabad területe | 600 GB lemezterület az adatmegőrzési meghajtó szám
 Operációs rendszer  | Windows Server 2012 R2 vagy Windows Server 2016 asztali felülettel <br/><br> Ha a berendezés beépített fő célját szeretné használni a feladat-visszavételhez, győződjön meg arról, hogy az operációs rendszer verziója azonos vagy magasabb, mint a replikált elemek.|
 Operációs rendszer területi beállítása | Angol (en-us)
 [PowerCLI](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | A konfigurációs kiszolgáló [9,14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) -es vagy újabb verziójához nem szükséges.
-Windows Server-szerepkörök | Ne engedélyezze a Active Directory tartományi szolgáltatások; Internet Information Services (IIS) vagy Hyper-V.
+Windows Server-szerepkörök | Ne engedélyezze a Active Directory Domain Services; Internet Information Services (IIS) vagy Hyper-V.
 Csoportházirendek| – A parancssor elérésének tiltása. <br/> – A beállításjegyzék szerkesztési eszközeihez való hozzáférés megakadályozása. <br/> – A fájlmellékletek megbízhatósági logikája. <br/> – A parancsfájlok végrehajtásának bekapcsolása. <br/> - [További információ](/previous-versions/windows/it-pro/windows-7/gg176671(v=ws.10))|
 IIS | Győződjön meg róla, hogy:<br/><br/> -Nem rendelkezik egy korábban létező alapértelmezett webhellyel <br/> – [Névtelen hitelesítés](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) engedélyezése <br/> – [FastCGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10)) -beállítás engedélyezése  <br/> – Ne hallgassa meg előre meglévő webhelyet/alkalmazást a 443-as porton<br/>
 Hálózati adapter típusa | VMXNET3 (VMware virtuális gépként való üzembe helyezéskor)
@@ -78,10 +78,10 @@ Számítógépnév | Győződjön meg arról, hogy a számítógép megjeleníte
 Windows Server 2019 | A [34 kumulatív frissítés](https://support.microsoft.com/help/4490016) (a mobilitási szolgáltatás 9,22-es verziója) támogatott.
 Windows Server 2016 64 bites | A Server Core és a Server asztali felhasználói felülettel támogatott.
 Windows Server 2012 R2/Windows Server 2012 | Támogatott.
-Windows Server 2008 R2 SP1 és újabb verziók. | Támogatott.<br/><br/> A mobilitási szolgáltatás ügynökének [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) -es verziójától kezdve telepítenie kell a [SSU](https://support.microsoft.com/help/4490628) -t és az [SHA-2 frissítést](https://support.microsoft.com/help/4474419) a Windows 2008 R2 SP1 vagy újabb verzióját futtató gépekre. Az SHA-1 nem támogatott szeptember 2019-tól, és ha az SHA-2 kód aláírása nincs engedélyezve, az ügynök bővítmény nem a várt módon fog települni/frissíteni. További információ az [SHA-2 frissítésről és a követelményekről](https://aka.ms/SHA-2KB).
-Windows Server 2008 SP2 vagy újabb (64 bites/32 bites) |  Csak Migrálás esetén támogatott. [További információ](migrate-tutorial-windows-server-2008.md).<br/><br/> A mobilitási szolgáltatás ügynökének [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) -es verziójától kezdve a Windows 2008 SP2 rendszerű gépekre telepíteni kell a [SSU](https://support.microsoft.com/help/4493730) -t és az [SHA-2 frissítést](https://support.microsoft.com/help/4474419) . A ISHA-1 nem támogatott szeptember 2019-tól, és ha az SHA-2 kód aláírása nincs engedélyezve, az ügynök bővítménye nem a várt módon fog települni/frissíteni. További információ az [SHA-2 frissítésről és a követelményekről](https://support.microsoft.com/en-us/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus).
+Windows Server 2008 R2 SP1 és újabb verziók. | Támogatott.<br/><br/> A mobilitási szolgáltatás ügynökének [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) -es verziójától kezdve telepítenie kell a [SSU](https://support.microsoft.com/help/4490628) -t és az [SHA-2 frissítést](https://support.microsoft.com/help/4474419) a Windows 2008 R2 SP1 vagy újabb verzióját futtató gépekre. Az SHA-1 nem támogatott szeptember 2019-tól, és ha az SHA-2 kód aláírása nincs engedélyezve, az ügynök bővítmény nem a várt módon fog települni/frissíteni. További információ az [SHA-2 frissítésről és a követelményekről](https://support.microsoft.com/topic/sha-2-code-signing-support-update-for-windows-server-2008-r2-windows-7-and-windows-server-2008-september-23-2019-84a8aad5-d8d9-2d5c-6d78-34f9aa5f8339).
+Windows Server 2008 SP2 vagy újabb (64 bites/32 bites) |  Csak Migrálás esetén támogatott. [További információ](migrate-tutorial-windows-server-2008.md).<br/><br/> A mobilitási szolgáltatás ügynökének [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) -es verziójától kezdve a Windows 2008 SP2 rendszerű gépekre telepíteni kell a [SSU](https://support.microsoft.com/help/4493730) -t és az [SHA-2 frissítést](https://support.microsoft.com/help/4474419) . Az SHA-1 nem támogatott szeptember 2019-tól, és ha az SHA-2 kód aláírása nincs engedélyezve, az ügynök bővítmény nem a várt módon fog települni/frissíteni. További információ az [SHA-2 frissítésről és a követelményekről](https://support.microsoft.com/topic/sha-2-code-signing-support-update-for-windows-server-2008-r2-windows-7-and-windows-server-2008-september-23-2019-84a8aad5-d8d9-2d5c-6d78-34f9aa5f8339).
 Windows 10, Windows 8.1, Windows 8 | Csak a 64 bites rendszer támogatott. a 32 bites rendszer nem támogatott.
-Windows 7 SP1 64 bites | A [36 kumulatív frissítés](https://support.microsoft.com/help/4503156) (a mobilitási szolgáltatás 9,22-es verziója) támogatott. </br></br> A mobilitási szolgáltatás ügynökének [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) -es verziójától kezdve a Windows 7 SP1 rendszerű gépeken telepíteni kell a [SSU](https://support.microsoft.com/help/4490628) -t és az [SHA-2 frissítést](https://support.microsoft.com/help/4474419) .  Az SHA-1 nem támogatott szeptember 2019-tól, és ha az SHA-2 kód aláírása nincs engedélyezve, az ügynök bővítmény nem a várt módon fog települni/frissíteni. További információ az [SHA-2 frissítésről és a követelményekről](https://support.microsoft.com/en-us/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus).
+Windows 7 SP1 64 bites | A [36 kumulatív frissítés](https://support.microsoft.com/help/4503156) (a mobilitási szolgáltatás 9,22-es verziója) támogatott. </br></br> A mobilitási szolgáltatás ügynökének [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) -es verziójától kezdve a Windows 7 SP1 rendszerű gépeken telepíteni kell a [SSU](https://support.microsoft.com/help/4490628) -t és az [SHA-2 frissítést](https://support.microsoft.com/help/4474419) .  Az SHA-1 nem támogatott szeptember 2019-tól, és ha az SHA-2 kód aláírása nincs engedélyezve, az ügynök bővítmény nem a várt módon fog települni/frissíteni. További információ az [SHA-2 frissítésről és a követelményekről](https://support.microsoft.com/topic/sha-2-code-signing-support-update-for-windows-server-2008-r2-windows-7-and-windows-server-2008-september-23-2019-84a8aad5-d8d9-2d5c-6d78-34f9aa5f8339).
 
 ### <a name="for-linux"></a>Linux esetén
 
@@ -271,7 +271,7 @@ Azure Storage-tűzfalak a virtuális hálózatok | Igen.<br/> A cél Storage/cac
 
 ## <a name="azure-compute"></a>Azure Compute
 
-**Funkció** | **Támogatott**
+**Szolgáltatás** | **Támogatott**
 --- | ---
 Rendelkezésre állási csoportok | Igen
 Rendelkezésreállási zónák | Nem

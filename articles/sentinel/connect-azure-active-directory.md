@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/20/2021
 ms.author: yelevin
-ms.openlocfilehash: e84484990725b0c39b132aead51e9b01dbb7e7ef
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 409a316bd9c4222dd9b8ff30e42e37d23805c38b
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632291"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757762"
 ---
 # <a name="connect-data-from-azure-active-directory-azure-ad"></a>Adatok összekötése Azure Active Directoryról (Azure AD)
 
@@ -44,12 +44,12 @@ Az Azure Sentinel beépített összekötője segítségével adatokat gyűjthet 
 
 1. Jelölje be azon naplók melletti jelölőnégyzeteket, amelyeket az Azure Sentinelbe szeretne továbbítani, majd kattintson a **Kapcsolódás** elemre. A következő típusú naplók közül választhat:
 
-    - Bejelentkezési naplók
-    - Naplók
-    - Nem interaktív felhasználói bejelentkezési naplók
-    - Egyszerű szolgáltatás bejelentkezési naplói
-    - Felügyelt identitású bejelentkezési naplók
-    - Üzembehelyezési naplók
+    - **Bejelentkezési naplók**: a felügyelt alkalmazások és a felhasználói bejelentkezési tevékenységek használatáról szóló információk.
+    - **Naplók**: rendszertevékenység-információk a felhasználók és csoportok kezelésével, a felügyelt alkalmazásokkal és a címtárral kapcsolatos tevékenységekkel kapcsolatban.
+    - **Nem interaktív felhasználói bejelentkezési naplók**: az ügyfél által a felhasználó nevében végrehajtott bejelentkezésekkel kapcsolatos információk, amelyek nem igényelnek semmilyen interakciót vagy hitelesítési tényezőt a felhasználótól.
+    - **Egyszerű szolgáltatás bejelentkezési naplói**: az alkalmazások és az olyan egyszerű szolgáltatások bejelentkezési adatai, amelyek nem tartalmaznak felhasználót. Ezekben a bejelentkezésekben az alkalmazás vagy szolgáltatás hitelesítő adatokat szolgáltat a saját nevében az erőforrások hitelesítéséhez vagy eléréséhez.
+    - **Felügyelt identitású bejelentkezési naplók**: az Azure által felügyelt titkos kulcsokkal rendelkező Azure-erőforrások bejelentkezése.
+    - **Naplók** kiosztása: rendszertevékenység-információk az Azure ad-kiépítési szolgáltatás által kiépített felhasználókról, csoportokról és szerepkörökről.
 
 ## <a name="find-your-data"></a>Az adatai megkeresése
 
@@ -64,7 +64,7 @@ A sikeres kapcsolatok létrejötte után az adat a **naplók** területen, a **L
 
 Az Azure AD-naplók lekérdezéséhez írja be a megfelelő táblanév nevet a lekérdezési ablak tetején.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebből a dokumentumból megtanulta, hogyan csatlakozhat Azure Active Directory az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

@@ -6,16 +6,16 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: de0c48bb775b96052fe16d60aa58049bfd58ca4d
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 750cf0a938fffd4e5bfe25811bb276f7cb1b5583
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567783"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757559"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Azure Migrate-projektek létrehozása és kezelése
 
-Ez a cikk bemutatja, hogyan hozhat létre, kezelhet és törölhet [Azure Migrate](migrate-services-overview.md) projekteket. Ha klasszikus Azure Migrate projekteket használ, törölje ezeket a projekteket, és kövesse a lépéseket egy új Azure Migrate projekt létrehozásához. A klasszikus Azure Migrate projektek vagy összetevők nem frissíthetők a Azure Migratera.
+Ez a cikk bemutatja, hogyan hozhat létre, kezelhet és törölhet [Azure Migrate](migrate-services-overview.md) projekteket. Ha klasszikus Azure Migrate projekteket használ, törölje ezeket a projekteket, és kövesse a lépéseket egy új Azure Migrate projekt létrehozásához. A klasszikus Azure Migrate projektek vagy összetevők nem frissíthetők a Azure Migratera. A létrehozási folyamat megkezdése előtt tekintse meg a [gyakori kérdéseket](https://docs.microsoft.com/azure/migrate/resources-faq#i-have-a-project-with-the-previous-classic-experience-of-azure-migrate-how-do-i-start-using-the-new-version) .
 
 Azure Migrate-projekttel a rendszer az Ön által értékelt vagy áttelepíteni kívánt környezetből gyűjtött felderítési, értékelési és áttelepítési metaadatok tárolására szolgál. Egy projektben nyomon követheti a felderített eszközöket, kiértékelheti az Azure-ba való áttelepítést, és elvégezheti az áttelepítést.  
 
