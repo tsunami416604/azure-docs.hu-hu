@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: 39081bc7bec7cfd76ccfc9107d5c2286affb7df0
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: e7e63ea56edc2b76383ee4c034fd39dd8b8259c1
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913770"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786005"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-have-two-sets-of-authentication-credentials"></a>A titkos kulcs elforgatásának automatizálása két hitelesítési hitelesítő adattal rendelkező erőforrásokhoz
 
@@ -226,16 +226,16 @@ A rotációs függvények sablon két hitelesítő adathoz és több használatr
 
 - [Projektsablon](https://serverlesslibrary.net/sample/bc72c6c3-bd8f-4b08-89fb-c5720c1f997f)
 - [Redis Cache](https://serverlesslibrary.net/sample/0d42ac45-3db2-4383-86d7-3b92d09bc978)
-- [Storage-fiók](https://serverlesslibrary.net/sample/0e4e6618-a96e-4026-9e3a-74b8412213a4)
+- [Tárfiók](https://serverlesslibrary.net/sample/0e4e6618-a96e-4026-9e3a-74b8412213a4)
 - [Cosmos DB](https://serverlesslibrary.net/sample/bcfaee79-4ced-4a5c-969b-0cc3997f47cc)
 
 > [!NOTE]
 > A fenti rotációs funkciókat a Közösség egy tagja hozza létre, és nem a Microsoft. A közösségi Azure Functions semmilyen Microsoft támogatási program vagy szolgáltatás esetében nem támogatottak, és a rendelkezésére álló feltételek semmilyen garanciát nem JELENTenek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Oktatóanyag: [a titkok rotációja a hitelesítő adatok egy készlete esetében](https://docs.microsoft.com/azure/key-vault/secrets/tutorial-rotation)
+- Oktatóanyag: [a titkok rotációja a hitelesítő adatok egy készlete esetében](./tutorial-rotation.md)
 - Áttekintés: [Key Vault figyelése Azure Event Grid](../general/event-grid-overview.md)
-- Útmutató: az [első függvény létrehozása a Azure Portalban](../../azure-functions/functions-create-first-azure-function.md)
+- Útmutató: az [első függvény létrehozása a Azure Portalban](../../azure-functions/functions-get-started.md)
 - Útmutató: [e-mailek fogadása Key Vault titkos kód módosításakor](../general/event-grid-logicapps.md)
 - Hivatkozás: [Azure Event Grid Azure Key Vaulthoz tartozó esemény-séma](../../event-grid/event-schema-key-vault.md)

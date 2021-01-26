@@ -8,18 +8,18 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: d749c901b21651eec7b3e25ce111fb107e09b754
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 5c414a11085a6a37dee6be522dcf513e8990e5e2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883350"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786351"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Az Azure HDInsight kibocsátási megjegyzései
 
 Ez a cikk az Azure HDInsight **legújabb** kiadási frissítéseivel kapcsolatos információkat tartalmaz. A korábbi kiadásokkal kapcsolatos információkért lásd: [HDInsight kibocsátási megjegyzések archívuma](hdinsight-release-notes-archive.md).
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Az Azure HDInsight az egyik legnépszerűbb szolgáltatás a nagyvállalati ügyfelek körében az Azure-beli nyílt forráskódú elemzésekhez.
 
@@ -48,7 +48,7 @@ A HDInsight november 16 2020-től kezdődően megakadályozza, hogy az új ügyf
 
 ## <a name="behavior-changes"></a>Viselkedési változások
 ### <a name="add-nsg-rule-checking-before-scaling-operation"></a>NSG-szabály-ellenőrzés hozzáadása a skálázási művelet előtt
-A HDInsight hozzáadta a hálózati biztonsági csoportokat (NSG) és a felhasználó által megadott útvonalakat (UDR) a skálázási művelettel. Ugyanez az érvényesítés történik a fürt létrehozásakor a fürtök skálázása mellett. Ez az ellenőrzés segít megakadályozni a kiszámíthatatlan hibákat. Ha az érvényesítés nem történik meg, a skálázás sikertelen lesz. További információ a NSG és a UDR helyes konfigurálásáról: [HDInsight-felügyeleti IP-címek](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
+A HDInsight hozzáadta a hálózati biztonsági csoportokat (NSG) és a felhasználó által megadott útvonalakat (UDR) a skálázási művelettel. Ugyanez az érvényesítés történik a fürt létrehozásakor a fürtök skálázása mellett. Ez az ellenőrzés segít megakadályozni a kiszámíthatatlan hibákat. Ha az érvényesítés nem történik meg, a skálázás sikertelen lesz. További információ a NSG és a UDR helyes konfigurálásáról: [HDInsight-felügyeleti IP-címek](./hdinsight-management-ip-addresses.md).
 
 ## <a name="upcoming-changes"></a>Közelgő változások
 A következő módosítások a közelgő kiadásokban fognak történni.
@@ -72,7 +72,7 @@ A HDInsight továbbra is a fürt megbízhatóságának és teljesítményének n
 Ehhez a kiadáshoz nem módosult az összetevő verziószáma. A HDInsight 4,0 és a HDInsight 3,6 aktuális összetevő-verzióit ebben a [dokumentumban](./hdinsight-component-versioning.md)találja.
 
 ## <a name="known-issues"></a>Ismert problémák
-### <a name="prevent-hdinsight-cluster-vms-from-rebooting-periodically"></a>A HDInsight-fürt virtuális gépek rendszeres újraindításának megakadályozása
+### <a name="prevent-hdinsight-cluster-vms-from-rebooting-periodically"></a>A HDInsight-fürt virtuális gépei időszakos újraindításának megakadályozása
 
 A 2020 november közepétől kezdődően előfordulhat, hogy észrevette, hogy a HDInsight-fürt virtuális gépei rendszeresen újraindulnak. Ezt a következő okok okozhatják:
 
@@ -84,4 +84,3 @@ A HDInsight rögzíti a javításokat, és az összes futó fürt javítását a
 https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/replace_cacert_script.sh
 https://healingscriptssa.blob.core.windows.net/healingscripts/ChangeOOMPolicyAndApplyLatestConfigForClamav.sh
 ```
-

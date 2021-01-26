@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan fejleszthet Azure Functions alkalmazásokat a n
 ms.topic: article
 ms.date: 10/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: baa362f029678f266f154df912a9178a6626667d
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: e3bbdb8819062d45d071633e0208fb58a003da54
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935869"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786106"
 ---
 # <a name="improve-throughput-performance-of-python-apps-in-azure-functions"></a>A Python-alkalmazások átviteli teljesítményének növelése Azure Functions
 
@@ -22,10 +22,10 @@ Alapértelmezés szerint a Azure Functions automatikusan figyeli az alkalmazás 
 
 Az alapértelmezett konfigurációk a legtöbb Azure Functions alkalmazáshoz megfelelőek. Az alkalmazások teljesítményének növelését azonban a munkaterhelés-profilon alapuló konfigurációk alkalmazásával növelheti. Első lépésként ismernie kell a futtatott számítási feladatok típusát.
 
-|| I/O-kötésű munkaterhelés | PROCESSZORral kötött munkaterhelés |
-|--| -- | -- |
-|Function alkalmazás jellemzői| <ul><li>Az alkalmazásnak számos egyidejű hívást kell kezelnie.</li> <li> Az alkalmazás nagy mennyiségű I/O-eseményt dolgoz fel, például hálózati hívásokat és lemezes olvasási/írási műveleteket.</li> </ul>| <ul><li>Az alkalmazás hosszú ideig futó számításokat végez, például a képek átméretezését.</li> <li>Az alkalmazás adatátalakítást végez.</li> </ul> |
-|Példák| <ul><li>Webes API-k</li><ul> | <ul><li>Adatfeldolgozás</li><li> Gépi tanulás – következtetés</li><ul>|
+| Munkaterhelés típusa | Function alkalmazás jellemzői       | Példák                                          |
+| ------------- | ---------------------------------- | ------------------------------------------------- |
+| **I/O-kötés**     | • Az alkalmazásnak számos egyidejű hívást kell kezelnie.<br>• Az alkalmazás nagy mennyiségű I/O-eseményt dolgoz fel, például hálózati hívásokat és lemezes olvasási/írási műveleteket. | • Webes API-k                                          |
+| **CPU-kötésű**     | • Az alkalmazás hosszan futó számításokat végez, például a képek átméretezését.<br>• Az alkalmazás adatátalakítást végez.                                                | • Adatfeldolgozás<br>• Gépi tanulás – következtetés<br> |
 
  
 Mivel a valós működést kihasználó számítási feladatok általában az I/O-és a CPU-kötések kombinációja, az alkalmazást reális üzemi terhelésnek kell megjelennie.

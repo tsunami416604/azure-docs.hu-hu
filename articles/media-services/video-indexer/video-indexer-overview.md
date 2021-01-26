@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/11/2020
 ms.author: juliako
-ms.openlocfilehash: 6b5a228c12cfc874673dda854de6d4dcc25f28c1
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 06f5e19718445f44dd2302faf280f083cce0774f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014535"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98783801"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>Mi az az Azure Media Services Video Indexer?
 
@@ -115,6 +115,21 @@ A Video Indexer képességei háromféleképpen érhetők el:
     További információ: [Visual widgetek beágyazása az alkalmazásba](video-indexer-embed-widgets.md).
 
 Ha a webhelyet használja, az adatok metaadatokként lesznek hozzáadva, és megjelennek a portálon. Ha API-kat használ, az eredmények JSON-fájlként érhetők el.
+
+## <a name="supported-browsers"></a>Támogatott böngészők
+
+A következő lista azokat a támogatott böngészőket mutatja be, amelyeket a Video Indexer webhelyhez, illetve a widgeteket beágyazó alkalmazásaihoz használhat. A lista a támogatott böngésző minimális verzióját is megjeleníti:
+
+- Edge, verzió: 16
+- Firefox, verzió: 54
+- Chrome, verzió: 58
+- Safari, verzió: 11
+- Opera, verzió: 44
+- Opera Mobile, verzió: 59
+- Android böngésző, verzió: 81
+- Samsung böngésző, verzió: 7
+- Chrome Androidhoz, verzió: 87
+- Androidos Firefox, verzió: 83
 
 ## <a name="next-steps"></a>További lépések
 

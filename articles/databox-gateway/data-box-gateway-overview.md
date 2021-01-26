@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: overview
 ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: aa68b746ef5c22c97fcfdcca889bf71577c19479
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: adb0e12b81701acbdb33018f055bfe8fda2efc52
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96583848"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786639"
 ---
 # <a name="what-is-azure-data-box-gateway"></a>Mi az Azure Data Box Gateway?
 
@@ -64,7 +64,7 @@ A Data Box Gateway az alábbi képességekkel rendelkezik:
 
 A Data Box Gateway virtuális eszköz az alábbi műszaki adatokkal rendelkezik:
 
-| Specifikációk                                          | Description              |
+| Specifikációk                                          | Leírás              |
 |---------------------------------------------------------|--------------------------|
 | Virtuális processzorok (magok)   | Minimum 4 |
 | Memória  |Minimum 8 GB|
@@ -89,7 +89,7 @@ A Data Box Gateway megoldás a Data Box Gateway-erőforrásból, a Data Box Gate
 
 Data Box Gateway fizikai eszközt, az Azure-erőforrást és a célként megadott Storage-fiókot, amelybe az adatok átvitele nem feltétlenül azonos régióban kell, hogy legyen.
 
-- **Erőforrás rendelkezésre állása** – az összes olyan régió listájához, ahol a Azure Data Box Gateway erőforrás elérhető, keresse fel az [Azure-termékeket régiónként](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=databox). Data Box Gateway a Azure Government felhőben is üzembe helyezhető. További információ: [Mi az Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)
+- **Erőforrás rendelkezésre állása** – az összes olyan régió listájához, ahol a Azure Data Box Gateway erőforrás elérhető, keresse fel az [Azure-termékeket régiónként](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=databox). Data Box Gateway a Azure Government felhőben is üzembe helyezhető. További információ: [Mi az Azure Government?](../azure-government/documentation-government-welcome.md)
 
 - **Céloldali tárfiókok** – Az adatokat tároló tárfiókok minden Azure-régióban elérhetők.
 
@@ -101,4 +101,3 @@ Data Box Gateway fizikai eszközt, az Azure-erőforrást és a célként megadot
 - A [Data Box Gateway rendszerkövetelményeinek](data-box-gateway-system-requirements.md) áttekintése.
 - A [Data Box Gateway korlátainak](data-box-gateway-limits.md) megismerése.
 - Az [Azure Data Box Gateway](data-box-gateway-deploy-prep.md) üzembe helyezése az Azure Portalon.
-

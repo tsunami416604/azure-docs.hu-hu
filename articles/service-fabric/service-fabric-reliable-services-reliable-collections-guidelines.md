@@ -3,17 +3,17 @@ title: Irányelvek a megbízható gyűjteményekhez
 description: Irányelvek és javaslatok Service Fabric megbízható gyűjtemények Azure Service Fabric alkalmazásban való használatához.
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 63e6de436bdaceed7f1d2a78e8385dd14bfc0ed6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f12db76f324d07c178b49150d4e574476e7d9929
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260913"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784325"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Irányelvek és javaslatok az Azure-Service Fabric megbízható gyűjteményekhez
 Ez a szakasz a megbízható állapot-kezelő és a megbízható gyűjtemények használatához nyújt útmutatást. A cél az, hogy segítse a felhasználókat a gyakori buktatók elkerülésében.
 
-Az irányelvek a feltételek *elvégzése*, a *megfontolás*, a *elkerülés* és a *nem*megfelelő egyszerű javaslatok szerint vannak rendszerezve.
+Az irányelvek a feltételek *elvégzése*, a *megfontolás*, a *elkerülés* és a *nem* megfelelő egyszerű javaslatok szerint vannak rendszerezve.
 
 * Ne módosítsa az olvasási műveletek által visszaadott egyéni típusú objektumokat (például `TryPeekAsync` vagy `TryGetValueAsync` ). A megbízható gyűjtemények, akárcsak a párhuzamos gyűjtemények, az objektumokra mutató hivatkozást adnak vissza.
 * A módosítás előtt készítsen részletesen egy egyéni típusú visszaadott objektumot. Mivel a struktúrák és a beépített típusok értéke a pass-by-Value, nem kell részletes másolatot készítenie rajtuk, hacsak nem tartalmaznak hivatkozással megadott mezőket vagy tulajdonságokat, amelyeket módosítani kíván.
@@ -64,4 +64,4 @@ Az illékony megbízható gyűjtemények használatának eldöntése során vegy
   * [Megbízható állapot-kezelő konfigurációja](service-fabric-reliable-services-configuration.md)
 * Egyéb
   * [Reliable Services rövid útmutató](service-fabric-reliable-services-quick-start.md)
-  * [Fejlesztői referenciák megbízható gyűjteményekhez](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+  * [Fejlesztői referenciák megbízható gyűjteményekhez](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)

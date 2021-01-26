@@ -124,8 +124,6 @@
       items:
         - name: Regisztrációk kezelése – portál
           href: how-to-manage-enrollments.md
-        - name: Regisztrációk kezelése – szolgáltatási SDK-k
-          href: how-to-manage-enrollments-sdks.md
         - name: Ellenőrzött hitelesítésszolgáltatói tanúsítványok konfigurálása
           href: how-to-verify-certificates.md
         - name: Eszköztanúsítványok összegzése
@@ -150,10 +148,6 @@
         - name: Windows
           href: ../iot-edge/how-to-auto-provision-simulated-device-windows.md
           maintainContext: true
-    - name: Igazolási mechanizmusok használata SDK-val
-      href: use-hsm-with-sdk.md
-    - name: Fejlesztés SDK-eszközökkel
-      href: how-to-use-sdk-tools.md
     - name: További adatok küldése eszközökről
       href: how-to-send-additional-data.md
     - name: Hibaelhárítás

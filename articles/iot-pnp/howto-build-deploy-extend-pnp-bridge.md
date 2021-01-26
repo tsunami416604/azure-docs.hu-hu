@@ -7,12 +7,12 @@ ms.date: 1/20/2021
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b7947eab93ebc8e523e163af601893522132e06a
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 4612e1236af5fbe47db9a3569e2f4da2378017e2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98745667"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784897"
 ---
 # <a name="build-and-deploy-the-iot-plug-and-play-bridge"></a>A IoT Plug and Play-híd létrehozása és üzembe helyezése
 
@@ -212,7 +212,7 @@ A szakasz elvégzéséhez szüksége lesz egy ingyenes vagy standard szintű Azu
 
 A jelen szakaszban ismertetett lépések feltételezik, hogy a következő fejlesztési környezettel rendelkezik egy Windows 10-es gépen. Ezek az eszközök lehetővé teszik IoT Edge modul felépítését és üzembe helyezését IoT Edge eszközön:
 
-- A Linux rendszerhez készült Windows alrendszer (WSL), amely Ubuntu 18,04 LTS rendszert futtat. További információért lásd a Windows [10-es Linux-telepítési útmutatót](https://docs.microsoft.com/windows/wsl/install-win10)a Windows 10 rendszerhez című témakört.
+- A Linux rendszerhez készült Windows alrendszer (WSL), amely Ubuntu 18,04 LTS rendszert futtat. További információért lásd a Windows [10-es Linux-telepítési útmutatót](/windows/wsl/install-win10)a Windows 10 rendszerhez című témakört.
 - A Windowshoz készült Docker Desktop a WSL 2 használatára van konfigurálva. További információ: [Docker Desktop WSL 2 backend](https://docs.docker.com/docker-for-windows/wsl/).
 - A Windows-környezetben a következő három bővítménnyel telepített [Visual Studio Code](https://code.visualstudio.com/docs/setup/windows) :
 

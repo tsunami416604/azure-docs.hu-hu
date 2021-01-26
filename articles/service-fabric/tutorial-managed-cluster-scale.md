@@ -3,12 +3,12 @@ title: Service Fabric felügyelt fürt felskálázása (előzetes verzió)
 description: Ebből az oktatóanyagból megtudhatja, hogyan bővítheti Service Fabric felügyelt fürt csomópont-típusát.
 ms.topic: tutorial
 ms.date: 09/28/2020
-ms.openlocfilehash: 01b299744d462496296884211eff08b7a9c64687
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 769bcb339b2cc1419c7a3d92d0f08130029a9f95
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316140"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785431"
 ---
 # <a name="tutorial-scale-out-a-service-fabric-managed-cluster-preview"></a>Oktatóanyag: Service Fabric felügyelt fürt felskálázása (előzetes verzió)
 
@@ -28,7 +28,7 @@ A sorozat ezen része a következőket ismerteti:
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy Service Fabric felügyelt fürt (lásd: [*felügyelt fürt üzembe helyezése*](tutorial-managed-cluster-deploy.md)).
-* [Azure PowerShell 4.7.0](/powershell/azure/release-notes-azureps?preserve-view=true&view=azps-4.7.0#azservicefabric) vagy újabb (lásd: [*install Azure PowerShell*](/powershell/azure/install-az-ps?preserve-view=true&view=azps-4.7.0)).
+* [Azure PowerShell 4.7.0](/powershell/azure/release-notes-azureps#azservicefabric) vagy újabb (lásd: [*install Azure PowerShell*](/powershell/azure/install-az-ps)).
 
 ## <a name="scale-a-service-fabric-managed-cluster"></a>Service Fabric felügyelt fürt méretezése
 Módosítsa a példányszámot úgy, hogy növelje vagy csökkentse a méretezni kívánt csomópont típusú csomópontok számát. A csomópont-típusok neve a Azure Resource Manager sablonban (ARM-sablon) található a fürt központi telepítésében vagy a Service Fabric Explorer.  
@@ -47,7 +47,7 @@ Set-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroup -ClusterNam
 
 A fürt automatikusan megkezdi a frissítését, és néhány perc múlva látni fogja a további csomópontokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a lépésben egy csomópont-típust méretezett egy Service Fabric felügyelt fürtön. A csomópont-típusok hozzáadásával és eltávolításával kapcsolatos további tudnivalókért tekintse meg a következőt:
 

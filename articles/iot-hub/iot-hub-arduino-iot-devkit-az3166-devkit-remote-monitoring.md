@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: a5a69c35e5c7e33443c3810cad9ab4e21b048328
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 6912124ce8d1741731d625dccfea445417b2488d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148811"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785016"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>A MXChip IoT fejlesztői készlet és az Azure IoT távoli monitorozási megoldásának gyorsítása
 
@@ -37,36 +37,36 @@ Aktív Azure-előfizetés. Ha még nem rendelkezik ilyennel, a következő két 
 
 ## <a name="create-an-azure-iot-remote-monitoring-solution-accelerator"></a>Azure IoT-alapú távoli monitorozási megoldás-gyorsító létrehozása
 
-1. Lépjen az [Azure IoT megoldás-gyorssegédek webhelyére](https://www.azureiotsolutions.com/) , és kattintson **az új megoldás létrehozása**lehetőségre.
+1. Lépjen az [Azure IoT megoldás-gyorssegédek webhelyére](https://www.azureiotsolutions.com/) , és kattintson **az új megoldás létrehozása** lehetőségre.
 
    ![Válassza ki az Azure IoT-megoldás gyorsító típusát](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-solution-types.png)
 
    > [!WARNING]
    > Alapértelmezés szerint ez a minta egy S2 IoT hub hoz létre, miután létrehoz egy IoT távoli figyelési megoldás-gyorsító. Ha ez az IoT hub nem használatos nagy számú eszközzel, javasoljuk, hogy az S2-től S1-ig visszaminősítse azt, és törölje a IoT távoli figyelési megoldását, így a kapcsolódó IoT Hub is törölhető, ha már nincs rá szükség. 
 
-2. Válassza a **távoli figyelés**lehetőséget.
+2. Válassza a **távoli figyelés** lehetőséget.
 
-3. Adja meg a megoldás nevét, válassza ki az előfizetést és a régiót, majd kattintson a **megoldás létrehozása**lehetőségre. Előfordulhat, hogy a megoldás üzembe helyezése hosszabb ideig tart.
+3. Adja meg a megoldás nevét, válassza ki az előfizetést és a régiót, majd kattintson a **megoldás létrehozása** lehetőségre. Előfordulhat, hogy a megoldás üzembe helyezése hosszabb ideig tart.
   
    ![Megoldás létrehozása](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-new-solution.png)
 
-4. A kiépítés befejezése után kattintson az **Indítás**gombra. Néhány szimulált eszköz jön létre a megoldáshoz a létesítési folyamat során. A kijelentkezéshez kattintson az **eszközök** elemre.
+4. A kiépítés befejezése után kattintson az **Indítás** gombra. Néhány szimulált eszköz jön létre a megoldáshoz a létesítési folyamat során. A kijelentkezéshez kattintson az **eszközök** elemre.
 
    ![Irányítópult](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-new-solution-created.png)
   
    ![Console](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-console.png)
 
-5. Kattintson **az eszköz hozzáadása**lehetőségre.
+5. Kattintson **az eszköz hozzáadása** lehetőségre.
 
-6. Kattintson az **új hozzáadása** **Egyéni eszközhöz**elemre.
+6. Kattintson az **új hozzáadása** **Egyéni eszközhöz** elemre.
   
    ![Új eszköz hozzáadása](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-add-new-device.png)
 
-7. Kattintson **a saját eszköz azonosítójának definiálása**elemre, írja be a értéket `AZ3166` , majd kattintson a **Létrehozás**gombra.
+7. Kattintson **a saját eszköz azonosítójának definiálása** elemre, írja be a értéket `AZ3166` , majd kattintson a **Létrehozás** gombra.
   
    ![AZONOSÍTÓval rendelkező eszköz létrehozása](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-new-device-configuration.png)
 
-8. Jegyezze fel **IoT hub hostname nevet**, és kattintson a **kész**gombra.
+8. Jegyezze fel **IoT hub hostname nevet**, és kattintson a **kész** gombra.
 
 ## <a name="open-the-remotemonitoring-sample"></a>A RemoteMonitoring minta megnyitása
 
@@ -79,10 +79,10 @@ Aktív Azure-előfizetés. Ha még nem rendelkezik ilyennel, a következő két 
    * A fejlesztői készlet-bevezetés oldal.
    * Arduino-példák: gyakorlati minták a fejlesztői készlet megkezdéséhez.
 
-4. Bontsa ki a bal oldali **ARDUINO-példák** szakaszt, és keresse meg a **PÉLDÁKAT a MXCHIP AZ3166 > AzureIoT**, és válassza a **RemoteMonitoring**lehetőséget. Megnyílik egy új VS Code-ablak a projekt mappájával.
+4. Bontsa ki a bal oldali **ARDUINO-példák** szakaszt, és keresse meg a **PÉLDÁKAT a MXCHIP AZ3166 > AzureIoT**, és válassza a **RemoteMonitoring** lehetőséget. Megnyílik egy új VS Code-ablak a projekt mappájával.
 
    > [!NOTE]
-   > Ha véletlenül bezárná a panelt, újra megnyithatja. `Ctrl+Shift+P`A (MacOS: `Cmd+Shift+P` ) paranccsal nyissa meg a parancssort, írja be az **Arduino**parancsot, majd keresse meg és válassza ki az **Arduino: példák**elemet.
+   > Ha véletlenül bezárná a panelt, újra megnyithatja. `Ctrl+Shift+P`A (MacOS: `Cmd+Shift+P` ) paranccsal nyissa meg a parancssort, írja be az **Arduino** parancsot, majd keresse meg és válassza ki az **Arduino: példák** elemet.
 
 ## <a name="provision-required-azure-services"></a>Szükséges Azure-szolgáltatások kiépítése
 
@@ -112,7 +112,7 @@ A DevKit újraindul, és elkezdi a kód futtatását.
 
 A minta alkalmazás futtatásakor a fejlesztői készlet Wi-Fi-kapcsolaton keresztül küldi el az érzékelő adatait az Azure IoT távoli monitorozási megoldásának gyorsítása érdekében. Az eredmény megtekintéséhez kövesse az alábbi lépéseket:
 
-1. Nyissa meg az Azure IoT távoli figyelési megoldásának Gyorssegédjét, és kattintson az **irányítópult**elemre.
+1. Nyissa meg az Azure IoT távoli figyelési megoldásának Gyorssegédjét, és kattintson az **irányítópult** elemre.
 
 2. A távoli figyelési megoldás konzolján megjelenik a fejlesztői készlet-érzékelő állapota.
 
@@ -120,7 +120,7 @@ A minta alkalmazás futtatásakor a fejlesztői készlet Wi-Fi-kapcsolaton keres
 
 ## <a name="change-device-id"></a>Eszköz AZONOSÍTÓjának módosítása
 
-Ha módosítani szeretné a hardcoded **AZ3166** a kód testreszabott eszköz-azonosítójára, módosítsa a [távoli figyelési példában](../iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2.md)megjelenő kód sorát.
+Ha módosítani szeretné a hardcoded **AZ3166** a kód testreszabott eszköz-azonosítójára, módosítsa a [távoli figyelési példában](/previous-versions/azure/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2)megjelenő kód sorát.
 
 ## <a name="problems-and-feedback"></a>Problémák és visszajelzés
 
@@ -129,7 +129,7 @@ Ha problémákba ütközik, tekintse meg [a IoT Developer Kit GYIK](https://micr
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megtanulta, hogyan csatlakoztatható egy fejlesztői készlet-eszköz az Azure IoT távoli figyelési megoldás-gyorsító szolgáltatáshoz, és Hogyan jeleníthető meg az érzékelők adatai, az alábbiakban a javasolt következő lépések láthatók:
 

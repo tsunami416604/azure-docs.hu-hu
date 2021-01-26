@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 6/29/2017
 ms.author: mcoskun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4a336daf9bd7400d049233a22a04d64d561b42c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5b48cc6cca2e143c48ed7bdfc99de936be2a227
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021952"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784579"
 ---
 # <a name="reliable-services-notifications"></a>Értesítések Reliable Services
 Az értesítések lehetővé teszik, hogy az ügyfelek nyomon kövessék egy olyan objektum módosításait, amelyekre kíváncsiak. Két típusú objektum támogatja az értesítéseket: *megbízható State Manager* és *megbízható szótár*.
@@ -42,7 +42,7 @@ A megbízható State Manager-gyűjteményt a rendszer három esetben újraépít
 * Teljes másolás: ahhoz, hogy a replika csatlakozni tudja a konfigurációs készlethez, létre kell majd állítania. Előfordulhat, hogy ehhez a megbízható állapot-kezelő állapotának teljes másolatát kell használnia az elsődleges replikáról az üresjárati másodlagos replikára való alkalmazáshoz. A megbízható State Manager a másodlagos replikán a **NotifyStateManagerChangedEventArgs** használatával olyan eseményt hoz létre, amely az elsődleges replikából beszerzett megbízható állapotokat tartalmazza.
 * Visszaállítás: a vész-helyreállítási helyzetekben a replika állapota visszaállítható a **RestoreAsync**-n keresztüli biztonsági mentésből. Ilyen esetekben az elsődleges replika megbízható **NotifyStateManagerChangedEventArgs** használatával a rendszer olyan eseményt hoz létre, amely a biztonsági másolatból visszaállított megbízható állapotokat tartalmazza.
 
-A tranzakciós értesítések és/vagy az állapot-kezelő értesítéseinek regisztrálásához regisztrálnia kell a **TransactionChanged** -vagy **StateManagerChanged** -eseményekkel a megbízható állapot kezelőjében. Ezekkel az eseménykezelőkkal regisztrálhat egy közös helyet az állapot-nyilvántartó szolgáltatás konstruktora. Ha regisztrálja a konstruktort, nem fog kihagyni egy olyan értesítést, amelyet a **IReliableStateManager**élettartama során változás okoz.
+A tranzakciós értesítések és/vagy az állapot-kezelő értesítéseinek regisztrálásához regisztrálnia kell a **TransactionChanged** -vagy **StateManagerChanged** -eseményekkel a megbízható állapot kezelőjében. Ezekkel az eseménykezelőkkal regisztrálhat egy közös helyet az állapot-nyilvántartó szolgáltatás konstruktora. Ha regisztrálja a konstruktort, nem fog kihagyni egy olyan értesítést, amelyet a **IReliableStateManager** élettartama során változás okoz.
 
 ```csharp
 public MyService(StatefulServiceContext context)
@@ -56,7 +56,7 @@ public MyService(StatefulServiceContext context)
 A **TransactionChanged** eseménykezelő a **NotifyTransactionChangedEventArgs** használatával adja meg az esemény részleteit. Ez tartalmazza a művelet típusát (például **NotifyTransactionChangedAction. commit**), amely meghatározza a változást. Emellett tartalmazza a Transaction tulajdonságot is, amely a módosult tranzakcióra mutató hivatkozást tartalmaz.
 
 > [!NOTE]
-> Napjainkban a **TransactionChanged** események csak akkor jönnek létre, ha a tranzakció véglegesítve van. A művelet ekkor a **NotifyTransactionChangedAction. commit**értékkel egyenlő. A jövőben azonban előfordulhat, hogy az események más típusú tranzakciós állapot-változásokra is felmerülhetnek. Javasoljuk, hogy ellenőrizze a műveletet, és csak akkor dolgozza fel az eseményt, ha az várható.
+> Napjainkban a **TransactionChanged** események csak akkor jönnek létre, ha a tranzakció véglegesítve van. A művelet ekkor a **NotifyTransactionChangedAction. commit** értékkel egyenlő. A jövőben azonban előfordulhat, hogy az események más típusú tranzakciós állapot-változásokra is felmerülhetnek. Javasoljuk, hogy ellenőrizze a műveletet, és csak akkor dolgozza fel az eseményt, ha az várható.
 > 
 > 
 
@@ -132,7 +132,7 @@ private void ProcessStateManagerSingleEntityNotification(NotifyStateManagerChang
 > 
 > 
 
-Az előző kód beállítja a **IReliableNotificationAsyncCallback** felületet, valamint a **DictionaryChanged**. Mivel a **NotifyDictionaryRebuildEventArgs** tartalmaz egy **IAsyncEnumerable** felületet – amelyet aszinkron módon kell enumerálni – az Újraépítés után az értesítéseket a **OnDictionaryChangedHandler**helyett **RebuildNotificationAsyncCallback** a rendszer.
+Az előző kód beállítja a **IReliableNotificationAsyncCallback** felületet, valamint a **DictionaryChanged**. Mivel a **NotifyDictionaryRebuildEventArgs** tartalmaz egy **IAsyncEnumerable** felületet – amelyet aszinkron módon kell enumerálni – az Újraépítés után az értesítéseket a **OnDictionaryChangedHandler** helyett **RebuildNotificationAsyncCallback** a rendszer.
 
 ```csharp
 public async Task OnDictionaryRebuildNotificationHandlerAsync(
@@ -207,8 +207,8 @@ A következő szempontokat érdemes figyelembe venni:
 * A több műveletet tartalmazó tranzakciók esetében a rendszer az elsődleges replikán a felhasználótól kapott sorrendben alkalmazza a műveleteket.
 * A hamis folyamat feldolgozásának részeként előfordulhat, hogy egyes műveletek visszavonhatók. A rendszer értesítést küld az ilyen visszavonási műveletekről, és Visszagörgeti a replika állapotát egy stabil pontra. A visszavonási értesítések egyik fontos különbsége az, hogy az ismétlődő kulcsokkal rendelkező események összesítve lesznek. Ha például a T1 tranzakciót visszavonja, egyetlen értesítést fog látni a törléshez (X).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Reliable Collections](service-fabric-work-with-reliable-collections.md)
 * [Reliable Services – első lépések](service-fabric-reliable-services-quick-start.md)
 * [Biztonsági mentés és visszaállítás Reliable Services (vész-helyreállítás)](service-fabric-reliable-services-backup-restore.md)
-* [Fejlesztői referenciák megbízható gyűjteményekhez](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+* [Fejlesztői referenciák megbízható gyűjteményekhez](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)

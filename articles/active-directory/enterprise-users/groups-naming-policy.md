@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4c1c30e4651136ada7264cad8ff4d3921c3aeeb
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 894a90c50f968c892a76160a7375f11fe09390d6
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547916"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784999"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>Elnevezési szabályzat érvénybe léptetése Microsoft 365 csoportokban Azure Active Directory
 
@@ -72,6 +72,7 @@ Tiltott szólisták szabályai:
 Az elnevezési házirend konfigurálásához a következő szerepkörök egyike szükséges:
 - Globális rendszergazda
 - Csoport rendszergazdája
+- Könyvtár-író
 
 
 A kiválasztott rendszergazdák mentesülnek a szabályzatokból, az összes csoportos munkaterhelésre és végpontra vonatkozóan, így a csoportok a letiltott szavak és a saját elnevezési konvencióik alapján hozhatók létre. A következő lista a csoport elnevezési házirendjé alól mentesített rendszergazdai szerepkörök listáját tartalmazza.
@@ -257,7 +258,7 @@ PowerShell-parancsmagok Azure Active Directory | Azure Active Directory PowerShe
 Exchange felügyeleti központ | Az Exchange felügyeleti központ megfelel az elnevezési házirendnek. A felhasználók a javasolt előtagokkal és utótagokkal, illetve az egyéni blokkolt szavak esetén kapják meg a megfelelő hibaüzeneteket, ha nem követik az elnevezési konvenciót a csoport neve és a csoport aliasában.
 Microsoft 365 felügyeleti központ | Microsoft 365 felügyeleti központ megfelel az elnevezési házirendnek. Amikor egy felhasználó létrehoz vagy szerkeszt egy csoportnevet, a rendszer automatikusan alkalmazza az elnevezési házirendet, és a felhasználók a megfelelő hibákat kapják meg, amikor egyéni tiltott szavakat hoznak létre. A Microsoft 365 felügyeleti központ még nem jeleníti meg az elnevezési házirend előnézetét, és nem ad vissza egyéni blokkolt Word-hibákat, amikor a felhasználó belép a csoport nevére.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezek a cikkek további információkat nyújtanak az Azure AD-csoportokról.
 

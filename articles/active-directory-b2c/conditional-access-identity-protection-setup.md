@@ -1,5 +1,5 @@
 ---
-title: Az Identity Protection és a feltételes hozzáférés beállítása Azure AD B2C
+title: Identity Protection és feltételes hozzáférés beállítása az Azure AD B2C-ben
 description: Ismerje meg, hogyan konfigurálhatja az Identitáskezelés és a feltételes hozzáférés beállítását Azure AD B2C bérlő számára a kockázatos bejelentkezések és egyéb kockázati események megtekintéséhez, valamint a kockázatok észlelése alapján létrehozott szabályzatok létrehozásához.
 services: active-directory
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2472183673e5f06f5664a306a69d14c2eaf5f82d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 654206bccd25bf09fcdc5c3e7ee72ba97c75af2a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949768"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785481"
 ---
-# <a name="set-up-identity-protection-and-conditional-access-in-azure-ad-b2c"></a>Az Identity Protection és a feltételes hozzáférés beállítása Azure AD B2C
+# <a name="set-up-identity-protection-and-conditional-access-in-azure-ad-b2c"></a>Identity Protection és feltételes hozzáférés beállítása az Azure AD B2C-ben
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
@@ -94,9 +94,7 @@ Ha feltételes hozzáférési szabályzatot szeretne hozzáadni az Identity Prot
 
 1. A **Biztonság** területen válassza a **feltételes hozzáférés (előzetes verzió)** lehetőséget. Megnyílik a **feltételes hozzáférési szabályzatok** lap. 
 
-1. Válassza az **új szabályzat** lehetőséget, majd az Azure ad feltételes hozzáférési dokumentációjában hozzon létre egy új szabályzatot. Például:
-
-   - [Bejelentkezési kockázat alapú feltételes hozzáférés: Engedélyezés feltételes hozzáférési házirenddel](../active-directory/conditional-access/howto-conditional-access-policy-risk.md#enable-with-conditional-access-policy)
+1. Válassza az **új szabályzat** lehetőséget, majd az Azure ad feltételes hozzáférési dokumentációjában hozzon létre egy új szabályzatot. A kockázatalapú házirendek esetében külön házirendeket kell konfigurálnia a [felhasználói kockázat](../active-directory/conditional-access/howto-conditional-access-policy-risk-user.md#enable-with-conditional-access-policy) vagy a [bejelentkezési kockázat](../active-directory/conditional-access/howto-conditional-access-policy-risk.md#enable-with-conditional-access-policy) alapján, attól függően, hogy milyen típusú kockázati tényezőt kíván feltételként használni. Egyetlen házirendben nem ajánlott mindkét kockázati típust használni.
 
    > [!IMPORTANT]
    > Amikor kiválasztja azokat a felhasználókat, akikre alkalmazni kívánja a szabályzatot, ne csak az **összes felhasználót** jelölje ki, vagy tiltsa le a bejelentkezést.
@@ -145,6 +143,6 @@ Feltételes hozzáférési esemény eredményének áttekintése:
    - AppliedPolicies: az összes olyan feltételes hozzáférési szabályzat listája, amelyben teljesülnek a feltételek, és a szabályzatok be vannak kapcsolva.
    - ReportingPolicies: azoknak a feltételes hozzáférési házirendeknek a listája, amelyek a csak jelentés módra lettek beállítva, és a feltételek teljesültek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Feltételes hozzáférés hozzáadása egy felhasználói folyamathoz](conditional-access-user-flow.md).

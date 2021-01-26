@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/19/2020
+ms.date: 01/25/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ef7b6d9495b1431e03808b830671e839b90d436
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 0da54bd28c1d9ea933e88b6c86cf6092c10d036a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98613801"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785185"
 ---
 # <a name="accidental-delete-prevention"></a>Véletlen törlés megakadályozása
 
@@ -24,9 +24,9 @@ A következő dokumentum a Azure AD Connect Cloud Sync véletlen törlési funkc
 
 - konfigurálhatja a véletlen törlések automatikus elkerülésének lehetőségét. 
 - Állítsa be, hogy a rendszer milyen típusú objektumokat (küszöbértéket) fog érvénybe lépni 
-- értesítési e-mail cím beállítása, hogy e-mailben értesítést kapjon, ha a kérdéses szinkronizálási feladatot a rendszer karanténba helyezi az adott forgatókönyv esetében 
+- beállíthatja az értesítő e-mail-címet, hogy e-mailben értesítést kapjon, ha a kérdéses szinkronizálási feladatot a rendszer karanténba helyezi ebben a forgatókönyvben 
 
-Ennek a funkciónak a használatához meg kell határoznia a küszöbértéket azon objektumok számára, amelyek törlését követően a szinkronizálás leáll.  Így ha eléri ezt a számot, a szinkronizálás leáll, és a rendszer értesítést küld a megadott e-mail-címre.  Ez lehetővé teszi, hogy vizsgálja meg, mi történik.
+Ennek a funkciónak a használatához meg kell határoznia a küszöbértéket azon objektumok számára, amelyek törlését követően a szinkronizálás leáll.  Így ha eléri ezt a számot, a szinkronizálás leáll, és a rendszer értesítést küld a megadott e-mail-címre.  Ez az értesítés lehetővé teszi, hogy vizsgálja meg, mi történik.
 
 
 ## <a name="configure-accidental-delete-prevention"></a>Véletlen törlés megelőzésének konfigurálása
@@ -40,13 +40,53 @@ Az új funkció használatához kövesse az alábbi lépéseket.
 5. A **Beállítások** területen adja meg a következőket:
     - **Értesítő e-mail** – értesítésekhez használt e-mail
     - **Véletlen törlések megakadályozása** – jelölje be ezt a jelölőnégyzetet a funkció engedélyezéséhez.
-    - **Véletlen törlési küszöb** – adjon meg több objektumot a szinkronizálási leállítás és az értesítés elindításához
+    - **Véletlen törlési küszöb** – Itt adhatja meg a szinkronizálás leállítására és az értesítések elküldésére szolgáló objektumok számát
 
 ![Véletlen törlések](media/how-to-accidental-deletes/accident-1.png)
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="recovering-from-an-accidental-delete-instance"></a>Helyreállítás egy véletlen törlési példányból
+Ha véletlen törlést tapasztal, a kiépítési ügynök konfigurációjának állapotát fogja látni.  Ez azt jelenti, hogy **túllépte a törlési küszöbértéket**.
+ 
+![Véletlen törlés állapota](media/how-to-accidental-deletes/delete-1.png)
 
-- [Mi az Azure AD Connect Cloud Sync?](what-is-cloud-sync.md)
-- [A Azure AD Connect Cloud Sync telepítése](how-to-install.md)
+Ha **túllépi a törlési küszöbértéket**, a szinkronizálási állapotra vonatkozó információk jelennek meg.  Ez további részleteket is tartalmaz. 
+ 
+ ![Szinkronizálás állapota](media/how-to-accidental-deletes/delete-2.png)
+
+Ha a jobb gombbal rákattint a három pontra, a következő beállításokat fogja megkapni:
+ - Kiépítési napló megtekintése
+ - Ügynök megtekintése
+ - Törlés engedélyezése
+
+ ![Jobb gombos kattintás](media/how-to-accidental-deletes/delete-3.png)
+
+A **kiépítési napló megtekintése** lehetőséggel megtekintheti a **StagedDelete** -bejegyzéseket, és áttekintheti a törölt felhasználók által megadott információkat.
+ 
+ ![Üzembehelyezési naplók](media/how-to-accidental-deletes/delete-7.png)
+
+### <a name="allowing-deletes"></a>Törlés engedélyezése
+
+A törlés **engedélyezése** művelet törli a véletlen törlés küszöbértékét kiváltó objektumokat.  A törlések elfogadásához kövesse az alábbi eljárást.  
+
+1. Kattintson a jobb gombbal az ellipszisekre, és válassza a **Törlés engedélyezése** lehetőséget.
+2. A törlés engedélyezéséhez kattintson az **Igen** gombra a megerősítéshez.
+ 
+ ![Igen megerősítéskor](media/how-to-accidental-deletes/delete-4.png)
+
+3. Ekkor a rendszer megerősíti, hogy a törléseket elfogadták, és az állapota Kifogástalan állapotba kerül a következő ciklusban. 
+ 
+ ![Törlések elfogadása](media/how-to-accidental-deletes/delete-8.png)
+
+### <a name="rejecting-deletions"></a>Törlések elutasítása
+
+Ha nem szeretné engedélyezni a törlést, a következőket kell tennie:
+- a törlések forrásának vizsgálata
+- javítsa ki a problémát (például a szervezeti egység kikerült a hatókörből véletlenül, és ismét felvette a hatókörbe)
+- Az **Újraindítási szinkronizálás** futtatása az ügynök konfigurációjával
+
+## <a name="next-steps"></a>További lépések 
+
+- [Azure AD Connect a Cloud Sync hibaelhárítását?](how-to-troubleshoot.md)
+- [Azure AD Connect Cloud Sync hibakódok](reference-error-codes.md)
  
 

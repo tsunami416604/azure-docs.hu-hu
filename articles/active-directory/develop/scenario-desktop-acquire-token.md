@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: a2048a509bdbe11c948ac8eb2daa6e78013c2fa5
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: c58f4a553073eb3ed062ef9ec2a66c8e4f40e57b
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753782"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785125"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Webes API-kat meghívó asztali alkalmazás: token beszerzése
 
@@ -451,7 +451,7 @@ A MSAL.NET-ben a következőket kell használnia:
 AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
 ```
 
-Általában csak egy paraméterre () van szükség `scopes` . Attól függően, hogy a Windows-rendszergazda hogyan állította be a házirendeket, előfordulhat, hogy a Windows rendszerű gépén lévő alkalmazások nem jogosultak a bejelentkezett felhasználó keresésére. Ebben az esetben használjon egy második metódust, `.WithUsername()` és adja át a bejelentkezett felhasználó felhasználónevét UPN formátumként, például: `joe@contoso.com` . A .NET Core-on csak a Felhasználónév elérhető túlterhelése érhető el, mert a .NET Core platform nem tudja megkérni a felhasználónevet az operációs rendszernek.
+Általában csak egy paraméterre () van szükség `scopes` . Attól függően, hogy a Windows-rendszergazda hogyan állította be a házirendeket, előfordulhat, hogy a Windows rendszerű gépén lévő alkalmazások nem jogosultak a bejelentkezett felhasználó keresésére. Ebben az esetben használjon egy második metódust, `.WithUsername()` és adja át a bejelentkezett felhasználó felhasználónevét UPN formátumként, például: `joe@contoso.com` .
 
 A következő minta a legfrissebb eseteket mutatja be, és magyarázatokkal szolgál a beolvasott kivételek típusára és azok enyhítésére.
 

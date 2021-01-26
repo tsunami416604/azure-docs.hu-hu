@@ -8,12 +8,12 @@ ms.date: 11/24/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 9509f84b14a42180189a529282b5db348deab279
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c1e8062210de1d7d99f57a4e0b155492f7dfdd9a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95920283"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785976"
 ---
 # <a name="use-key-vault-secrets-in-github-actions-workflows"></a>Key Vault Secrets használata a GitHub-műveletek munkafolyamataiban
 
@@ -25,7 +25,7 @@ A Key Vault-és GitHub-műveletekkel a központosított titkokat kezelő eszköz
 ## <a name="prerequisites"></a>Előfeltételek 
 - Egy GitHub-fiók. Ha még nem rendelkezik ilyennel, regisztráljon [ingyenesen](https://github.com/join).  
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Egy GitHub-tárházhoz csatlakoztatott Azure-alkalmazás. Ez a példa a [tárolók üzembe helyezését használja a Azure app Service](https://docs.microsoft.com/azure/developer/javascript/tutorial-vscode-docker-node-01). 
+- Egy GitHub-tárházhoz csatlakoztatott Azure-alkalmazás. Ez a példa a [tárolók üzembe helyezését használja a Azure app Service](/azure/developer/javascript/tutorial-vscode-docker-node-01). 
 - Egy Azure Key Vault.  Azure Key Vault az Azure Portal, az Azure CLI vagy a Azure PowerShell használatával hozhat létre.
 
 ## <a name="workflow-file-overview"></a>A munkafolyamat-fájl áttekintése

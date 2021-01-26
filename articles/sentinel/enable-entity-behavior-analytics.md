@@ -12,25 +12,20 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2020
+ms.date: 01/25/2021
 ms.author: yelevin
-ms.openlocfilehash: 140228a65be166bc172e81267c4449b49621e02c
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 0dccd8ac4f852688bf7e59e7ed96c4458c08d18b
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425779"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784728"
 ---
 # <a name="enable-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>A felhasználó és az entitás viselkedés-elemzésének (UEBA) engedélyezése az Azure Sentinelben 
 
 > [!IMPORTANT]
 >
-> - A UEBA-és entitás-lapok szolgáltatásai mostantól **általánosan elérhetők** a következő Azure Sentinel földrajzi területeken és régiókban:
->    - Földrajz Egyesült Államok
->    - Nyugat-Európa régiója
->    - Ausztráliai földrajzi hely
->
-> - Az összes többi földrajzi és régió esetében ezek a funkciók a jelenleg **előzetes** verzióban maradnak. Tekintse meg a kiegészítő [használati feltételeket a Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) előzetes verziókra vonatkozó további jogi feltételekhez, amelyek olyan Azure-szolgáltatásokra vonatkoznak, amelyek a bétaverzióban, az előzetes verzióban vagy más esetben még nem jelent meg általánosan elérhetővé.
+> - A UEBA és az Entity Pages funkciói már **általánosan elérhetők** a **_minden_* _ Azure Sentinel földrajzi és régiójában.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -38,7 +33,7 @@ A funkció engedélyezéséhez vagy letiltásához (ezek az előfeltételek nem 
 
 - A felhasználónak a szervezet Azure Active Directory tagjának kell lennie, és nem vendég felhasználó.
 
-- A felhasználónak hozzá kell rendelnie a **globális rendszergazdai** vagy **biztonsági rendszergazdai** szerepköröket az Azure ad-ben.
+- A felhasználónak az Azure AD-ben hozzá kell rendelnie a *globális rendszergazdai** vagy **biztonsági rendszergazdai** szerepköröket.
 
 - A felhasználónak a következő **Azure-szerepkörök** közül legalább egyet hozzá kell rendelnie (További információ az [Azure RBAC-ről](roles.md)):
     - Az **Azure Sentinel közreműködő** a munkaterület vagy az erőforráscsoport szintjén.
@@ -64,7 +59,7 @@ A funkció engedélyezéséhez vagy letiltásához (ezek az előfeltételek nem 
 
 1. Válassza **az Ugrás az entitás keresése** lehetőséget. Ekkor megjelenik az entitás keresési panelje, amelyről mostantól az látható, ha az **entitás viselkedését** választja a fő Azure Sentinel menüben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebből a dokumentumból megtudhatta, hogyan engedélyezheti és konfigurálhatja a felhasználói és entitások viselkedésének elemzését (UEBA) az Azure Sentinelben. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

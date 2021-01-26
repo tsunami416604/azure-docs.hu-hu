@@ -7,12 +7,12 @@ ms.reviewer: jehollan, klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 25f761d85ebfd0ac16f182941c5b5c29636066bf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a7df9ba1318f40de8af392cfaedbe51d7a5df755
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000334"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784933"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Logikai alkalmazások meghívása vagy elindítása Azure Functions és Azure Service Bus használatával
 
@@ -24,7 +24,7 @@ A [Azure functions](../azure-functions/functions-overview.md) használatával ak
 
 * Egy Azure Service Bus névtér. Ha nem rendelkezik névtérrel, [először hozza létre a névteret](../service-bus-messaging/service-bus-create-namespace-portal.md).
 
-* Function-alkalmazás, amely a függvények tárolója. Ha nem rendelkezik Function alkalmazással, [először hozza létre a Function alkalmazást](../azure-functions/functions-create-first-azure-function.md), és győződjön meg arról, hogy a .NET-et futtatókörnyezeti veremként választja.
+* Function-alkalmazás, amely a függvények tárolója. Ha nem rendelkezik Function alkalmazással, [először hozza létre a Function alkalmazást](../azure-functions/functions-get-started.md), és győződjön meg arról, hogy a .NET-et futtatókörnyezeti veremként választja.
 
 * Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 

@@ -4,7 +4,6 @@ description: Megtudhatja, hogyan hozhat létre egy magánhálózati IP-címmel r
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: d5f18929-15e3-40a2-9ee3-8188bc248ed8
@@ -17,18 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2019
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 2825d8d9f8be7c56d7beea767a1afb7a290eafa2
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 43c2e2c8905ca60e59caed3fdf1b4920f509fd88
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222598"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98783784"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>Statikus magánhálózati IP-címmel rendelkező virtuális gép létrehozása a PowerShell használatával
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 A virtuális gépet (VM) statikus magánhálózati IP-címmel is létrehozhatja. Statikus magánhálózati IP-címet rendeljen hozzá, nem pedig dinamikus címet, ha ki szeretné választani, hogy egy alhálózat melyik címét rendeli hozzá a virtuális géphez. További információ a [statikus magánhálózati IP-címekről](./public-ip-addresses.md#allocation-method). Ha egy meglévő virtuális géphez hozzárendelt magánhálózati IP-címet szeretne módosítani dinamikusról statikusra, vagy nyilvános IP-címekkel szeretne dolgozni, tekintse meg az [IP-címek hozzáadása, módosítása vagy eltávolítása](virtual-network-network-interface-addresses.md)című témakört.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
@@ -107,7 +106,7 @@ Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.re
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információk a [magánhálózati IP-címekről](./private-ip-addresses.md) és a [statikus magánhálózati IP-](virtual-network-network-interface-addresses.md#add-ip-addresses) címek egy Azure-beli virtuális géphez való hozzárendeléséről.
 - További információ a [Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és a [Windows rendszerű](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gépek létrehozásáról.

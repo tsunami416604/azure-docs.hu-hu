@@ -4,12 +4,12 @@ description: Ismerkedjen meg az Azure Service Fabric megbízható gyűjtemények
 ms.topic: conceptual
 ms.date: 5/8/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1d29f5d3391bdea0b21997a392d4d2e053b7ec65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29bb9a2dfb028d223d63559b35735e78d7e6bcf8
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018620"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784359"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Megbízható gyűjteményi objektumok szerializálása az Azure-ban Service Fabric
 A megbízható gyűjtemények replikálják és megőrzik az elemeiket, így biztosítva, hogy a számítógépek meghibásodása és az áramkimaradások között tartósak legyenek.
@@ -20,7 +20,7 @@ A megbízható állapot-kezelő beépített szerializálók használatával tesz
 
 ## <a name="built-in-serializers"></a>Beépített Szerializálók
 
-A megbízható State Manager tartalmaz beépített szerializáló néhány gyakori típushoz, így alapértelmezés szerint hatékonyan szerializálható. Más típusok esetén a megbízható állapot-kezelő visszatér a [dataContractSerializer](/dotnet/api/system.runtime.serialization.datacontractserializer?view=netcore-3.1)használatára.
+A megbízható State Manager tartalmaz beépített szerializáló néhány gyakori típushoz, így alapértelmezés szerint hatékonyan szerializálható. Más típusok esetén a megbízható állapot-kezelő visszatér a [dataContractSerializer](/dotnet/api/system.runtime.serialization.datacontractserializer)használatára.
 A beépített szerializálók hatékonyabbak, mert tudják, hogy a típusok nem változnak, és nem kell tartalmazniuk a típushoz hasonló információkat.
 
 A megbízható State Manager a következő típusokhoz tartalmaz beépített szerializáló: 
@@ -138,9 +138,9 @@ Az egyéni szerializálási felhasználóknak meg kell felelniük az általa has
 Az összes verzió támogatásának gyakori módja a méretre vonatkozó információk hozzáadása az elején, és csak opcionális tulajdonságok hozzáadása.
 Így az egyes verziók ugyanúgy olvashatók, mint a stream hátralévő része.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
   * [Szerializálás és frissítés](service-fabric-application-upgrade-data-serialization.md)
-  * [Fejlesztői referenciák megbízható gyűjteményekhez](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+  * [Fejlesztői referenciák megbízható gyűjteményekhez](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)
   * [Az alkalmazás a Visual Studióval történő frissítése](service-fabric-application-upgrade-tutorial.md) végigvezeti egy alkalmazás frissítésén a Visual Studióval.
   * [Az alkalmazás PowerShell használatával történő frissítése](service-fabric-application-upgrade-tutorial-powershell.md) végigvezeti az alkalmazás frissítésén a PowerShell használatával.
   * Annak szabályozása, hogy az alkalmazás hogyan legyen [frissítve a frissítési paraméterek](service-fabric-application-upgrade-parameters.md)használatával.

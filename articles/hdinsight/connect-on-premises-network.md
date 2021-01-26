@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
-ms.openlocfilehash: 71ef902e909e552ade5174196f291630bc242ca0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2a7b686bb0aae0b35b25cdd724925bab3c0a2e10
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005367"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786520"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>A HDInsight csatlakoztatása a helyszíni hálózathoz
 
@@ -52,7 +52,7 @@ A következő ábrán a zöld vonalak a virtuális hálózat DNS-utótagjának v
 
 A következő dokumentumok segítségével megtudhatja, hogyan hozhat létre a helyszíni hálózathoz csatlakozó Azure-Virtual Network:
 
-* [Az Azure Portal használata](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Az Azure Portal használata](../vpn-gateway/tutorial-site-to-site-portal.md)
 * [Az Azure PowerShell használata](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 * [Az Azure parancssori felület használata](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 
@@ -69,7 +69,7 @@ Ezek a lépések a [Azure Portal](https://portal.azure.com) használatával lét
 
     ![Ubuntu rendszerű virtuális gép létrehozása](./media/connect-on-premises-network/azure-portal-create-resource.png)
 
-1. **Compute**  >  A **virtuális gép létrehozása** lapon válassza a számítási **virtuális gép** lehetőséget.
+1.   >  A **virtuális gép létrehozása** lapon válassza a számítási **virtuális gép** lehetőséget.
 
 1. Az __alapok__ lapon adja meg a következő adatokat:  
   
@@ -78,7 +78,7 @@ Ezek a lépések a [Azure Portal](https://portal.azure.com) használatával lét
     |Előfizetés |Válassza ki a megfelelő előfizetést.|
     |Erőforráscsoport |Válassza ki azt az erőforráscsoportot, amely a korábban létrehozott virtuális hálózatot tartalmazza.|
     |Virtuális gép neve | Adjon meg egy rövid nevet, amely azonosítja ezt a virtuális gépet. Ez a példa az **DNSProxy**-t használja.|
-    |Region | Válassza ki ugyanazt a régiót, mint a korábban létrehozott virtuális hálózat.  Nem minden virtuálisgép-méret érhető el minden régióban.  |
+    |Régió | Válassza ki ugyanazt a régiót, mint a korábban létrehozott virtuális hálózat.  Nem minden virtuálisgép-méret érhető el minden régióban.  |
     |Rendelkezésre állási beállítások |  Válassza ki a kívánt rendelkezésre állási szintet.  Az Azure számos lehetőséget kínál az alkalmazások rendelkezésre állásának és rugalmasságának kezelésére.  A Availability Zones-vagy rendelkezésre állási csoportokban lévő replikált virtuális gépek használatát az adatközpont-kimaradások és a karbantartási események védelme érdekében Ebben a példában **nem szükséges infrastruktúra-redundancia**. |
     |Kép | Hagyja az **Ubuntu Server 18,04 LTS**-et. |
     |Hitelesítéstípus | __Jelszó__ vagy __nyilvános SSH-kulcs__: az SSH-fiók hitelesítési módszere. Javasoljuk, hogy használjon nyilvános kulcsokat, mivel azok biztonságosabbak. Ez a példa a **jelszót** használja.  További információ: [ssh-kulcsok létrehozása és használata Linux rendszerű virtuális gépekhez](../virtual-machines/linux/mac-create-ssh-keys.md) dokumentum.|

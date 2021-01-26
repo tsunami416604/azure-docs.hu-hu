@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: kumud
-ms.openlocfilehash: a29454f09268406511730c63dcc3bc3063b909c6
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 2c0c4bec93b8fa61275c376fbae2a3a063e72a6f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218654"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785532"
 ---
 # <a name="integrate-azure-services-with-virtual-networks-for-network-isolation"></a>Azure-szolgáltatások integrálása virtuális hálózatokkal hálózati elkülönítéshez
 
@@ -74,8 +74,8 @@ A szolgáltatás-címkék használatával hálózati elkülönítést érhet el,
 
 További információ az azokat támogató szolgáltatási címkékről és Azure-szolgáltatásokról: a [szolgáltatási címkék áttekintése](service-tags-overview.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan [integrálhatja az alkalmazást egy Azure-hálózattal](../app-service/web-sites-integrate-with-vnet.md).
+- Ismerje meg, hogyan [integrálhatja alkalmazását egy Azure-hálózattal](../app-service/web-sites-integrate-with-vnet.md).
 - Megtudhatja, hogyan [korlátozhatja az erőforrásokhoz való hozzáférést a szolgáltatás-címkék használatával](tutorial-restrict-network-access-to-resources.md).
 - Ismerje meg, hogyan csatlakozhat az Azure [Cosmos-fiókhoz az Azure Private link használatával](../private-link/tutorial-private-endpoint-cosmosdb-portal.md).

@@ -12,14 +12,14 @@ ms.topic: overview
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 1/14/2020
+ms.date: 1/25/2021
 ms.author: allensu
-ms.openlocfilehash: e8d0afab14d02ffe16db535f173456b55ab53d69
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: d5d2f83ddb4f37e1379bb7d60a76ddc70d61f99a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97860926"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785837"
 ---
 # <a name="what-is-azure-load-balancer"></a>Mi az az Azure Load Balancer?
 
@@ -56,7 +56,7 @@ A standard Load Balancer használatával végrehajtható főbb forgatókönyvek 
 
 - Engedélyezze az IPv6 **[terheléselosztásának](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)** támogatását **[](../virtual-network/ipv6-overview.md)**.
 
-- Standard Load Balancer többdimenziós metrikákat biztosít [Azure monitoron](../azure-monitor/overview.md)keresztül.  Ezek a metrikák szűrhetők, csoportosíthatók és kibonthatók egy adott dimenzióra vonatkozóan.  A szolgáltatás teljesítményének és állapotának aktuális és korábbi betekintést nyújtanak.  A Resource Health is támogatott. További részletekért tekintse át **[standard Load Balancer diagnosztikát](load-balancer-standard-diagnostics.md)** .
+- Standard Load Balancer többdimenziós metrikákat biztosít [Azure monitoron](../azure-monitor/overview.md)keresztül.  Ezek a metrikák szűrhetők, csoportosíthatók és kibonthatók egy adott dimenzióra vonatkozóan.  A szolgáltatás teljesítményének és állapotának aktuális és korábbi betekintést nyújtanak. [Bepillantást Azure Load Balancer] ( https://docs.microsoft.com/azure/load-balancer/load-balancer-insights) előre konfigurált irányítópultot kínál a metrikák hasznos vizualizációkkal.  A Resource Health is támogatott. További részletekért tekintse át **[standard Load Balancer diagnosztikát](load-balancer-standard-diagnostics.md)** .
 
 - Terheléselosztási szolgáltatásokat **[több porton, több IP-címen vagy mindkettőn](./load-balancer-multivip-overview.md)**.
 

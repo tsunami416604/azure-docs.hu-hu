@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: fcfd3da30ef9ace723b4204f5924591b1e2717f8
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 59359cdd3e3c035d4cb6789295d41bb3908019bb
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503165"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785820"
 ---
 # <a name="azure-monitor-logs-for-azure-standard-load-balancer"></a>Azure Monitor naplók az Azure standard Load Balancer
 
@@ -74,7 +74,7 @@ A tevékenységnaplózás automatikusan engedélyezve van minden Resource Manage
 
 ## <a name="view-and-analyze-the-activity-log"></a>A tevékenységnapló megtekintése és elemzése
 
-A rendszer alapértelmezés szerint létrehozza a tevékenység naplóját. A [cikk utasításait](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log)követve beállíthatja, hogy az előfizetési szinten exportálható legyen. További információ ezekről a naplókról: a [tevékenység naplóinak megtekintése az erőforrásokkal kapcsolatos műveletek figyelése](../azure-resource-manager/management/view-activity-logs.md) című cikkben.
+A rendszer alapértelmezés szerint létrehozza a tevékenység naplóját. A [cikk utasításait](../azure-monitor/platform/activity-log.md)követve beállíthatja, hogy az előfizetési szinten exportálható legyen. További információ ezekről a naplókról: a [tevékenység naplóinak megtekintése az erőforrásokkal kapcsolatos műveletek figyelése](../azure-resource-manager/management/view-activity-logs.md) című cikkben.
 
 A következő módszerek bármelyikével megtekintheti és elemezheti a tevékenység naplójának adatai:
 
@@ -111,6 +111,6 @@ A Azure Load Balancer metrika-naplók exportálási funkciója a következő kor
 * A metrikák dimenzióját nem őrződnek meg. Például a **DipAvailability** (állapot-mintavételi állapot) mérőszámokkal nem lehet kiosztani vagy megtekinteni a HÁTTÉRBELI IP-címet.
 * A használt SNAT-portok és a lefoglalt SNAT-portok metrikái jelenleg nem érhetők el naplókként való exportálásra.
 
-## <a name="next-steps"></a>Következő lépések
-* [Tekintse át a terheléselosztó elérhető mérőszámait](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics)
-* [Lekérdezések létrehozása és tesztelése a következő Azure Monitor utasítások alapján](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)
+## <a name="next-steps"></a>További lépések
+* [Tekintse át a terheléselosztó elérhető mérőszámait](./load-balancer-standard-diagnostics.md)
+* [Lekérdezések létrehozása és tesztelése a következő Azure Monitor utasítások alapján](../azure-monitor/log-query/log-query-overview.md)

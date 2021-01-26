@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 41cfff11e44a3d052614aa3c81a4623f59bbbbf5
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: d7d9ed8fa695c636e7aaf36fd034babb4de012d9
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095287"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784680"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Kapacitás megtervezése és méretezése az Azure Service Fabric
 
@@ -161,7 +161,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 > [!NOTE]
 > Ha egy fürtben méretezi a méretezést, az eltávolított csomópont-vagy virtuálisgép-példány nem kifogástalan állapotban jelenik meg Service Fabric Explorerban. Ennek a viselkedésnek a magyarázata: [Service Fabric Explorerban megfigyelhető viselkedések](./service-fabric-cluster-scale-in-out.md#behaviors-you-may-observe-in-service-fabric-explorer). A következőket teheti:
-> * Hívja meg a [Remove-ServiceFabricNodeState parancsot](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps&preserve-view=true) a megfelelő csomópont-névvel.
+> * Hívja meg a [Remove-ServiceFabricNodeState parancsot](/powershell/module/servicefabric/remove-servicefabricnodestate) a megfelelő csomópont-névvel.
 > * Telepítse az [Service Fabric autoscale Helper alkalmazást](https://github.com/Azure/service-fabric-autoscale-helper/) a fürtön. Ez az alkalmazás biztosítja, hogy a méretezett csomópontok törlődnek Service Fabric Explorerból.
 
 ## <a name="reliability-levels"></a>Megbízhatósági szintek
@@ -218,7 +218,7 @@ A másik erőforrás a `nodeTypes` [Microsoft. ServiceFabric/Clusters erőforrá
 ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Hozzon létre egy fürtöt a virtuális gépeken vagy a Windows Servert futtató számítógépeken: [Service Fabric a fürt létrehozását a Windows Server](service-fabric-cluster-creation-for-windows-server.md)rendszerhez.
 * Hozzon létre egy fürtöt a virtuális gépeken vagy Linuxon futó számítógépeken: [hozzon létre egy linuxos fürtöt](service-fabric-cluster-creation-via-portal.md).

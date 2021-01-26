@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 10/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 11122b57a1971f328a8a83c3dea136813426c060
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 13d3809611714992f24a66a96c22074e69fba9bd
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96582360"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786656"
 ---
 # <a name="azure-data-box-gateway-security-and-data-protection"></a>Biztonság és adatvédelem Azure Data Box Gateway
 
@@ -83,9 +83,9 @@ Ez a szakasz azokat a Data Box Gateway biztonsági szolgáltatásokat ismerteti,
 
 ### <a name="protect-the-device-data-using-bitlocker"></a>Az eszköz adatainak védelme a BitLocker használatával
 
-A Data Box Gateway virtuális gépen lévő virtuális lemezek biztonságossá tételéhez ajánlott engedélyezni a BitLockert. Alapértelmezés szerint a BitLocker nincs engedélyezve. További információ:
+A Data Box Gateway virtuális gépen lévő virtuális lemezek biztonságossá tételéhez ajánlott engedélyezni a BitLockert. Alapértelmezés szerint a BitLocker nincs engedélyezve. További információkért lásd:
 
-- [Titkosítási támogatás beállításai a Hyper-V kezelőjében](hhttps://docs.microsoft.com/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
+- [Titkosítási támogatás beállításai a Hyper-V kezelőjében](/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
 - [BitLocker-támogatás egy virtuális gépen](https://kb.vmware.com/s/article/2036142)
 
 ## <a name="manage-personal-information"></a>Személyes adatok kezelése

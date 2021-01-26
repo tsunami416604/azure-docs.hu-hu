@@ -3,12 +3,12 @@ title: Tranzakciók és zárolási módok megbízható gyűjteményekben
 description: Az Azure Service Fabric megbízható State Manager és megbízható gyűjtemények tranzakciója és zárolása.
 ms.topic: conceptual
 ms.date: 5/1/2017
-ms.openlocfilehash: 57ca46047641b79d5e4c50ede4a27e16dcec5d89
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 5d2cbb517ea5ca45697cd9124b82e9ef13dd32db
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576723"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784342"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Tranzakciók és zárolási módok az Azure-ban Service Fabric megbízható gyűjtemények
 
@@ -18,7 +18,7 @@ A tranzakciók egyetlen logikai egységként végrehajtott műveletek sorozatáb
 
 * **Atomi**: a tranzakciónak a Work atomi egységének kell lennie. Más szóval a rendszer minden adatmódosítást végez, vagy egyiket sem hajt végre.
 * **Konzisztencia**: Ha elkészült, a tranzakciónak konzisztens állapotban kell hagynia az összes adategységet. A tranzakció végén minden belső adatstruktúrának helyesnek kell lennie.
-* **Elkülönítés**: az egyidejű tranzakciók által végrehajtott módosításokat el kell különíteni a más párhuzamos tranzakciók által végrehajtott módosításokkal. Egy [ITransaction](/dotnet/api/microsoft.servicefabric.data.itransaction?view=azure-dotnet) belüli művelethez használt elkülönítési szintet a műveletet végrehajtó [IReliableState](/dotnet/api/microsoft.servicefabric.data.ireliablestate?view=azure-dotnet) határozza meg.
+* **Elkülönítés**: az egyidejű tranzakciók által végrehajtott módosításokat el kell különíteni a más párhuzamos tranzakciók által végrehajtott módosításokkal. Egy [ITransaction](/dotnet/api/microsoft.servicefabric.data.itransaction) belüli művelethez használt elkülönítési szintet a műveletet végrehajtó [IReliableState](/dotnet/api/microsoft.servicefabric.data.ireliablestate) határozza meg.
 * **Tartósság**: egy tranzakció befejeződése után a rendszer tartósan érvénybe helyezi a hatását. A módosítások rendszerhiba esetén is megmaradnak.
 
 ### <a name="isolation-levels"></a>Elkülönítési szintek
@@ -84,4 +84,4 @@ Ebben az esetben az egyik vagy mindkét művelet időtúllépést eredményez. E
 * [Értesítések Reliable Services](service-fabric-reliable-services-notifications.md)
 * [Biztonsági mentés és visszaállítás Reliable Services (vész-helyreállítás)](service-fabric-reliable-services-backup-restore.md)
 * [Megbízható állapot-kezelő konfigurációja](service-fabric-reliable-services-configuration.md)
-* [Fejlesztői referenciák megbízható gyűjteményekhez](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+* [Fejlesztői referenciák megbízható gyűjteményekhez](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)

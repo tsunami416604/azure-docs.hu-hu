@@ -8,12 +8,12 @@ ms.author: jehollan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: 2fae7d2526e6c95efe83ca8fa742a6d92457b897
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22e0c7304f7a53a86bc5c6739a2061352d738d29
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86520749"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784812"
 ---
 # <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Streaming Customer bepillantást tartalmazó irányítópult létrehozása Azure Logic Apps és Azure Functions
 
@@ -46,7 +46,7 @@ Ez a logikai alkalmazás most már minden új tweeten bekövetkezik. Ezután elv
 
 Egy bizonyos szöveg mögötti hangulat észleléséhez használhatja az [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/).
 
-1. A Logic app Designerben az trigger alatt válassza az **új lépés**lehetőséget.
+1. A Logic app Designerben az trigger alatt válassza az **új lépés** lehetőséget.
 
 2. Keresse meg az **text Analytics** -összekötőt.
 
@@ -54,7 +54,7 @@ Egy bizonyos szöveg mögötti hangulat észleléséhez használhatja az [Azure 
 
 4. Ha a rendszer kéri, adjon meg egy érvényes Cognitive Services kulcsot a Text Analytics szolgáltatáshoz.
 
-5. A **kérelem törzse**területen válassza a **Tweet szövege** mezőt, amely a tweet szövegét adja meg az elemzéshez.
+5. A **kérelem törzse** területen válassza a **Tweet szövege** mezőt, amely a tweet szövegét adja meg az elemzéshez.
 
 Miután megszerezte a tweetek adatait és a tweettel kapcsolatos információkat, mostantól számos más kapcsolódó összekötőt és a műveleteit is használhatja:
 
@@ -67,7 +67,7 @@ Létrehozhat egy Azure-függvényt is, amely segítségével egyéni feldolgozá
 
 ## <a name="process-data-with-azure-functions"></a>Az adatfeldolgozás Azure Functions
 
-A függvények létrehozása előtt hozzon létre egy Function alkalmazást az Azure-előfizetésében. Emellett ahhoz, hogy a logikai alkalmazás közvetlenül hívjon egy függvényt, a függvénynek rendelkeznie kell egy HTTP-trigger kötéssel, például használja a **HttpTrigger** sablont. Ismerje meg, [hogyan hozhatja létre az első Function-alkalmazást és-függvényt a Azure Portalban](../azure-functions/functions-create-first-azure-function.md).
+A függvények létrehozása előtt hozzon létre egy Function alkalmazást az Azure-előfizetésében. Emellett ahhoz, hogy a logikai alkalmazás közvetlenül hívjon egy függvényt, a függvénynek rendelkeznie kell egy HTTP-trigger kötéssel, például használja a **HttpTrigger** sablont. Ismerje meg, [hogyan hozhatja létre az első Function-alkalmazást és-függvényt a Azure Portalban](../azure-functions/functions-get-started.md).
 
 Ebben az esetben a tweet szövege legyen az Azure-függvény kérés törzse. A függvény kódjában adja meg azt a logikát, amely meghatározza, hogy a tweet szövege tartalmaz-e kulcsszót vagy kifejezést. A függvényt a forgatókönyvhöz szükséges egyszerűként vagy összetettebbként tartsa meg.
 A függvény végén a logikai alkalmazásra adott válaszként egy adott adatra, például egy egyszerű logikai értékre (például `containsKeyword` vagy egy összetett objektumra) vonatkozó választ ad vissza.
@@ -79,11 +79,11 @@ Ha elkészült, mentse a függvényt, majd adja hozzá a függvényt a felépít
 
 ## <a name="add-azure-function-to-logic-app"></a>Azure-függvény hozzáadása a logikai alkalmazáshoz
 
-1. A Logic app Designerben az **érzelmek észlelése** művelet alatt válassza az **új lépés**lehetőséget.
+1. A Logic app Designerben az **érzelmek észlelése** művelet alatt válassza az **új lépés** lehetőséget.
 
 2. Keresse meg az **Azure functions** -összekötőt, majd válassza ki a létrehozott függvényt.
 
-3. A **kérelem törzse**területen válassza a **Tweet szövege**elemet.
+3. A **kérelem törzse** területen válassza a **Tweet szövege** elemet.
 
 ![Konfigurált Azure Function lépés][2]
 
@@ -91,16 +91,16 @@ Ha elkészült, mentse a függvényt, majd adja hozzá a függvényt a felépít
 
 A logikai alkalmazás aktuális vagy korábbi futtatásának áttekintéséhez használhatja a Azure Portal, a Visual Studióban vagy az Azure REST API-kon és SDK-kon keresztül Azure Logic Apps által nyújtott részletes hibakeresési és figyelési képességeket.
 
-A logikai alkalmazás egyszerű teszteléséhez a Logic app Designerben válassza az **trigger futtatása**lehetőséget. Az trigger a megadott ütemezés alapján kérdezi le a tweeteket, amíg meg nem találja a feltételeknek megfelelő tweetet. A Futtatás előrehaladtával a tervező élő nézetet jelenít meg a futtatáshoz.
+A logikai alkalmazás egyszerű teszteléséhez a Logic app Designerben válassza az **trigger futtatása** lehetőséget. Az trigger a megadott ütemezés alapján kérdezi le a tweeteket, amíg meg nem találja a feltételeknek megfelelő tweetet. A Futtatás előrehaladtával a tervező élő nézetet jelenít meg a futtatáshoz.
 
 A Visual Studióban vagy a Azure Portalban megtekintheti az előző futtatási előzményeket: 
 
-* Nyissa meg a Visual Studio Cloud Explorer alkalmazást. Keresse meg a logikai alkalmazást, és nyissa meg az alkalmazás helyi menüjét. Válassza a **futtatási előzmények megnyitása**lehetőséget.
+* Nyissa meg a Visual Studio Cloud Explorer alkalmazást. Keresse meg a logikai alkalmazást, és nyissa meg az alkalmazás helyi menüjét. Válassza a **futtatási előzmények megnyitása** lehetőséget.
 
   > [!TIP]
   > Ha nem rendelkezik ezzel a paranccsal a Visual Studio 2019-ben, ellenőrizze, hogy rendelkezik-e a legújabb Visual Studio-frissítésekkel.
 
-* A Azure Portal keresse meg a logikai alkalmazást. A logikai alkalmazás menüjében válassza az **Áttekintés**lehetőséget. 
+* A Azure Portal keresse meg a logikai alkalmazást. A logikai alkalmazás menüjében válassza az **Áttekintés** lehetőséget. 
 
 ## <a name="create-automated-deployment-templates"></a>Automatizált üzembehelyezési sablonok létrehozása
 

@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4ded48fe8f04d2cdba40650974fd5002d659e381
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 78e9c50cb0601f6be69ae61f3a8e02621c7dd808
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705268"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786039"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Tudnivalók a Azure Key Vault titkairól
 
@@ -84,15 +84,15 @@ További alkalmazásspecifikus metaadatokat is megadhat címkék formájában. A
 
 ## <a name="azure-storage-account-key-management"></a>Azure Storage-fiók kulcsainak kezelése
 
-A Key Vault az [Azure Storage-fiók](https://docs.microsoft.com/azure/storage/common/storage-account-overview) kulcsait tudja kezelni:
+A Key Vault az [Azure Storage-fiók](../../storage/common/storage-account-overview.md) kulcsait tudja kezelni:
 
 - Belsőleg az Azure Storage-fiókkal Key Vault listázhatja (szinkronizálhatja) a kulcsokat. 
 - Key Vault a kulcsok rendszeres újragenerálása (elforgatása).
 - A rendszer soha nem adja vissza a kulcs értékeit a hívónak válaszul.
 - Key Vault a Storage-fiókok és a klasszikus Storage-fiókok kulcsait kezeli.
 
-További információ:
-- [Tárfiók hozzáférési kulcsa](https://docs.microsoft.com/azure/storage/common/storage-account-keys-manage)
+További információkért lásd:
+- [Tárfiók hozzáférési kulcsa](../../storage/common/storage-account-keys-manage.md)
 - [Storage-fiók kulcsainak kezelése Azure Key Vault](../secrets/overview-storage-keys.md))
 
 
@@ -133,5 +133,5 @@ További információ: a [Storage-fiók műveletei a Key Vault REST API-referenc
 - [A kulcsok, titkos kódok és tanúsítványok ismertetése](../general/about-keys-secrets-certificates.md)
 - [Információ a kulcsokról](../keys/about-keys.md)
 - [Információ a tanúsítványokról](../certificates/about-certificates.md)
-- [Biztonságos hozzáférés a kulcstartóhoz](../general/secure-your-key-vault.md)
+- [Biztonságos hozzáférés egy kulcstartóhoz](../general/secure-your-key-vault.md)
 - [Key Vault fejlesztői útmutató](../general/developers-guide.md)

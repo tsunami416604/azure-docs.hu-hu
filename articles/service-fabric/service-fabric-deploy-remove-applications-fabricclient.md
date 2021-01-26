@@ -4,12 +4,12 @@ description: A FabricClient API-kkal alkalmazásokat telepíthet és távolítha
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 565e6b8f23f159a5c231295694830917217a3d19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 343a37c983b1d64a4b1986913d9d6fd648a113fe
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89009300"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785549"
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>Alkalmazások telepítése és eltávolítása a FabricClient használatával
 > [!div class="op_single_selector"]
@@ -45,9 +45,9 @@ FabricClient fabricClient = new FabricClient();
 ```
 
 ## <a name="upload-the-application-package"></a>Alkalmazáscsomag feltöltése
-Tegyük fel, hogy létrehoz és becsomagol egy *MyApplication* nevű alkalmazást a Visual Studióban. Alapértelmezés szerint az ApplicationManifest.xml "MyApplicationType" néven szerepel az alkalmazás típusa.  Az alkalmazás-jegyzékfájlt, a szolgáltatási jegyzékfájlokat és a Code/config/adatcsomagokat tartalmazó alkalmazáscsomag a *C:\Users \& lt; username &gt; \Documents\Visual Studio 2019 \ Projects\MyApplication\MyApplication\pkg\Debug*helyen található.
+Tegyük fel, hogy létrehoz és becsomagol egy *MyApplication* nevű alkalmazást a Visual Studióban. Alapértelmezés szerint az ApplicationManifest.xml "MyApplicationType" néven szerepel az alkalmazás típusa.  Az alkalmazás-jegyzékfájlt, a szolgáltatási jegyzékfájlokat és a Code/config/adatcsomagokat tartalmazó alkalmazáscsomag a *C:\Users \& lt; username &gt; \Documents\Visual Studio 2019 \ Projects\MyApplication\MyApplication\pkg\Debug* helyen található.
 
-Az alkalmazáscsomag feltöltése a belső Service Fabric-összetevők által elérhető helyre helyezi azt. Service Fabric ellenőrzi az alkalmazáscsomag regisztrálását az alkalmazáscsomag regisztrálása során. Ha azonban helyileg szeretné ellenőrizni az alkalmazáscsomag használatát (azaz a feltöltés előtt), használja a [test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) parancsmagot.
+Az alkalmazáscsomag feltöltése a belső Service Fabric-összetevők által elérhető helyre helyezi azt. Service Fabric ellenőrzi az alkalmazáscsomag regisztrálását az alkalmazáscsomag regisztrálása során. Ha azonban helyileg szeretné ellenőrizni az alkalmazáscsomag használatát (azaz a feltöltés előtt), használja a [test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage) parancsmagot.
 
 A [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) API feltölti az alkalmazáscsomag a fürt rendszerkép-tárolójába. 
 
@@ -92,7 +92,7 @@ Ha már nincs szükség az alkalmazás egy adott verziójára, akkor a regisztr�
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 ### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage kér egy ImageStoreConnectionString
-A Service Fabric SDK-környezetnek már meg kell határoznia a megfelelő alapértelmezett beállításokat. Ha azonban szükség van rá, az összes parancs ImageStoreConnectionString meg kell egyeznie a Service Fabric-fürt által használt értékkel. A ImageStoreConnectionString megkeresheti a fürt jegyzékfájljában, a [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest?view=azureservicefabricps) és a Get-ImageStoreConnectionStringFromClusterManifest parancs használatával:
+A Service Fabric SDK-környezetnek már meg kell határoznia a megfelelő alapértelmezett beállításokat. Ha azonban szükség van rá, az összes parancs ImageStoreConnectionString meg kell egyeznie a Service Fabric-fürt által használt értékkel. A ImageStoreConnectionString megkeresheti a fürt jegyzékfájljában, a [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest) és a Get-ImageStoreConnectionStringFromClusterManifest parancs használatával:
 
 ```powershell
 PS C:\> Get-ImageStoreConnectionStringFromClusterManifest(Get-ServiceFabricClusterManifest)
@@ -138,7 +138,7 @@ A tömörítés csökkenti a méretet és a fájlok számát, ami viszont csökk
 Probléma: a [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) időtúllépést jelent a sok fájlt tartalmazó alkalmazáscsomag esetében (több ezer).
 Próbálja ki:
 - [Tömörítse a csomagot](service-fabric-package-apps.md#compress-a-package) a rendszerkép-tárolóba történő másolás előtt. A tömörítés csökkenti a fájlok számát.
-- Nagyobb időtúllépést ad meg [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) a ProvisionApplicationAsync `timeout` paraméterrel.
+- Nagyobb időtúllépést ad meg [](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) a ProvisionApplicationAsync `timeout` paraméterrel.
 
 ## <a name="code-example"></a>Mintakód
 Az alábbi példa egy alkalmazáscsomag átmásolása a rendszerkép-tárolóba, és az alkalmazás típusának kiosztása. Ezután a példa létrehoz egy alkalmazás-példányt, és létrehoz egy szolgáltatási példányt. Végül a példa eltávolítja az alkalmazás példányát, leállítja az alkalmazás típusát, és törli az alkalmazáscsomagt a rendszerkép-tárolóból.
@@ -321,7 +321,7 @@ static void Main(string[] args)
 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Service Fabric alkalmazás frissítése](service-fabric-application-upgrade.md)
 
 [Service Fabric állapot bemutatása](service-fabric-health-introduction.md)

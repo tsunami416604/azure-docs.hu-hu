@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 162ad87f79109cf38d3d0013608812155c6988a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ea8fa6933052374721d8d205d5b07386c807ae2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86252249"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784596"
 ---
 # <a name="reliable-services-lifecycle-overview"></a>A Reliable Services életciklusának áttekintése
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ Az állapot nélküli szolgáltatások életciklusa egyszerű. Az események sor
     - A szolgáltatás `StatelessService.RunAsync()` metódusának neve.
 3. Ha van ilyen, a szolgáltatás `StatelessService.OnOpenAsync()` metódusának neve. Ez a hívás nem gyakori felülbírálás, de elérhető. A kiterjesztett szolgáltatás-inicializálási feladatok most már elindíthatók.
 
-Ne feledje, hogy a figyelők és a **RunAsync**létrehozására és megnyitására irányuló hívások között nincs megrendelés. A figyelők megnyithatók a **RunAsync** elindítása előtt. Hasonlóképpen, a **RunAsync** meghívása előtt megnyithatja a kommunikációs figyelőket, vagy megkezdheti a kialakítását. Ha bármilyen szinkronizálásra van szükség, akkor a végrehajtó feladata marad. Íme néhány gyakori megoldás:
+Ne feledje, hogy a figyelők és a **RunAsync** létrehozására és megnyitására irányuló hívások között nincs megrendelés. A figyelők megnyithatók a **RunAsync** elindítása előtt. Hasonlóképpen, a **RunAsync** meghívása előtt megnyithatja a kommunikációs figyelőket, vagy megkezdheti a kialakítását. Ha bármilyen szinkronizálásra van szükség, akkor a végrehajtó feladata marad. Íme néhány gyakori megoldás:
 
   - Néha a figyelők nem működhetnek, amíg nem jön létre más információ, vagy nem végez munkát. Az állapot nélküli szolgáltatások esetében a munkát általában más helyszíneken is el lehet végezni, például a következő módon: 
     - A szolgáltatás konstruktorában.
@@ -113,7 +113,7 @@ A Service Fabric számos okból módosítja az állapot-nyilvántartó szolgált
 
 A megszakítást nem kezelő szolgáltatások számos problémát tapasztalhatnak. Ezek a műveletek lassúak, mert Service Fabric megvárja, amíg a szolgáltatások szabályosan leállnak. Ez végső soron sikertelen frissítésekhez vezethet, amelyek időtúllépést és visszaállítást végeznek. A lemondási token betartásának elmulasztása miatt kiegyensúlyozatlan fürtök is lehetnek. A fürtök kiegyensúlyozatlan állapotba kerülhetnek, mivel a csomópontok melegek lesznek, de a szolgáltatások nem lehetnek kiegyensúlyozva, mert túl sokáig tart, hogy máshová helyezze őket. 
 
-Mivel a szolgáltatások állapot-nyilvántartó, az is valószínű, hogy a [megbízható gyűjteményeket](service-fabric-reliable-services-reliable-collections.md)használják. Service Fabric az elsődleges lefokozása után az egyik első dolog, ami megtörténik, az írási hozzáférés az alapul szolgáló állapothoz visszavonva. Ez egy második olyan problémát eredményez, amely hatással lehet a szolgáltatás életciklusára. A gyűjtemények az időzítés alapján adják vissza a kivételeket, és azt, hogy a replika áthelyezése vagy leállítása folyamatban van-e. Ezeket a kivételeket helyesen kell kezelni. A Service Fabric által okozott kivételek állandó [( `FabricException` )](/dotnet/api/system.fabric.fabricexception?view=azure-dotnet) és átmeneti [( `FabricTransientException` )](/dotnet/api/system.fabric.fabrictransientexception?view=azure-dotnet) kategóriákba esnek. Az állandó kivételeket naplózni kell, és el kell dobni, amíg az átmeneti kivételek újrapróbálkoznak néhány újrapróbálkozási logika alapján.
+Mivel a szolgáltatások állapot-nyilvántartó, az is valószínű, hogy a [megbízható gyűjteményeket](service-fabric-reliable-services-reliable-collections.md)használják. Service Fabric az elsődleges lefokozása után az egyik első dolog, ami megtörténik, az írási hozzáférés az alapul szolgáló állapothoz visszavonva. Ez egy második olyan problémát eredményez, amely hatással lehet a szolgáltatás életciklusára. A gyűjtemények az időzítés alapján adják vissza a kivételeket, és azt, hogy a replika áthelyezése vagy leállítása folyamatban van-e. Ezeket a kivételeket helyesen kell kezelni. A Service Fabric által okozott kivételek állandó [( `FabricException` )](/dotnet/api/system.fabric.fabricexception) és átmeneti [( `FabricTransientException` )](/dotnet/api/system.fabric.fabrictransientexception) kategóriákba esnek. Az állandó kivételeket naplózni kell, és el kell dobni, amíg az átmeneti kivételek újrapróbálkoznak néhány újrapróbálkozási logika alapján.
 
 A `ReliableCollections` szolgáltatás életciklus-eseményeinek használatából származó kivételek kezelése fontos részét képezi a megbízható szolgáltatások tesztelésének és ellenőrzésének. Javasoljuk, hogy az éles környezetbe való üzembe helyezés előtt mindig a terhelés alatt futtassa a szolgáltatást a frissítés és a [káosz tesztelésének](service-fabric-controlled-chaos.md) végrehajtása során. Ezek az alapvető lépések segítenek biztosítani a szolgáltatás megfelelő megvalósítását és az életciklus-események megfelelő kezelését.
 

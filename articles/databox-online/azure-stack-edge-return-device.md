@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: alkohli
-ms.openlocfilehash: 730774f33d43754d4ca198ed170159fa4f872e09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c35bde40cac9629f084d69d52f119651b5655f7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903665"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784477"
 ---
 # <a name="return-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro-eszköz visszaküldése
 
@@ -38,8 +38,8 @@ Az eszköz visszaküldését még az eszköz alaphelyzetbe állítása előtt is
 
 Ha az eszközt a helyi webes felületen szeretné visszaállítani, hajtsa végre az alábbi lépéseket.
 
-1. A helyi webes KEZELŐFELÜLETen lépjen a **karbantartás > eszköz alaphelyzetbe állítása**elemre.
-2. Válassza az **eszköz alaphelyzetbe állítása**lehetőséget.
+1. A helyi webes KEZELŐFELÜLETen lépjen a **karbantartás > eszköz alaphelyzetbe állítása** elemre.
+2. Válassza az **eszköz alaphelyzetbe állítása** lehetőséget.
 
     ![Eszköz alaphelyzetbe állítása](media/azure-stack-edge-return-device/device-reset-1.png)
 
@@ -59,13 +59,13 @@ Másik lehetőségként kapcsolódjon az eszköz PowerShell-felületéhez, és h
 
 A visszatérési folyamat elindításához hajtsa végre az alábbi lépéseket.
 
-1. Lépjen a Azure Stack Edge Pro/Data Box Gateway erőforrásra Azure Portal. Az **áttekintésben**nyissa meg a parancssáv a jobb oldali ablaktáblán, majd válassza az **eszköz visszaküldése**lehetőséget. 
+1. Lépjen a Azure Stack Edge Pro/Data Box Gateway erőforrásra Azure Portal. Az **áttekintésben** nyissa meg a parancssáv a jobb oldali ablaktáblán, majd válassza az **eszköz visszaküldése** lehetőséget. 
 
     ![1. eszköz visszaküldése](media/azure-stack-edge-return-device/return-device-1.png)  
 
-2. A **visszalépési eszköz** panelen, az **alapszintű részletek**területen:
+2. A **visszalépési eszköz** panelen, az **alapszintű részletek** területen:
 
-    1. Adja meg az eszköz sorozatszámát. Az eszköz sorozatszámának beszerzéséhez nyissa meg az eszköz helyi webes FELÜLETét, és válassza az **Áttekintés**lehetőséget.  
+    1. Adja meg az eszköz sorozatszámát. Az eszköz sorozatszámának beszerzéséhez nyissa meg az eszköz helyi webes FELÜLETét, és válassza az **Áttekintés** lehetőséget.  
     
     ![1. eszköz sorozatszáma](media/azure-stack-edge-return-device/device-serial-number-1.png) 
 
@@ -77,7 +77,7 @@ A visszatérési folyamat elindításához hajtsa végre az alábbi lépéseket.
 
     ![Eszköz visszaküldése 2](media/azure-stack-edge-return-device/return-device-2.png) 
 
-3. A **szállítás részletei**területen:
+3. A **szállítás részletei** területen:
 
     1. Adja meg a nevét, a vállalat nevét és a teljes céges címeket. Adjon meg egy munkahelyi telefonszámot, beleértve a körzetszámot és egy e-mail-azonosítót az értesítéshez.
     2. Ha visszatérési szállítási mezőbe van szüksége, kérheti. Az **Igen** kérdésre adandó válaszhoz **üres mezőt kell visszaadnia**.
@@ -86,7 +86,7 @@ A visszatérési folyamat elindításához hajtsa végre az alábbi lépéseket.
 
 4. Tekintse át az **adatvédelmi feltételeket** , és jelölje be a megtekintett megjegyzéssel rendelkező jelölőnégyzetet, és fogadja el az adatvédelmi feltételeket.
 
-5. Válassza a **visszatérés kezdeményezése**lehetőséget.
+5. Válassza a **visszatérés kezdeményezése** lehetőséget.
 
     ![4. visszaadott eszköz](media/azure-stack-edge-return-device/return-device-4.png) 
 
@@ -100,8 +100,8 @@ A visszatérési folyamat elindításához hajtsa végre az alábbi lépéseket.
 
 Az alábbi lépéseket követve ütemezhet egy felvételt.
 
-1. Állítsa le az eszközt. A helyi webes KEZELŐFELÜLETen lépjen a **karbantartás > energiagazdálkodási beállítások**elemre.
-2. Válassza a **Leállítás**lehetőséget. Ha a rendszer megerősítést kér, kattintson az **Igen** gombra a folytatáshoz. További információ: [Manage Power](data-box-gateway-manage-access-power-connectivity-mode.md#manage-power).
+1. Állítsa le az eszközt. A helyi webes KEZELŐFELÜLETen lépjen a **karbantartás > energiagazdálkodási beállítások** elemre.
+2. Válassza a **Leállítás** lehetőséget. Ha a rendszer megerősítést kér, kattintson az **Igen** gombra a folytatáshoz. További információ: [Manage Power](../databox-gateway/data-box-gateway-manage-access-power-connectivity-mode.md#manage-power).
 3. Húzza ki az energiaellátási kábeleket, és távolítsa el az összes hálózati kábelt az eszközről.
 4. Készítse elő a szállítólevél-csomagot saját vagy az Azure-ból kapott üres mező használatával. Helyezze el az eszközt a dobozba, és az eszközzel szállított tápkábeleket.
 5. Helyezze az Azure-ból kapott szállítási címkét a csomagba.
@@ -131,17 +131,17 @@ Ha aktiválta az eszközt egy másik előfizetéshez vagy helyhez, a Microsoft e
 
 A következő lépésekkel törölheti az eszközt és az erőforrást Azure Portalban.
 
-1. A Azure Portal lépjen az erőforráshoz, majd az **Áttekintés**elemre. A parancssorban válassza a **Törlés**lehetőséget.
+1. A Azure Portal lépjen az erőforráshoz, majd az **Áttekintés** elemre. A parancssorban válassza a **Törlés** lehetőséget.
 
     ![Törlés kiválasztása](media/azure-stack-edge-return-device/delete-resource-1.png)
 
-2. Az **eszköz törlése** panelen írja be a törölni kívánt eszköz nevét, és válassza a **Törlés**lehetőséget.
+2. Az **eszköz törlése** panelen írja be a törölni kívánt eszköz nevét, és válassza a **Törlés** lehetőséget.
 
     ![Törlés megerősítése](media/azure-stack-edge-return-device/delete-resource-2.png)
 
 Az eszköz és a hozzá tartozó erőforrás sikeres törlése után értesítést kap.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan [szerezhet be helyettesítő Azure stack Edge Pro-eszközt](azure-stack-edge-replace-device.md).

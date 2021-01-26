@@ -12,25 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/19/2020
+ms.date: 01/25/2021
 ms.author: yelevin
-ms.openlocfilehash: 2326746d274c68225cd4c8569df6a20d6050ec1a
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 7944ea48feaca1eb8312e01d876bf9627af429d1
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900892"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784795"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>A felhasználók és az entitások viselkedésének elemzésével (UEBA) kapcsolatos fejlett veszélyforrások azonosítása az Azure Sentinelben
 
 > [!IMPORTANT]
 >
-> - A UEBA-és entitás-lapok szolgáltatásai mostantól **általánosan elérhetők** a következő Azure Sentinel földrajzi területeken és régiókban:
->    - Földrajz Egyesült Államok
->    - Nyugat-Európa régiója
->    - Ausztráliai földrajzi hely
->
-> - Az összes többi földrajzi és régió esetében ezek a funkciók a jelenleg **előzetes** verzióban maradnak. Tekintse meg a kiegészítő [**használati feltételeket a Microsoft Azure**](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) előzetes verziókra vonatkozó további jogi feltételekhez, amelyek olyan Azure-szolgáltatásokra vonatkoznak, amelyek a bétaverzióban, az előzetes verzióban vagy más esetben még nem jelent meg általánosan elérhetővé.
+> - A UEBA és az Entity Pages funkciói már **általánosan elérhetők** a **_minden_* _ Azure Sentinel földrajzi és régiójában.
 
 ## <a name="what-is-user-and-entity-behavior-analytics-ueba"></a>Mi a felhasználói és az entitások viselkedésének elemzése (UEBA)?
 
@@ -50,7 +45,7 @@ Mivel az Azure Sentinel az összes csatlakoztatott adatforrásból gyűjt napló
 
 A Gartner UEBA-megoldásokhoz készült paradigma ihlette az Azure Sentinel "külső" megközelítést biztosít a következő három képkocka alapján:
 
-- **Használati esetek:** A megfelelő támadási vektorok és forgatókönyvek rangsorolása a biztonsági kutatások alapján, összhangban a (z)&CK-keretrendszerével, technikákkal és altechnikákkal, amelyek különböző entitásokat tesznek elérhetővé az áldozatok, az elkövetők vagy a kimutatási pontok számára a kill láncban; Az Azure Sentinel kifejezetten az egyes adatforrások által biztosított legértékesebb naplókra koncentrál.
+- –*Használati esetek:** a releváns támadási vektorok és forgatókönyvek prioritási sorrendbe állítása a biztonsági kutatások alapján, összhangban&a (z) és a (z) által a megölt láncba tartozó, a különböző entitásokat áldozatok, elkövetők vagy kimutatási pontok formájában ellátott, a megfelelő támadási pontokkal és eljárásokkal összhangban. Az Azure Sentinel kifejezetten az egyes adatforrások által biztosított legértékesebb naplókra koncentrál.
 
 - **Adatforrások:** Az Azure Sentinel mindenekelőtt az Azure-adatforrások támogatásával, a fenyegetési forgatókönyveknek megfelelő adatok biztosításához pedig a harmadik féltől származó adatforrásokat is kijelöli.
 
@@ -219,7 +214,7 @@ Az Azure Sentinel a BehaviorAnalytics tábla alapján a vadászati lekérdezése
 
 További információ [a vadászatról és a vizsgálati gráfról](./hunting.md) az Azure sentinelben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebből a dokumentumból megtudhatta, hogyan működik az Azure Sentinel az entitások viselkedésének analitikai képességei. A megvalósítással kapcsolatos gyakorlati útmutatásért és a szerzett információk felhasználásához tekintse meg a következő cikkeket:
 
 - Az [entitás viselkedés-elemzésének engedélyezése](./enable-entity-behavior-analytics.md) az Azure sentinelben.

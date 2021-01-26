@@ -3,12 +3,12 @@ title: Önálló Azure Service Fabric-fürt létrehozása
 description: Hozzon létre egy Azure Service Fabric-fürtöt bármely olyan gépen (fizikai vagy virtuális gépen), amely Windows Server rendszert futtat, akár helyszíni, akár bármilyen felhőben.
 ms.topic: conceptual
 ms.date: 2/21/2019
-ms.openlocfilehash: 36883f2c8b09fa3f8f013e0267dafa2a8220e5d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41af655be07ccae2b66e75f5bfe87629cdb54924
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843192"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785684"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Windows Serveren futó különálló fürt létrehozása
 Az Azure Service Fabric használatával Service Fabric-fürtöket hozhat létre a Windows Servert futtató virtuális gépeken vagy számítógépeken. Ez azt jelenti, hogy Service Fabric alkalmazásokat bármely olyan környezetben telepítheti és futtathatja, amely összekapcsolt Windows Server-számítógépeket, illetve helyszíni vagy bármilyen felhőalapú szolgáltatót tartalmaz. A Service Fabric egy önálló Windows Server-csomagot tartalmazó Service Fabric-fürtök létrehozására szolgáló telepítőcsomagot biztosít. Az Azure-beli hagyományos Service Fabric-fürtök felügyelt szolgáltatásként érhetők el, míg a különálló Service Fabric-fürtök önkiszolgáló szolgáltatások. További információ a különbségekről: az [Azure és az önálló Service Fabric-fürtök összehasonlítása](./service-fabric-deploy-anywhere.md).
@@ -116,7 +116,7 @@ A futásidejű csomag külön tölthető le, az internethez csatlakozó másik g
 A és a *.\MicrosoftAzureServiceFabric.cab* *.\ClusterConfig.js* a fürtkonfiguráció és a Runtime. cab fájl elérési útja.
 
 ### <a name="step-2-connect-to-the-cluster"></a>2. lépés: Kapcsolódás a fürthöz
-Kapcsolódjon a fürthöz, és ellenőrizze, hogy a fürt fut-e, és elérhető-e. A ServiceFabric PowerShell-modul a futtatókörnyezettel együtt települ.  A fürthöz a fürtcsomópontokon vagy a Service Fabric futtatókörnyezettel rendelkező távoli számítógépről is csatlakozhat.  A [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) parancsmag kiépít egy kapcsolatot a fürttel.
+Kapcsolódjon a fürthöz, és ellenőrizze, hogy a fürt fut-e, és elérhető-e. A ServiceFabric PowerShell-modul a futtatókörnyezettel együtt települ.  A fürthöz a fürtcsomópontokon vagy a Service Fabric futtatókörnyezettel rendelkező távoli számítógépről is csatlakozhat.  A [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) parancsmag kiépít egy kapcsolatot a fürttel.
 
 Nem biztonságos fürthöz való kapcsolódáshoz futtassa a következő PowerShell-parancsot:
 
@@ -124,12 +124,12 @@ Nem biztonságos fürthöz való kapcsolódáshoz futtassa a következő PowerSh
 Connect-ServiceFabricCluster -ConnectionEndpoint <*IPAddressofaMachine*>:<Client connection end point port>
 ```
 
-Példa:
+Például:
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.234:19000
 ```
 
-A fürtökhöz való csatlakozást bemutató egyéb példákért lásd: [Csatlakozás biztonságos fürthöz](service-fabric-connect-to-secure-cluster.md). Miután csatlakozott a fürthöz, a [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) parancsmaggal listázza a fürtben lévő csomópontokat és az egyes csomópontok állapotinformációit. A **HealthState** tulajdonságnak *OK* értékűnek kell lennie minden csomópont esetében.
+A fürtökhöz való csatlakozást bemutató egyéb példákért lásd: [Csatlakozás biztonságos fürthöz](service-fabric-connect-to-secure-cluster.md). Miután csatlakozott a fürthöz, a [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode) parancsmaggal listázza a fürtben lévő csomópontokat és az egyes csomópontok állapotinformációit. A **HealthState** tulajdonságnak *OK* értékűnek kell lennie minden csomópont esetében.
 
 ```powershell
 PS C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer> Get-ServiceFabricNode |Format-Table
@@ -209,7 +209,7 @@ Nincsenek.
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Alkalmazások telepítése és eltávolítása a PowerShell használatával](service-fabric-deploy-remove-applications.md)
 * [Önálló Windows-fürt konfigurációs beállításai](service-fabric-cluster-manifest.md)
 * [Csomópontok hozzáadása vagy eltávolítása önálló Service Fabric-fürthöz](service-fabric-cluster-windows-server-add-remove-nodes.md)

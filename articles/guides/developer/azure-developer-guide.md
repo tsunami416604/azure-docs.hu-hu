@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 9999b2fa116a2336f8e50fb166e5d870ae4b5a5f
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: a193ccd060c75cf4031449ddf3318af6e4691436
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165059"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786469"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure fejlesztői útmutató az első lépésekhez
 
@@ -84,7 +84,7 @@ Nem kell aggódnia a teljes alkalmazás vagy az infrastruktúra a kód futtatás
 
 > **Használat esetén**: Azure functions használata, ha olyan kódot használ, amelyet más Azure-szolgáltatások, webalapú események vagy ütemterv alapján aktiválnak. A függvényeket akkor is használhatja, ha nincs szüksége egy teljes körűen üzemeltetett projekt terhelésére, vagy ha csak a kód futási idejét szeretné kifizetni. További információ: [Azure functions Overview (áttekintés](../../azure-functions/functions-overview.md)).
 >
-> Első **lépések**: kövesse a functions rövid útmutatóját az [első függvény létrehozásához](../../azure-functions/functions-create-first-azure-function.md) a portálon.
+> Első **lépések**: kövesse a functions rövid útmutatóját az [első függvény létrehozásához](../../azure-functions/functions-get-started.md) a portálon.
 >
 > **Próbálja ki most**: Azure functions lehetővé teszi a kód futtatását anélkül, hogy regisztrálnia kellene egy Azure-fiókra. Próbálja ki most, és [hozza létre első Azure-függvényét](https://tryappservice.azure.com/).
 

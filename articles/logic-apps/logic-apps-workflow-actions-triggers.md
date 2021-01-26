@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 7423f8d8f2a566801048457ad5f5c44f3c1097ec
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: ea4a4a47e91e88c00ca8a4e886d0372a24482907
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920059"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784308"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>A séma-referenciák útmutatója az triggerekhez és a műveletek típusaihoz Azure Logic Apps
 
@@ -62,7 +62,7 @@ Az eseményindítók ezekkel a legfelső szintű elemekkel rendelkeznek, bár eg
 |-------|------|-------------| 
 | <*tömb – feltételek*> | Tömb | Olyan tömb, amely egy vagy több olyan [feltételt](#trigger-conditions) tartalmaz, amely meghatározza, hogy futtatni kell-e a munkafolyamatot. Csak eseményindítók számára érhető el. | 
 | <*futtatókörnyezet – konfiguráció – beállítások*> | JSON-objektum | Az aktiválási futtatókörnyezet viselkedését a tulajdonságok beállításával módosíthatja `runtimeConfiguration` . További információ: [futásidejű konfigurációs beállítások](#runtime-config-options). | 
-| <*splitOn – kifejezés*> | Sztring | Egy tömböt visszaadó eseményindítók esetében megadhat egy olyan kifejezést, amely a tömb elemeit több munkafolyamat-példányba [feldarabolja vagy lebontja *debatches*](#split-on-debatch) feldolgozásra. | 
+| <*splitOn – kifejezés*> | Sztring | Egy tömböt visszaadó eseményindítók esetében megadhat egy olyan kifejezést, amely a tömb elemeit több munkafolyamat-példányba [feldarabolja vagy lebontja  ](#split-on-debatch) feldolgozásra. | 
 | <*művelet – beállítás*> | Sztring | Az alapértelmezett viselkedést a tulajdonság beállításával módosíthatja `operationOptions` . További információ: [üzemeltetési beállítások](#operation-options). | 
 |||| 
 
@@ -346,7 +346,7 @@ Ahhoz, hogy megfelelően működjön a logikai alkalmazással, a végpontnak meg
 
 *Példa a különböző kérelmek viselkedésére*
 
-| Állapotkód | Újrapróbálkozás | Viselkedés | 
+| Állapotkód | Újrapróbálkozás | Működés | 
 |-------------|-------------|----------|
 | 200 | nEz egy | Futtassa a munkafolyamatot, majd a definiált ismétlődés után további információért próbálkozzon újra. | 
 | 200 | 10 másodperc | Futtassa a munkafolyamatot, majd 10 másodperc elteltével további információért próbálkozzon újra. |  
@@ -830,7 +830,7 @@ A Azure Logic Apps különböző típusú műveleteket biztosít – mindegyiket
 | [**Válassza ezt:**](#select-action) | JSON-objektumokkal rendelkező tömböt hoz létre egy másik tömb elemeinek a megadott Térkép alapján történő átalakításával. | 
 | [**Tábla**](#table-action) | CSV-vagy HTML-táblázatot hoz létre egy tömbből. | 
 | [**Befejezés**](#terminate-action) | Leállítja egy aktívan futó munkafolyamatot. | 
-| [**várj**](#wait-action) | Szünetelteti a munkafolyamatot egy adott időtartamra vagy a megadott dátumra és időpontra vonatkozóan. | 
+| [**Várakozás**](#wait-action) | Szünetelteti a munkafolyamatot egy adott időtartamra vagy a megadott dátumra és időpontra vonatkozóan. | 
 | [**Munkafolyamat**](#workflow-action) | Munkafolyamatot ágyaz be egy másik munkafolyamaton belül. | 
 ||| 
 
@@ -1010,7 +1010,7 @@ Ez a művelet egyetlen kimenetet hoz létre több bemenetből, beleértve a kife
 
 | Érték | Típus | Leírás | 
 |-------|------|-------------| 
-| <*bemenetek és összeállítások*> | Bármelyik | Egyetlen kimenet létrehozására szolgáló bemenetek | 
+| <*bemenetek és összeállítások*> | Bármely | Egyetlen kimenet létrehozására szolgáló bemenetek | 
 |||| 
 
 *1\. példa*
@@ -1126,7 +1126,7 @@ A kód kibontja az e-mail-címeket az trigger `Body` tulajdonságból, és vissz
 
 ### <a name="function-action"></a>Függvény művelete
 
-Ez a művelet egy korábban létrehozott [Azure-függvényt](../azure-functions/functions-create-first-azure-function.md)hív meg.
+Ez a művelet egy korábban létrehozott [Azure-függvényt](../azure-functions/functions-get-started.md)hív meg.
 
 ```json
 "<Azure-function-name>": {
@@ -1649,7 +1649,7 @@ Az oszlopfejlécek és az értékek megadásához és testreszabásához haszná
 | Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*oszlop neve*> | Sztring | Egy oszlop fejlécének neve | 
-| <*oszlop – érték*> | Bármelyik | Az oszlopban szereplő érték | 
+| <*oszlop – érték*> | Bármely | Az oszlopban szereplő érték | 
 |||| 
 
 *1\. példa*
@@ -2717,6 +2717,6 @@ A művelet mögöttes JSON-definíciójában adja hozzá és állítsa be a ["op
 
 A HTTP-és HTTPS-végpontok különböző típusú hitelesítést támogatnak. A kimenő hívások vagy a végpontok elérésére irányuló kérések elvégzéséhez használt trigger vagy művelet alapján különböző hitelesítési típusok közül választhat. További információ: [hitelesítés hozzáadása kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a [munkafolyamat-definíciós nyelvről](../logic-apps/logic-apps-workflow-definition-language.md)

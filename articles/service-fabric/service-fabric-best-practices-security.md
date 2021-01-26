@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 90ffd1c01411982f56aed3332c499aa0c10b8a94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7af0a4c26a47644973e936eb37e221853d74c03
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86257594"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784663"
 ---
 # <a name="azure-service-fabric-security"></a>Az Azure Service Fabric biztonsága 
 
@@ -56,7 +56,7 @@ Ha egy közös elhelyezésű kulcstartóból szeretne tanúsítványokat telepí
 
 ## <a name="apply-an-access-control-list-acl-to-your-certificate-for-your-service-fabric-cluster"></a>Access Control listájának (ACL) alkalmazása a Service Fabric-fürthöz tartozó tanúsítványra
 
-A [virtuális gépek méretezési csoportjának bővítményei](/cli/azure/vmss/extension?view=azure-cli-latest) a Microsoft. Azure. ServiceFabric a csomópontok biztonságának konfigurálására szolgálnak.
+A [virtuális gépek méretezési csoportjának bővítményei](/cli/azure/vmss/extension) a Microsoft. Azure. ServiceFabric a csomópontok biztonságának konfigurálására szolgálnak.
 Ha ACL-t szeretne alkalmazni a Service Fabric-fürt folyamataihoz tartozó tanúsítványokra, használja az alábbi Resource Manager-sablon tulajdonságait:
 
 ```json

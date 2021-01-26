@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: memildin
-ms.openlocfilehash: 349f0b72ad7f3cb98e8f4ae9105efa9718f0b11b
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: ee9a20d3e5bb6974676d6d7a8285a56247756f64
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752262"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784948"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -39,6 +39,7 @@ A januári frissítések a következők:
 - [A helyszíni és a többfelhős gépek sebezhetőségi felmérése általánosan elérhető (GA)](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga)
 - [A felügyeleti csoportok biztonságos pontszáma mostantól előzetes verzióban érhető el](#secure-score-for-management-groups-is-now-available-in-preview)
 - [A Secure score API általánosan elérhető (GA)](#secure-score-api-is-released-for-general-availability-ga)
+- [Az Azure Defender számára a App Servicehoz hozzáadott DNS-védelem](#dangling-dns-protections-added-to-azure-defender-for-app-service)
 - [A többfelhős összekötők elérhetők az általánosan elérhető verzióban (GA)](#multi-cloud-connectors-are-released-for-general-availability-ga)
 - [Az előfizetések és a felügyeleti csoportok biztonságos pontszámának teljes körű javaslatainak kizárása](#exempt-entire-recommendations-from-your-secure-score-for-subscriptions-and-management-groups)
 - [A felhasználók mostantól a globális rendszergazdától igényelhetik a bérlői szintű láthatóságot](#users-can-now-request-tenant-wide-visibility-from-their-global-administrator)
@@ -94,7 +95,7 @@ Főbb képességek:
 
 A biztonságos pontszám lapon az előfizetés szintjén kívül a felügyeleti csoportok összesített biztonsági pontszáma is látható. Így most már megtekintheti a szervezet felügyeleti csoportjainak listáját, valamint az egyes felügyeleti csoportok pontszámát.
 
-:::image type="content" source="media/secure-score-security-controls/secure-score-management-groups.png" alt-text="Megtekintheti a felügyeleti csoportok biztonsági pontszámait.":::
+:::image type="content" source="media/secure-score-security-controls/secure-score-management-groups.png" alt-text="A felügyeleti csoportok biztonságos pontszámának megtekintése.":::
 
 További információ a [Azure Security Center biztonságos pontszámáról és biztonsági vezérlőinek](secure-score-security-controls.md).
 
@@ -107,13 +108,28 @@ A biztonságos pontszám API-val lehetséges külső eszközökre vonatkozó pé
 További információ a [Azure Security Center biztonságos pontszámáról és biztonsági vezérlőinek](secure-score-security-controls.md).
 
 
+### <a name="dangling-dns-protections-added-to-azure-defender-for-app-service"></a>Az Azure Defender számára a App Servicehoz hozzáadott DNS-védelem
+
+Az altartományok beszerzése gyakori, nagy súlyosságú fenyegetést jelent a szervezetek számára. Az altartományok átvétele akkor fordulhat elő, ha olyan DNS-rekorddal rendelkezik, amely egy kiépített webhelyre mutat. Az ilyen DNS-rekordokat "lelógó DNS"-bejegyzéseknek is nevezzük. A CNAME rekordok különösen sebezhetők a fenyegetéssel szemben. 
+
+Az altartományok átvétele lehetővé teszi a veszélyforrások számára, hogy átirányítsák a szervezet tartománya számára a kártékony tevékenységeket végző helyekre irányuló forgalmat.
+
+Az Azure Defender for App Service mostantól észleli a DNS-bejegyzéseket a App Service webhely leszerelése után. Ez az a pillanat, amikor a DNS-bejegyzés egy nem létező erőforrásra mutat, és a webhelye ki van téve egy altartomány átvételének. Ezek a védelem elérhetőek, függetlenül attól, hogy a tartományokat Azure DNS vagy külső tartományregisztráló felügyeli-e, és hogy a Windows App Service és a Linux rendszeren is App Service-e.
+
+További információ:
+
+- [App Service riasztási hivatkozási tábla](alerts-reference.md#alerts-azureappserv) – két új Azure Defender-riasztást tartalmaz, amelyek akkor aktiválódnak, ha a rendszer LELÓGÓ DNS-bejegyzést észlel
+- [DNS-bejegyzések letiltásának és a tartományon belüli átvétel elkerülésének megakadályozása](../security/fundamentals/subdomain-takeover.md) – Ismerje meg a altartományok átvételének fenyegetését és a lelógó DNS-aspektust
+- [A App Service Azure Defender bemutatása](defender-for-app-service-introduction.md)
+
+
 ### <a name="multi-cloud-connectors-are-released-for-general-availability-ga"></a>A többfelhős összekötők elérhetők az általánosan elérhető verzióban (GA)
 
 A Felhőbeli számítási feladatok gyakran több felhőalapú platformra is kiterjednek, a Cloud Security servicesnek ugyanezt kell tennie.
 
 Azure Security Center védi a munkaterheléseket az Azure-ban, a Amazon Web Services (AWS) és a Google Cloud Platformban (GCP).
 
-Az AWS-vagy GCP-fiókok csatlakoztatásával a natív biztonsági eszközöket, például az AWS biztonsági hubot és a GCP biztonsági parancssori központot integrálhatja Azure Security Centerba.
+Az AWS-vagy GCP-fiókok csatlakoztatásával a natív biztonsági eszközöket, például az AWS Security hub-t és a GCP Security Command centert integrálhatja Azure Security Centerba.
 
 Ez a funkció azt jelenti, hogy a Security Center az összes jelentős felhőalapú környezet láthatóságát és védelmét biztosítja. Az integráció néhány előnye:
 
@@ -153,7 +169,7 @@ További információk: az [erőforrások és a javaslatok védelme a biztonság
 
 ### <a name="users-can-now-request-tenant-wide-visibility-from-their-global-administrator"></a>A felhasználók mostantól a globális rendszergazdától igényelhetik a bérlői szintű láthatóságot
 
-Ha a felhasználó nem rendelkezik jogosultsággal Security Center adatok megjelenítéséhez, akkor a szervezet globális rendszergazdájától egy hivatkozás-kérelemre vonatkozó engedély jelenik meg. A kérelem tartalmazza a kívánt szerepkört, valamint annak indoklását, hogy miért szükséges.
+Ha a felhasználó nem rendelkezik jogosultsággal Security Center adatok megjelenítéséhez, a rendszer most egy hivatkozást fog látni, amely a szervezet globális rendszergazdájától kér engedélyeket. A kérelem tartalmazza a kívánt szerepkört, valamint annak indoklását, hogy miért szükséges.
 
 :::image type="content" source="media/security-center-management-groups/request-tenant-permissions.png" alt-text="A felhasználó bérlői szintű engedélyeket kérhet a felhasználónak, hogy tájékoztassa a felhasználót.":::
 
@@ -369,7 +385,7 @@ Ezek az eszközök a következő módokon lettek kibővítve és kiterjesztve:
 
 - **A folyamatos exportálás deployifnotexist-házirendjeinek továbbfejlesztése**. A szabályzatok most:
 
-    - **Győződjön meg arról, hogy a konfiguráció engedélyezve van-e.** Ha nem, a szabályzat nem megfelelőként jelenik meg, és megfelelő erőforrást hoz létre. A [folyamatos exportálás beállításával](continuous-export.md#set-up-a-continuous-export)kapcsolatos további Azure Policy információkért tekintse meg a következő témakört: a "központi telepítés méretezése a Azure Policy lapon" című szakasz.
+    - **Győződjön meg arról, hogy a konfiguráció engedélyezve van-e.** Ha nem, a szabályzat nem megfelelőként jelenik meg, és megfelelő erőforrást hoz létre. Azure Policy a [folyamatos exportálás beállításával](continuous-export.md#set-up-a-continuous-export)kapcsolatos további információkért tekintse meg a következő témakört: a "központi telepítés méretezése a Azure Policy lapon" című szakasz.
 
     - **A biztonsági eredmények exportálásának támogatása.** A Azure Policy-sablonok használatakor beállíthatja a folyamatos exportálást, hogy tartalmazza a megállapításokat. Ez akkor fontos, ha olyan javaslatok exportálására van szükség, amelyek "alárendelt" javaslatokkal rendelkeznek, például a sebezhetőségi felmérési képolvasók vagy a "szülő" javaslat rendszerfrissítéseinek adott rendszerfrissítései a számítógépekre telepíthetők.
     
@@ -389,7 +405,7 @@ A novemberi frissítések a következők:
 - [A javaslatok listája mostantól szűrőket is tartalmaz](#recommendations-list-now-includes-filters)
 - [Továbbfejlesztett és bővített automatikus üzembe helyezési élmény](#auto-provisioning-experience-improved-and-expanded)
 - [A biztonságos pontszám már elérhető a folyamatos exportálásban (előzetes verzió)](#secure-score-is-now-available-in-continuous-export-preview)
-- ["A rendszerfrissítéseket telepíteni kell a gépekre" javaslat mostantól aljavaslatokat is tartalmaz](#system-updates-should-be-installed-on-your-machines-recommendation-now-includes-sub-recommendations)
+- ["A rendszerfrissítéseket telepíteni kell a gépekre" javaslat mostantól magában foglalja az ajánlásokat](#system-updates-should-be-installed-on-your-machines-recommendation-now-includes-subrecommendations)
 - [A Azure Portal házirend-kezelés lapja megjeleníti az alapértelmezett házirend-hozzárendelések állapotát.](#policy-management-page-in-the-azure-portal-now-shows-status-of-default-policy-assignments)
 
 ### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>29 előzetes javaslat hozzáadva az Azure biztonsági teljesítményteszt lefedettségének növeléséhez
@@ -468,13 +484,13 @@ A biztonságos pontszám folyamatos exportálásával valós időben továbbíth
 További információ a [Security Center adatainak folyamatos exportálásáról](continuous-export.md).
 
 
-### <a name="system-updates-should-be-installed-on-your-machines-recommendation-now-includes-sub-recommendations"></a>"A rendszerfrissítéseket telepíteni kell a gépekre" javaslat mostantól aljavaslatokat is tartalmaz
+### <a name="system-updates-should-be-installed-on-your-machines-recommendation-now-includes-subrecommendations"></a>"A rendszerfrissítéseket telepíteni kell a gépekre" javaslat mostantól magában foglalja az ajánlásokat
 
-A **rendszerfrissítéseket telepíteni kell a Machines** javaslatra. Az új verzió az egyes hiányzó frissítésekre vonatkozó aljavaslatokat tartalmaz, és a következő újításokat tartalmazza:
+A **rendszerfrissítéseket telepíteni kell a Machines** javaslatra. Az új verzió minden hiányzó frissítéshez tartalmaz aljavaslatokat, és a következő újításokat tartalmazza:
 
 - Egy újratervezett élmény a Azure Portal Azure Security Center lapjain. A **rendszerfrissítésekre** vonatkozó ajánlás részletei lapon telepíteni kell a számítógépeken az alább látható megállapításokat tartalmazó listát. Egyetlen keresés kiválasztásakor megnyílik a részletek ablaktábla a Szervizelési információkra mutató hivatkozással és az érintett erőforrások listájával.
 
-    :::image type="content" source="./media/upcoming-changes/system-updates-should-be-installed-subassessment.png" alt-text="A frissített javaslathoz tartozó alárendelt javaslatok egyikének megnyitása a portálon":::
+    :::image type="content" source="./media/upcoming-changes/system-updates-should-be-installed-subassessment.png" alt-text="A frissített javaslathoz tartozó, a portálon észlelt javaslatok egyikének megnyitása":::
 
 - Dúsított adatok az Azure Resource Graph (ARG) javaslatához. Az ARG egy olyan Azure-szolgáltatás, amely hatékony erőforrás-feltárást tesz lehetővé. Az ARG használatával nagy léptékű lekérdezéseket végezhet az adott előfizetések között, így hatékonyan szabályozhatja a környezetét. 
 
@@ -560,7 +576,7 @@ Azure Security Center esetében az ARG és a [Kusto lekérdezési nyelv (KQL)](/
 - Eszközök leltározása (ARG)
 - Dokumentáltak egy példa ARG-lekérdezést a [fiókok azonosításához a többtényezős hitelesítés (MFA) engedélyezése nélkül](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled)
 
-Az ARG-n belül a lekérdezésekben használható adattáblák találhatók.
+Az ARG-n belül vannak olyan adattáblák, amelyek a lekérdezésekben használhatók.
 
 :::image type="content" source="./media/release-notes/azure-resource-graph-tables.png" alt-text="Az Azure Resource Graph Explorer és a rendelkezésre álló táblák":::
 
@@ -716,7 +732,7 @@ Az **Azure Defender for Storage** észleli az Azure Storage-fiókokban potenciá
 
 A [Azure Files](../storage/files/storage-files-introduction.md) és [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) támogatása már általánosan elérhető.
 
-Október 1-től 2020-én megkezdjük a szolgáltatások erőforrásainak védelmét.
+2020. október 1-től kezdődően megkezdjük a szolgáltatások erőforrásainak védelmét.
 
 További információ az [Azure Defender for Storage szolgáltatásban](defender-for-storage-introduction.md).
 
@@ -826,7 +842,7 @@ A hálózati biztonsági csoportokkal kapcsolatos következő biztonsági javasl
 
 A "Pod biztonsági házirendek meghatározása a Kubernetes-szolgáltatásokban" előzetes javaslat az [Azure Kubernetes szolgáltatás](../aks/use-pod-security-policies.md) dokumentációjában leírtaknak megfelelően elavult.
 
-A pod biztonsági házirend (előzetes verzió) funkció az elavult, és a továbbiakban nem lesz elérhető 2020. október 15-én, Azure Policy az AK-hoz.
+A pod biztonsági házirend (előzetes verzió) szolgáltatás elavultnak van beállítva, és a továbbiakban nem lesz elérhető 2020. október 15-én, Azure Policy az AK-ban.
 
 Miután a pod biztonsági házirend (előzetes verzió) elavult, le kell tiltania a szolgáltatást minden meglévő fürtön az elavult funkcióval a későbbi fürtök frissítéséhez és az Azure-támogatáson belüli tartózkodáshoz.
 
@@ -973,4 +989,4 @@ A projekt korai szakasza tartalmaz egy privát előzetes verziót, és az új (a
 Nyugodtan figyelmen kívül hagyhatja ezeket a szabályzatokat, és nem lesz hatással a környezetre. Ha engedélyezni szeretné őket, regisztráljon az előzetes verzióra, https://aka.ms/SecurityPrP és válasszon a következő lehetőségek közül:
 
 1. **Single Preview** – csak a privát előzetes verzióhoz csatlakozhat. Explicit módon megemlíti a "ASC folyamatos vizsgálat" lehetőséget, mint a csatlakozni kívánt előnézetet.
-1. **Folyamatban lévő program** – ehhez és a jövőbeli privát előzetesekhez való hozzáadáshoz. Egy profilt és egy adatvédelmi szerződést kell elvégeznie.
+1. **Folyamatban lévő program** – ehhez és a jövőbeli privát előzetesekhez való hozzáadáshoz. Be kell fejeznie egy profilt és egy adatvédelmi szerződést.
