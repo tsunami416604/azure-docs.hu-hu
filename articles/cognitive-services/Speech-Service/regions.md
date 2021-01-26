@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
 ms.custom: seodec18,references_regions
-ms.openlocfilehash: f11ccafd58cc64e6186ef590bbbccbfab3335ea4
-ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
+ms.openlocfilehash: 646d29e72b91cd6afcde8e70ad8fd8715442b88e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2021
-ms.locfileid: "97854859"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786791"
 ---
 # <a name="speech-service-supported-regions"></a>Beszédfelismerési szolgáltatás által támogatott régiók
 
@@ -69,7 +69,7 @@ Ez a [Language Understanding szolgáltatás (Luis)](../luis/luis-reference-regio
 
 ### <a name="voice-assistants"></a>Hangvezérelt asszisztensek
 
-A [SPEECH SDK](speech-sdk.md) a **hangsegéd** képességeit a következő régiókban lévő [közvetlen beszédfelismeréssel](https://docs.microsoft.com/azure/cognitive-services/speech-service/direct-line-speech) támogatja:
+A [SPEECH SDK](speech-sdk.md) a **hangsegéd** képességeit a következő régiókban lévő [közvetlen beszédfelismeréssel](./direct-line-speech.md) támogatja:
 
 | Globális régió | Régió           | Régió azonosítója    |
 | ------------- | ---------------- | -------------------- |
@@ -85,7 +85,7 @@ A [SPEECH SDK](speech-sdk.md) a **hangsegéd** képességeit a következő régi
 | Ázsia          | Délkelet-Ázsia   | `southeastasia`      |
 | India         | Közép-India    | `centralindia`       |
 
-### <a name="speaker-recognition"></a>Beszélőfelismerés
+### <a name="speaker-recognition"></a>Speaker Recognition
 
 Speaker Recognition jelenleg csak a régióban érhető el `westus` .
 

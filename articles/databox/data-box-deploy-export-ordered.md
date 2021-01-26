@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: aac1fb8e2da7a3c84b3abff47c8f476b9fb9049c
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 42476e2689cc503edc19e8e299a01ce922f1bf42
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704338"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789195"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box"></a>Oktatóanyag: az Azure Data Box exportálási sorrendjének létrehozása
 
@@ -179,7 +179,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket az Azure Po
 
 15. Válassza ki azt a felhasználói identitást, amelyet az erőforráshoz való hozzáférés kezeléséhez fog használni. Válassza **a felhasználói azonosító kiválasztása** lehetőséget. A jobb oldali panelen válassza ki az előfizetést és a használni kívánt felügyelt identitást. Ezután kattintson a **Kiválasztás** gombra.
 
-    A felhasználó által hozzárendelt felügyelt identitás egy önálló Azure-erőforrás, amely több erőforrás kezelésére is használható. További információ: [felügyelt identitások típusai](/azure/active-directory/managed-identities-azure-resources/overview).  
+    A felhasználó által hozzárendelt felügyelt identitás egy önálló Azure-erőforrás, amely több erőforrás kezelésére is használható. További információ: [felügyelt identitások típusai](../active-directory/managed-identities-azure-resources/overview.md).  
 
     Ha új felügyelt identitást kell létrehoznia, kövesse a [szerepkör létrehozása, listázása, törlése vagy hozzárendelése egy felhasználóhoz rendelt felügyelt identitáshoz a Azure Portal használatával című témakör](../../articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)útmutatását.
     

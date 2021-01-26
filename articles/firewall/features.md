@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 10/08/2020
 ms.author: victorh
-ms.openlocfilehash: 6c71d9325ff7c1c5d2e7eff03a587a28335efd72
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 69eaf3ca60378afd810d712d85ea7ef732e41e3e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94652144"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788230"
 ---
 # <a name="azure-firewall-features"></a>Az Azure Firewall funkciói
 
@@ -66,7 +66,7 @@ A kimenő HTTP/S forgalom vagy az Azure SQL-forgalom a teljes tartománynevek (F
 
 ## <a name="network-traffic-filtering-rules"></a>Hálózati forgalomra vonatkozó szűrési szabályok
 
-A hálózati szűrési szabályok a forrás *deny* és a cél IP-cím, a port és a protokoll alapján központilag hozhatók *létre.* Az Azure Firewall teljes mértékben állapotalapú, így képes megkülönböztetni különböző típusú kapcsolatok érvényes csomagjait. A szabályok több előfizetésen és virtuális hálózaton érvényesíthetők és naplózhatók.
+A hálózati szűrési szabályok a forrás  és a cél IP-cím, a port és a protokoll alapján központilag hozhatók *létre.* Az Azure Firewall teljes mértékben állapotalapú, így képes megkülönböztetni különböző típusú kapcsolatok érvényes csomagjait. A szabályok több előfizetésen és virtuális hálózaton érvényesíthetők és naplózhatók.
 
 ## <a name="fqdn-tags"></a>FQDN-címkék
 
@@ -101,7 +101,7 @@ Ez a következő forgatókönyveket teszi lehetővé:
 
 ## <a name="azure-monitor-logging"></a>Azure Monitor-naplózás
 
-A rendszer minden eseményt integrál a Azure Monitorba, így lehetővé teszi a naplók archiválását egy Storage-fiókba, az események továbbítását az Event hub-ba, vagy elküldheti őket Azure Monitor naplókba. Azure Monitor naplózási minták esetében lásd: [Azure monitor naplók a Azure Firewall](log-analytics-samples.md).
+A rendszer minden eseményt integrál a Azure Monitorba, így lehetővé teszi a naplók archiválását egy Storage-fiókba, az események továbbítását az Event hub-ba, vagy elküldheti őket Azure Monitor naplókba. Azure Monitor naplózási minták esetében lásd: [Azure monitor naplók a Azure Firewall](./firewall-workbook.md).
 
 További információ: [oktatóanyag: Azure Firewall-naplók és-metrikák figyelése](./firewall-diagnostics.md). 
 
@@ -113,8 +113,8 @@ A Azure Firewall konfigurálható úgy, hogy az összes internetes forgalmat a k
 
 ## <a name="certifications"></a>Tanúsítványok
 
-A Azure Firewall a Payment Card Industry (PCI), a Service Organization Controls (SOC), a Nemzetközi Szabványügyi Szervezet (ISO) és a ICSA Labs megfelelője. További információ: [Azure Firewall megfelelőségi tanúsítványok](compliance-certifications.md).
+A Azure Firewall a Payment Card Industry (PCI), a Service Organization Controls (SOC), a International Organization for Standardization (ISO) és a ICSA Labs megfelelője. További információ: [Azure Firewall megfelelőségi tanúsítványok](compliance-certifications.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Firewall szabályfeldolgozási logikája](rule-processing.md)

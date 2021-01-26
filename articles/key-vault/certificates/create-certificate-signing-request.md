@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: bbc232ed0bc9e9715f481fef8b7b3a1f8eeebe78
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: aa631f4c505200c2c8abc67d4e22ffbab23e015c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059653"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789027"
 ---
 # <a name="create-and-merge-a-csr-in-key-vault"></a>CSR létrehozása és egyesítése Key Vault
 
@@ -23,7 +23,7 @@ Azure Key Vault támogatja a bármely hitelesítésszolgáltató (CA) által kia
 
 A tanúsítványokkal kapcsolatos további általános információkért lásd: [Azure Key Vault tanúsítványok](./about-certificates.md).
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="add-certificates-in-key-vault-issued-by-partnered-cas"></a>Tanúsítványok hozzáadása a partneri hitelesítésszolgáltatók által kiadott Key Vault
 
@@ -104,7 +104,7 @@ A tanúsítványkérelem sikeresen egyesítve lett.
 ## <a name="add-more-information-to-the-csr"></a>További információk hozzáadása a CSR-hez
 
 Ha további információt szeretne hozzáadni a CSR létrehozásához, adja meg azt a **SubjectName**-ben. Előfordulhat, hogy például a következő adatokat szeretné felvenni:
-- Ország
+- Country
 - Város/helység
 - Állam/megye
 - Szervezet
@@ -123,7 +123,7 @@ Példa
 
 - Hogyan a CSR figyelése vagy kezelése?
 
-     Lásd: [a tanúsítványok létrehozásának figyelése és kezelése](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios).
+     Lásd: [a tanúsítványok létrehozásának figyelése és kezelése](./create-certificate-scenarios.md).
 
 - Mi a teendő, ha az **adott X. 509 tanúsítványban található végfelhasználói tanúsítvány nyilvános kulcsa nem egyezik a megadott titkos kulcs nyilvános részével. Ellenőrizze, hogy érvényes-e a tanúsítvány**?
 

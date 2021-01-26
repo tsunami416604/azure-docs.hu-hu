@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 2d0b66d2b4d89b512b34cb33a5607b471b7d1e84
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 12e57361b9e275fc441df27a3a1381989d48751c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040929"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788570"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Functions Azure Service Bus kimeneti kötése
 
@@ -87,6 +87,41 @@ public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<str
 }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+Az alábbi példa egy Java-függvényt mutat be, amely egy HTTP- `myqueue` kérelem által aktivált üzenetet küld egy Service Bus üzenetsor számára.
+
+```java
+@FunctionName("httpToServiceBusQueue")
+@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
+public String pushToQueue(
+  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
+  final String message,
+  @HttpOutput(name = "response") final OutputBinding<T> result ) {
+      result.setValue(message + " has been sent.");
+      return message;
+ }
+```
+
+ A [Java functions runtime library](/java/api/overview/azure/functions/runtime)-ben használja a `@QueueOutput` Megjegyzések a függvény azon paramétereit, amelyek értékét egy Service Bus üzenetsor számára szeretné írni.  A paraméter típusának olyannak kell lennie `OutputBinding<T>` , ahol a T egy POJO natív Java-típusa.
+
+A Java functions is írhat Service Bus témakörbe. A következő példa a `@ServiceBusTopicOutput` jegyzetet használja a kimeneti kötés konfigurációjának leírásához. 
+
+```java
+@FunctionName("sbtopicsend")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+            @ServiceBusTopicOutput(name = "message", topicName = "mytopicname", subscriptionName = "mysubscription", connection = "ServiceBusConnection") OutputBinding<String> message,
+            final ExecutionContext context) {
+        
+        String name = request.getBody().orElse("Azure Functions");
+
+        message.setValue(name);
+        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
+        
+    }
+```
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Az alábbi példa egy Service Bus kimeneti kötést mutat be egy *function.jsa* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvény egy időzítő trigger használatával küld üzenetsor-üzenetet 15 másodpercenként.
@@ -139,6 +174,39 @@ module.exports = function (context, myTimer) {
 };
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Az alábbi példa egy Service Bus kimeneti kötést mutat be a fájlban lévő *function.js* , és egy, a kötést használó [PowerShell-függvényt](functions-reference-powershell.md) . 
+
+A *function.js* fájlban található kötési adatfájlok:
+
+```json
+{
+  "bindings": [
+    {
+      "type": "serviceBus",
+      "direction": "out",
+      "connection": "AzureServiceBusConnectionString",
+      "name": "outputSbMsg",
+      "queueName": "outqueue",
+      "topicName": "outtopic"
+    }
+  ]
+}
+```
+
+Itt látható a PowerShell, amely egy üzenetet hoz létre a függvény kimenete.
+
+```powershell
+param($QueueItem, $TriggerMetadata) 
+
+Push-OutputBinding -Name outputSbMsg -Value @{ 
+    name = $QueueItem.name 
+    employeeId = $QueueItem.employeeId 
+    address = $QueueItem.address 
+} 
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 Az alábbi példa bemutatja, hogyan írhat egy Service Bus üzenetsor-várólistára a Pythonban.
@@ -189,41 +257,6 @@ def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
     return 'OK'
 ```
 
-# <a name="java"></a>[Java](#tab/java)
-
-Az alábbi példa egy Java-függvényt mutat be, amely egy HTTP- `myqueue` kérelem által aktivált üzenetet küld egy Service Bus üzenetsor számára.
-
-```java
-@FunctionName("httpToServiceBusQueue")
-@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
-public String pushToQueue(
-  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
-  final String message,
-  @HttpOutput(name = "response") final OutputBinding<T> result ) {
-      result.setValue(message + " has been sent.");
-      return message;
- }
-```
-
- A [Java functions runtime library](/java/api/overview/azure/functions/runtime)-ben használja a `@QueueOutput` Megjegyzések a függvény azon paramétereit, amelyek értékét egy Service Bus üzenetsor számára szeretné írni.  A paraméter típusának olyannak kell lennie `OutputBinding<T>` , ahol a T egy POJO natív Java-típusa.
-
-A Java functions is írhat Service Bus témakörbe. A következő példa a `@ServiceBusTopicOutput` jegyzetet használja a kimeneti kötés konfigurációjának leírásához. 
-
-```java
-@FunctionName("sbtopicsend")
-    public HttpResponseMessage run(
-            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
-            @ServiceBusTopicOutput(name = "message", topicName = "mytopicname", subscriptionName = "mysubscription", connection = "ServiceBusConnection") OutputBinding<String> message,
-            final ExecutionContext context) {
-        
-        String name = request.getBody().orElse("Azure Functions");
-
-        message.setValue(name);
-        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
-        
-    }
-```
-
 ---
 
 ## <a name="attributes-and-annotations"></a>Attribútumok és jegyzetek
@@ -262,17 +295,21 @@ Az `ServiceBusAccount` attribútum segítségével megadhatja az osztály, a met
 
 A C# parancsfájl nem támogatja az attribútumokat.
 
+# <a name="java"></a>[Java](#tab/java)
+
+A `ServiceBusQueueOutput` és a `ServiceBusTopicOutput` jegyzetek elérhetők egy üzenet függvény kimenetként való írásához. Az ezekkel a megjegyzésekkel díszített paramétert az `OutputBinding<T>` `T` üzenet típusának megfelelő típusként kell deklarálni.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A JavaScript nem támogatja az attribútumokat.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+A PowerShell nem támogatja az attribútumokat.
+
 # <a name="python"></a>[Python](#tab/python)
 
 A Python nem támogatja az attribútumokat.
-
-# <a name="java"></a>[Java](#tab/java)
-
-A `ServiceBusQueueOutput` és a `ServiceBusTopicOutput` jegyzetek elérhetők egy üzenet függvény kimenetként való írásához. Az ezekkel a megjegyzésekkel díszített paramétert az `OutputBinding<T>` `T` üzenet típusának megfelelő típusként kell deklarálni.
 
 ---
 
@@ -282,9 +319,9 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 
 |function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**típusa** | n/a | "ServiceBus" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
-|**irányba** | n/a | "Out" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
-|**name** | n/a | Annak a változónak a neve, amely a függvény kódjában szereplő üzenetsor vagy témakör üzenetét jelöli. A függvény visszatérési értékének hivatkozásához állítsa a "$return" értéket. |
+|**típusa** | n.a. | "ServiceBus" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
+|**irányba** | n.a. | "Out" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
+|**név** | n.a. | Annak a változónak a neve, amely a függvény kódjában szereplő üzenetsor vagy témakör üzenetét jelöli. A függvény visszatérési értékének hivatkozásához állítsa a "$return" értéket. |
 |**queueName**|**QueueName**|A várólista neve.  Csak akkor állítsa be, ha üzenetsor-üzeneteket küld, nem pedig egy témakörhöz.
 |**topicName**|**TopicName**|A témakör neve. Csak akkor állítható be, ha nem várólistára küldi a témakör üzeneteit.|
 |**kapcsolat**|**Kapcsolat**|A kötéshez használni kívánt Service Bus kapcsolati karakterláncot tartalmazó Alkalmazásbeállítás neve. Ha az Alkalmazásbeállítások neve "AzureWebJobs" előtaggal kezdődik, akkor csak a név hátralévő részét adhatja meg. Ha például a "MyServiceBus" értékre van állítva `connection` , a functions futtatókörnyezet egy "AzureWebJobsMyServiceBus" nevű alkalmazás-beállítást keres. Ha `connection` üresen hagyja, a functions Runtime az alapértelmezett Service Bus a "AzureWebJobsServiceBus" nevű alkalmazás-beállításban található.<br><br>A kapcsolódási karakterlánc beszerzéséhez kövesse a [felügyeleti hitelesítő adatok beolvasása](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)című cikkben ismertetett lépéseket. A kapcsolódási karakterláncnak egy Service Bus névtérhez kell tartoznia, nem csak egy adott várólistára vagy témakörre.|
@@ -330,15 +367,19 @@ C#-függvények használata esetén:
 
 * A munkamenet-azonosító eléréséhez kötést kell kötnie egy [`Message`](/dotnet/api/microsoft.azure.servicebus.message) típushoz, és a tulajdonságot kell használnia `sessionId` .
 
+# <a name="java"></a>[Java](#tab/java)
+
+A beépített kimeneti kötés helyett használja a [Azure Service Bus SDK](../service-bus-messaging/index.yml) -t.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Az üzenetsor vagy témakör eléréséhez használja a következőt: `context.bindings.<name from function.json>` . Hozzárendelhet egy karakterláncot, egy bájt tömböt vagy egy JavaScript-objektumot (JSON-ként deszerializált) a következőhöz: `context.binding.<name>` .
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+A Service Bus kimenete a (z) parancsmagon keresztül érhető el, `Push-OutputBinding` ahol olyan argumentumok adhatók át, amelyek megfelelnek a kötés Name paraméterében a fájlban található *function.js* .
+
 # <a name="python"></a>[Python](#tab/python)
-
-A beépített kimeneti kötés helyett használja a [Azure Service Bus SDK](../service-bus-messaging/index.yml) -t.
-
-# <a name="java"></a>[Java](#tab/java)
 
 A beépített kimeneti kötés helyett használja a [Azure Service Bus SDK](../service-bus-messaging/index.yml) -t.
 
@@ -388,10 +429,10 @@ Ha a értékre van `isSessionsEnabled` állítva `true` , a `sessionHandlerOptio
 |---------|---------|---------|
 |prefetchCount|0|Lekérdezi vagy beállítja az üzenet fogadója által egyidejűleg igényelhető üzenetek számát.|
 |maxAutoRenewDuration|00:05:00|Az a maximális időtartam, amelyen belül az üzenet zárolása automatikusan meg lesz újítva.|
-|Automatikus kiegészítés|true|Azt jelzi, hogy a triggernek a feldolgozás után automatikusan kell-e meghívnia a feladatokat, vagy ha a függvény kódja manuálisan hívja meg a műveletet.<br><br>A beállítás `false` értéke csak C# esetén támogatott.<br><br>Ha a értékre van állítva `true` , akkor az trigger automatikusan befejeződik, ha a függvény végrehajtása sikeresen befejeződött, és a rendszer nem hagyja el az üzenetet.<br><br>Ha a értékre `false` van állítva, akkor a [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet) metódusok meghívásával kell meghívnia az üzenetet az üzenet befejezésére, elhagyására vagy kézbesítetlen levelek. Ha kivétel keletkezik (és egyik `MessageReceiver` metódus sem lett meghívva), akkor a zárolás továbbra is fennáll. A zárolás lejárta után a rendszer újra várólistára helyezi az üzenetet, `DeliveryCount` és automatikusan megújítja a zárolást.<br><br>A nem C # függvények esetében a függvényben lévő kivételek a háttérben futó futásidejű hívásokat eredményezik `abandonAsync` . Ha nem történik kivétel, `completeAsync` a rendszer a háttérben hívja meg. |
+|Automatikus kiegészítés|true|Azt jelzi, hogy a triggernek a feldolgozás után automatikusan kell-e meghívnia a feladatokat, vagy ha a függvény kódja manuálisan hívja meg a műveletet.<br><br>A beállítás `false` értéke csak C# esetén támogatott.<br><br>Ha a értékre van állítva `true` , akkor az trigger automatikusan befejeződik, ha a függvény végrehajtása sikeresen befejeződött, és a rendszer nem hagyja el az üzenetet.<br><br>Ha a értékre `false` van állítva, akkor a [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet&preserve-view=true) metódusok meghívásával kell meghívnia az üzenetet az üzenet befejezésére, elhagyására vagy kézbesítetlen levelek. Ha kivétel keletkezik (és egyik `MessageReceiver` metódus sem lett meghívva), akkor a zárolás továbbra is fennáll. A zárolás lejárta után a rendszer újra várólistára helyezi az üzenetet, `DeliveryCount` és automatikusan megújítja a zárolást.<br><br>A nem C # függvények esetében a függvényben lévő kivételek a háttérben futó futásidejű hívásokat eredményezik `abandonAsync` . Ha nem történik kivétel, `completeAsync` a rendszer a háttérben hívja meg. |
 |maxConcurrentCalls|16|A visszahívás egyidejű hívások maximális száma, amelyet az üzenet-szivattyúnak méretezhető példányon kell kezdeményeznie. Alapértelmezés szerint a függvények futtatókörnyezete egyszerre több üzenetet dolgoz fel.|
 |maxConcurrentSessions|2000|A többméretű példányon egyidejűleg kezelhető munkamenetek maximális száma.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Függvény futtatása Service Bus üzenetsor vagy témakör-üzenet létrehozásakor (trigger)](./functions-bindings-service-bus-trigger.md)

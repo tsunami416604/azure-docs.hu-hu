@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: 4635bcc51d2ab626b16ddcf02e772bf3df3cad4d
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: c36353448c140450044f352062c3349939e3f7b5
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763740"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789010"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>A Key Vault integrálása a DigiCert hitelesítésszolgáltatóval
 
@@ -129,7 +129,7 @@ Ha a kiállított tanúsítvány "letiltott" állapotban van a Azure Portalban, 
  ![Tanúsítvány művelete](../media/certificates/how-to-integrate-certificate-authority/certificate-operation-select.png)
 
 Hibaüzenet: "Kérjük, végezze el az egyesítést a tanúsítványkérelem befejezéséhez."
-A kérelem végrehajtásához egyesíteni kell a HITELESÍTÉSSZOLGÁLTATÓ által aláírt vállalati ügyfélszolgálatot. További információt [itt](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-signing-request) talál
+A kérelem végrehajtásához egyesíteni kell a HITELESÍTÉSSZOLGÁLTATÓ által aláírt vállalati ügyfélszolgálatot. [További információ](./create-certificate-signing-request.md)
 
 További információkért tekintse meg a [tanúsítványok műveleteit a Key Vault REST API-referenciában](/rest/api/keyvault). Az engedélyek létrehozásával kapcsolatos információkért lásd: tárolók [– Létrehozás vagy frissítés](/rest/api/keyvault/vaults/createorupdate) és tárolók [– frissítési hozzáférési szabályzat](/rest/api/keyvault/vaults/updateaccesspolicy).
 

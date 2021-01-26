@@ -8,12 +8,12 @@ ms.author: jehollan
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 03/30/2017
-ms.openlocfilehash: 0f20bb5fb249ad6bac862afe2b0e8eee4b32e2a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 470857883144f4bf8c21a1921afacb7ba3f5ca00
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75666550"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788095"
 ---
 # <a name="azure-serverless-overview-for-building-cloud-based-apps-and-solutions-with-azure-logic-apps-and-azure-functions"></a>Azure kiszolgáló nélküli: Áttekintés felhőalapú alkalmazások és megoldások létrehozásához Azure Logic Apps és Azure Functions
 
@@ -35,7 +35,7 @@ Az Logic Apps első lépéseinek megkezdéséhez [először hozzon létre egy lo
 
 Azure Functions egy szolgáltatás a felhőben található kódok vagy függvények egyszerű futtatásához. Csak az aktuális problémához szükséges kódot írhat, és nem kell aggódnia a teljes alkalmazásról vagy a szükséges infrastruktúráról. A függvények még hatékonyabbá tehetik a fejlesztést, és használhatják a választott fejlesztési nyelvet, például a C#, az F #, a Node.js, a Python vagy a PHP nyelveket is. Csak a kód futásának idejére kell fizetnie, és szükség szerint az Azure-ra is szüksége van.
 
-A Azure Functions első lépéseinek megkezdéséhez [először hozzon létre egy Azure-függvényt](../azure-functions/functions-create-first-azure-function.md). A functions szolgáltatással kapcsolatos további technikai információkért tekintse meg a [fejlesztői referenciát](../azure-functions/functions-reference.md).
+A Azure Functions első lépéseinek megkezdéséhez [először hozzon létre egy Azure-függvényt](../azure-functions/functions-get-started.md). A functions szolgáltatással kapcsolatos további technikai információkért tekintse meg a [fejlesztői referenciát](../azure-functions/functions-reference.md).
 
 ## <a name="how-can-i-build-and-deploy-serverless-apps-in-azure"></a>Hogyan lehet kiszolgáló nélküli alkalmazásokat felépíteni és üzembe helyezni az Azure-ban?
 

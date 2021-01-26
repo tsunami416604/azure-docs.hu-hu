@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 11/04/2020
 ms.author: victorh
-ms.openlocfilehash: 2dd1b51c6bcdbc531661d9ecf45d3d0282eb5b45
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 52c6ef9edfc42bf1ad3b3279e0fa4e19b4cf502c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358847"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788264"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>Az Azure Firewall naplóinak és metrikáinak monitorozása
 
@@ -43,12 +43,12 @@ A diagnosztikai naplózás bekapcsolása után eltarthat néhány percig, amíg 
    * AzureFirewallDnsProxy
 
 
-3. Válassza a **diagnosztikai beállítás hozzáadása** lehetőséget. A **Diagnosztikai beállítások** lap megadja a diagnosztikai naplók beállításait.
+3. Válassza a **Diagnosztikai beállítások megadása** lehetőséget. A **Diagnosztikai beállítások** lap megadja a diagnosztikai naplók beállításait.
 5. Ebben a példában Azure Monitor naplók tárolja a naplókat, ezért írja be a **tűzfal log Analytics** nevet a névre.
-6. A **napló** területen válassza a **AzureFirewallApplicationRule** , a **AzureFirewallNetworkRule** , a **AzureFirewallThreatIntelLog** és a **AzureFirewallDnsProxy** elemet a naplók összegyűjtéséhez.
+6. A **napló** területen válassza a **AzureFirewallApplicationRule**, a **AzureFirewallNetworkRule**, a **AzureFirewallThreatIntelLog** és a **AzureFirewallDnsProxy** elemet a naplók összegyűjtéséhez.
 7. Válassza a **küldés log Analytics** lehetőséget a munkaterület konfigurálásához.
 8. Válassza ki előfizetését.
-9. Válassza a **Mentés** lehetőséget.
+9. Kattintson a **Mentés** gombra.
 
 ## <a name="enable-diagnostic-logging-by-using-powershell"></a>Diagnosztikai naplózás engedélyezése a PowerShell használatával
 
@@ -104,15 +104,15 @@ Az Azure CLI-vel történő diagnosztikai naplózás engedélyezéséhez kövess
 
 A tevékenységnaplók adatainak megtekintéséhez és elemzéséhez használja az alábbi módszerek bármelyikét:
 
-* **Azure-eszközök** : Információkat kérhet le a tevékenységnaplóból az Azure PowerShell-lel, az Azure CLI-vel, az Azure REST API-val vagy az Azure Portallal. Az egyes módszerek részletes útmutatóit a [Resource Managerrel végzett tevékenységművelet](../azure-resource-manager/management/view-activity-logs.md) című cikkben találja.
-* **Power BI** : Ha még nem rendelkezik [Power BI](https://powerbi.microsoft.com/pricing)-fiókkal, ingyenesen kipróbálhatja. A [Power BI-hoz készült Azure Activity Logs-tartalomcsomaggal](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/) olyan előre konfigurált irányítópultokkal elemezheti az adatokat, amelyeket eredeti formájukban vagy testre szabva is használhat.
-* **Azure Sentinel** : Azure Firewall naplókat összekapcsolhatja az Azure Sentinel szolgáltatással, így megtekintheti a munkafüzetek naplófájljait, felhasználhatja egyéni riasztások létrehozására, és beépítheti azt a vizsgálat javítására. Az Azure Sentinel Azure Firewall adatösszekötője jelenleg nyilvános előzetes verzióban érhető el. További információ: [adatok Összekötése Azure Firewallról](../sentinel/connect-azure-firewall.md).
+* **Azure-eszközök**: Információkat kérhet le a tevékenységnaplóból az Azure PowerShell-lel, az Azure CLI-vel, az Azure REST API-val vagy az Azure Portallal. Az egyes módszerek részletes útmutatóit a [Resource Managerrel végzett tevékenységművelet](../azure-resource-manager/management/view-activity-logs.md) című cikkben találja.
+* **Power BI**: Ha még nem rendelkezik [Power BI](https://powerbi.microsoft.com/pricing)-fiókkal, ingyenesen kipróbálhatja. A [Power BI-hoz készült Azure Activity Logs-tartalomcsomaggal](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/) olyan előre konfigurált irányítópultokkal elemezheti az adatokat, amelyeket eredeti formájukban vagy testre szabva is használhat.
+* **Azure Sentinel**: Azure Firewall naplókat összekapcsolhatja az Azure Sentinel szolgáltatással, így megtekintheti a munkafüzetek naplófájljait, felhasználhatja egyéni riasztások létrehozására, és beépítheti azt a vizsgálat javítására. Az Azure Sentinel Azure Firewall adatösszekötője jelenleg nyilvános előzetes verzióban érhető el. További információ: [adatok Összekötése Azure Firewallról](../sentinel/connect-azure-firewall.md).
 
 ## <a name="view-and-analyze-the-network-and-application-rule-logs"></a>A hálózati szabályok és alkalmazásszabályok naplóinak megtekintése és elemzése
 
 [Azure monitor naplók](../azure-monitor/insights/azure-networking-analytics.md) gyűjti a számláló-és az Eseménynapló-fájlokat. A Log Analytics vizualizációkat és hatékony keresési lehetőségeket is tartalmaz a naplók elemzéséhez.
 
-Azure Firewall log Analytics-példákat lásd: [Azure Firewall log Analytics-minták](log-analytics-samples.md).
+Azure Firewall log Analytics-példákat lásd: [Azure Firewall log Analytics-minták](./firewall-workbook.md).
 
 [Azure Firewall munkafüzet](firewall-workbook.md) rugalmas vásznon biztosít Azure Firewall adatelemzéshez. A szolgáltatással gazdag vizuális jelentéseket hozhat létre a Azure Portalon belül. Több, az Azure-ban üzembe helyezett tűzfalra koppinthat, és egységesített interaktív élményekben egyesítheti azokat.
 

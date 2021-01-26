@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 08/04/2020
+ms.date: 01/25/2021
 tags: azure-synpase
-ms.openlocfilehash: f8d352dac98f953f7f6d8033d0d9e1376c4da313
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 0f92d8dbfe423efa58231831fe012a27e45f9208
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532244"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787688"
 ---
 # <a name="dynamic-data-masking"></a>Dinamikus adatmaszkolás 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -26,15 +26,11 @@ A Azure SQL Database, az Azure SQL felügyelt példánya és az Azure szinapszis
 
 A dinamikus adatmaszkolás azzal segít megelőzni a bizalmas adatokhoz való jogosulatlan hozzáférést, hogy az ügyfél által meghatározhatóvá teszi az alkalmazásrétegre gyakorolt minimális következményekkel felfedhető bizalmas adatok menyiségét. Ez a szabályzatalapú biztonsági funkció elrejti a bizalmas adatokat egy kijelölt adatbázismezőkön végrehajtott lekérdezés eredményhalmazában, miközben az adatbázis adatait nem módosítja.
 
-Előfordulhat például, hogy a Call Center egyik szolgáltatása a hívókat a hitelkártyaszám több számjegye alapján azonosítja, de ezeket az adatelemeket nem szabad teljes mértékben kitenni a szolgáltatás képviselőjének. A maszkolási szabályok határozzák meg, hogy a rendszer az összes, de az utolsó négy számjegyet elrejti a bármely lekérdezés eredmény-készletében. Egy másik példaként egy megfelelő adatmaszkot is meghatározhat a személyes adatainak védelme érdekében, így a fejlesztők a megfelelőségi rendeletek megszegése nélkül is lekérhetik a termelési környezeteket a hibaelhárításhoz.
+Előfordulhat például, hogy egy Call Center egyik szolgáltatása az e-mail-címük több számjegye alapján azonosítja a hívókat, de ezeket az adatelemeket nem szabad teljes mértékben kitenni a szolgáltatás képviselőjének. Olyan maszkolási szabály is meghatározható, amely az összes e-mail-címet elrejti az összes lekérdezés eredmény-készletében. Egy másik példaként egy megfelelő adatmaszkot is meghatározhat a személyes adatainak védelme érdekében, így a fejlesztők a megfelelőségi rendeletek megszegése nélkül is lekérhetik a termelési környezeteket a hibaelhárításhoz.
 
 ## <a name="dynamic-data-masking-basics"></a>Dinamikus adatmaszkolás alapjai
 
 A dinamikus adatmaszkolási házirend beállításához a Azure Portal a **dinamikus adatmaszkolás** panelt a **Biztonság** elemre kattintva a SQL Database konfigurációs ablaktáblán. Ez a funkció nem állítható be a portálon a felügyelt SQL-példányhoz (PowerShell vagy REST API használata). További információ: [dinamikus adatmaszkolás](/sql/relational-databases/security/dynamic-data-masking).
-
-### <a name="dynamic-data-masking-permissions"></a>Dinamikus adatmaszkolási engedélyek
-
-A dinamikus adatmaszkolás konfigurálható a Azure SQL Database-rendszergazda, a kiszolgálói rendszergazda vagy az [SQL Security Manager](../../role-based-access-control/built-in-roles.md#sql-security-manager) szerepköreivel.
 
 ### <a name="dynamic-data-masking-policy"></a>Dinamikus adatmaszkolási szabályzat
 
@@ -83,3 +79,11 @@ A REST API használatával programozott módon kezelheti az adatmaszkolási szab
 
 - [Létrehozás vagy frissítés](/rest/api/sql/datamaskingrules/createorupdate): adatbázis-adatmaszkolási szabály létrehozása vagy frissítése.
 - [Listázás adatbázis szerint](/rest/api/sql/datamaskingrules/listbydatabase): lekéri az adatbázis-adatmaszkolási szabályok listáját.
+
+## <a name="permissions"></a>Engedélyek
+
+A dinamikus adatmaszkolás konfigurálható a Azure SQL Database-rendszergazda, a kiszolgáló rendszergazdája vagy a szerepköralapú hozzáférés-vezérlés (RBAC) [SQL Security Manager](../../role-based-access-control/built-in-roles.md#sql-security-manager) szerepkör használatával.
+
+## <a name="next-steps"></a>További lépések
+
+[Dinamikus adatmaszkolás](/sql/relational-databases/security/dynamic-data-masking)

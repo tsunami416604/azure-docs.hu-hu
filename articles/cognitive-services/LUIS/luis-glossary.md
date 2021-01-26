@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: cc7dac3767ca5c9e2429f4691a458f88ad1af707
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7c65c8272172cab9f5361d16141bf7b229037480
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151976"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786944"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Nyelvi ismeretek a gyakori szószedetekről és fogalmakról
 A Language Understanding (LUIS) Szószedet a LUIS szolgáltatással való munka során felmerülő feltételeket ismerteti.
@@ -50,12 +50,13 @@ Az authoring erőforrás rendelkezik egy Azure "Kind" típussal `LUIS-Authoring`
 
 ## <a name="batch-test"></a>Batch-teszt
 
-A Batch-tesztelés lehetővé teszi, hogy a jelenlegi LUIS alkalmazás modelljeit a felhasználói hosszúságú kimondott szöveg konzisztens és ismert tesztelési készletével érvényesítse. A Batch-teszt egy JSON- [formátumú fájlban](luis-concept-batch-test.md#batch-file-format)van definiálva.
+A Batch-tesztelés lehetővé teszi, hogy a jelenlegi LUIS alkalmazás modelljeit a felhasználói hosszúságú kimondott szöveg konzisztens és ismert tesztelési készletével érvényesítse. A Batch-teszt egy JSON- [formátumú fájlban](./luis-how-to-batch-test.md#batch-test-file)van definiálva.
+
 
 Lásd még:
-* [Alapelvek](luis-concept-batch-test.md)
+* [Alapelvek](./luis-how-to-batch-test.md)
 * A Batch [-](luis-how-to-batch-test.md) teszt futtatása
-* [Oktatóanyag](luis-tutorial-batch-testing.md) – batch-teszt létrehozása és futtatása
+* [Oktatóanyag](./luis-how-to-batch-test.md) – batch-teszt létrehozása és futtatása
 
 ### <a name="f-measure"></a>F-mérték
 
@@ -194,7 +195,7 @@ LUIS-ban egy szót vagy kifejezést kell [megcímkézni](label-entity-example-ut
 
 Tekintse meg az [alkalmazás definícióját (alkalmazás)](#application-app).
 
-## <a name="model"></a>Modell
+## <a name="model"></a>Modellezés
 
 A (gépi megtanult) modell egy olyan függvény, amely előrejelzést készít a bemeneti adatokról. A LUIS-ben a szándék-osztályozók és az entitás-kiállítók általános módon "modellként" szerepelnek, és az "alkalmazásként" együtt betanított, közzétett és lekérdezett modellek gyűjteményét nevezzük.
 
@@ -292,7 +293,7 @@ A LUIS- [lista entitásokban](reference-entity-list.md)normalizált értéket ho
 
 A modell az entitás normalizált értékét adja vissza, ha a bemenet valamelyik szinonimája látható.
 
-## <a name="test"></a>Teszt
+## <a name="test"></a>Tesztelés
 
 A LUIS-alkalmazás [tesztelése](luis-concept-test.md) a modell-előrejelzések megtekintését jelenti.
 
@@ -305,7 +306,7 @@ Lásd: [előre elkészített datetimeV2 entitás időzóna módosítása](luis-c
 ## <a name="token"></a>Jogkivonat
 A [token](luis-language-support.md#tokenization) a szöveg legkisebb egysége, amelyet a Luis képes felismerni. Ez némileg eltér a különböző nyelveken.
 
-Az **angol nyelv**esetén a token folytonos span (szóközök vagy írásjelek nélkül) a betűkből és számokból. A szóköz nem token.
+Az **angol nyelv** esetén a token folytonos span (szóközök vagy írásjelek nélkül) a betűkből és számokból. A szóköz nem token.
 
 |Kifejezés|Tokenek száma|Magyarázat|
 |--|--|--|
@@ -326,7 +327,7 @@ A betanítási adatok a modellek betanításához szükséges információk. Ebb
 
 A betanítási hibák olyan előrejelzések a betanítási adataiban, amelyek nem felelnek meg a címkének.
 
-## <a name="utterance"></a>Kimondott szöveg
+## <a name="utterance"></a>Beszédelem
 
 A [Kimondás](luis-concept-utterance.md) olyan felhasználói bevitel, amely egy adott mondat rövid szöveges képviselője egy beszélgetésben. Ez egy természetes nyelv kifejezése, mint például a "2. könyv jegyek a Seattle következő kedden". Példa hosszúságú kimondott szöveg a modell betanításához, és a modell új Kimondás esetén várható
 

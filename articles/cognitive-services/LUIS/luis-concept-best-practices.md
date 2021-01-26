@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/17/2020
-ms.openlocfilehash: fc4475eb64744688e901d2b37e30632d044b0115
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2f6ed85416cc5d7c3c2baba2b2cfe489e301d7e5
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019313"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788485"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Ajánlott eljárások a Language Understanding (LUIS) alkalmazások létrehozásához
 A LUIS-alkalmazás létrehozásához használja az alkalmazás-létrehozási folyamatot:
@@ -141,7 +141,7 @@ Az [aktív tanulás](luis-how-to-review-endpoint-utterances.md) **felülvizsgál
 
 ## <a name="do-monitor-the-performance-of-your-app"></a>Az alkalmazás teljesítményének figyelése
 
-Figyelje meg az előrejelzés pontosságát egy [Batch-tesztkörnyezet](luis-concept-batch-test.md) használatával.
+Figyelje meg az előrejelzés pontosságát egy [Batch-tesztkörnyezet](./luis-how-to-batch-test.md) használatával.
 
 Tartsa meg a [hosszúságú kimondott szöveg](luis-concept-utterance.md) vagy a végpont hosszúságú kimondott szöveg nem használt különálló hosszúságú kimondott szöveg. Tartsa meg az alkalmazás fejlesztését a tesztkörnyezet számára. Állítsa be a tesztet úgy, hogy az tükrözze a valós felhasználói hosszúságú kimondott szöveg. Ezzel a tesztelési készlettel értékelheti ki az alkalmazás minden egyes iterációját vagy verzióját.
 
@@ -193,6 +193,6 @@ Ne adjon hozzá túl sok [mintázatot](luis-concept-patterns.md). LUIS célja, h
 
 Vegyen fel 10 vagy 15 hosszúságú kimondott szöveg a képzés és a közzététel előtt. Ez lehetővé teszi, hogy megtekintse az előrejelzés pontosságának hatását. Egyetlen Kimondás hozzáadásával nem lehet látható hatással a pontszámra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Megtudhatja, hogyan [tervezze meg alkalmazását](luis-how-plan-your-app.md) a Luis-alkalmazásban.

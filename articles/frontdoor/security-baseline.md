@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 77fccf8b2480232debb88136394013941af796c8
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: c922ae19c496d9f377b47ec43d38807f494593bc
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197268"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789128"
 ---
 # <a name="azure-security-baseline-for-azure-front-door"></a>Azure biztonsági alapkonfiguráció Azure-beli bejárati ajtóhoz
 
@@ -88,7 +88,7 @@ A fokozottan biztonságos felhasználói munkaállomások használata az Azure B
 
 - [Az emelt szintű hozzáférésű munkaállomások ismertetése](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) 
 
-- [Emelt szintű hozzáférésű munkaállomás üzembe helyezése](../active-directory/devices/howto-azure-managed-workstation.md)
+- [Emelt szintű hozzáférésű munkaállomás üzembe helyezése](/security/compass/privileged-access-deployment)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -551,7 +551,7 @@ További információ a hivatkozott hivatkozásokon érhető el.
 
 **Felelősség**: Ügyfél
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Security Benchmark v2 áttekintésének](../security/benchmarks/overview.md) megtekintése
 - További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

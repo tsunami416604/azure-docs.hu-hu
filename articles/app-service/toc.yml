@@ -102,7 +102,7 @@
   items:
     - name: App Service-csomagok
       href: overview-hosting-plans.md
-    - name: Cost Management
+    - name: Költségkezelés
       href: overview-manage-costs.md
     - name: OS-funkciók
       href: operating-system-functionality.md
@@ -259,6 +259,8 @@
           href: troubleshoot-diagnostic-logs.md
         - name: Erőforrás-események lekérése
           href: get-resource-events.md
+        - name: Állapot-ellenőrzés
+          href: monitor-instances-health-check.md
         - name: SSH-munkamenet megnyitása Linux-tárolóra
           href: configure-linux-open-ssh-session.md
     - name: Alkalmazás kezelése

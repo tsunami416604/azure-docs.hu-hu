@@ -3,12 +3,12 @@ title: Osztályterem-tesztkörnyezet beállítása az Azure Lab Services szolgá
 description: Ebben az oktatóanyagban a Azure Lab Services használatával állít be egy tantermi labort olyan virtuális gépekkel, amelyeket az osztályban tanulók használnak.
 ms.topic: tutorial
 ms.date: 12/03/2020
-ms.openlocfilehash: 3abbf5221382b46dbf4e73f9f4dc3b639bc5ecbd
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 8093a1fd270cdba8bdccaf48737bf6737bdd394d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602499"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787418"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Oktatóanyag: Osztályterem-tesztkörnyezet beállítása 
 Ebben az oktatóanyagban megtanulhatja, hogyan állíthat be egy diákok által használható virtuális gépekkel rendelkező osztályterem-tesztkörnyezetet.  
@@ -104,7 +104,7 @@ Hozzon létre egy ütemezett eseményt a laborhoz, hogy a laborban lévő virtu�
     1. Győződjön meg arról, hogy **minden héten** be van állítva az **ismétlés** mező. 
     2. Válassza ki azokat a napokat, amelyeknek érvénybe szeretné venni az ütemtervet. A következő példában Monday-Friday van kiválasztva. 
     3. Válassza ki az ütemterv **befejezési dátumát** .
-    8. Válassza a **Mentés** lehetőséget. 
+    8. Kattintson a **Mentés** gombra. 
 
         ![Ismétlődő ütemterv beállítása](./media/how-to-create-schedules/set-repeat-schedule.png)
 
@@ -127,7 +127,7 @@ Amikor felhasználókat ad hozzá, alapértelmezés szerint a **hozzáférés ko
 
 Meglévő Azure Active Directory (Azure AD) csoportba szinkronizálhatja a tesztkörnyezet felhasználói listáját, így nem kell manuálisan hozzáadnia vagy törölnie a felhasználókat. 
 
-A szervezeti erőforrásokhoz és a felhőalapú alkalmazásokhoz való hozzáférés kezeléséhez egy Azure AD-csoport hozható létre a szervezet Azure Active Directory belül. További információ: [Azure ad-csoportok](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups). Ha a szervezete Microsoft Office 365-es vagy Azure-szolgáltatásokat használ, a szervezete már rendelkezik a Azure Active Directoryt kezelő rendszergazdákkal. 
+A szervezeti erőforrásokhoz és a felhőalapú alkalmazásokhoz való hozzáférés kezeléséhez egy Azure AD-csoport hozható létre a szervezet Azure Active Directory belül. További információ: [Azure ad-csoportok](../active-directory/fundamentals/active-directory-manage-groups.md). Ha a szervezete Microsoft Office 365-es vagy Azure-szolgáltatásokat használ, a szervezete már rendelkezik a Azure Active Directoryt kezelő rendszergazdákkal. 
 
 > [!IMPORTANT]
 > Győződjön meg arról, hogy a felhasználói lista üres. Ha a laborban meglévő felhasználók manuálisan vagy CSV-fájl importálásával lettek létrehozva, akkor a tesztkörnyezet meglévő csoportba való szinkronizálásának lehetősége nem jelenik meg. 
@@ -160,7 +160,7 @@ Ebben a szakaszban manuálisan adja hozzá a tanulókat (e-mail-cím vagy CSV-f�
 1. Válassza a **Hozzáadás e-mail-cím szerint** (alapértelmezett) lehetőséget, adja meg a tanulók e-mail-címeit külön vonalakon, vagy egyetlen sorban pontosvesszővel elválasztva. 
 
     :::image type="content" source="./media/how-to-configure-student-usage/add-users-email-addresses.png" alt-text="Felhasználók e-mail címeinek hozzáadása":::
-1. Válassza a **Mentés** lehetőséget. 
+1. Kattintson a **Mentés** gombra. 
 
     A lista megjeleníti az aktuális felhasználók e-mail-címeit és állapotát, függetlenül attól, hogy regisztrálva vannak-e a laborban. 
 
@@ -182,7 +182,7 @@ A CSV-szövegfájlok vesszővel tagolt (CSV) táblázatos adatok (számok és sz
 1. Válassza ki a diákok e-mail-címeit tartalmazó CSV-fájlt, majd kattintson a **Megnyitás** gombra.
 
     A **felhasználók hozzáadása** ablakban megjelenik az e-mail-címek listája a csv-fájlból. 
-1. Válassza a **Mentés** lehetőséget. 
+1. Kattintson a **Mentés** gombra. 
 1. A **felhasználók** ablaktáblán tekintse meg a felvett diákok listáját. 
 
     :::image type="content" source="./media/how-to-configure-student-usage/list-of-added-users.png" alt-text="A hozzáadott felhasználók listája a felhasználók ablaktáblán"::: 
@@ -204,4 +204,3 @@ Ebben az oktatóanyagban létrehozott egy labort az osztályhoz az Azure-ban. Ha
 
 > [!div class="nextstepaction"]
 > [Kapcsolódás az osztályterem-tesztkörnyezet virtuális gépeihez](tutorial-connect-virtual-machine-classroom-lab.md)
-

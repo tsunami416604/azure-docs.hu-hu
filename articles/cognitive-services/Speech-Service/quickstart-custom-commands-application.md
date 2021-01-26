@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.custom: references_regions
-ms.openlocfilehash: 2cc37cc66c06dc9e6997c6a031a9c60ad050c01a
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: ea32358aa86a6093cd72adf959d5fe731cf1e125
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601770"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786876"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>Hangvezérelt asszisztens létrehozása egyéni parancsokkal
 
@@ -104,7 +104,7 @@ Ahhoz, hogy hozzáférhessen az alkalmazáshoz a Speech studión kívül, közz�
 
 1. Válassza a bal oldali ablaktábla **Beállítások** elemét, majd a középső ablaktáblán válassza a  **Luis-erőforrások** lehetőséget.
 1. Válasszon előrejelzési erőforrást, vagy hozzon létre egyet az **új erőforrás létrehozása** lehetőség kiválasztásával.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
     
     > [!div class="mx-imgBorder"]
     > ![LUIS-erőforrások beállítása](media/custom-commands/set-luis-resources.png)
@@ -136,4 +136,4 @@ A jelen cikk hatókörében az előfeltételek részeként letöltött Windows V
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben egy meglévő alkalmazást használt. A következő, [útmutató szakaszban](how-to-custom-commands-create-application-with-simple-commands.md)megtudhatja, hogyan tervezhet, fejleszthet, végezhet hibakeresést, tesztelheti és integrálhatja az egyéni parancsok alkalmazásait a semmiből.
+Ebben a cikkben egy meglévő alkalmazást használt. A következő, [útmutató szakaszban](./how-to-develop-custom-commands-application.md)megtudhatja, hogyan tervezhet, fejleszthet, végezhet hibakeresést, tesztelheti és integrálhatja az egyéni parancsok alkalmazásait a semmiből.

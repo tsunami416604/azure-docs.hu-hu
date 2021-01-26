@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/3/2020
-ms.openlocfilehash: f002bfdd5aeb784b5b10b549389e663216fa0361
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: cd2fd8dc8c10864089b198db1ca1089f994a3ffb
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561222"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788451"
 ---
 # <a name="testing-for-luis-devops"></a>A LUIS DevOps tesztelése
 
@@ -28,7 +28,7 @@ A folyamatos integrációs munkafolyamatokban két különböző típusú teszte
 Ez a fajta tesztelés hasonló a [Luis-portálon](https://www.luis.ai/)elvégezhető [interaktív teszteléshez](./luis-concept-test.md) .
 
 - **Batch-tesztek** – a Batch Testing egy átfogó teszt a jelenlegi betanított modellen a teljesítmény méréséhez. Az egységgel végzett tesztektól eltérően a Batch-tesztelés nem halad át | sikertelen tesztelés. A Batch-tesztelés várhatóan nem minden teszt a várt szándékú és várt entitásokat fogja visszaadni. Ehelyett egy batch-teszt segít megtekinteni az egyes szándékok és entitások pontosságát az alkalmazásban, és segít összehasonlítani az idő múlásával a fejlesztés során.  
-Ez a fajta tesztelés megegyezik a [kötegelt teszteléssel](./luis-concept-batch-test.md) , amelyet interaktív módon végezhet el a Luis-portálon.
+Ez a fajta tesztelés megegyezik a [kötegelt teszteléssel](./luis-how-to-batch-test.md) , amelyet interaktív módon végezhet el a Luis-portálon.
 
 A projekt elejéről is alkalmazhat egységes tesztelést. A Batch-tesztelés csak akkor igazán értékes, ha a LUIS-alkalmazás sémáját fejlesztette, és dolgozik a pontosságának javításán.
 
@@ -42,7 +42,7 @@ Ha teszteket ír, minden teszthez meg kell határoznia a következőket:
 * Várt szándék
 * Várt entitások.
 
-A LUIS [batch-fájl szintaxisával](./luis-concept-batch-test.md#batch-syntax-template-for-intents-with-entities) meghatározhatja a tesztek egy csoportját egy JSON-formátumú fájlban. Például:
+A LUIS [batch-fájl szintaxisával](./luis-how-to-batch-test.md#batch-syntax-template-for-intents-with-entities) meghatározhatja a tesztek egy csoportját egy JSON-formátumú fájlban. Például:
 
 ```JSON
 [
@@ -85,7 +85,7 @@ Az egységbeli tesztek során érdemes tesztelni, hogy a kulcsfontosságú entit
 
 #### <a name="designing-batch-tests"></a>Batch-tesztek tervezése
 
-A Batch-tesztek nagy számú tesztelési esetet tartalmaznak, amelyek az összes cél és a LUIS-alkalmazás összes entitásának tesztelésére szolgálnak. A Batch-tesztkörnyezet definiálásával kapcsolatos információkért lásd: [Batch-tesztelés a Luis portálon](./luis-concept-batch-test.md) .
+A Batch-tesztek nagy számú tesztelési esetet tartalmaznak, amelyek az összes cél és a LUIS-alkalmazás összes entitásának tesztelésére szolgálnak. A Batch-tesztkörnyezet definiálásával kapcsolatos információkért lásd: [Batch-tesztelés a Luis portálon](./luis-how-to-batch-test.md) .
 
 ### <a name="running-tests"></a>Tesztek futtatása
 
@@ -93,7 +93,7 @@ A LUIS-portál olyan funkciókat kínál, amelyek segítenek az interaktív tesz
 
 * Az [**interaktív tesztelés**](./luis-concept-test.md) lehetővé teszi, hogy beküldjön egy mintát, és választ KAPJON a Luis által felismert szándékokról és entitásokról. A teszt sikerességét a vizuális vizsgálat ellenőrzi.
 
-* A [**Batch**](./luis-concept-batch-test.md) Testing egy batch-tesztoldalt használ bemenetként, hogy érvényesítse az aktív betanított verziót az előrejelzési pontosság méréséhez. A Batch-tesztek segítségével megtekintheti az egyes szándékok és entitások pontosságát az aktív verzióban, és megjelenítheti az eredményeket egy diagrammal.
+* A [**Batch**](./luis-how-to-batch-test.md) Testing egy batch-tesztoldalt használ bemenetként, hogy érvényesítse az aktív betanított verziót az előrejelzési pontosság méréséhez. A Batch-tesztek segítségével megtekintheti az egyes szándékok és entitások pontosságát az aktív verzióban, és megjelenítheti az eredményeket egy diagrammal.
 
 #### <a name="running-tests-in-an-automated-build-workflow"></a>Tesztek futtatása automatizált Build-munkafolyamatokban
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: af9087f0dd45212ec88b620dcd965c895b86bbce
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: baa071c8967c97cb5df2b8f522b3737436bdb359
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108192"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787705"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker erőforrások kezelése
 
@@ -130,12 +130,12 @@ További információ a App Service [általános beállításainak](../../../app
 ### <a name="configure-app-service-environment-to-host-qna-maker-app-service"></a>App Service Environment konfigurálása a gazdagép QnA Maker App Service
 A App Service Environment (a bemutató) QnA Maker app Service üzemeltetésére használható. Kövesse az alábbi lépéseket:
 
-1. Hozzon létre egy App Service Environment, és jelölje meg a "külső" jelölést. Kérjük, kövesse az [oktatóanyag](https://docs.microsoft.com/azure/app-service/environment/create-external-ase) utasításait.
+1. Hozzon létre egy App Service Environment, és jelölje meg a "külső" jelölést. Kérjük, kövesse az [oktatóanyag](../../../app-service/environment/create-external-ase.md) utasításait.
 2.  Hozzon létre egy app Service-t a App Service Environmenton belül.
     * Tekintse át az App Service konfigurációját, és adja hozzá az "PrimaryEndpointKey" beállítást. A "PrimaryEndpointKey" értéket a "-PrimaryEndpointKey" értékre kell beállítani \<app-name\> . Az alkalmazás neve az App Service URL-címében van meghatározva. Ha például az App Service URL-címe "mywebsite.myase.p.azurewebsite.net", akkor az alkalmazás neve "mywebsite". Ebben az esetben a "PrimaryEndpointKey" értéket a "mywebsite-PrimaryEndpointKey" értékre kell beállítani.
     * Hozzon létre egy Azure Search szolgáltatást.
     * Győződjön meg arról, hogy a Azure Search és az Alkalmazásbeállítások megfelelően vannak konfigurálva. 
-      Kérjük, kövesse ezt az [oktatóanyagot](https://docs.microsoft.com/azure/cognitive-services/qnamaker/reference-app-service?tabs=v1#app-service).
+      Kérjük, kövesse ezt az [oktatóanyagot](../reference-app-service.md?tabs=v1#app-service).
 3.  A App Service Environment társított hálózati biztonsági csoport frissítése
     * Frissítse az előre létrehozott bejövő biztonsági szabályokat az igényeinek megfelelően.
     * Vegyen fel egy új bejövő biztonsági szabályt a forrásként a "Service tag" és a forrásoldali szolgáltatás címkével "CognitiveServicesManagement" néven.
@@ -387,7 +387,7 @@ Az ingyenes keresési erőforrások 90 nap után törlődnek, és nem kapnak API
 
 Ha törli a QnA Maker tudásbázishoz használt Azure-erőforrásokat, a tudásbázisok nem fognak működni. Az erőforrások törlése előtt győződjön meg arról, hogy a tudásbázisokat a **Beállítások** lapról exportálja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az [app Service](../../../app-service/index.yml) és a [Search szolgáltatásról](../../../search/index.yml).
 

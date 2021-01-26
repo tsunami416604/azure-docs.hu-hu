@@ -4,12 +4,12 @@ description: Ebben a rövid útmutatóban egy Docker-rendszerképet készít az 
 ms.topic: quickstart
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 27d9c96643feb805a785e1e535cd8cac2602082b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: f58b8feda0e88d8a5e7cddaabbc650b0f0ab3973
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741925"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788162"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Rövid útmutató: Linux-tárolók üzembe helyezése a Service Fabricben
 
@@ -25,7 +25,7 @@ Az oktatóanyag elvégzéséhez:
 
 1. Hozzon létre egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) , mielőtt elkezdené, ha nem rendelkezik előfizetéssel.
 
-2. Az [Azure CLI](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) telepítése
+2. Az [Azure CLI](/cli/azure/install-azure-cli-apt) telepítése
 
 3. A [Service FABRIC SDK és parancssori](service-fabric-get-started-linux.md#installation-methods) felület telepítése
 
@@ -107,7 +107,7 @@ A Mozilla Firefox az Ubuntu 16,04 alapértelmezett böngészője. A tanúsítvá
     ./install.sh
     ```
 
-3. Nyisson meg egy webböngészőt, majd navigáljon a fürt Service Fabric Explorer-végpontjára. A végpont formátuma a következő:  **https:// \<my-azure-service-fabric-cluster-url> : 19080/Explorer** ; például: `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer` . </br>
+3. Nyisson meg egy webböngészőt, majd navigáljon a fürt Service Fabric Explorer-végpontjára. A végpont formátuma a következő:  **https:// \<my-azure-service-fabric-cluster-url> : 19080/Explorer**; például: `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer` . </br>
 
 4. Bontsa ki az **alkalmazások** csomópontot, és ellenőrizze, hogy most már van-e bejegyzés a szavazási alkalmazás típusához és a létrehozott példányhoz.
 
@@ -149,7 +149,7 @@ A webes előtér-szolgáltatás méretezéséhez hajtsa végre a következő lé
 
     Most már méretezheti a webes előtér-szolgáltatás példányainak számát.
 
-3. Módosítsa a számot **2** -re, és kattintson a **Szolgáltatás méretezése** gombra.
+3. Módosítsa a számot **2**-re, és kattintson a **Szolgáltatás méretezése** gombra.
 4. Kattintson a **fabric:/Voting/azurevotefront** csomópontra a fanézetben, és bontsa ki a partíciós csomópontot (egy GUID jelöli).
 
     ![A Service Fabric Explorer méretezési szolgáltatása befejezve][containersquickstartscaledone]
@@ -158,7 +158,7 @@ A webes előtér-szolgáltatás méretezéséhez hajtsa végre a következő lé
 
 Ezzel az egyszerű felügyeleti eljárással megduplázta az előtér-szolgáltatás számára a felhasználói terhelések feldolgozásához rendelkezésre álló erőforrások mennyiségét. Fontos tudni, hogy nincs szükség több példányra ahhoz, hogy a szolgáltatás megbízhatóan fusson. Ha egy szolgáltatás meghibásodik, a Service Fabric gondoskodik róla, hogy egy új szolgáltatáspéldány elinduljon a fürtben.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Használja a sablonban megadott eltávolítási szkriptet (uninstall.sh) az alkalmazáspéldánynak a fürtről történő törléséhez, és törölje az alkalmazástípus regisztrációját. A szkriptnek némi időre van szüksége a példány kiürítéséhez, ezért a telepítési szkriptet nem érdemes azonnal ezen szkript után futtatni. A Service Fabric Explorerrel megállapíthatja, hogy mikor lett eltávolítva a példány és mikor lett megszüntetve az alkalmazástípus regisztrációja.
 
@@ -168,7 +168,7 @@ Használja a sablonban megadott eltávolítási szkriptet (uninstall.sh) az alka
 
 A fürt és az összes általa használt erőforrás törlésének legegyszerűbb módja az erőforráscsoport törlése.
 
-Jelentkezzen be az Azure-ba, és válassza ki azt az előfizetés-azonosítót, amellyel el szeretné távolítani a fürtöt. Az Azure Portalra bejelentkezve keresheti meg az előfizetés azonosítóját. Törölje az erőforráscsoportot és az összes fürterőforrás-erőforrást az az [Group delete paranccsal](/cli/azure/group?view=azure-cli-latest).
+Jelentkezzen be az Azure-ba, és válassza ki azt az előfizetés-azonosítót, amellyel el szeretné távolítani a fürtöt. Az Azure Portalra bejelentkezve keresheti meg az előfizetés azonosítóját. Törölje az erőforráscsoportot és az összes fürterőforrás-erőforrást az az [Group delete paranccsal](/cli/azure/group).
 
 ```azurecli
 az login
@@ -182,7 +182,7 @@ Ha végzett a fürt használatával, eltávolíthatja a tanúsítványt a tanús
 - Mac rendszeren: Használja a Keychain alkalmazást.
 - Ubuntu rendszeren: Kövesse a tanúsítványok megtekintéséhez használt lépéseket, majd távolítsa el a tanúsítványt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban üzembe helyezett egy Linux-alapú tárolóalkalmazást egy Service Fabric-fürtön az Azure-ban, elvégezte az alkalmazás feladatátvételét és méretezte azt a fürtben. Ha bővebb információra van szüksége a Linux-tárolók Service Fabricben való használatával kapcsolatban, lépjen tovább a Linux-tárolóalkalmazásokról szóló oktatóanyagra.
 

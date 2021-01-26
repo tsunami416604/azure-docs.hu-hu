@@ -1,6 +1,6 @@
 ---
 title: BLOB Storage-adatAzure Storage Explorer-csoport adatelemzési folyamatának áthelyezése
-description: Ismerje meg, hogyan töltheti fel és töltheti le az Azure Blob Storage-ból az Azure Storage Explorer-t.
+description: Ismerje meg, hogyan tölthetők fel és tölthetők le az Azure-Blob Storageokból az Azure Storage Explorer használatával.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c5750132280d69c946ce180c51e4de6507549fcb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 53cb8cdd1c5f9824b07b16b8b6c70648603b9f38
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318176"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788909"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-azure-storage-explorer"></a>Adatok áthelyezése Azure-Blob Storageba és onnan az Azure Storage Explorer használatával
-A Azure Storage Explorer a Microsoft ingyenes eszköze, amely lehetővé teszi az Azure Storage-adatok használatát Windows, macOS és Linux rendszeren. Ez a témakör azt ismerteti, hogyan használható az Azure Blob Storage-ból származó adatok feltöltése és letöltése. Az eszköz letölthető [Microsoft Azure Storage Explorerról](https://storageexplorer.com/).
+A Azure Storage Explorer a Microsoft ingyenes eszköze, amely lehetővé teszi az Azure Storage-adatok használatát Windows, macOS és Linux rendszeren. Ez a témakör leírja, hogyan töltheti fel és töltheti le az Azure Blob Storageról származó adatok feltöltését és letöltését. Az eszköz letölthető [Microsoft Azure Storage Explorerról](https://storageexplorer.com/).
 
 [!INCLUDE [blob-storage-tool-selector](../../../includes/machine-learning-blob-storage-tool-selector.md)]
 
@@ -27,7 +27,7 @@ A Azure Storage Explorer a Microsoft ingyenes eszköze, amely lehetővé teszi a
 > Ha olyan virtuális gépet használ, amely az Azure-beli [adatelemzési virtuális gépek](../data-science-virtual-machine/overview.md)által biztosított parancsfájlokkal lett beállítva, akkor Azure Storage Explorer már telepítve van a virtuális gépen.
 > 
 > [!NOTE]
-> Az Azure Blob Storage teljes körű bevezetéséhez tekintse meg az [Azure Blob alapjai](../../storage/blobs/storage-quickstart-blobs-dotnet.md) és az [Azure Blob Service](/rest/api/storageservices/Blob-Service-Concepts)című témakört.   
+> Az Azure Blob Storage teljes bevezetéséhez tekintse meg az [Azure Blob alapjai](../../storage/blobs/storage-quickstart-blobs-dotnet.md) és az [Azure Blob Service](/rest/api/storageservices/Blob-Service-Concepts)témakört.   
 > 
 > 
 

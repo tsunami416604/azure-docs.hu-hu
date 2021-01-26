@@ -4,12 +4,12 @@ description: Válaszok az Azure-beli virtuális gépeken található SQL Server 
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 56dcf29a5c703a72fd137a5f1bf129f568a03b4b
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: ca785e217da4355a44ffbb26b813d55d942c5c14
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735809"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787620"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Gyakori kérdések az Azure-beli virtuális gépek biztonsági mentését futtató SQL Server-adatbázisokról
 
@@ -101,7 +101,10 @@ Kiválaszthatja az adatbázist, amely már átnevezve van és konfigurálhatja a
 Előfordulhat, hogy nem jelenik meg azonnal a védett elemek alatt egy olyan adatbázis, amelyet hozzáad egy, az egy adott, az adott egy adott [példányhoz](backup-sql-server-database-azure-vms.md#enable-auto-protection) . Ennek az az oka, hogy a felderítés általában 8 óránként fut. Az új adatbázisokat azonban azonnal felderítheti és védetté teheti, ha manuálisan futtat egy felderítést, **Ha kiválasztja az** alábbi ábrán látható módon:
 
   ![Újonnan hozzáadott adatbázis manuális felderítése](./media/backup-azure-sql-database/view-newly-added-database.png)
-  
+
+## <a name="can-i-protect-databases-on-virtual-machines-that-have-azure-disk-encryption-ade-enabled"></a>Engedélyezhető az adatbázisok védelmére olyan virtuális gépeken, amelyeken engedélyezve van a Azure Disk Encryption (ADE)?
+Igen, az adatbázisokat olyan virtuális gépeken lehet védelemmel ellátni, amelyeken engedélyezve van Azure Disk Encryption (ADE).
+
 ## <a name="can-i-protect-databases-that-have-tde-transparent-data-encryption-turned-on-and-will-the-database-stay-encrypted-through-the-entire-backup-process"></a>Megadhatok olyan adatbázisokat, amelyeken be van kapcsolva a TDE (transzparens adattitkosítás), és az adatbázis a teljes biztonsági mentési folyamaton keresztül titkosítva marad?
 
 Igen, Azure Backup támogatja SQL Server adatbázisok vagy kiszolgálók biztonsági mentését, ha a TDE engedélyezve van. A Backup támogatja a [TDE](/sql/relational-databases/security/encryption/transparent-data-encryption) az Azure által kezelt kulcsokkal, illetve az ügyfél által felügyelt kulcsokkal (BYOK).  A biztonsági mentés nem végez SQL-titkosítást a biztonsági mentési folyamat részeként, így az adatbázis titkosítva marad a biztonsági mentés során.

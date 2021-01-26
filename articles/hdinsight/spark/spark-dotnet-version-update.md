@@ -6,12 +6,12 @@ ms.author: nidutta
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/05/2021
-ms.openlocfilehash: 4b95e4f164eb2c1d0a881cf9ab14696c3cbed4a7
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: a1602f29a6d0066ec3c99e990532411621652c47
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98122445"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788129"
 ---
 # <a name="updating-net-for-apache-spark-to-version-v10--in-hdinsight"></a>A .NET Apache Spark frissítése a 1.0-s verzióra a HDInsight-ben
 
@@ -42,9 +42,9 @@ Ha nem szeretné módosítani a .NET aktuális verzióját az alkalmazásban Apa
 
 2. Töltse le a [install-Worker.sh](https://github.com/dotnet/spark/blob/master/deployment/install-worker.sh) parancsfájlt az 1. lépésben letöltött feldolgozó bináris fájlok telepítéséhez a HDI-fürt összes munkavégző csomópontjára.  
 
-3. Töltse fel a fent említett fájlokat azon az Azure Storage-fiókba, amelyhez a fürt hozzáfér. További részletekért tekintse meg [a .net for Apache Spark HDI üzembe helyezési cikkét](https://docs.microsoft.com/dotnet/spark/tutorials/hdinsight-deployment#upload-files-to-azure) .
+3. Töltse fel a fent említett fájlokat azon az Azure Storage-fiókba, amelyhez a fürt hozzáfér. További részletekért tekintse meg [a .net for Apache Spark HDI üzembe helyezési cikkét](/dotnet/spark/tutorials/hdinsight-deployment#upload-files-to-azure) .
 
-4. Futtassa a `install-worker.sh` parancsfájlt a fürt összes munkavégző csomópontján parancsfájl-műveletek használatával. További információért tekintse meg [a .net for Apache Spark HDI üzembe helyezési cikkét](https://docs.microsoft.com/dotnet/spark/tutorials/hdinsight-deployment#run-the-hdinsight-script-action) .
+4. Futtassa a `install-worker.sh` parancsfájlt a fürt összes munkavégző csomópontján parancsfájl-műveletek használatával. További információért tekintse meg [a .net for Apache Spark HDI üzembe helyezési cikkét](/dotnet/spark/tutorials/hdinsight-deployment#run-the-hdinsight-script-action) .
 
 ### <a name="update-your-application-to-use-specific-version"></a>Az alkalmazás frissítése adott verzió használatára
 
@@ -56,6 +56,6 @@ A .NET for Apache Spark alkalmazást egy adott verzió használatára frissíthe
 
 A meglévő HDI-fürtök továbbra is ugyanazzal a korábbi verzióval rendelkeznek a .NET-hez Apache Spark és a meglévő alkalmazás (a Spark .NET korábbi verziója) nem lesz hatással.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[A .NET telepítése Apache Spark alkalmazáshoz a HDInsight-on](https://docs.microsoft.com/dotnet/spark/tutorials/hdinsight-deployment)
+[A .NET telepítése Apache Spark alkalmazáshoz a HDInsight-on](/dotnet/spark/tutorials/hdinsight-deployment)

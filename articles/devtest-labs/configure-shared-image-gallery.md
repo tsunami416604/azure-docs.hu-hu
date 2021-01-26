@@ -3,27 +3,27 @@ title: Megosztott képgyűjtemény konfigurálása a Azure DevTest Labsban | Mic
 description: Megtudhatja, hogyan konfigurálhat egy megosztott képtárat Azure DevTest Labsban, amely lehetővé teszi, hogy a felhasználók a laboratóriumi erőforrások létrehozásakor hozzáférjenek a lemezképekhez egy megosztott helyről.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 96563b1dcfac171af38b229bb81d12b3afda2e2f
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: febcff640efc29eb4916250366641635f9d8721e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327977"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788421"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Megosztott rendszerkép-katalógus konfigurálása az Azure DevTest Labsben
-A DevTest Labs mostantól támogatja a [megosztott rendszerkép](../virtual-machines/windows/shared-image-galleries.md) -katalógus szolgáltatást. Lehetővé teszi, hogy a labor-felhasználók a laboratóriumi erőforrások létrehozásakor hozzáférjenek a lemezképekhez egy megosztott helyről. Emellett az egyéni felügyelt virtuálisgép-rendszerképekhez is felépítheti a struktúrát és a szervezetet. A megosztott rendszerkép-katalógus funkció a következőket támogatja:
+A DevTest Labs mostantól támogatja a [megosztott rendszerkép](../virtual-machines/shared-image-galleries.md) -katalógus szolgáltatást. Lehetővé teszi, hogy a labor-felhasználók a laboratóriumi erőforrások létrehozásakor hozzáférjenek a lemezképekhez egy megosztott helyről. Emellett az egyéni felügyelt virtuálisgép-rendszerképekhez is felépítheti a struktúrát és a szervezetet. A megosztott rendszerkép-katalógus funkció a következőket támogatja:
 
 - Lemezképek felügyelt globális replikálása
 - Lemezképek verziószámozása és csoportosítása a könnyebb felügyelet érdekében
 - A rendszerképeket a rendelkezésre állási zónákat támogató régiókban a zónák redundáns tárolási (ZRS) fiókjaival is elérhetővé teheti. A ZRS nagyobb rugalmasságot biztosít a zónabeli hibákkal szemben.
 - Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával megoszthatja az előfizetéseket és még a bérlők között is.
 
-További információ: megosztott képkatalógus [dokumentációja](../virtual-machines/windows/shared-image-galleries.md). 
+További információ: megosztott képkatalógus [dokumentációja](../virtual-machines/shared-image-galleries.md). 
  
 Ha nagy számú felügyelt lemezképet kell fenntartania, és a vállalaton belül elérhetővé szeretné tenni őket, a megosztott képtárat tárházként használhatja, amely megkönnyíti a képek frissítését és megosztását. A labor tulajdonosaként egy meglévő megosztott képtárat is csatolhat a laborhoz. A katalógus csatolása után a labor felhasználói a legújabb rendszerképekből hozhatnak létre gépeket. Ennek a funkciónak a legfőbb előnye, hogy a DevTest Labs mostantól kihasználhatja a képek megosztásának előnyeit a laborokban, az előfizetésekben és az egyes régiókban is. 
 
 > [!NOTE]
-> A megosztott képkatalógus szolgáltatással kapcsolatos költségek megismeréséhez tekintse meg a [megosztott képgyűjtemény számlázása](../virtual-machines/windows/shared-image-galleries.md#billing)című témakört.
+> A megosztott képkatalógus szolgáltatással kapcsolatos költségek megismeréséhez tekintse meg a [megosztott képgyűjtemény számlázása](../virtual-machines/shared-image-galleries.md#billing)című témakört.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 - Egyszerre csak egy megosztott képtárat lehet csatlakoztatni a laborhoz. Ha másik gyűjteményt szeretne csatolni, le kell választania a meglévőt, és csatolnia kell egy másikat. 
@@ -45,7 +45,7 @@ Ha nagy számú felügyelt lemezképet kell fenntartania, és a vállalaton bel�
     ![Csatolás](./media/configure-shared-image-gallery/attach-options.png)
 1. A képkatalógus csatolása után válassza ki azt a csatolt katalógushoz való ugráshoz. Konfigurálja a katalógust úgy, hogy **engedélyezze vagy tiltsa le** a virtuális gépek létrehozásához szükséges megosztott lemezképeket. A konfiguráláshoz válasszon ki egy képtárat a listából. 
 
-    Alapértelmezés szerint a **virtuális gépek alapértékeiként használandó összes lemezkép** **Igen**értékre van állítva. Ez azt jelenti, hogy a csatlakoztatott megosztott lemezképek katalógusában elérhető összes lemezkép elérhetővé válik egy tesztkörnyezet-felhasználó számára új tesztkörnyezet létrehozásakor. Ha bizonyos lemezképekhez való hozzáférést korlátozni kell, módosítsa a **nem**értékre a **virtuális gép alapjaként használni** kívánt rendszerképeket, majd válassza ki azokat a lemezképeket, amelyeket engedélyezni szeretne a virtuális gépek létrehozásakor, majd kattintson a **Save (Mentés** ) gombra.
+    Alapértelmezés szerint a **virtuális gépek alapértékeiként használandó összes lemezkép** **Igen** értékre van állítva. Ez azt jelenti, hogy a csatlakoztatott megosztott lemezképek katalógusában elérhető összes lemezkép elérhetővé válik egy tesztkörnyezet-felhasználó számára új tesztkörnyezet létrehozásakor. Ha bizonyos lemezképekhez való hozzáférést korlátozni kell, módosítsa a **nem** értékre a **virtuális gép alapjaként használni** kívánt rendszerképeket, majd válassza ki azokat a lemezképeket, amelyeket engedélyezni szeretne a virtuális gépek létrehozásakor, majd kattintson a **Save (Mentés** ) gombra.
 
     :::image type="content" source="./media/configure-shared-image-gallery/enable-disable.png" alt-text="Képek engedélyezése vagy letiltása":::
 

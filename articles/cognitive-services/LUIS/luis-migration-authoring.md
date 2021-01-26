@@ -11,12 +11,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 12/14/2020
-ms.openlocfilehash: 086bc17938064571e8759ecda633fb5f87d1060f
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 3ff48ff5a3f46d8ec0fbf81b4cd20d20c217344b
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616813"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787637"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrálás Azure Resource authoring-kulcsba
 
@@ -81,7 +81,7 @@ Az áttelepítést a [Luis portálról](https://www.luis.ai)kell elvégezni. Ha 
    > ![Exportálja alkalmazásait.](./media/migrate-authoring-key/migration-export-apps.png)
 
 
-4. A régiók áttelepítésének ablakában a rendszer arra kéri, hogy telepítse át az alkalmazásokat egy olyan Azure-erőforrásba, amely ugyanabban a régióban lett létrehozva. LUIS három szerzői régiót [és portált](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-authoring-regions)tartalmaz. Az ablak megjeleníti azokat a régiókat, amelyeken a tulajdonában lévő alkalmazásokat létrehozták. A megjelenített áttelepítési régiók a használt regionális portáltól és a létrehozott alkalmazástól függően eltérőek lehetnek. 
+4. A régiók áttelepítésének ablakában a rendszer arra kéri, hogy telepítse át az alkalmazásokat egy olyan Azure-erőforrásba, amely ugyanabban a régióban lett létrehozva. LUIS három szerzői régiót [és portált](./luis-reference-regions.md#luis-authoring-regions)tartalmaz. Az ablak megjeleníti azokat a régiókat, amelyeken a tulajdonában lévő alkalmazásokat létrehozták. A megjelenített áttelepítési régiók a használt regionális portáltól és a létrehozott alkalmazástól függően eltérőek lehetnek. 
 
    > [!div class="mx-imgBorder"]
    > ![Többrégiós áttelepítés.](./media/migrate-authoring-key/migration-regional-flow.png)

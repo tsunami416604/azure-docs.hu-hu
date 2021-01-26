@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/1/2019
 ms.author: motanv
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 17f0af8c041042ddceccc1f8701e44ab8522840f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13e22633008a4a5df25d84920386a22696648c9a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022122"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789313"
 ---
 # <a name="testability-scenarios"></a>Tesztelési forgatókönyvek
 A nagyméretű elosztott rendszerek, például a felhőalapú infrastruktúrák eleve megbízhatatlanok. Az Azure Service Fabric lehetővé teszi a fejlesztők számára, hogy a megbízható infrastruktúrák alapján futtassák a szolgáltatásokat. A magas színvonalú szolgáltatások írásához a fejlesztőknek képesnek kell lenniük az ilyen megbízhatatlan infrastruktúra kiváltására a szolgáltatásaik stabilitásának teszteléséhez.
@@ -125,7 +125,7 @@ class Test
 
 PowerShell
 
-A Service Fabric PowerShell-modul két módszert tartalmaz a Chaos-forgatókönyvek megkezdésére. `Invoke-ServiceFabricChaosTestScenario` ügyfél-alapú, és ha az ügyfélszámítógép leállítása a teszten keresztül történik, további hibák nem lesznek bevezetve. Azt is megteheti, hogy a teszt futtatása a gép leállításakor is megmarad. `Start-ServiceFabricChaos` egy FaultAnalysisService nevű állapot-nyilvántartó és megbízható rendszerszolgáltatást használ, amely biztosítja, hogy a hibák addig maradnak érvényben, amíg a TimeToRun be nem fejeződik. `Stop-ServiceFabricChaos` felhasználható a forgatókönyv manuális leállítására és `Get-ServiceFabricChaosReport` egy jelentés beszerzésére is. További információkért tekintse meg az [Azure Service Fabric PowerShell-referenciát](/powershell/module/servicefabric/?view=azureservicefabricps) , és [a Service Fabric-fürtökben lévő szabályozott káoszt](service-fabric-controlled-chaos.md).
+A Service Fabric PowerShell-modul két módszert tartalmaz a Chaos-forgatókönyvek megkezdésére. `Invoke-ServiceFabricChaosTestScenario` ügyfél-alapú, és ha az ügyfélszámítógép leállítása a teszten keresztül történik, további hibák nem lesznek bevezetve. Azt is megteheti, hogy a teszt futtatása a gép leállításakor is megmarad. `Start-ServiceFabricChaos` egy FaultAnalysisService nevű állapot-nyilvántartó és megbízható rendszerszolgáltatást használ, amely biztosítja, hogy a hibák addig maradnak érvényben, amíg a TimeToRun be nem fejeződik. `Stop-ServiceFabricChaos` felhasználható a forgatókönyv manuális leállítására és `Get-ServiceFabricChaosReport` egy jelentés beszerzésére is. További információkért tekintse meg az [Azure Service Fabric PowerShell-referenciát](/powershell/module/servicefabric/) , és [a Service Fabric-fürtökben lévő szabályozott káoszt](service-fabric-controlled-chaos.md).
 
 ```powershell
 $connection = "localhost:19000"

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.service: firewall-manager
 ms.date: 10/22/2020
 ms.author: victorh
-ms.openlocfilehash: e2bcdf947db60fb50b44abba9d6a224768840b28
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 093b962bb9f42b660fb8cc5c0584ec67ebc87e48
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656139"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789162"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-powershell"></a>Oktatóanyag: virtuális központ biztonságossá tétele Azure PowerShell használatával
 
@@ -265,7 +265,7 @@ TimeGenerated            Protocol    SourceIP       SourcePort TargetIP      Tar
 2020-10-04T20:52:52.356Z TCP         10.1.1.4       53748      10.1.2.4      22         Allow   N/A            AZFW1
 ```
 
-Ha szeretné megtekinteni az alkalmazás-szabályok naplóit (az engedélyezett és a megtagadott HTTP-kapcsolatok leírását), vagy a naplók megjelenítésének módját, más KQL-lekérdezésekkel is próbálkozhat. A [Azure Firewall Azure monitor naplófájljaiban](../firewall/log-analytics-samples.md)talál néhány példát.
+Ha szeretné megtekinteni az alkalmazás-szabályok naplóit (az engedélyezett és a megtagadott HTTP-kapcsolatok leírását), vagy a naplók megjelenítésének módját, más KQL-lekérdezésekkel is próbálkozhat. A [Azure Firewall Azure monitor naplófájljaiban](../firewall/firewall-workbook.md)talál néhány példát.
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
@@ -277,7 +277,7 @@ A tesztkörnyezet törléséhez távolítsa el az erőforráscsoportot az össze
 Remove-AzResourceGroup -Name $RG
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [További információ a megbízható biztonsági partnerekről](trusted-security-partners.md)

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 12/29/2020
-ms.openlocfilehash: 0834b8f00e4c414b3a36314b80f6c99fb8f2aea2
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: b297330f3562babf9e83d36934827f7b92d5ea35
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955212"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787012"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Batch-tesztelés példaként megadott hosszúságú kimondott szöveg
 
@@ -99,7 +99,7 @@ A JSON-példa tartalmaz egy címkével ellátott entitást, amely bemutatja, hog
 
 A Batch-tesztek eredményeinek áttekintéséhez válassza az **eredmények megtekintése** lehetőséget. A teszt eredményei grafikusan mutatják be, hogy a teszt hosszúságú kimondott szöveg hogyan lettek előre jelezve az aktív verziónál.
 
-A Batch-diagram az eredmények négy negyedét jeleníti meg. A diagram jobb oldalán egy szűrő látható. A szűrő leképezéseket és entitásokat tartalmaz. Amikor kijelöl egy [szakaszt](luis-concept-batch-test.md#batch-test-results) a diagramon, vagy egy pontot a diagramon belül, a társított kimaradás (ek) a diagram alatt látható.
+A Batch-diagram az eredmények négy negyedét jeleníti meg. A diagram jobb oldalán egy szűrő látható. A szűrő leképezéseket és entitásokat tartalmaz. Amikor kijelöl egy [szakaszt](#review-batch-results-for-intents) a diagramon, vagy egy pontot a diagramon belül, a társított kimaradás (ek) a diagram alatt látható.
 
 Amikor a diagram fölé viszi a kurzort, az egér kereke megnövelheti vagy csökkentheti a diagram megjelenítését. Ez akkor hasznos, ha a diagramon több pont is van, és szorosan össze van kapcsolva.
 
@@ -166,7 +166,7 @@ A diagram két része zöld színnel egyezik a várt előrejelzéssel.
 
 ## <a name="batch-testing-using-the-rest-api"></a>A Batch tesztelése a REST API használatával 
 
-A LUIS lehetővé teszi a kötegelt tesztelést a LUIS portál és a REST API használatával. A REST API végpontjai alább láthatók. További információ a Batch-tesztelésről a LUIS-portál használatával [: oktatóanyag: batch test adatkészletek](luis-tutorial-batch-testing.md). Használja az alábbi teljes URL-címeket, és cserélje le a helyőrző értékeket a saját LUIS előrejelzési kulcsára és a végpontra. 
+A LUIS lehetővé teszi a kötegelt tesztelést a LUIS portál és a REST API használatával. A REST API végpontjai alább láthatók. További információ a Batch-tesztelésről a LUIS-portál használatával [: oktatóanyag: batch test adatkészletek](). Használja az alábbi teljes URL-címeket, és cserélje le a helyőrző értékeket a saját LUIS előrejelzési kulcsára és a végpontra. 
 
 Ne feledje, hogy adja hozzá a LUIS-kulcsot a `Ocp-Apim-Subscription-Key` fejléchez, és állítsa a következőre: `Content-Type` `application/json` .
 
@@ -265,5 +265,3 @@ Ha a tesztelés azt jelzi, hogy a LUIS-alkalmazás nem ismeri fel a megfelelő s
 
 * [Címke javasolt hosszúságú kimondott szöveg a LUIS-vel](luis-how-to-review-endpoint-utterances.md)
 * [Szolgáltatások használata a LUIS-alkalmazás teljesítményének növeléséhez](luis-how-to-add-features.md)
-* [A Batch tesztelésének megismerése az Oktatóanyaggal](luis-tutorial-batch-testing.md)
-* A [Batch tesztelési koncepcióinak megismerése](luis-concept-batch-test.md).

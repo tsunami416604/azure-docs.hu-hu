@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.openlocfilehash: ef63bf68fec592b768986a1329663508443c514b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b33f765e936d7c0db301a5b2fcf38ccaf137f771
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535848"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787553"
 ---
 # <a name="testing-example-utterances-in-luis"></a>Tesztelési példa a LUIS hosszúságú kimondott szöveg
 
@@ -33,7 +33,7 @@ Az előrejelzési [pontszámok](luis-concept-prediction-score.md) részletes ism
 Az interaktív tesztelés a LUIS-portál **tesztelési** paneljén végezhető el. Megadhat egy teljes értéket, amelyből megtudhatja, hogyan azonosíthatók és hogyan lesznek azonosítva a szándékok és az entitások. Ha a LUIS nem Jósolja meg a szándékokat és az entitásokat a tesztelési panelen való Kimondás során, a rendszer új kifejezésként másolja azt a **leképezési** oldalra. Ezután címkézze fel az entitások részeit, és végezze el a LUIS betanítását. 
 
 ## <a name="batch-testing"></a>Kötegelt tesztelés
-Ha egyszerre több Kimondás van tesztelve, tekintse meg a [kötegelt tesztelést](luis-concept-batch-test.md) .
+Ha egyszerre több Kimondás van tesztelve, tekintse meg a [kötegelt tesztelést](./luis-how-to-batch-test.md) .
 
 ## <a name="endpoint-testing"></a>Végpont tesztelése
 A [végpontot](luis-glossary.md#endpoint) az alkalmazás legfeljebb két verzióját használva tesztelheti. Ha az alkalmazás fő vagy élő verzióját **éles** végpontként állítja be, adjon hozzá egy második verziót az **átmeneti** végponthoz. Ez a megközelítés három változatot biztosít: a jelenlegi modellt a [Luis](luis-reference-regions.md) webhely teszt paneljén, valamint a két különböző végponton található két verziót. 
@@ -54,6 +54,6 @@ A modell módosítása után ne felejtse el [betanítani](luis-how-to-train.md) 
 ## <a name="best-practices"></a>Ajánlott eljárások
 Ismerje meg az [ajánlott eljárásokat](luis-concept-best-practices.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a hosszúságú kimondott szöveg [teszteléséről](luis-interactive-test.md) .

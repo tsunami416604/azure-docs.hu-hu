@@ -9,12 +9,12 @@ ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 85665dbda2ed11ffa04b71e4317f2b34b83d317f
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: cefb0105a0a95d26aadea2a98fc4d3cec68ccc03
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349367"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787351"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Rövid útmutató: Munkafolyamat futtatása a Microsoft Genomics szolgáltatással
 
@@ -144,4 +144,4 @@ A munkafolyamat befejezése után megtekintheti az Azure Storage-fiókban lévő
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben a minta bemeneti adatokat feltöltötte az Azure Storage-ba, és elküldte a munkafolyamatot a Microsoft Genomics szolgáltatásnak a `msgen` Python-ügyfélen keresztül. Ha többet szeretne megtudni a Microsoft Genomics szolgáltatással használható bemeneti fájltípusokkal kapcsolatban, tekintse meg a következő lapokat: [párosított FASTQ](quickstart-input-pair-FASTQ.md)  |  [Bam](quickstart-input-BAM.md)  |  [több FASTQ vagy Bam](quickstart-input-multiple.md). Ezt az oktatóanyagot a [Azure Notebooks példán](https://aka.ms/genomicsnotebook) keresztül is felfedezheti, ha letölti a "genomikai oktatóanyag. ipynb" fájlt, és egy jegyzetfüzet-olvasóval, például a [Jupyter](../notebooks/tutorial-create-run-jupyter-notebook.md) -vel nyitja meg a fájlt, és futtatja azt.
+Ebben a cikkben a minta bemeneti adatokat feltöltötte az Azure Storage-ba, és elküldte a munkafolyamatot a Microsoft Genomics szolgáltatásnak a `msgen` Python-ügyfélen keresztül. Ha többet szeretne megtudni a Microsoft Genomics szolgáltatással használható bemeneti fájltípusokkal kapcsolatban, tekintse meg a következő lapokat: [párosított FASTQ](quickstart-input-pair-FASTQ.md)  |  [Bam](quickstart-input-BAM.md)  |  [több FASTQ vagy Bam](quickstart-input-multiple.md). Ezt az oktatóanyagot a [Azure Notebooks példán](https://aka.ms/genomicsnotebook) keresztül is felfedezheti, ha letölti a "genomikai oktatóanyag. ipynb" fájlt, és egy jegyzetfüzet-olvasóval, például a [Jupyter](https://notebooks.azure.com) -vel nyitja meg a fájlt, és futtatja azt.

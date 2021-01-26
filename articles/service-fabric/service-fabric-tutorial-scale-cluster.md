@@ -4,18 +4,18 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan méretezhető egy Se
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 063c83818ec2e98491f9062e936b9a1e7b2c4356
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: cdc7ba8d6c83ae72ffb8f1afae3954b3a46dc6ec
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97702174"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788010"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Service Fabric-fürt skálázása az Azure-ban
 
 Ez az oktatóanyag egy sorozat harmadik része, amely bemutatja, hogyan méretezheti a meglévő fürtöt és a-t. Az oktatóanyag végére elsajátíthatja a fürtök skálázásának és a hátramaradt erőforrások eltávolításának módját.  Az Azure-ban futó fürtök méretezésével kapcsolatos további információkért olvassa el [Service Fabric fürtök méretezését](service-fabric-cluster-scaling.md)ismertető témakört.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Csomópontok hozzáadása és eltávolítása (vertikális felskálázás és méretezés a-ben)
@@ -809,7 +809,7 @@ Service Fabric-fürt létrehozása után vízszintesen méretezheti a fürtöt e
 > [!WARNING]
 > A csomópontok üzemi fürtből való eltávolításához a Remove-AzServiceFabricNodeType használata nem ajánlott, hogy gyakori módon lehessen használni. Ez egy veszélyes parancs, mivel törli a virtuálisgép-méretezési csoport erőforrását a csomópont típusa mögött. 
 
-A csomópont típusának eltávolításához futtassa a [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) parancsmagot.  A csomópont típusának ezüst vagy arany [tartóssági szintűnek][durability]  kell lennie, a parancsmag törli a csomópont-típushoz társított méretezési készletet, és eltarthat egy ideig.  Ezután futtassa a [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) parancsmagot az összes eltávolítani kívánt csomóponton, amely törli a csomópont állapotát, és eltávolítja a csomópontokat a fürtből. Ha vannak szolgáltatások a csomópontokon, akkor a szolgáltatások először egy másik csomópontra kerülnek. Ha a Fürtfelügyelő nem talál csomópontot a replika/szolgáltatás számára, a művelet késleltetve vagy Letiltva lesz.
+A csomópont típusának eltávolításához futtassa a [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) parancsmagot.  A csomópont típusának ezüst vagy arany [tartóssági szintűnek][durability]  kell lennie, a parancsmag törli a csomópont-típushoz társított méretezési készletet, és eltarthat egy ideig.  Ezután futtassa a [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate) parancsmagot az összes eltávolítani kívánt csomóponton, amely törli a csomópont állapotát, és eltávolítja a csomópontokat a fürtből. Ha vannak szolgáltatások a csomópontokon, akkor a szolgáltatások először egy másik csomópontra kerülnek. Ha a Fürtfelügyelő nem talál csomópontot a replika/szolgáltatás számára, a művelet késleltetve vagy Letiltva lesz.
 
 ```powershell
 $groupname = "sfclustertutorialgroup"

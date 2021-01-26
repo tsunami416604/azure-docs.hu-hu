@@ -1,6 +1,6 @@
 ---
-title: Mintaadatok az Azure Blob Storage-ban – csoportos adatelemzési folyamat
-description: Az Azure Blob Storage-ban tárolt mintavételi adatai programozott módon történő letöltésével, majd a Pythonban írt eljárások használatával történő mintavételezéssel.
+title: Mintaadatok az Azure Blob Storageban – csoportos adatelemzési folyamat
+description: Az Azure Blob Storage tárolt mintavételi adatai programozott módon történő letöltésével, majd a Pythonban írt eljárások használatával történő mintavételezéssel.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b190bf0c474640c07d84971069072d3af2faa66d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c5827a0e07e537b66684f852d8f3e1500cd9febb
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321900"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788841"
 ---
-# <a name="sample-data-in-azure-blob-storage"></a><a name="heading"></a>Adatmintavétel Azure blobtárolóban
+# <a name="sample-data-in-azure-blob-storage"></a><a name="heading"></a>Mintaadatok az Azure Blob Storage
 
-Ez a cikk az Azure Blob Storage-ban tárolt mintavételi adataira vonatkozik, ha programozott módon letölti, majd a Pythonban írt eljárásokkal mintavételezést végez.
+Ez a cikk az Azure Blob Storageban tárolt mintavételi adataira vonatkozik, és programozott módon letölti, majd a Pythonban írt eljárások használatával mintavételezést végez.
 
 **Miért érdemes felvenni az adatait?**
 Ha az elemezni kívánt adatkészlet nagy méretű, általában egy jó ötlet, hogy lerövidítse az adatokat, hogy csökkentse azt kisebb, de reprezentatív és felügyelhető méretre. A mintavétel megkönnyíti az adatmegismerést, a feltárást és a funkciók mérnöki felépítését. A Cortana Analytics-folyamat feladata az adatfeldolgozási függvények és a gépi tanulási modellek gyors prototípusának engedélyezése.
@@ -28,7 +28,7 @@ Ha az elemezni kívánt adatkészlet nagy méretű, általában egy jó ötlet, 
 Ez a mintavételi feladat a [csoportos adatelemzési folyamat (TDSP)](./index.yml)egyik lépése.
 
 ## <a name="download-and-down-sample-data"></a>Az adatminta letöltése és leállása
-1. Töltse le az Azure Blob Storage-ból származó adatait az alábbi Python-kód Blob service használatával: 
+1. Töltse le az Azure Blob Storageból származó adatait az alábbi Python-kód Blob service használatával: 
 
     ```python
     from azure.storage.blob import BlobService

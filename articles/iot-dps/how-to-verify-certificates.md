@@ -7,12 +7,12 @@ ms.date: 02/26/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 50e8dfd2998b50bfff7341e49ac4d0770c115166
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2020205357c68e007a1a375c4853e8c04afd2019
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530862"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789060"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok bizonyítása az eszköz kiépítési szolgáltatásával
 
@@ -40,7 +40,7 @@ Ha HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt szeretne regisztrálni a kiépít
 
 5. Kattintson az előző lépésben hozzáadott tanúsítványra.
 
-6. A **tanúsítvány részletei**területen kattintson az **ellenőrző kód előállítása**elemre.
+6. A **tanúsítvány részletei** területen kattintson az **ellenőrző kód előállítása** elemre.
 
 7. A kiépítési szolgáltatás létrehoz egy **ellenőrző kódot** , amelyet a tanúsítvány tulajdonjogának ellenőrzésére használhat. Másolja a kódot a vágólapra. 
 
@@ -58,18 +58,18 @@ A Microsoft olyan eszközöket és mintákat biztosít, amelyek segítségével 
 > [!IMPORTANT]
 > A korábban hivatkozott PowerShell-és bash-parancsfájlok Emellett lehetővé teszik a tanúsítványok hitelesítésére és az eszközök kiosztására szolgáló főtanúsítványok, köztes tanúsítványok és levél-tanúsítványok létrehozására is. Ezeket a tanúsítványokat csak fejlesztési célokra lehet használni. Nem használhatók éles környezetben. 
 
-A dokumentációban és az SDK-ban megadott PowerShell-és bash-parancsfájlok [OpenSSL](https://www.openssl.org/)-t használnak. Az OpenSSL vagy más, harmadik féltől származó eszközöket is használhat, hogy segítséget nyújtson a birtokukban tartásához. Az SDK-k használatával kapcsolatos további információkért lásd: [az SDK-k által biztosított eszközök használata](how-to-use-sdk-tools.md). 
+A dokumentációban és az SDK-ban megadott PowerShell-és bash-parancsfájlok [OpenSSL](https://www.openssl.org/)-t használnak. Az OpenSSL vagy más, harmadik féltől származó eszközöket is használhat, hogy segítséget nyújtson a birtokukban tartásához. Az SDK-k által biztosított szerszámozást használó példaért tekintse meg [az X. 509 tanúsítványlánc létrehozása](tutorial-custom-hsm-enrollment-group-x509.md#create-an-x509-certificate-chain)című témakört. 
 
 
 ## <a name="upload-the-signed-verification-certificate"></a>Az aláírt ellenőrző tanúsítvány feltöltése
 
 1. Töltse fel az eredményül kapott aláírást ellenőrző tanúsítványként a kiépítési szolgáltatásba a portálon. A **tanúsítvány részletei** a Azure Portalban az **ellenőrző tanúsítvány. PEM vagy. cer fájl** mező melletti _fájlkezelő_ ikon használatával töltse fel az aláírt ellenőrző tanúsítványt a rendszerből.
 
-2. Miután a tanúsítvány feltöltése sikeresen megtörtént, kattintson az **ellenőrzés**gombra. A tanúsítvány állapota a **tanúsítvány-kezelő** listájában **_ellenőrzött_** **állapotra** változik. Kattintson a **frissítés** gombra, ha az nem frissül automatikusan.
+2. Miután a tanúsítvány feltöltése sikeresen megtörtént, kattintson az **ellenőrzés** gombra. A tanúsítvány állapota a **tanúsítvány-kezelő** listájában **_ellenőrzött_** **állapotra** változik. Kattintson a **frissítés** gombra, ha az nem frissül automatikusan.
 
    ![Tanúsítvány-ellenőrzés feltöltése](./media/how-to-verify-certificates/upload-cert-verification.png)  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha szeretne többet megtudni arról, hogyan használható a portál egy regisztrációs csoport létrehozásához, tekintse meg [az eszközök regisztrálásának kezelése a Azure Portal](how-to-manage-enrollments.md)használatával című témakört.
 - Ha szeretné megtudni, hogyan használhatja a szolgáltatás SDK-kat egy regisztrációs csoport létrehozásához, tekintse meg az [eszközök regisztrálásának kezelése a Service SDK-val](how-to-manage-enrollments-sdks.md)című témakört.

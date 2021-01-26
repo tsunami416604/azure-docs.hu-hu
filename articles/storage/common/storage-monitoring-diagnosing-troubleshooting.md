@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 18d36e37554a5d2b37488b7a1525f8290dc03da0
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 50d78e83bbbeb4b0252c83f9f52e94599ea6946c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763268"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787960"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage felügyelete, diagnosztizálása és hibaelhárítása
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -474,14 +474,14 @@ Ha az ügyfélalkalmazás HTTP 403 (Tiltott) hibákat jelez, annak egyik valósz
 
 | Forrás | Részletesség | Részletesség | Ügyfélkérelem azonosítója | Művelet szövege |
 | --- | --- | --- | --- | --- |
-| Microsoft. Azure. Storage |Információ |3 |85d077ab-... |A művelet megkezdése az elsődleges hellyel (Location Mode) PrimaryOnly. |
-| Microsoft. Azure. Storage |Információ |3 |85d077ab-... |Szinkron kérelem indítása <https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Synchronous_and_Asynchronous_Requests#Synchronous_request> |
-| Microsoft. Azure. Storage |Információ |3 |85d077ab-... |Várakozás a válaszra. |
+| Microsoft. Azure. Storage |Tájékoztatás |3 |85d077ab-... |A művelet megkezdése az elsődleges hellyel (Location Mode) PrimaryOnly. |
+| Microsoft. Azure. Storage |Tájékoztatás |3 |85d077ab-... |Szinkron kérelem indítása <https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Synchronous_and_Asynchronous_Requests#Synchronous_request> |
+| Microsoft. Azure. Storage |Tájékoztatás |3 |85d077ab-... |Várakozás a válaszra. |
 | Microsoft. Azure. Storage |Figyelmeztetés |2 |85d077ab-... |Kivétel történt a válaszra való várakozás közben: a távoli kiszolgáló a következő hibát adta vissza: (403) tiltott. |
-| Microsoft. Azure. Storage |Információ |3 |85d077ab-... |Válasz érkezett. Állapotkód = 403, kérelem azonosítója = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d, tartalom-MD5 =, ETag =. |
+| Microsoft. Azure. Storage |Tájékoztatás |3 |85d077ab-... |Válasz érkezett. Állapotkód = 403, kérelem azonosítója = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d, tartalom-MD5 =, ETag =. |
 | Microsoft. Azure. Storage |Figyelmeztetés |2 |85d077ab-... |Kivétel történt a művelet során: a távoli kiszolgáló a következő hibát adta vissza: (403) tiltott.. |
-| Microsoft. Azure. Storage |Információ |3 |85d077ab-... |Annak ellenőrzése, hogy a műveletet újra kell-e próbálni. Újrapróbálkozás száma = 0, HTTP-állapotkód = 403, kivétel = a távoli kiszolgáló hibát adott vissza: (403) tiltott.. |
-| Microsoft. Azure. Storage |Információ |3 |85d077ab-... |A következő hely az elsődleges értékre van állítva, a hely mód alapján. |
+| Microsoft. Azure. Storage |Tájékoztatás |3 |85d077ab-... |Annak ellenőrzése, hogy a műveletet újra kell-e próbálni. Újrapróbálkozás száma = 0, HTTP-állapotkód = 403, kivétel = a távoli kiszolgáló hibát adott vissza: (403) tiltott.. |
+| Microsoft. Azure. Storage |Tájékoztatás |3 |85d077ab-... |A következő hely az elsődleges értékre van állítva, a hely mód alapján. |
 | Microsoft. Azure. Storage |Hiba |1 |85d077ab-... |Az újrapróbálkozási szabályzat nem engedélyezte az újrapróbálkozást. A távoli kiszolgáló meghibásodása hibát adott vissza: (403) tiltott. |
 
 Ebben az esetben meg kell vizsgálnia, hogy miért jár le az SAS-token, mielőtt az ügyfél elküldi a jogkivonatot a kiszolgálónak:
@@ -566,7 +566,7 @@ Ha az ügyfélalkalmazás olyan SAS-kulcsot próbál használni, amely nem tarta
 
 A következő táblázat a tárolási naplózási naplófájlban található példa kiszolgálóoldali naplófájlt jeleníti meg:
 
-| Név | Érték |
+| Name | Érték |
 | --- | --- |
 | Kérelem kezdési ideje | 2014-05-30T06:17:48.4473697 Z |
 | Művelettípus     | GetBlobProperties            |
@@ -767,7 +767,7 @@ Azt is megteheti, hogy megtekinti a TCP-adatforrást, mivel az alkalmazási rét
 >
 
 ### <a name="appendix-4-using-excel-to-view-metrics-and-log-data"></a><a name="appendix-4"></a>4. függelék: az Excel használata a metrikák és a naplózási adatok megtekintéséhez
-Számos eszköz lehetővé teszi, hogy egy tagolt formátumban töltse le a tárolási metrikai adatokat az Azure Table Storage-ból, így a megtekintés és elemzés érdekében egyszerűen betöltheti az adatokat az Excelbe. Az Azure Blob Storage-ból származó tárolási naplózási adatok már olyan tagolt formátumban vannak, amelyet az Excelbe betölthet. Azonban a megfelelő oszlopfejlécek hozzáadására van szükség az információk alapján [Storage Analytics a naplózási formátumot](/rest/api/storageservices/Storage-Analytics-Log-Format) , és Storage Analytics a [metrikák tábla sémáját](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema).
+Számos eszköz lehetővé teszi, hogy egy tagolt formátumban töltse le a tárolási metrikai adatokat az Azure Table Storage-ból, így a megtekintés és elemzés érdekében egyszerűen betöltheti az adatokat az Excelbe. Az Azure Blob Storage Storage-naplózási adatai már olyan tagolt formátumban vannak, amelyet betölthet az Excelbe. Azonban a megfelelő oszlopfejlécek hozzáadására van szükség az információk alapján [Storage Analytics a naplózási formátumot](/rest/api/storageservices/Storage-Analytics-Log-Format) , és Storage Analytics a [metrikák tábla sémáját](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema).
 
 A tároló naplózási adatainak importálása az Excel programba a blob Storage-ból való letöltés után:
 

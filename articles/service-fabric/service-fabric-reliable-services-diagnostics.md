@@ -3,15 +3,15 @@ title: Azure Service Fabric állapot-nyilvántartó Reliable Services diagnoszti
 description: Az Azure állapot-nyilvántartó Reliable Services diagnosztikai funkciója Service Fabric
 ms.topic: conceptual
 ms.date: 8/24/2018
-ms.openlocfilehash: 5a3831dd4f8d5402980fac3daf8c35d9884c852d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 774a771d0c9701076a5d6c070963bf6224a571dd
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840761"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789330"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>A Stateful Reliable Services diagnosztikai funkciói
-Az Azure Service Fabric állapot-nyilvántartó Reliable Services StatefulServiceBase osztály a szolgáltatás hibakereséséhez használható [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) -eseményeket bocsát ki, betekintést nyújt a futtatókörnyezet működéséhez, és segít a hibaelhárításban.
+Az Azure Service Fabric állapot-nyilvántartó Reliable Services StatefulServiceBase osztály a szolgáltatás hibakereséséhez használható [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource) -eseményeket bocsát ki, betekintést nyújt a futtatókörnyezet működéséhez, és segít a hibaelhárításban.
 
 ## <a name="eventsource-events"></a>EventSource események
 Az állapot-nyilvántartó Reliable Services StatefulServiceBase osztály EventSource neve "Microsoft-ServiceFabric-Services". Az eseményforrás eseményei a [diagnosztikai események](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio) ablakban jelennek meg, amikor a szolgáltatás [hibakeresése a Visual Studióban](service-fabric-debugging-your-application.md)folyamatban van.
@@ -19,7 +19,7 @@ Az állapot-nyilvántartó Reliable Services StatefulServiceBase osztály EventS
 Példák olyan eszközökre és technológiákra, amelyek a EventSource-események összegyűjtését és/vagy megtekintését segítik a [perfview eszköz](https://www.microsoft.com/download/details.aspx?id=28567), a [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md)és a [Microsoft TraceEvent könyvtárában](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
 
 ## <a name="events"></a>Események
-| Esemény neve | Eseményazonosító | Szint | Esemény leírása |
+| Esemény neve | Eseményazonosító | Level | Esemény leírása |
 | --- | --- | --- | --- |
 | StatefulRunAsyncInvocation |1 |Tájékoztató |A szolgáltatás RunAsync feladat elindításakor lett kibocsátva |
 | StatefulRunAsyncCancellation |2 |Tájékoztató |A szolgáltatás RunAsync feladatának megszakításakor lett kibocsátva |
@@ -58,7 +58,7 @@ A kategória esetében `Service Fabric Transactional Replicator` a számláló p
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId`
 
-A *ServiceFabricPartitionId* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció azonosítója egy GUID, és a karakterlánc-ábrázolás [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) a "D" formátum megadásával jön létre.
+A *ServiceFabricPartitionId* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció azonosítója egy GUID, és a karakterlánc-ábrázolás [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) a "D" formátum megadásával jön létre.
 
 A *ServiceFabricReplicaId* egy megbízható szolgáltatás adott replikájának azonosítója. A rendszer a teljesítményszámláló-példány neve tartalmazza a replika AZONOSÍTÓját, hogy biztosítsa annak egyediségét, és elkerülje az azonos partíció által generált teljesítményszámláló-példányokkal való ütközést. A replikákkal és a megbízható szolgáltatásokban lévő szerepével kapcsolatos további részletek [itt](service-fabric-concepts-replica-lifecycle.md)találhatók.
 
@@ -73,7 +73,7 @@ A kategória esetében `Service Fabric TStore` a számláló példányainak neve
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId:StateProviderId_PerformanceCounterInstanceDifferentiator_StateProviderName`
 
-A *ServiceFabricPartitionId* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció azonosítója egy GUID, és a karakterlánc-ábrázolás [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) a "D" formátum megadásával jön létre.
+A *ServiceFabricPartitionId* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció azonosítója egy GUID, és a karakterlánc-ábrázolás [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) a "D" formátum megadásával jön létre.
 
 A *ServiceFabricReplicaId* egy megbízható szolgáltatás adott replikájának azonosítója. A rendszer a teljesítményszámláló-példány neve tartalmazza a replika AZONOSÍTÓját, hogy biztosítsa annak egyediségét, és elkerülje az azonos partíció által generált teljesítményszámláló-példányokkal való ütközést. A replikákkal és a megbízható szolgáltatásokban lévő szerepével kapcsolatos további részletek [itt](service-fabric-concepts-replica-lifecycle.md)találhatók.
 
@@ -113,5 +113,5 @@ A Reliable Services futtatókörnyezet a következő eseményeket bocsátja ki a
 | Ellenőrzőpont-fájl írási sebessége (bájt/s) | A legutóbbi ellenőrzőpont-fájl másodpercenként írt bájtjainak száma.|
 | Lemez átviteli sebességének másolása (bájt/s) | Az elolvasott lemezes bájtok száma (az elsődleges replikán) vagy a másodpercenként írt (másodlagos replikán).|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [EventSource-szolgáltatók a Perfview eszköz-ben](/archive/blogs/vancem/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource)

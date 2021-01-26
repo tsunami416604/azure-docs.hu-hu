@@ -1,18 +1,18 @@
 ---
 title: Egyéni metrikák a Azure Monitorban (előzetes verzió)
 description: Ismerkedjen meg az egyéni metrikákkal a Azure Monitorban és azok modellezésében.
-author: ancav
+author: anirudhcavale
 ms.author: ancav
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 01/25/2021
 ms.subservice: metrics
-ms.openlocfilehash: 73c9b2bf8cf88ca5e8576c451c9d9ac5f0eae8a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce081896292ec92c41dabc735df828ed167d86e7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88639902"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788502"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Egyéni metrikák a Azure Monitorban (előzetes verzió)
 
@@ -69,13 +69,13 @@ Ez a tulajdonság azt az Azure-régiót rögzíti, amelybe a metrikákat kibocs�
 >
 >
 
-### <a name="timestamp"></a>Timestamp
+### <a name="timestamp"></a>Időbélyeg
 A Azure Monitor elküldett minden adatpontot időbélyeg-ként kell megjelölni. Ez az időbélyeg rögzíti azt a dátumot, amikor a metrika értékét méri vagy gyűjti. A Azure Monitor a metrikákkal rendelkező metrikus adatokat az elmúlt 20 percen belül, a későbbiekben pedig 5 percet fogad el. Az időbélyegnek ISO 8601 formátumúnak kell lennie.
 
 ### <a name="namespace"></a>Névtér
 A névterek segítségével kategorizálhatja vagy csoportosíthatja a hasonló metrikákat. A névterek segítségével elkülönítheti a metrikák csoportjai között, amelyek különböző adatokat gyűjthetnek vagy teljesítménymutatókat. Előfordulhat például, hogy rendelkezik egy **contosomemorymetrics** nevű névtérrel, amely nyomon követi az alkalmazás profilját használó memóriahasználat mérőszámait. Egy másik, **contosoapptransaction** nevű névtér nyomon követheti az alkalmazás felhasználói tranzakcióinak összes mérőszámát.
 
-### <a name="name"></a>Name (Név)
+### <a name="name"></a>Name
 A **név** a jelentett metrika neve. Általában a név elég leíró a mért értékek azonosításához. Egy példa egy metrika, amely az adott virtuális gépen használt memória bájtjainak számát méri. Lehet, hogy a metrika neve például a **használatban lévő memória bájtjai**.
 
 ### <a name="dimension-keys"></a>Dimenzió kulcsai
@@ -105,7 +105,6 @@ Ha például négy bejelentkezési tranzakciót adott meg az alkalmazásnak egy 
 |1. tranzakció|2. tranzakció|3. tranzakció|4. tranzakció|
 |---|---|---|---|
 |7 MS|4 MS|13 MS|16 MS|
-|
 
 Ezután az eredményül kapott metrikai kiadvány Azure Monitor a következő lesz:
 * Minimum: 4
@@ -122,7 +121,7 @@ Ha az alkalmazás nem tud helyileg előre összesíteni, és minden különáll�
 Ezzel a folyamattal több értéket is kibocsáthat ugyanahhoz a metrikai és dimenzió kombinációhoz egy adott percben. Azure Monitor ezután végrehajtja az adott percenként kiállított összes nyers értéket, és összesíti azokat.
 
 ### <a name="sample-custom-metric-publication"></a>Példa egyéni metrika közzétételére
-A következő példában létrehozunk egy, a virtuális gép metrikai névtérének **memóriájában** **használatos memória-bájtok** nevű egyéni metrikát. A metrika egyetlen, **folyamat**nevű dimenzióval rendelkezik. Az adott időbélyeg esetében két különböző folyamat metrikáit bocsátjuk ki:
+A következő példában létrehozunk egy, a virtuális gép metrikai névtérének **memóriájában** **használatos memória-bájtok** nevű egyéni metrikát. A metrika egyetlen, **folyamat** nevű dimenzióval rendelkezik. Az adott időbélyeg esetében két különböző folyamat metrikáit bocsátjuk ki:
 
 ```json
 {
@@ -134,7 +133,8 @@ A következő példában létrehozunk egy, a virtuális gép metrikai névtéré
         "metric": "Memory Bytes in Use",
         "namespace": "Memory Profile",
         "dimNames": [
-          "Process"        ],
+          "Process"
+        ],
         "series": [
           {
             "dimValues": [
@@ -174,44 +174,29 @@ A kibocsátása előtt nem kell előre definiálni egy egyéni metrikát Azure M
 Miután elküldte az egyéni metrikákat Azure Monitorre, böngészheti őket a Azure Portal, és a Azure Monitor REST API-kon keresztül kérdezheti le őket. Riasztásokat is létrehozhat rajtuk, hogy értesítést kapjon, ha bizonyos feltételek teljesülnek.
 
 > [!NOTE]
-> Az egyéni metrikák megtekintéséhez olvasó vagy közreműködői szerepkörnek kell lennie.
+> Az egyéni metrikák megtekintéséhez olvasó vagy közreműködői szerepkörnek kell lennie. Lásd: az [olvasó figyelése](../../role-based-access-control/built-in-roles.md#monitoring-reader). 
 
 ### <a name="browse-your-custom-metrics-via-the-azure-portal"></a>Egyéni metrikák böngészése az Azure Portal használatával
-1.    Nyissa meg az [Azure Portalt](https://portal.azure.com).
+1.    Nyissa meg az [Azure Portal](https://portal.azure.com).
 2.    Válassza a **figyelés** ablaktáblát.
 3.    Válassza a **Metrikák** lehetőséget.
 4.    Válassza ki azt az erőforrást, amelyről egyéni metrikákat adott ki.
 5.    Válassza ki az egyéni metrika metrikai névterét.
 6.    Válassza ki az egyéni metrikát.
 
+> [!NOTE]
+> A Azure Portal metrikáinak megtekintésével kapcsolatos további információkért tekintse meg a [Bevezetés az Azure Metrikaböngésző](./metrics-getting-started.md) használatába című témakört.
+
 ## <a name="supported-regions"></a>Támogatott régiók
-A nyilvános előzetes verzióban az egyéni metrikák közzétételének lehetősége csak az Azure-régiók egy részhalmazában érhető el. Ez a korlátozás azt jelenti, hogy a metrikák csak az egyik támogatott régió erőforrásai számára tehetők közzé. A következő táblázat felsorolja az egyéni metrikák támogatott Azure-régióinak készletét. Emellett felsorolja azokat a végpontokat is, amelyek az adott régiókban lévő erőforrások metrikáit teszik közzé:
+A nyilvános előzetes verzióban az egyéni metrikák közzétételének lehetősége csak az Azure-régiók egy részhalmazában érhető el. Ez a korlátozás azt jelenti, hogy a metrikák csak az egyik támogatott régió erőforrásai számára tehetők közzé. Az Azure-régiókkal kapcsolatos további információkért tekintse meg az [Azure földrajzi](https://azure.microsoft.com/global-infrastructure/geographies/) területeit. Az alábbi végpontokban használt Azure-régiókód csak a régió neve, ahol a szóköz el van távolítva. a következő táblázat felsorolja az egyéni metrikák támogatott Azure-régióinak készletét. Emellett felsorolja azokat a végpontokat is, amelyek az adott régiókban lévő erőforrások metrikáit teszik közzé:
 
 |Azure-régió |Regionális végpont előtagja|
 |---|---|
-| **Egyesült Államok és Kanada** | |
-|USA nyugati középső régiója | https: \/ /westcentralus.monitoring.Azure.com |
-|USA 2. nyugati régiója       | https: \/ /westus2.monitoring.Azure.com |
-|USA északi középső régiója | https: \/ /northcentralus.monitoring.Azure.com
-|USA déli középső régiója| https: \/ /southcentralus.monitoring.Azure.com |
-|USA középső régiója      | https: \/ /CentralUS.monitoring.Azure.com |
-|Közép-Kanada | https: \/ /canadacentral.monitoring.Azure.com |
-|USA keleti régiója| https: \/ /eastus.monitoring.Azure.com |
-|USA 2. keleti régiója | https: \/ /eastus2.monitoring.Azure.com |
-| **Európa** | |
-|Észak-Európa    | https: \/ /northeurope.monitoring.Azure.com |
-|Nyugat-Európa     | https: \/ /westeurope.monitoring.Azure.com |
-|Az Egyesült Királyság déli régiója | https: \/ /uksouth.monitoring.Azure.com
-|Közép-Franciaország | https: \/ /francecentral.monitoring.Azure.com |
-| **Afrika** | |
-|Dél-Afrika északi régiója | https: \/ /southafricanorth.monitoring.Azure.com |
-| **Ázsia** | |
-|Közép-India | https: \/ /centralindia.monitoring.Azure.com |
-|Kelet-Ausztrália | https: \/ /australiaeast.monitoring.Azure.com |
-|Kelet-Japán | https: \/ /japaneast.monitoring.Azure.com |
-|Délkelet-Ázsia  | https: \/ /southeastasia.monitoring.Azure.com |
-|Kelet-Ázsia | https: \/ /eastasia.monitoring.Azure.com |
-|Dél-Korea középső régiója   | https: \/ /koreacentral.monitoring.Azure.com |
+| Minden nyilvános Felhőbeli régió | https://<azure_region_code>. monitoring.azure.com |
+| **Azure Government** | |
+| USA-beli államigazgatás – Arizona | https: \/ /usgovarizona.monitoring.Azure.us |
+| **Kína** | |
+| Kelet-Kína 2 | https: \/ /chinaeast2.monitoring.Azure.cn |
 
 ## <a name="latency-and-storage-retention"></a>Késés és tárolás megőrzése
 

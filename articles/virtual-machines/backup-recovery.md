@@ -1,19 +1,19 @@
 ---
-title: A Linux rendszerű virtuális gépekre vonatkozó biztonsági mentési lehetőségek áttekintése
-description: A Linux Azure-beli virtuális gépekre vonatkozó biztonsági mentési lehetőségek áttekintése.
+title: A virtuális gépek áttekintő biztonsági mentési lehetőségei
+description: Az Azure-beli virtuális gépekre vonatkozó biztonsági mentési lehetőségek áttekintése.
 author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 8/03/2020
 ms.author: cynthn
-ms.openlocfilehash: c56adc852b504d3a0663a9607b3472cb3348e7a5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5a093de0a27c8379cb6eff9c2bc3867dfdc20db5
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972356"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787807"
 ---
-# <a name="backup-and-restore-options-for-linux-virtual-machines-in-azure"></a>A Linux rendszerű virtuális gépek biztonsági mentési és visszaállítási lehetőségei az Azure-ban
+# <a name="backup-and-restore-options-for-virtual-machines-in-azure"></a>Virtuális gépek biztonsági mentési és visszaállítási lehetőségei az Azure-ban
 
 Adatai védelme érdekében érdemes rendszeres időközönként biztonság mentést végeznie. A virtuális gépekhez több biztonsági mentési lehetőség is rendelkezésre áll, a használati esettől függően.
 
@@ -21,7 +21,7 @@ Adatai védelme érdekében érdemes rendszeres időközönként biztonság ment
 
 Éles számítási feladatokat futtató Azure-beli virtuális gépek biztonsági mentéséhez használja a Azure Backup. A Azure Backup támogatja a Windows és a Linux rendszerű virtuális gépekhez készült alkalmazás-konzisztens biztonsági mentéseket. Az Azure Backup georedundáns helyreállítási tárolókban tárolt helyreállítási pontokat hoz létre. Helyreállítási pontról történő visszaállításkor visszaállíthatja a teljes virtuális gépet, vagy csak bizonyos fájlokat. 
 
-Az Azure-beli virtuális gépek Azure Backupének egyszerű, gyakorlati bevezetését az Azure Virtual Machines biztonsági mentése című oktatóanyagban tekintheti meg [Linux](./linux/tutorial-backup-vms.md) vagy [Windows](./windows/tutorial-backup-vms.md)rendszeren.
+Az Azure-beli virtuális gépek Azure Backupának egyszerű, gyakorlati bevezetését az [Azure Backup](../backup/quick-backup-vm-portal.md)gyors útmutatója tartalmazza.
 
 A Azure Backup működéséről a [virtuális gépek biztonsági mentési infrastruktúrájának megtervezése az Azure-ban](../backup/backup-azure-vms-introduction.md) című témakörben olvashat bővebben.
 
@@ -45,5 +45,5 @@ A pillanatképek létrehozásával kapcsolatos további információkért lásd:
 
 
 
-## <a name="next-steps"></a>Következő lépések
-A Azure Backup kipróbálásához kövesse a "Windows rendszerű virtuális gépek biztonsági mentése" oktatóanyagot a [Linux](./linux/tutorial-backup-vms.md) vagy a [Windows](./windows/tutorial-backup-vms.md)rendszerhez.
+## <a name="next-steps"></a>További lépések
+Azure Backup kipróbálásához kövesse a [Azure Backup](../backup/quick-backup-vm-portal.md)gyors útmutatót.

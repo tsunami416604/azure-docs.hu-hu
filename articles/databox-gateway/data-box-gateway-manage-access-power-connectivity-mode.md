@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: alkohli
-ms.openlocfilehash: 994e5a11cd3b42de339ed11a9d2517c81856e672
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: c4e2894d193309c169adbea96491e0754d479a8a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96581956"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786808"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>A Azure Data Box Gateway hozzáférésének, teljesítményének és kapcsolati módjának kezelése
 
@@ -68,7 +68,7 @@ Az eszközhöz tartozó aktiválási kulcs létrehozásakor, illetve a hitelesí
 
 Rendelkeznie kell `User` hozzáféréssel a Active Directory bérlőn, hogy Ön is hozzáférhessen `Read all directory objects` . A vendég felhasználó nem rendelkezik jogosultsággal a következőhöz: `Read all directory objects` . Ha vendég, olyan műveleteket, mint például az aktiválási kulcs generálása, a megosztás létrehozása az eszközön, és a felhasználó létrehozása sikertelen lesz.
 
-A felhasználók Microsoft Graph API-hoz való hozzáférésének biztosításával kapcsolatos további információkért lásd: [Microsoft Graph engedélyek referenciája](https://docs.microsoft.com/graph/permissions-reference).
+A felhasználók Microsoft Graph API-hoz való hozzáférésének biztosításával kapcsolatos további információkért lásd: [Microsoft Graph engedélyek referenciája](/graph/permissions-reference).
 
 ### <a name="register-resource-providers"></a>Erőforrás-szolgáltatók regisztrálása
 
@@ -95,7 +95,7 @@ Data Box Gateway eszköz esetében regisztrálni kell `Microsoft.DataBoxEdge` . 
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 ```
 
-Az erőforrás-szolgáltatók regisztrálásával kapcsolatos további információkért lásd: [hibák elhárítása az erőforrás-szolgáltató regisztrálásához](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors).
+Az erőforrás-szolgáltatók regisztrálásával kapcsolatos további információkért lásd: [hibák elhárítása az erőforrás-szolgáltató regisztrálásához](../azure-resource-manager/templates/error-register-resource-provider.md).
 
 ## <a name="manage-connectivity-mode"></a>Kapcsolati mód kezelése
 

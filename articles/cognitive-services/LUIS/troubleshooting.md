@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
-ms.openlocfilehash: e803fa393d85f7f0b4849aed96356b7a4e77d83f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e4de77a8a56ce21511ad099af59a77e10ab1815d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96000130"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787536"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding – Gyakori kérdések (GYIK)
 
@@ -177,7 +177,7 @@ A hibák arra utalnak, hogy a címkék és a modellek előrejelzései között n
 * Ha segíteni szeretne a LUIS számára a szándékok közötti diszkrimináció növelésében, adjon hozzá további címkéket.
 * Ha segítségre van a LUIS-ról, adja hozzá a tartomány-specifikus szókincset bevezető kifejezés-lista funkciókat.
 
-Lásd a [Batch-tesztelési](luis-tutorial-batch-testing.md) oktatóanyagot.
+Lásd a [Batch-tesztelési](./luis-how-to-batch-test.md) oktatóanyagot.
 
 ### <a name="when-an-app-is-exported-then-reimported-into-a-new-app-with-a-new-app-id-the-luis-prediction-scores-are-different-why-does-this-happen"></a>Egy alkalmazás exportálásakor a rendszer újraimportál egy új alkalmazásba (új alkalmazás-AZONOSÍTÓval), a LUIS-előrejelzési pontszámok eltérőek. Miért történik ez?
 
@@ -190,7 +190,7 @@ Tekintse meg [a vonatot az összes adattal](luis-how-to-train.md#train-with-all-
 ## <a name="app-publishing"></a>Alkalmazások közzététele
 
 ### <a name="what-is-the-tenant-id-in-the-add-a-key-to-your-app-window"></a>Mi a bérlő azonosítója a "kulcs hozzáadása az alkalmazáshoz" ablakban?
-Az Azure-ban a bérlő a szolgáltatáshoz társított ügyfelet vagy szervezetet jelöli. A **címtár-azonosító** mezőben keresse meg a bérlő azonosítóját a Azure Portal **Azure Active Directory** a  >  **Manage**  >  **Tulajdonságok** kezelése lehetőség kiválasztásával.
+Az Azure-ban a bérlő a szolgáltatáshoz társított ügyfelet vagy szervezetet jelöli. A **címtár-azonosító** mezőben keresse meg a bérlő azonosítóját a Azure Portal **Azure Active Directory** a  >    >  **Tulajdonságok** kezelése lehetőség kiválasztásával.
 
 ![Bérlő azonosítója a Azure Portal](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: e8e54a97c13a69fce2e80676fa68d6d795736a83
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: a359c4f0de6dab70b334da7e7d29ad4b273385ab
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703122"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789279"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Nyelvi és területi támogatás szöveg-és beszédfelismerési fordításhoz
 
@@ -91,7 +91,7 @@ A fordító a következő nyelveket támogatja szöveg szöveggé fordításáho
 | Pasto | `ps` |
 | perzsa | `fa` |
 | Lengyel | `pl` |
-| Portugál (Brazília) | `pt-br` |
+| Portugál (Brazília) | `pt` |
 | Portugál (Portugália) | `pt-pt` |
 | pandzsábi | `pa` |
 | Queretaro otomi | `otq` |
@@ -343,7 +343,7 @@ Az [Egyéni Translator](https://aka.ms/CustomTranslator)használatával a követ
 | Norvég      | `nb`          |
 | perzsa      | `fa`          |
 | Lengyel      | `pl`          |
-| Portugál (Brazília) | `pt-br` |
+| Portugál (Brazília) | `pt` |
 | pandzsábi|`pa`|
 | Román      | `ro`          |
 | Orosz      | `ru`          |

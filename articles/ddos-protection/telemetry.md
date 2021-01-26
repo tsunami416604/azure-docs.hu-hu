@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 86e4a111be7585373ecf4c2fe9508f2bfca7de16
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: a3f6c14b7ed2686a262f28510efb37068cfb9cb3
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915079"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787298"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>DDoS Protection-telemetria megtekintése és konfigurálása
 
@@ -34,10 +34,10 @@ Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 > [!NOTE]
 > Míg Azure Portal több **összesítési** lehetőség is megjelenik, az egyes metrikák esetében csak az alábbi táblázatban felsorolt összesítési típusok támogatottak. Elnézést kérünk erre a zűrzavarra, és dolgozunk a megoldásban.
 
-A következő [metrikák](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftnetworkpublicipaddresses) érhetők el Azure DDoS Protection standard. Ezek a metrikák a diagnosztikai beállításokon keresztül is exportálhatók (lásd: a [DDoS diagnosztikai naplózás megtekintése és konfigurálása](diagnostic-logging.md)).
+A következő [metrikák](../azure-monitor/platform/metrics-supported.md#microsoftnetworkpublicipaddresses) érhetők el Azure DDoS Protection standard. Ezek a metrikák a diagnosztikai beállításokon keresztül is exportálhatók (lásd: a [DDoS diagnosztikai naplózás megtekintése és konfigurálása](diagnostic-logging.md)).
 
 
-| Metrika | Metrika megjelenítendő neve | Egység | Aggregáció típusa | Leírás |
+| Metric | Metrika megjelenítendő neve | Unit (Egység) | Aggregáció típusa | Leírás |
 | --- | --- | --- | --- | --- |
 | ByteCount | Bájtok száma | Darabszám | Összesen | Az adott időszakon belül továbbított bájtok teljes száma |
 | BytesDroppedDDoS | Bejövő bájtok elvetve DDoS | BytesPerSecond | Maximum | Bejövő bájtok elvetve DDoS| 

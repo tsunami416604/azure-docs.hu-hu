@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: alexeyo
-ms.openlocfilehash: 61be4b45df94c902c0473b94a6dd83237c72da3c
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 51989a9219cdbfebf833c99849dba67c939cf77a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196119"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786842"
 ---
 # <a name="use-speech-services-through-a-private-endpoint"></a>A Speech Services használata privát végponton keresztül
 
@@ -293,7 +293,7 @@ A beszédfelismerési szolgáltatások REST API-kkal rendelkeznek a [beszédfeli
 A beszédfelismerési szöveg két REST API-val rendelkezik. Az egyes API-k eltérő célokat szolgálnak, különböző végpontokat használnak, és más megközelítést igényelnek, ha a privát végpontok használatára képes forgatókönyvben használják.
 
 A beszéd – szöveg REST API-k a következők:
-- [Beszéd – szöveg REST API v 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30), amely [kötegelt átíráshoz](batch-transcription.md) és [Custom Speechhoz](custom-speech-overview.md)használható. a v 3.0 a [v 2.0 utódja](/azure/cognitive-services/speech-service/migrate-v2-to-v3)
+- [Beszéd – szöveg REST API v 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30), amely [kötegelt átíráshoz](batch-transcription.md) és [Custom Speechhoz](custom-speech-overview.md)használható. a v 3.0 a [v 2.0 utódja](./migrate-v2-to-v3.md)
 - [Beszéd-szöveg REST API rövid hanghoz](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio), amely online átíráshoz használható 
 
 A beszéd-szöveg REST API rövid hangra való használata, valamint a privát végpont forgatókönyvben szereplő szöveg-beszéd REST API megegyeznek. Ez megegyezik a cikk későbbi részében ismertetett [SPEECH SDK-esettel](#speech-resource-with-a-custom-domain-name-and-a-private-endpoint-usage-with-the-speech-sdk) . 
@@ -606,7 +606,7 @@ A módosítás után az alkalmazásnak olyan beszédfelismerési erőforrásokka
 
 A díjszabással kapcsolatos információkért lásd: az [Azure Private link díjszabása](https://azure.microsoft.com/pricing/details/private-link).
 
-## <a name="learn-more"></a>Tudjon meg többet
+## <a name="learn-more"></a>Részletek
 
 * [Azure Private Link](../../private-link/private-link-overview.md)
 * [Beszéd SDK](speech-sdk.md)

@@ -7,21 +7,26 @@ ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 15f5918748df80cec01ccf89835a0ef51da64529
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13abe333bcf3f67ea1a1ba823c693deaa60bc723
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91296246"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788807"
 ---
 # <a name="azure-media-player-full-setup"></a>Az Azure Media Player teljes telepítése #
 
 A Azure Media Player egyszerűen beállítható. Csak néhány percet vesz igénybe, hogy a médiatartalom alapszintű lejátszása közvetlenül a Azure Media Services-fiókból történjen. A [mintákat](https://github.com/Azure-Samples/azure-media-player-samples) a kiadás minták könyvtára is megadja.
 
+<!--//aka.ms/ampembed?url=https%3A%2F%2Fxpouyatdemo-euwe.streaming.media.azure.net%2Fc9b6ac82-c187-4882-a3d3-1a67204ac58e%2Fconnect2017-v3.ism%2Fmanifest-->
+
+Íme egy példa egy AMS-videóra.
+
+> [!VIDEO https://aka.ms/ampembed?url=https%3A%2F%2Fxpouyatdemo-euwe.streaming.media.azure.net%2Fc9b6ac82-c187-4882-a3d3-1a67204ac58e%2Fconnect2017-v3.ism%2Fmanifest]
 
 ## <a name="step-1-include-the-javascript-and-css-files-in-the-head-of-your-page"></a>1. lépés: a JavaScript-és CSS-fájlok belefoglalása az oldal élére ##
 
-A Azure Media Player használatával a CDN által üzemeltetett verzióból férhet hozzá a szkriptekhez. Azt javasoljuk, hogy a JavaScriptet még a befejezést megelőzően `<body>` `<head>` , de a (z) Azure Media Player tartalmaz egy "HTML5 szilánkot", amely a régebbi verziókban a korábbi verziókhoz szükséges, hogy a videó címkéjét érvényes elemként vegye figyelembe.
+A Azure Media Player használatával a CDN által üzemeltetett verzióból férhet hozzá a szkriptekhez. Azt javasoljuk, hogy a JavaScriptet még a befejezést megelőzően `<body>` `<head>` , de az Azure Meia Player tartalmaz egy "HTML5 szilánkot", amely a régebbi IE-verziók számára szükséges, hogy a videó címkéjét érvényes elemként vegye figyelembe.
 
 > [!NOTE]
 > Ha már használ egy HTML5-szilánkot, például a [modernizációt](https://modernizr.com/) , bárhol is használhatja a Azure Media Player JavaScriptet. Azonban győződjön meg arról, hogy a modernizáló verziója tartalmazza a szilánkot a videóhoz.
@@ -61,7 +66,7 @@ A Azure Media Player használatával a videó beágyazására használható HTML
 1. A `<source>` két kötelező attribútumot tartalmaz
     - `src` az attribútum tartalmazhatja a **. ISM/manifest* fájlt Azure Media Services hozzáadásával, Azure Media Player automatikusan HOZZÁADJA a Dash, a Smooth és a HLS URL-címeit a lejátszóhoz.
     - `type` az attribútum a stream kötelező MIME-típusa. A *". ISM/manifest"* kifejezéshez társított MIME-típus az *"Application/vnd. MS-sstr + XML"* .
-1. Az *optional* `<data-setup>` Azure Media Player nem kötelező attribútuma, `<source>` Ha a streamhez egyedi kézbesítési szabályzatok tartoznak Azure Media Services, beleértve a (z) titkosítási típust (AES vagy PlayReady, Widevine vagy Fairplay) és a tokent.
+1. Az  `<data-setup>` Azure Media Player nem kötelező attribútuma, `<source>` Ha a streamhez egyedi kézbesítési szabályzatok tartoznak Azure Media Services, beleértve a (z) titkosítási típust (AES vagy PlayReady, Widevine vagy Fairplay) és a tokent.
 
 Az attribútumok, a beállítások, a források és a nyomon követések pontosan úgy foglalhatók el/zárhatók ki, mint a HTML5-videóknál.
 
@@ -119,6 +124,6 @@ Az elem AZONOSÍTÓjának használata helyett az elemre mutató hivatkozást is 
     myPlayer.src([{ src: "//example/path/to/myVideo.ism/manifest", type: "application/vnd.ms-sstr+xml"]);
 ```
 
-## <a name="next-steps"></a>Következő lépések ##
+## <a name="next-steps"></a>További lépések ##
 
 - [Azure Media Player rövid útmutató](azure-media-player-quickstart.md)

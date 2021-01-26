@@ -9,16 +9,45 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 11aa739beeb07c3de056d8a2430b556fcc40b178
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 6e92fb39845944898bebf6446c35f0932e13b5b8
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746730"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788875"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
 Ebben a cikkben megismerheti Azure Machine Learning kiadásait.  A teljes SDK-hivatkozási tartalomért keresse fel a Azure Machine Learning [**fő SDK for Python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) -referenciát tartalmazó oldalt.
+
+ ## <a name="2021-01-25"></a>2021-01-25
+
+### <a name="azure-machine-learning-sdk-for-python-v1210"></a>Azure Machine Learning SDK a Python v 1.21.0
++ **Hibajavítások és javítások**
+  + **Azure-CLI-ml**
+    + Rögzített CLI-súgó szövege a AmlCompute és a UserAssigned Identity használatával
+  + **azureml-automl-DNN-vízió**
+    + Az üzembe helyezés és a letöltés gomb láthatóvá válik a AutoML-futtatások számára, és a modellek a más AutoML-futtatásokhoz hasonló módon telepíthetők vagy tölthetők le. A Conda-környezet újbóli létrehozásához két új fájl (scoring_file_v_1_0_0. és conda_env_v_1_0_0. YML) található, amelyek egy következtetést és egy YML-fájlt tartalmaznak. A "Model. Pth" fájlt a ". pt" kiterjesztés használatára is átnevezték.
+  + **azureml-core**
+    + MSI-támogatás az Azure-CLI-ml-hez
+    + A felhasználóhoz rendelt felügyelt identitás támogatása.
+    + Ezzel a módosítással az ügyfeleknek képesnek kell lenniük olyan felhasználóhoz rendelt identitás megadására, amely a kulcs lekérésére használható az ügyfél Key vaultból a REST-titkosításhoz.
+    +  javítsa ki row_count = 0 értéket a nagyon nagy fájlok profiljához – hibajavítási hiba történt a tagolt értékek dupla konverziójában a szóközök kitöltésével
+    + Kísérleti jelző eltávolítása a kimeneti adatkészlet GA
+    + Dokumentáció frissítése a modell adott verziójának lekéréséhez
+    + Vegyes módú hozzáférés engedélyezése a munkaterület frissítéséhez privát hivatkozás esetén
+    + Javítás az adattár további regisztrációjának eltávolításához a futtatási funkció folytatásához
+    + CLI/SDK-támogatás hozzáadva a munkaterület elsődleges felhasználóhoz rendelt identitásának frissítéséhez
+  + **azureml-interpret**
+    + frissített azureml – értelmezés – közösségi 0.16.0
+    + a azureml magyarázati ügyfelének memória-optimalizálása – értelmezés
+  + **azureml-train-automl-runtime**
+    + Engedélyezve streaming az ADB-futtatásokhoz
+  + **azureml-train-core**
+    + Javítás az adattár további regisztrációjának eltávolításához a futtatási funkció folytatásához
+  + **azureml-widgets**
+    + Az ügyfelek nem láthatják a meglévő futtatási adatvizualizációk változásait a widget használatával, és most már támogatást kapnak, ha feltételes hiperparaméterek beállítása is használhatnak.
+    + A felhasználó által futtatott widget mostantól részletes magyarázatot tartalmaz arról, hogy a Futtatás miért van a várólistán lévő állapotban.
 
 
  ## <a name="2021-01-11"></a>2021-01-11
@@ -118,7 +147,7 @@ Ebben a cikkben megismerheti Azure Machine Learning kiadásait.  A teljes SDK-hi
 ## <a name="2020-11-30"></a>2020-11-30
 ### <a name="azure-machine-learning-studio-notebooks-experience-november-update"></a>Azure Machine Learning Studio notebookok felülete (novemberi frissítés)
 + **Új funkciók**
-   + Natív terminál. A felhasználók mostantól hozzáférhetnek egy integrált terminálhoz, valamint a git-művelethez az [integrált terminálon](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#terminal) keresztül is.
+   + Natív terminál. A felhasználók mostantól hozzáférhetnek egy integrált terminálhoz, valamint a git-művelethez az [integrált terminálon](./how-to-run-jupyter-notebooks.md#terminal) keresztül is.
   + Duplikált mappa 
   + Költségszámítás a számítási legördülő listához 
   + Offline számítási Pylance 
