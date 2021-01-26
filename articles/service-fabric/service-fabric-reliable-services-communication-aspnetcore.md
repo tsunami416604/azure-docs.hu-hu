@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan használhatja a ASP.NET Coret állapot nélkül
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ba5626d477bbd6aa07d89703cc37b157f4cfd4d5
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: a125c6a1972b51f518175a4c69248119f71ada7c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576791"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791594"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>ASP.NET Core az Azure Service Fabric Reliable Services
 
@@ -190,7 +190,7 @@ Egy konfiguráció által lefoglalt dinamikus port `Endpoint` csak egy portot bi
 ## <a name="kestrel-in-reliable-services"></a>Vércse Reliable Services
 A Reliable Services a a **Microsoft. ServiceFabric. AspNetCore. vércse** NuGet-csomag importálásával használhatja. Ez a csomag a következő `KestrelCommunicationListener` implementációját tartalmazza: `ICommunicationListener` . `KestrelCommunicationListener` lehetővé teszi, hogy egy ASP.NET Core webkiszolgálót hozzon létre egy megbízható szolgáltatáson belül a vércse használatával webkiszolgálóként.
 
-A vércse egy platformfüggetlen webkiszolgáló a ASP.NET Corehoz. A HTTP.systól eltérően a vércse nem használ központosított Endpoint Managert. A HTTP.systól eltérően a vércse nem támogatja a portok több folyamat közötti megosztását. A vércse minden példányának egyedi portot kell használnia. A vércse szolgáltatással kapcsolatos további információkért tekintse meg a [megvalósítás részleteit](/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-2.2).
+A vércse egy platformfüggetlen webkiszolgáló a ASP.NET Corehoz. A HTTP.systól eltérően a vércse nem használ központosított Endpoint Managert. A HTTP.systól eltérően a vércse nem támogatja a portok több folyamat közötti megosztását. A vércse minden példányának egyedi portot kell használnia. A vércse szolgáltatással kapcsolatos további információkért tekintse meg a [megvalósítás részleteit](/aspnet/core/fundamentals/servers/kestrel).
 
 ![Vércse-diagram][4]
 

@@ -4,12 +4,12 @@ description: Megismerheti, hogyan helyezhet üzembe egy Linux-alapú Service Fab
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 52eba2e5780b1a66f3884a764631908335372273
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 77cc49c1b79e5c24e78a67a69493aa0b0059d565
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738954"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791071"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Linux Service Fabric-fürt üzembe helyezése Azure-beli virtuális hálózaton
 
@@ -106,7 +106,7 @@ A cikkben található sablon olyan fürtöt helyez üzembe, amely a tanúsítvá
 
 ### <a name="create-a-cluster-using-an-existing-certificate"></a>Fürt létrehozása meglévő tanúsítvány használatával
 
-Az alábbi szkript az [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest) parancs és egy sablon használatával helyez üzembe egy meglévő tanúsítvánnyal védett új fürtöt. A parancs emellett egy új kulcstárolót is létrehoz az Azure-ban, és feltölti a tanúsítványt.
+Az alábbi szkript az [az sf cluster create](/cli/azure/sf/cluster) parancs és egy sablon használatával helyez üzembe egy meglévő tanúsítvánnyal védett új fürtöt. A parancs emellett egy új kulcstárolót is létrehoz az Azure-ban, és feltölti a tanúsítványt.
 
 ```azurecli
 ResourceGroupName="sflinuxclustergroup"
@@ -132,7 +132,7 @@ az sf cluster create --resource-group $ResourceGroupName --location $Location \
 
 ### <a name="create-a-cluster-using-a-new-self-signed-certificate"></a>Fürt létrehozása új, önaláírt tanúsítvány használatával
 
-Az alábbi szkript az [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest) parancs és egy sablon használatával helyez üzembe egy új fürtöt az Azure-ban. A parancs egy új kulcstárolót is létrehoz az Azure-ban, egy új önaláírt tanúsítványt hoz létre a kulcstartóhoz, és helyileg letölti a tanúsítványfájl-fájlt.
+Az alábbi szkript az [az sf cluster create](/cli/azure/sf/cluster) parancs és egy sablon használatával helyez üzembe egy új fürtöt az Azure-ban. A parancs egy új kulcstárolót is létrehoz az Azure-ban, egy új önaláírt tanúsítványt hoz létre a kulcstartóhoz, és helyileg letölti a tanúsítványfájl-fájlt.
 
 ```azurecli
 ResourceGroupName="sflinuxclustergroup"
@@ -165,11 +165,11 @@ Az `sfctl cluster health` parancs futtatásával ellenőrizze, hogy csatlakozik-
 sfctl cluster health
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha nem azonnal tér rá a következő cikkre, érdemes [törölnie a fürtöt](./service-fabric-tutorial-delete-cluster.md) a felmerülő költségek elkerülése érdekében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan [méretezheti a fürtöt](service-fabric-tutorial-scale-cluster.md).
 

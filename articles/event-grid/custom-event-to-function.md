@@ -3,12 +3,12 @@ title: 'Gyors útmutató: egyéni események küldése az Azure-függvénynek �
 description: 'Rövid útmutató: a Azure Event Grid és az Azure CLI vagy a portál használatával tehet közzé egy témakört, és feliratkozhat erre az eseményre. A végponthoz egy Azure-függvény van használatban.'
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: aea52bcaa94d6f288e86e44e1a0f294796d8e4a3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4fe4753de41443a0537636933364c7b69b25cb27
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996345"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791727"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>Gyors útmutató: egyéni események átirányítása egy Azure-függvénybe Event Grid
 
@@ -19,7 +19,7 @@ Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Azure Fun
 ## <a name="create-azure-function"></a>Azure-függvény létrehozása
 Az egyéni témakörre való feliratkozás előtt hozzon létre egy függvényt az események kezeléséhez. 
 
-1. Hozzon létre egy Function alkalmazást a [Function-alkalmazás létrehozása](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)című témakör utasításai alapján.
+1. Hozzon létre egy Function alkalmazást a [Function-alkalmazás létrehozása](../azure-functions/functions-get-started.md)című témakör utasításai alapján.
 2. Hozzon létre egy függvényt a **Event Grid trigger** használatával. Ha először használja ezt az triggert, akkor a bővítmény telepítéséhez a telepítés gombra kell kattintania.
     1. A **függvényalkalmazás** lapon válassza a bal oldali menü **függvények** elemét, keresse meg a **Event Grid** a sablonokban, majd válassza a **Azure Event Grid trigger** lehetőséget. 
 
@@ -52,7 +52,7 @@ Az Event Grid-témakörök egy felhasználó által meghatározott végpontot bi
     5. Tartsa meg az alapértelmezett értéket **Event Grid sémát** az **esemény sémája** mezőhöz. 
 
        ![Témakör létrehozása lap](./media/custom-event-to-function/create-custom-topic.png)
-    6. Kattintson a **Létrehozás** gombra. 
+    6. Válassza a **Létrehozás** lehetőséget. 
 
 5. Az egyéni témakör létrehozása után láthatja a sikeres műveletről szóló értesítést. Válassza **az Ugrás az erőforrás-csoportba** lehetőséget. 
 

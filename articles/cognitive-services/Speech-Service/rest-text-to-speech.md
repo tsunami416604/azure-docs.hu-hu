@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: d858474eca34243a007d0d0ac1e023a4a0fab8ec
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 53be2f6795593bf44cafde149242b13ed4fdfe50
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572340"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790477"
 ---
 # <a name="text-to-speech-rest-api"></a>Szövegfelolvasás REST API
 
@@ -45,7 +45,7 @@ A `voices/list` végpont lehetővé teszi, hogy egy adott régióhoz vagy végpo
 
 ### <a name="regions-and-endpoints"></a>Régiók és végpontok
 
-| Region | Végpont |
+| Régió | Végpont |
 |--------|----------|
 | Kelet-Ausztrália | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Dél-Brazília | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -60,11 +60,9 @@ A `voices/list` végpont lehetővé teszi, hogy egy adott régióhoz vagy végpo
 | Dél-Korea középső régiója | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA északi középső régiója | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Észak-Európa | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Dél-Afrika északi régiója | `https://southafricanorth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA déli középső régiója | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Délkelet-Ázsia | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Az Egyesült Királyság déli régiója | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| USA nyugati középső régiója | `https://westcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Nyugat-Európa | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA nyugati régiója | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA 2. nyugati régiója | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -279,5 +277,5 @@ Ha a HTTP-állapot értéke `200 OK` , a válasz törzse egy hangfájlt tartalma
 ## <a name="next-steps"></a>További lépések
 
 - [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/cognitive-services/)
-- [Aszinkron szintézis a hosszú formátumú hangokhoz](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
+- [Aszinkron szintézis a hosszú formátumú hangokhoz](./long-audio-api.md)
 - [Bevezetés a Custom Voice szolgáltatásba](how-to-custom-voice.md)

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/13/2021
 ms.author: alkohli
-ms.openlocfilehash: 91b3e2e86394c889f6fa40f527dd0dd212e1cb57
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 4c44fca7b443a4d289b7ac7e2e507a3c3f305089
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98763102"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790783"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Oktatóanyag: Az Azure Data Box megrendelése
 
@@ -338,9 +338,9 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
 
 14. Válassza ki azt a felhasználói identitást, amelyet az erőforráshoz való hozzáférés kezeléséhez fog használni. Válassza **a felhasználói azonosító kiválasztása** lehetőséget. A jobb oldali panelen válassza ki az előfizetést és a használni kívánt felügyelt identitást. Ezután kattintson a **Kiválasztás** gombra.
 
-    A felhasználó által hozzárendelt felügyelt identitás egy önálló Azure-erőforrás, amely több erőforrás kezelésére is használható. További információ: [felügyelt identitások típusai](/azure/active-directory/managed-identities-azure-resources/overview).  
+    A felhasználó által hozzárendelt felügyelt identitás egy önálló Azure-erőforrás, amely több erőforrás kezelésére is használható. További információ: [felügyelt identitások típusai](../active-directory/managed-identities-azure-resources/overview.md).  
 
-    Ha új felügyelt identitást kell létrehoznia, kövesse a [szerepkör létrehozása, listázása, törlése vagy hozzárendelése egy felhasználóhoz rendelt felügyelt identitáshoz a Azure Portal használatával című témakör](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)útmutatását.
+    Ha új felügyelt identitást kell létrehoznia, kövesse a [szerepkör létrehozása, listázása, törlése vagy hozzárendelése egy felhasználóhoz rendelt felügyelt identitáshoz a Azure Portal használatával című témakör](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)útmutatását.
     
     ![Felhasználói azonosító kiválasztása](./media/data-box-deploy-ordered/customer-managed-key-10.png)
 

@@ -4,12 +4,12 @@ description: A csomópontok típusai, tartóssága, megbízhatósága és egyéb
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
-ms.openlocfilehash: 731dcfdf25efc4b2f44669dacd8a400037ed47f4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 03ec9b411f13f22a74b864a745acfed922e78b12
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576332"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790698"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric a fürt kapacitásának tervezési szempontjait
 
@@ -146,7 +146,7 @@ A megbízhatósági szintet a következő javaslat alapján választhatja ki. A 
 | 7 vagy 8 | Arany |
 | 9 és fel | Platina |
 
-A fürt méretének növelése vagy csökkentése (a virtuálisgép-példányok száma az összes csomópontban) esetében érdemes lehet frissíteni a fürt megbízhatóságát az egyik rétegről a másikra. Ennek hatására a rendszer elindítja a fürt frissítéseit a rendszerszolgáltatások replikáinak számának módosításához. Várjon, amíg a frissítés befejeződik, mielőtt bármilyen más módosítást hajt végre a fürtön, például csomópontok hozzáadását.  A frissítés előrehaladását Service Fabric Explorer vagy a [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps) futtatásával figyelheti.
+A fürt méretének növelése vagy csökkentése (a virtuálisgép-példányok száma az összes csomópontban) esetében érdemes lehet frissíteni a fürt megbízhatóságát az egyik rétegről a másikra. Ennek hatására a rendszer elindítja a fürt frissítéseit a rendszerszolgáltatások replikáinak számának módosításához. Várjon, amíg a frissítés befejeződik, mielőtt bármilyen más módosítást hajt végre a fürtön, például csomópontok hozzáadását.  A frissítés előrehaladását Service Fabric Explorer vagy a [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade) futtatásával figyelheti.
 
 ### <a name="capacity-planning-for-reliability"></a>Kapacitás megtervezése megbízhatósághoz
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: mcoskun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a60ebff06562c12415b2a106a9a11127feb94dab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2674d1285544e4bc9b6fcb3d0b2e6f4b607786a2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021986"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791611"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Reliable Services és Reliable Actors biztonsági mentése és visszaállítása
 Az Azure Service Fabric egy magas rendelkezésre állású platform, amely a magas rendelkezésre állás fenntartása érdekében replikálja az állapotot több csomópont között.  Így még akkor is, ha a fürt egyik csomópontja meghibásodik, a szolgáltatások továbbra is elérhetők maradnak. Habár a platform által biztosított beépített redundancia elegendő lehet bizonyos esetekben, bizonyos esetekben kívánatos, hogy a szolgáltatás biztonsági másolatot készíteni (külső tárolóba).
@@ -150,7 +150,7 @@ Ha például tartalmazza a teljes biztonsági mentést, az első növekményes �
 > 
 
 ## <a name="deleted-or-lost-service"></a>Törölt vagy elveszett szolgáltatás
-Ha eltávolít egy szolgáltatást, először újra létre kell hoznia a szolgáltatást az adatgyűjtés előtt.  Fontos, hogy a szolgáltatást ugyanazzal a konfigurációval hozza létre, mint például a particionálási séma, így az Adathelyreállítás zökkenőmentesen visszaállítható.  A szolgáltatás létrehozása után az adatvisszaállítási API-t a `OnDataLossAsync` szolgáltatás minden partícióján meg kell hívni. Ennek a megvalósításának egyik módja a [FabricClient. TestManagementClient. StartPartitionDataLossAsync](/dotnet/api/system.fabric.fabricclient.testmanagementclient?view=azure-dotnet#System_Fabric_FabricClient_TestManagementClient_StartPartitionDataLossAsync_System_Guid_System_Fabric_PartitionSelector_System_Fabric_DataLossMode_) használata minden partíción.  
+Ha eltávolít egy szolgáltatást, először újra létre kell hoznia a szolgáltatást az adatgyűjtés előtt.  Fontos, hogy a szolgáltatást ugyanazzal a konfigurációval hozza létre, mint például a particionálási séma, így az Adathelyreállítás zökkenőmentesen visszaállítható.  A szolgáltatás létrehozása után az adatvisszaállítási API-t a `OnDataLossAsync` szolgáltatás minden partícióján meg kell hívni. Ennek a megvalósításának egyik módja a [FabricClient. TestManagementClient. StartPartitionDataLossAsync](/dotnet/api/system.fabric.fabricclient.testmanagementclient#System_Fabric_FabricClient_TestManagementClient_StartPartitionDataLossAsync_System_Guid_System_Fabric_PartitionSelector_System_Fabric_DataLossMode_) használata minden partíción.  
 
 Ettől a ponttól kezdve a megvalósítás ugyanaz, mint a fenti forgatókönyv. Minden partíciónak vissza kell állítania a biztonsági mentést a külső tárolóból. Ennek egyik kikötése, hogy a partíció-azonosító mostantól módosult, mivel a futtatókörnyezet dinamikusan hozza létre a partíciós azonosítókat. Ennek megfelelően a szolgáltatásnak meg kell tárolnia a megfelelő partíciós adatokat és a szolgáltatás nevét, hogy azonosítsa a megfelelő legutóbbi biztonsági mentést, amelyet az egyes partíciók esetében vissza kell állítani.
 
@@ -254,10 +254,10 @@ Amíg egy szolgáltatás sikeresen befejezi ezt az API-t (igaz vagy hamis érté
 
 `RestoreAsync` először a meghívott elsődleges replika összes meglévő állapotát eldobja. Ezután a megbízható állapot-kezelő létrehozza a biztonsági mentési mappában található összes megbízható objektumot. Ezután a megbízható objektumokat a rendszer arra utasítja, hogy a biztonsági mentési mappában lévő ellenőrzőpontok alapján állítsa vissza. Végül a megbízható állapot-kezelő a biztonsági mentési mappában található naplókból helyreállítja a saját állapotát, és végrehajtja a helyreállítást. A helyreállítási folyamat részeként a rendszer a biztonsági mentési mappában lévő véglegesített naplókat tartalmazó "kezdőpont" kezdetű műveleteket a megbízható objektumokra játssza újra. Ez a lépés biztosítja, hogy a helyreállított állapot konzisztens legyen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
   - [Reliable Collections](service-fabric-work-with-reliable-collections.md)
   - [Reliable Services rövid útmutató](service-fabric-reliable-services-quick-start.md)
   - [Értesítések Reliable Services](service-fabric-reliable-services-notifications.md)
   - [Reliable Services konfiguráció](service-fabric-reliable-services-configuration.md)
-  - [Fejlesztői referenciák megbízható gyűjteményekhez](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+  - [Fejlesztői referenciák megbízható gyűjteményekhez](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)
   - [Rendszeres biztonsági mentés és visszaállítás az Azure Service Fabricben](service-fabric-backuprestoreservice-quickstart-azurecluster.md)

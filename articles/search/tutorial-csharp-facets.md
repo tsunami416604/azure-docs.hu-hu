@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 10/01/2020
+ms.date: 01/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ab15af07c5f63d375d8fdb4fc38e0853e207a0be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44a05ed5b4386f2787a1c84dfeb61a5d539c7cb5
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667282"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789803"
 ---
 # <a name="tutorial-add-faceted-navigation-using-the-net-sdk"></a>Oktatóanyag: sokoldalú Navigálás hozzáadása a .NET SDK használatával
 
@@ -43,9 +43,9 @@ Ez az oktatóanyag a [Azure.Search.Documents (11-es verzió)](https://www.nuget.
 
 ## <a name="set-model-properties-as-isfacetable"></a>Modell tulajdonságainak beállítása IsFacetable
 
-Ahhoz, hogy egy Model tulajdonságot a faced keresési szolgáltatásban lehessen elhelyezni, a címkének **IsFacetable**kell lennie.
+Ahhoz, hogy egy Model tulajdonságot a faced keresési szolgáltatásban lehessen elhelyezni, a címkének **IsFacetable** kell lennie.
 
-1. Vizsgálja meg a **szállodai** osztályt. A **Kategóriák** és **címkék**például **IsFacetable**vannak megjelölve, de a **pezsgő** és a **Leírás** nem. 
+1. Vizsgálja meg a **szállodai** osztályt. A **Kategóriák** és **címkék** például **IsFacetable** vannak megjelölve, de a **pezsgő** és a **Leírás** nem. 
 
     ```cs
     public partial class Hotel
@@ -111,7 +111,7 @@ A vezérlő feladata, hogy átadja az aspektusok listáját a nézetnek. Ha a ke
 
 ### <a name="add-the-facet-action-method"></a>A dimenzió műveleti módszer hozzáadása
 
-A Kezdőlap vezérlőnek egy új műveletre, **aspektusra**és frissítésre van szüksége a meglévő **index** és **Page** műveletekhez, valamint a **RunQueryAsync** metódushoz.
+A Kezdőlap vezérlőnek egy új műveletre, **aspektusra** és frissítésre van szüksége a meglévő **index** és **Page** műveletekhez, valamint a **RunQueryAsync** metódushoz.
 
 <!-- 1. Open the home controller file, and add the **using** statement, to enable the **List&lt;string&gt;** construct.
 

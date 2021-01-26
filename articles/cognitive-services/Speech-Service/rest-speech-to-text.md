@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1577d63822bdb21eff7fcbb3e1343243a3004409
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 70c5593f29b5e83d5d3f318179d365a9235849ca
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033642"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790613"
 ---
 # <a name="speech-to-text-rest-api"></a>Diktálás REST API
 
 A beszédfelismerési szöveg két különböző REST API-val rendelkezik. Minden API speciális célt szolgál, és különböző végpontokat használ.
 
 A beszéd – szöveg REST API-k a következők:
-- A [beszédfelismerés és a szöveg közötti REST API v 3.0](#speech-to-text-rest-api-v30) használatos a [kötegelt átíráshoz](batch-transcription.md) és a [Custom Speechhoz](custom-speech-overview.md). a v 3.0 a [v 2.0 utódja](/azure/cognitive-services/speech-service/migrate-v2-to-v3).
+- A [beszédfelismerés és a szöveg közötti REST API v 3.0](#speech-to-text-rest-api-v30) használatos a [kötegelt átíráshoz](batch-transcription.md) és a [Custom Speechhoz](custom-speech-overview.md). a v 3.0 a [v 2.0 utódja](./migrate-v2-to-v3.md).
 - A beszéd [-szöveg REST API a rövid hanghoz](#speech-to-text-rest-api-for-short-audio) a [Speech SDK](speech-sdk.md)alternatívájaként használható online átírás. Az API-t használó kérelmek legfeljebb 60 másodpercig továbbítanak kérelmeket. 
 
 ## <a name="speech-to-text-rest-api-v30"></a>Beszéd – szöveg REST API v 3.0
@@ -45,7 +45,7 @@ A REST API v 3.0 a következőkhöz hasonló funkciókat tartalmaz:
 
 Tekintse meg a következő [cikket](batch-transcription.md): példák a Batch átírásával REST API v 3.0 használatával.
 
-Ha beszédfelismerést REST API v 2.0-s verziót használ, tekintse meg az [útmutató](/azure/cognitive-services/speech-service/migrate-v2-to-v3)a v 3.0-ba való áttelepítését ismertető témakört.
+Ha beszédfelismerést REST API v 2.0-s verziót használ, tekintse meg az [útmutató](./migrate-v2-to-v3.md)a v 3.0-ba való áttelepítését ismertető témakört.
 
 Tekintse meg a teljes beszéd – szöveg REST API v [3.0 referenciát](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0).
 

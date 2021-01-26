@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: bb7708514de6a1d68ecad0c142d68c321293d728
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 41aa7f251bc12fd889a71f65da83c4730ebda9a7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219623"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789633"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric kiadások
 
@@ -18,7 +18,7 @@ ms.locfileid: "98219623"
 - <a href="https://github.com/Azure/service-fabric-issues" target="blank">Probléma követése</a> 
 - <a href="/azure/service-fabric/service-fabric-support" target="blank">Támogatási lehetőségek</a> 
 - <a href="/azure/service-fabric/service-fabric-versions" target="blank">Támogatott verziók</a> 
-- <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">Kódminták</a>
+- <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">Kód mintái</a>
 
 Ez a cikk további információkat tartalmaz a Service Fabric futtatókörnyezet és SDK-k legújabb kiadásairól és frissítéseiről.
 
@@ -117,7 +117,7 @@ A tervezett kiadási dátumokat is frissítjük, jelezve, hogy figyelembe vessz�
 #### <a name="key-announcements"></a>Legfontosabb közlemények
  - [**Az KeyVaultReference támogatása (előzetes verzió)**](./service-fabric-keyvault-references.md): Service Fabric [felügyelt identitásokat](./concepts-managed-identity.md) engedélyező alkalmazások mostantól közvetlenül hivatkozhatnak Key Vault titkos URL-címre környezeti változóként, Application paraméterként vagy Container adattárbeli hitelesítő adatokként. Service Fabric automatikusan feloldja a titkot az alkalmazás felügyelt identitásával. 
      
-- **Javított biztonság az állapot nélküli szolgáltatások esetében**: az alkalmazások frissítése során a rendelkezésre állás biztosítása érdekében új konfigurációkat vezettünk be, amelyekkel meghatározható, hogy az [állapot nélküli szolgáltatások milyen számú példányban](/dotnet/api/system.fabric.description.statelessservicedescription?view=azure-dotnet) legyenek elérhetők. Korábban ez az érték 1 volt az összes szolgáltatás esetében, és nem módosítható. Ezzel az új, szolgáltatásként nyújtott biztonsági ellenőrzéssel biztosíthatja, hogy a szolgáltatások az alkalmazások frissítése, a fürtök frissítése és a Service Fabric állapotának és biztonsági ellenőrzésének egyéb karbantartása során minimális számú példányban maradjanak.
+- **Javított biztonság az állapot nélküli szolgáltatások esetében**: az alkalmazások frissítése során a rendelkezésre állás biztosítása érdekében új konfigurációkat vezettünk be, amelyekkel meghatározható, hogy az [állapot nélküli szolgáltatások milyen számú példányban](/dotnet/api/system.fabric.description.statelessservicedescription) legyenek elérhetők. Korábban ez az érték 1 volt az összes szolgáltatás esetében, és nem módosítható. Ezzel az új, szolgáltatásként nyújtott biztonsági ellenőrzéssel biztosíthatja, hogy a szolgáltatások az alkalmazások frissítése, a fürtök frissítése és a Service Fabric állapotának és biztonsági ellenőrzésének egyéb karbantartása során minimális számú példányban maradjanak.
   
 - [**Felhasználói szolgáltatások erőforrás-korlátai**](./service-fabric-resource-governance.md#enforcing-the-resource-limits-for-user-services): a felhasználók erőforrás-korlátozásokat állíthatnak be a csomópont felhasználói szolgáltatásaihoz, így elkerülhetők például az Service Fabric rendszerszolgáltatások erőforrás-kimerülése. 
   

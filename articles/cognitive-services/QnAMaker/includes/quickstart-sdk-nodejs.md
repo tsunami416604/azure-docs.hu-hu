@@ -4,12 +4,12 @@ description: Ez a rövid útmutató bemutatja, hogyan kezdheti el a Node.js QnA 
 ms.topic: quickstart
 ms.date: 06/18/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 02dc36fb388135c31f639a26264579ab9de75b8c
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: fba4354fb1aae19833790e166474008dc994cd79
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98256301"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792355"
 ---
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/version-1)
 
@@ -24,7 +24,7 @@ A Node.js a QnA Maker ügyféloldali kódtár használatával:
 * Válasz kérése egy Tudásbázisból
 * Tudásbázis törlése
 
-[Dokumentáció](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-qnamaker)  |  [Csomag (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker)  |  [Node.js minták](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/QnAMaker/sdk/qnamaker_quickstart.js)
+[Dokumentáció](/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-qnamaker)  |  [Csomag (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker)  |  [Node.js minták](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/QnAMaker/sdk/qnamaker_quickstart.js)
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/version-2)
 
@@ -38,7 +38,7 @@ A Node.js a QnA Maker ügyféloldali kódtár használatával:
 * Válasz kérése egy Tudásbázisból
 * Tudásbázis törlése
 
-[Dokumentáció](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-qnamaker)  |  [Csomag (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker)  |  [Node.js minták](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/QnAMaker/sdk/preview-sdk/quickstart.js)
+[Dokumentáció](/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-qnamaker)  |  [Csomag (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker)  |  [Node.js minták](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/QnAMaker/sdk/preview-sdk/quickstart.js)
 
 ---
 
@@ -149,13 +149,13 @@ Hozzon létre egy változót az erőforrás Azure-kulcsához és az erőforrás 
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/version-1)
 
-[QnA Maker](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest) két különböző objektummodell-modellt használ:
+[QnA Maker](/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest) két különböző objektummodell-modellt használ:
 * A **[QnAMakerClient](#qnamakerclient-object-model)** a Tudásbázis létrehozásához, kezeléséhez, közzétételéhez és letöltéséhez szükséges objektum.
 * A **[QnAMakerRuntime](#qnamakerruntimeclient-object-model)** a TUDÁSBÁZIS GenerateAnswer API-val való lekérdezésére szolgáló objektum, és új javasolt kérdések küldése a Train API használatával (az [aktív tanulás](../concepts/active-learning-suggestions.md)részeként).
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/version-2)
 
-[QnA Maker](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest) a következő objektummodell-modellt használja:
+[QnA Maker](/javascript/api/@azure/cognitiveservices-qnamaker/?view=azure-node-latest) a következő objektummodell-modellt használja:
 * A **[QnAMakerClient](#qnamakerclient-object-model)** a Tudásbázis létrehozásához, kezeléséhez, közzétételéhez, letöltéséhez és lekérdezéséhez szükséges objektum.
 
 ---
@@ -176,7 +176,7 @@ Az előrejelzési QnA Maker ügyfél egy QnAMakerRuntimeClient objektum, amely a
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/version-2)
 
-A QnA Maker felügyelt erőforrásokhoz nincs szükség a QnAMakerRuntimeClient objektum használatára. Ehelyett közvetlenül a [QnAMakerClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/qnamakerclient?view=azure-node-latest) objektumon hívja meg a [generateAnswer](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#generateAnswer_string__QueryDTO__msRest_RequestOptionsBase_) .
+A QnA Maker felügyelt erőforrásokhoz nincs szükség a QnAMakerRuntimeClient objektum használatára. Ehelyett közvetlenül a [QnAMakerClient](/javascript/api/@azure/cognitiveservices-qnamaker/qnamakerclient?view=azure-node-latest) objektumon hívja meg a [generateAnswer](/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#generateAnswer_string__QueryDTO__msRest_RequestOptionsBase_) .
 
 ---
 
@@ -322,7 +322,7 @@ A QnAMakerRuntimeClient segítségével választ kaphat az ismeretekből, vagy �
 
 ### <a name="generate-an-answer-from-the-knowledge-base"></a>Válasz létrehozása a Tudásbázisból
 
-Válasz létrehozása közzétett Tudásbázisból a RuntimeClient. Runtime. generateAnswer metódus használatával. Ez a metódus elfogadja a Tudásbázis AZONOSÍTÓját és a [QueryDTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/querydto). Hozzáférés a QueryDTO további tulajdonságaihoz, például a legfelső és kontextushoz a csevegési robotban való használatra.
+Válasz létrehozása közzétett Tudásbázisból a RuntimeClient. Runtime. generateAnswer metódus használatával. Ez a metódus elfogadja a Tudásbázis AZONOSÍTÓját és a [QueryDTO](/javascript/api/@azure/cognitiveservices-qnamaker/querydto). Hozzáférés a QueryDTO további tulajdonságaihoz, például a legfelső és kontextushoz a csevegési robotban való használatra.
 
 [!code-javascript[Generate an answer from a knowledge base](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=GenerateAnswer)]
 
@@ -330,7 +330,7 @@ Válasz létrehozása közzétett Tudásbázisból a RuntimeClient. Runtime. gen
 
 ### <a name="generate-an-answer-from-the-knowledge-base"></a>Válasz létrehozása a Tudásbázisból
 
-Egy közzétett Tudásbázis válaszának létrehozása a QnAMakerClient. Tudásbázis. generateAnswer metódus használatával. Ez a metódus elfogadja a Tudásbázis AZONOSÍTÓját és a [QueryDTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/querydto). Hozzáférés a QueryDTO további tulajdonságaihoz, például a legfelső és kontextushoz a csevegési robotban való használatra.
+Egy közzétett Tudásbázis válaszának létrehozása a QnAMakerClient. Tudásbázis. generateAnswer metódus használatával. Ez a metódus elfogadja a Tudásbázis AZONOSÍTÓját és a [QueryDTO](/javascript/api/@azure/cognitiveservices-qnamaker/querydto). Hozzáférés a QueryDTO további tulajdonságaihoz, például a legfelső és kontextushoz a csevegési robotban való használatra.
 
 [!code-javascript[Generate an answer from a knowledge base](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/preview-sdk/quickstart.js?name=GenerateAnswer)]
 

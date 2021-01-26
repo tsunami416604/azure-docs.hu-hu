@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 25d084b8af148707685b2cbb4368394a12d99db2
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 64064a584681d84eb6ba023c4777c0fdc4e6ec3d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97005307"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791930"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>Oktatóanyag: több X. 509 eszköz kiépítése beléptetési csoportok használatával
 
@@ -46,7 +46,7 @@ Ebben az oktatóanyagban a következő célkitűzéseket fogja végrehajtani:
 
 A következő előfeltételek a Windows fejlesztési környezetéhez szükségesek. Linux vagy macOS esetén tekintse meg a [fejlesztési környezet előkészítése](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) az SDK-ban című dokumentáció megfelelő szakaszát.
 
-* A [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019-es verziójában engedélyezve van az ["asztali fejlesztés C++](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) -ban" számítási feladattal. A Visual Studio 2015 és a Visual Studio 2017 is támogatott.
+* A [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019-es verziójában engedélyezve van az ["asztali fejlesztés C++](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) -ban" számítási feladattal. A Visual Studio 2015 és a Visual Studio 2017 is támogatott.
 
 * A [Git](https://git-scm.com/download/) legújabb verziójának telepített példánya.
 
@@ -56,7 +56,7 @@ Ebben a szakaszban előkészítjük az [Azure IoT C SDK](https://github.com/Azur
 
 1. Töltse le a [Csatlakozáskezelő felügyeleti csomag Build-szolgáltatását](https://cmake.org/download/).
 
-    Fontos, hogy a telepítés megkezdése **előtt** telepítse a Visual Studio előfeltételeit (a [Visual studiót](https://visualstudio.microsoft.com/vs/) és az ["asztali fejlesztés C++](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) -os munkaterheléssel") `CMake` . Ha az előfeltételek telepítve vannak, és ellenőrizte a letöltött fájlt, telepítse a CMake buildelési rendszert.
+    Fontos, hogy a telepítés megkezdése **előtt** telepítse a Visual Studio előfeltételeit (a [Visual studiót](https://visualstudio.microsoft.com/vs/) és az ["asztali fejlesztés C++](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) -os munkaterheléssel") `CMake` . Ha az előfeltételek telepítve vannak, és ellenőrizte a letöltött fájlt, telepítse a CMake buildelési rendszert.
 
 2. Keresse meg az Azure IoT C SDK [legújabb kiadásához](https://github.com/Azure/azure-iot-sdk-c/releases/latest) tartozó címke nevét.
 
@@ -87,7 +87,7 @@ Ebben a szakaszban előkészítjük az [Azure IoT C SDK](https://github.com/Azur
     $ cmake -Duse_prov_client:BOOL=ON -Dhsm_custom_lib=/d/azure-iot-sdk-c/cmake/provisioning_client/samples/custom_hsm_example/Debug/custom_hsm_example.lib ..
     ```
 
-    Ha a `cmake` nem találja a C++ fordítóprogramot, a fenti parancs futtatása esetlegesen fordítási hibákat adhat vissza. Ilyen esetekben futtassa a parancsot a [Visual Studio parancssorából](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs).
+    Ha a `cmake` nem találja a C++ fordítóprogramot, a fenti parancs futtatása esetlegesen fordítási hibákat adhat vissza. Ilyen esetekben futtassa a parancsot a [Visual Studio parancssorából](/dotnet/framework/tools/developer-command-prompt-for-vs).
 
     Ha a létrehozás sikeres, a rendszer létrehoz egy Visual Studio-megoldást a `cmake` címtárában. Az utolsó néhány kimeneti sor a következő kimenethez hasonlóan néz ki:
 
@@ -351,7 +351,7 @@ A következő oktatóanyaghoz tartozó egyéni HSM-helyettes kód frissítése:
 
 A nem Windows rendszerű eszközökön a tanúsítványláncot átadhatja a kódból a tanúsítványtárolóként.
 
-Windows-alapú eszközökön hozzá kell adnia az aláíró tanúsítványokat (root és Intermediate) egy Windows- [tanúsítványtárolóhoz](https://docs.microsoft.com/windows/win32/secauthn/certificate-stores). Ellenkező esetben az aláíró tanúsítványok nem lesznek átirányítva a DPS-re egy biztonságos csatorna Transport Layer Security (TLS) protokollal.
+Windows-alapú eszközökön hozzá kell adnia az aláíró tanúsítványokat (root és Intermediate) egy Windows- [tanúsítványtárolóhoz](/windows/win32/secauthn/certificate-stores). Ellenkező esetben az aláíró tanúsítványok nem lesznek átirányítva a DPS-re egy biztonságos csatorna Transport Layer Security (TLS) protokollal.
 
 Az aláíró tanúsítványok hozzáadása a tanúsítványtárolóhoz Windows-alapú eszközökön:
 
@@ -462,7 +462,7 @@ Ha befejezte az eszköz ügyféloldali mintájának tesztelését és vizsgálat
 1. Kattintson a **tanúsítványok** elemre a DPS-ben. Az oktatóanyagban feltöltött és ellenőrzött összes tanúsítvány esetében kattintson a tanúsítványra, és a **Törlés** gombra kattintva távolítsa el.
 1. A Azure Portal bal oldali menüjében válassza a **minden erőforrás** lehetőséget, majd válassza ki az IoT hubot. Nyissa meg a **IoT-eszközöket** a hubhoz. Jelölje be az oktatóanyagban regisztrált eszköz *azonosítója* melletti jelölőnégyzetet. Kattintson a panel tetején található **Törlés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy X. 509 eszközt telepített egy egyéni HSM használatával az IoT hub-ra. Ha szeretné megtudni, hogyan lehet IoT-eszközöket több hubhoz kiépíteni, folytassa a következő oktatóanyaggal. 
 

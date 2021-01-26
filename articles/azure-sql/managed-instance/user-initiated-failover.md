@@ -9,13 +9,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 12/16/2020
-ms.openlocfilehash: 4b1c98d8621267b300a82b697bce66a6b94e82f3
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.date: 01/25/2021
+ms.openlocfilehash: c12e1f4b01b0e2dd7fa21808cf33f45f9a5be59b
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825923"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789972"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Felhasználó által, felügyelt SQL-példányon kezdeményezett manuális feladatátvétel
 
@@ -143,6 +143,7 @@ Nem fogja tudni ugyanazt a kimenetet látni a GP szolgáltatási szintjével, mi
 > - **15 percenként** egyetlen (1) feladatátvételt kezdeményeztek ugyanazon a felügyelt példányon.
 > - BC-példányok esetében léteznie kell a feladatátvételi kérelem elfogadásához szükséges replikák Kvórumának.
 > - BC-példányok esetében nem lehet megadni, hogy melyik olvasható másodlagos replika kezdeményezi a feladatátvételt.
+> - A feladatátvétel nem engedélyezett, amíg az új adatbázishoz tartozó első teljes biztonsági mentést az automatizált biztonsági mentési rendszerek végzik.
 
 ## <a name="next-steps"></a>További lépések
 

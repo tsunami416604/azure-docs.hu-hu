@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 16e60b5015107c5f99e63f15bb21c5a375f05340
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 74d2654c54d1ab2ac5d47aa24449c41c20a90b74
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123252"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791138"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Az egykiszolgálós Azure Database for PostgreSQL tarifacsomagjai
 
@@ -39,7 +39,7 @@ A kiszolgáló létrehozása után a virtuális mag, a hardver-létrehozási és
 
 A számítási erőforrások virtuális mag-ként vannak megadva, amely az alapul szolgáló hardver logikai PROCESSZORát jelöli. Kelet-Kína 1, Észak-Kína 1, US DoD – középső régió és US DoD – keleti régió az Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzorokon alapuló Gen 4 logikai processzorokat használ. Minden más régió az Intel E5-2673 v4 (Broadwell) 2,3 GHz-es processzorokon alapuló Gen 5 logikai CPU-ket használ.
 
-## <a name="storage"></a>Tárolás
+## <a name="storage"></a>Storage
 
 Az Ön által kiépített tárterület a Azure Database for PostgreSQL-kiszolgáló számára elérhető tárolási kapacitás mennyisége. A tárterületet az adatbázisfájlok, az ideiglenes fájlok, a tranzakciónaplók és a PostgreSQL-kiszolgáló naplófájljai használják. A kiépített tárterület teljes mennyisége határozza meg a kiszolgáló számára elérhető I/O-kapacitást is.
 
@@ -51,7 +51,7 @@ Az Ön által kiépített tárterület a Azure Database for PostgreSQL-kiszolgá
 | IOPS | Változó |3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 20 000 IOPS | 3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 20 000 IOPS |
 
 > [!NOTE]
-> A 16TB és a 20 000 IOPS a következő régiókban támogatott: USA keleti régiója, USA 2. keleti régiója, Dél-Brazília, Közép-USA, USA nyugati régiója, Észak-Európa, az USA déli középső régiója, Észak-Európa, Nyugat-Európa, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Délkelet-Ázsia, Kelet-Ázsia, Kelet-Japán, Nyugat-Korea, Közép-Kelet-Ausztrália Korea , Kelet-Kanada, Közép-Kanada.
+> A 16TB és a 20 000 IOPS a következő régiókban támogatott: Kelet-Ausztrália, Kelet-Ausztrália, Dél-Brazília, Közép-Kanada, Kelet-Kanada, Közép-USA, Kelet-Kína 2, Észak-Kína 2, Kelet-Ázsia, USA keleti régiója, USA 2. keleti régiója, USA 2. keleti régiója, Kelet-Japán, Nyugat-Korea, Dél-Korea, Észak-Észak-Svájc Európa , Nyugat-Svájc, US Gov Kelet, US Gov SouthCentral, US Gov SouthWest, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Nyugat-Európa, az USA nyugati középső régiója, az USA nyugati régiója és az USA 2. nyugati régiója.
 >
 > Minden más régió támogatja a 4TB és a 6000 IOPS.
 >
@@ -104,7 +104,7 @@ A tárterület skálázása és a biztonsági mentés megőrzési időtartamána
 
 A legfrissebb díjszabási információkért tekintse meg a szolgáltatás [díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/PostgreSQL/). A kívánt konfiguráció költségének megtekintéséhez a [Azure Portal](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) a kiválasztott beállítások alapján megjeleníti a havi költséget a **díjszabási szintek** lapon. Ha még nem rendelkezik Azure-előfizetéssel, az Azure díjszabási kalkulátor használatával megbecsülheti a becsült árat. Az [Azure díjszabási kalkulátor](https://azure.microsoft.com/pricing/calculator/) webhelyén válassza az **elemek hozzáadása**, majd az **adatbázisok** kategóriát, és **Azure Database for PostgreSQL** a beállítások testreszabásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan [hozhat létre PostgreSQL-kiszolgálót a portálon](tutorial-design-database-using-azure-portal.md).
 - A [szolgáltatás korlátainak](concepts-limits.md)megismerése.

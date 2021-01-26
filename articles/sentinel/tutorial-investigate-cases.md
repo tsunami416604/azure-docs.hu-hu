@@ -12,20 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 01/25/2021
 ms.author: yelevin
-ms.openlocfilehash: aa9160f01ed0040123bd8ac932cfd2443f557bb6
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 8853f3774bb35361746c8b706f38bc54079d74f7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511729"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790986"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Oktatóanyag: incidensek vizsgálata az Azure Sentineltel
 
 > [!IMPORTANT]
-> A vizsgálati gráf jelenleg **előzetes** verzióban érhető el. Tekintse meg a kiegészítő [használati feltételeket a Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) előzetes verziókra vonatkozó további jogi feltételekhez, amelyek olyan Azure-szolgáltatásokra vonatkoznak, amelyek a bétaverzióban, az előzetes verzióban vagy más esetben még nem jelent meg általánosan elérhetővé.
-
+> A vizsgálati gráf mostantól **általánosan elérhető**. 
 
 Ez az oktatóanyag segítséget nyújt az incidensek vizsgálatához az Azure Sentinel használatával. Miután csatlakoztatta az adatforrásokat az Azure Sentinel szolgáltatáshoz, értesítést szeretne kapni, ha valamilyen gyanús esemény történik. Ennek lehetővé tételéhez az Azure Sentinel lehetővé teszi, hogy speciális riasztási szabályokat hozzon létre, amelyek a hozzárendelhető és kivizsgálható incidenseket eredményeznek.
 
@@ -113,10 +112,10 @@ A vizsgálati gráf használata:
 
 Ha feloldott egy adott incidenst (például amikor a vizsgálat elérte a következtetést), az incidens állapotát **Lezártra** kell állítania. Ha így tesz, a rendszer arra kéri, hogy osztályozza az incidenst a zárás okának megadásával. Ez a lépés kötelező. Kattintson a **besorolás kiválasztása** lehetőségre, és válasszon a következők közül a legördülő listából:
 
-- Igaz pozitív – gyanús tevékenység
-- Jóindulatú pozitív – gyanús, de várt
-- Hamis pozitív – helytelen riasztási logika
-- Hamis pozitív – helytelen adatértékek
+- Valós pozitív – gyanús tevékenység
+- Jóindulatú pozitív – gyanús, de nem váratlan
+- Álpozitív – helytelen riasztási logika
+- Álpozitív – helytelen adatok
 - Meghatározatlan
 
 :::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="Képernyőkép, amely kiemeli a Select besorolási listán elérhető besorolásokat.":::
@@ -125,7 +124,7 @@ A megfelelő besorolás kiválasztása után adjon hozzá egy leíró szöveget 
 
 :::image type="content" source="media/tutorial-investigate-cases/closing-reasons-comment-apply.png" alt-text="{alt-text}":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban megtanulta, hogyan kezdheti el az incidensek vizsgálatát az Azure Sentinel használatával. Folytassa az Oktatóanyaggal, hogy [miként reagálhat a fenyegetésekre automatizált forgatókönyvek használatával](tutorial-respond-threats-playbook.md).
 > [!div class="nextstepaction"]
 > [Válaszoljon a fenyegetésekre](tutorial-respond-threats-playbook.md) , hogy automatizálja a fenyegetésekre adott válaszokat.

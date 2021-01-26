@@ -3,12 +3,12 @@ title: Azure DevTest Labs Azure biztonsági alapterve
 description: Azure DevTest Labs Azure biztonsági alapterve
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: eabb55956f97f40312c894ccabd7a341ecc5688c
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 09b4e28437c79961d53cf07b068e3169d20fe0c4
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202011"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789904"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs Azure biztonsági alapterve
 
@@ -619,7 +619,7 @@ Emellett a Microsoft által közzétett Azure Marketplace virtuálisgép-rendsze
 
 - [Azure Security Center sebezhetőségi felméréssel kapcsolatos javaslatok megvalósítása](../security-center/deploy-vulnerability-assessment-vm.md)
 - [Azure Automation állapot konfigurációjának áttekintése](../automation/automation-dsc-overview.md)
-- [Példaszkript egy VHD Azure-ba történő feltöltéséhez és új virtuális gép létrehozásához](../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
+- [Példaszkript egy VHD Azure-ba történő feltöltéséhez és új virtuális gép létrehozásához](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
 - [Rendszerkép-előállító létrehozása a DevTest Labs szolgáltatásban](image-factory-create.md)
 
 **Azure Security Center figyelés:** igen
@@ -886,7 +886,7 @@ Azure Security Center figyelés: * * * * nem alkalmazható
 
 **Felelősség:** Megosztott
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse meg a következő cikket:
 
 - [Biztonsági riasztások a Azure DevTest Labs környezetekben](environment-security-alerts.md)

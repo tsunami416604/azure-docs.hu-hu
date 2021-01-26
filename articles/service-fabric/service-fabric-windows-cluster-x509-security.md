@@ -3,12 +3,12 @@ title: Fürt biztonságossá tétele Windows rendszeren tanúsítványok haszná
 description: Biztonságos kommunikáció egy Azure Service Fabric önálló vagy helyszíni fürtön, valamint az ügyfelek és a fürt között.
 ms.topic: conceptual
 ms.date: 10/15/2017
-ms.openlocfilehash: 34ba457ce0f39705393962d5c5ec8fa11668f413
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: d75c644be47ea44f6a8a6ccac91b785af0132833
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686123"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791037"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Önálló fürt biztonságossá tétele Windows rendszeren X. 509 tanúsítványok használatával
 Ez a cikk az önálló Windows-fürt különböző csomópontjai közötti kommunikáció biztonságossá tételét ismerteti. Azt is leírja, hogyan lehet hitelesíteni azokat az ügyfeleket, amelyek X. 509 tanúsítványokkal csatlakoznak ehhez a fürthöz. A hitelesítés biztosítja, hogy csak a jogosult felhasználók férhessenek hozzá a fürthöz és az üzembe helyezett alkalmazásokhoz, valamint a felügyeleti feladatok elvégzéséhez. A fürt létrehozásakor engedélyezni kell a tanúsítvány biztonságát a fürtön.  
@@ -302,7 +302,7 @@ A tanúsítványok használata után telepítheti őket a fürtcsomópontokon. A
     $PfxFilePath ="C:\mypfx.pfx"
     Import-PfxCertificate -Exportable -CertStoreLocation Cert:\LocalMachine\My -FilePath $PfxFilePath -Password (ConvertTo-SecureString -String $pswd -AsPlainText -Force)
     ```
-3. Most állítsa be a tanúsítvány hozzáférés-vezérlését úgy, hogy a hálózati szolgáltatás fiókja alatt futó Service Fabric folyamat a következő parancsfájl futtatásával is használható legyen. Adja meg a szolgáltatás fiókja tanúsítványának és **hálózati szolgáltatásának** ujjlenyomatát. Győződjön meg arról, hogy a tanúsítvány ACL-jei helyesek, ha megnyitja a tanúsítvány **megkezdése** a  >  **számítógép-tanúsítványok kezelése** és a **All Tasks**  >  **titkos kulcsok kezelése** minden feladat számára.
+3. Most állítsa be a tanúsítvány hozzáférés-vezérlését úgy, hogy a hálózati szolgáltatás fiókja alatt futó Service Fabric folyamat a következő parancsfájl futtatásával is használható legyen. Adja meg a szolgáltatás fiókja tanúsítványának és **hálózati szolgáltatásának** ujjlenyomatát. Győződjön meg arról, hogy a tanúsítvány ACL-jei helyesek, ha megnyitja a tanúsítvány **megkezdése** a  >  **számítógép-tanúsítványok kezelése** és a   >  **titkos kulcsok kezelése** minden feladat számára.
    
     ```powershell
     param
@@ -355,7 +355,7 @@ $ConnectArgs = @{  ConnectionEndpoint = '10.7.0.5:19000';  X509Credential = $Tru
 Connect-ServiceFabricCluster $ConnectArgs
 ```
 
-Ezután más PowerShell-parancsokat is futtathat a fürttel való együttműködéshez. A [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) futtatásával például megjelenítheti a biztonságos fürt csomópontjainak listáját.
+Ezután más PowerShell-parancsokat is futtathat a fürttel való együttműködéshez. A [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode) futtatásával például megjelenítheti a biztonságos fürt csomópontjainak listáját.
 
 
 A fürt eltávolításához kapcsolódjon ahhoz a fürthöz, amelyen a Service Fabric csomagot letöltötte, nyisson meg egy parancssort, és lépjen a csomag mappájába. Most futtassa a következő parancsot:

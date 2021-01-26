@@ -4,12 +4,12 @@ description: Service Fabric a távelérés lehetővé teszi, hogy az ügyfelek �
 ms.topic: conceptual
 ms.date: 09/20/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c3659fea73abae3c9c5264f227b90d0af95a93e7
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: a0486a27d76c978a65c4a3cfd81df52a12e4ea1d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576655"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791577"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>Szolgáltatás távelérési szolgáltatása C#-ban Reliable Services
 
@@ -31,7 +31,7 @@ A távelérést két egyszerű lépésben állíthatja be a szolgáltatáshoz:
 >[!NOTE]
 >A `Remoting` névtér külön NuGet-csomagként érhető el `Microsoft.ServiceFabric.Services.Remoting` .
 
-A következő állapot nélküli szolgáltatás például egyetlen metódust tesz elérhetővé, amely távoli eljáráshívás esetén "„Helló világ!” alkalmazás" beolvasását teszi lehetővé.
+A következő állapot nélküli szolgáltatás például egyetlen metódust tesz elérhetővé, amely távoli eljáráshívás esetén "Hello World" beolvasását teszi lehetővé.
 
 ```csharp
 using Microsoft.ServiceFabric.Services.Communication.Runtime;
@@ -160,7 +160,7 @@ Ezek a lépések megváltoztatják a sablon kódját, hogy a v2-veremet explicit
    </Resources>
    ```
 
-2. Használja a [FabricTransportServiceRemotingListener](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet) a `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` névtérből.
+2. Használja a [FabricTransportServiceRemotingListener](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener) a `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` névtérből.
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -176,7 +176,7 @@ Ezek a lépések megváltoztatják a sablon kódját, hogy a v2-veremet explicit
     }
    ```
 
-3. Ügyfelek létrehozásához használja a [FabricTransportServiceRemotingClientFactory](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) a `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` névtérből.
+3. Ügyfelek létrehozásához használja a [FabricTransportServiceRemotingClientFactory](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory) a `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` névtérből.
 
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
@@ -255,7 +255,7 @@ Az alábbi lépéseket követve váltson V2_1 veremre.
     }
    ```
 
-3. Adjon hozzá egy [Assembly attribútumot](/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute?view=azure-dotnet) a távelérési adapterekhez.
+3. Adjon hozzá egy [Assembly attribútumot](/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute) a távelérési adapterekhez.
 
    ```csharp
     [assembly:  FabricTransportServiceRemotingProvider(RemotingListenerVersion=  RemotingListenerVersion.V2_1, RemotingClientVersion= RemotingClientVersion.V2_1)]
@@ -279,7 +279,7 @@ Kövesse az alábbi lépéseket:
    </Resources>
    ```
 
-2. Használja a [távelérési v2-figyelőt](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet). Az alapértelmezett szolgáltatási végponti erőforrás neve a következő: "ServiceEndpointV2_1." A szolgáltatás jegyzékfájljában definiálni kell.
+2. Használja a [távelérési v2-figyelőt](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener). Az alapértelmezett szolgáltatási végponti erőforrás neve a következő: "ServiceEndpointV2_1." A szolgáltatás jegyzékfájljában definiálni kell.
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -297,7 +297,7 @@ Kövesse az alábbi lépéseket:
     }
    ```
 
-3. Használja a v2 [Client Factoryt](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet).
+3. Használja a v2 [Client Factoryt](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory).
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
           {

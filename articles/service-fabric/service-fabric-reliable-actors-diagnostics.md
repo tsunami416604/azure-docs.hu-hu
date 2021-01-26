@@ -5,15 +5,15 @@ author: abhishekram
 ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: abhisram
-ms.openlocfilehash: a38a11d9cf062cd0a45890d43afe9b2530b2b7bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebaedb5369f3b39372262bfde526706e8d069418
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258458"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789616"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>A Reliable Actors diagnosztizálása és teljesítmény-figyelése
-A Reliable Actors futtatókörnyezet [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) [eseményeket és teljesítményszámlálókat](/dotnet/api/system.diagnostics.performancecounter?view=dotnet-plat-ext-3.1)bocsát ki. Ezek betekintést nyújtanak a futtatókörnyezet működésével, és segítenek a hibaelhárításban és a teljesítmény-figyelésben.
+A Reliable Actors futtatókörnyezet [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource) [eseményeket és teljesítményszámlálókat](/dotnet/api/system.diagnostics.performancecounter)bocsát ki. Ezek betekintést nyújtanak a futtatókörnyezet működésével, és segítenek a hibaelhárításban és a teljesítmény-figyelésben.
 
 ## <a name="eventsource-events"></a>EventSource események
 A Reliable Actors Runtime EventSource-szolgáltatójának neve "Microsoft-ServiceFabric-Actors". Az eseményforrás eseményei a [diagnosztikai események](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio) ablakban jelennek meg, amikor a Actor alkalmazást a [Visual Studióban](service-fabric-debugging-your-application.md)végzik.
@@ -50,7 +50,7 @@ A kategória esetében `Service Fabric Actor` a számláló példányainak neve 
 
 `ServiceFabricPartitionID_ActorsRuntimeInternalID`
 
-A *ServiceFabricPartitionID* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció-azonosító egy GUID, és a karakterlánc-ábrázolás a [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) "D" formátumú metódussal jön létre.
+A *ServiceFabricPartitionID* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció-azonosító egy GUID, és a karakterlánc-ábrázolás a [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) "D" formátumú metódussal jön létre.
 
 A *ActorRuntimeInternalID* egy 64 bites egész szám karakterlánc-ábrázolása, amelyet a Fabric Actors futtatókörnyezet generál belső használatra. Ez a teljesítményszámláló-példány neve része, amely biztosítja az egyediségét, és a teljesítményszámláló-példányok más neveivel való ütközés elkerülését. A felhasználók nem próbálják értelmezni a teljesítményszámláló-példány nevének ezen részét.
 
@@ -69,7 +69,7 @@ A *MethodName* annak a Actor metódusnak a neve, amelyhez a teljesítményszáml
 
 A *ActorsRuntimeMethodId* egy 32 bites egész szám karakterlánc-ábrázolása, amelyet a Fabric Actors futtatókörnyezet generál belső használatra. Ez a teljesítményszámláló-példány neve része, amely biztosítja az egyediségét, és a teljesítményszámláló-példányok más neveivel való ütközés elkerülését. A felhasználók nem próbálják értelmezni a teljesítményszámláló-példány nevének ezen részét.
 
-A *ServiceFabricPartitionID* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció-azonosító egy GUID, és a karakterlánc-ábrázolás a [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) "D" formátumú metódussal jön létre.
+A *ServiceFabricPartitionID* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció-azonosító egy GUID, és a karakterlánc-ábrázolás a [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) "D" formátumú metódussal jön létre.
 
 A *ActorRuntimeInternalID* egy 64 bites egész szám karakterlánc-ábrázolása, amelyet a Fabric Actors futtatókörnyezet generál belső használatra. Ez a teljesítményszámláló-példány neve része, amely biztosítja az egyediségét, és a teljesítményszámláló-példányok más neveivel való ütközés elkerülését. A felhasználók nem próbálják értelmezni a teljesítményszámláló-példány nevének ezen részét.
 
@@ -83,7 +83,7 @@ A fenti példában a `ivoicemailboxactor.leavemessageasync` metódus neve, a `2`
 ### <a name="actor-method-events-and-performance-counters"></a>Színészi metódus eseményei és teljesítményszámlálói
 A Reliable Actors Runtime a következő, a [Actor metódusokkal](service-fabric-reliable-actors-introduction.md)kapcsolatos eseményeket bocsátja ki.
 
-| Esemény neve | Eseményazonosító | Szint | Kulcsszó | Leírás |
+| Esemény neve | Eseményazonosító | Level | Kulcsszó | Leírás |
 | --- | --- | --- | --- | --- |
 | ActorMethodStart |7 |Részletes |0x2 |A Actors futtatókörnyezet egy Actor metódus meghívására készül. |
 | ActorMethodStop |8 |Részletes |0x2 |Egy Actor metódus befejezte a végrehajtást. Ez azt eredményezi, hogy a futásidejű aszinkron hívást kapott a Actor metódus, és a Actor metódus által visszaadott feladat befejeződött. |
@@ -100,7 +100,7 @@ A Reliable Actors futtatókörnyezet a Actor metódusok végrehajtásával kapcs
 ### <a name="concurrency-events-and-performance-counters"></a>Egyidejűségi események és teljesítményszámlálók
 A Reliable Actors futtatókörnyezet az [egyidejűséghez](service-fabric-reliable-actors-introduction.md#concurrency)kapcsolódó alábbi eseményeket bocsátja ki.
 
-| Esemény neve | Eseményazonosító | Szint | Kulcsszó | Leírás |
+| Esemény neve | Eseményazonosító | Level | Kulcsszó | Leírás |
 | --- | --- | --- | --- | --- |
 | ActorMethodCallsWaitingForLock |12 |Részletes |0x8 |Ezt az eseményt a színész minden új bekapcsolásának elején kell megírni. Tartalmazza azon függőben lévő Actor-hívások számát, amelyek arra várnak, hogy beszerezzék a bekapcsolási egyidejűséget végrehajtó, a színészi zárolást. |
 
@@ -115,7 +115,7 @@ A Reliable Actors futtatókörnyezet a párhuzamossághoz kapcsolódó következ
 ### <a name="actor-state-management-events-and-performance-counters"></a>Színészi állapot-felügyeleti események és teljesítményszámlálók
 A Reliable Actors Runtime a következő eseményeket bocsátja ki a [szereplők állapotának kezelésével](service-fabric-reliable-actors-state-management.md)kapcsolatban.
 
-| Esemény neve | Eseményazonosító | Szint | Kulcsszó | Leírás |
+| Esemény neve | Eseményazonosító | Level | Kulcsszó | Leírás |
 | --- | --- | --- | --- | --- |
 | ActorSaveStateStart |10 |Részletes |0x4 |A Actors futtatókörnyezet a színész állapotának mentésére készül. |
 | ActorSaveStateStop |11 |Részletes |0x4 |A Actors Runtime befejezte a színész állapotának mentését. |
@@ -130,7 +130,7 @@ A Reliable Actors Runtime közzéteszi a szereplők állapotának kezelésével 
 ### <a name="events-related-to-actor-replicas"></a>Actor-replikákkal kapcsolatos események
 A Reliable Actors futtatókörnyezet a következő, [színészi replikákkal](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors)kapcsolatos eseményeket bocsátja ki.
 
-| Esemény neve | Eseményazonosító | Szint | Kulcsszó | Leírás |
+| Esemény neve | Eseményazonosító | Level | Kulcsszó | Leírás |
 | --- | --- | --- | --- | --- |
 | ReplicaChangeRoleToPrimary |1 |Tájékoztató |0x1 |A Actor replika megváltoztatta a szerepkört az elsődleges értékre. Ez azt jelenti, hogy a partíció résztvevői a replikán belül lesznek létrehozva. |
 | ReplicaChangeRoleFromPrimary |2 |Tájékoztató |0x1 |A Actor replika a szerepkört nem elsődlegesre módosította. Ez azt jelenti, hogy a partíció résztvevői többé nem jönnek létre a replikán belül. A rendszer nem küld új kérelmeket a replikán belül már létrehozott résztvevőknek. A rendszer a folyamatban lévő kérések befejezése után megsemmisíti a szereplőket. |
@@ -138,7 +138,7 @@ A Reliable Actors futtatókörnyezet a következő, [színészi replikákkal](se
 ### <a name="actor-activation-and-deactivation-events-and-performance-counters"></a>Színészi aktiválási és inaktiválási események és teljesítményszámlálók
 A Reliable Actors Runtime a következő, a [színész aktiválásával és inaktiválásával](service-fabric-reliable-actors-lifecycle.md)kapcsolatos eseményeket bocsátja ki.
 
-| Esemény neve | Eseményazonosító | Szint | Kulcsszó | Leírás |
+| Esemény neve | Eseményazonosító | Level | Kulcsszó | Leírás |
 | --- | --- | --- | --- | --- |
 | ActorActivated |5 |Tájékoztató |0x1 |Egy színész aktiválva lett. |
 | ActorDeactivated |6 |Tájékoztató |0x1 |Egy szereplő inaktiválva lett. |

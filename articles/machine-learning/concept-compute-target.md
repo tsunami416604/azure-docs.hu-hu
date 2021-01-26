@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: 1d3a7be429f730dd4dbd71bade1e3e51ea73c10f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1ff20ab19390dcdadb9a4aa79822f7ace3d31989
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188649"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791172"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>Mik a számítási célok az Azure Machine Learningben?
 
@@ -100,7 +100,7 @@ A támogatott adatsorozatokkal és korlátozásokkal kapcsolatos további inform
 
 | **Támogatott VM-sorozat**  | **Korlátozások** |
 |------------|------------|
-| D | Nincsenek. |
+| T | Nincsenek. |
 | Dv2 | Nincsenek. |  
 | Dv3 | Nincsenek.|
 | DSv2 | Nincsenek. | 
@@ -123,7 +123,7 @@ Habár a Azure Machine Learning támogatja ezeket a virtuálisgép-sorozatokat, 
 > [!NOTE]
 > A Azure Machine Learning nem támogatja az Azure-beli számítási műveletek által támogatott összes virtuálisgép-méretet. Az elérhető virtuálisgép-méretek listázásához használja az alábbi módszerek egyikét:
 > * [REST API](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2020-08-01/examples/ListVMSizesResult.json)
-> * [Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py.md#supported-vmsizes-workspace--location-none-)
+> * [Python SDK](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py.md#supported-vmsizes-workspace--location-none-)
 >
 
 ### <a name="compute-isolation"></a>Számítási elkülönítés
@@ -145,7 +145,7 @@ További információ az elkülönítésről: [elkülönítés az Azure nyilván
 
 A nem felügyelt számítási célt *nem* a Azure Machine learning felügyeli. Ezt a számítási célt a Azure Machine Learningon kívül hozza létre, majd csatolja a munkaterülethez. A nem felügyelt számítási erőforrások további lépéseket igényelhetnek a gépi tanulási feladatok teljesítményének fenntartása vagy javítása érdekében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 * [Számítási cél használata a modell betanításához](how-to-set-up-training-targets.md)

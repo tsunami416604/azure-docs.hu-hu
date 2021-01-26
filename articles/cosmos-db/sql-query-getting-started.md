@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.author: tisande
-ms.openlocfilehash: c78e15a0656abd510bbc241d39ffd026afddfd96
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c687b5b18c9cf7b0920b23f49e3c7a2607e0a89f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353663"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791020"
 ---
 # <a name="getting-started-with-sql-queries"></a>Bevezetés az SQL-lekérdezések használatába
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -187,7 +187,7 @@ Az előző példák a Cosmos DB lekérdezési nyelvének számos aspektusát mut
 
 * A Azure Cosmos DB csak a szigorú JSON-elemeket támogatja. A típusrendszer és a kifejezések kizárólag JSON-típusokkal működnek. További információ: [JSON-specifikáció](https://www.json.org/).  
 
-* A Cosmos-tároló a JSON-elemek séma nélküli gyűjteménye. A tároló elemein belüli és azok közötti kapcsolatok implicit módon vannak rögzítve az adattárolással, nem az elsődleges kulcs és a idegenkulcs-kapcsolatok esetében. Ez a funkció fontos a cikk későbbi részében tárgyalt elemekhez tartozó illesztések esetében.
+* A Cosmos-tároló a JSON-elemek séma nélküli gyűjteménye. A tároló elemein belüli és azok közötti kapcsolatok implicit módon vannak rögzítve az adattárolással, nem az elsődleges kulcs és a idegenkulcs-kapcsolatok esetében. Ez a funkció fontos a [Azure Cosmos db belüli illesztésekben](sql-query-join.md)ismertetett, az elemen belüli illesztések esetében.
 
 ## <a name="next-steps"></a>További lépések
 

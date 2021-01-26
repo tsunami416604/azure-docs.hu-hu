@@ -8,12 +8,12 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 12bcb54f4bfdf17209324febeba380ff7789fc0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec7ecb77d37ed1cdf1d13aa7191f5d50e0008c20
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88998985"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790799"
 ---
 # <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>Oktatóanyag: közzététel, előfizetés a Felhőbeli eseményekre
 
@@ -31,7 +31,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 ## <a name="create-an-azure-function-in-the-azure-portal"></a>Azure-függvény létrehozása a Azure Portalban
 
-Az [oktatóanyagban](../../azure-functions/functions-create-first-azure-function.md) ismertetett lépéseket követve hozzon létre egy Azure-függvényt. 
+Az [oktatóanyagban](../../azure-functions/functions-get-started.md) ismertetett lépéseket követve hozzon létre egy Azure-függvényt. 
 
 Cserélje le a kódrészletet a következő kódra:
 
@@ -57,7 +57,7 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 }
 ```
 
-Az új függvényben kattintson a jobb felső sarokban található **függvény URL-címének beolvasása** lehetőségre, válassza az alapértelmezett (**Function Key**) lehetőséget, majd válassza a **Másolás**lehetőséget. Az oktatóanyagban később a függvény URL-címének értékét fogja használni.
+Az új függvényben kattintson a jobb felső sarokban található **függvény URL-címének beolvasása** lehetőségre, válassza az alapértelmezett (**Function Key**) lehetőséget, majd válassza a **Másolás** lehetőséget. Az oktatóanyagban később a függvény URL-címének értékét fogja használni.
 
 > [!NOTE]
 > Tekintse meg az [Azure functions](../../azure-functions/functions-overview.md) dokumentációját, amely további példákat és oktatóanyagokat tartalmaz a EventGrid-eseményindítók használatával végzett eseményekre való reagáláshoz.
@@ -195,7 +195,7 @@ A Azure Portal a függvény **figyelése** lehetőség alatt megtekintheti a les
 
 * Törölje a Azure Portal létrehozott Azure-függvényt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozott egy Event Grid-témakört, előfizetést és közzétett eseményeket. Most, hogy már ismeri az alapszintű lépéseket, tekintse meg a következő cikkeket:
 

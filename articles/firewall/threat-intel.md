@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: victorh
-ms.openlocfilehash: e51cc8905a7b4a88bb7f7dabaf24bb30159ff86c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77e36d5ab98f1177b5a0b89ee10b3e6bd22560c2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83655090"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791459"
 ---
 # <a name="azure-firewall-threat-intelligence-based-filtering"></a>Azure Firewall fenyegetés intelligencia-alapú szűrés
 
@@ -27,7 +27,7 @@ Dönthet úgy, hogy csak a riasztást naplózza egy szabály indításakor, vagy
 
 Alapértelmezés szerint a fenyegetési intelligencia-alapú szűrés riasztási módban van engedélyezve. Ezt a funkciót nem lehet kikapcsolni, vagy módosítani a módot, amíg a portál felülete elérhetővé nem válik a régiójában.
 
-:::image type="content" source="media/threat-intel/threat-intel-ui.png" alt-text="Tűzfal-veszélyforrások felderítése":::
+:::image type="content" source="media/threat-intel/threat-intel-ui.png" alt-text="Fenyegetésekkel kapcsolatos intelligencia-alapú szűrési portál felülete":::
 
 ## <a name="logs"></a>Naplók
 
@@ -53,6 +53,6 @@ A következő naplózási részlet egy aktivált szabályt mutat be:
 
 ## <a name="next-steps"></a>További lépések
 
-- Lásd: [Azure Firewall log Analytics minták](log-analytics-samples.md)
+- Lásd: [Azure Firewall log Analytics minták](./firewall-workbook.md)
 - Megtudhatja, hogyan [helyezhet üzembe és konfigurálhat egy Azure Firewall](tutorial-firewall-deploy-portal.md)
 - A [Microsoft biztonsági intelligencia jelentésének](https://www.microsoft.com/en-us/security/operations/security-intelligence-report) áttekintése

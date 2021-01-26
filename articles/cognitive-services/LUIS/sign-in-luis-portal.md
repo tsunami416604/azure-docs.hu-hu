@@ -9,12 +9,12 @@ ms.date: 09/08/2020
 ms.topic: how-to
 ms.author: nitinme
 author: nitinme
-ms.openlocfilehash: b8382b76496976054ebb452e39866765d986ccbb
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 8a4b86fb8fa5a87283178d957e07617b908e6286
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368178"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790901"
 ---
 # <a name="sign-in-to-luis-portal"></a>Bejelentkezés a LUIS portálra
 
@@ -47,8 +47,8 @@ Ebből a cikkből megtudhatja, hogyan kezdheti el a LUIS-portált, és hogyan ho
     * **Bérlő neve** – az a bérlő, amelyhez az Azure-előfizetés társítva van. A bérlőket nem lehet átváltani a meglévő ablakból. A bérlőket úgy válthat, hogy bezárja ezt az ablakot, és kiválasztja az ikont a képernyő jobb felső sarkában, amely tartalmazza a monogramját. Válassza a felül **egy másik szerzői erőforrás kiválasztása** lehetőséget az ablak újbóli megnyitásához.
     * **Azure-erőforráscsoport neve** – az előfizetésében kiválasztott egyéni erőforráscsoport-név. Az erőforráscsoportok lehetővé teszik az Azure-erőforrások csoportosítását a hozzáféréshez és a felügyelethez. Ha jelenleg nincs erőforráscsoport az előfizetésben, nem lehet létrehozni egyet a LUIS portálon. A bejelentkezési folyamat folytatásához lépjen a [Azure Portalra](https://ms.portal.azure.com/#create/Microsoft.ResourceGroup) , és hozzon létre egyet a Luis-ben.
     * **Azure-Erőforrás neve** – az Ön által választott egyéni név, amelyet a szerzői műveletek URL-címének részeként használ a rendszer. Az erőforrás neve csak alfanumerikus karaktereket tartalmazhat, `-` és nem kezdődhet vagy végződhet `-` . Ha bármilyen más szimbólum szerepel a névben, az erőforrás létrehozása sikertelen lesz.
-    * **Hely** – válassza ki, hogy a Luis által jelenleg támogatott [három szerzői hely](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions) egyikében adja meg az alkalmazásait, beleértve a következőket: USA nyugati régiója, Nyugat-Európa és Kelet-Ausztrália
-    * **Díjszabási** csomag – alapértelmezés szerint a F0 authoring díjszabási szintje van kiválasztva, mivel az ajánlott. Hozzon létre egy [ügyfél által felügyelt kulcsot](https://docs.microsoft.com/azure/cognitive-services/luis/luis-encryption-of-data-at-rest#customer-managed-keys-for-language-understanding) a Azure Portal, ha további biztonsági réteget keres.
+    * **Hely** – válassza ki, hogy a Luis által jelenleg támogatott [három szerzői hely](./luis-reference-regions.md) egyikében adja meg az alkalmazásait, beleértve a következőket: USA nyugati régiója, Nyugat-Európa és Kelet-Ausztrália
+    * **Díjszabási** csomag – alapértelmezés szerint a F0 authoring díjszabási szintje van kiválasztva, mivel az ajánlott. Hozzon létre egy [ügyfél által felügyelt kulcsot](./luis-encryption-of-data-at-rest.md#customer-managed-keys-for-language-understanding) a Azure Portal, ha további biztonsági réteget keres.
 8. Most sikeresen bejelentkezett a LUIS-ba. Most már megkezdheti az alkalmazások létrehozását.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
@@ -56,6 +56,6 @@ Ebből a cikkből megtudhatja, hogyan kezdheti el a LUIS-portált, és hogyan ho
 * Új erőforrás létrehozásakor győződjön meg arról, hogy az erőforrás neve csak alfanumerikus karaktereket, "-" karaktert tartalmaz, és nem kezdődhet vagy végződhet "-" karakterrel. Ellenkező esetben a művelet sikertelen lesz.
 * Győződjön meg arról, hogy rendelkezik a [megfelelő engedélyekkel az előfizetéséhez egy Azure-erőforrás létrehozásához](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles). Ha nem rendelkezik a megfelelő engedélyekkel, lépjen kapcsolatba az előfizetés rendszergazdájával, és adja meg a megfelelő engedélyeket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, hogyan [indíthat el új alkalmazást](luis-how-to-start-new-app.md)

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 985f9e741a1491a812c1d2b20de96381f8af3fa4
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 084ca039e7f388a11e15b29c579606c6ed3086db
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359846"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790427"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>A mintacímkézési eszköz üzembe helyezése
 
@@ -101,7 +101,7 @@ Az alábbi lépéseket követve hozzon létre egy új erőforrást a Azure Porta
 > A webalkalmazás létrehozásakor konfigurálhatja az engedélyezést és a hitelesítést is. Ez nem szükséges a kezdéshez. 
 
 > [!IMPORTANT]
-> Előfordulhat, hogy engedélyeznie kell a TLS-t a webalkalmazáshoz, hogy megtekintse azt a `https` címben. Kövesse az alábbi utasításokat a [TLS-végpont](https://docs.microsoft.com/azure/container-instances/container-instances-container-group-ssl) beállítása egy oldalkocsi-tároló beállításához, mint a TLS/SSL engedélyezése a webalkalmazáshoz.
+> Előfordulhat, hogy engedélyeznie kell a TLS-t a webalkalmazáshoz, hogy megtekintse azt a `https` címben. Kövesse az alábbi utasításokat a [TLS-végpont](../../container-instances/container-instances-container-group-ssl.md) beállítása egy oldalkocsi-tároló beállításához, mint a TLS/SSL engedélyezése a webalkalmazáshoz.
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -158,6 +158,6 @@ Javasoljuk, hogy a webalkalmazást Azure Active Directoryhoz kapcsolja. Ez bizto
 
 Az OCR űrlap címkéző eszköze nyílt forráskódú projektként is elérhető a GitHubon. Az eszköz egy reakciós + Redux használatával létrehozott webalkalmazás, amely írógéppel van írva. További részletekért lásd: [OCR űrlap címkézése eszköz](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A betanítási](./quickstarts/label-tool.md) útmutató segítségével megtudhatja, hogyan használhatja az eszközt a betanítási adatok manuális címkézéséhez és a felügyelt tanulás végrehajtásához.

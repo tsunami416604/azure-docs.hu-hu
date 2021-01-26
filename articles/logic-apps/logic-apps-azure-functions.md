@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: fd04e5a7f084de7a95f20b54b99a9e4590f10cd7
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 7df9f7d072af7c5f6523fd1be0432ce51954fa10
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034764"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791879"
 ---
 # <a name="call-functions-from-azure-logic-apps"></a>Függvények hívása Azure Logic Apps
 
@@ -31,7 +31,7 @@ A kódrészletek Azure Functions használata nélküli futtatásához tekintse m
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* Function-alkalmazás, amely egy Azure Functionsban létrehozott függvény, valamint a létrehozott függvény tárolója. Ha nem rendelkezik Function alkalmazással, [először hozza létre a Function alkalmazást](../azure-functions/functions-create-first-azure-function.md). Ezután a logikai alkalmazáson kívül is létrehozhatja a függvényt a Azure Portal, vagy a Logic app Designerben a logikai alkalmazáson [belülről](#create-function-designer) .
+* Function-alkalmazás, amely egy Azure Functionsban létrehozott függvény, valamint a létrehozott függvény tárolója. Ha nem rendelkezik Function alkalmazással, [először hozza létre a Function alkalmazást](../azure-functions/functions-get-started.md). Ezután a logikai alkalmazáson kívül is létrehozhatja a függvényt a Azure Portal, vagy a Logic app Designerben a logikai alkalmazáson [belülről](#create-function-designer) .
 
 * A Logic apps használata esetén ugyanazok a követelmények vonatkoznak a Function apps és a functions szolgáltatásra, függetlenül attól, hogy azok már meglévőek vagy újak:
 
@@ -102,9 +102,9 @@ Most, hogy létrehozta a függvényt az Azure-ban, kövesse a [függvények hozz
 
 ## <a name="create-functions-inside-logic-apps"></a>Függvények létrehozása logikai alkalmazásokon belül
 
-A Logic app Designer beépített Azure Functions műveletének használatával közvetlenül a logikai alkalmazás munkafolyamataiból hozhat létre függvényeket, de ezt a módszert csak a JavaScriptben írt függvények esetében használhatja. Más nyelvek esetében a Azure Portal Azure Functions felületén keresztül hozhat létre függvényeket. További információ: az [első függvény létrehozása a Azure Portalban](../azure-functions/functions-create-first-azure-function.md).
+A Logic app Designer beépített Azure Functions műveletének használatával közvetlenül a logikai alkalmazás munkafolyamataiból hozhat létre függvényeket, de ezt a módszert csak a JavaScriptben írt függvények esetében használhatja. Más nyelvek esetében a Azure Portal Azure Functions felületén keresztül hozhat létre függvényeket. További információ: az [első függvény létrehozása a Azure Portalban](../azure-functions/functions-get-started.md).
 
-Azonban ahhoz, hogy létre tudja hozni a függvényt az Azure-ban, már rendelkeznie kell egy Function alkalmazással, amely a függvények tárolója. Ha nem rendelkezik Function alkalmazással, előbb hozza létre a Function alkalmazást. Lásd: az [első függvény létrehozása a Azure Portalban](../azure-functions/functions-create-first-azure-function.md).
+Azonban ahhoz, hogy létre tudja hozni a függvényt az Azure-ban, már rendelkeznie kell egy Function alkalmazással, amely a függvények tárolója. Ha nem rendelkezik Function alkalmazással, előbb hozza létre a Function alkalmazást. Lásd: az [első függvény létrehozása a Azure Portalban](../azure-functions/functions-get-started.md).
 
 1. A [Azure Portalban](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic app Designerben.
 
@@ -128,7 +128,7 @@ Azonban ahhoz, hogy létre tudja hozni a függvényt az Azure-ban, már rendelke
 
    1. A **Code (kód** ) mezőben adja hozzá a kódot a függvény sablonhoz, beleértve a logikai alkalmazásnak a működés befejezése után visszaadott válaszokat és hasznos adatokat. Ha elkészült, válassza a **Létrehozás** lehetőséget.
 
-   Példa:
+   Például:
 
    ![A függvény megadása](./media/logic-apps-azure-functions/add-code-function-definition.png)
 

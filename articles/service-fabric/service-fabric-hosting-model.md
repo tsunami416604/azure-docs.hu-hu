@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: harahma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5f3f6238bb72704d13fef4a7171aeaebee5f9141
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9932c11332a616928d59c213d4f4806feb81cfe2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708696"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791645"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Azure Service Fabric üzemeltetési modell
 Ez a cikk áttekintést nyújt az Azure Service Fabric által biztosított alkalmazás-üzemeltetési modellekről, valamint ismerteti a **megosztott folyamat** és az **exkluzív folyamat** modelljei közötti különbségeket. Leírja, hogyan néz ki egy telepített alkalmazás egy Service Fabric csomóponton, valamint a szolgáltatás replikái (vagy példányai) és a Service-Host folyamat közötti kapcsolat.
@@ -22,7 +22,7 @@ A folytatás előtt győződjön meg arról, hogy tisztában van a különböző
 > Ebben a cikkben, kivéve, ha explicit módon említi, hogy valami más:
 >
 > - A *replika* egy állapot-nyilvántartó szolgáltatás replikáját és egy állapot nélküli szolgáltatás egy példányát jelenti.
-> - A *CodePackage* egy *ServiceHost* -folyamattal egyenértékűként kezeli a rendszer, amely regisztrálja a *ServiceType*, és az adott *ServiceType*tartozó szolgáltatások replikáit tárolja.
+> - A *CodePackage* egy *ServiceHost* -folyamattal egyenértékűként kezeli a rendszer, amely regisztrálja a *ServiceType*, és az adott *ServiceType* tartozó szolgáltatások replikáit tárolja.
 >
 
 Az üzemeltetési modell megismeréséhez Lássunk egy példát. Tegyük fel, hogy van egy "MyAppType" *alkalmazásban (* , amely a "MyServiceType" *ServiceType* rendelkezik. A "MyServiceType" a (z) "MyServicePackage" *szervizcsomaggal* rendelkezik, amelynek *CodePackage* "MyCodePackage". A "MyCodePackage" a futtatáskor regisztrálja a "MyServiceType" *ServiceType* .
@@ -91,7 +91,7 @@ Most hozzon létre egy másik szolgáltatást, **Fabric:/App1/ServiceC**, az App
 ![Központilag telepített alkalmazás csomópont nézetének diagramja][node-view-four]
 
 
-Amint láthatja, Service Fabric aktiválta a "MyServicePackage" két új példányát (egyet az egyes replikák számára a Partition **P6** és a **P7**). Service Fabric az egyes replikákat a *CodePackage*dedikált példányán helyezi el. Ha az exkluzív folyamatmodell használatát használja egy adott alkalmazáshoz, egy adott *szervizcsomag* több példánya is aktív lehet egy csomóponton. Az előző példában a "MyServicePackage" három példánya aktív a **Fabric:/App1**. A "MyServicePackage" ezen aktív példányai mindegyike társítva van egy **ServicePackageActivationId** . Ez az azonosító azonosítja az Application **Fabric:/App1**alkalmazáson belüli másolatot.
+Amint láthatja, Service Fabric aktiválta a "MyServicePackage" két új példányát (egyet az egyes replikák számára a Partition **P6** és a **P7**). Service Fabric az egyes replikákat a *CodePackage* dedikált példányán helyezi el. Ha az exkluzív folyamatmodell használatát használja egy adott alkalmazáshoz, egy adott *szervizcsomag* több példánya is aktív lehet egy csomóponton. Az előző példában a "MyServicePackage" három példánya aktív a **Fabric:/App1**. A "MyServicePackage" ezen aktív példányai mindegyike társítva van egy **ServicePackageActivationId** . Ez az azonosító azonosítja az Application **Fabric:/App1** alkalmazáson belüli másolatot.
 
 Ha csak a megosztott folyamat modelljét használja egy alkalmazáshoz, a csomóponton csak egy aktív példány található a *szervizcsomagban* . A *szervizcsomagok* ezen aktiválásának **ServicePackageActivationId** üres karakterlánc. Ebben az esetben például a **Fabric:/App2**.
 
@@ -100,7 +100,7 @@ Ha csak a megosztott folyamat modelljét használja egy alkalmazáshoz, a csomó
 >
 >- Az exkluzív folyamat üzemeltetési modellje megfelel a **ServicePackageActivationMode** **ExclusiveProcess**. A beállítás használatához explicit módon meg kell adnia azt a szolgáltatás létrehozásakor. 
 >
->- A szolgáltatás üzemeltetési modelljének megtekintéséhez kérdezze le a [szolgáltatás leírását][p2], és tekintse meg a **ServicePackageActivationMode**értékét.
+>- A szolgáltatás üzemeltetési modelljének megtekintéséhez kérdezze le a [szolgáltatás leírását][p2], és tekintse meg a **ServicePackageActivationMode** értékét.
 >
 >
 
@@ -112,11 +112,11 @@ A központilag telepített szervizcsomag **ServicePackageActivationId** a csomó
 > [!NOTE]
 >- Egy adott alkalmazás esetében az adott csomóponton a megosztott folyamat üzemeltetési modellje alatt a *szervizcsomagok* csak egy példánya aktiválva van. A **ServicePackageActivationId** megegyezik az *üres karakterlánccal*, és nem kell megadni az üzembe helyezett szervizcsomaggal kapcsolatos műveletek végrehajtásakor. 
 >
-> - Egy adott alkalmazás esetében a kizárólagos eljárás-üzemeltetési modellben egy adott alkalmazás esetében a *szervizcsomagok* egy vagy több példánya is aktív lehet. Minden aktiválás *nem üres* **ServicePackageActivationId**rendelkezik, amely a telepített szervizcsomaggal kapcsolatos műveletek végrehajtásakor van megadva. 
+> - Egy adott alkalmazás esetében a kizárólagos eljárás-üzemeltetési modellben egy adott alkalmazás esetében a *szervizcsomagok* egy vagy több példánya is aktív lehet. Minden aktiválás *nem üres* **ServicePackageActivationId** rendelkezik, amely a telepített szervizcsomaggal kapcsolatos műveletek végrehajtásakor van megadva. 
 >
 > - Ha a **ServicePackageActivationId** nincs megadva, az alapértelmezett érték *üres karakterlánc*. Ha a megosztott folyamat modelljében aktivált telepített szervizcsomag található, akkor a rendszer a műveletet hajtja végre. Ellenkező esetben a művelet sikertelen lesz.
 >
-> - Ne végezzen egyszeri lekérdezést, és gyorsítótárazza a **ServicePackageActivationId**. Az azonosító dinamikusan jön létre, és különböző okok miatt változhat. A **ServicePackageActivationId**igénylő művelet végrehajtása előtt először le kell kérdezni a [telepített szervizcsomagok][p3] listáját egy csomóponton. Ezután használja a lekérdezési eredmény **ServicePackageActivationId** az eredeti művelet végrehajtásához.
+> - Ne végezzen egyszeri lekérdezést, és gyorsítótárazza a **ServicePackageActivationId**. Az azonosító dinamikusan jön létre, és különböző okok miatt változhat. A **ServicePackageActivationId** igénylő művelet végrehajtása előtt először le kell kérdezni a [telepített szervizcsomagok][p3] listáját egy csomóponton. Ezután használja a lekérdezési eredmény **ServicePackageActivationId** az eredeti művelet végrehajtásához.
 >
 >
 
@@ -134,17 +134,17 @@ Jelenleg nem változtathatja meg egy meglévő szolgáltatás üzemeltetési mod
  Az exkluzív folyamatmodell jobb elkülönítést biztosít a saját folyamatában lévő minden replikával. Ha a replikák egyike hibát tartalmaz, az nem érinti a többi replikát. Ez a modell olyan esetekben hasznos, amikor a kommunikációs protokoll nem támogatja a portok megosztását. Lehetővé teszi, hogy az erőforrás-szabályozást a replika szintjén alkalmazza. Az exkluzív folyamat azonban több operációsrendszer-erőforrást használ, mivel egy folyamatot indít el a csomóponton található minden replikához.
 
 ## <a name="exclusive-process-model-and-application-model-considerations"></a>Exkluzív folyamatmodell-és alkalmazás-modell megfontolások
-A legtöbb alkalmazás esetében az alkalmazást Service Fabric egy *ServiceType* *-t kell*megtartania. 
+A legtöbb alkalmazás esetében az alkalmazást Service Fabric egy *ServiceType* *-t kell* megtartania. 
 
-Bizonyos esetekben Service Fabric több *ServiceType* is *engedélyez (és* egy *CodePackage* több *ServiceType*is regisztrálhat). Az alábbiakban néhány példát láthat a konfigurációk hasznos lehetőségeire:
+Bizonyos esetekben Service Fabric több *ServiceType* is *engedélyez (és* egy *CodePackage* több *ServiceType* is regisztrálhat). Az alábbiakban néhány példát láthat a konfigurációk hasznos lehetőségeire:
 
 - Optimalizálni szeretné az erőforrás-használatot a kevesebb folyamat elindításával, és egy folyamatnál nagyobb replika-sűrűséggel.
 - A különböző *ServiceTypes* replikáinak meg kell osztaniuk néhány olyan gyakori adatmennyiséget, amely magas inicializálási vagy memória-díjszabással rendelkezik.
 - Ingyenes szolgáltatást kínál, és a szolgáltatás összes replikáját ugyanazzal a folyamattal kívánja korlátozni az erőforrás-felhasználáshoz.
 
-Az exkluzív folyamat-üzemeltetési modell nem *koherens egy olyan*alkalmazás modelljével, amely több *ServiceTypes* rendelkezik. Ennek az az oka, hogy a *szervizcsomagok* több *ServiceTypes* -t úgy terveztek, hogy nagyobb erőforrás-megosztást biztosítson a replikák között, és lehetővé teszi a nagyobb replikák sűrűségét Az exkluzív folyamatmodell különböző eredmények elérésére szolgál.
+Az exkluzív folyamat-üzemeltetési modell nem *koherens egy olyan* alkalmazás modelljével, amely több *ServiceTypes* rendelkezik. Ennek az az oka, hogy a *szervizcsomagok* több *ServiceTypes* -t úgy terveztek, hogy nagyobb erőforrás-megosztást biztosítson a replikák között, és lehetővé teszi a nagyobb replikák sűrűségét Az exkluzív folyamatmodell különböző eredmények elérésére szolgál.
 
-Vegye figyelembe, hogy több *ServiceTypes* - *csomag esetében egy másik* *CodePackage* regisztrálja az egyes *ServiceType*. Tegyük fel, hogy van egy "MultiTypeServicePackage" nevű *szervizcsomagja* , amely két *CodePackages*rendelkezik:
+Vegye figyelembe, hogy több *ServiceTypes* - *csomag esetében egy másik* *CodePackage* regisztrálja az egyes *ServiceType*. Tegyük fel, hogy van egy "MultiTypeServicePackage" nevű *szervizcsomagja* , amely két *CodePackages* rendelkezik:
 
 - "MyCodePackageA", amely a "MyServiceTypeA" *ServiceType* regisztrálja.
 - "MyCodePackageB", amely a "MyServiceTypeB" *ServiceType* regisztrálja.
@@ -160,9 +160,9 @@ Egy adott csomóponton mindkét szolgáltatás két replikával rendelkezik. Miv
 ![A csomópont nézetét megjelenítő diagram.][node-view-five]
 
 
-A (z) "MultiTypeServicePackage" a Service **Fabric:/SpecialApp/servicea**, a (z) "MyCodePackageA" **nevű, a** (z) "" a replika tárolására szolgáló replikájának aktiválásakor. A "MyCodePackageB" fut. Hasonlóképpen, a "MultiTypeServicePackage" aktiválása a Service **Fabric:/SpecialApp/ServiceB**partíciójának **P3** -as replikájában a "MyCodePackageB" a replikát üzemelteti. A "MyCodePackageA" fut. Ezért minél több *CodePackages* (a különböző *ServiceTypes*regisztrálása *), annál*nagyobb a redundáns erőforrás-használat. 
+A (z) "MultiTypeServicePackage" a Service **Fabric:/SpecialApp/servicea**, a (z) "MyCodePackageA" **nevű, a** (z) "" a replika tárolására szolgáló replikájának aktiválásakor. A "MyCodePackageB" fut. Hasonlóképpen, a "MultiTypeServicePackage" aktiválása a Service **Fabric:/SpecialApp/ServiceB** partíciójának **P3** -as replikájában a "MyCodePackageB" a replikát üzemelteti. A "MyCodePackageA" fut. Ezért minél több *CodePackages* (a különböző *ServiceTypes* regisztrálása *), annál* nagyobb a redundáns erőforrás-használat. 
  
- Ha azonban a (z) **:/SpecialApp/servicea** és a **Fabric:/SpecialApp/ServiceB** szolgáltatást a megosztott négyszínes modellel hozza létre, Service Fabric aktiválja a "MultiTypeServicePackage" csak egy példányát az Application **Fabric:/SpecialApp**. A "MyCodePackageA" a Service **Fabric:/SpecialApp/servicea**összes replikáját tárolja. A "MyCodePackageB" a Service **Fabric:/SpecialApp/ServiceB**összes replikáját tárolja. A következő ábrán a csomópont nézet látható ebben a beállításban: 
+ Ha azonban a (z) **:/SpecialApp/servicea** és a **Fabric:/SpecialApp/ServiceB** szolgáltatást a megosztott négyszínes modellel hozza létre, Service Fabric aktiválja a "MultiTypeServicePackage" csak egy példányát az Application **Fabric:/SpecialApp**. A "MyCodePackageA" a Service **Fabric:/SpecialApp/servicea** összes replikáját tárolja. A "MyCodePackageB" a Service **Fabric:/SpecialApp/ServiceB** összes replikáját tárolja. A következő ábrán a csomópont nézet látható ebben a beállításban: 
 
 
 ![A telepített alkalmazás csomópont nézetének diagramja][node-view-six]
@@ -172,9 +172,9 @@ Az előző példában úgy tűnhet, hogy ha a "MyCodePackageA" regisztrálja a "
 
 ### <a name="reliable-services-and-actor-forking-subprocesses"></a>Reliable Services-és Actor-elágazási alfolyamatok
 
-A Service Fabric nem támogatja a megbízható szolgáltatásokat és a későbbiekben megbízható Actors elágazási alfolyamatokat. A nem támogatott alfolyamatok nem regisztrálhatók, és a visszavonási jogkivonatok csak a regisztrált folyamatoknak [CodePackageActivationContext](/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) , ezért nem használhatók. az olyan problémák, mint például a frissítési hibák, ha az alfolyamatok nem zárulnak le, miután a fölérendelt folyamat megkapta a lemondási tokent.
+A Service Fabric nem támogatja a megbízható szolgáltatásokat és a későbbiekben megbízható Actors elágazási alfolyamatokat. A nem támogatott alfolyamatok nem regisztrálhatók, és a visszavonási jogkivonatok csak a regisztrált folyamatoknak [CodePackageActivationContext](/dotnet/api/system.fabric.codepackageactivationcontext) , ezért nem használhatók. az olyan problémák, mint például a frissítési hibák, ha az alfolyamatok nem zárulnak le, miután a fölérendelt folyamat megkapta a lemondási tokent.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Alkalmazás becsomagolása][a4] és üzembe helyezése készen áll a telepítésre.
 
 [Alkalmazások telepítése és eltávolítása][a5]. Ez a cikk azt ismerteti, hogyan használható a PowerShell az alkalmazások példányainak kezeléséhez.

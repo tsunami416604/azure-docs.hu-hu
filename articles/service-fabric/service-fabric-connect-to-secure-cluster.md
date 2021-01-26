@@ -4,12 +4,12 @@ description: Útmutatás a Service Fabric-fürthöz való ügyfél-hozzáférés
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2ce0325f7aebac92eb1e7deadd6f6875b75b3755
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a669f7400eb2daf2d71f6caed41560020699c58
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89008811"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791121"
 ---
 # <a name="connect-to-a-secure-cluster"></a>Csatlakozás biztonságos fürthöz
 
@@ -232,7 +232,7 @@ catch (Exception e)
 
 A következő példa a Microsoft. IdentityModel. clients. ActiveDirectory, Version: 2.19.208020213 függvényre támaszkodik.
 
-További információ a HRE-jogkivonat beszerzéséről: [Microsoft. IdentityModel. clients. ActiveDirectory](/dotnet/api/microsoft.identitymodel.clients.activedirectory?view=azure-dotnet).
+További információ a HRE-jogkivonat beszerzéséről: [Microsoft. IdentityModel. clients. ActiveDirectory](/dotnet/api/microsoft.identitymodel.clients.activedirectory).
 
 ```csharp
 string tenantId = "C15CFCEA-02C1-40DC-8466-FBD0EE0B05D2";
@@ -379,7 +379,7 @@ Legalább két tanúsítványt kell használni a fürt biztonságossá tételéh
 
 * Mac rendszeren: Kattintson duplán a PFX-fájlra, és kövesse a lépéseket a tanúsítvány a kulcskarikában való telepítéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Service Fabric fürt frissítési folyamata és elvárásai](service-fabric-cluster-upgrade.md)
 * [A Service Fabric-alkalmazások kezelése a Visual Studióban](service-fabric-manage-application-in-visual-studio.md)

@@ -3,12 +3,12 @@ title: A funkciók áttekintése – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk részletesen ismerteti az Azure Event Hubs funkcióit és terminológiáját.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 60dc964d1b827eec75ee4f65a5776710e57fd6eb
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 8860a8aa83a17b12236dd47d79479a82846fa8a8
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195789"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791946"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Az Azure Event Hubs funkciói és terminológiája
 
@@ -56,7 +56,7 @@ A közzétett események el lesznek távolítva az Event hub-ból egy konfigurá
 >
 > A [Event Hubs Capture](event-hubs-capture-overview.md) közvetlenül az Azure Blob Storage és a Azure Data Lake Storage használatával integrálódik, és az adott integráción keresztül lehetővé teszi, hogy az [események közvetlenül az Azure szinapszisba haladjanak](store-captured-data-data-warehouse.md).
 >
-> Ha az alkalmazáshoz tartozó [esemény-beszerzési](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) mintát szeretné használni, a pillanatkép-stratégiát a Event Hubs megőrzési korlátaival igazíthatja. A nem célja, hogy a nyers eseményekből származó, az időponttól kezdődően kiépített jelentős nézeteket újraépítsen. Ha az alkalmazása egy ideig még egy ideje éles környezetben, és a kivetítés-készítőnek évek óta változási események történnek, akkor a legújabb és a folyamatos módosítások elvégzése során is érdemes lenne megsajnálni ezt a stratégiát. 
+> Ha az alkalmazáshoz tartozó [esemény-beszerzési](/azure/architecture/patterns/event-sourcing) mintát szeretné használni, a pillanatkép-stratégiát a Event Hubs megőrzési korlátaival igazíthatja. A nem célja, hogy a nyers eseményekből származó, az időponttól kezdődően kiépített jelentős nézeteket újraépítsen. Ha az alkalmazása egy ideig még egy ideje éles környezetben, és a kivetítés-készítőnek évek óta változási események történnek, akkor a legújabb és a folyamatos módosítások elvégzése során is érdemes lenne megsajnálni ezt a stratégiát. 
 
 
 ### <a name="publisher-policy"></a>Közzétevői házirend
@@ -151,7 +151,7 @@ Eseményadatok:
 
 Az eltolás kezelése a felhasználó felelőssége.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha további információkat szeretne az Event Hubsról, tekintse meg az alábbi hivatkozásokat:
 

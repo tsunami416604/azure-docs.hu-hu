@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: a63a756448f9c7202c79c3b4625fc99d4a90dc52
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8e0c7324f5b73b3a2ac5e5fd6fa256202035077a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014057"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790969"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások a hitelesítéshez és az engedélyezéshez az Azure Kubernetes szolgáltatásban (ak)
 
@@ -98,39 +98,42 @@ Ha szeretné megtudni, hogyan szabályozhatja az AK-erőforráshoz és a kubecon
 2. Hozzáférés a Kubernetes API-hoz. Ezt a hozzáférési szintet a [KUBERNETES RBAC](#use-kubernetes-role-based-access-control-kubernetes-rbac) (hagyományos) vagy az Azure RBAC és a Kubernetes-hitelesítés integrálásával vezérli.
 A Kubernetes API-nak az Azure RBAC használatával történő részletes ismertetését lásd: [Az Azure RBAC használata Kubernetes-hitelesítéshez](manage-azure-rbac.md).
 
-## <a name="use-pod-identities"></a>A pod-identitások használata
+## <a name="use-pod-managed-identities"></a>A pod által felügyelt identitások használata
 
 **Ajánlott eljárási útmutató** – ne használjon rögzített hitelesítő adatokat a hüvelyeken vagy a tárolók rendszerképein belül, mivel azok a sugárterhelés vagy a visszaélések kockázatának vannak kitéve. Ehelyett a pod identitys használatával automatikusan kérhet hozzáférést egy központi Azure AD-identitási megoldás használatával. A pod-identitások csak a Linux-hüvelyek és a tároló-lemezképek használatára készültek.
 
+> [!NOTE]
+> A Windows-tárolók esetében a pod által felügyelt identitások támogatása hamarosan elérhető lesz.
+
 Ha a hüvelynek más Azure-szolgáltatásokhoz (például Cosmos DBhoz, Key Vaulthoz vagy Blob Storagehoz is hozzá kell férnie, a pod-nak hozzáférési hitelesítő adatokra van szüksége. Ezeket a hozzáférési hitelesítő adatokat a tároló lemezképével vagy Kubernetes-titokként kell megadni, de manuálisan kell létrehozni és hozzárendelni. A hitelesítő adatok gyakran újra felhasználhatók a hüvelyek között, és a rendszer nem fordítja rendszeresen.
 
-Felügyelt identitások az Azure-erőforrásokhoz (jelenleg a társított AK-beli nyílt forráskódú projektként van megvalósítva) lehetővé teszik, hogy automatikusan kérjen hozzáférést a szolgáltatásokhoz az Azure AD-n keresztül. A hüvelyekhez nem kell manuálisan meghatároznia a hitelesítő adatokat, ehelyett hozzáférési tokent kér valós időben, és csak a hozzájuk rendelt szolgáltatások elérésére használható. Az AK-ban két összetevőt helyezünk üzembe a fürt operátora, hogy a hüvelyek felügyelt identitásokat használjanak:
+Az Azure-erőforrások Pod által felügyelt identitásai lehetővé teszi, hogy automatikusan kérjen hozzáférést a szolgáltatásokhoz az Azure AD-n keresztül. A pod által felügyelt identitások jelenleg előzetes verzióban érhetők el az Azure Kubernetes Service-ben. Az első lépésekhez tekintse meg a [Azure Active Directory Pod által felügyelt identitások használata az Azure Kubernetes Service-ben (előzetes verzió)]( https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) dokumentációját. A pod által felügyelt identitások nem határozzák meg manuálisan a hüvelyek hitelesítő adatait, ehelyett hozzáférési tokent kérnek valós időben, és csak a hozzájuk rendelt szolgáltatások elérésére használhatók. Az AK-ban két összetevő van, amelyek kezelik a műveleteket, hogy a hüvelyek felügyelt identitásokat használjanak:
 
 * **A Node Management Identity (NMI) kiszolgáló** egy olyan Pod, amely daemonset elemet fut az AK-fürt minden csomópontján. A NMI-kiszolgáló az Azure-szolgáltatásokhoz tartozó Pod-kérelmeket figyeli.
-* **A felügyelt identitás-vezérlő (MIC)** egy központi Pod, amely jogosult a Kubernetes API-kiszolgáló lekérdezésére és a pod-hoz tartozó Azure Identity-hozzárendelés ellenőrzésére.
+* **Az Azure erőforrás-szolgáltató** lekérdezi a Kubernetes API-kiszolgálót, és ellenőrzi a pod-nak megfelelő Azure Identity-hozzárendelést.
 
-Ha a hüvely egy Azure-szolgáltatáshoz fér hozzá, a hálózati szabályok átirányítják a forgalmat a Node Management Identity (NMI) kiszolgálóra. A NMI-kiszolgáló azonosítja az Azure-szolgáltatásokhoz hozzáférést kérő hüvelyeket a távoli címük alapján, és lekérdezi a felügyelt identitás-vezérlőt (MIC). A MIC ellenőrzi az Azure Identity-hozzárendeléseket az AK-fürtben, és a NMI-kiszolgáló egy hozzáférési jogkivonatot kér Azure Active Directorytól (AD) a pod identitás-leképezése alapján. Az Azure AD hozzáférést biztosít a NMI-kiszolgálóhoz, amelyet a rendszer visszaadott a pod-nek. Ezt a hozzáférési jogkivonatot a pod használhatja a szolgáltatásokhoz való hozzáféréshez az Azure-ban.
+Ha a hüvely egy Azure-szolgáltatáshoz fér hozzá, a hálózati szabályok átirányítják a forgalmat a Node Management Identity (NMI) kiszolgálóra. A NMI-kiszolgáló azonosítja az Azure-szolgáltatásokhoz hozzáférést kérő hüvelyeket a távoli címük alapján, és lekérdezi az Azure erőforrás-szolgáltatót. Az Azure erőforrások-szolgáltató ellenőrzi az Azure Identity-leképezéseket az AK-fürtben, és a NMI-kiszolgáló ezt követően hozzáférési jogkivonatot kér a pod identitás-leképezése alapján Azure Active Directorytól (AD). Az Azure AD hozzáférést biztosít a NMI-kiszolgálóhoz, amelyet a rendszer visszaadott a pod-nek. Ezt a hozzáférési jogkivonatot a pod használhatja a szolgáltatásokhoz való hozzáféréshez az Azure-ban.
 
 A következő példában egy fejlesztő létrehoz egy Pod-t, amely egy felügyelt identitást használ a Azure SQL Databasehoz való hozzáférés kéréséhez:
 
 ![A pod-identitások lehetővé teszik, hogy a pod automatikusan kérjen hozzáférést más szolgáltatásokhoz](media/operator-best-practices-identity/pod-identities.png)
 
 1. A fürt operátora először létrehoz egy szolgáltatásfiókot, amely az identitások hozzárendelésére szolgál, amikor a hüvelyek a szolgáltatásokhoz való hozzáférést igényelnek.
-1. A rendszer üzembe helyezi a NMI-kiszolgálót és a MIC-t, hogy továbbítsa a hozzáférési tokenekhez tartozó összes Pod-kérelmet az Azure AD-be.
+1. A rendszer üzembe helyezi a NMI-kiszolgálót a pod-kérelmek továbbításához az Azure erőforrás-szolgáltatóval együtt, az Azure AD-hez való hozzáférési jogkivonatok esetén.
 1. A fejlesztő olyan felügyelt identitással helyez üzembe egy Pod-t, amely hozzáférési jogkivonatot kér a NMI-kiszolgálón keresztül.
 1. A rendszer visszaküldi a jogkivonatot a pod-nak, és hozzáfér Azure SQL Database
 
 > [!NOTE]
-> A felügyelt Pod-identitások egy nyílt forráskódú projekt, amelyet az Azure technikai támogatása nem támogat.
+> A pod által felügyelt identitások jelenleg előzetes verzió állapotban vannak.
 
-A pod-identitások használatához tekintse meg [a Kubernetes-alkalmazások identitásának Azure Active Directoryét][aad-pod-identity]ismertető témakört.
+A pod által felügyelt identitások használatához lásd: [Azure Active Directory Pod által felügyelt identitások használata az Azure Kubernetes Service-ben (előzetes verzió)]( https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity).
 
 ## <a name="next-steps"></a>További lépések
 
 Ez az ajánlott eljárásokat ismertető cikk a fürt és az erőforrások hitelesítésére és engedélyezésére koncentrál. Az ajánlott eljárások némelyikének megvalósításához tekintse meg a következő cikkeket:
 
 * [Azure Active Directory integrálása AK-val][aks-aad]
-* [Felügyelt identitások használata Azure-erőforrásokhoz AK-val][aad-pod-identity]
+* [Azure Active Directory Pod által felügyelt identitások használata az Azure Kubernetes Service-ben (előzetes verzió)]( https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity)
 
 Az AK-beli fürtműveleteket kapcsolatos további információkért tekintse meg az alábbi ajánlott eljárásokat:
 

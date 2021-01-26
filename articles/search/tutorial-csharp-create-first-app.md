@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ec98762ac5918437e8fdb8426b54b79b1fb5b222
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 961e30cf17bf385647f4482c6f767641c6b891af
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939722"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791678"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Oktatóanyag: az első keresőalkalmazás létrehozása a .NET SDK használatával
 
@@ -77,7 +77,7 @@ Ha egy működő alkalmazásra szeretne ugrani, kövesse az alábbi lépéseket 
 
 1. Ez egy szállodák indexe, ezért gépelje be a következőt: a szállodák keresésére használható (például "WiFi", "megtekintés", "sáv", "parkoló"), és vizsgálja meg az eredményeket.
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-wifi.png" alt-text="A * Pool * keresése" border="true":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-wifi.png" alt-text="* WiFi * keresése" border="true":::
 
 Remélhetőleg ez a projekt zökkenőmentesen fog futni, és a webalkalmazás fut. Ebben az alkalmazásban sok olyan alapvető összetevő található, amely kifinomultabb kereséseket tartalmaz, ezért érdemes átmenni rajta, és újra létrehozni lépésről lépésre. A következő fejezetek ezeket a lépéseket ismertetik.
 
@@ -85,25 +85,25 @@ Remélhetőleg ez a projekt zökkenőmentesen fog futni, és a webalkalmazás fu
 
 Hozzon létre egy projektet a semmiből, és erősítse meg az Azure-Cognitive Search fogalmait az Ön szemében, és kezdjen el egy Visual Studio-projekttel.
 
-1. A Visual Studióban válassza az **új**  >  **projekt**, majd **ASP.net Core webalkalmazás**lehetőséget.
+1. A Visual Studióban válassza az **új**  >  **projekt**, majd **ASP.net Core webalkalmazás** lehetőséget.
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project1.png" alt-text="A * Pool * keresése" border="true":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project1.png" alt-text="Felhőbeli projekt létrehozása" border="true":::
 
-1. Adjon nevet a projektnek, például: "FirstSearchApp", és állítsa be a helyet. Kattintson a **Létrehozás** gombra.
+1. Adjon nevet a projektnek, például: "FirstSearchApp", és állítsa be a helyet. Válassza a **Létrehozás** lehetőséget.
 
 1. Válassza ki a **webalkalmazás (Model-View-Controller)** projekt sablonját.
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project2.png" alt-text="A * Pool * keresése" border="true":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project2.png" alt-text="MVC-projekt létrehozása" border="true":::
 
 1. Telepítse az ügyféloldali kódtárat. Az **eszközök**  >  **NuGet csomagkezelő**  >  **NuGet-csomagok kezelése a megoldáshoz...** területen válassza a **Tallózás** lehetőséget, majd keressen rá a "azure.search.documents" kifejezésre. Telepítse **Azure.Search.Documents** (11-es vagy újabb verzió), fogadja el a licencszerződéseket és a függőségeket.
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="A * Pool * keresése" border="true":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="Azure-kódtárak hozzáadása a NuGet használatával" border="true":::
 
 ### <a name="initialize-azure-cognitive-search"></a>Azure-Cognitive Search inicializálása
 
 Ehhez a mintához nyilvánosan elérhető szállodai adatszolgáltatásokat használunk. Ezek az adat a 50 kitalált nevek és leírások tetszőleges gyűjteménye, amely kizárólag a bemutató adatának biztosítása céljából hozható létre. Az ilyen típusú adateléréshez adjon meg egy nevet és egy API-kulcsot.
 
-1. Nyissa ** meg aappsettings.jst** , és cserélje le az alapértelmezett sorokat a következő névre és kulcsra. Az itt megjelenő API-kulcs nem egy példa a kulcsra, hanem *pontosan* a szükséges kulcsot kell elérnie. A fájlnak most így kell kinéznie.
+1. Nyissa **meg aappsettings.jst** , és cserélje le az alapértelmezett sorokat a következő névre és kulcsra. Az itt megjelenő API-kulcs nem egy példa a kulcsra, hanem *pontosan* a szükséges kulcsot kell elérnie. A fájlnak most így kell kinéznie.
 
     ```csharp
     {
@@ -112,9 +112,9 @@ Ehhez a mintához nyilvánosan elérhető szállodai adatszolgáltatásokat hasz
     }
     ```
 
-1. A Megoldáskezelő területen válassza ki a fájlt, és a tulajdonságok területen módosítsa a **Másolás a kimeneti könyvtárba** beállítást, **Ha újabb**értéket szeretne másolni.
+1. A Megoldáskezelő területen válassza ki a fájlt, és a tulajdonságok területen módosítsa a **Másolás a kimeneti könyvtárba** beállítást, **Ha újabb** értéket szeretne másolni.
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-copy-if-newer.png" alt-text="A * Pool * keresése" border="true":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-copy-if-newer.png" alt-text="Az alkalmazás beállításainak másolása a kimenetre" border="true":::
 
 ## <a name="model-data-structures"></a>Adatstruktúrák modellezése
 
@@ -122,11 +122,11 @@ A modellek (C# osztályok) az ügyfél (a nézet), a kiszolgáló (a vezérlő) 
 
 Ebben a lépésben modellezi a keresési index adatstruktúráját, valamint a nézet/vezérlő kommunikációban használt keresési karakterláncot. A Hotels-indexben minden egyes Hotel több szobával rendelkezik, és minden egyes szállodában több rész is található. Összességében a Hotel teljes ábrázolása hierarchikus és beágyazott adatstruktúra. Az egyes összetevők létrehozásához három osztályra lesz szüksége.
 
-A **Hotel**, a **címe**és a **szoba** osztályok készlete [*összetett típusként*](search-howto-complex-data-types.md)ismert, az Azure Cognitive Search fontos funkciója. Az összetett típusok számos szinten lehetnek osztályok és alosztályok, és lehetővé teszik a sokkal összetettebb adatstruktúrák megjelenítését, mint az *egyszerű típusok* (csak primitív tagokat tartalmazó osztály) használatát.
+A **Hotel**, a **címe** és a **szoba** osztályok készlete [*összetett típusként*](search-howto-complex-data-types.md)ismert, az Azure Cognitive Search fontos funkciója. Az összetett típusok számos szinten lehetnek osztályok és alosztályok, és lehetővé teszik a sokkal összetettebb adatstruktúrák megjelenítését, mint az *egyszerű típusok* (csak primitív tagokat tartalmazó osztály) használatát.
 
-1. A Megoldáskezelőban kattintson a jobb gombbal a **modellek**  >  **Add**  >  **új elem**hozzáadása lehetőségre.
+1. A Megoldáskezelőban kattintson a jobb gombbal a **modellek**  >    >  **új elem** hozzáadása lehetőségre.
 
-1. Válassza ki az**osztályt** , és nevezze el az elem Hotel.cs. Cserélje le a Hotel.cs összes tartalmát a következő kódra. Figyelje meg, hogy az osztály **címe** és a **helyiség** tagja, ezek a mezők maguk az osztályok, ezért a modellekhez is szüksége lesz.
+1. Válassza ki az **osztályt** , és nevezze el az elem Hotel.cs. Cserélje le a Hotel.cs összes tartalmát a következő kódra. Figyelje meg, hogy az osztály **címe** és a **helyiség** tagja, ezek a mezők maguk az osztályok, ezért a modellekhez is szüksége lesz.
 
     ```csharp
     using Azure.Search.Documents.Indexes;
@@ -243,7 +243,7 @@ A **Hotel**, a **címe**és a **szoba** osztályok készlete [*összetett típus
     }
     ```
 
-1. Az oktatóanyagban létrehozandó utolsó modell egy **SearchData** nevű osztály, amely a felhasználó bemenetét (**keresettszöveg**) és a keresés kimenetét (**resultList**) jelöli. A kimenet típusa kritikus, **SearchResults &lt; &gt; **, mivel ez a típus pontosan megfelel a keresés eredményeinek, és át kell adnia ezt a hivatkozást a nézetnek. Cserélje le az alapértelmezett sablont a következő kódra.
+1. Az oktatóanyagban létrehozandó utolsó modell egy **SearchData** nevű osztály, amely a felhasználó bemenetét (**keresettszöveg**) és a keresés kimenetét (**resultList**) jelöli. A kimenet típusa kritikus, **SearchResults &lt; &gt;**, mivel ez a típus pontosan megfelel a keresés eredményeinek, és át kell adnia ezt a hivatkozást a nézetnek. Cserélje le az alapértelmezett sablont a következő kódra.
 
     ```csharp
     using Azure.Search.Documents.Models;
@@ -327,7 +327,7 @@ Törölje az index. cshtml tartalmát a teljes egészében, majd hozza létre ú
     </body>
     ```
 
-1. Adja hozzá a stíluslapot. A Visual Studióban, a **fájl** >  **új**  >  **fájl**területén válassza ki a **stíluslapot** ( **általános** kiemelve).
+1. Adja hozzá a stíluslapot. A Visual Studióban, a **fájl** >  **új**  >  **fájl** területén válassza ki a **stíluslapot** ( **általános** kiemelve).
 
    Cserélje le az alapértelmezett kódot az alábbira. Ezt a fájlt nem fogjuk részletesebben bevezetni, a stílusok a szabványos HTML-fájlok.
 
@@ -412,7 +412,7 @@ Ezzel befejezte a nézetet. Ezen a ponton a modellek és a nézetek is befejező
 
 ## <a name="define-methods"></a>Metódusok definiálása
 
-Ebben a lépésben módosítsa a **Kezdőlap vezérlő**tartalmát.
+Ebben a lépésben módosítsa a **Kezdőlap vezérlő** tartalmát.
 
 1. Nyissa meg a HomeController.cs fájlt, és cserélje le a **using** utasításokat a következőre.
 
@@ -526,19 +526,19 @@ Az Azure Cognitive Search hívást a **RunQueryAsync** metódusban ágyazjuk be.
 
     Ebben a módszerben először ellenőrizze, hogy az Azure-konfiguráció elindult-e, majd állítson be néhány keresési lehetőséget. A **Select (kiválasztás** ) beállítással adható meg, hogy mely mezők térjenek vissza az eredményekbe, és így egyezzenek meg a **szállodai** osztály tulajdonságlapjának nevével. Ha kihagyja a **kijelölést**, a rendszer az összes nem rejtett mezőt visszaadja, ami nem hatékony, ha csak az összes lehetséges mező egy részhalmazát érdekli.
 
-    A keresés aszinkron hívása a kérést ( **keresettszöveg**) és választ ( **searchResult**-ként modellezve) alakítja ki. Ha a kód hibakeresését végzi, a **SearchResult** osztály jó választás a Töréspont beállítására, ha meg kell vizsgálnia a **Model. resultList**tartalmát. Érdemes megkeresni, hogy a rendszer intuitív módon adja meg a kért adatmennyiséget, és nem sok más.
+    A keresés aszinkron hívása a kérést ( **keresettszöveg**) és választ ( **searchResult**-ként modellezve) alakítja ki. Ha a kód hibakeresését végzi, a **SearchResult** osztály jó választás a Töréspont beállítására, ha meg kell vizsgálnia a **Model. resultList** tartalmát. Érdemes megkeresni, hogy a rendszer intuitív módon adja meg a kért adatmennyiséget, és nem sok más.
 
 ### <a name="test-the-app"></a>Az alkalmazás tesztelése
 
 Most ellenőrizzük, hogy az alkalmazás megfelelően fut-e.
 
-1. Válassza a **hibakeresés**  >  **Indítás hibakeresés nélkül** lehetőséget, vagy nyomja le az **F5**billentyűt. Ha az alkalmazás a várt módon fut, szerezze be a kezdeti index nézetet.
+1. Válassza a **hibakeresés**  >  **Indítás hibakeresés nélkül** lehetőséget, vagy nyomja le az **F5** billentyűt. Ha az alkalmazás a várt módon fut, szerezze be a kezdeti index nézetet.
 
-     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-index.png" alt-text="A * Pool * keresése" border="true":::
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-index.png" alt-text="Az alkalmazás megnyitása" border="true":::
 
 1. Adjon meg egy lekérdezési karakterláncot (például "Beach") (vagy bármilyen szöveget, amely szóba jöhet), majd kattintson a keresés ikonra a kérelem elküldéséhez.
 
-     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-beach.png" alt-text="A * Pool * keresése" border="true":::
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-beach.png" alt-text="A * Beach * keresése" border="true":::
 
 1. Próbálja meg beírni a "Five Star" kifejezést. Figyelje meg, hogy ez a lekérdezés nem ad vissza eredményt. A kifinomultabb keresés a "Five Star" kifejezést fogja kezelni a "luxus" szinonimája, és visszaküldi az eredményeket. A [szinonimák](search-synonyms.md) támogatása az Azure Cognitive Searchban érhető el, de ez az oktatóanyag-Sorozat nem vonatkozik rá.
 
@@ -554,7 +554,7 @@ Fontos ellenőrizni, hogy a hibakezelés funkciói működnek-e, még akkor is, 
 
 2. Futtassa az alkalmazást, írja be a "sáv" kifejezést keresési szövegként, majd kattintson a keresés ikonra. A kivételnek a hiba nézetet kell eredményeznie.
 
-     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-error.png" alt-text="A * Pool * keresése" border="true":::
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-error.png" alt-text="Hiba kényszerítése" border="true":::
 
     > [!Important]
     > Biztonsági kockázatnak számít a belső hibák számának visszaküldése a hibás lapokon. Ha az alkalmazást általános használatra szánják, végezzen vizsgálatot a biztonságos és ajánlott eljárások között, amelyekkel a hiba bekövetkezésekor vissza lehet térni.
@@ -569,7 +569,7 @@ Vegye figyelembe az alábbi elvihetőket a projektből:
 * Az aszinkron hívások kis bonyolultságot adhatnak a vezérlőhöz, de az ajánlott eljárás, ha minőségi alkalmazásokat szeretne fejleszteni.
 * Az alkalmazás egyszerű szöveges keresést hajtott végre, amelyet a **searchOptions**-ben beállított beállítások határoznak meg. Ez az osztály azonban számos olyan taggal feltölthető, amely kifinomultságot ad a kereséshez. Nem sok további munka szükséges ahhoz, hogy ez az alkalmazás lényegesen nagyobb teljesítményű legyen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A felhasználói élmény javítása érdekében vegyen fel további funkciókat, például a lapozást (oldalszámok vagy végtelen görgetés használatával), valamint az automatikus kiegészítés/javaslatok lehetőséget. Összetettebb keresési lehetőségeket is megvizsgálhat (például a földrajzi keresést egy adott pont egy adott sugarán belül, a keresési eredmények sorrendje alapján).
 

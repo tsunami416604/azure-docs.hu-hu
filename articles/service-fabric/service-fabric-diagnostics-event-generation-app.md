@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: e1871df962a26def8c12000f8b8bc0cf31bae9a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1df5d033701195f4fe5f6b7174f3883b84393ab
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86247659"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791273"
 ---
 # <a name="application-logging"></a>Alkalmazásnaplózás
 
@@ -22,11 +22,11 @@ A javaslatok használatáról a következő témakörben talál példákat: [nap
 
 ## <a name="application-insights-sdk"></a>Application Insights SDK
 
-A Application Insights gazdag integrációval rendelkezik Service Fabric a dobozból. A felhasználók hozzáadhatják az AI Service Fabric nuget-csomagokat, és megkapják a Azure Portalban megtekinthető és gyűjtött adatokat és naplókat. Emellett a felhasználóknak javasoljuk saját telemetria hozzáadását az alkalmazások diagnosztizálásához és hibakereséséhez, és nyomon követni, hogy az alkalmazás mely szolgáltatásokat és részeit használja. Az SDK [TelemetryClient](/dotnet/api/microsoft.applicationinsights.telemetryclient?view=azure-dotnet) osztálya számos módszert kínál az alkalmazások telemetria nyomon követésére. Tekintse meg, hogyan helyezhet el és adhat hozzá Application bepillantást az alkalmazásához az oktatóanyagban [egy .NET-alkalmazás monitorozásához és diagnosztizálásához](service-fabric-tutorial-monitoring-aspnet.md)
+A Application Insights gazdag integrációval rendelkezik Service Fabric a dobozból. A felhasználók hozzáadhatják az AI Service Fabric nuget-csomagokat, és megkapják a Azure Portalban megtekinthető és gyűjtött adatokat és naplókat. Emellett a felhasználóknak javasoljuk saját telemetria hozzáadását az alkalmazások diagnosztizálásához és hibakereséséhez, és nyomon követni, hogy az alkalmazás mely szolgáltatásokat és részeit használja. Az SDK [TelemetryClient](/dotnet/api/microsoft.applicationinsights.telemetryclient) osztálya számos módszert kínál az alkalmazások telemetria nyomon követésére. Tekintse meg, hogyan helyezhet el és adhat hozzá Application bepillantást az alkalmazásához az oktatóanyagban [egy .NET-alkalmazás monitorozásához és diagnosztizálásához](service-fabric-tutorial-monitoring-aspnet.md)
 
 ## <a name="eventsource"></a>EventSource
 
-Amikor létrehoz egy Service Fabric megoldást egy sablonból a Visual Studióban, létrejön egy **EventSource**származtatott osztály (**ServiceEventSource** vagy **ActorEventSource**). Létrejön egy sablon, amelyben eseményeket adhat hozzá az alkalmazáshoz vagy szolgáltatáshoz. A **EventSource** nevének **egyedinek kell** lennie, és átnevezni kell az alapértelmezett sablon sztring SajátVállalat – &lt; megoldás &gt; - &lt; projektből &gt; . Ha több olyan **EventSource** -definíció is van, amelyek ugyanazt a nevet használják, a probléma futás közben is hibát okoz. Minden meghatározott eseménynek egyedi azonosítóval kell rendelkeznie. Ha egy azonosító nem egyedi, futásidejű hiba történik. Egyes szervezetek a különböző fejlesztői csapatok közötti ütközések elkerülése érdekében előrendelik az azonosítók tartományait. További információ: a [Vance blogja](/archive/blogs/vancem/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource) vagy az [MSDN dokumentációja](/previous-versions/msp-n-p/dn774985(v=pandp.20)).
+Amikor létrehoz egy Service Fabric megoldást egy sablonból a Visual Studióban, létrejön egy **EventSource** származtatott osztály (**ServiceEventSource** vagy **ActorEventSource**). Létrejön egy sablon, amelyben eseményeket adhat hozzá az alkalmazáshoz vagy szolgáltatáshoz. A **EventSource** nevének **egyedinek kell** lennie, és átnevezni kell az alapértelmezett sablon sztring SajátVállalat – &lt; megoldás &gt; - &lt; projektből &gt; . Ha több olyan **EventSource** -definíció is van, amelyek ugyanazt a nevet használják, a probléma futás közben is hibát okoz. Minden meghatározott eseménynek egyedi azonosítóval kell rendelkeznie. Ha egy azonosító nem egyedi, futásidejű hiba történik. Egyes szervezetek a különböző fejlesztői csapatok közötti ütközések elkerülése érdekében előrendelik az azonosítók tartományait. További információ: a [Vance blogja](/archive/blogs/vancem/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource) vagy az [MSDN dokumentációja](/previous-versions/msp-n-p/dn774985(v=pandp.20)).
 
 ## <a name="aspnet-core-logging"></a>ASP.NET Core naplózás
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 35f4aae246f105d832aaf92c5c5797c8a65b44f1
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 3336a086fbe8f4291f752836a610cd80b773ec2d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938546"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790816"
 ---
 # <a name="azure-digital-twins-high-availability-and-disaster-recovery"></a>Azure digitális Twins – magas rendelkezésre állás és vész-helyreállítás
 
@@ -41,7 +41,7 @@ A Microsoft **által kezdeményezett feladatátvételt** ritka helyzetekben a Mi
 
 ## <a name="monitor-service-health"></a>Monitorozhatja a szolgáltatás állapotát.
 
-Mivel az Azure digitális Twins-példányok feladatátvétele és helyreállítása megtörtént, a [Azure Service Health](https://docs.microsoft.com/azure/service-health/service-health-overview) eszköz használatával figyelheti a folyamatot. Service Health nyomon követi az Azure-szolgáltatások állapotát a különböző régiókban és előfizetésekben, és megosztja a szolgáltatással kapcsolatos kommunikációt az kimaradások és állásidők tekintetében.
+Mivel az Azure digitális Twins-példányok feladatátvétele és helyreállítása megtörtént, a [Azure Service Health](../service-health/service-health-overview.md) eszköz használatával figyelheti a folyamatot. Service Health nyomon követi az Azure-szolgáltatások állapotát a különböző régiókban és előfizetésekben, és megosztja a szolgáltatással kapcsolatos kommunikációt az kimaradások és állásidők tekintetében.
 
 Feladatátvételi esemény során a Service Health jelezheti, hogy mikor működik a szolgáltatás, és mikor kell biztonsági mentést készíteni.
 
@@ -68,7 +68,7 @@ A HA/DR-vel kapcsolatos ajánlott eljárásokért tekintse meg az alábbi Azure-
 * Az [*Azure üzletmenet-folytonossági műszaki útmutatója*](/azure/architecture/framework/resiliency/overview) egy általános keretrendszert ismertet, amely segít az üzletmenet folytonosságának és a vész-helyreállításnak. 
 * Az [*Azure-alkalmazások vész-helyreállítási és magas rendelkezésre állása*](/azure/architecture/framework/resiliency/backup-and-recovery) az Azure-alkalmazások magas rendelkezésre állást (ha) és a vész-helyreállítást (Dr) biztosító stratégiákra vonatkozó architektúrával kapcsolatos útmutatást nyújt.
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 További információ az Azure Digital Twins-megoldások használatáról:
  

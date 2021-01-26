@@ -8,12 +8,12 @@ ms.author: mbaldwin
 author: msmbaldwin
 manager: rkarlin
 ms.date: 09/30/2020
-ms.openlocfilehash: 4a6b3e4c6354c292d000a307bc25f8532aa9a096
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: a8e8e791f0dbe18322ad43364ae4ffd09b430caf
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250791"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790384"
 ---
 # <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>Azure Key Vault helyreállítási felügyelet a Soft delete és a Purge Protection szolgáltatással
 
@@ -26,10 +26,15 @@ További információ a Key Vaultról:
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/dotnet)
-* [PowerShell-modul](https://docs.microsoft.com/powershell/azure/install-az-ps).
+* [PowerShell-modul](/powershell/azure/install-az-ps).
 * [Azure CLI](/cli/azure/install-azure-cli)
 * A Key Vault létrehozhat egyet [Azure Portal](../general/quick-create-portal.md) [Azure CLI](../general/quick-create-cli.md)használatával, vagy [Azure PowerShell](../general/quick-create-powershell.md)
-* A felhasználónak a következő engedélyekre van szüksége (előfizetési szinten), hogy végrehajtsa a műveleteket a Soft Deleted-tárolók esetén: | Microsoft. kulcstartó/Locations/deletedVaults/READ | A Soft delete Key Vault tulajdonságainak megtekintése | | Microsoft. kulcstartó/Locations/deletedVaults/Purge/művelet | A törölt kulcstartó törlése |
+* A felhasználónak a következő engedélyekre van szüksége (előfizetési szinten), hogy végrehajtsa a műveleteket a Soft Deleted-tárolók esetén:
+
+  | Engedély | Leírás |
+  |---|---|
+  |Microsoft. Key Vault/Locations/deletedVaults/READ|A törölt kulcstartó tulajdonságainak megtekintése|
+  |Microsoft. kulcstartó/Locations/deletedVaults/Purge/művelet|Helyreállítható törölhető kulcstartó törlése|
 
 
 ## <a name="what-are-soft-delete-and-purge-protection"></a>Mi a Soft delete és a Purge Protection
@@ -390,8 +395,8 @@ A helyreállítható törléssel kapcsolatos további információkért lásd: [
 
 ## <a name="next-steps"></a>További lépések
 
-- [PowerShell-parancsmagok Azure Key Vault](https://docs.microsoft.com/powershell/module/az.keyvault)
-- [Azure CLI-parancsok Key Vault](https://docs.microsoft.com/cli/azure/keyvault)
+- [PowerShell-parancsmagok Azure Key Vault](/powershell/module/az.keyvault)
+- [Azure CLI-parancsok Key Vault](/cli/azure/keyvault)
 - [Azure Key Vault biztonsági mentés](backup.md)
 - [Key Vault naplózás engedélyezése](howto-logging.md)
 - [Biztonságos hozzáférés egy kulcstartóhoz](secure-your-key-vault.md)

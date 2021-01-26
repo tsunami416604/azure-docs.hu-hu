@@ -4,12 +4,12 @@ description: Ez az oktatóanyag azt mutatja be, hogyan kell törölni egy Azure-
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: aa5b09b627db6bd3a3d573c32e7e68a359e2c04d
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 60c43adddd4799a639c2d58e0293086eb1776588
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738992"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791088"
 ---
 # <a name="tutorial-remove-a-service-fabric-cluster-running-in-azure"></a>Oktatóanyag: Az Azure-ban futó Service Fabric-fürtök törlése
 
@@ -43,7 +43,7 @@ Az oktatóanyag elkezdése előtt:
 ## <a name="delete-the-resource-group-containing-the-service-fabric-cluster"></a>A Service Fabric-fürtöt tartalmazó erőforráscsoport törlése
 A fürt és az összes általa használt erőforrás törlésének legegyszerűbb módja az erőforráscsoport törlése.
 
-Jelentkezzen be az Azure-ba, és válassza ki azt az előfizetés-azonosítót, amellyel el szeretné távolítani a fürtöt.  Az [Azure Portalra](https://portal.azure.com) bejelentkezve keresheti meg az előfizetés azonosítóját. Törölje az erőforráscsoportot és az összes fürterőforrás-erőforrást a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsmag vagy az [Group delete](/cli/azure/group?view=azure-cli-latest) paranccsal.
+Jelentkezzen be az Azure-ba, és válassza ki azt az előfizetés-azonosítót, amellyel el szeretné távolítani a fürtöt.  Az [Azure Portalra](https://portal.azure.com) bejelentkezve keresheti meg az előfizetés azonosítóját. Törölje az erőforráscsoportot és az összes fürterőforrás-erőforrást a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsmag vagy az [Group delete](/cli/azure/group) paranccsal.
 
 ```powershell
 Connect-AzAccount

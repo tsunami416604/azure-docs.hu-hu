@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/19/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: 80a6824edb92d8337481f592cbbf5eb23255b383
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: e6b588ddea5bf4b4c92e89d9cebb37b09b9a86af
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185529"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791544"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>Ügyfél által felügyelt kulcsok használata Azure Key Vaultban Azure Data Box
 
@@ -95,7 +95,7 @@ Az alábbi lépéseket követve engedélyezheti az ügyfél által felügyelt ku
 
 7. Válassza ki az erőforráshoz az ügyfél által felügyelt kulcs kezeléséhez használandó identitás típusát. Használhatja a rendelés létrehozásakor létrehozott **rendszerhez rendelt** identitást, vagy kiválaszthat egy felhasználó által hozzárendelt identitást.
 
-    A felhasználó által hozzárendelt identitás egy független erőforrás, amelyet az erőforrásokhoz való hozzáférés kezelésére használhat. További információ: [felügyelt identitások típusai](/azure/active-directory/managed-identities-azure-resources/overview).
+    A felhasználó által hozzárendelt identitás egy független erőforrás, amelyet az erőforrásokhoz való hozzáférés kezelésére használhat. További információ: [felügyelt identitások típusai](../active-directory/managed-identities-azure-resources/overview.md).
 
     ![Válassza ki az identitás típusát](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-13.png)
 
@@ -103,7 +103,7 @@ Az alábbi lépéseket követve engedélyezheti az ügyfél által felügyelt ku
 
     ![Válassza ki a használni kívánt identitást](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-14.png)
 
-    Itt nem hozhat létre új felhasználói azonosítót. Ha szeretné megtudni, hogyan hozhat létre egyet, tekintse meg a [szerepkörök létrehozása, listázása, törlése vagy hozzárendelése egy felhasználóhoz rendelt felügyelt identitáshoz a Azure Portal használatával](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)című témakört.
+    Itt nem hozhat létre új felhasználói azonosítót. Ha szeretné megtudni, hogyan hozhat létre egyet, tekintse meg a [szerepkörök létrehozása, listázása, törlése vagy hozzárendelése egy felhasználóhoz rendelt felügyelt identitáshoz a Azure Portal használatával](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)című témakört.
 
     A kiválasztott felhasználói identitás megjelenik a **titkosítási típus** beállításai között.
 
@@ -141,7 +141,7 @@ A jelenleg használt ügyfél által felügyelt kulcs kulcstartójának, kulcsá
 
     ![Titkosítási lehetőség választása – 2](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-17.png)
 
-4. Válassza a **Mentés** lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
     ![Frissített titkosítási beállítások mentése – 1](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-17-a.png)
 
@@ -161,7 +161,7 @@ Az ügyfél által felügyelt kulcshoz való hozzáférés kezeléséhez haszná
 
      ![Az ügyfél által felügyelt kulcshoz hozzárendelt rendszerre való váltás lehetősége](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-19.png)
 
-3. Válassza a **Mentés** lehetőséget.
+3. Kattintson a **Mentés** gombra.
 
     ![Frissített titkosítási beállítások mentése – 2](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-17-a.png)
 
@@ -175,7 +175,7 @@ Ha az ügyfél által felügyelt kulcs használatával szeretné megváltoztatni
 
     ![A Data Box Orders-5 áttekintése képernyő](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-20.png)
 
-3. Válassza a **Mentés** lehetőséget.
+3. Kattintson a **Mentés** gombra.
 
     ![Microsoft által felügyelt kulcs frissített titkosítási beállításainak mentése](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-21.png)
 
@@ -187,9 +187,9 @@ Ha az ügyfél által felügyelt kulccsal kapcsolatos hibákat kap, a hibaelhár
 |-------------|--------------|---------|
 | SsemUserErrorEncryptionKeyDisabled| Nem sikerült beolvasni a hitelesítő kulcsot, mert a felhasználó által felügyelt kulcs le van tiltva.| Igen, a kulcs verziójának engedélyezésével.|
 | SsemUserErrorEncryptionKeyExpired| A hitelesítő kulcs beolvasása sikertelen volt, mert az ügyfél által felügyelt kulcs lejárt.| Igen, a kulcs verziójának engedélyezésével.|
-| SsemUserErrorKeyDetailsNotFound| Nem sikerült beolvasni a hitelesítő kulcsot, mert nem található az ügyfél által felügyelt kulcs.| Ha törölte a kulcstartót, az ügyfél által felügyelt kulcs nem állítható helyre.  Ha áttelepítette a kulcstartót egy másik bérlőre, tekintse meg a [Key Vault-bérlő azonosítójának módosítása az előfizetés áthelyezése után](../key-vault/general/move-subscription.md)című témakört. Ha törölte a Key vaultot:<ol><li>Igen, ha a kiürítés-védelem időtartama alatt van, a [Key Vault helyreállításának](../key-vault/general/soft-delete-powershell.md#recovering-a-key-vault)lépéseit követve.</li><li>Nem, ha meghaladja a kiürítési-védelmi időtartamot.</li></ol><br>Ha a Key Vault bérlői áttelepítést hajtott végre, igen, az alábbi lépések egyikével állítható helyre: <ol><li>A Key Vault visszaállítása a régi bérlőre.</li><li>Állítsa be `Identity = None` , majd állítsa vissza az értéket `Identity = SystemAssigned` . Ezzel törli és újból létrehozza az identitást az új identitás létrehozása után. A `Get` `Wrap` `Unwrap` Key Vault hozzáférési házirendjében engedélyezze az új identitás engedélyezését és engedélyeit.</li></ol> |
+| SsemUserErrorKeyDetailsNotFound| Nem sikerült beolvasni a hitelesítő kulcsot, mert nem található az ügyfél által felügyelt kulcs.| Ha törölte a kulcstartót, az ügyfél által felügyelt kulcs nem állítható helyre.  Ha áttelepítette a kulcstartót egy másik bérlőre, tekintse meg a [Key Vault-bérlő azonosítójának módosítása az előfizetés áthelyezése után](../key-vault/general/move-subscription.md)című témakört. Ha törölte a Key vaultot:<ol><li>Igen, ha a kiürítés-védelem időtartama alatt van, a [Key Vault helyreállításának](../key-vault/general/key-vault-recovery.md?tabs=azure-powershell#key-vault-powershell)lépéseit követve.</li><li>Nem, ha meghaladja a kiürítési-védelmi időtartamot.</li></ol><br>Ha a Key Vault bérlői áttelepítést hajtott végre, igen, az alábbi lépések egyikével állítható helyre: <ol><li>A Key Vault visszaállítása a régi bérlőre.</li><li>Állítsa be `Identity = None` , majd állítsa vissza az értéket `Identity = SystemAssigned` . Ezzel törli és újból létrehozza az identitást az új identitás létrehozása után. A `Get` `Wrap` `Unwrap` Key Vault hozzáférési házirendjében engedélyezze az új identitás engedélyezését és engedélyeit.</li></ol> |
 | SsemUserErrorKeyVaultBadRequestException | Egy ügyfél által felügyelt kulcs alkalmazva, de a kulcshoz való hozzáférés nem lett megadva vagy vissza lett vonva, vagy nem fér hozzá a Key vaulthoz, mert a tűzfal engedélyezve van. | Adja hozzá a Key vaulthoz kiválasztott identitást, hogy engedélyezze a hozzáférést az ügyfél által felügyelt kulcshoz. Ha a Key vaultban engedélyezve van a tűzfal, váltson át egy rendszerhez rendelt identitásra, majd vegyen fel egy ügyfél által felügyelt kulcsot. További információ: [a kulcs engedélyezése](#enable-key). |
-| SsemUserErrorKeyVaultDetailsNotFound| Nem sikerült beolvasni a hitelesítő kulcsot, mert nem található az ügyfél által felügyelt kulcshoz tartozó kulcstároló. | Ha törölte a kulcstartót, az ügyfél által felügyelt kulcs nem állítható helyre.  Ha áttelepítette a kulcstartót egy másik bérlőre, tekintse meg a [Key Vault-bérlő azonosítójának módosítása az előfizetés áthelyezése után](../key-vault/general/move-subscription.md)című témakört. Ha törölte a Key vaultot:<ol><li>Igen, ha a kiürítés-védelem időtartama alatt van, a [Key Vault helyreállításának](../key-vault/general/soft-delete-powershell.md#recovering-a-key-vault)lépéseit követve.</li><li>Nem, ha meghaladja a kiürítési-védelmi időtartamot.</li></ol><br>Ha a Key Vault bérlői áttelepítést hajtott végre, igen, az alábbi lépések egyikével állítható helyre: <ol><li>A Key Vault visszaállítása a régi bérlőre.</li><li>Állítsa be `Identity = None` , majd állítsa vissza az értéket `Identity = SystemAssigned` . Ezzel törli és újból létrehozza az identitást az új identitás létrehozása után. A `Get` `Wrap` `Unwrap` Key Vault hozzáférési házirendjében engedélyezze az új identitás engedélyezését és engedélyeit.</li></ol> |
+| SsemUserErrorKeyVaultDetailsNotFound| Nem sikerült beolvasni a hitelesítő kulcsot, mert nem található az ügyfél által felügyelt kulcshoz tartozó kulcstároló. | Ha törölte a kulcstartót, az ügyfél által felügyelt kulcs nem állítható helyre.  Ha áttelepítette a kulcstartót egy másik bérlőre, tekintse meg a [Key Vault-bérlő azonosítójának módosítása az előfizetés áthelyezése után](../key-vault/general/move-subscription.md)című témakört. Ha törölte a Key vaultot:<ol><li>Igen, ha a kiürítés-védelem időtartama alatt van, a [Key Vault helyreállításának](../key-vault/general/key-vault-recovery.md?tabs=azure-powershell#key-vault-powershell)lépéseit követve.</li><li>Nem, ha meghaladja a kiürítési-védelmi időtartamot.</li></ol><br>Ha a Key Vault bérlői áttelepítést hajtott végre, igen, az alábbi lépések egyikével állítható helyre: <ol><li>A Key Vault visszaállítása a régi bérlőre.</li><li>Állítsa be `Identity = None` , majd állítsa vissza az értéket `Identity = SystemAssigned` . Ezzel törli és újból létrehozza az identitást az új identitás létrehozása után. A `Get` `Wrap` `Unwrap` Key Vault hozzáférési házirendjében engedélyezze az új identitás engedélyezését és engedélyeit.</li></ol> |
 | SsemUserErrorSystemAssignedIdentityAbsent  | Nem sikerült beolvasni a hitelesítő kulcsot, mert nem található az ügyfél által felügyelt kulcs.| Igen, ellenőrizze, hogy: <ol><li>A Key Vault továbbra is az MSI szerepel a hozzáférési házirendben.</li><li>Az identitás típusa rendszer van hozzárendelve.</li><li>Engedélyezze a Get, a wrap és a dewrap engedélyeket a Key Vault hozzáférési házirendjében lévő identitáshoz.</li></ol>|
 | SsemUserErrorUserAssignedLimitReached | Nem sikerült hozzáadni az új felhasználóhoz rendelt identitást, mert elérte a hozzárendelhető felhasználói identitások teljes számának korlátját. | Próbálja megismételni a műveletet kevesebb felhasználói identitással, vagy távolítson el néhány felhasználóhoz rendelt identitást az erőforrásból az újrapróbálkozás előtt. |
 | SsemUserErrorCrossTenantIdentityAccessForbidden | A felügyelt identitás-hozzáférési művelet meghiúsult. <br> Megjegyzés: Ez arra az esetre vonatkozik, ha az előfizetést másik bérlőre helyezik át. Az ügyfélnek manuálisan kell áthelyeznie az identitást az új bérlőbe. További részleteket a PFA-mailben talál. | Helyezze át a kiválasztott identitást arra az új bérlőre, amelynek az előfizetése megtalálható. További információ: [a kulcs engedélyezése](#enable-key). |
@@ -199,7 +199,7 @@ Ha az ügyfél által felügyelt kulccsal kapcsolatos hibákat kap, a hibaelhár
 | SsemUserErrorKeyVaultBadRequestException | Egy ügyfél által felügyelt kulcs alkalmazva, de a kulcshoz való hozzáférés nem lett megadva vagy vissza lett vonva, vagy nem fér hozzá a Key vaulthoz, mert a tűzfal engedélyezve van. | Adja hozzá a Key vaulthoz kiválasztott identitást, hogy engedélyezze a hozzáférést az ügyfél által felügyelt kulcshoz. Ha a Key vaultban engedélyezve van a tűzfal, váltson át egy rendszerhez rendelt identitásra, majd vegyen fel egy ügyfél által felügyelt kulcsot. További információ: [a kulcs engedélyezése](#enable-key). |
 | Általános hiba  | A hitelesítő kulcs beolvasása sikertelen.| Ez egy általános hiba. A hiba megoldásához forduljon a Microsoft ügyfélszolgálatahoz, és határozza meg a következő lépéseket.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Mi az Azure Key Vault?](../key-vault/general/overview.md)
 - [Rövid útmutató: Titkos kulcs beállítása és lekérése az Azure Key Vaultból az Azure Portal használatával](../key-vault/secrets/quick-create-portal.md)

@@ -3,12 +3,12 @@ title: Delegálás frissítése
 description: Megtudhatja, hogyan frissíthet egy korábban az Azure Lighthouse-be bekészített ügyfél delegálását.
 ms.date: 12/03/2020
 ms.topic: how-to
-ms.openlocfilehash: e204d1f3546e6e978f91c7e808065a388a4af4b3
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: eec5d1f2d34e8e3c9e0ded59cb111624b1981873
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093417"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791339"
 ---
 # <a name="update-a-delegation"></a>Delegálás frissítése
 
@@ -58,14 +58,14 @@ A telepítés befejezése után ellenőrizze, hogy a művelet [sikeres volt-e](o
 
 ## <a name="updating-managed-service-offers"></a>Felügyelt szolgáltatás ajánlatok frissítése
 
-Ha az ügyfelet az Azure Marketplace-en közzétett felügyelt szolgáltatási ajánlaton keresztül vette fel, és frissíteni kívánja az engedélyeket, akkor a delegálást úgy frissítheti, hogy az [ajánlat új verzióját](../../marketplace/partner-center-portal/update-existing-offer.md) közzéteszi az adott ügyfélre vonatkozó tervben használt [engedélyekkel](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#authorization) . Az ügyfél ezután frissíthet a Azure Portal legújabb verziójára.
+Ha az ügyfelet az Azure Marketplace-en közzétett felügyelt szolgáltatási ajánlaton keresztül vette fel, és frissíteni kívánja az engedélyeket, akkor a delegálást úgy frissítheti, hogy az [ajánlat új verzióját](../../marketplace/partner-center-portal/update-existing-offer.md) közzéteszi az adott ügyfélre vonatkozó tervben használt [engedélyekkel](../../marketplace/plan-managed-service-offer.md) . Az ügyfél ezután frissíthet a Azure Portal legújabb verziójára.
 
-Ha módosítani szeretné az ügyvezető bérlőt, [létre kell hoznia és közzé kell tennie egy új felügyelt szolgáltatási ajánlatot](../../marketplace/partner-center-portal/create-new-managed-service-offer.md) , amelyet az ügyfélnek el kell fogadnia.
+Ha módosítani szeretné az ügyvezető bérlőt, [létre kell hoznia és közzé kell tennie egy új felügyelt szolgáltatási ajánlatot](../../marketplace/plan-managed-service-offer.md) , amelyet az ügyfélnek el kell fogadnia.
 
 > [!TIP]
 > Ahogy korábban említettük, javasoljuk, hogy ne használjon több különböző ajánlatot ugyanahhoz az ügyfélhez és a bérlő kezeléséhez. Ha olyan új ajánlatot tesz közzé ugyanahhoz az ügyfélhez, amely ugyanazt a kezelő bérlőt használja, akkor a korábbi ajánlatot el kell távolítani, mielőtt az ügyfél elfogadja az újabb ajánlatot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Megtekintheti és kezelheti az ügyfeleket](view-manage-customers.md) a Azure Portalban lévő **ügyfelekkel** .
 - Ismerje meg, hogyan [távolíthatja el a korábban előkészített delegáláshoz való hozzáférést](remove-delegation.md) .

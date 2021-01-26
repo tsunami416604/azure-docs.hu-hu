@@ -15,16 +15,14 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6ec552ea525abe6a84bb5e34e00ad317cae038bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d93efaedbb0596382b0601a17098311e075618b7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89077848"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791980"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-powershell"></a>Virtuális hálózatok összekötése virtuális hálózattal a PowerShell használatával
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 A virtuális hálózatok közötti társviszony létesítésével virtuális hálózatokat kapcsolhat össze egymással. Ha a társviszony létrejött, a két virtuális hálózaton található erőforrások ugyanolyan késés és sávszélesség mellett kommunikálhatnak egymással, mintha ugyanazon a virtuális hálózaton lennének. Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -33,7 +31,7 @@ A virtuális hálózatok közötti társviszony létesítésével virtuális há
 * Virtuális gép üzembe helyezése mindkét virtuális hálózaton
 * Virtuális gépek közötti kommunikáció
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -47,7 +45,7 @@ A virtuális hálózat létrehozása előtt létre kell hoznia egy erőforráscs
 New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 ```
 
-Hozzon létre egy új virtuális hálózatot a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). A következő példában létrehozunk egy *myVirtualNetwork1* nevű virtuális hálózatot a *10.0.0.0/16*előtaggal.
+Hozzon létre egy új virtuális hálózatot a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). A következő példában létrehozunk egy *myVirtualNetwork1* nevű virtuális hálózatot a *10.0.0.0/16* előtaggal.
 
 ```azurepowershell-interactive
 $virtualNetwork1 = New-AzVirtualNetwork `
@@ -103,7 +101,7 @@ Add-AzVirtualNetworkPeering `
   -RemoteVirtualNetworkId $virtualNetwork2.Id
 ```
 
-Az előző parancs végrehajtása után visszaadott kimenetben láthatja, hogy a **PeeringState** *inicializálva*van. A társítás a *kezdeményezett* állapotban marad, amíg létre nem hozza a *myVirtualNetwork2* -ből a *myVirtualNetwork1*-be. Hozzon létre egy társat a *myVirtualNetwork2* -ből a *myVirtualNetwork1*-be.
+Az előző parancs végrehajtása után visszaadott kimenetben láthatja, hogy a **PeeringState** *inicializálva* van. A társítás a *kezdeményezett* állapotban marad, amíg létre nem hozza a *myVirtualNetwork2* -ből a *myVirtualNetwork1*-be. Hozzon létre egy társat a *myVirtualNetwork2* -ből a *myVirtualNetwork1*-be.
 
 ```azurepowershell-interactive
 Add-AzVirtualNetworkPeering `
@@ -112,7 +110,7 @@ Add-AzVirtualNetworkPeering `
   -RemoteVirtualNetworkId $virtualNetwork1.Id
 ```
 
-Az előző parancs végrehajtása után visszaadott kimenetben láthatja, hogy a **PeeringState** *csatlakoztatva*van. Az Azure a *myVirtualNetwork1-myVirtualNetwork2* peering társítási állapotát is megváltoztatta a *csatlakozáshoz*. Győződjön meg arról, hogy a *myVirtualNetwork1-myVirtualNetwork2-* társítás társítási állapota a [Get-AzVirtualNetworkPeering](/powershell/module/az.network/get-azvirtualnetworkpeering)-vel való *csatlakozásra* módosult.
+Az előző parancs végrehajtása után visszaadott kimenetben láthatja, hogy a **PeeringState** *csatlakoztatva* van. Az Azure a *myVirtualNetwork1-myVirtualNetwork2* peering társítási állapotát is megváltoztatta a *csatlakozáshoz*. Győződjön meg arról, hogy a *myVirtualNetwork1-myVirtualNetwork2-* társítás társítási állapota a [Get-AzVirtualNetworkPeering](/powershell/module/az.network/get-azvirtualnetworkpeering)-vel való *csatlakozásra* módosult.
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkPeering `
@@ -121,7 +119,7 @@ Get-AzVirtualNetworkPeering `
   | Select PeeringState
 ```
 
-Az egyik virtuális hálózat erőforrásai nem tudnak kommunikálni a másik virtuális hálózatban lévő erőforrásokkal, amíg a **PeeringState** mindkét virtuális hálózatban *csatlakoztatva*van.
+Az egyik virtuális hálózat erőforrásai nem tudnak kommunikálni a másik virtuális hálózatban lévő erőforrásokkal, amíg a **PeeringState** mindkét virtuális hálózatban *csatlakoztatva* van.
 
 ## <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 
@@ -172,7 +170,7 @@ A következő parancs használatával hozzon létre egy távoli asztali munkamen
 mstsc /v:<publicIpAddress>
 ```
 
-Létrejön egy RDP protokoll (. rdp) fájl, amely le van töltve a számítógépre, és meg van nyitva. Adja meg a felhasználónevet és a jelszót (lehetséges, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához **több választási lehetőséget**kell választania, majd **másik fiókot kell használnia**), majd kattintson **az OK**gombra. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. A csatlakozás folytatásához kattintson az **Igen** vagy **Folytatás** gombra.
+Létrejön egy RDP protokoll (. rdp) fájl, amely le van töltve a számítógépre, és meg van nyitva. Adja meg a felhasználónevet és a jelszót (lehetséges, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához **több választási lehetőséget** kell választania, majd **másik fiókot kell használnia**), majd kattintson **az OK** gombra. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. A csatlakozás folytatásához kattintson az **Igen** vagy **Folytatás** gombra.
 
 A *myVm1* virtuális gépen engedélyezze a Internet Control Message Protocol (ICMP) szolgáltatást a Windows tűzfalon keresztül, hogy egy későbbi lépésben Pingelje a virtuális gépet a *MyVm2* , a PowerShell használatával:
 
@@ -204,7 +202,7 @@ Ha már nincs rá szükség, a [Remove-AzResourcegroup](/powershell/module/az.re
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a cikkből megtudhatta, hogyan csatlakoztathatók a két hálózat ugyanabban az Azure-régióban, virtuális hálózattal. Más [támogatott régiókban](virtual-network-manage-peering.md#cross-region) és [különböző Azure-előfizetésekben](create-peering-different-subscriptions.md#powershell) található virtuális hálózatok között is létesíthet társviszonyt, illetve a társviszony létesítésével [küllős hálózati kialakításokat](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering) is létrehozhat. További információ a virtuális hálózatok közötti társviszony létesítéséről: [Virtuális hálózatok közötti társviszony létesítésének áttekintése](virtual-network-peering-overview.md) és[Virtuális hálózatok közötti társviszonyok kezelése](virtual-network-manage-peering.md).
 

@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 11/23/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: fb36ab8a86a89d6383f93ad58c23956472841de2
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: f21a2cc8218dde8b0cf7203a1fcb1f5cfb9424a2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95539260"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790867"
 ---
 # <a name="what-is-language-understanding-luis"></a>Mi a Language Understanding (LUIS)?
 
@@ -66,7 +66,7 @@ Tervezze meg a modellt a **[felhasználói szándékok nevű](luis-concept-inten
 |`When does your store open?`|ÜzletNyitvatartásÉsHelyszín|nyitás|
 |`Schedule a meeting at 1pm with Bob in Distribution`|ÉrtekezletÜtemezés|13 óra, Bob|
 
-Hozza létre a modellt a [szerzői](https://go.microsoft.com/fwlink/?linkid=2092087 "létrehozás") API-kkal vagy a **[Luis-portálral](https://www.luis.ai "LUIS portál")**, vagy mindkettővel. További információ a [portál](get-started-portal-build-app.md "portál") és az [SDK-ügyfél kódtárainak](azure-sdk-quickstart.md "SDK-ügyféloldali kódtárak")létrehozásáról.
+Hozza létre a modellt a [szerzői](https://go.microsoft.com/fwlink/?linkid=2092087 "létrehozás") API-kkal vagy a **[Luis-portálral](https://www.luis.ai "LUIS portál")**, vagy mindkettővel. További információ a [portál](get-started-portal-build-app.md "portál") és az [SDK-ügyfél kódtárainak](./client-libraries-rest-api.md?pivots=rest-api "SDK-ügyféloldali kódtárak")létrehozásáról.
 
 ## <a name="step-2-get-the-query-prediction"></a>2. lépés: a lekérdezés előrejelzésének beolvasása
 
@@ -128,14 +128,14 @@ A LUIS a meglévő LUIS-erőforrások részeként Text Analytics funkciókat biz
 
 ## <a name="learn-with-the-quickstarts"></a>Ismerkedjen meg a gyors útmutatókkal
 
-Ismerje meg a LUIS-t gyakorlati útmutatókkal a [portál](get-started-portal-build-app.md "portál") és az [SDK ügyféloldali kódtárak](azure-sdk-quickstart.md "SDK-ügyféloldali kódtárak")használatával.
+Ismerje meg a LUIS-t gyakorlati útmutatókkal a [portál](get-started-portal-build-app.md "portál") és az [SDK ügyféloldali kódtárak](./client-libraries-rest-api.md?pivots=rest-api "SDK-ügyféloldali kódtárak")használatával.
 
 
 ## <a name="deploy-on-premises-using-docker-containers"></a>Helyszíni üzembe helyezés Docker-tárolók használatával
 
 A [Luis-tárolók használatával](luis-container-howto.md) üzembe helyezhet API-szolgáltatásokat a helyszínen. Ezek a Docker-tárolók lehetővé teszik, hogy a szolgáltatás a megfelelőségi, biztonsági vagy egyéb működési okokból közelebb kerüljön az adataihoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A szolgáltatással és a dokumentációval kapcsolatos [Újdonságok](whats-new.md "Újdonságok")
 * [Tervezze meg alkalmazását](luis-how-plan-your-app.md "Az alkalmazás megtervezése") [szándékokkal](luis-concept-intent.md "leképezések") és [entitásokkal](luis-concept-entity-types.md "szervezetek").

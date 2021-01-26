@@ -3,12 +3,12 @@ title: Önálló fürt üzembe helyezésének előkészítése
 description: A környezet előkészítéséhez és a fürtkonfiguráció létrehozásához kapcsolódó dokumentáció, amely az éles számítási feladatok kezelésére szolgáló fürt üzembe helyezése előtt megfontolandó.
 ms.topic: conceptual
 ms.date: 9/11/2018
-ms.openlocfilehash: 277c7e047815b3b4171f7cced203ecbe5b68b155
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 18b8b0ce8c0e877bf9dd274596b19f85b1febe12
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509172"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790952"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>A Service Fabric önálló fürt üzembe helyezésének megtervezése és előkészítése
 
@@ -57,7 +57,7 @@ Az alábbiakban a Service Fabric-fürthöz tartozó gépekre vonatkozó ajánlot
 * Kapcsolat biztonságos hálózattal vagy hálózattal az összes géphez
 * Telepített Windows Server operációs rendszer (érvényes verziók: 2012 R2, 2016, 1709 vagy 1803). Service Fabric a 6.4.654.9590 és újabb verziója is támogatja a 2019-es és a 1809-es kiszolgálót.
 * [.NET-keretrendszer 4.5.1 vagy újabb](https://www.microsoft.com/download/details.aspx?id=40773), teljes telepítés
-* [Windows PowerShell 3.0](/powershell/scripting/windows-powershell/install/installing-windows-powershell?view=powershell-7)
+* [Windows PowerShell 3.0](/powershell/scripting/windows-powershell/install/installing-windows-powershell)
 * A [RemoteRegistry szolgáltatásnak](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754820(v=ws.11)) az összes gépen futnia kell
 * **Service Fabric telepítési meghajtójának NTFS fájlrendszerrel kell rendelkeznie**
 * **A Windows-szolgáltatások *teljesítményadatait & riasztásokat* és a *Windows-eseménynaplót* [engedélyezni](/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/cc755249(v=ws.11))** kell.

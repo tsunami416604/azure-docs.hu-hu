@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e92b17a5743e983ca3e77ad18c0973b9f056dfbd
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 40ce5f55b4109fee0099110c17f02b33c3eff808
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611168"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791424"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Az Azure Key Vault fejlesztői útmutatója
 
@@ -74,7 +74,7 @@ Az Azure Identity Client libarary kapcsolatos további információkért lásd:
 |[Azure Identity SDK .NET](/dotnet/api/overview/azure/identity-readme)|[Azure Identity SDK Python](/python/api/overview/azure/identity-readme)|[Azure Identity SDK Java](/java/api/overview/azure/identity-readme)|[Azure Identity SDK JavaScript](/javascript/api/overview/azure/identity-readme)|     
 
 >[!Note]
-> A jelenleg depracated Key Vault .NET SDK 3-as verziójához ajánlott [alkalmazás-hitelesítési függvénytár](https://docs.microsoft.com/dotnet/api/overview/azure/service-to-service-authentication) . Kövesse a AppAuthentication az Azure-ban című témakört [. az identitás áttelepítési útmutatója](https://docs.microsoft.com/dotnet/api/overview/azure/app-auth-migration) Key Vault .net SDK 4-es verziójára való áttelepítéshez.
+> A jelenleg depracated Key Vault .NET SDK 3-as verziójához ajánlott [alkalmazás-hitelesítési függvénytár](/dotnet/api/overview/azure/service-to-service-authentication) . Kövesse a AppAuthentication az Azure-ban című témakört [. az identitás áttelepítési útmutatója](/dotnet/api/overview/azure/app-auth-migration) Key Vault .net SDK 4-es verziójára való áttelepítéshez.
 
 Az alkalmazásokban való Key Vault hitelesítésével kapcsolatos oktatóanyagok:
 - [Hitelesítés Key Vault a virtuális gépen üzemeltetett alkalmazásban a .NET-ben](./tutorial-net-virtual-machine.md)
@@ -89,7 +89,7 @@ A kulcsok, titkok és tanúsítványok elérését az adatsík vezérli. Az adat
 
 | Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[Referencia](/cli/azure/keyvault/key)<br>[Gyors útmutató](../keys/quick-create-cli.md)|[Referencia](/powershell/module/az.keyvault/)<br>[Gyors útmutató](../keys/quick-create-powershell.md)|[Referencia](/rest/api/keyvault/#key-operations)|[Referencia](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/keys)<br>[Gyors útmutató](../keys/quick-create-template.md)|[Referencia](/dotnet/api/azure.security.keyvault.keys)<br>[Gyors útmutató](../keys/quick-create-net.md)|[Referencia](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br>[Gyors útmutató](../keys/quick-create-python.md)|[Referencia](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html)<br>[Gyors útmutató](../keys/quick-create-java.md)|[Referencia](/javascript/api/@azure/keyvault-keys/)<br>[Gyors útmutató](../keys/quick-create-node.md)|
+|[Referencia](/cli/azure/keyvault/key)<br>[Gyors útmutató](../keys/quick-create-cli.md)|[Referencia](/powershell/module/az.keyvault/)<br>[Gyors útmutató](../keys/quick-create-powershell.md)|[Referencia](/rest/api/keyvault/#key-operations)|[Referencia](/azure/templates/microsoft.keyvault/vaults/keys)<br>[Gyors útmutató](../keys/quick-create-template.md)|[Referencia](/dotnet/api/azure.security.keyvault.keys)<br>[Gyors útmutató](../keys/quick-create-net.md)|[Referencia](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br>[Gyors útmutató](../keys/quick-create-python.md)|[Referencia](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html)<br>[Gyors útmutató](../keys/quick-create-java.md)|[Referencia](/javascript/api/@azure/keyvault-keys/)<br>[Gyors útmutató](../keys/quick-create-node.md)|
 
 **Tanúsítványok API-k és SDK-k**
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/02/2020
-ms.openlocfilehash: b6fcc294c2b8c131d9a4a058c653ae1f64652ccf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31885eba16d59e2e48a08f84c56271b84e6c565f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324858"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790918"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>A LUIS-alkalmazás tesztelése a LUIS-portálon
 
@@ -51,7 +51,7 @@ A teszt kimondása nem egyezhet meg pontosan az alkalmazás egyik hosszúságú 
 
 A teszt eredményének részleteit a **vizsgálat panelen** tekintheti meg.
 
-1. Nyissa meg a test slide (tesztelés) **Inspect** panelt, és válassza a **vizsgálat** lehetőséget az összehasonlítani kívánt kifejezés kiválasztásához.
+1. Nyissa meg a test slide (tesztelés)  panelt, és válassza a **vizsgálat** lehetőséget az összehasonlítani kívánt kifejezés kiválasztásához.
 
     > [!div class="mx-imgBorder"]
     > ![A vizsgálati eredmények további részleteinek megtekintéséhez kattintson a vizsgálat gombra.](./media/luis-how-to-interactive-test/inspect.png)
@@ -63,7 +63,7 @@ A teszt eredményének részleteit a **vizsgálat panelen** tekintheti meg.
 
 ## <a name="add-to-example-utterances"></a>Hozzáadás példa hosszúságú kimondott szöveg
 
-A vizsgálat panelen a Hozzáadás a következőhöz: **például hosszúságú kimondott szöveg**lehetőség kiválasztásával adhatja hozzá a teszt teljes célját.
+A vizsgálat panelen a Hozzáadás a következőhöz: **például hosszúságú kimondott szöveg** lehetőség kiválasztásával adhatja hozzá a teszt teljes célját.
 
 ## <a name="disable-required-features"></a>Szükséges szolgáltatások letiltása
 
@@ -97,13 +97,13 @@ Ha [mintázatokat](luis-concept-patterns.md) használ, és a kihagyás egy mint�
 
 ## <a name="compare-with-published-version"></a>Összehasonlítás a közzétett verzióval
 
-Tesztelheti az alkalmazás aktív verzióját a közzétett [végpont](luis-glossary.md#endpoint) verziószámával. Az **ellenőrzés** panelen válassza a **összehasonlítás a közzétetttel**lehetőséget. A közzétett modellel kapcsolatos bármilyen vizsgálatot levonják az Azure-előfizetési kvóta egyenlegéről.
+Tesztelheti az alkalmazás aktív verzióját a közzétett [végpont](luis-glossary.md#endpoint) verziószámával. Az **ellenőrzés** panelen válassza a **összehasonlítás a közzétetttel** lehetőséget. A közzétett modellel kapcsolatos bármilyen vizsgálatot levonják az Azure-előfizetési kvóta egyenlegéről.
 
 > [!div class="mx-imgBorder"]
 > ![Összehasonlítás közzétételsel](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
 
 ## <a name="view-endpoint-json-in-test-panel"></a>Végpont JSON megtekintése a teszt panelen
-Az összehasonlításhoz a **JSON-nézet megjelenítése**lehetőség kiválasztásával megtekintheti a végpont által VISSZAadott JSON-t.
+Az összehasonlításhoz a **JSON-nézet megjelenítése** lehetőség kiválasztásával megtekintheti a végpont által VISSZAadott JSON-t.
 
 > [!div class="mx-imgBorder"]
 > ![Közzétett JSON-válasz](./media/luis-how-to-interactive-test/inspect-panel-compare-json.png)
@@ -119,9 +119,9 @@ Ha több LUIS-végponttal rendelkezik, a teszt közzétett paneljén a **Tovább
 
 
 ## <a name="batch-testing"></a>Kötegelt tesztelés
-Tekintse meg a Batch-tesztelési [fogalmakat](luis-concept-batch-test.md) , és Ismerje meg, [Hogyan](luis-how-to-batch-test.md) tesztelheti a Batch of hosszúságú kimondott szöveg.
+Tekintse meg a Batch-tesztelési [fogalmakat](./luis-how-to-batch-test.md) , és Ismerje meg, [Hogyan](luis-how-to-batch-test.md) tesztelheti a Batch of hosszúságú kimondott szöveg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha a tesztelés azt jelzi, hogy a LUIS-alkalmazás nem ismeri fel a megfelelő szándékokat és entitásokat, a további hosszúságú kimondott szöveg címkézésével vagy funkciók hozzáadásával javíthatja a LUIS-alkalmazás pontosságát.
 

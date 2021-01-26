@@ -4,12 +4,12 @@ description: Az időzítők és emlékeztetők bevezetője Service Fabric Reliab
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2b97b15ca4eb287f8d8f2c1af932f22acafae546
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f77eb29c9146fe66d5d2b6073c33e30fbab649c2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89016546"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791794"
 ---
 # <a name="actor-timers-and-reminders"></a>Színészi időzítők és emlékeztetők
 A szereplők rendszeres munkát ütemezhetnek az időzítők vagy emlékeztetők regisztrálásával. Ez a cikk bemutatja, hogyan használhatók az időzítők és a emlékeztetők, valamint ismertetik a köztük lévő különbségeket.
@@ -129,9 +129,9 @@ Minden időzítő leáll, ha a színész inaktiválva van a szemetet tartalmazó
 Az emlékeztetők olyan mechanizmusok, amelyekkel az állandó visszahívás aktiválható egy adott színészen a megadott időpontokban. A funkcióik hasonlóak az időzítőhöz. Az időzítővel ellentétben azonban az emlékeztetők minden körülmények között aktiválva lesznek, amíg a színész kifejezetten törli a regisztrációt, vagy a szereplő explicit módon törölve lett. Az emlékeztetőket kifejezetten a színészek inaktiválásai és feladatátvétele váltja ki, mert a szereplők futtatókörnyezete továbbra is információt tartalmaz a színészi szolgáltató által használt emlékeztetőről. Az időzítővel ellentétben a meglévő emlékeztetőket úgy is frissítheti, ha a regisztrációs metódust ( `RegisterReminderAsync` ) újra meghívja ugyanazzal a *reminderName*.
 
 > [!NOTE]
-> Az emlékeztetők megbízhatósága a szereplők állami szolgáltatója által biztosított állapot-megbízhatósági garanciákkal van kötve. Ez azt jelenti, hogy azoknál a szereplőknél, amelyek állapotának megőrzése nem értékre van *állítva, a*rendszer nem hajtja végre az emlékeztetőket a feladatátvétel után.
+> Az emlékeztetők megbízhatósága a szereplők állami szolgáltatója által biztosított állapot-megbízhatósági garanciákkal van kötve. Ez azt jelenti, hogy azoknál a szereplőknél, amelyek állapotának megőrzése nem értékre van *állítva, a* rendszer nem hajtja végre az emlékeztetőket a feladatátvétel után.
 
-Egy emlékeztető regisztrálásához a színész meghívja az [`RegisterReminderAsync`](/dotnet/api/microsoft.servicefabric.actors.runtime.actorbase.registerreminderasync?view=azure-dotnet#remarks) alaposztályon megadott metódust, ahogy az az alábbi példában is látható:
+Egy emlékeztető regisztrálásához a színész meghívja az [`RegisterReminderAsync`](/dotnet/api/microsoft.servicefabric.actors.runtime.actorbase.registerreminderasync#remarks) alaposztályon megadott metódust, ahogy az az alábbi példában is látható:
 
 ```csharp
 protected override async Task OnActivateAsync()

@@ -3,30 +3,22 @@ title: Eszközök újraépítése az Azure IoT Hub Device Provisioning Serviceba
 description: Megtudhatja, hogyan hozhatja létre az eszközöket az eszközök kiépítési szolgáltatásával (DPS), és miért kell ezt megtennie.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/04/2019
+ms.date: 01/25/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: e5cc5b557aa4dff793f7e87093eeb65028da4f8c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d704e8f9687f3987d80018d84b41c0fd519da172
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010945"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791896"
 ---
 # <a name="how-to-reprovision-devices"></a>Eszközök újraépítése
 
-Egy IoT-megoldás életciklusa során gyakori az eszközök áthelyezése a IoT-hubok között. Az áthelyezés okai a következők lehetnek:
+Egy IoT-megoldás életciklusa során gyakori az eszközök áthelyezése a IoT-hubok között. Ez a témakör a szabályzatok újraépítésének konfigurálásához nyújt segítséget a megoldás-kezelők számára.
 
-* Földrajzi **hely: mivel** az eszköz a helyek között mozog, a hálózati késést úgy javítja ki, hogy az eszközt az egyes helyekhez közelebb helyezi át egy IoT hubhoz.
-
-* **Több-bérlő**: egy eszköz felhasználható ugyanabban a IoT-megoldásban, de új ügyfélhez vagy vásárlói helyhez rendelhető hozzá vagy bérletbe. Ezt az új ügyfelet egy másik IoT hub használatával lehet kiszolgálni.
-
-* **Megoldás módosítása**: egy eszköz áthelyezhető egy új vagy frissített IoT-megoldásba. Ez az ismételt hozzárendelés megkövetelheti, hogy az eszköz kommunikáljon egy olyan új IoT hubhoz, amely más háttér-összetevőkhöz van csatlakoztatva. 
-
-* **Karanténba helyezés**: hasonló a megoldás módosításához. Olyan eszköz, amely hibásan működik, sérült vagy elavult, újra hozzárendelhető egy IoT hubhoz, ahol az összes művelet frissíthető, és visszatérhet a megfelelőséghez. Ha az eszköz megfelelően működik, a rendszer visszatelepíti a főhubhoz.
-
-Az újraépítéssel kapcsolatos részletesebb áttekintésért tekintse meg az eszközök újraépítésével kapcsolatos [fogalmakat IoT hub](concepts-device-reprovision.md).
+Az újraépítéssel kapcsolatos forgatókönyvek részletesebb áttekintését lásd: [IoT hub eszköz újraépítési koncepciói](concepts-device-reprovision.md).
 
 
 ## <a name="configure-the-enrollment-allocation-policy"></a>A regisztráció kiosztási szabályzatának konfigurálása

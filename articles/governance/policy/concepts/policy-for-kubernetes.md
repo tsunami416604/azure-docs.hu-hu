@@ -3,12 +3,12 @@ title: A Kubernetes Azure Policy megismerése
 description: Ismerje meg, hogyan használja a Azure Policy a Rego-t és a nyílt házirend-ügynököt az Azure-ban vagy a helyszínen futó Kubernetes futtató fürtök kezelésére.
 ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: e2b9253d8ce60d5dc77d406e3c9d0469539f2c77
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: f25b64bc28535d125c7883f16c9e747d6250ca96
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511331"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789738"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>A Kubernetes-fürtökhöz tartozó Azure Policy ismertetése
 
@@ -22,7 +22,7 @@ A Kubernetes Azure Policy a következő fürt-környezeteket támogatja:
 
 - [Azure Kubernetes Service (AKS)](../../../aks/intro-kubernetes.md)
 - [Azure Arc-kompatibilis Kubernetes](../../../azure-arc/kubernetes/overview.md)
-- [AK-motor](https://github.com/Azure/aks-engine/blob/master/docs/README.md)
+- [AKS-motor](https://github.com/Azure/aks-engine/blob/master/docs/README.md)
 
 > [!IMPORTANT]
 > Az KABAi motor és az arc-kompatibilis Kubernetes-bővítmények **előzetes** verzióban érhetők el. A Kubernetes Azure Policy csak a Linux-csomópontok készleteit és a beépített szabályzat-definíciókat támogatja. A beépített szabályzat-definíciók a **Kubernetes** kategóriában találhatók. A korlátozott előzetes verziójú házirend-definíciók a **EnforceOPAConstraint** és a **EnforceRegoPolicy** effektussal, a kapcsolódó **Kubernetes-szolgáltatások** kategóriája pedig _elavult_. Ehelyett használja a hatások _naplózása_ és a _Megtagadás_ erőforrás-szolgáltatói módot `Microsoft.Kubernetes.Data` .
@@ -34,7 +34,7 @@ A Kubernetes-fürttel való Azure Policy engedélyezéséhez és használatához
 1. Konfigurálja a Kubernetes-fürtöt, és telepítse a bővítményt:
    - [Azure Kubernetes Service (AKS)](#install-azure-policy-add-on-for-aks)
    - [Azure Arc-kompatibilis Kubernetes](#install-azure-policy-add-on-for-azure-arc-enabled-kubernetes)
-   - [AK-motor](#install-azure-policy-add-on-for-aks-engine)
+   - [AKS-motor](#install-azure-policy-add-on-for-aks-engine)
 
    > [!NOTE]
    > A telepítéssel kapcsolatos gyakori problémákért lásd: [Hibaelhárítás – Azure Policy bővítmény](../troubleshoot/general.md#add-on-for-kubernetes-installation-errors).
@@ -463,7 +463,7 @@ További információ: a forgalomirányító dokumentációjának [hibakeresése
 
 ## <a name="troubleshooting-the-add-on"></a>A bővítmény hibaelhárítása
 
-A Kubernetes-bővítmény hibaelhárításával kapcsolatos további információkért tekintse meg a Azure Policy hibaelhárítási cikk [Kubernetes című szakaszát](/azure/governance/policy/troubleshoot/general#add-on-for-kubernetes-general-errors) .
+A Kubernetes-bővítmény hibaelhárításával kapcsolatos további információkért tekintse meg a Azure Policy hibaelhárítási cikk [Kubernetes című szakaszát](../troubleshoot/general.md#add-on-for-kubernetes-general-errors) .
 
 ## <a name="remove-the-add-on"></a>A bővítmény eltávolítása
 

@@ -4,12 +4,12 @@ description: Ismerje meg az Azure Service Fabric-alkalmazások csomagolását é
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 11a3fdd5dbaef53af321342952f786ed8119689c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 168e6d6dc7ab5bfeccc4e1dabc7bd50efcbe8f34
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021061"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789702"
 ---
 # <a name="package-an-application"></a>Alkalmazás becsomagolása
 
@@ -75,7 +75,7 @@ D:\Temp> msbuild HelloWorld.sfproj /t:Package
 
 ## <a name="test-the-package"></a>A csomag tesztelése
 
-A [ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) parancs használatával helyileg ellenőrizheti a csomag szerkezetét a PowerShell használatával.
+A [ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage) parancs használatával helyileg ellenőrizheti a csomag szerkezetét a PowerShell használatával.
 Ez a parancs ellenőrzi a jegyzékfájl-elemzési problémákat, és ellenőrzi az összes hivatkozást. Ez a parancs csak a csomagok könyvtárainak és fájljainak szerkezeti helyességét ellenőrzi.
 A kód vagy az adatcsomag tartalmának ellenőrzése nem ellenőrzi, hogy az összes szükséges fájl megtalálható-e.
 
@@ -121,7 +121,7 @@ Test-ServiceFabricApplicationPackage .\MyApplicationType
 True
 ```
 
-Ha az alkalmazáshoz [alkalmazás-paraméterek](service-fabric-manage-multiple-environment-app-configuration.md) vannak meghatározva, a megfelelő ellenőrzés érdekében átadhatja azokat a [test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) .
+Ha az alkalmazáshoz [alkalmazás-paraméterek](service-fabric-manage-multiple-environment-app-configuration.md) vannak meghatározva, a megfelelő ellenőrzés érdekében átadhatja azokat a [test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage) .
 
 Ha ismeri azt a fürtöt, amelyen az alkalmazás telepítve lesz, javasoljuk, hogy adja át a `ImageStoreConnectionString` paramétert. Ebben az esetben a csomag a fürtben már futó alkalmazás korábbi verzióival is érvényesítve lesz. Az ellenőrzés például képes észlelni, hogy egy azonos verziójú, de különböző tartalommal rendelkező csomag már telepítve van-e.  
 
@@ -135,9 +135,9 @@ Tömörített alkalmazáscsomag esetén [az alkalmazáscsomag feltöltése](serv
 Az üzembe helyezési mechanizmus a tömörített és a tömörítetlen csomagok esetében azonos. Ha a csomag tömörítve van, azt a rendszer a fürt rendszerkép-tárolójában tárolja, és az alkalmazás futtatása előtt tömöríti a csomóponton.
 A tömörítés lecseréli az érvényes Service Fabric csomagot a tömörített verzióra. A mappának engedélyeznie kell az írási engedélyeket. Egy már tömörített csomag tömörítésének futtatása nem változik.
 
-A csomagokat tömörítheti úgy, hogy a PowerShell-parancsot a [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) `CompressPackage` kapcsolóval futtatja. A kapcsoló használatával kibonthatja a csomagot ugyanazzal a paranccsal `UncompressPackage` .
+A csomagokat tömörítheti úgy, hogy a PowerShell-parancsot a [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) `CompressPackage` kapcsolóval futtatja. A kapcsoló használatával kibonthatja a csomagot ugyanazzal a paranccsal `UncompressPackage` .
 
-A következő parancs tömöríti a csomagot anélkül, hogy átmásolja azt a rendszerkép-tárolóba. A tömörített csomagokat szükség szerint egy vagy több Service Fabric-fürtre is másolhatja, a jelző nélkül a [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) használatával `SkipCopy` .
+A következő parancs tömöríti a csomagot anélkül, hogy átmásolja azt a rendszerkép-tárolóba. A tömörített csomagokat szükség szerint egy vagy több Service Fabric-fürtre is másolhatja, a jelző nélkül a [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) használatával `SkipCopy` .
 A csomag mostantól tartalmazza a, a és a csomagok tömörített fájljait `code` `config` `data` . Az alkalmazás jegyzékfájlja és a szolgáltatási jegyzékfájlok nem tömörítettek, mert számos belső művelethez szükségesek. Például a csomagok megosztása, az alkalmazás típusa és a verzió kibontása bizonyos érvényességi igényekhez mindennek hozzá kell férnie a jegyzékekhez. A jegyzékfájlok kijavítása nem teszi hatékonyabbá a műveleteket.
 
 ```
@@ -179,7 +179,7 @@ D:\TEMP\MYAPPLICATIONTYPE
 
 ```
 
-Azt is megteheti, hogy egy lépésben tömöríti és átmásolja a csomagot a [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) .
+Azt is megteheti, hogy egy lépésben tömöríti és átmásolja a csomagot a [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) .
 Ha a csomag nagyméretű, elég magas időtúllépést biztosít a csomagok tömörítéséhez és a fürtre való feltöltéshez szükséges idő megadásához.
 
 ```powershell
@@ -212,7 +212,7 @@ Ezzel a beállítással nem kell átmásolni az alkalmazáscsomag a rendszerkép
 A `sfpkg` fájl egy olyan zip, amely tartalmazza a kezdeti alkalmazáscsomag, és a ". sfpkg" kiterjesztésű.
 A zip-ben az alkalmazáscsomag tömöríthető vagy tömörítetlen is lehet. A zip-ben lévő alkalmazáscsomag tömörítése a kód, a konfiguráció és az adatcsomag szintjén történik, ahogy azt [korábban említettük](service-fabric-package-apps.md#compress-a-package).
 
-A létrehozásához `sfpkg` kezdjen el egy olyan mappával, amely tartalmazza az eredeti alkalmazáscsomag tömörített vagy nem. Ezután a ". sfpkg" kiterjesztésű mappa zip-fájljának kitöltéséhez használjon bármilyen segédprogramot. Használja például a [ZipFile. CreateFromDirectory](/dotnet/api/system.io.compression.zipfile.createfromdirectory?view=netcore-3.1#System_IO_Compression_ZipFile_CreateFromDirectory_System_String_System_String_System_IO_Compression_CompressionLevel_System_Boolean_).
+A létrehozásához `sfpkg` kezdjen el egy olyan mappával, amely tartalmazza az eredeti alkalmazáscsomag tömörített vagy nem. Ezután a ". sfpkg" kiterjesztésű mappa zip-fájljának kitöltéséhez használjon bármilyen segédprogramot. Használja például a [ZipFile. CreateFromDirectory](/dotnet/api/system.io.compression.zipfile.createfromdirectory#System_IO_Compression_ZipFile_CreateFromDirectory_System_String_System_String_System_IO_Compression_CompressionLevel_System_Boolean_).
 
 ```csharp
 ZipFile.CreateFromDirectory(appPackageDirectoryPath, sfpkgFilePath);

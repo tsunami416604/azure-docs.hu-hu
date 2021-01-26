@@ -4,12 +4,12 @@ description: Leírja, hogy a Reliable Actors hogyan vannak rétegben Reliable Se
 ms.topic: conceptual
 ms.date: 3/9/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c3bd67e0f71e20a8b5a74b4b38e5b423a14dc08d
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: e204b47b7fa9f528341507c315c926159d524e13
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575618"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789582"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Hogyan Reliable Actors használni a Service Fabric platformot?
 Ez a cikk azt ismerteti, hogy Reliable Actors hogyan működik az Azure Service Fabric platformon. A Reliable Actors egy olyan keretrendszerben fut, amely egy, a *Actors szolgáltatásnak* nevezett, állapot-nyilvántartó megbízható szolgáltatás implementációjában található. A Actors szolgáltatás tartalmazza az életciklus és az üzenetek a szereplőkkel való elküldésének kezeléséhez szükséges összes összetevőt:
@@ -89,7 +89,7 @@ GUID-azonosítók/UUID-kódok és karakterláncok használatakor az értékek ki
 ## <a name="next-steps"></a>További lépések
 * [Színészi állapot kezelése](service-fabric-reliable-actors-state-management.md)
 * [A Actor életciklusa és a szemét gyűjtése](service-fabric-reliable-actors-lifecycle.md)
-* [A Actors API-dokumentációja](/dotnet/api/microsoft.servicefabric.actors?view=azure-dotnet)
+* [A Actors API-dokumentációja](/dotnet/api/microsoft.servicefabric.actors)
 * [.NET-mintakód](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java-mintakód](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

@@ -5,15 +5,15 @@ ms.subservice: heavy
 ms.topic: include
 ms.date: 09/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 80411ac191d0385ddafd4a3cc490d322ce039689
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80e34c117c02c2126b46297c4219effa85e9caa6
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91642428"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792356"
 ---
 - Ne másolja a fájlokat közvetlenül az előlétrehozott megosztások egyikére. Létre kell hoznia egy mappát a megosztás alatt, majd át kell másolnia a fájlokat a mappába.
-- A *StorageAccount_BlockBlob* és *StorageAccount_PageBlob* nevű mappa egy tároló. A tárolók például *StorageAccount_BlockBlob/Container* és *StorageAccount_PageBlob/Container*jönnek létre.
+- A *StorageAccount_BlockBlob* és *StorageAccount_PageBlob* nevű mappa egy tároló. A tárolók például *StorageAccount_BlockBlob/Container* és *StorageAccount_PageBlob/Container* jönnek létre.
 - A közvetlenül a *StorageAccount_AzureFiles* alatt létrehozott mappákat egy Azure-fájlmegosztás fordítja le.
 - Ha egy másolandó objektum neve megegyezik egy olyan Azure-objektummal, mint például egy blob vagy egy olyan fájl, amely már a felhőben található, Data Box felülírja a fájlt a felhőben.
 - A rendszer a *StorageAccount_BlockBlobba* írt összes fájlt és *StorageAccount_PageBlob* -megosztást a blob és az oldal blobként feltölti.

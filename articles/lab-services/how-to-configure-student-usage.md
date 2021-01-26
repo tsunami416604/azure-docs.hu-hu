@@ -3,12 +3,12 @@ title: A Azure Lab Services Labs használati beállításainak konfigurálása
 description: Megtudhatja, hogyan konfigurálhatja a tanulók számát a laborban, regisztrálhatja őket a laborban, meghatározhatja, hogy hány órát használhatnak a virtuális gép, és így tovább.
 ms.topic: article
 ms.date: 12/01/2020
-ms.openlocfilehash: 3b05246445aea708312891ec631a35da3bc1eb8e
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 380a587eecb276c457b93ca3c3f3ac08b2239275
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602631"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791963"
 ---
 # <a name="add-and-manage-lab-users"></a>Tesztkörnyezeti felhasználók létrehozása és felügyelete
 
@@ -24,7 +24,7 @@ Ez a cikk bemutatja, hogyan adhat hozzá felhasználókat a laborhoz.
 
 Most már meglévő Azure Active Directory (Azure AD) csoportba szinkronizálhatja a tesztkörnyezet felhasználói listáját, így nem kell manuálisan hozzáadnia vagy törölnie a felhasználókat. 
 
-A szervezeti erőforrásokhoz és a felhőalapú alkalmazásokhoz való hozzáférés kezeléséhez egy Azure AD-csoport hozható létre a szervezet Azure Active Directory belül. További információ: [Azure ad-csoportok](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups). Ha a szervezete Microsoft Office 365-es vagy Azure-szolgáltatásokat használ, a szervezete már rendelkezik a Azure Active Directoryt kezelő rendszergazdákkal. 
+A szervezeti erőforrásokhoz és a felhőalapú alkalmazásokhoz való hozzáférés kezeléséhez egy Azure AD-csoport hozható létre a szervezet Azure Active Directory belül. További információ: [Azure ad-csoportok](../active-directory/fundamentals/active-directory-manage-groups.md). Ha a szervezete Microsoft Office 365-es vagy Azure-szolgáltatásokat használ, a szervezete már rendelkezik a Azure Active Directoryt kezelő rendszergazdákkal. 
 
 ### <a name="sync-users-with-azure-ad-group"></a>Felhasználók szinkronizálása az Azure AD-csoporttal
 
@@ -65,7 +65,7 @@ Ebben a szakaszban manuálisan adja hozzá a tanulókat (e-mail-cím vagy CSV-f�
 1. Válassza a **Hozzáadás e-mail-cím szerint** (alapértelmezett) lehetőséget, adja meg a tanulók e-mail-címeit külön vonalakon, vagy egyetlen sorban pontosvesszővel elválasztva. 
 
     :::image type="content" source="./media/how-to-configure-student-usage/add-users-email-addresses.png" alt-text="Felhasználók e-mail címeinek hozzáadása":::
-1. Válassza a **Mentés** lehetőséget. 
+1. Kattintson a **Mentés** gombra. 
 
     A lista megjeleníti az aktuális felhasználók e-mail-címeit és állapotát, függetlenül attól, hogy regisztrálva vannak-e a laborban. 
 
@@ -87,7 +87,7 @@ A CSV-szövegfájlok vesszővel tagolt (CSV) táblázatos adatok (számok és sz
 1. Válassza ki a diákok e-mail-címeit tartalmazó CSV-fájlt, majd kattintson a **Megnyitás** gombra.
 
     A **felhasználók hozzáadása** ablakban megjelenik az e-mail-címek listája a csv-fájlból. 
-1. Válassza a **Mentés** lehetőséget. 
+1. Kattintson a **Mentés** gombra. 
 1. A **felhasználók** ablaktáblán tekintse meg a felvett diákok listáját. 
 
     :::image type="content" source="./media/how-to-configure-student-usage/list-of-added-users.png" alt-text="A hozzáadott felhasználók listája a felhasználók ablaktáblán":::

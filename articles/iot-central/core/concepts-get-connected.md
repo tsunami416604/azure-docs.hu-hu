@@ -2,7 +2,7 @@
 title: Eszköz csatlakoztatása az Azure IoT Centralban | Microsoft Docs
 description: Ez a cikk bemutatja az Azure-beli eszközök csatlakoztatásával kapcsolatos főbb fogalmakat IoT Central
 author: TheJasonAndrew
-ms.author: v-anjaso@microsoft.com
+ms.author: v-anjaso
 ms.date: 1/15/2020
 ms.topic: conceptual
 ms.service: iot-central
@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: a0ba695adb25adb6d339535bb9496630eaec70bb
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: c633b488fab521947e4f34abb95ada2342dc2eb3
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762801"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789770"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Csatlakozás az Azure IoT Centralhoz
 

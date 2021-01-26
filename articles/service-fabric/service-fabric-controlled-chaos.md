@@ -6,17 +6,17 @@ ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: motanv
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9e9127d9776169131c2ed7f4778052646e84f8b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34ec43593d50e359f09059cd3d51522df62cf567
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89013112"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789651"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Vezérelt káosz indukálása Service Fabric-fürtökben
 A nagy léptékű elosztott rendszerek, például a felhőalapú infrastruktúrák eleve megbízhatatlanok. Az Azure Service Fabric lehetővé teszi a fejlesztők számára, hogy megbízható elosztott szolgáltatásokat írjanak egy megbízhatatlan infrastruktúrán felül. Ahhoz, hogy megbízható, megbízható infrastruktúrán alapuló elosztott szolgáltatásokat lehessen írni, a fejlesztőknek képesnek kell lenniük a szolgáltatásaik stabilitásának tesztelésére, miközben a mögöttes megbízhatatlan infrastruktúra a hibák miatt bonyolult állapotú átmeneteken megy keresztül.
 
-A [hibák befecskendezése és a fürt Analysis Service](./service-fabric-testability-overview.md) (más néven a fault Analysis Service) lehetővé teszi a fejlesztők számára, hogy a szolgáltatásaik teszteléséhez hibákat idézzenek. Ezek a meghívott szimulált hibák, például a [partíciók újraindítása](/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps), segíthetnek a leggyakoribb állapot-váltások végrehajtásában. A megfogalmazott szimulált hibák azonban a definíciók szerint torzulnak, így a hibák kimaradnak, amelyek csak nehezen megjósolható, hosszú és bonyolult állapotú átmeneteket jeleznek. Elfogulatlan teszteléshez használhatja a káoszt.
+A [hibák befecskendezése és a fürt Analysis Service](./service-fabric-testability-overview.md) (más néven a fault Analysis Service) lehetővé teszi a fejlesztők számára, hogy a szolgáltatásaik teszteléséhez hibákat idézzenek. Ezek a meghívott szimulált hibák, például a [partíciók újraindítása](/powershell/module/servicefabric/start-servicefabricpartitionrestart), segíthetnek a leggyakoribb állapot-váltások végrehajtásában. A megfogalmazott szimulált hibák azonban a definíciók szerint torzulnak, így a hibák kimaradnak, amelyek csak nehezen megjósolható, hosszú és bonyolult állapotú átmeneteket jeleznek. Elfogulatlan teszteléshez használhatja a káoszt.
 
 A káosz szimulálja az időszakos, összekapcsolt hibákat (mind a kecses, mind a szégyenletes) a fürtben a hosszabb időtartamon belül. Egy kecses hiba Service Fabric API-hívásokból áll, például az újraindítási replika hibája egy kecses hiba, amelyet egy replikán nyitott meg. Távolítsa el a replikát, helyezze át az elsődleges replikát, és helyezze át a másodlagos replikát a káosz által gyakorolt egyéb kecses hibákra. A hibás hibák a folyamat bezárása, például a csomópont újraindítása és a Code csomag újraindítása. 
 

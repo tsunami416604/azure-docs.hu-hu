@@ -17,16 +17,14 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 92a5ce539cdd61feb57722756ec8722916f346de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6770486158b9c5f2e896951d91ff41643b6c8813
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89072383"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790140"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-powershell"></a>A virtuális hálózati szolgáltatásbeli végpontokkal való hálózati hozzáférés korlátozása a PowerShell használatával
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Virtuális hálózati szolgáltatásvégpontokkal egy adott virtuális hálózati alhálózatra korlátozható az egyes Azure-szolgáltatási erőforrásokhoz való hálózati hozzáférés. Emellett teljesen le is tiltható az internetes hozzáférés az erőforrásokhoz. A szolgáltatásvégpontok közvetlen csatlakozást biztosítanak a virtuális hálózat és a támogatott Azure-szolgáltatások között, így lehetővé teszik a virtuális hálózat magáncímterének használatát az Azure-szolgáltatások eléréséhez. A szolgáltatásvégpontokon keresztül az Azure-erőforrások felé irányuló forgalom mindig a Microsoft Azure gerinchálózatán marad. Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -37,7 +35,7 @@ Virtuális hálózati szolgáltatásvégpontokkal egy adott virtuális hálózat
 * Erőforráshoz való alhálózati hozzáférés ellenőrzése
 * Erőforráshoz való alhálózati és internetes hozzáférés letiltásának ellenőrzése
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -45,13 +43,13 @@ Ha a PowerShell helyi telepítését és használatát választja, akkor ehhez a
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-A virtuális hálózat létrehozása előtt létre kell hoznia egy erőforráscsoportot a virtuális hálózathoz, és az ebben a cikkben létrehozott összes többi erőforrást. Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). A következő példában létrehozunk egy *myResourceGroup*nevű erőforráscsoportot: 
+A virtuális hálózat létrehozása előtt létre kell hoznia egy erőforráscsoportot a virtuális hálózathoz, és az ebben a cikkben létrehozott összes többi erőforrást. Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot: 
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 ```
 
-Hozzon létre egy új virtuális hálózatot a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). A következő példában létrehozunk egy *myVirtualNetwork* nevű virtuális hálózatot a *10.0.0.0/16*előtaggal.
+Hozzon létre egy új virtuális hálózatot a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). A következő példában létrehozunk egy *myVirtualNetwork* nevű virtuális hálózatot a *10.0.0.0/16* előtaggal.
 
 ```azurepowershell-interactive
 $virtualNetwork = New-AzVirtualNetwork `
@@ -61,7 +59,7 @@ $virtualNetwork = New-AzVirtualNetwork `
   -AddressPrefix 10.0.0.0/16
 ```
 
-Hozzon létre egy alhálózati konfigurációt a [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). Az alábbi példa létrehoz egy alhálózati konfigurációt egy *nyilvános*alhálózathoz:
+Hozzon létre egy alhálózati konfigurációt a [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). Az alábbi példa létrehoz egy alhálózati konfigurációt egy *nyilvános* alhálózathoz:
 
 ```azurepowershell-interactive
 $subnetConfigPublic = Add-AzVirtualNetworkSubnetConfig `
@@ -84,7 +82,7 @@ A szolgáltatási végpontokat csak olyan szolgáltatások esetében engedélyez
 Get-AzVirtualNetworkAvailableEndpointService -Location eastus | Select Name
 ```
 
-Hozzon létre egy további alhálózatot a virtuális hálózaton. Ebben a példában egy *privát* nevű alhálózat jön létre a *Microsoft. Storage*szolgáltatás-végponttal: 
+Hozzon létre egy további alhálózatot a virtuális hálózaton. Ebben a példában egy *privát* nevű alhálózat jön létre a *Microsoft. Storage* szolgáltatás-végponttal: 
 
 ```azurepowershell-interactive
 $subnetConfigPrivate = Add-AzVirtualNetworkSubnetConfig `
@@ -143,7 +141,7 @@ $rule3 = New-AzNetworkSecurityRuleConfig `
   -SourcePortRange *
 ```
 
-Hozzon létre egy hálózati biztonsági csoportot a [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup). A következő példa egy *myNsgPrivate*nevű hálózati biztonsági csoportot hoz létre.
+Hozzon létre egy hálózati biztonsági csoportot a [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup). A következő példa egy *myNsgPrivate* nevű hálózati biztonsági csoportot hoz létre.
 
 ```azurepowershell-interactive
 $nsg = New-AzNetworkSecurityGroup `
@@ -374,7 +372,7 @@ Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.re
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben egy virtuális hálózati alhálózat szolgáltatási végpontját engedélyezte. Megismerte, hogy az Azure-szolgáltatásokkal üzembe helyezett erőforrásokhoz szolgáltatásvégpontok engedélyezhetők. Létrehozott egy Azure Storage-fiókot, és egy adott virtuális hálózati alhálózat erőforrásaira korlátozta a fiók felé irányuló hálózati hozzáférést. További információkat a szolgáltatásvégpontokról a [szolgáltatásvégpontok áttekintését](virtual-network-service-endpoints-overview.md) és az [alhálózatok kezelését](virtual-network-manage-subnet.md) ismertető cikkekben olvashat.
 

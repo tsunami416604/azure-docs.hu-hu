@@ -3,15 +3,15 @@ title: Közös rendszerkép-katalógus használata Azure Lab Servicesban | Micro
 description: Megtudhatja, hogyan konfigurálhat egy Lab-fiókot megosztott képkatalógus használatára úgy, hogy egy felhasználó megoszthat egy képet a másikkal, és egy másik felhasználó is használhatja a rendszerképet a sablon létrehozásához a laborban.
 ms.topic: article
 ms.date: 09/11/2020
-ms.openlocfilehash: d9f4e75163f591680cc8f85ac42c1b6ada5f2365
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 984cb4c47099928ffab327895a728cbe8a8f9604
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647766"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791390"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Megosztott képgyűjtemény használata Azure Lab Services
-Ebből a cikkből megtudhatja, hogy a pedagógusok/labor-rendszergazdák hogyan menthetik a sablon virtuálisgép-rendszerképeit egy [megosztott](../virtual-machines/windows/shared-image-galleries.md) képkatalógusba, így mások is használhatják a laborokat. 
+Ebből a cikkből megtudhatja, hogy a pedagógusok/labor-rendszergazdák hogyan menthetik a sablon virtuálisgép-rendszerképeit egy [megosztott](../virtual-machines/shared-image-galleries.md) képkatalógusba, így mások is használhatják a laborokat. 
 
 > [!IMPORTANT]
 > Megosztott képtárat használva a Azure Lab Services csak a 128 GB-nál kevesebb lemezképet támogatja az operációsrendszer-lemezterülettel. Az 128 GB-nál több lemezterületet tartalmazó képek vagy több lemez nem jelenik meg a virtuálisgép-rendszerképek listájában a labor létrehozása során.
@@ -48,7 +48,7 @@ A megosztott képkatalógus csatolása után a labor-fiók rendszergazdája vagy
     Miután mentette a rendszerképet a megosztott rendszerkép-katalógusba, ezt a rendszerképet használhatja a katalógusból egy másik tesztkörnyezet létrehozásakor. Képeket is feltölthet a megosztott rendszerkép-katalógusba egy labor kontextusán kívül. További információ: [megosztott képgyűjtemény – áttekintés](../virtual-machines/shared-images-powershell.md). 
 
     > [!IMPORTANT]
-    > Ha egy [tesztkörnyezet sablonjának rendszerképét](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery) Azure Lab Services egy megosztott képtárba menti, a képet **speciális képként** feltölti a katalógusba. A [speciális képek](../virtual-machines/windows/shared-image-galleries.md#generalized-and-specialized-images) a gép-specifikus információkat és a felhasználói profilokat őrzik meg. Továbbra is közvetlenül feltöltheti az általánosított rendszerképet a katalógusba Azure Lab Serviceson kívül.    
+    > Ha egy [tesztkörnyezet sablonjának rendszerképét](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery) Azure Lab Services egy megosztott képtárba menti, a képet **speciális képként** feltölti a katalógusba. A [speciális képek](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images) a gép-specifikus információkat és a felhasználói profilokat őrzik meg. Továbbra is közvetlenül feltöltheti az általánosított rendszerképet a katalógusba Azure Lab Serviceson kívül.    
 
 ## <a name="use-an-image-from-the-shared-image-gallery"></a>Rendszerkép használata a megosztott rendszerkép-gyűjteményből
 A pedagógus a sablon megosztott képgalériájában elérhető egyéni rendszerképeket kiválaszthatja az új Labor létrehozása során.
@@ -59,5 +59,5 @@ A pedagógus a sablon megosztott képgalériájában elérhető egyéni rendszer
 > A sablon virtuális gépeket a Azure Lab Services **általánosított** és **speciális** lemezképei alapján is létrehozhatja. 
 
 
-## <a name="next-steps"></a>Következő lépések
-A megosztott képtárakkal kapcsolatos további információkért lásd a [megosztott képtárat](../virtual-machines/windows/shared-image-galleries.md).
+## <a name="next-steps"></a>További lépések
+A megosztott képtárakkal kapcsolatos további információkért lásd a [megosztott képtárat](../virtual-machines/shared-image-galleries.md).

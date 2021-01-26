@@ -3,12 +3,12 @@ title: Azure DevTest Labs használat több Labs és előfizetés között
 description: Megtudhatja, hogyan jelentheti Azure DevTest Labs használatát több Labs és előfizetés között.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 9640dc3fd74095a737f382994201dc5610af921a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: d789b9849ec798a396e99420649792937422470f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152192"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789938"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>Jelentés Azure DevTest Labs használat több Labs és előfizetés között
 
@@ -75,12 +75,12 @@ A [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) haszn
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha a rendszer be van állítva, és az adatai a hosszú távú tárolásra kerülnek, a következő lépés az, hogy milyen kérdésekre kell válaszolnia. Példa: 
+Ha a rendszer be van állítva, és az adatai a hosszú távú tárolásra kerülnek, a következő lépés az, hogy milyen kérdésekre kell válaszolnia. Például: 
 
 -   Mi a virtuális gép méretének használata?
 
     A felhasználók nagy teljesítményű (drágább) virtuálisgép-méretet választanak?
 -   Milyen piactér-lemezképeket használ?
 
-    Az Egyéni rendszerképek a leggyakoribb virtuálisgép-alap, a közös rendszerkép-tárolók, például a [megosztott](../virtual-machines/windows/shared-image-galleries.md) képkatalógus vagy a [rendszerkép-előállító](image-factory-create.md).
+    Az Egyéni rendszerképek a leggyakoribb virtuálisgép-alap, a közös rendszerkép-tárolók, például a [megosztott](../virtual-machines/shared-image-galleries.md) képkatalógus vagy a [rendszerkép-előállító](image-factory-create.md).
 -   Mely egyéni lemezképeket használja vagy nem használja?

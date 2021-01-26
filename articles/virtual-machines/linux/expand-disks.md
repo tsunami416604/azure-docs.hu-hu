@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: bbb959b6b1d71c81f7b920b3962f693716041e16
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d1d433c7db36a3f4fe5f528b7fbd17549bc08e4a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016233"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791493"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Virtuális merevlemezek kibontása Linux rendszerű virtuális GÉPEN az Azure CLI-vel
 
 Ez a cikk azt ismerteti, hogyan lehet kibontani a Linux rendszerű virtuális gépek (VM) felügyelt lemezeit az Azure CLI-vel. [Adatlemezeket adhat hozzá](add-disk.md) a további tárolóhelyek biztosításához, és kibővítheti a meglévő adatlemezeket is. Az operációs rendszer (OS) alapértelmezett virtuális merevlemez-mérete jellemzően 30 GB az Azure-beli Linux rendszerű virtuális gépeken. 
 
 > [!WARNING]
-> Mindig győződjön meg arról, hogy a fájlrendszer kifogástalan állapotban van, a lemezpartíció-tábla típusa támogatja az új méretet, és gondoskodjon arról, hogy az adatok biztonsági mentése a lemez átméretezési műveleteinek végrehajtása előtt megtörténjen. További információ: Linux rendszerű [virtuális gépek biztonsági mentése az Azure-ban](tutorial-backup-vms.md). 
+> Mindig győződjön meg arról, hogy a fájlrendszer kifogástalan állapotban van, a lemezpartíció-tábla típusa támogatja az új méretet, és gondoskodjon arról, hogy az adatok biztonsági mentése a lemez átméretezési műveleteinek végrehajtása előtt megtörténjen. További információ: [Azure Backup](../../backup/quick-backup-vm-portal.md)rövid útmutató. 
 
 ## <a name="expand-an-azure-managed-disk"></a>Azure-beli felügyelt lemez kibontása
 Győződjön meg arról, hogy a legújabb [Azure CLI](/cli/azure/install-az-cli2) telepítve van, és be van jelentkezve egy Azure-fiókba az [az login](/cli/azure/reference-index#az-login)használatával.

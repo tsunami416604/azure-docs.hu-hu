@@ -5,15 +5,15 @@ author: suchiagicha
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: pepogors
-ms.openlocfilehash: 89a7a545dd334f892ee27b97995de40d7b6416dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c7d466d6e8fd36b4445966b92ee753becf96c64
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86245925"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791761"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Diagnosztika és Teljesítményfigyelés a megbízható szolgáltatás táveléréséhez
-A megbízható ServiceRemoting futtatókörnyezet  [teljesítményszámlálókat](/dotnet/api/system.diagnostics.performancecounter?view=dotnet-plat-ext-3.1)bocsát ki. Ezek betekintést nyújtanak a ServiceRemoting működéséhez, és segítenek a hibaelhárításban és a teljesítmény-figyelésben.
+A megbízható ServiceRemoting futtatókörnyezet  [teljesítményszámlálókat](/dotnet/api/system.diagnostics.performancecounter)bocsát ki. Ezek betekintést nyújtanak a ServiceRemoting működéséhez, és segítenek a hibaelhárításban és a teljesítmény-figyelésben.
 
 
 ## <a name="performance-counters"></a>Teljesítményszámlálók
@@ -36,7 +36,7 @@ A kategória esetében `Service Fabric Service` a számláló példányainak nev
 
 `ServiceFabricPartitionID_ServiceReplicaOrInstanceId_ServiceRuntimeInternalID`
 
-A *ServiceFabricPartitionID* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció-azonosító egy GUID, és a karakterlánc-ábrázolás a [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) "D" formátumú metódussal jön létre.
+A *ServiceFabricPartitionID* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció-azonosító egy GUID, és a karakterlánc-ábrázolás a [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) "D" formátumú metódussal jön létre.
 
 A *ServiceReplicaOrInstanceId* az a Service Fabric replika/példány-azonosító karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van.
 
@@ -57,7 +57,7 @@ A *MethodName* annak a szolgáltatási módszernek a neve, amelyhez a teljesítm
 
 A *ServiceRuntimeMethodId* egy 32 bites egész szám karakterlánc-ábrázolása, amelyet a háló szolgáltatás futtatókörnyezete hoz létre belső használatra. Ez a teljesítményszámláló-példány neve része, amely biztosítja az egyediségét, és a teljesítményszámláló-példányok más neveivel való ütközés elkerülését. A felhasználók nem próbálják értelmezni a teljesítményszámláló-példány nevének ezen részét.
 
-A *ServiceFabricPartitionID* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció-azonosító egy GUID, és a karakterlánc-ábrázolás a [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) "D" formátumú metódussal jön létre.
+A *ServiceFabricPartitionID* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció-azonosító egy GUID, és a karakterlánc-ábrázolás a [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) "D" formátumú metódussal jön létre.
 
 A *ServiceReplicaOrInstanceId* az a Service Fabric replika/példány-azonosító karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van.
 
@@ -90,6 +90,6 @@ Ha egy ügyfél Service proxy-objektumon keresztül hív meg egy metódust, akko
 | Service Fabric szolgáltatás |Kérelem deszerializálásának átlagos ezredmásodperce |A szolgáltatási kérelem üzenetének deszerializálásához szükséges idő (ezredmásodpercben), amikor a szolgáltatás megkapja a szolgáltatást |
 | Service Fabric szolgáltatás |Válasz szerializálásának átlagos ezredmásodperce |Igénybe vett idő (ezredmásodpercben) a szolgáltatás válaszüzenetének szerializálásához, mielőtt a rendszer elküldi a választ az ügyfélnek |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Mintakód](https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0)
 * [EventSource-szolgáltatók a Perfview eszköz-ben](/archive/blogs/vancem/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: a78bfc2b4f0c372c915647c0afa40263079af8e5
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 8b10e850fd3ae0282785164596f537652148a716
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746071"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791003"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>Terheléselosztás több IP-konfiguráción a PowerShell használatával
 
@@ -46,7 +46,7 @@ Kövesse az alábbi lépéseket a jelen cikkben ismertetett forgatókönyv megva
     $myResourceGroup = "contosofabrikam"
     ```
 
-    További információ: az [erőforráscsoport létrehozásának](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fload-balancer%2ftoc.json)2. lépése.
+    További információ: az [erőforráscsoport létrehozásának](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm?toc=%2fazure%2fload-balancer%2ftoc.json)2. lépése.
 
 3. [Hozzon létre egy rendelkezésre állási készletet](../virtual-machines/windows/tutorial-availability-sets.md?toc=%2fazure%2fload-balancer%2ftoc.json) , amely tartalmazza a virtuális gépeket. Ehhez a forgatókönyvhöz használja a következő parancsot:
 
@@ -54,14 +54,14 @@ Kövesse az alábbi lépéseket a jelen cikkben ismertetett forgatókönyv megva
     New-AzAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset" -Location "West Central US"
     ```
 
-4. Kövesse a [Windows rendszerű virtuális gép létrehozása](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fload-balancer%2ftoc.json) című cikk 3 – 5. lépését a virtuális gép egyetlen hálózati adapterrel való létrehozásának előkészítéséhez. Hajtsa végre az 6,1-es lépést, és a 6,2-es lépés helyett használja a következőt:
+4. Kövesse a [Windows rendszerű virtuális gép létrehozása](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm?toc=%2fazure%2fload-balancer%2ftoc.json) című cikk 3 – 5. lépését a virtuális gép egyetlen hálózati adapterrel való létrehozásának előkészítéséhez. Hajtsa végre az 6,1-es lépést, és a 6,2-es lépés helyett használja a következőt:
 
     ```powershell
     $availset = Get-AzAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset"
     New-AzVMConfig -VMName "VM1" -VMSize "Standard_DS1_v2" -AvailabilitySetId $availset.Id
     ```
 
-    Ezután [hozzon létre egy Windows rendszerű virtuális gép](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fload-balancer%2ftoc.json) 6,3 – 6,8. lépéseit.
+    Ezután [hozzon létre egy Windows rendszerű virtuális gép](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm?toc=%2fazure%2fload-balancer%2ftoc.json) 6,3 – 6,8. lépéseit.
 
 5. Adjon hozzá egy második IP-konfigurációt az egyes virtuális gépekhez. Kövesse a [több IP-cím társítása virtuális gépekhez](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md#add) című cikk utasításait. Használja a következő konfigurációs beállításokat:
 
@@ -141,6 +141,6 @@ Kövesse az alábbi lépéseket a jelen cikkben ismertetett forgatókönyv megva
 
 13. Végezetül konfigurálnia kell a DNS-erőforrásrekordokat úgy, hogy az a Load Balancer megfelelő előtérbeli IP-címére mutasson. A tartományokat Azure DNS-ban üzemeltetheti. A Azure DNS és a Load Balancer használatával kapcsolatos további információkért lásd: a [Azure DNS használata más Azure-szolgáltatásokkal](../dns/dns-for-azure-services.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További információ az Azure terheléselosztási szolgáltatásainak az Azure-beli [terheléselosztási szolgáltatások használatával](../traffic-manager/traffic-manager-load-balancing-azure.md)történő összevonásáról.
 - Ismerje meg, hogyan használhatja a különböző típusú naplókat az Azure-ban a [Azure Load Balancer Azure monitor naplófájljaiban](../load-balancer/load-balancer-monitor-log.md)található Load Balancer kezeléséhez és hibakereséséhez.

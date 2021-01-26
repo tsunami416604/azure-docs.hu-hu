@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 8b4b07288ce2c3570da5482a446b9418c7319011
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 686afa791df88382e3e5e1b2d233317c36bf1dd6
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87086200"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791306"
 ---
 # <a name="remove-an-application-from-a-service-fabric-cluster-using-powershell"></a>Alkalmazás eltávolítása Service Fabric-fürtről a PowerShell használatával
 
@@ -37,11 +37,11 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Jegyzetek |
 |---|---|
-| [Remove-ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication?view=azureservicefabricps) | Egy futó Service Fabric alkalmazás példányának eltávolítása a fürtből.  |
-| [Regisztráció törlése – ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) | Egy Service Fabric alkalmazás típusának és verziójának a fürtből való regisztrációjának törlése. |
+| [Remove-ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication) | Egy futó Service Fabric alkalmazás példányának eltávolítása a fürtből.  |
+| [Regisztráció törlése – ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype) | Egy Service Fabric alkalmazás típusának és verziójának a fürtből való regisztrációjának törlése. |
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a Service Fabric PowerShell-modullal kapcsolatban: [Azure PowerShell dokumentáció](/powershell/azure/service-fabric/overview?view=azureservicefabricps).
+További információ a Service Fabric PowerShell-modullal kapcsolatban: [Azure PowerShell dokumentáció](/powershell/azure/service-fabric/overview).
 
 További Powershell-példákat az Azure Service Fabrichez az [Azure PowerShell-példák](../service-fabric-powershell-samples.md) között találhat.

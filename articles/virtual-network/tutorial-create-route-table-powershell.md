@@ -17,16 +17,14 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 41c0f9546b07158a2c7fb3344698598f0c38521f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 5bd52e8865bb704497740851f6a0e3c886ed9d6d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492080"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790204"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-powershell"></a>Hálózati forgalom irányítása útválasztási táblázattal a PowerShell használatával
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Egy adott virtuális hálózaton belül az Azure alapértelmezés szerint automatikusan elosztja a forgalmat az összes alhálózat között. Az Azure alapértelmezett útválasztását felülírhatja saját maga által létrehozott útvonalakkal. Az egyéni útvonalak létrehozása akkor lehet hasznos, hálózati virtuális berendezésen (NVA) keresztül kívánja irányítani az alhálózatok közötti forgalmat. Ebben a cikkben az alábbiakkal ismerkedhet meg:
 

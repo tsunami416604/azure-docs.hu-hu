@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5025c4ad81433b6eb18f5beded860625791ffce5
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 4747c958b5e592458c14bbf4244953564c252678
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445098"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790123"
 ---
 # <a name="about-azure-key-vault"></a>Információk az Azure Key Vaultról
 
@@ -25,7 +25,7 @@ A Azure Key Vault a következő problémák megoldásában nyújt segítséget:
 - **Kulcskezelés** – Az Azure Key Vault kulcskezelési megoldásként is használható. Az Azure Key Vaulttal egyszerűen létrehozhatja és vezérelheti az adatok titkosításához használt titkosítási kulcsokat. 
 - A **tanúsítványkezelő** – Azure Key Vault egy olyan szolgáltatás is, amely lehetővé teszi a nyilvános és magánhálózati Transport Layer Security/SSL (TLS/SSL) tanúsítványok egyszerű üzembe helyezését, kezelését és telepítését az Azure-ral és a belső csatlakoztatott erőforrásokkal való használatra.
 
-Azure Key Vault két szolgáltatási réteggel rendelkezik: a standard, amely egy szoftver-kulccsal titkosítja a szoftvert, és egy prémium szintű csomagot, amely HSM-védelemmel ellátott kulcsokat tartalmaz. A standard és a prémium szint közötti összehasonlítás megtekintéséhez tekintse meg a [Azure Key Vault díjszabási oldalát](https://azure.microsoft.com/pricing/details/key-vault/).
+A Azure Key Vault két szolgáltatási szintet tartalmaz: standard, amely egy szoftver kulcsával titkosítja, és egy prémium szintű csomag, amely tartalmazza a hardveres biztonsági modul (HSM) által védett kulcsokat. A standard és a prémium szint közötti összehasonlítás megtekintéséhez tekintse meg a [Azure Key Vault díjszabási oldalát](https://azure.microsoft.com/pricing/details/key-vault/).
 
 ## <a name="why-use-azure-key-vault"></a>Miért érdemes az Azure Key Vaultot használni?
 

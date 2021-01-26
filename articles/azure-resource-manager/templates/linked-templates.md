@@ -2,13 +2,13 @@
 title: Sablonok csatolása az üzembe helyezéshez
 description: Ismerteti, hogyan használhatók a csatolt sablonok egy Azure Resource Manager sablonban (ARM-sablon) egy moduláris sablon megoldásához. Bemutatja, hogyan adhatók át a paraméterek értékei, meghatározhatók egy paraméterérték és dinamikusan létrehozott URL-címek.
 ms.topic: conceptual
-ms.date: 01/20/2021
-ms.openlocfilehash: dd810167e07f1bb23f9563936cb481652953ccd1
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.date: 01/25/2021
+ms.openlocfilehash: 7d4df67b7f69b3e58799f45ad72bd9ed68540dc2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624858"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790935"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Kapcsolt és beágyazott sablonok használata Azure-erőforrások üzembe helyezésekor
 
@@ -111,6 +111,10 @@ A hatókört a tulajdonságon keresztül állíthatja be `expressionEvaluationOp
   },
   ...
 ```
+
+> [!NOTE]
+>
+> Ha a hatókör értékre van állítva `outer` , nem használhat `reference` beágyazott sablon kimenetek szakaszában lévő függvényt a beágyazott sablonban üzembe helyezett erőforráshoz. Egy beágyazott sablonban lévő üzembe helyezett erőforrás értékeinek visszaküldéséhez használja a `inner` hatókört, vagy alakítsa át a beágyazott sablont egy csatolt sablonra.
 
 A következő sablon azt mutatja be, Hogyan oldhatók fel a sablon kifejezései a hatókörnek megfelelően. Tartalmaz egy nevű változót, `exampleVar` amely a fölérendelt sablonban és a beágyazott sablonban is definiálva van. A változó értékét adja vissza.
 
@@ -400,10 +404,6 @@ A következő részletben látható, hogy mely értékek biztonságosak, és mel
 }
 ```
 
-> [!NOTE]
->
-> Ha a hatókör értékre van állítva `outer` , nem használhat `reference` beágyazott sablon kimenetek szakaszában lévő függvényt a beágyazott sablonban üzembe helyezett erőforráshoz. Egy beágyazott sablonban lévő üzembe helyezett erőforrás értékeinek visszaküldéséhez használja a `inner` hatókört, vagy alakítsa át a beágyazott sablont egy csatolt sablonra.
-
 ## <a name="linked-template"></a>Csatolt sablon
 
 Sablon csatolásához vegyen fel egy [központi telepítési erőforrást](/azure/templates/microsoft.resources/deployments) a fő sablonba. A `templateLink` tulajdonságban adja meg a felvenni kívánt sablon URI-ját. Az alábbi példa egy, a Storage-fiókban található sablonra mutató hivatkozásokat tartalmaz.
@@ -500,7 +500,7 @@ Nem használhat egyszerre beágyazott paramétereket és egy paraméterre mutat�
 
 A csatolt sablonok egy elérhető végponton való fenntartása helyett létrehozhat egy olyan [sablont](template-specs.md) , amely a fő sablont és a hozzá tartozó sablonokat egyetlen olyan entitásba csomagolja, amelyet üzembe helyezhet. A sablon spec az Azure-előfizetés egyik erőforrása. Megkönnyíti a sablon biztonságos megosztását a szervezetben lévő felhasználókkal. Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával hozzáférést biztosíthat a sablon specifikációjának. Ez a funkció jelenleg előzetes verzióban érhető el.
 
-További információ:
+További információkért lásd:
 
 - [Oktatóanyag: spec sablon létrehozása csatolt sablonokkal](./template-specs-create-linked.md).
 - [Oktatóanyag: a sablon specifikációjának központi telepítése csatolt sablonként](./template-specs-deploy-linked-template.md).
@@ -803,7 +803,7 @@ Az alábbi példák a csatolt sablonok gyakori használatát mutatják be.
 |[Load Balancer nyilvános IP-címmel](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[csatolt sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |A társított sablonból származó nyilvános IP-címet adja vissza, és beállítja a terheléselosztó értékét. |
 |[Több IP-cím](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json) | [csatolt sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip.json) |Több nyilvános IP-címet hoz létre a társított sablonban.  |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az oktatóanyagot az oktatóanyag [: csatolt sablon üzembe helyezése](./deployment-tutorial-linked-template.md)című témakörben tekintheti meg.
 * Az erőforrások telepítési sorrendjének definiálásával kapcsolatos további információkért lásd: [erőforrások üzembe helyezési sorrendjének meghatározása az ARM-sablonokban](define-resource-dependency.md).

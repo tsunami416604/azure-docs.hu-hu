@@ -17,16 +17,14 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
-ms.openlocfilehash: 1d4fcc280ba2e34d2fa81584846441ad6fe81431
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8e300c9be8f3e59dc9443bf1f1806e4228992ad
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84708195"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790376"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-azure-powershell"></a>Az Azure Storage-fiókok kiszűrése való kezelése virtuális hálózati szolgáltatás végponti házirendjeivel Azure PowerShell használatával
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 A Virtual Network szolgáltatás végponti házirendjei lehetővé teszik, hogy az Azure Storage-fiókok hozzáférés-vezérlését a szolgáltatás-végpontokon keresztül egy virtuális hálózaton belül alkalmazza. Ez a legfontosabb feladat a számítási feladatok biztonságossá tétele, a Storage-fiókok kezelése, valamint az adatok kiszűrése engedélyezése.
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
@@ -39,7 +37,9 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 * Erősítse meg az engedélyezett Storage-fiókhoz való hozzáférést az alhálózaton.
 * Győződjön meg arról, hogy a hozzáférés meg van tagadva a nem engedélyezett Storage-fiókhoz az alhálózaton.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -47,7 +47,7 @@ Ha a PowerShell helyi telepítését és használatát választja, akkor ehhez a
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-A virtuális hálózat létrehozása előtt létre kell hoznia egy erőforráscsoportot a virtuális hálózathoz, és az ebben a cikkben létrehozott összes többi erőforrást. Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). A következő példában létrehozunk egy *myResourceGroup*nevű erőforráscsoportot: 
+A virtuális hálózat létrehozása előtt létre kell hoznia egy erőforráscsoportot a virtuális hálózathoz, és az ebben a cikkben létrehozott összes többi erőforrást. Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot: 
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -55,7 +55,7 @@ New-AzResourceGroup `
   -Location EastUS
 ```
 
-Hozzon létre egy új virtuális hálózatot a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). A következő példában létrehozunk egy *myVirtualNetwork* nevű virtuális hálózatot a *10.0.0.0/16*előtaggal.
+Hozzon létre egy új virtuális hálózatot a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). A következő példában létrehozunk egy *myVirtualNetwork* nevű virtuális hálózatot a *10.0.0.0/16* előtaggal.
 
 ```azurepowershell-interactive
 $virtualNetwork = New-AzVirtualNetwork `
@@ -67,7 +67,7 @@ $virtualNetwork = New-AzVirtualNetwork `
 
 ## <a name="enable-a-service-endpoint"></a>Szolgáltatásvégpont engedélyezése
 
-Hozzon létre egy alhálózatot a virtuális hálózaton. Ebben a példában egy *privát* nevű alhálózat jön létre a *Microsoft. Storage*szolgáltatás-végponttal: 
+Hozzon létre egy alhálózatot a virtuális hálózaton. Ebben a példában egy *privát* nevű alhálózat jön létre a *Microsoft. Storage* szolgáltatás-végponttal: 
 
 ```azurepowershell-interactive
 $subnetConfigPrivate = Add-AzVirtualNetworkSubnetConfig `
@@ -124,7 +124,7 @@ $rule3 = New-AzNetworkSecurityRuleConfig `
   -SourcePortRange *
 ```
 
-Hozzon létre egy hálózati biztonsági csoportot a [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup). A következő példa egy *myNsgPrivate*nevű hálózati biztonsági csoportot hoz létre.
+Hozzon létre egy hálózati biztonsági csoportot a [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup). A következő példa egy *myNsgPrivate* nevű hálózati biztonsági csoportot hoz létre.
 
 ```azurepowershell-interactive
 $nsg = New-AzNetworkSecurityGroup `

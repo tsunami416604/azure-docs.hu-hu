@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: d6e52da7fce39a259107fe60a21fb5ead7b18709
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 36724e518f1bae636c2d2602a227b53a11257591
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127821"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791054"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Biztonságos SharePoint-adatforrás hozzáadása a tudásbázishoz
 
@@ -132,7 +132,7 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 
 Az Azure Blob Storage használatával az alábbi lépéseket követve adhat hozzá legújabb SharePoint-tartalmakat az API-n keresztül: 
 1.  Töltse le helyileg a SharePoint-fájlokat. Az API-t hívó felhasználónak hozzáféréssel kell rendelkeznie a SharePointhoz. 
-1.  Töltse fel őket az Azure Blob stoarge. Ez egy biztonságos közös hozzáférést hoz létre az [sas-token használatával.](https://docs.microsoft.com/azure/storage/common/storage-sas-overview#how-a-shared-access-signature-works) 
+1.  Töltse fel őket az Azure Blob stoarge. Ez egy biztonságos közös hozzáférést hoz létre az [sas-token használatával.](../../../storage/common/storage-sas-overview.md#how-a-shared-access-signature-works) 
 1. Adja át a SAS-jogkivonattal generált blob URL-címet a QnA Maker APInak. Ahhoz, hogy a kérdés megválaszolja a fájlokat, az URL végén fel kell vennie az utótag fájltípusát "&ext = PDF" vagy "&ext = doc" néven, mielőtt átadná azt a QnA Maker API>  
 
 
@@ -189,7 +189,7 @@ Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileu
 
 -->
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Együttműködés a Tudásbázisban](../index.yml)

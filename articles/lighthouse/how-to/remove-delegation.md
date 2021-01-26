@@ -3,12 +3,12 @@ title: Delegáláshoz való hozzáférés eltávolítása
 description: Ismerje meg, hogyan távolíthatja el az Azure Lighthouse szolgáltatáshoz delegált erőforrásokhoz való hozzáférést.
 ms.date: 12/03/2020
 ms.topic: how-to
-ms.openlocfilehash: d3442bb9fd2f6e7423fd4bf28cace1f7fd91ad80
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 7218c8829c9b2500e8311fbb3d5e9ff4eb986529
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608452"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791356"
 ---
 # <a name="remove-access-to-a-delegation"></a>Delegáláshoz való hozzáférés eltávolítása
 
@@ -41,7 +41,7 @@ Az alábbi példa egy olyan hozzárendelést mutat be, amely megadja a **felügy
     ] 
 ```
 
-Ez a **szerepkör az Azure** Marketplace-en való közzétételre szolgáló [felügyelt szolgáltatási ajánlat létrehozásakor](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#authorization) is kiválasztható.
+Ez a **szerepkör az Azure** Marketplace-en való közzétételre szolgáló [felügyelt szolgáltatási ajánlat létrehozásakor](../../marketplace/plan-managed-service-offer.md) is kiválasztható.
 
 Az ezzel az engedéllyel rendelkező felhasználók a következő módszerek egyikével törölhetik a delegálást.
 

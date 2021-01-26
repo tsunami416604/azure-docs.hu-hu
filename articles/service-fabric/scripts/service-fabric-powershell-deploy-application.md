@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 145372fa872c481ec1a7c3de016c35fdc0f9d960
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d25ede5ae871eddd965594224b518ec42525451
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87083803"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791290"
 ---
 # <a name="deploy-an-application-to-a-service-fabric-cluster"></a>Alkalmazás üzembe helyezése egy Service Fabric-fürtön
 
@@ -41,14 +41,14 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Jegyzetek |
 |---|---|
-|[Kapcsolat – ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps)| Létrehoz egy Service Fabric-fürthöz való kapcsolódást. |
-|[Másolás – ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) | Egy alkalmazáscsomag másolása a fürt rendszerkép-tárolójába.  |
-|[Regisztráció – ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps)| Egy alkalmazás típusának és verziójának regisztrálása a fürtön. |
-|[Új – ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps)| Létrehoz egy alkalmazást egy regisztrált alkalmazás típusától. |
-| [Remove-ServiceFabricApplicationPackage](/powershell/module/servicefabric/remove-servicefabricapplicationpackage?view=azureservicefabricps) | Eltávolít egy Service Fabric alkalmazáscsomag a rendszerkép-tárolóból.|
+|[Kapcsolat – ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster)| Létrehoz egy Service Fabric-fürthöz való kapcsolódást. |
+|[Másolás – ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) | Egy alkalmazáscsomag másolása a fürt rendszerkép-tárolójába.  |
+|[Regisztráció – ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype)| Egy alkalmazás típusának és verziójának regisztrálása a fürtön. |
+|[Új – ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication)| Létrehoz egy alkalmazást egy regisztrált alkalmazás típusától. |
+| [Remove-ServiceFabricApplicationPackage](/powershell/module/servicefabric/remove-servicefabricapplicationpackage) | Eltávolít egy Service Fabric alkalmazáscsomag a rendszerkép-tárolóból.|
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a Service Fabric PowerShell-modullal kapcsolatban: [Azure PowerShell dokumentáció](/powershell/azure/service-fabric/overview?view=azureservicefabricps).
+További információ a Service Fabric PowerShell-modullal kapcsolatban: [Azure PowerShell dokumentáció](/powershell/azure/service-fabric/overview).
 
 További Powershell-példákat az Azure Service Fabrichez az [Azure PowerShell-példák](../service-fabric-powershell-samples.md) között találhat.
