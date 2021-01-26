@@ -1,18 +1,18 @@
 ---
 title: Az összes Azure Security Center javaslat hivatkozási táblázata
-description: Ez a cikk Azure Security Center biztonsági javaslatait sorolja fel, amelyek segítenek az erőforrások védelmében.
+description: Ez a cikk Azure Security Center biztonsági javaslatait sorolja fel, amelyek segítségével megerősítheti és megvédheti erőforrásait.
 author: memildin
 ms.service: security-center
 ms.topic: reference
-ms.date: 01/24/2021
+ms.date: 01/26/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: cd72e904f659b7bd9c7e2df86b46fe20bd26ec33
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: f6d881036b0ebaa79d1052e41b8ec649bb1e8d6d
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757097"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797156"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Biztonsági javaslatok – gyorsútmutató
 

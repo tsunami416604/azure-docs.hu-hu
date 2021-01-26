@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/13/2021
 ms.author: alkohli
-ms.openlocfilehash: 4c44fca7b443a4d289b7ac7e2e507a3c3f305089
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 26e8f08d4b901a9ea57da826d9441d23508c4a4c
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790783"
+ms.locfileid: "98797619"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Oktatóanyag: Az Azure Data Box megrendelése
 
@@ -231,7 +231,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
     |Forrásország/-régió    |    Válassza ki azt az országot vagy régiót, ahol az adatok jelenleg találhatók.         |
     |Azure-beli célrégió     |     Válassza ki azt az Azure-régiót, ahova át szeretné vinni az adatokat. <br> További információt a [regionális elérhetőséget](data-box-overview.md#region-availability) tárgyaló témakörben talál.            |
 
-    ![Azure Data Box importálási sorrend elindítása](media/data-box-deploy-ordered/select-data-box-import-04-b.png#lightbox)
+    [![Azure Data Box importálási sorrend ](media/data-box-deploy-ordered/select-data-box-import-04-b.png) elindítása](media/data-box-deploy-ordered/select-data-box-import-04-b.png#lightbox)
 
 5. Válassza a **Data Box** lehetőséget. Egy megrendelés maximális felhasználható kapacitása 80 TB. Nagyobb mennyiségű adat esetén több rendelést is létrehozhat.
 

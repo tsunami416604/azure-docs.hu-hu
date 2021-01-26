@@ -1,18 +1,18 @@
 ---
 title: Az Azure RBAC vonatkozó szabályozási megfelelőségi ellenőrzések Azure Policy
 description: Felsorolja Azure Policy az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) számára elérhető szabályozási megfelelőségi szabályozásokat. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.topic: sample
 author: rolyon
 ms.author: rolyon
 ms.service: role-based-access-control
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 23f04dbfcdedc534394fc9fe3b35b8389e4d0775
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 955e2216bbdf67cf8c10db72f2288a9da765700a
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684162"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796088"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-rbac"></a>Az Azure RBAC vonatkozó szabályozási megfelelőségi ellenőrzések Azure Policy
 
@@ -23,7 +23,7 @@ A [Azure Policy szabályozási megfelelősége](../governance/policy/concepts/re
 
 [!INCLUDE [azure-policy-compliancecontrols-rbac](../../includes/policy/standards/byrp/microsoft.authorization.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [Azure Policy szabályozási megfelelőségről](../governance/policy/concepts/regulatory-compliance.md).
 - A beépített elemek megtekintése az [Azure Policy GitHub-adattárában](https://github.com/Azure/azure-policy).

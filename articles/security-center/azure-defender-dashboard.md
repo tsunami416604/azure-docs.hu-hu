@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 35469c7a11d47e586187b55bde1e8ad8a0c94f5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc54cc8dfc34db8aa88690c03ef0b18991e60776
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448411"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797110"
 ---
 # <a name="the-azure-defender-dashboard"></a>Az Azure Defender irányítópultja
 
@@ -31,22 +31,22 @@ Az Azure Defender irányítópultjának eléréséhez válassza az **Azure Defen
 
 Az irányítópult a következő fejezeteket tartalmazza:
 
-1. **Azure Defender-lefedettség** – Itt láthatja az előfizetésében lévő és az Azure Defender általi védelemre jogosult erőforrás-típusokat. Ahol szükséges, lehetősége lesz a frissítésre is. Ha az összes lehetséges erőforrást szeretné frissíteni, válassza az **összes frissítése**lehetőséget.
+1. **Azure Defender-lefedettség** – Itt láthatja az előfizetésében lévő és az Azure Defender általi védelemre jogosult erőforrás-típusokat. Ahol szükséges, lehetősége lesz a frissítésre is. Ha az összes lehetséges erőforrást szeretné frissíteni, válassza az **összes frissítése** lehetőséget.
 
 1. **Biztonsági riasztások terület** – ha az Azure Defender fenyegetést észlel a környezet bármely területén, riasztást hoz létre. Ezek a riasztások ismertetik az érintett erőforrások részleteit, a javasolt szervizelési lépéseket, valamint bizonyos esetekben a logikai alkalmazások válaszként való aktiválásának lehetőségét. Az ebben a diagramban bárhová kiválasztva megnyílik a **biztonsági riasztások oldal**.
 
 1. **Speciális védelem** – az Azure Defender számos komplex veszélyforrások elleni védelmet biztosít a virtuális gépek, az SQL-adatbázisok, a tárolók, a webalkalmazások, a hálózat és egyéb funkciók számára. Ebben a speciális védelem szakaszban megtekintheti a kiválasztott előfizetésekben lévő erőforrások állapotát az egyes védelemekhez. Válassza ki az egyiket, hogy közvetlenül a védelmi típus konfigurációs területére lépjen.
 
-1. Információk **– a** Hírek, a javasolt olvasás és a magas prioritású riasztások részletesen bemutatják, Security Center betekintést nyerhetnek az Ön és az előfizetése szempontjából releváns biztonsági kérdések megnyomásával. Legyen szó a biztonsági rések elemzése eszköz által a virtuális gépeken észlelt magas súlyosságú CVEs, vagy a Security Center csapata egy új blogbejegyzése, itt találja az **Azure Defender irányítópultjának**elemzések ablaktábláján.
+1. Információk **– a** Hírek, a javasolt olvasás és a magas prioritású riasztások részletesen bemutatják, Security Center betekintést nyerhetnek az Ön és az előfizetése szempontjából releváns biztonsági kérdések megnyomásával. Legyen szó a biztonsági rések elemzése eszköz által a virtuális gépeken észlelt magas súlyosságú CVEs, vagy a Security Center csapata egy új blogbejegyzése, itt találja az **Azure Defender irányítópultjának** elemzések ablaktábláján.
 
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megismerheti az Azure Defender irányítópultját. 
 
 Az Azure Defender szolgáltatással kapcsolatos további információkért lásd: [Az Azure Defender bemutatása](azure-defender.md)
 
 > [!div class="nextstepaction"]
-> [Az Azure Defender engedélyezése](security-center-pricing.md)
+> [Az Azure Defender engedélyezése](security-center-pricing.md#enable-azure-defender)

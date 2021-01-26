@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 08/25/2020
 ms.author: alehall
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2658240e670e617f7296881f733ff369b9bf8f87
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: d4beef9383b8e51e1295639c18e745fd0fdf8588
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219028"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796954"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-cli"></a>Rövid útmutató: Azure szinapszis-munkaterület létrehozása az Azure CLI-vel
 
@@ -44,37 +44,18 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy szinapszis-
     |StorageAccountResourceGroup| A meglévő ADLS Gen2 Storage-fiók erőforráscsoport neve. |
     |FileShareName| A meglévő Storage-fájlrendszer neve.|
     |SynapseResourceGroup| Válassza ki az Azure szinapszis-erőforráscsoport új nevét. |
-    |Region| Válasszon egy Azure- [régiót](https://azure.microsoft.com/global-infrastructure/geographies/#overview). |
+    |Régió| Válasszon egy Azure- [régiót](https://azure.microsoft.com/global-infrastructure/geographies/#overview). |
     |SynapseWorkspaceName| Válasszon egyedi nevet az új Azure szinapszis-munkaterülethez. |
     |SqlUser| Válasszon egy értéket egy új felhasználónévhez.|
     |SqlPassword| Válasszon biztonságos jelszót.|
     |||
 
-2. Erőforráscsoport létrehozása tárolóként az Azure szinapszis-munkaterülethez:
+1. Erőforráscsoport létrehozása tárolóként az Azure szinapszis-munkaterülethez:
     ```azurecli
     az group create --name $SynapseResourceGroup --location $Region
     ```
-3. A ADLS Gen 2 Storage-fiók kulcsának beolvasása:
-    ```azurecli
-    StorageAccountKey=$(az storage account keys list \
-      --account-name $StorageAccountName \
-      | jq -r '.[0] | .value')
-    ```
-4. A ADLS Gen 2 tárolási végpont URL-címének beolvasása:
-    ```azurecli
-    StorageEndpointUrl=$(az storage account show \
-      --name $StorageAccountName \
-      --resource-group $StorageAccountResourceGroup \
-      | jq -r '.primaryEndpoints | .dfs')
-    ```
 
-5. Választható A ADLS Gen2 Storage-fiók kulcsa és végpontja mindig ellenőrizhető:
-    ```azurecli
-    echo "Storage Account Key: $StorageAccountKey"
-    echo "Storage Endpoint URL: $StorageEndpointUrl"
-    ```
-
-6. Azure szinapszis-munkaterület létrehozása:
+1. Azure szinapszis-munkaterület létrehozása:
     ```azurecli
     az synapse workspace create \
       --name $SynapseWorkspaceName \
@@ -86,14 +67,14 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy szinapszis-
       --location $Region
     ```
 
-7. Webes és fejlesztői URL-cím beszerzése az Azure szinapszis-munkaterülethez:
+1. Webes és fejlesztői URL-cím beszerzése az Azure szinapszis-munkaterülethez:
     ```azurecli
     WorkspaceWeb=$(az synapse workspace show --name $SynapseWorkspaceName --resource-group $SynapseResourceGroup | jq -r '.connectivityEndpoints | .web')
 
     WorkspaceDev=$(az synapse workspace show --name $SynapseWorkspaceName --resource-group $SynapseResourceGroup | jq -r '.connectivityEndpoints | .dev')
     ```
 
-8. Hozzon létre egy tűzfalszabály, amely lehetővé teszi az Azure szinapszis-munkaterület elérését a gépről:
+1. Hozzon létre egy tűzfalszabály, amely lehetővé teszi az Azure szinapszis-munkaterület elérését a gépről:
 
     ```azurecli
     ClientIP=$(curl -sb -H "Accept: application/json" "$WorkspaceDev" | jq -r '.message')
@@ -103,7 +84,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy szinapszis-
     az synapse workspace firewall-rule create --end-ip-address $ClientIP --start-ip-address $ClientIP --name "Allow Client IP" --resource-group $SynapseResourceGroup --workspace-name $SynapseWorkspaceName
     ```
 
-9. Nyissa meg a munkaterület eléréséhez a környezeti változóban tárolt Azure szinapszis-munkaterület webes URL-címét `WorkspaceWeb` :
+1. Nyissa meg a munkaterület eléréséhez a környezeti változóban tárolt Azure szinapszis-munkaterület webes URL-címét `WorkspaceWeb` :
 
     ```azurecli
     echo "Open your Azure Synapse Workspace Web URL in the browser: $WorkspaceWeb"
@@ -126,6 +107,6 @@ Ha törölni szeretné az Azure szinapszis munkaterületet, hajtsa végre a köv
 az synapse workspace delete --name $SynapseWorkspaceName --resource-group $SynapseResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezután [LÉTREHOZHAT SQL-készleteket](quickstart-create-sql-pool-studio.md) , vagy [létrehozhat Apache Spark készleteket](quickstart-create-apache-spark-pool-studio.md) az adatok elemzésének és vizsgálatának megkezdéséhez.

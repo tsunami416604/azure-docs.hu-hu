@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: 8bc303f619d145cc280e6caab65781bd42d1b314
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: db80ae66761e49ce90f25a22f0e74cf8a1300796
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489693"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797227"
 ---
 # <a name="choose-the-right-postgresql-server-option-in-azure"></a>Válassza ki a megfelelő PostgreSQL-kiszolgáló lehetőséget az Azure-ban
 
@@ -21,7 +21,7 @@ Az Azure-ban a PostgreSQL-kiszolgáló munkaterhelései egy üzemeltetett virtu�
 A döntés meghozatalakor vegye figyelembe a következő három lehetőséget a Pásti-ben vagy az Azure-beli virtuális gépeken (IaaS) való futtatáskor
 - [Azure Database for PostgreSQL, egyetlen kiszolgáló](./overview-single-server.md)
 - [Azure Database for PostgreSQL, rugalmas kiszolgáló](./flexible-server/overview.md)
-- [Azure Database for PostgreSQL nagy kapacitású (Citus)]()
+- [Azure Database for PostgreSQL nagy kapacitású (Citus)](hyperscale/index.yml)
 
 A PostgreSQL az Azure-beli **virtuális gépeken** lehetőség a IaaS iparág kategóriájára esik. Ezzel a szolgáltatással a PostgreSQL-kiszolgálót egy teljes körűen felügyelt virtuális gépen futtathatja az Azure Cloud platformon. A PostgreSQL legújabb verzióit és kiadásait IaaS virtuális gépre lehet telepíteni. A Azure Database for PostgreSQL legjelentősebb különbsége, hogy az Azure-beli virtuális gépeken a PostgreSQL felügyeli az adatbázis-működtető szolgáltatást. Ez a szabályozás azonban a virtuális gépek és számos adatbázis-felügyeleti (DBA) feladat felügyeletének a felelősségi körébe tartozik. Ezen feladatok közé tartozik az adatbázis-kiszolgálók, az adatbázis-helyreállítás és a magas rendelkezésre állású kialakítás fenntartása és javítása.
 
@@ -94,7 +94,7 @@ Emellett a magas rendelkezésre állás konfigurálása egy másik adatközponth
 
 - Ha el szeretné kerülni az új helyszíni hardver beszerzésének idejét és költségét, a PostgreSQL az Azure-beli virtuális gépeken a megfelelő megoldás olyan alkalmazásokhoz, amelyek a szolgáltatás által nem támogatott, vagy a mögöttes operációs rendszer elérését igénylik a PostgreSQL motor részletes szabályozására és testreszabására.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd: az Azure Database for [PostgreSQL díjszabása](https://azure.microsoft.com/pricing/details/postgresql/server/).
 - Első lépésként hozza létre első kiszolgálóját.

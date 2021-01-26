@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2020
 ms.author: memildin
-ms.openlocfilehash: 4ecd436b548c29c520a7538970d4d703cc8488d2
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 31472b0a0eedee03d5cfcb6ff47a97033a8c78e0
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027567"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796069"
 ---
 # <a name="enable-security-center-on-all-subscriptions-in-a-management-group"></a>Security Center engedélyezése egy felügyeleti csoportban lévő összes előfizetésben
 
@@ -25,20 +25,26 @@ A Azure Policy használatával engedélyezheti a Azure Security Centert az ugyan
 
 Egy felügyeleti csoport és az összes előfizetése bevezetéséhez:
 
-1. A **biztonsági rendszergazdai** engedélyekkel rendelkező felhasználóként nyissa meg Azure Policy és keresse meg a definíció **engedélyezése Azure Security Center az előfizetésében** .
+1. A **biztonsági rendszergazdai** engedélyekkel rendelkező felhasználóként nyissa meg Azure Policy és keresse meg a definíció **engedélyezése Azure Security Center az előfizetésében**.
 
     :::image type="content" source="./media/security-center-get-started/enable-security-center-policy.png" alt-text="A Azure Policy definíciója engedélyezi a Azure Security Center az előfizetésen":::
 
 1. Válassza a **hozzárendelés** lehetőséget, és győződjön meg róla, hogy a hatókört mg szintre állítja be.
 
-    :::image type="content" source="./media/security-center-get-started/assign-policy.png" alt-text="A Azure Policy definíciója engedélyezi a Azure Security Center az előfizetésen":::
+    :::image type="content" source="./media/security-center-get-started/assign-policy.png" alt-text="A definíció kiosztásának engedélyezése Azure Security Center az előfizetésen":::
 
     > [!TIP]
     > A hatókörön kívül nincsenek kötelező paraméterek.
 
 1. Válassza **a Szervizelési feladat létrehozása** lehetőséget annak biztosításához, hogy az összes olyan előfizetést, amelynél nincs Security Center engedélyezve, be legyen vezetve.
 
-    :::image type="content" source="./media/security-center-get-started/remediation-task.png" alt-text="A Azure Policy definíciója engedélyezi a Azure Security Center az előfizetésen" minden regisztrált előfizetésnek (függetlenül attól, hogy az Azure Defender be van-e kapcsolva vagy ki van-e kapcsolva).
+    :::image type="content" source="./media/security-center-get-started/remediation-task.png" alt-text="Szervizelési feladat létrehozása a Azure Policy-definícióhoz Azure Security Center engedélyezése az előfizetésen":::
+
+1. A definíció hozzárendelésekor a következőket fogja megadni:
+
+    1. Az összes olyan előfizetés észlelése az MG-ban, amely még nincs regisztrálva a Security Centerban.
+    1. Ezeket az előfizetéseket "nem megfelelő" értékre kell megjelölni.
+    1. Megjelölés "megfelelőként" minden regisztrált előfizetésnek (függetlenül attól, hogy az Azure Defender be van-e kapcsolva vagy ki van-e kapcsolva).
 
     A Szervizelési feladat ezután engedélyezi a nem megfelelő előfizetések Security Centerét ingyen.
 
@@ -92,4 +98,4 @@ A Azure Policy definíciójának módosítására többféle lehetőség is van:
 Most, hogy betöltött egy teljes felügyeleti csoportot, engedélyezze az Azure Defender speciális védelmét. 
 
 > [!div class="nextstepaction"]
-> [Az Azure Defender engedélyezése](security-center-pricing.md)
+> [Az Azure Defender engedélyezése](security-center-pricing.md#enable-azure-defender)

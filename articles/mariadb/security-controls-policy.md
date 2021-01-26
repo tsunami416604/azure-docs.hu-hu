@@ -1,18 +1,18 @@
 ---
 title: Azure Policy szabályozási megfelelőségi szabályozása Azure Database for MariaDB
 description: Felsorolja Azure Policy Azure Database for MariaDB számára elérhető szabályozási megfelelőségi szabályozásokat. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.topic: sample
 author: savjani
 ms.author: pariks
 ms.service: jroth
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: af87e09c54dec3d0f9aa1410ac1e603dee71e52c
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 9d1a74ce6655b11684ad5d5100d64d19ff6642b5
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685400"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796137"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-database-for-mariadb"></a>Azure Policy szabályozási megfelelőségi szabályozása Azure Database for MariaDB
 
@@ -22,7 +22,7 @@ A [Azure Policy szabályozási megfelelősége](../governance/policy/concepts/re
 
 [!INCLUDE [azure-policy-compliancecontrols-mariadb](../../includes/policy/standards/byrp/microsoft.dbformariadb.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [Azure Policy szabályozási megfelelőségről](../governance/policy/concepts/regulatory-compliance.md).
 - A beépített elemek megtekintése az [Azure Policy GitHub-adattárában](https://github.com/Azure/azure-policy).

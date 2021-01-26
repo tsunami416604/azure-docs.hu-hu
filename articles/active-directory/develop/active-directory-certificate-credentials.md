@@ -13,18 +13,18 @@ ms.date: 12/3/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 50a2f56824db67b73199439922e662339ff30872
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 22352f6d0c7dc48b98be5fcb4101f262adc480d6
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755290"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98795631"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft Identity platform-alkalmazás hitelesítési tanúsítványának hitelesítő adatai
 
 A Microsoft Identity platform lehetővé teszi, hogy az alkalmazások a saját hitelesítő adataikat használják hitelesítésre, bárhol is használhatók legyenek, például a OAuth 2,0  [ügyfél-hitelesítő adatok megadási](v2-oauth2-client-creds-grant-flow.md) folyamata és a [befelé irányuló](v2-oauth2-on-behalf-of-flow.md) (OBO) folyamat.
 
-Az egyik hitelesítő adat, amelyet az alkalmazás használhat a hitelesítéshez, egy [JSON web token](./security-tokens.md#json-web-tokens-jwts-and-claims) (JWT)-állítás, amely az alkalmazás tulajdonában lévő tanúsítvánnyal van aláírva.
+Az egyik hitelesítő adat, amelyet az alkalmazás használhat a hitelesítéshez, egy [JSON web token](./security-tokens.md#json-web-tokens-and-claims) (JWT)-állítás, amely az alkalmazás tulajdonában lévő tanúsítvánnyal van aláírva.
 
 ## <a name="assertion-format"></a>Érvényesítési formátum
 

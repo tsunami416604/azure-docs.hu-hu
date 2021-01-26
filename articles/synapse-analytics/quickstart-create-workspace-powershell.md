@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: alehall
 ms.reviewer: jrasnick
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0537d2353d6b372ed19127101c488b872bbc5224
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 43f07bc26e75b440cde6d26db8ac8fb80aa3e39c
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218858"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796915"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-powershell"></a>Rövid útmutató: Azure szinapszis-munkaterület létrehozása Azure PowerShell
 
@@ -59,7 +59,7 @@ Install-Module -Name Az.Synapse
    | StorageAccountResourceGroup | A meglévő ADLS Gen2 Storage-fiók erőforráscsoport neve.                                             |
    | FileShareName               | A meglévő Storage-fájlrendszer neve.                                                                  |
    | SynapseResourceGroup        | Válassza ki az Azure szinapszis-erőforráscsoport új nevét.                                                    |
-   | Region                      | Válasszon egy Azure- [régiót](https://azure.microsoft.com/global-infrastructure/geographies/#overview). |
+   | Régió                      | Válasszon egy Azure- [régiót](https://azure.microsoft.com/global-infrastructure/geographies/#overview). |
    | SynapseWorkspaceName        | Válasszon egyedi nevet az új Azure szinapszis-munkaterülethez.                                                  |
    | SqlUser                     | Válasszon egy értéket egy új felhasználónévhez.                                                                          |
    | SqlPassword                 | Válasszon biztonságos jelszót.                                                                                   |
@@ -70,26 +70,6 @@ Install-Module -Name Az.Synapse
 
    ```azurepowershell-interactive
    New-AzResourceGroup -Name $SynapseResourceGroup -Location $Region
-   ```
-
-1. A ADLS Gen 2 Storage-fiók kulcsának beolvasása:
-
-   ```azurepowershell-interactive
-   $StorageAccountKey = Get-AzStorageAccountKey -ResourceGroupName $StorageAccountResourceGroup -Name $StorageAccountName |
-     Select-Object -First 1 -ExpandProperty Value
-    ```
-
-1. A ADLS Gen 2 tárolási végpont URL-címének beolvasása:
-
-   ```azurepowershell-interactive
-   $StorageEndpointUrl = (Get-AzStorageAccount -ResourceGroupName $StorageAccountResourceGroup -Name $StorageAccountName).PrimaryEndpoints.Dfs
-   ```
-
-1. Választható A ADLS Gen2 Storage-fiók kulcsa és végpontja mindig ellenőrizhető:
-
-   ```azurepowershell-interactive
-   Write-Output "Storage Account Key: $StorageAccountKey"
-   Write-Output "Storage Endpoint URL: $StorageEndpointUrl"
    ```
 
 1. Azure szinapszis-munkaterület létrehozása:
@@ -149,6 +129,6 @@ Ha az ebben a cikkben létrehozott Azure szinapszis munkaterület nem szüksége
 Remove-AzSynapseWorkspace -Name $SynapseWorkspaceNam -ResourceGroupName $SynapseResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezután [LÉTREHOZHAT SQL-készleteket](quickstart-create-sql-pool-studio.md) , vagy [létrehozhat Apache Spark készleteket](quickstart-create-apache-spark-pool-studio.md) az adatok elemzésének és vizsgálatának megkezdéséhez.

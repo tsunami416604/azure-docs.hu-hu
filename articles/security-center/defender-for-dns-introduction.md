@@ -7,12 +7,12 @@ ms.date: 12/07/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 18d9cb3c64eb41b33a58b248f3826bd9a80c6d90
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 957e39f7629337182c3e19a1a514c42883666301
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754910"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796999"
 ---
 # <a name="introduction-to-azure-defender-for-dns"></a>A DNS-hez készült Azure Defender bemutatása
 
@@ -47,7 +47,7 @@ Az Azure Defender által a DNS-hez biztosított riasztások teljes listája a [r
 
 Az Azure Defender for DNS nem használ ügynököket. 
 
-A DNS-réteg védelemmel való ellátásához engedélyezze az Azure Defender számára a DNS-t minden előfizetéshez az [Azure Defender engedélyezése](security-center-pricing.md)című témakörben leírtak szerint.
+A DNS-réteg védelemmel való ellátásához engedélyezze az Azure Defender számára a DNS-t minden előfizetéshez az [Azure Defender engedélyezése](security-center-pricing.md#enable-azure-defender)című témakörben leírtak szerint.
 
 
 ## <a name="next-steps"></a>További lépések
@@ -57,4 +57,4 @@ Ebben a cikkben megtanulta a DNS-hez készült Azure Defender szolgáltatást. K
 - Előfordulhat, hogy a biztonsági riasztásokat a Security Center vagy a különböző biztonsági termékekből Security Center fogadja. Ha az összes riasztást az Azure Sentinelbe, harmadik féltől származó SIEM-re vagy más külső eszközre kívánja exportálni, kövesse a [riasztások a Siem](continuous-export.md)-ben való exportálásának utasításait.
 
 - > [!div class="nextstepaction"]
-    > [Az Azure Defender engedélyezése](security-center-pricing.md)
+    > [Az Azure Defender engedélyezése](security-center-pricing.md#enable-azure-defender)

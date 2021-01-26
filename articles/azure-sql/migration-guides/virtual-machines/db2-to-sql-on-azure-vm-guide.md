@@ -3,19 +3,19 @@ title: DB2 – SQL Server Azure-beli virtuális gépeken (áttelepítési útmut
 description: Kövesse ezt az útmutatót a DB2-kiszolgáló áttelepítéséhez SQL Server Azure-beli virtuális gépeken.
 ms.custom: ''
 ms.service: virtual-machines-sql
-ms.subservice: ''
+ms.subservice: migration-guide
 ms.devlang: ''
 ms.topic: how-to
 author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: 5312ee08bad9d0b84e13c53fe4b1de59fad896f1
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: c3f3af6a1c114d6587992f79e95dcc0c1ccb41e6
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326046"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797469"
 ---
 # <a name="migration-guide-db2-to-sql-server-on-azure-vms"></a>Áttelepítési útmutató: DB2 – SQL Server Azure-beli virtuális gépeken
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -39,7 +39,7 @@ A DB2-adatbázis SQL Serverra való áttelepíthető a következőkre van szüks
 
 Az előfeltételek teljesítése után készen áll a környezet topológiájának felderítésére és az áttelepítés megvalósíthatóságának értékelésére. 
 
-### <a name="assess"></a>Értékelés 
+### <a name="assess"></a>Kiértékelés 
 
 Értékelés létrehozása SQL Server Migration Assistant használatával (SSMA). 
 
@@ -47,7 +47,7 @@ Az értékelés létrehozásához kövesse az alábbi lépéseket:
 
 1. Nyissa meg SQL Server Migration Assistant (SSMA) a DB2-hez. 
 1. Válassza a **fájl** , majd az **új projekt** lehetőséget. 
-1. Adja meg a projekt nevét, egy helyet a projekt mentéséhez, majd válasszon egy SQL Server áttelepítési célt a legördülő menüből. Kattintson az **OK** gombra. 
+1. Adja meg a projekt nevét, egy helyet a projekt mentéséhez, majd válasszon egy SQL Server áttelepítési célt a legördülő menüből. Válassza az **OK** lehetőséget. 
 
    :::image type="content" source="media/db2-to-sql-on-azure-vm-guide/new-project.png" alt-text="Adja meg a projekt részleteit, és kattintson az OK gombra a mentéshez.":::
 
@@ -63,7 +63,7 @@ Az értékelés létrehozásához kövesse az alábbi lépéseket:
 
 1. A HTML-jelentés áttekintésével megismerheti a konverziós statisztikákat és az esetleges hibákat vagy figyelmeztetéseket. A jelentés az Excelben is megnyitható a DB2-objektumok leltárának beszerzéséhez, valamint a séma átalakításához szükséges erőfeszítésekhez. A jelentés alapértelmezett helye a SSMAProjects belüli jelentési mappában található.
 
-   Például: `drive:\<username>\Documents\SSMAProjects\MyDB2Migration\report\report_<date>`. 
+   Példa: `drive:\<username>\Documents\SSMAProjects\MyDB2Migration\report\report_<date>`. 
 
    :::image type="content" source="media/db2-to-sql-on-azure-vm-guide/report.png" alt-text="A hibák vagy figyelmeztetések azonosítására szolgáló jelentés áttekintése":::
 
@@ -104,7 +104,7 @@ A séma konvertálásához kövesse az alábbi lépéseket:
 1. Mentse a projektet helyileg a kapcsolat nélküli séma szervizelési gyakorlatához. Válassza a **projekt mentése** lehetőséget a **fájl** menüből. 
 
 
-## <a name="migrate"></a>Migrálás
+## <a name="migrate"></a>Migrate
 
 Miután elvégezte az adatbázisok értékelését és az eltérések kezelését, a következő lépés az áttelepítési folyamat végrehajtása.
 

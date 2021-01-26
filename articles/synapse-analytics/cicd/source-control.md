@@ -8,22 +8,18 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 1f1a74f3a26a079039e68eb8e59fac4c18ff0c32
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 3564609d869bef090f0a3db5e6040ba0f5ad80b0
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219742"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796961"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Verziókövetés az Azure szinapszis Studióban
 
-Alapértelmezés szerint az Azure szinapszis Studio szerzője közvetlenül a szinapszis szolgáltatáson keresztül. Ez a felhasználói élmény azonban a következő korlátozásokkal jár:
+Alapértelmezés szerint az Azure szinapszis Studio szerzője közvetlenül a szinapszis szolgáltatáson keresztül. Ha együttműködésre van szüksége a git használatával a verziókövetés számára, a szinapszis Studio lehetővé teszi, hogy a munkaterületet a git-adattárral, az Azure DevOps vagy a GitHubral társítsa. 
 
-- A szinapszis Studio nem tartalmaz ideiglenes tárhelyet a módosítások tárolásához. A módosítások mentésének és megosztásának egyetlen módja a **Közzététel** és az összes módosítás közzététele közvetlenül a szinapszis szolgáltatásban.
-
-- A szinapszis Studio nem az együttműködés és a verziókövetés esetében van optimalizálva.
-
-A DevOps képesség biztosításához a szinapszis Studio lehetővé teszi, hogy a munkaterületet a git-adattárral, az Azure vagy a GitHubmal társítsa. Ebből a cikkből megtudhatja, hogyan konfigurálhat és dolgozhat egy szinapszis-munkaterületen, ha engedélyezve van a git-tárház. Emellett kiemeljük az ajánlott eljárásokat és a hibaelhárítási útmutatót is.
+Ebből a cikkből megtudhatja, hogyan konfigurálhat és dolgozhat egy szinapszis-munkaterületen, ha engedélyezve van a git-tárház. Emellett kiemeljük az ajánlott eljárásokat és a hibaelhárítási útmutatót is.
 
 > [!NOTE]
 > Az Azure szinapszis Studio git-integrációja nem érhető el a Azure Government felhőben.
@@ -242,6 +238,6 @@ Ha a közzétételi ág nincs szinkronban az együttműködési ágban, és a le
 - A szinapszis Studio nem támogatja a véglegesítő üzenet testreszabását.
 - A Studio alkalmazásban a DELETE művelet megtervezésével közvetlenül a git-ben lesz végrehajtva
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A folyamatos integráció és üzembe helyezés megvalósításához tekintse meg a [folyamatos integrációt és teljesítést (CI/CD)](continuous-integration-deployment.md).

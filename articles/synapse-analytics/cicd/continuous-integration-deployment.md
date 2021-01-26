@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 7a665bf05167a6bdf20c7325c66a5d0e439aa7f1
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: ba5286b16b6e640e968b50174e39a05328e750a4
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223686"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797295"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Folyamatos integráció és kézbesítés az Azure szinapszis-munkaterülethez
 
@@ -134,3 +134,13 @@ Ha git-integrációt használ a szinapszis-munkaterülettel, és rendelkezik egy
 -   **Készletek előkészítése az összetevők migrálása előtt**. Ha a fejlesztői munkaterületen a készletekhez csatolt SQL-parancsfájl vagy jegyzetfüzet van, akkor a rendszer a különböző környezetekben lévő készletek azonos nevét is elvárta. 
 -   **Infrastruktúra-kód (IaC)**. Az infrastruktúra (hálózatok, virtuális gépek, terheléselosztó és a kapcsolatok topológiája) kezelése egy leíró modellben ugyanazt a verziószámozást használja, mint a DevOps-csapat a forráskódot használja. 
 -   **Mások**. Lásd: [ajánlott eljárások az ADF](../../data-factory/continuous-integration-deployment.md#best-practices-for-cicd) -összetevőkhöz
+
+## <a name="troubleshooting-artifacts-deployment"></a>Összetevők telepítésének hibaelhárítása 
+
+### <a name="use-the-synapse-workspace-deployment-task"></a>A szinapszis munkaterület telepítési feladatának használata
+
+A Szinapszisban az összes fajta összetevő nem rendelkezik ARM-erőforrásokkal, amelyek különböznek az ADF-től. Az ARM-sablon központi telepítési feladata nem használható a szinapszis-összetevők üzembe helyezésére
+ 
+### <a name="unexpected-token-error-in-release"></a>Váratlan jogkivonat-hiba történt a kiadásban
+
+Ha a paraméter értéke nem kerül megmenekülésre, a kiadási folyamat nem tudja elemezni a fájlt a váratlan token hibája miatt. Javasoljuk, hogy a paraméterek beolvasásához felülbírálja a paramétereket vagy a kulcstartót. Megkerülő megoldásként is megkerülheti a kettős Escape-megoldást.

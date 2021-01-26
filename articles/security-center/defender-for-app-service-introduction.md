@@ -7,12 +7,12 @@ ms.date: 01/25/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: c6d62cf7b93255336d87cec1d0fef2c567cde9f2
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 200e1fd7bfffef403fa459d3de13dc31145b8a33
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791835"
+ms.locfileid: "98796631"
 ---
 # <a name="introduction-to-azure-defender-for-app-service"></a>A App Service Azure Defender bemutatása
 
@@ -62,9 +62,9 @@ Az Azure Defender számos fenyegetést figyel a App Service erőforrásaihoz. A 
 
 ### <a name="dangling-dns-detection"></a>Lelógó DNS-észlelés
 
-Az Azure Defender for App Service a DNS-regisztrálón maradó DNS-bejegyzéseket is azonosítja, ha egy App Service webhely le van szerelve – ezeket a rendszer a DNS-bejegyzések leállítására szolgál. Ebben a pillanatban a DNS-bejegyzés egy nem létező erőforrásra mutat, és az altartománya sebezhető az átvételsel. Az Azure Defender nem ellenőrzi a DNS-regisztrálót a *meglévő* LELÓGÓ DNS-bejegyzésekhez; riasztást küld, ha egy App Service-webhelyet leszerelnek, és az egyéni tartományt (DNS-bejegyzést) nem törli.
+Az Azure Defender for App Service a DNS-regisztrálón maradó DNS-bejegyzéseket is azonosítja, ha egy App Service webhely le van szerelve – ezeket a rendszer a DNS-bejegyzések leállítására szolgál. Ha eltávolít egy webhelyet, és nem távolítja el az egyéni tartományt a DNS-regisztrálóból, a DNS-bejegyzés egy nem létező erőforrásra mutat, és az altartománya sebezhető az átvételsel. Az Azure Defender nem ellenőrzi a DNS-regisztrálót a *meglévő* LELÓGÓ DNS-bejegyzésekhez; riasztást küld, ha egy App Service-webhelyet leszerelnek, és az egyéni tartományt (DNS-bejegyzést) nem törli.
 
-Az altartományok beszerzése gyakori, nagy súlyosságú fenyegetést jelent a szervezetek számára. Ha egy veszélyforrás egy lelógó DNS-bejegyzést észlel, a célként megadott címen hozza létre a saját webhelyét. Ezután a szervezet tartományához tartozó forgalmat átirányítják a fenyegetést tartalmazó színész webhelyére, és ezt a forgalmat a kártékony tevékenységek széles körére használhatják. 
+Az altartományok beszerzése gyakori, nagy súlyosságú fenyegetést jelent a szervezetek számára. Ha egy veszélyforrás egy lelógó DNS-bejegyzést észlel, a célként megadott címen hozza létre a saját webhelyét. Ezután a szervezet tartományához tartozó forgalmat átirányítják a fenyegetést tartalmazó színész webhelyére, és ezt a forgalmat a kártékony tevékenységek széles körére használhatják.
 
 A DNS-alapú védelem elérhető, függetlenül attól, hogy a tartományokat Azure DNS vagy külső tartományregisztráló felügyeli-e, és a Windows és a Linux rendszeren egyaránt App Service.
 
@@ -100,4 +100,4 @@ A kapcsolódó anyagokkal kapcsolatban tekintse meg a következő cikkeket:
 - Az App Service riasztásokhoz tartozó Azure Defender listáját a [riasztások hivatkozási táblázata](alerts-reference.md#alerts-azureappserv)tartalmazza.
 - App Service csomagokkal kapcsolatos további információkért lásd: [app Service csomagok](https://azure.microsoft.com/pricing/details/app-service/plans/).
 > [!div class="nextstepaction"]
-> [Az Azure Defender engedélyezése](security-center-pricing.md)
+> [Az Azure Defender engedélyezése](security-center-pricing.md#enable-azure-defender)

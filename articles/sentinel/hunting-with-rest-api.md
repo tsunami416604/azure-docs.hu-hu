@@ -9,18 +9,18 @@ editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: how-to
+ms.topic: reference
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/06/2020
 ms.author: yelevin
-ms.openlocfilehash: cd52f22004bf72f3328d1e6a0d1ec988c2406317
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 64f05e18ff757d9f086cf06d74109bf64e32a05c
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660848"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98795693"
 ---
 # <a name="manage-hunting-and-livestream-queries-in-azure-sentinel-using-rest-api"></a>A vadászati és a livestream-lekérdezések kezelése az Azure Sentinelben REST API használatával
 
@@ -101,7 +101,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId} _
     /savedSearches/{savedSearchId}?api-version=2020-03-01-preview
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan kezelheti a vadászati és a livestream-lekérdezéseket az Azure Sentinelben a Log Analytics API használatával. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

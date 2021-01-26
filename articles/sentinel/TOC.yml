@@ -223,14 +223,26 @@
           href: bookmarks.md
         - name: Veszélyforrás-keresés élő streammel
           href: livestream.md
-        - name: Veszélyforrás-keresési lekérdezések kezelése REST-API-val
-          href: hunting-with-rest-api.md
     - name: Az Azure Sentinel eltávolítása
       href: offboard.md
 - name: Referencia (új!)
   items:
+    - name: Azure RBAC-szerepkörök
+      items:
+        - name: Az összes Azure-szerepkör
+          href: /azure/role-based-access-control/built-in-roles#all
+        - name: Azure Sentinel-szerepkörök
+          href: /azure/role-based-access-control/built-in-roles#security
     - name: REST API-k
-      href: /rest/api/securityinsights/
+      items:
+        - name: Azure Sentinel REST – API
+          href: /rest/api/securityinsights/
+        - name: Veszélyforrás-keresési lekérdezések kezelése REST-API-val
+          href: hunting-with-rest-api.md
+        - name: A listák kezelése REST-API-val
+          href: watchlist-with-rest-api.md
+    - name: Az Azure Sentinel Logic Apps-összekötője
+      href: /connectors/azuresentinel/
     - name: Hálózati normalizációs séma
       href: normalization-schema.md
     - name: UEBA-bővítések

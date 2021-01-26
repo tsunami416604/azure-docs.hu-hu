@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: 5f1332255ae83a32f9b71d24d812b00fad9b7fa1
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 34fd595a03f67201b303c94764668bf86a6c244b
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637921"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796895"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>A SSIS Integration Runtime-kezelés hibáinak megoldása Azure Data Factory
 
@@ -151,7 +151,7 @@ Az SSIS IR rendszeres időközönként automatikusan frissül. A frissítés sor
 
 Ha az SSIS IR üzembe helyezése meghiúsul, a rendszer az összes létrehozott erőforrást törli. Ha viszont van egy erőforrástörlési zárolás az előfizetés vagy az erőforráscsoport szintjén, a virtuális hálózat erőforrásai nem törlődnek a várt módon. A hiba kijavításához oldja fel a törlési zárolást, majd indítsa újra az integrációs modult.
 
-### <a name="vnetresourcegrouplockedduringstop"></a>VNetResourceGroupLockedDuringStop
+### <a name="vnetresourcegrouplockedduringstopvnetdeletelock"></a>VNetResourceGroupLockedDuringStop/VNetDeleteLock
 
 Ha leállítja a SSIS IR-t, a rendszer a virtuális hálózathoz kapcsolódó összes erőforrást törli. A törlés azonban meghiúsulhat, ha előfizetés vagy az erőforráscsoport szintjén erőforrástörlési zárolás van életben. Itt is az ügyfél szabályozza és állítja be a törlési zárolást. Ezért el kell távolítaniuk a törlési zárolást, majd újra le kell állítaniuk a SSIS IR-t.
 

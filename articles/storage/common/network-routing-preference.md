@@ -10,12 +10,13 @@ ms.date: 05/12/2020
 ms.author: santoshc
 ms.reviewer: tamram
 ms.subservice: common
-ms.openlocfilehash: 5b4a1b1f27dff059090d78e24a6a0eca0bbbf01f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions
+ms.openlocfilehash: 9afe58434d60280f635deab75b763077bc76b93c
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514194"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797633"
 ---
 # <a name="configure-network-routing-preference-for-azure-storage-preview"></a>Hálózati útválasztási beállítások konfigurálása az Azure Storage-hoz (előzetes verzió)
 
@@ -46,7 +47,7 @@ Például a "StorageAccountA" internetes útvonal-specifikus végpontjának köz
 | Tárolási szolgáltatás        | Útvonal-specifikus végpont                                  |
 | :--------------------- | :------------------------------------------------------- |
 | Blob szolgáltatás           | `StorageAccountA-internetrouting.blob.core.windows.net`  |
-| 2. generációs Data Lake Storage | `StorageAccountA-internetrouting.dfs.core.windows.net`   |
+| Data Lake Storage Gen2 | `StorageAccountA-internetrouting.dfs.core.windows.net`   |
 | Fájlszolgáltatások           | `StorageAccountA-internetrouting.file.core.windows.net`  |
 | Statikus webhelyek        | `StorageAccountA-internetrouting.web.core.windows.net`   |
 
@@ -55,7 +56,7 @@ Ha rendelkezik egy olvasási hozzáféréssel rendelkező geo-redundáns tárol�
 | Tárolási szolgáltatás        | Útvonal-specifikus írásvédett másodlagos végpont                        |
 | :--------------------- | :----------------------------------------------------------------- |
 | Blob szolgáltatás           | `StorageAccountA-internetrouting-secondary.blob.core.windows.net`  |
-| 2. generációs Data Lake Storage | `StorageAccountA-internetrouting-secondary.dfs.core.windows.net`   |
+| Data Lake Storage Gen2 | `StorageAccountA-internetrouting-secondary.dfs.core.windows.net`   |
 | Fájlszolgáltatások           | `StorageAccountA-internetrouting-secondary.file.core.windows.net`  |
 | Statikus webhelyek        | `StorageAccountA-internetrouting-secondary.web.core.windows.net`   |
 
@@ -65,9 +66,36 @@ A közzétett Route-specifikus végpontok kapcsolatainak karakterláncai a [Azur
 
 Az Azure Storage-hoz készült útválasztási beállítások a következő régiókban érhetők el:
 
-- Dél-Franciaország
-- USA északi középső régiója
+- Az USA középső régiója 
+- USA középső – EUAP
+- USA keleti régiója 
+- USA 2. keleti régiója
+- USA 2. keleti régiója 
+- USA 2. keleti – EUAP
+- USA déli középső régiója
 - USA nyugati középső régiója
+- USA nyugati régiója 
+- USA 2. nyugati régiója 
+- Közép-Franciaország 
+- Dél-Franciaország 
+- Észak-Németország 
+- Középnyugat-Németország 
+- USA északi középső régiója
+- Észak-Európa 
+- Kelet-Norvégia 
+- Észak-Svájc
+- Nyugat-Svájc
+- Az Egyesült Királyság déli régiója 
+- Az Egyesült Királyság nyugati régiója 
+- Nyugat-Európa 
+- UAE középső régiója
+- Kelet-Ázsia 
+- Délkelet-Ázsia 
+- Kelet-Japán 
+- Nyugat-Japán 
+- Nyugat-India
+- Kelet-Ausztrália 
+- Délkelet-Ausztrália 
 
 A következő ismert problémák hatással vannak az Azure Storage-hoz készült útválasztási beállításokra:
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: troubleshooting
-ms.date: 04/19/2019
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: b950f80ba8c2bdbaf7a515dc1ce127b934723177
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17b8d6de198746a79a50c4fbda805b364212e3c4
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85558551"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796056"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-blob-storage"></a>Azure Data Box blob Storage-hoz kapcsolódó problémák elhárítása
 
@@ -27,7 +27,7 @@ Ez a szakasz a Azure Storage Explorer Data Box blob Storage-ban való használat
 |---------|---------|
 |Nem sikerült beolvasni a gyermek erőforrásokat. A HTTP-fejlécek egyikének értéke nem megfelelő formátumú.|A **Szerkesztés** menüben válassza a **cél Azure stack API**-k elemet. <br>Azure Storage Explorer újraindítása.|
 |`getaddrinfo ENOTFOUND <accountname>.blob.<serialnumber>.microsoftdatabox.com` |Győződjön meg arról, hogy a végpont neve `<accountname>.blob.<serialnumber>.microsoftdatabox.com` hozzá van adva a gazdagépek fájljához ezen az elérési úton: <li>`C:\Windows\System32\drivers\etc\hosts` Windows rendszeren vagy </li><li> `/etc/hosts` Linux rendszeren.</li>|
-|Nem sikerült beolvasni a gyermek erőforrásokat. <br>Részletek: önaláírt tanúsítvány |Importálja az eszköz TLS/SSL-tanúsítványát Azure Storage Explorerba: <li>Töltse le a tanúsítványt a Azure Portal. További információ: [a tanúsítvány letöltése](data-box-deploy-copy-data-via-rest.md#download-certificate).</li><li>A **Szerkesztés** menüben válassza az **SSL-tanúsítványok** lehetőséget, majd válassza a **tanúsítványok importálása**lehetőséget.</li>|
+|Nem sikerült beolvasni a gyermek erőforrásokat. <br>Részletek: önaláírt tanúsítvány |Importálja az eszköz TLS/SSL-tanúsítványát Azure Storage Explorerba: <li>Töltse le a tanúsítványt a Azure Portal. További információ: [a tanúsítvány letöltése](data-box-deploy-copy-data-via-rest.md#download-certificate).</li><li>A **Szerkesztés** menüben válassza az **SSL-tanúsítványok** lehetőséget, majd válassza a **tanúsítványok importálása** lehetőséget.</li>|
 
 ## <a name="errors-seen-in-azcopy-for-windows"></a>A Windows AzCopy által észlelt hibák
 
@@ -65,6 +65,7 @@ Ezek a hibák nem kifejezetten egyetlen alkalmazásra vonatkoznak.
 |Hibaüzenet  |Javasolt művelet |
 |---------|---------|
 |A kapcsolatok időtúllépést mutatnak. |Jelentkezzen be a Data Box eszközre, és győződjön meg arról, hogy a zárolása fel van oldva. Az eszköz minden újraindításakor zárolva marad, amíg valaki bejelentkezik.|
+|A REST API hitelesítés sikertelen a következő hibával: a kiszolgáló nem tudta hitelesíteni a kérelmet. Győződjön meg arról, hogy az engedélyezési fejléc értéke helyesen van kialakítva, beleértve az aláírást. ErrorCode: AuthenticationFailed. |Ennek az az oka, hogy ez akkor fordulhat elő, ha az eszköz ideje nincs szinkronizálva az Azure-val. Ha nagy idő van elferdítve, akkor a REST API hitelesítés megszakad, amikor az REST APIon keresztül próbál másolni egy Data Box. Ebben az esetben megnyithatja a kimenő UDP 123 portot, amely lehetővé teszi a hozzáférését `time.windows.com` . Ha az eszköz ideje szinkronizálva lett az Azure-ban, a hitelesítésnek sikeresnek kell lennie. |
 
 ## <a name="next-steps"></a>További lépések
 

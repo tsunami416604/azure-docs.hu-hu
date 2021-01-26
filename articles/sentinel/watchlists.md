@@ -10,14 +10,17 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
-ms.openlocfilehash: fd3c8a08e5512d15be4dfb26ca3eff151d08386f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: e31128687cfcc1f4e32879328ad3227182efb9ce
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651362"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797360"
 ---
 # <a name="use-azure-sentinel-watchlists"></a>Az Azure Sentinel lists használata
+
+> [!IMPORTANT]
+> A lists szolgáltatás jelenleg **előzetes** verzióban érhető el. Tekintse meg a kiegészítő [használati feltételeket a Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) előzetes verziókra vonatkozó további jogi feltételekhez, amelyek olyan Azure-szolgáltatásokra vonatkoznak, amelyek a bétaverzióban, az előzetes verzióban vagy más esetben még nem jelent meg általánosan elérhetővé.
 
 Az Azure Sentinel lists lehetővé teszi a külső adatforrásokból származó adatok összegyűjtését az Azure Sentinel-környezet eseményeivel való megfelelés érdekében. A létrehozást követően a keresés, az észlelési szabályok, a veszélyforrások elleni vadászat és a válasz forgatókönyvek használatával is használhatja a listát. A listák az Azure Sentinel-munkaterületen név-érték párokként tárolódnak, és az optimális lekérdezési teljesítmény és az alacsony késés érdekében vannak gyorsítótárazva.
 
@@ -73,11 +76,43 @@ A listák használatának gyakori forgatókönyvei a következők:
 
     :::image type="content" source="./media/watchlists/sentinel-watchlist-queries-fields.png" alt-text="lekérdezések a listával – mezők" lightbox="./media/watchlists/sentinel-watchlist-queries-fields.png":::
     
+1. A listáról bármely táblázat adatait lekérdezheti, ha a listával összekapcsolja az illesztések és a keresések táblázatát.
+
+    ```kusto
+    Heartbeat
+    | lookup kind=leftouter _GetWatchlist('IPlist') 
+     on $left.ComputerIP == $right.IPAddress
+    ```
+    :::image type="content" source="./media/watchlists/sentinel-watchlist-queries-join.png" alt-text="lekérdezések a listára kereséssel":::
+
 ## <a name="use-watchlists-in-analytics-rules"></a>A lists használata az elemzési szabályokban
 
 Ha az elemzési szabályokban a felsorolásokat szeretné használni, a Azure Portalból navigáljon az **Azure Sentinel**  >  **Configuration**  >  **Analytics** szolgáltatáshoz, és hozzon létre egy szabályt a `_GetWatchlist('<watchlist>')` lekérdezésben szereplő függvénnyel.
 
-:::image type="content" source="./media/watchlists/sentinel-watchlist-analytics-rule.png" alt-text="a lists használata az elemzési szabályokban" lightbox="./media/watchlists/sentinel-watchlist-analytics-rule.png":::
+1. Ebben a példában hozzon létre egy "ipwatchlist" nevű listát a következő értékekkel:
+
+    :::image type="content" source="./media/watchlists/create-watchlist.png" alt-text="a listához tartozó négy elem listája":::
+
+    :::image type="content" source="./media/watchlists/sentinel-watchlist-new-2.png" alt-text="a List létrehozása négy elemmel":::
+
+1. Ezután hozza létre az elemzési szabályt.  Ebben a példában csak a listához tartozó IP-címekről származó eseményeket vesszük fel:
+
+    ```kusto
+    //Watchlist as a variable
+    let watchlist = (_GetWatchlist('ipwatchlist') | project IPAddress);
+    Heartbeat
+    | where ComputerIP in (watchlist)
+    ```
+    ```kusto
+    //Watchlist inline with the query
+    Heartbeat
+    | where ComputerIP in ( 
+        (_GetWatchlist('ipwatchlist')
+        | project IPAddress)
+    )
+    ```
+
+:::image type="content" source="./media/watchlists/sentinel-watchlist-analytics-rule-2.png" alt-text="a lists használata az elemzési szabályokban":::
 
 ## <a name="view-list-of-watchlists-aliases"></a>Listázási aliasok listájának megtekintése
 
@@ -86,7 +121,7 @@ A listához tartozó-aliasok listájának lekéréséhez a Azure Portalból navi
 > [!div class="mx-imgBorder"]
 > ![listák listázása](./media/watchlists/sentinel-watchlist-alias.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebből a dokumentumból megtudhatta, hogyan használhatja a listát az Azure Sentinelben az adatelemzéshez és a vizsgálatok fejlesztéséhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](./tutorial-detect-threats-built-in.md).

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: b4feb177abbdbfb9666be0ea0746c8316acdf5ae
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 2f8dc9f53c36f59a152fc34361b3726ea2cc001c
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250757"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797064"
 ---
 # <a name="advanced-features-of-the-azure-metrics-explorer"></a>Az Azure Metrics Explorer speciális funkciói
 
@@ -129,16 +129,19 @@ Szűrőket alkalmazhat olyan diagramokra, amelyek mérőszámai rendelkeznek dim
 
    ![A szűrni kívánt dimenziókat (tulajdonságokat) megjelenítő képernyőkép.](./media/metrics-charts/028.png)
 
-3. Válassza ki a diagram kinyomtatásakor szerepeltetni kívánt dimenzió értékeket. Az alábbi példa a sikeres tárolási tranzakciókat szűri:
+3. Válassza ki a dimenzióra alkalmazni kívánt operátort (tulajdonság). Az alapértelmezett operátor = (egyenlő)
+
+   ![A szűrővel használható operátort bemutató képernyőkép.](./media/metrics-charts/filter-operator.png)
+
+4. Válassza ki, hogy mely dimenzió értékeket kívánja alkalmazni a szűrőre a diagram ábrázolásakor (ez a példa a sikeres tárolási tranzakciók kiszűrését mutatja):
 
    ![A sikeres szűrt tárolási tranzakciókat bemutató képernyőkép.](./media/metrics-charts/029.png)
 
-4. A **szűrési választón** kívüli kijelöléssel zárhatja be. A diagramon most már látható, hogy hány tárolási tranzakciót sikerült végrehajtani:
+5. Miután kiválasztotta a szűrő értékeit, kattintson a szűrési választóból a bezáráshoz. A diagramon most már látható, hogy hány tárolási tranzakciót sikerült végrehajtani:
 
    ![Képernyőkép, amely azt mutatja, hogy hány tárolási tranzakció meghiúsult.](./media/metrics-charts/030.png)
 
-Ezeket a lépéseket megismételve több szűrőt is alkalmazhat ugyanarra a diagramra.
-
+6. Az 1-5-es lépések megismétlésével több szűrőt is alkalmazhat ugyanarra a diagramra.
 
 
 ## <a name="metric-splitting"></a>Metrika felosztása
@@ -158,9 +161,18 @@ A mérőszámok dimenzió alapján való felosztásával megjelenítheti a metri
 
    A diagram most több sort mutat, egyet az egyes dimenziók szegmenséhez:
 
-   ![Képernyőkép, amely az egyes dimenzió szegmensek sorait jeleníti meg.](./media/metrics-charts/032.png)
+   ![Képernyőkép, amely több sort mutat be, egyet a dimenzió minden egyes szegmenséhez.](./media/metrics-charts/segment-dimension.png)
+   
+3. Válasszon egy korlátot a kiválasztott dimenzió szerinti felosztás után megjelenítendő értékek számának megjelöléséhez. Az alapértelmezett korlát 10, ahogy az a fenti ábrán látható. A korlát tartománya 1-50.
+   
+   ![A felosztási korlátot megjelenítő képernyőkép, amely a felosztás után korlátozza az értékek számát.](./media/metrics-charts/segment-dimension-limit.png)
+   
+4. Válassza ki a rendezési sorrendet a szegmensek: növekvő vagy csökkenő sorrendben. Az alapértelmezett kijelölés csökkenő.
+   
+   ![Képernyőkép, amely a rendezési sorrendet jeleníti meg a felosztott értékeken.](./media/metrics-charts/segment-dimension-sort.png)
 
-3. A **csoportosítási választón** kívülre kattintva zárhatja be.
+5. Kattintson a **csoportosítási választóból** a bezáráshoz.
+   
 
    > [!NOTE]
    > A forgatókönyv szempontjából lényegtelen szegmensek elrejtéséhez, valamint a diagramok könnyebb olvashatóságának elvégzéséhez használja a szűrést és a felosztást ugyanazon a dimenzión.
