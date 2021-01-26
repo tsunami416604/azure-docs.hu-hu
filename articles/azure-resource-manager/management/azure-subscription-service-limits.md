@@ -3,12 +3,12 @@ title: Azure-előfizetési korlátok és kvóták
 description: Az Azure-előfizetések és-szolgáltatások gyakori korlátainak, kvótáinak és megkötéseinek listáját jeleníti meg. Ez a cikk a korlátok növelésével és a maximális értékekkel kapcsolatos tudnivalókat tartalmazza.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 20de08ee30deae74954f2857b4de756b8cf46f08
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: baef641a741d12185029436e5a74039427c69f68
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964191"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802905"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései
 
@@ -402,7 +402,7 @@ További információ: [virtuális gépek méretei](../../virtual-machines/sizes
 
 #### <a name="disk-encryption-sets"></a>Lemezes titkosítási készletek
 
-A 50-es lemezes titkosítási készletek régiónként, előfizetések szerint vannak korlátozva. További információt a [Linux](../../virtual-machines/disk-encryption.md#restrictions) vagy [Windows rendszerű](../../virtual-machines/disk-encryption.md#restrictions) virtuális gépek titkosítási dokumentációjában talál. Ha a kvóta növelésére van szüksége, forduljon az Azure ügyfélszolgálatához.
+A 1000-es lemezes titkosítási készletek régiónként, előfizetések szerint vannak korlátozva. További információt a [Linux](../../virtual-machines/disk-encryption.md#restrictions) vagy [Windows rendszerű](../../virtual-machines/disk-encryption.md#restrictions) virtuális gépek titkosítási dokumentációjában talál. Ha a kvóta növelésére van szüksége, forduljon az Azure ügyfélszolgálatához.
 
 ### <a name="managed-virtual-machine-disks"></a>Felügyelt virtuális gépek lemezei
 

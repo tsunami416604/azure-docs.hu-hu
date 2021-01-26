@@ -3,13 +3,12 @@
 - name: Áttekintés
   href: overview.md
   items:
-    - name: Újdonságok
-      href: release-notes.md
     - name: Megoldásarchitektúra
       href: architecture.md
-- name: Rövid útmutatók
-  expanded: true
-  items:
+    - name: Újdonságok
+      href: release-notes.md
+    - name: Rövid útmutatók
+      expanded: true
     - name: Ügynök nélküli megoldás szervezetek számára
       items:
         - name: Rendszer-előfeltételek
@@ -154,6 +153,16 @@
           href: how-to-gain-insight-into-global-regional-and-local-threats.md
         - name: Riasztások kezelése a helyszíni felügyeleti konzolon
           href: how-to-work-with-alerts-on-premises-management-console.md
+        - name: Jelentések létrehozása
+          items:
+            - name: Kockázatértékelési jelentések létrehozása
+              href: how-to-create-risk-assessment-reports.md
+            - name: Támadási vektoros jelentések létrehozása
+              href: how-to-create-attack-vector-reports.md
+            - name: Adatbányászati jelentések létrehozása
+              href: how-to-create-data-mining-queries.md
+            - name: Trendek és statisztikai jelentések létrehozása
+              href: how-to-create-data-mining-queries.md
         - name: Eszközadatok bővítése
           items:
             - name: Az eszközértesítések kezelése
@@ -168,8 +177,6 @@
         - name: Érzékelőtevékenység nyomon követése
           href: how-to-track-sensor-activity.md
           displayName: 'timeline, time line, time-line, event'
-        - name: Jelentések készítése
-          href: how-to-generate-reports.md
         - name: Az érzékelő és a helyszíni felügyeleti konzol hibaelhárítása
           href: how-to-troubleshoot-the-sensor-and-on-premises-management-console.md
         - name: Az SNMP MIB-monitorozás beállítása

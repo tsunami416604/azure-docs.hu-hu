@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 27294f91fd6c79b10a85678a7acd60de56cf1ca4
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 1a1b11d517fdfea0aa3a0f553b63276bc20f90be
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562338"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805465"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-azure-cli"></a>Virtuális gépek biztonsági mentése az Azure-ban az Azure CLI-vel
 
@@ -71,7 +71,7 @@ az backup protection enable-for-vm \
 ```
 
 > [!IMPORTANT]
-> Míg a CLI-vel egyszerre több virtuális gép biztonsági mentését is lehetővé teszi, győződjön meg arról, hogy egyetlen szabályzathoz nem tartozik több, mint 100 virtuális gép társítva. Ez az [ajánlott eljárás](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy). Jelenleg a PowerShell-ügyfél nem blokkolja explicit módon, ha több mint 100 virtuális gép van, de az ellenőrzési terv a jövőben is felvehető.
+> Míg a CLI-vel egyszerre több virtuális gép biztonsági mentését is lehetővé teszi, győződjön meg arról, hogy egyetlen szabályzathoz nem tartozik több, mint 100 virtuális gép társítva. Ez az [ajánlott eljárás](./backup-azure-vm-backup-faq.yml#is-there-a-limit-on-number-of-vms-that-can-be-associated-with-the-same-backup-policy). Jelenleg a PowerShell-ügyfél nem blokkolja explicit módon, ha több mint 100 virtuális gép van, de az ellenőrzési terv a jövőben is felvehető.
 
 ## <a name="start-a-backup-job"></a>Biztonsági mentési feladat indítása
 
@@ -81,7 +81,7 @@ A virtuális gépek biztonsági mentéséhez a következő paraméterek használ
 
 - A(z) `--container-name` a virtuális gép neve
 - A(z) `--item-name` a virtuális gép neve
-- A(z) `--retain-until` értékét UTC időformátumban ( **nn-hh-éééé** ) arra az utolsó elérhető dátumra kell állítani, ameddig szeretné, hogy a helyreállítási pont elérhető legyen.
+- A(z) `--retain-until` értékét UTC időformátumban (**nn-hh-éééé**) arra az utolsó elérhető dátumra kell állítani, ameddig szeretné, hogy a helyreállítási pont elérhető legyen.
 
 A következő példa elvégzi a *myVM* virtuális gép biztonsági mentését, és a helyreállítási pont lejártát 2017. október 18-ra állítja be:
 
@@ -135,7 +135,7 @@ az backup vault delete \
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A rövid útmutató során létrehozott egy Recovery Services-tárolót, engedélyezte a védelmet a virtuális gépen, valamint létrehozta a kezdeti helyreállítási pontot. Ha bővebb információra van szüksége az Azure Backup és a Recovery Services szolgáltatásokkal kapcsolatban, lépjen tovább a következő oktatóanyagokra.
 

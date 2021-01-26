@@ -79,7 +79,7 @@
         - name: GYIK – Biztonsági mentési központ
           href: backup-center-faq.yml
         - name: GYIK – Azure-beli virtuális gépek biztonsági mentése
-          href: backup-azure-vm-backup-faq.md
+          href: backup-azure-vm-backup-faq.yml
         - name: GYIK – A MARS-ügynök
           href: backup-azure-file-folder-backup-faq.md
         - name: GYIK – Az Azure Files biztonsági mentése

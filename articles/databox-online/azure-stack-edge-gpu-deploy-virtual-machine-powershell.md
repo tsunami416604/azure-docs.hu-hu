@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 12/23/2020
+ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 32685207f8d6e81d03c90d01b186337ce79f843a
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 1d286e7661fa14dd63bd55b133c39414e04decc6
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763824"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802994"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell"></a>Virtuális gépek üzembe helyezése az Azure Stack Edge Pro GPU-eszközön Azure PowerShell használatával
 
@@ -30,14 +30,14 @@ Az üzembe helyezési munkafolyamat a következő ábrán látható.
 [!INCLUDE [azure-stack-edge-gateway-deploy-vm-prerequisites](../../includes/azure-stack-edge-gateway-deploy-virtual-machine-prerequisites.md)]
 
 
-## <a name="query-for-built-in-subscription-on-the-device"></a>Az eszköz beépített előfizetésének lekérdezése
+## <a name="query-for-built-in-subscription-on-the-device"></a>Beépített előfizetés lekérdezése az eszközön
 
-Azure Resource Manager esetében csak egyetlen felhasználó által látható rögzített előfizetés támogatott. Ez az előfizetés eszközönként egyedi, és ez az előfizetés-név vagy előfizetés-azonosító nem módosítható.
+Azure Resource Manager esetében csak egyetlen felhasználó által látható rögzített előfizetés támogatott. Ez az előfizetés eszközönként egyedi, és az előfizetés neve vagy az előfizetés azonosítója nem módosítható.
 
 Ez az előfizetés tartalmazza a virtuális gépek létrehozásához szükséges összes erőforrást. 
 
 > [!IMPORTANT]
-> Ez az előfizetés akkor jön létre, amikor engedélyezi a virtuális gépeket a Azure Portal, és helyileg él az eszközön.
+> Ez az előfizetés akkor jön létre, amikor engedélyezi a virtuális gépeket a Azure Portalból, és helyileg él az eszközön.
 
 Ez az előfizetés a virtuális gépek üzembe helyezésére szolgál.
 
@@ -98,7 +98,7 @@ Ez az előfizetés a virtuális gépek üzembe helyezésére szolgál.
     ZoneMappings      :
     ```
     
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy Azure-erőforráscsoportot a [New-AzureRmResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsmaggal. Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat, például a Storage-fiókot, a lemezt, a felügyelt lemezt.
 
@@ -118,7 +118,7 @@ Successfully created Resource Group:rg191113014333
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-Hozzon létre egy új Storage-fiókot az előző lépésben létrehozott erőforráscsoport használatával. Ez egy **helyi Storage-fiók** , amely a virtuális gép virtuális lemezének lemezképének feltöltésére szolgál majd.
+Hozzon létre egy új Storage-fiókot az előző lépésben létrehozott erőforráscsoport használatával. Ez a fiók egy **helyi Storage-fiók** , amelyet a rendszer a virtuális gép virtuális lemezének lemezképének feltöltésére fog használni.
 
 ```powershell
 New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resource group name> -Location DBELocal -SkuName Standard_LRS
@@ -177,7 +177,7 @@ key2 gd34TcaDzDgsY9JtDNMUgLDOItUU0Qur3CBo6Q...
 
 ## <a name="add-blob-uri-to-hosts-file"></a>BLOB URI hozzáadása a Hosts fájlhoz
 
-Már hozzáadta a blob URI-t a Hosts fájlban ahhoz az ügyfélhez, amelyet a blob Storage-hoz való kapcsolódáshoz használ a [gazdagép fájljának módosítása végpont-névfeloldáshoz](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution)című szakaszban. Ez volt a blob URI bejegyzése:
+Már hozzáadta a blob URI-t a Hosts fájlban ahhoz az ügyfélhez, amelyet a blob Storage-hoz való kapcsolódáshoz használ a [gazdagép fájljának módosítása végpont-névfeloldáshoz](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution)című szakaszban. Ez a bejegyzés a blob URI-azonosító hozzáadására szolgál:
 
 \<Azure consistent network services VIP \>\<storage name\>. blob. \<appliance name\> .\<dnsdomain\>
 
@@ -256,7 +256,7 @@ $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import –S
 New-AzureRMDisk -ResourceGroupName <Resource group name> -DiskName <Disk name> -Disk $DiskConfig
 ```
 
-Az alábbiakban egy példa látható a kimenetre. A parancsmaggal kapcsolatos további információkért nyissa meg a [New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk?view=azurermps-6.13.0).
+Az alábbiakban egy példa látható a kimenetre. A parancsmaggal kapcsolatos további információkért nyissa meg a [New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk?view=azurermps-6.13.0&preserve-view=true).
 
 ```powershell
 Tags               :
@@ -296,7 +296,7 @@ Set-AzureRmImageOsDisk -Image $imageConfig -OsType 'Linux' -OsState 'Generalized
 New-AzureRmImage -Image $imageConfig -ImageName <Image name>  -ResourceGroupName <Resource group name>
 ```
 
-Az alábbiakban egy példa látható a kimenetre. A parancsmaggal kapcsolatos további információkért nyissa meg a [New-AzureRmImage](/powershell/module/azurerm.compute/new-azurermimage?view=azurermps-6.13.0).
+Az alábbiakban egy példa látható a kimenetre. A parancsmaggal kapcsolatos további információkért nyissa meg a [New-AzureRmImage](/powershell/module/azurerm.compute/new-azurermimage?view=azurermps-6.13.0&preserve-view=true).
 
 ```powershell
 New-AzureRmImage -Image Microsoft.Azure.Commands.Compute.Automation.Models.PSImage -ImageName ig191113014333  -ResourceGroupName rg191113014333
@@ -319,8 +319,8 @@ Létre kell hoznia egy virtuális hálózatot, és hozzá kell rendelnie egy vir
 > [!IMPORTANT]
 > A virtuális hálózat és a virtuális hálózati adapter létrehozásakor a következő szabályok érvényesek:
 > - Csak egy vnet hozható létre (még az erőforráscsoportok között is), és pontosan egyeznie kell a logikai hálózattal a címtartomány szempontjából.
-> -   A vnet csak egy alhálózat lesz engedélyezve. Az alhálózatnak pontosan ugyanaz a címtartomány kell lennie, mint a vnet.
-> -   A Vnic létrehozásakor csak a statikus kiosztási módszer lesz engedélyezve, és a felhasználónak magánhálózati IP-címet kell megadnia.
+> - A vnet csak egy alhálózat lesz engedélyezve. Az alhálózatnak pontosan ugyanaz a címtartomány kell lennie, mint a vnet.
+> - A Vnic létrehozásakor csak a statikus kiosztási módszer lesz engedélyezve, és a felhasználónak magánhálózati IP-címet kell megadnia.
 
  
 **Az automatikusan létrehozott vnet lekérdezése**
@@ -498,7 +498,7 @@ Futtassa a következő parancsmagot az eszközön futó virtuális gépek bekapc
 `Start-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>`
 
 
-A parancsmaggal kapcsolatos további információkért nyissa meg a [Start-AzureRmVM](/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0).
+A parancsmaggal kapcsolatos további információkért nyissa meg a [Start-AzureRmVM](/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0&preserve-view=true).
 
 ### <a name="suspend-or-shut-down-the-vm"></a>A virtuális gép felfüggesztése vagy leállítása
 
@@ -510,7 +510,7 @@ Stop-AzureRmVM [-Name] <String> [-StayProvisioned] [-ResourceGroupName] <String>
 ```
 
 
-A parancsmaggal kapcsolatos további információkért nyissa meg a [stop-AzureRmVM parancsmagot](/powershell/module/azurerm.compute/stop-azurermvm?view=azurermps-6.13.0).
+A parancsmaggal kapcsolatos további információkért nyissa meg a [stop-AzureRmVM parancsmagot](/powershell/module/azurerm.compute/stop-azurermvm?view=azurermps-6.13.0&preserve-view=true).
 
 ### <a name="add-a-data-disk"></a>Adatlemez hozzáadása
 
@@ -530,10 +530,10 @@ Az alábbi parancsmaggal távolíthat el egy virtuális gépet az eszközről:
 Remove-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>
 ```
 
-A parancsmaggal kapcsolatos további információkért nyissa meg a [Remove-AzureRmVm parancsmagot](/powershell/module/azurerm.compute/remove-azurermvm?view=azurermps-6.13.0).
+A parancsmaggal kapcsolatos további információkért nyissa meg a [Remove-AzureRmVm parancsmagot](/powershell/module/azurerm.compute/remove-azurermvm?view=azurermps-6.13.0&preserve-view=true).
 
 
 
 ## <a name="next-steps"></a>További lépések
 
-[Azure Resource Manager-parancsmagok](/powershell/module/azurerm.resources/?view=azurermps-6.13.0)
+[Azure Resource Manager-parancsmagok](/powershell/module/azurerm.resources/?view=azurermps-6.13.0&preserve-view=true)

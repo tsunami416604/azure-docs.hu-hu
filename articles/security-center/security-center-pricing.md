@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/13/2020
+ms.date: 01/26/2021
 ms.author: memildin
-ms.openlocfilehash: ce95106c56e919fa0fcc7d7553a3f0cc0dc77f98
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 9e537bfa782569fb8fa2a7957c6874bda69d8c06
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121294"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805354"
 ---
 # <a name="pricing-of-azure-security-center"></a>A Azure Security Center díjszabása
 Az Azure Security Center egységes biztonsági felügyeletet és fejlett fenyegetésvédelmet biztosít az Azure-ban, a helyszínen és egyéb felhőszolgáltatásokban futó számítási feladatokhoz. Lehetővé teszi a hibrid Felhőbeli számítási feladatok, az aktív védelem és a fenyegetések kialakulásának csökkentését, valamint az intelligens észlelést, amely megkönnyíti a gyors fejlődést jelentő számítógépes kockázatok megtartását.
@@ -52,7 +52,7 @@ Az Azure Defender engedélyezése:
 1. A Security Center főmenüjében válassza a **díjszabás & beállítások** lehetőséget.
 1. Válassza ki a frissíteni kívánt előfizetést.
 1. A frissítéshez válassza az **Azure Defender** lehetőséget.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 Az alábbi példa egy előfizetésre vonatkozó díjszabási oldalt mutat be. Megfigyelheti, hogy az Azure Defender minden csomagja külön díjszabású, és egyénileg be-és kikapcsolható.
 
@@ -137,7 +137,7 @@ Napi 500 MB-nyi ingyenes adatfeldolgozást biztosít minden, a munkaterülethez 
 
 Ez az adatmennyiség az összes csomópont napi átlaga. Így még akkor is, ha egyes gépek 100-MB-ot küldenek, mások pedig 800-MB-ot küldenek, ha az összeg nem lépi túl a **[gépek számát] x 500-MB** szabad korlátot, nem számítunk fel külön díjat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez a cikk a Security Center díjszabási lehetőségeit ismerteti. Kapcsolódó anyagok esetében lásd:
 
 - [Az Azure számítási feladatok költségeinek optimalizálása](https://azure.microsoft.com/blog/how-to-optimize-your-azure-workload-costs/)

@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 0f7ab53dae8023f49161aba6120fee30ce24227f
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: cc9be2fadbfd209ebf31d3a8b6c00522a2dcf5bf
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704054"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802642"
 ---
 |Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
@@ -32,4 +32,3 @@ ms.locfileid: "98704054"
 |[A virtuális gépeket át kell telepíteni az új Azure Resource Manager erőforrásokra](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d84d5fb-01f6-4d12-ba4f-4a26081d403d) |A virtuális gépek új Azure Resource Manager használatával olyan biztonsági fejlesztéseket biztosíthat, mint például a következők: erősebb hozzáférés-vezérlés (RBAC), jobb auditálás, Azure Resource Manager alapú üzembe helyezés és irányítás, hozzáférés a felügyelt identitásokhoz, hozzáférés a Key vaulthoz a titkokhoz, az Azure AD-alapú hitelesítéshez és a címkék és erőforráscsoportok támogatásához a biztonsági felügyelet megkönnyítéséhez |Naplózás, megtagadás, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/ClassicCompute_Audit.json) |
 |[A tároló biztonsági konfigurációjában található biztonsági réseket szervizelni kell](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe8cbc669-f12d-49eb-93e7-9273119e9933) |A biztonsági beállítások biztonsági beállításainak naplózása a Docker által telepített és a Azure Security Centerban javaslatokként megjelenő számítógépeken. |AuditIfNotExists, letiltva |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_ContainerBenchmark_Audit.json) |
 |[A gépek biztonsági beállításainak sebezhetőségeit szervizelni kell](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe1e5fd5d-3e4c-4ce1-8661-7d1873ae6b15) |Azokat a kiszolgálókat, amelyek nem felelnek meg a beállított alapkonfigurációnak, Azure Security Center a javaslatok szerint figyelik |AuditIfNotExists, letiltva |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_OSVulnerabilities_Audit.json) |
-|[A biztonsági réseket a sebezhetőség-felmérési megoldásnak kell szervizelni](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F760a85ff-6162-42b3-8d70-698e268f648c) |A biztonsági rések felmérésére szolgáló megoldás és a virtuális gépek által észlelt biztonsági rések észlelése a Azure Security Center a javaslatok alapján. |AuditIfNotExists, letiltva |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VMVulnerabilities_Audit.json) |

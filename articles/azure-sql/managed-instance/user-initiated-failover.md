@@ -9,13 +9,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 01/25/2021
-ms.openlocfilehash: c12e1f4b01b0e2dd7fa21808cf33f45f9a5be59b
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.date: 01/26/2021
+ms.openlocfilehash: 7588ce055ce0df89a7dca87a75a38c8acccf6d46
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789972"
+ms.locfileid: "98806090"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Felhasználó által, felügyelt SQL-példányon kezdeményezett manuális feladatátvétel
 
@@ -125,7 +125,7 @@ A műveleti állapot nyomon követhető az API-válaszok áttekintésével a vá
 
 ## <a name="monitor-the-failover"></a>A feladatátvétel figyelése
 
-A felhasználó által kezdeményezett manuális feladatátvétel előrehaladásának figyeléséhez futtassa az alábbi T-SQL-lekérdezést a kedvenc ügyfelén (például SSMS) az SQL felügyelt példányán. A rendszer beolvassa a példányon elérhető rendszernézet sys.dm_hadr_fabric_replica_states és jelentés replikáit. A manuális feladatátvétel megkezdése után frissítse ugyanazt a lekérdezést.
+A következő T-SQL-lekérdezés végrehajtásával figyelheti a felhasználó által kezdeményezett feladatátvételt a BC-példányon: az SQL felügyelt példányán futtassa az alábbi T-SQL-lekérdezést a kedvenc ügyfelén (például SSMS). A rendszer beolvassa a példányon elérhető rendszernézet sys.dm_hadr_fabric_replica_states és jelentés replikáit. A manuális feladatátvétel megkezdése után frissítse ugyanazt a lekérdezést.
 
 ```T-SQL
 SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_hadr_fabric_replica_states
@@ -133,7 +133,13 @@ SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_h
 
 A feladatátvétel megkezdése előtt a kimenet az alAlwaysOnon rendelkezésre állási csoport egy elsődleges és három formátumú másodlagos zónák tartalmazó jelenlegi elsődleges replikáját fogja jelezni a BC szolgáltatási szinten. A feladatátvétel végrehajtásakor a lekérdezés ismételt futtatásához meg kell adni az elsődleges csomópont változását.
 
-Nem fogja tudni ugyanazt a kimenetet látni a GP szolgáltatási szintjével, mint a BC esetében. Ennek az az oka, hogy a GP szolgáltatási réteg csak egy csomóponton alapul. A GP szolgáltatási réteg T-SQL-lekérdezési kimenete csak egyetlen csomópontot fog megjeleníteni a feladatátvétel előtt és után. Az ügyfél kapcsolatának elvesztése a feladatátvétel során, amely általában egy perc alatt hosszan tart, a feladatátvétel végrehajtásának jelzése lesz.
+Nem fogja tudni ugyanazt a kimenetet látni a GP szolgáltatási szintjével, mint a BC esetében. Ennek az az oka, hogy a GP szolgáltatási réteg csak egy csomóponton alapul. Alternatív T-SQL-lekérdezést is használhat, amely a GP szolgáltatási réteg példányának csomópontján elindított idő SQL-folyamatát mutatja:
+
+```T-SQL
+SELECT sqlserver_start_time, sqlserver_start_time_ms_ticks FROM sys.dm_os_sys_info
+```
+
+A feladatátvétel során az ügyféltől való kapcsolat rövid elvesztése, amely általában egy percen belül hosszú ideig tart, a szolgáltatási szintjétől függetlenül a feladatátvétel végrehajtásának jelzése lesz.
 
 > [!NOTE]
 > A feladatátvételi folyamat (nem a tényleges rövid elérhetetlenség) befejezése több percet is igénybe vehet, ha **nagy intenzitású** számítási feladatokra van szükség. Ennek az az oka, hogy a példány-motor gondoskodik az elsődleges és a másodlagos csomóponton zajló összes aktuális tranzakcióról a feladatátvétel előtt.

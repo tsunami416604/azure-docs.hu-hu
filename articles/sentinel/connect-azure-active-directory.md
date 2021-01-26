@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/20/2021
 ms.author: yelevin
-ms.openlocfilehash: 409a316bd9c4222dd9b8ff30e42e37d23805c38b
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: eb89d2a4e719e34ad5ea31656dc9e3c02472b07d
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757762"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802253"
 ---
 # <a name="connect-data-from-azure-active-directory-azure-ad"></a>Adatok összekötése Azure Active Directoryról (Azure AD)
 
@@ -28,7 +28,7 @@ Az Azure Sentinel beépített összekötője segítségével adatokat gyűjthet 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Minden Azure AD-licenc (ingyenes/O365/P1/P2) elegendő a bejelentkezési naplók Azure Sentinelbe való betöltéséhez. A Azure Monitor (Log Analytics) és az Azure Sentinel további GB-os díjat is igényelhet.
+- A bejelentkezési naplók Azure Sentinelbe való betöltéséhez [prémium szintű Azure ad P2](https://azure.microsoft.com/pricing/details/active-directory/) -előfizetéssel kell rendelkeznie. A Azure Monitor (Log Analytics) és az Azure Sentinel további GB-os díjat is igényelhet.
 
 - A felhasználónak hozzá kell rendelnie az Azure Sentinel közreműködő szerepkört a munkaterületen.
 
@@ -46,10 +46,6 @@ Az Azure Sentinel beépített összekötője segítségével adatokat gyűjthet 
 
     - **Bejelentkezési naplók**: a felügyelt alkalmazások és a felhasználói bejelentkezési tevékenységek használatáról szóló információk.
     - **Naplók**: rendszertevékenység-információk a felhasználók és csoportok kezelésével, a felügyelt alkalmazásokkal és a címtárral kapcsolatos tevékenységekkel kapcsolatban.
-    - **Nem interaktív felhasználói bejelentkezési naplók**: az ügyfél által a felhasználó nevében végrehajtott bejelentkezésekkel kapcsolatos információk, amelyek nem igényelnek semmilyen interakciót vagy hitelesítési tényezőt a felhasználótól.
-    - **Egyszerű szolgáltatás bejelentkezési naplói**: az alkalmazások és az olyan egyszerű szolgáltatások bejelentkezési adatai, amelyek nem tartalmaznak felhasználót. Ezekben a bejelentkezésekben az alkalmazás vagy szolgáltatás hitelesítő adatokat szolgáltat a saját nevében az erőforrások hitelesítéséhez vagy eléréséhez.
-    - **Felügyelt identitású bejelentkezési naplók**: az Azure által felügyelt titkos kulcsokkal rendelkező Azure-erőforrások bejelentkezése.
-    - **Naplók** kiosztása: rendszertevékenység-információk az Azure ad-kiépítési szolgáltatás által kiépített felhasználókról, csoportokról és szerepkörökről.
 
 ## <a name="find-your-data"></a>Az adatai megkeresése
 
@@ -57,10 +53,6 @@ A sikeres kapcsolatok létrejötte után az adat a **naplók** területen, a **L
 
 - `SigninLogs`
 - `AuditLogs`
-- `AADNonInteractiveUserSignInLogs`
-- `AADServicePrincipalSignInLogs`
-- `AADManagedIdentitySignInLogs`
-- `AADProvisioningLogs`
 
 Az Azure AD-naplók lekérdezéséhez írja be a megfelelő táblanév nevet a lekérdezési ablak tetején.
 

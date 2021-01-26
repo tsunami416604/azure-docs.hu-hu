@@ -1,6 +1,6 @@
 ---
 title: 'Gyors útmutató: Azure Blob Storage Library V12 – Xamarin'
-description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az Azure Blob Storage ügyféloldali kódtárat a 12-es verzióban a Xamarin használatával tárolók és Blobok (Object) tárolók létrehozásához. Ezután megtudhatja, hogyan töltheti le a blobot a mobileszközön, és hogyan listázhatja az összes blobot egy tárolóban.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az Azure Blob Storage ügyféloldali kódtár 12-es verzióját a Xamarin használatával tárolók és Blobok (Object) tárolók létrehozásához. Ezután megtudhatja, hogyan töltheti le a blobot a mobileszközön, és hogyan listázhatja az összes blobot egy tárolóban.
 author: codemillmatt
 ms.author: masoucou
 ms.date: 10/09/2020
@@ -8,18 +8,18 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 641117414c855a044d3ed55004b6e6ea15b259ac
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: dab938a526aa89f6fe5a014e10869bd8da8b475d
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96004738"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802354"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>Gyors útmutató: Azure Blob Storage ügyféloldali kódtár V12 és Xamarin
+# <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>Gyors útmutató: Azure Blob Storage Client Library V12 és Xamarin
 
-Ismerkedjen meg az Azure Blob Storage-beli Xamarin-vel. Az Azure Blob Storage a Microsoft felhőalapú objektumtárolási megoldása. Kövesse a csomag telepítésének lépéseit, és próbálja ki például az alapszintű feladatokhoz tartozó kódot. A Blob Storage nagy mennyiségű strukturálatlan adat tárolására van optimalizálva.
+Ismerkedjen meg az Azure Blob Storage Client Library V12 és a Xamarin használatába. Az Azure Blob Storage a Microsoft objektum-tárolási megoldás a felhőhöz. Kövesse a csomag telepítésének lépéseit, és próbálja ki például az alapszintű feladatokhoz tartozó kódot. A Blob Storage nagy mennyiségű strukturálatlan adat tárolására van optimalizálva.
 
-Használja az Azure Blob Storage ügyféloldali kódtárat a Xamarin:
+Használja az Azure Blob Storage Client Library V12 és a Xamarin:
 
 * Tároló létrehozása
 * Blob feltöltése az Azure Storage-ba
@@ -32,7 +32,7 @@ Hivatkozásokra mutató hivatkozások:
 * [API-referenciadokumentáció](/dotnet/api/azure.storage.blobs)
 * [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)
 * [Csomag (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)
-* [Minta](https://github.com/Azure-Samples/storage-blobs-xamarin-quickstart)
+* [Sample](https://github.com/Azure-Samples/storage-blobs-xamarin-quickstart)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -44,7 +44,7 @@ Hivatkozásokra mutató hivatkozások:
 
 ## <a name="setting-up"></a>Beállítás
     
-Ez a szakasz végigvezeti a projekt előkészítésének folyamatán az Azure Blob Storage-beli Xamarin-vel való együttműködéshez.
+Ez a szakasz végigvezeti a projekt előkészítésének folyamatán az Azure Blob Storage Client Library V12 és a Xamarin használatával való együttműködéshez.
     
 ### <a name="create-the-project"></a>A projekt létrehozása
 
@@ -99,7 +99,7 @@ Használja az alábbi .NET-osztályokat a következő erőforrásokkal való int
 
 ## <a name="code-examples"></a>Kódpéldák
 
-Az alábbi kódrészletek azt mutatják be, hogyan hajthatja végre a következő feladatokat a .NET-hez készült Azure Blob Storage ügyféloldali kódtára Xamarin. Forms alkalmazásban:
+Az alábbi kódrészletek azt mutatják be, hogyan hajthatja végre a következő feladatokat az Azure Blob Storage .NET-hez készült ügyféloldali kódtára Xamarin. Forms alkalmazásban:
 
 * [Osztály szintű változók létrehozása](#create-class-level-variables)
 * [Tároló létrehozása](#create-a-container)
@@ -110,7 +110,7 @@ Az alábbi kódrészletek azt mutatják be, hogyan hajthatja végre a következ�
 
 ### <a name="create-class-level-variables"></a>Osztály szintű változók létrehozása
 
-Az alábbi kód több Class szintű változót deklarál. Szükségük volt az Azure Blob Storage-hoz való kommunikációra a minta további részében.
+Az alábbi kód több Class szintű változót deklarál. Szükségük volt az Azure Blob Storage a minta további részében való kommunikációra.
 
 Ezek a tárolási fiók a [Storage-kapcsolódási karakterlánc konfigurálása](#configure-your-storage-connection-string) szakaszban beállított kapcsolódási karakterláncán kívül vannak.
 
@@ -269,7 +269,7 @@ Miután ellenőrizte az értékeket, erősítse meg a tároló törlésére és 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan tölthet fel, tölthet le és listázhat blobokat az Azure Blob Storage ügyféloldali Library V12 és a Xamarin használatával.
+Ebben a rövid útmutatóban megtanulta, hogyan tölthet fel, tölthet le és listázhat blobokat az Azure Blob Storage Client Library V12 és a Xamarin használatával.
 
 A blob Storage-beli minták alkalmazásainak megtekintéséhez folytassa a következőket:
 

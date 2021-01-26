@@ -2,14 +2,14 @@
 title: Felügyelt identitás hitelesítése Azure Active Directory
 description: Ez a cikk az Azure Event Hubs-erőforrások eléréséhez Azure Active Directory felügyelt identitások hitelesítésével kapcsolatos információkat tartalmaz.
 ms.topic: conceptual
-ms.date: 06/23/2020
+ms.date: 01/25/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c6b43cc48663be28d12fa788d92286be6f47ef08
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2070cfd94b39a08afb86ffd3579f1116faac72d5
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993533"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805287"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Felügyelt identitás hitelesítése Azure Active Directory használatával Event Hubs erőforrások eléréséhez
 Az Azure Event Hubs támogatja a Azure Active Directory (Azure AD) hitelesítést az [Azure-erőforrások felügyelt identitásával](../active-directory/managed-identities-azure-resources/overview.md). Az Azure-erőforrások felügyelt identitásai engedélyezhetik Event Hubs erőforrásokhoz való hozzáférést az Azure Virtual Machines (VM), a Function apps, a Virtual Machine Scale Sets és más szolgáltatások által futtatott alkalmazások Azure AD-beli hitelesítő adataival. Ha felügyelt identitásokat használ az Azure-erőforrásokhoz az Azure AD-hitelesítéssel együtt, elkerülheti a hitelesítő adatok tárolását a felhőben futó alkalmazásaival.
@@ -22,7 +22,7 @@ Mielőtt felügyelt identitásokat használ az Azure-erőforrásokhoz a virtuál
 - [Azure Portalra](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
-- [Azure Resource Manager sablon](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+- [Azure Resource Manager-sablon](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
 - [Azure Resource Manager ügyféloldali kódtárak](../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 ## <a name="grant-permissions-to-a-managed-identity-in-azure-ad"></a>Engedélyek megadása felügyelt identitásnak az Azure AD-ben
@@ -41,11 +41,12 @@ Az alkalmazás létrehozása után kövesse az alábbi lépéseket:
 1. Válassza ki a **bekapcsolni** kívánt **állapotot** . 
 1. A beállítás mentéséhez kattintson a **Mentés** gombra. 
 
-    ![Webalkalmazás felügyelt identitása](./media/authenticate-managed-identity/identity-web-app.png)
+    :::image type="content" source="./media/authenticate-managed-identity/identity-web-app.png" alt-text="Webalkalmazás felügyelt identitása":::
+4. Válassza az **Igen** lehetőséget az információs üzenetben. 
 
-Ha engedélyezte ezt a beállítást, a rendszer létrehoz egy új szolgáltatás-identitást a Azure Active Directory (Azure AD), és az App Service gazdagépre van konfigurálva.
+    Ha engedélyezte ezt a beállítást, a rendszer létrehoz egy új szolgáltatás-identitást a Azure Active Directory (Azure AD), és az App Service gazdagépre van konfigurálva.
 
-Most rendeljen hozzá egy szerepkörhöz a szolgáltatás identitását a Event Hubs erőforrásaihoz szükséges hatókörben.
+    Most rendeljen hozzá egy szerepkörhöz a szolgáltatás identitását a Event Hubs erőforrásaihoz szükséges hatókörben.
 
 ### <a name="to-assign-azure-roles-using-the-azure-portal"></a>Azure-szerepkörök kiosztása a Azure Portal használatával
 Ha szerepkört szeretne hozzárendelni Event Hubs erőforrásokhoz, navigáljon az adott erőforráshoz a Azure Portal. Jelenítse meg az erőforrás Access Control (IAM) beállításait, és kövesse az alábbi utasításokat a szerepkör-hozzárendelések kezeléséhez:
@@ -56,15 +57,20 @@ Ha szerepkört szeretne hozzárendelni Event Hubs erőforrásokhoz, navigáljon 
 1. A Azure Portal navigáljon a Event Hubs névtérhez, és jelenítse meg a névtér **áttekintését** . 
 1. A bal oldali menüben válassza a **Access Control (iam)** lehetőséget az Event hub hozzáférés-vezérlési beállításainak megjelenítéséhez.
 1.  Válassza ki a **szerepkör-hozzárendelések** lapot a szerepkör-hozzárendelések listájának megtekintéséhez.
-3.  Új szerepkör hozzáadásához válassza a **Hozzáadás** lehetőséget.
-4.  A **szerepkör-hozzárendelés hozzáadása** lapon válassza ki a hozzárendelni kívánt Event Hubs-szerepköröket. Ezután keresse meg a szerepkör hozzárendeléséhez regisztrált szolgáltatás identitását.
+3.  Válassza a **Hozzáadás**, majd a **szerepkör-hozzárendelés hozzáadása** _ elemet.
+4.  Az _ *szerepkör-hozzárendelés hozzáadása* lapon kövesse az alábbi lépéseket:
+    1. A **szerepkör** területen válassza ki a hozzárendelni kívánt Event Hubs szerepkört. Ebben a példában ez az **Azure Event Hubs-adattulajdonos**.
+    1. A **hozzáférés hozzárendelése** mezőhöz területen válassza a **app Service** a **rendszerhez rendelt felügyelt identitás** területen. 
+    1. Válassza ki azt az **előfizetést** , amelyben a webalkalmazás felügyelt identitása létrejött.
+    1. Válassza ki a létrehozott webalkalmazás **felügyelt identitását** . Az identitás alapértelmezett neve megegyezik a webalkalmazás nevével. 
+    1. Ezután válassza a **Mentés** lehetőséget. 
     
-    ![Szerepkör-hozzárendelési lap hozzáadása](./media/authenticate-managed-identity/add-role-assignment-page.png)
-5.  Kattintson a **Mentés** gombra. Az az identitás, akihez a szerepkört hozzárendelte, megjelenik az adott szerepkör alatt. Az alábbi képen például látható, hogy a szolgáltatás identitása Event Hubs adattulajdonost tartalmaz.
-    
-    ![Szerepkörhöz rendelt identitás](./media/authenticate-managed-identity/role-assigned.png)
+        ![Szerepkör-hozzárendelési lap hozzáadása](./media/authenticate-managed-identity/add-role-assignment-page.png)
 
-A szerepkör hozzárendelése után a webalkalmazás hozzáférhet a megadott hatókörben lévő Event Hubs erőforrásokhoz. 
+    A szerepkör hozzárendelése után a webalkalmazás hozzáférhet a megadott hatókörben lévő Event Hubs erőforrásokhoz. 
+
+    > [!NOTE]
+    > A felügyelt identitásokat támogató szolgáltatások listáját itt tekintheti meg: az [Azure-erőforrások felügyelt identitásait támogató szolgáltatások](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md).
 
 ### <a name="test-the-web-application"></a>A webalkalmazás tesztelése
 1. Hozzon létre egy Event Hubs névteret és egy Event hubot. 

@@ -4,12 +4,12 @@ description: Annak megakadályozása, hogy a felhasználók az összes felhaszn�
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 53054f89c992139fbbd4f087d2a0344e26d97efc
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 0e8fc74b2da0c253ec9c5bf34ec7543398aea48f
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610199"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802444"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Erőforrások zárolása a váratlan módosítások megelőzése érdekében
 
@@ -38,7 +38,7 @@ A zárolások alkalmazása váratlan eredményekhez vezethet, mert egyes olyan m
 
 * Egy **erőforráscsoport** nem törölhető zárolása megakadályozza, hogy Azure Resource Manager az előzményekben lévő [központi telepítések automatikus törlését](../templates/deployment-history-deletions.md) . Ha az előzményekben eléri a 800-es üzemelő példányokat, az üzemelő példányok sikertelenek lesznek.
 
-* A **Azure Backup szolgáltatás** által létrehozott **erőforráscsoport** nem törölhető zárolása miatt a biztonsági mentések sikertelenek lesznek. A szolgáltatás legfeljebb 18 visszaállítási pontot támogat. Zárolt állapotban a Backup szolgáltatás nem tudja törölni a visszaállítási pontokat. További információk: [Gyakori kérdések – Azure-beli virtuális gépek biztonsági mentése](../../backup/backup-azure-vm-backup-faq.md).
+* A **Azure Backup szolgáltatás** által létrehozott **erőforráscsoport** nem törölhető zárolása miatt a biztonsági mentések sikertelenek lesznek. A szolgáltatás legfeljebb 18 visszaállítási pontot támogat. Zárolt állapotban a Backup szolgáltatás nem tudja törölni a visszaállítási pontokat. További információk: [Gyakori kérdések – Azure-beli virtuális gépek biztonsági mentése](../../backup/backup-azure-vm-backup-faq.yml).
 
 * Az **előfizetés** írásvédett zárolása megakadályozza, hogy a **Azure Advisor** megfelelően működjön. Az Advisor nem tudja tárolni a lekérdezések eredményét.
 
@@ -339,7 +339,7 @@ A kérelemben adjon meg egy JSON-objektumot, amely meghatározza a zárolás tul
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az erőforrások logikus rendszerezésével kapcsolatos további információkért lásd: [címkék használata az erőforrások rendszerezéséhez](tag-resources.md).
 * Az előfizetésre vonatkozó korlátozásokat és konvenciókat egyéni szabályzatokkal is alkalmazhat. További információ: [Mi az az Azure Policy?](../../governance/policy/overview.md)

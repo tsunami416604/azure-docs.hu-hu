@@ -3,12 +3,12 @@ title: Adatok helyreállítása Azure Backup Server
 description: Állítsa helyre a védelemmel ellátott adatokat Recovery Services-tárolóba az adott tárban regisztrált bármely Azure Backup Server.
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 0cce45fbaaedad4cfcee0cda768aae2fa294312b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ed8c937f97ec7a74662a8b46a354b0a6db39a2b0
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002970"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806023"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Adatok helyreállítása az Azure Backup Serverről
 
@@ -89,5 +89,5 @@ Adatok helyreállítása Azure Backup Serverról:
 
 További gyakori kérdéseket is áttekinthet:
 
-* Az Azure-beli virtuális gépek biztonsági mentésével kapcsolatos [Gyakori kérdések](backup-azure-vm-backup-faq.md)
+* Az Azure-beli virtuális gépek biztonsági mentésével kapcsolatos [Gyakori kérdések](backup-azure-vm-backup-faq.yml)
 * [Gyakori kérdések](backup-azure-file-folder-backup-faq.md) az Azure Backup-ügynökről

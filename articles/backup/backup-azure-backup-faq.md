@@ -3,12 +3,12 @@ title: Gyakori kérdésekre adott válaszok
 description: 'Gyakori kérdésekre adott válaszok a következő témakörökben: az Azure Backup szolgáltatásai, mint például a Recovery Services-tárolók, a biztonsági mentés lehetséges elemei, működése, titkosítás és korlátozások. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: dbe6ce95427b559c037e38525f9f48195a2a76a4
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: f819440001180a3c446f366e61e3ac0f983fa67f
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703419"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806645"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Gyakori kérdések
 
@@ -58,7 +58,7 @@ Ha már konfigurálta a biztonsági mentést, és a GRS-ről LRS-re kell váltan
 - Az ILR az olyan Azure-beli virtuális gépeknél támogatott, amelyeknek a biztonsági másolata az Azure VM Backup használatával készült. További információkért tekintse meg ezt a [cikket](backup-azure-restore-files-from-vm.md).
 - A ILR nem támogatott a Azure Backup Server (MABS) vagy a System Center DPM által készített helyszíni virtuális gépek online helyreállítási pontjain.
 
-### <a name="how-can-i-move-data-from-the-recovery-services-vault-to-on-premises"></a>Hogyan helyezhetők át adatok a Recovery Services-tárolóból a helyszíni rendszerbe?
+### <a name="how-can-i-move-data-from-the-recovery-services-vault-to-on-premises"></a>Adatok átvitele Recovery Services-tárolóból helyszíni tárolóba
 
 Az adatok közvetlenül a Recovery Services-tárolóból a helyszíni rendszerbe való exportálása a Data Box használatával nem támogatott. Az adatkészletet vissza kell állítani egy Storage-fiókba, majd [Data Box](../databox/data-box-overview.md) vagy [Importálás/exportálás](../import-export/storage-import-export-service.md)használatával áthelyezhető a helyszíni környezetbe.
 
@@ -70,7 +70,7 @@ Ha engedélyezve van a [CRR](azure-backup-glossary.md#cross-region-restore-crr) 
 
 ### <a name="where-can-i-find-common-questions-about-the-azure-backup-agent-for-azure-vm-backup"></a>Hol találhatók az Azure VM Backup Azure Backup-ügynökére vonatkozó gyakori kérdések?
 
-- Az Azure-beli virtuális gépeken futó ügynökkel kapcsolatban tekintse át ezeket a [gyakori kérdéseket](backup-azure-vm-backup-faq.md).
+- Az Azure-beli virtuális gépeken futó ügynökkel kapcsolatban tekintse át ezeket a [gyakori kérdéseket](backup-azure-vm-backup-faq.yml).
 - Az Azure-fájlmappák biztonsági másolatainak létrehozásához használt ügynökkel kapcsolatban tekintse át ezeket a [gyakori kérdéseket](backup-azure-file-folder-backup-faq.md).
 
 ## <a name="general-backup"></a>Általános biztonsági mentés
@@ -236,5 +236,5 @@ Az adatok biztonsági másolatának titkosításához használt kulcs csak Önne
 
 További gyakori kérdéseket is áttekinthet:
 
-- [Gyakori kérdések](backup-azure-vm-backup-faq.md) az Azure-beli virtuális gépek biztonsági mentéséről.
+- [Gyakori kérdések](backup-azure-vm-backup-faq.yml) az Azure-beli virtuális gépek biztonsági mentéséről.
 - [Gyakori kérdések](backup-azure-file-folder-backup-faq.md) az Azure Backup-ügynökről
