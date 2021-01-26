@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: quickstart
-ms.date: 10/30/2020
+ms.date: 01/25/2021
 ms.author: juliako
-ms.openlocfilehash: 7099b0d303965b987fb316170738cc82568dc6d6
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 5b38c731db141052e6700472020cd60b6a4d13a5
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505597"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797804"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Gyors útmutató: regisztráció és az első videó feltöltése
 
@@ -57,7 +57,11 @@ A Video Indexer használatával használható fájlformátumok listáját a [bem
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/video-indexer-get-started/uploaded.png" alt-text="Feltöltés feltöltve":::
- 
+
+## <a name="supported-browsers"></a>Támogatott böngészők
+
+További információ: [támogatott böngészők](video-indexer-overview.md#supported-browsers).
+
 ## <a name="see-also"></a>Lásd még
 
 További részletekért tekintse meg a [videók feltöltése és indexelése](upload-index-videos.md) című témakört.
@@ -66,7 +70,7 @@ A videók feltöltése és indexelése után megkezdheti [video Indexer webhely]
 
 [Az API-k használatának megkezdése](video-indexer-use-apis.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A részletes bevezetést a [bevezető laborban](https://github.com/Azure-Samples/media-services-video-indexer/blob/master/IntroToVideoIndexer.md)tekintheti meg. 
 

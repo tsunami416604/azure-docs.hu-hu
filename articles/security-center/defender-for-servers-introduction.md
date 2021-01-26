@@ -7,12 +7,12 @@ ms.date: 9/23/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 711963a60d5c75031ff676a9c7f1db47f20fe895
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b7457e258cf8a9936e9a63ab9eec9edc0b54d3eb
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275242"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797726"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>Bevezetés az Azure Defender for Servers szolgáltatásba
 
@@ -27,7 +27,7 @@ A Linux rendszerben az Azure Defender a Linux rendszerű gépek naplózási reko
 
 Az Azure Defender for Servers szolgáltatáshoz biztosított fenyegetések észlelési és védelmi képességei a következők:
 
-- A **Microsoft Defender for Endpoint integrált licence (csak Windows esetén)** – az Azure Defender for Servers tartalmazza [a Microsoft Defender for végpontot](https://www.microsoft.com/microsoft-365/security/endpoint-defender). Együttesen átfogó végpont-észlelési és-reagálási (EDR) képességeket biztosítanak. [További információk](security-center-wdatp.md).
+- A **Microsoft Defender for Endpoint integrált licence (csak Windows esetén)** – az Azure Defender for Servers tartalmazza [a Microsoft Defender for végpontot](https://www.microsoft.com/microsoft-365/security/endpoint-defender). Együttesen átfogó végpont-észlelési és-reagálási (EDR) képességeket biztosítanak. [További információ](security-center-wdatp.md).
 
     Ha a-végpont Defender észleli a fenyegetést, riasztást indít el. A riasztás Security Center jelenik meg. A Security Centerból is eldöntheti, hogy a Defender for Endpoint Console-t is felhasználja, és részletes vizsgálatot hajt végre a támadás hatókörének felderítése érdekében. További információ a Microsoft Defender a végpontról.
 
@@ -36,25 +36,25 @@ Az Azure Defender for Servers szolgáltatáshoz biztosított fenyegetések észl
 
 - **Biztonsági rések felmérése virtuális gépekhez** – a Azure Security Center által tartalmazott sebezhetőségi képolvasót a Qualys működteti. 
 
-    A Qualys "Scanner az Azure-Virtual Machines biztonsági réseinak valós idejű azonosítására szolgáló vezető eszközök egyike. Nincs szüksége Qualys-licencre, vagy akár Qualys-fiókra is – minden a Security Centeron belül zökkenőmentesen kezelhető. [További információk](deploy-vulnerability-assessment-vm.md).
+    A Qualys "Scanner az Azure-Virtual Machines biztonsági réseinak valós idejű azonosítására szolgáló vezető eszközök egyike. Nincs szüksége Qualys-licencre, vagy akár Qualys-fiókra is – minden a Security Centeron belül zökkenőmentesen kezelhető. [További információ](deploy-vulnerability-assessment-vm.md).
 
 - Igény szerinti **(JIT) virtuális gép (VM) hozzáférés** – a fenyegetéseket kezelő szereplők aktívan vadásznak a nyílt felügyeleti portokkal, például az RDP-vel vagy az SSH-val. Az összes virtuális gép potenciális célpont a támadásoknak. Ha egy virtuális gép biztonsága sikeres, a rendszer belépési pontként használja a környezetében lévő további erőforrások támadásához.
 
-    Ha engedélyezi az Azure Defender for Servers-t, a virtuális gépek igény szerinti elérésével zárolhatja a bejövő forgalmat a virtuális gépekre, így csökkentve a támadásoknak való kitettséget, miközben könnyű hozzáférést biztosít a virtuális gépekhez, amikor szükséges. [További információk](just-in-time-explained.md).
+    Ha engedélyezi az Azure Defender for Servers-t, a virtuális gépek igény szerinti elérésével zárolhatja a bejövő forgalmat a virtuális gépekre, így csökkentve a támadásoknak való kitettséget, miközben könnyű hozzáférést biztosít a virtuális gépekhez, amikor szükséges. [További információ](just-in-time-explained.md).
 
 - A fájlok **integritásának figyelése (FIM)** – a fájl integritásának figyelése (FIM), más néven a változások figyelése, megvizsgálja az operációs rendszer, az alkalmazás szoftvere és mások által a támadásra utaló módosításokat. A rendszer összehasonlító módszert használ annak megállapítására, hogy a fájl aktuális állapota eltér-e a fájl legutóbbi vizsgálatával. Ezt az összehasonlítást kihasználva megállapíthatja, hogy érvényes vagy gyanús módosítások történtek-e a fájlokban.
 
-    Ha engedélyezi az Azure Defender for Servers használatát, a FIM használatával ellenőrizheti a Windows-fájlok, a Windows-beállításjegyzékek és a Linux-fájlok integritását. [További információk](security-center-file-integrity-monitoring.md).
+    Ha engedélyezi az Azure Defender for Servers használatát, a FIM használatával ellenőrizheti a Windows-fájlok, a Windows-beállításjegyzékek és a Linux-fájlok integritását. [További információ](security-center-file-integrity-monitoring.md).
 
 - **Adaptív alkalmazás-vezérlőelemek (AAC)** – az adaptív alkalmazások intelligens és automatizált megoldást biztosítanak a gépek ismert biztonságos alkalmazásainak engedélyezési listájához.
 
-    Ha engedélyezte és konfigurálta az adaptív alkalmazások vezérlőit, akkor biztonsági riasztásokat fog kapni, ha bármely alkalmazás a biztonságosként definiált beállításoktól eltérő módon fut. [További információk](security-center-adaptive-application.md).
+    Ha engedélyezte és konfigurálta az adaptív alkalmazások vezérlőit, akkor biztonsági riasztásokat fog kapni, ha bármely alkalmazás a biztonságosként definiált beállításoktól eltérő módon fut. [További információ](security-center-adaptive-application.md).
 
 - **Adaptív hálózat megerősítése (** NSG) – a hálózati biztonsági csoportok (-ek) alkalmazása az erőforrások felé irányuló és onnan érkező forgalom szűrésére, javítja a hálózat biztonsági helyzetét. Azonban továbbra is előfordulhatnak olyan esetek, amikor a NSG keresztül áramló tényleges forgalom a definiált NSG-szabályok részhalmaza. Ezekben az esetekben a NSG-szabályoknak a tényleges forgalmi minták alapján történő megerősítése révén a biztonsági helyzet további javítása is megvalósítható.
 
-    Az adaptív hálózat megerősítése ajánlásokat biztosít a NSG-szabályok további megerősítéséhez. Egy gépi tanulási algoritmust használ, amely a tényleges forgalom, az ismert megbízható konfiguráció, a veszélyforrások felderítése és más, a biztonsággal kapcsolatos mutatók szempontjából tényezőket tartalmaz, és javaslatokat tesz arra, hogy csak adott IP-/port-rekordok származó forgalmat engedélyezzen. [További információk](security-center-adaptive-network-hardening.md).
+    Az adaptív hálózat megerősítése ajánlásokat biztosít a NSG-szabályok további megerősítéséhez. Egy gépi tanulási algoritmust használ, amely a tényleges forgalom, az ismert megbízható konfiguráció, a veszélyforrások felderítése és más, a biztonsággal kapcsolatos mutatók szempontjából tényezőket tartalmaz, és javaslatokat tesz arra, hogy csak adott IP-/port-rekordok származó forgalmat engedélyezzen. [További információ](security-center-adaptive-network-hardening.md).
 
-- A **Docker-gazdagép megerősítése** – Azure Security Center azonosítja a IaaS Linux rendszerű virtuális gépeken üzemeltetett nem felügyelt tárolókat, illetve a Docker-tárolókat futtató más Linux-gépeket. Security Center folyamatosan elemzi a tárolók konfigurációit. Ezután összehasonlítja azokat a Center for Internet Security (CIS) Docker-teljesítményteszttel. Security Center tartalmazza a CIS Docker-teljesítményteszt teljes szabályait, és riasztást küld, ha a tárolók nem elégítik ki a vezérlőelemek egyikét sem. [További információk](harden-docker-hosts.md).
+- A **Docker-gazdagép megerősítése** – Azure Security Center azonosítja a IaaS Linux rendszerű virtuális gépeken üzemeltetett nem felügyelt tárolókat, illetve a Docker-tárolókat futtató más Linux-gépeket. Security Center folyamatosan elemzi a tárolók konfigurációit. Ezután összehasonlítja azokat a Center for Internet Security (CIS) Docker-teljesítményteszttel. Security Center tartalmazza a CIS Docker-teljesítményteszt teljes szabályait, és riasztást küld, ha a tárolók nem elégítik ki a vezérlőelemek egyikét sem. [További információ](harden-docker-hosts.md).
 
 - **Fájlok nélküli támadás észlelése (csak Windows)** – a fájl nélküli támadások rosszindulatú hasznos adatokat szúrnak be a memóriába a lemezes ellenőrzési módszerek észlelése érdekében. A támadó adattartalma a feltört folyamatok memóriájában marad, és számos kártékony tevékenységet hajt végre.
 
@@ -88,7 +88,7 @@ A riasztások szimulálása a következő forgatókönyvek egyikének letöltés
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a cikkből megtudhatta, hogyan használható az Azure Defender a kiszolgálókhoz. 
 
@@ -97,4 +97,4 @@ A kapcsolódó anyagokkal kapcsolatban tekintse meg a következő cikkeket:
 - Azt határozza meg, hogy a riasztást a Security Center hozza-e létre, vagy egy másik biztonsági terméktől Security Center fogadta-e, exportálhatja. Ha a riasztásokat az Azure Sentinelbe, a harmadik féltől származó SIEM-re vagy más külső eszközre szeretné exportálni, kövesse a [riasztások a Siem](continuous-export.md)-ben való exportálásának utasításait.
 
 - > [!div class="nextstepaction"]
-    > [Az Azure Defender engedélyezése](security-center-pricing.md)
+    > [Az Azure Defender engedélyezése](security-center-pricing.md#enable-azure-defender)

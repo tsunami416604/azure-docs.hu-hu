@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: e73126cfc54294a7b9d54ff62c406d5e686ac470
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a8928f9d52fd8e721ac770dda8f0cbf0162a0f61
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95982712"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797915"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS Integration Runtime csatlakoztatása virtuális hálózathoz
 
@@ -73,7 +73,10 @@ Ha a SSIS-csomagok hozzáférnek a [virtuális hálózati szolgáltatás-végpon
 
 ## <a name="access-to-data-sources-protected-by-ip-firewall-rule"></a>Hozzáférés az IP-tűzfalszabály által védett adatforrásokhoz
 
-Ha a SSIS-csomagok olyan adattárakhoz/erőforrásokhoz férnek hozzá, amelyek csak adott statikus nyilvános IP-címeket engedélyeznek, és az erőforrásokhoz való hozzáférést szeretne Azure-SSIS IR, akkor a saját [nyilvános IP-címeit](../virtual-network/virtual-network-public-ip-address.md) használhatja Azure-SSIS IRhoz, miközben csatlakoztatja azt egy virtuális hálózathoz, majd hozzáadhat egy IP-tűzfalszabály a megfelelő erőforrásokhoz, hogy engedélyezze a hozzáférést az adott IP-címekről.
+Ha a SSIS-csomagok olyan adattárakhoz/erőforrásokhoz férnek hozzá, amelyek csak adott statikus nyilvános IP-címeket engedélyeznek, és az erőforrásokhoz való hozzáférést szeretne Azure-SSIS IR-ból, akkor a [nyilvános IP-címeket](../virtual-network/virtual-network-public-ip-address.md) társíthatja Azure-SSIS IRhoz, miközben csatlakoztatja azt egy virtuális hálózathoz, majd hozzáadhat egy IP-tűzfalszabály a megfelelő erőforrásokhoz, hogy engedélyezze a hozzáférést az adott IP-címekről. Ennek két alternatív módja van: 
+
+- Azure-SSIS IR létrehozásakor saját nyilvános IP-címeit használhatja, és [Data Factory felhasználói felületen vagy SDK](#join-the-azure-ssis-ir-to-a-virtual-network)-n keresztül adhatja meg őket. Csak a Azure-SSIS IR kimenő internetkapcsolata fogja használni a megadott nyilvános IP-címeket, és az alhálózatban lévő más eszközök nem fogják használni őket.
+- Az alhálózathoz [Virtual Network NAT](../virtual-network/nat-overview.md) -t is beállíthatja, amelyhez Azure-SSIS IR csatlakozni fog, és az alhálózat összes kimenő kapcsolata a megadott nyilvános IP-címeket fogja használni.
 
 A virtuális hálózat minden esetben csak az Azure Resource Manager üzemi modellen keresztül helyezhető üzembe.
 
@@ -271,7 +274,7 @@ Ahhoz, hogy a tűzfal eszközön engedélyezve legyen a kimenő forgalom, enged�
 
 Ha nincs szüksége a Azure-SSIS IR kimenő forgalmának vizsgálatára, egyszerűen alkalmazhatja az útvonalat, hogy a következő ugrás típusú összes forgalmat kényszerítse az **internethez**:
 
--   Az Azure ExpressRoute-forgatókönyvekben a következő ugrási típussal rendelkező 0.0.0.0/0 útvonalakat alkalmazhatja **Internet** a Azure-SSIS IR futtató alhálózaton. 
+-   Az Azure ExpressRoute-forgatókönyvekben a következő ugrási típussal rendelkező 0.0.0.0/0 útvonalakat alkalmazhatja  a Azure-SSIS IR futtató alhálózaton. 
 -   Egy NVA-forgatókönyvben módosíthatja a meglévő 0.0.0.0/0 útvonalat azon az alhálózaton **, amely** a következő ugrási típusról az **internetre** helyezi a Azure-SSIS IR.
 
 ![Útvonal hozzáadása](media/join-azure-ssis-integration-runtime-virtual-network/add-route-for-vnet.png)

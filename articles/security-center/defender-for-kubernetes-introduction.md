@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 04427a1eb2760e44086003a06ed4eb0d5cb473bf
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 76b83a608c7178b42b762d5fd5bb94d14a6ee41b
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673324"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797757"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Bevezetés az Azure Defender for Kubernetes használatába
 
@@ -31,7 +31,7 @@ Ha engedélyezi az [Azure Defender for Servers](defender-for-servers-introductio
 |Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|A **Kubernetes készült Azure Defender** számlázása [a díjszabási oldalon](security-center-pricing.md) látható.|
 |Szükséges szerepkörök és engedélyek:|A **biztonsági rendszergazda** figyelmen kívül hagyhatja a riasztásokat.<br>A **biztonsági olvasó** megtekintheti az eredményeket.|
-|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-kubernetes"></a>Milyen előnyökkel jár az Azure Defender for Kubernetes?
@@ -107,12 +107,12 @@ Ha a fürtök már futtatják a Azure Monitor a tárolók ügynöke számára, a
 [További információ a Azure monitor for containers agentről](../azure-monitor/insights/container-insights-manage-agent.md).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta Security Center Kubernetes-védelmét, beleértve a Kubernetes készült Azure Defendert is. 
 
 A kapcsolódó anyagokkal kapcsolatban tekintse meg a következő cikkeket: 
 
-- [Az Azure Defender engedélyezése](security-center-pricing.md)
+- [Az Azure Defender engedélyezése](security-center-pricing.md#enable-azure-defender)
 - [Riasztások továbbítása SIEM, SOAR vagy IT Service Management megoldásba](export-to-siem.md)
 - [Riasztások hivatkozási táblázata](alerts-reference.md)

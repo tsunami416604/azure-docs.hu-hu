@@ -1,18 +1,18 @@
 ---
 title: Azure Policy szabályozási megfelelőségi szabályozása Azure Data Lake Storage Gen1
 description: Felsorolja Azure Policy Azure Data Lake Storage Gen1 számára elérhető szabályozási megfelelőségi szabályozásokat. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.topic: sample
 author: normesta
 ms.author: normesta
 ms.service: data-lake-store
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 08a7e72126859fdcb1e19a6c78cc40dd656dfff2
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 22f95d5086d92f5b76ba2847a27f1a7c66f9376b
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684228"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797813"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-data-lake-storage-gen1"></a>Azure Policy szabályozási megfelelőségi szabályozása Azure Data Lake Storage Gen1
 
@@ -23,7 +23,7 @@ A **biztonsági vezérlők** beépített moduljait egyenként is hozzárendelhet
 
 [!INCLUDE [azure-policy-compliancecontrols-adls](../../includes/policy/standards/byrp/microsoft.datalakestore.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [Azure Policy szabályozási megfelelőségről](../governance/policy/concepts/regulatory-compliance.md).
 - A beépített elemek megtekintése az [Azure Policy GitHub-adattárában](https://github.com/Azure/azure-policy).

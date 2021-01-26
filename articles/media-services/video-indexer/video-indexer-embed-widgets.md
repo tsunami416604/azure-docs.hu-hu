@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 08/10/2020
+ms.date: 01/25/2021
 ms.author: juliako
 ms.custom: devx-track-js
-ms.openlocfilehash: 1bc751ae293abbb7aa330a99a4b66a917d150906
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b13086e11e1181bba91a3255e68e9f8a32e78450
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994978"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797788"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Video Indexer widgetek beágyazása az alkalmazásokba
 
@@ -30,20 +30,20 @@ A 2. verziótól kezdődően a widget alap URL-címe tartalmazza a megadott fió
 
 A Kognitív elemzési vezérlő az összes vizuális elemzést tartalmazza, amely a videóindexelési folyamat során lett kinyerve. A kognitív bepillantások widget a következő opcionális URL-paramétereket támogatja:
 
-|Név|Definíció|Leírás|
+|Name|Definíció|Leírás|
 |---|---|---|
 |`widgets` | Vesszővel elválasztott sztringek | Lehetővé teszi a megjeleníteni kívánt adatfelismerések szabályozását.<br/>Példa: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords` a csak a felhasználók és a kulcsszavak felhasználói felületi felismeréseit jeleníti meg.<br/>Elérhető lehetőségek: személyek, animatedCharacters, kulcsszavak, címkék, érzelmek, érzelmek, témakörök, kulcsképek, átiratok, OCR, hangszórók, jelenetek és namedEntities.|
 |`controls`|Vesszővel elválasztott sztringek|Lehetővé teszi a megjeleníteni kívánt vezérlők szabályozását.<br/>Példa: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?controls=search,download` csak a keresési lehetőség és a letöltés gomb megjelenítése.<br/>Elérhető lehetőségek: keresés, letöltés, előzetes beállítás, nyelv.|
 |`language`|Rövid nyelvi kód (nyelv neve)|Az ellenőrzési nyelv szabályozása.<br/>Például: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>vagy `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
 |`locale` | Egy rövid nyelvi kód | A felhasználói felület nyelvének szabályozása. Az alapértelmezett érték `en`. <br/>Példa: `locale=de`.|
-|`tab` | Az alapértelmezett kijelölt lap | Az alapértelmezés **Insights** szerint megjelenített adatvizsgálatok lapot vezérli. <br/>Példa: `tab=timeline` a bepillantást jeleníti meg az **Idősor** lapon.|
+|`tab` | Az alapértelmezett kijelölt lap | Az alapértelmezés  szerint megjelenített adatvizsgálatok lapot vezérli. <br/>Példa: `tab=timeline` a bepillantást jeleníti meg az **Idősor** lapon.|
 |`location` ||A `location` paraméternek szerepelnie kell a beágyazott hivatkozásokban. lásd: a [régió nevének beolvasása](regions.md). Ha a fiókja előzetes verzióban érhető el, a `trial` értéket a hely értékére kell használni. `trial` a paraméter alapértelmezett értéke `location` .| 
 
 ### <a name="player-widget"></a>Lejátszó vezérlő
 
 A Player widget Adaptív átviteli sebesség használatával is továbbíthatja a videót. A Player widget a következő opcionális URL-paramétereket támogatja.
 
-|Név|Definíció|Leírás|
+|Name|Definíció|Leírás|
 |---|---|---|
 |`t` | Másodperc az elejétől | A lejátszó a megadott időpontból kezdi a lejátszást.<br/> Példa: `t=60`. |
 |`captions` | Nyelvi kód | A megadott nyelven beolvassa a feliratot a widget betöltésével, hogy elérhető legyen a **feliratok** menüben.<br/> Példa: `captions=en-US`. |
@@ -57,7 +57,7 @@ A Player widget Adaptív átviteli sebesség használatával is továbbíthatja 
 
 A szerkesztői widgettel új projekteket hozhat létre, és kezelheti a videókban észlelt eredményeket. A szerkesztői widget a következő opcionális URL-paramétereket támogatja.
 
-|Név|Definíció|Leírás|
+|Name|Definíció|Leírás|
 |---|---|---|
 |`accessToken`<sup>*</sup> | Sztring | Hozzáférést biztosít azokhoz a videókhoz, amelyek csak a widget beágyazásához használt fiókban találhatók.<br> A szerkesztő widgethez a `accessToken` paraméter szükséges. |
 |`language` | Nyelvi kód | A lejátszó nyelvének szabályozása. Az alapértelmezett érték `en-US`.<br/>Példa: `language=de-DE`. |
@@ -70,7 +70,7 @@ A szerkesztői widgettel új projekteket hozhat létre, és kezelheti a videókb
 
 Ebből a szakaszból megtudhatja, hogyan ágyazhatja be a nyilvános és a magánjellegű tartalmakat az alkalmazásokba.
 
-A `location` paraméternek szerepelnie kell a beágyazott hivatkozásokban. lásd: a [régió nevének beolvasása](regions.md). Ha a fiókja előzetes verzióban érhető el, a `trial` értéket a hely értékére kell használni. `trial` a paraméter alapértelmezett értéke `location` . Például: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
+A `location` paraméternek szerepelnie kell a beágyazott hivatkozásokban. lásd: a [régió nevének beolvasása](regions.md). Ha a fiókja előzetes verzióban érhető el, a `trial` értéket a hely értékére kell használni. `trial` a paraméter alapértelmezett értéke `location` . Példa: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
 
 > [!IMPORTANT]
 > Ha megoszt egy hivatkozást a **lejátszóhoz** **vagy az** adatelérési eszközhöz, a hozzáférési jogkivonatot fogja tartalmazni, és megadja a csak olvasási jogosultságokat a fiókjához.
@@ -303,6 +303,10 @@ Tekintse meg a [Code Samples](https://github.com/Azure-Samples/media-services-vi
 | `embed-both-widgets`              | A VI-lejátszó és-információk beágyazása és a velük való kommunikáció.                      |
 | `url-generator`                   | Egyéni beágyazási URL-címeket hoz létre a felhasználó által megadott beállítások alapján.             |
 | `html5-player`                    | A VI-betekintést egy alapértelmezett HTML5-videolejátszó alá ágyazhatja.                           |
+
+## <a name="supported-browsers"></a>Támogatott böngészők
+
+További információ: [támogatott böngészők](video-indexer-overview.md#supported-browsers).
 
 ## <a name="next-steps"></a>További lépések
 

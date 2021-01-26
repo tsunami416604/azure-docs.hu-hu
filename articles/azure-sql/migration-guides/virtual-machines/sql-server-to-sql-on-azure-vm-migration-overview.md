@@ -3,19 +3,19 @@ title: Az Azure-beli virtuális gépen SQL Server SQL Server (áttelepítési á
 description: Ismerje meg a különböző áttelepítési stratégiákat, amikor át szeretné telepíteni a SQL Servert az Azure-beli virtuális gépeken való SQL Serverre.
 ms.custom: ''
 ms.service: virtual-machines-sql
-ms.subservice: ''
+ms.subservice: migration-guide
 ms.devlang: ''
 ms.topic: how-to
 author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: d08cb2761a8d8010c455ff959d6c247e8b64ef20
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 0eabb48aabcb50557b342385068807eb67a9b165
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746575"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797849"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>Áttelepítési Áttekintés: az Azure-beli virtuális gépeken SQL Server SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -38,7 +38,7 @@ Migrálás [SQL Serverre az Azure Virtual Machines (VM)](../../virtual-machines/
 Az [ingyenes biztonsági frissítések](../../virtual-machines/windows/sql-server-2008-extend-end-of-support.md)beszerzésével megtakaríthatja a saját licencét a [Azure Hybrid Benefit licencelési modellel](../../virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md) , vagy kiterjesztheti a SQL Server 2008 és SQL Server 2008 R2 támogatását. 
 
 
-## <a name="choosing-appropriate-target"></a>A megfelelő cél kiválasztása
+## <a name="choose-appropriate-target"></a>A megfelelő cél kiválasztása
 
 Az Azure Virtual Machines több különböző Azure-régióban is futtatható, és számos különféle [méretű](../../../virtual-machines/sizes.md) és [tárolási lehetőséget](../../../virtual-machines/disks-types.md)kínál. A SQL Server számítási feladathoz tartozó virtuális gépek és tárolók megfelelő méretének meghatározásakor tekintse meg az Azure-beli [SQL Server teljesítmény-irányelveit Virtual machines.](../../virtual-machines/windows/performance-guidelines-best-practices.md#vm-size-guidance) A virtuális gép méretének és tárolási követelményeinek meghatározása a számítási feladatokhoz. azt javasoljuk, hogy ezek a Performance-Based [Azure Migrate Assessment](../../../migrate/concepts-assessment-calculation.md#types-of-assessments)használatával legyenek méretezve. Ha ez nem érhető el, tekintse meg a következő cikket a saját alapkonfigurációjának létrehozásához a [teljesítményhez](https://azure.microsoft.com/services/virtual-machines/sql-server/).
 
@@ -65,7 +65,7 @@ Az alábbi táblázat a két áttelepítési stratégia különbségeit ismertet
 | **Migrálási stratégia** | **Leírás** | **A következő esetekben használja** |
 | --- | --- | --- |
 | **& eltolásának emelése** | A lift és a SHIFT áttelepítési stratégiával áthelyezheti a teljes fizikai vagy virtuális SQL Server a jelenlegi helyükről az Azure-beli virtuális GÉPEN lévő SQL Server egy példányára, az operációs rendszer vagy a SQL Server verziójának módosítása nélkül. A felvonó és a váltás áttelepítésének befejezéséhez lásd: [Azure Migrate](../../../migrate/migrate-services-overview.md). <br /><br /> A forráskiszolgáló online és szolgáltatási kéréseket is biztosít, miközben a forrás-és a célkiszolgáló szinkronizálja az adatokat, így szinte zökkenőmentesen áttelepíthetők. | Egyetlen és nagyon nagy léptékű Migrálás esetén is használható, akár olyan forgatókönyvekre is, mint például az adatközpont kilépése. <br /><br /> A felhasználók SQL-adatbázisaihoz vagy-alkalmazásaihoz minimálisan szükséges programkódok módosítása, ami lehetővé teszi a gyorsabb teljes áttelepítést. <br /><br />Nincs szükség további lépésekre az üzleti intelligencia szolgáltatások, például a  [SSIS](/sql/integration-services/sql-server-integration-services), az [SSRS](/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports)és a [SSAS](/analysis-services/analysis-services-overview)áttelepítéséhez. |
-|**Migrate (Áttelepítés)** | Ha a cél SQL Server és/vagy az operációs rendszer verzióját szeretné frissíteni, használja az áttelepítési stratégiát. <br /> <br /> Válasszon ki egy Azure-beli virtuális gépet az Azure Marketplace-ről, vagy egy előkészített SQL Server rendszerképet, amely megfelel a forrás SQL Server verziójának. | Akkor használja, ha a SQL Server újabb verzióiban elérhető funkciókra van szükség, vagy ha a régebbi SQL Server és/vagy operációsrendszer-verziók frissítésére van szükség, amelyek már nem támogatottak.  <br /> <br /> Előfordulhat, hogy a SQL Server frissítésének támogatásához bizonyos alkalmazás-vagy felhasználói adatbázis-módosítások szükségesek. <br /><br />Az [üzleti intelligencia](#business-intelligence) szolgáltatásainak áttelepítésére további szempontokat is figyelembe kell venni, ha az áttelepítés hatálya alá esik. |
+|**Migrate** | Ha a cél SQL Server és/vagy az operációs rendszer verzióját szeretné frissíteni, használja az áttelepítési stratégiát. <br /> <br /> Válasszon ki egy Azure-beli virtuális gépet az Azure Marketplace-ről, vagy egy előkészített SQL Server rendszerképet, amely megfelel a forrás SQL Server verziójának. | Akkor használja, ha a SQL Server újabb verzióiban elérhető funkciókra van szükség, vagy ha a régebbi SQL Server és/vagy operációsrendszer-verziók frissítésére van szükség, amelyek már nem támogatottak.  <br /> <br /> Előfordulhat, hogy a SQL Server frissítésének támogatásához bizonyos alkalmazás-vagy felhasználói adatbázis-módosítások szükségesek. <br /><br />Az [üzleti intelligencia](#business-intelligence) szolgáltatásainak áttelepítésére további szempontokat is figyelembe kell venni, ha az áttelepítés hatálya alá esik. |
 
 
 ## <a name="lift-and-shift"></a>Átemelés  
@@ -73,11 +73,11 @@ Az alábbi táblázat a két áttelepítési stratégia különbségeit ismertet
 Az alábbi táblázat ismerteti a **lift és a SHIFT** áttelepítési stratégiájának elérhető módszereit, hogy áttelepítse a SQL Server-adatbázist az Azure-beli virtuális gépeken SQL Serverba:
 <br />
 
-|**Módszer** | **A forrás minimális verziója** | **Cél minimális verziója** | **Forrás biztonsági mentési méretének korlátja** |  **Megjegyzések** |
+|**Metódus** | **A forrás minimális verziója** | **Cél minimális verziója** | **Forrás biztonsági mentési méretének korlátja** |  **Megjegyzések** |
 | --- | --- | --- | --- | --- |
 | [Azure Migrate](../../../migrate/index.yml) | SQL Server 2008 SP4| SQL Server 2008 SP4| [Azure VM-tároló korlátja](../../../index.yml) |  Meglévő SQL Server áthelyezhető egy Azure-beli virtuális gépen lévő SQL Server-példányra. Akár 35 000 virtuális gépre is méretezheti az áttelepítési feladatokat. <br /><br /> A forrás-kiszolgáló (k) a kiszolgáló adatainak szinkronizálása során online és karbantartási kérelmeket is megtarthat, minimalizálva az állásidőt. <br /><br /> **Automation & parancsfájlkezelés**: [Azure site Recovery szkriptek](../../../migrate/how-to-migrate-at-scale.md) és [példa az Azure-ra méretezett áttelepítésre és tervezésre](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)|
 
-## <a name="migrate"></a>Migrate (Áttelepítés)  
+## <a name="migrate"></a>Migrate  
 
 A könnyű telepítés miatt a javasolt áttelepítési módszer a natív SQL Server [biztonsági mentés helyi mentése](/sql/t-sql/statements/backup-transact-sql) , majd a fájl másolása az Azure-ba. Ez a módszer támogatja a nagyobb adatbázisok (>1 TB) használatát a SQL Server összes verziójához, amely a 2008-es és nagyobb adatbázis-biztonsági mentéstől (>1 TB). Azonban a SQL Server 2014-től kezdődő, 1 TB-nál kisebb, és az Azure-hoz való jó kapcsolattal rendelkező adatbázisok esetében a jobb megközelítés [SQL Server biztonsági mentés az URL-címre](/sql/relational-databases/backup-restore/sql-server-backup-to-url) . 
 
@@ -86,7 +86,7 @@ Ha SQL Server-adatbázisokat az Azure virtuális gépeken SQL Server egy példá
 Az alábbi táblázat az SQL Server-adatbázis Azure-beli virtuális gépeken való SQL Serverre történő áttelepítésének összes lehetséges módszerét részletezi:
 <br />
 
-|**Módszer** | **A forrás minimális verziója** | **Cél minimális verziója** | **Forrás biztonsági mentési méretének korlátja** | **Megjegyzések** |
+|**Metódus** | **A forrás minimális verziója** | **Cél minimális verziója** | **Forrás biztonsági mentési méretének korlátja** | **Megjegyzések** |
 | --- | --- | --- | --- | --- |
 | **[Biztonsági mentés fájlba](sql-server-to-sql-on-azure-vm-individual-databases-guide.md#migrate)** | SQL Server 2008 SP4 | SQL Server 2008 SP4| [Azure VM-tároló korlátja](../../../index.yml) |  Ez egy egyszerű és jól tesztelt módszer az adatbázisok számítógépek közötti áthelyezéséhez. Használjon tömörítést a biztonsági másolatok méretének minimalizálásához az átvitelhez. <br /><br /> **Automation & parancsfájlkezelés**: [Transact-SQL (T-SQL)](/sql/t-sql/statements/backup-transact-sql) és [AzCopy a blob Storage-hoz](../../../storage/common/storage-use-azcopy-v10.md)  |
 | **[Biztonsági mentés az URL-címre](/sql/relational-databases/backup-restore/sql-server-backup-to-url)** | SQL Server 2012 SP1 CU2 | SQL Server 2012 SP1 CU2| 12,8 TB SQL Server 2016, ellenkező esetben 1 TB | A biztonságimásolat-fájlnak a virtuális gépre való áthelyezésének másik módja az Azure Storage használatával. Használjon tömörítést a biztonsági másolatok méretének minimalizálásához az átvitelhez. <br /><br /> **Automation & parancsfájlkezelés**:  [T-SQL vagy karbantartási terv](/sql/relational-databases/backup-restore/sql-server-backup-to-url) |
@@ -149,7 +149,7 @@ Az SQL Server-adatbázisok Azure-beli virtuális gépeken SQL Server való átte
 - A Microsoft és a harmadik féltől származó szolgáltatások és eszközök egy olyan mátrixa, amely a különböző adatbázis-és adatáttelepítési forgatókönyvek, valamint a speciális feladatok elvégzéséhez nyújt segítséget, tekintse meg a cikk [szolgáltatás és eszközök az adatok áttelepítéséhez](../../../dms/dms-tools-matrix.md) című témakört.
 
 - További információ az Azure SQL-ről:
-   - [Üzembe helyezési beállítások](../../azure-sql-iaas-vs-paas-what-is-overview.md)
+   - [Üzembe helyezési lehetőségek](../../azure-sql-iaas-vs-paas-what-is-overview.md)
    - [Azure-beli virtuális gépeken futó SQL Server](../../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
    - [Az Azure teljes tulajdonlási költsége kalkulátor](https://azure.microsoft.com/pricing/tco/calculator/) 
 

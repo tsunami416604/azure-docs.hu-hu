@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2502fdd14acae206b8440fe602639aa49be55f4e
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: eba3958ae5dd307b80b04371d3659a129d5acf89
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045920"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797869"
 ---
 # <a name="write-client-app-authentication-code"></a>Ügyfél-alkalmazás hitelesítési kódjának írása
 
 Miután [beállított egy Azure digitális Twins-példányt és-hitelesítést](how-to-set-up-instance-portal.md), létrehozhat egy ügyfélalkalmazás, amelyet a példánnyal való interakcióhoz használni fog. Miután beállította az alapszintű ügyfél-projektet, meg kell adnia egy **kódot az ügyfél-alkalmazásban** az Azure Digital Twins-példányon való hitelesítéshez.
 
-Az Azure Digital Twins az [Azure ad biztonsági jogkivonatok használatával végzi a hitelesítést az OAUTH 2,0 alapján](../active-directory/develop/security-tokens.md#json-web-tokens-jwts-and-claims). Az SDK hitelesítéséhez be kell szereznie egy tulajdonosi jogkivonatot a megfelelő engedélyekkel az Azure digitális Twins-hoz, és át kell adnia az API-hívásokkal együtt. 
+Az Azure Digital Twins az [Azure ad biztonsági jogkivonatok használatával végzi a hitelesítést az OAUTH 2,0 alapján](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims). Az SDK hitelesítéséhez be kell szereznie egy tulajdonosi jogkivonatot a megfelelő engedélyekkel az Azure digitális Twins-hoz, és át kell adnia az API-hívásokkal együtt. 
 
 Ez a cikk bemutatja, hogyan szerezhet be hitelesítő adatokat az `Azure.Identity` ügyféloldali kódtár használatával. Ez a cikk a C#-ban található példákat mutatja be, például a [.net (c#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)-hoz írt változatot, `Azure.Identity` függetlenül attól, hogy milyen SDK-t használ (az Azure Digital Twins-hoz elérhető SDK-kkal kapcsolatos további információkért lásd [*: útmutató: az Azure digitális Twins API-k és SDK-k használata*](how-to-use-apis-sdks.md)).
 

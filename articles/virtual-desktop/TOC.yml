@@ -120,6 +120,10 @@
       href: azure-monitor.md
     - name: Vészhelyreállítási terv beállítása
       href: disaster-recovery.md
+    - name: A KDC-proxy beállítása
+      href: key-distribution-center-proxy.md
+    - name: A RD-átjáró szerepkör beállítása
+      href: rd-gateway-role.md
 - name: Alapelvek
   items:
     - name: Beépített szerepkörök
@@ -170,6 +174,10 @@
       href: azure-monitor-glossary.md
     - name: Adatok helye
       href: data-locations.md
+    - name: Biztonság
+      items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
 - name: Hibaelhárítás
   items:
     - name: 'Hibaelhárítási áttekintés, visszajelzés és támogatás'

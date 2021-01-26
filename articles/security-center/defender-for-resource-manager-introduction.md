@@ -7,12 +7,12 @@ ms.date: 12/07/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 5594e8225b615bf6e1af5077bd68422edbbeec19
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 9591dae058a19cea73d88513b7c4ff4ab8f88045
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905451"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797749"
 ---
 # <a name="introduction-to-azure-defender-for-resource-manager"></a>A Resource Managerhez készült Azure Defender bemutatása
 
@@ -68,11 +68,11 @@ Az Azure Defender for Resource Manager biztonsági értesítéseinek vizsgálata
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a cikkből megtudhatta, hogyan használható az Azure Defender a Resource Managerhez. Kapcsolódó anyagok esetében tekintse meg a következő cikket: 
 
 - Előfordulhat, hogy a biztonsági riasztásokat a Security Center vagy a különböző biztonsági termékekből Security Center fogadja. Ha az összes riasztást az Azure Sentinelbe, harmadik féltől származó SIEM-re vagy más külső eszközre kívánja exportálni, kövesse a [riasztások a Siem](continuous-export.md)-ben való exportálásának utasításait.
 
 - > [!div class="nextstepaction"]
-    > [Az Azure Defender engedélyezése](security-center-pricing.md)
+    > [Az Azure Defender engedélyezése](security-center-pricing.md#enable-azure-defender)
