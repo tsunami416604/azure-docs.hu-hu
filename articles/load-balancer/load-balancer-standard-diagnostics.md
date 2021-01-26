@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 386e0051a64f73b18c1ff76ed33af5f9eebe8aa0
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 90443a898ffdebf33a0c967719ba25a2ccc6f9a7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121413"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792099"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Metrikák, riasztások és az erőforrások állapotának diagnosztikái a standard Load Balancerben
 
@@ -239,8 +239,8 @@ A standard Load Balancer erőforrások állapotának állapota a meglévő **er�
 | Erőforrás állapotának állapota | Leírás |
 | --- | --- |
 | Elérhető | A standard Load Balancer erőforrása kifogástalan és elérhető. |
-| Csökkentett teljesítményű | A standard Load Balancer platform vagy felhasználó által kezdeményezett események hatással vannak a teljesítményre. Az adatelérési út rendelkezésre állására vonatkozó metrika 90%-osnál rosszabb, de 25%-osnál jobb állapotot jelentett legalább két percig. A teljesítmény mérsékelten befolyásolhatja a teljesítményt. [Kövesse a hibaelhárítási RHC útmutatót](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) , és állapítsa meg, hogy vannak-e olyan felhasználó által kezdeményezett események, amelyek hatással vannak a rendelkezésre állásra.
-| Nem érhető el | A standard Load Balancer erőforrás nem kifogástalan állapotú. A DataPath rendelkezésre állási metrikája kevesebb, mint 25%-os állapotot jelentett legalább két percen belül. Jelentős teljesítménybeli hatást vagy a bejövő kapcsolatok elérhetőségének hiányát tapasztalhatja. Előfordulhat, hogy a felhasználó vagy a platform eseményei nem állnak rendelkezésre. [Kövesse a hibaelhárítási RHC útmutatót](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) , és állapítsa meg, hogy vannak-e olyan felhasználó által kezdeményezett események, amelyek befolyásolják a rendelkezésre állást. |
+| Csökkentett teljesítményű | A standard Load Balancer platform vagy felhasználó által kezdeményezett események hatással vannak a teljesítményre. Az adatelérési út rendelkezésre állására vonatkozó metrika 90%-osnál rosszabb, de 25%-osnál jobb állapotot jelentett legalább két percig. A teljesítmény mérsékelten befolyásolhatja a teljesítményt. [Kövesse a hibaelhárítási RHC útmutatót](./troubleshoot-rhc.md) , és állapítsa meg, hogy vannak-e olyan felhasználó által kezdeményezett események, amelyek hatással vannak a rendelkezésre állásra.
+| Nem érhető el | A standard Load Balancer erőforrás nem kifogástalan állapotú. A DataPath rendelkezésre állási metrikája kevesebb, mint 25%-os állapotot jelentett legalább két percen belül. Jelentős teljesítménybeli hatást vagy a bejövő kapcsolatok elérhetőségének hiányát tapasztalhatja. Előfordulhat, hogy a felhasználó vagy a platform eseményei nem állnak rendelkezésre. [Kövesse a hibaelhárítási RHC útmutatót](./troubleshoot-rhc.md) , és állapítsa meg, hogy vannak-e olyan felhasználó által kezdeményezett események, amelyek befolyásolják a rendelkezésre állást. |
 | Ismeretlen | A standard Load Balancer erőforrás erőforrás-állapotának állapota még nem frissült, vagy nem kapott adatelérési utat az elmúlt 10 percben. Ennek az állapotnak átmenetinek kell lennie, és a megfelelő állapot fog megjelenni, amint az adatok beérkeznek. |
 
 A nyilvános standard Load Balancer erőforrások állapotának megtekintése:
@@ -265,7 +265,7 @@ A nyilvános standard Load Balancer erőforrások állapotának megtekintése:
 Az általános erőforrás állapotának leírása a [RHC dokumentációjában](../service-health/resource-health-overview.md)érhető el. A Azure Load Balancer meghatározott állapotait az alábbi táblázat tartalmazza: 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [standard Load Balancerról](./load-balancer-overview.md).
 - További információ a [terheléselosztó kimenő kapcsolatáról](./load-balancer-outbound-connections.md).

@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 43eae43d11a48ee6c395e4a86b8e8c1353843991
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 7173efd3dab0e8d2fd3c948a3a9bac07641e78f3
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131448"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792082"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>Űrlap-felismerő előre összeépített bevételezési modellje
 
-Az Azure-űrlap felismerője az előre elkészített beérkezési modell használatával elemezheti és kinyerheti az értékesítési nyugták adatait. A nagy teljesítményű [optikai karakterfelismerési (OCR)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) képességeket kombinálja a részletes tanulási modellek bevezetésével, hogy kinyerje a legfontosabb információkat a nyugták angol nyelven. A beérkezési API Kinyeri a legfontosabb információkat az értékesítési visszaigazolásokból az angol nyelven, például a kereskedelmi név, a tranzakció dátuma, a tranzakciók összege, a sorok és egyebek. 
+Az Azure-űrlap felismerője az előre elkészített beérkezési modell használatával elemezheti és kinyerheti az értékesítési nyugták adatait. A nagy teljesítményű [optikai karakterfelismerési (OCR)](../computer-vision/concept-recognizing-text.md) képességeket kombinálja a részletes tanulási modellek bevezetésével, hogy kinyerje a legfontosabb információkat a nyugták angol nyelven. A beérkezési API Kinyeri a legfontosabb információkat az értékesítési visszaigazolásokból az angol nyelven, például a kereskedelmi név, a tranzakció dátuma, a tranzakciók összege, a sorok és egyebek. 
 
 ## <a name="understanding-receipts"></a>A visszaigazolások ismertetése 
 
@@ -64,7 +64,7 @@ A beérkezési API a következő információkat is megadja:
 * OCR nyers szöveg (OCR – kinyert szöveges kimenet a teljes bevételezéshez)
 * Az egyes értékek, sorok és szavak határoló mezője
 
-## <a name="try-it-out"></a>Próba
+## <a name="try-it-out"></a>Próbálja ki
 
 Az űrlap-felismerő beérkezési szolgáltatás kipróbálásához nyissa meg az online minta felhasználói felület eszközét:
 
@@ -465,11 +465,11 @@ A nyugták hasznos információkat tartalmaznak, amelyek segítségével elemezh
 
 A beérkezési API a [mesterséges intelligencia-készítő bevételezés feldolgozási funkcióját](/ai-builder/prebuilt-receipt-processing)is felhasználja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Egy [űrlap-felismerő](quickstarts/client-library.md) gyors üzembe helyezésével megkezdheti a nyugták feldolgozására szolgáló alkalmazás megírását a választott nyelven.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Mi a Form Recognizer?](./overview.md)
 * [REST API dokumentációs dokumentumok](./index.yml)
