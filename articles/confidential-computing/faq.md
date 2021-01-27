@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: 9df3d9771029e6d72e9d0092a129cddc27be6cd7
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 38bf12b46002e767bba50cf833637e2c8ace078f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564106"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872332"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Gyakran ismételt kérdések az Azure bizalmas számítástechnikai szolgáltatásáról
 
@@ -37,13 +37,21 @@ Nem. A virtuális gépek csak az Ubuntu Server 18,04, az Ubuntu Server 16,04, a 
 **A DCsv2 virtuális gépek szürkén jelennek meg a portálon, és nem tudok kiválasztani egyet**
 
 A virtuális gép melletti információs buborék alapján különböző műveletek szükségesek:
-   -    **UnsupportedGeneration** : módosítsa a virtuális gép rendszerképének generációját "Gen2" értékre.
-   -    **NotAvailableForSubscription** : a régió még nem érhető el az előfizetéséhez. Válasszon a rendelkezésre álló régiók közül.
-   -    **InsufficientQuota** : [hozzon létre egy támogatási kérést a kvóta növeléséhez](../azure-portal/supportability/per-vm-quota-requests.md). Az ingyenes próbaverziós előfizetések esetében nincs kvóta a bizalmas számítástechnikai virtuális gépekhez. 
+   -    **UnsupportedGeneration**: módosítsa a virtuális gép rendszerképének generációját "Gen2" értékre.
+   -    **NotAvailableForSubscription**: a régió még nem érhető el az előfizetéséhez. Válasszon a rendelkezésre álló régiók közül.
+   -    **InsufficientQuota**: [hozzon létre egy támogatási kérést a kvóta növeléséhez](../azure-portal/supportability/per-vm-quota-requests.md). Az ingyenes próbaverziós előfizetések esetében nincs kvóta a bizalmas számítástechnikai virtuális gépekhez. 
 
 **A DCsv2 virtuális gépek nem jelennek meg, amikor megpróbálok megkeresni őket a portál méretének választójában**
 
 Győződjön meg arról, hogy egy [elérhető régiót](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)jelölt ki. Győződjön meg arról is, hogy a méret választóban az "összes szűrő törlése" lehetőséget választotta. 
+
+**Engedélyezhető a gyorsított hálózatkezelés az Azure bizalmas számítástechnikai szolgáltatással?**
+
+ Nem. A gyorsított hálózatkezelés DC-Series vagy DCsv2-Series virtuális gépeken nem támogatott. A gyorsított hálózatkezelés nem engedélyezhető az olyan bizalmas számítástechnikai eszközök üzembe helyezése vagy az Azure Kubernetes Service-fürt üzembe helyezése esetén, amelyek bizalmas számítástechnikai környezetben futnak.
+
+**Használhatom az Azure dedikált gazdagépet ezekkel a gépekkel?**
+
+Igen. Az Azure dedikált gazdagép támogatja a DCsv2-sorozatú virtuális gépeket. Az Azure dedikált gazdagép egyetlen bérlős fizikai kiszolgálót biztosít a virtuális gépek futtatásához. A felhasználók általában az Azure dedikált gazdagép használatával kezelik a megfelelőségi követelményeket a fizikai biztonság, az adatok integritása és a figyelés terén. 
 
 **Hiba történt a Azure Resource Manager sablon üzembe helyezési hibája miatt: "a művelet nem hajtható végre, mert a jóváhagyott szabványos DcsV2-család magok kvótája meghaladja a műveletet"**
 

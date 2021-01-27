@@ -7,18 +7,18 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: cynthn
-ms.openlocfilehash: dc3920ac1e2269f4980ee67e2f5f82a0541ac0c2
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: fd3ace98582a414a82ed4d1007a6c7df4b36d211
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201501"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98873095"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Általános VHD feltöltése, majd azzal új Azure-beli virtuális gép létrehozása
 
 Ez a cikk végigvezeti a PowerShell használatával egy általánosított virtuális gép Azure-ba való feltöltéséhez, egy rendszerkép létrehozásához a VHD-ből, és létrehoz egy új virtuális gépet a rendszerképből. Egy helyszíni virtualizációs eszközről vagy egy másik felhőből exportált virtuális merevlemezt is feltölthet. A [Managed Disks](../managed-disks-overview.md) használata az új virtuális géphez leegyszerűsíti a virtuális gépek felügyeletét, és jobb rendelkezésre állást biztosít, ha a virtuális gép egy rendelkezésre állási csoportba kerül. 
 
-A minta parancsfájlt a [virtuális merevlemezek Azure-ba való feltöltéséhez és egy új virtuális gép létrehozásához](../scripts/virtual-machines-windows-powershell-upload-generalized-script.md)című témakörben tekintheti meg.
+A minta parancsfájlt a [virtuális merevlemezek Azure-ba való feltöltéséhez és egy új virtuális gép létrehozásához](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)című témakörben tekintheti meg.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -43,7 +43,7 @@ Győződjön meg arról, hogy a Sysprep támogatja a számítógépen futó kisz
 1. Módosítsa a könyvtárat a%WINDIR%\system32\sysprep értékre, majd futtassa a parancsot `sysprep.exe` .
 1. A **rendszer-előkészítő eszköz** párbeszédpanelen jelölje be a rendszerindítási folyamat **megadása (OOBE)** jelölőnégyzetet, és győződjön meg arról, hogy az **általánosítás** jelölőnégyzet be van jelölve.
 1. A **leállítási beállításoknál** válassza a **Leállítás** lehetőséget.
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
    
     ![A Sysprep elindítása](./media/upload-generalized-managed/sysprepgeneral.png)
 1. A Sysprep befejezésekor a rendszer leállítja a virtuális gépet. Ne indítsa újra a virtuális gépet.
@@ -112,6 +112,6 @@ New-AzVm `
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Jelentkezzen be az új virtuális gépre. További információ: [Kapcsolódás és bejelentkezés egy Windows rendszerű Azure-beli virtuális gépre](connect-logon.md).

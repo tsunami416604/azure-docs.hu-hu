@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: fe0280e302882fd5e50830950b531ea9ca169618
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 465d877da48e0d7027dbba6615302af32c6bb154
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660542"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872400"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>VNet-VNet VPN Gateway-kapcsolat konfigurálása a Azure Portal használatával
 
@@ -44,7 +44,7 @@ VNet-VNet-kapcsolatok létrehozásakor a rendszer automatikusan létrehozza és 
 
 ### <a name="site-to-site-ipsec"></a>Helyek közötti kapcsolat (IPsec)
 
-Ha bonyolult hálózati konfigurációval dolgozik, érdemes inkább [helyek közötti kapcsolattal](vpn-gateway-howto-site-to-site-resource-manager-portal.md) csatlakoztatni a virtuális hálózatok. A helyek közötti IPsec-lépések követése után manuálisan hozza létre és konfigurálja a helyi hálózati átjárókat. Az egyes virtuális hálózatok helyi hálózati átjárója helyi helyként kezeli a többi virtuális hálózatot. Ezek a lépések lehetővé teszik további címtartomány megadását a helyi hálózati átjáró számára a forgalom irányításához. Ha a VNet megváltozik, manuálisan kell frissítenie a megfelelő helyi hálózati átjárót.
+Ha bonyolult hálózati konfigurációval dolgozik, érdemes inkább [helyek közötti kapcsolattal](./tutorial-site-to-site-portal.md) csatlakoztatni a virtuális hálózatok. A helyek közötti IPsec-lépések követése után manuálisan hozza létre és konfigurálja a helyi hálózati átjárókat. Az egyes virtuális hálózatok helyi hálózati átjárója helyi helyként kezeli a többi virtuális hálózatot. Ezek a lépések lehetővé teszik további címtartomány megadását a helyi hálózati átjáró számára a forgalom irányításához. Ha a VNet megváltozik, manuálisan kell frissítenie a megfelelő helyi hálózati átjárót.
 
 ### <a name="vnet-peering"></a>Virtuális hálózatok közötti társviszony
 
@@ -76,7 +76,7 @@ Ez a cikk bemutatja, hogyan csatlakoztathatja a virtuális hálózatok a VNet �
 * **Virtuális hálózati beállítások**
   * **Név**: VNet1
   * **Címterület**: 10.1.0.0/16
-  * **Előfizetés**: válassza ki a használni kívánt előfizetést.
+  * **Előfizetés**: Válassza ki a használni kívánt előfizetést.
   * **Erőforráscsoport**: TestRG1
   * Hely: USA keleti **régiója**
   * **Alhálózat**
@@ -104,7 +104,7 @@ Ez a cikk bemutatja, hogyan csatlakoztathatja a virtuális hálózatok a VNet �
 * **Virtuális hálózati beállítások**
   * **Név**: vnet4 felé
   * **Címterület**: 10.41.0.0/16
-  * **Előfizetés**: válassza ki a használni kívánt előfizetést.
+  * **Előfizetés**: Válassza ki a használni kívánt előfizetést.
   * **Erőforráscsoport**: TestRG4
   * Hely: USA nyugati **régiója**
   * **Alhálózat**
@@ -200,7 +200,7 @@ Ezután hozzon létre egy, a Vnet4 felé és a VNet1 közötti kapcsolatokat. Ke
 
 ## <a name="add-additional-connections"></a>További kapcsolatok hozzáadása
 
-Ha további kapcsolatokat szeretne hozzáadni, keresse meg azt a virtuális hálózati átjárót, amelyről létre kívánja hozni a kapcsolatot, majd válassza a **kapcsolatok** lehetőséget. Létrehozhat egy másik virtuális hálózatok közötti kapcsolatot, vagy létrehozhat IPsec helyek közötti kapcsolatot egy helyszíni helyhez. Módosítsa a **Kapcsolat típusát**, hogy az megfeleljen a létrehozni kívánt kapcsolattípusnak. További kapcsolatok létrehozása előtt ellenőrizze, hogy a virtuális hálózat címterület nem fedi-e át a csatlakozáshoz használni kívánt címtartományt. A helyek közötti kapcsolat létrehozásának lépéseiért lásd: [Helyek közötti kapcsolat létrehozása](vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+Ha további kapcsolatokat szeretne hozzáadni, keresse meg azt a virtuális hálózati átjárót, amelyről létre kívánja hozni a kapcsolatot, majd válassza a **kapcsolatok** lehetőséget. Létrehozhat egy másik virtuális hálózatok közötti kapcsolatot, vagy létrehozhat IPsec helyek közötti kapcsolatot egy helyszíni helyhez. Módosítsa a **Kapcsolat típusát**, hogy az megfeleljen a létrehozni kívánt kapcsolattípusnak. További kapcsolatok létrehozása előtt ellenőrizze, hogy a virtuális hálózat címterület nem fedi-e át a csatlakozáshoz használni kívánt címtartományt. A helyek közötti kapcsolat létrehozásának lépéseiért lásd: [Helyek közötti kapcsolat létrehozása](./tutorial-site-to-site-portal.md).
 
 ## <a name="vnet-to-vnet-faq"></a>Virtuális hálózatok közötti kapcsolat – gyakori kérdések
 
@@ -208,7 +208,7 @@ A virtuális hálózatok közötti kapcsolatokról további információt a gyak
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a virtuális hálózatban lévő erőforrásokra irányuló hálózati forgalom korlátozásáról: [hálózati biztonság](../virtual-network/network-security-groups-overview.md).
 

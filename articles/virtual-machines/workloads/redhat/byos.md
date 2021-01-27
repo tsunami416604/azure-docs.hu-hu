@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 9a53eb1004d68045781903b71d02c3416f494be2
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 7006096154d8958e13e7a86783bd07067b95d293
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803816"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872892"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux saját előfizetéssel rendelkező Gold-lemezképek az Azure-ban
 
@@ -194,7 +194,7 @@ A Azure Disk Encryption alkalmazására vonatkozó lépésekért lásd: [Azure D
 
     Ebben az esetben forduljon a Microsoft vagy a Red Hat szolgáltatáshoz, és engedélyezze az előfizetését.
 
-- Ha módosít egy pillanatképet egy RHEL BYOS-rendszerképből, és megkísérli közzétenni ezt az egyéni rendszerképet a [megosztott rendszerkép](../../linux/shared-image-galleries.md)-katalógusban, meg kell adnia a pillanatkép eredeti forrásának megfelelő tervezési információkat. A parancs például a következőképpen nézhet ki:
+- Ha módosít egy pillanatképet egy RHEL BYOS-rendszerképből, és megkísérli közzétenni ezt az egyéni rendszerképet a [megosztott rendszerkép](../../shared-image-galleries.md)-katalógusban, meg kell adnia a pillanatkép eredeti forrásának megfelelő tervezési információkat. A parancs például a következőképpen nézhet ki:
 
     ```azurecli
     az vm create –image \

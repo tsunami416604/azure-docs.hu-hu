@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0a0f17df13b5b101aebf585b7f1f3fb2a5b48006
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 992115a65ec015ca04990135975e0d4020764184
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746053"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98873773"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -48,7 +48,7 @@ Ha konkrét kérdései vannak, egy adott dokumentumra vagy folyamatra fogunk rá
 - Támogatott-e a harmadik féltől származó keret, HA a Windows és a pacemaker is működik? Tekintse meg az [SAP-támogatási Megjegyzés](https://launchpad.support.sap.com/#/notes/1928533) alsó részét #1928533
 - Mi a legjobb megoldás az Azure Storage számára a forgatókönyvhöz? [Az Azure Storage-típusok](./planning-guide-storage.md) beolvasása SAP számítási feladatokhoz
 - Az SAP támogatja az Oracle Enterprise Linux Red Hat kernelét? SAP [SAP-támogatási Megjegyzés](https://launchpad.support.sap.com/#/notes/1565179) olvasása #1565179
-- Miért nem tanúsítottak SAP HANA az Azure [da (s) v4](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series) / [EA (k) VM-](https://docs.microsoft.com/azure/virtual-machines/eav4-easv4-series) családoknak? Az Azure Das/EAS virtuálisgép-családok az AMD processzorral vezérelt hardveren alapulnak. A SAP HANA nem támogatja az AMD processzorokat, még virtualizált helyzetekben sem
+- Miért nem tanúsítottak SAP HANA az Azure [da (s) v4](../../dav4-dasv4-series.md) / [EA (k) VM-](../../eav4-easv4-series.md) családoknak? Az Azure Das/EAS virtuálisgép-családok az AMD processzorral vezérelt hardveren alapulnak. A SAP HANA nem támogatja az AMD processzorokat, még virtualizált helyzetekben sem
 - Miért vagyok a következő üzenet: "a RDTSCP utasításhoz tartozó CPU-jelzők vagy constant_tsc vagy nonstop_tsc CPU-jelzői nincsenek beállítva, vagy current_clocksource, és a available_clocksource nem megfelelően vannak konfigurálva" a SAP HANA, annak ellenére, hogy a legújabb Linux-kerneleket futtatom. A válaszhoz tekintse meg az [SAP-támogatási megjegyzés #2791572](https://launchpad.support.sap.com/#/notes/2791572)
 - Hol találhatok architektúrát az SAP Fiori Azure-beli üzembe helyezéséhez? Tekintse meg az [Azure-beli blogot: Application Gateway webalkalmazási tűzfal (WAF) v2 telepítője az internetre irányuló SAP Fiori-alkalmazásokhoz](https://blogs.sap.com/2020/12/03/sap-on-azure-application-gateway-web-application-firewall-waf-v2-setup-for-internet-facing-sap-fiori-apps/) 
 
@@ -84,14 +84,14 @@ Ebben a szakaszban olyan dokumentumokat talál, amelyek a Microsoft Power BI az 
 
 ## <a name="change-log"></a>Módosítási napló
 
-- 01/23/2021: a HANA adatmennyiség-particionálás funkciójának bevezetésével a HANA-adatfájlok különböző Azure-lemezeken vagy NFS-megosztásokon keresztüli, az Azure-beli [virtuális gépek tárolási konfigurációi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) és az [NFS-v 4.1-es Azure NetApp Files köteteken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp) található cikkek SAP HANAához SAP HANA tartozó I/O-műveletekhez használhatók.
-- 01/18/2021: az Azure net apps Files-alapú NFS az Azure-ban való támogatása az Oracle-ben [Virtual Machines Oracle adatbázis-kezelő üzembe helyezése SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_oracle) - [munkaSAP HANA Azure NetApp Files](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp) terheléshez
+- 01/23/2021: a HANA adatmennyiség-particionálás funkciójának bevezetésével a HANA-adatfájlok különböző Azure-lemezeken vagy NFS-megosztásokon keresztüli, az Azure-beli [virtuális gépek tárolási konfigurációi](./hana-vm-operations-storage.md) és az [NFS-v 4.1-es Azure NetApp Files köteteken](./hana-vm-operations-netapp.md) található cikkek SAP HANAához SAP HANA tartozó I/O-műveletekhez használhatók.
+- 01/18/2021: az Azure net apps Files-alapú NFS az Azure-ban való támogatása az Oracle-ben [Virtual Machines Oracle adatbázis-kezelő üzembe helyezése SAP](./dbms_guide_oracle.md) - [munkaSAP HANA Azure NetApp Files](./hana-vm-operations-netapp.md) terheléshez
 - 01/11/2021: kisebb változások a [Ha for SAP NW Azure-beli virtuális gépeken a RHEL for SAP Applications](./high-availability-guide-rhel.md)esetében, [Ha az SAP NW Azure-beli virtuális gépeken](./high-availability-guide-rhel-netapp-files.md) , a ANF-on és a RHEL-on futó Azure [-](./high-availability-guide-rhel-multi-sid.md) beli virtuális gépeken, valamint a RHEL8 és a RHEL7, valamint a ENSA1 és a ENSA2 való működéshez szükséges parancsok módosításához
 - 01/05/2021: az Azure-beli [virtuális gépek készenléti csomópontján SAP HANA ANF a SLES](./sap-hana-scale-out-standby-netapp-files-suse.md) -on keresztül, és az [Azure-beli virtuális gépek készenléti csomópontjának használatával kibővítheti az ANF-t a RHEL-on, SAP HANA és áttekintheti](./sap-hana-scale-out-standby-netapp-files-rhel.md)az ajánlott konfigurációt, hogy az SAP-gazdagép ügynöke felügyelje a helyi porttartomány  
-- 01/04/2021: adja hozzá a HLI által támogatott új Azure-régiókat a [SAP HANA Azure-ban (nagyméretű példányok)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
-- 12/29/2020: architektúrával kapcsolatos javaslatok hozzáadása adott Azure-régiókhoz az [SAP munkaterhelés-konfigurációkban Azure Availability Zones](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones)
+- 01/04/2021: adja hozzá a HLI által támogatott új Azure-régiókat a [SAP HANA Azure-ban (nagyméretű példányok)](./hana-overview-architecture.md)
+- 12/29/2020: architektúrával kapcsolatos javaslatok hozzáadása adott Azure-régiókhoz az [SAP munkaterhelés-konfigurációkban Azure Availability Zones](./sap-ha-availability-zones.md)
 - 12/21/2020: új minősítések hozzáadása az [elérhető SKU-HLI](./hana-available-skus.md) található HANA nagyméretű példányok SKU-hoz
-- 12/12/2020: a mutató hozzáadva az SAP-megjegyzéshez, amely részletesen ismerteti az SAP által támogatott Oracle Enterprise Linux-támogatást az Azure-beli [üzembe helyezések által támogatott SAP-szoftverekhez](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#oracle-dbms-support)
+- 12/12/2020: a mutató hozzáadva az SAP-megjegyzéshez, amely részletesen ismerteti az SAP által támogatott Oracle Enterprise Linux-támogatást az Azure-beli [üzembe helyezések által támogatott SAP-szoftverekhez](./sap-supported-product-on-azure.md#oracle-dbms-support)
 - 11/26/2020: az [Azure-beli virtuális gépek tárolási konfigurációinak](./hana-vm-operations-storage.md) és [Az Azure storage-típusok](./planning-guide-storage.md) SAP HANA hozzáigazítása az SAP számítási feladatokhoz az egyetlen virtuálisgép- [SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines) módosítása
 - 11/05/2020: új SAP-megjegyzésre mutató hivatkozás módosítása a HANA által támogatott fájlrendszer-típusokkal kapcsolatban [SAP HANA Azure-beli virtuális gépek tárolási konfigurációjában](./hana-vm-operations-storage.md) 
 - 10/26/2020: az Azure Premium Storage SAP HANA-konfiguráció egyes tábláinak módosítása az Azure-beli [virtuális gépek tárolási konfigurációjának](./hana-vm-operations-storage.md) kiépített és burst átviteli sebességének tisztázására

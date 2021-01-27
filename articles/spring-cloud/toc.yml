@@ -33,8 +33,6 @@
       href: spring-cloud-tutorial-custom-domain.md
     - name: A Key Vault összekapcsolása egy Azure Spring Cloud-alkalmazással felügyelt identitás segítségével
       href: spring-cloud-tutorial-managed-identities-key-vault.md
-    - name: Az Azure Spring Cloud üzembe helyezése virtuális hálózaton
-      href: spring-cloud-tutorial-deploy-in-azure-virtual-network.md
     - name: Felügyelt identitás használata az Azure Functions meghívásához egy Azure Spring Cloud-alkalmazásból
       href: spring-cloud-tutorial-managed-identities-functions.md
 - name: Alapelvek
@@ -101,6 +99,18 @@
           href: spring-cloud-howto-application-insights.md
         - name: A Resilience4J áramkör-megszakító metrikái
           href: spring-cloud-howto-circuit-breaker-metrics.md
+    - name: Network (Hálózat)
+      items:
+        - name: Azure Spring Cloud üzembe helyezése virtuális hálózaton
+          href: spring-cloud-tutorial-deploy-in-azure-virtual-network.md
+        - name: Hozzáférés az alkalmazáshoz egy magánhálózati hálózaton
+          href: spring-cloud-access-app-virtual-network.md
+        - name: Alkalmazások közzététele az interneten
+          href: spring-cloud-expose-apps-gateway-azure-firewall.md
+        - name: Az Azure Spring Cloud-t futtató ügyfél-felelősség a VNET-ben
+          href: spring-cloud-vnet-customer-responsibilities.md
+        - name: Az Azure Spring Cloud hibaelhárítása a Virtual Networks szolgáltatásban
+          href: spring-cloud-troubleshooting-vnet.md
     - name: Biztonságos
       items:
         - name: Rendszer által hozzárendelt felügyelt identitás engedélyezése
@@ -140,7 +150,7 @@
         - name: Spring Boot
           href: /azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud
         - name: Tomcat
-          href: 'https://docs.microsoft.com/azure/developer/java/migration/migrate-tomcat-to-azure-spring-cloud'
+          href: /azure/developer/java/migration/migrate-tomcat-to-azure-spring-cloud
 - name: DevOps-telepítés
   items:
     - name: CI/CD az Azure DevOps használatával

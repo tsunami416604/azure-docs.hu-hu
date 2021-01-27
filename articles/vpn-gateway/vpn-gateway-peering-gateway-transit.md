@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: cherylmc
-ms.openlocfilehash: 2fc12385c78135269b6a73038fd0ad810ebaedd6
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 73a7d76de34d29b2d51c54569b234cd8221b08f8
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576180"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872179"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>VPN-átjáróval történő adatátvitel konfigurálása virtuális hálózatok közötti társviszony létesítéséhez
 
@@ -43,18 +43,18 @@ Mielőtt elkezdené, ellenőrizze, hogy rendelkezik-e a következő virtuális h
 
 |VNet|Üzembehelyezési modell| Virtuális hálózati átjáró|
 |---|---|---|---|
-| Hub-RM| [Resource Manager](vpn-gateway-howto-site-to-site-resource-manager-portal.md)| [Igen](tutorial-create-gateway-portal.md)|
-| Küllő – RM | [Resource Manager](vpn-gateway-howto-site-to-site-resource-manager-portal.md)| Nem |
+| Hub-RM| [Resource Manager](./tutorial-site-to-site-portal.md)| [Igen](tutorial-create-gateway-portal.md)|
+| Küllő – RM | [Resource Manager](./tutorial-site-to-site-portal.md)| Nem |
 | Spoke-Classic | [Klasszikus](vpn-gateway-howto-site-to-site-classic-portal.md#CreatVNet) | Nem |
 
 ### <a name="permissions"></a><a name="permissions"></a>Engedélyek
 
 A virtuális hálózatok közötti társviszony létrehozásához használt fiókoknak rendelkezniük kell a megfelelő szerepkörökkel és engedélyekkel. Ha az alábbi példában a **hub-RM** és a **küllő-klasszikus** nevű két virtuális hálózat társítását választotta, a fióknak a következő szerepkörökkel vagy engedélyekkel kell rendelkeznie az egyes virtuális hálózatokhoz:
 
-|VNet|Üzembehelyezési modell|Role|Engedélyek|
+|VNet|Üzembehelyezési modell|Szerepkör|Engedélyek|
 |---|---|---|---|
 |Hub-RM|Resource Manager|[Hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
-| |Klasszikus|[Klasszikus hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|N.A.|
+| |Klasszikus|[Klasszikus hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|N/A|
 |Spoke-Classic|Resource Manager|[Hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
 ||Klasszikus|[Klasszikus hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Microsoft.ClassicNetwork/virtualNetworks/peer|
 

@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 60cf97c4cb650120a4b6e2989b93d96ea120d040
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: a096375e32e3d8a6760da88fe5ec86a70d364aff
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360122"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872095"
 ---
 # <a name="data-ingestion-options-for-azure-machine-learning-workflows"></a>Adatfeldolgozási lehetőségek Azure Machine Learning munkafolyamatokhoz
 
@@ -60,7 +60,7 @@ Megtudhatja, hogyan hozhat létre adatfeldolgozási folyamatot a [Azure Data Fac
 
 ## <a name="azure-machine-learning-python-sdk"></a>Python SDK Azure Machine Learning 
 
-A [PYTHON SDK](/python/api/overview/azure/ml)-val beépítheti az adatfeldolgozási feladatokat egy [Azure Machine learning folyamat](how-to-create-your-first-pipeline.md) lépésbe.
+A [PYTHON SDK](/python/api/overview/azure/ml)-val beépítheti az adatfeldolgozási feladatokat egy [Azure Machine learning folyamat](./how-to-create-machine-learning-pipelines.md) lépésbe.
 
 Az alábbi táblázat összefoglalja az SDK-t és az adatfeldolgozási feladatokhoz szükséges ML folyamatokat.
 
@@ -74,7 +74,7 @@ A következő ábrán a Azure Machine Learning folyamat két lépésből áll: a
 
 ![Azure-folyamat + SDK-adatfeldolgozás](media/concept-data-ingestion/data-ingest-option-two.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Kövesse az alábbi útmutatókat:
 * [Adatfeldolgozási folyamat összeállítása Azure Data Factory](how-to-data-ingest-adf.md)

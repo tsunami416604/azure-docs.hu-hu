@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 11/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c1e4e223e7932f7fc8699c04a94b079b7f16e3d5
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 326e2a436f07d841a0b3196a4abddd5ee0f8b67c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98198900"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98873586"
 ---
 # <a name="know-the-terms"></a>A feltételek megismerése
 
@@ -36,7 +36,7 @@ Számos gyakori definíciót széles körben használnak az architektúra és a 
 - **SAP HANA az Azure-ban (nagyméretű példányok):** Az ajánlat hivatalos neve az Azure-ban, hogy HANA-példányokat futtasson SAP HANA TDI-tanúsítvánnyal rendelkező hardvereken, amelyeket nagyméretű példányokban helyeztek üzembe különböző Azure-régiókban. A *HANA nagyméretű példány* kapcsolódó kifejezése rövid SAP HANA az Azure-ban *(nagyméretű példányok)* , és széles körben használatos ebben a technikai üzembe helyezési útmutatóban.
 - **Létesítmények** közötti: olyan forgatókönyv, amelyben a virtuális gépeket egy olyan Azure-előfizetéshez telepítik, amely helyek közötti, többhelyes vagy Azure ExpressRoute kapcsolatot tartalmaz a helyszíni adatközpontok és az Azure között. A közös Azure-dokumentációban az ilyen típusú központi telepítések a létesítmények közötti forgatókönyvekben is szerepelnek. A kapcsolódás oka a helyszíni tartományok, a helyszíni Azure Active Directory/OpenLDAP és a helyszíni DNS kiterjesztése az Azure-ba. A helyszíni környezet az Azure-előfizetések Azure-eszközeire van kiterjesztve. Ezzel a bővítménnyel a virtuális gépek a helyszíni tartomány részei lehetnek. 
 
-   A helyszíni tartomány tartományi felhasználói hozzáférhetnek a kiszolgálókhoz, és futtathatnak szolgáltatásokat ezeken a virtuális gépeken (például az adatbázis-kezelő szolgáltatásokban). A helyszíni és az Azure által üzembe helyezett virtuális gépek közötti kommunikáció és névfeloldás lehetséges. Ez a forgatókönyv a legtöbb SAP-eszköz üzembe helyezésének módjára jellemző. További információ: [Azure VPN Gateway](../../../vpn-gateway/vpn-gateway-about-vpngateways.md) és [virtuális hálózat létrehozása helyek közötti kapcsolattal a Azure Portal használatával](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+   A helyszíni tartomány tartományi felhasználói hozzáférhetnek a kiszolgálókhoz, és futtathatnak szolgáltatásokat ezeken a virtuális gépeken (például az adatbázis-kezelő szolgáltatásokban). A helyszíni és az Azure által üzembe helyezett virtuális gépek közötti kommunikáció és névfeloldás lehetséges. Ez a forgatókönyv a legtöbb SAP-eszköz üzembe helyezésének módjára jellemző. További információ: [Azure VPN Gateway](../../../vpn-gateway/vpn-gateway-about-vpngateways.md) és [virtuális hálózat létrehozása helyek közötti kapcsolattal a Azure Portal használatával](../../../vpn-gateway/tutorial-site-to-site-portal.md).
 - **Bérlő**: a HANA nagyméretű példány bélyegén üzembe helyezett ügyfelek elkülönítettek a *bérlőhöz.* A bérlő a többi bérlő hálózati, tárolási és számítási rétegében el van különítve. A különböző bérlők számára hozzárendelt tárolási és számítási egységek nem látják egymást, és nem tudnak kommunikálni egymással a HANA nagyméretű példány-bélyegző szintjén. Egy ügyfél dönthet úgy is, hogy a központi telepítések különböző bérlők között vannak. A HANA nagyméretű példány Stamp szintjén azonban nincs kommunikáció a bérlők között.
 - **SKU-kategória**: a HANA Large-példány esetében az alábbi két SKU-kategóriát ajánljuk:
     - **I. típusú osztály**: S72, S72m, S96, S144, S144m, S192, S192m, S192xm, S224 és S224m

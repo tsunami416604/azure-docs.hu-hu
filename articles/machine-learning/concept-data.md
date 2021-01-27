@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 8b73676adbb9aa12e6f3b42dd26bed94b22780a8
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 9e4722933ec224712c8d649c0d9d850a9ee3e322
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539890"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872009"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Adatelérés védelme Azure Machine Learning
 
@@ -101,8 +101,8 @@ Az adatkészletekkel számos gépi tanulási feladatot hajthat végre Azure Mach
      + [automatizált ML-kísérletek](how-to-use-automated-ml-for-ml-models.md)
      + a [tervező](tutorial-designer-automobile-price-train-score.md#import-data)
      + [notebookok](how-to-train-with-datasets.md)
-     + [Azure Machine Learning folyamatok](how-to-create-your-first-pipeline.md)
-+ Az adatkészletek a [gépi tanulási folyamatokban](how-to-create-your-first-pipeline.md)a [Batch-következtetéssel](./tutorial-pipeline-batch-scoring-classification.md) való pontozáshoz érhetők el.
+     + [Azure Machine Learning folyamatok](./how-to-create-machine-learning-pipelines.md)
++ Az adatkészletek a [gépi tanulási folyamatokban](./how-to-create-machine-learning-pipelines.md)a [Batch-következtetéssel](./tutorial-pipeline-batch-scoring-classification.md) való pontozáshoz érhetők el.
 + Adatkészlet-figyelő beállítása az [adateltolódás](#drift) észleléséhez.
 
 <a name="label"></a>
