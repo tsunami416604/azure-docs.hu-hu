@@ -12,18 +12,18 @@ ms.date: 01/21/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1dc5b8dc8930d75456f307324ef97bd60e78eca9
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 96772020e70aeb32fa1a8ae18bf3818396887877
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660157"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805234"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Azure AD B2C kezelése Microsoft Graph
 
 Microsoft Graph lehetővé teszi az erőforrások kezelését a Azure AD B2C címtárban. A következő Microsoft Graph API-műveletek támogatottak Azure AD B2C erőforrások, például felhasználók, identitás-szolgáltatók, felhasználói folyamatok, egyéni házirendek és házirend-kulcsok kezeléséhez. A következő részben található hivatkozások a Microsoft Graph API-referencián belüli megfelelő lapot célozzák meg az adott művelethez. 
 
-## <a name="perquisites"></a>Perquisites
+## <a name="prerequisites"></a>Előfeltételek
 
 Ha az MS Graph APIt szeretné használni, és a Azure AD B2C-bérlő erőforrásaival szeretne kommunikálni, szüksége lesz egy alkalmazás-regisztrációra, amely erre engedélyt ad. A felügyeleti alkalmazás által használható alkalmazás-regisztráció létrehozásához hajtsa végre a [Azure ad B2C kezelése a Microsoft Graphval](microsoft-graph-get-started.md) című cikkben ismertetett lépéseket. 
 

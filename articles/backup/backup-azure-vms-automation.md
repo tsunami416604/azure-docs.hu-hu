@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépek biztonsági mentése és helyreállítása a
 description: Az Azure-beli virtuális gépek biztonsági mentését és helyreállítását ismerteti a PowerShell-lel Azure Backup használatával
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 610049ec14243abb296aef431eb37533c6169817
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 90bb6f60712fc59aec05ff2e85364fccf00ff1df
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797060"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804795"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Azure-beli virtuális gépek biztonsági mentése és visszaállítása a PowerShell-lel
 
@@ -228,7 +228,7 @@ NewPolicy           AzureVM            AzureVM              4/24/2016 1:30:00 AM
 A védelmi házirend meghatározása után továbbra is engedélyeznie kell egy elem házirendjét. A védelem engedélyezéséhez használja az [enable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) . A védelem engedélyezéséhez két objektum szükséges – az elem és a házirend. Miután a házirend társítva lett a tárolóhoz, a biztonsági mentési munkafolyamat a házirend-ütemtervben meghatározott időpontban aktiválódik.
 
 > [!IMPORTANT]
-> Míg a PowerShell használatával egyszerre több virtuális gép biztonsági mentését is lehetővé teszi, győződjön meg arról, hogy egyetlen házirendhez nincs több, mint 100 virtuális gép társítva. Ez az [ajánlott eljárás](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy). Jelenleg a PowerShell-ügyfél nem blokkolja explicit módon, ha több mint 100 virtuális gép van, de az ellenőrzési terv a jövőben is felvehető.
+> Míg a PowerShell használatával egyszerre több virtuális gép biztonsági mentését is lehetővé teszi, győződjön meg arról, hogy egyetlen házirendhez nincs több, mint 100 virtuális gép társítva. Ez az [ajánlott eljárás](./backup-azure-vm-backup-faq.yml#is-there-a-limit-on-number-of-vms-that-can-be-associated-with-the-same-backup-policy). Jelenleg a PowerShell-ügyfél nem blokkolja explicit módon, ha több mint 100 virtuális gép van, de az ellenőrzési terv a jövőben is felvehető.
 
 Az alábbi példák lehetővé teszik a V2VM, az NewPolicy-t használó elem védelmét. A példák attól függően különböznek, hogy a virtuális gép titkosítva van-e, és milyen típusú titkosítást tartalmaz.
 

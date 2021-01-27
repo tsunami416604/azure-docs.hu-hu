@@ -1,18 +1,18 @@
 ---
 title: A Azure Data Lake Analytics beépített szabályzat-definíciói
 description: A Azure Data Lake Analytics Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.topic: reference
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: data-lake-analytics
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 980d06bf79b0470988fc74655818e1ea837f5d73
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 4f324d7cc10704e08ae9020f618629df0f43a4b5
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98702893"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804383"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-data-lake-analytics"></a>A Azure Data Lake Analytics beépített definíciói Azure Policy
 

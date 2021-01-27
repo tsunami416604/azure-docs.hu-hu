@@ -1,31 +1,31 @@
 ---
-title: A PHP Vendégkönyv alkalmazás üzembe helyezése az arc-kompatibilis Kubernetes Azure Stack Edge Pro GPU-eszközön | Microsoft Docs
-description: Ismerteti, hogyan helyezhet üzembe egy PHP-beli Vendégkönyv állapot nélküli alkalmazást a Redis használatával az Azure Stack Edge-alapú Kubernetes-fürtön a GitOps-mel.
+title: Alkalmazás üzembe helyezése `PHP Guestbook` az arc-kompatibilis Kubernetes Azure stack Edge Pro GPU-eszközön | Microsoft Docs
+description: Leírja, hogyan helyezhet üzembe egy PHP `Guestbook` állapot nélküli alkalmazást a Redis használatával a GitOps-mel a Azure stack Edge Pro-eszközön lévő arc-kompatibilis Kubernetes-fürtön.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/25/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 4e974d93b5b7550081abcd7e251c7eda265a2397
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: ba72617444a2c7ec30e4d1d25afe1edcda16ff35
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882959"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804882"
 ---
-# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>PHP-beli Vendégkönyv állapot nélküli alkalmazás üzembe helyezése a Redis on arc enabled Kubernetes-fürtön Azure Stack Edge Pro GPU-val
+# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>PHP állapot nélküli alkalmazás üzembe helyezése a `Guestbook` Redis on arc enabled Kubernetes-fürtön Azure stack Edge Pro GPU-val
 
 Ez a cikk bemutatja, hogyan hozhat létre és helyezhet üzembe egy egyszerű, többrétegű webes alkalmazást a Kubernetes és az Azure arc használatával. Ez a példa a következő összetevőkből áll:
 
-- Egypéldányos Redis-főkiszolgáló a Vendégkönyv-bejegyzések tárolásához
+- Egypéldányos Redis-főkiszolgáló a bejegyzések tárolásához `guestbook`
 - Több replikált Redis-példány az olvasások kiszolgálására
 - Több webes frontend-példány
 
 Az üzembe helyezés a Azure Stack Edge Pro-eszközön a GitOps használatával történik az arc-kompatibilis Kubernetes-fürtön. 
 
-Ez az eljárás azok számára készült, akik áttekintették a Kubernetes számítási feladatait [Azure stack Edge Pro-eszközön](azure-stack-edge-gpu-kubernetes-workload-management.md) , és ismeri az [Azure arc-kompatibilis Kubernetes (előzetes verzió)](../azure-arc/kubernetes/overview.md)fogalmait.
+Ez az eljárás azoknak a felhasználóknak készült, akik áttekintették a Kubernetes számítási feladatait [Azure stack Edge Pro-eszközön](azure-stack-edge-gpu-kubernetes-workload-management.md) , és megismerhetik az [Azure arc-kompatibilis Kubernetes (előzetes verzió)](../azure-arc/kubernetes/overview.md)fogalmait.
 
 > [!NOTE]
 > Ez a cikk a Slave kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
@@ -49,18 +49,18 @@ Az állapot nélküli alkalmazás üzembe helyezése előtt győződjön meg arr
 
 1. Van egy Windows-ügyfélrendszer, amely az Azure Stack Edge Pro-eszköz elérésére szolgál majd.
   
-    - Az ügyfél Windows PowerShell 5,0-es vagy újabb verzióját futtatja. A Windows PowerShell legújabb verziójának letöltéséhez nyissa meg a következőt: [install Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
+    - Az ügyfél Windows PowerShell 5,0-es vagy újabb verzióját futtatja. A Windows PowerShell legújabb verziójának letöltéséhez nyissa meg a következőt: [install Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view = true).
     
     - Bármely más ügyfél [támogatott operációs rendszerrel](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) is rendelkezhet. Ez a cikk a Windows-ügyfelek használatakor követendő eljárást ismerteti. 
     
 1. Végrehajtotta az [Azure stack Edge Pro-eszközön a Kubernetes-fürt eléréséhez](azure-stack-edge-gpu-create-kubernetes-cluster.md)című témakörben leírt eljárást. A következőket teheti:
     
-    - `kubectl`Az ügyfélre telepítve  <!--and saved the `kubeconfig` file with the user configuration to C:\\Users\\&lt;username&gt;\\.kube. -->
+    - Telepítve van `kubectl` az ügyfélen. <!--and saved the `kubeconfig` file with the user configuration to C:\\Users\\&lt;username&gt;\\.kube. -->
     
     - Győződjön meg arról, hogy az `kubectl` ügyfél verziószáma nem több, mint egy, a Azure stack Edge Pro-eszközön futó Kubernetes-verzió. 
       - Ezzel a paranccsal `kubectl version` ellenőrizhető az ügyfélen futó kubectl verziója. Jegyezze fel a teljes verziót.
       - Az Azure Stack Edge Pro-eszköz helyi felhasználói felületén lépjen az **Áttekintés** elemre, és jegyezze fel a Kubernetes-szoftver számát. 
-      - Ellenőrizze, hogy ez a két verzió kompatibilis-e a támogatott Kubernetes-verzióban megadott leképezéssel <!--insert link-->.
+      - Ellenőrizze ezt a két verziót a támogatott Kubernetes-verzióban megadott leképezéssel való kompatibilitás érdekében. <!--insert link-->
 
 1. Rendelkezik egy [GitOps-konfigurációval, amely Azure arc-telepítés futtatására használható](https://github.com/kagoyal/dbehaikudemo). Ebben a példában a következő fájlokat fogja használni a `yaml` Azure stack Edge Pro-eszközön való üzembe helyezéshez.
 
@@ -86,18 +86,18 @@ A következő lépésekkel konfigurálhatja az Azure arc-erőforrást a GitOps-k
 
     ![A képernyőképen az Azure arc használatára képes Kubernetes-fürt látható a konfiguráció hozzáadása lehetőség kiválasztásával.](media/azure-stack-edge-gpu-connect-powershell-interface/select-configurations-1.png)
 
-1. A **konfiguráció hozzáadása** lapon adja meg a mezők megfelelő értékeit, majd válassza az **alkalmaz** lehetőséget.
+1. A **konfiguráció hozzáadása** mezőben adja meg a mezők megfelelő értékeit, majd kattintson az **alkalmaz** gombra.
 
     |Paraméter  |Leírás |
     |---------|---------|
     |Konfiguráció neve     | A konfigurációs erőforrás neve.        |
     |Operátor példányának neve     |Az operátor példányának neve egy adott konfiguráció azonosításához. A név a legfeljebb 253 karakterből álló karakterlánc, amely csak kisbetűket, alfanumerikus karaktereket, kötőjelet és pontot tartalmazhat.         |
-    |Operátor névtere     | Állítsa a **demotestguestbook** értékre, mivel ez megegyezik az üzemelő példányban megadott névtérrel `yaml` . <br> A mező határozza meg azt a névteret, amelyben a kezelő telepítve van. A név a legfeljebb 253 karakterből álló karakterlánc, amely csak kisbetűket, alfanumerikus karaktereket, kötőjelet és pontot tartalmazhat.         |
+    |Operátor névtere     | Állítsa a **demotestguestbook** értékre úgy, hogy az megfeleljen az üzemelő példányban megadott névtérnek `yaml` . <br> A mező határozza meg azt a névteret, amelyben a kezelő telepítve van. A név a legfeljebb 253 karakterből álló karakterlánc, amely csak kisbetűket, alfanumerikus karaktereket, kötőjelet és pontot tartalmazhat.         |
     |Tárház URL-címe     |<br>A git-tárház elérési útja `http://github.com/username/repo` vagy `git://github.com/username/repo` formátuma, ahol a GitOps-konfiguráció található.         |
-    |Operátor hatóköre     | Válassza a **névtér** lehetőséget. <br>Ez határozza meg azt a hatókört, amelyen a kezelő telepítve van. Válassza ezt a névteret. Az operátor a telepítési YAML-fájlokban megadott névtérbe lesz telepítve.       |
-    |Operátor típusa     | Alapértelmezés szerint hagyja. <br>Ezzel a beállítással adható meg, hogy az operátor típusa alapértelmezés szerint a Flux értékre van-e állítva.        |
-    |Operátori paraméterek     | Hagyja üresen. <br>Ez a mező a Flux-kezelőnek átadandó paramétereket tartalmaz.        |
-    |Helm     | A beállítás **Letiltva** értékre állítható. <br>Akkor engedélyezze ezt a beállítást, ha diagram alapú központi telepítéseket hajt végre.        |
+    |Operátor hatóköre     | Válassza a **névtér** lehetőséget. <br>Ez a paraméter határozza meg azt a hatókört, amelyen a kezelő telepítve van. Válassza a névtér lehetőséget az operátor telepítéséhez a telepítési YAML-fájlokban megadott névtérben.       |
+    |Operátor típusa     | Alapértelmezés szerint hagyja. <br>Ez a paraméter határozza meg az operátor típusát – alapértelmezés szerint a Flux értékre állítva.        |
+    |Operátori paraméterek     | Hagyja üresen. <br>Ez a paraméter a Flux-kezelőnek átadandó paramétereket tartalmaz.        |
+    |Helm     | Állítsa a paramétert **Letiltva** értékre. <br>Akkor engedélyezze ezt a beállítást, ha diagram alapú központi telepítéseket hajt végre.        |
 
 
     ![Konfiguráció hozzáadása](media/azure-stack-edge-gpu-connect-powershell-interface/add-configuration-1.png)
@@ -136,7 +136,7 @@ A GitOps-konfiguráción keresztüli központi telepítés létrehoz egy névter
     [10.128.44.240]: PS>
     ```  
 
-1. Ebben a példában a frontend szolgáltatást a következő típusként telepítettük: terheléselosztó. A Vendégkönyv megtekintéséhez meg kell keresnie ennek a szolgáltatásnak az IP-címét. Futtassa az alábbi parancsot.
+1. Ebben a példában a frontend szolgáltatást a következő típusként telepítettük: terheléselosztó. Meg kell keresnie ennek a szolgáltatásnak az IP-címét a megtekintéséhez `guestbook` . Futtassa az alábbi parancsot.
 
     `kubectl get service -n <your-namespace>`
     
@@ -149,13 +149,13 @@ A GitOps-konfiguráción keresztüli központi telepítés létrehoz egy névter
     redis-slave    ClusterIP      10.104.215.146   <none>          6379/TCP       85m
     [10.128.44.240]: PS>
     ```
-1. A előtér-szolgáltatás `type:LoadBalancer` külső IP-címmel rendelkezik. Ez az IP-cím a külső szolgáltatásokhoz megadott IP-címtartomány alapján történik a számítási hálózati beállítások az eszközön való konfigurálásakor. A következő IP-cím használatával megtekintheti a vendégkönyvet az URL-címen: `https://<external-IP-address>` .
+1. A előtér-szolgáltatás `type:LoadBalancer` külső IP-címmel rendelkezik. Ez az IP-cím a külső szolgáltatásokhoz megadott IP-címtartomány alapján történik a számítási hálózati beállítások az eszközön való konfigurálásakor. Ezzel az IP-címmel megtekintheti az `guestbook` at URL-címét: `https://<external-IP-address>` .
 
     ![Vendégkönyv megtekintése](media/azure-stack-edge-gpu-connect-powershell-interface/view-guestbook-1.png)
 
 ## <a name="delete-deployment"></a>Központi telepítés törlése
 
-A központi telepítés törléséhez törölheti a konfigurációt a Azure Portalból. Ez törli a létrehozott objektumokat, beleértve az üzembe helyezéseket és a szolgáltatásokat is.
+A központi telepítés törléséhez törölheti a konfigurációt a Azure Portalból. A konfiguráció törlése törli a létrehozott objektumokat, beleértve a központi telepítéseket és a szolgáltatásokat is.
 
 1. A Azure Portalban nyissa meg az Azure arc-erőforrás > konfigurációit. 
 1. Keresse meg a törölni kívánt konfigurációt. Válassza a... a helyi menü meghívásához és a **Törlés** lehetőség kiválasztásához.

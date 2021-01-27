@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 6356089daed02270a14903639afee8001153b195
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b199fdbac4aca7637e07a18383cc7e254f702019
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447377"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804840"
 ---
 # <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes állapot nélküli alkalmazás üzembe helyezése az Azure Stack Edge Pro GPU-eszközön a kubectl használatával
 
@@ -25,7 +25,7 @@ A Kubernetes-fürt létrehozása és a `kubectl` parancssori eszköz használata
 
 - A bejelentkezési hitelesítő adatok egy 1 csomópontos Azure Stack Edge Pro-eszközhöz tartoznak.
 
-- A Windows PowerShell 5,0-es vagy újabb verziója Windows-ügyfélre van telepítve az Azure Stack Edge Pro-eszköz eléréséhez. Bármely más ügyfél támogatott operációs rendszerrel is rendelkezhet. Ez a cikk a Windows-ügyfelek használatakor követendő eljárást ismerteti. A Windows PowerShell legújabb verziójának letöltéséhez nyissa meg a [Windows PowerShell telepítését](/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
+- A Windows PowerShell 5,0-es vagy újabb verziója Windows-ügyfélre van telepítve az Azure Stack Edge Pro-eszköz eléréséhez. Bármely más ügyfél támogatott operációs rendszerrel is rendelkezhet. Ez a cikk a Windows-ügyfelek használatakor követendő eljárást ismerteti. A Windows PowerShell legújabb verziójának letöltéséhez nyissa meg a [Windows PowerShell telepítését](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view=true).
 
 - A számítási funkció engedélyezve van az Azure Stack Edge Pro-eszközön. A számítás engedélyezéséhez lépjen a **számítási** lapra az eszköz helyi felhasználói felületén. Ezután válasszon ki egy hálózati adaptert, amelyet engedélyezni szeretne a számítási feladatokhoz. Válassza az **Engedélyezés** lehetőséget. A számítási eredmények lehetővé teszik, hogy az eszközön egy virtuális kapcsolót hozzanak létre az adott hálózati adapteren. További információ: a [számítási hálózat engedélyezése a Azure stack Edge Pro](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)-ban.
 
@@ -55,7 +55,7 @@ A verziójának ellenőrzését `kubectl` :
    kubectl version
    ```
     
-   Íme egy példa a kimenetre:
+   Alább látható egy példa a kimenetre:
     
    ```powershell
    PS C:\WINDOWS\system32> C:\windows\system32\kubectl.exe version
@@ -71,7 +71,7 @@ A verziójának ellenőrzését `kubectl` :
    kubectl get pods -n <namespace-string>
    ```
     
-   Íme egy példa a parancs használatára:
+   Alább látható egy példa a parancs használatára:
     
    ```powershell
    PS C:\WINDOWS\system32> kubectl get pods -n "test1"
@@ -103,7 +103,7 @@ A verziójának ellenőrzését `kubectl` :
 
 ### <a name="create-a-stateless-application-using-a-deployment"></a>Állapot nélküli alkalmazás létrehozása központi telepítéssel
 
-Most, hogy meggyőződött arról, hogy a kubectl parancssori verziója helyes, és rendelkezik a szükséges konfigurációs fájlokkal, létrehozhat egy állapot nélküli alkalmazás-telepítést.
+Most, hogy ellenőrizte, hogy a kubectl parancssori verziója helyes-e, és hogy rendelkezik-e a szükséges konfigurációs fájlokkal, létrehozhat egy állapot nélküli alkalmazás-telepítést.
 
 A pod egy Kubernetes-alkalmazás alapszintű végrehajtási egysége, a Kubernetes objektummodell legkisebb és legegyszerűbb egysége, amelyet Ön hozott létre vagy telepít. A pod a tárolási erőforrásokat, az egyedi hálózati IP-címet és a tároló (k) futtatását szabályozó beállításokat is magában foglal.
 
@@ -123,7 +123,7 @@ Az alábbi lépéseket követve hozzon létre egy Nginx-telepítést:
 
    Ebben a példában az alkalmazás YAML-fájljának elérési útja külső forrás.
 
-   Itt látható a parancs és a kimenet mintájának használata:
+   Íme egy példa a parancs használatára és kimenetére:
 
    ```powershell
    PS C:\WINDOWS\system32> kubectl apply -f https://k8s.io/examples/application/deployment.yaml -n "test1"
@@ -131,7 +131,7 @@ Az alábbi lépéseket követve hozzon létre egy Nginx-telepítést:
    deployment.apps/nginx-deployment created
    ```
 
-   Azt is megteheti, hogy a következő Markdown menti a helyi gépre, és az *-f* paraméterben lecseréli az elérési utat és a fájlnevet. Például: "C:\Kubernetes\deployment.yaml". Az alkalmazás központi telepítésének konfigurációja:
+   Azt is megteheti, hogy a következő Markdown menti a helyi gépre, és az *-f* paraméterben lecseréli az elérési utat és a fájlnevet. Például: "C:\Kubernetes\deployment.yaml". Az alkalmazás központi telepítésének konfigurációja a következő lesz:
 
    ```markdown
    apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
@@ -163,7 +163,7 @@ Az alábbi lépéseket követve hozzon létre egy Nginx-telepítést:
    kubectl describe deployment nginx-deployment -n <namespace-string>
    ```
 
-   Itt látható a parancs és a kimenet mintájának használata:
+   Az alábbi, kimenettel rendelkező parancs minta-használata alább látható:
     
    ```powershell
    PS C:\Users\user> kubectl describe deployment nginx-deployment -n "test1"
@@ -203,13 +203,13 @@ Az alábbi lépéseket követve hozzon létre egy Nginx-telepítést:
      Normal  ScalingReplicaSet  2m22s  deployment-controller  Scaled up replica set nginx-deployment-5754944d6c to 2
    ```
 
-   Ha alaposan megtekinti a *replikák* beállítását, a következőt fogja látni:
+   A *replikák* beállításnál a következő jelenik meg:
     
    ```powershell
    Replicas:               2 desired | 2 updated | 2 total | 2 available | 0 unavailable
    ```
 
-   A *replikák* beállítás azt jelzi, hogy az üzembe helyezési specifikációnak két hüvelyre van szüksége, hogy ezek a hüvelyek hol lettek létrehozva és frissítve, és készen állnak a használatra.
+   A *replikák* beállítás azt jelzi, hogy a központi telepítési specifikáció két hüvelyt igényel, és hogy ezek a hüvelyek létrejöttek és frissültek, és készen állnak a használatra.
 
    > [!NOTE]
    > Egy replikakészlet olyan hüvelyeket cserél le, amelyeket bármilyen okból törölnek vagy leállítottak, például az eszköz csomópontjának meghibásodása vagy egy zavaró eszköz frissítése esetén. Ezért azt javasoljuk, hogy akkor is használjon replikakészlet-készletet, ha az alkalmazás csak egyetlen Pod-t igényel.
@@ -220,7 +220,7 @@ Az alábbi lépéseket követve hozzon létre egy Nginx-telepítést:
    kubectl get pods -l app=nginx -n <namespace-string>
    ```
     
-   Itt látható a parancs és a kimenet mintájának használata:
+   Az alábbi, kimenettel rendelkező parancs minta-használata alább látható:
     
    ```powershell
    PS C:\Users\user> kubectl get pods -l app=nginx -n "test1"
@@ -238,7 +238,7 @@ Az alábbi lépéseket követve hozzon létre egy Nginx-telepítést:
    kubectl describe pod <podname-string> -n <namespace-string>
    ```
 
-   Itt látható a parancs és a kimenet mintájának használata:
+  Az alábbi, kimenettel rendelkező parancs minta-használata alább látható:
 
    ```powershell
    PS C:\Users\user> kubectl describe pod "nginx-deployment-5754944d6c-7wqjd" -n "test1"
@@ -295,14 +295,14 @@ Az alábbi lépéseket követve hozzon létre egy Nginx-telepítést:
 
 ### <a name="rescale-the-application-deployment-by-increasing-the-replica-count"></a>Az alkalmazás központi telepítésének átméretezése a replikák számának növelésével
 
-Mindegyik pod egy adott alkalmazás egyetlen példányának futtatását jelenti. Ha horizontálisan szeretné több példány futtatására méretezni az alkalmazást, megnövelheti a hüvelyek számát, egyet az egyes példányok esetében. A Kubernetes-ben ez az úgynevezett replikálás.
+Mindegyik pod egy adott alkalmazás egyetlen példányának futtatását jelenti. Ha horizontálisan szeretné több példány futtatására méretezni az alkalmazást, a hüvelyek számát megnövelheti egy értékre az egyes példányok esetében. A Kubernetes-ben ez az úgynevezett replikálás.
 Egy új YAML-fájl alkalmazásával növelheti a hüvelyek számát az alkalmazás központi telepítésében. A YAML fájl a replikák beállítását 4 értékre módosítja, ami növeli a telepítésben lévő hüvelyek számát négy hüvelyre. A 2 és 4 közötti hüvelyek számának növeléséhez:
 
 ```powershell
 PS C:\WINDOWS\system32> kubectl apply -f https://k8s.io/examples/application/deployment-scale.yaml -n "test1"
 ```
 
-Azt is megteheti, hogy a következő Markdown menti a helyi gépre, és az *-f* paraméter elérési útját és fájlnevét kicseréli `kubectl apply` . Például: "C:\Kubernetes\deployment-scale.yaml". Itt látható az alkalmazás központi telepítési léptékének konfigurációja:
+Azt is megteheti, hogy a következő Markdown menti a helyi gépre, és az *-f* paraméter elérési útját és fájlnevét kicseréli `kubectl apply` . Például: "C:\Kubernetes\deployment-scale.yaml". Az alkalmazás központi telepítési skálázásának konfigurációja a következő:
 
 ```markdown
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
@@ -332,7 +332,7 @@ Annak ellenőrzéséhez, hogy a központi telepítés négy hüvelyből áll:
 kubectl get pods -l app=nginx
 ```
 
-Íme egy példa a két-négy hüvelyre történő átméretezési üzembe helyezési teljesítményre:
+Példa a két-négy hüvelyre történő átméretezési üzembe helyezés kimenetére alább látható:
 
 ```powershell
 PS C:\WINDOWS\system32> kubectl get pods -l app=nginx
@@ -354,7 +354,7 @@ Az üzemelő példány törléséhez, beleértve az összes hüvelyt is, futtatn
    kubectl delete deployment nginx-deployment -n <namespace-string>
    ```
 
-Íme egy példa a parancs használatára és kimenetére:
+Alább látható a parancs használatának példája, amelynek kimenete a következő:
 
 ```powershell
 PS C:\Users\user> kubectl delete deployment nginx-deployment -n "test1"

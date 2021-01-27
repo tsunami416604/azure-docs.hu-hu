@@ -601,24 +601,24 @@
           href: dedicated-hosts-portal.md
         - name: PowerShell
           href: ./windows/dedicated-hosts-powershell.md
+    - name: Direktszín Virtual Machines
+      displayName: 'pre-empt, preempt, spot'
+      items:
+        - name: Áttekintés
+          href: spot-vms.md
+        - name: parancssori felület
+          href: ./linux/spot-cli.md
+        - name: Portál
+          href: spot-portal.md
+        - name: PowerShell
+          href: ./windows/spot-powershell.md
+        - name: ARM-sablon
+          displayName: template ARM
+          href: ./linux/spot-template.md
+        - name: Hibakódok
+          href: error-codes-spot.md
     - name: Vásárlási lehetőségek
       items:
-        - name: Spot virtuális gépek
-          displayName: 'pre-empt, preempt, spot'
-          items:
-            - name: Áttekintés
-              href: spot-vms.md
-            - name: parancssori felület
-              href: ./linux/spot-cli.md
-            - name: Portál
-              href: spot-portal.md
-            - name: PowerShell
-              href: ./windows/spot-powershell.md
-            - name: ARM-sablon
-              displayName: template ARM
-              href: ./linux/spot-template.md
-            - name: Hibakódok
-              href: error-codes-spot.md
         - name: Azure Hybrid Benefit
           items:
             - name: Linux
@@ -1747,7 +1747,7 @@
         - name: Díjszabás
           href: ../backup/azure-backup-pricing.md
         - name: GYIK
-          href: ../backup/backup-azure-vm-backup-faq.md
+          href: ../backup/backup-azure-vm-backup-faq.yml
     - name: Vészhelyreállítás
       items:
         - name: Áttekintés

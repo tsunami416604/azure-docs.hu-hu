@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: 023b33732b80198c4ed187328e8d18314f385f94
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: ad09bcb1ea4aa32bdd04af47d3503f74c850a10b
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97839785"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98803503"
 ---
 # <a name="manage-alert-events"></a>Riasztási események kezelése
 
@@ -106,8 +106,6 @@ Ha egy esemény el van némítva, figyelmen kívül hagyja a rendszer minden alk
 
 2. Vigye az egérmutatót a riasztás fölé, és ellenőrizze, hogy elnémítva van-e.  
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
-[Jelentések készítése](how-to-generate-reports.md)
-
-[A figyelt forgalom szabályozása](how-to-control-what-traffic-is-monitored.md)
+[A monitorozandó forgalom szabályozása](how-to-control-what-traffic-is-monitored.md)

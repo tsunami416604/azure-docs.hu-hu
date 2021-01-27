@@ -1,14 +1,14 @@
 ---
 title: A szabályzatminták indexe
 description: Az Azure Policyhez készült beépített elemek indexe Kategóriacímkék, Jogszabályi megfelelőség, Key Vault, Kubernetes, Vendégkonfiguráció és egyebek.
-ms.date: 10/14/2020
+ms.date: 01/25/2021
 ms.topic: sample
-ms.openlocfilehash: 0c73273f94822873c410564f13ba43f0b679f0ff
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
-ms.translationtype: HT
+ms.openlocfilehash: a7492f6b12e8adffc6ba28da750e51ecdeb1878f
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077915"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805575"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy-minták
 
@@ -37,8 +37,10 @@ Az alábbiakban példákat láthat az Azure Policyben található nyelvet és op
 
 Az alábbiak az [előírásoknak való megfelelőség](../concepts/regulatory-compliance.md) beépített elemei:
 
-- [Azure-biztonsági teljesítményteszt](./azure-security-benchmark.md)
+- [Azure Security teljesítményteszt v2](./azure-security-benchmark.md)
+- [Azure Security teljesítményteszt v1](./azure-security-benchmarkv1.md)
 - [CIS Microsoft Azure Foundations Benchmark 1.1.0-s verzió](./cis-azure-1-1-0.md)
+- [3. CMMC szint](./cmmc-l3.md)
 - [HIPAA HITRUST 9.2](./hipaa-hitrust-9-2.md)
 - [NIST SP 800-53 R4](./nist-sp-800-53-r4.md)
 - [NIST SP 800-171 R2](./nist-sp-800-171-r2.md)

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 69d5a0a69bcd820fd59da0a18b3838b65a6a0460
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 66d537b79819aecab4ce88a56ed465679363f421
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763429"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805205"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>Virtuális gépek üzembe helyezése a Azure Stack Edge Pro GPU-eszközön sablonok használatával
 
@@ -29,7 +29,7 @@ Azure Stack Edge Pro virtuális gépek számos eszközön való üzembe helyezé
 
 A sablonok használatával történő üzembe helyezési munkafolyamat magas szintű összefoglalása a következő:
 
-1. **Előfeltételek konfigurálása** – az előfeltételek 3 típusa létezik; eszköz, ügyfél és a virtuális gép számára.
+1. **Előfeltételek konfigurálása** – az előfeltételek három típusa létezik: eszköz, ügyfél és a virtuális gép.
 
     1. **Eszköz előfeltételei**
 
@@ -47,7 +47,7 @@ A sablonok használatával történő üzembe helyezési munkafolyamat magas szi
         1. Hozzon létre egy erőforráscsoportot az eszköz helyén, amely az összes virtuálisgép-erőforrást tartalmazni fogja.
         1. Hozzon létre egy Storage-fiókot a virtuálisgép-rendszerkép létrehozásához használt virtuális merevlemez feltöltéséhez.
         1. Adja hozzá a helyi Storage-fiók URI-JÁT a DNS-hez vagy a Hosts fájlhoz az eszközt elérő ügyfélen.
-        1. Telepítse a blob Storage-tanúsítványt az eszközre, valamint az eszközt elérő helyi ügyfélre. Szükség esetén telepítse a blob Storage-tanúsítványt a Storage Explorer.
+        1. Telepítse a blob Storage-tanúsítványt az eszközre és az eszközt elérő helyi ügyfélre. Szükség esetén telepítse a blob Storage-tanúsítványt a Storage Explorer.
         1. Hozzon létre és töltsön fel egy virtuális merevlemezt a korábban létrehozott Storage-fiókba.
 
 2. **Virtuális gép létrehozása sablonokból**
@@ -71,10 +71,10 @@ Konfigurálja ezeket az előfeltételeket az ügyfélen, amely az Azure Stack Ed
 
 ## <a name="vm-prerequisites"></a>A virtuális gépek előfeltételei
 
-Konfigurálja ezeket az előfeltételeket olyan erőforrások létrehozásához, amelyekre szükség lesz a virtuális gépek létrehozásához. 
+Konfigurálja ezeket az előfeltételeket a virtuális gépek létrehozásához szükséges erőforrások létrehozásához. 
 
     
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy Azure-erőforráscsoportot a [New-AzureRmResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsmaggal. Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat, például a Storage-fiókot, a lemezt, a felügyelt lemezt.
 
@@ -101,7 +101,7 @@ PS C:\windows\system32>
 
 ### <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-Hozzon létre egy új Storage-fiókot az előző lépésben létrehozott erőforráscsoport használatával. Ez egy **helyi Storage-fiók** , amely a virtuális gép virtuális lemezének lemezképének feltöltésére szolgál majd.
+Hozzon létre egy új Storage-fiókot az előző lépésben létrehozott erőforráscsoport használatával. Ez a fiók egy **helyi Storage-fiók** , amelyet a rendszer a virtuális gép virtuális lemezének lemezképének feltöltésére fog használni.
 
 ```powershell
 New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resource group name> -Location DBELocal -SkuName Standard_LRS
@@ -209,7 +209,7 @@ Másolja a korábbi lépésekben létrehozott helyi Storage-fiókban a lapok blo
 
     ![3. VHD-fájl feltöltése](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/upload-vhd-file-3.png)
 
-12. Másolja ki és mentse az **URI** -t, amelyet a későbbi lépésekben fog használni.
+12. Másolja ki és mentse el az **URI**-t, amelyet a későbbi lépésekben fog használni.
 
     ![URI másolása](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/copy-uri-1.png)
 
@@ -237,7 +237,7 @@ A fájl `CreateImage.parameters.json` a következő paramétereket veszi figyele
     }
 ```
 
-Szerkessze a fájlt `CreateImage.parameters.json` , hogy tartalmazza a következőt az Azure stack Edge Pro-eszközhöz:
+Szerkessze a fájlt `CreateImage.parameters.json` , hogy tartalmazza a Azure stack Edge Pro-eszköz következő értékeit:
 
 1. Adja meg a feltölteni kívánt virtuális merevlemezhez tartozó operációsrendszer-típust. Az operációs rendszer típusa Windows vagy Linux lehet.
 
@@ -250,16 +250,17 @@ Szerkessze a fájlt `CreateImage.parameters.json` , hogy tartalmazza a következ
 
 2. Módosítsa a rendszerkép URI-ját az előző lépésben feltöltött rendszerkép URI-azonosítójához:
 
-    ```json
-    "imageUri": {
-        "value": "https://myasegpusavm.blob.myasegpu1.wdshcsso.com/windows/WindowsServer2016Datacenter.vhd"
-        },
-    ```
-    Ha a *http* -t használja a Storage Explorer, módosítsa ezt egy *http* URI-ra.
+   ```json
+   "imageUri": {
+       "value": "https://myasegpusavm.blob.myasegpu1.wdshcsso.com/windows/WindowsServer2016Datacenter.vhd"
+       },
+   ```
+
+   Ha a *http* -t a Storage Explorer használatával használja, módosítsa az URI-t egy *http* URI-ra.
 
 3. Adjon meg egy egyedi rendszerkép-nevet. Ezt a rendszerképet a virtuális gép létrehozásához használhatja a későbbi lépésekben. 
 
-    Itt látható a cikkben használt JSON-minta.
+   Itt látható a cikkben használt JSON-minta.
 
     ```json
     {
@@ -278,6 +279,7 @@ Szerkessze a fájlt `CreateImage.parameters.json` , hogy tartalmazza a következ
       }
     }
     ```
+
 5. Mentse a paramétereket tartalmazó fájlt.
 
 
@@ -588,4 +590,4 @@ A Linux rendszerű virtuális gépekhez való kapcsolódáshoz kövesse az aláb
 
 ## <a name="next-steps"></a>További lépések
 
-[Azure Resource Manager-parancsmagok](/powershell/module/azurerm.resources/?view=azurermps-6.13.0)
+[Azure Resource Manager-parancsmagok](/powershell/module/azurerm.resources/?view=azurermps-6.13.0&preserve-view=true)

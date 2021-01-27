@@ -4,12 +4,12 @@ description: Ebben a cikkben a Azure Backup figyelési riasztással és Azure Ba
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: cf6929b9b926a6e6469f3fa789a19e60d5883d21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e2585009b531512e54ffa889a05ec50038dd619
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89181493"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805866"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure Backup figyelési riasztás – gyakori kérdések
 
@@ -66,9 +66,9 @@ Igen. A következő helyzetekben az értesítések nem lesznek elküldve:
 * Feladat megszakításakor
 * Ha egy második biztonsági mentési művelet meghiúsul, mert az eredeti biztonsági mentési feladata folyamatban van
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További gyakori kérdéseket is áttekinthet:
 
-* [Gyakori kérdések](backup-azure-vm-backup-faq.md) az Azure-beli virtuális gépek biztonsági mentéséről.
+* [Gyakori kérdések](backup-azure-vm-backup-faq.yml) az Azure-beli virtuális gépek biztonsági mentéséről.
 * [Gyakori kérdések](backup-azure-file-folder-backup-faq.md) az Azure Backup-ügynökről

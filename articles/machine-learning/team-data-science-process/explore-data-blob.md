@@ -1,5 +1,5 @@
 ---
-title: Az Azure Blob Storage-ban tárolt adatelemzés a pandák-Team adatelemzési folyamattal
+title: Az Azure Blob Storageban található adatelemzés a Panda-Team adatelemzési folyamattal
 description: Az Azure Blob-tárolóban tárolt, a pandák Python-csomaggal tárolt adatelemzések.
 services: machine-learning
 author: marktab
@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3d80ff9f5f96bbc642aed6598c86cb682d606695
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 855998b887f1d446ee8d196ff4628e066cb5d675
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410674"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805672"
 ---
-# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Adatgyűjtés az Azure Blob Storage-ban a pandák
+# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Az Azure Blob Storageban található adatfelfedezések és a pandák
 
 Ez a cikk bemutatja, hogyan vizsgálhatja meg az Azure Blob-tárolóban tárolt, a [pandák](https://pandas.pydata.org/) Python-csomaggal tárolt adatelemzést.
 

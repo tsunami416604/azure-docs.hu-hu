@@ -1,5 +1,5 @@
 ---
-title: A port és a VLAN névfeloldásának javítása
+title: A port- és VLAN-névfeloldás fejlesztése
 description: A portok és VLAN-nevek testreszabása az érzékelőkön az eszközök feloldása érdekében.
 author: shhazam-ms
 manager: rkarlin
@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 12/13/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 1747af77468ebe41f59892dea4bb49ce24757f37
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 9c976671bccb420ae24d8def7a6574098d86ce6d
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97840236"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98803575"
 ---
-# <a name="enhance-port-and-vlan-name-resolution"></a>A port és a VLAN névfeloldásának javítása
+# <a name="enhance-port-and-vlan-name-resolution"></a>A port- és VLAN-névfeloldás fejlesztése
 
 A portok és VLAN-nevek testreszabhatók az érzékelőkön az eszközök feloldása érdekében.
 
@@ -50,7 +50,7 @@ Egyéni portok nevének meghatározása:
 
 3. Adja meg a portszámot, válassza a **TCP/UDP** lehetőséget, vagy válassza a **mindkettőt**, és adja hozzá a nevet.
 
-4. Válassza a **Mentés** lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
 ## <a name="configure-vlan-names"></a>VLAN-nevek konfigurálása
 
@@ -84,7 +84,8 @@ VLAN-ok konfigurálása:
 
 ## <a name="next-steps"></a>További lépések
 
-A dúsított eszköz adatainak megtekintése a jelentésekben az eszközök leltározásához és adatbányászatához:
+A dúsított eszköz adatainak megtekintése különböző jelentésekben:
 
-- [Érzékelő észlelésének vizsgálata egy eszköz leltározásakor](how-to-investigate-sensor-detections-in-a-device-inventory.md)
-- [Jelentések készítése](how-to-generate-reports.md)
+- [Egy eszközkészlet érzékelői általi észlelések vizsgálata](how-to-investigate-sensor-detections-in-a-device-inventory.md)
+- [Érzékelő trendek és statisztikai jelentések](how-to-create-trends-and-statistics-reports.md)
+- [Érzékelő adatbányászati lekérdezések](how-to-create-data-mining-queries.md)

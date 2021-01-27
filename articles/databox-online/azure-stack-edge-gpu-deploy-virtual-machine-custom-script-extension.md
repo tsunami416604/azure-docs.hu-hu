@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/05/2021
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: d601c6191da9d555e54c1d58c122420510d288fc
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 8b233211f47250d4742d35cd0782cdd241839496
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955552"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804863"
 ---
 # <a name="deploy-custom-script-extension-on-vms-running-on-your-azure-stack-edge-pro-device"></a>Egyéni parancsfájl-bővítmény üzembe helyezése az Azure Stack Edge Pro-eszközön futó virtuális gépeken
 
@@ -62,13 +62,13 @@ If your script is on a local server, then you may still need additional firewall
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. [Töltse le a virtuálisgép-sablonokat és a paraméterek fájljait](https://aka.ms/ase-vm-templates) az ügyfélszámítógépre. Bontsa ki a munkakönyvtárként használni kívánt könyvtárba.
+1. [Töltse le a virtuálisgép-sablonokat és a paraméterek fájljait](https://aka.ms/ase-vm-templates) az ügyfélszámítógépre. Bontsa ki a letöltést egy olyan könyvtárba, amelyet munkakönyvtárként fog használni.
 
-1. Az eszközön létre kell hoznia és telepítenie kell egy virtuális gépet. Virtuális gépek létrehozásához kövesse a [virtuális gép üzembe helyezése a Azure stack Edge Pro](azure-stack-edge-gpu-deploy-virtual-machine-templates.md)-ban című témakör lépéseit sablonok használatával.
+1. Az eszközön létre kell hoznia és telepítenie kell egy virtuális gépet. Virtuális gépek létrehozásához kövesse a [virtuális gép üzembe helyezése a Azure stack Edge Pro](azure-stack-edge-gpu-deploy-virtual-machine-templates.md)-ban című témakör összes lépését sablonok használatával.
 
-    Ha külsőleg le kell töltenie egy parancsfájlt, például a GitHubról vagy az Azure Storage-ból, a számítási hálózat konfigurálásakor engedélyeznie kell az internethez csatlakozó portot a számítási feladatokhoz. Ez lehetővé teszi a szkript letöltését.
+    Ha le kell töltenie egy parancsfájlt, például a GitHubról vagy az Azure Storage-ból kívülről, a számítási hálózat konfigurálása közben engedélyezze az internethez csatlakozó portot a számítási feladatokhoz. Ez lehetővé teszi a szkript letöltését.
 
-    Íme egy példa arra, hogy a 2. port csatlakozik az internethez, és a rendszer a számítási hálózat engedélyezésére használta. Ha azonosította, hogy a Kubernetes nincs szükség az előző lépésben, kihagyhatja a Kubernetes csomópont IP-címét és a külső szolgáltatás IP-hozzárendelését.    
+    A következő példában a 2-es port csatlakozik az internethez, és a rendszer a számítási hálózat engedélyezésére használta. Ha azt állapította meg, hogy a Kubernetes nincs szükség az előző lépésben, kihagyhatja a Kubernetes csomópont IP-címét és a külső szolgáltatás IP-hozzárendelését.
 
     ![Az internethez csatlakozó port számítási beállításainak engedélyezése](media/azure-stack-edge-gpu-deploy-gpu-virtual-machine/enable-compute-network-1.png)
 
@@ -115,7 +115,7 @@ A fájl `addCSExtWindowsVM.parameters.json` a következő paramétereket veszi f
 ```
 Adja meg a virtuális gép nevét, a bővítmény nevét és a végrehajtani kívánt parancsot.
 
-Itt látható egy példa a cikkben használt típusparaméter-fájlra. 
+Itt látható a cikkben használt minta-paraméter.
 
 ```powershell
 {
@@ -158,7 +158,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile $tem
 > [!NOTE]
 > A bővítmény üzembe helyezése hosszú ideig futó feladatot jelent, és körülbelül 10 percet vesz igénybe.
 
-Itt látható egy mintakimenet:
+Íme egy példa kimenet:
 
 ```powershell
 PS C:\WINDOWS\system32> $templateFile = "C:\12-09-2020\ExtensionTemplates\addCSExtensiontoVM.json"
@@ -196,7 +196,7 @@ Egy adott virtuális gép bővítményeinek központi telepítési állapotának
 ```powershell
 Get-AzureRmVMExtension -ResourceGroupName <Name of resource group> -VMName <Name of VM> -Name <Name of the extension>
 ```
-Itt látható egy mintakimenet:
+Íme egy példa kimenet:
 
 ```powershell
 PS C:\WINDOWS\system32> Get-AzureRmVMExtension -ResourceGroupName myasegpuvm1 -VMName VM5 -Name CustomScriptExtension
@@ -281,7 +281,7 @@ A fájl `addCSExtLinuxVM.parameters.json` a következő paramétereket veszi fig
 ```
 Adja meg a virtuális gép nevét, a bővítmény nevét és a végrehajtani kívánt parancsot.
 
-Itt látható egy példa a cikkben használt paraméterre:
+Ebben a cikkben egy példaként használt paramétert tartalmazó fájlt talál:
 
 ```powershell
 $templateFile = "<Path to addCSExtensionToVM.json file>"
@@ -293,7 +293,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile $tem
 > [!NOTE]
 > A bővítmény üzembe helyezése hosszú ideig futó feladatot jelent, és körülbelül 10 percet vesz igénybe.
 
-Itt látható egy mintakimenet:
+Íme egy példa kimenet:
 
 ```powershell
 PS C:\WINDOWS\system32> $templateFile = "C:\12-09-2020\ExtensionTemplates\addCSExtensionToVM.json"
@@ -342,7 +342,7 @@ A Template deployment hosszú ideig futó feladatok. Egy adott virtuális gép b
 ```powershell
 Get-AzureRmVMExtension -ResourceGroupName myResourceGroup -VMName <VM Name> -Name <Extension Name>
 ```
-Itt látható egy mintakimenet: 
+Íme egy példa kimenet: 
 
 ```powershell
 PS C:\WINDOWS\system32> Get-AzureRmVMExtension -ResourceGroupName myasegpuvm1 -VMName VM5 -Name CustomScriptExtension
@@ -381,7 +381,7 @@ Az egyéni szkriptek bővítményének eltávolításához használja a követke
 
 `Remove-AzureRmVMExtension -ResourceGroupName <Resource group name> -VMName <VM name> -Name <Extension name>`
 
-Itt látható egy mintakimenet:
+Íme egy példa kimenet:
 
 ```powershell
 PS C:\WINDOWS\system32> Remove-AzureRmVMExtension -ResourceGroupName myasegpuvm1 -VMName VM6 -Name LinuxCustomScriptExtension
@@ -396,4 +396,4 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 
 ## <a name="next-steps"></a>További lépések
 
-[Azure Resource Manager-parancsmagok](/powershell/module/azurerm.resources/?view=azurermps-6.13.0)
+[Azure Resource Manager-parancsmagok](/powershell/module/azurerm.resources/?view=azurermps-6.13.0&preserve-view=true)

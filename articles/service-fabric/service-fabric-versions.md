@@ -3,12 +3,12 @@ title: Az Azure Service Fabric-fürt verziójának frissítése
 description: Ismerje meg az Azure Service Fabric-beli fürtök verzióit, beleértve a Service Fabric csapat blogján elérhető legújabb kiadásokra mutató hivatkozást is.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: b7234a60c98c42716e5b294c356062ec7001aef7
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: c9a29a97238164b9f6daf9dda66a1f314a7673ce
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762645"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804237"
 ---
 # <a name="upgrade-your-azure-service-fabric-cluster-version"></a>Az Azure Service Fabric-fürt verziójának frissítése
 
@@ -60,13 +60,14 @@ A biztonság és a rendelkezésre állás javítása érdekében az Azure-infras
 #### <a name="if-you-dont-upgrade-to-a-supported-version"></a>Ha nem frissít egy támogatott verzióra
 
 Az 6,3-nál későbbi, változatlan verziókon futó Azure Service Fabric-fürtök a működés vagy a szolgáltatás megszakadásának elvesztését tapasztalják, ha a 2021. január 19-én nem frissítettek támogatott verzióra.
-
-A szolgáltatás megszakadásai a következők lehetnek:
-
-- A **nyílt** üzemmódot *nem* használó verziók: a fürt marad, de a **nyitott** mód működése leáll, ami a munkaterhelések szolgáltatás általi megszakítását okozhatja.
-
-- **Nyílt** módot *használó verziók* : a fürt elérhetetlenné válhat, és nem fog működni, ami a munkaterhelések szolgáltatás általi megszakítását okozhatja.
   
+  - A **6,3-nál nagyobb Service Fabric-verziót futtató fürtök esetében** a fürt továbbra is nyitva marad.
+
+ - A **6,3-nál nagyobb Service Fabric-t futtató fürtök esetében, és a [tárolók nyitott hálózati funkciójának](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) használata** esetén a fürt elérhetetlenné válhat, és megszűnik a működés, ami a munkaterhelések szolgáltatás általi megszakítását okozhatja.
+ 
+ -   A **[7.0.457 és a 7.0.466 közötti Windows-verziókat futtató fürtök esetében (mindkét verzióban megtalálható)](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-version-names) és a Windows rendszerű tárolók funkció engedélyezve van. Megjegyzés: a Linux-verziók 7.0.457, a 7.0.464 és a 7.0.465 nincs hatással**.
+    - **Hatás**: a fürt működése megszűnik, ami a munkaterhelések szolgáltatás általi megszakítását okozhatja.
+    
 #### <a name="required-action"></a>Szükséges művelet
 
 A leállás vagy a funkciók elvesztésének elkerülése érdekében győződjön meg arról, hogy a fürtök a következő verziók egyikét futtatják.
