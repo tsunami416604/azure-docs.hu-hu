@@ -10,12 +10,12 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: c681195a60329320b875cc06919e9440b65eb9e5
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: d2e9e306e979f569819568650b25d49278997ede
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120240"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878527"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>A Microsoft Spark segédprogramok bemutatása
 
@@ -33,13 +33,17 @@ Az alábbi lépések végrehajtásával győződjön meg arról, hogy az Azure A
 1. Nyissa meg a [Azure Portal](https://portal.azure.com/) és az elérni kívánt Storage-fiókot. Navigáljon az elérni kívánt tárolóhoz.
 2. Válassza ki a **hozzáférés-vezérlést (iam)** a bal oldali panelen.
 3. Rendelje hozzá az **Azure ad-fiókot** és **a munkaterület-identitást** (ugyanaz, mint a munkaterület neve) a Storage-beli **blob adatközreműködői** szerepkörhöz a Storage-fiókban, ha még nincs hozzárendelve. 
-4. Válassza a **Mentés** lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
 A következő URL-címen keresztül férhet hozzá ADLS Gen2hoz a szinapszis Spark használatával:
 
 <code>abfss://<container_name>@<storage_account_name>.dfs.core.windows.net/<path></code>
 
-### <a name="configure-access-to-azure-blob-storage"></a>Azure-Blob Storage hozzáférésének konfigurálása 
+<!-- ### Configure access to Azure Blob Storage  -->
+
+:::zone pivot = "programming-language-python"
+
+### <a name="configure-access-to-azure-blob-storage"></a>Azure-Blob Storage hozzáférésének konfigurálása  
 
 A szinapszis kihasználja a **közös hozzáférésű aláírást (SAS)** az Azure Blob Storage eléréséhez. Ha el szeretné kerülni, hogy az SAS-kulcsok a kódban legyenek kitéve, javasoljuk, hogy hozzon létre egy új társított szolgáltatást a szinapszis munkaterületen az elérni kívánt Azure Blob Storage-fiókkal.
 
@@ -58,9 +62,6 @@ Az Azure Blob Storage a következő URL-címen keresztül férhet hozzá a szina
 <code>wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path></code>
 
 Íme egy példa a következő kódra:
-
-
-:::zone pivot = "programming-language-python"
 
 ```python
 from pyspark.sql import SparkSession
@@ -85,6 +86,26 @@ print('Remote blob path: ' + wasb_path)
 
 :::zone pivot = "programming-language-scala"
 
+### <a name="configure-access-to-azure-blob-storage"></a>Azure-Blob Storage hozzáférésének konfigurálása  
+
+A szinapszis kihasználja a **közös hozzáférésű aláírást (SAS)** az Azure Blob Storage eléréséhez. Ha el szeretné kerülni, hogy az SAS-kulcsok a kódban legyenek kitéve, javasoljuk, hogy hozzon létre egy új társított szolgáltatást a szinapszis munkaterületen az elérni kívánt Azure Blob Storage-fiókkal.
+
+Kövesse az alábbi lépéseket egy új társított szolgáltatás Azure Blob Storage-fiókhoz való hozzáadásához:
+
+1. Nyissa meg az [Azure szinapszis Studio alkalmazást](https://web.azuresynapse.net/).
+2. Válassza a **kezelés** lehetőséget a bal oldali panelen, és válassza a **társított szolgáltatások** lehetőséget a **külső kapcsolatok** alatt.
+3. Az **Azure Blob Storage** az **új társított szolgáltatás** panelen keresse meg a jobb oldalon.
+4. Válassza a **Folytatás** lehetőséget.
+5. Válassza ki az Azure Blob Storage fiókot a társított szolgáltatás nevének eléréséhez és konfigurálásához. Azt javasoljuk, hogy a **hitelesítési módszerhez** használja a **fiók kulcsát** .
+6. Válassza a **Kapcsolódás tesztelése** lehetőséget a beállítások helyességének ellenőrzéséhez.
+7. A módosítások mentéséhez válassza az első **Létrehozás** lehetőséget, majd kattintson az **összes közzététele** elemre. 
+
+Az Azure Blob Storage a következő URL-címen keresztül férhet hozzá a szinapszis Sparkhoz:
+
+<code>wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path></code>
+
+Íme egy példa a következő kódra:
+
 ```scala
 val blob_account_name = "" // replace with your blob name
 val blob_container_name = "" //replace with your container name
@@ -101,13 +122,13 @@ spark.conf.set(f"fs.azure.sas.$blob_container_name.$blob_account_name.blob.core.
 
 ::: zone-end
 
-:::zone pivot = "programming-language-csharp"
+<!-- :::zone pivot = "programming-language-csharp"
 
 ```csharp
 
 ```
 
-::: zone-end
+::: zone-end -->
  
 ###  <a name="configure-access-to-azure-key-vault"></a>Azure Key Vaulthoz való hozzáférés konfigurálása
 
@@ -621,11 +642,15 @@ Credentials.GetSecret("azure key vault name","secret name")
 
 ::: zone-end
 
+<!-- ### Put secret using workspace identity
+
+Puts Azure Key Vault secret for a given Azure Key Vault name, secret name, and linked service name using workspace identity. Make sure you configure the access to [Azure Key Vault](#configure-access-to-azure-key-vault) appropriately. -->
+
+:::zone pivot = "programming-language-python"
+
 ### <a name="put-secret-using-workspace-identity"></a>Titkos kód létrehozása a munkaterület identitásával
 
 Azure Key Vault titkot helyez el egy adott Azure Key Vault neve, titkos neve és társított szolgáltatás neve számára a munkaterület-identitás használatával. Győződjön meg arról, hogy megfelelően konfigurálja a hozzáférést [Azure Key Vault](#configure-access-to-azure-key-vault) .
-
-:::zone pivot = "programming-language-python"
 
 ```python
 mssparkutils.credentials.putSecret('azure key vault name','secret name','secret value','linked service name')
@@ -634,26 +659,34 @@ mssparkutils.credentials.putSecret('azure key vault name','secret name','secret 
 
 :::zone pivot = "programming-language-scala"
 
+### <a name="put-secret-using-workspace-identity"></a>Titkos kód létrehozása a munkaterület identitásával
+
+Azure Key Vault titkot helyez el egy adott Azure Key Vault neve, titkos neve és társított szolgáltatás neve számára a munkaterület-identitás használatával. Győződjön meg arról, hogy megfelelően konfigurálja a hozzáférést [Azure Key Vault](#configure-access-to-azure-key-vault) .
+
 ```scala
 mssparkutils.credentials.putSecret("azure key vault name","secret name","secret value","linked service name")
 ```
 
 ::: zone-end
 
-:::zone pivot = "programming-language-csharp"
+<!-- :::zone pivot = "programming-language-csharp"
 
 ```csharp
 
 ```
 
-::: zone-end
+::: zone-end -->
 
+
+<!-- ### Put secret using user credentials
+
+Puts Azure Key Vault secret for a given Azure Key Vault name, secret name, and linked service name using user credentials.  -->
+
+:::zone pivot = "programming-language-python"
 
 ### <a name="put-secret-using-user-credentials"></a>Titkos kód használata felhasználói hitelesítő adatokkal
 
 Azure Key Vault titkos kulcsot helyez el egy adott Azure Key Vault neve, titkos neve és társított szolgáltatás neve számára a felhasználói hitelesítő adatok használatával. 
-
-:::zone pivot = "programming-language-python"
 
 ```python
 mssparkutils.credentials.putSecret('azure key vault name','secret name','secret value')
@@ -662,19 +695,23 @@ mssparkutils.credentials.putSecret('azure key vault name','secret name','secret 
 
 :::zone pivot = "programming-language-scala"
 
+### <a name="put-secret-using-user-credentials"></a>Titkos kód használata felhasználói hitelesítő adatokkal
+
+Azure Key Vault titkos kulcsot helyez el egy adott Azure Key Vault neve, titkos neve és társított szolgáltatás neve számára a felhasználói hitelesítő adatok használatával. 
+
 ```scala
 mssparkutils.credentials.putSecret("azure key vault name","secret name","secret value")
 ```
 
 ::: zone-end
 
-:::zone pivot = "programming-language-csharp"
+<!-- :::zone pivot = "programming-language-csharp"
 
 ```csharp
 
 ```
 
-::: zone-end
+::: zone-end -->
 
 
 ## <a name="environment-utilities"></a>Környezeti segédeszközök 
@@ -876,7 +913,7 @@ Env.GetClusterId()
 
 ::: zone-end
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Tekintse meg a szinapszis-minta jegyzetfüzeteket](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks)
 - [Rövid útmutató: Apache Spark-készlet létrehozása az Azure szinapszis Analyticsben webes eszközök használatával](../quickstart-apache-spark-notebook.md)

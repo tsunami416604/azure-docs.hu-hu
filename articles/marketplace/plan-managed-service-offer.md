@@ -8,12 +8,12 @@ author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
 ms.date: 12/23/2020
-ms.openlocfilehash: a504969d23fce8000119aadf9e45d599da0894f0
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 57a6883a2c4fff14507df27b55ac0f6621306bf5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97918179"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879275"
 ---
 # <a name="how-to-plan-a-managed-service-offer-for-the-microsoft-commercial-marketplace"></a>Felügyelt szolgáltatási ajánlat tervezése a Microsoft kereskedelmi piactéren
 
@@ -25,7 +25,7 @@ A felügyelt szolgáltatások olyan Azure Marketplace-ajánlatok, amelyek lehet�
 
 A felügyelt szolgáltatások közzétételéhez a Microsoft a Cloud platformon szerzett Gold vagy Silver Microsoft kompetenciát kell megszereznie. Ez a kompetencia mutatja be szakértelmét az ügyfeleknek. További információ: [Microsoft Partner Network kompetenciák](https://partner.microsoft.com/membership/competencies).
 
-Az ajánlatoknak meg kell felelniük az Azure Marketplace-en közzétenni kívánt [kereskedelmi Piactéri minősítési szabályzatoknak](https://docs.microsoft.com/legal/marketplace/certification-policies) .
+Az ajánlatoknak meg kell felelniük az Azure Marketplace-en közzétenni kívánt [kereskedelmi Piactéri minősítési szabályzatoknak](/legal/marketplace/certification-policies) .
 
 ## <a name="customer-leads"></a>Ügyfél-érdeklődők
 
@@ -46,7 +46,7 @@ Amikor létrehoz egy felügyelt szolgáltatási ajánlatot a partner Centerben, 
 **Lehívási leírások**
 
 1. Embléma
-1. Név
+1. Name
 1. Rövid leírás
 1. Kategóriák
 1. Jogi szerződések és adatvédelmi szabályzat
@@ -129,7 +129,7 @@ A felügyelt szolgáltatáshoz legalább egy csomag szükséges. A terv meghatá
 
 A felügyelt szolgáltatások csak egy díjszabási modellt támogatnak: **saját licenc használata (BYOL)**. Ez azt jelenti, hogy közvetlenül számlázza az ügyfeleit, és a Microsoft nem számít fel díjat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Felügyelt szolgáltatásra vonatkozó ajánlat létrehozása](./create-managed-service-offer.md)
 * [Ajánlatlistákra vonatkozó ajánlott eljárások](./gtm-offer-listing-best-practices.md)

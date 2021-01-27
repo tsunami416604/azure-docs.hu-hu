@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: alkohli
-ms.openlocfilehash: a99d4f6a3957ca5dd4d07a50ff239b1988940fbe
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 968d8ad6e76956a12e1f8ddcf091eb905686d245
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96582097"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98900966"
 ---
 - A Storage-fióknak fizikailag legközelebb kell lennie ahhoz a régióhoz, ahol az eszköz telepítve van (Ez különbözhet a szolgáltatás telepítésének helyétől).
-- A Data Box Gateway-erőforrások áthelyezése egy másik előfizetésbe vagy erőforráscsoportba nem támogatott. További részletekért lásd: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésre](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
+- A Data Box Gateway-erőforrások áthelyezése egy másik előfizetésbe vagy erőforráscsoportba nem támogatott. További részletekért lásd: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésre](../articles/azure-resource-manager/management/move-resource-group-and-subscription.md).

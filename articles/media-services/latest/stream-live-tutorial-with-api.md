@@ -1,27 +1,11 @@
 ---
-title: Élő stream Media Services v3
-titleSuffix: Azure Media Services
-description: Ismerje meg, hogyan közvetítheti élőben a Azure Media Services v3.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: tutorial
-ms.custom: mvc, devx-track-csharp
-ms.date: 06/13/2019
-ms.author: inhenkel
-ms.openlocfilehash: b2e456474a9d052d9515c8169ce233e9577a5c53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89256565"
+title: élő stream a Media Services v3: Azure Media Services Leírás: megtudhatja, hogyan közvetítheti élőben a Azure Media Services v3.
+szolgáltatások: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' '
+
+MS. Service: Media-Services MS. munkaterhelés: Media ms.tgt_pltfrm: na MS. devlang: na MS. topic: oktatóanyag MS. Custom: "MVC, DevX-Track-csharp" MS. Date: 06/13/2019 MS. Author: inhenkel
+
 ---
+
 # <a name="tutorial-stream-live-with-media-services"></a>Oktatóanyag: élő közvetítés Media Services
 
 > [!NOTE]
@@ -188,7 +172,7 @@ az group delete --name amsResourceGroup
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Videofájlok streamelése](stream-files-tutorial-with-api.md)
  

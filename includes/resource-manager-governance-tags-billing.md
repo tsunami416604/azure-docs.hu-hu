@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/19/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 226079b1970508004c55c54cd3de6d2e9475aa08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34388fe975df359c695b9358cafcd3ae711af0cf
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75970124"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98900988"
 ---
 Az erőforrások felcímkézése után megtekintheti az adott címkével ellátott erőforrások költségét. A legutóbbi használati adatok megjelenítése eltarthat egy darabig a költségelemzés számára, tehát előfordulhat, hogy rögtön nem látja a költségeket. Amikor a költségek már elérhetők, megtekintheti az előfizetésében lévő erőforráscsoportok erőforrásainak költségét. A költségek megtekintéséhez a felhasználóknak [előfizetéses szintű hozzáféréssel](../articles/cost-management-billing/manage/manage-billing-access.md) kell rendelkezniük a számlázási adatokhoz.
 
@@ -25,4 +25,4 @@ Ezután szűrjön címkeérték szerint, és válassza az **Alkalmaz** lehetős�
 
 ![Költség megtekintése címke szerint](./media/resource-manager-governance-tags-billing/view-costs-by-tag.png)
 
-Használhatja az [Azure-beli számlázási API-kat](../articles/cost-management-billing/manage/usage-rate-card-overview.md) is a költségek programozott módon való megtekintéséhez.
+Az [Azure használati API áttekintése](../articles/cost-management-billing/manage/consumption-api-overview.md) segítségével programozott módon tekintheti meg a költségeket.

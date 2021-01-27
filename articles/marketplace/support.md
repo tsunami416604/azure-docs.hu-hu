@@ -7,19 +7,19 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 01/19/2020
-ms.openlocfilehash: 6075027124352746a3adbb8f6937d3787eb22b9d
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: a1726b29c153bf680d29fe821ac34aa958064335
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602588"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879241"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>A kereskedelmi piactér program támogatása a partner Centerben
 
 A Microsoft számos termék és szolgáltatás támogatását biztosítja. A megfelelő támogatási csapat megtalálása fontos a megfelelő és kellő időben történő válaszadás biztosításához. Vegye figyelembe a következő forgatókönyveket, amelyek segítenek a lekérdezés átirányításában a megfelelő csapatnak:
 
 - Ha Ön kiadó, és kérdése van egy ügyféltől, kérje meg az ügyfelet, hogy kérjen támogatást a [Azure Portal](https://portal.azure.com/)támogatási hivatkozásait használva.
-- Ha Ön közzétevő, és biztonsági problémát észlelt az Azure-on futó alkalmazással kapcsolatban, tekintse meg [a biztonsági eseményekre vonatkozó támogatási jegy naplózása](/azure/security/fundamentals/event-support-ticket)című témakört. A kiadóknak a lehető leghamarabb jelenteniük kell a feltételezett biztonsági eseményeket, beleértve az Azure Marketplace-szoftverek és-szolgáltatások biztonsági incidenseit és biztonsági réseit.
+- Ha Ön közzétevő, és biztonsági problémát észlelt az Azure-on futó alkalmazással kapcsolatban, tekintse meg [a biztonsági eseményekre vonatkozó támogatási jegy naplózása](../security/fundamentals/event-support-ticket.md)című témakört. A kiadóknak a lehető leghamarabb jelenteniük kell a feltételezett biztonsági eseményeket, beleértve az Azure Marketplace-szoftverek és-szolgáltatások biztonsági incidenseit és biztonsági réseit.
 - Ha Ön kiadó, és az alkalmazásával vagy szolgáltatásával kapcsolatos kérdése van, tekintse át a következő támogatási lehetőségeket.
 
 ## <a name="get-help-or-open-a-support-ticket"></a>Segítség kérése vagy támogatási jegy megnyitása

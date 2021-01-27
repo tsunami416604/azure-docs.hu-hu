@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 1/15/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 71de1d17731e086d012da5365fa6671bcb9e6e3b
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 49184778c7d6592f074e04df535b9bc221f3162e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539248"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878799"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -206,8 +206,8 @@ Azon a kiszolgálón, amely a "kapcsolat nélküli állapotban" üzenet jelenik 
     - Ha a kiszolgáló proxy mögött van, a proxy [dokumentációjában](./storage-sync-files-firewall-and-proxy.md#proxy)ismertetett lépéseket követve konfigurálja a számítógép-szintű vagy alkalmazásspecifikus proxybeállításokat.
     - A Test-StorageSyncNetworkConnectivity parancsmag használatával ellenőrizheti a szolgáltatás-végpontokkal létesített hálózati kapcsolatot. További információért lásd: [hálózati kapcsolat tesztelése a szolgáltatási végpontokkal](./storage-sync-files-firewall-and-proxy.md#test-network-connectivity-to-service-endpoints).
     - Ha a TLS titkosítási csomag megrendelése konfigurálva van a kiszolgálón, akkor a csoportházirend vagy a TLS-parancsmagok segítségével titkosítási csomagokat adhat hozzá:
-        - Ha csoportházirendet szeretne használni, tekintse meg a [TLS titkosítási csomag megrendelésének konfigurálása csoportházirend használatával](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-group-policy)című témakört.
-        - A TLS-parancsmagok használatához lásd: [TLS titkosítási csomag rendelésének konfigurálása TLS PowerShell-parancsmagok használatával](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-tls-powershell-cmdlets).
+        - Ha csoportházirendet szeretne használni, tekintse meg a [TLS titkosítási csomag megrendelésének konfigurálása csoportházirend használatával](/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-group-policy)című témakört.
+        - A TLS-parancsmagok használatához lásd: [TLS titkosítási csomag rendelésének konfigurálása TLS PowerShell-parancsmagok használatával](/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-tls-powershell-cmdlets).
     
         A Azure File Sync jelenleg a következő titkosítási csomagokat támogatja a TLS 1,2 protokollhoz:  
         - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P384  
@@ -931,7 +931,7 @@ Ez a hiba akkor fordul elő, ha a kiszolgáló-végpont elérési útjaként has
 Ha a könyvtárat törölték, hajtsa végre a következő lépéseket a meglévő kiszolgálói végpont eltávolításához, és hozzon létre egy új kiszolgálói végpontot egy új elérési úttal:
 
 1. Távolítsa el a kiszolgálói végpontot a szinkronizálási csoportban a [kiszolgálói végpont eltávolítása](./storage-sync-files-server-endpoint.md#remove-a-server-endpoint)című témakörben leírt lépéseket követve.
-2. Hozzon létre egy új kiszolgálói végpontot a szinkronizálási csoportban a [kiszolgálói végpont hozzáadása](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#add-a-server-endpoint)című cikkben ismertetett lépéseket követve.
+2. Hozzon létre egy új kiszolgálói végpontot a szinkronizálási csoportban a [kiszolgálói végpont hozzáadása](./storage-sync-files-server-endpoint.md#add-a-server-endpoint)című cikkben ismertetett lépéseket követve.
 
 ### <a name="common-troubleshooting-steps"></a>Gyakori hibaelhárítási lépések
 <a id="troubleshoot-storage-account"></a>**Ellenőrizze, hogy létezik-e a Storage-fiók.**  
@@ -1336,7 +1336,7 @@ Az ügynök V10-es és korábbi verzióiban:
 6. A rendszer a naplókat és nyomkövetési fájlokat tartalmazó. zip-fájlt menti a megadott kimeneti könyvtárba.
 
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 - [Az Azure File Sync monitorozása](storage-sync-files-monitoring.md)
 - [Azure Files gyakori kérdések](storage-files-faq.md)
 - [Azure Files-problémák hibaelhárítása Windowson](storage-troubleshoot-windows-file-connection-problems.md)

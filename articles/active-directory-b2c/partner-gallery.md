@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6af68f51e76f60c807be2008ae61e27879ebbb11
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 5012e90aae316897454ffc7933efc88d83afdf6e
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703207"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98893379"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>ISV-partnerek Azure Active Directory B2C
 
@@ -74,6 +74,7 @@ Microsoft-partnerek a következő biztonsági ISV-val.
 | ISV-partner | Leírás és integrációs útmutató |
 |:-------------------------|:--------------|
 | ![Képernyőkép a Arkóz labor emblémáról](./media/partner-gallery/arkose-logo.png) | A [Arkóz Labs](./partner-arkose-labs.md) egy csalások elleni megelőzési megoldás szolgáltatója, amely segítséget nyújt a szervezeteknek a robotok elleni támadásokkal, a fiókok átvételi támadásokkal és a csalárd fiókok megnyitásával |
+| ![Képernyőkép a ping logóról](./media/partner-gallery/ping-logo.png) | A [ping Identity](./partner-ping-identity.md) lehetővé teszi, hogy a biztonságos hibrid hozzáférést biztosítson a helyszíni örökölt alkalmazásokhoz több felhőben. |
 | ![Képernyőfelvétel a rétegek emblémáról](./media/partner-gallery/strata-logo.png) | A [rétegek](./partner-strata.md) biztonságos hibrid hozzáférést biztosítanak a helyszíni alkalmazásokhoz a konzisztens hozzáférési házirendek betartatásával, az identitások szinkronban tartásával, valamint egyszerűvé teszik a régi identitású rendszerekből származó alkalmazások átváltását a szabvány alapú hitelesítésre és a Azure ad B2C által biztosított hozzáférés-vezérlésre. |
 | ![Képernyőkép egy zscaler-emblémáról](./media/partner-gallery/zscaler-logo.png) | A [Zscaler](./partner-zscaler.md) házirend-alapú, biztonságos hozzáférést biztosít a privát alkalmazásokhoz és az eszközökhöz a VPN-t érintő többletköltségek, szóváltás vagy biztonsági kockázatok nélkül. |
 
@@ -83,6 +84,6 @@ Microsoft-partnerek a következő biztonsági ISV-val.
 
 - [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](./custom-policy-get-started.md?tabs=applications)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Válasszon ki egy partnert az említett táblázatokban, és Ismerje meg, hogyan integrálhatja megoldását Azure AD B2C használatával.

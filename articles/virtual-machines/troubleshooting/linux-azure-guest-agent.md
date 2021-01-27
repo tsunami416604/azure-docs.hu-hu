@@ -11,23 +11,23 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/17/2020
 ms.author: axelg
-ms.openlocfilehash: 247324c30bbe0edaef78c0b0d5e6a6d593e8cac9
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 62b462d8e75fc291ac599ac99dbe4fb3a74fde2b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586397"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878697"
 ---
 # <a name="troubleshoot-the-azure-linux-agent"></a>Az Azure Linux-ügynök hibáinak megoldása
 
-Az [Azure Linux-ügynök](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) lehetővé teszi egy virtuális gép (VM) számára, hogy kommunikáljon a háló vezérlővel (az alapul szolgáló fizikai kiszolgáló, AMELYEN a virtuális gép fut) az IP-168.63.129.16.
+Az [Azure Linux-ügynök](../extensions/agent-linux.md) lehetővé teszi egy virtuális gép (VM) számára, hogy kommunikáljon a háló vezérlővel (az alapul szolgáló fizikai kiszolgáló, AMELYEN a virtuális gép fut) az IP-168.63.129.16.
 
 >[!NOTE]
 >Ez az IP-cím egy virtuális nyilvános IP-cím, amely megkönnyíti a kommunikációt, és nem tiltható le. További információ: [Mi az az IP-168.63.129.16?](../../virtual-network/what-is-ip-address-168-63-129-16.md).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ellenőrizze az ügynök állapotát és verzióját, és győződjön meg arról, hogy az továbbra is támogatott. A verzió támogatásának megtekintéséhez tekintse meg az Azure-beli [virtuálisgép-ügynökök minimális verziószám-támogatását](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/support-extensions-agent-version) , vagy tekintse meg az állapot és a verzió megkereséséhez szükséges [WALinuxAgent kapcsolatos gyakori kérdéseket](https://github.com/Azure/WALinuxAgent/wiki/FAQ#what-does-goal-state-agent-mean-in-waagent---version-output) .
+Ellenőrizze az ügynök állapotát és verzióját, és győződjön meg arról, hogy az továbbra is támogatott. A verzió támogatásának megtekintéséhez tekintse meg az Azure-beli [virtuálisgép-ügynökök minimális verziószám-támogatását](/troubleshoot/azure/virtual-machines/support-extensions-agent-version) , vagy tekintse meg az állapot és a verzió megkereséséhez szükséges [WALinuxAgent kapcsolatos gyakori kérdéseket](https://github.com/Azure/WALinuxAgent/wiki/FAQ#what-does-goal-state-agent-mean-in-waagent---version-output) .
 
 ## <a name="troubleshoot-a-not-ready-status"></a>Nem üzemkész állapottal való hibakeresés
 
@@ -64,7 +64,7 @@ Ellenőrizze az ügynök állapotát és verzióját, és győződjön meg arró
    AutoUpdate.Enabled=y
    ```
 
-   Az Azure Linux-ügynök frissítésével kapcsolatos további információkért lásd: [Az Azure Linux-ügynök frissítése egy virtuális gépen](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent).
+   Az Azure Linux-ügynök frissítésével kapcsolatos további információkért lásd: [Az Azure Linux-ügynök frissítése egy virtuális gépen](../extensions/update-linux-agent.md).
 
 1. Győződjön meg arról, hogy a virtuális gép tud csatlakozni a háló vezérlőhöz. A curl használatával tesztelheti, hogy a virtuális gép tud-e csatlakozni a 168.63.129.16 a 80, 443 és 32526 portokon. Ha a virtuális gép nem a várt módon kapcsolódik, ellenőrizze, hogy az 80-es, 443-as és 32526-as porton keresztüli kimenő kommunikáció nyitva van-e a virtuális gépen a helyi tűzfalon. Ha ez az IP-cím le van tiltva, előfordulhat, hogy a virtuálisgép-ügynök váratlan viselkedést jelez.
 
@@ -86,6 +86,6 @@ A probléma megoldása:
 * Keresse meg a tűzfal, a proxy vagy más olyan probléma okozta problémákat, amelyek blokkolják az IP-168.63.129.16 való hozzáférést.
 * Győződjön meg arról, hogy a Linux iptables vagy egy harmadik féltől származó tűzfal blokkolja-e a 80, 443 és 32526 portokhoz való hozzáférést.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure Linux-ügynökkel kapcsolatos problémák további elhárításához [forduljon a Microsoft ügyfélszolgálatához](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

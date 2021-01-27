@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: e188c74c6eba5e4182f7b72277db8dd8e08db8d4
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 714b7bccea9b1e0c18ad78a4d98ed3526a279f5f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913931"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879258"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>SaaS-ajánlat tervezése a kereskedelmi piactéren
 
@@ -114,7 +114,7 @@ Ha az SaaS-ajánlat *az IT* -megoldás (Azure Marketplace) és egy üzleti megol
 | Mért számlázás | Nyilvános csomag | Saját csomag | Elérhető itt: |
 |---|---|---|---|
 | Igen             | Igen         | Nem           | Azure Marketplace és Azure Portal |
-| Igen             | Igen         | Yes          | Azure Marketplace és Azure Portal * |
+| Igen             | Igen         | Igen          | Azure Marketplace és Azure Portal * |
 | Igen             | Nem          | Igen          | Csak Azure Portal |
 | Nem              | Nem          | Igen          | Csak Azure Portal |
 |||||
@@ -202,7 +202,7 @@ Ha könnyebben létre szeretné hozni az ajánlatot, készítse elő ezeket az e
   - . png fájl
   - Tartalmaznia kell egy feliratot
 - **Média – videók** (nem kötelező): legfeljebb négy videót adhat hozzá az alábbi követelményekkel:
-  - Név
+  - Name
   - URL: csak a YouTube vagy a Vimeo szolgáltatásban kell tárolni.
   - Miniatűr: 1280 x 720. png fájl
 
@@ -250,7 +250,7 @@ Az alábbi példa a költségek és a kifizetések mintájának részletezését
 | A Microsoft a licencelési díj 80%-ában fizet<br>`*` A minősített SaaS-alkalmazások esetében a Microsoft a licencelési díj 90%-ában fizet| $80,00/hó<br>``*`` $90,00/hó |
 |||
 
-**`*` Csökkentett Piactéri szolgáltatási díj** – a kereskedelmi piactéren közzétett egyes SaaS-ajánlatok esetében a Microsoft a piactér szolgáltatási díját 20%-kal csökkenti (a Microsoft kiadói szerződésben leírtak szerint) 10%-ra. Az ajánlat (ok) minősítéséhez az ajánlat (oka) t a Microsoft Azure IP közös értékesítésű incentivized kell megjelölni. A jogosultságot minden naptári hónap végét megelőzően legalább öt (5) munkanapon belül teljesíteni kell, hogy megkapják a Piactéri szolgáltatási díjat. Ha a jogosultság teljesül, a csökkentett szolgáltatási díjat az összes tranzakció a következő hónap első napján érvényes, és továbbra is érvényben marad, amíg az Azure-beli IP-címek közös értékesítésének incentivized állapota elvész. Az IP-címek közös értékesítésének támogathatóságával kapcsolatos további információkért lásd: [a közös értékesítésre vonatkozó követelmények](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status). A csökkentett Piactéri szolgáltatási díj az Azure IP-incentivized virtuális gépekre, a felügyelt alkalmazásokra és minden más, a kereskedelmi piactéren elérhetővé tett IaaS-ajánlatra is vonatkozik.
+**`*` Csökkentett Piactéri szolgáltatási díj** – a kereskedelmi piactéren közzétett egyes SaaS-ajánlatok esetében a Microsoft a piactér szolgáltatási díját 20%-kal csökkenti (a Microsoft kiadói szerződésben leírtak szerint) 10%-ra. Az ajánlat (ok) minősítéséhez az ajánlat (oka) t a Microsoft Azure IP közös értékesítésű incentivized kell megjelölni. A jogosultságot minden naptári hónap végét megelőzően legalább öt (5) munkanapon belül teljesíteni kell, hogy megkapják a Piactéri szolgáltatási díjat. Ha a jogosultság teljesül, a csökkentett szolgáltatási díjat az összes tranzakció a következő hónap első napján érvényes, és továbbra is érvényben marad, amíg az Azure-beli IP-címek közös értékesítésének incentivized állapota elvész. Az IP-címek közös értékesítésének támogathatóságával kapcsolatos további információkért lásd: [a közös értékesítésre vonatkozó követelmények](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status). A csökkentett Piactéri szolgáltatási díj az Azure IP-incentivized virtuális gépekre, a felügyelt alkalmazásokra és minden más, a kereskedelmi piactéren elérhetővé tett IaaS-ajánlatra is vonatkozik.
 
 ## <a name="additional-sales-opportunities"></a>További értékesítési lehetőségek
 
@@ -258,9 +258,9 @@ Dönthet úgy, hogy a Microsoft által támogatott marketing-és értékesítés
 
 - **Viszonteladás a CSP**-n keresztül: ezzel a beállítással engedélyezheti, hogy a Microsoft Cloud-szolgáltatói (CSP) partnerek egy csomagban lévő ajánlat részeként eladják a megoldást. További információ erről a programról: [Cloud Solution Provider program](cloud-solution-providers.md).
 
-- **Közös értékesítés a Microsofttal**: Ez a beállítás lehetővé teszi, hogy a Microsoft értékesítési csapatai az ügyfelek igényeinek kiértékelése során fontolják meg az Ön IP-címének közös értékesítését. A közös értékesítésre vonatkozó jogosultsággal kapcsolatos részletekért lásd: [a közös értékesítésre vonatkozó követelmények](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status). Az ajánlat értékelésre való előkészítésével kapcsolatos részletes információkért lásd: [közös értékesítés lehetőség a partner Centerben](commercial-marketplace-co-sell.md).
+- **Közös értékesítés a Microsofttal**: Ez a beállítás lehetővé teszi, hogy a Microsoft értékesítési csapatai az ügyfelek igényeinek kiértékelése során fontolják meg az Ön IP-címének közös értékesítését. A közös értékesítésre vonatkozó jogosultsággal kapcsolatos részletekért lásd: [a közös értékesítésre vonatkozó követelmények](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status). Az ajánlat értékelésre való előkészítésével kapcsolatos részletes információkért lásd: [közös értékesítés lehetőség a partner Centerben](commercial-marketplace-co-sell.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [SaaS-ajánlat létrehozása a kereskedelmi piactéren](create-new-saas-offer.md)
 - [Ajánlatlistákra vonatkozó ajánlott eljárások](gtm-offer-listing-best-practices.md)

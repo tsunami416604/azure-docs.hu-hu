@@ -8,12 +8,12 @@ ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 6390aafca4937a480e4d92ff04003a294b9c0e20
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: c4e85195ace0a24aa11d4a03b8f429f2714399b0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356174"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879156"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -37,7 +37,7 @@ További információkért tekintse meg a jelen cikk példák című szakaszát.
 ## <a name="related-conceptual-articles"></a>Kapcsolódó fogalmi cikkek
 
 - [Bevezetés az AzCopy használatába](storage-use-azcopy-v10.md)
-- [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](storage-use-azcopy-blobs.md)
+- [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](./storage-use-azcopy-v10.md#transfer-data)
 - [Adatok átvitele az AzCopy használatával és fájltárolás](storage-use-azcopy-files.md)
 - [AzCopy konfigurálása, optimalizálása és megoldása](storage-use-azcopy-configure.md)
 
@@ -284,7 +284,7 @@ a- **-include-Path** sztring csak a másoláskor tartalmazza ezeket az elérési
 
 **--include-Pattern** sztring csak a másoláskor tartalmazza ezeket a fájlokat. Ez a beállítás támogatja a helyettesítő karaktereket (*). Külön fájlok a használatával `;` .
 
-a **--Versions** karakterlánc egy olyan fájlt ad meg, amelyben minden verzióazonosító külön sorban szerepel. Győződjön meg arról, hogy a forrásnak egyetlen blobra kell mutatnia, és a fájlban megadott összes verzióazonosító csak a forrás blobhoz tartozhat. A AzCopy letölti a megadott verziókat a megadott célmappában. További információ: [a blob korábbi verzióinak letöltése](storage-use-azcopy-blobs.md#download-previous-versions-of-a-blob).
+a **--Versions** karakterlánc egy olyan fájlt ad meg, amelyben minden verzióazonosító külön sorban szerepel. Győződjön meg arról, hogy a forrásnak egyetlen blobra kell mutatnia, és a fájlban megadott összes verzióazonosító csak a forrás blobhoz tartozhat. A AzCopy letölti a megadott verziókat a megadott célmappában. További információ: [a blob korábbi verzióinak letöltése](./storage-use-azcopy-v10.md#transfer-data).
 
 **--a log szintű** karakterlánc határozza meg a naplófájl részletességét, a rendelkezésre álló szinteket: info (minden kérelem/válasz), figyelmeztetés (lassú válasz), hiba (csak sikertelen kérések), és nincs (nincs kimeneti napló). (alapértelmezett `INFO` ). 
 

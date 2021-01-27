@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: e364578cdec8696688cf19e14fd0529f1ca3fbb3
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 223fdc215bc391bea5cad5d4cb9999b9d14ba570
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842617"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878782"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Linux-rendszerképek készítése és létrehozása az Azure-ban
 
@@ -29,7 +29,7 @@ Az Azure lehetővé teszi, hogy egy virtuális merevlemezt a platformra, [felüg
 
 Az Azure Managed Disks egyetlen virtuális merevlemez. Létrehozhat egy meglévő VHD-t, és létrehozhat egy felügyelt lemezt, vagy létrehozhat egy üres, felügyelt lemezt. Létrehozhat virtuális gépeket a felügyelt lemezekről úgy, hogy csatlakoztatja a lemezt a virtuális géphez, de csak egy virtuális géppel rendelkező virtuális merevlemezt tud használni. Az operációs rendszer tulajdonságai nem módosíthatók, az Azure csak a virtuális gép bekapcsolását és a lemez használatának megkezdését kísérli meg. 
 
-Az Azure-lemezképek több operációsrendszer-lemezből és adatlemezből is készíthetők. Ha felügyelt rendszerképet használ a virtuális gép létrehozásához, a platform másolatot készít a rendszerképről, és ezt használja a virtuális gép létrehozásához, így a felügyelt rendszerkép támogatja ugyanazt a rendszerképet több virtuális gép esetében. Az Azure speciális felügyeleti funkciókat is biztosít a rendszerképekhez, például a globális replikáláshoz és a [megosztott](shared-image-galleries.md)képkatalóguson keresztül történő verziószámozáshoz. 
+Az Azure-lemezképek több operációsrendszer-lemezből és adatlemezből is készíthetők. Ha felügyelt rendszerképet használ a virtuális gép létrehozásához, a platform másolatot készít a rendszerképről, és ezt használja a virtuális gép létrehozásához, így a felügyelt rendszerkép támogatja ugyanazt a rendszerképet több virtuális gép esetében. Az Azure speciális felügyeleti funkciókat is biztosít a rendszerképekhez, például a globális replikáláshoz és a [megosztott](../shared-image-galleries.md)képkatalóguson keresztül történő verziószámozáshoz. 
 
 
 
@@ -37,7 +37,7 @@ Az Azure-lemezképek több operációsrendszer-lemezből és adatlemezből is k�
 
 Az Azure két fő képtípust kínál, általánosítva és specializálva. Az általánosított és specializált kifejezések eredetileg Windows-feltételek, amelyek az Azure-ba migrálva vannak. Ezek a típusok határozzák meg, hogy a platform hogyan fogja kezelni a virtuális gépet, amikor bekapcsolja. Mindkét típushoz előnyök és hátrányok tartoznak, és előfeltételei vannak. Az első lépések előtt tudnia kell, hogy milyen típusú rendszerképekre lesz szüksége. Az alábbi összefoglalja a forgatókönyveket és a szükséges típusokat:
 
-| Használati eset      | Lemezkép típusa  | Tárolási lehetőségek |
+| Eset      | Lemezkép típusa  | Tárolási lehetőségek |
 | ------------- |:-------------:| :-------------:| 
 | Hozzon létre egy olyan rendszerképet, amely több virtuális gép általi használatra is konfigurálható, és beállítható az állomásnév, rendszergazdai felhasználó hozzáadása és egyéb feladatok végrehajtása az első rendszerindítás során. | Általánosított | Megosztott képgyűjtemény vagy önálló felügyelt lemezképek |
 | Rendszerkép létrehozása VM-pillanatképből vagy biztonsági másolatból | Specializált |Megosztott képgyűjtemény vagy felügyelt lemez |
@@ -65,7 +65,7 @@ Ezekhez a lemezképekhez nem szükségesek kiépítési ügynökök, azonban leh
 A Linux-rendszerkép létrehozásakor két lehetőség közül választhat:
 
 - Felügyelt lemezképek egyszerű virtuális gépek létrehozásához fejlesztési és tesztelési környezetben.
-- [Megosztott](shared-image-galleries.md) képkatalógus a rendszerképek méretének létrehozásához és megosztásához.
+- [Megosztott](../shared-image-galleries.md) képkatalógus a rendszerképek méretének létrehozásához és megosztásához.
 
 
 ### <a name="managed-images"></a>Felügyelt lemezképek
@@ -76,7 +76,7 @@ A felügyelt lemezképek fejlesztési és tesztelési környezetekhez használha
 
 ### <a name="azure-shared-image-gallery-sig"></a>Azure Shared Képgaléria (SIG)
 
-A [megosztott képtárakat](shared-image-galleries.md) a lemezképek nagy léptékű létrehozásához, kezeléséhez és megosztásához ajánljuk. A megosztott képtárak segítenek felépíteni a lemezképek körét a szerkezet és a szervezet számára.  
+A [megosztott képtárakat](../shared-image-galleries.md) a lemezképek nagy léptékű létrehozásához, kezeléséhez és megosztásához ajánljuk. A megosztott képtárak segítenek felépíteni a lemezképek körét a szerkezet és a szervezet számára.  
 
 - Az általánosított és a speciális rendszerképek támogatása.
 - Az 1. és a 2. generációs lemezképek támogatása.
@@ -108,6 +108,6 @@ Ha továbbra is létre kell hoznia egy saját rendszerképet, győződjön meg a
 - [Ubuntu](create-upload-ubuntu.md)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan hozhat létre [megosztott képtárat](tutorial-custom-images.md).

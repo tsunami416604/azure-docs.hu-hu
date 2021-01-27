@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 58a907a2ae17966f50a037f49a807ac0a3ad6867
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 2b195d865a07af9f3166c5225e8de3d0a9b0e749
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96545828"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879309"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>A blob Storage funkciói a Azure Data Lake Storage Gen2ban érhetők el
 
@@ -42,10 +42,10 @@ A következő táblázat azt mutatja be, hogy az egyes Blobok tárolási funkci�
 |Bejelentkezés Azure Monitor|Előnézet |Előnézet|[Az Azure Storage figyelése](./monitor-blob-storage.md)|
 |Pillanatképek|Előnézet<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|Előnézet<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[BLOB-Pillanatképek](snapshots-overview.md)|
 |Statikus webhelyek|Előnézet<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|Előnézet<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[Statikus webhely üzemeltetés az Azure Storage-ban](storage-blob-static-website.md)|
-|Megváltoztathatatlan tároló|Előnézet<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|Előnézet<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[Üzleti szempontból kritikus fontosságú blob-alapú adattárolás tárolása a nem módosítható tárolóval](storage-blob-immutable-storage.md)|
+|Megváltoztathatatlan tároló|Előnézet<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|Előnézet<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[Az üzlet szempontjából létfontosságú blobadatok tárolása nem módosítható tárolással](storage-blob-immutable-storage.md)|
 |Tároló – Soft delete|Előnézet|Előnézet|[Tárolók törlése (előzetes verzió)](soft-delete-container-overview.md)|
 |Azure Storage-leltár|Előnézet|Előnézet|[Az Azure Storage-leltár használata a blob-adatkezeléshez (előzetes verzió)](blob-inventory.md)|
-|Blobos törlés|Még nem támogatott|Még nem támogatott|[Blobok helyreállítható törlése](storage-blob-soft-delete.md)|
+|Blobos törlés|Még nem támogatott|Még nem támogatott|[Blobok helyreállítható törlése](./soft-delete-blob-overview.md)|
 |Blobfuse|Általánosan elérhető|Általánosan elérhető|[BLOB Storage csatlakoztatása fájlrendszerként a blobfuse-mel](storage-how-to-mount-container-linux.md)|
 |Névtelen nyilvános hozzáférés |Általánosan elérhető|Általánosan elérhető| Lásd: [Névtelen nyilvános olvasási hozzáférés beállítása tárolók és Blobok számára](anonymous-read-access-configure.md).|
 |Ügyfél által felügyelt fiók feladatátvétele|Még nem támogatott|Még nem támogatott|[Vész-helyreállítási és-fiók feladatátvétele](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|

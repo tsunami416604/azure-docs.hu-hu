@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 1af80f208c72af9434d596f2c1219c08c0e3f719
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e7a4af2c18bfc2b8fbd6149dab12c0bcfc665341
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015993"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878823"
 ---
 ## <a name="create-an-image-gallery"></a>Rendszerkép-gyűjtemény létrehozása
 
@@ -35,7 +35,7 @@ A következő példában létrehozunk egy *MyGallery* nevű katalógust a *myGal
 
 ## <a name="create-an-image-definition"></a>Rendszerkép-definíció létrehozása 
 
-A rendszerkép-definíciók logikai csoportosítást hoznak létre a képekhez. Ezek az adatok a bennük létrehozott rendszerkép-verziókra vonatkozó információk kezelésére szolgálnak. A képdefiníciók nevei nagybetűket, kisbetűket, számokat, pontokat, kötőjeleket és pontokat tartalmazhatnak. További információ a képdefiníciók által megadható értékekről: [képdefiníciók](../articles/virtual-machines/windows/shared-image-galleries.md#image-definitions).
+A rendszerkép-definíciók logikai csoportosítást hoznak létre a képekhez. Ezek az adatok a bennük létrehozott rendszerkép-verziókra vonatkozó információk kezelésére szolgálnak. A képdefiníciók nevei nagybetűket, kisbetűket, számokat, pontokat, kötőjeleket és pontokat tartalmazhatnak. További információ a képdefiníciók által megadható értékekről: [képdefiníciók](../articles/virtual-machines/shared-image-galleries.md#image-definitions).
 
 Hozza létre a katalógus képének definícióját a katalógusban. Ebben a példában a katalógus rendszerképének neve *myImageDefinition*.
 
@@ -44,7 +44,7 @@ Hozza létre a katalógus képének definícióját a katalógusban. Ebben a pé
 1. A **rendszerkép-definíció neve** mezőbe írja be a következőt: *myImageDefinition*.
 1. **Operációs rendszer** esetén válassza ki a megfelelő beállítást a forrás virtuális gép alapján.  
 1. Virtuálisgép- **generáció** esetén válassza a forrás virtuális gép alapján lehetőséget. A legtöbb esetben ez az 1. *Gen* lesz. További információ: 2. [generációs virtuális gépek támogatása](../articles/virtual-machines/generation-2.md).
-1. Az **operációs rendszer állapota** területen válassza a forrás virtuális gép alapján lehetőséget. További információ: [általánosított és specializált](../articles/virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images).
+1. Az **operációs rendszer állapota** területen válassza a forrás virtuális gép alapján lehetőséget. További információ: [általánosított és specializált](../articles/virtual-machines/shared-image-galleries.md#generalized-and-specialized-images).
 1. A **Publisherben** írja be a következőt: *myPublisher*. 
 1. Az **ajánlat** mezőbe írja be a következőt: *myOffer*.
 1. Az **SKU** mezőbe írja be a következőt: *mySKU*.

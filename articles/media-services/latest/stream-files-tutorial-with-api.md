@@ -1,25 +1,10 @@
 ---
-title: Feltöltés, kódolás és stream Media Services v3
-titleSuffix: Azure Media Services
-description: Oktatóanyag, amely bemutatja, hogyan tölthet fel egy fájlt, hogyan kódolhatja és továbbíthatja a tartalmat a Azure Media Services v3 használatával.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: tutorial
-ms.custom: mvc
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: eedbb63f4928c0397150b40a47fdc7c3e87d1991
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89256769"
+title: feltöltés, kódolás és stream Media Services v3-val: Azure Media Services Leírás: oktatóanyag, amely bemutatja, hogyan tölthet fel fájlokat, kódolhat és továbbíthatja a tartalmat a Azure Media Services v3 használatával.
+szolgáltatások: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' '
+
+MS. Service: Media-Services MS. munkaterhelés: MS. topic: oktatóanyag MS. Custom: MVC MS. Date: 08/31/2020 MS. Author: inhenkel
 ---
+
 # <a name="tutorial-upload-encode-and-stream-videos-with-media-services-v3"></a>Oktatóanyag: videók feltöltése, kódolása és továbbítása a Media Services v3 segítségével
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
@@ -71,7 +56,7 @@ A minta a következő műveleteket hajtja végre:
 3. Hozzon létre **egy bemeneti objektumot** , és töltse fel a megadott helyi videofájl. Az objektum lesz a feladat bemenete.
 4. Elküldi a kódolási feladatot a létrehozott bemenet és kimenet használatával.
 5. Ellenőrzi a feladat állapotát.
-6. Adatfolyam- **keresőt**hoz létre.
+6. Adatfolyam- **keresőt** hoz létre.
 7. Streamelési URL-címeket épít fel.
 
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>A Media Services API-k használatának megkezdése a .NET SDK-val
@@ -104,7 +89,7 @@ A kimeneti [objektum](/rest/api/media/assets) tárolja a kódolási feladat ered
 
 ### <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>Átalakítás és a feltöltött fájlt kódoló feladat létrehozása
 
-A Media Services tartalmának kódolásakor vagy feldolgozásakor gyakori minta a kódolási beállítások beállítása Receptként. Ezután elküld egy **feladatot**, amely alkalmazza ezt a receptet egy videóra. Új feladatok elküldésével minden új videóhoz ezt a receptet alkalmazza a könyvtárában lévő összes videóra. Media Services egy receptet **átalakítónak**nevezzük. További információt az [átalakításokkal és feladatokkal](./transforms-jobs-concept.md) kapcsolatos cikkben olvashat. Az ebben az oktatóanyagban leírt minta meghatároz egy receptet, amely elvégzi a videó kódolását, hogy azt streamelni lehessen többféle iOS- és Android-eszközre.
+A Media Services tartalmának kódolásakor vagy feldolgozásakor gyakori minta a kódolási beállítások beállítása Receptként. Ezután elküld egy **feladatot**, amely alkalmazza ezt a receptet egy videóra. Új feladatok elküldésével minden új videóhoz ezt a receptet alkalmazza a könyvtárában lévő összes videóra. Media Services egy receptet **átalakítónak** nevezzük. További információt az [átalakításokkal és feladatokkal](./transforms-jobs-concept.md) kapcsolatos cikkben olvashat. Az ebben az oktatóanyagban leírt minta meghatároz egy receptet, amely elvégzi a videó kódolását, hogy azt streamelni lehessen többféle iOS- és Android-eszközre.
 
 #### <a name="transform"></a>Átalakítás
 
@@ -157,7 +142,7 @@ Míg a témakörben szereplő minta a streaminget tárgyalja, ugyanazt a hívás
 
 ### <a name="get-streaming-urls"></a>Streamelési URL-címek lekérdezése
 
-Most, hogy létrejött a [folyamatos átviteli lokátor](/rest/api/media/streaminglocators) , beolvashatja a streaming URL-címeket, ahogy az a **GetStreamingURLs**-ban is látható. URL-cím létrehozásához összefűzni kell a [streaming Endpoint](/rest/api/media/streamingendpoints) Host nevét és a **folyamatos átviteli lokátor** elérési útját. Ebben a példában az *alapértelmezett* **adatfolyam-végpontot** használja a rendszer. Amikor először hoz létre egy Media Service-fiókot, az *alapértelmezett* **folyamatos átviteli végpont** leállított állapotba kerül, ezért meg kell hívnia a **Start**parancsot.
+Most, hogy létrejött a [folyamatos átviteli lokátor](/rest/api/media/streaminglocators) , beolvashatja a streaming URL-címeket, ahogy az a **GetStreamingURLs**-ban is látható. URL-cím létrehozásához összefűzni kell a [streaming Endpoint](/rest/api/media/streamingendpoints) Host nevét és a **folyamatos átviteli lokátor** elérési útját. Ebben a példában az *alapértelmezett* **adatfolyam-végpontot** használja a rendszer. Amikor először hoz létre egy Media Service-fiókot, az *alapértelmezett* **folyamatos átviteli végpont** leállított állapotba kerül, ezért meg kell hívnia a **Start** parancsot.
 
 > [!NOTE]
 > Ebben a metódusban szüksége lesz a kimeneti eszköz **folyamatos átviteli lokátorának** létrehozásakor használt locatorName.
@@ -188,7 +173,7 @@ Ebben a cikkben az Azure Media Playert használjuk a streamelés teszteléséhez
 
 1. Nyisson meg egy webböngészőt, és navigáljon a következőhöz: [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/) .
 2. Az **URL:** mezőben illessze be az alkalmazás futtatásakor kapott streaming URL-értékeket.
-3. Válassza a **lejátszó frissítése**lehetőséget.
+3. Válassza a **lejátszó frissítése** lehetőséget.
 
 A Azure Media Player használható tesztelésre, de nem használható éles környezetben.
 
@@ -210,7 +195,7 @@ A Azure Media Services v3 SDK-k nem a szálon biztonságosak. Többszálas alkal
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már tudja, hogyan tölthet fel, kódolhat és streamelhet videókat, tekintse meg a következő cikket: 
 

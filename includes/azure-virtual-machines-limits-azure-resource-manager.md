@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: cynthn
-ms.openlocfilehash: cd3ff3fce80e66d7cd61636b4416cb2fc28f5e77
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 61af1f1a97e0ffad0332a34034f5dd1d007d1a5c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97956524"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98900981"
 ---
 | Erőforrás | Korlát |
 | --- | --- |
@@ -19,13 +19,13 @@ ms.locfileid: "97956524"
 | VM/sorozat, például Dv2 és F, mag/ [előfizetés](https://azure.microsoft.com/pricing/) |régiónként 20<sup>1</sup> . A korlát növeléséhez forduljon az ügyfélszolgálathoz. |
 | [Rendelkezésre állási](../articles/virtual-machines/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) csoportok/előfizetés |2 500 régiónként. |
 | Virtuális gépek rendelkezésre állási készlete | 200 |
-| [Proximity elhelyezési csoportok](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups-portal) / [erőforráscsoport](../articles/azure-resource-manager/management/overview.md#resource-groups) | 800 | 
+| [Proximity elhelyezési csoportok](../articles/virtual-machines/windows/proximity-placement-groups-portal.md) / [erőforráscsoport](../articles/azure-resource-manager/management/overview.md#resource-groups) | 800 | 
 | Tanúsítvány/rendelkezésre állási csoport | 199<sup>2</sup> |
 | Tanúsítványok/előfizetés |Korlátlan<sup>3</sup> |
 
 <sup>1</sup> az alapértelmezett korlátok az ajánlati kategória típusa szerint változnak, például az ingyenes próbaverziós és az utólagos elszámolású, valamint az adatsorozatok, például a Dv2, az F és a G. A Nagyvállalati Szerződés-előfizetések alapértelmezett értéke például 350.
 
-<sup>2</sup> a tulajdonságok, például az SSH nyilvános kulcsok is tanúsítványként lesznek leküldve, és a korlátnak számítanak. A korlát megkerüléséhez használja a [Windows Azure Key Vault bővítményét](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows) vagy a Linux rendszerhez készült [Azure Key Vault-bővítményt](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) a tanúsítványok telepítéséhez.
+<sup>2</sup> a tulajdonságok, például az SSH nyilvános kulcsok is tanúsítványként lesznek leküldve, és a korlátnak számítanak. A korlát megkerüléséhez használja a [Windows Azure Key Vault bővítményét](../articles/virtual-machines/extensions/key-vault-windows.md) vagy a Linux rendszerhez készült [Azure Key Vault-bővítményt](../articles/virtual-machines/extensions/key-vault-linux.md) a tanúsítványok telepítéséhez.
 
 <sup>3</sup> Azure Resource Manager a tanúsítványokat a Azure Key Vault tárolja. Az előfizetéshez tartozó tanúsítványok száma korlátlan. Üzemelő példányok 1 MB-os korlátja, amely egyetlen virtuális gépről vagy rendelkezésre állási csoportból áll.
 

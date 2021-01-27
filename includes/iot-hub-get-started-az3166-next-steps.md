@@ -4,16 +4,16 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 06/09/2018
 ms.author: liydu
-ms.openlocfilehash: 096764ce56e1812bc96be9a344a4d4ccb17a4db6
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 1383f976e73fd9a59b87201cac8aeeb043f3c1cc
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95558891"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98900962"
 ---
 Az Azure IoT Hub használatának megkezdéséhez, valamint a IoT fejlesztői készlet használó egyéb IoT forgatókönyvek megismeréséhez tekintse meg a következőket:
 
-- [A IoT fejlesztői készlet és az Azure IoT távoli monitorozási megoldásának gyorsítása](../articles/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2.md)
+- [A IoT fejlesztői készlet és az Azure IoT távoli monitorozási megoldásának gyorsítása](/previous-versions/azure/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2)
 - [Hangüzenetek fordítása az Azure Cognitive Services használatával](../articles/iot-hub/iot-hub-arduino-iot-devkit-az3166-translator.md)
 - [Twitter-üzenet lekérdezése az Azure Functions használatával](../articles/iot-hub/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
 - [Üzenetek küldése MQTT-kiszolgálóra az Eclipse Paho API-jaival](../articles/iot-hub/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld.md)

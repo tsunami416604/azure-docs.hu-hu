@@ -5,12 +5,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/27/2019
 ms.author: pafarley
-ms.openlocfilehash: b3d24ce4dd42ea8122610943379160ca93406c21
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 7cf3d86eeea9d1b0f5fcbb757d3597e21cbcc369
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548055"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98900984"
 ---
 Az űrlap-felismerő a következő követelményeknek megfelelő bemeneti dokumentumokon működik:
 
@@ -25,8 +25,3 @@ Az űrlap-felismerő a következő követelményeknek megfelelő bemeneti dokume
 * A szövegnek a latin ábécét (angol karakter) kell használnia.
 * A nem felügyelt tanulás (címkézett adatok nélkül) esetében az adatoknak kulcsokat és értékeket kell tartalmazniuk.
 * A nem felügyelt tanulás (címkézett adatok nélkül) esetében a kulcsoknak az értékek felett vagy balra kell megjelenniük; nem jelennek meg a jobb oldalon.
-
-Az űrlap-felismerő jelenleg nem támogatja az ilyen típusú bemeneti adatokat:
-
-* Összetett táblák (beágyazott táblák, egyesített fejlécek vagy cellák stb.).
-* Jelölőnégyzetek és választógombok.

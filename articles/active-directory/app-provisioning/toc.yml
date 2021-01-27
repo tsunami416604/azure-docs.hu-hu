@@ -10,8 +10,10 @@
 - name: Oktatóanyagok
   expanded: true
   items:
-    - name: SCIM-végpont létrehozása és az üzembe helyezés konfigurálása
+    - name: SCIM-végpont kiépítési tervének megtervezése
       href: use-scim-to-provision-users-and-groups.md
+    - name: Minta SCIM-végpont fejlesztése
+      href: use-scim-to-build-users-and-groups-endpoints.md
     - name: Attribútumleképezések testreszabása
       href: customize-application-attributes.md
     - name: Alkalmazásspecifikus üzembehelyezési oktatóanyagok

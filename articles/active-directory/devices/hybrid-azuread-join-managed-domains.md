@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: tutorial
-ms.date: 03/06/2020
+ms.date: 01/26/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 303f02e0c6b72b7061a996b3ce8e70799954b435
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: d3da63503c80652bc8737f2cb4894e25d8bc6fc0
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861051"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98893406"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Oktatóanyag: A hibrid Azure Active Directory-csatlakozás konfigurálása felügyelt tartományokhoz
 
@@ -90,23 +90,21 @@ Hibrid Azure AD-csatlakozás konfigurálása Azure AD Connect használatával:
 
 1. Indítsa el Azure AD Connect, majd válassza a **Konfigurálás** lehetőséget.
 
-   ![Üdvözlőképernyő](./media/hybrid-azuread-join-managed-domains/welcome-azure-ad-connect.png)
-
 1. A **További feladatok** területen válassza az **eszközbeállítások konfigurálása** lehetőséget, majd kattintson a **tovább** gombra.
 
    ![További feladatok](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-additional-tasks.png)
 
 1. Az **Áttekintés** területen válassza a **tovább** lehetőséget.
 
-   ![Áttekintés](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-overview.png)
-
 1. A **Kapcsolódás az Azure ad-hoz** mezőben adja meg az Azure ad-bérlő globális rendszergazdájának hitelesítő adatait.  
-
-   ![Csatlakozás az Azure AD szolgáltatáshoz](./media/hybrid-azuread-join-managed-domains/connect-to-azure-ad-username-password.png)
 
 1. Az **eszközbeállítások** területen válassza a **hibrid Azure ad-csatlakozás konfigurálása** lehetőséget, majd kattintson a **tovább** gombra.
 
    ![Eszközbeállítások](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-device-options.png)
+
+1. Az eszközök **operációs rendszerek** területén válassza ki azokat az operációs rendszereket, amelyeket az Active Directory környezetében lévő eszközök használnak, majd válassza a **tovább** lehetőséget.
+
+   ![Eszköz operációs rendszere](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-device-operating-systems.png)
 
 1. Az **SCP-konfigurációban** minden olyan erdő esetében, amelyben Azure ad Connect szeretné KONFIGURÁLNI az scp-t, hajtsa végre az alábbi lépéseket, majd kattintson a **tovább** gombra.
 
@@ -116,17 +114,9 @@ Hibrid Azure AD-csatlakozás konfigurálása Azure AD Connect használatával:
 
    ![SCP](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-scp-configuration.png)
 
-1. Az eszközök **operációs rendszerek** területén válassza ki azokat az operációs rendszereket, amelyeket az Active Directory környezetében lévő eszközök használnak, majd válassza a **tovább** lehetőséget.
-
-   ![Eszköz operációs rendszere](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-device-operating-systems.png)
-
 1. A **konfigurálásra kész** területen válassza a **Konfigurálás** lehetőséget.
 
-   ![Ready to configure (Konfigurálásra kész)](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-ready-to-configure.png)
-
 1. A **Konfigurálás befejeződött** területen válassza a **Kilépés** lehetőséget.
-
-   ![A konfigurálás befejeződött](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-configuration-complete.png)
 
 ## <a name="enable-windows-down-level-devices"></a>A korábbi verziójú Windows-eszközök engedélyezése
 

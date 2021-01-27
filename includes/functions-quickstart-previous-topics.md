@@ -4,11 +4,11 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: f14982dc3f130376b5de6bcdc28874f3410403aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: adf50bc66d5fbebcb53e57b1c8e23f98ebb75d17
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67178891"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98900959"
 ---
-A témakör kiindulópontjául [Az első függvény létrehozása az Azure Portalon](../articles/azure-functions/functions-create-first-azure-function.md) című cikkben létrehozott erőforrások szolgálnak. A függvényalkalmazás létrehozásához kérjük, hajtsa végre ezeket a lépéseket, ha még nem tette meg.
+A témakör kiindulópontjául [Az első függvény létrehozása az Azure Portalon](../articles/azure-functions/functions-get-started.md) című cikkben létrehozott erőforrások szolgálnak. A függvényalkalmazás létrehozásához kérjük, hajtsa végre ezeket a lépéseket, ha még nem tette meg.

@@ -3,14 +3,14 @@ title: Biztonsági mentések szabályozása a Backup Centerrel
 description: Ismerje meg, hogyan szabályozhatja az Azure-környezetet annak biztosításához, hogy az összes erőforrás megfelel a Backup Center biztonsági mentési perspektívájának.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: ebb4d72c3a3377072e185251bd642762f6876c03
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 67b0591c7d7146d162687018854365d338105d76
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173801"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98893846"
 ---
-# <a name="govern-your-backup-estate-using-backup-center"></a>Biztonsági mentések szabályozása a Backup Centerrel
+# <a name="govern-your-backup-estate-using-backup-center-preview"></a>A Backup-központ szabályozása a Backup Centerben (előzetes verzió)
 
 A Backup Center segítségével szabályozhatja az Azure-környezetet, így biztosítva, hogy minden erőforrás megfelel a biztonsági mentési perspektívának. Az alábbiakban a Backup Center irányítási képességeiből tájékozódhat:
 
@@ -43,6 +43,11 @@ A biztonsági mentés megfelelősége menüpontra kattintva megtekintheti az er�
 A **Protected DataSources** menüpont kiválasztásával megtekintheti az összes olyan adatforrást, amely nem lett konfigurálva a biztonsági mentéshez. A listát adatforrás-előfizetés, Erőforráscsoport, hely, típus és címkék alapján szűrheti. Miután azonosította a biztonsági mentésre szoruló adatforrást, kattintson a jobb gombbal a megfelelő rácsvonal elemre, és válassza a **biztonsági** mentés lehetőséget az erőforrás biztonsági mentésének konfigurálásához.
 
 ![Védhető adatforrások menü](./media/backup-center-govern-environment/protectable-datasources.png)
+
+> [!NOTE]
+> Ha az **SQL-t az Azure virtuális gépen** az adatforrás típusaként választja, a **védhető adatforrások** nézet az összes olyan katalógusbeli virtuális gép listáját jeleníti meg, amelyek nem rendelkeznek biztonsági mentésre konfigurált SQL-adatbázisokkal.
+> Ha az **Azure Storage (Azure Files)** lehetőséget választja az adatforrás típusaként, a **védhető adatforrások** nézet megjeleníti az összes olyan Storage-fiók listáját (amely támogatja a fájlmegosztást), amelyek nem rendelkeznek a biztonsági mentésre konfigurált fájlmegosztás-megosztással.
+
 
 ## <a name="next-steps"></a>Következő lépések
 

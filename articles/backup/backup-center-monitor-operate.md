@@ -3,20 +3,20 @@ title: Biztonsági mentések monitorozása és üzemeltetése a Backup Centerrel
 description: Ez a cikk bemutatja, hogyan figyelheti és működtetheti a biztonsági másolatok méretét a Backup Center használatával
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 29e09e502e83ea67af290f206ee0e68b847b2069
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ce3b0f00c51e9b466a9ed040b677df811448b1d
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995270"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98893778"
 ---
-# <a name="monitor-and-operate-backups-using-backup-center"></a>Biztonsági mentések monitorozása és üzemeltetése a Backup Centerrel
+# <a name="monitor-and-operate-backups-using-backup-center-preview"></a>Biztonsági másolatok figyelése és üzemeltetése a Backup Centerben (előzetes verzió)
 
 Biztonsági mentési rendszergazdaként a Backup centert egyetlen Ablaktáblaként használhatja a feladatok és a biztonsági másolatok napi rendszerességű nyomon követéséhez. A Backup Center használatával is elvégezheti a rendszeres műveleteket, például az igény szerinti biztonsági mentési kérelmekre való válaszadást, a biztonsági másolatok visszaállítását, a biztonsági mentési házirendek létrehozását és így tovább.
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
 
-* A biztonsági mentési központ jelenleg támogatott az Azure-beli virtuális gépek biztonsági mentéséhez és a Azure Database for PostgreSQL Server biztonsági mentéshez.
+* A Backup Center jelenleg támogatott az Azure virtuális gépek biztonsági mentése, az SQL az Azure VM Backup szolgáltatásban, SAP HANA az Azure virtuális gépek biztonsági mentése, Azure Files biztonsági mentés és a Azure Database for PostgreSQL kiszolgáló biztonsági mentése.
 * A támogatott és nem támogatott forgatókönyvek részletes listáját a [támogatási mátrixban](backup-center-support-matrix.md) találja.
 
 ## <a name="backup-instances"></a>Biztonsági mentési példányok

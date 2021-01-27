@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 10/06/2020
-ms.openlocfilehash: 2191a4df5b319ec16a4a6116aa99cfac50c87d9b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3be967b611f6b75705a60bfa14523832b0652931
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462920"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879224"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Közzétételi útmutató ajánlattípusok szerint
 
@@ -36,7 +36,7 @@ A következő táblázat a partner Center kereskedelmi Piactéri ajánlatának t
 | [**Tanácsadási szolgáltatás**](./plan-consulting-service-offer.md) | A tanácsadási szolgáltatások segítségével az ügyfeleket összekapcsolhatja a szolgáltatásokkal az Azure, a Dynamics 365 vagy a Power Suite szolgáltatások használatának támogatásához és bővítéséhez.|
 | [**Dynamics 365**](appsource-offer-publishing-guide.md) | Közzéteheti a Dynamics 365 Business Central, a Dynamics 365 Customer engagement, a Power apps és a Finance és az Operations alkalmazások szolgáltatásait felépítő AppSource-ajánlatokat.|
 | [**IoT Edge modul**](iot-edge-module.md) | Azure IoT Edge modulok a IoT Edge által kezelt legkisebb számítási egységek, és tartalmazhatnak Microsoft-szolgáltatásokat (például Azure Stream Analytics), harmadik féltől származó szolgáltatásokat vagy a saját megoldásokra vonatkozó kódokat. |
-| [**Felügyelt szolgáltatás**](partner-center-portal/create-new-managed-service-offer.md) | Az [Azure Lighthouse](../lighthouse/overview.md)használatával felügyelt szolgáltatásokat hozhat létre, és kezelheti az ügyfelek által delegált előfizetéseket vagy erőforráscsoportokat.|
+| [**Felügyelt szolgáltatás**](./plan-managed-service-offer.md) | Az [Azure Lighthouse](../lighthouse/overview.md)használatával felügyelt szolgáltatásokat hozhat létre, és kezelheti az ügyfelek által delegált előfizetéseket vagy erőforráscsoportokat.|
 | [**Power bi alkalmazás** <br/> **Microsoft 365**](appsource-offer-publishing-guide.md) | Közzéteheti azokat a AppSource-ajánlatokat, amelyek Power BI és Microsoft 365 kiépítésére vagy kiterjesztésére épülnek.|
 | [**Szolgáltatásként szolgáló szoftver**](plan-saas-offer.md) | A szolgáltatott szoftver (SaaS) ajánlat típusa lehetővé teszi az ügyfél számára, hogy előfizetésként vásárolja meg SaaS-alapú, technikai megoldásait. Az SaaS-ajánlatok egyszeri bejelentkezési követelményeivel kapcsolatos információkért lásd: [Az Azure ad és a transactd SaaS-ajánlatok a kereskedelmi piactéren](azure-ad-saas.md). |
 

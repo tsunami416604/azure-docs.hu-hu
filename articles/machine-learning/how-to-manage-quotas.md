@@ -11,12 +11,12 @@ ms.author: siarora
 ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: 78cc0aa6beb9ab83fea2039b271b071de1662fc1
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: aa25a81068b25b7b8696a7472eb04542e8bb1a60
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629180"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878952"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Erőforrások kvótáinak kezelése és növelése Azure Machine Learning
 
@@ -82,7 +82,7 @@ Rendelkezésre álló erőforrások:
 + A **fürtök régiónként** alapértelmezett korlátja 200. Ezek egy képzési fürt és egy számítási példány között vannak megosztva. (A számítási példányok egy egycsomópontos fürtnek számítanak kvóta szempontjából.)
 
 > [!TIP]
-> Ha többet szeretne megtudni arról, hogy melyik virtuálisgép-családtól kell kvótát megemelni, tekintse meg a [virtuális gépek méretét az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/sizes). A GPU virtuálisgép-családok például egy "N" névvel kezdődnek a családjuk nevükben (például NCv3 sorozat)
+> Ha többet szeretne megtudni arról, hogy melyik virtuálisgép-családtól kell kvótát megemelni, tekintse meg a [virtuális gépek méretét az Azure-ban](../virtual-machines/sizes.md). A GPU virtuálisgép-családok például egy "N" névvel kezdődnek a családjuk nevükben (például NCv3 sorozat)
 
 A következő táblázat a platform további korlátozásait mutatja be. Ha kivételt szeretne kérni, lépjen kapcsolatba a AzureML termék csapatával egy **technikai** támogatási jegyen keresztül.
 
@@ -209,7 +209,7 @@ Ezen forgatókönyvek esetében a következő lépések végrehajtásával igén
 
 :::image type="content" source="media/how-to-manage-quotas/quota-increase-private-endpoint.png" alt-text="Képernyőkép a privát végpontról és a saját DNS-kvóta növeléséről.":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 + [A Azure Machine Learning költségeinek megtervezése és kezelése](concept-plan-manage-cost.md)
 + [Szolgáltatási korlátozások a Azure Machine Learning](resource-limits-quotas-capacity.md)

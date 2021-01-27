@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: yushwang
-ms.openlocfilehash: eda920640667abc6620c5c90ee7d04a44789353e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b298185866d16da02fe8d3b3fdb41f0b0b1f726
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995312"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878544"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections-azure-portal"></a>IPsec/IKE-házirend konfigurálása a S2S VPN-hez vagy a VNet-VNet kapcsolatokhoz: Azure Portal
 
@@ -28,10 +28,8 @@ Ez a cikk útmutatást nyújt az IPsec/IKE-szabályzatok létrehozásához és k
 ### <a name="considerations"></a>Megfontolandó szempontok
 
 * Az IPsec/IKE-házirend csak a következő átjárók esetében működik:
-  * ***VpnGw1 ~ 5 és VpnGw1AZ ~ 5AZ***
-  * ***Standard*** és ***HighPerformance***
-* Egy adott kapcsolathoz csak ***egy*** házirendet adhat meg.
-* Meg kell adnia az összes algoritmust és paramétert mind az IKE (Main Mode), mind az IPsec (gyors mód) esetében. A részleges házirend-megadás nem engedélyezett.
+  * ***VpnGw1 ~ 5 és VpnGw1AZ ~ 5Az** _ _ ***standard** _ és _*_HighPerformance_*_ _ az adott kapcsolatok esetében csak **egy** házirend-kombinációt adhat meg.
+  _ Meg kell adnia az összes algoritmust és paramétert mind az IKE (Main Mode), mind az IPsec (gyors mód) esetében. A részleges házirend-megadás nem engedélyezett.
 * A VPN-eszközök gyártójának specifikációit megkeresve ellenőrizze, hogy a helyi VPN-eszközökön támogatott-e a házirend. A S2S-vagy VNet-VNet kapcsolatok nem tudják létrehozni, ha a házirendek nem kompatibilisek.
 
 ## <a name="workflow"></a><a name ="workflow"></a>Munkafolyamat
@@ -53,7 +51,7 @@ Az ebben a cikkben szereplő utasítások segítséget nyújtanak az IPsec/IKE-s
 
 A következő táblázat felsorolja az ügyfelek által konfigurálható támogatott titkosítási algoritmusokat és főbb erősségeket:
 
-| **IPsec/IKE**    | **Lehetőségek**    |
+| **IPsec/IKE**    | **Beállítások**    |
 | ---              | ---            |
 | IKE-titkosítás   | AES256, AES192, AES128, DES3, DES                  |
 | IKE-integritás    | SHA384, MD5, SHA1, SHA256                          |
@@ -61,7 +59,7 @@ A következő táblázat felsorolja az ügyfelek által konfigurálható támoga
 | IPsec-titkosítás | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, Nincs    |
 | IPsec-integritás  | GCMASE256, GCMAES192, GCMAES128, SHA256, SHA1, MD5 |
 | PFS-csoport        | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, Nincs   |
-| Gyorsmódú biztonsági társítás élettartama   | (Nem**kötelező**: Ha nincs megadva, az alapértelmezett értékek szerepelnek)<br>Másodperc (egész szám; **min. 300**/alapértelmezett érték: 27000 másodperc)<br>KB (egész szám; **min. 1024**/alapértelmezett érték: 102400000 KB)    |
+| Gyorsmódú biztonsági társítás élettartama   | (Nem **kötelező**: Ha nincs megadva, az alapértelmezett értékek szerepelnek)<br>Másodperc (egész szám; **min. 300**/alapértelmezett érték: 27000 másodperc)<br>KB (egész szám; **min. 1024**/alapértelmezett érték: 102400000 KB)    |
 | Forgalomválasztó | UsePolicyBasedTrafficSelectors * * ($True/$False; Nem **kötelező**, alapértelmezett $false, ha nincs megadva)    |
 | DPD időtúllépés      | Másodperc (egész szám: min. 9/max. 3600; alapértelmezett 45 másodperc) |
 |  |  |
@@ -116,27 +114,27 @@ További részletekért lásd: [RFC3526](https://tools.ietf.org/html/rfc3526) é
 
 Ez a szakasz végigvezeti a helyek közötti VPN-kapcsolat IPsec/IKE-házirenddel való létrehozásának lépésein. Az alábbi ábrán látható módon hozza létre a-kapcsolatokat:
 
-:::image type="content" source="./media/ipsec-ike-policy-howto/site-to-site-diagram.png" alt-text="IPsec/IKE-házirend diagramja" border="false":::
+:::image type="content" source="./media/ipsec-ike-policy-howto/site-to-site-diagram.png" alt-text="Helyek közötti házirend" border="false":::
 
 ### <a name="step-1---create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a><a name="createvnet1"></a>1. lépés – a virtuális hálózat, a VPN-átjáró és a helyi hálózati átjáró létrehozása
 
-Hozza létre a következő erőforrásokat, ahogy az alábbi képernyőképen is látható. A lépéseket lásd: [helyek közötti VPN-kapcsolat létrehozása](vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+Hozza létre a következő erőforrásokat, ahogy az alábbi képernyőképen is látható. A lépéseket lásd: [helyek közötti VPN-kapcsolat létrehozása](./tutorial-site-to-site-portal.md).
 
 * **Virtuális hálózat:**  TestVNet1
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/testvnet-1.png" alt-text="IPsec/IKE-házirend diagramja":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/testvnet-1.png" alt-text="VNet":::
 
 * **VPN-átjáró:** VNet1GW
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-1-gateway.png" alt-text="IPsec/IKE-házirend diagramja":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-1-gateway.png" alt-text="Átjáró":::
 
 * **Helyi hálózati átjáró:** Site6
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/lng-site-6.png" alt-text="IPsec/IKE-házirend diagramja":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/lng-site-6.png" alt-text="Hely":::
 
 * **Kapcsolatok:** VNet1 – Site6
 
-    :::image type="content" source="./media/ipsec-ike-policy-howto/connection-site-6.png" alt-text="IPsec/IKE-házirend diagramja":::
+    :::image type="content" source="./media/ipsec-ike-policy-howto/connection-site-6.png" alt-text="Kapcsolat":::
 
 ### <a name="step-2---configure-ipsecike-policy-on-the-s2s-vpn-connection"></a><a name="s2sconnection"></a>2. lépés – IPsec/IKE-házirend konfigurálása a S2S VPN-kapcsolaton
 
@@ -145,17 +143,17 @@ Ebben a szakaszban egy IPsec/IKE-házirendet konfigurál a következő algoritmu
 * IKE: AES256, SHA384, DHGroup24, DPD időkorlát 45 másodperc
 * IPsec: AES256, SHA256, PFS nincs, SA élettartama 30000 másodperc és 102400000KB
 
-1. Navigáljon a Azure Portal **VNet1toSite6**található kapcsolódási erőforráshoz. Válassza a **konfiguráció** lapot, és válassza az **Egyéni** IPSec/IKE-szabályzat lehetőséget az összes konfigurációs beállítás megjelenítéséhez. Az alábbi képernyőkép a lista alapján mutatja be a konfigurációt:
+1. Navigáljon a Azure Portal **VNet1toSite6** található kapcsolódási erőforráshoz. Válassza a **konfiguráció** lapot, és válassza az **Egyéni** IPSec/IKE-szabályzat lehetőséget az összes konfigurációs beállítás megjelenítéséhez. Az alábbi képernyőkép a lista alapján mutatja be a konfigurációt:
 
-    :::image type="content" source="./media/ipsec-ike-policy-howto/policy-site-6.png" alt-text="IPsec/IKE-házirend diagramja":::
+    :::image type="content" source="./media/ipsec-ike-policy-howto/policy-site-6.png" alt-text="6. hely":::
 
 1. Ha IPsec-GCMAES használ, ugyanazt a GCMAES algoritmust és a kulcs hosszát kell használnia az IPsec-titkosítás és az integritás esetében is. Az alábbi képernyőkép például az IPsec-titkosítás és az IPsec-integritás GCMAES128 határozza meg:
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/gcmaes.png" alt-text="IPsec/IKE-házirend diagramja":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/gcmaes.png" alt-text="GCMAES az IPsec számára":::
 
 1. Ha az **Engedélyezés** lehetőséget választja, a **házirend-alapú forgalom kiválasztása** lehetőséget választva engedélyezheti az Azure VPN Gateway számára, hogy a fentiekben leírtak szerint kapcsolódjon a házirend alapú VPN-eszközökhöz a helyszínen.
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/policy-based-selector.png" alt-text="IPsec/IKE-házirend diagramja":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/policy-based-selector.png" alt-text="Házirend-alapú forgalmi választó":::
 
 1. Ha az összes beállítás ki van választva, válassza a **Mentés** lehetőséget, hogy véglegesítse a módosításokat a kapcsolódási erőforrásban. A szabályzat egy percen belül érvénybe lép.
 
@@ -170,13 +168,13 @@ Ebben a szakaszban egy IPsec/IKE-házirendet konfigurál a következő algoritmu
 
 Az IPsec/IKE-szabályzattal VNet és VNet közötti kapcsolat létrehozásának lépései hasonlóak egy S2S VPN-kapcsolathoz.
 
-:::image type="content" source="./media/ipsec-ike-policy-howto/vnet-policy.png" alt-text="IPsec/IKE-házirend diagramja" border="false":::
+:::image type="content" source="./media/ipsec-ike-policy-howto/vnet-policy.png" alt-text="VNet-VNet szabályzat diagramja" border="false":::
 
 1. A VNet és a VNet közötti kapcsolatok létrehozásához kövesse a [VNet – VNet-kapcsolatok létrehozása](vpn-gateway-vnet-vnet-rm-ps.md) című cikk lépéseit.
 
 2. A lépések elvégzése után két VNet-VNet kapcsolat jelenik meg, ahogy az alábbi képernyőképen látható a VNet2GW erőforrásban:
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-vnet-connections.png" alt-text="IPsec/IKE-házirend diagramja":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-vnet-connections.png" alt-text="Virtuális hálózatok közötti kapcsolatok":::
 
 3. Navigáljon a kapcsolódási erőforráshoz, és lépjen a **konfiguráció** lapra a portálon. Az egyéni házirend-beállítások megjelenítéséhez válassza az **Egyéni** lehetőséget az **IPSec/IKE-házirendben** . Válassza ki a titkosítási algoritmusokat a megfelelő kulcs hosszával.
 
@@ -184,7 +182,7 @@ Az IPsec/IKE-szabályzattal VNet és VNet közötti kapcsolat létrehozásának 
    * IKE: AES128, SHA1, DHGroup14, DPD időkorlát 45 másodperc
    * IPsec: GCMAES128, GCMAES128, PFS14, SA-élettartam 14400 másodperc & 102400000KB
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-vnet-policy.png" alt-text="IPsec/IKE-házirend diagramja":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-vnet-policy.png" alt-text="Kapcsolatok házirendje":::
 
 4. A **Mentés** gombra kattintva alkalmazhatja a házirend módosításait a kapcsolódási erőforráson.
 
@@ -203,10 +201,10 @@ Az IPsec/IKE-szabályzattal VNet és VNet közötti kapcsolat létrehozásának 
 
 2. Válassza az **alapértelmezett** lehetőséget az **IPSec/IKE-házirend** beállításnál. Ezzel a művelettel eltávolítja a korábban megadott összes egyéni házirendet a kapcsolatban, és visszaállítja az alapértelmezett IPsec/IKE-beállításokat a következő kapcsolatban:
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/delete-policy.png" alt-text="IPsec/IKE-házirend diagramja":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/delete-policy.png" alt-text="Szabályzat törlése":::
 
 3. A **Mentés** gombra kattintva távolítsa el az egyéni házirendet, és állítsa vissza az alapértelmezett IPSec/IKE-beállításokat a kapcsolatban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További részletekért lásd: [több helyszíni házirend-alapú VPN-eszköz csatlakoztatása](vpn-gateway-connect-multiple-policybased-rm-ps.md) a házirend-alapú forgalmi választókkal kapcsolatban.

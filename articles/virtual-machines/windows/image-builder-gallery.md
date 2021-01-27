@@ -7,16 +7,16 @@ ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 6699db280c4d82867d5559255eab08fd6b55b65a
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: e3a7ea2cd696f54b032a3f17eceff466a6201436
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201518"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878680"
 ---
 # <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Előzetes verzió: Windows-rendszerkép létrehozása és terjesztése megosztott képgyűjteménybe 
 
-Ebből a cikkből megtudhatja, hogyan használhatja az Azure-rendszerkép-szerkesztőt, Azure PowerShell és hogyan hozhat létre egy rendszerkép-verziót egy [megosztott rendszerkép](shared-image-galleries.md)-katalógusban, majd globálisan terjesztheti a rendszerképet. Ezt az [Azure CLI](../linux/image-builder-gallery.md)használatával is elvégezheti.
+Ebből a cikkből megtudhatja, hogyan használhatja az Azure-rendszerkép-szerkesztőt, Azure PowerShell és hogyan hozhat létre egy rendszerkép-verziót egy [megosztott rendszerkép](../shared-image-galleries.md)-katalógusban, majd globálisan terjesztheti a rendszerképet. Ezt az [Azure CLI](../linux/image-builder-gallery.md)használatával is elvégezheti.
 
 A rendszerkép konfigurálásához egy. JSON sablont fogunk használni. Az általunk használt. JSON fájl a következő: [armTemplateWinSIG.js](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/armTemplateWinSIG.json). A sablon helyi verziójának letöltése és szerkesztése folyamatban van, ezért ez a cikk a helyi PowerShell-munkamenet használatával íródik.
 

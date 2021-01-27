@@ -1,24 +1,11 @@
 ---
-title: Átalakítások és feladatok Media Services
-titleSuffix: Azure Media Services
-description: Megtudhatja, hogyan hozhat létre átalakítókat a videók Azure Media Servicesban történő feldolgozásához szükséges szabályok leírásához.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: conceptual
-ms.date: 08/19/2019
-ms.author: inhenkel
-ms.openlocfilehash: 4cb4bcf5eb205d27cbca764d5ec16890a23be5c6
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426777"
+# <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>Kötelező mezők. További információ: aka.ms/skyeye/meta.
+title: átalakítások és feladatok Media Servicesban: Azure Media Services Leírás: megtudhatja, hogyan hozhat létre átalakítókat a videók feldolgozásához szükséges szabályok leírásához Azure Media Servicesban.
+szolgáltatások: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' '
+
+MS. Service: Media-Services MS. munkaterhelés: MS. topic: konceptuális MS. Date: 08/19/2019 MS. Author: inhenkel
 ---
+
 # <a name="transforms-and-jobs-in-media-services"></a>Átalakítások és feladatok Media Services
 
 Ez a témakör az [átalakításokkal](/rest/api/media/transforms) és a [feladatokkal](/rest/api/media/jobs) kapcsolatos adatokat ismerteti, és bemutatja az entitások közötti kapcsolatot.
@@ -119,7 +106,7 @@ Tekintse meg a [Azure Media Services közösségi](media-services-community.md) 
 * [Hibakódok](/rest/api/media/jobs/get#joberrorcode)
 * [Media Services entitások szűrése, rendezése és lapozása](entities-overview.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A fejlesztés megkezdése előtt tekintse át [az Media Services V3 API](media-services-apis-overview.md) -kkal való fejlesztést (az API-k elérésére vonatkozó információkat, elnevezési konvenciókat stb.).
 - Tekintse meg a következő oktatóanyagokat:
