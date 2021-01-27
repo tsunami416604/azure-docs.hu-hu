@@ -1,6 +1,6 @@
 ---
-title: Azure Cloud Service létrehozása (bővített támogatás) – Sablonok
-description: Azure Cloud Service (bővített támogatás) létrehozása ARM-sablonok használatával
+title: Azure Cloud Service üzembe helyezése (bővített támogatás) – Sablonok
+description: Azure Cloud Service (kiterjesztett támogatás) üzembe helyezése ARM-sablonok használatával
 ms.topic: tutorial
 ms.service: cloud-services-extended-support
 author: gachandw
@@ -8,14 +8,14 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 3b28bc96703fa48e598bfb6f9622237e769119f2
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: f86b2a50040704aac2827c463a362a04f78ba34f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757153"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881822"
 ---
-# <a name="create-a-cloud-service-extended-support-using-arm-templates"></a>Cloud Service (bővített támogatás) létrehozása ARM-sablonok használatával
+# <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>Cloud Service (kiterjesztett támogatás) üzembe helyezése ARM-sablonok használatával
 
 Ez az oktatóanyag bemutatja, hogyan hozhat létre felhőalapú szolgáltatást (kiterjesztett támogatás) az [ARM-sablonok](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)használatával. 
 
@@ -39,7 +39,7 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre felhőalapú szolgáltatást 
     - A kapcsolódó Key Vaultnak engedélyezni kell a megfelelő engedélyeket, hogy a Cloud Services (bővített támogatás) erőforrás lekérje a tanúsítványt a Key Vaultból. További információ: [tanúsítványok és Key Vault](certificates-and-key-vault.md)
     - A Key vaultot az alábbi lépésekben bemutatott ARM-sablon OsProfile szakaszában kell hivatkozni.
 
-## <a name="create-a-cloud-service-extended-support"></a>Felhőalapú szolgáltatás létrehozása (bővített támogatás) 
+## <a name="deploy-a-cloud-service-extended-support"></a>Cloud Service üzembe helyezése (kiterjesztett támogatás) 
 1. Hozzon létre egy virtuális hálózatot. A virtuális hálózat nevének meg kell egyeznie a szolgáltatás konfigurációs (. cscfg) fájljának hivatkozásaival. Ha meglévő virtuális hálózatot használ, hagyja ki ezt a szakaszt az ARM-sablonból.
 
     ```json
@@ -454,3 +454,4 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre felhőalapú szolgáltatást 
 ## <a name="next-steps"></a>További lépések 
 - Tekintse át a Cloud Servicesra vonatkozó [gyakori kérdéseket](faq.md) (kiterjesztett támogatás).
 - A [Azure Portal](deploy-portal.md), a [PowerShell](deploy-powershell.md), a [sablon](deploy-template.md) vagy a [Visual Studio](deploy-visual-studio.md)használatával üzembe helyezhet egy felhőalapú szolgáltatást (kiterjesztett támogatás).
+- Látogasson el a [Cloud Services (bővített támogatás) minták tárházára](https://github.com/Azure-Samples/cloud-services-extended-support)

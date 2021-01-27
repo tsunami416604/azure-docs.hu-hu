@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: tibasham
-ms.openlocfilehash: f16e34f372016f284d4af79443e84d9d5cdea957
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 373fd26c36bf2f77de6a376f738bd3caaf735f00
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523586"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881872"
 ---
 # <a name="how-to-map-azure-disks-to-windows-vm-guest-disks"></a>Azure-lemezek leképezése Windows VM-alapú vendég lemezekre
 
@@ -29,11 +29,11 @@ A gyakorlatban csak a LUN-t kell használnia.
 
 ## <a name="finding-the-lun"></a>A LUN megkeresése
 
-A logikai egység megkeresésére két módszer áll rendelkezésre, amelyek közül választhat, ha [tárolóhelyeket](https://docs.microsoft.com/windows-server/storage/storage-spaces/overview) használ, vagy nem.
+A logikai egység megkeresésére két módszer áll rendelkezésre, amelyek közül választhat, ha [tárolóhelyeket](/windows-server/storage/storage-spaces/overview) használ, vagy nem.
 
 ### <a name="disk-management"></a>Lemezkezelés
 
-Ha nem használ Storage-készleteket, a [Lemezkezelés](https://docs.microsoft.com/windows-server/storage/disk-management/overview-of-disk-management) eszközzel megkeresheti a LUN-t.
+Ha nem használ Storage-készleteket, a [Lemezkezelés](/windows-server/storage/disk-management/overview-of-disk-management) eszközzel megkeresheti a LUN-t.
 
 1. Kapcsolódjon a virtuális géphez, és nyissa meg a Lemezkezelés a-t. Kattintson a jobb gombbal a Start gombra, és válassza a "lemez-kezelés" a elemet. Beírhatja `diskmgmt.msc` a Keresés indítása mezőbe is
 1. Az alsó ablaktáblán kattintson a jobb gombbal bármelyik lemezre, és válassza a tulajdonságok lehetőséget.

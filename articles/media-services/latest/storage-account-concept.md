@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 01/05/2021
 ms.author: inhenkel
-ms.openlocfilehash: 36593efd4f2583f28dffbb4f5b491fbeec7ba21d
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 55a49d48af95c103d2a28d5106af5f3166605514
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916320"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882246"
 ---
 # <a name="azure-storage-accounts"></a>Azure Storage-fiókok
 
@@ -56,7 +56,7 @@ Az adategységek védelméhez az eszközöket a tárolási oldal titkosításáv
 <sup>1</sup> a Media Services v3-as verziójában a Storage encryption (AES-256 encryption) csak a visszamenőleges kompatibilitás érdekében támogatott, ha az eszközök Media Services v2-mel lettek létrehozva, ami azt jelenti, hogy a v3 a meglévő tárolók titkosított eszközeivel működik együtt, de nem teszi lehetővé újak létrehozását.
 
 ## <a name="double-encryption"></a>Dupla titkosítás
-Media Services támogatja a kettős titkosítást.  További információ a kettős titkosításról: [Azure Double encryption](https://docs.microsoft.com/azure/security/fundamentals/double-encryption).
+Media Services támogatja a kettős titkosítást.  További információ a kettős titkosításról: [Azure Double encryption](../../security/fundamentals/double-encryption.md).
 
 ## <a name="storage-account-errors"></a>Storage-fiókok hibái
 
@@ -73,6 +73,6 @@ Az alábbiak az elsődleges forgatókönyvek, amelyek a Media Services-fiók a c
 
 Azure Media Services nem támogatja a Storage-fiókok használatát az Azure Storage-tűzfallal vagy a [magánhálózati végpontokkal](../../storage/common/storage-network-security.md) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha szeretné megtudni, hogyan csatolhat Storage-fiókot a Media Services-fiókjához, tekintse meg a [fiók létrehozása](./create-account-howto.md)című témakört.

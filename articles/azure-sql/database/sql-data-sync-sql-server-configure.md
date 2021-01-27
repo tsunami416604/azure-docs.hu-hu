@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: f5192176a6a0e174d5878c51defce70d949c1eb1
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: d6b5bab1c1b6c8db4821fdf84728eb66eb55b899
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922370"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882229"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>Oktatóanyag: SQL-adatszinkronizálás beállítása Azure SQL Database és SQL Server adatbázisai között
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -179,10 +179,6 @@ Az új szinkronizálási csoport tagjainak létrehozása és telepítése után 
 
 ## <a name="faq"></a>GYIK
 
-**Milyen gyakran tud szinkronizálni az adatszinkronizálási adatokat?**
-
-A szinkronizálások közötti minimális időtartam öt perc.
-
 **SQL-adatszinkronizálás teljes táblákat létrehozni?**
 
 Ha a szinkronizálási sématáblák hiányoznak a céladatbázisból, az SQL-adatszinkronizálás létrehozza azokat a kiválasztott oszlopokkal. Ez azonban nem eredményez teljes körű megbízhatósági sémát a következő okok miatt:
@@ -241,7 +237,7 @@ Az ügyfél-ügynökkel kapcsolatos gyakori kérdésekért lásd: [ügynök – 
 
 Igen, manuálisan jóvá kell hagynia a szolgáltatás által felügyelt magánhálózati végpontot, a Azure Portal magánhálózati kapcsolatok lapján a szinkronizálási csoport központi telepítése során vagy a PowerShell használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Gratulálunk! Olyan szinkronizálási csoportot hozott létre, amely SQL Database példányt és egy SQL Server adatbázist is tartalmaz.
 

@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: f799ed5c18537b862a4971075ae9107b7a722fdd
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 2be1c7f76055cad1cf8b51938a65c7bbe6b2917e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251505"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881078"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Gyakran ismételt kérdések (GYIK) a Microsoft Authenticator alkalmazásról
 
@@ -32,12 +32,6 @@ A Microsoft Authenticator alkalmazás felváltotta a Azure Authenticator alkalma
 **K**: regisztrálja az eszközt úgy, hogy a vállalat vagy szolgáltatás számára hozzáférést biztosítson az eszközhöz?
 
 **A**: az eszköz regisztrálása lehetővé teszi, hogy az eszköz hozzáférjen a szervezet szolgáltatásaihoz, és nem teszi lehetővé a szervezet számára az eszköz hozzáférését.
-
-### <a name="too-many-app-permissions"></a>Túl sok alkalmazás-engedély
-
-**K**: Miért kéri az alkalmazás a sok engedélyt?
-
-**A**: itt látható a megadható engedélyek teljes listája, valamint az alkalmazás által használt alkalmazások. A megjelenő konkrét engedélyek a telefon típusától függenek. Előfordulhat, hogy a szervezete szeretné tudni a **tartózkodási helyét** , mielőtt engedélyezi bizonyos erőforrások elérését. Az alkalmazás csak abban az esetben fogja kérni ezt az engedélyt, ha a szervezete rendelkezik egy helyet igénylő házirenddel.
 
 ### <a name="error-adding-account"></a>Hiba a fiók hozzáadásakor
 
@@ -144,7 +138,7 @@ Válasz **: a** hitelesítő hozzáadása az új eszközhöz nem távolítja el 
 
 **K**: Miért kéri az alkalmazás a sok engedélyt?
 
-**A**: itt látható a megadható engedélyek teljes listája, valamint az alkalmazás által használt alkalmazások. A megjelenő konkrét engedélyek a telefon típusától függenek.<ul><li>**Használjon biometrikus hardvert.** Néhány munkahelyi és iskolai fiókhoz szükség van egy további PIN-kódra, amikor igazolja az identitását. Az alkalmazáshoz a PIN-kód megadása helyett a biometrikus vagy az Arcfelismerés használatára van szükség.</li><li>**Kamera.** A QR-kódok beolvasására használatos munkahelyi, iskolai vagy nem Microsoft-fiók hozzáadásakor.</li><li>**Névjegyek és telefonszámok.** Az alkalmazásnak ezt az engedélyt kell adnia a munkahelyi vagy iskolai Microsoft-fiókok keresésére a telefonján, és fel kell vennie azokat az alkalmazásba.</li><li>**SMS.** Annak ellenőrzése, hogy a telefonszáma megegyezik-e a rekordban szereplő számmal, amikor első alkalommal jelentkezik be a személyes Microsoft-fiók. Szöveges üzenetet küldünk arra a telefonra, amelyen az 6-8 számjegyű ellenőrző kódot tartalmazó alkalmazást telepítette. Nem kell megkeresnie ezt a kódot, és nem kell megadnia, mert a hitelesítő automatikusan megkeresi a szöveges üzenetben.</li><li>**Más alkalmazások rajzolása.** Az Ön személyazonosságát igazoló értesítés a többi futó alkalmazáson is megjelenik.</li><li>**Adatok fogadása az internetről.** Ez az engedély szükséges az értesítések küldéséhez.</li><li>**A telefon alvó állapotból való letiltásának megakadályozása.** Ha regisztrálja az eszközt a munkahelyén, a szervezete megváltoztathatja a szabályzatot a telefonon.</li><li>**A vibráció vezérlése.** Megadhatja, hogy szeretne-e vibrációt kapni, amikor értesítést kap a személyazonosságának ellenőrzéséhez.</li><li>**Használjon ujjlenyomat-hardvert.** Néhány munkahelyi és iskolai fiókhoz szükség van egy további PIN-kódra, amikor igazolja az identitását. A folyamat megkönnyítése érdekében lehetővé tesszük az ujjlenyomat használatát a PIN-kód megadása helyett.</li><li> **Hálózati kapcsolatok megtekintése.** Microsoft-fiók hozzáadásakor az alkalmazás hálózati/internetkapcsolatot igényel.</li><li>**A tároló tartalmának beolvasása**. Ezt az engedélyt csak akkor használja a rendszer, ha technikai problémát tesz elérhetővé az alkalmazás beállításain keresztül. A rendszer a tárolóból származó néhány információt gyűjt a probléma diagnosztizálásához.</li><li>**Teljes hálózati hozzáférés.** Ez az engedély szükséges ahhoz, hogy értesítéseket küldjön a személyazonosságának ellenőrzéséhez.</li><li>**Futtatás indításkor.** Ha újraindítja a telefont, ez az engedély biztosítja, hogy továbbra is megkapja az értesítéseket a személyazonosságának ellenőrzéséhez.</li></ul>
+**A**: itt látható a megadható engedélyek teljes listája, valamint az alkalmazás által használt alkalmazások. A megjelenő konkrét engedélyek a telefon típusától függenek.<ul><li>**Hely**. Előfordulhat, hogy a szervezete szeretné tudni a tartózkodási helyét, mielőtt engedélyezi bizonyos erőforrások elérését. Az alkalmazás csak abban az esetben fogja kérni ezt az engedélyt, ha a szervezete rendelkezik egy helyet igénylő házirenddel.</li><li>**Használjon biometrikus hardvert.** Néhány munkahelyi és iskolai fiókhoz szükség van egy további PIN-kódra, amikor igazolja az identitását. Az alkalmazáshoz a PIN-kód megadása helyett a biometrikus vagy az Arcfelismerés használatára van szükség.</li><li>**Kamera.** A QR-kódok beolvasására használatos munkahelyi, iskolai vagy nem Microsoft-fiók hozzáadásakor.</li><li>**Névjegyek és telefonszámok.** Az alkalmazásnak ezt az engedélyt kell adnia a munkahelyi vagy iskolai Microsoft-fiókok keresésére a telefonján, és fel kell vennie azokat az alkalmazásba.</li><li>**SMS.** Annak ellenőrzése, hogy a telefonszáma megegyezik-e a rekordban szereplő számmal, amikor első alkalommal jelentkezik be a személyes Microsoft-fiók. Szöveges üzenetet küldünk arra a telefonra, amelyen az 6-8 számjegyű ellenőrző kódot tartalmazó alkalmazást telepítette. Nem kell megkeresnie ezt a kódot, és nem kell megadnia, mert a hitelesítő automatikusan megkeresi a szöveges üzenetben.</li><li>**Más alkalmazások rajzolása.** Az Ön személyazonosságát igazoló értesítés a többi futó alkalmazáson is megjelenik.</li><li>**Adatok fogadása az internetről.** Ez az engedély szükséges az értesítések küldéséhez.</li><li>**A telefon alvó állapotból való letiltásának megakadályozása.** Ha regisztrálja az eszközt a munkahelyén, a szervezete megváltoztathatja a szabályzatot a telefonon.</li><li>**A vibráció vezérlése.** Megadhatja, hogy szeretne-e vibrációt kapni, amikor értesítést kap a személyazonosságának ellenőrzéséhez.</li><li>**Használjon ujjlenyomat-hardvert.** Néhány munkahelyi és iskolai fiókhoz szükség van egy további PIN-kódra, amikor igazolja az identitását. A folyamat megkönnyítése érdekében lehetővé tesszük az ujjlenyomat használatát a PIN-kód megadása helyett.</li><li> **Hálózati kapcsolatok megtekintése.** Microsoft-fiók hozzáadásakor az alkalmazás hálózati/internetkapcsolatot igényel.</li><li>**A tároló tartalmának beolvasása**. Ezt az engedélyt csak akkor használja a rendszer, ha technikai problémát tesz elérhetővé az alkalmazás beállításain keresztül. A rendszer a tárolóból származó néhány információt gyűjt a probléma diagnosztizálásához.</li><li>**Teljes hálózati hozzáférés.** Ez az engedély szükséges ahhoz, hogy értesítéseket küldjön a személyazonosságának ellenőrzéséhez.</li><li>**Futtatás indításkor.** Ha újraindítja a telefont, ez az engedély biztosítja, hogy továbbra is megkapja az értesítéseket a személyazonosságának ellenőrzéséhez.</li></ul>
 
 ### <a name="approve-requests-without-unlocking"></a>Kérelmek jóváhagyása feloldás nélkül
 

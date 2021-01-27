@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 3e4d0513808cdc44fc71e182a07fa6b050d182ee
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: aab856b1e1d2d991cc4964d061a990dbedbeddb7
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452507"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876511"
 ---
 # <a name="plan-a-solution-template-for-an-azure-application-offer"></a>Megoldási sablon megtervezése Azure-alkalmazási ajánlathoz
 
@@ -26,9 +26,9 @@ A megoldási sablon típusa [Azure Resource Manager sablont (ARM-sablont)](../az
 | Követelmények | Részletek |
 | ------------ | ------------- |
 | Számlázás és mérés | A megoldási sablonok csomagjai nem vonhatók le, de használhatók a Microsoft kereskedelmi Piactéren keresztül számlázott fizetős virtuális gépek üzembe helyezésére. A megoldás ARM-sablonja által üzembe helyezett erőforrások az ügyfél Azure-előfizetésében vannak beállítva. Az utólagos elszámolású virtuális gépeket a Microsoft és az ügyfél Azure-előfizetése alapján számlázzák az ügyfélen keresztül. <br><br> A saját licencek (BYOL) számlázásához, bár a Microsoft az ügyfél-előfizetésben felmerülő infrastrukturális költségeket számláz, a szoftveres licencelési díjakat közvetlenül a vásárlónak kell átirányítani. |
-| Azure-kompatibilis virtuális merevlemez (VHD) | A virtuális gépeket Windows vagy Linux rendszerre kell építeni. További információ:<ul><li>[Azure-beli virtuális gép technikai eszközének létrehozása](./azure-vm-create-certification-faq.md#address-a-vulnerability-or-an-exploit-in-a-vm-offer) (Windows rendszerű virtuális merevlemezekhez)</li><li>Az Azure-ban [támogatott Linux-disztribúciók](../virtual-machines/linux/endorsed-distros.md) (linuxos virtuális merevlemezek esetén).</li></ul> |
+| Azure-kompatibilis virtuális merevlemez (VHD) | A virtuális gépeket Windows vagy Linux rendszerre kell építeni. További információkért lásd:<ul><li>[Azure-beli virtuális gép technikai eszközének létrehozása](./azure-vm-create-certification-faq.md#address-a-vulnerability-or-an-exploit-in-a-vm-offer) (Windows rendszerű virtuális merevlemezekhez)</li><li>Az Azure-ban [támogatott Linux-disztribúciók](../virtual-machines/linux/endorsed-distros.md) (linuxos virtuális merevlemezek esetén).</li></ul> |
 | Ügyfelek általi használat nyomon követése | Az Azure Marketplace-en közzétett összes megoldási sablonban engedélyezni kell az ügyfél-használati jóváírást. További információ az ügyfél-használati feladatokról és annak engedélyezéséről: az [Azure-partneri ügyfél használati](azure-partner-customer-usage-attribution.md)feladatának megállapítása. |
-| Felügyelt lemezek használata | A [Managed Disks](../virtual-machines/managed-disks-overview.md) az alapértelmezett beállítás az Azure-beli infrastruktúra-(IaaS-) virtuális gépek megőrzött lemezei számára. A megoldási sablonokban felügyelt lemezeket kell használnia.<ul><li>A megoldási sablonok frissítéséhez kövesse a [felügyelt lemezek használata Azure Resource Manager-sablonokban](../virtual-machines/using-managed-disks-template-deployments.md)című témakör útmutatását, és használja a megadott [mintákat](https://github.com/Azure/azure-quickstart-templates).</li><li>Ha a virtuális merevlemezt képként szeretné közzétenni az Azure Marketplace-en, a felügyelt lemezek mögöttes VHD-jét a [Azure PowerShell](../virtual-machines/scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd.md) vagy az [Azure CLI](../virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-vhd.md) használatával importálhatja egy Storage-fiókba.</ul> |
+| Felügyelt lemezek használata | A [Managed Disks](../virtual-machines/managed-disks-overview.md) az alapértelmezett beállítás az Azure-beli infrastruktúra-(IaaS-) virtuális gépek megőrzött lemezei számára. A megoldási sablonokban felügyelt lemezeket kell használnia.<ul><li>A megoldási sablonok frissítéséhez kövesse a [felügyelt lemezek használata Azure Resource Manager-sablonokban](../virtual-machines/using-managed-disks-template-deployments.md)című témakör útmutatását, és használja a megadott [mintákat](https://github.com/Azure/azure-quickstart-templates).</li><li>Ha a virtuális merevlemezt képként szeretné közzétenni az Azure Marketplace-en, a felügyelt lemezek mögöttes VHD-jét a [Azure PowerShell](/previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd) vagy az [Azure CLI](/previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-vhd) használatával importálhatja egy Storage-fiókba.</ul> |
 | Központi telepítési csomag | Szüksége lesz egy központi telepítési csomagra, amely lehetővé teszi az ügyfeleknek a terv üzembe helyezését. Ha több olyan csomagot hoz létre, amelyek ugyanazt a technikai konfigurációt igénylik, akkor ugyanazt a csomagot használhatja. Részletekért tekintse meg a következő szakaszt: üzembehelyezési csomag. |
 |||
 

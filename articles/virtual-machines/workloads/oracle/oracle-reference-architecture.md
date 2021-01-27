@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: bbaf34c977546891c6ac05fbd4b5feb15f333e04
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 27a1c57c234d3450cee606c4ffb7484f7b63e732
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737812"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882297"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Az Azure-beli Oracle Database Enterprise Edition hivatkozási architektúrái
 
@@ -216,7 +216,7 @@ A virtuális gépi operációs rendszer javítása [Azure Automation Update Mana
 - A rendelkezésre állási zónák használatával magas rendelkezésre állást érhet el a régióban.
 - Érdemes lehet Ultra Disks (ha elérhető) vagy prémium szintű lemezeket használni az Oracle-adatbázishoz.
 - Érdemes lehet készenléti Oracle-adatbázist beállítani egy másik Azure-régióban az Oracle-adatgárda használatával.
-- Érdemes lehet [Proximity elhelyezési csoportokat](../../../virtual-machines/linux/co-location.md#proximity-placement-groups) használni az alkalmazás és az adatbázis szintjei közötti késés csökkentése érdekében.
+- Érdemes lehet [Proximity elhelyezési csoportokat](../../co-location.md#proximity-placement-groups) használni az alkalmazás és az adatbázis szintjei közötti késés csökkentése érdekében.
 - Az [Oracle Enterprise Manager](https://docs.oracle.com/en/enterprise-manager/) beállítása a felügyelethez, a figyeléshez és a naplózáshoz.
 - Érdemes lehet az Oracle automatikus tárolási felügyelet (ASM) használatát használni az adatbázis egyszerűsített tárterület-kezeléséhez.
 - Az [Azure-folyamatokkal](/azure/devops/pipelines/get-started/what-is-azure-pipelines) az adatbázis javításait és frissítéseit leállás nélkül kezelheti.

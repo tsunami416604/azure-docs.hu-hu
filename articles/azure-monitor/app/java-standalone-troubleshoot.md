@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan lehet elhárítani a Java-ügynököt a Azure M
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 788eea17cabbea46578d0f59919ae95a59f2223f
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 90e0ceb6ba9d696eb446d607ed2f2f134733618e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625347"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881136"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Hibaelhárítási útmutató: Azure Monitor Application Insights Javához
 
@@ -49,36 +49,66 @@ További részletekért tekintse meg az [automatikusan összegyűjtött naplóz�
 
 ## <a name="import-ssl-certificates"></a>SSL-tanúsítványok importálása
 
-Ha az alapértelmezett Java-tárolót használja, akkor már rendelkezik az összes HITELESÍTÉSSZOLGÁLTATÓI főtanúsítvánnyal. Nem kell további SSL-tanúsítványokat importálnia.
+Ez a szakasz segítséget nyújt az SSL-tanúsítványokkal kapcsolatos kivételek elhárításához és kijavításához a Java-ügynök használata esetén.
 
-Ha egyéni Java-tárolót használ, előfordulhat, hogy importálnia kell az Application Insights Endpoint SSL-tanúsítványait.
+A probléma megoldásához két különböző elérési út szükséges.
 
-### <a name="key-terminology"></a>Kulcsfontosságú terminológia
-A kulcstartó a tanúsítványok, a nyilvános kulcsok és a titkos kulcsok tárházát *tárolja* . A Java Development Kit-disztribúciók általában egy végrehajtható fájllal rendelkeznek a kezeléséhez: `keytool` .
+### <a name="if-using-a-default-java-keystore"></a>Alapértelmezett Java-tároló használata esetén:
 
-Az alábbi példa egy egyszerű parancs, amely egy SSL-tanúsítványt importál a tárolóba:
+Általában az alapértelmezett Java-tároló már rendelkezik az összes HITELESÍTÉSSZOLGÁLTATÓI főtanúsítvánnyal. Előfordulhat azonban, hogy bizonyos kivételek, például a betöltési végpont tanúsítványa más főtanúsítvánnyal is aláírható. Ezért javasoljuk, hogy a probléma megoldásához kövesse a következő három lépést:
 
-`keytool -importcert -alias your_ssl_certificate -file "your downloaded SSL certificate name".cer -keystore "Your KeyStore name" -storepass "Your keystore password" -noprompt`
+1.  Ellenőrizze, hogy az Application Insights végpont aláírásához használt főtanúsítvány már szerepel-e az alapértelmezett tárolóban. A megbízható HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok alapértelmezés szerint a ben tárolódnak `$JAVA_HOME/jre/lib/security/cacerts` . A Java-tárolóban lévő tanúsítványok listázásához használja a következő parancsot:
+    > `keytool -list -v -keystore $PATH_TO_KEYSTORE_FILE`
+ 
+    A kimenet átirányítható egy ideiglenes fájlba, például a következőre (később könnyebben megkereshető lesz)
+    > `keytool -list -v -keystore $JAVA_HOME/jre/lib/security/cacerts > temp.txt`
 
-### <a name="steps-to-download-and-add-an-ssl-certificate"></a>SSL-tanúsítvány letöltésének és hozzáadásának lépései
+2. A tanúsítványok listája után az alábbi [lépéseket](#steps-to-download-ssl-certificate) követve töltse le az Application Insights-végpont aláírásához használt főtanúsítványt.
+
+    Miután letöltötte a tanúsítványt, létrehoz egy SHA-1 kivonatot a tanúsítványon az alábbi parancs használatával:
+    > `keytool -printcert -v -file "your_downloaded_root_certificate.cer"`
+ 
+    Másolja az SHA-1 értéket, és ellenőrizze, hogy ez az érték szerepel-e a korábban mentett "temp.txt" fájlban.  Ha nem találja az SHA-1 értéket a temp fájlban, az azt jelzi, hogy a letöltött legfelső szintű tanúsítvány hiányzik az alapértelmezett Java-tárolóban.
+
+
+3. Importálja a főtanúsítványt az alapértelmezett Java-tárolóba a következő parancs használatával:
+    >   `keytool -import -file "the cert file" -alias "some meaningful name" -keystore "path to cacerts file"`
+ 
+    Ebben az esetben a következő lesz:
+ 
+    > `keytool -import -file "your downloaded root cert file" -alias "some meaningful name" $JAVA_HOME/jre/lib/security/cacerts`
+
+
+### <a name="if-using-a-custom-java-keystore"></a>Egyéni Java-tároló használata esetén:
+
+Ha egyéni Java-tárolót használ, előfordulhat, hogy importálnia kell az Application Insights-végpont (ok) legfelső szintű SSL-tanúsítványát.
+A probléma megoldásához a következő két lépést javasoljuk:
+1. Az alábbi [lépéseket](#steps-to-download-ssl-certificate) követve letöltheti a főtanúsítványt a Application Insights végpontról.
+2. Az alábbi parancs használatával importálja a gyökér SSL-tanúsítványt az egyéni Java-tárolóba:
+    > `keytool -importcert -alias your_ssl_certificate -file "your downloaded SSL certificate name.cer" -keystore "Your KeyStore name" -storepass "Your keystore password" -noprompt`
+
+### <a name="steps-to-download-ssl-certificate"></a>Az SSL-tanúsítvány letöltésének lépései
 
 1.  Nyissa meg a kedvenc böngészőjét, és keresse `IngestionEndpoint` meg az alkalmazásához használt kapcsolódási karakterláncban található URL-címet.
 
-    :::image type="content" source="media/java-ipa/troubleshooting/ingestion-endpoint-url.png" alt-text="A Application Insightsi kapcsolatok karakterláncát megjelenítő képernyőkép.":::
+    :::image type="content" source="media/java-ipa/troubleshooting/ingestion-endpoint-snippet.png" alt-text="A Application Insightsi kapcsolatok karakterláncát megjelenítő képernyőkép." lightbox="media/java-ipa/troubleshooting/ingestion-endpoint-snippet.png":::
 
 2.  Válassza a **hely adatainak megtekintése** (zárolás) ikont a böngészőben, majd válassza a **tanúsítvány** lehetőséget.
 
-    :::image type="content" source="media/java-ipa/troubleshooting/certificate-icon-capture.png" alt-text="Képernyőfelvétel a tanúsítvány beállításról a hely adataiban.":::
+    :::image type="content" source="media/java-ipa/troubleshooting/certificate-icon-capture.png" alt-text="Képernyőfelvétel a tanúsítvány beállításról a hely adataiban." lightbox="media/java-ipa/troubleshooting/certificate-icon-capture.png":::
 
-3.  Lépjen a **részletek** lapra, és válassza a **Másolás fájlba** lehetőséget.
-4.  Válassza a **tovább** gombot, válassza a **Base-64 kódolású X. 509 (. CER)** formátuma, majd kattintson ismét a **tovább** gombra.
+3.  A "Leaf" tanúsítvány letöltése helyett le kell töltenie a "root" tanúsítványt az alábbi ábrán látható módon. Később kattintson a tanúsítvány elérési útja elemre, > válassza ki a főtanúsítványt – > kattintson a tanúsítvány megtekintése elemre. Ekkor megjelenik egy új tanúsítvány menü, és letöltheti a tanúsítványt az új menüből.
 
-    :::image type="content" source="media/java-ipa/troubleshooting/certificate-export-wizard.png" alt-text="A tanúsítvány-Exportálás varázsló képernyőképe, a kiválasztott formátummal.":::
+    :::image type="content" source="media/java-ipa/troubleshooting/root-certificate-selection.png" alt-text="Képernyőkép a főtanúsítvány kiválasztásáról." lightbox="media/java-ipa/troubleshooting/root-certificate-selection.png":::
 
-5.  Válassza ki azt a fájlt, ahová menteni szeretné az SSL-tanúsítványt. Ezután válassza a **következő**  >  **Befejezés** lehetőséget. "Az Exportálás sikeres volt" üzenetnek kell megjelennie.
-6.  A tanúsítvány létrehozása után itt az ideje, hogy importálja a tanúsítványt egy Java-tárolóba. A tanúsítványok importálásához használja az [előző parancsot](#key-terminology) .
+4.  Lépjen a **részletek** lapra, és válassza a **Másolás fájlba** lehetőséget.
+5.  Válassza a **tovább** gombot, válassza a **Base-64 kódolású X. 509 (. CER)** formátuma, majd kattintson ismét a **tovább** gombra.
+
+    :::image type="content" source="media/java-ipa/troubleshooting/certificate-export-wizard.png" alt-text="A tanúsítvány-Exportálás varázsló képernyőképe, a kiválasztott formátummal." lightbox="media/java-ipa/troubleshooting/certificate-export-wizard.png":::
+
+6.  Válassza ki azt a fájlt, ahová menteni szeretné az SSL-tanúsítványt. Ezután válassza a **következő**  >  **Befejezés** lehetőséget. "Az Exportálás sikeres volt" üzenetnek kell megjelennie.
 
 > [!WARNING]
 > Az aktuális tanúsítvány lejárta előtt meg kell ismételnie ezeket a lépéseket az új tanúsítvány beszerzéséhez. A lejárati információkat a **tanúsítvány** párbeszédpanel **részletek** lapján tekintheti meg.
 >
-> :::image type="content" source="media/java-ipa/troubleshooting/certificate-details.png" alt-text="Az SSL-tanúsítvány részleteit megjelenítő képernyőkép.":::
+> :::image type="content" source="media/java-ipa/troubleshooting/certificate-details.png" alt-text="Az SSL-tanúsítvány részleteit megjelenítő képernyőkép." lightbox="media/java-ipa/troubleshooting/certificate-details.png":::

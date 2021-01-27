@@ -3,12 +3,12 @@ title: GRPC-alapú következtetési kiszolgáló fejlesztése és üzembe helyez
 description: Ez a cikk útmutatást nyújt egy gRPC következtetési kiszolgáló fejlesztéséhez és üzembe helyezéséhez.
 ms.topic: how-to
 ms.date: 12/02/2020
-ms.openlocfilehash: 3f732a7432dacebeeefddd1822fec7d95dfbaa97
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 6184a369e73c26d3a8a716f9daf1c0420a5239fe
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97425895"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881652"
 ---
 # <a name="how-to-guide--develop-and-deploy-a-grpc-inference-server"></a>Útmutató: gRPC-következtetési kiszolgáló fejlesztése és üzembe helyezése
 
@@ -26,9 +26,9 @@ Ebből a cikkből megtudhatja, hogyan teheti elérhetővé a választott AI-mode
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [támogatott Linux operációs rendszerek](https://docs.microsoft.com/azure/iot-edge/support#operating-systems) vagy Windows rendszerű gépek egyikét futtató x86-64 vagy ARM64-eszköz.
+* A [támogatott Linux operációs rendszerek](../../iot-edge/support.md#operating-systems) vagy Windows rendszerű gépek egyikét futtató x86-64 vagy ARM64-eszköz.
 * [Telepítse a Docker](https://docs.docker.com/desktop/#download-and-install) -t a gépre.
-* Telepítse a [IoT Edge futtatókörnyezetet](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge?tabs=linux).
+* Telepítse a [IoT Edge futtatókörnyezetet](../../iot-edge/how-to-install-iot-edge.md?tabs=linux).
 
 ## <a name="grpc-implementation-steps"></a>gRPC-implementáció lépései
 
@@ -197,7 +197,7 @@ Most, hogy konfiguráltuk és inicializálta a gRPC-kiszolgáló portjának kapc
         1. A rendszerkép konvertálása bájtos tömbben feldolgozásra. Lásd a metódust: `GetBytes(Bitmap image)`
         
             A csak a JPG-kódolású képkockákat és a nem képpontos formátumot támogatja. Ha az egyéni processzor támogatja a különböző kódolást és/vagy formátumot, frissítse a `IsMediaFormatSupported` processzor osztály metódusát.
-        1. A [ColorMatrix osztály](https://docs.microsoft.com/dotnet/api/system.drawing.imaging.colormatrix?redirectedfrom=MSDN&view=dotnet-plat-ext-3.1&preserve-view=true)használatával alakítsa át a képet szürkeárnyalatos méretre. Lásd: metódus: `ToGrayScale(Image source)` .
+        1. A [ColorMatrix osztály](/dotnet/api/system.drawing.imaging.colormatrix?preserve-view=true&view=dotnet-plat-ext-3.1)használatával alakítsa át a képet szürkeárnyalatos méretre. Lásd: metódus: `ToGrayScale(Image source)` .
         1. Miután beolvasta a szürke méretezési képet, a rendszer kiszámítja a szürke skála bájtjainak átlagát.
         1. Ha az átlagos érték < 127, akkor a rendszerképet "Dark"-ként osztályozjuk, máskülönben "Light"-ként osztályozjuk őket a 1,0-as megbízhatósági értékkel. Lásd: metódus: `ProcessImage(List<Image> images)` .
 
@@ -213,7 +213,7 @@ Most, hogy konfiguráltuk és inicializálta a gRPC-kiszolgáló portjának kapc
 
 Most, hogy létrehozta a gRPC-bővítmény modult, most létrehozjuk és üzembe helyezzük a Media Graph-topológiát.
 
-1. A Visual Studio Code használatával a Docker-be való bejelentkezéshez kövesse az [alábbi utasításokat](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux#build-and-push-your-solution) .
+1. A Visual Studio Code használatával a Docker-be való bejelentkezéshez kövesse az [alábbi utasításokat](../../iot-edge/tutorial-develop-for-linux.md#build-and-push-your-solution) .
 1. A Visual Studio Code-ban lépjen az src/Edge elemre. Ekkor megjelenik a. env fájl és néhány központi telepítési sablon fájl.
 
     A központi telepítési sablon a peremhálózati eszköz üzembe helyezési jegyzékére hivatkozik. Tartalmaz néhány helyőrző értéket. A. env fájl tartalmazza a változók értékeit.
@@ -306,7 +306,6 @@ Ebben a szakaszban az Edge-modulok üzembe helyezése a IoT Edge eszközön megk
 
 :::image type="content" source="./media/develop-deploy-grpc-inference-srv-how-to/devices.png" alt-text="Új modul lett üzembe helyezve lvaExtension néven":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A minta futtatásához és az eredmények értelmezéséhez kövesse a felkészülés az [élő videók elemzése a modell](use-your-model-quickstart.md) rövid útmutatója című témakörben említett **események figyelése** című szakaszát. Tekintse meg a példaként szolgáló gRPC-topológiákat is: [gRPCExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtension/topology.json), [CVRWithGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/cvr-with-grpcExtension/topology.json), [EVRtoAssetsByGrpcExtension és [EVROnMotionPlusGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/motion-with-grpcExtension/topology.json).
-

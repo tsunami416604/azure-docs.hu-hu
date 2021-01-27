@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan biztonságossá teheti a fürtöt IP-címtartom
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: 9828682fa71d023356b174d528c2137ed29f368d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: ca6e1c06b3ad90ef12c9bf375bae50d46c5f7c37
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682502"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98890636"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Biztonságos hozzáférés az API-kiszolgálóhoz a jogosult IP-címtartományok használatával az Azure Kubernetes szolgáltatásban (ak)
 
@@ -130,11 +130,28 @@ az aks update \
     --api-server-authorized-ip-ranges ""
 ```
 
+## <a name="find-existing-authorized-ip-ranges"></a>Meglévő, jóváhagyott IP-címtartományok keresése
+
+Az engedélyezni kívánt IP-címtartományok megkereséséhez használja az [az AK show][az-aks-show] nevet, és adja meg a fürt nevét és az erőforráscsoportot. Például:
+
+```azurecli-interactive
+az aks show \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --query apiServerAccessProfile.authorizedIpRanges'
+```
+
+## <a name="update-disable-and-find-authorized-ip-ranges-using-azure-portal"></a>Hitelesítő IP-címtartományok frissítése, letiltása és keresése Azure Portal használatával
+
+Az adott IP-címtartományok hozzáadásával, frissítésével, megkeresésével és letiltásával kapcsolatos műveletek a Azure Portalon is elvégezhetők. A hozzáféréshez navigáljon a **hálózat** menüpontra a fürterőforrás menüjének **Beállítások** területén.
+
+:::image type="content" source="media/api-server-authorized-ip-ranges/ip-ranges-specified.PNG" alt-text="A böngészőben a fürterőforrás hálózati beállítások Azure Portal lapja látható. A &quot;megadott IP-címtartomány beállítása&quot; és a &quot;megadott IP-címtartományok&quot; beállítás ki van emelve.":::
+
 ## <a name="how-to-find-my-ip-to-include-in---api-server-authorized-ip-ranges"></a>Hogyan találhatom meg az IP-címet, hogy szerepeljen a alkalmazásban `--api-server-authorized-ip-ranges` ?
 
 Az API-kiszolgáló innen való eléréséhez hozzá kell adnia a fejlesztői gépeket, az eszközök vagy az Automation IP-címeit a jóváhagyott IP-tartományok AK-beli fürtjének listájához. 
 
-Egy másik lehetőség, hogy a tűzfal virtuális hálózatán belül egy külön alhálózaton belüli Jumpbox konfigurálja a szükséges eszközökkel. Ez azt feltételezi, hogy a környezete tűzfallal rendelkezik a megfelelő hálózattal, és a tűzfal IP-címei a jogosult tartományokhoz lettek adva. Hasonlóképpen, ha úgy döntött, hogy az AK-alhálózatról a tűzfal alhálózatára kényszerített bújtatást, a fürt alhálózatán lévő Jumpbox is rendben van.
+Egy másik lehetőség, hogy a tűzfal virtuális hálózatán belül egy külön alhálózaton belüli Jumpbox konfigurálja a szükséges eszközökkel. Ez azt feltételezi, hogy a környezete tűzfallal rendelkezik a megfelelő hálózattal, és a tűzfal IP-címei a jogosult tartományokhoz lettek adva. Hasonlóképpen, ha úgy döntött, hogy az AK-alhálózatról a tűzfal alhálózatára kényszerített bújtatást, akkor a fürt alhálózatán lévő Jumpbox is rendben van.
 
 Adjon hozzá egy másik IP-címet a jóváhagyott tartományokhoz a következő paranccsal.
 
@@ -170,6 +187,7 @@ További információ: az [AK-ban található alkalmazásokhoz és fürtökhöz 
 <!-- LINKS - internal -->
 [az-aks-update]: /cli/azure/ext/aks-preview/aks#ext-aks-preview-az-aks-update
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-show]: /cli/azure/aks#az_aks_show
 [az-network-public-ip-list]: /cli/azure/network/public-ip#az-network-public-ip-list
 [concepts-clusters-workloads]: concepts-clusters-workloads.md
 [concepts-security]: concepts-security.md

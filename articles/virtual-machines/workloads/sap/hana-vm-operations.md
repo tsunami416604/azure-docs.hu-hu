@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9a907f2a6fc54c96dbef9f2091a91cac50bbd4ca
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 6e28b23f20a0336498abbc357f4c96bdfa5b089f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486521"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881838"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>SAP HANA infrastruktúrakonfigurációk és -műveletek az Azure-ban
 Ez a dokumentum útmutatást nyújt az Azure-infrastruktúra és az Azure natív virtuális gépeken üzembe helyezett operációs SAP HANA rendszerek konfigurálásához. A dokumentum a M128s virtuális gép SKU-jának SAP HANA kibővíthető konfigurációs adatait is tartalmazza. Ez a dokumentum nem helyettesíti a szabványos SAP-dokumentációt, amely a következő tartalmakat tartalmazza:
@@ -46,7 +46,7 @@ Az alábbi szakaszok a SAP HANA rendszerek Azure-beli virtuális gépeken való 
 Az [Azure Virtual Machines tervezési útmutatójában](./planning-guide.md)leírtaknak megfelelően két alapszintű módszer áll rendelkezésre az Azure-beli virtuális gépekhez való csatlakozáshoz:
 
 - Kapcsolódjon az interneten és a nyilvános végpontokon egy Jump VM vagy SAP HANA rendszert futtató virtuális gépen.
-- Csatlakozás [VPN](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) -vagy Azure- [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
+- Csatlakozás [VPN](../../../vpn-gateway/tutorial-site-to-site-portal.md) -vagy Azure- [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
 
 A helyek közötti kapcsolat VPN-en vagy ExpressRoute szükséges az éles környezetekben. Az ilyen típusú kapcsolatok olyan nem éles környezetekben is szükségesek, amelyek olyan éles környezetbe kerülnek, ahol az SAP szoftver használatban van. Az alábbi képen egy példa látható a helyek közötti kapcsolatra:
 

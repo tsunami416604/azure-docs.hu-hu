@@ -10,12 +10,12 @@ ms.author: sagopal
 ms.date: 12/3/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python
-ms.openlocfilehash: 71061c056b499f79727f70fb855db7a81a65f3bd
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 7ddd5dec87a122a0b36fee17b5434c8a49dcf434
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572170"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881635"
 ---
 # <a name="troubleshoot-environment-image-builds"></a>Környezeti rendszerkép-buildek – problémamegoldás
 
@@ -153,12 +153,12 @@ Tekintse meg az alábbi forgatókönyveket a lehetséges szolgáltatási oldali 
 
 Lehetséges problémák:
 - Előfordulhat, hogy a tároló-beállításjegyzék elérési útjának neve nem oldható fel megfelelően. Ellenőrizze, hogy a képnevek dupla perjelet használnak-e, és a vágás iránya a Linuxon és a Windows-gazdagépeken helyes-e.
-- Ha egy virtuális hálózat mögötti tároló-beállításjegyzék egy nem [támogatott régióban](https://docs.microsoft.com/azure/private-link/private-link-overview#availability)található privát végpontot használ, konfigurálja a tároló-beállításjegyzéket a portálon a szolgáltatás végpontjának (nyilvános hozzáférés) használatával, és próbálkozzon újra.
-- Miután elhelyezte a tároló-beállításjegyzéket egy virtuális hálózat mögött, futtassa a [Azure Resource Manager sablont](https://docs.microsoft.com/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry) , hogy a munkaterület képes legyen kommunikálni a tároló beállításjegyzék-példánnyal.
+- Ha egy virtuális hálózat mögötti tároló-beállításjegyzék egy nem [támogatott régióban](/azure/private-link/private-link-overview#availability)található privát végpontot használ, konfigurálja a tároló-beállításjegyzéket a portálon a szolgáltatás végpontjának (nyilvános hozzáférés) használatával, és próbálkozzon újra.
+- Miután elhelyezte a tároló-beállításjegyzéket egy virtuális hálózat mögött, futtassa a [Azure Resource Manager sablont](/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry) , hogy a munkaterület képes legyen kommunikálni a tároló beállításjegyzék-példánnyal.
 
 ### <a name="you-get-a-401-error-from-a-workspace-container-registry"></a>Egy munkaterület-tároló beállításjegyzékének 401-as hibát kap
 
-A [ws.sync_keys ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#sync-keys--)használatával újraszinkronizálhatja a tároló kulcsait.
+A [ws.sync_keys ()](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#sync-keys--)használatával újraszinkronizálhatja a tároló kulcsait.
 
 ### <a name="the-environment-keeps-throwing-a-waiting-for-other-conda-operations-to-finish-error"></a>A környezet továbbra is "várakozás más Conda-műveletek befejezésére..." hiba
 
@@ -166,7 +166,7 @@ Ha a rendszerkép létrehozása folyamatban van, a Conda az SDK-ügyfél zárolj
 
 ### <a name="your-custom-docker-image-isnt-in-the-registry"></a>Az egyéni Docker-rendszerkép nem szerepel a beállításjegyzékben
 
-Ellenőrizze, hogy a [helyes címke](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments#create-an-environment) van-e használatban, és hogy a `user_managed_dependencies = True` . `Environment.python.user_managed_dependencies = True` letiltja a Conda, és a felhasználó telepített csomagjait használja.
+Ellenőrizze, hogy a [helyes címke](/azure/machine-learning/how-to-use-environments#create-an-environment) van-e használatban, és hogy a `user_managed_dependencies = True` . `Environment.python.user_managed_dependencies = True` letiltja a Conda, és a felhasználó telepített csomagjait használja.
 
 ### <a name="you-get-one-of-the-following-common-virtual-network-issues"></a>A következő gyakori virtuális hálózati problémák valamelyikét kapja
 
@@ -184,9 +184,9 @@ Ellenőrizze, hogy a [helyes címke](https://docs.microsoft.com/azure/machine-le
 
 ### <a name="you-cant-run-experiments-when-storage-has-network-security-enabled"></a>Nem futtathat kísérleteket, ha a tárterületen engedélyezve van a hálózati biztonság
 
-Ha alapértelmezett Docker-rendszerképeket használ, és a felhasználó által felügyelt függőségeket is engedélyezi, használja a MicrosoftContainerRegistry és a AzureFrontDoor. FirstParty [szolgáltatás címkéit](https://docs.microsoft.com/azure/machine-learning/how-to-enable-virtual-network) a engedélyezési Azure Container Registry és annak függőségeire.
+Ha alapértelmezett Docker-rendszerképeket használ, és a felhasználó által felügyelt függőségeket is engedélyezi, használja a MicrosoftContainerRegistry és a AzureFrontDoor. FirstParty [szolgáltatás címkéit](/azure/machine-learning/how-to-enable-virtual-network) a engedélyezési Azure Container Registry és annak függőségeire.
 
- További információt a [virtuális hálózatok engedélyezése](https://docs.microsoft.com/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry)című témakörben talál.
+ További információt a [virtuális hálózatok engedélyezése](/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry)című témakörben talál.
 
 ### <a name="you-need-to-create-an-icm"></a>Létre kell hoznia egy ICM-t
 

@@ -3,12 +3,12 @@ title: Az Azure Service Fabric-fürt verziójának frissítése
 description: Ismerje meg az Azure Service Fabric-beli fürtök verzióit, beleértve a Service Fabric csapat blogján elérhető legújabb kiadásokra mutató hivatkozást is.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: c9a29a97238164b9f6daf9dda66a1f314a7673ce
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: cd9c4be285c68e5482f7276429dd5514c72ae135
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804237"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881550"
 ---
 # <a name="upgrade-your-azure-service-fabric-cluster-version"></a>Az Azure Service Fabric-fürt verziójának frissítése
 
@@ -55,7 +55,7 @@ Frissítsen egy támogatott Service Fabric verzióra, hogy megakadályozza az á
 
 ### <a name="upgrade-alert-for-versions-later-than-63"></a>Frissítési riasztás a 6,3-nál újabb verziókhoz
 
-A biztonság és a rendelkezésre állás javítása érdekében az Azure-infrastruktúra olyan módosítást hajtott végre, amely hatással lehet Service Fabric ügyfelekre. Ez a módosítás minden olyan Service Fabric-fürtöt érint, amely [nyitott hálózatkezelési módot használ a tárolók számára](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) , és 6,3-7,0 vagy nem kompatibilis támogatott verziót futtat 7,0-nál újabb verziókban. Az Service Fabric futtatókörnyezet frissítése minden régióban támogatott Service Fabric-verzióhoz elérhető.
+A biztonság és a rendelkezésre állás javítása érdekében az Azure-infrastruktúra olyan módosítást hajtott végre, amely hatással lehet Service Fabric ügyfelekre. Ez a módosítás minden olyan Service Fabric-fürtöt érint, amely [nyitott hálózatkezelési módot használ a tárolók számára](./service-fabric-networking-modes.md#set-up-open-networking-mode) , és 6,3-7,0 vagy nem kompatibilis támogatott verziót futtat 7,0-nál újabb verziókban. Az Service Fabric futtatókörnyezet frissítése minden régióban támogatott Service Fabric-verzióhoz elérhető.
 
 #### <a name="if-you-dont-upgrade-to-a-supported-version"></a>Ha nem frissít egy támogatott verzióra
 

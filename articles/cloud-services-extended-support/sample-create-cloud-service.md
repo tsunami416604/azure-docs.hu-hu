@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 1c501bcd716a8d5b1deabf345192ced65ab2d5ca
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 61c8924b5dba37e3fc61da4710b9bcdad34ebeca
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98745033"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881534"
 ---
 # <a name="create-a-new-azure-cloud-service-extended-support"></a>Új Azure Cloud Service-szolgáltatás létrehozása (bővített támogatás)
 Ezek a minták az új Azure Cloud Service (bővített támogatás) üzembe helyezésének különböző módjait fedik le.
@@ -189,5 +189,5 @@ $cloudService = New-AzCloudService                                              
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure Cloud Services (bővített támogatás) szolgáltatással kapcsolatos további információkért lásd: [azure Cloud Services (bővített támogatás) – áttekintés](overview.md).
-
+- Az Azure Cloud Services (bővített támogatás) szolgáltatással kapcsolatos további információkért lásd: [azure Cloud Services (bővített támogatás) – áttekintés](overview.md).
+- Látogasson el a [Cloud Services (bővített támogatás) minták tárházára](https://github.com/Azure-Samples/cloud-services-extended-support)

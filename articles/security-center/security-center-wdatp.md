@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 4b8141d99d654705450a14767b04ae6265766af9
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 519285f2bad352aa16bdc8d9a1db7a63c2eb04e5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98807082"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876393"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>A végpontok Security Center integrált EDR megoldással való ellátása: a Microsoft Defender for Endpoint
 
@@ -62,7 +62,7 @@ A Microsoft Defender for Endpoint a következőket biztosítja:
 
 A Defender Security Center-nal való integrálásával a következő kiegészítő képességeket veheti igénybe:
 
-- **Automatizált** előkészítés. A Security Center automatikusan engedélyezi a Microsoft Defender for Endpoint Sensor használatát a Security Center által figyelt összes Windows-kiszolgálóhoz. A Windows Server 2019 rendszert futtatók kivételével, amelyeket helyi parancsfájllal, Csoportházirend objektummal (GPO) vagy a [Microsoft Endpoint Configuration Manager](https://docs.microsoft.com/mem/configmgr/) (korábban SCCM) kell bevezetni.
+- **Automatizált** előkészítés. A Security Center automatikusan engedélyezi a Microsoft Defender for Endpoint Sensor használatát a Security Center által figyelt összes Windows-kiszolgálóhoz. A Windows Server 2019 rendszert futtatók kivételével, amelyeket helyi parancsfájllal, Csoportházirend objektummal (GPO) vagy a [Microsoft Endpoint Configuration Manager](/mem/configmgr/) (korábban SCCM) kell bevezetni.
 
 - **Egyetlen** üvegtábla. A Security Center-konzolon a Microsoft Defender for Endpoint riasztások jelennek meg. További vizsgálathoz használja a Microsoft Defendert a végpont saját portáljának oldalain, ahol további információkat talál, például a riasztási folyamat fáját és az incidens diagramot. Megtekintheti a részletes gépi idővonalat is, amely egy 6 hónapos időszakra visszamenőlegesen mutatja be az összes viselkedést.
 

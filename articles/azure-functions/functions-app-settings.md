@@ -3,12 +3,12 @@ title: Azure Functions – alkalmazásbeállítási referencia
 description: A Azure Functions Alkalmazásbeállítások vagy környezeti változók dokumentációja.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 80b2daebbd64f08dd4f5d728b2a9a4ee04b8952f
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a28530fd4e4731065c4ddcc2f39e9a4660529921
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728992"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881923"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions – alkalmazásbeállítási referencia
 
@@ -131,7 +131,7 @@ Megadja a kulcstárolóhoz használandó tárházat vagy szolgáltatót. Jelenle
 
 |Kulcs|Mintaérték|
 |---|------------|
-|AzureWebJobsSecretStorageType|Files|
+|AzureWebJobsSecretStorageType|Fájlok|
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
@@ -239,7 +239,7 @@ Csak Windows rendszeren futó fogyasztási vagy prémium csomagok telepítéseko
 
 ## <a name="website_contentovervnet"></a>WEBHELY \_ CONTENTOVERVNET
 
-Csak a prémium csomagokhoz. Az érték `1` lehetővé teszi a Function alkalmazás méretezését, ha a Storage-fiókja egy virtuális hálózatra van korlátozva. Ezt a beállítást akkor érdemes engedélyezni, ha a Storage-fiókot egy virtuális hálózatra korlátozza. További információ: [a Storage-fiók korlátozása egy virtuális hálózatra](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network-preview). 
+Csak a prémium csomagokhoz. Az érték `1` lehetővé teszi a Function alkalmazás méretezését, ha a Storage-fiókja egy virtuális hálózatra van korlátozva. Ezt a beállítást akkor érdemes engedélyezni, ha a Storage-fiókot egy virtuális hálózatra korlátozza. További információ: [a Storage-fiók korlátozása egy virtuális hálózatra](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network).
 
 |Kulcs|Mintaérték|
 |---|------------|

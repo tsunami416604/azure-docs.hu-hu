@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/19/2021
-ms.openlocfilehash: 31398a49de871ad44499a796adfef1be618ccab9
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: ae07f51a91745acdaf2601d3a50bf282129dac71
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685174"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881805"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights Gen2-esemény forrásai
 
@@ -59,7 +59,7 @@ A fenti ajánlott eljárások mellett azt javasoljuk, hogy az üzleti szempontb�
 
 - Növelje a IoT Hub vagy az Event hub adatmegőrzési idejét legfeljebb 7 napig.
 
-- Hozzon létre környezeti riasztásokat a Azure Portal. A platform [metrikái](https://docs.microsoft.com/azure/time-series-insights/how-to-monitor-tsi-reference#metrics) alapján történő riasztások lehetővé teszik a végpontok közötti folyamat működésének ellenőrzését. A riasztások létrehozásával és kezelésével kapcsolatos utasítások [itt](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts)találhatók. Javasolt riasztási feltételek:
+- Hozzon létre környezeti riasztásokat a Azure Portal. A platform [metrikái](./how-to-monitor-tsi-reference.md#metrics) alapján történő riasztások lehetővé teszik a végpontok közötti folyamat működésének ellenőrzését. A riasztások létrehozásával és kezelésével kapcsolatos utasítások [itt](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts)találhatók. Javasolt riasztási feltételek:
 
   - A IngressReceivedMessagesTimeLag nagyobb, mint 5 perc
   - A IngressReceivedBytes 0
@@ -92,7 +92,7 @@ Az időzóna-eltolást a következők egyikének kell megformáznia:
 ± HH: PP</br>
 ± HH: MMZ</br>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Olvassa el a [JSON-összeolvasztási és-Escape-szabályokat](./concepts-json-flattening-escaping-rules.md) , hogy megtudja, hogyan lesznek tárolva az események.
 

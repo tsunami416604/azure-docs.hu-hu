@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 12/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 9038d6bc9cd061200ef4553242889776f30d2dc1
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: a006dfd4f78f90ed323e5780b173cffb6daeac4a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964558"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881737"
 ---
 # <a name="trigger-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Gépi tanulási folyamatok indítása a Pythonhoz készült Azure Machine Learning SDK-val
 
@@ -27,7 +27,7 @@ Ebből a cikkből megtudhatja, hogyan ütemezhet programozott módon egy folyama
 
 * Python-környezet, amelyben a Pythonhoz készült Azure Machine Learning SDK telepítve van. További információkért lásd: [újrafelhasználható környezetek létrehozása és kezelése a Azure Machine learning-vel való betanításhoz és üzembe helyezéshez.](how-to-use-environments.md)
 
-* Egy Machine Learning munkaterület közzétett folyamattal. A [Machine learning-folyamatokat a Azure Machine learning SDK-val létrehozhatja és futtathatja](how-to-create-your-first-pipeline.md).
+* Egy Machine Learning munkaterület közzétett folyamattal. A [Machine learning-folyamatokat a Azure Machine learning SDK-val létrehozhatja és futtathatja](./how-to-create-machine-learning-pipelines.md).
 
 ## <a name="initialize-the-workspace--get-data"></a>A munkaterület inicializálása & az adatlekérdezés
 
@@ -142,7 +142,7 @@ Ha ezt követően újra futtatja `Schedule.list(ws)` , üres listát kell kapnia
 
 Az összetettebb trigger-szabályok vagy-viselkedés az [Azure Logic apps](../logic-apps/logic-apps-overview.md)használatával hozhatók létre.
 
-Ahhoz, hogy egy Azure Logic App-alkalmazás elindítson egy Machine Learning folyamatot, szüksége lesz egy közzétett Machine Learning-folyamat REST-végpontra. [A folyamat létrehozása és közzététele](how-to-create-your-first-pipeline.md). Ezután keresse meg a REST-végpontját a `PublishedPipeline` folyamat azonosítójának használatával:
+Ahhoz, hogy egy Azure Logic App-alkalmazás elindítson egy Machine Learning folyamatot, szüksége lesz egy közzétett Machine Learning-folyamat REST-végpontra. [A folyamat létrehozása és közzététele](./how-to-create-machine-learning-pipelines.md). Ezután keresse meg a REST-végpontját a `PublishedPipeline` folyamat azonosítójának használatával:
 
 ```python
 # You can find the pipeline ID in Azure Machine Learning studio
@@ -219,7 +219,7 @@ A logikai alkalmazás üzembe helyezése után a következő lépésekkel konfig
 
 Ebben a cikkben a Pythonhoz készült Azure Machine Learning SDK-val két különböző módon ütemezhet egy folyamatot. Az egyik ütemezett ismétlődés az eltelt idő alapján. A másik ütemterv akkor fut, ha egy fájlt módosítanak egy adott `Datastore` vagy a tároló egyik könyvtárán belül. Látta, hogyan használhatja a portált a folyamat és az egyes futtatások vizsgálatára. Megtanulta, hogyan tilthatja le az ütemtervet, hogy a folyamat lefusson. Végül létrehozott egy Azure Logic app-alkalmazást egy folyamat elindításához. 
 
-További információ:
+További információkért lásd:
 
 > [!div class="nextstepaction"]
 > [Azure Machine Learning folyamatok használata a Batch pontozáshoz](tutorial-pipeline-batch-scoring-classification.md)

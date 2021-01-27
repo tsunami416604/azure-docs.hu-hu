@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 12/02/2020
 ms.author: brendm
 ms.custom: devx-track-java, contperf-fy21q2
-ms.openlocfilehash: fc3f78131518b4d8740c25ab37c48d4444deef10
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: b7f5d4206140bf2101c10b1cd4ac46d80bdd3342
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563143"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881703"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Mi az az Azure Spring Cloud?
 
@@ -27,7 +27,7 @@ Az alkalmazások Azure Spring Cloud-ba való üzembe helyezése számos előnnye
 * Gyorsan fejlesztheti és helyezheti üzembe a tárolókra bontás-függőségek nélkül.
 * Hatékonyan és könnyedén figyelheti a termelési számítási feladatokat.
 
-Az Azure Spring Cloud a Java [Spring boot](https://spring.io/projects/spring-boot) és a ASP.net Core [Steeltoe](https://steeltoe.io/) -alkalmazásokat egyaránt támogatja. A Steeltoe-támogatás jelenleg nyilvános előzetes verzióként érhető el. A nyilvános előzetes verzióban elérhető ajánlatok lehetővé teszik, hogy a hivatalos kiadás előtt új funkciókkal kísérletezzenek. A nyilvános előzetes verzió funkcióit és szolgáltatásait nem éles használatra szánták. További információ: a [Gyakori kérdések](https://azure.microsoft.com/support/faq/) vagy a [support Request](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)fájl.
+Az Azure Spring Cloud a Java [Spring boot](https://spring.io/projects/spring-boot) és a ASP.net Core [Steeltoe](https://steeltoe.io/) -alkalmazásokat egyaránt támogatja. A Steeltoe-támogatás jelenleg nyilvános előzetes verzióként érhető el. A nyilvános előzetes verzióban elérhető ajánlatok lehetővé teszik, hogy a hivatalos kiadás előtt új funkciókkal kísérletezzenek. A nyilvános előzetes verzió funkcióit és szolgáltatásait nem éles használatra szánták. További információ: a [Gyakori kérdések](https://azure.microsoft.com/support/faq/) vagy a [support Request](../azure-portal/supportability/how-to-create-azure-support-request.md)fájl.
 
 ## <a name="service-overview"></a>A szolgáltatás áttekintése
 
@@ -64,7 +64,7 @@ Ez a dokumentáció azokat a szakaszokat ismerteti, amelyekkel megtudhatja, hogy
     * [Integráció más Azure-szolgáltatásokkal](spring-cloud-tutorial-bind-cosmos.md): a Spring boot-alkalmazások manuális konfigurálása helyett automatikusan köthető a kiválasztott Azure-szolgáltatások az alkalmazásokhoz, például az alkalmazás kötése egy Azure Cosmos db-adatbázishoz.
     * [Automatizálás](spring-cloud-howto-cicd.md): a folyamatos integráció és a folyamatos kézbesítési eszközök lehetővé teszik a meglévő alkalmazások frissítéseinek gyors üzembe helyezését minimális erőfeszítéssel és kockázattal. Az Azure DevOps segítségével rendszerezheti és szabályozhatja ezeket a kulcsfontosságú feladatokat. 
     * [Problémamegoldás](spring-cloud-howto-self-diagnose-solve.md): az Azure Spring Cloud Diagnostics interaktív élményt nyújt az alkalmazások hibakereséséhez. Nem igényel konfigurálást. Ha problémákat tapasztal, az Azure Spring Cloud Diagnostics észleli a problémákat, és útmutatást nyújt a problémák elhárításához és megoldásához.
-    * [Migrálás](https://docs.microsoft.com/azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud): meglévő Spring Cloud Application vagy Spring boot-alkalmazás migrálása az Azure Spring Cloud-on való futtatáshoz.
+    * [Migrálás](/azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud): meglévő Spring Cloud Application vagy Spring boot-alkalmazás migrálása az Azure Spring Cloud-on való futtatáshoz.
 
 ## <a name="next-steps"></a>További lépések
 

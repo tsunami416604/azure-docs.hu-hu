@@ -3,12 +3,12 @@ title: Felügyelt identitások az Azure-erőforrásokhoz Service Bus
 description: Ez a cikk azt ismerteti, hogyan használhatók a felügyelt identitások Azure Service Bus entitások (várólisták, témakörök és előfizetések) elérésére.
 ms.topic: article
 ms.date: 01/21/2021
-ms.openlocfilehash: 22be57a0108b6a8511a64165ad365675d006fb8f
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: dac12820adf863a7e51457d34f9180543089fc7b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98808247"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881567"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Felügyelt identitás hitelesítése Azure Active Directory használatával Azure Service Bus erőforrások eléréséhez
 Az [Azure-erőforrások felügyelt identitásai](../active-directory/managed-identities-azure-resources/overview.md) egy Azure-beli szolgáltatás, amely lehetővé teszi, hogy az alkalmazás kódjának futtatásához használt központi telepítéshez tartozó biztonságos identitást hozzon létre. Ezután társíthatja az identitást hozzáférés-vezérlési szerepkörökkel, amelyek egyéni engedélyeket biztosítanak az alkalmazás által igényelt egyes Azure-erőforrások eléréséhez.
@@ -137,7 +137,7 @@ A módosítások elvégzése után tegye közzé és futtassa az alkalmazást. A
 
 
 > [!NOTE]
-> - A felügyelt identitás csak az Azure-környezetben, az App Servicesben, az Azure-beli virtuális gépeken és a méretezési csoportokon belül működik. A .NET-alkalmazások esetében a Service Bus NuGet-csomag által használt Microsoft. Azure. Services. AppAuthentication függvénytár egy absztrakciót biztosít a protokollhoz, és támogatja a helyi fejlesztési élményt. Ez a könyvtár lehetővé teszi a kód helyi tesztelését a fejlesztői gépen a Visual studióból, az Azure CLI 2,0-ből vagy Active Directory integrált hitelesítésből származó felhasználói fiók használatával. A könyvtár helyi fejlesztési lehetőségeivel kapcsolatos további információkért lásd: [szolgáltatások közötti hitelesítés Azure Key Vault .NET használatával](../key-vault/general/service-to-service-authentication.md).  
+> - A felügyelt identitás csak az Azure-környezetben, az App Servicesben, az Azure-beli virtuális gépeken és a méretezési csoportokon belül működik. A .NET-alkalmazások esetében a Service Bus NuGet-csomag által használt Microsoft. Azure. Services. AppAuthentication függvénytár egy absztrakciót biztosít a protokollhoz, és támogatja a helyi fejlesztési élményt. Ez a könyvtár lehetővé teszi a kód helyi tesztelését a fejlesztői gépen a Visual studióból, az Azure CLI 2,0-ből vagy Active Directory integrált hitelesítésből származó felhasználói fiók használatával. A könyvtár helyi fejlesztési lehetőségeivel kapcsolatos további információkért lásd: [szolgáltatások közötti hitelesítés Azure Key Vault .NET használatával](/dotnet/api/overview/azure/service-to-service-authentication).  
 > 
 > - A felügyelt identitások jelenleg nem működnek App Service üzembe helyezési pontokkal.
 

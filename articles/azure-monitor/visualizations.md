@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/17/2020
-ms.openlocfilehash: f9f95a5e85ec4eebf82cca707476750595331d73
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.date: 01/25/2021
+ms.openlocfilehash: bc59c639856de6a5ce5adda1f78266eb7e4d5dd3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522668"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881231"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Adatok megjelenítése az Azure Monitorból
 Ez a cikk az Azure Monitorban tárolt napló-és metrikai adatok megjelenítéséhez használható módszerek összegzését tartalmazza.
@@ -46,9 +46,9 @@ Itt látható egy útmutató az irányítópultok létrehozásához.
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4AslH]
 
 ### <a name="advantages"></a>Előnyök
-- Mélyreható integráció az Azure-ba. A vizualizációk több Azure-oldalról is rögzíthetők az irányítópultokon, például Metrikaböngésző, Log Analytics és Application Insights.
+- Mélyreható integráció az Azure-ba. A vizualizációk több Azure-oldalról is rögzíthetők az irányítópultokon, például [Metrikaböngésző](platform/metrics-charts.md), [log Analytics](log-query/log-analytics-overview.md)és [Application Insights](app/app-insights-overview.md).
 - A a metrikákat és a naplókat is támogatja.
-- Több forrásból származó adatok egyesítése, beleértve a [metrikák Explorer](platform/metrics-charts.md), a [naplók](log-query/log-query-overview.md)és a [leképezések](app/app-map.md) kimenetét Application Insightsban.
+- Több forrásból származó adatok egyesítése, beleértve a [Metrikaböngésző](platform/metrics-charts.md), a [naplózási lekérdezések](log-query/log-query-overview.md)és a [térképek](app/app-map.md) és a rendelkezésre állás eredményét [Application Insightsban](app/app-insights-overview.md).
 - Személyes vagy megosztott irányítópultok beállítása. Integrálva van az [Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC)](../role-based-access-control/overview.md).
 - Automatikus frissítés. A metrikák frissítése az időtartománytól függ, amely legalább öt percet vesz igénybe. A naplók óránként frissülnek, az adott vizualizáción található "frissítés" ikonra kattintva vagy a teljes irányítópult frissítésével igény szerint manuális frissítési lehetőséggel.
 - Parametrized metrikai irányítópultok timestamp és egyéni paraméterekkel.
@@ -57,7 +57,7 @@ Itt látható egy útmutató az irányítópultok létrehozásához.
 
 
 ### <a name="limitations"></a>Korlátozások
-- Az adattáblákat nem támogató naplózási vizualizációk korlátozott vezérlése. Az adatsorozatok teljes száma legfeljebb 10, a további adatsorozatok pedig egy _másik_ gyűjtő alatt vannak csoportosítva.
+- Az adattáblákat nem támogató naplózási vizualizációk korlátozott vezérlése. Az adatsorozatok száma összesen 50-ra van korlátozva, és a további adatsorozatok egy _másik_ gyűjtő alá vannak csoportosítva.
 - Nincsenek egyéni paraméterek a naplózási diagramokhoz.
 - A naplózási diagramok az elmúlt 30 napban vannak korlátozva.
 - A naplózási diagramokat csak megosztott irányítópultokra lehet rögzíteni.
@@ -137,11 +137,12 @@ A naplózási és metrikai adatokban lévő adatokhoz a Azure Monitor API-n kere
 - Nem támogatott több munkaterület vagy Application Insights alkalmazások lekérdezése.
 - A lekérdezések mérete legfeljebb 8 MB, a lekérdezés végrehajtási ideje pedig 110 másodperc.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Tudnivalók a [Azure monitor által gyűjtött adatokról](platform/data-platform.md).
 - Ismerje meg az [Azure-irányítópultokat](../azure-portal/azure-portal-dashboards.md).
-- A [Azure monitor nézeteinek](platform/view-designer.md)megismerése.
+- Tudnivalók a [Metrikaböngésző](platform/metrics-getting-started.md)
 - További tudnivalók a [munkafüzetek](./platform/workbooks-overview.md)használatáról.
 - További információ a [naplózási adatainak az Power BIba való importálásáról](./platform/powerbi.md).
 - Ismerkedjen meg a [Grafana Azure monitor adatforrás beépülő modullal](./platform/grafana-plugin.md).
+- A [Azure monitor nézeteinek](platform/view-designer.md)megismerése.
 

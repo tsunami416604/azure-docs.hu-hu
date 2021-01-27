@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 55c7522ad1dc6c7f91fae608a777dab3cd67d2ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e09607dde118ce25e5d2e5311e7614f2f18a590
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86183170"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98890730"
 ---
 # <a name="configure-machines-to-a-desired-state"></a>Gépek célállapotba történő konfigurálása
 
@@ -42,7 +42,7 @@ További információ arról, hogy a csapatok hogyan működhetnek együtt a kis
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Jelentkezzen be az Azure-előfizetésbe a [AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) parancsmaggal, és kövesse a képernyőn megjelenő utasításokat.
+Jelentkezzen be az Azure-előfizetésbe a [AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) parancsmaggal, és kövesse a képernyőn megjelenő utasításokat.
 
 ```powershell
 Connect-AzAccount
@@ -51,7 +51,7 @@ Connect-AzAccount
 ## <a name="create-and-upload-a-configuration-to-azure-automation"></a>Konfiguráció létrehozása és feltöltése Azure Automation
 
 
-Egy szövegszerkesztőben írja be a következőt, és mentse helyileg **TestConfig.ps1ként **.
+Egy szövegszerkesztőben írja be a következőt, és mentse helyileg **TestConfig.ps1ként**.
 
 ```powershell
 configuration TestConfig {
@@ -68,7 +68,7 @@ configuration TestConfig {
 > [!NOTE]
 > A fejlettebb forgatókönyvek esetében, ahol több, a DSC-erőforrásokat biztosító modult kell importálnia, győződjön meg arról, hogy minden modul rendelkezik egyedi `Import-DscResource` vonallal a konfigurációban.
 
-Hívja meg az [import-AzAutomationDscConfiguration](/powershell/module/Az.Automation/Import-AzAutomationDscConfiguration?view=azps-3.7.0) parancsmagot, hogy feltöltse a konfigurációt az Automation-fiókjába.
+Hívja meg az [import-AzAutomationDscConfiguration](/powershell/module/Az.Automation/Import-AzAutomationDscConfiguration) parancsmagot, hogy feltöltse a konfigurációt az Automation-fiókjába.
 
 ```powershell
  Import-AzAutomationDscConfiguration -SourcePath 'C:\DscConfigs\TestConfig.ps1' -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -Published
@@ -78,7 +78,7 @@ Hívja meg az [import-AzAutomationDscConfiguration](/powershell/module/Az.Automa
 
 A DSC-konfigurációt egy csomópont-konfigurációba kell lefordítani, mielőtt hozzá lehetne rendelni egy csomóponthoz. Lásd: [DSC-konfigurációk](/powershell/scripting/dsc/configurations/configurations).
 
-Hívja meg a [Start-AzAutomationDscCompilationJob](/powershell/module/Az.Automation/Start-AzAutomationDscCompilationJob?view=azps-3.7.0) parancsmagot, hogy a `TestConfig` konfigurációt egy Automation- `TestConfig.WebServer` fiókban elnevezett csomópont-konfigurációba fordítsa.
+Hívja meg a [Start-AzAutomationDscCompilationJob](/powershell/module/Az.Automation/Start-AzAutomationDscCompilationJob) parancsmagot, hogy a `TestConfig` konfigurációt egy Automation- `TestConfig.WebServer` fiókban elnevezett csomópont-konfigurációba fordítsa.
 
 ```powershell
 Start-AzAutomationDscCompilationJob -ConfigurationName 'TestConfig' -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount'
@@ -88,7 +88,7 @@ Start-AzAutomationDscCompilationJob -ConfigurationName 'TestConfig' -ResourceGro
 
 Azure Automation állapot-konfigurációval felügyelheti az Azure-beli virtuális gépeket (a klasszikus és a Resource Managert is), a helyszíni virtuális gépeket, a linuxos gépeket, az AWS-alapú virtuális gépeket és a helyszíni fizikai gépeket. Ebben a témakörben bemutatjuk, hogyan regisztrálhat csak Azure Resource Manager virtuális gépeket. További információ az egyéb típusú gépek regisztrálásáról: [bevezetési gépek felügyeletre Azure Automation állapot-konfiguráció alapján](automation-dsc-onboarding.md).
 
-A [Register-AzAutomationDscNode](/powershell/module/Az.Automation/Register-AzAutomationDscNode?view=azps-3.7.0) parancsmag meghívásával regisztrálja a virtuális gépet felügyelt csomópontként Azure Automation állapot-konfigurációval. 
+A [Register-AzAutomationDscNode](/powershell/module/Az.Automation/Register-AzAutomationDscNode) parancsmag meghívásával regisztrálja a virtuális gépet felügyelt csomópontként Azure Automation állapot-konfigurációval. 
 
 ```powershell
 Register-AzAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -AzureVMName 'DscVm'
@@ -125,7 +125,7 @@ Ez hozzárendeli a nevű csomópont-konfigurációt `TestConfig.WebServer` a reg
 
 ## <a name="check-the-compliance-status-of-a-managed-node"></a>Felügyelt csomópont megfelelőségi állapotának ellenőrzése
 
-A [Get-AzAutomationDscNodeReport](/powershell/module/Az.Automation/Get-AzAutomationDscNodeReport?view=azps-3.7.0) parancsmag használatával jelentéseket kaphat a felügyelt csomópontok megfelelőségi állapotáról.
+A [Get-AzAutomationDscNodeReport](/powershell/module/Az.Automation/Get-AzAutomationDscNodeReport) parancsmag használatával jelentéseket kaphat a felügyelt csomópontok megfelelőségi állapotáról.
 
 ```powershell
 # Get the ID of the DSC node
@@ -146,24 +146,24 @@ Ha úgy dönt, hogy eltávolítja a csomópontot a szolgáltatásból, ezt a Azu
 > [!NOTE]
 > A csomópontok szolgáltatásból való regisztrációjának törlése csak a helyi Configuration Manager beállításokat állítja be, így a csomópont már nem csatlakozik a szolgáltatáshoz.
 > Ez nem befolyásolja a csomóponton jelenleg alkalmazott konfigurációt.
-> Az aktuális konfiguráció eltávolításához használja a [PowerShellt](/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1) , vagy törölje a helyi konfigurációs fájlt (ez az egyetlen lehetőség a Linux-csomópontok számára).
+> Az aktuális konfiguráció eltávolításához használja a [PowerShellt](/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument) , vagy törölje a helyi konfigurációs fájlt (ez az egyetlen lehetőség a Linux-csomópontok számára).
 
 ### <a name="azure-portal"></a>Azure Portal
 
 Azure Automation a tartalomjegyzékben kattintson az **állapot konfigurálása (DSC)** elemre.
 Ezután kattintson a **csomópontokra** a szolgáltatásban regisztrált csomópontok listájának megtekintéséhez.
 Kattintson az eltávolítani kívánt csomópont nevére.
-A megnyíló csomópont nézetben kattintson a **Regisztráció törlése**elemre.
+A megnyíló csomópont nézetben kattintson a **Regisztráció törlése** elemre.
 
 ### <a name="powershell"></a>PowerShell
 
-Ha meg szeretné szüntetni a csomópont regisztrációját Azure Automation állapot-konfigurációs szolgáltatásból a PowerShell használatával, kövesse a következő parancsmag dokumentációját: [unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0).
+Ha meg szeretné szüntetni a csomópont regisztrációját Azure Automation állapot-konfigurációs szolgáltatásból a PowerShell használatával, kövesse a következő parancsmag dokumentációját: [unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Első lépésként tekintse meg [az Azure Automation állapot konfigurációjának első lépései](automation-dsc-getting-started.md)című témakört.
 - A csomópontok engedélyezésével kapcsolatos további információkért lásd: [Azure Automation állapot konfigurációjának engedélyezése](automation-dsc-onboarding.md).
 - Ha szeretne többet megtudni a DSC-konfigurációk fordításáról, hogy hozzá lehessen rendelni őket a célcsoportokhoz, tekintse meg [a DSC-konfigurációk fordítása Azure Automation állapot konfigurációjában](automation-dsc-compile.md)című témakört.
 - Ha szeretné megtekinteni a Azure Automation állapot konfigurációjának folyamatos üzembe helyezési folyamatban való használatát, tekintse [meg a folyamatos üzembe helyezés a chocolatey](automation-dsc-cd-chocolatey.md)használatával című témakört.
 - A díjszabással kapcsolatos információkért lásd: [Azure Automation állapot konfigurációjának díjszabása](https://azure.microsoft.com/pricing/details/automation/).
-- A PowerShell-parancsmagok leírása: [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+- A PowerShell-parancsmagok leírása: [az. Automation](/powershell/module/az.automation).

@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 82161a8f66dd717a9dc448a743b818a9ab9938db
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 3db31431c24edd3377f6299046cc31067310b2ef
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250978"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876210"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Azure Service Fabric-fürt üzembe helyezése Availability Zones
 Az Azure-beli Availability Zones magas rendelkezésre állású ajánlat, amely védelmet nyújt alkalmazásai és adatai számára az adatközpont hibáiból. A rendelkezésre állási zónák egy Azure-régión belüli, független energiaellátással, hűtéssel és hálózatkezeléssel ellátott egyedi fizikai helyek.
@@ -345,7 +345,7 @@ A zónák virtuálisgép-méretezési csoportokon való engedélyezéséhez a k�
 
 * Az első érték a **Zones** tulajdonság, amely meghatározza a virtuálisgép-méretezési csoport Availability Zones.
 * A második érték a "singlePlacementGroup" tulajdonság, amelyet igaz értékre kell beállítani. **A 3 AZ-ra kiterjedő méretezési csoport legfeljebb 300 virtuális gépet képes méretezni, akár "singlePlacementGroup = true" értékkel.**
-* A harmadik érték a "zoneBalance", amely biztosítja a zónák szigorú kiegyensúlyozását, ha az igaz értékre van állítva. Azt javasoljuk, hogy ezt a beállítást állítsa igaz értékre a virtuális gépek zónák közötti kiegyensúlyozatlan eloszlásának elkerülése érdekében. További információ a [zoneBalancing](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing).
+* A harmadik érték a "zoneBalance", amely biztosítja a zónák szigorú kiegyensúlyozását, ha az igaz értékre van állítva. Azt javasoljuk, hogy ezt a beállítást állítsa igaz értékre a virtuális gépek zónák közötti kiegyensúlyozatlan eloszlásának elkerülése érdekében. További információ a [zoneBalancing](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing).
 * A FaultDomain és a UpgradeDomain felülbírálásokat nem szükséges konfigurálni.
 
 ```json
@@ -416,9 +416,9 @@ A több rendelkezésre állási zóna támogatásához engedélyezni kell a Serv
 
 ### <a name="migration-to-the-node-type-with-multiple-availability-zones"></a>Migrálás a csomópont típusára több Availability Zones
 Minden áttelepítési forgatókönyv esetében új nodeType kell hozzáadni, amely több rendelkezésre állási zónával is rendelkezik. Egy meglévő nodeType nem telepíthető át több zóna támogatásához.
-A cikk [itt](https://docs.microsoft.com/azure/service-fabric/service-fabric-scale-up-primary-node-type ) rögzíti az új nodeType hozzáadásának részletes lépéseit, valamint az új nodeType, például az IP-és LB-erőforrások hozzáadásához szükséges egyéb erőforrásokat is. Ugyanez a cikk azt is leírja, hogy most kivonja a meglévő nodeType, miután a nodeType több rendelkezésre állási zónával bővült a fürthöz.
+A cikk [itt](./service-fabric-scale-up-primary-node-type.md) rögzíti az új nodeType hozzáadásának részletes lépéseit, valamint az új nodeType, például az IP-és LB-erőforrások hozzáadásához szükséges egyéb erőforrásokat is. Ugyanez a cikk azt is leírja, hogy most kivonja a meglévő nodeType, miután a nodeType több rendelkezésre állási zónával bővült a fürthöz.
 
-* Áttelepítése egy alapszintű LB-t és IP-erőforrást használó nodeType: ezt a megoldást már [itt](https://docs.microsoft.com/azure/service-fabric/service-fabric-cross-availability-zones#migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip) tekintheti meg az az egyik csomópont-típussal. 
+* Áttelepítése egy alapszintű LB-t és IP-erőforrást használó nodeType: ezt a megoldást már [itt](#migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip) tekintheti meg az az egyik csomópont-típussal. 
     Az új csomópont-típus esetében az egyetlen különbség az, hogy csak 1 virtuálisgép-méretezési csoport és 1 NodeType van az az összes az az érték helyett az az összes.
 * Áttelepítés egy olyan nodeType, amely a standard SKU LB-t és IP-erőforrásokat használja a NSG-ben: kövesse a fentiekben ismertetett eljárást, amely alól nem szükséges új LB-, IP-és NSG-erőforrásokat hozzáadni, és ugyanazokat az erőforrásokat újra fel lehet használni az új nodeType.
 

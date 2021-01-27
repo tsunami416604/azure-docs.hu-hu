@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 050e6b5007b9fbaedc412d8062430f1c2c1691fd
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 7bca683ea075710aa6fc677fcf457ceb2e0e5098
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96923943"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881011"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>Adatok átvitele az AzCopy használatával és fájltárolás 
 
@@ -49,7 +49,7 @@ Ez a szakasz a következő példákat tartalmazza:
 > [!TIP]
 > A feltöltési műveletet opcionális jelzők használatával is megteheti. Íme néhány példa.
 >
-> |Forgatókönyv|Jelölő|
+> |Eset|Jelölő|
 > |---|---|
 > |A hozzáférés-vezérlési listák (ACL-ek) másolása a fájlokkal együtt.|**--megőrzése-SMB-engedélyek** = \[ igaz \| hamis\]|
 > |Az SMB-tulajdonságok adatainak másolása a fájlokkal együtt.|**--az SMB-info megőrzése** = \[ igaz \| hamis\]|
@@ -153,7 +153,7 @@ Ez a szakasz a következő példákat tartalmazza:
 > [!TIP]
 > A letöltési műveletet opcionális jelzők használatával is megteheti. Íme néhány példa.
 >
-> |Forgatókönyv|Jelölő|
+> |Eset|Jelölő|
 > |---|---|
 > |A hozzáférés-vezérlési listák (ACL-ek) másolása a fájlokkal együtt.|**--megőrzése-SMB-engedélyek** = \[ igaz \| hamis\]|
 > |Az SMB-tulajdonságok adatainak másolása a fájlokkal együtt.|**--az SMB-info megőrzése** = \[ igaz \| hamis\]|
@@ -236,7 +236,7 @@ Részletes információk: [azcopy másolási](storage-ref-azcopy-copy.md) dokume
 
 #### <a name="download-from-a-share-snapshot"></a>Letöltés megosztási pillanatképből
 
-Egy fájl vagy könyvtár adott verzióját a megosztási pillanatkép **datetime** értékére hivatkozva töltheti le. További információ a megosztási pillanatképekről: [Azure Files-megosztási Pillanatképek áttekintése](/azure/storage/files/storage-snapshots-files). 
+Egy fájl vagy könyvtár adott verzióját a megosztási pillanatkép **datetime** értékére hivatkozva töltheti le. További információ a megosztási pillanatképekről: [Azure Files-megosztási Pillanatképek áttekintése](../files/storage-snapshots-files.md). 
 
 |    |     |
 |--------|-----------|
@@ -251,7 +251,7 @@ A AzCopy használatával fájlokat másolhat más Storage-fiókokba. A másolás
 
 A AzCopy [kiszolgálók](/rest/api/storageservices/put-block-from-url) közötti [API](/rest/api/storageservices/put-page-from-url)-kat használ, így az Adatmásolás közvetlenül a Storage-kiszolgálók között történik. Ezek a másolási műveletek nem használják a számítógép hálózati sávszélességét. A környezeti változó értékének megadásával növelheti a műveletek átviteli sebességét `AZCOPY_CONCURRENCY_VALUE` . További információ: az [átviteli sebesség optimalizálása](storage-use-azcopy-configure.md#optimize-throughput).
 
-A fájlok adott verzióit a megosztási pillanatkép **datetime** értékére hivatkozva is másolhatja. További információ a megosztási pillanatképekről: [Azure Files-megosztási Pillanatképek áttekintése](/azure/storage/files/storage-snapshots-files). 
+A fájlok adott verzióit a megosztási pillanatkép **datetime** értékére hivatkozva is másolhatja. További információ a megosztási pillanatképekről: [Azure Files-megosztási Pillanatképek áttekintése](../files/storage-snapshots-files.md). 
 
 Ez a szakasz a következő példákat tartalmazza:
 
@@ -264,7 +264,7 @@ Ez a szakasz a következő példákat tartalmazza:
 > [!TIP]
 > A másolási műveletet opcionális jelzők használatával is megadhatja. Íme néhány példa.
 >
-> |Forgatókönyv|Jelölő|
+> |Eset|Jelölő|
 > |---|---|
 > |A hozzáférés-vezérlési listák (ACL-ek) másolása a fájlokkal együtt.|**--megőrzése-SMB-engedélyek** = \[ igaz \| hamis\]|
 > |Az SMB-tulajdonságok adatainak másolása a fájlokkal együtt.|**--az SMB-info megőrzése** = \[ igaz \| hamis\]|
@@ -320,7 +320,7 @@ Ha a `--delete-destination` jelölőt a értékre állítja `true` , a AzCopy a 
 > [!TIP]
 > A szinkronizálási műveletet opcionális jelzők használatával is megadhatja. Íme néhány példa.
 >
-> |Forgatókönyv|Jelölő|
+> |Eset|Jelölő|
 > |---|---|
 > |A hozzáférés-vezérlési listák (ACL-ek) másolása a fájlokkal együtt.|**--megőrzése-SMB-engedélyek** = \[ igaz \| hamis\]|
 > |Az SMB-tulajdonságok adatainak másolása a fájlokkal együtt.|**--az SMB-info megőrzése** = \[ igaz \| hamis\]|
@@ -358,7 +358,7 @@ Az ebben a parancsban megjelenő első fájlmegosztás a forrás. Az URI végén
 
 További információ a megosztási pillanatképekről: [Azure Files-megosztási Pillanatképek áttekintése](../files/storage-snapshots-files.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További példákat a következő cikkekben talál:
 

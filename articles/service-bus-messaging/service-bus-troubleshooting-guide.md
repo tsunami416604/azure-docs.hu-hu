@@ -3,12 +3,12 @@ title: Hibaelhárítási útmutató a Azure Service Bushoz | Microsoft Docs
 description: Ismerkedjen meg a hibaelhárítási tippekkel és javaslatokkal néhány olyan problémával kapcsolatban, amelyet a Azure Service Bus használatakor láthat.
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: 8c31d252d75a2ba75528cd12d3a94bad5bd9f677
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: c5813f901f31f96633e11c2ed8162338bdd9bbf7
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98126869"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881214"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>A Azure Service Bus hibaelhárítási útmutatója
 Ez a cikk hibaelhárítási tippeket és javaslatokat tartalmaz a Azure Service Bus használatakor esetlegesen előforduló problémákkal kapcsolatban. 
@@ -80,7 +80,7 @@ Service Bus Error: Unauthorized access. 'Send' claim\(s\) are required to perfor
 Az identitás nem rendelkezik a Service Bus témakör eléréséhez szükséges engedélyekkel. 
 
 ### <a name="resolution"></a>Feloldás
-A hiba elhárításához telepítse a [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/) könyvtárat.  További információ: [helyi fejlesztési hitelesítés](../key-vault/general/service-to-service-authentication.md#local-development-authentication). 
+A hiba elhárításához telepítse a [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/) könyvtárat.  További információ: [helyi fejlesztési hitelesítés](/dotnet/api/overview/azure/service-to-service-authentication#local-development-authentication). 
 
 Ha meg szeretné tudni, hogyan rendelhet hozzá engedélyeket a szerepkörökhöz, tekintse meg [a felügyelt identitás hitelesítése Azure Active Directory használatával Azure Service Bus erőforrások elérését](service-bus-managed-service-identity.md)ismertető témakört.
 
@@ -97,7 +97,7 @@ Az üzenetek küldésére és fogadására használt tokenek száma korlátozott
 ### <a name="resolution"></a>Feloldás
 További üzenetek küldéséhez nyisson meg egy új kapcsolódást a Service Bus névtérhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket: 
 
 - [Azure Resource Manager kivételek](service-bus-resource-manager-exceptions.md). A Azure Service Bus a Azure Resource Manager használatával (sablonok vagy közvetlen hívások segítségével) való interakció során keletkező kivételeket sorolja fel.
