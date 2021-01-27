@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: da04e7704274336f7f92237c1d7c30459caa7bc8
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: a7361dafce30b07e76d971bdcda41cf4b3cd9e6e
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936481"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806174"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>SAP BusinessObjects BI platformtelepítési útmutató Linuxhoz az Azure-on
 
@@ -37,7 +37,7 @@ Ebben a példában a termék verziója és a fájlrendszer elrendezése van hasz
 - Azure Database for MySQL (verzió: 8.0.15)
 - MySQL C API-összekötő – libmysqlclient (verzió: 6.1.11)
 
-| Fájlrendszer        | Leírás                                                                                                               | Méret (GB)             | Tulajdonos  | Csoport  | Storage                    |
+| Fájlrendszer        | Leírás                                                                                                               | Méret (GB)             | Tulajdonos  | Group  | Storage                    |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------|-----------------------|--------|--------|----------------------------|
 | /usr/sap           | Az SAP BOBI-példány, az alapértelmezett tomcat-webalkalmazás és az adatbázis-illesztőprogramok telepítéséhez használt fájlrendszer (ha szükséges) | SAP-Méretezési irányelvek | bl1adm | sapsys | Felügyelt prémium lemez – SSD |
 | /usr/sap/frsinput  | A csatlakoztatási könyvtár a megosztott fájlok között minden olyan BOBI-gazdagépen megtalálható, amelyet bemeneti adattárként fog használni.  | Üzleti igények         | bl1adm | sapsys | Azure NetApp Files         |
@@ -555,7 +555,7 @@ A következő szakasz azt ismerteti, hogyan valósítható meg a biztonsági men
 
 Az Azure-ban az alkalmazás-kiszolgálók és az összes csatlakoztatott lemez biztonsági mentésének legegyszerűbb módja [Azure Backup](../../../backup/backup-overview.md) szolgáltatás használata. Független és elkülönített biztonsági mentéseket biztosít a virtuális gépeken tárolt adatmennyiségek nem szándékos megsemmisítéséhez. A biztonsági másolatok egy helyreállítási tárban vannak tárolva, a helyreállítási pontok beépített kezelésével. A konfiguráció és a skálázás egyszerű, a biztonsági mentések optimalizáltak, és szükség esetén könnyen visszaállíthatók.
 
-A biztonsági mentési folyamat részeként a rendszer pillanatképet készít, és az adatok átkerülnek a helyreállítási tárolóba, és nincs hatással az éles munkaterhelésekre. A pillanatkép különböző szintű konzisztenciát biztosít a [Pillanatkép-konzisztencia](../../../backup/backup-azure-vms-introduction.md#snapshot-consistency) című cikkben leírtak szerint. Dönthet úgy is, hogy a virtuális gépen lévő adatlemezek részhalmazát is biztonsági mentést készít a szelektív lemezek biztonsági mentési és visszaállítási funkcióinak használatával. További információ: Azure-beli [virtuális gép biztonsági mentési](../../../backup/backup-azure-vms-introduction.md) dokumentum és [Gyakori kérdések – Azure virtuális gépek biztonsági mentése](../../../backup/backup-azure-vm-backup-faq.md).
+A biztonsági mentési folyamat részeként a rendszer pillanatképet készít, és az adatok átkerülnek a helyreállítási tárolóba, és nincs hatással az éles munkaterhelésekre. A pillanatkép különböző szintű konzisztenciát biztosít a [Pillanatkép-konzisztencia](../../../backup/backup-azure-vms-introduction.md#snapshot-consistency) című cikkben leírtak szerint. Dönthet úgy is, hogy a virtuális gépen lévő adatlemezek részhalmazát is biztonsági mentést készít a szelektív lemezek biztonsági mentési és visszaállítási funkcióinak használatával. További információ: Azure-beli [virtuális gép biztonsági mentési](../../../backup/backup-azure-vms-introduction.md) dokumentum és [Gyakori kérdések – Azure virtuális gépek biztonsági mentése](../../../backup/backup-azure-vm-backup-faq.yml).
 
 #### <a name="backup--restore-for-file-repository-server"></a>Backup & Restore for File adattár-kiszolgáló
 
@@ -654,7 +654,7 @@ Ez a hivatkozási architektúra az SAP BOBI platform többpéldányos telepíté
 
 ![SAP BusinessObjects BI platform vész-helyreállítás](media/businessobjects-deployment-guide/businessobjects-deployment-disaster-recovery.png)
 
-#### <a name="load-balancer"></a>Terheléselosztó
+#### <a name="load-balancer"></a>Terheléselosztóval
 
 A Load Balancer az SAP BOBI platform webalkalmazás-kiszolgálói közötti forgalmának elosztására szolgál. A DR Azure Application Gateway eléréséhez az Application Gateway párhuzamos telepítését kell megvalósítani a másodlagos régióban.
 

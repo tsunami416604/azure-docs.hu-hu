@@ -1,16 +1,16 @@
 ---
 title: Az Azure Functions hálózatkezelési lehetőségei
 description: A Azure Functionsben elérhető összes hálózati beállítás áttekintése.
-author: jeffhollan
+author: cachai2
 ms.topic: conceptual
-ms.date: 10/27/2020
-ms.author: jehollan
-ms.openlocfilehash: f4d7611f285535680469f3a334ab889b0b644bfe
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 1/21/2021
+ms.author: cachai
+ms.openlocfilehash: 2c3f207e98f574bb6c43f87d34b0a404e263e83c
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936863"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806979"
 ---
 # <a name="azure-functions-networking-options"></a>Az Azure Functions hálózatkezelési lehetőségei
 
@@ -85,12 +85,9 @@ A magasabb szintű biztonság érdekében a szolgáltatás-végpontok segítség
 
 További információ: [Virtual Network szolgáltatás-végpontok](../virtual-network/virtual-network-service-endpoints-overview.md).
 
-## <a name="restrict-your-storage-account-to-a-virtual-network-preview"></a>A Storage-fiók korlátozása virtuális hálózatra (előzetes verzió)
+## <a name="restrict-your-storage-account-to-a-virtual-network"></a>A Storage-fiók korlátozása virtuális hálózatra 
 
-Egy Function-alkalmazás létrehozásakor létre kell hoznia egy általános célú Azure Storage-fiókot, amely támogatja a blobot, a várólistát és a Table Storage-t.  Ezt a Storage-fiókot lecserélheti egy, a szolgáltatási végpontokkal vagy privát végponttal védett tárolóval.  Ez az előzetes verziójú funkció jelenleg csak a Nyugat-európai Windows Premium-csomagokkal működik.  Egy privát hálózatra korlátozódó Storage-fiókkal rendelkező függvény beállítása:
-
-> [!NOTE]
-> A Storage-fiók korlátozása jelenleg csak a prémium szintű függvények esetében működik a Nyugat-európai Windows rendszerben
+Egy Function-alkalmazás létrehozásakor létre kell hoznia egy általános célú Azure Storage-fiókot, amely támogatja a blobot, a várólistát és a Table Storage-t.  Ezt a Storage-fiókot lecserélheti egy, a szolgáltatási végpontokkal vagy privát végponttal védett tárolóval.  Ez a funkció jelenleg csak a Windows prémium csomagokkal működik.  Egy privát hálózatra korlátozódó Storage-fiókkal rendelkező függvény beállítása:
 
 1. Hozzon létre egy olyan függvényt, amely nem rendelkezik engedélyezett szolgáltatási végpontokkal.
 1. Konfigurálja a függvényt a virtuális hálózathoz való kapcsolódáshoz.

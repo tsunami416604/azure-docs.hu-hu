@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/26/2020
 ms.author: shhazam
-ms.openlocfilehash: ed6c88826b41df0bdfef8cbbcb2569b3cea8f868
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 82fcf7f129d5caba471d6d72da83a317b26c638c
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832386"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98807892"
 ---
-# <a name="getting-started-with-defender-for-iot"></a>Ismerkedés a Defender IoT-vel való használatába
+# <a name="get-started-with-defender-for-iot"></a>Ismerkedés a Defender IoT
 
 Ez a cikk áttekintést nyújt az Azure Defender IoT való beállításához szükséges lépésekről. A folyamathoz a következőket kell tennie:
 
@@ -127,7 +127,7 @@ További információ: [érzékelők összekapcsolása a helyszíni felügyeleti
 
 Riasztási információk küldése az Azure Sentinelnek az Azure Sentinel konfigurálásával. Lásd: [adatok összekötése a defenderből a IoT az Azure Sentinel](how-to-configure-with-sentinel.md)szolgáltatásba.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [Üdvözli a IoT készült Azure Defender!](overview.md)
 

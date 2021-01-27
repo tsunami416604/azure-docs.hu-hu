@@ -12,14 +12,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/24/2021
+ms.date: 01/26/2021
 ms.author: memildin
-ms.openlocfilehash: 3ed290cc35195dfb02db9fbb72f092f6f4688291
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 9f39988375f58f75dad2b623cd3d937022a072e7
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757305"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806185"
 ---
 # <a name="what-is-azure-security-center"></a>Mi az az Azure Security Center?
 
@@ -105,9 +105,8 @@ Security Center fenyegetés elleni védelme magában foglalja a Fusion kill-Chai
 
 ### <a name="integration-with-microsoft-defender-for-endpoint"></a>A Microsoft Defender és a végpont közötti integráció
 
-A Security Center tartalmaz automatikus, natív integrációt a Microsoft Defender és a végpont számára. Ez azt jelenti, hogy konfiguráció nélkül a Windows és a Linux rendszerű gépek teljes mértékben integrálva vannak Security Center javaslataival és értékelésével.
+Az Azure Defender for Servers szolgáltatás automatikus, natív integrációt biztosít a Microsoft Defender és a végpont között. További információ [a végpontok Security Center integrált EDR-megoldással való ellátásáról: Microsoft Defender for Endpoint](security-center-wdatp.md)
 
-Emellett a Security Center lehetővé teszi az alkalmazás-vezérlési házirendek automatizálását kiszolgálói környezetekben. A Security Center adaptív alkalmazás-vezérlői lehetővé teszik a teljes körű alkalmazás-jóváhagyási listát a Windows-kiszolgálókon. Nincs szükség a szabályok létrehozására és a szabálysértések vizsgálatára, mindezt automatikusan elvégezheti Önnek.
 
 ### <a name="protect-paas"></a>Pásti-védelem
 

@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 0542d7e0ea204d1e9279e89c9f36b9bc6c6c88fa
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: c34410fcb5e1992f8b7a358801a354a1e1cf190c
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165858"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98808010"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database forgalom áttelepítése újabb átjáróra
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,6 +27,13 @@ Az ügyfelek értesítést kapnak e-mailben, valamint a Azure Portal az egyes r�
 ## <a name="status-updates"></a>Állapot-frissítések
 
 # <a name="in-progress"></a>[Folyamatban](#tab/in-progress-ip)
+## <a name="february-2021"></a>Február 2021
+Az új SQL Gateway-átjárók a következő régiókban lesznek hozzáadva:
+
+- USA középső régiója: 13.89.169.20
+
+Ezek az SQL-átjárók a 2021. február 28-án kezdődnek az ügyfelek forgalmának elfogadásával.
+
 ## <a name="january-2021"></a>2021. január
 Az új SQL Gateway-átjárók a következő régiókban lesznek hozzáadva:
 
@@ -41,7 +48,7 @@ Az új SQL Gateway-átjárók a következő régiókban lesznek hozzáadva:
 - Korea középső régiója: 52.231.17.22, 52.231.17.23
 - Nyugat-India: 104.211.144.4
 
-Ezek az SQL-átjárók a 2021 január 31-én megkezdik az ügyfelek forgalmának fogadását
+Ezek az SQL-átjárók a 2021. január 31-én megkezdik az ügyfelek forgalmának fogadását.
 
 # <a name="completed"></a>[Befejeződött](#tab/completed-ip)
 A következő átjárók áttelepítése befejeződött: 
@@ -105,7 +112,7 @@ Ezek az SQL-átjárók az ügyfelek forgalmának elfogadását az 2020. augusztu
 - USA nyugati régiója
 - Nyugat-Európa
 - USA keleti régiója
-- USA középső régiója
+- Az USA középső régiója
 - Délkelet-Ázsia
 - USA déli középső régiója
 - Észak-Európa
@@ -141,6 +148,6 @@ Az alkalmazásból a 4,0-es verziónál régebbi Microsoft JDBC illesztőprogram
 
 Ha a fenti megoldás nem működik, a következő URL-cím használatával kérjen SQL Database vagy SQL felügyelt példányra vonatkozó támogatási kérelmet: https://aka.ms/getazuresupport
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az [Azure SQL kapcsolati architektúráról](connectivity-architecture.md)

@@ -796,6 +796,10 @@
       href: /python/api/overview/azure/datafactory
 - name: További források
   items:
+    - name: Adatfolyamok számára fenntartott kapacitás áttekintése
+      href: data-flow-reserved-capacity-overview.md
+    - name: Az adatforgalom ismertetése a foglalási díjakról
+      href: data-flow-understand-reservation-charges.md
     - name: Tanulmányok
       href: whitepapers.md
     - name: GYIK

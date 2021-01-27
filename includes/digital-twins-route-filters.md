@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 12/04/2020
 ms.author: baanders
-ms.openlocfilehash: e06e660a43aaa0ff5eb79bc00bd8a5d2c61c6580
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: d93f484e318c10489eb1db3e9c65c6e0c7479c90
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045315"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98859736"
 ---
 | Szűrő neve | Leírás | Szöveges séma szűrése | Támogatott értékek | 
 | --- | --- | --- | --- |
@@ -22,10 +22,6 @@ ms.locfileid: "98045315"
 | Tartalomtípus | Adatérték tartalomtípusa | `datacontenttype = '<contentType>'` | A tartalom típusa `application/json` |
 | Spec verziója | Az Ön által használt esemény-séma verziója | `specversion = '<version>'` | A verziónak a-nek kell lennie `1.0` . Ez a CloudEvents séma 1,0-es verzióját jelzi. |
 | Értesítés törzse | Egy értesítés mezőjében szereplő bármely tulajdonságra hivatkozhat `data` | `$body.<property>` | Tekintse meg a következő témakört: tudnivalók az eseményekről az értesítések példáinak [*megismeréséhez*](../articles/digital-twins/how-to-interpret-event-data.md) . A mező bármely tulajdonsága `data` hivatkozhat a `$body`
-
-Vegye figyelembe, hogy több szűrőt is hozzáadhat a következőhöz hasonló kérésekhez: 
-
-:::code language="json" source="~/digital-twins-docs-samples/api-requests/filter-multiple.json":::
 
 A következő adattípusok támogatottak a fenti adatokra mutató hivatkozásokkal visszaadott értékekként:
 

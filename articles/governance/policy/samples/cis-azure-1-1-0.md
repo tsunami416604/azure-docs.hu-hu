@@ -1,15 +1,15 @@
 ---
 title: A CIS Microsoft Azure alapjaira vonatkozó szabályozási megfelelőségi részletek
 description: A CIS Microsoft Azure alapítványok alapszintű szabályozási megfelelőségének beépített kezdeményezésének részletei. Minden vezérlő egy vagy több olyan Azure Policy-definícióra van leképezve, amely segítséget nyújt az értékeléshez.
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 0e1c63f92809b6afa1f6d2e61b8ae169f9eec07d
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 85467c086225c4d9e7699debb9871dbd197ebfd2
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685646"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98807073"
 ---
 # <a name="details-of-the-cis-microsoft-azure-foundations-benchmark-regulatory-compliance-built-in-initiative"></a>A CIS Microsoft Azure alapítványok alapszintű szabályozási megfelelőségének beépített kezdeményezésének részletei
 
@@ -135,7 +135,7 @@ Ez a beépített kezdeményezés a [CIS Microsoft Azure alapítványok teljesít
 
 |Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[A biztonsági réseket a sebezhetőség-felmérési megoldásnak kell szervizelni](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F760a85ff-6162-42b3-8d70-698e268f648c) |A biztonsági rések felmérésére szolgáló megoldás és a virtuális gépek által észlelt biztonsági rések észlelése a Azure Security Center a javaslatok alapján. |AuditIfNotExists, letiltva |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VMVulnerabilities_Audit.json) |
+|[A biztonsági rések felmérésére szolgáló megoldást engedélyezni kell a virtuális gépeken](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F501541f7-f7e7-4cd6-868c-4190fdad3ac9) |Naplózza a virtuális gépeket annak észlelésére, hogy támogatott sebezhetőségi felmérési megoldást futtatnak-e. A biztonsági rések azonosítása és elemzése minden számítógépes kockázati és biztonsági program alapvető összetevője. A Azure Security Center Standard díjszabási szintje a virtuális gépek sebezhetőségi vizsgálatát is magában foglalja, többletköltség nélkül. Emellett a Security Center automatikusan üzembe helyezheti ezt az eszközt. |AuditIfNotExists, letiltva |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_ServerVulnerabilityAssessment_Audit.json) |
 
 ### <a name="ensure-asc-default-policy-setting-monitor-jit-network-access-is-not-disabled"></a>Ügyeljen arra, hogy a "JIT hálózati hozzáférés figyelése" beállítás ne legyen "Letiltva".
 
@@ -176,14 +176,6 @@ Ez a beépített kezdeményezés a [CIS Microsoft Azure alapítványok teljesít
 |Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[A biztonsági problémákhoz az előfizetéseknek kapcsolattartó e-mail címmel kell rendelkezniük](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4f4f78b8-e367-4b10-a341-d9a4ad5cf1c7) |Annak biztosítása érdekében, hogy a szervezet érintett személyei értesítést kapjanak, ha az egyik előfizetésnél potenciális biztonsági rést jelentenek, állítson be egy biztonsági kapcsolattartót az e-mailes értesítések fogadásához Security Centerról. |AuditIfNotExists, letiltva |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_Security_contact_email.json) |
-
-### <a name="ensure-that-security-contact-phone-number-is-set"></a>Győződjön meg arról, hogy a biztonsági Kapcsolattartó telefonszáma be van állítva
-
-**Azonosító**: a CIS Azure 2,17 **tulajdonjoga**: ügyfél
-
-|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
-|---|---|---|---|
-|[Az előfizetéshez meg kell adni egy biztonsági kapcsolatfelvételi telefonszámot](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb4d66858-c922-44e3-9566-5cdb7a7be744) |Adja meg a telefonszámot az értesítések fogadásához, amikor Azure Security Center észleli a feltört erőforrásokat |AuditIfNotExists, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_Security_contact_phone_number.json) |
 
 ### <a name="ensure-that-send-email-notification-for-high-severity-alerts-is-set-to-on"></a>Győződjön meg arról, hogy az "e-mail-értesítések küldése a nagy súlyosságú riasztásokhoz" beállítás értéke "on"
 
@@ -675,7 +667,7 @@ Ez a beépített kezdeményezés a [CIS Microsoft Azure alapítványok teljesít
 > [!NOTE]
 > Az adott Azure Policy-definíciók rendelkezésre állása Azure Government és más nemzeti felhőkben is változhat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További cikkek a Azure Policyról:
 

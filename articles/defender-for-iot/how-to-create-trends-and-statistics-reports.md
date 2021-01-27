@@ -1,0 +1,81 @@
+---
+title: Trendek és statisztikai jelentések készítése
+description: Ismerje meg a hálózati tevékenységet, a statisztikát és a trendeket a Defender IoT trendek és statisztika widgetek használatával.
+author: shhazam-ms
+manager: rkarlin
+ms.author: shhazam
+ms.date: 01/24/2021
+ms.topic: how-to
+ms.service: azure
+ms.openlocfilehash: 8bfbacc77843c7978bcb1d364bd93f5e09381144
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98811635"
+---
+# <a name="sensor-trends-and-statistics-reports"></a>Érzékelő trendek és statisztikai jelentések
+
+## <a name="about-sensor-trends-and-statistics-reports"></a>Az érzékelő trendjeiről és a statisztikai jelentésekről
+
+Létrehozhat widget-diagramokat és kördiagramokat, és betekintést nyerhet a hálózat trendjeibe és statisztikába. A widgetek a felhasználó által definiált irányítópultok alatt csoportosíthatók.
+
+> [!NOTE]
+> A rendszergazdák és a biztonsági elemzők trendeket és statisztikai jelentéseket hozhatnak létre.
+
+Az irányítópult olyan widgeteket tartalmaz, amelyek grafikusan leírják a következő típusú információkat:
+
+- Forgalom port alapján
+- Csatorna sávszélessége
+- Teljes sávszélesség
+- Aktív TCP-kapcsolatok
+- Eszközök
+  - Új eszközök
+  - Foglalt eszközök
+  - Eszközök szállító szerint
+  - Eszközök operációs rendszer szerint
+  - Leválasztott eszközök
+- Csatlakozási idő óra szerint
+- Incidensek típusú riasztások típus szerint
+- Adatbázistábla-hozzáférés
+- Protokollok metszetének widgetje
+- Ethernet és IP-cím:
+  - Ethernet-és IP-címek forgalma a CIP szolgáltatással
+  - Ethernet és IP-címek forgalma a CIP-osztály szerint
+  - Az Ethernet és az IP-cím forgalmának parancs alapján
+- OPC
+  - OPC felső szintű felügyeleti műveletek
+  - OPC felső I/O-műveletek
+- Siemens S7:
+  - S7-es forgalom vezérlési funkcióval
+  - S7-es forgalom alfüggvény alapján
+- SRTP
+  - SRTP-forgalom
+  - SRTP hibák naponta
+- SuiteLink:
+  - SuiteLink Top lekérdezett Címkék
+  - SuiteLink numerikus címke viselkedése
+- IEC-60870 forgalom ASDU szerint
+- DNP3-forgalom függvény szerint
+- MMS-forgalom szolgáltatás szerint
+- Modbus-forgalom függvény szerint
+- OPC – UA forgalom szolgáltatás szerint
+
+> [!NOTE]
+>  A widgetek ideje az érzékelő ideje szerint van beállítva.
+
+## <a name="create-reports"></a>Jelentések létrehozása
+
+Az irányítópultok és a widgetek megtekintéséhez:
+
+Az oldalsó menüben válassza a **trendek & statisztikát** .
+
+:::image type="content" source="media/how-to-generate-reports/investigation-screenshot.png" alt-text="Képernyőkép egy vizsgálatról.":::
+
+Alapértelmezés szerint az eredmények az elmúlt 7 napban észlelhetők. A szűrési eszközök használatával módosíthatja ezt a tartományt. Például egy ingyenes szöveges keresés.
+
+## <a name="see-also"></a>Lásd még
+
+[Kockázatértékelési jelentéskészítés](how-to-create-risk-assessment-reports.md) 
+ [Érzékelő adatbányászati lekérdezések](how-to-create-data-mining-queries.md) 
+ [Támadási vektorok jelentése](how-to-create-attack-vector-reports.md)

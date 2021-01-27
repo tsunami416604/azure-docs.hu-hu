@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: fd55110bbfaed72051bfc388692421cd8209609d
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 0985779aeb14fd4f3d6a12cf152e4c63c909d613
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763798"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806683"
 ---
 # <a name="create-custom-vm-images-for-your-azure-stack-edge-pro-device"></a>Egyéni virtuálisgép-rendszerképek létrehozása az Azure Stack Edge Pro-eszközhöz
 
@@ -23,7 +23,7 @@ Ha virtuális gépeket szeretne üzembe helyezni a Azure Stack Edge Pro-eszköz�
 
 ## <a name="vm-image-workflow"></a>VM-rendszerkép munkafolyamata
 
-A munkafolyamathoz létre kell hoznia egy virtuális gépet az Azure-ban, testre kell szabnia a virtuális gépet, általánosítani, majd le kell töltenie az adott virtuális géphez tartozó virtuális MEREVLEMEZt. Ezt az általánosított virtuális merevlemezt a rendszer feltölti a Azure Stack Edge Pro-ba, felügyelt lemez jön létre a virtuális merevlemezről, a lemezképet a felügyelt lemezről hozza létre, és végül létrehozta a virtuális gépeket.   
+A munkafolyamathoz létre kell hoznia egy virtuális gépet az Azure-ban, testre kell szabnia a virtuális gépet, általánosítani, majd le kell töltenie az adott virtuális géphez tartozó virtuális MEREVLEMEZt. Ezt az általánosított VHD-t a rendszer feltölti Azure Stack Edge Pro-ba. A rendszer létrehoz egy felügyelt lemezt a virtuális merevlemezről. A rendszer létrehoz egy rendszerképet a felügyelt lemezről. Végül pedig a virtuális gépek az adott rendszerképből jönnek létre.
 
 További információért látogasson el a [virtuális gép üzembe helyezése Azure stack Edge Pro-eszközön Azure PowerShell használatával](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md).
 
@@ -76,7 +76,7 @@ Ezzel a VHD-vel most létrehozhatja és üzembe helyezheti a virtuális gépet a
 |[Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.ubuntuserver) |Az Ubuntu Server a világ legnépszerűbb Linux-környezete.|Canonical|
 |[Debian 8 "Megbéklyóz"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.debian) |A Debian GNU/Linux az egyik legnépszerűbb Linux-disztribúció.     |credativ|
 
-Az Azure Marketplace rendszerképeinek teljes listáját, amelyek működhetnek (nem teszteltek), látogasson el az [Azure marketplace Azure stack hub számára elérhető elemeire](/azure-stack/operator/azure-stack-marketplace-azure-items?view=azs-1910).
+Az Azure Marketplace rendszerképeinek teljes listáját, amelyek működhetnek (nem teszteltek), látogasson el az [Azure marketplace Azure stack hub számára elérhető elemeire](/azure-stack/operator/azure-stack-marketplace-azure-items?view=azs-1910&preserve-view=true).
 
 
 ## <a name="next-steps"></a>További lépések

@@ -1,18 +1,18 @@
 ---
 title: Beépített szabályzat-definíciók az Azure Networking Serviceshez
 description: Felsorolja Azure Policy beépített szabályzat-definíciókat az Azure hálózati szolgáltatásokhoz. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.topic: reference
 author: KumudD
 ms.author: kumud
 ms.service: virtual-network
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 0c66540553be01ec55b5e2b43a0aeb28d9edb471
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 8ba8492fc48eae0ed434a770555e96dd27f78840
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703707"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806397"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-networking-services"></a>Az Azure Networking Services beépített definícióinak Azure Policy
 

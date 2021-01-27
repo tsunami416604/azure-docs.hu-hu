@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/07/2020
+ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 54a4a938be18d39993652cecb87b3604e268fcef
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: daf44afbb322cb30ab3a663dce4e935aefa7be13
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678953"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98808059"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Virtuális gépek üzembe helyezése Azure Stack Edge Pro GPU-eszközön az Azure CLI és a Python használatával
 
@@ -70,9 +70,9 @@ Mielőtt megkezdi a virtuális gép létrehozását és felügyeletét az Azure 
 
 3. Létrehozta és telepítette az összes tanúsítványt a Azure Stack Edge Pro-eszközön és az ügyfél megbízható tárolójában. Kövesse a [2. lépés: tanúsítványok létrehozása és telepítése](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)című témakörben ismertetett eljárást.
 
-4. Létrehozott egy Base-64 kódolású *. cer* tanúsítványt (PEM formátumban) az Azure stack Edge Pro-eszközhöz. Ez már fel van töltve aláírási láncként az eszközön, és telepítve van az ügyfél megbízható legfelső szintű tárolójába. Ennek a tanúsítványnak a *PEM* -formátumban is szükség van a Python működéséhez ezen az ügyfélen.
+4. Létrehozott egy Base-64 kódolású *. cer* tanúsítványt (PEM formátumban) az Azure stack Edge Pro-eszközhöz. Ez a tanúsítvány már fel van töltve aláírási láncként az eszközön, és telepítve van az ügyfél megbízható legfelső szintű tárolójába. Ennek a tanúsítványnak a *PEM* -formátumban is szükség van a Python működéséhez ezen az ügyfélen.
 
-    Alakítsa át ezt a tanúsítványt PEM-formátumra a `certutil` parancs használatával. Ezt a parancsot a tanúsítványt tartalmazó könyvtárba kell futtatnia.
+    Alakítsa át ezt a tanúsítványt `pem` a formátumra a `certutil` parancs használatával. Ezt a parancsot a tanúsítványt tartalmazó könyvtárba kell futtatnia.
 
     ```powershell
     certutil.exe <SourceCertificateName.cer> <DestinationCertificateName.pem>
@@ -86,9 +86,9 @@ Mielőtt megkezdi a virtuális gép létrehozását és felügyeletét az Azure 
     CertUtil: -encode command completed successfully.
     PS C:\Certificates>
     ```    
-    Ezt a PEM-t később is hozzáadja a Python áruházhoz.
+    Ezt később is hozzáadja `pem` a Python áruházhoz.
 
-5. Az eszköz IP-címét a **hálózat** lapján, az eszköz helyi webes felületén kell hozzárendelni. Ezt az IP-címet hozzá kell adnia a következőhöz:
+5. Az eszköz IP-címét a **hálózat** lapján, az eszköz helyi webes felületén kell hozzárendelni. Adja hozzá ezt az IP-címet a következőhöz:
 
     - A gazdagép fájlja az ügyfélen, vagy
     - A DNS-kiszolgáló konfigurációja
@@ -117,11 +117,11 @@ Mielőtt megkezdi a virtuális gép létrehozását és felügyeletét az Azure 
 
 ### <a name="verify-profile-and-install-azure-cli"></a>Profil ellenőrzése és az Azure CLI telepítése
 
-<!--1. Verify the API profile of the client and identify which version of the modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](/azure-stack/user/azure-stack-version-profiles?view=azs-1908#azure-resource-manager-api-profiles).-->
+<!--1. Verify the API profile of the client and identify which version of the modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](/azure-stack/user/azure-stack-version-profiles?view=azs-1908&preserve-view=true#azure-resource-manager-api-profiles).-->
 
 1. Telepítse az Azure CLI-t az ügyfélre. Ebben a példában az Azure CLI-2.0.80 telepítve lett. Az Azure CLI verziójának ellenőrzéséhez futtassa a `az --version` parancsot.
 
-    Az alábbi példa a fenti parancs kimenetét jeleníti meg:
+    A fenti parancs kimenete a következő:
 
     ```output
     PS C:\windows\system32> az --version
@@ -149,7 +149,7 @@ Mielőtt megkezdi a virtuális gép létrehozását és felügyeletét az Azure 
 
     Ha nem rendelkezik Azure CLI-vel, töltse le és [telepítse az Azure CLI](/cli/azure/install-azure-cli-windows)-t Windows rendszeren. Az Azure CLI-t a Windows parancssorból vagy a Windows PowerShell használatával futtathatja.
 
-2. Jegyezze fel a parancssori felület Python-helyét. Erre azért van szükség, hogy meghatározza a megbízható Főtanúsítvány-tároló helyét az Azure CLI-hez.
+2. Jegyezze fel a parancssori felület Python-helyét. Az Azure CLI-hez készült megbízható Főtanúsítvány-tároló helyének meghatározásához szükség van a Python-helyre.
 
 3. A cikkben használt minta parancsfájl futtatásához a következő Python-függvénytár-verziókra lesz szüksége:
 
@@ -266,7 +266,7 @@ Mielőtt megkezdi a virtuális gép létrehozását és felügyeletét az Azure 
     $ENV:ADAL_PYTHON_SSL_NO_VERIFY = 1
     ```
 
-2. Adja meg a környezeti változókat a parancsfájlhoz Azure Resource Manager végponthoz, az erőforrások létrehozásának helyét, valamint a forrás VHD helyének elérési útját. Az erőforrások helye rögzített az összes Azure Stack Edge Pro-eszközön, és a következőre van beállítva: `dbelocal` . Meg kell adnia a cím előtagjait és a magánhálózati IP-címet is. A következő környezeti változók az értékeken alapuló értékeket határozzák meg, amelyek a (z `AZURE_RESOURCE_LOCATION` ) kivételével hardcoded `"dbelocal"` .
+2. Adja meg a környezeti változókat a parancsfájlhoz Azure Resource Manager végponthoz, az erőforrások létrehozásának helyét, valamint a forrás VHD helyének elérési útját. Az erőforrások helye rögzített az összes Azure Stack Edge Pro-eszközön, és a következőre van beállítva: `dbelocal` . Meg kell adnia a cím előtagjait és a magánhálózati IP-címet is. Az összes alábbi környezeti változó értéke a (z) kivételével az értékek alapján megadott értékek `AZURE_RESOURCE_LOCATION` , amelyeknek hardcoded kell lennie `"dbelocal"` .
 
     ```powershell
     $ENV:ARM_ENDPOINT = "https://management.team3device.teatraining1.com"
@@ -319,7 +319,7 @@ Mielőtt megkezdi a virtuális gép létrehozását és felügyeletét az Azure 
     ```powershell
     PS C:\Certificates> az login -u EdgeARMuser
     ```
-   A bejelentkezési parancs használata után a rendszer jelszót kér. Adja meg a Azure Resource Manager jelszavát.
+   A login parancs használata után a rendszer jelszót kér. Adja meg a Azure Resource Manager jelszavát.
 
    Az alábbi példa a sikeres bejelentkezést mutatja be a jelszó megadása után:  
    
@@ -342,7 +342,7 @@ Mielőtt megkezdi a virtuális gép létrehozását és felügyeletét az Azure 
    ]
    PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
    ```
-   Jegyezze fel a és az `id` `tenantId` értékeket, mivel ezek megfelelnek a Azure Resource Manager előfizetés-azonosítójának és a Azure Resource Manager BÉRLŐi azonosítónak, és a későbbi lépésben lesz használva.
+   Jegyezze fel a és az `id` `tenantId` értékeket, mivel ezek az értékek a Azure Resource Manager előfizetés-azonosítójának és Azure Resource Manager BÉRLŐi azonosítónak felelnek meg, és a későbbi lépésben lesznek használva.
        
    A következő környezeti változókat kell beállítani az *egyszerű szolgáltatásnév* működéséhez:
 
@@ -427,6 +427,6 @@ A rendszer egy Python-szkriptet hoz létre a virtuális gép létrehozásához. 
     ``` 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Általános az CLI parancsok Linux rendszerű virtuális gépekhez](../virtual-machines/linux/cli-manage.md)
