@@ -5,12 +5,12 @@ ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: 4db6abeb3e6f4a07780268a6455177e0ca237205
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 5080d16a7b14506b24e07e2ee4ba862c645f83a8
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598491"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875449"
 ---
 # <a name="manage-your-function-app"></a>A Function alkalmazás kezelése 
 
@@ -37,6 +37,8 @@ Az Alkalmazásbeállítások kezelhetők a [Azure Portal](functions-how-to-use-a
 Ezeket a beállításokat a rendszer titkosított formában tárolja. További információ: [Alkalmazásbeállítások biztonsága](security-concepts.md#application-settings).
 
 # <a name="portal"></a>[Portál](#tab/portal)
+
+Az Alkalmazásbeállítások megkereséséhez lásd: Ismerkedés a [Azure Portal](#get-started-in-the-azure-portal). 
 
 Az **Alkalmazásbeállítások** lapon megtarthatja a Function alkalmazás által használt beállításokat. A portál értékeinek megjelenítéséhez ki kell választania az **értékek megjelenítése** elemet. Egy beállítás a portálon való hozzáadásához válassza az **új Alkalmazásbeállítás** lehetőséget, és adja hozzá az új kulcs-érték párokat.
 
@@ -92,7 +94,7 @@ A következő értékek a csomag típusát jelzik:
 
 | Csomag típusa | Portál | Azure CLI/PowerShell |
 | --- | --- | --- |
-| [Használatalapú](consumption-plan.md) | **Használatalapú** | `Dynamic` |
+| [Használat](consumption-plan.md) | **Használat** | `Dynamic` |
 | [Prémium](functions-premium-plan.md) | **ElasticPremium** | `ElasticPremium` |
 | [Dedikált (App Service)](dedicated-plan.md) | Különböző | Különböző |
 

@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: amgowda
-ms.openlocfilehash: b4b6c04a1e35031387a006b6350ebf6cbe502fee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51e2095b0df8fdc965926c6c612c45f582c9b9d2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995887"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874484"
 ---
 # <a name="frequently-asked-questions-about-confidential-computing-nodes-on-azure-kubernetes-service-aks"></a>Gyakori kérdések az Azure Kubernetes szolgáltatás (ak) bizalmas számítástechnikai csomópontjairól
 
@@ -24,6 +24,10 @@ A termék előzetes verziója nem biztosít SLA-t az [itt](https://azure.microso
 ## <a name="what-is-attestation-and-how-can-we-do-attestation-of-apps-running-in-enclaves"></a>Mi az igazolás, és hogyan végezhető el a enklávékban futó alkalmazások igazolása? 
 
 Az igazolás az a folyamat, amely azt mutatja be és ellenőrzi, hogy egy szoftver megfelelően lett-e létrehozva az adott hardveres platformon. Emellett igazolja, hogy a bizonyítéka a biztonságos platformon futó biztosítékok biztosítására szolgál, és nem lett illetéktelenül módosítva. [További információk](attestation.md) arról, hogyan történik az igazolás az enklávé-alkalmazásokhoz.
+
+## <a name="can-i-enable-accelerated-networking-with-azure-confidential-computing-aks-clusters"></a>Engedélyezhető a gyorsított hálózatkezelés az Azure bizalmas számítástechnikai AK-fürtökkel? 
+
+Nem. A gyorsított hálózatkezelés nem támogatott az AK-on található bizalmas számítástechnikai csomópontokon. Győződjön meg arról, hogy a gyorsított hálózatkezelés le van tiltva az üzemelő példányban. 
 
 ## <a name="can-i-bring-my-existing-containerized-applications-and-run-it-on-aks-with-azure-confidential-computing"></a>Használhatom a meglévő tárolóban lévő alkalmazásokat, és az Azure bizalmas számítástechnikai szolgáltatásával is futtathatom az AK-n? 
 

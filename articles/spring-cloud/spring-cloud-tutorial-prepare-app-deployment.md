@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 37753265afa7e76e87dbcdc5893595bea66798f4
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 4e9c84efe7b96cf61a69c54e3f5ecbc469ac7d8d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610250"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874142"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez
 
@@ -151,7 +151,7 @@ Spring boot-verzió | Tavaszi felhő verziója
 2.4.1 + | 2020.0.0
 
 > [!NOTE]
-> A Spring boot 2.4.0 az alkalmazások és az Eureka közötti TLS-hitelesítéssel kapcsolatos hibát észlelt, használja a 2.4.1 vagy újabb rendszert. Ha ragaszkodik a 2.4.0 használatához, tekintse meg a megkerülő megoldással kapcsolatos [gyakori kérdéseket](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-faq?pivots=programming-language-java#development) .
+> A Spring boot 2.4.0 az alkalmazások és az Eureka közötti TLS-hitelesítéssel kapcsolatos hibát észlelt, használja a 2.4.1 vagy újabb rendszert. Ha ragaszkodik a 2.4.0 használatához, tekintse meg a megkerülő megoldással kapcsolatos [gyakori kérdéseket](./spring-cloud-faq.md?pivots=programming-language-java#development) .
 
 ### <a name="dependencies-for-spring-boot-version-2223"></a>A Spring boot 2.2/2.3-as verziójának függőségei
 
@@ -317,7 +317,7 @@ Adja meg a következő függőséget a `spring-cloud-sleuth-zipkin` pom.xml fáj
 * [Spring rövid útmutató](https://spring.io/quickstart)
 * [Spring boot – dokumentáció](https://spring.io/projects/spring-boot)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a témakörben megtanulta, hogyan konfigurálhatja a Java Spring-alkalmazást az Azure Spring Cloud üzembe helyezéséhez. A konfigurációs kiszolgálópéldány beállításával kapcsolatos további információkért lásd: [konfigurációs kiszolgálói példány beállítása](spring-cloud-tutorial-config-server.md).
 

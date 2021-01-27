@@ -7,20 +7,18 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: c63ea4f9cdb961ca492d5dcf22a89627864236cd
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 2a2e4ac57eec866d9857f564d6c76ad4a775d223
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733200"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874608"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>A rendelkezésreállási zónákat támogató Azure-szolgáltatások
 
-A Availability Zones magas rendelkezésre állású ajánlat, amely védelmet nyújt alkalmazásai és adatai számára az adatközpont hibáiból. Az Availability Zonest támogató meglévő és közelgő régiók listáját lásd: [régiók és Availability Zones az Azure-ban](az-overview.md).  
+Microsoft Azure a globális infrastruktúrát minden rétegben tervezték és építették, hogy a lehető legmagasabb szintű redundancia és rugalmasság legyen elérhető ügyfelei számára. Az Azure-infrastruktúra földrajzokból, régiókból és Availability Zonesokból áll, amelyek korlátozzák a meghibásodások robbanási sugarát, és így korlátozzák az ügyfelek alkalmazásaira és adataira gyakorolt lehetséges hatást. A Azure Availability Zones-konstrukció olyan szoftver-és hálózatkezelési megoldás kialakítására lett kifejlesztve, amely védelmet nyújt az adatközponti hibák ellen, és nagyobb magas rendelkezésre állást biztosít ügyfeleinknek.
 
-Ez a szakasz felsorolja a Availability Zones támogató Azure-szolgáltatásokat. 
-
-Az egyes régiókban elérhető szolgáltatások, valamint a rendelkezésre állásra vonatkozó közelgő ütemterv a [régiók által elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/)között található.
+A rendelkezésreállási zónák fizikailag elkülönített helyek egy Azure-régión belül. Minden zóna egy vagy több, független energiaellátással, hűtéssel és hálózatkezeléssel rendelkező adatközpontból áll. A régiókban Availability Zones fizikai elkülönítése korlátozza az alkalmazások és az adatok hatását a zónák hibáiból, például a nagy léptékű áradások, a nagyobb viharok és a főviharok, valamint más olyan események esetében, amelyek megzavarják a hely elérését, a biztonságos áthaladást, a kibővített segédprogramok rendelkezésre állását és az erőforrások elérhetőségét. A Availability Zones és a hozzájuk társított adatközpontok úgy vannak kialakítva, hogy ha az egyik zónát feltörték, akkor a régió többi Availability Zones is támogatja a szolgáltatásokat, a kapacitást és a rendelkezésre állást.
 
 Az összes Azure-beli felügyeleti szolgáltatás a régió szintű hibáktól való ellenálló képességnek számít. A hibák spektrumában egy vagy több rendelkezésre állási zónának a régión belüli meghibásodása kisebb meghibásodási sugarú, mint a teljes régió meghibásodása. Az Azure helyreállíthatja a régión belüli felügyeleti szolgáltatások zóna szintű meghibásodását. Az Azure a régión belül egyszerre végzi el a kritikus karbantartást, így megakadályozva, hogy az adott régión belül üzembe helyezett felhasználói erőforrásokkal kapcsolatos hibák ne legyenek Availability Zones.
 
@@ -34,165 +32,143 @@ A Availability Zones támogató **Azure-szolgáltatások** három kategóriába 
 
 - **Zóna – redundáns szolgáltatások** – az Azure platform replikálja az erőforrást és az adatzónákat.  A Microsoft kezeli a magas rendelkezésre állást, mivel az Azure automatikusan replikálja és elosztja a régión belüli példányokat.  A ZRS például három zónában replikálja az adatforrást, így a zóna meghibásodása nem befolyásolja az adott adatforrást. 
 
-- **Nem regionális szolgáltatások** – olyan szolgáltatások, amelyek nem rendelkeznek egy adott Azure-régiótól való függőséggel, így rugalmasak lehetnek a zónákra kiterjedő kimaradások, valamint az egész régióra kiterjedő kimaradások terén.
+- **Nem regionális szolgáltatások** – a szolgáltatások mindig az Azure földrajzi helyekről érhetők el, és rugalmasak a zónákra kiterjedő kimaradások, valamint az egész régióra kiterjedő kimaradások terén. 
 
 
 Az Azure-ban elérhető átfogó Üzletmenet-folytonosság érdekében az Azure region Pairs Availability Zones kombinációját használva hozza létre az alkalmazás-architektúrát. Az alkalmazásokat és az adatait szinkron módon replikálhatja az Azure-régión belüli Availability Zones használatával, hogy magas rendelkezésre állást biztosítson, és aszinkron módon replikálja az Azure-régiókat a vész-helyreállítási védelem érdekében. További információért olvassa el a [Availability Zones használatával történő magas rendelkezésre állású megoldások kiépítése](/azure/architecture/high-availability/building-solutions-for-high-availability)című témakört. 
 
+## <a name="azure-services-supporting-availability-zones"></a>Availability Zones támogató Azure-szolgáltatások
 
-### <a name="azure-services-supporting-availability-zones"></a>Availability Zones támogató Azure-szolgáltatások
+ - A régebbi generációs virtuális gépek nincsenek felsorolva. További információ: [a virtuális gépek méreteinek előző generációi](../virtual-machines/sizes-previous-gen.md).
+ - Ahogy azt az Azure-beli [régiókban és Availability Zones](az-overview.md)is említettük, egyes szolgáltatások nem regionálisak. Ezek a szolgáltatások nem rendelkeznek egy adott Azure-régiótól való függőséggel, mivel ilyenek a zónákra kiterjedő kimaradások, valamint az egész régióra kiterjedő kimaradások.  A nem regionális szolgáltatások listáját a [régió által elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/)között találja.
+
+
+## <a name="azure-regions-with-availability-zones"></a>Azure-régiók Availability Zones
+
+
+| Amerika           | Európa         | Németország              | Afrika              | Ázsia és a Csendes-óceáni térség   |
+|--------------------|----------------|----------------------|---------------------|----------------|
+|                    |                |                      |                     |                |
+| Közép-Kanada     | Közép-Franciaország | Középnyugat-Németország | Dél-Afrika északi régiója * | Kelet-Japán     |
+| Az USA középső régiója         | Észak-Európa   |                      |                     | Délkelet-Ázsia |
+| USA keleti régiója            | Az Egyesült Királyság déli régiója       |                      |                     | Kelet-Ausztrália |
+| USA 2. keleti régiója          | Nyugat-Európa    |                      |                     |                |
+| USA déli középső régiója |                |                      |                     |                |
+| US Gov Virginia * |                |                      |                     |                |
+| USA 2. nyugati régiója        |                |                      |                     |                |
+
+
+Ha többet szeretne megtudni a Availability Zones és az elérhető szolgáltatások támogatásáról ezekben a régiókban, lépjen kapcsolatba a Microsoft értékesítési vagy ügyfélszolgálati képviselőjével. Az Availability Zonest támogató közelgő régiókkal kapcsolatban lásd: [Azure földrajzi](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)területek.
+
+
+## <a name="azure-services-supporting-availability-zones"></a>Availability Zones támogató Azure-szolgáltatások
 
 - A régebbi generációs virtuális gépek nem szerepelnek az alábbi listában. További információ: [a virtuális gépek méreteinek előző generációi](../virtual-machines/sizes-previous-gen.md).
 
 - Egyes szolgáltatások nem regionálisak, további információért lásd: [régiók és Availability Zones az Azure-ban](az-overview.md) . Ezek a szolgáltatások nem függnek egy adott Azure-régiótól, így rugalmasak lehetnek a zónákra kiterjedő kimaradások és az egész régióra kiterjedő kimaradások terén.  A nem regionális szolgáltatások listáját a [régió által elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/)között találja.
 
 
+### <a name="zone-resilient-services"></a>Rugalmas szolgáltatások 
 
-## <a name="americas"></a>Észak-, Dél- és Közép-Amerika
+: globe_with_meridians: nem regionális szolgáltatások – a szolgáltatások mindig az Azure földrajzi helyekről érhetők el, és rugalmasak a zónákra kiterjedő kimaradások, valamint az egész régióra kiterjedő kimaradások terén.
 
-| **Termékek** | **USA középső régiója** | **USA keleti régiója** | **USA 2. keleti régiója** | **USA 2. nyugati régiója** | **Közép-Kanada** |
-|--|--|--|--|--|--|
-| **Számítás** |  |  |  |  |  |
-| [App Service környezetek (ILB)](../app-service/environment/zone-redundancy.md#how-to-deploy-an-app-service-environment-in-an-availability-zone) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Service Fabric](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Machines méretezési csoportok](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 
-| **Containers** |  |  |  |
-| [Azure Kubernetes Service (AKS)](../aks/availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Container Registry](../container-registry/zone-redundancy.md) |  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  | 
-| **Storage** |  |  |  |  |  |
-| [Azure Data Lake Storage Gen2](../storage/common/storage-account-create.md?tabs=azure-portal)  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Premium Files Storage](../storage/files/storage-files-planning.md) |  | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Blob Storage](../storage/blobs/storage-blobs-introduction.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Managed Disks](https://azure.microsoft.com/en-gb/updates/azure-managed-snapshots-images-ga/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Hálózat** |  |  |  |  |  |
-| [Application Gateway v2](../application-gateway/application-gateway-autoscaling-zone-redundant.md)  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Express-útvonal](../expressroute/designing-for-high-availability-with-expressroute.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Firewall](../firewall/deploy-availability-zone-powershell.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Szabványos IP-cím](../virtual-network/public-ip-addresses.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Load Balancer](../load-balancer/load-balancer-standard-availability-zones.md#concepts) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Network](../vpn-gateway/create-zone-redundant-vnet-gateway.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Network NAT](../virtual-network/nat-gateway-resource.md#availability-zones) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual WAN](../virtual-wan/virtual-wan-faq.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [VPN Gateway](../vpn-gateway/about-zone-redundant-vnet-gateways.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Adatbázisok** |  |  |  |  |  |
-| [Azure Cache for Redis](../azure-cache-for-redis/cache-overview.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Cosmos DB](../cosmos-db/high-availability.md#availability-zone-support) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Data Explorer](/azure/data-explorer/create-cluster-database-portal) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Database for MySQL – rugalmas kiszolgáló](../mysql/flexible-server/concepts-high-availability.md) | x | x | :heavy_check_mark: | :heavy_check_mark: | x |
-| [Azure Database for PostgreSQL – rugalmas kiszolgáló](../postgresql/flexible-server/overview.md) | x | x | :heavy_check_mark: | :heavy_check_mark: | x |
-| [Azure SQL Database (általános célú szintű)](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | x | : heavy_check_mark: (előzetes verzió) | : heavy_check_mark: (előzetes verzió) | : heavy_check_mark: (előzetes verzió) | x |
-| [Azure SQL Database (prémium szintű & üzletileg kritikus szinten)](../azure-sql/database/high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Elemzés** |  |  |  |  |  |
-| [Event Hubs](../event-hubs/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Integráció** |  |  |  |  |  |
-| [Event Grid](../event-grid/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Szolgáltatásbusz](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Felügyelet és irányítás** |  |  |  |  |  |
-| [Network Watcher](../network-watcher/frequently-asked-questions.md) | x | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | x |
-| **Biztonság** |  |  |  |  |  |
-| [Azure Active Directory tartományi szolgáltatások](../active-directory-domain-services/overview.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
+: large_blue_diamond: rugalmas az egész zóna számára 
 
-## <a name="europe"></a>Európa
+**Alapszolgáltatások**
 
-| **Termékek** | **Közép-Franciaország** | **Észak-Európa** | **Az Egyesült Királyság déli régiója** | **Nyugat-Európa** |
-|--|--|--|--|--|
-| **Számítás** |  |  |  |  |
-| [App Service környezetek (ILB)](../app-service/environment/zone-redundancy.md#how-to-deploy-an-app-service-environment-in-an-availability-zone) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Kubernetes Service (AKS)](../aks/availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Service Fabric](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Machines méretezési csoportok](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Storage** |  |  |  |  |
-| [Azure Data Lake Storage Gen2](../storage/common/storage-account-create.md?tabs=azure-portal)  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Premium Files Storage](../storage/files/storage-files-planning.md) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Blob Storage](../storage/blobs/storage-blobs-introduction.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Managed Disks](https://azure.microsoft.com/en-gb/updates/azure-managed-snapshots-images-ga/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Hálózat** |  |  |  |  |
-| [Application Gateway v2](../application-gateway/application-gateway-autoscaling-zone-redundant.md)  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Express-útvonal](../expressroute/designing-for-high-availability-with-expressroute.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Firewall](../firewall/deploy-availability-zone-powershell.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Szabványos IP-cím](../virtual-network/public-ip-addresses.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Load Balancer](../load-balancer/load-balancer-standard-availability-zones.md#concepts) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Network](../vpn-gateway/create-zone-redundant-vnet-gateway.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Network NAT](../virtual-network/nat-gateway-resource.md#availability-zones) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual WAN](../virtual-wan/virtual-wan-faq.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [VPN Gateway](../vpn-gateway/about-zone-redundant-vnet-gateways.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Adatbázisok** |  |  |  |  |
-| [Azure Cache for Redis](../azure-cache-for-redis/cache-overview.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Cosmos DB](../cosmos-db/high-availability.md#availability-zone-support) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Data Explorer](/azure/data-explorer/create-cluster-database-portal) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Database for MySQL – rugalmas kiszolgáló](../mysql/flexible-server/concepts-high-availability.md) | x | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Database for PostgreSQL – rugalmas kiszolgáló](../postgresql/flexible-server/overview.md) | x | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure SQL Database (általános célú szintű)](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | : heavy_check_mark: (előzetes verzió) | : heavy_check_mark: (előzetes verzió) | x | : heavy_check_mark: (előzetes verzió) |
-| [Azure SQL Database (prémium szintű & üzletileg kritikus szinten)](../azure-sql/database/high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Elemzés** |  |  |  |  |
-| [Event Hubs](../event-hubs/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Integráció** |  |  |  |  |
-| [Event Grid](../event-grid/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Szolgáltatásbusz](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Felügyelet és irányítás** |  |  |  |  |
-| [Network Watcher](../network-watcher/frequently-asked-questions.md) | :heavy_check_mark: | :heavy_check_mark: | x | :heavy_check_mark: |
-| **Biztonság** |  |  |  |  |
-| [Azure Active Directory tartományi szolgáltatások](../active-directory-domain-services/overview.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
-
-## <a name="asia-pacific"></a>Ázsia és a Csendes-óceáni térség
+|     Termékek                                                    | Rugalmasság             |
+|-----------------------------------------------------------------|:----------------------------:|
+|     Storage-fiók                                           | : large_blue_diamond:  |
+|     Application Gateway (v2)                                  | : large_blue_diamond:  |
+|     Azure Backup                                                | : large_blue_diamond:  |
+|     Azure Cosmos DB                                           | : large_blue_diamond:  |
+|     2. generációs Azure Data Lake Storage                             | : large_blue_diamond:  |
+|     Azure Express-útvonal                                       | : large_blue_diamond:  |
+|     Azure nyilvános IP-cím                                           | : large_blue_diamond:  |
+|     Azure SQL Database (általános célú szintű)                 | : large_blue_diamond:  |
+|     Azure SQL Database (prémium szintű & üzletileg kritikus szinten)     | : large_blue_diamond:  |
+|     Disk Storage                                                | : large_blue_diamond:  |
+|     Event Hubs                                                  | : large_blue_diamond:  |
+|     Key Vault                                                   | : large_blue_diamond:  |
+|     Load Balancer                                               | : large_blue_diamond:  |
+|     Service Bus                                                 | : large_blue_diamond:  |
+|     Service Fabric                                            | : large_blue_diamond:  |
+|     Tárolás: gyors/ritka Blob Storage rétegek                      | : large_blue_diamond:  |
+|     Tárterület: Managed Disks                                    | : large_blue_diamond:  |
+|     Virtual Machines méretezési csoportok                               | : large_blue_diamond:  |
+|     Virtual Machines                                          | : large_blue_diamond:  |
+|     Virtual Machines: Av2-Series                              | : large_blue_diamond:  |
+|     Virtual Machines: Bs-Series                               | : large_blue_diamond:  |
+|     Virtual Machines: DSv2-Series                             | : large_blue_diamond:  |
+|     Virtual Machines: DSv3-Series                             | : large_blue_diamond:  |
+|     Virtual Machines: Dv2-Series                              | : large_blue_diamond:  |
+|     Virtual Machines: Dv3-Series                              | : large_blue_diamond:  |
+|     Virtual Machines: ESv3-Series                             | : large_blue_diamond:  |
+|     Virtual Machines: Ev3-Series                              | : large_blue_diamond:  |
+|     Virtual Network                                           | : large_blue_diamond:  |
+|     VPN Gateway                                                 | : large_blue_diamond:  |
 
 
+**Mainstream szolgáltatások**
 
-| **Termékek** | **Kelet-Japán** | **Délkelet-Ázsia** | **Kelet-Ausztrália** |
-|--|--|--|--|
-| **Számítás** |  |  |  |
-| [App Service környezetek (ILB)](../app-service/environment/zone-redundancy.md#how-to-deploy-an-app-service-environment-in-an-availability-zone) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Kubernetes Service (AKS)](../aks/availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Service Fabric](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Machines méretezési csoportok](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Storage** |  |  |  |
-| [Azure Data Lake Storage Gen2](../storage/common/storage-account-create.md?tabs=azure-portal)  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Premium Files Storage](../storage/files/storage-files-planning.md) |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Blob Storage](../storage/blobs/storage-blobs-introduction.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Managed Disks](https://azure.microsoft.com/en-gb/updates/azure-managed-snapshots-images-ga/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Hálózat** |  |  |  |
-| [Application Gateway v2](../application-gateway/application-gateway-autoscaling-zone-redundant.md)  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Express-útvonal](../expressroute/designing-for-high-availability-with-expressroute.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Firewall](../firewall/deploy-availability-zone-powershell.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Szabványos IP-cím](../virtual-network/public-ip-addresses.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Load Balancer](../load-balancer/load-balancer-standard-availability-zones.md#concepts) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Network](../vpn-gateway/create-zone-redundant-vnet-gateway.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Network NAT](../virtual-network/nat-gateway-resource.md#availability-zones) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual WAN](../virtual-wan/virtual-wan-faq.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [VPN Gateway](../vpn-gateway/about-zone-redundant-vnet-gateways.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Adatbázisok** |  |  |  |
-| [Azure Cache for Redis](../azure-cache-for-redis/cache-overview.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Cosmos DB](../cosmos-db/high-availability.md#availability-zone-support) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Data Explorer](/azure/data-explorer/create-cluster-database-portal) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Database for MySQL – rugalmas kiszolgáló](../mysql/flexible-server/concepts-high-availability.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Database for PostgreSQL – rugalmas kiszolgáló](../postgresql/flexible-server/overview.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure SQL Database (általános célú szintű)](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | : heavy_check_mark: (előzetes verzió) | : heavy_check_mark: (előzetes verzió) | : heavy_check_mark: (előzetes verzió) |
-| [Azure SQL Database (prémium szintű & üzletileg kritikus szinten)](../azure-sql/database/high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Elemzés** |  |  |  |
-| [Event Hubs](../event-hubs/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Integráció** |  |  |  |
-| [Event Grid](../event-grid/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Szolgáltatásbusz](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Felügyelet és irányítás** |  |  |  |
-| [Network Watcher](../network-watcher/frequently-asked-questions.md) | :heavy_check_mark: | x | x |
-| **Biztonság** |  |  |  |
-| [Azure Active Directory tartományi szolgáltatások](../active-directory-domain-services/overview.md) | :heavy_check_mark: | :heavy_check_mark: |  |
+| Termékek                                        | Rugalmasság |
+|-------------------------------------------------|:------------:|
+| App Service-környezetek                        |      : large_blue_diamond:  |
+| Azure Active Directory tartományi szolgáltatások          |      : large_blue_diamond:  |
+| Azure Bastion                                   |      : large_blue_diamond:  |
+| Azure Cache for Redis                           |      : large_blue_diamond:  |
+| Azure Cognitive Services: Text Analytics        |      : large_blue_diamond:  |
+| Azure Data Explorer                             |      : large_blue_diamond:  |
+| Azure Database for MySQL – rugalmas kiszolgáló      |      : large_blue_diamond:  |
+| Azure Database for PostgreSQL – rugalmas kiszolgáló |      : large_blue_diamond:  |
+| Azure DDoS Protection                           |      : large_blue_diamond:  |
+| Azure Firewall                                  |      : large_blue_diamond:  |
+| Azure Firewall Manager                          |      : large_blue_diamond:  |
+| Azure Kubernetes Service (AKS)                  |      : large_blue_diamond:  |
+| Azure Private Link                              |      : large_blue_diamond:  |
+| Azure Red Hat OpenShift                         |      : large_blue_diamond:  |
+| Azure Site Recovery                             |      : large_blue_diamond:  |
+| Container Registry                              |      : large_blue_diamond:  |
+| Event Grid                                      |      : large_blue_diamond:  |
+| Network Watcher                                 |      : large_blue_diamond:  |
+| Power BI Embedded                               |      : large_blue_diamond:  |
+| Prémium Blob Storage                            |      : large_blue_diamond:  |
+| Virtual Machines: Ddsv4-Series                  |      : large_blue_diamond:  |
+| Virtual Machines: Ddv4-Series                   |      : large_blue_diamond:  |
+| Virtual Machines: Dsv4-Series                   |      : large_blue_diamond:  |
+| Virtual Machines: Dv4-Series                    |      : large_blue_diamond:  |
+| Virtual Machines: Edsv4-Series                  |      : large_blue_diamond:  |
+| Virtual Machines: Edv4-Series                   |      : large_blue_diamond:  |
+| Virtual Machines: Esv4-Series                   |      : large_blue_diamond:  |
+| Virtual Machines: Ev4-Series                    |      : large_blue_diamond:  |
+| Virtual Machines: Fsv2-Series                   |      : large_blue_diamond:  |
+| Virtual Machines: M sorozat                      |      : large_blue_diamond:  |
+| Virtual WAN                                     |      : large_blue_diamond:  |
 
 
-## <a name="upcoming-availability-zones"></a>Közelgő Availability Zones 
+**Nem regionális**
 
-Az Azure Availability Zones támogatást nyújt a következő régiókban:
-- USA-beli államigazgatás – Virginia
-- Dél-Afrika északi régiója
-- USA déli középső régiója
-- Középnyugat-Németország
-
-Az Availability Zonest támogató meglévő és közelgő régiók listája [itt](https://azure.microsoft.com/global-infrastructure/geographies/)található.    
-
-Ha többet szeretne megtudni a Availability Zones támogatásáról ezekben a régiókban, lépjen kapcsolatba a Microsoft értékesítési vagy ügyfélszolgálati képviselőjével.
+|     Termékek                                  |     Rugalmasság    |
+|-----------------------------------------------|:-------------------:|
+|     Azure DNS                                 |     : globe_with_meridians:             |
+|     Azure Active Directory                  |     : globe_with_meridians:             |
+|     Azure Advisor                             |     : globe_with_meridians:             |
+|     Azure Bot Services                        |     : globe_with_meridians:             |
+|     Azure Defender a IoT                  |     : globe_with_meridians:             |
+|     Azure Information Protection            |     : globe_with_meridians:             |
+|     Azure-világítótorony                        |     : globe_with_meridians:             |
+|     Azure Managed Applications              |     : globe_with_meridians:             |
+|     Azure Maps                                |     : globe_with_meridians:             |
+|     Azure Policy                              |     : globe_with_meridians:             |
+|     Azure-erőforrás gráf                    |     : globe_with_meridians:             |
+|     Azure Stack                               |     : globe_with_meridians:             |
+|     Azure Stack Edge                        |     : globe_with_meridians:             |
+|     Cloud Shell                               |     : globe_with_meridians:             |
+|     Microsoft Azure Ügyfélszéf    |     : globe_with_meridians:             |
+|     Microsoft Azure peering szolgáltatás         |     : globe_with_meridians:             |
+|     Microsoft Azure Portal                  |     : globe_with_meridians:             |
+|     Security Center                         |     : globe_with_meridians:             |
+|     Traffic Manager                         |     : globe_with_meridians:             |
 
 
 ## <a name="pricing-for-vms-in-availability-zones"></a>A Availability Zones-beli virtuális gépek díjszabása

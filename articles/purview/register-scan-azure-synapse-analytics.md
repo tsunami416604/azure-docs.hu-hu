@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: 3ba43b83166b5548dee4ea4e52c7411db48d23f5
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 62ca32ab4e348e1488fbb87672e582436b91d05d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567269"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875009"
 ---
 # <a name="register-and-scan-azure-synapse-analytics"></a>Az Azure szinapszis Analytics regisztrálása és vizsgálata
 
@@ -45,7 +45,7 @@ Az Azure szinapszis Analytics hitelesítésének Háromféleképpen állítható
 
 ### <a name="managed-identity-recommended"></a>Felügyelt identitás (ajánlott) 
    
-A hatáskörébe tartozó fióknak saját felügyelt identitása van, amely alapvetően a hatáskörébe tartozik a létrehozásakor. Létre kell hoznia egy Azure AD-felhasználót az Azure szinapszis Analyticsben (korábbi nevén SQL DW) a hatáskörébe tartozó felügyelt identitás nevét követve az Azure [ad-felhasználók Azure ad-alkalmazásokkal történő létrehozásához](/azure/azure-sql/database/authentication-aad-service-principal-tutorial)szükséges előfeltételek és oktatóanyag alapján.
+A hatáskörébe tartozó fióknak saját felügyelt identitása van, amely alapvetően a hatáskörébe tartozik a létrehozásakor. Létre kell hoznia egy Azure AD-felhasználót az Azure szinapszis Analyticsben (korábbi nevén SQL DW) a hatáskörébe tartozó felügyelt identitás nevét követve az Azure [ad-felhasználók Azure ad-alkalmazásokkal történő létrehozásához](../azure-sql/database/authentication-aad-service-principal-tutorial.md)szükséges előfeltételek és oktatóanyag alapján.
 
 SQL-szintaxis – példa felhasználói és engedélyezési engedélyek létrehozására:
 
@@ -87,7 +87,7 @@ Az egyszerű szolgáltatás alkalmazás-azonosítójának és titkos kódjának 
 
 #### <a name="granting-the-service-principal-access-to-your-azure-synapse-analytics-formerly-sql-dw"></a>A szolgáltatás egyszerű hozzáférésének biztosítása az Azure szinapszis Analyticshez (korábban SQL DW)
 
-Emellett Azure ad-felhasználót is létre kell hoznia az Azure szinapszis Analyticsben az Azure ad- [felhasználók Azure ad-alkalmazásokkal történő létrehozásához](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial)szükséges előfeltételek és oktatóanyag alapján. SQL-szintaxis – példa felhasználói és engedélyezési engedélyek létrehozására:
+Emellett Azure ad-felhasználót is létre kell hoznia az Azure szinapszis Analyticsben az Azure ad- [felhasználók Azure ad-alkalmazásokkal történő létrehozásához](../azure-sql/database/authentication-aad-service-principal-tutorial.md)szükséges előfeltételek és oktatóanyag alapján. SQL-szintaxis – példa felhasználói és engedélyezési engedélyek létrehozására:
 
 ```sql
 CREATE USER [ServicePrincipalName] FROM EXTERNAL PROVIDER
@@ -140,4 +140,3 @@ A **források regisztrálása (Azure szinapszis Analytics)** képernyőn tegye a
 
 - [Az Azure-beli hatáskörébe tartozó adatkatalógus tallózása](how-to-browse-catalog.md)
 - [Keresés az Azure-beli hatáskörébe Data Catalog](how-to-search-catalog.md)
-

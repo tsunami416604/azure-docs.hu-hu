@@ -10,12 +10,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 2af4f5467cb0f604f16d1faf841618a14d292806
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: cc1e4bf44827f82b3ca592e41fc3e6640f36e1bb
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585734"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875144"
 ---
 # <a name="monitoring-azure-files"></a>Figyelés Azure Files
 
@@ -71,7 +71,7 @@ Diagnosztikai beállításokat a Azure Portal, a PowerShell, az Azure CLI vagy e
 
 ### <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Jelentkezzen be az Azure Portalra.
+1. Jelentkezzen be az Azure portálra.
 
 2. Nyissa meg a tárfiókot.
 
@@ -575,7 +575,7 @@ Azure Monitor riasztások proaktívan értesítik Önt, ha fontos feltételek ta
 
 A következő táblázat a riasztásra vonatkozó példákat és a riasztáshoz használandó megfelelő mérőszámot sorolja fel:
 
-| Forgatókönyv | A riasztáshoz használandó metrika |
+| Eset | A riasztáshoz használandó metrika |
 |-|-|
 | A fájlmegosztás szabályozása megtörténik. | Metrika: tranzakciók<br>Dimenzió neve: válasz típusa <br>Dimenzió neve: fájlmegosztás (csak prémium fájlmegosztás esetén) |
 | A fájlmegosztás mérete a kapacitás 80%-a. | Metrika: fájl kapacitása<br>Dimenzió neve: fájlmegosztás (csak prémium fájlmegosztás esetén) |
@@ -671,12 +671,12 @@ A következő táblázat a riasztásra vonatkozó példákat és a riasztáshoz 
 12. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, * * leírását és **súlyosságát**.
 13. A riasztás létrehozásához kattintson a **riasztási szabály létrehozása** elemre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Files monitorozási adathivatkozás](storage-files-monitoring-reference.md)
 - [Azure-erőforrások figyelése Azure Monitor](../../azure-monitor/insights/monitor-azure-resource.md)
 - [Azure Storage-metrikák migrálása](../common/storage-metrics-migration.md)
 - [Azure Files üzembe helyezésének tervezése](./storage-files-planning.md)
-- [Az Azure Files üzembe helyezése](./storage-files-deployment-guide.md)
+- [Az Azure Files üzembe helyezése](./storage-how-to-create-file-share.md)
 - [Azure-fájlok hibaelhárítása Windows rendszeren](./storage-troubleshoot-windows-file-connection-problems.md)
 - [Azure-fájlok hibaelhárítása Linux rendszeren](./storage-troubleshoot-linux-file-connection-problems.md)
