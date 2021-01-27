@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 11/24/2020
 ms.author: inhenkel
 ms.custom: subject-armqs
-ms.openlocfilehash: 6a23c3a20e79fe6fff7de8faccf4e4ef78f02585
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 541a4c17a3212f711be7e2cf096ce3a2d632ee64
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185036"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879646"
 ---
 # <a name="quickstart-media-services-account-arm-template"></a>Rövid útmutató: Media Services Account ARM-sablon
 
@@ -41,7 +41,7 @@ Az ARM-sablonokkal rendelkező olvasók továbbra is használhatják az [üzembe
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-Ha korábban még soha nem telepített ARM-sablont, hasznos lehet az [Azure ARM-sablonok](https://docs.microsoft.com/azure/azure-resource-manager/templates/) megismerése és az [oktatóanyag](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-create-first-template?tabs=azure-powershell)áttekintése.
+Ha korábban még soha nem telepített ARM-sablont, hasznos lehet az [Azure ARM-sablonok](../../azure-resource-manager/templates/index.yml) megismerése és az [oktatóanyag](../../azure-resource-manager/templates/template-tutorial-create-first-template.md?tabs=azure-powershell)áttekintése.
 
 ## <a name="review-the-template"></a>A sablon áttekintése
 
@@ -118,8 +118,8 @@ The syntax for the JSON code fence is:
 
 Három Azure-erőforrástípus van definiálva a sablonban:
 
-- [Microsoft. Media/Mediaservices](https://docs.microsoft.com/azure/templates/microsoft.media/mediaservices): Media Services fiók létrehozása
-- [Microsoft. Storage/storageAccounts](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts): Storage-fiók létrehozása
+- [Microsoft. Media/Mediaservices](/azure/templates/microsoft.media/mediaservices): Media Services fiók létrehozása
+- [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts): Storage-fiók létrehozása
 
 ## <a name="set-the-account"></a>A fiók beállítása
 
@@ -129,7 +129,7 @@ az account set --subscription {your subscription name or id}
 
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 ```azurecli-interactive
 
@@ -272,9 +272,9 @@ az group delete --name {name of the resource group}
 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni az ARM-sablonok használatáról, kövesse a sablon létrehozása paraméterekkel, változókkal és egyéb műveletekkel című témakört.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [Oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)

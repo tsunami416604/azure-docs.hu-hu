@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/17/2021
-ms.openlocfilehash: aede7e3dec886d6a6213c64b386cacd725dd74f5
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 1b2e914057aa72934524cc4977e3d2292394d0b7
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562794"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882069"
 ---
 # <a name="how-to-manually-fix-sync-problems"></a>Szinkronizálási problémák manuális javítása
 
@@ -22,16 +22,16 @@ A következő szinkronizálási folyamat használatával aktiválja újra a kapc
 
 1. Keresse meg a megoldást a legnépszerűbb keresési szalagcímben, majd válassza ki a megfelelő megoldásokat.
 
-    ![A legnépszerűbb keresési szalagcímet megjelenítő képernyőkép, ahol kiválaszthatja a megfelelő megoldásokat.](media/itsmc-resync-servicenow/solution-search-8bit.png)
+    ![A legnépszerűbb keresési szalagcímet megjelenítő képernyőkép, ahol kiválaszthatja a megfelelő megoldásokat.](media/itsmc-resync-servicenow/solution-search-8-bit.png)
 
 1. A megoldás képernyőn válassza az összes kijelölése lehetőséget az előfizetés szűrőben, majd a szűrés "ügyfélszolgálati" értékre.
 
-    ![Képernyőkép, amely bemutatja, hogy hol válassza az összes kijelölése és a szűrés ügyfélszolgálati alapján lehetőséget.](media/itsmc-resync-servicenow/solutions-list-8bit.png)
+    ![Képernyőkép, amely bemutatja, hogy hol válassza az összes kijelölése és a szűrés ügyfélszolgálati alapján lehetőséget.](media/itsmc-resync-servicenow/solutions-list-8-bit.png)
 
 1. Válassza ki a ITSM-kapcsolatok megoldását.
 1. Válassza a ITSM-kapcsolatok elemet a bal oldali szalagcímben.
 
-    ![Képernyőkép, amely megjeleníti a ITSM-kapcsolatok kiválasztásának helyét.](media/itsmc-resync-servicenow/itsm-connector-8bit.png)
+    ![Képernyőkép, amely megjeleníti a ITSM-kapcsolatok kiválasztásának helyét.](media/itsmc-resync-servicenow/itsm-connector-8-bit.png)
 
 1. Válassza ki az egyes összekötőket a listából. 
     1. A konfigurálásához kattintson az összekötő nevére
@@ -41,10 +41,10 @@ A következő szinkronizálási folyamat használatával aktiválja újra a kapc
 
     1. Kattintson a szinkronizálás elemre
 
-       ![Képernyőfelvétel: a szinkronizálás gomb kiemelése.](media/itsmc-resync-servicenow/resync-8bit2.png)
+       ![Képernyőfelvétel: a szinkronizálás gomb kiemelése.](media/itsmc-resync-servicenow/resync-8-bit-2.png)
 
     1. Kattintson a Mentés gombra
 
-        ![Új kapcsolat](media/itsmc-resync-servicenow/save-8bit.png)
+        ![Új kapcsolat](media/itsmc-resync-servicenow/save-8-bit.png)
 
 f.    Tekintse át az értesítéseket, és ellenőrizze, hogy elindult-e a folyamat.

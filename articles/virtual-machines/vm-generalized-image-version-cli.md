@@ -9,16 +9,16 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 090b041c605c2328add8b46a97b6f151bae268c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec589848625e1114dedd8c58b41f7ecbc991f311
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87501082"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881974"
 ---
 # <a name="create-a-vm-from-a-generalized-image-version-using-the-cli"></a>Virtuális gép létrehozása általánosított rendszerkép-verzióból a parancssori felület használatával
 
-Hozzon létre egy virtuális gépet egy megosztott rendszerkép-gyűjteményben tárolt [általánosított rendszerkép-verzióból](./linux/shared-image-galleries.md#generalized-and-specialized-images) . Ha speciális rendszerkép használatával szeretne virtuális gépet létrehozni, tekintse meg [a virtuális gép létrehozása speciális rendszerképből](vm-specialized-image-version-powershell.md)című témakört. 
+Hozzon létre egy virtuális gépet egy megosztott rendszerkép-gyűjteményben tárolt [általánosított rendszerkép-verzióból](./shared-image-galleries.md#generalized-and-specialized-images) . Ha speciális rendszerkép használatával szeretne virtuális gépet létrehozni, tekintse meg [a virtuális gép létrehozása speciális rendszerképből](vm-specialized-image-version-powershell.md)című témakört. 
 
 
 ## <a name="get-the-image-id"></a>A rendszerkép AZONOSÍTÓjának beolvasása
@@ -59,4 +59,4 @@ Egy adott verziót is használhat a paraméterhez tartozó rendszerkép-verzió 
 
 ## <a name="next-steps"></a>További lépések
 
-Az [Azure rendszerkép-szerkesztő (előzetes verzió)](./linux/image-builder-overview.md) segítségével automatizálhatja a rendszerkép-verziók létrehozását, és [egy meglévő rendszerkép-verzióból](./linux/image-builder-gallery-update-image-version.md)is frissítheti és létrehozhatja az új rendszerkép verzióját. 
+Az [Azure rendszerkép-szerkesztő (előzetes verzió)](./image-builder-overview.md) segítségével automatizálhatja a rendszerkép-verziók létrehozását, és [egy meglévő rendszerkép-verzióból](./linux/image-builder-gallery-update-image-version.md)is frissítheti és létrehozhatja az új rendszerkép verzióját.

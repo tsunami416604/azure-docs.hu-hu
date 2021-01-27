@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 255b34fc683628846d2776d9db7a0fbe8fe32a45
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: dd19729f8b119946a12220d4b0c434f0b039989a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202079"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879663"
 ---
 # <a name="create-a-snapshot-using-the-portal-or-powershell"></a>Pillanatkép létrehozása a portál vagy a PowerShell használatával
 
@@ -80,6 +80,6 @@ A következő lépések bemutatják, hogyan másolja a VHD-lemezt, és hozza lé
    ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Hozzon létre egy virtuális gépet egy pillanatképből egy felügyelt lemez pillanatképből történő létrehozásával, majd az új felügyelt lemez csatlakoztatásával operációsrendszer-lemezként. További információkért lásd a [virtuális gép létrehozása pillanatképből a PowerShell használatával](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md)című részt.
+Hozzon létre egy virtuális gépet egy pillanatképből egy felügyelt lemez pillanatképből történő létrehozásával, majd az új felügyelt lemez csatlakoztatásával operációsrendszer-lemezként. További információkért lásd a [virtuális gép létrehozása pillanatképből a PowerShell használatával](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot)című részt.

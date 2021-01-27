@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: radeltch
-ms.openlocfilehash: 525c705db81dc0f152c8dbc55de5ebac841e5d57
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 62b235fa9ea84409a5c29609a5dc0fde1671684c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201739"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878765"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Nyilvános végponti kapcsolat a Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben
 
@@ -45,8 +45,8 @@ Az SAP-rendszerek gyakran bizalmas üzleti adatokat tartalmaznak. Az SAP-rendsze
 
 Az Azure nyilvános végponthoz való hozzáférést igénylő forgatókönyvek például a következők:  
 - Az Azure kerítés ügynökének hozzáférésre van szüksége a **Management.Azure.com** és a **login.microsoftonline.com**  
-- [Azure Backup](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#set-up-network-connectivity)
-- [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-urls)  
+- [Azure Backup](../../../backup/tutorial-backup-sap-hana-db.md#set-up-network-connectivity)
+- [Azure Site Recovery](../../../site-recovery/azure-to-azure-about-networking.md#outbound-connectivity-for-urls)  
 - Nyilvános tárház használata az operációs rendszer javításához
 - Előfordulhat, hogy az SAP-alkalmazás adatforgalmának kimenő kapcsolatra van szüksége a nyilvános végponthoz
 
@@ -165,7 +165,7 @@ Az architektúra így néz ki:
    A tűzfalszabály a következőhöz hasonló lesz: ![ diagram, amely azt mutatja, hogy a tűzfal milyen módon fog kinézni.](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-firewall-rule.png)
 
 6. Hozzon létre felhasználó által megadott útvonalat a virtuális gépek alhálózatáról a **MyAzureFirewall** magánhálózati IP-címére.
-   1. Ahogy az útválasztási táblázatban van elhelyezve, kattintson az útvonalak elemre. Válassza a Hozzáadás elemet. 
+   1. Ahogy az útválasztási táblázatban van elhelyezve, kattintson az útvonalak elemre. Válassza a Hozzáadás lehetőséget. 
    1. Útvonal neve: ToMyAzureFirewall, címzési előtag: **0.0.0.0/0**. Következő ugrás típusa: válassza a virtuális berendezés elemet. Következő ugrási cím: adja meg a konfigurált tűzfal magánhálózati IP-címét: **11.97.1.4**.  
    1. Mentés
 
@@ -227,7 +227,7 @@ Ha a kimenő forgalom továbbítása harmadik féltől történik, az URL-alapú
 - Ha az Azure kerítés ügynökét használja, győződjön meg arról, hogy a tűzfal konfigurációja lehetővé teszi a kimenő kapcsolatot az Azure felügyeleti API-val: `https://management.azure.com``https://login.microsoftonline.com`   
 - Ha a SUSE Azure-beli nyilvános Felhőbeli frissítési infrastruktúráját használja a frissítések és javítások alkalmazásához, tekintse meg az [Azure nyilvános felhő frissítési infrastruktúrája 101](https://suse.com/c/azure-public-cloud-update-infrastructure-101/)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Ismerje meg, hogyan konfigurálhatja a pacemakert a SUSE-ben az Azure-ban](./high-availability-guide-suse-pacemaker.md)
 * [Ismerje meg, hogyan konfigurálhatja a pacemakert az Azure-beli Red Hat-ban](./high-availability-guide-rhel-pacemaker.md)

@@ -39,8 +39,6 @@
       href: restart-resize-error-troubleshooting.md
     - name: Szolgáltatások újraindítása vagy leállítása
       href: boot-error-troubleshoot-windows.md
-    - name: Megtelt operációsrendszer-lemezzel kapcsolatos problémák Linux rendszerű virtuális gépen
-      href: os-disk-full-linux.md
 - name: Váratlan újraindulás
   items:
     - name: Virtuális merevlemezekkel rendelkező virtuális gépek váratlan újraindulása
@@ -153,7 +151,7 @@
         - name: Általános hibák elhárítása
           href: troubleshoot-rdp-general-error.md
         - name: Hitelesítési hibák hibaelhárítása
-          href: troubleshoot-authentication-error-rdp-vm.md
+          href: /troubleshoot/azure/virtual-machines/cannot-connect-rdp-azure-vm
         - name: Az Azure-beli virtuális gépek kapcsolati hibáinak elhárítása eseményazonosító alapján
           href: event-id-troubleshoot-vm-rdp-connecton.md
         - name: Virtuális gép statikus IP-cím miatti RDP-hibájának hibaelhárítása

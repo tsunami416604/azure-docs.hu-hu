@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 11/23/2020
-ms.openlocfilehash: 7db546ec9038403bd9e34f637e9d9de368277d52
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 0698295688a4587a704e8cdba0a4796e8d1e6fcd
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400302"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879999"
 ---
 # <a name="quickstart-create-an-azure-purview-account-using-azure-powershellazure-cli"></a>Gyors útmutató: Azure-beli hatáskörébe tartozó fiók létrehozása Azure PowerShell/Azure CLI használatával
 
@@ -27,9 +27,9 @@ Ebben a rövid útmutatóban létrehoz egy Azure-beli hatáskörébe tartozó fi
 
 * Az Azure-ba való bejelentkezéshez használt felhasználói fióknak a közreműködő vagy tulajdonos szerepkör tagjának, vagy az Azure-előfizetés rendszergazdájának kell lennie.
 
-* Saját [Azure Active Directory-bérlő](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant).
+* Saját [Azure Active Directory-bérlő](../active-directory/fundamentals/active-directory-access-create-new-tenant.md).
 
-* Telepítse a Azure PowerShell vagy az Azure CLI-t az ügyfélszámítógépen a következő sablon üzembe helyezéséhez: [parancssori telepítés](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-create-first-template?tabs=azure-cli#command-line-deployment)
+* Telepítse a Azure PowerShell vagy az Azure CLI-t az ügyfélszámítógépen a következő sablon üzembe helyezéséhez: [parancssori telepítés](../azure-resource-manager/templates/template-tutorial-create-first-template.md?tabs=azure-cli#command-line-deployment)
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -160,7 +160,7 @@ Ha szükséges, kövesse az alábbi lépéseket az előfizetés konfigurálásá
 
 1. Az üzembehelyezési parancs az eredményeket adja vissza. Ellenőrizze, `ProvisioningState` hogy az üzembe helyezés sikeres volt-e.
     
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure-beli hatáskörébe tartozó fiókot.
 

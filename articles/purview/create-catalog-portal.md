@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.openlocfilehash: 6aeb4e29390b5b456d3aa820e4b3b8be762dbddd
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: dea881acc4cec90c4a8ad6169d94734f24d5b759
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98115786"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880033"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Gyors útmutató: Azure-beli hatáskörébe tartozó fiók létrehozása a Azure Portal
 
@@ -25,7 +25,7 @@ Ebben a rövid útmutatóban létrehoz egy Azure-beli hatáskörébe tartozó fi
 
 * Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Saját [Azure Active Directory-bérlő](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant).
+* Saját [Azure Active Directory-bérlő](../active-directory/fundamentals/active-directory-access-create-new-tenant.md).
 
 * A fióknak engedéllyel kell rendelkeznie ahhoz, hogy erőforrásokat hozzon létre az előfizetésben
 
@@ -35,7 +35,7 @@ Ebben a rövid útmutatóban létrehoz egy Azure-beli hatáskörébe tartozó fi
     > Nem kell követnie ezt a lépést, ha nincs Azure Policy, vagy egy meglévő Azure Policy nem blokkolja a **Storage-fiók** és a **EventHub-névtér** létrehozását.
 
     1. Navigáljon a Azure Portalre, és keressen rá **a szabályzat** kifejezésre.
-    1. Kövesse az [egyéni házirend-definíció létrehozása](https://docs.microsoft.com/azure/governance/policy/tutorials/create-custom-policy-definition) vagy a meglévő szabályzat módosítása lehetőséget két kivétel hozzáadásához az `not` operátorral és a `resourceBypass` címkével:
+    1. Kövesse az [egyéni házirend-definíció létrehozása](../governance/policy/tutorials/create-custom-policy-definition.md) vagy a meglévő szabályzat módosítása lehetőséget két kivétel hozzáadásához az `not` operátorral és a `resourceBypass` címkével:
 
         ```json
         {
@@ -83,7 +83,7 @@ Ebben a rövid útmutatóban létrehoz egy Azure-beli hatáskörébe tartozó fi
 
         :::image type="content" source="./media/create-catalog-portal/policy-definition.png" alt-text="A házirend-definíció létrehozását bemutató képernyőkép.":::
 
-    1. [Hozzon létre egy szabályzat-hozzárendelést](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal) a létrehozott egyéni szabályzat használatával.
+    1. [Hozzon létre egy szabályzat-hozzárendelést](../governance/policy/assign-policy-portal.md) a létrehozott egyéni szabályzat használatával.
 
         [![A szabályzat-hozzárendelés létrehozását bemutató képernyőkép](./media/create-catalog-portal/policy-assignment.png)](./media/create-catalog-portal/policy-assignment.png#lightbox)
 
@@ -155,7 +155,7 @@ Ha a Hozzáadás gombra kattint, két választási lehetőség látható (letilt
 
 1. Válassza a **Szerepkör-hozzárendelés hozzáadása** lehetőséget.
 
-1. Ahhoz, hogy a rendszerbiztonsági tag mire lesz felhasználva (lásd: [katalógus-engedélyek](catalog-permissions.md) és az [alkalmazás-és szolgáltatásnév-objektumok a Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) című témakörben olvashat a szerepkörhöz a **hatáskörébe tartozó adatkurátori szerepkör** vagy a **hatáskörébe tartozó adatforrás-rendszergazdai szerepkörben** .
+1. Ahhoz, hogy a rendszerbiztonsági tag mire lesz felhasználva (lásd: [katalógus-engedélyek](catalog-permissions.md) és az [alkalmazás-és szolgáltatásnév-objektumok a Azure Active Directoryban](../active-directory/develop/app-objects-and-service-principals.md) című témakörben olvashat a szerepkörhöz a **hatáskörébe tartozó adatkurátori szerepkör** vagy a **hatáskörébe tartozó adatforrás-rendszergazdai szerepkörben** .
 
 1. Az alapértelmezett, a **felhasználó, a csoport vagy az egyszerű szolgáltatásnév** elhagyása a **hozzáférés kiosztásával** .
 
@@ -171,7 +171,7 @@ Ha már nincs szüksége erre az Azure-beli hatáskörébe fiókra, törölje a 
 
 2. Válassza ki a rövid útmutató elején létrehozott Azure-beli hatáskörébe tartozó fiókot. Válassza a **Törlés** lehetőséget, adja meg a fiók nevét, majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure-beli hatáskörébe tartozó fiókot.
 

@@ -1,5 +1,5 @@
 ---
-title: Migrálás a becslések-ből a ScriptRunConfig-be
+title: Migrálás becslőkből a ScriptRunConfigba
 titleSuffix: Azure Machine Learning
 description: Áttelepítési útmutató a becslések-ről a ScriptRunConfig-re való áttelepítéshez a betanítási feladatok konfigurálásához.
 services: machine-learning
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/14/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 64c03b1c9fc18a4e78af9914b893599683069ced
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: d603a12f851dac5b7cefc5bad728d42967bb27dc
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632775"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878595"
 ---
 # <a name="migrating-from-estimators-to-scriptrunconfig"></a>Migrálás a becslések-ből a ScriptRunConfig-be
 
@@ -30,7 +30,7 @@ Ez a cikk a becslések-ről ScriptRunConfig-re való áttelepítésének gyakori
 > A becslések-ból származó ScriptRunConfig való Migrálás esetén győződjön meg arról, hogy a Python SDK-t használja >= 1.15.0.
 
 ## <a name="scriptrunconfig-documentation-and-samples"></a>A ScriptRunConfig dokumentációja és mintái
-Azure Machine Learning dokumentáció és minták frissítve lettek a [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?view=azure-ml-py&preserve-view=true) használatára a feladatok konfigurálásához és a beküldéshez.
+Azure Machine Learning dokumentáció és minták frissítve lettek a [ScriptRunConfig](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?preserve-view=true&view=azure-ml-py) használatára a feladatok konfigurálásához és a beküldéshez.
 
 A ScriptRunConfig használatával kapcsolatos információkért tekintse meg a következő dokumentációt:
 * [Betanítási futtatások konfigurálása és elküldése](how-to-set-up-training-targets.md)
@@ -104,10 +104,10 @@ src.run_config.data_references = {data_ref.data_reference_name: data_ref.to_conf
 ```
 
 További információ a betanítási adatok használatáról:
-* [Képzés az Azure ML adatkészletekkel](https://docs.microsoft.com/azure/machine-learning/how-to-train-with-datasets)
+* [Képzés az Azure ML adatkészletekkel](./how-to-train-with-datasets.md)
 
 ## <a name="distributed-training"></a>Elosztott betanítás
-Ha a betanításhoz elosztott feladatot kell konfigurálnia, akkor a `distributed_job_config` paramétert a ScriptRunConfig konstruktorban kell megadnia. Továbbítson egy [MpiConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py&preserve-view=true), [PyTorchConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?view=azure-ml-py&preserve-view=true)vagy [TensorflowConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py&preserve-view=true) a megfelelő típusú elosztott feladatokhoz.
+Ha a betanításhoz elosztott feladatot kell konfigurálnia, akkor a `distributed_job_config` paramétert a ScriptRunConfig konstruktorban kell megadnia. Továbbítson egy [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?preserve-view=true&view=azure-ml-py), [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py)vagy [TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?preserve-view=true&view=azure-ml-py) a megfelelő típusú elosztott feladatokhoz.
 
 Az alábbi példa egy PyTorch-betanítási feladatot konfigurál az elosztott képzések MPI/Horovod használatával történő használatához:
 ```python
@@ -120,7 +120,7 @@ src = ScriptRunConfig(source_directory='.',
                       distributed_job_config=MpiConfiguration(node_count=2, process_count_per_node=2))
 ```
 
-További információ:
+További információkért lásd:
 * [Elosztott betanítás a PyTorch használatával](how-to-train-pytorch.md#distributed-training)
 * [Elosztott képzés a TensorFlow](how-to-train-tensorflow.md#distributed-training)
 
@@ -130,6 +130,6 @@ Ha bármilyen okból el kell érnie egy ScriptRunConfig mögöttes RunConfigurat
 src.run_config
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Betanítási futtatások konfigurálása és elküldése](how-to-set-up-training-targets.md)
