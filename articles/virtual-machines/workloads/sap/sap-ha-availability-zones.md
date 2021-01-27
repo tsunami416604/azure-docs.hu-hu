@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 12/29/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7418e5578450367e9fa37a87adb6e7036619877b
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: e098256a43add6df026ab136bcd6a6b549c147e7
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827449"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871315"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>SAP számításifeladat-konfigurációk az Azure Availability Zones szolgáltatással
 A különböző SAP Architecture-rétegek Azure-beli rendelkezésre állási csoportokban való üzembe helyezése mellett a legutóbb bevezetett [Azure Availability Zones](../../../availability-zones/az-overview.md) az SAP-alapú számítási feladatokhoz is használható. Az Azure rendelkezésre állási zónája a következőként van definiálva: "egyedi fizikai helyek egy régión belül. Minden zóna egy vagy több, független energiaellátással, hűtéssel és hálózatkezeléssel ellátott adatközpontból tevődik össze. Azure Availability Zones nem érhetők el minden régióban. Az Availability Zonest biztosító Azure-régiók esetében keresse fel az [Azure region térképét](https://azure.microsoft.com/global-infrastructure/geographies/). Ez a térkép megmutatja, hogy mely régiók biztosítanak vagy jelentenek Availability Zones. 
@@ -56,7 +56,7 @@ Ha Azure-beli virtuális gépeket helyez üzembe Availability Zones és ugyanazo
 
 - A Azure Availability Zones üzembe helyezéséhez az [Azure Managed Diskst](https://azure.microsoft.com/services/managed-disks/) kell használnia. 
 - A zónák enumerálásának fizikai zónákhoz való hozzárendelése egy Azure-előfizetésen keresztül történik. Ha különböző előfizetéseket használ az SAP-rendszerek üzembe helyezéséhez, minden előfizetéshez meg kell határoznia az ideális zónákat.
-- Az Azure-beli rendelkezésre állási csoportok nem helyezhetők üzembe az Azure-beli rendelkezésre állási zónán belül, kivéve, ha az Azure-beli [Proximity](../../linux/co-location.md) Az SAP adatbázis-kezelő réteg és a központi szolgáltatások zónák közötti üzembe helyezésének módja, valamint az SAP-alkalmazás rétegének üzembe helyezése a rendelkezésre állási [csoportokkal](sap-proximity-placement-scenarios.md), valamint a virtuális gépek közelségének biztosítása Ha nem használ Azure Proximity-elhelyezési csoportokat, ki kell választania egyet vagy a másikat a virtuális gépek üzembe helyezési keretrendszereként.
+- Az Azure-beli rendelkezésre állási csoportok nem helyezhetők üzembe az Azure-beli rendelkezésre állási zónán belül, kivéve, ha az Azure-beli [Proximity](../../co-location.md) Az SAP adatbázis-kezelő réteg és a központi szolgáltatások zónák közötti üzembe helyezésének módja, valamint az SAP-alkalmazás rétegének üzembe helyezése a rendelkezésre állási [csoportokkal](sap-proximity-placement-scenarios.md), valamint a virtuális gépek közelségének biztosítása Ha nem használ Azure Proximity-elhelyezési csoportokat, ki kell választania egyet vagy a másikat a virtuális gépek üzembe helyezési keretrendszereként.
 - A Windows Server feladatátvételi fürtszolgáltatás vagy a Linux pacemaker használatával nem használhat [Azure Alapszintű Load Balancer](../../../load-balancer/load-balancer-overview.md) a feladatátvevő fürtre vonatkozó megoldások létrehozásához. Ehelyett az [Azure standard Load BALANCER SKU](../../../load-balancer/load-balancer-standard-availability-zones.md)-t kell használnia.
 
 
@@ -130,7 +130,7 @@ A két zónába tartozó aktív/aktív telepítés egyszerűsített sémája a k
 
 Ehhez a konfigurációhoz a következő szempontokat kell figyelembe venni:
 
-- Ha nem használja az [Azure Proximity](../../linux/co-location.md)beosztási csoportot, akkor a Azure Availability Zones az összes virtuális gép meghibásodási és frissítési tartománya kezeli, mivel a rendelkezésre állási csoportok nem helyezhetők üzembe Azure Availability Zones.
+- Ha nem használja az [Azure Proximity](../../co-location.md)beosztási csoportot, akkor a Azure Availability Zones az összes virtuális gép meghibásodási és frissítési tartománya kezeli, mivel a rendelkezésre állási csoportok nem helyezhetők üzembe Azure Availability Zones.
 - Ha az adatbázis-kezelő réteg és a központi szolgáltatások zónákhoz való központi telepítését szeretné kombinálni, de az alkalmazási réteghez szeretné használni az Azure-beli rendelkezésre állási csoportokat, akkor az Azure Proximity-elhelyezési csoportok című cikkben leírtak szerint Azure közelségi csoportokat kell használnia az [SAP-alkalmazásokkal való optimális hálózati késés](sap-proximity-placement-scenarios.md)érdekében.
 - Az SAP Central Services és az adatbázis-kezelő réteg feladatátvevő fürtjének terheléselosztó esetén a [szabványos SKU Azure Load Balancer](../../../load-balancer/load-balancer-standard-availability-zones.md)kell használnia. Az alapszintű Load Balancer nem fog működni a zónák között.
 - Az SAP-rendszer üzemeltetéséhez üzembe helyezett Azure-beli virtuális hálózat az alhálózatokkal együtt a zónák között van kiterjesztve. Minden zónához nincs szükség külön virtuális hálózatokra.

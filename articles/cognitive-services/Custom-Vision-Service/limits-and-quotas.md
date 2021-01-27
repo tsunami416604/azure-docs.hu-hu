@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 8a8ea8d5f13f72b0da1e11a27b69da2570eda543
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 3392cc5f3ee9daef1ae8397f6829f4ca7a42373a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913481"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871400"
 ---
 # <a name="limits-and-quotas"></a>Korlátok és kvóták
 
@@ -42,6 +42,9 @@ A betanítási lemezképek száma projektenként és címkék szerint projektenk
 |Maximális képméret/szélesség képpontban|10 240|10 240|
 |Maximális képméret (betanítási képfeltöltés) |6 MB|6 MB|
 |Maximális képméret (előrejelzés)|4 MB|4 MB|
-|Objektumok maximális száma objektum-észlelési betanítási képen|300|300|
-|Címkék maximális száma besorolási képenként|100|100|
+|Területek maximális száma rendszerkép szerint (objektum-észlelés)|300|300|
+|Címkék maximális száma képképeken (besorolás)|100|100|
 
+> [!NOTE]
+> Az 256 képpontnál kisebb méretű képek is el lesznek fogadva, a méretük pedig nagyobb.
+> A kép oldalarányának aránya nem lehet nagyobb, mint 25

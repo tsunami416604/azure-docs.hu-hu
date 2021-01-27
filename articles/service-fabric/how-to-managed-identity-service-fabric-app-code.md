@@ -3,12 +3,12 @@ title: Felügyelt identitás használata alkalmazással
 description: Felügyelt identitások használata az Azure Service Fabric alkalmazás kódjában az Azure-szolgáltatások eléréséhez.
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: bec640077a17ccef822afb85fc104728aabb13b1
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: e26a29020f26583f7e4aa16434c7e8647ba9a5a3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791322"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871061"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>Service Fabric alkalmazás felügyelt identitásának kihasználása az Azure-szolgáltatások eléréséhez
 
@@ -30,7 +30,7 @@ Az Azure Identity SDK mostantól támogatja a Service Fabric. Az Azure. Identity
 A Service Fabric támogatás a következő verziókban érhető el ezekhez a nyelvekhez: 
 - [C# a verzió 1.3.0](https://www.nuget.org/packages/Azure.Identity). Lásd: [C#-minta](https://github.com/Azure-Samples/service-fabric-managed-identity).
 - [Python a 1.5.0-es verzióban](https://pypi.org/project/azure-identity/). Tekintse meg a [Python-mintát](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/identity/azure-identity/tests/managed-identity-live/service-fabric/service_fabric.md).
-- [Java a 1.2.0 verzióban](https://docs.microsoft.com/java/api/overview/azure/identity-readme).
+- [Java a 1.2.0 verzióban](/java/api/overview/azure/identity-readme).
 
 C# minta a hitelesítő adatok inicializálásához és a hitelesítő adatok használatával Azure Key Vault titkos kód beolvasásához:
 

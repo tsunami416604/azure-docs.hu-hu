@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 01/11/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 7285ab338e978f0de467f79bbce1d41409683b1e
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 80a995b488f335ac2eb60ae18621acb2b1df58e2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132953"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871536"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Adatok áthelyezése gép tanulási folyamatok lépéseibe és azok között (Python)
 
@@ -36,7 +36,7 @@ Ez a cikk bemutatja, hogyan végezheti el a következőket:
 
 A következők szükségesek:
 
-- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
+- Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
 - A [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py), vagy a [Azure Machine learning studióhoz](https://ml.azure.com/)való hozzáférés.
 
@@ -53,7 +53,7 @@ A következők szükségesek:
 
 - Néhány már meglévő adattal. Ez a cikk röviden bemutatja az [Azure Blob-tárolók](../storage/blobs/storage-blobs-overview.md)használatát.
 
-- Nem kötelező: egy meglévő gépi tanulási folyamat, például egy, a [Machine learning-folyamatok létrehozása és futtatása Azure Machine learning SDK-val](how-to-create-your-first-pipeline.md)című témakörben leírtak szerint.
+- Nem kötelező: egy meglévő gépi tanulási folyamat, például egy, a [Machine learning-folyamatok létrehozása és futtatása Azure Machine learning SDK-val](./how-to-create-machine-learning-pipelines.md)című témakörben leírtak szerint.
 
 ## <a name="use-dataset-objects-for-pre-existing-data"></a>`Dataset`Objektumok használata már meglévő adatértékekhez 
 
@@ -154,7 +154,7 @@ ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 
 ## <a name="use-outputfiledatasetconfig-for-intermediate-data"></a>`OutputFileDatasetConfig`A köztes adatkezeléshez használatos
 
-Míg `Dataset` az objektumok csak állandó adatokat képviselnek, [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) az objektum (ok) a folyamat lépései **és** az állandó kimeneti adatok ideiglenes adatkimenetéhez használható. `OutputFileDatasetConfig` támogatja az adatírást a blob Storage-ba, a fájlmegosztás, a adlsgen1 vagy a adlsgen2. Támogatja a csatlakoztatási módot és a feltöltési módot is. A csatlakoztatási módban a csatlakoztatott könyvtárba írt fájlok véglegesen tárolódnak a fájl bezárásakor. Feltöltési módban a kimeneti könyvtárba írt fájlok a feladatok végén lesznek feltöltve. Ha a feladat meghiúsul vagy meg lett szakítva, a kimeneti könyvtár nem lesz feltöltve.
+Míg `Dataset` az objektumok csak állandó adatokat képviselnek, [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) az objektum (ok) a folyamat lépései **és** az állandó kimeneti adatok ideiglenes adatkimenetéhez használható. `OutputFileDatasetConfig` támogatja az adatírást a blob Storage-ba, a fájlmegosztás, a adlsgen1 vagy a adlsgen2. Támogatja a csatlakoztatási módot és a feltöltési módot is. A csatlakoztatási módban a csatlakoztatott könyvtárba írt fájlok véglegesen tárolódnak a fájl bezárásakor. Feltöltési módban a kimeneti könyvtárba írt fájlok a feladatok végén lesznek feltöltve. Ha a feladat meghiúsul vagy meg lett szakítva, a kimeneti könyvtár nem lesz feltöltve.
 
  `OutputFileDatasetConfig` az objektum alapértelmezett viselkedése a munkaterület alapértelmezett adattárára való írás. Adja át az `OutputFileDatasetConfig` objektumait a `PythonScriptStep` `arguments` paraméterrel.
 
@@ -184,7 +184,7 @@ OutputFileDatasetConfig(name="clean_data", destination=blob_store).as_upload(ove
 
 ### <a name="use-outputfiledatasetconfig-as-outputs-of-a-training-step"></a>Használat `OutputFileDatasetConfig` egy képzési lépés kimenete
 
-A folyamaton belül a `PythonScriptStep` program argumentumai segítségével kérheti le a rendelkezésre álló kimeneti útvonalakat. Ha ez a lépés az első, és inicializálja a kimeneti adatokat, létre kell hoznia a könyvtárat a megadott elérési úton. Ezután megírhatja, hogy milyen fájlokat szeretne foglalni a alkalmazásban `OutputFileDatasetConfig` .
+A folyamat `PythonScriptStep` részében lekérheti az elérhető kimeneti útvonalakat a program argumentumaival. Ha ez a lépés az első, és inicializálja a kimeneti adatokat, létre kell hoznia a könyvtárat a megadott útvonalon. Ezután megírhatja, hogy milyen fájlokat szeretne foglalni a alkalmazásban `OutputFileDatasetConfig` .
 
 ```python
 parser = argparse.ArgumentParser()
@@ -241,7 +241,7 @@ step1_output_ds = step1_output_data.register_on_complete(name='processed_data',
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Machine learning-adatkészlet létrehozása](how-to-create-register-datasets.md)
-* [Gépi tanulási folyamatokat hozhat létre és futtathat Azure Machine Learning SDK-val](how-to-create-your-first-pipeline.md)
+* [Gépi tanulási folyamatokat hozhat létre és futtathat Azure Machine Learning SDK-val](./how-to-create-machine-learning-pipelines.md)

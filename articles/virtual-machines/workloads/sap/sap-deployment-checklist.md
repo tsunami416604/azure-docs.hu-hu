@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ca2a844364d11dbb5ac2a244945e07d8ca725c1c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 944e687c27d46a9cf3250cb21024b4e5a52dc62c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728440"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871519"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-munkaterhelések az Azure-ban: tervezési és üzembe helyezési ellenőrzőlista
 
@@ -137,7 +137,7 @@ Javasoljuk, hogy a kísérleti üzembe helyezés során egy teljes HADR-megoldá
         - Tesztelje és értékelje ki a hálózati késést az SAP alkalmazási rétegbeli virtuális gépek és az adatbázis-kezelő virtuális gépek között az SAP-támogatási megjegyzések [#500235](https://launchpad.support.sap.com/#/notes/500235) és [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)alapján. Értékelje ki az eredményeket a hálózati késéssel kapcsolatos útmutatóban az [SAP-támogatási megjegyzés #1100926](https://launchpad.support.sap.com/#/notes/1100926/E). A hálózati késésnek közepes vagy jó tartományban kell lennie. A kivételek a virtuális gépek és a HANA nagyméretű példányok közötti forgalomra vonatkoznak, a [jelen cikkben](./hana-network-architecture.md#networking-architecture-for-hana-large-instance)leírtak szerint.
         - Győződjön meg arról, hogy a ILB központi telepítései a közvetlen kiszolgáló visszaadását használják. Ez a beállítás csökkenti a késést, ha az Azure ILB az adatbázis-kezelő réteg magas rendelkezésre állású konfigurációi esetében használják.
         - Ha Azure Load Balancer a Linux vendég operációs rendszerekkel együtt használja, ellenőrizze, hogy a Linux hálózati **net.IPv4.tcp_timestamps** paraméter értéke **0**. Ez az ajánlás ütközik az [SAP megjegyzés #2382421](https://launchpad.support.sap.com/#/notes/2382421)régebbi verzióiban található javaslatokkal. Az SAP-Megjegyzés frissítve lett azzal az állapottal, hogy ez a paraméter **0** értékűre van állítva az Azure Load balancerrel való együttműködéshez.
-        - Érdemes lehet az [Azure Proximity-elhelyezési csoportokat](../../linux/co-location.md) használni az optimális hálózati késés érdekében. További információ: [Azure Proximity-elhelyezési csoportok optimális hálózati késéshez SAP-alkalmazásokkal](sap-proximity-placement-scenarios.md).
+        - Érdemes lehet az [Azure Proximity-elhelyezési csoportokat](../../co-location.md) használni az optimális hálózati késés érdekében. További információ: [Azure Proximity-elhelyezési csoportok optimális hálózati késéshez SAP-alkalmazásokkal](sap-proximity-placement-scenarios.md).
    4. Magas rendelkezésre állású és vész-helyreállítási üzemelő példányok.
         - Ha egy adott Azure rendelkezésre állási zóna meghatározása nélkül helyezi üzembe az SAP-alkalmazás rétegét, győződjön meg arról, hogy minden olyan virtuális gép, amely az SAP-párbeszédpanelek példányait vagy az egyetlen SAP-rendszer összes közbenső példányát futtatja egy [rendelkezésre állási csoportba](../../manage-availability.md)
         - Ha nincs szüksége magas rendelkezésre állásra az SAP Central Services és az adatbázis-kezelő rendszer számára, akkor ezeket a virtuális gépeket az SAP-alkalmazás rétegével megegyező rendelkezésre állási csoportba helyezheti.
@@ -209,7 +209,7 @@ Ebben a fázisban általában fejlesztési rendszereket, egység-tesztelési ren
 8.  Az Azure-ban az új HANA-tanúsítvánnyal rendelkező SKU-ket az [SAP webhelyén találja](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) . Hasonlítsa össze az új SKU-ket a használni tervezettek díjszabásával. Végül végezze el a szükséges módosításokat a legjobb ár/teljesítmény aránnyal rendelkezők használatához.
 9.  Az üzembe helyezési parancsfájlok új virtuálisgép-típusok használatára való hozzáigazítása és a használni kívánt új Azure-szolgáltatások beépítése.
 10. Az infrastruktúra üzembe helyezése után tesztelje és értékelje ki a hálózati késést az SAP-alkalmazások és az adatbázis-kezelő virtuális gépek között, az SAP-támogatási megjegyzések [#500235](https://launchpad.support.sap.com/#/notes/500235) és [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)alapján. Értékelje ki az eredményeket a hálózati késéssel kapcsolatos útmutatóban az [SAP-támogatási megjegyzés #1100926](https://launchpad.support.sap.com/#/notes/1100926/E). A hálózati késésnek közepes vagy jó tartományban kell lennie. A kivételek a virtuális gépek és a HANA nagyméretű példányok közötti forgalomra vonatkoznak, a [jelen cikkben](./hana-network-architecture.md#networking-architecture-for-hana-large-instance)leírtak szerint. Győződjön meg arról, hogy az [azure Virtual Machines adatbázis-kezelő rendszerbe állításához az SAP-munkaterhelések](./dbms_guide_general.md#azure-network-considerations) , valamint az [Azure-SAP HANA infrastruktúra-konfigurációk és-műveletek](./hana-vm-operations.md) egyike sem vonatkozik az üzemelő példányra.
-11. Győződjön meg arról, hogy a virtuális gépek a megfelelő [Azure közelségi elhelyezési csoportba](../../linux/co-location.md)vannak telepítve, az [Azure Proximity-elhelyezési csoportok az SAP-alkalmazásokkal való optimális hálózati késés](sap-proximity-placement-scenarios.md)érdekében című témakörben leírtak szerint.
+11. Győződjön meg arról, hogy a virtuális gépek a megfelelő [Azure közelségi elhelyezési csoportba](../../co-location.md)vannak telepítve, az [Azure Proximity-elhelyezési csoportok az SAP-alkalmazásokkal való optimális hálózati késés](sap-proximity-placement-scenarios.md)érdekében című témakörben leírtak szerint.
 11. A számítási feladatok alkalmazása előtt végezze el az összes többi, a koncepció igazolására szolgáló szakaszt.
 12. A számítási feladatok alkalmazása esetén jegyezze fel a rendszerek erőforrás-felhasználását az Azure-ban. Hasonlítsa össze ezt a felhasználást a régi platform rekordjaival. A jövőbeli központi telepítések VM-méretezésének módosítása, ha úgy látja, hogy nagy különbségek vannak. Ne feledje, hogy ha a virtuális gépek számának csökkentése, tárolása és hálózati sávszélessége is csökken.
     - [A Windows rendszerű virtuális gépek méretei az Azure-ban](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -251,7 +251,7 @@ Ebben a fázisban gyűjti a tapasztalt és megtanult adatokat a nem éles körny
     - Nem található Azure-beli [hálózati virtuális készülék](https://azure.microsoft.com/solutions/network-appliances/) az SAP-alkalmazás és az SAP NetWeaver, a Hybris vagy a S/4HANA alapú SAP-rendszerek adatbázis-kezelő rétegének kommunikációs útvonalán.
     - Az alkalmazás biztonsági csoportja és a hálózati biztonsági csoport szabályai lehetővé teszik a kommunikációt a kívánt módon, illetve a tervezett és a kommunikációt, ha szükséges.
     - Az időtúllépési beállítások a korábban leírtaknak megfelelően vannak beállítva.
-    - A virtuális gépek üzembe helyezése a megfelelő [Azure Proximity-elhelyezési csoportba](../../linux/co-location.md)történik, az Azure-beli [Proximity-elhelyezési csoportok az SAP-alkalmazásokkal való optimális hálózati késés](sap-proximity-placement-scenarios.md)érdekében.
+    - A virtuális gépek üzembe helyezése a megfelelő [Azure Proximity-elhelyezési csoportba](../../co-location.md)történik, az Azure-beli [Proximity-elhelyezési csoportok az SAP-alkalmazásokkal való optimális hálózati késés](sap-proximity-placement-scenarios.md)érdekében.
     - Az SAP-alkalmazások és az adatbázis-kezelő rendszerű virtuális gépek közötti hálózati késés az SAP-támogatási megjegyzések [#500235](https://launchpad.support.sap.com/#/notes/500235) és [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)című témakörben leírtak szerint lett tesztelve és érvényesítve Értékelje ki az eredményeket a hálózati késéssel kapcsolatos útmutatóban az [SAP-támogatási megjegyzés #1100926](https://launchpad.support.sap.com/#/notes/1100926/E). A hálózati késésnek közepes vagy jó tartományban kell lennie. A kivételek a virtuális gépek és a HANA nagyméretű példányok közötti forgalomra vonatkoznak, a [jelen cikkben](./hana-network-architecture.md#networking-architecture-for-hana-large-instance)leírtak szerint.
     - A titkosítás szükség esetén, és a megfelelő titkosítási módszerrel lett implementálva.
     - A felületek és más alkalmazások összekapcsolhatják az újonnan üzembe helyezett infrastruktúrát.

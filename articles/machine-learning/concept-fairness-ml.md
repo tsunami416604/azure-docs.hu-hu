@@ -1,5 +1,5 @@
 ---
-title: A gépi tanulási modellek tisztaságának enyhítése (előzetes verzió)
+title: A gépi tanulási modellekben való méltánytalanság enyhítése (előzetes verzió)
 titleSuffix: Azure Machine Learning
 description: Ismerje meg, hogy a Fairlearn Python-csomag hogyan hozhat létre tisztességesebb modelleket, és hogyan segíthet a Fair-modellek kiépítésében.
 services: machine-learning
@@ -8,18 +8,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 08/05/2020
+ms.date: 01/26/2021
 ms.custom: responsible-ml
-ms.openlocfilehash: 29e29e73aa1094a2941592655af78a24d95c53b5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 6daa03728a5f323f6f8b749975d31fbca24d5602
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223091"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871502"
 ---
-# <a name="mitigate-fairness-in-machine-learning-models-preview"></a>A gépi tanulási modellek tisztaságának enyhítése (előzetes verzió)
+# <a name="mitigate-unfairness-in-machine-learning-models-preview"></a>A gépi tanulási modellekben való méltánytalanság enyhítése (előzetes verzió)
 
-Ismerje meg, hogy a gépi tanulás és a [Fairlearn](https://fairlearn.github.io/) nyílt forráskódú Python-csomag Hogyan csökkentheti a gépi tanulási modellek tisztességes problémáit. Ha nem tesz erőfeszítéseket a tisztességgel kapcsolatos problémák megismerésére és a tisztességes értékelésre a gépi tanulási modellek létrehozásakor, létrehozhat olyan modelleket, amelyek tisztességtelen eredményeket hoznak létre.
+Ismerje meg, hogy a gépi tanulás és a [Fairlearn](https://fairlearn.github.io/) nyílt forráskódú Python-csomag milyen módon segít enyhíteni a gépi tanulási modellek méltánytalan problémáit. Ha nem tesz erőfeszítéseket a tisztességgel kapcsolatos problémák megismerésére és a tisztességes értékelésre a gépi tanulási modellek létrehozásakor, létrehozhat olyan modelleket, amelyek tisztességtelen eredményeket hoznak létre.
 
 A Fairlearn nyílt forráskódú csomagra vonatkozó [felhasználói útmutató](https://fairlearn.github.io/master/user_guide/index.html) következő összefoglalása leírja, hogyan használhatja azt a kiépített AI-rendszerek tisztaságának értékeléséhez.  A nyílt forráskódú Fairlearn-csomag olyan lehetőségeket is kínál, amelyek segítenek enyhíteni vagy csökkenteni a megfigyelt tisztességgel kapcsolatos problémákat.  Tekintse meg az útmutató és a [minta jegyzetfüzeteket](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness) , amelyek lehetővé teszik a mesterséges intelligencia [-](how-to-machine-learning-fairness-aml.md) rendszerek értékelését az Azure Machine Learningon való képzés során.
 
@@ -41,7 +41,7 @@ Az AI-rendszerek tisztességtelen viselkedésének csökkentése érdekében fel
 
 ## <a name="fairness-assessment-and-mitigation-with-fairlearn"></a>A méltányosság felmérése és enyhítése a Fairlearn
 
-A Fairlearn egy nyílt forráskódú Python-csomag, amely lehetővé teszi, hogy a gépi tanulási rendszerek fejlesztői felmérjék a rendszereik tisztaságát, és enyhítsék a megfigyelt tisztességgel kapcsolatos problémákat.
+A Fairlearn egy nyílt forráskódú Python-csomag, amely lehetővé teszi a gépi tanulási rendszerek fejlesztői számára, hogy felmérjék a rendszereik tisztességét, és enyhítsék a méltánytalanság mértékét.
 
 A Fairlearn nyílt forráskódú csomag két összetevőből áll:
 
@@ -107,7 +107,7 @@ A Fairlearn nyílt forráskódú csomag utófeldolgozó biztosít, és csökkent
 | `GridSearch` | A fekete Box megközelítése, amely a valós regressziós teljesítmény-keresés változatát valósítja meg a [valós regresszió: mennyiségi definíciók és a redukáló algoritmusok](https://arxiv.org/abs/1905.12843) által leírt, kötött csoportok elvesztésének algoritmusával. | Regresszió | Bináris | [Kötött csoport elvesztése](#parity-constraints) | Csökkentése |
 | `ThresholdOptimizer` | Utófeldolgozó algoritmus a [felügyelt tanulásban az esélyegyenlőségi lehetőség](https://arxiv.org/abs/1610.02413)alapján. Ez a módszer egy meglévő osztályozó és a bizalmas szolgáltatás bemenetét veszi figyelembe, és az osztályozó előrejelzésének monoton átalakítását származtatja a megadott paritásos megkötések érvénybe léptetéséhez. | Bináris besorolás | Kategorikus | [Demográfiai paritás](#parity-constraints), [equald odds](#parity-constraints) | Feldolgozás utáni |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan használhatja a különböző összetevőket a Fairlearn [GitHub](https://github.com/fairlearn/fairlearn/), [felhasználói útmutató](https://fairlearn.github.io/master/user_guide/index.html), [példák](https://fairlearn.github.io/master/auto_examples/)és [minta jegyzetfüzetek](https://github.com/fairlearn/fairlearn/tree/master/notebooks)használatával történő ellenőrzésével.
 - Megtudhatja, [Hogyan](how-to-machine-learning-fairness-aml.md) engedélyezheti Azure Machine learning gépi tanulási modelljeinek méltányos értékelését.
