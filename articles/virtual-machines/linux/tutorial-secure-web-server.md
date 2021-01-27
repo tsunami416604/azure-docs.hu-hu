@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 4a790c51cd0caa2c81275e7eafdd663f2f2f0116
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e4e80990b32175842556059d005563a220d14688
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740195"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878460"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Oktatóanyag: webkiszolgáló védelme Azure-beli linuxos virtuális gépen a Key Vault tárolt TLS/SSL-tanúsítványokkal
 A webkiszolgálók biztonságossá tételéhez Transport Layer Security (TLS), korábbi nevén SSL (SSL) tanúsítvány használható a webes forgalom titkosításához. Ezek a TLS/SSL-tanúsítványok Azure Key Vault tárolhatók, és lehetővé teszik a tanúsítványok biztonságos központi telepítését az Azure-ban linuxos virtuális gépekre (VM). Ezen oktatóanyag segítségével megtanulhatja a következőket:
@@ -144,7 +144,7 @@ Ekkor a biztonságos NGINX-webhely a következő példához hasonlóan jelenik m
 ![Futó biztonságos NGINX-webhely megtekintése](./media/tutorial-secure-web-server/secured-nginx.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy NGINX-webkiszolgálót biztosított egy Azure Key Vaultban tárolt TLS/SSL-tanúsítvánnyal. Megtanulta végrehajtani az alábbi műveleteket:
 
@@ -157,4 +157,4 @@ Ebben az oktatóanyagban egy NGINX-webkiszolgálót biztosított egy Azure Key V
 Kövesse ezt a hivatkozást az előre felépített virtuálisgép-szkriptek mintáinak megtekintéséhez.
 
 > [!div class="nextstepaction"]
-> [Linux rendszerű virtuális gép szkriptjeinek mintái](./cli-samples.md)
+> [Linux rendszerű virtuális gép szkriptjeinek mintái](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine)

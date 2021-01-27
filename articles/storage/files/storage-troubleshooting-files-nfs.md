@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 2a37c86268d2424971058021044c60185a25348f
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: ed86cc76984388618c177590b3f6358421f09f65
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916456"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878493"
 ---
 # <a name="troubleshoot-azure-nfs-file-shares"></a>Az Azure NFS-fájlmegosztás hibáinak megoldása
 
@@ -25,7 +25,7 @@ Ez a cikk az Azure NFS-fájlmegosztás-megosztásokkal kapcsolatos gyakori probl
 Azure Files nem engedélyezi az alfanumerikus UID/GID használatát. Így a idmapping le kell tiltani. 
 
 ### <a name="cause-2-idmapping-was-disabled-but-got-re-enabled-after-encountering-bad-filedir-name"></a>2. ok: a idmapping le lett tiltva, de a hibás fájl/dir neve után ismét engedélyezve lett
-Még ha a idmapping megfelelően le van tiltva, a idmapping letiltására vonatkozó beállítások bizonyos esetekben felülbírálva vannak. Ha például a Azure Files hibás fájlnevet észlel, hibaüzenetet küld vissza. Ha ezt a hibakódot látja, az NFS v 4,1 Linux-ügyfél úgy dönt, hogy újra engedélyezi a idmapping, és a jövőbeli kérelmeket az alfanumerikus UID/GID használatával újra elküldi. A Azure Filesban nem támogatott karakterek listáját ebben a [cikkben](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#:~:text=The%20Azure%20File%20service%20naming%20rules%20for%20directory,be%20no%20more%20than%20255%20characters%20in%20length)találja. A kettőspont az egyik nem támogatott karakter. 
+Még ha a idmapping megfelelően le van tiltva, a idmapping letiltására vonatkozó beállítások bizonyos esetekben felülbírálva vannak. Ha például a Azure Files hibás fájlnevet észlel, hibaüzenetet küld vissza. Ha ezt a hibakódot látja, az NFS v 4,1 Linux-ügyfél úgy dönt, hogy újra engedélyezi a idmapping, és a jövőbeli kérelmeket az alfanumerikus UID/GID használatával újra elküldi. A Azure Filesban nem támogatott karakterek listáját ebben a [cikkben](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)találja. A kettőspont az egyik nem támogatott karakter. 
 
 ### <a name="workaround"></a>Áthidaló megoldás
 Győződjön meg arról, hogy a idmapping le van tiltva, és semmi sincs újból engedélyezve, majd hajtsa végre a következőket:
@@ -68,7 +68,7 @@ Az NFS csak a következő konfigurációval rendelkező Storage-fiókokban érhe
 - Prémium szint
 - Fiók típusa – FileStorage
 - Redundancia – LRS
-- Régiók – [támogatott régiók listája](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-nfs-shares?tabs=azure-portal#regional-availability)
+- Régiók – [támogatott régiók listája](./storage-files-how-to-create-nfs-shares.md?tabs=azure-portal#regional-availability)
 
 #### <a name="solution"></a>Megoldás
 

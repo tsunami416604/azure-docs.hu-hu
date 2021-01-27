@@ -3,12 +3,12 @@ title: Figyelés és naplózás – Azure
 description: Ez a cikk áttekintést nyújt a IoT Edge élő videó-elemzések monitorozásáról és naplózásáról.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: 6a7251b62421642ad9f5dba4f4c2a15ce74cd5cf
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 6dc0a6d499d06c95bdccbc9e386d7f9288971ee8
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900875"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878104"
 ---
 # <a name="monitoring-and-logging"></a>Monitorozás és naplózás
 
@@ -269,7 +269,7 @@ A következő lépésekkel engedélyezheti a metrikák gyűjteményét az élő 
 
 1. Docker CLI-parancsok használatával hozza létre a Docker-fájlt, és tegye közzé a rendszerképet az Azure Container registryben.
     
-   További információ arról, hogy a Docker CLI-vel hogyan lehet leküldeni a tároló-beállításjegyzéket: [leküldéses és lekéréses Docker-rendszerképek](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-docker-cli). A Azure Container Registry kapcsolatos további információkért tekintse meg a [dokumentációt](https://docs.microsoft.com/azure/container-registry/).
+   További információ arról, hogy a Docker CLI-vel hogyan lehet leküldeni a tároló-beállításjegyzéket: [leküldéses és lekéréses Docker-rendszerképek](../../container-registry/container-registry-get-started-docker-cli.md). A Azure Container Registry kapcsolatos további információkért tekintse meg a [dokumentációt](../../container-registry/index.yml).
 
 
 1. A leküldéses Azure Container Registry befejezését követően adja hozzá a következő csomópontot a telepítési jegyzékfájlhoz:
@@ -359,6 +359,6 @@ A modul mostantól bináris formában fogja írni a hibakeresési naplókat az e
 
 Ha kérdése van, tekintse meg a [figyelés és mérőszámok – gyakori kérdések](faq.md#monitoring-and-metrics)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Folyamatos videófelvétel](continuous-video-recording-tutorial.md)

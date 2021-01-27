@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 8e657386c417ce3407aea9b3765419e1d2b70bb9
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 242c0819e916f3ea7912d4d57b7d3e338152e4d9
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962448"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878510"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>A Windows (SMB) Azure Files problémáinak elhárítása
 
@@ -263,7 +263,7 @@ Előfordulhat, hogy a lassú teljesítmény jelenik meg, amikor fájlokat prób�
 -   Ha ismeri az írásokkal kiterjeszthető fájl végső méretét, és a szoftver nem rendelkezik kompatibilitási problémákkal, ha a fájl íratlan farka nulla értéket tartalmaz, a fájl méretét előre állítsa be ahelyett, hogy minden írási kibővítést ír.
 -   Használja a megfelelő másolási módszert:
     -   Használjon [AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) a két fájlmegosztás közötti átvitelhez.
-    -   Egy helyszíni számítógépen lévő fájlmegosztás esetén használja a [Robocopy](./storage-files-deployment-guide.md#robocopy) szolgáltatást.
+    -   Egy helyszíni számítógépen lévő fájlmegosztás esetén használja a [Robocopy](./storage-how-to-create-file-share.md) szolgáltatást.
 
 ### <a name="considerations-for-windows-81-or-windows-server-2012-r2"></a>A Windows 8,1 vagy a Windows Server 2012 R2 szempontjai
 
@@ -406,8 +406,8 @@ A parancsmag az alábbi ellenőrzéseket hajtja végre egymás után, és útmut
 5. CheckSidHasAadUser: Győződjön meg róla, hogy a bejelentkezett AD-felhasználó szinkronizálva van az Azure AD-vel. Ha szeretné megkeresni, hogy egy adott AD-felhasználó szinkronizálva van-e az Azure AD-val, megadhatja a-UserName és a-domain paramétert a bemeneti paraméterekben. 
 6. CheckGetKerberosTicket: a Storage-fiókhoz való kapcsolódásra irányuló Kerberos-jegy beszerzésére tett kísérlet. Ha nincs érvényes Kerberos-jogkivonat, futtassa a klist Get CIFS/Storage-Account-Name. file. Core. Windows. net parancsmagot, és vizsgálja meg a hibakódot a fő – a jegy lekérési hibája miatt.
 7. CheckStorageAccountDomainJoined: Ellenőrizze, hogy az AD-hitelesítés engedélyezve van-e, és hogy a fiók AD-tulajdonságainak feltöltése megtörtént-e. Ha nem, tekintse meg a AD DS hitelesítés engedélyezése Azure Fileson című [témakör utasításait](./storage-files-identity-ad-ds-enable.md) . 
-8. CheckUserRbacAssignment: Ellenőrizze, hogy az AD-felhasználó rendelkezik-e a megfelelő RBAC-szerepkör-hozzárendeléssel, hogy hozzáférést biztosítson a megosztási szinten a Azure Files eléréséhez Ha nem, tekintse meg az [itt](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions) található utasításokat a megosztási szint engedélyének konfigurálásához. (Támogatott a AzFilesHybrid v 0.2.3 + verziójában)
-9. CheckUserFileAccess: Ellenőrizze, hogy az AD-felhasználó rendelkezik-e a megfelelő könyvtár/fájl engedéllyel (Windows ACL) a Azure Files eléréséhez. Ha nem, tekintse meg az [itt](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-configure-permissions) található utasításokat a könyvtár/fájl szintű engedély konfigurálásához. (Támogatott a AzFilesHybrid v 0.2.3 + verziójában)
+8. CheckUserRbacAssignment: Ellenőrizze, hogy az AD-felhasználó rendelkezik-e a megfelelő RBAC-szerepkör-hozzárendeléssel, hogy hozzáférést biztosítson a megosztási szinten a Azure Files eléréséhez Ha nem, tekintse meg az [itt](./storage-files-identity-ad-ds-assign-permissions.md) található utasításokat a megosztási szint engedélyének konfigurálásához. (Támogatott a AzFilesHybrid v 0.2.3 + verziójában)
+9. CheckUserFileAccess: Ellenőrizze, hogy az AD-felhasználó rendelkezik-e a megfelelő könyvtár/fájl engedéllyel (Windows ACL) a Azure Files eléréséhez. Ha nem, tekintse meg az [itt](./storage-files-identity-ad-ds-configure-permissions.md) található utasításokat a könyvtár/fájl szintű engedély konfigurálásához. (Támogatott a AzFilesHybrid v 0.2.3 + verziójában)
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Nem lehet konfigurálni a címtár/fájl szintű engedélyeket (Windows ACL) a Windows fájlkezelővel
 

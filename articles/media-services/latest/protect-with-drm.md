@@ -1,26 +1,9 @@
 ---
-title: Azure Media Services DRM titkosítás és licenc kézbesítési szolgáltatás
-titleSuffix: Azure Media Services
-description: Ismerje meg, hogyan használható a DRM Dynamic encryption és a License Delivery Service a Microsoft PlayReady, a Google Widevine vagy az Apple FairPlay-licenccel titkosított adatfolyamok továbbítására.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: tutorial
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.custom: seodec18
-ms.openlocfilehash: abaa82d6f5f33a3dc29db50ae6d029dacd3f7c13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89289358"
+title: Azure Media Services DRM titkosítási és licencelési szolgáltatás: Azure Media Services Leírás: Ismerje meg, hogyan használható a DRM Dynamic encryption és a License Delivery Service a Microsoft PlayReady, a Google Widevine vagy az Apple FairPlay-licencekkel titkosított adatfolyamok továbbítására.
+szolgáltatások: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' '
+
+MS. Service: Media-Services MS. munkaterhelés: Media ms.tgt_pltfrm: na MS. devlang: na MS. topic: oktatóanyag MS. Date: 08/31/2020 MS. Author: inhenkel MS. Custom: seodec18
+
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>Oktatóanyag: a DRM dinamikus titkosításának és a licenc-kézbesítési szolgáltatásnak a használata
 
@@ -137,7 +120,7 @@ A kódolás befejezése és a tartalomkulcs-szabályzat beállítása után a k�
 
 Az **adatfolyam-kereső** létrehozásának folyamatát közzétételnek nevezzük. Alapértelmezés szerint az **adatfolyam-kereső** az API-hívások után azonnal érvényes. Addig tart, amíg nem törlik, hacsak nem konfigurálja a nem kötelező kezdési és befejezési időpontokat.
 
-**Adatfolyam-kereső**létrehozásakor meg kell adnia a kívántat `StreamingPolicyName` . Ebben az oktatóanyagban az egyik előre definiált adatfolyam-szabályzatot használjuk, amely azt ismerteti, Azure Media Services hogyan teheti közzé a tartalmat a streaminghez. Ebben a példában a StreamingLocator.StreamingPolicyName elemet állítjuk be a „Predefined_MultiDrmCencStreaming” szabályzathoz. A rendszer alkalmazza a PlayReady és a Widevine titkosítást, és a kulcsot a konfigurált DRM-licencek alapján továbbítja a rendszer a lejátszási ügyfélnek. Ha CBCS (FairPlay) licenccel is titkosítani szeretné a streamet, használja a következőt: „Predefined_MultiDrmStreaming”.
+**Adatfolyam-kereső** létrehozásakor meg kell adnia a kívántat `StreamingPolicyName` . Ebben az oktatóanyagban az egyik előre definiált adatfolyam-szabályzatot használjuk, amely azt ismerteti, Azure Media Services hogyan teheti közzé a tartalmat a streaminghez. Ebben a példában a StreamingLocator.StreamingPolicyName elemet állítjuk be a „Predefined_MultiDrmCencStreaming” szabályzathoz. A rendszer alkalmazza a PlayReady és a Widevine titkosítást, és a kulcsot a konfigurált DRM-licencek alapján továbbítja a rendszer a lejátszási ügyfélnek. Ha CBCS (FairPlay) licenccel is titkosítani szeretné a streamet, használja a következőt: „Predefined_MultiDrmStreaming”.
 
 > [!IMPORTANT]
 > Ha egyéni [folyamatos átviteli szabályzatot](streaming-policy-concept.md)használ, meg kell terveznie az ilyen szabályzatok korlátozott készletét a Media Service-fiókjához, és újra fel kell használni azokat a StreamingLocators, amikor ugyanazok a titkosítási beállítások és protokollok szükségesek. A Media Service-fiókban korlátozva van a StreamingPolicy-bejegyzések száma. Minden StreamingLocator új StreamingPolicy kell létrehoznia.
@@ -154,7 +137,7 @@ A ContentKeyIdentifierClaim szerepel a ContentKeyPolicy szabályzatban, ami azt 
 
 ## <a name="build-a-streaming-url"></a>Streaming URL-cím létrehozása
 
-A [StreamingLocator](/rest/api/media/streaminglocators) létrehozása után lekérheti a streamelési URL-címeket. URL-cím létrehozásához összefűzni kell a [streamvégpontok](/rest/api/media/streamingendpoints) -gazdagép nevét és a **folyamatos átviteli lokátor** elérési útját. Ebben a példában az *alapértelmezett* **adatfolyam-végpontot** használja a rendszer. Amikor először hoz létre egy Media Service-fiókot, az *alapértelmezett* **folyamatos átviteli végpont** leállított állapotba kerül, ezért meg kell hívnia a **Start**parancsot.
+A [StreamingLocator](/rest/api/media/streaminglocators) létrehozása után lekérheti a streamelési URL-címeket. URL-cím létrehozásához összefűzni kell a [streamvégpontok](/rest/api/media/streamingendpoints) -gazdagép nevét és a **folyamatos átviteli lokátor** elérési útját. Ebben a példában az *alapértelmezett* **adatfolyam-végpontot** használja a rendszer. Amikor először hoz létre egy Media Service-fiókot, az *alapértelmezett* **folyamatos átviteli végpont** leállított állapotba kerül, ezért meg kell hívnia a **Start** parancsot.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#GetMPEGStreamingUrl)]
 
@@ -188,7 +171,7 @@ az group delete --name amsResourceGroup
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Kivétel
 

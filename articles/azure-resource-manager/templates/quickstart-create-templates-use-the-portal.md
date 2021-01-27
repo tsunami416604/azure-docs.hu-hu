@@ -2,15 +2,15 @@
 title: Sablon üzembe helyezése – Azure Portal
 description: Megtudhatja, hogyan hozhatja létre az első Azure Resource Manager-sablont (ARM-sablon) a Azure Portal használatával, és hogyan helyezheti üzembe.
 author: mumian
-ms.date: 06/29/2020
+ms.date: 01/26/2021
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: bdbcecc247a4b5318ba44b92befa7e90ac47aa8c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 946156caa7252a89cab006d604eb6b441e09c643
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349622"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98892498"
 ---
 # <a name="quickstart-create-and-deploy-arm-templates-by-using-the-azure-portal"></a>Rövid útmutató: ARM-sablonok létrehozása és üzembe helyezése a Azure Portal használatával
 
@@ -33,12 +33,14 @@ Számos tapasztalt sablon-fejlesztő ezt a módszert használja a sablonok létr
 
     ![Válassza az erőforrás létrehozása lehetőséget Azure Portal menüből](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-a-resource.png)
 
-1. Válassza a **Tárolás** > **Tárfiók** lehetőséget.
+1. A keresőmezőbe írja be a **Storage Account** kifejezést, majd nyomja meg az **[Enter]** billentyűt.
+1. Válassza a **Létrehozás** lehetőséget.
 
     ![Azure-tárfiók létrehozása](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
+
 1. Adja meg a következő információkat:
 
-    |Név|Érték|
+    |Name|Érték|
     |----|----|
     |**Erőforráscsoport**|Válassza az **új létrehozása** lehetőséget, és adjon meg egy tetszőleges erőforráscsoport-nevet. A képernyőképen az erőforráscsoport neve *mystorage1016rg*. Az erőforráscsoport az Azure-erőforrások tárolója. Az erőforráscsoport megkönnyíti az Azure-erőforrások kezelését. |
     |**Név**|Adjon egyedi nevet a Storage-fióknak. A Storage-fiók nevének egyedinek kell lennie az összes Azure-ban, és csak kisbetűket és számokat tartalmaz. A névnek 3 – 24 karakter hosszúnak kell lennie. Ha hibaüzenet jelenik meg, amely azt jelzi, hogy "a Storage-fiók neve (mystorage1016) már használatban van", próbálja meg használni **&lt; a>Storage &lt; mai dátumot a MMDD>**, például a **johndolestorage1016**. További információ: [elnevezési szabályok és korlátozások](/azure/architecture/best-practices/resource-naming).|
@@ -160,13 +162,13 @@ Az Azure megköveteli, hogy minden Azure-szolgáltatás egyedi névvel rendelkez
 1. Kattintson a **Mentés** gombra.
 1. Írja be a következő értékeket:
 
-    |Név|Érték|
+    |Name|Érték|
     |----|----|
     |**Erőforráscsoport**|Válassza ki az utolsó szakaszban létrehozott erőforráscsoport-nevet. |
     |**Régió**|Válasszon egy helyet az erőforráscsoportnak. Például: **USA középső régiója**. |
     |**Hely**|Válassza ki a Storage-fiók helyét. Például: **USA középső régiója**. |
     |**Fiók típusa**|Adja meg **Standard_LRS** ehhez a rövid útmutatóhoz. |
-    |**Erőforrás**|Adja meg a rövid útmutató **StorageV2** . |
+    |**Altípus**|Adja meg a rövid útmutató **StorageV2** . |
     |**Hozzáférési szintek**|Adja meg a **gyors** üzembe helyezési útmutatót. |
     |**TLS minimális verziója**|Adja meg a **TLS1_0**. |
     |**Csak HTTPS-forgalmat támogat**| Ennél a rövid útmutatónál válassza a **true** (igaz) értéket. |
@@ -193,7 +195,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 1. Válassza ki az erőforráscsoport nevét.  Az erőforráscsoportban megjelenik a tárfiók.
 1. A felső menüben válassza az **Erőforráscsoport törlése** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan generálható sablon az Azure Portalon, és hogyan helyezhető üzembe a sablon a Portal használatával. Ebben a rövid útmutatóban egy egyszerű sablont hoztunk létre, amelyben egyetlen Azure-erőforrás szerepel. Ha összetettebb sablonnal dolgozik, egyszerűbb a Visual Studio Code-ot vagy a Visual Studiót használni a sablon létrehozásához. A sablonok fejlesztésével kapcsolatos további tudnivalókért tekintse meg az új kezdő oktatóanyag-sorozatot:
 

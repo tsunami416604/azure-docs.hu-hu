@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-példaszkript – Feladat létrehozása és elküldése | Microsoft Docs
+title: Azure CLI parancsfájl – példa – feladatok létrehozása és elküldése
 description: A jelen témakörben lévő Azure CLI-szkript bemutatja, hogyan tud feladatot küldeni egy egyszerű kódoló Átalakításnak HTTPS URL-cím használatával.
 services: media-services
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0f2e1d901e674c3fecf957bd10314e51195f8b84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e35ab78b83c0daa96e9b958d70f6e341cdcc537
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89295988"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98891420"
 ---
 # <a name="cli-example-create-and-submit-a-job"></a>CLI-példa: Feladat létrehozása és elküldése
 
@@ -88,6 +88,6 @@ Ehhez hasonló választ kap:
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [az AMS Job (CLI)](/cli/azure/ams/job?view=azure-cli-latest)

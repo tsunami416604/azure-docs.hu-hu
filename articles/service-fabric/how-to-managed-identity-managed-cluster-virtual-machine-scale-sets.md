@@ -4,19 +4,19 @@ description: Ez a cikk bemutatja, hogyan adhat hozzá felügyelt identitást egy
 ms.topic: how-to
 ms.date: 11/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 00e679b07a44b799b6ac6677201bb59eeddcd6cf
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 9edcf75451f43f2a00cd01d5ca7f385704b1ea7f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96841468"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878426"
 ---
 # <a name="add-a-managed-identity-to-a-service-fabric-managed-cluster-node-type-preview"></a>Felügyelt identitás hozzáadása egy Service Fabric felügyelt fürtcsomópont-típushoz (előzetes verzió)
 
-Egy Service Fabric felügyelt fürt mindegyik csomópont-típusát egy virtuálisgép-méretezési csoport támogatja. Ahhoz, hogy a felügyelt identitások felügyelt fürtcsomópont-típussal használhatók legyenek, `vmManagedIdentity` hozzá lett adva egy tulajdonság a használni kívánt identitások listáját tartalmazó csomópont típusú definíciók listájához `userAssignedIdentities` . A funkciók tükrözik, hogy a felügyelt identitások hogyan használhatók nem felügyelt fürtökben, például felügyelt identitás használata a [Azure Key Vault virtuálisgép-méretezési csoport bővítménnyel](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+Egy Service Fabric felügyelt fürt mindegyik csomópont-típusát egy virtuálisgép-méretezési csoport támogatja. Ahhoz, hogy a felügyelt identitások felügyelt fürtcsomópont-típussal használhatók legyenek, `vmManagedIdentity` hozzá lett adva egy tulajdonság a használni kívánt identitások listáját tartalmazó csomópont típusú definíciók listájához `userAssignedIdentities` . A funkciók tükrözik, hogy a felügyelt identitások hogyan használhatók nem felügyelt fürtökben, például felügyelt identitás használata a [Azure Key Vault virtuálisgép-méretezési csoport bővítménnyel](../virtual-machines/extensions/key-vault-windows.md).
 
 
-A felügyelt identitásnak a csomópontok típusán való használatát Service Fabric felügyelt fürt üzembe helyezésére példaként tekintse meg [ezt a sablont](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-1-NT-MI). A támogatott régiók listáját itt találja: [felügyelt fürt – gyakori kérdések](https://docs.microsoft.com/azure/service-fabric/faq-managed-cluster#what-regions-are-supported-in-the-preview).
+A felügyelt identitásnak a csomópontok típusán való használatát Service Fabric felügyelt fürt üzembe helyezésére példaként tekintse meg [ezt a sablont](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-1-NT-MI). A támogatott régiók listáját itt találja: [felügyelt fürt – gyakori kérdések](./faq-managed-cluster.md#what-regions-are-supported-in-the-preview).
 
 > [!NOTE]
 > Ehhez a szolgáltatáshoz csak a felhasználó által hozzárendelt identitások támogatottak.
@@ -26,7 +26,7 @@ A felügyelt identitásnak a csomópontok típusán való használatát Service 
 Előkészületek:
 
 * Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
-* Ha azt tervezi, hogy a PowerShellt használja, [telepítse](https://docs.microsoft.com/cli/azure/install-azure-cli) az Azure CLI-t a CLI-hivatkozások parancsainak futtatásához.
+* Ha azt tervezi, hogy a PowerShellt használja, [telepítse](/cli/azure/install-azure-cli) az Azure CLI-t a CLI-hivatkozások parancsainak futtatásához.
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás létrehozása 
 
@@ -131,4 +131,4 @@ A szerepkör-hozzárendelés megfelelő hozzáadása nem sikerült, mert a telep
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Alkalmazás üzembe helyezése Service Fabric felügyelt fürtön](https://docs.microsoft.com/azure/service-fabric/tutorial-managed-cluster-deploy-app) 
+> [Alkalmazás üzembe helyezése Service Fabric felügyelt fürtön](./tutorial-managed-cluster-deploy-app.md)

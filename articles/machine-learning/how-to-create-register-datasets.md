@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 8dac15f359d8ab6c7a84bbc30dba392322e84bb5
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 39973fe8c15364dc214392985cecd8b8bc7834ed
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538191"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878205"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning-adathalmazok létrehozása
 
@@ -152,8 +152,9 @@ datastore_paths = [(datastore, 'weather/2018/11.csv'),
 
 weather_ds = Dataset.Tabular.from_delimited_files(path=datastore_paths)
 ```
+### <a name="set-data-schema"></a>Adatséma beállítása
 
-Alapértelmezés szerint a TabularDataset létrehozásakor a rendszer automatikusan kikövetkezteti az oszlop adattípusait. Ha a késleltetett típusok nem felelnek meg az elvárásainak, az alábbi kód használatával megadhatja az oszlopok típusait. A paraméter `infer_column_type` csak tagolt fájlokból létrehozott adatkészletek esetében alkalmazható. [További információ a támogatott adattípusokról](/python/api/azureml-core/azureml.data.dataset_factory.datatype?preserve-view=true&view=azure-ml-py).
+Alapértelmezés szerint a TabularDataset létrehozásakor a rendszer automatikusan kikövetkezteti az oszlop adattípusait. Ha a késleltetett típusok nem felelnek meg az elvárásainak, az adatkészlet-sémát az alábbi kóddal rendelkező oszlopok típusának megadásával frissítheti. A paraméter `infer_column_type` csak tagolt fájlokból létrehozott adatkészletek esetében alkalmazható. [További információ a támogatott adattípusokról](/python/api/azureml-core/azureml.data.dataset_factory.datatype?preserve-view=true&view=azure-ml-py).
 
 
 ```Python

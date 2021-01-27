@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: 7b9e95c06dd48e78e42244d27d27d063bf5f0be7
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: c0269464352fa333c6447834a56c25348ecb71a3
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327773"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895254"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Első lépések az Azure IT-kezelők számára
 
@@ -144,7 +144,7 @@ Az Azure használatának egyik előnye, hogy az alkalmazásait különböző ada
 
 A Azure Portal egy webalapú alkalmazás, amely Azure-erőforrások és-szolgáltatások létrehozásához, kezeléséhez és eltávolításához használható. A Azure Portal a következő helyen található: [Portal.Azure.com](https://portal.azure.com). Tartalmaz egy testreszabható irányítópultot és az Azure-erőforrások kezelésére szolgáló eszközöket. Emellett számlázási és előfizetési információkat is biztosít. További információ: [Microsoft Azure Portal áttekintése](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) és az [Azure-erőforrások kezelése a portálon keresztül](../../azure-resource-manager/management/manage-resources-portal.md).
 
-### <a name="resources"></a>További források
+### <a name="resources"></a>Források
 
 Az Azure-erőforrások az Azure-előfizetésbe telepített egyéni számítási, hálózati, adatkezelési és alkalmazás-üzemeltetési szolgáltatások. Néhány gyakori erőforrás a virtuális gépek, a Storage-fiókok vagy az SQL-adatbázisok. Az Azure-szolgáltatások gyakran több kapcsolódó Azure-erőforrásból állnak. Előfordulhat például, hogy egy Azure-beli virtuális gép tartalmaz egy virtuális gépet, egy Storage-fiókot, egy hálózati adaptert és egy nyilvános IP-címet. Ezek az erőforrások egyenként vagy csoportként hozhatók létre, kezelhetők és törölhetők. Az Azure-erőforrásokat az útmutató későbbi részében részletesebben tárgyaljuk.
 
@@ -188,11 +188,11 @@ Az Azure-szolgáltatásokkal való együttműködéshez előfizetésre van szük
 
 **MSDN-előfizetések**: Ha rendelkezik MSDN-előfizetéssel, az Azure-kreditek havonta egy adott összeget kapnak. Ha például Microsoft Visual Studio Enterprise with MSDN-előfizetéssel rendelkezik, \$ Az Azure-kreditek havonta 150-et kapnak.
 
-Ha túllépi a kredit összegét, a szolgáltatás le lesz tiltva a következő hónap megkezdése előtt. Kikapcsolhatja a költségkeretet, és hozzáadhat egy hitelkártyát, amelyet a további költségekhez kíván használni. A költségek némelyike az MSDN-fiókok esetében diszkontálva van. A Windows Servert futtató virtuális gépek esetében például a Linux árát kell fizetnie, és a Microsoft-kiszolgálókhoz (például Microsoft SQL Server) nem számítunk fel további díjat. Ez lehetővé teszi, hogy az MSDN-fiókok fejlesztési és tesztelési helyzetekben is ideálisak legyenek.
+Ha túllépi a kredit összegét, a szolgáltatás le lesz tiltva, amíg a következő hónapban el nem indul. Kikapcsolhatja a költségkeretet, és hozzáadhat egy hitelkártyát, amelyet a további költségekhez kíván használni. A költségek némelyike az MSDN-fiókok esetében diszkontálva van. A Windows Servert futtató virtuális gépek esetében például a Linux árát kell fizetnie, és a Microsoft-kiszolgálókhoz (például Microsoft SQL Server) nem számítunk fel további díjat. Ez lehetővé teszi, hogy az MSDN-fiókok fejlesztési és tesztelési helyzetekben is ideálisak legyenek.
 
 **BizSpark-fiókok**: a Microsoft BizSpark program számos előnyt kínál az indításokhoz. Ezen előnyök egyike az, hogy legfeljebb öt MSDN-fiókhoz fér hozzá a fejlesztési és tesztelési környezetekhez tartozó összes Microsoft-szoftverhez. Ezen öt MSDN-fiókhoz $150 Azure-kreditet kap, és az Azure-szolgáltatások (például Virtual Machines) csökkentett díjait kell fizetnie.
 
-**Utólagos elszámolás: ebben**az előfizetésben a használatért kell fizetnie, ha bankkártyát vagy bankkártyát csatol a fiókhoz. Ha Ön szervezet, akkor is jóváhagyhatja a számlázást.
+**Utólagos elszámolás: ebben** az előfizetésben a használatért kell fizetnie, ha bankkártyát vagy bankkártyát csatol a fiókhoz. Ha Ön szervezet, akkor is jóváhagyhatja a számlázást.
 
 **Nagyvállalati szerződések**: nagyvállalati szerződéssel a következő évben bizonyos számú szolgáltatást használhat az Azure-ban, és ezt az összeget előre kell fizetnie. Az Ön által létrehozott kötelezettségvállalás az év során lesz felhasználva. Ha túllépi a kötelezettségvállalás összegét, a hátralékos fizetést is kifizetheti. A kötelezettségvállalás mennyiségétől függően kedvezményt kap az Azure szolgáltatásaihoz.
 
@@ -214,9 +214,7 @@ A számlázási adatokat a portálon is megtekintheti, ha az Azure számlázási
 
 - A használati adatok lekéréséhez az Azure használati API-ját használhatja. A számlázási használati információk finomhangolásához a kapcsolódó Azure-erőforrások címkézése is használható. Megcímkézheti például az erőforráscsoport összes erőforrását egy részleg nevével vagy a projekt nevével, majd nyomon követheti az adott címkére vonatkozó költségeket.
 
-- Az Azure Rate Card API-val az összes rendelkezésre álló erőforrást listázhatja, valamint az egyes erőforrásokra vonatkozó metaadatokat és díjszabási információkat is.
-
-További információkért tekintse meg az [Információk a Microsoft Azure-erőforrások igénybevételéről](../../cost-management-billing/manage/usage-rate-card-overview.md) szakaszt.
+- Az Azure-használati [API áttekintésével](../../cost-management-billing/manage/consumption-api-overview.md) az összes elérhető erőforrást listázhatja, valamint a metaadatokat is. A díjszabással kapcsolatos további információkért lásd: az [Azure kiskereskedelmi árainak áttekintése](/rest/api/cost-management/retail-prices/azure-retail-prices).
 
 ### <a name="forecast-cost-with-the-pricing-calculator"></a>Előrejelzési költség a díjszabási számológéptel
 
@@ -292,7 +290,7 @@ A felhasználói fiókokhoz operatív hozzáférést biztosíthat a megadott hat
 
 A hozzáférés biztosításához rendeljen hozzá egy szerepkört a felhasználóhoz vagy a felhasználói csoporthoz. Számos előre definiált szerepkör létezik. Saját egyéni szerepköröket is meghatározhat.
 
-Íme néhány példa [Az Azure beépített szerepköreire](../../role-based-access-control/built-in-roles.md):
+Íme néhány példa az [Azure beépített szerepköreire](../../role-based-access-control/built-in-roles.md):
 
 - **Tulajdonos**: az ezzel a szerepkörrel rendelkező felhasználók mindent kezelhetnek, beleértve a hozzáférést is.
 
@@ -368,11 +366,11 @@ Mindegyik tárolási típus eltérő használati esettel rendelkezik.
 
 #### <a name="blob-storage"></a>Blob Storage
 
-A Word *blob* a *bináris nagyméretű objektum*betűszója. A Blobok strukturálatlan fájlok, például a számítógépen tárolt fájlok. A Blob Storage képes tárolni bármilyen szöveget vagy bináris adatot, például dokumentumot, médiafájlt vagy egy alkalmazástelepítőt. A Blob Storage más néven objektumtárnak is hívható. Az Azure Blob Storage az Azure Virtual Machines adatlemezeket is tartalmazza.
+A Word *blob* a *bináris nagyméretű objektum* betűszója. A Blobok strukturálatlan fájlok, például a számítógépen tárolt fájlok. A Blob Storage képes tárolni bármilyen szöveget vagy bináris adatot, például dokumentumot, médiafájlt vagy egy alkalmazástelepítőt. A Blob Storage más néven objektumtárnak is hívható. Az Azure Blob Storage az Azure Virtual Machines adatlemezeket is tartalmazza.
 
 Az Azure Storage háromféle blobot támogat:
 
-- A **blokkos Blobok** a szokásos, legfeljebb 195 GB méretű fájlok tárolására használhatók (4 MB × 50 000 blokk). A blokkblobok elsődleges felhasználási módja olyan fájlok tárolása, amelyeket az elejüktől a végükig olvasnak, ilyenek például a médiafájlok vagy a képfájlok webhelyekhez. Ezek neve blokk Blobok, mert a 64 MB-nál nagyobb fájlokat kis blokkként kell feltölteni. Ezeket a blokkokat ezután összevonják (vagy véglegesítik) a végső blobba.
+- A **blokkos Blobok** a szokásos, legfeljebb 195 GB méretű fájlok tárolására használhatók (4 MB × 50 000 blokk). A blokkblobok elsődleges felhasználási módja olyan fájlok tárolása, amelyeket az elejüktől a végükig olvasnak, ilyenek például a médiafájlok vagy a képfájlok webhelyekhez. Ezek neve blokk Blobok, mert a 64 MB-nál nagyobb fájlokat kis blokkként kell feltölteni. Ezeket a blokkokat ezután konszolidálni (vagy véglegesíteni) kell a végső blobban.
 
 - Az **oldal Blobok** a véletlenszerűen hozzáférő fájlok legfeljebb 1 TB méretű tárolására használhatók. Az oldal-Blobok elsődlegesen az Azure-Virtual Machines, az Azure-beli IaaS számítási szolgáltatás számára tartós lemezeket biztosító virtuális merevlemezek biztonsági másolatának tárolására szolgálnak. Azért hívják őket lapbloboknak, mert 512 bájtos oldalakhoz biztosítanak véletlenszerű olvasási/írási hozzáférést.
 
@@ -481,7 +479,7 @@ A virtuális hálózatok telepítéséhez több lehetőség is rendelkezésre á
 
 A hálózati biztonsági csoport segítségével biztonságossá teheti az Azure-beli virtuális hálózatokat. A NSG a hozzáférés-vezérlési listák (ACL) azon szabályainak listáját tartalmazza, amelyek engedélyezik vagy megtagadják a virtuális hálózatban lévő virtuálisgép-példányok hálózati forgalmát. A NSG társíthatja az alhálózatokhoz vagy az alhálózaton belüli egyedi virtuálisgép-példányokhoz is. Ha alhálózattal társít egy NSG, az ACL-szabályok az alhálózat összes virtuálisgép-példányára érvényesek lesznek. Emellett tovább korlátozhatja az egyes virtuális gépek forgalmát úgy, hogy közvetlenül az adott virtuális géppel társít egy NSG. További információ: [Hálózati forgalom szűrése hálózati biztonsági csoportokkal](../../virtual-network/network-security-groups-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Windows rendszerű virtuális gép létrehozása](../../virtual-machines/windows/quick-create-portal.md)
 - [Linux rendszerű virtuális gép létrehozása](../../virtual-machines/linux/quick-create-portal.md)

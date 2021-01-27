@@ -1,6 +1,5 @@
 ---
-title: Media Services architektúrák
-titleSuffix: Azure Media Services
+title: Media Services-architektúrák
 description: Ez a cikk a Media Services architektúráit ismerteti.
 services: media-services
 documentationcenter: ''
@@ -12,14 +11,14 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: inhenkel
-ms.openlocfilehash: c14dbe4253696e01e99111a24319e455c1d551e9
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: ad464eb1c0b6dec694c7c40868a0f95fcfeaf6e8
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533995"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98891488"
 ---
-# <a name="media-services-architectures"></a>Media Services architektúrák
+# <a name="media-services-architectures"></a>Media Services-architektúrák
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
@@ -29,7 +28,7 @@ Az élő adatfolyam-megoldás lehetővé teszi a videók valós idejű rögzít�
 
 Ez a megoldás az Azure által felügyelt szolgáltatásokra épül: Media Services és Content Delivery Network. Ezek a szolgáltatások magas rendelkezésre állású, javított és támogatott környezetekben futnak, ami lehetővé teszi, hogy a környezetben futtatott környezet helyett a megoldásra koncentráljon.
 
-Lásd: [élő streaming digitális médiatartalmak](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/digital-media-live-stream) az Azure Architecture Centerben.
+Lásd: [élő streaming digitális médiatartalmak](/azure/architecture/solution-ideas/articles/digital-media-live-stream) az Azure Architecture Centerben.
 
 ## <a name="video-on-demand-digital-media"></a>Igény szerinti videó, digitális média
 
@@ -37,14 +36,14 @@ Egy alapszintű, igény szerinti videofilm-megoldás, amely lehetővé teszi a r
 
 Ez a megoldás az Azure által felügyelt szolgáltatásokra épül: Blob Storage, Content Delivery Network és Azure Media Player. Ezek a szolgáltatások magas rendelkezésre állású, javított és támogatott környezetekben futnak, ami lehetővé teszi, hogy a környezetben futtatott környezet helyett a megoldásra koncentráljon.
 
-Az Azure Architecture Centerben tekintse [meg az igény szerinti digitális médiát](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/digital-media-video) .
+Az Azure Architecture Centerben tekintse [meg az igény szerinti digitális médiát](/azure/architecture/solution-ideas/articles/digital-media-video) .
 
 ## <a name="gridwich-media-processing-system"></a>Gridwich médiatartalom-feldolgozó rendszer
 
 A Gridwich rendszer az Azure-beli multimédia-eszközök feldolgozására és továbbítására vonatkozó ajánlott eljárásokat testesíti meg. Bár a Gridwich-rendszer adathordozó-specifikus, az üzenetek feldolgozására és az eseményekre vonatkozó keretrendszer bármely állapot nélküli esemény-feldolgozási munkafolyamatra alkalmazható.
 
-Lásd: [Gridwich Media Processing System](https://docs.microsoft.com/azure/architecture/reference-architectures/media-services/gridwich-architecture) in the Azure Architecture Center.
+Lásd: [Gridwich Media Processing System](/azure/architecture/reference-architectures/media-services/gridwich-architecture) in the Azure Architecture Center.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [Az Azure Media Services áttekintése](media-services-overview.md)

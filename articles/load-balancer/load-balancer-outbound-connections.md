@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: d30998e0d99ba7b1eeb55bdc47cd5cc54690156f
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: f3c147b292ab21bd4e568f9e52acef07396acc28
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032915"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878222"
 ---
 # <a name="using-snat-for-outbound-connections"></a>SNAT használata a kimenő kapcsolatokhoz
 
@@ -22,7 +22,7 @@ Az Azure nyilvános terheléselosztó előtérbeli IP-címei használhatók a h�
 A SNAT lehetővé teszi a háttér **-példány IP-címének maszkolását** . Ez a maszkolás megakadályozza, hogy a külső források közvetlenül a háttérbeli példányokhoz legyenek letiltva. A háttérbeli példányok közötti IP-cím megosztása csökkenti a statikus nyilvános IP-címek költségeit, és olyan forgatókönyveket támogat, mint például az IP-címek engedélyezése az ismert nyilvános IP-címekről érkező forgalomhoz. 
 
 >[!Note]
-> Azon alkalmazások esetében, amelyekben nagy mennyiségű kimenő kapcsolat vagy nagyvállalati ügyfél használatára van szükség egy adott virtuális hálózatról, [Virtual Network NAT](../virtual-network/nat-overview.md) a javasolt megoldás. A dinamikus foglalás lehetővé teszi az egyszerű konfigurálást, és > a SNAT-portok leghatékonyabb használatát az egyes IP-címekről. Azt is lehetővé teszi, hogy a virtuális hálózat összes erőforrása megossza az IP-címek egy halmazát anélkül, hogy meg kellene osztania őket a terheléselosztó >.
+> Azon alkalmazások esetében, amelyekben nagy számú kimenő kapcsolat vagy nagyvállalati ügyfél használatára van szükség egy adott virtuális hálózatról, [Virtual Network NAT](../virtual-network/nat-overview.md) a javasolt megoldás. A dinamikus foglalás lehetővé teszi az egyszerű konfigurálást, és > a SNAT-portok leghatékonyabb használatát az egyes IP-címekről. Azt is lehetővé teszi, hogy a virtuális hálózat összes erőforrása megossza az IP-címek egy halmazát anélkül, hogy meg kellene osztania őket a terheléselosztó >.
 
 >[!Important]
 > Még a kimenő SNAT konfigurálása nélkül is, az azonos régióban található Azure Storage-fiókok továbbra is elérhetők lesznek, és a háttérbeli erőforrások továbbra is hozzáférhetnek a Microsoft-szolgáltatásokhoz, például Windows-frissítésekhez.
@@ -190,7 +190,7 @@ További információ az Azure Virtual Network NAT-ról: [Mi az az azure Virtual
   * A TCP SNAT-portok több kapcsolathoz is használhatók ugyanahhoz a cél IP-címhez, ha a célként megadott portok eltérőek.
 *   A SNAT kimerültség akkor következik be, amikor egy háttérbeli példány kifogyott a megadott SNAT-portok közül. A terheléselosztó továbbra is használhat fel nem használt SNAT-portokat. Ha a háttérbeli példány SNAT-portjai meghaladják a megadott SNAT-portokat, nem fog tudni új kimenő kapcsolatokat létesíteni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 *   [A kimenő kapcsolatok hibáinak elhárítása a SNAT kimerülése miatt](./troubleshoot-outbound-connection.md)
 *   [Tekintse át az SNAT mérőszámait](./load-balancer-standard-diagnostics.md#how-do-i-check-my-snat-port-usage-and-allocation) , és ismerkedjen meg a megfelelő szűrési, felosztási és megtekintési módszerekkel.

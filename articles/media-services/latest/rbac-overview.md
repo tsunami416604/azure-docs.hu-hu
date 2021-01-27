@@ -1,5 +1,5 @@
 ---
-title: Azure szerepköralapú hozzáférés-vezérlés Media Services-fiókokhoz – Azure | Microsoft Docs
+title: Azure szerepköralapú hozzáférés-vezérlés Media Services-fiókokhoz – Azure
 description: Ez a cikk az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) ismerteti Azure Media Services fiókokhoz.
 services: media-services
 documentationcenter: ''
@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 8fba3db14c2a950dd230a4721841b4baa9f64636
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1fab743c647c3628a79fffb3bf1060983c34d0aa
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426791"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895186"
 ---
 # <a name="azure-role-based-access-control-azure-rbac-for-media-services-accounts"></a>Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) Media Services fiókokhoz
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-A Azure Media Services jelenleg nem határoz meg a szolgáltatásra vonatkozó egyéni szerepköröket. Ha teljes hozzáférést szeretne kapni a Media Services-fiókhoz, az ügyfelek használhatják a **tulajdonos** vagy a **közreműködő**beépített szerepköreit. A szerepkörök közül a fő különbség a következő: a **tulajdonos** vezérelheti, hogy ki férhet hozzá egy erőforráshoz, és a **közreműködő** nem. A beépített **olvasó** szerepkör is használható, de a felhasználó vagy az alkalmazás csak olvasási hozzáféréssel rendelkezik a Media Services API-khoz. 
+A Azure Media Services jelenleg nem határoz meg a szolgáltatásra vonatkozó egyéni szerepköröket. Ha teljes hozzáférést szeretne kapni a Media Services-fiókhoz, az ügyfelek használhatják a **tulajdonos** vagy a **közreműködő** beépített szerepköreit. A szerepkörök közül a fő különbség a következő: a **tulajdonos** vezérelheti, hogy ki férhet hozzá egy erőforráshoz, és a **közreműködő** nem. A beépített **olvasó** szerepkör is használható, de a felhasználó vagy az alkalmazás csak olvasási hozzáféréssel rendelkezik a Media Services API-khoz. 
 
 ## <a name="design-principles"></a>Tervezési alapelvek
 
@@ -47,7 +47,7 @@ További információt a következő cikkekben talál:
 - [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása a REST API használatával](../../role-based-access-control/role-assignments-rest.md)
 - [Erőforrás-szolgáltatói műveletek Media Services](../../role-based-access-control/resource-provider-operations.md#microsoftmedia)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Fejlesztés Media Services V3 API-kkal](media-services-apis-overview.md)
 - [Tartalom-kulcs házirend beszerzése Media Services .NET használatával](get-content-key-policy-dotnet-howto.md)

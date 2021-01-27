@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: c3e64b9366bb0b9f15902e571b5e5d6e7f6b3f15
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: f6ba22813139f5a4ad6c01073fe7f7b4b7d5346e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98723727"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878155"
 ---
 # <a name="transact-sql-features-supported-in-azure-synapse-sql"></a>Az Azure szinapszis SQL által támogatott Transact-SQL-funkciók
 
@@ -55,7 +55,7 @@ A szinapszis SQL-ben használt lekérdezési nyelvek különböző támogatott f
 | **INSERT utasítás** | Igen | Nem |
 | **FRISSÍTÉSI utasítás** | Igen | Nem |
 | **Utasítás törlése** | Igen | Nem |
-| **MERGE utasítás** | Igen ([előzetes](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azure-sqldw-latest&preserve-view=true)verzió) | Nem |
+| **MERGE utasítás** | Igen ([előzetes](/sql/t-sql/statements/merge-transact-sql?view=azure-sqldw-latest&preserve-view=true)verzió) | Nem |
 | **[Tranzakciók](develop-transactions.md)** | Igen | Igen, a meta-adatobjektumokra alkalmazható. |
 | **[Címkék](develop-label.md)** | Igen | Nem |
 | **Adatterhelés** | Igen. Az előnyben részesített segédprogram [másolási](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) utasítás, de a rendszer a tömeges betöltést (BCP) és a [CETAS](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) is támogatja az adatok betöltéséhez. | Nem |

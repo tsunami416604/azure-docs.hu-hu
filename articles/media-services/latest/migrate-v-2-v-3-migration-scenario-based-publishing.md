@@ -1,5 +1,5 @@
 ---
-title: Csomagolási és kézbesítési forgatókönyv-alapú áttelepítési útmutató | Microsoft Docs
+title: Csomagolási és kézbesítési forgatókönyv-alapú áttelepítési útmutató
 description: Ez a cikk a csomagolással és a szállítással kapcsolatos forgatókönyv-alapú útmutatót nyújt, amely segítséget nyújt a Azure Media Services v2-ről a v3-re való Migrálás során.
 services: media-services
 author: IngridAtMicrosoft
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 74437a4adee9e2853f7b932316d57e406b7d00be
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 78f3e6ee53d5158096882f5554054c3ff06a32b4
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690358"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895237"
 ---
 # <a name="packaging-and-delivery-scenario-based-migration-guidance"></a>Csomagolási és kézbesítési forgatókönyv-alapú áttelepítési útmutató
 

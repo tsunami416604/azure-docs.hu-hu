@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: bed5373cbb9967bd1d86bb80bb3a449430c3b6ae
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 2a37e716b7804b11ab396909f746af84294bb4e3
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044781"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895271"
 ---
 # <a name="drawing-package-requirements"></a>Rajzolási csomag követelményei
 
@@ -41,7 +41,7 @@ Az egyszerű hivatkozáshoz itt talál néhány olyan kifejezést és definíci�
 | Réteg | Egy AutoCAD DWG-réteg.|
 | Level | Egy épület területe egy beállított jogosultságszint-emeléssel. Például egy épület padlója. |
 | Xref  |Egy AutoCAD DWG fájlformátumban (. DWG) található fájl, amely külső hivatkozásként van csatolva az elsődleges rajzhoz.  |
-| Funkció | Egy olyan objektum, amely több metaadat-információval kombinálja a geometriát. |
+| Szolgáltatás | Egy olyan objektum, amely több metaadat-információval kombinálja a geometriát. |
 | Szolgáltatási osztályok | A funkciók közös tervrajza. Egy *egység* például egy szolgáltatás osztály, az *Office* pedig egy szolgáltatás. |
 
 ## <a name="drawing-package-structure"></a>Rajzolási csomag szerkezete
@@ -106,7 +106,7 @@ Függetlenül attól, hogy hány entitásos rajz van a külső rétegben, az [er
 * A külsőket sokszögként, vonalláncként (zárt), körként vagy Ellipszisként kell kirajzolni (lezárva).
 * A külső adatok átfedésben lehetnek, de egy geometriában vannak feloldva.
 * Az eredményül kapott szint szolgáltatásnak legalább 4 négyzetméterből kell állnia.
-* Az eredményül kapott szint funkció nem lehet nagyobb 400 négyzetméternél.
+* Az eredményül kapott szint funkció nem lehet nagyobb 400 000 négyzetméternél.
 
 Ha a réteg több átfedésben lévő vonalláncot tartalmaz, a vonalláncok egyetlen szintű szolgáltatásba vannak feloldva. Ha a réteg több nem átfedésben lévő vonalláncot tartalmaz, akkor az eredményül kapott szint funkció több sokszöges ábrázolással rendelkezik.
 
@@ -198,7 +198,7 @@ A következő részek részletezik az egyes objektumok követelményeit.
 
 ### `directoryInfo`
 
-| Tulajdonság  | Típus | Kötelező | Leírás |
+| Tulajdonság  | Típus | Kötelező | Description |
 |-----------|------|----------|-------------|
 | `name`      | sztring | true   |  Az építési név. |
 | `streetAddress`|    sztring |    hamis    | Az építési címe. |
@@ -219,7 +219,7 @@ A következő részek részletezik az egyes objektumok követelményeit.
 
 Az `buildingLevels` objektum az épületek szintjeinek JSON-tömbjét tartalmazza.
 
-| Tulajdonság  | Típus | Kötelező | Leírás |
+| Tulajdonság  | Típus | Kötelező | Description |
 |-----------|------|----------|-------------|
 |`levelName`    |sztring    |true |    Leíró szint neve. Például: Floor 1, lobby, Blue parkoló vagy alagsor.|
 |`ordinal` | egész szám |    true | Meghatározza a szintek függőleges sorrendjét. Minden létesítménynek 0 sorszámú szinten kell lennie. |
@@ -251,7 +251,7 @@ Az `buildingLevels` objektum az épületek szintjeinek JSON-tömbjét tartalmazz
 
 Az `unitProperties` objektum az egység tulajdonságainak JSON-tömbjét tartalmazza.
 
-| Tulajdonság  | Típus | Kötelező | Leírás |
+| Tulajdonság  | Típus | Kötelező | Description |
 |-----------|------|----------|-------------|
 |`unitName`    |sztring    |true    |A rekorddal társítandó egység neve `unitProperty` . Ez a rekord csak akkor érvényes, ha a rétegekben címkével egyező címke `unitName` található `unitLabel` . |
 |`categoryName`|    sztring|    hamis    |Kategória neve A kategóriák teljes listájáért tekintse meg a [kategóriákat](https://aka.ms/pa-indoor-spacecategories). |
@@ -412,7 +412,7 @@ Alább látható a minta rajzolási csomag jegyzékfájlja. A teljes csomag let�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a rajzfájl megfelel a követelményeknek, a [Azure Maps átalakítási szolgáltatással](/rest/api/maps/conversion) átalakíthatja a csomagot térképi adatkészletbe. Ezt követően használhatja az adatkészletet egy beltéri Térkép létrehozásához a beltéri térképek modul használatával.
 

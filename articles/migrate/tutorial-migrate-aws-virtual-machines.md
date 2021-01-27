@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: cab7bc7f79cccb1704d7046f79a2000028ffb729
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 430ece58bd3dc1651ac391ba0e29515085ee507b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233253"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878189"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services-beli (AWS) virtuális gépek felderítése, felmérése és migrálása az Azure-ba
 
@@ -80,7 +80,7 @@ Készítse elő az Azure-t a Azure Migrate: Server áttelepítési eszközzel t�
 
 **Feladat** | **Részletek**
 --- | ---
-**Azure Migrate-projekt létrehozása** | Az Azure-fióknak közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie [egy új projekt létrehozásához](https://docs.microsoft.com/azure/migrate/create-manage-projects).
+**Azure Migrate-projekt létrehozása** | Az Azure-fióknak közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie [egy új projekt létrehozásához](./create-manage-projects.md).
 **Azure-fiók engedélyeinek ellenőrzése** | Az Azure-fióknak rendelkeznie kell a virtuális gép létrehozásához szükséges engedélyekkel, és írnia kell egy Azure-beli felügyelt lemezre.
 
 ### <a name="assign-permissions-to-create-project"></a>Engedélyek kiosztása projekt létrehozásához
@@ -256,7 +256,7 @@ A mobilitási szolgáltatás ügynökét telepíteni kell az áttelepítendő, a
     - Dupla titkosítás a platform által felügyelt és az ügyfél által felügyelt kulcsokkal
 
    > [!NOTE]
-   > A virtuális gépek CMK-vel való replikálásához létre kell [hoznia egy lemezes titkosítási](https://go.microsoft.com/fwlink/?linkid=2151800) csoportot a cél erőforráscsoport alatt. A lemezes titkosítási készlet objektum Managed Diskst képez le egy olyan Key Vaultra, amely az SSE-hoz használandó CMK tartalmazza.
+   > A virtuális gépek CMK-vel való replikálásához létre kell [hoznia egy lemezes titkosítási](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set) csoportot a cél erőforráscsoport alatt. A lemezes titkosítási készlet objektum Managed Diskst képez le egy olyan Key Vaultra, amely az SSE-hoz használandó CMK tartalmazza.
   
 12. Az **Azure Hybrid Benefit** területen:
 

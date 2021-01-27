@@ -12,18 +12,19 @@ ms.date: 01/12/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 63bd44140ea5c355c3bb1a891a21e6c2e73ab041
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bf1057276a543c18b746bb60b7e7a54bf28dec6f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98679500"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98892565"
 ---
-# <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Oktatóanyag – SCIM-végpont létrehozása és a felhasználók üzembe helyezésének konfigurálása az Azure AD-vel
+# <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Oktatóanyag: SCIM-végpont létesítésének fejlesztése és tervezése
 
 Alkalmazás-fejlesztőként használhatja a tartományok közötti Identitáskezelés (SCIM) felhasználói felügyeleti API-t, hogy lehetővé váljon a felhasználók és csoportok automatikus kiépítés az alkalmazás és az Azure AD között. Ez a cikk bemutatja, hogyan hozhat létre egy SCIM-végpontot, és hogyan integrálható az Azure AD kiépítési szolgáltatásával. A SCIM-specifikáció általános felhasználói sémát biztosít az üzembe helyezéshez. Az olyan összevonási szabványokkal együtt, mint az SAML vagy az OpenID Connect, a SCIM teljes körű, szabványokon alapuló megoldást biztosít a rendszergazdáknak a hozzáférés-kezeléshez.
 
-A SCIM a két végpont szabványosított definíciója: egy/Users-végpont és egy/groups-végpont. Általános REST-műveleteket használ az objektumok létrehozásához, frissítéséhez és törléséhez, valamint egy előre definiált sémát az általános attribútumok, például a csoportnév, a Felhasználónév, az utónév, a vezetéknév és az e-mailek számára. A SCIM 2,0 REST API-t kínáló alkalmazások csökkenthetik vagy megszüntethetik a saját felhasználói felügyeleti API-k használatával végzett munkát. A megfelelő SCIM-ügyfelek például megtudhatják, hogyan hozhat létre egy JSON-objektum HTTP-BEJEGYZÉSét a/Users-végponton egy új felhasználói bejegyzés létrehozásához. Ahelyett, hogy némileg eltérő API-ra lenne szüksége ugyanahhoz az alapszintű műveletekhez, a SCIM szabványnak megfelelő alkalmazások azonnal kihasználhatják a meglévő ügyfeleket, eszközöket és kódokat. 
+A SCIM a két végpont szabványosított definíciója: egy `/Users` végpont és egy `/Groups` végpont. Általános REST-műveleteket használ az objektumok létrehozásához, frissítéséhez és törléséhez, valamint egy előre definiált sémát az általános attribútumok, például a csoportnév, a Felhasználónév, az utónév, a vezetéknév és az e-mailek számára. A SCIM 2,0 REST API-t kínáló alkalmazások csökkenthetik vagy megszüntethetik a saját felhasználói felügyeleti API-k használatával végzett munkát. A megfelelő SCIM-ügyfelek például megtudhatják, hogyan hozhat létre egy JSON-objektum HTTP-BEJEGYZÉSét a `/Users` végpontra új felhasználói bejegyzés létrehozásához. Ahelyett, hogy némileg eltérő API-ra lenne szüksége ugyanahhoz az alapszintű műveletekhez, a SCIM szabványnak megfelelő alkalmazások azonnal kihasználhatják a meglévő ügyfeleket, eszközöket és kódokat. 
 
 ![Kiépítés az Azure AD-ből egy SCIM-val rendelkező alkalmazásba](media/use-scim-to-provision-users-and-groups/scim-provisioning-overview.png)
 
@@ -748,7 +749,9 @@ Az Azure AD kiépítési szolgáltatás jelenleg az [itt](https://www.microsoft.
 
 Most, hogy megtervezte a sémát, és megértette az Azure AD SCIM megvalósítását, megkezdheti az SCIM-végpont fejlesztését. Ahelyett, hogy teljesen elkezdené, és a megvalósítást teljes mértékben saját maga is kiépítheti, a SCIM-Közösség által közzétett nyílt forráskódú SCIM-könyvtárakra támaszkodhat.
 
-Az Azure AD-kiépítési csapat által közzétett nyílt forráskódú .NET Core- [hivatkozási kód](https://aka.ms/SCIMReferenceCode) egy ilyen erőforrás, amely elkezdheti a fejlesztést. Miután létrehozta a SCIM-végpontot, tesztelni kell. Használhatja a hivatkozási kód részeként megadott [Poster-tesztek](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) gyűjteményét, vagy futtathatja a [fentebb](#user-operations)ismertetett minta kérelmeket/válaszokat.  
+A példákat tartalmazó SCIM-végpontok létrehozásával kapcsolatos útmutatásért lásd: [Sample scim-végpont fejlesztése](use-scim-to-build-users-and-groups-endpoints.md).
+
+Az Azure AD-kiépítési csapat által közzétett nyílt forráskódú .NET Core [hivatkozási kód példa](https://aka.ms/SCIMReferenceCode) egy ilyen erőforrás, amely elkezdheti a fejlesztést. Miután létrehozta a SCIM-végpontot, tesztelni kell. Használhatja a hivatkozási kód részeként megadott [Poster-tesztek](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) gyűjteményét, vagy futtathatja a [fentebb](#user-operations)ismertetett minta kérelmeket/válaszokat.  
 
    > [!Note]
    > A hivatkozási kód célja, hogy segítséget nyújtson a SCIM-végpont létrehozásában, és "ahogy van". A közösségi hozzájárulások szívesen segítenek felépíteni és karbantartani a kódot.
@@ -1127,11 +1130,17 @@ Az ebben a cikkben ismertetett SCIM-profilt támogató alkalmazások az Azure AD
 
 1. Jelentkezzen be a [Azure Active Directory portálra](https://aad.portal.azure.com). Vegye figyelembe, hogy a [fejlesztői programra](https://developer.microsoft.com/office/dev-program) való feliratkozással a P2-licenccel rendelkező Azure Active Directory ingyenes próbaverzióját érheti el
 2. Válassza a **vállalati alkalmazások** lehetőséget a bal oldali ablaktáblán. Megjelenik az összes konfigurált alkalmazás listája, beleértve a gyűjteményből hozzáadott alkalmazásokat is.
-3. Válassza az **+ új alkalmazás**  >  **minden**  >  **nem** katalógusbeli alkalmazás lehetőséget.
-4. Adja meg az alkalmazás nevét, majd kattintson a **Hozzáadás** elemre az alkalmazás-objektum létrehozásához. A rendszer hozzáadja az új alkalmazást a vállalati alkalmazások listájához, és megnyílik az alkalmazás-felügyeleti képernyőjén.
+3. Válassza az **+ új alkalmazás**  >  **+ saját alkalmazás létrehozása** lehetőséget.
+4. Adja meg az alkalmazás nevét, válassza a "*bármely más alkalmazás integrálása a* katalógusban" lehetőséget, majd válassza a **Hozzáadás** elemet az alkalmazás-objektum létrehozásához. A rendszer hozzáadja az új alkalmazást a vállalati alkalmazások listájához, és megnyílik az alkalmazás-felügyeleti képernyőjén.
 
-   ![Képernyőfelvétel az Azure AD Application galleryről](media/use-scim-to-provision-users-and-groups/scim-figure-2a.png)<br/>
-   *Azure AD-alkalmazás katalógusa*
+   ![A képernyőképen az Azure AD Application Gallery ](media/use-scim-to-provision-users-and-groups/scim-figure-2b-1.png)
+    *Azure ad-alkalmazás* katalógusa látható
+
+   > [!NOTE]
+   > Ha a régi alkalmazás-katalógust használja, kövesse az alábbi képernyőn látható útmutatót.
+   
+   ![A képernyőképen az Azure AD Old App Gallery az ](media/use-scim-to-provision-users-and-groups/scim-figure-2a.png)
+    *Azure ad régi alkalmazás* -katalógusának élményét jeleníti meg
 
 5. Az App Management képernyőn válassza a **kiépítés** lehetőséget a bal oldali panelen.
 6. A **létesítési mód** menüben válassza az **automatikus** lehetőséget.
@@ -1235,6 +1244,7 @@ Ha segítségre van szüksége a közös integrációval kapcsolatos ismeretek �
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 
+* [Minta SCIM-végpont fejlesztése](use-scim-to-build-users-and-groups-endpoints.md)
 * [A felhasználók üzembe helyezésének automatizálása és az SaaS-alkalmazások megszüntetése](user-provisioning.md)
 * [Attribútum-hozzárendelések testreszabása a felhasználók üzembe helyezéséhez](customize-application-attributes.md)
 * [Kifejezések írása attribútum-hozzárendelésekhez](functions-for-customizing-application-data.md)

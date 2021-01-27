@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 01/26/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 769460d5dab7311eb2940d101df6f4996a3ad355
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 09f98e3d6c7997d9cae2737b25f4323021e29bfb
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98876579"
+ms.locfileid: "98892439"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Útmutató: az Azure AD-val való örökölt hitelesítés letiltása feltételes hozzáféréssel   
 
@@ -83,6 +83,7 @@ Mielőtt blokkolni tudja az örökölt hitelesítést a címtárban, először m
 1. Navigáljon a **Azure Portal**  >  **Azure Active Directory** a  >  **bejelentkezések** elemre.
 1. Ha nem látható, akkor adja hozzá az ügyfélalkalmazás oszlopot, ha az **oszlopok**  >  **ügyfélalkalmazás** elemre kattint.
 1. **Szűrők hozzáadása**  >  **Ügyfélalkalmazás** > válassza ki az összes örökölt hitelesítési protokollt. Válassza a Szűrés párbeszédpanelen kívül a kívánt beállításokat, majd a párbeszédpanel bezárásához.
+1. Ha aktiválta az [új bejelentkezési tevékenység jelentésének előzetes](../reports-monitoring/concept-all-sign-ins.md)verzióját, ismételje meg a fenti lépéseket a **felhasználói bejelentkezések (nem interaktív)** lapon is.
 
 A szűrés csak az örökölt hitelesítési protokollok által végrehajtott bejelentkezési kísérleteket fogja megjeleníteni. Az egyes bejelentkezési kísérletekre kattintva további részleteket is megtudhat. Az **alapinformációk** lapon található **ügyfélalkalmazás** mező jelzi, hogy melyik örökölt hitelesítési protokollt használta a rendszer.
 
@@ -121,7 +122,7 @@ A **többi ügyfél** feltételéhez kiválaszthatja az összes elérhető enged
 
 Ha az örökölt hitelesítéssel szeretné letiltani a B2B felhasználói hozzáférést a SharePoint Online-hoz, a szervezeteknek le kell tiltaniuk az örökölt hitelesítést a SharePointban a `Set-SPOTenant` PowerShell parancs használatával, és a `-LegacyAuthProtocolsEnabled` paraméter `$false` A paraméter beállításával kapcsolatos további információkért tekintse meg a következőt: [set-SPOTenant](/powershell/module/sharepoint-online/set-spotenant)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A hatás meghatározása a feltételes hozzáférésről szóló jelentés módban](howto-conditional-access-insights-reporting.md)
 - Ha még nem ismeri a feltételes hozzáférési szabályzatok konfigurálását, tekintse meg a többtényezős hitelesítés [megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáférés](../authentication/tutorial-enable-azure-mfa.md) egy példához című témakört.

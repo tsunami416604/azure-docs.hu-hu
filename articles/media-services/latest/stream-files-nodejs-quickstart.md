@@ -1,5 +1,5 @@
 ---
-title: Videofájlok továbbítása Azure Media Services-Node.jssal | Microsoft Docs
+title: Videofájlok továbbítása Azure Media Services-Node.js
 description: Az oktatóanyag lépéseit követve hozzon létre egy új Azure Media Services fiókot, kódoljon egy fájlt, és továbbítsa a Azure Media Player.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-js
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 38207ac47d2e58c689f1933a6ade6d5c86cd44ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 711db5135345fd9b69da9aaea5bc4dbb929d27c9
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268672"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895136"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---nodejs"></a>Oktatóanyag: távoli fájl kódolása URL-cím alapján és stream a videón – Node.js
 
@@ -56,10 +56,10 @@ A minta a következő műveleteket hajtja végre:
 
 1. Létrehoz egy **átalakítót** (először ellenőrzi, hogy létezik-e a megadott átalakító). 
 2. Létrehozza a kódolási **feladatok** **kimenetéhez használt kimeneti objektumot** .
-3. Egy HTTPS URL-cím alapján hozza létre a **feladathoz**tartozó bemenetet.
+3. Egy HTTPS URL-cím alapján hozza létre a **feladathoz** tartozó bemenetet.
 4. Elküldi a kódolási **feladatot** a korábban létrehozott bemenet és kimenet használatával.
 5. Ellenőrzi a feladat állapotát.
-6. Adatfolyam- **keresőt**hoz létre.
+6. Adatfolyam- **keresőt** hoz létre.
 7. Streamelési URL-címeket épít fel.
 
 ## <a name="run-the-sample-app"></a>A mintaalkalmazás futtatása
@@ -105,7 +105,7 @@ az group delete --name amsResourceGroup
 
 [Feladattípus](/rest/api/media/jobs/get#joberrorcode)-hibakódok.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Media Services fogalmak](concepts-overview.md)

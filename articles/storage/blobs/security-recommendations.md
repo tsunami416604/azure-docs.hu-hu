@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/13/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: e3cfede444b65ee6990afd006d3b174d65f9cfad
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 05fdf681b7cdc3b8145a30041e261eece420e560
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179163"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878087"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Biztonsági javaslatok a blob Storage-hoz
 
@@ -30,7 +30,7 @@ Azure Security Center rendszeresen elemzi az Azure-erőforrások biztonsági ál
 | Ajánlás | Megjegyzések | Security Center |
 |-|----|--|
 | A Azure Resource Manager telepítési modell használata | Hozzon létre új Storage-fiókokat a Azure Resource Manager üzembe helyezési modellel a fontos biztonsági fejlesztésekhez, beleértve a kiváló Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) és a naplózást, a Resource Manager-alapú üzembe helyezést és irányítást, a felügyelt identitásokhoz való hozzáférést, a Secrets Azure Key Vault elérését, valamint az Azure AD-alapú hitelesítést, valamint az Azure Storage-adatok és- Ha lehetséges, telepítse át a klasszikus üzemi modellt használó meglévő Storage-fiókokat a Azure Resource Manager használatára. További információ a Azure Resource Managerről: [Azure Resource Manager áttekintése](../../azure-resource-manager/management/overview.md). | - |
-| Az Azure Defender engedélyezése az összes Storage-fiókhoz | Az Azure Defender for Azure Storage egy további biztonsági intelligenciát biztosít, amely szokatlan és potenciálisan ártalmas kísérleteket észlel a Storage-fiókok eléréséhez vagy kiaknázásához. A biztonsági riasztások Azure Security Center, ha a tevékenységben észlelt rendellenességek bekövetkeznek, és e-mailben is elküldik az előfizetési rendszergazdáknak, a gyanús tevékenységek részleteivel és a fenyegetések kivizsgálására és elhárítására vonatkozó javaslatokkal kapcsolatban. További információ: az [Azure Defender konfigurálása az Azure Storage](../common/azure-defender-storage-configure.md)-hoz. | [Igen](../../security-center/security-center-sql-service-recommendations.md) |
+| Az Azure Defender engedélyezése az összes Storage-fiókhoz | Az Azure Defender for Azure Storage egy további biztonsági intelligenciát biztosít, amely szokatlan és potenciálisan ártalmas kísérleteket észlel a Storage-fiókok eléréséhez vagy kiaknázásához. A biztonsági riasztások Azure Security Center, ha a tevékenységben észlelt rendellenességek bekövetkeznek, és e-mailben is elküldik az előfizetési rendszergazdáknak, a gyanús tevékenységek részleteivel és a fenyegetések kivizsgálására és elhárítására vonatkozó javaslatokkal kapcsolatban. További információ: az [Azure Defender konfigurálása az Azure Storage](../common/azure-defender-storage-configure.md)-hoz. | [Igen](../../security-center/security-center-remediate-recommendations.md) |
 | Áltörlés bekapcsolása a blobokhoz | A Blobok helyreállítható törlésével a blob-adatok helyreállíthatók a törlés után. A Blobok Soft delete szolgáltatásával kapcsolatos további információkért lásd az [Azure Storage-Blobok helyreállítható törlését](./soft-delete-blob-overview.md)ismertető témakört. | - |
 | A tárolók helyreállítható törlésének bekapcsolása | A tárolók helyreállítható törlése lehetővé teszi a tárolók helyreállítását a törlése után. A tárolók Soft delete szolgáltatásával kapcsolatos további információkért lásd: [tárolók helyreállítható törlése (előzetes verzió)](./soft-delete-container-overview.md). | - |
 | Storage-fiók zárolása a fiókok véletlen törlésének megakadályozása érdekében | Zárolhat egy Azure Resource Manager erőforrást, például egy előfizetést, egy erőforráscsoportot vagy egy Storage-fiókot, hogy megakadályozza a szervezet más felhasználói számára a véletlen törlést vagy módosítást. A Storage-fiók zárolása nem akadályozza meg, hogy a fiókban lévő adatok ne legyenek törölve. Ez csak a fiók törlését akadályozza meg. További információ: [erőforrások zárolása a váratlan változások megelőzése érdekében](../../azure-resource-manager/management/lock-resources.md).
@@ -53,7 +53,7 @@ Azure Security Center rendszeresen elemzi az Azure-erőforrások biztonsági ál
 | Ha egy szolgáltatás SAS-je nem egy tárolt hozzáférési szabályzathoz van társítva, akkor a lejárati időt állítsa egy órára vagy kevesebbre. | Nem lehet visszavonni egy olyan szolgáltatáshoz tartozó SAS-t, amely nincs hozzárendelve egy tárolt hozzáférési szabályzathoz. Emiatt a lejárati időt úgy kell korlátozni, hogy az SAS egy órán vagy kevesebb ideig érvényes legyen. | - |
 | Névtelen nyilvános olvasási hozzáférés letiltása a tárolók és a Blobok számára | A névtelen nyilvános olvasási hozzáférés egy tárolóhoz és a Blobok csak olvasási hozzáférést biztosítanak ezekhez az erőforrásokhoz bármely ügyfél számára. Kerülje a nyilvános olvasási hozzáférés engedélyezését, ha a forgatókönyv megköveteli. Ha meg szeretné tudni, hogyan tilthatja le a névtelen nyilvános hozzáférést egy Storage-fiókhoz, olvassa el a [Névtelen nyilvános olvasási hozzáférés beállítása tárolók és Blobok](anonymous-read-access-configure.md)számára című témakört.  | - |
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 | Ajánlás | Megjegyzések | Security Center |
 |-|----|--|
@@ -63,7 +63,7 @@ Azure Security Center rendszeresen elemzi az Azure-erőforrások biztonsági ál
 | Megbízható Microsoft-szolgáltatások hozzáférésének engedélyezése a Storage-fiókhoz | Ha bekapcsolja a tűzfalszabályok bekapcsolását a Storage-fiókhoz, az alapértelmezés szerint letiltja a bejövő adatkéréseket, kivéve, ha a kérelmek Azure-Virtual Network (VNet) vagy engedélyezett nyilvános IP-címeken belüli szolgáltatásból származnak. A letiltott kérések közé tartoznak a más Azure-szolgáltatások, a Azure Portal, a naplózási és a metrikai szolgáltatások, valamint így tovább. A többi Azure-szolgáltatástól érkező kéréseket engedélyezheti egy kivétel hozzáadásával, amely lehetővé teszi, hogy a megbízható Microsoft-szolgáltatások hozzáférjenek a Storage-fiókhoz. A megbízható Microsoft-szolgáltatások kivételének hozzáadásával kapcsolatos további információkért lásd: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).| - |
 | Privát végpontok használata | A privát végpontok magánhálózati IP-címet rendelnek hozzá az Azure-Virtual Network (VNet) a Storage-fiókhoz. A VNet és a Storage-fiók közötti összes forgalmat privát kapcsolaton keresztül biztosítja. A privát végpontokkal kapcsolatos további információkért lásd: [privát kapcsolódás a Storage-fiókhoz az Azure Private Endpoint használatával](../../private-link/tutorial-private-endpoint-storage-portal.md). | - |
 | VNet szolgáltatásbeli címkék használata | A szolgáltatás címkéje egy adott Azure-szolgáltatás IP-címeinek egy csoportját jelöli. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatási címkét a címek változásával. További információ az Azure Storage által támogatott szolgáltatási címkékről: [Azure-szolgáltatás címkék – áttekintés](../../virtual-network/service-tags-overview.md). A következő témakörben talál egy oktatóanyagot, amely bemutatja, hogyan használhatók a szolgáltatási címkék a kimenő hálózati szabályok létrehozásához: a [hozzáférés korlátozása a Pásti erőforrásaihoz](../../virtual-network/tutorial-restrict-network-access-to-resources.md). | - |
-| Bizonyos hálózatokhoz való hálózati hozzáférés korlátozása | A hozzáférést igénylő ügyfelek hálózati hozzáférésének korlátozása csökkenti az erőforrások hálózati támadásoknak való kitettségét. | [Igen](../../security-center/security-center-sql-service-recommendations.md) |
+| Bizonyos hálózatokhoz való hálózati hozzáférés korlátozása | A hozzáférést igénylő ügyfelek hálózati hozzáférésének korlátozása csökkenti az erőforrások hálózati támadásoknak való kitettségét. | [Igen](../../security-center/security-center-remediate-recommendations.md) |
 | Hálózati útválasztási beállítás konfigurálása | Konfigurálhatja az Azure Storage-fiók hálózati útválasztási beállításait annak megadásához, hogy a hálózati forgalom hogyan legyen átirányítva a fiókjába az interneten keresztül a Microsoft Global Network vagy az Internet Routing használatával. További információ: [a hálózati útválasztási beállítások konfigurálása az Azure Storage szolgáltatáshoz](../common/network-routing-preference.md). | - |
 
 ## <a name="loggingmonitoring"></a>Naplózás/figyelés
@@ -73,7 +73,7 @@ Azure Security Center rendszeresen elemzi az Azure-erőforrások biztonsági ál
 | A kérések engedélyezésének nyomon követése | Az Azure Storage naplózásának engedélyezése az Azure Storage-ba irányuló kérelmek engedélyezésének nyomon követésére. A naplók azt jelzik, hogy egy kérelem névtelenül történt-e egy OAuth 2,0-token használatával, megosztott kulcs használatával vagy közös hozzáférésű aláírás (SAS) használatával. További információkért lásd: az [Azure Blob Storage figyelése Azure monitor](monitor-blob-storage.md) vagy az [Azure Storage Analytics naplózása klasszikus figyeléssel](../common/storage-analytics-logging.md). | - |
 | Riasztások beállítása Azure Monitorban | Konfigurálja a naplózási riasztásokat, hogy a megadott gyakorisággal kiértékelje az erőforrások naplóit, és az eredmények alapján figyelmeztessen egy riasztást. További információ: [riasztások naplózása Azure monitorban](../../azure-monitor/platform/alerts-unified-log.md). | - |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure biztonsági dokumentációja](../../security/index.yml)
 - [Biztonságos fejlesztői dokumentáció](../../security/develop/index.yml).

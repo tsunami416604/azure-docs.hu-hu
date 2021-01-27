@@ -9,22 +9,22 @@ ms.subservice: availability
 ms.date: 07/01/2019
 ms.reviewer: zivr
 ms.custom: mimckitt
-ms.openlocfilehash: 1525ef7c1e19aa9821df3f111fdce3518d37afd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3a7b50c82b3deffa7526bfcfe799972c3b02762
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87011056"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98877866"
 ---
 # <a name="preview-creating-and-using-proximity-placement-groups-using-powershell"></a>Előzetes verzió: közelítő elhelyezési csoportok létrehozása és használata a PowerShell-lel
 
-Ha a lehető legközelebb szeretné lekérni a virtuális gépeket, a lehető legalacsonyabb késés elérése érdekében a méretezési [csoportot egy közelségi elhelyezési csoportban](co-location.md#preview-proximity-placement-groups)helyezze üzembe.
+Ha a lehető legközelebb szeretné lekérni a virtuális gépeket, a lehető legalacsonyabb késés elérése érdekében a méretezési [csoportot egy közelségi elhelyezési csoportban](../virtual-machines/co-location.md#proximity-placement-groups)helyezze üzembe.
 
 A közelségi elhelyezési csoport olyan logikai csoport, amely biztosítja, hogy az Azure számítási erőforrásai fizikailag közel legyenek egymáshoz. A közelségi csoportok olyan munkaterhelések esetén hasznosak, ahol az alacsony késés követelmény.
 
 > [!IMPORTANT]
 > A közelségi elhelyezési csoportok jelenleg nyilvános előzetes verzióban érhetők el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
 > A közelségi elhelyezési csoportok ezekben a régiókban nem érhetők el az előzetes verzióban: **Kelet-japán**, **Kelet-Ausztrália** és **Közép-India**.
 

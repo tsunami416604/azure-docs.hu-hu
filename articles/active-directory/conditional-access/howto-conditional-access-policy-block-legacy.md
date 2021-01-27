@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2499a89907eb63f01adbc80a6d206911c09c1259
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 982c33c5c55e32ce48131a4b2f0911e4f23dd408
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91265952"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98877288"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>Feltételes hozzáférés: örökölt hitelesítés tiltása
 
@@ -28,23 +28,23 @@ A következő lépések segítséget nyújtanak egy feltételes hozzáférési s
 
 1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
 1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférését**.
-1. Válassza az **új szabályzat**lehetőséget.
+1. Válassza az **új szabályzat** lehetőséget.
 1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
-1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
-   1. A **Belefoglalás**területen válassza a **minden felhasználó**lehetőséget.
-   1. A **kizárás**területen válassza a **felhasználók és csoportok** lehetőséget, és válassza ki azokat a fiókokat, amelyeknek fenn kell tartaniuk a régi hitelesítés használatát. Zárja ki legalább egy fiókot, hogy elkerülje a zárolás kizárását. Ha nem zárja ki a fiókot, nem fogja tudni létrehozni ezt a házirendet.
-   1. Válassza a **Done** (Kész) lehetőséget.
-1. A **Cloud apps vagy műveletek**területen válassza a **minden felhőalapú alkalmazás**lehetőséget.
-   1. Válassza a **Done** (Kész) lehetőséget.
-1. A **feltételek**  >  **ügyfélalkalmazások**területen állítsa az **Configure** **Igen**értékre.
-   1. Csak a dobozok **Exchange ActiveSync-ügyfelek** és **más ügyfelek**jelölőnégyzetének bejelölése.
-   1. Válassza a **Done** (Kész) lehetőséget.
-1. A **hozzáférés-vezérlés**  >  **megadása**területen válassza a **hozzáférés letiltása**lehetőséget.
+1. A **hozzárendelések** alatt válassza a **felhasználók és csoportok** lehetőséget.
+   1. A **Belefoglalás** területen válassza a **minden felhasználó** lehetőséget.
+   1. A **kizárás** területen válassza a **felhasználók és csoportok** lehetőséget, és válassza ki azokat a fiókokat, amelyeknek fenn kell tartaniuk a régi hitelesítés használatát. Zárja ki legalább egy fiókot, hogy elkerülje a zárolás kizárását. Ha nem zárja ki a fiókot, nem fogja tudni létrehozni ezt a házirendet.
+   1. Válassza a **Kész** lehetőséget.
+1. A **Cloud apps vagy műveletek** területen válassza a **minden felhőalapú alkalmazás** lehetőséget.
+   1. Válassza a **Kész** lehetőséget.
+1. A **feltételek**  >  **ügyfélalkalmazások** területen állítsa az  **Igen** értékre.
+   1. Csak a dobozok **Exchange ActiveSync-ügyfelek** és **más ügyfelek** jelölőnégyzetének bejelölése.
+   1. Válassza a **Kész** lehetőséget.
+1. A **hozzáférés-vezérlés**  >  **megadása** területen válassza a **hozzáférés letiltása** lehetőséget.
    1. Válassza a **Kiválasztás** lehetőséget.
 1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **házirendet** **csak jelentésre**.
 1. Válassza a **Létrehozás** lehetőséget a szabályzat engedélyezéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
 
@@ -52,4 +52,4 @@ A következő lépések segítséget nyújtanak egy feltételes hozzáférési s
 
 [Bejelentkezési viselkedés szimulálása a feltételes hozzáférési What If eszköz használatával](troubleshoot-conditional-access-what-if.md)
 
-[Többfunkciós eszköz vagy alkalmazás beállítása az e-mailek küldéséhez Microsoft 365 használatával](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-office-3)
+[Többfunkciós eszköz vagy alkalmazás beállítása az e-mailek küldéséhez Microsoft 365 használatával](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-microsoft-365-or-office-365)

@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services kimeneti metaadatok sémája | Microsoft Docs
+title: Azure Media Services kimeneti metaadatok sémája
 description: Ez a cikk áttekintést nyújt Azure Media Services v3 kimeneti metaadat-sémáról.
 author: IngridAtMicrosoft
 manager: femila
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: aa6d4edc4348fa850eeb7e8d91ce0791ee4c7170
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a27db81866760bff56c900a908162f356c01a66
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336411"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895203"
 ---
 # <a name="output-metadata"></a>Kimeneti metaadatok
 
@@ -55,7 +55,7 @@ Minden fizikai AssetFile tartalmazhatnak nulla vagy több, a megfelelő tároló
 | **FourCC**<br />Kötelező | Az FFmpeg által jelentett video codec FourCC-kód.  <br /><br />Például: `"FourCC": "avc1"`|
 | **Profil** |H264-profil (csak H264-kodekre alkalmazható).  <br /><br />Például: `"Profile": "High"` |
 | **Szintű** |H264-szint (csak H264-kodekre alkalmazható).  <br /><br />Például: `"Level": "3.2"`|
-| **Szélessége**<br />Kötelező |Kódolt videó szélessége képpontban megadva  <br /><br />Például: `"Width": "1280"`|
+| **Szélesség**<br />Kötelező |Kódolt videó szélessége képpontban megadva  <br /><br />Például: `"Width": "1280"`|
 | **Magasság**<br />Kötelező |Kódolt videó magassága képpontban megadva.  <br /><br />Például: `"Height": "720"`|
 | **DisplayAspectRatioNumerator**<br />Kötelező|Videó megjelenítési oldalarányának számlálója  <br /><br />Például: `"DisplayAspectRatioNumerator": 16.0`|
 | **DisplayAspectRatioDenominator**<br />Kötelező |Videó megjelenítési méretarányának nevezője  <br /><br />Például: `"DisplayAspectRatioDenominator": 9.0`|

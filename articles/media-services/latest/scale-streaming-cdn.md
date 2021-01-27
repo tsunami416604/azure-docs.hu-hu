@@ -1,24 +1,9 @@
 ---
-title: Tartalom továbbítása CDN-integrációval
-titleSuffix: Azure Media Services
-description: Ismerje meg, hogyan közvetítheti a tartalmat a CDN-integrációval, valamint előzetes beolvasással és Origin-Assist CDN-előhívásokkal.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: conceptual
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: 6bdf6015ca5633c77280111a55055a7394cee5bd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001371"
+# <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>Kötelező mezők. További információ: aka.ms/skyeye/meta.
+title: tartalom továbbítása a CDN-integrációval: Azure Media Services Leírás: Ismerje meg, hogyan közvetítheti a tartalmat a CDN-integrációval, valamint hogy hogyan kérhető le és Origin-Assist CDN-prefektus.
+szolgáltatások: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' ' MS. Service: Media-Services MS. munkaterhelés: MS. topic: konceptuális MS. Date: 08/31/2020 MS. Author: inhenkel
 ---
+
 # <a name="stream-content-with-cdn-integration"></a>Tartalom továbbítása CDN-integrációval
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
@@ -161,7 +146,7 @@ A `Origin-Assist CDN-Prefetch` szolgáltatás a következő folyamatos átviteli
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Győződjön meg arról, hogy az [adatfolyam-végpont (forrás)](streaming-endpoint-concept.md) dokumentumot tekinti át.
 * Az [ebben a tárházban található](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) minta bemutatja, hogyan indíthatja el az alapértelmezett adatfolyam-végpontot a .net-tel.

@@ -7,19 +7,19 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: 346536f5797841a850ef97dc4667110eafa721a4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 4ad05281f13885327c855a261a3101388f38af83
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656956"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878053"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Helyek közötti kapcsolat létrehozása az Azure Portal használatával (klasszikus)
 
 Ez a cikk bemutatja, hogyan használhatja az Azure Portalt egy helyek közötti VPN-átjárókapcsolat létrehozására egy helyszíni hálózat és a Vnet között. A cikkben ismertetett lépések a klasszikus üzemi modellre vonatkoznak, és nem vonatkoznak az aktuális üzemi modellre, a Resource Managerre. Ezt a konfigurációt más üzembehelyezési eszközzel vagy üzemi modellel is létrehozhatja, ha egy másik lehetőséget választ az alábbi listáról:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> * [Azure Portal](./tutorial-site-to-site-portal.md)
 > * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [Parancssori felület](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [(Klasszikus) Azure Portal](vpn-gateway-howto-site-to-site-classic-portal.md)
@@ -33,7 +33,7 @@ A helyek közötti VPN-átjárókapcsolat használatával kapcsolat hozható lé
 
 A konfigurálás megkezdése előtt győződjön meg a következő feltételek teljesüléséről:
 
-* Erősítse meg, hogy a klasszikus üzemi modellt kívánja használni. Ha a Resource Manager-alapú üzemi modellt szeretné használni, lásd: [Helyek közötti kapcsolat létrehozása (Resource Manager)](vpn-gateway-howto-site-to-site-resource-manager-portal.md). Javasoljuk, hogy a Resource Manager-alapú üzemi modellt használja, mivel a klasszikus modell örökölt.
+* Erősítse meg, hogy a klasszikus üzemi modellt kívánja használni. Ha a Resource Manager-alapú üzemi modellt szeretné használni, lásd: [Helyek közötti kapcsolat létrehozása (Resource Manager)](./tutorial-site-to-site-portal.md). Javasoljuk, hogy a Resource Manager-alapú üzemi modellt használja, mivel a klasszikus modell örökölt.
 * Győződjön meg arról, hogy rendelkezésre áll egy kompatibilis VPN-eszköz és egy azt konfigurálni képes személy. További információk a kompatibilis VPN-eszközökről és az eszközkonfigurációról: [Tudnivalók a VPN-eszközökről](vpn-gateway-about-vpn-devices.md).
 * Győződjön meg arról, hogy rendelkezik egy kifelé irányuló, nyilvános IPv4-címmel a VPN-eszköz számára.
 * Ha nem ismeri a helyszíni hálózati konfigurációjában található IP-címtereket, egyeztessen valakivel, aki ezeket az adatokat megadhatja Önnek. Amikor létrehozza ezt a konfigurációt, meg kell határoznia az IP-címtartományok előtagjait, amelyeket az Azure majd a helyszínre irányít. A helyszíni hálózat egyik alhálózata sem lehet átfedésben azokkal a virtuális alhálózatokkal, amelyekhez csatlakozni kíván.
@@ -141,7 +141,7 @@ Az Azure VPN Gateway alaphelyzetbe állítása akkor hasznos, ha egy vagy több 
 
 Az átjárók SKU-jának módosításának lépéseiért lásd: [ÁTJÁRÓ SKU-jának átméretezése](vpn-gateway-about-SKUS-legacy.md#classicresize).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információkért lásd: [Virtuális gépek](../index.yml).
 * Információk a kényszerített bújtatásról: [Információk a kényszerített bújtatásról](vpn-gateway-about-forced-tunneling.md).

@@ -45,6 +45,14 @@
           href: security-baseline.md
 - name: Útmutatók
   items:
+    - name: Ügyfélműveletek
+      items:
+        - name: Szolgáltatók megtekintése és kezelése
+          displayName: 'customer, update, visibility, control'
+          href: ./how-to/view-manage-service-providers.md
+        - name: Szolgáltatói tevékenység megtekintése
+          displayName: 'monitor, log, customer, visibility, transparency, control'
+          href: ./how-to/view-service-provider-activity.md
     - name: Ügyfél előkészítése az Azure Lighthouse-hoz
       displayName: resource management
       href: ./how-to/onboard-customer.md
@@ -87,14 +95,6 @@
           href: ./how-to/deploy-policy-remediation.md
     - name: Azure Sentinel-integráció
       href: ./how-to/manage-sentinel-workspaces.md
-    - name: Ügyfélműveletek
-      items:
-        - name: Szolgáltatók megtekintése és kezelése
-          displayName: 'customer, update'
-          href: ./how-to/view-manage-service-providers.md
-        - name: Szolgáltatói tevékenység megtekintése
-          displayName: 'monitor, log'
-          href: ./how-to/view-service-provider-activity.md
 - name: Referencia
   items:
     - name: Azure CLI

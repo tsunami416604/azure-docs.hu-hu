@@ -1,5 +1,5 @@
 ---
-title: Videók kódolása szabványos kódolóval a Media Services-Azure-ban | Microsoft Docs
+title: Videók kódolása standard szintű kódolóval Media Services
 description: Ez a témakör bemutatja, hogyan használható a standard kódoló a Media Servicesban egy automatikusan generált bitráta-létrával rendelkező bemeneti videó kódolásához a bemeneti felbontás és a bitráta alapján.
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 05accd69f1868b8b0e0f6dbd4fb5c21ee843ec5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b973d17e10f3dbb75f5208d9003b4f8118b37c7
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297718"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98891403"
 ---
 #  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>Kódolás automatikusan generált bitráta-létrával
 
@@ -31,7 +31,7 @@ Ez a cikk azt ismerteti, hogyan használható a standard kódoló a Media Servic
 
 ### <a name="encoding-for-streaming"></a>Kódolás a folyamatos átvitelhez
 
-Ha az **átalakítás**során a **AdaptiveStreaming** -készletet használja, olyan kimenetet kap, amely alkalmas továbbítási protokollok, például a HLS és a Dash protokollon keresztül történő kézbesítésre. Ha ezt az beállításkészletet használja, a szolgáltatás intelligensen határozza meg, hogy hány videó-réteget kell előállítani, és milyen bitrátát és megoldást kell használni. A kimeneti tartalom MP4-fájlokat tartalmaz, amelyekben az AAC-kódolású hang-és a H. 264 kódolású videó nincs átfedésben.
+Ha az **átalakítás** során a **AdaptiveStreaming** -készletet használja, olyan kimenetet kap, amely alkalmas továbbítási protokollok, például a HLS és a Dash protokollon keresztül történő kézbesítésre. Ha ezt az beállításkészletet használja, a szolgáltatás intelligensen határozza meg, hogy hány videó-réteget kell előállítani, és milyen bitrátát és megoldást kell használni. A kimeneti tartalom MP4-fájlokat tartalmaz, amelyekben az AAC-kódolású hang-és a H. 264 kódolású videó nincs átfedésben.
 
 Ha szeretné megtekinteni a készlet használatának módját, tekintse meg [a fájl továbbítása](stream-files-dotnet-quickstart.md)című témakört.
 

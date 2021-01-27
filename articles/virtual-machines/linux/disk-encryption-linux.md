@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: eb7db3c95fb56ebbd62d6cf882a75ce03baeb75d
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 3b6928b759d2349051dbb69258952f2f1ee10a31
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736054"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878138"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-forgatókönyvek Linux rendszerű virtuális gépeken
 
@@ -412,6 +412,7 @@ A Azure Disk Encryption a következő Linux-forgatókönyvek, funkciók és tech
 - A Lsv2 sorozatú virtuális gépek NVMe lemezei (lásd: [Lsv2 sorozat](../lsv2-series.md)).
 - Egy "beágyazott csatlakoztatási ponttal" rendelkező virtuális gép; Ez azt eredményezi, hogy több csatlakoztatási pont van egyetlen elérési úton (például "/1stmountpoint/Data/2stmountpoint").
 - Egy virtuális gép, amely egy operációsrendszer-mappához csatlakoztatott adatmeghajtóval rendelkezik.
+- Egy virtuális gép, amelyen a gyökérszintű (operációsrendszer-lemez) logikai kötet ki lett terjesztve adatlemez használatával.
 - Az M sorozatú virtuális gépek írásgyorsító lemezzel.
 - Az ADE alkalmazása olyan virtuális gépre, amely kiszolgálóoldali titkosítással titkosított lemezeket tartalmaz [az ügyfél által felügyelt kulcsokkal](../disk-encryption.md) (SSE + CMK). Az SSE és a CMK az ADE-sel titkosított virtuális gépek adatlemezére való alkalmazása nem támogatott forgatókönyv is.
 - Az ADE-sel titkosított virtuális gépek áttelepítése, vagy az ADE-sel való titkosítása már **megtörtént,** az [ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosításhoz](../disk-encryption.md).

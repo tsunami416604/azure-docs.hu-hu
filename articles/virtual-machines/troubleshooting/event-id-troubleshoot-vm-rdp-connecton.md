@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 507cd6cfe9f251dbc304b579d634ff986b001264
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c293945a52dd810975b36144f224278163166ba8
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87088597"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878443"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>Az Azure-beli virtuális gépek kapcsolati hibáinak elhárítása eseményazonosító alapján 
 
@@ -156,23 +156,23 @@ Start-Service -Name "SessionEnv"
 
 Ha nem tudja megújítani a tanúsítványt, kövesse az alábbi lépéseket a tanúsítvány törléséhez:
 
-1. Egy másik virtuális gépen ugyanabban a VNET nyissa meg a **Futtatás** mezőt, írja be az **MMC**parancsot, majd nyomja meg az **OK**gombot. 
+1. Egy másik virtuális gépen ugyanabban a VNET nyissa meg a **Futtatás** mezőt, írja be az **MMC** parancsot, majd nyomja meg az **OK** gombot. 
 
-2. A **fájl** menüben kattintson a **beépülő modul hozzáadása/eltávolítása**elemre.
+2. A **fájl** menüben kattintson a **beépülő modul hozzáadása/eltávolítása** elemre.
 
-3. Az **elérhető beépülő modulok** listában válassza a **tanúsítványok**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
+3. Az **elérhető beépülő modulok** listában válassza a **tanúsítványok** lehetőséget, majd válassza a **Hozzáadás** lehetőséget.
 
-4. Válassza a **számítógépfiók**lehetőséget, majd kattintson a **Tovább gombra**.
+4. Válassza a **számítógépfiók** lehetőséget, majd kattintson a **Tovább gombra**.
 
 5. Válasszon **másik számítógépet**, majd adja hozzá a problémát okozó virtuális gép IP-címét.
    >[!Note]
    >Próbálja meg a belső hálózatot használni a virtuális IP-címek használatának elkerüléséhez.
 
-6. Válassza a **Befejezés**lehetőséget, majd kattintson **az OK gombra**.
+6. Válassza a **Befejezés** lehetőséget, majd kattintson **az OK gombra**.
 
    ![Számítógép kiválasztása](./media/event-id-troubleshoot-vm-rdp-connecton/select-computer.png)
 
-7. Bontsa ki a tanúsítványok csomópontot, nyissa meg a távoli Desktop\Certificates mappát, kattintson a jobb gombbal a tanúsítványra, majd válassza a **Törlés**lehetőséget.
+7. Bontsa ki a tanúsítványok csomópontot, nyissa meg a távoli Desktop\Certificates mappát, kattintson a jobb gombbal a tanúsítványra, majd válassza a **Törlés** lehetőséget.
 
 8. Indítsa újra a Távoli asztal konfigurációs szolgáltatást:
 
@@ -235,7 +235,7 @@ Ezt a problémát a biztonsági házirendek okozzák. Ha a TLS régebbi verziói
 
 Az RDP a TLS 1,0 protokollt használja alapértelmezett protokollként. Előfordulhat azonban, hogy a protokoll a TLS 1,1-re módosul, amely az új standard.
 
-A probléma megoldásához lásd: [hitelesítési hibák elhárítása, amikor RDP használatával csatlakozik az Azure-beli virtuális géphez](troubleshoot-authentication-error-rdp-vm.md#tls-version).
+A probléma megoldásához lásd: [hitelesítési hibák elhárítása, amikor RDP használatával csatlakozik az Azure-beli virtuális géphez](/troubleshoot/azure/virtual-machines/cannot-connect-rdp-azure-vm#tls-version).
 
 ## <a name="scenario-3"></a>3\. példa
 
@@ -288,7 +288,7 @@ Az állomásnév a belső Windows-adatbázis bejegyzéseivel és függőségeive
 
 A probléma megoldásához újra kell telepíteni a Távoli asztali kapcsolatszervező szerepkört és a belső Windows-adatbázist.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Schannel-események](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn786445(v=ws.11))
 

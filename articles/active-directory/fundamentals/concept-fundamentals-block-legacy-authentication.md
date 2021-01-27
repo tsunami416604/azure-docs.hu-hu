@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 01/26/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: b50c942d2e05d7f5234a17f1cf36137309c7ce97
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 24640254f32270b8c96c790dca7db31e285cc27f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95973711"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895288"
 ---
 # <a name="blocking-legacy-authentication"></a>Örökölt hitelesítés blokkolása
  
@@ -37,6 +37,7 @@ Mielőtt blokkolni tudja az örökölt hitelesítést a címtárban, először m
 1. Az **ügyfélalkalmazás** szerinti szűrés > az **örökölt hitelesítési ügyfelek** által megjelenített összes beállítás ellenőrzéséhez.
 1. A szűrés **állapota**  >  **sikeres**. 
 1. Ha szükséges, bontsa ki a dátumtartományt **a Dátum szűrő használatával** .
+1. Ha aktiválta az [új bejelentkezési tevékenység jelentésének előzetes](../reports-monitoring/concept-all-sign-ins.md)verzióját, ismételje meg a fenti lépéseket a **felhasználói bejelentkezések (nem interaktív)** lapon is.
 
 A szűrés csak a kiválasztott örökölt hitelesítési protokollok sikeres bejelentkezési kísérleteit jeleníti meg. Az egyes bejelentkezési kísérletekre kattintva további részleteket is megtudhat. Az egyes adatsorok kiválasztása után az alapszintű adatok lapon található ügyfélalkalmazás vagy az ügyfélalkalmazás mező jelzi, hogy melyik örökölt hitelesítési protokollt használta. Ezek a naplók azt jelzik, hogy mely felhasználók maradnak az örökölt hitelesítéstől függően, és mely alkalmazások örökölt protokollokat használnak a hitelesítési kérések elvégzéséhez. Azoknál a felhasználóknál, akik nem jelennek meg a naplókban, és a rendszer megerősíti, hogy nem használ örökölt hitelesítést, implementáljon egy feltételes hozzáférési szabályzatot vagy engedélyezze az alapkonfigurációt: tiltsa le az örökölt hitelesítést ezen felhasználók számára.
 
@@ -96,8 +97,8 @@ A modern hitelesítés engedélyezésének lépései a következő cikkekben tal
 * [A helyszíni Exchange Server konfigurálása hibrid modern hitelesítés használatára](/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
 * [Modern hitelesítés (ADAL) használata a Skype vállalati verzióban](/skypeforbusiness/manage/authentication/use-adal)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A helyszíni Exchange Server konfigurálása hibrid modern hitelesítés használatára](/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
 - [Modern hitelesítés (ADAL) használata a Skype vállalati verzióban](/skypeforbusiness/manage/authentication/use-adal)
-- [Régi hitelesítési folyamat letiltása](../conditional-access/block-legacy-authentication.md)
+- [Örökölt hitelesítés tiltása](../conditional-access/block-legacy-authentication.md)

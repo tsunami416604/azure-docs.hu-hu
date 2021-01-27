@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services események figyelése a Event Grid parancssori felület használatával | Microsoft Docs
+title: Azure Media Services események figyelése Event Grid a parancssori felület használatával
 description: Ez a cikk bemutatja, hogyan fizethet elő Event Gridre az Azure CLI-vel való Azure Media Services események figyelése érdekében.
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b646965be03b5d3f57483887e256d33262192375
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: d7148841083cccf4197fe353d077e5149e4afac5
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013287"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895322"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-cli"></a>Media Services események létrehozása és figyelése Event Grid az Azure CLI használatával
 

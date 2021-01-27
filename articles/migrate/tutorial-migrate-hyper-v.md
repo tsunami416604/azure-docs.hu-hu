@@ -9,12 +9,12 @@ ms.date: 06/08/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 48fe0c737cf7005676a5c803107b4402c7039141
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 9d0fa516fefefe4c3d8e67c3e6d592ec4274943c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752751"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878172"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>A Hyper-V virtuális gépek migrálása az Azure-ba 
 
@@ -46,7 +46,7 @@ Az oktatóanyag elkezdése előtt:
 2. [Tekintse át](migrate-support-matrix-hyper-v-migration.md#hyper-v-host-requirements) A Hyper-V gazdagépre vonatkozó követelmények az áttelepítéshez, valamint azon Azure URL-címek, amelyekhez a Hyper-V-gazdagépek és-fürtök hozzáférhetnek a virtuális gépek migrál
 3. [Tekintse át](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms) az Azure-ba áttelepíteni kívánt Hyper-V virtuális gépekre vonatkozó követelményeket.
 4. Javasoljuk, hogy az Azure-ba való Migrálás előtt mérje fel a  [Hyper-V virtuális gépeket](tutorial-assess-hyper-v.md) , de nem kell.
-5. Lépjen a már létrehozott projekthez, vagy [hozzon létre egy új projektet](https://docs.microsoft.com/azure/migrate/create-manage-projects)
+5. Lépjen a már létrehozott projekthez, vagy [hozzon létre egy új projektet](./create-manage-projects.md)
 6. Az Azure-fiók engedélyeinek ellenőrzése – az Azure-fióknak rendelkeznie kell a virtuális gép létrehozásához szükséges engedélyekkel, és írnia kell egy Azure-beli felügyelt lemezre.
 
 ## <a name="download-and-install-the-provider"></a>A szolgáltató letöltése és telepítése
@@ -130,7 +130,7 @@ A felderítés befejeződése után megkezdheti a Hyper-V virtuális gépek repl
 13. Az **Áttekintés és a replikáció megkezdése** területen tekintse át a beállításokat, majd kattintson a **Replikálás** gombra a kiszolgálók kezdeti replikálásának elindításához.
 
 > [!NOTE]
-> A replikálási beállításokat bármikor frissítheti a replikálás megkezdése **Manage** előtt, a  >  **replikálási gépek** kezelése területen. A replikáció kezdete után a beállítások már nem módosíthatók.
+> A replikálási beállításokat bármikor frissítheti a replikálás megkezdése előtt, a  >  **replikálási gépek** kezelése területen. A replikáció kezdete után a beállítások már nem módosíthatók.
 
 ## <a name="provision-for-the-first-time"></a>Kiépítés első alkalommal
 
